@@ -12,10 +12,12 @@ interface User {
   id: string; username: string; full_name: string; role: string;
   school_code: string; assigned_class: string; is_active: boolean;
   access_expires_at: string | null;
+  assigned_subject_ids?: number[];
 }
 
 const ROLES = ['teacher','parent','student','admin'];
 const EXPIRY_ROLES = ['teacher', 'parent'];
+const SCHOOL_ROLES = ['teacher', 'parent', 'student'];
 
 function formatExpiry(iso: string | null): string {
   if (!iso) return 'No expiry';
@@ -30,12 +32,15 @@ export default function AdminUsersScreen() {
   const [modal,   setModal]   = useState(false);
   const [editUser,setEditUser]= useState<User | null>(null);
   const [schools, setSchools] = useState<{code:string; name:string}[]>([]);
+  const [classesBySchool, setClassesBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
+  const [subjectsBySchool, setSubjectsBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
 
   // Form state
   const [form, setForm] = useState({
     username: '', full_name: '', role: 'teacher',
     school_code: '', assigned_class: '', phone: '', email: '',
     access_expires_at: '', // YYYY-MM-DD, blank = no expiry
+    assigned_subject_ids: [] as number[],
   });
 
   const fetchUsers = async () => {
@@ -47,9 +52,38 @@ export default function AdminUsersScreen() {
   useEffect(() => { fetchUsers(); }, []);
   useEffect(() => { api.get('/academic/schools').then(({ data }) => setSchools(data.schools ?? [])).catch(() => {}); }, []);
 
+  // Prefetch classes + subjects for every school once, up front, rather than
+  // re-fetching on every School picker change — dataset per school is small
+  // and there are only ever a couple of schools.
+  useEffect(() => {
+    if (!schools.length) return;
+    (async () => {
+      const classesMap: Record<string, {id:number; name:string}[]> = {};
+      const subjectsMap: Record<string, {id:number; name:string}[]> = {};
+      await Promise.all(schools.map(async (s) => {
+        try {
+          const [{ data: classesData }, { data: subjectsData }] = await Promise.all([
+            api.get('/academic/classes', { params: { school_code: s.code } }),
+            api.get('/academic/subjects', { params: { school_code: s.code } }),
+          ]);
+          classesMap[s.code] = classesData.classes ?? [];
+          subjectsMap[s.code] = subjectsData.subjects ?? [];
+        } catch { }
+      }));
+      setClassesBySchool(classesMap);
+      setSubjectsBySchool(subjectsMap);
+    })();
+  }, [schools]);
+
+  const availableClasses = classesBySchool[form.school_code] ?? [];
+  const availableSubjects = subjectsBySchool[form.school_code] ?? [];
+
   const openNew = () => {
     setEditUser(null);
-    setForm({ username: '', full_name: '', role: 'teacher', school_code: '', assigned_class: '', phone: '', email: '', access_expires_at: '' });
+    setForm({
+      username: '', full_name: '', role: 'teacher', school_code: '', assigned_class: '',
+      phone: '', email: '', access_expires_at: '', assigned_subject_ids: [],
+    });
     setModal(true);
   };
 
@@ -59,6 +93,7 @@ export default function AdminUsersScreen() {
       username: u.username, full_name: u.full_name ?? '', role: u.role,
       school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: '', email: '',
       access_expires_at: u.access_expires_at ? u.access_expires_at.slice(0, 10) : '',
+      assigned_subject_ids: u.assigned_subject_ids ?? [],
     });
     setModal(true);
   };
@@ -102,13 +137,16 @@ export default function AdminUsersScreen() {
     }
   };
 
-  const handleResetPw = async (u: User) => {
-    Alert.alert('Reset Password', `Reset password for ${u.username} to School@1234?`, [
+  const handleResetPw = (u: User) => {
+    Alert.alert('Reset Password', `Reset password for ${u.username}? A new temporary password will be generated.`, [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Reset', style: 'destructive', onPress: async () => {
         try {
-          await api.post(`/admin/users/${u.id}/reset-password`, { new_password: 'School@1234' });
-          Alert.alert('Done', 'Password reset. User must change on next login.');
+          const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
+          Alert.alert(
+            'Password Reset',
+            `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
+          );
         } catch (e: any) {
           Alert.alert('Error', e?.response?.data?.error ?? 'Could not reset password');
         }
@@ -197,14 +235,55 @@ export default function AdminUsersScreen() {
           <Input label="Full Name"      value={form.full_name}      onChangeText={v => setForm(f => ({ ...f, full_name: v }))} />
           <Input label="Phone"          value={form.phone}          onChangeText={v => setForm(f => ({ ...f, phone: v }))}         keyboardType="phone-pad" />
           <Input label="Email"          value={form.email}          onChangeText={v => setForm(f => ({ ...f, email: v }))}         keyboardType="email-address" />
-          <Text style={styles.filterLabel}>School</Text>
-          <View style={styles.pickerWrap}>
-            <Picker selectedValue={form.school_code} onValueChange={v => setForm(f => ({ ...f, school_code: v }))}>
-              <Picker.Item label="Select a school..." value="" />
-              {schools.map(s => <Picker.Item key={s.code} label={s.name} value={s.code} />)}
-            </Picker>
-          </View>
-          <Input label="Assigned Class" value={form.assigned_class} onChangeText={v => setForm(f => ({ ...f, assigned_class: v }))} />
+
+          {SCHOOL_ROLES.includes(form.role) && (
+            <>
+              <Text style={styles.filterLabel}>School</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={form.school_code} onValueChange={v => setForm(f => ({ ...f, school_code: v }))}>
+                  <Picker.Item label="Select a school..." value="" />
+                  {schools.map(s => <Picker.Item key={s.code} label={s.name} value={s.code} />)}
+                </Picker>
+              </View>
+            </>
+          )}
+
+          {form.role === 'teacher' && (
+            <>
+              <Text style={styles.filterLabel}>Assigned Class</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={form.assigned_class} onValueChange={v => setForm(f => ({ ...f, assigned_class: v }))}>
+                  <Picker.Item label="None" value="" />
+                  {availableClasses.map(c => <Picker.Item key={c.id} label={c.name} value={c.name} />)}
+                </Picker>
+              </View>
+
+              <Text style={styles.filterLabel}>Assigned Subjects</Text>
+              <View style={styles.chipRow}>
+                {availableSubjects.length === 0 && (
+                  <Text style={styles.chipEmptyHint}>Select a school to see its subjects.</Text>
+                )}
+                {availableSubjects.map(sub => {
+                  const selected = form.assigned_subject_ids.includes(sub.id);
+                  return (
+                    <TouchableOpacity
+                      key={sub.id}
+                      onPress={() => setForm(f => ({
+                        ...f,
+                        assigned_subject_ids: selected
+                          ? f.assigned_subject_ids.filter(id => id !== sub.id)
+                          : [...f.assigned_subject_ids, sub.id],
+                      }))}
+                      style={[styles.chip, selected && styles.chipSelected]}
+                    >
+                      <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{sub.name}</Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </>
+          )}
+
           <Text style={styles.filterLabel}>Role</Text>
           <View style={styles.pickerWrap}>
             <Picker selectedValue={form.role} onValueChange={v => setForm(f => ({ ...f, role: v }))}>
@@ -250,4 +329,10 @@ const styles = StyleSheet.create({
   filterLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2 },
   pickerWrap:  { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.sm },
   expiryHint:  { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: -4, marginBottom: Spacing.sm, fontStyle: 'italic' },
+  chipRow:     { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: Spacing.sm },
+  chip:        { paddingHorizontal: 12, paddingVertical: 6, borderRadius: Radius.md, borderWidth: 1.5, borderColor: Colors.border, backgroundColor: Colors.white },
+  chipSelected:{ backgroundColor: Colors.primary, borderColor: Colors.primary },
+  chipText:    { fontSize: Fonts.sizes.xs, color: Colors.text, fontWeight: '600' },
+  chipTextSelected: { color: Colors.white },
+  chipEmptyHint: { fontSize: Fonts.sizes.xs, color: Colors.textSub, fontStyle: 'italic' },
 });
