@@ -10,18 +10,21 @@ import { generateTempPassword } from '../utils/password.js';
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
 
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 // USER MANAGEMENT
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
-  let sql = `SELECT id,username,full_name,role,school_code,assigned_class,
-                    assigned_subject_id,is_active,must_change_pw,access_expires_at,created_at
-             FROM users WHERE 1=1`;
+  let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
+                    u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
+                    COALESCE(array_agg(ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids
+             FROM users u
+             LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
+             WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
-  if (role)        { params.push(role);        sql += ` AND role=$${params.length}`; }
-  sql += ' ORDER BY role,full_name';
+  if (school_code) { params.push(school_code); sql += ` AND u.school_code=$${params.length}`; }
+  if (role)        { params.push(role);        sql += ` AND u.role=$${params.length}`; }
+  sql += ' GROUP BY u.id ORDER BY u.role,u.full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
 });
@@ -40,7 +43,7 @@ router.get('/students-without-login', async (req, res) => {
 });
 
 // ── GET /admin/student-logins-without-link  (reverse of the above: student
-//    accounts in Users that aren't yet attached to a students row) ───────────
+//    accounts in Users that aren't yet attached to a students row) ──────────
 router.get('/student-logins-without-link', async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
   let sql = `SELECT id, username, full_name, school_code FROM users
@@ -53,7 +56,7 @@ router.get('/student-logins-without-link', async (req, res) => {
 });
 
 // ── GET /admin/parent-logins  (for the "link parent" picker — any parent can
-//    be linked to several children, so no "unlinked" filtering here) ─────────
+//    be linked to several children, so no "unlinked" filtering here) ────────
 router.get('/parent-logins', async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
   let sql = `SELECT id, username, full_name, phone FROM users WHERE role='parent'`;
@@ -134,9 +137,9 @@ router.delete('/users/:id', async (req, res) => {
   return res.json({ ok: true });
 });
 
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 // AUDIT LOG
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 router.get('/audit-log', async (req, res) => {
   const { school_code, limit = '100' } = req.query as Record<string, string>;
   let sql = `SELECT al.*,u.username AS actor_username
@@ -150,9 +153,9 @@ router.get('/audit-log', async (req, res) => {
   return res.json({ audit_log: rows });
 });
 
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 // EMAIL LOG TRIGGER
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 router.post('/log-email', async (req, res) => {
   const { level = 'INFO', event = 'manual', payload = {} } = req.body;
   await query(
@@ -168,9 +171,9 @@ router.post('/log-email', async (req, res) => {
   return res.json({ ok: true });
 });
 
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 // EXCEL EXPORT (mirrors STS export)
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 router.get('/export/excel', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
   const sc = school_code ?? req.user!.school_code;
@@ -236,10 +239,10 @@ router.get('/export/excel', async (req, res) => {
   return res.send(buf);
 });
 
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 // FINANCE (writes only — reads for parent/student/teacher live in routes/finance.ts,
 // scoped so a parent only ever sees their own ward's invoices)
-// ════════════════════════════════════════
+// ══════════════════════════════════════════
 router.post('/finance/fee-items', async (req, res) => {
   const { name, amount, class_name, school_code } = req.body;
   const sc = school_code ?? req.user!.school_code;
@@ -324,8 +327,3 @@ router.put('/finance/invoices/:id/status', async (req, res) => {
 });
 
 export default router;
-
-
-
-
-
