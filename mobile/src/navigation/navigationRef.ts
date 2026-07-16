@@ -23,9 +23,19 @@ export function openBraineeChat() {
 // object as its route param (see ChatsScreen's openThread), not just an id —
 // so the message push's `data.contact` (built server-side in messages.ts)
 // is passed straight through here.
-export function openMessageThread(contact: { id: string; username: string; full_name: string; role: string }) {
+//
+// `screen` defaults to 'ChatThread' (parent/student/teacher's registered
+// screen name) but the server now sends 'Messages' for admin recipients,
+// since AdminStack.tsx has no nested chats-stack — just a single flat
+// "Messages" screen. Without this, a push tap for admin tried to navigate
+// to a screen that doesn't exist in that navigator and crashed with
+// "The action 'NAVIGATE' ... was not handled by any navigator".
+export function openMessageThread(
+  contact: { id: string; username: string; full_name: string; role: string },
+  screen: string = 'ChatThread',
+) {
   if (navigationRef.isReady()) {
-    navigationRef.navigate('ChatThread', { contact });
+    navigationRef.navigate(screen, { contact });
   }
 }
 

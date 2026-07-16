@@ -72,7 +72,12 @@ export default function App() {
       if (!data) return;
       switch (data.type) {
         case 'message':
-          if (data.contact) openMessageThread(data.contact as any);
+          // `data.screen` is set server-side (messages.ts) based on the
+          // recipient's role — 'ChatThread' for parent/student/teacher,
+          // 'Messages' for admin, since AdminStack.tsx has no nested
+          // chats-stack. Falls back to openMessageThread's own default
+          // ('ChatThread') if an older push payload didn't include it.
+          if (data.contact) openMessageThread(data.contact as any, data.screen as string | undefined);
           break;
         case 'assessment':
           if (data.assessmentId) openAssessment(data.assessmentId as string, (data.title as string) ?? '');
@@ -111,6 +116,3 @@ export default function App() {
   </GestureHandlerRootView>
   );
 }
-
-
-

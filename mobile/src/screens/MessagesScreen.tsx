@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView, Platform, Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 import api from '../api/client';
 import { Loader, Empty, Input, Btn, Card } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -15,6 +16,16 @@ interface Msg     { id: string; sender_id: string; body: string; created_at: str
 
 export default function MessagesScreen() {
   const { user } = useAuth();
+  // Admin's navigator (AdminStack.tsx) has no nested chats-stack — this one
+  // flat screen doubles as both the contact list and the thread view, and
+  // is what a message-push deep link now targets for admin recipients (see
+  // navigationRef.ts's openMessageThread + App.tsx's tap handler). A
+  // `contact` route param means "open straight into this thread" instead
+  // of landing on the contact list first, matching how ChatThreadScreen
+  // already behaves for parent/student/teacher.
+  const route = useRoute<any>();
+  const routeContact = route.params?.contact as Contact | undefined;
+
   const [contacts,     setContacts]     = useState<Contact[]>([]);
   const [activeContact,setActiveContact]= useState<Contact | null>(null);
   const [thread,       setThread]       = useState<Msg[]>([]);
@@ -38,6 +49,17 @@ export default function MessagesScreen() {
       setTimeout(() => flatRef.current?.scrollToEnd({ animated: false }), 100);
     } catch { }
   };
+
+  // Deep-link entry: if a push tap (or anything else) navigated here with a
+  // `contact` param, open straight into that thread rather than waiting for
+  // a tap on the contact list. Re-runs if the param changes (e.g. tapping a
+  // second push notification while already on this screen).
+  useEffect(() => {
+    if (routeContact) {
+      openConversation(routeContact);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [routeContact?.id]);
 
   const sendMessage = async () => {
     if (!body.trim() || !activeContact) return;

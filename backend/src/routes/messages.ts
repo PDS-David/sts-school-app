@@ -39,7 +39,8 @@ router.post('/', async (req, res) => {
   // repro (a secondary-school parent messaging an unrelated primary-school
   // student).
   const allowed = await getMessageableUsers(user);
-  if (!allowed.some(r => r.id === recipient_id)) {
+  const recipientInfo = allowed.find(r => r.id === recipient_id);
+  if (!recipientInfo) {
     return res.status(403).json({ error: RECIPIENT_ERROR[user.role] ?? 'Not allowed to message this recipient' });
   }
 
@@ -56,6 +57,16 @@ router.post('/', async (req, res) => {
   // tap (it takes a full { id, username, full_name, role } contact, not
   // just an id — same shape ChatsScreen already passes when opening a
   // thread normally).
+  //
+  // `screen` tells the mobile app's push-tap handler which registered
+  // screen name to navigate to: admin's navigator (AdminStack.tsx) has no
+  // nested chats-stack, just a single flat "Messages" screen — unlike
+  // parent/student/teacher, which each register a "ChatThread" screen.
+  // Found live: a message sent to admin produced a push that landed fine,
+  // but tapping it crashed with "The action 'NAVIGATE' ... was not handled
+  // by any navigator" because the deep-link always hardcoded 'ChatThread',
+  // which doesn't exist for admin. recipientInfo.role is already known here
+  // from the scope check above, so no extra query is needed to decide this.
   const { rows: senderRows } = await query(
     `SELECT full_name FROM users WHERE id=$1`, [user.id],
   );
@@ -65,6 +76,7 @@ router.post('/', async (req, res) => {
     body: body.trim().slice(0, 120),
     data: {
       type: 'message',
+      screen: recipientInfo.role === 'admin' ? 'Messages' : 'ChatThread',
       contact: { id: user.id, username: user.username, full_name: senderFullName, role: user.role },
     },
   }).catch(err => console.error('Push send failed (message):', err));
