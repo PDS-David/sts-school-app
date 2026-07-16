@@ -47,10 +47,11 @@ export default function AdminUsersScreen() {
   const [subjectsBySchool, setSubjectsBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  // Form state
+  // Form state. full_name and email were removed as user-facing fields —
+  // full_name is always derived from username on save (see handleSave).
   const [form, setForm] = useState({
-    username: '', full_name: '', role: 'teacher',
-    school_code: '', assigned_class: '', phone: '', email: '',
+    username: '', role: 'teacher',
+    school_code: '', assigned_class: '', phone: '',
     access_expires_at: '', // YYYY-MM-DD, blank = no expiry
     assigned_subject_ids: [] as number[],
   });
@@ -93,8 +94,8 @@ export default function AdminUsersScreen() {
   const openNew = () => {
     setEditUser(null);
     setForm({
-      username: '', full_name: '', role: 'teacher', school_code: '', assigned_class: '',
-      phone: '', email: '', access_expires_at: '', assigned_subject_ids: [],
+      username: '', role: 'teacher', school_code: '', assigned_class: '',
+      phone: '', access_expires_at: '', assigned_subject_ids: [],
     });
     setModal(true);
   };
@@ -102,8 +103,8 @@ export default function AdminUsersScreen() {
   const openEdit = (u: User) => {
     setEditUser(u);
     setForm({
-      username: u.username, full_name: u.full_name ?? '', role: u.role,
-      school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: '', email: '',
+      username: u.username, role: u.role,
+      school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: '',
       access_expires_at: u.access_expires_at ? u.access_expires_at.slice(0, 10) : '',
       assigned_subject_ids: u.assigned_subject_ids ?? [],
     });
@@ -115,7 +116,9 @@ export default function AdminUsersScreen() {
     // means "no expiry" — for edits that has to be sent explicitly (clear_expiry)
     // since the backend otherwise leaves an existing expiry untouched.
     const showsExpiry = EXPIRY_ROLES.includes(form.role);
-    const payload: any = { ...form };
+    // Full Name and Email fields were removed from this form — full_name
+    // always mirrors username on both create and edit.
+    const payload: any = { ...form, full_name: form.username };
     if (!showsExpiry || !form.access_expires_at) {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
@@ -244,9 +247,7 @@ export default function AdminUsersScreen() {
           {!editUser && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
-          <Input label="Full Name"      value={form.full_name}      onChangeText={v => setForm(f => ({ ...f, full_name: v }))} />
           <Input label="Phone"          value={form.phone}          onChangeText={v => setForm(f => ({ ...f, phone: v }))}         keyboardType="phone-pad" />
-          <Input label="Email"          value={form.email}          onChangeText={v => setForm(f => ({ ...f, email: v }))}         keyboardType="email-address" />
 
           {SCHOOL_ROLES.includes(form.role) && (
             <>

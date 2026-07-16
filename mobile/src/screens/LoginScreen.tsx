@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView,
+  View, Text, StyleSheet, ScrollView, TouchableOpacity,
   KeyboardAvoidingView, Platform, Image,
 } from 'react-native';
 import { useAuth } from '../api/AuthContext';
@@ -12,6 +12,7 @@ export default function LoginScreen({ navigation }: any) {
   const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error,    setError]    = useState('');
   const [loading,  setLoading]  = useState(false);
 
@@ -63,13 +64,20 @@ export default function LoginScreen({ navigation }: any) {
             placeholder="Enter your username"
             autoCapitalize="none"
           />
+
+          <View style={styles.passwordLabelRow}>
+            <Text style={styles.passwordLabel}>Password</Text>
+            <TouchableOpacity onPress={() => setShowPassword(s => !s)} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+              <Text style={styles.showToggle}>{showPassword ? 'Hide' : 'Show'}</Text>
+            </TouchableOpacity>
+          </View>
           <Input
-            label="Password"
             value={password}
             onChangeText={setPassword}
             placeholder="Enter your password"
-            secureTextEntry
+            secureTextEntry={!showPassword}
           />
+
           {error ? <Text style={styles.error}>{error}</Text> : null}
           <Btn label="Sign In" onPress={handleLogin} loading={loading} style={{ marginTop: Spacing.md }} />
         </View>
@@ -91,6 +99,9 @@ const styles = StyleSheet.create({
   tagline:    { fontSize: Fonts.sizes.sm, color: Colors.textSub, marginTop: 4 },
   form:       { backgroundColor: Colors.card, borderRadius: Radius.lg, padding: Spacing.lg, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 8, elevation: 3 },
   title:      { fontSize: Fonts.sizes.xl, fontWeight: '700', color: Colors.text, marginBottom: Spacing.md },
+  passwordLabelRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  passwordLabel:    { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub },
+  showToggle:       { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary },
   error:      { color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm, textAlign: 'center' },
   footer:     { textAlign: 'center', color: Colors.textSub, fontSize: Fonts.sizes.xs, marginTop: Spacing.xl, paddingBottom: Spacing.lg },
 });
