@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import api from '../api/client';
 import { Loader, Empty, Btn, Input, Badge, Card, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -26,6 +27,16 @@ function formatExpiry(iso: string | null): string {
   return `${expired ? 'Expired' : 'Expires'} ${d.toLocaleDateString()}`;
 }
 
+// YYYY-MM-DD, built from local date parts (not toISOString) so the date
+// shown/stored matches the day the admin actually tapped, regardless of
+// timezone offset.
+function toDateString(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
 export default function AdminUsersScreen() {
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,6 +45,7 @@ export default function AdminUsersScreen() {
   const [schools, setSchools] = useState<{code:string; name:string}[]>([]);
   const [classesBySchool, setClassesBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
   const [subjectsBySchool, setSubjectsBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   // Form state
   const [form, setForm] = useState({
@@ -292,14 +304,41 @@ export default function AdminUsersScreen() {
           </View>
           {EXPIRY_ROLES.includes(form.role) && (
             <>
-              <Input
-                label="Access Expires On (YYYY-MM-DD)"
-                value={form.access_expires_at}
-                onChangeText={v => setForm(f => ({ ...f, access_expires_at: v }))}
-                placeholder="Leave blank for no expiry"
-              />
+              <Text style={styles.filterLabel}>Access Expires On</Text>
+              <TouchableOpacity
+                style={styles.pickerWrap}
+                onPress={() => {
+                  if (form.access_expires_at) {
+                    // Second tap when a date is already set clears it back
+                    // to "no expiry" rather than reopening the picker.
+                    setForm(f => ({ ...f, access_expires_at: '' }));
+                  } else {
+                    setShowDatePicker(true);
+                  }
+                }}
+              >
+                <Text style={styles.dateButtonText}>
+                  {form.access_expires_at
+                    ? new Date(form.access_expires_at + 'T00:00:00').toLocaleDateString()
+                    : 'No expiry — tap to set a date'}
+                </Text>
+              </TouchableOpacity>
+              {showDatePicker && (
+                <DateTimePicker
+                  value={form.access_expires_at ? new Date(form.access_expires_at + 'T00:00:00') : new Date()}
+                  mode="date"
+                  display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                  minimumDate={new Date()}
+                  onChange={(event, selectedDate) => {
+                    setShowDatePicker(false);
+                    if (event.type === 'set' && selectedDate) {
+                      setForm(f => ({ ...f, access_expires_at: toDateString(selectedDate) }));
+                    }
+                  }}
+                />
+              )}
               <Text style={styles.expiryHint}>
-                After this date the account auto-locks and can only be reactivated by an admin (edit this user and set a new date, or clear it for indefinite access).
+                After this date the account auto-locks and can only be reactivated by an admin (tap the date again to clear it for indefinite access).
               </Text>
             </>
           )}
@@ -335,4 +374,5 @@ const styles = StyleSheet.create({
   chipText:    { fontSize: Fonts.sizes.xs, color: Colors.text, fontWeight: '600' },
   chipTextSelected: { color: Colors.white },
   chipEmptyHint: { fontSize: Fonts.sizes.xs, color: Colors.textSub, fontStyle: 'italic' },
+  dateButtonText: { padding: Spacing.md, fontSize: Fonts.sizes.md, color: Colors.text },
 });
