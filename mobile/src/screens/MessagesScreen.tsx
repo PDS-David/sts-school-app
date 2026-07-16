@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import api from '../api/client';
 import { Loader, Empty, Input, Btn, Card } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -25,6 +26,16 @@ export default function MessagesScreen() {
   // already behaves for parent/student/teacher.
   const route = useRoute<any>();
   const routeContact = route.params?.contact as Contact | undefined;
+
+  // Found live: on phones using on-screen (gesture/button) navigation
+  // rather than a physical/capacitive one, the send button sat directly
+  // behind the system nav bar with no way to tap it — inputRow had no
+  // safe-area awareness at all. insets.bottom is the height of whatever
+  // system UI (gesture bar or 3-button nav) overlaps the bottom of the
+  // screen; adding it as extra padding pushes the send button above that
+  // area on every device, while costing nothing extra on devices that
+  // don't have one (insets.bottom is 0 there).
+  const insets = useSafeAreaInsets();
 
   const [contacts,     setContacts]     = useState<Contact[]>([]);
   const [activeContact,setActiveContact]= useState<Contact | null>(null);
@@ -126,7 +137,7 @@ export default function MessagesScreen() {
           }}
         />
 
-        <View style={styles.inputRow}>
+        <View style={[styles.inputRow, { paddingBottom: Spacing.sm + insets.bottom }]}>
           <Input
             value={body}
             onChangeText={setBody}
@@ -152,7 +163,7 @@ export default function MessagesScreen() {
           <FlatList
             data={contacts}
             keyExtractor={c => c.id}
-            contentContainerStyle={{ padding: Spacing.sm }}
+            contentContainerStyle={{ padding: Spacing.sm, paddingBottom: Spacing.sm + insets.bottom }}
             renderItem={({ item: c }) => (
               <TouchableOpacity style={styles.contactRow} onPress={() => openConversation(c)} activeOpacity={0.7}>
                 <View style={styles.contactAvatar}>
