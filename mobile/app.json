@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1565C0"
       },
-      "package": "ng.edu.sowtheseed.school"
+      "package": "ng.edu.sowtheseed.school",
+      "googleServicesFile": "./google-services.json"
     },
     "ios": {
       "bundleIdentifier": "ng.edu.sowtheseed.school"
@@ -30,7 +31,8 @@
     "plugins": [
       "expo-sharing",
       "expo-splash-screen",
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "expo-notifications"
     ]
   }
 }
