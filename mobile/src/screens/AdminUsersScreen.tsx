@@ -76,11 +76,18 @@ export default function AdminUsersScreen() {
     try {
       if (editUser) {
         await api.put(`/admin/users/${editUser.id}`, payload);
+        setModal(false);
+        fetchUsers();
       } else {
-        await api.post('/admin/users', { ...payload, password: 'School@1234' });
+        const { data } = await api.post('/admin/users', payload);
+        setModal(false);
+        fetchUsers();
+        const temp = data?.user?.temporary_password;
+        Alert.alert(
+          'User Created',
+          `Username: ${form.username}\nPassword: ${temp}\n\nShare these with them. They'll be asked to set a new password on first login.`,
+        );
       }
-      setModal(false);
-      fetchUsers();
     } catch (e: any) {
       Alert.alert('Error', e?.response?.data?.error ?? 'Save failed');
     }
@@ -169,9 +176,11 @@ export default function AdminUsersScreen() {
                 <TouchableOpacity onPress={() => handleResetPw(u)} style={styles.iconBtn}>
                   <Ionicons name="key" size={18} color={Colors.accent} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleDelete(u)} style={styles.iconBtn}>
-                  <Ionicons name="trash" size={18} color={Colors.error} />
-                </TouchableOpacity>
+                {u.role !== 'admin' && (
+                  <TouchableOpacity onPress={() => handleDelete(u)} style={styles.iconBtn}>
+                    <Ionicons name="trash" size={18} color={Colors.error} />
+                  </TouchableOpacity>
+                )}
               </View>
             </View>
           </Card>
@@ -242,8 +251,3 @@ const styles = StyleSheet.create({
   pickerWrap:  { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.sm },
   expiryHint:  { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: -4, marginBottom: Spacing.sm, fontStyle: 'italic' },
 });
-
-
-
-
-
