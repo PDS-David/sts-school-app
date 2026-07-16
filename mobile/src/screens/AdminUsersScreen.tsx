@@ -29,6 +29,7 @@ export default function AdminUsersScreen() {
   const [loading, setLoading] = useState(true);
   const [modal,   setModal]   = useState(false);
   const [editUser,setEditUser]= useState<User | null>(null);
+  const [schools, setSchools] = useState<{code:string; name:string}[]>([]);
 
   // Form state
   const [form, setForm] = useState({
@@ -44,6 +45,7 @@ export default function AdminUsersScreen() {
     } catch { } finally { setLoading(false); }
   };
   useEffect(() => { fetchUsers(); }, []);
+  useEffect(() => { api.get('/academic/schools').then(({ data }) => setSchools(data.schools ?? [])).catch(() => {}); }, []);
 
   const openNew = () => {
     setEditUser(null);
@@ -178,7 +180,7 @@ export default function AdminUsersScreen() {
 
       {/* Add/Edit Modal */}
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
-        <ScrollView style={styles.modalWrap} keyboardShouldPersistTaps="handled">
+        <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title={editUser ? 'Edit User' : 'New User'} />
           {!editUser && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
@@ -186,7 +188,13 @@ export default function AdminUsersScreen() {
           <Input label="Full Name"      value={form.full_name}      onChangeText={v => setForm(f => ({ ...f, full_name: v }))} />
           <Input label="Phone"          value={form.phone}          onChangeText={v => setForm(f => ({ ...f, phone: v }))}         keyboardType="phone-pad" />
           <Input label="Email"          value={form.email}          onChangeText={v => setForm(f => ({ ...f, email: v }))}         keyboardType="email-address" />
-          <Input label="School Code"    value={form.school_code}    onChangeText={v => setForm(f => ({ ...f, school_code: v }))} />
+          <Text style={styles.filterLabel}>School</Text>
+          <View style={styles.pickerWrap}>
+            <Picker selectedValue={form.school_code} onValueChange={v => setForm(f => ({ ...f, school_code: v }))}>
+              <Picker.Item label="Select a school..." value="" />
+              {schools.map(s => <Picker.Item key={s.code} label={s.name} value={s.code} />)}
+            </Picker>
+          </View>
           <Input label="Assigned Class" value={form.assigned_class} onChangeText={v => setForm(f => ({ ...f, assigned_class: v }))} />
           <Text style={styles.filterLabel}>Role</Text>
           <View style={styles.pickerWrap}>
@@ -228,8 +236,14 @@ const styles = StyleSheet.create({
   userMeta:    { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
   actions:     { flexDirection: 'row', gap: 2 },
   iconBtn:     { padding: 6 },
-  modalWrap:   { flex: 1, backgroundColor: Colors.background, padding: Spacing.lg },
+  modalWrapOuter: { flex: 1, backgroundColor: Colors.background },
+  modalWrap:   { padding: Spacing.lg, paddingBottom: Spacing.lg * 3 },
   filterLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2 },
   pickerWrap:  { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.sm },
   expiryHint:  { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: -4, marginBottom: Spacing.sm, fontStyle: 'italic' },
 });
+
+
+
+
+

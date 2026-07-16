@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS classes (
   UNIQUE(school_code, name)
 );
 
+
 -- ── Subjects ──────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS subjects (
   id          SERIAL PRIMARY KEY,
@@ -107,6 +108,18 @@ CREATE TABLE IF NOT EXISTS subjects (
   code        TEXT,
   UNIQUE(school_code, name)
 );
+
+CREATE TABLE IF NOT EXISTS teacher_subjects (
+  user_id    UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  subject_id INTEGER NOT NULL REFERENCES subjects(id) ON DELETE CASCADE,
+  PRIMARY KEY (user_id, subject_id)
+);
+
+INSERT INTO teacher_subjects (user_id, subject_id)
+SELECT id, assigned_subject_id FROM users
+WHERE assigned_subject_id IS NOT NULL
+ON CONFLICT DO NOTHING;
+
 
 -- ── Students ──────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS students (
@@ -471,3 +484,5 @@ ALTER TABLE submissions ADD COLUMN IF NOT EXISTS fully_graded BOOLEAN NOT NULL D
 -- up (same fail-open principle already used for this app's Redis rate limit).
 ALTER TABLE weekly_efforts ADD COLUMN IF NOT EXISTS ai_summary TEXT;
 ALTER TABLE weekly_efforts ADD COLUMN IF NOT EXISTS ai_summary_generated_at TIMESTAMPTZ;
+
+

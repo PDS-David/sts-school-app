@@ -48,7 +48,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
     if (user.assigned_class) {
       params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
-    } else if (user.assigned_subject_id) {
+    } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
       // Bug found by live-testing this route directly with a real
       // subject-only teacher account: the previous version only blocked a
       // subject-only teacher when NO class_name was supplied at all — but
@@ -67,7 +67,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
       // whether the caller also passed a (possibly different, possibly
       // forged) subject_id — means a mismatched subject_id param now
       // returns zero rows instead of leaking every subject's data.
-      params.push(user.assigned_subject_id); sql += ` AND sc.subject_id=$${params.length}`;
+      params.push(user.assigned_subject_ids); sql += ` AND sc.subject_id = ANY($${params.length})`;
     } else {
       // Neither an assigned class nor an assigned subject — nothing in
       // this school is legitimately scoped to this teacher at all.
@@ -414,3 +414,6 @@ router.get('/session-report/:student_id', async (req, res) => {
 });
 
 export default router;
+
+
+

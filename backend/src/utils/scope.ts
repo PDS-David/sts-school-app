@@ -176,13 +176,12 @@ export async function checkTeacherContentScope(
   if (user.role !== 'teacher') {
     return { status: 403, error: 'Not authorized to create content for this class or subject' };
   }
-  if (!user.assigned_class && user.assigned_subject_id == null) {
+  if (!user.assigned_class && (!user.assigned_subject_ids || user.assigned_subject_ids.length === 0)) {
     return { status: 403, error: 'Your account has no assigned class or subject to create content for' };
   }
 
   const classMatches   = !!target.class_name && !!user.assigned_class && target.class_name === user.assigned_class;
-  const subjectMatches = target.subject_id != null && user.assigned_subject_id != null
-    && String(target.subject_id) === String(user.assigned_subject_id);
+  const subjectMatches = target.subject_id != null && (user.assigned_subject_ids ?? []).some(id => String(id) === String(target.subject_id));
 
   if (classMatches || subjectMatches) return null;
 
@@ -359,7 +358,7 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
            OR (
              u.school_code = st.school_code
              AND (
-               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR u.assigned_subject_id IS NOT NULL))
+               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
                OR (u.role = 'parent' AND u.id IN (
                      SELECT pw.parent_id FROM parent_wards pw WHERE pw.student_id = st.id
                    ))
@@ -402,7 +401,7 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
            u.role = 'admin'
            OR (
              u.school_code = st.school_code
-             AND u.role = 'teacher' AND (u.assigned_class = st.class_name OR u.assigned_subject_id IS NOT NULL)
+             AND u.role = 'teacher' AND (u.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id))
            )
          )
        WHERE st.deleted_at IS NULL
@@ -450,3 +449,6 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
   );
   return rows;
 }
+
+
+

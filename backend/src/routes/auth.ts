@@ -17,7 +17,7 @@ router.post('/login', async (req, res) => {
 
   const { rows } = await query(
     `SELECT id,username,password_hash,role,school_code,
-            assigned_class,assigned_subject_id,is_active,must_change_pw,access_expires_at
+            assigned_class,is_active,must_change_pw,access_expires_at
      FROM users WHERE username = $1`,
     [username.trim().toLowerCase()],
   );
@@ -33,13 +33,16 @@ router.post('/login', async (req, res) => {
     return res.status(403).json({ error: 'Your access period has ended. Contact the school admin to reactivate your account.' });
   }
 
+  const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
+  const assignedSubjectIds = subjectRows.map((r: any) => r.subject_id);
+
   const payload: AuthUser = {
     id: user.id,
     username: user.username,
     role: user.role as Role,
     school_code: user.school_code,
     assigned_class: user.assigned_class,
-    assigned_subject_id: user.assigned_subject_id,
+    assigned_subject_ids: assignedSubjectIds,
   };
 
   const accessToken  = signAccess(payload);
@@ -58,7 +61,7 @@ router.post('/login', async (req, res) => {
     // so it can offer "lock/unlock my class" only where it actually applies.
     // It was already being fetched and put into the JWT payload above, just
     // never actually returned to the client for the app to read directly.
-    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class },
+    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds },
   });
 });
 
@@ -72,7 +75,7 @@ router.post('/refresh', async (req, res) => {
   catch { return res.status(401).json({ error: 'Invalid or expired refresh token' }); }
 
   const { rows } = await query(
-    `SELECT id,username,role,school_code,assigned_class,assigned_subject_id,
+    `SELECT id,username,role,school_code,assigned_class,
             is_active,refresh_token,access_expires_at FROM users WHERE id=$1`,
     [payload.sub],
   );
@@ -84,11 +87,14 @@ router.post('/refresh', async (req, res) => {
     return res.status(403).json({ error: 'Your access period has ended. Contact the school admin to reactivate your account.' });
   }
 
+  const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
+  const assignedSubjectIds = subjectRows.map((r: any) => r.subject_id);
+
   const authUser: AuthUser = {
     id: user.id, username: user.username, role: user.role,
     school_code: user.school_code,
     assigned_class: user.assigned_class,
-    assigned_subject_id: user.assigned_subject_id,
+    assigned_subject_ids: assignedSubjectIds,
   };
   return res.json({ access_token: signAccess(authUser) });
 });

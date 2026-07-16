@@ -22,10 +22,15 @@
       "bundleIdentifier": "ng.edu.sowtheseed.school"
     },
     "extra": {
-      "apiUrl": "http://10.0.2.2:4000",
+      "apiUrl": "https://sts-school-backend.onrender.com",
       "eas": {
         "projectId": "af69a784-aa69-458b-8f4f-f712ce8b6ef5"
       }
-    }
+    },
+    "plugins": [
+      "expo-sharing",
+      "expo-splash-screen",
+      "@react-native-community/datetimepicker"
+    ]
   }
 }

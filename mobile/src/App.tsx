@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React, { useCallback, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -91,6 +92,7 @@ export default function App() {
   }
 
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <AuthProvider>
         <WardProvider>
@@ -106,5 +108,9 @@ export default function App() {
         </WardProvider>
       </AuthProvider>
     </SafeAreaProvider>
+  </GestureHandlerRootView>
   );
 }
+
+
+

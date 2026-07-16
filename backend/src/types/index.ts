@@ -6,7 +6,7 @@ export interface AuthUser {
   role: Role;
   school_code: string | null;
   assigned_class: string | null;
-  assigned_subject_id: number | null;
+  assigned_subject_ids: number[];
 }
 
 declare global {
@@ -16,3 +16,4 @@ declare global {
     }
   }
 }
+

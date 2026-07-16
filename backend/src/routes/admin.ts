@@ -5,6 +5,7 @@ import { requireAuth, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
+import { generateTempPassword } from '../utils/password.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
@@ -64,7 +65,7 @@ router.get('/parent-logins', async (req, res) => {
 });
 
 router.post('/users', async (req, res) => {
-  const { username, password, full_name, role, school_code, assigned_class, assigned_subject_id, phone, email, access_expires_at } = req.body;
+  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at } = req.body;
   const uname = String(username).trim().toLowerCase();
   const exists = await query('SELECT id FROM users WHERE username=$1', [uname]);
   if (exists.rows.length) return res.status(409).json({ error: 'Username taken' });
@@ -73,40 +74,50 @@ router.post('/users', async (req, res) => {
   // is handing out for a limited time. Admin accounts never expire this way.
   const expiresAt = (role === 'teacher' || role === 'parent') ? (access_expires_at ?? null) : null;
 
-  const hash = await bcrypt.hash(password ?? 'School@1234', 10);
+  const generatedPassword = generateTempPassword();
+  const hash = await bcrypt.hash(generatedPassword, 10);
   const { rows } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
-       assigned_subject_id,phone,email,must_change_pw,access_expires_at)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,TRUE,$10) RETURNING id,username,role,school_code,access_expires_at`,
+       phone,email,must_change_pw,access_expires_at)
+     VALUES($1,$2,$3,$4,$5,$6,$7,$8,TRUE,$9) RETURNING id,username,role,school_code,access_expires_at`,
     [uname, hash, role, full_name, school_code ?? null,
-     assigned_class ?? null, assigned_subject_id ?? null, phone ?? null, email ?? null, expiresAt],
+     assigned_class ?? null, phone ?? null, email ?? null, expiresAt],
   );
+  const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
+  for (const sid of subjectIds) {
+    await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
+  }
   await audit(req.user!, 'add_user', 'user', rows[0].id, `${role}: ${full_name}`);
-  return res.status(201).json({ user: rows[0] });
+  return res.status(201).json({ user: { ...rows[0], temporary_password: generatedPassword } });
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_subject_id, is_active, phone, email, access_expires_at, clear_expiry } = req.body;
+  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry } = req.body;
   // clear_expiry: true lets the admin explicitly remove an expiry (grant indefinite access)
   // without that being confused with "field simply not sent" (which COALESCE would ignore).
   const { rows } = await query(
     `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
        school_code=COALESCE($3,school_code), assigned_class=COALESCE($4,assigned_class),
-       assigned_subject_id=COALESCE($5,assigned_subject_id), is_active=COALESCE($6,is_active),
-       phone=COALESCE($7,phone), email=COALESCE($8,email),
-       access_expires_at = CASE WHEN $10 THEN NULL ELSE COALESCE($9, access_expires_at) END
-     WHERE id=$11 RETURNING id,username,role,is_active,access_expires_at`,
-    [full_name, role, school_code, assigned_class, assigned_subject_id, is_active, phone, email,
+       is_active=COALESCE($5,is_active),
+       phone=COALESCE($6,phone), email=COALESCE($7,email),
+       access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END
+     WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at`,
+    [full_name, role, school_code, assigned_class, is_active, phone, email,
      access_expires_at ?? null, !!clear_expiry, req.params.id],
   );
   if (!rows[0]) return res.status(404).json({ error: 'User not found' });
+  if (Array.isArray(assigned_subject_ids)) {
+    await query('DELETE FROM teacher_subjects WHERE user_id=$1', [req.params.id]);
+    for (const sid of assigned_subject_ids) {
+      await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [req.params.id, sid]);
+    }
+  }
   await audit(req.user!, 'edit_user', 'user', req.params.id);
   return res.json({ user: rows[0] });
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {
-  const { new_password } = req.body as { new_password: string };
-  const pw = new_password ?? 'School@1234';
+  const pw = generateTempPassword();
   const hash = await bcrypt.hash(pw, 10);
   await query('UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2', [hash, req.params.id]);
   await audit(req.user!, 'reset_password', 'user', req.params.id);
@@ -115,8 +126,10 @@ router.post('/users/:id/reset-password', async (req, res) => {
 
 router.delete('/users/:id', async (req, res) => {
   if (req.params.id === req.user!.id) return res.status(400).json({ error: 'Cannot delete yourself' });
+  const { rows: targetRows } = await query('SELECT role FROM users WHERE id=$1', [req.params.id]);
+  if (!targetRows[0]) return res.status(404).json({ error: 'User not found' });
+  if (targetRows[0].role === 'admin') return res.status(400).json({ error: 'Admin accounts cannot be deleted' });
   const { rows } = await query('DELETE FROM users WHERE id=$1 RETURNING username', [req.params.id]);
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'delete_user', 'user', req.params.id, rows[0].username);
   return res.json({ ok: true });
 });
@@ -311,3 +324,8 @@ router.put('/finance/invoices/:id/status', async (req, res) => {
 });
 
 export default router;
+
+
+
+
+
