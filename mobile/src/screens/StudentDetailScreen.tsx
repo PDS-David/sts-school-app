@@ -225,7 +225,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       {(isAdmin || (student.parents ?? []).filter((p: any) => p?.parent_id).length > 0) && (
         <Card>
           <SectionHeader title="Parents / Guardians" />
-          {student.parents.filter((p: any) => p?.parent_id).map((p: any) => (
+          {(student.parents ?? []).filter((p: any) => p?.parent_id).map((p: any) => (
             <View key={p.parent_id} style={styles.linkRow}>
               <RowItem label={p.name ?? '—'} value={p.phone ?? '—'} />
               {isAdmin && (
