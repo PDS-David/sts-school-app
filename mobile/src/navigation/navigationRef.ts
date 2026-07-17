@@ -46,3 +46,19 @@ export function openAssessment(assessmentId: string, title: string) {
     navigationRef.navigate('TakeAssessment', { assessmentId, title });
   }
 }
+
+// scores.ts's bulk-save push only ever targets a student (sendPushToUser is
+// called per-student, sourced from students.user_id — see scores.ts) — and
+// MyResultsScreen's student branch already self-resolves via GET
+// /students/me when reached with no params at all (see
+// MyResultsScreen.tsx's fetchReport). So unlike openMessageThread/
+// openAssessment, nothing needs to travel with this navigation call; the
+// screen figures out whose results to show on its own. Registered under
+// two different nested stacks in StudentTabs.tsx (AssessmentsStack and
+// ProfileStack), both under the same screen name — navigate() finds
+// whichever's currently active.
+export function openMyResults() {
+  if (navigationRef.isReady()) {
+    navigationRef.navigate('MyResults');
+  }
+}

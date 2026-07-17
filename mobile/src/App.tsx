@@ -14,7 +14,7 @@ import { WardProvider } from './api/WardContext';
 import { AdminSchoolProvider } from './api/AdminSchoolContext';
 import { NotificationsProvider } from './components/NotificationsContext';
 import RootNavigator from './navigation/RootNavigator';
-import { navigationRef, openMessageThread, openAssessment } from './navigation/navigationRef';
+import { navigationRef, openMessageThread, openAssessment, openMyResults } from './navigation/navigationRef';
 import OfflineBanner from './components/OfflineBanner';
 
 // Expo notifications are silent by default while the app is open. Option
@@ -83,9 +83,13 @@ export default function App() {
           if (data.assessmentId) openAssessment(data.assessmentId as string, (data.title as string) ?? '');
           break;
         case 'score':
-          // No dedicated deep link yet — MyResultsScreen isn't reachable
-          // with a single id/param the way the other two are. Falls back
-          // to whatever screen the user is already on.
+          // Previously had no deep link at all — an explicitly-deferred
+          // gap, now wired up. scores.ts's bulk-save push only ever
+          // targets a student, and MyResultsScreen's student branch
+          // self-resolves its own record via GET /students/me when
+          // reached with no params — so nothing needs to travel in `data`
+          // beyond the type itself.
+          openMyResults();
           break;
       }
     });
