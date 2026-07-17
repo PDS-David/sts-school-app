@@ -336,6 +336,19 @@ export interface MessageableUser {
  *     student/parent branches above already had `DISTINCT` for the same
  *     reason, these two just hadn't needed a join back to `students` before
  *     now.
+ *
+ * Pass 21 audit fix (parent branch below):
+ *   - Found live: a parent account with ZERO linked wards got ZERO contacts
+ *     back, including admin — the query started from `students st JOIN
+ *     parent_wards pw ON pw.student_id=st.id AND pw.parent_id=$1`, so with
+ *     no ward to join from, even the "admin is always reachable" OR-branch
+ *     inside that same query was unreachable: there were no rows for it to
+ *     apply to in the first place. This silently contradicted RECIPIENT
+ *     _ERROR.parent (in messages.ts), which explicitly promises a parent
+ *     may always reach admin regardless of ward status. Rewritten to select
+ *     from `users` directly so admin is unconditionally reachable; the
+ *     ward-linked teacher lookup now lives in a subquery that only
+ *     contributes teacher rows and can never gate the admin branch.
  */
 export async function getMessageableUsers(user: AuthUser): Promise<MessageableUser[]> {
   if (user.role === 'student') {
@@ -386,25 +399,28 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
   }
 
   if (user.role === 'parent') {
-    // Widened to match the student branch above: a parent may now message
-    // their ward's class teacher, any subject teacher, and any school admin
-    // — not just the class teacher. See the doc comment above for why.
+    // Rewritten in the Pass 21 audit fix — see doc comment above for the
+    // full writeup. Selects from `users` directly so admin is always
+    // reachable regardless of whether this parent has any linked ward at
+    // all; the ward-linked teacher lookup lives in its own subquery below
+    // and only ever contributes teacher rows.
     const { rows } = await query(
       `SELECT DISTINCT u.id, u.username, u.full_name, u.role
-       FROM students st
-       JOIN parent_wards pw ON pw.student_id = st.id AND pw.parent_id = $1
-       JOIN users u ON u.is_active = TRUE
+       FROM users u
+       WHERE u.is_active = TRUE
          AND (
-           -- Same NULL-school_code fix as the student branch above — admin
-           -- must be checked outside the school_code match or it can never
-           -- match (admin.school_code is NULL).
            u.role = 'admin'
-           OR (
-             u.school_code = st.school_code
-             AND u.role = 'teacher' AND (u.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id))
+           OR u.id IN (
+             SELECT DISTINCT t.id
+             FROM students st
+             JOIN parent_wards pw ON pw.student_id = st.id AND pw.parent_id = $1
+             JOIN users t ON t.is_active = TRUE
+               AND t.role = 'teacher'
+               AND t.school_code = st.school_code
+               AND (t.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = t.id))
+             WHERE st.deleted_at IS NULL
            )
          )
-       WHERE st.deleted_at IS NULL
        ORDER BY u.full_name`,
       [user.id],
     );
@@ -449,6 +465,3 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
   );
   return rows;
 }
-
-
-

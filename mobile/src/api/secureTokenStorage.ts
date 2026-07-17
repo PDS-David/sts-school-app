@@ -35,8 +35,18 @@ export async function deleteSecureItem(key: string): Promise<void> {
   await SecureStore.deleteItemAsync(key);
 }
 
+// Found live: AuthContext.tsx's logout() called this with zero protection
+// around it. deleteSecureItem() can genuinely throw natively (SecureStore
+// failure — corrupted keychain entry, key never set, OS-level keystore
+// issue) and, since this used Promise.all, one failing key rejected the
+// whole call and silently aborted the rest of logout() before it ever
+// reached AsyncStorage.removeItem('user') / setCacheNamespace(null) /
+// setUser(null) — the logout button visibly did nothing, no error shown
+// anywhere, still logged in. Promise.allSettled lets each key's delete
+// fail independently instead of taking the others (and the rest of
+// logout()) down with it.
 export async function deleteSecureItems(keys: string[]): Promise<void> {
-  await Promise.all(keys.map(deleteSecureItem));
+  await Promise.allSettled(keys.map(deleteSecureItem));
 }
 
 // ── One-time migration ──────────────────────────────────────────────────────
