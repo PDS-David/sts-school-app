@@ -147,7 +147,7 @@ export default function CreateAssessmentScreen({ navigation }: any) {
   };
 
   return (
-    <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
+    <ScrollView style={styles.containerOuter} contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
       <Card>
         <SectionHeader title="Assessment Details" />
         <Input label="Title" value={form.title} onChangeText={v => setForm(f => ({ ...f, title: v }))} placeholder="e.g. Mid-Term Mathematics Test" />
@@ -285,7 +285,8 @@ export default function CreateAssessmentScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  container:    { flex: 1, backgroundColor: Colors.background, padding: Spacing.sm },
+  containerOuter: { flex: 1, backgroundColor: Colors.background },
+  container:    { padding: Spacing.sm, paddingBottom: Spacing.sm * 6 },
   pickerLabel:  { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2 },
   pickerWrap:   { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.sm },
   switchRow:    { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: Spacing.xs },

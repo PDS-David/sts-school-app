@@ -91,7 +91,7 @@ export function TermsMgmtScreen() {
       />
 
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
-        <ScrollView style={styles.modal} keyboardShouldPersistTaps="handled">
+        <ScrollView style={styles.modalOuter} contentContainerStyle={styles.modal} keyboardShouldPersistTaps="handled">
           <SectionHeader title="New Term" />
           <Input label="Name (e.g. 1st Term)"          value={form.name}             onChangeText={v => setForm(f => ({ ...f, name: v }))} />
           <Input label="Academic Year (e.g. 2024/2025)" value={form.academic_year}    onChangeText={v => setForm(f => ({ ...f, academic_year: v }))} />
@@ -209,7 +209,8 @@ const styles = StyleSheet.create({
   termMeta:     { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
   setCurrentBtn:{ borderWidth: 1, borderColor: Colors.primary, borderRadius: Radius.sm, paddingHorizontal: 8, paddingVertical: 4 },
   setCurrentTxt:{ color: Colors.primary, fontSize: Fonts.sizes.xs, fontWeight: '700' },
-  modal:        { flex: 1, backgroundColor: Colors.background, padding: Spacing.lg },
+  modalOuter:   { flex: 1, backgroundColor: Colors.background },
+  modal:        { padding: Spacing.lg, paddingBottom: Spacing.lg * 3 },
   switchRow:    { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginVertical: Spacing.sm },
   switchLabel:  { fontSize: Fonts.sizes.sm, color: Colors.text, fontWeight: '600' },
   subRow:       { flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.sm, padding: Spacing.md, marginBottom: 6, elevation: 1 },

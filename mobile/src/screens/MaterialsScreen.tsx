@@ -120,7 +120,7 @@ export default function MaterialsScreen({ route }: any) {
 
       {/* Upload Modal */}
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
-        <ScrollView style={styles.modalWrap} keyboardShouldPersistTaps="handled">
+        <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title="Upload Material" />
           <Input label="Title" value={form.title} onChangeText={v => setForm(f => ({ ...f, title: v }))} />
           <Input label="URL (Google Drive / YouTube / etc.)" value={form.url} onChangeText={v => setForm(f => ({ ...f, url: v }))} autoCapitalize="none" />
@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
   matMeta:   { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
   matBy:     { fontSize: Fonts.sizes.xs, color: Colors.textSub },
   openBtn:   { padding: 4 },
-  modalWrap: { flex: 1, backgroundColor: Colors.background, padding: Spacing.lg },
+  modalWrapOuter: { flex: 1, backgroundColor: Colors.background },
+  modalWrap: { padding: Spacing.lg, paddingBottom: Spacing.lg * 3 },
   lbl:       { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2 },
 });

@@ -205,7 +205,7 @@ export default function WeeklyEffortsScreen() {
 
       {/* New Effort Modal */}
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
-        <ScrollView style={styles.modalWrap} keyboardShouldPersistTaps="handled">
+        <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title="Log Weekly Effort" />
           {isTeacherRole && (
             <>
@@ -286,7 +286,8 @@ const styles = StyleSheet.create({
   fbSender:    { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary, marginBottom: 2 },
   fbBody:      { fontSize: Fonts.sizes.sm, color: Colors.text },
   fbInputRow:  { flexDirection: 'row', gap: Spacing.sm, alignItems: 'center', marginTop: Spacing.xs },
-  modalWrap:   { flex: 1, backgroundColor: Colors.background, padding: Spacing.lg },
+  modalWrapOuter: { flex: 1, backgroundColor: Colors.background },
+  modalWrap:   { padding: Spacing.lg, paddingBottom: Spacing.lg * 3 },
   pickerLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2 },
   pickerBox:   { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.sm },
   flagRow:     { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm },
