@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, ActivityIndicator,
+  View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, ActivityIndicator, TextInput,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
@@ -136,26 +136,45 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
           <Text style={styles.qNumber}>Question {current + 1}</Text>
           <Text style={styles.qStem}>{q.stem}</Text>
 
-          {/* Options */}
-          {(q.options ?? []).map((opt) => {
-            const selected = answers[q.id] === opt.key;
-            return (
-              <TouchableOpacity
-                key={opt.key}
-                style={[styles.option, selected && styles.optionSelected]}
-                onPress={() => select(q.id, opt.key)}
-                activeOpacity={0.7}
-              >
-                <View style={[styles.optionKey, selected && { backgroundColor: Colors.primary }]}>
-                  <Text style={[styles.optionKeyText, selected && { color: Colors.white }]}>{opt.key}</Text>
-                </View>
-                <Text style={[styles.optionText, selected && { color: Colors.primary, fontWeight: '700' }]}>
-                  {opt.text}
-                </Text>
-                {selected && <Ionicons name="checkmark-circle" size={20} color={Colors.primary} />}
-              </TouchableOpacity>
-            );
-          })}
+          {/* Essay questions have no options to select — previously this
+              silently rendered nothing at all for them (only the MCQ option
+              list below was ever built), meaning a student could not type
+              an answer to an essay question no matter what: the field was
+              just missing. The backend already fully supports essays (auto
+              -sends them to Brainee for AI grading on submit), so this was
+              a real, live gap — confirmed reachable since CreateAssessmentScreen
+              already lets an admin pick 'essay' as a question type. */}
+          {q.type === 'essay' ? (
+            <TextInput
+              style={styles.essayInput}
+              multiline
+              textAlignVertical="top"
+              placeholder="Type your answer here…"
+              placeholderTextColor={Colors.textSub}
+              value={answers[q.id] ?? ''}
+              onChangeText={(text) => select(q.id, text)}
+            />
+          ) : (
+            (q.options ?? []).map((opt) => {
+              const selected = answers[q.id] === opt.key;
+              return (
+                <TouchableOpacity
+                  key={opt.key}
+                  style={[styles.option, selected && styles.optionSelected]}
+                  onPress={() => select(q.id, opt.key)}
+                  activeOpacity={0.7}
+                >
+                  <View style={[styles.optionKey, selected && { backgroundColor: Colors.primary }]}>
+                    <Text style={[styles.optionKeyText, selected && { color: Colors.white }]}>{opt.key}</Text>
+                  </View>
+                  <Text style={[styles.optionText, selected && { color: Colors.primary, fontWeight: '700' }]}>
+                    {opt.text}
+                  </Text>
+                  {selected && <Ionicons name="checkmark-circle" size={20} color={Colors.primary} />}
+                </TouchableOpacity>
+              );
+            })
+          )}
         </Card>
       </ScrollView>
 
@@ -196,6 +215,7 @@ const styles = StyleSheet.create({
   qContainer:     { padding: Spacing.md, paddingBottom: Spacing.xl },
   qNumber:        { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary, marginBottom: Spacing.xs },
   qStem:          { fontSize: Fonts.sizes.md, fontWeight: '600', color: Colors.text, lineHeight: 22, marginBottom: Spacing.md },
+  essayInput:     { minHeight: 140, padding: Spacing.md, borderRadius: Radius.md, borderWidth: 1.5, borderColor: Colors.border, backgroundColor: Colors.white, fontSize: Fonts.sizes.sm, color: Colors.text },
   option:         { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, padding: Spacing.md, borderRadius: Radius.md, borderWidth: 1.5, borderColor: Colors.border, marginBottom: Spacing.sm, backgroundColor: Colors.white },
   optionSelected: { borderColor: Colors.primary, backgroundColor: Colors.primary + '0D' },
   optionKey:      { width: 32, height: 32, borderRadius: 16, backgroundColor: Colors.border, alignItems: 'center', justifyContent: 'center' },
