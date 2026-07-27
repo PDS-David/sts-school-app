@@ -24,11 +24,17 @@ export default function MaterialsScreen({ route }: any) {
   // materials endpoint doesn't take a type param — everything still loads,
   // it's just narrowed in the list below.
   const typeFilter: string | undefined = route?.params?.typeFilter;
+  // StudentLearningScreen's per-subject tiles navigate here with subjectId —
+  // this was previously never read, so tapping e.g. "Mathematics" landed on
+  // an unfiltered "All Subjects" list instead of narrowing to that subject.
+  // Seeded once from the initial route param; the filter Picker below still
+  // lets the person change it freely afterward.
+  const initialSubjectId: string | undefined = route?.params?.subjectId != null ? String(route.params.subjectId) : undefined;
   const [materials, setMaterials] = useState<any[]>([]);
   const [subjects,  setSubjects]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
   const [modal,     setModal]     = useState(false);
-  const [filterSub, setFilterSub] = useState('');
+  const [filterSub, setFilterSub] = useState(initialSubjectId ?? '');
   const [form, setForm] = useState({ title: '', type: 'pdf', url: '', subject_id: '', class_name: '' });
 
   const fetch = async () => {
