@@ -31,7 +31,12 @@ export default function AssessmentsScreen({ navigation }: any) {
 
   const handleTake = (a: any) => {
     if (a.status !== 'open') { Alert.alert('Assessment is not open'); return; }
-    navigation.navigate('TakeAssessment', { assessmentId: a.id, title: a.title });
+    navigation.navigate('TakeAssessment', {
+      assessmentId: a.id,
+      title: a.title,
+      alreadySubmitted: !!a.already_submitted,
+      submissionId: a.my_submission_id ?? null,
+    });
   };
 
   // Found in QA Pass 6: there was no way anywhere — UI or API — to move an
@@ -75,7 +80,12 @@ export default function AssessmentsScreen({ navigation }: any) {
             {a.end_at   && <Text style={styles.detail}>Closes: {new Date(a.end_at).toLocaleString()}</Text>}
             <View style={styles.actions}>
               {!isAdmin && (
-                <Btn label="Take Assessment" onPress={() => handleTake(a)} style={{ flex: 1 }} />
+                <Btn
+                  label={a.already_submitted ? `View My Result${a.my_score != null ? ` (${a.my_score})` : ''}` : 'Take Assessment'}
+                  onPress={() => handleTake(a)}
+                  variant={a.already_submitted ? 'outline' : undefined}
+                  style={{ flex: 1 }}
+                />
               )}
               {isAdmin && (
                 <Btn label="View Results" onPress={() => navigation.navigate('AssessmentResults', { assessmentId: a.id })} style={{ flex: 1 }} variant="outline" />

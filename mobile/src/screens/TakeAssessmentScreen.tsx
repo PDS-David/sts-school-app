@@ -16,7 +16,9 @@ interface Question {
 }
 
 export default function TakeAssessmentScreen({ route, navigation }: any) {
-  const { assessmentId, title } = route.params as { assessmentId: string; title: string };
+  const { assessmentId, title, alreadySubmitted, submissionId } = route.params as {
+    assessmentId: string; title: string; alreadySubmitted?: boolean; submissionId?: number | string | null;
+  };
 
   const [questions,  setQuestions]  = useState<Question[]>([]);
   const [answers,    setAnswers]    = useState<Record<number, string>>({});
@@ -26,6 +28,31 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
   const [submitted,  setSubmitted]  = useState(false);
   const [result,     setResult]     = useState<any>(null);
   const [current,    setCurrent]    = useState(0);
+
+  // Previously a student could reopen an assessment they'd already
+  // submitted and silently overwrite their (possibly AI-graded) prior
+  // answers just by tapping "Take Assessment" again — nothing distinguished
+  // a fresh attempt from a resubmission. reviewMode shows their existing
+  // submission first; retaking is now an explicit, confirmed choice via the
+  // "Retake" button below rather than the default path. The backend's
+  // resubmission support (upsert on submissions) is unchanged/still used —
+  // this only changes what the student sees before that happens.
+  const [reviewMode,    setReviewMode]    = useState(!!alreadySubmitted && !!submissionId);
+  const [reviewLoading, setReviewLoading] = useState(!!alreadySubmitted && !!submissionId);
+  const [reviewData,    setReviewData]    = useState<any>(null);
+
+  useEffect(() => {
+    if (!alreadySubmitted || !submissionId) return;
+    api.get(`/learning/submissions/${submissionId}/answers`)
+      .then(({ data }) => { setReviewData(data); setReviewLoading(false); })
+      .catch(() => {
+        // Fall back to a normal fresh attempt rather than stranding the
+        // student on a broken review screen — e.g. if the submission was
+        // somehow removed between the list load and opening this screen.
+        setReviewMode(false);
+        setReviewLoading(false);
+      });
+  }, [alreadySubmitted, submissionId]);
 
   useEffect(() => {
     // Found in QA Pass 6: this used to call the unrelated, unscoped
@@ -80,6 +107,53 @@ export default function TakeAssessmentScreen({ route, navigation }: any) {
       Alert.alert('Error', e?.response?.data?.error ?? 'Submission failed');
     } finally { setSubmitting(false); }
   };
+
+  if (reviewLoading) return <Loader />;
+
+  if (reviewMode && reviewData) {
+    const sub = reviewData.submission;
+    const revAnswers: any[] = reviewData.answers ?? [];
+    const fullyGraded = sub?.fully_graded !== false;
+    const handleRetake = () => {
+      Alert.alert(
+        'Retake Assessment?',
+        'This will replace your current answers and score with a new attempt. Your previous submission cannot be recovered afterward.',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Retake', style: 'destructive', onPress: () => setReviewMode(false) },
+        ],
+      );
+    };
+    return (
+      <ScrollView contentContainerStyle={styles.resultContainer}>
+        <View style={styles.resultCard}>
+          <Ionicons name="document-text-outline" size={64} color={Colors.primary} />
+          <Text style={styles.resultTitle}>Your Submission</Text>
+          <Text style={styles.resultScore}>{sub?.total_score ?? '—'}</Text>
+          <Text style={styles.resultLabel}>marks scored</Text>
+          {!fullyGraded && (
+            <Text style={styles.resultNote}>
+              Brainee is still checking one or more of your written answers — check back soon for your final score.
+            </Text>
+          )}
+        </View>
+        {revAnswers.map((a, i) => (
+          <Card key={a.id} style={{ marginTop: Spacing.sm }}>
+            <Text style={styles.reviewStem}>{i + 1}. {a.stem}</Text>
+            <Text style={styles.reviewYourAnswer}>
+              Your answer: {a.question_type === 'essay' ? (a.answer_text || '(left blank)') : (a.selected_key || '(left blank)')}
+            </Text>
+            <Text style={styles.reviewPoints}>
+              {a.pending_review ? 'Pending your teacher\'s review' : `${a.awarded_points ?? 0} / ${a.max_points} marks`}
+            </Text>
+            {a.ai_feedback ? <Text style={styles.reviewFeedback}>{a.ai_feedback}</Text> : null}
+          </Card>
+        ))}
+        <Btn label="Retake Assessment" onPress={handleRetake} variant="outline" style={{ marginTop: Spacing.md }} />
+        <Btn label="Back to Assessments" onPress={() => navigation.goBack()} style={{ marginTop: Spacing.sm, marginBottom: Spacing.xl }} />
+      </ScrollView>
+    );
+  }
 
   if (loading) return <Loader />;
   if (loadError) return <Empty message={loadError} />;
@@ -230,4 +304,8 @@ const styles = StyleSheet.create({
   resultLabel:    { fontSize: Fonts.sizes.lg, color: Colors.textSub },
   resultSub:      { fontSize: Fonts.sizes.sm, color: Colors.textSub, marginTop: Spacing.sm },
   resultNote:     { fontSize: Fonts.sizes.sm, color: Colors.accent, marginTop: Spacing.md, textAlign: 'center', lineHeight: 20 },
+  reviewStem:       { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: Spacing.xs },
+  reviewYourAnswer: { fontSize: Fonts.sizes.sm, color: Colors.textSub, marginBottom: Spacing.xs },
+  reviewPoints:     { fontSize: Fonts.sizes.sm, fontWeight: '700', color: Colors.primary },
+  reviewFeedback:   { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: Spacing.xs, fontStyle: 'italic' },
 });

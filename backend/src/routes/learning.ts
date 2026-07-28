@@ -141,11 +141,36 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   // title of an unpublished SS3-only assessment before this fix.
   const viewerClasses = await resolveViewerClassNames(user);
 
+  const params: unknown[] = [sc];
+
+  // For a student, also report whether they've already submitted this
+  // assessment (and their score, if so) — added alongside the
+  // already_submitted UI fix: previously nothing distinguished a fresh
+  // assessment from one already answered, so AssessmentsScreen always
+  // showed the same "Take Assessment" button, and re-tapping it silently
+  // overwrote the student's prior (possibly AI-graded) submission with no
+  // warning. Not added for admin/teacher — the extra subquery/join is
+  // meaningless for them (a teacher never reaches this route at all per
+  // rbac.ts; admin's "own submission" has no meaning here).
+  let submittedCol = '';
+  if (user.role === 'student') {
+    params.push(user.id);
+    const p = params.length;
+    submittedCol = `, EXISTS (
+         SELECT 1 FROM submissions sm JOIN students st ON st.id = sm.student_id
+         WHERE sm.assessment_id = a.id AND st.user_id = $${p}
+       ) AS already_submitted,
+       (SELECT sm.id FROM submissions sm JOIN students st ON st.id = sm.student_id
+        WHERE sm.assessment_id = a.id AND st.user_id = $${p}) AS my_submission_id,
+       (SELECT sm.total_score FROM submissions sm JOIN students st ON st.id = sm.student_id
+        WHERE sm.assessment_id = a.id AND st.user_id = $${p}) AS my_score`;
+  }
+
   let sql = `SELECT a.*,sub.name AS subject_name,
                     (SELECT COUNT(*) FROM assessment_questions aq WHERE aq.assessment_id=a.id) AS question_count
+                    ${submittedCol}
              FROM assessments a JOIN subjects sub ON sub.id=a.subject_id
              WHERE a.school_code=$1`;
-  const params: unknown[] = [sc];
 
   if (viewerClasses) {
     if (!viewerClasses.length) return res.json({ assessments: [] });
