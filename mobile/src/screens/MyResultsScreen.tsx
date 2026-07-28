@@ -40,6 +40,13 @@ export default function MyResultsScreen({ route, navigation }: any) {
       } else if (user?.role === 'student') {
         // Fetch own student record first to get id
         const s = await api.get('/students/me');
+        // students.user_id is UNIQUE at the DB level (added specifically to
+        // guarantee this), so more than one row here should be impossible —
+        // this is just a canary in case that's ever somehow bypassed, so it
+        // shows up in logs instead of silently picking [0] with no trace.
+        if (s.data.students?.length > 1) {
+          console.warn('[MyResultsScreen] /students/me returned more than one linked student — using the first.');
+        }
         const myStudent = s.data.students[0];
         if (!myStudent) { setError('No student record linked to your account.'); return; }
         url = `/scores/report/${myStudent.id}`;
@@ -116,41 +123,53 @@ export default function MyResultsScreen({ route, navigation }: any) {
       {/* Scores table */}
       <Card>
         <SectionHeader title="Subject Scores" />
-        {/* Single combined "CA" column (CA1 + CA2) rather than two separate
-            CA1/CA2 columns — the underlying scores still store ca1 and ca2
-            separately (unchanged, so score entry and validation are
-            unaffected), this just documents/presents them as one CA here. */}
-        <View style={styles.tableHeader}>
-          {['Subject','CA','Exam','Total','Grade'].map(h => (
-            <Text key={h} style={[styles.thCell, h === 'Subject' && { flex: 2 }]}>{h}</Text>
-          ))}
-        </View>
-        {scores.map((s: any) => (
-          <View key={s.subject_id} style={styles.tableRow}>
-            <Text style={[styles.tdCell, { flex: 2 }]} numberOfLines={1}>{s.subject_name}</Text>
-            <Text style={styles.tdCell}>{Number(s.ca1) + Number(s.ca2)}</Text>
-            <Text style={styles.tdCell}>{s.exam}</Text>
-            <Text style={[styles.tdCell, { fontWeight: '700' }]}>{s.total}</Text>
-            <GradePill grade={s.grade} />
-          </View>
-        ))}
+        {scores.length === 0 ? (
+          <Empty message="No scores have been entered yet for this term." />
+        ) : (
+          <>
+            {/* Single combined "CA" column (CA1 + CA2) rather than two separate
+                CA1/CA2 columns — the underlying scores still store ca1 and ca2
+                separately (unchanged, so score entry and validation are
+                unaffected), this just documents/presents them as one CA here. */}
+            <View style={styles.tableHeader}>
+              {['Subject','CA','Exam','Total','Grade'].map(h => (
+                <Text key={h} style={[styles.thCell, h === 'Subject' && { flex: 2 }]}>{h}</Text>
+              ))}
+            </View>
+            {scores.map((s: any) => (
+              <View key={s.subject_id} style={styles.tableRow}>
+                <Text style={[styles.tdCell, { flex: 2 }]} numberOfLines={1}>{s.subject_name}</Text>
+                <Text style={styles.tdCell}>{Number(s.ca1) + Number(s.ca2)}</Text>
+                <Text style={styles.tdCell}>{s.exam}</Text>
+                <Text style={[styles.tdCell, { fontWeight: '700' }]}>{s.total}</Text>
+                <GradePill grade={s.grade} />
+              </View>
+            ))}
+          </>
+        )}
       </Card>
 
       {/* Class averages */}
       <Card>
         <SectionHeader title="Class Performance" />
-        {scores.map((s: any) => (
-          <View key={s.subject_id} style={styles.tableRow}>
-            <Text style={[styles.tdCell, { flex: 2 }]} numberOfLines={1}>{s.subject_name}</Text>
-            <Text style={styles.tdCell}>{s.class_average ?? '—'}</Text>
-            <Text style={styles.tdCell}>{s.class_highest ?? '—'}</Text>
-          </View>
-        ))}
-        <View style={[styles.tableHeader, { marginTop: 4 }]}>
-          <Text style={[styles.thCell, { flex: 2 }]}>Subject</Text>
-          <Text style={styles.thCell}>Avg</Text>
-          <Text style={styles.thCell}>Highest</Text>
-        </View>
+        {scores.length === 0 ? (
+          <Empty message="Class performance data will appear once scores are entered." />
+        ) : (
+          <>
+            {scores.map((s: any) => (
+              <View key={s.subject_id} style={styles.tableRow}>
+                <Text style={[styles.tdCell, { flex: 2 }]} numberOfLines={1}>{s.subject_name}</Text>
+                <Text style={styles.tdCell}>{s.class_average ?? '—'}</Text>
+                <Text style={styles.tdCell}>{s.class_highest ?? '—'}</Text>
+              </View>
+            ))}
+            <View style={[styles.tableHeader, { marginTop: 4 }]}>
+              <Text style={[styles.thCell, { flex: 2 }]}>Subject</Text>
+              <Text style={styles.thCell}>Avg</Text>
+              <Text style={styles.thCell}>Highest</Text>
+            </View>
+          </>
+        )}
       </Card>
 
       {/* Remarks */}

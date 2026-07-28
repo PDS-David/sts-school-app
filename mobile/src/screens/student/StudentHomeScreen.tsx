@@ -28,6 +28,11 @@ export default function StudentHomeScreen({ navigation }: any) {
     } catch { /* offline — sections below just show what's cached/empty */ }
     try {
       const s = await api.get('/students/me');
+      // See the matching comment in MyResultsScreen.tsx — students.user_id
+      // is UNIQUE at the DB level, this is just a canary.
+      if (s.data.students?.length > 1) {
+        console.warn('[StudentHomeScreen] /students/me returned more than one linked student — using the first.');
+      }
       const mine = s.data.students?.[0];
       if (mine) {
         const r = await api.get(`/scores/report/${mine.id}`);
