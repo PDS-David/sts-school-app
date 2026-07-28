@@ -134,6 +134,18 @@ CREATE TABLE IF NOT EXISTS students (
   created_at       TIMESTAMPTZ DEFAULT now()
 );
 
+-- One user account should never be linked to more than one student row —
+-- the app already guards this at the API layer (POST /students/:id/link-user
+-- returns 409 if the login is already linked elsewhere), but StudentHomeScreen
+-- and MyResultsScreen both trust /students/me to return at most one row and
+-- silently use students[0] if it doesn't. This closes the gap at the data
+-- layer too, rather than relying solely on that one API-level check.
+-- NULL-safe: Postgres UNIQUE constraints allow any number of NULL user_id
+-- rows (students with no login yet) without conflict — only a real,
+-- non-null duplicate would be rejected.
+ALTER TABLE students DROP CONSTRAINT IF EXISTS students_user_id_key;
+ALTER TABLE students ADD CONSTRAINT students_user_id_key UNIQUE (user_id);
+
 -- ── Parent–Student link ───────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS parent_wards (
   parent_id  UUID REFERENCES users(id) ON DELETE CASCADE,
