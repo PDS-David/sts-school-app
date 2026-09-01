@@ -1,12 +1,40 @@
-// ai.ts — Standalone Gemini AI call hub
+// ai.ts — Gemini AI call hub, with optional shared-agent-service routing
 // ─────────────────────────────────────────────────────────────────────────────
-// Ported from AISchoolonair's server/services/ai.js (2026-07). Zero dependency
-// on that repo — everything it needs (model routing, retry/fallback logic,
-// rate limiting) is self-contained in this one file. Converted to TypeScript
-// only to match this project's convention (all of backend/src is .ts); the
-// logic itself is unchanged from the source.
+// Originally ported from AISchoolonair's server/services/ai.js (2026-07) as a
+// standalone, self-contained file. As of 2026-09, this file can optionally
+// delegate to a SHARED AGENT SERVICE instead of calling Gemini directly, so
+// this app (STS/Brainee) and AISchoolonair can run the exact same agent
+// logic from one place rather than two independently-maintained copies.
 //
-// WHY THIS FILE LOOKS THE WAY IT DOES (read before "cleaning it up"):
+// HOW THE SWITCH WORKS (fully env-driven, no code change to cut over):
+//   - AI_AGENT_SERVICE_URL unset  → this file calls Gemini directly (today's
+//     behavior, unchanged). This is also what happens automatically if the
+//     shared service is set but errors/times out — never breaks Brainee for
+//     a student mid-lesson because of another app's infra.
+//   - AI_AGENT_SERVICE_URL set    → every generate() call is sent to that
+//     service's POST /generate endpoint first; only falls back to direct
+//     Gemini on failure (network error, non-2xx, bad body shape).
+//   - AI_AGENT_SERVICE_KEY        → sent as the `X-Api-Key` header on every
+//     shared-service call. Must match the key configured on the shared
+//     service side. Treat it like any other secret (Render env var, never
+//     committed).
+//
+// CONTRACT THE SHARED SERVICE MUST IMPLEMENT:
+//   POST {AI_AGENT_SERVICE_URL}/generate
+//   Headers: { "Content-Type": "application/json", "X-Api-Key": <key> }
+//   Body:    { "prompt": string, "task": string }
+//   Success: 200 { "text": string }
+//   Failure: any non-2xx status — body is not parsed, triggers local fallback
+//
+// This intentionally mirrors the shape of the local _callGeminiDirect()
+// function below (one prompt + task key in, one trimmed string out) — the
+// remote service can literally be this same routing/fallback/model logic
+// running as its own deployment. generateJSON()'s prompt-wrapping and JSON
+// parsing stay local in both modes, so the service only ever needs to
+// implement one endpoint.
+//
+// WHY THE ROUTING CONFIG BELOW LOOKS THE WAY IT DOES (read before "cleaning
+// it up" — applies to the local/fallback path only):
 //   The routing config and retry/fallback chain below encode hard-won
 //   lessons from real production incidents in the source project — Google
 //   retiring models with little notice, "-latest"/"-preview" aliases
@@ -15,14 +43,16 @@
 //   more failures instead of actually recovering). See the comments on
 //   GEMINI_MODEL_MAP and FALLBACK_CHAIN below before changing either.
 //
-// Public API (unchanged from the source project):
-//   generate(prompt, task, options?) → Promise<string>
+// Public API (unchanged regardless of which mode is active):
+//   generate(prompt, task, options?)     → Promise<string>
+//   generateJSON(prompt, task, options?) → Promise<unknown>
 //
 // BRANDING NOTE (added Pass 22): the mobile app presents every feature built
 // on this hub to end users as "Brainee" — that name exists only in the
-// frontend and in route/response copy, never in task-routing keys or model
-// names here, so this file stays a clean, reusable port regardless of what
-// the product is branded as.
+// frontend and in route/response copy, never in task-routing keys, model
+// names, or the shared-service contract above, so this file (and the shared
+// service it can delegate to) stays a clean, reusable module regardless of
+// what any one product is branded as.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { GoogleGenAI } from '@google/genai';
@@ -30,7 +60,44 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // ═══════════════════════════════════════════════════════════════════════════
-// ROUTING CONFIG
+// SHARED AGENT SERVICE (optional — see header comment for the contract)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const SHARED_SERVICE_TIMEOUT_MS = 15_000;
+
+async function _callSharedService(prompt: string, task: string): Promise<string> {
+  const baseUrl = process.env.AI_AGENT_SERVICE_URL!.replace(/\/+$/, '');
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), SHARED_SERVICE_TIMEOUT_MS);
+
+  try {
+    const res = await fetch(`${baseUrl}/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(process.env.AI_AGENT_SERVICE_KEY ? { 'X-Api-Key': process.env.AI_AGENT_SERVICE_KEY } : {}),
+      },
+      body: JSON.stringify({ prompt, task }),
+      signal: controller.signal,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Shared agent service responded ${res.status}`);
+    }
+
+    const body = (await res.json()) as { text?: unknown };
+    if (typeof body.text !== 'string' || !body.text.trim()) {
+      throw new Error('Shared agent service returned an empty or malformed response');
+    }
+
+    return body.text.trim();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ROUTING CONFIG (local/fallback Gemini path)
 // ═══════════════════════════════════════════════════════════════════════════
 
 // Every task routes to the same model today — this map exists so you can
@@ -72,7 +139,8 @@ const GEMINI_MODEL_MAP: Record<string, string> = {
 const FALLBACK_CHAIN: string[] = ['gemini-2.5-flash-lite'];
 
 // ═══════════════════════════════════════════════════════════════════════════
-// GEMINI CALL + RETRY/FALLBACK
+// GEMINI CALL + RETRY/FALLBACK (direct path — used when no shared service is
+// configured, and as the safety net if the shared service call fails)
 // ═══════════════════════════════════════════════════════════════════════════
 
 let _ai: GoogleGenAI | null = null;
@@ -118,7 +186,7 @@ function _isRetryableError(err: any): boolean {
   );
 }
 
-async function _callGemini(prompt: string, task: string): Promise<string> {
+async function _callGeminiDirect(prompt: string, task: string): Promise<string> {
   const primaryModel = GEMINI_MODEL_MAP[task] || GEMINI_MODEL_MAP.default;
   const modelsToTry  = [primaryModel, ...FALLBACK_CHAIN];
   const ai           = _getAI();
@@ -179,10 +247,31 @@ async function _callGemini(prompt: string, task: string): Promise<string> {
   throw Object.assign(new Error('AI request failed. Please try again.'), { statusCode: 500 });
 }
 
+// Single entry point used by generate() below — picks shared-service vs.
+// direct Gemini, and handles the shared-service-failed-so-fall-back path.
+async function _callAI(prompt: string, task: string): Promise<string> {
+  if (process.env.AI_AGENT_SERVICE_URL) {
+    try {
+      const text = await _callSharedService(prompt, task);
+      return text;
+    } catch (err: any) {
+      console.warn(
+        `[ai.ts] Shared agent service call failed (${err?.message ?? err}) ` +
+        `— falling back to direct Gemini call for this request.`
+      );
+      // fall through to direct call below
+    }
+  }
+  return _callGeminiDirect(prompt, task);
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // OPTIONAL REDIS RATE LIMITING — fully fail-open
 // ═══════════════════════════════════════════════════════════════════════════
 // Caps a user to RATE_LIMIT_MAX requests per RATE_LIMIT_WINDOW seconds.
+// Applies regardless of shared-service vs. direct mode — this protects THIS
+// app's own backend/users, independent of whatever the shared service does
+// on its own side.
 //
 // This is entirely optional and safe to ignore if this project doesn't use
 // Redis:
@@ -278,7 +367,7 @@ function _logUsage({ task, response, userId }: { task: string; response: string;
   const outputTokens = Math.round(response.length / 4);
   const log: Record<string, unknown> = {
     feature:      task,
-    provider:     'gemini',
+    provider:     process.env.AI_AGENT_SERVICE_URL ? 'shared-agent-service' : 'gemini',
     outputTokens,
     timestamp:    new Date().toISOString(),
   };
@@ -307,6 +396,11 @@ export interface GenerateOptions {
  * plain Error (no special .statusCode) if the response isn't valid JSON, so
  * callers can tell "Brainee is down" (from generate()'s own thrown errors)
  * apart from "Brainee answered, but not in the shape we asked for".
+ *
+ * Works unchanged in both shared-service and direct-Gemini mode — the
+ * JSON-instruction wrapping and parsing below happen locally either way, so
+ * the shared service only ever needs to implement the plain generate()
+ * contract.
  */
 export async function generateJSON(
   prompt: string,
@@ -332,7 +426,8 @@ export async function generateJSON(
  * @param task             Routing key — see GEMINI_MODEL_MAP. Any key not
  *                          listed there uses 'default'.
  * @param options
- * @returns                Trimmed text response from Gemini.
+ * @returns                Trimmed text response from Gemini (or the shared
+ *                          agent service, when AI_AGENT_SERVICE_URL is set).
  * @throws Error            .statusCode is 429 (rate limited), 503 (AI
  *                          temporarily unavailable — safe to retry), or 500
  *                          (non-retryable error).
@@ -350,7 +445,7 @@ export async function generate(
     throw err;
   }
 
-  const text = await _callGemini(prompt, task);
+  const text = await _callAI(prompt, task);
 
   _logUsage({ task, response: text, userId });
 
