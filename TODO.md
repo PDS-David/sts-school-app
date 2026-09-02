@@ -248,19 +248,18 @@
 > default. `tsc --noEmit` clean on backend; mobile import-resolution clean
 > (60 files, 0 unresolved).
 >
-> **Found, not fixed — smaller inconsistency worth a decision:**
-> `POST /learning/questions` always uses `req.user!.school_code` and ignores
-> any `school_code` in the request body — unlike `POST /assessments`, which
-> already has an explicit `(school_code && role==='admin') ? school_code :
-> user.school_code` branch for exactly this reason. Since admin accounts
-> have `school_code: null`, any question an admin creates directly ends up
-> with `school_code: null` — invisible to every teacher's `GET /questions`
-> (which filters by their own non-null school_code). In practice
-> `questions.write`/`assessments.create` are teacher-only permissions per
-> `rbac.ts` today, so this likely isn't hit by real usage, but if admin is
-> ever expected to author questions directly, this route silently breaks
-> that. Left as-is pending confirmation of whether admin-authored questions
-> are an intended use case.
+> **Fixed:** `POST /learning/questions` used to always use
+> `req.user!.school_code` and ignore any `school_code` in the request body —
+> unlike `POST /assessments`, which already had an explicit
+> `(school_code && role==='admin') ? school_code : user.school_code` branch
+> for exactly this reason. Since admin accounts have `school_code: null`,
+> any question an admin created directly ended up with `school_code: null`
+> — invisible to every teacher's `GET /questions` (which filters by their
+> own non-null school_code). `questions.write` is admin-only per `rbac.ts`
+> (see the comment there), so admin-authored questions are exactly the
+> intended use case this route was breaking. Now brought in line with
+> `/materials` and `/assessments`: accepts an explicit `school_code` in the
+> body when the caller is admin.
 
 > **Update 2026-07-09 (Pass 1 — Auth & session):** QA plan resumed at Pass 1,
 > tested live against all 4 roles. One bug found and fixed: malformed JSON in
@@ -268,15 +267,25 @@
 > the earlier crash-safety fix held — but mislabeled a client error as a
 > server fault). Fixed in `backend/src/index.ts`'s global error handler.
 >
-> One real finding **not yet fixed, pending a decision**: deactivating a user
-> (`is_active: false`) or letting `access_expires_at` lapse only takes effect
-> at that user's *next login or token refresh* — `requireAuth` checks the
-> JWT's signature/expiry but never re-checks `is_active`/`access_expires_at`
-> against the DB per-request, so an already-issued access token keeps working
+> **Fixed (see Pass 4 note below):** the finding directly below — that
+> deactivating a user or letting `access_expires_at` lapse only took effect
+> at next login/refresh — has since been closed. `requireAuth` in
+> `backend/src/middleware/auth.ts` now does one indexed DB lookup per
+> request (`is_active`, `access_expires_at`) and rejects immediately with a
+> `401` if either check fails, so an already-issued access token no longer
+> keeps working after an admin deactivates the account. Left here,
+> struck through in spirit rather than deleted, so the original finding and
+> its tradeoff discussion stay visible for context.
+>
+> One real finding, now fixed: deactivating a user (`is_active: false`) or
+> letting `access_expires_at` lapse used to only take effect at that user's
+> *next login or token refresh* — `requireAuth` checked the JWT's
+> signature/expiry but never re-checked `is_active`/`access_expires_at`
+> against the DB per-request, so an already-issued access token kept working
 > for up to its full remaining lifetime (`JWT_EXPIRES_IN`, 15m default) after
-> an admin deactivates the account. Verified live. Fixing it means adding a
-> DB lookup to `requireAuth` on every request — a latency/DB-load tradeoff in
-> exchange for immediate revocation. Left as-is pending a product decision.
+> an admin deactivated the account. Verified live at the time. Fixing it
+> meant adding a DB lookup to `requireAuth` on every request — a
+> latency/DB-load tradeoff accepted in exchange for immediate revocation.
 > below (was: `attendance.ts`'s `/class-records/:student_id/:term_id` had no
 > ownership check, and RBAC only granted `classRecord.read` to teacher/admin).
 > Fix deliberately did **not** just add `classRecord.read` to student/parent —

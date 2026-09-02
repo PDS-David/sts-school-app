@@ -105,7 +105,7 @@ router.get('/questions', requirePerm('questions.read'), async (req, res) => {
 });
 
 router.post('/questions', requirePerm('questions.write'), async (req, res) => {
-  const { subject_id, class_name, term_id, type, stem, options, correct_keys, marks } = req.body;
+  const { subject_id, class_name, term_id, type, stem, options, correct_keys, marks, school_code } = req.body;
 
   // Added in Pass 19: the same scoping gap as /materials and /assessments
   // (flagged as a follow-up when those two were fixed in Pass 17, since a
@@ -117,10 +117,17 @@ router.post('/questions', requirePerm('questions.write'), async (req, res) => {
   const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
+  // Same admin-NULL-school_code fix already applied to /materials and
+  // /assessments: admin accounts have school_code=null, so always writing
+  // req.user.school_code silently created questions invisible to every
+  // teacher's GET /questions (which filters by their own non-null
+  // school_code). Accept an explicit school_code in the body for admin only.
+  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+
   const { rows } = await query(
     `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
      VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-    [req.user!.school_code, subject_id, class_name ?? null, term_id ?? null,
+    [sc, subject_id, class_name ?? null, term_id ?? null,
      type ?? 'mcq', stem, JSON.stringify(options ?? []), correct_keys ?? [], marks ?? 1, req.user!.id],
   );
   return res.status(201).json({ question: rows[0] });

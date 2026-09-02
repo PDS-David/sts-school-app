@@ -146,12 +146,12 @@ router.post('/hint', requireRole('student'), async (req, res) => {
 });
 
 // ── POST /ai/generate-questions ─────────────────────────────────────────────
-// Teacher/admin only. Drafts candidate questions for the teacher to review —
-// nothing here is saved to the question bank automatically. A teacher who
-// wants to keep a draft still calls the existing POST /learning/questions
-// themselves, exactly as if they'd typed it in by hand. This keeps a human
-// in the loop before anything Brainee writes becomes a real question a
-// student can be assessed on.
+// Admin only (questions.write is deliberately not granted to 'teacher' — see
+// rbac.ts). Drafts candidate questions for admin to review — nothing here is
+// saved to the question bank automatically. Keeping a draft still requires
+// calling the existing POST /learning/questions, exactly as if it had been
+// typed in by hand. This keeps a human in the loop before anything Brainee
+// writes becomes a real question a student can be assessed on.
 router.post('/generate-questions', requirePerm('questions.write'), async (req, res) => {
   const { subject, class_name, topic, type, count } = req.body as {
     subject?: string; class_name?: string; topic?: string;
