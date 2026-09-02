@@ -167,13 +167,25 @@
 > HTTP requests against a running backend — including a full publish →
 > fetch-correct-questions → submit → correctly-auto-graded cycle.
 >
+> **Resolved in later passes (17/19/20):** the item below — teachers writing
+> materials/questions/assessments for any class in their own school, not
+> just their `assigned_class` — turned out to need exactly the product
+> decision this note asked for, and got one: a teacher may act on their
+> `assigned_class` (any subject) **or** their assigned subject(s) (any
+> class), covering both class teachers and subject specialists who teach
+> across classes. Built via `teacher_subjects` (a proper many-to-many table,
+> migrated from the old single `assigned_subject_id` column — see
+> `schema.sql`) and enforced consistently by `checkTeacherContentScope()` in
+> `backend/src/utils/scope.ts`, applied to `POST /materials`,
+> `POST /questions`, `POST /assessments`, and `PUT /assessments/:id/status`.
+> Left the original note below for context.
+>
 > **One item flagged, not fixed — needs a product decision:** teachers can
 > write materials/questions/assessments for *any* class in their own school,
 > not just their `assigned_class` (unlike scores/attendance/class-records/
 > weekly-efforts, locked down in Pass 4). Might be intentional if a teacher
-> covers multiple classes — but there's currently no schema concept of that,
-> same ambiguity as the open `assigned_subject_id` UI gap below. See
-> `CHANGELOG.md` for full detail.
+> covers multiple classes — but there's currently no schema concept of that.
+> See `CHANGELOG.md` for full detail.
 
 
 > **Update 2026-07-09 (Pass 5 — Attendance & class records):** Found and
