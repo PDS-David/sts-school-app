@@ -351,12 +351,11 @@ CREATE TABLE IF NOT EXISTS topics (
   -- The "standard assessment" Brainee builds for this topic, generated once
   -- and reused for every student who completes it — not one-per-student.
   -- Points at a real row in `assessments`, built from real `questions` rows
-  -- exactly like an admin-authored assessment. Created with status='draft',
-  -- which (per the existing rule in GET /learning/assessments) already
-  -- makes it invisible to students/parents until an admin reviews it and
-  -- flips it to 'open' via the existing PUT /assessments/:id/status route —
-  -- no new approval mechanism needed, this reuses the one that already
-  -- gates every other AI-drafted assessment.
+  -- exactly like an admin-authored assessment. Created status='open' —
+  -- immediately usable, no per-item admin review. The only approval gate is
+  -- account-level (is_active/access_expires_at, enforced by requireAuth):
+  -- admin approves a student's account access once, not every study
+  -- summary/assessment Brainee produces afterward.
   generated_assessment_id UUID REFERENCES assessments(id) ON DELETE SET NULL,
   created_by  UUID REFERENCES users(id),
   created_at  TIMESTAMPTZ DEFAULT now()

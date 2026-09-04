@@ -205,13 +205,13 @@ router.delete('/topics/:id', requirePerm('topics.write'), async (req, res) => {
 //     and /ai/notes)
 //   - the topic's "standard assessment" (generated once per topic, reusing
 //     real questions/assessments/assessment_questions rows exactly like an
-//     admin-authored assessment). Created with status='draft', which the
-//     existing rule in GET /learning/assessments already makes invisible to
-//     students/parents — so a student has no access to it until an admin
-//     reviews and opens it via the existing PUT /assessments/:id/status
-//     route. This reuses that existing gate rather than inventing a new
-//     approval mechanism, matching the same policy already applied to every
-//     other AI-drafted question in this app.
+//     admin-authored assessment). Created status='open' — immediately
+//     usable, no per-item admin review. The only approval gate here is
+//     account-level: a student can only ever reach this route if their
+//     account is_active and unexpired (requireAuth already enforces that on
+//     every request), matching the explicit decision that admin approves
+//     account access once, not every study summary/assessment Brainee
+//     produces afterward.
 router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, res) => {
   const user = req.user!;
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
@@ -263,14 +263,16 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   }
 
   // Standard assessment — generate once per topic, reusing real infra.
+  // Status is 'open' immediately: no per-item admin approval, per explicit
+  // decision (account-level access is the only gate — see comment above).
   // created_by is intentionally NULL: Brainee generated this, no human
   // authored it, and the calling student shouldn't be attributed as the
   // author of a bank item on an admin-facing assessment.
   // NOTE: two students completing the same never-before-completed topic in
   // quick succession could both pass the `!topic.generated_assessment_id`
-  // check before either write lands, producing two draft assessments for
+  // check before either write lands, producing two open assessments for
   // one topic. Low-probability and low-harm (admin would just see a
-  // duplicate draft to discard) — not worth a DB-level lock for this pass.
+  // duplicate to discard) — not worth a DB-level lock for this pass.
   let assessment_status: string | null = null;
   if (!topic.generated_assessment_id) {
     try {
@@ -295,7 +297,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
 
       const { rows: aRows } = await query(
         `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by)
-         VALUES($1,$2,$3,$4,$5,$6,'draft',NULL) RETURNING id`,
+         VALUES($1,$2,$3,$4,$5,$6,'open',NULL) RETURNING id`,
         [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
          `${topic.title} — Topic Assessment`, questionIds.length],
       );
@@ -309,7 +311,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       }
 
       await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2', [assessmentId, topic.id]);
-      assessment_status = 'draft';
+      assessment_status = 'open';
     } catch {
       assessment_status = null;
     }
@@ -323,11 +325,9 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     summary,
     practice_questions,
     assessment_status,
-    note: assessment_status === 'draft'
-      ? 'A standard assessment for this topic has been drafted and is awaiting admin approval before you can take it.'
-      : assessment_status === 'open'
-        ? 'A standard assessment for this topic is available — check Assessments.'
-        : undefined,
+    note: assessment_status === 'open'
+      ? 'A standard assessment for this topic is available now — check Assessments.'
+      : undefined,
   });
 });
 
