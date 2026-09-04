@@ -22,13 +22,19 @@ const SECONDARY_SUBJECTS = [
   'Agricultural Science', 'Technical Drawing', 'Physical & Health Education',
 ];
 
+// Renamed 2026-09: 'JSS1'->'JSS 1' (space), 'SS1'->'SS 1' (space, for
+// consistency with JSS), 'Grade 1'..'Grade 6' -> 'PRY 1'..'PRY 6', to match
+// the naming used in the school's actual curriculum source documents. Any
+// database seeded before this change needs backend/src/db/renameClassNaming.ts
+// run once to bring existing rows in line — this array only affects new
+// seeds, not existing class_name/assigned_class values already in the DB.
 const PRIMARY_CLASSES = [
   'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
-  'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6',
+  'PRY 1', 'PRY 2', 'PRY 3', 'PRY 4', 'PRY 5', 'PRY 6',
 ];
 
 const SECONDARY_CLASSES = [
-  'JSS1', 'JSS2', 'JSS3', 'SS1', 'SS2', 'SS3',
+  'JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3',
 ];
 
 async function seed() {
@@ -87,7 +93,7 @@ async function seed() {
   const teacherHash = await bcrypt.hash('Teacher@1234', 10);
   await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,must_change_pw)
-     VALUES('teacher1',$1,'teacher','Demo Class Teacher','secondary','JSS1',TRUE)
+     VALUES('teacher1',$1,'teacher','Demo Class Teacher','secondary','JSS 1',TRUE)
      ON CONFLICT(username) DO UPDATE SET password_hash=$1`,
     [teacherHash],
   );

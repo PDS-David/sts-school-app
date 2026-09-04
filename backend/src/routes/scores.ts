@@ -77,7 +77,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
     // admin Class Summary/ranking screen) had no school scoping at all for
     // admin, unlike the teacher branch above. Since class names aren't
-    // unique across schools ("JSS1" can exist in more than one school), an
+    // unique across schools ("JSS 1" can exist in more than one school), an
     // admin viewing one school's class ranking would silently pick up scores
     // from every other school's same-named class too. Admin has no
     // school_code of their own (by design — they oversee every school), so

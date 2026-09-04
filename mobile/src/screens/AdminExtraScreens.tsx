@@ -42,7 +42,7 @@ export function ClassSummaryScreen() {
     if (!selClass || !selTerm) return;
     try {
       // school_code is required here, not optional — class names aren't
-      // unique across schools ("JSS1" can exist in more than one), so
+      // unique across schools ("JSS 1" can exist in more than one), so
       // without this an admin viewing one school's ranking could silently
       // pick up another school's same-named class too. See the matching
       // fix in backend/src/routes/scores.ts (GET /).

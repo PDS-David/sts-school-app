@@ -124,7 +124,7 @@ export default function MaterialsScreen({ route }: any) {
           <SectionHeader title="Upload Material" />
           <Input label="Title" value={form.title} onChangeText={v => setForm(f => ({ ...f, title: v }))} />
           <Input label="URL (Google Drive / YouTube / etc.)" value={form.url} onChangeText={v => setForm(f => ({ ...f, url: v }))} autoCapitalize="none" />
-          <Input label="Class (optional)" value={form.class_name} onChangeText={v => setForm(f => ({ ...f, class_name: v }))} placeholder="e.g. JSS1" />
+          <Input label="Class (optional)" value={form.class_name} onChangeText={v => setForm(f => ({ ...f, class_name: v }))} placeholder="e.g. JSS 1" />
           <Text style={styles.lbl}>Subject</Text>
           <View style={styles.pickerWrap}>
             <Picker selectedValue={form.subject_id} onValueChange={v => setForm(f => ({ ...f, subject_id: v }))}>
