@@ -95,18 +95,27 @@ router.post('/users', async (req, res) => {
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry } = req.body;
+  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body;
   // clear_expiry: true lets the admin explicitly remove an expiry (grant indefinite access)
   // without that being confused with "field simply not sent" (which COALESCE would ignore).
+  //
+  // revocation_reason: optional note admin attaches when deactivating a user
+  // or ending their access — surfaced back to the user at login/refresh and
+  // in the forgot-password flow instead of a generic "contact admin"
+  // message. Auto-cleared whenever this same request reactivates the user
+  // (is_active=true), since a reason for a revocation that's just been
+  // undone is stale and would otherwise keep showing on their next login.
+  const reactivating = is_active === true;
   const { rows } = await query(
     `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
        school_code=COALESCE($3,school_code), assigned_class=COALESCE($4,assigned_class),
        is_active=COALESCE($5,is_active),
        phone=COALESCE($6,phone), email=COALESCE($7,email),
-       access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END
-     WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at`,
+       access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
+       revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
+     WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
     [full_name, role, school_code, assigned_class, is_active, phone, email,
-     access_expires_at ?? null, !!clear_expiry, req.params.id],
+     access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
   );
   if (!rows[0]) return res.status(404).json({ error: 'User not found' });
   if (Array.isArray(assigned_subject_ids)) {

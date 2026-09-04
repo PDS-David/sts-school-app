@@ -25,14 +25,22 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   // (JWT_EXPIRES_IN) after an admin deactivated them. One indexed lookup per
   // request to close that window.
   const { rows } = await query(
-    'SELECT is_active, access_expires_at FROM users WHERE id=$1', [user.id],
+    'SELECT is_active, access_expires_at, revocation_reason FROM users WHERE id=$1', [user.id],
   );
   const dbUser = rows[0];
   if (!dbUser || !dbUser.is_active) {
-    return res.status(401).json({ error: 'Account is deactivated. Contact the school admin.' });
+    return res.status(401).json({
+      error: dbUser?.revocation_reason
+        ? `Account is deactivated: ${dbUser.revocation_reason}. Contact the school admin.`
+        : 'Account is deactivated. Contact the school admin.',
+    });
   }
   if (dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
-    return res.status(401).json({ error: 'Your access period has ended. Contact the school admin to reactivate your account.' });
+    return res.status(401).json({
+      error: dbUser.revocation_reason
+        ? `Your access period has ended: ${dbUser.revocation_reason}. Contact the school admin to reactivate your account.`
+        : 'Your access period has ended. Contact the school admin to reactivate your account.',
+    });
   }
 
   req.user = user;

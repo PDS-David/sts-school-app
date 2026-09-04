@@ -4,6 +4,8 @@ import type { Role } from '../types/index.js';
 export const permissions: Record<Role, string[]> = {
   student: [
     'materials.read',
+    'topics.read',
+    'topics.complete',    // marking a topic done, and getting Brainee's summary/practice/assessment for it
     'assessments.take',
     'assessments.read',
     'results.read',
@@ -13,6 +15,7 @@ export const permissions: Record<Role, string[]> = {
   ],
   parent: [
     'materials.read',
+    'topics.read',
     'results.read',
     'messages.read',
     'messages.write',
@@ -32,6 +35,7 @@ export const permissions: Record<Role, string[]> = {
   // gave a student. Do not add any of these back for 'teacher'.
   teacher: [
     'materials.read',    'materials.write',
+    'topics.read',       'topics.write',
     'grades.read',       'grades.write',        'grades.export',
     'students.read',
     'weeklyEfforts.read','weeklyEfforts.write','weeklyEfforts.feedback',

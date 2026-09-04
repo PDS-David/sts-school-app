@@ -65,6 +65,28 @@ CREATE TABLE IF NOT EXISTS users (
 -- Safe to re-run: adds the column on databases created before this field existed.
 ALTER TABLE users ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
 
+-- ── Self-service password recovery ──────────────────────────────────────────
+-- No SMTP/SMS delivery channel is relied on for this (email is optional on
+-- this table and no SMS gateway is integrated), so recovery is a
+-- security-question/answer pair the user sets themselves, checked without
+-- requiring a live session. security_answer_hash is bcrypt-hashed exactly
+-- like password_hash, never stored in plaintext. must_set_security_question
+-- defaults TRUE so both new and pre-existing accounts are prompted to set
+-- one on their next login. The fail-count/locked-until pair rate-limits
+-- guessing the answer independently of the broader per-IP /auth limiter.
+ALTER TABLE users ADD COLUMN IF NOT EXISTS security_question TEXT;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS security_answer_hash TEXT;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS must_set_security_question BOOLEAN DEFAULT TRUE;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS security_answer_fail_count INT DEFAULT 0;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS security_answer_locked_until TIMESTAMPTZ;
+
+-- ── Admin-facing revocation reason ──────────────────────────────────────────
+-- Optional free-text note admin attaches when deactivating a user or ending
+-- their access early. Surfaced back to the user at login/refresh and in the
+-- forgot-password flow instead of a generic "contact admin" message, and
+-- kept for admin's own audit trail. NULL means no reason was given.
+ALTER TABLE users ADD COLUMN IF NOT EXISTS revocation_reason TEXT;
+
 -- NOTE: the initial admin account is created by `npx tsx src/db/seed.ts`
 -- (which hashes a real password with bcrypt), not here. An earlier version of
 -- this file inserted a placeholder admin row with a non-functional password
@@ -302,6 +324,53 @@ CREATE TABLE IF NOT EXISTS submissions (
   started_at    TIMESTAMPTZ,
   submitted_at  TIMESTAMPTZ,
   UNIQUE(assessment_id, student_id)
+);
+
+-- ── Topics ───────────────────────────────────────────────────────────────────
+-- Deliberately just rows in a table, created by admin/teacher — same
+-- subject/class/term scoping as materials/questions/assessments above, and
+-- governed by the same checkTeacherContentScope() rule. No document-parsing
+-- ingestion pipeline: "topic" already existed in this app as a free-text
+-- string typed into Brainee's explain/notes/generate-questions prompts (see
+-- routes/ai.ts) and into CreateAssessmentScreen's draft-topic field; this
+-- table just gives that string a persistent identity so completion can be
+-- tracked against it.
+CREATE TABLE IF NOT EXISTS topics (
+  id          SERIAL PRIMARY KEY,
+  school_code TEXT REFERENCES schools(code) ON DELETE CASCADE,
+  subject_id  INT  REFERENCES subjects(id) ON DELETE CASCADE,
+  class_name  TEXT,
+  term_id     INT  REFERENCES terms(id) ON DELETE SET NULL,
+  title       TEXT NOT NULL,
+  description TEXT,
+  -- Brainee's study summary, generated once (on the first student to
+  -- complete this topic) and cached here rather than regenerated per
+  -- student — it's the same canonical content for everyone taking this
+  -- topic, unlike the practice exercises below.
+  summary     TEXT,
+  -- The "standard assessment" Brainee builds for this topic, generated once
+  -- and reused for every student who completes it — not one-per-student.
+  -- Points at a real row in `assessments`, built from real `questions` rows
+  -- exactly like an admin-authored assessment. Created with status='draft',
+  -- which (per the existing rule in GET /learning/assessments) already
+  -- makes it invisible to students/parents until an admin reviews it and
+  -- flips it to 'open' via the existing PUT /assessments/:id/status route —
+  -- no new approval mechanism needed, this reuses the one that already
+  -- gates every other AI-drafted assessment.
+  generated_assessment_id UUID REFERENCES assessments(id) ON DELETE SET NULL,
+  created_by  UUID REFERENCES users(id),
+  created_at  TIMESTAMPTZ DEFAULT now()
+);
+
+-- One row per student per topic they've marked done. No per-student content
+-- lives here (see topics.summary above for why) — this table is purely the
+-- completion record itself.
+CREATE TABLE IF NOT EXISTS topic_completions (
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  topic_id     INT  REFERENCES topics(id) ON DELETE CASCADE,
+  student_id   UUID REFERENCES students(id) ON DELETE CASCADE,
+  completed_at TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(topic_id, student_id)
 );
 
 -- ── Messaging ─────────────────────────────────────────────────────────────────

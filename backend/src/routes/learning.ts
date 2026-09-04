@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { query } from '../db/pool.js';
 import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
-import { generateJSON } from '../utils/ai.js';
+import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 
 const router = Router();
@@ -87,6 +87,248 @@ router.delete('/materials/:id', requirePerm('materials.write'), async (req, res)
   );
   if (!rows[0]) return res.status(404).json({ error: 'Material not found' });
   return res.json({ ok: true });
+});
+
+// ════════════════════════════════════════════════════════
+// TOPICS
+// ════════════════════════════════════════════════════════
+
+router.get('/topics', requirePerm('topics.read'), async (req, res) => {
+  const { subject_id, class_name, term_id, school_code } = req.query as Record<string, string>;
+  const user = req.user!;
+  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+
+  const viewerClasses = await resolveViewerClassNames(user);
+
+  let sql = `SELECT t.*, sub.name AS subject_name
+             FROM topics t
+             JOIN subjects sub ON sub.id=t.subject_id
+             WHERE t.school_code=$1`;
+  const params: unknown[] = [sc];
+
+  if (viewerClasses) {
+    if (!viewerClasses.length) return res.json({ topics: [] });
+    params.push(viewerClasses);
+    sql += ` AND (t.class_name = ANY($${params.length}) OR t.class_name IS NULL)`;
+  } else if (class_name) {
+    params.push(class_name); sql += ` AND t.class_name=$${params.length}`;
+  }
+
+  if (subject_id) { params.push(subject_id); sql += ` AND t.subject_id=$${params.length}`; }
+  if (term_id)    { params.push(term_id);    sql += ` AND t.term_id=$${params.length}`; }
+  sql += ' ORDER BY t.created_at DESC';
+
+  const { rows } = await query(sql, params);
+
+  // For a student, also report whether they've completed each topic —
+  // mirrors the already_submitted pattern on GET /assessments above.
+  if (user.role === 'student' && rows.length) {
+    const { rows: stRows } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
+    const studentId = stRows[0]?.id;
+    if (studentId) {
+      const { rows: compRows } = await query(
+        'SELECT topic_id FROM topic_completions WHERE student_id=$1 AND topic_id=ANY($2)',
+        [studentId, rows.map((r: any) => r.id)],
+      );
+      const completedIds = new Set(compRows.map((r: any) => r.topic_id));
+      return res.json({ topics: rows.map((r: any) => ({ ...r, completed: completedIds.has(r.id) })) });
+    }
+  }
+
+  return res.json({ topics: rows });
+});
+
+router.post('/topics', requirePerm('topics.write'), async (req, res) => {
+  const { subject_id, class_name, term_id, title, description, school_code } = req.body;
+  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+
+  // Same rule as /materials and /questions above — a teacher may only add a
+  // topic for their own assigned_class (any subject) or their own assigned
+  // subject(s) (any class in their school).
+  const scopeError = await checkTeacherContentScope(req.user!, { class_name: class_name ?? null, subject_id });
+  if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
+
+  if (!title?.trim()) return res.status(400).json({ error: 'title is required' });
+
+  const { rows } = await query(
+    `INSERT INTO topics(school_code,subject_id,class_name,term_id,title,description,created_by)
+     VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+    [sc, subject_id, class_name ?? null, term_id ?? null, title.trim(), description ?? null, req.user!.id],
+  );
+  return res.status(201).json({ topic: rows[0] });
+});
+
+router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
+  const { title, description, subject_id, class_name, term_id } = req.body;
+  const { rows: existingRows } = await query('SELECT * FROM topics WHERE id=$1', [req.params.id]);
+  const existing = existingRows[0];
+  if (!existing) return res.status(404).json({ error: 'Topic not found' });
+
+  // Scope-check against the topic's (possibly updated) subject/class — same
+  // rule as creation, so a teacher can't edit their way into a class/subject
+  // they don't teach.
+  const scopeError = await checkTeacherContentScope(req.user!, {
+    class_name: class_name ?? existing.class_name,
+    subject_id: subject_id ?? existing.subject_id,
+  });
+  if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
+
+  const { rows } = await query(
+    `UPDATE topics SET title=COALESCE($1,title), description=COALESCE($2,description),
+       subject_id=COALESCE($3,subject_id), class_name=COALESCE($4,class_name),
+       term_id=COALESCE($5,term_id)
+     WHERE id=$6 RETURNING *`,
+    [title, description, subject_id, class_name, term_id, req.params.id],
+  );
+  return res.json({ topic: rows[0] });
+});
+
+router.delete('/topics/:id', requirePerm('topics.write'), async (req, res) => {
+  const user = req.user!;
+  // Same admin-bypasses-created_by rule as /materials above.
+  const { rows } = await query(
+    user.role === 'admin'
+      ? 'DELETE FROM topics WHERE id=$1 RETURNING id'
+      : 'DELETE FROM topics WHERE id=$1 AND created_by=$2 RETURNING id',
+    user.role === 'admin' ? [req.params.id] : [req.params.id, user.id],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'Topic not found' });
+  return res.json({ ok: true });
+});
+
+// ── POST /topics/:id/complete (student) ─────────────────────────────────────
+// Marks the topic done for the calling student, then has Brainee produce:
+//   - a study summary (generated once per topic, cached on topics.summary —
+//     the same canonical content for every student, not personalized)
+//   - fresh practice exercises (generated every call, never persisted — same
+//     ephemeral, not-saved-to-the-bank pattern already used by /ai/explain
+//     and /ai/notes)
+//   - the topic's "standard assessment" (generated once per topic, reusing
+//     real questions/assessments/assessment_questions rows exactly like an
+//     admin-authored assessment). Created with status='draft', which the
+//     existing rule in GET /learning/assessments already makes invisible to
+//     students/parents — so a student has no access to it until an admin
+//     reviews and opens it via the existing PUT /assessments/:id/status
+//     route. This reuses that existing gate rather than inventing a new
+//     approval mechanism, matching the same policy already applied to every
+//     other AI-drafted question in this app.
+router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, res) => {
+  const user = req.user!;
+  const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
+  const student = stRows[0];
+  if (!student) return res.status(404).json({ error: 'No student record for this user' });
+
+  const { rows: tRows } = await query('SELECT * FROM topics WHERE id=$1', [req.params.id]);
+  const topic = tRows[0];
+  if (!topic) return res.status(404).json({ error: 'Topic not found' });
+  if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
+    return res.status(403).json({ error: 'This topic is not available to you' });
+  }
+
+  await query(
+    `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
+     ON CONFLICT (topic_id, student_id) DO NOTHING`,
+    [topic.id, student.id],
+  );
+
+  // Study summary — generate once, cache on the topic row. A failure here
+  // never blocks the completion itself or the practice/assessment below.
+  let summary: string | null = topic.summary;
+  if (!summary) {
+    try {
+      summary = await generate(
+        `Write short, clear study notes on "${topic.title}" for a student learning it ` +
+        `for the first time. Keep it focused and easy to revise from.`,
+        'notes',
+        { userId: user.id, role: user.role },
+      );
+      await query('UPDATE topics SET summary=$1 WHERE id=$2', [summary, topic.id]);
+    } catch {
+      summary = null;
+    }
+  }
+
+  // Practice exercises — fresh every call, never persisted.
+  let practice_questions: unknown = [];
+  try {
+    practice_questions = await generateJSON(
+      `Draft 3 multiple-choice practice question(s) on the topic "${topic.title}". ` +
+      `Return a JSON array where each item has exactly this shape: ` +
+      `{"stem": string, "options": [{"key":"A","text":string}, {"key":"B","text":string}, {"key":"C","text":string}, {"key":"D","text":string}], "correct_keys": [string]}`,
+      'generate-questions',
+      { userId: user.id, role: user.role },
+    );
+  } catch {
+    practice_questions = [];
+  }
+
+  // Standard assessment — generate once per topic, reusing real infra.
+  // created_by is intentionally NULL: Brainee generated this, no human
+  // authored it, and the calling student shouldn't be attributed as the
+  // author of a bank item on an admin-facing assessment.
+  // NOTE: two students completing the same never-before-completed topic in
+  // quick succession could both pass the `!topic.generated_assessment_id`
+  // check before either write lands, producing two draft assessments for
+  // one topic. Low-probability and low-harm (admin would just see a
+  // duplicate draft to discard) — not worth a DB-level lock for this pass.
+  let assessment_status: string | null = null;
+  if (!topic.generated_assessment_id) {
+    try {
+      const drafts = await generateJSON(
+        `Draft 5 multiple-choice question(s) on the topic "${topic.title}". ` +
+        `Return a JSON array where each item has exactly this shape: ` +
+        `{"stem": string, "options": [{"key":"A","text":string}, {"key":"B","text":string}, {"key":"C","text":string}, {"key":"D","text":string}], "correct_keys": [string], "marks": number}`,
+        'generate-questions',
+        { userId: user.id, role: user.role },
+      ) as Array<{ stem: string; options: unknown; correct_keys: string[]; marks?: number }>;
+
+      const questionIds: number[] = [];
+      for (const d of drafts) {
+        const { rows: qRows } = await query(
+          `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
+           VALUES($1,$2,$3,$4,'mcq',$5,$6,$7,$8,NULL) RETURNING id`,
+          [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
+           d.stem, JSON.stringify(d.options ?? []), d.correct_keys ?? [], d.marks ?? 1],
+        );
+        questionIds.push(qRows[0].id);
+      }
+
+      const { rows: aRows } = await query(
+        `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by)
+         VALUES($1,$2,$3,$4,$5,$6,'draft',NULL) RETURNING id`,
+        [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
+         `${topic.title} — Topic Assessment`, questionIds.length],
+      );
+      const assessmentId = aRows[0].id;
+
+      for (let i = 0; i < questionIds.length; i++) {
+        await query(
+          `INSERT INTO assessment_questions(assessment_id, question_id, points, order_index) VALUES($1,$2,1,$3)`,
+          [assessmentId, questionIds[i], i],
+        );
+      }
+
+      await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2', [assessmentId, topic.id]);
+      assessment_status = 'draft';
+    } catch {
+      assessment_status = null;
+    }
+  } else {
+    const { rows: existingA } = await query('SELECT status FROM assessments WHERE id=$1', [topic.generated_assessment_id]);
+    assessment_status = existingA[0]?.status ?? null;
+  }
+
+  return res.json({
+    ok: true,
+    summary,
+    practice_questions,
+    assessment_status,
+    note: assessment_status === 'draft'
+      ? 'A standard assessment for this topic has been drafted and is awaiting admin approval before you can take it.'
+      : assessment_status === 'open'
+        ? 'A standard assessment for this topic is available — check Assessments.'
+        : undefined,
+  });
 });
 
 // ════════════════════════════════════════════════════════
