@@ -43,11 +43,17 @@ const TILES: Record<string, DashTile[]> = {
     { icon: 'create',         label: 'Enter Scores',   screen: 'ScoreEntry',   color: '#E65100' },
     { icon: 'calendar',       label: 'Terms',          screen: 'TermsMgmt',    color: '#827717' },
     { icon: 'list',           label: 'Subjects',       screen: 'SubjectsMgmt', color: '#00838F' },
-    { icon: 'receipt',        label: 'Finance',        screen: 'Finance',      color: '#4E342E' },
     { icon: 'chatbubbles',    label: 'Messages',       screen: 'Messages',     color: '#4527A0' },
     { icon: 'shield',         label: 'Audit Log',      screen: 'AuditLog',     color: '#37474F' },
     { icon: 'lock-closed',    label: 'Class Locks',    screen: 'ClassLock',    color: '#B71C1C' },
     { icon: 'trash-bin',      label: 'Deleted Students', screen: 'DeletedStudents', color: '#6D4C41' },
+  ],
+  // Separate path from admin (Operations Admin) — finance_admin only ever
+  // sees these tiles; it has no route to Users/Terms/Subjects/Audit/etc.,
+  // and admin above has no route to Finance any more.
+  finance_admin: [
+    { icon: 'receipt',        label: 'Finance',        screen: 'Finance',      color: '#4E342E' },
+    { icon: 'chatbubbles',    label: 'Messages',       screen: 'Messages',     color: '#4527A0' },
   ],
 };
 
@@ -56,6 +62,7 @@ export default function DashboardScreen({ navigation }: any) {
   const { wards, selectedWardId, selectWard } = useWards();
   const { selectedSchoolCode } = useAdminSchool();
   const isAdmin = user?.role === 'admin';
+  const isFinanceAdmin = user?.role === 'finance_admin';
   const [stats,     setStats]     = useState<any>(null);
   const [refreshing,setRefreshing]= useState(false);
 
@@ -78,9 +85,9 @@ export default function DashboardScreen({ navigation }: any) {
   useEffect(() => { fetchStats(); }, [selectedSchoolCode]);
 
   const tiles = TILES[user?.role ?? 'student'] ?? [];
-  // Admin's own school_code is null (they manage both schools), so branding
-  // follows whichever school is selected in the switcher instead.
-  const brand = getSchoolBrand(isAdmin ? selectedSchoolCode ?? undefined : user?.school_code);
+  // Admin and finance_admin's own school_code is null (each manages both
+  // schools), so branding follows whichever school is selected in the switcher.
+  const brand = getSchoolBrand((isAdmin || isFinanceAdmin) ? selectedSchoolCode ?? undefined : user?.school_code);
 
   return (
     <ScrollView
@@ -146,8 +153,8 @@ export default function DashboardScreen({ navigation }: any) {
         </View>
       )}
 
-      {/* School switcher (admin only — admin isn't tied to a single school) */}
-      {isAdmin && <SchoolSwitcherBar />}
+      {/* School switcher (admin/finance_admin only — neither is tied to a single school) */}
+      {(isAdmin || isFinanceAdmin) && <SchoolSwitcherBar />}
 
       {/* Stats strip (teacher/admin) */}
       {stats && (

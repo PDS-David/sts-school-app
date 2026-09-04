@@ -65,6 +65,34 @@ CREATE TABLE IF NOT EXISTS users (
 -- Safe to re-run: adds the column on databases created before this field existed.
 ALTER TABLE users ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
 
+-- ── Role widened to TEXT + CHECK (Finance Admin / Operations Admin split) ────
+-- `role` used to be the fixed `user_role` ENUM above. Adding a new value to a
+-- Postgres enum requires `ALTER TYPE ... ADD VALUE`, which Postgres refuses
+-- to run inside a transaction block — and migrate.ts sends this entire file
+-- to the database as one multi-statement query, which Postgres always wraps
+-- in an implicit transaction. That would make adding 'finance_admin' (or any
+-- future role) fail the first time it actually needs to be added on a
+-- database that already has this table. Converting to TEXT + a CHECK
+-- constraint sidesteps this for good: a new role from here on is just a
+-- constraint edit — a plain ALTER TABLE, which works fine inside a
+-- transaction. Safe to re-run: no-ops once already converted (the `udt_name`
+-- check below is only ever true the first time this runs against a given
+-- database). The old `user_role` ENUM type itself is left in place, just
+-- unused, rather than dropped — nothing depends on dropping it.
+DO $$ BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'users' AND column_name = 'role' AND udt_name = 'user_role'
+  ) THEN
+    ALTER TABLE users ALTER COLUMN role TYPE TEXT USING role::TEXT;
+    ALTER TABLE users ALTER COLUMN role SET DEFAULT 'teacher';
+  END IF;
+END $$;
+
+ALTER TABLE users DROP CONSTRAINT IF EXISTS users_role_check;
+ALTER TABLE users ADD CONSTRAINT users_role_check
+  CHECK (role IN ('student','parent','teacher','admin','finance_admin'));
+
 -- ── Self-service password recovery ──────────────────────────────────────────
 -- No SMTP/SMS delivery channel is relied on for this (email is optional on
 -- this table and no SMS gateway is integrated), so recovery is a

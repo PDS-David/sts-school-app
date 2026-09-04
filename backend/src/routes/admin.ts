@@ -248,91 +248,10 @@ router.get('/export/excel', async (req, res) => {
   return res.send(buf);
 });
 
-// ══════════════════════════════════════════
-// FINANCE (writes only — reads for parent/student/teacher live in routes/finance.ts,
-// scoped so a parent only ever sees their own ward's invoices)
-// ══════════════════════════════════════════
-router.post('/finance/fee-items', async (req, res) => {
-  const { name, amount, class_name, school_code } = req.body;
-  const sc = school_code ?? req.user!.school_code;
-  const { rows } = await query(
-    'INSERT INTO fee_items(school_code,name,amount,class_name) VALUES($1,$2,$3,$4) RETURNING *',
-    [sc, name, amount, class_name ?? null],
-  );
-  return res.status(201).json({ fee_item: rows[0] });
-});
-
-router.post('/finance/invoices', async (req, res) => {
-  const { student_id, term_id, fee_item_ids } = req.body as {
-    student_id: string; term_id: number; fee_item_ids: number[];
-  };
-
-  // Found in QA Pass 8: none of this was validated before — live-verified
-  // that a primary-school student could be invoiced using a secondary
-  // school's fee item (wrong amount charged, no error), that a nonexistent
-  // fee_item_id was silently dropped from the total instead of rejected
-  // (invoice created for less than intended with no indication anything was
-  // wrong), and that an empty fee_item_ids array created a real ₦0 invoice.
-  // This is data-integrity for money, not a cross-school access leak (only
-  // admin can reach this route at all), but the same "write endpoint trusts
-  // its inputs with no relationship check" shape flagged after Pass 4 & 7.
-  if (!Array.isArray(fee_item_ids) || fee_item_ids.length === 0) {
-    return res.status(400).json({ error: 'fee_item_ids must be a non-empty array.' });
-  }
-
-  const { rows: studentRows } = await query('SELECT school_code FROM students WHERE id=$1', [student_id]);
-  if (!studentRows[0]) return res.status(404).json({ error: 'Student not found' });
-  const studentSchool = studentRows[0].school_code;
-
-  const { rows: termRows } = await query('SELECT school_code FROM terms WHERE id=$1', [term_id]);
-  if (!termRows[0]) return res.status(404).json({ error: 'Term not found' });
-  if (termRows[0].school_code !== studentSchool) {
-    return res.status(400).json({ error: "That term belongs to a different school than the student." });
-  }
-
-  const { rows: items } = await query(
-    'SELECT * FROM fee_items WHERE id = ANY($1)', [fee_item_ids],
-  );
-  if (items.length !== fee_item_ids.length) {
-    return res.status(400).json({ error: 'One or more fee_item_ids do not exist.' });
-  }
-  const mismatched = items.find(i => i.school_code !== studentSchool);
-  if (mismatched) {
-    return res.status(400).json({
-      error: `Fee item "${mismatched.name}" belongs to a different school than the student.`,
-    });
-  }
-
-  const total = items.reduce((s, i) => s + Number(i.amount), 0);
-  const { rows } = await query(
-    'INSERT INTO invoices(student_id,term_id,total) VALUES($1,$2,$3) RETURNING *',
-    [student_id, term_id, total],
-  );
-  for (const item of items) {
-    await query('INSERT INTO invoice_items(invoice_id,fee_item_id,amount) VALUES($1,$2,$3)',
-      [rows[0].id, item.id, item.amount]);
-  }
-  return res.status(201).json({ invoice: rows[0] });
-});
-
-router.put('/finance/invoices/:id/status', async (req, res) => {
-  const { status } = req.body as { status: string };
-  // Found in QA Pass 8: this took any string at all with no validation —
-  // live-verified setting status to garbage like "asdfasdf_not_a_real_status"
-  // succeeded with a 200. The mobile FinanceScreen's STATUS_COLOR map (and the
-  // ?status= filter on GET /finance/invoices) only know 'unpaid'/'partial'/
-  // 'paid', so a bad value silently fell out of both. Also found: updating a
-  // nonexistent invoice id returned 200 with an empty `{}` body instead of a
-  // 404 — no existence check at all. Mirrors the enum check already used for
-  // assessment status in routes/learning.ts.
-  if (!['unpaid', 'partial', 'paid'].includes(status)) {
-    return res.status(400).json({ error: "status must be 'unpaid', 'partial', or 'paid'" });
-  }
-  const { rows } = await query(
-    'UPDATE invoices SET status=$1 WHERE id=$2 RETURNING *', [status, req.params.id],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'Invoice not found' });
-  return res.json({ invoice: rows[0] });
-});
+// Finance (fee items, invoices, invoice status) has moved to routes/finance.ts
+// entirely, gated by requireRole('finance_admin') — not this router's
+// requireRole('admin'). Operations Admin (this file) has no finance access
+// at all now; see finance.ts for why that's enforced explicitly rather than
+// through the '*' permission wildcard this role otherwise has.
 
 export default router;

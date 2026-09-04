@@ -13,6 +13,7 @@ import StudentTabs from './StudentTabs';
 import TeacherTabs from './TeacherTabs';
 import ParentTabs from './ParentTabs';
 import AdminStack from './AdminStack';
+import FinanceAdminStack from './FinanceAdminStack';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,15 +22,17 @@ const modalOpts: NativeStackNavigationOptions = {
   presentation: 'modal',
 };
 
-// Renders the right role-based navigator. Admin keeps the original
-// tile-dashboard flow; student, teacher, and parent get the new WhatsApp-style
-// bottom-tab experience.
+// Renders the right role-based navigator. Admin and finance_admin keep the
+// original tile-dashboard flow (two separate stacks — see FinanceAdminStack
+// for why); student, teacher, and parent get the WhatsApp-style bottom-tab
+// experience.
 function RoleRouter() {
   const { user } = useAuth();
   switch (user?.role) {
     case 'teacher': return <TeacherTabs />;
     case 'parent':  return <ParentTabs />;
     case 'admin':   return <AdminStack />;
+    case 'finance_admin': return <FinanceAdminStack />;
     case 'student':
     default:        return <StudentTabs />;
   }

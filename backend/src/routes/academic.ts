@@ -35,7 +35,10 @@ function validateDaysOpened(days_opened: unknown): string | null {
 }
 router.get('/terms', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  // finance_admin also has school_code=NULL (manages both schools, same as
+  // admin) and needs to pick a term when creating an invoice — same override
+  // pattern as admin, extended to cover it.
+  const sc = (school_code && (req.user!.role === 'admin' || req.user!.role === 'finance_admin')) ? school_code : req.user!.school_code;
   const { rows } = await query(
     'SELECT * FROM terms WHERE school_code=$1 ORDER BY academic_year DESC, id', [sc],
   );

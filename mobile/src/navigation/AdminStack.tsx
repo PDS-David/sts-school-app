@@ -15,7 +15,6 @@ import CreateAssessmentScreen from '../screens/CreateAssessmentScreen';
 import EssayAnswerReviewScreen from '../screens/EssayAnswerReviewScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
-import FinanceScreen from '../screens/FinanceScreen';
 import StudentsScreen from '../screens/StudentsScreen';
 import StudentDetailScreen from '../screens/StudentDetailScreen';
 import ScoreEntryScreen from '../screens/ScoreEntryScreen';
@@ -49,7 +48,8 @@ export default function AdminStack() {
       <Stack.Screen name="EssayAnswerReview" component={EssayAnswerReviewScreen} options={{ headerShown: true, title: "Review Brainee's Grading", ...opts }} />
       <Stack.Screen name="Messages" component={MessagesScreen} options={{ headerShown: true, title: 'Messages', ...opts }} />
       <Stack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...opts }} />
-      <Stack.Screen name="Finance" component={FinanceScreen} options={{ headerShown: true, title: 'Finance', ...opts }} />
+      {/* Finance moved out entirely — separate path now, see FinanceAdminStack.tsx.
+          Operations Admin (this stack) has no finance route at all. */}
       <Stack.Screen name="Students" component={StudentsScreen} options={{ headerShown: true, title: 'Students', ...opts }} />
       <Stack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ headerShown: true, title: 'Student', ...opts }} />
       <Stack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter Scores', ...opts }} />

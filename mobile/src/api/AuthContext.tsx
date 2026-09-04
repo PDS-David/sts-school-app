@@ -7,7 +7,7 @@ import { setSecureItem, deleteSecureItems } from './secureTokenStorage';
 import { setCacheNamespace, outboxCount, isOnline } from '../offline';
 import { registerForPushNotifications, unregisterPushToken } from './pushRegistration';
 
-export type Role = 'student' | 'parent' | 'teacher' | 'admin';
+export type Role = 'student' | 'parent' | 'teacher' | 'admin' | 'finance_admin';
 
 export interface User {
   id: string;

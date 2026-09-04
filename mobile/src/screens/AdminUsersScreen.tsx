@@ -16,7 +16,10 @@ interface User {
   assigned_subject_ids?: number[];
 }
 
-const ROLES = ['teacher','parent','student','admin'];
+// 'finance_admin' deliberately excluded from SCHOOL_ROLES/EXPIRY_ROLES below,
+// same as 'admin' — it has no school of its own (manages fee items/invoices
+// across both schools via the switcher) and no access-expiry window.
+const ROLES = ['teacher','parent','student','admin','finance_admin'];
 const EXPIRY_ROLES = ['teacher', 'parent'];
 const SCHOOL_ROLES = ['teacher', 'parent', 'student'];
 

@@ -23,18 +23,18 @@ export const useAdminSchool = () => useContext(AdminSchoolContext);
 
 const SELECTED_KEY = 'admin_selected_school_code';
 
-// Admin accounts are not tied to a single school (users.school_code is NULL
-// for role='admin' — a deliberate design choice since one admin manages both
-// `primary` and `secondary`). Every backend route that lists/creates
-// school-scoped data (terms, subjects, classes, students, finance, etc.)
-// falls back to the logged-in user's own school_code when no explicit
-// school_code is passed — which is correct for teacher/student/parent, but
-// for admin that fallback is NULL, so without this context every admin
-// screen was silently querying "school_code = NULL" and getting zero rows
-// back (the empty "Terms" screen bug). This context is the one place that
-// tracks which of the two schools the admin is currently looking at, so every
-// admin screen can pass `school_code: selectedSchoolCode` explicitly instead
-// of relying on that fallback.
+// Admin and finance_admin accounts are not tied to a single school
+// (users.school_code is NULL for both — a deliberate design choice since one
+// account manages both `primary` and `secondary`). Every backend route that
+// lists/creates school-scoped data (terms, subjects, classes, students,
+// finance, etc.) falls back to the logged-in user's own school_code when no
+// explicit school_code is passed — which is correct for teacher/student/
+// parent, but for these two roles that fallback is NULL, so without this
+// context every such screen was silently querying "school_code = NULL" and
+// getting zero rows back (the empty "Terms" screen bug). This context is the
+// one place that tracks which of the two schools the account is currently
+// looking at, so every screen can pass `school_code: selectedSchoolCode`
+// explicitly instead of relying on that fallback.
 export function AdminSchoolProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [schools, setSchools] = useState<School[]>([]);
@@ -42,7 +42,7 @@ export function AdminSchoolProvider({ children }: { children: React.ReactNode })
   const [loading, setLoading] = useState(false);
 
   const refreshSchools = useCallback(async () => {
-    if (user?.role !== 'admin') { setSchools([]); setSelectedCode(null); return; }
+    if (user?.role !== 'admin' && user?.role !== 'finance_admin') { setSchools([]); setSelectedCode(null); return; }
     setLoading(true);
     try {
       const { data } = await api.get('/academic/schools');

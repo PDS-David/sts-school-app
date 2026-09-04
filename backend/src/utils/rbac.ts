@@ -46,6 +46,18 @@ export const permissions: Record<Role, string[]> = {
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
                   // are granted to any other role.
+                  // Deliberately does NOT extend to finance: routes/finance.ts
+                  // checks `req.user.role === 'admin'` explicitly and blocks
+                  // it, rather than relying on requirePerm('finance.*') here,
+                  // because the '*' wildcard above would otherwise satisfy
+                  // any finance permission check too. See finance.ts for why.
+
+  // A separate, non-overlapping path from 'admin' — manages fee items and
+  // invoices and nothing else. Cannot read or write users, terms, subjects,
+  // scores, attendance, materials, messages, or anything AI-related; 'admin'
+  // (Operations Admin) in turn cannot read or write finance data. Needs
+  // 'students.read' to look a student up when creating an invoice.
+  finance_admin: ['finance.read', 'finance.write', 'students.read'],
 };
 
 export function hasPerm(role: Role, perm: string): boolean {

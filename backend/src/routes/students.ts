@@ -13,8 +13,10 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   const { school_code, class_name, search } = req.query as Record<string, string>;
   const user = req.user!;
 
-  // Scope: teachers see their own class; admin sees all
-  const effectiveSchool = user.role === 'admin' ? (school_code ?? user.school_code) : user.school_code;
+  // Scope: teachers see their own class; admin sees all. finance_admin also
+  // has school_code=NULL and needs to pick a student when creating an
+  // invoice, so it gets the same explicit-school-code override as admin.
+  const effectiveSchool = (user.role === 'admin' || user.role === 'finance_admin') ? (school_code ?? user.school_code) : user.school_code;
   const effectiveClass  = user.role === 'teacher' ? (user.assigned_class ?? class_name) : class_name;
 
   // A teacher who is a class teacher (assigned_class set) is always pinned

@@ -18,6 +18,7 @@ export const Colors = {
     parent:  '#2E7D32',
     teacher: '#6A1B9A',
     admin:   '#B71C1C',
+    finance_admin: '#4E342E',
   },
 };
 
