@@ -73,6 +73,28 @@ export async function cacheGet(url: string): Promise<{ data: unknown; cachedAt: 
   }
 }
 
+// Drops every cached GET whose URL starts with `prefix` (for the current
+// user). Called after a write actually reaches the server, so a screen that
+// re-fetches right after (e.g. viewing a report right after entering a
+// score) gets a live request instead of silently being served the
+// pre-write cached copy — until now the cache had no invalidation at all
+// and could only go stale on its own schedule (next unrelated fetch to the
+// same URL), regardless of writes that had already changed that data.
+export async function cacheInvalidatePrefix(prefix: string): Promise<void> {
+  try {
+    const raw = await AsyncStorage.getItem(manifestKey());
+    const list: string[] = raw ? JSON.parse(raw) : [];
+    const toDrop = list.filter((u) => u.split('?')[0].startsWith(prefix));
+    if (toDrop.length === 0) return;
+    await Promise.all(toDrop.map((u) => AsyncStorage.removeItem(cacheKey(u))));
+    const remaining = list.filter((u) => !toDrop.includes(u));
+    await AsyncStorage.setItem(manifestKey(), JSON.stringify(remaining));
+  } catch {
+    // best-effort — a missed invalidation just means that one cached
+    // screen stays stale until its own next fetch, same as before this fix
+  }
+}
+
 // ── Outbox: queued writes made while offline ──────────────────────────────────
 // Each entry is a request that couldn't reach the server. They're replayed,
 // in order, the next time connectivity is confirmed.

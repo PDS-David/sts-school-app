@@ -2,10 +2,26 @@ import axios from 'axios';
 import Constants from 'expo-constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-  cacheGet, cacheSet,
+  cacheGet, cacheSet, cacheInvalidatePrefix,
   enqueueRequest, getOutbox, removeFromOutbox,
   subscribeConnectivity, setCacheNamespace,
 } from '../offline';
+
+// A write to e.g. `/scores/bulk` should invalidate cached GETs under
+// `/scores` (including `/scores/report/:id`, `/scores/session-report/:id`,
+// etc.), not just an exact URL match — callers rarely GET the same URL they
+// POST to. `/admin/...` routes are nested two levels deep with genuinely
+// separate resources (`/admin/users` vs `/admin/finance/invoices`), so keep
+// two segments there; everything else uses just the first segment. This
+// over-invalidates slightly in places (clearing a bit more than strictly
+// necessary) rather than under-invalidating and leaving stale data behind —
+// the safer direction for a mistake here.
+function resourcePrefix(url: string): string {
+  const parts = url.split('?')[0].split('/').filter(Boolean);
+  if (parts.length === 0) return '/';
+  if (parts[0] === 'admin' && parts.length > 1) return `/${parts[0]}/${parts[1]}`;
+  return `/${parts[0]}`;
+}
 import { emitForcedLogout } from './authEvents';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
 
@@ -61,6 +77,12 @@ api.interceptors.response.use(
     const method = (res.config.method ?? 'get').toLowerCase();
     if (method === 'get') {
       await cacheSet(res.config.url ?? '', res.data);
+    } else {
+      // Real, server-confirmed write — safe to drop stale cached reads for
+      // this resource area. (Queued-offline writes never reach this branch;
+      // they resolve via the catch handler below instead, so nothing gets
+      // invalidated until the write actually lands.)
+      await cacheInvalidatePrefix(resourcePrefix(res.config.url ?? ''));
     }
     return res;
   },
