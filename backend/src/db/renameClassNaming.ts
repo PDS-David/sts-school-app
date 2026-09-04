@@ -65,6 +65,10 @@ const TABLES: Array<[string, string]> = [
   ['questions', 'class_name'],
   ['assessments', 'class_name'],
   ['fee_items', 'class_name'],
+  // Added alongside the topics feature (post-dates this script) — exactly
+  // the "future migration adds another class_name-shaped column" case the
+  // comment above warns about.
+  ['topics', 'class_name'],
 ];
 
 async function countAll(runner: { query: (sql: string, params?: unknown[]) => Promise<{ rows: any[] }> }) {
