@@ -399,26 +399,31 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
   }
 
   if (user.role === 'parent') {
-    // Rewritten in the Pass 21 audit fix — see doc comment above for the
-    // full writeup. Selects from `users` directly so admin is always
-    // reachable regardless of whether this parent has any linked ward at
-    // all; the ward-linked teacher lookup lives in its own subquery below
-    // and only ever contributes teacher rows.
+    // Widened deliberately (post-Pass 21): a parent used to only reach
+    // admin plus their own ward's specific class/subject teachers — every
+    // other teacher at the school, even ones with no direct relationship
+    // to their ward, was unreachable. That's now the same "everyone at my
+    // ward's school(s)" breadth a teacher already gets to their own
+    // school's staff (see the teacher branch below) — any active teacher
+    // or admin at any school where this parent has a (non-deleted) ward,
+    // not just the ones currently assigned to that ward's class/subject.
+    // Deliberately still NOT extended to other parents or students —
+    // parent-to-parent or parent-to-unrelated-student messaging is a
+    // separate product decision, not implied by "reach every teacher/admin".
     const { rows } = await query(
       `SELECT DISTINCT u.id, u.username, u.full_name, u.role
        FROM users u
        WHERE u.is_active = TRUE
          AND (
            u.role = 'admin'
-           OR u.id IN (
-             SELECT DISTINCT t.id
-             FROM students st
-             JOIN parent_wards pw ON pw.student_id = st.id AND pw.parent_id = $1
-             JOIN users t ON t.is_active = TRUE
-               AND t.role = 'teacher'
-               AND t.school_code = st.school_code
-               AND (t.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = t.id))
-             WHERE st.deleted_at IS NULL
+           OR (
+             u.role = 'teacher'
+             AND u.school_code IN (
+               SELECT DISTINCT st.school_code
+               FROM students st
+               JOIN parent_wards pw ON pw.student_id = st.id AND pw.parent_id = $1
+               WHERE st.deleted_at IS NULL
+             )
            )
          )
        ORDER BY u.full_name`,
