@@ -5,6 +5,7 @@ import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useWards } from '../../api/WardContext';
 import { Card, Loader } from '../../components/UI';
+import { PageContainer, StatChipRow, StatChip } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { FAB } from '../../components/FAB';
@@ -40,6 +41,7 @@ export default function ParentHomeScreen({ navigation }: any) {
         onPressBell={() => openNotifications()}
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
+        <PageContainer>
         {wards.length > 0 ? (
           <View style={styles.wardSection}>
             <Text style={styles.sectionLabel}>Your Children</Text>
@@ -63,16 +65,10 @@ export default function ParentHomeScreen({ navigation }: any) {
 
         <Text style={styles.sectionLabel}>Child Summary</Text>
         {report?.summary ? (
-          <View style={styles.statsRow}>
-            <View style={styles.statChip}>
-              <Text style={styles.statVal}>{report.summary.average ?? '—'}</Text>
-              <Text style={styles.statLabel}>Average</Text>
-            </View>
-            <View style={styles.statChip}>
-              <Text style={styles.statVal}>{report.attendance?.days_present ?? '—'}</Text>
-              <Text style={styles.statLabel}>Days Present</Text>
-            </View>
-          </View>
+          <StatChipRow>
+            <StatChip value={report.summary.average ?? '—'} label="Average" />
+            <StatChip value={report.attendance?.days_present ?? '—'} label="Days Present" />
+          </StatChipRow>
         ) : (
           <Card style={{ marginHorizontal: Spacing.md }}>
             <Text style={styles.hint}>No report data yet for this term.</Text>
@@ -83,6 +79,7 @@ export default function ParentHomeScreen({ navigation }: any) {
         <Card style={{ marginHorizontal: Spacing.md }}>
           <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
         </Card>
+        </PageContainer>
 
         <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>
@@ -109,8 +106,4 @@ const styles = StyleSheet.create({
   wardChipSub: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 1 },
   wardChipTextActive: { color: Colors.white },
   hint: { fontSize: Fonts.sizes.sm, color: Colors.textSub },
-  statsRow: { flexDirection: 'row', paddingHorizontal: Spacing.md, gap: Spacing.sm },
-  statChip: { flex: 1, backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.md, alignItems: 'center', elevation: 1 },
-  statVal: { fontSize: Fonts.sizes.lg, fontWeight: '800', color: Colors.primary },
-  statLabel: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
 });

@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl, u
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
-import { Card, Loader } from '../../components/UI';
+import { Loader } from '../../components/UI';
+import { PageContainer, StatChipRow, StatChip } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { FAB } from '../../components/FAB';
@@ -72,19 +73,9 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
 
   const statsAndNotifications = (
     <View style={{ flex: 1 }}>
-      <View style={styles.statsRow}>
-        <View style={styles.statChip}>
-          <Text style={styles.statVal}>{studentCount ?? '0'}</Text>
-          <Text style={styles.statLabel}>{studentCount === null ? 'No class assigned yet' : 'Students'}</Text>
-        </View>
-      </View>
-
-      <Text style={styles.sectionLabel}>Notifications</Text>
-      <Card style={{ marginHorizontal: Spacing.md }}>
-        <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
-          Tap the bell above for pending items across your classes.
-        </Text>
-      </Card>
+      <StatChipRow>
+        <StatChip value={studentCount ?? '0'} label={studentCount === null ? 'No class assigned yet' : 'Students'} />
+      </StatChipRow>
     </View>
   );
 
@@ -96,17 +87,19 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
         onPressBell={() => openNotifications()}
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
-        {isWide ? (
-          <View style={styles.wideRow}>
-            <View style={styles.sidebar}>{quickActionsList}</View>
-            <View style={styles.wideMain}>{statsAndNotifications}</View>
-          </View>
-        ) : (
-          <>
-            {statsAndNotifications}
-            {quickActionsList}
-          </>
-        )}
+        <PageContainer>
+          {isWide ? (
+            <View style={styles.wideRow}>
+              <View style={styles.sidebar}>{quickActionsList}</View>
+              <View style={styles.wideMain}>{statsAndNotifications}</View>
+            </View>
+          ) : (
+            <>
+              {statsAndNotifications}
+              {quickActionsList}
+            </>
+          )}
+        </PageContainer>
 
         <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>
@@ -128,10 +121,6 @@ const styles = StyleSheet.create({
   wideRow: { flexDirection: 'row', alignItems: 'flex-start' },
   sidebar: { width: 260, paddingRight: Spacing.sm },
   wideMain: { flex: 1 },
-  statsRow: { flexDirection: 'row', padding: Spacing.md, gap: Spacing.sm },
-  statChip: { flex: 1, backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.md, alignItems: 'center', elevation: 1 },
-  statVal: { fontSize: Fonts.sizes.lg, fontWeight: '800', color: Colors.primary },
-  statLabel: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
   sectionLabel: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.textSub, marginHorizontal: Spacing.md, marginTop: Spacing.sm, marginBottom: Spacing.xs },
   actionList: { paddingHorizontal: Spacing.md, gap: Spacing.xs },
   actionRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.sm, elevation: 1 },

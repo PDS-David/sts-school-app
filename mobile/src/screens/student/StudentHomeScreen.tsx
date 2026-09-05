@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { Card, Loader } from '../../components/UI';
+import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { FAB } from '../../components/FAB';
@@ -57,6 +58,7 @@ export default function StudentHomeScreen({ navigation }: any) {
         style={{ flex: 1 }}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}
       >
+        <PageContainer>
         {/* Today's tasks */}
         <Text style={styles.sectionLabel}>Today's Tasks</Text>
         {tasks.length === 0 ? (
@@ -117,6 +119,7 @@ export default function StudentHomeScreen({ navigation }: any) {
           </Card>
         ))}
 
+        </PageContainer>
         <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>
 
