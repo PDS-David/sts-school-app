@@ -186,8 +186,16 @@ function cleanUnmatchedSubjectToken(raw: string): string {
 function inferSubjectName(...candidates: string[]): string {
   for (const candidate of candidates) {
     if (!candidate) continue;
+    // Normalize underscore/hyphen separators to spaces before matching —
+    // real files use both ("PRY_1_B.tech", "FRENCH-1") and SUBJECT_PATTERNS
+    // above is written assuming \s* separators. Fixing it here once is far
+    // more maintainable than adding [\s_-]* to every single pattern (which
+    // is also easy to forget, as happened with two patterns that looked
+    // fixed but weren't — confirmed via direct regex testing against the
+    // exact real strings that were still falling through).
+    const normalized = candidate.replace(/[_-]+/g, ' ');
     for (const [re, name] of SUBJECT_PATTERNS) {
-      if (re.test(candidate)) return name;
+      if (re.test(normalized)) return name;
     }
   }
   // None of the candidates matched a known pattern — clean up the LAST
@@ -396,7 +404,17 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       // each section independently is required here — treating the whole
       // file as one subject was tested and produced one inflated,
       // multi-subject-merged topic list under a single wrong subject name.
-      const subjectLineRe = /subject\s*[:;]\s*.+/gi;
+      // Case-SENSITIVE, uppercase-only match — NOT anchored to line start
+      // (tried that first; it broke a real header that had no clean blank
+      // line before it, due to messy source formatting). The actual
+      // reliable signal, confirmed across every real file examined: a
+      // genuine document header is always written "SUBJECT:" in caps,
+      // while the one false positive found (an English grammar lesson's
+      // prose — "...in front of the subject: 'Yes/No' Questions") used
+      // natural lowercase "subject" mid-sentence. Matching only the
+      // all-caps form catches every real header seen and excludes that
+      // false positive without needing line-position heuristics at all.
+      const subjectLineRe = /\bSUBJECT\s*[:;]\s*.+/g;
       const subjectLineMatches = [...text.matchAll(subjectLineRe)];
 
       type Section = { subjectName: string; sectionText: string };
