@@ -45,9 +45,8 @@
 // ground student-facing exercises/assessments. This is a review step, not
 // something this script resolves on its own.
 //
-// Pre-Nursery and Reception are still deliberately unmapped (see
-// CLASS_PATTERNS below) — that decision is still open per
-// /areas/sts-curriculum-ai.md, not something this script should guess.
+// Pre-Nursery and Reception map to real classes (see CLASS_PATTERNS below,
+// updated 2026-09 once the school confirmed they're real, distinct classes).
 //
 // Usage:
 //   cd backend
@@ -68,12 +67,12 @@ import { pool, query } from './pool.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
-// looser "ss" check, etc. Pre-Nursery and Reception are deliberately left
-// unmapped (return null) — that decision is still open (see
-// /areas/sts-curriculum-ai.md), not something this script should guess.
+// looser "ss" check, etc. Pre-Nursery and Reception map to real classes —
+// confirmed 2026-09 by the school: they're distinct classes some students
+// go through before Nursery 1, not folder noise or a KG variant.
 const CLASS_PATTERNS: Array<[RegExp, string | null]> = [
-  [/pre[\s_-]?nursery/i, null],
-  [/reception/i, null],
+  [/pre[\s_-]?nursery/i, 'Pre-Nursery'],
+  [/reception/i, 'Reception'],
   // "nurser[y]?" tolerates the real typo found in this school's own files
   // ("Nurser_1-1.docx" — missing the final 'y'). [\s_-]* tolerates
   // underscore/hyphen filename separators as well as spaces or nothing
@@ -105,14 +104,14 @@ const CLASS_PATTERNS: Array<[RegExp, string | null]> = [
 // school data. Confirmed as a real risk via an actual dry run during
 // testing — this check exists because that happened, not hypothetically.
 const PRIMARY_CLASS_NAMES = new Set([
-  'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
+  'Pre-Nursery', 'Reception', 'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
   'PRY 1', 'PRY 2', 'PRY 3', 'PRY 4', 'PRY 5', 'PRY 6',
 ]);
 const SECONDARY_CLASS_NAMES = new Set(['JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3']);
 
 function inferClassName(fullPath: string): string | null | undefined {
   for (const [re, name] of CLASS_PATTERNS) {
-    if (re.test(fullPath)) return name; // may be null (Pre-Nursery/Reception — deliberately unresolved)
+    if (re.test(fullPath)) return name; // e.g. 'Pre-Nursery'/'Reception', or null if never resolved by any pattern below
   }
   return undefined; // no pattern matched at all — different from "matched but unresolved"
 }

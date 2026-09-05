@@ -29,7 +29,7 @@ const SECONDARY_SUBJECTS = [
 // run once to bring existing rows in line — this array only affects new
 // seeds, not existing class_name/assigned_class values already in the DB.
 const PRIMARY_CLASSES = [
-  'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
+  'Pre-Nursery', 'Reception', 'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
   'PRY 1', 'PRY 2', 'PRY 3', 'PRY 4', 'PRY 5', 'PRY 6',
 ];
 
