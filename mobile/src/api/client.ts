@@ -172,7 +172,23 @@ api.interceptors.response.use(
         // whichever *different* user happened to be signed in on the same
         // device by the time it flushed. These now fail immediately and
         // honestly too, same as AI requests.
-        if ((original.url ?? '').startsWith('/ai/') || (original.url ?? '').startsWith('/auth/')) {
+        //
+        // Two Term-PIN-gating requests need the same treatment, for the
+        // same "the caller needs the real response body right now, not a
+        // synthetic queued stand-in" reason as AI requests above:
+        //   - POST /topics/:id/complete returns the actual summary/practice
+        //     questions/assessment status the screen renders immediately —
+        //     a queued `{queued:true}` has none of that.
+        //   - POST /term-pins/redeem is a locked/unlocked gate check the
+        //     student needs to know the true answer to right away (and it's
+        //     single-use server-side — silently "succeeding" offline would
+        //     tell the student their PIN worked when the server has never
+        //     seen it, then fail for real once the queue flushes).
+        const url = original.url ?? '';
+        if (
+          url.startsWith('/ai/') || url.startsWith('/auth/') ||
+          /^\/learning\/topics\/[^/]+\/complete/.test(url) || url.startsWith('/learning/term-pins/redeem')
+        ) {
           return Promise.reject(error);
         }
 

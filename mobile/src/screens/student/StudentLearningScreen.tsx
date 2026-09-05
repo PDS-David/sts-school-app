@@ -38,7 +38,7 @@ export default function StudentLearningScreen({ navigation }: any) {
             </Card>
           )}
           {subjects.map((s) => (
-            <TouchableOpacity key={s.id} style={styles.tile} onPress={() => navigation.navigate('Materials', { subjectId: s.id })} activeOpacity={0.8}>
+            <TouchableOpacity key={s.id} style={styles.tile} onPress={() => navigation.navigate('SubjectTopics', { subjectId: s.id, subjectName: s.name })} activeOpacity={0.8}>
               <View style={styles.tileIcon}><Ionicons name="school" size={22} color={Colors.primary} /></View>
               <Text style={styles.tileLabel} numberOfLines={2}>{s.name}</Text>
             </TouchableOpacity>

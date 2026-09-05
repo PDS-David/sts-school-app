@@ -283,6 +283,35 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     return res.status(403).json({ error: 'This topic is not available to you' });
   }
 
+  // Enforce the same lock GET /topics computes for display — without this,
+  // a student could bypass the whole PIN/pass-gate scheme by calling this
+  // route directly for a topic the UI never let them open. Only applies to
+  // ordered (ingested) topics; see schema.sql's "Term-PIN gating" section.
+  if (topic.order_index != null) {
+    const { rows: siblingRows } = await query(
+      `SELECT id, order_index FROM topics
+       WHERE subject_id=$1 AND class_name=$2 AND term_label=$3 AND order_index IS NOT NULL
+       ORDER BY order_index`,
+      [topic.subject_id, topic.class_name, topic.term_label],
+    );
+    const pos = siblingRows.findIndex((r: any) => r.id === topic.id);
+    if (pos === 0) {
+      const { rows: pinRows } = await query(
+        'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
+        [student.id, topic.term_label],
+      );
+      if (!pinRows[0]) return res.status(403).json({ error: 'This topic is locked. Redeem your term PIN first.' });
+    } else if (pos > 0) {
+      const { rows: prevDone } = await query(
+        'SELECT passed FROM topic_completions WHERE student_id=$1 AND topic_id=$2',
+        [student.id, siblingRows[pos - 1].id],
+      );
+      if (prevDone[0]?.passed !== true) {
+        return res.status(403).json({ error: 'This topic is locked. Complete and pass the previous topic first.' });
+      }
+    }
+  }
+
   await query(
     `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
      ON CONFLICT (topic_id, student_id) DO NOTHING`,

@@ -32,6 +32,32 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   const [parentCandidates, setParentCandidates] = useState<any[]>([]);
   const [linking, setLinking] = useState(false);
 
+  // Term-PIN management (admin only) — generate/re-issue a term PIN for
+  // this student and see whether it's been redeemed yet.
+  const TERM_LABELS = ['1st Term', '2nd Term', '3rd Term'];
+  const [pinTermLabel, setPinTermLabel] = useState(TERM_LABELS[0]);
+  const [termPins, setTermPins]         = useState<any[]>([]);
+  const [pinLoading, setPinLoading]     = useState(false);
+
+  const fetchTermPins = async () => {
+    try {
+      const { data } = await api.get(`/admin/term-pins?student_id=${studentId}`);
+      setTermPins(data.term_pins ?? []);
+    } catch { /* non-critical */ }
+  };
+
+  const generatePin = async () => {
+    setPinLoading(true);
+    try {
+      await api.post('/admin/term-pins', { student_id: studentId, term_label: pinTermLabel });
+      fetchTermPins();
+    } catch (e: any) {
+      Alert.alert('Error', e?.response?.data?.error ?? 'Could not generate PIN');
+    } finally {
+      setPinLoading(false);
+    }
+  };
+
   const fetch = async () => {
     try {
       const [s, r] = await Promise.all([
@@ -49,6 +75,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   };
 
   useEffect(() => { fetch(); }, [studentId]);
+  useEffect(() => { if (isAdmin) fetchTermPins(); }, [studentId]);
 
   const saveRemarks = async () => {
     if (!report?.term) { Alert.alert('No active term'); return; }
@@ -221,6 +248,47 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         </Card>
       )}
 
+      {/* Term-PIN management (admin only) */}
+      {isAdmin && student.login_username && (
+        <Card>
+          <SectionHeader title="Term Access PIN" />
+          <Text style={styles.noLinkTxt}>
+            Generates a PIN that unlocks this term's first topic in every subject once redeemed by the student.
+          </Text>
+          <View style={styles.termChipRow}>
+            {TERM_LABELS.map((t) => (
+              <TouchableOpacity
+                key={t}
+                style={[styles.termChip, pinTermLabel === t && styles.termChipActive]}
+                onPress={() => setPinTermLabel(t)}
+              >
+                <Text style={[styles.termChipTxt, pinTermLabel === t && styles.termChipTxtActive]}>{t}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+          {(() => {
+            const existing = termPins.find((p: any) => p.term_label === pinTermLabel);
+            return existing ? (
+              <View style={styles.linkRow}>
+                <Text style={styles.linkedTxt}>
+                  PIN: <Text style={{ fontWeight: '800' }}>{existing.pin}</Text>
+                  {existing.redeemed_at ? ' — redeemed' : ' — not redeemed yet'}
+                </Text>
+              </View>
+            ) : (
+              <Text style={styles.noLinkTxt}>No PIN issued yet for {pinTermLabel}.</Text>
+            );
+          })()}
+          <Btn
+            label={pinLoading ? 'Working…' : (termPins.find((p: any) => p.term_label === pinTermLabel) ? 'Re-issue PIN' : 'Generate PIN')}
+            onPress={generatePin}
+            loading={pinLoading}
+            variant="outline"
+            style={{ marginTop: Spacing.xs }}
+          />
+        </Card>
+      )}
+
       {/* Parents */}
       {(isAdmin || (student.parents ?? []).filter((p: any) => p?.parent_id).length > 0) && (
         <Card>
@@ -348,6 +416,11 @@ const styles = StyleSheet.create({
   pickerRow:    { paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: Colors.border },
   pickerName:   { fontSize: Fonts.sizes.sm, fontWeight: '700', color: Colors.text },
   pickerSub:    { fontSize: Fonts.sizes.xs, color: Colors.textSub },
+  termChipRow:  { flexDirection: 'row', gap: Spacing.xs, marginVertical: Spacing.sm },
+  termChip:     { flex: 1, paddingVertical: 8, borderRadius: Radius.sm, backgroundColor: '#F5F7FA', alignItems: 'center' },
+  termChipActive: { backgroundColor: Colors.primary },
+  termChipTxt:  { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub },
+  termChipTxtActive: { color: Colors.white },
   tableHeader:  { flexDirection: 'row', backgroundColor: Colors.primary + '15', borderRadius: 4, padding: 4, marginBottom: 2 },
   th:           { flex: 1, fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary, textAlign: 'center' },
   tableRow:     { flexDirection: 'row', alignItems: 'center', paddingVertical: 5, borderBottomWidth: 1, borderBottomColor: Colors.border },
