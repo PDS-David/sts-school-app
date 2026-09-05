@@ -41,7 +41,7 @@ function RoleRouter() {
 }
 
 export default function RootNavigator() {
-  const { user, loading } = useAuth();
+  const { user, mustChangePw, mustSetSecurityQuestion, loading } = useAuth();
 
   if (loading) {
     return (
@@ -60,6 +60,16 @@ export default function RootNavigator() {
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} />
         </>
+      ) : mustChangePw ? (
+        // Declarative, not an imperative navigation.replace() fired from
+        // LoginScreen right after login() — see the comment on
+        // AuthContext.tsx's AuthState.mustChangePw for why that raced this
+        // exact branch and silently lost, letting a forced password change
+        // be skipped entirely. There is no other screen registered in this
+        // branch on purpose: while this is true, the forced flow IS the app.
+        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} initialParams={{ forced: true }} />
+      ) : mustSetSecurityQuestion ? (
+        <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} initialParams={{ forced: true }} />
       ) : (
         <>
           <Stack.Screen name="App" component={RoleRouter} />

@@ -25,6 +25,7 @@ import { Colors } from '../theme';
 // stack, same as it already does for 'MyResults' under Student's two
 // separate stacks, but only if the name doesn't change.
 import AdminDashboardHomeScreen from '../screens/admin/AdminDashboardHomeScreen';
+import AdminMoreScreen from '../screens/admin/AdminMoreScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
 import MyResultsScreen from '../screens/MyResultsScreen';
@@ -105,6 +106,10 @@ function ChatsStackNavigator() {
 function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
+      {/* Previously AdminUsers was the initial screen here directly — no
+          menu in between, meaning Change Password/Security Question/Audit
+          Log/Export Excel had no tap path to reach them at all. */}
+      <MoreStack.Screen name="AdminMore" component={AdminMoreScreen} />
       <MoreStack.Screen name="AdminUsers" component={AdminUsersScreen} options={{ headerShown: true, title: 'Users', ...opts }} />
       <MoreStack.Screen name="AuditLog" component={AuditLogScreen} options={{ headerShown: true, title: 'Audit Log', ...opts }} />
       <MoreStack.Screen name="ExportExcel" component={ExportExcelScreen} options={{ headerShown: true, title: 'Export Excel', ...opts }} />

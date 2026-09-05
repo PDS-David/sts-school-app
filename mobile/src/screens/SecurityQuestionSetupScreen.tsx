@@ -12,7 +12,7 @@ import { Colors, Spacing, Fonts } from '../theme';
 //  - voluntary: from a role's Settings/Profile screen, to change it later
 export default function SecurityQuestionSetupScreen({ route, navigation }: any) {
   const forced = route?.params?.forced ?? false;
-  const { setSecurityQuestion } = useAuth();
+  const { setSecurityQuestion, confirmSecurityQuestionSet } = useAuth();
   const [question, setQuestion] = useState('');
   const [answer,   setAnswer]   = useState('');
   const [confirm,  setConfirm]  = useState('');
@@ -33,7 +33,14 @@ export default function SecurityQuestionSetupScreen({ route, navigation }: any) 
     try {
       await setSecurityQuestion(question.trim(), answer.trim());
       setOk(true);
-      setTimeout(() => navigation.replace(forced ? 'App' : 'Profile'), 1200);
+      setTimeout(() => {
+        // Clears mustSetSecurityQuestion in context; RootNavigator drops
+        // straight to the authenticated app on its own — see
+        // RootNavigator.tsx and the matching comment in
+        // ChangePasswordScreen.tsx.
+        if (forced) confirmSecurityQuestionSet();
+        else navigation.replace('Profile');
+      }, 1200);
     } catch (e: any) {
       if (!e?.response) {
         setError('No internet connection. This needs one — try again once you have signal.');

@@ -21,11 +21,28 @@ export interface User {
 
 interface AuthState {
   user: User | null;
+  // Both start false and are set fresh from the server on every login() —
+  // see RootNavigator.tsx for why this must be state RootNavigator branches
+  // on directly, rather than an imperative navigation.replace() call fired
+  // right after login(). That used to race the very same-tick re-render
+  // this state change causes (login() calling setUser() flips RootNavigator
+  // from the unauthenticated screen set to the authenticated one) — losing
+  // the race meant a forced password change was silently skipped entirely
+  // and the temp/default password stayed valid indefinitely. Declarative
+  // branching on state can't race itself.
+  mustChangePw: boolean;
+  mustSetSecurityQuestion: boolean;
   loading: boolean;
   login: (username: string, password: string) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean }>;
   logout: () => Promise<void>;
   changePassword: (oldPw: string, newPw: string) => Promise<void>;
   setSecurityQuestion: (question: string, answer: string) => Promise<void>;
+  // See the comments on changePassword/setSecurityQuestion below for why
+  // clearing the forced-flow flag is a separate, explicit step the calling
+  // screen triggers on its own timing, not something those two functions
+  // do automatically as part of succeeding.
+  confirmPasswordChanged: () => void;
+  confirmSecurityQuestionSet: () => void;
 }
 
 const AuthContext = createContext<AuthState>({} as AuthState);
@@ -33,6 +50,8 @@ export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser]       = useState<User | null>(null);
+  const [mustChangePw, setMustChangePw] = useState(false);
+  const [mustSetSecurityQuestion, setMustSetSecurityQuestion] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // Restore session on mount
@@ -59,6 +78,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     return onForcedLogout((message) => {
       setUser(null);
+      setMustChangePw(false);
+      setMustSetSecurityQuestion(false);
       setCacheNamespace(null);
       if (message) Alert.alert('Signed out', message);
     });
@@ -74,6 +95,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await AsyncStorage.setItem('user', JSON.stringify(data.user));
     setCacheNamespace(data.user.id);
     setUser(data.user);
+    setMustChangePw(!!data.must_change_pw);
+    setMustSetSecurityQuestion(!!data.must_set_security_question);
     // Best effort, never blocks login — a denied permission or offline
     // registration call just means no pushes until the next successful
     // login, not a broken sign-in flow.
@@ -116,18 +139,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await AsyncStorage.removeItem('user');
     setCacheNamespace(null);
     setUser(null);
+    setMustChangePw(false);
+    setMustSetSecurityQuestion(false);
   };
 
   const changePassword = async (old_password: string, new_password: string) => {
     await api.post('/auth/change-password', { old_password, new_password });
+    // Deliberately NOT clearing mustChangePw here — ChangePasswordScreen
+    // shows a brief "Password changed!" confirmation before moving on, and
+    // clearing the flag immediately would make RootNavigator swap this
+    // screen out from under that confirmation (mustChangePw driving which
+    // screen even exists in the tree, see RootNavigator.tsx). The screen
+    // calls confirmPasswordChanged() itself once it's actually ready to
+    // transition.
   };
+  const confirmPasswordChanged = () => setMustChangePw(false);
 
   const setSecurityQuestion = async (question: string, answer: string) => {
     await api.post('/auth/security-question', { question, answer });
+    // Same reasoning as confirmPasswordChanged() above.
   };
+  const confirmSecurityQuestionSet = () => setMustSetSecurityQuestion(false);
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, changePassword, setSecurityQuestion }}>
+    <AuthContext.Provider value={{
+      user, mustChangePw, mustSetSecurityQuestion, loading,
+      login, logout, changePassword, setSecurityQuestion,
+      confirmPasswordChanged, confirmSecurityQuestionSet,
+    }}>
       {children}
     </AuthContext.Provider>
   );

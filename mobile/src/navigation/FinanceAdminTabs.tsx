@@ -12,6 +12,7 @@ import { Colors } from '../theme';
 // unchanged — same reasoning as AdminTabs.tsx.
 import FinanceScreen from '../screens/FinanceScreen';
 import MessagesScreen from '../screens/MessagesScreen';
+import FinanceAdminMoreScreen from '../screens/admin/FinanceAdminMoreScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 
@@ -41,6 +42,7 @@ function ChatsStackNavigator() {
 function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
+      <MoreStack.Screen name="FinanceAdminMore" component={FinanceAdminMoreScreen} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
       <MoreStack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', ...opts }} />
     </MoreStack.Navigator>

@@ -6,7 +6,7 @@ import { Colors, Spacing, Fonts } from '../theme';
 
 export default function ChangePasswordScreen({ route, navigation }: any) {
   const forced = route?.params?.forced ?? false;
-  const { changePassword } = useAuth();
+  const { changePassword, confirmPasswordChanged } = useAuth();
   const [oldPw,  setOldPw]  = useState('');
   const [newPw,  setNewPw]  = useState('');
   const [conf,   setConf]   = useState('');
@@ -24,10 +24,16 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
       await changePassword(oldPw, newPw);
       setOk(true);
       setTimeout(() => {
-        if (forced && route?.params?.thenSetupSecurity) {
-          navigation.replace('SecurityQuestionSetup', { forced: true });
+        if (forced) {
+          // Clears mustChangePw in context — RootNavigator reacts on its
+          // own: straight to the authenticated app if
+          // thenSetupSecurity/mustSetSecurityQuestion is now false, or to
+          // SecurityQuestionSetup next if it's still true. No
+          // navigation.replace() needed (or safe) here — see
+          // RootNavigator.tsx.
+          confirmPasswordChanged();
         } else {
-          navigation.replace(forced ? 'App' : 'Profile');
+          navigation.replace('Profile');
         }
       }, 1500);
     } catch (e: any) {

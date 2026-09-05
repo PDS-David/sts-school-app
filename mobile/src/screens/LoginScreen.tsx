@@ -21,13 +21,15 @@ export default function LoginScreen({ navigation }: any) {
     if (!username.trim() || !password) { setError('Enter username and password'); return; }
     setLoading(true);
     try {
-      const { must_change_pw, must_set_security_question } = await login(username.trim(), password);
-      if (must_change_pw) {
-        navigation.replace('ChangePassword', { forced: true, thenSetupSecurity: must_set_security_question });
-      } else if (must_set_security_question) {
-        navigation.replace('SecurityQuestionSetup', { forced: true });
-      }
-      // else AppNavigator handles the redirect via auth state
+      // RootNavigator branches on AuthContext's mustChangePw/
+      // mustSetSecurityQuestion state directly and handles the redirect —
+      // no imperative navigation call needed (or safe to make) here. This
+      // used to call navigation.replace('ChangePassword', ...) right after
+      // login(), racing the exact same-tick re-render login()'s setUser()
+      // triggers; losing that race silently skipped the forced flow
+      // entirely, which is how an account could reach the Dashboard while
+      // still on its temp/default password.
+      await login(username.trim(), password);
     } catch (e: any) {
       if (!e?.response) {
         setError('No internet connection. The first login on a device needs one — once signed in, you can keep working offline.');
