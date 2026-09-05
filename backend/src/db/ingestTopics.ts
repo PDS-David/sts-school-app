@@ -72,25 +72,43 @@ import { pool, query } from './pool.js';
 // unmapped (return null) — that decision is still open (see
 // /areas/sts-curriculum-ai.md), not something this script should guess.
 const CLASS_PATTERNS: Array<[RegExp, string | null]> = [
-  [/pre[\s-]?nursery/i, null],
+  [/pre[\s_-]?nursery/i, null],
   [/reception/i, null],
-  [/nursery\s*1\b/i, 'Nursery 1'],
-  [/nursery\s*2\b/i, 'Nursery 2'],
-  [/\bkg\s*1\b/i, 'KG 1'],
-  [/\bkg\s*2\b/i, 'KG 2'],
-  [/\b(basic|pry|grade)\s*1\b|basic\s*one\b/i, 'PRY 1'],
-  [/\b(basic|pry|grade)\s*2\b|basic\s*two\b/i, 'PRY 2'],
-  [/\b(basic|pry|grade)\s*3\b|basic\s*three\b/i, 'PRY 3'],
-  [/\b(basic|pry|grade)\s*4\b|basic\s*four\b/i, 'PRY 4'],
-  [/\b(basic|pry|grade)\s*5\b|basic\s*five\b/i, 'PRY 5'],
-  [/\b(basic|pry|grade)\s*6\b|basic\s*six\b/i, 'PRY 6'],
-  [/\bjss\s*1\b/i, 'JSS 1'],
-  [/\bjss\s*2\b/i, 'JSS 2'],
-  [/\bjss\s*3\b/i, 'JSS 3'],
-  [/\b(sss?)\s*1\b/i, 'SS 1'],
-  [/\b(sss?)\s*2\b/i, 'SS 2'],
-  [/\b(sss?)\s*3\b/i, 'SS 3'],
+  // "nurser[y]?" tolerates the real typo found in this school's own files
+  // ("Nurser_1-1.docx" — missing the final 'y'). [\s_-]* tolerates
+  // underscore/hyphen filename separators as well as spaces or nothing
+  // ("Nursery_2.docx", "Nursery-2", "Nursery2" all match).
+  [/nursery?[\s_-]*1\b/i, 'Nursery 1'],
+  [/nursery?[\s_-]*2\b/i, 'Nursery 2'],
+  [/\bkg[\s_-]*1\b/i, 'KG 1'],
+  [/\bkg[\s_-]*2\b/i, 'KG 2'],
+  [/\b(basic|pry|grade)[\s_-]*1\b|basic[\s_-]*one\b/i, 'PRY 1'],
+  [/\b(basic|pry|grade)[\s_-]*2\b|basic[\s_-]*two\b/i, 'PRY 2'],
+  [/\b(basic|pry|grade)[\s_-]*3\b|basic[\s_-]*three\b/i, 'PRY 3'],
+  [/\b(basic|pry|grade)[\s_-]*4\b|basic[\s_-]*four\b/i, 'PRY 4'],
+  [/\b(basic|pry|grade)[\s_-]*5\b|basic[\s_-]*five\b/i, 'PRY 5'],
+  [/\b(basic|pry|grade)[\s_-]*6\b|basic[\s_-]*six\b/i, 'PRY 6'],
+  [/\bjss[\s_-]*1\b/i, 'JSS 1'],
+  [/\bjss[\s_-]*2\b/i, 'JSS 2'],
+  [/\bjss[\s_-]*3\b/i, 'JSS 3'],
+  [/\b(sss?)[\s_-]*1\b/i, 'SS 1'],
+  [/\b(sss?)[\s_-]*2\b/i, 'SS 2'],
+  [/\b(sss?)[\s_-]*3\b/i, 'SS 3'],
 ];
+
+// Which classes belong to which school_code — mirrors seed.ts's
+// PRIMARY_CLASSES/SECONDARY_CLASSES exactly. Used to CATCH cross-tagging:
+// --school-code only controls which subjects table a run writes against,
+// it does NOT filter which files get walked, so without this check a
+// mixed folder (e.g. JSS files sitting alongside Nursery files) run with
+// --school-code primary would silently tag JSS 1-3 topics as primary
+// school data. Confirmed as a real risk via an actual dry run during
+// testing — this check exists because that happened, not hypothetically.
+const PRIMARY_CLASS_NAMES = new Set([
+  'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
+  'PRY 1', 'PRY 2', 'PRY 3', 'PRY 4', 'PRY 5', 'PRY 6',
+]);
+const SECONDARY_CLASS_NAMES = new Set(['JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3']);
 
 function inferClassName(fullPath: string): string | null | undefined {
   for (const [re, name] of CLASS_PATTERNS) {
@@ -139,7 +157,8 @@ const SUBJECT_PATTERNS: Array<[RegExp, string]> = [
   [/agric/i, 'Agricultural Science'],
   [/geography/i, 'Geography'],
   [/technical\s*drawing/i, 'Technical Drawing'],
-  [/\bcrs\b|\birs\b/i, 'CRS/IRS'],
+  [/business\s*stud/i, 'Business Studies'],
+  [/c\.?\s*r\.?\s*s\b|i\.?\s*r\.?\s*s\b/i, 'CRS/IRS'],
   [/basic\s*tech|\bbst\b/i, 'Basic Technology'],
   [/french/i, 'French'],
   [/book\s*keep/i, 'Book Keeping'],
@@ -305,18 +324,31 @@ function parseArgs(argv: string[]) {
   const yes = argv.includes('--yes');
   const rootIdx = argv.indexOf('--root');
   const scIdx = argv.indexOf('--school-code');
+  const termIdx = argv.indexOf('--default-term');
   const root = rootIdx >= 0 ? argv[rootIdx + 1] : undefined;
   const schoolCode = scIdx >= 0 ? argv[scIdx + 1] : undefined;
-  return { root, schoolCode, yes };
+  const defaultTerm = termIdx >= 0 ? argv[termIdx + 1] : undefined;
+  return { root, schoolCode, yes, defaultTerm };
 }
 
 async function main() {
-  const { root, schoolCode, yes } = parseArgs(process.argv.slice(2));
+  const { root, schoolCode, yes, defaultTerm } = parseArgs(process.argv.slice(2));
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
-  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--yes]
+  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--yes]
+
+--default-term is used ONLY for files whose path gives no term clue at all
+(e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
+it never overrides a term the path actually states. Use this when you
+independently know what term a batch of files belongs to (e.g. from prior
+correspondence/documentation), not as a guess.
 
 Always run once WITHOUT --yes first to see the full breakdown.`);
+    process.exitCode = 1;
+    return;
+  }
+  if (defaultTerm && !['1st Term', '2nd Term', '3rd Term'].includes(defaultTerm)) {
+    console.log(`--default-term must be exactly "1st Term", "2nd Term", or "3rd Term" (got "${defaultTerm}").`);
     process.exitCode = 1;
     return;
   }
@@ -326,6 +358,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
   const rows: Row[] = [];
   const unmappedClass: Set<string> = new Set();
+  const wrongSchoolCode: Set<string> = new Set();
   const noWeekMarkers: string[] = [];
   const errors: Array<{ file: string; error: string }> = [];
   const subjectTokensSeen: Set<string> = new Set(); // for the dry-run report only
@@ -333,9 +366,19 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   for (const filePath of allFiles) {
     try {
       const className = inferClassName(filePath);
-      const termLabel = inferTermName(filePath);
+      const termLabel = inferTermName(filePath) ?? defaultTerm;
       if (className === undefined || className === null) {
         unmappedClass.add(path.relative(root, filePath));
+        continue;
+      }
+      // Guard against a mixed folder (e.g. JSS files sitting alongside
+      // Nursery files) silently tagging content under the wrong school —
+      // --school-code only controls which subjects table this run writes
+      // against, it does not filter which files get walked. See the
+      // PRIMARY_CLASS_NAMES/SECONDARY_CLASS_NAMES comment above.
+      const expectedSet = schoolCode === 'primary' ? PRIMARY_CLASS_NAMES : SECONDARY_CLASS_NAMES;
+      if (!expectedSet.has(className)) {
+        wrongSchoolCode.add(`${className} — ${path.relative(root, filePath)}`);
         continue;
       }
       if (!termLabel) {
@@ -345,28 +388,52 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
       const text = await extractText(filePath);
 
-      // Prefer, in order: an explicit "SUBJECT:" header line; a blob of the
-      // document's first few lines (several files put the subject on line
-      // 2 or 3 — e.g. line 1 is just "SS1", line 2 is "FINANCIAL
-      // ACCOUNTING" — so checking only the very first line misses these);
-      // then the filename as a last resort.
-      const subjectLineMatch = text.match(/subject\s*[:;]\s*(.+)/i);
-      const headerBlock = text.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
-      const subjectName = inferSubjectName(subjectLineMatch?.[1] ?? '', headerBlock, path.basename(filePath));
-      subjectTokensSeen.add(subjectName);
+      // Some files (confirmed real case: Nursery/Reception-style documents)
+      // merge multiple subjects into ONE file, each restarting its own
+      // "SUBJECT:" header and its own week/topic sequence (e.g. Mathematics
+      // weeks 1-13, then a fresh "SUBJECT: ENGLISH LANGUAGE" header and
+      // ANOTHER weeks 1-13). Splitting at every "SUBJECT:" line and parsing
+      // each section independently is required here — treating the whole
+      // file as one subject was tested and produced one inflated,
+      // multi-subject-merged topic list under a single wrong subject name.
+      const subjectLineRe = /subject\s*[:;]\s*.+/gi;
+      const subjectLineMatches = [...text.matchAll(subjectLineRe)];
 
-      const parsed = parseTopics(text);
-      if (parsed.length === 0) {
+      type Section = { subjectName: string; sectionText: string };
+      let sections: Section[];
+      if (subjectLineMatches.length >= 2) {
+        sections = subjectLineMatches.map((m, i) => {
+          const start = m.index!;
+          const end = i + 1 < subjectLineMatches.length ? subjectLineMatches[i + 1].index! : text.length;
+          const sectionText = text.slice(start, end);
+          const subjectName = inferSubjectName(m[0].replace(/^subject\s*[:;]\s*/i, ''));
+          return { subjectName, sectionText };
+        });
+      } else {
+        // 0 or 1 "SUBJECT:" line — behave as before: infer once from that
+        // line if present, else the document's own header block, else the
+        // filename, and treat the whole file as one section.
+        const headerBlock = text.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
+        const subjectName = inferSubjectName(subjectLineMatches[0]?.[0].replace(/^subject\s*[:;]\s*/i, '') ?? '', headerBlock, path.basename(filePath));
+        sections = [{ subjectName, sectionText: text }];
+      }
+
+      let anyParsed = false;
+      for (const section of sections) {
+        subjectTokensSeen.add(section.subjectName);
+        const parsed = parseTopics(section.sectionText);
+        parsed.forEach((t, i) => {
+          anyParsed = true;
+          rows.push({
+            filePath, className, termLabel, subjectName: section.subjectName,
+            weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
+          });
+        });
+      }
+      if (!anyParsed) {
         noWeekMarkers.push(path.relative(root, filePath));
         continue;
       }
-
-      parsed.forEach((t, i) => {
-        rows.push({
-          filePath, className, termLabel, subjectName,
-          weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
-        });
-      });
     } catch (e: any) {
       errors.push({ file: path.relative(root, filePath), error: e.message });
     }
@@ -398,6 +465,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   if (unmappedClass.size > 0) {
     console.log(`\n${unmappedClass.size} file(s) skipped — class or term not recognized:`);
     for (const f of unmappedClass) console.log(`  ${f}`);
+  }
+  if (wrongSchoolCode.size > 0) {
+    const other = schoolCode === 'primary' ? 'secondary' : 'primary';
+    console.log(`\n${wrongSchoolCode.size} file(s) skipped — class belongs to '${other}', not '${schoolCode}':`);
+    for (const f of wrongSchoolCode) console.log(`  ${f}`);
+    console.log(`(Re-run this same --root with --school-code ${other} to pick these up correctly.)`);
   }
   if (noWeekMarkers.length > 0) {
     console.log(`\n${noWeekMarkers.length} file(s) skipped — no "WEEK N" markers found at all:`);
