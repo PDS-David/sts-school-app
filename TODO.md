@@ -1,5 +1,36 @@
 # TODO
 
+> **Update 2026-09-05 (Finance/Ops split, parent messaging, offline
+> cache-invalidation, report Print/Export):** Full detail in `CHANGELOG.md`.
+> Summary: split `finance_admin` out from `admin` as a fully separate role
+> (schema, backend, and a dedicated mobile stack + working invoice-creation
+> UI — the previous "backend exists but nothing in the app can reach it"
+> gap noted in Pass 8 below is now closed); widened parent messaging to
+> reach every teacher/admin at their ward's school, not just the ward's
+> specific class/subject teachers (this directly answers the open product
+> question from Pass 7 below — decided yes, extend it); added
+> `cacheInvalidatePrefix()` so a write actually invalidates the related
+> cached reads instead of leaving them stale until their own next
+> unrelated fetch; added admin/parent-only Print + Export PDF on both the
+> term report card and the session report — the mobile UI gap flagged
+> below is now closed for the report-card case specifically. All four
+> verified via `tsc --noEmit` (backend + mobile) and a real
+> `expo export --platform web`. **None of it has been exercised against a
+> live/running app yet** — see `TEST_PLAN_WEB_MOBILE.md` for the pass
+> that's queued next, role by role, web first then Android.
+>
+> **Left open, deliberately — needs product/DB access this session
+> doesn't have:** the curriculum-ingestion importer (`ingestTopics.ts`,
+> landed the same day from a parallel session) is dry-run-verified only
+> and hasn't been run `--yes` against any live database; the rest of the
+> original Topic-PIN spec (the `term_access_pins` table, redemption route,
+> PIN-entry screen, and the topics-first Learning tab with lock states) is
+> unbuilt — only the ordering/curriculum-grounding half of that spec
+> landed so far; and the pre-existing gaps below (announcements, teacher
+> marking-backlog count, several "coming soon" screens) still need a
+> product decision on what they should actually look like before anyone
+> builds them blind.
+
 > **Update 2026-07-10 (Pass 10 — Cross-cutting: offline, errors, edge cases —
 > FINAL PASS):** Four bugs found and fixed, all live-verified against the
 > real backend (two via standalone Node repro scripts mirroring the mobile

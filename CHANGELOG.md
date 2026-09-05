@@ -1,5 +1,97 @@
 # Changelog
 
+## [Unreleased] — 2026-09-05 — Finance/Operations Admin split, parent messaging widened, offline cache-invalidation, report Print/Export
+
+Four independent pieces from the same session, listed in the order they
+landed. No overlap with the parallel curriculum/topics or Add-Student/web
+work landing the same day — none of this touches `topics`, `subjects`,
+`students`, or `app.json`'s web config.
+
+### Offline cache-invalidation (`mobile/src/offline/storage.ts`, `mobile/src/api/client.ts`)
+
+The offline GET-cache had no invalidation at all — a screen showing cached
+data stayed stale until its own next unrelated fetch, even after a write
+had already changed that same data server-side (e.g. entering a score,
+then immediately viewing that student's report — the report screen would
+still show the pre-write cached copy). Added `cacheInvalidatePrefix()` and
+wired it into the response interceptor for any non-GET write that actually
+reaches the server. Queued-offline writes are unaffected by design — they
+resolve via the existing catch-handler path and haven't really happened
+yet, so nothing should be invalidated until they do.
+
+### Parent messaging widened (`backend/src/utils/scope.ts`)
+
+Parents could previously only reach admin plus their ward's *specific*
+class/subject teachers — any other teacher at the school, even with zero
+relationship to that ward, was unreachable. `getMessageableUsers()`'s
+parent branch now matches the breadth a teacher already has to their own
+school's staff: any active teacher or admin at any school where the parent
+has a (non-deleted) ward. Deliberately **not** extended to parent↔parent or
+parent↔unrelated-student messaging — a separate product decision from
+"reach every teacher/admin," not implied by it.
+
+### Finance Admin split from Operations Admin (schema, `rbac.ts`, `routes/admin.ts`, `routes/finance.ts`, mobile)
+
+New `finance_admin` role, fully independent of `admin` — neither inherits
+the other's access.
+
+- **Schema:** `users.role` converted from a fixed `user_role` ENUM to
+  `TEXT` + a `CHECK` constraint. Adding an enum value requires
+  `ALTER TYPE ... ADD VALUE`, which Postgres refuses to run inside a
+  transaction block — and `migrate.ts` sends the whole `schema.sql` as one
+  multi-statement query, which Postgres always wraps in an implicit
+  transaction. That would have made adding `finance_admin` (or any future
+  role) fail against a live database. The TEXT+CHECK conversion sidesteps
+  this permanently: a new role from here on is a plain `ALTER TABLE`
+  constraint edit, not an enum migration.
+- **Backend:** finance write routes (fee items, invoices, invoice status)
+  moved from `admin.ts` (`/admin/finance/...`) to `finance.ts`
+  (`/finance/...`), gated to `requireRole('finance_admin')`. `admin` is
+  explicitly blocked from every finance route via a `blockOpsAdmin`
+  middleware, rather than relying on `requirePerm` — `admin`'s `'*'`
+  wildcard would otherwise satisfy that check regardless of intent.
+  `finance_admin` also granted `students.read` and the admin-style
+  `school_code` query-param override on `GET /students` and
+  `GET /academic/terms`, needed to pick a student/term when creating an
+  invoice (`finance_admin` has no school of its own, same as `admin`).
+- **Mobile:** new `FinanceAdminStack` (Dashboard, Finance, Messages,
+  ChangePassword only). `AdminStack` loses its Finance screen/tile
+  entirely. `FinanceScreen.tsx` rewritten around `isFinanceAdmin` instead
+  of `isAdmin`, and gains real fee-item creation and invoice-creation UI
+  (student/term picker + fee-item checklist with a live running total) —
+  previously the backend routes existed but nothing in the app could reach
+  them. `AdminUsersScreen`, `DashboardScreen`, `AdminSchoolContext`,
+  `theme.ts` all updated for the new role.
+
+### Print/Export PDF for reports, admin + parent only (`mobile/src/utils/reportPdf.ts`)
+
+New shared HTML report builder (school letterhead + logo, student info,
+scores/attendance table, remarks) reused by both `MyResultsScreen.tsx`
+(term report) and `SessionReportScreen.tsx` (session report):
+
+- **Print** opens the native OS print dialog on Android/iOS
+  (`expo-print`'s `printAsync`), or a fresh browser tab + `window.print()`
+  on web (`expo-print` has no reliable web `printAsync` support across SDK
+  versions — this is the same "open a tab, let the browser's own print
+  dialog do the work" pattern `ExportExcelScreen.tsx` already established
+  for web downloads).
+- **Export** generates a real PDF via `printToFileAsync` and hands it to
+  the OS share sheet on native (Drive, WhatsApp, email, etc.); on web,
+  where there's no filesystem/share sheet, it routes to the same Print
+  flow, whose "Save as PDF" destination achieves the same result.
+- Restricted to `admin`/`parent` only, matching the confirmed decision that
+  a teacher generates the underlying data but doesn't print/export the
+  finished document, and a student only ever views their own report
+  in-app — both screens gate the buttons on
+  `user?.role === 'admin' || user?.role === 'parent'`.
+- New deps: `expo-print@~56.0.4`, `expo-asset@~56.0.24` (`expo-sharing` was
+  already present).
+
+All four verified via `npx tsc --noEmit` (clean on both `backend/` and
+`mobile/`) and a real `npx expo export --platform web` producing a working
+bundle. **Not yet exercised against a live/running app** — that's the next
+step, tracked in `TEST_PLAN_WEB_MOBILE.md`.
+
 ## [Unreleased] — 2026-09-04 — Add-Student mobile screen + Expo web build (items 3 & 4)
 
 Two independent, self-contained pieces — deliberately kept out of the
