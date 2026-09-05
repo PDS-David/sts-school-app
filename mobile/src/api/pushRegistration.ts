@@ -14,6 +14,12 @@ import api from './client';
 // happen), so logout() can pass the same value to the unregister endpoint
 // without asking the OS for it a second time.
 export async function registerForPushNotifications(): Promise<string | null> {
+  // expo-notifications has no web implementation for remote push tokens —
+  // calling getExpoPushTokenAsync() on web throws. Web sessions simply
+  // don't get push notifications; everything else works the same as on
+  // mobile. Checked explicitly rather than relying on Device.isDevice
+  // alone, since that check isn't guaranteed false on web.
+  if (Platform.OS === 'web') return null;
   if (!Device.isDevice) return null; // simulators/emulators can't get a real token
 
   const { status: existing } = await Notifications.getPermissionsAsync();
@@ -67,6 +73,7 @@ export async function registerForPushNotifications(): Promise<string | null> {
 // to it bounces with DeviceNotRegistered.
 export async function unregisterPushToken() {
   try {
+    if (Platform.OS === 'web') return;
     if (!Device.isDevice) return;
     const { status } = await Notifications.getPermissionsAsync();
     if (status !== 'granted') return;

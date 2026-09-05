@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
+    "web": "expo start --web",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
@@ -31,6 +32,7 @@
     "expo-splash-screen": "~56.0.13",
     "expo-status-bar": "~56.0.4",
     "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-hook-form": "^7.52.1",
     "react-native": "0.85.3",
     "react-native-flash-message": "^0.4.2",
@@ -39,7 +41,8 @@
     "react-native-paper": "^5.12.3",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "4.25.2",
-    "react-native-vector-icons": "^10.1.0"
+    "react-native-vector-icons": "^10.1.0",
+    "react-native-web": "~0.21.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
