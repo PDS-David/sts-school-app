@@ -58,14 +58,33 @@ when a real browser/phone hits the real backend.
    npm install
    npm run web              # expo start --web
    ```
-   Confirm `mobile/src/api/client.ts`'s `BASE_URL` (or wherever the API
-   base URL is configured) points at `http://localhost:4000` for local
-   testing, not the production Render URL — check before logging in, a
-   wrong base URL will look like every login is failing.
-4. Seeded accounts after step 2: `admin` / `Admin@1234` and `teacher1` /
+   **Critical gotcha, check this before anything else:**
+   `mobile/app.json`'s `expo.extra.apiUrl` is hardcoded to the **production**
+   Render backend (`https://sts-school-backend.onrender.com`), not
+   localhost — `client.ts` reads this value directly. If you don't change
+   it, every "local" test in this plan silently hits production instead of
+   the code you just pulled, and you'll either see none of this session's
+   changes or (worse) write real test data into production. Temporarily
+   change it for this test pass:
+   ```json
+   "extra": { "apiUrl": "http://localhost:4000", ... }
+   ```
+   Use `http://localhost:4000` for web specifically — the `10.0.2.2:4000`
+   fallback baked into `client.ts` is an Android-emulator-only alias for
+   the host machine and will not resolve in a browser. **Revert this back
+   to the production URL before committing anything else** — don't let a
+   local-testing change to `app.json` accidentally ship. For Android
+   testing in Phase 2, see the note under 2.0 — the correct value differs
+   again there (emulator vs. physical device).
+4. Confirm the backend is actually reachable from the browser before
+   logging in: open `http://localhost:4000/auth/login` directly (or any
+   route) — a JSON error response (even a 404/405) means the server's up;
+   a connection-refused error means step 2's `npm run dev` isn't actually
+   running or is on a different port than `app.json` now points to.
+5. Seeded accounts after step 2: `admin` / `Admin@1234` and `teacher1` /
    `Teacher@1234`, both `must_change_pw=true` (first login forces a
    password change — expected, not a bug).
-5. **No parent, student, or finance_admin accounts exist yet** — creating
+6. **No parent, student, or finance_admin accounts exist yet** — creating
    them is itself part of Phase 1 below (tests the new Add-Student +
    auto-provisioning flow, and the new role in AdminUsersScreen), not a
    setup step to skip past.
@@ -220,6 +239,16 @@ when a real browser/phone hits the real backend.
 cd mobile
 npx expo start
 ```
+**`apiUrl` again, differently this time:** revert `app.json`'s
+`expo.extra.apiUrl` from whatever you set it to for Phase 1 back to
+something your Android device can actually reach — `10.0.2.2:4000` if
+you're on an Android *emulator* (this is the special alias built into
+`client.ts`'s own fallback, so it also works if you simply remove the
+`apiUrl` override entirely and let it fall back), or your machine's real
+LAN IP (e.g. `http://192.168.1.23:4000`) if you're on a **physical**
+device — `localhost`/`10.0.2.2` won't resolve from a real phone on the
+same Wi-Fi. `localhost` (the value used for web in Phase 0) will not work
+for either Android case.
 Press `a` for a connected/emulated Android device, or scan the QR code
 with Expo Go. **Note:** `expo-notifications` remote push token
 registration may require a development build rather than Expo Go,
