@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
@@ -15,14 +15,26 @@ import { getSchoolBrand } from '../../schoolBranding';
 // Replaces the old shared DashboardScreen.tsx tile grid for the 'admin' role
 // (Operations Admin) — same structural pattern already established by
 // TeacherDashboardHomeScreen.tsx: AppHeader up top, a small stats row, a
-// short "Quick Actions" grid for the handful of things admin does most
+// short "Quick Actions" list for the handful of things admin does most
 // often, everything else reachable via the More tab instead of one giant
 // 11-tile grid. Admin has no school_code of its own (manages both schools),
 // so branding/stats follow whichever school is currently selected in the
 // switcher — same logic the old DashboardScreen used, carried over as-is.
+//
+// Layout: on a wide viewport (web/tablet — plenty of unused horizontal
+// space otherwise, as seen testing this on web), Quick Actions becomes a
+// fixed-width left sidebar, top-to-bottom, with stats/notifications filling
+// the remaining space to its right. On a narrow phone screen there's no
+// room for a sidebar, so it falls back to a single stacked column — Quick
+// Actions is still a top-to-bottom list there too, just not positioned as
+// a sidebar; there's nothing to its side to share space with.
+const WIDE_BREAKPOINT = 768;
+
 export default function AdminDashboardHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const { selectedSchoolCode } = useAdminSchool();
+  const { width } = useWindowDimensions();
+  const isWide = width >= WIDE_BREAKPOINT;
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -49,12 +61,51 @@ export default function AdminDashboardHomeScreen({ navigation }: any) {
 
   // The three highest-frequency admin actions — everything else (Class
   // Summary, Export Excel, Terms, Subjects, Audit Log, Class Locks, Deleted
-  // Students) lives under the More tab now instead of crowding this grid.
+  // Students) lives under the More tab now instead of crowding this list.
   const quickActions: { icon: keyof typeof Ionicons.glyphMap; label: string; onPress: () => void }[] = [
     { icon: 'people-outline', label: 'Students', onPress: () => navigation.getParent()?.navigate('AcademicsTab', { screen: 'Students' }) },
     { icon: 'person-outline', label: 'Users', onPress: () => navigation.getParent()?.navigate('MoreTab', { screen: 'AdminUsers' }) },
     { icon: 'create-outline', label: 'Enter Scores', onPress: () => navigation.getParent()?.navigate('AcademicsTab', { screen: 'ScoreEntry' }) },
   ];
+
+  const quickActionsList = (
+    <View>
+      <Text style={styles.sectionLabel}>Quick Actions</Text>
+      <View style={styles.actionList}>
+        {quickActions.map((q) => (
+          <TouchableOpacity key={q.label} style={styles.actionRow} onPress={q.onPress} activeOpacity={0.8}>
+            <View style={styles.actionIcon}><Ionicons name={q.icon} size={20} color={Colors.primary} /></View>
+            <Text style={styles.actionLabel}>{q.label}</Text>
+            <Ionicons name="chevron-forward" size={16} color={Colors.textSub} />
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
+
+  const statsAndNotifications = (
+    <View style={{ flex: 1 }}>
+      <View style={styles.statsRow}>
+        {term && (
+          <View style={styles.statChip}>
+            <Text style={styles.statVal}>{term.name}</Text>
+            <Text style={styles.statLabel}>{term.academic_year}</Text>
+          </View>
+        )}
+        <View style={styles.statChip}>
+          <Text style={styles.statVal}>{studentCount ?? '—'}</Text>
+          <Text style={styles.statLabel}>Students</Text>
+        </View>
+      </View>
+
+      <Text style={styles.sectionLabel}>Notifications</Text>
+      <Card style={{ marginHorizontal: Spacing.md }}>
+        <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
+          Tap the bell above for pending items across both schools.
+        </Text>
+      </Card>
+    </View>
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
@@ -66,35 +117,17 @@ export default function AdminDashboardHomeScreen({ navigation }: any) {
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <SchoolSwitcherBar />
 
-        <View style={styles.statsRow}>
-          {term && (
-            <View style={styles.statChip}>
-              <Text style={styles.statVal}>{term.name}</Text>
-              <Text style={styles.statLabel}>{term.academic_year}</Text>
-            </View>
-          )}
-          <View style={styles.statChip}>
-            <Text style={styles.statVal}>{studentCount ?? '—'}</Text>
-            <Text style={styles.statLabel}>Students</Text>
+        {isWide ? (
+          <View style={styles.wideRow}>
+            <View style={styles.sidebar}>{quickActionsList}</View>
+            <View style={styles.wideMain}>{statsAndNotifications}</View>
           </View>
-        </View>
-
-        <Text style={styles.sectionLabel}>Quick Actions</Text>
-        <View style={styles.grid}>
-          {quickActions.map((q) => (
-            <TouchableOpacity key={q.label} style={styles.tile} onPress={q.onPress} activeOpacity={0.8}>
-              <View style={styles.tileIcon}><Ionicons name={q.icon} size={22} color={Colors.primary} /></View>
-              <Text style={styles.tileLabel}>{q.label}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        <Text style={styles.sectionLabel}>Notifications</Text>
-        <Card style={{ marginHorizontal: Spacing.md }}>
-          <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
-            Tap the bell above for pending items across both schools.
-          </Text>
-        </Card>
+        ) : (
+          <>
+            {statsAndNotifications}
+            {quickActionsList}
+          </>
+        )}
 
         <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>
@@ -112,13 +145,19 @@ export default function AdminDashboardHomeScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  wideRow: { flexDirection: 'row', alignItems: 'flex-start' },
+  sidebar: { width: 260, paddingRight: Spacing.sm },
+  wideMain: { flex: 1 },
   statsRow: { flexDirection: 'row', padding: Spacing.md, gap: Spacing.sm },
   statChip: { flex: 1, backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.md, alignItems: 'center', elevation: 1 },
   statVal: { fontSize: Fonts.sizes.lg, fontWeight: '800', color: Colors.primary },
   statLabel: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
   sectionLabel: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.textSub, marginHorizontal: Spacing.md, marginTop: Spacing.sm, marginBottom: Spacing.xs },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Spacing.sm },
-  tile: { width: '30%', margin: '1.5%', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.sm, alignItems: 'center', elevation: 1, minHeight: 90, justifyContent: 'center' },
-  tileIcon: { width: 40, height: 40, borderRadius: 20, backgroundColor: Colors.primary + '18', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
-  tileLabel: { fontSize: Fonts.sizes.xs, fontWeight: '600', color: Colors.text, textAlign: 'center' },
+  // Top-to-bottom list, replacing the old wrapping 3-column grid — each
+  // action is now a full-width row (icon + label + chevron) rather than a
+  // square tile.
+  actionList: { paddingHorizontal: Spacing.md, gap: Spacing.xs },
+  actionRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.sm, elevation: 1 },
+  actionIcon: { width: 36, height: 36, borderRadius: 18, backgroundColor: Colors.primary + '18', alignItems: 'center', justifyContent: 'center', marginRight: Spacing.sm },
+  actionLabel: { flex: 1, fontSize: Fonts.sizes.sm, fontWeight: '600', color: Colors.text },
 });
