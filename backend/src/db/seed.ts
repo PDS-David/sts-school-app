@@ -85,7 +85,8 @@ async function seed() {
   await query(
     `INSERT INTO users(username,password_hash,role,full_name,must_change_pw)
      VALUES('admin',$1,'admin','System Administrator',TRUE)
-     ON CONFLICT(username) DO UPDATE SET password_hash=$1`,
+     ON CONFLICT(username) DO UPDATE SET password_hash=$1,
+       is_active=TRUE, revocation_reason=NULL, access_expires_at=NULL`,
     [hash],
   );
 
@@ -94,7 +95,8 @@ async function seed() {
   await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,must_change_pw)
      VALUES('teacher1',$1,'teacher','Demo Class Teacher','secondary','JSS 1',TRUE)
-     ON CONFLICT(username) DO UPDATE SET password_hash=$1`,
+     ON CONFLICT(username) DO UPDATE SET password_hash=$1,
+       is_active=TRUE, revocation_reason=NULL, access_expires_at=NULL`,
     [teacherHash],
   );
 
