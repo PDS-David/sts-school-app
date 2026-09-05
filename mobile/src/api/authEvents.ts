@@ -12,7 +12,7 @@
 // looked broken, and there was no way back to the Login screen short of a
 // full app restart.
 
-type Listener = () => void;
+type Listener = (message?: string) => void;
 const listeners = new Set<Listener>();
 
 export function onForcedLogout(listener: Listener): () => void {
@@ -20,6 +20,6 @@ export function onForcedLogout(listener: Listener): () => void {
   return () => listeners.delete(listener);
 }
 
-export function emitForcedLogout(): void {
-  for (const l of listeners) l();
+export function emitForcedLogout(message?: string): void {
+  for (const l of listeners) l(message);
 }

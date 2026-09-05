@@ -142,15 +142,28 @@ retrofits existing accounts too), `security_answer_fail_count`,
 generic message at login, refresh, every authenticated request
 (`requireAuth`), and the forgot-password routes.
 
-**Mobile UI for both of the above is NOT built yet** — backend only. If
-you're picking this up: forced security-question setup screen (chain it
-after the existing forced `ChangePasswordScreen` flow, gated on
-`must_set_security_question` in the `/auth/login` response), a
-`ForgotPasswordScreen` reachable from `LoginScreen`, and a voluntary
-"change security question" entry point in each role's profile/settings
-screen (mirror the existing "Change Password" menu item pattern in
-`StudentProfileScreen.tsx` / `ParentProfileScreen.tsx` /
-`TeacherMoreScreen.tsx`).
+**Mobile UI for both of the above is now built** (was flagged as
+outstanding in an earlier version of this doc): `ForgotPasswordScreen.tsx`
+and `SecurityQuestionSetupScreen.tsx`, registered in `RootNavigator` plus
+every role's nested stack (`AdminStack`, `TeacherTabs`, `ParentTabs`,
+`StudentTabs`, `FinanceAdminStack`), with a "Security Question" menu entry
+in the student/parent/teacher profile screens and a "Forgot password?"
+link on `LoginScreen`. `AuthContext.login()` threads
+`must_set_security_question` through so `LoginScreen`/
+`ChangePasswordScreen` chain into forced setup correctly.
+
+**Real gap found and fixed while building this:** a mid-session
+deactivation (or access-period expiry) used to log the user out **silently
+with no message at all** — not even a generic one. `client.ts`'s
+refresh-failure handler cleared the session and fired `emitForcedLogout()`
+with no payload; `AuthContext`'s listener just cleared `user` state.
+Fixed: `authEvents.ts`'s event now carries an optional message (preferring
+the original failing request's error body — which already includes
+`revocation_reason` — falling back to the refresh call's own message, then
+a generic line), and `AuthContext` shows it via `Alert` before the person
+lands back at Login. This is the actual mobile-side completion of the
+admin-revocation-reason work — the backend always had the reason in the
+response body, but nothing displayed it in this one code path.
 
 **Topics + completion** (`backend/src/routes/learning.ts`, new `topics` /
 `topic_completions` tables): admin/teacher create `topics` rows (same
@@ -186,6 +199,33 @@ will render a topic-generated assessment with **zero changes needed** —
 confirmed by a full field-level audit against `GET /learning/assessments`
 (exact match: `title`, `status`, `subject_name`, `class_name`,
 `question_count`, `total_marks`, `already_submitted`, `my_score`).
+
+**Parent auto-provisioning** (`backend/src/utils/parentProvisioning.ts`,
+wired into `POST /students`): give `parent_phone` (+ optional
+`parent_name`/`parent_email`) when creating a student, and a parent account
+is found (by phone, digit-suffix matched so `+234...`/`0...` formatting
+differences still match, scoped per school — siblings share one account)
+or auto-created (same `generateTempPassword()`/`must_change_pw` mechanism
+as manually-created accounts) and linked via `parent_wards`, all in one
+request. Response includes `parent: { id, username, temporary_password? }`
+— `temporary_password` only present when a new account was actually
+created, omitted when an existing sibling-parent was reused.
+
+**Important gap found while building this — there is no student-creation
+form anywhere in the mobile app.** `POST /students` exists and now
+supports parent auto-provisioning, but nothing in `mobile/src` ever calls
+it — `StudentsScreen.tsx` is read-only (search/view only),
+`StudentDetailScreen.tsx` only edits/links an *already-existing* student.
+The actual current way students get created is the one-off import scripts
+(`backend/src/db/importFirstTerm.ts` / `importGenuineFirstTerm.ts`), run
+locally against legacy CSV/SQLite data — and that legacy source data has
+**no parent-contact fields at all**, so parent auto-provisioning was
+deliberately *not* threaded into those scripts (would mean guessing at
+fields that don't exist in the source, risking breakage of an
+already-QA'd import path). If/when an "Add Student" mobile screen gets
+built, that's where `parent_name`/`parent_phone`/`parent_email` fields
+belong — check with the user on design/scope before building it, since
+it's a real net-new admin screen, not an extension of something existing.
 
 **Known adjacent work by someone else, not yet reconciled:** a commit
 ("Class naming convention: JSS1/SS1 -> JSS 1/SS 1...") mentioned in its

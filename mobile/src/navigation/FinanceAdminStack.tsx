@@ -9,6 +9,7 @@ import DashboardScreen from '../screens/DashboardScreen';
 import FinanceScreen from '../screens/FinanceScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
+import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ export default function FinanceAdminStack() {
       <Stack.Screen name="Finance" component={FinanceScreen} options={{ headerShown: true, title: 'Finance', ...opts }} />
       <Stack.Screen name="Messages" component={MessagesScreen} options={{ headerShown: true, title: 'Messages', ...opts }} />
       <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
+      <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', ...opts }} />
     </Stack.Navigator>
   );
 }

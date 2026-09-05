@@ -21,8 +21,12 @@ export default function LoginScreen({ navigation }: any) {
     if (!username.trim() || !password) { setError('Enter username and password'); return; }
     setLoading(true);
     try {
-      const { must_change_pw } = await login(username.trim(), password);
-      if (must_change_pw) navigation.replace('ChangePassword', { forced: true });
+      const { must_change_pw, must_set_security_question } = await login(username.trim(), password);
+      if (must_change_pw) {
+        navigation.replace('ChangePassword', { forced: true, thenSetupSecurity: must_set_security_question });
+      } else if (must_set_security_question) {
+        navigation.replace('SecurityQuestionSetup', { forced: true });
+      }
       // else AppNavigator handles the redirect via auth state
     } catch (e: any) {
       if (!e?.response) {
@@ -77,6 +81,9 @@ export default function LoginScreen({ navigation }: any) {
             placeholder="Enter your password"
             secureTextEntry={!showPassword}
           />
+          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+            <Text style={styles.forgotLinkText}>Forgot password?</Text>
+          </TouchableOpacity>
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
           <Btn label="Sign In" onPress={handleLogin} loading={loading} style={{ marginTop: Spacing.md }} />
@@ -102,6 +109,8 @@ const styles = StyleSheet.create({
   passwordLabelRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   passwordLabel:    { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub },
   showToggle:       { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary },
+  forgotLink:       { alignSelf: 'flex-end', marginTop: Spacing.xs },
+  forgotLinkText:   { fontSize: Fonts.sizes.xs, fontWeight: '600', color: Colors.primary },
   error:      { color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm, textAlign: 'center' },
   footer:     { textAlign: 'center', color: Colors.textSub, fontSize: Fonts.sizes.xs, marginTop: Spacing.xl, paddingBottom: Spacing.lg },
 });

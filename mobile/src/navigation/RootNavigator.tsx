@@ -5,7 +5,9 @@ import { useAuth } from '../api/AuthContext';
 import { Colors } from '../theme';
 
 import LoginScreen from '../screens/LoginScreen';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
+import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import BraineeChatScreen from '../screens/BraineeChatScreen';
 
@@ -54,7 +56,9 @@ export default function RootNavigator() {
       {!user ? (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+          <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} />
         </>
       ) : (
         <>
@@ -64,6 +68,7 @@ export default function RootNavigator() {
               calls elsewhere in the codebase keep working. */}
           <Stack.Screen name="Profile" component={RoleRouter} />
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
+          <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="Notifications" component={NotificationsScreen} options={modalOpts} />
           <Stack.Screen name="BraineeChat" component={BraineeChatScreen} options={modalOpts} />
         </>

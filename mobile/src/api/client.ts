@@ -119,11 +119,22 @@ api.interceptors.response.use(
           await deleteSecureItems(['access_token', 'refresh_token']);
           await AsyncStorage.removeItem('user');
           setCacheNamespace(null);
+          // Prefer the ORIGINAL failing request's message — that's
+          // requireAuth's own 401 body, which already includes
+          // revocation_reason when an admin deactivated the account or its
+          // access period ended (see backend/src/middleware/auth.ts). Fall
+          // back to whatever /auth/refresh itself said, then a generic
+          // line — better than the previous behaviour of silently clearing
+          // the session with no explanation shown at all.
+          const message =
+            error.response?.data?.error ??
+            refreshErr?.response?.data?.error ??
+            'Your session has ended. Please log in again.';
           // Tell AuthContext the session is dead so it clears its in-memory
           // `user` state and RootNavigator swaps back to the Login screen.
           // (Previously this comment claimed a listener existed; it didn't —
           // see authEvents.ts for the fix and why it's needed.)
-          emitForcedLogout();
+          emitForcedLogout(message);
         }
         return Promise.reject(error);
       }

@@ -23,7 +23,13 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
     try {
       await changePassword(oldPw, newPw);
       setOk(true);
-      setTimeout(() => navigation.replace(forced ? 'App' : 'Profile'), 1500);
+      setTimeout(() => {
+        if (forced && route?.params?.thenSetupSecurity) {
+          navigation.replace('SecurityQuestionSetup', { forced: true });
+        } else {
+          navigation.replace(forced ? 'App' : 'Profile');
+        }
+      }, 1500);
     } catch (e: any) {
       if (!e?.response) {
         setError('No internet connection. Changing your password needs one — try again once you have signal.');

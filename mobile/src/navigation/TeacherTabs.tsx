@@ -29,6 +29,7 @@ import ScoreEntryScreen from '../screens/ScoreEntryScreen';
 import { SubjectsMgmtScreen } from '../screens/AcademicMgmtScreens';
 import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
+import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 import ClassLockScreen from '../screens/ClassLockScreen';
 
 const Tab = createBottomTabNavigator();
@@ -79,6 +80,7 @@ function MoreStackNavigator() {
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
       <MoreStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
+      <MoreStack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', ...opts }} />
     </MoreStack.Navigator>
   );
 }

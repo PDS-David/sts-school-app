@@ -24,6 +24,7 @@ import ExportExcelScreen from '../screens/ExportExcelScreen';
 import { ClassSummaryScreen, AuditLogScreen, DeletedStudentsScreen } from '../screens/AdminExtraScreens';
 import { TermsMgmtScreen, SubjectsMgmtScreen } from '../screens/AcademicMgmtScreens';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
+import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 import ClassLockScreen from '../screens/ClassLockScreen';
 
 const Stack = createNativeStackNavigator();
@@ -63,6 +64,7 @@ export default function AdminStack() {
       <Stack.Screen name="SubjectsMgmt" component={SubjectsMgmtScreen} options={{ headerShown: true, title: 'Subjects', ...opts }} />
       <Stack.Screen name="ClassLock" component={ClassLockScreen} options={{ headerShown: true, title: 'Close Term Records', ...opts }} />
       <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
+      <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', ...opts }} />
     </Stack.Navigator>
   );
 }

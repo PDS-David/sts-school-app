@@ -4,6 +4,7 @@ import { query } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
+import { findOrCreateParent, linkParentToStudent, type ProvisionedParent } from '../utils/parentProvisioning.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -160,6 +161,12 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
     gender:           z.enum(['M','F','Other']).optional(),
     date_of_birth:    z.string().optional(),
     admission_number: z.string().optional(),
+    // Optional — when given, a parent account is found (by phone, scoped to
+    // this school — siblings share one account) or auto-created and linked.
+    // See utils/parentProvisioning.ts.
+    parent_name:      z.string().optional(),
+    parent_phone:     z.string().optional(),
+    parent_email:     z.string().optional(),
   });
   const parsed = schema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
@@ -174,7 +181,19 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
     [d.full_name, d.class_name, d.school_code, d.gender ?? null, d.date_of_birth ?? null, d.admission_number ?? null],
   );
   await audit(req.user!, 'add_student', 'student', rows[0].id, d.full_name);
-  return res.status(201).json({ student: rows[0] });
+
+  let parent: ProvisionedParent | undefined;
+  if (d.parent_phone?.trim()) {
+    parent = await findOrCreateParent(req.user!, {
+      school_code: d.school_code,
+      parent_name: d.parent_name ?? null,
+      parent_phone: d.parent_phone,
+      parent_email: d.parent_email ?? null,
+    });
+    await linkParentToStudent(parent.id, rows[0].id);
+  }
+
+  return res.status(201).json({ student: rows[0], parent });
 });
 
 // ── PUT /students/:id ─────────────────────────────────────────────────────────

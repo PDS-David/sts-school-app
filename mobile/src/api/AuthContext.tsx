@@ -22,9 +22,10 @@ export interface User {
 interface AuthState {
   user: User | null;
   loading: boolean;
-  login: (username: string, password: string) => Promise<{ must_change_pw: boolean }>;
+  login: (username: string, password: string) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean }>;
   logout: () => Promise<void>;
   changePassword: (oldPw: string, newPw: string) => Promise<void>;
+  setSecurityQuestion: (question: string, answer: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthState>({} as AuthState);
@@ -47,13 +48,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // If client.ts's response interceptor fails to refresh the access token
-  // (refresh token expired/revoked — e.g. after 7 days, or after a
-  // password change elsewhere invalidated it), it clears AsyncStorage and
-  // emits this event. We must also clear in-memory `user` state, or
-  // RootNavigator never swaps back to the Login screen and every screen
-  // just silently 401s forever.
+  // (refresh token expired/revoked — e.g. after 7 days, after a password
+  // change elsewhere invalidated it, or an admin deactivated the account /
+  // its access period ended mid-session), it clears AsyncStorage and emits
+  // this event with the reason (see client.ts / authEvents.ts). We must
+  // also clear in-memory `user` state, or RootNavigator never swaps back to
+  // the Login screen and every screen just silently 401s forever — and we
+  // show the reason, since a mid-session deactivation used to just dump the
+  // person back at Login with zero explanation.
   useEffect(() => {
-    return onForcedLogout(() => { setUser(null); setCacheNamespace(null); });
+    return onForcedLogout((message) => {
+      setUser(null);
+      setCacheNamespace(null);
+      if (message) Alert.alert('Signed out', message);
+    });
   }, []);
 
   const login = async (username: string, password: string) => {
@@ -70,7 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // registration call just means no pushes until the next successful
     // login, not a broken sign-in flow.
     registerForPushNotifications().catch(() => {});
-    return { must_change_pw: data.must_change_pw };
+    return { must_change_pw: data.must_change_pw, must_set_security_question: !!data.must_set_security_question };
   };
 
   const logout = async () => {
@@ -114,8 +122,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await api.post('/auth/change-password', { old_password, new_password });
   };
 
+  const setSecurityQuestion = async (question: string, answer: string) => {
+    await api.post('/auth/security-question', { question, answer });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, changePassword }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, changePassword, setSecurityQuestion }}>
       {children}
     </AuthContext.Provider>
   );

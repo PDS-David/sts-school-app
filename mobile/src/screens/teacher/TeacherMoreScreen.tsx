@@ -15,6 +15,7 @@ export default function TeacherMoreScreen({ navigation }: any) {
     { icon: 'calendar-number-outline', label: 'Calendar', sub: 'Coming soon' },
     { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
+    { icon: 'help-circle-outline', label: 'Security Question', sub: 'Used to reset your password if you forget it', onPress: () => navigation.navigate('SecurityQuestionSetup') },
   ];
 
   return (
