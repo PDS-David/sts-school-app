@@ -1,6 +1,34 @@
 # Changelog
 
-## [Unreleased] — 2026-07-15 — Offline hardening pass (cache leak, auth-queue corruption, forced-logout-on-blip)
+## [Unreleased] — 2026-09-04 — Add-Student mobile screen + Expo web build (items 3 & 4)
+
+Two independent, self-contained pieces — deliberately kept out of the
+active curriculum/topics work happening in parallel (didn't touch `topics`,
+`topic_completions`, `subjects`, or anything in `learning.ts`'s TOPICS
+section).
+
+### Mobile
+
+- **New `AddStudentScreen.tsx`** — there was no "Add Student" screen
+  anywhere in the app; students only ever entered via import scripts. Now
+  reachable via a FAB on `StudentsScreen`. Captures the usual fields plus
+  optional `parent_name`/`parent_phone`/`parent_email` — backend support
+  for auto-provisioning a parent account from these already existed
+  (`utils/parentProvisioning.ts`), this was the missing UI. Shows generated
+  parent credentials once on success, or a "linked to existing parent"
+  notice when a sibling's phone matched an existing account.
+- **Expo web build enabled** — `react-native-web` + `react-dom` added,
+  `expo.web` config added to `app.json` (`npm run web` /
+  `expo start --web`). `pushRegistration.ts` now explicitly no-ops on
+  `Platform.OS === 'web'` (expo-notifications has no web remote-push
+  support) instead of relying on `Device.isDevice` alone.
+  `secureTokenStorage.ts` already had a web fallback from an earlier pass.
+  **Known follow-up, not addressed here:** `ExportExcelScreen.tsx`'s
+  file-save/share flow (`expo-file-system`/`expo-sharing`) behaves
+  differently on web (browser download vs. native share sheet) — untested,
+  no guard added yet.
+
+
 
 Went back over the existing offline system (`mobile/src/offline/`,
 `api/client.ts`) specifically looking for ways it could still fail someone
