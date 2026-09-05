@@ -593,4 +593,47 @@ ALTER TABLE submissions ADD COLUMN IF NOT EXISTS fully_graded BOOLEAN NOT NULL D
 ALTER TABLE weekly_efforts ADD COLUMN IF NOT EXISTS ai_summary TEXT;
 ALTER TABLE weekly_efforts ADD COLUMN IF NOT EXISTS ai_summary_generated_at TIMESTAMPTZ;
 
+-- ── Curriculum ingestion for `topics` (confirmed with Da, 2026-09) ─────────────
+-- The `topics` table above was built as an admin/teacher-authored free-text
+-- feature, tied to a specific session's term_id. This extends it to also
+-- support bulk ingestion from the school's own curriculum documents
+-- (schemes of work + lesson notes), which needs two things term_id can't
+-- give us:
+--   1. Evergreen terms: curriculum content ('1st Term Mathematics — JSS 1')
+--      doesn't change year to year, but term_id points at one specific
+--      session's row. term_label is a plain string ('1st Term'/'2nd Term'/
+--      '3rd Term') so ingested topics survive across sessions without
+--      re-ingesting. term_id is left in place, untouched, for any
+--      already-existing admin/teacher-authored topic rows that use it —
+--      this is additive, not a replacement.
+--   2. Content grounding: source_reference holds the raw text extracted
+--      from the original curriculum document. It is NEVER shown to a
+--      student as-is — Brainee's generated study summary (topics.summary)
+--      is what students see, now written FROM this real material instead
+--      of just a bare topic title, so quality doesn't depend on generating
+--      from nothing. If a Brainee call fails, source_reference is the
+--      fallback shown instead of nothing, clearly labeled as unpolished
+--      source material rather than presented as the finished lesson.
+-- order_index: sequence within (subject_id, class_name, term_label), so a
+-- student's topic list renders in the school's actual teaching order.
+-- source_file: original filename ingested from — traceability only (e.g.
+-- the SS1 1st-term Chemistry duplicate-source situation, still unresolved
+-- against the real WAEC/JAMB syllabus per /areas/sts-curriculum-ai.md,
+-- needs this to tell the two versions apart).
+ALTER TABLE topics ADD COLUMN IF NOT EXISTS term_label TEXT;
+ALTER TABLE topics ADD COLUMN IF NOT EXISTS source_reference TEXT;
+ALTER TABLE topics ADD COLUMN IF NOT EXISTS order_index INT;
+ALTER TABLE topics ADD COLUMN IF NOT EXISTS source_file TEXT;
+
+-- Prevents re-running the importer from creating duplicate topic rows, while
+-- still allowing two genuinely different source files for the same
+-- (subject,class,term,title) — e.g. the SS1 Chemistry situation above —
+-- since source_file differs between them. NULLs (manually-authored topics
+-- with no source_file) are never considered duplicates of each other,
+-- per ordinary Postgres UNIQUE-with-NULL semantics.
+ALTER TABLE topics DROP CONSTRAINT IF EXISTS topics_ingestion_dedupe;
+ALTER TABLE topics ADD CONSTRAINT topics_ingestion_dedupe
+  UNIQUE (subject_id, class_name, term_label, title, source_file);
+
+
 

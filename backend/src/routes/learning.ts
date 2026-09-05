@@ -94,7 +94,7 @@ router.delete('/materials/:id', requirePerm('materials.write'), async (req, res)
 // ════════════════════════════════════════════════════════
 
 router.get('/topics', requirePerm('topics.read'), async (req, res) => {
-  const { subject_id, class_name, term_id, school_code } = req.query as Record<string, string>;
+  const { subject_id, class_name, term_id, term_label, school_code } = req.query as Record<string, string>;
   const user = req.user!;
   const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
 
@@ -114,9 +114,16 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
     params.push(class_name); sql += ` AND t.class_name=$${params.length}`;
   }
 
-  if (subject_id) { params.push(subject_id); sql += ` AND t.subject_id=$${params.length}`; }
-  if (term_id)    { params.push(term_id);    sql += ` AND t.term_id=$${params.length}`; }
-  sql += ' ORDER BY t.created_at DESC';
+  if (subject_id)  { params.push(subject_id);  sql += ` AND t.subject_id=$${params.length}`; }
+  if (term_id)     { params.push(term_id);     sql += ` AND t.term_id=$${params.length}`; }
+  // term_label is the evergreen filter for ingested curriculum topics (see
+  // schema.sql's "Curriculum ingestion for topics" section) — term_id above
+  // still works unchanged for any older admin/teacher-authored topic rows.
+  if (term_label)  { params.push(term_label);  sql += ` AND t.term_label=$${params.length}`; }
+  // order_index reflects the school's actual teaching sequence for ingested
+  // topics; NULLS LAST keeps manually-authored topics (no order_index) at
+  // the end rather than sorting ahead of real sequence data.
+  sql += ' ORDER BY t.order_index NULLS LAST, t.created_at DESC';
 
   const { rows } = await query(sql, params);
 
@@ -233,26 +240,46 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
 
   // Study summary — generate once, cache on the topic row. A failure here
   // never blocks the completion itself or the practice/assessment below.
+  // When source_reference exists (this topic was ingested from the
+  // school's own curriculum documents — see schema.sql), Brainee is
+  // grounded in that real material rather than writing from the bare title
+  // alone, so output quality doesn't depend on generating from nothing. If
+  // generation fails, source_reference itself is returned as a fallback —
+  // clearly labeled as unpolished source material, not presented as the
+  // finished lesson — so the student isn't left with nothing.
   let summary: string | null = topic.summary;
+  let summary_is_fallback = false;
   if (!summary) {
     try {
+      const grounding = topic.source_reference
+        ? `\n\nBase this on the following curriculum material (the school's own scheme of work / lesson notes for this topic) rather than inventing content from the title alone:\n"""\n${topic.source_reference}\n"""`
+        : '';
       summary = await generate(
         `Write short, clear study notes on "${topic.title}" for a student learning it ` +
-        `for the first time. Keep it focused and easy to revise from.`,
+        `for the first time. Keep it focused and easy to revise from.${grounding}`,
         'notes',
         { userId: user.id, role: user.role },
       );
       await query('UPDATE topics SET summary=$1 WHERE id=$2', [summary, topic.id]);
     } catch {
-      summary = null;
+      if (topic.source_reference) {
+        summary = topic.source_reference;
+        summary_is_fallback = true;
+      } else {
+        summary = null;
+      }
     }
   }
 
-  // Practice exercises — fresh every call, never persisted.
+  // Practice exercises — fresh every call, never persisted. Also grounded
+  // in source_reference when available, same reasoning as the summary above.
   let practice_questions: unknown = [];
   try {
+    const grounding = topic.source_reference
+      ? ` Base the questions on this curriculum material: """${topic.source_reference}"""`
+      : '';
     practice_questions = await generateJSON(
-      `Draft 3 multiple-choice practice question(s) on the topic "${topic.title}". ` +
+      `Draft 3 multiple-choice practice question(s) on the topic "${topic.title}".${grounding} ` +
       `Return a JSON array where each item has exactly this shape: ` +
       `{"stem": string, "options": [{"key":"A","text":string}, {"key":"B","text":string}, {"key":"C","text":string}, {"key":"D","text":string}], "correct_keys": [string]}`,
       'generate-questions',
@@ -276,8 +303,11 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   let assessment_status: string | null = null;
   if (!topic.generated_assessment_id) {
     try {
+      const grounding = topic.source_reference
+        ? ` Base the questions on this curriculum material: """${topic.source_reference}"""`
+        : '';
       const drafts = await generateJSON(
-        `Draft 5 multiple-choice question(s) on the topic "${topic.title}". ` +
+        `Draft 5 multiple-choice question(s) on the topic "${topic.title}".${grounding} ` +
         `Return a JSON array where each item has exactly this shape: ` +
         `{"stem": string, "options": [{"key":"A","text":string}, {"key":"B","text":string}, {"key":"C","text":string}, {"key":"D","text":string}], "correct_keys": [string], "marks": number}`,
         'generate-questions',
@@ -323,6 +353,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   return res.json({
     ok: true,
     summary,
+    summary_is_fallback,
     practice_questions,
     assessment_status,
     note: assessment_status === 'open'
