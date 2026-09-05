@@ -9,6 +9,7 @@ import { Loader, Empty, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { FAB } from '../components/FAB';
 
 interface Student {
   id: string; full_name: string; class_name: string;
@@ -82,6 +83,7 @@ export default function StudentsScreen({ navigation }: any) {
           </TouchableOpacity>
         )}
       />
+      <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />
     </View>
   );
 }
