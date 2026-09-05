@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, RefreshControl, TouchableOpacity, Image, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { Card, Btn, Loader, Empty, GradePill, RowItem, SectionHeader } from '../components/UI';
@@ -7,6 +7,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { getSchoolBrand } from '../schoolBranding';
+import { buildTermReportHtml, printReportHtml, exportReportHtml } from '../utils/reportPdf';
 
 export default function MyResultsScreen({ route, navigation }: any) {
   // A parent can pass a specific parentStudentId via route (e.g. from a student
@@ -75,6 +76,37 @@ export default function MyResultsScreen({ route, navigation }: any) {
   const { student, term, scores, attendance, class_record, summary } = report;
   const brand = getSchoolBrand(student.school_code);
 
+  // Print/Export is deliberately admin + parent only — this is a report
+  // TEACHERS generate the underlying data for, but the school's own decision
+  // was that printing/exporting the finished document is an admin/parent
+  // action, not something a teacher or the student themselves does from here.
+  const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
+  const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
+
+  const handlePrint = async () => {
+    setPdfBusy('print');
+    try {
+      const html = await buildTermReportHtml(report, brand);
+      await printReportHtml(html);
+    } catch (e: any) {
+      Alert.alert('Could not print', e?.message ?? 'Something went wrong.');
+    } finally {
+      setPdfBusy(null);
+    }
+  };
+
+  const handleExport = async () => {
+    setPdfBusy('export');
+    try {
+      const html = await buildTermReportHtml(report, brand);
+      await exportReportHtml(html, `${student.full_name}-${term?.name ?? 'report'}`.replace(/\s+/g, '_'));
+    } catch (e: any) {
+      Alert.alert('Could not export', e?.message ?? 'Something went wrong.');
+    } finally {
+      setPdfBusy(null);
+    }
+  };
+
   return (
     <ScrollView
       style={styles.container}
@@ -102,6 +134,12 @@ export default function MyResultsScreen({ route, navigation }: any) {
       </View>
 
       {/* Term info */}
+      {canPrintExport && (
+        <View style={styles.pdfRow}>
+          <Btn label={pdfBusy === 'print' ? 'Opening…' : 'Print'} onPress={handlePrint} variant="outline" style={{ flex: 1 }} disabled={pdfBusy !== null} />
+          <Btn label={pdfBusy === 'export' ? 'Exporting…' : 'Export PDF'} onPress={handleExport} style={{ flex: 1 }} disabled={pdfBusy !== null} />
+        </View>
+      )}
       <Card>
         <SectionHeader title={term?.name ?? ''} />
         <RowItem label="Academic Year"  value={term?.academic_year ?? '—'} />
@@ -198,6 +236,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
 
 const styles = StyleSheet.create({
   container:   { flex: 1, backgroundColor: Colors.background, padding: Spacing.sm },
+  pdfRow:      { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.sm },
   letterhead:  { alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.md, marginBottom: Spacing.sm, borderWidth: 1, borderColor: Colors.border },
   letterheadLogo: { width: 64, height: 64, borderRadius: 32, marginBottom: 6 },
   letterheadName: { fontSize: Fonts.sizes.md, fontWeight: '800', color: Colors.primary, textAlign: 'center' },

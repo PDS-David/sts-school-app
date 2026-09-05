@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, RefreshControl, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, RefreshControl, Image, Alert } from 'react-native';
 import api from '../api/client';
-import { Card, Loader, Empty, GradePill, RowItem, SectionHeader, Badge } from '../components/UI';
+import { Card, Btn, Loader, Empty, GradePill, RowItem, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { getSchoolBrand } from '../schoolBranding';
+import { buildSessionReportHtml, printReportHtml, exportReportHtml } from '../utils/reportPdf';
 
 // A session is fixed at exactly 3 terms (1st, 2nd, 3rd). This screen collates
 // whichever terms have been entered so far for the resolved academic year
@@ -66,6 +67,34 @@ export default function SessionReportScreen({ route }: any) {
   const { student, academic_year, terms, terms_present, is_complete_session, subjects, attendance, summary } = report;
   const brand = getSchoolBrand(student.school_code);
 
+  // Same restriction as MyResultsScreen.tsx — admin + parent only.
+  const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
+  const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
+
+  const handlePrint = async () => {
+    setPdfBusy('print');
+    try {
+      const html = await buildSessionReportHtml(report, brand);
+      await printReportHtml(html);
+    } catch (e: any) {
+      Alert.alert('Could not print', e?.message ?? 'Something went wrong.');
+    } finally {
+      setPdfBusy(null);
+    }
+  };
+
+  const handleExport = async () => {
+    setPdfBusy('export');
+    try {
+      const html = await buildSessionReportHtml(report, brand);
+      await exportReportHtml(html, `${student.full_name}-Session-${academic_year}`.replace(/\s+/g, '_'));
+    } catch (e: any) {
+      Alert.alert('Could not export', e?.message ?? 'Something went wrong.');
+    } finally {
+      setPdfBusy(null);
+    }
+  };
+
   return (
     <ScrollView
       style={styles.container}
@@ -99,6 +128,13 @@ export default function SessionReportScreen({ route }: any) {
             term's scores are in.
           </Text>
         </Card>
+      )}
+
+      {canPrintExport && (
+        <View style={styles.pdfRow}>
+          <Btn label={pdfBusy === 'print' ? 'Opening…' : 'Print'} onPress={handlePrint} variant="outline" style={{ flex: 1 }} disabled={pdfBusy !== null} />
+          <Btn label={pdfBusy === 'export' ? 'Exporting…' : 'Export PDF'} onPress={handleExport} style={{ flex: 1 }} disabled={pdfBusy !== null} />
+        </View>
       )}
 
       <Card>
@@ -142,6 +178,7 @@ function shortTermLabel(name: string) {
 
 const styles = StyleSheet.create({
   container:   { flex: 1, backgroundColor: Colors.background, padding: Spacing.sm },
+  pdfRow:      { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.sm },
   letterhead:  { alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.md, marginBottom: Spacing.sm, borderWidth: 1, borderColor: Colors.border },
   letterheadLogo: { width: 64, height: 64, borderRadius: 32, marginBottom: 6 },
   letterheadName: { fontSize: Fonts.sizes.md, fontWeight: '800', color: Colors.primary, textAlign: 'center' },
