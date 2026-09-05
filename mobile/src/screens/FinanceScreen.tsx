@@ -20,9 +20,10 @@ export default function FinanceScreen() {
   const { selectedSchoolCode } = useAdminSchool();
   // Finance is a completely separate path from Operations Admin now — only
   // finance_admin gets write access (creating fee items/invoices, marking
-  // paid). 'admin' never reaches this screen at all (removed from
-  // AdminStack/DashboardScreen); this flag only distinguishes finance_admin
-  // from parent, who only ever sees their own ward's invoices, read-only.
+  // paid). 'admin' never reaches this screen at all (not registered in
+  // AdminTabs.tsx, only FinanceAdminTabs.tsx); this flag only distinguishes
+  // finance_admin from parent, who only ever sees their own ward's
+  // invoices, read-only.
   const isFinanceAdmin = user?.role === 'finance_admin';
   const isParent = user?.role === 'parent';
   const [invoices,  setInvoices]  = useState<any[]>([]);

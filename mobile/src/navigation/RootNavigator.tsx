@@ -14,8 +14,8 @@ import BraineeChatScreen from '../screens/BraineeChatScreen';
 import StudentTabs from './StudentTabs';
 import TeacherTabs from './TeacherTabs';
 import ParentTabs from './ParentTabs';
-import AdminStack from './AdminStack';
-import FinanceAdminStack from './FinanceAdminStack';
+import AdminTabs from './AdminTabs';
+import FinanceAdminTabs from './FinanceAdminTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,17 +24,17 @@ const modalOpts: NativeStackNavigationOptions = {
   presentation: 'modal',
 };
 
-// Renders the right role-based navigator. Admin and finance_admin keep the
-// original tile-dashboard flow (two separate stacks — see FinanceAdminStack
-// for why); student, teacher, and parent get the WhatsApp-style bottom-tab
-// experience.
+// Renders the right role-based navigator. Every role now gets the same
+// labeled bottom-tab-bar shape (AdminStack/FinanceAdminStack's old flat,
+// tab-less tile dashboards were replaced with AdminTabs/FinanceAdminTabs —
+// same pattern already used by student/teacher/parent since day one).
 function RoleRouter() {
   const { user } = useAuth();
   switch (user?.role) {
     case 'teacher': return <TeacherTabs />;
     case 'parent':  return <ParentTabs />;
-    case 'admin':   return <AdminStack />;
-    case 'finance_admin': return <FinanceAdminStack />;
+    case 'admin':   return <AdminTabs />;
+    case 'finance_admin': return <FinanceAdminTabs />;
     case 'student':
     default:        return <StudentTabs />;
   }

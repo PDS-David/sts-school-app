@@ -74,9 +74,15 @@ export default function App() {
         case 'message':
           // `data.screen` is set server-side (messages.ts) based on the
           // recipient's role — 'ChatThread' for parent/student/teacher,
-          // 'Messages' for admin, since AdminStack.tsx has no nested
-          // chats-stack. Falls back to openMessageThread's own default
-          // ('ChatThread') if an older push payload didn't include it.
+          // 'Messages' for admin/finance_admin. AdminTabs.tsx/
+          // FinanceAdminTabs.tsx now nest this screen inside a Chats tab
+          // (previously a flat top-level route on AdminStack.tsx, since
+          // removed) but kept the exact name 'Messages' — chat itself was
+          // deliberately left untouched in that pass, and navigationRef's
+          // ref-based navigate() finds a nested screen by name regardless
+          // of how deep it sits. Falls back to openMessageThread's own
+          // default ('ChatThread') if an older push payload didn't include
+          // a screen name.
           if (data.contact) openMessageThread(data.contact as any, data.screen as string | undefined);
           break;
         case 'assessment':

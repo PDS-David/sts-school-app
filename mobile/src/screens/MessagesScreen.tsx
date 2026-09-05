@@ -17,12 +17,16 @@ interface Msg     { id: string; sender_id: string; body: string; created_at: str
 
 export default function MessagesScreen() {
   const { user } = useAuth();
-  // Admin's navigator (AdminStack.tsx) has no nested chats-stack — this one
-  // flat screen doubles as both the contact list and the thread view, and
-  // is what a message-push deep link now targets for admin recipients (see
-  // navigationRef.ts's openMessageThread + App.tsx's tap handler). A
-  // `contact` route param means "open straight into this thread" instead
-  // of landing on the contact list first, matching how ChatThreadScreen
+  // Used by admin (AdminTabs.tsx) and finance_admin (FinanceAdminTabs.tsx)
+  // — this one flat screen doubles as both the contact list and the thread
+  // view, and is what a message-push deep link now targets for those two
+  // roles (see navigationRef.ts's openMessageThread + App.tsx's tap
+  // handler). Deliberately not swapped for the newer ChatsScreen/
+  // ChatThreadScreen used by student/teacher/parent — chat was left as-is
+  // in the tab-bar redesign pass, only the surrounding navigation shell
+  // changed. A `contact` route param means "open straight into this
+  // thread" instead of landing on the contact list first, matching how
+  // ChatThreadScreen
   // already behaves for parent/student/teacher.
   const route = useRoute<any>();
   const routeContact = route.params?.contact as Contact | undefined;
