@@ -635,5 +635,35 @@ ALTER TABLE topics DROP CONSTRAINT IF EXISTS topics_ingestion_dedupe;
 ALTER TABLE topics ADD CONSTRAINT topics_ingestion_dedupe
   UNIQUE (subject_id, class_name, term_label, title, source_file);
 
+-- ── Term-PIN gating ──────────────────────────────────────────────────────────
+-- Locked decisions (from the original build spec, do not re-litigate):
+--   - One PIN per student per term_label, not shared/class-wide.
+--   - PIN issuance is independent of Finance/fee payment — no invoice-paid
+--     check anywhere in this feature.
+--   - A redeemed PIN unlocks only that term's FIRST topic (order_index=1,
+--     per subject) in the student's class. Every topic after that is
+--     pass-gated automatically (score_percent >= 60 on the previous topic in
+--     the same subject/class/term_label sequence), never PIN-gated again.
+--   - Topics without an order_index (manually-authored, pre-dating
+--     ingestion) are outside this whole scheme — always unlocked, same as
+--     before this feature existed.
+ALTER TABLE topic_completions ADD COLUMN IF NOT EXISTS passed BOOLEAN;
+ALTER TABLE topic_completions ADD COLUMN IF NOT EXISTS score_percent NUMERIC;
+
+CREATE TABLE IF NOT EXISTS term_access_pins (
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  student_id   UUID REFERENCES students(id) ON DELETE CASCADE,
+  term_label   TEXT NOT NULL,
+  pin          TEXT NOT NULL,
+  redeemed_at  TIMESTAMPTZ,
+  created_by   UUID REFERENCES users(id),
+  created_at   TIMESTAMPTZ DEFAULT now(),
+  -- Re-issuing a PIN for the same (student, term_label) — e.g. a lost slip,
+  -- or resetting access — is a plain upsert on this constraint (see
+  -- POST /admin/term-pins) rather than a new row, so there's never more
+  -- than one live PIN per student per term to keep track of.
+  UNIQUE(student_id, term_label)
+);
+
 
 

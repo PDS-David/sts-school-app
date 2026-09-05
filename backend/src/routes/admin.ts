@@ -5,7 +5,7 @@ import { requireAuth, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
-import { generateTempPassword } from '../utils/password.js';
+import { generateTempPassword, generateNumericPin } from '../utils/password.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
@@ -253,5 +253,57 @@ router.get('/export/excel', async (req, res) => {
 // requireRole('admin'). Operations Admin (this file) has no finance access
 // at all now; see finance.ts for why that's enforced explicitly rather than
 // through the '*' permission wildcard this role otherwise has.
+
+// ══════════════════════════════════════════
+// TERM-ACCESS PINS (Feature A — see schema.sql's "Term-PIN gating" section
+// for the locked product decisions this implements)
+// ══════════════════════════════════════════
+const TERM_LABELS = ['1st Term', '2nd Term', '3rd Term'];
+
+// ── POST /admin/term-pins — generate (or re-issue) a PIN ───────────────────────
+router.post('/term-pins', async (req, res) => {
+  const { student_id, term_label } = req.body as { student_id?: string; term_label?: string };
+  if (!student_id || !term_label) {
+    return res.status(400).json({ error: 'student_id and term_label are required' });
+  }
+  if (!TERM_LABELS.includes(term_label)) {
+    return res.status(400).json({ error: `term_label must be one of: ${TERM_LABELS.join(', ')}` });
+  }
+
+  const { rows: stRows } = await query('SELECT id FROM students WHERE id=$1', [student_id]);
+  if (!stRows[0]) return res.status(404).json({ error: 'Student not found' });
+
+  const pin = generateNumericPin();
+  // Upsert on (student_id, term_label): re-issuing (a lost slip, or a
+  // deliberate reset) replaces the existing PIN and clears any prior
+  // redemption, rather than erroring or accumulating rows — there is only
+  // ever meant to be one live PIN per student per term_label at a time.
+  const { rows } = await query(
+    `INSERT INTO term_access_pins(student_id, term_label, pin, created_by)
+     VALUES($1,$2,$3,$4)
+     ON CONFLICT (student_id, term_label)
+     DO UPDATE SET pin=EXCLUDED.pin, redeemed_at=NULL, created_by=EXCLUDED.created_by, created_at=now()
+     RETURNING *`,
+    [student_id, term_label, pin, req.user!.id],
+  );
+  return res.status(201).json({ term_pin: rows[0] });
+});
+
+// ── GET /admin/term-pins?student_id=&term_label= — view issued/redeemed status ──
+// Note: this deliberately returns the live `pin` value too (not just
+// redemption status) — an admin re-checking what they handed a student
+// needs to be able to read it back, same as `POST /admin/users`'s
+// `temporary_password` being visible to admin, not just the recipient.
+router.get('/term-pins', async (req, res) => {
+  const { student_id, term_label } = req.query as Record<string, string>;
+  let sql = `SELECT tp.*, st.full_name AS student_name, st.class_name
+             FROM term_access_pins tp JOIN students st ON st.id=tp.student_id WHERE 1=1`;
+  const params: unknown[] = [];
+  if (student_id) { params.push(student_id); sql += ` AND tp.student_id=$${params.length}`; }
+  if (term_label) { params.push(term_label); sql += ` AND tp.term_label=$${params.length}`; }
+  sql += ' ORDER BY st.full_name, tp.term_label';
+  const { rows } = await query(sql, params);
+  return res.json({ term_pins: rows });
+});
 
 export default router;

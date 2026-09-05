@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { query } from '../db/pool.js';
-import { requireAuth, requirePerm } from '../middleware/auth.js';
+import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
@@ -127,18 +127,69 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
 
   const { rows } = await query(sql, params);
 
-  // For a student, also report whether they've completed each topic —
-  // mirrors the already_submitted pattern on GET /assessments above.
+  // For a student, also report whether they've completed each topic, and
+  // whether it's currently locked. Locking (see schema.sql's "Term-PIN
+  // gating" section for the full decision writeup):
+  //   - A topic with no order_index (manually-authored, pre-dates
+  //     ingestion) is always unlocked — this whole scheme only applies to
+  //     the ordered, ingested curriculum sequence.
+  //   - The first ordered topic in each (subject_id, class_name,
+  //     term_label) group is locked until the student has redeemed a PIN
+  //     for that term_label.
+  //   - Every later ordered topic in that same group is locked until the
+  //     immediately-preceding one (by position in the ordered sequence,
+  //     not raw order_index arithmetic — real data has gaps) has been
+  //     completed with passed=true.
   if (user.role === 'student' && rows.length) {
     const { rows: stRows } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
     const studentId = stRows[0]?.id;
     if (studentId) {
       const { rows: compRows } = await query(
-        'SELECT topic_id FROM topic_completions WHERE student_id=$1 AND topic_id=ANY($2)',
+        'SELECT topic_id, passed FROM topic_completions WHERE student_id=$1 AND topic_id=ANY($2)',
         [studentId, rows.map((r: any) => r.id)],
       );
       const completedIds = new Set(compRows.map((r: any) => r.topic_id));
-      return res.json({ topics: rows.map((r: any) => ({ ...r, completed: completedIds.has(r.id) })) });
+      const passedIds = new Set(compRows.filter((r: any) => r.passed === true).map((r: any) => r.topic_id));
+
+      const { rows: pinRows } = await query(
+        'SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL',
+        [studentId],
+      );
+      const redeemedTermLabels = new Set(pinRows.map((r: any) => r.term_label));
+
+      // Group only the ordered (order_index NOT NULL) topics, per
+      // (subject_id, class_name, term_label), sorted by order_index — this
+      // sequence position, not the raw order_index value, is what "first"
+      // and "immediately preceding" mean, so gaps in order_index don't
+      // break the chain.
+      const groups = new Map<string, any[]>();
+      for (const t of rows) {
+        if (t.order_index == null) continue;
+        const key = `${t.subject_id}|${t.class_name}|${t.term_label}`;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key)!.push(t);
+      }
+      const lockedIds = new Set<number>();
+      for (const group of groups.values()) {
+        group.sort((a, b) => a.order_index - b.order_index);
+        for (let i = 0; i < group.length; i++) {
+          const topic = group[i];
+          if (i === 0) {
+            if (!redeemedTermLabels.has(topic.term_label)) lockedIds.add(topic.id);
+          } else {
+            const prev = group[i - 1];
+            if (!passedIds.has(prev.id)) lockedIds.add(topic.id);
+          }
+        }
+      }
+
+      return res.json({
+        topics: rows.map((r: any) => ({
+          ...r,
+          completed: completedIds.has(r.id),
+          locked: lockedIds.has(r.id),
+        })),
+      });
     }
   }
 
@@ -360,6 +411,37 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       ? 'A standard assessment for this topic is available now — check Assessments.'
       : undefined,
   });
+});
+
+// ── POST /term-pins/redeem (student) ─────────────────────────────────────────
+// Unlocks order_index=1 for every subject in the student's class for the
+// PIN's term_label — see schema.sql's "Term-PIN gating" section for the
+// locked decisions this implements (one PIN per student per term, no tie to
+// Finance, only the first topic is PIN-gated). The actual "is this topic
+// locked" computation lives in GET /topics below, driven by whether a
+// redeemed row exists here — this route only flips that one bit.
+router.post('/term-pins/redeem', requireRole('student'), async (req, res) => {
+  const { pin } = req.body as { pin?: string };
+  if (!pin) return res.status(400).json({ error: 'pin is required' });
+
+  const { rows: stRows } = await query('SELECT id FROM students WHERE user_id=$1 LIMIT 1', [req.user!.id]);
+  const student = stRows[0];
+  if (!student) return res.status(404).json({ error: 'No student record for this user' });
+
+  const { rows } = await query(
+    `UPDATE term_access_pins SET redeemed_at=now()
+     WHERE student_id=$1 AND pin=$2 AND redeemed_at IS NULL
+     RETURNING *`,
+    [student.id, pin],
+  );
+  if (!rows[0]) {
+    // Deliberately one generic message for "wrong PIN", "already redeemed",
+    // and "PIN belongs to a different student" — distinguishing them would
+    // let someone narrow down a guess (e.g. confirm a PIN is valid but
+    // already used, meaning they're just guessing the wrong student).
+    return res.status(400).json({ error: 'That PIN is invalid or has already been used.' });
+  }
+  return res.json({ ok: true, term_label: rows[0].term_label });
 });
 
 // ════════════════════════════════════════════════════════
@@ -630,7 +712,7 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   // passed — live-verified: a draft assessment returned a full auto-score.
   // Also add the same school/class scoping used on every other write route.
   const { rows: aRows } = await query(
-    'SELECT status, start_at, end_at, school_code, class_name FROM assessments WHERE id=$1', [req.params.id],
+    'SELECT status, start_at, end_at, school_code, class_name, total_marks FROM assessments WHERE id=$1', [req.params.id],
   );
   const assessment = aRows[0];
   if (!assessment) return res.status(404).json({ error: 'Assessment not found' });
@@ -750,6 +832,29 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
     `UPDATE submissions SET total_score=$2, fully_graded=$3 WHERE id=$1 RETURNING *`,
     [submission.id, total_score, !anyUngraded],
   );
+
+  // If this assessment is a topic's auto-generated "standard assessment"
+  // (topics.generated_assessment_id), record the student's pass/fail on the
+  // matching topic_completions row — this is what drives the next topic's
+  // lock state in GET /topics above (score_percent >= 60 to unlock it).
+  // Topic-generated assessments are always all-MCQ (see the generation
+  // prompt in POST /topics/:id/complete), so total_score is already final
+  // the moment this route finishes — there's no essay/ai_unavailable case
+  // to wait on here the way a human-authored assessment might have.
+  if (assessment.total_marks > 0) {
+    const { rows: topicRows } = await query(
+      'SELECT id FROM topics WHERE generated_assessment_id=$1', [req.params.id],
+    );
+    if (topicRows[0]) {
+      const score_percent = Math.round((total_score / assessment.total_marks) * 10000) / 100;
+      await query(
+        `INSERT INTO topic_completions(topic_id, student_id, passed, score_percent)
+         VALUES($1,$2,$3,$4)
+         ON CONFLICT (topic_id, student_id) DO UPDATE SET passed=EXCLUDED.passed, score_percent=EXCLUDED.score_percent`,
+        [topicRows[0].id, student_id, score_percent >= 60, score_percent],
+      );
+    }
+  }
 
   return res.json({ submission: updated[0], auto_score });
 });
