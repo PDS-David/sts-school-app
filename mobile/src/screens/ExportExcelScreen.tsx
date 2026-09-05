@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import { Card, Btn, SectionHeader } from '../components/UI';
@@ -22,11 +22,37 @@ export default function ExportExcelScreen() {
         return;
       }
       const url = `${BASE_URL}/admin/export/excel?school_code=${school}`;
-      const fileUri = `${FileSystem.cacheDirectory}school-report-${school}-${Date.now()}.xlsx`;
+      const filename = `school-report-${school}-${Date.now()}.xlsx`;
+
+      // Web has no filesystem to download into and no native share sheet —
+      // expo-file-system's cacheDirectory is null on web and expo-sharing
+      // has no web implementation at all, so neither call below works
+      // there. Browsers download files the same way any other site does:
+      // fetch the bytes (with the same Authorization header — this
+      // endpoint needs it, same reason as the native path below), then
+      // trigger a save via a throwaway <a download> link.
+      if (Platform.OS === 'web') {
+        const response = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+        if (!response.ok) {
+          Alert.alert('Export failed', `Server returned status ${response.status}.`);
+          return;
+        }
+        const blob = await response.blob();
+        const objectUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = objectUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(objectUrl);
+        return;
+      }
 
       // Downloaded (not opened directly in a browser) because the export
       // endpoint requires an Authorization header — a plain browser
       // navigation can't attach one, so that always 401'd before.
+      const fileUri = `${FileSystem.cacheDirectory}${filename}`;
       const result = await FileSystem.downloadAsync(url, fileUri, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -72,7 +98,11 @@ export default function ExportExcelScreen() {
         />
         <View style={styles.note}>
           <Ionicons name="information-circle" size={18} color={Colors.primary} />
-          <Text style={styles.noteText}>The file will download, then you can share or save it from the menu that opens.</Text>
+          <Text style={styles.noteText}>
+            {Platform.OS === 'web'
+              ? 'The file will download straight to your browser\u2019s downloads folder.'
+              : 'The file will download, then you can share or save it from the menu that opens.'}
+          </Text>
         </View>
       </Card>
     </View>

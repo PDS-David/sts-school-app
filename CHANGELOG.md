@@ -23,10 +23,12 @@ section).
   `Platform.OS === 'web'` (expo-notifications has no web remote-push
   support) instead of relying on `Device.isDevice` alone.
   `secureTokenStorage.ts` already had a web fallback from an earlier pass.
-  **Known follow-up, not addressed here:** `ExportExcelScreen.tsx`'s
-  file-save/share flow (`expo-file-system`/`expo-sharing`) behaves
-  differently on web (browser download vs. native share sheet) — untested,
-  no guard added yet.
+- **`ExportExcelScreen.tsx` fixed for web** — was still using
+  `expo-file-system`/`expo-sharing`, neither of which work on web
+  (`cacheDirectory` is `null`, `expo-sharing` has no web implementation at
+  all). Now branches on `Platform.OS === 'web'`: fetches the export with
+  the same Authorization header, then triggers a standard browser download
+  via a throwaway `<a download>` link instead. Native behavior unchanged.
 
 
 
