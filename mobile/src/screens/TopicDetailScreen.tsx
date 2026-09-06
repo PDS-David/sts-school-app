@@ -19,12 +19,14 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   const [revealed, setRevealed]     = useState<Record<number, boolean>>({});
   const [assessmentStatus, setAssessmentStatus] = useState<string | null>(null);
   const [note, setNote]             = useState<string | undefined>(undefined);
+  const [summaryIsFallback, setSummaryIsFallback] = useState(false);
 
   const complete = async () => {
     setLoading(true);
     try {
       const { data } = await api.post(`/learning/topics/${topic.id}/complete`);
       setTopic((t: any) => ({ ...t, summary: data.summary }));
+      setSummaryIsFallback(!!data.summary_is_fallback);
       setPractice(data.practice_questions ?? []);
       setAssessmentStatus(data.assessment_status ?? null);
       setNote(data.note);
@@ -62,6 +64,16 @@ export default function TopicDetailScreen({ route, navigation }: any) {
         {topic.summary ? (
           <View style={{ marginTop: Spacing.sm }}>
             <Text style={styles.summaryLabel}>Study Notes</Text>
+            {summaryIsFallback && (
+              <View style={styles.fallbackBox}>
+                <Ionicons name="information-circle-outline" size={16} color={Colors.textSub} />
+                <Text style={styles.fallbackText}>
+                  We couldn't generate a polished lesson right now, so here's the school's
+                  original curriculum note for this topic instead. Try again later for the
+                  full write-up.
+                </Text>
+              </View>
+            )}
             <Text style={styles.summaryText}>{topic.summary}</Text>
           </View>
         ) : (
@@ -123,6 +135,8 @@ export default function TopicDetailScreen({ route, navigation }: any) {
 const styles = StyleSheet.create({
   desc: { fontSize: Fonts.sizes.sm, color: Colors.textSub, marginTop: 4 },
   summaryLabel: { fontSize: Fonts.sizes.sm, fontWeight: '700', color: Colors.primary, marginBottom: 4 },
+  fallbackBox: { flexDirection: 'row', alignItems: 'flex-start', gap: 6, backgroundColor: Colors.textSub + '15', padding: Spacing.sm, borderRadius: Radius.sm, marginBottom: Spacing.sm },
+  fallbackText: { fontSize: Fonts.sizes.xs, color: Colors.textSub, flex: 1, lineHeight: 16 },
   summaryText: { fontSize: Fonts.sizes.sm, color: Colors.text, lineHeight: 20 },
   noteBox: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: Spacing.sm, backgroundColor: Colors.success + '15', padding: Spacing.sm, borderRadius: Radius.sm },
   noteText: { fontSize: Fonts.sizes.xs, color: Colors.text, flex: 1 },
