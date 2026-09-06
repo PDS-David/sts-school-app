@@ -67,32 +67,36 @@ import { pool, query } from './pool.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
-// looser "ss" check, etc. Pre-Nursery and Reception map to real classes —
-// confirmed 2026-09 by the school: they're distinct classes some students
-// go through before Nursery 1, not folder noise or a KG variant.
-const CLASS_PATTERNS: Array<[RegExp, string | null]> = [
-  [/pre[\s_-]?nursery/i, 'Pre-Nursery'],
-  [/reception/i, 'Reception'],
+// looser "ss" check, etc.
+//
+// Pre-Nursery/Reception decision (2026-09, confirmed directly with Da
+// after several rounds of genuinely contradictory answers — worth being
+// aware of if this ever needs revisiting): Pre-Nursery, Reception,
+// Nursery 1, Nursery 2, KG 1, and KG 2 are SIX fully separate, independent
+// classes. None are merged or duplicated with each other.
+const CLASS_PATTERNS: Array<[RegExp, string[] | null]> = [
+  [/pre[\s_-]*nursery/i, ['Pre-Nursery']],
+  [/reception/i, ['Reception']],
   // "nurser[y]?" tolerates the real typo found in this school's own files
   // ("Nurser_1-1.docx" — missing the final 'y'). [\s_-]* tolerates
   // underscore/hyphen filename separators as well as spaces or nothing
   // ("Nursery_2.docx", "Nursery-2", "Nursery2" all match).
-  [/nursery?[\s_-]*1\b/i, 'Nursery 1'],
-  [/nursery?[\s_-]*2\b/i, 'Nursery 2'],
-  [/\bkg[\s_-]*1\b/i, 'KG 1'],
-  [/\bkg[\s_-]*2\b/i, 'KG 2'],
-  [/\b(basic|pry|grade)[\s_-]*1\b|basic[\s_-]*one\b/i, 'PRY 1'],
-  [/\b(basic|pry|grade)[\s_-]*2\b|basic[\s_-]*two\b/i, 'PRY 2'],
-  [/\b(basic|pry|grade)[\s_-]*3\b|basic[\s_-]*three\b/i, 'PRY 3'],
-  [/\b(basic|pry|grade)[\s_-]*4\b|basic[\s_-]*four\b/i, 'PRY 4'],
-  [/\b(basic|pry|grade)[\s_-]*5\b|basic[\s_-]*five\b/i, 'PRY 5'],
-  [/\b(basic|pry|grade)[\s_-]*6\b|basic[\s_-]*six\b/i, 'PRY 6'],
-  [/\bjss[\s_-]*1\b/i, 'JSS 1'],
-  [/\bjss[\s_-]*2\b/i, 'JSS 2'],
-  [/\bjss[\s_-]*3\b/i, 'JSS 3'],
-  [/\b(sss?)[\s_-]*1\b/i, 'SS 1'],
-  [/\b(sss?)[\s_-]*2\b/i, 'SS 2'],
-  [/\b(sss?)[\s_-]*3\b/i, 'SS 3'],
+  [/nursery?[\s_-]*1\b/i, ['Nursery 1']],
+  [/nursery?[\s_-]*2\b/i, ['Nursery 2']],
+  [/\bkg[\s_-]*1\b/i, ['KG 1']],
+  [/\bkg[\s_-]*2\b/i, ['KG 2']],
+  [/\b(basic|pry|grade)[\s_-]*1\b|basic[\s_-]*one\b/i, ['PRY 1']],
+  [/\b(basic|pry|grade)[\s_-]*2\b|basic[\s_-]*two\b/i, ['PRY 2']],
+  [/\b(basic|pry|grade)[\s_-]*3\b|basic[\s_-]*three\b/i, ['PRY 3']],
+  [/\b(basic|pry|grade)[\s_-]*4\b|basic[\s_-]*four\b/i, ['PRY 4']],
+  [/\b(basic|pry|grade)[\s_-]*5\b|basic[\s_-]*five\b/i, ['PRY 5']],
+  [/\b(basic|pry|grade)[\s_-]*6\b|basic[\s_-]*six\b/i, ['PRY 6']],
+  [/\bjss[\s_-]*1\b/i, ['JSS 1']],
+  [/\bjss[\s_-]*2\b/i, ['JSS 2']],
+  [/\bjss[\s_-]*3\b/i, ['JSS 3']],
+  [/\b(sss?)[\s_-]*1\b/i, ['SS 1']],
+  [/\b(sss?)[\s_-]*2\b/i, ['SS 2']],
+  [/\b(sss?)[\s_-]*3\b/i, ['SS 3']],
 ];
 
 // Which classes belong to which school_code — mirrors seed.ts's
@@ -109,11 +113,11 @@ const PRIMARY_CLASS_NAMES = new Set([
 ]);
 const SECONDARY_CLASS_NAMES = new Set(['JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3']);
 
-function inferClassName(fullPath: string): string | null | undefined {
-  for (const [re, name] of CLASS_PATTERNS) {
-    if (re.test(fullPath)) return name; // e.g. 'Pre-Nursery'/'Reception', or null if never resolved by any pattern below
+function inferClassNames(fullPath: string): string[] | undefined {
+  for (const [re, names] of CLASS_PATTERNS) {
+    if (re.test(fullPath)) return names ?? undefined;
   }
-  return undefined; // no pattern matched at all — different from "matched but unresolved"
+  return undefined; // no pattern matched at all
 }
 
 // ── Term normalization ────────────────────────────────────────────────────
@@ -140,6 +144,8 @@ const SUBJECT_PATTERNS: Array<[RegExp, string]> = [
   [/bas(?:ic|is)\s*sci/i, 'Basic Science'],
   [/\bsos\b|social\s*stud/i, 'Social Studies'],
   [/yoruba/i, 'Yoruba'],
+  [/news\s+and\s+conversation/i, 'News and Conversation'],
+  [/practical\s+life/i, 'Practical Life Activity'],
   [/civic/i, 'Civic Education'],
   [/\bp\.?\s*h\.?\s*e\.?\b|physical/i, 'Physical & Health Education'],
   [/\bcca\b|cultural/i, 'Cultural & Creative Arts'],
@@ -206,7 +212,7 @@ function inferSubjectName(...candidates: string[]): string {
 // ── File filtering ─────────────────────────────────────────────────────────
 function isIgnorableFile(filename: string): boolean {
   if (filename.startsWith('~$')) return true;             // Word lock file
-  if (/_1\.(docx?|docm)$/i.test(filename)) return true;    // known byte-identical duplicate pattern
+  if (/_1_?\.(docx?|docm)$/i.test(filename)) return true;    // known byte-identical duplicate pattern (both '_1.doc' and '_1_.doc' variants seen in real files)
   return false;
 }
 
@@ -372,9 +378,9 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
   for (const filePath of allFiles) {
     try {
-      const className = inferClassName(filePath);
+      const classNames = inferClassNames(filePath);
       const termLabel = inferTermName(filePath) ?? defaultTerm;
-      if (className === undefined || className === null) {
+      if (classNames === undefined) {
         unmappedClass.add(path.relative(root, filePath));
         continue;
       }
@@ -382,10 +388,14 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       // Nursery files) silently tagging content under the wrong school —
       // --school-code only controls which subjects table this run writes
       // against, it does not filter which files get walked. See the
-      // PRIMARY_CLASS_NAMES/SECONDARY_CLASS_NAMES comment above.
+      // PRIMARY_CLASS_NAMES/SECONDARY_CLASS_NAMES comment above. A file
+      // can map to more than one class (Pre-Nursery/Reception → both KG
+      // levels) — only the classes that actually belong to this
+      // school-code are kept; if that empties the list, skip the file.
       const expectedSet = schoolCode === 'primary' ? PRIMARY_CLASS_NAMES : SECONDARY_CLASS_NAMES;
-      if (!expectedSet.has(className)) {
-        wrongSchoolCode.add(`${className} — ${path.relative(root, filePath)}`);
+      const validClassNames = classNames.filter(c => expectedSet.has(c));
+      if (validClassNames.length === 0) {
+        wrongSchoolCode.add(`${classNames.join('+')} — ${path.relative(root, filePath)}`);
         continue;
       }
       if (!termLabel) {
@@ -415,37 +425,57 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       // false positive without needing line-position heuristics at all.
       const subjectLineRe = /\bSUBJECT\s*[:;]\s*.+/g;
       const subjectLineMatches = [...text.matchAll(subjectLineRe)];
+      const headerBlock = text.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
 
       type Section = { subjectName: string; sectionText: string };
       let sections: Section[];
-      if (subjectLineMatches.length >= 2) {
-        sections = subjectLineMatches.map((m, i) => {
+      if (subjectLineMatches.length === 0) {
+        // No "SUBJECT:" line at all — infer once from the document's own
+        // header block, else the filename, whole file is one section.
+        const subjectName = inferSubjectName(headerBlock, path.basename(filePath));
+        sections = [{ subjectName, sectionText: text }];
+      } else {
+        sections = [];
+        // Confirmed real case (Reception_class-5.doc): a file can have
+        // meaningful content BEFORE its first "SUBJECT:" line at all — an
+        // unlabeled leading section (e.g. the header itself states "NEWS
+        // AND CONVERSATION" with no "SUBJECT:" prefix), followed later by
+        // an explicitly-labeled section ("SUBJECT: PRACTICAL LIFE
+        // ACTIVITY"). Only checking "2+ matches" missed this: a single
+        // match still needs its LEADING text split out as its own section
+        // if that leading text is substantial, rather than being silently
+        // absorbed into whatever the first explicit SUBJECT: line says.
+        const firstMatchStart = subjectLineMatches[0].index!;
+        if (firstMatchStart > 40) {
+          const leadingText = text.slice(0, firstMatchStart);
+          const leadingHeaderBlock = leadingText.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
+          sections.push({
+            subjectName: inferSubjectName(leadingHeaderBlock, path.basename(filePath)),
+            sectionText: leadingText,
+          });
+        }
+        subjectLineMatches.forEach((m, i) => {
           const start = m.index!;
           const end = i + 1 < subjectLineMatches.length ? subjectLineMatches[i + 1].index! : text.length;
           const sectionText = text.slice(start, end);
           const subjectName = inferSubjectName(m[0].replace(/^subject\s*[:;]\s*/i, ''));
-          return { subjectName, sectionText };
+          sections.push({ subjectName, sectionText });
         });
-      } else {
-        // 0 or 1 "SUBJECT:" line — behave as before: infer once from that
-        // line if present, else the document's own header block, else the
-        // filename, and treat the whole file as one section.
-        const headerBlock = text.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
-        const subjectName = inferSubjectName(subjectLineMatches[0]?.[0].replace(/^subject\s*[:;]\s*/i, '') ?? '', headerBlock, path.basename(filePath));
-        sections = [{ subjectName, sectionText: text }];
       }
 
       let anyParsed = false;
-      for (const section of sections) {
-        subjectTokensSeen.add(section.subjectName);
-        const parsed = parseTopics(section.sectionText);
-        parsed.forEach((t, i) => {
-          anyParsed = true;
-          rows.push({
-            filePath, className, termLabel, subjectName: section.subjectName,
-            weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
+      for (const className of validClassNames) {
+        for (const section of sections) {
+          subjectTokensSeen.add(section.subjectName);
+          const parsed = parseTopics(section.sectionText);
+          parsed.forEach((t, i) => {
+            anyParsed = true;
+            rows.push({
+              filePath, className, termLabel, subjectName: section.subjectName,
+              weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
+            });
           });
-        });
+        }
       }
       if (!anyParsed) {
         noWeekMarkers.push(path.relative(root, filePath));
