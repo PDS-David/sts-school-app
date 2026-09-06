@@ -26,6 +26,7 @@ import { Colors } from '../theme';
 // separate stacks, but only if the name doesn't change.
 import AdminDashboardHomeScreen from '../screens/admin/AdminDashboardHomeScreen';
 import AdminMoreScreen from '../screens/admin/AdminMoreScreen';
+import AdminTermPinsScreen from '../screens/admin/AdminTermPinsScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
 import MyResultsScreen from '../screens/MyResultsScreen';
@@ -111,6 +112,7 @@ function MoreStackNavigator() {
           Log/Export Excel had no tap path to reach them at all. */}
       <MoreStack.Screen name="AdminMore" component={AdminMoreScreen} />
       <MoreStack.Screen name="AdminUsers" component={AdminUsersScreen} options={{ headerShown: true, title: 'Users', ...opts }} />
+      <MoreStack.Screen name="AdminTermPins" component={AdminTermPinsScreen} options={{ headerShown: true, title: 'Term PINs', ...opts }} />
       <MoreStack.Screen name="AuditLog" component={AuditLogScreen} options={{ headerShown: true, title: 'Audit Log', ...opts }} />
       <MoreStack.Screen name="ExportExcel" component={ExportExcelScreen} options={{ headerShown: true, title: 'Export Excel', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />

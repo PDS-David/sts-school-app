@@ -21,6 +21,7 @@ export default function AdminMoreScreen({ navigation }: any) {
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
     { icon: 'person-outline', label: 'Users', sub: 'Manage teacher/parent/student/admin accounts', onPress: () => navigation.navigate('AdminUsers') },
+    { icon: 'key-outline', label: 'Term PINs', sub: 'Generate and view student access PINs per term', onPress: () => navigation.navigate('AdminTermPins') },
     { icon: 'document-text-outline', label: 'Export Excel', sub: 'Download a school\u2019s records as a spreadsheet', onPress: () => navigation.navigate('ExportExcel') },
     { icon: 'shield-checkmark-outline', label: 'Audit Log', sub: 'See who changed what, and when', onPress: () => navigation.navigate('AuditLog') },
     { icon: 'settings-outline', label: 'Change Password', sub: 'Update your own login password', onPress: () => navigation.navigate('ChangePassword') },
