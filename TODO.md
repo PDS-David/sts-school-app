@@ -1,5 +1,52 @@
 # TODO
 
+> **Update 2026-09-06 (topicsCoverageReport.ts live findings — stale
+> classes + duplicate-topic pairs):** A live run of `topicsCoverageReport.ts`
+> against production surfaced two issues, both now diagnosed and tooled,
+> neither yet actually run against production (no live DB access this
+> session):
+>
+> 1. **Stale pre-rename `classes` rows** ('JSS1'/'SS1'/'Grade 1'..'Grade 6'
+>    sitting alongside their renamed 'JSS 1'/'SS 1'/'PRY 1'..'PRY 6'
+>    equivalents, each with 0 topics/students/anything). Root cause:
+>    `renameClassNaming.ts --yes` was most likely never actually run against
+>    production — `seed.ts` only ever *adds* the new names via
+>    `ON CONFLICT DO NOTHING`, it never renames/removes the old ones, and
+>    every other table's real data was populated by scripts written after
+>    the naming decision, so it never had old names to rename in the first
+>    place. Confirmed this is a live problem, not just DB noise: 7 mobile
+>    screens (ClassLockScreen, AttendanceScreen, WeeklyEffortsScreen,
+>    ScoreEntryScreen, AdminUsersScreen, CreateAssessmentScreen,
+>    AddStudentScreen) call `GET /academic/classes` directly for a
+>    class-picker dropdown and would show both variants as separate,
+>    equally-clickable options. New `backend/src/db/cleanupStaleClasses.ts`
+>    (dry-run first, then `--yes`) — safe by construction since
+>    `class_name`/`assigned_class` is plain TEXT with no foreign key
+>    anywhere, so "zero references in the other 8 class-name-shaped
+>    columns" is a complete safety check, not a best-effort one. Also
+>    resolved: `KG 1`/`KG 2` having 0 topics is a **separate, unrelated**
+>    situation — there's no `KG1`/`KG2` (no-space) row anywhere, so it's
+>    just missing curriculum content, not a duplicate-naming issue.
+> 2. **144 buckets flagged as likely duplicate-topic clusters** by
+>    `topicsCoverageReport.ts` — the documented `ingestTopics.ts` parser
+>    limitation (a source file's summary table and its real content both
+>    use the same "WEEK N" marker, so both get ingested as separate rows).
+>    New `backend/src/db/topicsDuplicatePairs.ts` narrows this from "144
+>    buckets, go read every title" down to actual candidate pairs (a thin
+>    row's normalized title is a prefix of a thick row's normalized title
+>    in the same bucket — matches the real example that motivated this,
+>    `"FRACTIONS"` inside `"FRACTIONS (TYPES OF FRACTIONS), RATIO AND
+>    PERCENTAGES"`). Dry-run lists pairs only; `--yes` deletes the thin row
+>    from each pair but explicitly **skips** (never deletes, even under
+>    `--yes`) any row that already has a real `topic_completions` row or an
+>    already-generated assessment — those need manual review, not a
+>    heuristic auto-delete.
+>
+> **Next step for whoever picks this up:** run both scripts' dry-run mode
+> against production, read the printed findings, and only then decide on
+> `--yes` — this session had no live DB access to do that itself. Neither
+> script has touched production yet.
+
 > **Update 2026-09-05 (Finance/Ops split, parent messaging, offline
 > cache-invalidation, report Print/Export):** Full detail in `CHANGELOG.md`.
 > Summary: split `finance_admin` out from `admin` as a fully separate role
