@@ -153,7 +153,19 @@ api.interceptors.response.use(
         return Promise.reject(error);
       }
 
-      if (['post', 'put', 'patch', 'delete'].includes(method)) {
+      // DELETE is never queued, on any URL. A queued delete would replay
+      // later against whatever the record looks like *then*, not what the
+      // person saw when they tapped delete — on a device that stayed
+      // offline a while, someone else could have already changed or come
+      // to depend on that record in the meantime, and the person who
+      // queued the delete has no way to know it's still pending. Deletion
+      // always requires a live round trip; the caller shows "you're
+      // offline" and the person can retry once connected.
+      if (method === 'delete') {
+        return Promise.reject(error);
+      }
+
+      if (['post', 'put', 'patch'].includes(method)) {
         // Brainee (AI) requests are excluded from the outbox on purpose:
         // queuing "explain this topic" or "grade this essay" for silent
         // replay whenever connectivity returns would show the student a

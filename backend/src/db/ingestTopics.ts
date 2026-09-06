@@ -388,10 +388,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       // Nursery files) silently tagging content under the wrong school —
       // --school-code only controls which subjects table this run writes
       // against, it does not filter which files get walked. See the
-      // PRIMARY_CLASS_NAMES/SECONDARY_CLASS_NAMES comment above. A file
-      // can map to more than one class (Pre-Nursery/Reception → both KG
-      // levels) — only the classes that actually belong to this
-      // school-code are kept; if that empties the list, skip the file.
+      // PRIMARY_CLASS_NAMES/SECONDARY_CLASS_NAMES comment above.
+      // classNames is an array for forward compatibility, but every class
+      // (including Pre-Nursery/Reception — confirmed as their own fully
+      // separate classes, not shared with anything) currently resolves to
+      // exactly one entry; only the classes that actually belong to this
+      // school-code are kept, and if that empties the list, skip the file.
       const expectedSet = schoolCode === 'primary' ? PRIMARY_CLASS_NAMES : SECONDARY_CLASS_NAMES;
       const validClassNames = classNames.filter(c => expectedSet.has(c));
       if (validClassNames.length === 0) {

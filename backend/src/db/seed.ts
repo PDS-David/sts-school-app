@@ -38,6 +38,29 @@ const SECONDARY_CLASSES = [
 ];
 
 async function seed() {
+  // Guard added after a real, avoidable risk was found: this script's
+  // ON CONFLICT upserts reset the admin/teacher1 accounts' passwords back
+  // to the hardcoded demo defaults (see the two INSERT...ON CONFLICT blocks
+  // below) — fine for a fresh dev/demo database, destructive against a real
+  // school's production database if it were ever run there by habit or
+  // copy-paste, since NODE_ENV=production is the exact same env var every
+  // legitimate one-off production script in this repo also requires (it's
+  // what triggers ssl:true in pool.ts — not a real "this is production,
+  // be careful" flag on its own). Refuse unless explicitly overridden.
+  if (process.env.NODE_ENV === 'production' && !process.argv.includes('--i-know-what-im-doing')) {
+    console.error(
+      "Refusing to run seed.ts with NODE_ENV=production set.\n" +
+      "This script resets the admin/teacher1 demo accounts' passwords to\n" +
+      "their hardcoded defaults on every run — safe for a fresh database,\n" +
+      "destructive against a real school's live data.\n\n" +
+      "If you're setting up a brand-new school's database for the first\n" +
+      "time (nothing real in it yet), re-run with --i-know-what-im-doing.\n" +
+      "If you meant to run a different one-off script against production\n" +
+      "(e.g. addEarlyYearsClasses.ts), run that script instead.",
+    );
+    process.exit(1);
+  }
+
   console.log('Seeding subjects…');
   for (const name of PRIMARY_SUBJECTS) {
     await query(

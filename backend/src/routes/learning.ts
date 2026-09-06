@@ -30,7 +30,23 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
              WHERE m.school_code=$1`;
   const params: unknown[] = [sc];
 
-  if (viewerClasses) {
+  if (user.role === 'teacher') {
+    // A subject teacher sees their subject across every class; a class
+    // teacher sees their own class across every subject; a teacher with
+    // both gets the union — same "own class OR own subject" scope the
+    // write side already enforces (see checkTeacherContentScope above).
+    // Previously this fell through to the unrestricted (null) branch below
+    // like admin, which meant any teacher could browse every class's
+    // materials school-wide regardless of assignment — tightened per
+    // school request.
+    const clauses: string[] = [];
+    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`m.class_name=$${params.length}`); }
+    if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`m.subject_id = ANY($${params.length})`); }
+    // A teacher with neither assignment can't create content either (see
+    // checkTeacherContentScope) — FALSE rather than showing everything
+    // keeps read and write scope consistent for that same unassigned state.
+    sql += clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
+  } else if (viewerClasses) {
     if (!viewerClasses.length) {
       // Student with no linked record, or parent with no wards — nothing to show.
       return res.json({ materials: [] });
@@ -106,7 +122,14 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
              WHERE t.school_code=$1`;
   const params: unknown[] = [sc];
 
-  if (viewerClasses) {
+  if (user.role === 'teacher') {
+    // Same class-OR-subject scope as GET /materials above — see the
+    // comment there for the full reasoning.
+    const clauses: string[] = [];
+    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`t.class_name=$${params.length}`); }
+    if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`t.subject_id = ANY($${params.length})`); }
+    sql += clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
+  } else if (viewerClasses) {
     if (!viewerClasses.length) return res.json({ topics: [] });
     params.push(viewerClasses);
     sql += ` AND (t.class_name = ANY($${params.length}) OR t.class_name IS NULL)`;
