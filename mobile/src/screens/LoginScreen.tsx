@@ -32,7 +32,15 @@ export default function LoginScreen({ navigation }: any) {
       await login(username.trim(), password);
     } catch (e: any) {
       if (!e?.response) {
-        setError('No internet connection. The first login on a device needs one — once signed in, you can keep working offline.');
+        // axios sets `.response` only when a response actually came back —
+        // no `.response` covers "genuinely offline" AND "server
+        // unreachable" (down, or a Render free-tier cold start taking
+        // longer than the request's timeout) equally. Claiming "no
+        // internet" here was flatly wrong on a real, working connection
+        // whenever it was actually the latter — this wording covers both
+        // without asserting which one it is, while keeping the original's
+        // useful "why login specifically needs this" context.
+        setError('Could not reach the server — check your connection, or it may just be starting back up after a period of inactivity (can take up to a minute). The first login on a device needs this to succeed; once signed in, you can keep working offline.');
       } else {
         setError(e?.response?.data?.error ?? 'Login failed. Check your credentials.');
       }

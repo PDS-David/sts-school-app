@@ -34,7 +34,7 @@ export default function ForgotPasswordScreen({ navigation }: any) {
       setQuestion(data.question);
       setStep('answer');
     } catch (e: any) {
-      setError(e?.response?.data?.error ?? (!e?.response ? 'No internet connection.' : 'Something went wrong. Try again.'));
+      setError(e?.response?.data?.error ?? (!e?.response ? 'Could not reach the server — check your connection, or it may just be starting back up after a period of inactivity (can take up to a minute).' : 'Something went wrong. Try again.'));
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ export default function ForgotPasswordScreen({ navigation }: any) {
       setStep('done');
       setTimeout(() => navigation.replace('Login'), 1800);
     } catch (e: any) {
-      setError(e?.response?.data?.error ?? (!e?.response ? 'No internet connection.' : 'Something went wrong. Try again.'));
+      setError(e?.response?.data?.error ?? (!e?.response ? 'Could not reach the server — check your connection, or it may just be starting back up after a period of inactivity (can take up to a minute).' : 'Something went wrong. Try again.'));
     } finally {
       setLoading(false);
     }

@@ -38,7 +38,7 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
       }, 1500);
     } catch (e: any) {
       if (!e?.response) {
-        setError('No internet connection. Changing your password needs one — try again once you have signal.');
+        setError('Could not reach the server — check your connection, or it may just be starting back up after a period of inactivity (can take up to a minute). Changing your password needs this to succeed; try again shortly.');
       } else {
         setError(e?.response?.data?.error ?? 'Failed to change password');
       }

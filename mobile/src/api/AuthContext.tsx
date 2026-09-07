@@ -86,7 +86,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (username: string, password: string) => {
-    const { data } = await api.post('/auth/login', { username, password });
+    // Longer timeout than api.ts's global 15s default specifically for
+    // login: this is the one call most likely to be the very first hit on
+    // a Render free-tier backend that's spun down from inactivity, which
+    // can take up to ~60s to wake — a 15s timeout expiring mid-cold-start
+    // looks identical to a real network failure to axios (no `.response`
+    // at all), which is exactly what produced the misleading "No internet
+    // connection" message on a real, working connection (see
+    // LoginScreen.tsx's error handling). Once logged in, every other
+    // request hits an already-awake backend and keeps the normal 15s.
+    const { data } = await api.post('/auth/login', { username, password }, { timeout: 60000 });
     // Tokens go into expo-secure-store (Keychain/Keystore), not AsyncStorage
     // — see secureTokenStorage.ts. `user` itself (id/username/role/school_code,
     // no credential) is fine in plain AsyncStorage as before.
