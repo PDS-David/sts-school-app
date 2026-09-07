@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
+import { SidebarLayout, SidebarItem } from '../components/Sidebar';
 
 import StudentHomeScreen from '../screens/student/StudentHomeScreen';
 import StudentLearningScreen from '../screens/student/StudentLearningScreen';
@@ -102,36 +103,50 @@ function tabBarVisibleFor(routeNames: string[]) {
   };
 }
 
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  { routeName: 'HomeTab', label: 'Home', icon: 'home' },
+  { routeName: 'LearningTab', label: 'Learning', icon: 'book' },
+  { routeName: 'AssessmentsTab', label: 'Assessments', icon: 'clipboard' },
+  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
+  { routeName: 'ProfileTab', label: 'Profile', icon: 'person' },
+];
+
 export default function StudentTabs() {
+  const [tabState, setTabState] = useState<any>(null);
+  const activeRouteName = tabState?.routeNames?.[tabState.index];
+
   return (
-    <Tab.Navigator
-      id={undefined}
-      screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
-    >
-      <Tab.Screen
-        name="HomeTab" component={HomeStackNavigator}
-        options={{ title: 'Home', tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} /> }}
-      />
-      <Tab.Screen
-        name="LearningTab" component={LearningStackNavigator}
-        options={{ title: 'Learning', tabBarIcon: ({ color, size }) => <Ionicons name="book" size={size} color={color} /> }}
-      />
-      <Tab.Screen
-        name="AssessmentsTab" component={AssessmentsStackNavigator}
-        options={{ title: 'Assessments', tabBarIcon: ({ color, size }) => <Ionicons name="clipboard" size={size} color={color} /> }}
-      />
-      <Tab.Screen
-        name="ChatsTab" component={ChatsStackNavigator}
-        options={({ route }) => ({
-          title: 'Chats',
-          tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />,
-          ...tabBarVisibleFor(['ChatsList'])({ route }),
-        })}
-      />
-      <Tab.Screen
-        name="ProfileTab" component={ProfileStackNavigator}
-        options={{ title: 'Profile', tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} /> }}
-      />
-    </Tab.Navigator>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+      <Tab.Navigator
+        id={undefined}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
+      >
+        <Tab.Screen
+          name="HomeTab" component={HomeStackNavigator}
+          options={{ title: 'Home', tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} /> }}
+        />
+        <Tab.Screen
+          name="LearningTab" component={LearningStackNavigator}
+          options={{ title: 'Learning', tabBarIcon: ({ color, size }) => <Ionicons name="book" size={size} color={color} /> }}
+        />
+        <Tab.Screen
+          name="AssessmentsTab" component={AssessmentsStackNavigator}
+          options={{ title: 'Assessments', tabBarIcon: ({ color, size }) => <Ionicons name="clipboard" size={size} color={color} /> }}
+        />
+        <Tab.Screen
+          name="ChatsTab" component={ChatsStackNavigator}
+          options={({ route }) => ({
+            title: 'Chats',
+            tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />,
+            ...tabBarVisibleFor(['ChatsList'])({ route }),
+          })}
+        />
+        <Tab.Screen
+          name="ProfileTab" component={ProfileStackNavigator}
+          options={{ title: 'Profile', tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} /> }}
+        />
+      </Tab.Navigator>
+    </SidebarLayout>
   );
 }

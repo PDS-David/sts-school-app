@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
+import { SidebarLayout, SidebarItem } from '../components/Sidebar';
 
 import ParentHomeScreen from '../screens/parent/ParentHomeScreen';
 import ParentProgressScreen from '../screens/parent/ParentProgressScreen';
@@ -84,17 +85,34 @@ function tabBarVisibleFor() {
   };
 }
 
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  { routeName: 'HomeTab', label: 'Home', icon: 'home' },
+  { routeName: 'ProgressTab', label: 'Progress', icon: 'bar-chart' },
+  { routeName: 'ActivitiesTab', label: 'Activities', icon: 'calendar' },
+  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
+  { routeName: 'ProfileTab', label: 'Profile', icon: 'person' },
+];
+
 export default function ParentTabs() {
+  const [tabState, setTabState] = useState<any>(null);
+  const activeRouteName = tabState?.routeNames?.[tabState.index];
+
   return (
-    <Tab.Navigator id={undefined} screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}>
-      <Tab.Screen name="HomeTab" component={HomeStackNavigator} options={{ title: 'Home', tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} /> }} />
-      <Tab.Screen name="ProgressTab" component={ProgressStackNavigator} options={{ title: 'Progress', tabBarIcon: ({ color, size }) => <Ionicons name="bar-chart" size={size} color={color} /> }} />
-      <Tab.Screen name="ActivitiesTab" component={ActivitiesStackNavigator} options={{ title: 'Activities', tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} /> }} />
-      <Tab.Screen
-        name="ChatsTab" component={ChatsStackNavigator}
-        options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
-      />
-      <Tab.Screen name="ProfileTab" component={ProfileStackNavigator} options={{ title: 'Profile', tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} /> }} />
-    </Tab.Navigator>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+      <Tab.Navigator
+        id={undefined}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
+      >
+        <Tab.Screen name="HomeTab" component={HomeStackNavigator} options={{ title: 'Home', tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} /> }} />
+        <Tab.Screen name="ProgressTab" component={ProgressStackNavigator} options={{ title: 'Progress', tabBarIcon: ({ color, size }) => <Ionicons name="bar-chart" size={size} color={color} /> }} />
+        <Tab.Screen name="ActivitiesTab" component={ActivitiesStackNavigator} options={{ title: 'Activities', tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} /> }} />
+        <Tab.Screen
+          name="ChatsTab" component={ChatsStackNavigator}
+          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
+        />
+        <Tab.Screen name="ProfileTab" component={ProfileStackNavigator} options={{ title: 'Profile', tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} /> }} />
+      </Tab.Navigator>
+    </SidebarLayout>
   );
 }

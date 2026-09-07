@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
+import { SidebarLayout, SidebarItem } from '../components/Sidebar';
 
 // Replaces FinanceAdminStack.tsx. finance_admin only ever had 2 real
 // destinations (Finance, Messages) plus account-settings screens, so this
@@ -49,12 +50,27 @@ function MoreStackNavigator() {
   );
 }
 
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  { routeName: 'FinanceTab', label: 'Finance', icon: 'receipt' },
+  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
+  { routeName: 'MoreTab', label: 'More', icon: 'menu' },
+];
+
 export default function FinanceAdminTabs() {
+  const [tabState, setTabState] = useState<any>(null);
+  const activeRouteName = tabState?.routeNames?.[tabState.index];
+
   return (
-    <Tab.Navigator id={undefined} screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}>
-      <Tab.Screen name="FinanceTab" component={FinanceStackNavigator} options={{ title: 'Finance', tabBarIcon: ({ color, size }) => <Ionicons name="receipt" size={size} color={color} /> }} />
-      <Tab.Screen name="ChatsTab" component={ChatsStackNavigator} options={{ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} /> }} />
-      <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
-    </Tab.Navigator>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+      <Tab.Navigator
+        id={undefined}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
+      >
+        <Tab.Screen name="FinanceTab" component={FinanceStackNavigator} options={{ title: 'Finance', tabBarIcon: ({ color, size }) => <Ionicons name="receipt" size={size} color={color} /> }} />
+        <Tab.Screen name="ChatsTab" component={ChatsStackNavigator} options={{ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} /> }} />
+        <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
+      </Tab.Navigator>
+    </SidebarLayout>
   );
 }

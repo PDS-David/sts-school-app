@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
+import { SidebarLayout, SidebarItem } from '../components/Sidebar';
 
 // NOTE (teacher role policy): a teacher on this platform never creates a
 // test/quiz/essay assignment, never opens AI Marking, and never views a
@@ -92,16 +93,32 @@ function tabBarVisibleFor() {
   };
 }
 
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  { routeName: 'DashboardTab', label: 'Dashboard', icon: 'grid' },
+  { routeName: 'ClassesTab', label: 'Classes', icon: 'people' },
+  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
+  { routeName: 'MoreTab', label: 'More', icon: 'menu' },
+];
+
 export default function TeacherTabs() {
+  const [tabState, setTabState] = useState<any>(null);
+  const activeRouteName = tabState?.routeNames?.[tabState.index];
+
   return (
-    <Tab.Navigator id={undefined} screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}>
-      <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
-      <Tab.Screen name="ClassesTab" component={ClassesStackNavigator} options={{ title: 'Classes', tabBarIcon: ({ color, size }) => <Ionicons name="people" size={size} color={color} /> }} />
-      <Tab.Screen
-        name="ChatsTab" component={ChatsStackNavigator}
-        options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
-      />
-      <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
-    </Tab.Navigator>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+      <Tab.Navigator
+        id={undefined}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
+      >
+        <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
+        <Tab.Screen name="ClassesTab" component={ClassesStackNavigator} options={{ title: 'Classes', tabBarIcon: ({ color, size }) => <Ionicons name="people" size={size} color={color} /> }} />
+        <Tab.Screen
+          name="ChatsTab" component={ChatsStackNavigator}
+          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
+        />
+        <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
+      </Tab.Navigator>
+    </SidebarLayout>
   );
 }

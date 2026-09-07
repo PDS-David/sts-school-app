@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
+import { SidebarLayout, SidebarItem } from '../components/Sidebar';
 
 // Replaces AdminStack.tsx. Previously a flat stack with no persistent nav
 // chrome at all — a tile-grid Dashboard that pushed full-screen pages, no
@@ -132,16 +133,36 @@ function tabBarVisibleFor() {
   };
 }
 
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  { routeName: 'DashboardTab', label: 'Dashboard', icon: 'grid' },
+  { routeName: 'AcademicsTab', label: 'Academics', icon: 'school' },
+  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
+  { routeName: 'MoreTab', label: 'More', icon: 'menu' },
+];
+
 export default function AdminTabs() {
+  // Lifts the Tab.Navigator's own focused-route state up to this component
+  // so the Sidebar (a plain sibling, not a custom tabBar) can highlight the
+  // active item and knows nothing else about navigation internals. See
+  // Sidebar.tsx's own comment for why this doesn't use a scoped ref.
+  const [tabState, setTabState] = useState<any>(null);
+  const activeRouteName = tabState?.routeNames?.[tabState.index];
+
   return (
-    <Tab.Navigator id={undefined} screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}>
-      <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
-      <Tab.Screen name="AcademicsTab" component={AcademicsStackNavigator} options={{ title: 'Academics', tabBarIcon: ({ color, size }) => <Ionicons name="school" size={size} color={color} /> }} />
-      <Tab.Screen
-        name="ChatsTab" component={ChatsStackNavigator}
-        options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
-      />
-      <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
-    </Tab.Navigator>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+      <Tab.Navigator
+        id={undefined}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
+      >
+        <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
+        <Tab.Screen name="AcademicsTab" component={AcademicsStackNavigator} options={{ title: 'Academics', tabBarIcon: ({ color, size }) => <Ionicons name="school" size={size} color={color} /> }} />
+        <Tab.Screen
+          name="ChatsTab" component={ChatsStackNavigator}
+          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
+        />
+        <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
+      </Tab.Navigator>
+    </SidebarLayout>
   );
 }
