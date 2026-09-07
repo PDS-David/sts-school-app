@@ -4,7 +4,9 @@ import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
-import { SidebarLayout, SidebarItem } from '../components/Sidebar';
+import { SidebarLayout, SidebarItem, SidebarAction } from '../components/Sidebar';
+import { useIsWide } from '../components/layout';
+import { navigationRef } from './navigationRef';
 
 // Replaces AdminStack.tsx. Previously a flat stack with no persistent nav
 // chrome at all — a tile-grid Dashboard that pushed full-screen pages, no
@@ -122,14 +124,15 @@ function MoreStackNavigator() {
   );
 }
 
-// Same "hide the tab bar past a chat thread" convention as every other
-// role's tab navigator — no-op here today since MessagesScreen's own
-// thread view isn't a separate route name the way ChatThread is elsewhere,
-// but kept for shape-consistency in case Chat is unified later.
-function tabBarVisibleFor() {
+// Hides the bottom tab bar in two cases: on a wide/web screen (the Sidebar
+// is the only nav chrome there now — see Sidebar.tsx's comment for why
+// this changed from "alongside" to "instead of"), or past a chat thread on
+// any screen size (existing convention, unrelated to width).
+function tabBarVisibleFor(isWide: boolean) {
   return ({ route }: { route: any }) => {
     const focused = getFocusedRouteNameFromRoute(route) ?? '';
-    return { tabBarStyle: focused === 'ChatThread' ? { display: 'none' as const } : undefined };
+    const hide = isWide || focused === 'ChatThread';
+    return { tabBarStyle: hide ? { display: 'none' as const } : undefined };
   };
 }
 
@@ -140,6 +143,17 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
   { routeName: 'MoreTab', label: 'More', icon: 'menu' },
 ];
 
+// Previously a duplicate of this exact list lived inside
+// AdminDashboardHomeScreen.tsx's own content as a second, screen-local
+// mini-sidebar (plus a FAB with a third copy of the same three
+// destinations) — moved here so there's exactly one "Quick Actions",
+// living in the one real persistent sidebar, reachable from any tab.
+const QUICK_ACTIONS: SidebarAction[] = [
+  { icon: 'people-outline', label: 'Students', onPress: () => navigationRef.isReady() && navigationRef.navigate('AcademicsTab', { screen: 'Students' }) },
+  { icon: 'person-outline', label: 'Users', onPress: () => navigationRef.isReady() && navigationRef.navigate('MoreTab', { screen: 'AdminUsers' }) },
+  { icon: 'create-outline', label: 'Enter Scores', onPress: () => navigationRef.isReady() && navigationRef.navigate('AcademicsTab', { screen: 'ScoreEntry' }) },
+];
+
 export default function AdminTabs() {
   // Lifts the Tab.Navigator's own focused-route state up to this component
   // so the Sidebar (a plain sibling, not a custom tabBar) can highlight the
@@ -147,19 +161,28 @@ export default function AdminTabs() {
   // Sidebar.tsx's own comment for why this doesn't use a scoped ref.
   const [tabState, setTabState] = useState<any>(null);
   const activeRouteName = tabState?.routeNames?.[tabState.index];
+  const isWide = useIsWide();
 
   return (
-    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName} quickActions={QUICK_ACTIONS}>
       <Tab.Navigator
         id={undefined}
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: Colors.primary,
+          tabBarInactiveTintColor: Colors.textSub,
+          // Default for every tab that doesn't set its own `options`
+          // function (ChatsTab below overrides this per-route instead,
+          // since it also needs the ChatThread-specific hide).
+          tabBarStyle: isWide ? { display: 'none' } : undefined,
+        }}
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
         <Tab.Screen name="AcademicsTab" component={AcademicsStackNavigator} options={{ title: 'Academics', tabBarIcon: ({ color, size }) => <Ionicons name="school" size={size} color={color} /> }} />
         <Tab.Screen
           name="ChatsTab" component={ChatsStackNavigator}
-          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
+          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor(isWide)({ route }) })}
         />
         <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
       </Tab.Navigator>

@@ -4,6 +4,7 @@ import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
 import { SidebarLayout, SidebarItem } from '../components/Sidebar';
+import { useIsWide } from '../components/layout';
 
 // Replaces FinanceAdminStack.tsx. finance_admin only ever had 2 real
 // destinations (Finance, Messages) plus account-settings screens, so this
@@ -59,12 +60,13 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
 export default function FinanceAdminTabs() {
   const [tabState, setTabState] = useState<any>(null);
   const activeRouteName = tabState?.routeNames?.[tabState.index];
+  const isWide = useIsWide();
 
   return (
     <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
       <Tab.Navigator
         id={undefined}
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub, tabBarStyle: isWide ? { display: 'none' } : undefined }}
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen name="FinanceTab" component={FinanceStackNavigator} options={{ title: 'Finance', tabBarIcon: ({ color, size }) => <Ionicons name="receipt" size={size} color={color} /> }} />

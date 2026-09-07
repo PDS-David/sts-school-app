@@ -5,6 +5,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
 import { SidebarLayout, SidebarItem } from '../components/Sidebar';
+import { useIsWide } from '../components/layout';
 
 import StudentHomeScreen from '../screens/student/StudentHomeScreen';
 import StudentLearningScreen from '../screens/student/StudentLearningScreen';
@@ -96,10 +97,11 @@ function ProfileStackNavigator() {
 // Hides the bottom tab bar once you've pushed past a tab's landing screen
 // into a chat thread — same as WhatsApp, where the tab bar disappears inside
 // a conversation.
-function tabBarVisibleFor(routeNames: string[]) {
+function tabBarVisibleFor(routeNames: string[], isWide: boolean) {
   return ({ route }: { route: any }) => {
     const focused = getFocusedRouteNameFromRoute(route) ?? routeNames[0];
-    return { tabBarStyle: focused === 'ChatThread' ? { display: 'none' as const } : undefined };
+    const hide = isWide || focused === 'ChatThread';
+    return { tabBarStyle: hide ? { display: 'none' as const } : undefined };
   };
 }
 
@@ -114,12 +116,13 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
 export default function StudentTabs() {
   const [tabState, setTabState] = useState<any>(null);
   const activeRouteName = tabState?.routeNames?.[tabState.index];
+  const isWide = useIsWide();
 
   return (
     <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
       <Tab.Navigator
         id={undefined}
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub, tabBarStyle: isWide ? { display: 'none' } : undefined }}
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen
@@ -139,7 +142,7 @@ export default function StudentTabs() {
           options={({ route }) => ({
             title: 'Chats',
             tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />,
-            ...tabBarVisibleFor(['ChatsList'])({ route }),
+            ...tabBarVisibleFor(['ChatsList'], isWide)({ route }),
           })}
         />
         <Tab.Screen

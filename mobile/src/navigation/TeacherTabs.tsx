@@ -4,7 +4,9 @@ import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
-import { SidebarLayout, SidebarItem } from '../components/Sidebar';
+import { SidebarLayout, SidebarItem, SidebarAction } from '../components/Sidebar';
+import { navigationRef } from './navigationRef';
+import { useIsWide } from '../components/layout';
 
 // NOTE (teacher role policy): a teacher on this platform never creates a
 // test/quiz/essay assignment, never opens AI Marking, and never views a
@@ -86,10 +88,11 @@ function MoreStackNavigator() {
   );
 }
 
-function tabBarVisibleFor() {
+function tabBarVisibleFor(isWide: boolean) {
   return ({ route }: { route: any }) => {
     const focused = getFocusedRouteNameFromRoute(route) ?? '';
-    return { tabBarStyle: focused === 'ChatThread' ? { display: 'none' as const } : undefined };
+    const hide = isWide || focused === 'ChatThread';
+    return { tabBarStyle: hide ? { display: 'none' as const } : undefined };
   };
 }
 
@@ -100,22 +103,32 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
   { routeName: 'MoreTab', label: 'More', icon: 'menu' },
 ];
 
+// Previously duplicated as a screen-local mini-sidebar + FAB inside
+// TeacherDashboardHomeScreen.tsx — moved here, same reasoning as Admin's
+// QUICK_ACTIONS in AdminTabs.tsx.
+const QUICK_ACTIONS: SidebarAction[] = [
+  { icon: 'create-outline', label: 'Enter Scores', onPress: () => navigationRef.isReady() && navigationRef.navigate('ClassesTab', { screen: 'ScoreEntry' }) },
+  { icon: 'calendar-outline', label: 'Attendance', onPress: () => navigationRef.isReady() && navigationRef.navigate('ClassesTab', { screen: 'Attendance' }) },
+  { icon: 'people-outline', label: 'Students', onPress: () => navigationRef.isReady() && navigationRef.navigate('ClassesTab', { screen: 'Students' }) },
+];
+
 export default function TeacherTabs() {
   const [tabState, setTabState] = useState<any>(null);
   const activeRouteName = tabState?.routeNames?.[tabState.index];
+  const isWide = useIsWide();
 
   return (
-    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
+    <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName} quickActions={QUICK_ACTIONS}>
       <Tab.Navigator
         id={undefined}
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub, tabBarStyle: isWide ? { display: 'none' } : undefined }}
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
         <Tab.Screen name="ClassesTab" component={ClassesStackNavigator} options={{ title: 'Classes', tabBarIcon: ({ color, size }) => <Ionicons name="people" size={size} color={color} /> }} />
         <Tab.Screen
           name="ChatsTab" component={ChatsStackNavigator}
-          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
+          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor(isWide)({ route }) })}
         />
         <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
       </Tab.Navigator>

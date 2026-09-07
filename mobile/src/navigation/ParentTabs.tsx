@@ -5,6 +5,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
 import { SidebarLayout, SidebarItem } from '../components/Sidebar';
+import { useIsWide } from '../components/layout';
 
 import ParentHomeScreen from '../screens/parent/ParentHomeScreen';
 import ParentProgressScreen from '../screens/parent/ParentProgressScreen';
@@ -78,10 +79,11 @@ function ProfileStackNavigator() {
   );
 }
 
-function tabBarVisibleFor() {
+function tabBarVisibleFor(isWide: boolean) {
   return ({ route }: { route: any }) => {
     const focused = getFocusedRouteNameFromRoute(route) ?? '';
-    return { tabBarStyle: focused === 'ChatThread' ? { display: 'none' as const } : undefined };
+    const hide = isWide || focused === 'ChatThread';
+    return { tabBarStyle: hide ? { display: 'none' as const } : undefined };
   };
 }
 
@@ -96,12 +98,13 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
 export default function ParentTabs() {
   const [tabState, setTabState] = useState<any>(null);
   const activeRouteName = tabState?.routeNames?.[tabState.index];
+  const isWide = useIsWide();
 
   return (
     <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName}>
       <Tab.Navigator
         id={undefined}
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub }}
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub, tabBarStyle: isWide ? { display: 'none' } : undefined }}
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen name="HomeTab" component={HomeStackNavigator} options={{ title: 'Home', tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} /> }} />
@@ -109,7 +112,7 @@ export default function ParentTabs() {
         <Tab.Screen name="ActivitiesTab" component={ActivitiesStackNavigator} options={{ title: 'Activities', tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} /> }} />
         <Tab.Screen
           name="ChatsTab" component={ChatsStackNavigator}
-          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor()({ route }) })}
+          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor(isWide)({ route }) })}
         />
         <Tab.Screen name="ProfileTab" component={ProfileStackNavigator} options={{ title: 'Profile', tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} /> }} />
       </Tab.Navigator>

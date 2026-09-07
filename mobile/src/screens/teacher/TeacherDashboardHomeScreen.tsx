@@ -1,23 +1,21 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl, useWindowDimensions } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
-import { Loader } from '../../components/UI';
-import { PageContainer, StatChipRow, StatChip } from '../../components/layout';
-import { Colors, Spacing, Fonts, Radius } from '../../theme';
+import { Card, Loader } from '../../components/UI';
+import { PageContainer } from '../../components/layout';
+import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
-import { FAB } from '../../components/FAB';
 import { openNotifications } from '../../navigation/navigationRef';
 
-// Same wide-screen-sidebar / narrow-screen-stacked-list treatment as
-// AdminDashboardHomeScreen.tsx — see that file's comment for the reasoning.
-const WIDE_BREAKPOINT = 768;
-
-export default function TeacherDashboardHomeScreen({ navigation }: any) {
+// Corrected after live testing on web, same reasoning as
+// AdminDashboardHomeScreen.tsx: Quick Actions (was a screen-local
+// mini-sidebar here, duplicating both the real persistent Sidebar's nav
+// AND a FAB with the same destinations) now lives in that one real
+// Sidebar instead (see TeacherTabs.tsx's QUICK_ACTIONS). Student count
+// folds into the header subtitle rather than a separate centre stat row.
+export default function TeacherDashboardHomeScreen() {
   const { user } = useAuth();
-  const { width } = useWindowDimensions();
-  const isWide = width >= WIDE_BREAKPOINT;
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -29,8 +27,7 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
       // longer gets a whole-school student count from GET /students with
       // no class_name (Pass 20 tightened that to prevent an unscoped
       // roster fetch) — skip the call entirely for that case rather than
-      // show a misleading "0 Students" stat; '—' below already renders for
-      // a null count.
+      // show a misleading "0 Students" stat.
       const calls: [Promise<any>, Promise<any>] = [
         api.get('/academic/terms/current'),
         user?.assigned_class ? api.get('/students') : Promise.resolve({ data: { students: null } }),
@@ -46,84 +43,27 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
 
   if (loading) return <Loader />;
 
-  // Teachers only ever CRUD their own students, enter CA1/CA2/Exam scores,
-  // take attendance, and generate report cards — no "create assessment" or
-  // AI marking action belongs here. See TeacherTabs.tsx for the full policy
-  // note.
-  const quickActions: { icon: keyof typeof Ionicons.glyphMap; label: string; onPress: () => void }[] = [
-    { icon: 'create-outline', label: 'Enter Scores', onPress: () => navigation.getParent()?.navigate('ClassesTab', { screen: 'ScoreEntry' }) },
-    { icon: 'calendar-outline', label: 'Attendance', onPress: () => navigation.getParent()?.navigate('ClassesTab', { screen: 'Attendance' }) },
-    { icon: 'people-outline', label: 'Students', onPress: () => navigation.getParent()?.navigate('ClassesTab', { screen: 'Students' }) },
-  ];
-
-  const quickActionsList = (
-    <View>
-      <Text style={styles.sectionLabel}>Quick Actions</Text>
-      <View style={styles.actionList}>
-        {quickActions.map((q) => (
-          <TouchableOpacity key={q.label} style={styles.actionRow} onPress={q.onPress} activeOpacity={0.8}>
-            <View style={styles.actionIcon}><Ionicons name={q.icon} size={20} color={Colors.primary} /></View>
-            <Text style={styles.actionLabel}>{q.label}</Text>
-            <Ionicons name="chevron-forward" size={16} color={Colors.textSub} />
-          </TouchableOpacity>
-        ))}
-      </View>
-    </View>
-  );
-
-  const statsAndNotifications = (
-    <View style={{ flex: 1 }}>
-      <StatChipRow>
-        <StatChip value={studentCount ?? '0'} label={studentCount === null ? 'No class assigned yet' : 'Students'} />
-      </StatChipRow>
-    </View>
-  );
+  const subtitleParts = [
+    term ? `${term.name} · ${term.academic_year}` : null,
+    studentCount != null ? `${studentCount} Students` : null,
+  ].filter(Boolean);
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <AppHeader
         title={`Hi, ${user?.username ?? ''}`}
-        subtitle={term ? `${term.name} · ${term.academic_year}` : undefined}
+        subtitle={subtitleParts.join(' · ') || undefined}
         onPressBell={() => openNotifications()}
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
-        <PageContainer>
-          {isWide ? (
-            <View style={styles.wideRow}>
-              <View style={styles.sidebar}>{quickActionsList}</View>
-              <View style={styles.wideMain}>{statsAndNotifications}</View>
-            </View>
-          ) : (
-            <>
-              {statsAndNotifications}
-              {quickActionsList}
-            </>
-          )}
+        <PageContainer style={{ padding: Spacing.md }}>
+          <Card>
+            <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
+              Use Classes, Chats, or More to get started — or Quick Actions in the sidebar for Enter Scores, Attendance, and Students.
+            </Text>
+          </Card>
         </PageContainer>
-
-        <View style={{ height: Spacing.xl * 2 }} />
       </ScrollView>
-
-      <FAB
-        icon="add"
-        actions={[
-          { icon: 'document-attach-outline', label: 'Add resource', onPress: () => navigation.getParent()?.navigate('ClassesTab', { screen: 'Materials' }) },
-          { icon: 'create-outline', label: 'Enter scores', onPress: () => navigation.getParent()?.navigate('ClassesTab', { screen: 'ScoreEntry' }) },
-          { icon: 'checkmark-done-outline', label: 'Take attendance', onPress: () => navigation.getParent()?.navigate('ClassesTab', { screen: 'Attendance' }) },
-          { icon: 'megaphone-outline', label: 'New announcement', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
-        ]}
-      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wideRow: { flexDirection: 'row', alignItems: 'flex-start' },
-  sidebar: { width: 260, paddingRight: Spacing.sm },
-  wideMain: { flex: 1 },
-  sectionLabel: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.textSub, marginHorizontal: Spacing.md, marginTop: Spacing.sm, marginBottom: Spacing.xs },
-  actionList: { paddingHorizontal: Spacing.md, gap: Spacing.xs },
-  actionRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.sm, elevation: 1 },
-  actionIcon: { width: 36, height: 36, borderRadius: 18, backgroundColor: Colors.primary + '18', alignItems: 'center', justifyContent: 'center', marginRight: Spacing.sm },
-  actionLabel: { flex: 1, fontSize: Fonts.sizes.sm, fontWeight: '600', color: Colors.text },
-});
