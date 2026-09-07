@@ -114,6 +114,28 @@ const PRIMARY_CLASS_NAMES = new Set([
 const SECONDARY_CLASS_NAMES = new Set(['JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3']);
 
 function inferClassNames(fullPath: string): string[] | undefined {
+  // Check the filename itself before the full path. Root cause of a real
+  // bug found live: when Pre-Nursery and Reception files sit as siblings
+  // in the same parent folder (e.g. a folder named something like "PRE
+  // NURSERY AND RECEPTION"), that folder name alone contains "pre nursery"
+  // as a substring — and since CLASS_PATTERNS checks 'pre[\s_-]*nursery'
+  // before 'reception', matching against the FULL path meant the shared
+  // parent folder name won for BOTH files regardless of which file it
+  // actually was, because the Reception file's own filename never got a
+  // chance to be checked on its own merits. This is exactly why the bug
+  // only showed up with both files together (sharing that folder) and not
+  // when either was tested in isolation (in a differently-named folder
+  // with nothing to falsely match against).
+  //
+  // The filename is authoritative when it matches anything at all — it's
+  // always more specific than any parent folder name. Only fall back to
+  // matching the full path (parent folders included) when the filename
+  // alone is too generic to resolve on its own (e.g. a bare "2ND TERM.docx"
+  // that only makes sense in the context of a ".../JSS 2/2ND TERM/" path).
+  const filename = fullPath.split(/[/\\]/).pop() ?? fullPath;
+  for (const [re, names] of CLASS_PATTERNS) {
+    if (re.test(filename)) return names ?? undefined;
+  }
   for (const [re, names] of CLASS_PATTERNS) {
     if (re.test(fullPath)) return names ?? undefined;
   }
