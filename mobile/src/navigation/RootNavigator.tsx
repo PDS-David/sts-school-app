@@ -51,8 +51,23 @@ export default function RootNavigator() {
     );
   }
 
+  // `key` forces React to fully remount this Stack.Navigator (and land on
+  // its first/default screen) on every phase transition, rather than
+  // reconciling screens within the same navigator instance. This matters
+  // because screen NAMES overlap between phases on purpose (e.g.
+  // "SecurityQuestionSetup" exists both in the forced branch below and
+  // again in the final authenticated branch, for voluntary later use) —
+  // without a key change, React Navigation sees the currently-active
+  // route name is still "valid" in the new screen set and just keeps
+  // showing it, rather than resetting to "App". Confirmed as a real bug
+  // this way, not hypothetically: mustChangePw's transition happened to
+  // work without this because ChangePassword-forced and
+  // SecurityQuestionSetup-forced share no screen names, so the route
+  // reset was accidental, not because the underlying pattern was safe.
+  const phase = !user ? 'guest' : mustChangePw ? 'change-pw' : mustSetSecurityQuestion ? 'security-q' : 'app';
+
   return (
-    <Stack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
+    <Stack.Navigator id={undefined} key={phase} screenOptions={{ headerShown: false }}>
       {!user ? (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
