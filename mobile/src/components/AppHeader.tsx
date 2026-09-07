@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Fonts } from '../theme';
@@ -17,10 +17,27 @@ interface AppHeaderProps {
 // A single top bar shared by every landing screen across every role, so the
 // app always feels the same at the top regardless of which tab you're on —
 // mirrors WhatsApp's consistent header pattern (title left, actions right).
+//
+// Log Out lives here (not just in each role's More screen) because testing
+// found it directly: it worked correctly via More, but wasn't visible from
+// Dashboard at all — a real discoverability gap, not a functional bug.
+// Putting it once in this shared header fixes it for every role
+// simultaneously, consistent with how this component already describes
+// itself. Confirmed via Alert here (unlike the More-menu version, which
+// logs out immediately on tap) — a header icon that's always on-screen is
+// far easier to tap by accident than one buried in a menu, so the extra
+// confirmation step is warranted here specifically.
 export function AppHeader({ title, subtitle, onPressAvatar, onPressBell, rightExtra }: AppHeaderProps) {
   const insets = useSafeAreaInsets();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { unreadCount } = useNotifications();
+
+  const confirmLogout = () => {
+    Alert.alert('Log Out', 'Are you sure you want to log out?', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Log Out', style: 'destructive', onPress: logout },
+    ]);
+  };
 
   return (
     <View style={[styles.wrap, { paddingTop: insets.top + Spacing.sm }]}>
@@ -39,6 +56,10 @@ export function AppHeader({ title, subtitle, onPressAvatar, onPressBell, rightEx
               <Text style={styles.badgeText}>{unreadCount > 9 ? '9+' : unreadCount}</Text>
             </View>
           )}
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.iconBtn} onPress={confirmLogout} activeOpacity={0.7}>
+          <Ionicons name="log-out-outline" size={23} color={Colors.white} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.avatar} onPress={onPressAvatar} activeOpacity={0.7}>
