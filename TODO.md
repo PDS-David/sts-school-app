@@ -1,5 +1,20 @@
 # TODO
 
+> **Decision 2026-09-06 (migrate off Render — planned, not started):**
+> Live-confirmed cause of the "No internet connection" login bug from the
+> same day: Render's free tier spins the backend down after a period of
+> inactivity, and the first request after that can take well over a
+> minute to wake it back up (confirmed via Render's own "Service waking
+> up... Allocating compute resources..." splash page, hit directly). This
+> already caused a real, misdiagnosed-as-"no internet" login failure
+> during testing, and is not acceptable behavior for an app real schools
+> depend on day to day. **Decision: move both the backend app and the
+> database off Render once the current round of work is done.** Not
+> started — no target platform chosen yet, no migration plan written.
+> Whoever picks this up should treat it as its own project (data
+> migration for the live Postgres database included, not just redeploying
+> the app code) rather than a quick config change.
+
 > **Update 2026-09-06 (topicsCoverageReport.ts live findings — stale
 > classes + duplicate-topic pairs):** A live run of `topicsCoverageReport.ts`
 > against production surfaced two issues, both now diagnosed and tooled,
