@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Fonts } from '../theme';
@@ -18,26 +18,19 @@ interface AppHeaderProps {
 // app always feels the same at the top regardless of which tab you're on —
 // mirrors WhatsApp's consistent header pattern (title left, actions right).
 //
-// Log Out lives here (not just in each role's More screen) because testing
-// found it directly: it worked correctly via More, but wasn't visible from
-// Dashboard at all — a real discoverability gap, not a functional bug.
-// Putting it once in this shared header fixes it for every role
-// simultaneously, consistent with how this component already describes
-// itself. Confirmed via Alert here (unlike the More-menu version, which
-// logs out immediately on tap) — a header icon that's always on-screen is
-// far easier to tap by accident than one buried in a menu, so the extra
-// confirmation step is warranted here specifically.
+// Log Out is NOT here — it was, briefly (commit a28a9c6), to fix a real
+// discoverability gap found in live testing. Moved to Sidebar.tsx's bottom
+// instead per direct owner feedback after testing THAT version: the header
+// icon rendered but silently did nothing on web, because it used React
+// Native's Alert.alert() for confirmation, which react-native-web does not
+// reliably implement (no visible dialog appears, so the tap looked dead).
+// The sidebar only exists on wide/web layouts anyway (see SidebarLayout
+// below), so it's also a better fit than a header icon that would need
+// separate web-safe-confirmation handling in two places instead of one.
 export function AppHeader({ title, subtitle, onPressAvatar, onPressBell, rightExtra }: AppHeaderProps) {
   const insets = useSafeAreaInsets();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const { unreadCount } = useNotifications();
-
-  const confirmLogout = () => {
-    Alert.alert('Log Out', 'Are you sure you want to log out?', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Log Out', style: 'destructive', onPress: logout },
-    ]);
-  };
 
   return (
     <View style={[styles.wrap, { paddingTop: insets.top + Spacing.sm }]}>
@@ -56,10 +49,6 @@ export function AppHeader({ title, subtitle, onPressAvatar, onPressBell, rightEx
               <Text style={styles.badgeText}>{unreadCount > 9 ? '9+' : unreadCount}</Text>
             </View>
           )}
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.iconBtn} onPress={confirmLogout} activeOpacity={0.7}>
-          <Ionicons name="log-out-outline" size={23} color={Colors.white} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.avatar} onPress={onPressAvatar} activeOpacity={0.7}>

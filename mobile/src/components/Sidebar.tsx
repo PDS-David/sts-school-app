@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { navigationRef } from '../navigation/navigationRef';
 import { useIsWide } from './layout';
+import { useAuth } from '../api/AuthContext';
 
 export interface SidebarItem {
   routeName: string;   // the Tab.Screen `name` this item navigates to
@@ -50,34 +51,62 @@ export function Sidebar({ items, activeRouteName, quickActions }: {
   activeRouteName?: string;
   quickActions?: SidebarAction[];
 }) {
+  const { logout } = useAuth();
+
+  // Alert.alert() from react-native does not reliably show a dialog on
+  // web (react-native-web's implementation is incomplete) — confirmed via
+  // live testing: the button rendered and was tappable but nothing
+  // visibly happened. window.confirm() is the real, working web
+  // equivalent; native platforms keep using Alert.alert() as normal.
+  const confirmLogout = () => {
+    if (Platform.OS === 'web') {
+      if (window.confirm('Are you sure you want to log out?')) logout();
+      return;
+    }
+    Alert.alert('Log Out', 'Are you sure you want to log out?', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Log Out', style: 'destructive', onPress: logout },
+    ]);
+  };
+
   return (
     <View style={styles.sidebar}>
-      {items.map((item) => {
-        const active = item.routeName === activeRouteName;
-        return (
-          <TouchableOpacity
-            key={item.routeName}
-            style={[styles.item, active && styles.itemActive]}
-            onPress={() => { if (navigationRef.isReady()) navigationRef.navigate(item.routeName); }}
-            activeOpacity={0.7}
-          >
-            <Ionicons name={item.icon} size={20} color={active ? Colors.primary : Colors.textSub} />
-            <Text style={[styles.label, active && styles.labelActive]}>{item.label}</Text>
-          </TouchableOpacity>
-        );
-      })}
-
-      {quickActions && quickActions.length > 0 && (
-        <>
-          <Text style={styles.sectionLabel}>Quick Actions</Text>
-          {quickActions.map((a) => (
-            <TouchableOpacity key={a.label} style={styles.item} onPress={a.onPress} activeOpacity={0.7}>
-              <Ionicons name={a.icon} size={20} color={Colors.textSub} />
-              <Text style={styles.label}>{a.label}</Text>
+      <View style={{ flex: 1 }}>
+        {items.map((item) => {
+          const active = item.routeName === activeRouteName;
+          return (
+            <TouchableOpacity
+              key={item.routeName}
+              style={[styles.item, active && styles.itemActive]}
+              onPress={() => { if (navigationRef.isReady()) navigationRef.navigate(item.routeName); }}
+              activeOpacity={0.7}
+            >
+              <Ionicons name={item.icon} size={20} color={active ? Colors.primary : Colors.textSub} />
+              <Text style={[styles.label, active && styles.labelActive]}>{item.label}</Text>
             </TouchableOpacity>
-          ))}
-        </>
-      )}
+          );
+        })}
+
+        {quickActions && quickActions.length > 0 && (
+          <>
+            <Text style={styles.sectionLabel}>Quick Actions</Text>
+            {quickActions.map((a) => (
+              <TouchableOpacity key={a.label} style={styles.item} onPress={a.onPress} activeOpacity={0.7}>
+                <Ionicons name={a.icon} size={20} color={Colors.textSub} />
+                <Text style={styles.label}>{a.label}</Text>
+              </TouchableOpacity>
+            ))}
+          </>
+        )}
+      </View>
+
+      {/* Pinned to the bottom via the flex:1 wrapper above pushing this
+          down — found in live testing to need its own clearly-labeled
+          spot (not just an icon) separate from the primary nav items. */}
+      <TouchableOpacity style={[styles.item, styles.logoutItem]} onPress={confirmLogout} activeOpacity={0.7}>
+        <Ionicons name="log-out-outline" size={20} color={Colors.error} />
+        <Text style={[styles.label, styles.logoutLabel]}>Log out</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -125,6 +154,8 @@ const styles = StyleSheet.create({
   itemActive: { backgroundColor: Colors.primary + '18' },
   label: { fontSize: Fonts.sizes.sm, fontWeight: '600', color: Colors.textSub },
   labelActive: { color: Colors.primary, fontWeight: '700' },
+  logoutItem: { marginBottom: Spacing.sm },
+  logoutLabel: { color: Colors.error, fontWeight: '700' },
   sectionLabel: {
     fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub,
     textTransform: 'uppercase', marginTop: Spacing.lg, marginBottom: Spacing.xs, paddingHorizontal: Spacing.sm,
