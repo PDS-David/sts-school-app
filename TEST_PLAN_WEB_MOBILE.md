@@ -94,7 +94,7 @@ when a real browser/phone hits the real backend.
 ## Phase 1 — Web, role by role
 
 ### 1.1 Admin (Operations)
-- [ ] Log in as `admin` / `Admin@1234`. Forced password-change screen
+- [x] Log in as `admin` / `Admin@1234`. Forced password-change screen
       appears — set a new password, confirm it logs you into the Dashboard
       after.
 - [ ] Dashboard tiles show: Students, Users, Class Summary, Export Excel,
@@ -301,4 +301,6 @@ session/agent.)*
 YYYY-MM-DD  <who/which agent>  <step id, e.g. 1.1/AdminUsers-role-picker>  PASS|FAIL|SKIP  <one-line detail>
 ```
 
-*(nothing logged yet — this pass hasn't started)*
+2026-09-06  Claude(chat)  A/login-forced-pw-change  PASS  admin/Admin@1234 -> forced password change -> reaches Dashboard, on production Render backend.
+2026-09-06  Claude(chat)  A/security-question-setup  FAIL->FIXED  Chained security-question screen after forced pw change: save succeeded (confirmed via DevTools console, no errors; full refresh correctly landed in app, proving backend save was fine) but screen never auto-transitioned. Root cause: RootNavigator's Stack.Navigator re-uses the screen name "SecurityQuestionSetup" across two different auth phases (forced + voluntary-later), so React Navigation kept the current route instead of resetting to "App" when the phase flag flipped. Fixed via a phase-derived `key` on the Stack.Navigator forcing a full remount per transition (commit cd68fa1). Re-tested live by Da: now works correctly end to end.
+2026-09-06  Claude(chat)  A/logout-visibility  FAIL->FIXED  Logout worked via each role's More screen but wasn't visible from Dashboard at all (discoverability gap, not a functional bug) — found live by Da. Added a Log Out icon directly to the shared AppHeader (used by every role's landing screens) with a confirmation dialog, since a header icon is easier to hit by accident than one buried in a menu (commit a28a9c6). Not yet re-verified live by Da as of this entry — check next session.
