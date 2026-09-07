@@ -1,5 +1,26 @@
 # Changelog
 
+## [Unreleased] — 2026-09-06 — Persistent sidebar nav (all roles, wide/web screens)
+
+New `mobile/src/components/Sidebar.tsx` (`Sidebar` + `SidebarLayout`).
+Wraps each role's `*Tabs.tsx` `<Tab.Navigator>` — otherwise completely
+unmodified — in a row layout with a 220px sidebar on wide/web screens
+(reusing `layout.tsx`'s existing `useIsWide()` breakpoint), while the
+bottom tab bar keeps rendering exactly as before on every screen size.
+Explicitly requested as "all roles" + "keep both" (sidebar alongside the
+tab bar, not replacing it) rather than admin-only or tabs-replaced.
+
+Deliberately not a custom `tabBar` render prop, which would replace the
+bottom bar's own rendering entirely. Instead each `Tab.Navigator` gets
+`screenListeners={{ state: e => setTabState(e.data.state) }}` to lift
+"which tab is focused" into local state — the supported way to observe a
+nested navigator's state from outside it — and the Sidebar navigates via
+the existing app-wide `navigationRef` (already used for push-notification
+deep links) rather than a tab-scoped ref, since
+`createBottomTabNavigator` doesn't expose one.
+
+Verified: `tsc --noEmit` clean, real `expo export --platform web` bundle.
+
 ## [Unreleased] — 2026-09-05 — Finance/Operations Admin split, parent messaging widened, offline cache-invalidation, report Print/Export
 
 Four independent pieces from the same session, listed in the order they

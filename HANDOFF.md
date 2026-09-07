@@ -65,39 +65,12 @@ curriculum-data cleanup work again.
 ## Broader open items (from the project owner's own priority list, in the
 order raised — check with them before assuming this order still holds)
 
-1. **Persistent sidebar navigation, ALL roles, alongside (not replacing)
-   the existing bottom tab bar on wide/web screens** — explicitly
-   requested by the project owner, **not started**. Design already worked
-   out in this session, just not built:
-   - Each `*Tabs.tsx` file (`StudentTabs`, `ParentTabs`, `TeacherTabs`,
-     `AdminTabs`, `FinanceAdminTabs`) keeps its `<Tab.Navigator>`
-     completely unchanged (default bottom tab bar keeps rendering exactly
-     as it does today, on every screen size).
-   - Add a `screenListeners={{ state: (e) => setTabState(e.data.state) }}`
-     on each `Tab.Navigator` to lift "which tab is currently focused" into
-     a local `useState` in the wrapping component — this is the officially
-     supported way to observe a nested navigator's own state from outside
-     it, no ref hacks needed.
-   - Build one shared `Sidebar` component (new file, e.g.
-     `mobile/src/components/Sidebar.tsx`) taking `{icon, label,
-     routeName}[]` + the currently-focused route name (for highlighting)
-     + an `onSelect` handler.
-   - For navigating *from* the sidebar *into* a tab, reuse the existing
-     app-wide `navigationRef` (`mobile/src/navigation/navigationRef.ts`,
-     already used for push-notification deep links and
-     `openNotifications()`/`openBraineeChat()`) — call
-     `navigationRef.navigate(routeName)`. This avoids needing a
-     tab-navigator-scoped ref, which `createBottomTabNavigator` doesn't
-     expose cleanly.
-   - Wrap each role's Tab.Navigator output in a `View` with
-     `flexDirection: 'row'` on wide screens (reuse `useIsWide()` from
-     `mobile/src/components/layout.tsx`, same breakpoint already used for
-     the Admin/Teacher dashboard sidebar treatment): `[Sidebar][the
-     unchanged Tab.Navigator, including its own bottom bar]`. On narrow
-     screens, render just the Tab.Navigator, no wrapper — unchanged mobile
-     behavior.
-   - Apply this to all five `*Tabs.tsx` files — the project owner
-     explicitly chose "all roles" over "admin-only" when asked.
+1. ~~Persistent sidebar navigation~~ — **done**, commit `7a32831`. See
+   `CHANGELOG.md`'s 2026-09-06 entry for the shape (`Sidebar`/
+   `SidebarLayout` in `mobile/src/components/Sidebar.tsx`, wired into all
+   five `*Tabs.tsx` files). Not yet visually confirmed in an actual wide
+   browser window by the project owner — worth a quick look next time the
+   app is open on a desktop screen.
 2. **Live production testing** — `TEST_PLAN_WEB_MOBILE.md` (repo root) has
    the full role-by-role checklist; large parts of it have effectively
    already happened ad-hoc this session (login, finance split, Add
