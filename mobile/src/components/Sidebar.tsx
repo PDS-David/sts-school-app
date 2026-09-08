@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Platform, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { navigationRef } from '../navigation/navigationRef';
 import { useIsWide } from './layout';
 import { useAuth } from '../api/AuthContext';
+import { ConfirmDialog } from './ConfirmDialog';
 
 export interface SidebarItem {
   routeName: string;   // the Tab.Screen `name` this item navigates to
@@ -52,22 +53,7 @@ export function Sidebar({ items, activeRouteName, quickActions }: {
   quickActions?: SidebarAction[];
 }) {
   const { logout } = useAuth();
-
-  // Alert.alert() from react-native does not reliably show a dialog on
-  // web (react-native-web's implementation is incomplete) — confirmed via
-  // live testing: the button rendered and was tappable but nothing
-  // visibly happened. window.confirm() is the real, working web
-  // equivalent; native platforms keep using Alert.alert() as normal.
-  const confirmLogout = () => {
-    if (Platform.OS === 'web') {
-      if (window.confirm('Are you sure you want to log out?')) logout();
-      return;
-    }
-    Alert.alert('Log Out', 'Are you sure you want to log out?', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Log Out', style: 'destructive', onPress: logout },
-    ]);
-  };
+  const [confirmingLogout, setConfirmingLogout] = React.useState(false);
 
   return (
     <View style={styles.sidebar}>
@@ -103,10 +89,24 @@ export function Sidebar({ items, activeRouteName, quickActions }: {
       {/* Pinned to the bottom via the flex:1 wrapper above pushing this
           down — found in live testing to need its own clearly-labeled
           spot (not just an icon) separate from the primary nav items. */}
-      <TouchableOpacity style={[styles.item, styles.logoutItem]} onPress={confirmLogout} activeOpacity={0.7}>
+      <TouchableOpacity style={[styles.item, styles.logoutItem]} onPress={() => setConfirmingLogout(true)} activeOpacity={0.7}>
         <Ionicons name="log-out-outline" size={20} color={Colors.error} />
         <Text style={[styles.label, styles.logoutLabel]}>Log out</Text>
       </TouchableOpacity>
+
+      {/* A branded modal rather than window.confirm()/Alert.alert() — real
+          owner feedback after testing window.confirm(): functionally fine
+          but looked like a generic, unstyled browser popup, not good
+          enough presentation for a real confirmation moment. */}
+      <ConfirmDialog
+        visible={confirmingLogout}
+        title="Log Out"
+        message="Are you sure you want to log out?"
+        confirmLabel="Log Out"
+        destructive
+        onConfirm={() => { setConfirmingLogout(false); logout(); }}
+        onCancel={() => setConfirmingLogout(false)}
+      />
     </View>
   );
 }
