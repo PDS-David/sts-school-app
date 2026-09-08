@@ -24,6 +24,12 @@ export default function StudentsScreen({ navigation }: any) {
   const [refreshing,setRefreshing]= useState(false);
   const [search,    setSearch]    = useState('');
 
+  // Compact switcher lives in the native header now, not as a full-width
+  // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+  }, [navigation]);
+
   const fetch = async () => {
     try {
       // Admin has no school of their own — pass whichever one is selected in
@@ -50,7 +56,6 @@ export default function StudentsScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      <SchoolSwitcherBar />
       <View style={styles.searchBar}>
         <Ionicons name="search" size={18} color={Colors.textSub} />
         <TextInput

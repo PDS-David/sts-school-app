@@ -11,7 +11,7 @@ import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 // ══════════════════════════════════════════
 // TERMS
 // ══════════════════════════════════════════
-export function TermsMgmtScreen() {
+export function TermsMgmtScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [terms,   setTerms]   = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -21,6 +21,10 @@ export function TermsMgmtScreen() {
     start_date: '', end_date: '', days_opened: '', next_term_begins: '',
   });
   const [isCurrent, setIsCurrent] = useState(false);
+
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+  }, [navigation]);
 
   const fetch = async () => {
     setLoading(true);
@@ -60,7 +64,6 @@ export function TermsMgmtScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <SchoolSwitcherBar />
       <TouchableOpacity style={styles.addBtn} onPress={openAddModal}>
         <Ionicons name="add-circle" size={20} color={Colors.white} />
         <Text style={styles.addBtnTxt}>Add Term</Text>
@@ -117,7 +120,7 @@ export function TermsMgmtScreen() {
 // ══════════════════════════════════════════
 // SUBJECTS
 // ══════════════════════════════════════════
-export function SubjectsMgmtScreen() {
+export function SubjectsMgmtScreen({ navigation }: any) {
   const { user } = useAuth();
   const { selectedSchoolCode } = useAdminSchool();
   const isAdmin = user?.role === 'admin';
@@ -126,6 +129,14 @@ export function SubjectsMgmtScreen() {
   const [name,     setName]     = useState('');
   const [code,     setCode]     = useState('');
   const [saving,   setSaving]   = useState(false);
+
+  // Compact switcher lives in the native header now, not as a full-width
+  // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
+  // Kept unconditional (not gated on isAdmin) to match this screen's
+  // pre-existing behavior exactly — not changing who sees it, just where.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+  }, [navigation]);
 
   const fetch = async () => {
     setLoading(true);
@@ -170,7 +181,6 @@ export function SubjectsMgmtScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <SchoolSwitcherBar />
       <Card style={{ margin: Spacing.sm }}>
         <SectionHeader title="Add Subject" />
         <Input label="Subject Name" value={name} onChangeText={setName} placeholder="e.g. Mathematics" />

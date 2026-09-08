@@ -8,7 +8,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 
-export function ClassSummaryScreen() {
+export function ClassSummaryScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [classes,   setClasses]   = useState<string[]>([]);
   const [subjects,  setSubjects]  = useState<any[]>([]);
@@ -18,6 +18,13 @@ export function ClassSummaryScreen() {
   const [scores,    setScores]    = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
+
+  // Compact switcher lives in the native header now, not as a full-width
+  // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
+  // This screen is admin-only, so no role check needed here.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+  }, [navigation]);
 
   useEffect(() => {
     setLoading(true);
@@ -73,7 +80,6 @@ export function ClassSummaryScreen() {
       style={styles.container}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchScores(); }} />}
     >
-      <SchoolSwitcherBar />
       <Card style={{ margin: Spacing.sm }}>
         <View style={styles.pickerWrap}>
           <Picker selectedValue={selClass} onValueChange={setSelClass}>
@@ -113,10 +119,14 @@ export function ClassSummaryScreen() {
 }
 
 // ── AuditLogScreen.tsx ────────────────────────────────────────────────────────
-export function AuditLogScreen() {
+export function AuditLogScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [logs,    setLogs]    = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+  }, [navigation]);
 
   useEffect(() => {
     setLoading(true);
@@ -128,7 +138,6 @@ export function AuditLogScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: Spacing.sm }}>
-      <SchoolSwitcherBar />
       {logs.length === 0 ? <Empty message="No audit log entries" /> : logs.map(l => (
         <View key={l.id} style={styles.logRow}>
           <View style={styles.logDot} />
@@ -151,12 +160,16 @@ export function AuditLogScreen() {
 // class/subject care without asking admin first, but nothing is ever gone
 // for good — it just moves here until an admin restores it (or leaves it
 // here indefinitely; nothing auto-purges it).
-export function DeletedStudentsScreen() {
+export function DeletedStudentsScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const [students,  setStudents]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
   const [restoringId, setRestoringId] = useState<string | null>(null);
+
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+  }, [navigation]);
 
   const fetchDeleted = async () => {
     try {
@@ -192,7 +205,6 @@ export function DeletedStudentsScreen() {
       contentContainerStyle={{ padding: Spacing.sm }}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchDeleted(); }} />}
     >
-      <SchoolSwitcherBar />
       {students.length === 0 ? <Empty message="No deleted students for this school" /> : students.map(s => (
         <Card key={s.id} style={{ marginBottom: Spacing.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

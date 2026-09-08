@@ -16,13 +16,20 @@ interface Subject { id: number; name: string; }
 interface Term    { id: number; name: string; academic_year: string; }
 interface ScoreRow { student_id: string; name: string; ca1: string; ca2: string; exam: string; }
 
-export default function ScoreEntryScreen() {
+export default function ScoreEntryScreen({ navigation }: any) {
   const { user } = useAuth();
   const isAdmin = user?.role === 'admin';
   const { selectedSchoolCode } = useAdminSchool();
   // Teachers already have their own school_code; admin has none of their own
   // and relies entirely on whichever one is picked in the switcher.
   const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
+
+  // Compact switcher lives in the native header now (admin only), not as a
+  // full-width block in the content area — see SchoolSwitcherBar.tsx's
+  // `compact` doc.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: isAdmin ? () => <SchoolSwitcherBar compact /> : undefined });
+  }, [navigation, isAdmin]);
 
   const [students,  setStudents]  = useState<Student[]>([]);
   const [subjects,  setSubjects]  = useState<Subject[]>([]);
@@ -173,8 +180,7 @@ export default function ScoreEntryScreen() {
   if (isAdmin && !effectiveSchoolCode) {
     return (
       <View style={{ flex: 1, backgroundColor: Colors.background }}>
-        <SchoolSwitcherBar />
-        <Empty message="Pick a school above to enter scores." />
+        <Empty message="Pick a school in the header above to enter scores." />
       </View>
     );
   }
@@ -183,7 +189,6 @@ export default function ScoreEntryScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      {isAdmin && <SchoolSwitcherBar />}
       {/* Filters */}
       <Card style={{ margin: Spacing.sm }}>
         <Text style={styles.filterLabel}>Class</Text>

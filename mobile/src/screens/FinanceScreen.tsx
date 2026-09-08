@@ -14,7 +14,7 @@ const STATUS_COLOR: Record<string, string> = {
   unpaid: Colors.error, partial: Colors.warning, paid: Colors.success,
 };
 
-export default function FinanceScreen() {
+export default function FinanceScreen({ navigation }: any) {
   const { user } = useAuth();
   const { selectedWardId, selectedWard } = useWards();
   const { selectedSchoolCode } = useAdminSchool();
@@ -29,6 +29,13 @@ export default function FinanceScreen() {
   const [invoices,  setInvoices]  = useState<any[]>([]);
   const [feeItems,  setFeeItems]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+
+  // Compact switcher lives in the native header now (finance_admin only —
+  // parent has no school to switch), not as a full-width block in the
+  // content area — see SchoolSwitcherBar.tsx's `compact` doc.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: isFinanceAdmin ? () => <SchoolSwitcherBar compact /> : undefined });
+  }, [navigation, isFinanceAdmin]);
 
   // ── Add Fee Item modal ──────────────────────────────────────────────────────
   const [feeModal, setFeeModal] = useState(false);
@@ -134,7 +141,6 @@ export default function FinanceScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      {isFinanceAdmin && <SchoolSwitcherBar />}
       {isParent && selectedWard && (
         <Text style={styles.wardLabel}>Showing fees for {selectedWard.full_name}</Text>
       )}

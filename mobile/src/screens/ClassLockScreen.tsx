@@ -18,11 +18,19 @@ interface ClassLock { id: number; class_name: string; term_id: number; locked_by
 // remark/weekly-effort write to that class — including her own — until it's
 // unlocked again. See backend/src/utils/scope.ts for where this is actually
 // enforced; this screen just manages the lock itself.
-export default function ClassLockScreen() {
+export default function ClassLockScreen({ navigation }: any) {
   const { user } = useAuth();
   const isAdmin = user?.role === 'admin';
   const { selectedSchoolCode } = useAdminSchool();
   const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
+
+  // Compact switcher lives in the native header now (admin only — a class
+  // teacher has one fixed school_code, nothing to switch), not as a
+  // full-width block in the content area — see SchoolSwitcherBar.tsx's
+  // `compact` doc.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: isAdmin ? () => <SchoolSwitcherBar compact /> : undefined });
+  }, [navigation, isAdmin]);
 
   const [classes,  setClasses]  = useState<string[]>([]);
   const [terms,    setTerms]    = useState<Term[]>([]);
@@ -93,8 +101,6 @@ export default function ClassLockScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
-        {isAdmin && <SchoolSwitcherBar />}
-
         <Card style={{ marginBottom: Spacing.md }}>
           <Text style={styles.explainer}>
             Locking a class stops any further changes to its scores, attendance,

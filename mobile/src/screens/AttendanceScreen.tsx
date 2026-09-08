@@ -10,7 +10,7 @@ import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 
 interface Student { id: string; full_name: string; class_name: string; }
 
-export default function AttendanceScreen() {
+export default function AttendanceScreen({ navigation }: any) {
   const { user } = useAuth();
   const isAdmin = user?.role === 'admin';
   const { selectedSchoolCode } = useAdminSchool();
@@ -23,6 +23,13 @@ export default function AttendanceScreen() {
   // since it's what made that omission harmless-looking until this pass
   // required an explicit, real school scope.
   const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
+
+  // Compact switcher lives in the native header now (admin only), not as a
+  // full-width block in the content area — see SchoolSwitcherBar.tsx's
+  // `compact` doc.
+  useEffect(() => {
+    navigation.setOptions({ headerRight: isAdmin ? () => <SchoolSwitcherBar compact /> : undefined });
+  }, [navigation, isAdmin]);
   const [students, setStudents] = useState<Student[]>([]);
   const [classes,  setClasses]  = useState<string[]>([]);
   const [terms,    setTerms]    = useState<any[]>([]);
@@ -119,8 +126,7 @@ export default function AttendanceScreen() {
   if (isAdmin && !effectiveSchoolCode) {
     return (
       <View style={{ flex: 1, backgroundColor: Colors.background }}>
-        <SchoolSwitcherBar />
-        <Empty message="Pick a school above to take attendance." />
+        <Empty message="Pick a school in the header above to take attendance." />
       </View>
     );
   }
@@ -129,7 +135,6 @@ export default function AttendanceScreen() {
 
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
-      {isAdmin && <SchoolSwitcherBar />}
       <Card style={{ margin: Spacing.sm }}>
         <Text style={styles.filterLabel}>Class</Text>
         <View style={styles.pickerWrap}>
