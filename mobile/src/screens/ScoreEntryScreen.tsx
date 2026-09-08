@@ -24,6 +24,14 @@ export default function ScoreEntryScreen({ navigation }: any) {
   // Teachers already have their own school_code; admin has none of their own
   // and relies entirely on whichever one is picked in the switcher.
   const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
+  // Must be called unconditionally, before any early return below — moved up
+  // from right before the JSX return, which violated the Rules of Hooks: on
+  // the first render (loading=true) the component returned before ever
+  // reaching that call, then called it on a later render once loading
+  // finished, so React saw a different number of hooks between renders and
+  // threw "Rendered more hooks than during the previous render," which took
+  // the whole screen down to a blank page.
+  const isWide = useIsWide();
 
   // Compact switcher lives in the native header now (admin only), not as a
   // full-width block in the content area — see SchoolSwitcherBar.tsx's
@@ -187,7 +195,6 @@ export default function ScoreEntryScreen({ navigation }: any) {
   }
 
   const subName = subjects.find(s => s.id === selSub)?.name ?? '';
-  const isWide = useIsWide();
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
