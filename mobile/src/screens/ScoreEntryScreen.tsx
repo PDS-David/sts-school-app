@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, GradePill } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { PageContainer, useIsWide } from '../components/layout';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
@@ -186,86 +187,115 @@ export default function ScoreEntryScreen({ navigation }: any) {
   }
 
   const subName = subjects.find(s => s.id === selSub)?.name ?? '';
+  const isWide = useIsWide();
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      {/* Filters */}
-      <Card style={{ margin: Spacing.sm }}>
-        <Text style={styles.filterLabel}>Class</Text>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selClass} onValueChange={setSelClass}>
-            {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
-          </Picker>
-        </View>
-        <Text style={styles.filterLabel}>Subject</Text>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selSub} onValueChange={v => setSelSub(Number(v))}>
-            <Picker.Item label="Select subject…" value="" />
-            {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={s.id} />)}
-          </Picker>
-        </View>
-
-        {!showNewSub ? (
-          <TouchableOpacity onPress={() => setShowNewSub(true)} style={styles.addSubLink}>
-            <Ionicons name="add-circle-outline" size={14} color={Colors.primary} />
-            <Text style={styles.addSubLinkTxt}>Don't see the subject? Add it</Text>
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.newSubBox}>
-            <Input value={newSubName} onChangeText={setNewSubName} placeholder="New subject name" style={{ marginBottom: 6 }} />
-            <Input value={newSubCode} onChangeText={setNewSubCode} placeholder="Code (optional)" style={{ marginBottom: 6 }} />
-            <View style={{ flexDirection: 'row', gap: Spacing.xs }}>
-              <Btn label="Cancel" variant="outline" onPress={() => { setShowNewSub(false); setNewSubName(''); setNewSubCode(''); }} style={{ flex: 1 }} />
-              <Btn label={addingSub ? 'Adding…' : 'Add Subject'} onPress={handleAddSubject} loading={addingSub} style={{ flex: 1 }} />
+      <PageContainer style={{ padding: Spacing.sm }}>
+        {/* Filters */}
+        <Card>
+          <View style={isWide ? styles.filterRow : undefined}>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Text style={styles.filterLabel}>Class</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selClass} onValueChange={setSelClass}>
+                  {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
+                </Picker>
+              </View>
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Text style={styles.filterLabel}>Subject</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selSub} onValueChange={v => setSelSub(Number(v))}>
+                  <Picker.Item label="Select subject…" value="" />
+                  {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={s.id} />)}
+                </Picker>
+              </View>
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Text style={styles.filterLabel}>Term</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
+                  {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
+                </Picker>
+              </View>
             </View>
           </View>
-        )}
-        <Text style={styles.filterLabel}>Term</Text>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
-            {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
-          </Picker>
-        </View>
-        <Text style={styles.maxHint}>
-          Max scores — CA1: {schoolCfg.ca1_max} | CA2: {schoolCfg.ca2_max} | Exam: {schoolCfg.exam_max}
-        </Text>
-      </Card>
+
+          {!showNewSub ? (
+            <TouchableOpacity onPress={() => setShowNewSub(true)} style={styles.addSubLink}>
+              <Ionicons name="add-circle-outline" size={14} color={Colors.primary} />
+              <Text style={styles.addSubLinkTxt}>Don't see the subject? Add it</Text>
+            </TouchableOpacity>
+          ) : (
+            <View style={styles.newSubBox}>
+              <View style={isWide ? styles.filterRow : undefined}>
+                <Input value={newSubName} onChangeText={setNewSubName} placeholder="New subject name" style={isWide ? { flex: 2, marginBottom: 0 } : { marginBottom: 6 }} />
+                <Input value={newSubCode} onChangeText={setNewSubCode} placeholder="Code (optional)" style={isWide ? { flex: 1, marginBottom: 0 } : { marginBottom: 6 }} />
+              </View>
+              <View style={{ flexDirection: 'row', gap: Spacing.xs, marginTop: Spacing.xs }}>
+                <Btn label="Cancel" variant="outline" onPress={() => { setShowNewSub(false); setNewSubName(''); setNewSubCode(''); }} style={{ flex: 1 }} />
+                <Btn label={addingSub ? 'Adding…' : 'Add Subject'} onPress={handleAddSubject} loading={addingSub} style={{ flex: 1 }} />
+              </View>
+            </View>
+          )}
+
+          <View style={styles.maxHintRow}>
+            <Ionicons name="information-circle-outline" size={14} color={Colors.textSub} />
+            <Text style={styles.maxHint}>
+              Max scores — CA1: {schoolCfg.ca1_max} · CA2: {schoolCfg.ca2_max} · Exam: {schoolCfg.exam_max}
+            </Text>
+          </View>
+        </Card>
+      </PageContainer>
 
       {/* Score grid */}
       {rows.length === 0
-        ? <Empty message="No students in this class" />
+        ? (
+          <PageContainer style={{ padding: Spacing.sm }}>
+            <Card style={styles.emptyCard}>
+              <Ionicons name="people-outline" size={40} color={Colors.border} />
+              <Text style={styles.emptyTitle}>No students in {selClass || 'this class'}</Text>
+              <Text style={styles.emptySub}>Once students are enrolled in this class, they'll show up here to enter scores for.</Text>
+            </Card>
+          </PageContainer>
+        )
         : (
-          <ScrollView contentContainerStyle={{ padding: Spacing.sm, paddingBottom: Spacing.xl }}>
-            <SectionHeader title={`${selClass} — ${subName}`} />
-            {/* Header row */}
-            <View style={styles.gridHeader}>
-              <Text style={[styles.ghCell, { flex: 2 }]}>Student</Text>
-              <Text style={styles.ghCell}>CA1</Text>
-              <Text style={styles.ghCell}>CA2</Text>
-              <Text style={styles.ghCell}>Exam</Text>
-              <Text style={styles.ghCell}>Total</Text>
-            </View>
-            {rows.map((r, i) => {
-              const total = (Number(r.ca1) || 0) + (Number(r.ca2) || 0) + (Number(r.exam) || 0);
-              return (
-                <View key={r.student_id} style={[styles.gridRow, i % 2 === 0 && { backgroundColor: '#F5F7FA' }]}>
-                  <Text style={[styles.gdCell, { flex: 2 }]} numberOfLines={1}>{r.name}</Text>
-                  {(['ca1','ca2','exam'] as const).map(f => (
-                    <View key={f} style={styles.scoreCell}>
-                      <Input
-                        value={r[f]}
-                        onChangeText={v => updateRow(i, f, v)}
-                        keyboardType="numeric"
-                        placeholder="0"
-                        style={{ marginBottom: 0 }}
-                      />
-                    </View>
-                  ))}
-                  <Text style={[styles.gdCell, { fontWeight: '700', color: Colors.primary }]}>{total || '—'}</Text>
+          <ScrollView contentContainerStyle={{ paddingBottom: Spacing.xl }}>
+            <PageContainer style={{ padding: Spacing.sm, paddingTop: 0 }}>
+              <SectionHeader title={`${selClass} — ${subName}`} />
+              <Card style={{ padding: 0, overflow: 'hidden' }}>
+                {/* Header row */}
+                <View style={styles.gridHeader}>
+                  <Text style={[styles.ghCell, { flex: 2, textAlign: 'left' }]}>Student</Text>
+                  <Text style={styles.ghCell}>CA1</Text>
+                  <Text style={styles.ghCell}>CA2</Text>
+                  <Text style={styles.ghCell}>Exam</Text>
+                  <Text style={styles.ghCell}>Total</Text>
                 </View>
-              );
-            })}
-            <Btn label={saving ? 'Saving…' : 'Save All Scores'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
+                {rows.map((r, i) => {
+                  const total = (Number(r.ca1) || 0) + (Number(r.ca2) || 0) + (Number(r.exam) || 0);
+                  return (
+                    <View key={r.student_id} style={[styles.gridRow, i % 2 === 0 && styles.gridRowAlt]}>
+                      <Text style={[styles.gdCell, { flex: 2, textAlign: 'left' }]} numberOfLines={1}>{r.name}</Text>
+                      {(['ca1','ca2','exam'] as const).map(f => (
+                        <View key={f} style={styles.scoreCell}>
+                          <Input
+                            value={r[f]}
+                            onChangeText={v => updateRow(i, f, v)}
+                            keyboardType="numeric"
+                            placeholder="0"
+                            style={{ marginBottom: 0 }}
+                          />
+                        </View>
+                      ))}
+                      <Text style={[styles.gdCell, styles.totalCell]}>{total || '—'}</Text>
+                    </View>
+                  );
+                })}
+              </Card>
+              <Btn label={saving ? 'Saving…' : 'Save All Scores'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
+            </PageContainer>
           </ScrollView>
         )
       }
@@ -275,14 +305,22 @@ export default function ScoreEntryScreen({ navigation }: any) {
 
 const styles = StyleSheet.create({
   filterLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2, marginTop: Spacing.xs },
+  filterRow:   { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start' },
+  filterCol:   { flex: 1, minWidth: 0 },
   pickerWrap:  { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.xs },
-  maxHint:     { fontSize: Fonts.sizes.xs, color: Colors.textSub, textAlign: 'center', marginTop: Spacing.xs },
+  maxHintRow:  { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 4, marginTop: Spacing.sm, paddingTop: Spacing.sm, borderTopWidth: 1, borderColor: Colors.border },
+  maxHint:     { fontSize: Fonts.sizes.xs, color: Colors.textSub },
   addSubLink:  { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4, marginBottom: 4 },
   addSubLinkTxt: { color: Colors.primary, fontSize: Fonts.sizes.xs, fontWeight: '700' },
-  newSubBox:   { backgroundColor: '#F5F7FA', borderRadius: Radius.sm, padding: Spacing.sm, marginBottom: Spacing.xs },
-  gridHeader:  { flexDirection: 'row', backgroundColor: Colors.primary, borderRadius: Radius.sm, padding: 6 },
-  ghCell:      { flex: 1, color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.xs, textAlign: 'center' },
-  gridRow:     { flexDirection: 'row', alignItems: 'center', paddingVertical: 4, borderBottomWidth: 1, borderColor: Colors.border },
-  gdCell:      { flex: 1, fontSize: Fonts.sizes.xs, textAlign: 'center', color: Colors.text },
-  scoreCell:   { flex: 1, paddingHorizontal: 2 },
+  newSubBox:   { backgroundColor: '#F5F7FA', borderRadius: Radius.sm, padding: Spacing.sm, marginBottom: Spacing.xs, marginTop: 4 },
+  emptyCard:   { alignItems: 'center', paddingVertical: Spacing.xl, gap: 6 },
+  emptyTitle:  { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginTop: Spacing.xs },
+  emptySub:    { fontSize: Fonts.sizes.sm, color: Colors.textSub, textAlign: 'center', maxWidth: 340 },
+  gridHeader:  { flexDirection: 'row', backgroundColor: Colors.primary, padding: 10 },
+  ghCell:      { flex: 1, color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.xs, textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5 },
+  gridRow:     { flexDirection: 'row', alignItems: 'center', paddingVertical: 6, paddingHorizontal: 10, borderBottomWidth: 1, borderColor: Colors.border },
+  gridRowAlt:  { backgroundColor: '#F8FAFC' },
+  gdCell:      { flex: 1, fontSize: Fonts.sizes.sm, textAlign: 'center', color: Colors.text },
+  totalCell:   { fontWeight: '800', color: Colors.primary },
+  scoreCell:   { flex: 1, paddingHorizontal: 4 },
 });
