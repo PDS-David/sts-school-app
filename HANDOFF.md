@@ -1,94 +1,144 @@
-# HANDOFF — 2026-09 (curriculum cleanup follow-up + broader open items)
+# HANDOFF — Roster self-claim, remaining Da requests (2026-09)
 
-Read `AGENT_CONTINUATION.md` first (mandatory house conventions), then
-this file. `git fetch && git log --oneline -5 origin/master` before doing
-anything — expect `HEAD` at `4564c87` or later; if it's moved, someone
-else has pushed since this was written.
+Read AGENT_CONTINUATION.md first. `git fetch && git log --oneline -5
+origin/master` before starting — confirm you're at or past this doc's
+own commit.
 
-## Immediate next step — in progress, not finished
+Da's actual goal (clarified after an initial ask that would have broken
+the app): stop the operations admin from being the sole distributor of
+every login. He has past years' report sheets listing student names +
+classes and wants to bulk-seed those as records, then let each real
+student find their own name and set up their own account — instead of
+one shared "Student" login (architecturally impossible here:
+users.username is UNIQUE, and every academic feature — scores, topics,
+term-PINs, messaging — is keyed to one real person per account; a
+shared login would mean every student sees the same single account's
+data, not their own).
 
-`backend/src/db/fixStaleAssignedClasses.ts` (commit `4564c87`) was just
-written and pushed but **not yet run against production**. Context:
+---
 
-1. `cleanupStaleClasses.ts --yes` already ran successfully — deleted 11
-   stale pre-rename `classes` rows (`Grade 1`-`6`, `JSS2`, `JSS3`, `SS1`-
-   `SS3`). One row (`classes.id=11`, `'JSS1'`) was correctly left alone
-   because a real teacher's `users.assigned_class` still equals `'JSS1'`.
-2. `topicsDuplicatePairs.ts --yes` already ran successfully — deleted 104
-   of 120 flagged thin-duplicate topic rows (16 were presumably skipped
-   for having real `topic_completions`/a generated assessment — the exact
-   skip list wasn't captured in this session's transcript, worth
-   re-running the dry run to see the current skip list if that detail
-   matters).
-3. `fixStaleAssignedClasses.ts` fixes the one remaining blocker from #1 —
-   run its dry run, confirm it only finds the one expected teacher (or
-   whatever it actually finds), then `--yes` it.
-4. **After #3**, re-run `cleanupStaleClasses.ts` (no `--yes` — just to
-   confirm) — `classes.id=11` should now show `[safe to delete]`. Then run
-   it with `--yes` one more time to remove that last row and close out
-   Finding 1 completely.
+## TASK A — Bulk import students from past report sheets
 
-All four scripts live in `backend/src/db/`, all follow the same
-dry-run-then---yes convention, all connect via `backend/.env`'s
-`DATABASE_URL` (confirm it's still pointed at production before running
-anything).
+Da will provide file(s) — likely PDF or Word, format unconfirmed, get
+this from him directly before starting rather than guessing. Mirror the
+existing dry-run-then---yes convention (ingestTopics.ts,
+renameClassNaming.ts, cleanupStaleClasses.ts are all examples in
+backend/src/db/).
 
-## Two side-findings from the topicsDuplicatePairs.ts run — not yet acted on
+- Parse name + class per student. Ask Da whether the sheets also list
+  an admission number or any other per-student identifier — this
+  matters a lot for Task B's verification step below, check before
+  assuming there isn't one.
+- Insert as students rows ONLY — user_id stays NULL (no login yet).
+  students.user_id is nullable by design for exactly this
+  (schema.sql comment: "if student has login"), so this is the
+  intended, already-supported shape, not a workaround.
+- Same safety pattern as every other one-off script here: dry run
+  prints exactly what would be inserted (name, class, school_code) and
+  flags anything ambiguous (duplicate-looking names within a class,
+  unparseable rows) for a human look; --yes only after Da's reviewed
+  the dry run.
+- Watch for the same real issues past sessions hit with messy real
+  files: inconsistent class-name spelling (reuse the current PRY/JSS/SS
+  naming convention, not old pre-rename forms), merged-cell or
+  multi-student-per-line quirks in whatever format Da provides.
 
-Found while manually spot-checking the 120-pair dry-run output before
-approving `--yes`; neither blocked that run, both still need a look:
+## TASK B — Self-service "claim your account" flow
 
-1. **`[primary] PRY 4 / Basic Science / 1st Term` has genuine full-content
-   duplicates, not just thin fragments** — e.g. `"CHANGES IN PLANT"`
-   existed as *two* thick rows (`id=3613` and `id=3674`, both exactly 2163
-   chars) before the thin-duplicate cleanup ran, and the same doubled
-   pattern repeated for "CHANGES IN ANIMALS," "CHANGES IN NON – LIVING
-   THINGS," "OUR WEATHER," and "WEATHER SYMBOL AND RECORD CHART" in that
-   same bucket — looks like that whole source file got ingested twice.
-   `topicsDuplicatePairs.ts`'s heuristic only ever compares thin-vs-thick
-   within a bucket, so it can't and didn't catch thick-vs-thick
-   duplicates — this needs a separate detection pass (e.g. flag any two
-   topics in the same bucket with near-identical `LENGTH(source_reference)`
-   and near-identical normalized titles) before deciding whether/how to
-   deduplicate it.
-2. **`topics.id=1422`'s `title` field is corrupted** — contains a full
-   paragraph of body text (`".        gears ... A gear or cogwheel is a
-   rotating machine part having cut teeth, or cogs, whi[...]"`) instead of
-   just a title. This is a data-quality bug on one specific row, unrelated
-   to duplication — worth a targeted look at `ingestTopics.ts`'s title
-   extraction for whatever source file produced this row.
+This is the actual unlock for the whole ask. Currently
+POST /students/:id/link-user (backend/src/routes/students.ts) exists
+and does exactly the DB write needed, but is requireRole('admin') —
+there's no path for an unauthenticated prospective student to reach it.
 
-Neither is urgent (the app functions fine either way — these're just
-messy data), but both are real and worth fixing when there's a slot for
-curriculum-data cleanup work again.
+Open design question — get Da's explicit answer before building, don't
+decide this alone: with only a name + class to go on, ANY website
+visitor could claim to be any real, named student and see that
+student's actual grades/report card/messages. Some verification step is
+needed for real students to safely self-claim their own record without
+this door open to any stranger. Candidates, weakest to strongest,
+depending on what's actually in the report sheets (see Task A):
+- Admission number (if present in the sheets) — reasonably strong,
+  usually not public.
+- Date of birth — moderate, sometimes guessable/known socially.
+- A single per-class (not per-student) registration code the class
+  teacher reads out once — cheap for admin to distribute (one code per
+  class, not one secret per student, so it doesn't reintroduce the
+  cumbersomeness this is meant to remove), combined with name+admission
+  number as the actual identity check; the code just gates "is this
+  someone who was actually told to do this" rather than being the real
+  security boundary.
+Confirm with Da which of these (or a combination) fits what's actually
+in his data before writing any backend route.
 
-## Broader open items (from the project owner's own priority list, in the
-order raised — check with them before assuming this order still holds)
+Once that's settled:
+- New backend route, e.g. POST /auth/claim-student — public
+  (requireAuth NOT applied), takes name/class/whatever verification
+  field was agreed + a chosen username + password. Looks up a students
+  row matching on the agreed fields with user_id IS NULL, creates a new
+  users row (role='student', must_change_pw=false since they're
+  choosing their own password right here, not being handed a temp
+  one), links it via the same UPDATE POST /students/:id/link-user
+  already does, inside one transaction. Enforce a reasonable username
+  uniqueness check and password strength minimum, same as the existing
+  admin-create-user path.
+  Rate-limit this route (see app.use('/auth', rateLimit(...)) in
+  backend/src/index.ts — this new route needs to sit under that same
+  limiter or a stricter one, since it's an unauthenticated write path
+  that could otherwise be hammered to enumerate/brute-force student
+  identity fields).
+- New mobile screen (e.g. ClaimAccountScreen.tsx), reachable from
+  LoginScreen.tsx via a "New here? Set up your account" link — search/
+  pick name + class (scoped to a school, same pattern as every other
+  class picker in this app), enter the verification field, choose
+  username + password, submit, land logged in.
 
-1. ~~Persistent sidebar navigation~~ — **done**, commit `7a32831`. See
-   `CHANGELOG.md`'s 2026-09-06 entry for the shape (`Sidebar`/
-   `SidebarLayout` in `mobile/src/components/Sidebar.tsx`, wired into all
-   five `*Tabs.tsx` files). Not yet visually confirmed in an actual wide
-   browser window by the project owner — worth a quick look next time the
-   app is open on a desktop screen.
-2. **Live production testing** — `TEST_PLAN_WEB_MOBILE.md` (repo root) has
-   the full role-by-role checklist; large parts of it have effectively
-   already happened ad-hoc this session (login, finance split, Add
-   Student, print/export, term-pins) but nothing has been checked off in
-   that file's own progress log — worth reconciling what's actually been
-   verified against that checklist rather than re-testing from zero.
-3. **Announcements / teacher "pending marking" count / several "coming
-   soon" screens** — still blocked on a product decision about what they
-   should actually look like; not started, don't guess at a design.
+## TASK C — Same idea for teachers, once A+B land — architecturally different, don't copy-paste
 
-## Working conventions reminder (see AGENT_CONTINUATION.md for full detail)
+Students have a separate students table a login can attach to later;
+teachers don't — a teacher IS a users row directly (role,
+assigned_class, assigned_subjects all live there). There's no
+equivalent "roster row with no login yet" concept for teachers today.
+To offer the same self-claim flow for teachers, you'd need to decide
+with Da first whether to: (a) have admin pre-create placeholder users
+rows (role='teacher', a random unusable password, some claimed_at IS
+NULL marker) that a real teacher then claims the same way, mirroring
+Task B's shape onto users directly instead of students; or (b) leave
+teacher account creation as admin-driven (there are usually far fewer
+teachers than students, so the original cumbersomeness complaint may
+not really apply here — confirm with Da whether this is even wanted
+before building it). Don't assume (a); ask.
 
-- `git fetch && git log` before starting every session — this repo has
-  multiple sessions/agents pushing in parallel.
-- Dry-run-then---yes for anything that writes to production data; commit
-  each discrete piece separately; `tsc --noEmit` clean (both `backend/`
-  and `mobile/`) before every commit, plus a real
-  `npx expo export --platform web` for any mobile change.
-- No live DB/device access in most agent sandboxes — the project owner
-  runs scripts and reports output back, same pattern as this whole
-  session.
+---
+
+## Other items from the same request, already resolved or scoped
+
+- "No button wider than 22 inches" — not something screen UI is
+  measured in (density-independent pixels, not physical inches; varies
+  by device DPI). The actual concern (buttons/content stretching
+  full-width on a wide browser window) was already fixed this session —
+  see CHANGELOG.md's button/PageContainer overhaul entries. Nothing
+  further needed here unless Da flags a specific screen that still
+  looks wrong.
+- "Students/teachers can use the app without errors" — this needs
+  actual live testing of Section C (Teacher) and D/E (Parent/Student)
+  of TEST_PLAN_WEB_MOBILE.md, which this whole session never reached
+  (it's been almost entirely Admin/Finance Admin territory). Once Task
+  B gives students a way to actually get an account, that's the natural
+  point to run this — walk Da through creating one real student/teacher
+  account each and using every screen that role has, logging results
+  into that file's own progress log as you go, same convention as
+  every other pass.
+- APK build — needs Da's own Expo/EAS account credentials or a local
+  Android SDK, neither of which exists in an agent sandbox. What an
+  agent CAN do: confirm mobile/app.json/eas.json are in a buildable
+  state (correct package name, version, permissions), then hand Da the
+  exact command to run himself:
+    cd C:\dev\sts-school-app-live\mobile
+    npx eas build --platform android --profile preview
+  (--profile preview for a shareable installable APK rather than a
+  Play-Store-bound AAB — confirm eas.json actually has a preview
+  profile configured with "buildType": "apk"; add one if missing).
+  This requires Da to have (or create) a free Expo account and run
+  npx eas login once first. The build itself runs on Expo's servers,
+  not locally — Da doesn't need Android Studio installed, just an
+  Expo account and this command.
