@@ -8,6 +8,7 @@ import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
+import { PageContainer } from '../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 const WEEKS = Array.from({ length: 13 }, (_, i) => i + 1);
@@ -141,18 +142,21 @@ export default function WeeklyEffortsScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       {isTeacher && (
-        <TouchableOpacity style={styles.addBtn} onPress={() => setModal(true)}>
-          <Ionicons name="add-circle" size={20} color={Colors.white} />
-          <Text style={styles.addBtnTxt}>Log Weekly Effort</Text>
-        </TouchableOpacity>
+        <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+          <TouchableOpacity style={styles.addBtn} onPress={() => setModal(true)}>
+            <Ionicons name="add-circle" size={20} color={Colors.white} />
+            <Text style={styles.addBtnTxt}>Log Weekly Effort</Text>
+          </TouchableOpacity>
+        </PageContainer>
       )}
 
       <FlatList
         data={efforts}
         keyExtractor={(e, i) => String(e.id ?? i)}
         ListEmptyComponent={<Empty message="No weekly efforts recorded yet" />}
-        contentContainerStyle={{ padding: Spacing.sm }}
+        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: e }) => (
+          <PageContainer>
           <Card>
             <View style={styles.efHeader}>
               <View>
@@ -200,6 +204,7 @@ export default function WeeklyEffortsScreen() {
               </View>
             )}
           </Card>
+          </PageContainer>
         )}
       />
 
@@ -267,7 +272,7 @@ export default function WeeklyEffortsScreen() {
 }
 
 const styles = StyleSheet.create({
-  addBtn:      { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, margin: Spacing.sm, borderRadius: Radius.md, padding: Spacing.md, justifyContent: 'center' },
+  addBtn:      { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, borderRadius: Radius.md, paddingVertical: 12, paddingHorizontal: Spacing.lg, alignSelf: 'flex-start' },
   addBtnTxt:   { color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.md },
   efHeader:    { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: Spacing.xs },
   efName:      { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },

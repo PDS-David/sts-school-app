@@ -7,6 +7,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { PageContainer, useIsWide } from '../components/layout';
 
 interface Student { id: string; full_name: string; class_name: string; }
 
@@ -23,6 +24,9 @@ export default function AttendanceScreen({ navigation }: any) {
   // since it's what made that omission harmless-looking until this pass
   // required an explicit, real school scope.
   const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
+  // Placed with the component's other hooks, before any early return below —
+  // see ScoreEntryScreen.tsx's own fix for why this ordering matters.
+  const isWide = useIsWide();
 
   // Compact switcher lives in the native header now (admin only), not as a
   // full-width block in the content area — see SchoolSwitcherBar.tsx's
@@ -135,48 +139,60 @@ export default function AttendanceScreen({ navigation }: any) {
 
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
-      <Card style={{ margin: Spacing.sm }}>
-        <Text style={styles.filterLabel}>Class</Text>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selClass} onValueChange={setSelClass}>
-            {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
-          </Picker>
-        </View>
-        <Text style={styles.filterLabel}>Term</Text>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
-            {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
-          </Picker>
-        </View>
-        <Input
-          label="Days School Opened (this term)"
-          value={daysOpened}
-          onChangeText={setDaysOpened}
-          keyboardType="numeric"
-          placeholder="e.g. 60"
-        />
-      </Card>
-
-      <Card style={{ margin: Spacing.sm }}>
-        <SectionHeader title={`${selClass} Attendance`} />
-        <View style={styles.tableHeader}>
-          <Text style={[styles.th, { flex: 2 }]}>Student</Text>
-          <Text style={styles.th}>Days Present</Text>
-        </View>
-        {classStudents.map((s, i) => (
-          <View key={s.id} style={[styles.row, i % 2 === 0 && { backgroundColor: '#F5F7FA' }]}>
-            <Text style={[styles.td, { flex: 2 }]} numberOfLines={1}>{s.full_name}</Text>
-            <Input
-              value={entries[s.id] ?? ''}
-              onChangeText={v => setEntries(prev => ({ ...prev, [s.id]: v }))}
-              keyboardType="numeric"
-              placeholder="0"
-              style={{ flex: 1, marginBottom: 0 }}
-            />
+      <PageContainer style={{ padding: Spacing.sm }}>
+        <Card>
+          <View style={isWide ? styles.filterRow : undefined}>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Text style={styles.filterLabel}>Class</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selClass} onValueChange={setSelClass}>
+                  {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
+                </Picker>
+              </View>
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Text style={styles.filterLabel}>Term</Text>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
+                  {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
+                </Picker>
+              </View>
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Input
+                label="Days School Opened (this term)"
+                value={daysOpened}
+                onChangeText={setDaysOpened}
+                keyboardType="numeric"
+                placeholder="e.g. 60"
+              />
+            </View>
           </View>
-        ))}
-        <Btn label={saving ? 'Saving…' : 'Save Attendance'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
-      </Card>
+        </Card>
+      </PageContainer>
+
+      <PageContainer style={{ padding: Spacing.sm, paddingTop: 0 }}>
+        <Card>
+          <SectionHeader title={`${selClass} Attendance`} />
+          <View style={styles.tableHeader}>
+            <Text style={[styles.th, { flex: 2, textAlign: 'left' }]}>Student</Text>
+            <Text style={styles.th}>Days Present</Text>
+          </View>
+          {classStudents.map((s, i) => (
+            <View key={s.id} style={[styles.row, i % 2 === 0 && styles.rowAlt]}>
+              <Text style={[styles.td, { flex: 2, textAlign: 'left' }]} numberOfLines={1}>{s.full_name}</Text>
+              <Input
+                value={entries[s.id] ?? ''}
+                onChangeText={v => setEntries(prev => ({ ...prev, [s.id]: v }))}
+                keyboardType="numeric"
+                placeholder="0"
+                style={{ flex: 1, marginBottom: 0 }}
+              />
+            </View>
+          ))}
+          <Btn label={saving ? 'Saving…' : 'Save Attendance'} onPress={handleSave} loading={saving} style={{ marginTop: Spacing.md }} />
+        </Card>
+      </PageContainer>
     </ScrollView>
   );
 }
@@ -184,9 +200,12 @@ export default function AttendanceScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container:   { flex: 1, backgroundColor: Colors.background },
   filterLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2, marginTop: Spacing.xs },
+  filterRow:   { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start' },
+  filterCol:   { flex: 1, minWidth: 0 },
   pickerWrap:  { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.xs },
-  tableHeader: { flexDirection: 'row', backgroundColor: Colors.primary, borderRadius: Radius.sm, padding: 6, marginBottom: 4 },
-  th:          { flex: 1, color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.xs, textAlign: 'center' },
-  row:         { flexDirection: 'row', alignItems: 'center', paddingVertical: 4, borderBottomWidth: 1, borderColor: Colors.border, gap: Spacing.sm },
-  td:          { flex: 1, fontSize: Fonts.sizes.xs, color: Colors.text, textAlign: 'center' },
+  tableHeader: { flexDirection: 'row', backgroundColor: Colors.primary, borderRadius: Radius.sm, padding: 8, marginBottom: 4 },
+  th:          { flex: 1, color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.xs, textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5 },
+  row:         { flexDirection: 'row', alignItems: 'center', paddingVertical: 6, borderBottomWidth: 1, borderColor: Colors.border, gap: Spacing.sm },
+  rowAlt:      { backgroundColor: '#F8FAFC' },
+  td:          { flex: 1, fontSize: Fonts.sizes.sm, color: Colors.text, textAlign: 'center' },
 });

@@ -9,6 +9,7 @@ import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 import { Card, Loader, Empty, Badge, Btn, Input, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { PageContainer } from '../components/layout';
 
 const STATUS_COLOR: Record<string, string> = {
   unpaid: Colors.error, partial: Colors.warning, paid: Colors.success,
@@ -144,52 +145,54 @@ export default function FinanceScreen({ navigation }: any) {
       {isParent && selectedWard && (
         <Text style={styles.wardLabel}>Showing fees for {selectedWard.full_name}</Text>
       )}
-      {/* Fee Schedule */}
-      <Card style={{ margin: Spacing.sm }}>
+      <PageContainer style={{ padding: Spacing.sm, flex: 1 }}>
+        {/* Fee Schedule */}
+        <Card>
+          <View style={styles.sectionRow}>
+            <SectionHeader title="Fee Schedule" />
+            {isFinanceAdmin && (
+              <TouchableOpacity onPress={() => setFeeModal(true)} style={styles.addBtn}>
+                <Ionicons name="add" size={20} color={Colors.white} />
+              </TouchableOpacity>
+            )}
+          </View>
+          {feeItems.length === 0 ? <Text style={styles.none}>No fee items configured</Text> : feeItems.map(f => (
+            <View key={f.id} style={styles.feeRow}>
+              <Text style={styles.feeName}>{f.name} {f.class_name ? `(${f.class_name})` : '(All)'}</Text>
+              <Text style={styles.feeAmt}>₦{Number(f.amount).toLocaleString()}</Text>
+            </View>
+          ))}
+        </Card>
+
+        {/* Invoices */}
         <View style={styles.sectionRow}>
-          <SectionHeader title="Fee Schedule" />
+          <SectionHeader title="Invoices" />
           {isFinanceAdmin && (
-            <TouchableOpacity onPress={() => setFeeModal(true)} style={styles.addBtn}>
-              <Ionicons name="add" size={20} color={Colors.white} />
-            </TouchableOpacity>
+            <Btn label="+ New Invoice" onPress={openInvoiceModal} variant="outline" style={styles.newInvBtn} />
           )}
         </View>
-        {feeItems.length === 0 ? <Text style={styles.none}>No fee items configured</Text> : feeItems.map(f => (
-          <View key={f.id} style={styles.feeRow}>
-            <Text style={styles.feeName}>{f.name} {f.class_name ? `(${f.class_name})` : '(All)'}</Text>
-            <Text style={styles.feeAmt}>₦{Number(f.amount).toLocaleString()}</Text>
-          </View>
-        ))}
-      </Card>
-
-      {/* Invoices */}
-      <View style={styles.sectionRow}>
-        <SectionHeader title="Invoices" />
-        {isFinanceAdmin && (
-          <Btn label="+ New Invoice" onPress={openInvoiceModal} variant="outline" style={styles.newInvBtn} />
-        )}
-      </View>
-      {invoices.length === 0 ? <Empty message="No invoices" /> : null}
-      <FlatList
-        data={invoices}
-        keyExtractor={i => i.id}
-        contentContainerStyle={{ paddingHorizontal: Spacing.sm, paddingBottom: Spacing.xl }}
-        renderItem={({ item: inv }) => (
-          <Card>
-            <View style={styles.invHeader}>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.invName}>{inv.student_name}</Text>
-                <Text style={styles.invMeta}>{inv.class_name} · {new Date(inv.issued_at).toLocaleDateString()}</Text>
+        {invoices.length === 0 ? <Empty message="No invoices" /> : null}
+        <FlatList
+          data={invoices}
+          keyExtractor={i => i.id}
+          contentContainerStyle={{ paddingBottom: Spacing.xl }}
+          renderItem={({ item: inv }) => (
+            <Card>
+              <View style={styles.invHeader}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.invName}>{inv.student_name}</Text>
+                  <Text style={styles.invMeta}>{inv.class_name} · {new Date(inv.issued_at).toLocaleDateString()}</Text>
+                </View>
+                <Badge label={inv.status} color={STATUS_COLOR[inv.status] ?? Colors.textSub} />
               </View>
-              <Badge label={inv.status} color={STATUS_COLOR[inv.status] ?? Colors.textSub} />
-            </View>
-            <Text style={styles.invAmt}>₦{Number(inv.total).toLocaleString()}</Text>
-            {isFinanceAdmin && inv.status !== 'paid' && (
-              <Btn label="Mark as Paid" onPress={() => markPaid(inv.id)} variant="outline" style={{ marginTop: Spacing.sm }} />
-            )}
-          </Card>
-        )}
-      />
+              <Text style={styles.invAmt}>₦{Number(inv.total).toLocaleString()}</Text>
+              {isFinanceAdmin && inv.status !== 'paid' && (
+                <Btn label="Mark as Paid" onPress={() => markPaid(inv.id)} variant="outline" style={{ marginTop: Spacing.sm }} />
+              )}
+            </Card>
+          )}
+        />
+      </PageContainer>
 
       {/* Add Fee Item modal */}
       <Modal visible={feeModal} animationType="slide" onRequestClose={() => setFeeModal(false)}>

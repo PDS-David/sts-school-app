@@ -10,6 +10,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 import { FAB } from '../components/FAB';
+import { PageContainer } from '../components/layout';
 
 interface Student {
   id: string; full_name: string; class_name: string;
@@ -56,38 +57,40 @@ export default function StudentsScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={18} color={Colors.textSub} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search name, class, admission…"
-          value={search}
-          onChangeText={setSearch}
-          placeholderTextColor={Colors.textSub}
+      <PageContainer style={{ flex: 1 }}>
+        <View style={styles.searchBar}>
+          <Ionicons name="search" size={18} color={Colors.textSub} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search name, class, admission…"
+            value={search}
+            onChangeText={setSearch}
+            placeholderTextColor={Colors.textSub}
+          />
+        </View>
+        <FlatList
+          data={filtered}
+          keyExtractor={s => s.id}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetch(); }} />}
+          ListEmptyComponent={<Empty message="No students found" />}
+          renderItem={({ item: s }) => (
+            <TouchableOpacity
+              style={styles.row}
+              onPress={() => navigation.navigate('StudentDetail', { studentId: s.id })}
+              activeOpacity={0.7}
+            >
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>{s.full_name[0]}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.name}>{s.full_name}</Text>
+                <Text style={styles.meta}>{s.class_name}  ·  {s.admission_number ?? '—'}</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+            </TouchableOpacity>
+          )}
         />
-      </View>
-      <FlatList
-        data={filtered}
-        keyExtractor={s => s.id}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetch(); }} />}
-        ListEmptyComponent={<Empty message="No students found" />}
-        renderItem={({ item: s }) => (
-          <TouchableOpacity
-            style={styles.row}
-            onPress={() => navigation.navigate('StudentDetail', { studentId: s.id })}
-            activeOpacity={0.7}
-          >
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>{s.full_name[0]}</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.name}>{s.full_name}</Text>
-              <Text style={styles.meta}>{s.class_name}  ·  {s.admission_number ?? '—'}</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
-          </TouchableOpacity>
-        )}
-      />
+      </PageContainer>
       <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />
     </View>
   );

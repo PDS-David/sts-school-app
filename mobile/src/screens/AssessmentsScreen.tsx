@@ -7,6 +7,7 @@ import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { PageContainer } from '../components/layout';
 
 const STATUS_COLOR: Record<string, string> = {
   draft: Colors.textSub, open: Colors.success, closed: Colors.error,
@@ -56,17 +57,20 @@ export default function AssessmentsScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       {isAdmin && (
-        <TouchableOpacity style={styles.addBtn} onPress={() => navigation.navigate('CreateAssessment')}>
-          <Ionicons name="add-circle" size={20} color={Colors.white} />
-          <Text style={styles.addBtnTxt}>Create Assessment</Text>
-        </TouchableOpacity>
+        <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+          <TouchableOpacity style={styles.addBtn} onPress={() => navigation.navigate('CreateAssessment')}>
+            <Ionicons name="add-circle" size={20} color={Colors.white} />
+            <Text style={styles.addBtnTxt}>Create Assessment</Text>
+          </TouchableOpacity>
+        </PageContainer>
       )}
       <FlatList
         data={assessments}
         keyExtractor={a => a.id}
         ListEmptyComponent={<Empty message="No assessments yet" />}
-        contentContainerStyle={{ padding: Spacing.sm }}
+        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: a }) => (
+          <PageContainer>
           <Card>
             <View style={styles.header}>
               <View style={{ flex: 1 }}>
@@ -98,6 +102,7 @@ export default function AssessmentsScreen({ navigation }: any) {
               )}
             </View>
           </Card>
+          </PageContainer>
         )}
       />
     </View>
@@ -105,7 +110,7 @@ export default function AssessmentsScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  addBtn:    { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, margin: Spacing.sm, borderRadius: Radius.md, padding: Spacing.md, justifyContent: 'center' },
+  addBtn:    { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, borderRadius: Radius.md, paddingVertical: 12, paddingHorizontal: Spacing.lg, alignSelf: 'flex-start' },
   addBtnTxt: { color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.md },
   header:    { flexDirection: 'row', alignItems: 'flex-start', marginBottom: Spacing.xs },
   title:     { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },

@@ -61,7 +61,7 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
         <Input label="Confirm Password"  value={conf}  onChangeText={setConf}  secureTextEntry />
         {error ? <Text style={styles.error}>{error}</Text>   : null}
         {ok    ? <Text style={styles.success}>Password changed!</Text> : null}
-        <Btn label="Update Password" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md }} />
+        <Btn label="Update Password" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
       </Card>
     </ScrollView>
   );

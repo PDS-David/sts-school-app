@@ -67,7 +67,7 @@ export default function SecurityQuestionSetupScreen({ route, navigation }: any) 
         <Input label="Confirm Answer" value={confirm} onChangeText={setConfirm} placeholder="Re-enter your answer" autoCapitalize="none" />
         {error ? <Text style={styles.error}>{error}</Text> : null}
         {ok    ? <Text style={styles.success}>Saved!</Text> : null}
-        <Btn label="Save" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md }} />
+        <Btn label="Save" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
       </Card>
     </ScrollView>
   );

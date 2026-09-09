@@ -8,6 +8,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { PageContainer, useIsWide } from '../components/layout';
 
 interface Term { id: number; name: string; academic_year: string; }
 interface ClassLock { id: number; class_name: string; term_id: number; locked_by_name: string | null; locked_at: string; }
@@ -23,6 +24,10 @@ export default function ClassLockScreen({ navigation }: any) {
   const isAdmin = user?.role === 'admin';
   const { selectedSchoolCode } = useAdminSchool();
   const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
+  // Placed here, with the component's other hooks, before any early return
+  // below — see ScoreEntryScreen.tsx's own fix for why this ordering
+  // matters (a hook called only on some renders crashes the whole tree).
+  const isWide = useIsWide();
 
   // Compact switcher lives in the native header now (admin only — a class
   // teacher has one fixed school_code, nothing to switch), not as a
@@ -100,7 +105,8 @@ export default function ClassLockScreen({ navigation }: any) {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
+      <ScrollView>
+      <PageContainer style={{ padding: Spacing.md }}>
         <Card style={{ marginBottom: Spacing.md }}>
           <Text style={styles.explainer}>
             Locking a class stops any further changes to its scores, attendance,
@@ -117,29 +123,35 @@ export default function ClassLockScreen({ navigation }: any) {
           <>
             <SectionHeader title="Class & Term" />
             <Card style={{ marginBottom: Spacing.md }}>
-              {isAdmin ? (
-                <>
-                  <Text style={styles.label}>Class</Text>
+              <View style={isWide ? styles.filterRow : undefined}>
+                <View style={isWide ? styles.filterCol : undefined}>
+                  {isAdmin ? (
+                    <>
+                      <Text style={styles.label}>Class</Text>
+                      <View style={styles.pickerWrap}>
+                        <Picker selectedValue={selClass} onValueChange={setSelClass}>
+                          <Picker.Item label="Select a class…" value="" />
+                          {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
+                        </Picker>
+                      </View>
+                    </>
+                  ) : (
+                    <>
+                      <Text style={styles.label}>Class</Text>
+                      <Text style={styles.readonlyValue}>{selClass}</Text>
+                    </>
+                  )}
+                </View>
+
+                <View style={isWide ? styles.filterCol : undefined}>
+                  <Text style={[styles.label, isWide ? undefined : { marginTop: Spacing.sm }]}>Term</Text>
                   <View style={styles.pickerWrap}>
-                    <Picker selectedValue={selClass} onValueChange={setSelClass}>
-                      <Picker.Item label="Select a class…" value="" />
-                      {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
+                    <Picker selectedValue={selTerm} onValueChange={(v) => setSelTerm(v as number | '')}>
+                      <Picker.Item label="Select a term…" value="" />
+                      {terms.map(t => <Picker.Item key={t.id} label={`${t.name} (${t.academic_year})`} value={t.id} />)}
                     </Picker>
                   </View>
-                </>
-              ) : (
-                <>
-                  <Text style={styles.label}>Class</Text>
-                  <Text style={styles.readonlyValue}>{selClass}</Text>
-                </>
-              )}
-
-              <Text style={[styles.label, { marginTop: Spacing.sm }]}>Term</Text>
-              <View style={styles.pickerWrap}>
-                <Picker selectedValue={selTerm} onValueChange={(v) => setSelTerm(v as number | '')}>
-                  <Picker.Item label="Select a term…" value="" />
-                  {terms.map(t => <Picker.Item key={t.id} label={`${t.name} (${t.academic_year})`} value={t.id} />)}
-                </Picker>
+                </View>
               </View>
             </Card>
 
@@ -172,6 +184,7 @@ export default function ClassLockScreen({ navigation }: any) {
             )}
           </>
         )}
+      </PageContainer>
       </ScrollView>
     </View>
   );
@@ -182,6 +195,8 @@ const styles = StyleSheet.create({
   label: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: 4, fontWeight: '600' },
   readonlyValue: { fontSize: Fonts.sizes.md, color: Colors.text, fontWeight: '700', paddingVertical: 6 },
   pickerWrap: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm },
+  filterRow:   { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start' },
+  filterCol:   { flex: 1, minWidth: 0 },
   statusRow: { flexDirection: 'row', alignItems: 'center' },
   statusTitle: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },
   statusSub: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },

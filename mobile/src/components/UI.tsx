@@ -141,7 +141,17 @@ export function RowItem({
 }
 
 const styles = StyleSheet.create({
-  btn: { borderRadius: Radius.md, paddingVertical: 13, paddingHorizontal: Spacing.md, alignItems: 'center', justifyContent: 'center' },
+  // No alignSelf here used to mean every Btn defaulted to Flexbox's own
+  // "stretch" behavior — filling its parent's full width whenever nothing
+  // else constrained it, which is exactly what produced the giant
+  // edge-to-edge "Add User"/"Save"/etc. bars once screens started using
+  // PageContainer's wider content column. flex-start makes a button hug
+  // its own label by default, like a normal button — call sites that
+  // genuinely want full width (a single dominant CTA at the bottom of a
+  // form) or an even split (two buttons sharing a row) already pass their
+  // own style={{ width: '100%' }}/{{ flex: 1 }}, which still overrides
+  // this via the style array's ordering below.
+  btn: { borderRadius: Radius.md, paddingVertical: 13, paddingHorizontal: Spacing.lg, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-start' },
   btnText: { color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.md },
   input: { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, paddingHorizontal: Spacing.md, paddingVertical: 10, fontSize: Fonts.sizes.md, color: Colors.text, backgroundColor: Colors.white },
   label: { fontSize: Fonts.sizes.sm, fontWeight: '600', color: Colors.textSub, marginBottom: 4 },

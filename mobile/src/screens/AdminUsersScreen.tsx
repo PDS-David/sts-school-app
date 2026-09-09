@@ -8,6 +8,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import api from '../api/client';
 import { Loader, Empty, Btn, Input, Badge, Card, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { PageContainer } from '../components/layout';
 
 interface User {
   id: string; username: string; full_name: string; role: string;
@@ -194,17 +195,20 @@ export default function AdminUsersScreen() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.addBtn} onPress={openNew}>
-        <Ionicons name="person-add" size={20} color={Colors.white} />
-        <Text style={styles.addBtnText}>Add User</Text>
-      </TouchableOpacity>
+      <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+        <TouchableOpacity style={styles.addBtn} onPress={openNew}>
+          <Ionicons name="person-add" size={20} color={Colors.white} />
+          <Text style={styles.addBtnText}>Add User</Text>
+        </TouchableOpacity>
+      </PageContainer>
 
       <FlatList
         data={users}
         keyExtractor={u => u.id}
         ListEmptyComponent={<Empty message="No users yet" />}
-        contentContainerStyle={{ padding: Spacing.sm }}
+        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: u }) => (
+          <PageContainer>
           <Card style={styles.userCard}>
             <View style={styles.userRow}>
               <View style={styles.userInfo}>
@@ -240,6 +244,7 @@ export default function AdminUsersScreen() {
               </View>
             </View>
           </Card>
+          </PageContainer>
         )}
       />
 
@@ -358,7 +363,7 @@ export default function AdminUsersScreen() {
 
 const styles = StyleSheet.create({
   container:   { flex: 1, backgroundColor: Colors.background },
-  addBtn:      { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, margin: Spacing.sm, borderRadius: Radius.md, padding: Spacing.md, justifyContent: 'center' },
+  addBtn:      { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, borderRadius: Radius.md, paddingVertical: 12, paddingHorizontal: Spacing.lg, alignSelf: 'flex-start' },
   addBtnText:  { color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.md },
   userCard:    { marginBottom: 8 },
   userRow:     { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },

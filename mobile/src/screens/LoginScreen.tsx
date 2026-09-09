@@ -96,7 +96,7 @@ export default function LoginScreen({ navigation }: any) {
           </TouchableOpacity>
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
-          <Btn label="Sign In" onPress={handleLogin} loading={loading} style={{ marginTop: Spacing.md }} />
+          <Btn label="Sign In" onPress={handleLogin} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
         </View>
 
         <Text style={styles.footer}>© {new Date().getFullYear()} Sow the Seed Schools, Ibadan</Text>

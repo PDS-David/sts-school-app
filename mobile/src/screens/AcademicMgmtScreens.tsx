@@ -7,6 +7,7 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { PageContainer, useIsWide } from '../components/layout';
 
 // ══════════════════════════════════════════
 // TERMS
@@ -64,32 +65,36 @@ export function TermsMgmtScreen({ navigation }: any) {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <TouchableOpacity style={styles.addBtn} onPress={openAddModal}>
-        <Ionicons name="add-circle" size={20} color={Colors.white} />
-        <Text style={styles.addBtnTxt}>Add Term</Text>
-      </TouchableOpacity>
+      <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
+        <TouchableOpacity style={styles.addBtn} onPress={openAddModal}>
+          <Ionicons name="add-circle" size={20} color={Colors.white} />
+          <Text style={styles.addBtnTxt}>Add Term</Text>
+        </TouchableOpacity>
+      </PageContainer>
 
       <FlatList
         data={terms}
         keyExtractor={t => String(t.id)}
-        contentContainerStyle={{ padding: Spacing.sm }}
+        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         ListEmptyComponent={<Empty message="No terms created yet" />}
         renderItem={({ item: t }) => (
-          <Card>
-            <View style={styles.row}>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.termName}>{t.name} – {t.academic_year}</Text>
-                <Text style={styles.termMeta}>{t.school_code} · Days: {t.days_opened}</Text>
-                {t.next_term_begins && <Text style={styles.termMeta}>Next term: {t.next_term_begins}</Text>}
+          <PageContainer>
+            <Card>
+              <View style={styles.row}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.termName}>{t.name} – {t.academic_year}</Text>
+                  <Text style={styles.termMeta}>{t.school_code} · Days: {t.days_opened}</Text>
+                  {t.next_term_begins && <Text style={styles.termMeta}>Next term: {t.next_term_begins}</Text>}
+                </View>
+                {t.is_current
+                  ? <Badge label="CURRENT" color={Colors.success} />
+                  : <TouchableOpacity onPress={() => setCurrentTerm(t)} style={styles.setCurrentBtn}>
+                      <Text style={styles.setCurrentTxt}>Set Current</Text>
+                    </TouchableOpacity>
+                }
               </View>
-              {t.is_current
-                ? <Badge label="CURRENT" color={Colors.success} />
-                : <TouchableOpacity onPress={() => setCurrentTerm(t)} style={styles.setCurrentBtn}>
-                    <Text style={styles.setCurrentTxt}>Set Current</Text>
-                  </TouchableOpacity>
-              }
-            </View>
-          </Card>
+            </Card>
+          </PageContainer>
         )}
       />
 
@@ -124,6 +129,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
   const { user } = useAuth();
   const { selectedSchoolCode } = useAdminSchool();
   const isAdmin = user?.role === 'admin';
+  const isWide = useIsWide();
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading,  setLoading]  = useState(true);
   const [name,     setName]     = useState('');
@@ -181,30 +187,40 @@ export function SubjectsMgmtScreen({ navigation }: any) {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <Card style={{ margin: Spacing.sm }}>
-        <SectionHeader title="Add Subject" />
-        <Input label="Subject Name" value={name} onChangeText={setName} placeholder="e.g. Mathematics" />
-        <Input label="Code (optional)" value={code} onChangeText={setCode} placeholder="e.g. MTH" />
-        <Btn label={saving ? 'Adding…' : 'Add Subject'} onPress={handleAdd} loading={saving} />
-        {!isAdmin && (
-          <Text style={styles.hint}>You can add subjects here. Removing a subject requires an admin.</Text>
-        )}
-      </Card>
+      <PageContainer style={{ padding: Spacing.sm }}>
+        <Card>
+          <SectionHeader title="Add Subject" />
+          <View style={isWide ? styles.filterRow : undefined}>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Input label="Subject Name" value={name} onChangeText={setName} placeholder="e.g. Mathematics" />
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Input label="Code (optional)" value={code} onChangeText={setCode} placeholder="e.g. MTH" />
+            </View>
+          </View>
+          <Btn label={saving ? 'Adding…' : 'Add Subject'} onPress={handleAdd} loading={saving} />
+          {!isAdmin && (
+            <Text style={styles.hint}>You can add subjects here. Removing a subject requires an admin.</Text>
+          )}
+        </Card>
+      </PageContainer>
       <FlatList
         data={subjects}
         keyExtractor={s => String(s.id)}
-        contentContainerStyle={{ paddingHorizontal: Spacing.sm }}
+        contentContainerStyle={{ paddingHorizontal: Spacing.sm, alignItems: 'center' }}
         ListEmptyComponent={<Empty message="No subjects yet" />}
         renderItem={({ item: s }) => (
-          <View style={styles.subRow}>
-            <Text style={styles.subName}>{s.name}</Text>
-            {s.code && <Text style={styles.subCode}>{s.code}</Text>}
-            {isAdmin && (
-              <TouchableOpacity onPress={() => handleDelete(s.id)} style={{ padding: 6 }}>
-                <Ionicons name="trash-outline" size={18} color={Colors.error} />
-              </TouchableOpacity>
-            )}
-          </View>
+          <PageContainer>
+            <View style={styles.subRow}>
+              <Text style={styles.subName}>{s.name}</Text>
+              {s.code && <Text style={styles.subCode}>{s.code}</Text>}
+              {isAdmin && (
+                <TouchableOpacity onPress={() => handleDelete(s.id)} style={{ padding: 6 }}>
+                  <Ionicons name="trash-outline" size={18} color={Colors.error} />
+                </TouchableOpacity>
+              )}
+            </View>
+          </PageContainer>
         )}
       />
     </View>
@@ -212,8 +228,10 @@ export function SubjectsMgmtScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  addBtn:       { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, margin: Spacing.sm, borderRadius: Radius.md, padding: Spacing.md, justifyContent: 'center' },
+  addBtn:       { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, backgroundColor: Colors.primary, borderRadius: Radius.md, paddingVertical: 12, paddingHorizontal: Spacing.lg, alignSelf: 'flex-start', marginBottom: Spacing.sm },
   addBtnTxt:    { color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.md },
+  filterRow:    { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start' },
+  filterCol:    { flex: 1, minWidth: 0 },
   row:          { flexDirection: 'row', alignItems: 'center' },
   termName:     { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },
   termMeta:     { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },

@@ -7,9 +7,11 @@ import { Card, Loader, Empty, SectionHeader, GradePill } from '../components/UI'
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
+import { PageContainer, useIsWide } from '../components/layout';
 
 export function ClassSummaryScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
+  const isWide = useIsWide();
   const [classes,   setClasses]   = useState<string[]>([]);
   const [subjects,  setSubjects]  = useState<any[]>([]);
   const [terms,     setTerms]     = useState<any[]>([]);
@@ -80,40 +82,48 @@ export function ClassSummaryScreen({ navigation }: any) {
       style={styles.container}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchScores(); }} />}
     >
-      <Card style={{ margin: Spacing.sm }}>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selClass} onValueChange={setSelClass}>
-            {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
-          </Picker>
-        </View>
-        <View style={styles.pickerWrap}>
-          <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
-            {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
-          </Picker>
-        </View>
-      </Card>
-
-      <Card style={{ margin: Spacing.sm }}>
-        <SectionHeader title={`${selClass} Rankings`} />
-        {ranked.length === 0 ? <Empty message="No scores for this selection" /> : (
-          <>
-            <View style={styles.tableHeader}>
-              {['Pos','Student','Subjects','Total','Avg'].map(h => (
-                <Text key={h} style={[styles.th, h === 'Student' && { flex: 2 }]}>{h}</Text>
-              ))}
-            </View>
-            {ranked.map((r, i) => (
-              <View key={r.id} style={[styles.row, i % 2 === 0 && { backgroundColor: '#F5F7FA' }, i < 3 && { borderLeftWidth: 3, borderLeftColor: ['#FFD700','#C0C0C0','#CD7F32'][i] }]}>
-                <Text style={styles.td}>{i + 1}</Text>
-                <Text style={[styles.td, { flex: 2, textAlign: 'left' }]} numberOfLines={1}>{r.name}</Text>
-                <Text style={styles.td}>{r.subjects}</Text>
-                <Text style={[styles.td, { fontWeight: '700' }]}>{r.total}</Text>
-                <Text style={[styles.td, { color: Colors.primary }]}>{r.avg}%</Text>
+      <PageContainer style={{ padding: Spacing.sm }}>
+        <Card>
+          <View style={isWide ? styles.filterRow : undefined}>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selClass} onValueChange={setSelClass}>
+                  {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
+                </Picker>
               </View>
-            ))}
-          </>
-        )}
-      </Card>
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <View style={styles.pickerWrap}>
+                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
+                  {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
+                </Picker>
+              </View>
+            </View>
+          </View>
+        </Card>
+
+        <Card>
+          <SectionHeader title={`${selClass} Rankings`} />
+          {ranked.length === 0 ? <Empty message="No scores for this selection" /> : (
+            <>
+              <View style={styles.tableHeader}>
+                {['Pos','Student','Subjects','Total','Avg'].map(h => (
+                  <Text key={h} style={[styles.th, h === 'Student' && { flex: 2, textAlign: 'left' }]}>{h}</Text>
+                ))}
+              </View>
+              {ranked.map((r, i) => (
+                <View key={r.id} style={[styles.row, i % 2 === 0 && { backgroundColor: '#F5F7FA' }, i < 3 && { borderLeftWidth: 3, borderLeftColor: ['#FFD700','#C0C0C0','#CD7F32'][i] }]}>
+                  <Text style={styles.td}>{i + 1}</Text>
+                  <Text style={[styles.td, { flex: 2, textAlign: 'left' }]} numberOfLines={1}>{r.name}</Text>
+                  <Text style={styles.td}>{r.subjects}</Text>
+                  <Text style={[styles.td, { fontWeight: '700' }]}>{r.total}</Text>
+                  <Text style={[styles.td, { color: Colors.primary }]}>{r.avg}%</Text>
+                </View>
+              ))}
+            </>
+          )}
+        </Card>
+      </PageContainer>
     </ScrollView>
   );
 }
@@ -137,17 +147,19 @@ export function AuditLogScreen({ navigation }: any) {
   if (loading) return <Loader />;
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ padding: Spacing.sm }}>
-      {logs.length === 0 ? <Empty message="No audit log entries" /> : logs.map(l => (
-        <View key={l.id} style={styles.logRow}>
-          <View style={styles.logDot} />
-          <View style={{ flex: 1 }}>
-            <Text style={styles.logAction}>{l.action} → {l.entity}</Text>
-            <Text style={styles.logMeta}>{l.actor_name} · {new Date(l.created_at).toLocaleString()}</Text>
-            {l.detail && <Text style={styles.logDetail}>{l.detail}</Text>}
+    <ScrollView style={styles.container}>
+      <PageContainer style={{ padding: Spacing.sm }}>
+        {logs.length === 0 ? <Empty message="No audit log entries" /> : logs.map(l => (
+          <View key={l.id} style={styles.logRow}>
+            <View style={styles.logDot} />
+            <View style={{ flex: 1 }}>
+              <Text style={styles.logAction}>{l.action} → {l.entity}</Text>
+              <Text style={styles.logMeta}>{l.actor_name} · {new Date(l.created_at).toLocaleString()}</Text>
+              {l.detail && <Text style={styles.logDetail}>{l.detail}</Text>}
+            </View>
           </View>
-        </View>
-      ))}
+        ))}
+      </PageContainer>
     </ScrollView>
   );
 }
@@ -202,30 +214,31 @@ export function DeletedStudentsScreen({ navigation }: any) {
   return (
     <ScrollView
       style={styles.container}
-      contentContainerStyle={{ padding: Spacing.sm }}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetchDeleted(); }} />}
     >
-      {students.length === 0 ? <Empty message="No deleted students for this school" /> : students.map(s => (
-        <Card key={s.id} style={{ marginBottom: Spacing.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.deletedName}>{s.full_name}</Text>
-              <Text style={styles.logMeta}>{s.class_name} · {s.admission_number ?? 'No Adm. No.'}</Text>
-              <Text style={styles.logMeta}>
-                Deleted {new Date(s.deleted_at).toLocaleString()}
-                {s.deleted_by_name ? ` by ${s.deleted_by_name} (${s.deleted_by_role})` : ''}
-              </Text>
+      <PageContainer style={{ padding: Spacing.sm }}>
+        {students.length === 0 ? <Empty message="No deleted students for this school" /> : students.map(s => (
+          <Card key={s.id} style={{ marginBottom: Spacing.sm }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.deletedName}>{s.full_name}</Text>
+                <Text style={styles.logMeta}>{s.class_name} · {s.admission_number ?? 'No Adm. No.'}</Text>
+                <Text style={styles.logMeta}>
+                  Deleted {new Date(s.deleted_at).toLocaleString()}
+                  {s.deleted_by_name ? ` by ${s.deleted_by_name} (${s.deleted_by_role})` : ''}
+                </Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => restore(s.id, s.full_name)}
+                disabled={restoringId === s.id}
+                style={styles.restoreBtn}
+              >
+                <Text style={styles.restoreBtnTxt}>{restoringId === s.id ? 'Restoring…' : 'Restore'}</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={() => restore(s.id, s.full_name)}
-              disabled={restoringId === s.id}
-              style={styles.restoreBtn}
-            >
-              <Text style={styles.restoreBtnTxt}>{restoringId === s.id ? 'Restoring…' : 'Restore'}</Text>
-            </TouchableOpacity>
-          </View>
-        </Card>
-      ))}
+          </Card>
+        ))}
+      </PageContainer>
     </ScrollView>
   );
 }
@@ -233,6 +246,8 @@ export function DeletedStudentsScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container:   { flex: 1, backgroundColor: Colors.background },
   pickerWrap:  { borderWidth: 1.5, borderColor: Colors.border, borderRadius: Radius.sm, backgroundColor: Colors.white, marginBottom: Spacing.sm },
+  filterRow:   { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start' },
+  filterCol:   { flex: 1, minWidth: 0 },
   tableHeader: { flexDirection: 'row', backgroundColor: Colors.primary, borderRadius: Radius.sm, padding: 6, marginBottom: 4 },
   th:          { flex: 1, color: Colors.white, fontWeight: '700', fontSize: Fonts.sizes.xs, textAlign: 'center' },
   row:         { flexDirection: 'row', alignItems: 'center', paddingVertical: 5, borderBottomWidth: 1, borderColor: Colors.border },

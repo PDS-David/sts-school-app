@@ -68,7 +68,7 @@ export default function ForgotPasswordScreen({ navigation }: any) {
               <Text style={styles.helper}>Enter your username and we'll show your recovery question.</Text>
               <Input label="Username" value={username} onChangeText={setUsername} placeholder="Enter your username" autoCapitalize="none" />
               {error ? <Text style={styles.error}>{error}</Text> : null}
-              <Btn label="Continue" onPress={handleLookup} loading={loading} style={{ marginTop: Spacing.md }} />
+              <Btn label="Continue" onPress={handleLookup} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
             </>
           )}
 
@@ -79,7 +79,7 @@ export default function ForgotPasswordScreen({ navigation }: any) {
               <Input label="New Password" value={newPw} onChangeText={setNewPw} placeholder="At least 8 characters" secureTextEntry />
               <Input label="Confirm New Password" value={conf} onChangeText={setConf} placeholder="Re-enter new password" secureTextEntry />
               {error ? <Text style={styles.error}>{error}</Text> : null}
-              <Btn label="Reset Password" onPress={handleReset} loading={loading} style={{ marginTop: Spacing.md }} />
+              <Btn label="Reset Password" onPress={handleReset} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
             </>
           )}
 
@@ -88,7 +88,7 @@ export default function ForgotPasswordScreen({ navigation }: any) {
           )}
         </Card>
 
-        <Btn label="Back to Sign In" variant="outline" onPress={() => navigation.replace('Login')} style={{ marginTop: Spacing.md }} />
+        <Btn label="Back to Sign In" variant="outline" onPress={() => navigation.replace('Login')} style={{ marginTop: Spacing.md, width: '100%' }} />
       </ScrollView>
     </KeyboardAvoidingView>
   );
