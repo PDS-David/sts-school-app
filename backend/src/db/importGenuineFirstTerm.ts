@@ -127,7 +127,11 @@ async function resolveStudentId(ref: StudentRef): Promise<string | null> {
 
   let id: string | null = null;
   if (ref.admission_number) {
-    const { rows } = await query('SELECT id FROM students WHERE admission_number=$1', [ref.admission_number]);
+    // Scoped by school_code — admission_number is only unique PER SCHOOL as
+    // of the students_school_admission_unique constraint (schema.sql), not
+    // globally, so an unscoped lookup here could now match the wrong
+    // school's student if both happen to share the same bare number.
+    const { rows } = await query('SELECT id FROM students WHERE admission_number=$1 AND school_code=$2', [ref.admission_number, ref.school_code]);
     if (rows[0]) id = rows[0].id;
   }
   if (!id) {

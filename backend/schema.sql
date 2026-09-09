@@ -665,5 +665,23 @@ CREATE TABLE IF NOT EXISTS term_access_pins (
   UNIQUE(student_id, term_label)
 );
 
+-- students.admission_number was globally UNIQUE, not scoped per school —
+-- found while auditing importStudentRoster.ts (Task A of HANDOFF.md):
+-- real schools each assign their own admission numbers independently
+-- (confirmed in Da's actual report-card data: secondary uses a mix of
+-- bare numbers and STD0XX-prefixed ones), so a bare-number primary
+-- student and a same-numbered secondary student would collide under the
+-- old global constraint — the second insert would be silently dropped by
+-- ON CONFLICT DO NOTHING as if already imported, when it's actually a
+-- different real student having their record lost. No other route in
+-- this codebase looks students up by admission_number alone without
+-- school_code (checked: admin.ts, scores.ts only ever SELECT it for
+-- display), so narrowing this is safe.
+ALTER TABLE students DROP CONSTRAINT IF EXISTS students_admission_number_key;
+ALTER TABLE students DROP CONSTRAINT IF EXISTS students_school_admission_unique;
+ALTER TABLE students ADD CONSTRAINT students_school_admission_unique
+  UNIQUE (school_code, admission_number);
+
+
 
 

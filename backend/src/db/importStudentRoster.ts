@@ -155,9 +155,9 @@ async function main() {
       console.log(`  [${r.school_code}] ${r.full_name} — ${r.class_name} — Adm# ${r.admission_number}`);
     }
     if (importable.length > 15) console.log(`  ... and ${importable.length - 15} more`);
-    console.log('\nEach row is inserted with ON CONFLICT (admission_number) DO NOTHING —');
-    console.log('a student already in the database (by admission number) is silently');
-    console.log('skipped, not duplicated or overwritten. Pass --yes to actually insert.');
+    console.log('\nEach row is inserted with ON CONFLICT (school_code, admission_number) DO NOTHING —');
+    console.log('a student already in the database (matching on school + admission number) is');
+    console.log('silently skipped, not duplicated or overwritten. Pass --yes to actually insert.');
     await pool.end();
     return;
   }
@@ -170,7 +170,7 @@ async function main() {
       const { rowCount } = await client.query(
         `INSERT INTO students(school_code, admission_number, full_name, class_name)
          VALUES ($1,$2,$3,$4)
-         ON CONFLICT (admission_number) DO NOTHING`,
+         ON CONFLICT (school_code, admission_number) DO NOTHING`,
         [r.school_code, r.admission_number, r.full_name, r.class_name],
       );
       if (rowCount && rowCount > 0) inserted++; else alreadyExisted++;
