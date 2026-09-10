@@ -306,4 +306,46 @@ router.get('/term-pins', async (req, res) => {
   return res.json({ term_pins: rows });
 });
 
+// ── POST /admin/class-codes — generate (or re-issue) a class's code ────────────
+router.post('/class-codes', async (req, res) => {
+  const { school_code, class_name } = req.body as { school_code?: string; class_name?: string };
+  if (!school_code || !class_name) {
+    return res.status(400).json({ error: 'school_code and class_name are required' });
+  }
+
+  const code = generateNumericPin();
+  // Upsert on (school_code, class_name): re-issuing (the code leaked, or a
+  // fresh term) replaces the existing code and clears any lockout state,
+  // rather than erroring or accumulating rows — see schema.sql's comment on
+  // this table for why. Does NOT touch students.user_id for anyone who
+  // already self-claimed with the old code — re-issuing only affects
+  // students who haven't claimed yet.
+  const { rows } = await query(
+    `INSERT INTO class_access_codes(school_code, class_name, code, created_by)
+     VALUES($1,$2,$3,$4)
+     ON CONFLICT (school_code, class_name)
+     DO UPDATE SET code=EXCLUDED.code, fail_count=0, locked_until=NULL, created_by=EXCLUDED.created_by, created_at=now()
+     RETURNING *`,
+    [school_code, class_name, code, req.user!.id],
+  );
+  return res.status(201).json({ class_code: rows[0] });
+});
+
+// ── GET /admin/class-codes?school_code=&class_name= — view issued codes ────────
+// Also returns claimed/unclaimed counts per class so admin can see progress
+// without cross-referencing the Users list separately.
+router.get('/class-codes', async (req, res) => {
+  const { school_code, class_name } = req.query as Record<string, string>;
+  let sql = `SELECT cc.*,
+                    (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NOT NULL) AS claimed_count,
+                    (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NULL) AS unclaimed_count
+             FROM class_access_codes cc WHERE 1=1`;
+  const params: unknown[] = [];
+  if (school_code) { params.push(school_code); sql += ` AND cc.school_code=$${params.length}`; }
+  if (class_name)  { params.push(class_name);  sql += ` AND cc.class_name=$${params.length}`; }
+  sql += ' ORDER BY cc.school_code, cc.class_name';
+  const { rows } = await query(sql, params);
+  return res.json({ class_codes: rows });
+});
+
 export default router;

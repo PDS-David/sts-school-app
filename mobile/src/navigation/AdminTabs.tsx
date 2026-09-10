@@ -30,6 +30,7 @@ import { navigationRef } from './navigationRef';
 import AdminDashboardHomeScreen from '../screens/admin/AdminDashboardHomeScreen';
 import AdminMoreScreen from '../screens/admin/AdminMoreScreen';
 import AdminTermPinsScreen from '../screens/admin/AdminTermPinsScreen';
+import AdminClassCodesScreen from '../screens/admin/AdminClassCodesScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
 import MyResultsScreen from '../screens/MyResultsScreen';
@@ -116,6 +117,7 @@ function MoreStackNavigator() {
       <MoreStack.Screen name="AdminMore" component={AdminMoreScreen} />
       <MoreStack.Screen name="AdminUsers" component={AdminUsersScreen} options={{ headerShown: true, title: 'Users', ...opts }} />
       <MoreStack.Screen name="AdminTermPins" component={AdminTermPinsScreen} options={{ headerShown: true, title: 'Term PINs', ...opts }} />
+      <MoreStack.Screen name="AdminClassCodes" component={AdminClassCodesScreen} options={{ headerShown: true, title: 'Class Codes', ...opts }} />
       <MoreStack.Screen name="AuditLog" component={AuditLogScreen} options={{ headerShown: true, title: 'Audit Log', ...opts }} />
       <MoreStack.Screen name="ExportExcel" component={ExportExcelScreen} options={{ headerShown: true, title: 'Export Excel', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />

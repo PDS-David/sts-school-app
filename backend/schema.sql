@@ -665,6 +665,36 @@ CREATE TABLE IF NOT EXISTS term_access_pins (
   UNIQUE(student_id, term_label)
 );
 
+-- ── Class access codes (Task B — student self-claim) ────────────────────────
+-- One code per class (not per student, per explicit decision) — a teacher
+-- reads it out once to the room. "Single-use per student" is enforced via
+-- students.user_id (already UNIQUE-constrained, see students_user_id_key):
+-- once a student's row is linked to a real login account, POST
+-- /auth/self-claim refuses to let that same student claim again — but the
+-- code itself stays valid for the rest of the class who haven't claimed
+-- yet. Plaintext `code`, not hashed — same convention as term_access_pins.pin
+-- (a low-stakes, physically-handed-over, admin-re-viewable code, not a
+-- long-term account credential like a password).
+CREATE TABLE IF NOT EXISTS class_access_codes (
+  id           SERIAL PRIMARY KEY,
+  school_code  TEXT REFERENCES schools(code) ON DELETE CASCADE,
+  class_name   TEXT NOT NULL,
+  code         TEXT NOT NULL,
+  created_by   UUID REFERENCES users(id),
+  created_at   TIMESTAMPTZ DEFAULT now(),
+  -- Brute-force protection on the code itself, independent of the broader
+  -- per-IP /auth rate limiter — same fail-count/locked-until pattern
+  -- already used for security-question answers in users, scoped per class
+  -- here since there's no per-student account yet to attach a counter to
+  -- at this point in the flow.
+  fail_count   INT DEFAULT 0,
+  locked_until TIMESTAMPTZ,
+  -- Regenerating for the same (school_code, class_name) — e.g. the code
+  -- leaked, or a fresh term — is a plain upsert (see POST
+  -- /admin/class-codes), same reasoning as term_access_pins' upsert.
+  UNIQUE(school_code, class_name)
+);
+
 -- students.admission_number was globally UNIQUE, not scoped per school —
 -- found while auditing importStudentRoster.ts (Task A of HANDOFF.md):
 -- real schools each assign their own admission numbers independently

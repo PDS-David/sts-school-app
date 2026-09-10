@@ -25,6 +25,22 @@ export function generateNumericPin(length = 6): string {
   return pin;
 }
 
+// Pure string transform, no DB access — the caller (POST /auth/self-claim)
+// does the actual uniqueness dedup loop, same pattern as
+// utils/parentProvisioning.ts's usernameFromPhone. "Abdul-Afeez Mahbub" ->
+// "abdulafeez.mahbub" — strips anything that isn't a letter/space first so
+// stray punctuation in a name (hyphens, apostrophes) doesn't leak into the
+// username, then joins remaining words with a dot.
+export function usernameBaseFromName(fullName: string): string {
+  const words = fullName
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+  return words.length ? words.join('.') : 'student';
+}
+
 // Security-question answers are compared case/whitespace-insensitively —
 // a real user re-typing "Ibadan" vs "ibadan " months later shouldn't fail
 // over formatting. Applied identically when setting and when checking the

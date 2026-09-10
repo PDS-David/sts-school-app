@@ -6,6 +6,7 @@ import { Card, Btn, Badge, Loader, Empty, SectionHeader } from '../../components
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { useAdminSchool } from '../../api/AdminSchoolContext';
+import { SchoolSwitcherBar } from '../../components/SchoolSwitcherBar';
 import { openNotifications } from '../../navigation/navigationRef';
 
 // Mobile UI for backend/src/routes/admin.ts's POST/GET /admin/term-pins —
@@ -75,7 +76,7 @@ export default function AdminTermPinsScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <AppHeader title="Term PINs" onPressBell={() => openNotifications()} />
+      <AppHeader title="Term PINs" onPressBell={() => openNotifications()} rightExtra={<SchoolSwitcherBar compact />} />
       <ScrollView
         contentContainerStyle={{ padding: Spacing.md }}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await loadPins(); setRefreshing(false); }} />}

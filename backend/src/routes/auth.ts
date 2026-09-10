@@ -4,7 +4,7 @@ import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
 import { requireAuth } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
-import { normalizeAnswer } from '../utils/password.js';
+import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
 import type { AuthUser, Role } from '../types/index.js';
 
 const router = Router();
@@ -335,10 +335,135 @@ router.post('/forgot-password/reset', async (req, res) => {
   return res.json({ ok: true });
 });
 
-// NOTE: There is deliberately no self-signup route. Teacher and parent accounts
-// are only ever created by an admin (see POST /admin/users), which also lets the
-// admin set an access_expires_at window for that credential. Removing this route
-// was a decision made explicitly with the school owner — do not re-add it without
-// also re-adding the admin-issued-invite-code guard that was discussed alongside it.
+// ── Student self-claim (Task B) ──────────────────────────────────────────────
+// Public (no login) — a student finds their own name and sets their own
+// password, gated by a per-class code (see class_access_codes in schema.sql;
+// generated via POST /admin/class-codes). Three read-only lookup steps
+// (schools -> classes -> unclaimed roster) followed by the actual claim.
+//
+// Deliberately duplicates rather than reuses GET /academic/schools and GET
+// /academic/classes: both of those routers apply requireAuth to the whole
+// router (see academic.ts line 8), which a pre-account flow can never
+// satisfy — and the roster step specifically must return only UNCLAIMED
+// students with minimal fields (id + full_name, nothing else), which is not
+// what any existing authenticated route returns, so it needs its own query
+// regardless.
+router.get('/self-claim/schools', async (_req, res) => {
+  const { rows } = await query('SELECT code, name FROM schools ORDER BY id');
+  return res.json({ schools: rows });
+});
+
+router.get('/self-claim/classes', async (req, res) => {
+  const schoolCode = String(req.query.school_code ?? '').trim();
+  if (!schoolCode) return res.status(400).json({ error: 'school_code is required' });
+  const { rows } = await query('SELECT name FROM classes WHERE school_code=$1 ORDER BY id', [schoolCode]);
+  return res.json({ classes: rows.map((r) => r.name) });
+});
+
+// Only students not yet linked to a login account (user_id IS NULL) — once
+// claimed, a student no longer appears here, which is also what makes a
+// second claim attempt for the same student fail cleanly at the roster step
+// (they simply won't find their own name anymore) rather than only at the
+// final POST.
+router.get('/self-claim/roster', async (req, res) => {
+  const schoolCode = String(req.query.school_code ?? '').trim();
+  const className = String(req.query.class_name ?? '').trim();
+  if (!schoolCode || !className) return res.status(400).json({ error: 'school_code and class_name are required' });
+  const { rows } = await query(
+    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL ORDER BY full_name',
+    [schoolCode, className],
+  );
+  return res.json({ students: rows });
+});
+
+router.post('/self-claim', async (req, res) => {
+  const { school_code, class_name, student_id, code, new_password } = req.body as {
+    school_code?: string; class_name?: string; student_id?: string; code?: string; new_password?: string;
+  };
+  if (!school_code || !class_name || !student_id || !code || !new_password) {
+    return res.status(400).json({ error: 'school_code, class_name, student_id, code, and new_password are required' });
+  }
+  if (new_password.length < 8) {
+    return res.status(400).json({ error: 'New password must be at least 8 characters' });
+  }
+
+  const { rows: ccRows } = await query(
+    'SELECT * FROM class_access_codes WHERE school_code=$1 AND class_name=$2', [school_code, class_name],
+  );
+  const cc = ccRows[0];
+  // Same generic shape whether there's no code issued for this class at all
+  // or the code just doesn't match — doesn't tell a caller which, so
+  // guessing class names to see what exists isn't a productive attack.
+  const genericFail = () => res.status(401).json({ error: 'Incorrect class code, or self-claim is not available for this class.' });
+  if (!cc) return genericFail();
+
+  if (cc.locked_until && new Date(cc.locked_until).getTime() > Date.now()) {
+    const mins = Math.ceil((new Date(cc.locked_until).getTime() - Date.now()) / 60000);
+    return res.status(429).json({ error: `Too many incorrect attempts for this class. Try again in about ${mins} minute(s), or ask your school admin.` });
+  }
+
+  if (cc.code !== code.trim()) {
+    const fails = (cc.fail_count ?? 0) + 1;
+    const LOCK_THRESHOLD = 5;
+    if (fails >= LOCK_THRESHOLD) {
+      await query(
+        `UPDATE class_access_codes SET fail_count=0, locked_until=now() + interval '1 hour' WHERE id=$1`,
+        [cc.id],
+      );
+    } else {
+      await query('UPDATE class_access_codes SET fail_count=$1 WHERE id=$2', [fails, cc.id]);
+    }
+    await audit(null, 'self_claim_failed', 'class_access_code', String(cc.id), `attempt ${fails}`);
+    return genericFail();
+  }
+
+  const { rows: stRows } = await query(
+    'SELECT id, full_name FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND user_id IS NULL',
+    [student_id, school_code, class_name],
+  );
+  const student = stRows[0];
+  if (!student) {
+    return res.status(404).json({ error: 'That student was not found, or already has an account. If you already have an account, use Forgot Password instead.' });
+  }
+
+  const baseUsername = usernameBaseFromName(student.full_name);
+  let uname = baseUsername;
+  for (let suffix = 1; ; suffix++) {
+    const { rows: taken } = await query('SELECT id FROM users WHERE username=$1', [uname]);
+    if (!taken.length) break;
+    uname = `${baseUsername}${suffix}`;
+  }
+
+  const hash = await bcrypt.hash(new_password, 10);
+  const { rows: newUserRows } = await query(
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw)
+     VALUES($1,$2,'student',$3,$4,FALSE) RETURNING id,username`,
+    [uname, hash, student.full_name, school_code],
+  );
+  const newUser = newUserRows[0];
+
+  // Resets the code's own fail counter on a successful claim too — a
+  // string of wrong attempts by one student right before a different
+  // student succeeds shouldn't carry a stale count forward against the
+  // rest of the class.
+  await query(
+    'UPDATE students SET user_id=$1 WHERE id=$2',
+    [newUser.id, student.id],
+  );
+  await query('UPDATE class_access_codes SET fail_count=0 WHERE id=$1', [cc.id]);
+  await audit(null, 'self_claim_success', 'user', newUser.id, `student ${student.id} in ${school_code}/${class_name}`);
+
+  return res.status(201).json({ username: newUser.username });
+});
+
+// NOTE: There is deliberately no self-signup route for teacher/parent/admin
+// accounts — those are only ever created by an admin (see POST
+// /admin/users), which also lets the admin set an access_expires_at window
+// for that credential. Removing that route was a decision made explicitly
+// with the school owner — do not re-add it without also re-adding the
+// admin-issued-invite-code guard that was discussed alongside it. Student
+// self-claim above is a deliberate, narrower exception to that decision —
+// gated by a per-class code plus finding your own still-unclaimed name in
+// the roster, not an open self-signup.
 
 export default router;

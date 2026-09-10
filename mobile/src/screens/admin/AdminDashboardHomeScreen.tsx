@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
+import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useAdminSchool } from '../../api/AdminSchoolContext';
+import { SchoolSwitcherBar } from '../../components/SchoolSwitcherBar';
 import { Card, Loader } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
-import { Colors, Spacing, Fonts, Radius } from '../../theme';
+import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { openNotifications } from '../../navigation/navigationRef';
 
@@ -30,7 +31,7 @@ import { openNotifications } from '../../navigation/navigationRef';
 // putting here (e.g. a future activity feed).
 export default function AdminDashboardHomeScreen() {
   const { user } = useAuth();
-  const { schools, selectedSchoolCode, selectSchool, loading: schoolsLoading } = useAdminSchool();
+  const { selectedSchoolCode } = useAdminSchool();
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -64,27 +65,7 @@ export default function AdminDashboardHomeScreen() {
         title={`Hi, ${user?.username ?? ''}`}
         subtitle={subtitleParts.join(' · ')}
         onPressBell={() => openNotifications()}
-        rightExtra={
-          !schoolsLoading && schools.length > 0 ? (
-            <View style={styles.switcher}>
-              {schools.map((s) => {
-                const active = s.code === selectedSchoolCode;
-                return (
-                  <TouchableOpacity
-                    key={s.code}
-                    style={[styles.switcherChip, active && styles.switcherChipActive]}
-                    onPress={() => selectSchool(s.code)}
-                    activeOpacity={0.8}
-                  >
-                    <Text style={[styles.switcherChipText, active && styles.switcherChipTextActive]} numberOfLines={1}>
-                      {s.name}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          ) : undefined
-        }
+        rightExtra={<SchoolSwitcherBar compact />}
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <PageContainer style={{ padding: Spacing.md }}>
@@ -98,11 +79,3 @@ export default function AdminDashboardHomeScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  switcher: { flexDirection: 'row', gap: 6 },
-  switcherChip: { paddingVertical: 5, paddingHorizontal: Spacing.sm, borderRadius: Radius.lg, backgroundColor: Colors.white + '20', borderWidth: 1, borderColor: Colors.white + '40' },
-  switcherChipActive: { backgroundColor: Colors.white, borderColor: Colors.white },
-  switcherChipText: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.white },
-  switcherChipTextActive: { color: Colors.primary },
-});

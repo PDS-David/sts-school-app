@@ -6,6 +6,7 @@ import { Colors } from '../theme';
 
 import LoginScreen from '../screens/LoginScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
+import StudentSelfClaimScreen from '../screens/StudentSelfClaimScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
@@ -72,6 +73,7 @@ export default function RootNavigator() {
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+          <Stack.Screen name="StudentSelfClaim" component={StudentSelfClaimScreen} />
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} />
         </>

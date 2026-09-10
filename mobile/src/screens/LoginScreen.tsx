@@ -97,6 +97,10 @@ export default function LoginScreen({ navigation }: any) {
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
           <Btn label="Sign In" onPress={handleLogin} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
+
+          <TouchableOpacity onPress={() => navigation.navigate('StudentSelfClaim')} style={styles.selfClaimLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+            <Text style={styles.selfClaimLinkText}>Student, and don't have a login yet? Set up your account</Text>
+          </TouchableOpacity>
         </View>
 
         <Text style={styles.footer}>© {new Date().getFullYear()} Sow the Seed Schools, Ibadan</Text>
@@ -121,6 +125,8 @@ const styles = StyleSheet.create({
   showToggle:       { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary },
   forgotLink:       { alignSelf: 'flex-end', marginTop: Spacing.xs },
   forgotLinkText:   { fontSize: Fonts.sizes.xs, fontWeight: '600', color: Colors.primary },
+  selfClaimLink:    { alignSelf: 'center', marginTop: Spacing.md },
+  selfClaimLinkText:{ fontSize: Fonts.sizes.xs, fontWeight: '600', color: Colors.primary, textAlign: 'center' },
   error:      { color: Colors.error, fontSize: Fonts.sizes.sm, marginBottom: Spacing.sm, textAlign: 'center' },
   footer:     { textAlign: 'center', color: Colors.textSub, fontSize: Fonts.sizes.xs, marginTop: Spacing.xl, paddingBottom: Spacing.lg },
 });
