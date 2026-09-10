@@ -11,13 +11,19 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 // component exists to properly fix. React Native's own <Modal> renders
 // consistently on both web and native, so one component covers both.
 export function ConfirmDialog({
-  visible, title, message, confirmLabel = 'Confirm', destructive = false, onConfirm, onCancel,
+  visible, title, message, confirmLabel = 'Confirm', destructive = false, hideCancel = false, onConfirm, onCancel,
 }: {
   visible: boolean;
   title: string;
   message: string;
   confirmLabel?: string;
   destructive?: boolean;
+  // For plain info/error messages with nothing to actually confirm (e.g.
+  // "here's the generated password", "that failed") — renders a single OK
+  // button instead of Cancel+Confirm. onCancel is still called when the
+  // backdrop is tapped or the OK button is pressed, so callers only need
+  // one handler to dismiss either way.
+  hideCancel?: boolean;
   onConfirm: () => void;
   onCancel: () => void;
 }) {
@@ -30,15 +36,17 @@ export function ConfirmDialog({
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.message}>{message}</Text>
           <View style={styles.actions}>
-            <TouchableOpacity style={styles.cancelBtn} onPress={onCancel} activeOpacity={0.7}>
-              <Text style={styles.cancelLabel}>Cancel</Text>
-            </TouchableOpacity>
+            {!hideCancel && (
+              <TouchableOpacity style={styles.cancelBtn} onPress={onCancel} activeOpacity={0.7}>
+                <Text style={styles.cancelLabel}>Cancel</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity
               style={[styles.confirmBtn, destructive && styles.confirmBtnDestructive]}
-              onPress={onConfirm}
+              onPress={hideCancel ? onCancel : onConfirm}
               activeOpacity={0.7}
             >
-              <Text style={styles.confirmLabel}>{confirmLabel}</Text>
+              <Text style={styles.confirmLabel}>{hideCancel ? 'OK' : confirmLabel}</Text>
             </TouchableOpacity>
           </View>
         </Pressable>

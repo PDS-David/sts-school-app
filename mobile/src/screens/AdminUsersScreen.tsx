@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Modal, ScrollView, Platform,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
@@ -9,6 +9,7 @@ import api from '../api/client';
 import { Loader, Empty, Btn, Input, Badge, Card, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { PageContainer } from '../components/layout';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 interface User {
   id: string; username: string; full_name: string; role: string;
@@ -45,6 +46,18 @@ export default function AdminUsersScreen() {
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal,   setModal]   = useState(false);
+  // Alert.alert() doesn't reliably render on web via react-native-web —
+  // same documented root cause as the Log Out bug ConfirmDialog.tsx was
+  // built to fix (see that file's own comment). This screen had SIX
+  // Alert.alert() calls, all silently broken on web, including the one
+  // showing a freshly-created teacher's generated password — meaning the
+  // account saved fine but the admin had no way to see or hand over the
+  // password it was created with. Replaced all six with these two pieces
+  // of local state driving ConfirmDialog below.
+  const [infoDialog, setInfoDialog] = useState<{ title: string; message: string } | null>(null);
+  const [confirmDialog, setConfirmDialog] = useState<{
+    title: string; message: string; confirmLabel: string; destructive: boolean; onConfirm: () => void;
+  } | null>(null);
   const [editUser,setEditUser]= useState<User | null>(null);
   const [schools, setSchools] = useState<{code:string; name:string}[]>([]);
   const [classesBySchool, setClassesBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
@@ -137,13 +150,13 @@ export default function AdminUsersScreen() {
         setModal(false);
         fetchUsers();
         const temp = data?.user?.temporary_password;
-        Alert.alert(
-          'User Created',
-          `Username: ${form.username}\nPassword: ${temp}\n\nShare these with them. They'll be asked to set a new password on first login.`,
-        );
+        setInfoDialog({
+          title: 'User Created',
+          message: `Username: ${form.username}\nPassword: ${temp}\n\nShare these with them. They'll be asked to set a new password on first login.`,
+        });
       }
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Save failed');
+      setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Save failed' });
     }
   };
 
@@ -152,31 +165,39 @@ export default function AdminUsersScreen() {
       await api.put(`/admin/users/${u.id}`, { is_active: !u.is_active });
       fetchUsers();
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not update this user');
+      setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not update this user' });
     }
   };
 
   const handleResetPw = (u: User) => {
-    Alert.alert('Reset Password', `Reset password for ${u.username}? A new temporary password will be generated.`, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Reset', style: 'destructive', onPress: async () => {
+    setConfirmDialog({
+      title: 'Reset Password',
+      message: `Reset password for ${u.username}? A new temporary password will be generated.`,
+      confirmLabel: 'Reset',
+      destructive: true,
+      onConfirm: async () => {
+        setConfirmDialog(null);
         try {
           const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
-          Alert.alert(
-            'Password Reset',
-            `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
-          );
+          setInfoDialog({
+            title: 'Password Reset',
+            message: `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
+          });
         } catch (e: any) {
-          Alert.alert('Error', e?.response?.data?.error ?? 'Could not reset password');
+          setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });
         }
-      }},
-    ]);
+      },
+    });
   };
 
   const handleDelete = (u: User) => {
-    Alert.alert('Delete User', `Delete ${u.username}? This cannot be undone.`, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: async () => {
+    setConfirmDialog({
+      title: 'Delete User',
+      message: `Delete ${u.username}? This cannot be undone.`,
+      confirmLabel: 'Delete',
+      destructive: true,
+      onConfirm: async () => {
+        setConfirmDialog(null);
         try {
           await api.delete(`/admin/users/${u.id}`);
           fetchUsers();
@@ -185,10 +206,10 @@ export default function AdminUsersScreen() {
           // attendance — the backend blocks the delete to keep that history
           // attributable and returns a clear message; surface it here rather
           // than letting the promise reject silently.
-          Alert.alert('Error', e?.response?.data?.error ?? 'Could not delete this user');
+          setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not delete this user' });
         }
-      }},
-    ]);
+      },
+    });
   };
 
   if (loading) return <Loader />;
@@ -357,6 +378,24 @@ export default function AdminUsersScreen() {
           </View>
         </ScrollView>
       </Modal>
+
+      <ConfirmDialog
+        visible={!!infoDialog}
+        title={infoDialog?.title ?? ''}
+        message={infoDialog?.message ?? ''}
+        hideCancel
+        onConfirm={() => setInfoDialog(null)}
+        onCancel={() => setInfoDialog(null)}
+      />
+      <ConfirmDialog
+        visible={!!confirmDialog}
+        title={confirmDialog?.title ?? ''}
+        message={confirmDialog?.message ?? ''}
+        confirmLabel={confirmDialog?.confirmLabel}
+        destructive={confirmDialog?.destructive}
+        onConfirm={() => confirmDialog?.onConfirm()}
+        onCancel={() => setConfirmDialog(null)}
+      />
     </View>
   );
 }
