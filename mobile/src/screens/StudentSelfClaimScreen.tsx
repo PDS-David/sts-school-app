@@ -6,10 +6,15 @@ import { Btn, Input, Card, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
 
 // Public (no login) — Task B: a student finds their own name and sets their
-// own password, gated by a per-class code a teacher reads out once (see
-// GET/POST /auth/self-claim/* in backend/src/routes/auth.ts). Four steps in
-// one screen, mirroring ForgotPasswordScreen.tsx's single-screen-with-steps
-// shape rather than a multi-screen wizard.
+// own password. Gated by TWO checks, not one: a per-class code a teacher
+// reads out once (proves "a teacher told this person to do this" — but
+// it's shared with the whole class, so on its own it can't prove WHICH
+// student this is), and that student's own admission number (private to
+// them, never sent by the roster endpoint below — proves they're claiming
+// their own record, not a classmate's). See POST /auth/self-claim in
+// backend/src/routes/auth.ts. Four steps in one screen, mirroring
+// ForgotPasswordScreen.tsx's single-screen-with-steps shape rather than a
+// multi-screen wizard.
 type Step = 'school' | 'class' | 'name' | 'code';
 
 export default function StudentSelfClaimScreen({ navigation }: any) {
@@ -28,6 +33,7 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
   const [loadingRoster, setLoadingRoster] = useState(false);
 
   const [code, setCode] = useState('');
+  const [admissionNumber, setAdmissionNumber] = useState('');
   const [newPw, setNewPw] = useState('');
   const [conf, setConf] = useState('');
   const [error, setError] = useState('');
@@ -82,14 +88,14 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
 
   const handleClaim = async () => {
     setError('');
-    if (!code.trim() || !newPw || !conf) { setError('All fields are required'); return; }
+    if (!code.trim() || !admissionNumber.trim() || !newPw || !conf) { setError('All fields are required'); return; }
     if (newPw.length < 8) { setError('New password must be at least 8 characters'); return; }
     if (newPw !== conf)   { setError('Passwords do not match'); return; }
     setLoading(true);
     try {
       const { data } = await api.post('/auth/self-claim', {
         school_code: schoolCode, class_name: className, student_id: studentId,
-        code: code.trim(), new_password: newPw,
+        code: code.trim(), admission_number: admissionNumber.trim(), new_password: newPw,
       });
       setDone({ username: data.username });
     } catch (e: any) {
@@ -167,6 +173,8 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
             <>
               <Text style={styles.helper}>Ask your teacher for this term's class code.</Text>
               <Input label="Class Code" value={code} onChangeText={setCode} placeholder="Enter the code your teacher gave you" keyboardType="numeric" />
+              <Text style={styles.helper}>Now confirm it's really you — enter your own admission number (not shared with your class).</Text>
+              <Input label="Admission Number" value={admissionNumber} onChangeText={setAdmissionNumber} placeholder="Your admission number" />
               <Input label="New Password" value={newPw} onChangeText={setNewPw} placeholder="At least 8 characters" secureTextEntry />
               <Input label="Confirm New Password" value={conf} onChangeText={setConf} placeholder="Re-enter new password" secureTextEntry />
               {error ? <Text style={styles.error}>{error}</Text> : null}

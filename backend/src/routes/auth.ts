@@ -377,11 +377,11 @@ router.get('/self-claim/roster', async (req, res) => {
 });
 
 router.post('/self-claim', async (req, res) => {
-  const { school_code, class_name, student_id, code, new_password } = req.body as {
-    school_code?: string; class_name?: string; student_id?: string; code?: string; new_password?: string;
+  const { school_code, class_name, student_id, code, admission_number, new_password } = req.body as {
+    school_code?: string; class_name?: string; student_id?: string; code?: string; admission_number?: string; new_password?: string;
   };
-  if (!school_code || !class_name || !student_id || !code || !new_password) {
-    return res.status(400).json({ error: 'school_code, class_name, student_id, code, and new_password are required' });
+  if (!school_code || !class_name || !student_id || !code || !admission_number || !new_password) {
+    return res.status(400).json({ error: 'school_code, class_name, student_id, code, admission_number, and new_password are required' });
   }
   if (new_password.length < 8) {
     return res.status(400).json({ error: 'New password must be at least 8 characters' });
@@ -391,9 +391,16 @@ router.post('/self-claim', async (req, res) => {
     'SELECT * FROM class_access_codes WHERE school_code=$1 AND class_name=$2', [school_code, class_name],
   );
   const cc = ccRows[0];
-  // Same generic shape whether there's no code issued for this class at all
-  // or the code just doesn't match — doesn't tell a caller which, so
-  // guessing class names to see what exists isn't a productive attack.
+  // The class code and the admission number check two different things,
+  // and both are required: the code proves "a teacher actually told
+  // whoever's typing this to do it" — it's shared with the whole class,
+  // so on its own it does NOT prove which specific student this is. The
+  // admission number is the one thing here that's actually private to a
+  // single student (never returned by the roster endpoint below, which
+  // only ever sends id+full_name) — it's what stops one classmate, or
+  // anyone else who was simply told the shared code, from picking a
+  // DIFFERENT classmate's name off the roster and claiming their account
+  // instead of their own.
   const genericFail = () => res.status(401).json({ error: 'Incorrect class code, or self-claim is not available for this class.' });
   if (!cc) return genericFail();
 
@@ -418,10 +425,15 @@ router.post('/self-claim', async (req, res) => {
   }
 
   const { rows: stRows } = await query(
-    'SELECT id, full_name FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND user_id IS NULL',
-    [student_id, school_code, class_name],
+    'SELECT id, full_name FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND user_id IS NULL AND admission_number=$4',
+    [student_id, school_code, class_name, admission_number.trim()],
   );
   const student = stRows[0];
+  // Deliberately the same 404, with the same message, whether the
+  // admission number was wrong, the student was already claimed, or
+  // student_id was tampered with — a caller can never learn which one
+  // was the problem, matching the class-code check's own generic-failure
+  // pattern above.
   if (!student) {
     return res.status(404).json({ error: 'That student was not found, or already has an account. If you already have an account, use Forgot Password instead.' });
   }
