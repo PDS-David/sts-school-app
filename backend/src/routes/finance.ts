@@ -5,20 +5,28 @@ import { requireAuth, requireRole } from '../middleware/auth.js';
 const router = Router();
 router.use(requireAuth);
 
-// ── Operations Admin is walled off from finance entirely ───────────────────────
+// ── Operations Admin AND Teacher are walled off from finance entirely ──────────
 // 'admin' (Operations Admin) has the '*' permission wildcard for everything
 // else in this app, but must NOT reach finance — that's 'finance_admin''s
-// job, and the whole point of splitting the two roles apart. Blocking it here
-// explicitly (rather than via requirePerm, which the wildcard would satisfy
-// regardless of what's actually granted to 'admin' in rbac.ts) is what
-// actually enforces the wall. Every route below checks this first.
-function blockOpsAdmin(req: Request, res: Response, next: NextFunction) {
+// job, and the whole point of splitting the two roles apart. 'teacher' was
+// previously allowed read access here (scoped to their own school) via
+// per-route branches below; confirmed with the school owner this should be
+// blocked entirely instead, matching Operations Admin's treatment — a
+// teacher's dashboard/materials/scores/etc. work has no legitimate reason
+// to also expose fee/invoice status. Blocking here explicitly (rather than
+// via requirePerm, which admin's wildcard would satisfy regardless of what
+// rbac.ts actually grants) is what actually enforces the wall for both
+// roles. Every route below checks this first.
+function blockNonFinanceRoles(req: Request, res: Response, next: NextFunction) {
   if (req.user!.role === 'admin') {
     return res.status(403).json({ error: 'Finance is managed separately by Finance Admin, not Operations Admin.' });
   }
+  if (req.user!.role === 'teacher') {
+    return res.status(403).json({ error: 'Finance is managed separately by Finance Admin — teachers do not have access.' });
+  }
   next();
 }
-router.use(blockOpsAdmin);
+router.use(blockNonFinanceRoles);
 
 // ── GET /finance/fee-items ─────────────────────────────────────────────────────
 // Fee schedule is not sensitive per-student data, just scoped to the caller's school.
@@ -47,10 +55,9 @@ router.post('/fee-items', requireRole('finance_admin'), async (req, res) => {
 // ── GET /finance/invoices?student_id=&status= ─────────────────────────────────
 // Authorisation mirrors /scores/report/:student_id:
 //   finance_admin → any invoice (optionally filtered by student_id/status)
-//   teacher       → invoices for students in their own school
 //   parent        → ONLY invoices for students linked to them via parent_wards
 //   student       → ONLY their own invoices
-// ('admin' never reaches here at all — blocked above.)
+// ('admin' and 'teacher' never reach here at all — blocked above.)
 router.get('/invoices', async (req, res) => {
   const { student_id, status } = req.query as Record<string, string>;
   const user = req.user!;
@@ -65,9 +72,6 @@ router.get('/invoices', async (req, res) => {
   } else if (user.role === 'student') {
     params.push(user.id);
     sql += ` AND i.student_id = (SELECT id FROM students WHERE user_id=$${params.length} LIMIT 1)`;
-  } else if (user.role === 'teacher') {
-    params.push(user.school_code);
-    sql += ` AND st.school_code=$${params.length}`;
   }
   // finance_admin: no extra scoping beyond optional filters below
 
