@@ -32,8 +32,21 @@ import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } 
 const tokenMigration = migrateLegacyTokens();
 
 // ── API base URL ───────────────────────────────────────────────────────────────
-// Read from app.json → expo.extra.apiUrl so this can be changed per build
-// without touching source code (dev on an emulator vs a real deployed server).
+// Priority: EXPO_PUBLIC_API_URL (from an untracked mobile/.env, gitignored —
+// see mobile/.env.example) > app.json's expo.extra.apiUrl > the Android
+// emulator fallback below.
+//
+// The .env override exists specifically because relying on hand-editing
+// app.json (a file tracked in git, shared by everyone) for local testing
+// was fragile in practice — a `git pull` silently reverts any uncommitted
+// edit there back to production the moment it's touched by an incoming
+// commit, and there's no warning when that happens. A real session hit
+// exactly this: local testing looked like it was working, but the app had
+// actually been calling production the whole time, and the only clue was
+// production returning 401s once its own security posture (JWT_SECRET,
+// token lifetime) didn't match a token issued against the tester's own
+// local backend. mobile/.env is never committed, so it can't be reverted
+// by a pull — set it once per machine and forget about it.
 //
 // IMPORTANT — before giving this app to real teachers/parents/students:
 //   1. Deploy the backend somewhere reachable over the internet (Render,
@@ -44,15 +57,23 @@ const tokenMigration = migrateLegacyTokens();
 //      emulator. On a real phone it resolves to nothing and every request
 //      will fail.
 //   3. Rebuild the app (`eas build` or `expo run:android`) so the new value
-//      is baked into the binary you actually install on phones.
+//      is baked into the binary you actually install on phones. Make sure
+//      no local mobile/.env is present on the machine doing that build —
+//      it would override app.json's production URL right back to whatever
+//      that .env says, in the built binary too, not just local dev.
+const envUrl = process.env.EXPO_PUBLIC_API_URL;
 const configuredUrl = Constants.expoConfig?.extra?.apiUrl as string | undefined;
-export const BASE_URL = configuredUrl ?? 'http://10.0.2.2:4000';
+export const BASE_URL = envUrl ?? configuredUrl ?? 'http://10.0.2.2:4000';
 
-if (__DEV__ && !configuredUrl) {
-  console.warn(
-    '[api/client] No expo.extra.apiUrl set in app.json — falling back to the ' +
-    'Android emulator address (10.0.2.2). This will NOT work on a real device.',
-  );
+if (__DEV__) {
+  if (envUrl) {
+    console.log(`[api/client] Using EXPO_PUBLIC_API_URL override from mobile/.env: ${envUrl}`);
+  } else if (!configuredUrl) {
+    console.warn(
+      '[api/client] No expo.extra.apiUrl set in app.json — falling back to the ' +
+      'Android emulator address (10.0.2.2). This will NOT work on a real device.',
+    );
+  }
 }
 
 const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
