@@ -1,5 +1,33 @@
 # TODO
 
+> **Update 2026-09-10 (Task C — staff account activation, replaces temp-password
+> hand-off):** Confirmed via careful code tracing + `tsc --noEmit` clean on both
+> `backend/` and `mobile/` (no live DB access this session — not yet
+> live-tested against a running backend, unlike Task B which was fully
+> live-verified the same day). `POST /admin/users` no longer generates a temp
+> password for new accounts — it creates the account with `password_hash`
+> NULL (now nullable, a deliberate pending-activation state) plus a short
+> one-time `activation_code` (plaintext, same convention as
+> `class_access_codes`/`term_access_pins`). New `POST /auth/activate`
+> (public, in `auth.ts`) lets the account owner set their own password with
+> just username + code — no second identity factor needed, unlike Task B's
+> self-claim, since admin already established identity at account-creation
+> time. `POST /admin/users/:id/reissue-activation-code` covers a lost/expired
+> code. Login route explicitly checks for a NULL `password_hash` before
+> calling `bcrypt.compare` (which would otherwise throw) and returns a
+> distinct "not activated yet" message. Mobile: new
+> `ActivateAccountScreen.tsx` (single-step, unlike `StudentSelfClaimScreen`'s
+> multi-step roster search), a matching login-screen link, and
+> `AdminUsersScreen.tsx` updated to show the activation code (not a
+> password) after creating a user, plus a "PENDING ACTIVATION" badge and a
+> reissue button in place of Reset Password for accounts still pending.
+> **Applies going forward only** — accounts created before this under the
+> old temp-password flow are untouched, confirmed with Grace. **Next step
+> for whoever picks this up:** live-test the same way Task B was tested —
+> create a real teacher account, confirm the activation code works, confirm
+> a wrong code fails generically, confirm lockout after 5 attempts, confirm
+> login is cleanly blocked before activation.
+
 > **Decision 2026-09-06 (migrate off Render — planned, not started):**
 > Live-confirmed cause of the "No internet connection" login bug from the
 > same day: Render's free tier spins the backend down after a period of

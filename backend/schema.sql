@@ -695,6 +695,26 @@ CREATE TABLE IF NOT EXISTS class_access_codes (
   UNIQUE(school_code, class_name)
 );
 
+-- ── Staff account activation (Task C) ───────────────────────────────────────
+-- Unlike Task B's self-claim (a public roster search + two-factor claim,
+-- needed because 108 students had no admin-created accounts at all), a
+-- staff/teacher account is always created by admin first — identity is
+-- already established at creation time. The old flow then made admin
+-- generate a temp password and manually relay it before the teacher could
+-- ever log in. This replaces that: admin creates the account with no
+-- password at all (password_hash nullable specifically for this pending
+-- state) plus a short one-time activation code (same plaintext,
+-- admin-re-viewable convention as term_access_pins.pin / class_access_codes
+-- above — not a long-term credential). The teacher sets their own password
+-- once via POST /auth/activate, paired with their specific username server
+-- side (same practical tradeoff as term_access_pins), so no temp password
+-- ever needs to exist or be communicated. Applies going forward only —
+-- accounts already created under the old temp-password flow are untouched.
+ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS activation_code TEXT;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS activation_fail_count INT DEFAULT 0;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS activation_locked_until TIMESTAMPTZ;
+
 -- students.admission_number was globally UNIQUE, not scoped per school —
 -- found while auditing importStudentRoster.ts (Task A of HANDOFF.md):
 -- real schools each assign their own admission numbers independently

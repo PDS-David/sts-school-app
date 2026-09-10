@@ -123,7 +123,16 @@ Postgres or a hosted one — network is usually locked to a fixed allowlist
 - Say explicitly which verification method you used — don't imply
   "verified" when you mean "type-checked and traced by hand."
 
-## 6. What's shipped recently (this session) — read before extending these
+## 6. What's shipped recently — read before extending these
+
+**Staff account activation (Task C, 2026-09-10)** — see `TODO.md`'s own
+2026-09-10 entry for full detail. Short version: `POST /admin/users`
+creates new accounts with no password (`password_hash` nullable now) plus
+a one-time `activation_code`; the account owner sets their own password via
+`POST /auth/activate`. Not live-tested yet — do that before considering it
+done, same rigor as Task B got.
+
+## 6a. What's shipped recently (this session) — read before extending these
 
 **Self-service password recovery** (`backend/src/routes/auth.ts`,
 `utils/password.ts`): security-question/answer based, not email/SMS — no

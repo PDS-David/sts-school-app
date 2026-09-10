@@ -17,6 +17,7 @@ router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
   let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
+                    (u.password_hash IS NULL) AS pending_activation,
                     COALESCE(array_agg(ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids
              FROM users u
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
@@ -77,21 +78,47 @@ router.post('/users', async (req, res) => {
   // is handing out for a limited time. Admin accounts never expire this way.
   const expiresAt = (role === 'teacher' || role === 'parent') ? (access_expires_at ?? null) : null;
 
-  const generatedPassword = generateTempPassword();
-  const hash = await bcrypt.hash(generatedPassword, 10);
+  // Task C: admin no longer generates a temp password to hand out — the
+  // account is created with no password at all (password_hash NULL, a
+  // deliberate pending-activation state — see schema.sql) plus a short
+  // one-time activation code the account owner uses to set their own
+  // password via POST /auth/activate. Applies to every new account from
+  // here on; accounts created before this under the old temp-password flow
+  // are untouched.
+  const activationCode = generateNumericPin();
   const { rows } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
-       phone,email,must_change_pw,access_expires_at)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,TRUE,$9) RETURNING id,username,role,school_code,access_expires_at`,
-    [uname, hash, role, full_name, school_code ?? null,
-     assigned_class ?? null, phone ?? null, email ?? null, expiresAt],
+       phone,email,must_change_pw,access_expires_at,activation_code)
+     VALUES($1,NULL,$2,$3,$4,$5,$6,$7,FALSE,$8,$9) RETURNING id,username,role,school_code,access_expires_at`,
+    [uname, role, full_name, school_code ?? null,
+     assigned_class ?? null, phone ?? null, email ?? null, expiresAt, activationCode],
   );
   const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
   for (const sid of subjectIds) {
     await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
   }
   await audit(req.user!, 'add_user', 'user', rows[0].id, `${role}: ${full_name}`);
-  return res.status(201).json({ user: { ...rows[0], temporary_password: generatedPassword } });
+  return res.status(201).json({ user: { ...rows[0], activation_code: activationCode } });
+});
+
+// ── POST /admin/users/:id/reissue-activation-code — lost/expired code ───────
+// Only valid for an account still pending activation (password_hash IS
+// NULL) — an already-activated account has no activation step left to
+// re-issue. Also clears any lockout from prior failed attempts, same as
+// re-issuing a class code does for class_access_codes.
+router.post('/users/:id/reissue-activation-code', async (req, res) => {
+  const { rows: existing } = await query('SELECT id, password_hash FROM users WHERE id=$1', [req.params.id]);
+  if (!existing[0]) return res.status(404).json({ error: 'User not found' });
+  if (existing[0].password_hash) {
+    return res.status(400).json({ error: 'This account has already been activated — there is no activation code to reissue.' });
+  }
+  const activationCode = generateNumericPin();
+  await query(
+    `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL WHERE id=$2`,
+    [activationCode, req.params.id],
+  );
+  await audit(req.user!, 'reissue_activation_code', 'user', req.params.id);
+  return res.json({ activation_code: activationCode });
 });
 
 router.put('/users/:id', async (req, res) => {

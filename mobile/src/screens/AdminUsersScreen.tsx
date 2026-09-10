@@ -16,6 +16,10 @@ interface User {
   school_code: string; assigned_class: string; is_active: boolean;
   access_expires_at: string | null;
   assigned_subject_ids?: number[];
+  // Task C: true when the account was created under the activation-code
+  // flow and hasn't been activated yet (no password set). Used to show
+  // "Reissue Activation Code" instead of "Reset Password" for that account.
+  pending_activation?: boolean;
 }
 
 // 'finance_admin' deliberately excluded from SCHOOL_ROLES/EXPIRY_ROLES below,
@@ -149,10 +153,14 @@ export default function AdminUsersScreen() {
         const { data } = await api.post('/admin/users', payload);
         setModal(false);
         fetchUsers();
-        const temp = data?.user?.temporary_password;
+        // Task C: account creation no longer generates a temp password —
+        // admin shares this one-time activation code instead, and the
+        // account owner sets their own password via the "Activate your
+        // account" link on the login screen.
+        const activationCode = data?.user?.activation_code;
         setInfoDialog({
           title: 'User Created',
-          message: `Username: ${form.username}\nPassword: ${temp}\n\nShare these with them. They'll be asked to set a new password on first login.`,
+          message: `Username: ${form.username}\nActivation code: ${activationCode}\n\nShare these with them. They'll use "Activate your account" on the login screen to set their own password.`,
         });
       }
     } catch (e: any) {
@@ -185,6 +193,30 @@ export default function AdminUsersScreen() {
           });
         } catch (e: any) {
           setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });
+        }
+      },
+    });
+  };
+
+  // Task C: for an account still pending activation, this replaces Reset
+  // Password — there's no password to reset yet, only a lost/expired
+  // activation code to reissue.
+  const handleReissueCode = (u: User) => {
+    setConfirmDialog({
+      title: 'Reissue Activation Code',
+      message: `Generate a new activation code for ${u.username}? The old code will stop working.`,
+      confirmLabel: 'Reissue',
+      destructive: true,
+      onConfirm: async () => {
+        setConfirmDialog(null);
+        try {
+          const { data } = await api.post(`/admin/users/${u.id}/reissue-activation-code`, {});
+          setInfoDialog({
+            title: 'Activation Code Reissued',
+            message: `New activation code: ${data?.activation_code}\n\nShare this with them along with their username. They'll use "Activate your account" on the login screen.`,
+          });
+        } catch (e: any) {
+          setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reissue activation code' });
         }
       },
     });
@@ -238,6 +270,7 @@ export default function AdminUsersScreen() {
                 <View style={{ flexDirection: 'row', gap: 4, marginTop: 4 }}>
                   <Badge label={u.role} color={Colors.roleBadge[u.role as keyof typeof Colors.roleBadge] ?? Colors.primary} />
                   {!u.is_active && <Badge label="INACTIVE" color={Colors.error} />}
+                  {u.pending_activation && <Badge label="PENDING ACTIVATION" color={Colors.warning} />}
                   {u.assigned_class && <Badge label={u.assigned_class} color={Colors.textSub} />}
                   {EXPIRY_ROLES.includes(u.role) && (
                     <Badge
@@ -254,8 +287,8 @@ export default function AdminUsersScreen() {
                 <TouchableOpacity onPress={() => handleToggle(u)} style={styles.iconBtn}>
                   <Ionicons name={u.is_active ? 'pause-circle' : 'play-circle'} size={18} color={Colors.warning} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleResetPw(u)} style={styles.iconBtn}>
-                  <Ionicons name="key" size={18} color={Colors.accent} />
+                <TouchableOpacity onPress={() => (u.pending_activation ? handleReissueCode(u) : handleResetPw(u))} style={styles.iconBtn}>
+                  <Ionicons name={u.pending_activation ? 'refresh-circle' : 'key'} size={18} color={Colors.accent} />
                 </TouchableOpacity>
                 {u.role !== 'admin' && (
                   <TouchableOpacity onPress={() => handleDelete(u)} style={styles.iconBtn}>

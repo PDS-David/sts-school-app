@@ -25,7 +25,20 @@ router.post('/login', async (req, res) => {
   );
 
   const user = rows[0];
-  if (!user || !await bcrypt.compare(password, user.password_hash)) {
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid username or password' });
+  }
+  // Task C: an account created via the new activation-code flow has no
+  // password_hash until the staff member sets one themselves (POST
+  // /auth/activate) — bcrypt.compare would throw on a null hash, so this
+  // has to be checked explicitly before it, not folded into the line above.
+  // Revealed distinctly from a wrong password on purpose, same precedent as
+  // the is_active/access_expires_at checks below already revealing account
+  // state rather than a generic failure.
+  if (!user.password_hash) {
+    return res.status(403).json({ error: 'This account has not been activated yet. Use the activation code you were given to set your password.' });
+  }
+  if (!await bcrypt.compare(password, user.password_hash)) {
     return res.status(401).json({ error: 'Invalid username or password' });
   }
   if (!user.is_active) {
@@ -474,6 +487,67 @@ router.post('/self-claim', async (req, res) => {
 // for that credential. Removing that route was a decision made explicitly
 // with the school owner — do not re-add it without also re-adding the
 // admin-issued-invite-code guard that was discussed alongside it. Student
+// ── Staff account activation (Task C) ────────────────────────────────────────
+// Public (no login) — replaces admin generating and manually relaying a temp
+// password for new teacher/staff accounts (see POST /admin/users). Unlike
+// self-claim above, there's no anonymous roster search: admin already
+// created this exact account and knows exactly who it's for, so the
+// activation code alone (paired with the specific username server-side,
+// same practical tradeoff as term_access_pins/class_access_codes) is the
+// only check needed — identity was already established at account-creation
+// time, not at this step, so there's no second factor to verify here.
+router.post('/activate', async (req, res) => {
+  const { username, activation_code, new_password } = req.body as {
+    username?: string; activation_code?: string; new_password?: string;
+  };
+  if (!username || !activation_code || !new_password) {
+    return res.status(400).json({ error: 'username, activation_code, and new_password are required' });
+  }
+  if (new_password.length < 8) {
+    return res.status(400).json({ error: 'New password must be at least 8 characters' });
+  }
+
+  const { rows } = await query(
+    'SELECT id, username, activation_code, activation_fail_count, activation_locked_until, password_hash FROM users WHERE username=$1',
+    [username.trim().toLowerCase()],
+  );
+  const user = rows[0];
+  // Same generic-failure shape as self-claim: whether the username doesn't
+  // exist, was never issued a code, or is already activated (password_hash
+  // already set), the caller learns nothing more specific than "that
+  // didn't work" — in particular this never confirms a username exists.
+  const genericFail = () => res.status(401).json({ error: 'Invalid username or activation code, or this account is already active.' });
+  if (!user || !user.activation_code || user.password_hash) return genericFail();
+
+  if (user.activation_locked_until && new Date(user.activation_locked_until).getTime() > Date.now()) {
+    const mins = Math.ceil((new Date(user.activation_locked_until).getTime() - Date.now()) / 60000);
+    return res.status(429).json({ error: `Too many incorrect attempts. Try again in about ${mins} minute(s), or ask your school admin for a new code.` });
+  }
+
+  if (user.activation_code !== activation_code.trim()) {
+    const fails = (user.activation_fail_count ?? 0) + 1;
+    const LOCK_THRESHOLD = 5;
+    if (fails >= LOCK_THRESHOLD) {
+      await query(
+        `UPDATE users SET activation_fail_count=0, activation_locked_until=now() + interval '1 hour' WHERE id=$1`,
+        [user.id],
+      );
+    } else {
+      await query('UPDATE users SET activation_fail_count=$1 WHERE id=$2', [fails, user.id]);
+    }
+    await audit(null, 'activation_failed', 'user', user.id, `attempt ${fails}`);
+    return genericFail();
+  }
+
+  const hash = await bcrypt.hash(new_password, 10);
+  await query(
+    `UPDATE users SET password_hash=$1, activation_code=NULL, activation_fail_count=0, activation_locked_until=NULL WHERE id=$2`,
+    [hash, user.id],
+  );
+  await audit(null, 'activation_success', 'user', user.id);
+  return res.status(201).json({ ok: true, username: user.username });
+});
+
 // self-claim above is a deliberate, narrower exception to that decision —
 // gated by a per-class code plus finding your own still-unclaimed name in
 // the roster, not an open self-signup.

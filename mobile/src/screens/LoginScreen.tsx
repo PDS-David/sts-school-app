@@ -101,6 +101,10 @@ export default function LoginScreen({ navigation }: any) {
           <TouchableOpacity onPress={() => navigation.navigate('StudentSelfClaim')} style={styles.selfClaimLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
             <Text style={styles.selfClaimLinkText}>Student, and don't have a login yet? Set up your account</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('ActivateAccount')} style={styles.selfClaimLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+            <Text style={styles.selfClaimLinkText}>Staff, and have an activation code? Activate your account</Text>
+          </TouchableOpacity>
         </View>
 
         <Text style={styles.footer}>© {new Date().getFullYear()} Sow the Seed Schools, Ibadan</Text>
