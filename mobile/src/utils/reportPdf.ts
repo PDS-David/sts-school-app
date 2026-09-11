@@ -38,18 +38,33 @@ function shortTermLabel(name: string): string {
 
 const baseStyles = `
   body { font-family: -apple-system, Helvetica, Arial, sans-serif; color: #1a1a1a; padding: 24px; }
-  .letterhead { text-align: center; margin-bottom: 16px; }
-  .letterhead img { width: 72px; height: 72px; border-radius: 36px; }
-  .school-name { font-size: 18px; font-weight: 800; color: #1565C0; margin: 4px 0 0; }
+  .letterhead { text-align: center; margin-bottom: 10px; }
+  .letterhead img { width: 90px; height: 90px; border-radius: 45px; }
+  .school-name { font-size: 20px; font-weight: 800; color: #1565C0; margin: 6px 0 0; }
+  .doc-subtitle { font-size: 13px; color: #555; margin: 2px 0 6px; }
+  .contact-line { font-size: 11px; color: #666; margin: 0 0 10px; }
+  .header-rule { border: none; border-top: 3px solid #1565C0; margin: 0 0 16px; }
   .motto { font-size: 11px; font-style: italic; color: #555; margin: 2px 0; }
   .doc-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-top: 8px; }
-  .student-bar { background: #1565C0; color: #fff; padding: 10px 14px; border-radius: 8px; margin-bottom: 12px; }
-  .student-name { font-size: 16px; font-weight: 700; }
-  .student-meta { font-size: 12px; opacity: 0.85; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 12px; }
-  th, td { border-bottom: 1px solid #ddd; padding: 6px 4px; text-align: center; }
-  th { background: #E3EFFD; color: #1565C0; }
+  .info-block { margin-bottom: 16px; }
+  .info-row { display: flex; margin-bottom: 4px; }
+  .info-item { flex: 1; font-size: 13px; }
+  .info-label { font-weight: 700; color: #1a1a1a; }
+  .info-value { color: #444; margin-left: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 11px; }
+  th, td { border-bottom: 1px solid #eee; padding: 7px 4px; text-align: center; }
+  th { background: #F2F6FC; color: #667; font-weight: 600; font-size: 10px; text-transform: uppercase; }
+  th small, td.subhead { display: block; font-size: 9px; font-weight: 400; color: #99a; text-transform: none; }
   td:first-child, th:first-child { text-align: left; }
+  td.total-cell { font-weight: 700; }
+  .grade-A { color: #2E7D32; font-weight: 700; }
+  .grade-B { color: #1565C0; font-weight: 700; }
+  .grade-C { color: #B26A00; font-weight: 700; }
+  .grade-other { color: #555; font-weight: 700; }
+  .stats-row { display: flex; text-align: center; margin: 14px 0 16px; padding-top: 10px; border-top: 1px solid #eee; }
+  .stat { flex: 1; }
+  .stat-label { font-size: 11px; color: #777; margin-bottom: 2px; }
+  .stat-value { font-size: 15px; font-weight: 800; color: #1a1a1a; }
   .summary-row td { padding: 3px 0; font-size: 12px; border-bottom: none; }
   .summary-label { color: #666; text-align: left; }
   .summary-value { font-weight: 700; text-align: right; }
@@ -59,44 +74,99 @@ const baseStyles = `
   .footer-note { font-size: 11px; color: #888; text-align: center; margin-top: 20px; }
 `;
 
+function gradeClass(grade: string | undefined): string {
+  if (!grade) return 'grade-other';
+  const g = grade.trim().toUpperCase();
+  if (g === 'A') return 'grade-A';
+  if (g === 'B') return 'grade-B';
+  if (g === 'C') return 'grade-C';
+  return 'grade-other';
+}
+
 // ── Term report card (MyResultsScreen's `report` shape) ─────────────────────
+// Rebuilt to match the school's actual in-use report format (a sample PDF
+// the school shared, already commended by parents) rather than an
+// independently-designed layout — see: separate CA1/CA2 columns (not
+// combined), a per-subject Position column, and an "Overall Position X out
+// of Y students" stat alongside Total Score/Average. Position/overall
+// position/class_size come from backend/src/routes/scores.ts's
+// GET /report/:student_id, added in the same pass.
+//
+// Attendance (Days Opened/Present), Class Teacher/Head remarks, and "Next
+// term begins" are kept below the table — the reference sample was a
+// single page with no visible attendance/remarks section, but those are
+// real existing fields teachers/admins fill in elsewhere in the app (see
+// AttendanceScreen.tsx, StudentDetailScreen.tsx); removing them here would
+// silently drop functionality nobody asked to remove. Confirm with the
+// school whether these belong on this page, a second page, or a separate
+// document.
 export async function buildTermReportHtml(report: any, brand: SchoolBrand | null): Promise<string> {
   const { student, term, scores, attendance, class_record, summary } = report;
   const logo = await logoDataUri(brand);
   const rows = (scores ?? []).map((s: any) => `
     <tr>
       <td>${escapeHtml(s.subject_name)}</td>
-      <td>${Number(s.ca1) + Number(s.ca2)}</td>
+      <td>${escapeHtml(s.ca1)}</td>
+      <td>${escapeHtml(s.ca2)}</td>
       <td>${escapeHtml(s.exam)}</td>
-      <td><b>${escapeHtml(s.total)}</b></td>
-      <td>${escapeHtml(s.grade ?? '—')}</td>
-      <td>${s.class_average ?? '—'}</td>
+      <td class="total-cell">${escapeHtml(s.total)}</td>
+      <td class="${gradeClass(s.grade)}">${escapeHtml(s.grade ?? '—')}</td>
+      <td>${s.subject_position ?? '—'}</td>
       <td>${s.class_highest ?? '—'}</td>
+      <td>${s.class_average ?? '—'}</td>
+      <td>${s.subject_remark ? escapeHtml(s.subject_remark) : '-'}</td>
     </tr>`).join('');
 
   return `<!DOCTYPE html><html><head><meta charset="utf-8" /><style>${baseStyles}</style></head><body>
     <div class="letterhead">
       ${logo ? `<img src="${logo}" />` : ''}
       <div class="school-name">${escapeHtml(brand?.name ?? '')}</div>
-      <div class="motto">${escapeHtml(brand?.motto ?? '')}</div>
-      <div class="doc-title">TERM REPORT CARD</div>
+      <div class="doc-subtitle">Student Report Card</div>
+      ${(brand?.address || brand?.phone) ? `<div class="contact-line">📍 ${escapeHtml(brand?.address ?? '')}${brand?.address && brand?.phone ? ' | ' : ''}${brand?.phone ? `📞 ${escapeHtml(brand.phone)}` : ''}</div>` : ''}
     </div>
-    <div class="student-bar">
-      <div class="student-name">${escapeHtml(student.full_name)}</div>
-      <div class="student-meta">${escapeHtml(student.class_name)} &middot; Adm: ${escapeHtml(student.admission_number ?? '—')}</div>
+    <hr class="header-rule" />
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">Student Name:</span><span class="info-value">${escapeHtml(student.full_name)}</span></div>
+        <div class="info-item"><span class="info-label">Admission No:</span><span class="info-value">${escapeHtml(student.admission_number ?? '—')}</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">Class:</span><span class="info-value">${escapeHtml(student.class_name)}</span></div>
+        <div class="info-item"><span class="info-label">Term:</span><span class="info-value">${escapeHtml(term?.name ?? '')} ${escapeHtml(term?.academic_year ?? '')}</span></div>
+      </div>
     </div>
-    <h3>${escapeHtml(term?.name ?? '')} — ${escapeHtml(term?.academic_year ?? '')}</h3>
+    <table>
+      <tr>
+        <th>Subject</th>
+        <th>CA1<small>(15)</small></th>
+        <th>CA2<small>(15)</small></th>
+        <th>Exam<small>(70)</small></th>
+        <th>Total<small>(100)</small></th>
+        <th>Grade</th>
+        <th>Position</th>
+        <th>Highest</th>
+        <th>Average</th>
+        <th>Remark</th>
+      </tr>
+      ${rows || '<tr><td colspan="10">No scores entered yet for this term.</td></tr>'}
+    </table>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">Overall Position</div>
+        <div class="stat-value">${summary.overall_position ?? '—'}${summary.class_size ? ` out of ${summary.class_size} students` : ''}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Total Score</div>
+        <div class="stat-value">${summary.total_score}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Average</div>
+        <div class="stat-value">${summary.average}%</div>
+      </div>
+    </div>
     <table>
       <tr class="summary-row"><td class="summary-label">Days Opened</td><td class="summary-value">${attendance?.days_opened ?? 0}</td></tr>
       <tr class="summary-row"><td class="summary-label">Days Present</td><td class="summary-value">${attendance?.days_present ?? 0}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Subjects Taken</td><td class="summary-value">${summary.subject_count}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Total Score</td><td class="summary-value">${summary.total_score}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Average</td><td class="summary-value">${summary.average}%</td></tr>
-    </table>
-    <h3>Subject Scores &amp; Class Performance</h3>
-    <table>
-      <tr><th>Subject</th><th>CA</th><th>Exam</th><th>Total</th><th>Grade</th><th>Class Avg</th><th>Class High</th></tr>
-      ${rows || '<tr><td colspan="7">No scores entered yet for this term.</td></tr>'}
     </table>
     ${(class_record?.class_teacher_remark || class_record?.admin_remark) ? `
       <h3>Remarks</h3>

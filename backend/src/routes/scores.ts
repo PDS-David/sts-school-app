@@ -273,7 +273,17 @@ router.get('/report/:student_id', async (req, res) => {
             (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1) AS class_average,
             (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
-             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1) AS class_highest
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1) AS class_highest,
+            -- Position within the class for THIS subject/term — standard
+            -- competition ranking (ties share a position; the next distinct
+            -- score skips ahead by the tie count, e.g. two students tied
+            -- for 1st means the next student is 3rd, not 2nd). Matches the
+            -- "Position" column in the report format the school actually
+            -- uses (see reportPdf.ts) — added in the same pass that
+            -- rebuilt the template to match it.
+            (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1
+               AND s2.total > sc.total) AS subject_position
      FROM scores sc
      JOIN subjects sub ON sub.id=sc.subject_id
      WHERE sc.student_id=$2 AND sc.term_id=$3
@@ -293,13 +303,38 @@ router.get('/report/:student_id', async (req, res) => {
   const totalScore = scoreRows.reduce((s, r) => s + Number(r.total), 0);
   const n = scoreRows.length;
 
+  // Overall class position (rank by each student's own summed total across
+  // whatever subjects they have scores for this term) and class size — the
+  // "Overall Position X out of Y students" line in the report format.
+  // Deliberately a fresh query rather than reusing scoreRows/totalScore
+  // above: those are just this one student's rows, but ranking needs every
+  // student in the class summed the same way.
+  const { rows: classTotals } = await query(
+    `SELECT s3.student_id, SUM(s3.total) AS grand_total
+     FROM scores s3 JOIN students st3 ON st3.id = s3.student_id
+     WHERE st3.class_name = $1 AND s3.term_id = $2
+     GROUP BY s3.student_id`,
+    [student.class_name, resolvedTermId],
+  );
+  const classSize = classTotals.length;
+  const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;
+  const overallPosition = myTotal !== undefined
+    ? classTotals.filter((r) => Number(r.grand_total) > Number(myTotal)).length + 1
+    : null;
+
   return res.json({
     student,
     term,
     scores: scoreRows,
     attendance: { days_present: attRows[0]?.days_present ?? 0, days_opened: term?.days_opened ?? 0 },
     class_record: recRows[0] ?? {},
-    summary: { total_score: totalScore, average: n ? +(totalScore / n).toFixed(2) : 0, subject_count: n },
+    summary: {
+      total_score: totalScore,
+      average: n ? +(totalScore / n).toFixed(2) : 0,
+      subject_count: n,
+      overall_position: overallPosition,
+      class_size: classSize,
+    },
   });
 });
 
