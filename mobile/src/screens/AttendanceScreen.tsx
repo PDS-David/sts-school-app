@@ -43,6 +43,10 @@ export default function AttendanceScreen({ navigation }: any) {
   const [loading,  setLoading]  = useState(true);
   const [saving,   setSaving]   = useState(false);
   const [daysOpened, setDaysOpened] = useState('');
+  // Also teacher-filled, per the same PUT /academic/terms/:id save as
+  // daysOpened — school's own decision that the class teacher, not admin,
+  // records when the next term starts.
+  const [nextTermBegins, setNextTermBegins] = useState('');
 
   useEffect(() => {
     if (isAdmin && !effectiveSchoolCode) { setLoading(false); return; }
@@ -67,7 +71,7 @@ export default function AttendanceScreen({ navigation }: any) {
         setSelClass(cls[0] ?? '');
         setTerms(t.data.terms);
         const cur = t.data.terms.find((x: any) => x.is_current);
-        if (cur) { setSelTerm(cur.id); setDaysOpened(String(cur.days_opened ?? '')); }
+        if (cur) { setSelTerm(cur.id); setDaysOpened(String(cur.days_opened ?? '')); setNextTermBegins(cur.next_term_begins ?? ''); }
       })
       .catch(() => {})
       .finally(() => setLoading(false));
@@ -115,9 +119,12 @@ export default function AttendanceScreen({ navigation }: any) {
     setSaving(true);
     try {
       await api.put('/attendance/bulk', { term_id: Number(selTerm), entries: payload });
-      // Update term days_opened if changed
-      if (daysOpened) {
-        await api.put(`/academic/terms/${selTerm}`, { days_opened: Number(daysOpened) });
+      // Update term days_opened / next_term_begins if changed
+      if (daysOpened || nextTermBegins) {
+        await api.put(`/academic/terms/${selTerm}`, {
+          days_opened: daysOpened ? Number(daysOpened) : undefined,
+          next_term_begins: nextTermBegins || undefined,
+        });
       }
       Alert.alert('Saved', 'Attendance saved successfully.');
     } catch (e: any) {
@@ -165,6 +172,14 @@ export default function AttendanceScreen({ navigation }: any) {
                 onChangeText={setDaysOpened}
                 keyboardType="numeric"
                 placeholder="e.g. 60"
+              />
+            </View>
+            <View style={isWide ? styles.filterCol : undefined}>
+              <Input
+                label="Next Term Begins"
+                value={nextTermBegins}
+                onChangeText={setNextTermBegins}
+                placeholder="e.g. Monday, 12th January"
               />
             </View>
           </View>

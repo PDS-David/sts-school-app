@@ -89,8 +89,23 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ term: rows[0] });
 });
 
-router.put('/terms/:id', requireRole('admin'), async (req, res) => {
+router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body;
+
+  // Teachers may touch days_opened and next_term_begins here (both
+  // requested by the school as teacher-filled fields on the report), for a
+  // term in their own school only. Still can't rename terms, change which
+  // term is current, or edit start/end dates through this endpoint.
+  if (req.user!.role === 'teacher') {
+    if (name !== undefined || academic_year !== undefined || is_current !== undefined ||
+        start_date !== undefined || end_date !== undefined) {
+      return res.status(403).json({ error: 'Teachers can only update days-opened and next-term-begins for a term.' });
+    }
+    const { rows: owned } = await query('SELECT school_code FROM terms WHERE id=$1', [req.params.id]);
+    if (!owned[0] || owned[0].school_code !== req.user!.school_code) {
+      return res.status(404).json({ error: 'Term not found' });
+    }
+  }
 
   if (name !== undefined && !isValidSessionTermName(name)) {
     return res.status(400).json({

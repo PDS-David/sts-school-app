@@ -58,20 +58,47 @@ export default function StudentDetailScreen({ route, navigation }: any) {
     }
   };
 
+  // Which term's report/remarks the teacher is viewing and editing — see
+  // the fix below (fetchReport now accepts a term_id) for why this exists:
+  // previously the screen always used whatever term the backend fell back
+  // to (school's is_current flag), with no way for a teacher to pick or
+  // correct it — found in a final pre-production pass.
+  const [terms, setTerms] = useState<any[]>([]);
+  const [selTermId, setSelTermId] = useState<number | null>(null);
+
+  const fetchTerms = async (schoolCode: string) => {
+    try {
+      const { data } = await api.get('/academic/terms', { params: { school_code: schoolCode } });
+      setTerms(data.terms ?? []);
+    } catch { /* non-critical — term picker just won't show options */ }
+  };
+
+  const fetchReport = async (termId?: number) => {
+    try {
+      const url = termId ? `/scores/report/${studentId}?term_id=${termId}` : `/scores/report/${studentId}`;
+      const { data } = await api.get(url).catch(() => ({ data: null }));
+      if (data) {
+        setReport(data);
+        setCtRemark(data.class_record?.class_teacher_remark ?? '');
+        setAdmRemark(data.class_record?.admin_remark ?? '');
+        if (data.term?.id) setSelTermId(data.term.id);
+      }
+    } catch { /* non-critical */ }
+  };
+
   const fetch = async () => {
     try {
-      const [s, r] = await Promise.all([
-        api.get(`/students/${studentId}`),
-        api.get(`/scores/report/${studentId}`).catch(() => ({ data: null })),
-      ]);
+      const s = await api.get(`/students/${studentId}`);
       setStudent(s.data.student);
-      if (r.data) {
-        setReport(r.data);
-        setCtRemark(r.data.class_record?.class_teacher_remark ?? '');
-        setAdmRemark(r.data.class_record?.admin_remark ?? '');
-      }
+      if (s.data.student?.school_code) fetchTerms(s.data.student.school_code);
+      await fetchReport(selTermId ?? undefined);
     } catch {
     } finally { setLoading(false); setRefreshing(false); }
+  };
+
+  const changeTerm = (termId: number) => {
+    setSelTermId(termId);
+    fetchReport(termId);
   };
 
   useEffect(() => { fetch(); }, [studentId]);
@@ -320,6 +347,28 @@ export default function StudentDetailScreen({ route, navigation }: any) {
               <TouchableOpacity onPress={() => setShowParentPicker(false)}><Text style={styles.unlinkTxt}>Cancel</Text></TouchableOpacity>
             </View>
           )}
+        </Card>
+      )}
+
+      {/* Term picker — controls both the summary/scores below and which
+          term saveRemarks() writes to (it always uses report.term.id,
+          which this keeps in sync with whatever's selected here). */}
+      {isTeacher && terms.length > 0 && (
+        <Card>
+          <SectionHeader title="Reporting Term" />
+          <View style={styles.termChipRow}>
+            {terms.map((t: any) => (
+              <TouchableOpacity
+                key={t.id}
+                style={[styles.termChip, selTermId === t.id && styles.termChipActive]}
+                onPress={() => changeTerm(t.id)}
+              >
+                <Text style={[styles.termChipTxt, selTermId === t.id && styles.termChipTxtActive]} numberOfLines={1}>
+                  {t.name}{t.is_current ? ' (current)' : ''}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </Card>
       )}
 
