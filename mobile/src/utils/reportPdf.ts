@@ -37,22 +37,23 @@ function shortTermLabel(name: string): string {
 }
 
 const baseStyles = `
-  body { font-family: -apple-system, Helvetica, Arial, sans-serif; color: #1a1a1a; padding: 24px; }
-  .letterhead { text-align: center; margin-bottom: 10px; }
-  .letterhead img { width: 90px; height: 90px; border-radius: 45px; }
-  .school-name { font-size: 20px; font-weight: 800; color: #1565C0; margin: 6px 0 0; }
-  .doc-subtitle { font-size: 13px; color: #555; margin: 2px 0 6px; }
-  .contact-line { font-size: 11px; color: #666; margin: 0 0 10px; }
-  .header-rule { border: none; border-top: 3px solid #1565C0; margin: 0 0 16px; }
+  @page { size: A4; margin: 12mm 10mm; }
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; color: #1a1a1a; padding: 10px 16px; }
+  .letterhead { text-align: center; margin-bottom: 8px; }
+  .letterhead img { width: 84px; height: 84px; border-radius: 42px; }
+  .school-name { font-size: 19px; font-weight: 800; color: #1565C0; margin: 6px 0 0; }
+  .doc-subtitle { font-size: 12px; color: #555; margin: 2px 0 4px; }
+  .contact-line { font-size: 10px; color: #666; margin: 0 0 8px; }
+  .header-rule { border: none; border-top: 3px solid #1565C0; margin: 0 0 12px; }
   .motto { font-size: 11px; font-style: italic; color: #555; margin: 2px 0; }
   .doc-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-top: 8px; }
-  .info-block { margin-bottom: 16px; }
+  .info-block { margin-bottom: 12px; }
   .info-row { display: flex; margin-bottom: 4px; }
   .info-item { flex: 1; font-size: 13px; }
   .info-label { font-weight: 700; color: #1a1a1a; }
   .info-value { color: #444; margin-left: 4px; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 11px; }
-  th, td { border-bottom: 1px solid #eee; padding: 7px 4px; text-align: center; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 11px; }
+  th, td { border-bottom: 1px solid #eee; padding: 6px 4px; text-align: center; }
   th { background: #F2F6FC; color: #667; font-weight: 600; font-size: 10px; text-transform: uppercase; }
   th small, td.subhead { display: block; font-size: 9px; font-weight: 400; color: #99a; text-transform: none; }
   td:first-child, th:first-child { text-align: left; }
@@ -61,17 +62,17 @@ const baseStyles = `
   .grade-B { color: #1565C0; font-weight: 700; }
   .grade-C { color: #B26A00; font-weight: 700; }
   .grade-other { color: #555; font-weight: 700; }
-  .stats-row { display: flex; text-align: center; margin: 14px 0 16px; padding-top: 10px; border-top: 1px solid #eee; }
+  .stats-row { display: flex; text-align: center; margin: 10px 0 4px; padding-top: 8px; border-top: 1px solid #eee; }
   .stat { flex: 1; }
   .stat-label { font-size: 11px; color: #777; margin-bottom: 2px; }
   .stat-value { font-size: 15px; font-weight: 800; color: #1a1a1a; }
   .summary-row td { padding: 3px 0; font-size: 12px; border-bottom: none; }
   .summary-label { color: #666; text-align: left; }
   .summary-value { font-weight: 700; text-align: right; }
-  h3 { font-size: 13px; color: #1565C0; margin: 16px 0 6px; }
+  h3 { font-size: 13px; color: #1565C0; margin: 12px 0 6px; }
   .remark { font-size: 12px; margin: 4px 0; }
   .notice { font-size: 11px; color: #B26A00; margin-bottom: 12px; }
-  .footer-note { font-size: 11px; color: #888; text-align: center; margin-top: 20px; }
+  .footer-note { font-size: 11px; color: #888; text-align: center; margin-top: 12px; }
 `;
 
 function gradeClass(grade: string | undefined): string {
@@ -84,24 +85,24 @@ function gradeClass(grade: string | undefined): string {
 }
 
 // ── Term report card (MyResultsScreen's `report` shape) ─────────────────────
-// Rebuilt to match the school's actual in-use report format (a sample PDF
-// the school shared, already commended by parents) rather than an
-// independently-designed layout — see: separate CA1/CA2 columns (not
-// combined), a per-subject Position column, and an "Overall Position X out
-// of Y students" stat alongside Total Score/Average. Position/overall
-// position/class_size come from backend/src/routes/scores.ts's
-// GET /report/:student_id, added in the same pass.
+// Rebuilt to be an exact, one-page replica of the school's actual in-use
+// report format (reference PDF Grace supplied, already commended by
+// parents) — see: separate CA1/CA2 columns (not combined), a per-subject
+// Position column, and an "Overall Position X out of Y students" stat
+// alongside Total Score/Average. Position/overall position/class_size come
+// from backend/src/routes/scores.ts's GET /report/:student_id.
 //
-// Attendance (Days Opened/Present), Class Teacher/Head remarks, and "Next
-// term begins" are kept below the table — the reference sample was a
-// single page with no visible attendance/remarks section, but those are
-// real existing fields teachers/admins fill in elsewhere in the app (see
-// AttendanceScreen.tsx, StudentDetailScreen.tsx); removing them here would
-// silently drop functionality nobody asked to remove. Confirm with the
-// school whether these belong on this page, a second page, or a separate
-// document.
+// No separate motto line: confirmed with Grace that the crest image itself
+// (brand.logo) already has the school's motto worked into the artwork —
+// there's nothing else to render here beyond the logo displaying correctly.
+//
+// Attendance, Class Teacher/Head remarks, and "Next term begins" are
+// deliberately NOT on this document — confirmed with Grace they don't
+// belong here, to keep this an exact match of the reference and strictly
+// one page. If a use for them resurfaces, it should be a separate report,
+// not added back onto this one.
 export async function buildTermReportHtml(report: any, brand: SchoolBrand | null): Promise<string> {
-  const { student, term, scores, attendance, class_record, summary } = report;
+  const { student, term, scores, summary } = report;
   const logo = await logoDataUri(brand);
   const rows = (scores ?? []).map((s: any) => `
     <tr>
@@ -164,17 +165,6 @@ export async function buildTermReportHtml(report: any, brand: SchoolBrand | null
         <div class="stat-value">${summary.average}%</div>
       </div>
     </div>
-    <table>
-      <tr class="summary-row"><td class="summary-label">Days Opened</td><td class="summary-value">${attendance?.days_opened ?? 0}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Days Present</td><td class="summary-value">${attendance?.days_present ?? 0}</td></tr>
-    </table>
-    ${(class_record?.class_teacher_remark || class_record?.admin_remark) ? `
-      <h3>Remarks</h3>
-      ${class_record?.class_teacher_remark ? `<div class="remark"><b>Class Teacher:</b> ${escapeHtml(class_record.class_teacher_remark)}</div>` : ''}
-      ${class_record?.admin_remark ? `<div class="remark"><b>Head/Principal:</b> ${escapeHtml(class_record.admin_remark)}</div>` : ''}
-    ` : ''}
-    ${term?.next_term_begins ? `<div class="footer-note">Next term begins: ${escapeHtml(term.next_term_begins)}</div>` : ''}
-    <div class="footer-note">Generated ${new Date().toLocaleString()} via STS School App</div>
   </body></html>`;
 }
 

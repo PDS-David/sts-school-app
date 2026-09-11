@@ -1,5 +1,153 @@
 # TODO
 
+> **HANDOFF 2026-09-11 (report card rebuild — INCOMPLETE, do not treat as
+> done — and production/APK rollout). Previous session hit its limit
+> mid-task. Read this whole entry before touching anything.**
+>
+> ## Context
+> Grace runs two schools (Sow the Seed Nursery & Primary, Sow the Seed Model
+> College) on this app and is actively rolling it out to real teachers.
+> Today's session covered: Task C (staff activation codes, done and
+> committed — see the 2026-09-10 entry below), a teacher permission fix for
+> attendance/term-fields (done, committed), and a report-card rebuild
+> (STARTED, NOT FINISHED — this is your job).
+>
+> Grace supplied a real reference PDF: `Report_Card_-_Oluwajana_Nifesimi.pdf`
+> (Sow the Seed Model College, SS1 student, First Term 2024/2025) — this is
+> the school's actual in-use report format, already commended by parents.
+> **The app must produce an exact visual replica of this document as a
+> strictly one-page PDF.** The previous session rebuilt
+> `mobile/src/utils/reportPdf.ts`'s `buildTermReportHtml()` toward this but
+> Grace flagged it as still wrong (logo and motto missing, page-length not
+> verified) right as the session ran out of room. Commit `b605fc1` has the
+> current in-progress state — explicitly marked WIP in its own commit
+> message, do not assume it's correct.
+>
+> ## Task 1 — Fix the report template to be an exact, one-page replica
+>
+> 1. Re-examine the reference PDF's exact layout (Grace has it; ask her to
+>    re-share `Report_Card_-_Oluwajana_Nifesimi.pdf` if it's not still
+>    available in the conversation). Compare it line-by-line against what
+>    `buildTermReportHtml()` in `mobile/src/utils/reportPdf.ts` currently
+>    produces.
+> 2. **Logo**: the code already calls `logoDataUri(brand)` and should render
+>    `brand.logo` at the top — verify this actually appears when rendered
+>    through `expo-print` on a real device or simulator (a plain Node/HTML
+>    preview in a sandbox without asset access will falsely appear to be
+>    "missing the logo" even when the code is correct — don't assume it's a
+>    real bug without checking with `Print.printToFileAsync` or
+>    `printAsync` in an actual Expo environment).
+> 3. **Motto**: the previous session REMOVED the motto line entirely,
+>    reasoning that the reference PDF doesn't show one. Grace's latest
+>    message says the app "didn't include the logo and motto" as something
+>    to fix — but she also says the app must be an "exact replica" of a
+>    reference that has no visible motto line. **This is a direct
+>    contradiction — do not guess. Ask Grace explicitly: should the motto
+>    (e.g. "We all shall be taught of God. John 6:45") appear on the report,
+>    even though the reference PDF she sent doesn't show one?** Get a yes/no
+>    before touching this.
+> 4. **"and maybe other things too"** — Grace's own words. Don't assume the
+>    logo/motto are the only discrepancies. Do a careful side-by-side pass:
+>    exact fonts/weights aren't recoverable from a PDF, but spacing, column
+>    order, header structure, and the info block layout should be checked
+>    field-by-field against the reference.
+> 5. **Must render as exactly one page.** Test this for real — build/print a
+>    sample with a realistic worst-case subject count (check
+>    `academic.ts`/`subjects` for how many subjects a class can have; SS1 in
+>    the reference has 9) through actual `expo-print`, not just eyeballing
+>    HTML. If it overflows to a second page, you likely need to shrink
+>    font-size/line-height/padding in `reportPdf.ts`'s `baseStyles`, or use
+>    an explicit `@page { size: A4; margin: ... }` CSS rule — don't just
+>    delete sections to make it fit without confirming with Grace first
+>    (see Task 2's note on attendance/remarks placement, same issue).
+> 6. **Attendance (Days Opened/Present) and Class Teacher/Head remarks and
+>    "Next term begins"** are currently kept below the score table in the
+>    WIP version — the reference PDF Grace sent doesn't show these at all
+>    (it may be page 1 of a multi-page original, or these may not belong on
+>    this document at all). Given the new one-page-strict requirement, you
+>    likely cannot keep all of this AND match the reference exactly AND fit
+>    one page. **Ask Grace directly**: do attendance/remarks/next-term
+>    belong on this report at all, and if so, where?
+> 7. **Primary school's address/phone**: `mobile/src/schoolBranding.ts` has
+>    Model College's real address/phone (from the reference PDF) but
+>    Nursery & Primary's is a copy-pasted PLACEHOLDER, clearly marked with a
+>    `TODO(Grace)` comment in the file. Get the real one from Grace before
+>    calling this done.
+>
+> ## Task 2 — Teacher-facing "include Position column?" toggle
+>
+> Grace's own words: *"The app must ask the teacher if position be included
+> in the report or not (some classes not including that)."* This needs
+> product clarification before you build it — don't assume the shape:
+> - Is this a **per-generation prompt** (a checkbox shown right before
+>   Print/Export each time), or a **persistent per-class setting** admin
+>   configures once (matches "some classes not including that" reading as a
+>   fixed policy per class, not a one-off choice)? These are very different
+>   implementations (UI-only vs. a new DB column + admin UI).
+> - Print/Export is currently gated to **admin and parent only** — see the
+>   explicit comment at the top of `mobile/src/utils/reportPdf.ts`:
+>   `const canPrintExport = user?.role === 'admin' || user?.role === 'parent';`
+>   in `MyResultsScreen.tsx`/`SessionReportScreen.tsx`. Grace's message says
+>   "ask the teacher" — confirm whether she actually wants teachers to gain
+>   print/export access (a real permission change), or is using "teacher"
+>   loosely to mean whoever's generating the report (still admin/parent).
+>   **Ask her directly rather than guessing** — this is a genuine scope
+>   question, not an implementation detail.
+> - The backend field to gate on already exists as of this session:
+>   `subject_position` per score row and `summary.overall_position` /
+>   `summary.class_size` (added in `backend/src/routes/scores.ts`'s
+>   `GET /report/:student_id` in commit `b605fc1`). Whatever UI shape you
+>   build, it should simply omit the Position column (and the "Overall
+>   Position X out of Y" stat) from the rendered HTML in `reportPdf.ts` when
+>   toggled off — the backend can keep computing and returning it either
+>   way, no need to make it conditional server-side unless class size is
+>   large enough that the extra query is worth skipping (check performance
+>   before optimizing prematurely).
+>
+> ## Task 3 — Production rollout checklist
+>
+> 1. **Commit and push** anything from Task 1/2 before building — the EAS
+>    build pulls from git, not local uncommitted state.
+> 2. **Confirm the deployed backend has the latest code.** `app.json`'s
+>    `expo.extra.apiUrl` already points to
+>    `https://sts-school-backend.onrender.com` — check whether Render
+>    auto-deploys from GitHub pushes to `master`, or needs a manual deploy
+>    trigger from Grace's Render dashboard. Don't assume it's current.
+> 3. **Known, accepted risk (Grace's own decision, 2026-09-11): Render free
+>    tier spins the backend down after inactivity** — first request after
+>    idle can take over a minute (this already caused one login failure
+>    misdiagnosed as "no internet" — see the 2026-09-06 entry below). Grace
+>    chose to accept this risk for now rather than upgrade or migrate.
+>    **Make sure teachers are told the app may take up to a minute to load
+>    the first time each day** — this should probably be surfaced somewhere
+>    in the app itself (a loading message on a slow first request) as a
+>    small kindness, not just relayed verbally by Grace. Consider adding
+>    this if there's time, but it is not a hard blocker.
+> 4. **Build the Android APK** for direct install (not Play Store) using
+>    the `preview` profile already configured in `mobile/eas.json`
+>    (`android.buildType: "apk"`, `distribution: "internal"`):
+>    ```
+>    cd mobile
+>    eas build --platform android --profile preview
+>    ```
+>    Before running this: confirm no local `mobile/.env` file exists on
+>    whichever machine runs the build (check `mobile/.env.example` and the
+>    big warning comment at the top of `mobile/src/api/client.ts` for why —
+>    a local `.env` override would get baked into the production APK too,
+>    silently pointing it at a dev backend instead of the real one).
+> 5. Once the APK is built, EAS gives an internal-distribution download
+>    link/QR code — that's what gets shared with teachers to install
+>    directly (no Play Store review needed for this).
+>
+> ## What NOT to do
+> - Don't ship the report-card rebuild without Grace's explicit sign-off
+>   that it visually matches — she already rejected one version for
+>   deviating from the reference ("This is not acceptable"). Get her
+>   confirmation on a preview before considering Task 1 done.
+> - Don't guess on the two open product questions in Task 1.3 and Task 2 —
+>   ask Grace directly, they're genuine ambiguities, not implementation
+>   details you can infer from the code.
+
 > **Update 2026-09-10 (Task C — staff account activation, replaces temp-password
 > hand-off):** Confirmed via careful code tracing + `tsc --noEmit` clean on both
 > `backend/` and `mobile/` (no live DB access this session — not yet
