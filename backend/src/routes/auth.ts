@@ -84,7 +84,20 @@ router.post('/login', async (req, res) => {
     // on — see POST /auth/security-question and the forgot-password routes
     // below. Independent of must_change_pw: a user who already knows their
     // password can still be missing this.
-    must_set_security_question: user.must_set_security_question,
+    //
+    // Deliberately suppressed for 'teacher' specifically, per explicit
+    // school-owner policy: a teacher who forgets their password has admin
+    // reset it directly, so self-service recovery doesn't apply to this
+    // role and the forced setup step at fresh login is just friction with
+    // no purpose for them. The underlying `must_set_security_question`
+    // column/value on the row is untouched (still defaults TRUE, still set
+    // by the same schema/migration) — this only stops it being SURFACED to
+    // a teacher's login response, so RootNavigator never forces the phase
+    // for this role. If a teacher's row already has a security question
+    // set from before this change, it's simply unused going forward, not
+    // deleted. Other roles (student/parent/admin/finance_admin) are
+    // unaffected.
+    must_set_security_question: user.role === 'teacher' ? false : user.must_set_security_question,
     // `assigned_class` added here for the class-lock feature: the mobile app
     // needs to know which class (if any) a teacher is the class teacher for,
     // so it can offer "lock/unlock my class" only where it actually applies.
