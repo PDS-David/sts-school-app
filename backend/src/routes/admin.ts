@@ -69,11 +69,39 @@ router.get('/parent-logins', async (req, res) => {
   return res.json({ users: rows });
 });
 
+// Class teachers get a hard-coded, deterministic username derived from
+// their assigned class — not admin-typed — per explicit school-owner
+// request: e.g. 'PRY 1' -> 'pry1', 'JSS 1' -> 'jss1', 'Pre-Nursery' ->
+// 'prenursery'. Lowercases and strips everything but letters/digits, so
+// spacing/hyphen differences in how a class name is written never produce
+// two different usernames for the same class. Deliberately scoped to
+// class teachers only (role==='teacher' with a non-empty assigned_class)
+// — a subject-only teacher (no assigned_class) still gets an
+// admin-chosen username, same as every non-teacher role.
+function classTeacherUsername(className: string): string {
+  return className.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
 router.post('/users', async (req, res) => {
   const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body;
-  const uname = String(username).trim().toLowerCase();
+
+  // Class teacher: username is hard-coded from the class, ignoring
+  // whatever (if anything) was typed into the Username field — see
+  // classTeacherUsername() above. Subject-only teacher (no assigned_class)
+  // and every non-teacher role: username comes from the admin as before.
+  const isClassTeacher = role === 'teacher' && !!assigned_class;
+  const uname = isClassTeacher
+    ? classTeacherUsername(String(assigned_class))
+    : String(username).trim().toLowerCase();
+
   const exists = await query('SELECT id FROM users WHERE username=$1', [uname]);
-  if (exists.rows.length) return res.status(409).json({ error: 'Username taken' });
+  if (exists.rows.length) {
+    return res.status(409).json({
+      error: isClassTeacher
+        ? `"${assigned_class}" already has a class teacher account (username "${uname}"). Edit or delete the existing account before creating another for this class.`
+        : 'Username taken',
+    });
+  }
 
   // access_expires_at only makes sense for teacher/parent credentials the admin
   // is handing out for a limited time. Admin accounts never expire this way.

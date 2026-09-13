@@ -50,6 +50,14 @@ function toDateString(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+// Mirrors backend/src/routes/admin.ts's classTeacherUsername() exactly —
+// display-only here (the backend is the actual source of truth and
+// recomputes/enforces this itself), so the admin sees the real username
+// that will be created before hitting Save, not just after.
+function classTeacherUsername(className: string): string {
+  return className.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
 export default function AdminUsersScreen() {
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -116,6 +124,13 @@ export default function AdminUsersScreen() {
 
   const availableClasses = classesBySchool[form.school_code] ?? [];
   const availableSubjects = subjectsBySchool[form.school_code] ?? [];
+  // A class teacher's username is hard-coded from their assigned class
+  // (see classTeacherUsername() above) — not admin-typed. Only applies to
+  // *new* teacher accounts with a class picked; a subject-only teacher
+  // (no assigned_class) still gets an admin-chosen username, same as
+  // every non-teacher role, and an existing account's username is never
+  // editable anyway (PUT /admin/users/:id doesn't accept one).
+  const isNewClassTeacher = !editUser && form.role === 'teacher' && !!form.assigned_class;
 
   const openNew = () => {
     setEditUser(null);
@@ -157,8 +172,14 @@ export default function AdminUsersScreen() {
       return;
     }
     // Full Name and Email fields were removed from this form — full_name
-    // always mirrors username on both create and edit.
-    const payload: any = { ...form, full_name: form.username };
+    // mirrors username on both create and edit, except for a new class
+    // teacher, whose username is the hard-coded class slug (not a human
+    // name) — full_name uses the actual class label instead so the Users
+    // list stays readable (e.g. "JSS 1" rather than "jss1").
+    const payload: any = {
+      ...form,
+      full_name: isNewClassTeacher ? form.assigned_class : form.username,
+    };
     if (!showsExpiry || !form.access_expires_at) {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
@@ -175,12 +196,14 @@ export default function AdminUsersScreen() {
         if (form.role === 'teacher') {
           // Admin set this password directly (see handleSave's validation
           // above and admin.ts POST /users) — no activation code involved
-          // for this role. Echoed back here so there's one clear place to
-          // copy it from before handing it to the teacher; the teacher
-          // will be forced to change it on first login (must_change_pw).
+          // for this role. Username comes from the actual server response,
+          // not form.username — for a class teacher, form.username was
+          // never shown/typed (it's hidden and hard-coded server-side from
+          // the assigned class), so echoing the request's own value would
+          // show blank/stale text instead of the real created username.
           setInfoDialog({
             title: 'Teacher Created',
-            message: `Username: ${form.username}\nPassword: ${form.initial_password}\n\nShare these with them directly. They'll be asked to change their password the first time they log in.`,
+            message: `Username: ${data?.user?.username}\nPassword: ${form.initial_password}\n\nShare these with them directly. They'll be asked to change their password the first time they log in.`,
           });
         } else {
           // Task C: account creation no longer generates a temp password —
@@ -337,7 +360,7 @@ export default function AdminUsersScreen() {
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
         <ScrollView style={styles.modalWrapOuter} contentContainerStyle={styles.modalWrap} keyboardShouldPersistTaps="handled">
           <SectionHeader title={editUser ? 'Edit User' : 'New User'} />
-          {!editUser && (
+          {!editUser && !isNewClassTeacher && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
           <Input label="Phone"          value={form.phone}          onChangeText={v => setForm(f => ({ ...f, phone: v }))}         keyboardType="phone-pad" />
@@ -373,6 +396,11 @@ export default function AdminUsersScreen() {
                   {availableClasses.map(c => <Picker.Item key={c.id} label={c.name} value={c.name} />)}
                 </Picker>
               </View>
+              {isNewClassTeacher && (
+                <Text style={styles.expiryHint}>
+                  Username will be "{classTeacherUsername(form.assigned_class)}" — hard-coded from the class, one class-teacher account per class. Leave "Assigned Class" as "None" instead if this is a subject-only teacher and you want to choose their username yourself.
+                </Text>
+              )}
 
               <Text style={styles.filterLabel}>Assigned Subjects</Text>
               <View style={styles.chipRow}>
