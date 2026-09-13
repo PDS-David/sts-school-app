@@ -172,6 +172,21 @@ Postgres/JS error at that moment — the code-level cause at that point is
 NOT a schema drift issue and needs to be traced directly in
 `admin.ts`'s `PUT /users/:id` handler instead.
 
+### 0.5 — CONFIRMED FIXED — Part 0 closed
+
+Project owner re-attempted the exact failing action in the live Android
+app (same teacher, PRY 1, same subjects, access-expiry field) —
+**saves successfully now.** Root cause was (a), not (b): the earlier
+`db:migrate` run (triggered to fix the unrelated `activation_code` issue)
+applied `revocation_reason`'s migration at the same time, and that alone
+resolved this screenshot's bug with no code change needed. No further
+action required on this specific issue.
+
+**Part 0 is fully closed as of this result.** Both axes (0.1 production-
+vs-schema.sql, 0.2 code-vs-schema.sql) have been checked; the one concrete
+finding from 0.2 has been confirmed fixed in production. Proceeding to
+Part 1.
+
 ---
 
 ## Part 1 — Student Role Audit
@@ -190,6 +205,59 @@ than a missing feature — a missing feature is honest, a dead button looks
 broken). `TODO.md` already flags several student/parent screens as
 "coming soon" — confirm which ones actually still render as if live vs.
 correctly show a coming-soon state.
+
+### 1.1 — In progress (this session) — major discovery first
+
+Before auditing, confirmed the Topics/PIN-gating/curriculum-grounding
+feature (previously thought unbuilt, per an earlier session's spec doc)
+is now **fully implemented** — `schema.sql`'s `topics` table has
+`term_label`/`source_reference`/`order_index`/`source_file` (added via
+incremental `ALTER`s, easy to miss by only reading the base `CREATE
+TABLE`), `term_access_pins` exists, `backend/src/db/ingestTopics.ts` is a
+real curriculum importer, and `GET /learning/topics`
+(`backend/src/routes/learning.ts:112-221`) implements real per-student
+lock/unlock logic (first ordered topic per `subject_id`+`class_name`+
+`term_label` group locked until PIN redemption; every later topic locked
+until the previous one is `passed=true`). `POST /topics/:id/complete`
+(`learning.ts:296+`) grounds Brainee's generated summary/questions in
+`source_reference` when present, with `source_reference` itself shown as
+a labeled fallback if generation fails. This closes the loop on the
+project owner's original question this session about whether uploaded
+curriculum files were ever integrated — they now are, end to end.
+
+**Screens checked, API calls confirmed real (not dead/mismatched):**
+- `SubjectTopicsScreen.tsx:22` → `GET /learning/topics?subject_id=...` ✅ matches `learning.ts:112`
+- `TopicDetailScreen.tsx:27` → `POST /learning/topics/:id/complete` ✅ matches `learning.ts:296`
+- `TermPinRedeemScreen.tsx:20` → `POST /learning/term-pins/redeem` ✅ matches `learning.ts:475`
+- `StudentLearningScreen.tsx:21` → `GET /academic/subjects` ✅ matches `academic.ts:150`
+
+**Lock-state UI confirmed correct, not a dead-button case:**
+`SubjectTopicsScreen.tsx` sets `disabled={locked}` on each topic row
+(line 72) with a distinct locked visual style (lock icon, muted color) —
+tapping a locked topic genuinely does nothing, by design, rather than
+erroring.
+
+**"Coming soon" placeholders confirmed honest, not dead buttons:**
+`ParentActivitiesScreen.tsx` (Upcoming Tests/Calendar/School Events),
+`TeacherMoreScreen.tsx` (Analytics/Calendar), and
+`StudentProfileScreen.tsx` (Badges) all set `screen: null` for these
+entries, and their `onPress` handlers guard with
+`disabled={!it.screen}` / `it.screen && navigation.navigate(...)` —
+confirmed in `ParentActivitiesScreen.tsx` — so these correctly show as
+inert placeholders rather than throwing or navigating to a broken screen.
+
+**Not yet done — remaining for Part 1:**
+- Full pass over the rest of the student screen set (`StudentHomeScreen`,
+  `StudentAssessmentsHomeScreen`, `AssessmentsScreen`,
+  `TakeAssessmentScreen`, `AssessmentResultsScreen`, `MyResultsScreen`,
+  `SessionReportScreen`, `WeeklyEffortsScreen`, `ChatsScreen`/
+  `ChatThreadScreen`, `MaterialsScreen`, `StudentProfileScreen`'s other
+  tiles) — same method: every API call traced against a real route,
+  every TODO/FIXME noted, every error path checked for a bare
+  alert()-style popup vs proper handling.
+- `StudentSelfClaimScreen` and `ActivateAccountScreen` (guest-phase
+  screens, Task B/C flows) haven't been traced yet either, though they
+  aren't strictly "student role" screens (reachable pre-login).
 
 ## Part 2 — Parent Role Audit
 
