@@ -10,6 +10,24 @@ permissions, or anything AI-generated (Brainee).**
 
 ---
 
+## ⚠️ URGENT — production database expires 2026-10-04
+
+`sts-school-db` (Render, Frankfurt, free-tier Postgres) is on Render's free
+compute plan, which auto-deletes the instance on its expiry date —
+confirmed directly from the Render dashboard's own banner on 2026-09-12:
+**"Your database will expire on October 4, 2026. The database will be
+deleted unless you upgrade to a paid compute plan."** This is the live
+production database backing the real Android app real students/teachers/
+parents are using — if this date passes without action, all production
+data is gone, not just inaccessible. This is separate from and unrelated
+to any code/schema work in this file — it's an account-level billing
+action only the project owner can take (Render dashboard → sts-school-db →
+Info → "Upgrade your instance"). Flag this to the project owner
+immediately if it's still not resolved and the date is approaching —
+don't let it get lost under other in-progress work.
+
+---
+
 ## 1. What this app is
 
 Full-stack school management app for Sow the Seed Schools (Model College +
