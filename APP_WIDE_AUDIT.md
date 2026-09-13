@@ -448,6 +448,83 @@ class/subjects + access-expiry) lives — trace and fix the actual cause of
 that 500 as part of this pass, not as a separate task, since it's a live,
 already-reported instance of exactly this category.
 
+### 3.1 — Two fixes made ahead of the formal pass, per explicit school-owner request
+
+Not audit findings in the "traced and found broken" sense — done first
+because the owner asked for them directly, documented here for
+continuity:
+- `auth.ts` `POST /login` no longer surfaces `must_set_security_question`
+  for `role==='teacher'` (teacher password resets are admin-only by
+  policy; self-service recovery doesn't apply to this role).
+- `TeacherMoreScreen.tsx`'s "Security Question — Used to reset your
+  password if you forget it" menu item removed (would have been actively
+  misleading given the above), along with the now-unreachable local
+  `SecurityQuestionSetup` route registration in `TeacherTabs.tsx`'s
+  `MoreStack` (root-level registration in `RootNavigator.tsx` untouched,
+  still used by other roles).
+
+### 3.2 — Full teacher-facing surface traced, confirmed correct (no live bugs)
+
+Every screen in `TeacherTabs.tsx` checked against `rbac.ts`'s teacher
+grants (`materials.*`, `topics.*`, `grades.*`, `students.read`,
+`weeklyEfforts.*`, `messages.*`, `attendance.*`, `classRecord.*`) and the
+actual backend route it calls:
+
+- `TeacherDashboardHomeScreen.tsx`, `TeacherClassesScreen.tsx` — no
+  coming-soon/TODO/FIXME markers (grep returned nothing, not assumed).
+  `Dashboard`'s two calls (`/academic/terms/current`, `/students`) are
+  real, unguarded reads, fine for `students.read`.
+- `StudentDetailScreen.tsx` (shared with admin) — every `/admin/...`-
+  prefixed call (`term-pins`, `student-logins-without-link`,
+  `parent-logins`) and every parent-link/unlink action is correctly gated
+  `{isAdmin && ...}` in the JSX, not just conditionally fetched; confirmed
+  by reading each gate, not inferring from one. The one teacher-reachable
+  destructive action, `deleteStudent()` (gated `{isTeacher && ...}`, line
+  240), calls `DELETE /students/:id`, which requires `grades.write`
+  (teacher has it) and is scope-checked server-side via
+  `checkTeacherDeleteScope` — itself an alias to `checkTeacherStudentScope`,
+  which already carries its own documented fix from a prior live-testing
+  pass (a subject-only teacher, or a teacher naming a class/school not
+  theirs, is rejected). Not a new finding — confirms a prior fix is still
+  in effect, not that anything is currently broken.
+- `AttendanceScreen.tsx` — `PUT /attendance/bulk` and `PUT
+  /academic/terms/:id` (the days-opened/next-term-begins update) both
+  match what the backend actually allows a teacher to touch;
+  `academic.ts:92-108` explicitly rejects a teacher attempting to send
+  `name`/`academic_year`/`is_current`/`start_date`/`end_date` through this
+  route and re-checks the term belongs to the teacher's own school — the
+  mobile screen never sends those fields, so this is a defended boundary,
+  not an exposed one.
+- `ScoreEntryScreen.tsx` — `POST /scores/bulk` and the in-screen "Add
+  Subject" action (`POST /academic/subjects`) both check out:
+  `academic.ts:159` deliberately allows `requireRole('admin','teacher')`
+  here (a teacher entering scores plausibly needs to add a missing
+  subject on the spot) — confirmed intentional via the route's own scoping
+  of `school_code` to the teacher's own, not a gap.
+- `ClassLockScreen.tsx` — `PUT /academic/class-locks` restricts a teacher
+  to locking only their own `assigned_class` (`academic.ts:234-247`,
+  explicitly documented as narrower than other teacher-write checks
+  because locking is more disruptive than a single record write); the
+  mobile screen mirrors this (`noClassAssigned` state for a subject-only
+  teacher with no `assigned_class`), so no dead button for that case.
+- `WeeklyEffortsScreen.tsx` teacher branch (`isTeacherRole`) — already
+  covered in Part 1/2's shared review of this file; teacher's own
+  create-effort form (`POST /weekly-efforts`) and roster-loading calls
+  (`/students`, `/academic/classes`, `/academic/subjects`) are all real,
+  ungated by anything teacher lacks.
+- `MaterialsScreen.tsx` write-gate (`canWrite = role==='teacher' ||
+  role==='admin'`) — already confirmed in Part 1; consistent with
+  `materials.write` being granted to teacher.
+
+**Part 3 is closed.** No live bugs found in this pass beyond the two
+pre-existing items already resolved earlier this session (the
+`revocation_reason` 500, confirmed fixed at 0.5; today's teacher
+security-question policy change, not a bug fix but a deliberate product
+change). Every teacher-facing screen's actions were checked against both
+the actual backend permission and, where relevant, actual scope
+enforcement — no dead buttons, no screen offering an action the backend
+would reject, no unscoped cross-class/cross-school write found.
+
 ## Part 4 — Admin Role Audit
 
 Same method, scoped to `admin`. This role has the widest surface
