@@ -136,6 +136,42 @@ fix both the reported screenshot bug AND any related login failures,
 with no further code change needed. Report the exact `checkDrift.ts`
 output here, in this file, once run.
 
+### 0.4 — `checkDrift.ts` result (run against production, this session)
+
+```
+Creating throwaway schema "_drift_check_1789260208056"…
+Applying schema.sql into the throwaway schema…
+Introspecting expected (throwaway) vs actual (public) schema…
+
+✅ No drift found — production schema matches schema.sql exactly.
+
+Cleaning up throwaway schema "_drift_check_1789260208056"…
+```
+
+**This disproves the 0.3 hypothesis as stated.** `revocation_reason` and
+every other column in `schema.sql` (including `activation_code`,
+`must_set_security_question`, `security_question`, `deleted_at`) are
+confirmed present in production with matching types/nullability/enums/
+constraints/indexes — a prior `db:migrate` run (triggered earlier this
+session to fix the unrelated `activation_code` issue) applied the entire
+file at once, including whatever `revocation_reason`'s migration was,
+before this drift check ever ran. Production schema is fully in sync with
+`schema.sql` as of this result.
+
+**What this means for the original screenshot (teacher edit → "Internal
+server error"):** the missing-column theory is now ruled out. The 500 was
+either (a) already fixed as a side effect of that earlier `db:migrate`
+run and just hasn't been re-tested in the app yet, or (b) has a different
+root cause entirely (application logic in `PUT /admin/users/:id`, not a
+schema mismatch) that 0.2's static code audit didn't catch. **Next step,
+before continuing to Parts 1–4: re-attempt the exact failing action in
+the live app (edit that same teacher's class/subjects/access-expiry and
+Save) and report whether it now succeeds.** If it still fails, capture
+the exact new error and check Render's live logs for the specific
+Postgres/JS error at that moment — the code-level cause at that point is
+NOT a schema drift issue and needs to be traced directly in
+`admin.ts`'s `PUT /users/:id` handler instead.
+
 ---
 
 ## Part 1 — Student Role Audit
