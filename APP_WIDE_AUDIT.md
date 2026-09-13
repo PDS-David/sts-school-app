@@ -259,6 +259,76 @@ inert placeholders rather than throwing or navigating to a broken screen.
   screens, Task B/C flows) haven't been traced yet either, though they
   aren't strictly "student role" screens (reachable pre-login).
 
+### 1.2 — Remainder of Part 1 (this session)
+
+**All student-facing API calls traced against the real route map
+(built from every `router.get/post/put/delete` across all of
+`backend/src/routes/*.ts`, not assumed):**
+
+- `StudentHomeScreen.tsx` → `/learning/assessments`, `/learning/materials`,
+  `/students/me`, `/scores/report/:id` — all real, all match.
+- `StudentAssessmentsHomeScreen.tsx`, `StudentProfileScreen.tsx` — pure
+  navigation/display screens, no direct API calls (confirmed by grep
+  returning nothing, not assumed from the filename).
+- `AssessmentsScreen.tsx` → `/learning/assessments` (get+put) — real,
+  match. Admin-only actions ("View Results", "Publish") are gated behind
+  `{isAdmin && ...}` (line 86); students see a different button entirely
+  (`!isAdmin` branch) — confirmed no live student path can trigger them.
+- `TakeAssessmentScreen.tsx` → submissions/:id/answers,
+  assessments/:id/questions, assessments/:id/submit — all real, all
+  covered by `assessments.take`/`assessments.read`, which `student` has.
+- `MyResultsScreen.tsx`, `SessionReportScreen.tsx` → both resolve to
+  `/scores/report/:id` / `/scores/session-report/:id` — real routes; these
+  have no `requirePerm` middleware but do manual ownership checks inside
+  (per the routes' own comments) rather than the permission-table pattern
+  — consistent with how they were built, not a gap.
+- `ChatsScreen.tsx`/`ChatThreadScreen.tsx` → `/messages/contacts`,
+  `/messages/conversation/:other`, `/messages` — real, match
+  `messages.read`/`messages.write`, which `student` has.
+- `MaterialsScreen.tsx` → read calls match `materials.read`; the
+  write/delete actions are gated behind `canWrite = role==='teacher' ||
+  role==='admin'` (confirmed at the two JSX sites, not just the
+  variable's existence) — no live student path can trigger them.
+- `BraineeChatScreen.tsx` → uses the `askBrainee()` wrapper
+  (`api/brainee.ts`), not raw `api.` calls directly (why the initial grep
+  missed it) — traced through to `POST /ai/chat`, a real route with no
+  role restriction, fine for `student`.
+
+**Confirmed dead/unreachable registration (not a live bug, but worth a
+cleanup note):** `AssessmentResultsScreen` is registered in the student's
+`AssessmentsStackNavigator` (`StudentTabs.tsx`) and calls
+`GET /learning/assessments/:id/results`, which requires `aiResults.read`
+— a permission `student` does NOT have (only `admin`, via the `'*'`
+wildcard in `rbac.ts`). However, the only button that navigates there
+(`AssessmentsScreen.tsx:95`) is itself gated `{isAdmin && ...}`, so no
+student can actually reach this screen through the UI. Low-priority
+cleanup: this screen doesn't need to be registered under the student
+stack at all, since nothing there can ever navigate to it.
+
+**Confirmed LIVE BUG, found and fixed this session:**
+`WeeklyEffortsScreen.tsx` (registered in student's `ProfileStackNavigator`)
+rendered its feedback-compose UI (text input + "Send" button) unconditionally
+for every role. `sendFeedback()` calls `POST /weekly-efforts/:id/feedback`,
+which requires the `weeklyEfforts.feedback` permission — granted to
+`parent`/`teacher`/`admin` in `rbac.ts`, but explicitly NOT to `student`
+(students only have `weeklyEfforts.read`). A student tapping "Send" on
+their own weekly-effort feedback thread would get a 403 — a genuine
+dead-end, unlike the `AssessmentResults` case above (this one WAS
+reachable, since the read/toggle view has no permission gate and is
+shown to everyone). **Fix applied:** added `canGiveFeedback = isParent ||
+isTeacher` and gated the compose row behind it — students can still read
+existing feedback (unaffected, matches their `weeklyEfforts.read` grant)
+but no longer see an input that would fail. Verified `npx tsc --noEmit`
+clean in `mobile/` after the change.
+
+**Part 1 is now substantially complete.** Every student-reachable screen
+with a direct API call has been traced; one live permission-mismatch bug
+found and fixed, one dead navigator registration noted for later cleanup.
+Not covered: `StudentSelfClaimScreen`/`ActivateAccountScreen` (guest-phase,
+pre-login — arguably out of scope for a "student role" audit specifically,
+since they run before any role is assigned; worth a separate pass if
+picked up later).
+
 ## Part 2 — Parent Role Audit
 
 Same method as Part 1, scoped to `parent`. Pay particular attention to

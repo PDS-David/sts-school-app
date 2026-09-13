@@ -21,6 +21,12 @@ export default function WeeklyEffortsScreen() {
   const isAdmin    = user?.role === 'admin';
   const isTeacher  = isTeacherRole || isAdmin; // kept for the "Log Weekly Effort" button + form visibility, unchanged
   const isParent   = user?.role === 'parent';
+  // Matches backend/src/utils/rbac.ts's weeklyEfforts.feedback permission
+  // exactly (parent, teacher, admin — NOT student). Reading feedback has no
+  // permission gate at all (GET /:id/feedback), so the toggle/read view stays
+  // visible to everyone — only the compose input+Send is hidden for students,
+  // who would otherwise get a 403 from POST /:id/feedback on tapping it.
+  const canGiveFeedback = isParent || isTeacher;
   const [efforts,  setEfforts]  = useState<any[]>([]);
   const [loading,  setLoading]  = useState(true);
   const [modal,    setModal]    = useState(false);
@@ -197,10 +203,12 @@ export default function WeeklyEffortsScreen() {
                     <Text style={styles.fbBody}>{f.body}</Text>
                   </View>
                 ))}
-                <View style={styles.fbInputRow}>
-                  <Input value={fbText} onChangeText={setFbText} placeholder="Add feedback…" style={{ flex: 1, marginBottom: 0 }} />
-                  <Btn label="Send" onPress={() => sendFeedback(e.id)} style={{ paddingHorizontal: Spacing.md }} />
-                </View>
+                {canGiveFeedback && (
+                  <View style={styles.fbInputRow}>
+                    <Input value={fbText} onChangeText={setFbText} placeholder="Add feedback…" style={{ flex: 1, marginBottom: 0 }} />
+                    <Btn label="Send" onPress={() => sendFeedback(e.id)} style={{ paddingHorizontal: Spacing.md }} />
+                  </View>
+                )}
               </View>
             )}
           </Card>
