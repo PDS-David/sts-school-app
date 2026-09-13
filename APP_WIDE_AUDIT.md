@@ -419,6 +419,24 @@ correct.
 
 ## Part 3 — Teacher Role Audit
 
+**Pre-Part-3 note (project owner confirmed, this session):** the
+"Internal server error" screenshot referenced below is already confirmed
+fixed (see 0.5 — the `revocation_reason` migration was the actual cause,
+confirmed by a real re-test in the live app). Part 3 does not need to
+re-diagnose that specific incident; still worth a quick sanity check that
+`PUT /admin/users/:id`'s teacher-editing path has no other issue, but it is
+NOT starting from "unfixed."
+
+**Also this session, ahead of Part 3, per explicit school-owner policy:**
+teacher accounts no longer get the forced security-question setup step at
+fresh login (`auth.ts` `POST /login` now suppresses
+`must_set_security_question` specifically for `role==='teacher'`) — a
+teacher who forgets their password has admin reset it directly, so
+self-service recovery via security question doesn't apply to this role.
+Other roles unaffected. Worth keeping in mind during Part 3: any
+teacher-facing screen or flow that assumes/checks security-question state
+should be read as "never applicable to teacher," not as a gap.
+
 Same method, scoped to `teacher`. `rbac.ts` (87 lines) is short enough to
 read in full — confirm every permission it grants/denies for `teacher`
 actually matches what the teacher-facing screens attempt to do (a screen
