@@ -532,6 +532,114 @@ Same method, scoped to `admin`. This role has the widest surface
 revocation) — budget the most time here. Cross-check every admin action
 against `rbac.ts` and `scope.ts` the same way as Part 3.
 
+### 4.1 — Permission surface (`rbac.ts`, confirmed by reading)
+
+`admin: ['*']` — unrestricted, including `questions.*`/`assessments.*`/
+`aiResults.read`/`aiGrading.override`, none of which any other role gets.
+One deliberate carve-out, confirmed by its own comment: `admin` does
+**not** get finance access despite the `'*'` wildcard — `routes/finance.ts`
+checks `req.user.role === 'admin'` explicitly and blocks it, gated instead
+to the separate `finance_admin` role (`rbac.ts:60`), because relying on
+`requirePerm('finance.*')` would have let `'*'` satisfy it by accident.
+Confirmed this boundary is real by reading `finance.ts`'s own role check,
+not just trusting the `rbac.ts` comment. `finance_admin` is out of scope
+for this pass (it's a distinct, non-overlapping role) — not audited here.
+
+### 4.2 — Live bug found and fixed: Edit User silently blanks phone numbers
+
+**Root cause, all three links confirmed by reading the actual code:**
+
+1. `GET /admin/users` (`backend/src/routes/admin.ts`, pre-fix) never
+   selected `u.phone` (or `u.email`) at all — only
+   `id,username,full_name,role,school_code,assigned_class,is_active,
+   must_change_pw,access_expires_at,created_at,pending_activation,
+   assigned_subject_ids`.
+2. `AdminUsersScreen.tsx`'s `openEdit()` therefore had no real phone value
+   to seed the form with, and hardcoded `phone: ''` unconditionally.
+3. `handleSave()` spreads the *entire* form into the `PUT
+   /admin/users/:id` payload unconditionally (`{ ...form, full_name:
+   form.username }`), and the backend's own update statement is
+   `phone=COALESCE($6,phone)` — which treats an empty string as a real,
+   intentional value to write, not as "field not sent." An empty string
+   is not `NULL`, so `COALESCE` never falls back to the existing value.
+
+**Net effect:** tapping the pencil icon to edit *any* user for *any*
+reason (toggling role, class, expiry, anything) and hitting Save silently
+overwrote that user's phone number with an empty string — every time,
+regardless of whether the admin touched the Phone field. This has been
+happening since the Phone field was added to this form; there is no way
+to tell from the DB alone how many real phone numbers this has already
+erased.
+
+**Fix applied this session (commit follows):**
+- `admin.ts`: `GET /users` now also selects `u.phone,u.email`.
+- `AdminUsersScreen.tsx`: `openEdit()` now seeds `phone: u.phone ?? ''`
+  from the real fetched value instead of hardcoding `''`; the `User`
+  interface gained the corresponding `phone?: string | null` field.
+- Verified with `tsc --noEmit` (clean) for the backend; the mobile change
+  is traced by hand (no bundler build step in this repo) — `phone` is now
+  populated end-to-end: selected by the list query, present on the `User`
+  type, read into form state on edit, and unchanged if the admin doesn't
+  touch the field.
+- `email` was added to the same `SELECT` while touching this query since
+  it has the identical structural exposure (accepted by `PUT
+  /admin/users/:id`'s `email=COALESCE($7,email)` but never selected by
+  `GET /users`) — no UI currently edits `email` (it was deliberately
+  removed as a form field per this screen's own comment), so it isn't
+  actively being blanked today, but the same landmine exists if an
+  `email` field is ever added back to this form without also fixing the
+  `GET` query. Flagging here rather than silently "fixing" a UI that
+  doesn't exist yet.
+
+**Not fixed, flagged only (lower severity, same root pattern):** the Edit
+form also unconditionally sends `school_code` and `assigned_class` back
+through the same always-COALESCE update, seeded from `u.school_code ?? ''`
+/ `u.assigned_class ?? ''`. For `admin`/`finance_admin` accounts (whose
+`school_code` is meant to stay `NULL`, per `AGENT_CONTINUATION.md` §3 and
+the `(school_code && role==='admin') ? ... : user.school_code` pattern
+used throughout `academic.ts`/`learning.ts`/`students.ts`), editing one of
+these accounts via this same modal would write `school_code=''` instead
+of leaving it `NULL`. Traced this through: every route using that
+fallback pattern already treats a falsy `sc` (`''` or `NULL`) the same
+way in the `WHERE school_code=$1` clause — both match zero rows — so this
+does not currently change observable behavior anywhere grepped
+(`academic.ts`, `learning.ts`, `students.ts`, `admin.ts`'s own Excel
+export). Still real data-integrity drift from the schema's intent (`NULL`
+vs `''` are not the same value), so worth a follow-up pass scoped to
+"strip fields the current role doesn't use before building the PUT
+payload" in `AdminUsersScreen.tsx`'s `handleSave()` — not done in this
+pass to keep the fix scoped to the confirmed, currently-active bug above.
+
+### 4.3 — Rest of `admin.ts` traced, no other live bugs found
+
+- `POST /users` (both the teacher admin-sets-password path and the Task C
+  activation-code path), `POST /users/:id/reissue-activation-code`,
+  `POST /users/:id/reset-password`, `DELETE /users/:id` (blocks
+  self-delete and admin-delete, both confirmed by explicit checks in the
+  route) — all traced against their mobile callers in
+  `AdminUsersScreen.tsx`; every payload shape matches what the route
+  expects, no dead buttons.
+- `PUT /users/:id`'s `revocation_reason`/`is_active`/`access_expires_at`/
+  `clear_expiry` handling (the Part 3-era fix) re-checked here from the
+  admin side: `handleToggle()` sends only `{ is_active: !u.is_active }` —
+  a minimal, targeted payload that does *not* trigger the phone/
+  school_code issue above, since it doesn't spread the form. Only the
+  full Edit-modal Save path is affected.
+- Term PINs (`POST`/`GET /admin/term-pins`) and class codes
+  (`POST`/`GET /admin/class-codes`) — both traced against
+  `AdminTermPinsScreen.tsx`/`AdminClassCodesScreen.tsx`; upsert-on-conflict
+  behavior matches the routes' own documented intent (re-issuing replaces
+  and clears prior redemption/lockout state, doesn't accumulate rows).
+- `GET /audit-log`, `POST /log-email`, `GET /export/excel` — the
+  Excel-export `school_code` requirement (QA Pass 8's own documented fix)
+  re-confirmed still in place and correct; no regression found.
+
+**Part 4 is closed.** One real, currently-active data-loss bug found and
+fixed (phone blanking on every Edit User save); one related but
+currently-inert data-integrity issue flagged for a future pass; everything
+else in `admin.ts` traced against its mobile callers with no further live
+bugs.
+
 ---
 
 ## Verification standard for every part (non-negotiable, matches the AISchoolOnair audit's own standard)

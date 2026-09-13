@@ -17,6 +17,7 @@ router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
   let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
+                    u.phone,u.email,
                     (u.password_hash IS NULL) AS pending_activation,
                     COALESCE(array_agg(ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids
              FROM users u

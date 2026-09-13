@@ -16,6 +16,10 @@ interface User {
   school_code: string; assigned_class: string; is_active: boolean;
   access_expires_at: string | null;
   assigned_subject_ids?: number[];
+  // Now selected by GET /admin/users (Part 4 audit fix) — previously absent,
+  // which made every Edit-User save silently blank the target's phone
+  // number (see openEdit/handleSave below for the actual fix).
+  phone?: string | null;
   // Task C: true when the account was created under the activation-code
   // flow and hasn't been activated yet (no password set). Used to show
   // "Reissue Activation Code" instead of "Reset Password" for that account.
@@ -126,7 +130,14 @@ export default function AdminUsersScreen() {
     setEditUser(u);
     setForm({
       username: u.username, role: u.role,
-      school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: '',
+      // Part 4 audit fix: this used to hardcode phone: '' regardless of the
+      // user's actual saved phone, and GET /admin/users didn't even return
+      // phone at all — so every Edit-User save round-tripped an empty
+      // string back through PUT /admin/users/:id's `phone=COALESCE($6,phone)`,
+      // which silently overwrote (blanked) the real phone number on every
+      // single edit, for every role, regardless of what field the admin
+      // actually meant to change. Now correctly seeded from the fetched value.
+      school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: u.phone ?? '',
       access_expires_at: u.access_expires_at ? u.access_expires_at.slice(0, 10) : '',
       assigned_subject_ids: u.assigned_subject_ids ?? [], initial_password: '',
     });
