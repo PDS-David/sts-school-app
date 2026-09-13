@@ -28,24 +28,6 @@ type/nullability mismatches. Read its own header comment before running —
 it explains exactly why it's safe against production (read-only against
 `public`, drops its own throwaway schema in a `finally`).
 
-**This has NOT been run yet as of this writing.** Whoever has real
-production DB credentials (the EXTERNAL Render Postgres URL, not the
-internal `dpg-...` hostname — that only resolves from inside Render's own
-network, confirmed by an actual ENOTFOUND failure this session) needs to
-run:
-```
-cd backend
-export NODE_ENV=production
-export DATABASE_URL="<the EXTERNAL Render Postgres URL>"
-npx tsx src/db/checkDrift.ts
-```
-Report the full output verbatim in this file under a new `### Drift check
-results (date)` heading. Exit code 1 means real drift was found — treat
-every non-informational line as a bug to fix (`npm run db:migrate` for
-missing tables/columns/enums/indexes; missing constraints need a manual
-`ALTER TABLE ... ADD CONSTRAINT`, since `checkDrift.ts` won't auto-fix
-anything, only report).
-
 ### 0.2 — schema.sql vs application code (NOT covered by checkDrift.ts — do this by hand)
 
 `checkDrift.ts` only proves production matches `schema.sql`. It says
@@ -82,9 +64,77 @@ still references something that was never defined anywhere).
    runtime DB error, but will cause the app to silently expect a field
    that either doesn't exist or has a different shape than the type claims.
 
-Report every finding with the exact file:line and the exact schema.sql
-line it contradicts. This is the part explicitly asked to be **implemented
-now**, not just planned — see below.
+### 0.3 — results of the 0.2 static audit (done this session)
+
+**Root cause hypothesis for the reported "Internal server error" (teacher
+edit screen, class+subjects+access-expiry Save) — HIGH CONFIDENCE, needs
+DB access to confirm definitively:**
+
+`PUT /admin/users/:id` (`backend/src/routes/admin.ts:124-155`) — the exact
+endpoint behind that screenshot — references `revocation_reason` in its
+`UPDATE users SET ...` statement. That column was added to `schema.sql`
+as a later, incremental `ALTER TABLE ... ADD COLUMN IF NOT EXISTS` (see
+schema.sql's own "Admin-facing revocation reason" comment block). Nothing
+in this repo runs `db:migrate` automatically on deploy — confirmed by
+reading `backend/package.json`'s `build`/`start` scripts (only `tsc` and
+`node dist/index.js`) and finding no `render.yaml`/`Procfile`/
+`postinstall` hook anywhere in the repo. `db:migrate` has always been a
+manual, human-triggered step. This session's own attempt to run it failed
+with `ENOTFOUND dpg-...` (the Render *internal* hostname, which only
+resolves from inside Render's network — the external URL is needed from a
+local machine), which is at minimum proof that a manual migrate attempt
+was already failing recently for an unrelated reason (wrong connection
+string), raising real doubt about whether the newest schema.sql columns
+have ever successfully reached production at all.
+
+If `revocation_reason` (or any other recently-added column) is genuinely
+missing from production, `PUT /admin/users/:id`'s UPDATE would throw
+Postgres error `42703 undefined_column` — which, before this session,
+`backend/src/index.ts`'s global error handler did NOT special-case (it
+already special-cases `23505`/`23503`/`23502` with clear messages, added
+per its own comments after "QA Pass 2" found constraint violations falling
+through to a bare 500 — `42703`/`42P01` were simply never added). That
+falls straight through to the generic `console.error(err); res.status(500)
+.json({error:'Internal server error'})` — an exact match for the
+screenshot.
+
+**Wider blast radius if this hypothesis is confirmed — this is not just
+the one screen:** grepping every reference to the newest schema.sql
+columns (`revocation_reason`, `must_set_security_question`,
+`security_question`, `activation_code`, `deleted_at`) across the whole
+backend shows they are NOT confined to admin.ts. `auth.ts` reads
+`revocation_reason` and `must_set_security_question`/`security_question`
+on **every login and refresh** (`POST /auth/login`, `POST /auth/refresh`,
+the forgot-password flow). `students.ts` and `scope.ts` filter on
+`deleted_at` throughout the student-visibility logic. If any of these
+columns are missing in production, the actual impact could be login
+itself failing for some/all users, not just this one admin screen — this
+needs to be confirmed or ruled out before anything else in this audit.
+
+**Fix applied this session (commit follows):** added `42703`/`42P01`
+(undefined_column/undefined_table) as an explicitly-logged case in
+`index.ts`'s error handler — deliberately keeps the same generic message
+to the client (this is a genuine server bug, not an ordinary thing an
+admin should see a specific message for, unlike the existing constraint-
+violation cases), but the server-side log now explicitly names this as
+"likely an unrun migration" with a pointer back to this file, instead of
+being an unlabeled raw Postgres error mixed in with everything else in
+the logs.
+
+**THE URGENT NEXT STEP, before anything else in this audit continues:**
+someone with the real EXTERNAL Render Postgres URL needs to run, in order:
+```
+cd backend
+export NODE_ENV=production
+export DATABASE_URL="<the EXTERNAL Render Postgres URL, not the dpg-... internal hostname>"
+npx tsx src/db/checkDrift.ts
+```
+If it reports missing columns (very likely `revocation_reason` at
+minimum, possibly others), run `npm run db:migrate` against that same
+`DATABASE_URL` immediately after — per this hypothesis, that alone may
+fix both the reported screenshot bug AND any related login failures,
+with no further code change needed. Report the exact `checkDrift.ts`
+output here, in this file, once run.
 
 ---
 

@@ -100,6 +100,21 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   if (err?.code === '23502') { // not_null_violation
     return res.status(400).json({ error: `Missing required field: ${err.column ?? 'unknown'}.` });
   }
+  if (err?.code === '42703' || err?.code === '42P01') {
+    // undefined_column / undefined_table — this is a genuine server bug, not
+    // an ordinary thing an admin can hit (unlike the constraint violations
+    // above), but the class of bug it almost always signals is worth naming
+    // specifically rather than leaving it in the generic 500 below: the code
+    // references a column/table that schema.sql defines but that was never
+    // actually applied to THIS database (schema.sql is re-run in full via
+    // `npm run db:migrate`, which is a manual step here — nothing on deploy
+    // runs it automatically, confirmed by checking package.json's build/start
+    // scripts). `npm run db:check-drift` will name exactly which column/table
+    // is missing; `npm run db:migrate` (against the correct EXTERNAL
+    // DATABASE_URL) is very likely the actual fix, not a code change.
+    console.error('[undefined column/table — likely an unrun migration; see APP_WIDE_AUDIT.md Part 0]', err);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 
   console.error(err);
   res.status(500).json({ error: 'Internal server error' });
