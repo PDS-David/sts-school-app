@@ -1,5 +1,96 @@
 # TODO
 
+> **HANDOFF 2026-09-13 (database-compatibility + role-by-role audit —
+> Part 0 IN PROGRESS, blocked on a real production drift-check result;
+> Parts 1-4 NOT STARTED). Previous session hit its limit mid-task. Read
+> this whole entry, then `APP_WIDE_AUDIT.md` in full, before touching
+> anything.**
+>
+> ## Context
+> Oludotun asked for the same systematic audit already run this session
+> on the sister app (AISchoolOnair, `PDS-David/edu-platform`) — database
+> compatibility first, then student/parent/teacher/admin, one at a time,
+> explicitly so another agent can pick this up and "get the app live in a
+> few hours." A live production bug was reported alongside this (a
+> screenshot: "Internal server error" saving a teacher's assigned class +
+> subjects + access-expiry on the admin edit-user screen) — trace and fix
+> that as part of Part 0/3, not as a separate task, per `APP_WIDE_AUDIT.md`'s
+> own Part 3 instruction.
+>
+> ## What's actually done
+> - `APP_WIDE_AUDIT.md` written (commit `5d93517`) — the full plan for all
+>   of Part 0 through Part 4. **Read it in full before continuing** — this
+>   handoff entry summarizes it, but the file has the real detail.
+> - Part 0.2 (code-vs-schema.sql static audit) — DONE. Found a strong,
+>   evidence-based hypothesis for the reported screenshot bug: `PUT
+>   /admin/users/:id` references `revocation_reason`, a column added to
+>   `schema.sql` as a later incremental `ALTER TABLE ... ADD COLUMN IF NOT
+>   EXISTS`. Nothing in this repo auto-runs `db:migrate` on deploy
+>   (confirmed: no `render.yaml`/`Procfile`/`postinstall` hook anywhere,
+>   `package.json`'s `build`/`start` only run `tsc`/`node dist/index.js`)
+>   — `db:migrate` has always been a manual step, and it's plausible this
+>   column (and possibly others) never actually reached production.
+> - Fixed `backend/src/index.ts`'s global error handler (commit `3e25ebb`)
+>   to explicitly log `42703`/`42P01` (undefined_column/undefined_table)
+>   as "likely an unrun migration" instead of an unlabeled raw error —
+>   client-facing message deliberately unchanged (still a generic 500;
+>   this is a real server bug, not something to expose specifics about to
+>   an admin, unlike the constraint-violation cases already handled).
+>   `npx tsc -p tsconfig.json --noEmit` verified clean.
+> - Full details, including the wider blast-radius finding (these same
+>   newer columns are read by `auth.ts` on **every login/refresh**, not
+>   just this one screen — so if migrations haven't run, the real impact
+>   could be broader than the one reported screenshot), are in
+>   `APP_WIDE_AUDIT.md` Part 0.3.
+>
+> ## What's blocking — DO THIS FIRST, before anything else
+> `backend/src/db/checkDrift.ts` (built earlier this session, `npm run
+> db:check-drift`) needs to actually be run against the real production
+> database to confirm or rule out the hypothesis above. This has NOT
+> happened yet — two attempts this session failed on syntax, not on the
+> tool itself:
+> 1. First attempt used the Render *internal* hostname
+>    (`dpg-...`) as `DATABASE_URL` from a local Windows machine —
+>    `ENOTFOUND`, since that hostname only resolves inside Render's own
+>    network. Needs the EXTERNAL Render Postgres URL instead (visible on
+>    the database's own page in the Render dashboard).
+> 2. Second attempt used bash's `export VAR=value` syntax in PowerShell,
+>    which doesn't exist there. **Oludotun is on Windows/PowerShell
+>    (confirmed: every terminal paste this session shows a `PS C:\...`
+>    prompt)** — use PowerShell syntax:
+>    ```powershell
+>    cd backend
+>    $env:NODE_ENV="production"
+>    $env:DATABASE_URL="<the EXTERNAL Render Postgres URL>"
+>    npx tsx src/db/checkDrift.ts
+>    ```
+> Get this run, read the output, report it verbatim in
+> `APP_WIDE_AUDIT.md` under Part 0.1 (the file already has a spot marked
+> for this). If it names missing columns, `npm run db:migrate` against
+> that same `$env:DATABASE_URL` (same PowerShell env-var syntax) is very
+> likely the actual fix for both the reported screenshot bug and
+> potentially the wider login-path risk — confirm by re-testing the
+> teacher-edit-and-save flow from the original screenshot afterward.
+>
+> ## Then, in order (per `APP_WIDE_AUDIT.md`, not started yet)
+> Part 1 (student), Part 2 (parent), Part 3 (teacher — includes
+> re-verifying the screenshot bug is actually fixed once migrations are
+> confirmed current), Part 4 (admin). Same method as each part's own
+> section describes: read actual code, cite actual file:line, verify any
+> fix with `npx tsc -p tsconfig.json --noEmit` at minimum, re-fetch
+> `origin/master` immediately before every build and commit (this repo is
+> under active multi-session development).
+>
+> ## A note on working with Oludotun in this repo
+> He runs everything himself over SSH/PowerShell/psql — there is no live
+> database or production access from an agent's own sandboxed
+> environment in this codebase either (same as edu-platform). Give exact,
+> copy-pasteable commands for his actual shell (PowerShell here, not
+> bash) and wait for pasted output rather than assuming a command ran
+> successfully.
+
+---
+
 > **HANDOFF 2026-09-11 (report card rebuild — INCOMPLETE, do not treat as
 > done — and production/APK rollout). Previous session hit its limit
 > mid-task. Read this whole entry before touching anything.**
