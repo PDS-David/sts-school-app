@@ -15,7 +15,14 @@ export default function TeacherMoreScreen({ navigation }: any) {
     { icon: 'calendar-number-outline', label: 'Calendar', sub: 'Coming soon' },
     { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
-    { icon: 'help-circle-outline', label: 'Security Question', sub: 'Used to reset your password if you forget it', onPress: () => navigation.navigate('SecurityQuestionSetup') },
+    // No "Security Question" entry here (deliberately, not an omission):
+    // per explicit school-owner policy, a teacher who forgets their
+    // password has admin reset it directly — self-service recovery
+    // doesn't apply to this role (see auth.ts POST /login, which now
+    // suppresses must_set_security_question for role==='teacher'). This
+    // menu item used to say "Used to reset your password if you forget
+    // it," which would have been actively misleading now that path is
+    // dead for teachers by design.
   ];
 
   return (
