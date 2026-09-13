@@ -33,6 +33,7 @@ import { SubjectsMgmtScreen } from '../screens/AcademicMgmtScreens';
 import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import ClassLockScreen from '../screens/ClassLockScreen';
+import PromoteStudentsScreen from '../screens/PromoteStudentsScreen';
 
 const Tab = createBottomTabNavigator();
 const DashStack = createNativeStackNavigator();
@@ -63,6 +64,7 @@ function ClassesStackNavigator() {
       <ClassesStack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter Scores', ...opts }} />
       <ClassesStack.Screen name="SubjectsMgmt" component={SubjectsMgmtScreen} options={{ headerShown: true, title: 'Subjects', ...opts }} />
       <ClassesStack.Screen name="ClassLock" component={ClassLockScreen} options={{ headerShown: true, title: 'Close Term Records', ...opts }} />
+      <ClassesStack.Screen name="PromoteStudents" component={PromoteStudentsScreen} options={{ headerShown: true, title: 'Promote Students', ...opts }} />
     </ClassesStack.Navigator>
   );
 }

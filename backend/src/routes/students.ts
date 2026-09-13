@@ -221,6 +221,86 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
   return res.json({ student: rows[0] });
 });
 
+// ── POST /students/:id/promotion ──────────────────────────────────────────────
+// End-of-term/session class movement — per explicit school-owner decision:
+// this is the class teacher's call alone, with NO admin bypass (unlike every
+// other roster action in this file, which also lets admin through). Admin
+// can still change a student's class_name arbitrarily via the generic PUT
+// /:id above if ever genuinely needed — this route is just the guided,
+// one-tap Promote/Retain/Demote workflow for the one person whose job it
+// actually is.
+//
+// "Next"/"previous" class is derived from the classes table's own row order
+// within the student's school (see backend/schema.sql's classes table and
+// seed.ts, which inserts PRIMARY_CLASSES/SECONDARY_CLASSES in exactly this
+// progression) — there's no separate ordering column to define or keep in
+// sync.
+//
+// Deliberately no historical class snapshot: per explicit school-owner
+// decision, past terms' class-based figures (class_average/class_highest in
+// GET /scores, which join the student's live class_name) are allowed to
+// follow wherever the student ends up going forward — a new session's worth
+// of records supersedes them every term regardless, so class_name is simply
+// overwritten here rather than preserved per-term.
+router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
+  const user = req.user!;
+  const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' };
+  if (!action || !['promote', 'demote', 'retain'].includes(action)) {
+    return res.status(400).json({ error: "action must be 'promote', 'demote', or 'retain'" });
+  }
+
+  const { rows: sRows } = await query(
+    'SELECT id, full_name, class_name, school_code FROM students WHERE id=$1 AND deleted_at IS NULL',
+    [req.params.id],
+  );
+  const student = sRows[0];
+  if (!student) return res.status(404).json({ error: 'Student not found' });
+
+  // No admin bypass — see comment above. Only the actual class teacher of
+  // the class this student is CURRENTLY in.
+  if (!user.assigned_class || user.assigned_class !== student.class_name) {
+    return res.status(403).json({ error: 'You can only promote, demote, or retain students in your own assigned class' });
+  }
+
+  if (action === 'retain') {
+    await audit(user, 'retain_class', 'student', student.id, `${student.full_name} retained in ${student.class_name}`);
+    return res.json({ ok: true, action, from_class: student.class_name, to_class: student.class_name });
+  }
+
+  const { rows: classRows } = await query(
+    'SELECT name FROM classes WHERE school_code=$1 ORDER BY id ASC', [student.school_code],
+  );
+  const names = classRows.map((r: any) => r.name);
+  const idx = names.indexOf(student.class_name);
+  // A student whose class_name doesn't match any row in this school's
+  // `classes` list (e.g. a legacy/typo'd value) isn't part of a sequence
+  // that can be moved relative to.
+  if (idx === -1) {
+    return res.status(409).json({
+      error: `"${student.class_name}" isn't in this school's class list, so there's no next/previous class to move to. Fix the class name via student edit first.`,
+    });
+  }
+  const targetIdx = action === 'promote' ? idx + 1 : idx - 1;
+  if (targetIdx < 0 || targetIdx >= names.length) {
+    return res.status(400).json({
+      error: action === 'promote'
+        ? `"${student.class_name}" is already the highest class — there's no next class to promote to.`
+        : `"${student.class_name}" is already the lowest class — there's no lower class to demote to.`,
+    });
+  }
+  const toClass = names[targetIdx];
+
+  const { rows } = await query(
+    'UPDATE students SET class_name=$1 WHERE id=$2 RETURNING *',
+    [toClass, student.id],
+  );
+  await audit(
+    user, action === 'promote' ? 'promote_class' : 'demote_class', 'student', student.id,
+    `${student.full_name}: ${student.class_name} -> ${toClass}`,
+  );
+  return res.json({ ok: true, action, from_class: student.class_name, to_class: toClass, student: rows[0] });
+});
+
 // ── DELETE /students/:id ──────────────────────────────────────────────────────
 // Found in a hardening pass: this only ever required `grades.write` — the
 // same permission every teacher has for routine score entry — so any teacher

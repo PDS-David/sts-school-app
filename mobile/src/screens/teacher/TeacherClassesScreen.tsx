@@ -14,6 +14,7 @@ const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string;
   { icon: 'create-outline',    label: 'Enter Scores', sub: 'Add or edit CA and exam scores', screen: 'ScoreEntry', color: '#C62828' },
   { icon: 'library-outline',   label: 'Subjects',   sub: 'Add a subject not yet in the list', screen: 'SubjectsMgmt', color: '#00838F' },
   { icon: 'lock-closed-outline', label: 'Close Term Records', sub: 'Lock or unlock your class for a term', screen: 'ClassLock', color: '#B71C1C' },
+  { icon: 'trending-up-outline', label: 'Promote Students', sub: 'Move students up, down, or keep them for the new session', screen: 'PromoteStudents', color: '#1B5E20' },
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
