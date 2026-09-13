@@ -339,6 +339,84 @@ messaging bypass fix — check whether the same class of bug (parent sees
 another school's or another child's data) could recur anywhere else parent
 data is scoped.
 
+### 2.1 — CONFIRMED LIVE BUG, found and fixed this session
+
+`parentProvisioning.ts:findOrCreateParent()`'s existing-parent lookup was
+scoped `WHERE role='parent' AND school_code=$1 AND RIGHT(...phone...,10)=$2`
+— de-duplication only within one campus. STS is dual-campus
+(`school_code` `'primary'`/`'secondary'`, confirmed in `seed.ts`), so a
+parent with one child at each campus would get **two separate,
+disconnected parent accounts** instead of one — each seeing only the one
+child enrolled through it, with no way to unify them after the fact.
+
+This directly contradicts the read side, which is already fully
+cross-campus-aware and clearly built assuming one parent account can span
+both schools:
+- `GET /students/wards` (`students.ts:62-75`) joins `parent_wards` for the
+  caller's own id with **no `school_code` filter at all**.
+- `getMessageableUsers()`'s parent branch (`scope.ts:401-430`, itself a
+  "Pass 21" widening noted in its own comment) explicitly reaches "any
+  teacher or admin at any school where this parent has a ward" via
+  `SELECT DISTINCT st.school_code FROM students st JOIN parent_wards pw...`
+- `GET /finance/invoices` and `GET /scores/report/:student_id` both scope
+  parent access purely via `parent_wards`, no `school_code` involved.
+
+So the read side already assumes "one parent, wards across any school" —
+the write side was quietly breaking that assumption at the one place a
+cross-campus family actually gets created. Same underlying class of bug
+`AGENT_CONTINUATION.md` flags as previously fixed in messaging (a scoping
+check applied inconsistently across otherwise-related code paths), just in
+provisioning instead of a read query this time.
+
+**Fix applied:** dropped the `school_code=$1` filter from the existing-parent
+lookup — now matches purely on phone-number suffix across all schools in
+this deployment (all belonging to the one real institution, Sow the Seed
+Schools — not a multi-tenant SaaS with unrelated third parties, so a
+suffix-collision risk here is the same acceptable level of "extremely
+unlikely" already accepted by the adjacent username-collision loop a few
+lines below, just widened in scope, not a new risk category). The
+`school_code` param is still used for the fallback INSERT when truly
+creating a new parent account (their "home" school at first creation —
+harmless metadata, not load-bearing elsewhere for parents per every read
+path checked above). Verified `npm run build` clean in `backend/` after
+the change.
+
+### 2.2 — Everything else checked, confirmed correct (no bug)
+
+- `mobile/src/navigation/ParentTabs.tsx` — full screen inventory: only
+  `ParentHomeScreen.tsx` makes a direct API call
+  (`GET /scores/report/:id`, confirmed real and correctly ownership-checked
+  via `parent_wards` at `scores.ts:249-253`, no `school_code` involved).
+  `ParentProgressScreen.tsx`, `ParentActivitiesScreen.tsx`,
+  `ParentProfileScreen.tsx` are pure navigation/display screens (confirmed
+  by grep returning nothing, not assumed from filename — same check Part 1
+  used).
+- `WeeklyEffortsScreen.tsx`'s parent path: `canGiveFeedback = isParent ||
+  isTeacher` (the exact flag Part 1 added for the student-side fix)
+  correctly shows the feedback-compose UI to parents; `efUrl` correctly
+  scopes to `selectedWardId` from `WardContext` rather than blending
+  siblings; backend (`weeklyEfforts.ts:122-124, 154-155`) independently
+  enforces the same `parent_wards` scoping regardless of what the client
+  sends — defense in depth confirmed, not just a client-side filter.
+- `GET /finance/invoices` (`finance.ts:56-79`) — parent scoping via
+  `parent_wards` subquery, `student_id` query param can only narrow within
+  that set, never widen it (confirmed by reading the actual SQL
+  concatenation, not assumed from the comment above it).
+- Messaging (`messages.ts`, `scope.ts`) — the cross-school parent-messaging
+  bug `AGENT_CONTINUATION.md` references is confirmed already fixed
+  ("Pass 21" widening); parent can reach admin and every teacher at any
+  school where they have a ward, not just their ward's specific
+  class/subject teacher. This also means the "parent messaging asymmetry"
+  item in the project's general backlog notes is already resolved, not
+  still outstanding.
+- `ChangePasswordScreen.tsx`/`SecurityQuestionSetupScreen.tsx` — role-agnostic
+  shared components, already traced earlier this session for the
+  forced-flow bug report; nothing parent-specific to add.
+
+**Part 2 is closed.** One real cross-campus provisioning bug found and
+fixed; every other parent-facing screen and route traced and confirmed
+correct.
+
 ## Part 3 — Teacher Role Audit
 
 Same method, scoped to `teacher`. `rbac.ts` (87 lines) is short enough to

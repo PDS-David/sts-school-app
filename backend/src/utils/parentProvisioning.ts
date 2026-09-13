@@ -12,9 +12,20 @@ import type { AuthUser } from '../types/index.js';
 // creation time, and a parent account is found-or-created and linked
 // automatically.
 //
-// De-duplication is by phone number, scoped to the school — two students
-// with the same parent_phone at the same school are treated as siblings and
-// share one parent account, rather than getting a duplicate per child.
+// De-duplication is by phone number ACROSS ALL SCHOOLS, not scoped to one —
+// deliberately, not by omission. STS is a dual-campus system (school_code
+// 'primary'/'secondary'), and a parent very plausibly has one child at each
+// campus. GET /students/wards and getMessageableUsers()'s parent branch
+// (scope.ts) are BOTH already built to show/reach every ward across every
+// school_code for a single parent id — that only works if a parent enrolling
+// a second child at the *other* campus reuses the same parent account rather
+// than getting a second, disconnected login. This used to filter
+// `school_code=$1` here, which silently split one real parent into two
+// separate accounts (one per campus) the moment their children spanned both
+// — each seeing only one child, with no way to unify them after the fact.
+// Found during the Part 2 (parent role) pass of APP_WIDE_AUDIT.md, by
+// tracing this exact mismatch between the read side (both already
+// cross-school) and this write side (still single-school).
 
 function usernameFromPhone(phone: string): string {
   const digits = phone.replace(/\D/g, '');
@@ -48,9 +59,9 @@ export async function findOrCreateParent(
 
   const { rows: existing } = await query(
     `SELECT id, username FROM users
-     WHERE role='parent' AND school_code=$1 AND RIGHT(regexp_replace(phone, '\\D', '', 'g'), 10) = $2
+     WHERE role='parent' AND RIGHT(regexp_replace(phone, '\\D', '', 'g'), 10) = $1
      LIMIT 1`,
-    [params.school_code, suffix],
+    [suffix],
   );
   if (existing[0]) {
     return { id: existing[0].id, username: existing[0].username };
