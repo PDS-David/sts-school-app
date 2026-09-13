@@ -75,6 +75,7 @@ export default function AdminUsersScreen() {
     school_code: '', assigned_class: '', phone: '',
     access_expires_at: '', // YYYY-MM-DD, blank = no expiry
     assigned_subject_ids: [] as number[],
+    initial_password: '', // teacher only — admin sets the actual first-login password directly (see handleSave)
   });
 
   const fetchUsers = async () => {
@@ -116,7 +117,7 @@ export default function AdminUsersScreen() {
     setEditUser(null);
     setForm({
       username: '', role: 'teacher', school_code: '', assigned_class: '',
-      phone: '', access_expires_at: '', assigned_subject_ids: [],
+      phone: '', access_expires_at: '', assigned_subject_ids: [], initial_password: '',
     });
     setModal(true);
   };
@@ -127,7 +128,7 @@ export default function AdminUsersScreen() {
       username: u.username, role: u.role,
       school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: '',
       access_expires_at: u.access_expires_at ? u.access_expires_at.slice(0, 10) : '',
-      assigned_subject_ids: u.assigned_subject_ids ?? [],
+      assigned_subject_ids: u.assigned_subject_ids ?? [], initial_password: '',
     });
     setModal(true);
   };
@@ -137,6 +138,13 @@ export default function AdminUsersScreen() {
     // means "no expiry" — for edits that has to be sent explicitly (clear_expiry)
     // since the backend otherwise leaves an existing expiry untouched.
     const showsExpiry = EXPIRY_ROLES.includes(form.role);
+    // Teacher creation only (not edit — this form doesn't reset an existing
+    // teacher's password): admin must supply the actual first-login
+    // password directly, same 8-character minimum the backend enforces.
+    if (!editUser && form.role === 'teacher' && form.initial_password.length < 8) {
+      setInfoDialog({ title: 'Password too short', message: 'Enter a first-login password of at least 8 characters for this teacher.' });
+      return;
+    }
     // Full Name and Email fields were removed from this form — full_name
     // always mirrors username on both create and edit.
     const payload: any = { ...form, full_name: form.username };
@@ -153,15 +161,27 @@ export default function AdminUsersScreen() {
         const { data } = await api.post('/admin/users', payload);
         setModal(false);
         fetchUsers();
-        // Task C: account creation no longer generates a temp password —
-        // admin shares this one-time activation code instead, and the
-        // account owner sets their own password via the "Activate your
-        // account" link on the login screen.
-        const activationCode = data?.user?.activation_code;
-        setInfoDialog({
-          title: 'User Created',
-          message: `Username: ${form.username}\nActivation code: ${activationCode}\n\nShare these with them. They'll use "Activate your account" on the login screen to set their own password.`,
-        });
+        if (form.role === 'teacher') {
+          // Admin set this password directly (see handleSave's validation
+          // above and admin.ts POST /users) — no activation code involved
+          // for this role. Echoed back here so there's one clear place to
+          // copy it from before handing it to the teacher; the teacher
+          // will be forced to change it on first login (must_change_pw).
+          setInfoDialog({
+            title: 'Teacher Created',
+            message: `Username: ${form.username}\nPassword: ${form.initial_password}\n\nShare these with them directly. They'll be asked to change their password the first time they log in.`,
+          });
+        } else {
+          // Task C: account creation no longer generates a temp password —
+          // admin shares this one-time activation code instead, and the
+          // account owner sets their own password via the "Activate your
+          // account" link on the login screen.
+          const activationCode = data?.user?.activation_code;
+          setInfoDialog({
+            title: 'User Created',
+            message: `Username: ${form.username}\nActivation code: ${activationCode}\n\nShare these with them. They'll use "Activate your account" on the login screen to set their own password.`,
+          });
+        }
       }
     } catch (e: any) {
       setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Save failed' });
@@ -321,6 +341,16 @@ export default function AdminUsersScreen() {
                 </Picker>
               </View>
             </>
+          )}
+
+          {!editUser && form.role === 'teacher' && (
+            <Input
+              label="First-Login Password"
+              value={form.initial_password}
+              onChangeText={v => setForm(f => ({ ...f, initial_password: v }))}
+              autoCapitalize="none"
+              secureTextEntry
+            />
           )}
 
           {form.role === 'teacher' && (

@@ -69,7 +69,7 @@ router.get('/parent-logins', async (req, res) => {
 });
 
 router.post('/users', async (req, res) => {
-  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at } = req.body;
+  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body;
   const uname = String(username).trim().toLowerCase();
   const exists = await query('SELECT id FROM users WHERE username=$1', [uname]);
   if (exists.rows.length) return res.status(409).json({ error: 'Username taken' });
@@ -78,13 +78,39 @@ router.post('/users', async (req, res) => {
   // is handing out for a limited time. Admin accounts never expire this way.
   const expiresAt = (role === 'teacher' || role === 'parent') ? (access_expires_at ?? null) : null;
 
+  // Teacher accounts: admin sets the actual first-login password directly,
+  // per explicit school-owner request — teachers log in with the password
+  // the admin gave them and change it themselves afterward (must_change_pw),
+  // rather than self-activating via a one-time code. Deliberately scoped to
+  // 'teacher' only; every other role still goes through the Task C
+  // activation-code flow below unchanged.
+  if (role === 'teacher') {
+    if (!initial_password || String(initial_password).length < 8) {
+      return res.status(400).json({ error: 'initial_password is required for a teacher and must be at least 8 characters' });
+    }
+    const hash = await bcrypt.hash(String(initial_password), 10);
+    const { rows } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+         phone,email,must_change_pw,access_expires_at,activation_code)
+       VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+      [uname, hash, full_name, school_code ?? null,
+       assigned_class ?? null, phone ?? null, email ?? null, expiresAt],
+    );
+    const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
+    for (const sid of subjectIds) {
+      await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
+    }
+    await audit(req.user!, 'add_user', 'user', rows[0].id, `teacher: ${full_name} (admin-set password)`);
+    return res.status(201).json({ user: rows[0] });
+  }
+
   // Task C: admin no longer generates a temp password to hand out — the
   // account is created with no password at all (password_hash NULL, a
   // deliberate pending-activation state — see schema.sql) plus a short
   // one-time activation code the account owner uses to set their own
-  // password via POST /auth/activate. Applies to every new account from
-  // here on; accounts created before this under the old temp-password flow
-  // are untouched.
+  // password via POST /auth/activate. Applies to every non-teacher role;
+  // accounts created before this under the old temp-password flow are
+  // untouched.
   const activationCode = generateNumericPin();
   const { rows } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
