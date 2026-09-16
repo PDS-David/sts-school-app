@@ -28,6 +28,26 @@ don't let it get lost under other in-progress work.
 
 ---
 
+## Confirmed product intent (explicit project-owner statements — do not
+## "fix" these without re-reading this section first)
+
+- **Attendance is physical-classroom attendance, teacher-entered only.**
+  The app's self-study features (topics, Brainee) and physical classroom
+  attendance are deliberately separate, non-overlapping systems — a
+  student is never meant to self-report or edit attendance. `days_opened`/
+  `days_present` are hand-filled by the teacher from the physical
+  register; a student may only ever *view* their own attendance (already
+  surfaced read-only inside their own term report,
+  `MyResultsScreen.tsx`/`scores.ts`'s `GET /report/:student_id`). Do not
+  build any student-facing attendance-entry UI.
+- **Report card print/export is admin + parent ONLY, permanently.**
+  Students can view their own report on-screen but never print or export
+  it — the physical hardcopy is handed out by the school directly. This
+  is not a missing permission to "complete" later; it's the intended,
+  final state.
+
+---
+
 ## 1. What this app is
 
 Full-stack school management app for Sow the Seed Schools (Model College +
