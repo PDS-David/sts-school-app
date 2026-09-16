@@ -13,7 +13,7 @@ export default function StudentProfileScreen({ navigation }: any) {
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
     { icon: 'bar-chart-outline', label: 'Progress', sub: 'Your results across terms', onPress: () => navigation.getParent()?.navigate('AssessmentsTab', { screen: 'MyResults' }) },
     { icon: 'ribbon-outline', label: 'Badges', sub: 'Coming soon' },
-    { icon: 'calendar-outline', label: 'Attendance', sub: 'Not available yet for students — ask your teacher for your attendance record' },
+    { icon: 'calendar-outline', label: 'Attendance', sub: 'Days opened & present — inside your Results', onPress: () => navigation.getParent()?.navigate('AssessmentsTab', { screen: 'MyResults' }) },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
     { icon: 'help-circle-outline', label: 'Security Question', sub: 'Used to reset your password if you forget it', onPress: () => navigation.navigate('SecurityQuestionSetup') },
   ];

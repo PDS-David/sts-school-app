@@ -329,6 +329,51 @@ pre-login — arguably out of scope for a "student role" audit specifically,
 since they run before any role is assigned; worth a separate pass if
 picked up later).
 
+### 1.3 — Student academic-needs completeness check (this session, separate axis from 1.1/1.2)
+
+Explicit project-owner request: not "is every button correct" (1.1/1.2's
+question) but "can a student meet ALL their academic needs through this
+app." Checked every core academic need a student would plausibly have
+against what's actually built and reachable:
+
+- Curriculum content (topics, PIN-gated, Brainee-grounded) — ✅ built (1.1)
+- Assessments (take, submit, see own score) — ✅ built (1.1)
+- Term results / full-session report — ✅ built (1.1)
+- Study materials — ✅ built (1.1)
+- Messaging a teacher for help — ✅ built (1.1)
+- Brainee AI help (chat/explain/notes/hint) — ✅ built (1.1)
+- Weekly effort visibility — ✅ built (1.1)
+
+**Real gap found and fixed:** `StudentProfileScreen.tsx`'s "Attendance"
+tile said *"Not available yet for students — ask your teacher"* — but
+`GET /scores/report/:student_id` (`scores.ts:295-329`) already returns
+`attendance: { days_present, days_opened }` on every call, and
+`MyResultsScreen.tsx` (the screen the adjacent "Progress" tile already
+points to) already renders it (`MyResultsScreen.tsx:146-147`,
+`RowItem label="Days Opened"` / `"Days Present"`). The data and the
+display surface both already existed — only the Profile tile was wrong,
+telling students to bother their teacher for something already sitting
+in their own Results screen. **Fixed:** tile now points to the same
+`MyResults` destination as "Progress," with accurate sub-text. No backend
+change needed — this was a frontend-only inaccuracy.
+
+**Checked and confirmed deliberate, NOT a gap:** report-card print/export
+is explicitly admin+parent-only, per the screen's own comment — *"the
+school's own decision was that printing/exporting the finished document
+is an admin/parent action, not something... the student themselves does
+from here."* A student can view their full report on-screen but not
+print/export their own copy. Documented as intentional in the code
+itself; not changed.
+
+**Genuine absence, not a bug — flagged for a product decision, not fixed:**
+no class timetable / period-schedule feature exists anywhere in this app,
+for any role. Confirmed by grepping the whole repo (`backend/src/routes/`,
+`schema.sql`, `mobile/src/screens/`) — the only hits for "schedule" were
+unrelated (fee schedule, assessment publish-scheduling). This may be
+intentionally out of scope (many schools rely on a printed/physical
+timetable), or it may be a real missing need — this is a product decision
+for the project owner, not something to build speculatively.
+
 ## Part 2 — Parent Role Audit
 
 Same method as Part 1, scoped to `parent`. Pay particular attention to
