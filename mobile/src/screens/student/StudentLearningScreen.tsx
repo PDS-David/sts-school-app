@@ -30,6 +30,17 @@ export default function StudentLearningScreen({ navigation }: any) {
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <AppHeader title="Learning" onPressBell={() => openNotifications()} />
       <ScrollView>
+        <TouchableOpacity onPress={() => navigation.navigate('StudyPlan')} activeOpacity={0.85} style={{ marginHorizontal: Spacing.md, marginTop: Spacing.md }}>
+          <Card style={styles.studyPlanBanner}>
+            <View style={styles.tileIcon}><Ionicons name="calendar" size={22} color={Colors.primary} /></View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.studyPlanTitle}>My Study Timetable</Text>
+              <Text style={styles.studyPlanSub}>Let Brainee split your day across subjects</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+          </Card>
+        </TouchableOpacity>
+
         <Text style={styles.sectionLabel}>Subjects</Text>
         <View style={styles.grid}>
           {subjects.length === 0 && (
@@ -70,6 +81,9 @@ export default function StudentLearningScreen({ navigation }: any) {
 
 const styles = StyleSheet.create({
   sectionLabel: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.textSub, marginHorizontal: Spacing.md, marginTop: Spacing.md, marginBottom: Spacing.xs },
+  studyPlanBanner: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm },
+  studyPlanTitle: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },
+  studyPlanSub: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Spacing.sm },
   tile: { width: '30%', margin: '1.5%', backgroundColor: Colors.card, borderRadius: Radius.md, padding: Spacing.sm, alignItems: 'center', elevation: 1, minHeight: 90, justifyContent: 'center' },
   tileIcon: { width: 40, height: 40, borderRadius: 20, backgroundColor: Colors.primary + '18', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },

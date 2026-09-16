@@ -497,6 +497,117 @@ router.post('/term-pins/redeem', requireRole('student'), async (req, res) => {
 });
 
 // ════════════════════════════════════════════════════════
+// SELF-STUDY TIMETABLE
+// ════════════════════════════════════════════════════════
+// Student-only self-study planning tool — deliberately separate from
+// physical-classroom attendance (see AGENT_CONTINUATION.md's "Confirmed
+// product intent"). Subjects come from `topics`, not a new class-subject
+// mapping, since that's already the real source of "what this class
+// studies". Priority is computed here at read time from `scores`, never
+// stored — a subject with a weaker recent score gets more of the
+// student's chosen daily minutes; a subject with no score yet gets a
+// neutral (not maximal, not minimal) weight, since we don't yet know if
+// it's a strength or a weakness.
+const STUDY_WEIGHT_FLOOR = 15;   // even a 100%-scoring subject keeps some study time
+const STUDY_WEIGHT_NEUTRAL = 50; // no score yet — treat as moderate priority, not weak or strong
+
+async function resolveOwnStudent(userId: string) {
+  const { rows } = await query('SELECT id, class_name, school_code FROM students WHERE user_id=$1 LIMIT 1', [userId]);
+  return rows[0] as { id: string; class_name: string; school_code: string } | undefined;
+}
+
+router.get('/study-plan', requireRole('student'), async (req, res) => {
+  const student = await resolveOwnStudent(req.user!.id);
+  if (!student) return res.status(404).json({ error: 'No student record for this user' });
+
+  const [settingsRes, subjectsRes, toggleRes, scoreRes] = await Promise.all([
+    query('SELECT daily_minutes FROM student_study_settings WHERE student_id=$1', [student.id]),
+    query(
+      `SELECT DISTINCT sub.id, sub.name
+       FROM topics t JOIN subjects sub ON sub.id = t.subject_id
+       WHERE t.class_name=$1 AND t.school_code=$2
+       ORDER BY sub.name`,
+      [student.class_name, student.school_code],
+    ),
+    query('SELECT subject_id, included FROM student_study_subjects WHERE student_id=$1', [student.id]),
+    // Most recent score per subject, regardless of term — "recent" per the
+    // project owner's own phrasing, not scoped to the current term only.
+    query(
+      `SELECT DISTINCT ON (subject_id) subject_id, total
+       FROM scores WHERE student_id=$1 ORDER BY subject_id, updated_at DESC`,
+      [student.id],
+    ),
+  ]);
+
+  const dailyMinutes = settingsRes.rows[0]?.daily_minutes ?? 120;
+  const includedMap = new Map<number, boolean>(toggleRes.rows.map((r: any) => [r.subject_id, r.included]));
+  const scoreMap = new Map<number, number>(scoreRes.rows.map((r: any) => [r.subject_id, Number(r.total)]));
+
+  const withWeights = subjectsRes.rows.map((s: any) => {
+    const included = includedMap.get(s.id) ?? true; // absence of a row = included, see schema.sql
+    const avgScore = scoreMap.has(s.id) ? scoreMap.get(s.id)! : null;
+    const weight = !included ? 0 : (avgScore != null ? Math.max(100 - avgScore, STUDY_WEIGHT_FLOOR) : STUDY_WEIGHT_NEUTRAL);
+    return { subject_id: s.id, name: s.name, included, avg_score: avgScore, weight };
+  });
+
+  const totalWeight = withWeights.reduce((sum: number, s: any) => sum + s.weight, 0);
+  const subjects = withWeights
+    .map(({ weight, ...s }: any) => ({
+      ...s,
+      allocated_minutes: (s.included && totalWeight > 0) ? Math.round((dailyMinutes * weight) / totalWeight) : 0,
+    }))
+    // Highest study-time first — the priority ordering the feature exists to produce.
+    .sort((a: any, b: any) => b.allocated_minutes - a.allocated_minutes);
+
+  return res.json({ daily_minutes: dailyMinutes, subjects });
+});
+
+router.put('/study-plan/settings', requireRole('student'), async (req, res) => {
+  const student = await resolveOwnStudent(req.user!.id);
+  if (!student) return res.status(404).json({ error: 'No student record for this user' });
+
+  const { daily_minutes } = req.body as { daily_minutes?: number };
+  const minutes = Number(daily_minutes);
+  if (!Number.isInteger(minutes) || minutes < 1 || minutes > 960) {
+    return res.status(400).json({ error: 'daily_minutes must be a whole number between 1 and 960' });
+  }
+
+  await query(
+    `INSERT INTO student_study_settings (student_id, daily_minutes)
+     VALUES ($1, $2)
+     ON CONFLICT (student_id) DO UPDATE SET daily_minutes=$2, updated_at=now()`,
+    [student.id, minutes],
+  );
+  return res.json({ ok: true, daily_minutes: minutes });
+});
+
+router.put('/study-plan/subjects/:subject_id', requireRole('student'), async (req, res) => {
+  const student = await resolveOwnStudent(req.user!.id);
+  if (!student) return res.status(404).json({ error: 'No student record for this user' });
+
+  const subjectId = Number(req.params.subject_id);
+  const { included } = req.body as { included?: boolean };
+  if (typeof included !== 'boolean') return res.status(400).json({ error: 'included must be a boolean' });
+
+  // Reject toggling a subject that isn't actually part of this student's
+  // class curriculum — same defensive-scoping pattern used throughout this
+  // file (e.g. term-pins/redeem's ownership check above).
+  const { rows: belongs } = await query(
+    `SELECT 1 FROM topics WHERE subject_id=$1 AND class_name=$2 AND school_code=$3 LIMIT 1`,
+    [subjectId, student.class_name, student.school_code],
+  );
+  if (!belongs[0]) return res.status(404).json({ error: 'That subject is not part of your class curriculum' });
+
+  await query(
+    `INSERT INTO student_study_subjects (student_id, subject_id, included)
+     VALUES ($1, $2, $3)
+     ON CONFLICT (student_id, subject_id) DO UPDATE SET included=$3`,
+    [student.id, subjectId, included],
+  );
+  return res.json({ ok: true });
+});
+
+// ════════════════════════════════════════════════════════
 // QUESTIONS
 // ════════════════════════════════════════════════════════
 

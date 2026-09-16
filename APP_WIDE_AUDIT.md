@@ -365,14 +365,39 @@ from here."* A student can view their full report on-screen but not
 print/export their own copy. Documented as intentional in the code
 itself; not changed.
 
-**Genuine absence, not a bug — flagged for a product decision, not fixed:**
-no class timetable / period-schedule feature exists anywhere in this app,
-for any role. Confirmed by grepping the whole repo (`backend/src/routes/`,
-`schema.sql`, `mobile/src/screens/`) — the only hits for "schedule" were
-unrelated (fee schedule, assessment publish-scheduling). This may be
-intentionally out of scope (many schools rely on a printed/physical
-timetable), or it may be a real missing need — this is a product decision
-for the project owner, not something to build speculatively.
+**Built this session, per explicit project-owner spec:** a self-study
+timetable — student-only, deliberately separate from physical-classroom
+attendance (now documented in `AGENT_CONTINUATION.md`'s "Confirmed product
+intent" section). Design, confirmed with the project owner before building:
+subject-priority is automatic (weaker recent `scores.total` → more daily
+minutes, not admin-set or self-ranked), the timetable is a simple daily
+minutes-split (not a weekly clock-time grid), and a student can toggle
+individual subjects out of their plan.
+
+- **Schema:** `student_study_settings` (one row per student, `daily_minutes`)
+  and `student_study_subjects` (per-subject include/exclude toggle; absence
+  of a row = included by default). Placed in `schema.sql` right after
+  `term_access_pins`, matching the file's existing self-study-feature
+  grouping.
+- **Backend** (`learning.ts`): `GET /study-plan` computes the actual
+  allocation at read time (never stored) — subject list is `DISTINCT
+  subject_id` from `topics` for the student's own `class_name`+
+  `school_code` (reusing the real curriculum data, not a new class-subject
+  mapping table); weight per subject is `max(100 - avg_score, 15)` when a
+  recent score exists, or a neutral `50` when it doesn't (so an ungraded
+  subject isn't starved just for lack of data); `PUT /study-plan/settings`
+  and `PUT /study-plan/subjects/:id` are both scoped to the caller's own
+  student record via the same `SELECT id FROM students WHERE user_id=$1`
+  pattern `term-pins/redeem` already uses, and the subject-toggle route
+  rejects any `subject_id` that isn't actually part of the student's class
+  curriculum.
+- **Mobile:** new `StudyPlanScreen.tsx` (daily-minutes input + per-subject
+  toggle switches + live allocated-minutes display, sorted highest-priority
+  first), registered in `StudentTabs.tsx`'s `LearningStackNavigator`,
+  reachable via a new banner card on `StudentLearningScreen.tsx` ("My Study
+  Timetable — Let Brainee split your day across subjects").
+- Verified `tsc --noEmit` clean in both `backend/` and `mobile/` after
+  every change, per this file's own verification standard.
 
 ## Part 2 — Parent Role Audit
 

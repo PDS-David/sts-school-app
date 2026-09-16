@@ -665,6 +665,34 @@ CREATE TABLE IF NOT EXISTS term_access_pins (
   UNIQUE(student_id, term_label)
 );
 
+-- ── Self-study timetable (per explicit project-owner spec) ──────────────────
+-- Deliberately separate from physical-classroom attendance (see
+-- AGENT_CONTINUATION.md's "Confirmed product intent" section) — this is a
+-- student-only self-study planning tool, not a real class schedule. Subject
+-- list comes from `topics` (DISTINCT subject_id per class_name), not a new
+-- class-subject mapping table, since that's already the real source of
+-- "what does this class study" for the self-study feature everything here
+-- builds on. Priority weighting is computed at query time from `scores`
+-- (weaker recent score => more allocated minutes), not stored — see
+-- GET /learning/study-plan for the actual formula and its FLOOR/NEUTRAL
+-- constants.
+CREATE TABLE IF NOT EXISTS student_study_settings (
+  student_id     UUID PRIMARY KEY REFERENCES students(id) ON DELETE CASCADE,
+  daily_minutes  INT NOT NULL DEFAULT 120,
+  updated_at     TIMESTAMPTZ DEFAULT now()
+);
+
+-- Absence of a row means "included" (the default a student sees before ever
+-- touching a toggle) — a row only ever gets written the first time a student
+-- actually toggles a subject, in either direction. See GET /learning/study-plan
+-- for how absence is treated as included=true at read time.
+CREATE TABLE IF NOT EXISTS student_study_subjects (
+  student_id  UUID REFERENCES students(id) ON DELETE CASCADE,
+  subject_id  INTEGER REFERENCES subjects(id) ON DELETE CASCADE,
+  included    BOOLEAN NOT NULL DEFAULT true,
+  PRIMARY KEY (student_id, subject_id)
+);
+
 -- ── Class access codes (Task B — student self-claim) ────────────────────────
 -- One code per class (not per student, per explicit decision) — a teacher
 -- reads it out once to the room. "Single-use per student" is enforced via
