@@ -319,6 +319,14 @@ export default function AdminUsersScreen() {
           <PageContainer>
           <ErrorBoundary fallbackLabel={`Couldn't display user "${u.username ?? u.id}"`}>
           <Card style={styles.userCard}>
+            {/* TEMPORARY DIAGNOSTIC — remove once the blank-card bug is
+                identified. Bypasses every normal style/component to answer
+                one question: does ANY text render in this card at all? If
+                this line is also invisible, it's a structural/layout issue,
+                not a data or component-styling problem. */}
+            <Text style={{ backgroundColor: 'yellow', color: 'black', fontSize: 14, padding: 4 }}>
+              DEBUG: {JSON.stringify({ id: u.id, username: u.username, full_name: u.full_name, role: u.role })}
+            </Text>
             <View style={styles.userRow}>
               <View style={styles.userInfo}>
                 <Text style={styles.userName}>{u.full_name || u.username}</Text>
