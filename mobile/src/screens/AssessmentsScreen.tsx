@@ -70,7 +70,7 @@ export default function AssessmentsScreen({ navigation }: any) {
         ListEmptyComponent={<Empty message="No assessments yet" />}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: a }) => (
-          <PageContainer>
+          <PageContainer style={{ width: '100%' }}>
           <Card>
             <View style={styles.header}>
               <View style={{ flex: 1 }}>

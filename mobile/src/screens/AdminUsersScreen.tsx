@@ -316,7 +316,7 @@ export default function AdminUsersScreen() {
         ListEmptyComponent={<Empty message="No users yet" />}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: u }) => (
-          <PageContainer>
+          <PageContainer style={{ width: '100%' }}>
           <ErrorBoundary fallbackLabel={`Couldn't display user "${u.username ?? u.id}"`}>
           <Card style={styles.userCard}>
             <View style={styles.userRow}>

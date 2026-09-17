@@ -162,7 +162,7 @@ export default function WeeklyEffortsScreen() {
         ListEmptyComponent={<Empty message="No weekly efforts recorded yet" />}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: e }) => (
-          <PageContainer>
+          <PageContainer style={{ width: '100%' }}>
           <Card>
             <View style={styles.efHeader}>
               <View>

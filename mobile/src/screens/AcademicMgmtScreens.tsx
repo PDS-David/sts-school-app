@@ -78,7 +78,7 @@ export function TermsMgmtScreen({ navigation }: any) {
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         ListEmptyComponent={<Empty message="No terms created yet" />}
         renderItem={({ item: t }) => (
-          <PageContainer>
+          <PageContainer style={{ width: '100%' }}>
             <Card>
               <View style={styles.row}>
                 <View style={{ flex: 1 }}>
@@ -210,7 +210,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
         contentContainerStyle={{ paddingHorizontal: Spacing.sm, alignItems: 'center' }}
         ListEmptyComponent={<Empty message="No subjects yet" />}
         renderItem={({ item: s }) => (
-          <PageContainer>
+          <PageContainer style={{ width: '100%' }}>
             <View style={styles.subRow}>
               <Text style={styles.subName}>{s.name}</Text>
               {s.code && <Text style={styles.subCode}>{s.code}</Text>}

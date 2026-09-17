@@ -88,7 +88,7 @@ export default function PromoteStudentsScreen() {
           ListEmptyComponent={<Empty message="No students left to decide on" />}
           contentContainerStyle={{ padding: Spacing.md, paddingTop: Spacing.sm, alignItems: 'center' }}
           renderItem={({ item: s }) => (
-            <PageContainer>
+            <PageContainer style={{ width: '100%' }}>
               <Card style={styles.row}>
                 <Text style={styles.name}>{s.full_name}</Text>
                 {!!s.admission_number && <Text style={styles.sub}>{s.admission_number}</Text>}
