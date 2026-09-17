@@ -10,6 +10,7 @@ import { Loader, Empty, Btn, Input, Badge, Card, SectionHeader } from '../compon
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { PageContainer } from '../components/layout';
 import { ConfirmDialog } from '../components/ConfirmDialog';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 
 interface User {
   id: string; username: string; full_name: string; role: string;
@@ -316,6 +317,7 @@ export default function AdminUsersScreen() {
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: u }) => (
           <PageContainer>
+          <ErrorBoundary fallbackLabel={`Couldn't display user "${u.username ?? u.id}"`}>
           <Card style={styles.userCard}>
             <View style={styles.userRow}>
               <View style={styles.userInfo}>
@@ -352,6 +354,7 @@ export default function AdminUsersScreen() {
               </View>
             </View>
           </Card>
+          </ErrorBoundary>
           </PageContainer>
         )}
       />
