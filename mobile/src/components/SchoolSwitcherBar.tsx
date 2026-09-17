@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
-import { useAdminSchool } from '../api/AdminSchoolContext';
+import { useAdminSchool, type School } from '../api/AdminSchoolContext';
 
 // Dropped at the top of every admin screen that lists/creates school-scoped
 // data (Terms, Subjects, Students, Classes, Finance, Materials, Assessments,
@@ -17,7 +17,20 @@ import { useAdminSchool } from '../api/AdminSchoolContext';
 // latter was flagged live-testing the Admin dashboard as center-content
 // space that should be for viewing/doing something, not identity/nav
 // chrome; the same principle applies to every other admin screen using
-// this component, not just the dashboard.
+// this component, not just the dashboard.// Display-only abbreviations for the switcher chips specifically — the
+// underlying schools.name value (used for report cards, invoices, and
+// anywhere else in the app) is untouched; this is purely a mobile-UI
+// space-saving concern, keyed by the stable `code` rather than matching the
+// full name string, so it doesn't silently stop working if the school's
+// official name is ever edited.
+const SHORT_LABELS: Record<string, string> = {
+  primary: 'STSNPS',
+  secondary: 'STSMC',
+};
+function shortLabel(s: School): string {
+  return SHORT_LABELS[s.code] ?? s.name;
+}
+
 export function SchoolSwitcherBar({ compact = false }: { compact?: boolean }) {
   const { schools, selectedSchoolCode, selectSchool, loading } = useAdminSchool();
 
@@ -36,7 +49,7 @@ export function SchoolSwitcherBar({ compact = false }: { compact?: boolean }) {
               activeOpacity={0.8}
             >
               <Text style={[styles.compactChipText, active && styles.chipTextActive]} numberOfLines={1}>
-                {s.name}
+                {shortLabel(s)}
               </Text>
             </TouchableOpacity>
           );
@@ -59,7 +72,7 @@ export function SchoolSwitcherBar({ compact = false }: { compact?: boolean }) {
               activeOpacity={0.8}
             >
               <Text style={[styles.chipText, active && styles.chipTextActive]} numberOfLines={1}>
-                {s.name}
+                {shortLabel(s)}
               </Text>
             </TouchableOpacity>
           );

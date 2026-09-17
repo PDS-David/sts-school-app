@@ -9,7 +9,8 @@
     "build": "tsc -p tsconfig.json",
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
-    "db:check-drift": "tsx src/db/checkDrift.ts"
+    "db:check-drift": "tsx src/db/checkDrift.ts",
+    "db:check-schools": "tsx src/db/checkSchools.ts"
   },
   "dependencies": {
     "@google/genai": "^1.48.0",
