@@ -67,6 +67,8 @@ export default function AssessmentsScreen({ navigation }: any) {
       <FlatList
         data={assessments}
         keyExtractor={a => a.id}
+        // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
+        removeClippedSubviews={false}
         ListEmptyComponent={<Empty message="No assessments yet" />}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: a }) => (

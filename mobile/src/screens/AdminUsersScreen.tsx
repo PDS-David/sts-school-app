@@ -313,6 +313,13 @@ export default function AdminUsersScreen() {
       <FlatList
         data={users}
         keyExtractor={u => u.id}
+        // Android defaults this to true (iOS defaults to false) — known to
+        // miscalculate clip bounds for elevated/shadowed views like Card
+        // (elevation: 2), producing an oversized, mostly-blank row with real
+        // content squeezed into a small visible sliver. Root cause of the
+        // long-standing AdminUsers blank-row bug that the width:100% fix
+        // (see PageContainer usage below) only partly addressed.
+        removeClippedSubviews={false}
         ListEmptyComponent={<Empty message="No users yet" />}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: u }) => (

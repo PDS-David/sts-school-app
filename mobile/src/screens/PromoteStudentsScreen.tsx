@@ -85,6 +85,8 @@ export default function PromoteStudentsScreen() {
         <FlatList
           data={students}
           keyExtractor={s => s.id}
+          // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
+          removeClippedSubviews={false}
           ListEmptyComponent={<Empty message="No students left to decide on" />}
           contentContainerStyle={{ padding: Spacing.md, paddingTop: Spacing.sm, alignItems: 'center' }}
           renderItem={({ item: s }) => (

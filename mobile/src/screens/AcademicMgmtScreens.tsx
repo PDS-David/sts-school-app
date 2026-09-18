@@ -75,6 +75,8 @@ export function TermsMgmtScreen({ navigation }: any) {
       <FlatList
         data={terms}
         keyExtractor={t => String(t.id)}
+        // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
+        removeClippedSubviews={false}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         ListEmptyComponent={<Empty message="No terms created yet" />}
         renderItem={({ item: t }) => (
@@ -207,6 +209,8 @@ export function SubjectsMgmtScreen({ navigation }: any) {
       <FlatList
         data={subjects}
         keyExtractor={s => String(s.id)}
+        // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
+        removeClippedSubviews={false}
         contentContainerStyle={{ paddingHorizontal: Spacing.sm, alignItems: 'center' }}
         ListEmptyComponent={<Empty message="No subjects yet" />}
         renderItem={({ item: s }) => (

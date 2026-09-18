@@ -159,6 +159,8 @@ export default function WeeklyEffortsScreen() {
       <FlatList
         data={efforts}
         keyExtractor={(e, i) => String(e.id ?? i)}
+        // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
+        removeClippedSubviews={false}
         ListEmptyComponent={<Empty message="No weekly efforts recorded yet" />}
         contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
         renderItem={({ item: e }) => (
