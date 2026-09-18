@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Platform,
 } from 'react-native';
@@ -63,6 +63,11 @@ export default function AdminUsersScreen() {
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal,   setModal]   = useState(false);
+  // TEMPORARY DIAGNOSTIC — remove alongside the /admin/debug-log route once
+  // the row-collapse bug is identified. Ships real onLayout() measurements
+  // to Render's logs; deduped per-user so it only fires once each, not on
+  // every re-render/recycle.
+  const loggedLayoutRef = useRef<Set<string>>(new Set());
   // Alert.alert() doesn't reliably render on web via react-native-web —
   // same documented root cause as the Log Out bug ConfirmDialog.tsx was
   // built to fix (see that file's own comment). This screen had SIX
@@ -325,9 +330,29 @@ export default function AdminUsersScreen() {
         renderItem={({ item: u }) => (
           <PageContainer style={{ width: '100%' }}>
           <ErrorBoundary fallbackLabel={`Couldn't display user "${u.username ?? u.id}"`}>
-          <Card style={styles.userCard}>
-            <View style={styles.userRow}>
-              <View style={styles.userInfo}>
+          <Card
+            style={styles.userCard}
+            onLayout={(e) => {
+              const { width, height } = e.nativeEvent.layout;
+              api.post('/admin/debug-log', { tag: 'Card', userId: u.id, width, height }).catch(() => {});
+            }}
+          >
+            <View
+              style={styles.userRow}
+              onLayout={(e) => {
+                const { width, height } = e.nativeEvent.layout;
+                api.post('/admin/debug-log', { tag: 'userRow', userId: u.id, width, height }).catch(() => {});
+              }}
+            >
+              <View
+                style={styles.userInfo}
+                onLayout={(e) => {
+                  if (loggedLayoutRef.current.has(u.id)) return;
+                  loggedLayoutRef.current.add(u.id);
+                  const { width, height } = e.nativeEvent.layout;
+                  api.post('/admin/debug-log', { tag: 'userInfo', userId: u.id, username: u.username, width, height }).catch(() => {});
+                }}
+              >
                 <Text style={styles.userName}>{u.full_name || u.username}</Text>
                 <Text style={styles.userMeta}>@{u.username}  ·  {u.school_code ?? 'All'}</Text>
                 <View style={{ flexDirection: 'row', gap: 4, marginTop: 4 }}>

@@ -75,8 +75,8 @@ export function Input({ label, error, style, multiline, numberOfLines, ...rest }
 }
 
 // ── Card ──────────────────────────────────────────────────────────────────────
-export function Card({ children, style }: { children: React.ReactNode; style?: StyleProp<ViewStyle> }) {
-  return <View style={[styles.card, style]}>{children}</View>;
+export function Card({ children, style, onLayout }: { children: React.ReactNode; style?: StyleProp<ViewStyle>; onLayout?: (e: any) => void }) {
+  return <View style={[styles.card, style]} onLayout={onLayout}>{children}</View>;
 }
 
 // ── Badge ─────────────────────────────────────────────────────────────────────

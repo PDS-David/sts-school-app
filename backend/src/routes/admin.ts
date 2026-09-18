@@ -11,6 +11,17 @@ const router = Router();
 router.use(requireAuth, requireRole('admin'));
 
 // ══════════════════════════════════════════
+// TEMPORARY DIAGNOSTIC — remove once the AdminUsers row-collapse bug is
+// identified. Ships real onLayout() measurements from the device straight
+// to Render's logs (visible in the dashboard's Logs tab) — no USB cable or
+// wireless ADB needed, since the app already has a working network path to
+// this backend. See AdminUsersScreen.tsx for what calls this.
+router.post('/debug-log', async (req, res) => {
+  console.log('[CLIENT DEBUG]', JSON.stringify(req.body));
+  res.json({ ok: true });
+});
+
+// ══════════════════════════════════════════
 // USER MANAGEMENT
 // ══════════════════════════════════════════
 router.get('/users', async (req, res) => {
