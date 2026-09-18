@@ -13,6 +13,7 @@ import { PageContainer, useIsWide } from '../components/layout';
 // TERMS
 // ══════════════════════════════════════════
 export function TermsMgmtScreen({ navigation }: any) {
+  const isWide = useIsWide();
   const { selectedSchoolCode } = useAdminSchool();
   const [terms,   setTerms]   = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -77,7 +78,7 @@ export function TermsMgmtScreen({ navigation }: any) {
         keyExtractor={t => String(t.id)}
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
-        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
+        contentContainerStyle={{ padding: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
         ListEmptyComponent={<Empty message="No terms created yet" />}
         renderItem={({ item: t }) => (
           <PageContainer style={{ width: '100%' }}>
@@ -211,7 +212,7 @@ export function SubjectsMgmtScreen({ navigation }: any) {
         keyExtractor={s => String(s.id)}
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
-        contentContainerStyle={{ paddingHorizontal: Spacing.sm, alignItems: 'center' }}
+        contentContainerStyle={{ paddingHorizontal: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
         ListEmptyComponent={<Empty message="No subjects yet" />}
         renderItem={({ item: s }) => (
           <PageContainer style={{ width: '100%' }}>

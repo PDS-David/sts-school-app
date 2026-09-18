@@ -8,13 +8,14 @@ import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
-import { PageContainer } from '../components/layout';
+import { PageContainer, useIsWide } from '../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 const WEEKS = Array.from({ length: 13 }, (_, i) => i + 1);
 const FLAG_OPTIONS = ['needs_followup', 'excellent_progress', 'attendance_concern', 'conduct_issue'];
 
 export default function WeeklyEffortsScreen() {
+  const isWide = useIsWide();
   const { user } = useAuth();
   const { selectedWardId } = useWards();
   const isTeacherRole = user?.role === 'teacher';
@@ -162,7 +163,7 @@ export default function WeeklyEffortsScreen() {
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
         ListEmptyComponent={<Empty message="No weekly efforts recorded yet" />}
-        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
+        contentContainerStyle={{ padding: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
         renderItem={({ item: e }) => (
           <PageContainer style={{ width: '100%' }}>
           <Card>

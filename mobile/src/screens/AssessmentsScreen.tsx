@@ -7,13 +7,14 @@ import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
-import { PageContainer } from '../components/layout';
+import { PageContainer, useIsWide } from '../components/layout';
 
 const STATUS_COLOR: Record<string, string> = {
   draft: Colors.textSub, open: Colors.success, closed: Colors.error,
 };
 
 export default function AssessmentsScreen({ navigation }: any) {
+  const isWide = useIsWide();
   const { user } = useAuth();
   // Named isAdmin, not isTeacher: a teacher no longer has 'assessments.read'
   // (see rbac.ts) and never reaches this screen at all — only a student
@@ -70,7 +71,7 @@ export default function AssessmentsScreen({ navigation }: any) {
         // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
         removeClippedSubviews={false}
         ListEmptyComponent={<Empty message="No assessments yet" />}
-        contentContainerStyle={{ padding: Spacing.sm, alignItems: 'center' }}
+        contentContainerStyle={{ padding: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
         renderItem={({ item: a }) => (
           <PageContainer style={{ width: '100%' }}>
           <Card>

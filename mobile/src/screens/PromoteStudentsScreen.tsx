@@ -4,7 +4,7 @@ import api from '../api/client';
 import { Card, Btn, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAuth } from '../api/AuthContext';
-import { PageContainer } from '../components/layout';
+import { PageContainer, useIsWide } from '../components/layout';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 
 interface StudentRow { id: string; full_name: string; admission_number: string | null; class_name: string; }
@@ -21,6 +21,7 @@ interface StudentRow { id: string; full_name: string; admission_number: string |
 // promoted student's Term 1 report would show as their class if reprinted
 // later. That trade-off was made deliberately, not missed.
 export default function PromoteStudentsScreen() {
+  const isWide = useIsWide();
   const { user } = useAuth();
   const [students, setStudents] = useState<StudentRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -88,7 +89,7 @@ export default function PromoteStudentsScreen() {
           // See AdminUsersScreen.tsx's FlatList for why this is set explicitly.
           removeClippedSubviews={false}
           ListEmptyComponent={<Empty message="No students left to decide on" />}
-          contentContainerStyle={{ padding: Spacing.md, paddingTop: Spacing.sm, alignItems: 'center' }}
+          contentContainerStyle={{ padding: Spacing.md, paddingTop: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
           renderItem={({ item: s }) => (
             <PageContainer style={{ width: '100%' }}>
               <Card style={styles.row}>
