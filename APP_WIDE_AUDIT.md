@@ -780,6 +780,19 @@ new screen combining a FlatList, `contentContainerStyle={{ alignItems:
 `alignItems: 'center'` conditional on `useIsWide()` from the start,
 rather than risk reintroducing this exact bug.
 
+**Follow-up UX redesign (commit `9899997`, same session):** once
+rendering correctly, the project owner flagged the row's 4 unlabeled
+action icons (pencil/pause/key/trash) as genuinely hard to distinguish,
+and separately noted the row-per-user design wouldn't scale to a school
+with 200+ users regardless of icon clarity. Redesigned to a tap-to-select
+pattern: rows now show only name + badges + a chevron; tapping one opens
+a bottom sheet listing every action as a labelled row (Edit Details,
+Deactivate/Reactivate Account, Reset Password/Reissue Activation Code,
+Delete User). Also added a search box and role-filter chips above the
+list, since "select a user" needed to stay tractable at scale too, not
+just "select an action." No backend changes; every existing handler
+function reused unchanged.
+
 ---
 
 
