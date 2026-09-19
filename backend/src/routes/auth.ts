@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
   const { rows } = await query(
     `SELECT id,username,password_hash,role,school_code,
             assigned_class,is_active,must_change_pw,access_expires_at,
-            revocation_reason,must_set_security_question
+            revocation_reason,must_set_security_question,pending_admin_review
      FROM users WHERE username = $1`,
     [username.trim().toLowerCase()],
   );
@@ -103,7 +103,7 @@ router.post('/login', async (req, res) => {
     // so it can offer "lock/unlock my class" only where it actually applies.
     // It was already being fetched and put into the JWT payload above, just
     // never actually returned to the client for the app to read directly.
-    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds },
+    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds, pending_admin_review: !!user.pending_admin_review },
   });
 });
 
@@ -146,6 +146,18 @@ router.post('/refresh', async (req, res) => {
 });
 
 // ── POST /auth/logout ─────────────────────────────────────────────────────────
+// Small, role-agnostic "what's my own current status" check — built
+// specifically so PendingApprovalScreen.tsx can offer a real "Check Again"
+// button instead of asking someone to log out and back in repeatedly just
+// to see if an admin has approved their self-registered account yet. Kept
+// minimal on purpose; expand if another screen needs more of its own state
+// fetched this way later.
+router.get('/me', requireAuth, async (req, res) => {
+  const { rows } = await query('SELECT pending_admin_review FROM users WHERE id=$1', [req.user!.id]);
+  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
+  return res.json({ pending_admin_review: !!rows[0].pending_admin_review });
+});
+
 router.post('/logout', requireAuth, async (req, res) => {
   await query('UPDATE users SET refresh_token=NULL WHERE id=$1', [req.user!.id]);
   return res.json({ ok: true });
@@ -494,12 +506,109 @@ router.post('/self-claim', async (req, res) => {
   return res.status(201).json({ username: newUser.username });
 });
 
-// NOTE: There is deliberately no self-signup route for teacher/parent/admin
-// accounts — those are only ever created by an admin (see POST
-// /admin/users), which also lets the admin set an access_expires_at window
-// for that credential. Removing that route was a decision made explicitly
-// with the school owner — do not re-add it without also re-adding the
-// admin-issued-invite-code guard that was discussed alongside it. Student
+// UPDATE (this session): the note that used to be here said self-signup for
+// teacher/parent/admin was deliberately removed and should not be re-added
+// without an admin-issued-invite-code guard. That guard was discussed but
+// never built. Explicit project-owner decision this session reverses that:
+// student/parent/teacher (never admin) can now self-register directly, with
+// NO invite code — identity verification is intentionally light (full name +
+// phone, plus an admission number for student/parent specifically, matched
+// against an existing enrollment record). The actual safeguard is
+// `pending_admin_review`: a self-registered account can log in immediately,
+// but sees nothing class-related until an admin approves it (see
+// POST /admin/users/:id/approve in admin.ts, and RootNavigator.tsx's
+// pending-review phase on the mobile side). If this is ever revisited again,
+// re-read this note and AGENT_CONTINUATION.md's "Confirmed product intent"
+// section first — this is now the third time this specific tradeoff has
+// been discussed and decided.
+router.post('/self-register', async (req, res) => {
+  const { role, full_name, phone, school_code, username, password, admission_number, ward_admission_number } = req.body as {
+    role?: string; full_name?: string; phone?: string; school_code?: string;
+    username?: string; password?: string; admission_number?: string; ward_admission_number?: string;
+  };
+
+  if (!role || !['student', 'parent', 'teacher'].includes(role)) {
+    return res.status(400).json({ error: 'role must be student, parent, or teacher' });
+  }
+  if (!full_name?.trim() || !phone?.trim() || !school_code?.trim() || !username?.trim() || !password) {
+    return res.status(400).json({ error: 'full_name, phone, school_code, username, and password are required' });
+  }
+  if (password.length < 8) {
+    return res.status(400).json({ error: 'Password must be at least 8 characters' });
+  }
+  const uname = username.trim().toLowerCase();
+  const { rows: takenRows } = await query('SELECT id FROM users WHERE username=$1', [uname]);
+  if (takenRows[0]) {
+    return res.status(409).json({ error: 'That username is already taken — pick another.' });
+  }
+
+  let studentIdToLink: string | null = null; // student role only
+  let wardStudentId: string | null = null;   // parent role only
+
+  if (role === 'student') {
+    if (!admission_number?.trim()) {
+      return res.status(400).json({ error: 'admission_number is required for student self-registration' });
+    }
+    const { rows } = await query(
+      'SELECT id FROM students WHERE school_code=$1 AND admission_number=$2 AND user_id IS NULL',
+      [school_code, admission_number.trim()],
+    );
+    if (!rows[0]) {
+      return res.status(404).json({ error: "We couldn't find a matching enrollment record for that admission number at this school, or it already has an account. Contact your school admin." });
+    }
+    studentIdToLink = rows[0].id;
+  }
+
+  if (role === 'parent') {
+    if (!ward_admission_number?.trim()) {
+      return res.status(400).json({ error: "ward_admission_number is required for parent self-registration" });
+    }
+    const { rows } = await query(
+      'SELECT id FROM students WHERE school_code=$1 AND admission_number=$2',
+      [school_code, ward_admission_number.trim()],
+    );
+    if (!rows[0]) {
+      return res.status(404).json({ error: "We couldn't find a matching enrollment record for that admission number at this school. Contact your school admin." });
+    }
+    wardStudentId = rows[0].id;
+
+    // Same phone-based dedupe as parentProvisioning.ts (admin-side auto-link
+    // on student creation) — if a parent account with this phone already
+    // exists, self-registration must not silently take it over (anyone
+    // claiming the same phone number could otherwise reset a stranger's
+    // password with zero proof). Reject and point to account recovery instead.
+    const last10 = phone.replace(/\D/g, '').slice(-10);
+    const { rows: existingParent } = await query(
+      `SELECT id FROM users WHERE role='parent' AND right(regexp_replace(phone,'\\D','','g'),10)=$1`,
+      [last10],
+    );
+    if (existingParent[0]) {
+      return res.status(409).json({ error: 'An account already exists for this phone number. Use Forgot Password to recover it, or contact your school admin.' });
+    }
+  }
+
+  const hash = await bcrypt.hash(password, 10);
+  const { rows: newUserRows } = await query(
+    `INSERT INTO users(username,password_hash,role,full_name,phone,school_code,pending_admin_review,must_change_pw)
+     VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE) RETURNING id,username`,
+    [uname, hash, role, full_name.trim(), phone.trim(), school_code],
+  );
+  const newUser = newUserRows[0];
+
+  if (studentIdToLink) {
+    await query('UPDATE students SET user_id=$1 WHERE id=$2', [newUser.id, studentIdToLink]);
+  }
+  if (wardStudentId) {
+    await query(
+      'INSERT INTO parent_wards(parent_id, student_id) VALUES ($1,$2) ON CONFLICT DO NOTHING',
+      [newUser.id, wardStudentId],
+    );
+  }
+
+  await audit(null, 'self_register', 'user', newUser.id, `role=${role} school=${school_code}`);
+  return res.status(201).json({ username: newUser.username });
+});
+
 // ── Staff account activation (Task C) ────────────────────────────────────────
 // Public (no login) — replaces admin generating and manually relaying a temp
 // password for new teacher/staff accounts (see POST /admin/users). Unlike

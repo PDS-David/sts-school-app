@@ -17,6 +17,16 @@ export interface User {
   // Added for the class-lock feature — which class (if any) this user is
   // the class teacher for. Only meaningful when role === 'teacher'.
   assigned_class?: string | null;
+  // Set on accounts created via POST /auth/self-register (student/parent/
+  // teacher choosing their own username+password directly, no admin-issued
+  // code). Persists across app restarts as part of the stored user object
+  // (unlike mustChangePw/mustSetSecurityQuestion below, which are always
+  // fetched fresh from the server on login only) — an unapproved account
+  // should keep showing the waiting screen every time it's opened, not just
+  // immediately after login. Cleared server-side by
+  // POST /admin/users/:id/approve; RootNavigator.tsx checks this directly
+  // to gate into the pending-review phase.
+  pending_admin_review?: boolean;
 }
 
 interface AuthState {
@@ -43,6 +53,11 @@ interface AuthState {
   // do automatically as part of succeeding.
   confirmPasswordChanged: () => void;
   confirmSecurityQuestionSet: () => void;
+  // For PendingApprovalScreen.tsx's "Check Again" button — re-fetches the
+  // fresh pending_admin_review value from GET /auth/me and updates the
+  // stored user object (context + AsyncStorage) if it's changed, without
+  // requiring a full log-out/log-in cycle. Returns the fresh value.
+  refreshApprovalStatus: () => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthState>({} as AuthState);
@@ -170,11 +185,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
   const confirmSecurityQuestionSet = () => setMustSetSecurityQuestion(false);
 
+  const refreshApprovalStatus = async (): Promise<boolean> => {
+    const { data } = await api.get('/auth/me');
+    const stillPending = !!data.pending_admin_review;
+    if (user && user.pending_admin_review !== stillPending) {
+      const updated = { ...user, pending_admin_review: stillPending };
+      setUser(updated);
+      await AsyncStorage.setItem('user', JSON.stringify(updated));
+    }
+    return stillPending;
+  };
+
   return (
     <AuthContext.Provider value={{
       user, mustChangePw, mustSetSecurityQuestion, loading,
       login, logout, changePassword, setSecurityQuestion,
-      confirmPasswordChanged, confirmSecurityQuestionSet,
+      confirmPasswordChanged, confirmSecurityQuestionSet, refreshApprovalStatus,
     }}>
       {children}
     </AuthContext.Provider>

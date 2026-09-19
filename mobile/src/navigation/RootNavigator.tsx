@@ -8,6 +8,8 @@ import LoginScreen from '../screens/LoginScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import StudentSelfClaimScreen from '../screens/StudentSelfClaimScreen';
 import ActivateAccountScreen from '../screens/ActivateAccountScreen';
+import SelfRegisterScreen from '../screens/SelfRegisterScreen';
+import PendingApprovalScreen from '../screens/PendingApprovalScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
@@ -66,7 +68,12 @@ export default function RootNavigator() {
   // work without this because ChangePassword-forced and
   // SecurityQuestionSetup-forced share no screen names, so the route
   // reset was accidental, not because the underlying pattern was safe.
-  const phase = !user ? 'guest' : mustChangePw ? 'change-pw' : mustSetSecurityQuestion ? 'security-q' : 'app';
+  const phase = !user
+    ? 'guest'
+    : mustChangePw ? 'change-pw'
+    : mustSetSecurityQuestion ? 'security-q'
+    : user.pending_admin_review ? 'pending-review'
+    : 'app';
 
   return (
     <Stack.Navigator id={undefined} key={phase} screenOptions={{ headerShown: false }}>
@@ -76,6 +83,7 @@ export default function RootNavigator() {
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
           <Stack.Screen name="StudentSelfClaim" component={StudentSelfClaimScreen} />
           <Stack.Screen name="ActivateAccount" component={ActivateAccountScreen} />
+          <Stack.Screen name="SelfRegister" component={SelfRegisterScreen} />
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} />
         </>
@@ -89,6 +97,11 @@ export default function RootNavigator() {
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} initialParams={{ forced: true }} />
       ) : mustSetSecurityQuestion ? (
         <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} initialParams={{ forced: true }} />
+      ) : user.pending_admin_review ? (
+        // Same "this branch IS the whole app while it's true" pattern as
+        // mustChangePw/mustSetSecurityQuestion above — no other screen
+        // registered here on purpose.
+        <Stack.Screen name="PendingApproval" component={PendingApprovalScreen} />
       ) : (
         <>
           <Stack.Screen name="App" component={RoleRouter} />

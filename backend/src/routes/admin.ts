@@ -19,6 +19,7 @@ router.get('/users', async (req, res) => {
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
                     u.phone,u.email,
                     (u.password_hash IS NULL) AS pending_activation,
+                    u.pending_admin_review,
                     COALESCE(array_agg(ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids
              FROM users u
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
@@ -216,6 +217,17 @@ router.post('/users/:id/reset-password', async (req, res) => {
   await query('UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2', [hash, req.params.id]);
   await audit(req.user!, 'reset_password', 'user', req.params.id);
   return res.json({ ok: true, temporary_password: pw });
+});
+
+// Clears the pending_admin_review flag set by POST /auth/self-register —
+// the account already has its own real password (unlike Task C's
+// activation-code flow), so there's nothing to issue here, just a review
+// gate to lift. Admin should have already checked/edited the account's
+// class/subject assignment via the normal Edit Details flow before this.
+router.post('/users/:id/approve', async (req, res) => {
+  await query('UPDATE users SET pending_admin_review=FALSE WHERE id=$1', [req.params.id]);
+  await audit(req.user!, 'approve_self_registered_user', 'user', req.params.id);
+  return res.json({ ok: true });
 });
 
 router.delete('/users/:id', async (req, res) => {

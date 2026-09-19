@@ -25,6 +25,10 @@ interface User {
   // flow and hasn't been activated yet (no password set). Used to show
   // "Reissue Activation Code" instead of "Reset Password" for that account.
   pending_activation?: boolean;
+  // Set for accounts created via POST /auth/self-register — has a real
+  // password already, but still needs an admin's one-time approval before
+  // it gets real access (see the "Approve Access" action below).
+  pending_admin_review?: boolean;
 }
 
 // 'finance_admin' deliberately excluded from SCHOOL_ROLES/EXPIRY_ROLES below,
@@ -294,6 +298,28 @@ export default function AdminUsersScreen() {
     });
   };
 
+  // For a self-registered account (POST /auth/self-register) — already has
+  // its own real password, just needs this one-time review lifted. Suggests
+  // checking/setting class or subject assignment first via Edit Details,
+  // since approving alone doesn't assign either.
+  const handleApprove = (u: User) => {
+    setConfirmDialog({
+      title: 'Approve Access',
+      message: `Approve ${u.username}'s account? Make sure their class/subjects are set correctly first (Edit Details) — approving only lifts the review flag, it doesn't assign anything.`,
+      confirmLabel: 'Approve',
+      destructive: false,
+      onConfirm: async () => {
+        setConfirmDialog(null);
+        try {
+          await api.post(`/admin/users/${u.id}/approve`, {});
+          fetchUsers();
+        } catch (e: any) {
+          setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not approve this user' });
+        }
+      },
+    });
+  };
+
   const handleDelete = (u: User) => {
     setConfirmDialog({
       title: 'Delete User',
@@ -371,6 +397,7 @@ export default function AdminUsersScreen() {
                   <Badge label={u.role} color={Colors.roleBadge[u.role as keyof typeof Colors.roleBadge] ?? Colors.primary} />
                   {!u.is_active && <Badge label="INACTIVE" color={Colors.error} />}
                   {u.pending_activation && <Badge label="PENDING ACTIVATION" color={Colors.warning} />}
+                  {u.pending_admin_review && <Badge label="AWAITING REVIEW" color={Colors.accent} />}
                   {u.assigned_class && <Badge label={u.assigned_class} color={Colors.textSub} />}
                   {EXPIRY_ROLES.includes(u.role) && (
                     <Badge
@@ -400,6 +427,16 @@ export default function AdminUsersScreen() {
           <TouchableOpacity activeOpacity={1} style={styles.sheet} onPress={() => {}}>
             <Text style={styles.sheetName}>{actionsUser?.full_name || actionsUser?.username}</Text>
             <Text style={styles.sheetMeta}>@{actionsUser?.username} · {actionsUser?.role}</Text>
+
+            {actionsUser?.pending_admin_review && (
+              <TouchableOpacity
+                style={styles.sheetRow}
+                onPress={() => { const u = actionsUser!; setActionsUser(null); handleApprove(u); }}
+              >
+                <Ionicons name="checkmark-circle" size={20} color={Colors.success} />
+                <Text style={[styles.sheetRowText, { color: Colors.success }]}>Approve Access</Text>
+              </TouchableOpacity>
+            )}
 
             <TouchableOpacity
               style={styles.sheetRow}

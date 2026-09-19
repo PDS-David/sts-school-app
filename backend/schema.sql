@@ -760,6 +760,16 @@ ALTER TABLE students DROP CONSTRAINT IF EXISTS students_school_admission_unique;
 ALTER TABLE students ADD CONSTRAINT students_school_admission_unique
   UNIQUE (school_code, admission_number);
 
+-- Self-registration (student/parent/teacher choose their own username and
+-- password directly, no admin-issued activation code or class code needed —
+-- see POST /auth/self-register). An account created this way can log in
+-- immediately but sees only a waiting screen until an admin reviews and
+-- approves it (POST /admin/users/:id/approve) — this is the actual gate,
+-- not identity verification at signup time, which is intentionally light
+-- per explicit project-owner decision. Distinct from `pending_activation`
+-- (Task C, admin-created-but-no-password-yet) — this flag is for an account
+-- that already has a real, self-chosen password.
+ALTER TABLE users ADD COLUMN IF NOT EXISTS pending_admin_review BOOLEAN DEFAULT FALSE;
 
 
 
