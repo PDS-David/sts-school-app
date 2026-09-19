@@ -712,7 +712,77 @@ bugs.
 
 ---
 
-## Verification standard for every part (non-negotiable, matches the AISchoolOnair audit's own standard)
+## Part 5 — AdminUsers blank/collapsed-row bug (long-standing, now resolved)
+
+Not part of the original 4-part per-role plan — a separate, long-standing
+bug the project owner had already been living with before this audit
+started, surfaced again during live production testing. Documented here
+in full because it took three attempts across many commits to actually
+resolve, and the final root cause is a real, reusable lesson for this
+codebase's shared layout components.
+
+**Symptom:** Admin → More → Users showed correctly-sized white card rows
+with no visible name, badges, or (later) only a tiny sliver of colored
+content peeking out at the very bottom edge of each row.
+
+**Attempt 1 — `width: '100%'` on `PageContainer`** (commit `8754734`,
+another session): diagnosed as `PageContainer` having no explicit width
+under the FlatList's `alignItems: 'center'`. A real bug, correctly fixed
+in principle — but insufficient alone, as later measured data proved.
+
+**Attempt 2 — `removeClippedSubviews={false}`** (commit `88af7e0`, this
+session): a reasonable theory given Android's different default for this
+prop and its known interaction with elevated/shadowed views, but the
+project owner confirmed "still same" after rebuilding — ruled out.
+
+**Attempt 3 — actual measured data, then the real fix** (commits
+`5969fc4` → `ebceed0`, this session): with no USB cable or wireless-ADB
+path available (the phone doubles as the dev machine's hotspot, so it
+can't simultaneously join a local network as a debugging client), shipped
+real `onLayout()` measurements from the device to Render's logs via a
+temporary `POST /admin/debug-log` route — using the app's existing
+network path to the backend instead of a device-debugging tool. The
+actual numbers: `userInfo` (the `flex:1` name/meta/badges container)
+measured `width: 0` in every row, with degenerate heights of 460–563px
+(text wrapping one character per line into zero available width). `Card`
+itself measured only 126–158px wide — nowhere near a real phone screen.
+
+**Real root cause:** `contentContainerStyle={{ alignItems: 'center' }}`
+on these FlatLists was applied unconditionally, but it only exists to
+support wide-screen/web centering (matching `PageContainer`'s own
+wide-screen max-width+center behavior). On a phone, `alignItems: 'center'`
+on a column flex container sizes each child to its own intrinsic content
+width instead of stretching — combined with `PageContainer`'s
+`width: '100%'` from Attempt 1, this created a circular reference ("be
+100% of a parent whose own width is *also* determined by content").
+Different layout resolution paths handled that ambiguity inconsistently:
+the flexible name section collapsed to 0 while the non-shrinking icon
+buttons kept their real size — exactly matching both the fully-invisible
+symptom and the later colored-sliver-at-bottom symptom.
+
+**Fix:** `alignItems: 'center'` made conditional on `useIsWide()` in all
+five files sharing this exact pattern — `AdminUsersScreen.tsx`,
+`WeeklyEffortsScreen.tsx`, `AssessmentsScreen.tsx`,
+`PromoteStudentsScreen.tsx`, and both lists in `AcademicMgmtScreens.tsx`
+(Terms and Subjects). Phones now get React Native's default `'stretch'`
+behavior (full width, zero ambiguity); wide/web layouts keep the
+centering they were originally built for. The temporary `onLayout`
+diagnostic wiring and the `/admin/debug-log` route were removed once the
+root cause was confirmed.
+
+**Confirmed fixed** by the project owner directly on a live device
+screenshot after rebuilding on `ebceed0` — names, badges, and all action
+icons rendering correctly across every row.
+
+**Lesson for future FlatList+PageContainer usage in this codebase:** any
+new screen combining a FlatList, `contentContainerStyle={{ alignItems:
+'center' }}`, and `PageContainer`-wrapped rows should make that
+`alignItems: 'center'` conditional on `useIsWide()` from the start,
+rather than risk reintroducing this exact bug.
+
+---
+
+
 
 - Every finding is read directly from the actual current code, not
   inferred from a filename, a comment, or what a doc claims.
