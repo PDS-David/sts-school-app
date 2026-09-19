@@ -77,6 +77,14 @@ export default function AdminUsersScreen() {
     title: string; message: string; confirmLabel: string; destructive: boolean; onConfirm: () => void;
   } | null>(null);
   const [editUser,setEditUser]= useState<User | null>(null);
+  // Redesign: rows no longer carry 4 tiny action icons each (unreadable,
+  // and unworkable once a school has 200+ users on one screen). Tapping a
+  // row now opens this — a single sheet listing every action as a labelled
+  // row, for that one user. Edit/Deactivate/Reset-Password/Delete all move
+  // here instead of being separate icons.
+  const [actionsUser, setActionsUser] = useState<User | null>(null);
+  const [search, setSearch] = useState('');
+  const [roleFilter, setRoleFilter] = useState<string>('all');
   const [schools, setSchools] = useState<{code:string; name:string}[]>([]);
   const [classesBySchool, setClassesBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
   const [subjectsBySchool, setSubjectsBySchool] = useState<Record<string, {id:number; name:string}[]>>({});
@@ -126,6 +134,14 @@ export default function AdminUsersScreen() {
 
   const availableClasses = classesBySchool[form.school_code] ?? [];
   const availableSubjects = subjectsBySchool[form.school_code] ?? [];
+
+  const filteredUsers = users.filter(u => {
+    if (roleFilter !== 'all' && u.role !== roleFilter) return false;
+    if (!search.trim()) return true;
+    const q = search.trim().toLowerCase();
+    return (u.full_name ?? '').toLowerCase().includes(q) || u.username.toLowerCase().includes(q);
+  });
+
   // A class teacher's username is hard-coded from their assigned class
   // (see classTeacherUsername() above) — not admin-typed. Only applies to
   // *new* teacher accounts with a class picked; a subject-only teacher
@@ -309,10 +325,29 @@ export default function AdminUsersScreen() {
           <Ionicons name="person-add" size={20} color={Colors.white} />
           <Text style={styles.addBtnText}>Add User</Text>
         </TouchableOpacity>
+        <Input
+          placeholder="Search name or username..."
+          value={search}
+          onChangeText={setSearch}
+          style={{ marginTop: Spacing.sm, marginBottom: 0 }}
+        />
+        <View style={styles.roleFilterRow}>
+          {['all', ...ROLES].map(r => (
+            <TouchableOpacity
+              key={r}
+              onPress={() => setRoleFilter(r)}
+              style={[styles.roleChip, roleFilter === r && styles.roleChipActive]}
+            >
+              <Text style={[styles.roleChipText, roleFilter === r && styles.roleChipTextActive]}>
+                {r === 'all' ? 'All' : r}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </PageContainer>
 
       <FlatList
-        data={users}
+        data={filteredUsers}
         keyExtractor={u => u.id}
         // Android defaults this to true (iOS defaults to false) — known to
         // miscalculate clip bounds for elevated/shadowed views like Card
@@ -321,17 +356,18 @@ export default function AdminUsersScreen() {
         // long-standing AdminUsers blank-row bug that the width:100% fix
         // (see PageContainer usage below) only partly addressed.
         removeClippedSubviews={false}
-        ListEmptyComponent={<Empty message="No users yet" />}
+        ListEmptyComponent={<Empty message={users.length === 0 ? 'No users yet' : 'No users match your search/filter'} />}
         contentContainerStyle={{ padding: Spacing.sm, ...(isWide ? { alignItems: 'center' as const } : null) }}
         renderItem={({ item: u }) => (
           <PageContainer style={{ width: '100%' }}>
           <ErrorBoundary fallbackLabel={`Couldn't display user "${u.username ?? u.id}"`}>
+          <TouchableOpacity onPress={() => setActionsUser(u)} activeOpacity={0.7}>
           <Card style={styles.userCard}>
             <View style={styles.userRow}>
               <View style={styles.userInfo}>
                 <Text style={styles.userName}>{u.full_name || u.username}</Text>
                 <Text style={styles.userMeta}>@{u.username}  ·  {u.school_code ?? 'All'}</Text>
-                <View style={{ flexDirection: 'row', gap: 4, marginTop: 4 }}>
+                <View style={{ flexDirection: 'row', gap: 4, marginTop: 4, flexWrap: 'wrap' }}>
                   <Badge label={u.role} color={Colors.roleBadge[u.role as keyof typeof Colors.roleBadge] ?? Colors.primary} />
                   {!u.is_active && <Badge label="INACTIVE" color={Colors.error} />}
                   {u.pending_activation && <Badge label="PENDING ACTIVATION" color={Colors.warning} />}
@@ -344,28 +380,71 @@ export default function AdminUsersScreen() {
                   )}
                 </View>
               </View>
-              <View style={styles.actions}>
-                <TouchableOpacity onPress={() => openEdit(u)} style={styles.iconBtn}>
-                  <Ionicons name="pencil" size={18} color={Colors.primary} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleToggle(u)} style={styles.iconBtn}>
-                  <Ionicons name={u.is_active ? 'pause-circle' : 'play-circle'} size={18} color={Colors.warning} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => (u.pending_activation ? handleReissueCode(u) : handleResetPw(u))} style={styles.iconBtn}>
-                  <Ionicons name={u.pending_activation ? 'refresh-circle' : 'key'} size={18} color={Colors.accent} />
-                </TouchableOpacity>
-                {u.role !== 'admin' && (
-                  <TouchableOpacity onPress={() => handleDelete(u)} style={styles.iconBtn}>
-                    <Ionicons name="trash" size={18} color={Colors.error} />
-                  </TouchableOpacity>
-                )}
-              </View>
+              <Ionicons name="chevron-forward" size={20} color={Colors.textSub} />
             </View>
           </Card>
+          </TouchableOpacity>
           </ErrorBoundary>
           </PageContainer>
         )}
       />
+
+      {/* Actions sheet — opened by tapping a row. Replaces the old 4-icon
+          row: select a user first (tap), then select the action (tap a
+          labelled row here), rather than parsing tiny icons at a glance —
+          the labels also make clear which action actually applies (e.g.
+          "Reissue Activation Code" instead of "Reset Password" for an
+          account that has no password yet to reset). */}
+      <Modal visible={!!actionsUser} animationType="fade" transparent onRequestClose={() => setActionsUser(null)}>
+        <TouchableOpacity style={styles.sheetOverlay} activeOpacity={1} onPress={() => setActionsUser(null)}>
+          <TouchableOpacity activeOpacity={1} style={styles.sheet} onPress={() => {}}>
+            <Text style={styles.sheetName}>{actionsUser?.full_name || actionsUser?.username}</Text>
+            <Text style={styles.sheetMeta}>@{actionsUser?.username} · {actionsUser?.role}</Text>
+
+            <TouchableOpacity
+              style={styles.sheetRow}
+              onPress={() => { const u = actionsUser!; setActionsUser(null); openEdit(u); }}
+            >
+              <Ionicons name="pencil" size={20} color={Colors.primary} />
+              <Text style={styles.sheetRowText}>Edit Details</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.sheetRow}
+              onPress={() => { const u = actionsUser!; setActionsUser(null); handleToggle(u); }}
+            >
+              <Ionicons name={actionsUser?.is_active ? 'pause-circle' : 'play-circle'} size={20} color={Colors.warning} />
+              <Text style={styles.sheetRowText}>{actionsUser?.is_active ? 'Deactivate Account' : 'Reactivate Account'}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.sheetRow}
+              onPress={() => {
+                const u = actionsUser!;
+                setActionsUser(null);
+                u.pending_activation ? handleReissueCode(u) : handleResetPw(u);
+              }}
+            >
+              <Ionicons name={actionsUser?.pending_activation ? 'refresh-circle' : 'key'} size={20} color={Colors.accent} />
+              <Text style={styles.sheetRowText}>
+                {actionsUser?.pending_activation ? 'Reissue Activation Code' : 'Reset Password'}
+              </Text>
+            </TouchableOpacity>
+
+            {actionsUser?.role !== 'admin' && (
+              <TouchableOpacity
+                style={styles.sheetRow}
+                onPress={() => { const u = actionsUser!; setActionsUser(null); handleDelete(u); }}
+              >
+                <Ionicons name="trash" size={20} color={Colors.error} />
+                <Text style={[styles.sheetRowText, { color: Colors.error }]}>Delete User</Text>
+              </TouchableOpacity>
+            )}
+
+            <Btn label="Close" onPress={() => setActionsUser(null)} variant="outline" style={{ marginTop: Spacing.md }} />
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </Modal>
 
       {/* Add/Edit Modal */}
       <Modal visible={modal} animationType="slide" onRequestClose={() => setModal(false)}>
@@ -522,8 +601,17 @@ const styles = StyleSheet.create({
   userInfo:    { flex: 1 },
   userName:    { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },
   userMeta:    { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
-  actions:     { flexDirection: 'row', gap: 2 },
-  iconBtn:     { padding: 6 },
+  roleFilterRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: Spacing.sm, marginBottom: Spacing.xs },
+  roleChip:    { paddingHorizontal: 10, paddingVertical: 4, borderRadius: Radius.md, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.white },
+  roleChipActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  roleChipText: { fontSize: Fonts.sizes.xs, color: Colors.text, fontWeight: '600', textTransform: 'capitalize' },
+  roleChipTextActive: { color: Colors.white },
+  sheetOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end' },
+  sheet:       { backgroundColor: Colors.white, borderTopLeftRadius: Radius.lg, borderTopRightRadius: Radius.lg, padding: Spacing.lg, paddingBottom: Spacing.xl },
+  sheetName:   { fontSize: Fonts.sizes.lg, fontWeight: '700', color: Colors.text },
+  sheetMeta:   { fontSize: Fonts.sizes.sm, color: Colors.textSub, marginBottom: Spacing.md },
+  sheetRow:    { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: Colors.border },
+  sheetRowText:{ fontSize: Fonts.sizes.md, color: Colors.text, fontWeight: '600' },
   modalWrapOuter: { flex: 1, backgroundColor: Colors.background },
   modalWrap:   { padding: Spacing.lg, paddingBottom: Spacing.lg * 3 },
   filterLabel: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub, marginBottom: 2 },
