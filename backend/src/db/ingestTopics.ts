@@ -19,17 +19,15 @@
 //   - Nested zips already pre-extracted alongside their own sibling folder
 //     (JSS/Basic batches) — this script only reads .doc/.docx/.docm files,
 //     so a leftover .zip sitting next to them is simply never opened.
-//   - Word lock files (~$...) and byte-identical "_1" suffix duplicates —
-//     both filtered out before parsing (see isIgnorableFile()).
-//   - .rtf files are NOT handled by this script (rare in the corpus — a
-//     small number of Pre-Nursery/Reception files). Convert those to .docx
-//     by hand (open in Word, Save As) and re-run; not worth a third parser
-//     library for a handful of files.
+//   - Word lock files (~$...) are ignored. Copy-like filenames (_1, etc.)
+//     are parsed and audited; a filename alone never proves duplication.
+//   - Unsupported documents (including RTF/PowerPoint) block the audit.
+//     Convert/review them deliberately before importing; no new parser here.
 //   - Wildly inconsistent filenames — subject is inferred from the
 //     document's own "SUBJECT:" header line when present (stronger signal),
 //     falling back to filename keywords only when that line is absent. Any
-//     subject not already known is auto-created (confirmed design), not
-//     skipped — see inferSubjectName()/cleanUnmatchedSubjectToken() below.
+//     mapped subject missing from the DB may be created after audit passes;
+//     generic fallback names block import pending review (see below).
 //   - Folder-name vs classes.name naming mismatches (e.g. "JSS 1" vs
 //     "JSS1", "Basic 1"/"PRY 1"/"Grade 1" vs "Primary 1") — normalized
 //     against canonical Primary/JSS/SS naming (renameClassNaming.ts).
@@ -55,7 +53,8 @@
 //
 // Without --yes, prints a full breakdown (files found/skipped, topics
 // parsed per class/subject/term, any subject or class it could NOT map)
-// and writes nothing — always run once without --yes first, same
+// and writes nothing. Blockers return non-zero, including with --yes.
+// SS 3 is audit-only, never normal curriculum. Always audit first, same
 // convention as resetAcademicData.ts and renameClassNaming.ts.
 
 import { readFileSync, readdirSync, statSync } from 'fs';
@@ -63,7 +62,7 @@ import path from 'path';
 import mammoth from 'mammoth';
 // @ts-ignore — word-extractor ships no types
 import WordExtractor from 'word-extractor';
-import { pool, query } from './pool.js';
+import { createHash } from 'node:crypto';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
@@ -151,15 +150,9 @@ function inferTermName(fullPath: string): string | undefined {
 }
 
 // ── Subject normalization ─────────────────────────────────────────────────
-// An unmapped subject is NOT skipped — it's auto-created in `subjects`, per
-// the confirmed design: "Importer ... auto-creating any subject that
-// doesn't exist yet." SUBJECT_PATTERNS below still normalizes the common
-// spelling/abbreviation variants actually seen in this school's files (e.g.
-// "SOS" and "Social Studies" both become one canonical "Social Studies"
-// subject rather than two near-duplicate rows); anything not covered here
-// falls through to a lightly-cleaned version of the raw token itself, so
-// nothing is silently lost — the dry-run report flags which ones fell
-// through, so they can be reviewed/merged after the fact if needed.
+// Known mappings may create subjects during an approved import. Generic
+// filename/token cleanup is only an audit suggestion and blocks all writes
+// until the source or its mapping is deliberately reviewed and resolved.
 const SUBJECT_PATTERNS: Array<[RegExp, string]> = [
   [/further\s*math/i, 'Further Mathematics'],
   [/\bmath/i, 'Mathematics'],
@@ -210,7 +203,7 @@ function cleanUnmatchedSubjectToken(raw: string): string {
     .join(' ');
 }
 
-function inferSubjectName(...candidates: string[]): string {
+function inferSubjectName(...candidates: string[]): { name: string; fallback: boolean } {
   for (const candidate of candidates) {
     if (!candidate) continue;
     // Normalize underscore/hyphen separators to spaces before matching —
@@ -222,28 +215,35 @@ function inferSubjectName(...candidates: string[]): string {
     // exact real strings that were still falling through).
     const normalized = candidate.replace(/[_-]+/g, ' ');
     for (const [re, name] of SUBJECT_PATTERNS) {
-      if (re.test(normalized)) return name;
+      if (re.test(normalized)) return { name, fallback: false };
     }
   }
   // None of the candidates matched a known pattern — clean up the LAST
   // candidate (by convention, the filename) as a last resort so the
   // resulting subject name is at least readable, not the raw fragment.
-  return cleanUnmatchedSubjectToken(candidates[candidates.length - 1] ?? 'Unknown Subject');
+  return { name: cleanUnmatchedSubjectToken(candidates[candidates.length - 1] ?? 'Unknown Subject'), fallback: true };
 }
 
 // ── File filtering ─────────────────────────────────────────────────────────
 function isIgnorableFile(filename: string): boolean {
-  if (filename.startsWith('~$')) return true;             // Word lock file
-  if (/_1_?\.(docx?|docm)$/i.test(filename)) return true;    // known byte-identical duplicate pattern (both '_1.doc' and '_1_.doc' variants seen in real files)
-  return false;
+  return filename.startsWith('~$'); // Office lock files only, not suspected copies
 }
 
-function walk(dir: string, out: string[] = []): string[] {
-  for (const entry of readdirSync(dir)) {
+const UNSUPPORTED_DOCUMENT = /\.(rtf|pptx?|pptm|ppsx?|ppsm|potx?|potm|xlsx?|xlsm|xlsb|ods|odt|odp|odg|pdf|txt|csv|pages|key|numbers|dotx?|dotm|ott|otp|epub)$/i;
+
+function walk(dir: string, unsupported: string[], errors: Array<{ file: string; error: string }>, out: string[] = []): string[] {
+  // Explicit lexical order avoids filesystem enumeration/locale differences.
+  for (const entry of readdirSync(dir).sort()) {
+    if (isIgnorableFile(entry)) continue;
     const full = path.join(dir, entry);
-    const st = statSync(full);
-    if (st.isDirectory()) walk(full, out);
-    else if (/\.(docx|docm|doc)$/i.test(entry) && !isIgnorableFile(entry)) out.push(full);
+    try {
+      const st = statSync(full);
+      if (st.isDirectory()) walk(full, unsupported, errors, out);
+      else if (/\.(docx|docm|doc)$/i.test(entry)) out.push(full);
+      else if (UNSUPPORTED_DOCUMENT.test(entry)) unsupported.push(full);
+    } catch (e: any) {
+      errors.push({ file: full, error: e.message });
+    }
   }
   return out;
 }
@@ -382,30 +382,35 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     process.exitCode = 1;
     return;
   }
-  if (defaultTerm && !['1st Term', '2nd Term', '3rd Term'].includes(defaultTerm)) {
+  if (process.argv.includes('--default-term') && !['1st Term', '2nd Term', '3rd Term'].includes(defaultTerm ?? '')) {
     console.log(`--default-term must be exactly "1st Term", "2nd Term", or "3rd Term" (got "${defaultTerm}").`);
     process.exitCode = 1;
     return;
   }
 
-  const allFiles = walk(root);
+  const unsupported: string[] = [];
+  const errors: Array<{ file: string; error: string }> = [];
+  const allFiles = walk(root, unsupported, errors);
+  // Sort the complete relative identities; recursion alone is not sufficient.
+  const sourceIdentity = (file: string) => path.relative(root, file).split(path.sep).join('/');
+  allFiles.sort((a, b) => sourceIdentity(a) < sourceIdentity(b) ? -1 : sourceIdentity(a) > sourceIdentity(b) ? 1 : 0);
   console.log(`Found ${allFiles.length} candidate file(s) under ${root}.\n`);
 
   const rows: Row[] = [];
   const unmappedClass: Set<string> = new Set();
+  const missingTerm: Set<string> = new Set();
+  const fallbackSubjects: Set<string> = new Set();
   const wrongSchoolCode: Set<string> = new Set();
   const noWeekMarkers: string[] = [];
-  const errors: Array<{ file: string; error: string }> = [];
-  const subjectTokensSeen: Set<string> = new Set(); // for the dry-run report only
+  const parsedFiles: Set<string> = new Set();
 
   for (const filePath of allFiles) {
     try {
       const classNames = inferClassNames(filePath);
       const termLabel = inferTermName(filePath) ?? defaultTerm;
-      if (classNames === undefined) {
-        unmappedClass.add(path.relative(root, filePath));
-        continue;
-      }
+      if (classNames === undefined) unmappedClass.add(sourceIdentity(filePath));
+      if (!termLabel) missingTerm.add(sourceIdentity(filePath));
+      if (classNames === undefined || !termLabel) continue;
       // Guard against a mixed folder (e.g. JSS files sitting alongside
       // Nursery files) silently tagging content under the wrong school —
       // --school-code only controls which subjects table this run writes
@@ -420,10 +425,6 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       const validClassNames = classNames.filter(c => expectedSet.has(c));
       if (validClassNames.length === 0) {
         wrongSchoolCode.add(`${classNames.join('+')} — ${path.relative(root, filePath)}`);
-        continue;
-      }
-      if (!termLabel) {
-        unmappedClass.add(`(no term found) ${path.relative(root, filePath)}`);
         continue;
       }
 
@@ -451,7 +452,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       const subjectLineMatches = [...text.matchAll(subjectLineRe)];
       const headerBlock = text.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
 
-      type Section = { subjectName: string; sectionText: string };
+      type Section = { subjectName: ReturnType<typeof inferSubjectName>; sectionText: string };
       let sections: Section[];
       if (subjectLineMatches.length === 0) {
         // No "SUBJECT:" line at all — infer once from the document's own
@@ -490,28 +491,65 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       let anyParsed = false;
       for (const className of validClassNames) {
         for (const section of sections) {
-          subjectTokensSeen.add(section.subjectName);
+          if (section.subjectName.fallback) {
+            fallbackSubjects.add(`${sourceIdentity(filePath)} / ${className} / ${termLabel} → ${section.subjectName.name}`);
+          }
           const parsed = parseTopics(section.sectionText);
+          if (parsed.length === 0 || parsed.some(t => t.title === '(untitled)')) {
+            noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (missing week/topic structure or untitled topic)`);
+          }
           parsed.forEach((t, i) => {
             anyParsed = true;
             rows.push({
-              filePath, className, termLabel, subjectName: section.subjectName,
+              filePath, className, termLabel, subjectName: section.subjectName.name,
               weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
             });
           });
         }
       }
-      if (!anyParsed) {
-        noWeekMarkers.push(path.relative(root, filePath));
-        continue;
-      }
+      if (anyParsed) parsedFiles.add(filePath);
     } catch (e: any) {
       errors.push({ file: path.relative(root, filePath), error: e.message });
     }
   }
 
+  // One sequence per complete bucket, retaining stable file/section/topic order.
+  const bucketKey = (r: Row) => JSON.stringify([r.className, r.subjectName, r.termLabel]);
+  const normalRows = rows.filter(r => r.className !== 'SS 3');
+  const examRows = rows.filter(r => r.className === 'SS 3');
+  const nextOrder = new Map<string, number>();
+  for (const r of normalRows) {
+    const key = bucketKey(r);
+    r.orderIndex = (nextOrder.get(key) ?? 0) + 1;
+    nextOrder.set(key, r.orderIndex);
+  }
+  // Compare topic bodies only within the SAME class/subject/term. Reporting
+  // partial overlap as well as whole-file copies prevents duplicated lessons.
+  const contentFiles = new Map<string, Set<string>>();
+  const contentLabels = new Map<string, string>();
+  const identities = new Set<string>();
+  const identityCollisions: string[] = [];
+  for (const r of rows) {
+    const normalized = r.sourceReference.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
+    const hash = createHash('sha256').update(normalized).digest('hex');
+    const key = JSON.stringify([bucketKey(r), hash]);
+    const files = contentFiles.get(key) ?? new Set<string>();
+    files.add(sourceIdentity(r.filePath));
+    contentFiles.set(key, files);
+    contentLabels.set(key, `${r.className} / ${r.subjectName} / ${r.termLabel} / ${r.title}`);
+    // The DB key uses basename, not relative path. Flag collisions before
+    // ON CONFLICT could silently discard distinct source rows.
+    const identity = JSON.stringify([bucketKey(r), r.title, path.basename(r.filePath)]);
+    if (identities.has(identity)) identityCollisions.push(`${sourceIdentity(r.filePath)} / ${r.className} / ${r.subjectName} / ${r.termLabel} / ${r.title}`);
+    identities.add(identity);
+  }
+  const duplicates = [...contentFiles.entries()].filter(([, files]) => files.size > 1);
+  const subjectTokensSeen = new Set(normalRows.map(r => r.subjectName));
+
   // ── Report ──────────────────────────────────────────────────────────────
-  console.log(`Parsed ${rows.length} topic row(s) from ${allFiles.length - unmappedClass.size - noWeekMarkers.length - errors.length} file(s).\n`);
+  console.log(`Parsed ${rows.length} topic row(s) from ${parsedFiles.size} file(s).\n`);
+  console.log(`SS 3 audit-only: ${examRows.length} topic row(s); excluded from normal curriculum and subject creation.`);
+  for (const file of new Set(examRows.map(r => sourceIdentity(r.filePath)))) console.log(`  SS 3: ${file}`);
 
   const byBucket = new Map<string, number>();
   for (const r of rows) {
@@ -530,11 +568,11 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log('These are still included below; spot-check before generating exercises from them.');
   }
 
-  console.log(`\nSubject names that will be used (auto-created if new — school_code='${schoolCode}'):`);
+  console.log(`\nNormal-curriculum subject names (only created after audit passes, if new — school_code='${schoolCode}'):`);
   for (const s of [...subjectTokensSeen].sort()) console.log(`  ${s}`);
 
   if (unmappedClass.size > 0) {
-    console.log(`\n${unmappedClass.size} file(s) skipped — class or term not recognized:`);
+    console.log(`\n${unmappedClass.size} file(s) BLOCKED — class not recognized:`);
     for (const f of unmappedClass) console.log(`  ${f}`);
   }
   if (wrongSchoolCode.size > 0) {
@@ -544,7 +582,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log(`(Re-run this same --root with --school-code ${other} to pick these up correctly.)`);
   }
   if (noWeekMarkers.length > 0) {
-    console.log(`\n${noWeekMarkers.length} file(s) skipped — no "WEEK N" markers found at all:`);
+    console.log(`\n${noWeekMarkers.length} section(s) BLOCKED — no parseable week/topic structure:`);
     for (const f of noWeekMarkers) console.log(`  ${f}`);
   }
   if (errors.length > 0) {
@@ -552,47 +590,109 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     for (const e of errors) console.log(`  ${e.file}: ${e.error}`);
   }
 
+  for (const [label, items] of [
+    ['Missing term', [...missingTerm]],
+    ['Unsupported source format — convert/review before import', unsupported.map(sourceIdentity)],
+    ['Fallback subject — review source/mapping before import', [...fallbackSubjects]],
+    ['Database source identity collision — review before import', identityCollisions],
+  ] as Array<[string, string[]]>) {
+    if (items.length) {
+      console.log(`\n${label}: ${items.length}`);
+      for (const item of items) console.log(`  ${item}`);
+    }
+  }
+  for (const [key, files] of duplicates) {
+    console.log(`\nDUPLICATE normalized content: ${contentLabels.get(key)}`);
+    for (const file of files) console.log(`  ${file}`);
+  }
+  console.log('\nNormal curriculum order (1-based, per class/subject/term):');
+  for (const r of normalRows) {
+    console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
+  }
+  const blocked = unmappedClass.size + missingTerm.size + noWeekMarkers.length + errors.length
+    + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length;
+  if (blocked || allFiles.length === 0) {
+    console.log(`\nAUDIT BLOCKED — resolve the reported conditions before import. No database changes made.${allFiles.length === 0 ? ' No supported source files found.' : ''}`);
+    process.exitCode = 1;
+    return;
+  }
+  console.log('\nFILE AUDIT PASSED — this does not certify curriculum completeness or existing database compatibility.');
   if (!yes) {
-    console.log('\nDry run only — pass --yes to actually insert these rows.');
+    console.log('Dry run only — no database connection or changes. Review the report before using --yes.');
+    return;
+  }
+  if (normalRows.length === 0) {
+    console.log('No normal curriculum rows to insert; no database connection or subject creation.');
     return;
   }
 
   // ── Insert ──────────────────────────────────────────────────────────────
-  // Auto-create any subject that doesn't exist yet for this school_code,
-  // per the confirmed design — never skip a topic just because its subject
-  // wasn't already seeded.
-  const subjectIdByName = new Map<string, number>();
-  for (const name of subjectTokensSeen) {
-    const { rows: existing } = await query('SELECT id FROM subjects WHERE school_code=$1 AND name=$2', [schoolCode, name]);
-    if (existing[0]) { subjectIdByName.set(name, existing[0].id); continue; }
-    const { rows: created } = await query(
-      'INSERT INTO subjects(school_code, name) VALUES($1,$2) ON CONFLICT (school_code,name) DO NOTHING RETURNING id',
-      [schoolCode, name],
-    );
-    if (created[0]) {
-      subjectIdByName.set(name, created[0].id);
-      console.log(`  + created new subject '${name}'`);
-    } else {
-      // Conflict raced with a concurrent insert — re-select to get its id.
-      const { rows: reSelect } = await query('SELECT id FROM subjects WHERE school_code=$1 AND name=$2', [schoolCode, name]);
-      subjectIdByName.set(name, reSelect[0].id);
-    }
-  }
+  // The audit has passed. Only now load/connect to the database.
+  const { pool } = await import('./pool.js');
+  try {
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query('LOCK TABLE subjects, topics IN SHARE ROW EXCLUSIVE MODE');
+      const query = (sql: string, params?: unknown[]) => client.query(sql, params);
+      const subjectIdByName = new Map<string, number>();
+      for (const name of subjectTokensSeen) {
+        const { rows: existing } = await query('SELECT id FROM subjects WHERE school_code=$1 AND name=$2', [schoolCode, name]);
+        if (existing[0]) { subjectIdByName.set(name, existing[0].id); continue; }
+        const { rows: created } = await query(
+          'INSERT INTO subjects(school_code, name) VALUES($1,$2) ON CONFLICT (school_code,name) DO NOTHING RETURNING id',
+          [schoolCode, name],
+        );
+        if (created[0]) {
+          subjectIdByName.set(name, created[0].id);
+          console.log(`  + created new subject '${name}'`);
+        } else {
+          // Conflict raced with a concurrent insert — re-select to get its id.
+          const { rows: reSelect } = await query('SELECT id FROM subjects WHERE school_code=$1 AND name=$2', [schoolCode, name]);
+          subjectIdByName.set(name, reSelect[0].id);
+        }
+      }
 
-  let inserted = 0;
-  for (const r of rows) {
-    const subjectId = subjectIdByName.get(r.subjectName)!;
-    const result = await query(
-      `INSERT INTO topics(school_code,subject_id,class_name,term_label,title,source_reference,order_index,source_file,created_by)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,NULL)
-       ON CONFLICT ON CONSTRAINT topics_ingestion_dedupe DO NOTHING
-       RETURNING id`,
-      [schoolCode, subjectId, r.className, r.termLabel, r.title, r.sourceReference, r.orderIndex, path.basename(r.filePath)],
-    );
-    if (result.rows[0]) inserted++;
+      // A rerun must not mix a newly numbered batch with a previous, different
+      // sequence. Existing rows must be an unchanged subset of the audited plan.
+      for (const key of nextOrder.keys()) {
+        const planned = normalRows.filter(r => bucketKey(r) === key);
+        const first = planned[0];
+        const { rows: existing } = await query(
+          `SELECT title, source_file, source_reference, order_index FROM topics
+           WHERE school_code=$1 AND subject_id=$2 AND class_name=$3 AND term_label=$4`,
+          [schoolCode, subjectIdByName.get(first.subjectName), first.className, first.termLabel],
+        );
+        for (const old of existing) {
+          if (!planned.some(r => r.title === old.title && path.basename(r.filePath) === old.source_file
+            && r.sourceReference === old.source_reference && r.orderIndex === old.order_index)) {
+            throw new Error(`Existing curriculum differs from audited sequence: ${first.className} / ${first.subjectName} / ${first.termLabel}. Review separately; nothing will be overwritten.`);
+          }
+        }
+      }
+      let inserted = 0;
+      for (const r of normalRows) {
+        const subjectId = subjectIdByName.get(r.subjectName)!;
+        const result = await query(
+          `INSERT INTO topics(school_code,subject_id,class_name,term_label,title,source_reference,order_index,source_file,created_by)
+           VALUES($1,$2,$3,$4,$5,$6,$7,$8,NULL)
+           ON CONFLICT ON CONSTRAINT topics_ingestion_dedupe DO NOTHING
+           RETURNING id`,
+          [schoolCode, subjectId, r.className, r.termLabel, r.title, r.sourceReference, r.orderIndex, path.basename(r.filePath)],
+        );
+        if (result.rows[0]) inserted++;
+      }
+      await client.query('COMMIT');
+      console.log(`\n✓ Inserted ${inserted} new topic row(s) (${normalRows.length - inserted} already existed from a prior run of this script).`);
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+    } finally {
+      client.release();
+    }
+  } finally {
+    await pool.end();
   }
-  console.log(`\n✓ Inserted ${inserted} new topic row(s) (${rows.length - inserted} already existed from a prior run of this script).`);
-  await pool.end();
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch(e => { console.error('AUDIT/IMPORT BLOCKED:', e); process.exitCode = 1; });

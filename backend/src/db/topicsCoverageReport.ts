@@ -43,6 +43,9 @@ const THIN_THRESHOLD = 100; // chars — matches the <60/reported-separately
 
 async function main() {
   const schoolCode = arg('school-code');
+  if (process.argv.includes('--school-code') && !['primary', 'secondary'].includes(schoolCode ?? '')) {
+    throw new Error('--school-code must be primary or secondary');
+  }
 
   // ── 1. Coverage: classes with zero topics at all ──────────────────────────
   const { rows: classesWithCounts } = await query(
@@ -61,6 +64,10 @@ async function main() {
   console.log('═'.repeat(78));
   const emptyClasses: string[] = [];
   for (const r of classesWithCounts) {
+    if (/^sss?\s*3$/i.test(r.class_name)) {
+      console.log(`  [${r.school_code}] ${r.class_name}: ${r.topic_count} topic(s) — EXAM PREPARATION ONLY; expected 0 normal topics`);
+      continue;
+    }
     const marker = Number(r.topic_count) === 0 ? '  ← NOTHING INGESTED' : '';
     console.log(`  [${r.school_code}] ${r.class_name}: ${r.topic_count} topic(s)${marker}`);
     if (Number(r.topic_count) === 0) emptyClasses.push(`${r.school_code}/${r.class_name}`);
@@ -71,8 +78,51 @@ async function main() {
     console.log(' source curriculum files for these classes exist and simply haven\'t been run yet,');
     console.log(' versus genuinely not having source material available.)');
   } else {
-    console.log('\nEvery class has at least one topic.');
+    console.log('\nNo empty normal-curriculum classes found in the selected class records.');
   }
+
+  // Presence only: an entirely absent subject cannot appear in this matrix.
+  // term_id-backed legacy/manual topics are counted by their linked term name.
+  const { rows: termCoverage } = await query(
+    `SELECT t.school_code, t.class_name, t.subject_id,
+            COALESCE(s.name, '(unassigned subject)') AS subject_name,
+            COUNT(*) FILTER (WHERE COALESCE(NULLIF(t.term_label, ''), tr.name) = '1st Term') AS first_term,
+            COUNT(*) FILTER (WHERE COALESCE(NULLIF(t.term_label, ''), tr.name) = '2nd Term') AS second_term,
+            COUNT(*) FILTER (WHERE COALESCE(NULLIF(t.term_label, ''), tr.name) = '3rd Term') AS third_term,
+            COUNT(*) FILTER (WHERE COALESCE(NULLIF(t.term_label, ''), tr.name, '')
+              NOT IN ('1st Term', '2nd Term', '3rd Term')) AS unknown_term
+     FROM topics t
+     LEFT JOIN subjects s ON s.id = t.subject_id
+     LEFT JOIN terms tr ON tr.id = t.term_id
+     WHERE ($1::text IS NULL OR t.school_code = $1)
+       AND COALESCE(t.class_name, '') !~* '^SSS?\\s*3$'
+     GROUP BY t.school_code, t.class_name, t.subject_id, s.name
+     ORDER BY t.school_code, t.class_name, s.name, t.subject_id`,
+    [schoolCode ?? null],
+  );
+  console.log('\nTERM COVERAGE — observed normal-curriculum subjects (topic counts)');
+  console.log('  School | Class | Subject | 1st Term | 2nd Term | 3rd Term | Missing terms');
+  for (const r of termCoverage) {
+    const counts = [r.first_term, r.second_term, r.third_term].map(Number);
+    const missing = ['1st Term', '2nd Term', '3rd Term'].filter((_, i) => counts[i] === 0);
+    console.log(`  ${r.school_code} | ${r.class_name} | ${r.subject_name} | ${counts.join(' | ')} | ${missing.join(', ') || 'none (presence only)'}`);
+    if (Number(r.unknown_term)) console.log(`    WARNING: ${r.unknown_term} topic(s) have no recognized term.`);
+  }
+  if (!termCoverage.length) console.log('  No normal-curriculum subjects observed.');
+  console.log('LIMITATION: this matrix cannot detect subjects entirely absent from the corpus/database.');
+  console.log('Term presence does not prove complete weeks, lessons or syllabus coverage.');
+
+  // Independent of subjects/classes joins, so orphaned/mislabelled SS3 rows
+  // cannot disappear from this safety check. Never delete or modify them here.
+  const { rows: ss3 } = await query(
+    `SELECT school_code, class_name, COUNT(*) AS topic_count FROM topics
+     WHERE ($1::text IS NULL OR school_code=$1) AND class_name ~* '^SSS?\\s*3$'
+     GROUP BY school_code, class_name ORDER BY school_code, class_name`,
+    [schoolCode ?? null],
+  );
+  const ss3Count = ss3.reduce((total, r) => total + Number(r.topic_count), 0);
+  console.log(`\nSS 3 normal-curriculum topic rows = ${ss3Count}; expected 0${ss3Count ? ' — REVIEW REQUIRED' : ''}`);
+  for (const r of ss3) console.log(`  [${r.school_code}] ${r.class_name}: ${r.topic_count}`);
 
   // ── 2. Per-bucket breakdown + likely-duplicate-cluster flag ──────────────
   const { rows: buckets } = await query(
@@ -113,7 +163,6 @@ async function main() {
     console.log('\nNo buckets flagged as likely duplicate clusters.');
   }
 
-  await pool.end();
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch(e => { console.error(e); process.exitCode = 1; }).finally(() => pool.end());
