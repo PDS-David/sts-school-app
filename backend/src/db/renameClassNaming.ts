@@ -1,8 +1,6 @@
-// Admin utility for the 2026-09 class-naming convention change, agreed with
-// the school owner: 'JSS1'->'JSS 1' (space added), 'SS1'->'SS 1' (space
-// added, for consistency with JSS even though not explicitly requested —
-// confirm this assumption before running), 'Grade 1'..'Grade 6' -> 'PRY 1'..
-// 'PRY 6'. 'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2' are unchanged.
+// Admin utility for canonical class naming: 'JSS1' -> 'JSS 1',
+// 'SS1' -> 'SS 1', and legacy 'Grade 1'..'Grade 6' / 'PRY 1'..'PRY 6'
+// -> 'Primary 1'..'Primary 6'. Early-years names are unchanged.
 //
 // class_name/assigned_class is plain TEXT with no foreign key anywhere in
 // schema.sql, duplicated across 8 columns in 8 tables (verified by grepping
@@ -47,12 +45,18 @@ const MAPPING: Record<string, string> = {
   SS1: 'SS 1',
   SS2: 'SS 2',
   SS3: 'SS 3',
-  'Grade 1': 'PRY 1',
-  'Grade 2': 'PRY 2',
-  'Grade 3': 'PRY 3',
-  'Grade 4': 'PRY 4',
-  'Grade 5': 'PRY 5',
-  'Grade 6': 'PRY 6',
+  'Grade 1': 'Primary 1',
+  'Grade 2': 'Primary 2',
+  'Grade 3': 'Primary 3',
+  'Grade 4': 'Primary 4',
+  'Grade 5': 'Primary 5',
+  'Grade 6': 'Primary 6',
+  'PRY 1': 'Primary 1',
+  'PRY 2': 'Primary 2',
+  'PRY 3': 'Primary 3',
+  'PRY 4': 'Primary 4',
+  'PRY 5': 'Primary 5',
+  'PRY 6': 'Primary 6',
 };
 
 // [table, column] for every place a class-name-shaped string lives.
@@ -133,6 +137,22 @@ async function main() {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    // Count inside the transaction and block concurrent writes while renaming.
+    // A uniqueness collision aborts and rolls back; never delete class, lock,
+    // or topic records just to force two existing records to merge.
+    await client.query(`LOCK TABLE ${TABLES.map(([table]) => table).join(', ')} IN SHARE ROW EXCLUSIVE MODE`);
+    const transactionBefore = await countAll(client);
+    const targetsBefore: Record<string, Record<string, number>> = {};
+    const targetNames = [...new Set(Object.values(MAPPING))];
+    for (const [table, column] of TABLES) {
+      targetsBefore[table] = {};
+      for (const newName of targetNames) {
+        const { rows } = await client.query(
+          `SELECT COUNT(*)::int AS c FROM ${table} WHERE ${column} = $1`, [newName],
+        );
+        targetsBefore[table][newName] = rows[0].c;
+      }
+    }
     await runRename(client);
 
     const after = await countAll(client);
@@ -143,18 +163,19 @@ async function main() {
     }
 
     console.log('\n✓ All old-name rows renamed successfully. Verifying totals before commit…');
-    // Spot-check: new-name totals per table should be >= what we started with
-    // (>= not === in case any new-name rows already existed independently).
+    // Verify the combined Grade/PRY counts plus existing canonical rows.
     for (const [table, column] of TABLES) {
-      for (const [oldName, newName] of Object.entries(MAPPING)) {
-        if (before[table][oldName] === 0) continue;
+      for (const newName of targetNames) {
+        const expected = targetsBefore[table][newName] + Object.entries(MAPPING)
+          .filter(([, target]) => target === newName)
+          .reduce((total, [oldName]) => total + transactionBefore[table][oldName], 0);
         const { rows } = await client.query(
           `SELECT COUNT(*)::int AS c FROM ${table} WHERE ${column} = $1`,
           [newName],
         );
-        if (rows[0].c < before[table][oldName]) {
+        if (rows[0].c !== expected) {
           throw new Error(
-            `${table}.${column}='${newName}' has ${rows[0].c} row(s), expected at least ${before[table][oldName]} — rolling back.`,
+            `${table}.${column}='${newName}' has ${rows[0].c} row(s), expected ${expected} — rolling back.`,
           );
         }
       }

@@ -31,8 +31,8 @@
 //     subject not already known is auto-created (confirmed design), not
 //     skipped — see inferSubjectName()/cleanUnmatchedSubjectToken() below.
 //   - Folder-name vs classes.name naming mismatches (e.g. "JSS 1" vs
-//     "JSS1", "Basic 1"/"PRY 1" vs "Grade 1") — normalized here against the
-//     canonical naming fixed in the 2026-09 rename (renameClassNaming.ts).
+//     "JSS1", "Basic 1"/"PRY 1"/"Grade 1" vs "Primary 1") — normalized
+//     against canonical Primary/JSS/SS naming (renameClassNaming.ts).
 //
 // KNOWN LIMITATION, on purpose rather than by accident: a JSS/SSS-style
 // document's own scheme-of-work table (short one-line-per-week summaries)
@@ -85,12 +85,12 @@ const CLASS_PATTERNS: Array<[RegExp, string[] | null]> = [
   [/nursery?[\s_-]*2\b/i, ['Nursery 2']],
   [/\bkg[\s_-]*1\b/i, ['KG 1']],
   [/\bkg[\s_-]*2\b/i, ['KG 2']],
-  [/\b(basic|pry|grade)[\s_-]*1\b|basic[\s_-]*one\b/i, ['PRY 1']],
-  [/\b(basic|pry|grade)[\s_-]*2\b|basic[\s_-]*two\b/i, ['PRY 2']],
-  [/\b(basic|pry|grade)[\s_-]*3\b|basic[\s_-]*three\b/i, ['PRY 3']],
-  [/\b(basic|pry|grade)[\s_-]*4\b|basic[\s_-]*four\b/i, ['PRY 4']],
-  [/\b(basic|pry|grade)[\s_-]*5\b|basic[\s_-]*five\b/i, ['PRY 5']],
-  [/\b(basic|pry|grade)[\s_-]*6\b|basic[\s_-]*six\b/i, ['PRY 6']],
+  [/\b(primary|basic|pry|grade)[\s_-]*1\b|basic[\s_-]*one\b/i, ['Primary 1']],
+  [/\b(primary|basic|pry|grade)[\s_-]*2\b|basic[\s_-]*two\b/i, ['Primary 2']],
+  [/\b(primary|basic|pry|grade)[\s_-]*3\b|basic[\s_-]*three\b/i, ['Primary 3']],
+  [/\b(primary|basic|pry|grade)[\s_-]*4\b|basic[\s_-]*four\b/i, ['Primary 4']],
+  [/\b(primary|basic|pry|grade)[\s_-]*5\b|basic[\s_-]*five\b/i, ['Primary 5']],
+  [/\b(primary|basic|pry|grade)[\s_-]*6\b|basic[\s_-]*six\b/i, ['Primary 6']],
   [/\bjss[\s_-]*1\b/i, ['JSS 1']],
   [/\bjss[\s_-]*2\b/i, ['JSS 2']],
   [/\bjss[\s_-]*3\b/i, ['JSS 3']],
@@ -109,7 +109,7 @@ const CLASS_PATTERNS: Array<[RegExp, string[] | null]> = [
 // testing — this check exists because that happened, not hypothetically.
 const PRIMARY_CLASS_NAMES = new Set([
   'Pre-Nursery', 'Reception', 'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
-  'PRY 1', 'PRY 2', 'PRY 3', 'PRY 4', 'PRY 5', 'PRY 6',
+  'Primary 1', 'Primary 2', 'Primary 3', 'Primary 4', 'Primary 5', 'Primary 6',
 ]);
 const SECONDARY_CLASS_NAMES = new Set(['JSS 1', 'JSS 2', 'JSS 3', 'SS 1', 'SS 2', 'SS 3']);
 

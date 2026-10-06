@@ -5,7 +5,7 @@
  * Usage: npx tsx src/db/seed.ts
  */
 import bcrypt from 'bcryptjs';
-import { pool, query } from './pool.js';
+import { pool, query, withTransaction } from './pool.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -22,15 +22,11 @@ const SECONDARY_SUBJECTS = [
   'Agricultural Science', 'Technical Drawing', 'Physical & Health Education',
 ];
 
-// Renamed 2026-09: 'JSS1'->'JSS 1' (space), 'SS1'->'SS 1' (space, for
-// consistency with JSS), 'Grade 1'..'Grade 6' -> 'PRY 1'..'PRY 6', to match
-// the naming used in the school's actual curriculum source documents. Any
-// database seeded before this change needs backend/src/db/renameClassNaming.ts
-// run once to bring existing rows in line — this array only affects new
-// seeds, not existing class_name/assigned_class values already in the DB.
+// Canonical primary names are Primary 1–6. Existing databases should use
+// renameClassNaming.ts to migrate legacy Grade/PRY names before reseeding.
 const PRIMARY_CLASSES = [
   'Pre-Nursery', 'Reception', 'Nursery 1', 'Nursery 2', 'KG 1', 'KG 2',
-  'PRY 1', 'PRY 2', 'PRY 3', 'PRY 4', 'PRY 5', 'PRY 6',
+  'Primary 1', 'Primary 2', 'Primary 3', 'Primary 4', 'Primary 5', 'Primary 6',
 ];
 
 const SECONDARY_CLASSES = [
@@ -89,19 +85,22 @@ async function seed() {
     );
   }
 
-  console.log('Seeding default term (2024/2025 1st Term)…');
-  await query(
-    `INSERT INTO terms(name,academic_year,school_code,is_current,days_opened,next_term_begins)
-     VALUES('1st Term','2024/2025','primary',TRUE,60,'14th January 2025')
-     ON CONFLICT(name,academic_year,school_code) DO NOTHING`,
-    [],
-  );
-  await query(
-    `INSERT INTO terms(name,academic_year,school_code,is_current,days_opened,next_term_begins)
-     VALUES('1st Term','2024/2025','secondary',TRUE,60,'14th January 2025')
-     ON CONFLICT(name,academic_year,school_code) DO NOTHING`,
-    [],
-  );
+  console.log('Seeding 2026/2027 terms…');
+  await withTransaction(async client => {
+    for (const schoolCode of ['primary', 'secondary']) {
+      // The database allows only one current term per school, across years.
+      await client.query('UPDATE terms SET is_current=FALSE WHERE school_code=$1 AND is_current=TRUE', [schoolCode]);
+      for (const name of ['1st Term', '2nd Term', '3rd Term']) {
+        await client.query(
+          `INSERT INTO terms(name,academic_year,school_code,is_current)
+           VALUES($1,'2026/2027',$2,$3)
+           ON CONFLICT(name,academic_year,school_code)
+           DO UPDATE SET is_current=EXCLUDED.is_current`,
+          [name, schoolCode, name === '1st Term'],
+        );
+      }
+    }
+  });
 
   console.log('Seeding admin user (admin / Admin@1234)…');
   const hash = await bcrypt.hash('Admin@1234', 10);
