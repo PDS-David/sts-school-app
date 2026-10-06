@@ -127,35 +127,61 @@ Student reach (classmate messaging) and parent reach (subject-teacher/admin reac
 
 ## Database Setup
 
-### 1. Create PostgreSQL database
+### Clean installation (schema and foundation only)
+
+Create an empty PostgreSQL database/project. Supply its `DATABASE_URL` through
+an approved environment/secret mechanism; never commit or print it. From the
+repository root, with backend dependencies installed:
+
 ```bash
-psql -U postgres -c "CREATE DATABASE stsschool;"
+npm run db:bootstrap --workspace backend
 ```
 
-### 2. Run schema
-```bash
-psql -U postgres -d stsschool -f backend/schema.sql
-```
+This explicit command uses the existing PostgreSQL pool and `backend/schema.sql`.
+It creates all application tables, constraints, indexes and `pgcrypto`, then adds:
 
-### 3. Seed default data (subjects, classes, terms, admin user)
-```bash
-cd backend
-cp .env.example .env
-# Edit .env with your DATABASE_URL and secrets
-npm install
-npm run db:seed
-```
+- `primary`: Sow the Seed Nursery & Primary School.
+- `secondary`: Sow the Seed Model College, with its existing address
+  Olosan Road, Alakia, Ibadan. School metadata comes directly from `schema.sql`.
+- Primary classes: Pre-Nursery, Reception, Nursery 1–2, KG 1–2, Primary 1–6.
+- Secondary classes: JSS 1–3 and SS 1–3.
+- 2026/2027: 1st Term, 2nd Term and 3rd Term for each school; only 1st Term
+  is initially current. This is initial data, not a restriction on future sessions.
 
-Default login after seed:
-- **admin** / `Admin@1234` → must change password on first login
-- **teacher1** / `Teacher@1234` → assigned to JSS1, secondary school
+Subjects remain empty: the development seed list is not a complete curriculum.
+The later controlled curriculum process can populate the existing subject model
+(`school_code`, `name`, unique together) without a schema redesign. No users,
+credentials, PINs, student records, assessments, topics, materials or legacy data
+are created. Initial administrator provisioning is a separate controlled step;
+this command does not create a login.
 
-> **Note on accounts:** there is no self-signup. Every student, parent, and
-> teacher account is created by an admin (`POST /admin/users`), which is also
-> where an optional `access_expires_at` window gets set. A self-signup route
-> existed early on and was deliberately removed at the school owner's
-> request — don't re-add it without also adding an admin-issued invite-code
-> guard alongside it.
+Run against an unused application database while the backend is stopped. The
+connection role must be able to create objects in `public` and install `pgcrypto`
+(or it may already be installed). The existing pool enables SSL when
+`NODE_ENV=production`; this is independent of the hosting provider. No Render or
+Supabase-specific SDK/service is required. Do not run `db:migrate` or `db:seed`
+before this command: the bootstrap itself applies the complete schema.
+
+Schema, foundation and an `app_bootstrap` completion/checksum record are committed
+atomically. Failure rolls back the transaction. Concurrent bootstrap invocations
+are serialized with a PostgreSQL advisory lock. Without a completion record,
+existing non-extension objects in `public` cause refusal, even if their tables
+are empty; nothing is dropped or overwritten. Provider-managed schemas and
+extension-owned objects may already exist.
+
+A repeated invocation with the same schema/foundation checksum is a no-op. It
+never resets current terms or replays schema over a database already in use.
+A different checksum is refused: use a separately reviewed migration for later
+schema changes (`db:migrate` remains the existing manual cumulative-schema tool).
+The completion marker is not a schema-drift checker or a repair mechanism.
+Neither application startup nor `npm run build` runs bootstrap/migrations.
+
+### Development/demo seed only
+
+`npm run db:seed --workspace backend` remains a separate development utility.
+It creates/resets demo admin and teacher credentials and inserts a partial subject
+list. **Do not use it to prepare the clean database**, and do not restore legacy
+exports or run the legacy import scripts for a clean installation.
 
 ---
 
