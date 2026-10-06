@@ -401,6 +401,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const missingTerm: Set<string> = new Set();
   const fallbackSubjects: Set<string> = new Set();
   const wrongSchoolCode: Set<string> = new Set();
+  const subjectConflicts: Set<string> = new Set();
+  const suspiciousTopics: Set<string> = new Set();
   const noWeekMarkers: string[] = [];
   const parsedFiles: Set<string> = new Set();
 
@@ -452,6 +454,23 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       const subjectLineMatches = [...text.matchAll(subjectLineRe)];
       const headerBlock = text.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
 
+      // A filename can carry a strong, known subject signal too. For a
+      // genuinely single-subject document, silently preferring a conflicting
+      // SUBJECT: header is unsafe: a real Primary Agriculture file was
+      // observed being classified as CCA this way. Multi-subject documents
+      // are deliberately exempt because their filename cannot describe every
+      // section. Unknown/generic filenames remain governed by the existing
+      // header-first/fallback rules.
+      if (subjectLineMatches.length === 1) {
+        const filenameSubject = inferSubjectName(path.basename(filePath));
+        const headerSubject = inferSubjectName(subjectLineMatches[0][0].replace(/^subject\s*[:;]\s*/i, ''));
+        if (!filenameSubject.fallback && !headerSubject.fallback && filenameSubject.name !== headerSubject.name) {
+          subjectConflicts.add(
+            `${sourceIdentity(filePath)} / ${validClassNames.join('+')} / ${termLabel}: filename → ${filenameSubject.name}; SUBJECT header → ${headerSubject.name}`,
+          );
+        }
+      }
+
       type Section = { subjectName: ReturnType<typeof inferSubjectName>; sectionText: string };
       let sections: Section[];
       if (subjectLineMatches.length === 0) {
@@ -500,6 +519,16 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           }
           parsed.forEach((t, i) => {
             anyParsed = true;
+            // A one-character/alphanumeric-fragment title is not credible
+            // curriculum content. Keep the row visible in the dry-run order,
+            // but block import so a human can review the source/parser rather
+            // than allowing malformed titles such as the observed "O".
+            const titleSignal = t.title.normalize('NFKC').replace(/[^\p{L}\p{N}]+/gu, '');
+            if (titleSignal.length <= 1) {
+              suspiciousTopics.add(
+                `${sourceIdentity(filePath)} / ${className} / ${section.subjectName.name} / ${termLabel} / ${t.weekLabel} → "${t.title}"`,
+              );
+            }
             rows.push({
               filePath, className, termLabel, subjectName: section.subjectName.name,
               weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
@@ -589,6 +618,14 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log(`\n${errors.length} file(s) failed to read:`);
     for (const e of errors) console.log(`  ${e.file}: ${e.error}`);
   }
+  if (subjectConflicts.size > 0) {
+    console.log(`\nSubject signal conflict — review source/mapping before import: ${subjectConflicts.size}`);
+    for (const item of subjectConflicts) console.log(`  ${item}`);
+  }
+  if (suspiciousTopics.size > 0) {
+    console.log(`\nSuspicious parsed topic title — review source/parser before import: ${suspiciousTopics.size}`);
+    for (const item of suspiciousTopics) console.log(`  ${item}`);
+  }
 
   for (const [label, items] of [
     ['Missing term', [...missingTerm]],
@@ -610,7 +647,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
   }
   const blocked = unmappedClass.size + missingTerm.size + noWeekMarkers.length + errors.length
-    + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length;
+    + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
+    + subjectConflicts.size + suspiciousTopics.size;
   if (blocked || allFiles.length === 0) {
     console.log(`\nAUDIT BLOCKED — resolve the reported conditions before import. No database changes made.${allFiles.length === 0 ? ' No supported source files found.' : ''}`);
     process.exitCode = 1;
