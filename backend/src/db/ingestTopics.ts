@@ -461,12 +461,30 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       // are deliberately exempt because their filename cannot describe every
       // section. Unknown/generic filenames remain governed by the existing
       // header-first/fallback rules.
-      if (subjectLineMatches.length === 1) {
-        const filenameSubject = inferSubjectName(path.basename(filePath));
-        const headerSubject = inferSubjectName(subjectLineMatches[0][0].replace(/^subject\s*[:;]\s*/i, ''));
-        if (!filenameSubject.fallback && !headerSubject.fallback && filenameSubject.name !== headerSubject.name) {
+      // Repeated SUBJECT: headers do not necessarily mean a multi-subject
+      // document. Some real single-subject Primary files repeat the same
+      // (wrong) header throughout the document. Commit 4 only checked files
+      // with exactly one SUBJECT: occurrence, so those files escaped the
+      // filename/header conflict guard. Collapse the headers to their unique
+      // known subject names first: one unique header subject still describes
+      // a single-subject file even when the header appears many times.
+      //
+      // If two or more distinct known header subjects are present, retain the
+      // existing multi-subject behaviour: the filename cannot safely override
+      // or contradict each section. Fallback/unknown header tokens likewise
+      // remain for the existing fallback audit to review.
+      const filenameSubject = inferSubjectName(path.basename(filePath));
+      const knownHeaderSubjects = new Set(
+        subjectLineMatches
+          .map(m => inferSubjectName(m[0].replace(/^subject\s*[:;]\s*/i, '')))
+          .filter(subject => !subject.fallback)
+          .map(subject => subject.name),
+      );
+      if (!filenameSubject.fallback && knownHeaderSubjects.size === 1) {
+        const [headerSubjectName] = [...knownHeaderSubjects];
+        if (headerSubjectName !== filenameSubject.name) {
           subjectConflicts.add(
-            `${sourceIdentity(filePath)} / ${validClassNames.join('+')} / ${termLabel}: filename → ${filenameSubject.name}; SUBJECT header → ${headerSubject.name}`,
+            `${sourceIdentity(filePath)} / ${validClassNames.join('+')} / ${termLabel}: filename → ${filenameSubject.name}; repeated/single SUBJECT header → ${headerSubjectName}`,
           );
         }
       }
