@@ -300,16 +300,24 @@ function parseTopics(text: string): ParsedTopic[] {
       const block = text.slice(start, end).trim();
       const weekLabel = matches[i][0].trim();
 
-      // Look for an explicit "Topic:" line first (Nursery/Reception style,
-      // and some JSS/Basic files use it too); fall back to the first
-      // non-empty line after the week marker itself.
-      const topicLineMatch = block.match(/topic\s*[:;]\s*(.+)/i);
+      // Prefer an explicit TOPIC field when present. Real Primary sources use
+      // several separators (TOPIC:, TOPIC;, TOPIC-, TOPIC—), so accepting only
+      // ':' and ';' turned valid lesson plans into one-character/metadata titles.
+      const topicLineMatch = block.match(/^\s*topic\s*(?:[:;\-–—]\s*)?(.+)$/im);
       let title: string;
       if (topicLineMatch) {
         title = topicLineMatch[1].trim();
       } else {
         const afterMarker = block.slice(weekLabel.length).trim();
-        const firstLine = afterMarker.split('\n').map(l => l.trim()).find(l => l.length > 0);
+        const metadataLine = /^(?:class|subject|date|duration|term|week|behaviou?ral objectives?|performance objectives?|instructional materials?|reference materials?|previous knowledge|evaluation|content)\s*[:;\-–—]?/i;
+        const firstLine = afterMarker
+          .split('\n')
+          .map(l => l.trim())
+          .find(l => {
+            if (!l || metadataLine.test(l)) return false;
+            const signal = l.normalize('NFKC').replace(/[^\p{L}\p{N}]+/gu, '');
+            return signal.length > 1;
+          });
         title = (firstLine ?? '(untitled)').slice(0, 200);
       }
 
@@ -492,9 +500,14 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       type Section = { subjectName: ReturnType<typeof inferSubjectName>; sectionText: string };
       let sections: Section[];
       if (subjectLineMatches.length === 0) {
-        // No "SUBJECT:" line at all — infer once from the document's own
-        // header block, else the filename, whole file is one section.
-        const subjectName = inferSubjectName(headerBlock, path.basename(filePath));
+        // No explicit SUBJECT field: a known filename subject is the strongest
+        // available signal. This prevents incidental words in a document's
+        // opening lines from stealing classification from filenames such as
+        // "PRY 4 ... AGRIC.docx" and "PRY 5 AGRIC ...docx". Only fall back to
+        // the header block when the filename itself is genuinely unrecognized.
+        const subjectName = filenameSubject.fallback
+          ? inferSubjectName(headerBlock, path.basename(filePath))
+          : filenameSubject;
         sections = [{ subjectName, sectionText: text }];
       } else {
         sections = [];
