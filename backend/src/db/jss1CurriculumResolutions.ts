@@ -26,11 +26,19 @@ function fromMarker(text: string, marker: RegExp, replacementPrefix = ''): strin
   return replacementPrefix + text.slice(match.index);
 }
 
-function fromNthMarker(text: string, marker: RegExp, occurrence: number): string {
+function markerMatches(text: string, marker: RegExp): RegExpMatchArray[] {
   const flags = marker.flags.includes('g') ? marker.flags : marker.flags + 'g';
-  const matches = [...text.matchAll(new RegExp(marker.source, flags))];
-  const match = matches[occurrence - 1];
+  return [...text.matchAll(new RegExp(marker.source, flags))];
+}
+
+function fromNthMarker(text: string, marker: RegExp, occurrence: number): string {
+  const match = markerMatches(text, marker)[occurrence - 1];
   return match?.index === undefined ? text : text.slice(match.index);
+}
+
+function truncateAtNthMarker(text: string, marker: RegExp, occurrence: number): string {
+  const match = markerMatches(text, marker)[occurrence - 1];
+  return match?.index === undefined ? text : text.slice(0, match.index);
 }
 
 const YORUBA_WEEK_NUMBERS: Array<[RegExp, string]> = [
@@ -87,18 +95,24 @@ export function applyJss1SourceTextResolution(
   // Reviewed scheme+lesson files: start at the actual lesson sequence so
   // scheme-of-work rows cannot become student topics. Exact-source/JSS1-only.
   const lessonBodyStart: Record<string, { marker: RegExp; occurrence: number }> = {
-    '1st Term/JSS 1 GENERAL MATHEMATICS.docx': { marker: /^\s*WEEK\s*1\b/gim, occurrence: 2 },
+    '1st Term/JSS 1 GENERAL MATHEMATICS.docx': { marker: /^\s*WEEK\s*1\s+TOPIC\s*:/gim, occurrence: 1 },
     '1st Term/SOCIAL STUDIES..docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
-    '2nd Term/JS 1 MATHS.docx': { marker: /^\s*WEEK\s*2\b/gim, occurrence: 2 },
+    '2nd Term/JS 1 MATHS.docx': { marker: /^\s*WEEK\s*2\s*:/gim, occurrence: 1 },
     '2nd Term/new 2nd term SOCIAL STUDIES e note  2017 ..docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
     '3rd Term/BASIC TECHNOLOGY.docx': { marker: /^\s*WEEK\s*1\b/gim, occurrence: 2 },
     '3rd Term/ENGLISH.docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
-    '3rd Term/MATHS.docx': { marker: /^\s*WEEK\s*1\b/gim, occurrence: 2 },
+    '3rd Term/MATHS.docx': { marker: /^\s*WEEK\s*1\s*$/gim, occurrence: 1 },
     '3rd Term/S0CIAL STUDIES.docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
   };
   const lessonStart = lessonBodyStart[`${termLabel}/${basename}`];
   if (lessonStart) {
     text = fromNthMarker(text, lessonStart.marker, lessonStart.occurrence);
+  }
+
+  if (termLabel === '3rd Term' && basename === 'AGRIC SCIENCE.docx') {
+    // The supplied file repeats its curriculum internally. Keep the first
+    // reviewed copy and stop when the second scheme begins.
+    text = truncateAtNthMarker(text, /^\s*SCHEME\s+OF\s+WORK\s+FOR\s*:/gim, 2);
   }
 
   if (termLabel === '1st Term' && basename === 'P H E.docx') {
@@ -130,7 +144,10 @@ export function applyJss1SourceTextResolution(
   }
 
   if (termLabel === '3rd Term' && basename === 'YORUBA.docx') {
+    // Both the scheme and lesson body use Yoruba OSE headings. Normalize them,
+    // then begin at the second Week-1 occurrence: the actual lesson sequence.
     text = normalizeYorubaWeeks(text);
+    text = fromNthMarker(text, /^\s*WEEK\s*1\s*$/gim, 2);
   }
 
   text = normalizeInlineJss1WeekHeadings(text);
