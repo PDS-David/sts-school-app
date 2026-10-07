@@ -330,11 +330,16 @@ function parseTopics(text: string): ParsedTopic[] {
       } else {
         const afterMarker = block.slice(weekLabel.length).trim();
         const metadataLine = /^(?:class|subject|date|duration|term|week|behaviou?ral objectives?|performance objectives?|instructional materials?|reference materials?|previous knowledge|evaluation|content)\s*[:;\-–—]?/i;
+        // Some real Primary lesson notes use WEEK -> lesson heading without a
+        // TOPIC: label. Accept only a credible heading: skip metadata, bare
+        // page/sequence numbers and punctuation fragments, and require at
+        // least two letters/numbers. This remains deliberately conservative;
+        // an actually empty week stays "(untitled)" and blocks the audit.
         const firstLine = afterMarker
           .split('\n')
           .map(l => l.trim())
           .find(l => {
-            if (!l || metadataLine.test(l)) return false;
+            if (!l || metadataLine.test(l) || /^\d{1,3}$/.test(l)) return false;
             const signal = l.normalize('NFKC').replace(/[^\p{L}\p{N}]+/gu, '');
             return signal.length > 1;
           });
@@ -584,8 +589,17 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
             fallbackSubjects.add(`${sourceIdentity(filePath)} / ${className} / ${termLabel} → ${section.subjectName.name}`);
           }
           const parsed = parseTopics(section.sectionText);
-          if (parsed.length === 0 || parsed.some(t => t.title === '(untitled)')) {
-            noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (missing week/topic structure or untitled topic)`);
+          if (parsed.length === 0) {
+            noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (no parseable week/topic structure)`);
+          } else {
+            // Report isolated empty weeks precisely instead of labelling an
+            // otherwise valid document as wholly unparseable. They remain
+            // hard blockers: nothing is silently discarded or imported.
+            for (const t of parsed.filter(topic => topic.title === '(untitled)')) {
+              noWeekMarkers.push(
+                `${sourceIdentity(filePath)} / ${section.subjectName.name} / ${t.weekLabel} (week found but topic/title missing)`,
+              );
+            }
           }
           parsed.forEach((t, i) => {
             anyParsed = true;
