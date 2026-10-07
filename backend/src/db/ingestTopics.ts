@@ -270,8 +270,8 @@ async function extractText(filePath: string): Promise<string> {
 // table-vs-real-content limitation this implies.
 const WEEK_NUMBER_WORD = 'one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen';
 const WEEK_MARKER = new RegExp(
-  `week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:${WEEK_NUMBER_WORD})(?:\\s*(?:&|and|,|-)\\s*(?:${WEEK_NUMBER_WORD}))?)`,
-  'gi',
+  `^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:${WEEK_NUMBER_WORD})(?:\\s*(?:&|and|,|-)\\s*(?:${WEEK_NUMBER_WORD}))?)`,
+  'gim',
 );
 
 interface ParsedTopic {
@@ -291,7 +291,27 @@ interface ParsedTopic {
 const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-)\s*\d{1,2})?)[ \t]*$/gim;
 
 function parseTopics(text: string): ParsedTopic[] {
-  const matches = [...text.matchAll(WEEK_MARKER)];
+  const rawMatches = [...text.matchAll(WEEK_MARKER)];
+  // Some valid lesson notes repeat the same marker back-to-back (for
+  // example "WEEK 6" immediately followed by "Week: Six"). Collapse only
+  // equivalent adjacent markers with no intervening content. Different
+  // adjacent weeks are retained so a genuinely empty week remains visible
+  // to the audit instead of being silently hidden.
+  const weekWordNumber: Record<string, string> = {
+    one: '1', two: '2', three: '3', four: '4', five: '5', six: '6',
+    seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11',
+    twelve: '12', thirteen: '13',
+  };
+  const canonicalWeek = (m: RegExpMatchArray) => m[1].toLowerCase()
+    .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen)\b/g, w => weekWordNumber[w])
+    .replace(/\band\b/g, '&')
+    .replace(/\s+/g, '');
+  const matches = rawMatches.filter((m, i) => {
+    if (i + 1 >= rawMatches.length) return true;
+    const next = rawMatches[i + 1];
+    const between = text.slice(m.index! + m[0].length, next.index!).trim();
+    return between.length > 0 || canonicalWeek(m) !== canonicalWeek(next);
+  });
   if (matches.length > 0) {
     const topics: ParsedTopic[] = [];
     for (let i = 0; i < matches.length; i++) {
@@ -303,7 +323,7 @@ function parseTopics(text: string): ParsedTopic[] {
       // Prefer an explicit TOPIC field when present. Real Primary sources use
       // several separators (TOPIC:, TOPIC;, TOPIC-, TOPIC—), so accepting only
       // ':' and ';' turned valid lesson plans into one-character/metadata titles.
-      const topicLineMatch = block.match(/^\s*topics?\s*(?:[:;\-–—]\s*)?(.+)$/im);
+      const topicLineMatch = block.match(/^\s*topics?\s*(?:[:;\-–—]+\s*)?(.+)$/im);
       let title: string;
       if (topicLineMatch) {
         title = topicLineMatch[1].trim();
@@ -535,11 +555,18 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         const firstMatchStart = subjectLineMatches[0].index!;
         if (firstMatchStart > 40) {
           const leadingText = text.slice(0, firstMatchStart);
-          const leadingHeaderBlock = leadingText.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
-          sections.push({
-            subjectName: inferSubjectName(leadingHeaderBlock, path.basename(filePath)),
-            sectionText: leadingText,
-          });
+          // A long document title/preamble before the first SUBJECT: header
+          // is not a curriculum section merely because it exceeds the old
+          // 40-character heuristic. Preserve genuine unlabeled leading
+          // sections (e.g. Reception) only when they contain parseable topic
+          // rows; otherwise the real SUBJECT: section below owns the file.
+          if (parseTopics(leadingText).length > 0) {
+            const leadingHeaderBlock = leadingText.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 4).join(' ');
+            sections.push({
+              subjectName: inferSubjectName(leadingHeaderBlock, path.basename(filePath)),
+              sectionText: leadingText,
+            });
+          }
         }
         subjectLineMatches.forEach((m, i) => {
           const start = m.index!;
