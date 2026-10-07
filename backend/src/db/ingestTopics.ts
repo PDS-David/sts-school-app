@@ -187,7 +187,7 @@ const SUBJECT_PATTERNS: Array<[RegExp, string]> = [
   [/geography/i, 'Geography'],
   [/technical\s*drawing/i, 'Technical Drawing'],
   [/business\s*stud/i, 'Business Studies'],
-  [/c\.?\s*r\.?\s*s\b|i\.?\s*r\.?\s*s\b/i, 'CRS/IRS'],
+  [/c\.?\s*r\.?\s*[sk]\b|i\.?\s*r\.?\s*s\b/i, 'CRS/IRS'],
   [/basic\s*tech|\bbst\b|\bb\.?\s*tech\b|basci\s*tech/i, 'Basic Technology'],
   [/french/i, 'French'],
   [/\bmusic\b/i, 'Music'],
