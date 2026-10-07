@@ -625,15 +625,14 @@ ALTER TABLE topics ADD COLUMN IF NOT EXISTS source_reference TEXT;
 ALTER TABLE topics ADD COLUMN IF NOT EXISTS order_index INT;
 ALTER TABLE topics ADD COLUMN IF NOT EXISTS source_file TEXT;
 
--- Prevents re-running the importer from creating duplicate topic rows, while
--- still allowing two genuinely different source files for the same
--- (subject,class,term,title) — e.g. the SS1 Chemistry situation above —
--- since source_file differs between them. NULLs (manually-authored topics
--- with no source_file) are never considered duplicates of each other,
--- per ordinary Postgres UNIQUE-with-NULL semantics.
+-- Curriculum ingestion identity is positional within a school's ordered
+-- class/subject/term plan. Topic titles may legitimately repeat in different
+-- weeks and source_file is traceability only, so neither belongs in identity.
+-- NULL order_index values (manually-authored topics outside ingestion) remain
+-- unconstrained by ordinary Postgres UNIQUE-with-NULL semantics.
 ALTER TABLE topics DROP CONSTRAINT IF EXISTS topics_ingestion_dedupe;
 ALTER TABLE topics ADD CONSTRAINT topics_ingestion_dedupe
-  UNIQUE (subject_id, class_name, term_label, title, source_file);
+  UNIQUE (school_code, subject_id, class_name, term_label, order_index);
 
 -- ── Term-PIN gating ──────────────────────────────────────────────────────────
 -- Locked decisions (from the original build spec, do not re-litigate):

@@ -851,19 +851,38 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         }
       }
       let inserted = 0;
+      let existingIdentical = 0;
       for (const r of normalRows) {
         const subjectId = subjectIdByName.get(r.subjectName)!;
+        const sourceFile = path.basename(r.filePath);
         const result = await query(
           `INSERT INTO topics(school_code,subject_id,class_name,term_label,title,source_reference,order_index,source_file,created_by)
            VALUES($1,$2,$3,$4,$5,$6,$7,$8,NULL)
            ON CONFLICT ON CONSTRAINT topics_ingestion_dedupe DO NOTHING
            RETURNING id`,
-          [schoolCode, subjectId, r.className, r.termLabel, r.title, r.sourceReference, r.orderIndex, path.basename(r.filePath)],
+          [schoolCode, subjectId, r.className, r.termLabel, r.title, r.sourceReference, r.orderIndex, sourceFile],
         );
-        if (result.rows[0]) inserted++;
+        if (result.rows[0]) {
+          inserted++;
+          continue;
+        }
+
+        // A positional conflict is safe only when it is exactly the same
+        // audited curriculum row. Never let ON CONFLICT hide changed content.
+        const { rows: conflict } = await query(
+          `SELECT title, source_file, source_reference
+           FROM topics
+           WHERE school_code=$1 AND subject_id=$2 AND class_name=$3 AND term_label=$4 AND order_index=$5`,
+          [schoolCode, subjectId, r.className, r.termLabel, r.orderIndex],
+        );
+        const old = conflict[0];
+        if (!old || old.title !== r.title || old.source_file !== sourceFile || old.source_reference !== r.sourceReference) {
+          throw new Error(`Curriculum position conflict differs from audited row: ${r.className} / ${r.subjectName} / ${r.termLabel} / order #${r.orderIndex}. Nothing will be overwritten.`);
+        }
+        existingIdentical++;
       }
       await client.query('COMMIT');
-      console.log(`\n✓ Inserted ${inserted} new topic row(s) (${normalRows.length - inserted} already existed from a prior run of this script).`);
+      console.log(`\n✓ Inserted ${inserted} new topic row(s); verified ${existingIdentical} identical existing row(s).`);
     } catch (error) {
       await client.query('ROLLBACK');
       throw error;
