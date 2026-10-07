@@ -72,6 +72,7 @@ import {
   applyJss1SourceTextResolution,
   isJss1SourceExcluded,
   resolveJss1ParsedTopic,
+  resolveJss1SubjectName,
 } from './jss1CurriculumResolutions.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
@@ -621,6 +622,17 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           const subjectName = inferSubjectName(m[0].replace(/^subject\s*[:;]\s*/i, ''));
           sections.push({ subjectName, sectionText });
         });
+      }
+
+      if (validClassNames.includes('JSS 1')) {
+        sections = sections.map(section => ({
+          ...section,
+          subjectName: resolveJss1SubjectName(
+            path.basename(filePath),
+            termLabel,
+            section.subjectName,
+          ),
+        }));
       }
 
       // Exact-copy suppression is deliberately subject-aware. Commit 10 keyed

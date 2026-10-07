@@ -154,12 +154,34 @@ export function applyJss1SourceTextResolution(
   return text;
 }
 
+export function resolveJss1SubjectName<T extends { name: string; fallback: boolean }>(
+  basename: string,
+  termLabel: string,
+  subjectName: T,
+): T {
+  if (termLabel === '3rd Term' && basename === 'S0CIAL STUDIES.docx') {
+    return { ...subjectName, name: 'Social Studies', fallback: false };
+  }
+  return subjectName;
+}
+
 export function resolveJss1ParsedTopic<T extends ParsedTopicLike>(
   basename: string,
   termLabel: string,
   topic: T,
 ): T | null {
   const week = canonicalWeek(topic.weekLabel);
+
+  const reviewedHomeEconomicsArtifact = (
+    (termLabel === '1st Term' && basename === 'HOME ECONS.docx')
+    || (termLabel === '2nd Term' && basename === 'J.S.S. ONE hmoe econs.docx')
+    || (termLabel === '3rd Term' && basename === 'HOME ECONS.docx')
+  );
+  if (reviewedHomeEconomicsArtifact && topic.title.trim() === '1') {
+    // Each reviewed Home Economics source contains one parser-visible numeric
+    // artifact immediately before its genuine Week-One lesson.
+    return null;
+  }
 
   if (
     termLabel === '2nd Term'
