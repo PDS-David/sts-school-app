@@ -63,6 +63,11 @@ import mammoth from 'mammoth';
 // @ts-ignore — word-extractor ships no types
 import WordExtractor from 'word-extractor';
 import { createHash } from 'node:crypto';
+import {
+  applyPrimarySourceTextResolution,
+  isPrimarySourceExcluded,
+  resolvePrimaryParsedTopic,
+} from './primaryCurriculumResolutions.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
@@ -469,20 +474,18 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         continue;
       }
 
-      const bytes = readFileSync(filePath);
-      const sourceHash = createHash('sha256').update(bytes).digest('hex');
-      const sourceHashKey = JSON.stringify([[...validClassNames].sort(), termLabel, sourceHash]);
-      const canonicalSource = exactSourceHashes.get(sourceHashKey);
-      if (canonicalSource) {
-        exactDuplicateFiles.push({
-          duplicate: sourceIdentity(filePath),
-          canonical: canonicalSource,
-        });
+      if (schoolCode === 'primary' && isPrimarySourceExcluded(path.basename(filePath))) {
+        console.log(`  verified Primary source excluded: ${sourceIdentity(filePath)}`);
         continue;
       }
-      exactSourceHashes.set(sourceHashKey, sourceIdentity(filePath));
 
-      const text = await extractText(filePath);
+      const bytes = readFileSync(filePath);
+      const sourceHash = createHash('sha256').update(bytes).digest('hex');
+
+      let text = await extractText(filePath);
+      if (schoolCode === 'primary') {
+        text = applyPrimarySourceTextResolution(path.basename(filePath), text);
+      }
 
       // Some files (confirmed real case: Nursery/Reception-style documents)
       // merge multiple subjects into ONE file, each restarting its own
@@ -603,13 +606,36 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         });
       }
 
+      // Exact-copy suppression is deliberately subject-aware. Commit 10 keyed
+      // only class + term + bytes, which could hide a byte-identical file that
+      // had been misfiled under a different subject. Resolve the document's
+      // actual section subject(s) first; only an identical subject signature
+      // may be treated as redundant.
+      const resolvedSubjectSignature = [...new Set(sections.map(s => s.subjectName.name))].sort();
+      const sourceHashKey = JSON.stringify([
+        [...validClassNames].sort(), termLabel, resolvedSubjectSignature, sourceHash,
+      ]);
+      const canonicalSource = exactSourceHashes.get(sourceHashKey);
+      if (canonicalSource) {
+        exactDuplicateFiles.push({
+          duplicate: sourceIdentity(filePath),
+          canonical: canonicalSource,
+        });
+        continue;
+      }
+      exactSourceHashes.set(sourceHashKey, sourceIdentity(filePath));
+
       let anyParsed = false;
       for (const className of validClassNames) {
         for (const section of sections) {
           if (section.subjectName.fallback) {
             fallbackSubjects.add(`${sourceIdentity(filePath)} / ${className} / ${termLabel} → ${section.subjectName.name}`);
           }
-          const parsed = parseTopics(section.sectionText);
+          const parsed = parseTopics(section.sectionText)
+            .map(topic => schoolCode === 'primary'
+              ? resolvePrimaryParsedTopic(path.basename(filePath), topic)
+              : topic)
+            .filter((topic): topic is ParsedTopic => topic !== null);
           if (parsed.length === 0) {
             noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (no parseable week/topic structure)`);
           } else {

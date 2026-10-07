@@ -1,0 +1,102 @@
+/**
+ * Curriculum-owner resolutions for verified Primary source irregularities.
+ *
+ * These are deliberately exact-basename rules, not fuzzy parser heuristics.
+ * They preserve the supplied archive as evidence while making the audited
+ * import reproducible on another machine. Additions require source review.
+ */
+
+type ParsedTopicLike = { weekLabel: string; title: string; body: string };
+
+const EXCLUDED_FILES = new Set([
+  // Filename says PHE; content duplicates the correctly named Primary 1 ICT
+  // 3rd-term source week-for-week.
+  'PRY 1 PHE 3RD TERM.doc',
+  // Byte-identical/misplaced copy of the retained Primary 1 PHE 2nd-term
+  // lesson resource; no evidence supports assigning it to Primary 2 3rd term.
+  'PRY 2 PHE 3RD TERM.docx',
+  'PRY 2 PHE 3RD TERM_1.docx',
+  // Incomplete Primary 6 Mathematics copy: Week 2 has no lesson body. The
+  // reviewed _1 copy contains the Binary Numbers lesson and is retained.
+  'PRY 6 MATHS IST TERM.doc',
+]);
+
+const canonicalWeek = (value: string) => value
+  .toLowerCase()
+  .replace(/^\s*week\s*[:.\-]*\s*/i, '')
+  .replace(/\band\b/g, '&')
+  .replace(/\s+/g, '');
+
+const TOPIC_OVERRIDES = new Map<string, Map<string, string>>([
+  ['PRY 1 MATHS  3rd term.doc', new Map([
+    ['3&4', 'Telling the Time to the Hour'],
+  ])],
+  ['PRY 6 MATHS IST TERM_1.doc', new Map([
+    ['2', 'Binary Numbers'],
+  ])],
+  ['THIRD TERM PRY 3 COMPUTER PRY   3.doc', new Map([
+    ['9&10', 'Floppy Disk/Diskette'],
+  ])],
+]);
+
+const DROP_ORPHAN_WEEKS = new Map<string, Set<string>>([
+  ['THIRD TERM PHYSICAL AND HEALTH EDUCATION PRY FOUR.doc', new Set(['5'])],
+  ['PRY3  CCA 3RD TERM.doc', new Set(['5&6'])],
+]);
+
+export function isPrimarySourceExcluded(basename: string): boolean {
+  return EXCLUDED_FILES.has(basename);
+}
+
+export function applyPrimarySourceTextResolution(basename: string, text: string): string {
+  if (basename === 'PRY 1 PHE 2ND TERM.docx') {
+    // Verified source uses Lesson 1-4 instead of week markers. Convert only
+    // these four explicit lesson headings; no general Lesson=>Week heuristic.
+    const lessons = [
+      ['1', 'Manipulative Movements'],
+      ['2', 'Fundamental Rhythms and Movements'],
+      ['3', 'Creative Rhythms and Movements'],
+      ['4', 'Locomotor Movements'],
+    ] as const;
+    let resolved = text;
+    for (const [number, title] of lessons) {
+      const re = new RegExp(`(^|\\n)\\s*lesson\\s+${number}\\b[^\\n]*`, 'i');
+      resolved = resolved.replace(re, `$1WEEK ${number}\\nTOPIC: ${title}`);
+    }
+    return resolved;
+  }
+
+  if (basename === 'PRY 6 Civic Ist term.doc') {
+    // The reviewed source is valid but inconsistently labels later headings.
+    // Add explicit TOPIC markers only to the verified standalone headings.
+    const headings = [
+      ['4', 'Values that Promote Peace'],
+      ['5', 'Co-operation'],
+      ['6', 'National Unity'],
+      ['7', 'National Consciousness and Identity'],
+      ['8', 'Patriotism'],
+      ['9', 'Ethnicity'],
+      ['10', 'National Symbols'],
+    ] as const;
+    let resolved = text;
+    for (const [week, title] of headings) {
+      const weekRe = new RegExp(`(^|\\n)(\\s*WEEK\\s*[:.\\-]*\\s*${week}\\s*)(?:\\n+)(?!\\s*TOPIC\\b)`, 'i');
+      resolved = resolved.replace(weekRe, `$1$2\\nTOPIC: ${title}\\n`);
+    }
+    return resolved;
+  }
+
+  return text;
+}
+
+export function resolvePrimaryParsedTopic<T extends ParsedTopicLike>(
+  basename: string,
+  topic: T,
+): T | null {
+  const week = canonicalWeek(topic.weekLabel);
+  if (DROP_ORPHAN_WEEKS.get(basename)?.has(week)) return null;
+
+  const title = TOPIC_OVERRIDES.get(basename)?.get(week);
+  if (!title) return topic;
+  return { ...topic, title };
+}
