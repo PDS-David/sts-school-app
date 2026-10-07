@@ -697,10 +697,15 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     files.add(sourceIdentity(r.filePath));
     contentFiles.set(key, files);
     contentLabels.set(key, `${r.className} / ${r.subjectName} / ${r.termLabel} / ${r.title}`);
-    // The DB key uses basename, not relative path. Flag collisions before
-    // ON CONFLICT could silently discard distinct source rows.
-    const identity = JSON.stringify([bucketKey(r), r.title, path.basename(r.filePath)]);
-    if (identities.has(identity)) identityCollisions.push(`${sourceIdentity(r.filePath)} / ${r.className} / ${r.subjectName} / ${r.termLabel} / ${r.title}`);
+    // Curriculum identity is positional within a class/subject/term sequence.
+    // A title may legitimately repeat in different weeks, so title+source_file
+    // must not be treated as unique. Match the ordered import plan instead.
+    const identity = JSON.stringify([bucketKey(r), r.orderIndex]);
+    if (identities.has(identity)) {
+      identityCollisions.push(
+        `${sourceIdentity(r.filePath)} / ${r.className} / ${r.subjectName} / ${r.termLabel} / order #${r.orderIndex} / ${r.weekLabel} / ${r.title}`,
+      );
+    }
     identities.add(identity);
   }
   const duplicates = [...contentFiles.entries()].filter(([, files]) => files.size > 1);
