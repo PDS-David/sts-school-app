@@ -68,6 +68,10 @@ import {
   isPrimarySourceExcluded,
   resolvePrimaryParsedTopic,
 } from './primaryCurriculumResolutions.js';
+import {
+  applyJss1SourceTextResolution,
+  resolveJss1ParsedTopic,
+} from './jss1CurriculumResolutions.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
@@ -485,6 +489,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       let text = await extractText(filePath);
       if (schoolCode === 'primary') {
         text = applyPrimarySourceTextResolution(path.basename(filePath), text);
+      } else if (validClassNames.includes('JSS 1')) {
+        text = applyJss1SourceTextResolution(path.basename(filePath), termLabel, text);
       }
 
       // Some files (confirmed real case: Nursery/Reception-style documents)
@@ -634,7 +640,9 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           const parsed = parseTopics(section.sectionText)
             .map(topic => schoolCode === 'primary'
               ? resolvePrimaryParsedTopic(path.basename(filePath), topic)
-              : topic)
+              : className === 'JSS 1'
+                ? resolveJss1ParsedTopic(path.basename(filePath), termLabel, topic)
+                : topic)
             .filter((topic): topic is ParsedTopic => topic !== null);
           if (parsed.length === 0) {
             noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (no parseable week/topic structure)`);
