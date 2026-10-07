@@ -26,6 +26,13 @@ function fromMarker(text: string, marker: RegExp, replacementPrefix = ''): strin
   return replacementPrefix + text.slice(match.index);
 }
 
+function fromNthMarker(text: string, marker: RegExp, occurrence: number): string {
+  const flags = marker.flags.includes('g') ? marker.flags : marker.flags + 'g';
+  const matches = [...text.matchAll(new RegExp(marker.source, flags))];
+  const match = matches[occurrence - 1];
+  return match?.index === undefined ? text : text.slice(match.index);
+}
+
 const YORUBA_WEEK_NUMBERS: Array<[RegExp, string]> = [
   [/kin[\s-]*in[\s-]*(?:ni|in)/i, '1'],
   [/keji/i, '2'],
@@ -66,7 +73,10 @@ export function isJss1SourceExcluded(basename: string, termLabel: string): boole
   // This file contains a genuine JSS1 scheme followed by an explicit JSS3
   // Advertising lesson body. A scheme alone is structural evidence, not
   // student lesson content, so the reviewed file contributes no topic rows.
-  return termLabel === '1st Term' && basename === 'BUSINESS STUDIES_1.docx';
+  return (
+    (termLabel === '1st Term' && basename === 'BUSINESS STUDIES_1.docx')
+    || (termLabel === '2nd Term' && basename === 'basic tech js 1.docx')
+  );
 }
 
 export function applyJss1SourceTextResolution(
@@ -74,6 +84,23 @@ export function applyJss1SourceTextResolution(
   termLabel: string,
   text: string,
 ): string {
+  // Reviewed scheme+lesson files: start at the actual lesson sequence so
+  // scheme-of-work rows cannot become student topics. Exact-source/JSS1-only.
+  const lessonBodyStart: Record<string, { marker: RegExp; occurrence: number }> = {
+    '1st Term/JSS 1 GENERAL MATHEMATICS.docx': { marker: /^\s*WEEK\s*1\b/gim, occurrence: 2 },
+    '1st Term/SOCIAL STUDIES..docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
+    '2nd Term/JS 1 MATHS.docx': { marker: /^\s*WEEK\s*2\b/gim, occurrence: 2 },
+    '2nd Term/new 2nd term SOCIAL STUDIES e note  2017 ..docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
+    '3rd Term/BASIC TECHNOLOGY.docx': { marker: /^\s*WEEK\s*1\b/gim, occurrence: 2 },
+    '3rd Term/ENGLISH.docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
+    '3rd Term/MATHS.docx': { marker: /^\s*WEEK\s*1\b/gim, occurrence: 2 },
+    '3rd Term/S0CIAL STUDIES.docx': { marker: /^\s*WEEK\s+(?:1|ONE)\b/gim, occurrence: 2 },
+  };
+  const lessonStart = lessonBodyStart[`${termLabel}/${basename}`];
+  if (lessonStart) {
+    text = fromNthMarker(text, lessonStart.marker, lessonStart.occurrence);
+  }
+
   if (termLabel === '1st Term' && basename === 'P H E.docx') {
     // The valid JSS1 First-Term PHE material is followed by a second embedded
     // document explicitly headed BASIC 8. Stop before that appended source.
