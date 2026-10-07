@@ -270,7 +270,7 @@ async function extractText(filePath: string): Promise<string> {
 // table-vs-real-content limitation this implies.
 const WEEK_NUMBER_WORD = 'one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen';
 const WEEK_MARKER = new RegExp(
-  `week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:${WEEK_NUMBER_WORD}))`,
+  `week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:${WEEK_NUMBER_WORD})(?:\\s*(?:&|and|,|-)\\s*(?:${WEEK_NUMBER_WORD}))?)`,
   'gi',
 );
 
@@ -303,7 +303,7 @@ function parseTopics(text: string): ParsedTopic[] {
       // Prefer an explicit TOPIC field when present. Real Primary sources use
       // several separators (TOPIC:, TOPIC;, TOPIC-, TOPIC—), so accepting only
       // ':' and ';' turned valid lesson plans into one-character/metadata titles.
-      const topicLineMatch = block.match(/^\s*topic\s*(?:[:;\-–—]\s*)?(.+)$/im);
+      const topicLineMatch = block.match(/^\s*topics?\s*(?:[:;\-–—]\s*)?(.+)$/im);
       let title: string;
       if (topicLineMatch) {
         title = topicLineMatch[1].trim();
@@ -509,6 +509,18 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           ? inferSubjectName(headerBlock, path.basename(filePath))
           : filenameSubject;
         sections = [{ subjectName, sectionText: text }];
+      } else if (subjectLineMatches.length > 1 && knownHeaderSubjects.size === 1) {
+        // Repeated identical SUBJECT headers are a lesson-plan layout, not a
+        // multi-subject document. Splitting at every repetition can separate a
+        // WEEK marker from the TOPIC that belongs to it (real Primary 2 files
+        // use WEEK -> CLASS -> SUBJECT -> TOPIC for every lesson), creating
+        // false "missing week/topic structure" blockers. Keep the complete
+        // document together when 2+ headers all resolve to one known subject.
+        // A single SUBJECT header still follows the leading-section logic
+        // below because a real mixed Reception file has meaningful unlabeled
+        // content before its one explicit subject header.
+        const [headerSubjectName] = [...knownHeaderSubjects];
+        sections = [{ subjectName: { name: headerSubjectName, fallback: false }, sectionText: text }];
       } else {
         sections = [];
         // Confirmed real case (Reception_class-5.doc): a file can have
