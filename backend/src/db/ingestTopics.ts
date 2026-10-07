@@ -815,76 +815,174 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       await client.query('BEGIN');
       await client.query('LOCK TABLE subjects, topics IN SHARE ROW EXCLUSIVE MODE');
       const query = (sql: string, params?: unknown[]) => client.query(sql, params);
-      const subjectIdByName = new Map<string, number>();
-      for (const name of subjectTokensSeen) {
-        const { rows: existing } = await query('SELECT id FROM subjects WHERE school_code=$1 AND name=$2', [schoolCode, name]);
-        if (existing[0]) { subjectIdByName.set(name, existing[0].id); continue; }
-        const { rows: created } = await query(
-          'INSERT INTO subjects(school_code, name) VALUES($1,$2) ON CONFLICT (school_code,name) DO NOTHING RETURNING id',
-          [schoolCode, name],
-        );
-        if (created[0]) {
-          subjectIdByName.set(name, created[0].id);
-          console.log(`  + created new subject '${name}'`);
-        } else {
-          // Conflict raced with a concurrent insert — re-select to get its id.
-          const { rows: reSelect } = await query('SELECT id FROM subjects WHERE school_code=$1 AND name=$2', [schoolCode, name]);
-          subjectIdByName.set(name, reSelect[0].id);
+      const subjectNames = [...subjectTokensSeen];
+      await query(
+        `INSERT INTO subjects(school_code, name)
+         SELECT $1, name
+         FROM unnest($2::text[]) AS requested(name)
+         ON CONFLICT (school_code, name) DO NOTHING`,
+        [schoolCode, subjectNames],
+      );
+
+      const { rows: subjectRows } = await query(
+        'SELECT id, name FROM subjects WHERE school_code=$1 AND name = ANY($2::text[])',
+        [schoolCode, subjectNames],
+      );
+      const subjectIdByName = new Map<string, number>(
+        subjectRows.map((row: { id: number; name: string }) => [row.name, row.id]),
+      );
+      for (const name of subjectNames) {
+        if (!subjectIdByName.has(name)) {
+          throw new Error(`Subject lookup failed after upsert: ${name}. Nothing will be written.`);
         }
       }
+
+      type PlannedDbRow = {
+        subject_id: number;
+        class_name: string;
+        term_label: string;
+        title: string;
+        source_reference: string;
+        order_index: number;
+        source_file: string;
+      };
+      const plannedRows: PlannedDbRow[] = normalRows.map(r => ({
+        subject_id: subjectIdByName.get(r.subjectName)!,
+        class_name: r.className,
+        term_label: r.termLabel,
+        title: r.title,
+        source_reference: r.sourceReference,
+        order_index: r.orderIndex,
+        source_file: path.basename(r.filePath),
+      }));
+      const plannedPayload = JSON.stringify(plannedRows);
 
       // A rerun must not mix a newly numbered batch with a previous, different
-      // sequence. Existing rows must be an unchanged subset of the audited plan.
-      for (const key of nextOrder.keys()) {
-        const planned = normalRows.filter(r => bucketKey(r) === key);
-        const first = planned[0];
-        const { rows: existing } = await query(
-          `SELECT title, source_file, source_reference, order_index FROM topics
-           WHERE school_code=$1 AND subject_id=$2 AND class_name=$3 AND term_label=$4`,
-          [schoolCode, subjectIdByName.get(first.subjectName), first.className, first.termLabel],
+      // sequence. Check every existing row in the affected buckets against the
+      // complete audited plan before inserting anything.
+      const { rows: incompatibleExisting } = await query(
+        `WITH planned AS (
+           SELECT *
+           FROM jsonb_to_recordset($2::jsonb) AS p(
+             subject_id integer,
+             class_name text,
+             term_label text,
+             title text,
+             source_reference text,
+             order_index integer,
+             source_file text
+           )
+         ),
+         buckets AS (
+           SELECT DISTINCT subject_id, class_name, term_label FROM planned
+         )
+         SELECT t.class_name, s.name AS subject_name, t.term_label, t.order_index
+         FROM topics t
+         JOIN subjects s ON s.id=t.subject_id
+         JOIN buckets b
+           ON b.subject_id=t.subject_id
+          AND b.class_name=t.class_name
+          AND b.term_label=t.term_label
+         WHERE t.school_code=$1
+           AND NOT EXISTS (
+             SELECT 1 FROM planned p
+             WHERE p.subject_id=t.subject_id
+               AND p.class_name=t.class_name
+               AND p.term_label=t.term_label
+               AND p.order_index=t.order_index
+               AND p.title=t.title
+               AND p.source_file=t.source_file
+               AND p.source_reference=t.source_reference
+           )
+         LIMIT 1`,
+        [schoolCode, plannedPayload],
+      );
+      if (incompatibleExisting[0]) {
+        const bad = incompatibleExisting[0];
+        throw new Error(
+          `Existing curriculum differs from audited sequence: ${bad.class_name} / ${bad.subject_name} / ${bad.term_label} / order #${bad.order_index}. Review separately; nothing will be overwritten.`,
         );
-        for (const old of existing) {
-          if (!planned.some(r => r.title === old.title && path.basename(r.filePath) === old.source_file
-            && r.sourceReference === old.source_reference && r.orderIndex === old.order_index)) {
-            throw new Error(`Existing curriculum differs from audited sequence: ${first.className} / ${first.subjectName} / ${first.termLabel}. Review separately; nothing will be overwritten.`);
-          }
-        }
       }
+
+      // Keep write round-trips bounded while avoiding thousands of per-topic
+      // queries. The complete import still commits or rolls back atomically.
+      const IMPORT_BATCH_SIZE = 200;
       let inserted = 0;
-      let existingIdentical = 0;
-      for (const r of normalRows) {
-        const subjectId = subjectIdByName.get(r.subjectName)!;
-        const sourceFile = path.basename(r.filePath);
+      for (let offset = 0; offset < plannedRows.length; offset += IMPORT_BATCH_SIZE) {
+        const batch = plannedRows.slice(offset, offset + IMPORT_BATCH_SIZE);
         const result = await query(
-          `INSERT INTO topics(school_code,subject_id,class_name,term_label,title,source_reference,order_index,source_file,created_by)
-           VALUES($1,$2,$3,$4,$5,$6,$7,$8,NULL)
+          `WITH planned AS (
+             SELECT *
+             FROM jsonb_to_recordset($2::jsonb) AS p(
+               subject_id integer,
+               class_name text,
+               term_label text,
+               title text,
+               source_reference text,
+               order_index integer,
+               source_file text
+             )
+           )
+           INSERT INTO topics(
+             school_code,subject_id,class_name,term_label,title,
+             source_reference,order_index,source_file,created_by
+           )
+           SELECT $1,p.subject_id,p.class_name,p.term_label,p.title,
+                  p.source_reference,p.order_index,p.source_file,NULL
+           FROM planned p
            ON CONFLICT ON CONSTRAINT topics_ingestion_dedupe DO NOTHING
            RETURNING id`,
-          [schoolCode, subjectId, r.className, r.termLabel, r.title, r.sourceReference, r.orderIndex, sourceFile],
+          [schoolCode, JSON.stringify(batch)],
         );
-        if (result.rows[0]) {
-          inserted++;
-          continue;
-        }
-
-        // A positional conflict is safe only when it is exactly the same
-        // audited curriculum row. Never let ON CONFLICT hide changed content.
-        const { rows: conflict } = await query(
-          `SELECT title, source_file, source_reference
-           FROM topics
-           WHERE school_code=$1 AND subject_id=$2 AND class_name=$3 AND term_label=$4 AND order_index=$5`,
-          [schoolCode, subjectId, r.className, r.termLabel, r.orderIndex],
-        );
-        const old = conflict[0];
-        if (!old || old.title !== r.title || old.source_file !== sourceFile || old.source_reference !== r.sourceReference) {
-          throw new Error(`Curriculum position conflict differs from audited row: ${r.className} / ${r.subjectName} / ${r.termLabel} / order #${r.orderIndex}. Nothing will be overwritten.`);
-        }
-        existingIdentical++;
+        inserted += result.rowCount ?? result.rows.length;
       }
+
+      // Verify the complete audited plan after insertion, still inside the
+      // transaction. A missing or changed position aborts rather than commits.
+      const { rows: invalidPersisted } = await query(
+        `WITH planned AS (
+           SELECT *
+           FROM jsonb_to_recordset($2::jsonb) AS p(
+             subject_id integer,
+             class_name text,
+             term_label text,
+             title text,
+             source_reference text,
+             order_index integer,
+             source_file text
+           )
+         )
+         SELECT p.class_name, s.name AS subject_name, p.term_label, p.order_index
+         FROM planned p
+         JOIN subjects s ON s.id=p.subject_id
+         LEFT JOIN topics t
+           ON t.school_code=$1
+          AND t.subject_id=p.subject_id
+          AND t.class_name=p.class_name
+          AND t.term_label=p.term_label
+          AND t.order_index=p.order_index
+          AND t.title=p.title
+          AND t.source_file=p.source_file
+          AND t.source_reference=p.source_reference
+         WHERE t.id IS NULL
+         LIMIT 1`,
+        [schoolCode, plannedPayload],
+      );
+      if (invalidPersisted[0]) {
+        const bad = invalidPersisted[0];
+        throw new Error(
+          `Persisted curriculum does not match audited row: ${bad.class_name} / ${bad.subject_name} / ${bad.term_label} / order #${bad.order_index}. Nothing will be committed.`,
+        );
+      }
+      const existingIdentical = plannedRows.length - inserted;
       await client.query('COMMIT');
       console.log(`\n✓ Inserted ${inserted} new topic row(s); verified ${existingIdentical} identical existing row(s).`);
     } catch (error) {
-      await client.query('ROLLBACK');
+      try {
+        await client.query('ROLLBACK');
+      } catch (rollbackError) {
+        console.error('Rollback failed after import error:', rollbackError);
+      }
       throw error;
     } finally {
       client.release();
