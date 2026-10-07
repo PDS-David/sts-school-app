@@ -70,6 +70,7 @@ import {
 } from './primaryCurriculumResolutions.js';
 import {
   applyJss1SourceTextResolution,
+  isJss1SourceExcluded,
   resolveJss1ParsedTopic,
 } from './jss1CurriculumResolutions.js';
 
@@ -481,6 +482,15 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
       if (schoolCode === 'primary' && isPrimarySourceExcluded(path.basename(filePath), sourceIdentity(filePath))) {
         console.log(`  verified Primary source excluded: ${sourceIdentity(filePath)}`);
+        continue;
+      }
+
+      if (
+        schoolCode === 'secondary'
+        && validClassNames.includes('JSS 1')
+        && isJss1SourceExcluded(path.basename(filePath), termLabel)
+      ) {
+        console.log(`  verified JSS1 source excluded from topic rows: ${sourceIdentity(filePath)}`);
         continue;
       }
 

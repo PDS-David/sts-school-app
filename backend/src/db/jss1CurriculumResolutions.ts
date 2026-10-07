@@ -20,31 +20,93 @@ function truncateAt(text: string, marker: RegExp): string {
   return match?.index === undefined ? text : text.slice(0, match.index);
 }
 
+function fromMarker(text: string, marker: RegExp, replacementPrefix = ''): string {
+  const match = marker.exec(text);
+  if (match?.index === undefined) return text;
+  return replacementPrefix + text.slice(match.index);
+}
+
+const YORUBA_WEEK_NUMBERS: Array<[RegExp, string]> = [
+  [/kin[\s-]*in[\s-]*(?:ni|in)/i, '1'],
+  [/keji/i, '2'],
+  [/keta/i, '3'],
+  [/kerin/i, '4'],
+  [/karun(?:[\s-]*un)?/i, '5'],
+  [/kefa/i, '6'],
+  [/keje/i, '7'],
+  [/kejo/i, '8'],
+  [/kesa(?:[\s-]*an)?/i, '9'],
+  [/kewaa/i, '10'],
+  [/kokanla/i, '11'],
+  [/kejila/i, '12'],
+  [/ketala/i, '13'],
+];
+
+function normalizeYorubaWeeks(text: string): string {
+  return text.replace(
+    /^[ \t]*OSE[ \t]+([^\r\n:]+)(?:[ \t]*:[ \t]*)?/gim,
+    (whole, ordinal: string) => {
+      const resolved = YORUBA_WEEK_NUMBERS.find(([pattern]) => pattern.test(ordinal));
+      return resolved ? `WEEK ${resolved[1]}` : whole;
+    },
+  );
+}
+
+function normalizeInlineJss1WeekHeadings(text: string): string {
+  // Reviewed CCA/Fine-Art material sometimes flattens "CLASS; JSS1" and
+  // "WEEK n" onto one line. The generic parser intentionally requires WEEK
+  // at line start, so restore only that lost line break for JSS1 sources.
+  return text.replace(
+    /^([ \t]*CLASS\s*[:;\-–—]?\s*J\s*\.?\s*S\s*\.?\s*S?\s*\.?\s*1)\s*(WEEK\s*[:;\-–—]?\s*(?:\d+(?:\s*[-&]\s*\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim,
+    '$1\n$2',
+  );
+}
+
+export function isJss1SourceExcluded(basename: string, termLabel: string): boolean {
+  // This file contains a genuine JSS1 scheme followed by an explicit JSS3
+  // Advertising lesson body. A scheme alone is structural evidence, not
+  // student lesson content, so the reviewed file contributes no topic rows.
+  return termLabel === '1st Term' && basename === 'BUSINESS STUDIES_1.docx';
+}
+
 export function applyJss1SourceTextResolution(
   basename: string,
   termLabel: string,
   text: string,
 ): string {
-  if (termLabel === '1st Term' && basename === 'BUSINESS STUDIES_1.docx') {
-    // The opening table is the reviewed JSS1 scheme. The lesson body then
-    // explicitly changes class to JSS3 ("WEEK ONE JSS 3") and must not be
-    // ingested as JSS1.
-    return truncateAt(text, /^\s*WEEK\s+ONE\s+JSS\s*3\b/im);
-  }
-
   if (termLabel === '1st Term' && basename === 'P H E.docx') {
     // The valid JSS1 First-Term PHE material is followed by a second embedded
     // document explicitly headed BASIC 8. Stop before that appended source.
-    return truncateAt(text, /^\s*SUBJECT[-–—\s]*PHYSICAL\s+AND\s+HEALTH\s+EDUCATION\s*\n\s*BASIC\s*8\b/im);
+    text = truncateAt(text, /^\s*SUBJECT[-–—\s]*PHYSICAL\s+AND\s+HEALTH\s+EDUCATION\s*\n\s*BASIC\s*8\b/im);
   }
 
   if (termLabel === '2nd Term' && basename === 'basic tech js 1.docx') {
     // The JSS1 Basic Technology scheme is valid, but the following lesson body
     // switches to unrelated Road Safety content. Retain only the reviewed
-    // scheme as structural evidence.
-    return truncateAt(text, /^\s*Week\s*1\s*;\s*Home\s*[›>]\s*Road\s+Safety\b/im);
+    // structural evidence; no unrelated lesson text can pass through.
+    text = truncateAt(text, /^\s*Week\s*1\s*;\s*Home\s*[›>]\s*Road\s+Safety\b/im);
   }
 
+  if (termLabel === '1st Term' && basename === 'YORUBA LANGUAGE JSS 1 E NOTE   NEW1.docx') {
+    // Its numbered scheme is structural evidence. The lesson body begins with
+    // the Week-1 alphabet topic but omits an OSE heading there; add only that
+    // missing parser marker, then normalize the later Yoruba OSE headings.
+    text = fromMarker(text, /^\s*AKOLE\s+ISE\s*[–—-]\s*ALIFABETI\s+YORUBA\b/im, 'WEEK 1\n');
+    text = normalizeYorubaWeeks(text);
+  }
+
+  if (termLabel === '2nd Term' && basename === '1. 2nd term YORUBA e note js  20 17.docx') {
+    // Skip the scheme preamble by starting at the standalone Week-1 lesson
+    // heading, then translate Yoruba week ordinals for the generic parser.
+    text = fromMarker(text, /^\s*OSE\s+KIN[\s-]*IN[\s-]*(?:NI|IN)\s*$/im);
+    text = normalizeYorubaWeeks(text);
+  }
+
+  if (termLabel === '3rd Term' && basename === 'YORUBA.docx') {
+    text = normalizeYorubaWeeks(text);
+  }
+
+  text = normalizeInlineJss1WeekHeadings(text);
   return text;
 }
 
