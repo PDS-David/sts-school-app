@@ -101,8 +101,10 @@ const RULES: Record<string, Rule> = {
   '3rd Term/HOME ECONS-1.docx': dropBanner('TWELVE'),
 
   // Missed / mis-typed lesson markers
-  '1st Term/ENOTE SOCIAL STUDIES JSS2 1ST TERM.docx': replaceOnce(
-    /^([ \t]*)LESSON[ \t]+NOTE[ \t]+FOR[ \t]+(WEEK[ \t]+2[ \t]*)\r?$/m, '$1$2', 'LESSON NOTE FOR WEEK 2'),
+  '1st Term/ENOTE SOCIAL STUDIES JSS2 1ST TERM.docx': fromMarker(
+    /^[ \t]*WEEK[ \t]+TWO[ \t]*\r?$/m,
+    'Social Studies substantive body WEEK TWO',
+  ),
   '2nd Term/Jss 2 civic edu.docx': replaceOnce(
     /^([ \t]*WEEK[ \t]+)EGHT(?=[ \t]*:)/m, '$1EIGHT', 'WEEK EGHT'),
   '3rd Term/COMPUTER.docx': replaceOnce(
