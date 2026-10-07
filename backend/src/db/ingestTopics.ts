@@ -190,6 +190,7 @@ const SUBJECT_PATTERNS: Array<[RegExp, string]> = [
   [/c\.?\s*r\.?\s*s\b|i\.?\s*r\.?\s*s\b/i, 'CRS/IRS'],
   [/basic\s*tech|\bbst\b|\bb\.?\s*tech\b|basci\s*tech/i, 'Basic Technology'],
   [/french/i, 'French'],
+  [/\bmusic\b/i, 'Music'],
   [/book\s*keep/i, 'Book Keeping'],
   [/financial\s*account/i, 'Financial Accounting'],
   [/catering/i, 'Catering Craft Practices'],
