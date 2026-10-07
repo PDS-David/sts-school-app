@@ -19,6 +19,15 @@ const EXCLUDED_FILES = new Set([
   // Incomplete Primary 6 Mathematics copy: Week 2 has no lesson body. The
   // reviewed _1 copy contains the Binary Numbers lesson and is retained.
   'PRY 6 MATHS IST TERM.doc',
+  // Verified duplicate/alternate Primary 4 First-Term sources. Retain the
+  // corresponding canonical unsuffixed source in each case.
+  'PRY 4  Civic Ist term_1.docx',
+  'PRY 4 CCA First term E_1.docx',
+  '[1st Term] PRY 4 English 1.docx',
+  'PRY 4 Maths Ist term_1.doc',
+  // Anonymous source overlaps the retained, clearly identified Primary 5 CCA
+  // First-Term source; do not let the anonymous copy duplicate its lesson.
+  'み.docx',
 ]);
 
 const canonicalWeek = (value: string) => value
@@ -49,6 +58,15 @@ export function isPrimarySourceExcluded(basename: string): boolean {
 }
 
 export function applyPrimarySourceTextResolution(basename: string, text: string): string {
+  if (basename === 'PRY 4 CCA First term E.docx') {
+    // This reviewed source contains the complete Week 1-14 sequence followed
+    // by a second embedded copy beginning at "WEEK: 1". Keep the first,
+    // complete sequence only. This is exact-source cleanup, not parser logic.
+    const repeatedSequence = /\n\s*WEEK:\s*1\b/i.exec(text);
+    if (repeatedSequence?.index !== undefined) return text.slice(0, repeatedSequence.index);
+    return text;
+  }
+
   if (basename === 'PRY 1 PHE 2ND TERM.docx') {
     // Verified source uses Lesson 1-4 instead of week markers. Convert only
     // these four explicit lesson headings; no general Lesson=>Week heuristic.
