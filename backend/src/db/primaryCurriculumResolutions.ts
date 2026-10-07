@@ -54,8 +54,32 @@ const DROP_ORPHAN_WEEKS = new Map<string, Set<string>>([
   ['PRY3  CCA 3RD TERM.doc', new Set(['5&6'])],
 ]);
 
-export function isPrimarySourceExcluded(basename: string): boolean {
-  return EXCLUDED_FILES.has(basename);
+export function isPrimarySourceExcluded(basename: string, sourceIdentity = ''): boolean {
+  if (EXCLUDED_FILES.has(basename)) return true;
+
+  // Verified against the original Primary 5 First-Term archive: it contains
+  // exactly nine named curriculum files. Any other .doc/.docx in this exact
+  // extracted source folder is an extraction/nested-archive artifact.
+  const normalizedSource = sourceIdentity.replace(/\\/g, '/');
+  if (
+    normalizedSource.includes('/BASIC FIVE/1st Term Basic 5/')
+    && /\.docx?$/i.test(basename)
+  ) {
+    const verifiedPrimary5FirstTermFiles = new Set([
+      'PRY 5 IST TERM ICT.doc',
+      'PRY 5  BASIC SCI Ist term.doc',
+      'PRY 5 PHE Ist term.doc',
+      'PRY 5 SOS Ist term.doc',
+      'PRY 5 English Ist term.doc',
+      'PRY 5 AGRIC Ist term.doc',
+      'PRY 5 CCA  Ist term.doc',
+      'PRY 5 IST TERM CIVIC.doc',
+      'PRY 5 Maths Ist term.docx',
+    ]);
+    return !verifiedPrimary5FirstTermFiles.has(basename);
+  }
+
+  return false;
 }
 
 export function applyPrimarySourceTextResolution(basename: string, text: string): string {

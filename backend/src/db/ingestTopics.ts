@@ -474,7 +474,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         continue;
       }
 
-      if (schoolCode === 'primary' && isPrimarySourceExcluded(path.basename(filePath))) {
+      if (schoolCode === 'primary' && isPrimarySourceExcluded(path.basename(filePath), sourceIdentity(filePath))) {
         console.log(`  verified Primary source excluded: ${sourceIdentity(filePath)}`);
         continue;
       }
