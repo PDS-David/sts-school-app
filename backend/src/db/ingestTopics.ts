@@ -74,6 +74,7 @@ import {
   resolveJss1ParsedTopic,
   resolveJss1SubjectName,
 } from './jss1CurriculumResolutions.js';
+import { applyJss2SourceTextResolution, resolveJss2SubjectName } from './jss2CurriculumResolutions.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
@@ -503,6 +504,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         text = applyPrimarySourceTextResolution(path.basename(filePath), text);
       } else if (validClassNames.includes('JSS 1')) {
         text = applyJss1SourceTextResolution(path.basename(filePath), termLabel, text);
+      } else if (validClassNames.includes('JSS 2')) {
+        text = applyJss2SourceTextResolution(path.basename(filePath), termLabel, text);
       }
 
       // Some files (confirmed real case: Nursery/Reception-style documents)
@@ -632,6 +635,13 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
             termLabel,
             section.subjectName,
           ),
+        }));
+      }
+
+      if (validClassNames.includes('JSS 2')) {
+        sections = sections.map(section => ({
+          ...section,
+          subjectName: resolveJss2SubjectName(path.basename(filePath), termLabel, section.subjectName),
         }));
       }
 
