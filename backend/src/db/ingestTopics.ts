@@ -438,6 +438,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const suspiciousTopics: Set<string> = new Set();
   const noWeekMarkers: string[] = [];
   const parsedFiles: Set<string> = new Set();
+  // Exact byte copies in the same class/term are source-package duplication,
+  // not separate curriculum. Keep the lexically first file (allFiles is
+  // deterministically sorted), report the later copy, and never parse it.
+  // Near-copies remain fully audited; filenames such as "_1" are not evidence.
+  const exactSourceHashes = new Map<string, string>();
+  const exactDuplicateFiles: Array<{ duplicate: string; canonical: string }> = [];
 
   for (const filePath of allFiles) {
     try {
@@ -462,6 +468,19 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         wrongSchoolCode.add(`${classNames.join('+')} — ${path.relative(root, filePath)}`);
         continue;
       }
+
+      const bytes = readFileSync(filePath);
+      const sourceHash = createHash('sha256').update(bytes).digest('hex');
+      const sourceHashKey = JSON.stringify([[...validClassNames].sort(), termLabel, sourceHash]);
+      const canonicalSource = exactSourceHashes.get(sourceHashKey);
+      if (canonicalSource) {
+        exactDuplicateFiles.push({
+          duplicate: sourceIdentity(filePath),
+          canonical: canonicalSource,
+        });
+        continue;
+      }
+      exactSourceHashes.set(sourceHashKey, sourceIdentity(filePath));
 
       const text = await extractText(filePath);
 
@@ -534,16 +553,18 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           ? inferSubjectName(headerBlock, path.basename(filePath))
           : filenameSubject;
         sections = [{ subjectName, sectionText: text }];
-      } else if (subjectLineMatches.length > 1 && knownHeaderSubjects.size === 1) {
+      } else if (knownHeaderSubjects.size === 1 && (
+        subjectLineMatches.length > 1
+        || (!filenameSubject.fallback && [...knownHeaderSubjects][0] === filenameSubject.name)
+      )) {
         // Repeated identical SUBJECT headers are a lesson-plan layout, not a
-        // multi-subject document. Splitting at every repetition can separate a
-        // WEEK marker from the TOPIC that belongs to it (real Primary 2 files
-        // use WEEK -> CLASS -> SUBJECT -> TOPIC for every lesson), creating
-        // false "missing week/topic structure" blockers. Keep the complete
-        // document together when 2+ headers all resolve to one known subject.
-        // A single SUBJECT header still follows the leading-section logic
-        // below because a real mixed Reception file has meaningful unlabeled
-        // content before its one explicit subject header.
+        // multi-subject document. Likewise, one explicit SUBJECT header that
+        // agrees with a known filename subject describes a single-subject
+        // document: splitting its preamble from its lesson body can manufacture
+        // an extra empty/partial section. Keep either proven single-subject
+        // shape whole. A lone header with an unknown/conflicting filename still
+        // follows the leading-section logic below, preserving mixed Reception
+        // documents and the subject-conflict guard.
         const [headerSubjectName] = [...knownHeaderSubjects];
         sections = [{ subjectName: { name: headerSubjectName, fallback: false }, sectionText: text }];
       } else {
@@ -709,6 +730,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   if (suspiciousTopics.size > 0) {
     console.log(`\nSuspicious parsed topic title — review source/parser before import: ${suspiciousTopics.size}`);
     for (const item of suspiciousTopics) console.log(`  ${item}`);
+  }
+  if (exactDuplicateFiles.length > 0) {
+    console.log(`\nExact byte duplicate source files ignored (non-blocking): ${exactDuplicateFiles.length}`);
+    for (const item of exactDuplicateFiles) {
+      console.log(`  ${item.duplicate} → canonical ${item.canonical}`);
+    }
   }
 
   for (const [label, items] of [
