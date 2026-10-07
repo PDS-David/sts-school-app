@@ -28,6 +28,7 @@ const EXCLUDED_FILES = new Set([
   // Anonymous source overlaps the retained, clearly identified Primary 5 CCA
   // First-Term source; do not let the anonymous copy duplicate its lesson.
   'み.docx',
+  'Γü┐.docx',
 ]);
 
 const canonicalWeek = (value: string) => value
