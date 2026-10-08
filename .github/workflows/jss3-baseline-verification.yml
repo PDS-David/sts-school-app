@@ -51,7 +51,13 @@ jobs:
         run: node --import tsx --test tests/jss3*.test.mts
       - name: Verify importer dry-run interface
         run: |
-          node --import tsx backend/src/db/ingestTopics.ts --help
+          set +e
+          node --import tsx backend/src/db/ingestTopics.ts --help > /tmp/jss3-importer-help.txt 2>&1
+          code=$?
+          set -e
+          cat /tmp/jss3-importer-help.txt
+          grep -q 'Usage:' /tmp/jss3-importer-help.txt
+          test "$code" -eq 1
       - name: Scope warning
         if: always()
         run: |
