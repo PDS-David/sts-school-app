@@ -861,7 +861,11 @@ router.get('/assessments/:id/questions', async (req, res) => {
 // ── POST /assessments/:id/submit (student) ────────────────────────────────────
 router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (req, res) => {
   const user = req.user!;
-  const { answers } = req.body as { answers: Record<string, string> };  // {question_id: selected_key}
+  const answers = req.body?.answers;
+  if (!answers || typeof answers !== 'object' || Array.isArray(answers) ||
+      Object.values(answers).some(value => typeof value !== 'string')) {
+    return res.status(400).json({ error: 'answers must map question IDs to string answers' });
+  }
 
   // Get student record
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
@@ -905,6 +909,11 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
     [req.params.id],
   );
 
+  if (qRows.some(q => !['mcq', 'essay'].includes(q.type) ||
+      (q.type === 'mcq' && (!Array.isArray(q.correct_keys) || q.correct_keys.length === 0)))) {
+    return res.status(422).json({ error: 'Assessment contains an unsupported or invalid question' });
+  }
+
   let auto_score = 0;
   const essayRows: { question_id: number; points: number; stem: string; answer_text: string }[] = [];
 
@@ -923,17 +932,19 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   const { rows } = await query(
     `INSERT INTO submissions(assessment_id,student_id,answers,auto_score,total_score,started_at,submitted_at)
      VALUES($1,$2,$3,$4,$4,now(),now())
-     ON CONFLICT(assessment_id,student_id)
-     DO UPDATE SET answers=$3,auto_score=$4,total_score=$4,submitted_at=now()
+     ON CONFLICT(assessment_id,student_id) DO NOTHING
      RETURNING *`,
     [req.params.id, student_id, JSON.stringify(answers), auto_score],
   );
   const submission = rows[0];
+  if (!submission) {
+    return res.status(409).json({ error: 'Assessment already submitted; previous results are preserved' });
+  }
 
   // Resubmission support: this student's assessment_questions haven't
   // changed shape, but their answers have — replace the prior per-question
   // breakdown rather than leaving stale rows behind.
-  await query('DELETE FROM submission_answers WHERE submission_id=$1', [submission.id]);
+  // A new submission has no previous answer rows to delete.
 
   let essayPointsTotal = 0;
   let anyUngraded = false;
