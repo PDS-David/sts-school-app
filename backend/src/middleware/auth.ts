@@ -25,7 +25,11 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   // (JWT_EXPIRES_IN) after an admin deactivated them. One indexed lookup per
   // request to close that window.
   const { rows } = await query(
-    'SELECT is_active, access_expires_at, revocation_reason FROM users WHERE id=$1', [user.id],
+    `SELECT u.is_active, u.access_expires_at, u.revocation_reason, u.pending_admin_review,
+            (u.role = 'student' AND EXISTS (
+              SELECT 1 FROM students s WHERE s.user_id=u.id AND s.deleted_at IS NOT NULL
+            )) AS student_deleted
+     FROM users u WHERE u.id=$1`, [user.id],
   );
   const dbUser = rows[0];
   if (!dbUser || !dbUser.is_active) {
@@ -43,8 +47,20 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     });
   }
 
+  if (dbUser.student_deleted) {
+    return res.status(401).json({ error: 'Your student record is no longer active. Contact the school admin.' });
+  }
+  if (dbUser.pending_admin_review && req.baseUrl !== '/auth') {
+    return res.status(403).json({ error: 'Your account is awaiting admin approval.', code: 'PENDING_APPROVAL' });
+  }
+
   req.user = user;
   next();
+}
+
+export async function isStudentRecordDeleted(userId: string): Promise<boolean> {
+  const { rows } = await query('SELECT 1 FROM students WHERE user_id=$1 AND deleted_at IS NOT NULL LIMIT 1', [userId]);
+  return rows.length > 0;
 }
 
 export function requireRole(...roles: Role[]) {
