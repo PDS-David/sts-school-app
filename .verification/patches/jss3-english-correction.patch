@@ -1,0 +1,129 @@
+diff --git a/backend/src/db/jss3CurriculumResolutions.ts b/backend/src/db/jss3CurriculumResolutions.ts
+index 47af515..f6a5478 100644
+--- a/backend/src/db/jss3CurriculumResolutions.ts
++++ b/backend/src/db/jss3CurriculumResolutions.ts
+@@ -143,7 +143,12 @@ const phe: Rule = text => {
+ // ── English ────────────────────────────────────────────────────────────────
+ // The scheme table ("WEEK" / "1" / "Revision" ...) is read as a topic with an
+ // empty title. The lesson body starts at "WEEK ONE (1)".
+-const english: Rule = fromMarker(/^[ \t]*WEEK[ \t]+ONE[ \t]*\(1\)[ \t]*\r?$/m, 'English body start WEEK ONE (1)');
++import { splitJss3EnglishLessons } from './jss3EnglishLessonSplit.js';
++
++const english: Rule = text => {
++  const body = fromMarker(/^[ \t]*WEEK[ \t]+ONE[ \t]*\(1\)[ \t]*\r?$/m, 'English body start WEEK ONE (1)')(text);
++  return splitJss3EnglishLessons(body, '1st Term');
++};
+ 
+ // ── Yoruba ─────────────────────────────────────────────────────────────────
+ // The scheme is a bare-number table (1..13). With no WEEK marker anywhere the
+diff --git a/backend/src/db/jss3EnglishLessonSplit.ts b/backend/src/db/jss3EnglishLessonSplit.ts
+new file mode 100644
+index 0000000..adec08c
+--- /dev/null
++++ b/backend/src/db/jss3EnglishLessonSplit.ts
+@@ -0,0 +1,52 @@
++/** Exact-source JSS3 English lesson segmentation. No original characters are removed.
++ * Only structural WEEK markers are inserted between distinct instructional strands.
++ * Called solely by the JSS3 First/Second-Term source-resolution modules.
++ */
++const WEEK = /^[ \t]*WEEK[ \t]+(?:ONE[ \t]*\(1\)|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|NINE|\d+)[ \t]*:?[ \t]*$/gim;
++const FIRST_LESSON = /^(?:[ \t]*(?:GRAMMAR|SPEECH\s+WORKS?|COMPOSITION|READING\s+AND\s+COMPREHENSION|LITERATURE\s*(?:IN\s+ENGLISH|[-–]\s*IN\s*[-–]\s*ENGLISH)?|COMPREHENSION)[ \t]*:?[ \t]*[^\n]*)$/gim;
++const SECOND_LESSON = /^(?:[ \t]*(?:(?:GRAMMAR|SPEECH\s+WORK|COMPOSITION)[ \t]*:[ \t]*)?TOPIC[ \t]*:?[ \t]*(?!for\s+article\b)[^\n]+|[ \t]*(?:GRAMMAR[ \t]*:[ \t]*QUESTION\s+TAGS|SPEECH\s+WORK[ \t]*:[ \t]*VOWEL\s*\/Ә\/)[^\n]*)$/gim;
++
++export function splitJss3EnglishLessons(text: string, term: '1st Term' | '2nd Term'): string {
++  // Second-Term source has no WEEK ONE/TWO markers: the two original lesson
++  // blocks precede WEEK THREE. Assign them Week 2 based on the source scheme.
++  if (term === '2nd Term') {
++    const first = /^\s*TOPIC\s*:\s*CONSONANT CONTRAST\s*\/t\/\s*and\s*\/s\//im.exec(text);
++    const week3 = /^[ \t]*WEEK[ \t]+THREE[ \t]*\r?$/im.exec(text);
++    if (!first || !week3 || first.index >= week3.index) throw new Error('JSS3 English 2nd Term: missing original Weeks 1–2 lessons or WEEK THREE anchor');
++    text = text.slice(first.index);
++    text = `WEEK TWO\n${text}`;
++  }
++  const weeks = [...text.matchAll(WEEK)];
++  if (!weeks.length) throw new Error(`JSS3 English ${term}: no source week markers`);
++  const lessonPattern = term === '1st Term' ? FIRST_LESSON : SECOND_LESSON;
++  let output = text.slice(0, weeks[0].index);
++  for (let i = 0; i < weeks.length; i++) {
++    const start = weeks[i].index!;
++    const end = i + 1 < weeks.length ? weeks[i + 1].index! : text.length;
++    const chunk = text.slice(start, end);
++    const weekLineEnd = chunk.indexOf('\n');
++    if (weekLineEnd < 0) { output += chunk; continue; }
++    const header = chunk.slice(0, weekLineEnd).trim();
++    const body = chunk.slice(weekLineEnd + 1);
++    const candidates = [...body.matchAll(lessonPattern)].filter(m => {
++      const line = m[0].trim();
++      if (term === '1st Term') {
++        // These headings are instructional strand starts; subheadings such as
++        // 'Grammar: Part of speech' are retained verbatim in their own bodies.
++        return !/^(?:COMPREHENSION\s*:\s*READING\s*$)/i.test(line);
++      }
++      return !/^TOPIC\s*:\s*for\s+article/i.test(line);
++    });
++    if (!candidates.length) { output += chunk; continue; }
++    output += chunk.slice(0, weekLineEnd + 1);
++    let previous = 0;
++    for (let j = 0; j < candidates.length; j++) {
++      const c = candidates[j];
++      output += body.slice(previous, c.index!);
++      if (j > 0) output += `\n${header}\n`;
++      previous = c.index!;
++    }
++    output += body.slice(previous);
++  }
++  return output;
++}
+diff --git a/backend/src/db/jss3SecondTermResolutions.ts b/backend/src/db/jss3SecondTermResolutions.ts
+index 2c1e4be..c4f56c6 100644
+--- a/backend/src/db/jss3SecondTermResolutions.ts
++++ b/backend/src/db/jss3SecondTermResolutions.ts
+@@ -211,6 +211,10 @@ const mathematics: Rule = text => {
+   return `${text.slice(0, week5.index!)}WEEK 4\n\n${start[1]}\n${subLines.join('\n')}\n\n${text.slice(week5.index!)}`;
+ };
+ 
++import { splitJss3EnglishLessons } from './jss3EnglishLessonSplit.js';
++
++const english: Rule = text => splitJss3EnglishLessons(text, '2nd Term');
++
+ const RULES: Record<string, Rule> = {
+   [`${TERM}/Basic science.docx`]: basicScience,
+   [`${TERM}/basic tech.docx`]: basicTech,
+@@ -219,6 +223,7 @@ const RULES: Record<string, Rule> = {
+   [`${TERM}/JS 3 FINE ART.docx`]: fineArt,
+   [`${TERM}/${BUSINESS}`]: businessStudies,
+   [`${TERM}/${MATHS}`]: mathematics,
++  [`${TERM}/js 3 english.docx`]: english,
+ };
+ 
+ /**
+diff --git a/tests/jss3-english-correction.test.mts b/tests/jss3-english-correction.test.mts
+new file mode 100644
+index 0000000..64078a3
+--- /dev/null
++++ b/tests/jss3-english-correction.test.mts
+@@ -0,0 +1,24 @@
++import assert from 'node:assert/strict';
++import test from 'node:test';
++import { splitJss3EnglishLessons } from '../backend/src/db/jss3EnglishLessonSplit.js';
++
++test('First-Term English preserves distinct strand bodies and original sequence', () => {
++  const source = 'WEEK ONE (1)\nGrammar: Parts of speech\nOriginal A\nLiterature in English:\nTopic: Fiction\nOriginal B\nWeek Two:\nSpeech Work: Stress\nOriginal C\nComposition: Letter\nOriginal D\n';
++  const result = splitJss3EnglishLessons(source, '1st Term');
++  assert.match(result, /Original A[\s\S]*WEEK ONE \(1\)[\s\S]*Literature in English/);
++  assert.match(result, /Original C[\s\S]*Week Two:[\s\S]*Composition/);
++  for (const token of ['Original A', 'Original B', 'Original C', 'Original D']) assert.equal(result.split(token).length, 2);
++});
++
++test('Second-Term English restores pre-week-three lessons and splits topic blocks', () => {
++  const source = 'SCHEME OF WORK\nTOPIC : CONSONANT CONTRAST /t/ and /s/\nOriginal A\nTOPIC: CONJUNCTION\nOriginal B\nWEEK THREE\nTOPIC: COMPOSITION (ARTICLE WRITING)\nOriginal C\nGRAMMAR: TOPIC PREFIXES AND SUFFIXES\nOriginal D\nTOPIC :  for article call for expository prose\nOriginal E\n';
++  const result = splitJss3EnglishLessons(source, '2nd Term');
++  assert.equal((result.match(/WEEK TWO/g) ?? []).length, 2);
++  assert.equal((result.match(/WEEK THREE/g) ?? []).length, 2);
++  for (const token of ['Original A', 'Original B', 'Original C', 'Original D', 'Original E']) assert.equal(result.split(token).length, 2);
++  assert.doesNotMatch(result, /SCHEME OF WORK/);
++});
++
++test('Unrecognized or missing Second-Term English source anchors block import', () => {
++  assert.throws(() => splitJss3EnglishLessons('WEEK THREE\nTOPIC: X', '2nd Term'), /missing original/);
++});
