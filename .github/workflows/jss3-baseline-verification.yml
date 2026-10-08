@@ -1,4 +1,4 @@
-name: JSS3 isolated baseline verification
+name: JSS3 isolated patched verification
 on:
   push:
     branches:
@@ -7,21 +7,39 @@ on:
 permissions:
   contents: read
 jobs:
-  baseline:
+  patched:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Verify and apply combined patch
+        run: |
+          git apply --check .verification/patches/jss3-redistribution-combined.patch
+          git apply .verification/patches/jss3-redistribution-combined.patch
+      - name: Verify and apply English correction
+        run: |
+          git apply --check .verification/patches/jss3-english-correction.patch
+          git apply .verification/patches/jss3-english-correction.patch
+      - name: Verify and apply source-boundary safeguard
+        run: |
+          git apply --check .verification/patches/english-source-boundary-followup.patch
+          git apply .verification/patches/english-source-boundary-followup.patch
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts
-      - name: TypeScript baseline
+      - name: Patched backend TypeScript
         run: npm run build --workspace=backend
-      - name: Existing static regression
+      - name: Existing regression tests
         run: node --test tests/*.test.cjs
-      - name: Report scope
+      - name: JSS3 tests
+        run: node --import tsx --test tests/jss3*.test.mts
+      - name: Verify importer dry-run interface
         run: |
-          echo "This checks the unmodified base commit only." >> "$GITHUB_STEP_SUMMARY"
-          echo "JSS3 correction patches and original curriculum archives are not included." >> "$GITHUB_STEP_SUMMARY"
+          node --import tsx backend/src/db/ingestTopics.ts --help
+      - name: Scope warning
+        if: always()
+        run: |
+          echo "Isolated branch: no deployment or production DB import." >> "$GITHUB_STEP_SUMMARY"
+          echo "Original curriculum source archives are not staged in this workflow; importer counts cannot be certified from this run." >> "$GITHUB_STEP_SUMMARY"
