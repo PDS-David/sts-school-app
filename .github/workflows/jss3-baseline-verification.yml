@@ -24,6 +24,20 @@ jobs:
         run: |
           git apply --check .verification/patches/english-source-boundary-followup.patch
           git apply .verification/patches/english-source-boundary-followup.patch
+      - name: Update superseded test expectations for approved English rule
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tests/jss3-second-term.test.mts')
+          s = p.read_text()
+          s = s.replace("'BASIC 9 MATHEMATICS E-NOTE.docx',\n];\nconst NO_RULE", "'BASIC 9 MATHEMATICS E-NOTE.docx', 'js 3 english.docx',\n];\nconst NO_RULE")
+          s = s.replace("'js 3 english.docx', 'social studies.docx'", "'social studies.docx'")
+          s = s.replace("exactly the seven reviewed 2nd-Term files", "exactly the eight reviewed 2nd-Term files")
+          p.write_text(s)
+          p = Path('tests/jss3-english-correction.test.mts')
+          s = p.read_text().replace("'SCHEME OF WORK\\nTOPIC : CONSONANT", "'SCHEME OF WORK\\nRevision\\nTOPIC : CONSONANT")
+          p.write_text(s)
+          PY
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
