@@ -1,0 +1,25 @@
+name: Agent 4 security verification
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'backend/**'
+      - 'tests/student-launch.static.test.cjs'
+      - '.github/workflows/agent4-security-verify.yml'
+  workflow_dispatch:
+jobs:
+  compile-and-regress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Backend dependencies
+        working-directory: backend
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: TypeScript compile
+        working-directory: backend
+        run: npm run build
+      - name: Student launch regression checks
+        run: node --test tests/student-launch.static.test.cjs
