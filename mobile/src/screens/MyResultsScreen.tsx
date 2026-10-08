@@ -23,6 +23,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
   const [error,     setError]     = useState('');
+  const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
 
   const fetchReport = async () => {
     setError('');
@@ -81,7 +82,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
   // was that printing/exporting the finished document is an admin/parent
   // action, not something a teacher or the student themselves does from here.
   const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
-  const [pdfBusy, setPdfBusy] = useState<'print' | 'export' | null>(null);
+
 
   const handlePrint = async () => {
     setPdfBusy('print');
