@@ -2,7 +2,7 @@ import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth, isStudentRecordDeleted } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
 import type { AuthUser, Role } from '../types/index.js';
@@ -54,6 +54,10 @@ router.post('/login', async (req, res) => {
         ? `Your access period has ended: ${user.revocation_reason}. Contact the school admin to reactivate your account.`
         : 'Your access period has ended. Contact the school admin to reactivate your account.',
     });
+  }
+
+  if (user.role === 'student' && await isStudentRecordDeleted(user.id)) {
+    return res.status(403).json({ error: 'Your student record is no longer active. Contact the school admin.' });
   }
 
   const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
@@ -131,6 +135,10 @@ router.post('/refresh', async (req, res) => {
         ? `Your access period has ended: ${user.revocation_reason}. Contact the school admin to reactivate your account.`
         : 'Your access period has ended. Contact the school admin to reactivate your account.',
     });
+  }
+
+  if (user.role === 'student' && await isStudentRecordDeleted(user.id)) {
+    return res.status(401).json({ error: 'Your student record is no longer active. Contact the school admin.' });
   }
 
   const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
@@ -408,7 +416,7 @@ router.get('/self-claim/roster', async (req, res) => {
   const className = String(req.query.class_name ?? '').trim();
   if (!schoolCode || !className) return res.status(400).json({ error: 'school_code and class_name are required' });
   const { rows } = await query(
-    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL ORDER BY full_name',
+    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL AND deleted_at IS NULL ORDER BY full_name',
     [schoolCode, className],
   );
   return res.json({ students: rows });
@@ -463,7 +471,7 @@ router.post('/self-claim', async (req, res) => {
   }
 
   const { rows: stRows } = await query(
-    'SELECT id, full_name FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND user_id IS NULL AND admission_number=$4',
+    'SELECT id, full_name FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND user_id IS NULL AND deleted_at IS NULL AND admission_number=$4',
     [student_id, school_code, class_name, admission_number.trim()],
   );
   const student = stRows[0];
