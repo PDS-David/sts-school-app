@@ -76,14 +76,13 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             )}
             <Text style={styles.summaryText}>{topic.summary}</Text>
           </View>
-        ) : (
-          <Btn
-            label={loading ? 'Loading…' : 'Get Study Notes'}
+        ) : null}
+        <Btn
+            label={loading ? 'Loading…' : topic.summary ? 'Get Practice Questions' : 'Get Study Notes'
             onPress={complete}
             loading={loading}
             style={{ marginTop: Spacing.sm }}
           />
-        )}
 
         {note && (
           <View style={styles.noteBox}>
