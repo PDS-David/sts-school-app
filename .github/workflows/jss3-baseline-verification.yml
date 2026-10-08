@@ -1,0 +1,27 @@
+name: JSS3 isolated baseline verification
+on:
+  push:
+    branches:
+      - verification/jss3-ci-20261008
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: TypeScript baseline
+        run: npm run build --workspace=backend
+      - name: Existing static regression
+        run: node --test tests/*.test.cjs
+      - name: Report scope
+        run: |
+          echo "This checks the unmodified base commit only." >> "$GITHUB_STEP_SUMMARY"
+          echo "JSS3 correction patches and original curriculum archives are not included." >> "$GITHUB_STEP_SUMMARY"
