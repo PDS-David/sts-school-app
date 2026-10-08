@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
 import { requireAuth, isStudentRecordDeleted } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
@@ -493,24 +493,40 @@ router.post('/self-claim', async (req, res) => {
   }
 
   const hash = await bcrypt.hash(new_password, 10);
-  const { rows: newUserRows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw)
-     VALUES($1,$2,'student',$3,$4,FALSE) RETURNING id,username`,
-    [uname, hash, student.full_name, school_code],
-  );
-  const newUser = newUserRows[0];
-
-  // Resets the code's own fail counter on a successful claim too — a
-  // string of wrong attempts by one student right before a different
-  // student succeeds shouldn't carry a stale count forward against the
-  // rest of the class.
-  await query(
-    'UPDATE students SET user_id=$1 WHERE id=$2',
-    [newUser.id, student.id],
-  );
-  await query('UPDATE class_access_codes SET fail_count=0 WHERE id=$1', [cc.id]);
+  // Claim and user creation must commit together. A concurrent claimant
+  // cannot take the same student, and failed claims leave no orphan user.
+  let newUser: { id: string; username: string };
+  try {
+    newUser = await withTransaction(async (client) => {
+      const { rows: claimable } = await client.query(
+        'SELECT id FROM students WHERE id=$1 AND school_code=$2 AND class_name=$3 AND admission_number=$4 AND user_id IS NULL AND deleted_at IS NULL FOR UPDATE',
+        [student.id, school_code, class_name, admission_number.trim()],
+      );
+      if (!claimable.length) throw new Error('STUDENT_ALREADY_CLAIMED');
+      const { rows: created } = await client.query(
+        `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw)
+         VALUES($1,$2,'student',$3,$4,FALSE) RETURNING id,username`,
+        [uname, hash, student.full_name, school_code],
+      );
+      const candidate = created[0];
+      const { rowCount } = await client.query(
+        'UPDATE students SET user_id=$1 WHERE id=$2 AND user_id IS NULL AND deleted_at IS NULL',
+        [candidate.id, student.id],
+      );
+      if (rowCount !== 1) throw new Error('STUDENT_ALREADY_CLAIMED');
+      await client.query('UPDATE class_access_codes SET fail_count=0 WHERE id=$1', [cc.id]);
+      return candidate;
+    });
+  } catch (err: any) {
+    if (err?.message === 'STUDENT_ALREADY_CLAIMED') {
+      return res.status(409).json({ error: 'That student was not found, or already has an account. If you already have an account, use Forgot Password instead.' });
+    }
+    if (err?.code === '23505') {
+      return res.status(409).json({ error: 'This account could not be claimed. Please retry.' });
+    }
+    throw err;
+  }
   await audit(null, 'self_claim_success', 'user', newUser.id, `student ${student.id} in ${school_code}/${class_name}`);
-
   return res.status(201).json({ username: newUser.username });
 });
 
