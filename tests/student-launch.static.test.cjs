@@ -37,3 +37,22 @@ test('unknown question types are rejected before marking', () => {
   assert.match(s, /\['mcq', 'essay'\]\.includes\(q\.type\)/);
   assert.match(s, /status\(422\)/);
 });
+
+test('pending and soft-deleted students are denied protected access', () => {
+  const auth = read('backend/src/middleware/auth.ts');
+  assert.match(auth, /pending_admin_review/);
+  assert.match(auth, /student_deleted/);
+  assert.match(auth, /PENDING_APPROVAL/);
+});
+test('student self-claim uses a row lock and atomic transaction', () => {
+  const auth = read('backend/src/routes/auth.ts');
+  assert.match(auth, /withTransaction\(async \(client\)/);
+  assert.match(auth, /FOR UPDATE/);
+  assert.match(auth, /STUDENT_ALREADY_CLAIMED/);
+});
+test('topic-generated assessments enforce prerequisite locks on fetch and submit', () => {
+  const learning = read('backend/src/routes/learning.ts');
+  const guard = 'assessmentTopicLockError(req.params.id,';
+  assert.equal(learning.split(guard).length - 1, 2);
+  assert.match(learning, /Complete and pass the previous topic first/);
+});
