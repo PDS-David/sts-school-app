@@ -5,6 +5,9 @@ import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scop
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 
+// Term PINs remain available, but enforcement starts only when explicitly enabled.
+const termPinEnforced = process.env.TERM_PIN_ENFORCED === 'true';
+
 const router = Router();
 router.use(requireAuth);
 
@@ -198,7 +201,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
         for (let i = 0; i < group.length; i++) {
           const topic = group[i];
           if (i === 0) {
-            if (!redeemedTermLabels.has(topic.term_label)) lockedIds.add(topic.id);
+            if (termPinEnforced && !redeemedTermLabels.has(topic.term_label)) lockedIds.add(topic.id);
           } else {
             const prev = group[i - 1];
             if (!passedIds.has(prev.id)) lockedIds.add(topic.id);
@@ -323,7 +326,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
         [student.id, topic.term_label],
       );
-      if (!pinRows[0]) return res.status(403).json({ error: 'This topic is locked. Redeem your term PIN first.' });
+      if (termPinEnforced && !pinRows[0]) return res.status(403).json({ error: 'This topic is locked. Redeem your term PIN first.' });
     } else if (pos > 0) {
       const { rows: prevDone } = await query(
         'SELECT passed FROM topic_completions WHERE student_id=$1 AND topic_id=$2',
