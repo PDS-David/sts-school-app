@@ -803,6 +803,37 @@ router.put('/assessments/:id/status', requirePerm('assessments.schedule'), async
   return res.json({ assessment: rows[0] });
 });
 
+
+// Protect topic-generated assessments from bypassing the sequential learning gate.
+// Teacher-created assessments without a linked topic are unaffected.
+async function assessmentTopicLockError(assessmentId: string, studentId: string): Promise<string | null> {
+  const { rows: topics } = await query(
+    'SELECT id, subject_id, class_name, term_label, order_index FROM topics WHERE generated_assessment_id=$1 AND order_index IS NOT NULL',
+    [assessmentId],
+  );
+  for (const topic of topics) {
+    const { rows: siblings } = await query(
+      'SELECT id FROM topics WHERE subject_id=$1 AND class_name IS NOT DISTINCT FROM $2 AND term_label IS NOT DISTINCT FROM $3 AND order_index IS NOT NULL ORDER BY order_index',
+      [topic.subject_id, topic.class_name, topic.term_label],
+    );
+    const index = siblings.findIndex((row: any) => row.id === topic.id);
+    if (index === 0 && process.env.TERM_PIN_ENFORCED === 'true') {
+      const { rows: pins } = await query(
+        'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
+        [studentId, topic.term_label],
+      );
+      if (!pins.length) return 'This topic is locked. Redeem your term PIN first.';
+    } else if (index > 0) {
+      const { rows: completed } = await query(
+        'SELECT passed FROM topic_completions WHERE student_id=$1 AND topic_id=$2',
+        [studentId, siblings[index - 1].id],
+      );
+      if (completed[0]?.passed !== true) return 'This topic is locked. Complete and pass the previous topic first.';
+    }
+  }
+  return null;
+}
+
 // ── GET /assessments/:id/questions  (for the student taking it) ───────────────
 // Found in QA Pass 6: TakeAssessmentScreen.tsx never actually fetched this
 // assessment's own questions — no such endpoint existed. It called the
@@ -831,7 +862,12 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (!student || assessment.school_code !== student.school_code || assessment.class_name !== student.class_name) {
       return res.status(404).json({ error: 'Assessment not found' });
     }
-    if (assessment.status !== 'open') {
+    const { rows: studentIds } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
+    const lockError = await assessmentTopicLockError(req.params.id, studentIds[0].id);
+    if (lockError) return res.status(403).json({ error: lockError });
+    const lockError = await assessmentTopicLockError(req.params.id, student_id);
+  if (lockError) return res.status(403).json({ error: lockError });
+  if (assessment.status !== 'open') {
       return res.status(403).json({ error: `This assessment is ${assessment.status === 'draft' ? 'not yet open' : 'closed'}.` });
     }
     const now = Date.now();
