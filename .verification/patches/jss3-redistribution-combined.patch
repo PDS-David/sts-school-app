@@ -1,0 +1,2568 @@
+diff --git a/backend/src/db/ingestTopics.ts b/backend/src/db/ingestTopics.ts
+index 908769d..7a1f2fa 100644
+--- a/backend/src/db/ingestTopics.ts
++++ b/backend/src/db/ingestTopics.ts
+@@ -75,6 +75,19 @@ import {
+   resolveJss1SubjectName,
+ } from './jss1CurriculumResolutions.js';
+ import { applyJss2SourceTextResolution, resolveJss2SubjectName } from './jss2CurriculumResolutions.js';
++import { applyJss3SourceTextResolution, canonicalJss3Week, resolveJss3ParsedTopic } from './jss3CurriculumResolutions.js';
++import {
++  applyJss3SecondTermSourceTextResolution,
++  resolveJss3SecondTermParsedTopic,
++} from './jss3SecondTermResolutions.js';
++import {
++  JSS3_EXCLUDED_SUBJECTS,
++  JSS3_THIRD_TERM_REVIEWED_SOURCES,
++  applyJss3ThirdTermSourceTextResolution,
++  redistributeJss3ThirdTermTopics,
++  type Jss3DuplicateClaim,
++  type Jss3ThirdTermRecord,
++} from './jss3ThirdTermRedistribution.js';
+ 
+ // ── Class name normalization ──────────────────────────────────────────────
+ // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
+@@ -457,6 +470,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
+   // Near-copies remain fully audited; filenames such as "_1" are not evidence.
+   const exactSourceHashes = new Map<string, string>();
+   const exactDuplicateFiles: Array<{ duplicate: string; canonical: string }> = [];
++  // JSS3 Third Term is BECE preparation only: every Third-Term source topic is
++  // redistributed into 1st/2nd Term (or proven an exact duplicate) before it can
++  // become a row. See jss3ThirdTermRedistribution.ts.
++  const jss3ThirdTermClaims: Array<Jss3DuplicateClaim & { source: string }> = [];
++  const jss3ThirdTermRecords: Jss3ThirdTermRecord[] = [];
++  const jss3ThirdTermFilesSeen = new Set<string>();
+ 
+   for (const filePath of allFiles) {
+     try {
+@@ -506,6 +525,14 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
+         text = applyJss1SourceTextResolution(path.basename(filePath), termLabel, text);
+       } else if (validClassNames.includes('JSS 2')) {
+         text = applyJss2SourceTextResolution(path.basename(filePath), termLabel, text);
++      } else if (validClassNames.includes('JSS 3')) {
++        text = applyJss3SourceTextResolution(path.basename(filePath), termLabel, text);
++        text = applyJss3SecondTermSourceTextResolution(path.basename(filePath), termLabel, text);
++      }
++      // JSS3 Third Term: BECE preparation only. Exact-source rules keyed on '3rd Term/<file>';
++      // kept outside the First/Second-Term branch so those wiring pins stay byte-identical.
++      if (validClassNames.includes('JSS 3')) {
++        text = applyJss3ThirdTermSourceTextResolution(path.basename(filePath), termLabel, text);
+       }
+ 
+       // Some files (confirmed real case: Nursery/Reception-style documents)
+@@ -670,20 +697,35 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
+           if (section.subjectName.fallback) {
+             fallbackSubjects.add(`${sourceIdentity(filePath)} / ${className} / ${termLabel} → ${section.subjectName.name}`);
+           }
+-          const parsed = parseTopics(section.sectionText)
++          const parsedAll = parseTopics(section.sectionText)
+             .map(topic => schoolCode === 'primary'
+               ? resolvePrimaryParsedTopic(path.basename(filePath), topic)
+               : className === 'JSS 1'
+                 ? resolveJss1ParsedTopic(path.basename(filePath), termLabel, topic)
+-                : topic)
++                : className === 'JSS 3'
++                  ? resolveJss3ParsedTopic(path.basename(filePath), termLabel, topic)
++                  : topic)
++            .map(topic => className === 'JSS 3'
++              ? resolveJss3SecondTermParsedTopic(path.basename(filePath), termLabel, topic)
++              : topic)
+             .filter((topic): topic is ParsedTopic => topic !== null);
+-          if (parsed.length === 0) {
++          let parsed: Array<ParsedTopic & { destinationTerm?: string }> = parsedAll;
++          if (className === 'JSS 3' && termLabel === '3rd Term' && parsedAll.length > 0) {
++            jss3ThirdTermFilesSeen.add(path.basename(filePath));
++            const redistribution = redistributeJss3ThirdTermTopics(
++              path.basename(filePath), termLabel, section.subjectName.name, parsedAll,
++            );
++            parsed = redistribution.kept;
++            jss3ThirdTermClaims.push(...redistribution.claims.map(c => ({ ...c, source: sourceIdentity(filePath) })));
++            jss3ThirdTermRecords.push(...redistribution.records);
++          }
++          if (parsedAll.length === 0) {
+             noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (no parseable week/topic structure)`);
+           } else {
+             // Report isolated empty weeks precisely instead of labelling an
+             // otherwise valid document as wholly unparseable. They remain
+             // hard blockers: nothing is silently discarded or imported.
+-            for (const t of parsed.filter(topic => topic.title === '(untitled)')) {
++            for (const t of parsedAll.filter(topic => topic.title === '(untitled)')) {
+               noWeekMarkers.push(
+                 `${sourceIdentity(filePath)} / ${section.subjectName.name} / ${t.weekLabel} (week found but topic/title missing)`,
+               );
+@@ -702,7 +744,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
+               );
+             }
+             rows.push({
+-              filePath, className, termLabel, subjectName: section.subjectName.name,
++              filePath, className, termLabel: t.destinationTerm ?? termLabel, subjectName: section.subjectName.name,
+               weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
+             });
+           });
+@@ -750,6 +792,39 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
+     identities.add(identity);
+   }
+   const duplicates = [...contentFiles.entries()].filter(([, files]) => files.size > 1);
++  // ── JSS3 Third-Term reconciliation gates ────────────────────────────────
++  // Hard blockers: an instructional JSS3 Third-Term row, any JSS3 Computer Studies
++  // row, a claimed exact duplicate with no identical First/Second-Term row, or a
++  // reviewed Third-Term source that is absent from a run that includes Third-Term files.
++  const normalizedBodyHash = (body: string) =>
++    createHash('sha256').update(body.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim()).digest('hex');
++  const jss3Gate: string[] = [];
++  for (const r of rows) {
++    if (r.className !== 'JSS 3') continue;
++    if (r.termLabel === '3rd Term') {
++      jss3Gate.push(`JSS 3 Third Term must have zero instructional rows: ${sourceIdentity(r.filePath)} / ${r.subjectName} / ${r.weekLabel} / ${r.title}`);
++    }
++    if (JSS3_EXCLUDED_SUBJECTS.includes(r.subjectName)) {
++      jss3Gate.push(`JSS 3 ${r.subjectName} is excluded but has a row: ${sourceIdentity(r.filePath)} / ${r.termLabel} / ${r.weekLabel} / ${r.title}`);
++    }
++  }
++  for (const claim of jss3ThirdTermClaims) {
++    const claimed = normalizedBodyHash(claim.bodyHashInput);
++    const proven = rows.some(r =>
++      r.className === 'JSS 3'
++      && r.termLabel === claim.duplicateOf.term
++      && path.basename(r.filePath) === claim.duplicateOf.basename
++      && canonicalJss3Week(r.weekLabel) === claim.duplicateOf.week
++      && normalizedBodyHash(r.sourceReference) === claimed);
++    if (!proven) {
++      jss3Gate.push(`Claimed exact duplicate is not identical to its ${claim.duplicateOf.term} row: ${claim.source} / week ${claim.week} / ${claim.title} (expected ${claim.duplicateOf.basename} week ${claim.duplicateOf.week})`);
++    }
++  }
++  if (jss3ThirdTermFilesSeen.size > 0) {
++    for (const f of JSS3_THIRD_TERM_REVIEWED_SOURCES) {
++      if (!jss3ThirdTermFilesSeen.has(f)) jss3Gate.push(`Reviewed JSS 3 Third-Term source is missing from this run: ${f}`);
++    }
++  }
+   const subjectTokensSeen = new Set(normalRows.map(r => r.subjectName));
+ 
+   // ── Report ──────────────────────────────────────────────────────────────
+@@ -825,13 +900,29 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
+     console.log(`\nDUPLICATE normalized content: ${contentLabels.get(key)}`);
+     for (const file of files) console.log(`  ${file}`);
+   }
++  if (jss3Gate.length > 0) {
++    console.log(`\nJSS3 Third-Term reconciliation gate FAILED: ${jss3Gate.length}`);
++    for (const item of jss3Gate) console.log(`  ${item}`);
++  }
++  if (jss3ThirdTermRecords.length > 0) {
++    const csvCell = (v: string) => `"${v.replace(/"/g, '""').replace(/[\r\n]+/g, ' ')}"`;
++    console.log('\nJSS3 THIRD-TERM SOURCE -> DESTINATION MAP (csv)');
++    console.log('subject,source_file,original_term,source_week,source_heading,kind,classification,destination_term,duplicate_of,source_content_sha256,note');
++    for (const rec of jss3ThirdTermRecords) {
++      console.log([
++        rec.subject, rec.basename, rec.originalTerm, rec.week, rec.title, rec.kind, rec.classification,
++        rec.destination, rec.duplicateOf, rec.bodyForHash ? normalizedBodyHash(rec.bodyForHash) : '', rec.note,
++      ].map(csvCell).join(','));
++    }
++    console.log('END JSS3 THIRD-TERM MAP');
++  }
+   console.log('\nNormal curriculum order (1-based, per class/subject/term):');
+   for (const r of normalRows) {
+     console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
+   }
+   const blocked = unmappedClass.size + missingTerm.size + noWeekMarkers.length + errors.length
+     + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
+-    + subjectConflicts.size + suspiciousTopics.size;
++    + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length;
+   if (blocked || allFiles.length === 0) {
+     console.log(`\nAUDIT BLOCKED — resolve the reported conditions before import. No database changes made.${allFiles.length === 0 ? ' No supported source files found.' : ''}`);
+     process.exitCode = 1;
+diff --git a/backend/src/db/jss3CurriculumResolutions.ts b/backend/src/db/jss3CurriculumResolutions.ts
+new file mode 100644
+index 0000000..47af515
+--- /dev/null
++++ b/backend/src/db/jss3CurriculumResolutions.ts
+@@ -0,0 +1,246 @@
++/**
++ * Curriculum-owner resolutions for verified JSS3 FIRST-TERM source irregularities.
++ *
++ * Exact-source and JSS3/1st-Term-only: every rule is keyed on `1st Term/<basename>`
++ * and the caller must additionally gate on canonical class "JSS 3". These encode
++ * the file-by-file JSS3 First-Term review; they are NOT general parser
++ * heuristics and must not be reused for other classes or terms without a new
++ * source review. Second- and Third-Term JSS3 sources are deliberately NOT
++ * covered here: every function below returns its input unchanged for them.
++ *
++ * Safety property: if a rule's anchor is absent (source changed), the rule
++ * THROWS instead of silently passing text through. The importer records the
++ * throw as a file read error, which blocks the audit.
++ *
++ * No lesson content is invented. The only text this module ever adds is
++ *   (a) a structural "WEEK n" marker line derived from a heading that the same
++ *       source already states (scheme row or body heading), and
++ *   (b) for the two scheme-only Basic Technology headings, a
++ *       "week n; <verbatim scheme phrase>" line. The phrase is captured from
++ *       the source's own scheme row, never typed here.
++ * Authorised scheme-only headings (scheme_only_integration_manifest.csv,
++ * First Term): Basic Technology "scale drawing", Basic Technology "simple blue
++ * print reading", Physical & Health Education "Practical demonstration of
++ * basic skills of hockey" (the last already exists as a body heading with no
++ * lesson note beneath it; it only needs its week marker made readable).
++ */
++
++type Rule = (text: string) => string;
++
++const TERM = '1st Term';
++
++function must(text: string, marker: RegExp, label: string): RegExpExecArray {
++  const flags = marker.flags.replace('g', '');
++  const m = new RegExp(marker.source, flags).exec(text);
++  if (!m) throw new Error(`JSS3 resolution anchor missing: ${label}`);
++  return m;
++}
++
++function countOf(text: string, marker: RegExp): number {
++  const flags = marker.flags.includes('g') ? marker.flags : marker.flags + 'g';
++  return [...text.matchAll(new RegExp(marker.source, flags))].length;
++}
++
++/** Identity rule that only asserts an anchor exists. */
++const requires = (marker: RegExp, label: string): Rule => text => {
++  must(text, marker, label);
++  return text;
++};
++
++/** Keep text from the first match of `marker` onward (drops scheme/preamble). */
++const fromMarker = (marker: RegExp, label: string): Rule => text =>
++  text.slice(must(text, marker, label).index);
++
++/** Replace the first match of `marker`; throws if absent. */
++const replaceOnce = (marker: RegExp, replacement: string, label: string): Rule => text => {
++  const flags = marker.flags.replace('g', '');
++  must(text, marker, label);
++  return text.replace(new RegExp(marker.source, flags), replacement);
++};
++
++const compose = (...rules: Rule[]): Rule => text => rules.reduce((t, r) => r(t), text);
++
++// ── Week-word helpers ──────────────────────────────────────────────────────
++const WORD_TO_NUM: Record<string, string> = {
++  one: '1', two: '2', three: '3', four: '4', five: '5', six: '6',
++  seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11',
++  twelve: '12', thirteen: '13',
++};
++
++/** "WEEK ONE" / "week 7 & 8" / "Week: Two" -> "1" / "7&8" / "2". */
++export function canonicalJss3Week(label: string): string {
++  return label
++    .replace(/^\s*week\s*[:.\-]*\s*/i, '')
++    .toLowerCase()
++    .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen)\b/g, w => WORD_TO_NUM[w])
++    .replace(/\band\b/g, '&')
++    .replace(/\s+/g, '');
++}
++
++// ── Basic Science ──────────────────────────────────────────────────────────
++// The file opens with a 9-row scheme ("Week ONE—Drug and Substances Abuse" ...)
++// that the generic parser reads as 9 extra topics, duplicating the lessons.
++// The lesson body starts at "WEEK ONE-DRUG AND SUBSTANCES ABUSE (!)".
++// Inside the body: Week 3 has no WEEK marker (its heading is
++// "CAPTER THREE --FAMILY TRAITS", sitting inside the Week 2 block) and Week 8
++// is typed "WEEK EIEGHT". Both are structural; no text is rewritten except
++// the one mistyped week word.
++const basicScience: Rule = compose(
++  requires(/^[ \t]*Week[ \t]+THREE[ \t]*-[ \t]*Family Traits/im, 'Basic Science scheme row Week THREE Family Traits'),
++  fromMarker(/^[ \t]*WEEK[ \t]+ONE[ \t]*-[ \t]*DRUG AND SUBSTANCES ABUSE/m, 'Basic Science body start WEEK ONE'),
++  replaceOnce(/^([ \t]*WEEK[ \t]+)EIEGHT(?=[ \t]*-)/m, '$1EIGHT', 'Basic Science WEEK EIEGHT'),
++  replaceOnce(
++    /^([ \t]*)(CAPTER[ \t]+THREE[ \t]*-+[ \t]*FAMILY TRAITS)/m,
++    '$1WEEK THREE-FAMILY TRAITS\n\n$1$2',
++    'Basic Science Week 3 body heading CAPTER THREE --FAMILY TRAITS',
++  ),
++);
++
++// ── Basic Technology ───────────────────────────────────────────────────────
++// Scheme rows 11 and 12 ("scale drawing", "simple blue print reading") have no
++// lesson note in the source. Authorised scheme-only integration: emit them as
++// the file's own "week n; <phrase>" heading form, phrase captured verbatim.
++const basicTech: Rule = text => {
++  const scale = must(text, /^[ \t]*11\.[ \t]*(scale drawing)[ \t]*\r?$/im, 'Basic Tech scheme row 11 scale drawing')[1];
++  const blueprint = must(text, /^[ \t]*12\.[ \t]*(simple blue print reading)[ \t]*\r?$/im, 'Basic Tech scheme row 12 simple blue print reading')[1];
++  must(text, /^week 10; orthographic drawing/im, 'Basic Tech body week 10 (last lesson)');
++  if (/^[ \t]*week[ \t]*(?:11|12)\b/im.test(text)) {
++    throw new Error('JSS3 resolution: Basic Tech now has a Week 11/12 marker; scheme-only rule no longer applies');
++  }
++  return `${text.replace(/\s+$/, '')}\n\nweek 11; ${scale}\n\nweek 12; ${blueprint}\n`;
++};
++
++// ── Physical & Health Education ────────────────────────────────────────────
++// Six of the eleven week markers are invisible to the generic parser:
++//   * four are padded with U+00A0 (NBSP), which the importer's [ \t]* anchor
++//     does not accept ("WEEK TWO", "WEEK  3", "WEEK 10", "WEEK 11");
++//   * two are ordinal-first ("4TH WEEK", "5TH  WEEK");
++//   * Week 6 (Female Genital Mutilation) has no marker at all.
++// Result without this rule: 3 of 11 lessons parsed, hockey lost. Only the
++// marker lines are rewritten; no body text changes.
++const PHE_ORD_FIRST = /^[ \t\u00a0]*(\d{1,2})(?:ST|ND|RD|TH)[ \t\u00a0]+WEEK[ \t\u00a0]*\r?$/gim;
++const PHE_WEEK_LINE = /^[ \t\u00a0]*WEEK[ \t\u00a0]*(\d{1,2}|ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|NINE|TEN|ELEVEN)[ \t\u00a0]*\r?$/gim;
++const phe: Rule = text => {
++  let rewritten = 0;
++  let out = text.replace(PHE_ORD_FIRST, (_line, n: string) => { rewritten++; return `WEEK ${n}`; });
++  out = out.replace(PHE_WEEK_LINE, (line, n: string) => {
++    if (!/\u00a0/.test(line)) return line; // already clean (e.g. "WEEK ONE")
++    rewritten++;
++    return `WEEK ${WORD_TO_NUM[n.toLowerCase()] ?? n}`;
++  });
++  if (rewritten !== 6) {
++    throw new Error(`JSS3 resolution: expected 6 NBSP/ordinal PHE week markers, found ${rewritten}`);
++  }
++  // Scheme row 6 = Female Genital Mutilation; the lesson (CLASS/SUBJECT/TOPIC
++  // block) follows the Week 5 hockey heading with no marker of its own.
++  return replaceOnce(
++    /^([ \t\u00a0]*CLASS[ \t\u00a0]*:[^\n]*\n(?:[ \t\u00a0\r]*\n)*[ \t\u00a0]*SUBJECT[^\n]*\n(?:[ \t\u00a0\r]*\n)*[ \t\u00a0]*TOPIC[ \t\u00a0]*:[ \t\u00a0]*FEMALE GENITAL MUTILATION)/m,
++    'WEEK 6\n\n$1',
++    'PHE Week 6 lesson block (TOPIC: FEMALE GENITAL MUTILATION)',
++  )(out);
++};
++
++// ── English ────────────────────────────────────────────────────────────────
++// The scheme table ("WEEK" / "1" / "Revision" ...) is read as a topic with an
++// empty title. The lesson body starts at "WEEK ONE (1)".
++const english: Rule = fromMarker(/^[ \t]*WEEK[ \t]+ONE[ \t]*\(1\)[ \t]*\r?$/m, 'English body start WEEK ONE (1)');
++
++// ── Yoruba ─────────────────────────────────────────────────────────────────
++// The scheme is a bare-number table (1..13). With no WEEK marker anywhere the
++// generic parser falls back to bare numbers, and the LAST scheme number ("13",
++// exam) swallows every lesson body. Lesson bodies are headed by Yoruba week
++// ordinals ("OSE KINNI" ...). Mirror the JSS1/JSS2 treatment: cut the scheme,
++// translate the ordinals. Only the six ordinals actually present are accepted.
++const YORUBA_BODY_WEEKS: Array<[string, string]> = [
++  ['KINNI', '1'], ['KETA', '3'], ['KERIN', '4'], ['KARUN', '5'], ['KEFA', '6'], ['KEJE', '7'],
++];
++const yoruba: Rule = text => {
++  let body = text.slice(must(text, /^[ \t]*OSE[ \t]+KINNI[ \t]*\r?$/im, 'Yoruba body start OSE KINNI').index);
++  for (const [ordinal, week] of YORUBA_BODY_WEEKS) {
++    const heading = new RegExp(`^([ \\t]*)OSE[ \\t]+${ordinal}[ \\t]*\\r?$`, 'im');
++    const n = countOf(body, heading);
++    if (n !== 1) throw new Error(`JSS3 resolution: expected exactly one "OSE ${ordinal}" heading, found ${n}`);
++    body = body.replace(heading, `$1WEEK ${week}`);
++  }
++  const leftover = countOf(body, /^[ \t]*OSE[ \t]+[A-Z]+/im);
++  if (leftover !== 0) throw new Error(`JSS3 resolution: ${leftover} unreviewed Yoruba OSE heading(s) remain`);
++  return body;
++};
++
++const RULES: Record<string, Rule> = {
++  [`${TERM}/BASIC SCIENCE.docx`]: basicScience,
++  [`${TERM}/BASIC TECH.docx`]: basicTech,
++  [`${TERM}/PHE JS 3.docx`]: phe,
++  [`${TERM}/js 3 english.doc`]: english,
++  [`${TERM}/JS3 YORUBA.docx`]: yoruba,
++};
++
++/**
++ * Every JSS3 First-Term source file reviewed for this assignment (the 13
++ * original files plus the supplied converted Music docx in place of the RTF).
++ * Files without a text rule were reviewed and parse correctly as supplied.
++ */
++export const JSS3_FIRST_TERM_REVIEWED_SOURCES: readonly string[] = [
++  'Agric 3.doc',
++  'BASIC SCIENCE.docx',
++  'BASIC TECH.docx',
++  'BUSINESS STUDIES_1.docx',
++  'CCA jss3 ALP 2018.docx',
++  'FRENCH Jss3.docx',
++  'HOME ECONS JS3 WK7-10.docx',
++  'JS 3 SOCIAL STUDIES.docx',
++  'JS3 YORUBA.docx',
++  'JSS 3 CIVIC (E NOTE).docx',
++  'JSS 3 MATHEMATICS.docx',
++  'JSS3 Alpha term music Enote.docx',
++  'PHE JS 3.docx',
++  'js 3 english.doc',
++];
++
++/** True only for the reviewed JSS3 First-Term source files that carry a text rule. */
++export function hasJss3SourceResolution(basename: string, termLabel: string): boolean {
++  return Object.prototype.hasOwnProperty.call(RULES, `${termLabel}/${basename}`);
++}
++
++export function applyJss3SourceTextResolution(basename: string, termLabel: string, text: string): string {
++  const key = `${termLabel}/${basename}`;
++  return Object.prototype.hasOwnProperty.call(RULES, key) ? RULES[key](text) : text;
++}
++
++interface ParsedTopicLike { weekLabel: string; title: string; body: string }
++
++const isReviewed = (basename: string, termLabel: string) =>
++  termLabel === TERM && JSS3_FIRST_TERM_REVIEWED_SOURCES.includes(basename);
++
++/**
++ * Title-only corrections for reviewed First-Term rows. Never changes the week
++ * label, order, or body (sourceReference), and never drops a topic.
++ *
++ * Root causes (all in the generic parser, left untouched by design):
++ *  - the TOPIC-field lookup matches "Topics Covered" in Basic Tech Week 6;
++ *  - the metadata-line filter is a bare prefix match, so a real heading that
++ *    merely STARTS with "term"/"class" ("TERMS AND SIGNS",
++ *    "CLASSES AND PROPERTIES OF FIBRES") is discarded as a field label;
++ *  - the marker regex leaves its separator ("; ", "-", "—") on the title.
++ */
++export function resolveJss3ParsedTopic<T extends ParsedTopicLike>(
++  basename: string,
++  termLabel: string,
++  topic: T,
++): T | null {
++  if (!isReviewed(basename, termLabel)) return topic;
++  const week = canonicalJss3Week(topic.weekLabel);
++  let title = topic.title;
++
++  if (basename === 'BASIC TECH.docx') {
++    const heading = must(topic.body, /^[ \t]*week[ \t]*\d+[ \t]*;[ \t]*(.+?)[ \t]*\r?$/im, `Basic Tech Week ${week} heading`);
++    title = heading[1];
++  } else if (basename === 'HOME ECONS JS3 WK7-10.docx' && week === '2') {
++    title = must(topic.body, /^[ \t]*(CLASSES AND PROPERTIES OF FIBRES)[ \t]*\r?$/m, 'Home Economics Week 2 heading')[1];
++  } else if (basename === 'JSS3 Alpha term music Enote.docx' && week === '5') {
++    title = must(topic.body, /^[ \t]*(TERMS AND SIGNS)[ \t]*\r?$/m, 'Music Week 5 heading')[1];
++  }
++
++  const cleaned = title.replace(/^[\s;:\-\u2013\u2014]+/, '').trim();
++  return { ...topic, title: cleaned.length > 0 ? cleaned : title };
++}
+diff --git a/backend/src/db/jss3SecondTermResolutions.ts b/backend/src/db/jss3SecondTermResolutions.ts
+new file mode 100644
+index 0000000..2c1e4be
+--- /dev/null
++++ b/backend/src/db/jss3SecondTermResolutions.ts
+@@ -0,0 +1,328 @@
++/**
++ * Curriculum-owner resolutions for verified JSS3 SECOND-TERM source irregularities.
++ *
++ * Exact-source and JSS3/2nd-Term-only: every rule is keyed on `2nd Term/<basename>`
++ * and the caller must additionally gate on canonical class "JSS 3" (the importer
++ * wiring does). These encode the file-by-file JSS3 Second-Term review; they are
++ * NOT general parser heuristics and must not be reused for other classes or terms
++ * without a new source review. First- and Third-Term JSS3 sources are deliberately
++ * NOT covered here: every function below returns its input unchanged for them
++ * (topics: the same object reference). First-Term behaviour lives in
++ * jss3CurriculumResolutions.ts and is neither modified nor duplicated here.
++ *
++ * Safety property: if a rule's anchor is absent OR ambiguous (matches more than
++ * once) the rule THROWS instead of silently passing text through. The importer
++ * records the throw as a file read error, which blocks the audit.
++ *
++ * No lesson content is invented. The only text this module ever adds is
++ *   (a) a structural "WEEK n" marker line derived from a heading the same source
++ *       already states, and
++ *   (b) for the five scheme-only headings (Business Studies weeks 4, 8, 9, 10 and
++ *       Mathematics "Statistics II"), a "WEEK n" line plus the heading text (and,
++ *       for Statistics II, its four sub-lines) copied verbatim from the source's
++ *       own scheme of work. Source typos and punctuation are preserved.
++ * Authorised scheme-only headings: scheme_only_integration_manifest.csv, 2nd Term.
++ */
++
++import { canonicalJss3Week } from './jss3CurriculumResolutions.js';
++
++type Rule = (text: string) => string;
++
++const TERM = '2nd Term';
++
++// ── Anchor helpers (stricter than First Term: ambiguity also throws) ───────
++function all(text: string, marker: RegExp): RegExpMatchArray[] {
++  const flags = marker.flags.includes('g') ? marker.flags : marker.flags + 'g';
++  return [...text.matchAll(new RegExp(marker.source, flags))];
++}
++
++/** Exactly one match, else throw (missing OR ambiguous). */
++function once(text: string, marker: RegExp, label: string): RegExpMatchArray {
++  const found = all(text, marker);
++  if (found.length === 0) throw new Error(`JSS3 2nd-Term resolution anchor missing: ${label}`);
++  if (found.length > 1) {
++    throw new Error(`JSS3 2nd-Term resolution anchor ambiguous (${found.length} matches): ${label}`);
++  }
++  return found[0];
++}
++
++/** Keep text from the single match of `marker` onward (drops scheme/preamble). */
++const fromMarker = (marker: RegExp, label: string): Rule => text =>
++  text.slice(once(text, marker, label).index!);
++
++/** Replace the single match of `marker`; throws if missing or ambiguous. */
++function replaceOnce(text: string, marker: RegExp, replacement: string, label: string): string {
++  once(text, marker, label);
++  return text.replace(new RegExp(marker.source, marker.flags.replace('g', '')), replacement);
++}
++
++const compose = (...rules: Rule[]): Rule => text => rules.reduce((t, r) => r(t), text);
++
++const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
++
++// ── Scheme-only headings (single source of truth for rules, exports, tests) ─
++export interface Jss3SchemeOnlyHeading {
++  subject: string;
++  basename: string;
++  /** Canonical week ("4", "8", ...). */
++  week: string;
++  title: string;
++}
++
++const BUSINESS = 'business_studies JSS3.docx';
++const MATHS = 'BASIC 9 MATHEMATICS E-NOTE.docx';
++
++/** The five 2nd-Term rows in scheme_only_integration_manifest.csv. */
++export const JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS: readonly Jss3SchemeOnlyHeading[] = [
++  { subject: 'Business Studies', basename: BUSINESS, week: '4', title: 'Book \u2013 keeping ethnics' },
++  { subject: 'Business Studies', basename: BUSINESS, week: '8', title: 'Display' },
++  { subject: 'Business Studies', basename: BUSINESS, week: '9', title: 'Types of Display' },
++  { subject: 'Business Studies', basename: BUSINESS, week: '10', title: 'Printers correction signs / speed development' },
++  { subject: 'Mathematics', basename: MATHS, week: '4', title: 'Statistics II' },
++];
++
++const schemeTitle = (basename: string, week: string): string => {
++  const h = JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS.find(x => x.basename === basename && x.week === week);
++  if (!h) throw new Error(`JSS3 2nd-Term internal: no scheme-only heading for ${basename} week ${week}`);
++  return h.title;
++};
++
++/** Capture a scheme row's text verbatim (the phrase must exist as its own line, once). */
++const captureSchemeRow = (text: string, phrase: string, label: string): string =>
++  once(text, new RegExp(`^[ \\t]*(${escapeRegExp(phrase)})[ \\t]*\\r?$`, 'm'), label)[1];
++
++// ── Basic Science ──────────────────────────────────────────────────────────
++// A 9-row scheme ("WEEK 1-RESOURCES FROM LIVING THINGS" ...) precedes the lessons
++// and is read as 9 extra topics. The lesson body starts at "Wk1-Resources from
++// living things." Body markers are typed Wk1/WK2/WK3 (em dash)/WK4/WK6/WK7/8/WK9;
++// the generic parser sees none of them. Only those marker tokens are rewritten;
++// WEEK 5 and WEEK 11 are already well formed.
++const BASIC_SCIENCE_MARKERS: ReadonlyArray<readonly [string, RegExp, string]> = [
++  ['Wk1', /^([ \t]*)Wk1(?=[ \t]*-)/gm, '$1WEEK 1'],
++  ['WK2', /^([ \t]*)WK2(?=[ \t]*-)/gm, '$1WEEK 2'],
++  ['WK3 (em dash)', /^([ \t]*)WK3(?=[ \t]*\u2014)/gm, '$1WEEK 3'],
++  ['bare WK4', /^([ \t]*)WK4(?=[ \t]*\r?$)/gm, '$1WEEK 4'],
++  ['WK6', /^([ \t]*)WK6(?=[ \t]*-)/gm, '$1WEEK 6'],
++  ['WK7/8', /^([ \t]*)WK7\/8(?=[ \t]*-)/gm, '$1WEEK 7&8'],
++  ['WK9', /^([ \t]*)WK9(?=[ \t]+\S)/gm, '$1WEEK 9'],
++];
++const basicScience: Rule = compose(
++  fromMarker(/^[ \t]*Wk1[ \t]*-[ \t]*Resources from living things/m, 'Basic Science body start Wk1-Resources from living things'),
++  text => {
++    let out = text;
++    for (const [label, marker, replacement] of BASIC_SCIENCE_MARKERS) {
++      out = replaceOnce(out, marker, replacement, `Basic Science marker ${label}`);
++    }
++    const leftover = all(out, /^[ \t]*wk[ \t]*\d/im).length;
++    if (leftover !== 0) throw new Error(`JSS3 2nd-Term resolution: ${leftover} unreviewed Basic Science WK marker(s) remain`);
++    return out;
++  },
++);
++
++// ── Basic Technology ───────────────────────────────────────────────────────
++// A 12-row scheme ("Week 1; revision of last terms work" ...) precedes the lessons
++// and duplicates them. The lesson body starts at "Week 1; revision".
++const basicTech: Rule = fromMarker(/^[ \t]*Week 1;[ \t]*revision[ \t]*\r?$/m, 'Basic Tech body start Week 1; revision');
++
++// ── Music ──────────────────────────────────────────────────────────────────
++// The scheme ("WEEK ONE - REVISION" ...) duplicates the nine lessons. The body
++// starts at the bare "WEEK ONE" line.
++const music: Rule = fromMarker(/^[ \t]*WEEK ONE[ \t]*\r?$/m, 'Music body start WEEK ONE');
++
++// ── Yoruba ─────────────────────────────────────────────────────────────────
++// The scheme is a bare-number table with no WEEK marker; lessons are headed by
++// Yoruba ordinals. Cut the scheme, translate exactly the three ordinals present.
++const YORUBA_WEEKS: ReadonlyArray<readonly [string, string]> = [['KINNI', '1'], ['KEJI', '2'], ['KETA', '3']];
++const yoruba: Rule = text => {
++  let body = text.slice(once(text, /^[ \t]*OSE[ \t]+KINNI[ \t]*\r?$/m, 'Yoruba body start OSE KINNI').index!);
++  for (const [ordinal, week] of YORUBA_WEEKS) {
++    body = replaceOnce(
++      body,
++      new RegExp(`^([ \\t]*)OSE[ \\t]+${ordinal}[ \\t]*\\r?$`, 'm'),
++      `$1WEEK ${week}`,
++      `Yoruba heading OSE ${ordinal}`,
++    );
++  }
++  const leftover = all(body, /^[ \t]*OSE[ \t]+[A-Z]+/im).length;
++  if (leftover !== 0) throw new Error(`JSS3 2nd-Term resolution: ${leftover} unreviewed Yoruba OSE heading(s) remain`);
++  return body;
++};
++
++// ── Cultural & Creative Arts (Fine Art) ────────────────────────────────────
++// Each lesson opens with one run-on line "CLASS; JSS3  WEEK n   TOPIC; ...". The
++// generic parser needs WEEK at the start of a line, so each of the nine header
++// lines is split into "WEEK n / CLASS... / TOPIC...". The scheme is deliberately
++// NOT cut: its SUBJECT lines identify the subject for the importer.
++const FINE_ART_HEADER =
++  /^[ \t\u00a0]*(CLASS[^\n]*?)[ \t\u00a0]*\bWEEK[ \t\u00a0]*(\d{1,2})\b[^\n]*?\b(TOPIC[ \t\u00a0]*[;:][^\n]*)$/gm;
++const fineArt: Rule = text => {
++  const headers = all(text, FINE_ART_HEADER);
++  if (headers.length !== 9) {
++    throw new Error(`JSS3 2nd-Term resolution: expected exactly 9 Fine Art CLASS/WEEK/TOPIC header lines, found ${headers.length}`);
++  }
++  const weeks = headers.map(h => Number(h[2])).sort((a, b) => a - b);
++  if (weeks.some((w, i) => w !== i + 1)) {
++    throw new Error(`JSS3 2nd-Term resolution: Fine Art header weeks must be 1..9 exactly once, found ${weeks.join(',')}`);
++  }
++  const clean = (s: string) => s.replace(/\u00a0/g, ' ').trim();
++  return text.replace(FINE_ART_HEADER, (_line, cls: string, wk: string, topic: string) =>
++    `WEEK ${Number(wk)}\n${clean(cls)}\n${clean(topic)}`);
++};
++
++// ── Business Studies (scheme-only rows) ────────────────────────────────────
++// The lessons cover scheme weeks 2-3, 5, 6, 7 only. Weeks 4, 8, 9, 10 exist solely
++// as scheme rows; the authorised manifest integrates them as heading-only rows.
++const BODY_BUSINESS_WEEK = /^[ \t]*week[ \t]*[:.\-]*[ \t]*(?:4|8|9|10|four|eight|nine|ten)\b/im;
++const businessStudies: Rule = text => {
++  const ethnics = captureSchemeRow(text, schemeTitle(BUSINESS, '4'), 'Business Studies scheme row 4');
++  const display = captureSchemeRow(text, schemeTitle(BUSINESS, '8'), 'Business Studies scheme row 8');
++  const types = captureSchemeRow(text, schemeTitle(BUSINESS, '9'), 'Business Studies scheme row 9');
++  const printers = captureSchemeRow(text, schemeTitle(BUSINESS, '10'), 'Business Studies scheme row 10');
++  if (BODY_BUSINESS_WEEK.test(text)) {
++    throw new Error('JSS3 2nd-Term resolution: Business Studies now has a Week 4/8/9/10 marker; scheme-only rule no longer applies');
++  }
++  // "WEEK TWO – THREE" (en dash) is not read as a range by the generic parser.
++  let out = replaceOnce(
++    text,
++    /^([ \t]*WEEK[ \t]+TWO[ \t]*)\u2013([ \t]*THREE[ \t]*\r?)$/m,
++    '$1-$2',
++    'Business Studies WEEK TWO \u2013 THREE',
++  );
++  const five = once(out, /^[ \t]*WEEK FIVE[ \t]*\r?$/m, 'Business Studies WEEK FIVE marker');
++  out = `${out.slice(0, five.index!)}WEEK 4\n\n${ethnics}\n\n${out.slice(five.index!)}`;
++  return `${out.replace(/\s+$/, '')}\n\nWEEK 8\n\n${display}\n\nWEEK 9\n\n${types}\n\nWEEK 10\n\n${printers}\n`;
++};
++
++// ── Mathematics (scheme-only row) ──────────────────────────────────────────
++// Scheme item "Statistics II" (with four sub-lines) has no lesson in the body.
++// It is integrated as a heading + its own scheme sub-lines, placed after the body
++// WEEK 4 lesson and before WEEK 5. Two rows labelled WEEK 4 result; this is expected
++// (the scheme's docx auto-numbering makes Statistics II item 4, while the body's
++// WEEK 4 is "Solving simultaneous equation graphically").
++const mathematics: Rule = text => {
++  const start = once(text, new RegExp(`^[ \\t]*(${escapeRegExp(schemeTitle(MATHS, '4'))})[ \\t]*\\r?$`, 'm'), 'Mathematics scheme line Statistics II');
++  const end = once(text, /^[ \t]*Variation[ \t]*\r?$/m, 'Mathematics scheme line Variation');
++  const from = start.index! + start[0].length;
++  if (end.index! < from) throw new Error('JSS3 2nd-Term resolution: Mathematics "Variation" precedes "Statistics II"');
++  const subLines = text.slice(from, end.index!).split('\n').map(l => l.trim()).filter(Boolean);
++  if (subLines.length === 0) throw new Error('JSS3 2nd-Term resolution: Mathematics "Statistics II" has no sub-lines');
++  const week5 = once(text, /^[ \t]*WEEK 5[ \t]*\r?$/m, 'Mathematics WEEK 5 marker');
++  if (week5.index! < end.index!) throw new Error('JSS3 2nd-Term resolution: Mathematics WEEK 5 marker precedes the scheme');
++  return `${text.slice(0, week5.index!)}WEEK 4\n\n${start[1]}\n${subLines.join('\n')}\n\n${text.slice(week5.index!)}`;
++};
++
++const RULES: Record<string, Rule> = {
++  [`${TERM}/Basic science.docx`]: basicScience,
++  [`${TERM}/basic tech.docx`]: basicTech,
++  [`${TERM}/music.docx`]: music,
++  [`${TERM}/YORUBA  JS 3.docx`]: yoruba,
++  [`${TERM}/JS 3 FINE ART.docx`]: fineArt,
++  [`${TERM}/${BUSINESS}`]: businessStudies,
++  [`${TERM}/${MATHS}`]: mathematics,
++};
++
++/**
++ * Every JSS3 Second-Term source file reviewed for this assignment. Files without
++ * a text rule were reviewed and parse correctly as supplied (FRENCH needs a
++ * title-only fix, below).
++ */
++export const JSS3_SECOND_TERM_REVIEWED_SOURCES: readonly string[] = [
++  'Agric 2ndT.doc',
++  'BASIC 9 MATHEMATICS E-NOTE.docx',
++  'Basic science.docx',
++  'FRENCH  js 3.docx',
++  'JS 3 FINE ART.docx',
++  'P H E JS_3.docx',
++  'YORUBA  JS 3.docx',
++  'basic tech.docx',
++  'business_studies JSS3.docx',
++  'home econs.docx',
++  'js 3 civic.docx',
++  'js 3 english.docx',
++  'music.docx',
++  'social studies.docx',
++];
++
++/** True only for the reviewed JSS3 Second-Term source files that carry a text rule. */
++export function hasJss3SecondTermSourceResolution(basename: string, termLabel: string): boolean {
++  return Object.prototype.hasOwnProperty.call(RULES, `${termLabel}/${basename}`);
++}
++
++export function applyJss3SecondTermSourceTextResolution(basename: string, termLabel: string, text: string): string {
++  const key = `${termLabel}/${basename}`;
++  return Object.prototype.hasOwnProperty.call(RULES, key) ? RULES[key](text) : text;
++}
++
++// ── Title-only corrections ─────────────────────────────────────────────────
++interface ParsedTopicLike { weekLabel: string; title: string; body: string }
++
++const isReviewed = (basename: string, termLabel: string) =>
++  termLabel === TERM && JSS3_SECOND_TERM_REVIEWED_SOURCES.includes(basename);
++
++/**
++ * Title-only corrections for reviewed Second-Term rows. Never changes the week
++ * label, order, or body (sourceReference), and never drops a topic. `null`
++ * (produced by an earlier per-class stage) passes through untouched.
++ *
++ *  - the marker regex leaves its separator ("-", "–", "—", ";", ":") on the title;
++ *  - FRENCH week 2: the real heading "Dater et mesurer le temp" starts with the
++ *    word "date"-prefix, so the parser's metadata filter skips it and picks the
++ *    next line; the heading is recovered from the body (source typo preserved);
++ *  - Fine Art week 5: the source wraps "TOPIC; SINGING IN PARTS AND / CADENCE
++ *    IDENTIFICATION" over two lines; the two source fragments are joined with one
++ *    space.
++ */
++export function resolveJss3SecondTermParsedTopic<T extends ParsedTopicLike>(
++  basename: string,
++  termLabel: string,
++  topic: T | null,
++): T | null {
++  if (topic === null) return null;
++  if (!isReviewed(basename, termLabel)) return topic;
++  const week = canonicalJss3Week(topic.weekLabel);
++  let title = topic.title;
++
++  if (basename === 'FRENCH  js 3.docx' && week === '2') {
++    title = once(topic.body, /^[ \t]*(Dater et mesurer le temp)[ \t]*\r?$/m, 'French Week 2 heading')[1];
++  } else if (basename === 'JS 3 FINE ART.docx' && week === '5') {
++    const m = once(
++      topic.body,
++      /^[ \t]*TOPIC[ \t]*[;:][ \t]*(SINGING IN PARTS AND)[ \t]*\r?\n(?:[ \t]*\r?\n)*[ \t]*(CADENCE IDENTIFICATION)[ \t]*\r?$/m,
++      'Fine Art Week 5 wrapped topic',
++    );
++    title = `${m[1]} ${m[2]}`;
++  }
++
++  const cleaned = title.replace(/^[\s;:\-\u2013\u2014]+/, '').trim();
++  return { ...topic, title: cleaned.length > 0 ? cleaned : title };
++}
++
++// ── Non-instructional rows ─────────────────────────────────────────────────
++// Revision / examination rows stay in the import (they are real scheme weeks) but
++// are excluded from the instructional count. Matched on (basename, canonical week).
++export interface Jss3NonInstructional {
++  subject: string;
++  basename: string;
++  /** Canonical week ("1", "7", "10", ...). */
++  week: string;
++  kind: 'revision' | 'examination';
++}
++
++export const JSS3_SECOND_TERM_NON_INSTRUCTIONAL: readonly Jss3NonInstructional[] = [
++  { subject: 'Agricultural Science', basename: 'Agric 2ndT.doc', week: '1', kind: 'revision' },
++  { subject: 'Mathematics', basename: MATHS, week: '7', kind: 'examination' },
++  { subject: 'French', basename: 'FRENCH  js 3.docx', week: '1', kind: 'revision' },
++  { subject: 'Basic Technology', basename: 'basic tech.docx', week: '1', kind: 'revision' },
++  { subject: 'Basic Technology', basename: 'basic tech.docx', week: '11', kind: 'revision' },
++  { subject: 'Basic Technology', basename: 'basic tech.docx', week: '12', kind: 'examination' },
++  { subject: 'Civic Education', basename: 'js 3 civic.docx', week: '1', kind: 'revision' },
++  { subject: 'English Language', basename: 'js 3 english.docx', week: '10', kind: 'revision' },
++  { subject: 'English Language', basename: 'js 3 english.docx', week: '11', kind: 'revision' },
++  { subject: 'Music', basename: 'music.docx', week: '1', kind: 'revision' },
++];
++
++export function isJss3SecondTermNonInstructional(basename: string, termLabel: string, weekLabel: string): boolean {
++  if (termLabel !== TERM) return false;
++  const week = canonicalJss3Week(weekLabel);
++  return JSS3_SECOND_TERM_NON_INSTRUCTIONAL.some(e => e.basename === basename && e.week === week);
++}
+diff --git a/backend/src/db/jss3ThirdTermRedistribution.ts b/backend/src/db/jss3ThirdTermRedistribution.ts
+new file mode 100644
+index 0000000..b8a784c
+--- /dev/null
++++ b/backend/src/db/jss3ThirdTermRedistribution.ts
+@@ -0,0 +1,458 @@
++/**
++ * Curriculum-owner decision (8 Oct 2026): JSS3 Third Term is strictly BECE
++ * examination preparation. Every substantive instructional topic found in the
++ * original JSS3 Third-Term sources is redistributed into JSS3 First or Second
++ * Term; Third Term receives ZERO topic rows. Computer Studies is excluded.
++ *
++ * Exact-source and JSS3/3rd-Term-only: every rule is keyed on `3rd Term/<basename>`
++ * and the importer wiring additionally gates on canonical class "JSS 3". First-
++ * and Second-Term behaviour lives in jss3CurriculumResolutions.ts and
++ * jss3SecondTermResolutions.ts and is neither modified nor duplicated here.
++ *
++ * Safety properties
++ *  - A text rule THROWS if its anchor is missing or ambiguous.
++ *  - redistributeJss3ThirdTermTopics THROWS if the parsed topics of a reviewed
++ *    source do not match the manifest exactly (count, order, week, title), so an
++ *    unaccounted-for Third-Term topic fails the import audit instead of being
++ *    silently dropped or silently kept in Third Term.
++ *  - Only an exact duplicate may be omitted, and the importer re-proves each
++ *    claimed duplicate against the actual First/Second-Term row body hash.
++ *
++ * No lesson content is invented. The only text this module adds is a structural
++ * "WEEK n" marker line derived from a heading the same source already states.
++ * Source typos (RADIOACTVITY, Ethnical, MAKETING, TRAINIG, REVITIONS,
++ * AKORIN EKO, ...) are preserved verbatim.
++ */
++
++import { canonicalJss3Week } from './jss3CurriculumResolutions.js';
++
++type Rule = (text: string) => string;
++
++export const JSS3_THIRD_TERM = '3rd Term';
++const TERM = JSS3_THIRD_TERM;
++
++// ── Anchor helpers (missing OR ambiguous throws) ───────────────────────────
++function all(text: string, marker: RegExp): RegExpMatchArray[] {
++  const flags = marker.flags.includes('g') ? marker.flags : marker.flags + 'g';
++  return [...text.matchAll(new RegExp(marker.source, flags))];
++}
++
++function once(text: string, marker: RegExp, label: string): RegExpMatchArray {
++  const found = all(text, marker);
++  if (found.length === 0) throw new Error(`JSS3 3rd-Term resolution anchor missing: ${label}`);
++  if (found.length > 1) {
++    throw new Error(`JSS3 3rd-Term resolution anchor ambiguous (${found.length} matches): ${label}`);
++  }
++  return found[0];
++}
++
++const fromMarker = (marker: RegExp, label: string): Rule => text =>
++  text.slice(once(text, marker, label).index!);
++
++function replaceOnce(text: string, marker: RegExp, replacement: string, label: string): string {
++  once(text, marker, label);
++  return text.replace(new RegExp(marker.source, marker.flags.replace('g', '')), replacement);
++}
++
++// ── Basic Science ──────────────────────────────────────────────────────────
++// A 5-row scheme ("WEEK 1-Family life Education One" ...) precedes the lessons and
++// is read as 5 extra topics. The lesson body starts at "WEEK 1- FAMILY LIFE EDUCATION [i]".
++const basicScience: Rule = fromMarker(
++  /^[ \t]*WEEK 1-[ \t]*FAMILY LIFE EDUCATION \[i\]/m,
++  'Basic Science body start WEEK 1- FAMILY LIFE EDUCATION [i]',
++);
++
++// ── Basic Technology ───────────────────────────────────────────────────────
++// A 6-row scheme ("Week 1: revision of last term's work" ...) precedes the lessons
++// and duplicates them. The lesson body starts at "Week 1         revision".
++const basicTech: Rule = fromMarker(/^Week 1[ \t]{2,}revision[ \t]*\r?$/m, 'Basic Tech body start Week 1 revision');
++
++// ── Music ──────────────────────────────────────────────────────────────────
++// The scheme ("WEEK ONE ---- REVISION & REVISION EXERCISE" ...) duplicates the lessons.
++// The body starts at the bare "WEEK ONE" line.
++const music: Rule = fromMarker(/^[ \t]*WEEK ONE[ \t]*\r?$/m, 'Music body start WEEK ONE');
++
++// ── Yoruba ─────────────────────────────────────────────────────────────────
++// Bare-number scheme (1..6); lessons are headed by Yoruba ordinals. Cut the scheme and
++// translate exactly the five ordinals present (the body has no lesson for scheme
++// week 4 "AKANLO EDE", so body ordinals run one behind the scheme from KERIN).
++const YORUBA_WEEKS: ReadonlyArray<readonly [string, string]> = [
++  ['KINNI', '1'], ['KEJI', '2'], ['KETA', '3'], ['KERIN', '4'], ['KAUN', '5'],
++];
++const yoruba: Rule = text => {
++  let body = text.slice(once(text, /^[ \t]*OSE[ \t]+KINNI[ \t]*\r?$/m, 'Yoruba body start OSE KINNI').index!);
++  for (const [ordinal, week] of YORUBA_WEEKS) {
++    body = replaceOnce(
++      body,
++      new RegExp(`^([ \\t]*)OSE[ \\t]+${ordinal}[ \\t]*\\r?$`, 'm'),
++      `$1WEEK ${week}`,
++      `Yoruba heading OSE ${ordinal}`,
++    );
++  }
++  const leftover = all(body, /^[ \t]*OSE[ \t]+[A-Z]+[ \t]*\r?$/m).length;
++  if (leftover !== 0) throw new Error(`JSS3 3rd-Term resolution: ${leftover} unreviewed Yoruba OSE heading(s) remain`);
++  return body;
++};
++
++// ── Cultural & Creative Arts (Fine art) ────────────────────────────────────
++// Each lesson opens "CLASS;  J S S 3  WEEK n" on one line with "TOPIC; ..." on the
++// next. The generic parser needs WEEK at the start of a line, so each of the six
++// header lines is split into "WEEK n / CLASS...". The scheme's own WEEK rows are
++// dropped (they would duplicate the lessons); the file's preamble (SUBJECT line)
++// is kept because it identifies the subject for the importer.
++const FINE_ART_HEADER =
++  /^[ \t\u00a0]*(CLASS[^\n]*?)[ \t\u00a0]*\bWEEK[ \t\u00a0]*(\d{1,2}(?:[ \t\u00a0]*-[ \t\u00a0]*\d{1,2})?)[ \t\u00a0\r]*$/gm;
++const fineArt: Rule = text => {
++  const headers = all(text, FINE_ART_HEADER);
++  if (headers.length !== 6) {
++    throw new Error(`JSS3 3rd-Term resolution: expected exactly 6 Fine Art CLASS/WEEK header lines, found ${headers.length}`);
++  }
++  const scheme = once(text, /^[ \t]*SCHEME OF WORK[ \t]*\r?$/m, 'Fine Art SCHEME OF WORK');
++  const firstHeader = headers[0].index!;
++  if (firstHeader < scheme.index!) throw new Error('JSS3 3rd-Term resolution: Fine Art lesson header precedes the scheme');
++  const clean = (s: string) => s.replace(/\u00a0/g, ' ').replace(/[ \t]+/g, ' ').trim();
++  const body = text.slice(firstHeader).replace(
++    FINE_ART_HEADER,
++    (_line, cls: string, wk: string) => `WEEK ${clean(wk).replace(/\s+/g, '')}\n${clean(cls)}`,
++  );
++  return `${text.slice(0, scheme.index!)}${body}`;
++};
++
++// ── English ────────────────────────────────────────────────────────────────
++// The scheme is an unnumbered "Review of ..." list read as nothing; the lessons sit
++// under only three WEEK headings (TWO, THREE, THREE) but carry nine TOPIC lines.
++// Cut the scheme and give every TOPIC block its own WEEK line (inheriting the week
++// heading it sits under) so each topic parses as its own row. A block opens with
++// "REVISION / <SECTION> / TOPIC: ..." (section = SPEECH WORK, GRAMMAR, ...).
++const english: Rule = text => {
++  const start = once(text, /^[ \t]*WEEK TWO[ \t]*\r?$/m, 'English body start WEEK TWO');
++  const lines = text.slice(start.index!).split('\n');
++  const out: string[] = [];
++  let week = '';
++  let pendingMarker = false; // a WEEK line was just emitted and no topic block has used it yet
++  const blockStart = /^[ \t]*REVISION[ \t]*\r?$/;
++  const section = /^[ \t]*(SPEECH WORK|GRAMMAR|COMPOSITION|LITERATURE)[ \t]*\r?$/;
++  const topicLine = /^[ \t]*TOPIC[ \t]*:/;
++  const nextNonBlank = (from: number): number => {
++    let j = from;
++    while (j < lines.length && lines[j].trim() === '') j++;
++    return j;
++  };
++  for (let i = 0; i < lines.length; i++) {
++    const line = lines[i];
++    const wk = /^[ \t]*WEEK[ \t]+(TWO|THREE)[ \t]*\r?$/.exec(line);
++    if (wk) {
++      week = wk[1];
++      pendingMarker = true;
++      out.push(line);
++      continue;
++    }
++    if (blockStart.test(line)) {
++      const j = nextNonBlank(i + 1);
++      const k = j < lines.length && section.test(lines[j]) ? nextNonBlank(j + 1) : -1;
++      if (k >= 0 && k < lines.length && topicLine.test(lines[k])) {
++        if (!week) throw new Error('JSS3 3rd-Term resolution: English topic block before any WEEK heading');
++        if (!pendingMarker) out.push(`WEEK ${week}`);
++        pendingMarker = false;
++      }
++    }
++    out.push(line);
++  }
++  return out.join('\n');
++};
++
++const RULES: Record<string, Rule> = {
++  [`${TERM}/Basic science.docx`]: basicScience,
++  [`${TERM}/BASIC TECH.docx`]: basicTech,
++  [`${TERM}/MUSIC.docx`]: music,
++  [`${TERM}/OMEGA TERM YORUBA JS3.docx`]: yoruba,
++  [`${TERM}/Fine art.docx`]: fineArt,
++  [`${TERM}/ENGLISH.docx`]: english,
++};
++
++/** True only for the reviewed JSS3 Third-Term source files that carry a text rule. */
++export function hasJss3ThirdTermSourceResolution(basename: string, termLabel: string): boolean {
++  return Object.prototype.hasOwnProperty.call(RULES, `${termLabel}/${basename}`);
++}
++
++export function applyJss3ThirdTermSourceTextResolution(basename: string, termLabel: string, text: string): string {
++  const key = `${termLabel}/${basename}`;
++  return Object.prototype.hasOwnProperty.call(RULES, key) ? RULES[key](text) : text;
++}
++
++// ═══════════════════════════════════════════════════════════════════════════
++// Source → destination manifest
++// ═══════════════════════════════════════════════════════════════════════════
++
++export type Jss3Destination = '1st Term' | '2nd Term';
++export type Jss3ThirdTermClassification =
++  | 'instructional'     // substantive teaching content; imported into destination term
++  | 'exact-duplicate'   // body identical to an existing First/Second-Term row; not re-imported
++  | 'revision'          // revision / review week; BECE preparation, no topic row
++  | 'examination'       // examination / past-question practice; BECE preparation, no topic row
++  | 'held';             // heading-only or scheme-only item NOT covered by an owner-approved manifest; not imported
++
++export interface Jss3ThirdTermEntry {
++  subject: string;
++  basename: string;
++  /** Canonical source week as canonicalJss3Week() renders it ("2", "5&6", "6-8", ...) or "scheme". */
++  week: string;
++  /** Expected (cleaned) topic title for parsed rows; the scheme phrase for scheme-only rows. */
++  title: string;
++  kind: 'parsed' | 'scheme-only';
++  classification: Jss3ThirdTermClassification;
++  destination?: Jss3Destination;
++  duplicateOf?: { basename: string; week: string; term: '1st Term' };
++  /** scheme-only rows: text that must appear in the source (traceability test). */
++  sourcePhrase?: string;
++  note: string;
++}
++
++const T1 = '1st Term' as const;
++const T2 = '2nd Term' as const;
++
++const AGRIC = 'Agriculture science  Book 3.docx';
++const BTECH = 'BASIC TECH.docx';
++const BUSS = 'BUSINESS STUDIES FOR JSS3.docx';
++const BSCI = 'Basic science.docx';
++const CIVIC = 'CIVIC.docx';
++const ENGL = 'ENGLISH.docx';
++const FART = 'Fine art.docx';
++const HECO = 'HOME ECONS.docx';
++const MUSI = 'MUSIC.docx';
++const YORU = 'OMEGA TERM YORUBA JS3.docx';
++const PHED = 'PHE.docx';
++const CIVIC_T1 = 'JSS 3 CIVIC (E NOTE).docx';
++
++const inst = (subject: string, basename: string, week: string, title: string, destination: Jss3Destination, note: string): Jss3ThirdTermEntry =>
++  ({ subject, basename, week, title, kind: 'parsed', classification: 'instructional', destination, note });
++const dup = (week: string, title: string): Jss3ThirdTermEntry => ({
++  subject: 'Civic Education', basename: CIVIC, week, title, kind: 'parsed', classification: 'exact-duplicate',
++  duplicateOf: { basename: CIVIC_T1, week, term: T1 },
++  note: `Body is byte-for-byte (normalized) identical to the First-Term Civic Education week ${week} row; not re-imported.`,
++});
++const nonInst = (
++  subject: string, basename: string, week: string, title: string,
++  classification: 'revision' | 'examination' | 'held', kind: 'parsed' | 'scheme-only', note: string, sourcePhrase?: string,
++): Jss3ThirdTermEntry => ({ subject, basename, week, title, kind, classification, note, ...(sourcePhrase ? { sourcePhrase } : {}) });
++
++/**
++ * One entry per Third-Term scheme item and per parsed lesson of the eleven original
++ * JSS3 Third-Term sources. Destination choices follow subject sequence: each topic
++ * joins the term whose existing strand it continues (rationale in `note`). They are
++ * proposals for owner review; changing one is a one-line manifest edit.
++ */
++export const JSS3_THIRD_TERM_MANIFEST: readonly Jss3ThirdTermEntry[] = [
++  // ── Agricultural Science ────────────────────────────────────────────────
++  nonInst('Agricultural Science', AGRIC, 'scheme', 'Revision', 'revision', 'scheme-only', 'Scheme week 1 "Revision"; no lesson text.', 'Revision'),
++  inst('Agricultural Science', AGRIC, '2', 'Definition and objectives of export promotion in agriculture', T1, 'Marketing strand: 1st Term runs packaging, branding, advertising; export promotion continues agricultural marketing.'),
++  inst('Agricultural Science', AGRIC, '3', 'Example of Nigerian export product', T1, 'Marketing strand (follows export promotion definition).'),
++  inst('Agricultural Science', AGRIC, '4', 'Benefits of export promotion', T1, 'Marketing strand (scheme: "Benefit of export production in agriculture"; body heading preserved).'),
++  // ── Basic Science ───────────────────────────────────────────────────────
++  inst('Basic Science', BSCI, '1', 'FAMILY LIFE EDUCATION [i]', T1, 'Health/family strand: 1st Term has drug abuse, drug control agencies, family traits.'),
++  inst('Basic Science', BSCI, '2', 'FAMILY LIFE EDUCATION [ii].', T1, 'Health/family strand (continuation of [i]).'),
++  inst('Basic Science', BSCI, '3', 'RADIOACTVITY', T2, 'Physics strand: 2nd Term has light, sound, magnetism, electrical energy. Source typo "RADIOACTVITY" preserved (scheme: Radioactivity).'),
++  inst('Basic Science', BSCI, '4', 'Ethnical issues in science and development', T2, 'Follows the 2nd-Term science/technology strand. Source typo "Ethnical" preserved (scheme: Ethical).'),
++  inst('Basic Science', BSCI, '5', 'Simple Machine', T2, 'Physics strand (energy and machines).'),
++  // ── Basic Technology ────────────────────────────────────────────────────
++  nonInst('Basic Technology', BTECH, '1', 'revision', 'revision', 'parsed', 'Week 1 revision of last term\'s work (body is third-party motion-component text).'),
++  inst('Basic Technology', BTECH, '2', 'Fault detection', T2, 'Follows 2nd-Term electrical house wiring and tools.'),
++  inst('Basic Technology', BTECH, '3', 'basic Electronics', T2, 'Electrical strand (2nd-Term house wiring).'),
++  inst('Basic Technology', BTECH, '4', 'Components of electronics', T2, 'Electrical strand (scheme: "basic electronics (continues) - components, uses").'),
++  inst('Basic Technology', BTECH, '5&6', 'machine motion', T2, 'Continues 2nd-Term "motion in engineering". Combined-week lesson: scheme splits linear (wk 5) and rotary (wk 6) motion; the body is one "Week 5 and 6" lesson, kept as one row.'),
++  nonInst('Basic Technology', BTECH, 'scheme', 'revision & examination', 'examination', 'scheme-only', 'Scheme "7_12 revision & examination."; no lesson text.', '7_12 revision'),
++  // ── Business Studies ────────────────────────────────────────────────────
++  nonInst('Business Studies', BUSS, 'scheme', 'REVISION OF LAST TERM’S WORK', 'revision', 'scheme-only', 'Scheme week 1 revision; no lesson text.', 'REVISION OF LAST TERM'),
++  inst('Business Studies', BUSS, '2', 'ERASING TECHNIQUES', T2, 'Office-practice strand: 2nd Term has keyboarding, display, printers correction signs.'),
++  inst('Business Studies', BUSS, '3', 'MEMORANDUM', T2, 'Office-practice strand (documents).'),
++  inst('Business Studies', BUSS, '4', 'BUSINESS LETTER', T2, 'Office-practice strand (documents).'),
++  inst('Business Studies', BUSS, '5', 'BUSINESS LETTER (CONTINUATION)', T2, 'Office-practice strand (continuation).'),
++  inst('Business Studies', BUSS, '6', 'SIMPLE TABULATION', T2, 'Office-practice strand (typed display).'),
++  nonInst('Business Studies', BUSS, 'scheme', 'REVISION/EXAMINATION', 'examination', 'scheme-only', 'Scheme week 7; no lesson text.', 'REVISION/EXAMINATION'),
++  // ── Civic Education ─────────────────────────────────────────────────────
++  nonInst('Civic Education', CIVIC, '1', 'Review of last term work', 'revision', 'parsed', 'Week 1 review.'),
++  dup('2', 'The role of citizen in constitutional developments'),
++  dup('3', 'National Security'),
++  dup('4', 'State Security Service'),
++  dup('5', 'Self-Employment'),
++  dup('6', 'Self Employment II'),
++  dup('7', 'Managing For Results.'),
++  nonInst('Civic Education', CIVIC, '8', 'General Revision.', 'revision', 'parsed', 'Week 8 general revision.'),
++  nonInst('Civic Education', CIVIC, '9', 'Practice past AKWA', 'examination', 'parsed', 'Week 9 past-question practice ("AKWA" is the source wording).'),
++  // ── English Language ────────────────────────────────────────────────────
++  nonInst('English Language', ENGL, 'scheme', 'Scheme of work: review / past-question weeks and 11 EXAMINATION', 'revision', 'scheme-only', 'The unnumbered scheme lists review and past-question weeks (comprehension, structure, composition, literature) and "11 EXAMINATION"; no per-line lesson text beyond the body topics below.', 'OMEGA TERM JSS THREE'),
++  inst('English Language', ENGL, '2', 'THE VOWEL SOUNDS', T2, 'Speech-work strand: 1st Term has consonant sounds, 2nd Term vowel contrasts. Each body block sits under a "REVISION" caption in the source; treated as instructional because it is full teaching text (owner to confirm).'),
++  inst('English Language', ENGL, '2', 'MEANING AND TYPES OF NOUN', T1, 'Grammar foundations (1st-Term grammar sequence). Source caption "REVISION"; full teaching text.'),
++  inst('English Language', ENGL, '2', 'ESSAY WRITING', T2, 'Composition strand: 2nd Term opens with article writing. Source caption "REVISION"; full teaching text.'),
++  inst('English Language', ENGL, '3', 'VOWEL SOUNDS', T2, 'Speech-work strand (sub-topic: diphthongs). Source caption "REVISION"; full teaching text.'),
++  inst('English Language', ENGL, '3', 'LITERARY TERMS', T1, 'Literature strand: 1st Term introduces fiction/non-fiction and poetry. Source caption "REVISION".'),
++  inst('English Language', ENGL, '3', 'ARTICLE', T1, 'Grammar strand (second source block labelled WEEK THREE; label preserved). Grammatical articles, distinct from 2nd-Term "article writing".'),
++  inst('English Language', ENGL, '3', 'PART OF SPEECH', T1, 'Grammar strand (adjectives and adverbs; extends 1st-Term grammar rows).'),
++  // ── Cultural & Creative Arts ────────────────────────────────────────────
++  inst('Cultural & Creative Arts', FART, '1', 'MODULATION.', T2, 'Music-theory strand: follows 2nd-Term harmony, cadences and minor scale.'),
++  inst('Cultural & Creative Arts', FART, '2', 'MAKETING OF ART WORKS.', T1, 'Follows 1st-Term exhibition and display techniques. Source typo "MAKETING" preserved.'),
++  inst('Cultural & Creative Arts', FART, '3', 'UNITY.', T2, 'Design-principles strand with 2nd-Term motifs and lettering.'),
++  inst('Cultural & Creative Arts', FART, '4', 'PRACTICAL: BREATH CONTROL VOICE TRAINIG AND INSTRUMENTALS.', T2, 'Vocal strand (2nd-Term singing in parts). Source typo "TRAINIG" preserved; wrapped source title joined.'),
++  inst('Cultural & Creative Arts', FART, '5', 'BATIK', T2, 'Textile-craft strand (2nd-Term knitting).'),
++  nonInst('Cultural & Creative Arts', FART, '6-8', 'REVITIONS ON PREVIOUS WORKS.', 'revision', 'parsed', 'Weeks 6-8 revision. Source typo "REVITIONS" preserved.'),
++  nonInst('Cultural & Creative Arts', FART, 'scheme', 'J S C E EXAMINATION', 'examination', 'scheme-only', 'Scheme line after week 6; no lesson text.', 'EXAMINATION'),
++  // ── Home Economics ──────────────────────────────────────────────────────
++  nonInst('Home Economics', HECO, 'scheme', 'Revision of last terms work', 'revision', 'scheme-only', 'First scheme line; no lesson text.', 'Revision of last terms work'),
++  inst('Home Economics', HECO, '1', 'FAMILY LIVING AND RELATIONSHIP', T1, 'Family-living strand opens in 1st Term.'),
++  inst('Home Economics', HECO, '2', 'PREGNACY AND CHILDBIRTH', T1, 'Family-living strand. Source typo "PREGNACY" preserved.'),
++  inst('Home Economics', HECO, '3', 'CHILD CARE', T2, 'Family-living strand continues in 2nd Term (sequence kept: relationships, pregnancy, then child care and development).'),
++  inst('Home Economics', HECO, '4', 'CHILD CARE [CONTD]', T2, 'Continuation of child care.'),
++  inst('Home Economics', HECO, '5', 'CHILD DEVELOPMENT', T2, 'Closes the family-living strand.'),
++  nonInst('Home Economics', HECO, 'scheme', 'Project work on JSSCE and examination', 'examination', 'scheme-only', 'Last scheme line; no lesson text.', 'Project work on JSSCE'),
++  // ── Music ───────────────────────────────────────────────────────────────
++  nonInst('Music', MUSI, '1', 'REVISION EXERCISE', 'revision', 'parsed', 'Week 1 revision exercise.'),
++  inst('Music', MUSI, '2', 'PERIODS IN MUSIC: BAROUQE, CLASSICAL & ROMANTIC', T1, 'History strand with 1st-Term composers and musical forms. Source typo "BAROUQE" preserved.'),
++  inst('Music', MUSI, '3', 'TRANSCRIPTION FROM STAFF TO SOLFA-NOTATION', T1, 'Notation skill before 1st-Term melody writing.'),
++  inst('Music', MUSI, '4', 'TRANSPOSITION', T2, 'Extends 2nd-Term "TRANSPOSITION" (week 9): this lesson (clef and key-to-dominant transposition) shares only its 3-line introduction with it, so it is retained, not treated as a duplicate. Owner may merge.'),
++  inst('Music', MUSI, '5', 'MODULATION', T2, 'Follows 2nd-Term cadences and inversion of triads.'),
++  inst('Music', MUSI, '6', 'TERMS & SIGNS', T1, 'Glossary of 19 terms (anon ... ) with no entry in common with 1st-Term "TERMS AND SIGNS" (dynamics etc.); joins it in 1st Term.'),
++  nonInst('Music', MUSI, 'scheme', 'REVISION OF PAST QUESTION & EXAMINATION', 'examination', 'scheme-only', 'Scheme weeks 7-13; no lesson text.', 'REVISION OF PAST QUESTION'),
++  // ── Yoruba ──────────────────────────────────────────────────────────────
++  inst('Yoruba', YORU, '1', 'AKORI EKO: LETA GBEFE', T2, 'Follows 2nd-Term informal letter (leta aigbefe).'),
++  inst('Yoruba', YORU, '2', 'AKORI EKO: ATUNYEWO OWE ILE YORUBA', T1, 'Oral-literature/culture strand with 1st-Term poetry and sports.'),
++  inst('Yoruba', YORU, '3', 'AKORI EKO: AAYAN OGBUFO', T2, 'Translation skill, language-use strand (2nd-Term sentence building, letters).'),
++  nonInst('Yoruba', YORU, 'scheme', 'AKANLO EDE', 'held', 'scheme-only', 'Scheme week 4 "AKANLO EDE" has NO lesson body in the source (the body has five OSE headings for six scheme topics). Not covered by the owner-approved scheme-only manifest; held for owner approval, not imported.', 'AKANLO EDE'),
++  inst('Yoruba', YORU, '4', 'AKORIN EKO: ISEDA ORO{ISODOURKO}', T1, 'Word-formation strand with 1st-Term phonology and word structure. Body heading is OSE KERIN (week 4) although the scheme numbers it 5; body wording preserved ("AKORIN").'),
++  inst('Yoruba', YORU, '5', 'AKORI EKO: EYAN', T2, 'Same topic and five-type taxonomy as 2nd-Term week 3 EYAN, but the body is a separate write-up with no shared 10-word run, so it is retained, not treated as an exact duplicate. Body heading is OSE KAUN (week 5; scheme numbers it 6). Owner may merge.'),
++  nonInst('Yoruba', YORU, 'scheme', 'Atunyewo lori gbogbo ise saa yii ati idanwo ipari', 'revision', 'scheme-only', 'Final scheme line (revision of the term and end-of-term examination).', 'idanwo ipari'),
++  // ── Physical & Health Education ─────────────────────────────────────────
++  inst('Physical & Health Education', PHED, '1', 'Family Health', T1, 'Health strand: 1st Term has female genital mutilation, family life and sex education, ageing.'),
++  inst('Physical & Health Education', PHED, '2', 'TAEKWONDO', T2, 'Combat/sports strand with 2nd-Term swimming and gymnastics.'),
++  nonInst('Physical & Health Education', PHED, '3', 'Practical on Taekwondo', 'held', 'parsed', 'Heading only: three lines, no lesson text, and not in the owner-approved scheme-only manifest. Held for owner approval, not imported.'),
++  inst('Physical & Health Education', PHED, '4', 'Sexually Transmitted Diseases (STDs)', T1, 'Health strand (1st-Term family life and sex education).'),
++  inst('Physical & Health Education', PHED, '5', 'BOXING', T2, 'Combat/sports strand (with Taekwondo).'),
++  inst('Physical & Health Education', PHED, '6', 'DRUG EDUCATION', T1, 'Health strand (1st-Term).'),
++];
++
++/** The eleven reviewed Third-Term source files (Computer Studies and French/Mathematics/Social Studies have none). */
++export const JSS3_THIRD_TERM_REVIEWED_SOURCES: readonly string[] = [
++  AGRIC, BTECH, BUSS, BSCI, CIVIC, ENGL, FART, HECO, MUSI, YORU, PHED,
++];
++
++/** Subjects that must have zero JSS3 rows in every term. */
++export const JSS3_EXCLUDED_SUBJECTS: readonly string[] = ['Computer Studies'];
++
++// ── Title resolution ───────────────────────────────────────────────────────
++interface ParsedTopicLike { weekLabel: string; title: string; body: string }
++
++const cleanTitle = (title: string): string => {
++  const cleaned = title.replace(/^[\s;:\-\u2013\u2014.]+/, '').replace(/\s+/g, ' ').trim();
++  return cleaned.length > 0 ? cleaned : title.trim();
++};
++const normTitle = (t: string): string => cleanTitle(t).normalize('NFKC').toLowerCase();
++
++/**
++ * Title-only recovery for two rows whose generic title is wrong. Week label, order
++ * and body are never touched.
++ *  - Music week 6: the real heading "TERMS & SIGNS" starts with "term", so the
++ *    parser's metadata filter skips it and picks the first glossary line.
++ *  - Fine Art week 4: the source wraps "TOPIC; PRACTICAL: BREATH CONTROL VOICE
++ *    TRAINIG AND / INSTRUMENTALS."; the two fragments are joined with one space.
++ */
++function resolveTitle(basename: string, week: string, topic: ParsedTopicLike): string {
++  if (basename === MUSI && week === '6') {
++    return once(topic.body, /^[ \t]*(TERMS & SIGNS)[ \t]*\r?$/m, 'Music week 6 heading')[1];
++  }
++  if (basename === FART && week === '4') {
++    const m = once(
++      topic.body,
++      /^[ \t]*TOPIC[ \t]*[;:][ \t]*(PRACTICAL: BREATH CONTROL VOICE TRAINIG AND)[ \t]*\r?\n(?:[ \t]*\r?\n)*[ \t]*(INSTRUMENTALS\.)[ \t]*\r?$/m,
++      'Fine Art week 4 wrapped topic',
++    );
++    return `${m[1]} ${m[2]}`;
++  }
++  return topic.title;
++}
++
++export interface Jss3DuplicateClaim {
++  basename: string;
++  week: string;
++  title: string;
++  bodyHashInput: string;
++  duplicateOf: { basename: string; week: string; term: '1st Term' };
++}
++
++export interface Jss3ThirdTermRecord {
++  subject: string;
++  basename: string;
++  originalTerm: '3rd Term';
++  week: string;
++  title: string;
++  kind: 'parsed' | 'scheme-only';
++  classification: Jss3ThirdTermClassification;
++  destination: Jss3Destination | '';
++  duplicateOf: string;
++  note: string;
++  /** Raw (pre-normalization) body of a parsed row, for hashing by the caller; '' for scheme-only rows. */
++  bodyForHash: string;
++}
++
++export interface Jss3Redistribution<T> {
++  /** Instructional topics to import, each stamped with its destination term. */
++  kept: Array<T & { destinationTerm: Jss3Destination }>;
++  claims: Jss3DuplicateClaim[];
++  records: Jss3ThirdTermRecord[];
++}
++
++/**
++ * Account for every parsed topic of one JSS3 Third-Term source. Throws unless the
++ * parsed (week, title) sequence equals the manifest's parsed entries for that file,
++ * so a missing, extra, renamed or reordered topic fails the audit.
++ */
++export function redistributeJss3ThirdTermTopics<T extends ParsedTopicLike>(
++  basename: string,
++  termLabel: string,
++  subjectName: string,
++  topics: T[],
++): Jss3Redistribution<T> {
++  if (termLabel !== TERM) throw new Error(`JSS3 3rd-Term redistribution called for term "${termLabel}"`);
++  if (!JSS3_THIRD_TERM_REVIEWED_SOURCES.includes(basename)) {
++    throw new Error(`JSS3 3rd-Term source "${basename}" has not been reviewed; its topics are not accounted for`);
++  }
++  const entries = JSS3_THIRD_TERM_MANIFEST.filter(e => e.basename === basename);
++  const parsedEntries = entries.filter(e => e.kind === 'parsed');
++  const resolved = topics.map(t => {
++    const week = canonicalJss3Week(t.weekLabel);
++    return { topic: t, week, title: cleanTitle(resolveTitle(basename, week, t)) };
++  });
++  const describe = (xs: Array<{ week: string; title: string }>) => xs.map(x => `${x.week}:${x.title}`).join(' | ');
++  const mismatch =
++    resolved.length !== parsedEntries.length
++    || resolved.some((r, i) => r.week !== parsedEntries[i].week || normTitle(r.title) !== normTitle(parsedEntries[i].title));
++  if (mismatch) {
++    throw new Error(
++      `JSS3 3rd-Term manifest mismatch for "${basename}": parsed [${describe(resolved)}] vs manifest [${describe(parsedEntries)}]`,
++    );
++  }
++  const wrongSubject = entries.find(e => e.subject !== subjectName);
++  if (wrongSubject) {
++    throw new Error(`JSS3 3rd-Term subject mismatch for "${basename}": importer says "${subjectName}", manifest says "${wrongSubject.subject}"`);
++  }
++
++  const kept: Array<T & { destinationTerm: Jss3Destination }> = [];
++  const claims: Jss3DuplicateClaim[] = [];
++  const records: Jss3ThirdTermRecord[] = [];
++  let cursor = 0;
++  for (const e of entries) {
++    const rec = (body: string): Jss3ThirdTermRecord => ({
++      subject: e.subject, basename: e.basename, originalTerm: TERM, week: e.week, title: e.title, kind: e.kind,
++      classification: e.classification, destination: e.destination ?? '',
++      duplicateOf: e.duplicateOf ? `${e.duplicateOf.term} / ${e.duplicateOf.basename} / week ${e.duplicateOf.week}` : '',
++      note: e.note, bodyForHash: body,
++    });
++    if (e.kind === 'scheme-only') { records.push(rec('')); continue; }
++    const r = resolved[cursor++];
++    records.push(rec(r.topic.body));
++    if (e.classification === 'instructional') {
++      kept.push({ ...r.topic, title: r.title, destinationTerm: e.destination! });
++    } else if (e.classification === 'exact-duplicate') {
++      claims.push({ basename, week: e.week, title: e.title, bodyHashInput: r.topic.body, duplicateOf: e.duplicateOf! });
++    }
++  }
++  return { kept, claims, records };
++}
+diff --git a/tests/jss3-first-term.test.mts b/tests/jss3-first-term.test.mts
+new file mode 100644
+index 0000000..8bda3fb
+--- /dev/null
++++ b/tests/jss3-first-term.test.mts
+@@ -0,0 +1,233 @@
++// Run (unit tests only):
++//   cd backend && npx tsx --test ../tests/jss3-first-term.test.mts
++// Run with the real-source dry-run audit (no database is touched; --yes is never passed):
++//   cd backend && JSS3_FIRST_TERM_ROOT=/path/to/root npx tsx --test ../tests/jss3-first-term.test.mts
++// where the root holds the 13 original files from "JSS3 1ST TERM" plus
++// "JSS3 Alpha term music Enote.docx" (the converted Music source) and NO .rtf.
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { execFileSync } from 'node:child_process';
++import { existsSync, readdirSync, readFileSync } from 'node:fs';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import {
++  JSS3_FIRST_TERM_REVIEWED_SOURCES,
++  applyJss3SourceTextResolution as apply,
++  canonicalJss3Week,
++  hasJss3SourceResolution,
++  resolveJss3ParsedTopic as resolveTopic,
++} from '../backend/src/db/jss3CurriculumResolutions.ts';
++
++const here = path.dirname(fileURLToPath(import.meta.url));
++const backendDir = path.resolve(here, '..', 'backend');
++const T1 = '1st Term';
++
++// ── Fixtures (synthetic, structure-only) ───────────────────────────────────
++const BASIC_TECH = [
++  'BST – BASIC TECHNOLOGY JSS3', 'SCHEME OF WORK', '10. orthographic drawing ',
++  '          11. scale drawing ', '          12. simple blue print reading ', '',
++  'week 1; carrier opportunities in technology', 'body one',
++  'week 10; orthographic drawing', 'body ten', '',
++].join('\n');
++
++const nb = '\u00a0'.repeat(12);
++const PHE = [
++  'SCHEME', 'WEEK ONE', 'TOPIC: Field Event; POLE VAULT',
++  `${nb}WEEK`.concat(' TWO'), 'TOPIC:-JAVELIN',
++  `WEEK${nb}3`, 'TOPIC: COMBINED EVENTS',
++  `${nb}4TH WEEK`, 'TOPIC: HOCHEY',
++  `${nb}5TH ${nb}WEEK`, 'PRACTICAL DEMONSTRATION OF BASIC SKILLS OF HOCKEY', '',
++  'CLASS: J.S.S 3', '', 'SUBJECT: PHYSICAL AND HEALTH EDUCATION', '', 'TOPIC: FEMALE GENITAL MUTILATION', 'fgm body',
++  'WEEK 7 & 8', 'TOPIC: FAMILY LIFE', 'WEEK 9', 'TOPIC: AGEING',
++  `${nb}WEEK 10`, 'Topic: Physical Fitness', `${nb}WEEK 11`, 'TOPIC: ENERGY', '',
++].join('\n');
++
++// ── Scope guards ───────────────────────────────────────────────────────────
++test('only First-Term reviewed JSS3 files carry a text rule', () => {
++  for (const f of ['BASIC SCIENCE.docx', 'BASIC TECH.docx', 'PHE JS 3.docx', 'js 3 english.doc', 'JS3 YORUBA.docx']) {
++    assert.equal(hasJss3SourceResolution(f, T1), true, f);
++    assert.equal(hasJss3SourceResolution(f, '2nd Term'), false, `${f} must not resolve in 2nd Term`);
++    assert.equal(hasJss3SourceResolution(f, '3rd Term'), false, `${f} must not resolve in 3rd Term`);
++  }
++  assert.equal(hasJss3SourceResolution('Agric 3.doc', T1), false);
++});
++
++test('Second/Third Term and unreviewed files are returned byte-for-byte unchanged', () => {
++  for (const term of ['2nd Term', '3rd Term']) {
++    assert.equal(apply('BASIC TECH.docx', term, BASIC_TECH), BASIC_TECH);
++    assert.equal(apply('PHE JS 3.docx', term, PHE), PHE);
++    const topic = { weekLabel: 'week 6', title: 'Covered', body: 'Topics Covered' };
++    assert.strictEqual(resolveTopic('BASIC TECH.docx', term, topic), topic);
++  }
++  assert.equal(apply('SOMETHING ELSE.docx', T1, 'x'), 'x');
++});
++
++test('Computer Studies is not part of the reviewed JSS3 First-Term source set', () => {
++  assert.equal(JSS3_FIRST_TERM_REVIEWED_SOURCES.some(f => /comput/i.test(f)), false);
++  assert.equal(JSS3_FIRST_TERM_REVIEWED_SOURCES.length, 14);
++  assert.ok(JSS3_FIRST_TERM_REVIEWED_SOURCES.includes('JSS3 Alpha term music Enote.docx'));
++  assert.equal(JSS3_FIRST_TERM_REVIEWED_SOURCES.some(f => /\.rtf$/i.test(f)), false);
++});
++
++// ── Basic Technology: scale drawing + simple blueprint reading ─────────────
++test('Basic Tech: appends exactly the two scheme-only headings, phrases verbatim from the scheme', () => {
++  const out = apply('BASIC TECH.docx', T1, BASIC_TECH);
++  assert.ok(out.startsWith(BASIC_TECH.replace(/\s+$/, '')), 'original text is preserved as a prefix');
++  const tail = out.slice(BASIC_TECH.replace(/\s+$/, '').length).split('\n').filter(Boolean);
++  assert.deepEqual(tail, ['week 11; scale drawing', 'week 12; simple blue print reading']);
++});
++test('Basic Tech: throws if a scheme anchor is missing or a Week 11/12 body now exists', () => {
++  assert.throws(() => apply('BASIC TECH.docx', T1, BASIC_TECH.replace('11. scale drawing', '11. scaling')), /scale drawing/);
++  assert.throws(() => apply('BASIC TECH.docx', T1, BASIC_TECH.replace('12. simple blue print reading', '12. other')), /blue print/);
++  assert.throws(() => apply('BASIC TECH.docx', T1, `${BASIC_TECH}\nweek 11; scale drawing\nreal body`), /no longer applies/);
++});
++test('Basic Tech: title comes from the week heading (fixes "Topics Covered" -> "Covered")', () => {
++  const t = resolveTopic('BASIC TECH.docx', T1, {
++    weekLabel: 'week 6', title: 'Covered',
++    body: 'week 6; processing of ceramics and glass\n\nTopics Covered\nx',
++  });
++  assert.equal(t?.title, 'processing of ceramics and glass');
++  assert.equal(t?.weekLabel, 'week 6');
++});
++
++// ── PHE: hockey heading + week-marker recovery ─────────────────────────────
++test('PHE: NBSP / ordinal-first markers normalised, Week 6 inserted, hockey heading sits under Week 5', () => {
++  const out = apply('PHE JS 3.docx', T1, PHE);
++  const markers = out.split('\n').filter(l => /^WEEK\b/.test(l)).map(l => l.trim());
++  assert.deepEqual(markers, ['WEEK ONE', 'WEEK 2', 'WEEK 3', 'WEEK 4', 'WEEK 5', 'WEEK 6', 'WEEK 7 & 8', 'WEEK 9', 'WEEK 10', 'WEEK 11']);
++  assert.match(out, /WEEK 5\n+PRACTICAL DEMONSTRATION OF BASIC SKILLS OF HOCKEY\n+WEEK 6\n+CLASS: J\.S\.S 3/);
++  // Nothing beyond marker lines changed; only "WEEK 6" is new.
++  const strip = (s: string) => s.split('\n').filter(l => !/week/i.test(l)).map(l => l.replace(/[\s\u00a0]+/g, ' ').trim()).filter(Boolean);
++  assert.deepEqual(strip(out), strip(PHE));
++});
++test('PHE: throws if the marker defects are not exactly the six reviewed ones', () => {
++  assert.throws(() => apply('PHE JS 3.docx', T1, PHE.replace(`${nb}WEEK 11`, 'WEEK 11')), /expected 6/);
++  assert.throws(() => apply('PHE JS 3.docx', T1, PHE.replace('TOPIC: FEMALE GENITAL MUTILATION', 'TOPIC: OTHER')), /Female Genital|FEMALE GENITAL/i);
++});
++
++// ── Other rules ────────────────────────────────────────────────────────────
++test('Basic Science: scheme cut, EIEGHT fixed, Week 3 marker added; throws without anchors', () => {
++  const src = [
++    'Jss 3 Alpha Term E-note', 'Week ONE—Drug and Substances Abuse', 'Week THREE- Family Traits', 'Week EIGHT-Environmental Hazard FIVE (Desertification)',
++    'WEEK ONE-DRUG AND SUBSTANCES ABUSE (!)', 'a', 'WEEK TWO', 'b', 'CAPTER THREE --FAMILY TRAITS', 'c',
++    'WEEK FOUR-SOIL EROSION', 'WEEK EIEGHT- DESERTIFICATION', 'd', '',
++  ].join('\n');
++  const out = apply('BASIC SCIENCE.docx', T1, src);
++  assert.ok(out.startsWith('WEEK ONE-DRUG AND SUBSTANCES ABUSE (!)'));
++  assert.match(out, /WEEK THREE-FAMILY TRAITS\n\nCAPTER THREE --FAMILY TRAITS/);
++  assert.match(out, /^WEEK EIGHT- DESERTIFICATION$/m);
++  assert.doesNotMatch(out, /EIEGHT/);
++  assert.throws(() => apply('BASIC SCIENCE.docx', T1, src.replace('CAPTER THREE --FAMILY TRAITS', 'X')), /anchor missing/);
++});
++test('English: starts at WEEK ONE (1); throws if absent', () => {
++  const src = 'ENGLISH\nSCHEME\nWEEK\n1\nRevision\nWEEK ONE (1)\nbody\n';
++  assert.equal(apply('js 3 english.doc', T1, src), 'WEEK ONE (1)\nbody\n');
++  assert.throws(() => apply('js 3 english.doc', T1, 'no body'), /anchor missing/);
++});
++test('Yoruba: scheme cut and exactly six OSE ordinals translated; unreviewed OSE heading throws', () => {
++  const body = ['KINNI', 'KETA', 'KERIN', 'KARUN', 'KEFA', 'KEJE'].map(o => `OSE ${o}\nAKORI EKO: x\ntext`).join('\n');
++  const src = `ALPHA TERM\nOSE\n1\nEDE – a\n13\nIdanwo\n${body}\n`;
++  const out = apply('JS3 YORUBA.docx', T1, src);
++  assert.deepEqual(out.split('\n').filter(l => /^WEEK/.test(l)), ['WEEK 1', 'WEEK 3', 'WEEK 4', 'WEEK 5', 'WEEK 6', 'WEEK 7']);
++  assert.doesNotMatch(out, /OSE/);
++  assert.throws(() => apply('JS3 YORUBA.docx', T1, `${src}OSE KEJO\nx`), /unreviewed Yoruba OSE/);
++  assert.throws(() => apply('JS3 YORUBA.docx', T1, src.replace('OSE KEFA', 'OSE KEFAA')), /expected exactly one "OSE KEFA"/);
++});
++
++// ── Title-only corrections ─────────────────────────────────────────────────
++test('Titles: Music wk5 / Home Econ wk2 recovered; separators stripped; weeks and bodies untouched', () => {
++  const m = resolveTopic('JSS3 Alpha term music Enote.docx', T1, {
++    weekLabel: 'WEEK FIVE', title: 'There some musical terms', body: 'WEEK FIVE\n\nTERMS AND SIGNS\n\nThere some musical terms',
++  });
++  assert.equal(m?.title, 'TERMS AND SIGNS');
++  const h = resolveTopic('HOME ECONS JS3 WK7-10.docx', T1, {
++    weekLabel: 'WEEK 2', title: 'Fibres are classified', body: 'WEEK 2\n\nCLASSES AND PROPERTIES OF FIBRES\n\nFibres are classified',
++  });
++  assert.equal(h?.title, 'CLASSES AND PROPERTIES OF FIBRES');
++  const b = resolveTopic('BASIC SCIENCE.docx', T1, { weekLabel: 'WEEK FOUR', title: '-SOIL EROSION', body: 'x' });
++  assert.deepEqual([b?.title, b?.weekLabel, b?.body], ['SOIL EROSION', 'WEEK FOUR', 'x']);
++  assert.throws(() => resolveTopic('JSS3 Alpha term music Enote.docx', T1, { weekLabel: 'WEEK FIVE', title: 't', body: 'no heading' }), /anchor missing/);
++});
++test('canonicalJss3Week', () => {
++  assert.deepEqual(['WEEK ONE', 'week 7 & 8', 'Week: Two', 'WEEK   7', 'WEEK 7 and 8'].map(canonicalJss3Week), ['1', '7&8', '2', '7', '7&8']);
++});
++
++// ── Wiring: JSS1/JSS2 branches untouched, JSS3 branches present ────────────
++test('ingestTopics.ts wires JSS3 without altering the JSS1/JSS2 branches', () => {
++  const s = readFileSync(path.join(backendDir, 'src/db/ingestTopics.ts'), 'utf8');
++  assert.match(s, /text = applyJss1SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);/);
++  assert.match(s, /text = applyJss2SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);/);
++  assert.match(s, /\} else if \(validClassNames\.includes\('JSS 3'\)\) \{\s*text = applyJss3SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);/);
++  assert.match(s, /className === 'JSS 1'\s*\? resolveJss1ParsedTopic\(path\.basename\(filePath\), termLabel, topic\)\s*: className === 'JSS 3'\s*\? resolveJss3ParsedTopic/);
++});
++
++// ── Real-source dry-run audit (only when a root is supplied) ───────────────
++const ROOT = process.env.JSS3_FIRST_TERM_ROOT;
++const real = { skip: ROOT ? false : 'set JSS3_FIRST_TERM_ROOT to run the real-source audit' } as const;
++
++function audit(): string {
++  assert.ok(ROOT && existsSync(ROOT), 'JSS3_FIRST_TERM_ROOT must exist');
++  // Dry run only: --yes is intentionally never passed, so no DB connection is opened.
++  return execFileSync('npx', ['tsx', 'src/db/ingestTopics.ts', '--root', ROOT!, '--school-code', 'secondary'], {
++    cwd: backendDir, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
++  });
++}
++const EXPECTED: Record<string, number> = {
++  'Agricultural Science': 7, 'Basic Science': 9, 'Basic Technology': 12, 'Business Studies': 6,
++  'Civic Education': 8, 'Cultural & Creative Arts': 11, 'English Language': 9, 'French': 9,
++  'Home Economics': 7, 'Mathematics': 10, 'Music': 8, 'Physical & Health Education': 10,
++  'Social Studies': 11, 'Yoruba': 6,
++};
++let cached: string | undefined;
++const out = () => (cached ??= audit());
++
++test('real sources: audit passes, 14 files, 123 rows, per-subject counts as reviewed', real, () => {
++  const o = out();
++  assert.match(o, /Parsed 123 topic row\(s\) from 14 file\(s\)\./);
++  assert.match(o, /FILE AUDIT PASSED/);
++  assert.match(o, /Dry run only — no database connection or changes\./);
++  for (const [subject, n] of Object.entries(EXPECTED)) {
++    assert.ok(o.includes(`  JSS 3 / ${subject} / 1st Term: ${n}\n`), `${subject} should have ${n} rows`);
++  }
++  assert.equal(Object.values(EXPECTED).reduce((a, b) => a + b, 0), 123);
++});
++test('real sources: First Term only, no Computer Studies, no RTF, Music comes from the converted docx', real, () => {
++  const o = out();
++  assert.doesNotMatch(o, /JSS 3 \/ [^\n]* \/ (2nd|3rd) Term/);
++  assert.doesNotMatch(o, /Computer/i);
++  assert.doesNotMatch(o, /Unsupported source format/);
++  assert.equal(readdirSync(ROOT!, { recursive: true }).some(f => /\.rtf$/i.test(String(f))), false);
++  assert.match(o, /JSS 3 \/ Music \/ 1st Term #1: [^\n]*JSS3 Alpha term music Enote\.docx \/ WEEK ONE/);
++});
++test('real sources: the three previously omitted headings are integrated, in source order', real, () => {
++  const o = out();
++  assert.match(o, /JSS 3 \/ Basic Technology \/ 1st Term #11: [^\n]*BASIC TECH\.docx \/ week 11 \/ scale drawing\n/);
++  assert.match(o, /JSS 3 \/ Basic Technology \/ 1st Term #12: [^\n]*BASIC TECH\.docx \/ week 12 \/ simple blue print reading\n/);
++  assert.match(o, /JSS 3 \/ Physical & Health Education \/ 1st Term #5: [^\n]*PHE JS 3\.docx \/ WEEK 5 \/ PRACTICAL DEMONSTRATION OF BASIC SKILLS OF HOCKEY\n/);
++  // Hockey Game (scheme wk 4) precedes it; Female Genital Mutilation (wk 6) follows it.
++  assert.match(o, /Physical & Health Education \/ 1st Term #4: [^\n]*WEEK 4 \/ HOCHEY\n/);
++  assert.match(o, /Physical & Health Education \/ 1st Term #6: [^\n]*WEEK 6 \/ FEMALE GENITAL MUTILATION\n/);
++});
++test('real sources: per-subject order is gap-free and week numbers never go backwards', real, () => {
++  const rows = [...out().matchAll(/^  JSS 3 \/ (.+?) \/ 1st Term #(\d+): (.+?) \/ ([^/\n]+?) \/ (.*)$/gm)];
++  assert.equal(rows.length, 123);
++  const bySubject = new Map<string, Array<{ n: number; wk: number }>>();
++  for (const [, subject, n, , week] of rows) {
++    const wk = Number(canonicalJss3Week(week).match(/^\d+/)?.[0] ?? NaN);
++    assert.ok(Number.isFinite(wk), `unparseable week "${week}" in ${subject}`);
++    (bySubject.get(subject) ?? bySubject.set(subject, []).get(subject)!).push({ n: Number(n), wk });
++  }
++  for (const [subject, list] of bySubject) {
++    list.forEach((r, i) => assert.equal(r.n, i + 1, `${subject}: order gap at #${i + 1}`));
++    list.forEach((r, i) => i > 0 && assert.ok(r.wk >= list[i - 1].wk, `${subject}: week order regresses at #${r.n}`));
++  }
++});
++test('real sources: the defects found in review are gone', real, () => {
++  const o = out();
++  assert.doesNotMatch(o, /week 6 \/ Covered/);
++  assert.doesNotMatch(o, /js 3 english\.doc \/ WEEK \n/);
++  assert.doesNotMatch(o, /Basic Science \/ 1st Term #\d+: [^\n]*\/ Week (ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|NINE) \//);
++  assert.doesNotMatch(o, /Yoruba \/ 1st Term #\d+: [^\n]*\/ Week 13/);
++  assert.doesNotMatch(o, /Music \/ 1st Term #5: [^\n]*There some musical/);
++  assert.doesNotMatch(o, /\/ (week \d+|WEEK [A-Z]+|WEEK \d+) \/ [;:\-–—]/);
++});
+diff --git a/tests/jss3-second-term.test.mts b/tests/jss3-second-term.test.mts
+new file mode 100644
+index 0000000..2ef0491
+--- /dev/null
++++ b/tests/jss3-second-term.test.mts
+@@ -0,0 +1,661 @@
++// Run (unit tests only):
++//   cd backend && npx tsx --test ../tests/jss3-second-term.test.mts
++// Run with the real-source dry-run audit (no database is touched; --yes is never passed):
++//   cd backend && JSS3_SECOND_TERM_ROOT=/path/to/root npx tsx --test ../tests/jss3-second-term.test.mts
++// where the root is the folder that CONTAINS "JSS3 2ND TERM " (note the trailing space) with
++// the 14 Second-Term source files. Optional manifest cross-check:
++//   JSS3_SCHEME_MANIFEST=/path/to/scheme_only_integration_manifest.csv
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { execFileSync } from 'node:child_process';
++import { existsSync, readFileSync } from 'node:fs';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import {
++  JSS3_SECOND_TERM_NON_INSTRUCTIONAL,
++  JSS3_SECOND_TERM_REVIEWED_SOURCES,
++  JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS,
++  applyJss3SecondTermSourceTextResolution as apply,
++  hasJss3SecondTermSourceResolution as hasRule,
++  isJss3SecondTermNonInstructional as isNonInstructional,
++  resolveJss3SecondTermParsedTopic as resolveTopic,
++} from '../backend/src/db/jss3SecondTermResolutions.ts';
++import {
++  JSS3_FIRST_TERM_REVIEWED_SOURCES,
++  canonicalJss3Week,
++  hasJss3SourceResolution as hasFirstTermRule,
++  resolveJss3ParsedTopic as resolveFirstTermTopic,
++} from '../backend/src/db/jss3CurriculumResolutions.ts';
++
++const here = path.dirname(fileURLToPath(import.meta.url));
++const backendDir = path.resolve(here, '..', 'backend');
++const T2 = '2nd Term';
++const EN = '\u2013';
++const NB = '\u00a0';
++
++const RULED = [
++  'Basic science.docx', 'basic tech.docx', 'music.docx', 'YORUBA  JS 3.docx',
++  'JS 3 FINE ART.docx', 'business_studies JSS3.docx', 'BASIC 9 MATHEMATICS E-NOTE.docx',
++];
++const NO_RULE = [
++  'Agric 2ndT.doc', 'P H E JS_3.docx', 'home econs.docx', 'js 3 civic.docx',
++  'js 3 english.docx', 'social studies.docx', 'FRENCH  js 3.docx',
++];
++const FIRST_TERM_RULED = ['BASIC SCIENCE.docx', 'BASIC TECH.docx', 'PHE JS 3.docx', 'js 3 english.doc', 'JS3 YORUBA.docx'];
++
++// ── Fixtures (synthetic, structure-only; lesson text is placeholder) ───────
++const BASIC_SCIENCE = [
++  'JSS3 SIGMA TERM E-NOTE', 'SCHEME OF WORK',
++  'WEEK 1-RESOURCES FROM LIVING THINGS ', 'WEEK2-ECONOMIC IMPORTANCE', `WEEK3 ${EN}RESOURCES FROM  NON-LIVING THINGS`,
++  'WEEK7 /8-MAGNETISM', 'WEEK 10- SKILL ACQUISITION', '',
++  'Wk1-Resources from living things.', 'a',
++  'WK2-Economic importance of plant and animal resources.', 'b',
++  'WK3\u2014Resources from non-living things (solid material)', 'c',
++  'WK4', '', 'Resources from non-living things and their Location', 'd',
++  `WEEK 5${EN}LIGHT ENERGY`, 'e',
++  'WK6- SOUND ENERGY', 'f',
++  'WK7/8-Magnetism-', 'g',
++  'WK9 Electrical Energy.', 'h',
++  'WEEK 11', 'SKILL ACQUISITION', 'i', '',
++].join('\n');
++
++const BASIC_TECH = [
++  '      Scheme of work for jss3', 'Week 1; revision of last terms work', 'Week 2; building components  [foundation]', '',
++  'Week 1; revision ', '', 'Wood processing', 'body one',
++  'Week 2; building components [foundation]', 'body two', 'Week 4&5 ; wood work project', 'body four',
++  'Week 11; revision ', 'Week 12; examination', '',
++].join('\n');
++
++const MUSIC = [
++  'SIGMA TERM   E- NOTE', 'SCHEME OF WORKS', 'WEEK ONE    -            REVISION', 'WEEK TWO  -           Singing  pattern', '',
++  '                 WEEK ONE                 ', 'body one', '          WEEK TWO', 'body two', '',
++].join('\n');
++
++const YORUBA = [
++  'SIGMA TERM ILAANA', 'YORUBA LANGUAGE', 'OSE', 'AKORI EKO', '1', `EDE ${EN} a`, '13', 'Idanwo',
++  'OSE KINNI', 'AKORI EKO: x', 'text one', 'OSE KEJI', 'AKORI EKO: y', 'text two', 'OSE KETA', 'AKORI EKO: z', 'text three', '',
++].join('\n');
++
++const FINE_ART = [
++  'SIGMA TERM E Note CLASS : J S S 3', '', 'SUBJECT; CULTURAL AND CREATIVE ARTS', '', 'SCHEME OF WORK', 'WEEK\t\t\tTOPICS', '1.', 'MOTIFS', '',
++  'SUBJECT;CULTURAL AND CREATIVE ARTS',
++  '                                     CLASS; JSS3  WEEK 1   TOPIC; MOTIFS', 'body 1',
++  'CLASS;JSS3  WEEK  2       TOPIC; BASIC HARMONY IN MUSIC COMPOSITION ', 'body 2',
++  'CLASS;JSS3 WEEK  3   TOPIC; CHOREOGRAPHY', 'body 3',
++  'CLASS;JSS3 WEEK  4     TOPIC; KNITTING', 'body 4',
++  'CLASS; J S S 3        WEEK 5                 TOPIC; SINGING IN PARTS AND ', '', 'CADENCE IDENTIFICATION', 'body 5',
++  'SUBJECT;CULTURAL AND CREATIVE ARTS',
++  `CLASS ; J S S 3   WEEK  6    TOPIC; LETTERING${NB} . ${NB} `, 'body 6',
++  'CLASS: J S S 3     WEEK  7        TOPIC: minor scale', 'body 7',
++  'CLASS: JSS3 WEEK8     TOPIC:LETTERING  (practical)', 'body 8',
++  'CLASS; JSS3 WEEK  9      TOPIC; MUSIC FORMS', 'body 9', '',
++].join('\n');
++
++const BUSINESS = [
++  'SIGMA TERM SCHEME OF WORK FOR JSS3', 'BUSINESS STUDIES', 'WEEKS', 'TOPICS',
++  '1', '', 'Revision of last term\u2019s work', `2 ${EN} 3 `, '', 'Personal finance ',
++  '4', '', `Book ${EN} keeping ethnics `, '5', '', 'Trading, profit and loss account ',
++  '6', 'Shorthand principle, speed development in shorthand', '7', 'Applied keyboarding',
++  '8', '', 'Display ', '9', '', 'Types of Display ', '10', '', 'Printers correction signs / speed development ',
++  `11 ${EN} 12 `, 'REVISION / EXAMINATION ', '',
++  `WEEK TWO ${EN} THREE `, 'TOPIC: PERSONAL FINANCE', 'body two-three',
++  'WEEK FIVE', 'TOPIC: TRADING', 'body five',
++  'WEEK SIX', 'TOPIC: SHORTHAND', 'body six',
++  'WEEK SEVEN', 'TOPIC: APPLIED KEYBOARDING', 'Display the following menu vertically on A5 paper.', '', '',
++].join('\n');
++
++const STAT_SUB = [
++  'Application of measure of central tendency on relevant current issues',
++  'Data collection from info on drug Abuse, voters Register, Producers (workers), consumers (children, aged etc)',
++  'Importance of data on drug.  Abuse, HIV patients, Voters Register, Producers, consumers etc',
++  'The use of the statistical tools such as measures of central tendency in Drug abuse, voting and other related activities.',
++];
++const MATH = [
++  '1ST WEEK', 'MATHEMATICS', 'SCHEME OF WORK SECOND TERM BASIC 9', 'Revision of First term\u2019s work',
++  'Graphical Method continued', 'Statistics II', ...STAT_SUB, 'Variation', 'Concept and meaning', '',
++  'WEEK 2', 'SOLVING OF SIMULTANEOUS LINEAR EQUATIONS', 'x',
++  '                    WEEK 4', 'SOLVING SIMULTANEOUS EQUATION GRAPHICALLY', 'y',
++  '            WEEK 5', 'VARIATION', 'z', 'WEEK 6', 'JOINT VARIATION', '',
++].join('\n');
++
++const markers = (s: string) => s.split('\n').map(l => l.trim()).filter(l => /^WEEK\b/.test(l));
++
++// ── Scope guards ───────────────────────────────────────────────────────────
++test('exactly the seven reviewed 2nd-Term files carry a text rule, and only in 2nd Term', () => {
++  for (const f of RULED) {
++    assert.equal(hasRule(f, T2), true, f);
++    assert.equal(hasRule(f, '1st Term'), false, `${f} must not resolve in 1st Term`);
++    assert.equal(hasRule(f, '3rd Term'), false, `${f} must not resolve in 3rd Term`);
++  }
++  for (const f of NO_RULE) assert.equal(hasRule(f, T2), false, `${f} needs no text rule`);
++  assert.equal(hasRule('SOMETHING ELSE.docx', T2), false);
++});
++
++test('1st/3rd Term and unreviewed inputs are returned unchanged (text byte-for-byte, topics by reference)', () => {
++  for (const term of ['1st Term', '3rd Term']) {
++    for (const f of [...RULED, ...NO_RULE]) assert.equal(apply(f, term, 'not a real source'), 'not a real source', `${f} / ${term}`);
++    assert.equal(apply('business_studies JSS3.docx', term, BUSINESS), BUSINESS);
++    assert.equal(apply('BASIC 9 MATHEMATICS E-NOTE.docx', term, MATH), MATH);
++    for (const f of ['FRENCH  js 3.docx', 'JS 3 FINE ART.docx']) {
++      const topic = { weekLabel: 'WEEK 2', title: ';Les dates', body: 'WEEK 2\n\nno heading here' };
++      assert.strictEqual(resolveTopic(f, term, topic), topic, `${f} / ${term}`);
++    }
++  }
++  assert.equal(apply('SOMETHING ELSE.docx', T2, 'x'), 'x');
++  const topic = { weekLabel: 'WEEK 2', title: '-X', body: 'b' };
++  assert.strictEqual(resolveTopic('SOMETHING ELSE.docx', T2, topic), topic);
++});
++
++test('null (dropped by an earlier per-class stage) passes through in every scope', () => {
++  for (const term of ['1st Term', T2, '3rd Term']) {
++    for (const f of [...JSS3_SECOND_TERM_REVIEWED_SOURCES, 'SOMETHING ELSE.docx']) assert.equal(resolveTopic(f, term, null), null);
++  }
++});
++
++test('14 reviewed Second-Term sources, no duplicates, all ruled files included', () => {
++  assert.equal(JSS3_SECOND_TERM_REVIEWED_SOURCES.length, 14);
++  assert.equal(new Set(JSS3_SECOND_TERM_REVIEWED_SOURCES).size, 14);
++  for (const f of [...RULED, ...NO_RULE]) assert.ok(JSS3_SECOND_TERM_REVIEWED_SOURCES.includes(f), f);
++  assert.equal(JSS3_SECOND_TERM_REVIEWED_SOURCES.some(f => /comput|\.rtf$/i.test(f)), false);
++});
++
++test("Agent 1B's five First-Term basenames do not collide with any 2nd-Term rule or source", () => {
++  for (const f of FIRST_TERM_RULED) {
++    assert.equal(hasRule(f, T2), false, `${f} must not resolve in 2nd Term`);
++    assert.equal(hasRule(f, '1st Term'), false, `${f} must not resolve in 1st Term here`);
++    assert.equal(JSS3_SECOND_TERM_REVIEWED_SOURCES.includes(f), false, `${f} must not be a 2nd-Term source`);
++    assert.equal(hasFirstTermRule(f, '1st Term'), true, `${f} still carries Agent 1B's rule`);
++  }
++  // Conversely no 2nd-Term basename picks up a First-Term rule in any term, and (case-sensitive
++  // keys!) none is also a First-Term reviewed source.
++  for (const f of JSS3_SECOND_TERM_REVIEWED_SOURCES) {
++    for (const term of ['1st Term', T2, '3rd Term']) assert.equal(hasFirstTermRule(f, term), false, `${f} / ${term}`);
++    assert.equal(JSS3_FIRST_TERM_REVIEWED_SOURCES.includes(f), false, f);
++  }
++});
++
++// ── Basic Science ──────────────────────────────────────────────────────────
++test('Basic Science: scheme cut; the seven body markers rewritten exactly once each', () => {
++  const out = apply('Basic science.docx', T2, BASIC_SCIENCE);
++  assert.ok(out.startsWith('WEEK 1-Resources from living things.'));
++  assert.doesNotMatch(out, /SCHEME OF WORK|WEEK2-ECONOMIC|WEEK 10- SKILL/);
++  assert.deepEqual(markers(out), [
++    'WEEK 1-Resources from living things.', 'WEEK 2-Economic importance of plant and animal resources.',
++    'WEEK 3\u2014Resources from non-living things (solid material)', 'WEEK 4',
++    `WEEK 5${EN}LIGHT ENERGY`, 'WEEK 6- SOUND ENERGY', 'WEEK 7&8-Magnetism-', 'WEEK 9 Electrical Energy.', 'WEEK 11',
++  ]);
++  assert.doesNotMatch(out, /\bW[Kk]\d/);
++  // Only marker tokens changed: same number of lines, every other line identical.
++  const before = BASIC_SCIENCE.slice(BASIC_SCIENCE.indexOf('Wk1-')).split('\n');
++  const after = out.split('\n');
++  assert.equal(after.length, before.length);
++  const diff = after.filter((l, i) => l !== before[i]);
++  assert.equal(diff.length, 7);
++});
++test('Basic Science: throws on missing, ambiguous, or unreviewed anchors', () => {
++  const run = (s: string) => apply('Basic science.docx', T2, s);
++  assert.throws(() => run(BASIC_SCIENCE.replace('Wk1-Resources from living things.', 'Wk1-Other')), /anchor missing: Basic Science body start/);
++  assert.throws(() => run(`${BASIC_SCIENCE}\nWk1-Resources from living things.`), /ambiguous.*Basic Science body start/);
++  assert.throws(() => run(BASIC_SCIENCE.replace('WK6- SOUND ENERGY', 'WEEK 6- SOUND ENERGY')), /anchor missing: Basic Science marker WK6/);
++  assert.throws(() => run(BASIC_SCIENCE.replace('WK4\n', 'WK4 x\n')), /anchor missing: Basic Science marker bare WK4/);
++  assert.throws(() => run(`${BASIC_SCIENCE}\nWK2-another`), /ambiguous.*WK2/);
++  assert.throws(() => run(`${BASIC_SCIENCE}\nWK5-unreviewed`), /unreviewed Basic Science WK marker/);
++});
++
++// ── Basic Technology / Music ───────────────────────────────────────────────
++test('Basic Technology: starts at the body "Week 1; revision"; throws if absent or ambiguous', () => {
++  const out = apply('basic tech.docx', T2, BASIC_TECH);
++  assert.ok(out.startsWith('Week 1; revision \n'));
++  assert.doesNotMatch(out, /Scheme of work|revision of last terms work/);
++  assert.equal(out, BASIC_TECH.slice(BASIC_TECH.indexOf('Week 1; revision \n')));
++  assert.throws(() => apply('basic tech.docx', T2, BASIC_TECH.replace('Week 1; revision \n', 'Week 1; revision of x\n')), /anchor missing/);
++  assert.throws(() => apply('basic tech.docx', T2, `${BASIC_TECH}\nWeek 1; revision`), /ambiguous/);
++});
++test('Music: starts at the bare "WEEK ONE" body marker; throws if absent or ambiguous', () => {
++  const out = apply('music.docx', T2, MUSIC);
++  assert.equal(out.split('\n')[0].trim(), 'WEEK ONE');
++  assert.doesNotMatch(out, /REVISION|SCHEME/);
++  assert.throws(() => apply('music.docx', T2, MUSIC.replace('                 WEEK ONE                 ', 'WEEK 1')), /anchor missing/);
++  assert.throws(() => apply('music.docx', T2, `${MUSIC}\nWEEK ONE`), /ambiguous/);
++});
++
++// ── Yoruba ─────────────────────────────────────────────────────────────────
++test('Yoruba: scheme cut; KINNI/KEJI/KETA translated to weeks 1/2/3 exactly once each', () => {
++  const out = apply('YORUBA  JS 3.docx', T2, YORUBA);
++  assert.ok(out.startsWith('WEEK 1\n'));
++  assert.deepEqual(out.split('\n').filter(l => /^WEEK/.test(l)), ['WEEK 1', 'WEEK 2', 'WEEK 3']);
++  assert.doesNotMatch(out, /OSE|Idanwo/);
++});
++test('Yoruba: throws on a missing/ambiguous ordinal or any other OSE heading', () => {
++  const run = (s: string) => apply('YORUBA  JS 3.docx', T2, s);
++  assert.throws(() => run(YORUBA.replace('OSE KINNI', 'OSE KINI')), /anchor missing: Yoruba body start/);
++  assert.throws(() => run(YORUBA.replace('OSE KETA', 'OSE KETAA')), /anchor missing: Yoruba heading OSE KETA/);
++  assert.throws(() => run(`${YORUBA}OSE KEJI\nextra`), /ambiguous.*OSE KEJI/);
++  assert.throws(() => run(`${YORUBA}OSE KERIN\nextra`), /unreviewed Yoruba OSE/);
++});
++
++// ── Fine Art ───────────────────────────────────────────────────────────────
++test('Fine Art: nine CLASS/WEEK/TOPIC header lines become WEEK n / CLASS / TOPIC; scheme and SUBJECT lines stay', () => {
++  const out = apply('JS 3 FINE ART.docx', T2, FINE_ART);
++  assert.deepEqual(out.split('\n').filter(l => /^WEEK \d+$/.test(l)), ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(n => `WEEK ${n}`));
++  assert.match(out, /^WEEK 1\nCLASS; JSS3\nTOPIC; MOTIFS\nbody 1$/m);
++  assert.match(out, /^WEEK 2\nCLASS;JSS3\nTOPIC; BASIC HARMONY IN MUSIC COMPOSITION\nbody 2$/m);
++  assert.match(out, /^WEEK 5\nCLASS; J S S 3\nTOPIC; SINGING IN PARTS AND\n\nCADENCE IDENTIFICATION\nbody 5$/m);
++  assert.match(out, /^WEEK 6\nCLASS ; J S S 3\nTOPIC; LETTERING {2}\.\nbody 6$/m);
++  assert.match(out, /^WEEK 8\nCLASS: JSS3\nTOPIC:LETTERING {2}\(practical\)\nbody 8$/m);
++  assert.doesNotMatch(out, /\u00a0/);
++  assert.equal(out.match(/^SUBJECT[;:]/gm)?.length, 3, 'SUBJECT lines must stay (the scheme is not cut)');
++  assert.match(out, /^SCHEME OF WORK\nWEEK\t\t\tTOPICS\n1\.\nMOTIFS$/m);
++  assert.equal(out.split('\n').length, FINE_ART.split('\n').length + 18, 'each header line becomes exactly three lines');
++});
++test('Fine Art: throws unless exactly nine header lines with weeks 1..9', () => {
++  const run = (s: string) => apply('JS 3 FINE ART.docx', T2, s);
++  assert.throws(() => run(FINE_ART.replace('CLASS;JSS3 WEEK  3   TOPIC; CHOREOGRAPHY', 'CHOREOGRAPHY')), /expected exactly 9 .* found 8/);
++  assert.throws(() => run(`${FINE_ART}\nCLASS; JSS3  WEEK 9   TOPIC; EXTRA`), /expected exactly 9 .* found 10/);
++  assert.throws(() => run(FINE_ART.replace('WEEK  9', 'WEEK  10')), /weeks must be 1\.\.9/);
++  assert.throws(() => run(FINE_ART.replace('WEEK  9', 'WEEK  8')), /weeks must be 1\.\.9/);
++});
++
++// ── Business Studies (scheme-only weeks 4, 8, 9, 10) ───────────────────────
++test('Business Studies: order 2-3, 4, 5, 6, 7, 8, 9, 10; titles verbatim incl. U+2013; "TWO - THREE" ASCII', () => {
++  const out = apply('business_studies JSS3.docx', T2, BUSINESS);
++  assert.deepEqual(markers(out.slice(out.indexOf('WEEK TWO'))), [
++    'WEEK TWO - THREE', 'WEEK 4', 'WEEK FIVE', 'WEEK SIX', 'WEEK SEVEN', 'WEEK 8', 'WEEK 9', 'WEEK 10',
++  ]);
++  assert.match(out, /^WEEK TWO - THREE \nTOPIC: PERSONAL FINANCE$/m);
++  assert.doesNotMatch(out, /WEEK TWO \u2013/);
++  assert.match(out, /body two-three\nWEEK 4\n\nBook \u2013 keeping ethnics\n\nWEEK FIVE\n/);
++  assert.ok(out.endsWith('\n\nWEEK 8\n\nDisplay\n\nWEEK 9\n\nTypes of Display\n\nWEEK 10\n\nPrinters correction signs / speed development\n'));
++  const titles = JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS.filter(h => h.basename === 'business_studies JSS3.docx').map(h => h.title);
++  assert.deepEqual(titles, ['Book \u2013 keeping ethnics', 'Display', 'Types of Display', 'Printers correction signs / speed development']);
++  assert.ok(out.includes(titles[0]) && titles[0].includes('\u2013'), 'en dash in "Book \u2013 keeping ethnics" preserved');
++});
++test('Business Studies: throws on a missing/ambiguous scheme row, an existing body week, or a missing marker', () => {
++  const run = (s: string) => apply('business_studies JSS3.docx', T2, s);
++  assert.throws(() => run(BUSINESS.replace('Display \n', 'Show \n')), /anchor missing: Business Studies scheme row 8/);
++  assert.throws(() => run(BUSINESS.replace(`Book ${EN} keeping ethnics `, 'Book - keeping ethnics ')), /anchor missing: Business Studies scheme row 4/);
++  assert.throws(() => run(`${BUSINESS}\nDisplay`), /ambiguous.*scheme row 8/);
++  for (const m of ['WEEK 8', 'Week 10', 'WEEK FOUR', 'week: 9', 'WEEK TEN']) {
++    assert.throws(() => run(`${BUSINESS}\n${m}\nbody`), /no longer applies/, m);
++  }
++  assert.throws(() => run(BUSINESS.replace('WEEK FIVE', 'WEEK FIV')), /anchor missing: Business Studies WEEK FIVE/);
++  assert.throws(() => run(`${BUSINESS}\nWEEK FIVE`), /ambiguous.*WEEK FIVE/);
++  assert.throws(() => run(BUSINESS.replace(`WEEK TWO ${EN} THREE `, 'WEEK TWO - THREE ')), /anchor missing: Business Studies WEEK TWO/);
++});
++
++// ── Mathematics (scheme-only Statistics II) ────────────────────────────────
++test('Mathematics: Statistics II sits between WEEK 4 and WEEK 5, sub-lines verbatim', () => {
++  const out = apply('BASIC 9 MATHEMATICS E-NOTE.docx', T2, MATH);
++  assert.deepEqual(markers(out), ['WEEK 2', 'WEEK 4', 'WEEK 4', 'WEEK 5', 'WEEK 6']);
++  const block = ['WEEK 4', '', 'Statistics II', ...STAT_SUB, '', '            WEEK 5'].join('\n');
++  assert.ok(out.includes(`y\n${block}\nVARIATION`), 'inserted block is after body WEEK 4 and before WEEK 5');
++  const inserted = out.lastIndexOf('Statistics II\nApplication'); // the scheme's own copy comes first
++  assert.ok(out.indexOf('SOLVING SIMULTANEOUS EQUATION GRAPHICALLY') < inserted);
++  assert.ok(inserted < out.indexOf('            WEEK 5'));
++  assert.equal(out.split('Statistics II\n').length - 1, 2, 'scheme row kept, plus exactly one inserted copy');
++  assert.ok(STAT_SUB[2].includes('drug.  Abuse'), 'double space in the source sub-line is preserved');
++  // The scheme itself is untouched (the insert is purely additive).
++  assert.ok(out.startsWith(MATH.slice(0, MATH.indexOf('            WEEK 5'))));
++  assert.equal(out.length, MATH.length + `WEEK 4\n\nStatistics II\n${STAT_SUB.join('\n')}\n\n`.length);
++});
++test('Mathematics: throws on missing/ambiguous Statistics II, Variation or WEEK 5, or no sub-lines', () => {
++  const run = (s: string) => apply('BASIC 9 MATHEMATICS E-NOTE.docx', T2, s);
++  assert.throws(() => run(MATH.replace('Statistics II', 'Statistics III')), /anchor missing: Mathematics scheme line Statistics II/);
++  assert.throws(() => run(`${MATH}\nStatistics II`), /ambiguous.*Statistics II/);
++  assert.throws(() => run(MATH.replace('\nVariation\n', '\nVariations\n')), /anchor missing: Mathematics scheme line Variation/);
++  assert.throws(() => run(`${MATH}\nVariation`), /ambiguous.*Variation/);
++  assert.throws(() => run(MATH.replace('            WEEK 5', '            WEEK 55')), /anchor missing: Mathematics WEEK 5/);
++  assert.throws(() => run(`${MATH}\nWEEK 5`), /ambiguous.*WEEK 5/);
++  assert.throws(() => run(MATH.replace(STAT_SUB.join('\n'), '')), /no sub-lines/);
++});
++
++test('every scheme-only inserted line exists verbatim in the original text (nothing invented)', () => {
++  const NEW_MARKERS = /^WEEK (4|8|9|10)$/;
++  const cases: Array<[string, string, string[]]> = [
++    ['business_studies JSS3.docx', BUSINESS, ['WEEK TWO - THREE']],
++    ['BASIC 9 MATHEMATICS E-NOTE.docx', MATH, []],
++  ];
++  for (const [file, src, structural] of cases) {
++    const original = new Set(src.split('\n').map(l => l.trim()));
++    const out = apply(file, T2, src);
++    const outLines = out.split('\n').map(l => l.trim()).filter(Boolean);
++    for (const l of outLines) assert.ok(original.has(l) || NEW_MARKERS.test(l) || structural.includes(l), `${file}: invented line "${l}"`);
++    const markerCount = (s: string) => s.split('\n').map(l => l.trim()).filter(l => NEW_MARKERS.test(l)).length;
++    assert.equal(markerCount(out) - markerCount(src), file.startsWith('business') ? 4 : 1, `${file}: structural WEEK markers added`);
++  }
++  // And the heading text of the five scheme-only rows is copied from the source, not typed:
++  for (const h of JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS) {
++    const src = h.basename.startsWith('business') ? BUSINESS : MATH;
++    assert.ok(src.split('\n').some(l => l.trim() === h.title), `${h.title} must exist as a scheme line in the source`);
++  }
++});
++
++// ── Title-only resolver ────────────────────────────────────────────────────
++test('Titles: French week 2 and Fine Art week 5 recovered; weeks and bodies untouched', () => {
++  const fr = { weekLabel: 'WEEK 2', title: 'Les dates qui est plus importante', body: 'WEEK 2\n\nDater et mesurer le temp\n\nLes dates qui est plus importante' };
++  const f = resolveTopic('FRENCH  js 3.docx', T2, fr);
++  assert.deepEqual([f?.title, f?.weekLabel, f?.body], ['Dater et mesurer le temp', 'WEEK 2', fr.body]);
++  const fa = {
++    weekLabel: 'WEEK 5', title: 'SINGING IN PARTS AND',
++    body: 'WEEK 5\nCLASS; J S S 3\nTOPIC; SINGING IN PARTS AND\n\nCADENCE IDENTIFICATION\nSinging "in parts"',
++  };
++  const a = resolveTopic('JS 3 FINE ART.docx', T2, fa);
++  assert.deepEqual([a?.title, a?.weekLabel, a?.body], ['SINGING IN PARTS AND CADENCE IDENTIFICATION', 'WEEK 5', fa.body]);
++  // Other weeks of the same files are only separator-stripped.
++  const f3 = resolveTopic('FRENCH  js 3.docx', T2, { weekLabel: 'WEEK 3', title: 'Raconter sa journee', body: 'x' });
++  assert.equal(f3?.title, 'Raconter sa journee');
++  assert.equal(resolveTopic('JS 3 FINE ART.docx', T2, { weekLabel: 'WEEK 7', title: 'minor scale', body: 'no anchor needed' })?.title, 'minor scale');
++});
++test('Titles: leading separators stripped for every reviewed file; trailing punctuation and typos kept', () => {
++  for (const f of JSS3_SECOND_TERM_REVIEWED_SOURCES) {
++    const t = resolveTopic(f, T2, { weekLabel: 'WEEK 9', title: ` ;:-\u2013\u2014 Magnetism-`, body: 'b' });
++    assert.equal(t?.title, 'Magnetism-', f);
++    assert.deepEqual([t?.weekLabel, t?.body], ['WEEK 9', 'b']);
++  }
++  assert.equal(resolveTopic('Basic science.docx', T2, { weekLabel: 'WEEK 1', title: '-Resources from living things.', body: 'b' })?.title, 'Resources from living things.');
++  // An all-separator title is never emptied.
++  assert.equal(resolveTopic('music.docx', T2, { weekLabel: 'WEEK 1', title: '---', body: 'b' })?.title, '---');
++});
++test('Titles: throws if the French week 2 / Fine Art week 5 heading anchor is missing', () => {
++  assert.throws(() => resolveTopic('FRENCH  js 3.docx', T2, { weekLabel: 'WEEK 2', title: 't', body: 'no heading' }), /anchor missing: French Week 2/);
++  assert.throws(() => resolveTopic('JS 3 FINE ART.docx', T2, { weekLabel: 'WEEK 5', title: 't', body: 'TOPIC; SINGING IN PARTS AND' }), /anchor missing: Fine Art Week 5/);
++});
++test("Titles: Agent 1B's First-Term resolver leaves 2nd-Term topics untouched (by reference)", () => {
++  for (const f of JSS3_SECOND_TERM_REVIEWED_SOURCES) {
++    const topic = { weekLabel: 'WEEK 2', title: '-X', body: 'b' };
++    assert.strictEqual(resolveFirstTermTopic(f, T2, topic), topic, f);
++  }
++});
++
++// ── Pinned expectations (also used by the real-source tests) ───────────────
++type Pinned = [subject: string, order: number, file: string, week: string, title: string];
++const PINNED: Pinned[] = [
++  ['Agricultural Science', 1, 'Agric 2ndT.doc', 'WEEK 1', 'Revision'],
++  ['Agricultural Science', 2, 'Agric 2ndT.doc', 'WEEK 2', 'Farm Records'],
++  ['Agricultural Science', 3, 'Agric 2ndT.doc', 'WEEK 3', 'BOOKKEEPING'],
++  ['Agricultural Science', 4, 'Agric 2ndT.doc', 'WEEK 4 and 5', 'Types of Farm records'],
++  ['Agricultural Science', 5, 'Agric 2ndT.doc', 'WEEK 6', 'AGRICULTURE IN STOCK EXCHANGE'],
++  ['Agricultural Science', 6, 'Agric 2ndT.doc', 'WEEK 7', 'PEOPLE INVOLVED IN STOCK EXCHANGE'],
++  ['Agricultural Science', 7, 'Agric 2ndT.doc', 'WEEK 8', 'TYPES OF STOCK EXCHANGE'],
++  ['Agricultural Science', 8, 'Agric 2ndT.doc', 'WEEK 9', 'IMPORTANCE OF STOCK EXCHANGE IN AGRICULTURE'],
++  ['Mathematics', 1, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 2', 'SOLVING OF SIMULTANEOUS LINEAR EQUATIONS'],
++  ['Mathematics', 2, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 3', 'ELIMINATION METHOD'],
++  ['Mathematics', 3, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 4', 'SOLVING SIMULTANEOUS EQUATION GRAPHICALLY'],
++  ['Mathematics', 4, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 4', 'Statistics II'],
++  ['Mathematics', 5, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 5', 'VARIATION'],
++  ['Mathematics', 6, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 6', 'JOINT VARIATION'],
++  ['Mathematics', 7, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK SEVEN', 'MID TERM EXAMINATION'],
++  ['Mathematics', 8, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 8', 'THE TRIGONOMETRIC RATIOS'],
++  ['Mathematics', 9, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK NINE', 'APPLICATION OF TRIGONOMETRIC RATIOS'],
++  ['Mathematics', 10, 'BASIC 9 MATHEMATICS E-NOTE.docx', 'WEEK 10', 'BEARINGS'],
++  ['Basic Science', 1, 'Basic science.docx', 'WEEK 1', 'Resources from living things.'],
++  ['Basic Science', 2, 'Basic science.docx', 'WEEK 2', 'Economic importance of plant and animal resources.'],
++  ['Basic Science', 3, 'Basic science.docx', 'WEEK 3', 'Resources from non-living things (solid material)'],
++  ['Basic Science', 4, 'Basic science.docx', 'WEEK 4', 'Resources from non-living things and their Location of solid mineral in Nigeria'],
++  ['Basic Science', 5, 'Basic science.docx', 'WEEK 5', 'LIGHT ENERGY'],
++  ['Basic Science', 6, 'Basic science.docx', 'WEEK 6', 'SOUND ENERGY'],
++  ['Basic Science', 7, 'Basic science.docx', 'WEEK 7&8', 'Magnetism-'],
++  ['Basic Science', 8, 'Basic science.docx', 'WEEK 9', 'Electrical Energy.'],
++  ['Basic Science', 9, 'Basic science.docx', 'WEEK 11', 'SKILL ACQUISITION'],
++  ['French', 1, 'FRENCH  js 3.docx', 'WEEK 1', 'La revision et la correction des questions de l\u2019examen du dernier trimester'],
++  ['French', 2, 'FRENCH  js 3.docx', 'WEEK 2', 'Dater et mesurer le temp'],
++  ['French', 3, 'FRENCH  js 3.docx', 'WEEK 3', 'Raconter sa journee'],
++  ['French', 4, 'FRENCH  js 3.docx', 'WEEK 4', 'RACOTER SA JOURNEE'],
++  ['French', 5, 'FRENCH  js 3.docx', 'WEEK 5', 'Relater un evenement pass\u00e9 le marriage de Busayo'],
++  ['French', 6, 'FRENCH  js 3.docx', 'WEEK 6', 'Relatex une evenement pass\u00e9'],
++  ['French', 7, 'FRENCH  js 3.docx', 'WEEK 8', 'RAPPORTER UN FAIT RECENT GRAMMAIRE'],
++  ['French', 8, 'FRENCH  js 3.docx', 'WEEK 9', 'Ecrire son journal'],
++  ['Cultural & Creative Arts', 1, 'JS 3 FINE ART.docx', 'WEEK 1', 'MOTIFS'],
++  ['Cultural & Creative Arts', 2, 'JS 3 FINE ART.docx', 'WEEK 2', 'BASIC HARMONY IN MUSIC COMPOSITION'],
++  ['Cultural & Creative Arts', 3, 'JS 3 FINE ART.docx', 'WEEK 3', 'CHOREOGRAPHY'],
++  ['Cultural & Creative Arts', 4, 'JS 3 FINE ART.docx', 'WEEK 4', 'KNITTING'],
++  ['Cultural & Creative Arts', 5, 'JS 3 FINE ART.docx', 'WEEK 5', 'SINGING IN PARTS AND CADENCE IDENTIFICATION'],
++  ['Cultural & Creative Arts', 6, 'JS 3 FINE ART.docx', 'WEEK 6', 'LETTERING .'],
++  ['Cultural & Creative Arts', 7, 'JS 3 FINE ART.docx', 'WEEK 7', 'minor scale'],
++  ['Cultural & Creative Arts', 8, 'JS 3 FINE ART.docx', 'WEEK 8', 'LETTERING  (practical)'],
++  ['Cultural & Creative Arts', 9, 'JS 3 FINE ART.docx', 'WEEK 9', 'MUSIC FORMS'],
++  ['Physical & Health Education', 1, 'P H E JS_3.docx', 'WEEK ONE', 'COMBINED EVENTS'],
++  ['Physical & Health Education', 2, 'P H E JS_3.docx', 'WEEK TWO', 'Officials, Equipments, Facilities,and Safety Rules in Combined events'],
++  ['Physical & Health Education', 3, 'P H E JS_3.docx', 'WEEK THREE', 'NIGERIAN SPORTS HEROES AND HEROINE'],
++  ['Physical & Health Education', 4, 'P H E JS_3.docx', 'WEEK FOUR', 'CONTRIBUTIONS OF SOME PROFESSIONALS TO PHYSICAL AND HEALTH EDUCATION IN NIGERIA'],
++  ['Physical & Health Education', 5, 'P H E JS_3.docx', 'WEEK FIVE', 'Puberty.'],
++  ['Physical & Health Education', 6, 'P H E JS_3.docx', 'WEEK SIX & SEVEN', 'Career Guidance in physical and health education'],
++  ['Physical & Health Education', 7, 'P H E JS_3.docx', 'WEEK 8', 'The basic swimming strokes.'],
++  ['Physical & Health Education', 8, 'P H E JS_3.docx', 'WEEK NINE', 'Gymnastics'],
++  ['Physical & Health Education', 9, 'P H E JS_3.docx', 'WEEK  TEN', 'Officials of gymnastics and their duties'],
++  ['Yoruba', 1, 'YORUBA  JS 3.docx', 'WEEK 1', 'AKORI EKO: IHUN ORISIIRISII AWE GBOLOHUN PO DI ODIDI GBOLOHUN'],
++  ['Yoruba', 2, 'YORUBA  JS 3.docx', 'WEEK 2', 'AKORI EKO: ATUNYENWO LETA AIGBEFE (INFORMAL LETTER)'],
++  ['Yoruba', 3, 'YORUBA  JS 3.docx', 'WEEK 3', 'AKORI EKO: EYAN'],
++  ['Basic Technology', 1, 'basic tech.docx', 'Week 1', 'revision'],
++  ['Basic Technology', 2, 'basic tech.docx', 'Week 2', 'building components [foundation]'],
++  ['Basic Technology', 3, 'basic tech.docx', 'Week 3', 'windows'],
++  ['Basic Technology', 4, 'basic tech.docx', 'Week 4&5', 'wood work project'],
++  ['Basic Technology', 5, 'basic tech.docx', 'Week 6&7', 'metal joining'],
++  ['Basic Technology', 6, 'basic tech.docx', 'Week 8', 'motion in engineering'],
++  ['Basic Technology', 7, 'basic tech.docx', 'Week 9', 'electrical house wiring'],
++  ['Basic Technology', 8, 'basic tech.docx', 'Week 10', 'tools and materials for house wiring'],
++  ['Basic Technology', 9, 'basic tech.docx', 'Week 11', 'revision'],
++  ['Basic Technology', 10, 'basic tech.docx', 'Week 12', 'examination'],
++  ['Business Studies', 1, 'business_studies JSS3.docx', 'WEEK TWO - THREE', 'PERSONAL FINANCE'],
++  ['Business Studies', 2, 'business_studies JSS3.docx', 'WEEK 4', 'Book \u2013 keeping ethnics'],
++  ['Business Studies', 3, 'business_studies JSS3.docx', 'WEEK FIVE', 'TRADING, PROFIT AND LOSS ACCOUNT.'],
++  ['Business Studies', 4, 'business_studies JSS3.docx', 'WEEK SIX', 'SPEED DEVELOPMENT IN SHORTHAND'],
++  ['Business Studies', 5, 'business_studies JSS3.docx', 'WEEK SEVEN', 'APPLIED KEYBOARDING'],
++  ['Business Studies', 6, 'business_studies JSS3.docx', 'WEEK 8', 'Display'],
++  ['Business Studies', 7, 'business_studies JSS3.docx', 'WEEK 9', 'Types of Display'],
++  ['Business Studies', 8, 'business_studies JSS3.docx', 'WEEK 10', 'Printers correction signs / speed development'],
++  ['Home Economics', 1, 'home econs.docx', 'WEEK ONE', 'SCIENTIFIC STUDY OF FOOD'],
++  ['Home Economics', 2, 'home econs.docx', 'WEEK TWO', 'BUDGETING'],
++  ['Home Economics', 3, 'home econs.docx', 'WEEK THREE', 'FEEDING THE FAMILY'],
++  ['Home Economics', 4, 'home econs.docx', 'WEEK FOUR AND FIVE', 'NUTRITIONAL NEEDS OF DIFFERENT PEOPLE IN THE FAMILY.'],
++  ['Home Economics', 5, 'home econs.docx', 'WEEK SIX', 'BUYING, PRESERVATION AND STORAGE OF FOOD'],
++  ['Home Economics', 6, 'home econs.docx', 'WEEK SEVEN & EIGHT', 'FOOD PREPARATION'],
++  ['Home Economics', 7, 'home econs.docx', 'WEEK 9 & 10', 'FOOD PREPARATION (CONTD.)'],
++  ['Civic Education', 1, 'js 3 civic.docx', 'WEEK ONE', 'Reviewed of last Term\u2019s work'],
++  ['Civic Education', 2, 'js 3 civic.docx', 'WEEK TWO', 'VOTER EDUCATION'],
++  ['Civic Education', 3, 'js 3 civic.docx', 'WEEK THREE', 'VOTER EDUCATION'],
++  ['Civic Education', 4, 'js 3 civic.docx', 'WEEK FOUR', 'MEANING OF ELECTION'],
++  ['Civic Education', 5, 'js 3 civic.docx', 'WEEK FIVE', 'ELECTORAL BODIES IN NIGERIA'],
++  ['Civic Education', 6, 'js 3 civic.docx', 'WEEK SIX', 'FREE AND FAIR ELECTION'],
++  ['Civic Education', 7, 'js 3 civic.docx', 'WEEK SEVEN', 'Electoral Malpractice'],
++  ['Civic Education', 8, 'js 3 civic.docx', 'WEEK EIGHT', 'Planning for Results'],
++  ['Civic Education', 9, 'js 3 civic.docx', 'WEEK NINE', 'The Current Nigerian constitution.'],
++  ['Civic Education', 10, 'js 3 civic.docx', 'WEEK TEN', 'FEATURES OF THE 1999 CONSTITUTION'],
++  ['English Language', 1, 'js 3 english.docx', 'WEEK THREE', 'COMPOSITION (ARTICLE WRITING)'],
++  ['English Language', 2, 'js 3 english.docx', 'WEEK   FOUR', 'VOWEL CONTRAST /\u1d27/ AND /a:/'],
++  ['English Language', 3, 'js 3 english.docx', 'WEEK 5', 'NASAL SOUND / m n, \u0273/'],
++  ['English Language', 4, 'js 3 english.docx', 'WEEK 6', 'VOWEL /\u04d5/  and /\u04e1:/'],
++  ['English Language', 5, 'js 3 english.docx', 'WEEK 7', 'SYNONYMS'],
++  ['English Language', 6, 'js 3 english.docx', 'WEEK 8', 'VOWELS /U/ AND /U:/'],
++  ['English Language', 7, 'js 3 english.docx', 'Week 9', 'ACTIVE AND PASSIVE VOICE'],
++  ['English Language', 8, 'js 3 english.docx', 'WEEK 10', 'REVISION'],
++  ['English Language', 9, 'js 3 english.docx', 'WEEK 11', 'EXAMINATION.'],
++  ['Music', 1, 'music.docx', 'WEEK ONE', 'REVISION EXERCISE'],
++  ['Music', 2, 'music.docx', 'WEEK TWO', 'SINGING PATTERN'],
++  ['Music', 3, 'music.docx', 'WEEK THREE', 'MINOR SCALE WTH KEY SIGNATURE D, E AND G MINOR (HARMONIC)'],
++  ['Music', 4, 'music.docx', 'WEEK FOUR', 'RELATIVE MINOR KEYS WITH FOUR SHARPS AND FLATS'],
++  ['Music', 5, 'music.docx', 'WEEK FIVE', 'ADDING SHORT MELODY TO GIVEN WORDS'],
++  ['Music', 6, 'music.docx', 'WEEK SIX', 'NIGERIAN HIGHLIFE MUSICIANS'],
++  ['Music', 7, 'music.docx', 'WEEK SEVEN', 'CADENCES'],
++  ['Music', 8, 'music.docx', 'WEEK EIGHT', 'INVERSION OF TRIADS'],
++  ['Music', 9, 'music.docx', 'WEEK NINE', 'TRANSPOSITION'],
++  ['Social Studies', 1, 'social studies.docx', 'WEEK TWO', 'CONFLICTS'],
++  ['Social Studies', 2, 'social studies.docx', 'WEEK THREE', 'POPULATION CENSUS'],
++  ['Social Studies', 3, 'social studies.docx', 'WEEK FOUR', 'SELF \u2013 ESTEEM'],
++  ['Social Studies', 4, 'social studies.docx', 'WEEK FIVE', 'NATIONAL ECONOMY'],
++  ['Social Studies', 5, 'social studies.docx', 'WEEK SIX', 'SECTORS OF THE NIGERIAN ECONOMY'],
++  ['Social Studies', 6, 'social studies.docx', 'WEEK SEVEN', 'MINERAL RESOURCES'],
++  ['Social Studies', 7, 'social studies.docx', 'WEEK EIGHT', 'ECONOMIC REFORM MEASURES I'],
++  ['Social Studies', 8, 'social studies.docx', 'WEEK NINE', 'ECONOMIC REFORM MEASURES II'],
++  ['Social Studies', 9, 'social studies.docx', 'WEEK TEN', 'ECONOMIC INSTITUTIONS'],
++];
++const EXPECTED: Record<string, number> = {
++  'Agricultural Science': 8, 'Basic Science': 9, 'Basic Technology': 10, 'Business Studies': 8,
++  'Civic Education': 10, 'Cultural & Creative Arts': 9, 'English Language': 9, 'French': 8,
++  'Home Economics': 7, 'Mathematics': 10, 'Music': 9, 'Physical & Health Education': 9,
++  'Social Studies': 9, 'Yoruba': 3,
++};
++
++test('pinned table: 118 rows, per-subject counts, gap-free order, unique (subject, week, title)', () => {
++  assert.equal(PINNED.length, 118);
++  const bySubject = new Map<string, Pinned[]>();
++  for (const r of PINNED) (bySubject.get(r[0]) ?? bySubject.set(r[0], []).get(r[0])!).push(r);
++  assert.deepEqual(Object.fromEntries([...bySubject].map(([s, l]) => [s, l.length]).sort()), Object.fromEntries(Object.entries(EXPECTED).sort()));
++  assert.equal(Object.values(EXPECTED).reduce((a, b) => a + b, 0), 118);
++  for (const [subject, list] of bySubject) list.forEach((r, i) => assert.equal(r[1], i + 1, `${subject}: order gap at #${i + 1}`));
++  const keys = PINNED.map(r => `${r[0]}\u0000${canonicalJss3Week(r[3])}\u0000${r[4]}`);
++  assert.equal(new Set(keys).size, keys.length, 'duplicate (subject, canonical week, title)');
++  for (const r of PINNED) assert.ok(JSS3_SECOND_TERM_REVIEWED_SOURCES.includes(r[2]), `${r[2]} is a reviewed source`);
++  assert.equal(new Set(PINNED.map(r => r[2])).size, 14, 'rows come from all 14 files');
++});
++test('pinned table: the five scheme-only rows are present and Statistics II sits between the two WEEK 4 rows', () => {
++  assert.equal(JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS.length, 5);
++  for (const h of JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS) {
++    const hits = PINNED.filter(r => r[0] === h.subject && r[2] === h.basename && canonicalJss3Week(r[3]) === h.week && r[4] === h.title);
++    assert.equal(hits.length, 1, `${h.subject} / week ${h.week} / ${h.title}`);
++  }
++  const math = PINNED.filter(r => r[0] === 'Mathematics');
++  assert.deepEqual(math.slice(2, 5).map(r => [r[3], r[4]]), [['WEEK 4', 'SOLVING SIMULTANEOUS EQUATION GRAPHICALLY'], ['WEEK 4', 'Statistics II'], ['WEEK 5', 'VARIATION']]);
++  const bus = PINNED.filter(r => r[0] === 'Business Studies').map(r => canonicalJss3Week(r[3]));
++  assert.deepEqual(bus, ['2-3', '4', '5', '6', '7', '8', '9', '10']);
++});
++test('non-instructional: 10 entries, each matches exactly one row; instructional = 118 - 10 = 108', () => {
++  assert.equal(JSS3_SECOND_TERM_NON_INSTRUCTIONAL.length, 10);
++  assert.equal(new Set(JSS3_SECOND_TERM_NON_INSTRUCTIONAL.map(e => `${e.basename}|${e.week}`)).size, 10);
++  for (const e of JSS3_SECOND_TERM_NON_INSTRUCTIONAL) {
++    assert.ok(JSS3_SECOND_TERM_REVIEWED_SOURCES.includes(e.basename), e.basename);
++    const hits = PINNED.filter(r => r[0] === e.subject && r[2] === e.basename && canonicalJss3Week(r[3]) === e.week);
++    assert.equal(hits.length, 1, `${e.subject} week ${e.week} must match exactly one row`);
++    assert.match(hits[0][4], /revi|exam/i, `${e.subject} week ${e.week}: "${hits[0][4]}"`);
++  }
++  const flagged = PINNED.filter(r => isNonInstructional(r[2], T2, r[3]));
++  assert.equal(flagged.length, 10);
++  assert.equal(PINNED.length - flagged.length, 108);
++  // Same rows in other terms or via other weeks are never flagged.
++  assert.equal(isNonInstructional('music.docx', '1st Term', 'WEEK ONE'), false);
++  assert.equal(isNonInstructional('music.docx', T2, 'WEEK TWO'), false);
++  assert.equal(isNonInstructional('music.docx', T2, 'week 1'), true);
++  assert.equal(isNonInstructional('BASIC 9 MATHEMATICS E-NOTE.docx', T2, 'WEEK SEVEN'), true);
++});
++
++// ── Wiring: additive only; Agent 1B's pinned lines intact ──────────────────
++test('ingestTopics.ts: 2nd-Term wiring is additive and Agent 1B\'s pinned wiring still matches', () => {
++  const s = readFileSync(path.join(backendDir, 'src/db/ingestTopics.ts'), 'utf8');
++  // Agent 1B's own assertions, verbatim (tests/jss3-first-term.test.mts):
++  assert.match(s, /text = applyJss1SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);/);
++  assert.match(s, /text = applyJss2SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);/);
++  assert.match(s, /\} else if \(validClassNames\.includes\('JSS 3'\)\) \{\s*text = applyJss3SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);/);
++  assert.match(s, /className === 'JSS 1'\s*\? resolveJss1ParsedTopic\(path\.basename\(filePath\), termLabel, topic\)\s*: className === 'JSS 3'\s*\? resolveJss3ParsedTopic/);
++  // (a) import
++  assert.match(s, /import \{\s*applyJss3SecondTermSourceTextResolution,\s*resolveJss3SecondTermParsedTopic,\s*\} from '\.\/jss3SecondTermResolutions\.js';/);
++  // (b) statement after 1B's line, inside the same JSS 3 branch
++  assert.match(s, /text = applyJss3SourceTextResolution\(path\.basename\(filePath\), termLabel, text\);\s*text = applyJss3SecondTermSourceTextResolution\(path\.basename\(filePath\), termLabel, text\);\s*\}/);
++  // (c) separate .map stage directly before the existing .filter, gated on JSS 3
++  assert.match(s, /: topic\)\s*\.map\(topic => className === 'JSS 3'\s*\? resolveJss3SecondTermParsedTopic\(path\.basename\(filePath\), termLabel, topic\)\s*: topic\)\s*\.filter\(\(topic\): topic is ParsedTopic => topic !== null\);/);
++  assert.equal(s.match(/applyJss3SecondTermSourceTextResolution\(/g)?.length, 1);
++  assert.equal(s.match(/resolveJss3SecondTermParsedTopic\(/g)?.length, 1);
++  assert.equal(s.match(/applyJss3SourceTextResolution\(/g)?.length, 1);
++  assert.equal(s.match(/resolveJss3ParsedTopic\(/g)?.length, 1);
++});
++
++// ── Optional: scheme-only manifest cross-check ─────────────────────────────
++const MANIFEST = process.env.JSS3_SCHEME_MANIFEST;
++test('manifest: the five 2nd-Term scheme-only titles equal the exported list', { skip: MANIFEST ? false : 'set JSS3_SCHEME_MANIFEST to cross-check the manifest' }, () => {
++  assert.ok(MANIFEST && existsSync(MANIFEST), 'JSS3_SCHEME_MANIFEST must exist');
++  const [head, ...lines] = readFileSync(MANIFEST!, 'utf8').split(/\r?\n/).filter(Boolean);
++  const cols = head.split(',');
++  const rows = lines.map(l => Object.fromEntries(l.split(',').map((v, i) => [cols[i], v])));
++  const second = rows.filter(r => r.destination_term === '2nd Term');
++  assert.equal(second.length, 5);
++  assert.deepEqual(second.map(r => r.title), JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS.map(h => h.title));
++  assert.deepEqual(second.map(r => `${r.subject}|${r.source_file}`), JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS.map(h => `${h.subject}|${h.basename}`));
++  for (const r of second) assert.equal(r.original_term, '2nd Term');
++});
++
++// ── Real-source dry-run audit (only when a root is supplied) ───────────────
++const ROOT = process.env.JSS3_SECOND_TERM_ROOT;
++const real = { skip: ROOT ? false : 'set JSS3_SECOND_TERM_ROOT to run the real-source audit' } as const;
++
++function audit(): string {
++  assert.ok(ROOT && existsSync(ROOT), 'JSS3_SECOND_TERM_ROOT must exist');
++  assert.ok(existsSync(path.join(ROOT!, 'JSS3 2ND TERM ')), 'JSS3_SECOND_TERM_ROOT must contain the folder "JSS3 2ND TERM " (trailing space)');
++  // Dry run only: --yes is intentionally never passed, so no DB connection is opened.
++  // execFileSync throws on a non-zero exit, so a returned string means exit 0.
++  return execFileSync('npx', ['tsx', 'src/db/ingestTopics.ts', '--root', ROOT!, '--school-code', 'secondary'], {
++    cwd: backendDir, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
++  });
++}
++let cached: string | undefined;
++const out = () => (cached ??= audit());
++const ROW = /^  JSS 3 \/ (.+?) \/ 2nd Term #(\d+): JSS3 2ND TERM \/([^\n]+?) \/ ([^/\n]+?) \/ (.*)$/gm;
++const rowsOf = (o: string): Pinned[] => [...o.matchAll(ROW)].map(m => [m[1], Number(m[2]), m[3], m[4], m[5]]);
++
++test('real sources: exit 0, FILE AUDIT PASSED, 14 files, 118 rows, exact per-subject counts', real, () => {
++  const o = out();
++  assert.match(o, /Parsed 118 topic row\(s\) from 14 file\(s\)\./);
++  assert.match(o, /FILE AUDIT PASSED/);
++  assert.match(o, /Dry run only — no database connection or changes\./);
++  assert.doesNotMatch(o, /BLOCKED|read error|Unsupported source format/i);
++  for (const [subject, n] of Object.entries(EXPECTED)) {
++    assert.ok(o.includes(`  JSS 3 / ${subject} / 2nd Term: ${n}\n`), `${subject} should have ${n} rows`);
++  }
++  assert.equal(o.match(/^  JSS 3 \/ .+ \/ 2nd Term: \d+$/gm)?.length, 14);
++});
++test('real sources: all rows are 2nd Term (no 1st/3rd Term rows, no other class)', real, () => {
++  const o = out();
++  assert.doesNotMatch(o, /JSS 3 \/ [^\n]* \/ (1st|3rd) Term/);
++  assert.doesNotMatch(o, /^  (JSS [12]|SSS|Primary|PRY)[^\n]* \/ (1st|2nd|3rd) Term/m);
++  assert.equal(rowsOf(o).length, 118);
++});
++test('real sources: deterministic — two independent runs are identical', real, () => {
++  assert.equal(audit(), out());
++});
++test('real sources: the full ordered (subject, order, file, week, title) table is pinned', real, () => {
++  assert.deepEqual(rowsOf(out()), PINNED);
++});
++test('real sources: unique (subject, canonical week, title); gap-free order; weeks never go backwards', real, () => {
++  const rows = rowsOf(out());
++  const keys = rows.map(r => `${r[0]}\u0000${canonicalJss3Week(r[3])}\u0000${r[4]}`);
++  assert.equal(new Set(keys).size, rows.length);
++  const bySubject = new Map<string, Pinned[]>();
++  for (const r of rows) (bySubject.get(r[0]) ?? bySubject.set(r[0], []).get(r[0])!).push(r);
++  for (const [subject, list] of bySubject) {
++    list.forEach((r, i) => assert.equal(r[1], i + 1, `${subject}: order gap at #${i + 1}`));
++    const wk = (r: Pinned) => Number(canonicalJss3Week(r[3]).match(/^\d+/)?.[0] ?? NaN);
++    list.forEach((r, i) => {
++      assert.ok(Number.isFinite(wk(r)), `${subject}: unparseable week "${r[3]}"`);
++      if (i > 0) assert.ok(wk(r) >= wk(list[i - 1]), `${subject}: week order regresses at #${r[1]}`);
++    });
++  }
++});
++test('real sources: the five scheme-only rows are present (Business 4/8/9/10, Mathematics Statistics II)', real, () => {
++  const rows = rowsOf(out());
++  for (const h of JSS3_SECOND_TERM_SCHEME_ONLY_HEADINGS) {
++    const hits = rows.filter(r => r[0] === h.subject && r[2] === h.basename && canonicalJss3Week(r[3]) === h.week && r[4] === h.title);
++    assert.equal(hits.length, 1, `${h.subject} week ${h.week} ${h.title}`);
++  }
++  const math = rows.filter(r => r[0] === 'Mathematics').map(r => r[4]);
++  assert.deepEqual(math.slice(2, 5), ['SOLVING SIMULTANEOUS EQUATION GRAPHICALLY', 'Statistics II', 'VARIATION']);
++});
++test('real sources: 10 non-instructional rows each match exactly one row, so instructional = 108', real, () => {
++  const rows = rowsOf(out());
++  for (const e of JSS3_SECOND_TERM_NON_INSTRUCTIONAL) {
++    assert.equal(rows.filter(r => r[0] === e.subject && r[2] === e.basename && canonicalJss3Week(r[3]) === e.week).length, 1, `${e.subject} week ${e.week}`);
++  }
++  const flagged = rows.filter(r => isNonInstructional(r[2], T2, r[3]));
++  assert.equal(flagged.length, 10);
++  assert.equal(rows.length - flagged.length, 108);
++});
++test('real sources: the defects found in review are gone', real, () => {
++  const o = out();
++  const rows = rowsOf(o);
++  assert.doesNotMatch(o, /\(untitled\)/);
++  assert.equal(rows.filter(r => /^[\s;:\-\u2013\u2014]/.test(r[4])).length, 0, 'no title starts with a separator');
++  assert.equal(rows.filter(r => /^\W*$/.test(r[4])).length, 0, 'no empty/punctuation-only titles');
++  assert.ok(rows.some(r => r[2] === 'FRENCH  js 3.docx' && r[3] === 'WEEK 2' && r[4] === 'Dater et mesurer le temp'));
++  assert.ok(rows.some(r => r[2] === 'JS 3 FINE ART.docx' && r[3] === 'WEEK 5' && r[4] === 'SINGING IN PARTS AND CADENCE IDENTIFICATION'));
++  assert.doesNotMatch(o, /Basic Science \/ 2nd Term #\d+: [^\n]*\/ (WK|Wk)/);
++  assert.doesNotMatch(o, /Yoruba \/ 2nd Term #\d+: [^\n]*\/ Week \d/);
++  assert.equal(rows.filter(r => r[2] === 'basic tech.docx').length, 10);
++  assert.equal(rows.filter(r => r[2] === 'music.docx').length, 9);
++});
+diff --git a/tests/jss3-third-term.test.mts b/tests/jss3-third-term.test.mts
+new file mode 100644
+index 0000000..7fdba79
+--- /dev/null
++++ b/tests/jss3-third-term.test.mts
+@@ -0,0 +1,434 @@
++// Run (unit tests only):
++//   cd backend && npx tsx --test ../tests/jss3-third-term.test.mts
++// Run with the real-source dry-run audit (no database is touched; --yes is never passed):
++//   cd backend && JSS3_ALL_ROOT=/path/to/root npx tsx --test ../tests/jss3-third-term.test.mts
++// where the root CONTAINS the three original term folders ("JSS3 1ST TERM ", "JSS3 2ND TERM ",
++// "JSS3 3RD TERM " - note the trailing spaces), with First-Term Music supplied as the converted
++// "JSS3 Alpha term music Enote.docx" (and no .rtf). Needs python3 + python-docx for the
++// tampered-duplicate negative control (skipped when unavailable).
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { execFileSync, spawnSync } from 'node:child_process';
++import { cpSync, existsSync, mkdtempSync, readdirSync, readFileSync, rmSync } from 'node:fs';
++import os from 'node:os';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import {
++  JSS3_EXCLUDED_SUBJECTS,
++  JSS3_THIRD_TERM_MANIFEST,
++  JSS3_THIRD_TERM_REVIEWED_SOURCES,
++  applyJss3ThirdTermSourceTextResolution as apply,
++  hasJss3ThirdTermSourceResolution as hasRule,
++  redistributeJss3ThirdTermTopics as redistribute,
++} from '../backend/src/db/jss3ThirdTermRedistribution.ts';
++
++const here = path.dirname(fileURLToPath(import.meta.url));
++const backendDir = path.resolve(here, '..', 'backend');
++const T3 = '3rd Term';
++const NB = '\u00a0';
++
++const RULED = ['Basic science.docx', 'BASIC TECH.docx', 'MUSIC.docx', 'OMEGA TERM YORUBA JS3.docx', 'Fine art.docx', 'ENGLISH.docx'];
++const NO_RULE = [
++  'Agriculture science  Book 3.docx', 'BUSINESS STUDIES FOR JSS3.docx', 'CIVIC.docx', 'HOME ECONS.docx', 'PHE.docx',
++];
++
++// ── Manifest integrity ─────────────────────────────────────────────────────
++test('manifest: eleven reviewed sources, every manifest file reviewed, no Computer Studies', () => {
++  assert.equal(JSS3_THIRD_TERM_REVIEWED_SOURCES.length, 11);
++  assert.equal(new Set(JSS3_THIRD_TERM_REVIEWED_SOURCES).size, 11);
++  assert.deepEqual([...new Set(JSS3_THIRD_TERM_MANIFEST.map(e => e.basename))].sort(), [...JSS3_THIRD_TERM_REVIEWED_SOURCES].sort());
++  for (const s of JSS3_EXCLUDED_SUBJECTS) assert.ok(!JSS3_THIRD_TERM_MANIFEST.some(e => e.subject === s), s);
++  assert.ok(JSS3_EXCLUDED_SUBJECTS.includes('Computer Studies'));
++  assert.ok(!JSS3_THIRD_TERM_MANIFEST.some(e => /computer/i.test(e.subject + e.basename + e.title)));
++});
++
++test('manifest: classification, destination and duplicate fields are internally consistent', () => {
++  for (const e of JSS3_THIRD_TERM_MANIFEST) {
++    const id = `${e.basename} / ${e.week} / ${e.title}`;
++    assert.ok(['instructional', 'exact-duplicate', 'revision', 'examination', 'held'].includes(e.classification), id);
++    if (e.classification === 'instructional') {
++      assert.ok(e.destination === '1st Term' || e.destination === '2nd Term', `${id}: destination must be 1st/2nd Term`);
++      assert.equal(e.kind, 'parsed', id);
++    } else {
++      assert.equal(e.destination, undefined, `${id}: only instructional rows have a destination`);
++    }
++    if (e.classification === 'exact-duplicate') {
++      assert.ok(e.duplicateOf && e.duplicateOf.term === '1st Term', id);
++      assert.equal(e.kind, 'parsed', id);
++    } else {
++      assert.equal(e.duplicateOf, undefined, id);
++    }
++    if (e.kind === 'scheme-only') assert.ok(e.sourcePhrase, `${id}: scheme-only rows need a sourcePhrase`);
++    assert.ok(e.note.length > 10, `${id}: rationale required`);
++    assert.notEqual((e as { destination?: string }).destination, '3rd Term');
++  }
++});
++
++test('manifest: no duplicate mapping keys', () => {
++  const keys = JSS3_THIRD_TERM_MANIFEST.map(e => JSON.stringify([e.basename, e.kind, e.week, e.title]));
++  assert.equal(new Set(keys).size, keys.length);
++});
++
++test('manifest: classification totals (62 parsed Third-Term rows + 11 scheme-only items)', () => {
++  const by = (pred: (e: (typeof JSS3_THIRD_TERM_MANIFEST)[number]) => boolean) => JSS3_THIRD_TERM_MANIFEST.filter(pred).length;
++  assert.equal(by(e => e.kind === 'parsed'), 62);
++  assert.equal(by(e => e.kind === 'scheme-only'), 11);
++  assert.equal(by(e => e.classification === 'instructional'), 49);
++  assert.equal(by(e => e.classification === 'instructional' && e.destination === '1st Term'), 20);
++  assert.equal(by(e => e.classification === 'instructional' && e.destination === '2nd Term'), 29);
++  assert.equal(by(e => e.classification === 'exact-duplicate'), 6);
++  assert.equal(by(e => e.classification === 'held'), 2);
++  assert.deepEqual(
++    JSS3_THIRD_TERM_MANIFEST.filter(e => e.classification === 'held').map(e => `${e.basename}|${e.title}`).sort(),
++    ['OMEGA TERM YORUBA JS3.docx|AKANLO EDE', 'PHE.docx|Practical on Taekwondo'],
++  );
++});
++
++// ── Text rules ─────────────────────────────────────────────────────────────
++test('exactly the six reviewed Third-Term files carry a text rule, and only in 3rd Term', () => {
++  for (const f of RULED) { assert.equal(hasRule(f, T3), true, f); assert.equal(hasRule(f, '1st Term'), false, f); assert.equal(hasRule(f, '2nd Term'), false, f); }
++  for (const f of NO_RULE) assert.equal(hasRule(f, T3), false, f);
++  assert.equal([...RULED, ...NO_RULE].length, 11);
++});
++
++test('First/Second-Term text and unreviewed files are returned unchanged', () => {
++  const sample = 'WEEK 1\nanything\n';
++  for (const f of RULED) {
++    assert.equal(apply(f, '1st Term', sample), sample);
++    assert.equal(apply(f, '2nd Term', sample), sample);
++  }
++  assert.equal(apply('not-reviewed.docx', T3, sample), sample);
++  for (const f of NO_RULE) assert.equal(apply(f, T3, sample), sample);
++});
++
++const BSC = ['JSS 3 OMEGA TERM E-NOTE', 'SCHEME OF WORK', 'WEEK 1-Family life Education One', 'WEEK 2-Family life Education Two', '', 'WEEK 1- FAMILY LIFE EDUCATION [i]', 'a', 'WEEK 2- FAMILY LIFE EDUCATION [ii].', 'b', ''].join('\n');
++test('Basic Science: scheme cut, lessons kept', () => {
++  const out = apply('Basic science.docx', T3, BSC);
++  assert.ok(out.startsWith('WEEK 1- FAMILY LIFE EDUCATION [i]'));
++  assert.ok(!out.includes('Family life Education One'));
++  assert.ok(out.includes('WEEK 2- FAMILY LIFE EDUCATION [ii].'));
++  assert.throws(() => apply('Basic science.docx', T3, 'WEEK 1-x'), /anchor missing/);
++  assert.throws(() => apply('Basic science.docx', T3, `${BSC}\n${BSC}`), /ambiguous/);
++});
++
++test('Basic Technology: scheme cut at the body "Week 1   revision"', () => {
++  const t = ['JSS3', 'Week 1: revision of last term’s work', 'Week2: fault detection', '', 'Week 1         revision', 'x', 'Week 2.           Fault detection', 'y'].join('\n');
++  const out = apply('BASIC TECH.docx', T3, t);
++  assert.ok(out.startsWith('Week 1         revision'));
++  assert.ok(!out.includes('Week2: fault detection'));
++  assert.throws(() => apply('BASIC TECH.docx', T3, 'Week 1: revision'), /anchor missing/);
++});
++
++test('Music: scheme cut at the bare WEEK ONE line', () => {
++  const t = ['MUSIC HANDOUT', 'WEEK ONE      ------- REVISION & REVISION EXERCISE', '', `${NB}`, 'WEEK ONE', 'REVISION EXERCISE', 'WEEK TWO', 'PERIODS'].join('\n');
++  const out = apply('MUSIC.docx', T3, t);
++  assert.ok(out.startsWith('WEEK ONE\nREVISION EXERCISE'));
++  assert.throws(() => apply('MUSIC.docx', T3, 'nothing here'), /anchor missing/);
++});
++
++test('Yoruba: scheme cut; exactly KINNI..KAUN become WEEK 1..5; unreviewed ordinal throws', () => {
++  const body = (ords: string[]) => ords.map(o => `OSE ${o}\nAKORI EKO: X\ntext`).join('\n');
++  const t = `OSE\n1\nLETA GBEFE\n2\nEYAN\n${body(['KINNI', 'KEJI', 'KETA', 'KERIN', 'KAUN'])}`;
++  const out = apply('OMEGA TERM YORUBA JS3.docx', T3, t);
++  assert.ok(out.startsWith('WEEK 1\nAKORI EKO: X'));
++  assert.deepEqual([...out.matchAll(/^WEEK (\d)$/gm)].map(m => m[1]), ['1', '2', '3', '4', '5']);
++  assert.ok(!/OSE KINNI/.test(out));
++  assert.throws(() => apply('OMEGA TERM YORUBA JS3.docx', T3, `${t}\nOSE KEFA\nx`), /unreviewed Yoruba OSE heading/);
++  assert.throws(() => apply('OMEGA TERM YORUBA JS3.docx', T3, `OSE\n1\n${body(['KINNI', 'KEJI', 'KETA', 'KERIN'])}`), /anchor missing/);
++});
++
++const FA_HEAD = (n: string) => `CLASS;  J S S 3   WEEK ${n}        `;
++const FINE_ART = [
++  'OMEGA TERM E-Note \t\tCLASS; J SS 3', 'SUBJECT; CULTURAL AND CREATIVE ARTS', 'SCHEME OF WORK', 'WEEK  1.  \tMODULATION.', '',
++  FA_HEAD('1'), 'TOPIC; MODULATION.', 'a', FA_HEAD('2'), 'TOPIC; MAKETING OF ART WORKS.', 'b', FA_HEAD('3'), 'TOPIC; UNITY.', 'c',
++  FA_HEAD('4'), 'TOPIC; PRACTICAL: BREATH CONTROL VOICE TRAINIG AND', '\t\tINSTRUMENTALS.', 'd', FA_HEAD('5'), 'TOPIC; BATIK', 'e', FA_HEAD('6- 8'), 'TOPIC; REVITIONS ON PREVIOUS WORKS.', 'f', '',
++].join('\n');
++test('Fine Art: six CLASS/WEEK headers split to WEEK-first lines; SUBJECT preamble kept; scheme WEEK row dropped', () => {
++  const out = apply('Fine art.docx', T3, FINE_ART);
++  assert.ok(out.includes('SUBJECT; CULTURAL AND CREATIVE ARTS'));
++  assert.ok(!out.includes('WEEK  1.  \tMODULATION.'));
++  assert.deepEqual([...out.matchAll(/^WEEK (\S+)$/gm)].map(m => m[1]), ['1', '2', '3', '4', '5', '6-8']);
++  assert.ok(out.includes('WEEK 4\nCLASS; J S S 3\n'));
++  assert.throws(() => apply('Fine art.docx', T3, FINE_ART.replace(FA_HEAD('5'), 'CLASS; J S S 3')), /expected exactly 6/);
++  assert.throws(() => apply('Fine art.docx', T3, FINE_ART.replace('SCHEME OF WORK', 'SCHEME')), /SCHEME OF WORK/);
++});
++
++const ENGLISH = [
++  'SCHEME OF WORK FOR ENGLISH LANGUAGE', 'OMEGA TERM JSS THREE', 'Revision of 2nd Terms examination.', '11            EXAMINATION.',
++  '   WEEK TWO', 'REVISION', 'SPEECH WORK ', 'TOPIC: THE VOWEL SOUNDS', 'v',
++  'REVISION', 'GRAMMAR', '', 'TOPIC: MEANING AND TYPES OF NOUN', 'n',
++  'REVISION', 'COMPOSITION', 'TOPIC: ESSAY WRITING', 'e',
++  '   WEEK THREE', 'REVISION', 'SPEECH WORK ', 'TOPIC: VOWEL SOUNDS', 'SUB-TOPIC: DIPHTHONGS', 'd',
++  'REVISION', 'LITERATURE', 'TOPIC: LITERARY TERMS', 'l',
++  '   WEEK THREE ', 'REVISION', 'GRAMMAR ', 'TOPIC: ARTICLE', 'a',
++  'REVISION', 'GRAMMAR', 'TOPIC: PART OF SPEECH', 'p', '',
++].join('\n');
++test('English: scheme cut; every TOPIC block gets exactly one WEEK line under the right heading', () => {
++  const out = apply('ENGLISH.docx', T3, ENGLISH);
++  assert.ok(out.startsWith('   WEEK TWO'));
++  assert.ok(!out.includes('11            EXAMINATION.'));
++  assert.deepEqual([...out.matchAll(/^[ \t]*WEEK[ \t]+(TWO|THREE)[ \t]*$/gm)].map(m => m[1]), ['TWO', 'TWO', 'TWO', 'THREE', 'THREE', 'THREE', 'THREE']);
++  assert.equal(out.match(/^[ \t]*TOPIC:/gm)?.length, 7);
++  // the inserted marker sits immediately before the REVISION caption of its block
++  assert.match(out, /WEEK TWO\nREVISION\nGRAMMAR\n\nTOPIC: MEANING AND TYPES OF NOUN/);
++  assert.throws(() => apply('ENGLISH.docx', T3, 'REVISION\nGRAMMAR\nTOPIC: X'), /anchor missing/);
++});
++
++// ── Redistribution function ────────────────────────────────────────────────
++const tp = (weekLabel: string, title: string, body = `${weekLabel}\n${title}\ntext`) => ({ weekLabel, title, body });
++const PHE_TOPICS = [
++  tp('WEEK ONE', 'Family Health'), tp('WEEK TWO', 'TAEKWONDO'), tp('WEEK THREE', 'Practical on Taekwondo'),
++  tp('WEEK FOUR', 'Sexually Transmitted Diseases (STDs)'), tp('WEEK FIVE', 'BOXING'), tp('WEEK SIX', 'DRUG EDUCATION'),
++];
++test('redistribute: instructional rows get their manifest destination; held row is not imported', () => {
++  const r = redistribute('PHE.docx', T3, 'Physical & Health Education', PHE_TOPICS);
++  assert.deepEqual(r.kept.map(k => `${k.title}→${k.destinationTerm}`), [
++    'Family Health→1st Term', 'TAEKWONDO→2nd Term', 'Sexually Transmitted Diseases (STDs)→1st Term', 'BOXING→2nd Term', 'DRUG EDUCATION→1st Term',
++  ]);
++  assert.equal(r.claims.length, 0);
++  assert.equal(r.records.filter(x => x.classification === 'held').length, 1);
++  assert.ok(r.kept.every(k => k.destinationTerm !== ('3rd Term' as string)));
++});
++test('redistribute: leading separators are cleaned from titles; week/body untouched', () => {
++  const r = redistribute('BUSINESS STUDIES FOR JSS3.docx', T3, 'Business Studies', [
++    tp('WEEK 2', ': ERASING TECHNIQUES'), tp('WEEK 3', ': MEMORANDUM'), tp('WEEK 4', ':\tBUSINESS LETTER'),
++    tp('WEEK 5', ':\tBUSINESS LETTER (CONTINUATION)'), tp('WEEK 6', ':\tSIMPLE TABULATION'),
++  ]);
++  assert.deepEqual(r.kept.map(k => k.title), ['ERASING TECHNIQUES', 'MEMORANDUM', 'BUSINESS LETTER', 'BUSINESS LETTER (CONTINUATION)', 'SIMPLE TABULATION']);
++  assert.deepEqual(r.kept.map(k => k.weekLabel), ['WEEK 2', 'WEEK 3', 'WEEK 4', 'WEEK 5', 'WEEK 6']);
++  assert.ok(r.kept.every(k => k.destinationTerm === '2nd Term'));
++});
++test('redistribute: a missing, extra, renamed or reordered topic fails (unaccounted topic cannot pass)', () => {
++  const sub = 'Physical & Health Education';
++  assert.throws(() => redistribute('PHE.docx', T3, sub, PHE_TOPICS.slice(0, 5)), /manifest mismatch/);
++  assert.throws(() => redistribute('PHE.docx', T3, sub, [...PHE_TOPICS, tp('WEEK SEVEN', 'NEW UNCLASSIFIED TOPIC')]), /manifest mismatch/);
++  assert.throws(() => redistribute('PHE.docx', T3, sub, PHE_TOPICS.map((t, i) => (i === 4 ? tp('WEEK FIVE', 'KICKBOXING') : t))), /manifest mismatch/);
++  const swapped = [...PHE_TOPICS]; [swapped[1], swapped[4]] = [swapped[4], swapped[1]];
++  assert.throws(() => redistribute('PHE.docx', T3, sub, swapped), /manifest mismatch/);
++  assert.throws(() => redistribute('PHE.docx', T3, sub, PHE_TOPICS.map((t, i) => (i === 0 ? tp('WEEK TWO', 'Family Health') : t))), /manifest mismatch/);
++});
++test('redistribute: wrong subject, unreviewed source and non-3rd-term all throw', () => {
++  assert.throws(() => redistribute('PHE.docx', T3, 'Music', PHE_TOPICS), /subject mismatch/);
++  assert.throws(() => redistribute('Computer studies.docx', T3, 'Computer Studies', [tp('WEEK 1', 'Intro')]), /has not been reviewed/);
++  assert.throws(() => redistribute('PHE.docx', '2nd Term', 'Physical & Health Education', PHE_TOPICS), /called for term/);
++});
++test('redistribute: Civic weeks 2-7 become exact-duplicate claims on the First-Term Civic rows; weeks 1, 8, 9 are BECE preparation', () => {
++  const topics = [
++    tp('WEEK ONE', 'Review of last term work'), tp('WEEK TWO', 'The role of citizen in constitutional developments'), tp('WEEK THREE', 'National Security'),
++    tp('WEEK FOUR', 'State Security Service'), tp('WEEK FIVE', 'Self-Employment'), tp('WEEK SIX', 'Self Employment II'),
++    tp('WEEK SEVEN', 'Managing For Results.'), tp('WEEK EIGHT', 'General Revision.'), tp('WEEK NINE', 'Practice past AKWA'),
++  ];
++  const r = redistribute('CIVIC.docx', T3, 'Civic Education', topics);
++  assert.equal(r.kept.length, 0);
++  assert.equal(r.claims.length, 6);
++  assert.deepEqual(r.claims.map(c => c.week), ['2', '3', '4', '5', '6', '7']);
++  assert.ok(r.claims.every(c => c.duplicateOf.basename === 'JSS 3 CIVIC (E NOTE).docx' && c.duplicateOf.term === '1st Term' && c.duplicateOf.week === c.week));
++  assert.deepEqual(r.records.filter(x => x.classification === 'revision' || x.classification === 'examination').map(x => x.week), ['1', '8', '9']);
++});
++test('redistribute: Music week 6 and Fine Art week 4 titles are recovered from the body', () => {
++  const music = redistribute('MUSIC.docx', T3, 'Music', [
++    tp('WEEK ONE', 'REVISION EXERCISE'), tp('WEEK TWO', 'PERIODS IN MUSIC: BAROUQE, CLASSICAL & ROMANTIC'), tp('WEEK THREE', 'TRANSCRIPTION FROM STAFF TO SOLFA-NOTATION'),
++    tp('WEEK FOUR', 'TRANSPOSITION'), tp('WEEK FIVE', 'MODULATION'),
++    tp('WEEK SIX', 'Anon ---------- unknown', 'WEEK SIX\n  TERMS & SIGNS\nAnon ---------- unknown\n'),
++  ]);
++  assert.equal(music.kept.at(-1)!.title, 'TERMS & SIGNS');
++  assert.equal(music.kept.at(-1)!.destinationTerm, '1st Term');
++  const fa = redistribute('Fine art.docx', T3, 'Cultural & Creative Arts', [
++    tp('WEEK 1', 'MODULATION.'), tp('WEEK 2', 'MAKETING OF ART WORKS.'), tp('WEEK 3', 'UNITY.'),
++    tp('WEEK 4', 'PRACTICAL: BREATH CONTROL VOICE TRAINIG AND', 'WEEK 4\nCLASS; J S S 3\n\nTOPIC; PRACTICAL: BREATH CONTROL VOICE TRAINIG AND\n\n\t\tINSTRUMENTALS.\n\nBreathing'),
++    tp('WEEK 5', 'BATIK'), tp('WEEK 6-8', 'REVITIONS ON PREVIOUS WORKS.'),
++  ]);
++  assert.ok(fa.kept.some(k => k.title === 'PRACTICAL: BREATH CONTROL VOICE TRAINIG AND INSTRUMENTALS.'));
++  assert.throws(() => redistribute('MUSIC.docx', T3, 'Music', [
++    tp('WEEK ONE', 'REVISION EXERCISE'), tp('WEEK TWO', 'PERIODS IN MUSIC: BAROUQE, CLASSICAL & ROMANTIC'), tp('WEEK THREE', 'TRANSCRIPTION FROM STAFF TO SOLFA-NOTATION'),
++    tp('WEEK FOUR', 'TRANSPOSITION'), tp('WEEK FIVE', 'MODULATION'), tp('WEEK SIX', 'Anon', 'WEEK SIX\nnothing'),
++  ]), /anchor missing/);
++});
++test('importer wiring is gated on JSS 3 and 3rd Term and redistributes only through the module', () => {
++  const s = readFileSync(path.join(backendDir, 'src/db/ingestTopics.ts'), 'utf8');
++  assert.match(s, /if \(validClassNames\.includes\('JSS 3'\)\) \{\s*text = applyJss3ThirdTermSourceTextResolution\(path\.basename\(filePath\), termLabel, text\);\s*\}/);
++  assert.match(s, /if \(className === 'JSS 3' && termLabel === '3rd Term' && parsedAll\.length > 0\) \{/);
++  assert.equal(s.match(/applyJss3ThirdTermSourceTextResolution\(/g)?.length, 1);
++  assert.equal(s.match(/redistributeJss3ThirdTermTopics\(/g)?.length, 1);
++  assert.match(s, /termLabel: t\.destinationTerm \?\? termLabel/);
++  // the three audit gates are present and feed the blocker count
++  for (const needle of ['must have zero instructional rows', 'is excluded but has a row', 'Claimed exact duplicate is not identical', 'is missing from this run']) {
++    assert.ok(s.includes(needle), needle);
++  }
++  assert.match(s, /subjectConflicts\.size \+ suspiciousTopics\.size \+ jss3Gate\.length;/);
++});
++
++// ── Real-source dry-run audit (only when a root is supplied) ───────────────
++const ROOT = process.env.JSS3_ALL_ROOT;
++const real = { skip: ROOT ? false : 'set JSS3_ALL_ROOT to run the real-source audit' } as const;
++const FOLDERS = ['JSS3 1ST TERM ', 'JSS3 2ND TERM ', 'JSS3 3RD TERM '];
++
++function run(root: string): { code: number; out: string } {
++  // Dry run only: --yes is intentionally never passed, so no DB connection is opened.
++  const r = spawnSync('npx', ['tsx', 'src/db/ingestTopics.ts', '--root', root, '--school-code', 'secondary'], {
++    cwd: backendDir, encoding: 'utf8', maxBuffer: 128 * 1024 * 1024,
++  });
++  return { code: r.status ?? -1, out: `${r.stdout}${r.stderr}` };
++}
++let full: { code: number; out: string } | undefined;
++const fullRun = () => (full ??= run(ROOT!));
++
++function rowsOf(o: string): Array<{ subject: string; term: string; n: number; src: string; file: string; week: string; title: string }> {
++  return [...o.matchAll(/^ {2}JSS 3 \/ (.+?) \/ (1st|2nd|3rd) Term #(\d+): (.+?) \/ (.+?) \/ (.*)$/gm)]
++    .map(m => ({ subject: m[1], term: `${m[2]} Term`, n: Number(m[3]), src: m[4], file: m[4].split('/').pop()!, week: m[5], title: m[6] }));
++}
++function mapCsv(o: string): string[][] {
++  const start = o.indexOf('JSS3 THIRD-TERM SOURCE -> DESTINATION MAP (csv)');
++  const end = o.indexOf('END JSS3 THIRD-TERM MAP');
++  assert.ok(start >= 0 && end > start, 'importer must print the source→destination map');
++  return o.slice(start, end).split('\n').slice(2).filter(Boolean).map(l => {
++    const cells: string[] = []; let cur = ''; let q = false;
++    for (let i = 0; i < l.length; i++) {
++      const c = l[i];
++      if (q) { if (c === '"' && l[i + 1] === '"') { cur += '"'; i++; } else if (c === '"') q = false; else cur += c; }
++      else if (c === '"') q = true; else if (c === ',') { cells.push(cur); cur = ''; } else cur += c;
++    }
++    cells.push(cur); return cells;
++  });
++}
++
++test('real sources: 39 originals, audit passes, 290 rows, no gate failure', real, () => {
++  assert.ok(ROOT && FOLDERS.every(f => existsSync(path.join(ROOT, f))), 'JSS3_ALL_ROOT must contain the three term folders');
++  const all = readdirSync(ROOT!, { recursive: true }).map(String).filter(f => /\.(docx?|rtf)$/i.test(f));
++  assert.equal(all.length, 39);
++  assert.equal(all.filter(f => /\.rtf$/i.test(f)).length, 0);
++  const { code, out } = fullRun();
++  assert.equal(code, 0, out.slice(-3000));
++  assert.match(out, /Found 39 candidate file\(s\)/);
++  assert.match(out, /Parsed 290 topic row\(s\) from 38 file\(s\)\./);
++  assert.match(out, /FILE AUDIT PASSED/);
++  assert.doesNotMatch(out, /gate FAILED|AUDIT BLOCKED|failed to read|DUPLICATE normalized content/);
++});
++
++test('real sources: Third Term has zero rows; Computer Studies has zero rows or files; terms 1/2 hold 143/147', real, () => {
++  const { out } = fullRun();
++  const rows = rowsOf(out);
++  assert.equal(rows.filter(r => r.term === '3rd Term').length, 0);
++  assert.doesNotMatch(out, /JSS 3 \/ [^\n]* \/ 3rd Term/);
++  assert.equal(rows.filter(r => r.term === '1st Term').length, 143);
++  assert.equal(rows.filter(r => r.term === '2nd Term').length, 147);
++  assert.equal(rows.length, 290);
++  assert.equal(rows.filter(r => /computer/i.test(r.subject)).length, 0);
++  assert.doesNotMatch(out, /Computer/i);
++  assert.equal(readdirSync(ROOT!, { recursive: true }).some(f => /comput|ict/i.test(String(f))), false);
++});
++
++test('real sources: every manifest instructional topic is imported once, in its destination, with its source file', real, () => {
++  const rows = rowsOf(fullRun().out);
++  const instr = JSS3_THIRD_TERM_MANIFEST.filter(e => e.classification === 'instructional');
++  assert.equal(instr.length, 49);
++  const norm = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
++  const third = rows.filter(r => r.src.startsWith('JSS3 3RD TERM '));
++  for (const e of instr) {
++    const hits = third.filter(r => r.file === e.basename && r.term === e.destination && norm(r.title) === norm(e.title));
++    assert.equal(hits.length, 1, `${e.basename} / ${e.week} / ${e.title} → ${e.destination}`);
++    assert.ok(!third.some(r => r.file === e.basename && norm(r.title) === norm(e.title) && r.term !== e.destination), `${e.title} must not appear in another term`);
++  }
++  const thirdFiles = third;
++  assert.equal(thirdFiles.length, 49);
++  // nothing that is revision/examination/held/duplicate leaked in
++  for (const e of JSS3_THIRD_TERM_MANIFEST.filter(x => x.kind === 'parsed' && x.classification !== 'instructional')) {
++    assert.equal(thirdFiles.filter(r => r.file === e.basename && norm(r.title) === norm(e.title)).length, 0, `${e.basename} / ${e.title} must not be imported`);
++  }
++});
++
++test('real sources: map covers every Third-Term source and item once, hashes present, duplicates proven', real, () => {
++  const csv = mapCsv(fullRun().out);
++  assert.equal(csv.length, JSS3_THIRD_TERM_MANIFEST.length);
++  const keys = csv.map(c => JSON.stringify([c[1], c[5], c[3], c[4]]));
++  assert.equal(new Set(keys).size, keys.length, 'duplicate mapping keys');
++  assert.deepEqual([...new Set(csv.map(c => c[1]))].sort(), [...JSS3_THIRD_TERM_REVIEWED_SOURCES].sort());
++  for (const c of csv) {
++    assert.equal(c[2], '3rd Term');
++    if (c[5] === 'parsed') assert.match(c[9], /^[0-9a-f]{64}$/, `${c[1]} / ${c[3]}`); else assert.equal(c[9], '');
++    if (c[6] === 'instructional') assert.ok(c[7] === '1st Term' || c[7] === '2nd Term');
++    else assert.equal(c[7], '');
++  }
++  assert.equal(csv.filter(c => c[6] === 'exact-duplicate').length, 6);
++  assert.ok(csv.filter(c => c[6] === 'exact-duplicate').every(c => c[8].startsWith('1st Term / JSS 3 CIVIC (E NOTE).docx / week ')));
++});
++
++test('real sources: every scheme-only phrase and every parsed heading really occurs in its source file', real, async () => {
++  const mammoth = (await import('mammoth')).default as { extractRawText(o: { path: string }): Promise<{ value: string }> };
++  const dir = path.join(ROOT!, 'JSS3 3RD TERM ');
++  const collapse = (s: string) => s.replace(/\s+/g, ' ').toLowerCase();
++  const texts = new Map<string, string>();
++  for (const f of JSS3_THIRD_TERM_REVIEWED_SOURCES) {
++    assert.ok(existsSync(path.join(dir, f)), `missing source ${f}`);
++    texts.set(f, collapse((await mammoth.extractRawText({ path: path.join(dir, f) })).value));
++  }
++  for (const e of JSS3_THIRD_TERM_MANIFEST) {
++    const t = texts.get(e.basename)!;
++    if (e.kind === 'scheme-only') assert.ok(t.includes(collapse(e.sourcePhrase!)), `${e.basename}: "${e.sourcePhrase}" not in source`);
++    else if (e.title !== 'revision') assert.ok(t.includes(collapse(e.title.replace(/^AKORI?N? EKO: /, '').replace(/\.$/, ''))) || e.basename === 'Fine art.docx', `${e.basename}: heading "${e.title}" not in source`);
++  }
++});
++
++test('real sources: existing First/Second-Term rows are an exact prefix of the run without Third Term', real, () => {
++  const tmp = mkdtempSync(path.join(os.tmpdir(), 'jss3-no3rd-'));
++  try {
++    for (const f of FOLDERS.slice(0, 2)) cpSync(path.join(ROOT!, f), path.join(tmp, f), { recursive: true });
++    const base = run(tmp);
++    assert.equal(base.code, 0, base.out.slice(-2000));
++    assert.match(base.out, /Parsed 241 topic row\(s\)/);
++    const before = rowsOf(base.out); const after = rowsOf(fullRun().out);
++    assert.equal(before.length, 241);
++    for (const term of ['1st Term', '2nd Term']) {
++      for (const subject of new Set(before.map(r => r.subject))) {
++        const b = before.filter(r => r.term === term && r.subject === subject).map(r => `${r.n}|${r.file}|${r.week}|${r.title}`);
++        const a = after.filter(r => r.term === term && r.subject === subject).map(r => `${r.n}|${r.file}|${r.week}|${r.title}`);
++        assert.deepEqual(a.slice(0, b.length), b, `${subject} ${term}: existing rows changed`);
++      }
++    }
++  } finally { rmSync(tmp, { recursive: true, force: true }); }
++});
++
++test('negative control: a missing reviewed Third-Term source fails the audit', real, () => {
++  const tmp = mkdtempSync(path.join(os.tmpdir(), 'jss3-missing-'));
++  try {
++    for (const f of FOLDERS) cpSync(path.join(ROOT!, f), path.join(tmp, f), { recursive: true });
++    rmSync(path.join(tmp, 'JSS3 3RD TERM ', 'PHE.docx'));
++    const r = run(tmp);
++    assert.notEqual(r.code, 0);
++    assert.match(r.out, /Reviewed JSS 3 Third-Term source is missing from this run: PHE\.docx/);
++    assert.match(r.out, /AUDIT BLOCKED/);
++  } finally { rmSync(tmp, { recursive: true, force: true }); }
++});
++
++test('negative control: an extra, unreviewed Third-Term source fails the audit', real, () => {
++  const tmp = mkdtempSync(path.join(os.tmpdir(), 'jss3-extra-'));
++  try {
++    for (const f of FOLDERS) cpSync(path.join(ROOT!, f), path.join(tmp, f), { recursive: true });
++    cpSync(path.join(ROOT!, 'JSS3 3RD TERM ', 'PHE.docx'), path.join(tmp, 'JSS3 3RD TERM ', 'Social studies.docx'));
++    const r = run(tmp);
++    assert.notEqual(r.code, 0);
++    assert.match(r.out, /AUDIT BLOCKED/);
++  } finally { rmSync(tmp, { recursive: true, force: true }); }
++});
++
++const hasPyDocx = spawnSync('python3', ['-c', 'import docx'], { encoding: 'utf8' }).status === 0;
++test('negative control: a tampered "duplicate" Civic body is rejected, not silently dropped', { skip: !ROOT ? 'set JSS3_ALL_ROOT' : !hasPyDocx ? 'python-docx unavailable' : false }, () => {
++  const tmp = mkdtempSync(path.join(os.tmpdir(), 'jss3-tamper-'));
++  try {
++    for (const f of FOLDERS) cpSync(path.join(ROOT!, f), path.join(tmp, f), { recursive: true });
++    const target = path.join(tmp, 'JSS3 3RD TERM ', 'CIVIC.docx');
++    const py = [
++      'import sys, docx',
++      'd = docx.Document(sys.argv[1])',
++      'for p in d.paragraphs:',
++      '    if "Citizen vote to elect" in p.text:',
++      '        p.runs[0].text = p.runs[0].text + " TAMPERED"; break',
++      'else: raise SystemExit("anchor not found")',
++      'd.save(sys.argv[1])',
++    ].join('\n');
++    execFileSync('python3', ['-c', py, target]);
++    const r = run(tmp);
++    assert.notEqual(r.code, 0);
++    assert.match(r.out, /Claimed exact duplicate is not identical to its 1st Term row/);
++  } finally { rmSync(tmp, { recursive: true, force: true }); }
++});
