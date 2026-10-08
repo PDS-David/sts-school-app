@@ -1,0 +1,28 @@
+--- a/backend/src/db/jss3EnglishLessonSplit.ts
++++ b/backend/src/db/jss3EnglishLessonSplit.ts
+@@ -1,4 +1,4 @@
+-/** Exact-source JSS3 English lesson segmentation. No original characters are removed.
++/** Exact-source JSS3 English lesson segmentation. Original instructional characters are preserved.
+  * Only structural WEEK markers are inserted between distinct instructional strands.
+  * Called solely by the JSS3 First/Second-Term source-resolution modules.
+  */
+@@ -7,12 +7,17 @@
+ const SECOND_LESSON = /^(?:[ \t]*(?:(?:GRAMMAR|SPEECH\s+WORK|COMPOSITION)[ \t]*:[ \t]*)?TOPIC[ \t]*:?[ \t]*(?!for\s+article\b)[^\n]+|[ \t]*(?:GRAMMAR[ \t]*:[ \t]*QUESTION\s+TAGS|SPEECH\s+WORK[ \t]*:[ \t]*VOWEL\s*\/Ә\/)[^\n]*)$/gim;
+ 
+ export function splitJss3EnglishLessons(text: string, term: '1st Term' | '2nd Term'): string {
+-  // Second-Term source has no WEEK ONE/TWO markers: the two original lesson
+-  // blocks precede WEEK THREE. Assign them Week 2 based on the source scheme.
++  // Second-Term source begins with a scheme of work (including Week 1
++  // revision), followed by two Week 2 instructional lessons before WEEK THREE.
++  // Exclude only that non-lesson scheme preamble from importer input.
+   if (term === '2nd Term') {
+     const first = /^\s*TOPIC\s*:\s*CONSONANT CONTRAST\s*\/t\/\s*and\s*\/s\//im.exec(text);
+     const week3 = /^[ \t]*WEEK[ \t]+THREE[ \t]*\r?$/im.exec(text);
+     if (!first || !week3 || first.index >= week3.index) throw new Error('JSS3 English 2nd Term: missing original Weeks 1–2 lessons or WEEK THREE anchor');
++    const schemePreamble = text.slice(0, first.index);
++    if (!/SCHEME|SHECME/i.test(schemePreamble) || !/Revision/i.test(schemePreamble)) {
++      throw new Error('JSS3 English 2nd Term: unexpected source preamble; refusing to discard text');
++    }
+     text = text.slice(first.index);
+     text = `WEEK TWO\n${text}`;
+   }
