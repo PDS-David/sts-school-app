@@ -87,6 +87,8 @@ if (!URL_) {
   }
 
   before(async () => {
+    // CI starts with an empty database; initialize before querying test residue.
+    await query(schemaSql);
     await cleanup(); // clear any residue from an earlier aborted run
     // Same statement migrate.ts sends — run twice below in the first test.
     await query('INSERT INTO schools(code, name) VALUES($1,$2)', [TEST_SC, 'T2 TEST SCHOOL (delete me)']);
