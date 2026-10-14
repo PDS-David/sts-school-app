@@ -1,9 +1,44 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import api from '../api/client';
+import api, { BASE_URL } from '../api/client';
+import { getSecureItem } from '../api/secureTokenStorage';
+import { loadLessonAssets } from '../api/lessonAssets';
 import { Card, Btn, Loader, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+
+// A lesson picture (Music notation, Basic Technology diagram) served by
+// GET /learning/assets/:id. The bytes need the same Bearer token as every other
+// call, so the image is loaded with an Authorization header. Labels live inside
+// the picture, so it is shown whole (resizeMode="contain", never cropped) at
+// full width, with its height taken from the picture's own proportions once it
+// has loaded. Animated GIFs are passed straight through unchanged.
+function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onRetry: () => void }) {
+  const [ratio, setRatio] = useState(4 / 3);
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return <View style={styles.assetWrap}>
+      <Text style={styles.assetFailed}>This lesson picture could not be loaded.</Text>
+      <Btn label="Retry pictures" onPress={onRetry} />
+    </View>;
+  }
+  return (
+    <View style={styles.assetWrap}>
+      <Image
+        source={{ uri: `${BASE_URL}${asset.url}`, headers: { Authorization: `Bearer ${token}` } }}
+        style={{ width: '100%', aspectRatio: ratio, backgroundColor: '#fff' }}
+        resizeMode="contain"
+        accessibilityLabel={asset.caption ?? 'Lesson illustration'}
+        onLoad={(e: any) => {
+          const src = e?.nativeEvent?.source;
+          if (src?.width && src?.height) setRatio(src.width / src.height);
+        }}
+        onError={() => setFailed(true)}
+      />
+      {asset.caption ? <Text style={styles.assetCaption}>{asset.caption}</Text> : null}
+    </View>
+  );
+}
 
 // POST /learning/topics/:id/complete is excluded from the offline outbox
 // (see api/client.ts) — it needs a live round trip and fails immediately,
@@ -20,6 +55,36 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   const [assessmentStatus, setAssessmentStatus] = useState<string | null>(null);
   const [note, setNote]             = useState<string | undefined>(undefined);
   const [summaryIsFallback, setSummaryIsFallback] = useState(false);
+  const [assets, setAssets]         = useState<any[]>([]);
+  const [token, setToken]           = useState<string | null>(null);
+
+  const [assetError, setAssetError] = useState(false);
+  const [assetsLoading, setAssetsLoading] = useState(false);
+  const [assetAttempt, setAssetAttempt] = useState(0);
+  const retryAssets = () => setAssetAttempt(n => n + 1);
+
+  // Read the token AFTER the API request: its interceptor may refresh it.
+  // Do not silently present a lesson as complete when its pictures failed.
+  useEffect(() => {
+    let alive = true;
+    setAssets([]);
+    setToken(null);
+    setAssetError(false);
+    setAssetsLoading(true);
+    (async () => {
+      try {
+        const result = await loadLessonAssets(
+          initialTopic.id, url => api.get(url), () => getSecureItem('access_token'),
+        );
+        if (alive) { setAssets(result.assets); setToken(result.token); }
+      } catch {
+        if (alive) setAssetError(true);
+      } finally {
+        if (alive) setAssetsLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [initialTopic.id, assetAttempt]);
 
   const complete = async () => {
     setLoading(true);
@@ -77,8 +142,18 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             <Text style={styles.summaryText}>{topic.summary}</Text>
           </View>
         ) : null}
+        {assetsLoading ? <Text style={styles.assetCaption}>Loading lesson pictures…</Text> : null}
+        {assetError ? <View style={styles.assetWrap}>
+          <Text style={styles.assetFailed}>Lesson pictures could not be checked. This lesson may be missing illustrations.</Text>
+          <Btn label="Retry pictures" onPress={retryAssets} />
+        </View> : null}
+        {token && assets.length > 0 ? (
+          <View style={{ marginTop: Spacing.md }}>
+            {assets.map((a: any) => <LessonImage key={`${initialTopic.id}:${a.id}:${assetAttempt}`} asset={a} token={token} onRetry={retryAssets} />)}
+          </View>
+        ) : null}
         <Btn
-            label={loading ? 'Loading…' : topic.summary ? 'Get Practice Questions' : 'Get Study Notes'
+            label={loading ? 'Loading…' : topic.summary ? 'Get Practice Questions' : 'Get Study Notes'}
             onPress={complete}
             loading={loading}
             style={{ marginTop: Spacing.sm }}
@@ -137,6 +212,9 @@ const styles = StyleSheet.create({
   fallbackBox: { flexDirection: 'row', alignItems: 'flex-start', gap: 6, backgroundColor: Colors.textSub + '15', padding: Spacing.sm, borderRadius: Radius.sm, marginBottom: Spacing.sm },
   fallbackText: { fontSize: Fonts.sizes.xs, color: Colors.textSub, flex: 1, lineHeight: 16 },
   summaryText: { fontSize: Fonts.sizes.sm, color: Colors.text, lineHeight: 20 },
+  assetWrap: { marginBottom: Spacing.md },
+  assetCaption: { fontSize: Fonts.sizes.xs, color: Colors.textSub, textAlign: 'center', marginTop: 4 },
+  assetFailed: { fontSize: Fonts.sizes.xs, color: Colors.textSub, fontStyle: 'italic', marginBottom: Spacing.md },
   noteBox: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: Spacing.sm, backgroundColor: Colors.success + '15', padding: Spacing.sm, borderRadius: Radius.sm },
   noteText: { fontSize: Fonts.sizes.xs, color: Colors.text, flex: 1 },
   practiceHint: { fontSize: Fonts.sizes.xs, color: Colors.textSub, fontStyle: 'italic', marginBottom: Spacing.sm },

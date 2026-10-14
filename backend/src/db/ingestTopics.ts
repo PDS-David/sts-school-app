@@ -75,6 +75,23 @@ import {
   resolveJss1SubjectName,
 } from './jss1CurriculumResolutions.js';
 import { applyJss2SourceTextResolution, resolveJss2SubjectName } from './jss2CurriculumResolutions.js';
+import { applyJss3SourceTextResolution, canonicalJss3Week, resolveJss3ParsedTopic } from './jss3CurriculumResolutions.js';
+import {
+  assertNoJss3PendingLeak, findJss3PendingLeaks, partitionJss3PendingEntries, pendingEntryKey, unconfirmedJss3PendingEntries,
+  type Jss3HeldRecord,
+} from './jss3PendingEntries.js';
+import {
+  applyJss3SecondTermSourceTextResolution,
+  resolveJss3SecondTermParsedTopic,
+} from './jss3SecondTermResolutions.js';
+import {
+  JSS3_EXCLUDED_SUBJECTS,
+  JSS3_THIRD_TERM_REVIEWED_SOURCES,
+  applyJss3ThirdTermSourceTextResolution,
+  redistributeJss3ThirdTermTopics,
+  type Jss3DuplicateClaim,
+  type Jss3ThirdTermRecord,
+} from './jss3ThirdTermRedistribution.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
@@ -443,6 +460,10 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   console.log(`Found ${allFiles.length} candidate file(s) under ${root}.\n`);
 
   const rows: Row[] = [];
+  // JSS3 scheme-only entries the manifest marks "do not import" (1F-R3): reported, never added to `rows`.
+  const jss3PendingHeld: Array<Jss3HeldRecord & { source: string }> = [];
+  const jss3PendingHeldKeys = new Set<string>();
+  const jss3PendingFilesSeen = new Set<string>();
   const unmappedClass: Set<string> = new Set();
   const missingTerm: Set<string> = new Set();
   const fallbackSubjects: Set<string> = new Set();
@@ -457,6 +478,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   // Near-copies remain fully audited; filenames such as "_1" are not evidence.
   const exactSourceHashes = new Map<string, string>();
   const exactDuplicateFiles: Array<{ duplicate: string; canonical: string }> = [];
+  // JSS3 Third Term is BECE preparation only: every Third-Term source topic is
+  // redistributed into 1st/2nd Term (or proven an exact duplicate) before it can
+  // become a row. See jss3ThirdTermRedistribution.ts.
+  const jss3ThirdTermClaims: Array<Jss3DuplicateClaim & { source: string }> = [];
+  const jss3ThirdTermRecords: Jss3ThirdTermRecord[] = [];
+  const jss3ThirdTermFilesSeen = new Set<string>();
 
   for (const filePath of allFiles) {
     try {
@@ -506,6 +533,14 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         text = applyJss1SourceTextResolution(path.basename(filePath), termLabel, text);
       } else if (validClassNames.includes('JSS 2')) {
         text = applyJss2SourceTextResolution(path.basename(filePath), termLabel, text);
+      } else if (validClassNames.includes('JSS 3')) {
+        text = applyJss3SourceTextResolution(path.basename(filePath), termLabel, text);
+        text = applyJss3SecondTermSourceTextResolution(path.basename(filePath), termLabel, text);
+      }
+      // JSS3 Third Term: BECE preparation only. Exact-source rules keyed on '3rd Term/<file>';
+      // kept outside the First/Second-Term branch so those wiring pins stay byte-identical.
+      if (validClassNames.includes('JSS 3')) {
+        text = applyJss3ThirdTermSourceTextResolution(path.basename(filePath), termLabel, text);
       }
 
       // Some files (confirmed real case: Nursery/Reception-style documents)
@@ -670,20 +705,46 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           if (section.subjectName.fallback) {
             fallbackSubjects.add(`${sourceIdentity(filePath)} / ${className} / ${termLabel} → ${section.subjectName.name}`);
           }
-          const parsed = parseTopics(section.sectionText)
+          const parsedAll = parseTopics(section.sectionText)
             .map(topic => schoolCode === 'primary'
               ? resolvePrimaryParsedTopic(path.basename(filePath), topic)
               : className === 'JSS 1'
                 ? resolveJss1ParsedTopic(path.basename(filePath), termLabel, topic)
-                : topic)
+                : className === 'JSS 3'
+                  ? resolveJss3ParsedTopic(path.basename(filePath), termLabel, topic)
+                  : topic)
+            .map(topic => className === 'JSS 3'
+              ? resolveJss3SecondTermParsedTopic(path.basename(filePath), termLabel, topic)
+              : topic)
             .filter((topic): topic is ParsedTopic => topic !== null);
-          if (parsed.length === 0) {
+          let parsed: Array<ParsedTopic & { destinationTerm?: string }> = parsedAll;
+          if (className === 'JSS 3' && termLabel === '3rd Term' && parsedAll.length > 0) {
+            jss3ThirdTermFilesSeen.add(path.basename(filePath));
+            const redistribution = redistributeJss3ThirdTermTopics(
+              path.basename(filePath), termLabel, section.subjectName.name, parsedAll,
+            );
+            parsed = redistribution.kept;
+            jss3ThirdTermClaims.push(...redistribution.claims.map(c => ({ ...c, source: sourceIdentity(filePath) })));
+            jss3ThirdTermRecords.push(...redistribution.records);
+          }
+          if (className === 'JSS 3') {
+            // Identity-based hold (class/subject/original term/file/week/title) applied before rows are built.
+            jss3PendingFilesSeen.add(`${termLabel}/${path.basename(filePath)}`);
+            const split = partitionJss3PendingEntries(className, termLabel, path.basename(filePath), section.subjectName.name, parsed);
+            parsed = split.kept;
+            for (const h of split.held) {
+              const { topic: _topic, ...record } = h;
+              jss3PendingHeld.push({ ...record, source: sourceIdentity(filePath) });
+              jss3PendingHeldKeys.add(pendingEntryKey(h.entry));
+            }
+          }
+          if (parsedAll.length === 0) {
             noWeekMarkers.push(`${sourceIdentity(filePath)} / ${section.subjectName.name} (no parseable week/topic structure)`);
           } else {
             // Report isolated empty weeks precisely instead of labelling an
             // otherwise valid document as wholly unparseable. They remain
             // hard blockers: nothing is silently discarded or imported.
-            for (const t of parsed.filter(topic => topic.title === '(untitled)')) {
+            for (const t of parsedAll.filter(topic => topic.title === '(untitled)')) {
               noWeekMarkers.push(
                 `${sourceIdentity(filePath)} / ${section.subjectName.name} / ${t.weekLabel} (week found but topic/title missing)`,
               );
@@ -702,7 +763,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
               );
             }
             rows.push({
-              filePath, className, termLabel, subjectName: section.subjectName.name,
+              filePath, className, termLabel: t.destinationTerm ?? termLabel, subjectName: section.subjectName.name,
               weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
             });
           });
@@ -750,6 +811,48 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     identities.add(identity);
   }
   const duplicates = [...contentFiles.entries()].filter(([, files]) => files.size > 1);
+  // ── JSS3 Third-Term reconciliation gates ────────────────────────────────
+  // Hard blockers: an instructional JSS3 Third-Term row, any JSS3 Computer Studies
+  // row, a claimed exact duplicate with no identical First/Second-Term row, or a
+  // reviewed Third-Term source that is absent from a run that includes Third-Term files.
+  const normalizedBodyHash = (body: string) =>
+    createHash('sha256').update(body.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim()).digest('hex');
+  const jss3Gate: string[] = [];
+  for (const r of rows) {
+    if (r.className !== 'JSS 3') continue;
+    if (r.termLabel === '3rd Term') {
+      jss3Gate.push(`JSS 3 Third Term must have zero instructional rows: ${sourceIdentity(r.filePath)} / ${r.subjectName} / ${r.weekLabel} / ${r.title}`);
+    }
+    if (JSS3_EXCLUDED_SUBJECTS.includes(r.subjectName)) {
+      jss3Gate.push(`JSS 3 ${r.subjectName} is excluded but has a row: ${sourceIdentity(r.filePath)} / ${r.termLabel} / ${r.weekLabel} / ${r.title}`);
+    }
+  }
+  for (const claim of jss3ThirdTermClaims) {
+    const claimed = normalizedBodyHash(claim.bodyHashInput);
+    const proven = rows.some(r =>
+      r.className === 'JSS 3'
+      && r.termLabel === claim.duplicateOf.term
+      && path.basename(r.filePath) === claim.duplicateOf.basename
+      && canonicalJss3Week(r.weekLabel) === claim.duplicateOf.week
+      && normalizedBodyHash(r.sourceReference) === claimed);
+    if (!proven) {
+      jss3Gate.push(`Claimed exact duplicate is not identical to its ${claim.duplicateOf.term} row: ${claim.source} / week ${claim.week} / ${claim.title} (expected ${claim.duplicateOf.basename} week ${claim.duplicateOf.week})`);
+    }
+  }
+  if (jss3ThirdTermFilesSeen.size > 0) {
+    for (const f of JSS3_THIRD_TERM_REVIEWED_SOURCES) {
+      if (!jss3ThirdTermFilesSeen.has(f)) jss3Gate.push(`Reviewed JSS 3 Third-Term source is missing from this run: ${f}`);
+    }
+  }
+  // Fail-closed controls for the held entries: none may be in the row set, and
+  // each one whose source file was read must have been located and held.
+  const jss3PendingGate: string[] = [
+    ...findJss3PendingLeaks(rows.map(r => ({
+      className: r.className, termLabel: r.termLabel, basename: path.basename(r.filePath),
+      subjectName: r.subjectName, weekLabel: r.weekLabel, title: r.title,
+    }))),
+    ...unconfirmedJss3PendingEntries(jss3PendingFilesSeen, jss3PendingHeldKeys),
+  ];
   const subjectTokensSeen = new Set(normalRows.map(r => r.subjectName));
 
   // ── Report ──────────────────────────────────────────────────────────────
@@ -825,14 +928,42 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     console.log(`\nDUPLICATE normalized content: ${contentLabels.get(key)}`);
     for (const file of files) console.log(`  ${file}`);
   }
+  if (jss3Gate.length > 0) {
+    console.log(`\nJSS3 Third-Term reconciliation gate FAILED: ${jss3Gate.length}`);
+    for (const item of jss3Gate) console.log(`  ${item}`);
+  }
+  if (jss3ThirdTermRecords.length > 0) {
+    const csvCell = (v: string) => `"${v.replace(/"/g, '""').replace(/[\r\n]+/g, ' ')}"`;
+    console.log('\nJSS3 THIRD-TERM SOURCE -> DESTINATION MAP (csv)');
+    console.log('subject,source_file,original_term,source_week,source_heading,kind,classification,destination_term,duplicate_of,source_content_sha256,note');
+    for (const rec of jss3ThirdTermRecords) {
+      console.log([
+        rec.subject, rec.basename, rec.originalTerm, rec.week, rec.title, rec.kind, rec.classification,
+        rec.destination, rec.duplicateOf, rec.bodyForHash ? normalizedBodyHash(rec.bodyForHash) : '', rec.note,
+      ].map(csvCell).join(','));
+    }
+    console.log('END JSS3 THIRD-TERM MAP');
+  }
+  if (jss3PendingHeld.length > 0 || jss3PendingGate.length > 0) {
+    console.log(`\nJSS3 PENDING ENTRIES — HELD, NOT IMPORTED (visible for audit only; excluded from the import plan): ${jss3PendingHeld.length}`);
+    for (const h of jss3PendingHeld) {
+      console.log(`  HELD: ${h.entry.className} / ${h.entry.subject} / original term ${h.entry.originalTerm} / ${h.source} / ${h.weekLabel} (manifest: ${h.entry.manifestWeek}) / ${h.entry.title}`);
+      console.log(`        source reference: ${h.bodyChars} chars, normalized sha256 ${h.bodySha256}; status: ${h.entry.integrationStatus}; approval: ${h.entry.approval}`);
+      console.log(`        reason: ${h.reason}`);
+    }
+    if (jss3PendingGate.length > 0) {
+      console.log(`JSS3 pending-entry control FAILED: ${jss3PendingGate.length}`);
+      for (const item of jss3PendingGate) console.log(`  ${item}`);
+    }
+  }
   console.log('\nNormal curriculum order (1-based, per class/subject/term):');
   for (const r of normalRows) {
     console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
   }
   const blocked = unmappedClass.size + missingTerm.size + noWeekMarkers.length + errors.length
     + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
-    + subjectConflicts.size + suspiciousTopics.size;
-  if (blocked || allFiles.length === 0) {
+    + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length;
+  if (blocked || jss3PendingGate.length > 0 || allFiles.length === 0) {
     console.log(`\nAUDIT BLOCKED — resolve the reported conditions before import. No database changes made.${allFiles.length === 0 ? ' No supported source files found.' : ''}`);
     process.exitCode = 1;
     return;
@@ -887,6 +1018,10 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         order_index: number;
         source_file: string;
       };
+      assertNoJss3PendingLeak(normalRows.map(r => ({
+        className: r.className, termLabel: r.termLabel, basename: path.basename(r.filePath),
+        subjectName: r.subjectName, weekLabel: r.weekLabel, title: r.title,
+      })));
       const plannedRows: PlannedDbRow[] = normalRows.map(r => ({
         subject_id: subjectIdByName.get(r.subjectName)!,
         class_name: r.className,

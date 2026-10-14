@@ -1,0 +1,46 @@
+name: JSS3 implementation and asset checks
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test_only_password
+          POSTGRES_DB: sts_jss3_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_jss3_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Backend and mobile types
+        run: |
+          ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+          ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
+      - name: Static and focused regressions
+        run: |
+          node --test tests/*.cjs
+          node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts
+      - name: Live PostgreSQL and real asset bytes
+        env:
+          TOPIC_ASSETS_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
+          T2_REAL_ASSETS: ${{ github.workspace }}/curriculum-assets/jss3
+        run: node --import tsx --test tests/topic-assets.db.test.mts

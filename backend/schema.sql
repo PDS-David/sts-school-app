@@ -772,3 +772,32 @@ ALTER TABLE users ADD COLUMN IF NOT EXISTS pending_admin_review BOOLEAN DEFAULT 
 
 
 
+
+-- ── Lesson assets (Task 2: Music notation + Basic Technology illustrations) ──
+-- ADDITIVE ONLY: one new table, nothing existing is altered. schema.sql is
+-- re-run in full on every migration, so every statement here is idempotent.
+-- Images are stored in the database (bytea, ~12 MB in total) and are served
+-- only by GET /learning/assets/:id — list queries must NEVER select `bytes`.
+-- Lesson text (topics.description / summary / source_reference) is untouched:
+-- assets are linked to a topic, never embedded in its text.
+--   asset_key  : stable human key from the manifest (e.g. 'BT-02', 'W2-1').
+--                UNIQUE(topic_id, asset_key) makes re-attaching a no-op while
+--                still allowing the same image bytes under two keys.
+--   displayed  : false = stored but not shown (e.g. the Wikipedia icon).
+--   ON DELETE CASCADE: deleting a topic (e.g. topicsDuplicatePairs.ts) removes
+--                its assets with it.
+CREATE TABLE IF NOT EXISTS topic_assets (
+  id          SERIAL PRIMARY KEY,
+  topic_id    INT  NOT NULL REFERENCES topics(id) ON DELETE CASCADE,
+  asset_key   TEXT NOT NULL,
+  kind        TEXT,
+  mime        TEXT NOT NULL,
+  sha256      TEXT NOT NULL,
+  caption     TEXT,
+  sort_order  INT  NOT NULL,
+  displayed   BOOLEAN NOT NULL DEFAULT true,
+  bytes       BYTEA NOT NULL,
+  created_at  TIMESTAMPTZ DEFAULT now(),
+  UNIQUE (topic_id, asset_key)
+);
+CREATE INDEX IF NOT EXISTS idx_topic_assets_topic_id ON topic_assets(topic_id);

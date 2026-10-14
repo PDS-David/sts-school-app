@@ -4,6 +4,7 @@ import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
+import type { AuthUser } from '../types/index.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 const termPinEnforced = process.env.TERM_PIN_ENFORCED === 'true';
@@ -220,6 +221,101 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   }
 
   return res.json({ topics: rows });
+});
+
+// ── Topic assets (images shown inside a lesson) ─────────────────────────────
+// Added for Task 2 (Music notation pictures, Basic Technology diagrams). Rows
+// live in topic_assets (see schema.sql); lesson text is never modified. Two
+// read-only endpoints, deliberately separate so list queries never touch the
+// image bytes:
+//   GET /learning/topics/:id/assets  → metadata only (displayed=true, ordered)
+//   GET /learning/assets/:id         → the bytes, with Content-Type + ETag
+// Visibility is exactly GET /topics's: same school, and a student/parent only
+// sees topics of their own class(es), a teacher only their class/subject.
+
+// Appends the same class/subject restriction GET /topics uses, for topics
+// aliased `t`. Returns null when the viewer can see no topics at all.
+async function topicVisibilitySql(user: AuthUser, params: unknown[]): Promise<string | null> {
+  if (user.role === 'teacher') {
+    const clauses: string[] = [];
+    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`t.class_name=$${params.length}`); }
+    if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`t.subject_id = ANY($${params.length})`); }
+    return clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
+  }
+  const viewerClasses = await resolveViewerClassNames(user);
+  if (viewerClasses) {
+    if (!viewerClasses.length) return null;
+    params.push(viewerClasses);
+    return ` AND (t.class_name = ANY($${params.length}) OR t.class_name IS NULL)`;
+  }
+  return '';
+}
+
+router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) => {
+  const topicId = Number(req.params.id);
+  if (!Number.isInteger(topicId) || topicId <= 0) return res.status(400).json({ error: 'Invalid topic id' });
+  const user = req.user!;
+  const { school_code } = req.query as Record<string, string>;
+  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+
+  const params: unknown[] = [topicId, sc];
+  const scope = await topicVisibilitySql(user, params);
+  // Not visible to this viewer (or not there): same empty answer GET /topics
+  // gives for a topic outside the viewer's classes.
+  if (scope === null) return res.json({ assets: [] });
+  const { rows: visible } = await query(
+    `SELECT t.id FROM topics t WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
+  );
+  if (!visible[0]) return res.json({ assets: [] });
+
+  // Metadata only — `bytes` is never selected here.
+  const { rows } = await query(
+    `SELECT id, asset_key, kind, mime, sha256, caption, sort_order
+       FROM topic_assets
+      WHERE topic_id=$1 AND displayed=true
+      ORDER BY sort_order, id`,
+    [topicId],
+  );
+  return res.json({
+    assets: rows.map((r: any) => ({ ...r, url: `/learning/assets/${r.id}` })),
+  });
+});
+
+router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
+  const assetId = Number(req.params.id);
+  if (!Number.isInteger(assetId) || assetId <= 0) return res.status(400).json({ error: 'Invalid asset id' });
+  const user = req.user!;
+  const { school_code } = req.query as Record<string, string>;
+  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+
+  const params: unknown[] = [assetId, sc];
+  const scope = await topicVisibilitySql(user, params);
+  if (scope === null) return res.status(404).json({ error: 'Asset not found' });
+  // Scope + metadata first (no bytes), so a 304 never reads the image.
+  const { rows: meta } = await query(
+    `SELECT a.mime, a.sha256
+       FROM topic_assets a
+       JOIN topics t ON t.id=a.topic_id
+      WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2${scope}`,
+    params,
+  );
+  if (!meta[0]) return res.status(404).json({ error: 'Asset not found' });
+
+  const etag = `"${meta[0].sha256}"`;
+  res.setHeader('ETag', etag);
+  res.setHeader('Cache-Control', 'private, max-age=86400');
+  const inm = String(req.headers['if-none-match'] ?? '');
+  if (inm && inm.split(',').map((s) => s.trim().replace(/^W\//, '')).includes(etag)) {
+    return res.status(304).end();
+  }
+
+  const { rows } = await query('SELECT bytes FROM topic_assets WHERE id=$1', [assetId]);
+  if (!rows[0]) return res.status(404).json({ error: 'Asset not found' });
+  const buf: Buffer = rows[0].bytes;
+  res.setHeader('Content-Type', meta[0].mime);
+  res.setHeader('Content-Length', String(buf.length));
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  return res.end(buf);
 });
 
 router.post('/topics', requirePerm('topics.write'), async (req, res) => {
