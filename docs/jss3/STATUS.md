@@ -16,6 +16,12 @@ The integrated curriculum implementation (prior patches 01–08), lesson-asset s
 
 Actual main() output capture (not a replay of parsing steps) confirms all seven Third-Term English teaching bodies, all five Basic Science bodies including Simple Machine, and all three Second-Term Yoruba bodies reach their executable rows unchanged. All eight First-Term Civic bodies equal the corresponding Third-Term bodies. Genuine Alpha Civic content is still not supplied.
 
+All four Music composites reconstruct pixel-for-pixel from the documented original-RTF render crops and overlays (MUSIC_COMPOSITE_CHECK.json). This verifies the supplied recomposition, not phone readability or pedagogical completeness.
+
+## GitHub verification
+
+Commit `50b58e69479d57926bcf969fcd9d61150a70238d` passed [GitHub run 38653220961](https://github.com/PDS-David/sts-school-app/actions/runs/38653220961): backend/mobile types, 16 static checks, 12 focused regressions, and all 18 live PostgreSQL tests, with no skipped tests. All 27 displayed assets downloaded byte-identical, including the three GIFs; hidden assets were not served. Test records were cleaned up. A fresh-database setup defect was fixed by creating the schema before test cleanup. This is a disposable test database, not production.
+
 ## Important acceptance boundary
 
 This code is NOT a claim that JSS3 content is complete, certified, imported or deployed. The user authorized the commit/push on 15 October. No production database operation is part of the push. Startup and build do not run migrations or import curriculum.
@@ -34,9 +40,9 @@ SOURCE_LINE_RECONCILIATION.csv retains all 585 prior candidate IDs/lines, includ
 
 1. Genuine Alpha Civic scheme and notes; missing English and Yoruba material; the ten held lesson bodies; five complete textbook references/passages/questions; unresolved phonetic/label/coverage decisions. See the material list and register.
 2. Complete semantic dispositions for remaining source-line candidates and any scheme objectives not already covered by the register. Do not invent material or silently exclude objectives.
-3. Verify Music composites against original RTF geometry and actual phone-size readability; confirm Basic Technology display is unclipped and all three GIFs animate. Recovered media bytes alone do not certify display or layout.
+3. Verify actual phone-size Music readability; confirm Basic Technology display is unclipped and all three GIFs animate. The four Music composites now match their documented source crops exactly, but this does not certify device display or layout.
 4. Compare the certified 2,179 Primary/JSS1/JSS2 rows with an authoritative row export. No such certified row export was found in the supplied inputs. No production rows were changed by this work.
-5. Run live PostgreSQL asset tests. The included GitHub workflow provisions a disposable database and uses repository assets; its outcome must be checked, not assumed. Local metadata tests used a simulated client.
+5. Live PostgreSQL asset tests are complete (18/18, run linked above). Existing-production-database compatibility and device acceptance remain separate gates.
 6. Review existing-database compatibility, backup/rollback and obtain authorization for the particular production migration/import. Existing imported English content may require a controlled update; do not use a destructive reset or bypass importer mismatch checks.
 
 ## Asset operation
