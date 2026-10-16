@@ -13,7 +13,7 @@ import data from './data/jss3Supplements.json' with { type: 'json' };
 const lessonSchema = z.object({
   id: z.string().regex(/^SUP-[A-Z0-9-]+$/),
   gapIds: z.array(z.string().regex(/^(EN[12]|PE|AK|TK|YO|WG)-[A-Z0-9-]+$/)).min(1),
-  subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Mathematics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science']),
+  subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Mathematics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science', 'Civic Education']),
   termLabel: z.enum(['1st Term', '2nd Term']),
   title: z.string().min(5),
   body: z.string().min(500),
@@ -26,7 +26,7 @@ export function validateJss3Supplements(input: unknown): Jss3Supplement[] {
   const ids = new Set<string>();
   for (const lesson of lessons) {
     for (const gap of lesson.gapIds) {
-      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE'].includes(gap)) {
+      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS'].includes(gap)) {
         throw new Error(`Unregistered wider-workstream gap: ${gap}`);
       }
     }
