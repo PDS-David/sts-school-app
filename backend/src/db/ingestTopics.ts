@@ -63,6 +63,7 @@ import mammoth from 'mammoth';
 // @ts-ignore — word-extractor ships no types
 import WordExtractor from 'word-extractor';
 import { createHash } from 'node:crypto';
+import { assertJss3SupplementCorpus, buildJss3SupplementRows, JSS3_SUPPLEMENTS, supplementBodyHash } from './jss3Supplements.js';
 import {
   applyPrimarySourceTextResolution,
   isPrimarySourceExcluded,
@@ -433,7 +434,7 @@ async function main() {
   const { root, schoolCode, yes, defaultTerm } = parseArgs(process.argv.slice(2));
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
-  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--yes]
+  npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--jss3-supplements] [--yes]
 
 --default-term is used ONLY for files whose path gives no term clue at all
 (e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
@@ -460,6 +461,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   console.log(`Found ${allFiles.length} candidate file(s) under ${root}.\n`);
 
   const rows: Row[] = [];
+  const jss3SupplementSources: Array<{termLabel: string; basename: string}> = [];
   // JSS3 scheme-only entries the manifest marks "do not import" (1F-R3): reported, never added to `rows`.
   const jss3PendingHeld: Array<Jss3HeldRecord & { source: string }> = [];
   const jss3PendingHeldKeys = new Set<string>();
@@ -508,6 +510,8 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         wrongSchoolCode.add(`${classNames.join('+')} — ${path.relative(root, filePath)}`);
         continue;
       }
+
+      if (validClassNames.includes('JSS 3')) jss3SupplementSources.push({termLabel, basename: path.basename(filePath)});
 
       if (schoolCode === 'primary' && isPrimarySourceExcluded(path.basename(filePath), sourceIdentity(filePath))) {
         console.log(`  verified Primary source excluded: ${sourceIdentity(filePath)}`);
@@ -772,6 +776,20 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       if (anyParsed) parsedFiles.add(filePath);
     } catch (e: any) {
       errors.push({ file: path.relative(root, filePath), error: e.message });
+    }
+  }
+
+  // Owner-authorised replacements are separate from unchanged original bodies.
+  // They are appended, never interleaved: existing topic/asset identities stay stable.
+  if (process.argv.includes('--jss3-supplements')) {
+    try {
+      assertJss3SupplementCorpus(jss3SupplementSources);
+      const supplements = buildJss3SupplementRows(rows, root, schoolCode);
+      rows.push(...supplements);
+      console.log('\nJSS3 OWNER-AUTHORISED SUPPLEMENTS (new material, original holds retained):');
+      supplements.forEach((row, i) => console.log(`  ${JSS3_SUPPLEMENTS[i].id} | ${JSS3_SUPPLEMENTS[i].gapIds.join(',')} | ${row.termLabel} | ${row.title} | sha256=${supplementBodyHash(row.sourceReference)}`));
+    } catch (e: any) {
+      errors.push({ file: '__jss3_supplements__', error: e.message });
     }
   }
 

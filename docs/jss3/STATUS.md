@@ -66,3 +66,9 @@ An authorized migration must install the topic_assets table before the new asset
 No original curriculum documents or source text were rewritten. No curriculum holds released. No SS curriculum changes. The asset screen changes were supplied in Task 2; this integration fixes token-refresh ordering and failure/retry behaviour. The supplied Task 2 bundle contains local commits for 01–05 plus assets, despite its report's unqualified no-commit wording. This implementation integrates 06–08 as well.
 
 For the local full-source verification package, use STS_JSS3_INTEGRATED_VERIFICATION.zip. Use its report and source hashes to reproduce the 139-test full-source run. The GitHub workflow tests software and asset delivery against a disposable database; it does not certify missing lesson content.
+
+## Implemented supplement update (15 October 2026)
+
+35 attributed lessons now run through the importer with `--jss3-supplements`. The combined plan is 348 rows: First 166, Second 182, Third 0; Computer Studies 0. Actual main() captures prove all 313 original row objects unchanged. Full selected English literature texts, four original comprehension passages, grammar/writing lessons, ten held-entry teaching replacements, Yoruba practice texts and two new teaching graphics are included. See replacements/IMPLEMENTATION.md for the exact coverage and current limitations. Seven multi-strand Yoruba entries remain partial; do not read the number of mapped IDs as certification. No production import has been performed.
+
+16 October: replacement batch expanded to 38 lessons, adding inheritance, naming ceremonies and the complete licensed Yoruba story Ramúramù ewúrẹ́. Current combined plan: 351 (168 First, 183 Second, zero Third); originals remain 313 unchanged. See replacements/IMPLEMENTATION.md and NEXT_AGENT_HANDOFF.md for limits and continuation.

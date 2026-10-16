@@ -454,7 +454,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   if (!summary) {
     try {
       const grounding = topic.source_reference
-        ? `\n\nBase this on the following curriculum material (the school's own scheme of work / lesson notes for this topic) rather than inventing content from the title alone:\n"""\n${topic.source_reference}\n"""`
+        ? `\n\nBase this on the following curriculum material (original lesson notes and, where labelled, attributed replacement teaching). Preserve that provenance; do not describe replacement passages as recovered textbook pages. Use the supplied content rather than inventing content from the title alone:\n"""\n${topic.source_reference}\n"""`
         : '';
       summary = await generate(
         `Write short, clear study notes on "${topic.title}" for a student learning it ` +
