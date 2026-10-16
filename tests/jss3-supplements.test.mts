@@ -29,7 +29,7 @@ test('duplicate application and duplicate IDs block', () => {
   assert.throws(() => validateJss3Supplements([...JSS3_SUPPLEMENTS, JSS3_SUPPLEMENTS[0]]), /Duplicate/);
 });
 test('third-term, computer-studies, bare-heading and unattributed inputs fail closed', () => {
-  for (const patch of [{termLabel: '3rd Term'}, {subjectName: 'Computer Studies'}, {body: 'heading only'}, {sources: []}, {sources: [{title:'Bad URL',url:'javascript:alert(1)'}]}]) {
+  for (const patch of [{termLabel: '3rd Term'}, {subjectName: 'Computer Studies'}, {body: 'heading only'}, {sources: []}, {gapIds:['WG-NOT-REGISTERED']}, {sources: [{title:'Bad URL',url:'javascript:alert(1)'}]}]) {
     assert.throws(() => validateJss3Supplements([{...JSS3_SUPPLEMENTS[0], ...patch}]));
   }
 });
@@ -77,7 +77,7 @@ test('literature supplies complete selected texts, not synopsis-only grounding',
 
 test('new lesson graphics validate against their manifests and stable destination identities', () => {
   const dir='curriculum-assets/jss3/supplements';
-  for (const [name,id] of [['BASIC_TECH','SUP-PE-06'],['BUSINESS','SUP-PE-04']]) {
+  for (const [name,id] of [['BASIC_TECH','SUP-PE-06'],['BUSINESS','SUP-PE-04'],['MUSIC','SUP-MUSIC-TIME']]) {
     const [asset]=prepareAssets(loadManifest(`${dir}/${name}_MANIFEST.csv`),dir);
     assert.equal(asset.mime,'image/png'); assert.equal(asset.displayed,true);
     assert.equal(asset.expected_title,JSS3_SUPPLEMENTS.find(s=>s.id===id)!.title);

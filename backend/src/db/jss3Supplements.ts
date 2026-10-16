@@ -12,7 +12,7 @@ import data from './data/jss3Supplements.json' with { type: 'json' };
 
 const lessonSchema = z.object({
   id: z.string().regex(/^SUP-[A-Z0-9-]+$/),
-  gapIds: z.array(z.string().regex(/^(EN[12]|PE|AK|TK|YO)-[A-Z0-9-]+$/)).min(1),
+  gapIds: z.array(z.string().regex(/^(EN[12]|PE|AK|TK|YO|WG)-[A-Z0-9-]+$/)).min(1),
   subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Mathematics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science']),
   termLabel: z.enum(['1st Term', '2nd Term']),
   title: z.string().min(5),
@@ -25,6 +25,11 @@ export function validateJss3Supplements(input: unknown): Jss3Supplement[] {
   const lessons = z.array(lessonSchema).min(1).parse(input);
   const ids = new Set<string>();
   for (const lesson of lessons) {
+    for (const gap of lesson.gapIds) {
+      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE'].includes(gap)) {
+        throw new Error(`Unregistered wider-workstream gap: ${gap}`);
+      }
+    }
     if (ids.has(lesson.id)) throw new Error(`Duplicate JSS3 supplement: ${lesson.id}`);
     ids.add(lesson.id);
     if (!/(?:practice|questions|assessment|ìbéèrè)/i.test(lesson.body)) throw new Error(`Missing learner task: ${lesson.id}`);
