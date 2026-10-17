@@ -17,9 +17,11 @@ for id,term,week,supports in spec:
  for objective,(key,anchor) in zip(objectives,supports):
   ev=support(key,anchor);out.append(dict(gap_id=id,source_file=str(p.relative_to(sources)),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),locator=f'table 1, row {i+1}, column 2',scheme_objective=objective,coverage='GENRE_RECOGNITION_PARTIAL' if id=='YO-T1-W2' and key=='SUP-YO-CULTURE' else ('ORIGINAL_BODY' if not key.startswith('SUP-') else 'OWNER_AUTHORISED_REPLACEMENT'),**ev,limit='Replacement reading is not represented as the unidentified government-prescribed book.' if 'LITIRESO' in objective and key=='SUP-YO-LICENSED-STORY' else ''))
 # Batch 2 additions: scheme strands covered at genre-analysis level by SUP-YO-ORAL-GENRES (no verse text supplied).
+BASE_LIMIT='Genre profiles, performance analysis and an observation task only. No traditional verse text is supplied; no performance is evidenced.'
+YALA_NOTE=' Owner-confirmed 16 Oct 2026 (not inferred): the scheme\'s printed "yala" (Week 2) is ijala (ìjálá); there is no Yoruba word "yala" in this scheme. Printed wording kept in scheme_objective.'
 def extra(id,term,week,idx,anchor):
  p=files[term];table=Document(p).tables[0];i,r=next((i,r) for i,r in enumerate(table.rows) if r.cells[0].text.strip().rstrip('.')==str(week))
- return dict(gap_id=id,source_file=str(p.relative_to(sources)),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),locator=f'table 1, row {i+1}, column 2, line {idx+1}',scheme_objective=r.cells[1].text.splitlines()[idx],coverage='GENRE_ANALYSIS_NO_VERSE_TEXT',**support('SUP-YO-ORAL-GENRES',anchor),limit='Genre profiles, performance analysis and an observation task only. No traditional verse text is supplied; yala (Week 2) is not resolved; no performance is evidenced.')
+ return dict(gap_id=id,source_file=str(p.relative_to(sources)),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),locator=f'table 1, row {i+1}, column 2, line {idx+1}',scheme_objective=r.cells[1].text.splitlines()[idx],coverage='GENRE_ANALYSIS_NO_VERSE_TEXT',**support('SUP-YO-ORAL-GENRES',anchor),limit=BASE_LIMIT+(YALA_NOTE if id=='YO-T1-W2' else ''))
 out+= [extra('YO-T1-W2',1,2,2,'Genre profile table'),extra('YO-SL-089',1,1,2,'Genre profile table'),extra('YO-SL-094',1,3,1,'Genre profile table')]
 with (dest/'YORUBA_OBJECTIVE_MAP.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=out[0].keys(),lineterminator="\n");w.writeheader();w.writerows(out)

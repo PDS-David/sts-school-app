@@ -16,7 +16,11 @@ test('Yoruba oral-genre lesson covers all five scheme genres and invents no vers
   for (const g of ['ìjálá', 'iwì egúngún', 'Ọya pípè', 'Ṣàngó pípè', 'iyẹ̀rẹ̀ Ifá']) assert.ok(b.includes(g), g);
   assert.match(b, /supplies no verses/); assert.match(b, /must not be invented or 'completed' from memory/);
   assert.ok(!/"[^"]{40,}"/.test(b) && !/“[^”]{40,}”/.test(b), 'no long quoted chant text');
-  assert.match(byId('SUP-YO-ORAL-GENRES').origin, /yala/);
+  const origin = byId('SUP-YO-ORAL-GENRES').origin;
+  assert.match(origin, /'yala'/); // printed wording preserved
+  assert.match(origin, /ìjálá/); assert.match(origin, /owner-confirmed, not inferred/);
+  assert.ok(!/not resolved/.test(origin), 'yala is no longer unresolved');
+  assert.match(origin, /not recovered/);
 });
 test('Batch 2 gap IDs are registered and sources are https links', () => {
   validateJss3Supplements(JSS3_SUPPLEMENTS);

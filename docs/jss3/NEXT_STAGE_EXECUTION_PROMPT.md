@@ -100,6 +100,8 @@ Use separate supplement IDs and gap mappings; preserve original source holds. Ex
 
 ### Yoruba oral-performance caution
 
+> **Owner decision, 16 Oct 2026:** the Week 2 printed `yala` is ìjálá (owner-confirmed, not inferred; no Yoruba word "yala" exists in this scheme). The sentence below about `yala` is retained as the original instruction history and is superseded for Week 2. The Week 3 spelling `ijale` remains an inferred reading.
+
 Read the original scheme and the actual NOUN/source sections, not just the recent review's summary. The original can establish that the printed wording is `yala`; it cannot necessarily establish the author's intended genre. Record ambiguity separately from an explicitly selected owner-authorised replacement. Recognition of Ìjálá, iwì egúngún and Ọya pípè alone does not prove coverage of performance texts, language/imagery analysis or delivery practice.
 
 Supply authentic reusable excerpts and meaningful analysis/performance tasks where required. Distinguish availability of a teaching task from evidence that students performed it. The NOUN guide is all-rights-reserved; respect reuse limits. A failed fetch does not prove a URL dead. The earlier review's proposed 354→355 is not a target: choose appropriate lesson scope, observe actual row delta, and justify it. Inspect existing SUP-ID validation before extending it unnecessarily.

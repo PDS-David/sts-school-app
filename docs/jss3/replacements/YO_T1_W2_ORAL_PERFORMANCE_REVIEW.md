@@ -15,6 +15,7 @@ Source: NOUN course guide *Ìfáárà sí Lítíréṣọ̀ Alohùn Yorùbá*, M
 
 ## Findings
 1. **Scheme wording is ambiguous.** The first item is written `yala`. It may be a truncated `ìjálá`, or `yálà` ("whether"). The current mapping assumes ìjálá. Only the original First-Term Yoruba DOCX (table 1, row 3, column 2) can settle it. Do not treat it as confirmed.
+   **Resolved 16 Oct 2026 (owner decision):** `yala` is ìjálá; the owner confirms there is no Yoruba word "yala" in this scheme. This is owner-confirmed, not inferred. The printed wording stays in the source records.
 2. **Genre recognition is covered; performance text is not.** The lesson names each genre, its context and a comparison task. It supplies no actual lines of any of the three genres, no analysis of language, imagery or delivery, no recitation or listening task.
 3. **Source limit.** The NOUN guide is all-rights-reserved. Further text must be short attributed excerpts, or come from a source with a licence that allows reuse.
 4. **Cited URL.** SUP-YO-CULTURE cites `.../YOR215%20-%20Introduction%20to%20Yoruba%20Oral%20Literature.pdf`. This review fetched `.../YOR%20215%20INTRODUCTION%20TO%20YOR%C3%99B%C3%81%20ORAL%20LITERATURE.pdf`. The cited URL could not be fetched here (tool restriction, not proof it is dead). Check it from a normal browser before the next release and correct `jss3Supplements.json` if needed.
