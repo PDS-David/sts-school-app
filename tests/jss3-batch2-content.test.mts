@@ -111,3 +111,48 @@ test('records name each new Yoruba lesson and keep the open owner questions', ()
   assert.ok(ob.some(r => r.id === 'OB-10') && ob.some(r => r.id === 'OB-11'));
   assert.ok(!/remaining Yoruba/.test(ob.find(r => r.id === 'OB-01')!.next_action));
 });
+
+// ── Batch 2 English First-Term review (SL-180 to SL-221) ───────────────────────────────────────────
+const EN_T1_ROWS = ['SL-180', 'SL-183', 'SL-191', 'SL-192', 'SL-198', 'SL-201', 'SL-202', 'SL-206', 'SL-207', 'SL-216', 'SL-217', 'SL-221'];
+test('the twelve English First-Term lead rows each carry an individually reviewed decision', () => {
+  const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); const decisions = csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');
+  const leads = ['LEAD_ONLY_NEEDS_READING', 'ORIGINAL_BODY_TEXT_PRESENT_NEEDS_CONFIRMATION'];
+  for (const id of EN_T1_ROWS) {
+    const d = decisions.find(r => r.candidate_id === id); assert.ok(d, id);
+    assert.ok(d.rationale.startsWith('Read:') || d.support_kind === 'marker', `${id} rationale records what was read`);
+    assert.ok(d.limitation.length > 5, id);
+    const c = closure.find(r => r.candidate_id === id)!; assert.equal(c.canonical_subject, 'English Language', id);
+    assert.equal(c.disposition, d.disposition, id); assert.ok(!leads.includes(c.disposition), id);
+    if (d.support_kind === 'supplement') {
+      const s = byId(d.row_filter); assert.ok(s, id); assert.equal(s.subjectName, 'English Language');
+      assert.ok(s.body.toLowerCase().includes(d.anchor_regex.toLowerCase()), `${id} anchor`);
+    }
+    if (d.support_kind === 'original') assert.match(c.support_locator, /anchor_sha256=[0-9a-f]{16}; row_sha256=[0-9a-f]{16}; verified_by=SEMANTIC_DECISIONS\.csv/, id);
+  }
+  // Only the omission with no executable teaching at all closes as a new replacement, and only partially.
+  assert.equal(closure.find(r => r.candidate_id === 'SL-202')!.disposition, 'REPLACEMENT_IMPLEMENTED_PARTIAL');
+  // Partial coverage is never reported as complete.
+  for (const id of ['SL-198', 'SL-221']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'ORIGINAL_LESSON_PARTIAL', id);
+  for (const id of ['SL-192', 'SL-201', 'SL-206', 'SL-207', 'SL-217']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'EXISTING_SUPPLEMENT_PARTIAL', id);
+});
+test('SUP-VOWEL-ER is a complete attributed lesson appended to the English First-Term bucket', () => {
+  const s = byId('SUP-VOWEL-ER'); assert.ok(s);
+  assert.equal(s.subjectName, 'English Language'); assert.equal(s.termLabel, '1st Term'); assert.deepEqual(s.gapIds, ['EN1-11']);
+  assert.match(s.origin, /not recovered/i); assert.ok(s.sources.length >= 2 && s.sources.every(x => x.url.startsWith('https://')));
+  for (const part of [/Objectives:/, /Teaching:/, /Minimal pairs/, /Practice A/, /Practice B/, /Practice C/, /Answers and marking guide/]) assert.match(s.body, part);
+  // Appended last in its subject/term bucket so no existing orderIndex moves.
+  const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'English Language' && x.termLabel === '1st Term');
+  assert.equal(bucket[bucket.length - 1].id, 'SUP-VOWEL-ER');
+  // The printed symbols are not presented as established fact, and the lesson does not claim a recovered note.
+  assert.match(s.body, /by inference/); assert.match(s.body, /not a recovered author's note/); assert.match(s.body, /cannot say what the printed \/c\/ was meant to be/);
+  assert.match(s.body, /do not infer pronunciation accuracy from a correct written sort/);
+  assert.doesNotMatch(s.body, /scheme (?:means|intends) \/ɔː\//);
+});
+test('records name SUP-VOWEL-ER and keep the English owner questions open', () => {
+  const impl = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv'); const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const ob = csv('docs/jss3/OPEN_BLOCKERS.csv');
+  const i = impl.find(r => r.id === 'SUP-VOWEL-ER')!; assert.ok(i); assert.equal(i.term, '1st Term'); assert.equal(i.gap_ids, 'EN1-11'); assert.equal(i.order_index, '34');
+  assert.ok(cov.some(r => r.id === 'EN1-11' && r.supplement_ids.includes('SUP-VOWEL-ER') && r.supplement_ids.includes('SUP-IPA')));
+  const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); assert.ok(sched.some(r => r.supplement_id === 'SUP-VOWEL-ER' && r.term === '1st Term'));
+  const o12 = ob.find(r => r.id === 'OB-12')!; assert.ok(o12); assert.match(o12.detail, /recommended/); assert.match(o12.detail, /by inference/);
+  assert.match(ob.find(r => r.id === 'OB-01')!.next_action, /English First Term/);
+});
