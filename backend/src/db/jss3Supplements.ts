@@ -26,7 +26,7 @@ export function validateJss3Supplements(input: unknown): Jss3Supplement[] {
   const ids = new Set<string>();
   for (const lesson of lessons) {
     for (const gap of lesson.gapIds) {
-      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198'].includes(gap)) {
+      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250'].includes(gap)) {
         throw new Error(`Unregistered wider-workstream gap: ${gap}`);
       }
     }

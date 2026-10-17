@@ -201,3 +201,64 @@ test('SUP-MODAL-WILL supplies will, would and shall as a complete attributed les
   assert.ok(csv('docs/jss3/replacements/CURRENT_COVERAGE.csv').some(r => r.id === 'WG-ENG-SL198' && r.supplement_ids === 'SUP-MODAL-WILL'));
   assert.ok(!/will, would and shall/.test(csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-12')!.next_action));
 });
+
+// ---- Batch 2: Mathematics semantic review (13 undecided Mathematics lines) ----
+test('Mathematics lessons SUP-MATH-JSS2-REVISION and SUP-MATH-VARIATION are complete, attributed and appended last', () => {
+  const want: Record<string, [string, string[], number]> = {
+    'SUP-MATH-JSS2-REVISION': ['1st Term', ['WG-MATH-SL145'], 11], 'SUP-MATH-VARIATION': ['2nd Term', ['WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250'], 14],
+  };
+  const inv = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv');
+  for (const [id, [term, gaps, order]] of Object.entries(want)) {
+    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Mathematics'); assert.equal(s.termLabel, term); assert.deepEqual(s.gapIds, gaps);
+    assert.match(s.body, /Practice \(questions\)/); assert.match(s.body, /Answers and marking guide/); assert.match(s.body, /Assessment and feedback/);
+    assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 2 && s.sources.every(x => x.url.startsWith('https://')));
+    const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'Mathematics' && x.termLabel === term);
+    assert.equal(bucket[bucket.length - 1].id, id); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
+    const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); gaps.forEach(g => assert.ok(cov.some(r => r.id === g && r.supplement_ids === id), g));
+    const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv'); gaps.forEach(g => assert.ok(wg.some(r => r.id === g && r.supplement_id === id), g));
+  }
+  assert.throws(() => validateJss3Supplements([{ ...byId('SUP-MATH-VARIATION'), gapIds: ['WG-MATH-SL999'] }]), /Unregistered/);
+});
+test('Mathematics worked examples and every exercise answer are recomputed independently', () => {
+  const v = byId('SUP-MATH-VARIATION').body, a = byId('SUP-MATH-JSS2-REVISION').body;
+  const has = (b: string, s: string) => assert.ok(b.includes(s), s);
+  // variation worked examples
+  const k1 = 12 / 4; has(v, `k = 12 / 4 = ${k1}, so y = ${k1}x. When x = 7, y = ${k1 * 7}`);
+  const k2 = 4 * 6; has(v, `k = xy = 4 x 6 = ${k2}, so y = ${k2}/x. When y = 8, x = ${k2} / 8 = ${k2 / 8}`);
+  const k3 = 60 / (3 * 4); has(v, `z = ${k3}xy. When x = 6 and y = 5, z = ${k3} x 6 x 5 = ${k3 * 30}`);
+  const b = (1900 - 1000) / 3, aa = 1000 - 2 * b; has(v, `b = ${b}. Then a = 1 000 - 2 x ${b} = ${aa}`); has(v, `c = ${aa} + ${b} x 8 = ${aa + b * 8}`);
+  // variation exercises 1-8
+  has(v, `p = 2.5 x 10 = ${15 / 6 * 10}`); has(v, `8 kg cost ${9000 / 5 * 8} naira`); has(v, `y = ${12 * 5} / 15 = ${12 * 5 / 15}`); has(v, `days = ${6 * 10} / 15 = ${60 / 15}`);
+  has(v, `M = ${18 / (30 * 0.2)} x 50 x 0.4 = ${18 / (30 * 0.2) * 50 * 0.4} g`); has(v, `x = ${60 / ((40 / 10) * 3)}`);
+  const qb = (2200 - 1300) / 3, qa = 1300 - 4 * qb; has(v, `b = ${qb}; a = 1 300 - 4 x ${qb} = ${qa}; fare for 10 km = ${qa} + ${qb} x 10 = ${qa + qb * 10} naira`);
+  // 2k1 + 3k2 = 17, 3k1 + 2k2 = 18 solved by Cramer's rule
+  const det = 2 * 2 - 3 * 3, c1 = (17 * 2 - 3 * 18) / det, c2 = (2 * 18 - 3 * 17) / det;
+  assert.equal(2 * c1 + 3 * c2, 17); assert.equal(3 * c1 + 2 * c2, 18); has(v, `k1 = ${c1}, k2 = ${c2}; y = ${c1} x 5 + ${c2} x 4 = ${c1 * 5 + c2 * 4}`);
+  const marksB = [2, 3, 2, 3, 3, 3, 4, 4, 4]; assert.equal(marksB.reduce((s, x) => s + x), 28); has(v, 'Total 28 marks');
+  // JSS 2 revision answers
+  has(a, '3/4 + 5/6'); assert.equal(3 * 6 + 5 * 4, 38); assert.equal(38 / 24, 19 / 12); /* 3/4 + 5/6 over 24, reduced */ has(a, '9/12 + 10/12 = 19/12 = 1 7/12'); assert.equal(Math.round((2 / 3 + 3 / 4) * 12), 17); has(a, '17/12 = 1 5/12');
+  assert.equal(Math.round(3.2 * 0.05 * 1000) / 1000, 0.16); has(a, '0.16'); has(a, 'x 0.04: 25 x 4 = 100'); assert.equal(Math.round(8000 * 1.15), 9200); assert.equal(Math.round(12500 * 0.88), 11000);
+  assert.deepEqual([840 / 7 * 2, 840 / 7 * 5], [240, 600]); has(a, '240 kg and 600 kg'); assert.deepEqual([560 / 8 * 3, 560 / 8 * 5], [210, 350]);
+  assert.equal(3 ** (2 + 3 - 4), 3); assert.equal(2 ** 3 * 2 ** 4, 128);
+  assert.deepEqual([4 - 6, 12 + 3], [-2, 15]); has(a, '-2x + 15'); assert.deepEqual([6 - 2, -15 + 8], [4, -7]); has(a, '4x - 7');
+  assert.equal((28 - 4) / (7 - 3), 6); assert.equal((9 + 7) / (5 - 3), 8); const x = (180 - 30) / 5; assert.deepEqual([2 * x + 10, 3 * x + 20], [70, 110]); has(a, 'x = 30');
+  assert.equal(0.5 * 14 * 9, 63); assert.equal((6 + 9 + 11 + 14 + 15) / 5, 11); assert.equal((4 + 7 + 9 + 12 + 13) / 5, 9);
+  const marksA = [2, 2, 2, 3, 2, 3, 2, 3, 4, 2, 2]; assert.equal(marksA.reduce((s, y) => s + y), 27); has(a, 'Total 27 marks');
+  // the corrected mark-scheme line stays correct (3.2 x 0.05 -> 32 x 5 = 160)
+  has(a, '32 x 5 = 160'); assert.ok(!a.includes('16 x 5 = 80'));
+});
+test('Mathematics: all 13 reviewed lines are decided with quoted evidence and no lead status remains', () => {
+  const ids = [145, 151, 154, 155, 156, 241, 243, 247, 248, 249, 250, 251, 262].map(n => `SL-${n}`);
+  const closure = Object.fromEntries(csv('docs/jss3/SEMANTIC_CLOSURE.csv').map(r => [r.candidate_id, r]));
+  const dec = Object.fromEntries(csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv').map(r => [r.candidate_id, r]));
+  const tally: Record<string, number> = {};
+  for (const id of ids) { assert.ok(dec[id], id); assert.equal(closure[id].disposition, dec[id].disposition, id); assert.match(dec[id].rationale, /'/, id); tally[dec[id].disposition] = (tally[dec[id].disposition] ?? 0) + 1; }
+  assert.deepEqual(tally, { ORIGINAL_LESSON_COVERS_OBJECTIVE: 4, REPLACEMENT_IMPLEMENTED: 4, STRUCTURAL_MARKER: 5 });
+  for (const r of Object.values(closure)) if (r.canonical_subject === 'Mathematics') assert.ok(!/^(LEAD_ONLY|ORIGINAL_BODY_TEXT_PRESENT)/.test(r.disposition), r.candidate_id);
+  // SL-145 closes only through an executable replacement body; the earlier 0.5 title match to a 32-character row is not coverage
+  assert.equal(dec['SL-145'].support_kind, 'supplement'); assert.match(dec['SL-145'].rationale, /32-character body/);
+  // revision-only markers are never presented as teaching
+  for (const id of ['SL-151', 'SL-155', 'SL-156', 'SL-251', 'SL-262']) assert.equal(dec[id].support_kind, 'marker');
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o14 = ob.find(r => r.id === 'OB-14')!; assert.match(o14.detail, /379/); assert.match(o14.detail, /75/);
+  assert.match(ob.find(r => r.id === 'OB-01')!.detail, /all 31 Mathematics source lines/);
+});
