@@ -132,7 +132,8 @@ test('the twelve English First-Term lead rows each carry an individually reviewe
   // Only the omission with no executable teaching at all closes as a new replacement, and only partially.
   assert.equal(closure.find(r => r.candidate_id === 'SL-202')!.disposition, 'REPLACEMENT_IMPLEMENTED_PARTIAL');
   // Partial coverage is never reported as complete.
-  for (const id of ['SL-198', 'SL-221']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'ORIGINAL_LESSON_PARTIAL', id);
+  assert.equal(closure.find(r => r.candidate_id === 'SL-221')!.disposition, 'ORIGINAL_LESSON_PARTIAL');
+  assert.equal(closure.find(r => r.candidate_id === 'SL-198')!.disposition, 'REPLACEMENT_IMPLEMENTED');
   for (const id of ['SL-192', 'SL-201', 'SL-206', 'SL-207', 'SL-217']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'EXISTING_SUPPLEMENT_PARTIAL', id);
 });
 test('SUP-VOWEL-ER is a complete attributed lesson appended to the English First-Term bucket', () => {
@@ -142,7 +143,8 @@ test('SUP-VOWEL-ER is a complete attributed lesson appended to the English First
   for (const part of [/Objectives:/, /Teaching:/, /Minimal pairs/, /Practice A/, /Practice B/, /Practice C/, /Answers and marking guide/]) assert.match(s.body, part);
   // Appended last in its subject/term bucket so no existing orderIndex moves.
   const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'English Language' && x.termLabel === '1st Term');
-  assert.equal(bucket[bucket.length - 1].id, 'SUP-VOWEL-ER');
+  // Order index 34 = 24 originals + its 10th position; later supplements append after it and never shift it.
+  assert.equal(bucket.findIndex(x => x.id === 'SUP-VOWEL-ER') + 25, 34);
   // The printed symbols are not presented as established fact, and the lesson does not claim a recovered note.
   assert.match(s.body, /by inference/); assert.match(s.body, /not a recovered author's note/); assert.match(s.body, /cannot say what the printed \/c\/ was meant to be/);
   assert.match(s.body, /do not infer pronunciation accuracy from a correct written sort/);
@@ -184,4 +186,18 @@ test('OB-13 keeps the past-question gap and OB-01 records English as fully revie
   const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o13 = ob.find(r => r.id === 'OB-13')!; assert.ok(o13);
   assert.match(o13.detail, /none is invented/); assert.match(o13.detail, /zero executable rows/);
   const o1 = ob.find(r => r.id === 'OB-01')!; assert.match(o1.next_action, /English \(all 24 English leads/); assert.doesNotMatch(o1.next_action, /Not yet reviewed:[^.]*English/);
+});
+
+test('SUP-MODAL-WILL supplies will, would and shall as a complete attributed lesson registered as WG-ENG-SL198', () => {
+  const s = byId('SUP-MODAL-WILL'); assert.ok(s);
+  assert.equal(s.subjectName, 'English Language'); assert.equal(s.termLabel, '1st Term'); assert.deepEqual(s.gapIds, ['WG-ENG-SL198']);
+  assert.match(s.origin, /not recovered/i); assert.ok(s.sources.every(x => x.url.startsWith('https://')));
+  for (const part of [/Teaching:/, /WILL —/, /WOULD —/, /SHALL —/, /Practice A/, /Practice B/, /Practice C/, /Answers and marking guide/]) assert.match(s.body, part);
+  const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'English Language' && x.termLabel === '1st Term');
+  assert.equal(bucket[bucket.length - 1].id, 'SUP-MODAL-WILL'); assert.equal(bucket.length + 24, 35);
+  assert.throws(() => validateJss3Supplements([{ ...s, gapIds: ['WG-ENG-UNREGISTERED'] }]), /Unregistered/);
+  const impl = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv').find(r => r.id === 'SUP-MODAL-WILL')!; assert.equal(impl.order_index, '35');
+  assert.ok(csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv').some(r => r.id === 'WG-ENG-SL198' && r.supplement_id === 'SUP-MODAL-WILL'));
+  assert.ok(csv('docs/jss3/replacements/CURRENT_COVERAGE.csv').some(r => r.id === 'WG-ENG-SL198' && r.supplement_ids === 'SUP-MODAL-WILL'));
+  assert.ok(!/will, would and shall/.test(csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-12')!.next_action));
 });
