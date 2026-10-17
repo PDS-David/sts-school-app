@@ -154,5 +154,34 @@ test('records name SUP-VOWEL-ER and keep the English owner questions open', () =
   assert.ok(cov.some(r => r.id === 'EN1-11' && r.supplement_ids.includes('SUP-VOWEL-ER') && r.supplement_ids.includes('SUP-IPA')));
   const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); assert.ok(sched.some(r => r.supplement_id === 'SUP-VOWEL-ER' && r.term === '1st Term'));
   const o12 = ob.find(r => r.id === 'OB-12')!; assert.ok(o12); assert.match(o12.detail, /recommended/); assert.match(o12.detail, /by inference/);
-  assert.match(ob.find(r => r.id === 'OB-01')!.next_action, /English First Term/);
+  assert.match(ob.find(r => r.id === 'OB-01')!.next_action, /English/);
+});
+
+// ── Batch 2 English Third-Term scheme lines (SL-501 to SL-514) ─────────────────────────────────────
+const EN_T3_ROWS = ['SL-501', 'SL-502', 'SL-503', 'SL-505', 'SL-506', 'SL-507', 'SL-509', 'SL-510', 'SL-511', 'SL-512', 'SL-513', 'SL-514'];
+test('the twelve English Third-Term lead rows are decided without inventing past questions or Third-Term content', () => {
+  const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); const decisions = csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');
+  for (const id of EN_T3_ROWS) {
+    const d = decisions.find(r => r.candidate_id === id); assert.ok(d, id); assert.ok(d.rationale.length > 40 && d.limitation.length > 5, id);
+    const c = closure.find(r => r.candidate_id === id)!; assert.equal(c.canonical_subject, 'English Language', id); assert.equal(c.disposition, d.disposition, id);
+    assert.ok(!['LEAD_ONLY_NEEDS_READING', 'ORIGINAL_BODY_TEXT_PRESENT_NEEDS_CONFIRMATION'].includes(c.disposition), id);
+    if (d.support_kind === 'supplement') { const s = byId(d.row_filter); assert.ok(s, id); assert.ok(s.body.toLowerCase().includes(d.anchor_regex.toLowerCase()), `${id} anchor`); }
+    if (d.support_kind === 'original') assert.match(c.support_locator, /anchor_sha256=[0-9a-f]{16}; row_sha256=[0-9a-f]{16}; verified_by=SEMANTIC_DECISIONS\.csv/, id);
+  }
+  // Past-question lines stay open for the owner; they are not closed by stand-in practice.
+  for (const id of ['SL-513', 'SL-514']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'OWNER_INPUT_NEEDED_PAST_QUESTIONS', id);
+  for (const id of ['SL-502', 'SL-506']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'EXISTING_SUPPLEMENT_PARTIAL', id);
+  assert.equal(closure.find(r => r.candidate_id === 'SL-501')!.disposition, 'STRUCTURAL_MARKER');
+  // All 24 English leads are now reviewed.
+  const en = closure.filter(r => r.canonical_subject === 'English Language');
+  assert.equal(en.filter(r => ['LEAD_ONLY_NEEDS_READING', 'ORIGINAL_BODY_TEXT_PRESENT_NEEDS_CONFIRMATION'].includes(r.disposition)).length, 0);
+  assert.equal(EN_T1_ROWS.length + EN_T3_ROWS.length, 24);
+  // No supplement exists for Third Term, and no past-paper lesson was added.
+  assert.ok(JSS3_SUPPLEMENTS.every(s => s.termLabel !== ('3rd Term' as string)));
+  assert.ok(!JSS3_SUPPLEMENTS.some(s => /past (?:question|paper)/i.test(s.title)));
+});
+test('OB-13 keeps the past-question gap and OB-01 records English as fully reviewed', () => {
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o13 = ob.find(r => r.id === 'OB-13')!; assert.ok(o13);
+  assert.match(o13.detail, /none is invented/); assert.match(o13.detail, /zero executable rows/);
+  const o1 = ob.find(r => r.id === 'OB-01')!; assert.match(o1.next_action, /English \(all 24 English leads/); assert.doesNotMatch(o1.next_action, /Not yet reviewed:[^.]*English/);
 });
