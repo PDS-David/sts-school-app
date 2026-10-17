@@ -23,6 +23,17 @@ def extra(id,term,week,idx,anchor):
  p=files[term];table=Document(p).tables[0];i,r=next((i,r) for i,r in enumerate(table.rows) if r.cells[0].text.strip().rstrip('.')==str(week))
  return dict(gap_id=id,source_file=str(p.relative_to(sources)),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),locator=f'table 1, row {i+1}, column 2, line {idx+1}',scheme_objective=r.cells[1].text.splitlines()[idx],coverage='GENRE_ANALYSIS_NO_VERSE_TEXT',**support('SUP-YO-ORAL-GENRES',anchor),limit=BASE_LIMIT+(YALA_NOTE if id=='YO-T1-W2' else ''))
 out+= [extra('YO-T1-W2',1,2,2,'Genre profile table'),extra('YO-SL-089',1,1,2,'Genre profile table'),extra('YO-SL-094',1,3,1,'Genre profile table')]
+# BATCH2_YORUBA_EXTRAS: scheme strands taught by the Prompt-1 lessons (see SEMANTIC_DECISIONS.csv)
+def extra2(id,term,week,idx,key,anchor,coverage,limit):
+ p=files[term];table=Document(p).tables[0];i,r=next((i,r) for i,r in enumerate(table.rows) if r.cells[0].text.strip().rstrip('.')==str(week))
+ return dict(gap_id=id,source_file=str(p.relative_to(sources)),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),locator=f'table 1, row {i+1}, column 2, line {idx+1}',scheme_objective=r.cells[1].text.splitlines()[idx],coverage=coverage,**support(key,anchor),limit=limit)
+_E=[('YO-SL-087',1,1,0,'SUP-YO-ISUNKI','ori + oke = oroke','PARTIAL_REPLACEMENT_IPAROJE_UNIDENTIFIED',"Contraction and assimilation from the school's own examples; 'iparoje' is in no body or source consulted and is not defined."),
+('YO-SL-099',1,5,0,'SUP-YO-IBEERE','Ṣé o ti rí Títí?','PARTIAL_REPLACEMENT_TERMS_INFERRED',"'taki' read as ta and kí and 'iwure' as question words: both inferred; dà/ńkọ́ meanings need a teacher's check."),
+('YO-SL-105',1,7,0,'SUP-YO-CLAUSE-REL','Remove the dependent clause','REPLACEMENT_IMPLEMENTED',"Built only from the school's own examples; no new rules."),
+('YO-SL-106',1,7,1,'SUP-YO-OBATALA','Ọbàtálá, also called Òrìṣànlá','PARTIAL_REPLACEMENT_IDENTITY_UNCONFIRMED',"'obalale' read as Ọbàtálá by inference; Ọbalúayé also close and not taught."),
+('YO-SL-323',2,1,1,'SUP-YO-ORAL-TEXTS','What the texts show about culture','PARTIAL_REPLACEMENT_TWO_TEXTS',"Two verified texts only; no Ṣàngó, Ọya or egúngún verse found; 'suyo' read as 'come out of', unconfirmed."),
+('YO-SL-327',2,2,2,'SUP-YO-ORAL-TEXTS','Oral literature is composed, performed and handed on by mouth','REPLACEMENT_IMPLEMENTED',"Texts are translations; Ifá lines also in Yoruba as printed in the source.")]
+out+=[extra2(a,b,c,d,e,f,g,h) for (a,b,c,d,e,f,g,h) in _E]
 with (dest/'YORUBA_OBJECTIVE_MAP.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=out[0].keys(),lineterminator="\n");w.writeheader();w.writerows(out)
 print(len(out),'source strands mapped and anchors verified')
