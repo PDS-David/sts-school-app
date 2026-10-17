@@ -262,3 +262,50 @@ test('Mathematics: all 13 reviewed lines are decided with quoted evidence and no
   const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o14 = ob.find(r => r.id === 'OB-14')!; assert.match(o14.detail, /379/); assert.match(o14.detail, /75/);
   assert.match(ob.find(r => r.id === 'OB-01')!.detail, /all 31 Mathematics source lines/);
 });
+
+test('Home Economics: validator accepts the subject and only the registered WG-HE gap IDs', () => {
+  const s = byId('SUP-HE-PROJECT');
+  assert.equal(validateJss3Supplements([s]).length, 1);
+  assert.throws(() => validateJss3Supplements([{ ...s, gapIds: ['WG-HE-SL999'] }]), /Unregistered/);
+  assert.throws(() => validateJss3Supplements([{ ...s, subjectName: 'Computer Studies' as never }]));
+  assert.throws(() => validateJss3Supplements([{ ...s, termLabel: '3rd Term' as never }]));
+});
+test('Home Economics: four new lessons are complete, attributed and placed in the right term', () => {
+  const want: Record<string, [string, string[]]> = {
+    'SUP-HE-MOTHERHOOD': ['1st Term', ['WG-HE-SL541', 'WG-HE-SL542']], 'SUP-HE-FOOD-REVISION': ['2nd Term', ['WG-HE-SL536']],
+    'SUP-HE-BABY-CARE': ['2nd Term', ['WG-HE-SL547', 'WG-HE-SL551']], 'SUP-HE-PROJECT': ['2nd Term', ['WG-HE-SL556']],
+  };
+  const ids = JSS3_SUPPLEMENTS.map(x => x.id);
+  for (const [id, [term, gaps]] of Object.entries(want)) {
+    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Home Economics'); assert.equal(s.termLabel, term); assert.deepEqual(s.gapIds, gaps);
+    assert.match(s.body, /Practice \(questions\)/); assert.match(s.body, /Answers and marking guide/); assert.match(s.body, /Assessment and feedback/);
+    assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1); for (const src of s.sources) assert.ok(src.url.startsWith('https://'));
+  }
+  // appended at the end of the file, after every earlier lesson
+  assert.deepEqual(ids.slice(-4), Object.keys(want));
+});
+test('Home Economics: worked arithmetic and mark totals in the new lessons are correct', () => {
+  const f = byId('SUP-HE-FOOD-REVISION').body;
+  assert.equal(6000 + 400, 6400); assert.equal(6400 * 25 / 100, 1600); assert.equal((6400 + 1600) / 20, 400); assert.ok(f.includes('Price of one pie = 8,000 / 20 = 400 naira'));
+  assert.equal(4500 + 300, 4800); assert.equal(4800 * 20 / 100, 960); assert.equal((4800 + 960) / 30, 192); assert.ok(f.includes('5,760') && f.includes('192 naira'));
+  assert.equal(4 + 5 + 2 + 1 + 2 + 4 + 4, 22); assert.ok(f.includes('total 22 marks'));
+  assert.equal(3 + 3 + 3 + 3 + 2 + 2 + 1, 17); assert.ok(byId('SUP-HE-MOTHERHOOD').body.includes('total 17 marks'));
+  assert.equal(1 + 1 + 1 + 2 + 4 + 1 + 2, 12); assert.ok(byId('SUP-HE-BABY-CARE').body.includes('total 12 marks'));
+  assert.equal(7 + 2 + 1 + 3 + 1, 14); assert.ok(byId('SUP-HE-PROJECT').body.includes('written practice 14 marks'));
+});
+test('Home Economics: all 14 reviewed lines are decided with quoted evidence and none remains a lead', () => {
+  const ids = [536, 538, 540, 541, 542, 543, 544, 545, 547, 548, 550, 551, 552, 556].map(n => `SL-${n}`);
+  const closure = Object.fromEntries(csv('docs/jss3/SEMANTIC_CLOSURE.csv').map(r => [r.candidate_id, r]));
+  const dec = Object.fromEntries(csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv').map(r => [r.candidate_id, r]));
+  const tally: Record<string, number> = {};
+  for (const id of ids) {
+    assert.ok(dec[id], id); assert.equal(closure[id].canonical_subject, 'Home Economics'); assert.equal(closure[id].disposition, dec[id].disposition, id);
+    assert.match(dec[id].rationale, /'/, id); tally[dec[id].disposition] = (tally[dec[id].disposition] ?? 0) + 1;
+    if (dec[id].support_kind === 'supplement') { const s = byId(dec[id].row_filter); assert.ok(s, id); assert.ok(s.body.toLowerCase().includes(dec[id].anchor_regex.toLowerCase()), id); }
+  }
+  assert.deepEqual(tally, { ORIGINAL_LESSON_COVERS_OBJECTIVE: 8, REPLACEMENT_IMPLEMENTED: 6 });
+  for (const r of Object.values(closure)) if (r.canonical_subject === 'Home Economics') assert.ok(!/^(LEAD_ONLY|ORIGINAL_BODY_TEXT_PRESENT)/.test(r.disposition), r.candidate_id);
+  // omissions confirmed by the original bodies: labour, hygiene/packaging, baby-equipment cleaning, project work
+  for (const id of ['SL-536', 'SL-541', 'SL-542', 'SL-547', 'SL-551', 'SL-556']) assert.equal(dec[id].support_kind, 'supplement');
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.ok(ob.find(r => r.id === 'OB-15')); assert.match(ob.find(r => r.id === 'OB-01')!.detail, /all 14 Home Economics leads/);
+});
