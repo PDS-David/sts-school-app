@@ -495,3 +495,49 @@ test('OB-14, OB-17 and OB-18 record the equation loss, the duplicate-row fix and
   const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); const sids = sched.map(r => r.supplement_id); assert.equal(new Set(sids).size, sids.length, 'schedule has no duplicate rows');
   for (const id of Object.keys(MATH_NEW)) assert.ok(sched.some(r => r.supplement_id === id), id);
 });
+
+// ---- Batch 2: Basic Technology, remaining eight lead rows ----
+const BT_NEW: Record<string, [string[], number]> = {
+  'SUP-BT-METAL-PROJECT': [['WG-BT-SL359'], 16], 'SUP-BT-WIRING': [['WG-BT-SL360'], 17], 'SUP-BT-TROUBLESHOOT': [['WG-BT-SL444'], 18],
+  'SUP-BT-ELECTRONIC-DEVICES': [['WG-BT-SL447', 'WG-BT-SL448'], 19], 'SUP-BT-SLIDES-SLOTS': [['WG-BT-SL454'], 20], 'SUP-BT-REVERSIBLE-ROTARY': [['WG-BT-SL457'], 21],
+};
+test('six Basic Technology lessons are complete, attributed, registered, appended in order and recorded', () => {
+  validateJss3Supplements(JSS3_SUPPLEMENTS);
+  const inv = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv'); const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv');
+  for (const [id, [gaps, order]] of Object.entries(BT_NEW)) {
+    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Basic Technology'); assert.equal(s.termLabel, '2nd Term'); assert.deepEqual(s.gapIds, gaps);
+    for (const part of [/Objectives:/, /Teaching:/, /Practice \(questions\):/, /Answers and marking guide/, /Assessment and feedback/]) assert.match(s.body, part, id);
+    assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1 && s.sources.every(x => x.url.startsWith('https://')), id);
+    assert.equal(inv.filter(r => r.id === id).length, 1, id); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
+    for (const g of gaps) { assert.ok(cov.some(r => r.id === g && r.supplement_ids === id), g); assert.ok(wg.some(r => r.id === g && r.supplement_id === id), g); }
+  }
+  const bt2 = JSS3_SUPPLEMENTS.filter(s => s.subjectName === 'Basic Technology' && s.termLabel === '2nd Term').map(s => s.id); assert.deepEqual(bt2, Object.keys(BT_NEW), 'appended in order');
+});
+test('Basic Technology gap IDs are registered and an unregistered WG-BT ID is still rejected', () => {
+  const s = byId('SUP-BT-WIRING');
+  assert.doesNotThrow(() => validateJss3Supplements([s]));
+  assert.throws(() => validateJss3Supplements([{ ...s, gapIds: ['WG-BT-SL999'] }]), /Unregistered wider-workstream gap/);
+});
+test('Basic Technology worked answers are computed', () => {
+  assert.equal(12 + 4, 16); assert.equal(12 / 16, 0.75); assert.equal(0.75 * 12, 9); assert.equal(0.75 * 4, 3);
+  assert.equal(12 / 6 + 12 / 3, 6); assert.equal(1 / (1 / 6 + 1 / 3), 2); assert.equal(12 / 6, 2);
+  assert.equal(10 + 5, 15); assert.equal(6 / 15, 0.4); assert.equal(12 / 6 + 12 / 12, 3);
+  assert.equal(2 * 40, 80); assert.equal(2 * 25, 50); assert.equal(4 * 4 + 4, 20); assert.equal(6 * 5, 30);
+  assert.equal(120 * 20 / 40, 60); assert.equal(200 * 15 / 30, 100);
+  const w = byId('SUP-BT-WIRING').body; for (const t of ['= 16 ohm', '0.75 A', '9 V', '3 V', 'supply current = 6 A', '0.4 A', 'supply current 3 A']) assert.ok(w.includes(t), t);
+  assert.ok(byId('SUP-BT-SLIDES-SLOTS').body.includes('80 mm') && byId('SUP-BT-SLIDES-SLOTS').body.includes('50 mm'));
+  assert.ok(byId('SUP-BT-REVERSIBLE-ROTARY').body.includes('60 rpm') && byId('SUP-BT-REVERSIBLE-ROTARY').body.includes('100 rpm'));
+  assert.ok(byId('SUP-BT-METAL-PROJECT').body.includes('20 rivets') && byId('SUP-BT-METAL-PROJECT').body.includes('30 rivets'));
+});
+test('all 11 Basic Technology lead rows carry a reviewed decision and none stays a lead', () => {
+  const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); const decisions = csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');
+  const ids = ['SL-028', 'SL-043', 'SL-359', 'SL-360', 'SL-444', 'SL-447', 'SL-448', 'SL-453', 'SL-454', 'SL-457', 'SL-458'];
+  for (const id of ids) {
+    const d = decisions.find(r => r.candidate_id === id); assert.ok(d, id); const c = closure.find(r => r.candidate_id === id)!;
+    assert.equal(c.canonical_subject, 'Basic Technology', id); assert.equal(c.disposition, d.disposition, id); assert.ok(!LEAD_STATES.includes(c.disposition), id);
+    if (d.support_kind === 'supplement') { assert.ok(d.rationale.startsWith('Read'), id); assert.ok(byId(d.row_filter).body.toLowerCase().includes(d.anchor_regex.toLowerCase()), `${id} anchor`); }
+  }
+  assert.equal(closure.filter(r => LEAD_STATES.includes(r.disposition)).length, 0);
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.ok(ob.find(r => r.id === 'OB-19')); assert.match(ob.find(r => r.id === 'OB-01')!.detail, /Basic Technology: all 11 leads decided/);
+  const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); for (const id of Object.keys(BT_NEW)) assert.ok(sched.some(r => r.supplement_id === id), id);
+});
