@@ -13,7 +13,7 @@ import data from './data/jss3Supplements.json' with { type: 'json' };
 const lessonSchema = z.object({
   id: z.string().regex(/^SUP-[A-Z0-9-]+$/),
   gapIds: z.array(z.string().regex(/^(EN[12]|PE|AK|TK|YO|WG)-[A-Z0-9-]+$/)).min(1),
-  subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Mathematics', 'Home Economics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science', 'Civic Education']),
+  subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Mathematics', 'Home Economics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science', 'Civic Education', 'Cultural & Creative Arts', 'French', 'Social Studies']),
   termLabel: z.enum(['1st Term', '2nd Term']),
   title: z.string().min(5),
   body: z.string().min(500),
@@ -26,7 +26,7 @@ export function validateJss3Supplements(input: unknown): Jss3Supplement[] {
   const ids = new Set<string>();
   for (const lesson of lessons) {
     for (const gap of lesson.gapIds) {
-      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250', 'WG-HE-SL536', 'WG-HE-SL541', 'WG-HE-SL542', 'WG-HE-SL547', 'WG-HE-SL551', 'WG-HE-SL556'].includes(gap)) {
+      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250', 'WG-HE-SL536', 'WG-HE-SL541', 'WG-HE-SL542', 'WG-HE-SL547', 'WG-HE-SL551', 'WG-HE-SL556', 'WG-CCA-SL293', 'WG-CCA-SL295', 'WG-FR-SL282', 'WG-FR-SL285', 'WG-SS-SL433', 'WG-SS-SL434', 'WG-SS-SL435', 'WG-MUSIC-SL566', 'WG-MUSIC-SL567'].includes(gap)) {
         throw new Error(`Unregistered wider-workstream gap: ${gap}`);
       }
     }
