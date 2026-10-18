@@ -451,7 +451,7 @@ test('new Mathematics worked examples and answers are recomputed independently',
   const srt = [...d].sort((a, b) => a - b); assert.equal((srt[4] + srt[5]) / 2, 6.5);
   const fr = [2, 1, 2, 1, 3, 1, 2, 3, 4, 1]; const sf = fr.reduce((a, b) => a + b, 0), sfx = fr.reduce((a, b, i) => a + b * i, 0); assert.equal(sf, 20); assert.equal(sfx, 99); assert.equal(sfx / sf, 4.95);
   const m2 = [14, 9, 12, 9, 16, 11, 9, 15]; assert.equal(m2.reduce((a, b) => a + b, 0) / 8, 11.875);
-  const marks = [42, 44, 50, 40, 54, 48, 10, 88]; assert.equal(marks.reduce((a, b) => a + b, 0) / 8, 47); has('SUP-MATH-AVERAGES', 'mean = 376 ÷ 8 = 47'); has('SUP-MATH-AVERAGES', 'prints the mean as 48');
+  const marks = [42, 44, 50, 40, 54, 48, 10, 88]; assert.equal(marks.reduce((a, b) => a + b, 0) / 8, 47); has('SUP-MATH-AVERAGES', 'mean = 376 ÷ 8 = 47'); has('SUP-MATH-AVERAGES', 'printed the mean as 48');
   assert.equal((3 * 108 + 5 * 37 + 8 * 38 + 6 * 39 + 2 * 40) / 24 > 37.95, true); has('SUP-MATH-AVERAGES', '911 ÷ 24 = 37.96');
   // graphical and word problems: intersections and checks
   assert.equal(0.5 * 2 - 2, 2 * 2 - 5); assert.equal(2 - 2 * -1, 4); assert.equal(2 * 2 - -1, 5); has('SUP-MATH-SIMULT-GRAPH', 'cross at (2, −1)');
@@ -489,9 +489,10 @@ test('all 18 Mathematics lead rows carry a reviewed decision that records what w
   assert.equal(closure.filter(r => r.canonical_subject === 'Mathematics' && leads.includes(r.disposition)).length, 0);
 });
 test('OB-14, OB-17 and OB-18 record the equation loss, the duplicate-row fix and the source slips', () => {
-  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o14 = ob.find(r => r.id === 'OB-14')!; assert.match(o14.detail, /nine rows only partly taught/);
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o14 = ob.find(r => r.id === 'OB-14')!; assert.match(o14.detail, /RESOLVED for Word equations/); assert.match(o14.detail, /M1-T-FORMULA/);
+  assert.match(ob.find(r => r.id === 'OB-19')!.detail, /ALGEBRAIC PROCESSES/);
   assert.equal(ob.find(r => r.id === 'OB-17')!.type, 'resolved');
-  const o18 = ob.find(r => r.id === 'OB-18')!; assert.ok(o18); assert.match(o18.detail, /Mean = 48/); assert.match(o18.detail, /x = 260/); assert.match(o18.detail, /350o/);
+  const o18 = ob.find(r => r.id === 'OB-18')!; assert.ok(o18); assert.match(o18.detail, /Mean 48 to 47/); assert.match(o18.detail, /x = 260 to 280/); assert.match(o18.detail, /350o to 35o/);
   const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); const sids = sched.map(r => r.supplement_id); assert.equal(new Set(sids).size, sids.length, 'schedule has no duplicate rows');
   for (const id of Object.keys(MATH_NEW)) assert.ok(sched.some(r => r.supplement_id === id), id);
 });
@@ -572,4 +573,52 @@ test('no scratch capture file is tracked, and the five mapping entries stay reso
   for (const id of ['EN2-03', 'YO-T1-MAP', 'YO-T2-MAP', 'YO-T3-MAP', 'YO-OWE']) { assert.ok(mp.some(r => r.id === id && r.executable_rows.length > 10), id); assert.equal(cov.find(r => r.id === id)!.current_status, 'MAPPING_VERIFIED_PROVENANCE_PRESERVED', id); }
   const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.match(ob.find(r => r.id === 'OB-09')!.detail, /NOT run on 24\.19\.0/); assert.equal(ob.find(r => r.id === 'OB-20')!.type, 'resolved');
   const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); assert.equal(closure.filter(r => LEAD_STATES.includes(r.disposition)).length, 0);
+
+// ── OB-14 equation recovery and OB-18 slip corrections (18 Oct 2026) ─────────────────────────────
+import { ommlToText, isJss3EquationSource, replaceEquationsInDocumentXml } from '../backend/src/db/jss3EquationRecovery.ts';
+import { applyJss3MathsSlipCorrections, JSS3_MATHS_SLIP_CORRECTIONS } from '../backend/src/db/jss3MathsSlipCorrections.ts';
+
+const M = 'xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"';
+const mr = (t: string) => `<m:r><m:t>${t}</m:t></m:r>`;
+
+test('equation recovery renders fractions, powers and roots as readable text', () => {
+  assert.equal(ommlToText(`<m:oMath ${M}><m:f><m:num>${mr('opposite')}</m:num><m:den>${mr('hypotenuse')}</m:den></m:f></m:oMath>`), 'opposite/hypotenuse');
+  assert.equal(ommlToText(`<m:oMath ${M}><m:sSup><m:e>${mr('r')}</m:e><m:sup>${mr('2')}</m:sup></m:sSup></m:oMath>`), 'r²');
+  assert.equal(ommlToText(`<m:oMath ${M}><m:rad><m:radPr/><m:deg/><m:e><m:f><m:num>${mr('A')}</m:num><m:den>${mr('π')}</m:den></m:f></m:e></m:rad></m:oMath>`), '√(A/π)');
+  assert.equal(ommlToText(`<m:oMath ${M}><m:f><m:num>${mr('x+1')}</m:num><m:den>${mr('2')}</m:den></m:f></m:oMath>`), '(x+1)/2');
+});
+
+test('equation recovery replaces every equation and is scoped to the two JSS3 Maths sources', () => {
+  const xml = `<w:p><m:oMathPara ${M}><m:oMath>${mr('a')}</m:oMath></m:oMathPara></w:p><w:p><m:oMath ${M}>${mr('b')}</m:oMath></w:p>`;
+  const r = replaceEquationsInDocumentXml(xml);
+  assert.equal(r.count, 2);
+  assert.ok(!/m:oMath/.test(r.xml) && r.xml.includes('>a<') && r.xml.includes('>b<'));
+  assert.ok(isJss3EquationSource('/x/JSS3 1ST TERM /JSS 3 MATHEMATICS.docx'));
+  assert.ok(isJss3EquationSource('/x/JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx'));
+  assert.ok(!isJss3EquationSource('/x/JSS2 1ST TERM /JSS 2 MATHEMATICS.docx'));
+  assert.ok(!isJss3EquationSource('/x/JSS3 1ST TERM /JSS 3 PHYSICS.docx'));
+});
+
+test('slip corrections apply exactly once, are idempotent, and throw on a missing context', () => {
+  for (const term of ['1st Term', '2nd Term'] as const) {
+    const items = JSS3_MATHS_SLIP_CORRECTIONS.filter(c => c.term === term);
+    const text = items.map(c => `[${c.before}]`).join('\n');
+    const once = applyJss3MathsSlipCorrections(term, text);
+    assert.equal(once, items.map(c => `[${c.after}]`).join('\n'));
+    assert.equal(applyJss3MathsSlipCorrections(term, once), once);
+    assert.throws(() => applyJss3MathsSlipCorrections(term, 'nothing here'));
+    assert.throws(() => applyJss3MathsSlipCorrections(term, text + '\n' + items[0].before));
+  }
+  assert.equal(new Set(JSS3_MATHS_SLIP_CORRECTIONS.map(c => c.id)).size, JSS3_MATHS_SLIP_CORRECTIONS.length);
+});
+
+test('corrected values were recomputed, not recalled', () => {
+  assert.equal((42 + 44 + 50 + 40 + 54 + 48 + 10 + 88) / 8, 47);
+  assert.equal(840 / 3, 280);
+  assert.equal(3 * 280 + 2 * 200, 1240); assert.equal(5 * 280 + 7 * 200, 2800);
+  assert.equal(parseInt('10000', 2), 16); assert.equal(parseInt('111', 2), 7);
+  assert.equal(Math.sin(46.65 * Math.PI / 180).toFixed(4), '0.7272');
+  assert.equal([5, 7, 4, 8, 5, 7, 10, 9, 6, 3].reduce((a, b) => a + b), 64);
+  const f = [2, 1, 2, 1, 3, 1, 2, 3, 4, 1];
+  assert.equal(f.reduce((a, b) => a + b), 20); assert.equal(f.reduce((s, n, i) => s + n * i, 0), 99);
 });

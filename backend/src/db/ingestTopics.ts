@@ -64,6 +64,8 @@ import mammoth from 'mammoth';
 import WordExtractor from 'word-extractor';
 import { createHash } from 'node:crypto';
 import { assertJss3SupplementCorpus, buildJss3SupplementRows, JSS3_SUPPLEMENTS, supplementBodyHash } from './jss3Supplements.js';
+import { applyJss3MathsSlipCorrections } from './jss3MathsSlipCorrections.js';
+import { isJss3EquationSource, recoverEquationsInDocx } from './jss3EquationRecovery.js';
 import {
   applyPrimarySourceTextResolution,
   isPrimarySourceExcluded,
@@ -282,6 +284,13 @@ function walk(dir: string, unsupported: string[], errors: Array<{ file: string; 
 // ── Text extraction ────────────────────────────────────────────────────────
 async function extractText(filePath: string): Promise<string> {
   if (/\.(docx|docm)$/i.test(filePath)) {
+    if (isJss3EquationSource(filePath)) {
+      // JSS3 Mathematics only: mammoth drops Word equations, so rewrite them as text runs first (OB-14).
+      const { buffer } = await recoverEquationsInDocx(readFileSync(filePath));
+      const recovered = (await mammoth.extractRawText({ buffer })).value;
+      const term = /1ST TERM/i.test(filePath) ? '1st Term' : '2nd Term';
+      return applyJss3MathsSlipCorrections(term, recovered);
+    }
     const { value } = await mammoth.extractRawText({ path: filePath });
     return value;
   }
