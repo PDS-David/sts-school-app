@@ -83,7 +83,7 @@ test('new Yoruba lessons keep uncertain scheme terms uncertain and invent no tra
   assert.match(byId('SUP-YO-IBEERE').body, /inference, not confirmed/);
   const ob = byId('SUP-YO-OBATALA').body; assert.match(ob, /Ọbalúayé/); assert.match(ob, /unconfirmed/); assert.match(ob, /not taught in this lesson/);
   const t = byId('SUP-YO-ORAL-TEXTS'); assert.match(t.body, /No Ṣàngó pípè, Ọya pípè or iwì egúngún verse is supplied or invented/);
-  assert.match(t.body, /First produced by the National Open University of Nigeria/); assert.match(t.body, /CC BY-SA 4\.0/); assert.match(t.body, /Kolawole 2023, CC BY/);
+  assert.match(t.body, /First produced by the National Open University of Nigeria/); assert.match(t.body, /CC BY-SA 4\.0/); assert.match(t.body, /Kolawole 2023, CC BY-SA 4.0 as stated on the article page/);
   assert.ok(t.sources.some(x => x.url.includes('10.17159/tl.v60i3.14628')) && t.sources.some(x => x.url.includes('ENG105_02.pdf')));
   // the excerpts are the only quoted chant lines; the genre lesson stays verse-free
   assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
@@ -540,4 +540,15 @@ test('all 11 Basic Technology lead rows carry a reviewed decision and none stays
   assert.equal(closure.filter(r => LEAD_STATES.includes(r.disposition)).length, 0);
   const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.ok(ob.find(r => r.id === 'OB-19')); assert.match(ob.find(r => r.id === 'OB-01')!.detail, /Basic Technology: all 11 leads decided/);
   const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); for (const id of Object.keys(BT_NEW)) assert.ok(sched.some(r => r.supplement_id === id), id);
+});
+
+test('Yoruba excerpt licences are recorded as share-alike and the unverified status stays open (OB-11)', () => {
+  const t = byId('SUP-YO-ORAL-TEXTS');
+  assert.ok(t.sources.every(s => !/CC BY(?!-SA)/.test(s.title)), 'no source is labelled plain CC BY');
+  assert.ok(t.sources.filter(s => /CC BY-SA 4\.0/.test(s.title)).length === 2);
+  assert.match(t.origin, /could not be re-checked character by character/);
+  const o = csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-11')!; assert.match(o.detail, /Attribution-ShareAlike 4\.0/); assert.match(o.detail, /Ifá lines and their tone marks were not re-checked/);
+  assert.ok(!/CC BY\)/.test(csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-03')!.detail));
+  // the verse-free genre lesson stays verse-free
+  assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
 });
