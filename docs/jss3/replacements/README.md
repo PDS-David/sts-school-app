@@ -1,6 +1,6 @@
 # JSS3 source replacements — 15 October 2026
 
-**Implementation update:** See [IMPLEMENTATION.md](IMPLEMENTATION.md) and [CURRENT_COVERAGE.csv](CURRENT_COVERAGE.csv). The resource catalog and drafts below are historical preparation; 41 supplemental lessons are now implemented. The current records distinguish implemented teaching from unresolved multi-strand coverage. No production import has occurred.
+**Implementation update:** See [IMPLEMENTATION.md](IMPLEMENTATION.md) and [CURRENT_COVERAGE.csv](CURRENT_COVERAGE.csv). The resource catalog and drafts below are historical preparation; 90 supplemental lessons are now implemented (see IMPLEMENTED_LESSONS.csv). The current records distinguish implemented teaching from unresolved multi-strand coverage. No production import has occurred.
 
 ## Owner instruction implemented in this record
 

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { JSS3_SUPPLEMENTS, validateJss3Supplements, supplementBodyHash } from '../backend/src/db/jss3Supplements.ts';
+import { JSS3_SUPPLEMENTS, validateJss3Supplements, supplementBodyHash, buildJss3SupplementRows } from '../backend/src/db/jss3Supplements.ts';
+import { execSync } from 'node:child_process';
 const byId = (id: string) => JSS3_SUPPLEMENTS.find(s => s.id === id)!;
 test('Batch 2 lessons exist in the right subject and First/Second Term bucket', () => {
   const want: Record<string, [string, string]> = {
@@ -426,7 +427,6 @@ test('six new Mathematics lessons are complete, attributed, registered and appen
     for (const part of [/Objectives:/, /Teaching:/, /Worked examples/, /Practice \(questions\):/, /Answers and marking guide:/, /Assessment and feedback: total \d+ marks/]) assert.match(s.body, part, id);
     assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1 && s.sources.every(x => x.url.startsWith('https://')), id);
     assert.equal(inv.filter(r => r.id === id).length, 1, `${id} listed once`); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
-    assert.equal(inv.find(r => r.id === id)!.body_sha256, supplementBodyHash(s.body), `${id} hash`);
     assert.ok(cov.some(r => r.id === gap && r.supplement_ids === id), gap); assert.ok(wg.some(r => r.id === gap && r.supplement_id === id), gap);
     // the position in its bucket matches the recorded order index (originals + earlier supplements)
     const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'Mathematics' && x.termLabel === term);
@@ -551,4 +551,25 @@ test('Yoruba excerpt licences are recorded as share-alike and the unverified sta
   assert.ok(!/CC BY\)/.test(csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-03')!.detail));
   // the verse-free genre lesson stays verse-free
   assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
+});
+
+// ---- Batch 2 combined-state reconciliation ----
+test('records agree for all supplements: counts, gaps, hashes, schedule, no Third Term', () => {
+  const inv = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv'); const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv');
+  const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); const ids = JSS3_SUPPLEMENTS.map(s => s.id);
+  assert.deepEqual(inv.map(r => r.id).sort(), [...ids].sort()); assert.deepEqual(sched.map(r => r.supplement_id).sort(), [...ids].sort());
+  const buckets = new Set(JSS3_SUPPLEMENTS.map(s => `${s.subjectName}|${s.termLabel}`));
+  const originals = [...buckets].map(b => { const [subjectName, termLabel] = b.split('|'); return { filePath: 'x', className: 'JSS 3', termLabel, subjectName, weekLabel: 'w', orderIndex: 1, title: 't', sourceReference: 'b' }; });
+  const rows = buildJss3SupplementRows(originals, '/r', 'secondary');
+  assert.equal(rows.length, ids.length); assert.ok(rows.every(r => r.termLabel === '1st Term' || r.termLabel === '2nd Term'), 'no Third Term supplement');
+  for (const r of rows) { const id = path_id(r.filePath); assert.equal(inv.find(x => x.id === id)!.body_sha256, supplementBodyHash(r.sourceReference), `${id} hash matches importer output`); }
+  for (const s of JSS3_SUPPLEMENTS) for (const g of s.gapIds) { if (g.startsWith('WG-')) assert.ok(wg.some(r => r.id === g && r.supplement_id === s.id), g); assert.ok(cov.some(r => r.id === g && r.supplement_ids.split(/[;, ]+/).includes(s.id)), g); }
+});
+const path_id = (p: string) => p.split('/').pop()!.replace('.json', '');
+test('no scratch capture file is tracked, and the five mapping entries stay resolved', () => {
+  const tracked = execSync('git ls-files', { encoding: 'utf8' }).split('\n'); assert.ok(!tracked.some(f => /ingestTopics\.capture-/.test(f)));
+  const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const mp = csv('docs/jss3/replacements/MAPPING_RESOLUTION.csv');
+  for (const id of ['EN2-03', 'YO-T1-MAP', 'YO-T2-MAP', 'YO-T3-MAP', 'YO-OWE']) { assert.ok(mp.some(r => r.id === id && r.executable_rows.length > 10), id); assert.equal(cov.find(r => r.id === id)!.current_status, 'MAPPING_VERIFIED_PROVENANCE_PRESERVED', id); }
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.match(ob.find(r => r.id === 'OB-09')!.detail, /NOT run on 24\.19\.0/); assert.equal(ob.find(r => r.id === 'OB-20')!.type, 'resolved');
+  const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); assert.equal(closure.filter(r => LEAD_STATES.includes(r.disposition)).length, 0);
 });
