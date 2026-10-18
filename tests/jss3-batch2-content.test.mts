@@ -394,3 +394,19 @@ test('review batch: records show every reviewed row decided and no lead left for
   const leftover = closure.filter(r => subjects.includes(r.canonical_subject) && /^(LEAD_ONLY_NEEDS_READING|ORIGINAL_BODY_TEXT_PRESENT_NEEDS_CONFIRMATION)$/.test(r.disposition));
   assert.deepEqual(leftover.map(r => r.candidate_id), []);
 });
+
+// ── Batch 2 Basic Technology and Business Studies review ────────────────────────────────────────────
+const LEAD_STATES = ['LEAD_ONLY_NEEDS_READING', 'ORIGINAL_BODY_TEXT_PRESENT_NEEDS_CONFIRMATION'];
+const BT_BUS_DECIDED = ['SL-028', 'SL-453', 'SL-364', 'SL-369', 'SL-458', 'SL-461'];
+test('Basic Technology and Business Studies rows reviewed so far each carry a decision and no Business Studies lead remains', () => {
+  const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); const decisions = csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');
+  for (const id of BT_BUS_DECIDED) {
+    const d = decisions.find(r => r.candidate_id === id); assert.ok(d, id); assert.ok(d.rationale.length > 30 && d.limitation.length > 3, id);
+    const c = closure.find(r => r.candidate_id === id)!; assert.ok(['Basic Technology', 'Business Studies'].includes(c.canonical_subject), id);
+    assert.equal(c.disposition, d.disposition, id); assert.ok(!LEAD_STATES.includes(c.disposition), id);
+  }
+  for (const id of ['SL-364', 'SL-369', 'SL-458', 'SL-461']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'STRUCTURAL_MARKER', id);
+  for (const id of ['SL-028', 'SL-453']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'ORIGINAL_LESSON_COVERS_OBJECTIVE', id);
+  assert.equal(closure.filter(r => r.canonical_subject === 'Business Studies' && LEAD_STATES.includes(r.disposition)).length, 0);
+  for (const id of ['SL-028', 'SL-453']) assert.match(closure.find(r => r.candidate_id === id)!.support_locator, /anchor_sha256=[0-9a-f]{16}; row_sha256=[0-9a-f]{16}; verified_by=SEMANTIC_DECISIONS\.csv/, id);
+});
