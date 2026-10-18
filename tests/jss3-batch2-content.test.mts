@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { JSS3_SUPPLEMENTS, validateJss3Supplements } from '../backend/src/db/jss3Supplements.ts';
+import { JSS3_SUPPLEMENTS, validateJss3Supplements, supplementBodyHash } from '../backend/src/db/jss3Supplements.ts';
 const byId = (id: string) => JSS3_SUPPLEMENTS.find(s => s.id === id)!;
 test('Batch 2 lessons exist in the right subject and First/Second Term bucket', () => {
   const want: Record<string, [string, string]> = {
@@ -213,7 +213,7 @@ test('Mathematics lessons SUP-MATH-JSS2-REVISION and SUP-MATH-VARIATION are comp
     assert.match(s.body, /Practice \(questions\)/); assert.match(s.body, /Answers and marking guide/); assert.match(s.body, /Assessment and feedback/);
     assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 2 && s.sources.every(x => x.url.startsWith('https://')));
     const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'Mathematics' && x.termLabel === term);
-    assert.equal(bucket[bucket.length - 1].id, id); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
+    assert.ok(bucket.some(x => x.id === id)); assert.equal(inv.find(r => r.id === id)!.order_index, String(order)); // later lessons append after it and never shift it
     const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); gaps.forEach(g => assert.ok(cov.some(r => r.id === g && r.supplement_ids === id), g));
     const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv'); gaps.forEach(g => assert.ok(wg.some(r => r.id === g && r.supplement_id === id), g));
   }
@@ -409,4 +409,89 @@ test('Basic Technology and Business Studies rows reviewed so far each carry a de
   for (const id of ['SL-028', 'SL-453']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'ORIGINAL_LESSON_COVERS_OBJECTIVE', id);
   assert.equal(closure.filter(r => r.canonical_subject === 'Business Studies' && LEAD_STATES.includes(r.disposition)).length, 0);
   for (const id of ['SL-028', 'SL-453']) assert.match(closure.find(r => r.candidate_id === id)!.support_locator, /anchor_sha256=[0-9a-f]{16}; row_sha256=[0-9a-f]{16}; verified_by=SEMANTIC_DECISIONS\.csv/, id);
+});
+
+// ---- Batch 2: re-audit of the 18 Mathematics lead rows (SL-146 to SL-261) ----
+const MATH18 = ['SL-146', 'SL-147', 'SL-150', 'SL-153', 'SL-240', 'SL-242', 'SL-244', 'SL-245', 'SL-246', 'SL-252', 'SL-253', 'SL-254', 'SL-256', 'SL-257', 'SL-258', 'SL-259', 'SL-260', 'SL-261'];
+const MATH_NEW: Record<string, [string, string, number]> = {
+  'SUP-MATH-CHANGE-SUBJECT': ['1st Term', 'WG-MATH-SL150', 12], 'SUP-MATH-AVERAGES': ['1st Term', 'WG-MATH-SL153', 13],
+  'SUP-MATH-SIMULT-GRAPH': ['2nd Term', 'WG-MATH-SL245', 15], 'SUP-MATH-SIMULT-WORDS': ['2nd Term', 'WG-MATH-SL244', 16],
+  'SUP-MATH-TRIG-RATIOS': ['2nd Term', 'WG-MATH-SL252', 17], 'SUP-MATH-BEARING-DISTANCE': ['2nd Term', 'WG-MATH-SL257', 18],
+};
+test('six new Mathematics lessons are complete, attributed, registered and appended in order', () => {
+  validateJss3Supplements(JSS3_SUPPLEMENTS);
+  const inv = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv'); const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv');
+  for (const [id, [term, gap, order]] of Object.entries(MATH_NEW)) {
+    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Mathematics'); assert.equal(s.termLabel, term); assert.deepEqual(s.gapIds, [gap]);
+    for (const part of [/Objectives:/, /Teaching:/, /Worked examples/, /Practice \(questions\):/, /Answers and marking guide:/, /Assessment and feedback: total \d+ marks/]) assert.match(s.body, part, id);
+    assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1 && s.sources.every(x => x.url.startsWith('https://')), id);
+    assert.equal(inv.filter(r => r.id === id).length, 1, `${id} listed once`); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
+    assert.equal(inv.find(r => r.id === id)!.body_sha256, supplementBodyHash(s.body), `${id} hash`);
+    assert.ok(cov.some(r => r.id === gap && r.supplement_ids === id), gap); assert.ok(wg.some(r => r.id === gap && r.supplement_id === id), gap);
+    // the position in its bucket matches the recorded order index (originals + earlier supplements)
+    const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'Mathematics' && x.termLabel === term);
+    assert.equal(bucket.findIndex(x => x.id === id) + (term === '1st Term' ? 11 : 10), order, id);
+  }
+  assert.throws(() => validateJss3Supplements([{ ...byId('SUP-MATH-TRIG-RATIOS'), gapIds: ['WG-MATH-SL999'] }]), /Unregistered/);
+  assert.ok(JSS3_SUPPLEMENTS.every(s => s.termLabel !== ('3rd Term' as string)));
+  const ids = inv.map(r => r.id); assert.equal(new Set(ids).size, ids.length, 'IMPLEMENTED_LESSONS has no duplicate ids');
+  assert.equal(ids.length, JSS3_SUPPLEMENTS.length);
+});
+test('new Mathematics worked examples and answers are recomputed independently', () => {
+  const has = (id: string, s: string) => assert.ok(byId(id).body.includes(s), `${id}: ${s}`);
+  const deg = (r: number) => r * 180 / Math.PI, rad = (d: number) => d * Math.PI / 180, f1 = (v: number) => v.toFixed(1);
+  // change of subject: r from A=154, b from A=60, h for cylinder and cone
+  const pi = 22 / 7; assert.ok(Math.abs(154 / pi - 49) < 1e-9); has('SUP-MATH-CHANGE-SUBJECT', 'r² = 154 × 7 ÷ 22 = 49, so r = 7');
+  assert.equal(2 * 60 / 8 - 7, 8); has('SUP-MATH-CHANGE-SUBJECT', 'b = 120 ÷ 8 − 7 = 8');
+  assert.ok(Math.abs(396 / (2 * pi * 7) - 7 - 2) < 1e-9); has('SUP-MATH-CHANGE-SUBJECT', 'h = 9 − 7 = 2 cm');
+  assert.equal((3 * 256) / (pi * 441), 768 / 1386); has('SUP-MATH-CHANGE-SUBJECT', '768 ÷ 1 386 = 128/231');
+  const w = (1 * 2 * 3) / (10 - 1 * 2); assert.equal(w, 0.75); assert.equal((w * 10) / (2 * (w + 3)), 1);
+  // averages
+  const d = [5, 7, 4, 8, 5, 7, 10, 9, 6, 3]; const sum = d.reduce((a, b) => a + b, 0); assert.equal(sum, 64); assert.equal(sum / d.length, 6.4);
+  const srt = [...d].sort((a, b) => a - b); assert.equal((srt[4] + srt[5]) / 2, 6.5);
+  const fr = [2, 1, 2, 1, 3, 1, 2, 3, 4, 1]; const sf = fr.reduce((a, b) => a + b, 0), sfx = fr.reduce((a, b, i) => a + b * i, 0); assert.equal(sf, 20); assert.equal(sfx, 99); assert.equal(sfx / sf, 4.95);
+  const m2 = [14, 9, 12, 9, 16, 11, 9, 15]; assert.equal(m2.reduce((a, b) => a + b, 0) / 8, 11.875);
+  const marks = [42, 44, 50, 40, 54, 48, 10, 88]; assert.equal(marks.reduce((a, b) => a + b, 0) / 8, 47); has('SUP-MATH-AVERAGES', 'mean = 376 ÷ 8 = 47'); has('SUP-MATH-AVERAGES', 'prints the mean as 48');
+  assert.equal((3 * 108 + 5 * 37 + 8 * 38 + 6 * 39 + 2 * 40) / 24 > 37.95, true); has('SUP-MATH-AVERAGES', '911 ÷ 24 = 37.96');
+  // graphical and word problems: intersections and checks
+  assert.equal(0.5 * 2 - 2, 2 * 2 - 5); assert.equal(2 - 2 * -1, 4); assert.equal(2 * 2 - -1, 5); has('SUP-MATH-SIMULT-GRAPH', 'cross at (2, −1)');
+  assert.equal(10 - 2 * 3, 2 * 3 - 2); has('SUP-MATH-SIMULT-GRAPH', 'cross at (3, 4)');
+  assert.equal(3 * 280 + 2 * 200, 1240); assert.equal(5 * 280 + 7 * 200, 2800); assert.equal(840 / 3, 280); has('SUP-MATH-SIMULT-WORDS', 'b = 280'); has('SUP-MATH-SIMULT-WORDS', 'ends with x = 260');
+  assert.equal(146 - 20, 106 + 20); assert.equal(146 + 22, 2 * (106 - 22)); assert.equal(26 + 36, 62); assert.ok(Math.abs((7 + 2) / (8 + 2) - 0.9) < 1e-12); assert.equal((7 - 3) / (8 - 3), 0.8);
+  assert.equal(2 * 300 + 3 * 250, 1350); assert.equal(3 * 300 + 250, 1150); assert.equal(48 + 6, 3 * (12 + 6)); assert.equal(74 - 47, 27); assert.equal(500 * 28 + 200 * 12, 16400);
+  // trigonometry
+  assert.equal(f1(deg(Math.atan(5 / 12))), '22.6'); assert.equal(Math.round(12 / Math.tan(rad(28))), 23); has('SUP-MATH-TRIG-RATIOS', '23 cm to 2 significant figures');
+  assert.equal((Math.sin(rad(46.65))).toFixed(4), '0.7272'); has('SUP-MATH-TRIG-RATIOS', 'the calculator gives 0.7272');
+  assert.equal(f1(15 * Math.cos(rad(40))), '11.5'); assert.equal(f1(9 * Math.tan(rad(50))), '10.7'); assert.equal(f1(6 / Math.sin(rad(35))), '10.5');
+  assert.equal(f1(deg(Math.asin(0.6))), '36.9'); assert.equal(f1(deg(Math.atan(15 / 8))), '61.9'); assert.equal(f1(deg(Math.asin(7 / 25))), '16.3');
+  // bearings
+  assert.equal(f1(180 + deg(Math.atan(20 / 30))), '213.7'); assert.equal(f1(Math.hypot(20, 30)), '36.1');
+  assert.equal(f1(18 * Math.tan(rad(65))), '38.6'); assert.equal(f1(18 / Math.cos(rad(65))), '42.6'); has('SUP-MATH-BEARING-DISTANCE', 'QR = 18 × 2.1445 = 38.6 km');
+  const e = 12 * Math.sin(rad(40)) + 9 * Math.sin(rad(130)), n = 12 * Math.cos(rad(40)) + 9 * Math.cos(rad(130)); assert.equal(f1(Math.hypot(e, n)), '15.0'); assert.equal(f1(deg(Math.atan2(e, n))), '76.9');
+  assert.equal(f1(90 + deg(Math.atan(5 / 8))), '122.0'); assert.equal(Math.round(180 + deg(Math.atan(6 / 8))), 217); assert.equal(f1(24 * Math.tan(rad(50))), '28.6'); assert.equal(f1(24 / Math.cos(rad(50))), '37.3');
+  assert.equal(f1(100 * Math.sin(rad(150))), '50.0'); assert.equal(f1(-100 * Math.cos(rad(150))), '86.6');
+});
+test('all 18 Mathematics lead rows carry a reviewed decision that records what was read', () => {
+  const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); const decisions = csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');
+  const leads = ['LEAD_ONLY_NEEDS_READING', 'ORIGINAL_BODY_TEXT_PRESENT_NEEDS_CONFIRMATION'];
+  assert.equal(MATH18.length, 18);
+  for (const id of MATH18) {
+    const d = decisions.find(r => r.candidate_id === id); assert.ok(d, id); assert.ok(d.rationale.startsWith('Read:'), `${id} records what was read`); assert.ok(d.limitation.length > 5, id);
+    const c = closure.find(r => r.candidate_id === id)!; assert.equal(c.canonical_subject, 'Mathematics', id); assert.equal(c.disposition, d.disposition, id); assert.ok(!leads.includes(c.disposition), id);
+    if (d.support_kind === 'supplement') { const s = byId(d.row_filter); assert.ok(s, id); assert.ok(s.body.toLowerCase().includes(d.anchor_regex.toLowerCase()), `${id} anchor`); }
+    if (d.support_kind === 'original') assert.match(c.support_locator, /anchor_sha256=[0-9a-f]{16}; row_sha256=[0-9a-f]{16}; verified_by=SEMANTIC_DECISIONS\.csv/, id);
+  }
+  const by = (x: string) => MATH18.filter(id => closure.find(r => r.candidate_id === id)!.disposition === x).length;
+  assert.equal(by('ORIGINAL_LESSON_COVERS_OBJECTIVE'), 4); assert.equal(by('STRUCTURAL_MARKER'), 1); assert.equal(by('REPLACEMENT_IMPLEMENTED'), 13);
+  for (const id of ['SL-150', 'SL-153', 'SL-242', 'SL-244', 'SL-245', 'SL-252', 'SL-253', 'SL-257', 'SL-258']) {
+    const d = decisions.find(r => r.candidate_id === id)!; assert.ok(Object.keys(MATH_NEW).includes(d.row_filter), id);
+  }
+  assert.equal(closure.filter(r => r.canonical_subject === 'Mathematics' && leads.includes(r.disposition)).length, 0);
+});
+test('OB-14, OB-17 and OB-18 record the equation loss, the duplicate-row fix and the source slips', () => {
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o14 = ob.find(r => r.id === 'OB-14')!; assert.match(o14.detail, /nine rows only partly taught/);
+  assert.equal(ob.find(r => r.id === 'OB-17')!.type, 'resolved');
+  const o18 = ob.find(r => r.id === 'OB-18')!; assert.ok(o18); assert.match(o18.detail, /Mean = 48/); assert.match(o18.detail, /x = 260/); assert.match(o18.detail, /350o/);
+  const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); const sids = sched.map(r => r.supplement_id); assert.equal(new Set(sids).size, sids.length, 'schedule has no duplicate rows');
+  for (const id of Object.keys(MATH_NEW)) assert.ok(sched.some(r => r.supplement_id === id), id);
 });
