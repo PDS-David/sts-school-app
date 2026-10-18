@@ -1,0 +1,7 @@
+# Source review
+
+CBSE Shorthand English XI PDF already downloaded in this workspace: SHA256 `c1db69795df13051f1828809b85e0dd2dd853904792d4f3e55481f3037dae7b9`. Visually inspected printed102 (all six selected sign groups),104 (GW and WH),106 (LR),107 (RR and MP/MB),108 (MP/MB exceptions). Original chart preserves relative weight, hook and direction. New controlled sign-sequence exercise is original; no copied textbook scan shipped. The web fetch returned502 in this run; the local PDF was readable and used directly. Do not claim a fresh online download.
+
+Primary references consulted on18Oct2026: OpenStax Elementary Algebra2e language of algebra, fraction equations and rational equations; Contemporary Mathematics base conversion; Fluke continuity testing; SparkFun transistors; Oak National Academy wood construction; HSE training and supervision. Exact URLs accompany the respective lessons. Explanations and exercise wording are newly written. No claimed recovery of missing school paragraphs, numbers or diagrams.
+
+Original BT rows read in full for wood defects/material processing, drawing, roof/project and motion; windows/doors and tool functions checked in their actual bodies. Original Mathematics imported bodies compared with DOCX XML objects for the reported missing-equation issue and source errors. The Office Math inventory records all454 equation XML hashes. Corrected explicit teaching is supplied instead of blindly exposing potentially incorrect reconstructed equations.
