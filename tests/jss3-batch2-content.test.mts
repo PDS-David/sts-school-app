@@ -573,6 +573,7 @@ test('no scratch capture file is tracked, and the five mapping entries stay reso
   for (const id of ['EN2-03', 'YO-T1-MAP', 'YO-T2-MAP', 'YO-T3-MAP', 'YO-OWE']) { assert.ok(mp.some(r => r.id === id && r.executable_rows.length > 10), id); assert.equal(cov.find(r => r.id === id)!.current_status, 'MAPPING_VERIFIED_PROVENANCE_PRESERVED', id); }
   const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.match(ob.find(r => r.id === 'OB-09')!.detail, /NOT run on 24\.19\.0/); assert.equal(ob.find(r => r.id === 'OB-20')!.type, 'resolved');
   const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); assert.equal(closure.filter(r => LEAD_STATES.includes(r.disposition)).length, 0);
+});
 
 // ── OB-14 equation recovery and OB-18 slip corrections (18 Oct 2026) ─────────────────────────────
 import { ommlToText, isJss3EquationSource, replaceEquationsInDocumentXml } from '../backend/src/db/jss3EquationRecovery.ts';
