@@ -281,8 +281,9 @@ test('Home Economics: four new lessons are complete, attributed and placed in th
     assert.match(s.body, /Practice \(questions\)/); assert.match(s.body, /Answers and marking guide/); assert.match(s.body, /Assessment and feedback/);
     assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1); for (const src of s.sources) assert.ok(src.url.startsWith('https://'));
   }
-  // appended at the end of the file, after every earlier lesson
-  assert.deepEqual(ids.slice(-4), Object.keys(want));
+  // appended after every earlier lesson, in order (later batches may append more after them)
+  const at = ids.indexOf('SUP-HE-MOTHERHOOD'); assert.ok(at >= ids.indexOf('SUP-MATH-BEARING-TOOLS'));
+  assert.deepEqual(ids.slice(at, at + 4), Object.keys(want));
 });
 test('Home Economics: worked arithmetic and mark totals in the new lessons are correct', () => {
   const f = byId('SUP-HE-FOOD-REVISION').body;

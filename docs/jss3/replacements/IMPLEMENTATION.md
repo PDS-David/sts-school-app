@@ -1,6 +1,6 @@
 # Implemented replacement teaching — 16 October 2026
 
-41 attributed supplements are now executable through the existing importer. They supply actual teaching, exercises and answer/assessment guides, rather than links alone. `backend/src/db/data/jss3Supplements.json` is the authoritative new content. `IMPLEMENTED_LESSONS.csv` maps each lesson to its gaps, destination, stable order and exact executable-body hash. `CURRENT_COVERAGE.csv` preserves all 63 historical IDs without overwriting R9.
+78 attributed supplements (including eight from the CCA, French, Social Studies and Music review batch) are now executable through the existing importer. They supply actual teaching, exercises and answer/assessment guides, rather than links alone. `backend/src/db/data/jss3Supplements.json` is the authoritative new content. `IMPLEMENTED_LESSONS.csv` maps each lesson to its gaps, destination, stable order and exact executable-body hash. `CURRENT_COVERAGE.csv` preserves all 63 historical IDs without overwriting R9.
 
 ## Verified plan
 
