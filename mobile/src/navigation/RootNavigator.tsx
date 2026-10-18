@@ -14,6 +14,7 @@ import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import BraineeChatScreen from '../screens/BraineeChatScreen';
+import TextStudyScreen from '../screens/TextStudyScreen';
 
 import StudentTabs from './StudentTabs';
 import TeacherTabs from './TeacherTabs';
@@ -113,6 +114,7 @@ export default function RootNavigator() {
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="Notifications" component={NotificationsScreen} options={modalOpts} />
           <Stack.Screen name="BraineeChat" component={BraineeChatScreen} options={modalOpts} />
+          <Stack.Screen name="TextStudy" component={TextStudyScreen} options={modalOpts} />
         </>
       )}
     </Stack.Navigator>

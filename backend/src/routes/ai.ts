@@ -3,6 +3,7 @@ import type { Response } from 'express';
 import { query } from '../db/pool.js';
 import { requireAuth, requireRole, requirePerm } from '../middleware/auth.js';
 import { generate, generateJSON } from '../utils/ai.js';
+import { validateTextStudyRequest, buildTextStudyPrompt } from '../utils/textStudy.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -98,6 +99,19 @@ router.post('/notes', async (req, res) => {
     `. Use bullet points, plain language, and no more than 6 bullets.`;
 
   return respondWithGenerate(res, prompt, 'notes', req.user!.id, req.user!.role);
+});
+
+// ── POST /ai/text-study ──
+// Body: { mode, text?, title?, genre?, question?, answer?, class_name? }.
+// The learner or teacher types or pastes the text (a set book extract, a
+// passage, a past question). It is used for this request only: nothing is
+// stored, and nothing is written to scores, attendance or class_records.
+// Validation and the prompt live in utils/textStudy.ts so they can be tested
+// without the network.
+router.post('/text-study', async (req, res) => {
+  const v = validateTextStudyRequest(req.body);
+  if (!v.ok) return res.status(400).json({ ok: false, error: v.error });
+  return respondWithGenerate(res, buildTextStudyPrompt(v.value), 'text-study', req.user!.id, req.user!.role);
 });
 
 // ── POST /ai/hint ───────────────────────────────────────────────────────────

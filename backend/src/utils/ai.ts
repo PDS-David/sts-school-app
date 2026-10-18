@@ -121,6 +121,7 @@ const GEMINI_MODEL_MAP: Record<string, string> = {
   'notes':              'gemini-2.5-flash',
   'remediation':        'gemini-2.5-flash',
   'essay-mark':         'gemini-2.5-flash',
+  'text-study':         'gemini-2.5-flash',
   'complex_reasoning':  'gemini-2.5-flash',
   'ping':               'gemini-2.5-flash',
   'default':            'gemini-2.5-flash',

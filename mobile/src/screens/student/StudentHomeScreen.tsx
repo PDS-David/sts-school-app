@@ -8,7 +8,7 @@ import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { FAB } from '../../components/FAB';
-import { openNotifications, openBraineeChat } from '../../navigation/navigationRef';
+import { openNotifications, openBraineeChat, openTextStudy } from '../../navigation/navigationRef';
 
 export default function StudentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
@@ -127,6 +127,7 @@ export default function StudentHomeScreen({ navigation }: any) {
         icon="add"
         actions={[
           { icon: 'sparkles-outline', label: 'Ask Brainee', onPress: () => openBraineeChat() },
+          { icon: 'book-outline', label: 'Study my text', onPress: () => openTextStudy() },
           { icon: 'chatbox-ellipses-outline', label: 'Start discussion', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
           { icon: 'create-outline', label: 'New message', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
         ]}

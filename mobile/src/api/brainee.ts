@@ -61,3 +61,23 @@ export async function askBraineeToDraftQuestions(params: {
     throw new Error(serverMessage ?? "Brainee is unavailable right now. Please try again shortly.");
   }
 }
+
+// Learner- or teacher-supplied text (a set book extract, a passage, a past
+// question). Sent for this one request only; the server does not store it.
+export type TextStudyMode =
+  | 'summary' | 'story_elements' | 'devices' | 'vocabulary' | 'questions' | 'past_question' | 'mark_answer';
+export type TextStudyGenre = 'prose' | 'drama' | 'poetry' | 'passage' | 'other';
+
+export interface TextStudyInput {
+  mode: TextStudyMode;
+  text?: string;
+  title?: string;
+  genre?: TextStudyGenre;
+  question?: string;
+  answer?: string;
+  class_name?: string;
+}
+
+export function askBraineeAboutText(input: TextStudyInput) {
+  return callBrainee('text-study', { ...input });
+}

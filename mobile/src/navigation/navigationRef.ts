@@ -18,6 +18,12 @@ export function openBraineeChat() {
   }
 }
 
+export function openTextStudy() {
+  if (navigationRef.isReady()) {
+    navigationRef.navigate('TextStudy');
+  }
+}
+
 // ── Push notification tap targets ───────────────────────────────────────────
 // ChatThreadScreen takes a full { id, username, full_name, role } contact
 // object as its route param (see ChatsScreen's openThread), not just an id —
