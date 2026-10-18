@@ -490,7 +490,7 @@ test('all 18 Mathematics lead rows carry a reviewed decision that records what w
 });
 test('OB-14, OB-17 and OB-18 record the equation loss, the duplicate-row fix and the source slips', () => {
   const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); const o14 = ob.find(r => r.id === 'OB-14')!; assert.match(o14.detail, /RESOLVED for Word equations/); assert.match(o14.detail, /M1-T-FORMULA/);
-  assert.match(ob.find(r => r.id === 'OB-19')!.detail, /ALGEBRAIC PROCESSES/);
+  assert.match(ob.find(r => r.id === 'OB-21')!.detail, /ALGEBRAIC PROCESSES/);
   assert.equal(ob.find(r => r.id === 'OB-17')!.type, 'resolved');
   const o18 = ob.find(r => r.id === 'OB-18')!; assert.ok(o18); assert.match(o18.detail, /Mean 48 to 47/); assert.match(o18.detail, /x = 260 to 280/); assert.match(o18.detail, /350o to 35o/);
   const sched = csv('docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'); const sids = sched.map(r => r.supplement_id); assert.equal(new Set(sids).size, sids.length, 'schedule has no duplicate rows');
