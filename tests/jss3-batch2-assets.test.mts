@@ -22,3 +22,18 @@ test('Batch 2 manifests: bytes match sha256, PNG, title equals the target lesson
   assert.equal(keys.filter(k => k.startsWith('SUP-BUS-SHORTHAND')).length, 1);
   assert.ok(!keys.some(k => ['SUP-BUSINESS', 'SUP-BASIC_TECH', 'SUP-MUSIC-TIME'].includes(k)));
 });
+
+test('Music figures carry alt text that is a real description, not a repeat of the caption', () => {
+  const files = ['BATCH2_MUSIC_1ST_MANIFEST.csv', 'BATCH2_MUSIC_2ND_MANIFEST.csv'];
+  let n = 0;
+  for (const f of files) {
+    for (const a of prepareAssets(loadManifest(`${dir}/${f}`), dir)) {
+      n++;
+      assert.ok(a.alt_text, `${a.asset_key} has alt_text`);
+      assert.notEqual(a.alt_text, a.caption, a.asset_key);
+      assert.ok(a.alt_text!.length >= 60, `${a.asset_key} alt_text is descriptive`);
+      assert.match(a.alt_text!, /staff|staves|clef|major|minor|sol-fa|key/i, `${a.asset_key} alt_text describes the notation`);
+    }
+  }
+  assert.equal(n, 10);
+});

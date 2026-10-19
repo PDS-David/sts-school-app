@@ -273,7 +273,7 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
 
   // Metadata only — `bytes` is never selected here.
   const { rows } = await query(
-    `SELECT id, asset_key, kind, mime, sha256, caption, sort_order
+    `SELECT id, asset_key, kind, mime, sha256, caption, alt_text, sort_order
        FROM topic_assets
       WHERE topic_id=$1 AND displayed=true
       ORDER BY sort_order, id`,
