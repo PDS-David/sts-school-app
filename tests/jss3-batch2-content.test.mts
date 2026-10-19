@@ -132,10 +132,15 @@ test('the twelve English First-Term lead rows each carry an individually reviewe
   }
   // Only the omission with no executable teaching at all closes as a new replacement, and only partially.
   assert.equal(closure.find(r => r.candidate_id === 'SL-202')!.disposition, 'REPLACEMENT_IMPLEMENTED_PARTIAL');
-  // Partial coverage is never reported as complete.
-  assert.equal(closure.find(r => r.candidate_id === 'SL-221')!.disposition, 'ORIGINAL_LESSON_PARTIAL');
+  // Partial coverage is never reported as complete. Batch 2 worker C revised SL-221 from ORIGINAL_LESSON_PARTIAL to
+  // REPLACEMENT_IMPLEMENTED_PARTIAL (SUP-EN-LIT-FORMS revises terms with an original poem; the recommended text stays unidentified, OB-12).
+  assert.equal(closure.find(r => r.candidate_id === 'SL-221')!.disposition, 'REPLACEMENT_IMPLEMENTED_PARTIAL');
+  assert.match(decisions.find(r => r.candidate_id === 'SL-221')!.limitation, /OB-12/);
   assert.equal(closure.find(r => r.candidate_id === 'SL-198')!.disposition, 'REPLACEMENT_IMPLEMENTED');
-  for (const id of ['SL-192', 'SL-201', 'SL-206', 'SL-207', 'SL-217']) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, 'EXISTING_SUPPLEMENT_PARTIAL', id);
+  // Batch 2 worker C revised SL-192, SL-201, SL-206 (SUP-EN-LIT-TEXT-TOOLS, partial: school texts still unidentified, OB-12) and
+  // SL-217 (SUP-EN-CONSONANT-PRACTICE) away from EXISTING_SUPPLEMENT_PARTIAL; only SL-207 keeps the original supplement-only status.
+  const EN_T1_EXPECT: Record<string, string> = { 'SL-192': 'REPLACEMENT_IMPLEMENTED_PARTIAL', 'SL-201': 'REPLACEMENT_IMPLEMENTED_PARTIAL', 'SL-206': 'REPLACEMENT_IMPLEMENTED_PARTIAL', 'SL-207': 'EXISTING_SUPPLEMENT_PARTIAL', 'SL-217': 'REPLACEMENT_IMPLEMENTED' };
+  for (const [id, disp] of Object.entries(EN_T1_EXPECT)) assert.equal(closure.find(r => r.candidate_id === id)!.disposition, disp, id);
 });
 test('SUP-VOWEL-ER is a complete attributed lesson appended to the English First-Term bucket', () => {
   const s = byId('SUP-VOWEL-ER'); assert.ok(s);
@@ -195,7 +200,9 @@ test('SUP-MODAL-WILL supplies will, would and shall as a complete attributed les
   assert.match(s.origin, /not recovered/i); assert.ok(s.sources.every(x => x.url.startsWith('https://')));
   for (const part of [/Teaching:/, /WILL —/, /WOULD —/, /SHALL —/, /Practice A/, /Practice B/, /Practice C/, /Answers and marking guide/]) assert.match(s.body, part);
   const bucket = JSS3_SUPPLEMENTS.filter(x => x.subjectName === 'English Language' && x.termLabel === '1st Term');
-  assert.equal(bucket[bucket.length - 1].id, 'SUP-MODAL-WILL'); assert.equal(bucket.length + 24, 35);
+  // Stable prefix: SUP-MODAL-WILL keeps the position it had when it was added (11th supplement after the 24 original rows).
+  // Later Batch 2 lessons are appended after it, so it is no longer last and the bucket is longer than 11.
+  const pos = bucket.findIndex(x => x.id === 'SUP-MODAL-WILL'); assert.equal(pos, 10); assert.equal(pos + 1 + 24, 35); assert.ok(bucket.length > pos + 1);
   assert.throws(() => validateJss3Supplements([{ ...s, gapIds: ['WG-ENG-UNREGISTERED'] }]), /Unregistered/);
   const impl = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv').find(r => r.id === 'SUP-MODAL-WILL')!; assert.equal(impl.order_index, '35');
   assert.ok(csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv').some(r => r.id === 'WG-ENG-SL198' && r.supplement_id === 'SUP-MODAL-WILL'));
@@ -254,7 +261,10 @@ test('Mathematics: all 13 reviewed lines are decided with quoted evidence and no
   const dec = Object.fromEntries(csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv').map(r => [r.candidate_id, r]));
   const tally: Record<string, number> = {};
   for (const id of ids) { assert.ok(dec[id], id); assert.equal(closure[id].disposition, dec[id].disposition, id); assert.match(dec[id].rationale, /'/, id); tally[dec[id].disposition] = (tally[dec[id].disposition] ?? 0) + 1; }
-  assert.deepEqual(tally, { ORIGINAL_LESSON_COVERS_OBJECTIVE: 4, REPLACEMENT_IMPLEMENTED: 4, STRUCTURAL_MARKER: 5 });
+  // Batch 2 worker A revised SL-154, SL-241 and SL-243 from ORIGINAL_LESSON_COVERS_OBJECTIVE to REPLACEMENT_IMPLEMENTED
+  // (SUP-MATH-FRACTION-EQUATIONS, SUP-MATH-SIMULT-GRAPH): 4/4/5 became 1/7/5. The evidence is A's OBJECTIVE_EVIDENCE.json.
+  assert.deepEqual(tally, { ORIGINAL_LESSON_COVERS_OBJECTIVE: 1, REPLACEMENT_IMPLEMENTED: 7, STRUCTURAL_MARKER: 5 });
+  for (const id of ['SL-154', 'SL-241', 'SL-243']) assert.equal(dec[id].disposition, 'REPLACEMENT_IMPLEMENTED', id);
   for (const r of Object.values(closure)) if (r.canonical_subject === 'Mathematics') assert.ok(!/^(LEAD_ONLY|ORIGINAL_BODY_TEXT_PRESENT)/.test(r.disposition), r.candidate_id);
   // SL-145 closes only through an executable replacement body; the earlier 0.5 title match to a 32-character row is not coverage
   assert.equal(dec['SL-145'].support_kind, 'supplement'); assert.match(dec['SL-145'].rationale, /32-character body/);
@@ -382,8 +392,10 @@ test('review batch: records show every reviewed row decided and no lead left for
   const closure = csvRecords(readFileSync(pth.join(docs, 'SEMANTIC_CLOSURE.csv'), 'utf8'));
   const decisions = csvRecords(readFileSync(pth.join(docs, 'replacements', 'SEMANTIC_DECISIONS.csv'), 'utf8'));
   const want: Record<string, string> = {};
-  for (const id of ['SL-062','SL-063','SL-067','SL-175','SL-319','SL-468','SL-561']) want[id] = 'ORIGINAL_LESSON_COVERS_OBJECTIVE';
-  for (const id of ['SL-293','SL-295','SL-282','SL-285','SL-433','SL-434','SL-435','SL-566','SL-567']) want[id] = 'REPLACEMENT_IMPLEMENTED';
+  // Batch 2 worker E revised SL-062, SL-063 and SL-561 from ORIGINAL_LESSON_COVERS_OBJECTIVE to REPLACEMENT_IMPLEMENTED
+  // (new practical lessons, E/DECISIONS.csv): they move to the replacement list; the 23-row total is unchanged.
+  for (const id of ['SL-067','SL-175','SL-319','SL-468']) want[id] = 'ORIGINAL_LESSON_COVERS_OBJECTIVE';
+  for (const id of ['SL-062','SL-063','SL-561','SL-293','SL-295','SL-282','SL-285','SL-433','SL-434','SL-435','SL-566','SL-567']) want[id] = 'REPLACEMENT_IMPLEMENTED';
   for (const id of ['SL-084','SL-263','SL-280','SL-384','SL-524','SL-525','SL-565']) want[id] = 'STRUCTURAL_MARKER';
   assert.equal(Object.keys(want).length, 23);
   for (const [id, disp] of Object.entries(want)) {
@@ -423,7 +435,9 @@ test('six new Mathematics lessons are complete, attributed, registered and appen
   validateJss3Supplements(JSS3_SUPPLEMENTS);
   const inv = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv'); const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv');
   for (const [id, [term, gap, order]] of Object.entries(MATH_NEW)) {
-    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Mathematics'); assert.equal(s.termLabel, term); assert.deepEqual(s.gapIds, [gap]);
+    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Mathematics'); assert.equal(s.termLabel, term);
+    // stable prefix: the originally registered gap stays first; Batch 2 worker A revised SUP-MATH-SIMULT-GRAPH to also cover SL-241 and SL-243
+    assert.equal(s.gapIds[0], gap); assert.deepEqual(s.gapIds.slice(1), id === 'SUP-MATH-SIMULT-GRAPH' ? ['WG-MATH-SL241', 'WG-MATH-SL243'] : []);
     for (const part of [/Objectives:/, /Teaching:/, /Worked examples/, /Practice \(questions\):/, /Answers and marking guide:/, /Assessment and feedback: total \d+ marks/]) assert.match(s.body, part, id);
     assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1 && s.sources.every(x => x.url.startsWith('https://')), id);
     assert.equal(inv.filter(r => r.id === id).length, 1, `${id} listed once`); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
@@ -451,7 +465,7 @@ test('new Mathematics worked examples and answers are recomputed independently',
   const srt = [...d].sort((a, b) => a - b); assert.equal((srt[4] + srt[5]) / 2, 6.5);
   const fr = [2, 1, 2, 1, 3, 1, 2, 3, 4, 1]; const sf = fr.reduce((a, b) => a + b, 0), sfx = fr.reduce((a, b, i) => a + b * i, 0); assert.equal(sf, 20); assert.equal(sfx, 99); assert.equal(sfx / sf, 4.95);
   const m2 = [14, 9, 12, 9, 16, 11, 9, 15]; assert.equal(m2.reduce((a, b) => a + b, 0) / 8, 11.875);
-  const marks = [42, 44, 50, 40, 54, 48, 10, 88]; assert.equal(marks.reduce((a, b) => a + b, 0) / 8, 47); has('SUP-MATH-AVERAGES', 'mean = 376 ÷ 8 = 47'); has('SUP-MATH-AVERAGES', 'printed the mean as 48');
+  const marks = [42, 44, 50, 40, 54, 48, 10, 88]; assert.equal(marks.reduce((a, b) => a + b, 0) / 8, 47); has('SUP-MATH-AVERAGES', 'mean = 376 ÷ 8 = 47'); assert.match(byId('SUP-MATH-AVERAGES').body, /original note (printed|prints) the mean as 48/, 'SUP-MATH-AVERAGES: states the note\'s mean of 48 and corrects it to 47'); // worker A\'s revision uses the present tense
   assert.equal((3 * 108 + 5 * 37 + 8 * 38 + 6 * 39 + 2 * 40) / 24 > 37.95, true); has('SUP-MATH-AVERAGES', '911 ÷ 24 = 37.96');
   // graphical and word problems: intersections and checks
   assert.equal(0.5 * 2 - 2, 2 * 2 - 5); assert.equal(2 - 2 * -1, 4); assert.equal(2 * 2 - -1, 5); has('SUP-MATH-SIMULT-GRAPH', 'cross at (2, −1)');
@@ -482,7 +496,8 @@ test('all 18 Mathematics lead rows carry a reviewed decision that records what w
     if (d.support_kind === 'original') assert.match(c.support_locator, /anchor_sha256=[0-9a-f]{16}; row_sha256=[0-9a-f]{16}; verified_by=SEMANTIC_DECISIONS\.csv/, id);
   }
   const by = (x: string) => MATH18.filter(id => closure.find(r => r.candidate_id === id)!.disposition === x).length;
-  assert.equal(by('ORIGINAL_LESSON_COVERS_OBJECTIVE'), 4); assert.equal(by('STRUCTURAL_MARKER'), 1); assert.equal(by('REPLACEMENT_IMPLEMENTED'), 13);
+  // Worker A revised SL-146, SL-147 and SL-254 from ORIGINAL_LESSON_COVERS_OBJECTIVE to REPLACEMENT_IMPLEMENTED: 4/1/13 became 1/1/16.
+  assert.equal(by('ORIGINAL_LESSON_COVERS_OBJECTIVE'), 1); assert.equal(by('STRUCTURAL_MARKER'), 1); assert.equal(by('REPLACEMENT_IMPLEMENTED'), 16);
   for (const id of ['SL-150', 'SL-153', 'SL-242', 'SL-244', 'SL-245', 'SL-252', 'SL-253', 'SL-257', 'SL-258']) {
     const d = decisions.find(r => r.candidate_id === id)!; assert.ok(Object.keys(MATH_NEW).includes(d.row_filter), id);
   }
@@ -506,13 +521,16 @@ test('six Basic Technology lessons are complete, attributed, registered, appende
   validateJss3Supplements(JSS3_SUPPLEMENTS);
   const inv = csv('docs/jss3/replacements/IMPLEMENTED_LESSONS.csv'); const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const wg = csv('docs/jss3/replacements/WIDER_WORKSTREAMS.csv');
   for (const [id, [gaps, order]] of Object.entries(BT_NEW)) {
-    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Basic Technology'); assert.equal(s.termLabel, '2nd Term'); assert.deepEqual(s.gapIds, gaps);
+    const s = byId(id); assert.ok(s, id); assert.equal(s.subjectName, 'Basic Technology'); assert.equal(s.termLabel, '2nd Term');
+    // stable prefix: Batch 2 worker A revised SUP-BT-TROUBLESHOOT to also cover SL-445 (tools for fault detection)
+    assert.deepEqual(s.gapIds, id === 'SUP-BT-TROUBLESHOOT' ? [...gaps, 'WG-BT-SL445'] : gaps);
     for (const part of [/Objectives:/, /Teaching:/, /Practice \(questions\):/, /Answers and marking guide/, /Assessment and feedback/]) assert.match(s.body, part, id);
     assert.match(s.origin, /not recovered/); assert.ok(s.sources.length >= 1 && s.sources.every(x => x.url.startsWith('https://')), id);
     assert.equal(inv.filter(r => r.id === id).length, 1, id); assert.equal(inv.find(r => r.id === id)!.order_index, String(order));
     for (const g of gaps) { assert.ok(cov.some(r => r.id === g && r.supplement_ids === id), g); assert.ok(wg.some(r => r.id === g && r.supplement_id === id), g); }
   }
-  const bt2 = JSS3_SUPPLEMENTS.filter(s => s.subjectName === 'Basic Technology' && s.termLabel === '2nd Term').map(s => s.id); assert.deepEqual(bt2, Object.keys(BT_NEW), 'appended in order');
+  const bt2 = JSS3_SUPPLEMENTS.filter(s => s.subjectName === 'Basic Technology' && s.termLabel === '2nd Term').map(s => s.id); // stable prefix: the six original lessons keep their order; Batch 2 worker A's SUP-BTECH-WOOD-PROJECT is appended after them
+  assert.deepEqual(bt2.slice(0, 6), Object.keys(BT_NEW), 'appended in order'); assert.deepEqual(bt2.slice(6), ['SUP-BTECH-WOOD-PROJECT']);
 });
 test('Basic Technology gap IDs are registered and an unregistered WG-BT ID is still rejected', () => {
   const s = byId('SUP-BT-WIRING');
@@ -571,7 +589,7 @@ test('no scratch capture file is tracked, and the five mapping entries stay reso
   const tracked = execSync('git ls-files', { encoding: 'utf8' }).split('\n'); assert.ok(!tracked.some(f => /ingestTopics\.capture-/.test(f)));
   const cov = csv('docs/jss3/replacements/CURRENT_COVERAGE.csv'); const mp = csv('docs/jss3/replacements/MAPPING_RESOLUTION.csv');
   for (const id of ['EN2-03', 'YO-T1-MAP', 'YO-T2-MAP', 'YO-T3-MAP', 'YO-OWE']) { assert.ok(mp.some(r => r.id === id && r.executable_rows.length > 10), id); assert.equal(cov.find(r => r.id === id)!.current_status, 'MAPPING_VERIFIED_PROVENANCE_PRESERVED', id); }
-  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.match(ob.find(r => r.id === 'OB-09')!.detail, /NOT run on 24\.19\.0/); assert.equal(ob.find(r => r.id === 'OB-20')!.type, 'resolved');
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.match(ob.find(r => r.id === 'OB-09')!.detail, /verified on Node 24\.19\.0/); assert.doesNotMatch(ob.find(r => r.id === 'OB-09')!.detail, /were NOT run on 24/); // superseded 19 Oct 2026 by the F integration run assert.equal(ob.find(r => r.id === 'OB-20')!.type, 'resolved');
   const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); assert.equal(closure.filter(r => LEAD_STATES.includes(r.disposition)).length, 0);
 });
 

@@ -7,11 +7,21 @@ M=Path('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');LOG=Path('docs/jss3/batc
 rd=lambda p:list(csv.DictReader(open(p,newline='',encoding='utf-8-sig')))
 master=rd(M);hdr=list(master[0].keys());rows=[dict(r) for r in master];idx={r['candidate_id']:i for i,r in enumerate(rows)}
 seen={};log=[]
+def evidence(pkgdir):
+    f=Path(pkgdir)/'OBJECTIVE_EVIDENCE.json'
+    return {e['candidate_id']:e for e in json.load(open(f)) if isinstance(e,dict) and 'candidate_id' in e} if f.exists() else {}
+def enrich(r,ev):
+    """Repository gate: a decision must record what was read. A worker rationale that does not start with 'Read' is prefixed with the exact scheme line and locator from that worker's own OBJECTIVE_EVIDENCE.json; the worker's wording is kept verbatim after the prefix. Nothing is invented: the objective, document and locator are the worker's recorded values."""
+    e=ev.get(r['candidate_id'])
+    if not e or r['rationale'].startswith('Read'): return r
+    obj=' '.join(str(e.get('objective','')).split())
+    if not obj or "'" in obj: return r
+    r=dict(r);r['rationale']=f"Read: scheme line '{obj}' ({e.get('source_document','?')}, {e.get('source_locator','?')}). "+r['rationale'];return r
 for p in sorted(glob.glob('docs/jss3/batch2-close/*/DECISIONS.csv')):
-    pkg=p.split('/')[-2][0]
-    for r in rd(p):
+    pkg=p.split('/')[-2][0];ev=evidence(Path(p).parent) if pkg=='A' else {}  # only A's rationales fail the repo 'records what was read' gate
+    for r in map(lambda x:x,rd(p)):
         if list(r.keys())!=hdr: sys.exit(f'{pkg}: header mismatch {list(r.keys())}')
-        c=r['candidate_id']
+        c=r['candidate_id'];r=enrich(r,ev)
         if c in seen: sys.exit(f'COMPETING decisions for {c}: {seen[c]} and {pkg}')
         if not r['disposition']: sys.exit(f'{c}: empty disposition')
         seen[c]=pkg

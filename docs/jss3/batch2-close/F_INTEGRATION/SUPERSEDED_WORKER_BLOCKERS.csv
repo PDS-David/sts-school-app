@@ -1,0 +1,10 @@
+package,blocker_id,status_after_integration,evidence
+A,A-INTEGRATE,integrated_in_code,"jss3DeliveryCorrection.ts + learning.ts routes + assessments.content_fingerprint; tests/jss3-delivery-correction.test.mts and .db.test.mts (17/17 incl. live PostgreSQL)"
+A,A-ASSET,integrated_in_code,"curriculum-assets/jss3/supplements/BATCH2_BUSINESS_2ND_MANIFEST.csv resolves SUP-BUS-SHORTHAND from the combined capture; tests/jss3-batch2-assets.db.test.mts"
+B,B-08,superseded_local_node24,"Verified on Node 24.19.0 on 19 Oct 2026; CI result in REPORT.md"
+C,B-C13,superseded_local_node24,"Verified on Node 24.19.0 on 19 Oct 2026; CI result in REPORT.md"
+C,B-C14,superseded_published,"Delivery published to master by the owner (PR 5 and earlier commits); integration pushed by F"
+D,D-B03,integrated_in_code,"Override mechanism implemented and tested; 58 corrections merged A23 B7 C0 D23 E5"
+E,ALL (capture),superseded,"Fresh scripts/jss3/capture_rows.py run on the combined tree, Node 24.19.0: 313 originals, 156 supplements, 469 rows"
+E,ALL (order indexes),integrated_in_code,"Order indexes resolved per lesson id by scripts/jss3/build_batch2_asset_manifests.py"
+B,B-03,STILL_OPEN,"Production preflight of previously generated child-care assessments is not done; the new route guard retires them lazily on first contact, but nothing was run against production"
