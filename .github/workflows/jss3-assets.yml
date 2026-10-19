@@ -38,7 +38,7 @@ jobs:
       - name: Static and focused regressions
         run: |
           node --test tests/*.cjs
-          node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts tests/jss3-supplements.test.mts tests/jss3-batch2-assets.test.mts tests/jss3-delivery-correction.test.mts tests/jss3-d-verification.test.mts
+          node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts tests/jss3-supplements.test.mts tests/jss3-batch2-assets.test.mts tests/jss3-delivery-correction.test.mts tests/jss3-d-verification.test.mts tests/jss3-g4-figures.test.mts
       - name: Live PostgreSQL and real asset bytes
         env:
           TOPIC_ASSETS_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
