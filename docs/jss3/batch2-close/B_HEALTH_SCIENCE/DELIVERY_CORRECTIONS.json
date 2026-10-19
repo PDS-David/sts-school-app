@@ -138,5 +138,105 @@
       "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
       "GET /learning/topics: summary and source_reference fields"
     ]
+  },
+  {
+    "id": "BS-BUSH-BURNING-OZONE",
+    "class_name": "JSS 3",
+    "school_code": "secondary",
+    "term_label": "1st Term",
+    "subject_name": "Basic Science",
+    "source_body_sha256": "9dc0b1d0d7d3168b9defebbe3f8797f1fea5d632985d40fd1b9d6e6307b88876",
+    "source_title": "BUSH BURNING",
+    "replacement_lesson_ids": [
+      "SUP-BS-BUSH-BURNING"
+    ],
+    "reason": "Incorrect science: says bush burning 'contributes to ozone layer'; fires add smoke and carbon dioxide (air pollution and greenhouse warming) and do not deplete the stratospheric ozone layer. The row also attributes grazing fires to one group of herders and its practice questions do not match the topic. Residual of BS-OZONE-CONFLATION.",
+    "affected_summary_and_question_paths": [
+      "topics.source_reference (read-time override)",
+      "topics.summary (cached study notes)",
+      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
+      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
+      "GET /learning/topics: summary and source_reference fields"
+    ]
+  },
+  {
+    "id": "BS-DEFORESTATION-OZONE",
+    "class_name": "JSS 3",
+    "school_code": "secondary",
+    "term_label": "1st Term",
+    "subject_name": "Basic Science",
+    "source_body_sha256": "d7118ad19b1338702f0c0e45e33f56b87bd4d921f0304fcfc3136543d3569300",
+    "source_title": "DEFORESTATION",
+    "replacement_lesson_ids": [
+      "SUP-BS-DEFORESTATION"
+    ],
+    "reason": "Incorrect science: says carbon dioxide from destroyed forests 'depletes the ozone layer and also cause greenhouse effect'; carbon dioxide causes greenhouse warming and does not deplete the ozone layer (CFCs and halons do). Residual of BS-OZONE-CONFLATION.",
+    "affected_summary_and_question_paths": [
+      "topics.source_reference (read-time override)",
+      "topics.summary (cached study notes)",
+      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
+      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
+      "GET /learning/topics: summary and source_reference fields"
+    ]
+  },
+  {
+    "id": "PHE-COMBINED-EVENTS-1T",
+    "class_name": "JSS 3",
+    "school_code": "secondary",
+    "term_label": "1st Term",
+    "subject_name": "Physical & Health Education",
+    "source_body_sha256": "a53d4dccba739757c54004b9704bcc34cc1bb62b7ee000e6e2d3abd2959b15be",
+    "source_title": "COMBINED EVENTS",
+    "replacement_lesson_ids": [
+      "SUP-PHE-COMBINED-EVENTS"
+    ],
+    "reason": "Confirmed event-list errors against World Athletics: the decathlon's first event is the 100 m (not 100 m hurdles) and a five-event list (long jump, javelin, 200 m, discus, 1,500 m) is labelled the women's pentathlon, which today is 60 m hurdles, high jump, shot put, long jump, 800 m (indoor).",
+    "affected_summary_and_question_paths": [
+      "topics.source_reference (read-time override)",
+      "topics.summary (cached study notes)",
+      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
+      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
+      "GET /learning/topics: summary and source_reference fields"
+    ]
+  },
+  {
+    "id": "PHE-COMBINED-EVENTS-2T",
+    "class_name": "JSS 3",
+    "school_code": "secondary",
+    "term_label": "2nd Term",
+    "subject_name": "Physical & Health Education",
+    "source_body_sha256": "cd8b67db23d118b792349373e3b0989e27e9789609eadb286085924fbf29e541",
+    "source_title": "COMBINED EVENTS",
+    "replacement_lesson_ids": [
+      "SUP-PHE-COMBINED-EVENTS"
+    ],
+    "reason": "Confirmed errors against World Athletics: scoring said to be by medals won (it is by points tables), the decathlon's first event given as 100 m hurdles, and the heptathlon's first-day sprint given as '100m race' instead of 100 m hurdles.",
+    "affected_summary_and_question_paths": [
+      "topics.source_reference (read-time override)",
+      "topics.summary (cached study notes)",
+      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
+      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
+      "GET /learning/topics: summary and source_reference fields"
+    ]
+  },
+  {
+    "id": "PHE-SPORTS-HEROES-FACTS",
+    "class_name": "JSS 3",
+    "school_code": "secondary",
+    "term_label": "2nd Term",
+    "subject_name": "Physical & Health Education",
+    "source_body_sha256": "ee97d5b449f3d3d1a9087b644e1e3f0f0f6f41f3fd74ce68665f9aee8f25fd9a",
+    "source_title": "NIGERIAN SPORTS HEROES AND HEROINE",
+    "replacement_lesson_ids": [
+      "SUP-PHE-NIGERIAN-HEROES"
+    ],
+    "reason": "Confirmed errors: Mary Onyali's 1992 Olympic bronze was in the 4 x 100 m relay (not 4 x 400 m) and there was no 1996 Commonwealth Games (her gold was in 1994); 'Olumide Oyedele' is Olumide Oyedeji; 'Nwankwo Many' is Nwankwo Kanu. Several other printed names could not be matched and are marked for teacher check.",
+    "affected_summary_and_question_paths": [
+      "topics.source_reference (read-time override)",
+      "topics.summary (cached study notes)",
+      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
+      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
+      "GET /learning/topics: summary and source_reference fields"
+    ]
   }
 ]
