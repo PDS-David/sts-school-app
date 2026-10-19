@@ -1,0 +1,55 @@
+{
+  "node": "24.19.0",
+  "checks": [
+    {
+      "check": "backend-types",
+      "exit_code": 0
+    },
+    {
+      "check": "mobile-types",
+      "exit_code": 0
+    },
+    {
+      "check": "static",
+      "exit_code": 0
+    },
+    {
+      "check": "jss3-full",
+      "exit_code": 0
+    },
+    {
+      "check": "asset-focused",
+      "exit_code": 0
+    },
+    {
+      "check": "capture",
+      "exit_code": 0
+    }
+  ],
+  "jss3": {
+    "tests": 224,
+    "pass": 222,
+    "fail": 0,
+    "skipped": 2,
+    "skip_reason": "Local PostgreSQL unavailable: delivery-correction DB and batch2-asset DB tests"
+  },
+  "static": {
+    "pass": 16,
+    "fail": 0
+  },
+  "asset_focused": {
+    "pass": 12,
+    "fail": 0
+  },
+  "capture": {
+    "original": 313,
+    "supplements": 162,
+    "total": 475,
+    "first": 230,
+    "second": 245,
+    "third": 0,
+    "computer_studies": 0
+  },
+  "originals_identical_to_prior_F_capture": true,
+  "all_156_F_lessons_unchanged": true
+}
