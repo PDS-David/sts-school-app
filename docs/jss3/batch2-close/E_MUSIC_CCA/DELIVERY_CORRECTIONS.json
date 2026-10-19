@@ -1,0 +1,76 @@
+[
+ {
+  "id": "JSS3-MUSIC-CADENCES-PLAGAL-FAH-ME",
+  "class_name": "JSS 3",
+  "school_code": "secondary",
+  "source_body_sha256": "b0a5211d6f0b4120539a1dfb56334fea6af2b585c5570cf4a261b419f9c878ed",
+  "source_title": "CADENCES",
+  "replacement_lesson_ids": [
+   "SUP-MUSIC-CADENCES"
+  ],
+  "reason": "The row gives 'e.g fah- me' as the plagal cadence. A plagal cadence is chord IV to chord I (roots fah and doh); 'me' is the third of chord I. Pupils would learn a wrong example and AI grounding would repeat it.",
+  "affected_summary_and_question_paths": [
+   "topic summary: sentence containing 'e.g fah- me' under the plagal cadence",
+   "any generated question or answer that uses 'fah - me' as the plagal cadence"
+  ]
+ },
+ {
+  "id": "JSS3-CCA-BATIK-UNSUPERVISED-HOT-WAX",
+  "class_name": "JSS 3",
+  "school_code": "secondary",
+  "source_body_sha256": "284e92fe33b5e1ad1282a669311c05aa7744e84e26ae905816797c217ea25ce1",
+  "source_title": "BATIK",
+  "replacement_lesson_ids": [
+   "SUP-CCA-BATIK-PRACTICAL"
+  ],
+  "reason": "The row tells the reader to melt wax in a pot or old electric frying pan at about 220-230 F, tub-dye with soda ash, boil the wax out and iron it, with no adult supervision or safety rules and with product names from a craft shop. For JSS3 pupils this is unsafe as an unsupervised procedure; the replacement keeps the batik idea, makes paste-resist the pupil activity and keeps heat and chemicals with the teacher.",
+  "affected_summary_and_question_paths": [
+   "topic summary: Steps 3, 6 and 9 (melting wax, soda ash dye bath, boiling and ironing the wax out)",
+   "any generated question or step list that tells a pupil to heat wax or boil fabric"
+  ]
+ },
+ {
+  "id": "JSS3-MUSIC-MINOR-SCALES-FLATS-LOST",
+  "class_name": "JSS 3",
+  "school_code": "secondary",
+  "source_body_sha256": "26c2275e1cf2a3c276d9f7d3d715c676a2f12fa687fe063d83772877de4833c2",
+  "source_title": "MINOR SCALE WTH KEY SIGNATURE D, E AND G MINOR (HARMONIC)",
+  "replacement_lesson_ids": [
+   "SUP-MUSIC-HARMONIC-MINOR"
+  ],
+  "reason": "The drawn staves are correct but the text layer loses the flat signs (B-flat reads as B, E-flat as E) and the G minor letter row ends on A; a text-only summary or AI grounding would state wrong scales.",
+  "affected_summary_and_question_paths": [
+   "topic summary: the letter rows under D minor, E minor and G minor",
+   "any generated question or answer listing D, E or G minor notes without flats"
+  ]
+ },
+ {
+  "id": "JSS3-MUSIC-RELATIVE-KEYS-FLATS-LOST",
+  "class_name": "JSS 3",
+  "school_code": "secondary",
+  "source_body_sha256": "efd0f6114f9b682ec6b06ef555840789c3b76fd39e959cc1a7190e7416560844",
+  "source_title": "RELATIVE MINOR KEYS WITH FOUR SHARPS AND FLATS",
+  "replacement_lesson_ids": [
+   "SUP-MUSIC-RELATIVE-KEYS"
+  ],
+  "reason": "The key-signature table is drawn; in plain text the flats are lost so flat keys read 'B major, E major, A major' with minors 'B minor, E minor, A minor'.",
+  "affected_summary_and_question_paths": [
+   "topic summary: the lists of flat major keys and their relative minors",
+   "any generated question or answer naming relative minors of flat keys"
+  ]
+ },
+ {
+  "id": "JSS3-MUSIC-SOLFA-LE-TAW",
+  "class_name": "JSS 3",
+  "school_code": "secondary",
+  "source_body_sha256": "6cc0337612d4bd0886a9c6c76ed32f40c2699ac8aa1a5d1c12163df162322606",
+  "source_title": "TRANSCRIPTION FROM STAFF TO SOLFA-NOTATION",
+  "replacement_lesson_ids": [
+   "SUP-MUSIC-STAFF-TO-SOLFA"
+  ],
+  "reason": "The row says raised lah becomes 'le (taw)'. In tonic sol-fa raised lah is 'le'; 'ta' (said 'taw') is the lowered ti.",
+  "affected_summary_and_question_paths": [
+   "topic summary: the chromatic names list ending 'le (taw)'"
+  ]
+ }
+]
