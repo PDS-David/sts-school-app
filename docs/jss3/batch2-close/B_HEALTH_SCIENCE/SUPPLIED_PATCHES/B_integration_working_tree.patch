@@ -1,0 +1,583 @@
+diff --git a/backend/src/db/data/jss3DeliveryCorrections.json b/backend/src/db/data/jss3DeliveryCorrections.json
+new file mode 100644
+index 0000000..3ffea7c
+--- /dev/null
++++ b/backend/src/db/data/jss3DeliveryCorrections.json
+@@ -0,0 +1,142 @@
++[
++  {
++    "id": "HOME-CHILD-CARE-CONTD-ORT-HONEY",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "2nd Term",
++    "subject_name": "Home Economics",
++    "source_body_sha256": "5892e2bd051ebec2ebeee4d65eaf632ec9be5f6de4888ad7be504eb04c660c20",
++    "source_title": "CHILD CARE [CONTD]",
++    "replacement_lesson_ids": [
++      "SUP-HOME-CHILD-SAFETY"
++    ],
++    "reason": "Unsafe: homemade salt-and-sugar rehydration recipe with wrong proportions; glucose, sugar or honey advised for infant constipation (honey is unsafe under 12 months); fruit juice advised for infants; immunisation table lists smallpox and is not the current Nigerian schedule.",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  },
++  {
++    "id": "BS-OZONE-CONFLATION",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "1st Term",
++    "subject_name": "Basic Science",
++    "source_body_sha256": "fdaf1ed47e8f5665eb45fcc20da7ea49e7d1f7e7bc0e87250eba8483d514c2da",
++    "source_title": "DEPLETION OT OZONE LAYER",
++    "replacement_lesson_ids": [
++      "SUP-BS-OZONE-CLIMATE"
++    ],
++    "reason": "Incorrect science: says ozone cools the Earth, that depletion causes the greenhouse effect via more lower-air ozone, and that carbon dioxide depletes the ozone layer; practice question 2 and 4 keys rest on those claims.",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  },
++  {
++    "id": "BS-MAGNET-POLE-REVERSAL",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "2nd Term",
++    "subject_name": "Basic Science",
++    "source_body_sha256": "7adf9e6105c8b0d3408a662808d22e3d5cb99a65fb3318653a548134b8402f33",
++    "source_title": "Magnetism-",
++    "replacement_lesson_ids": [
++      "SUP-BS-MAGNET-POLES"
++    ],
++    "reason": "Incorrect science: states that the end of a magnet pointing to geographic north is its south pole (the north-seeking end is the north pole); the second sentence of the same paragraph is incomplete.",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  },
++  {
++    "id": "BS-ELECTRIC-FORMULAS-UNITS",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "2nd Term",
++    "subject_name": "Basic Science",
++    "source_body_sha256": "bf8cdf7e1c9e021336660475b6a41065f00667ff38cc1304987f215593f4ab45",
++    "source_title": "Electrical Energy.",
++    "replacement_lesson_ids": [
++      "SUP-BS-ELECTRIC-CIRCUITS"
++    ],
++    "reason": "Incorrect science/arithmetic: voltmeter described as detecting current; parallel resistance written as total R = 1/R1+1/R2; billing example prints cost per unit 1291 naira although 271 units total 3498.61 naira (12.91 per unit).",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  },
++  {
++    "id": "PHE-STI-HIV-OUTDATED-HARMFUL",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "1st Term",
++    "subject_name": "Physical & Health Education",
++    "source_body_sha256": "5e5c36a4ea5139114e1ced535888eeb2cc28344d3d811dff5d0b6bbb4c684659",
++    "source_title": "Sexually Transmitted Diseases (STDs)",
++    "replacement_lesson_ids": [
++      "SUP-PHE-HIV-STI-FACTS"
++    ],
++    "reason": "Materially harmful/outdated: instructs people with HIV not to be pregnant; omits ART, undetectable=untransmittable, condoms and prevention of mother-to-child transmission; groups circumcision with unsafe cutting; says AIDS cannot be cured without explaining treatment.",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  },
++  {
++    "id": "PHE-PUBERTY-INACCURATE",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "2nd Term",
++    "subject_name": "Physical & Health Education",
++    "source_body_sha256": "3b3bac80d03962eb71785e94da4857d253347a7e714d2d7eb061758673ad581e",
++    "source_title": "Puberty.",
++    "replacement_lesson_ids": [
++      "SUP-PHE-PUBERTY-TEEN-PREG"
++    ],
++    "reason": "Inaccurate: garbled hormone sentence, constant erection and high-pitch tiny voice listed as puberty changes; no guidance on where to get help; unsafe-abortion consequences not tied to seeking care.",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  },
++  {
++    "id": "BS-FAMILY-LIFE-PREGNANCY-MYTHS",
++    "class_name": "JSS 3",
++    "school_code": "secondary",
++    "term_label": "1st Term",
++    "subject_name": "Basic Science",
++    "source_body_sha256": "063482801b09fa6c4f95b88a4058d245a98471ed9cf92ab391e6978e079c5dd0",
++    "source_title": "FAMILY LIFE EDUCATION [i]",
++    "replacement_lesson_ids": [
++      "SUP-BS-PREGNANCY-FACTS"
++    ],
++    "reason": "Incorrect myth/fact list: states pregnancy may last more than a year as a fact; classes first-time-sex pregnancy as a myth; garbled items such as high failure rate control.",
++    "affected_summary_and_question_paths": [
++      "topics.source_reference (read-time override)",
++      "topics.summary (cached study notes)",
++      "topics.generated_assessment_id -> assessments / assessment_questions / questions (cached AI assessment; closed and unlinked)",
++      "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
++      "GET /learning/topics: summary and source_reference fields"
++    ]
++  }
++]
+\ No newline at end of file
+diff --git a/backend/src/db/data/jss3Supplements.json b/backend/src/db/data/jss3Supplements.json
+index c17eac1..a371fd2 100644
+--- a/backend/src/db/data/jss3Supplements.json
++++ b/backend/src/db/data/jss3Supplements.json
+@@ -1834,5 +1834,173 @@
+       }
+     ],
+     "origin": "New teaching material prepared under the owner's 17 October 2026 authorisation to provide lessons where no executable body teaches a scheme objective; not recovered school-source text. The scheme line '_reversible rotary motion' has no executable body: 2nd Term 'motion in engineering' covers rotary motion, car transmission and brakes, and 'machine motion' covers rotary-to-linear conversion, but none teaches reversing the direction of rotation. This lesson supplies it."
++  },
++  {
++    "id": "SUP-HOME-CHILD-SAFETY",
++    "gapIds": [
++      "WG-HE-SL549"
++    ],
++    "subjectName": "Home Economics",
++    "termLabel": "2nd Term",
++    "title": "Child care (continued): safe care in diarrhoea, constipation and colic, safe infant feeding, and immunisation",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original Second-Term row 'CHILD CARE [CONTD]', which gave a homemade salt-and-sugar rehydration recipe, advised adding glucose, sugar or honey to a child's food for constipation, and printed a vaccine table that listed smallpox. The original row is preserved unchanged in the audit record and must not be used as study text, fallback or question source. This is school teaching, not medical advice for a particular child; it gives no dose and no homemade medicine recipe.",
++    "sources": [
++      {
++        "title": "Clinical management of acute diarrhoea — WHO/UNICEF joint statement",
++        "url": "https://www.who.int/publications/i/item/WHO_FCH_CAH_04.7"
++      },
++      {
++        "title": "Diarrhoeal disease — WHO fact sheet",
++        "url": "https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease"
++      },
++      {
++        "title": "Foods and Drinks to Avoid or Limit — CDC",
++        "url": "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-avoid-or-limit.html"
++      },
++      {
++        "title": "How to Clean, Sanitize, and Store Infant Feeding Items — CDC",
++        "url": "https://www.cdc.gov/hygiene/about/clean-sanitize-store-infant-feeding-items.html"
++      },
++      {
++        "title": "Nigeria routine immunisation schedule — NPHCDA Immunization FHIR IG",
++        "url": "https://build.fhir.org/ig/Nigeria-FHIR-Community/NPHCDA-ImmunizationIG/health-interventions-recommendations.html"
++      }
++    ],
++    "body": "Objectives: describe diarrhoea, constipation and colic in babies and say what a caregiver should do; explain why old home remedies are unsafe; state what a baby under 12 months must not be given; explain why immunisation matters and why families follow the current clinic schedule.\n\nWhy this lesson corrects the earlier notes: the earlier notes on child care (continued) included a homemade salt-and-sugar drink, advice to add glucose, sugar or honey to a child's food for constipation, and a vaccine table that listed smallpox. Those items are unsafe or out of date. Do not use them. This lesson replaces them.\n\nTeaching:\n1. Diarrhoea means three or more loose or liquid stools in a day. The danger is dehydration (loss of too much body water), which is most dangerous in babies. Causes include germs in unsafe food or water, unclean feeding equipment and unwashed hands.\n2. What to do for diarrhoea: keep feeding and keep breastfeeding; give extra fluids; use oral rehydration salts (ORS) from a clinic, pharmacy or community health worker, mixed exactly as the packet says with clean water. Do not mix a salt-and-sugar drink by guessing amounts: too much salt or sugar can make a baby worse. A health worker may also give zinc for the days the child needs it. Do not give anti-diarrhoea medicines, antibiotics or herbal mixtures unless a health worker prescribes them.\n3. Go to a clinic at once if the child is a young baby, is very sleepy or cannot drink, has sunken eyes, passes blood in the stool, has a high fever, vomits everything, or passes very little urine. Diarrhoea that continues needs a health worker.\n4. Preventing diarrhoea: wash hands with soap and clean water after the toilet, after changing a nappy and before feeding; use safe drinking water; keep food covered; clean feeding equipment as in the baby-care lesson (wash with soap and a brush kept for the purpose, sanitise, air-dry and store covered); follow the clinic immunisation card.\n5. Constipation means hard, painful or infrequent stools. Do not add honey, sugar or glucose to a baby's food or drink to treat it. Honey must never be given to a child under 12 months: it can cause infant botulism, a serious food poisoning. Children under 12 months should not be given fruit or vegetable juice, and children under 24 months should avoid added sugars. Take a baby to a health worker for constipation. For older children, plenty of safe water, vegetables, fruit and whole foods and active play help; if there is severe pain, vomiting, a swollen belly or blood, go to the clinic.\n6. Colic means a baby cries hard and long, often in the first months, for no clear reason. Comfort the baby by holding, rocking and a calm room. Take the baby to a health worker if there is fever, vomiting, blood in the stool, poor feeding or the baby seems very unwell. Do not give herbal mixtures or medicines unless a health worker advises.\n7. Safe infant feeding rules: breast milk is the best food for a young baby; a health worker advises when other foods begin (complementary foods begin around six months). Under 12 months do not give honey, cow's milk as a main drink or juice. Avoid salty foods and added sugar. Use clean cups, spoons and bottles. Cook foods well and give them fresh.\n8. Immunisation protects children and expectant mothers from serious diseases. Smallpox was eradicated worldwide, so smallpox vaccine is not part of the routine schedule and the old table must not be used. Nigeria's routine schedule is set by the National Primary Health Care Development Agency (NPHCDA) and can change, so families follow the immunisation card given at the primary health centre. Diseases the routine programme protects against include tuberculosis, polio, diphtheria, tetanus, whooping cough, hepatitis B, pneumonia, measles, yellow fever and meningitis. Keep the card safe, take it to each visit, and ask the health worker which vaccine is due.\n9. Laundering baby clothes (from the original notes): wash and rinse thoroughly so that no soap or stain irritates the skin, and dry in clean air.\n\nWorked example: Tola's baby brother has watery stools. Tola washes her hands, tells her mother, and they keep breastfeeding and take him to the health centre. The nurse gives ORS and explains how to mix it exactly as the packet says. Tola does not give honey, a salt-and-sugar drink or herbal medicine, because she knows these are unsafe.\n\nPractice (questions):\n1. Define diarrhoea and say why it is dangerous for babies.\n2. State three things a caregiver should do when a baby has diarrhoea.\n3. Why must a home salt-and-sugar drink not be mixed by guessing?\n4. List three danger signs that mean the child must go to the clinic at once.\n5. Why must honey never be given to a baby under 12 months?\n6. State two safe ways to help a baby with colic and one sign that needs a health worker.\n7. Why must the old vaccine table that listed smallpox not be used? Where do families find the current schedule?\n8. Name three ways of preventing diarrhoea.\n\nAnswers (marking guide): 1. Three or more loose or liquid stools in a day; the baby can lose too much body water (dehydration) quickly (2). 2. Any three (3): keep feeding and breastfeeding, give extra fluids, give ORS mixed as the packet says, wash hands, go to a health worker, give zinc only if the health worker advises. 3. Wrong amounts of salt or sugar can harm the baby (1). 4. Any three (3): very sleepy or cannot drink, sunken eyes, blood in the stool, high fever, vomits everything, very little urine, a young baby. 5. It can cause infant botulism, a serious food poisoning (1). 6. Hold, rock, calm room (2); fever, vomiting, blood in the stool or poor feeding needs a health worker (1). 7. Smallpox has been eradicated and the schedule has changed (1); the immunisation card and the primary health centre, set by NPHCDA (1). 8. Any three (3): hand washing, safe water, clean feeding equipment, covered food, immunisation. Teacher: this lesson gives no dose and no homemade medicine; do not add any."
++  },
++  {
++    "id": "SUP-BS-OZONE-CLIMATE",
++    "gapIds": [
++      "WG-BS-SL024"
++    ],
++    "subjectName": "Basic Science",
++    "termLabel": "1st Term",
++    "title": "Depletion of the ozone layer and its effects (corrected: ozone depletion is not the greenhouse effect)",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original First-Term row 'DEPLETION OT OZONE LAYER', which says that ozone gives a cooling effect, that depletion lets more ozone collect in the lower air and causes the greenhouse effect, and that carbon dioxide depletes the ozone layer. The original row is preserved unchanged in the audit record.",
++    "sources": [
++      {
++        "title": "Are the ozone hole and global warming related? — NASA Earth Observatory",
++        "url": "https://earthobservatory.nasa.gov/blogs/climateqa/are-the-ozone-hole-and-global-warming-related"
++      },
++      {
++        "title": "Montreal Protocol — UNEP Ozone Secretariat",
++        "url": "https://ozone.unep.org/node/132"
++      }
++    ],
++    "body": "Objectives: locate the ozone layer; state its importance; name the substances that deplete it and their effects; separate ozone depletion from the greenhouse effect; state control measures.\n\nTeaching:\n1. Location. The atmosphere has layers. The ozone layer is mainly in the stratosphere, above the troposphere where we live and where weather happens.\n2. Importance. Ozone in the stratosphere absorbs most of the Sun's harmful ultraviolet (UV) radiation. Because it absorbs UV, it warms the stratosphere; it does not cool the Earth's surface.\n3. Cause of depletion. Chemicals made by people, mainly chlorofluorocarbons (CFCs) and halons, rise to the stratosphere. Sunlight breaks them up and the chlorine or bromine released destroys ozone molecules. Sources were old refrigerators and air conditioners, aerosol sprays, foam and some fire extinguishers. The Montreal Protocol of 1987 phased out these substances and the ozone layer is slowly recovering.\n4. Effects of depletion. More UV reaches the ground. It can cause sunburn, skin cancer, eye cataracts and a weaker immune system in people, and can harm crops and sea life.\n5. Not the same as global warming. Ozone depletion does not cause global warming. Global warming is the rise in average surface temperature caused mainly by greenhouse gases such as carbon dioxide and methane that trap heat in the lower atmosphere. Carbon dioxide does not deplete the ozone layer. The two problems have a link only because CFCs are also greenhouse gases. Deforestation and bush burning raise carbon dioxide and pollute the air; they add to global warming, not directly to ozone destruction.\n6. Control. Support the Montreal Protocol and use ozone-friendly products; have old refrigerators and air conditioners collected and handled by trained people so that the refrigerant is not released; do not buy products that contain banned ozone-depleting chemicals. To reduce global warming, reduce fossil-fuel burning and bush burning and plant trees.\n7. Protect yourself from UV: use shade, a hat and sun-safe clothing in strong sun.\n\nWorked example: A scrap dealer is about to cut open an old refrigerator. Ada explains that the refrigerant could escape and damage the ozone layer, so a trained technician must remove it first.\n\nPractice (questions):\n1. In which layer of the atmosphere is the ozone layer found?\n2. State two functions of the ozone layer.\n3. Name two substances that deplete the ozone layer and two sources of them.\n4. State three effects of ozone depletion.\n5. Explain why carbon dioxide and CFCs are not treated as the same problem.\n6. State three control measures.\n\nAnswers (marking guide): 1. Stratosphere (1). 2. Absorbs harmful UV (1); protects life, skin and eyes (1). 3. CFCs and halons (2); refrigerators, air conditioners, aerosols, foam, fire extinguishers (any two, 2). 4. Any three (3): sunburn, skin cancer, cataracts, weaker immunity, crop and sea-life damage. 5. CO2 traps heat and warms the surface but does not destroy ozone; CFCs destroy ozone and also trap some heat (2). 6. Any three (3): Montreal Protocol, safe disposal of old fridges and air conditioners, ozone-friendly products, not releasing refrigerant."
++  },
++  {
++    "id": "SUP-BS-MAGNET-POLES",
++    "gapIds": [
++      "WG-BS-SL278"
++    ],
++    "subjectName": "Basic Science",
++    "termLabel": "2nd Term",
++    "title": "Magnetism: poles, the compass and the care of magnets (corrected pole naming)",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original Second-Term row 'Magnetism-', which says that the end of a magnet pointing to the geographic north pole is the south pole of the magnet. By the standard convention that end is the north (north-seeking) pole. The original row is preserved unchanged in the audit record.",
++    "sources": [
++      {
++        "title": "Earth as a Magnet — LibreTexts Physical Science",
++        "url": "https://phys.libretexts.org/Courses/Coalinga_College/Physical_Science_for_Educators_(CID:_PHYS_14)/12:_Magnetism/12.04:_Earth_as_a_Magnet"
++      }
++    ],
++    "body": "Objectives: state the law of magnetic poles; name the poles of a freely hanging magnet correctly; detect poles with a compass; describe a magnetic field; state how to care for magnets.\n\nTeaching:\n1. A magnet attracts iron and steel. Lodestone is a natural magnet. Every magnet has two poles, found near its ends, where the force is strongest.\n2. Law of poles: like poles repel; unlike poles attract.\n3. Naming the poles. A bar magnet that is free to swing comes to rest pointing roughly north and south. The end that points to the geographic north is called the north-seeking pole, or north pole, of the magnet. The end that points to the geographic south is the south pole. So the north pole of a magnet points towards the Earth's geographic north. The Earth itself acts like a huge magnet: the magnetic pole of the Earth near the geographic north attracts the north pole of a compass needle, so that Earth pole is magnetically a south pole.\n4. Detecting poles. Bring a compass near a bar magnet. The end of the magnet that repels the north end of the compass needle is a north pole. You can also hang the magnet on a thread and see which end points north.\n5. Magnetic field: the region around a magnet where its force acts. Field lines leave the north pole and enter the south pole. The field is strongest near the poles. Iron filings sprinkled on paper over a magnet show the pattern.\n6. Care of magnets: store them in pairs with unlike poles together and a soft-iron keeper across the ends; keep them dry, cool and away from heat, hammering and dropping, which weaken them. Keep magnets away from phones, cards and watches.\n7. Uses: compasses, loudspeakers, microphones, electric motors and generators, door catches, and lifting iron objects.\n\nWorked example: A compass needle swings to point at the right-hand end of a bar magnet. The needle's north end is attracted, so the right-hand end of the magnet is its south pole.\n\nPractice (questions):\n1. State the law of magnetic poles.\n2. Which end of a freely hanging magnet points to the geographic north: its north pole or south pole?\n3. Explain why the north end of a compass needle points to the Earth's geographic north.\n4. Describe how to find the north pole of an unmarked magnet using a compass.\n5. State three ways of caring for magnets.\n6. State two uses of magnets.\n\nAnswers (marking guide): 1. Like poles repel; unlike poles attract (2). 2. The north pole (the north-seeking pole) (1). 3. The Earth acts like a magnet; the magnetic pole near the geographic north attracts the needle's north end (2). 4. Bring the compass near; the end of the magnet that repels the compass north end is the north pole (2). 5. Any three (3): keepers, store in pairs, dry place, away from heat, avoid hammering or dropping. 6. Any two (2): compass, loudspeaker, motor, generator, door catch."
++  },
++  {
++    "id": "SUP-BS-ELECTRIC-CIRCUITS",
++    "gapIds": [
++      "WG-BS-SL279"
++    ],
++    "subjectName": "Basic Science",
++    "termLabel": "2nd Term",
++    "title": "Electrical energy: circuits, meters and electricity bills (corrected formulas and units)",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original Second-Term row 'Electrical Energy.', which describes the voltmeter as an instrument to detect the flow of current, writes the parallel-resistance rule as 1/RI+1/R2 for total resistance R, and prints a meter example whose cost per unit (1291 naira) does not match the total shown. The original row is preserved unchanged in the audit record.",
++    "sources": [
++      {
++        "title": "Electric circuits chapter summary — Siyavula Physical Sciences",
++        "url": "https://www.siyavula.com/read/za/physical-sciences/grade-10/electric-circuits/17-electric-circuits-06"
++      },
++      {
++        "title": "Resistors in circuits — physics.info",
++        "url": "https://physics.info/circuits-r/summary.shtml"
++      }
++    ],
++    "body": "Objectives: use series and parallel rules correctly; name what each meter measures and how it is connected; use V = I x R; calculate an electricity bill from units used; state basic electrical safety.\n\nTeaching:\n1. Current is the flow of charge, measured in amperes (A) with an ammeter connected in series. Potential difference (voltage) is measured in volts (V) with a voltmeter connected in parallel across the part being measured. A galvanometer detects a very small current. Resistance is measured in ohms.\n2. Direction: conventional current is drawn from the positive terminal round the circuit to the negative terminal. Electrons actually move the opposite way.\n3. Ohm's law: V = I x R, so I = V / R and R = V / I.\n4. Series circuit: one path; the same current in every part; total resistance R = R1 + R2 + R3. If one lamp fails, all go off.\n5. Parallel circuit: separate branches; the same voltage across every branch; the currents add. Total resistance follows 1/R = 1/R1 + 1/R2 + 1/R3. Adding a branch lowers the total resistance. Houses are wired in parallel so that one lamp failing does not switch the others off.\n6. Fuse and circuit breaker: both stop the current when it is too large. A fuse melts; a circuit breaker switches off and can be reset. Fit the correct rating.\n7. Electricity bill: energy used is shown in units (kilowatt-hours). Units used = present reading minus previous reading. Cost = units used x cost per unit.\n8. Safety: never touch bare wires, never use wet hands on switches or sockets, do not overload sockets, and have repairs done by a qualified electrician.\n\nWorked example: Two resistors of 4 ohm and 4 ohm are joined in parallel: 1/R = 1/4 + 1/4 = 2/4, so R = 2 ohm. In series they would total 8 ohm. A meter reads 47896 before and 48167 now: units used = 48167 - 47896 = 271. At 12.91 naira per unit the cost is 271 x 12.91 = 3498.61 naira.\n\nPractice (questions):\n1. Which meter measures current and how is it connected? Which measures potential difference and how is it connected?\n2. Write the formula for total resistance in series and in parallel.\n3. Find the total resistance of 6 ohm and 3 ohm in parallel.\n4. A 12 V battery drives a current of 2 A through a resistor. Find the resistance.\n5. A meter reads 1500 then 1620. The cost is 15 naira per unit. Find the cost.\n6. Why are houses wired in parallel?\n\nAnswers (marking guide): 1. Ammeter, in series (2); voltmeter, in parallel (2). 2. Series R = R1 + R2 (1); parallel 1/R = 1/R1 + 1/R2 (1). 3. 1/R = 1/6 + 1/3 = 3/6, so R = 2 ohm (2). 4. R = V / I = 12 / 2 = 6 ohm (2). 5. 1620 - 1500 = 120 units; 120 x 15 = 1800 naira (2). 6. One failed lamp does not switch off the others; each appliance gets the full voltage (2)."
++  },
++  {
++    "id": "SUP-PHE-HIV-STI-FACTS",
++    "gapIds": [
++      "WG-PHE-SL583"
++    ],
++    "subjectName": "Physical & Health Education",
++    "termLabel": "1st Term",
++    "title": "Sexually transmitted infections and HIV/AIDS: facts, prevention, treatment and stigma (corrected)",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original First-Term row 'Sexually Transmitted Diseases (STDs)', which tells a person with HIV not to become pregnant, lists circumcision among skin-cutting risks without distinguishing clean medical circumcision, omits antiretroviral treatment and condoms, and says AIDS 'cannot be cured' without explaining that treatment allows a long healthy life. The original row is preserved unchanged in the audit record. It is school teaching, not personal medical advice.",
++    "sources": [
++      {
++        "title": "HIV and AIDS — WHO fact file",
++        "url": "https://www.who.int/features/factfiles/hiv/en/"
++      },
++      {
++        "title": "HIV — WHO Western Pacific health topic",
++        "url": "https://www.who.int/westernpacific/health-topics/hiv-aids/1"
++      }
++    ],
++    "body": "Objectives: define STIs, HIV and AIDS; state how HIV is and is not spread; state prevention methods; explain testing and treatment; show respect for people living with HIV; correct dated notes on disease classification.\n\nTeaching:\n1. Sexually transmitted infections (STIs) spread mainly through sexual contact. Examples are gonorrhoea, syphilis, chlamydia and HIV. Many bacterial STIs can be cured when treated early by a health worker; viral ones such as HIV are managed with treatment. Some STIs show no signs, so a person cannot tell by looking. Do not buy drugs for self-treatment; go to a clinic.\n2. HIV (human immunodeficiency virus) attacks the immune system. AIDS (acquired immune deficiency syndrome) is the late stage when the immune system is badly weakened. HIV is spread through unprotected sex, infected blood (unsafe transfusion, shared needles, razors or other skin-piercing tools) and from a mother to her baby during pregnancy, birth or breastfeeding.\n3. HIV is not spread by handshakes, hugging, sharing plates or cups, toilets, swimming, mosquitoes or sleeping in the same room.\n4. Testing: only a test at a health facility shows whether a person has HIV; signs alone cannot tell. Testing comes with counselling.\n5. Treatment: antiretroviral therapy (ART) is a lifelong daily treatment. A person taking it properly can stay healthy and live a long life. A person on ART whose test shows the virus at an undetectable level does not pass HIV to a sexual partner. A woman living with HIV who is on ART and under care can have a baby with a very low chance of passing HIV on. So the old advice not to become pregnant is replaced by: seek care early at a clinic.\n6. Prevention: not having sex is the surest way to avoid sexual transmission; condoms used correctly every time lower the risk of HIV and many STIs; do not share needles, razors or blades; accept blood only from tested sources; medical male circumcision done by a trained health worker in a clean setting lowers a man's risk, whereas cutting with unsterilised tools raises it; health workers wear gloves and cover wounds.\n7. Stigma harms. People living with HIV deserve care, privacy and respect. Support is practical (company, care, going to the clinic), not only prayer.\n8. Correcting related notes on family health: smallpox no longer occurs because it was eradicated, so it is not a current communicable disease; snake-bite is an injury, not an infectious disease; many non-communicable diseases such as stroke or heart disease are not passed from person to person.\n\nWorked example: Bola hears a rumour that she can get HIV from sharing a cup with a classmate. She explains that HIV is not spread that way, and tells her friend that anyone worried about HIV should be tested at a clinic and, if positive, can begin ART.\n\nPractice (questions):\n1. Give the full meaning of HIV, AIDS and STI.\n2. State three ways HIV is spread and three ways it is not spread.\n3. Why can a person not tell by looking whether someone has HIV?\n4. What is ART and why is it important?\n5. State four ways of preventing HIV.\n6. Why is it wrong to isolate or insult a person living with HIV?\n\nAnswers (marking guide): 1. Human immunodeficiency virus; acquired immune deficiency syndrome; sexually transmitted infection (3). 2. Any three spread: unprotected sex, infected blood or shared sharp tools, mother to baby (3); any three not: handshake, shared plates, toilets, swimming, mosquitoes (3). 3. Many STIs and HIV show no signs for a long time; only a test shows (1). 4. Lifelong daily treatment that lets a person stay healthy and, when the virus is undetectable, prevents sexual spread (2). 5. Any four (4): not having sex, condoms, not sharing sharp tools, tested blood, trained circumcision, early care. 6. Stigma stops people getting tests and care; HIV is not spread by everyday contact (2). Teacher: do not give personal medical advice; refer questions to a health worker."
++  },
++  {
++    "id": "SUP-PHE-PUBERTY-TEEN-PREG",
++    "gapIds": [
++      "WG-PHE-SL313"
++    ],
++    "subjectName": "Physical & Health Education",
++    "termLabel": "2nd Term",
++    "title": "Puberty, menstruation, teenage pregnancy and where to get help (corrected)",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original Second-Term row 'Puberty.', which contains a garbled hormone sentence, lists 'constant erection' and a 'high-pitch tiny voice' as puberty changes, and gives no guidance on where to get help. The original row is preserved unchanged in the audit record. It is school teaching, not personal medical advice.",
++    "sources": [
++      {
++        "title": "Puberty — NHS Healthier Together",
++        "url": "https://www.healthiertogether.nhs.uk/young-person/puberty"
++      },
++      {
++        "title": "Menarche (first period) and pregnancy myths — HealthLink BC",
++        "url": "https://www.healthlinkbc.ca/healthwise/menarche"
++      }
++    ],
++    "body": "Objectives: describe the physical and emotional changes of puberty in boys and girls; explain menstruation and hygiene; state the consequences of teenage pregnancy; name safe sources of help.\n\nTeaching:\n1. Puberty is the stage when a child's body changes into an adult body. It begins at different ages for different people, and being earlier or later than friends is normal. Hormones cause the changes: in girls mainly oestrogen, in boys mainly testosterone.\n2. Changes in both: a growth spurt, hair under the arms and in the pubic area, more sweat and body odour, oily skin and pimples, and strong feelings and mood changes. Wash daily and wear clean clothes.\n3. Changes in boys: the voice deepens (it may crack for a while), shoulders broaden, the testes and penis grow, facial hair begins, and erections and wet dreams happen. Wet dreams are normal.\n4. Changes in girls: breasts develop, hips widen, and menstruation (monthly periods) begins. Periods may be irregular at first. Use clean pads or other safe sanitary materials, change them regularly and wash. Cramps are common; see a health worker if pain is severe or bleeding is very heavy.\n5. Pregnancy can happen once ovulation starts, which can be before or soon after a girl's first period, and it can happen from the first time a person has sex. Not having sex is the surest way to avoid pregnancy and STIs.\n6. Consequences of teenage pregnancy: higher health risks for a young mother and baby, so ante-natal care at a clinic is important; interrupted schooling; loss of plans and income; emotional stress; and risk from unsafe abortion, which can cause severe bleeding, infection, damage to the womb and death. Any girl with bleeding, severe pain or fever after a pregnancy loss or an attempted abortion must go to a health facility at once.\n7. Where to get help: a parent or trusted adult, the school counsellor or teacher, and the nearest health centre. Asking early is wise and safe.\n8. Resist pressure: say no clearly, leave the situation, and tell a trusted adult.\n\nWorked example: Dayo's voice cracks and he feels embarrassed. His teacher explains that this is a normal change of puberty and that it settles with time.\n\nPractice (questions):\n1. Name the hormones mainly responsible for puberty in girls and in boys.\n2. State three changes that happen in both sexes.\n3. State two changes specific to boys and two specific to girls.\n4. How should a girl manage her periods hygienically?\n5. State three consequences of teenage pregnancy.\n6. Name three people or places where a young person can get help.\n\nAnswers (marking guide): 1. Oestrogen; testosterone (2). 2. Any three (3): growth spurt, body hair, sweat or odour, pimples, mood changes. 3. Boys: voice deepens, testes and penis grow, facial hair (any two, 2); girls: breasts develop, hips widen, menstruation (any two, 2). 4. Clean sanitary materials, change regularly, wash (2). 5. Any three (3): health risks, interrupted schooling, loss of plans, emotional stress, unsafe abortion. 6. Parent or trusted adult, school counsellor, health centre (3)."
++  },
++  {
++    "id": "SUP-BS-PREGNANCY-FACTS",
++    "gapIds": [
++      "WG-BS-SL465"
++    ],
++    "subjectName": "Basic Science",
++    "termLabel": "1st Term",
++    "title": "Family life education: teenage pregnancy, myths and facts about pregnancy, and care (corrected)",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It supersedes, in delivery, the original First-Term row 'FAMILY LIFE EDUCATION [i]', whose myth-and-fact list states that pregnancy may last more than a year, treats first-time sex as unable to cause pregnancy, and contains unclear items. The original row is preserved unchanged in the audit record. It is school teaching, not personal medical advice; the separate row 'FAMILY LIFE EDUCATION [ii]' on abortion is retained.",
++    "sources": [
++      {
++        "title": "Menarche (first period) and pregnancy myths — HealthLink BC",
++        "url": "https://www.healthlinkbc.ca/healthwise/menarche"
++      }
++    ],
++    "body": "Objectives: define teenage pregnancy; state its causes and consequences; separate myths from facts about pregnancy; state the care needed in pregnancy.\n\nTeaching:\n1. Teenage pregnancy is pregnancy in a girl aged 10 to 19, married or not.\n2. Causes include lack of accurate information, early marriage and social pressure, poverty, use of alcohol or drugs that lead to unwanted sex, and not using protection correctly. No method other than not having sex is completely certain.\n3. Consequences: health risks such as high blood pressure and heavy bleeding; anaemia; unsafe abortion; interrupted schooling; loss of plans and income; and emotional stress.\n4. Myths and facts. Fact: a missed period may signal pregnancy but can have other causes. Fact: pregnancy lasts about nine months (around 40 weeks), not over a year. Fact: a girl can become pregnant the first time she has sex. Fact: pregnancy can occur during or soon after a period. Fact: washing after sex does not prevent pregnancy. Myth: every pregnant woman vomits. Myth: pregnant women should not bathe or are unclean. Fact: pregnant women should not drink alcohol or smoke and should take only medicines a health worker approves.\n5. Care in pregnancy: a clinic confirms pregnancy and gives ante-natal care; eat nourishing food including iron-rich foods as advised; rest; take only prescribed medicine; plan to give birth with a skilled attendant at a health facility.\n6. Danger signs needing urgent help at any time: vaginal bleeding, severe headache or blurred vision, fits, fever, severe abdominal pain, or much less baby movement.\n7. If a girl suspects pregnancy: tell a trusted adult and go to a health facility early. Do not take herbs or drugs, or go to an unqualified person, to end a pregnancy: unsafe abortion kills. The law on abortion is strict; the teacher or school counsellor explains it. A girl with bleeding, pain or fever after a pregnancy loss must go to a health facility at once.\n\nWorked example: Hauwa misses her period. She talks to her aunt, who goes with her to the clinic. A test shows she is pregnant and the nurse arranges ante-natal care.\n\nPractice (questions):\n1. Define teenage pregnancy.\n2. State three causes and three consequences of teenage pregnancy.\n3. Say whether each is a myth or a fact: (a) pregnancy lasts about nine months; (b) a girl cannot become pregnant the first time she has sex; (c) every pregnant woman vomits.\n4. State four things a pregnant woman should do for her health.\n5. Name three danger signs in pregnancy.\n6. Why must a girl never use herbs or an unqualified person to end a pregnancy?\n\nAnswers (marking guide): 1. Pregnancy in a girl aged 10 to 19 (1). 2. Three causes (3) and three consequences (3) from the lists above. 3. (a) Fact (1); (b) Myth, because she can (1); (c) Myth (1). 4. Any four (4): attend ante-natal care, eat nourishing food, rest, avoid alcohol and smoking, take only prescribed medicine. 5. Any three (3): bleeding, severe headache or blurred vision, fits, fever, severe pain, reduced baby movement. 6. Unsafe abortion can cause severe bleeding, infection and death (2)."
++  },
++  {
++    "id": "SUP-PHE-MEDICINES-DRUGS",
++    "gapIds": [
++      "WG-PHE-SL584"
++    ],
++    "subjectName": "Physical & Health Education",
++    "termLabel": "1st Term",
++    "title": "Drug education: medicines, misuse and abuse, self-medication, and safe choices",
++    "origin": "New teaching material prepared under the owner's 15 October 2026 authorisation to use internet equivalents; not recovered school-source text. It clarifies the original First-Term row 'DRUG EDUCATION', whose definitions of tolerance and addiction are garbled, and the Basic Science drug notes that list the prescription medicine valium among illicit drugs. The original rows are unchanged. It is school teaching, not personal medical advice, and gives no dose.",
++    "sources": [
++      {
++        "title": "NAFDAC Mobile Authentication Service (MAS) scheme — NAFDAC",
++        "url": "https://www.policyvault.africa/wp-content/uploads/policy/NGA422.pdf"
++      }
++    ],
++    "body": "Objectives: define drug, medicine, drug use, misuse and abuse; state the main types of drugs; define dependence, tolerance and withdrawal; explain the dangers of self-medication and fake medicines; state safe choices.\n\nTeaching:\n1. A drug is any substance that changes how the body or mind works. A medicine is a drug used to prevent, treat or cure illness. Use means taking a medicine as a health worker or the label directs. Misuse means taking a medicine in a wrong way, for example without advice, in the wrong amount, or for a purpose it was not given for. Abuse means using drugs or substances in a harmful way, often for the effect on the mind.\n2. Main types: stimulants (speed the body up), depressants (slow the body down), cannabis, inhalants, hallucinogens and prescription medicines. Some medicines, such as certain sleeping or calming tablets (for example diazepam, sold as valium), are prescription medicines. They are legal only when a qualified person prescribes them, and misuse is dangerous. Illegal drugs include cocaine and heroin.\n3. Dependence (addiction): the body or mind feels a strong need for the drug. Tolerance: the person needs more of the drug to get the same effect. Withdrawal: unpleasant illness when the drug is stopped. These are signs of dependence and need help from a health worker, not punishment.\n4. Self-medication means buying and taking medicines without a health worker's advice. Dangers: the wrong medicine or amount, side effects, hiding a serious illness, antibiotic resistance, and dangerous mixtures. Use antibiotics only when prescribed. Never share prescription medicines.\n5. Fake and expired medicines are common. Buy from licensed pharmacies, check the expiry date and the NAFDAC registration number, and where a pack carries a scratch code use NAFDAC's Mobile Authentication Service. Herbal products can also be harmful when contaminated or taken in the wrong amount; ask a health worker.\n6. Reasons people abuse drugs: peer pressure, curiosity, stress, easy availability and trouble at home. Safe choices: learn the facts, say no firmly, keep busy, talk to a trusted adult or counsellor, and avoid places where drugs are used.\n7. NAFDAC checks the safety and quality of foods and medicines; NDLEA enforces laws on illegal drugs and offers counselling and rehabilitation programmes.\n\nWorked example: Ife has a headache and her friend offers her some tablets from an unmarked packet. Ife refuses, tells her mother and asks the pharmacist for advice.\n\nPractice (questions):\n1. Differentiate between drug use, misuse and abuse.\n2. Name four types of drugs.\n3. Define dependence, tolerance and withdrawal.\n4. State three dangers of self-medication.\n5. State two ways to check that a medicine is genuine.\n6. State two functions of NAFDAC and two of NDLEA.\n\nAnswers (marking guide): 1. Use is as directed; misuse is wrong or unprescribed use of a medicine; abuse is harmful use for the effect (3). 2. Any four (4): stimulants, depressants, cannabis, inhalants, hallucinogens, prescription medicines. 3. Strong need for the drug; needing more for the same effect; illness when stopped (3). 4. Any three (3): wrong medicine or dose, side effects, hides illness, antibiotic resistance, dangerous mixtures. 5. Any two (2): licensed pharmacy, expiry date, NAFDAC number, scratch-code check. 6. NAFDAC: checks quality and safety of food and medicines, registers products (2); NDLEA: enforces drug laws, counselling and rehabilitation (2)."
+   }
+-]
++]
+\ No newline at end of file
+diff --git a/backend/src/db/jss3Supplements.ts b/backend/src/db/jss3Supplements.ts
+index 45a3cc6..af67f25 100644
+--- a/backend/src/db/jss3Supplements.ts
++++ b/backend/src/db/jss3Supplements.ts
+@@ -13,7 +13,7 @@ import data from './data/jss3Supplements.json' with { type: 'json' };
+ const lessonSchema = z.object({
+   id: z.string().regex(/^SUP-[A-Z0-9-]+$/),
+   gapIds: z.array(z.string().regex(/^(EN[12]|PE|AK|TK|YO|WG)-[A-Z0-9-]+$/)).min(1),
+-  subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Mathematics', 'Home Economics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science', 'Civic Education', 'Cultural & Creative Arts', 'French', 'Social Studies']),
++  subjectName: z.enum(['English Language', 'Business Studies', 'Basic Technology', 'Basic Science', 'Mathematics', 'Home Economics', 'Physical & Health Education', 'Yoruba', 'Music', 'Agricultural Science', 'Civic Education', 'Cultural & Creative Arts', 'French', 'Social Studies']),
+   termLabel: z.enum(['1st Term', '2nd Term']),
+   title: z.string().min(5),
+   body: z.string().min(500),
+@@ -26,7 +26,7 @@ export function validateJss3Supplements(input: unknown): Jss3Supplement[] {
+   const ids = new Set<string>();
+   for (const lesson of lessons) {
+     for (const gap of lesson.gapIds) {
+-      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL150', 'WG-MATH-SL153', 'WG-MATH-SL244', 'WG-MATH-SL245', 'WG-MATH-SL252', 'WG-MATH-SL257', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250', 'WG-HE-SL536', 'WG-HE-SL541', 'WG-HE-SL542', 'WG-HE-SL547', 'WG-HE-SL551', 'WG-HE-SL556', 'WG-BT-SL359', 'WG-BT-SL360', 'WG-BT-SL444', 'WG-BT-SL447', 'WG-BT-SL448', 'WG-BT-SL454', 'WG-BT-SL457', 'WG-CCA-SL293', 'WG-CCA-SL295', 'WG-FR-SL282', 'WG-FR-SL285', 'WG-SS-SL433', 'WG-SS-SL434', 'WG-SS-SL435', 'WG-MUSIC-SL566', 'WG-MUSIC-SL567'].includes(gap)) {
++      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL150', 'WG-MATH-SL153', 'WG-MATH-SL244', 'WG-MATH-SL245', 'WG-MATH-SL252', 'WG-MATH-SL257', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250', 'WG-HE-SL536', 'WG-HE-SL541', 'WG-HE-SL542', 'WG-HE-SL547', 'WG-HE-SL551', 'WG-HE-SL556', 'WG-HE-SL549', 'WG-BS-SL024', 'WG-BS-SL278', 'WG-BS-SL279', 'WG-BS-SL465', 'WG-PHE-SL313', 'WG-PHE-SL583', 'WG-PHE-SL584', 'WG-BT-SL359', 'WG-BT-SL360', 'WG-BT-SL444', 'WG-BT-SL447', 'WG-BT-SL448', 'WG-BT-SL454', 'WG-BT-SL457', 'WG-CCA-SL293', 'WG-CCA-SL295', 'WG-FR-SL282', 'WG-FR-SL285', 'WG-SS-SL433', 'WG-SS-SL434', 'WG-SS-SL435', 'WG-MUSIC-SL566', 'WG-MUSIC-SL567'].includes(gap)) {
+         throw new Error(`Unregistered wider-workstream gap: ${gap}`);
+       }
+     }
+diff --git a/backend/src/routes/learning.ts b/backend/src/routes/learning.ts
+index bafa160..335f249 100644
+--- a/backend/src/routes/learning.ts
++++ b/backend/src/routes/learning.ts
+@@ -3,6 +3,7 @@ import { query } from '../db/pool.js';
+ import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
+ import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
+ import { generate, generateJSON } from '../utils/ai.js';
++import { safeJss3Topic, retireStaleJss3Cache } from '../utils/jss3TeachingCorrections.js';
+ import { sendPushToClass } from '../utils/push.js';
+ import type { AuthUser } from '../types/index.js';
+ 
+@@ -212,7 +213,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
+ 
+       return res.json({
+         topics: rows.map((r: any) => ({
+-          ...r,
++          ...safeJss3Topic(r),
+           completed: completedIds.has(r.id),
+           locked: lockedIds.has(r.id),
+         })),
+@@ -220,7 +221,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
+     }
+   }
+ 
+-  return res.json({ topics: rows });
++  return res.json({ topics: rows.map(safeJss3Topic) });
+ });
+ 
+ // ── Topic assets (images shown inside a lesson) ─────────────────────────────
+@@ -399,8 +400,10 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req,
+   if (!student) return res.status(404).json({ error: 'No student record for this user' });
+ 
+   const { rows: tRows } = await query('SELECT * FROM topics WHERE id=$1', [req.params.id]);
+-  const topic = tRows[0];
+-  if (!topic) return res.status(404).json({ error: 'Topic not found' });
++  const storedTopic = tRows[0];
++  if (!storedTopic) return res.status(404).json({ error: 'Topic not found' });
++  // JSS3 delivery correction: unsafe/incorrect original text is never study text, AI grounding or fallback.
++  const topic = safeJss3Topic(storedTopic);
+   if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
+     return res.status(403).json({ error: 'This topic is not available to you' });
+   }
+@@ -434,6 +437,11 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req,
+     }
+   }
+ 
++  // Retire any cached summary / generated assessment that was built from the original (withdrawn) text.
++  // Fail closed: if the stale cache cannot be retired, do not generate or reveal anything for this topic.
++  try { await retireStaleJss3Cache(query, storedTopic); }
++  catch { return res.status(503).json({ error: 'This topic is temporarily unavailable while its teaching is being corrected. Please try again later.' }); }
++
+   await query(
+     `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
+      ON CONFLICT (topic_id, student_id) DO NOTHING`,
+diff --git a/backend/src/utils/jss3TeachingCorrections.ts b/backend/src/utils/jss3TeachingCorrections.ts
+new file mode 100644
+index 0000000..7e1e1c5
+--- /dev/null
++++ b/backend/src/utils/jss3TeachingCorrections.ts
+@@ -0,0 +1,75 @@
++import { createHash } from 'node:crypto';
++import lessons from '../db/data/jss3Supplements.json' with { type: 'json' };
++import corrections from '../db/data/jss3DeliveryCorrections.json' with { type: 'json' };
++
++/**
++ * Read-time delivery correction for JSS 3 secondary topics whose ORIGINAL imported text is unsafe or wrong.
++ * The immutable source/audit row is never rewritten. A matching topic is delivered with the replacement
++ * lesson text instead of its stored source_reference, cached summary or cached generated assessment.
++ *
++ * Matching fails closed: a topic matches when its source_reference hash equals the audited hash, OR when
++ * class, school, term and title identify the audited topic even though the stored text has since changed
++ * (a re-import must never silently re-expose the unsafe teaching).
++ */
++export const JSS3_CORRECTION_MARKER = '[JSS3 DELIVERY CORRECTION]';
++
++type Topic = { school_code?: unknown; class_name?: unknown; term_label?: unknown; title?: unknown;
++  source_reference?: unknown; summary?: unknown; generated_assessment_id?: unknown; [k: string]: unknown };
++interface Entry { id: string; class_name: string; school_code: string; term_label: string; source_body_sha256: string;
++  source_title: string; replacement_lesson_ids: string[]; reason: string }
++export interface Jss3Correction { id: string; text: string; replacementLessonIds: string[]; matchedBy: 'hash' | 'title' }
++
++const entries = corrections as unknown as Entry[];
++const norm = (s: unknown) => String(s ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
++export const sha256 = (s: string) => createHash('sha256').update(s, 'utf8').digest('hex');
++
++export function correctionText(e: Entry): string {
++  const parts = e.replacement_lesson_ids.map(id => {
++    const l = (lessons as any[]).find(x => x.id === id);
++    if (!l) throw new Error(`JSS3 delivery correction ${e.id} names missing lesson ${id}`);
++    return `${l.title}\n\n${l.origin}\n\n${l.body}\n\nReferences:\n${l.sources.map((s: any) => `${s.title}: ${s.url}`).join('\n')}`;
++  });
++  return `${JSS3_CORRECTION_MARKER} ${e.id}\nThe original notes for this topic are withdrawn because they contain unsafe or incorrect teaching. Study the corrected lesson below.\n\n${parts.join('\n\n')}`;
++}
++
++export function jss3CorrectionFor(topic: Topic): Jss3Correction | null {
++  if (topic.school_code !== 'secondary' || topic.class_name !== 'JSS 3') return null;
++  const hash = typeof topic.source_reference === 'string' ? sha256(topic.source_reference) : null;
++  for (const e of entries) {
++    if (e.school_code !== topic.school_code || e.class_name !== topic.class_name) continue;
++    const byHash = hash !== null && hash === e.source_body_sha256;
++    const byTitle = norm(topic.title) === norm(e.source_title) && norm(topic.term_label) === norm(e.term_label);
++    if (byHash || byTitle) return { id: e.id, text: correctionText(e), replacementLessonIds: e.replacement_lesson_ids, matchedBy: byHash ? 'hash' : 'title' };
++  }
++  return null;
++}
++
++/** Student/teacher-facing copy of a topic: corrected text, no stale cache link. Never mutates the stored row. */
++export function safeJss3Topic<T extends Topic>(topic: T): T {
++  const c = jss3CorrectionFor(topic);
++  if (!c) return topic;
++  const cacheCurrent = typeof topic.summary === 'string' && topic.summary === c.text;
++  return { ...topic, source_reference: c.text, summary: c.text,
++    generated_assessment_id: cacheCurrent ? topic.generated_assessment_id : null };
++}
++
++type Q = (text: string, params?: unknown[]) => Promise<{ rows: any[] }>;
++/**
++ * Retire cached output built from the original text: replace the cached summary and, in the SAME statement,
++ * close the previously generated assessment and unlink it (so it can no longer be opened, hinted or submitted
++ * as the topic's assessment). No-op when the cache already holds the corrected text. Returns true if retired.
++ * Existing topic_completions are untouched (unlock-chain resequencing is out of scope).
++ */
++export async function retireStaleJss3Cache(query: Q, stored: Topic & { id: unknown }): Promise<boolean> {
++  const c = jss3CorrectionFor(stored);
++  if (!c) return false;
++  const { rows } = await query(
++    `WITH old AS (SELECT id, generated_assessment_id FROM topics WHERE id=$2 FOR UPDATE),
++          upd AS (UPDATE topics SET summary=$1, generated_assessment_id=NULL
++                  WHERE id=$2 AND summary IS DISTINCT FROM $1 RETURNING id),
++          closed AS (UPDATE assessments SET status='closed'
++                     WHERE id=(SELECT generated_assessment_id FROM old) AND EXISTS (SELECT 1 FROM upd) RETURNING id)
++     SELECT (SELECT count(*) FROM upd) AS retired, (SELECT count(*) FROM closed) AS closed_assessments`,
++    [c.text, stored.id]);
++  return Number(rows[0]?.retired ?? 0) > 0;
++}
+diff --git a/tests/jss3-b-health-delivery.test.mts b/tests/jss3-b-health-delivery.test.mts
+new file mode 100644
+index 0000000..d38494b
+--- /dev/null
++++ b/tests/jss3-b-health-delivery.test.mts
+@@ -0,0 +1,90 @@
++// Worker B: delivery corrections for unsafe/incorrect original JSS3 health and science teaching.
++// Run from repo root (after F copies this to tests/):
++//   node --import tsx --test tests/jss3-b-health-delivery.test.mts
++// Source-backed hash checks run only when JSS3_CAPTURE_DIR points at capture_rows.py output (original-rows.json); never published.
++import assert from 'node:assert/strict';
++import { existsSync, readFileSync } from 'node:fs';
++import path from 'node:path';
++import test from 'node:test';
++import { validateJss3Supplements } from '../backend/src/db/jss3Supplements.js';
++import lessons from '../backend/src/db/data/jss3Supplements.json' with { type: 'json' };
++import corrections from '../backend/src/db/data/jss3DeliveryCorrections.json' with { type: 'json' };
++import { jss3CorrectionFor, safeJss3Topic, retireStaleJss3Cache, sha256, JSS3_CORRECTION_MARKER } from '../backend/src/utils/jss3TeachingCorrections.js';
++
++const CHILD = corrections.find((c: any) => c.id === 'HOME-CHILD-CARE-CONTD-ORT-HONEY')!;
++const mk = (o: any = {}) => ({ id: 7, school_code: 'secondary', class_name: 'JSS 3', term_label: '2nd Term', title: 'CHILD CARE [CONTD]',
++  source_reference: 'ORIGINAL UNSAFE TEXT', summary: null, generated_assessment_id: null, ...o });
++
++test('all composed supplements pass the production schema, including Basic Science and new gap IDs', () => {
++  const v = validateJss3Supplements(lessons);
++  for (const id of ['SUP-HOME-CHILD-SAFETY','SUP-BS-OZONE-CLIMATE','SUP-BS-MAGNET-POLES','SUP-BS-ELECTRIC-CIRCUITS','SUP-PHE-HIV-STI-FACTS','SUP-PHE-PUBERTY-TEEN-PREG','SUP-BS-PREGNANCY-FACTS','SUP-PHE-MEDICINES-DRUGS'])
++    assert.ok(v.find(x => x.id === id), id);
++});
++test('every correction names existing replacement lessons and a 64-hex source hash', () => {
++  for (const c of corrections as any[]) {
++    assert.match(c.source_body_sha256, /^[0-9a-f]{64}$/);
++    for (const id of c.replacement_lesson_ids) assert.ok((lessons as any[]).find(l => l.id === id), `${c.id}:${id}`);
++    assert.equal(c.class_name, 'JSS 3'); assert.equal(c.school_code, 'secondary');
++  }
++  assert.equal(CHILD.source_body_sha256, '5892e2bd051ebec2ebeee4d65eaf632ec9be5f6de4888ad7be504eb04c660c20');
++});
++test('negative control: audited hash match is replaced; unsafe advice absent from delivered text', () => {
++  const t = mk({ source_reference: 'x', title: 'renamed' });
++  assert.equal(jss3CorrectionFor(t), null); // neither hash nor title: no false positive
++  const byTitle = safeJss3Topic(mk());
++  assert.ok(byTitle.source_reference.startsWith(JSS3_CORRECTION_MARKER));
++  assert.equal(byTitle.summary, byTitle.source_reference);
++  const text = byTitle.source_reference as string;
++  assert.doesNotMatch(text, /10 level of teaspoon|Glucose, sugar or honey should be added|Small pox/i);
++  assert.match(text, /must never be given to a child under 12 months/);
++  assert.match(text, /Do not mix a salt-and-sugar drink by guessing/);
++  assert.doesNotMatch(text, /\b\d+\s*(mg|ml|teaspoon|tsp)\b/i, 'no dose or recipe');
++});
++test('changed-source handling: same title/term but different stored text still fails closed', () => {
++  const c = jss3CorrectionFor(mk({ source_reference: 'REIMPORTED DIFFERENT TEXT' }));
++  assert.equal(c?.matchedBy, 'title');
++});
++test('stale cached summary/assessment link is dropped; current cache keeps its link', () => {
++  const fresh = safeJss3Topic(mk({ summary: 'old AI notes from unsafe text', generated_assessment_id: 'A1' }));
++  assert.equal(fresh.generated_assessment_id, null);
++  const text = safeJss3Topic(mk()).summary;
++  const current = safeJss3Topic(mk({ summary: text, generated_assessment_id: 'A2' }));
++  assert.equal(current.generated_assessment_id, 'A2');
++});
++test('other schools, classes and topics are untouched (primary/JSS1/JSS2 negative control)', () => {
++  for (const o of [{ school_code: 'primary' }, { class_name: 'JSS 1' }, { class_name: 'JSS 2' }, { title: 'CHILD CARE', term_label: '2nd Term' }]) {
++    const t = mk(o); assert.equal(safeJss3Topic(t), t);
++  }
++});
++test('retire: closes the old assessment and replaces cache in one statement; no-op otherwise', async () => {
++  const calls: any[] = [];
++  const q = async (sql: string, p?: unknown[]) => { calls.push([sql, p]); return { rows: [{ retired: '1', closed_assessments: '1' }] }; };
++  assert.equal(await retireStaleJss3Cache(q, mk()), true);
++  assert.equal(calls.length, 1);
++  assert.match(calls[0][0], /UPDATE assessments SET status='closed'/);
++  assert.match(calls[0][0], /generated_assessment_id=NULL/);
++  assert.match(calls[0][0], /summary IS DISTINCT FROM \$1/);
++  const none = async () => { throw new Error('must not query'); };
++  assert.equal(await retireStaleJss3Cache(none as any, mk({ class_name: 'JSS 1' })), false);
++  const already = async () => ({ rows: [{ retired: '0', closed_assessments: '0' }] });
++  assert.equal(await retireStaleJss3Cache(already, mk()), false);
++});
++test('science corrections: ozone and magnetism', () => {
++  const g = (id: string) => (lessons as any[]).find(l => l.id === id).body as string;
++  assert.match(g('SUP-BS-MAGNET-POLES'), /north-seeking pole, or north pole/);
++  assert.doesNotMatch(g('SUP-BS-MAGNET-POLES'), /pointing towards the geographical north pole is the south pole/i);
++  assert.match(g('SUP-BS-OZONE-CLIMATE'), /Ozone depletion does not cause global warming/);
++  assert.match(g('SUP-BS-OZONE-CLIMATE'), /Carbon dioxide does not deplete the ozone layer/);
++  assert.match(g('SUP-BS-ELECTRIC-CIRCUITS'), /12\.91/);
++  assert.match(g('SUP-PHE-HIV-STI-FACTS'), /old advice not to become pregnant is replaced/);
++});
++const cap = process.env.JSS3_CAPTURE_DIR;
++test('source-backed: audited hashes equal the importer-captured original rows', { skip: !cap || !existsSync(path.join(cap, 'original-rows.json')) }, () => {
++  const rows = JSON.parse(readFileSync(path.join(cap!, 'original-rows.json'), 'utf8'));
++  for (const c of corrections as any[]) {
++    const r = rows.filter((x: any) => x.subjectName === c.subject_name && x.termLabel === c.term_label && x.title === c.source_title);
++    assert.equal(r.length, 1, c.id); assert.equal(sha256(r[0].sourceReference), c.source_body_sha256, c.id);
++    const t = { ...mk(), title: r[0].title, term_label: r[0].termLabel, source_reference: r[0].sourceReference };
++    assert.equal(jss3CorrectionFor(t)?.matchedBy, 'hash');
++  }
++});
