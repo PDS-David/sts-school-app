@@ -1,0 +1,13 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import {createDeliveryResolver,deliveryHash,correctionCacheIsCurrent} from '../../../../../backend/src/utils/jss3DeliveryCorrection.ts';
+import fs from 'node:fs';
+const lesson={id:'SUP-TEST',title:'Correct mathematics',body:'Mean = 47',origin:'Explicit correction',sources:[{title:'Arithmetic',url:'https://openstax.org'}]};
+const source='Synthetic original: Mean = 48';
+const correction={id:'C1',class_name:'JSS 3',school_code:'secondary',source_title:'Mean',source_body_sha256:deliveryHash(source),replacement_lesson_ids:[lesson.id]};
+const topic={title:'Mean',class_name:'JSS 3',school_code:'secondary',source_reference:source};
+test('immutable original, corrected grounding and stable fingerprint',()=>{const before=JSON.stringify(topic);const resolve=createDeliveryResolver([correction],[lesson]);const x=resolve(topic)!;assert.match(x.teaching,/Mean = 47/);assert.doesNotMatch(x.teaching,/Mean = 48/);assert.equal(JSON.stringify(topic),before);assert.equal(resolve(topic)!.fingerprint,x.fingerprint);});
+test('other class/school cannot receive a JSS3 correction',()=>{const r=createDeliveryResolver([correction],[lesson]);assert.equal(r({...topic,class_name:'JSS 2'}),null);assert.equal(r({...topic,school_code:'primary'}),null);});
+test('missing, changed and stale material fails closed',()=>{assert.throws(()=>createDeliveryResolver([correction],[]),/Missing replacement/);const r=createDeliveryResolver([correction],[lesson]);assert.throws(()=>r({...topic,source_reference:source+' tamper'}),/fingerprint mismatch/);assert.throws(()=>r({...topic,source_reference:null}),/fingerprint mismatch/);const f=r(topic)!.fingerprint;assert.equal(correctionCacheIsCurrent(f,undefined),false);assert.equal(correctionCacheIsCurrent(f,'old'),false);assert.equal(correctionCacheIsCurrent(f,f),true);const changed=createDeliveryResolver([correction],[{...lesson,body:'Updated teaching'}])(topic)!;assert.notEqual(changed.fingerprint,f);});
+test('duplicate corrections and duplicate lessons rejected',()=>{assert.throws(()=>createDeliveryResolver([correction,correction],[lesson]));assert.throws(()=>createDeliveryResolver([correction],[lesson,lesson]));});
+test('all real declared replacements resolve in composed production schema',()=>{const c=JSON.parse(fs.readFileSync(new URL('../DELIVERY_CORRECTIONS.json',import.meta.url),'utf8'));const lessons=JSON.parse(fs.readFileSync(new URL('../../../../../backend/src/db/data/jss3Supplements.json',import.meta.url),'utf8'));assert.equal(c.length,23);assert.doesNotThrow(()=>createDeliveryResolver(c,lessons));});

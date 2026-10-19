@@ -1,0 +1,63 @@
+diff --git a/backend/src/db/jss3Supplements.ts b/backend/src/db/jss3Supplements.ts
+index 45a3cc6..f9e78d8 100644
+--- a/backend/src/db/jss3Supplements.ts
++++ b/backend/src/db/jss3Supplements.ts
+@@ -26,7 +26,7 @@ export function validateJss3Supplements(input: unknown): Jss3Supplement[] {
+   const ids = new Set<string>();
+   for (const lesson of lessons) {
+     for (const gap of lesson.gapIds) {
+-      if (gap.startsWith('WG-') && !['WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL150', 'WG-MATH-SL153', 'WG-MATH-SL244', 'WG-MATH-SL245', 'WG-MATH-SL252', 'WG-MATH-SL257', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250', 'WG-HE-SL536', 'WG-HE-SL541', 'WG-HE-SL542', 'WG-HE-SL547', 'WG-HE-SL551', 'WG-HE-SL556', 'WG-BT-SL359', 'WG-BT-SL360', 'WG-BT-SL444', 'WG-BT-SL447', 'WG-BT-SL448', 'WG-BT-SL454', 'WG-BT-SL457', 'WG-CCA-SL293', 'WG-CCA-SL295', 'WG-FR-SL282', 'WG-FR-SL285', 'WG-SS-SL433', 'WG-SS-SL434', 'WG-SS-SL435', 'WG-MUSIC-SL566', 'WG-MUSIC-SL567'].includes(gap)) {
++      if (gap.startsWith('WG-') && !['WG-BT-SL356', 'WG-BT-SL357', 'WG-BT-SL445', 'WG-BUS-SL366', 'WG-MATH-SL146', 'WG-MATH-SL148', 'WG-MATH-SL149', 'WG-MATH-SL152', 'WG-MATH-SL154', 'WG-MATH-SL241', 'WG-MATH-SL243', 'WG-AGRIC-EXCURSION', 'WG-MUSIC-W4-EXAMPLE', 'WG-AGRIC-PRICING', 'WG-CIVIC-ELECTIONS', 'WG-BUS-SL045', 'WG-BUS-SL046', 'WG-BUS-SL047', 'WG-BUS-SL048', 'WG-BUS-SL049', 'WG-BUS-SL050', 'WG-BUS-SL051', 'WG-BUS-SL052', 'WG-BUS-SL053', 'WG-BUS-SL054', 'WG-MATH-SL256', 'WG-MATH-SL260', 'WG-MATH-SL261', 'WG-ENG-SL198', 'WG-MATH-SL145', 'WG-MATH-SL150', 'WG-MATH-SL153', 'WG-MATH-SL244', 'WG-MATH-SL245', 'WG-MATH-SL252', 'WG-MATH-SL257', 'WG-MATH-SL247', 'WG-MATH-SL249', 'WG-MATH-SL250', 'WG-HE-SL536', 'WG-HE-SL541', 'WG-HE-SL542', 'WG-HE-SL547', 'WG-HE-SL551', 'WG-HE-SL556', 'WG-BT-SL359', 'WG-BT-SL360', 'WG-BT-SL444', 'WG-BT-SL447', 'WG-BT-SL448', 'WG-BT-SL454', 'WG-BT-SL457', 'WG-CCA-SL293', 'WG-CCA-SL295', 'WG-FR-SL282', 'WG-FR-SL285', 'WG-SS-SL433', 'WG-SS-SL434', 'WG-SS-SL435', 'WG-MUSIC-SL566', 'WG-MUSIC-SL567'].includes(gap)) {
+         throw new Error(`Unregistered wider-workstream gap: ${gap}`);
+       }
+     }
+diff --git a/backend/src/utils/jss3DeliveryCorrection.ts b/backend/src/utils/jss3DeliveryCorrection.ts
+new file mode 100644
+index 0000000..f32a80b
+--- /dev/null
++++ b/backend/src/utils/jss3DeliveryCorrection.ts
+@@ -0,0 +1,44 @@
++import { createHash } from 'node:crypto';
++export interface DeliveryCorrection {
++  id: string; class_name: string; school_code: string; source_body_sha256: string;
++  source_title: string; replacement_lesson_ids: string[];
++}
++export interface DeliveryLesson { id: string; title: string; body: string; origin: string; sources: {title: string; url: string}[] }
++export interface DeliveryTopic { class_name?: string; school_code?: string; source_reference?: string | null; title?: string }
++export const deliveryHash = (s: string) => createHash('sha256').update(s).digest('hex');
++/** Immutable audit rows stay untouched. Routes must use ALL returned teaching for
++ * summaries, fallback, practice and assessment generation. A fingerprint must be
++ * persisted with each generated assessment and checked on direct read/submission.
++ * This pure resolver deliberately does not pretend to implement those DB guards.
++ */
++export function createDeliveryResolver(corrections: readonly DeliveryCorrection[], lessons: readonly DeliveryLesson[]) {
++  const byId = new Map(lessons.map(l => [l.id, l]));
++  if (byId.size !== lessons.length) throw new Error('Duplicate lesson ID');
++  const keys = new Set<string>();
++  for (const c of corrections) {
++    const key = `${c.school_code}|${c.class_name}|${c.source_body_sha256}`;
++    if (!/^[0-9a-f]{64}$/.test(c.source_body_sha256) || keys.has(key)) throw new Error('Invalid or duplicate correction');
++    keys.add(key);
++    if (!c.replacement_lesson_ids.length || new Set(c.replacement_lesson_ids).size !== c.replacement_lesson_ids.length) throw new Error('Empty or duplicate replacement');
++    for (const id of c.replacement_lesson_ids) if (!byId.has(id)) throw new Error(`Missing replacement ${id}`);
++  }
++  return (topic: DeliveryTopic) => {
++    const candidates = corrections.filter(c => c.school_code === topic.school_code && c.class_name === topic.class_name);
++    const hash = deliveryHash(topic.source_reference ?? '');
++    const match = candidates.find(c => c.source_body_sha256 === hash);
++    if (!match) {
++      // A known corrected title with changed/missing source is not safe to fall back.
++      if (candidates.some(c => c.source_title === topic.title)) throw new Error('Corrected source fingerprint mismatch; review required');
++      return null;
++    }
++    const selected = match.replacement_lesson_ids.map(id => byId.get(id)!);
++    const teaching = selected.map(l => `${l.title}\n\n${l.origin}\n\n${l.body}\n\nReferences:\n${l.sources.map(s => `${s.title}: ${s.url}`).join('\n')}`).join('\n\n---\n\n');
++    return Object.freeze({ correctionId: match.id, teaching, sourceHash: hash,
++      fingerprint: deliveryHash(JSON.stringify({id: match.id, source: hash, lessons: selected})),
++      replacementLessonIds: [...match.replacement_lesson_ids] });
++  };
++}
++/** Missing or old cache version must never be accepted as current. */
++export function correctionCacheIsCurrent(expected: string, actual: unknown): boolean {
++  return typeof actual === 'string' && actual === expected;
++}
