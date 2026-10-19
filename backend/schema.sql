@@ -334,6 +334,10 @@ CREATE TABLE IF NOT EXISTS assessments (
   created_at  TIMESTAMPTZ DEFAULT now()
 );
 
+-- JSS3 delivery correction: fingerprint of the corrected teaching a topic-generated assessment was built from
+-- (see backend/src/utils/jss3DeliveryCorrection.ts). NULL = built from uncorrected content / legacy.
+ALTER TABLE assessments ADD COLUMN IF NOT EXISTS content_fingerprint TEXT;
+
 CREATE TABLE IF NOT EXISTS assessment_questions (
   assessment_id UUID REFERENCES assessments(id) ON DELETE CASCADE,
   question_id   INT  REFERENCES questions(id) ON DELETE CASCADE,

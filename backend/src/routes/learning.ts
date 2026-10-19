@@ -5,6 +5,7 @@ import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scop
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
+import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 const termPinEnforced = process.env.TERM_PIN_ENFORCED === 'true';
@@ -152,7 +153,9 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   // the end rather than sorting ahead of real sequence data.
   sql += ' ORDER BY t.order_index NULLS LAST, t.created_at DESC';
 
-  const { rows } = await query(sql, params);
+  const { rows: rawRows } = await query(sql, params);
+  // JSS3 delivery correction: audited-unsafe original text/cached summary is never returned (see utils/jss3DeliveryCorrection.ts).
+  const rows = rawRows.map((r: any) => safeJss3Topic(r));
 
   // For a student, also report whether they've completed each topic, and
   // whether it's currently locked. Locking (see schema.sql's "Term-PIN
@@ -398,7 +401,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   const student = stRows[0];
   if (!student) return res.status(404).json({ error: 'No student record for this user' });
 
-  const { rows: tRows } = await query('SELECT * FROM topics WHERE id=$1', [req.params.id]);
+  const { rows: tRows } = await query('SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id]);
   const topic = tRows[0];
   if (!topic) return res.status(404).json({ error: 'Topic not found' });
   if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
@@ -434,6 +437,22 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     }
   }
 
+  // JSS3 delivery correction (after access/lock checks, so correction never widens access). A topic whose original
+  // text is audited as unsafe is taught from the corrected lessons only; if its stored source changed unreviewed it
+  // is withheld. Stale cached summary/assessment built from the original text is retired atomically first.
+  const delivery = resolveDelivery(topic);
+  if (delivery) {
+    await retireStaleJss3Cache(query, topic.id, delivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = delivery.text;
+    if (delivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: delivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: delivery.correctionId, status: 'withheld' }, note: 'This topic is temporarily unavailable pending review.' });
+    }
+  }
+  const groundingSource: string | null = delivery?.kind === 'corrected' ? delivery.text : topic.source_reference;
+
   await query(
     `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
      ON CONFLICT (topic_id, student_id) DO NOTHING`,
@@ -453,8 +472,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   let summary_is_fallback = false;
   if (!summary) {
     try {
-      const grounding = topic.source_reference
-        ? `\n\nBase this on the following curriculum material (original lesson notes and, where labelled, attributed replacement teaching). Preserve that provenance; do not describe replacement passages as recovered textbook pages. Use the supplied content rather than inventing content from the title alone:\n"""\n${topic.source_reference}\n"""`
+      const grounding = groundingSource
+        ? `\n\nBase this on the following curriculum material (original lesson notes and, where labelled, attributed replacement teaching). Preserve that provenance; do not describe replacement passages as recovered textbook pages. Use the supplied content rather than inventing content from the title alone:\n"""\n${groundingSource}\n"""`
         : '';
       summary = await generate(
         `Write short, clear study notes on "${topic.title}" for a student learning it ` +
@@ -464,8 +483,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       );
       await query('UPDATE topics SET summary=$1 WHERE id=$2', [summary, topic.id]);
     } catch {
-      if (topic.source_reference) {
-        summary = topic.source_reference;
+      if (groundingSource) {
+        summary = groundingSource;
         summary_is_fallback = true;
       } else {
         summary = null;
@@ -477,8 +496,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // in source_reference when available, same reasoning as the summary above.
   let practice_questions: unknown = [];
   try {
-    const grounding = topic.source_reference
-      ? ` Base the questions on this curriculum material: """${topic.source_reference}"""`
+    const grounding = groundingSource
+      ? ` Base the questions on this curriculum material: """${groundingSource}"""`
       : '';
     practice_questions = await generateJSON(
       `Draft 3 multiple-choice practice question(s) on the topic "${topic.title}".${grounding} ` +
@@ -505,8 +524,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   let assessment_status: string | null = null;
   if (!topic.generated_assessment_id) {
     try {
-      const grounding = topic.source_reference
-        ? ` Base the questions on this curriculum material: """${topic.source_reference}"""`
+      const grounding = groundingSource
+        ? ` Base the questions on this curriculum material: """${groundingSource}"""`
         : '';
       const drafts = await generateJSON(
         `Draft 5 multiple-choice question(s) on the topic "${topic.title}".${grounding} ` +
@@ -528,10 +547,10 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       }
 
       const { rows: aRows } = await query(
-        `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by)
-         VALUES($1,$2,$3,$4,$5,$6,'open',NULL) RETURNING id`,
+        `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
+         VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
         [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-         `${topic.title} — Topic Assessment`, questionIds.length],
+         `${topic.title} — Topic Assessment`, questionIds.length, delivery?.kind === 'corrected' ? delivery.fingerprint : null],
       );
       const assessmentId = aRows[0].id;
 
@@ -542,8 +561,15 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         );
       }
 
-      await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2', [assessmentId, topic.id]);
-      assessment_status = 'open';
+      // Link only if no concurrent request linked one first; the loser closes its own copy (no duplicate open assessments).
+      const { rows: linked } = await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2 AND generated_assessment_id IS NULL RETURNING id', [assessmentId, topic.id]);
+      if (linked[0]) {
+        assessment_status = 'open';
+      } else {
+        await query("UPDATE assessments SET status='closed' WHERE id=$1", [assessmentId]);
+        const { rows: winner } = await query('SELECT a.status FROM topics t JOIN assessments a ON a.id=t.generated_assessment_id WHERE t.id=$1', [topic.id]);
+        assessment_status = winner[0]?.status ?? null;
+      }
     } catch {
       assessment_status = null;
     }
@@ -556,6 +582,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     ok: true,
     summary,
     summary_is_fallback,
+    delivery_correction: delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
     practice_questions,
     assessment_status,
     note: assessment_status === 'open'
@@ -809,6 +836,11 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
   if (status)     { params.push(status);     sql += ` AND a.status=$${params.length}`; }
   sql += ' ORDER BY a.created_at DESC';
   const { rows } = await query(sql, params);
+  if (viewerClasses) {
+    // Students/parents never see a topic assessment built from since-corrected teaching (admins keep the audit view).
+    const gone = await withdrawnAssessmentIds(query, rows.filter((r: any) => r.status === 'open').map((r: any) => r.id));
+    if (gone.size) return res.json({ assessments: rows.filter((r: any) => !gone.has(r.id)) });
+  }
   return res.json({ assessments: rows });
 });
 
@@ -937,6 +969,8 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (assessment.end_at && now > new Date(assessment.end_at).getTime()) {
       return res.status(403).json({ error: 'This assessment has already closed' });
     }
+    const deliverable = await assessmentDeliverable(query, assessment.id);
+    if (!deliverable.ok) return res.status(403).json({ error: deliverable.reason });
   } else if (user.role !== 'admin') {
     // Teachers never get here: creating, viewing, or opening the questions of
     // an assessment is Brainee/admin territory on this platform, not a
@@ -995,6 +1029,8 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   if (assessment.end_at && now > new Date(assessment.end_at).getTime()) {
     return res.status(403).json({ error: 'This assessment has already closed' });
   }
+  const deliverable = await assessmentDeliverable(query, req.params.id);
+  if (!deliverable.ok) return res.status(403).json({ error: deliverable.reason });
 
   // Auto-mark MCQs; hand essay answers to Brainee (this is the STS Virtual
   // School's own AI grading path — see submission_answers in schema.sql.
