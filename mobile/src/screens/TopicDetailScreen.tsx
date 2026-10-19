@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image, Modal, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api, { BASE_URL } from '../api/client';
 import { getSecureItem } from '../api/secureTokenStorage';
 import { loadLessonAssets } from '../api/lessonAssets';
-import { lessonImageLabel, enlargedWidth } from '../api/lessonImage';
+import { lessonImageLabel } from '../api/lessonImage';
 import { Card, Btn, Loader, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
@@ -13,64 +13,45 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 // call, so the image is loaded with an Authorization header. Labels live inside
 // the picture, so it is shown whole (resizeMode="contain", never cropped) at
 // full width, with its height taken from the picture's own proportions once it
-// has loaded. Animated GIFs are passed straight through unchanged.
+// has loaded. Pictures wider than WIDE_PICTURE_PX scroll sideways instead (below). Animated GIFs are passed straight through unchanged.
+export const WIDE_PICTURE_PX = 1500;
+export const WIDE_PICTURE_SCALE = 0.45;
 function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onRetry: () => void }) {
   const [ratio, setRatio] = useState(4 / 3);
-  const [nativeWidth, setNativeWidth] = useState(0);
+  const [srcWidth, setSrcWidth] = useState(0);
   const [failed, setFailed] = useState(false);
-  const [open, setOpen] = useState(false);
   const { width: screenWidth } = useWindowDimensions();
+  // A wide picture (long music systems) squeezed to a phone width makes staves and
+  // labels too small to read. Pictures at least WIDE_PICTURE_PX wide are shown at
+  // WIDE_PICTURE_SCALE of their own width inside a sideways scroll, never cropped.
+  const wide = srcWidth >= WIDE_PICTURE_PX;
+  const wideWidth = Math.max(screenWidth, Math.round(srcWidth * WIDE_PICTURE_SCALE));
   if (failed) {
     return <View style={styles.assetWrap}>
       <Text style={styles.assetFailed}>This lesson picture could not be loaded.</Text>
       <Btn label="Retry pictures" onPress={onRetry} />
     </View>;
   }
-  const source = { uri: `${BASE_URL}${asset.url}`, headers: { Authorization: `Bearer ${token}` } };
-  const label = lessonImageLabel(asset);
-  // Inline width is the screen minus the lesson's own padding; the enlarged view
-  // draws the same picture up to 3x wider and lets the student scroll it both ways.
-  const inlineWidth = Math.max(screenWidth - Spacing.md * 2, 1);
-  const bigWidth = enlargedWidth(nativeWidth, inlineWidth);
+  const image = (
+    <Image
+      source={{ uri: `${BASE_URL}${asset.url}`, headers: { Authorization: `Bearer ${token}` } }}
+      style={wide ? { width: wideWidth, aspectRatio: ratio, backgroundColor: '#fff' } : { width: '100%', aspectRatio: ratio, backgroundColor: '#fff' }}
+      resizeMode="contain"
+      accessibilityLabel={lessonImageLabel(asset)}
+      onLoad={(e: any) => {
+        const src = e?.nativeEvent?.source;
+        if (src?.width && src?.height) { setRatio(src.width / src.height); setSrcWidth(src.width); }
+      }}
+      onError={() => setFailed(true)}
+    />
+  );
   return (
     <View style={styles.assetWrap}>
-      <TouchableOpacity
-        accessibilityRole="imagebutton"
-        accessibilityLabel={label}
-        accessibilityHint="Opens a larger view of this picture"
-        onPress={() => setOpen(true)}
-        activeOpacity={0.85}
-      >
-        <Image
-          source={source}
-          style={{ width: '100%', aspectRatio: ratio, backgroundColor: '#fff' }}
-          resizeMode="contain"
-          onLoad={(e: any) => {
-            const src = e?.nativeEvent?.source;
-            if (src?.width && src?.height) { setRatio(src.width / src.height); setNativeWidth(src.width); }
-          }}
-          onError={() => setFailed(true)}
-        />
-      </TouchableOpacity>
+      {wide
+        ? <ScrollView horizontal showsHorizontalScrollIndicator>{image}</ScrollView>
+        : image}
+      {wide ? <Text style={styles.assetCaption}>Swipe sideways to see the whole picture.</Text> : null}
       {asset.caption ? <Text style={styles.assetCaption}>{asset.caption}</Text> : null}
-      <Text style={styles.assetCaption}>Tap the picture to enlarge it.</Text>
-      <Modal visible={open} animationType="fade" onRequestClose={() => setOpen(false)}>
-        <View style={{ flex: 1, backgroundColor: '#fff' }}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <ScrollView horizontal contentContainerStyle={{ flexGrow: 1 }}>
-              <Image
-                source={source}
-                accessibilityLabel={label}
-                style={{ width: bigWidth, height: bigWidth / ratio, backgroundColor: '#fff' }}
-                resizeMode="contain"
-              />
-            </ScrollView>
-          </ScrollView>
-          <View style={{ padding: Spacing.md }}>
-            <Btn label="Close" onPress={() => setOpen(false)} />
-          </View>
-        </View>
-      </Modal>
     </View>
   );
 }
