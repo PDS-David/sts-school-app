@@ -1,0 +1,47 @@
+# School decisions required — English and Yoruba (G2, 19 Oct 2026)
+
+Only decisions that sources could not settle. No teacher review has been evidenced; every lesson here is AI-prepared and uncertified. "App treatment" is what is served today, not an approved choice. Source wording is printed without tone marks, as in the school documents. Gap IDs are those in `CURRENT_COVERAGE.csv` (scheme-line IDs `SL-` in brackets; where a line has no coverage ID only the `SL-` ID is given).
+
+## A. Ambiguous source terms (Yoruba teacher)
+
+| # | Gap ID | Exact source wording | App treatment | What your answer changes |
+|---|---|---|---|---|
+| A1 | YO-SL-087 (SL-087) | `EDE – Atunyewo fonoloji Ede Yoruba iparoje ati isunki` | SUP-YO-ISUNKI teaches aranmo and isunki from the school's own compounds; `iparoje` is not defined. No credible source found. | The lesson can name what iparoje is, or drop it from the objective. |
+| A2 | YO-SL-099 (SL-099) | `Gbolohun ibeere – awon iwure ti a fi n se ibeere da, nko, nje, taki` | SUP-YO-IBEERE reads `taki` as ta + ki and `iwure` as question words (inference). A dictionary gives wúre as "to pray", ìwuré as "prayer". | Fixes the meaning of `taki` and `iwure`; may replace the inference. |
+| A3 | YO-SL-099 | `da, nko` (examples: Adegoke da? Badejo nko?) | `dà` taught as "where is…?" (Olaogun 2017, JOLAN 20(1), p. 245). `ńkọ́` kept open: that paper glosses it "where is…?"; "what about…?" is not source-confirmed. | Chooses the reading of `ńkọ́` taught and marked. |
+| A4 | YO-SL-100, YO-SL-103 (SL-100, SL-103) | `Atunyewo asa iran a enilowo, owe, aaro, obese, esuse, ajo` / `… owe, aaro, obese, esusu, ajo` | SUP-YO-IRANLOWO-PRACTICE flags `obese` and does not guess. Sources tie rotating farm work to ọ̀wẹ̀ and give àáró only "farming cooperative society"; the lesson's ọwẹ́/àáró split is unconfirmed. WAEC 2014 also lists ìsìngbà and gbàmí-o-ràmí. | Names the intended practice for `obese` and confirms how ọwẹ́ and àáró differ. |
+| A5 | YO-SL-106, YO-SL-106B (SL-106) | `ASA – Awon orisa ile Yoruba obalale` | SUP-YO-OBATALA reads Ọbàtálá; SUP-YO-OBALUAYE gives Ọbalúayé; neither closes the line. One Wikipedia list names an "Obalale" among Ọbàtálá's offspring (unconfirmed). | Selects the òrìṣà to teach, or a third reading. |
+| A6 | YO-SL-344 (SL-344) | `ASA – Igbese igbeyawo ni ile Yoruba` (15 steps: ifojusode, iwaadi, alarina, isihun, ijohen, itoro, baba gbo iya gbo, idana, ipalemo, ifa iyawo, ojo igbeyawo, ese iyawo wiwe, ibale, ikorun, ojo keje) | SUP-YO-MARRIAGE explains iwaadi, alarina, itoro, idana, ijohen and iya gbo baba gbo from sources, ibale with a caution, and leaves seven unexplained: ifojusode, isihun, ipalemo, ifa iyawo, ese iyawo wiwe, ikorun, ojo keje. | A teacher or elder supplies meanings for the seven, confirms ibale, and says which reading of `idana` (engagement or bride-price payment) the school teaches. |
+| A7 | YO-T1-W2 / YO-SL-094 (SL-094) | `Asa ati suyo ninu awon ewi atohun ti o fem o esin abalaye ijale, iwi egungun, Oya pipe, Sango pipe.`; Week 3 `ijale` | Week 2 `yala` is owner-confirmed as ìjálá; `ijale` (Week 3) is read as ìjálá by inference. | Confirms or corrects the Week 3 reading. |
+
+## B. Prescribed books
+
+| # | Gap ID | Exact source wording | App treatment | What your answer changes |
+|---|---|---|---|---|
+| B1 | YO-SL-095 (SL-095) | `LITIRESO – Kika iwe litireso apileke ti Yoruba` | SUP-YO-LIT-METHOD is a method lesson, not the book. Open as OWNER_INPUT_NEEDED_SET_TEXT. | Names the book or approves a stand-in; the line can then be closed. |
+| B2 | YO-SL-324 (SL-324) | `LITIRESO – Kika iwe literaso apileko ti ijoba yan` | Same lesson. Open as OWNER_INPUT_NEEDED_SET_TEXT. | Names the government-chosen book. |
+| B3 | EN1-SL192, EN1-SL201, EN1-SL206, EN2-SL221 | `Reading of recommended prose text`; `Use the recommended text on Drama`; `characterization and plot in the recommended text`; `Revision of the recommended text` | Stand-ins: The Gift of the Magi (prose) and The Proposal (drama), plus SUP-EN-LIT-TEXT-TOOLS and typed-text study. They are not the school's books. | Names the real texts or approves the stand-ins. |
+
+## C. Intended sound contrasts (English teacher)
+
+The scheme prints symbols as ASCII or empty slashes; no symbol font can be recovered.
+
+| # | Gap ID | Exact source wording | App treatment | What your answer changes |
+|---|---|---|---|---|
+| C1 | EN1-SL197 (SL-197) | `SPEECH WORK: consonant sounds/d/,/0/,/z/` | Read as /d/, /ð/, /θ/, /z/ (inferred). | Confirms the pairs or gives the intended ones. |
+| C2 | SL-202 (no coverage ID; reviewed, unchanged) | `SPEECH WORK: Contrasting /3:/ and /c/` | Read as /ɜː/ and /ɔː/ (inferred). | Same. |
+| C3 | SL-207 (no coverage ID; reviewed, unchanged) | `SPEECH WORK: The consonant sound // and // (contrastion)` | Existing supplement gives explicit replacement contrasts; the printed pair is empty. | Supplies the missing pair. |
+| C4 | EN1-SL212 (SL-212) | `SPEECH WORK: the consonant` | Covered by SUP-EN-CONSONANT-PRACTICE (inferred sounds). | Names the consonants intended. |
+
+## D. Permissions and licensing (owner)
+
+| # | Gap ID | Exact source wording | App treatment | What your answer changes |
+|---|---|---|---|---|
+| D1 | YO-SL-323, YO-SL-327 (SL-323) | `ASA – Awon asa to suyo lati inu awon ewi alohun` | SUP-YO-ORAL-TEXTS reproduces seven of twelve Ifá lines (Kolawole 2023; article page says CC BY-SA 4.0, PDF says only "Creative Commons Attribution License") and six of 37 elephant lines (NOUN ENG 105, CC BY-SA 4.0). Attribution given; NOUN logo and cover not shown. | Keep under share-alike (and supply the NOUN logo and cover), replace with a linked reference, or remove. Today the app's own licence has not been checked for compatibility. |
+| D2 | YO-SL-089, YO-SL-094 (SL-089, SL-094) | `Awon Ewi Alohun ti o je mo esin abalaye iyere: ifa, Sango pipe`; `… ijale, iwi egungun, Oya pipe, Sango pipe.` | Genre profiles only (SUP-YO-ORAL-GENRES). A search found no lawfully reusable Ṣàngó pípè, Ọya pípè or egúngún text; none is invented. | Written permission for a named text (e.g. from Kolawole's recordings or a chanter), or confirmation that profiles suffice. |
+
+## E. Authentic papers
+
+| # | Gap ID | Exact source wording | App treatment | What your answer changes |
+|---|---|---|---|---|
+| E1 | EN2-SL502, EN2-SL506, EN2-SL513, EN2-SL514 | `Comprehension / vocabulary development (looking at some past Questions)`; `( use of past Questions).`; `Literature- in –English: Use of Past Questions.`; `Use Past Questions for all aspect of the revision.` | SUP-EN-EXAM-PRACTICE is original practice, labelled not past questions. SL-513 and SL-514 stay OWNER_INPUT_NEEDED_PAST_QUESTIONS. Third Term has no executable rows. | Papers supplied by the school or NECO with permission; or approval of original exam-style questions and a Third-Term destination. |
