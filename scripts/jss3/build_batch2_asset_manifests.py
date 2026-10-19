@@ -31,10 +31,10 @@ summary=[]
 for key,items in sorted(groups.items()):
     name=names[key];order={}
     with open(OUT/name,'w',newline='') as fh:
-        w=csv.writer(fh,lineterminator='\n');w.writerow(['asset_key','file','sha256','order_index','expected_title','caption','displayed','sort_order'])
+        w=csv.writer(fh,lineterminator='\n');w.writerow(['asset_key','file','sha256','order_index','expected_title','caption','alt_text','displayed','sort_order'])
         for lid,r,a,src in items:
             order[lid]=order.get(lid,0)+1;stem=Path(a['file']).stem
             shutil.copyfile(src,OUT/src.name)
-            w.writerow([f'{lid}-{stem}',src.name,a['sha256'],r['orderIndex'],r['title'],a['caption'],'true',order[lid]])
+            w.writerow([f'{lid}-{stem}',src.name,a['sha256'],r['orderIndex'],r['title'],a['caption'],a.get('alt_text',''),'true',order[lid]])
             summary.append((name,lid,r['orderIndex'],src.name))
 print(json.dumps({'manifests':sorted(set(s[0] for s in summary)),'assets':len(summary),'by_lesson':[(s[1],s[2],s[3]) for s in summary]},indent=0))

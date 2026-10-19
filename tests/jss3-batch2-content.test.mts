@@ -681,3 +681,32 @@ test('G2: iparoje stays unconfirmed; ìpajẹ is offered only as a candidate fro
   assert.match(b.body, /earlier guess that it names vowel assimilation is withdrawn/); assert.doesNotMatch(b.body, /It may name vowel assimilation/);
   assert.ok(b.sources.some(x => /Yor228jq2/.test(x.url)));
 });
+
+
+test('G2 completion: Ifá quotations equal the directly extracted PDF fixtures', () => {
+  const evidence = JSON.parse(readFileSync(new URL('../docs/jss3/batch2-close/G2_REVIEW/SOURCE_CHECKS.json', import.meta.url), 'utf8'));
+  const text = byId('SUP-YO-ORAL-TEXTS').body;
+  assert.ok(text.includes(evidence.kolawole.yoruba_lines.join(' / ')));
+  assert.ok(text.includes(evidence.kolawole.english_lines.join(' / ')));
+  assert.equal(evidence.kolawole.yoruba_lines.length, 7);
+  assert.equal(evidence.kolawole.english_lines.length, 7);
+  assert.equal(evidence.noun.lines.length, 6);
+  for (const line of evidence.noun.lines) assert.ok(text.includes(line.replaceAll('‟', "'")), line);
+  assert.match(text, /apostrophe.*normalised/);
+  assert.match(text, /cover\/logo display.*remain release checks/);
+});
+
+test('G2 completion: unsettled cooperative terms are not fixed-answer targets', () => {
+  const text = byId('SUP-YO-IRANLOWO-PRACTICE').body;
+  const assessment = text.slice(text.indexOf('**Practice'));
+  assert.doesNotMatch(assessment, /ọwẹ́–|àáró–|Match:/);
+  assert.match(assessment, /Do not mark a pupil wrong/);
+  assert.match(assessment, /not fixed-answer assessment targets/);
+});
+
+test('G2 completion: school decisions cannot silently discard objectives or claim deployment', () => {
+  const text = readFileSync(new URL('../docs/jss3/SCHOOL_DECISIONS_REQUIRED.md', import.meta.url), 'utf8');
+  assert.doesNotMatch(text, /drop it from the objective|the line can then be closed|is what is served today|confirmation that profiles suffice/);
+  assert.match(text, /decision alone does not close/);
+  assert.match(text, /no substantive new teaching/);
+});

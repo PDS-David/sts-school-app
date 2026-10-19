@@ -1,0 +1,188 @@
+{
+  "reviewed_master": "c2d1c2f73984d633ea021ad597f96482d537b500",
+  "node": "v24.19.0",
+  "checks": [
+    {
+      "check": "backend-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "backend/tsconfig.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "mobile-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "mobile/tsconfig.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "static",
+      "command": [
+        "node",
+        "--test",
+        "tests/student-launch.static.test.cjs",
+        "tests/topic-assets.static.test.cjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "jss3-full",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/jss3-basic-tech-1f-r2.test.mts",
+        "tests/jss3-batch2-assets.db.test.mts",
+        "tests/jss3-batch2-assets.test.mts",
+        "tests/jss3-batch2-content.test.mts",
+        "tests/jss3-d-verification.test.mts",
+        "tests/jss3-delivery-correction.db.test.mts",
+        "tests/jss3-delivery-correction.test.mts",
+        "tests/jss3-english-1f-r1.test.mts",
+        "tests/jss3-english-correction.test.mts",
+        "tests/jss3-english-symbols-task3.test.mts",
+        "tests/jss3-first-term.test.mts",
+        "tests/jss3-g1-health-science.test.mts",
+        "tests/jss3-g4-figures.test.mts",
+        "tests/jss3-manifest-generation.test.mts",
+        "tests/jss3-pending-entries-1f-r3.test.mts",
+        "tests/jss3-phe-marker-1f-r5.test.mts",
+        "tests/jss3-second-term.test.mts",
+        "tests/jss3-supplements.test.mts",
+        "tests/jss3-text-study.test.mts",
+        "tests/jss3-third-term.test.mts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "asset-focused",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/topic-assets-metadata.test.mts",
+        "tests/topic-assets-loading.test.mts",
+        "tests/lesson-image.test.mts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "capture",
+      "command": [
+        "python3",
+        "scripts/jss3/capture_rows.py",
+        "--root",
+        "/workspace/scratch/a27a2169bbde/f_review_inputs/ALL",
+        "--output",
+        "/workspace/scratch/a27a2169bbde/current_final_verification/capture"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "suite": {
+    "tests": 242,
+    "pass": 240,
+    "fail": 0,
+    "skipped": 2,
+    "skip_reason": "No isolated PostgreSQL configured: delivery-correction.db and batch2-assets.db suites skipped. Not a live DB verification."
+  },
+  "original_rows_unchanged": true,
+  "original_rows": 313,
+  "supplements": 162,
+  "combined_rows": 475,
+  "terms": {
+    "1st Term": 230,
+    "2nd Term": 245
+  },
+  "changed_supplements": [
+    "SUP-YO-IBEERE",
+    "SUP-YO-ORAL-TEXTS",
+    "SUP-YO-MARRIAGE",
+    "SUP-YO-IRANLOWO-PRACTICE"
+  ],
+  "other_supplements_unchanged": 158,
+  "computer_studies_rows": 0,
+  "logs": [
+    {
+      "file": "asset-focused.log",
+      "sha256": "e1cfd3b1877a710c63ea2f443435e26a8e5511e49071ca4f77552d5ceae09996",
+      "last_lines": [
+        "✔ alt_text drift alone is a metadata conflict, applied only with the explicit flag, never touching bytes (1.28631ms)",
+        "ℹ tests 15",
+        "ℹ suites 0",
+        "ℹ pass 15",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 199.191476"
+      ]
+    },
+    {
+      "file": "backend-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "file": "capture.log",
+      "sha256": "dde3a33ac9680aa4d07f8ae1939feb6040f20f9cd0d40ecd7ed1e749de0ae982",
+      "last_lines": [
+        "  \"capture_stdout_matches_unmodified_importer\": true,",
+        "  \"destinations\": {",
+        "    \"1st Term\": 230,",
+        "    \"2nd Term\": 245",
+        "  },",
+        "  \"computer_rows\": 0,",
+        "  \"database_connection\": false,",
+        "  \"importer_sha256\": \"ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f\"",
+        "}"
+      ]
+    },
+    {
+      "file": "jss3-full.log",
+      "sha256": "beee8037a3badaac5816028d302fa9379395d695a5a0038e90b31b043689b7da",
+      "last_lines": [
+        "✔ negative control: a tampered \"duplicate\" Civic body is rejected, not silently dropped (2992.716435ms)",
+        "ℹ tests 242",
+        "ℹ suites 0",
+        "ℹ pass 240",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 2",
+        "ℹ todo 0",
+        "ℹ duration_ms 19406.33969"
+      ]
+    },
+    {
+      "file": "mobile-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "file": "static.log",
+      "sha256": "655b809535fa70780fef2a3b747692380f65c7d3b48443b806bf2b3e830db195",
+      "last_lines": [
+        "✔ mobile: offline cache module is untouched by this change (0.294836ms)",
+        "ℹ tests 16",
+        "ℹ suites 0",
+        "ℹ pass 16",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 121.596149"
+      ]
+    }
+  ]
+}
