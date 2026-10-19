@@ -63,6 +63,6 @@ test('app presentation: wide pictures scroll sideways and earlier recovered Musi
   const src = readFileSync('mobile/src/screens/TopicDetailScreen.tsx', 'utf8');
   assert.match(src, /WIDE_PICTURE_PX = 1500/); assert.match(src, /WIDE_PICTURE_SCALE = 0\.45/);
   assert.match(src, /<ScrollView horizontal/); assert.match(src, /resizeMode="contain"/);
-  assert.match(src, /accessibilityLabel=\{asset\.caption/);
+  assert.match(src, /accessibilityLabel=\{lessonImageLabel\(asset\)\}/); // alt_text, falling back to the caption (RG-33)
   for (const f of ['W2-1', 'W3-3', 'W7-1', 'W7-2']) { const b = readFileSync(`curriculum-assets/jss3/music/${f}.png`); assert.ok(pngSize(b).w < WIDE_PICTURE_PX, f); }
 });

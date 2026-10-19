@@ -24,7 +24,9 @@ test('schema: topic_assets DDL is idempotent and additive only', () => {
   assert.match(ddl, /CREATE INDEX IF NOT EXISTS idx_topic_assets_topic_id ON topic_assets\(topic_id\)/);
   // Nothing in the block may change, drop or rewrite an existing object.
   assert.doesNotMatch(ddl, /\bDROP\b/i);
-  assert.doesNotMatch(ddl, /\bALTER\s+TABLE\b/i);
+  // The only ALTER permitted is the single additive alt_text column (screen-reader description).
+  const alters = ddl.match(/\bALTER\s+TABLE\b[^;]*;/gi) || [];
+  assert.deepEqual(alters.map(a => a.replace(/\s+/g, ' ')), ['ALTER TABLE topic_assets ADD COLUMN IF NOT EXISTS alt_text TEXT;']);
   assert.doesNotMatch(ddl.replace(/ON DELETE/gi, ''), /\b(UPDATE|DELETE|TRUNCATE)\b/i);
   // Exactly one CREATE TABLE (the new one) and no CREATE without IF NOT EXISTS.
   assert.equal((ddl.match(/CREATE\s+TABLE/gi) || []).length, 1);
@@ -62,6 +64,7 @@ test('routes: list endpoint is metadata-only and never selects bytes', () => {
   assert.match(body, /displayed=true/);
   assert.match(body, /ORDER BY sort_order, id/);
   assert.doesNotMatch(body, /\bbytes\b/);
+  assert.match(body, /\bcaption, alt_text\b/, 'list endpoint returns alt_text with the caption');
 });
 
 test('routes: bytes endpoint scopes like GET /topics, sets Content-Type + ETag, 304 before reading bytes', () => {

@@ -32,7 +32,7 @@
 //   file         ← file | original_file                    (required, name inside --assets)
 //   sha256       ← sha256 | sha256_verified                (required)
 //   order_index  ← topic_order_index | destination_order_index | order_index (required)
-//   caption, kind, displayed, sort_order, expected_title|lesson_title_per_R2_R2V (optional)
+//   caption, alt_text, kind, displayed, sort_order, expected_title|lesson_title_per_R2_R2V (optional)
 
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -46,6 +46,7 @@ export interface ManifestRow {
   sha256: string;
   order_index: number;
   caption: string | null;
+  alt_text: string | null;
   kind: string;
   displayed: boolean;
   sort_order: number;
@@ -99,6 +100,7 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
     sha: pick(hdr, 'sha256', 'sha256_verified'),
     ord: pick(hdr, 'topic_order_index', 'destination_order_index', 'order_index'),
     cap: pick(hdr, 'caption'),
+    alt: pick(hdr, 'alt_text'),
     kind: pick(hdr, 'kind'),
     disp: pick(hdr, 'displayed'),
     sort: pick(hdr, 'sort_order'),
@@ -126,6 +128,7 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
       sha256: get(ix.sha).toLowerCase(),
       order_index: order,
       caption: get(ix.cap) || null,
+      alt_text: get(ix.alt) || null,
       kind: get(ix.kind) || 'image',
       displayed: dispRaw === '' ? true : ['true', 't', '1', 'yes'].includes(dispRaw),
       sort_order: get(ix.sort) !== '' ? Number(get(ix.sort)) : seq * 10,
@@ -224,7 +227,7 @@ export async function attachAssets(assets: PreparedAsset[], opt: AttachOptions):
     for (const a of assets) {
       const topicId = topicIds.get(a.order_index)!;
       const { rows } = await client.query(
-        'SELECT sha256, mime, kind, caption, sort_order, displayed FROM topic_assets WHERE topic_id=$1 AND asset_key=$2', [topicId, a.asset_key],
+        'SELECT sha256, mime, kind, caption, alt_text, sort_order, displayed FROM topic_assets WHERE topic_id=$1 AND asset_key=$2', [topicId, a.asset_key],
       );
       if (rows[0]) {
         if (rows[0].sha256 !== a.sha256) {
@@ -233,7 +236,7 @@ export async function attachAssets(assets: PreparedAsset[], opt: AttachOptions):
         if (rows[0].mime !== a.mime) {
           throw new Error(`Conflict: ${a.asset_key} has a different MIME type — refusing to overwrite.`);
         }
-        const changed = (['kind', 'caption', 'sort_order', 'displayed'] as const)
+        const changed = (['kind', 'caption', 'alt_text', 'sort_order', 'displayed'] as const)
           .filter(field => rows[0][field] !== a[field]);
         if (changed.length) {
           if (!opt.updateMetadata) {
@@ -254,19 +257,19 @@ export async function attachAssets(assets: PreparedAsset[], opt: AttachOptions):
     let inserted = 0;
     for (const a of toInsert) {
       const r = await client.query(
-        `INSERT INTO topic_assets(topic_id, asset_key, kind, mime, sha256, caption, sort_order, displayed, bytes)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)
+        `INSERT INTO topic_assets(topic_id, asset_key, kind, mime, sha256, caption, alt_text, sort_order, displayed, bytes)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
          ON CONFLICT (topic_id, asset_key) DO NOTHING`,
-        [topicIds.get(a.order_index), a.asset_key, a.kind, a.mime, a.sha256, a.caption, a.sort_order, a.displayed, a.bytes],
+        [topicIds.get(a.order_index), a.asset_key, a.kind, a.mime, a.sha256, a.caption, a.alt_text, a.sort_order, a.displayed, a.bytes],
       );
       inserted += r.rowCount ?? 0;
     }
     let metadataUpdated = 0;
     for (const a of toUpdate) {
       const r = await client.query(
-        `UPDATE topic_assets SET kind=$3, caption=$4, sort_order=$5, displayed=$6
-          WHERE topic_id=$1 AND asset_key=$2 AND sha256=$7 AND mime=$8`,
-        [topicIds.get(a.order_index), a.asset_key, a.kind, a.caption, a.sort_order, a.displayed, a.sha256, a.mime],
+        `UPDATE topic_assets SET kind=$3, caption=$4, alt_text=$5, sort_order=$6, displayed=$7
+          WHERE topic_id=$1 AND asset_key=$2 AND sha256=$8 AND mime=$9`,
+        [topicIds.get(a.order_index), a.asset_key, a.kind, a.caption, a.alt_text, a.sort_order, a.displayed, a.sha256, a.mime],
       );
       if (r.rowCount !== 1) throw new Error(`Metadata update conflict: ${a.asset_key}; rolling back.`);
       metadataUpdated++;

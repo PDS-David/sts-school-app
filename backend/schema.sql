@@ -804,4 +804,6 @@ CREATE TABLE IF NOT EXISTS topic_assets (
   created_at  TIMESTAMPTZ DEFAULT now(),
   UNIQUE (topic_id, asset_key)
 );
+-- Screen-reader description of the picture (distinct from the visible caption).
+ALTER TABLE topic_assets ADD COLUMN IF NOT EXISTS alt_text TEXT;
 CREATE INDEX IF NOT EXISTS idx_topic_assets_topic_id ON topic_assets(topic_id);

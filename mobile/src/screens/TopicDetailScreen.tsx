@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import api, { BASE_URL } from '../api/client';
 import { getSecureItem } from '../api/secureTokenStorage';
 import { loadLessonAssets } from '../api/lessonAssets';
+import { lessonImageLabel } from '../api/lessonImage';
 import { Card, Btn, Loader, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
@@ -36,7 +37,7 @@ function LessonImage({ asset, token, onRetry }: { asset: any; token: string; onR
       source={{ uri: `${BASE_URL}${asset.url}`, headers: { Authorization: `Bearer ${token}` } }}
       style={wide ? { width: wideWidth, aspectRatio: ratio, backgroundColor: '#fff' } : { width: '100%', aspectRatio: ratio, backgroundColor: '#fff' }}
       resizeMode="contain"
-      accessibilityLabel={asset.caption ?? 'Lesson illustration'}
+      accessibilityLabel={lessonImageLabel(asset)}
       onLoad={(e: any) => {
         const src = e?.nativeEvent?.source;
         if (src?.width && src?.height) { setRatio(src.width / src.height); setSrcWidth(src.width); }
