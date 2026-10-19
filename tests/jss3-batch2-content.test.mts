@@ -84,7 +84,7 @@ test('new Yoruba lessons keep uncertain scheme terms uncertain and invent no tra
   assert.match(byId('SUP-YO-IBEERE').body, /inference, not confirmed/);
   const ob = byId('SUP-YO-OBATALA').body; assert.match(ob, /Ọbalúayé/); assert.match(ob, /unconfirmed/); assert.match(ob, /not taught in this lesson/);
   const t = byId('SUP-YO-ORAL-TEXTS'); assert.match(t.body, /No Ṣàngó pípè, Ọya pípè or iwì egúngún verse is supplied or invented/);
-  assert.match(t.body, /First produced by the National Open University of Nigeria/); assert.match(t.body, /CC BY-SA 4\.0/); assert.match(t.body, /Kolawole 2023, CC BY-SA 4.0 as stated on the article page/);
+  assert.match(t.body, /First produced by the National Open University of Nigeria/); assert.match(t.body, /CC BY-SA 4\.0/); assert.match(t.body, /Kolawole 2023, p\. 86;[^*]*CC BY-SA 4\.0 as stated on the article page/);
   assert.ok(t.sources.some(x => x.url.includes('10.17159/tl.v60i3.14628')) && t.sources.some(x => x.url.includes('ENG105_02.pdf')));
   // the excerpts are the only quoted chant lines; the genre lesson stays verse-free
   assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
@@ -565,8 +565,8 @@ test('Yoruba excerpt licences are recorded as share-alike and the unverified sta
   const t = byId('SUP-YO-ORAL-TEXTS');
   assert.ok(t.sources.every(s => !/CC BY(?!-SA)/.test(s.title)), 'no source is labelled plain CC BY');
   assert.ok(t.sources.filter(s => /CC BY-SA 4\.0/.test(s.title)).length === 2);
-  assert.match(t.origin, /could not be re-checked character by character/);
-  const o = csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-11')!; assert.match(o.detail, /Attribution-ShareAlike 4\.0/); assert.match(o.detail, /Ifá lines and their tone marks were not re-checked/);
+  assert.match(t.origin, /G2 check, 19 October 2026/); assert.match(t.origin, /full extracted PDF or page text/); assert.match(t.origin, /line-end commas and order/); assert.match(t.origin, /Not verified: the NOUN logo and cover/); assert.doesNotMatch(t.origin, /no character-for-character copy was possible/);
+  const o = csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-11')!; assert.match(o.detail, /Attribution-ShareAlike 4\.0/); assert.match(o.detail, /G2 check, 19 Oct 2026/); assert.match(o.detail, /full extracted text/); assert.match(o.detail, /line-end punctuation/); assert.match(o.detail, /printed English layout/);
   assert.ok(!/CC BY\)/.test(csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-03')!.detail));
   // the verse-free genre lesson stays verse-free
   assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
@@ -640,4 +640,44 @@ test('corrected values were recomputed, not recalled', () => {
   assert.equal([5, 7, 4, 8, 5, 7, 10, 9, 6, 3].reduce((a, b) => a + b), 64);
   const f = [2, 1, 2, 1, 3, 1, 2, 3, 4, 1];
   assert.equal(f.reduce((a, b) => a + b), 20); assert.equal(f.reduce((s, n, i) => s + n * i, 0), 99);
+});
+
+// ---- G2 (19 Oct 2026): English/Yoruba evidence corrections ----
+test('G2: oral-text excerpts are labelled as selections, in printed order, with attribution and open licence points', () => {
+  const t = byId('SUP-YO-ORAL-TEXTS').body;
+  assert.match(t, /lines 1 to 7 of the 12 Yoruba lines/);
+  assert.match(t, /Akano Famoriyo, Odoje Compound, Oyo, Oyo State, 3 December 1987/);
+  assert.match(t, /lines 2, 7 to 8, 10, 14 and 17, in printed order/);
+  const order = ['O elephant, huge as a hill', 'tears a man like a garment', 'hangs him up on a tree', 'My chant is a salute', 'single-handily causes a tremor', "The hunter's boast at home is not repeated when he really meets"].map(x => t.indexOf(x));
+  assert.ok(order.every(i => i > 0) && order.every((v, i) => i === 0 || v > order[i - 1]), 'elephant lines in printed order');
+  assert.match(t, /First produced by the National Open University of Nigeria/);
+  assert.match(t, /Creative Commons Attribution License/); // Kolawole PDF vs article page discrepancy is stated
+  assert.doesNotMatch(t, /It is believed to work only when exact/);
+  assert.ok(!/Ṣàngó pípè[^.]*\n\(\d+\)/.test(t));
+});
+test('G2: marriage lesson explains only source-backed steps and keeps ìdána and ibale open', () => {
+  const m = byId('SUP-YO-MARRIAGE').body;
+  assert.match(m, /Ìdána\*\* — sources differ/); assert.match(m, /Ibale\*\* \(caution\)/);
+  const notExplained = m.split('**Not explained here:**')[1].split('.')[0];
+  for (const w of ['isihun', 'ipalemo', 'ifa iyawo', 'ese iyawo wiwe', 'ikorun', 'ojo keje']) assert.ok(notExplained.includes(w), w);
+  for (const w of ['ifojusode', 'ijohen', 'baba gbo iya gbo', 'ibale']) assert.ok(!notExplained.includes(w), w);
+  assert.match(m, /Ìfojúsóde\*\* \(caution\)[^\n]*looking out for a suitor/); assert.ok(byId('SUP-YO-MARRIAGE').sources.some(x => /10\.11648\/j\.reports\.20260601\.12/.test(x.url)));
+  assert.ok(byId('SUP-YO-MARRIAGE').sources.some(s => /10\.5901\/ajis/.test(s.url)));
+});
+test('G2: ńkọ́ stays open, dà is sourced, and the cooperative-work lesson no longer cites marriage pages', () => {
+  const q = byId('SUP-YO-IBEERE'); assert.match(q.body, /Where is Bolu/); assert.match(q.body, /both readings of ńkọ́ stay open/);
+  const r = byId('SUP-YO-IRANLOWO-PRACTICE'); assert.ok(r.sources.every(s => !/marriage|igbeyawo/i.test(s.title + s.url)));
+  assert.match(r.body, /Treat the distinctions above as the lesson's reading, not as settled/);
+});
+test('G2: Ifá excerpt English lines keep the printed layout and the NOUN course developer is credited', () => {
+  const t = byId('SUP-YO-ORAL-TEXTS').body;
+  assert.match(t, /Eríwo yà \/ Eríwo yà \/ Eríwo yà \/ Aya gbo Aya to \/ Offspring of Eriwo Osinki/);
+  assert.doesNotMatch(t, /could not be confirmed/); assert.doesNotMatch(t, /Eríwo yà \(three times\)/);
+  assert.match(t, /course developer Oyeniyi Okunoye; published 2021/);
+});
+test('G2: iparoje stays unconfirmed; ìpajẹ is offered only as a candidate from the WAEC pairing', () => {
+  const b = byId('SUP-YO-ISUNKI');
+  assert.match(b.body, /ìpajẹ àti ìsúnkì/); assert.match(b.body, /candidate reading/); assert.match(b.body, /It is not confirmed/);
+  assert.match(b.body, /earlier guess that it names vowel assimilation is withdrawn/); assert.doesNotMatch(b.body, /It may name vowel assimilation/);
+  assert.ok(b.sources.some(x => /Yor228jq2/.test(x.url)));
 });
