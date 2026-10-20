@@ -1,0 +1,81 @@
+{
+  "status": "INCOMPLETE",
+  "checks": [
+    {
+      "name": "python-dependencies",
+      "command": [
+        "python3",
+        "-c",
+        "import cairosvg,lxml,docx,PIL"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "capture",
+      "command": [
+        "python3",
+        "scripts/jss3/capture_rows.py",
+        "--root",
+        "<evidence>/inputs/ALL",
+        "--output",
+        "<evidence>/capture"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "corpus",
+      "command": [
+        "python3",
+        "scripts/jss3/verify_handoff.py",
+        "--inputs",
+        "<evidence>/inputs",
+        "--output",
+        "<evidence>/corpus",
+        "--tsx-no-ipc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "protected-comparer-unit",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs/jss3/completion/P1_BASELINE",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "production_actions": false,
+  "corpus_skips": [
+    "\ufe63 batch2 real asset resolution (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (1.024553ms) # SKIP",
+    "\ufe63 delivery-correction DB tests (skipped: set JSS3_DELIVERY_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.848904ms) # SKIP",
+    "\ufe63 V1 Business DB checks (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.773412ms) # SKIP",
+    "\ufe63 V2 math real asset resolution (skipped: set JSS3_V2_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.774684ms) # SKIP",
+    "\ufe63 V3 Science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres ; JSS3_CAPTURE_DIR additionally enables real source-body guards) (0.707344ms) # SKIP"
+  ],
+  "reason": "Corpus passed; database acceptance deliberately not run",
+  "node": "24.19.0",
+  "jss3_tests": {
+    "total": 300,
+    "pass": 295,
+    "fail": 0,
+    "skipped": 5,
+    "skip_reason": "five explicit local PostgreSQL suites"
+  },
+  "comparer_synthetic_tests": 13,
+  "runner_unit_tests": 3,
+  "original_rows_unchanged": 313,
+  "supplements": 170,
+  "first_term": 234,
+  "second_term": 249,
+  "third_term": 0,
+  "computer_studies": 0,
+  "real_protected_baseline_verified": false,
+  "phone_observed": false,
+  "CI_database_result": "PENDING"
+}

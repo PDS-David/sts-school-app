@@ -135,3 +135,13 @@ print(json.dumps(out))`;
   assert.equal(o.elim.length, 1); for (const i of [79, 80, 83, 111]) assert.ok(i < o.elim[0], `${i} precedes the ELIMINATION METHOD heading at ${o.elim[0]}`);
   assert.ok(o.elim[0] > 111);
 });
+
+// Runtime grounding must explain the recovered examples, not merely retain a source image.
+test('replacement teaching supplies checked substitution steps and distinguishes the mixed number', async () => {
+  const { JSS3_SUPPLEMENTS } = await import('../backend/src/db/jss3Supplements.js');
+  const body = JSS3_SUPPLEMENTS.find(x => x.id === 'SUP-MATH-SIMULT-GRAPH')!.body;
+  for (const step of ['7/7 = 7x/7', '12/11 = 1 + 1/11', '33/11 - 24/11 = 9/11', '36/11 - 36/11 = 0']) assert.ok(body.includes(step),step);
+  assert.match(body,/cancelling across a sum/);
+  const corrections = JSON.parse(readFileSync(path.join(ROOT,'backend/src/db/data/jss3DeliveryCorrections.json'),'utf8'));
+  assert.ok(corrections.find((c:any)=>c.id==='A-MATHEMATICS-2-01').replacement_lesson_ids.includes('SUP-MATH-SIMULT-GRAPH'));
+});

@@ -1,0 +1,24 @@
+✔ results screen hooks are all declared before conditional loading/error returns (1.059535ms)
+✔ PIN enforcement is explicitly opt-in, preserving free launch access (0.516303ms)
+✔ cached notes do not hide practice retrieval action (0.161238ms)
+✔ submitted assessments cannot overwrite existing grades (0.445468ms)
+✔ invalid assessment answer bodies are rejected (0.393932ms)
+✔ unknown question types are rejected before marking (0.414522ms)
+✔ schema: topic_assets DDL is idempotent and additive only (2.163686ms)
+✔ schema: topic_assets has the approved shape (cascade, per-topic key uniqueness, bytea) (0.447ms)
+✔ schema: topic_assets is not defined anywhere earlier in the file (no clash) (0.317709ms)
+✔ routes: list endpoint is metadata-only and never selects bytes (0.544154ms)
+✔ routes: bytes endpoint scopes like GET /topics, sets Content-Type + ETag, 304 before reading bytes (0.499968ms)
+✔ routes: visibility helper mirrors GET /topics (teacher class/subject, viewer classes) (0.319292ms)
+✔ routes: existing GET /topics response is untouched (0.41295ms)
+✔ attach script: dry-run default, hash check, idempotent insert, never writes topics (0.362085ms)
+✔ mobile: lesson text rendering is unchanged and pictures render below it (0.43946ms)
+✔ mobile: offline cache module is untouched by this change (0.313263ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.307142
