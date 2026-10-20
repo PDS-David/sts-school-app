@@ -1,0 +1,77 @@
+== baseline
+ℹ pass 14
+ℹ fail 0
+== M1: bytes route ignores displayed (held figure leak)
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (323.001999ms)
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (22.585159ms)
+ℹ pass 12
+ℹ fail 2
+✖ failing tests:
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (323.001999ms)
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (22.585159ms)
+Updated 1 path from the index
+== M2: manifest flips a held figure to displayed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+✖ definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique) (193.516799ms)
+✖ both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags (45.112514ms)
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (64.095209ms)
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (76.653943ms)
+ℹ pass 10
+ℹ fail 4
+✖ failing tests:
+✖ definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique) (193.516799ms)
+✖ both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags (45.112514ms)
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (64.095209ms)
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (76.653943ms)
+Updated 1 path from the index
+== M3: manifest order_index shifted for BS-EYE
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+✖ definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique) (244.992202ms)
+✖ both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags (23.502545ms)
+✖ idempotent re-attach: zero inserts, same row ids, bytes and metadata untouched (18.025748ms)
+✖ bytes are never overwritten: tampered file, different sha under an existing key and a MIME change are all refused (13.234777ms)
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (44.629718ms)
+✖ cross-class and cross-school rejection: a JSS 1 student and another school see no list, no bytes and no ETag oracle for any of the 17 records (196.928254ms)
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (69.995145ms)
+ℹ pass 7
+ℹ fail 7
+✖ failing tests:
+✖ definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique) (244.992202ms)
+✖ both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags (23.502545ms)
+✖ idempotent re-attach: zero inserts, same row ids, bytes and metadata untouched (18.025748ms)
+✖ bytes are never overwritten: tampered file, different sha under an existing key and a MIME change are all refused (13.234777ms)
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (44.629718ms)
+✖ cross-class and cross-school rejection: a JSS 1 student and another school see no list, no bytes and no ETag oracle for any of the 17 records (196.928254ms)
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (69.995145ms)
+Updated 1 path from the index
+== M4: delivery resolver disabled
+✖ [V3-BS-FAMILY-TRAITS-V3] replacement delivery: list and completion are taught from SUP-BS-FAMILY-TRAITS-V3 only; original text and stale cache never reach the student or the AI (42.356256ms)
+✖ [V3-BS-FAMILY-TRAITS-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten (21.302991ms)
+✖ [V3-BS-LIGHT-V3] replacement delivery: list and completion are taught from SUP-BS-LIGHT-V3 only; original text and stale cache never reach the student or the AI (14.354136ms)
+✖ [V3-BS-LIGHT-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten (15.914466ms)
+✖ identity scoping control: the V3 entries do not capture the same audited body in another class or school (0.878752ms)
+ℹ pass 9
+ℹ fail 5
+✖ failing tests:
+✖ [V3-BS-FAMILY-TRAITS-V3] replacement delivery: list and completion are taught from SUP-BS-FAMILY-TRAITS-V3 only; original text and stale cache never reach the student or the AI (42.356256ms)
+✖ [V3-BS-FAMILY-TRAITS-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten (21.302991ms)
+✖ [V3-BS-LIGHT-V3] replacement delivery: list and completion are taught from SUP-BS-LIGHT-V3 only; original text and stale cache never reach the student or the AI (14.354136ms)
+✖ [V3-BS-LIGHT-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten (15.914466ms)
+✖ identity scoping control: the V3 entries do not capture the same audited body in another class or school (0.878752ms)
+Updated 1 path from the index
+== M5: topic visibility ignores class
+/tmp/mut.sh: command substitution: line 15: syntax error near unexpected token `t.class_name'
+/tmp/mut.sh: command substitution: line 15: ` AND (t.class_name = ANY($${params.length}) OR t.class_name IS NULL)'
+ℹ pass 14
+ℹ fail 0
+Updated 0 paths from the index
+DONE
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ℹ fail 3
+ℹ pass 11
+✖ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (69.306162ms)
+✖ cross-class and cross-school rejection: a JSS 1 student and another school see no list, no bytes and no ETag oracle for any of the 17 records (55.885294ms)
+✖ failing tests:
+✖ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (101.194804ms)
+Updated 1 path from the index
+DONE

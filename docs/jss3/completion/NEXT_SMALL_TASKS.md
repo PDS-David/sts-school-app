@@ -20,6 +20,8 @@ Inputs: current repo; the same input ZIP. Source: `ALL/JSS3 2ND TERM /BASIC 9 MA
 
 ## A1 — Science database acceptance only
 
+**Status: implemented 20 October 2026 — see `A1_SCIENCE_DB/REPORT.md` (new suite `tests/jss3-v3-science-assets.db.test.mts`, 14/14; existing V1/V2/delivery/asset DB suites pass, no skips; local PostgreSQL only).**
+
 Inputs: current repo; same input ZIP; a disposable LOCAL PostgreSQL instance. No production access is needed. Create a fresh capture, then add/run a V3 database suite modelled on `tests/jss3-v2-math-assets.db.test.mts`. Attach both V3 manifests with title guards, verify 17 records/13 displayed instances against current definitions, exact bytes, alt text, held-source hiding, idempotence, metadata-update consent and wrong-identity rejection before writes. Exercise authenticated asset retrieval and cross-class rejection. Test both Science delivery replacements and changed-source withholding. Run existing V1/V2/delivery/asset DB suites with their declared test variables. Report actual results and any skips. Commit regression tests/fixes and publish. Do not use totals as substitutes for identity checks.
 
 ## A2 — one phone visual acceptance pass
