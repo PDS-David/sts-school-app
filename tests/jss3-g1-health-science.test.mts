@@ -34,7 +34,7 @@ test('sports-heroes lesson corrects only confirmed errors and keeps unconfirmed 
 test('five G1 delivery corrections exist, point at G1 lessons and are unique per source hash', () => {
   const ids = ['BS-BUSH-BURNING-OZONE', 'BS-DEFORESTATION-OZONE', 'PHE-COMBINED-EVENTS-1T', 'PHE-COMBINED-EVENTS-2T', 'PHE-SPORTS-HEROES-FACTS'];
   for (const id of ids) { const c = corr.find(x => x.id === id); assert.ok(c, id); for (const l of c.replacement_lesson_ids) assert.ok(G1.includes(l)); assert.match(c.source_body_sha256, /^[0-9a-f]{64}$/); }
-  const hs = corr.flatMap(c => [c.source_body_sha256, ...(c.previous_source_body_sha256 ?? [])]); assert.equal(hs.length, new Set(hs).size); assert.equal(corr.length, 63);
+  const hs = corr.flatMap(c => [c.source_body_sha256, ...(c.previous_source_body_sha256 ?? [])]); assert.equal(hs.length, new Set(hs).size); assert.equal(corr.length, 65);
 });
 test('with a real capture, each G1 correction hash equals the current original row it withdraws', { skip: !process.env.JSS3_CAPTURE_DIR || !existsSync(`${process.env.JSS3_CAPTURE_DIR}/original-rows.json`) }, () => {
   const rows = JSON.parse(readFileSync(`${process.env.JSS3_CAPTURE_DIR}/original-rows.json`, 'utf8')) as any[];

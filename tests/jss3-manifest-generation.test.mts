@@ -16,6 +16,8 @@ test('regenerating Batch 2 manifests preserves every supplied descriptive label 
       cpSync(base, join(root, base), { recursive: true });
       definitions.push(...JSON.parse(readFileSync(`${base}/ASSETS.json`, 'utf8')).filter((a: any) => a.mime === 'image/png'));
     }
+    const override = JSON.parse(readFileSync('docs/jss3/completion/V1_BUSINESS/SHORTHAND_ALT_TEXT.json', 'utf8'));
+    cpSync('docs/jss3/completion/V1_BUSINESS/SHORTHAND_ALT_TEXT.json', join(root, 'docs/jss3/completion/V1_BUSINESS/SHORTHAND_ALT_TEXT.json'), { recursive: true });
     mkdirSync(join(root, 'backend/src/db/data'), { recursive: true });
     cpSync('backend/src/db/data/jss3Supplements.json', join(root, 'backend/src/db/data/jss3Supplements.json'));
     mkdirSync(join(root, 'curriculum-assets/jss3/supplements'), { recursive: true });
@@ -30,7 +32,7 @@ test('regenerating Batch 2 manifests preserves every supplied descriptive label 
     assert.equal(output.length, definitions.length);
     for (const a of definitions) {
       const m = output.find(x => x.file === a.file.split('/').at(-1)); assert.ok(m, a.file);
-      assert.equal(m.alt_text, a.alt_text || null, a.file);
+      assert.equal(m.alt_text, m.asset_key === override.asset_key ? override.alt_text : a.alt_text || null, a.file);
       assert.equal(m.order_index, rows.find(x => x.weekLabel === `SUPPLEMENT ${a.target_lesson_id}`)!.orderIndex);
       assert.equal(m.sha256, a.sha256);
     }

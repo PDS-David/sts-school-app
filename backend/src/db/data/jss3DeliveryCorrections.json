@@ -159,7 +159,8 @@
       "4f232aed0a4b778aa2f1f776b35182d85fbf3d3b6edc9cd89003fe2287396205"
     ],
     "replacement_lesson_ids": [
-      "SUP-MATH-BINARY"
+      "SUP-MATH-BINARY",
+      "SUP-MATH-V2-FIGURES-1"
     ],
     "reason": "Omitted Office Math objects and/or independently checked source errors. Use explicit attributed teaching; preserve original only for provenance/audit.",
     "affected_summary_and_question_paths": [
@@ -183,7 +184,8 @@
       "a27a2aa91bea0c7d386500243336c5f337a5f6d84cdf9ed641785cdb80c11617"
     ],
     "replacement_lesson_ids": [
-      "SUP-MATH-BINARY"
+      "SUP-MATH-BINARY",
+      "SUP-MATH-V2-FIGURES-1"
     ],
     "reason": "Omitted Office Math objects and/or independently checked source errors. Use explicit attributed teaching; preserve original only for provenance/audit.",
     "affected_summary_and_question_paths": [
@@ -279,7 +281,8 @@
       "7348077ac93a2124439d58579b39ffdae62d36852667ab4984773ca5becec719"
     ],
     "replacement_lesson_ids": [
-      "SUP-MATH-DATA-DISPLAY"
+      "SUP-MATH-DATA-DISPLAY",
+      "SUP-MATH-V2-FIGURES-1"
     ],
     "reason": "Omitted Office Math objects and/or independently checked source errors. Use explicit attributed teaching; preserve original only for provenance/audit.",
     "affected_summary_and_question_paths": [
@@ -474,7 +477,8 @@
       "3eca3313f8627aeb870b4800341d08491ccedd9dd67f619ac58de46899a226ea"
     ],
     "replacement_lesson_ids": [
-      "SUP-MATH-TRIG-RATIOS"
+      "SUP-MATH-TRIG-RATIOS",
+      "SUP-MATH-V2-FIGURES-2"
     ],
     "reason": "Incomplete equations/diagrams or incorrect example; complete equivalent supplies readable definitions, operations, practice and checked answers.",
     "affected_summary_and_question_paths": [
@@ -499,7 +503,8 @@
     ],
     "replacement_lesson_ids": [
       "SUP-MATH-TRIG-RATIOS",
-      "SUP-MATH-CLINOMETER"
+      "SUP-MATH-CLINOMETER",
+      "SUP-MATH-V2-FIGURES-2"
     ],
     "reason": "Incomplete equations/diagrams or incorrect example; complete equivalent supplies readable definitions, operations, practice and checked answers.",
     "affected_summary_and_question_paths": [
@@ -521,7 +526,8 @@
     "source_body_sha256": "480019f40e9b2f18c3f092478bf5b2908e29790d0a8555a6b832cd9761395698",
     "replacement_lesson_ids": [
       "SUP-MATH-BEARING-DISTANCE",
-      "SUP-MATH-BEARING-TOOLS"
+      "SUP-MATH-BEARING-TOOLS",
+      "SUP-MATH-V2-FIGURES-2"
     ],
     "reason": "Incomplete equations/diagrams or incorrect example; complete equivalent supplies readable definitions, operations, practice and checked answers.",
     "affected_summary_and_question_paths": [
@@ -1334,5 +1340,47 @@
       "POST /learning/topics/:id/complete: summary, summary_is_fallback fallback, practice_questions grounding, assessment grounding",
       "GET /learning/topics: summary and source_reference fields"
     ]
+  },
+  {
+    "id": "V3-BS-FAMILY-TRAITS-V3",
+    "package": "V3",
+    "school_code": "secondary",
+    "class_name": "JSS 3",
+    "subject_name": "Basic Science",
+    "term_label": "1st Term",
+    "source_title": "FAMILY TRAITS",
+    "source_body_sha256": "945a41d2c538ef38a0423a9599a9d2e3de540963b7f494bb9c015f4cc0212f2f",
+    "replacement_lesson_ids": [
+      "SUP-BS-FAMILY-TRAITS-V3"
+    ],
+    "reason": "Correct the source single-gene human-height claim and offspring labels.",
+    "affected_summary_and_question_paths": [
+      "learning topic summary including cached summary and generation-failure fallback",
+      "practice question grounding",
+      "standard assessment generation and cached assessment eligibility",
+      "direct existing assessment retrieval/submission: invalidate stale version before serving or grading"
+    ],
+    "source_locator": "BASIC SCIENCE.docx / WEEK THREE / FAMILY TRAITS"
+  },
+  {
+    "id": "V3-BS-LIGHT-V3",
+    "package": "V3",
+    "school_code": "secondary",
+    "class_name": "JSS 3",
+    "subject_name": "Basic Science",
+    "term_label": "2nd Term",
+    "source_title": "LIGHT ENERGY",
+    "source_body_sha256": "90f08596cb20515a3a2d754feed10a66bf28d5cbae9351d305314954c2000237",
+    "replacement_lesson_ids": [
+      "SUP-BS-LIGHT-V3"
+    ],
+    "reason": "Correct refraction-angle equality and the prism colour order; preserve valid source objectives.",
+    "affected_summary_and_question_paths": [
+      "learning topic summary including cached summary and generation-failure fallback",
+      "practice question grounding",
+      "standard assessment generation and cached assessment eligibility",
+      "direct existing assessment retrieval/submission: invalidate stale version before serving or grading"
+    ],
+    "source_locator": "Basic science.docx / WEEK 5 / LIGHT ENERGY"
   }
 ]

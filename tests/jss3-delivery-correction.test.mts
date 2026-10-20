@@ -16,10 +16,10 @@ const mini = [{ id: 'T-1', school_code: 'secondary', class_name: 'JSS 3', subjec
 const les = [{ id: 'L1', title: 'Ozone', body: 'Correct ozone teaching', origin: 'Original equivalent', sources: [{ title: 'Ref', url: 'https://example.org' }] }];
 const topic = (o: any = {}) => ({ school_code: 'secondary', class_name: 'JSS 3', subject_name: 'Basic Science', term_label: '1st Term', title: 'OZONE', source_reference: 'BAD OZONE', summary: null, generated_assessment_id: null, ...o });
 
-test('merged table: 63 unique corrections from A,B,D,E (C has none); all reference real lessons; hashes unique', () => {
-  assert.equal(C.length, 63);
-  assert.deepEqual(Object.fromEntries(['A', 'B', 'C', 'D', 'E'].map(p => [p, C.filter(c => c.package === p).length])), { A: 23, B: 12, C: 0, D: 23, E: 5 });
-  assert.equal(new Set(C.map(c => c.id)).size, 63);
+test('merged table: 65 unique corrections from A,B,D,E,V3 (C has none); all reference real lessons; hashes unique', () => {
+  assert.equal(C.length, 65);
+  assert.deepEqual(Object.fromEntries(['A', 'B', 'C', 'D', 'E', 'V3'].map(p => [p, C.filter(c => c.package === p).length])), { A: 23, B: 12, C: 0, D: 23, E: 5, V3: 2 });
+  assert.equal(new Set(C.map(c => c.id)).size, 65);
   const hashes = C.flatMap(c => [c.source_body_sha256, ...(c.previous_source_body_sha256 ?? [])]);
   assert.equal(new Set(hashes).size, hashes.length);
   for (const c of C) { assert.match(c.source_body_sha256, /^[0-9a-f]{64}$/); assert.ok(c.subject_name && c.term_label, c.id); for (const id of c.replacement_lesson_ids) assert.ok(L.find(l => l.id === id), `${c.id}:${id}`); }
@@ -75,7 +75,7 @@ test('REAL SOURCE: every correction hash resolves to exactly one captured origin
     const d = r({ school_code: c.school_code, class_name: c.class_name, subject_name: m[0].subjectName, term_label: m[0].termLabel, title: m[0].title, source_reference: m[0].sourceReference }) as any;
     assert.equal(d.kind, 'corrected', c.id); assert.equal(d.correctionId, c.id); seen.add(c.id);
   }
-  assert.equal(seen.size, 63);
+  assert.equal(seen.size, 65);
 });
 const BASE = process.env.JSS3_BASE_CAPTURE_DIR;
 test('REAL SOURCE (audited base): every worker hash (current or previous) matches a base-capture row; the 15 changed rows are Mathematics only', { skip: BASE && existsSync(path.join(BASE, 'original-rows.json')) && !real.skip ? false : 'set JSS3_BASE_CAPTURE_DIR too' }, () => {

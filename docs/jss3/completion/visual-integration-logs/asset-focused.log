@@ -1,0 +1,27 @@
+✔ screen-reader label prefers alt_text, then caption, then a generic label (0.972207ms)
+✔ lesson screen labels pictures with the helper and keeps the wide-picture sideways scroll (0.557587ms)
+✔ image token is read after the metadata request refreshes authentication (1.410558ms)
+✔ metadata failure rejects rather than pretending a lesson has no pictures (0.43737ms)
+✔ malformed response rejects rather than silently hiding pictures (0.197148ms)
+✔ missing token with pictures rejects (0.150157ms)
+✔ legitimate empty asset list remains a successful empty result (0.155084ms)
+Metadata update A: {"caption":{"before":"old","after":"new"},"sort_order":{"before":20,"after":10},"displayed":{"before":false,"after":true}}
+Metadata update A: {"caption":{"before":"old","after":"new"},"sort_order":{"before":20,"after":10},"displayed":{"before":false,"after":true}}
+Metadata update A: {"caption":{"before":"old","after":"new"},"sort_order":{"before":20,"after":10},"displayed":{"before":false,"after":true}}
+Metadata update A: {"alt_text":{"before":null,"after":"Treble staff, C major: C D E."}}
+✔ metadata drift aborts by default without writes and releases client (2.641897ms)
+✔ explicit metadata dry run reports planned update but never writes (1.854639ms)
+✔ explicit apply updates metadata only, retaining byte/hash/MIME and topic identity (0.951015ms)
+✔ unchanged metadata is idempotent (0.326262ms)
+✔ metadata flag cannot authorize replacement bytes (0.34463ms)
+✔ metadata flag cannot authorize a MIME change (0.307685ms)
+✔ lost update aborts the transaction instead of falsely reporting success (1.10006ms)
+✔ alt_text drift alone is a metadata conflict, applied only with the explicit flag, never touching bytes (0.63601ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 216.822918

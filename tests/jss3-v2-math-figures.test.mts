@@ -176,8 +176,8 @@ test('register: every figure has a disposition; open items stay explicit', () =>
 // ---- newly prepared teaching (declarative additions) ------------------------------------------------------------
 test('supplement additions: labelled as new teaching, schema-shaped, numbers match the figures, base hash recorded', () => {
   const p = JSON.parse(readFileSync(path.join(ROOT, 'docs/jss3/completion/V2_MATH/V2_MATH_SUPPLEMENT_ADDITIONS.json'), 'utf8'));
-  assert.equal(p.expected_base_sha256, sha(readFileSync(path.join(ROOT, 'backend/src/db/data/jss3Supplements.json'))), 'base file unchanged by this branch');
-  const live = JSON.parse(readFileSync(path.join(ROOT, 'backend/src/db/data/jss3Supplements.json'), 'utf8')); for (const e of p.entries) assert.ok(!live.some((x: any) => x.id === e.id), 'not applied here');
+  assert.equal(p.expected_base_sha256, '169fb0783333f5a230f2ceecc5c6b29a7f5d82a3aa544074c19057a44a7416d0', 'historical worker base retained');
+  const live = JSON.parse(readFileSync(path.join(ROOT, 'backend/src/db/data/jss3Supplements.json'), 'utf8')); for (const e of p.entries) assert.deepEqual(live.filter((x: any) => x.id === e.id), [e], 'exact proposed lesson applied once');
   for (const e of p.entries) {
     assert.match(e.id, /^SUP-[A-Z0-9-]+$/); assert.ok(e.body.length >= 500); assert.match(e.body, /practice/i); assert.match(e.body, /answers/i); assert.match(e.origin, /Newly prepared teaching/);
     assert.ok(e.sources.every((s: any) => s.url.startsWith('https://')));

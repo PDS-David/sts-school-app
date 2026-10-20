@@ -67,7 +67,7 @@ if (!URL_ || !CAP) {
         for (const a of items) perTopic.set(`${k}|${a.order_index}`, [...(perTopic.get(`${k}|${a.order_index}`) ?? []), a.asset_key]);
       }
     }
-    assert.equal(total, 16 + 13 + 3 + 11, 'recovered Music 16 + Basic Technology 13 + earlier supplement figures 3 + A 1 + E 10');
+    assert.equal(total, 16 + 13 + 3 + 11 + 19, 'recovered Music 16 + Basic Technology 13 + earlier supplement figures 3 + A 1 + E 10 + V1 Business 19');
     assert.equal((await query('SELECT count(*)::int n FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1', [SC])).rows[0].n, total);
   });
 
