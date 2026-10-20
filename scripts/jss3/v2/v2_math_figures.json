@@ -1,0 +1,701 @@
+{
+ "schema": 1,
+ "figures": [
+  {
+   "id": "M1-F01",
+   "file": "v2-m1-binary-ladders-a-c.png",
+   "term": "1st Term",
+   "row_title": "BINARY NUMBERS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "document.xml paragraphs 40-59 (connectors on ladders a-c)",
+   "scratch_pdf_page": 2,
+   "caption": "Division ladders (a) 8, (b) 85 and (c) 107, recovered from the school note. Two printed slips are flagged in the notes.",
+   "alt_text": "Three repeated-division-by-2 ladders, divisor 2 on the left. (a) 8: rows 4 R 0, 2 R 0, 0 R 1, printed result 8 base ten = 1000 base two. (b) 85: quotients 42, 21, 10, 5, 2, 1, 0 with remainders 1, 0, 1, 0, 1, 0, 1; 85 base ten = 1010101 base two. (c) 107: quotients 53, 26, 13, 6, 3, 1, 0 with remainders 1, 1, 0, 1, 0, 1, 1; printed result 107 base ten = 11010011 base two.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + original source errors",
+   "notes": "Source slip 1: ladder (a) skips the step 2 / 2 = 1 R 0, so its three remainders would read 100 (=4); the complete ladder has four remainders (shown in the second 8 ladder, F02) and 8 = 1000 base two. Source slip 2: the remainders of ladder (c) read upward give 1101011 base two (64+32+8+2+1 = 107), not the printed 11010011 (= 211). The original is not edited; newly prepared teaching SUP-MATH-V2-FIGURES-1 gives the corrected readings.",
+   "data": {
+    "ladders": {
+     "a": {
+      "n": 8,
+      "rows": [
+       [
+        4,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "1000"
+     },
+     "b": {
+      "n": 85,
+      "rows": [
+       [
+        42,
+        1
+       ],
+       [
+        21,
+        0
+       ],
+       [
+        10,
+        1
+       ],
+       [
+        5,
+        0
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "1010101"
+     },
+     "c": {
+      "n": 107,
+      "rows": [
+       [
+        53,
+        1
+       ],
+       [
+        26,
+        1
+       ],
+       [
+        13,
+        0
+       ],
+       [
+        6,
+        1
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "11010011"
+     }
+    }
+   }
+  },
+  {
+   "id": "M1-F02",
+   "file": "v2-m1-binary-ladders-d-f.png",
+   "term": "1st Term",
+   "row_title": "BINARY NUMBERS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "document.xml paragraphs 67-102 (ladders d-f)",
+   "scratch_pdf_page": 3,
+   "caption": "Division ladders (d) 152, (e) 3/8 as a binary fraction and (f) 15.125, recovered from the school note.",
+   "alt_text": "Ladders dividing by 2. (d) 152: quotients 76, 38, 19, 9, 4, 2, 1, 0 with remainders 0, 0, 0, 1, 1, 0, 0, 1; 152 base ten = 10011000 base two. (e) 3/8: ladder for 3 gives 1 R 1, 0 R 1, so 3 = 11 base two; ladder for 8 gives 4, 2, 1, 0 with remainders 0, 0, 0, 1, so 8 = 1000 base two; 3/8 = 11 / 1000 = 0.011 base two. (f) 15.125 = 121/8: ladder for 121 gives quotients 60, 30, 15, 7, 3, 1, 0 with remainders 1, 0, 0, 1, 1, 1, 1, so 121 = 1111001 base two; dividing by 1000 gives 1111.001 base two.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "All three ladders agree with the numbers (checked by calculation). Text on the rendered page overlaps the ladder rules near \"121 = 1111001\" and \"= 1111.001\"; the values are read from the ladders and the school's own extracted text.",
+   "data": {
+    "ladders": {
+     "d": {
+      "n": 152,
+      "rows": [
+       [
+        76,
+        0
+       ],
+       [
+        38,
+        0
+       ],
+       [
+        19,
+        0
+       ],
+       [
+        9,
+        1
+       ],
+       [
+        4,
+        1
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "10011000"
+     },
+     "e3": {
+      "n": 3,
+      "rows": [
+       [
+        1,
+        1
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "11"
+     },
+     "e8": {
+      "n": 8,
+      "rows": [
+       [
+        4,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "1000"
+     },
+     "f121": {
+      "n": 121,
+      "rows": [
+       [
+        60,
+        1
+       ],
+       [
+        30,
+        0
+       ],
+       [
+        15,
+        0
+       ],
+       [
+        7,
+        1
+       ],
+       [
+        3,
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        0,
+        1
+       ]
+      ],
+      "printed": "1111001"
+     }
+    }
+   }
+  },
+  {
+   "id": "M1-F03",
+   "file": "v2-m1-binary-arithmetic-layouts.png",
+   "term": "1st Term",
+   "row_title": "BINARY NUMBERS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "document.xml paragraphs 145-158 (column layouts and long-division bracket)",
+   "scratch_pdf_page": 4,
+   "caption": "Worked layouts for binary subtraction, addition, multiplication and the long-division ladder, recovered from the school note. Labels and the ladder carry printed slips (see notes).",
+   "alt_text": "Column layouts. Labelled 1: 101111 minus 10011 equals 11100 (all base two). Labelled 2: 101111 plus 10011 equals 1000010. Labelled 3: 1101 times 111 with three partial products 1101, 1101 shifted, 1101 shifted twice, total 1011011. Item 4: long-division bracket with divisor 101 and dividend 1001001, quotient 111 above, working lines 101, 1000, 101, 101, 101, 0.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + original source errors",
+   "notes": "The worked examples are listed as 1 Add 101111 and 10011, 2 Subtract; the columns are labelled the other way round (47+19 = 66 = 1000010, 47-19 = 28 = 11100). Item 4 is stated as 10010001 / 101 = 29 = 11101 but the drawn dividend is 1001001 (73), which is not divisible by 101 (5); the drawn quotient 111 and the working lines cannot be completed to the stated answer. The stated answer 11101 (145 / 5 = 29) is correct and is worked in SUP-MATH-V2-FIGURES-1.",
+   "data": {
+    "add": [
+     47,
+     19,
+     66
+    ],
+    "sub": [
+     47,
+     19,
+     28
+    ],
+    "mul": [
+     13,
+     7,
+     91
+    ],
+    "div": [
+     145,
+     5,
+     29
+    ],
+    "drawn_dividend": "1001001"
+   }
+  },
+  {
+   "id": "M1-F04",
+   "file": "v2-m1-tally-frequency-table.png",
+   "term": "1st Term",
+   "row_title": "EVERYDAY STATISTICS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "document.xml paragraphs 466-473 (tally strokes drawn as connectors)",
+   "scratch_pdf_page": 12,
+   "caption": "Tally and frequency table for the number of phone calls made, recovered from the school note. The tally for 5 calls shows six strokes but the frequency is 7.",
+   "alt_text": "Table with columns No of calls made, Tally, Frequency. 4 calls: three strokes, frequency 3. 5 calls: four strokes then two strokes (six strokes drawn), frequency 7. 6 calls: four strokes, frequency 4. 7 calls: one crossed group of five, then four strokes (nine), frequency 9. 8 calls: one crossed group of five, frequency 5. 9 calls: no strokes, frequency 0. 10 calls: two strokes, frequency 2.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + original source error",
+   "notes": "Counting the 30 raw values listed in the example gives 3, 7, 4, 9, 5, 0, 2 for 4 to 10 calls, equal to the Frequency column. The drawn tally for 5 calls has 6 strokes (one stroke short). The original drawing is not edited.",
+   "data": {
+    "raw": [
+     5,
+     6,
+     7,
+     8,
+     4,
+     4,
+     5,
+     7,
+     8,
+     10,
+     7,
+     6,
+     5,
+     8,
+     5,
+     7,
+     8,
+     7,
+     10,
+     7,
+     6,
+     5,
+     6,
+     7,
+     7,
+     5,
+     4,
+     5,
+     7,
+     8
+    ],
+    "frequency": {
+     "4": 3,
+     "5": 7,
+     "6": 4,
+     "7": 9,
+     "8": 5,
+     "9": 0,
+     "10": 2
+    },
+    "strokes_drawn": {
+     "4": 3,
+     "5": 6,
+     "6": 4,
+     "7": 9,
+     "8": 5,
+     "9": 0,
+     "10": 2
+    }
+   }
+  },
+  {
+   "id": "M1-F05",
+   "file": "v2-m1-pictogram-car-colours.png",
+   "term": "1st Term",
+   "row_title": "EVERYDAY STATISTICS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "document.xml paragraphs 489-494 (picture rows and key)",
+   "scratch_pdf_page": 12,
+   "caption": "Pictogram of the colours of cars in a car park, recovered from the school note. A full car stands for 2 cars and a half-size car for 1.",
+   "alt_text": "Pictogram with key: large car = 2, small car = 1. Black: 10 large cars (20). White: 8 large and 1 small (17). Red: 4 large (8). Yellow: 2 large and 1 small (5). Green: 5 large (10).",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "Every row agrees with the frequency table (20, 17, 8, 5, 10). Picture counts per row are 10, 9, 4, 3 and 5 in the file.",
+   "data": {
+    "key": {
+     "large": 2,
+     "small": 1
+    },
+    "rows": {
+     "Black": [
+      10,
+      0
+     ],
+     "White": [
+      8,
+      1
+     ],
+     "Red": [
+      4,
+      0
+     ],
+     "Yellow": [
+      2,
+      1
+     ],
+     "Green": [
+      5,
+      0
+     ]
+    },
+    "frequency": {
+     "Black": 20,
+     "White": 17,
+     "Red": 8,
+     "Yellow": 5,
+     "Green": 10
+    }
+   }
+  },
+  {
+   "id": "M1-F06",
+   "file": "v2-m1-bar-chart-car-colours.png",
+   "term": "1st Term",
+   "row_title": "EVERYDAY STATISTICS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "word/charts/chart1.xml (embedded chart, document.xml paragraph 504)",
+   "scratch_pdf_page": 13,
+   "caption": "Bar chart of the colours of cars (embedded chart from the school note).",
+   "alt_text": "Vertical bar chart titled Colour with a legend entry Colour; the vertical axis runs from 0 to 25 in steps of 5. Five separate bars: Black 20, White 17, Red 8, Yellow 5, Green 10.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "Values read from the chart data stored in the file; they equal the pictogram frequencies.",
+   "data": {
+    "categories": [
+     "Black",
+     "White",
+     "Red",
+     "Yellow",
+     "Green"
+    ],
+    "series": {
+     "Colour": [
+      20,
+      17,
+      8,
+      5,
+      10
+     ]
+    }
+   }
+  },
+  {
+   "id": "M1-F07",
+   "file": "v2-m1-dual-bar-chart-admissions.png",
+   "term": "1st Term",
+   "row_title": "EVERYDAY STATISTICS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "word/charts/chart2.xml (embedded chart, document.xml paragraph 523)",
+   "scratch_pdf_page": 13,
+   "caption": "Dual bar chart of boys and girls admitted by year (embedded chart). Its girls bars differ from the school table in three years; this is kept as an open discrepancy.",
+   "alt_text": "Clustered bar chart, axis 0 to 100, years 1997 to 2001, boys (blue) and girls (orange). Boys: 65, 50, 80, 70, 45. Girls as plotted: 45, 55, 75, 90, 65.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + ambiguous source",
+   "notes": "The school table in the same note gives girls 46, 55, 73, 92, 64. The plotted values (45, 55, 75, 90, 65) differ in four years (1997, 1999, 2000, 2001). Which set is intended cannot be decided from the note; it is not corrected. Questions (b) to (e) are answered from the table values in SUP-MATH-V2-FIGURES-1, labelled as such.",
+   "data": {
+    "categories": [
+     "1997",
+     "1998",
+     "1999",
+     "2000",
+     "2001"
+    ],
+    "boys": [
+     65,
+     50,
+     80,
+     70,
+     45
+    ],
+    "girls_chart": [
+     45,
+     55,
+     75,
+     90,
+     65
+    ],
+    "girls_table": [
+     46,
+     55,
+     73,
+     92,
+     64
+    ]
+   }
+  },
+  {
+   "id": "M1-F08",
+   "file": "v2-m1-pie-chart-expenditure.png",
+   "term": "1st Term",
+   "row_title": "EVERYDAY STATISTICS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "word/charts/chart3.xml (embedded chart, document.xml paragraph 552)",
+   "scratch_pdf_page": 14,
+   "caption": "Pie chart of university expenditure (embedded chart), with the angles table from the note.",
+   "alt_text": "Three-dimensional pie chart with legend building project, maintenance (spelled maintainance in the file), miscellaneous, equipment, salaries and wages. Plotted values are the angles 168, 60, 24, 48 and 60 degrees, in that order, which total 360.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + original source error",
+   "notes": "Angles agree with expenditure 70, 25, 10, 20, 25 of a total of 150 million naira (x 360/150). The note then states the share for building projects as \"x = 46.7 degrees\"; 70/150 x 100 = 46.7 per cent, so the unit should be per cent, not degrees. The original text is not edited.",
+   "data": {
+    "categories": [
+     "building project",
+     "maintainance",
+     "Miscellaneous",
+     "equipment ",
+     "salaries and wages"
+    ],
+    "values": [
+     168,
+     60,
+     24,
+     48,
+     60
+    ],
+    "expenditure": {
+     "Equipment": 20,
+     "Salaries and wages": 25,
+     "Building projects": 70,
+     "Maintenance": 25,
+     "Miscellaneous": 10
+    }
+   }
+  },
+  {
+   "id": "M1-F09",
+   "file": "v2-m1-pie-chart-subjects.png",
+   "term": "1st Term",
+   "row_title": "EVERYDAY STATISTICS",
+   "source_doc": "JSS3 1ST TERM /JSS 3 MATHEMATICS.docx",
+   "source_locator": "word/charts/chart4.xml (embedded chart, document.xml paragraph 561)",
+   "scratch_pdf_page": 15,
+   "caption": "Pie chart of students by subject (embedded chart).",
+   "alt_text": "Three-dimensional pie chart with a legend naming four sectors: History 40 per cent (largest, blue), Geography 30 per cent (orange), Further Maths 10 per cent (grey) and Physics 20 per cent (yellow).",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "Percentages total 100 and give angles 144, 108, 36 and 72 degrees as in the note's own table.",
+   "data": {
+    "categories": [
+     "History",
+     "Geography",
+     "Further Maths",
+     "Physics"
+    ],
+    "values": [
+     40,
+     30,
+     10,
+     20
+    ]
+   }
+  },
+  {
+   "id": "M2-F01",
+   "file": "v2-m2-right-triangle-sides.png",
+   "term": "2nd Term",
+   "row_title": "THE TRIGONOMETRIC RATIOS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 264-271",
+   "scratch_pdf_page": 11,
+   "caption": "Right-angled triangle ABC with the sides named relative to angle B, recovered from the school note.",
+   "alt_text": "Right-angled triangle ABC with the right angle at A, B at the top, A bottom-left and C bottom-right. Side AB is labelled \"Adjacent to B\", side AC \"Opposite to B\" and side BC \"Hypotenuse\".",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "The words \"to B\" are Office Math objects inside text boxes that a plain render and the extracted text lose; they are restored here from the file without changing any character. An angle arc and a marked-angle symbol at B exist in the file (paragraph 268, symbol U+2205 as typed) but are not visible in this render; their intended reading is not decided.",
+   "data": {
+    "right_angle_at": "A",
+    "reference_angle": "B"
+   }
+  },
+  {
+   "id": "M2-F02",
+   "file": "v2-m2-exercise-triangles-find-angle.png",
+   "term": "2nd Term",
+   "row_title": "THE TRIGONOMETRIC RATIOS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 311-316",
+   "scratch_pdf_page": 12,
+   "caption": "Exercise triangles (a) and (b): find the marked angle. Dimensions as in the school note.",
+   "alt_text": "(a) Right triangle, right angle bottom-left, vertical side 5 cm, hypotenuse 12 cm, angle marked at C (bottom-right). (b) Right triangle with right angle at B (top-right), vertical side BC 14 cm, hypotenuse AC 30 cm, angle marked at C (bottom) with the symbol U+2205 as typed in the file.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + ambiguous symbol",
+   "notes": "The marked-angle symbol is U+2205 in the file; whether theta, phi or another symbol was meant is not decided. Under the geometry shown the answers are sin C = 5/12 in (a) and cos C = 14/30 in (b); they are newly prepared in SUP-MATH-V2-FIGURES-2 and labelled as such.",
+   "data": {
+    "a": {
+     "opp": 5,
+     "hyp": 12
+    },
+    "b": {
+     "adj": 14,
+     "hyp": 30
+    }
+   }
+  },
+  {
+   "id": "M2-F03",
+   "file": "v2-m2-ladder-wall-30-degrees.png",
+   "term": "2nd Term",
+   "row_title": "APPLICATION OF TRIGONOMETRIC RATIOS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 355-369",
+   "scratch_pdf_page": 13,
+   "caption": "Ladder of 10 m against a wall at 30 degrees to the ground, recovered from the school note.",
+   "alt_text": "Right triangle: ladder (hypotenuse) of length 10 labelled \"Ladder\" and \"10\", angle 30 degrees at the foot, side opposite the angle labelled \"opp\" and \"x\", ground side labelled \"adj\", hypotenuse labelled \"hyp\". The worked line beside it reads Sin 30 = x/10, x = 10 sin 30, x = 5 m.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "x = 10 sin 30 degrees = 5 m is correct.",
+   "data": {
+    "hyp": 10,
+    "angle": 30,
+    "x": 5
+   }
+  },
+  {
+   "id": "M2-F04",
+   "file": "v2-m2-tower-angle-of-elevation.png",
+   "term": "2nd Term",
+   "row_title": "APPLICATION OF TRIGONOMETRIC RATIOS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 390-393",
+   "scratch_pdf_page": 14,
+   "caption": "Tower AB, 50 m high, seen from C 80 m away: angle of elevation of B from C.",
+   "alt_text": "Right triangle with A bottom-left, B top, C bottom-right. Vertical side AB (tower) labelled 50 m, horizontal side AC labelled 80 m, angle of elevation marked at C. An arrow points to the vertical side from a text box that reads \"Tower\" (spelled \"TowerRRr\" in the file, and clipped in the render).",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "tan(angle) = 50/80 = 0.6250 gives 32.0 degrees, as in the note. The text box content in the file is \"TowerRRr\" (stray characters); the unit label \"80m\" is clipped in the render to \"80\".",
+   "data": {
+    "opp": 50,
+    "adj": 80
+   }
+  },
+  {
+   "id": "M2-F05",
+   "file": "v2-m2-cliff-angle-of-depression.png",
+   "term": "2nd Term",
+   "row_title": "APPLICATION OF TRIGONOMETRIC RATIOS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 414-417",
+   "scratch_pdf_page": 14,
+   "caption": "Cliff AB, 150 m high, with John at C: angle of depression 20 degrees.",
+   "alt_text": "Horizontal line through A at the top of the cliff, vertical cliff AB (150 m, arrow labelled \"cliff\"), ground line BC with John at C. Line of sight AC. The angle of depression of 20 degrees is marked at A (below the horizontal) and the equal angle of 20 degrees at C.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "x = 150 / tan 20 degrees = 412 m, as in the note. The second 20 degrees at C is the alternate angle.",
+   "data": {
+    "height": 150,
+    "angle": 20,
+    "x": 412
+   }
+  },
+  {
+   "id": "M2-F06",
+   "file": "v2-m2-assignment-triangle-pqr.png",
+   "term": "2nd Term",
+   "row_title": "APPLICATION OF TRIGONOMETRIC RATIOS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 441-444",
+   "scratch_pdf_page": 15,
+   "caption": "Assignment figure: triangle PQR with QS 140 cm, SR 200 cm and angle 30 degrees at Q. Point S is not labelled in the figure.",
+   "alt_text": "Triangle with vertices P bottom-left, Q top, R bottom-right. A vertical line from Q to the base is 140 cm with a right-angle mark; the base segment from the foot to R is 200 cm; angle between QP and the vertical is 30 degrees. The question asks for angle QRS and for PR.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + ambiguous label",
+   "notes": "The foot of the vertical is not labelled, although the question refers to a point S. On the reading that S is that foot, angle QRS = arctan(140/200) = 35.0 degrees and PR = 140 tan 30 + 200 = 280.8 cm. That reading is an assumption, stated as such in SUP-MATH-V2-FIGURES-2. White-filled text boxes hide part of line QR in this render.",
+   "data": {
+    "qs": 140,
+    "sr": 200,
+    "angle_pqs": 30
+   }
+  },
+  {
+   "id": "M2-F07",
+   "file": "v2-m2-compass-eight-points.png",
+   "term": "2nd Term",
+   "row_title": "BEARINGS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 475 and 499",
+   "scratch_pdf_page": 16,
+   "caption": "Compass diagram with the eight points, recovered from the school note.",
+   "alt_text": "Eight arrows from a common centre: North (up), North-East, East (right), South-East, South (down), South-West, West (left) and North-West, each labelled.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "In a plain render the figure is split by a page break and \"South\" is lost on the next page; it is restored here by rendering a scratch copy with a page break before the figure.",
+   "data": {
+    "points": [
+     "N",
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW"
+    ]
+   }
+  },
+  {
+   "id": "M2-F08",
+   "file": "v2-m2-bearing-example-1.png",
+   "term": "2nd Term",
+   "row_title": "BEARINGS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 502-505",
+   "scratch_pdf_page": 17,
+   "caption": "Bearing example 1: two arrows at a right angle. The caption in the note does not match the drawing.",
+   "alt_text": "A vertical arrow ending at A (up) and a horizontal arrow ending at B (right) from a common corner, with a right-angle mark. The note beside it says \"The bearing of point A from B is 090 degrees\".",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery + ambiguous/inconsistent caption",
+   "notes": "In the drawing A is due north and B due east of the corner, so the bearing of B from the corner is 090 degrees (A from the corner is 000 degrees). The printed sentence says \"A from B\". The corner is not labelled, so the intended wording is not decided; the note is not edited.",
+   "data": {}
+  },
+  {
+   "id": "M2-F09",
+   "file": "v2-m2-bearing-example-2-210.png",
+   "term": "2nd Term",
+   "row_title": "BEARINGS",
+   "source_doc": "JSS3 2ND TERM /BASIC 9 MATHEMATICS E-NOTE.docx",
+   "source_locator": "document.xml paragraphs 516-519",
+   "scratch_pdf_page": 17,
+   "caption": "Bearing example 2: point P from Q is 210 degrees. The drawing is not to scale.",
+   "alt_text": "Arrow up to Q (north); from Q an arrow down-left to P; an arc measured clockwise from north to QP is labelled 210 degrees.",
+   "disposition": "recovered_asset",
+   "source_status": "missing extraction/delivery",
+   "notes": "The arrow to P is drawn at 45 degrees from the vertical (a bearing of 225 degrees) while the label says 210 degrees; the figure is not to scale and the label is kept.",
+   "data": {}
+  }
+ ]
+}
