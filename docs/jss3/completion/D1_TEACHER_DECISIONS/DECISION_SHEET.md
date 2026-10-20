@@ -34,5 +34,12 @@ Printed sentence: "The bearing of point A from B is 090 degrees". Drawing: A is 
 What changes: the worked answer and any bearing/back-bearing reasoning built on this example. Example 2 (arrow drawn at 225, labelled 210) is separate and is not part of this decision.
 Tick one: [ ] "B from the corner (O) is 090"  [ ] "A from B is ___"  [ ] other wording: __________
 
+## Source excerpts, checked against the supplied inputs ZIP
+`SOURCE_INVENTORY.csv`: 39 documents, every sha256 matches. `JSS 3 MATHEMATICS.docx` = `861fa300...88be9`, `BASIC 9 MATHEMATICS E-NOTE.docx` = `1292fe87...f5db` (both identical to the V2 record). Locators below count every `w:p` in `word/document.xml` in document order (text boxes included).
+- **Item 1 (1st Term, paragraphs 510-521):** "The following table shows the number of candidates who gained admission into higher institutions at a certain town over a period of years." Table rows Year/Boys/Girls: 1997 65 46; 1998 50 55; 1999 80 73; 2000 70 92; 2001 45 64. Then "Illustrate this information on dual bar chart"; questions include "How many more boys had admission than girls in 1999?" The source's own table gives girls 46, 55, 73, 92, 64, so the plotted values (45, 55, 75, 90, 65) are the embedded chart's data, which sits at the "SOLUTION" (paragraphs 522-523).
+- **Item 2 (2nd Term, paragraphs 445-461):** the figure text reads "200cm", "140cm", "30o" with labels P, R; the question is "Calculate angle QRS" followed by "PR". No paragraph text defines S.
+- **Item 3 (2nd Term, paragraphs 503-508):** "Examples of bearings using three digits" ... "The bearing of point A from B is 090o".
+- **Locator note:** V2's register cites 441-444 (item 2) and 502-505 (item 3); in this count the same content is at 445-455/461 and 503-508, so V2's numbers are off by a few paragraphs. The content matches; use the text above, not the old numbers, when applying an answer. The 1st Term locator (523) agrees.
+
 ## Rules for applying answers
 Only a ticked, dated answer is implemented, and only for its own item; unticked items keep the current labelled-assumption text. A decision does not close the unrelated open items (equilateral-triangle exercise, T formula, U+2205 symbol, superscripts). Source text is not edited; corrections go in separate labelled teaching with provenance "teacher decision, [date], [role]".
