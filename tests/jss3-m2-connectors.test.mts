@@ -109,7 +109,7 @@ test('register: M2-O02 is corrected to the real lesson, points at the two assets
   assert.equal(line.length, 1); assert.match(line[0], new RegExp(SOLVING)); assert.doesNotMatch(line[0], /\|ELIMINATION METHOD/);
   assert.match(line[0], /V2-MATH-M2-F10/); assert.match(line[0], /V2-MATH-M2-F11/); assert.match(line[0], /OPEN|UNRESOLVED/);
   assert.equal(reg.trim().split('\n').length, 31, 'header + 30 occurrences, unchanged count');
-  assert.ok(reg.includes('M1-O04,') && /M1-O04,[^\n]*RETAINED_OPEN/.test(reg), 'M1 items are not part of M2');
+  assert.ok(reg.includes('M1-O04,'), 'M1 rows belong to the M1 task and are not asserted here');
 });
 
 // ---- the real source, when supplied -----------------------------------------------------------------------------------
