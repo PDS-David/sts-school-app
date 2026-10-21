@@ -1,0 +1,103 @@
+TAP version 13
+# Subtest: definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique)
+ok 1 - definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique)
+  ---
+  duration_ms: 208.590941
+  type: 'test'
+  ...
+# Subtest: wrong-identity rejection: every wrong target fails with the right guard before ANY write (mixed batches included)
+ok 2 - wrong-identity rejection: every wrong target fails with the right guard before ANY write (mixed batches included)
+  ---
+  duration_ms: 33.962732
+  type: 'test'
+  ...
+# Subtest: both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags
+ok 3 - both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags
+  ---
+  duration_ms: 45.260572
+  type: 'test'
+  ...
+# Subtest: idempotent re-attach: zero inserts, same row ids, bytes and metadata untouched
+ok 4 - idempotent re-attach: zero inserts, same row ids, bytes and metadata untouched
+  ---
+  duration_ms: 26.301337
+  type: 'test'
+  ...
+# Metadata update BS-GENETICS-CORRECTED: {"alt_text":{"before":"Punnett squares: TT by Tt gives half TT and half Tt; TT by tt gives all Tt; Tt by Tt gives one TT, two Tt and one tt. Dominant phenotype probabilities are 100%, 100% and 75%.","after":"Punnett squares: TT by Tt gives half TT and half Tt; TT by tt gives all Tt; Tt by Tt gives one TT, two Tt and one tt. Dominant phenotype probabilities are 100%, 100% and 75%. (edited)"}}
+# Metadata update BS-GENETICS-CORRECTED: {"alt_text":{"before":"Punnett squares: TT by Tt gives half TT and half Tt; TT by tt gives all Tt; Tt by Tt gives one TT, two Tt and one tt. Dominant phenotype probabilities are 100%, 100% and 75%.","after":"Punnett squares: TT by Tt gives half TT and half Tt; TT by tt gives all Tt; Tt by Tt gives one TT, two Tt and one tt. Dominant phenotype probabilities are 100%, 100% and 75%. (edited)"}}
+# Metadata update BS-GENETICS-CORRECTED: {"alt_text":{"before":"Punnett squares: TT by Tt gives half TT and half Tt; TT by tt gives all Tt; Tt by Tt gives one TT, two Tt and one tt. Dominant phenotype probabilities are 100%, 100% and 75%. (edited)","after":"Punnett squares: TT by Tt gives half TT and half Tt; TT by tt gives all Tt; Tt by Tt gives one TT, two Tt and one tt. Dominant phenotype probabilities are 100%, 100% and 75%."}}
+# Subtest: metadata-update consent: drift is refused, previewed without apply, applied only with --update-metadata, and touches only the named field of the named record
+ok 5 - metadata-update consent: drift is refused, previewed without apply, applied only with --update-metadata, and touches only the named field of the named record
+  ---
+  duration_ms: 52.552577
+  type: 'test'
+  ...
+# Subtest: bytes are never overwritten: tampered file, different sha under an existing key and a MIME change are all refused
+ok 6 - bytes are never overwritten: tampered file, different sha under an existing key and a MIME change are all refused
+  ---
+  duration_ms: 42.70137
+  type: 'test'
+  ...
+# Subtest: authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent
+ok 7 - authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent
+  ---
+  duration_ms: 288.946069
+  type: 'test'
+  ...
+# Subtest: cross-class and cross-school rejection: a JSS 1 student and another school see no list, no bytes and no ETag oracle for any of the 17 records
+ok 8 - cross-class and cross-school rejection: a JSS 1 student and another school see no list, no bytes and no ETag oracle for any of the 17 records
+  ---
+  duration_ms: 215.630992
+  type: 'test'
+  ...
+# Metadata update BS-GEN-SOURCE-1: {"displayed":{"before":false,"after":true}}
+# Metadata update BS-GEN-SOURCE-1: {"displayed":{"before":true,"after":false}}
+# Subtest: held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored
+ok 9 - held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored
+  ---
+  duration_ms: 98.823555
+  type: 'test'
+  ...
+# [AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":125,"timestamp":"2026-10-21T14:58:39.125Z","userId":"2df713f5-4dfa-4e8d-8cab-a9dd2670d7a8"}
+# [AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":208,"timestamp":"2026-10-21T14:58:39.131Z","userId":"2df713f5-4dfa-4e8d-8cab-a9dd2670d7a8"}
+# Subtest: [V3-BS-FAMILY-TRAITS-V3] replacement delivery: list and completion are taught from SUP-BS-FAMILY-TRAITS-V3 only; original text and stale cache never reach the student or the AI
+ok 10 - [V3-BS-FAMILY-TRAITS-V3] replacement delivery: list and completion are taught from SUP-BS-FAMILY-TRAITS-V3 only; original text and stale cache never reach the student or the AI
+  ---
+  duration_ms: 67.425691
+  type: 'test'
+  ...
+# Subtest: [V3-BS-FAMILY-TRAITS-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten
+ok 11 - [V3-BS-FAMILY-TRAITS-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten
+  ---
+  duration_ms: 17.197422
+  type: 'test'
+  ...
+# [AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":125,"timestamp":"2026-10-21T14:58:39.185Z","userId":"2df713f5-4dfa-4e8d-8cab-a9dd2670d7a8"}
+# [AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":208,"timestamp":"2026-10-21T14:58:39.187Z","userId":"2df713f5-4dfa-4e8d-8cab-a9dd2670d7a8"}
+# Subtest: [V3-BS-LIGHT-V3] replacement delivery: list and completion are taught from SUP-BS-LIGHT-V3 only; original text and stale cache never reach the student or the AI
+ok 12 - [V3-BS-LIGHT-V3] replacement delivery: list and completion are taught from SUP-BS-LIGHT-V3 only; original text and stale cache never reach the student or the AI
+  ---
+  duration_ms: 34.03959
+  type: 'test'
+  ...
+# Subtest: [V3-BS-LIGHT-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten
+ok 13 - [V3-BS-LIGHT-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten
+  ---
+  duration_ms: 18.271191
+  type: 'test'
+  ...
+# Subtest: identity scoping control: the V3 entries do not capture the same audited body in another class or school
+ok 14 - identity scoping control: the V3 entries do not capture the same audited body in another class or school
+  ---
+  duration_ms: 1.062871
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2104.101202
