@@ -36,7 +36,7 @@ def main():
         g = guards[(f['term'], f['row_title'])]; m = man['V2-MATH-'+f['id']]
         unresolved = any(w in f['source_status'] for w in ('ambiguous','inconsistent'))
         rows.append([f['id'], f['source_doc'], f"{f['source_locator']}; scratch-render page {f['scratch_pdf_page']}", 'figure group', f"Mathematics|JSS 3|{f['term']}|{f['row_title']}|order {m['order_index']}", g['source_body_sha256'], m['asset_key'], m['file'], m['sha256'], f['source_status'],
-            'RECOVERED_ASSET attached to original lesson via topic_assets manifest' + ('; ambiguity kept explicit' if unresolved else ''), 'LibreOffice render of a scratch copy (text-box math flattened, page breaks only) + XML geometry/chart data', f['notes'], 'UNRESOLVED - see notes' if unresolved else ''])
+            'RECOVERED_ASSET attached to original lesson via topic_assets manifest' + ('; ambiguity kept explicit' if unresolved else ''), 'LibreOffice render of a scratch copy (text-box math flattened, page breaks only) + XML geometry/chart data', f['notes'], (('OWNER-DIRECTED INTERIM DECISION ' + f['decision']['date'] + ' (not teacher-certified); teacher confirmation outstanding - see notes') if f.get('decision') else ('UNRESOLVED - see notes' if unresolved else ''))])
     for (i,doc,loc,kind,term,title,cls,disp,method,notes,openi) in OTHER:
         g = guards.get((term, title)); lid = f'Mathematics|JSS 3|{term}|{title}' + (f"|order {g['order_index']}" if g else '')
         rows.append([i,doc,loc,kind,lid,g['source_body_sha256'] if g else '','','','',cls,disp,method,notes,openi])

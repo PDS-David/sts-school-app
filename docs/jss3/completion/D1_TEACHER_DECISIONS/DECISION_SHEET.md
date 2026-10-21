@@ -1,7 +1,7 @@
 # D1 teacher decision sheet: JSS 3 Mathematics (3 questions)
 
 Base master `02e596e8e53e1beea7a4b4b0aa52ba9308638a4d`. Evidence: `docs/jss3/completion/V2_MATH/` (REPORT.md, VISUAL_REGISTER.csv) and `scripts/jss3/v2/v2_math_figures.json`.
-Status: **no teacher answer is recorded yet. Nothing has been implemented.** Crops below are the V2 recovered figures (LibreOffice renders of scratch copies; not checked in Word).
+Status: **no teacher answer is recorded yet.** Owner-directed interim decisions dated 21 October 2026 have been applied (see the last section); they are not teacher answers, the boxes below stay blank, and the teacher can still confirm or change any of them. Crops below are the V2 recovered figures (LibreOffice renders of scratch copies; not checked in Word).
 
 Teacher: ______________________ (name/role only; no contact details in Git)  Date: __________
 
@@ -43,3 +43,14 @@ Tick one: [ ] "B from the corner (O) is 090"  [ ] "A from B is ___"  [ ] other w
 
 ## Rules for applying answers
 Only a ticked, dated answer is implemented, and only for its own item; unticked items keep the current labelled-assumption text. A decision does not close the unrelated open items (equilateral-triangle exercise, T formula, U+2205 symbol, superscripts). Source text is not edited; corrections go in separate labelled teaching with provenance "teacher decision, [date], [role]".
+
+## Owner-directed interim decisions (21 October 2026) — NOT teacher answers
+The app owner (not the school's Mathematics teacher) directed the following when no teacher answer was available. They are recorded with that provenance in `SUP-MATH-V2-FIGURES-1/-2`, `scripts/jss3/v2/v2_math_figures.json` and `VISUAL_REGISTER.csv`, and are not teacher-certified. The teacher boxes above remain unticked.
+
+| Item | Interim decision | What the app now teaches | Where |
+|---|---|---|---|
+| 1. Girls' admissions | Follow the table | Girls 46, 55, 73, 92, 64. Highest girls 2000 (92); fewest boys 2001 (45); 1999 boys more than girls 80 - 73 = 7; 2000 against 1998 (70 + 92) - (50 + 55) = 57. The printed chart is shown unedited; no corrected chart image was drawn. | `SUP-MATH-V2-FIGURES-1` |
+| 2. Point S | S is the foot of the vertical from Q | Angle QRS = 35.0 degrees; PR = 280.8 cm (also checked by the sine rule). Still an assumption about the school's intent. | `SUP-MATH-V2-FIGURES-2` |
+| 3. Bearing example 1 | Follow the drawing | Corner called O. B from O = 090, A from O = 000, O from B = 270, O from A = 180. The printed "A from B is 090" is not used. A from B is not given as one number (315 only if OA = OB). Example 2 is unchanged. | `SUP-MATH-V2-FIGURES-2` |
+
+If the teacher answers differently, tick the box above, add the date and role, and have that answer implemented; it replaces the interim decision for its own item only.
