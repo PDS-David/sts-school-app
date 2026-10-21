@@ -75,7 +75,7 @@ def main():
             summary.update(status='INCOMPLETE',reason='Corpus passed; database acceptance deliberately not run');save();return 2
         for variable in ['TOPIC_ASSETS_TEST_DATABASE_URL','JSS3_ASSET_TEST_DATABASE_URL','JSS3_DELIVERY_TEST_DATABASE_URL','JSS3_V2_TEST_DATABASE_URL','JSS3_V3_TEST_DATABASE_URL']:env[variable]=db
         env['T2_REAL_ASSETS']=str(REPO/'curriculum-assets/jss3')
-        suites=['topic-assets.db','jss3-batch2-assets.db','jss3-delivery-correction.db','jss3-v1-business.db','jss3-v2-math-assets.db','jss3-v3-science-assets.db']
+        suites=['topic-assets.db','jss3-batch2-assets.db','jss3-delivery-correction.db','jss3-v1-business.db','jss3-v2-math-assets.db','jss3-v3-science-assets.db','jss3-v3-science-ci.db']
         for name in suites:
             if run(name,['node','--import','tsx','--test','--test-reporter=tap','tests/'+name+'.test.mts'],env):raise RuntimeError(name+' failed')
             log=(out/(name+'.log')).read_text();m=re.search(r'^# skipped (\d+)$',log,re.M)

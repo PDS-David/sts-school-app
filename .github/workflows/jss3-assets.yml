@@ -51,4 +51,4 @@ jobs:
       - name: Science PostgreSQL attachment and authenticated retrieval (synthetic identities)
         env:
           JSS3_V3_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
-        run: node --import tsx --test tests/jss3-v3-science-assets.db.test.mts
+        run: node --import tsx --test tests/jss3-v3-science-ci.db.test.mts

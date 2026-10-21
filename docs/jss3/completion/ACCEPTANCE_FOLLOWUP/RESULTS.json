@@ -16,9 +16,9 @@
         "python3",
         "scripts/jss3/capture_rows.py",
         "--root",
-        "<evidence>/inputs/ALL",
+        "/workspace/scratch/a27a2169bbde/merged_acceptance_evidence/inputs/ALL",
         "--output",
-        "<evidence>/capture"
+        "/workspace/scratch/a27a2169bbde/merged_acceptance_evidence/capture"
       ],
       "exit_code": 0
     },
@@ -28,9 +28,9 @@
         "python3",
         "scripts/jss3/verify_handoff.py",
         "--inputs",
-        "<evidence>/inputs",
+        "/workspace/scratch/a27a2169bbde/merged_acceptance_evidence/inputs",
         "--output",
-        "<evidence>/corpus",
+        "/workspace/scratch/a27a2169bbde/merged_acceptance_evidence/corpus",
         "--tsx-no-ipc"
       ],
       "exit_code": 0
@@ -48,24 +48,39 @@
         "test_*.py"
       ],
       "exit_code": 0
+    },
+    {
+      "name": "runner-unit",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_jss3_acceptance_runner.py"
+      ],
+      "exit_code": 0
     }
   ],
   "production_actions": false,
   "corpus_skips": [
-    "\ufe63 batch2 real asset resolution (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (1.024553ms) # SKIP",
-    "\ufe63 delivery-correction DB tests (skipped: set JSS3_DELIVERY_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.848904ms) # SKIP",
-    "\ufe63 V1 Business DB checks (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.773412ms) # SKIP",
-    "\ufe63 V2 math real asset resolution (skipped: set JSS3_V2_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.774684ms) # SKIP",
-    "\ufe63 V3 Science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres ; JSS3_CAPTURE_DIR additionally enables real source-body guards) (0.707344ms) # SKIP"
+    "\ufe63 batch2 real asset resolution (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.990393ms) # SKIP",
+    "\ufe63 delivery-correction DB tests (skipped: set JSS3_DELIVERY_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.597533ms) # SKIP",
+    "\ufe63 V1 Business DB checks (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (4.44852ms) # SKIP",
+    "\ufe63 V2 math real asset resolution (skipped: set JSS3_V2_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (3.069343ms) # SKIP",
+    "\ufe63 V3 science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.89375ms) # SKIP",
+    "\ufe63 V3 Science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres ; JSS3_CAPTURE_DIR additionally enables real source-body guards) (0.775566ms) # SKIP"
   ],
   "reason": "Corpus passed; database acceptance deliberately not run",
   "node": "24.19.0",
   "jss3_tests": {
-    "total": 300,
+    "total": 301,
     "pass": 295,
     "fail": 0,
-    "skipped": 5,
-    "skip_reason": "five explicit local PostgreSQL suites"
+    "skipped": 6,
+    "skip_reason": "six explicit local PostgreSQL suites"
   },
   "comparer_synthetic_tests": 13,
   "runner_unit_tests": 3,
@@ -77,5 +92,20 @@
   "computer_studies": 0,
   "real_protected_baseline_verified": false,
   "phone_observed": false,
-  "CI_database_result": "PENDING"
+  "CI_database_result": "PENDING",
+  "concurrent_A1": {
+    "commit": "8e83573065ff5895124a620fe84ba1ce8cda35bc",
+    "evidence_checksums_verified": 11,
+    "worker_results": {
+      "v3": 14,
+      "v1": 4,
+      "batch2": 3,
+      "v2": 5,
+      "delivery": 8,
+      "topicassets": 18
+    },
+    "all_failures": 0,
+    "all_skips": 0,
+    "rerun_by_this_session": false
+  }
 }

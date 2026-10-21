@@ -1,0 +1,29 @@
+✔ DDL: running schema.sql twice (as migrate.ts does) is idempotent (224.920227ms)
+✔ attach: dry-run (default) writes nothing (16.168959ms)
+✔ attach: sha256 mismatch aborts the whole run with nothing written (11.773615ms)
+✔ attach: unknown topic fails loudly and writes nothing (even for the rows that did resolve) (7.650549ms)
+✔ attach: title guard stops a shifted order_index; --skip-title-check overrides (4.978953ms)
+✔ attach: --apply inserts once; a second --apply adds 0 rows (no duplicates) (20.459607ms)
+✔ attach: metadata changes require explicit permission, preview without writes, then update without changing bytes (16.694164ms)
+✔ attach: same asset_key with different bytes is a conflict, never an overwrite (4.308313ms)
+✔ stored mime comes from the file signature, not the extension (2.069578ms)
+✔ endpoint: auth required; invalid ids rejected (54.296983ms)
+✔ endpoint: student in the right class sees ordered, displayed assets (metadata only, no bytes) (35.377753ms)
+✔ endpoint: bytes are identical to the source, with Content-Type and ETag; 304 on revalidation (30.110026ms)
+✔ endpoint: a hidden (displayed=false) asset is not listed and not served (9.316753ms)
+✔ endpoint: a student in another class gets nothing (empty list / 404 bytes) (20.105114ms)
+✔ endpoint: GET /learning/topics response shape is unchanged (no asset fields leak in) (10.300227ms)
+✔ lesson text, provenance and order are unchanged after all attach operations (1.893846ms)
+✔ deleting a topic cascades its assets (4.26034ms)
+REAL ASSETS: 27 displayed assets downloaded byte-identical (3 GIFs); hidden icon not served
+✔ REAL assets: music + basic-tech attach, byte-identical download, GIFs identical, idempotent (1109.222786ms)
+TEST-DATA CLEANUP COUNTS (rows remaining): {"topic_assets":0,"topics":0,"subjects":0,"students":0,"users":0,"schools":0}
+TEST-DATA CREATED: 1 school, 2 subjects, 7 topics, 2 users, 2 students, topic_assets rows (deleted by cascade)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2560.834739

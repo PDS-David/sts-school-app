@@ -1,0 +1,26 @@
+✔ definitions, bindings and both manifests agree record-by-record with the captured identities (17 records / 13 displayed / 12 unique) (301.475499ms)
+✔ wrong-identity rejection: every wrong target fails with the right guard before ANY write (mixed batches included) (25.937379ms)
+✔ both V3 manifests attach with title guards ON: 17 records, each on its intended lesson, exact bytes, alt text, caption and held flags (49.747723ms)
+✔ idempotent re-attach: zero inserts, same row ids, bytes and metadata untouched (30.952499ms)
+✔ metadata-update consent: drift is refused, previewed without apply, applied only with --update-metadata, and touches only the named field of the named record (58.723626ms)
+✔ bytes are never overwritten: tampered file, different sha under an existing key and a MIME change are all refused (45.897509ms)
+✔ authenticated delivery: every displayed record is listed on its own lesson with exact metadata and identical bytes; held figures are absent (342.146555ms)
+✔ cross-class and cross-school rejection: a JSS 1 student and another school see no list, no bytes and no ETag oracle for any of the 17 records (234.173764ms)
+✔ held-source hiding is consent-gated: releasing a withdrawn figure needs --update-metadata, is visible only then, and is restored (67.317087ms)
+[AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":125,"timestamp":"2026-10-20T20:58:11.385Z","userId":"<throwaway>"}
+[AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":208,"timestamp":"2026-10-20T20:58:11.389Z","userId":"<throwaway>"}
+✔ [V3-BS-FAMILY-TRAITS-V3] replacement delivery: list and completion are taught from SUP-BS-FAMILY-TRAITS-V3 only; original text and stale cache never reach the student or the AI (61.57756ms)
+✔ [V3-BS-FAMILY-TRAITS-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten (15.705902ms)
+[AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":125,"timestamp":"2026-10-20T20:58:11.439Z","userId":"<throwaway>"}
+[AI Usage] {"feature":"generate-questions","provider":"shared-agent-service","outputTokens":208,"timestamp":"2026-10-20T20:58:11.443Z","userId":"<throwaway>"}
+✔ [V3-BS-LIGHT-V3] replacement delivery: list and completion are taught from SUP-BS-LIGHT-V3 only; original text and stale cache never reach the student or the AI (35.680692ms)
+✔ [V3-BS-LIGHT-V3] changed source is WITHHELD: no teaching, no AI call, no assessment, no completion row; the changed row is not rewritten (19.715643ms)
+✔ identity scoping control: the V3 entries do not capture the same audited body in another class or school (1.122112ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2519.013229

@@ -1,0 +1,12 @@
+✔ all 19 V1 assets attach to the intended lessons; bytes, MIME, caption and alt text are stored; order is stable (383.742479ms)
+✔ re-attach is idempotent; wrong row (shifted order_index) is refused by the title guard (37.067046ms)
+✔ metadata drift (alt text changed) aborts without --update-metadata and leaves stored alt text untouched (10.663365ms)
+✔ a different sha256 under an existing key is refused (never silently overwritten) (8.527228ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10750.98308

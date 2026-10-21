@@ -1,0 +1,13 @@
+✔ guards file matches the captured ORIGINAL rows (title, order_index, body hash) — no drift since the manifests were built (229.220616ms)
+✔ all 18 assets attach with title guards ON to the intended original lessons, byte-identical, with caption and alt text stored (80.356032ms)
+✔ idempotent re-attach; metadata drift is refused, then applied only with --update-metadata; bytes never overwritten (38.492252ms)
+✔ wrong-row rejection: a shifted order_index, a wrong title and a wrong term all fail before any write (17.251171ms)
+✔ authenticated delivery through the existing route: JSS 3 student sees metadata and identical bytes; no token and other-class student do not (78.570649ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11454.67506
