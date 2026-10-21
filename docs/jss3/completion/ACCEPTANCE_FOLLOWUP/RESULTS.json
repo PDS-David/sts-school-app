@@ -92,7 +92,28 @@
   "computer_studies": 0,
   "real_protected_baseline_verified": false,
   "phone_observed": false,
-  "CI_database_result": "PENDING",
+  "CI_database_result": {
+    "status": "PASS",
+    "commit": "e747e1d4083678ac27b4c551db55d6276b7250d4",
+    "run_url": "https://github.com/PDS-David/sts-school-app/actions/runs/39540013741",
+    "topic_assets": {
+      "pass": 18,
+      "fail": 0,
+      "skip": 0
+    },
+    "science_synthetic_identities": {
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    "focused_non_db": {
+      "pass": 87,
+      "fail": 0,
+      "skip": 7,
+      "reason": "private-source variables absent in CI; local full corpus ran separately"
+    },
+    "static_pass": 16
+  },
   "concurrent_A1": {
     "commit": "8e83573065ff5895124a620fe84ba1ce8cda35bc",
     "evidence_checksums_verified": 11,

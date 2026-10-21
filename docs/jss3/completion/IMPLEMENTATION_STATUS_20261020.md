@@ -4,7 +4,7 @@ Reviewed master `deef527`, then reconciled concurrent A1 commit `8e83573065ff589
 
 | Task | Actual implementation | Remaining condition |
 |---|---|---|
-| V1/V2/V3 | Assets, lessons, guarded delivery and manifests integrated | Phone observation; real-source DB acceptance |
+| V1/V2/V3 | Assets, lessons, guarded delivery and manifests integrated | Phone observation; A1 real-source DB acceptance is completed below |
 | M1 | Two graph-table figures, guards and regression tests merged | Teacher still decides ambiguous printed pair; do not rerun M1 |
 | M2 | Substitution figures and tests merged; this follow-up adds exact worked steps to actual runtime replacement | Two unlocated source strokes remain ambiguous, not assessed; broader formatting is separate |
 | A1 | Concurrent worker implemented and ran V3 14/14 and all five existing DB suites with zero skips, Node24.19/PostgreSQL16.15; all 11 evidence checksums verified | Completed at 8e83573. New durable CI smoke test is separate; refresh full DB acceptance only for release-relevant changes |
@@ -35,3 +35,6 @@ Next: give ONE complete file from NEXT_AGENT_TASKS to each agent. MATH3 is the n
 
 ## Concurrent A1 integration
 The worker's stronger real-source `jss3-v3-science-assets.db.test.mts` is kept unchanged. Our distinct corpus-free PostgreSQL regression is named `jss3-v3-science-ci.db.test.mts`, so CI runs without private sources while the acceptance runner runs both modes with the real capture. No worker test/evidence was overwritten. Removed one accidentally tracked generated .pyc and ignored future Python bytecode.
+
+## CI verification — 21 October 2026
+[Run 39540013741](https://github.com/PDS-David/sts-school-app/actions/runs/39540013741) passed on e747e1d: PostgreSQL asset tests18/18 and new Science fixture-mode tests5/5, both zero failures/skips; types, static16/16, comparer13/13 and runner3/3 pass. CI focused tests87 pass,7 private-source checks skipped; the separate local full-corpus run above supplies those source inputs. This is not a claim that every CI check ran without skips. The final follow-up only records these results and clarifies the task index.

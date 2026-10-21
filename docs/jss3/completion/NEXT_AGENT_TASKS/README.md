@@ -6,10 +6,10 @@ Give an agent ONE numbered Markdown file below. Each includes its own execution 
 |---|---|---|
 | Release only | [RELEASE-DB](01_RELEASE_DB_REGRESSION.md) | A1 already passed; refresh only for a changed release candidate |
 | 1 | [MATH3](06_MATH3_BINARY_FORMATTING_ONLY.md) | Source ZIP; bounded next implementation task |
-| 3 | [DEVICE1](02_DEVICE1_PHONE_ACCEPTANCE.md) | Authorised staging build/session and phone |
-| 4 | [TEACHER1](03_TEACHER1_APPLY_THREE_MATH_DECISIONS.md) | Dated teacher answers; do not ask an agent to invent them |
-| 5 | [BASELINE1](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Certified export + release snapshot; filenames not yet known |
-| 6 | [SEQUENCE2](05_SEQUENCE2_IMPLEMENT_APPROVED_POLICY.md) | Explicit Batch 3/policy approval and placement decisions |
+| 2 | [DEVICE1](02_DEVICE1_PHONE_ACCEPTANCE.md) | Authorised staging build/session and phone |
+| 3 | [TEACHER1](03_TEACHER1_APPLY_THREE_MATH_DECISIONS.md) | Dated teacher answers; do not ask an agent to invent them |
+| 4 | [BASELINE1](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Certified export + release snapshot; filenames not yet known |
+| 5 | [SEQUENCE2](05_SEQUENCE2_IMPLEMENT_APPROVED_POLICY.md) | Explicit Batch 3/policy approval and placement decisions |
 
 M1, M2 and A1 have been integrated; do not assign them again. A1 includes real-source PostgreSQL evidence, not just a report. A2 observation, D1 answers and P1 real-data comparison are not completed by their documents. S1 is a design, not an implemented sequence. “Blocked” is an honest result when an external prerequisite is absent; it is never a substitute for finishing implementable code.
 
