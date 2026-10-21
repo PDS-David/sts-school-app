@@ -9,8 +9,8 @@ attachTopicAssets manifest bound to SUP-YO-ORAL-TEXTS. Fails closed:
     scripts/jss3/capture_rows.py) so order_index comes from the real lesson row, never a hard-coded index.
 
 No database operation. Usage:
-  python3 -I scripts/jss3/v4/build_noun_attribution_assets.py inspect --pdf ENG105_02.pdf
-  python3 -I scripts/jss3/v4/build_noun_attribution_assets.py build --pdf ENG105_02.pdf --cover-xref N --logo-xref M \
+  python3 scripts/jss3/v4/build_noun_attribution_assets.py inspect --pdf ENG105_02.pdf
+  python3 scripts/jss3/v4/build_noun_attribution_assets.py build --pdf ENG105_02.pdf --cover-xref N --logo-xref M \
       --capture supplemented-rows.json [--out curriculum-assets/jss3/v4-attribution]
 """
 import argparse, csv, hashlib, json, sys

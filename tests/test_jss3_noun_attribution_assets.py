@@ -18,7 +18,7 @@ class T(unittest.TestCase):
         self.pdf = self.tmp / 'x.pdf'; d.save(self.pdf)
         self.cap = self.tmp / 'cap.json'
         self.cap.write_text(json.dumps([{'weekLabel': 'SUPPLEMENT SUP-YO-ORAL-TEXTS', 'className': 'JSS 3', 'orderIndex': 77, 'title': 'T title for guard'}]))
-    def run_(self, *a): return subprocess.run([sys.executable, '-I', str(S), *a], capture_output=True, text=True)
+    def run_(self, *a): return subprocess.run([sys.executable, str(S), *a], capture_output=True, text=True)
     def test_refuses_unrecorded_hash(self):
         r = self.run_('inspect', '--pdf', str(self.pdf)); self.assertNotEqual(r.returncode, 0); self.assertIn('REFUSED', r.stderr + r.stdout)
     def test_inspect_lists_images_when_hash_change_is_explicit(self):
