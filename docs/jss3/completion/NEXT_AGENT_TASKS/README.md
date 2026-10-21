@@ -9,7 +9,7 @@ Give ONE complete linked Markdown file to its agent; each contains its own execu
 | TEACHER1 | Owner-directed interim implementation complete. [Apply actual later teacher answers only](03_TEACHER1_APPLY_THREE_MATH_DECISIONS.md) | Dated answers, JSS3 ZIP |
 | EVIDENCE1 | [Recover missing R2 runner.log](08_EVIDENCE_PACKAGE_REPAIR.md) | Exact worker log/package if retained |
 | BASELINE2 | [Agent generates both exports and traces certification](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Primary1–6/JSS1/JSS2 sources or authoritative backup/export |
-| STAGE1 | [Prepare isolated staging for device checks](07_STAGING_SETUP_ONLY.md) | Owner-designated staging host and provision permission |
+| STAGE1 | PREPARED, awaiting designation: [report](../STAGE1/REPORT.md), [runbook](../STAGE1/RUNBOOK.md); [task](07_STAGING_SETUP_ONLY.md) | Owner-designated staging host, provision permission, first-admin option |
 | DEVICE1 | Preflight implemented; [real observations outstanding](02_DEVICE1_PHONE_ACCEPTANCE.md) | Staging build, test accounts, actual phone/session |
 | MATH4 | [Remaining non-binary source items](09_MATH4_REMAINING_SOURCE_ITEMS.md) | JSS3 ZIP; teacher decisions only for unresolved intent |
 | YO-LICENSE | [NOUN attribution display](10_YORUBA_ATTRIBUTION_DELIVERY.md) | Referenced source PDF, distribution decision |
