@@ -1,0 +1,176 @@
+{
+ "base_sha": "a1db3dc3a23017bbb305cce4d8422ff7c4158b67",
+ "node": "24.19.0",
+ "inputs_zip_sha256": "0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c",
+ "inputs_internal_sha256sums": "61/61 OK",
+ "importer_dry_run": {
+  "command": "node --import tsx src/db/ingestTopics.ts --root <INPUT_ROOT>/ALL --school-code secondary [--jss3-supplements]  (no --yes, no DATABASE_URL)",
+  "original_only": {
+   "jss3_topic_lines": 313,
+   "supplements": 0,
+   "exit": 0,
+   "private_log_sha256": "089c2e592cbf7553c359c025f83507178f0ffdae43f21afc3a124dc66726649b"
+  },
+  "with_supplements": {
+   "jss3_topic_lines": 483,
+   "supplements": 170,
+   "exit": 0,
+   "private_log_sha256": "2d3feff4ac8394432977f23041c951d5448f83a25b8673611130c8c1491031f8"
+  },
+  "pending_entries_held": 8,
+  "note": "Full logs contain lesson titles from private sources and are not committed."
+ },
+ "asset_manifests": {
+  "count": 16,
+  "asset_rows": 101,
+  "problems": 0,
+  "targets": [
+   {
+    "manifest": "MUSIC_ASSET_MANIFEST.csv",
+    "rows": 16,
+    "target": [
+     "Music",
+     "1st Term"
+    ],
+    "assets_dir": "music"
+   },
+   {
+    "manifest": "TASK2_BT_ASSET_MANIFEST.csv",
+    "rows": 13,
+    "target": [
+     "Basic Technology",
+     "2nd Term"
+    ],
+    "assets_dir": "bt"
+   },
+   {
+    "manifest": "m1-equations/M1_EQUATIONS_MANIFEST.csv",
+    "rows": 2,
+    "target": [
+     "Mathematics",
+     "1st Term"
+    ],
+    "assets_dir": "m1-equations"
+   },
+   {
+    "manifest": "m2-simultaneous/M2_SIMULTANEOUS_2ND_MANIFEST.csv",
+    "rows": 2,
+    "target": [
+     "Mathematics",
+     "2nd Term"
+    ],
+    "assets_dir": "m2-simultaneous"
+   },
+   {
+    "manifest": "supplements/BASIC_TECH_MANIFEST.csv",
+    "rows": 1,
+    "target": [
+     "Basic Technology",
+     "1st Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/BATCH2_BUSINESS_2ND_MANIFEST.csv",
+    "rows": 1,
+    "target": [
+     "Business Studies",
+     "2nd Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/BATCH2_MUSIC_1ST_MANIFEST.csv",
+    "rows": 1,
+    "target": [
+     "Music",
+     "1st Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/BATCH2_MUSIC_2ND_MANIFEST.csv",
+    "rows": 9,
+    "target": [
+     "Music",
+     "2nd Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/BUSINESS_MANIFEST.csv",
+    "rows": 1,
+    "target": [
+     "Business Studies",
+     "2nd Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/MUSIC_MANIFEST.csv",
+    "rows": 1,
+    "target": [
+     "Music",
+     "1st Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/V1_BUSINESS_1ST_MANIFEST.csv",
+    "rows": 13,
+    "target": [
+     "Business Studies",
+     "1st Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "supplements/V1_BUSINESS_2ND_MANIFEST.csv",
+    "rows": 6,
+    "target": [
+     "Business Studies",
+     "2nd Term"
+    ],
+    "assets_dir": "supplements"
+   },
+   {
+    "manifest": "v2-math/V2_MATH_1ST_MANIFEST.csv",
+    "rows": 9,
+    "target": [
+     "Mathematics",
+     "1st Term"
+    ],
+    "assets_dir": "v2-math"
+   },
+   {
+    "manifest": "v2-math/V2_MATH_2ND_MANIFEST.csv",
+    "rows": 9,
+    "target": [
+     "Mathematics",
+     "2nd Term"
+    ],
+    "assets_dir": "v2-math"
+   },
+   {
+    "manifest": "v3-science/V3_SCIENCE_1ST_MANIFEST.csv",
+    "rows": 5,
+    "target": [
+     "Basic Science",
+     "1st Term"
+    ],
+    "assets_dir": "v3-science"
+   },
+   {
+    "manifest": "v3-science/V3_SCIENCE_2ND_MANIFEST.csv",
+    "rows": 12,
+    "target": [
+     "Basic Science",
+     "2nd Term"
+    ],
+    "assets_dir": "v3-science"
+   }
+  ]
+ },
+ "database_actions": "none performed",
+ "production_touched": false
+}
