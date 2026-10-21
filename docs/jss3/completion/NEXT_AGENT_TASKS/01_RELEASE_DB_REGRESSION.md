@@ -1,4 +1,4 @@
-# RELEASE-DB — Refresh database acceptance only for a release candidate
+# RELEASE-DB — final-candidate refresh, not a repeat of completed R2
 
 ## Execution contract (this file is self-contained)
 
@@ -52,3 +52,8 @@ The runner executes DB suites serially to avoid schema-creation races, requires 
 ## Completion gate
 
 ACCEPTANCE.json must say PASS; all seven DB log summaries must show zero failures AND zero skips. Capture remains 313 originals preserved; record actual supplement counts. Cleanup assertions must leave no test rows. Save sanitised summary, not private captures. If PostgreSQL cannot run, report BLOCKED with the actual platform error; do not claim DB1 complete. Provide a working runner/CI improvement if feasible. Remove only the container you created after saving evidence. Publish tested fixes/evidence to master.
+
+## Updated 21 October: completed runs and packaging defect
+RELEASE_DB_20261021_R2 reports PASS:59/59 across seven suites at a1cfcb1. TEACHER1 reports a later seven-suite PASS including owner-directed changes. Do not call RELEASE-DB unimplemented. R2 RESULTS.json checksum verifies, but its SHA256SUMS references runner.log absent from Git. Recover that exact log from the worker/package and verify expected SHA256, or document unavailable historical evidence; never synthesize it. For a new final-candidate run, commit fresh sanitised logs using git add -f when needed and verify every checksum path. A new pass supplements but does not recreate the missing old log.
+
+Owner's Windows Docker Desktop was shown Engine running. Creation/readiness of jss3-release-db has NOT been confirmed. Docker on the owner's PC is not accessible from a cloud agent. A local agent or owner-operated commands must run the tests on that PC; prefer Linux/WSL2 with Node24.19/Python and the repo. Do not tell the owner that installing Docker grants this chat access. Do not expose PostgreSQL publicly; use 127.0.0.1 and a disposable database. Confirm docker version Client AND Server and pg_isready before testing.

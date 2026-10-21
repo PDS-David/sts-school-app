@@ -1,0 +1,40 @@
+✔ every table value lies on the line it is drawn for (1.126322ms)
+✔ (a) crosses at (2, -1) and both lesson equations hold there; the second printed label is typed x, not y (1.145069ms)
+✔ (b): the tables fit 2x+y=10 and 4x-2y=4, which cross at (3, 4) outside the drawn range; the printed labels repeat (a) and fit neither reading (0.362708ms)
+✔ flat text cannot tell the tables apart: x values of BOTH tables share one paragraph (structure the figure restores) (0.26297ms)
+✔ assets: manifest rows are bound to the original lesson identity, bytes match, captions and alt text carry every value (6.260791ms)
+✔ negative: a changed byte or a missing file is rejected (1.079411ms)
+✔ REAL SOURCE: paragraphs 704/705/708/709 hold exactly these values, labels and drawn connectors (91.668191ms)
+✔ Example 1: 2x+3(4-3x)=5 expands to 12-7x=5; 12-5=7x gives 7/7 = 7x/7, so x=1, y=1; both equations hold (2.885292ms)
+✔ Example 2: 4(3-2n)-3n=0 gives 12-11n=0, n=12/11=1 1/11, m=3-24/11=9/11; both equations hold; printed 3/11-24/1 is a slip (0.927927ms)
+✔ assets: bytes, PNG, real alt text; bound to the SOLVING row identity, never the ELIMINATION row (3.63888ms)
+✔ source preservation: the guarded row body is exactly the body the existing delivery correction A-MATHEMATICS-2-01 guards; the elimination correction is untouched (0.689032ms)
+✔ regeneration reproduces the committed manifest byte for byte; order_index follows the capture (94.853258ms)
+✔ rejection: renamed row, missing asset, body drift, duplicate identity, changed byte (190.150941ms)
+✔ register: M2-O02 is corrected to the real lesson, points at the two assets, and keeps the unresolved strokes open; other V2 items untouched (0.384281ms)
+✔ real source: connector shapes sit in paragraphs 79, 80, 83, 111 (0-based over all w:p) inside the substitution working, before the ELIMINATION METHOD heading (96.932924ms)
+✔ replacement teaching supplies checked substitution steps and distinguishes the mixed number (101.967455ms)
+✔ replacement teaches powers of two explicitly: 2⁰…2⁴ and 2^(-1)…2^(-4) with the right values (1.184298ms)
+✔ every power-of-two expansion in the replacement multiplies out to the numeral it expands, and to the stated base-ten value (1.429031ms)
+✔ worked results are the independently computed values: 101 = 5, 111 = 7, 10101 = 21, 10.1001 = 2 9/16, 1101 = 13, 0.11 = 3/4 (0.286525ms)
+✔ the glued misreadings are refuted, and they would give different numbers (0.334937ms)
+✔ the one bare numeral in the practice questions carries its meaning: 102 (digits one, zero, two) is not a base-two numeral (0.131435ms)
+✔ runtime delivery for BINARY NUMBERS and APLLICATION OF BINARY NUMBERS serves this lesson (with the figures lesson), notation included (1.113462ms)
+✔ REAL SOURCE: every power and base in the two binary rows is covered by the delivered notation; APPLICATION has none (100.230813ms)
+✔ item 1: the figures json holds the source table and the printed chart, which differ in exactly four years (1.780433ms)
+✔ item 1: the lesson answers every question in the note from the TABLE values (recomputed independently) (0.425602ms)
+✔ item 1: the figure caption and alt text say the chart is as printed and the answers follow the table; no corrected chart was invented (0.263121ms)
+✔ item 2: angle QRS and PR recomputed by the sine rule (the lesson derives them with tangents) (0.369389ms)
+✔ item 3: bearings read from the drawing by coordinates; A from B is not a single number and is 315 only when OA = OB (0.32318ms)
+✔ provenance: lessons, figures and the decision sheet record OWNER-DIRECTED interim decisions, not teacher answers (0.526542ms)
+✔ assets: the three figure PNG bytes are unchanged (hashes pinned from the base commit) and still match the manifests (0.455877ms)
+✔ delivery: the original-topic corrections for the three topics still include the updated lessons, and editing them retires cached assessments (6.211327ms)
+✔ REAL SOURCE: the original notes still show what the decisions rely on (table values, no definition of S, the printed bearing sentence) (130.511052ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 752.301777

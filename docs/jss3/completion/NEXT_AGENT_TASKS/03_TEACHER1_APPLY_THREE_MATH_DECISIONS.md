@@ -39,3 +39,6 @@ For an answered item, update the relevant new teaching in backend/src/db/data/js
 ## Completion gate
 
 Report per-item answer, teacher role/date, implemented lesson/asset IDs, computed answers and passing tests. No contact details in Git. An unanswered item is BLOCKED_EXTERNAL_INPUT, not certified or silently chosen. Publish supported changes to master; no changes merely to make the sheet look complete.
+
+## Updated 21 October — interim implementation is complete
+Read completion/TEACHER1/REPORT.md and tests/jss3-teacher1-math-decisions.test.mts first. Commit3f41b51 implemented the owner's interim directions: follow table values46/55/73/92/64; S is foot of vertical; bearing example follows the drawing. Do not remove or re-ask these owner decisions. They are explicitly not teacher-certified. Only apply a later actual teacher answer to its own item. No new corrected bar-chart asset was authorised or produced in that task. Do not reopen MATH3, now implemented.

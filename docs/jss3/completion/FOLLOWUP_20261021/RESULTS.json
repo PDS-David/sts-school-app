@@ -1,0 +1,32 @@
+{
+  "base_sha": "7e4aa90692893f9c1f674c34b11a66cefbf79030",
+  "runtime_lessons_changed": false,
+  "original_rows_changed": false,
+  "local_checks": {
+    "source_backed_math": {
+      "pass": 32,
+      "fail": 0,
+      "skip": 0
+    },
+    "register": {
+      "pass": 3
+    },
+    "device_preflight": {
+      "pass": 10
+    },
+    "comparer_synthetic": {
+      "pass": 13
+    },
+    "new_postgres_export": {
+      "run": false,
+      "reason": "no local PostgreSQL; CI required"
+    }
+  },
+  "evidence": {
+    "A1_checksums_verified": 11,
+    "R2_results_checksum_verified": true,
+    "R2_runner_log": "MISSING",
+    "R2_expected_runner_log_sha256": "f5cdac4144eea1d57b1d363958bdc89dfe0e375c0d7d775a818499509707ff15"
+  },
+  "production_actions": false
+}
