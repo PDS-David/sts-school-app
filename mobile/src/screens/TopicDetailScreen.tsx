@@ -5,6 +5,7 @@ import api, { BASE_URL } from '../api/client';
 import { getSecureItem } from '../api/secureTokenStorage';
 import { loadLessonAssets } from '../api/lessonAssets';
 import { lessonImageLabel } from '../api/lessonImage';
+import { attributionLines } from '../api/lessonAttribution';
 import { Card, Btn, Loader, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
@@ -72,6 +73,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   const [note, setNote]             = useState<string | undefined>(undefined);
   const [summaryIsFallback, setSummaryIsFallback] = useState(false);
   const [assets, setAssets]         = useState<any[]>([]);
+  const [attributions, setAttributions] = useState<any[]>([]);
   const [token, setToken]           = useState<string | null>(null);
 
   const [assetError, setAssetError] = useState(false);
@@ -84,6 +86,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   useEffect(() => {
     let alive = true;
     setAssets([]);
+    setAttributions([]);
     setToken(null);
     setAssetError(false);
     setAssetsLoading(true);
@@ -92,7 +95,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
         const result = await loadLessonAssets(
           initialTopic.id, url => api.get(url), () => getSecureItem('access_token'),
         );
-        if (alive) { setAssets(result.assets); setToken(result.token); }
+        if (alive) { setAssets(result.assets); setAttributions(result.attributions); setToken(result.token); }
       } catch {
         if (alive) setAssetError(true);
       } finally {
@@ -168,6 +171,12 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             {assets.map((a: any) => <LessonImage key={`${initialTopic.id}:${a.id}:${assetAttempt}`} asset={a} token={token} onRetry={retryAssets} />)}
           </View>
         ) : null}
+        {attributions.map((a: any) => { const l = attributionLines(a); return (
+          <View key={a.supplement_id} style={styles.attrBox} accessible accessibilityRole="summary">
+            <Text style={styles.attrHeading}>{l.heading}</Text>
+            <Text style={styles.attrText}>{l.notice}</Text>
+            {l.credits.map(c => <Text key={c.key} style={styles.attrText} accessibilityLabel={c.accessibilityLabel}>{c.text}</Text>)}
+          </View>); })}
         <Btn
             label={loading ? 'Loading…' : topic.summary ? 'Get Practice Questions' : 'Get Study Notes'}
             onPress={complete}
@@ -230,6 +239,9 @@ const styles = StyleSheet.create({
   summaryText: { fontSize: Fonts.sizes.sm, color: Colors.text, lineHeight: 20 },
   assetWrap: { marginBottom: Spacing.md },
   assetCaption: { fontSize: Fonts.sizes.xs, color: Colors.textSub, textAlign: 'center', marginTop: 4 },
+  attrBox: { marginTop: Spacing.md, padding: Spacing.sm, borderRadius: Radius.sm, borderWidth: 1, borderColor: Colors.textSub + '55' },
+  attrHeading: { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.text, marginBottom: 4 },
+  attrText: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: 6 },
   assetFailed: { fontSize: Fonts.sizes.xs, color: Colors.textSub, fontStyle: 'italic', marginBottom: Spacing.md },
   noteBox: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: Spacing.sm, backgroundColor: Colors.success + '15', padding: Spacing.sm, borderRadius: Radius.sm },
   noteText: { fontSize: Fonts.sizes.xs, color: Colors.text, flex: 1 },

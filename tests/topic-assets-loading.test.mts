@@ -19,5 +19,5 @@ test('missing token with pictures rejects',async()=>{
  await assert.rejects(loadLessonAssets(5,async()=>({data:{assets:[{id:1}]}}),async()=>null),/No image access token/);
 });
 test('legitimate empty asset list remains a successful empty result',async()=>{
- assert.deepEqual(await loadLessonAssets(5,async()=>({data:{assets:[]}}),async()=>null),{assets:[],token:null});
+ assert.deepEqual(await loadLessonAssets(5,async()=>({data:{assets:[]}}),async()=>null),{assets:[],attributions:[],token:null});
 });
