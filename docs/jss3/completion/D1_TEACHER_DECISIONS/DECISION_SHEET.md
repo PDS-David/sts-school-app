@@ -14,7 +14,7 @@ Teacher: ______________________ (name/role only; no contact details in Git)  Dat
 | Girls, plotted in chart | 45 | 55 | 75 | 90 | 65 |
 | Girls, school table | 46 | 55 | 73 | 92 | 64 |
 
-Differs in four years (1997, 1999, 2000, 2001). (The registered figure caption says "three years"; the data and test say four.)
+Differs in four years (1997, 1999, 2000, 2001). (The registered figure caption now agrees: four years.)
 What changes: the girls' value in each year, the girls' difference from boys (1999: 80-75 = 5 by chart, 80-73 = 7 by table), and totals. The year of highest girls' admission is 2000 either way (90 or 92).
 Current delivery: newly prepared answers use the table values and are labelled so; the chart is shown as printed.
 Tick one: [ ] table is correct  [ ] chart is correct  [ ] other: __________
@@ -30,7 +30,7 @@ Tick one: [ ] S is the foot of the vertical  [ ] S is elsewhere (describe): ____
 ## 3. Intended bearing-example wording (M2-F08, 2nd Term, BEARINGS, paragraphs 502-505)
 ![bearing example 1](v2-m2-bearing-example-1.png)
 
-Printed sentence: "The bearing of point A from B is 090 degrees". Drawing: A is due north and B due east of an unlabelled corner. From the drawing, B from the corner is 090; A from the corner is 000. The sentence's "A from B" would be a bearing in the north-west quadrant (315), so sentence and drawing disagree.
+Printed sentence: "The bearing of point A from B is 090 degrees". Drawing: A is due north and B due east of an unlabelled corner. From the drawing, B from the corner is 090; A from the corner is 000. The sentence's "A from B" would be a bearing in the north-west quadrant; exactly 315° would require equal northward and eastward distances, which the figure does not specify, so sentence and drawing disagree.
 What changes: the worked answer and any bearing/back-bearing reasoning built on this example. Example 2 (arrow drawn at 225, labelled 210) is separate and is not part of this decision.
 Tick one: [ ] "B from the corner (O) is 090"  [ ] "A from B is ___"  [ ] other wording: __________
 

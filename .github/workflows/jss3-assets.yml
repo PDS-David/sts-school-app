@@ -31,12 +31,16 @@ jobs:
           node-version: '24.19.0'
           cache: npm
       - run: npm ci --ignore-scripts
+      - name: Python visual and baseline tools
+        run: python3 -m pip install -r scripts/jss3/acceptance-requirements.txt
       - name: Backend and mobile types
         run: |
           ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
           ./node_modules/.bin/tsc --noEmit -p mobile/tsconfig.json
       - name: Static and focused regressions
         run: |
+          python3 -m unittest discover -s docs/jss3/completion/P1_BASELINE -p "test_*.py"
+          python3 -m unittest discover -s tests -p "test_jss3_acceptance_runner.py"
           node --test tests/*.cjs
           node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts tests/jss3-supplements.test.mts tests/jss3-batch2-assets.test.mts tests/jss3-delivery-correction.test.mts tests/jss3-d-verification.test.mts tests/jss3-g4-figures.test.mts tests/lesson-image.test.mts tests/jss3-manifest-generation.test.mts tests/jss3-v1-business.test.mts tests/jss3-v2-math-figures.test.mts tests/jss3-m2-connectors.test.mts tests/jss3-v3-science.test.mts
       - name: Live PostgreSQL and real asset bytes
@@ -44,3 +48,7 @@ jobs:
           TOPIC_ASSETS_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
           T2_REAL_ASSETS: ${{ github.workspace }}/curriculum-assets/jss3
         run: node --import tsx --test tests/topic-assets.db.test.mts
+      - name: Science PostgreSQL attachment and authenticated retrieval (synthetic identities)
+        env:
+          JSS3_V3_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
+        run: node --import tsx --test tests/jss3-v3-science-ci.db.test.mts

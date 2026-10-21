@@ -38,3 +38,6 @@ Scratch copy of the original rendered with LibreOffice 24.2 **with `libreoffice-
 
 ## Still open
 Strokes at paragraphs 83 and 111 (need Word view or the teacher). Elimination-row fraction steps lost by the importer (not connectors; outside M2).
+
+## Integration correction — 20 October 2026
+The before-text description above describes raw Mammoth extraction, not the current executable row. Current `jss3EquationRecovery.ts` already supplies `7/7 = 7x/7` and the negative fractions. The remaining mixed-number ambiguity is `n = 11/11` (the adjacent whole 1 and fraction 1/11 were concatenated). Original rows remain unchanged. The actual runtime replacement `SUP-MATH-SIMULT-GRAPH` now explains both recovered examples and their checks, identifies the source slips, and explicitly writes `12/11 = 1 + 1/11`. Its fingerprint changes through the existing correction resolver, so cached delivery is versioned. The unrelated elimination-row fraction claim is not established by the raw extraction alone; inspect executable capture before proposing more recovery.

@@ -82,7 +82,7 @@ if (!URL_ || !CAP || !existsSync(path.join(CAP, 'original-rows.json'))) {
   });
 
   // One real correction per originating package, plus A's re-pointed Maths row.
-  const SAMPLES = ['HOME-CHILD-CARE-CONTD-ORT-HONEY', C.find(c => c.package === 'A' && c.previous_source_body_sha256)!.id, C.find(c => c.package === 'D')!.id, C.find(c => c.package === 'E')!.id];
+  const SAMPLES = ['HOME-CHILD-CARE-CONTD-ORT-HONEY', C.find(c => c.package === 'A' && c.previous_source_body_sha256)!.id, C.find(c => c.package === 'D')!.id, C.find(c => c.package === 'E')!.id, ...C.filter(c => c.package === 'V3').map(c => c.id)];
   for (const id of SAMPLES) {
     test(`[${id}] old cache + direct assessment id cannot bypass corrected delivery; history preserved`, async () => {
       const { c, r } = rowFor(id); const body: string = r.sourceReference; const marker = body.replace(/\s+/g, ' ').trim().slice(0, 70);

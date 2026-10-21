@@ -120,9 +120,15 @@ test('alt text survives regeneration: the spec is the source of alt text and mat
 });
 
 test('figure generator reproduces the committed PNG/SVG bytes (skipped without python cairosvg)', t => {
+  const probe = spawnSync('python3', ['-c', 'import cairosvg'], { encoding: 'utf8' });
+  if (probe.status !== 0) {
+    if (process.env.JSS3_REQUIRE_VISUAL_DEPS === '1') assert.equal(probe.status, 0, probe.stderr);
+    if (/No module named 'cairosvg'/.test(probe.stderr || '')) return t.skip('CairoSVG not installed');
+    assert.equal(probe.status, 0, probe.stderr || probe.error?.message);
+  }
   const tmp = mkdtempSync(path.join(tmpdir(), 'v1fig-'));
   const r = spawnSync('python3', [`${D}/assets/generate_v1_figures.py`, tmp], { encoding: 'utf8' });
-  if (r.status !== 0) return t.skip('python3/cairosvg unavailable: ' + (r.stderr || '').split('\n').slice(-2)[0]);
+  assert.equal(r.status, 0, r.stderr || r.error?.message);
   for (const f of readdirSync(tmp).filter(f => f.endsWith('.svg'))) assert.equal(readFileSync(path.join(tmp, f), 'utf8'), readFileSync(`${D}/assets/${f}`, 'utf8'), f);
 });
 
