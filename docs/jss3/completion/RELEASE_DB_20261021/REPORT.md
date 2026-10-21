@@ -1,5 +1,7 @@
 # RELEASE-DB — 21 October 2026 execution attempt
 
+> **Superseded:** completed with PASS in [`../RELEASE_DB_20261021_R2/REPORT.md`](../RELEASE_DB_20261021_R2/REPORT.md). The text below is the historical BLOCKED record.
+
 **BLOCKED, not completed.** Candidate master: `0a4884e8e5895626ba707bcc9607059f5b49dc2c`. No database suite ran and no production operation was attempted.
 
 ## Verified in this attempt

@@ -3,9 +3,9 @@
 Usage (from repo root):
   python3 docs/jss3/completion/V1_BUSINESS/build_v1_manifests.py --capture <supplemented-rows.json> --all-root <ALL dir>
 Original rows are resolved by source file + term + title + sha256(body); supplement rows by lesson id + term.
-Original embedded JPEGs are extracted from the source .docx and pinned by sha256. Fails on 0 or >1 matches.
+Original embedded JPEGs are extracted from the source .docx into a temporary directory (never the repository tree) and pinned by sha256. Fails on 0 or >1 matches.
 Alt text/captions come from V1_ASSET_SPEC.json, so regenerating the manifests cannot drop them."""
-import argparse, csv, hashlib, json, shutil, zipfile
+import argparse, csv, hashlib, json, shutil, tempfile, zipfile
 from pathlib import Path
 HERE = Path(__file__).parent; OUT = Path('curriculum-assets/jss3/supplements')
 JPEG_PINS = {'image3.jpeg': '7eccd80855cefb1617d340506d3e1da9605598f4094817e2d7377aa9e7473c3f',
@@ -13,11 +13,12 @@ JPEG_PINS = {'image3.jpeg': '7eccd80855cefb1617d340506d3e1da9605598f4094817e2d73
 ap = argparse.ArgumentParser(); ap.add_argument('--capture', required=True); ap.add_argument('--all-root', required=True); a = ap.parse_args()
 cap = json.load(open(a.capture)); spec = json.load(open(HERE / 'V1_ASSET_SPEC.json')); assets = HERE / 'assets'
 sha = lambda b: hashlib.sha256(b).hexdigest()
+extracted = Path(tempfile.mkdtemp(prefix='v1-src-images-'))  # private source bytes stay out of the tracked tree
 third = next(Path(a.all_root).glob('*3RD TERM*/BUSINESS STUDIES FOR JSS3.docx'))
 with zipfile.ZipFile(third) as z:
     for name, pin in JPEG_PINS.items():
         data = z.read('word/media/' + name); assert sha(data) == pin, f'{name} hash drift'
-        (assets / name).write_bytes(data)
+        (extracted / name).write_bytes(data)
 def resolve(t):
     if t['kind'] == 'original':
         m = [r for r in cap if r['subjectName'] == 'Business Studies' and r['className'] == 'JSS 3' and 'SUPPLEMENT' not in r['weekLabel']
@@ -29,7 +30,7 @@ def resolve(t):
 groups = {}; seen = set(); bindings = []
 for s in spec:
     assert s['asset_key'] not in seen; seen.add(s['asset_key'])
-    row = resolve(s['target']); src = assets / s['file']
+    row = resolve(s['target']); src = (extracted if s['file'].startswith('image') else assets) / s['file']
     if s['file'].startswith('image'):
         dst_name = s['asset_key'] + '.jpeg'; shutil.copyfile(src, OUT / dst_name)
     else:
@@ -43,4 +44,5 @@ for term, tag in (('1st Term', '1ST'), ('2nd Term', '2ND')):
         for _, r in groups[term]: w.writerow(r)
 with open(HERE / 'V1_ASSET_BINDINGS.csv', 'w', newline='') as fh:
     w = csv.writer(fh, lineterminator='\n'); w.writerow(['asset_key', 'term', 'resolved_order_index', 'lesson_title', 'target_kind', 'origin', 'file', 'sha256']); w.writerows(bindings)
+shutil.rmtree(extracted, ignore_errors=True)
 print(len(spec), 'assets bound;', {t: len(g) for t, g in groups.items()})

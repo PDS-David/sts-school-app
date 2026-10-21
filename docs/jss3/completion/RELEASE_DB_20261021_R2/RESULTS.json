@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "production_actions": false,
+  "base_sha": "a1cfcb150b1b57250eb258720d8bef7af07b5ca3",
+  "archive_sha256": "0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c",
+  "database": "disposable local PostgreSQL 16.15, db jss3_test_acceptance, 127.0.0.1:5432, serial suites",
+  "db_suites": {
+    "jss3-batch2-assets.db": {
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "jss3-delivery-correction.db": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "jss3-v1-business.db": {
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "jss3-v2-math-assets.db": {
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "jss3-v3-science-assets.db": {
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "jss3-v3-science-ci.db": {
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "topic-assets.db": {
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "db_totals": {
+    "tests": 59,
+    "pass": 59,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "capture": {
+    "original_rows": 313,
+    "supplement_rows": 170,
+    "total_rows": 483,
+    "all_original_row_objects_exactly_equal": true,
+    "capture_stdout_matches_unmodified_importer": true,
+    "destinations": {
+      "1st Term": 234,
+      "2nd Term": 249
+    },
+    "computer_rows": 0,
+    "database_connection": false
+  },
+  "non_db_corpus_stage_skips": 6,
+  "non_db_corpus_stage_skips_note": "Those six tests are DB-gated and are skipped by design in the no-database corpus stage; the same suites ran with zero skips in db_suites.",
+  "runner_checks": {
+    "python-dependencies": 0,
+    "capture": 0,
+    "corpus": 0,
+    "protected-comparer-unit": 0,
+    "runner-unit": 0,
+    "topic-assets.db": 0,
+    "jss3-batch2-assets.db": 0,
+    "jss3-delivery-correction.db": 0,
+    "jss3-v1-business.db": 0,
+    "jss3-v2-math-assets.db": 0,
+    "jss3-v3-science-assets.db": 0,
+    "jss3-v3-science-ci.db": 0
+  }
+}
