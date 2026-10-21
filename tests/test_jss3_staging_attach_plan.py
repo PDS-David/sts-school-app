@@ -36,6 +36,22 @@ class AttachPlan(unittest.TestCase):
             self.assertIn('--dry-run', text); self.assertFalse([l for l in text.splitlines() if l.startswith('node ') and '--apply' in l])
             self.assertEqual(json.loads((t / 'o.json').read_text())['manifests'][0]['target'], ['Music', '2nd Term'])
 
+    def test_missing_title_cannot_bypass_identity_guard(self):
+        with tempfile.TemporaryDirectory() as t:
+            t=Path(t); root=build(t,title='')
+            code,text=run(t,root)
+            self.assertEqual(code,1)
+            self.assertIn('expected_title',text)
+            self.assertFalse(any(l.startswith('node ') for l in text.splitlines()))
+
+    def test_empty_manifest_rejected(self):
+        with tempfile.TemporaryDirectory() as t:
+            t=Path(t); root=build(t)
+            (root/'T_MANIFEST.csv').write_text('asset_key,file,sha256,order_index,expected_title\n')
+            code,text=run(t,root)
+            self.assertEqual(code,1)
+            self.assertIn('manifest has no rows',text)
+
     def test_title_mismatch_fails(self):
         with tempfile.TemporaryDirectory() as t:
             t = Path(t); code, text = run(t, build(t, title='Other title'))

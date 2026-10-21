@@ -29,7 +29,7 @@ Expect JSS 3 lines 483 (313 + 170), "FILE AUDIT PASSED". Only after review and p
 ```
 python3 scripts/jss3/staging_attach_plan.py --importer-log importer-dry.log --assets-root curriculum-assets/jss3 --json-out attach-plan.json
 ```
-Expect 16 manifests, 101 rows, 0 problems. Run each printed `--dry-run` command from `backend/`; apply by changing `--dry-run` to `--apply` (single transaction, idempotent). Dry-run outputs must show zero conflicts.
+At consolidation: 17 manifests, 103 rows, 0 problems (including NOUN cover/logo). Recompute from current manifests; do not force historical counts. Run each printed `--dry-run` command from `backend/`; apply by changing `--dry-run` to `--apply` (single transaction, idempotent). Dry-run outputs must show zero conflicts.
 
 ## 5. Accounts (synthetic only) and schema check
 Needs an admin token (first-admin option, REPORT §3.1). Supported flow: `POST /students` (JSS 3 student and one other-class student, synthetic names) → `POST /admin/users` role `student` returns a one-time `activation_code` → `POST /auth/activate` (owner sets password, ≥8 chars) → `POST /students/:id/link-user`. Login via `POST /auth/login`. Set `TERM_PIN_ENFORCED` per the owner's choice; if `true`, issue PINs with `POST /admin/term-pins`. Verify as the JSS 3 student that Business, Mathematics, Basic Science and Basic Technology lessons with pictures are listed and openable under the chosen lock mode.
@@ -46,7 +46,7 @@ SELECT table_name, column_name FROM information_schema.columns WHERE (table_name
 ## 7. DEVICE1 handoff record (fill in; keep credentials out)
 ```
 Backend/app commit: <sha>      Schema check: <both rows present?>
-API base URL: <https://…>      Import: 483 JSS3 topics (313+170); assets attached: 101 rows / 16 manifests
+API base URL: <https://…>      Import: 483 JSS3 topics (313+170); assets attached: <actual current plan and applied counts; consolidation plan 103 rows / 17 manifests>
 Build: profile preview, EAS id <id>, APK sha256 <hash>, EXPO_PUBLIC_API_URL baked: <yes/verified how>
 Accounts: JSS3 student <username>, other-class <username>; passwords/tokens delivered privately to the DEVICE1 runner
 Lock mode: TERM_PIN_ENFORCED=<…>; picture lessons openable: <evidence>

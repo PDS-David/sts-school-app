@@ -35,14 +35,22 @@ def analyse(manifest: Path, plan, root: Path):
     with manifest.open(encoding='utf-8-sig', newline='') as fh:
         rows = list(csv.DictReader(fh))
     problems, entries = [], []
+    if not rows: problems.append('manifest has no rows')
     for r in rows:
         o = first(r, 'topic_order_index', 'destination_order_index', 'order_index')
         f = first(r, 'file', 'original_file')
         h = first(r, 'sha256', 'sha256_verified')
         t = first(r, 'expected_title', 'lesson_title_per_R2_R2V')
-        if o is None or f is None or h is None:
-            problems.append('row missing order_index/file/sha256'); continue
-        entries.append((int(o), norm(t), f, h.lower()))
+        if o is None or f is None or h is None or not norm(t):
+            problems.append('row missing order_index/file/sha256/expected_title'); continue
+        try:
+            index = int(o)
+            if index < 1: raise ValueError()
+        except ValueError:
+            problems.append('invalid positive order_index'); continue
+        if Path(f).is_absolute() or '..' in Path(f).parts:
+            problems.append('asset path escapes folder'); continue
+        entries.append((index, norm(t), f, h.lower()))
     targets = sorted({(s, tm) for (s, tm, _n) in plan
                       if all(plan.get((s, tm, o)) == t for o, t, _f, _h in entries if t)})
     if len(targets) != 1:

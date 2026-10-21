@@ -5,6 +5,7 @@ import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scop
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
+import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -265,11 +266,12 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   const scope = await topicVisibilitySql(user, params);
   // Not visible to this viewer (or not there): same empty answer GET /topics
   // gives for a topic outside the viewer's classes.
-  if (scope === null) return res.json({ assets: [] });
+  if (scope === null) return res.json({ assets: [], attributions: [] });
   const { rows: visible } = await query(
-    `SELECT t.id FROM topics t WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
+    `SELECT t.id, t.title, t.term_label, t.class_name, s.name AS subject_name
+       FROM topics t LEFT JOIN subjects s ON s.id=t.subject_id WHERE t.id=$1 AND t.school_code=$2${scope}`, params,
   );
-  if (!visible[0]) return res.json({ assets: [] });
+  if (!visible[0]) return res.json({ assets: [], attributions: [] });
 
   // Metadata only — `bytes` is never selected here.
   const { rows } = await query(
@@ -279,8 +281,13 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
       ORDER BY sort_order, id`,
     [topicId],
   );
+  // Licence/credit records for third-party material in this lesson (jss3Attributions.ts): delivered with the lesson,
+  // matched by exact identity. A requested cover/logo is reported displayed only if a displayed asset with that key exists.
+  const boundKeys = new Set<string>(rows.map((r: any) => r.asset_key));
+  const attributions = attributionsForTopic(visible[0]).map(a => publicAttribution(a, boundKeys));
   return res.json({
     assets: rows.map((r: any) => ({ ...r, url: `/learning/assets/${r.id}` })),
+    attributions,
   });
 });
 
