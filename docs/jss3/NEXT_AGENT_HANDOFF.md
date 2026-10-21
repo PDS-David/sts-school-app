@@ -1,3 +1,5 @@
+> **Current routing (21 October):** read [completion/IMPLEMENTATION_STATUS_20261021.md](completion/IMPLEMENTATION_STATUS_20261021.md) and [completion/NEXT_AGENT_TASKS/README.md](completion/NEXT_AGENT_TASKS/README.md) first. RELEASE-DB R2, MATH3 and owner-directed TEACHER1 have subsequent completion records. BASELINE2 now requires the agent to generate both exports. The older handoff below remains historical context.
+
 # JSS3 handoff — portable successor authority
 
 Updated 16 October 2026. **Start with [NEXT_STAGE_EXECUTION_PROMPT.md](NEXT_STAGE_EXECUTION_PROMPT.md).** It is the complete execution prompt, including permissions, input-to-task mapping, commands, acceptance criteria, safe publication and subsequent handoff requirements.

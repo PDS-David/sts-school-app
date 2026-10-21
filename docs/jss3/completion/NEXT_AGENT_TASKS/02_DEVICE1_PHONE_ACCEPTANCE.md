@@ -41,3 +41,6 @@ Fix only reproduced usability/access defects in the app. If adding enlargement i
 ## Completion gate
 
 Commit a results table with lesson/asset IDs, observed pass/fail, device/build details and non-sensitive screenshots. No row may say PASS without observation. Report LOW_RESOLUTION_SOURCE separately when enlargement cannot recover detail. Publish fixes and tests; do not deploy production. If blocked, list the exact staging/session/device input needed, not another general audit assignment.
+
+## Updated 21 October — preflight exists; observation does not
+Read completion/DEVICE1/{REPORT.md,OBSERVATION_RESULTS.csv}, scripts/jss3/device1_preflight.py and tests/test_jss3_device1_preflight.py. Do not rebuild this tool or claim its mock tests are phone evidence. Given authorised staging, supply JSS3_STUDENT_TOKEN and JSS3_OTHER_CLASS_TOKEN through environment, then run `python3 scripts/jss3/device1_preflight.py --base-url "$STAGING_URL" --output "$OUT" --staging-confirmed`. Exit0 is API-only pass; exit2 means checks not performed. Confirm schema columns topic_assets.alt_text and assessments.content_fingerprint separately. The baked-in onrender.com URL has NOT been established as staging; do not probe it using production accounts. If no staging exists, use prompt07 to prepare an isolated environment first.
