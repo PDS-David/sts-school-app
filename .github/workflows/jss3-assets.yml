@@ -41,6 +41,7 @@ jobs:
         run: |
           python3 -m unittest discover -s docs/jss3/completion/P1_BASELINE -p "test_*.py"
           python3 -m unittest discover -s tests -p "test_jss3_acceptance_runner.py"
+          python3 -m unittest discover -s tests -p "test_jss3_device1_preflight.py"
           node --test tests/*.cjs
           node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts tests/jss3-supplements.test.mts tests/jss3-batch2-assets.test.mts tests/jss3-delivery-correction.test.mts tests/jss3-d-verification.test.mts tests/jss3-g4-figures.test.mts tests/lesson-image.test.mts tests/jss3-manifest-generation.test.mts tests/jss3-v1-business.test.mts tests/jss3-v2-math-figures.test.mts tests/jss3-m2-connectors.test.mts tests/jss3-v3-science.test.mts
       - name: Live PostgreSQL and real asset bytes
