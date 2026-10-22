@@ -1,5 +1,7 @@
 # BASELINE2 — protected-baseline reconstruction (JSS1/JSS2 only) and provenance trace
 
+> **Correction (BASELINE3, 2026-10-22):** R6 `REPORT.md` section 5 item 4 (AGENT_1F-R6_CONTENT_DECISIONS.zip, SHA256 `b087654c…0960`) says only that the 2,179 rows' exact preservation is unverified and that no attachment defines or lists them. R6 is NOT a certification or export source; do not request it as proof. The original observations below are kept unchanged; the two items marked SUPERSEDED are replaced by `../BASELINE3/REPORT.md`.
+
 **Status: PARTIAL / protected gate NOT passed.** `certification_claimed` is false everywhere. OB-06 stays open. Nothing here verifies the 2,179 certified rows.
 
 | Item | Status |
@@ -44,7 +46,7 @@ Removing them (diagnostic only, not an approved scope) gives audit PASSED and th
 ## Provenance (traced separately)
 - Searched all 291 commits on all refs for `2,179`/`2179`. First appearance: `baa4aa6` (2026-10-15), `docs/jss3/CONTENT_MATERIAL_REQUIREMENTS.md`: "Preservation of the 2,179 protected rows (R6 `REPORT.md` section 5; R6 is not part of this set)". `docs/jss3/STATUS.md` in the same commit: no certified row export found in the supplied inputs.
 - No commit contains the 2,179 identities, an approval record, the approving importer commit, class/school filters, or an audit output that yields 2,179. The 2,233 count first appears 2026-10-15 (`6cdafc1`) as raw-source generated candidates.
-- **Missing historical record:** R6 `REPORT.md` section 5 (and whatever export or audit output it summarises) — who certified, when, against which database/backup and which importer commit/source set. Unavailable to this task; not reconstructed or inferred.
+- **SUPERSEDED — Missing historical record (as originally written):** R6 `REPORT.md` section 5 (and whatever export or audit output it summarises) — who certified, when, against which database/backup and which importer commit/source set. Unavailable to this task; not reconstructed or inferred.
 - `compare_protected.py` (old `ingestTopics.ts` inside a current checkout) was not used; this task runs each commit's own tree.
 
 ## Reproduce (outputs go outside Git)
@@ -63,5 +65,5 @@ python3 -I scripts/jss3/baseline2/build_sanitized_evidence.py --private-out <pri
 
 ## Remaining to close the gate
 1. The six BASIC ONE–SIX archives (or the two `curriculum_basic_*` zips) to regenerate Primary the same way; then the 2,179 count and scope can be tested.
-2. R6 `REPORT.md` section 5 or the certified export/backup it describes, to establish provenance and the scope that removes the 54-row difference.
+2. SUPERSEDED (R6 is not a source): originally "R6 `REPORT.md` section 5 or the certified export/backup it describes, to establish provenance and the scope that removes the 54-row difference."
 3. Owner decision on the 6 blocking secondary files (which Social Studies copy is authoritative; Music RTF and JSS2 PPTX conversion or exclusion).
