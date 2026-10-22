@@ -62,3 +62,7 @@ jobs:
         env:
           JSS3_YO_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
         run: node --import tsx --test tests/jss3-yo-license.db.test.mts
+      - name: STAGING-BOOTSTRAP first-admin CLI (disposable jss3_test_* databases created and dropped by the test)
+        env:
+          JSS3_LOCAL_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
+        run: node --import tsx --test tests/staging-admin.db.test.mts
