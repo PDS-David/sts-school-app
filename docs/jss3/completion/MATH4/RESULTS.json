@@ -1,0 +1,141 @@
+{
+  "base_sha": "56bd7c83ed91f63a565c59b6d4241b485623e968",
+  "node": "24.19.0",
+  "source_archive_sha256": "0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c",
+  "focused": {
+    "tests": 6,
+    "pass": 6,
+    "fail": 0,
+    "skip": 0
+  },
+  "full_corpus": {
+    "tests": 333,
+    "pass": 326,
+    "fail": 0,
+    "skip": 7,
+    "skips": "explicit PostgreSQL suites only"
+  },
+  "acceptance_status": "INCOMPLETE: corpus passed, local database omitted",
+  "all_313_original_objects_identical_before_after": true,
+  "changed_supplements": [
+    "SUP-MATH-CHANGE-SUBJECT",
+    "SUP-MATH-SIMULT-WORDS"
+  ],
+  "row_preservation": {
+    "original_rows": 313,
+    "supplement_rows": 170,
+    "total_rows": 483,
+    "all_original_row_objects_exactly_equal": true,
+    "capture_stdout_matches_unmodified_importer": true,
+    "destinations": {
+      "1st Term": 234,
+      "2nd Term": 249
+    },
+    "computer_rows": 0,
+    "database_connection": false,
+    "importer_sha256": "ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f"
+  },
+  "checks": [
+    {
+      "check": "backend-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "backend/tsconfig.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "mobile-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "mobile/tsconfig.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "static",
+      "command": [
+        "node",
+        "--test",
+        "tests/student-launch.static.test.cjs",
+        "tests/topic-assets.static.test.cjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "jss3-full",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/jss3-basic-tech-1f-r2.test.mts",
+        "tests/jss3-batch2-assets.db.test.mts",
+        "tests/jss3-batch2-assets.test.mts",
+        "tests/jss3-batch2-content.test.mts",
+        "tests/jss3-d-verification.test.mts",
+        "tests/jss3-delivery-correction.db.test.mts",
+        "tests/jss3-delivery-correction.test.mts",
+        "tests/jss3-english-1f-r1.test.mts",
+        "tests/jss3-english-correction.test.mts",
+        "tests/jss3-english-symbols-task3.test.mts",
+        "tests/jss3-first-term.test.mts",
+        "tests/jss3-g1-health-science.test.mts",
+        "tests/jss3-g4-figures.test.mts",
+        "tests/jss3-m1-equation-layouts.test.mts",
+        "tests/jss3-m2-connectors.test.mts",
+        "tests/jss3-manifest-generation.test.mts",
+        "tests/jss3-math3-binary-notation.test.mts",
+        "tests/jss3-math4-equivalents.test.mts",
+        "tests/jss3-pending-entries-1f-r3.test.mts",
+        "tests/jss3-phe-marker-1f-r5.test.mts",
+        "tests/jss3-second-term.test.mts",
+        "tests/jss3-supplements.test.mts",
+        "tests/jss3-teacher1-math-decisions.test.mts",
+        "tests/jss3-text-study.test.mts",
+        "tests/jss3-third-term.test.mts",
+        "tests/jss3-v1-business.db.test.mts",
+        "tests/jss3-v1-business.test.mts",
+        "tests/jss3-v2-math-assets.db.test.mts",
+        "tests/jss3-v2-math-figures.test.mts",
+        "tests/jss3-v3-science-assets.db.test.mts",
+        "tests/jss3-v3-science-ci.db.test.mts",
+        "tests/jss3-v3-science.test.mts",
+        "tests/jss3-yo-license.db.test.mts",
+        "tests/jss3-yo-license.test.mts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "asset-focused",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/topic-assets-metadata.test.mts",
+        "tests/topic-assets-loading.test.mts",
+        "tests/lesson-image.test.mts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "capture",
+      "command": [
+        "python3",
+        "scripts/jss3/capture_rows.py",
+        "--root",
+        "/tmp/jss3-math4-check/acceptance-final/inputs/ALL",
+        "--output",
+        "/tmp/jss3-math4-check/acceptance-final/corpus/capture"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

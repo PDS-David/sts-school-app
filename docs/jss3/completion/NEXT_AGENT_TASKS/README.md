@@ -10,7 +10,12 @@ Read [EXECUTION_CONTRACT.md](EXECUTION_CONTRACT.md). This replaces the old instr
 - Protected 2179 baseline provenance remains unresolved. No current baseline comparison is claimed.
 - EVIDENCE1 arrived as an offline package in the conversation; it is not in master. Do not re-run its search. Integrator should validate/apply the exact package when available; unavailable historical log is not a runtime failure.
 
-## Next bounded implementation assignments
+## Update — 22 October 2026
+- STAGING-BOOTSTRAP is merged in PR27; CI passed. Do not reimplement it. Actual staging provisioning/admin execution still requires a designated target.
+- BASELINE2 partial evidence is merged in PR28: 741 JSS1/JSS2 rows equal, not the certified 2,179 gate. See ../BASELINE2/REPORT.md.
+- MATH4 supported equivalent teaching is implemented in this change; see ../MATH4/REPORT.md. Source-intent questions remain distinguished from teaching delivery.
+
+## Assignment specifications (consult updates above before starting)
 | Assignment | Exact specification | Inputs beyond repo | Completion |
 |---|---|---|---|
 | STAGING-BOOTSTRAP | [15_STAGING_BOOTSTRAP.md](15_STAGING_BOOTSTRAP.md) | Disposable PostgreSQL16; no host designation needed to implement/test | Tested first-admin CLI + runnable staging command groups; no provisioning claim |
