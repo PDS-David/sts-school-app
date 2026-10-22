@@ -1,0 +1,52 @@
+{
+  "baseline_rows": 741,
+  "snapshot_rows": 740,
+  "expected_baseline_rows": 741,
+  "identity_columns": [
+    "school_code",
+    "class_name",
+    "subject_name",
+    "term_label",
+    "order_index"
+  ],
+  "compared_fields": [
+    "source_file",
+    "source_path",
+    "source_reference",
+    "title",
+    "week_label"
+  ],
+  "missing_from_snapshot": [
+    [
+      "secondary",
+      "JSS 1",
+      "Basic Technology",
+      "1st Term",
+      1
+    ]
+  ],
+  "unexpected_in_snapshot": [],
+  "content_mismatches": [
+    {
+      "identity": [
+        "secondary",
+        "JSS 1",
+        "Social Studies",
+        "1st Term",
+        3
+      ],
+      "differing_fields": [
+        "source_reference"
+      ]
+    }
+  ],
+  "duplicate_identities_baseline": [],
+  "duplicate_identities_snapshot": [],
+  "count_ok": true,
+  "result": "FAIL",
+  "comparison_scope": "all non-identity columns",
+  "protected_count_used": false,
+  "certification_claimed": false,
+  "baseline_file_sha256": "ab3b1285e4f649dedcf7c7c0f0a88a2fd860f2622dbc18c43c8b21b75d6cc567",
+  "snapshot_file_sha256": "b04126a0a5307c286befe337c68d2091e1610a0a53398a39fc323dd880e605ce"
+}

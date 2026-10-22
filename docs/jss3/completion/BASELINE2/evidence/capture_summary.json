@@ -1,0 +1,240 @@
+{
+ "secondary": {
+  "hist": {
+   "meta": {
+    "label": "secondary_hist",
+    "school_code": "secondary",
+    "checkout_commit": "54246201616939fe98897dc10f7b2e3f46472b40",
+    "checkout_dirty": false,
+    "importer_sha256": "5fc21be824bd4ba7edb0d75c1025b2fb660b0de8c6194bcb4f63debb2b077eb6",
+    "package_lock_sha256": "89ff9b03c6245277d6a598ac2cdb6391e227408ccb62891b28809e2e05584b04",
+    "helper_modules_sha256": {
+     "ingestTopics.ts": "5fc21be824bd4ba7edb0d75c1025b2fb660b0de8c6194bcb4f63debb2b077eb6",
+     "jss1CurriculumResolutions.ts": "986671ab00881eace3c0cf2f66d9a8ddcc407c6549db738494f639d87312e6a7",
+     "jss2CurriculumResolutions.ts": "2f9690974efdefe22a86ba9056cd9856e7001e96e7ce98e426033030540f6eb8",
+     "primaryCurriculumResolutions.ts": "c2d7a4cf1a0044b8f1b5c26668ca45c93edcf0adaf23370c69b2a2b596711b05"
+    },
+    "dependency_versions": {
+     "mammoth": "1.12.2",
+     "word-extractor": "1.0.4",
+     "jszip": "3.10.1",
+     "tsx": "4.23.1",
+     "typescript": "5.9.3"
+    },
+    "node": "v24.19.0",
+    "importer_exit_code": 1,
+    "importer_exit_note": "non-zero means the dry-run audit reported blockers; rows are generated candidates captured BEFORE audit acceptance",
+    "row_count": 741,
+    "rows_json_sha256": "ab3b1285e4f649dedcf7c7c0f0a88a2fd860f2622dbc18c43c8b21b75d6cc567",
+    "importer_log_sha256": "e892af52456af0b8582c20ce135289f052bdb8c25d0510c4770afee9af919b81",
+    "source_root_files": 147,
+    "database_connection": "none (DB env vars removed from subprocess)"
+   },
+   "rows_by_class_term": {
+    "JSS 1 | 1st Term": 120,
+    "JSS 1 | 2nd Term": 112,
+    "JSS 1 | 3rd Term": 137,
+    "JSS 2 | 1st Term": 114,
+    "JSS 2 | 2nd Term": 133,
+    "JSS 2 | 3rd Term": 125
+   },
+   "distinct_source_files_with_rows": 80,
+   "audit": {
+    "failed_to_read": [
+     {
+      "file": "JSS2_archive/JSS 2/JSS2 1ST TERM -20230730T165357Z-001/JSS2 1ST TERM /ENOTE SOCIAL STUDIES JSS2 1ST TERM.docx",
+      "reason": "JSS2 resolution anchor missing: Social Studies substantive body WEEK TWO"
+     },
+     {
+      "file": "JSS2_archive/JSS 2/JSS2 1ST TERM_/ 2 MATHEMATICS.docx",
+      "reason": "Can't find end of central directory : is this a zip file ? If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html"
+     }
+    ],
+    "unsupported_format": [
+     "JSS1_archive/JSS 1/JSS1 1ST TERM -20230730T165348Z-001/JSS1 1ST TERM /JSS1 ALPHA TERM MUSIC HANDOUT.rtf",
+     "JSS1_archive/JSS 1/JSS1 1ST TERM_/JSS1 ALPHA TERM MUSIC HANDOUT.rtf",
+     "JSS2_archive/JSS 2/JSS2 1ST TERM -20230730T165357Z-001/JSS2 1ST TERM /E- note Jss 2.pptx",
+     "JSS2_archive/JSS 2/JSS2 1ST TERM_/E- note Jss 2.pptx"
+    ],
+    "byte_duplicates_ignored": 52,
+    "audit_result": "BLOCKED"
+   }
+  },
+  "cur": {
+   "meta": {
+    "label": "secondary_cur",
+    "school_code": "secondary",
+    "checkout_commit": "4cc7bf2e9900a7158be2b0a4214d01fac17f94ae",
+    "checkout_dirty": false,
+    "importer_sha256": "ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f",
+    "package_lock_sha256": "d36c205e3dfe5854460be4688a5e32c751ad63d8a39ae37d6815cdbd12283d6a",
+    "helper_modules_sha256": {
+     "data/jss3Supplements.json.ts": null,
+     "ingestTopics.ts": "ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f",
+     "jss1CurriculumResolutions.ts": "986671ab00881eace3c0cf2f66d9a8ddcc407c6549db738494f639d87312e6a7",
+     "jss2CurriculumResolutions.ts": "2f9690974efdefe22a86ba9056cd9856e7001e96e7ce98e426033030540f6eb8",
+     "jss3CurriculumResolutions.ts": "efe121ee543de97e09e75d36719acaa713dcd645f5857d004f8ec77583a584f2",
+     "jss3EnglishLessonSplit.ts": "cfb513b3d2f90e1db0a1be14db8086da3a313ad0b39913f3dad2d3d32cccb5ed",
+     "jss3EnglishSymbolCorrections.ts": "dad50cb42558ebf012049d18a3f906db17890e0e1e7ddbe9dbbacbfb8d710b61",
+     "jss3EquationRecovery.ts": "07cf516b99238d5299db5fdead91c7d41fabd3cc40e3fc049589570eddb647f9",
+     "jss3MathsSlipCorrections.ts": "72a55e27d4464a0cad965ae7124d6a0fae23063c7be212b1a0050c632996a632",
+     "jss3PendingEntries.ts": "7ce48b1d7ba53ff216efa112647ebebbb6b4e5f368425427c9baf564db2f4498",
+     "jss3SecondTermResolutions.ts": "d84441d56124de3cb79978e0853d8353bd275b862478c410ad062f154617d709",
+     "jss3Supplements.ts": "97ca4a70da3f970ebd15d45c303d7bd1eb2179a61fdd02cb7ffe8c601ffb034f",
+     "jss3ThirdTermRedistribution.ts": "62d9b6228e3c685f98818df43b7a8c95ebd8f62d475afca604b6472f499804a5",
+     "primaryCurriculumResolutions.ts": "c2d7a4cf1a0044b8f1b5c26668ca45c93edcf0adaf23370c69b2a2b596711b05"
+    },
+    "dependency_versions": {
+     "mammoth": "1.12.2",
+     "word-extractor": "1.0.4",
+     "jszip": "3.10.1",
+     "tsx": "4.23.1",
+     "typescript": "5.9.3"
+    },
+    "node": "v24.19.0",
+    "importer_exit_code": 1,
+    "importer_exit_note": "non-zero means the dry-run audit reported blockers; rows are generated candidates captured BEFORE audit acceptance",
+    "row_count": 741,
+    "rows_json_sha256": "ab3b1285e4f649dedcf7c7c0f0a88a2fd860f2622dbc18c43c8b21b75d6cc567",
+    "importer_log_sha256": "e892af52456af0b8582c20ce135289f052bdb8c25d0510c4770afee9af919b81",
+    "source_root_files": 147,
+    "database_connection": "none (DB env vars removed from subprocess)"
+   },
+   "rows_by_class_term": {
+    "JSS 1 | 1st Term": 120,
+    "JSS 1 | 2nd Term": 112,
+    "JSS 1 | 3rd Term": 137,
+    "JSS 2 | 1st Term": 114,
+    "JSS 2 | 2nd Term": 133,
+    "JSS 2 | 3rd Term": 125
+   },
+   "distinct_source_files_with_rows": 80,
+   "audit": {
+    "failed_to_read": [
+     {
+      "file": "JSS2_archive/JSS 2/JSS2 1ST TERM -20230730T165357Z-001/JSS2 1ST TERM /ENOTE SOCIAL STUDIES JSS2 1ST TERM.docx",
+      "reason": "JSS2 resolution anchor missing: Social Studies substantive body WEEK TWO"
+     },
+     {
+      "file": "JSS2_archive/JSS 2/JSS2 1ST TERM_/ 2 MATHEMATICS.docx",
+      "reason": "Can't find end of central directory : is this a zip file ? If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html"
+     }
+    ],
+    "unsupported_format": [
+     "JSS1_archive/JSS 1/JSS1 1ST TERM -20230730T165348Z-001/JSS1 1ST TERM /JSS1 ALPHA TERM MUSIC HANDOUT.rtf",
+     "JSS1_archive/JSS 1/JSS1 1ST TERM_/JSS1 ALPHA TERM MUSIC HANDOUT.rtf",
+     "JSS2_archive/JSS 2/JSS2 1ST TERM -20230730T165357Z-001/JSS2 1ST TERM /E- note Jss 2.pptx",
+     "JSS2_archive/JSS 2/JSS2 1ST TERM_/E- note Jss 2.pptx"
+    ],
+    "byte_duplicates_ignored": 52,
+    "audit_result": "BLOCKED"
+   }
+  },
+  "rows_json_identical": true
+ },
+ "variantA": {
+  "hist": {
+   "meta": {
+    "label": "variantA_hist",
+    "school_code": "secondary",
+    "checkout_commit": "54246201616939fe98897dc10f7b2e3f46472b40",
+    "checkout_dirty": false,
+    "importer_sha256": "5fc21be824bd4ba7edb0d75c1025b2fb660b0de8c6194bcb4f63debb2b077eb6",
+    "package_lock_sha256": "89ff9b03c6245277d6a598ac2cdb6391e227408ccb62891b28809e2e05584b04",
+    "helper_modules_sha256": {
+     "ingestTopics.ts": "5fc21be824bd4ba7edb0d75c1025b2fb660b0de8c6194bcb4f63debb2b077eb6",
+     "jss1CurriculumResolutions.ts": "986671ab00881eace3c0cf2f66d9a8ddcc407c6549db738494f639d87312e6a7",
+     "jss2CurriculumResolutions.ts": "2f9690974efdefe22a86ba9056cd9856e7001e96e7ce98e426033030540f6eb8",
+     "primaryCurriculumResolutions.ts": "c2d7a4cf1a0044b8f1b5c26668ca45c93edcf0adaf23370c69b2a2b596711b05"
+    },
+    "dependency_versions": {
+     "mammoth": "1.12.2",
+     "word-extractor": "1.0.4",
+     "jszip": "3.10.1",
+     "tsx": "4.23.1",
+     "typescript": "5.9.3"
+    },
+    "node": "v24.19.0",
+    "importer_exit_code": 0,
+    "importer_exit_note": "non-zero means the dry-run audit reported blockers; rows are generated candidates captured BEFORE audit acceptance",
+    "row_count": 741,
+    "rows_json_sha256": "ab3b1285e4f649dedcf7c7c0f0a88a2fd860f2622dbc18c43c8b21b75d6cc567",
+    "importer_log_sha256": "d42a73519c0d914c80b4896b49a113760e12cc96069e26033093a599ff51d647",
+    "source_root_files": 141,
+    "database_connection": "none (DB env vars removed from subprocess)"
+   },
+   "rows_by_class_term": {
+    "JSS 1 | 1st Term": 120,
+    "JSS 1 | 2nd Term": 112,
+    "JSS 1 | 3rd Term": 137,
+    "JSS 2 | 1st Term": 114,
+    "JSS 2 | 2nd Term": 133,
+    "JSS 2 | 3rd Term": 125
+   },
+   "distinct_source_files_with_rows": 80,
+   "audit": {
+    "failed_to_read": [],
+    "unsupported_format": [],
+    "byte_duplicates_ignored": 52,
+    "audit_result": "PASSED"
+   }
+  },
+  "cur": {
+   "meta": {
+    "label": "variantA_cur",
+    "school_code": "secondary",
+    "checkout_commit": "4cc7bf2e9900a7158be2b0a4214d01fac17f94ae",
+    "checkout_dirty": false,
+    "importer_sha256": "ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f",
+    "package_lock_sha256": "d36c205e3dfe5854460be4688a5e32c751ad63d8a39ae37d6815cdbd12283d6a",
+    "helper_modules_sha256": {
+     "data/jss3Supplements.json.ts": null,
+     "ingestTopics.ts": "ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f",
+     "jss1CurriculumResolutions.ts": "986671ab00881eace3c0cf2f66d9a8ddcc407c6549db738494f639d87312e6a7",
+     "jss2CurriculumResolutions.ts": "2f9690974efdefe22a86ba9056cd9856e7001e96e7ce98e426033030540f6eb8",
+     "jss3CurriculumResolutions.ts": "efe121ee543de97e09e75d36719acaa713dcd645f5857d004f8ec77583a584f2",
+     "jss3EnglishLessonSplit.ts": "cfb513b3d2f90e1db0a1be14db8086da3a313ad0b39913f3dad2d3d32cccb5ed",
+     "jss3EnglishSymbolCorrections.ts": "dad50cb42558ebf012049d18a3f906db17890e0e1e7ddbe9dbbacbfb8d710b61",
+     "jss3EquationRecovery.ts": "07cf516b99238d5299db5fdead91c7d41fabd3cc40e3fc049589570eddb647f9",
+     "jss3MathsSlipCorrections.ts": "72a55e27d4464a0cad965ae7124d6a0fae23063c7be212b1a0050c632996a632",
+     "jss3PendingEntries.ts": "7ce48b1d7ba53ff216efa112647ebebbb6b4e5f368425427c9baf564db2f4498",
+     "jss3SecondTermResolutions.ts": "d84441d56124de3cb79978e0853d8353bd275b862478c410ad062f154617d709",
+     "jss3Supplements.ts": "97ca4a70da3f970ebd15d45c303d7bd1eb2179a61fdd02cb7ffe8c601ffb034f",
+     "jss3ThirdTermRedistribution.ts": "62d9b6228e3c685f98818df43b7a8c95ebd8f62d475afca604b6472f499804a5",
+     "primaryCurriculumResolutions.ts": "c2d7a4cf1a0044b8f1b5c26668ca45c93edcf0adaf23370c69b2a2b596711b05"
+    },
+    "dependency_versions": {
+     "mammoth": "1.12.2",
+     "word-extractor": "1.0.4",
+     "jszip": "3.10.1",
+     "tsx": "4.23.1",
+     "typescript": "5.9.3"
+    },
+    "node": "v24.19.0",
+    "importer_exit_code": 0,
+    "importer_exit_note": "non-zero means the dry-run audit reported blockers; rows are generated candidates captured BEFORE audit acceptance",
+    "row_count": 741,
+    "rows_json_sha256": "ab3b1285e4f649dedcf7c7c0f0a88a2fd860f2622dbc18c43c8b21b75d6cc567",
+    "importer_log_sha256": "d42a73519c0d914c80b4896b49a113760e12cc96069e26033093a599ff51d647",
+    "source_root_files": 141,
+    "database_connection": "none (DB env vars removed from subprocess)"
+   },
+   "rows_by_class_term": {
+    "JSS 1 | 1st Term": 120,
+    "JSS 1 | 2nd Term": 112,
+    "JSS 1 | 3rd Term": 137,
+    "JSS 2 | 1st Term": 114,
+    "JSS 2 | 2nd Term": 133,
+    "JSS 2 | 3rd Term": 125
+   },
+   "distinct_source_files_with_rows": 80,
+   "audit": {
+    "failed_to_read": [],
+    "unsupported_format": [],
+    "byte_duplicates_ignored": 52,
+    "audit_result": "PASSED"
+   }
+  },
+  "rows_json_identical": true
+ }
+}
