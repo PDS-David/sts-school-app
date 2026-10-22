@@ -14,13 +14,14 @@ Read [EXECUTION_CONTRACT.md](EXECUTION_CONTRACT.md). This replaces the old instr
 - STAGING-BOOTSTRAP is merged in PR27; CI passed. Do not reimplement it. Actual staging provisioning/admin execution still requires a designated target.
 - BASELINE2 partial evidence is merged in PR28: 741 JSS1/JSS2 rows equal, not the certified 2,179 gate. See ../BASELINE2/REPORT.md.
 - MATH4 supported equivalent teaching is implemented in this change; see ../MATH4/REPORT.md. Source-intent questions remain distinguished from teaching delivery.
+- BASELINE3 (Primary reconstruction): Primary 1,450 rows (as supplied) equal between 5424620 and master; with JSS1/JSS2 741 that is 2,191, not the 2,179 gate. Source-output equality only; the protected gate stays unresolved. R6 was verified and is NOT a certification/export source, so do not request it again. The exact missing evidence is a certified database/export of the 2,179 rows or a written certification record (importer commit, source archives, class/school filters). See ../BASELINE3/REPORT.md.
 
 ## Assignment specifications (consult updates above before starting)
 | Assignment | Exact specification | Inputs beyond repo | Completion |
 |---|---|---|---|
 | STAGING-BOOTSTRAP | [15_STAGING_BOOTSTRAP.md](15_STAGING_BOOTSTRAP.md) | Disposable PostgreSQL16; no host designation needed to implement/test | Tested first-admin CLI + runnable staging command groups; no provisioning claim |
 | MATH4 | [09_MATH4_REMAINING_SOURCE_ITEMS.md](09_MATH4_REMAINING_SOURCE_ITEMS.md) | JSS3 source ZIP | Effective corrections/equivalents + tests + generated records, PR |
-| BASELINE2 | [04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Named Primary/JSS1/2 archives in task | Agent-generated comparison + exact provenance limits, no forced2179 count |
+| BASELINE2 / BASELINE3 | [04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Named Primary/JSS1/2 archives in task | Agent-generated comparison + exact provenance limits, no forced2179 count (BASELINE2 secondary, BASELINE3 Primary: both done; gate unresolved) |
 
 ## Continue existing workers, do not duplicate
 YO-TEXT, EN-SCHOOL and PRACTICAL1: use existing task files plus current contract. Owner-authorised labelled equivalent teaching does not need renewed generic permission. Missing school-specific inputs/observations stay separate. YO-LICENSE must not repeat image retrieval: assets are now committed under curriculum-assets/jss3/v4-attribution; see CONSOLIDATION_20261021/REPORT.md.

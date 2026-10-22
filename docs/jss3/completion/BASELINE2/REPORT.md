@@ -64,6 +64,6 @@ python3 -I scripts/jss3/baseline2/build_sanitized_evidence.py --private-out <pri
 - Evidence checksums: `cd docs/jss3/completion/BASELINE2/evidence && sha256sum -c SHA256SUMS`.
 
 ## Remaining to close the gate
-1. The six BASIC ONE–SIX archives (or the two `curriculum_basic_*` zips) to regenerate Primary the same way; then the 2,179 count and scope can be tested.
+1. *(Done by BASELINE3: Primary regenerated from the two grouped zips; 1,450 rows as supplied, historical equals current. The 2,179 gate still fails on count.)* The six BASIC ONE–SIX archives (or the two `curriculum_basic_*` zips) to regenerate Primary the same way; then the 2,179 count and scope can be tested.
 2. SUPERSEDED (R6 is not a source): originally "R6 `REPORT.md` section 5 or the certified export/backup it describes, to establish provenance and the scope that removes the 54-row difference."
 3. Owner decision on the 6 blocking secondary files (which Social Studies copy is authoritative; Music RTF and JSS2 PPTX conversion or exclusion).
