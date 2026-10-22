@@ -1,0 +1,52 @@
+{
+  "baseline_rows": 1450,
+  "snapshot_rows": 1449,
+  "expected_baseline_rows": 1450,
+  "identity_columns": [
+    "school_code",
+    "class_name",
+    "subject_name",
+    "term_label",
+    "order_index"
+  ],
+  "compared_fields": [
+    "source_file",
+    "source_path",
+    "source_reference",
+    "title",
+    "week_label"
+  ],
+  "missing_from_snapshot": [
+    [
+      "primary",
+      "Primary 1",
+      "Basic Science",
+      "1st Term",
+      1
+    ]
+  ],
+  "unexpected_in_snapshot": [],
+  "content_mismatches": [
+    {
+      "identity": [
+        "primary",
+        "Primary 1",
+        "Basic Technology",
+        "1st Term",
+        5
+      ],
+      "differing_fields": [
+        "title"
+      ]
+    }
+  ],
+  "duplicate_identities_baseline": [],
+  "duplicate_identities_snapshot": [],
+  "count_ok": true,
+  "result": "FAIL",
+  "comparison_scope": "all non-identity columns",
+  "protected_count_used": false,
+  "certification_claimed": false,
+  "baseline_file_sha256": "c0c8c3c7df7478aa90fc17cbfc0e760e4953f9059d7cd9d894c2042f5a193e1d",
+  "snapshot_file_sha256": "91e4207bb8c13850a8673cf8f95b0b89509b52cbcd6d2f0b292af6ff15a2ab14"
+}

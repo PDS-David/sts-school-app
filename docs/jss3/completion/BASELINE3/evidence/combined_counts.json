@@ -1,0 +1,23 @@
+{
+ "primaryA": {
+  "primary_rows": 1450,
+  "secondary_rows": 741,
+  "total": 2191,
+  "protected_count": 2179,
+  "difference_from_protected": 12,
+  "equals_protected_count": false,
+  "note": "Arithmetic only. No subset is selected and no rows are removed to reach the protected count."
+ },
+ "primaryB": {
+  "primary_rows": 1474,
+  "secondary_rows": 741,
+  "total": 2215,
+  "protected_count": 2179,
+  "difference_from_protected": 36,
+  "equals_protected_count": false,
+  "note": "Arithmetic only. No subset is selected and no rows are removed to reach the protected count."
+ },
+ "row_level_combined_comparison_performed": false,
+ "why_not": "The secondary raw rows are private BASELINE2 captures and the JSS 1/JSS 2 archives were not supplied to this task, so only the committed counts/hashes of the secondary result are combined. Schemas are identical (same 10 columns); source scopes differ (see REPORT.md).",
+ "certification_claimed": false
+}
