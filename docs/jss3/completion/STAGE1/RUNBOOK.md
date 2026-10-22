@@ -81,6 +81,9 @@ SELECT table_name, column_name FROM information_schema.columns WHERE (table_name
 ## 6. API address and mobile build
 - Run the backend with the designated env (`DATABASE_URL`, long random `JWT_SECRET`/`JWT_REFRESH_SECRET`, `NODE_ENV`, `TERM_PIN_ENFORCED`), reachable at an **HTTPS** URL; do not expose the database port.
 - Build with the repo's `preview` profile (`mobile/eas.json`, Android APK) with `EXPO_PUBLIC_API_URL=<https URL>` supplied through EAS, and **no `mobile/.env`** on the building machine. Confirm the produced build does not call the Render production host (e.g. watch server logs of the staging API receive the login; confirm production receives nothing).
+- Supply the URL to the `preview` build through EAS (`mobile/eas.json` has no `env` block for it). With eas-cli 25.3.0 (flags checked with `--help` only; not executed, needs the owner's Expo login/token):
+  `eas env:set preview --name EXPO_PUBLIC_API_URL --value https://<staging-host> --visibility plaintext --scope project --non-interactive`
+  then `eas build --platform android --profile preview`. (`env:create` still exists but is marked deprecated.) Remove the variable afterwards if it should not outlive the test.
 - Record the app commit SHA, EAS build id and APK sha256.
 
 ## 7. DEVICE1 handoff record (fill in; keep credentials out)
