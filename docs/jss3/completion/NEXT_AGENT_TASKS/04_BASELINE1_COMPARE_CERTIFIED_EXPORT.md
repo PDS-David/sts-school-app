@@ -18,6 +18,9 @@ For lesson changes regenerate IMPLEMENTED_LESSONS.csv with `scripts/jss3/build_i
 
 Deliver implementation, focused tests and `docs/jss3/completion/<TASK>/REPORT.md` containing base SHA, changed files, commands/versions, observed results and skips, exact remaining prerequisites. Save a checkpoint early. Include all referenced evidence files, validate SHA256SUMS after packaging, and force-add intended sanitised logs if .gitignore excludes them. Never manufacture a missing historical log. Report code completion, observed testing, school approval and deployment separately.
 
+## Update (BASELINE3)
+R6 (AGENT_1F-R6_CONTENT_DECISIONS.zip) is NOT a certification/export source: its section 5 item 4 says no attachment defines or lists the 2,179 rows. Do not request it. Secondary (741) is reproduced; Primary still needs the grouped or individual BASIC ONE–SIX archives, and the certified-baseline gate needs an identified certified export/backup. See ../BASELINE3/REPORT.md.
+
 ## Correction to the previous assignment
 The agent must prepare the baseline and release snapshot, not repeatedly request unnamed files from the owner. BASELINE1/REPORT.md records only synthetic tests and missing inputs. Nothing there verifies actual rows.
 
