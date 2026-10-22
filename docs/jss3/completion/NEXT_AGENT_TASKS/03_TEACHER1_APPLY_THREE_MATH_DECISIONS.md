@@ -1,3 +1,5 @@
+> **Current instructions:** Read [EXECUTION_CONTRACT.md](EXECUTION_CONTRACT.md) first. It supersedes conflicting execution/publication rules below. Workers submit PRs; only the designated integrator merges. Do not repeat completed work.
+
 # TEACHER1 — Apply the three documented Mathematics answers
 
 ## Execution contract (this file is self-contained)
@@ -23,8 +25,6 @@ python3 scripts/jss3/run_acceptance.py --archive "$INPUT_ZIP" --output "$PWD/tas
 Exit **2 / INCOMPLETE** is expected here only when corpus checks passed and DB checks were deliberately omitted. Read ACCEPTANCE.json; a BLOCKED or FAIL is different. If tsx IPC is denied, use a NEW output directory and add `--tsx-no-ipc`, recording the reason. Do not reuse an output directory. The runner sets all source/capture variables, including M2 and V1; do not omit them manually. For changes to lesson bodies, capture before/after, identify the exact intended supplement changes, and regenerate `IMPLEMENTED_LESSONS.csv` and the schedule with repository generators. Never re-pin assertions merely to match new output.
 
 Deliver actual implementation plus a short `docs/jss3/completion/<TASK_ID>/REPORT.md`: base/final SHA, changed files, commands, environment, observed results/skips, exact remaining inputs. Keep tests in tests/ and reusable tools in scripts/jss3/. Preserve a checkpoint before lengthy work. Report IMPLEMENTED, VERIFIED, BLOCKED and NOT PERFORMED distinctly. A draft/report alone is not a completed app feature.
-
-Publication: fetch again, integrate intervening master changes, rerun affected checks, and push your branch. Use the GitHub connector or authenticated Git/gh. Open a PR with the report, wait for required CI, and merge to master without force after verifying the PR head/current master. Verify the remote master SHA contains your changes. If credentials are unavailable, still finish local work; provide a binary-capable `git format-patch`, git bundle, checksummed delivery ZIP and exact base/apply commands. Do not ask for tokens in chat or call an unpushed commit fetchable. Never claim master publication until verified.
 
 ## Required inputs
 

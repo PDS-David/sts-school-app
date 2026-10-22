@@ -1,0 +1,103 @@
+{
+  "status": "INCOMPLETE",
+  "checks": [
+    {
+      "name": "python-dependencies",
+      "command": [
+        "python3",
+        "-c",
+        "import cairosvg,lxml,docx,PIL"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "capture",
+      "command": [
+        "python3",
+        "scripts/jss3/capture_rows.py",
+        "--root",
+        "/workspace/scratch/a27a2169bbde/consolidation_acceptance_3/inputs/ALL",
+        "--output",
+        "/workspace/scratch/a27a2169bbde/consolidation_acceptance_3/capture"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "corpus",
+      "command": [
+        "python3",
+        "scripts/jss3/verify_handoff.py",
+        "--inputs",
+        "/workspace/scratch/a27a2169bbde/consolidation_acceptance_3/inputs",
+        "--output",
+        "/workspace/scratch/a27a2169bbde/consolidation_acceptance_3/corpus",
+        "--tsx-no-ipc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "protected-comparer-unit",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs/jss3/completion/P1_BASELINE",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "runner-unit",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_jss3_acceptance_runner.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "production_actions": false,
+  "corpus_skips": [
+    "\ufe63 batch2 real asset resolution (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.770854ms) # SKIP",
+    "\ufe63 delivery-correction DB tests (skipped: set JSS3_DELIVERY_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.951846ms) # SKIP",
+    "\ufe63 V1 Business DB checks (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.952377ms) # SKIP",
+    "\ufe63 V2 math real asset resolution (skipped: set JSS3_V2_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.883623ms) # SKIP",
+    "\ufe63 V3 science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.706686ms) # SKIP",
+    "\ufe63 V3 Science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres ; JSS3_CAPTURE_DIR additionally enables real source-body guards) (0.633546ms) # SKIP",
+    "\ufe63 YO-LICENSE route attribution (skipped: set JSS3_YO_TEST_DATABASE_URL to a LOCAL Postgres) (0.790673ms) # SKIP"
+  ],
+  "reason": "Corpus passed; database acceptance deliberately not run",
+  "corpus_counts": {
+    "tests": 327,
+    "pass": 320,
+    "fail": 0,
+    "skipped_database": 7
+  },
+  "capture": {
+    "original_rows": 313,
+    "supplement_rows": 170,
+    "total_rows": 483,
+    "all_original_row_objects_exactly_equal": true,
+    "capture_stdout_matches_unmodified_importer": true,
+    "destinations": {
+      "1st Term": 234,
+      "2nd Term": 249
+    },
+    "computer_rows": 0,
+    "database_connection": false,
+    "importer_sha256": "ef9bf9237ca72f4e97952a9fdba632075500d201f5af4facc92c7351e799c94f"
+  },
+  "focused": {
+    "attribution_and_loading": "14/14",
+    "noun_extractor": "4/4",
+    "staging_planner": "6/6"
+  }
+}

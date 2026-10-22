@@ -1,3 +1,5 @@
+> **Current instructions:** Read [EXECUTION_CONTRACT.md](EXECUTION_CONTRACT.md) first. It supersedes conflicting execution/publication rules below. Workers submit PRs; only the designated integrator merges. Do not repeat completed work.
+
 # EN-SCHOOL — implement confirmed books, sounds and exam material
 
 ## Execution contract — include this entire file when assigning the task
@@ -16,11 +18,11 @@ For lesson changes regenerate IMPLEMENTED_LESSONS.csv with `scripts/jss3/build_i
 
 Deliver implementation, focused tests and `docs/jss3/completion/<TASK>/REPORT.md` containing base SHA, changed files, commands/versions, observed results and skips, exact remaining prerequisites. Save a checkpoint early. Include all referenced evidence files, validate SHA256SUMS after packaging, and force-add intended sanitised logs if .gitignore excludes them. Never manufacture a missing historical log. Report code completion, observed testing, school approval and deployment separately.
 
-Publication: fetch master again, reconcile concurrent changes, rerun affected checks, push your isolated branch, open a PR, wait for CI and merge without force after confirming head/base. Verify remote master contains the change. Only one worker merges at a time. Shared supplement/manifests/schedule edits require fresh regeneration after merging another worker. No write credentials: finish locally and deliver a binary-capable patch, git bundle and exact base/apply commands; do not claim publication or ask for a token in chat. A checkpoint patch is not a published implementation.
-
 ## Inputs / scope
 Current repo and SCHOOL_DECISIONS_REQUIRED.md sectionsB3,C,E; original JSS3 ZIP for source checks; any actual owner/teacher response naming set texts/sound contrasts or authorising named stand-ins. Existing SUP-PROSE/The Gift of the Magi and SUP-DRAMA/The Proposal are stand-ins, not automatically prescribed books. Typed-text study and original exam-style practice already exist.
 
-Handle separately: (1) prescribed prose/drama names or explicit stand-in choice, (2) intended Week5–8 sound contrasts, (3) authentic school/NECO papers with reuse permission or explicit original-practice alternative. Do all factual source checking yourself; ask owner only actual curriculum choices. Never convert a blank sound slot into a claimed source symbol or call new questions authentic past papers.
+Handle separately: (1) prescribed prose/drama names or the existing owner-authorised, clearly labelled equivalent route, (2) intended Week5–8 sound contrasts, (3) authentic school/NECO papers with reuse permission or clearly labelled original practice under existing owner authorisation. Do all factual source checking yourself; ask owner only actual curriculum choices. Never convert a blank sound slot into a claimed source symbol or call new questions authentic past papers.
 
 For each supported choice implement lesson/practice/answers in current delivery paths with provenance, update corresponding coverage/semantic decisions and generated records, and test grounding/fingerprint changes. Do not ship a whole copyrighted book or require its upload when lawful excerpts/owner-entered text can fulfil the approved scope. Questions must assess the chosen text rather than the old stand-in. Third Term remains revision/mocks/feedback/reassessment; no substantive new teaching. Report partial choices independently and publish completed supported items.
+
+Existing owner authorisation is sufficient for labelled equivalent teaching and original exam-style practice. Ask only if claiming school-prescribed status or an exact original sound contrast is indispensable. Complete equivalent teaching independently of those claims.

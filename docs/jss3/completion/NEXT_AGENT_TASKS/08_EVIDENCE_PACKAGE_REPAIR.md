@@ -1,3 +1,5 @@
+> **Current instructions:** Read [EXECUTION_CONTRACT.md](EXECUTION_CONTRACT.md) first. It supersedes conflicting execution/publication rules below. Workers submit PRs; only the designated integrator merges. Do not repeat completed work.
+
 # EVIDENCE1 — recover the missing release log only
 
 ## Execution contract — include this entire file when assigning the task
@@ -15,8 +17,6 @@ When changing lesson/importer/runtime behaviour, run `python3 scripts/jss3/run_a
 For lesson changes regenerate IMPLEMENTED_LESSONS.csv with `scripts/jss3/build_implemented_lessons.py` using current capture, and schedule with `scripts/jss3/build_teacher_schedule.py`. Compare before/after originals and exact intended changed supplements. Follow current asset generators and stable bindings; no hard-coded historical row indexes. For visual register regeneration use `scripts/jss3/v2/build_visual_register.py` with V2_MATH_ROW_GUARDS.csv and repeated --extra-guards for M1_ROW_GUARDS.csv and M2_ROW_GUARDS.csv; do not hand-splice rows.
 
 Deliver implementation, focused tests and `docs/jss3/completion/<TASK>/REPORT.md` containing base SHA, changed files, commands/versions, observed results and skips, exact remaining prerequisites. Save a checkpoint early. Include all referenced evidence files, validate SHA256SUMS after packaging, and force-add intended sanitised logs if .gitignore excludes them. Never manufacture a missing historical log. Report code completion, observed testing, school approval and deployment separately.
-
-Publication: fetch master again, reconcile concurrent changes, rerun affected checks, push your isolated branch, open a PR, wait for CI and merge without force after confirming head/base. Verify remote master contains the change. Only one worker merges at a time. Shared supplement/manifests/schedule edits require fresh regeneration after merging another worker. No write credentials: finish locally and deliver a binary-capable patch, git bundle and exact base/apply commands; do not claim publication or ask for a token in chat. A checkpoint patch is not a published implementation.
 
 ## Inputs / exact target
 Current repo and, if accessible, the RELEASE-DB R2 worker workspace/download package. Read completion/RELEASE_DB_20261021_R2/{REPORT.md,RESULTS.json,SHA256SUMS}. RESULTS.json is present and verified. runner.log is absent from Git but expected SHA256 is f5cdac4144eea1d57b1d363958bdc89dfe0e375c0d7d775a818499509707ff15.

@@ -1,24 +1,27 @@
-# Current JSS3 assignments — 21 October 2026
+# JSS3 — current task routing (21 October 2026)
 
-Give ONE complete linked Markdown file to its agent; each contains its own execution contract. Fetch fresh master. Implementation may proceed on separate worktrees; merge one PR at a time. Changes to shared lessons/manifests/coverage require regeneration after previous merges. The owner starts each batch explicitly. Do not reassign completed tasks.
+Read [EXECUTION_CONTRACT.md](EXECUTION_CONTRACT.md). This replaces the old instruction that every worker merges master. One integration owner; other agents submit PRs. Do not distribute every task to new workers: continuing workers retain their current task and use the corrected contract.
 
-| Task | State / next action | Inputs beyond repository |
-|---|---|---|
-| RELEASE-DB | R2 reports59/59; TEACHER1 reports later7-suite PASS. [Final candidate refresh only](01_RELEASE_DB_REGRESSION.md) | JSS3 ZIP + local PostgreSQL16 |
-| MATH3 | IMPLEMENTED at1c729a2; do not repeat | None |
-| TEACHER1 | Owner-directed interim implementation complete. [Apply actual later teacher answers only](03_TEACHER1_APPLY_THREE_MATH_DECISIONS.md) | Dated answers, JSS3 ZIP |
-| EVIDENCE1 | [Recover missing R2 runner.log](08_EVIDENCE_PACKAGE_REPAIR.md) | Exact worker log/package if retained |
-| BASELINE2 | [Agent generates both exports and traces certification](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Primary1–6/JSS1/JSS2 sources or authoritative backup/export |
-| STAGE1 | PREPARED, awaiting designation: [report](../STAGE1/REPORT.md), [runbook](../STAGE1/RUNBOOK.md); [task](07_STAGING_SETUP_ONLY.md) | Owner-designated staging host, provision permission, first-admin option |
-| DEVICE1 | Preflight implemented; [real observations outstanding](02_DEVICE1_PHONE_ACCEPTANCE.md) | Staging build, test accounts, actual phone/session |
-| MATH4 | [Remaining non-binary source items](09_MATH4_REMAINING_SOURCE_ITEMS.md) | JSS3 ZIP; teacher decisions only for unresolved intent |
-| YO-LICENSE | [NOUN attribution display](10_YORUBA_ATTRIBUTION_DELIVERY.md) | Referenced source PDF, distribution decision |
-| YO-TEXT | [Missing oral-text teaching](11_YORUBA_MISSING_TEXTS.md) | Verified reusable texts or permission |
-| EN-SCHOOL | [Implement supported books/sounds/papers choices](12_ENGLISH_SCHOOL_CHOICES.md) | Actual school/owner choices and permitted text |
-| PRACTICAL1 | [Projects and observed practicals](13_PRACTICAL_AND_SCHOOL_GUIDELINES.md) | School facilities/guidance and real observations |
-| SEQUENCE2 | [Implement only approved policy](05_SEQUENCE2_IMPLEMENT_APPROVED_POLICY.md) | Explicit Batch3/policy/placement approval |
-| FINAL1 | [Prepare production plan after gates](14_FINAL_RELEASE_PLAN_ONLY.md) | Completed evidence and owner release decisions |
+## Repository findings at fe7b6a6, plus this consolidation
+- PR23: full-source RELEASE-DB PASS, 59/59, tested a1db3dc; all 15 committed checksums verified. Do not repeat that historical assignment.
+- PR25: staging asset planner/runbook merged. No host, account, mobile build or database provisioned.
+- PR24: attribution runtime and mobile credit display integrated by this consolidation; recovered original NOUN cover/logo, source hash verified, two assets prepared and manifest validated. Real stage attachment and device observation are NOT performed. Distribution decision remains separate.
+- MATH3 and owner-interim TEACHER1 are implemented; teacher certification is not implied.
+- Protected 2179 baseline provenance remains unresolved. No current baseline comparison is claimed.
+- EVIDENCE1 arrived as an offline package in the conversation; it is not in master. Do not re-run its search. Integrator should validate/apply the exact package when available; unavailable historical log is not a runtime failure.
 
-Do EVIDENCE1/BASELINE2 preparation now; MATH4/attribution work can proceed in isolated branches. Stage/device and school decisions proceed when their exact prerequisites exist. Sequence requires its explicit batch authorisation. Final candidate DB verification follows lesson/runtime changes; production approval is last. No missing school answer, protected baseline or phone observation is replaced by an AI report.
+## Next bounded implementation assignments
+| Assignment | Exact specification | Inputs beyond repo | Completion |
+|---|---|---|---|
+| STAGING-BOOTSTRAP | [15_STAGING_BOOTSTRAP.md](15_STAGING_BOOTSTRAP.md) | Disposable PostgreSQL16; no host designation needed to implement/test | Tested first-admin CLI + runnable staging command groups; no provisioning claim |
+| MATH4 | [09_MATH4_REMAINING_SOURCE_ITEMS.md](09_MATH4_REMAINING_SOURCE_ITEMS.md) | JSS3 source ZIP | Effective corrections/equivalents + tests + generated records, PR |
+| BASELINE2 | [04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md](04_BASELINE1_COMPARE_CERTIFIED_EXPORT.md) | Named Primary/JSS1/2 archives in task | Agent-generated comparison + exact provenance limits, no forced2179 count |
 
-Latest assessment: [IMPLEMENTATION_STATUS_20261021.md](../IMPLEMENTATION_STATUS_20261021.md). The detailed older reports remain historical evidence, not current task assignment lists.
+## Continue existing workers, do not duplicate
+YO-TEXT, EN-SCHOOL and PRACTICAL1: use existing task files plus current contract. Owner-authorised labelled equivalent teaching does not need renewed generic permission. Missing school-specific inputs/observations stay separate. YO-LICENSE must not repeat image retrieval: assets are now committed under curriculum-assets/jss3/v4-attribution; see CONSOLIDATION_20261021/REPORT.md.
+
+## External prerequisites and final order
+- STAGE1 execution: owner names a nonproduction target and grants provision/population permission. Then create actual staging and hand build/accounts to DEVICE1. API preflight alone is not device acceptance.
+- SEQUENCE2: specific progression policy approval is still required; do not infer it from generic completion instructions.
+- After all runtime/content merges: integrator selects candidate; run current acceptance (eight DB suites) and device checks on that candidate. FINAL1 prepares concrete production operations and stops before writes for owner approval.
+- Licence distribution choice, practical observation and historical certification cannot be fabricated. They do not prevent independent supported implementation.
