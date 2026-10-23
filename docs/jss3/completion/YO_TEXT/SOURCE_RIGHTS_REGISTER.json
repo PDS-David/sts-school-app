@@ -45,8 +45,19 @@
       ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
-      "best_lead": "YT-09 (Olajubu 1977 chant, genre fits, rights not cleared)",
-      "missing": "Written permission from the rights holder of one named iwì egúngún chant (or a chanter's own text), with its transcription and translation checked; separately, an owner decision on whether èsà egúngún may stand for the scheme's iwì egúngún."
+      "best_lead": "None supportable as of 23 Oct 2026. Closest leads and why each fails are in IWI_SOURCE_CHECKS.json: YT-09 (rights not cleared), YT-IWI-02 (one printed line, no stated origin or translator, NC licence on the article page), YT-06 (study-composed oríkì, not an ẹ̀sà text), YT-05 (unsuitable for pupils and provenance not established).",
+      "missing": "One short iwì/ẹ̀sà egúngún passage, long enough to carry comprehension questions (the Ṣàngó study uses three lines), in tone-marked Yoruba with English translation, whose origin (performer or collector, place and date, or earlier publication) and translator are stated, under an open licence or written permission that covers that passage, with the transcription checked against source bytes or page images. For YT-IWI-02 the open items are exactly: the couplet's origin and translator (not stated), its length (one line printed), the licence (article page: CC BY-NC 4.0; downloaded PDF text carries no licence line) and the owner's decision on whether non-commercial terms suit this app. The earlier owner decision D2 on èsà = iwì is no longer needed to unblock: the equivalence is evidenced below.",
+      "equivalence_with_esa": {
+        "status": "SUPPORTED_BY_SCHOLARSHIP",
+        "claim": "ẹ̀sà and iwì egúngún are two names for one egúngún-cult chant form.",
+        "evidence": [
+          "YT-IWI-01 Adeduntan (2024), Introduction: ẹ̀sà is 'also called iwì'",
+          "YT-06 Akinbo et al. (2022), Section 3, p. 2: èsà 'is also known as Ìwí Egúngún'",
+          "YT-IWI-02 Fámúlẹ̀, footnote 9: 'Èṣà/iwì egúngún are praise songs or chants of egúngún'"
+        ],
+        "method_limit": "Read through a summarising fetch tool. The shell could not reach the hosts (HTTP 403 on CONNECT), so there are no source bytes, no SHA-256 and no page-image comparison; wording is as returned by that tool. Spelling varies across the sources (ẹ̀sà, èsà, Èṣà; iwì, Ìwí).",
+        "scope": "Allows a verified passage that its own source labels ẹ̀sà or iwì egúngún to be taught under the scheme's iwì egúngún label. It does not make a modern composed poem an inherited traditional chant, and it does not turn an oríkì into an iwì text."
+      }
     }
   ],
   "sources": [
@@ -206,6 +217,42 @@
       "finding": "Search hit only; not opened.",
       "verdict": "NOT_EXAMINED",
       "unblock": "Open the article; check genres printed, translator and licence"
+    },
+    {
+      "id": "YT-IWI-01",
+      "source": "Adeduntan (2024), Performative agency and transition in Àlàbí Ògúndépò's ìjálá and Yẹmí Ẹlẹ́buìbọn's Ifá chants, Africa 94(1):162-185, Cambridge University Press for the International African Institute",
+      "url": "https://doi.org/10.1017/S000197202400007X",
+      "genres_checked": [
+        "iwi-egungun"
+      ],
+      "rights_basis": "Open Access under the Creative Commons Attribution licence (CC BY); copyright held by the author, per the article page as read through the fetch tool.",
+      "finding": "Introduction states that ẹ̀sà is also called iwì and is chanted exclusively by members of the Egúngún cult; describes its structure in general terms. Prints no ẹ̀sà or iwì text (only ìjálá, Ifá and alásàláátù examples). Used as primary scholarship for the ẹ̀sà = iwì equivalence only. Read through a summarising fetch tool, not as bytes.",
+      "verdict": "NO_TEXT_TO_TEACH",
+      "unblock": "none for text; the equivalence evidence is recorded on the iwi-egungun genre entry"
+    },
+    {
+      "id": "YT-IWI-02",
+      "source": "Fámúlẹ̀, Èdè Àyàn: The Language of Àyàn in Yorùbá Art and Ritual of Egúngún, Yoruba Studies Review (Òkèigbó, Ondo State fieldwork)",
+      "url": "https://journals.flvc.org/ysr/article/view/129886",
+      "genres_checked": [
+        "iwi-egungun"
+      ],
+      "rights_basis": "Article page states 'This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.' The downloaded PDF text carries no licence or copyright line. Volume, issue, year and DOI were not stated in the text read. Whether non-commercial terms suit this app is an open owner question, not cleared here.",
+      "finding": "Footnote 9 states Èṣà/iwì egúngún are praise songs or chants of egúngún (equivalence evidence). The only chant it labels èṣà or iwì egúngún (pp. 17-18) is printed as one line of two clauses; the text read states no performer, collector, earlier source or translator for it, and an openly licensed article does not establish an unknown underlying text's provenance. Its other Egúngún texts are labelled oríkì, a petition-song (three lines, eyewitness account dated 25 July 2004, no Yoruba genre label) and àfòṣẹ, so they are not iwì texts. Read through a summarising fetch tool, not as bytes; no line was copied.",
+      "verdict": "REJECTED_PROVENANCE",
+      "unblock": "The PDF supplied and checked against its page images, with the iwì couplet's origin and translator stated by a source, enough lines for questions, and the non-commercial licence question settled by the owner"
+    },
+    {
+      "id": "YT-IWI-03",
+      "source": "africanpoems.net, 'Tricks' (page credits Ulli Beier (ed.), Yoruba Poetry, 1970; labelled Yoruba Iwì Egúngún)",
+      "url": "https://africanpoems.net/gods-ancestors/tricks/",
+      "genres_checked": [
+        "iwi-egungun"
+      ],
+      "rights_basis": "None stated on the page: no copyright notice, no reuse terms, no translator named. The underlying 1970 book is not open licensed.",
+      "finding": "Genre label fits (the page calls it Yoruba Iwì Egúngún) but only a website copy exists, with no translator and no reuse basis. The poem was not copied or checked. Read through a summarising fetch tool, not as bytes.",
+      "verdict": "NOT_REUSABLE",
+      "unblock": "Written permission from the 1970 rights holder, then transcription and translation checked against the book, not the website"
     },
     {
       "id": "YT-13",

@@ -1,0 +1,172 @@
+{
+  "task": "Y2 - iwi egungun text study",
+  "checked": "2026-10-23",
+  "base_sha": "8d46e8390d3e404565a69a7c6ee580bac1d14c22",
+  "lesson_id_reserved": "SUP-YO-IWI-TEXT",
+  "outcome": "NO_SUPPORTABLE_PASSAGE",
+  "implemented": false,
+  "method": {
+    "tools": "WebSearch and WebFetch (the fetch tool summarises pages with a small model; it does not return source bytes)",
+    "shell_egress": "Refused by policy, HTTP 403 on CONNECT: doi.org, www.gutenberg.org, archive.org, africanpoems.net, www.scielo.org.za, www.frontiersin.org. No source file was downloaded, so no SHA-256 exists for any source below.",
+    "limits": [
+      "Wording is as returned by the fetch tool and was not compared with page images or bytes.",
+      "The fetch tool declined to reproduce chant lines in one case, so no iwi/esa verse was read verbatim and none is recorded here.",
+      "Page numbers are as reported by the tool; PDF extraction loses page breaks."
+    ]
+  },
+  "equivalence_esa_iwi": {
+    "status": "SUPPORTED_BY_SCHOLARSHIP",
+    "claim": "esa and iwi egungun are two names for one egungun-cult chant form.",
+    "sources": [
+      {
+        "register_id": "YT-IWI-01",
+        "work": "Adeduntan (2024), Africa 94(1):162-185",
+        "locator": "Introduction",
+        "reported_wording": "ẹ̀sà, also called iwì",
+        "licence": "CC BY (Open Access)"
+      },
+      {
+        "register_id": "YT-06",
+        "work": "Akinbo, Samuel, Alaga and Akingbade (2022), Frontiers in Communication 7:1029400",
+        "locator": "Section 3, p. 2",
+        "reported_wording": "also known as Ìwí Egúngún",
+        "licence": "CC BY"
+      },
+      {
+        "register_id": "YT-IWI-02",
+        "work": "Fámúlẹ̀, Èdè Àyàn, Yoruba Studies Review",
+        "locator": "footnote 9 (about p. 17)",
+        "reported_wording": "Èṣà/iwì egúngún are praise songs or chants of egúngún",
+        "licence": "CC BY-NC 4.0 on the article page"
+      }
+    ],
+    "caveats": [
+      "Spelling varies (ẹ̀sà, èsà, Èṣà; iwì, Ìwí). Adeduntan's footnote 1 separately warns that iwì must not be confused with ewì, the general word for Yoruba poetry (reported by the tool; the footnote text itself was not retrieved).",
+      "Fámúlẹ̀'s footnote also says the same chants are called oríkì when they praise one family or lineage, so an oríkì is not automatically an iwì text.",
+      "Equivalence lets a passage that its own source labels esa or iwi egungun be taught under the scheme's iwi egungun label. It does not make a modern composed poem an inherited chant."
+    ]
+  },
+  "candidates": [
+    {
+      "register_id": "YT-06",
+      "work": "Akinbo et al. (2022), Example (3), Section 4.1, p. 3",
+      "licence": "CC BY",
+      "finding": "The four-line poem is an original oríkì written for the study by the third author and memorised by one student, who recited the same poem in speech mode, in ìjálá and in esa. It is not an esa-specific text and not an inherited chant.",
+      "selectable": false,
+      "reason": "A study-composed oríkì used for three vocal modes cannot stand for an iwi chant, even if labelled modern.",
+      "acquisition_status": "inaccessible",
+      "also": [
+        "unsuitable_for_jss3"
+      ]
+    },
+    {
+      "register_id": "YT-05",
+      "work": "Aransi (2024), esa excerpt in the Humour section",
+      "licence": "CC BY-SA 4.0",
+      "finding": "Per the Y2 brief the excerpt contains adult sexual comparisons. The earlier register finding (no performer, place, date or collection method) stands. Not re-read in this pass.",
+      "selectable": false,
+      "reason": "Unsuitable for a JSS3 pupil lesson; open licence does not establish the underlying text's provenance.",
+      "acquisition_status": "unsuitable_for_jss3",
+      "also": [
+        "permission_unresolved"
+      ]
+    },
+    {
+      "register_id": "YT-IWI-02",
+      "work": "Fámúlẹ̀, Yoruba Studies Review, the chant labelled esa or iwi egungun, about pp. 17-18",
+      "licence": "Article page: CC BY-NC 4.0. PDF text: no licence line.",
+      "finding": "One printed line of two clauses. The text read names no performer, collector, earlier source or translator for it. Theme is the unknowability of the spirit behind egungun; nothing in the chant is unsuitable for pupils.",
+      "selectable": false,
+      "reason": "Genre label fits but provenance, translator and length are missing, the licence is non-commercial, and bytes could not be checked.",
+      "acquisition_status": "permission_unresolved",
+      "also": [
+        "inaccessible"
+      ]
+    },
+    {
+      "register_id": "YT-09",
+      "work": "Olajubu (1977) chant via africanpoems.net",
+      "licence": "None stated",
+      "finding": "Genre fits; no reuse basis. Text deliberately not copied.",
+      "selectable": false,
+      "reason": "Rights not cleared.",
+      "acquisition_status": "permission_unresolved",
+      "also": []
+    },
+    {
+      "register_id": "YT-IWI-03",
+      "work": "africanpoems.net 'Tricks' (credits Beier, Yoruba Poetry, 1970; labelled Iwi Egungun)",
+      "licence": "None stated",
+      "finding": "Website copy only; no translator; no reuse terms. Text not copied.",
+      "selectable": false,
+      "reason": "Rights not cleared.",
+      "acquisition_status": "permission_unresolved",
+      "also": []
+    },
+    {
+      "register_id": "YT-IWI-01",
+      "work": "Adeduntan (2024)",
+      "licence": "CC BY",
+      "finding": "Describes esa structure in general terms; prints no esa or iwi text.",
+      "selectable": false,
+      "reason": "No text to teach.",
+      "acquisition_status": "not_located",
+      "also": []
+    }
+  ],
+  "not_examined": [
+    {
+      "item": "Fámúlẹ̀ other Egúngún texts (oríkì, three-line petition-song dated 25 July 2004, àfòṣẹ saying)",
+      "acquisition_status": "unsuitable_for_jss3",
+      "note": "Not labelled iwi/esa, so not iwi texts; suitability of content itself is not the reason."
+    },
+    {
+      "item": "Drewal, Arts of Egungun Among Yoruba (UMMA copy)",
+      "acquisition_status": "inaccessible",
+      "note": "Listed by search only; not opened; rights not checked."
+    },
+    {
+      "item": "University of Ibadan repository thesis on Egungun in the performing arts of Osogbo",
+      "acquisition_status": "inaccessible",
+      "note": "Fetch returned no readable content; licence and chant content unknown."
+    },
+    {
+      "item": "Johnson (1921) and Rouget (1952)",
+      "acquisition_status": "inaccessible",
+      "note": "Carried unchanged from the register (YT-03, YT-11)."
+    }
+  ],
+  "exact_dependency": "A short iwi/esa egungun passage long enough for comprehension questions, in tone-marked Yoruba with English translation, with its origin and translator stated, under an open licence or written permission covering that passage, transcription checked against source bytes or page images. For YT-IWI-02 specifically: the PDF supplied, the couplet's origin and translator established by a source, more than one line, and the owner's decision on CC BY-NC.",
+  "not_done": [
+    "No lesson, attribution record, coverage row or CSV was changed. YO-SL-094 stays REPLACEMENT_IMPLEMENTED_PARTIAL.",
+    "No fresh capture or IMPLEMENTED_LESSONS.csv regeneration: no lesson changed and the private archive was not available here.",
+    "No observed performance is claimed; nobody was contacted."
+  ],
+  "status_vocabulary": {
+    "not_located": "searched; no usable passage found in the source",
+    "inaccessible": "exists but could not be read as bytes or verbatim in this environment",
+    "permission_unresolved": "text exists; reuse basis or provenance is not established",
+    "unsuitable_for_jss3": "text read or described; not appropriate for this pupil lesson"
+  },
+  "modern_equivalent_assessment": {
+    "candidate": "YT-06 (Akinbo et al. 2022, Example (3))",
+    "principle": "A clearly labelled, source-backed modern equivalent is not disqualified for being modern. It is assessed against the objective (text study of iwi egungun) and never labelled an inherited traditional chant.",
+    "rights": "CC BY, copyright held by the article authors; the poem was composed by a co-author, so its origin is documented.",
+    "objective_fit": "Fails. The poem is a general praise poem (oríkì) that one performer recited in speech mode, in ìjálá and in esa. Its words carry nothing specific to esa/iwi, so studying them would teach a praise poem, not the iwi genre.",
+    "could_it_work_if_relabelled": "Only as \"a modern praise poem chanted in esa mode for a study\", which would not meet the objective and would change what the lesson claims. Not done.",
+    "blocking_limits": [
+      "Lines were not read verbatim or as bytes in this environment (fetch tool declined; shell refused), so tone marks, content suitability and translation could not be verified."
+    ],
+    "verdict": "NOT_ADOPTED"
+  },
+  "overall_acquisition_status": {
+    "open_licence_iwi_passage_with_stated_origin": "not_located",
+    "closest_lead": "YT-IWI-02 permission_unresolved",
+    "curriculum_gap": "OPEN (YO-SL-094 stays PARTIAL)"
+  },
+  "status_separation": {
+    "implementation": "not done",
+    "verification": "equivalence evidenced; candidates assessed; no byte-level check possible here",
+    "source_acquisition": "open, see exact_dependency"
+  }
+}
