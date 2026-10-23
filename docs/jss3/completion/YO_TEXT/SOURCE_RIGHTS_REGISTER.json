@@ -34,8 +34,8 @@
       ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
-      "best_lead": "none found; no candidate prints Ọya pípè text",
-      "missing": "Any Ọya pípè passage with the same provenance, transcription, translation and reuse basis as above."
+      "best_lead": "none usable after Y1 (23 Oct 2026): YT-14 prints no Ọya text; YT-15 prints Ọya lines but is a copyrighted songbook; YT-16 is a paywalled lead not checked for Ọya",
+      "missing": "One named Ọya pípè / oríkì Ọya passage of at least three lines, with (1) Yoruba with tone marks and under-dots, one performed line per line; (2) a named translator and line-aligned English; (3) a named collector/transcriber or published locator (title, year, page/line range); (4) a reuse basis covering that passage: an open licence printed on the work whose licensor owns the passage, or written permission naming the exact passage and display to enrolled students in the school app; (5) for hashing, either shell egress to the source host or the source file supplied privately so its SHA-256 and locator can be recorded. Nothing has been invented or substituted."
     },
     {
       "id": "iwi-egungun",
@@ -220,6 +220,42 @@
       "unblock": "Short written text study implemented; complete-chant study, observed performance and production distribution are not certified.",
       "source_sha256": "766bbd6485aa7f039734a0936ebad381060bc7c282e5be2dcda03b96770c24b6",
       "lesson_id": "SUP-YO-ORAL-GENRES"
+    },
+    {
+      "id": "YT-14",
+      "source": "Láyadé and Ògúnyẹmí (2025), Gods, music and rainmaking in Yorùbáland, full PDF text (pp. 88–96) re-read for Ọya",
+      "url": "https://letterkunde.africa/article/download/18622/25097",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "As YT-13 (publisher page states CC BY-SA 4.0). Irrelevant to Ọya because no Ọya text is printed.",
+      "finding": "Read through the fetch tool (extracted text, not source bytes; nothing hashed). All printed chant lines are Ṣàngó oríkì; the word Ọya does not occur in the article body. Nothing to teach for Ọya pípè.",
+      "verdict": "NO_TEXT_TO_TEACH",
+      "unblock": "none for this article"
+    },
+    {
+      "id": "YT-15",
+      "source": "Ifayemisi Elebuibon, Canciones para los Òrìṣà / Orisa Songs (Scribd copy of a document carrying '©2015 IFAYEMISI ELEBUIBON')",
+      "url": "https://www.scribd.com/document/617540469/9-Canciones-para-los-Ori%E1%B9%A3as-Orisa-Songs-Ifayemisi-Elebuibon",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "Copyright notice on the document; no open licence seen. Whether the Scribd upload is authorised is not established.",
+      "finding": "Search extract shows Ọya chant lines with partial English. Tone marks and word division are inconsistent in the extract, there is no named transcriber or checked translation, and the lines were deliberately not copied. Not a defensible classroom source.",
+      "verdict": "NOT_REUSABLE",
+      "unblock": "Written permission from Ifayemisi Elebuibon (or the rights holder) for one named Ọya passage, with a transcription and translation checked against the original publication, not the Scribd copy."
+    },
+    {
+      "id": "YT-16",
+      "source": "Thomas Lindon, Oríkì Òrìsà: the Yoruba prayer of praise, Journal of Religion in Africa 20(2), Brill",
+      "url": "https://brill.com/previewpdf/journals/jra/20/2/article-p205_5.xml",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "Publisher preview only; no open licence seen.",
+      "finding": "The preview states that the complete text of one praise hymn is presented. Which òrìṣà it honours was not visible in the preview, so it is not known whether it is Ọya.",
+      "verdict": "UNVERIFIED_LEAD",
+      "unblock": "A reader with the full article reports whether the hymn is to Ọya and its page range; then publisher/author permission for that passage."
     }
   ]
 }
