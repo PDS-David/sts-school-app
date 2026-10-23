@@ -1,0 +1,16 @@
+# Remaining gates after repository closeout
+
+Do not restart completed audits or treat all historical OPEN rows as newly missing lessons. Consult current implementation and the exact gate below. No production release is claimed.
+
+| Gate | Current evidence | Required next operation/input |
+|---|---|---|
+| Protected Primary/JSS1/JSS2 identity | BASELINE3 proves equal reconstructions but not a certified 2179-row set: 1450 Primary + 741 secondary = 2191; nested variant 1474 + 741 = 2215 and has duplicate blockers. R6 does not define 2179. | Obtain an identified pre-JSS3 certified export or backup with provenance, plus a release snapshot. If unavailable, owner must explicitly resolve the historical-baseline requirement; never trim counts to 2179 or call a present snapshot historical. See BASELINE3/REPORT.md and P1_BASELINE tooling. |
+| Yoruba text-study | YO_TEXT/SOURCE_RIGHTS_REGISTER.json records three unsupported genres: Ṣàngó pípè, Ọya pípè, iwì egúngún. Genre profiles are implemented but are not text study. | Acquire verified reusable passages/transcriptions and implement textual teaching, exercises and marking keys. Use YO_TEXT/PERMISSION_AND_TRANSCRIPTION_REQUIREMENTS.md; previous searches are not proof that no source exists. |
+| Yoruba source ambiguities and named books | SCHOOL_DECISIONS_REQUIRED.md A1–A7 and B1–B2 retain exact source ambiguities; equivalent profiles cannot establish original intended wording or a government-prescribed title. | School/qualified Yoruba teacher supplies exact readings and titles; implement any resulting changes. Do not fabricate a teacher answer. |
+| Yoruba distribution choice | YO_LICENSE/OWNER_DECISION.md; attribution/assets already implemented, distribution choice still open. | Owner selects the documented distribution option or supplies an authorised alternative; then verify the effective app display on the chosen target. |
+| Sequencing | S1_SEQUENCE_DESIGN.md is a design, not an implemented unlock-policy change. Teacher schedule has 46 supplements without a recorded week and list-item anchors needing interpretation. | Owner approves the specific sequencing policy; then execute NEXT_AGENT_TASKS/05_SEQUENCE2_IMPLEMENT_APPROVED_POLICY.md with mapping and progression regression checks. Do not infer permission to relock passed work. |
+| Staging and devices | PR33 fixes executable EAS instructions; STAGE1_DEVICE1_EXEC_20261023/REPORT.md remains blocked. | Identify staging backend/database, secure access, mobile build profile and real devices; run runbook and record observed results. No invented device PASS. |
+| School practicals | Written tasks, safety guidance and marking rubrics exist (COVERAGE.csv). | School supplies facilities/supervision/specific brief where needed and records actual performance. This is not a missing software implementation or a reason to rewrite the lessons. |
+| Production | Repository publication is authorised; production deployment/import/migrations/real-student cleanup are not. | After gates, prepare a concrete target, backup, protected-row comparison, correction/cache plan, rollback and rehearsal results for the owner's release approval. |
+
+Independent work may continue while an external input is missing. Stop only the dependent operation. Do not start SS curriculum work by claiming these JSS3 gates have passed.

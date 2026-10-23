@@ -1,5 +1,7 @@
 # School decisions required — English and Yoruba (G2, 19 Oct 2026)
 
+**23 October implementation update:** Existing owner authorisation already permits clearly labelled equivalent English texts, replacement sound contrasts and original exam-style practice. Do not ask for renewed generic permission under B3/C/E. Exact school-prescribed titles, original missing symbols and authentic past-paper status remain separate source claims. See completion/ENGLISH_PRACTICAL_CLOSEOUT/REPORT.md. The three Yoruba genre text-study gaps remain open under completion/YO_TEXT; genre profiles do not close them.
+
 No school response was supplied to this pass, so nothing below is teacher-approved.
 
 Only decisions that sources could not settle. No teacher review has been evidenced; every lesson here is AI-prepared and uncertified. "App treatment" describes repository lesson content, not verified production delivery or an approved choice. A decision alone does not close a content gap: the resulting teaching must be implemented and its objective coverage verified. No omission is proposed. Source wording is printed without tone marks, as in the school documents. Gap IDs are those in `CURRENT_COVERAGE.csv` (scheme-line IDs `SL-` in brackets; where a line has no coverage ID only the `SL-` ID is given).

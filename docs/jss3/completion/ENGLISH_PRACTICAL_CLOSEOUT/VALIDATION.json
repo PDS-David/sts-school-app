@@ -1,0 +1,60 @@
+{
+  "node": "24.19.0",
+  "full_source_tests": {
+    "tests": 344,
+    "passed": 337,
+    "failed": 0,
+    "skipped": 7,
+    "skip_reason": "Seven explicitly database-dependent tests; no local PostgreSQL run claimed"
+  },
+  "focused_tests": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "acceptance_status": "INCOMPLETE",
+  "acceptance_reason": "Corpus passed; database acceptance deliberately not run",
+  "checks": [
+    {
+      "name": "python-dependencies",
+      "exit_code": 0
+    },
+    {
+      "name": "capture",
+      "exit_code": 0
+    },
+    {
+      "name": "corpus",
+      "exit_code": 0
+    },
+    {
+      "name": "protected-comparer-unit",
+      "exit_code": 0
+    },
+    {
+      "name": "runner-unit",
+      "exit_code": 0
+    }
+  ],
+  "backend_and_mobile_types": "PASS",
+  "static_and_asset_checks": "PASS",
+  "ci": "See pull request checks for this commit; not part of local no-DB acceptance",
+  "private_logs_sha256": {
+    "runner-unit.log": "27c4a39d34ece4cbc66cc59cb0870c7abe4cc0a5f009205bdd0ea06a93f8b3ac",
+    "capture.log": "7a95490c210d280565a8155bc6c678d92e957b0d9f23c7bd75c10b7548addb14",
+    "protected-comparer-unit.log": "72aa70eddf2af1422954b4ca501cabe9a8c97ab48ee3979bd69efcf2e7218f88",
+    "corpus.log": "ba2154c6e70c77d3753489060a7795a77b015b2c303384dc152a0c828fc7f44f",
+    "python-dependencies.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "capture/original-dry-run.log": "1ffcfab78162852228599f8a1541d8d6266eb15322c38c95108f6d300cfa8e44",
+    "capture/supplemented-dry-run.log": "2e7a86297c800fadfc9387cc6f678480f73ac195d311af407aac5360aa02e8db",
+    "corpus/backend-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "corpus/mobile-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "corpus/capture.log": "7a95490c210d280565a8155bc6c678d92e957b0d9f23c7bd75c10b7548addb14",
+    "corpus/asset-focused.log": "a59d227c83fff99101dc95ade09857e584d3d994bc61b0d52075fca332ff5e07",
+    "corpus/static.log": "9bd0300a75be6df7c837c1182247f1179fd6c321a007b9e8603670c619b7c147",
+    "corpus/jss3-full.log": "0f937cfb0a5958d703a54cf2864ac8b230101b57ade1ee4ad4fafc1c36876211",
+    "corpus/capture/original-dry-run.log": "1ffcfab78162852228599f8a1541d8d6266eb15322c38c95108f6d300cfa8e44",
+    "corpus/capture/supplemented-dry-run.log": "2e7a86297c800fadfc9387cc6f678480f73ac195d311af407aac5360aa02e8db"
+  },
+  "production_actions": false
+}
