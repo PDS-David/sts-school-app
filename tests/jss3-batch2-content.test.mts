@@ -15,7 +15,7 @@ test('Batch 2 lessons exist in the right subject and First/Second Term bucket', 
 test('Yoruba oral-genre lesson covers all five scheme genres and invents no verse', () => {
   const b = byId('SUP-YO-ORAL-GENRES').body;
   for (const g of ['ìjálá', 'iwì egúngún', 'Ọya pípè', 'Ṣàngó pípè', 'iyẹ̀rẹ̀ Ifá']) assert.ok(b.includes(g), g);
-  assert.match(b, /supplies no verses/); assert.match(b, /must not be invented or 'completed' from memory/);
+  assert.match(b, /No Ọya pípè or iwì egúngún verse is supplied here/); assert.match(b, /must not be invented or 'completed' from memory/);
   assert.ok(!/"[^"]{40,}"/.test(b) && !/“[^”]{40,}”/.test(b), 'no long quoted chant text');
   const origin = byId('SUP-YO-ORAL-GENRES').origin;
   assert.match(origin, /'yala'/); // printed wording preserved
@@ -87,7 +87,7 @@ test('new Yoruba lessons keep uncertain scheme terms uncertain and invent no tra
   assert.match(t.body, /First produced by the National Open University of Nigeria/); assert.match(t.body, /CC BY-SA 4\.0/); assert.match(t.body, /Kolawole 2023, p\. 86;[^*]*CC BY-SA 4\.0 as stated on the article page/);
   assert.ok(t.sources.some(x => x.url.includes('10.17159/tl.v60i3.14628')) && t.sources.some(x => x.url.includes('ENG105_02.pdf')));
   // the excerpts are the only quoted chant lines; the genre lesson stays verse-free
-  assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
+  assert.match(byId('SUP-YO-ORAL-GENRES').body, /No Ọya pípè or iwì egúngún verse is supplied here/);
 });
 test('all 27 Yoruba lead rows now carry an individually reviewed decision', () => {
   const closure = csv('docs/jss3/SEMANTIC_CLOSURE.csv'); const decisions = csv('docs/jss3/replacements/SEMANTIC_DECISIONS.csv');
@@ -569,7 +569,7 @@ test('Yoruba excerpt licences are recorded as share-alike and the unverified sta
   const o = csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-11')!; assert.match(o.detail, /Attribution-ShareAlike 4\.0/); assert.match(o.detail, /G2 check, 19 Oct 2026/); assert.match(o.detail, /full extracted text/); assert.match(o.detail, /line-end punctuation/); assert.match(o.detail, /printed English layout/);
   assert.ok(!/CC BY\)/.test(csv('docs/jss3/OPEN_BLOCKERS.csv').find(r => r.id === 'OB-03')!.detail));
   // the verse-free genre lesson stays verse-free
-  assert.match(byId('SUP-YO-ORAL-GENRES').body, /supplies no verses/);
+  assert.match(byId('SUP-YO-ORAL-GENRES').body, /No Ọya pípè or iwì egúngún verse is supplied here/);
 });
 
 // ---- Batch 2 combined-state reconciliation ----

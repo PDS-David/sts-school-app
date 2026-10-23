@@ -72,7 +72,7 @@ test('the validator rejects false claims of text coverage', () => {
   assert.ok(bad(r => { r.sources[0].verdict = 'USABLE_VERIFIED'; }).some(p => /needs source_sha256/.test(p)));
   assert.ok(bad(r => { r.sources[0].verdict = 'LOOKS_FINE'; }).some(p => /unknown verdict/.test(p)));
   assert.ok(bad(r => { r.sources[1].id = r.sources[0].id; }).some(p => /duplicate source id/.test(p)));
-  assert.ok(bad(r => { r.genres[0].missing = ''; }).some(p => /exactly what is missing/.test(p)));
+  assert.ok(bad(r => { r.genres[0].status = 'NOT_SUPPORTED'; r.genres[0].lesson_id = null; r.genres[0].missing = ''; }).some(p => /exactly what is missing/.test(p)));
   assert.ok(bad(r => { r.genres.pop(); }).some(p => /missing from register/.test(p)));
 });
 
@@ -99,4 +99,25 @@ test('existing Yoruba lessons and the NOUN/Kolawole attribution are preserved, n
   const rec = JSS3_ATTRIBUTIONS.filter(a => a.supplement_id === 'SUP-YO-ORAL-TEXTS');
   assert.equal(rec.length, 1);
   assert.deepEqual(rec[0].credits.map(c => c.id).sort(), ['kolawole-2023', 'noun-eng105-m2']);
+});
+
+
+test('Sango excerpt is preserved exactly, has answers, and does not claim the two remaining genres', () => {
+  const evidence = JSON.parse(readFileSync(path.join(root, 'docs/jss3/completion/YO_TEXT_IMPLEMENTATION/SANGO_EXCERPT.json'), 'utf8'));
+  const lesson = JSS3_SUPPLEMENTS.find(s => s.id === 'SUP-YO-ORAL-GENRES')!;
+  assert.ok(lesson.body.includes(evidence.yoruba.join('\n')));
+  assert.ok(lesson.body.includes(evidence.printed_translation.join('\n')));
+  assert.match(lesson.body, /27 without observation, or 35/);
+  assert.match(lesson.body, /out of 19/);
+  assert.match(lesson.body, /Accompaniment varies/);
+  assert.doesNotMatch(lesson.body, /chanted speech without drum accompaniment/);
+  assert.match(lesson.body, /10\. Mama Ṣàngódeyi/);
+  assert.equal(register.genres.find((g:any)=>g.id==='sango-pipe').status, 'SUPPORTED');
+  for (const id of ['oya-pipe','iwi-egungun']) assert.equal(register.genres.find((g:any)=>g.id===id).status, 'NOT_SUPPORTED');
+  assert.equal(statusOf('YO-SL-094'), 'REPLACEMENT_IMPLEMENTED_PARTIAL');
+});
+
+test('changed Sango body invalidates its attribution hash', () => {
+ const modified = JSS3_SUPPLEMENTS.map(s => s.id==='SUP-YO-ORAL-GENRES' ? {...s, body:s.body+' tamper'} : s);
+ assert.ok(registerProblems(register,modified,JSS3_ATTRIBUTIONS).some(p=>/attribution body hash is stale/.test(p)));
 });

@@ -1,8 +1,8 @@
 {
   "register_id": "YO-TEXT-SOURCE-RIGHTS",
-  "checked": "2026-10-22",
+  "checked": "2026-10-23",
   "base_sha": "6bac4640f7c7f6bc7872824f5d724f863afd8bca",
-  "method_note": "Web search and fetched page text only. Shell egress to source hosts was refused (HTTP 403 on CONNECT: gutenberg.org, archive.org, wikisource.org), and the fetch tool returns a model-summarised page, not source bytes, and would not return chant lines verbatim. No source file was downloaded or hashed in this pass and no transcription was compared word for word. A verdict below is a rights/suitability finding, not a transcription check.",
+  "method_note": "Web search and fetched page text only. Shell egress to source hosts was refused (HTTP 403 on CONNECT: gutenberg.org, archive.org, wikisource.org), and the fetch tool returns a model-summarised page, not source bytes, and would not return chant lines verbatim. No source file was downloaded or hashed in this pass and no transcription was compared word for word. A verdict below is a rights/suitability finding, not a transcription check. Update: YT-13 was downloaded as actual HTML, hashed and checked by direct DOM extraction; its publisher licence page was downloaded and checked. Earlier method limits remain historical.",
   "verdicts": {
     "USABLE_VERIFIED": "genre, transcription, translation and reuse basis all verified; a lesson and attribution record exist",
     "NO_TEXT_TO_TEACH": "source examined; prints no chant/praise text for the target genre",
@@ -16,16 +16,22 @@
     {
       "id": "sango-pipe",
       "genre": "Ṣàngó pípè",
-      "scheme_ids": ["YO-SL-089", "YO-SL-094"],
-      "status": "NOT_SUPPORTED",
-      "lesson_id": null,
-      "best_lead": "YT-03 (Johnson 1921), unreadable here; a rights-cleared text from a chanter or Kolawole's recordings",
-      "missing": "A named Ṣàngó pípè passage with performer or collector, date and place, tone-marked Yoruba transcription, a named translation, and a written or licence basis for reuse."
+      "scheme_ids": [
+        "YO-SL-089",
+        "YO-SL-094"
+      ],
+      "status": "SUPPORTED",
+      "lesson_id": "SUP-YO-ORAL-GENRES",
+      "best_lead": "YT-13 implemented short text study",
+      "missing": "",
+      "coverage_limit": "Short published passage and written analysis; not complete-chant memorisation or observed performance. Other genres remain open."
     },
     {
       "id": "oya-pipe",
       "genre": "Ọya pípè",
-      "scheme_ids": ["YO-SL-094"],
+      "scheme_ids": [
+        "YO-SL-094"
+      ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
       "best_lead": "none found; no candidate prints Ọya pípè text",
@@ -34,7 +40,9 @@
     {
       "id": "iwi-egungun",
       "genre": "iwì egúngún",
-      "scheme_ids": ["YO-SL-094"],
+      "scheme_ids": [
+        "YO-SL-094"
+      ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
       "best_lead": "YT-09 (Olajubu 1977 chant, genre fits, rights not cleared)",
@@ -46,7 +54,10 @@
       "id": "YT-01",
       "source": "A. B. Ellis, The Yoruba-Speaking Peoples of the Slave Coast of West Africa (1894), Chapter II (Chief Gods), via the sacred-texts mirror",
       "url": "https://neonvagabond.xyz/mirrors/sacred-texts/afr/yor/yor03.htm",
-      "genres_checked": ["sango-pipe", "oya-pipe"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe"
+      ],
       "rights_basis": "1894 publication; public domain by age (not separately verified for every jurisdiction)",
       "finding": "Gives Yoruba names and epithets with English glosses (for example Jakuta, Magba, Afefe). Priests' chants, salutations and imprecations are printed in English only.",
       "verdict": "NO_TEXT_TO_TEACH",
@@ -56,7 +67,9 @@
       "id": "YT-02",
       "source": "A. B. Ellis (1894), Chapter VI (Egungun, Oro, Abiku, and Various Superstitions), same mirror",
       "url": "https://neonvagabond.xyz/mirrors/sacred-texts/afr/yor/yor07.htm",
-      "genres_checked": ["iwi-egungun"],
+      "genres_checked": [
+        "iwi-egungun"
+      ],
       "rights_basis": "as YT-01",
       "finding": "No Egúngún chant. One Yoruba saying with translation (a warriors' saying) and single glossed words only.",
       "verdict": "NO_TEXT_TO_TEACH",
@@ -66,7 +79,11 @@
       "id": "YT-03",
       "source": "Samuel Johnson, The History of the Yorubas (1921), Internet Archive scan",
       "url": "https://archive.org/details/historyofyorubas00john",
-      "genres_checked": ["sango-pipe", "oya-pipe", "iwi-egungun"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe",
+        "iwi-egungun"
+      ],
       "rights_basis": "Author died 1901 (existing OB-03 record). The 1921 edition was published posthumously and edited by Obadiah Johnson; his status and the edition's editorial matter were not checked.",
       "finding": "Only the first ~100,000 characters of the PDF text (partway through Chapter I) could be read; the fetch tool offers no offset. Nothing about Ṣàngó, Ọya or Egúngún appears in that part. A Wikisource page-level transcription exists but its page could not be retrieved. The religion and Ṣàngó chapters are unread, so whether the book prints any chant text for these genres is unknown.",
       "verdict": "UNVERIFIED_LEAD",
@@ -76,7 +93,11 @@
       "id": "YT-04",
       "source": "Kolawole (2023), Variations in the application of the components of the oral performance to Yoruba chants, Tydskrif vir Letterkunde 60(3):75-89",
       "url": "https://doi.org/10.17159/tl.v60i3.14628",
-      "genres_checked": ["sango-pipe", "oya-pipe", "iwi-egungun"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe",
+        "iwi-egungun"
+      ],
       "rights_basis": "CC BY-SA 4.0 per the article page; the PDF front matter says only 'Creative Commons Attribution License' (existing discrepancy, kept)",
       "finding": "Carried from the 19 October 2026 full read recorded in OB-03: names Ṣàngó pípè, Ọya pípè and èsà egúngún but prints lines for Èṣù pípè, ofò, ìyẹ̀rẹ̀ Ifá, ìjálá and oríkì orílẹ̀ only. Not re-read in this pass.",
       "verdict": "NO_TEXT_TO_TEACH",
@@ -86,7 +107,11 @@
       "id": "YT-05",
       "source": "Aransi Ayoola Oladunke (2024), Yoruba chanters' performance strategies, Journal of Languages, Linguistics and Literary Studies 4(2)",
       "url": "https://journals.jozacpublishers.com/index.php/jllls/article/download/745/399/1987",
-      "genres_checked": ["sango-pipe", "oya-pipe", "iwi-egungun"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe",
+        "iwi-egungun"
+      ],
       "rights_basis": "Article states CC BY-SA 4.0 (the page's wording reads 'Creative Common Attribution (CC BY-SA 4.0)').",
       "finding": "Prints eight Yoruba chant excerpts with English, one labelled èsà (about eleven lines, Humour section, near p. 103; page numbers approximate). Ṣàngó pípè and Ọya pípè are not mentioned. The article gives no performer, place, date or collection method for any excerpt and no chanter consent statement, and it does not say that èsà egúngún is iwì egúngún.",
       "verdict": "REJECTED_PROVENANCE",
@@ -96,7 +121,9 @@
       "id": "YT-06",
       "source": "Akinbo, Samuel, Alaga and Akingbade (2022), An acoustic study of vocal expression in two genres of Yoruba oral poetry, Frontiers in Communication 7:1029400",
       "url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/pdf",
-      "genres_checked": ["iwi-egungun"],
+      "genres_checked": [
+        "iwi-egungun"
+      ],
       "rights_basis": "CC BY",
       "finding": "Compares ìjálá and èsà. Its four-line example is a poem composed by a co-author and chanted by one student for the study; it is not a traditional text.",
       "verdict": "NOT_SUITABLE",
@@ -106,7 +133,11 @@
       "id": "YT-07",
       "source": "González and Oludare (2022), The Speech Surrogacy Systems of the Yoruba Dùndún and Bàtá Drums, Frontiers in Communication 6:652542",
       "url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2021.652542/pdf",
-      "genres_checked": ["sango-pipe", "oya-pipe", "iwi-egungun"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe",
+        "iwi-egungun"
+      ],
       "rights_basis": "CC BY",
       "finding": "No chant lines for the target genres; researcher-composed test sentences and one proverb.",
       "verdict": "NO_TEXT_TO_TEACH",
@@ -116,7 +147,9 @@
       "id": "YT-08",
       "source": "Akinyemi (2026), Myth, Legend, and Poetics of Heroism in Ọba Kòso and Ṣàngó, in Echoes of Yoruba Oral Traditions in Contemporary Nigerian Dramaturgy (Palgrave Macmillan)",
       "url": "https://link.springer.com/chapter/10.1007/978-3-032-11501-0_3",
-      "genres_checked": ["sango-pipe"],
+      "genres_checked": [
+        "sango-pipe"
+      ],
       "rights_basis": "Not open access; paywalled; copyright line 'under exclusive license to Springer Nature Switzerland AG'",
       "finding": "The notes cite a Ṣàngó chant excerpt but the page prints neither lines nor translation. Full chapter not accessible.",
       "verdict": "NOT_REUSABLE",
@@ -126,7 +159,9 @@
       "id": "YT-09",
       "source": "africanpoems.net, 'But for Death' (page credits Oludare Olajubu, 'Iwi Egungun Chants: an Introduction', in Forms of Folklore in Africa, ed. Bernth Lindfors, Texas, 1977)",
       "url": "https://africanpoems.net/gods-ancestors/but-for-death/",
-      "genres_checked": ["iwi-egungun"],
+      "genres_checked": [
+        "iwi-egungun"
+      ],
       "rights_basis": "None stated. The site gives no licence, no translator and no reuse permission. The underlying 1977 publication is not open licensed.",
       "finding": "Genre fits: the page describes the poem as an Iwì Egúngún chant performed by masked dancers. The text was deliberately not copied or checked in this pass.",
       "verdict": "NOT_REUSABLE",
@@ -136,7 +171,11 @@
       "id": "YT-10",
       "source": "NOUN YOR 215 Introduction to Yorùbá Oral Literature (already cited by SUP-YO-ORAL-GENRES)",
       "url": "https://nou.edu.ng/coursewarecontent/YOR%20215%20INTRODUCTION%20TO%20YOR%C3%99B%C3%81%20ORAL%20LITERATURE.pdf",
-      "genres_checked": ["sango-pipe", "oya-pipe", "iwi-egungun"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe",
+        "iwi-egungun"
+      ],
       "rights_basis": "All rights reserved, as already recorded in the lesson's source note",
       "finding": "Used for paraphrase only. Not re-read in this pass.",
       "verdict": "NOT_REUSABLE",
@@ -146,7 +185,9 @@
       "id": "YT-11",
       "source": "Rouget (1952) 'Iwi Egungun' recording, CNRS archive (carried from OB-03)",
       "url": "https://archives.crem-cnrs.fr/archives/items/CNRSMH_E_1958_006_001_001_03/",
-      "genres_checked": ["iwi-egungun"],
+      "genres_checked": [
+        "iwi-egungun"
+      ],
       "rights_basis": "Not verified (existing OB-03 note: audio only, no transcript)",
       "finding": "Audio only per the earlier check; not opened here.",
       "verdict": "NOT_EXAMINED",
@@ -156,11 +197,29 @@
       "id": "YT-12",
       "source": "Ulli Beier, Yorùbá Oral Poems (Delos)",
       "url": "https://journals.upress.ufl.edu/delos/article/view/765",
-      "genres_checked": ["sango-pipe", "oya-pipe", "iwi-egungun"],
+      "genres_checked": [
+        "sango-pipe",
+        "oya-pipe",
+        "iwi-egungun"
+      ],
       "rights_basis": "Not checked",
       "finding": "Search hit only; not opened.",
       "verdict": "NOT_EXAMINED",
       "unblock": "Open the article; check genres printed, translator and licence"
+    },
+    {
+      "id": "YT-13",
+      "source": "Láyadé and Ògúnyẹmí (2025), Gods, music and rainmaking in Yorùbáland",
+      "url": "https://doi.org/10.17159/tl.v62i3.18622",
+      "genres_checked": [
+        "sango-pipe"
+      ],
+      "rights_basis": "Publisher article page explicitly licenses CC BY-SA 4.0; named chanter attributed. Credit and licence are delivered. Production distribution decision remains separate.",
+      "finding": "Downloaded HTML hashed; later three-line quotation and printed English checked exactly; close-reading section and marking key implemented.",
+      "verdict": "USABLE_VERIFIED",
+      "unblock": "Short written text study implemented; complete-chant study, observed performance and production distribution are not certified.",
+      "source_sha256": "766bbd6485aa7f039734a0936ebad381060bc7c282e5be2dcda03b96770c24b6",
+      "lesson_id": "SUP-YO-ORAL-GENRES"
     }
   ]
 }
