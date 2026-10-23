@@ -1,0 +1,10 @@
+{
+  "_NEW_OUTPUT_NAME": "Template only. Copy to <label>_provenance.json outside Git and fill every field with real facts. Placeholders make validate_export.py report NOT_READY.",
+  "origin": "<who/what system produced the data: e.g. named backup job, named person, named database role>",
+  "export_taken_utc": "<ISO-8601 UTC time the export file was produced>",
+  "data_as_of_utc": "<ISO-8601 UTC time the DATA state reflects: the backup time, or the date the approval record certifies>",
+  "scope": "<which databases/schools/classes; must state whether it is exactly the export SQL scope>",
+  "approval_record": "<identifier or location of the owner's certification/approval record; for release-snapshot: the owner's release-candidate designation>",
+  "export_method": "<exact command line and tool versions used, including psql/pg_restore version>",
+  "sha256": "<sha256 of the export file>"
+}
