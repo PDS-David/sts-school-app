@@ -35,7 +35,7 @@ No other PR is open. Nothing already merged was reopened. Merging #40 records a 
 
 - `IMPLEMENTED_LESSONS.csv`: 170 rows; `jss3Supplements.json`: 170 entries (current observed).
 - 313 originals / 483-row capture (234 First, 249 Second, 0 Third), Computer Studies 0: **reported** in `YO_TEXT_IMPLEMENTATION/VALIDATION.json` for `8d46e83`; **not re-observed here** (no private ZIP). Later merges changed no lesson, runtime or data file.
-- CI (`JSS3 implementation and asset checks`): success at `8d46e83`, `3bef89b`, `f505d02`, `3d0b78a`, `cf1b559`; `ed1215e` in progress when written, see Actions for the final result.
+- CI (`JSS3 implementation and asset checks`): success at `8d46e83`, `3bef89b`, `f505d02`, `3d0b78a`, `cf1b559`, `ed1215e` (run 39928035396).
 - No lesson, runtime or data change was merged this session, so no regeneration was required or run.
 
 ## Not run here, and why
