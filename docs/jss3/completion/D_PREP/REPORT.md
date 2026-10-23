@@ -1,6 +1,6 @@
 # D_PREP — safe staging build and execution preflight
 
-Base: master `cf1b559f2f5ba72de3f48429409f8b7f4a4b77ed` (fetched 23 Oct 2026). Branch `d-prep/staging-preflight`. Contract: `NEXT_AGENT_TASKS/EXECUTION_CONTRACT.md`. No `AGENTS.md` exists in the repository.
+Base: master `cf1b559f2f5ba72de3f48429409f8b7f4a4b77ed` at start; rebased onto `ed1215eaaf7344fcc02d9780201bfe4773a87515` (adds only S_PREP docs/scripts, no overlap) and tests re-run on the rebased head (23 Oct 2026). Branch `d-prep/staging-preflight`. Contract: `NEXT_AGENT_TASKS/EXECUTION_CONTRACT.md`. No `AGENTS.md` exists in the repository.
 
 **Nothing was provisioned, imported, attached, built, installed or observed. No staging or production host, database, Expo/EAS account or device was contacted.** Every provisioning, import, build-installation and device-observation item remains **NOT PERFORMED / BLOCKED**; none is marked PASS.
 
@@ -38,4 +38,4 @@ Base: master `cf1b559f2f5ba72de3f48429409f8b7f4a4b77ed` (fetched 23 Oct 2026). B
 Listed once, with fields, in `TARGET_CHECKLIST.md`: A1–A3 owner designation and permission; B1–B5 HTTPS API origin, hosting, private JWT secrets, `NODE_ENV`, `TERM_PIN_ENFORCED`; C1–C2 new disposable database; D1 the correct inputs ZIP (sha256 `0a5b0d92…ea3c`); E1 Expo/EAS access; F1–F4 admin credentials held privately, phone model/OS/screen reader, named tester.
 
 ## Statuses
-Implementation: done. Testing: offline only, as above. Publication: see PR. Merge, provisioning, build, installation, device observation: not done.
+Implementation: done. Testing: offline only, as above. Publication: NOT PUBLISHED from this sandbox (no GitHub credentials; `git push` failed with "could not read Username"); patch, bundle and APPLY.md supplied instead. Merge, provisioning, build, installation, device observation: not done.
