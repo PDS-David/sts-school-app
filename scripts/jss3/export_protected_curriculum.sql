@@ -9,6 +9,9 @@ FROM (
            t.source_reference, t.source_file, t.order_index
     FROM topics t
     LEFT JOIN subjects s ON s.id = t.subject_id AND s.school_code = t.school_code
-    WHERE t.class_name ~ '^(Primary|PRY) [1-6]$' OR t.class_name IN ('JSS 1', 'JSS 2')
+    -- Current names plus the legacy spellings that backend/src/db/renameClassNaming.ts maps
+    -- to them. Values are exported as stored (never rewritten) so a pre-rename backup is not
+    -- silently truncated; scripts/jss3/b_prep/validate_export.py reports any legacy names.
+    WHERE t.class_name ~ '^(Primary|PRY|Grade) [1-6]$' OR t.class_name IN ('JSS 1', 'JSS 2', 'JSS1', 'JSS2')
 ) r;
 ROLLBACK;

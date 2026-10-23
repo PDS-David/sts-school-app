@@ -60,14 +60,21 @@ def index(rows, key):
     return idx, dups
 
 
-def compare(baseline, snapshot, key, content=None, expected=EXPECTED_COUNT):
+def compare(baseline, snapshot, key, content=None, expected=EXPECTED_COUNT, exclude=()):
     if not key or len(set(key)) != len(key) or any(not k.strip() for k in key):
         raise ValueError("nonempty, unique identity columns required")
     if expected < 1:
         raise ValueError("expected row count must be positive")
     b, bd = index(baseline, key)
     s, sd = index(snapshot, key)
-    fields = content if content is not None else sorted({f for r in baseline + snapshot for f in r} - set(key))
+    if content is not None and exclude:
+        raise ValueError("--exclude applies to the default content set; use --content or --exclude, not both")
+    present = {f for r in baseline + snapshot for f in r}
+    if set(exclude) - present:
+        raise ValueError(f"--exclude names column(s) in neither input: {sorted(set(exclude) - present)}")
+    if set(exclude) & set(key):
+        raise ValueError("--exclude must not name identity columns")
+    fields = content if content is not None else sorted(present - set(key) - set(exclude))
     if not fields or len(set(fields)) != len(fields) or any(not f.strip() or f in key for f in fields):
         raise ValueError("nonempty, unique content columns separate from identity required")
     for dataset in (baseline, snapshot):
@@ -93,7 +100,9 @@ def compare(baseline, snapshot, key, content=None, expected=EXPECTED_COUNT):
     res["result"] = "PASS" if (res["count_ok"] and not any(
         res[k] for k in ("missing_from_snapshot", "unexpected_in_snapshot", "content_mismatches",
                          "duplicate_identities_baseline", "duplicate_identities_snapshot"))) else "FAIL"
-    res["comparison_scope"] = "selected columns only" if content is not None else "all non-identity columns"
+    res["comparison_scope"] = "selected columns only" if content is not None else (
+        "all non-identity columns except excluded" if exclude else "all non-identity columns")
+    res["excluded_columns"] = list(exclude)
     res["protected_count_used"] = expected == EXPECTED_COUNT
     res["certification_claimed"] = False
     return res
@@ -105,6 +114,7 @@ def main(argv=None):
     p.add_argument("--snapshot", required=True, help="proposed release snapshot (.json or .csv)")
     p.add_argument("--key", required=True, help="comma-separated stable identity columns")
     p.add_argument("--content", help="comma-separated content columns (default: every non-key baseline column)")
+    p.add_argument("--exclude", help="comma-separated columns omitted from the default content set (e.g. surrogate ids that differ between databases)")
     p.add_argument("--expected-count", type=int, default=EXPECTED_COUNT)
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args(argv)
@@ -117,8 +127,9 @@ def main(argv=None):
             return 2
     key = [k.strip() for k in a.key.split(",") if k.strip()]
     content = [c.strip() for c in a.content.split(",")] if a.content else None
+    exclude = [c.strip() for c in a.exclude.split(",") if c.strip()] if a.exclude else []
     try:
-        res = compare(load_rows(a.baseline), load_rows(a.snapshot), key, content, a.expected_count)
+        res = compare(load_rows(a.baseline), load_rows(a.snapshot), key, content, a.expected_count, exclude)
     except (ValueError, OSError, json.JSONDecodeError) as e:
         res = {"result": "BLOCKED", "reason": f"input unreadable or malformed: {e}"}
         a.output.write_text(json.dumps(res, indent=2))
