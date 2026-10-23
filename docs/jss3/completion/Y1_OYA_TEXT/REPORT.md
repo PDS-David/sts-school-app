@@ -29,4 +29,4 @@ Not run: DB/PostgreSQL suites (no lesson or route changed), full source acceptan
 ## Exact remaining inputs
 One named Ọya pípè / oríkì Ọya passage (≥3 lines) with: tone-marked Yoruba one performed line per line; a named translator and line-aligned English; a named collector/transcriber or published locator (title, year, page/line range); a reuse basis covering that passage (open licence printed on a work whose licensor owns the passage, or written permission naming the passage and display to enrolled students in the school app); and either shell access to the source host or the source file supplied privately so its SHA-256 and locator can be recorded. Concretely useful: written permission from Ifayemisi Elebuibon for one named Ọya passage, or the full Lindon (1990) article checked for an Ọya hymn plus Brill/author permission. Nobody was contacted.
 
-PR: see the pull request for this branch. Not merged.
+PR: https://github.com/PDS-David/sts-school-app/pull/36 (head 3ba00940a83b68d0a111d99729cd4f22b0c7059c at first push). Not merged.
