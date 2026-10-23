@@ -4,7 +4,7 @@
 
 Y2 is not complete. `SUP-YO-IWI-TEXT` was not created, because no passage meets the provenance, rights, suitability and byte-check requirements. No verse was copied or invented.
 
-Base master: `8d46e8390d3e404565a69a7c6ee580bac1d14c22` (PR #35). Branch: `jss3/iwi-text-20261023`. Head SHA and PR URL are in the PR description.
+Base master at start: `8d46e8390d3e404565a69a7c6ee580bac1d14c22` (PR #35). Before submitting, master had moved to `3bef89bc370fe751057ea610b1379cb83ea1fde8` (PR #36, Y1 Ọya); it was merged into this branch (automatic, no conflicts) and all checks below were rerun on the merged tree. Branch: `jss3/iwi-text-20261023`. Head SHA and PR URL are in the PR description.
 
 ## Result
 1. **Equivalence verified.** Three works say ẹ̀sà and iwì egúngún are one form: Adeduntan 2024 (CC BY), Akinbo et al. 2022 (CC BY), Fámúlẹ̀ footnote 9. Wording, locators and licences are in `IWI_SOURCE_CHECKS.json`. It lets a passage that its source labels ẹ̀sà or iwì be taught as iwì. It does not turn an oríkì or a modern poem into an inherited chant.
@@ -22,8 +22,9 @@ Base master: `8d46e8390d3e404565a69a7c6ee580bac1d14c22` (PR #35). Branch: `jss3/
 ## Checks (Node 22.22.0 here; CI pins 24.19.0)
 - `npm ci --ignore-scripts`: ok.
 - `node --import tsx --test tests/jss3-yo-iwi.test.mts`: 7 pass.
-- With `jss3-yo-text`, `jss3-yo-license`, `jss3-supplements`: 34 pass, 0 fail, 1 existing skip.
-- `node --import tsx --test tests/jss3*.test.mts` (no database variables): 352 tests, 291 pass, 0 fail, 61 skipped (database and private-archive suites).
+- With `jss3-yo-text` (now including Y1's tests), `jss3-yo-license`, `jss3-supplements`: 37 tests, 36 pass, 0 fail, 1 existing skip.
+- `node --import tsx --test tests/jss3*.test.mts` (no database variables): 354 tests, 293 pass, 0 fail, 61 skipped (database and private-archive suites).
+- The merged register has no duplicate source IDs: Y1's `YT-14..16` and this task's `YT-IWI-01..03` coexist.
 - `tsc --noEmit` in `backend` and `mobile`: exit 0.
 - Negative controls: marking iwì supported with no lesson, marking Fámúlẹ̀ usable, and dropping an equivalence source each fail the intended tests. The register and evidence files were restored afterwards. The gate also has a positive control, so a genuine future lesson can satisfy it.
 
