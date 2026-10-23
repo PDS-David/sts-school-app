@@ -191,3 +191,25 @@ test('a lesson or attribution appearing while the register says NOT_SUPPORTED is
   g.lesson_id = null; g.missing = '';
   assert.ok(iwiClaimProblems(reg, [], []).some(p => /exactly what is missing/.test(p)));
 });
+
+test('each candidate carries one acquisition status and the modern-equivalent assessment is explicit', () => {
+  const allowed = Object.keys(evidence.status_vocabulary);
+  assert.deepEqual(allowed.sort(), ['inaccessible', 'not_located', 'permission_unresolved', 'unsuitable_for_jss3']);
+  for (const c of evidence.candidates) {
+    assert.ok(allowed.includes(c.acquisition_status), `${c.register_id}: unknown acquisition_status`);
+    for (const a of c.also) assert.ok(allowed.includes(a), `${c.register_id}: unknown also-status ${a}`);
+  }
+  for (const n of evidence.not_examined) assert.ok(allowed.includes(n.acquisition_status));
+  const by = (id: string) => evidence.candidates.find((c: any) => c.register_id === id).acquisition_status;
+  assert.equal(by('YT-05'), 'unsuitable_for_jss3');
+  assert.equal(by('YT-IWI-02'), 'permission_unresolved');
+  assert.equal(by('YT-IWI-01'), 'not_located');
+  const m = evidence.modern_equivalent_assessment;
+  assert.equal(m.verdict, 'NOT_ADOPTED');
+  assert.match(m.principle, /not disqualified for being modern/);
+  assert.match(m.principle, /never labelled an inherited traditional chant/);
+  assert.match(m.objective_fit, /^Fails\./);
+  assert.match(evidence.overall_acquisition_status.curriculum_gap, /OPEN/);
+  assert.equal(evidence.status_separation.implementation, 'not done');
+  assert.equal(statusOf('YO-SL-094'), 'REPLACEMENT_IMPLEMENTED_PARTIAL');
+});

@@ -13,6 +13,18 @@ Base master at start: `8d46e8390d3e404565a69a7c6ee580bac1d14c22` (PR #35). Befor
 4. **Fámúlẹ̀ rejected on provenance.** Its one explicitly iwì-labelled chant (about pp. 17–18) is one printed line. The text read names no performer, collector, earlier source or translator. The article page says CC BY-NC 4.0; the PDF text has no licence line.
 5. Olajubu 1977 and africanpoems "Tricks": genre fits, no reuse basis.
 
+## Candidate status (vocabulary: not located / inaccessible / permission unresolved / unsuitable for JSS3)
+| Candidate | Status | Note |
+|---|---|---|
+| Fámúlẹ̀ iwì couplet (YT-IWI-02) | permission unresolved (also inaccessible) | one line, no stated origin or translator, CC BY-NC on page; bytes not readable here |
+| Akinbo poem (YT-06) | inaccessible (also unsuitable as iwì) | modern, documented origin, CC BY; fails the objective: a praise poem recited in three modes. Assessed, not dismissed for being modern; not adopted |
+| Aransi èsà excerpt (YT-05) | unsuitable for JSS3 (also permission unresolved) | adult content per brief; provenance not established |
+| Olajubu 1977, Beier 1970 via africanpoems (YT-09, YT-IWI-03) | permission unresolved | no licence or translator |
+| Adeduntan 2024 (YT-IWI-01) | not located | prints no ẹ̀sà/iwì text |
+| Drewal, Osogbo thesis, Johnson, Rouget | inaccessible | not opened or unreadable here |
+
+Overall: an open-licence iwì passage with stated origin is **not located**. Source acquisition is open; implementation not done; the curriculum gap is **not closed**.
+
 ## Changed
 - `docs/jss3/completion/YO_TEXT/SOURCE_RIGHTS_REGISTER.json`: only the `iwi-egungun` entry (still `NOT_SUPPORTED`, `lesson_id` null), plus new rows `YT-IWI-01..03` inserted before `YT-13`.
 - `docs/jss3/completion/YO_IWI_TEXT_20261023/IWI_SOURCE_CHECKS.json` and this report.
