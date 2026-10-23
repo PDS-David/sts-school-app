@@ -121,3 +121,39 @@ test('changed Sango body invalidates its attribution hash', () => {
  const modified = JSS3_SUPPLEMENTS.map(s => s.id==='SUP-YO-ORAL-GENRES' ? {...s, body:s.body+' tamper'} : s);
  assert.ok(registerProblems(register,modified,JSS3_ATTRIBUTIONS).some(p=>/attribution body hash is stale/.test(p)));
 });
+
+// Y1 (Ọya pípè): no passage is supportable yet, so the genre must stay open and say exactly what is missing.
+test('Oya stays NOT_SUPPORTED, names its missing inputs, and no Oya-checked source is usable', () => {
+  const oya = register.genres.find((g: any) => g.id === 'oya-pipe');
+  assert.equal(oya.status, 'NOT_SUPPORTED');
+  assert.equal(oya.lesson_id, null);
+  assert.match(oya.missing, /tone marks/);
+  assert.match(oya.missing, /reuse basis/);
+  assert.match(oya.missing, /SHA-256/);
+  const oyaSources = register.sources.filter((s: any) => (s.genres_checked ?? []).includes('oya-pipe'));
+  assert.ok(oyaSources.length >= 3, 'examined Oya leads must be recorded');
+  assert.ok(oyaSources.every((s: any) => s.verdict !== 'USABLE_VERIFIED'));
+  assert.equal(JSS3_SUPPLEMENTS.filter(s => s.id === 'SUP-YO-OYA-TEXT').length, 0, 'no Oya lesson may exist without a verified passage');
+  assert.equal(JSS3_ATTRIBUTIONS.filter(a => a.supplement_id === 'SUP-YO-OYA-TEXT').length, 0);
+});
+
+test('negative controls: Oya cannot be marked supported without lesson, attribution and a verified bound source', () => {
+  const clone = () => structuredClone(register);
+  const supported = (mutate: (r: any) => void) => {
+    const r = clone();
+    const g = r.genres.find((x: any) => x.id === 'oya-pipe');
+    g.status = 'SUPPORTED'; g.lesson_id = 'SUP-YO-OYA-TEXT';
+    mutate(r);
+    return registerProblems(r, JSS3_SUPPLEMENTS as Sup[], JSS3_ATTRIBUTIONS as Attr[]);
+  };
+  assert.ok(supported(() => {}).some(p => /oya-pipe: supported but lesson SUP-YO-OYA-TEXT is not delivered/.test(p)));
+  // a profile/paraphrase source cannot be promoted without hash and lesson binding
+  assert.ok(supported(r => { r.sources.find((s: any) => s.id === 'YT-14').verdict = 'USABLE_VERIFIED'; })
+    .some(p => /YT-14: usable source needs source_sha256/.test(p)));
+  // an unsupported genre may not name a lesson
+  const r2 = clone(); r2.genres.find((x: any) => x.id === 'oya-pipe').lesson_id = 'SUP-YO-OYA-TEXT';
+  assert.ok(registerProblems(r2, JSS3_SUPPLEMENTS as Sup[], JSS3_ATTRIBUTIONS as Attr[]).some(p => /oya-pipe: not supported but names a lesson/.test(p)));
+  // an unsupported genre must say what is missing
+  const r3 = clone(); r3.genres.find((x: any) => x.id === 'oya-pipe').missing = ' ';
+  assert.ok(registerProblems(r3, JSS3_SUPPLEMENTS as Sup[], JSS3_ATTRIBUTIONS as Attr[]).some(p => /oya-pipe: must say exactly what is missing/.test(p)));
+});
