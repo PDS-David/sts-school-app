@@ -1,3 +1,5 @@
+> 23 October update: Ṣàngó short text study is now implemented from a newly verified source (YT-13). See ../YO_TEXT_IMPLEMENTATION/REPORT.md. The report below records the earlier investigation; its three-genre absence finding is superseded for Ṣàngó only.
+
 # YO-TEXT handoff
 
 Status, kept separate: **teaching implementation: NOT done for any of the three genres (no supportable passage)** · **rights register, requirements and decisions: delivered** · **guard tests: passed locally** · **corpus acceptance: not run (reason below)** · **school approval: none** · **deployment: none** · **legal clearance: none claimed**.

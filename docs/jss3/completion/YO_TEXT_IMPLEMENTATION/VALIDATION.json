@@ -1,0 +1,42 @@
+{
+  "node": "24.19.0",
+  "full_source_tests": {
+    "tests": 346,
+    "pass": 339,
+    "fail": 0,
+    "skipped": 7
+  },
+  "focused_tests": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0
+  },
+  "acceptance_status": "INCOMPLETE",
+  "acceptance_reason": "Corpus passed; database acceptance deliberately not run",
+  "checks": [
+    {
+      "name": "python-dependencies",
+      "exit_code": 0
+    },
+    {
+      "name": "capture",
+      "exit_code": 0
+    },
+    {
+      "name": "corpus",
+      "exit_code": 0
+    },
+    {
+      "name": "protected-comparer-unit",
+      "exit_code": 0
+    },
+    {
+      "name": "runner-unit",
+      "exit_code": 0
+    }
+  ],
+  "source_excerpt_and_license_verification": "PASS: exact six paragraphs, recorded source and licence hashes",
+  "ci": "PR checks must pass including the added real PostgreSQL attribution test before integration",
+  "production_operations": false,
+  "initial_failures": "Three historical assertions said the genre lesson supplied no verses. Updated to assert the two genuinely absent genres remain absent; added exact sourced-Sango, attribution-hash and route checks. No skipped or deleted assertions."
+}

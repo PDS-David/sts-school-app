@@ -24,6 +24,7 @@ if (!URL_) {
   const { signAccess } = await import('../backend/src/utils/jwt.js');
   const { JSS3_SUPPLEMENTS } = await import('../backend/src/db/jss3Supplements.js');
   const lesson = JSS3_SUPPLEMENTS.find(s => s.id === 'SUP-YO-ORAL-TEXTS')!;
+  let sangoId = 0;
   let server: any, base = '', tokA = '', tokB = '', topicId = 0, otherId = 0, subjectId = 0; const png = Buffer.from('89504e470d0a1a0a0000000d49484452', 'hex');
   const cleanup = async () => {
     await query('DELETE FROM topics WHERE school_code=$1', [SC]); await query('DELETE FROM subjects WHERE school_code=$1', [SC]); await query('DELETE FROM students WHERE school_code=$1', [SC]);
@@ -37,6 +38,8 @@ if (!URL_) {
     const ins = async (title: string, term: string, cls: string, ord: number) => (await query(`INSERT INTO topics(school_code,subject_id,class_name,term_label,title,description,source_reference,source_file,order_index) VALUES($1,$2,$3,$4,$5,'x','SYNTHETIC; not lesson text','yo-test',$6) RETURNING id`, [SC, subjectId, cls, term, title, ord])).rows[0].id;
     const manifest=attach.loadManifest(path.join(root,'curriculum-assets/jss3/v4-attribution/NOUN_ATTRIBUTION_2ND_MANIFEST.csv'));
     topicId = await ins(lesson.title, lesson.termLabel, 'JSS 3', manifest[0].order_index); otherId = await ins('A different Yoruba lesson', lesson.termLabel, 'JSS 3', 15);
+    const sango = JSS3_SUPPLEMENTS.find(s => s.id === 'SUP-YO-ORAL-GENRES')!;
+    sangoId = await ins(sango.title, sango.termLabel, 'JSS 3', 1);
     const mk = async (tag: string, cls: string) => {
       const u = await query(`INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,'x','student',$2,$3) RETURNING id`, [`zz_yo_license_${tag}`, SC, `YO ${tag}`]);
       await query(`INSERT INTO students(school_code,admission_number,full_name,class_name,user_id) VALUES($1,$2,$3,$4,$5)`, [SC, `ZZYO-${tag}`, `YO ${tag}`, cls, u.rows[0].id]);
@@ -61,6 +64,15 @@ if (!URL_) {
     assert.equal(n.required_credit, 'First produced by the National Open University of Nigeria'); assert.equal(n.licence, 'CC BY-SA 4.0');
     assert.match(n.download_line, /nouonline\.net/); assert.deepEqual(n.visuals.map((v: any) => [v.role, v.displayed]), [['cover', false], ['logo', false]]);
     assert.ok(a.credits.some((c: any) => c.id === 'kolawole-2023'));
+  });
+  test('Sango lesson delivers its own attribution through the authenticated route', async () => {
+    assert.equal((await get(`/learning/topics/${sangoId}/assets`)).status, 401);
+    const response=await get(`/learning/topics/${sangoId}/assets`,tokA); assert.equal(response.status,200);
+    const body:any=await response.json();assert.equal(body.attributions.length,1);
+    assert.equal(body.attributions[0].supplement_id,'SUP-YO-ORAL-GENRES');
+    const credit=body.attributions[0].credits[0];assert.equal(credit.id,'layade-ogunyemi-2025');
+    assert.equal(credit.licence,'CC BY-SA 4.0');assert.match(credit.creators,/Mama Ṣàngódeyi/);
+    assert.deepEqual((await (await get(`/learning/topics/${sangoId}/assets`,tokB)).json()).attributions,[]);
   });
   test('a different lesson, and a student of another class, get no credit record', async () => {
     assert.deepEqual(await (await get(`/learning/topics/${otherId}/assets`, tokA)).json(), { assets: [], attributions: [] });
