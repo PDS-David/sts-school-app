@@ -80,17 +80,19 @@ SELECT table_name, column_name FROM information_schema.columns WHERE (table_name
 
 ## 6. API address and mobile build
 - Run the backend with the designated env (`DATABASE_URL`, long random `JWT_SECRET`/`JWT_REFRESH_SECRET`, `NODE_ENV`, `TERM_PIN_ENFORCED`), reachable at an **HTTPS** URL; do not expose the database port.
-- Build with the repo's `preview` profile (`mobile/eas.json`, Android APK) with `EXPO_PUBLIC_API_URL=<https URL>` supplied through EAS, and **no `mobile/.env`** on the building machine. Confirm the produced build does not call the Render production host (e.g. watch server logs of the staging API receive the login; confirm production receives nothing).
-- Supply the URL to the `preview` build through EAS (`mobile/eas.json` has no `env` block for it). With eas-cli 25.3.0 (flags checked with `--help` only; not executed, needs the owner's Expo login/token):
+- Build with the repo's **`staging`** profile (`mobile/eas.json`; extends `preview`, Android APK, sets `STS_BUILD_TARGET=staging`). Do not use `preview` or `production` for staging: they have no guard and `app.json` bakes in the Render production host. The `staging` profile carries no URL; `mobile/app.config.js` makes the build **fail** unless `EXPO_PUBLIC_API_URL` is a bare `https://host[:port]` origin that is not the `app.json` host (also not http, loopback, `10.0.2.2`, a placeholder, or carrying a path/query/credentials), and `src/api/client.ts` re-checks the resolved URL at startup. Keep **no `mobile/.env`** on the building machine anyway (Expo does load it when the shell variable is absent).
+- Supply the URL through EAS, then build (owner's Expo login/token required; eas-cli 25.3.0 flags read from `--help`, not executed here):
   `eas env:set preview --name EXPO_PUBLIC_API_URL --value https://<staging-host> --visibility plaintext --scope project --non-interactive`
-  then `eas build --platform android --profile preview`. (`env:create` still exists but is marked deprecated.) Remove the variable afterwards if it should not outlive the test.
+  then `eas build --platform android --profile staging`. (`env:create` still exists but is marked deprecated.) Remove the variable afterwards if it should not outlive the test.
+- Offline pre-check before spending a build (no account, no network): `cd mobile && STS_BUILD_TARGET=staging EXPO_PUBLIC_API_URL=https://<staging-host> npx expo config --json --type public` must print `extra.apiUrl` = the staging origin and `extra.buildTarget` = `staging`; with the variable unset it must exit non-zero. Regression test: `node --test tests/mobile-staging-api-target.test.cjs`.
+- Confirm the produced build does not call the Render production host (the staging API's server logs receive the login; confirm production receives nothing).
 - Record the app commit SHA, EAS build id and APK sha256.
 
 ## 7. DEVICE1 handoff record (fill in; keep credentials out)
 ```
 Backend/app commit: <sha>      Schema check: <both rows present?>
 API base URL: <https://…>      Import: 483 JSS3 topics (313+170); assets attached: <actual current plan and applied counts; consolidation plan 103 rows / 17 manifests>
-Build: profile preview, EAS id <id>, APK sha256 <hash>, EXPO_PUBLIC_API_URL baked: <yes/verified how>
+Build: profile staging, EAS id <id>, APK sha256 <hash>, EXPO_PUBLIC_API_URL baked: <yes/verified how>
 Accounts: JSS3 student <username>, other-class <username>; passwords/tokens delivered privately to the DEVICE1 runner
 Lock mode: TERM_PIN_ENFORCED=<…>; picture lessons openable: <evidence>
 Preflight: JSS3_STUDENT_TOKEN / JSS3_OTHER_CLASS_TOKEN exported privately, then

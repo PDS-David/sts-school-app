@@ -21,10 +21,16 @@
       "android": {
         "buildType": "app-bundle"
       }
+    },
+    "staging": {
+      "extends": "preview",
+      "environment": "preview",
+      "env": {
+        "STS_BUILD_TARGET": "staging"
+      }
     }
   },
   "submit": {
     "production": {}
   }
 }
-

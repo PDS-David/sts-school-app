@@ -24,6 +24,7 @@ function resourcePrefix(url: string): string {
 }
 import { emitForcedLogout } from './authEvents';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
+import { assertStagingApiUrl, STAGING } from '../../config/apiTarget';
 
 // Kicked off once at module load (not awaited here) and awaited lazily by
 // the request interceptor below, so the very first request — and every
@@ -64,6 +65,13 @@ const tokenMigration = migrateLegacyTokens();
 const envUrl = process.env.EXPO_PUBLIC_API_URL;
 const configuredUrl = Constants.expoConfig?.extra?.apiUrl as string | undefined;
 export const BASE_URL = envUrl ?? configuredUrl ?? 'http://10.0.2.2:4000';
+
+// A designated staging build (expo.extra.buildTarget, written by app.config.js only when
+// STS_BUILD_TARGET=staging) must never silently talk to production: re-validate the URL it
+// actually resolved to. Ordinary builds carry no buildTarget, so this is skipped for them.
+if (Constants.expoConfig?.extra?.buildTarget === STAGING) {
+  assertStagingApiUrl(BASE_URL, Constants.expoConfig?.extra?.productionApiUrl as string | undefined);
+}
 
 if (__DEV__) {
   if (envUrl) {
