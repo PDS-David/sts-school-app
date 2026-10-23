@@ -4,7 +4,7 @@
 
 Y2 is not complete. `SUP-YO-IWI-TEXT` was not created, because no passage meets the provenance, rights, suitability and byte-check requirements. No verse was copied or invented.
 
-Base master at start: `8d46e8390d3e404565a69a7c6ee580bac1d14c22` (PR #35). Before submitting, master had moved to `3bef89bc370fe751057ea610b1379cb83ea1fde8` (PR #36, Y1 Ọya); it was merged into this branch (automatic, no conflicts) and all checks below were rerun on the merged tree. Branch: `jss3/iwi-text-20261023`. Head SHA and PR URL are in the PR description.
+Base master at start: `8d46e8390d3e404565a69a7c6ee580bac1d14c22` (PR #35). Before submitting, master had moved to `3bef89bc370fe751057ea610b1379cb83ea1fde8` (PR #36, Y1 Ọya); it was merged into this branch (automatic, no conflicts) and all checks below were rerun on the merged tree. Branch: `jss3/iwi-text-20261023`. PR: https://github.com/PDS-David/sts-school-app/pull/38 (open, not merged; the PR's head SHA is authoritative, since a report cannot contain its own commit hash).
 
 ## Result
 1. **Equivalence verified.** Three works say ẹ̀sà and iwì egúngún are one form: Adeduntan 2024 (CC BY), Akinbo et al. 2022 (CC BY), Fámúlẹ̀ footnote 9. Wording, locators and licences are in `IWI_SOURCE_CHECKS.json`. It lets a passage that its source labels ẹ̀sà or iwì be taught as iwì. It does not turn an oríkì or a modern poem into an inherited chant.
