@@ -5,7 +5,7 @@
 ## 1. Inputs and base
 - Task: R7 (prompt of 24 Oct 2026). Repository `PDS-David/sts-school-app`, target `master`.
 - Base: `master` `3678e0e04e873d9f1f181cc64987db937e5f2e5f` (R6 integration status merged). Functional candidate per R6: `1adf443d33a864b130d519ca45182eb56625674b`; the two differ by one documentation file (`git diff --stat`).
-- Branch: `jss3/r7-release-plan-20261024-q4n8`. PR: see §6.
+- Branch: `jss3/r7-release-plan-20261024-q4n8`. PR: #50 (see §6).
 - `AGENTS.md`: does not exist (consistent with R4/R5). Read: `EXECUTION_CONTRACT.md`, `14_FINAL_RELEASE_PLAN_ONLY.md`, `CURRENT_INTEGRATION_STATUS.md`, `R4_PROTECTED_COMPARISON/REPORT.md`, `R5_STAGING_DEVICE/REPORT.md`, and the actual code: `ingestTopics.ts`, `attachTopicAssets.ts`, `jss3DeliveryCorrection.ts`, `learning.ts` (cache/assessment paths), `schema.sql`, `migrate.ts`, `checkDrift.ts`, `pool.ts`, `index.ts`.
 - **R6 "acceptance evidence" is a status report, not an acceptance run.** R6 (`CURRENT_INTEGRATION_STATUS.md`) states it did *not* run the full-source acceptance (private ZIP unavailable) and that 54 static + 5 real-DB tests were skipped. R4 is BLOCKED; R5 Phase 2 (staging/device) was not performed. This plan therefore treats the candidate as **not release-eligible**, per the task's instruction not to assume prerequisites passed.
 
@@ -57,7 +57,7 @@ These show the **tooling** does what it claims on synthetic data. They are **not
 | Deployment / "students are using the update" | **no** |
 
 ## 6. Publication
-Branch pushed and PR opened by this task; **not merged** (integrator merges documentation after review, per the contract). PR URL: recorded in the PR itself and in the hand-off message.
+Branch pushed and PR opened by this task; **not merged** (integrator merges documentation after review, per the contract). PR: https://github.com/PDS-David/sts-school-app/pull/50 (head `c87a34d`; a follow-up commit only records this URL).
 
 ## 7. Security note
 The GitHub personal access token written in the task prompt was used only to clone, push the branch and open the PR, passed through a request header for each command and never stored in a remote URL, git config, file or log of this repository. `CURRENT_INTEGRATION_STATUS.md` already records that a token pasted in plain text was used in earlier sessions and should be revoked. **Revoke this token and issue a narrowly scoped replacement (single repository; Contents and Pull requests write only) delivered by a secret store, not chat.**
