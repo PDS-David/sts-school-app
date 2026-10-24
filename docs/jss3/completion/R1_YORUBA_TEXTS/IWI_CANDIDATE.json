@@ -1,6 +1,6 @@
 {
   "task": "R1",
-  "status": "EVIDENCE_ONLY — not delivered; no source bytes were hashed",
+  "status": "IMPLEMENTED_LABELLED_MODERN_EQUIVALENT",
   "candidate_id": "YT-R1-IWI-01",
   "genre": "iwi-egungun",
   "text_kind": "labelled_modern_equivalent",
@@ -9,11 +9,11 @@
     "doi": "https://doi.org/10.3389/fcomm.2022.1029400",
     "full_text_url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/full",
     "pdf_url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/pdf",
-    "licence": "Creative Commons Attribution License (CC BY), printed in the article's copyright statement; version 4.0 per the publisher's licence link (not re-checked as bytes)",
+    "licence": "CC BY 4.0, publisher copyright statement and hyperlink verified in downloaded HTML.",
     "composer_of_poem": "Iyabode B. Alaga (third author; Section 4.1 says the poem was composed by the third author; author contributions: IBA set up the stimulus)",
     "performer": "one male native speaker of Standard Yorùbá, age 28, fourth-year Yorùbá undergraduate at the University of Ibadan, trained in chanting ìjálá and ẹ̀sà; not named",
     "locator": "Section 4.1 'Stimuli, participant and procedure', example (3) 'An original Yorùbá poem', Lines 1-4; genre features: Section 3 (paragraphs 4-5), Section 5 (first paragraph), Section 6 (last paragraph)",
-    "access_method": "Frontiers /full page read through the fetch tool on 2026-10-24; text, not bytes. The shell cannot resolve www.frontiersin.org (curl exit 6)."
+    "access_method": "Actual publisher full-page HTML downloaded 24 October 2026, SHA-256 recorded and committed verifier passed."
   },
   "selected_lines": [
     {
@@ -70,7 +70,19 @@
     "written_marks": 15,
     "draft_body_sha256": "b33061039bcbc54250e728abd821c8faa1fd3ee7077e7fc425200732e97f5466"
   },
-  "remaining_single_action": "On a machine that can reach frontiersin.org, save the article /full page (HTML) and run: python3 scripts/jss3/yo_text/verify_iwi_candidate.py SAVED_FULL_PAGE.html . Send the printed source_sha256 and the three match flags. Only then may the lesson, its attribution record and the register be activated (the gate requires USABLE_VERIFIED with a 64-hex source_sha256).",
+  "remaining_single_action": "Source-byte verification completed. Lesson and attribution are implemented; no inherited text or practical performance is claimed.",
+  "activation": {
+    "date": "2026-10-24",
+    "source_sha256": "efc90f941eed63c51dfd0f41ac2f22ac3843fe1fc7832022ed9f3e8989a8ed85",
+    "lesson_id": "SUP-YO-IWI-TEXT",
+    "scope": "Labelled modern equivalent; mixed objective remains partial",
+    "verification_report": "docs/jss3/completion/IWI_ACTIVATION_20261024/SOURCE_CHECK.json",
+    "corrigendum": {
+      "doi": "10.3389/fcomm.2022.1127007",
+      "source_sha256": "1c67c2ccb2c706af8dc6add4618b641790cd84b2c414221fa2fcdd5b4396401a",
+      "review": "Complete correction text reviewed. Corrects genre diacritics, vibrato signal repetition (sextupled, not tripled), and the conclusion on pitch, epenthesis and lengthening. None changes selected poem lines or the lesson; lesson does not teach signal-processing repetition."
+    }
+  },
   "text_check_20261024": {
     "method": "Full text of the publisher PDF (https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/pdf) read through the fetch tool. TEXT ONLY: no source bytes were obtained, so NO source_sha256 exists and the byte-level gate is NOT satisfied.",
     "confirmed_in_text": [

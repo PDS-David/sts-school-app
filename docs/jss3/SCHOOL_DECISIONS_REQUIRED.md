@@ -1,6 +1,6 @@
 # School decisions required — English and Yoruba (G2, 19 Oct 2026)
 
-**23 October implementation update:** Existing owner authorisation already permits clearly labelled equivalent English texts, replacement sound contrasts and original exam-style practice. Do not ask for renewed generic permission under B3/C/E. Exact school-prescribed titles, original missing symbols and authentic past-paper status remain separate source claims. See completion/ENGLISH_PRACTICAL_CLOSEOUT/REPORT.md. A short Ṣàngó text study is now implemented (completion/YO_TEXT_IMPLEMENTATION); Ọya and iwì text study remain open. Genre profiles do not close those gaps.
+**23 October implementation update:** Existing owner authorisation already permits clearly labelled equivalent English texts, replacement sound contrasts and original exam-style practice. Do not ask for renewed generic permission under B3/C/E. Exact school-prescribed titles, original missing symbols and authentic past-paper status remain separate source claims. See completion/ENGLISH_PRACTICAL_CLOSEOUT/REPORT.md. A short Ṣàngó text study is now implemented (completion/YO_TEXT_IMPLEMENTATION); A source-verified modern iwì equivalent is now implemented (completion/IWI_ACTIVATION_20261024); Ọya text study remains open. Genre profiles alone do not close text-study gaps.
 
 No school response was supplied to this pass, so nothing below is teacher-approved.
 

@@ -113,7 +113,8 @@ test('Sango excerpt is preserved exactly, has answers, and does not claim the tw
   assert.doesNotMatch(lesson.body, /chanted speech without drum accompaniment/);
   assert.match(lesson.body, /10\. Mama Ṣàngódeyi/);
   assert.equal(register.genres.find((g:any)=>g.id==='sango-pipe').status, 'SUPPORTED');
-  for (const id of ['oya-pipe','iwi-egungun']) assert.equal(register.genres.find((g:any)=>g.id===id).status, 'NOT_SUPPORTED');
+  assert.equal(register.genres.find((g:any)=>g.id==='oya-pipe').status, 'NOT_SUPPORTED');
+  assert.equal(register.genres.find((g:any)=>g.id==='iwi-egungun').status, 'SUPPORTED');
   assert.equal(statusOf('YO-SL-094'), 'REPLACEMENT_IMPLEMENTED_PARTIAL');
 });
 
