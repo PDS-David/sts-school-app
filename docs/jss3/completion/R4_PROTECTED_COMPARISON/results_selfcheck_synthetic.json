@@ -1,0 +1,128 @@
+{
+  "task": "R4",
+  "kind": "synthetic tooling self-check",
+  "synthetic_rows": 50,
+  "applies_to_real_protected_rows": false,
+  "certification_claimed": false,
+  "comparer_sha256": "6f9fb778d0392f4a8a9a956be31458b5d25987e9e63208ec6d314c39f8833cd9",
+  "all_expected": true,
+  "cases": [
+    {
+      "case": "identical",
+      "flags": "--exclude id,subject_id",
+      "exit": 0,
+      "expected_exit": 0,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 0,
+      "duplicates": 0
+    },
+    {
+      "case": "surrogate_ids_only_differ",
+      "flags": "--exclude id,subject_id",
+      "exit": 0,
+      "expected_exit": 0,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 0,
+      "duplicates": 0
+    },
+    {
+      "case": "title_changed",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 1,
+      "duplicates": 0
+    },
+    {
+      "case": "source_reference_changed",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 1,
+      "duplicates": 0
+    },
+    {
+      "case": "source_file_changed",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 1,
+      "duplicates": 0
+    },
+    {
+      "case": "description_changed",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 1,
+      "duplicates": 0
+    },
+    {
+      "case": "identity_field_changed",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 1,
+      "unexpected": 1,
+      "content_mismatch_rows": 0,
+      "duplicates": 0
+    },
+    {
+      "case": "row_removed",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 1,
+      "unexpected": 0,
+      "content_mismatch_rows": 0,
+      "duplicates": 0
+    },
+    {
+      "case": "row_added",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 1,
+      "content_mismatch_rows": 0,
+      "duplicates": 0
+    },
+    {
+      "case": "duplicate_identity_added",
+      "flags": "--exclude id,subject_id",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true,
+      "missing": 0,
+      "unexpected": 0,
+      "content_mismatch_rows": 0,
+      "duplicates": 1
+    },
+    {
+      "case": "surrogate_ids_only_differ",
+      "flags": "(no --exclude)",
+      "exit": 1,
+      "expected_exit": 1,
+      "ok": true
+    }
+  ]
+}
