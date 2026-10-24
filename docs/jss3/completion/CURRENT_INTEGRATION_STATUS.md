@@ -1,69 +1,64 @@
-# JSS3 — current integration status (23 Oct 2026)
+# JSS3 — current integration status (24 Oct 2026, R6 integrator)
 
-Integrator: I-CURRENT. Basis: master `ed1215eaaf7344fcc02d9780201bfe4773a87515` (merge of PR #40). This file is added by a later commit; it describes that basis. **The whole curriculum is NOT declared complete.** Y3 is reserved for its returning agent: no branch, PR or file for it exists; none was touched.
+Candidate: master `1adf443d33a864b130d519ca45182eb56625674b` (merge of PR #48). Earlier status files and worker reports are retained as history. **JSS3 is NOT declared complete**: teaching, permission, baseline, sequencing and device gates remain open (below). Nothing was deployed, imported or migrated; no real student data touched.
 
-## PR ledger (verified against the GitHub API, 23 Oct 2026)
-
+## PR ledger (GitHub API, 24 Oct 2026; no PR open after this table)
 | PR | Nature | State | Merge commit | Evidence |
 |---|---|---|---|---|
-| #35 | Implementation: Ṣàngó text study inside existing `SUP-YO-ORAL-GENRES` | merged | `8d46e83` | `YO_TEXT_IMPLEMENTATION/REPORT.md`, `VALIDATION.json` |
-| #36 | Evidence only: Ọya, no supportable passage; no lesson | merged | `3bef89b` | `Y1_OYA_TEXT/REPORT.md` |
-| #37 | Evidence only: Ọya acquisition handoff | merged | `3d0b78a` | `OYA_SOURCE_ACQUISITION/REPORT.md` |
-| #38 | Evidence + tests only: iwì; **no iwì lesson** (`SUP-YO-IWI-TEXT` not created) | merged | `f505d02` | `YO_IWI_TEXT_20261023/REPORT.md` |
-| #39 | Preparation: B-PREP acquisition tooling and SQL filter fix | merged | `cf1b559` | `B_PREP/REPORT.md` |
-| #40 | Proposal only: S-PREP policy, placement CSV, approval form | merged this session | `ed1215e` | `S_PREP/REPORT.md` |
+| #35 | Implementation: Ṣàngó text study in `SUP-YO-ORAL-GENRES` | merged | `8d46e83` | `YO_TEXT_IMPLEMENTATION/REPORT.md` |
+| #36, #37 | Evidence only: Ọya (no passage), acquisition handoff | merged | `3bef89b`, `3d0b78a` | `Y1_OYA_TEXT`, `OYA_SOURCE_ACQUISITION` |
+| #38 | Evidence + tests only: iwì | merged | `f505d02` | `YO_IWI_TEXT_20261023` |
+| #39 | Preparation: B-PREP tooling | merged | `cf1b559` | `B_PREP/REPORT.md` |
+| #40 | Proposal only: S-PREP placement/policy | merged | `ed1215e` | `S_PREP/` (approval form blank) |
+| #41 | Docs: prior status | merged | `6a3c4ba` | superseded by this file |
+| #42 | D_PREP staging guard | **closed unmerged by owner** | — | superseded by #48 (contains #42's commits) |
+| #43 | Implementation: owner-accepted Yoruba marriage meanings | merged | `1de0bca` | `Y3_A6_MARRIAGE/` |
+| #44 | R2: status report only (**not** sequencing implementation) | merged | `6ee913c` | `R2_SEQUENCING/REPORT.md` |
+| #45 | R1: evidence only; iwì draft **not delivered**; no Ọya/iwì lesson | merged | `c1699b5` | `R1_YORUBA_TEXTS/REPORT.md` |
+| #46 | R3: attribution record for `SUP-YO-LICENSED-STORY` + tests | merged | `eadc077` | `R3_DISTRIBUTION/REPORT.md` |
+| #47 | R4: protected comparison BLOCKED on owner inputs | merged | `f036a63` | `R4_PROTECTED_COMPARISON/` |
+| #48 | R5: staging API-target guard fixes + real-bundle tests; device check NOT performed | merged by R6 | `1adf443` | `R5_STAGING_DEVICE/REPORT.md`, `D_PREP/` |
 
-No other PR is open. Nothing already merged was reopened. Merging #40 records a proposal; it is **not** policy approval (`S_PREP/APPROVAL_FORM.md` is blank).
+R6 review of #48 before merge: CI `verify` success on head `957b25f`, mergeable clean, 10 files; ordinary (non-`STS_BUILD_TARGET`) builds are unchanged (`app.config.js` returns the app.json config untouched; `client.ts` changes one import and one call with the same `envUrl ?? configuredUrl ?? emulator` chain). It changes build configuration and mobile API-URL resolution only; no lesson, topic, asset or progression data.
 
-## Status table (one row per claim)
-
-| Claim | Implemented | Verified | Merged | Evidence / commit |
+## Status by claim
+| Claim | Implemented | Verified | Merged | Notes |
 |---|---|---|---|---|
-| Ṣàngó short text study, attribution bound to body hash | yes | CI green at `8d46e83`; private-ZIP capture reported by PR #35 worker, **not re-observed here** | yes | `8d46e83` |
-| Ọya text lesson | **no** | n/a | n/a | `3bef89b`, `3d0b78a` (absence recorded) |
-| iwì text lesson | **no** | n/a | n/a | `f505d02` (absence recorded) |
-| B-PREP tooling (export filter, `--exclude`, validator, 9+5 tests) | yes | worker: 18 + 9 tests, DB run 0 skipped; CI green at `cf1b559` | yes | `cf1b559` |
-| B-PREP protected comparison / 2,179-row certification | **not performed** | n/a | n/a | `B_PREP/REPORT.md` (OB-06 open) |
-| S-PREP proposal and reference model | yes | re-run here on PR head `8ee7d04`: CSV sha256 `e117629…1617f` identical; combined hash `5e53dbf…645ed` recomputed equal; model assertions pass; CI green on PR head | yes | `ed1215e` |
-| S-PREP placement quality | n/a | 16 MEDIUM, 7 LOW, 147 UNRESOLVED; **none checked against the private archive** | yes | `S_PREP/PLACEMENT_PROPOSAL.csv` |
-| L-PREP result | **not found** | no PR, branch or file on master | no | searched PR list, branches, `docs`, `scripts` |
-| D-PREP result | **not found** | no PR, branch or file on master | no | same |
-| Sequencing implementation (Task 05) | **not performed** | n/a | n/a | needs D1–D8 |
-| Staging, phone/device acceptance | **not performed** | n/a | n/a | `STAGE1_DEVICE1_EXEC_20261023/REPORT.md` (BLOCKED) |
+| Ṣàngó text study; attribution bound to body hash | yes | static + real-DB attribution route pass here; full-source capture **not re-observed** | yes | |
+| Third-party credit records for all three delivered third-party Yoruba lessons (ORAL-TEXTS, ORAL-GENRES, LICENSED-STORY) | yes | tests pass here (negative controls for missing credit, changed hash, wrong lesson) | yes | |
+| Ọya and iwì text lessons | **no** | n/a | n/a | gates unchanged |
+| Marriage contextual teaching | yes | CI; capture not re-observed | yes | |
+| Sequencing / placement implementation (Task 05) | **no** | n/a | n/a | policy unapproved |
+| Protected 2,179-row baseline comparison | **no** | n/a | n/a | R4 blocked |
+| Staging safeguards (build-time + runtime URL guard) | yes | CI + 32/32 `*.cjs` here | yes | not an EAS build, not a device pass |
+| Staging, phone/device acceptance | **no** | n/a | n/a | R5 Phase 2 not performed |
 
-## Observed on master (this session)
-
-- `IMPLEMENTED_LESSONS.csv`: 170 rows; `jss3Supplements.json`: 170 entries (current observed).
-- 313 originals / 483-row capture (234 First, 249 Second, 0 Third), Computer Studies 0: **reported** in `YO_TEXT_IMPLEMENTATION/VALIDATION.json` for `8d46e83`; **not re-observed here** (no private ZIP). Later merges changed no lesson, runtime or data file.
-- CI (`JSS3 implementation and asset checks`): success at `8d46e83`, `3bef89b`, `f505d02`, `3d0b78a`, `cf1b559`, `ed1215e` (run 39928035396).
-- No lesson, runtime or data change was merged this session, so no regeneration was required or run.
-
-## Not run here, and why
-
-| Check | Reason |
+## Verification performed by R6 on `1adf443` (Node 24.19.0, `npm ci --ignore-scripts`, PostgreSQL 16 on loopback, DB `jss3_test_r6`)
+| Check | Result |
 |---|---|
-| Full-source acceptance (`run_acceptance.py --archive …`) | private `JSS3_NEXT_STAGE_INPUTS_20261016.zip` absent |
-| Eight-suite DB acceptance | no source ZIP; local Node is 22.22.0, contract requires 24.19.0; PostgreSQL 16 binaries present but not exercised |
-| `npm ci` / TypeScript suites | no runtime change merged; CI covered the merged commits |
-| Device / phone | no staging target, build or phone |
+| `tsc --noEmit` backend, mobile | exit 0 both |
+| `node --test tests/*.cjs` | 32 pass, 0 fail |
+| Static TS suites (`tests/*.test.mts`, excluding `.db.`) | 386 tests: 332 pass, 0 fail, **54 skipped** (private-archive/capture-dependent) |
+| Python unittests (P1_BASELINE 18, acceptance runner 3, visual register 3, device1 10, staging attach plan 6, NOUN assets 4) | all OK |
+| Real PostgreSQL: topic-assets 18/18; protected-export 1/1; v3-science-ci 5/5; yo-license 4/4; staging-admin 16/16 | pass, 0 skipped |
+| Real PostgreSQL: batch2-assets, delivery-correction, v1-business, v2-math-assets, v3-science-assets | 1 test each, **skipped** (need capture/source archive) |
 
-## Remaining dependencies and owners
+## NOT performed, and why
+- `run_acceptance.py --archive …` full-source acceptance (eight DB suites + corpus): **not run**; the private `JSS3_NEXT_STAGE_INPUTS_20261016.zip` (SHA256 `0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c`) was not available, and the archive hash could not be verified. The 54 static and 5 DB skips are consequences of this, not permitted skips; they must pass once the archive is supplied.
+- Fresh capture, original-row equality (313), current counts, and regeneration of `IMPLEMENTED_LESSONS.csv` and the teacher schedule: **not performed**. No lesson body changed in PRs #44–#48 (R3 changed only the attribution register), so the committed records are not known to be stale, but PR #43's metadata-only regeneration limitation is **not yet replaced by a real-source check**. Last reported counts (313 originals; 483 rows: 234 First, 249 Second, 0 Third; Computer Studies 0) come from earlier worker reports and are not re-observed.
+- Delivery-correction/cache DB checks: skipped as above.
 
-| Dependency | Owner |
-|---|---|
-| Private source ZIP, SHA256 `0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c` (final combined verification, S-PREP anchor check) | owner |
-| Certified 2,179-row export/backup + release snapshot (B-PREP I1, I2; I6–I8 decisions) | owner |
-| S-PREP decisions D1–D8 and `PLACEMENT_APPROVAL_RESPONSE.csv` | owner / designated teacher |
-| Yoruba distribution choice A/B/C (`YO_LICENSE/OWNER_DECISION.md`) | owner |
-| Ọya and iwì passages with reuse basis and byte-level source | owner (permission/acquisition); no one contacted |
-| Staging target, accounts, build profile, devices | owner → DEVICE1 worker |
-| Y3 results and merge | returning Y3 agent (reserved) |
-| L-PREP and D-PREP deliverables | owner to confirm whether they exist (not on GitHub) |
+## Remaining items, owner, next action
+| Item | Owner | Next concrete action |
+|---|---|---|
+| Final-candidate verification | owner → integrator | supply the private ZIP; run `python3 scripts/jss3/run_acceptance.py --archive ZIP --output <fresh dir> --database-url-env JSS3_LOCAL_TEST_DATABASE_URL`; regenerate records with repository generators |
+| Yoruba distribution choice (keep BY-SA excerpts vs pointers) for ORAL-TEXTS and ORAL-GENRES | owner | choose in `YO_LICENSE/OWNER_DECISION.md` / PR #46 description |
+| Ọya passage (Elebuibon permission) and iwì byte-verified source | owner | actions in `R1_YORUBA_TEXTS/REPORT.md` |
+| Sequencing policy D1–D8 and placement approval | owner / teacher | fill `S_PREP/APPROVAL_FORM.md`; then Task 05 |
+| Protected baseline export/backup/snapshot | owner | inputs in `R4_PROTECTED_COMPARISON/` |
+| Staging target, accounts, Expo/EAS, devices | owner | `D_PREP/TARGET_CHECKLIST.md` |
+| Y3 remaining wording/book work | coordinating agent | not touched by R6 |
+| Production release | separate task | prerequisites above unmet |
 
-## Production plan
-
-Not prepared. Prerequisites are unmet (no private-ZIP acceptance, no DB acceptance on a final candidate, no device pass, no distribution decision, no baseline). Nothing was deployed, imported or migrated.
-
-## Security note
-
-PR #40's report says its task message contained a GitHub token in plain text. Rotate it.
+## Security
+A GitHub personal access token was pasted in plain text in the session and used by R3/R6 for pushes, PR creation and merge. Revoke it.
