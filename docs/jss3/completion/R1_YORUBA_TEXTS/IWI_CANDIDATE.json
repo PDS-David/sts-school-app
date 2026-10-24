@@ -70,5 +70,27 @@
     "written_marks": 15,
     "draft_body_sha256": "b33061039bcbc54250e728abd821c8faa1fd3ee7077e7fc425200732e97f5466"
   },
-  "remaining_single_action": "On a machine that can reach frontiersin.org, save the article /full page (HTML) and run: python3 scripts/jss3/yo_text/verify_iwi_candidate.py SAVED_FULL_PAGE.html . Send the printed source_sha256 and the three match flags. Only then may the lesson, its attribution record and the register be activated (the gate requires USABLE_VERIFIED with a 64-hex source_sha256)."
+  "remaining_single_action": "On a machine that can reach frontiersin.org, save the article /full page (HTML) and run: python3 scripts/jss3/yo_text/verify_iwi_candidate.py SAVED_FULL_PAGE.html . Send the printed source_sha256 and the three match flags. Only then may the lesson, its attribution record and the register be activated (the gate requires USABLE_VERIFIED with a 64-hex source_sha256).",
+  "text_check_20261024": {
+    "method": "Full text of the publisher PDF (https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/pdf) read through the fetch tool. TEXT ONLY: no source bytes were obtained, so NO source_sha256 exists and the byte-level gate is NOT satisfied.",
+    "confirmed_in_text": [
+      "Section 4.1 example (3) 'An original Yorùbá poem', Lines 1-4 with printed English; printed spelling of line 2 retains the dot-below form flagged in the draft",
+      "Section 4.1: poem composed by the third author; chosen 'instead of a widely known traditional poem'; one male consultant, age 28, trained in chanting Ìjálá and Ẹ̀sà",
+      "Section 3: 'Ẹ̀sà, which is also known as Ìwí Egúngún'; no vibrato; vowel insertion and lengthening; triply long [ooo] at the end/start of the first line as a recurrent feature",
+      "Section 5: [ooo] inserted at the beginning of the first word of line 1; pitch higher in Ẹ̀sà than Ìjálá",
+      "Copyright statement: Creative Commons Attribution License (CC BY); © 2022 Akinbo, Samuel, Alaga and Akingbade",
+      "Section 6 limitation: data from one participant (pilot)"
+    ],
+    "corrigendum": {
+      "doi": "10.3389/fcomm.2022.1127007",
+      "published": "2023-01-06",
+      "reviewed": "As read, it corrects wording about the recording modes (e.g. 'speech mode and Ìjálá mode' -> 'speech and poetic modes') and a summary sentence; nothing seen alters the poem lines or the Ẹ̀sà/Ìwí Egúngún features. Its list of corrections was partly truncated in the fetched text, so this is not conclusive.",
+      "the_fetched_pdf_shows_pre_correction_wording": true
+    },
+    "still_required": [
+      "byte-level source_sha256 via verify_iwi_candidate.py on a saved /full page, or an owner decision to accept a labelled text-verified tier",
+      "private archive for capture and regeneration of IMPLEMENTED_LESSONS.csv and the teacher schedule",
+      "owner decision that a labelled modern equivalent is acceptable for YO-SL-094"
+    ]
+  }
 }
