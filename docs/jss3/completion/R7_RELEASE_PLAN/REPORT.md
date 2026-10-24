@@ -17,7 +17,7 @@
 5. The existing protected-row export covers **Primary/JSS1/JSS2 only**; it cannot see JSS 3 or SS rows. A release-delta guard over every class was added (PLAN §4).
 6. `topics` deletion cascades to `topic_completions` and `topic_assets`; this drives the rollback design (ROLLBACK §1, §3).
 7. Rolling back code while leaving the attributed Yoruba lessons live could serve them without credit; ordering rule in ROLLBACK §2.
-8. There is no health endpoint; `GET /` only proves the process is up (PREFLIGHT §9).
+8. The owner has previously described production as auto-redeploying from `master`; if so, merging is deploying and W4 cannot be gated (PLAN §8 B11). There is no health endpoint; `GET /` only proves the process is up (PREFLIGHT §9).
 
 ## 3. What was actually run (disposable local PostgreSQL 16.15, synthetic rows only; no real data)
 | Check | Result (observed 24 Oct 2026) |
@@ -51,7 +51,7 @@ These show the **tooling** does what it claims on synthetic data. They are **not
 | Backup / restore evidence | **not supplied** (B2) |
 | Rehearsal on isolated staging copy | **NOT PERFORMED** (B5) |
 | Device / learner acceptance | **NOT PERFORMED** (B6) |
-| Owner decisions outstanding | B1, B3, B7, B8, B9, B10 (PLAN §8) |
+| Owner decisions outstanding | B1, B3, B7, B8, B9, B10, B11 (PLAN §8) |
 | Owner approval of the concrete plan | **not given**; statement template in PLAN §9 |
 | Production writes | **none**; none authorised |
 | Deployment / "students are using the update" | **no** |
