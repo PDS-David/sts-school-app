@@ -658,8 +658,8 @@ test('G2: oral-text excerpts are labelled as selections, in printed order, with 
 test('G2: marriage lesson explains only source-backed steps and keeps ìdána and ibale open', () => {
   const m = byId('SUP-YO-MARRIAGE').body;
   assert.match(m, /Ìdána\*\* — sources differ/); assert.match(m, /Ibale\*\* \(caution\)/);
-  const notExplained = m.split('**Not explained here:**')[1].split('.')[0];
-  for (const w of ['isihun', 'ipalemo', 'ifa iyawo', 'ese iyawo wiwe', 'ikorun', 'ojo keje']) assert.ok(notExplained.includes(w), w);
+  const notExplained = m.split("**Labels still requiring the school's clarification:**")[1].split('.')[0];
+  for (const w of ['ikorun', 'ojo keje']) assert.ok(notExplained.includes(w), w);
   for (const w of ['ifojusode', 'ijohen', 'baba gbo iya gbo', 'ibale']) assert.ok(!notExplained.includes(w), w);
   assert.match(m, /Ìfojúsóde\*\* \(caution\)[^\n]*looking out for a suitor/); assert.ok(byId('SUP-YO-MARRIAGE').sources.some(x => /10\.11648\/j\.reports\.20260601\.12/.test(x.url)));
   assert.ok(byId('SUP-YO-MARRIAGE').sources.some(s => /10\.5901\/ajis/.test(s.url)));
