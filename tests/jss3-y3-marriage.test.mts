@@ -8,14 +8,14 @@ function supported(b:string){
  for(const [term,meaning] of [['Isihun','consent'],['Ipalemo','prepare'],['Ifa iyawo','consultation'],['Ojo igbeyawo','celebration'],['Ese iyawo wiwe','symbolic']]){
   assert.ok(b.split(`**${term}**`)[1]?.split('\n')[0].includes(meaning),term);
  }
- assert.match(b,/does not identify either school label/);
+ assert.match(b,/particular post-wedding activity is not established/);
  assert.match(b,/No pupil is asked to perform religious rites, intimate practices/);
  assert.match(b,/14 marks \(6 original \+ 8 additional\)/);
 }
 test('documented terms have explanations, marking and explicit uncertainty',()=>supported(l.body));
 test('negative controls reject a removed explanation and false school confirmation',()=>{
  assert.throws(()=>supported(l.body.replace('families prepare','families celebrate')));
- assert.throws(()=>supported(l.body.replace('does not identify either school label','confirms both school labels')));
+ assert.throws(()=>supported(l.body.replace('particular post-wedding activity is not established','confirms both school labels')));
 });
 test('runtime supplement builder binds revised lesson without changing input rows',()=>{
  const original=[{filePath:'fixture.docx',className:'JSS 3',subjectName:'Yoruba',termLabel:'2nd Term',weekLabel:'WEEK 1',orderIndex:1,title:'fixture',sourceReference:'unchanged'}];

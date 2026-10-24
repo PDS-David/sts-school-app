@@ -19,3 +19,6 @@ Private JSS3_NEXT_STAGE_INPUTS_20261016.zip is unavailable in this fresh workspa
 For the school list, identify the intended practice under ikorun and ojo keje and the local ibale/idana readings. Existing factual explanations can be taught without waiting for those decisions; do not test an unconfirmed mapping as a fact.
 
 Publication: isolated branch/PR; not deployed or imported. PR URL is supplied in the handoff response. Other Y3 items and all other workstreams untouched.
+
+## Owner-directed follow-up, 24 October 2026
+Owner accepted contextual readings. Implemented idana as engagement with marriage items, ibale as historical custom, and ikorun as Daramola's fifth-day account (not universal; tones unverified). Only ojo keje's specific rite remains unknown. This supersedes earlier requests for approval of those three contextual readings. Assessment and regression tests updated. No claim of original-author intent or production deployment.
