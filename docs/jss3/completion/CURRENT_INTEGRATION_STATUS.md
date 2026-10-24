@@ -1,5 +1,7 @@
 # JSS3 — current integration status (24 Oct 2026, R6 integrator)
 
+> **24 October follow-up (branch implementation):** The private archive has now been recovered and its hash verified. A fresh real-source capture proves all 313 original row objects unchanged. The previously drafted iwì lesson is implemented as a source-verified modern equivalent, with attribution and regenerated records: 484 rows (235 First / 249 Second / 0 Third), Computer Studies 0. See `IWI_ACTIVATION_20261024/REPORT.md` and `SOURCE_CHECK.json`. The historical R6 tables below describe their own candidate, not this follow-up. Ọya, unresolved Y3 source meanings/books, approved sequencing, certified 2,179-row comparison, staging/device checks and release authorisation remain separate open items. Do not ask for the recovered archive again in this workspace or treat its recovery as a certified Primary/JSS1/JSS2 baseline.
+
 Candidate: master `1adf443d33a864b130d519ca45182eb56625674b` (merge of PR #48). Earlier status files and worker reports are retained as history. **JSS3 is NOT declared complete**: teaching, permission, baseline, sequencing and device gates remain open (below). Nothing was deployed, imported or migrated; no real student data touched.
 
 ## PR ledger (GitHub API, 24 Oct 2026; no PR open after this table)

@@ -78,17 +78,16 @@ export function equivalenceProblems(ev: any, reg: any): string[] {
   return out;
 }
 
-test('current register, lessons and attributions agree that iwì egúngún is not yet supported', () => {
+test('current iwì lesson is supported as a labelled modern equivalent, without closing the mixed objective', () => {
   assert.deepEqual(iwiClaimProblems(register, JSS3_SUPPLEMENTS as Sup[], JSS3_ATTRIBUTIONS as Attr[]), []);
   const g = register.genres.find((x: any) => x.id === 'iwi-egungun');
-  assert.equal(g.status, 'NOT_SUPPORTED');
-  assert.equal(g.lesson_id, null);
-  assert.equal(evidence.outcome, 'NO_SUPPORTABLE_PASSAGE');
-  assert.equal(evidence.implemented, false);
-  assert.equal(JSS3_SUPPLEMENTS.filter(s => s.id === LESSON).length, 0);
+  assert.equal(g.status, 'SUPPORTED');
+  assert.equal(g.lesson_id, LESSON);
+  assert.equal(JSS3_SUPPLEMENTS.filter(s => s.id === LESSON).length, 1);
+  assert.match(JSS3_SUPPLEMENTS.find(s => s.id === LESSON)!.body, /MODERN EQUIVALENT/);
   assert.equal(statusOf('YO-SL-094'), 'REPLACEMENT_IMPLEMENTED_PARTIAL');
-  for (const need of ['origin', 'translator', 'licence', 'source bytes or page images', 'non-commercial'])
-    assert.ok(g.missing.includes(need), `missing-item text must name: ${need}`);
+  // Earlier evidence is historical, not silently rewritten as a successful acquisition.
+  assert.equal(evidence.outcome, 'NO_SUPPORTABLE_PASSAGE');
 });
 
 test('esa = iwi equivalence is evidenced from three scholarly works, not assumed', () => {
@@ -144,6 +143,7 @@ test('the gate can be satisfied by a genuine future lesson (positive control)', 
   const reg = structuredClone(register);
   const g = reg.genres.find((x: any) => x.id === 'iwi-egungun');
   g.status = 'SUPPORTED'; g.lesson_id = LESSON;
+  reg.sources = reg.sources.filter((s: any) => s.id !== 'YT-R1-IWI-01');
   reg.sources.push({ id: 'YT-SYNTH', verdict: 'USABLE_VERIFIED', source_sha256: 'a'.repeat(64), lesson_id: LESSON, genres_checked: ['iwi-egungun'], text_kind: 'documented_traditional' });
   const sups: Sup[] = [{ id: LESSON, body, termLabel: '1st Term', gapIds: ['YO-SL-094'] }];
   const attrs: Attr[] = [{ supplement_id: LESSON, body_sha256: attributionBodyHash(body) }];
@@ -156,7 +156,8 @@ test('the gate rejects every false claim that iwì egúngún text study is deliv
     const reg = structuredClone(register);
     const g = reg.genres.find((x: any) => x.id === 'iwi-egungun');
     g.status = 'SUPPORTED'; g.lesson_id = LESSON;
-    reg.sources.push({ id: 'YT-SYNTH', verdict: 'USABLE_VERIFIED', source_sha256: 'b'.repeat(64), lesson_id: LESSON, genres_checked: ['iwi-egungun'], text_kind: 'labelled_modern_equivalent' });
+    reg.sources = reg.sources.filter((s: any) => s.id !== 'YT-R1-IWI-01');
+  reg.sources.push({ id: 'YT-SYNTH', verdict: 'USABLE_VERIFIED', source_sha256: 'b'.repeat(64), lesson_id: LESSON, genres_checked: ['iwi-egungun'], text_kind: 'labelled_modern_equivalent' });
     const sups: Sup[] = [{ id: LESSON, body, termLabel: '1st Term', gapIds: ['YO-SL-094'] }];
     const attrs: Attr[] = [{ supplement_id: LESSON, body_sha256: attributionBodyHash(body) }];
     return { reg, sups, attrs };
@@ -181,11 +182,12 @@ test('the gate rejects every false claim that iwì egúngún text study is deliv
 });
 
 test('a lesson or attribution appearing while the register says NOT_SUPPORTED is rejected', () => {
-  const sups: Sup[] = [{ id: LESSON, body: 'x' }];
-  assert.ok(iwiClaimProblems(register, sups, []).some(p => /delivered while the register says NOT_SUPPORTED/.test(p)));
-  assert.ok(iwiClaimProblems(register, [], [{ supplement_id: LESSON, body_sha256: 'd'.repeat(64) }]).some(p => /undelivered/.test(p)));
   const reg = structuredClone(register);
   const g = reg.genres.find((x: any) => x.id === 'iwi-egungun');
+  g.status = 'NOT_SUPPORTED'; g.lesson_id = null; g.missing = 'No verified text supplied in this synthetic control.';
+  const sups: Sup[] = [{ id: LESSON, body: 'x' }];
+  assert.ok(iwiClaimProblems(reg, sups, []).some(p => /delivered while the register says NOT_SUPPORTED/.test(p)));
+  assert.ok(iwiClaimProblems(reg, [], [{ supplement_id: LESSON, body_sha256: 'd'.repeat(64) }]).some(p => /undelivered/.test(p)));
   g.lesson_id = LESSON;
   assert.ok(iwiClaimProblems(reg, [], []).some(p => /names a lesson/.test(p)));
   g.lesson_id = null; g.missing = '';

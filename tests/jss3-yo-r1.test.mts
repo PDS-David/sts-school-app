@@ -1,5 +1,4 @@
-// R1: Ọya pípè and iwì egúngún. Neither genre is delivered (no byte-verified source). These tests keep the
-// evidence-only state honest and keep the drafted iwì lesson consistent with its candidate record.
+// R1 activation: source-bound modern iwì equivalent; Ọya remains unresolved.
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
@@ -41,21 +40,22 @@ test('draft is labelled modern, has answers, and its marks add up', () => {
   assert.ok(body.includes('https://doi.org/10.3389/fcomm.2022.1029400') && body.includes('CC BY'));
 });
 
-test('neither R1 lesson is delivered and both genres stay NOT_SUPPORTED with a single named action', () => {
-  for (const id of ['SUP-YO-OYA-TEXT', 'SUP-YO-IWI-TEXT']) {
-    assert.equal(JSS3_SUPPLEMENTS.filter(s => s.id === id).length, 0);
-    assert.equal(JSS3_ATTRIBUTIONS.filter(a => a.supplement_id === id).length, 0);
-  }
-  for (const id of ['oya-pipe', 'iwi-egungun']) {
-    assert.equal(genre(id).status, 'NOT_SUPPORTED');
-    assert.equal(genre(id).lesson_id, null);
-    assert.match(genre(id).missing, /SINGLE ACQUISITION ACTION \(R1\)/);
-  }
+test('verified modern iwì equivalent is delivered, attributed and source-bound; Ọya remains open', () => {
+  const lesson = JSS3_SUPPLEMENTS.find(s => s.id === 'SUP-YO-IWI-TEXT')!;
+  assert.equal(lesson.body, body);
+  assert.equal(genre('iwi-egungun').status, 'SUPPORTED');
+  assert.equal(genre('iwi-egungun').lesson_id, lesson.id);
+  const attr = JSS3_ATTRIBUTIONS.find(a => a.supplement_id === lesson.id)!;
+  assert.equal(attr.body_sha256, attributionBodyHash(body));
+  const check = JSON.parse(readFileSync(path.join(root, cand.activation.verification_report), 'utf8'));
+  assert.equal(check.all_checks_pass, true);
   const row = register.sources.find((s: any) => s.id === 'YT-R1-IWI-01');
-  assert.equal(row.verdict, 'UNVERIFIED_LEAD');
+  assert.equal(row.verdict, 'USABLE_VERIFIED');
+  assert.equal(row.source_sha256, check.source_sha256);
+  assert.equal(attr.credits[0].source_sha256_recorded, check.source_sha256);
   assert.equal(row.text_kind, 'labelled_modern_equivalent');
-  assert.ok(!row.source_sha256);
-  assert.ok(register.sources.every((s: any) => s.verdict !== 'USABLE_VERIFIED' || s.id === 'YT-13'));
+  assert.equal(genre('oya-pipe').status, 'NOT_SUPPORTED');
+  assert.equal(JSS3_SUPPLEMENTS.filter(s => s.id === 'SUP-YO-OYA-TEXT').length, 0);
 });
 
 test('negative control: delivering the draft without a byte-verified source is rejected by the real iwì gate', () => {
@@ -64,7 +64,7 @@ test('negative control: delivering the draft without a byte-verified source is r
   const reg = structuredClone(register);
   const g = reg.genres.find((x: any) => x.id === 'iwi-egungun');
   g.status = 'SUPPORTED'; g.lesson_id = 'SUP-YO-IWI-TEXT';
-  const row = reg.sources.find((s: any) => s.id === 'YT-R1-IWI-01'); row.lesson_id = 'SUP-YO-IWI-TEXT';
+  const row = reg.sources.find((s: any) => s.id === 'YT-R1-IWI-01'); row.lesson_id = 'SUP-YO-IWI-TEXT'; row.verdict = 'UNVERIFIED_LEAD'; delete row.source_sha256;
   assert.ok(iwiClaimProblems(reg, [lesson as any], [attr as any]).some(p => /no byte-verified source/.test(p)));
   // the same claim passes the source check only with a 64-hex hash and verdict, which R1 does not have
   row.verdict = 'USABLE_VERIFIED'; row.source_sha256 = 'c'.repeat(64);

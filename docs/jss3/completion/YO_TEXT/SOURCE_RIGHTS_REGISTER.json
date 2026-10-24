@@ -43,10 +43,10 @@
       "scheme_ids": [
         "YO-SL-094"
       ],
-      "status": "NOT_SUPPORTED",
-      "lesson_id": null,
-      "best_lead": "None supportable as of 23 Oct 2026. Closest leads and why each fails are in IWI_SOURCE_CHECKS.json: YT-09 (rights not cleared), YT-IWI-02 (one printed line, no stated origin or translator, NC licence on the article page), YT-06 (study-composed oríkì, not an ẹ̀sà text), YT-05 (unsuitable for pupils and provenance not established). R1 (24 Oct 2026): YT-06 re-assessed as a labelled modern equivalent, not as an inherited text; see YT-R1-IWI-01 and docs/jss3/completion/R1_YORUBA_TEXTS/IWI_CANDIDATE.json. A lesson draft exists but is NOT delivered, because no source bytes could be hashed.",
-      "missing": "SINGLE ACQUISITION ACTION (R1): on a machine that can reach frontiersin.org, save the /full page of Akinbo et al. (2022, doi 10.3389/fcomm.2022.1029400) and run scripts/jss3/yo_text/verify_iwi_candidate.py on it; report the printed source_sha256 and flags. This unlocks the drafted labelled-equivalent lesson (still not an inherited iwì text). For an inherited iwì text the earlier requirement stands: One short iwì/ẹ̀sà egúngún passage, long enough to carry comprehension questions (the Ṣàngó study uses three lines), in tone-marked Yoruba with English translation, whose origin (performer or collector, place and date, or earlier publication) and translator are stated, under an open licence or written permission that covers that passage, with the transcription checked against source bytes or page images. For YT-IWI-02 the open items are exactly: the couplet's origin and translator (not stated), its length (one line printed), the licence (article page: CC BY-NC 4.0; downloaded PDF text carries no licence line) and the owner's decision on whether non-commercial terms suit this app. The earlier owner decision D2 on èsà = iwì is no longer needed to unblock: the equivalence is evidenced below.",
+      "status": "SUPPORTED",
+      "lesson_id": "SUP-YO-IWI-TEXT",
+      "best_lead": "YT-R1-IWI-01: delivered labelled modern equivalent after actual publisher HTML verification.",
+      "missing": "",
       "equivalence_with_esa": {
         "status": "SUPPORTED_BY_SCHOLARSHIP",
         "claim": "ẹ̀sà and iwì egúngún are two names for one egúngún-cult chant form.",
@@ -57,7 +57,8 @@
         ],
         "method_limit": "Read through a summarising fetch tool. The shell could not reach the hosts (HTTP 403 on CONNECT), so there are no source bytes, no SHA-256 and no page-image comparison; wording is as returned by that tool. Spelling varies across the sources (ẹ̀sà, èsà, Èṣà; iwì, Ìwí).",
         "scope": "Allows a verified passage that its own source labels ẹ̀sà or iwì egúngún to be taught under the scheme's iwì egúngún label. It does not make a modern composed poem an inherited traditional chant, and it does not turn an oríkì into an iwì text."
-      }
+      },
+      "coverage_limit": "Written study of a modern research-composed oríkì performed in ẹ̀sà style; not inherited-chant study or observed performance. Mixed YO-SL-094 remains partial because Ọya text is unresolved."
     }
   ],
   "sources": [
@@ -326,10 +327,12 @@
         "iwi-egungun"
       ],
       "rights_basis": "CC BY printed in the article copyright statement; poem composed by a co-author for the study",
-      "finding": "Labelled modern equivalent. The study prints the poem with English translation and states which delivery features mark ẹ̀sà (also called Ìwí Egúngún). Words and genre-feature statements were read through the fetch tool as text; bytes were not obtainable in this shell.",
-      "verdict": "UNVERIFIED_LEAD",
+      "finding": "Actual publisher HTML downloaded and hashed; three selected Yoruba lines, printed English, composer, licence and delivery-feature statements pass the committed verifier. Delivered as a labelled modern equivalent only.",
+      "verdict": "USABLE_VERIFIED",
       "text_kind": "labelled_modern_equivalent",
-      "unblock": "Run verify_iwi_candidate.py on a saved copy of the /full page and record its source_sha256; then deliver SUP-YO-IWI-TEXT from the ready draft"
+      "unblock": "Source-byte acquisition completed 24 October 2026. Performance is not assessed by this written lesson.",
+      "source_sha256": "efc90f941eed63c51dfd0f41ac2f22ac3843fe1fc7832022ed9f3e8989a8ed85",
+      "lesson_id": "SUP-YO-IWI-TEXT"
     }
   ]
 }
