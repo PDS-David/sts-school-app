@@ -1,0 +1,23 @@
+-- R7 SCOPED DATA ROLLBACK TEMPLATE — removes ONLY the topic rows this release added. Never run as-is.
+-- Not for use until the owner has decided that a data rollback (rather than leaving rows in place) is required.
+-- Inputs (placeholders, from the release's before/after snapshots, NOT invented):
+--   :expected_added   exact number of rows the release added (from compare_release_delta.py added_by_bucket total)
+--   :min_order_<n>    per-bucket lowest ADDED order_index = (max pre-release order_index in that bucket) + 1
+-- WARNING: topic_completions and topic_assets of the deleted topics are removed by ON DELETE CASCADE; assessments
+-- linked by generated_assessment_id are NOT deleted (the link is set NULL elsewhere). Record counts first.
+BEGIN;
+LOCK TABLE topics IN SHARE ROW EXCLUSIVE MODE;
+CREATE TEMP TABLE r7_added(subject_name text, term_label text, min_order int) ON COMMIT DROP;
+-- one INSERT per bucket, values taken from the snapshots:
+-- INSERT INTO r7_added VALUES ('<SUBJECT_NAME>', '<TERM_LABEL>', <MIN_ADDED_ORDER_INDEX>);
+CREATE TEMP TABLE r7_victims ON COMMIT DROP AS
+  SELECT t.id FROM topics t JOIN subjects s ON s.id = t.subject_id
+  JOIN r7_added a ON a.subject_name = s.name AND a.term_label = t.term_label AND t.order_index >= a.min_order
+  WHERE t.school_code = 'secondary' AND t.class_name = 'JSS 3';
+DO $$ DECLARE n int; BEGIN
+  SELECT count(*) INTO n FROM r7_victims;
+  IF n <> :expected_added THEN RAISE EXCEPTION 'R7 rollback guard: % rows selected, expected %', n, :expected_added; END IF;
+END $$;
+DELETE FROM topics WHERE id IN (SELECT id FROM r7_victims);
+-- Review the row count above, then COMMIT or ROLLBACK manually. Take a post-rollback snapshot and compare to the
+-- pre-release snapshot with compare_release_delta.py (expect PASS with zero additions).
