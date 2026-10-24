@@ -34,8 +34,8 @@
       ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
-      "best_lead": "none usable after Y1 (23 Oct 2026): YT-14 prints no Ọya text; YT-15 prints Ọya lines but is a copyrighted songbook; YT-16 is a paywalled lead not checked for Ọya",
-      "missing": "One named Ọya pípè / oríkì Ọya passage of at least three lines, with (1) Yoruba with tone marks and under-dots, one performed line per line; (2) a named translator and line-aligned English; (3) a named collector/transcriber or published locator (title, year, page/line range); (4) a reuse basis covering that passage: an open licence printed on the work whose licensor owns the passage, or written permission naming the exact passage and display to enrolled students in the school app; (5) for hashing, either shell egress to the source host or the source file supplied privately so its SHA-256 and locator can be recorded. Nothing has been invented or substituted."
+      "best_lead": "none usable after Y1 (23 Oct 2026): YT-14 prints no Ọya text; YT-15 prints Ọya lines but is a copyrighted songbook; YT-16 is a paywalled lead not checked for Ọya R1 (24 Oct 2026): no new passage. Kolawole (YT-04) re-read in full: prints incantation, Èsù, ìjálá, oríkì Oníkòyí and Ifá lines only, no Ọya pípè lines. Zenodo 'Oya religious group in Oyo' (YT-R1-01, CC BY 4.0) is a religion-history article whose PDF could not be read here. The one concrete lead remains Elebuibon (YT-15), which needs written permission.",
+      "missing": "SINGLE ACQUISITION ACTION (R1): the owner opens the printed or authorised copy of Ifayemisi Elebuibon, Orisa Songs, finds the Ọya oríkì whose English-script first line begins 'A sere dun ni oko' (seen only in a search extract; page and edition unknown), and obtains that rights holder's written permission naming that one oríkì for display to enrolled students in the school app, together with a tone-marked copy and a named translator. Full list of what the passage needs: One named Ọya pípè / oríkì Ọya passage of at least three lines, with (1) Yoruba with tone marks and under-dots, one performed line per line; (2) a named translator and line-aligned English; (3) a named collector/transcriber or published locator (title, year, page/line range); (4) a reuse basis covering that passage: an open licence printed on the work whose licensor owns the passage, or written permission naming the exact passage and display to enrolled students in the school app; (5) for hashing, either shell egress to the source host or the source file supplied privately so its SHA-256 and locator can be recorded. Nothing has been invented or substituted."
     },
     {
       "id": "iwi-egungun",
@@ -45,8 +45,8 @@
       ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
-      "best_lead": "None supportable as of 23 Oct 2026. Closest leads and why each fails are in IWI_SOURCE_CHECKS.json: YT-09 (rights not cleared), YT-IWI-02 (one printed line, no stated origin or translator, NC licence on the article page), YT-06 (study-composed oríkì, not an ẹ̀sà text), YT-05 (unsuitable for pupils and provenance not established).",
-      "missing": "One short iwì/ẹ̀sà egúngún passage, long enough to carry comprehension questions (the Ṣàngó study uses three lines), in tone-marked Yoruba with English translation, whose origin (performer or collector, place and date, or earlier publication) and translator are stated, under an open licence or written permission that covers that passage, with the transcription checked against source bytes or page images. For YT-IWI-02 the open items are exactly: the couplet's origin and translator (not stated), its length (one line printed), the licence (article page: CC BY-NC 4.0; downloaded PDF text carries no licence line) and the owner's decision on whether non-commercial terms suit this app. The earlier owner decision D2 on èsà = iwì is no longer needed to unblock: the equivalence is evidenced below.",
+      "best_lead": "None supportable as of 23 Oct 2026. Closest leads and why each fails are in IWI_SOURCE_CHECKS.json: YT-09 (rights not cleared), YT-IWI-02 (one printed line, no stated origin or translator, NC licence on the article page), YT-06 (study-composed oríkì, not an ẹ̀sà text), YT-05 (unsuitable for pupils and provenance not established). R1 (24 Oct 2026): YT-06 re-assessed as a labelled modern equivalent, not as an inherited text; see YT-R1-IWI-01 and docs/jss3/completion/R1_YORUBA_TEXTS/IWI_CANDIDATE.json. A lesson draft exists but is NOT delivered, because no source bytes could be hashed.",
+      "missing": "SINGLE ACQUISITION ACTION (R1): on a machine that can reach frontiersin.org, save the /full page of Akinbo et al. (2022, doi 10.3389/fcomm.2022.1029400) and run scripts/jss3/yo_text/verify_iwi_candidate.py on it; report the printed source_sha256 and flags. This unlocks the drafted labelled-equivalent lesson (still not an inherited iwì text). For an inherited iwì text the earlier requirement stands: One short iwì/ẹ̀sà egúngún passage, long enough to carry comprehension questions (the Ṣàngó study uses three lines), in tone-marked Yoruba with English translation, whose origin (performer or collector, place and date, or earlier publication) and translator are stated, under an open licence or written permission that covers that passage, with the transcription checked against source bytes or page images. For YT-IWI-02 the open items are exactly: the couplet's origin and translator (not stated), its length (one line printed), the licence (article page: CC BY-NC 4.0; downloaded PDF text carries no licence line) and the owner's decision on whether non-commercial terms suit this app. The earlier owner decision D2 on èsà = iwì is no longer needed to unblock: the equivalence is evidenced below.",
       "equivalence_with_esa": {
         "status": "SUPPORTED_BY_SCHOLARSHIP",
         "claim": "ẹ̀sà and iwì egúngún are two names for one egúngún-cult chant form.",
@@ -112,7 +112,8 @@
       "rights_basis": "CC BY-SA 4.0 per the article page; the PDF front matter says only 'Creative Commons Attribution License' (existing discrepancy, kept)",
       "finding": "Carried from the 19 October 2026 full read recorded in OB-03: names Ṣàngó pípè, Ọya pípè and èsà egúngún but prints lines for Èṣù pípè, ofò, ìyẹ̀rẹ̀ Ifá, ìjálá and oríkì orílẹ̀ only. Not re-read in this pass.",
       "verdict": "NO_TEXT_TO_TEACH",
-      "unblock": "Written permission to use the author's recordings or transcriptions of the target forms, if they exist"
+      "unblock": "Written permission to use the author's recordings or transcriptions of the target forms, if they exist",
+      "r1_recheck": "24 Oct 2026: full PDF re-read through the fetch tool; names Oya pípè and èsà egúngún as forms but prints no Ọya or èsà lines. Verdict unchanged."
     },
     {
       "id": "YT-05",
@@ -138,7 +139,8 @@
       "rights_basis": "CC BY",
       "finding": "Compares ìjálá and èsà. Its four-line example is a poem composed by a co-author and chanted by one student for the study; it is not a traditional text.",
       "verdict": "NOT_SUITABLE",
-      "unblock": "none"
+      "unblock": "none",
+      "r1_recheck": "24 Oct 2026: reconsidered as a labelled modern equivalent (not as a traditional text). Verdict NOT_SUITABLE stays for 'inherited text'. Candidate record: YT-R1-IWI-01."
     },
     {
       "id": "YT-07",
@@ -303,6 +305,31 @@
       "finding": "The preview states that the complete text of one praise hymn is presented. Which òrìṣà it honours was not visible in the preview, so it is not known whether it is Ọya.",
       "verdict": "UNVERIFIED_LEAD",
       "unblock": "A reader with the full article reports whether the hymn is to Ọya and its page range; then publisher/author permission for that passage."
+    },
+    {
+      "id": "YT-R1-01",
+      "source": "Oladosu (2024), Oya religious group in Oyo, The Database of Religious History, Zenodo",
+      "url": "https://zenodo.org/records/12574511",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "Zenodo record states CC BY 4.0 (read as page text); licensor of any embedded chant not established",
+      "finding": "Record description is a religion-history summary (Ọya and Ṣàngó festivals, bàtá). It mentions no chant lines. The PDF returned as binary through the fetch tool and the shell cannot reach zenodo.org, so the PDF body was not read.",
+      "verdict": "NOT_EXAMINED",
+      "unblock": "Read the PDF; only if it prints Ọya lines with a stated collector and translator does it become a candidate"
+    },
+    {
+      "id": "YT-R1-IWI-01",
+      "source": "Akinbo, Samuel, Alaga and Akingbade (2022), Frontiers in Communication 7:1029400 (lines 1, 2 and 4 of the printed original poem)",
+      "url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/full",
+      "genres_checked": [
+        "iwi-egungun"
+      ],
+      "rights_basis": "CC BY printed in the article copyright statement; poem composed by a co-author for the study",
+      "finding": "Labelled modern equivalent. The study prints the poem with English translation and states which delivery features mark ẹ̀sà (also called Ìwí Egúngún). Words and genre-feature statements were read through the fetch tool as text; bytes were not obtainable in this shell.",
+      "verdict": "UNVERIFIED_LEAD",
+      "text_kind": "labelled_modern_equivalent",
+      "unblock": "Run verify_iwi_candidate.py on a saved copy of the /full page and record its source_sha256; then deliver SUP-YO-IWI-TEXT from the ready draft"
     }
   ]
 }
