@@ -1,0 +1,74 @@
+{
+  "task": "R1",
+  "status": "EVIDENCE_ONLY — not delivered; no source bytes were hashed",
+  "candidate_id": "YT-R1-IWI-01",
+  "genre": "iwi-egungun",
+  "text_kind": "labelled_modern_equivalent",
+  "source": {
+    "work": "Akinbo, Samuel, Alaga and Akingbade (2022), An acoustic study of vocal expression in two genres of Yoruba oral poetry, Frontiers in Communication 7:1029400",
+    "doi": "https://doi.org/10.3389/fcomm.2022.1029400",
+    "full_text_url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/full",
+    "pdf_url": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2022.1029400/pdf",
+    "licence": "Creative Commons Attribution License (CC BY), printed in the article's copyright statement; version 4.0 per the publisher's licence link (not re-checked as bytes)",
+    "composer_of_poem": "Iyabode B. Alaga (third author; Section 4.1 says the poem was composed by the third author; author contributions: IBA set up the stimulus)",
+    "performer": "one male native speaker of Standard Yorùbá, age 28, fourth-year Yorùbá undergraduate at the University of Ibadan, trained in chanting ìjálá and ẹ̀sà; not named",
+    "locator": "Section 4.1 'Stimuli, participant and procedure', example (3) 'An original Yorùbá poem', Lines 1-4; genre features: Section 3 (paragraphs 4-5), Section 5 (first paragraph), Section 6 (last paragraph)",
+    "access_method": "Frontiers /full page read through the fetch tool on 2026-10-24; text, not bytes. The shell cannot resolve www.frontiersin.org (curl exit 6)."
+  },
+  "selected_lines": [
+    {
+      "printed_line": 1,
+      "yoruba": "Adédùntán Àbẹ̀jẹ́ ọmọ Bàbálọ́jà",
+      "printed_english": "Adeduntan, the child of Babaloja"
+    },
+    {
+      "printed_line": 2,
+      "yoruba": "ẹyinjúu Ọmọladùṇ baríọlá ọmọba Lépolóyin",
+      "printed_english": "the eyeball of Omoladun, the honorable princess of Lepoloyin"
+    },
+    {
+      "printed_line": 4,
+      "yoruba": "dúdú wù mí, dúdú dá'mi l'ọ́rùn máa wolẹ̀ máa rọra olówó tí ń f'owó ṣàánú",
+      "printed_english": "(your) blackness is alluring, walk cautiously (you) benevolent rich"
+    }
+  ],
+  "omitted_printed_line": 3,
+  "omission_note": "Line 3 (a description of the addressee's body shape) is left out as a classroom selection; owner may restore it. Lines 1, 2 and 4 are quoted as printed.",
+  "printed_typo_kept": "'Ọmọladùṇ' has a dot under n as printed; kept verbatim and flagged in the lesson.",
+  "genre_claims_used": [
+    {
+      "claim": "ẹ̀sà is also known as Ìwí Egúngún and is associated with Egúngún ancestral veneration; devotees chant praises in ẹ̀sà mode",
+      "locator": "Section 3, paragraph 2"
+    },
+    {
+      "claim": "text content and performer identity do not reliably identify a genre; the same text can be used in several genres; vocal expression distinguishes them",
+      "locator": "Section 3, paragraph 4"
+    },
+    {
+      "claim": "ìjálá has vibrato; ẹ̀sà has no vibrato but vowel insertion and lengthening; a triply long [ooo] at the end of the first line recurs in ẹ̀sà",
+      "locator": "Section 3, paragraph 5"
+    },
+    {
+      "claim": "in the experiment [ooo] was inserted at the beginning of the first word of line 1; ẹ̀sà F0 was higher than ìjálá; ẹ̀sà was never vocalised with vibrato",
+      "locator": "Section 5, paragraphs 1-3"
+    },
+    {
+      "claim": "one participant; pilot study; the poem is original, chosen to control content and familiarity",
+      "locator": "Section 4.1 and Section 6 (limitation paragraph)"
+    }
+  ],
+  "why_this_is_a_valid_labelled_equivalent": "It is not offered as an inherited chant. It teaches the identifying features of ẹ̀sà/iwì delivery that the scholarship says distinguish the genre, and a short oríkì read closely. It does not supply an inherited iwì text and does not close the objective.",
+  "equivalence_esa_iwi": "already evidenced in docs/jss3/completion/YO_IWI_TEXT_20261023/IWI_SOURCE_CHECKS.json",
+  "draft_lesson": {
+    "supplement_id": "SUP-YO-IWI-TEXT",
+    "termLabel": "1st Term",
+    "gapIds": [
+      "YO-SL-094"
+    ],
+    "title": "iwì egúngún (ẹ̀sà): a modern oríkì and the marks of ẹ̀sà delivery",
+    "body_file": "docs/jss3/completion/R1_YORUBA_TEXTS/ready/SUP-YO-IWI-TEXT.body.txt",
+    "written_marks": 15,
+    "draft_body_sha256": "b33061039bcbc54250e728abd821c8faa1fd3ee7077e7fc425200732e97f5466"
+  },
+  "remaining_single_action": "On a machine that can reach frontiersin.org, save the article /full page (HTML) and run: python3 scripts/jss3/yo_text/verify_iwi_candidate.py SAVED_FULL_PAGE.html . Send the printed source_sha256 and the three match flags. Only then may the lesson, its attribution record and the register be activated (the gate requires USABLE_VERIFIED with a 64-hex source_sha256)."
+}
