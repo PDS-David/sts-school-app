@@ -655,14 +655,13 @@ test('G2: oral-text excerpts are labelled as selections, in printed order, with 
   assert.doesNotMatch(t, /It is believed to work only when exact/);
   assert.ok(!/Ṣàngó pípè[^.]*\n\(\d+\)/.test(t));
 });
-test('G2: marriage lesson explains only source-backed steps and keeps ìdána and ibale open', () => {
-  const m = byId('SUP-YO-MARRIAGE').body;
-  assert.match(m, /Ìdána\*\* — sources differ/); assert.match(m, /Ibale\*\* \(caution\)/);
-  const notExplained = m.split('**Not explained here:**')[1].split('.')[0];
-  for (const w of ['isihun', 'ipalemo', 'ifa iyawo', 'ese iyawo wiwe', 'ikorun', 'ojo keje']) assert.ok(notExplained.includes(w), w);
-  for (const w of ['ifojusode', 'ijohen', 'baba gbo iya gbo', 'ibale']) assert.ok(!notExplained.includes(w), w);
-  assert.match(m, /Ìfojúsóde\*\* \(caution\)[^\n]*looking out for a suitor/); assert.ok(byId('SUP-YO-MARRIAGE').sources.some(x => /10\.11648\/j\.reports\.20260601\.12/.test(x.url)));
-  assert.ok(byId('SUP-YO-MARRIAGE').sources.some(s => /10\.5901\/ajis/.test(s.url)));
+test('Y3: marriage contextual readings are implemented without inventing ojo keje', () => {
+ const m=byId('SUP-YO-MARRIAGE').body;
+ assert.match(m,/formal betrothal or engagement/);
+ assert.match(m,/historical bridal-night custom/);
+ assert.match(m,/fifth-day post-wedding stage/);
+ assert.match(m,/Specific rite still unresolved: ojo keje/);
+ assert.match(m,/tone-marked form is unverified/);
 });
 test('G2: ńkọ́ stays open, dà is sourced, and the cooperative-work lesson no longer cites marriage pages', () => {
   const q = byId('SUP-YO-IBEERE'); assert.match(q.body, /Where is Bolu/); assert.match(q.body, /both readings of ńkọ́ stay open/);

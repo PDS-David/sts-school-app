@@ -1,0 +1,23 @@
+{
+  "task": "R4 protected-curriculum comparison",
+  "base_master_sha": "eadc0772f1caca91165e9a6c1d320b8655eef58e",
+  "gate_result": "BLOCKED",
+  "protected_comparison_run": false,
+  "certification_claimed": false,
+  "count_2179_verified": false,
+  "inputs": {
+    "A_historical_certified_export_or_backup": {"supplied": false, "provenance_validated": false},
+    "A_alt_historical_record_importer_commit_sources_filters": {"supplied": false},
+    "B_release_snapshot_same_scope": {"supplied": false, "provenance_validated": false}
+  },
+  "inputs_searched": ["owner-supplied uploads for this task (none)", "repository tracked files (no export, dump, backup or filled provenance file)", "sandbox filesystem (only templates/docs)"],
+  "not_requested_again": ["R6", "JSS3 private source ZIP (not a protected-row baseline)"],
+  "tooling_checks": {
+    "compare_baseline_unit_tests": {"ran": 18, "ok": true},
+    "b_prep_unit_tests": {"ran": 9, "ok": true, "skipped": 3, "skip_reason": "JSS3_LOCAL_TEST_DATABASE_URL not set; no PostgreSQL in this sandbox (deliberate environmental skip)"},
+    "synthetic_negative_controls": {"file": "results_selfcheck_synthetic.json", "cases": 11, "all_expected": true, "applies_to_real_protected_rows": false}
+  },
+  "database_contacted": false,
+  "production_contacted": false,
+  "raw_exports_or_student_records_in_repo": false
+}
