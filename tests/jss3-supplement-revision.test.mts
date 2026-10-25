@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { JSS3_SUPPLEMENTS, buildJss3SupplementRows } from '../backend/src/db/jss3Supplements.ts';
 import { supplementReference } from '../backend/src/db/jss3SupplementReference.ts';
 import { createSupplementRevisionResolver, SUPPLEMENT_UPDATE_MARKER } from '../backend/src/utils/jss3SupplementRevision.ts';
@@ -42,4 +44,15 @@ test('existing original correction fingerprints and texts are unchanged',()=>{
  // Exact body hashes are not reversible: same-title unknown-text paths still compare all original corrections.
  for(const c of corrections){const t={school_code:c.school_code,class_name:c.class_name,subject_name:c.subject_name,term_label:c.term_label,title:c.source_title,source_reference:'unreviewed original'};assert.deepEqual(resolveDelivery(t),before(t));}
  const s=resolveDelivery(topic)!;assert.ok(s.text.startsWith(SUPPLEMENT_UPDATE_MARKER));
+});
+
+// Registry reproducibility: the checked-in registry must equal the generator's output for its explicit history ref.
+const HISTORY_REF='94982cbc5e9e2b2d61aa77ff4d2173135b17cca8';
+const hasHistory=spawnSync('git',['cat-file','-e',HISTORY_REF+'^{commit}'],{cwd:new URL('..',import.meta.url).pathname}).status===0;
+test('checked-in revision registry is exactly reproducible from the explicit history ref',{skip:!hasHistory&&'history ref not present in this (shallow) checkout'},()=>{
+ const out=mkdtempSync(tmpdir()+'/yrev-')+'/r.json',root=new URL('..',import.meta.url).pathname;
+ const r=spawnSync('python3',['scripts/jss3/build_yoruba_revision_register.py','--history-ref',HISTORY_REF,'--output',out],{cwd:root,encoding:'utf8'});
+ assert.equal(r.status,0,r.stderr);assert.equal(readFileSync(out,'utf8'),readFileSync(new URL('../backend/src/db/data/jss3YorubaRevisions.json',import.meta.url),'utf8'));
+ const second=spawnSync('python3',['scripts/jss3/build_yoruba_revision_register.py','--history-ref',HISTORY_REF,'--output',out+'2'],{cwd:root,encoding:'utf8'});assert.equal(second.status,0);assert.equal(readFileSync(out+'2','utf8'),readFileSync(out,'utf8'));
+ for(const v of registry.flatMap((x:any)=>x.versions))assert.equal(spawnSync('git',['merge-base','--is-ancestor',v.commit,HISTORY_REF],{cwd:root}).status,0,'accepted commit must be an ancestor of the history ref');
 });

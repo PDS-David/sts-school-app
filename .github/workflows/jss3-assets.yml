@@ -26,6 +26,8 @@ jobs:
           --health-retries 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the supplement-revision registry test regenerates from an explicit history ref
       - uses: actions/setup-node@v4
         with:
           node-version: '24.19.0'
