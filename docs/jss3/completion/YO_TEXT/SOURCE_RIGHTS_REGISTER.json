@@ -2,7 +2,7 @@
   "register_id": "YO-TEXT-SOURCE-RIGHTS",
   "checked": "2026-10-23",
   "base_sha": "6bac4640f7c7f6bc7872824f5d724f863afd8bca",
-  "method_note": "Web search and fetched page text only. Shell egress to source hosts was refused (HTTP 403 on CONNECT: gutenberg.org, archive.org, wikisource.org), and the fetch tool returns a model-summarised page, not source bytes, and would not return chant lines verbatim. No source file was downloaded or hashed in this pass and no transcription was compared word for word. A verdict below is a rights/suitability finding, not a transcription check. Update: YT-13 was downloaded as actual HTML, hashed and checked by direct DOM extraction; its publisher licence page was downloaded and checked. Earlier method limits remain historical.",
+  "method_note": "Web search and fetched page text only. Shell egress to source hosts was refused (HTTP 403 on CONNECT: gutenberg.org, archive.org, wikisource.org), and the fetch tool returns a model-summarised page, not source bytes, and would not return chant lines verbatim. No source file was downloaded or hashed in this pass and no transcription was compared word for word. A verdict below is a rights/suitability finding, not a transcription check. Update: YT-13 was downloaded as actual HTML, hashed and checked by direct DOM extraction; its publisher licence page was downloaded and checked. Earlier method limits remain historical. Task 04 (26 Oct 2026): shell connections to zenodo.org, archive.org, gutenberg.org, en.wikisource.org, brill.com, letterkunde.africa and doi.org all failed (curl status 000), so again no source bytes could be downloaded or hashed; findings below come from search results and fetched page text only.",
   "verdicts": {
     "USABLE_VERIFIED": "genre, transcription, translation and reuse basis all verified; a lesson and attribution record exist",
     "NO_TEXT_TO_TEACH": "source examined; prints no chant/praise text for the target genre",
@@ -34,7 +34,7 @@
       ],
       "status": "NOT_SUPPORTED",
       "lesson_id": null,
-      "best_lead": "none usable after Y1 (23 Oct 2026): YT-14 prints no Ọya text; YT-15 prints Ọya lines but is a copyrighted songbook; YT-16 is a paywalled lead not checked for Ọya R1 (24 Oct 2026): no new passage. Kolawole (YT-04) re-read in full: prints incantation, Èsù, ìjálá, oríkì Oníkòyí and Ifá lines only, no Ọya pípè lines. Zenodo 'Oya religious group in Oyo' (YT-R1-01, CC BY 4.0) is a religion-history article whose PDF could not be read here. The one concrete lead remains Elebuibon (YT-15), which needs written permission.",
+      "best_lead": "none usable after Y1 (23 Oct 2026): YT-14 prints no Ọya text; YT-15 prints Ọya lines but is a copyrighted songbook; YT-16 is a paywalled lead not checked for Ọya R1 (24 Oct 2026): no new passage. Kolawole (YT-04) re-read in full: prints incantation, Èsù, ìjálá, oríkì Oníkòyí and Ifá lines only, no Ọya pípè lines. Zenodo 'Oya religious group in Oyo' (YT-R1-01, CC BY 4.0) is a religion-history article whose PDF could not be read here. The one concrete lead remains Elebuibon (YT-15), which needs written permission. Task 04 (26 Oct 2026): no new passage. Zenodo YT-R1-01 re-read as page text only (no chant lines); Beier/Bolarinwa in Delos (YT-R2-01) is paywalled and a translation into Yoruba of English renderings; Akinyemi (YT-R2-02) and africanpoems.net (YT-R2-03) hold no Ọya text. The single concrete route is unchanged: Elebuibon, Orisa Songs (YT-15), with written permission; the equally valid alternative is a Yoruba teacher or performer who supplies one passage with checked transcription, translation and written consent. No message has been sent to anyone.",
       "missing": "SINGLE ACQUISITION ACTION (R1): the owner opens the printed or authorised copy of Ifayemisi Elebuibon, Orisa Songs, finds the Ọya oríkì whose English-script first line begins 'A sere dun ni oko' (seen only in a search extract; page and edition unknown), and obtains that rights holder's written permission naming that one oríkì for display to enrolled students in the school app, together with a tone-marked copy and a named translator. Full list of what the passage needs: One named Ọya pípè / oríkì Ọya passage of at least three lines, with (1) Yoruba with tone marks and under-dots, one performed line per line; (2) a named translator and line-aligned English; (3) a named collector/transcriber or published locator (title, year, page/line range); (4) a reuse basis covering that passage: an open licence printed on the work whose licensor owns the passage, or written permission naming the exact passage and display to enrolled students in the school app; (5) for hashing, either shell egress to the source host or the source file supplied privately so its SHA-256 and locator can be recorded. Nothing has been invented or substituted."
     },
     {
@@ -317,7 +317,8 @@
       "rights_basis": "Zenodo record states CC BY 4.0 (read as page text); licensor of any embedded chant not established",
       "finding": "Record description is a religion-history summary (Ọya and Ṣàngó festivals, bàtá). It mentions no chant lines. The PDF returned as binary through the fetch tool and the shell cannot reach zenodo.org, so the PDF body was not read.",
       "verdict": "NOT_EXAMINED",
-      "unblock": "Read the PDF; only if it prints Ọya lines with a stated collector and translator does it become a candidate"
+      "unblock": "Read the PDF; only if it prints Ọya lines with a stated collector and translator does it become a candidate",
+      "r2_recheck": "26 Oct 2026: record page re-fetched. Metadata: CC BY 4.0, file 'OYA RELIGIOUS GROUP IN OYO.pdf' 701.0 kB, md5 81dce7307beb2b40ddb57c04b3c31c18 (a value published by Zenodo, not computed here). The fetched text is English prose on Ọya's role, myths and worship; the only Yoruba is proper names and the festival name Ìṣẹ̀ṣe, with no oríkì or chant lines. The PDF bytes were not downloaded (host unreachable from the shell), so no SHA-256 exists and the verdict stays NOT_EXAMINED; it is very unlikely to become a candidate."
     },
     {
       "id": "YT-R1-IWI-01",
@@ -333,6 +334,42 @@
       "unblock": "Source-byte acquisition completed 24 October 2026. Performance is not assessed by this written lesson.",
       "source_sha256": "efc90f941eed63c51dfd0f41ac2f22ac3843fe1fc7832022ed9f3e8989a8ed85",
       "lesson_id": "SUP-YO-IWI-TEXT"
+    },
+    {
+      "id": "YT-R2-01",
+      "source": "Ulli Beier, Yorùbá Oral Poems, Yoruba translation by Abidemi Bolarinwa, Delos 33(2) (Fall 2018), pp. 225-251",
+      "url": "https://journals.upress.ufl.edu/delos/article/view/765",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "Page states copyright for translations rests with the translator, subject to the rights of the author translated; PDF/HTML behind a USD 10 subscription or fee. No open licence seen.",
+      "finding": "Only metadata and a short abstract block were readable; the full text is paywalled, so it is not known whether any Ọya poem is printed. It is also a translation into Yoruba of Beier's English renderings, so even if an Ọya poem is present it would not be a transcription of a performed pípè.",
+      "verdict": "UNVERIFIED_LEAD",
+      "unblock": "A reader with the full article reports whether any poem is to Ọya, with page and line range and how the Yoruba lines were produced; only then ask the translator and University of Florida Press for permission for that one passage."
+    },
+    {
+      "id": "YT-R2-02",
+      "source": "Akintunde Akinyemi, author page and abstract on Ṣàngó praise names, University of Texas African Studies database",
+      "url": "https://laits.utexas.edu/africa/2004/database/akinyemi.html",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "Page carries no copyright or licence statement.",
+      "finding": "Short author biography and an abstract about Ṣàngó praise names. No Ọya oríkì or chant text, in Yoruba or English.",
+      "verdict": "NO_TEXT_TO_TEACH",
+      "unblock": "None for Ọya: this page cannot supply a passage."
+    },
+    {
+      "id": "YT-R2-03",
+      "source": "africanpoems.net, 'Onikoyi the warrior king' (credited 'from Yoruba Poetry (1970), by Ulli Beier')",
+      "url": "https://africanpoems.net/praise/onikoyi-the-warrior-king/",
+      "genres_checked": [
+        "oya-pipe"
+      ],
+      "rights_basis": "Page carries no copyright or licence statement; credit line names Beier's Yoruba Poetry (1970).",
+      "finding": "A praise poem to a king, not to Ọya; the page does not mention Ọya and offers no index of Yoruba oríkì that includes her.",
+      "verdict": "NO_TEXT_TO_TEACH",
+      "unblock": "None for Ọya: this page cannot supply a passage."
     }
   ]
 }
