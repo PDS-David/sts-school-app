@@ -663,10 +663,10 @@ test('Y3: marriage contextual readings are implemented without inventing ojo kej
  assert.match(m,/Specific rite still unresolved: ojo keje/);
  assert.match(m,/tone-marked form is unverified/);
 });
-test('G2: ńkọ́ stays open, dà is sourced, and the cooperative-work lesson no longer cites marriage pages', () => {
-  const q = byId('SUP-YO-IBEERE'); assert.match(q.body, /Where is Bolu/); assert.match(q.body, /both readings of ńkọ́ stay open/);
+test('G2: sourced contextual readings preserve unresolved source spellings and valid cooperative sources', () => {
+  const q = byId('SUP-YO-IBEERE'); assert.match(q.body, /Where is Bolu/); assert.match(q.body, /does not supply enough context/);
   const r = byId('SUP-YO-IRANLOWO-PRACTICE'); assert.ok(r.sources.every(s => !/marriage|igbeyawo/i.test(s.title + s.url)));
-  assert.match(r.body, /Treat the distinctions above as the lesson's reading, not as settled/);
+  assert.match(r.body, /Akinola \(2007\)/);
 });
 test('G2: Ifá excerpt English lines keep the printed layout and the NOUN course developer is credited', () => {
   const t = byId('SUP-YO-ORAL-TEXTS').body;
@@ -699,7 +699,7 @@ test('G2 completion: unsettled cooperative terms are not fixed-answer targets', 
   const text = byId('SUP-YO-IRANLOWO-PRACTICE').body;
   const assessment = text.slice(text.indexOf('**Practice'));
   assert.doesNotMatch(assessment, /ọwẹ́–|àáró–|Match:/);
-  assert.match(assessment, /Do not mark a pupil wrong/);
+  assert.match(assessment, /does not reject a different documented local usage/);
   assert.match(assessment, /not fixed-answer assessment targets/);
 });
 
