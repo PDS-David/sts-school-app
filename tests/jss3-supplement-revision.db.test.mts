@@ -17,7 +17,7 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  const {default:router}=await import('../backend/src/routes/learning.js');const {signAccess}=await import('../backend/src/utils/jwt.js');
  const fixture=JSON.parse(readFileSync(new URL('./fixtures/jss3-ibeere-previous.json',import.meta.url),'utf8'));
  const ref=supplementReference(fixture.lesson),tag='zz_supp_revision_'+Date.now();
- let subject:number,student:string,user:string,server:any,base:string,token:string;
+ let subject:number,student:string,user:string,admin:string,server:any,base:string,token:string,adminToken:string;
  const topics:number[]=[],assessments:string[]=[];
  const one=async(sql:string,args:any[]=[])=> (await query(sql,args)).rows[0];
  const api=async(method:string,p:string,body?:any)=>{const r=await fetch(base+'/learning'+p,{method,headers:{authorization:`Bearer ${token}`,'content-type':'application/json'},body:body?JSON.stringify(body):undefined});return {status:r.status,body:await r.json() as any};};
@@ -31,13 +31,15 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  user=(await one(`INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,'x','student','secondary',$1) RETURNING id`,[tag])).id;
  student=(await one(`INSERT INTO students(school_code,admission_number,full_name,class_name,user_id) VALUES('secondary',$1,$1,'JSS 3',$2) RETURNING id`,[tag,user])).id;
  token=signAccess({id:user,username:tag,role:'student',school_code:'secondary',assigned_class:null,assigned_subject_ids:[]});
+ admin=(await one(`INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,'x','admin','secondary',$1) RETURNING id`,[tag+'_adm'])).id;
+ adminToken=signAccess({id:admin,username:tag+'_adm',role:'admin',school_code:'secondary',assigned_class:null,assigned_subject_ids:[]});
  const app=express();app.use(express.json());app.use('/learning',router);server=app.listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));base=`http://127.0.0.1:${(server.address() as AddressInfo).port}`;
  });
  after(async()=>{
  if(server)await new Promise<void>(r=>server.close(()=>r()));await new Promise<void>(r=>stub.close(()=>r()));
  if(student){await query('DELETE FROM submissions WHERE student_id=$1',[student]);await query('DELETE FROM topic_completions WHERE student_id=$1',[student]);}
  await query('DELETE FROM topics WHERE id=ANY($1)',[topics]);if(subject){await query('DELETE FROM assessments WHERE subject_id=$1',[subject]);await query('DELETE FROM questions WHERE subject_id=$1',[subject]);}
- if(student)await query('DELETE FROM students WHERE id=$1',[student]);if(user)await query('DELETE FROM users WHERE id=$1',[user]);if(subject)await query('DELETE FROM subjects WHERE id=$1',[subject]);await pool.end();
+ if(student)await query('DELETE FROM students WHERE id=$1',[student]);if(user)await query('DELETE FROM users WHERE id=$1',[user]);if(admin)await query('DELETE FROM users WHERE id=$1',[admin]);if(subject)await query('DELETE FROM subjects WHERE id=$1',[subject]);await pool.end();
  });
  test('old stored supplement serves current notes; stale direct assessment access and submissions blocked; history retained',async()=>{
  const {t,a}=await make();await query('INSERT INTO topic_completions(topic_id,student_id,passed,score_percent) VALUES($1,$2,true,100)',[t,student]);
@@ -59,5 +61,15 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  test('real SQL transaction rollback preserves prior cache/assessment state on failure',async()=>{
  const {t,a}=await make();const c=await pool.connect();try{await c.query('BEGIN');const r=resolveDelivery({school_code:'secondary',class_name:'JSS 3',subject_name:'Yoruba',term_label:'1st Term',title:fixture.lesson.title,source_reference:ref})!;await retireStaleJss3Cache((sql,args)=>c.query(sql,args),t,r);await assert.rejects(c.query('SELECT 1/0'));await c.query('ROLLBACK');}finally{c.release();}
  assert.equal((await one('SELECT summary FROM topics WHERE id=$1',[t])).summary,'STALE SUMMARY');assert.equal((await one('SELECT status FROM assessments WHERE id=$1',[a])).status,'open');
+ });
+
+ test('teacher/admin topic update response never returns stale or unreviewed stored text',async()=>{
+  const put=async(id:number)=>{const r=await fetch(base+'/learning/topics/'+id,{method:'PUT',headers:{authorization:`Bearer ${adminToken}`,'content-type':'application/json'},body:JSON.stringify({description:'edited description'})});return {status:r.status,body:await r.json() as any};};
+  const {t,a}=await make();const ok=await put(t);assert.equal(ok.status,200);
+  assert.match(ok.body.topic.summary,/JSS3 SUPPLEMENT UPDATE/);assert.equal(ok.body.topic.generated_assessment_id,null);assert.equal(ok.body.topic.description,'edited description');assert.ok(!('subject_name' in ok.body.topic));
+  assert.equal((await one('SELECT source_reference FROM topics WHERE id=$1',[t])).source_reference,ref); // stored source untouched
+  assert.equal((await one('SELECT status FROM assessments WHERE id=$1',[a])).status,'open'); // a response guard does not itself mutate the cache
+  const unknown=await make('unreviewed edited text');const held=await put(unknown.t);assert.equal(held.status,200);
+  assert.ok(!JSON.stringify(held.body).includes('unreviewed edited text'));assert.equal(held.body.topic.generated_assessment_id,null);
  });
 }

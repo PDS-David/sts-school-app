@@ -370,7 +370,13 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
      WHERE id=$6 RETURNING *`,
     [title, description, subject_id, class_name, term_id, req.params.id],
   );
-  return res.json({ topic: rows[0] });
+  // Same delivery guard as the list/detail paths: an edited JSS3 row must not hand back stale, withheld or
+  // audited-original text (or a stale assessment link). The stored row itself is not touched here.
+  const { rows: full } = await query(
+    'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
+  );
+  const { subject_name: _subjectName, ...safe } = safeJss3Topic(full[0] ?? rows[0]);
+  return res.json({ topic: safe });
 });
 
 router.delete('/topics/:id', requirePerm('topics.write'), async (req, res) => {
