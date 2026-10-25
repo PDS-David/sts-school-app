@@ -16,11 +16,11 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: test_only_password
-          POSTGRES_DB: sts_jss3_test
+          POSTGRES_DB: jss3_test_ci
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U postgres -d sts_jss3_test"
+          --health-cmd "pg_isready -U postgres -d jss3_test_ci"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
@@ -46,23 +46,25 @@ jobs:
           python3 -m unittest discover -s tests -p "test_jss3_staging_attach_plan.py"
           python3 -m unittest discover -s tests -p "test_jss3_noun_attribution_assets.py"
           node --test tests/*.cjs
-          node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts tests/jss3-supplements.test.mts tests/jss3-batch2-assets.test.mts tests/jss3-batch2-content.test.mts tests/jss3-delivery-correction.test.mts tests/jss3-d-verification.test.mts tests/jss3-g4-figures.test.mts tests/lesson-image.test.mts tests/jss3-manifest-generation.test.mts tests/jss3-v1-business.test.mts tests/jss3-v2-math-figures.test.mts tests/jss3-m2-connectors.test.mts tests/jss3-math3-binary-notation.test.mts tests/jss3-math4-equivalents.test.mts tests/jss3-closeout-content.test.mts tests/jss3-y3-marriage.test.mts tests/jss3-y3-question-context.test.mts tests/jss3-teacher1-math-decisions.test.mts tests/jss3-v3-science.test.mts tests/jss3-yo-license.test.mts tests/jss3-yo-text.test.mts tests/jss3-yo-iwi.test.mts tests/jss3-yo-r1.test.mts tests/jss3-yo-distribution-r3.test.mts
+          node --import tsx --test tests/topic-assets-metadata.test.mts tests/topic-assets-loading.test.mts tests/jss3-supplements.test.mts tests/jss3-batch2-assets.test.mts tests/jss3-batch2-content.test.mts tests/jss3-supplement-revision.test.mts tests/jss3-delivery-correction.test.mts tests/jss3-d-verification.test.mts tests/jss3-g4-figures.test.mts tests/lesson-image.test.mts tests/jss3-manifest-generation.test.mts tests/jss3-v1-business.test.mts tests/jss3-v2-math-figures.test.mts tests/jss3-m2-connectors.test.mts tests/jss3-math3-binary-notation.test.mts tests/jss3-math4-equivalents.test.mts tests/jss3-closeout-content.test.mts tests/jss3-y3-marriage.test.mts tests/jss3-y3-question-context.test.mts tests/jss3-teacher1-math-decisions.test.mts tests/jss3-v3-science.test.mts tests/jss3-yo-license.test.mts tests/jss3-yo-text.test.mts tests/jss3-yo-iwi.test.mts tests/jss3-yo-r1.test.mts tests/jss3-yo-distribution-r3.test.mts
       - name: Live PostgreSQL and real asset bytes
         env:
-          TOPIC_ASSETS_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
+          TOPIC_ASSETS_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
           T2_REAL_ASSETS: ${{ github.workspace }}/curriculum-assets/jss3
         run: |
           node --import tsx --test tests/topic-assets.db.test.mts
           node --import tsx --test tests/protected-export.db.test.mts
       - name: Science PostgreSQL attachment and authenticated retrieval (synthetic identities)
         env:
-          JSS3_V3_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
+          JSS3_V3_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
         run: node --import tsx --test tests/jss3-v3-science-ci.db.test.mts
       - name: YO-LICENSE attribution delivered by the authenticated route
         env:
-          JSS3_YO_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
-        run: node --import tsx --test tests/jss3-yo-license.db.test.mts
+          JSS3_YO_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
+        run: |
+          node --import tsx --test tests/jss3-yo-license.db.test.mts
+          node --import tsx --test tests/jss3-supplement-revision.db.test.mts
       - name: STAGING-BOOTSTRAP first-admin CLI (disposable jss3_test_* databases created and dropped by the test)
         env:
-          JSS3_LOCAL_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/sts_jss3_test
+          JSS3_LOCAL_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
         run: node --import tsx --test tests/staging-admin.db.test.mts
