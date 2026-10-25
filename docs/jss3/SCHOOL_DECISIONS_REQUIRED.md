@@ -8,6 +8,8 @@ Only decisions that sources could not settle. No teacher review has been evidenc
 
 ## A. Ambiguous source terms (Yoruba teacher)
 
+25 October A4 update: Akinola (2007), section 3, p.35 now supports the taught work-sharing distinction as a named account. The unsupported food/drink rule is removed. The raw `obese` mapping, tone marks and borrowing terms remain unresolved; the table's older request must not be read as a claim that no account distinguishes the work arrangements.
+
 | # | Gap ID | Exact source wording | App treatment | What your answer changes |
 |---|---|---|---|---|
 | A1 | YO-SL-087 (SL-087) | `EDE – Atunyewo fonoloji Ede Yoruba iparoje ati isunki` | SUP-YO-ISUNKI teaches aranmo and isunki from the school's own compounds; `iparoje` is not defined. No source defines it. A WAEC 2019 Yoruba paper pairs `ìpajẹ àti ìsúnkì` (elision and contraction), so ìpajẹ is offered as a candidate only. | Confirms whether iparoje means ìpajẹ (elision), so the lesson can teach it, or names another process. Implement and verify its objective coverage before closure. |

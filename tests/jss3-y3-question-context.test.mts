@@ -24,3 +24,14 @@ test('real supplement builder delivers the corrected context without mutating so
  assert.ok(!record.includes(supplementBodyHash(rows[0].sourceReference+'tampered')));
  for(const src of lesson.sources.slice(-2)) assert.ok(record.includes(src.url));
 });
+
+test('cooperation lesson distinguishes documented rotation without inventing a food rule',()=>{
+ const l=JSS3_SUPPLEMENTS.find(s=>s.id==='SUP-YO-IRANLOWO-PRACTICE')!;
+ assert.match(l.body,/Akinola \(2007\)/);assert.match(l.body,/Àáró \/ Aaro \(1\)/);
+ assert.doesNotMatch(l.body,/Food or drink is not required/);
+ assert.match(l.body,/obese/);assert.match(l.body,/not a rule for every community/);
+ const original={filePath:'fixture.docx',className:'JSS 3',termLabel:l.termLabel,subjectName:l.subjectName,weekLabel:'WEEK 5',orderIndex:1,title:'fixture',sourceReference:'Original'};
+ const row=buildJss3SupplementRows([original],'/fixture','secondary',[l])[0];
+ const record=readFileSync(new URL('../docs/jss3/replacements/IMPLEMENTED_LESSONS.csv',import.meta.url),'utf8').split('\n').find(r=>r.startsWith(l.id+','))!;
+ assert.ok(record.includes(supplementBodyHash(row.sourceReference)));
+});
