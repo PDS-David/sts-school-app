@@ -777,6 +777,31 @@ ALTER TABLE users ADD COLUMN IF NOT EXISTS pending_admin_review BOOLEAN DEFAULT 
 
 
 
+-- ── JSS3 supplement sequencing (Task 05; additive, nullable, reversible) ────────
+-- sequence_rank positions an APPROVED supplement between two original lessons for
+-- display and for its own unlock rule. It never changes order_index, topic ids, the
+-- importer identity key, assets or completions. NULL (every row today) means the
+-- legacy behaviour: the topic sits at COALESCE(sequence_rank, order_index).
+-- Rollback of the column itself is `ALTER TABLE topics DROP COLUMN sequence_rank` and
+-- is only safe after every plan was rolled back with applyTopicSequence --rollback.
+ALTER TABLE topics ADD COLUMN IF NOT EXISTS sequence_rank NUMERIC(12,6);
+
+-- One row per rank this tool wrote, so rollback is scoped to a school and plan
+-- version and never touches rows it did not write or ranks edited afterwards.
+CREATE TABLE IF NOT EXISTS topic_sequence_audit (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  plan_version  TEXT NOT NULL,
+  plan_hash     TEXT NOT NULL,
+  school_code   TEXT NOT NULL,
+  topic_id      INT  NOT NULL REFERENCES topics(id) ON DELETE CASCADE,
+  previous_rank NUMERIC(12,6),
+  new_rank      NUMERIC(12,6) NOT NULL,
+  applied_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+  rolled_back_at TIMESTAMPTZ
+);
+CREATE INDEX IF NOT EXISTS idx_topic_sequence_audit_scope ON topic_sequence_audit(school_code, plan_version);
+
+
 -- ── Lesson assets (Task 2: Music notation + Basic Technology illustrations) ──
 -- ADDITIVE ONLY: one new table, nothing existing is altered. schema.sql is
 -- re-run in full on every migration, so every statement here is idempotent.

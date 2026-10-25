@@ -14,8 +14,10 @@ test('results screen hooks are all declared before conditional loading/error ret
 test('PIN enforcement is explicitly opt-in, preserving free launch access', () => {
   const s = read('backend/src/routes/learning.ts');
   assert.match(s, /TERM_PIN_ENFORCED === 'true'/);
-  assert.match(s, /termPinEnforced && !redeemedTermLabels\.has/);
-  assert.match(s, /termPinEnforced && !pinRows\[0\]/);
+  // Task 05: read per request and shared by the list and the direct guard through resolveSequenceGroup(..., pinOk).
+  assert.match(s, /const termPinEnforced = \(\) => process\.env\.TERM_PIN_ENFORCED === 'true'/);
+  assert.match(s, /!termPinEnforced\(\) \|\| redeemedTermLabels\.has/);
+  assert.match(s, /!termPinEnforced\(\) \|\| !!pinRows\[0\]/);
 });
 test('cached notes do not hide practice retrieval action', () => {
   const s = read('mobile/src/screens/TopicDetailScreen.tsx');
