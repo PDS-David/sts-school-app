@@ -47,7 +47,7 @@ test('existing original correction fingerprints and texts are unchanged',()=>{
 });
 
 // Registry reproducibility: the checked-in registry must equal the generator's output for its explicit history ref.
-const HISTORY_REF='94982cbc5e9e2b2d61aa77ff4d2173135b17cca8';
+const HISTORY_REF='2268738fa3048bffa1a5a6b9ab2ad2feeca84aa2';
 const hasHistory=spawnSync('git',['cat-file','-e',HISTORY_REF+'^{commit}'],{cwd:new URL('..',import.meta.url).pathname}).status===0;
 test('checked-in revision registry is exactly reproducible from the explicit history ref',{skip:!hasHistory&&'history ref not present in this (shallow) checkout'},()=>{
  const out=mkdtempSync(tmpdir()+'/yrev-')+'/r.json',root=new URL('..',import.meta.url).pathname;

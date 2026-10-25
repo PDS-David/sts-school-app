@@ -72,4 +72,12 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
   const unknown=await make('unreviewed edited text');const held=await put(unknown.t);assert.equal(held.status,200);
   assert.ok(!JSON.stringify(held.body).includes('unreviewed edited text'));assert.equal(held.body.topic.generated_assessment_id,null);
  });
+
+ test('Task 03: a topic stored with the previous literature-method reference is served the new story-bound lesson through the real list route',async()=>{
+  const prev=JSON.parse(readFileSync(new URL('./fixtures/jss3-lit-method-previous.json',import.meta.url),'utf8'));const oldRef=supplementReference(prev.lesson);
+  const t=(await one(`INSERT INTO topics(school_code,subject_id,class_name,term_label,title,source_reference,summary) VALUES('secondary',$1,'JSS 3','1st Term',$2,$3,'STALE SUMMARY') RETURNING id`,[subject,prev.lesson.title,oldRef])).id;topics.push(t);
+  const list=await api('GET','/topics?class_name=JSS%203');const shown=list.body.topics.find((x:any)=>x.id===t);
+  assert.match(shown.summary,/JSS3 SUPPLEMENT UPDATE/);assert.match(shown.summary,/Practice on a story that is already in the app/);assert.doesNotMatch(shown.summary,/STALE SUMMARY/);
+  assert.equal((await one('SELECT source_reference FROM topics WHERE id=$1',[t])).source_reference,oldRef);
+ });
 }
