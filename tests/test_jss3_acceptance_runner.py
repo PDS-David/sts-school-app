@@ -20,4 +20,23 @@ class Runner(unittest.TestCase):
             with zipfile.ZipFile(p,'w') as z:z.writestr('SOURCE_INVENTORY.csv','\n'.join(lines))
             with self.assertRaisesRegex(ValueError,'Unsafe'):m.stage_archive(p,Path(d)/'out')
             self.assertFalse((Path(d)/'escape').exists())
+
+class RunnerSuiteRegistryTests(unittest.TestCase):
+    """Every real-PostgreSQL suite in tests/ must run in full acceptance or carry a written exclusion."""
+    # Excluded on purpose: run in CI with their own disposable databases; owned by later tasks (07 protected baseline, 08 staging).
+    EXCLUDED = {'protected-export.db': 'CI-only protected-export check (Task 07 scope)',
+                'staging-admin.db': 'creates and drops its own jss3_test_admin_* databases (Task 08 scope)'}
+
+    def test_every_db_suite_is_registered_or_excluded(self):
+        import re
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[1]
+        src = (root / 'scripts/jss3/run_acceptance.py').read_text(encoding='utf8')
+        registered = set(re.search(r"suites=\[(.*?)\]", src, re.S).group(1).replace("'", '').replace(' ', '').split(','))
+        on_disk = {p.name[:-len('.test.mts')] for p in (root / 'tests').glob('*.db.test.mts')}
+        self.assertEqual(sorted(on_disk - registered - set(self.EXCLUDED)), [], 'DB suite omitted from run_acceptance.py')
+        self.assertEqual(sorted(registered - on_disk), [], 'runner lists a suite that does not exist')
+        self.assertIn('jss3-sequence.db', registered)
+        self.assertIn('JSS3_SEQ_TEST_DATABASE_URL', src)
+
 if __name__=='__main__':unittest.main()
