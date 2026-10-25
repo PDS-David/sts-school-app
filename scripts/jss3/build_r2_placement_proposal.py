@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/jss3/completion/R2_SEQUENCING'
 SPREP = ROOT / 'docs/jss3/completion/S_PREP/PLACEMENT_PROPOSAL.csv'
 DECISIONS = OUT / 'R2_RELATION_DECISIONS.csv'
+SCHEDULE = ROOT / 'docs/jss3/replacements/TEACHER_SCHEDULE_SUPPLEMENTS.csv'
 SUPPS = ROOT / 'backend/src/db/data/jss3Supplements.json'
 ARCHIVE_SHA256 = '0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c'
 CAPTURE_MEMBER = 'JSS3_NEXT_STAGE_INPUTS/portable_verification/capture/original-rows.json'
@@ -60,6 +61,49 @@ def load_decisions(supp_ids):
         sorted(supp_ids - set(ids))[:5], sorted(set(ids) - supp_ids)[:5])
     return {r['supplement_id']: r for r in rows}
 
+TEMPLATE_COLS = ['supplement_id', 'term', 'subject', 'title', 'proposed_after_original_index', 'proposed_anchor_original_title',
+                 'confidence', 'overlap_supports_relation', 'recommended_decision', 'decision', 'approved_after_original_index',
+                 'approver_name', 'approver_role', 'decided_on', 'basis']
+
+
+def recommended(row):
+    """Conservative reading of D5: only an archive-checked HIGH row whose independent keyword overlap agrees is recommended
+    for approval; every other anchored row needs a teacher's confirmation; unresolved rows stay appended (D4)."""
+    if not row['proposed_after_original_index']:
+        return 'KEEP_AT_END'
+    if row['confidence'] == 'HIGH' and row['overlap_supports_relation'] == 'YES':
+        return 'APPROVE_AS_PROPOSED'
+    return 'PENDING'
+
+
+def write_template(rows):
+    """Response template. `decision` and every approver column are left EMPTY on purpose: nothing here is an approval."""
+    with open(OUT / 'PLACEMENT_APPROVAL_RESPONSE_TEMPLATE.csv', 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f, lineterminator='\n'); w.writerow(TEMPLATE_COLS)
+        for r in rows:
+            k = r['proposed_after_original_index']
+            anchor = r['related_original_titles'].split(' | ')[-1] if k and r['related_original_titles'] else ''
+            w.writerow([r['supplement_id'], r['term'], r['subject'], r['title'], k, anchor, r['confidence'],
+                        r['overlap_supports_relation'], recommended(r), '', '', '', '', '', ''])
+
+
+def load_schedule(supp_ids):
+    rows = list(csv.DictReader(open(SCHEDULE, encoding='utf-8')))
+    info = {r['supplement_id']: dict(r) for r in rows}
+    assert len(info) == len(rows), 'duplicate ids in teacher schedule'
+    assert set(info) == supp_ids, 'teacher schedule differs from jss3Supplements.json: %s / %s' % (
+        sorted(supp_ids - set(info))[:5], sorted(set(info) - supp_ids)[:5])
+    per = collections.defaultdict(list)
+    for r in info.values():
+        per[(r['term'], r['subject'])].append(int(r['app_order_index_append']))
+    for key, v in per.items():
+        n = int(next(r for r in info.values() if (r['term'], r['subject']) == key)['appended_after_originals'])
+        assert sorted(v) == list(range(n + 1, n + len(v) + 1)), ('append indices not contiguous', key)
+    for r in info.values():
+        r['current_order_index'] = r['app_order_index_append']
+        r['supplement_count'] = len(per[(r['term'], r['subject'])])
+    return info
+
 
 def validate_decision(d, count):
     t = d['relation_tier']
@@ -85,10 +129,14 @@ def build(archive):
         originals = json.loads(z.read(CAPTURE_MEMBER).decode('utf-8'))
     assert len(originals) == 313, len(originals)
     supps = {s['id']: s for s in json.load(open(SUPPS, encoding='utf-8'))}
-    assert len(supps) == 170
     dec = load_decisions(set(supps))
+    # Bucket facts come from the CURRENT teacher schedule (regenerated with the lessons), never from the S-PREP CSV,
+    # which is a historical proposal and goes stale whenever a lesson is added. The S-PREP CSV is only a comparison.
+    info = load_schedule(set(supps))
     sprep = {r['supplement_id']: r for r in csv.DictReader(open(SPREP, encoding='utf-8'))}
-    assert set(sprep) == set(supps)
+    assert set(sprep) <= set(supps), 'S-PREP proposal names a supplement that no longer exists'
+    for sid, r in sprep.items():
+        assert r['current_order_index'] == info[sid]['current_order_index'], ('order drift vs S-PREP', sid)
 
     buckets = collections.defaultdict(list)
     for r in originals:
@@ -108,11 +156,12 @@ def build(archive):
 
     out = []
     for sid, s in supps.items():
-        p = sprep[sid]
+        p = info[sid]
         key = (p['term'], p['subject'])
         rows = buckets[key]
         n = len(rows)
-        assert n == int(p['current_original_count']), (sid, n, p['current_original_count'])
+        assert n == int(p['appended_after_originals']), (sid, n, p['appended_after_originals'])
+        sp_row = sprep.get(sid)
         d = dec[sid]
         validate_decision(d, n)
         tier, rel = d['relation_tier'], d['related_originals']
@@ -135,7 +184,7 @@ def build(archive):
         top3 = [i for v, i in sc[:3] if v > 0]
         supports = 'YES' if related and set(top3) & set(related) else ('NO' if related else '')
         k = d['proposed_after_original_index']
-        sp = p['proposed_after_original_index'] if p['proposed_status'] == 'PROPOSED' else ''
+        sp = sp_row['proposed_after_original_index'] if sp_row and sp_row['proposed_status'] == 'PROPOSED' else ''
         if k and sp:
             chg = 'SAME' if k == sp else 'CHANGED %s->%s' % (sp, k)
         elif k:
@@ -145,8 +194,8 @@ def build(archive):
         else:
             chg = 'STILL_UNRESOLVED'
         ah = ';'.join('%d:%s' % (i, t[:40]) for i, t in assess_by_bucket[key])
-        out.append([sid, p['class_name'], p['subject'], p['term'], s['title'], p['current_order_index'], n,
-                    p['current_supplement_count'], tier, rel if tier in ('TOPIC_MATCH', 'PARTIAL_MATCH') else '',
+        out.append([sid, 'JSS 3', p['subject'], p['term'], s['title'], p['current_order_index'], n,
+                    p['supplement_count'], tier, rel if tier in ('TOPIC_MATCH', 'PARTIAL_MATCH') else '',
                     titles, shas, lo, hi, k, d['confidence'],
                     ';'.join([t for t in d['evidence_basis'].split(';') if t] + (['OVERLAP'] if supports == 'YES' else [])),
                     ';'.join(map(str, top3)), supports, d['note'], sp, chg, ah,
@@ -159,6 +208,7 @@ def build(archive):
     with open(OUT / 'BUCKET_ASSESSMENT_ROWS.csv', 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f, lineterminator='\n')
         w.writerow(['term', 'subject', 'original_index', 'title', 'kind']); w.writerows(assess_rows)
+    write_template([dict(zip(COLS, r)) for r in out])
     summarize(out)
 
 
@@ -175,7 +225,7 @@ def check():
     dec = load_decisions(supps)
     rows = list(csv.DictReader(open(OUT / 'PLACEMENT_PROPOSAL_R2.csv', encoding='utf-8')))
     assert [list(r.keys()) for r in rows[:1]] == [COLS], 'column drift'
-    assert {r['supplement_id'] for r in rows} == supps and len(rows) == 170
+    assert {r['supplement_id'] for r in rows} == supps and len(rows) == len(supps)
     for r in rows:
         n = int(r['current_original_count'])
         d = dec[r['supplement_id']]
@@ -189,6 +239,12 @@ def check():
     for key, v in per.items():
         n = int(next(r for r in rows if (r['term'], r['subject']) == key)['current_original_count'])
         assert sorted(v) == list(range(n + 1, n + len(v) + 1)), key
+    tpl = list(csv.DictReader(open(OUT / 'PLACEMENT_APPROVAL_RESPONSE_TEMPLATE.csv', encoding='utf-8')))
+    assert [r['supplement_id'] for r in tpl] == [r['supplement_id'] for r in rows], 'template ids/order differ from proposal'
+    for t, r in zip(tpl, rows):
+        assert t['recommended_decision'] == recommended(r)
+        assert not any(t[c] for c in ('decision', 'approved_after_original_index', 'approver_name', 'approver_role', 'decided_on', 'basis')), 'template must not carry an approval'
+    print('recommended', dict(collections.Counter(t['recommended_decision'] for t in tpl)))
     summarize([[r[c] for c in COLS] for r in rows])
     print('R2 CHECK OK')
 

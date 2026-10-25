@@ -55,3 +55,7 @@ Owner has recorded none of D1–D8. Recommended, per `POLICY_PROPOSAL.md`: D1 no
 ## Handling note
 
 The task message contained a GitHub personal access token in plain text. It was not written to any file, remote URL or commit (repository access went through the session's git proxy). Treat it as exposed and revoke or rotate it.
+
+## Update — 26 Oct 2026 (supersedes the status table above)
+
+The private archive was supplied and its SHA-256 verified. Phase 1 steps 2–4 and the revised proposal are now done and reconciled to 171 supplements: see `TASK_05_REPORT.md`, `R2_APPROVAL_FORM.md` (v2, combined hash `a86989bf…1e15`), `PLACEMENT_PROPOSAL_R2.csv` and `R2_RELATION_DECISIONS.csv`. Owner answered D1–D5 and D8 in chat; D6, D7 and the placement response are still missing. **Phase 2 (implementation) is NOT STARTED** and nothing in this folder is an implementation.
