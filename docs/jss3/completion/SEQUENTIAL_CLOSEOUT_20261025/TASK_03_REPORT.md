@@ -2,7 +2,9 @@
 
 **Status: PARTIAL.** Implemented and verified except the fresh-capture items below. Not merged, not deployed.
 
-Base: Task 02 branch `jss3/task02-20261025-a1` at `2268738fa3048bffa1a5a6b9ab2ad2feeca84aa2` (PR #55, open; master is `ebd42c0e…` and has not merged it). Task 03 depends on Task 02's reviewed-revision delivery. Code / tested tree: `2eee01d6b23540aede1ded44e9872ab132d8292a`. This report is a docs-only commit after it.
+Update before publication: PR #55 was merged into master (\`4077291b27d573b3befb15d59cee9ae6adc11b32\`) while this ran; master was merged into this branch (merge tree \`542084a3e1b2c2249fe59ed642bd16c19aa48861\`) and re-tested: \`tests/jss3*.test.mts\` 400 tests, 340 pass, 0 fail, 60 skipped; \`jss3-supplement-revision.db\` 6/6 on PostgreSQL 16; backend \`tsc\` exit 0. The PR therefore targets master and contains only Task 03 changes.
+
+Original base: Task 02 branch `jss3/task02-20261025-a1` at `2268738fa3048bffa1a5a6b9ab2ad2feeca84aa2` (PR #55, open; master is `ebd42c0e…` and has not merged it). Task 03 depends on Task 02's reviewed-revision delivery. Code / tested tree: `2eee01d6b23540aede1ded44e9872ab132d8292a`. This report is a docs-only commit after it.
 
 ## Implemented
 - `SUP-YO-LIT-METHOD` keeps its ID, title, subject (Yoruba), term (1st Term), gap IDs (YO-SL-095, YO-SL-324) and position (index 122 of 171; order verified against the previous commit). Only `body`, `origin` and `sources` changed.
