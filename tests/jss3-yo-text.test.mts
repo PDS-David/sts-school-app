@@ -158,3 +158,24 @@ test('negative controls: Oya cannot be marked supported without lesson, attribut
   const r3 = clone(); r3.genres.find((x: any) => x.id === 'oya-pipe').missing = ' ';
   assert.ok(registerProblems(r3, JSS3_SUPPLEMENTS as Sup[], JSS3_ATTRIBUTIONS as Attr[]).some(p => /oya-pipe: must say exactly what is missing/.test(p)));
 });
+
+// Task 04 (26 Oct 2026): a second acquisition round found no eligible Ọya passage. The record must stay precise and actionable.
+test('Task 04: Oya acquisition record is complete, names an unblock for every lead, and no Oya lesson exists', () => {
+  const oyaSources = register.sources.filter((s: any) => (s.genres_checked ?? []).includes('oya-pipe'));
+  for (const id of ['YT-14', 'YT-15', 'YT-16', 'YT-R1-01', 'YT-R2-01', 'YT-R2-02', 'YT-R2-03'])
+    assert.ok(oyaSources.some((s: any) => s.id === id), `${id} must stay recorded`);
+  for (const s of oyaSources) {
+    assert.ok(String(s.unblock).trim().length > 0, `${s.id}: unblock must be stated`);
+    assert.ok(!s.source_sha256, `${s.id}: no source bytes were hashed for an Oya lead, so no hash may be claimed`);
+    assert.notEqual(s.verdict, 'USABLE_VERIFIED');
+  }
+  const zen = register.sources.find((s: any) => s.id === 'YT-R1-01');
+  assert.equal(zen.verdict, 'NOT_EXAMINED', 'PDF bytes were never read, so the verdict must not be upgraded');
+  assert.match(zen.r2_recheck, /not computed here/);
+  const oya = register.genres.find((g: any) => g.id === 'oya-pipe');
+  assert.equal(oya.status, 'NOT_SUPPORTED');
+  assert.match(oya.best_lead, /Task 04/);
+  assert.match(oya.best_lead, /No message has been sent/);
+  assert.ok(!JSS3_SUPPLEMENTS.some(s => s.id === 'SUP-YO-OYA-TEXT') && !JSS3_ATTRIBUTIONS.some(a => a.supplement_id === 'SUP-YO-OYA-TEXT'));
+  assert.ok(!/^YO-SL-094,(covered|complete|closed)/i.test(coverage.find(l => l.startsWith('YO-SL-094,')) ?? ''), 'Week-3/Ọya objective must not be closed');
+});
