@@ -1,3 +1,4 @@
+import { supplementReference } from './jss3SupplementReference.js';
 /** Owner-authorised internet-equivalent teaching, separate from the original notes.
  * Explicit opt-in preserves reproducibility of the original-source audit.
  * Append-only within buckets preserves all existing topic and asset identities.
@@ -59,7 +60,7 @@ export function buildJss3SupplementRows(original: readonly CurriculumRow[], root
     filePath: path.join(root, '__jss3_supplements__', `${lesson.id}.json`),
     className: 'JSS 3', termLabel: lesson.termLabel, subjectName: lesson.subjectName,
     weekLabel: `SUPPLEMENT ${lesson.id}`, orderIndex: 0, title: lesson.title,
-    sourceReference: `${lesson.title}\n\n${lesson.origin}\nCoverage: ${lesson.gapIds.join(', ')}\n\n${lesson.body}\n\nReference resources (not the original school textbook):\n${lesson.sources.map(s => `${s.title}: ${s.url}`).join('\n')}`,
+    sourceReference: supplementReference(lesson),
   }));
 }
 export const supplementBodyHash = (body: string) => createHash('sha256').update(body).digest('hex');

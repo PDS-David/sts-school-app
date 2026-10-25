@@ -1,3 +1,4 @@
+import { resolveSupplementRevision } from './jss3SupplementRevision.js';
 import { createHash } from 'node:crypto';
 import lessonsData from '../db/data/jss3Supplements.json' with { type: 'json' };
 import correctionsData from '../db/data/jss3DeliveryCorrections.json' with { type: 'json' };
@@ -74,7 +75,7 @@ export function createDeliveryResolver(corrections: readonly DeliveryCorrection[
 }
 
 const defaultResolver = createDeliveryResolver(correctionsData as unknown as DeliveryCorrection[], lessonsData as unknown as DeliveryLesson[]);
-export const resolveDelivery = (topic: DeliveryTopic): DeliveryResolution | null => defaultResolver(topic);
+export const resolveDelivery = (topic: DeliveryTopic): DeliveryResolution | null => defaultResolver(topic) ?? resolveSupplementRevision(topic);
 
 /** Student/teacher-facing copy of a topic row: corrected text, never the audited original, no stale cache link. Never mutates the row. */
 export function safeJss3Topic<T extends DeliveryTopic>(topic: T, resolve: (t: DeliveryTopic) => DeliveryResolution | null = resolveDelivery): T {
