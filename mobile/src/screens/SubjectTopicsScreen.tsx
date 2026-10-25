@@ -36,9 +36,13 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
   // (nothing in this subject/term has been passed) or because the previous
   // topic in sequence hasn't been passed. Only the *first* kind is fixed by
   // entering a PIN, so only show that shortcut when it would actually help.
-  const anyPinLocked = topics.some((t) => t.locked && t.order_index === Math.min(
-    ...topics.filter((x) => x.term_label === t.term_label).map((x) => x.order_index ?? Infinity),
-  ));
+  // Task 05: the server marks the sequence-first topic explicitly (placed supplements make order_index
+  // comparison unsafe). Older servers omit the field, so fall back to the previous order_index rule.
+  const anyPinLocked = topics.some((t) => t.locked && (t.is_sequence_first !== undefined
+    ? t.is_sequence_first === true
+    : t.order_index === Math.min(
+      ...topics.filter((x) => x.term_label === t.term_label).map((x) => x.order_index ?? Infinity),
+    )));
 
   if (loading) return <Loader />;
 

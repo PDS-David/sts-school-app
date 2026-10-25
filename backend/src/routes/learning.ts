@@ -6,10 +6,12 @@ import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
+import { resolveSequenceGroup } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
-const termPinEnforced = process.env.TERM_PIN_ENFORCED === 'true';
+// Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
+const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
 
 const router = Router();
 router.use(requireAuth);
@@ -152,7 +154,8 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   // order_index reflects the school's actual teaching sequence for ingested
   // topics; NULLS LAST keeps manually-authored topics (no order_index) at
   // the end rather than sorting ahead of real sequence data.
-  sql += ' ORDER BY t.order_index NULLS LAST, t.created_at DESC';
+  // Task 05: placed supplements (sequence_rank) sort between their anchor and the next original; NULL rank = legacy order.
+  sql += ' ORDER BY COALESCE(t.sequence_rank, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC';
 
   const { rows: rawRows } = await query(sql, params);
   // JSS3 delivery correction: audited-unsafe original text/cached summary is never returned (see utils/jss3DeliveryCorrection.ts).
@@ -201,16 +204,12 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
         groups.get(key)!.push(t);
       }
       const lockedIds = new Set<number>();
+      const seqById = new Map<number, { sequence_position: number | null; is_sequence_first: boolean }>();
       for (const group of groups.values()) {
-        group.sort((a, b) => a.order_index - b.order_index);
-        for (let i = 0; i < group.length; i++) {
-          const topic = group[i];
-          if (i === 0) {
-            if (termPinEnforced && !redeemedTermLabels.has(topic.term_label)) lockedIds.add(topic.id);
-          } else {
-            const prev = group[i - 1];
-            if (!passedIds.has(prev.id)) lockedIds.add(topic.id);
-          }
+        const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
+        for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
+          if (r.locked) lockedIds.add(id);
+          seqById.set(id, r);
         }
       }
 
@@ -219,6 +218,8 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
           ...r,
           completed: completedIds.has(r.id),
           locked: lockedIds.has(r.id),
+          sequence_position: seqById.get(r.id)?.sequence_position ?? null,
+          is_sequence_first: seqById.get(r.id)?.is_sequence_first ?? false,
         })),
       });
     }
@@ -426,27 +427,26 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // route directly for a topic the UI never let them open. Only applies to
   // ordered (ingested) topics; see schema.sql's "Term-PIN gating" section.
   if (topic.order_index != null) {
+    // Same resolver as GET /topics (Task 05) so the list and this direct guard cannot disagree.
     const { rows: siblingRows } = await query(
-      `SELECT id, order_index FROM topics
-       WHERE subject_id=$1 AND class_name=$2 AND term_label=$3 AND order_index IS NOT NULL
-       ORDER BY order_index`,
-      [topic.subject_id, topic.class_name, topic.term_label],
+      `SELECT id, order_index, sequence_rank FROM topics
+       WHERE school_code=$4 AND subject_id=$1 AND class_name=$2 AND term_label=$3 AND order_index IS NOT NULL`,
+      [topic.subject_id, topic.class_name, topic.term_label, topic.school_code],
     );
-    const pos = siblingRows.findIndex((r: any) => r.id === topic.id);
-    if (pos === 0) {
-      const { rows: pinRows } = await query(
-        'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
-        [student.id, topic.term_label],
-      );
-      if (termPinEnforced && !pinRows[0]) return res.status(403).json({ error: 'This topic is locked. Redeem your term PIN first.' });
-    } else if (pos > 0) {
-      const { rows: prevDone } = await query(
-        'SELECT passed FROM topic_completions WHERE student_id=$1 AND topic_id=$2',
-        [student.id, siblingRows[pos - 1].id],
-      );
-      if (prevDone[0]?.passed !== true) {
-        return res.status(403).json({ error: 'This topic is locked. Complete and pass the previous topic first.' });
-      }
+    const { rows: passRows } = await query(
+      'SELECT topic_id FROM topic_completions WHERE student_id=$1 AND passed=true AND topic_id=ANY($2)',
+      [student.id, siblingRows.map((r: any) => r.id)],
+    );
+    const { rows: pinRows } = await query(
+      'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
+      [student.id, topic.term_label],
+    );
+    const pinOk = !termPinEnforced() || !!pinRows[0];
+    const verdict = resolveSequenceGroup(siblingRows, new Set(passRows.map((r: any) => r.topic_id)), pinOk).get(topic.id);
+    if (verdict?.locked) {
+      return res.status(403).json({ error: verdict.is_sequence_first
+        ? 'This topic is locked. Redeem your term PIN first.'
+        : 'This topic is locked. Complete and pass the previous topic first.' });
     }
   }
 
