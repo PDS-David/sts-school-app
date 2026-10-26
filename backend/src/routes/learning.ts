@@ -154,8 +154,9 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   // order_index reflects the school's actual teaching sequence for ingested
   // topics; NULLS LAST keeps manually-authored topics (no order_index) at
   // the end rather than sorting ahead of real sequence data.
-  // Task 05: placed supplements (sequence_rank) sort between their anchor and the next original; NULL rank = legacy order.
-  sql += ' ORDER BY COALESCE(t.sequence_rank, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC';
+  // Optional additive metadata: reading the row as JSON yields NULL before the sequence_rank migration.
+  // This preserves legacy access without running schema changes from a request; migrated ranks still sort normally.
+  sql += " ORDER BY COALESCE((to_jsonb(t)->>'sequence_rank')::numeric, t.order_index) NULLS LAST, t.order_index NULLS LAST, t.created_at DESC";
 
   const { rows: rawRows } = await query(sql, params);
   // JSS3 delivery correction: audited-unsafe original text/cached summary is never returned (see utils/jss3DeliveryCorrection.ts).
@@ -429,7 +430,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   if (topic.order_index != null) {
     // Same resolver as GET /topics (Task 05) so the list and this direct guard cannot disagree.
     const { rows: siblingRows } = await query(
-      `SELECT id, order_index, sequence_rank FROM topics
+      `SELECT id, order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank FROM topics t
        WHERE school_code=$4 AND subject_id=$1 AND class_name=$2 AND term_label=$3 AND order_index IS NOT NULL`,
       [topic.subject_id, topic.class_name, topic.term_label, topic.school_code],
     );

@@ -108,6 +108,26 @@ if (!URL_) {
   const CHAIN = ['O1', 'O2', 'O3', 'O4', 'S1', 'S2', 'S3'] as const;
   const openSet = (m: Record<string, boolean>) => Object.entries(m).filter(([l, v]) => v === false && l !== 'JSS2').map(([l]) => l).sort();
 
+  test('pre-migration topics schema: list and direct completion keep legacy locks without sequence_rank', async () => {
+    // Dedicated disposable test DB only. No placed ranks exist at this point.
+    assert.equal((await q('SELECT count(*) n FROM topics WHERE sequence_rank IS NOT NULL')).rows[0].n, '0');
+    process.env.TERM_PIN_ENFORCED = 'true';
+    const before = await lockMap(`${SC}_stu`);
+    await q('ALTER TABLE topics DROP COLUMN sequence_rank');
+    try {
+      assert.deepEqual(await lockMap(`${SC}_stu`), before, 'same lock state without the optional column');
+      assert.equal((await post(`${SC}_stu`, SC, 'O1')).status, 403, 'missing PIN still blocks first topic');
+      assert.equal((await post(`${SC}_stu`, SC, 'O2')).status, 403, 'failed predecessor still blocks direct access');
+      process.env.TERM_PIN_ENFORCED = 'false';
+      assert.equal((await lockMap(`${SC}_stu`)).O1, false, 'default free access remains available');
+      assert.equal((await lockMap(`${SC}_stu`)).O2, true, 'no predecessor bypass');
+    } finally {
+      await q('ALTER TABLE topics ADD COLUMN IF NOT EXISTS sequence_rank NUMERIC(12,6)');
+      process.env.TERM_PIN_ENFORCED = 'true';
+    }
+    assert.deepEqual(await lockMap(`${SC}_stu`), before, 'adding the nullable column alone changes no access');
+  });
+
   test('M1 schema.sql twice is idempotent; sequence_rank NULL for every row; legacy order and locks before apply', async () => {
     await q(readFileSync(path.resolve(here, '../backend/schema.sql'), 'utf8'));
     assert.equal((await q('SELECT count(*) n FROM topics WHERE sequence_rank IS NOT NULL AND school_code LIKE $1', ['zz_seq_%'])).rows[0].n, '0');
