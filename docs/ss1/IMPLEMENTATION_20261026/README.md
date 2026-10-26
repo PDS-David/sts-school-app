@@ -1,5 +1,16 @@
 # SS1 implementation prompts —26October2026
 
+## Access these prompts before their PR is merged
+
+These instructions are published on `ss1/implementation-prompts-20261026` (PR65). If `docs/ss1/IMPLEMENTATION_20261026/` is not on master yet, create your isolated task branch from current master, then fetch and copy ONLY this documentation directory:
+
+```bash
+git fetch origin refs/heads/ss1/implementation-prompts-20261026:refs/remotes/origin/ss1/implementation-prompts-20261026
+git restore --source=origin/ss1/implementation-prompts-20261026 -- docs/ss1/IMPLEMENTATION_20261026
+```
+
+This supplies the README, manifest and prompts; it does not supply the later foundation or subject implementation. Read those dependencies at their own published SHAs. If the directory already exists, read its current version instead of overwriting newer prompts. Do not wait for a merge merely to read an available prompt.
+
 **Owner instruction: implement all source code first; testing later.** These are implementation assignments, not repeated audit requests. Each numbered file stands alone and includes input, scope, dependencies, publishing and completion rules. No agents have been started by preparing this pack.
 
 ## What is actually available

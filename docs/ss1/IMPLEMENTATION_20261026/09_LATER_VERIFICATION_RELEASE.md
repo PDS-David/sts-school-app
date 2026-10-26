@@ -1,5 +1,16 @@
 # SS1-09 — LATER verification and release; do not execute during implementation
 
+## Access these prompts before their PR is merged
+
+These instructions are published on `ss1/implementation-prompts-20261026` (PR65). If `docs/ss1/IMPLEMENTATION_20261026/` is not on master yet, create your isolated task branch from current master, then fetch and copy ONLY this documentation directory:
+
+```bash
+git fetch origin refs/heads/ss1/implementation-prompts-20261026:refs/remotes/origin/ss1/implementation-prompts-20261026
+git restore --source=origin/ss1/implementation-prompts-20261026 -- docs/ss1/IMPLEMENTATION_20261026
+```
+
+This supplies the README, manifest and prompts; it does not supply the later foundation or subject implementation. Read those dependencies at their own published SHAs. If the directory already exists, read its current version instead of overwriting newer prompts. Do not wait for a merge merely to read an available prompt.
+
 This prompt is parked until SS1-08's whole source-code implementation is finished AND the owner explicitly starts testing. It does not override the current testing deferral.
 
 Repository: https://github.com/PDS-David/sts-school-app, master. Read AGENTS.md, `docs/ss1/IMPLEMENTATION_HANDOFF.md`, `DEFERRED_VERIFICATION.md`, the final integration PR and all open_items. Pin the final implementation SHA; do not assemble a different candidate silently. Use the exact implemented commands in that handoff; if absent, require SS1-08 to finish them before calling this ready.
