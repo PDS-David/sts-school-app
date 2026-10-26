@@ -1,5 +1,7 @@
 # Task 06 — full-source + PostgreSQL acceptance
 
+**26 October verification update:** The private archive has been recovered and its exact hash verified. On candidate 87f83cc, source/corpus acceptance passes with 391 passes, zero failures and nine DB-only skips; generated records match the fresh capture. Full combined acceptance remains INCOMPLETE because local PostgreSQL cannot run, not because the archive is missing. CI run40263910877 passes the synthetic-identity DB suites, including sequencing10/10. See FINAL_SOURCE_ACCEPTANCE.json. The earlier claim that Task03 changed no lesson body was incorrect: its literature-method body changed and is now checked against the fresh importer output.
+
 **TASK 06: BLOCKED.** Full acceptance was **not run**. `run_acceptance.py` requires `--archive` and the private `JSS3_NEXT_STAGE_INPUTS_20261016.zip` (SHA-256 `0a5b0d929e1dc61801cde43f8a85235d2e236ced334d2091583f5fa16524ea3c`) was not available to this worker (no upload, nothing found on disk). Per the task, a missing archive is reported exactly as BLOCKED; the archive-independent checks below are **not** a substitute and certify nothing about the 313 original rows, destination/Computer counts, held entries or regenerated records.
 
 Base: master `4210ff1` (includes PRs #44–#60). Branch `jss3/task06-20261026-runner`; tested tree = that base + the runner change below.

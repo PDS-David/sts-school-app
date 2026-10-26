@@ -1,0 +1,80 @@
+{
+  "status": "INCOMPLETE",
+  "checks": [
+    {
+      "name": "python-dependencies",
+      "command": [
+        "python3",
+        "-c",
+        "import cairosvg,lxml,docx,PIL"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "capture",
+      "command": [
+        "python3",
+        "scripts/jss3/capture_rows.py",
+        "--root",
+        "/tmp/jss3-acceptance26/inputs/ALL",
+        "--output",
+        "/tmp/jss3-acceptance26/capture"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "corpus",
+      "command": [
+        "python3",
+        "scripts/jss3/verify_handoff.py",
+        "--inputs",
+        "/tmp/jss3-acceptance26/inputs",
+        "--output",
+        "/tmp/jss3-acceptance26/corpus",
+        "--tsx-no-ipc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "protected-comparer-unit",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs/jss3/completion/P1_BASELINE",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "runner-unit",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_jss3_acceptance_runner.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "production_actions": false,
+  "corpus_skips": [
+    "\ufe63 batch2 real asset resolution (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.85364ms) # SKIP",
+    "\ufe63 delivery-correction DB tests (skipped: set JSS3_DELIVERY_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (4.783263ms) # SKIP",
+    "\ufe63 sequencing DB tests (skipped: set JSS3_SEQ_TEST_DATABASE_URL to a LOCAL disposable PostgreSQL) (9.463574ms) # SKIP",
+    "\ufe63 supplement revision database checks require JSS3_YO_TEST_DATABASE_URL (1.126532ms) # SKIP",
+    "\ufe63 V1 Business DB checks (skipped: set JSS3_ASSET_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (1.504748ms) # SKIP",
+    "\ufe63 V2 math real asset resolution (skipped: set JSS3_V2_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (0.935254ms) # SKIP",
+    "\ufe63 V3 science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres and JSS3_CAPTURE_DIR) (2.770156ms) # SKIP",
+    "\ufe63 V3 Science real asset resolution (skipped: set JSS3_V3_TEST_DATABASE_URL to a LOCAL Postgres ; JSS3_CAPTURE_DIR additionally enables real source-body guards) (3.662685ms) # SKIP",
+    "\ufe63 YO-LICENSE route attribution (skipped: set JSS3_YO_TEST_DATABASE_URL to a LOCAL Postgres) (6.349378ms) # SKIP"
+  ],
+  "reason": "Corpus passed; database acceptance deliberately not run"
+}

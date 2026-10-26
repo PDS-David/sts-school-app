@@ -1,5 +1,7 @@
 # Task 03 — literature exercise bound to the delivered story
 
+**26 October verification update:** Task03 implementation is merged (PR56) and its fresh-source verification is now complete. Candidate 87f83cc: all 313 original row objects exact; 484 total, zero Third/Computer; regenerated implemented records and teacher schedule have no diff; focused literature/revision tests 10/10 pass. See SEQUENCE_SCHEMA_COMPATIBILITY.md and FINAL_SOURCE_ROW_PRESERVATION.json. The earlier PARTIAL/not-merged statements below are historical. School-prescribed title identity is still distinct from the delivered equivalent.
+
 **Status: PARTIAL.** Implemented and verified except the fresh-capture items below. Not merged, not deployed.
 
 Update before publication: PR #55 was merged into master (\`4077291b27d573b3befb15d59cee9ae6adc11b32\`) while this ran; master was merged into this branch (merge tree \`542084a3e1b2c2249fe59ed642bd16c19aa48861\`) and re-tested: \`tests/jss3*.test.mts\` 400 tests, 340 pass, 0 fail, 60 skipped; \`jss3-supplement-revision.db\` 6/6 on PostgreSQL 16; backend \`tsc\` exit 0. The PR therefore targets master and contains only Task 03 changes.
