@@ -1,3 +1,5 @@
+import { buildFromFiles as buildSs1FromFiles } from './ss1/loader.js';
+import { writeFileSync as writeSs1Plan } from 'node:fs';
 // Ingests the school's curriculum source documents (schemes of work + lesson
 // notes) into the `topics` table's evergreen curriculum-ingestion columns
 // (term_label/source_reference/order_index/source_file) — see schema.sql's
@@ -461,6 +463,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     return;
   }
 
+  const ss1Reviewed = process.argv.includes('--ss1-reviewed');
+  const ss1PlanIndex = process.argv.indexOf('--ss1-plan');
+  const ss1PlanPath = ss1PlanIndex >= 0 ? process.argv[ss1PlanIndex + 1] : undefined;
+  if (ss1PlanIndex >= 0 && (!ss1Reviewed || !ss1PlanPath || ss1PlanPath.startsWith('--'))) throw new Error('--ss1-plan requires --ss1-reviewed and a new output filename');
+  if (ss1Reviewed && (schoolCode !== 'secondary' || yes)) throw new Error('SS1 reviewed foundation is plan-only. Runtime integration and later verification must precede database release.');
+
   const unsupported: string[] = [];
   const errors: Array<{ file: string; error: string }> = [];
   const allFiles = walk(root, unsupported, errors);
@@ -496,7 +504,24 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const jss3ThirdTermRecords: Jss3ThirdTermRecord[] = [];
   const jss3ThirdTermFilesSeen = new Set<string>();
 
+  const ss1Owned = new Set<string>();
+  if (ss1Reviewed) {
+    const { plan, owned } = await buildSs1FromFiles(root, allFiles, extractText, parseTopics);
+    for (const file of owned) ss1Owned.add(file);
+    // A partial plan is evidence only, never an executable row collection.
+    if (ss1PlanPath) writeSs1Plan(ss1PlanPath, JSON.stringify(plan, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+    console.log(`SS1 reviewed packages: ${plan.ready ? 'READY FOR LATER VERIFICATION' : 'BLOCKED/PENDING'}; candidate rows ${plan.rows.length}`);
+    for (const blocker of plan.blockers) errors.push({ file: 'SS1 packages', error: blocker });
+    if (plan.ready) { rows.push(...plan.rows); for (const file of owned) parsedFiles.add(sourceIdentity(file)); }
+  }
+
   for (const filePath of allFiles) {
+    if (ss1Owned.has(path.resolve(filePath))) continue;
+    if (inferClassNames(filePath)?.includes('SS 1')) {
+      if (ss1Reviewed) { errors.push({ file: sourceIdentity(filePath), error: 'SS1 source not matched to authoritative staging manifest' }); continue; }
+      if (yes) throw new Error('SS1 generic import cannot write: use reviewed packages and complete the later integration/release stage');
+    }
+
     try {
       const classNames = inferClassNames(filePath);
       const termLabel = inferTermName(filePath) ?? defaultTerm;

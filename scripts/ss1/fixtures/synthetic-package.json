@@ -1,0 +1,72 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "data-processing",
+  "canonical_subject": "Data Processing",
+  "package_status": "PENDING",
+  "sources": [],
+  "source_rules": [],
+  "lessons": [
+    {
+      "id": "SUP-SS1-DATA-PROCESSING-SYNTHETIC-EXAMPLE",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Data Processing",
+      "title": "Synthetic format example \u2014 not production content",
+      "objectives": [
+        "Identify the two bit values in this example."
+      ],
+      "body": "SYNTHETIC EXAMPLE ONLY. A stored bit has one of two values: 0 or 1. This demonstrates the package format, not a reviewed lesson.",
+      "body_sha256": "5adf93e11838a8d2c0d8c435114810c2ee2bb9ec60a45646bac07ee225132d11",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Which two values are shown?",
+          "answer": "0 and 1.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States 0",
+              "marks": 1
+            },
+            {
+              "criterion": "States 1",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Synthetic contract example",
+          "locator": "scripts/ss1/fixtures/synthetic-package.json",
+          "url": null,
+          "rights": "Newly authored solely for schema demonstration; not a source curriculum claim.",
+          "reuse_status": "PERMITTED",
+          "attribution": "SS1 foundation example"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "SYNTHETIC-NOT-CURRICULUM",
+      "kind": "OWNER_ACTION",
+      "detail": "Format example only. Never copy into the production subjects directory.",
+      "required_action": "Author and review actual source-backed content in the assigned worker task.",
+      "affected_ids": [
+        "SUP-SS1-DATA-PROCESSING-SYNTHETIC-EXAMPLE"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
