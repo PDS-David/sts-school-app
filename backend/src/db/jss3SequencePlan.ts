@@ -36,8 +36,14 @@ export function validateSequencePlan(input: unknown): SequencePlan {
       for (const f of ['after_original_order_index', 'anchor_title', 'approver', 'approved_on', 'basis'] as const) {
         if (p[f] == null) throw new Error(`APPROVED placement ${p.supplement_id} missing ${f}`);
       }
-    } else if (p.after_original_order_index != null || p.approver != null) {
-      throw new Error(`${p.status} placement ${p.supplement_id} must not carry an anchor or approver`);
+    } else {
+      // Pending/end-of-term entries may explain their disposition in `basis`,
+      // but must not retain fields that represent an approved placement.
+      for (const field of ['after_original_order_index', 'anchor_title', 'approver', 'approved_on'] as const) {
+        if (p[field] != null) {
+          throw new Error(`${p.status} placement ${p.supplement_id} must not carry ${field}`);
+        }
+      }
     }
   }
   return plan;
