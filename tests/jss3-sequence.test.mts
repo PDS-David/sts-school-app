@@ -92,3 +92,30 @@ test('shipped plan is empty and names no school: nothing can be applied until th
   assert.deepEqual(JSS3_SEQUENCE_PLAN.school_codes, []);
   assert.equal(approvedPlacements(JSS3_SEQUENCE_PLAN).length, 0);
 });
+
+test('unapproved placements reject every residual anchor or approval field', () => {
+  const base = { plan_version: 'T-pending-v1', policy: 'test non-gating policy', school_codes: [] };
+  const residualFields = {
+    after_original_order_index: 1,
+    anchor_title: 'Original lesson title',
+    approver: 'Named teacher',
+    approved_on: '2026-10-26',
+  };
+  for (const status of ['PENDING', 'KEEP_AT_END'] as const) {
+    const placement = {
+      supplement_id: JSS3_SUPPLEMENTS[0].id,
+      status,
+      basis: 'Awaiting a supported placement decision',
+    };
+    const valid = validateSequencePlan({ ...base, placements: [placement] });
+    assert.equal(approvedPlacements(valid).length, 0);
+    assert.equal(valid.placements[0].basis, placement.basis);
+    for (const [field, value] of Object.entries(residualFields)) {
+      assert.throws(
+        () => validateSequencePlan({ ...base, placements: [{ ...placement, [field]: value }] }),
+        new RegExp(`must not carry ${field}`),
+        `${status} must reject residual ${field}`,
+      );
+    }
+  }
+});
