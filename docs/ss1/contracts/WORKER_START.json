@@ -1,0 +1,48 @@
+{
+  "contract_version": "ss1-subject-v1",
+  "schema_path": "backend/src/db/ss1/subjectPackageSchema.ts",
+  "contract_path": "docs/ss1/contracts/CONTRACT.md",
+  "package_paths": [
+    "backend/src/db/ss1/subjects/agricultural-science.json",
+    "backend/src/db/ss1/subjects/biology.json",
+    "backend/src/db/ss1/subjects/bookkeeping.json",
+    "backend/src/db/ss1/subjects/catering-craft.json",
+    "backend/src/db/ss1/subjects/chemistry.json",
+    "backend/src/db/ss1/subjects/civic-education.json",
+    "backend/src/db/ss1/subjects/commerce.json",
+    "backend/src/db/ss1/subjects/data-processing.json",
+    "backend/src/db/ss1/subjects/economics.json",
+    "backend/src/db/ss1/subjects/english.json",
+    "backend/src/db/ss1/subjects/financial-accounting.json",
+    "backend/src/db/ss1/subjects/food-and-nutrition.json",
+    "backend/src/db/ss1/subjects/french.json",
+    "backend/src/db/ss1/subjects/further-mathematics.json",
+    "backend/src/db/ss1/subjects/geography.json",
+    "backend/src/db/ss1/subjects/government.json",
+    "backend/src/db/ss1/subjects/literature.json",
+    "backend/src/db/ss1/subjects/mathematics.json",
+    "backend/src/db/ss1/subjects/physics.json",
+    "backend/src/db/ss1/subjects/technical-drawing.json",
+    "backend/src/db/ss1/subjects/yoruba.json"
+  ],
+  "source_manifest": "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+  "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+  "output_interface": {
+    "module": "backend/src/db/ss1/compiler.ts",
+    "function": "compilePackages(rawPackages, inputs, parse)",
+    "version": "ss1-plan-v1",
+    "fields": [
+      "rows",
+      "identified_rows",
+      "dispositions",
+      "assets",
+      "corrections",
+      "blockers",
+      "ready"
+    ],
+    "file_builder_addition": "source_previews"
+  },
+  "tests": "DEFERRED_BY_OWNER",
+  "publication_sha": "Read the foundation PR head; no self-referential SHA",
+  "next_stage": "Owner-authorized SS1-02 through SS1-07; runtime integration SS1-08 remains mandatory"
+}
