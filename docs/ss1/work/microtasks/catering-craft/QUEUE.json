@@ -1,0 +1,244 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Catering Craft",
+  "slug": "catering-craft",
+  "generated_from": {
+    "master_sha": "f9e9e9e0263b6823508fd74f5049e84979164ecf",
+    "package": null,
+    "task": "SS1 subject queue: Catering Craft (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv and the Worker F prompt)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Finding: there is no catering-craft package, no SS1-07/Worker F checkpoint or handoff, no existing tests, no assets and no source notes on master, and no unmerged SS1 catering work on any origin/ss1/* branch (catering matches outside JSS3 documents are only the Worker F prompt, WORKER_START manifest, SOURCE_ASSIGNMENTS.csv and sourceRegistry.json). Nothing is recorded as implemented.",
+    "Only two documents are assigned: 2nd Term and 3rd Term. No 1st Term Catering Craft source exists in the archive assignments; Worker F forbids inventing a First-Term scheme, so no 1st Term item exists. This is a supplied-term gap to report, not a task to fill.",
+    "Both assignments are filename-based (mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER); no header has been verified, so registration items read the header before anything is committed. Both are legacy .doc files and need DOC-aware extraction.",
+    "Boundary: Catering Craft stays separate from Food and Nutrition (slug food-and-nutrition, three other documents, own queue). A header naming another subject is recorded as a handoff open item.",
+    "The week inventory is unknown for both documents, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
+    "CC-SRC-T2 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). CC-SRC-T3 depends on it so only one item creates the file.",
+    "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 2,
+    "SOURCE_WEEK_INVENTORY": 2,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 1
+  },
+  "status_counts": {
+    "PENDING": 5,
+    "BLOCKED": 1
+  },
+  "items": [
+    {
+      "id": "CC-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+      "objective": "Register the 2nd Term Catering Craft source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug catering-craft, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-SRC-T2.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "No catering-craft package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-f433169ca25c, sha256=fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59, 207872 bytes, member 'SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. No 1st Term scheme is created or implied. If the header names a different subject (for example Food and Nutrition), record an explicit handoff open item; do not delete, merge into food-and-nutrition or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "CC-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+      "objective": "Register the 3rd Term Catering Craft source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by CC-SRC-T2; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/catering-craft.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-SRC-T3.md"
+      ],
+      "depends_on": [
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No catering-craft package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-d068ede78d16, sha256=a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e, 537088 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Food and Nutrition), record an explicit handoff open item; do not delete, merge into food-and-nutrition or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "CC-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 2nd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, equipment illustration, drawing or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note food preparation processes, nutrition tables, equipment illustrations and practical assessment rubrics for separate preservation items, and any food hygiene, allergy, burns/fire or chemical statements that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Do not prescribe treatment or doses, and do not record any classroom practical observation that was not made. Do not merge Catering Craft into Food and Nutrition.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md"
+      ],
+      "depends_on": [
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "CC-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 3rd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, equipment illustration, drawing or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note food preparation processes, nutrition tables, equipment illustrations and practical assessment rubrics for separate preservation items, and any food hygiene, allergy, burns/fire or chemical statements that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Do not prescribe treatment or doses, and do not record any classroom practical observation that was not made. Do not merge Catering Craft into Food and Nutrition.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md"
+      ],
+      "depends_on": [
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "CC-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/catering-craft.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document (two), source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, no 1st Term source, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/catering-craft.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/catering-craft.package.test.mts",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [
+        "CC-SRC-T2",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/catering-craft.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "CC-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any catering-craft lessons. Separate stage; no agent may invent an approval_reference, verification or classroom practical observation.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/catering-craft.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-INV-T3",
+        "CC-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "f9e9e9e0263b6823508fd74f5049e84979164ecf",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 2,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+    }
+  },
+  "next_runnable": [
+    "CC-SRC-T2"
+  ]
+}
