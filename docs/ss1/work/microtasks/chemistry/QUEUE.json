@@ -1,0 +1,433 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Chemistry",
+  "slug": "chemistry",
+  "generated_from": {
+    "master_sha": "f9e9e9e0263b6823508fd74f5049e84979164ecf",
+    "package": null,
+    "task": "SS1 subject queue: Chemistry (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv and the Worker C prompt)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Finding: there is no chemistry package, no SS1-04/Worker C checkpoint or handoff, no existing tests, no assets and no source notes on master, and no unmerged SS1 chemistry work on any origin/ss1/* branch (chemistry matches outside JSS3 documents are only the Worker C prompt, WORKER_START manifest, SOURCE_ASSIGNMENTS.csv and sourceRegistry.json). Nothing is recorded as implemented.",
+    "Four documents are assigned: TWO 1st Term files (SS1-SRC-58b4a44c3afa and SS1-SRC-84df18289b7a), one 2nd Term and one 3rd Term. All assignments are filename-based (mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER); no header has been verified. The 3rd Term file is a legacy .doc needing DOC-aware extraction.",
+    "Worker C requires the two 1st Term files to be compared by content, hash and role before either is treated as a duplicate. CHEM-CMP-T1 does that after both are registered and inventoried; until then both stay separate sources and neither is discarded.",
+    "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
+    "CHEM-SRC-T1A may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). The other registration items depend on it so only one item creates the file.",
+    "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 4,
+    "SOURCE_WEEK_INVENTORY": 4,
+    "SOURCE_COMPARISON": 1,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 1
+  },
+  "status_counts": {
+    "PENDING": 10,
+    "BLOCKED": 1
+  },
+  "items": [
+    {
+      "id": "CHEM-SRC-T1A",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx",
+      "objective": "Register the 1st Term Chemistry source (first 1st Term file): open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug chemistry, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx",
+          "member_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-SRC-T1A.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-58b4a44c3afa, sha256=07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a, 2187976 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. This is one of TWO 1st Term Chemistry files; neither is a duplicate until CHEM-CMP-T1 compares them (the two have different hashes and sizes).",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "CHEM-SRC-T1B",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+      "objective": "Register the 1st Term Chemistry source (second 1st Term file): open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by CHEM-SRC-T1A; add only this source's entry and rules. Do not decide duplication here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-SRC-T1B.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-84df18289b7a, sha256=0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a, 1656948 bytes, member 'SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. This is one of TWO 1st Term Chemistry files; neither is a duplicate until CHEM-CMP-T1 compares them (the two have different hashes and sizes).",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "CHEM-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+      "objective": "Register the 2nd Term Chemistry source (2nd Term file): open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by CHEM-SRC-T1A; add only this source's entry and rules. Do not decide duplication here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-SRC-T2.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-80b770d18aa8, sha256=236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7, 1973278 bytes, member 'SSS 1/2nd Term SS1_/CHEMISTRY.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "CHEM-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+      "objective": "Register the 3rd Term Chemistry source (3rd Term file): open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by CHEM-SRC-T1A; add only this source's entry and rules. Do not decide duplication here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-SRC-T3.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-28ed32f52548, sha256=0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435, 350720 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "CHEM-INV-T1A",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "term": "1st Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 1st Term week inventory from the original document (SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx) and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each apparatus drawing, table, formula/equation group or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note formulas, valencies, equations, apparatus drawings and experiments for separate preservation items, and any experiment, chemical-handling or safety statement that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Never substitute image counts for recovered content diagrams. Do not invent procedures or record laboratory observations that were not made.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx",
+          "member_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1A.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "CHEM-INV-T1B",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 1st Term week inventory from the original document (SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx) and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each apparatus drawing, table, formula/equation group or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note formulas, valencies, equations, apparatus drawings and experiments for separate preservation items, and any experiment, chemical-handling or safety statement that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Never substitute image counts for recovered content diagrams. Do not invent procedures or record laboratory observations that were not made.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "CHEM-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 2nd Term week inventory from the original document (SSS 1/2nd Term SS1_/CHEMISTRY.docx) and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each apparatus drawing, table, formula/equation group or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note formulas, valencies, equations, apparatus drawings and experiments for separate preservation items, and any experiment, chemical-handling or safety statement that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Never substitute image counts for recovered content diagrams. Do not invent procedures or record laboratory observations that were not made.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "CHEM-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 3rd Term week inventory from the original document (SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc) and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each apparatus drawing, table, formula/equation group or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note formulas, valencies, equations, apparatus drawings and experiments for separate preservation items, and any experiment, chemical-handling or safety statement that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Never substitute image counts for recovered content diagrams. Do not invent procedures or record laboratory observations that were not made.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "CHEM-CMP-T1",
+      "kind": "SOURCE_COMPARISON",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "SS1-SRC-58b4a44c3afa vs SS1-SRC-84df18289b7a",
+      "objective": "Compare the two 1st Term Chemistry files by content, hash and role, using both week inventories, and record a precise finding for each section: same teaching, complementary teaching (for example scheme versus notes), or unique to one file. Findings only: do not delete, ignore or merge either source, and link genuine duplicate coverage precisely by locator in the findings record. A copy-style filename or similar size is not proof of duplication.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx",
+          "member_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a"
+        },
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-CMP-T1.md"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A",
+        "CHEM-SRC-T1B",
+        "CHEM-INV-T1A",
+        "CHEM-INV-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Two 1st Term files are assigned: SS1-SRC-58b4a44c3afa (2187976 bytes, sha256 07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a) and SS1-SRC-84df18289b7a (1656948 bytes, sha256 0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a). Hashes and sizes differ. Worker C requires comparing their content, hash and roles before treating either as a duplicate. No comparison exists in the repository.",
+      "completion_condition": "A comparison record exists with a per-section disposition citing exact locators in both files, and any later indexing or lesson items it implies are appended with real dependencies. Neither source is discarded; no lesson or rule is written."
+    },
+    {
+      "id": "CHEM-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/chemistry.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document (four, including both 1st Term files), source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/chemistry.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/chemistry.package.test.mts",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "depends_on": [
+        "CHEM-SRC-T1A",
+        "CHEM-SRC-T1B",
+        "CHEM-SRC-T2",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/chemistry.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "CHEM-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any chemistry lessons. Separate stage; no agent may invent an approval_reference, verification or laboratory observation.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/chemistry.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1A",
+        "CHEM-INV-T1B",
+        "CHEM-INV-T2",
+        "CHEM-INV-T3",
+        "CHEM-CMP-T1",
+        "CHEM-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "f9e9e9e0263b6823508fd74f5049e84979164ecf",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 4,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+    }
+  },
+  "next_runnable": [
+    "CHEM-SRC-T1A"
+  ]
+}
