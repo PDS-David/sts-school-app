@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "biology",
+  "canonical_subject": "Biology",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8",
+      "archive_member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Biology",
+      "header_text": "BIOLOGY\n\nSCHEME OF WORK S S ONE",
+      "header_evidence": {
+        "locator": "SS1-SRC-422e0e6ddde9: opening two paragraphs of mammoth.extractRawText output (the importer's own call), separated by a blank line",
+        "explanation": "The first paragraph 'BIOLOGY' names the subject but occurs twice in the text ('BIOLOGY AND INQUIRY' is the Week One title), so the contract's single-occurrence rule needs the two-paragraph heading, as in the French package. The second paragraph 'SCHEME OF WORK S S ONE' marks the class; teaching content ('Biology and Inquiry', zoology/botany) confirms the subject."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-422e0e6ddde9-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "source_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8",
+      "anchor": "BIOLOGY\n\nSCHEME OF WORK S S ONE",
+      "evidence": {
+        "locator": "SS1-SRC-422e0e6ddde9: opening two paragraphs of extracted text",
+        "explanation": "Source metadata only; original text is retained. The two-paragraph heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "BIOLOGY\n\nSCHEME OF WORK S S ONE",
+      "canonical_subject": "Biology",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "BIOLOGY-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source heading is the two-paragraph text 'BIOLOGY' / 'SCHEME OF WORK S S ONE'. It differs from the canonical subject name only by the added class line, but the contract requires a source_alias declaration; rule SS1-SRC-422e0e6ddde9-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-422e0e6ddde9-R001",
+        "SS1-SRC-422e0e6ddde9"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
