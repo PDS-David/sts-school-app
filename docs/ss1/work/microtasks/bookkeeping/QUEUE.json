@@ -31,7 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -63,8 +64,8 @@
         "docs/ss1/work/microtasks/bookkeeping/BK-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No bookkeeping package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-62b02f2adcb3, sha256=9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0, 38275 bytes, member 'SSS 1/1st Term SS1_/book keeping.docx', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-62b02f2adcb3 sha256=9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0 archive_member='SSS 1/1st Term SS1_/book keeping.docx' term='1st Term' canonical_subject='Bookkeeping' header_text='SUBJECT: BOOK-KEEPING' + 4 tabs + 'CLASS: SS 1  TOPIC' (single occurrence confirmed with mammoth.extractRawText); rule SS1-SRC-62b02f2adcb3-R001 (source_alias, approval_reference PENDING-OWNER); open item BOOKKEEPING-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the supplied '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636), NOT the composite archive; the composite hash was not checked. Record: docs/ss1/work/microtasks/bookkeeping/BK-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example Financial Accounting), record an explicit handoff open item; do not delete, merge into financial-accounting or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -311,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "BK-SRC-T1"
+    "BK-SRC-T2",
+    "BK-SRC-T3",
+    "BK-INV-T1"
   ]
 }
