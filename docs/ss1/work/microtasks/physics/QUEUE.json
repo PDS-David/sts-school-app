@@ -1,0 +1,2241 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Physics",
+  "slug": "physics",
+  "generated_from": {
+    "master_sha": "77f31485e3e3dbcdb1cfa2a55913c27b4a25b8ad",
+    "package": "backend/src/db/ss1/subjects/physics.json (does not exist on master)",
+    "task": "SS1-PHYS-QUEUE (queue built from the CSV manifest, SS1-03 parsed-row evidence and the unmerged PR #71 head)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only. No curriculum document was opened and nothing was run (tests, typechecks, importer, DB, device).",
+    "FINDING: no physics.json exists on master (MISSING_PACKAGE) and the SS1-03 checkpoint lists Physics as NOT STARTED. Nothing is registered, so there is no implemented work to recognise; PHYS-SRC-T1 is explicitly allowed to create the minimum package.",
+    "Week inventory (T1 9 rows, T2 10, T3 10) comes from docs/ss1/work/SS1-03/evidence/parsed_rows.json. T1 'WEEK FIVE AND SIX' is one parsed row. Scheme weeks with no body (reported on the branch: T1 Week 11, T3 Weeks 11-12) are handled by PHYS-PRE items, not invented as weeks.",
+    "The sources are legacy binary .doc files; equation-recovery loss was not measured for Physics.",
+    "Defects reported in the SS1-03 checkpoint (T3 Weeks 1-5) are queued as PHYS-FACT-T3-* verification items, not as established facts.",
+    "Unmerged work on PR #71 head b5ced7ebb0efe22df2351baa140266fbf40cbf41 (physics.json blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3: 5 lessons for 2nd/3rd Term, 1 rule, 32 coverage entries, 5 open items; reconciliation item D-1) is NOT implemented on master. It is tracked as PHYS-PORT-D1-* and PHYS-CMP-D4-* items. Do not merge #71 or copy its schema.",
+    "Several items write the same package file. Workers start from current master, change only their own entries and rebase; PENDING means unclaimed."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "OWNER_APPROVAL": 2,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_WEEK_INDEXING": 29,
+    "SOURCE_RULE": 2,
+    "OWNER_DECISION": 2,
+    "FACTUAL_DEPENDENCY": 4,
+    "VISUAL_DISPOSITION": 3,
+    "BRANCH_PORT": 13,
+    "BRANCH_COMPARISON": 2,
+    "SCOPE_DECOMPOSITION": 1,
+    "TEST": 2
+  },
+  "status_counts": {
+    "PENDING": 59,
+    "BLOCKED": 7
+  },
+  "total": 66,
+  "items": [
+    {
+      "id": "PHYS-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+      "objective": "Register the 1st Term Physics source with manifest hash, member, term, canonical subject and verified header_text/header_evidence read from the original document. Create the minimum package first (see completion condition).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/README.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-SRC-T1.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no physics.json (loader would report MISSING_PACKAGE) and docs/ss1/work/SS1-03/CHECKPOINT.md lists Physics as NOT STARTED. Manifest row: sha256=cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206, 8479232 bytes, legacy binary .doc, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename, header verification required). PR #71 records header 'SUBJECT: PHYSICS CLASS: SS' on document line 3 with the class number on the next line; that is an unverified branch claim, not registered or verified metadata. Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B).",
+      "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that fact and a source_alias need as an open item rather than guessing. PERMISSION TO CREATE THE MINIMUM PACKAGE: because no physics.json exists on master, this item may create backend/src/db/ss1/subjects/physics.json containing only the envelope (schema_version ss1-subject-v1, subject_slug physics, canonical_subject confirmed from the document, package_status PENDING), this source entry, and empty arrays for every other required section. Nothing else may be authored in it. Do not author lessons, rules or coverage here."
+    },
+    {
+      "id": "PHYS-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+      "objective": "Register the 2nd Term Physics source with manifest hash, member, term, canonical subject and verified header_text/header_evidence read from the original document.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-SRC-T2.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no physics.json (loader would report MISSING_PACKAGE) and docs/ss1/work/SS1-03/CHECKPOINT.md lists Physics as NOT STARTED. Manifest row: sha256=3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7, 466432 bytes, legacy binary .doc, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename, header verification required). PR #71 records header 'SUBJECT: PHYSICS CLASS: SS 1' on document line 2; that is an unverified branch claim, not registered or verified metadata. Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B).",
+      "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that fact and a source_alias need as an open item rather than guessing. The package file is created by PHYS-SRC-T1; this item only appends this source entry. Do not author lessons, rules or coverage here."
+    },
+    {
+      "id": "PHYS-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+      "objective": "Register the 3rd Term Physics source with manifest hash, member, term, canonical subject and verified header_text/header_evidence read from the original document.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-SRC-T3.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no physics.json (loader would report MISSING_PACKAGE) and docs/ss1/work/SS1-03/CHECKPOINT.md lists Physics as NOT STARTED. Manifest row: sha256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688, 107008 bytes, legacy binary .doc, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename, header verification required). PR #71 records that the document has NO subject header (it opens 'THIRD TERM E-LEARNING NOTE') and that assignment rests on the archive path and manifest; that is an unverified branch claim, not registered or verified metadata. Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B).",
+      "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that fact and a source_alias need as an open item rather than guessing. The package file is created by PHYS-SRC-T1; this item only appends this source entry. Do not author lessons, rules or coverage here."
+    },
+    {
+      "id": "PHYS-OWNER-ALIAS-T3",
+      "kind": "OWNER_APPROVAL",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "alias approval_reference for the 3rd Term source (only if registration finds no subject heading)",
+      "objective": "If PHYS-SRC-T3 finds that the 3rd Term document has no Physics heading, the owner confirms the filename assignment so a source_alias approval_reference can be recorded.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "PR #71 records that the document has NO subject header (it opens 'THIRD TERM E-LEARNING NOTE') and that assignment rests on the archive path and manifest. The contract allows a heading differing from the canonical subject only through a source_alias rule carrying an approval_reference. Needed only if the registration confirms the missing heading.",
+      "completion_condition": "Owner confirmation recorded as the rule's approval_reference, or the item closed as not needed once registration shows a Physics heading."
+    },
+    {
+      "id": "PHYS-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "text outside the parsed week rows (opening text, scheme table, revision/examination lines)",
+      "objective": "Inventory all 1st Term text outside the parsed week rows and record each block as a mapped scheme objective, a marker, or an explicit open item. Record which scheme weeks have no teaching body.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no T1 scheme or preamble text. PR #71 (branch-only) says the scheme has a Week 11 revision with no body (OI-PHYS-003, coverage PHYS-1-011 UNRESOLVED).",
+      "completion_condition": "Every non-week text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item; the list of scheme weeks without a parsed row is stated explicitly. Per-week objectives belong to the PHYS-WK items."
+    },
+    {
+      "id": "PHYS-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "text outside the parsed week rows (opening text, scheme table, revision/examination lines)",
+      "objective": "Inventory all 2nd Term text outside the parsed week rows and record each block as a mapped scheme objective, a marker, or an explicit open item. Record which scheme weeks have no teaching body.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T2.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no T2 scheme or preamble text and no revision/examination claim for this term.",
+      "completion_condition": "Every non-week text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item; the list of scheme weeks without a parsed row is stated explicitly. Per-week objectives belong to the PHYS-WK items."
+    },
+    {
+      "id": "PHYS-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "text outside the parsed week rows (opening text, scheme table, revision/examination lines)",
+      "objective": "Inventory all 3rd Term text outside the parsed week rows and record each block as a mapped scheme objective, a marker, or an explicit open item. Record which scheme weeks have no teaching body.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T3.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no T3 scheme text. PR #71 (branch-only) says the document opens 'THIRD TERM E-LEARNING NOTE' and that scheme Weeks 11-12 including the examination have no body (OI-PHYS-003, coverage PHYS-3-011 UNRESOLVED). The SS1-03 checkpoint records that the scheme names 'Diffusion and Osmosis' while Week 5's body is matter/atomic structure/states.",
+      "completion_condition": "Every non-week text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item; the list of scheme weeks without a parsed row is stated explicitly. Per-week objectives belong to the PHYS-WK items."
+    },
+    {
+      "id": "PHYS-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE (parsed row 0)",
+      "objective": "Index 1st Term 'WEEK ONE' (Introduction To Physics) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 0 (source label 'WEEK ONE', title \"INTRODUCTION TO PHYSICS\", 8760 characters, body sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TWO (parsed row 1)",
+      "objective": "Index 1st Term 'WEEK TWO' (Measurement Of Mass, Weight, Length & Time) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 1 (source label 'WEEK TWO', title \"MEASUREMENT OF MASS, WEIGHT, LENGTH & TIME\", 8197 characters, body sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE (parsed row 2)",
+      "objective": "Index 1st Term 'WEEK THREE' (Motion In Nature) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 2 (source label 'WEEK THREE', title \"MOTION IN NATURE\", 9433 characters, body sha256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FOUR (parsed row 3)",
+      "objective": "Index 1st Term 'WEEK FOUR' (Friction) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 3 (source label 'WEEK FOUR', title \"FRICTION\", 4976 characters, body sha256 4bdf68054b2e399aa989b7e0c1cea9cd16a3cadb4723c2f0cf0a67d56571e299) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W05-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FIVE AND SIX (parsed row 4)",
+      "objective": "Index 1st Term 'WEEK FIVE AND SIX' (Vector & Scalar Quantity, Distance/Displacement, Speed/Veloc) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers. State whether the row contains two teaching sections and where the second begins.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W05-W06.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 4 (source label 'WEEK FIVE AND SIX', title \"VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT -TIME GRA\", 15574 characters, body sha256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence). The importer reads this as ONE row although the scheme names two weeks; PR #71 split it (PHYS-R01) with an operation master does not have. See PHYS-PORT-D1-RULE-SPLIT.",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN (parsed row 5)",
+      "objective": "Index 1st Term 'WEEK SEVEN' (Density & Relative Density) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 5 (source label 'WEEK SEVEN', title \"DENSITY & RELATIVE DENSITY\", 4116 characters, body sha256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 8 (parsed row 6)",
+      "objective": "Index 1st Term 'WEEK 8' (Pressure , Archimedes' Principles, Upthrust & Laws Of Floata) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 6 (source label 'WEEK 8', title \"PRESSURE , ARCHIMEDES' PRINCIPLES, UPTHRUST & LAWS OF FLOATATION\", 7363 characters, body sha256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 (parsed row 7)",
+      "objective": "Index 1st Term 'WEEK 9' (Work, Energy And Power) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 7 (source label 'WEEK 9', title \"WORK, ENERGY AND POWER\", 5904 characters, body sha256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TEN (parsed row 8)",
+      "objective": "Index 1st Term 'WEEK TEN' (Viscosity) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 8 (source label 'WEEK TEN', title \"VISCOSITY\", 4556 characters, body sha256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE (parsed row 0)",
+      "objective": "Index 2nd Term 'WEEK ONE' (Heat Energy, Concept of Heat and Temperature and Effects of ) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 0 (source label 'WEEK ONE', title \"Heat Energy, Concept of Heat and Temperature and Effects of Heat\", 2685 characters, body sha256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO (parsed row 1)",
+      "objective": "Index 2nd Term 'WEEK TWO' (Thermometer and Its Type. Evaporation and Boiling) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 1 (source label 'WEEK TWO', title \"Thermometer and Its Type. Evaporation and Boiling\", 4744 characters, body sha256 37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE (parsed row 2)",
+      "objective": "Index 2nd Term 'WEEK THREE' (Expansion of Solid, Effect and Applications of Expansion) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 2 (source label 'WEEK THREE', title \"Expansion of Solid, Effect and Applications of Expansion\", 2792 characters, body sha256 35319222af7c43db21bfd51b1f897b2b74d81ebe320d3b8f97de427db549e303) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR (parsed row 3)",
+      "objective": "Index 2nd Term 'WEEK FOUR' (Expansivity and Its Application - Linear, Area and Volume. A) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 3 (source label 'WEEK FOUR', title \"Expansivity and Its Application - Linear, Area and Volume. Anomalous\", 4238 characters, body sha256 91638b728db1f23707da658c9c90880c47e24ae593c5c06cdda6802d098fa94c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE (parsed row 4)",
+      "objective": "Index 2nd Term 'WEEK FIVE' (Heat Transfer - Conduction, Convection, Radiation and Their ) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 4 (source label 'WEEK FIVE', title \"Heat Transfer - Conduction, Convection, Radiation and Their Applications\", 6517 characters, body sha256 b9ff6beb9eabb79d76839bfdefbdc9bf074d5950aaf71a329193c0f8f7e939bd) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX (parsed row 5)",
+      "objective": "Index 2nd Term 'WEEK SIX' (ELECTRIC CHARGES→ Production, Types, Distribution and Storag) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 5 (source label 'WEEK SIX', title \"ELECTRIC CHARGES\\u2192 Production, Types, Distribution and Storage\", 3074 characters, body sha256 a034ad6dde530a2fca4ce660b671c1e9864eca26d5d9c4eaa92216d4a25aefd0) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SEVEN (parsed row 6)",
+      "objective": "Index 2nd Term 'WEEK SEVEN' (Gold Leaf Electroscope and Its Uses. Lighting and Lighting C) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 6 (source label 'WEEK SEVEN', title \"Gold Leaf Electroscope and Its Uses. Lighting and Lighting Conductor.\", 4364 characters, body sha256 ff0474d250d038ced292af853aeea78bbc2ffbd31f3792df61ac11f1544957d8) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 8 (parsed row 7)",
+      "objective": "Index 2nd Term 'WEEK 8' (Field - Concept And Types Of Field. Gravitational And Magnet) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 7 (source label 'WEEK 8', title \"FIELD - CONCEPT AND TYPES OF FIELD. GRAVITATIONAL AND MAGNETIC FIELD. FORCE OF GRAVITY\", 3122 characters, body sha256 07b01d34682899f09096e2ac8cd0fb977b722b3d3ffcb6a276bf42f6d5488e96) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK NINE (parsed row 8)",
+      "objective": "Index 2nd Term 'WEEK NINE' (Electric Field - Line of Forces, Properties of Line of Force) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 8 (source label 'WEEK NINE', title \"Electric Field - Line of Forces, Properties of Line of Force, Description and     Properties of Force Field\", 3669 characters, body sha256 3939388bd9db499f247d2b614187f300c4b7c030a84cdac372df3f46f3db08f7) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN (parsed row 9)",
+      "objective": "Index 2nd Term 'WEEK TEN' (Production Of Continuous Electric Current) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T2-W10.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 9 (source label 'WEEK TEN', title \"PRODUCTION OF CONTINUOUS ELECTRIC CURRENT\", 3040 characters, body sha256 d65e459bdba0977fcfff1e1e41b8575ae84d30783a01a4756060e9dad9f20da6) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 1 (parsed row 0)",
+      "objective": "Index 3rd Term 'WEEK 1' (Electric Circuit) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 0 (source label 'WEEK 1', title \"ELECTRIC CIRCUIT\", 4257 characters, body sha256 9f8307d972fbe53ef0930e1c6650615116513e515c52e1d125560f0a9887c231) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 2 (parsed row 1)",
+      "objective": "Index 3rd Term 'WEEK 2' (Resistors & Cells  Connected In Series & Parallel) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 1 (source label 'WEEK 2', title \"RESISTORS & CELLS  CONNECTED IN SERIES & PARALLEL\", 2728 characters, body sha256 6f3000c945cc9e520159fffb8af5b8bea8eb50bf57f72f5a96dc7ab3c7aef3d7) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 3 (parsed row 2)",
+      "objective": "Index 3rd Term 'WEEK 3' (Electrical Energy And Power) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 2 (source label 'WEEK 3', title \"ELECTRICAL ENERGY AND POWER\", 2352 characters, body sha256 9fb67621489fdc88ab0f545f52b60d67d36c034d30a0513fe843a3dac9811de1) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 4 (parsed row 3)",
+      "objective": "Index 3rd Term 'WEEK 4' (Safety Device - Fuse) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 3 (source label 'WEEK 4', title \"SAFETY DEVICE - FUSE\", 2393 characters, body sha256 87346147325e174b318300a5d1ac5312cd14784201b272138575665519d50d1b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 5 (parsed row 4)",
+      "objective": "Index 3rd Term 'WEEK 5' (Matter, Atomic Structure, States Of Matter,) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 4 (source label 'WEEK 5', title \"MATTER, ATOMIC STRUCTURE, STATES OF MATTER,\", 4916 characters, body sha256 f59b8928f2e3d005c70de58e2e9ada07cfa1c404e24a7b448478eb65c593569b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 6 (parsed row 5)",
+      "objective": "Index 3rd Term 'WEEK 6' (Crystal Structure Of Matter- Amorphous And) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 5 (source label 'WEEK 6', title \"CRYSTAL STRUCTURE OF MATTER- AMORPHOUS AND\", 4124 characters, body sha256 c5c1fa1d5db53b9afd70e163f18efeb957382eba558c86d84204741f27c742d5) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 7 (parsed row 6)",
+      "objective": "Index 3rd Term 'WEEK 7' (Surface Tension) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W07.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 6 (source label 'WEEK 7', title \"SURFACE TENSION\", 1521 characters, body sha256 88bbd1cbf2f1650d37f077e8bf47577ac77d6d7f1e7299b5d45a8b2b3cca0e6e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 8 (parsed row 7)",
+      "objective": "Index 3rd Term 'WEEK 8' (Capiliarity) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 7 (source label 'WEEK 8', title \"CAPILIARITY\", 1142 characters, body sha256 5c0e1ee8abc3919e0f3f87a78c4ab226dde438e36d335d77ca939ca2fb5aee3d) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 9 (parsed row 8)",
+      "objective": "Index 3rd Term 'WEEK 9' (Elasticity) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 8 (source label 'WEEK 9', title \"ELASTICITY\", 2852 characters, body sha256 00bec4c93f9e7c392d9821e900a76bf47c14c8e0e124eab51cc24783ecded0b6) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 10 (parsed row 9)",
+      "objective": "Index 3rd Term 'WEEK 10' (Energy Stored In An Elastic Material) at objective level: list each scheme objective, bind it to the exact source row and any supplement with reproducible locators, and record formula/unit defects, lost notation, figures, and exercises or assignments lacking answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T3-W10.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 9 (source label 'WEEK 10', title \"ENERGY STORED IN AN ELASTIC MATERIAL\", 2827 characters, body sha256 90b1db64e4c1152d3e995236b0ef16f078040f74b343178795e382a7ca5c64e3) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
+    },
+    {
+      "id": "PHYS-RULE-T1-REVISION-SCHEME",
+      "kind": "SOURCE_RULE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "scheme Week 11 revision (no parsed row)",
+      "objective": "After PHYS-PRE-T1, bind the T1 revision week to a SCHEME_ONLY rule with a unique anchor, or record with evidence that no rule is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-RULE-T1-REVISION-SCHEME.md"
+      ],
+      "depends_on": [
+        "PHYS-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No rules exist on master. Branch-only claim: PHYS-1-011 UNRESOLVED, OI-PHYS-003.",
+      "completion_condition": "Rule with an anchor shown unique in the source text (not executed), or documented impossibility recorded as an open item."
+    },
+    {
+      "id": "PHYS-RULE-T3-REVISION-EXAM",
+      "kind": "SOURCE_RULE",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "scheme Weeks 11-12 revision and examination (no parsed row)",
+      "objective": "After PHYS-PRE-T3, bind the T3 revision/examination weeks to SCHEME_ONLY/EXAMINATION rules with unique anchors, or record that none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-RULE-T3-REVISION-EXAM.md"
+      ],
+      "depends_on": [
+        "PHYS-PRE-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No rules exist on master. Branch-only claim: PHYS-3-011 UNRESOLVED, OI-PHYS-003.",
+      "completion_condition": "Rules with anchors shown unique, or documented impossibility recorded as an open item."
+    },
+    {
+      "id": "PHYS-OWNER-REVISION-PLAN",
+      "kind": "OWNER_DECISION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "OI-PHYS-003 remaining question",
+      "objective": "Teacher confirms whether a revision/examination plan exists for the scheme weeks that have no body, once the sources have been checked.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-PRE-T1",
+        "PHYS-PRE-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised only if the source documents contain no revision material; blocked on a teacher answer no document can supply.",
+      "completion_condition": "Answer recorded in the open item; no revision content is invented."
+    },
+    {
+      "id": "PHYS-FACT-T3-FUSE-RATING",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 4 (parsed row 3)",
+      "objective": "Inspect T3 Week 4 (safety device - fuse) and confirm exactly how it defines a fuse's current rating and what it calls the testing instrument; record the exact wording and the correct statement (rating = maximum current carried indefinitely; 'megger').",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T3-FUSE-RATING.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: the rating is defined as the MINIMUM current (it is the maximum carried indefinitely) and a 'merger tester' appears (megger). Not yet checked in this queue. PR #71 lesson SUP-SS1-PHYS-003 (branch-only) addresses the fuse topic.",
+      "completion_condition": "Verbatim short quotes and locators recorded, defect confirmed or refuted, and a correction or lesson task appended if confirmed."
+    },
+    {
+      "id": "PHYS-FACT-T3-W04-ASSIGNMENT",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 4 assignment (parsed row 3)",
+      "objective": "Inspect the T3 Week 4 assignment and list every item that belongs to another topic (reported: circular-motion items), with locators.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T3-W04-ASSIGNMENT.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: Week 4 assignment contains unrelated circular-motion items.",
+      "completion_condition": "Each unrelated item located and quoted briefly; recorded for the delivery-correction decision."
+    },
+    {
+      "id": "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "T3 Weeks 1-4; exact row not recorded",
+      "objective": "Locate the formula written 'I = E / R + r' (needs I = E/(R+r)) in T3 Weeks 1-4 and record the row, the exact text and whether the rendered document shows brackets or a fraction lost in extraction.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported formula defect; the row where it occurs is not recorded in the repository.",
+      "completion_condition": "Row and wording recorded; classified as source defect or extraction loss."
+    },
+    {
+      "id": "PHYS-FACT-T3-W05-SCHEME-MISMATCH",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK 5 (parsed row 4) and scheme",
+      "objective": "Compare the T3 scheme entry that names 'Diffusion and Osmosis' with the Week 5 body (matter, atomic structure, states of matter) and record whether diffusion/osmosis is taught anywhere in the document.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T3-W05-SCHEME-MISMATCH.md"
+      ],
+      "depends_on": [
+        "PHYS-PRE-T3",
+        "PHYS-WK-T3-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-03/CHECKPOINT.md section 3 (Physics): read so far 3rd term Weeks 1-4 only; defects found, not authored. Reported: scheme names Diffusion and Osmosis but the Week 5 body is matter/atomic structure/states.",
+      "completion_condition": "Search result across the whole document recorded; any uncovered objective named precisely so a bounded lesson task can be appended."
+    },
+    {
+      "id": "PHYS-VIS-T1",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "all drawings, graphs, circuit/apparatus/field diagrams and embedded objects in the document",
+      "objective": "Inventory every figure and embedded object in the 1st Term document (count, parsed row, nature) and any embedded advertising/branding pages; do not dispose of them inline. Append one bounded visual or asset task per figure cluster.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-VIS-T1.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no figure count or disposition for Physics. The source is a legacy binary .doc (8479232 bytes, the largest Physics source and likely image-heavy). Branch-only claim (PR #71 OI-PHYS-004): graphs, circuit diagrams, apparatus and field lines are not extracted and none was invented. The checkpoint reports commercial tutor branding in other SS1 sources; its presence in Physics is unverified.",
+      "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
+    },
+    {
+      "id": "PHYS-VIS-T2",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "all drawings, graphs, circuit/apparatus/field diagrams and embedded objects in the document",
+      "objective": "Inventory every figure and embedded object in the 2nd Term document (count, parsed row, nature) and any embedded advertising/branding pages; do not dispose of them inline. Append one bounded visual or asset task per figure cluster.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-VIS-T2.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no figure count or disposition for Physics. The source is a legacy binary .doc (466432 bytes). Branch-only claim (PR #71 OI-PHYS-004): graphs, circuit diagrams, apparatus and field lines are not extracted and none was invented. The checkpoint reports commercial tutor branding in other SS1 sources; its presence in Physics is unverified.",
+      "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
+    },
+    {
+      "id": "PHYS-VIS-T3",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "all drawings, graphs, circuit/apparatus/field diagrams and embedded objects in the document",
+      "objective": "Inventory every figure and embedded object in the 3rd Term document (count, parsed row, nature) and any embedded advertising/branding pages; do not dispose of them inline. Append one bounded visual or asset task per figure cluster.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-VIS-T3.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no figure count or disposition for Physics. The source is a legacy binary .doc (107008 bytes). Branch-only claim (PR #71 OI-PHYS-004): graphs, circuit diagrams, apparatus and field lines are not extracted and none was invented. The checkpoint reports commercial tutor branding in other SS1 sources; its presence in Physics is unverified.",
+      "completion_condition": "Inventory complete with locators; follow-up tasks appended; any branding or rights concern raised as an open item without copying contact details into Git."
+    },
+    {
+      "id": "PHYS-OWNER-EXTRACTION-STRATEGY",
+      "kind": "OWNER_DECISION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "superscript/subscript/fraction/figure recovery (branch OI-PHYS-001)",
+      "objective": "Owner/foundation decides how SS1 extraction handles flattened superscripts, subscripts, fractions and figures in the Physics .doc sources, versus replacement lessons.",
+      "required_files": [
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-SRC-T2",
+        "PHYS-SRC-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Foundation-level decision, shown for Mathematics as OI-MATH-001; for Physics only the branch records it (OI-PHYS-001).",
+      "completion_condition": "Decision recorded; follow-up tasks appended by the owner or integration worker."
+    },
+    {
+      "id": "PHYS-PORT-D1-T2-L001",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-PHYS-001 lessons[sequence=1]",
+      "objective": "Compare then port branch-only lesson SUP-SS1-PHYS-001 ('Heat and temperature: meaning, units, differences and effects of heat') into master's schema as one supplement under master's ID convention (SUP-SS1-PHYSICS-<suffix>), mapping its fields rather than copying; no repeated source audit.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-T2-L001.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-001, body 1608 characters, content_hash 2db3b0e1f7498ccc8032cf5f54513b93efc885f56ea9ef6e5b8e5f9f4f24e835, covers #71 objective(s) ['PHYS-2-001'] = source week label(s) ['WEEK ONE'] (PHYS-WK-T2-W01); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
+    },
+    {
+      "id": "PHYS-PORT-D1-T2-L002",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-PHYS-002 lessons[sequence=2]",
+      "objective": "Compare then port branch-only lesson SUP-SS1-PHYS-002 ('Thermal expansion of solids: effects, applications and a simple calculation') into master's schema as one supplement under master's ID convention (SUP-SS1-PHYSICS-<suffix>), mapping its fields rather than copying; no repeated source audit.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-T2-L002.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-002, body 1480 characters, content_hash bd3743eb0445118d1e05daac203794ecb7089b5cfdbb0de12efe65b79320519a, covers #71 objective(s) ['PHYS-2-003'] = source week label(s) ['WEEK THREE'] (PHYS-WK-T2-W03); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
+    },
+    {
+      "id": "PHYS-PORT-D1-T3-L003",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-PHYS-003 lessons[sequence=1]",
+      "objective": "Compare then port branch-only lesson SUP-SS1-PHYS-003 ('The fuse: ratings, fusing factor and choosing a fuse') into master's schema as one supplement under master's ID convention (SUP-SS1-PHYSICS-<suffix>), mapping its fields rather than copying; no repeated source audit.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-T3-L003.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-003, body 1431 characters, content_hash 1ba98b7a689a9e166a6d5ddcd0e4ce3609e7914a64b213aee32a7df467104e31, covers #71 objective(s) ['PHYS-3-004'] = source week label(s) ['WEEK 4'] (PHYS-WK-T3-W04); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
+    },
+    {
+      "id": "PHYS-PORT-D1-T3-L004",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-PHYS-004 lessons[sequence=2]",
+      "objective": "Compare then port branch-only lesson SUP-SS1-PHYS-004 ('Surface tension: meaning, effects, applications and reduction') into master's schema as one supplement under master's ID convention (SUP-SS1-PHYSICS-<suffix>), mapping its fields rather than copying; no repeated source audit.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-T3-L004.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-004, body 1382 characters, content_hash 27bd5e5637c7f327d9826c22fd2fd026a7913b6741a30e623ae66c6b0c1360fc, covers #71 objective(s) ['PHYS-3-007'] = source week label(s) ['WEEK 7'] (PHYS-WK-T3-W07); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
+    },
+    {
+      "id": "PHYS-PORT-D1-T3-L005",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-PHYS-005 lessons[sequence=3]",
+      "objective": "Compare then port branch-only lesson SUP-SS1-PHYS-005 ('Capillarity: cohesion, adhesion and the rise or fall of liquids in narrow tubes') into master's schema as one supplement under master's ID convention (SUP-SS1-PHYSICS-<suffix>), mapping its fields rather than copying; no repeated source audit.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-T3-L005.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-005, body 1482 characters, content_hash 8e21fd930d96e4596434ef3495253ecbb59c3a19b49cf8e87bf80b7e057ee99c, covers #71 objective(s) ['PHYS-3-008'] = source week label(s) ['WEEK 8'] (PHYS-WK-T3-W08); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
+    },
+    {
+      "id": "PHYS-PORT-D1-COV-T1",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "#71 coverage entries for 1st Term",
+      "objective": "Compare #71's 11 objective-level coverage entries for 1st Term with the master package and carry over only those whose evidence stands; #71's SUPPORTED judgments were made from extracted text only and must be re-evidenced, not copied.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-COV-T1.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
+    },
+    {
+      "id": "PHYS-PORT-D1-COV-T2",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "#71 coverage entries for 2nd Term",
+      "objective": "Compare #71's 10 objective-level coverage entries for 2nd Term with the master package and carry over only those whose evidence stands; #71's SUPPORTED judgments were made from extracted text only and must be re-evidenced, not copied.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-COV-T2.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T2",
+        "PHYS-PORT-D1-T2-L001",
+        "PHYS-PORT-D1-T2-L002"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
+    },
+    {
+      "id": "PHYS-PORT-D1-COV-T3",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "#71 coverage entries for 3rd Term",
+      "objective": "Compare #71's 11 objective-level coverage entries for 3rd Term with the master package and carry over only those whose evidence stands; #71's SUPPORTED judgments were made from extracted text only and must be re-evidenced, not copied.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-COV-T3.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T3",
+        "PHYS-PORT-D1-T3-L003",
+        "PHYS-PORT-D1-T3-L004",
+        "PHYS-PORT-D1-T3-L005"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
+    },
+    {
+      "id": "PHYS-PORT-D1-RULE-SPLIT",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "PHYS-R01 (WEEK FIVE AND SIX)",
+      "objective": "Decide whether and how master's split_before operation (numeric week or range label, inserts 'WEEK n' before a line-start anchor) can express #71's split of T1 'WEEK FIVE AND SIX' at the 'GRAPHS' heading, noting the effect on content-bound row identity; port if possible, otherwise record the foundation limitation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-RULE-SPLIT.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W05-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Rule PHYS-R01 uses split_before_anchor with new_title, absent from master (reconciliation section 2). The contract warns that changed segmentation needs newly reviewed mappings and can cause a stored-snapshot mismatch.",
+      "completion_condition": "Port recorded with an anchor shown unique in the source, or the limitation and its identity impact recorded as an open item. No importer or compiler run."
+    },
+    {
+      "id": "PHYS-PORT-D1-FACT-T1-W05",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "OI-PHYS-002: T1 Week 5 (S = (v+u)t over 2; fraction lost, correct S = ½(u+v)t)",
+      "objective": "Check the branch-reported defect against the original and, if confirmed, record it on master as a precise open item or correction candidate: T1 Week 5 (S = (v+u)t over 2; fraction lost, correct S = ½(u+v)t).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-FACT-T1-W05.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W05-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
+    },
+    {
+      "id": "PHYS-PORT-D1-FACT-T2-W01",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "OI-PHYS-002: T2 Week 1 (heat defined as \"the study of relative motion of fluid\"; photoelectric emission listed as an effect of heat)",
+      "objective": "Check the branch-reported defect against the original and, if confirmed, record it on master as a precise open item or correction candidate: T2 Week 1 (heat defined as \"the study of relative motion of fluid\"; photoelectric emission listed as an effect of heat).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-FACT-T2-W01.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
+    },
+    {
+      "id": "PHYS-PORT-D1-FACT-T3-W10",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "term": "3rd Term",
+      "week_or_locator": "OI-PHYS-002: T3 Week 10 (garbled F = EAαeLӨ/eL; result F = EAαӨ is correct)",
+      "objective": "Check the branch-reported defect against the original and, if confirmed, record it on master as a precise open item or correction candidate: T3 Week 10 (garbled F = EAαeLӨ/eL; result F = EAαӨ is correct).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+          "member_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-FACT-T3-W10.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 (OTHER, OPEN), reported from extracted text only. Not on master.",
+      "completion_condition": "Defect confirmed or refuted with locator; if the rendered source shows no defect it is recorded as extraction loss."
+    },
+    {
+      "id": "PHYS-PORT-D1-FACT-EXPANSIVITY",
+      "kind": "BRANCH_PORT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "term": "2nd Term",
+      "week_or_locator": "OI-PHYS-002: expansivity working uses a stray \"X\" for α",
+      "objective": "Locate the expansivity working with a stray 'X' for α reported on the branch (row not recorded) and record whether it is a source defect or extraction loss.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+          "member_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PORT-D1-FACT-EXPANSIVITY.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). OI-PHYS-002 gives no row; the T2 expansivity topic is parsed row 3 ('WEEK FOUR'); T3 Week 10 also has expansion working.",
+      "completion_condition": "Row located, wording recorded, classified; moved to the right week item if it is in another row."
+    },
+    {
+      "id": "PHYS-CMP-D4-NOTES",
+      "kind": "BRANCH_COMPARISON",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "docs/ss1/work/SS1-03/CHECKPOINT.md and HANDOFF.json on #71 head (Physics sections)",
+      "objective": "Compare the Physics sections of #71's checkpoint and handoff with master's SS1-03 notes (which say NOT STARTED) and list any branch-only fact. Do not overwrite master's files.",
+      "required_files": [
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-CMP-D4-NOTES.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Branch-only: b5ced7ebb0efe22df2351baa140266fbf40cbf41:docs/ss1/work/SS1-03/CHECKPOINT.md blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c and HANDOFF.json blob f3ee7c4559931744ab679bc6f8975fd7091c0710 (shared with the Mathematics comparison). The #71 checkpoint reports Physics IMPLEMENTED - TESTING DEFERRED (NOT COMPLETE) with 5 lessons and PHYS-R01; master's says NOT STARTED.",
+      "completion_condition": "Branch-only facts listed with blob and line locators, each routed to a queue item or recorded as already covered."
+    },
+    {
+      "id": "PHYS-APPROVAL-CONTENT",
+      "kind": "OWNER_APPROVAL",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "ported supplements",
+      "objective": "Teacher reviews the ported Physics supplements and records an approval_reference per lesson, or returns defects.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-PORT-D1-T2-L001",
+        "PHYS-PORT-D1-T2-L002",
+        "PHYS-PORT-D1-T3-L003",
+        "PHYS-PORT-D1-T3-L004",
+        "PHYS-PORT-D1-T3-L005"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "No Physics lesson exists on master, so there is nothing to approve yet. Branch OI-PHYS-005 also asks the teacher whether an answer key is needed for source weeks.",
+      "completion_condition": "Approval references recorded per lesson, or defects appended as correction items. No approval is invented."
+    },
+    {
+      "id": "PHYS-SCOPE-AUTHORING-FINISH",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "Physics NOT STARTED on master",
+      "objective": "Decomposition record for the whole subject. It is a scope umbrella, not a lesson. Close only when every child item is complete and the package has precise coverage and open items.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W01",
+        "PHYS-WK-T1-W02",
+        "PHYS-WK-T1-W03",
+        "PHYS-WK-T1-W04",
+        "PHYS-WK-T1-W05-W06",
+        "PHYS-WK-T1-W06",
+        "PHYS-WK-T1-W07",
+        "PHYS-WK-T1-W08",
+        "PHYS-WK-T1-W09",
+        "PHYS-WK-T2-W01",
+        "PHYS-WK-T2-W02",
+        "PHYS-WK-T2-W03",
+        "PHYS-WK-T2-W04",
+        "PHYS-WK-T2-W05",
+        "PHYS-WK-T2-W06",
+        "PHYS-WK-T2-W07",
+        "PHYS-WK-T2-W08",
+        "PHYS-WK-T2-W09",
+        "PHYS-WK-T2-W10",
+        "PHYS-WK-T3-W01",
+        "PHYS-WK-T3-W02",
+        "PHYS-WK-T3-W03",
+        "PHYS-WK-T3-W04",
+        "PHYS-WK-T3-W05",
+        "PHYS-WK-T3-W06",
+        "PHYS-WK-T3-W07",
+        "PHYS-WK-T3-W08",
+        "PHYS-WK-T3-W09",
+        "PHYS-WK-T3-W10",
+        "PHYS-PRE-T1",
+        "PHYS-PRE-T2",
+        "PHYS-PRE-T3",
+        "PHYS-VIS-T1",
+        "PHYS-VIS-T2",
+        "PHYS-VIS-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "CHECKPOINT.md: Physics NOT STARTED; no package on master. Children: PHYS-SRC-*, PHYS-PRE-*, PHYS-WK-*, PHYS-VIS-*, PHYS-FACT-*, PHYS-PORT-D1-*.",
+      "completion_condition": "Every child complete; remaining gaps recorded as precise open items."
+    },
+    {
+      "id": "PHYS-TEST-PACKAGE-NEW",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/physics.package.test.mts (does not exist on master)",
+      "objective": "Deferred: add a package test for Physics modelled on tests/ss1/mathematics.package.test.mts, only in the authorised testing stage.",
+      "required_files": [
+        "tests/ss1/mathematics.package.test.mts",
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-SRC-T2",
+        "PHYS-SRC-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "No Physics test exists on master. Testing is deferred by owner until the verification stage (SS1-09); nothing is run or written by this queue.",
+      "completion_condition": "Written and run only in the authorised later stage."
+    },
+    {
+      "id": "PHYS-CMP-D4-TESTS",
+      "kind": "BRANCH_COMPARISON",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/physics.test.mts on #71 head",
+      "objective": "Deferred: compare #71's 4-test physics.test.mts with the future master test and decide which checks merit a port.",
+      "required_files": [
+        "tests/ss1/mathematics.package.test.mts"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-CMP-D4-TESTS.md"
+      ],
+      "depends_on": [
+        "PHYS-TEST-PACKAGE-NEW"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Branch-only: b5ced7ebb0efe22df2351baa140266fbf40cbf41:tests/ss1/physics.test.mts blob 29f970835849cf756c585330b80f39866d35aa69, written against #71's schema and not portable verbatim. Deferred by owner.",
+      "completion_condition": "Comparison recorded in the authorised verification stage; no test run in this queue."
+    },
+    {
+      "id": "PHYS-TEST-FULL-SOURCE-REGRESSION",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "full-source regression",
+      "objective": "Deferred: regression check of every parsed row and marker against the final package after indexing, ports and approvals.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-SCOPE-AUTHORING-FINISH",
+        "PHYS-TEST-PACKAGE-NEW"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
+      "completion_condition": "Run only in the later authorised verification stage; nothing is run by this queue."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "77f31485e3e3dbcdb1cfa2a55913c27b4a25b8ad",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 3,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. A filename variant is acceptable if the archive hash matches. Attach this archive (or the exact member) to source-reading workers."
+    },
+    "unmerged_work": {
+      "pr": 71,
+      "head_sha": "b5ced7ebb0efe22df2351baa140266fbf40cbf41",
+      "path": "backend/src/db/ss1/subjects/physics.json",
+      "blob": "5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3",
+      "also_at": "2985d57074e8202caf0c803c826c03ddd3644d9c (ss1/SS1-03-20261027-B)",
+      "tests_blob": "29f970835849cf756c585330b80f39866d35aa69",
+      "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
+      "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
+    }
+  },
+  "next_runnable": [
+    "PHYS-SRC-T1"
+  ],
+  "runnable_now": [
+    "PHYS-SRC-T1",
+    "PHYS-CMP-D4-NOTES"
+  ]
+}
