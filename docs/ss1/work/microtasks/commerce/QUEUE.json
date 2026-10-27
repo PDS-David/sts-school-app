@@ -31,7 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -63,8 +64,8 @@
         "docs/ss1/work/microtasks/commerce/COM-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No commerce package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-d96373071a7e, sha256=ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a, 1166848 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/commerce.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-d96373071a7e sha256=ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a archive_member='SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc' term='1st Term' canonical_subject='Commerce' header_text='SUBJECT: COMMERCE' + whitespace + 'CLASS: SSS 1' (single occurrence confirmed with word-extractor getBody(); 'COMMERCE' alone occurs 8 times); rule SS1-SRC-d96373071a7e-R001 (source_alias, approval_reference PENDING-OWNER); open item COMMERCE-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the supplied '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636) and re-verified byte-identical in the composite archive (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). Record: docs/ss1/work/microtasks/commerce/COM-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example Economics), record an explicit handoff open item; do not delete, merge into another business subject or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -311,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "COM-SRC-T1"
+    "COM-SRC-T2",
+    "COM-SRC-T3",
+    "COM-INV-T1"
   ]
 }
