@@ -1,27 +1,40 @@
-# ENG-WK-T1-W02 — English Language
-
-Copy the following prompt into one worker session. Attach the composite archive named below.
+# ENG-LES-W01-NOUNS — English Language
 
 ```text
-TASK: SS1 ENG-WK-T1-W02 ONLY
+Execute ENG-LES-W01-NOUNS ONLY for SS1 English Language.
 Repository: PDS-David/sts-school-app
 Subject slug: english
-Queue: docs/ss1/work/microtasks/english/QUEUE.json
-Reviewed base: d01704cd15aa69241a8775c5e072fd2297b1d71b; start from latest origin/master, not this historical SHA.
-
-Implement exactly ENG-WK-T1-W02 (SOURCE_WEEK_INDEXING). Do not perform other weeks, other sources or the entire subject.
+Start from latest origin/master. Reviewed base was d016a10730dac538589e42009ca749de1f9dd4aa.
 
 START
-Fetch master, record SHA, read applicable AGENTS.md and check open PRs for this exact item. Use a separate branch/worktree. If already completed on master, report its evidence and stop without duplicating it. If another worker owns an open PR for it, report that PR and do not overwrite it. Confirm the queue prerequisites: ENG-SRC-T1. Do not treat implementation-deferred status as approval or successful testing.
+Read applicable AGENTS.md. Fetch master and inspect open PRs for this task. Use an isolated branch/worktree. If this exact item is already complete on master, report the evidence and stop; do not repeat it or silently select another item. If an open PR owns it, do not overwrite that worker.
+
+QUEUE
+docs/ss1/work/microtasks/english/QUEUE.json
+Prerequisites: ENG-WK-T1-W01, ENG-LES-WORD-CLASSES-T1.
+Confirm each prerequisite's implementation is complete, without treating deferred verification as passed.
 
 OBJECTIVE
-Index 1st Term Week 2 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.
+Close the noun gaps left by SUP-SS1-ENGLISH-WORD-CLASSES-T1 against the displaced source row: regular plurals, noun features and endings (reviewed), proper-noun capitalisation, uncountable list and damage/damages, collective nouns, possessive nouns, remaining irregular/compound/zero plurals, plural-form nouns. Author original reviewed teaching with practice and marking; do not copy source text.
 
 EXISTING EVIDENCE
-backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-004, ENGLISH-BODY-005, ENGLISH-BODY-006, ENGLISH-BODY-007 (4 body-level rows; statuses {'PARTIAL': 4}). Row titles: ENGLISH-BODY-004='TOPICS: COMPREHENSION, READING SKILLS; RELIGION.'; ENGLISH-BODY-005='B.  TOPIC: STRUCTURE: INTRODUCTION TO PHRASAL VERBS.'; ENGLISH-BODY-006='C. Adverbs, Conjunction and Preposition'; ENGLISH-BODY-007='D. TOPIC: VOCABULARY DEVELOPMENT: WORDS ASSOCIATED WITH LIBRARY'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.
+Open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE in english.json. Source rows: BODY 954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 (locators in each coverage entry).
 
 COMPLETION CONDITION
-Every objective of Week 2 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.
+Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented; SS1-02-english-COR-001 stays inactive until this and ENG-LES-W01-PRONOUN-ADJ-VERB are done.
+
+LESSON-SPECIFIC SCOPE
+Implement only the noun objectives ENGLISH-T1-W01-N02 through N11 described by the existing item. Prefer extending the existing SUP-SS1-ENGLISH-WORD-CLASSES-T1 noun section if this preserves the lesson's other content; otherwise create one stable-ID noun supplement. Include clear teaching, worked examples and answered practice. Do not declare the whole displaced row complete: the separate pronoun/adjective/verb task remains pending. Do not activate or broaden SS1-02-english-COR-001 or claim a new supplement automatically becomes its replacement. Record exact coverage targets for the noun objectives only. Consult reliable grammar references for disputed rules; write original prose, not copied textbook passages.
+
+ATTACH ONLY THIS ORIGINAL DOCUMENT
+Filename: 1ST TERM S1 ENGLISH LANGUAGE.doc
+Term: 1st Term
+Manifest source ID: SS1-SRC-a00657d42196
+Manifest archive member: SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc
+SHA-256: 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef
+
+A standalone original matching this member hash is AUTHORISED and sufficient. Do NOT ask for the full ZIP or require its folder structure. Hash before conversion; render/extract a separate private working copy. A member extracted from another enclosing ZIP is equally acceptable if its exact bytes match this SHA-256. Record the actual supplied container and whether its hash was checked; never claim a composite hash check not performed. Keep archive_member in the package exactly as the manifest.
+If the complete composite ZIP is supplied instead, expected SHA-256 is 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. If the document hash differs, report the exact mismatch and do not substitute by name or size.
 
 READ
 - docs/ss1/work/microtasks/english/QUEUE.json
@@ -29,44 +42,29 @@ READ
 - backend/src/db/ss1/subjectPackageSchema.ts
 - docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - backend/src/db/ss1/subjects/english.json
-- docs/ss1/work/SS1-02/CHECKPOINT.md
-- docs/ss1/work/SS1-02/author_english.py
-Read the subject QUEUE_BUILD.md and relevant existing note if available. A package absent because this task creates it is not a missing input; use the strict contract's required envelope and arrays. Preserve existing package content if another completed task has since created it.
-
-ATTACHMENTS
-[
-  {
-    "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
-    "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-    "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
-    "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
-  }
-]
-The shared archive's display filename is SSS 1-20260507T072431Z-3-001 (1).zip. Verify its SHA-256 and the assigned member hash. Use only the source(s) specified above. If archive access is missing, request that exact archive; do not treat missing access as missing curriculum. Convert/render legacy DOC privately if necessary. Record tool/method and reproducible locators. Do not substitute a different document based on filename or size.
+- backend/src/db/ss1/compiler.ts
+- docs/ss1/work/microtasks/english/ENG-WK-T1-W01.md
+Read the subject QUEUE_BUILD.md and relevant task notes where available. They are historical evidence; latest QUEUE.json and this assignment govern current scope. Reuse completed reviews; inspect originals only as needed for this exact task.
 
 ALLOWED WRITE PATHS
 - backend/src/db/ss1/subjects/english.json
 - docs/ss1/work/microtasks/english/QUEUE.json
-- docs/ss1/work/microtasks/english/ENG-WK-T1-W02.md
-No shared schema/compiler/importer, other subject, UI or JSS3 changes. The task note path above is explicitly authorised even if not previously present in the queue.
+- docs/ss1/work/microtasks/english/ENG-LES-W01-NOUNS.md
+The task note is explicitly authorised even if absent from the original item's list. No other subject, shared schema/compiler/importer, UI or JSS3 changes. Do not overwrite an existing package; preserve unrelated entries and stable IDs. If a required representation is unsupported, record the exact foundation dependency rather than adding unknown fields.
 
-IMPLEMENTATION RULES
-- Registration creates/adds only this source and justified metadata under master's schema; package stays PENDING. Do not fabricate header text or alias approval. A real subject/header mismatch becomes a precise open item, not silent reassignment.
-- Indexing records exact objectives, evidence and existing lesson associations for this item only. Add small PENDING follow-up tasks for genuine uncovered objectives; do not invent coverage or write the follow-up lessons now.
-- Header/preamble checks inspect only their stated scope; do not expand into a whole-subject audit.
-- Preserve original source wording, stable identities and other workers' changes. Correct teaching through separately tracked replacements, not silent source edits.
-- Source rules or coverage requiring unavailable exact parser identities must remain explicitly unresolved; never guess a hash or claim runtime validation. Parsing/importer execution is deferred in this stage.
-- Use the strict schema's supported fields. If required structure is unsupported, record the precise foundation dependency rather than changing the schema.
-- Do not assert approval, certification or successful verification. Keep genuinely unresolved items open.
+IMPLEMENT
+- For source registration, add ONLY this source to the existing package with its exact header, manifest identity and evidence. Inspect the document; never infer the subject solely from its filename. Keep package PENDING. Record genuine ambiguity; never fabricate alias approval or release existing holds.
+- For indexing, implement objective-level coverage using exact evidence and existing identities. Add separate small pending tasks for demonstrated gaps; do not author those follow-ups in this run.
+- For lesson authoring, implement teaching, examples, objectives, original practice, answers, marking breakdown, exact body hash and provenance under the existing contract. Marks must sum correctly. Content approval remains PENDING; implementation may be IMPLEMENTED; verification remains DEFERRED with no invented references. Citations do not by themselves grant copying rights.
+- For header verification, inspect only the assigned heading and update exact evidence where required; do not audit the whole term.
+- Existing source rows remain unchanged. Do not guess parser-generated hashes or activate whole-row corrections whose complete teaching scope is unresolved.
+- Pure source extraction/rendering is allowed. No tests, typechecks, importer/plan runs, database operations, device checks, deployment or production import. Check hashes, JSON syntax, references and diff only. Testing deferred by owner.
 - Do not commit original documents, full extracts, private renders or credentials.
 
 FINISH
-Update this item's status only when its implementation completion condition is met; recompute queue counts and next_runnable from actual satisfied dependencies. Retain completed evidence and add a short note at docs/ss1/work/microtasks/english/ENG-WK-T1-W02.md with input hashes, edits, remaining dependencies and starting SHA. Do not edit shared NEXT_ASSIGNMENTS.md or other subjects' prompts.
-
-CHECKS
-Only hashes, JSON syntax, reference consistency and diff inspection. No tests, typechecks, importer runs, database, device checks or deployment. Testing deferred by owner.
+Update this queue item honestly; record unresolved dependencies rather than declaring the subject complete. Recompute counts and next_runnable. Write a short task note with source hash, method/locators, changes and remaining work. Do not edit other subjects or shared NEXT_ASSIGNMENTS.md.
 
 DELIVERY
-Commit and push a unique subject/item branch; open a PR to master with ENG-WK-T1-W02 in its title. Do not merge. If push access is unavailable, provide a downloadable binary-capable patch with its exact base SHA; do not request a token in chat.
-Report completion or precise blocker, files changed, commit/PR or patch, and the next eligible item. Stop after this ONE task.
+Commit and push a unique subject/item branch; open a PR to master with ENG-LES-W01-NOUNS in its title. Do not merge. If push access is unavailable, supply a downloadable binary-capable patch with its exact base SHA. Do not request a token in chat.
+Report completion or precise blocker, files changed, commit/PR or patch, next eligible item and "Testing deferred by owner." Stop after this ONE item.
 ```

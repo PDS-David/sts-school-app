@@ -1,0 +1,53 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "yoruba",
+  "canonical_subject": "Yoruba",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-48b641249e3b",
+      "sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef",
+      "archive_member": "SSS 1/1st Term SS1_/YORUBA.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Yoruba",
+      "header_text": "ODUN IGBEKO YORUBA-SS 1",
+      "header_evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T1.md; mammoth 1.12.2 raw text line 3 / first non-empty body paragraph",
+        "explanation": "Original DOCX heading names YORUBA and SS 1; heading occurs exactly once. XML confirms original spelling. No tone-marked Latin letters or combining marks exist in the body text; extraction did not remove those marks. No Unicode normalization applied."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-48b641249e3b-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "source_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef",
+      "anchor": "ODUN IGBEKO YORUBA-SS 1",
+      "observed_subject": "ODUN IGBEKO YORUBA-SS 1",
+      "canonical_subject": "Yoruba",
+      "approval_reference": "Assigned-subject mapping supported by the original heading and recorded in docs/ss1/work/microtasks/yoruba/YO-SRC-T1.md; not teacher approval of lesson content.",
+      "evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T1.md; mammoth 1.12.2 raw text line 3 / first non-empty body paragraph",
+        "explanation": "Original DOCX heading names YORUBA and SS 1; heading occurs exactly once. XML confirms original spelling. No tone-marked Latin letters or combining marks exist in the body text; extraction did not remove those marks. No Unicode normalization applied."
+      }
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "YORUBA-OBJECTIVE-INDEXING",
+      "kind": "CONTENT",
+      "detail": "Only First-Term source registration is implemented. Source-week inventory and objective coverage are not complete.",
+      "required_action": "Complete YO-INV-T1, then its bounded indexing tasks. Register remaining assigned sources separately and extend this item's affected_ids.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
