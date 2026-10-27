@@ -1,0 +1,1486 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "further-mathematics",
+  "canonical_subject": "Further Mathematics",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "archive_member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Further Mathematics",
+      "header_text": "SUBJECT:  FURTHER MATHEMATICS\t\t\t\t                          CLASS:  SS1",
+      "header_evidence": {
+        "locator": "line 2 \"SUBJECT: ... CLASS: SS1\"",
+        "explanation": "Subject line reads FURTHER MATHEMATICS, class SS1; scheme lists indices, logarithms, sets, binary operations, surds, statistics."
+      }
+    },
+    {
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "header_text": "SUBJECT: FURTHER MATHEMATICS",
+      "header_evidence": {
+        "locator": "line 2 \"SUBJECT: FURTHER MATHEMATICS\"",
+        "explanation": "Subject line reads FURTHER MATHEMATICS, class SS1, second term; scheme lists AP/GP, inequalities, functions, trigonometry, logic."
+      }
+    },
+    {
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "header_text": "New Further Mathematics project 1, by Adigun et al. Page 178",
+      "header_evidence": {
+        "locator": "first reference-material line (the document has no title or subject line)",
+        "explanation": "No heading names subject, class or term. The only in-document subject evidence is the cited textbook title \"New Further Mathematics project 1\"; the filename and folder give subject and term."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "RULE-FM-T1-ALIAS",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "anchor": "SUBJECT:  FURTHER MATHEMATICS\t\t\t\t                          CLASS:  SS1",
+      "observed_subject": "SUBJECT:  FURTHER MATHEMATICS\t\t\t\t                          CLASS:  SS1",
+      "canonical_subject": "Further Mathematics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "evidence": {
+        "locator": "SUBJECT line",
+        "explanation": "Heading is a full SUBJECT/CLASS line."
+      }
+    },
+    {
+      "id": "RULE-FM-T2-ALIAS",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "source_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "anchor": "SUBJECT: FURTHER MATHEMATICS",
+      "observed_subject": "SUBJECT: FURTHER MATHEMATICS",
+      "canonical_subject": "Further Mathematics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "evidence": {
+        "locator": "SUBJECT line",
+        "explanation": "Heading is a SUBJECT line with trailing tabs."
+      }
+    },
+    {
+      "id": "RULE-FM-T3-ALIAS",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "anchor": "New Further Mathematics project 1, by Adigun et al. Page 178",
+      "observed_subject": "New Further Mathematics project 1, by Adigun et al. Page 178",
+      "canonical_subject": "Further Mathematics",
+      "approval_reference": "PENDING-OWNER: no subject heading exists; subject inferred from cited textbook title, filename and content (flowcharts, gradients, vectors); owner confirmation not recorded",
+      "evidence": {
+        "locator": "first reference line",
+        "explanation": "Source has no subject heading; this textbook title is the only in-document evidence."
+      }
+    },
+    {
+      "id": "RULE-FM-T1-W06-REVISION",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "anchor": "First Half  Term Revision Questions",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "row 6 (WEEK SIX)",
+        "explanation": "First-half-term revision questions; body retained."
+      }
+    },
+    {
+      "id": "RULE-FM-T2-W06-REVISION",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "source_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "anchor": "Revision of half term work",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "row 5 (WEEK  SIX)",
+        "explanation": "Half-term revision row; body retained."
+      }
+    },
+    {
+      "id": "RULE-FM-T1-SCHEME-EXAM",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "anchor": "11\tRevision\n\t\n12\tExamination\t",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "scheme lines 11-12",
+        "explanation": "Revision and examination weeks listed in the scheme only."
+      }
+    },
+    {
+      "id": "RULE-FM-T2-SCHEME-EXAM",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "source_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "anchor": "Revision of Second Term’s lesson\n\n12\n\nExamination",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "scheme lines 11-12",
+        "explanation": "Revision and examination weeks listed in the scheme only."
+      }
+    }
+  ],
+  "lessons": [
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Further Mathematics",
+      "title": "Flowcharts: symbols, algorithms and trace tables",
+      "objectives": [
+        "Name and use the standard flowchart symbols",
+        "Draw a flowchart for a calculation and for a decision",
+        "Trace a flowchart with sample values"
+      ],
+      "body": "FLOWCHARTS\n\nWhat you will learn: what a flowchart is, the standard symbols, how to draw a flowchart for a calculation or a decision, and how to check it with a trace table.\n\n1. Meaning\nA flowchart is a diagram that shows, step by step, how a problem is solved. Each step is placed in a shape and arrows show the order. Flowcharts help us plan an algorithm (a finite list of clear steps) before writing a computer program, make a solution easy to read, and make mistakes easier to find.\n\n2. Standard symbols\n- Oval (terminator): START or STOP. Every flowchart has one START and at least one STOP.\n- Parallelogram: INPUT or OUTPUT (for example, \"Input l, b\" or \"Output P\").\n- Rectangle: a PROCESS, such as a calculation \"P = 2(l + b)\".\n- Diamond: a DECISION with a yes/no question; one arrow leaves for \"Yes\" and one for \"No\".\n- Arrows: show the direction of flow, normally top to bottom.\n\n3. Worked example 1 (the perimeter of a rectangle)\nThe perimeter of a rectangle of length l and breadth b is P = 2(l + b). The flowchart (see the figure) is:\nSTART -> Input l, b -> P = 2(l + b) -> Output P -> STOP.\nTrace with l = 8 and b = 3: P = 2(8 + 3) = 22.\n\n4. Worked example 2 (a decision)\nDecide whether a whole number n is even. START -> Input n -> Diamond \"Is the remainder of n / 2 equal to 0?\" -> Yes: Output \"even\" -> STOP; No: Output \"odd\" -> STOP.\nTrace with n = 7: the remainder is 1, not 0, so the answer is \"odd\".\n\n5. Worked example 3 (a loop and a trace table)\nAlgorithm: set N = 1 and S = 0. Repeat: S = S + N, then N = N + 1, until N is greater than 4. Output S.\nTrace table:\nN before | S after adding | N after\n1 | 1 | 2\n2 | 3 | 3\n3 | 6 | 4\n4 | 10 | 5\nNow N = 5 > 4, so stop and output S = 10 (which is 1 + 2 + 3 + 4).\n\nGood practice: label every decision arrow Yes/No, give every symbol one clear instruction, and test the chart with sample numbers.\n",
+      "body_sha256": "5511cd2e24491fbddde94422f9b32816ed8c384fa43a0bc335ac5f160c90f64f",
+      "practice": [
+        {
+          "id": "FM3W2-Q1",
+          "question": "Draw a flowchart that finds the area A of a triangle from its base b and height h, and trace it for b = 10 and h = 6.",
+          "answer": "START -> Input b, h -> A = (1/2) x b x h -> Output A -> STOP. Trace: A = 0.5 x 10 x 6 = 30.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Oval START and STOP used",
+              "marks": 1
+            },
+            {
+              "criterion": "Parallelogram for input and for output",
+              "marks": 1
+            },
+            {
+              "criterion": "Rectangle with the formula A = ½bh",
+              "marks": 1
+            },
+            {
+              "criterion": "Arrows in correct order",
+              "marks": 1
+            },
+            {
+              "criterion": "Trace gives 30",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W2-Q2",
+          "question": "Draw a flowchart to input a mark m and output \"PASS\" if m is 50 or more and \"FAIL\" otherwise.",
+          "answer": "START -> Input m -> Diamond \"Is m >= 50?\" -> Yes: Output PASS -> STOP; No: Output FAIL -> STOP.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Input m shown in a parallelogram",
+              "marks": 1
+            },
+            {
+              "criterion": "Decision diamond with the condition m >= 50",
+              "marks": 2
+            },
+            {
+              "criterion": "Yes and No branches labelled",
+              "marks": 1
+            },
+            {
+              "criterion": "Both outputs reach STOP",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W2-Q3",
+          "question": "Trace the algorithm: set N = 1, S = 0; repeat S = S + N, N = N + 1 until N > 5; output S. Give the final output.",
+          "answer": "S = 1 + 2 + 3 + 4 + 5 = 15.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Trace table with N and S columns",
+              "marks": 1
+            },
+            {
+              "criterion": "Stops when N = 6",
+              "marks": 1
+            },
+            {
+              "criterion": "Output 15",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-c7a7523bdb0d (SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx)",
+          "locator": "Week 2; row 0 (the source gives the example but no flowchart figure and no solution)",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Further Mathematics",
+      "title": "Gradients of straight lines and curves; equation of a line",
+      "objectives": [
+        "Calculate the gradient of a line from two points or its equation",
+        "Sketch a line from its intercepts and recognise lines parallel to the axes",
+        "Write the equation of a line given a point and gradient or two points",
+        "Estimate the gradient of a curve using a tangent"
+      ],
+      "body": "GRADIENTS OF STRAIGHT LINES AND CURVES\n\nWhat you will learn: how to find the gradient of a line from two points or from its equation, sketch a line from its intercepts, handle lines parallel to the axes, find the equation of a line, and estimate the gradient of a curve from a tangent.\n\n1. Gradient of a straight line\nThe gradient m measures how much y changes for each unit increase in x. For points (x1, y1) and (x2, y2):\nm = (y2 - y1) / (x2 - x1).\nExample 1. P(7, -2) and Q(-1, 2): m = (2 - (-2)) / (-1 - 7) = 4 / (-8) = -1/2.\n\n2. Gradient and intercept from an equation\nWrite the equation as y = mx + c; then m is the gradient and c is the y-intercept.\nExample 2. 7x + 4y - 8 = 0: 4y = -7x + 8, so y = -(7/4)x + 2. Gradient -7/4, y-intercept 2.\nExample 3. y = 3x - 2: gradient 3, intercept -2. 2x + 3y = 6: y = -(2/3)x + 2, gradient -2/3, intercept 2.\n\n3. Sketching with intercepts\nExample 4. Sketch 4x - 3y = 12. Put x = 0: -3y = 12, y = -4, so (0, -4). Put y = 0: 4x = 12, x = 3, so (3, 0). Join the points. Gradient = (0 - (-4)) / (3 - 0) = 4/3.\n\n4. Lines parallel to the axes\nA horizontal line has gradient 0 and equation y = c (for example y = 5 or y = -3); the x-axis is y = 0. A vertical line has an undefined gradient and equation x = a (for example x = 2 or x = -4); the y-axis is x = 0.\n\n5. Equation of a line\nGradient and one point: y - y1 = m(x - x1).\nExample 5. Gradient -1/3 through (-3, 2): y - 2 = -(1/3)(x + 3); 3y - 6 = -x - 3; x + 3y = 3.\nTwo points: (y - y1)/(y2 - y1) = (x - x1)/(x2 - x1).\nExample 6. Through (1, 4) and (-2, 6): (y - 4)/(6 - 4) = (x - 1)/(-2 - 1); -3(y - 4) = 2(x - 1); -3y + 12 = 2x - 2; 2x + 3y = 14. Check (1, 4): 2 + 12 = 14.\n\n6. Gradient of a curve\nThe gradient of a curve at a point is the gradient of the tangent (the straight line that just touches the curve there). Draw the curve accurately, draw the tangent with a ruler, then read the rise and run.\nExample 7. y = x²/4 for x = -2 to 3. Table: x = -2, -1, 0, 1, 2, 3 gives y = 1, 1/4, 0, 1/4, 1, 9/4.\nAt x = 3 the tangent rises 2.25 over a run of 1.5: gradient 2.25 / 1.5 = 1.5.\nAt x = -2 the tangent falls 1 over a run of 1: gradient -1.\n(Check: for y = x²/4 the gradient at x is x/2, giving 1.5 and -1.)\n",
+      "body_sha256": "acefbf08971d907e9804899346e7ce9ede876aac655ce24dbcf35b4cb77ece0b",
+      "practice": [
+        {
+          "id": "FM3W3-Q1",
+          "question": "Find the gradient of the line through (2, 5) and (-4, -7). Then find its equation.",
+          "answer": "m = (-7 - 5)/(-4 - 2) = -12/-6 = 2. y - 5 = 2(x - 2), so y = 2x + 1.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Gradient formula with correct substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "m = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Equation y = 2x + 1",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "FM3W3-Q2",
+          "question": "Find the gradient and y-intercept of 3x - 5y = 20, and the points where it meets the axes.",
+          "answer": "5y = 3x - 20, y = (3/5)x - 4: gradient 3/5, y-intercept -4. x-axis: y = 0 gives x = 20/3.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Rearranges to y = mx + c",
+              "marks": 1
+            },
+            {
+              "criterion": "Gradient 3/5",
+              "marks": 1
+            },
+            {
+              "criterion": "Intercept -4",
+              "marks": 1
+            },
+            {
+              "criterion": "x-intercept 20/3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W3-Q3",
+          "question": "Find the equation of the line through (4, 1) and (-2, 7).",
+          "answer": "m = (7 - 1)/(-2 - 4) = -1; y - 1 = -(x - 4); y = -x + 5, i.e. x + y = 5.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Gradient -1",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct substitution in a line formula",
+              "marks": 1
+            },
+            {
+              "criterion": "x + y = 5",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W3-Q4",
+          "question": "For y = x²/4 complete the table for x = -4, -2, 0, 2, 4 and state the gradient of the curve at x = 2 using the rule gradient = x/2.",
+          "answer": "y = 4, 1, 0, 1, 4. Gradient at x = 2 is 1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct table values",
+              "marks": 2
+            },
+            {
+              "criterion": "Gradient 1 at x = 2",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-c7a7523bdb0d (SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx)",
+          "locator": "Week 3; row 1; delivered text omits equation content",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Further Mathematics",
+      "title": "Angle of slope; parallel and perpendicular lines",
+      "objectives": [
+        "Find the angle of slope of a line from its gradient",
+        "Test whether two lines are parallel or perpendicular using gradients",
+        "Write the equation of a line from a gradient and a point"
+      ],
+      "body": "ANGLE OF SLOPE, PARALLEL AND PERPENDICULAR LINES\n\nWhat you will learn: the angle a line makes with the x-axis, the tests for parallel and perpendicular lines, and the equation of a line through a point with a given gradient.\n\n1. Angle of slope\nIf a line makes angle θ with the positive x-axis, its gradient is m = tan θ.\nExample 1. Find the gradient of the line joining (3, 2) and (7, 10) and its angle of slope. m = (10 - 2)/(7 - 3) = 8/4 = 2. tan θ = 2, so θ = 63.43°.\n\n2. Parallel lines\nParallel lines have equal gradients (m1 = m2).\nExample 2. A(3, 1), B(4, 3), P(4, 6), Q(5, 8): m(AB) = (3 - 1)/(4 - 3) = 2 and m(PQ) = (8 - 6)/(5 - 4) = 2. Equal, so AB is parallel to PQ.\nExample 3. A(-1, -2), B(2, -3), P(5, 4), Q(6, 7): m(AB) = (-3 + 2)/(2 + 1) = -1/3 and m(PQ) = (7 - 4)/(6 - 5) = 3. Not equal, so AB is not parallel to PQ.\n\n3. Perpendicular lines\nTwo lines (neither vertical nor horizontal) are perpendicular when m1 x m2 = -1, that is m2 = -1/m1.\nExample 4. Are AB and PQ perpendicular for A(5, -1), B(3, 2), P(2, 4), Q(5, 6)? m(AB) = (2 + 1)/(3 - 5) = -3/2. m(PQ) = (6 - 4)/(5 - 2) = 2/3. Product = (-3/2)(2/3) = -1, so the lines are perpendicular.\nExample 5. The lines in Example 3 have gradients -1/3 and 3. Product = -1, so AB is perpendicular to PQ (not parallel).\n\n4. Gradient and one point\nExample 6. A line of gradient 2 passes through (3, -2). y - (-2) = 2(x - 3), so y + 2 = 2x - 6 and y = 2x - 8.\n\nCommon mistakes: using a perpendicular test when asked about parallel lines (and the reverse); dividing in the wrong order in the gradient formula; writing y - (-2) as y - 2.\n",
+      "body_sha256": "c3972c936d5b3121b43a65ac864cd1ce6fe397760fbe08c6bfb2fa70b51748d6",
+      "practice": [
+        {
+          "id": "FM3W4-Q1",
+          "question": "Find the gradient and angle of slope of the line through (1, 3) and (5, 11).",
+          "answer": "m = 8/4 = 2; θ = 63.43° (to 2 d.p.)",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Gradient formula",
+              "marks": 1
+            },
+            {
+              "criterion": "m = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "θ = arctan 2 = 63.43°",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W4-Q2",
+          "question": "Show that the line through A(0, 1) and B(4, 9) is parallel to the line through P(1, 0) and Q(3, 4).",
+          "answer": "m(AB) = 8/4 = 2; m(PQ) = 4/2 = 2; equal gradients, so parallel.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "m(AB) = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "m(PQ) = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Conclusion from equal gradients",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W4-Q3",
+          "question": "Show that the line through (2, 3) and (6, 1) is perpendicular to the line through (0, 0) and (1, 2).",
+          "answer": "m1 = (1 - 3)/(6 - 2) = -1/2; m2 = 2; m1 x m2 = -1, so perpendicular.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "m1 = -1/2",
+              "marks": 1
+            },
+            {
+              "criterion": "m2 = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Product -1 and conclusion",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W4-Q4",
+          "question": "Find the equation of the line of gradient -3 through (2, 5).",
+          "answer": "y - 5 = -3(x - 2); y = -3x + 11.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct formula and substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "y = -3x + 11",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-c7a7523bdb0d (SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx)",
+          "locator": "Week 4; row 2; the source heads its perpendicular example with the word \"parallel\"",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Further Mathematics",
+      "title": "Vectors: magnitude, special vectors and unit vectors",
+      "objectives": [
+        "Calculate the magnitude of a vector in two or three dimensions",
+        "Distinguish zero, negative and equal vectors",
+        "Find the unit vector in the direction of a given vector"
+      ],
+      "body": "VECTORS: MAGNITUDE, UNIT VECTORS AND SPECIAL VECTORS\n\nWhat you will learn: the magnitude (modulus) of a vector, zero, negative and equal vectors, and unit vectors.\n\n1. Notation\nA vector in two dimensions is written ai + bj, where i and j are unit vectors along the x and y axes. In three dimensions ai + bj + ck is used.\n\n2. Magnitude (modulus)\nThe magnitude of r = ai + bj is |r| = √(a² + b²). In three dimensions |r| = √(a² + b² + c²). Square each component first, including the sign, then add.\nExample 1. |3i + 4j| = √(3² + 4²) = √25 = 5.\nExample 2. |-2i - 5j| = √((-2)² + (-5)²) = √(4 + 25) = √29. (Writing -2² would mean -4 and is wrong; brackets are needed.)\nExample 3. |i sin θ - j cos θ| = √(sin²θ + cos²θ) = √1 = 1.\n\n3. Special vectors\n- Zero vector: magnitude 0.\n- Negative vector: -a has the same magnitude as a and opposite direction.\n- Equal vectors: same magnitude and same direction (same components).\n\n4. Unit vectors\nA unit vector has magnitude 1. The unit vector in the direction of r is r̂ = r / |r|, so r = |r| r̂.\nExample 4. r = 2i + 3j: |r| = √13, r̂ = (2i + 3j)/√13.\nExample 5. q = 4i - 5j: |q| = √41, q̂ = (4i - 5j)/√41.\nExample 6. p = 7i + 2j - 3k: |p| = √(49 + 4 + 9) = √62, p̂ = (7i + 2j - 3k)/√62.\nExample 7. t = 3i - 5j - 3k: |t| = √(9 + 25 + 9) = √43, t̂ = (3i - 5j - 3k)/√43.\n",
+      "body_sha256": "d7a2fd501d1252d91c58055b4d7a7b87fba182b21e57bd398e72f5ff6813ffe4",
+      "practice": [
+        {
+          "id": "FM3W5-Q1",
+          "question": "Find the magnitude of (a) 5i - 12j (b) -6i - 8j (c) 2i - 3j + 6k.",
+          "answer": "(a) √(25 + 144) = 13 (b) √(36 + 64) = 10 (c) √(4 + 9 + 36) = 7",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "(a) 13",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) 10 with squares of negative components positive",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) 7",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W5-Q2",
+          "question": "Find the unit vector in the direction of 6i + 8j and verify that it has magnitude 1.",
+          "answer": "|6i + 8j| = 10, unit vector 0.6i + 0.8j; magnitude √(0.36 + 0.64) = 1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Magnitude 10",
+              "marks": 1
+            },
+            {
+              "criterion": "Unit vector 0.6i + 0.8j",
+              "marks": 1
+            },
+            {
+              "criterion": "Verification",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W5-Q3",
+          "question": "Explain why |-2i - 5j| is not √(-2² - 5²).",
+          "answer": "Because (-2)² = +4 and (-5)² = +25, so |-2i - 5j| = √(4 + 25) = √29. Writing -2² means -(2²) = -4, which gives a negative number under the root.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States each component is squared with its sign inside brackets",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives √29",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-c7a7523bdb0d (SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx)",
+          "locator": "Week 5; row 3; source writes |-2i-5j| as √(-2²-5²)",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Further Mathematics",
+      "title": "Vector operations and direction cosines",
+      "objectives": [
+        "Add, subtract and scale vectors given in component form",
+        "Find the vector between two points in terms of given vectors",
+        "Calculate direction cosines and verify them"
+      ],
+      "body": "VECTORS: DIRECTION COSINES AND OPERATIONS\n\nWhat you will learn: how to add, subtract and multiply vectors by numbers, and how to find a magnitude and direction cosines.\n\n1. Operations on components\nAdd or subtract matching components; multiplying by a number multiplies every component.\nExample 1. p = 2i - 3j, q = 3i + 5j, r = i + j.\n(a) 2p + q + 3r = (4i - 6j) + (3i + 5j) + (3i + 3j) = 10i + 2j.\n(b) 3p - 2q: 3p = 6i - 9j and 2q = 6i + 10j, so 3p - 2q = (6i - 9j) - (6i + 10j) = 0i - 19j = -19j.\n(The multiplier applies to p = 2i - 3j, so 3p = 6i - 9j, not 9i - 9j.)\n\n2. Vector between two points\nIf OC = a - b and OD = 2a + 3b, then CD = OD - OC = (2a + 3b) - (a - b) = a + 4b.\nExample 2. With a = 2i + 3j and b = 3i - 2j: CD = (2i + 3j) + 4(3i - 2j) = 14i - 5j.\n\n3. Direction cosines\nIf r = ai + bj has magnitude |r|, its direction cosines are cos α = a/|r| and cos β = b/|r|, where α and β are the angles r makes with the x- and y-axes. They satisfy cos²α + cos²β = 1.\nExample 3. r1 = 7i + 3j and r2 = 2i - 5j.\nr1 + r2 = 9i - 2j. |r1 + r2| = √(81 + 4) = √85. Direction cosines 9/√85 and -2/√85.\nr2 - r1 = -5i - 8j. |r2 - r1| = √(25 + 64) = √89. Direction cosines -5/√89 and -8/√89.\n",
+      "body_sha256": "75b626ed82c9d0fd91a2363beb451890317694a294c8ea7fd69d179c28c02dff",
+      "practice": [
+        {
+          "id": "FM3W6-Q1",
+          "question": "Given p = 2i - 3j and q = 3i + 5j, find 4p - q and |4p - q|.",
+          "answer": "4p = 8i - 12j; 4p - q = 5i - 17j; |4p - q| = √(25 + 289) = √314 ≈ 17.72.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "4p correct",
+              "marks": 1
+            },
+            {
+              "criterion": "4p - q = 5i - 17j",
+              "marks": 1
+            },
+            {
+              "criterion": "Magnitude √314",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W6-Q2",
+          "question": "If OC = a - b and OD = 2a + 3b with a = i + 2j and b = 2i - j, find CD.",
+          "answer": "CD = a + 4b = (i + 2j) + 4(2i - j) = 9i - 2j.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "CD = OD - OC",
+              "marks": 1
+            },
+            {
+              "criterion": "CD = a + 4b",
+              "marks": 1
+            },
+            {
+              "criterion": "9i - 2j",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W6-Q3",
+          "question": "Find the magnitude and direction cosines of 3i - 4j, and check that the squares of the direction cosines add to 1.",
+          "answer": "|r| = 5; cos α = 3/5, cos β = -4/5; 9/25 + 16/25 = 1.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Magnitude 5",
+              "marks": 1
+            },
+            {
+              "criterion": "Both direction cosines",
+              "marks": 1
+            },
+            {
+              "criterion": "Check sum 1",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-c7a7523bdb0d (SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx)",
+          "locator": "Week 6; row 4; the source repeats Week 5 and computes 3p as 9i - 9j, giving a wrong 3p - 2q",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Further Mathematics",
+      "title": "Angle between two lines and forms of the equation of a line",
+      "objectives": [
+        "Calculate the acute angle between two lines from their gradients",
+        "Write the equation of a line in gradient-intercept, gradient-point and two-point form",
+        "Recognise when the two-point form cannot be used (vertical line)"
+      ],
+      "body": "ANGLE BETWEEN TWO LINES AND FORMS OF THE EQUATION OF A LINE\n\nWhat you will learn: the acute angle between two lines, the gradient-intercept, gradient-point and two-point forms, and what happens with a vertical line.\n\n1. Acute angle between two lines\nFor lines with gradients m1 and m2 the acute angle α satisfies tan α = |(m2 - m1)/(1 + m1m2)|, provided 1 + m1m2 is not 0 (if it is 0 the lines are perpendicular).\nExample 1. Find the acute angle between x + 4y = 12 and y - 2x + 6 = 0. The gradients are -1/4 and 2. tan α = |(2 - (-1/4))/(1 + (-1/4)(2))| = |2.25/0.5| = 4.5, so α = 77.47°.\n\n2. Gradient-intercept form\ny = mx + c. Example 2. Gradient -2 and y-intercept 3 give y = -2x + 3.\n\n3. Gradient-point form\ny - y1 = m(x - x1). Example 3. Gradient -3/2 through (1, 4): y - 4 = -(3/2)(x - 1), so 2y - 8 = -3x + 3 and 3x + 2y = 11, that is y = -(3/2)x + 11/2. The y-intercept is 5½.\n\n4. Two-point form\n(y - y1)/(y2 - y1) = (x - x1)/(x2 - x1), valid when x1 is not equal to x2.\nExample 4. Through (1, -1) and (-2, -13): (y + 1)/(-13 + 1) = (x - 1)/(-2 - 1), so (y + 1)/(-12) = (x - 1)/(-3), y + 1 = 4(x - 1), y = 4x - 5.\nVertical line: if x1 = x2 the denominator x2 - x1 is zero, so the formula cannot be used. The line is x = x1. Example 5. Through (-2, -3) and (-2, -13): x = -2 (gradient undefined).\n",
+      "body_sha256": "92163f67f88ed985e1da8fd97d9e65057d76a798d42c1fa516ec8a932b19d63e",
+      "practice": [
+        {
+          "id": "FM3W8-Q1",
+          "question": "Find the acute angle between the lines 2y = 3x - 8 and 5y = x + 7.",
+          "answer": "Gradients 3/2 and 1/5. tan α = |(1/5 - 3/2)/(1 + 3/10)| = |(-13/10)/(13/10)| = 1, so α = 45°.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Both gradients",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct substitution in tan α formula",
+              "marks": 1
+            },
+            {
+              "criterion": "tan α = 1",
+              "marks": 1
+            },
+            {
+              "criterion": "α = 45°",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q2",
+          "question": "Find the acute angle between the lines 2y = -5x + 8 and y = 3x - 7.",
+          "answer": "Gradients -5/2 and 3. tan α = |(3 + 5/2)/(1 - 15/2)| = |5.5/(-6.5)| = 11/13, so α = 40.24° (2 d.p.).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Both gradients",
+              "marks": 1
+            },
+            {
+              "criterion": "tan α = 11/13",
+              "marks": 2
+            },
+            {
+              "criterion": "α = 40.24°",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q3",
+          "question": "Find the equation of the line through (-1, 2) and (3, 0).",
+          "answer": "m = (0 - 2)/(3 + 1) = -1/2; y - 2 = -(1/2)(x + 1); y = -x/2 + 3/2, i.e. x + 2y = 3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Gradient -1/2",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct substitution",
+              "marks": 1
+            },
+            {
+              "criterion": "x + 2y = 3",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q4",
+          "question": "Find the equation of the line through (4, 7) and (4, -1), and explain why the two-point formula fails.",
+          "answer": "The x-coordinates are equal, so x2 - x1 = 0 and the formula divides by zero. The line is vertical: x = 4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Notes x1 = x2",
+              "marks": 1
+            },
+            {
+              "criterion": "States division by zero / undefined gradient",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "FM3W8-Q5",
+          "question": "Write the equation of the line with gradient 13/4 and y-intercept -6.",
+          "answer": "y = (13/4)x - 6.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "y = mx + c form with correct m and c",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-c7a7523bdb0d (SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx)",
+          "locator": "Week 8; row 5",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
+  "delivery_corrections": [
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "source_lesson_id": "SS1-SRC-c7a7523bdb0d:BODY:a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273",
+      "body_sha256": "a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+      "reason": "Source gives no flowchart (only a prompt and a list of advantages) and no solution.",
+      "evidence": {
+        "locator": "Further Mathematics 3rd term; parsed row 0 (\"A flowchart is a diagrammatical representation of a solution\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "source_lesson_id": "SS1-SRC-c7a7523bdb0d:BODY:891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35",
+      "body_sha256": "891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+      "reason": "Delivered text omits equation content (299/167 characters) and gradient examples use ambiguous notation; lesson rewritten with equations intact.",
+      "evidence": {
+        "locator": "Further Mathematics 3rd term; parsed row 1 (\"Gradients of straight lines and curves\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "source_lesson_id": "SS1-SRC-c7a7523bdb0d:BODY:ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3",
+      "body_sha256": "ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+      "reason": "Source heads its perpendicularity example with the word \"parallel\" and loses equation content in delivery.",
+      "evidence": {
+        "locator": "Further Mathematics 3rd term; parsed row 2 (\"Straight line\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "source_lesson_id": "SS1-SRC-c7a7523bdb0d:BODY:0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8",
+      "body_sha256": "0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+      "reason": "Source writes |-2i-5j| as √(-2²-5²) and loses equation content in delivery.",
+      "evidence": {
+        "locator": "Further Mathematics 3rd term; parsed row 3 (\"Vectors\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "source_lesson_id": "SS1-SRC-c7a7523bdb0d:BODY:857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573",
+      "body_sha256": "857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+      "reason": "Source computes 3p as 9i-9j (should be 6i-9j) so 3p-2q = 3i-19j is wrong (correct -19j); the row also repeats Week 5.",
+      "evidence": {
+        "locator": "Further Mathematics 3rd term; parsed row 4 (\"MAGNITUDE OF A VECTOR\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "source_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "source_lesson_id": "SS1-SRC-c7a7523bdb0d:BODY:dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6",
+      "body_sha256": "dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6",
+      "replacement_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+      "reason": "Source gives no solution for the vertical-line case and writes tan α with ambiguous brackets.",
+      "evidence": {
+        "locator": "Further Mathematics 3rd term; parsed row 5 (\"Straight line\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "ASSET-SS1-FM-T3-W02-FLOWCHART-PERIMETER",
+      "lesson_id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+      "path": "backend/src/db/ss1/assets/further-mathematics/fm3-w2-flowchart-perimeter.svg",
+      "sha256": "c90c42d558ea2d20780c3bfc21b5e9ca4dabdc7cf737e7893b8143ff88b73373",
+      "bytes": 1452,
+      "media_type": "image/svg+xml",
+      "alt": "Flowchart for the perimeter of a rectangle: START, input l and b, process P equals 2 times l plus b, output P, STOP, joined by downward arrows.",
+      "order": 0,
+      "source_locator": "Week 2 worked example 'perimeter of a rectangle = 2(l+b)'; the source contains the prompt but no drawn figure",
+      "provenance": {
+        "title": "Flowchart for P = 2(l+b)",
+        "locator": "Week 2 example in SS1-SRC-c7a7523bdb0d",
+        "url": null,
+        "rights": "Deterministic SVG authored for Sow the Seed Schools from the formula stated in the source; contains no third-party artwork. Labelled derivative, not a source image.",
+        "reuse_status": "PERMITTED",
+        "attribution": "Authored for Sow the Seed Schools; owner approval pending."
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "id": "COV-FM-T1-R00",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Indices: laws and application",
+      "objective_locator": "scheme weeks 1-10; parsed row 0 (INDICES)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 0",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R01",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Indicial and exponential equations",
+      "objective_locator": "scheme weeks 1-10; parsed row 1 (INDICIAL AND EXPONENTIAL EQUATIONS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 1",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R02",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Logarithms: laws and application",
+      "objective_locator": "scheme weeks 1-10; parsed row 2 (LOGARITHM - SOLVING PROBLEMS BASED ON LA)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:41bdc1e692fb1e01dd9e240f64747fc4be5f9a84c7cb7f74dab830115dc75fa6"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 2",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R03",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "General review of set theory",
+      "objective_locator": "scheme weeks 1-10; parsed row 3 (REVIEW OF BASIC CONCEPT OF SET)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:24fd3b00dcb0653558b5804dc310fbe82f551a4354a08768b74ab1df4115b0e3"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 3",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R04",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Sets (continued)",
+      "objective_locator": "scheme weeks 1-10; parsed row 4 (SETS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:8a3265214707d49a68d808cdc8b39f45327b35f17151f80855b86a127f691bf2"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 4",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R05",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Operations on sets and Venn diagrams",
+      "objective_locator": "scheme weeks 1-10; parsed row 5 (OPERATION OF SET AND VENN DIAGRAMS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:e96acb2ff59235a40ac1277b6ec320e19a976f1b1edeafb84c9310d5be5f5a6d"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 5",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R06",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "First-half revision questions",
+      "objective_locator": "parsed row 6",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:152d817162eb88a40db7c6cedc7bb763316378fe02a29290fdba3679a057d379"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 6",
+          "explanation": "Revision questions classified by RULE-FM-T1-W06-REVISION; body retained."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R07",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Binary operations: definition, closure, commutative, associative, distributive laws",
+      "objective_locator": "scheme weeks 1-10; parsed row 7 (BINARY OPERATIONS: BASIC CONCEPT OF BINA)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:229e92adc01c9a1fd42b710c33852a8673f38e13e6fd3336487ef201223a91e7"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 7",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R08",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Binary operations: identity and inverse elements; tables",
+      "objective_locator": "scheme weeks 1-10; parsed row 8 (BINARY OPERATIONS: IDENTITY AND INVERSE )",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 8",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R09",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Surds: definition, manipulation, rationalisation",
+      "objective_locator": "scheme weeks 1-10; parsed row 9 (SURDS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 9",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-R10",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Measures of central tendency: mean, median, mode; mode from histogram",
+      "objective_locator": "scheme weeks 1-10; parsed row 10 (STATISTICS: MEASURES OF CENTRAL TENDENCY)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:a4d19b29e5f43b710c993dfae6fc839fda976a93a34ab2ea90cb13e3862f1d2b"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 10",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-EXAM",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Revision and examination weeks; reference list",
+      "objective_locator": "scheme lines 11-12",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-FM-T1-SCHEME-EXAM"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme",
+          "explanation": "Scheme-only lines."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R00",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Arithmetic progression",
+      "objective_locator": "scheme topic 1; parsed row 0 (SEQUENCE & SERIES)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:68308394250a628aac746455a78f33540941edfce409287450901b1a661f572f"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 0",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R01",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Geometric progression",
+      "objective_locator": "scheme topic 2; parsed row 1 (SEQUENCE AND SERIES (II))",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:ca008efbb57ba36fe4e13f491cc27a518ed00614510698b7785736c52d5556e0"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 1",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R02",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Linear inequalities in one variable",
+      "objective_locator": "scheme topic 3; parsed row 2 (LINEAR INEQUALITIES)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:c5f9d0b5b576adea9dd6781f63f618585c8115c59fef4cecf22636d462c49dfc"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 2",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R03",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Inequalities in two variables (graphs)",
+      "objective_locator": "scheme topic 4; parsed row 3 (LINEAR INEQUALITY (PART TWO))",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:cac3192ff08bf834c435da4b2e5c35c4c4d8caf64e8d168d25d36d08203e8a37"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 3",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R04",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Concept of functions",
+      "objective_locator": "scheme topic 5; parsed row 4 (MAPPING AND FUNCTIONS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:f13157ec4e04a3795422bc8f86bfa396551558a7cf364d44354f9cea12e04939"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 4",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R05",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Review of half-term work",
+      "objective_locator": "parsed row 5",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:db5de097b36aa8e4bbab1c53aa57c57b40efef9438a123596b66e4d5e425a84f"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 5",
+          "explanation": "Half-term revision classified by RULE-FM-T2-W06-REVISION; body retained."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R06",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Functions: one-to-one, onto, composite, inverse",
+      "objective_locator": "scheme topic 7; parsed row 6 (Composite Mapping and Inverse Mapping)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:c9158495ed49375d8ad340bc83cbc3f3eef760a4b89985df3e4a5bc8863ecbd6"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 6",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R07",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Trigonometric ratios; graphs; special angles; applications",
+      "objective_locator": "scheme topic 8; parsed row 7 (TRIGONOMETRIC RATIO)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:e86ddcd3f65982c29bb026792fa4d288c75a9f95a204aa89cbcb141c6cc606fe"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 7",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 52); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R08",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Logical reasoning: statements, negation, converse, contrapositive",
+      "objective_locator": "scheme topic 9; parsed row 8 (LOGIC)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:d3d1920311377de95341891a1e20ffd0db191cf66f80abe82e40e245bda49591"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 8",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 0); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-R09",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Compound statements, connectives, conditionals",
+      "objective_locator": "scheme topic 10; parsed row 9 (Logical reasing continues)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-43c5ab51b87f:BODY:6a5fab126bb2321e0385327297cc9ec0e43f4f80f816e1ff7024f99e786d29b4"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 9",
+          "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and delivered text loses superscripts/subscripts (401 superscript and 214 subscript runs in the source; OMML characters lost in this row: 45); no replacement lesson authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-EXAM",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Revision and examination weeks; reference list",
+      "objective_locator": "scheme lines 11-12",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-FM-T2-SCHEME-EXAM"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme",
+          "explanation": "Scheme-only lines."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-R00",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Flowcharts",
+      "objective_locator": "objective taken from the row's own Topic/Content line; parsed row 0 (WEEK 2)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+        "SS1-SRC-c7a7523bdb0d:BODY:a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+          "explanation": "Authored lesson: explanation, recomputed worked examples, practice with full answers and marking. It replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-R01",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Gradients of straight lines and curves; equation of a line",
+      "objective_locator": "objective taken from the row's own Topic/Content line; parsed row 1 (WEEK 3)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+        "SS1-SRC-c7a7523bdb0d:BODY:891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+          "explanation": "Authored lesson: explanation, recomputed worked examples, practice with full answers and marking. It replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-R02",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Angle of slope; parallel and perpendicular lines",
+      "objective_locator": "objective taken from the row's own Topic/Content line; parsed row 2 (WEEK 4)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+        "SS1-SRC-c7a7523bdb0d:BODY:ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+          "explanation": "Authored lesson: explanation, recomputed worked examples, practice with full answers and marking. It replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-R03",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Vectors: modulus and unit vectors",
+      "objective_locator": "objective taken from the row's own Topic/Content line; parsed row 3 (WEEK 5)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+        "SS1-SRC-c7a7523bdb0d:BODY:0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+          "explanation": "Authored lesson: explanation, recomputed worked examples, practice with full answers and marking. It replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-R04",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Vector operations and direction cosines (row repeats much of Week 5)",
+      "objective_locator": "objective taken from the row's own Topic/Content line; parsed row 4 (WEEK 6)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+        "SS1-SRC-c7a7523bdb0d:BODY:857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+          "explanation": "Authored lesson: explanation, recomputed worked examples, practice with full answers and marking. It replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-R05",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Angle between lines; forms of the equation of a line",
+      "objective_locator": "objective taken from the row's own Topic/Content line; parsed row 5 (WEEK 8)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+        "SS1-SRC-c7a7523bdb0d:BODY:dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+          "explanation": "Authored lesson: explanation, recomputed worked examples, practice with full answers and marking. It replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T3-SCHEME",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "objective": "Third-term scheme of work and the weeks not present in the source (1, 7 and 9-12)",
+      "objective_locator": "whole document",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": []
+    }
+  ],
+  "open_items": [
+    {
+      "id": "OI-FM-001",
+      "kind": "OWNER_ACTION",
+      "detail": "The importer reads legacy .doc (1st term, word-extractor) and .docx (2nd/3rd term, mammoth) as plain text. Word equations (3rd term: 129; 2nd term: 51), superscripts (2nd term 401, 3rd term 2) and subscripts (2nd term 214, 3rd term 26) are lost or flattened, and MathType/OLE objects are not read.",
+      "required_action": "SS1-01/SS1-08 owner: decide on an SS1 equation-aware extractor (needs reviewed ID migration) or replacement lessons for every affected row.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+        "SS1-SRC-e9efc9a976ed:BODY:41bdc1e692fb1e01dd9e240f64747fc4be5f9a84c7cb7f74dab830115dc75fa6",
+        "SS1-SRC-e9efc9a976ed:BODY:24fd3b00dcb0653558b5804dc310fbe82f551a4354a08768b74ab1df4115b0e3",
+        "SS1-SRC-e9efc9a976ed:BODY:8a3265214707d49a68d808cdc8b39f45327b35f17151f80855b86a127f691bf2",
+        "SS1-SRC-e9efc9a976ed:BODY:e96acb2ff59235a40ac1277b6ec320e19a976f1b1edeafb84c9310d5be5f5a6d",
+        "SS1-SRC-e9efc9a976ed:BODY:152d817162eb88a40db7c6cedc7bb763316378fe02a29290fdba3679a057d379",
+        "SS1-SRC-e9efc9a976ed:BODY:229e92adc01c9a1fd42b710c33852a8673f38e13e6fd3336487ef201223a91e7",
+        "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5",
+        "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674",
+        "SS1-SRC-e9efc9a976ed:BODY:a4d19b29e5f43b710c993dfae6fc839fda976a93a34ab2ea90cb13e3862f1d2b",
+        "SS1-SRC-43c5ab51b87f:BODY:68308394250a628aac746455a78f33540941edfce409287450901b1a661f572f",
+        "SS1-SRC-43c5ab51b87f:BODY:ca008efbb57ba36fe4e13f491cc27a518ed00614510698b7785736c52d5556e0",
+        "SS1-SRC-43c5ab51b87f:BODY:c5f9d0b5b576adea9dd6781f63f618585c8115c59fef4cecf22636d462c49dfc",
+        "SS1-SRC-43c5ab51b87f:BODY:cac3192ff08bf834c435da4b2e5c35c4c4d8caf64e8d168d25d36d08203e8a37",
+        "SS1-SRC-43c5ab51b87f:BODY:f13157ec4e04a3795422bc8f86bfa396551558a7cf364d44354f9cea12e04939",
+        "SS1-SRC-43c5ab51b87f:BODY:c9158495ed49375d8ad340bc83cbc3f3eef760a4b89985df3e4a5bc8863ecbd6",
+        "SS1-SRC-43c5ab51b87f:BODY:e86ddcd3f65982c29bb026792fa4d288c75a9f95a204aa89cbcb141c6cc606fe",
+        "SS1-SRC-43c5ab51b87f:BODY:d3d1920311377de95341891a1e20ffd0db191cf66f80abe82e40e245bda49591",
+        "SS1-SRC-43c5ab51b87f:BODY:6a5fab126bb2321e0385327297cc9ec0e43f4f80f816e1ff7024f99e786d29b4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-002",
+      "kind": "CONTENT",
+      "detail": "1st-term (11 rows) and 2nd-term (10 rows) bodies have not been reviewed in full in this stage; no replacement lessons exist.",
+      "required_action": "Review each row against its scheme objective, recompute worked examples, and author replacements where defects or lost notation exist.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+        "SS1-SRC-e9efc9a976ed:BODY:41bdc1e692fb1e01dd9e240f64747fc4be5f9a84c7cb7f74dab830115dc75fa6",
+        "SS1-SRC-e9efc9a976ed:BODY:24fd3b00dcb0653558b5804dc310fbe82f551a4354a08768b74ab1df4115b0e3",
+        "SS1-SRC-e9efc9a976ed:BODY:8a3265214707d49a68d808cdc8b39f45327b35f17151f80855b86a127f691bf2",
+        "SS1-SRC-e9efc9a976ed:BODY:e96acb2ff59235a40ac1277b6ec320e19a976f1b1edeafb84c9310d5be5f5a6d",
+        "SS1-SRC-e9efc9a976ed:BODY:229e92adc01c9a1fd42b710c33852a8673f38e13e6fd3336487ef201223a91e7",
+        "SS1-SRC-e9efc9a976ed:BODY:378f63ca6f0d3b21f3690fff939b69c99f36bce29837534fb355d1d9ada17dc5",
+        "SS1-SRC-e9efc9a976ed:BODY:b06abb73acb6868e6d72626fa734efc483a2f249f525a33210cd903af0b1e674",
+        "SS1-SRC-e9efc9a976ed:BODY:a4d19b29e5f43b710c993dfae6fc839fda976a93a34ab2ea90cb13e3862f1d2b",
+        "SS1-SRC-43c5ab51b87f:BODY:68308394250a628aac746455a78f33540941edfce409287450901b1a661f572f",
+        "SS1-SRC-43c5ab51b87f:BODY:ca008efbb57ba36fe4e13f491cc27a518ed00614510698b7785736c52d5556e0",
+        "SS1-SRC-43c5ab51b87f:BODY:c5f9d0b5b576adea9dd6781f63f618585c8115c59fef4cecf22636d462c49dfc",
+        "SS1-SRC-43c5ab51b87f:BODY:cac3192ff08bf834c435da4b2e5c35c4c4d8caf64e8d168d25d36d08203e8a37",
+        "SS1-SRC-43c5ab51b87f:BODY:f13157ec4e04a3795422bc8f86bfa396551558a7cf364d44354f9cea12e04939",
+        "SS1-SRC-43c5ab51b87f:BODY:c9158495ed49375d8ad340bc83cbc3f3eef760a4b89985df3e4a5bc8863ecbd6",
+        "SS1-SRC-43c5ab51b87f:BODY:e86ddcd3f65982c29bb026792fa4d288c75a9f95a204aa89cbcb141c6cc606fe",
+        "SS1-SRC-43c5ab51b87f:BODY:d3d1920311377de95341891a1e20ffd0db191cf66f80abe82e40e245bda49591",
+        "SS1-SRC-43c5ab51b87f:BODY:6a5fab126bb2321e0385327297cc9ec0e43f4f80f816e1ff7024f99e786d29b4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-003",
+      "kind": "CONTENT",
+      "detail": "The 3rd-term source contains no scheme of work and only parsed weeks 2, 3, 4, 5, 6 and 8 (Week 6 repeats Week 5). Weeks 1, 7 and 9-12 are not in the supplied archive. Week 3 refers to figures (graphs of y = 5, y = -3, x = 2, x = -4, and the curve with tangents) that are not drawn in the source; the replacement lesson describes them in text only.",
+      "required_action": "Owner to supply the missing 3rd-term material, or confirm the term scheme; teacher to supply graph figures if wanted. Do not infer a scheme from filenames.",
+      "affected_ids": [
+        "SS1-SRC-c7a7523bdb0d:BODY:a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273",
+        "SS1-SRC-c7a7523bdb0d:BODY:891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35",
+        "SS1-SRC-c7a7523bdb0d:BODY:ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3",
+        "SS1-SRC-c7a7523bdb0d:BODY:0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8",
+        "SS1-SRC-c7a7523bdb0d:BODY:857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573",
+        "SS1-SRC-c7a7523bdb0d:BODY:dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6",
+        "COV-FM-T3-SCHEME"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-004",
+      "kind": "PERMISSION",
+      "detail": "The 2nd- and 3rd-term sources embed the advertising letterhead and cover page of a commercial tutor (\"MR OSHO TUTORS\", personal phone number and e-mail, offering e-notes for sale). The notes appear to be that vendor's product. Reuse rights are unconfirmed. These images were not bound as lesson assets and must not be delivered to students.",
+      "required_action": "Owner to confirm the licence under which the school may deliver the vendor notes, and approve removal of branding and contact details from any delivered asset.",
+      "affected_ids": [
+        "SS1-SRC-43c5ab51b87f",
+        "SS1-SRC-c7a7523bdb0d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-005",
+      "kind": "OWNER_ACTION",
+      "detail": "The six authored supplements, the flowchart SVG asset and three heading aliases await content approval; no approval reference exists.",
+      "required_action": "Owner/teacher review, then record approval_reference values.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+        "ASSET-SS1-FM-T3-W02-FLOWCHART-PERIMETER"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-006",
+      "kind": "VERIFICATION",
+      "detail": "Nothing in this package has been executed (schema parse, compiler plan, row-ID alignment, asset hash, tests/ss1/further-mathematics.test.mts).",
+      "required_action": "Run DEFERRED_COMMANDS.md in SS1-09.",
+      "affected_ids": [
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+        "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS"
+      ],
+      "blocks_delivery": false
+    }
+  ]
+}
