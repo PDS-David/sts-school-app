@@ -32,14 +32,14 @@
     "LESSON": 6,
     "CORRECTION_BINDING": 6,
     "ASSET": 1,
-    "VISUAL_DISPOSITION": 7,
+    "VISUAL_DISPOSITION": 8,
     "FACTUAL_DEPENDENCY": 9,
     "SCOPE_DECOMPOSITION": 2,
     "BRANCH_PORT_COMPARISON": 16,
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 17,
+    "IMPLEMENTED_TESTING_DEFERRED": 18,
     "PENDING": 58,
     "BLOCKED": 6
   },
@@ -137,8 +137,8 @@
       "depends_on": [
         "FM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Package holds marker coverage COV-FM-T1-EXAM (objective \"Revision and examination weeks; reference list\", locator \"scheme lines 11-12\") bound to RULE-FM-T1-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite \"scheme weeks 1-10\" / \"scheme topic n\", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record. Legacy .doc: parsed by word-extractor in the importer.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package holds marker coverage COV-FM-T1-EXAM (objective \"Revision and examination weeks; reference list\", locator \"scheme lines 11-12\") bound to RULE-FM-T1-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite \"scheme weeks 1-10\" / \"scheme topic n\", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record. Legacy .doc: parsed by word-extractor in the importer. | Implemented: 1st Term preamble (getBody() lines 1-64 plus the page header/footer story) hash-accounted in FM-PRE-T1.md; scheme topics for weeks 1-10 recorded there; header re-read and verified (matches Further Mathematics, SS1); new SCHEME_ONLY rule RULE-FM-T1-REFERENCES with marker coverage COV-FM-T1-REFERENCES; open item OI-FM-007 and queue item FM-VIS-T1-BRANDING added because the 1st Term source does carry the tutor's cover, letterhead pictures and running header (the earlier 'no such record' was wrong). Member and archive hashes verified; read with word-extractor 1.0.4 and a private LibreOffice render, not the importer. Record: docs/ss1/work/microtasks/further-mathematics/FM-PRE-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage or recorded as an open item; the week-to-scheme-topic list is written to the FM-PRE note; header verification result (matches / differs) is recorded; any letterhead or vendor branding is listed for FM-VIS-T1-BRANDING handling (or recorded as absent for the 1st Term). No lesson is authored in this item."
     },
     {
@@ -1716,6 +1716,43 @@
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
+      "id": "FM-VIS-T1-BRANDING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "1st Term advertising cover page (page 1), letterhead picture (page 2) and running page header/footer of a commercial tutor (\"MR OSHO TUTORS\")",
+      "objective": "Record a visual/object disposition for: the 1st Term cover-page picture, the letterhead picture above the SUBJECT line, and the running page header/footer text naming the tutor. Inspect the source objects themselves (a text extract or PDF conversion alone is not visual inspection), state what each adds, whether an existing lesson or asset covers it, and any residual gap. Confirm whether any phone number, e-mail or sale offer also appears in the extracted lesson text (FM-PRE-T1 found none in getBody() output); do not copy contact details into the repository.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T1-BRANDING.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Found by FM-PRE-T1 and recorded in open item OI-FM-007 (PERMISSION, blocks_delivery true): contrary to the earlier queue note, the 1st Term source does carry the tutor's advertising material. Locations are in FM-PRE-T1.md. The images were not bound as lesson assets.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
       "id": "FM-VIS-T2-BRANDING",
       "kind": "VISUAL_DISPOSITION",
       "source_id": "SS1-SRC-43c5ab51b87f",
@@ -1989,7 +2026,7 @@
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": null,
       "term": null,
-      "week_or_locator": "open_items OI-FM-004 (2nd and 3rd Term sources)",
+      "week_or_locator": "open_items OI-FM-004 and OI-FM-007 (1st, 2nd and 3rd Term sources)",
       "objective": "Owner confirms the licence under which the school may deliver the commercial tutor's notes, and approves removal of branding and contact details from anything delivered.",
       "required_files": [
         "backend/src/db/ss1/subjects/further-mathematics.json"
@@ -2000,6 +2037,7 @@
         "backend/src/db/ss1/subjects/further-mathematics.json"
       ],
       "depends_on": [
+        "FM-VIS-T1-BRANDING",
         "FM-VIS-T2-BRANDING",
         "FM-VIS-T3-BRANDING"
       ],
@@ -2661,6 +2699,6 @@
     }
   },
   "next_runnable": [
-    "FM-PRE-T1"
+    "FM-PRE-T2"
   ]
 }
