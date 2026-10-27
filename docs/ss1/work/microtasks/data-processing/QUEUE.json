@@ -31,7 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -63,8 +64,8 @@
         "docs/ss1/work/microtasks/data-processing/DP-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No data-processing package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-a92792eaa7ef, sha256=a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b, 1056355 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx', worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/data-processing.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-a92792eaa7ef sha256=a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b archive_member='SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx' term='1st Term' canonical_subject='Data Processing' header_text='SUBJECT:  DATA PROCESSING' + 6 tabs + 'CLASS:  SSS1' (single occurrence confirmed with mammoth.extractRawText; 'DATA PROCESSING' alone occurs 7 times); rule SS1-SRC-a92792eaa7ef-R001 (source_alias, approval_reference PENDING-OWNER); open item DATA-PROCESSING-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the supplied '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636) and re-verified byte-identical in the composite archive (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). Record: docs/ss1/work/microtasks/data-processing/DP-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. Do not map Data Processing to Computer Studies or ICT: if the header supports such an alias, record an open item (an alias needs an approval_reference; do not invent it). The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -311,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "DP-SRC-T1"
+    "DP-SRC-T2",
+    "DP-SRC-T3",
+    "DP-INV-T1"
   ]
 }
