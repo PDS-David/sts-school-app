@@ -16,26 +16,27 @@
   ],
   "notes": [
     "Built from the repository only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
-    "Existing English work is the merged package english.json (3 sources, 50 rules, 16 lessons, 24 corrections, 89 coverage entries, 3 open items). Package status stays PENDING; no approval or verification exists.",
+    "Existing English work is the merged package english.json (3 sources, 51 rules, 16 lessons, 24 corrections, 112 coverage entries, 5 open items). Package status stays PENDING; no approval or verification exists. (counts updated after ENG-WK-T1-W01).",
     "Open PRs affecting English: none found. Only the PR #70 content is on master; the #71 branch has no English package. The GitHub API was rate-limited in this session, so PR state was inferred from git refs (origin/pull/*); re-check before starting work.",
     "Unavailable (not committed, so not counted as completed): private extracts and rendered pages of the three English originals; the audio model; prescribed-book extracts; any approval record; any English test file.",
     "Every source was read at row level per the checkpoint, so no source has a first-unreviewed week. The coverage entries are body-level only, so one indexing item exists per source week to reach objective level. Absence from the package is not a claim that an objective is absent from the source.",
     "No new lesson items were invented; they are to be added only after week indexing shows what is uncovered.",
     "Review correction: IN_PROGRESS means an actively claimed task, not inherited partial coverage. Unclaimed incomplete indexing is PENDING. Existing correction code is retained, but correction items remain PENDING until replacement scope is reviewed.",
-    "Execute one queue item per worker. Existing implementation evidence is a starting point, not a request to repeat completed audits. Tests remain deferred. A required attachment absent from a worker session is an input blocker, not evidence that curriculum content is absent."
+    "Execute one queue item per worker. Existing implementation evidence is a starting point, not a request to repeat completed audits. Tests remain deferred. A required attachment absent from a worker session is an input blocker, not evidence that curriculum content is absent.",
+    "ENG-WK-T1-W01 (2026-10-27): Week 1 indexed at objective level from master fc2aef1f0761f25fe50c06ed4592b2357a117bff. The replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 was found NOT to preserve every objective of the row it displaces; follow-up items ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 16,
+    "LESSON": 18,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 12,
     "ASSET": 1,
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
-    "PENDING": 70,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 72,
     "BLOCKED": 4
   },
   "items": [
@@ -133,9 +134,9 @@
       "depends_on": [
         "ENG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-001, ENGLISH-BODY-002, ENGLISH-BODY-003 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-001=\"TOPIC: GENERAL REVISION OF LAST TERM'S EXAMINATION; REVIEW OF PARTS OF\"; ENGLISH-BODY-002='B. Review of Word Class- Parts of Speech'; ENGLISH-BODY-003='C: Spelling: Doubling of Consonants. Rules of Spelling'. Corrected rows: ENGLISH-BODY-002 <- SS1-02-english-COR-001 -> SUP-SS1-ENGLISH-WORD-CLASSES-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
-      "completion_condition": "Every objective of Week 1 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-10-27 from master fc2aef1f0761f25fe50c06ed4592b2357a117bff; source document sha256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef verified. backend/src/db/ss1/subjects/english.json: 26 Week 1 coverage entries (ENGLISH-BODY-001..003 retained; ENGLISH-T1-W01-N01..N11, P01-P02, A01-A03, R01, V01-V04, SP02 and SCHEME-ROW added) and classify_marker/SCHEME_ONLY rule SS1-SRC-a00657d42196-R028. Outcome: 4 IMPLEMENTED_EQUIVALENT, 1 SUPPORTED, 1 MARKER, 11 PARTIAL (incl. ENGLISH-BODY-001 and -002), 9 UNRESOLVED. SS1-02-english-COR-001 replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 does NOT preserve every displaced objective. Open items: ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE, ENGLISH-T1-W01-EXTERNAL-MATERIALS. Record: docs/ss1/work/microtasks/english/ENG-WK-T1-W01.md.",
+      "completion_condition": "Indexing complete; no PARTIAL/UNRESOLVED Week 1 entry lacks an open blocking open_item. Content gaps are NOT closed: see ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS. Testing deferred by owner."
     },
     {
       "id": "ENG-WK-T1-W02",
@@ -2488,6 +2489,77 @@
       "status": "PENDING",
       "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    },
+    {
+      "id": "ENG-LES-W01-NOUNS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 1, Section B nouns (coverage ENGLISH-T1-W01-N02, N03, N04, N05, N06, N07, N08, N09, N10, N11)",
+      "objective": "Close the noun gaps left by SUP-SS1-ENGLISH-WORD-CLASSES-T1 against the displaced source row: regular plurals, noun features and endings (reviewed), proper-noun capitalisation, uncountable list and damage/damages, collective nouns, possessive nouns, remaining irregular/compound/zero plurals, plural-form nouns. Author original reviewed teaching with practice and marking; do not copy source text.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/english/ENG-WK-T1-W01.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W01",
+        "ENG-LES-WORD-CLASSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE in english.json. Source rows: BODY 954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 (locators in each coverage entry).",
+      "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented; SS1-02-english-COR-001 stays inactive until this and ENG-LES-W01-PRONOUN-ADJ-VERB are done."
+    },
+    {
+      "id": "ENG-LES-W01-PRONOUN-ADJ-VERB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 1, Section B pronouns, adjectives, verbs (coverage ENGLISH-T1-W01-P02, A01, A02, A03, R01, V02, V04)",
+      "objective": "Close the pronoun, adjective and verb gaps left by SUP-SS1-ENGLISH-WORD-CLASSES-T1: the pronoun types, attributive/predicative terms, kinds and formation of adjectives, the works/damages/stationery contrasts, auxiliary lists and transitive/intransitive verbs. Author original reviewed teaching with practice and marking; do not copy source text.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/english/ENG-WK-T1-W01.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W01",
+        "ENG-LES-WORD-CLASSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE in english.json. Source row: BODY 954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01.",
+      "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target (R01 also depends on ENG-FACT-W01-EXTERNAL-MATERIALS for the prescribed page); no approval or verification is invented."
+    },
+    {
+      "id": "ENG-FACT-W01-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W01-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 1 refers to but the source does not contain (previous term's examination questions and expected solutions; WASSCE/NECO Lexis and structure past questions; Countdown pp. 240-241; Effective English p. 273; answers to the nine-word spelling task), or have the owner accept a labelled equivalent activity.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W01-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-001, ENGLISH-T1-W01-R01, ENGLISH-T1-W01-SP02. Needs owner-supplied material or an owner decision.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly."
     }
   ],
   "review": {

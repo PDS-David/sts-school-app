@@ -372,6 +372,18 @@
       "week_label": "11"
     },
     {
+      "id": "SS1-SRC-a00657d42196-R028",
+      "source_id": "SS1-SRC-a00657d42196",
+      "source_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef",
+      "anchor": "General Revision of Last Term's Examination; Review of the word class-Parts of Speech- Noun, Pronoun, Verb and Adjective. Spelling; Doubling of Consonants",
+      "evidence": {
+        "locator": "SS1-SRC-a00657d42196: preamble scheme-of-work table, row '1' (text after the tab following '1')",
+        "explanation": "Anchor occurs exactly once in the unmodified extracted text and in no parsed WEEK body (the WEEK ONE heading is in upper case). Classification discards no text."
+      },
+      "op": "classify_marker",
+      "kind": "SCHEME_ONLY"
+    },
+    {
       "id": "SS1-SRC-d8bd8f85fd73-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-d8bd8f85fd73",
@@ -2336,8 +2348,8 @@
     {
       "id": "ENGLISH-BODY-001",
       "source_id": "SS1-SRC-a00657d42196",
-      "objective": "TOPIC: GENERAL REVISION OF LAST TERM'S EXAMINATION; REVIEW OF PARTS OF SPEECH- NOUN, PRONOUN, VERB ADJECTIVE, SPELLING; DOUBLING OF CONSONANTS",
-      "objective_locator": "SS1-SRC-a00657d42196: ONE; exact body hash 3a51afe569408e3986d0549aee76c16662b0c8015e6e39ad71104b92b2744f26",
+      "objective": "A: General revision of the last term's work and examination (teacher goes over the questions and gives expected solutions)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:3a51afe569408e3986d0549aee76c16662b0c8015e6e39ad71104b92b2744f26 :: from \"General revision of the last term's work\" to before 'Reading Assignment:'",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-a00657d42196:BODY:3a51afe569408e3986d0549aee76c16662b0c8015e6e39ad71104b92b2744f26"
@@ -2345,7 +2357,11 @@
       "evidence": [
         {
           "locator": "SS1-SRC-a00657d42196:BODY:3a51afe569408e3986d0549aee76c16662b0c8015e6e39ad71104b92b2744f26",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "explanation": "Exact body reference. The row is a teacher instruction only: it contains no examination questions or expected solutions."
+        },
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:3a51afe569408e3986d0549aee76c16662b0c8015e6e39ad71104b92b2744f26 :: from 'Reading Assignment:' to end of body",
+          "explanation": "Reading assignment points to 'Lexis and structure questions' from WASSCE/NECO past questions, which are not supplied. The objective stays PARTIAL until the revision material exists (open item ENGLISH-T1-W01-EXTERNAL-MATERIALS)."
         }
       ]
     },
@@ -2354,14 +2370,18 @@
       "source_id": "SS1-SRC-a00657d42196",
       "objective": "B. Review of Word Class- Parts of Speech",
       "objective_locator": "SS1-SRC-a00657d42196: 1; exact body hash 954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01",
-      "status": "IMPLEMENTED_EQUIVALENT",
+      "status": "PARTIAL",
       "lesson_ids": [
         "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
       ],
       "evidence": [
         {
           "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "explanation": "Exact body reference. Row-level association only; the objective-level entries ENGLISH-T1-W01-N01..V04 are authoritative."
+        },
+        {
+          "locator": "SS1-02-english-COR-001 -> SUP-SS1-ENGLISH-WORD-CLASSES-T1",
+          "explanation": "Reviewed in ENG-WK-T1-W01: the replacement (4 paragraphs, 2 objectives, 3 practice items) does not preserve every objective of the row it displaces. of the 21 indexed Section B objectives, 9 are not taught (UNRESOLVED), 8 are only partly taught (PARTIAL) and 4 are equivalent; see open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE."
         }
       ]
     },
@@ -2369,15 +2389,475 @@
       "id": "ENGLISH-BODY-003",
       "source_id": "SS1-SRC-a00657d42196",
       "objective": "C: Spelling: Doubling of Consonants. Rules of Spelling",
-      "objective_locator": "SS1-SRC-a00657d42196: 1; exact body hash de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903",
-      "status": "PARTIAL",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903 :: from 'Words of one syllable with one vowel' to before 'Write five words where consonants are doubled.'",
+      "status": "SUPPORTED",
       "lesson_ids": [
         "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903"
       ],
       "evidence": [
         {
           "locator": "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "explanation": "The original row teaches the doubling rules itself: one-syllable words, doubled vowels, stressed and unstressed final syllables of longer words, final 'p', and 'c' -> 'ck', each with examples."
+        },
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903 :: from 'Write five words where consonants are doubled.' to end of body",
+          "explanation": "Evaluation, reading assignment and weekend assignment are indexed separately (ENGLISH-T1-W01-SP02). The weekend assignment (monophthongs, types of essay) belongs to Week 3 scheme content and is not a Week 1 objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Noun: definition and what nouns name (person, animal, place, thing, idea; institutions; months and days; abstract ideas)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Noun- A noun is a naming word' to before 'FEATURES OF NOUNS:'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Noun- A noun is a naming word' to before 'FEATURES OF NOUNS:'",
+          "explanation": "Source defines a noun and lists six categories of names with examples. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 1 ('Nouns name people, places, things or ideas.')",
+          "explanation": "Replacement states the definition and the person/place/thing/idea scope. Institution, month and day example lists are not reproduced; they are illustrations of the same definition, not separate rules."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Features of nouns: regular -s/-es plural, use with articles/demonstratives/adjectives, and noun-forming word endings",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'FEATURES OF NOUNS:' to before 'Types of Nouns'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'FEATURES OF NOUNS:' to before 'Types of Nouns'",
+          "explanation": "Source lists three features, including 17 noun-forming endings (age, al, tion, er, ery, titude, hood, like, ist, ity, ment, ness, cy, ocracy, ism, ship, ster). SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered. The ending list needs factual review before reuse (for example 'like' with 'childlike', and the example spelling 'firmess')."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches regular plural endings, noun determiners, or noun-forming endings; paragraph 4 only warns not to classify by ending alone."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Types of nouns: proper (with capital-letter rule), common, concrete, abstract",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Proper Nouns:' to before 'Count nouns:'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Proper Nouns:' to before 'Count nouns:'",
+          "explanation": "Source teaches proper nouns (twice stating that a proper noun always takes a capital letter), common, concrete and abstract nouns with examples. Its statement that common is the opposite of concrete is the factual defect behind COR-001. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 1 (common/proper, concrete/abstract)",
+          "explanation": "Replacement teaches the four distinctions correctly (common is not the opposite of concrete) and practice item 1 tests them. It never states that a proper noun begins with a capital letter, a rule the source stresses. Remaining gap: capital-letter rule."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Count nouns, non-count (mass) nouns and other uncountable nouns, including measure phrases and damage/damages",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Count nouns:' to before 'Collective nouns:'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Count nouns:' to before 'Collective nouns:'",
+          "explanation": "Source teaches count and non-count nouns, converting mass nouns with units (bags of rice), a list of other uncountables (equipment, jewelry, stationery, information, baggage, luggage, machinery, furniture, damage) and the damage/damages contrast. The separate list headed 'OTHERS' (machinery ... luggage) repeats the uncountable theme. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 2 (count/non-count; information, equipment; chicken)",
+          "explanation": "Replacement teaches count vs non-count and corrects 'informations'; practice item 3 tests it. Remaining gaps: unit-of-measure phrases, baggage/luggage/furniture/jewelry/stationery/machinery/damage, and damage vs damages."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Collective nouns",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Collective nouns:' to before 'Possessive noun/ genitive:'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Collective nouns:' to before 'Possessive noun/ genitive:'",
+          "explanation": "Source defines collective nouns and gives five examples (troupe, soldiers, band, bevy, class). SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches collective nouns."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N06",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Possessive nouns (genitive)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Possessive noun/ genitive:' to before 'NUMBER:'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Possessive noun/ genitive:' to before 'NUMBER:'",
+          "explanation": "Source defines possessive nouns with five examples using apostrophe-s. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches possessive/genitive nouns."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N07",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Number: singular and plural; regular plurals in -s and -es",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'NUMBER:' to before 'IRREGULAR PLURAL'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'NUMBER:' to before 'IRREGULAR PLURAL'",
+          "explanation": "Source explains singular/plural and shows a regular-plural table (school, mat, house, box, bonus). SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches regular plural formation (-s/-es)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N08",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Irregular plurals",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'IRREGULAR PLURAL' to before 'PLURALS IN COMPOUND NOUNS-'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'IRREGULAR PLURAL' to before 'PLURALS IN COMPOUND NOUNS-'",
+          "explanation": "Source tabulates 17 irregular plurals (man, ox, goose, crisis, forum, formula, symposium, foot, parenthesis, medium, index, larva, louse, mouse, curriculum, axis, oasis). SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 2 (irregular plurals from a dictionary: child/children, mouse/mice, parenthesis/parentheses, deer/deer)",
+          "explanation": "Replacement teaches the idea and four examples (two overlap the source table). Remaining gap: man, ox, goose, crisis, forum, formula, symposium, foot, medium, index, larva, louse, curriculum, axis, oasis."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N09",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Plurals of compound nouns",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'PLURALS IN COMPOUND NOUNS-' to before 'ZERO PLURALS'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'PLURALS IN COMPOUND NOUNS-' to before 'ZERO PLURALS'",
+          "explanation": "Source tabulates 12 compound-noun plurals, including patterns where the head is not pluralised (grown-ups, church-goers, step-sons) and where both parts change (women doctors). SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 2 ('A compound usually pluralises its head: mother-in-law/mothers-in-law; head of state/heads of state.')",
+          "explanation": "Replacement teaches the head rule with two examples that overlap the source. Remaining gap: woman doctor/women doctors, woman occupant/women occupants, passer-by, grown-up, church-goer, step-son and similar non-head patterns."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N10",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Zero plurals (unchanged singular/plural form)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'ZERO PLURALS' to before 'OTHERS'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'ZERO PLURALS' to before 'OTHERS'",
+          "explanation": "Source lists eight zero-plural nouns (gross, deer, sheep, fish, series, trout, salmon, person) with alternatives. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 2 ('deer/deer')",
+          "explanation": "Replacement gives one zero-plural example (deer). Remaining gap: the concept as a category, and gross, sheep, fish, series, trout, salmon, person/people."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-N11",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Nouns used only in plural form or normally with -s/-es (goods, ashes, headquarters etc.); aircraft and cattle",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'NOTE: THESE ARE IN PLURAL FORMS' to before 'MORE ON REVIEW OF PARTS OF SPEECH'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'NOTE: THESE ARE IN PLURAL FORMS' to before 'MORE ON REVIEW OF PARTS OF SPEECH'",
+          "explanation": "Source lists aircraft and cattle as plural-form nouns and eleven nouns that naturally take -s or -es (goods, remains, ashes, headquarters, quarters, congratulations, manners, surroundings, wages, arms, works). The aircraft/cattle note needs factual review before reuse. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches nouns that occur only or normally in plural form."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-P01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Pronoun: definition and function (replacing nouns to avoid repetition)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Pronouns- Pronouns are words' to before 'TYPES OF PRONOUNS'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Pronouns- Pronouns are words' to before 'TYPES OF PRONOUNS'",
+          "explanation": "Source defines pronouns as noun replacements that avoid repetition. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 3 ('Pronouns can replace a noun phrase: “Bola owns the bag. She carries it.”')",
+          "explanation": "Replacement teaches the same function with an example sentence."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-P02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Types of pronouns: personal, possessive, demonstrative, interrogative, reflexive, reciprocal, relative, indefinite",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'TYPES OF PRONOUNS' to before 'ADJECTIVES\nThese are words that describe'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'TYPES OF PRONOUNS' to before 'ADJECTIVES\nThese are words that describe'",
+          "explanation": "Source names eight pronoun types with examples. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 3 (she/her subject and object; possessive determiners vs possessive pronouns (her bag / hers))",
+          "explanation": "Replacement touches personal pronoun case and the possessive pronoun, without naming the types. Remaining gap: demonstrative, interrogative, reflexive, reciprocal, relative and indefinite pronouns, and the type names."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-A01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Adjective: definition and attributive vs predicative position",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'ADJECTIVES\nThese are words that describe' to before 'Kind of Adjectives'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'ADJECTIVES\nThese are words that describe' to before 'Kind of Adjectives'",
+          "explanation": "Source defines adjectives and teaches attributive position (before a noun) and predicative position (after a link verb), naming both functions. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 3 ('An adjective describes a noun: a quiet room; the room is quiet.')",
+          "explanation": "Replacement teaches both positions by example. It does not name 'attributive' or 'predicative'. Remaining gap: the two terms."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-A02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Kinds of adjectives: colour, size, age, shape, origin, number, demonstrative, possessive, distributive",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Kind of Adjectives' to before 'FORMATION OF ADJECTIVES'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Kind of Adjectives' to before 'FORMATION OF ADJECTIVES'",
+          "explanation": "Source lists nine kinds of adjective with examples. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches kinds of adjectives (paragraph 3 mentions possessive determiners only as a contrast with pronouns)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-A03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Formation of adjectives by endings (-cal, -ic, -eous, -ious, -uous, -ive, -able, -al, -ial)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'FORMATION OF ADJECTIVES' to before 'READING ASSIGNMENT: Countdown page 240'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'FORMATION OF ADJECTIVES' to before 'READING ASSIGNMENT: Countdown page 240'",
+          "explanation": "Source lists nine adjective-forming endings with examples. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches adjective-forming endings."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-R01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment (Countdown pp. 240-241) and contrast of works/work, damages/damage, stationery/stationary",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'READING ASSIGNMENT: Countdown page 240' to before 'VERB\nA verb expresses action'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'READING ASSIGNMENT: Countdown page 240' to before 'VERB\nA verb expresses action'",
+          "explanation": "Source sets a reading assignment from a prescribed book (not supplied) and an exercise differentiating three word pairs. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered. The works/work and damages/damage points are taught only earlier in this row (noun lists); stationery/stationary is not taught anywhere in the row."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches works/work, damages/damage or stationery/stationary."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-V01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Verb: definition (action and state of being) and lexical (main) verbs",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'A verb expresses action' to before 'Auxiliary verbs:'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'A verb expresses action' to before 'Auxiliary verbs:'",
+          "explanation": "Source defines verbs and lexical (main) verbs with examples. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 3 ('A lexical verb expresses the main event or state: “I know the answer.”')",
+          "explanation": "Replacement teaches the lexical verb concept with an example."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-V02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Auxiliary verbs: primary auxiliaries and modal auxiliaries (including ought to, dare, need)",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Auxiliary verbs:' to before 'Finite and Non-Finite Verbs'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Auxiliary verbs:' to before 'Finite and Non-Finite Verbs'",
+          "explanation": "Source teaches primary and modal auxiliaries with lists. Its explanation of which auxiliaries 'can stand on their own' is garbled and is part of the reason for COR-001. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 3 (be, have, do as lexical or auxiliary; modal 'can' needs a main verb)",
+          "explanation": "Replacement corrects the concept and tests it in practice item 2. Remaining gap: the lists of primary auxiliaries (be forms) and modals (could, may, might, shall, should, will, would, ought to, dare, need)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-V03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Finite and non-finite verbs",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Finite and Non-Finite Verbs' to before 'Transitive Verb:'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Finite and Non-Finite Verbs' to before 'Transitive Verb:'",
+          "explanation": "Source teaches finite verbs (agreeing with person, tense, number) and non-finite verbs (infinitive, -ing forms). Its claim that non-finite forms 'usually have -ing' is the defect behind COR-001. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body paragraph 3 ('Finite verbs carry tense or agreement; infinitives and participles are non-finite: to swim, swimming, written.')",
+          "explanation": "Replacement teaches the distinction correctly and adds past participles. The source's two subject-verb agreement example pairs are not reproduced; agreement is named in the same sentence."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-V04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Transitive and intransitive verbs",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Transitive Verb:' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 :: from 'Transitive Verb:' to end of body",
+          "explanation": "Source defines transitive and intransitive verbs with examples. SS1-02-english-COR-001 replaces this whole source row in delivery, so anything the replacement omits is not delivered."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1: body (4 paragraphs) and practice (3 items)",
+          "explanation": "Checked in full: no sentence or practice item teaches transitive or intransitive verbs."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-SP02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Spelling application: write five doubled-consonant words; read Effective English p. 273; correct nine misspelt words",
+      "objective_locator": "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903 :: from 'Write five words where consonants are doubled.' to before 'WEEKEND ASSIGNMENT'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196:BODY:de2cf448b70f5591a61b5f0c9f139cd558d86cdad92394ca42d7a45f2b24f903 :: from 'Write five words where consonants are doubled.' to before 'WEEKEND ASSIGNMENT'",
+          "explanation": "Source gives a write-five-words task, a reading assignment from a prescribed book (not supplied), and a nine-word spelling correction task. No answer key is given in the source."
+        },
+        {
+          "locator": "SS1-SRC-a00657d42196: Week 1 Section C evaluation tasks",
+          "explanation": "The task statements are present in the delivered original row. The Effective English page and any model answers are not in the source, so this objective cannot be taught end to end from the repository alone."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W01-SCHEME-ROW",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Scheme-of-work table row for Week 1: general revision; review of noun, pronoun, verb and adjective; spelling (doubling of consonants)",
+      "objective_locator": "SS1-SRC-a00657d42196: scheme-of-work table before the first parsed WEEK row, row '1' (anchor of rule SS1-SRC-a00657d42196-R028)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196-R028"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-a00657d42196: preamble, scheme-of-work table row 1",
+          "explanation": "The scheme row lists the Week 1 objectives indexed by ENGLISH-BODY-001, ENGLISH-BODY-003 and ENGLISH-T1-W01-* entries. It lies outside every parsed row, so rule SS1-SRC-a00657d42196-R028 classifies it SCHEME_ONLY; the teaching bodies are WEEK ONE and the two WEEK 1 rows."
         }
       ]
     },
@@ -3792,6 +4272,47 @@
         "SUP-SS1-ENGLISH-PHONETICS-T1",
         "SUP-SS1-ENGLISH-PHONETICS-T3",
         "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE",
+      "kind": "CONTENT",
+      "detail": "SUP-SS1-ENGLISH-WORD-CLASSES-T1 replaces source row ENGLISH-BODY-002 in delivery (SS1-02-english-COR-001) but does not preserve every Week 1 objective of that row. Not taught: 8 indexed objectives (N02, N05, N06, N07, N11, A02, A03, V04) plus the works/work, damages/damage, stationery/stationary contrast. Partly taught: N03, N04, N08, N09, N10, P02, A01, V02. Uncorrected source defects also need reviewed correction wording (noun-ending list, aircraft/cattle note).",
+      "required_action": "Complete queue items ENG-LES-W01-NOUNS and ENG-LES-W01-PRONOUN-ADJ-VERB with reviewed, original teaching for the listed objectives (extend the replacement or add supplements). Keep SS1-02-english-COR-001 inactive until both are done.",
+      "affected_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1",
+        "SS1-02-english-COR-001",
+        "ENGLISH-BODY-002",
+        "ENGLISH-T1-W01-N02",
+        "ENGLISH-T1-W01-N05",
+        "ENGLISH-T1-W01-N06",
+        "ENGLISH-T1-W01-N07",
+        "ENGLISH-T1-W01-N11",
+        "ENGLISH-T1-W01-A02",
+        "ENGLISH-T1-W01-A03",
+        "ENGLISH-T1-W01-R01",
+        "ENGLISH-T1-W01-V04",
+        "ENGLISH-T1-W01-N03",
+        "ENGLISH-T1-W01-N04",
+        "ENGLISH-T1-W01-N08",
+        "ENGLISH-T1-W01-N09",
+        "ENGLISH-T1-W01-N10",
+        "ENGLISH-T1-W01-P02",
+        "ENGLISH-T1-W01-A01",
+        "ENGLISH-T1-W01-V02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W01-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 1 refers to material that is not in the source document: the previous term's examination questions with expected solutions, WASSCE/NECO Lexis and structure past questions, Countdown pp. 240-241 and Effective English p. 273. No answer key exists for the nine-word spelling correction task.",
+      "required_action": "Owner to supply the authorised questions/extracts or accept a labelled equivalent activity (queue item ENG-FACT-W01-EXTERNAL-MATERIALS). Do not infer the missing content.",
+      "affected_ids": [
+        "ENGLISH-BODY-001",
+        "ENGLISH-T1-W01-R01",
+        "ENGLISH-T1-W01-SP02"
       ],
       "blocks_delivery": true
     }
