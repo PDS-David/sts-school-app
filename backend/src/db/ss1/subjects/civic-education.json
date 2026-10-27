@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "civic-education",
+  "canonical_subject": "Civic Education",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-fe52495abec9",
+      "sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a",
+      "archive_member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Civic Education",
+      "header_text": "ALPHA TERM SCHEME OF WORK FOR SS1\n\nCIVIC EDUCATION",
+      "header_evidence": {
+        "locator": "SS1-SRC-fe52495abec9: opening two paragraphs of mammoth.extractRawText output (the importer's own call), separated by a blank line",
+        "explanation": "'CIVIC EDUCATION' alone occurs 6 times in the text (topic titles and week content), so the contract's single-occurrence rule needs the two-paragraph heading, as in the Biology and French packages. The first paragraph 'ALPHA TERM SCHEME OF WORK FOR SS1' marks the class and term label (the document uses 'ALPHA TERM'; the 1st Term assignment comes from the manifest folder, not from this text). The second paragraph names the subject. Teaching content confirms it: meaning and need for civic education, values, community service, youth empowerment. It does not name Government."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-fe52495abec9-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "source_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a",
+      "anchor": "ALPHA TERM SCHEME OF WORK FOR SS1\n\nCIVIC EDUCATION",
+      "evidence": {
+        "locator": "SS1-SRC-fe52495abec9: opening two paragraphs of extracted text",
+        "explanation": "Source metadata only; original text is retained. The two-paragraph heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "ALPHA TERM SCHEME OF WORK FOR SS1\n\nCIVIC EDUCATION",
+      "canonical_subject": "Civic Education",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "CIVIC-EDUCATION-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source heading is the two-paragraph text 'ALPHA TERM SCHEME OF WORK FOR SS1' / 'CIVIC EDUCATION'. It differs from the canonical subject name only by the added term and class line, but the contract requires a source_alias declaration; rule SS1-SRC-fe52495abec9-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-fe52495abec9-R001",
+        "SS1-SRC-fe52495abec9"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
