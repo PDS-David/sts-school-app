@@ -9,7 +9,7 @@ import { lessonContentHash, loadSourceManifest, parseSubjectPackage, validatePac
 const here = path.dirname(new URL(import.meta.url).pathname);
 const raw = JSON.parse(readFileSync(path.join(here, '../../backend/src/db/ss1/subjects/further-mathematics.json'), 'utf8'));
 
-test('mathematics package parses under the frozen contract', () => {
+test('further-mathematics package parses under the frozen contract', () => {
   const pkg = parseSubjectPackage(raw);
   assert.equal(pkg.subject_slug, "further-mathematics");
   assert.equal(pkg.canonical_subject, 'Further Mathematics');
