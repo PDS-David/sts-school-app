@@ -1,5 +1,5 @@
 from author_packages import *
-p=package('english');views=[]
+p=package('english');p['package_status']='PENDING';views=[]
 for r in RECORDS:
  if r['assigned_subject_slug']=='english':views+=source(p,r,SPLITS[r['source_id']])
 CAM=('https://dictionary.cambridge.org/grammar/british-grammar/words-sentences-and-clauses','Cambridge English Grammar Today: words, sentences and clauses')
