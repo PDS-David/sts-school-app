@@ -31,7 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -63,8 +64,8 @@
         "docs/ss1/work/microtasks/civic-education/CIV-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No civic-education package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-fe52495abec9, sha256=ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a, 24152 bytes, member 'SSS 1/1st Term SS1_/CIVIC SSS1.docx', worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/civic-education.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-fe52495abec9 sha256=ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a archive_member='SSS 1/1st Term SS1_/CIVIC SSS1.docx' term='1st Term' canonical_subject='Civic Education' header_text='ALPHA TERM SCHEME OF WORK FOR SS1' + blank line + 'CIVIC EDUCATION' (single occurrence confirmed with mammoth.extractRawText; 'CIVIC EDUCATION' alone occurs 6 times); rule SS1-SRC-fe52495abec9-R001 (source_alias, approval_reference PENDING-OWNER); open item CIVIC-EDUCATION-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the supplied '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636) and re-verified byte-identical in the composite archive (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). Record: docs/ss1/work/microtasks/civic-education/CIV-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example Government), record an explicit handoff open item; do not delete, merge into government or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -311,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "CIV-SRC-T1"
+    "CIV-SRC-T2",
+    "CIV-SRC-T3",
+    "CIV-INV-T1"
   ]
 }
