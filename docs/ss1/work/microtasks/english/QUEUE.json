@@ -16,27 +16,28 @@
   ],
   "notes": [
     "Built from the repository only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
-    "Existing English work is the merged package english.json (3 sources, 51 rules, 16 lessons, 24 corrections, 112 coverage entries, 5 open items). Package status stays PENDING; no approval or verification exists. (counts updated after ENG-WK-T1-W01).",
+    "Existing English work is the merged package english.json (3 sources, 52 rules, 16 lessons, 24 corrections, 136 coverage entries, 9 open items). Package status stays PENDING; no approval or verification exists. (counts updated after ENG-WK-T1-W02).",
     "Open PRs affecting English: none found. Only the PR #70 content is on master; the #71 branch has no English package. The GitHub API was rate-limited in this session, so PR state was inferred from git refs (origin/pull/*); re-check before starting work.",
     "Unavailable (not committed, so not counted as completed): private extracts and rendered pages of the three English originals; the audio model; prescribed-book extracts; any approval record; any English test file.",
     "Every source was read at row level per the checkpoint, so no source has a first-unreviewed week. The coverage entries are body-level only, so one indexing item exists per source week to reach objective level. Absence from the package is not a claim that an objective is absent from the source.",
     "No new lesson items were invented; they are to be added only after week indexing shows what is uncovered.",
     "Review correction: IN_PROGRESS means an actively claimed task, not inherited partial coverage. Unclaimed incomplete indexing is PENDING. Existing correction code is retained, but correction items remain PENDING until replacement scope is reviewed.",
     "Execute one queue item per worker. Existing implementation evidence is a starting point, not a request to repeat completed audits. Tests remain deferred. A required attachment absent from a worker session is an input blocker, not evidence that curriculum content is absent.",
-    "ENG-WK-T1-W01 (2026-10-27): Week 1 indexed at objective level from master fc2aef1f0761f25fe50c06ed4592b2357a117bff. The replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 was found NOT to preserve every objective of the row it displaces; follow-up items ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed."
+    "ENG-WK-T1-W01 (2026-10-27): Week 1 indexed at objective level from master fc2aef1f0761f25fe50c06ed4592b2357a117bff. The replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 was found NOT to preserve every objective of the row it displaces; follow-up items ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed.",
+    "ENG-WK-T1-W02 (2026-10-27): Week 2 indexed at objective level from master c48a012225c4b142bb6515a2fd8e5bf4d440509e (24 new coverage entries; rule R029 classifies scheme row 2). The four Week 2 source rows are not displaced by any SS1-02 correction; their gaps are source-side (unsupplied book pages, one scheme objective not taught, wording defects, missing keys). Follow-up items ENG-LES-W02-WORD-MEANINGS, ENG-LES-W02-PHRASAL-VERBS, ENG-LES-W02-ADVERB-CONJ-PREP and ENG-FACT-W02-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed. QUEUE_BUILD.md was outside this item's write paths and still names W02 as next."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 18,
+    "LESSON": 21,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 12,
+    "FACTUAL_DEPENDENCY": 13,
     "ASSET": 1,
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "PENDING": 72,
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 75,
     "BLOCKED": 4
   },
   "items": [
@@ -190,9 +191,9 @@
       "depends_on": [
         "ENG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-004, ENGLISH-BODY-005, ENGLISH-BODY-006, ENGLISH-BODY-007 (4 body-level rows; statuses {'PARTIAL': 4}). Row titles: ENGLISH-BODY-004='TOPICS: COMPREHENSION, READING SKILLS; RELIGION.'; ENGLISH-BODY-005='B.  TOPIC: STRUCTURE: INTRODUCTION TO PHRASAL VERBS.'; ENGLISH-BODY-006='C. Adverbs, Conjunction and Preposition'; ENGLISH-BODY-007='D. TOPIC: VOCABULARY DEVELOPMENT: WORDS ASSOCIATED WITH LIBRARY'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
-      "completion_condition": "Every objective of Week 2 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-10-27 from master c48a012225c4b142bb6515a2fd8e5bf4d440509e; source document sha256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef verified (archive sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified). backend/src/db/ss1/subjects/english.json: row-level entries ENGLISH-BODY-004..007 retained (still PARTIAL, now pointing at their objective entries) and 24 new Week 2 entries added: ENGLISH-T1-W02-SCHEME-ROW, CM01-CM03, PV01-PV05, AV01-AV03, CJ01-CJ04, PP01-PP03, LB01-LB05; classify_marker/SCHEME_ONLY rule SS1-SRC-a00657d42196-R029. Outcome: 9 SUPPORTED, 1 MARKER, 8 PARTIAL, 6 UNRESOLVED (new entries). No SS1-02 correction or replacement lesson displaces a Week 2 row, so no replacement-scope question arises. Open items: ENGLISH-T1-W02-EXTERNAL-MATERIALS, ENGLISH-T1-W02-WORD-MEANINGS-SCOPE, ENGLISH-T1-W02-SOURCE-WORDING-REVIEW, ENGLISH-T1-W02-ANSWER-KEYS. Record: docs/ss1/work/microtasks/english/ENG-WK-T1-W02.md.",
+      "completion_condition": "Indexing complete; every Week 2 objective has its own coverage entry with exact locator and evidence; the scheme row is classified; no PARTIAL/UNRESOLVED Week 2 entry lacks a blocking open item. Content gaps are NOT closed: see ENG-LES-W02-WORD-MEANINGS, ENG-LES-W02-PHRASAL-VERBS, ENG-LES-W02-ADVERB-CONJ-PREP and ENG-FACT-W02-EXTERNAL-MATERIALS. Testing deferred by owner.",
       "required_attachments": [
         {
           "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -3157,6 +3158,124 @@
       "implementation_reference": "english.json open_items[id=ENGLISH-T1-W01-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-001, ENGLISH-T1-W01-R01, ENGLISH-T1-W01-SP02. Needs owner-supplied material or an owner decision.",
       "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
       "required_attachments": []
+    },
+    {
+      "id": "ENG-LES-W02-WORD-MEANINGS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, word meanings in context (coverage ENGLISH-T1-W02-CM02)",
+      "objective": "Author original reviewed teaching, practice and marking for the Week 2 scheme objective 'Word Meanings in Context', which no source row teaches. Do not reproduce the unsupplied Effective English passage.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/english/ENG-WK-T1-W02.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE in english.json. Scheme row 2 of the source (rule SS1-SRC-a00657d42196-R029) names the objective; WEEK TWO body 3e5b19ca3d9197f9adbcde08a2f0d6b08ed471bcbea63fa53f87eb17e9bfe3e5 does not teach it.",
+      "completion_condition": "ENGLISH-T1-W02-CM02 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W02-PHRASAL-VERBS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, phrasal verbs (coverage ENGLISH-T1-W02-PV02, PV05, LB04)",
+      "objective": "Author original reviewed teaching for the phrasal-verb items that need correction or content: reviewed glosses for the single-particle list (including 'come through'), meanings and examples for the eight look-up verbs, and a corrected, keyed revision item set. Do not copy source text.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/english/ENG-WK-T1-W02.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open items ENGLISH-T1-W02-SOURCE-WORDING-REVIEW and ENGLISH-T1-W02-ANSWER-KEYS in english.json. Source rows: BODY 3bf9e57695b44faa72ac28d81de2c17c964ead8b92356981b6d4fb3bb088f781 and BODY ecb99bd6ceeaf6fa93a91b083b03bc06f1ddcc7605164be60de6c81d9ca64267.",
+      "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W02-ADVERB-CONJ-PREP",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, adverbs, conjunctions, prepositions (coverage ENGLISH-T1-W02-AV02, AV03, CJ04, PP02, PP03)",
+      "objective": "Author original reviewed teaching for the adverb, conjunction and preposition items that need corrected wording: adverb formation list, adjunct/disjunct/conjunct examples, subordinating conjunctions, dependent-preposition pairs and phrase prepositions. Do not copy source text.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/english/ENG-WK-T1-W02.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W02-SOURCE-WORDING-REVIEW in english.json. Source row: BODY dbf347f04ca688cade8a116abfbf8283b1489acfc218054d5664c59a632f4adf (locators in each coverage entry).",
+      "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed against every objective of the row; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-FACT-W02-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W02-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 2 refers to but the source does not contain (Effective English Unit 3 pages 54-55 and Practice 3 page 56; Countdown page 159, Exercise (b) page 160 and pages 271-272 questions 91-100, with answers), or have the owner accept a labelled equivalent activity.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W02-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-004, ENGLISH-BODY-007, ENGLISH-T1-W02-CM01, CM03, LB02, LB03, LB05. Needs owner-supplied material or an owner decision.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
     }
   ],
   "review": {
@@ -3175,6 +3294,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T1-W02"
+    "ENG-WK-T1-W03"
   ]
 }
