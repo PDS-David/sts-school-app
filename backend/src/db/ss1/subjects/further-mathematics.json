@@ -1,0 +1,1797 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "further-mathematics",
+  "canonical_subject": "Further Mathematics",
+  "package_status": {
+    "implementation": "IMPLEMENTED",
+    "content_approval": "NOT_REQUESTED",
+    "verification": "NOT_RUN",
+    "updated_by": "SS1-03 worker B (Claude)",
+    "note": "All three manifest sources are accounted for. NOT COMPLETE: the Third-Term source covers only six weeks (OI-FMATHS-002 blocks student delivery of the missing weeks)."
+  },
+  "sources": [
+    {
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "archive_member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Further Mathematics",
+      "document_header_subject": "SUBJECT: FURTHER MATHEMATICS CLASS: SS1",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "Document header line 2"
+      }
+    },
+    {
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "document_header_subject": "SUBJECT: FURTHER MATHEMATICS",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "Document header line 2"
+      }
+    },
+    {
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "document_header_subject": null,
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "The document has no subject header; assignment rests on the archive path '3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx' and the manifest"
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "rule_id": "FMATHS-R01",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "reason": "Week Six is only a block of first-half-term revision questions with no teaching text; kept as a marker row.",
+      "week_label": "WEEK SIX",
+      "anchor": "Revision Questions",
+      "classification": "EXAM_OR_REVISION_MARKER"
+    },
+    {
+      "rule_id": "FMATHS-R02",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "source_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "reason": "Week Six is only the line \"Revision of half term work\"; kept as a marker row.",
+      "week_label": "WEEK SIX",
+      "anchor": "Revision of half term work",
+      "classification": "EXAM_OR_REVISION_MARKER"
+    },
+    {
+      "rule_id": "FMATHS-R03",
+      "op": "attach_stranded_label",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "reason": "Week Four contains only the stray topic label \"REVIEW OF BASIC CONCEPT OF SET\" (107 characters); it belongs with the Sets row that follows.",
+      "week_label": "WEEK FOUR",
+      "label_anchor": "TOPIC:  REVIEW OF BASIC CONCEPT OF SET",
+      "direction": "NEXT",
+      "use_label_as_title": true
+    }
+  ],
+  "lessons": [
+    {
+      "id": "SUP-SS1-FMATHS-001",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 1,
+      "title": "Laws of indices and their applications",
+      "objectives": [
+        "State and apply the laws of indices.",
+        "Evaluate expressions with zero, negative and fractional indices.",
+        "Simplify algebraic expressions involving indices."
+      ],
+      "body": "In aᵐ, a is the base and m is the index (power or exponent): aᵐ means a multiplied by itself m times.\n\nLAWS (a and b are non-zero real numbers; m and n are rational numbers):\n1. aᵐ × aⁿ = aᵐ⁺ⁿ (multiplication law)\n2. aᵐ ÷ aⁿ = aᵐ⁻ⁿ (division law)\n3. (aᵐ)ⁿ = aᵐⁿ (power of a power)\n4. (ab)ⁿ = aⁿbⁿ and (a/b)ⁿ = aⁿ/bⁿ\n5. a⁰ = 1\n6. a⁻ⁿ = 1/aⁿ\n7. a^(p/q) = (q-th root of a)ᵖ, i.e. a^(1/2) = √a, a^(1/3) = ∛a, a^(2/3) = (∛a)².\n\nExample 1. p³ × p² = (p × p × p) × (p × p) = p⁵. Also 2³ × 2⁴ = 2⁷ = 128.\nExample 2. (3²)³ = 3⁶ = 729.\nExample 3. 8^(2/3) = (∛8)² = 2² = 4. 25^(3/2) = (√25)³ = 125.\nExample 4. 27^(–2/3) = 1/27^(2/3) = 1/(∛27)² = 1/9.\nExample 5. (1/4)^(–1/2) = 4^(1/2) = 2 (a negative index inverts the base).\nExample 6. Simplify (x³y²)² ÷ (x²y) = x⁶y⁴ ÷ x²y = x⁴y³.\nExample 7. (0.000001)² : 0.000001 = 10⁻⁶, so the value is 10⁻¹² = 0.000000000001.\n\nAlways reduce to a single base and a single power before evaluating, and check the sign of each index.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Evaluate 64^(2/3).",
+          "answer": "(∛64)² = 4² = 16.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Evaluate 16^(–3/4).",
+          "answer": "1/16^(3/4) = 1/(⁴√16)³ = 1/2³ = 1/8.",
+          "marking": "1 mark each: reciprocal, root, answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Simplify 2⁵ × 2⁻³ ÷ 2⁰.",
+          "answer": "2² ÷ 1 = 4.",
+          "marking": "1 mark each law."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Simplify (2a²b)³ ÷ (4ab²).",
+          "answer": "8a⁶b³ ÷ 4ab² = 2a⁵b.",
+          "marking": "1 mark expansion, 1 mark each of coefficient and indices."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Evaluate (1/9)^(–3/2).",
+          "answer": "9^(3/2) = (√9)³ = 27.",
+          "marking": "1 mark inversion, 1 mark answer."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-1-001"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-e9efc9a976ed"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-e9efc9a976ed",
+            "week_label": "WEEK ONE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "6cd702d5597952ff6d63ae62502c5069d1c445643fbe2985a6fafe29d76ba479"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-002",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 2,
+      "title": "Indicial and exponential equations, including quadratic form",
+      "objectives": [
+        "Solve exponential equations by equating powers of the same base.",
+        "Solve exponential equations of quadratic form by substitution."
+      ],
+      "body": "RULE. If the bases are equal (and not 0, 1 or –1), the powers are equal: aˣ = aʸ ⇔ x = y. So the first step is to write both sides with the SAME base.\n\nLINEAR FORM\nExample 1. (1/2)ˣ = 8. Write 1/2 = 2⁻¹ and 8 = 2³: 2⁻ˣ = 2³, so –x = 3 and x = –3.\nExample 2. (0.25)ˣ⁺¹ = 16. 0.25 = 4⁻¹ and 16 = 4²: 4⁻⁽ˣ⁺¹⁾ = 4², so –(x + 1) = 2 and x = –3.\nExample 3. 3ˣ = 1/81 = 3⁻⁴, so x = –4.\nExample 4. 10ˣ = 1/0.001 = 1000 = 10³, so x = 3.\nExample 5. 4/2ˣ = 64ˣ. 4/2ˣ = 2²⁻ˣ and 64ˣ = 2⁶ˣ, so 2 – x = 6x and x = 2/7.\n\nQUADRATIC FORM. Substitute y = aˣ and solve the quadratic in y; then reject any y ≤ 0 (aˣ is always positive).\nExample 6. 2²ˣ – 6(2ˣ) + 8 = 0. Let y = 2ˣ: y² – 6y + 8 = 0, (y – 2)(y – 4) = 0, y = 2 or 4. So 2ˣ = 2 gives x = 1 and 2ˣ = 4 gives x = 2.\nExample 7. 2²ˣ⁺¹ – 5(2ˣ) + 2 = 0. Write 2²ˣ⁺¹ = 2 × (2ˣ)²: 2y² – 5y + 2 = 0, (2y – 1)(y – 2) = 0, y = 1/2 or 2. So x = –1 or x = 1.\nExample 8. 3²ˣ – 4(3ˣ⁺¹) + 27 = 0. 3ˣ⁺¹ = 3 × 3ˣ so y² – 12y + 27 = 0, (y – 3)(y – 9) = 0, y = 3 or 9: x = 1 or x = 2.\nExample 9. 3²ˣ – 9 = 0 gives 3²ˣ = 3², x = 1.\n\nCheck each answer by substituting it back.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Solve 2ˣ = 0.125.",
+          "answer": "0.125 = 2⁻³, so x = –3.",
+          "marking": "1 mark rewriting, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Solve 3⁻ˣ = 243.",
+          "answer": "243 = 3⁵ so –x = 5, x = –5.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Solve 25ˣ = 625.",
+          "answer": "625 = 25², so x = 2.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Solve 2²ˣ – 10(2ˣ) + 16 = 0.",
+          "answer": "y² – 10y + 16 = 0, y = 2 or 8, so x = 1 or x = 3.",
+          "marking": "1 mark substitution, 1 mark factors, 1 mark each x."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Solve 9ˣ – 4(3ˣ) + 3 = 0.",
+          "answer": "y = 3ˣ: y² – 4y + 3 = 0, y = 1 or 3, so x = 0 or x = 1.",
+          "marking": "1 mark substitution, 1 mark y, 1 mark each x."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-1-002"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-e9efc9a976ed"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-e9efc9a976ed",
+            "week_label": "WEEK TWO"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "704d4b48a19e5f79d3f0fd921e4cc996647fd663c9e54c8823042c0f95f27b7b"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-003",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 3,
+      "title": "Logarithms: laws, equations and change of base",
+      "objectives": [
+        "Convert between index and logarithmic form.",
+        "Apply the laws of logarithms to simplify and solve.",
+        "Use change of base and standard form (characteristic and mantissa) with tables."
+      ],
+      "body": "DEFINITION. aˣ = N ⇔ logₐ N = x (a > 0, a ≠ 1, N > 0). Logarithm to base 10 is written lg or log.\nExamples: 2⁵ = 32 ⇔ log₂ 32 = 5; 3⁻² = 1/9 ⇔ log₃(1/9) = –2; log₁₀ 0.001 = –3.\n\nLAWS\n1. log(MN) = log M + log N\n2. log(M/N) = log M – log N\n3. log Mᵖ = p log M\n4. logₐ a = 1 and logₐ 1 = 0\n5. CHANGE OF BASE: log_a b = log_c b ÷ log_c a (so log_a b = 1/log_b a).\n\nExample 1. log 2 + log 5 = log 10 = 1.\nExample 2. Write log 12 in terms of log 2 and log 3: log 12 = log(2² × 3) = 2 log 2 + log 3.\nExample 3. Solve log₂(x + 3) + log₂(x – 3) = 4. Then (x + 3)(x – 3) = 2⁴ = 16, x² = 25, x = 5 or –5. For x = –5 the logarithm of a negative number does not exist, so x = 5.\nExample 4. Solve log₁₀(4x² + 1) – 2 log₁₀ x – log₁₀ 2 = 1. Combine: log[(4x² + 1)/(2x²)] = 1, so (4x² + 1)/(2x²) = 10, 4x² + 1 = 20x², x² = 1/16, x = 1/4 (x > 0). Check: (4/16 + 1)/(2/16) = 1.25/0.125 = 10 ✓.\nExample 5. log₂ 3 = log 3 ÷ log 2 = 0.4771 ÷ 0.3010 = 1.585.\n\nSTANDARD FORM AND TABLES. A number N = A × 10ⁿ with 1 ≤ A < 10. log N = n + log A: n is the characteristic and log A (from tables, between 0 and 1) is the mantissa. log 3450 = 3.5378; log 0.00345 = –3 + 0.5378, written 3̄.5378 (bar 3 means –3 + 0.5378 = –2.4622).\nMultiplication: 24.5 × 3.2 : log 24.5 = 1.3892, log 3.2 = 0.5051, sum = 1.8943, antilog gives 78.4.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Write 5³ = 125 in logarithmic form and evaluate log₃ 81.",
+          "answer": "log₅ 125 = 3; log₃ 81 = 4.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Express log(a²b/c) in terms of log a, log b and log c.",
+          "answer": "2 log a + log b – log c.",
+          "marking": "1 mark each law."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Solve log₃ x + log₃(x – 2) = 1.",
+          "answer": "x(x – 2) = 3, x² – 2x – 3 = 0, x = 3 or –1; reject –1, so x = 3.",
+          "marking": "1 mark combine, 1 mark equation, 1 mark rejection."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find x if 2ˣ = 7, using logarithms (3 d.p.).",
+          "answer": "x = log 7 / log 2 = 0.8451/0.3010 = 2.807.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Using tables, log 5.6 = 0.7482. Write down log 560 and log 0.056.",
+          "answer": "2.7482 and 2̄.7482 (= –1.2518).",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-1-003"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-e9efc9a976ed"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-e9efc9a976ed",
+            "week_label": "WEEK THREE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore laws, equations and standard forms that text extraction flattens in the Week Three note; the source's own table-reading exercises remain in the original row. The example in the original evaluation (log₁₀(4x² + 1) – 2 log₁₀ x – log₁₀ 2 = 1) is worked here."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "25a1c6cac73e5cfad4f5d1c6e0d249e0d60ee414d03a4dc9d0c6904bb8539c77"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-004",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 1,
+      "title": "Sequences and series: the arithmetic progression",
+      "objectives": [
+        "Define a sequence and an arithmetic progression (AP).",
+        "Use Tₙ = a + (n – 1)d and Sₙ = (n/2)[2a + (n – 1)d].",
+        "Find arithmetic means."
+      ],
+      "body": "A SEQUENCE is a list of numbers in a definite order (terms T₁, T₂, T₃, …). A SERIES is the sum of the terms.\n\nAn ARITHMETIC PROGRESSION (AP) has a constant common difference d = T₂ – T₁ = T₃ – T₂ = …\nnth term: Tₙ = a + (n – 1)d, where a is the first term.\nSum of the first n terms: Sₙ = (n/2)[2a + (n – 1)d] = (n/2)(a + l), where l is the last term.\nArithmetic mean of two numbers a and b: (a + b)/2. To insert k arithmetic means between a and b, the common difference is d = (b – a)/(k + 1).\n\nExample 1. 3, 7, 11, … a = 3, d = 4. T₁₀ = 3 + 9(4) = 39. S₁₀ = 5(6 + 36) = 210.\nExample 2. How many terms are in 5, 8, 11, …, 62? 5 + (n – 1)3 = 62, n – 1 = 19, n = 20.\nExample 3. Insert 3 arithmetic means between 4 and 20: d = 16/4 = 4, so 4, 8, 12, 16, 20.\nExample 4. The 3rd term of an AP is 11 and the 7th is 27. T₇ – T₃ = 4d = 16, d = 4, a = 11 – 8 = 3.\nExample 5. Sum of the first 20 positive even numbers: a = 2, d = 2, S₂₀ = 10(4 + 38) = 420.\nWhy Sₙ works: write the sum forwards and backwards and add; every pair totals (a + l) and there are n pairs, so 2Sₙ = n(a + l).",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find T₁₅ and S₁₂ of 2, 5, 8, …",
+          "answer": "T₁₅ = 2 + 14(3) = 44; S₁₂ = 6(4 + 33) = 222.",
+          "marking": "1 mark each formula, 1 mark each answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find the sum of the integers from 1 to 100.",
+          "answer": "S = 50(1 + 100) = 5050.",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "The 4th term of an AP is 14 and the 9th is 34. Find a and d.",
+          "answer": "5d = 20, d = 4, a = 2.",
+          "marking": "1 mark equation, 1 mark each of d and a."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find the arithmetic mean of 12 and 30, and insert 4 arithmetic means between 3 and 28.",
+          "answer": "21; d = 25/5 = 5: 3, 8, 13, 18, 23, 28.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q05",
+          "prompt": "How many terms of 7, 11, 15, … must be taken for the sum to be 52?",
+          "answer": "(n/2)(14 + 4(n – 1)) = 52, so 2n² + 5n – 52 = 0, (2n + 13)(n – 4) = 0, n = 4.",
+          "marking": "1 mark substitution, 1 mark quadratic, 1 mark answer with rejection of the negative root."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-2-001"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-43c5ab51b87f"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-43c5ab51b87f",
+            "week_label": "WEEK ONE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax College Algebra, Chapter 9 (sequences, probability and counting theory)",
+          "url": "https://openstax.org/books/college-algebra/pages/chapter-9"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "131a336fc5a15b81ba9ffdcee1b63ad41e12fdfd5b20025d2638c7fc07c84958"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-005",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 2,
+      "title": "Geometric progressions: nth term, sums, geometric mean and sum to infinity",
+      "objectives": [
+        "Use Tₙ = arⁿ⁻¹ and the sum formulas of a GP.",
+        "Find a geometric mean.",
+        "Find the sum to infinity when |r| < 1."
+      ],
+      "body": "A GEOMETRIC PROGRESSION (GP) multiplies each term by a constant common ratio r = T₂/T₁ = T₃/T₂ = …\nnth term: Tₙ = arⁿ⁻¹.\nSum of n terms: Sₙ = a(rⁿ – 1)/(r – 1) (use when r > 1) or Sₙ = a(1 – rⁿ)/(1 – r) (use when r < 1).\nSum to infinity (only if |r| < 1): S∞ = a/(1 – r).\nGeometric mean of positive numbers a and b: √(ab).\n\nExample 1. 2, 6, 18, … a = 2, r = 3. T₆ = 2(3⁵) = 486. S₆ = 2(3⁶ – 1)/2 = 728.\nExample 2. 8, 4, 2, … a = 8, r = 1/2. S∞ = 8/(1 – 1/2) = 16.\nExample 3. The geometric mean of 4 and 25 is √100 = 10 (so 4, 10, 25 is a GP with r = 2.5).\nExample 4. Which term of 3, 6, 12, … is 192? 3(2ⁿ⁻¹) = 192, 2ⁿ⁻¹ = 64 = 2⁶, n = 7.\nExample 5. Write 0.333… as a fraction: 0.3 + 0.03 + 0.003 + … is a GP with a = 0.3, r = 0.1, so S∞ = 0.3/0.9 = 1/3.\nExample 6. T₂ = 6 and T₅ = 48: r³ = 48/6 = 8, r = 2, a = 3.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find T₈ of 1, 2, 4, … and S₅ of 3, 6, 12, …",
+          "answer": "T₈ = 128; S₅ = 3(32 – 1)/1 = 93.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find S∞ of 18, 6, 2, …",
+          "answer": "18/(1 – 1/3) = 27.",
+          "marking": "1 mark ratio, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Find the geometric mean of 3 and 27.",
+          "answer": "√81 = 9.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Express 0.777… as a fraction.",
+          "answer": "a = 0.7, r = 0.1, S∞ = 0.7/0.9 = 7/9.",
+          "marking": "1 mark each of a, r, answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "A GP has T₃ = 12 and T₆ = 96. Find a, r and S₄.",
+          "answer": "r³ = 8, r = 2, a = 3, S₄ = 3(16 – 1) = 45.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-2-002"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-43c5ab51b87f"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-43c5ab51b87f",
+            "week_label": "WEEK TWO"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax College Algebra, Chapter 9 (sequences, probability and counting theory)",
+          "url": "https://openstax.org/books/college-algebra/pages/chapter-9"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "dfbf3be8b15696169740a424b6a22ba114ebc2d76c8049628e6de85cbfcadf1c"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-006",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 3,
+      "title": "Linear and quadratic inequalities in one variable, and absolute values",
+      "objectives": [
+        "Solve linear inequalities and show solutions on a number line.",
+        "Solve quadratic inequalities.",
+        "Solve inequalities involving absolute value."
+      ],
+      "body": "RULES. You may add or subtract the same number on both sides, and multiply or divide by a POSITIVE number, without changing the sign. Multiplying or dividing by a NEGATIVE number reverses the inequality sign.\n\nLINEAR. Example 1. 3x – 5 < 7 gives 3x < 12 and x < 4. Example 2. –2x ≥ 8 gives x ≤ –4 (sign reversed). Example 3. 2 < 3x – 1 ≤ 11 gives 3 < 3x ≤ 12, so 1 < x ≤ 4.\n\nQUADRATIC. Factorise, find the critical values, then test the intervals between them.\nExample 4. x² – 5x + 6 < 0: (x – 2)(x – 3) < 0. The product is negative between the roots: 2 < x < 3.\nExample 5. x² – x – 6 ≥ 0: (x – 3)(x + 2) ≥ 0. The product is non-negative outside the roots: x ≤ –2 or x ≥ 3.\n(For a parabola opening upwards, y < 0 between the roots and y > 0 outside them.)\n\nABSOLUTE VALUE. |x| is the distance of x from 0. |x| < a means –a < x < a; |x| > a means x < –a or x > a.\nExample 6. |x – 3| < 5 gives –5 < x – 3 < 5, so –2 < x < 8.\nExample 7. |2x + 1| ≥ 7 gives 2x + 1 ≥ 7 or 2x + 1 ≤ –7, so x ≥ 3 or x ≤ –4.\n\nOn a number line a filled dot means the end value is included (≤ or ≥) and an open dot means it is not (< or >).",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Solve 5 – 2x > 1.",
+          "answer": "–2x > –4, so x < 2.",
+          "marking": "1 mark each step."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Solve x² + 2x – 8 ≤ 0.",
+          "answer": "(x + 4)(x – 2) ≤ 0, so –4 ≤ x ≤ 2.",
+          "marking": "1 mark factors, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Solve |x + 2| ≤ 3.",
+          "answer": "–3 ≤ x + 2 ≤ 3, so –5 ≤ x ≤ 1.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Solve x² > 9.",
+          "answer": "x < –3 or x > 3.",
+          "marking": "1 mark each part."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Solve –3 < 2x + 1 < 9.",
+          "answer": "–4 < 2x < 8, so –2 < x < 4.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-2-003"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-43c5ab51b87f"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-43c5ab51b87f",
+            "week_label": "WEEK THREE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "fd1e606d1a272b3b13bfb51c4302c1544c044c1fdb3202fc60313a7942a005fa"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-007",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 4,
+      "title": "Inequalities in two variables, graphical solution and linear programming",
+      "objectives": [
+        "Show a linear inequality in two variables as a region.",
+        "Find the region satisfying several inequalities.",
+        "Maximise or minimise an objective function at the vertices."
+      ],
+      "body": "A LINEAR INEQUALITY IN TWO VARIABLES, e.g. x + y ≤ 6, is shown as a region of the plane.\n1. Draw the boundary line x + y = 6 (find two points, e.g. (0, 6) and (6, 0)).\n2. Use a solid line for ≤ or ≥ and a dashed line for < or >.\n3. Test a point not on the line (usually the origin): 0 + 0 ≤ 6 is true, so the side containing (0, 0) is the required side.\n4. For several inequalities, the solution is the region satisfying ALL of them. State whether you shade the wanted or the unwanted region and label it.\n\nLINEAR PROGRAMMING finds the largest or smallest value of an objective function such as P = ax + by over a feasible region. The optimum occurs at a vertex (corner) of the region, so list the vertices and evaluate P at each.\nExample. Maximise P = 3x + 2y subject to x + y ≤ 4, x ≤ 3, x ≥ 0, y ≥ 0. Vertices: (0, 0), (3, 0), (3, 1), (0, 4). P = 0, 9, 11, 8. The maximum is 11 at (3, 1).\n(For a word problem define x and y first, write each condition as an inequality, draw the region, then test the vertices.)",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Maximise P = 2x + 3y subject to x + y ≤ 5, x ≤ 4, y ≤ 3, x ≥ 0, y ≥ 0.",
+          "answer": "Vertices (0,0), (4,0), (4,1), (2,3), (0,3): P = 0, 8, 11, 13, 9. Maximum 13 at (2, 3).",
+          "marking": "1 mark region, 1 mark vertices, 1 mark values, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Describe the region defined by y ≥ 0, x ≥ 0 and x + 2y ≤ 8 and list its vertices.",
+          "answer": "Triangle with vertices (0,0), (8,0), (0,4).",
+          "marking": "1 mark each of line, test, vertices."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Minimise C = 2x + y subject to x + y ≥ 4, x ≥ 1, y ≥ 0.",
+          "answer": "Vertices (1,3) and (4,0): C = 5 and 8 (the region is unbounded above). Minimum 5 at (1, 3).",
+          "marking": "1 mark vertices, 1 mark values, 1 mark answer."
+        },
+        {
+          "id": "Q04",
+          "prompt": "A trader sells x bags of rice and y bags of beans, with x + y ≤ 20 and x ≥ 5, y ≥ 3. Write the inequalities that describe the situation and state one possible value of (x, y).",
+          "answer": "x + y ≤ 20, x ≥ 5, y ≥ 3; e.g. (10, 8).",
+          "marking": "1 mark each inequality, 1 mark point."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-2-004"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-43c5ab51b87f"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-43c5ab51b87f",
+            "week_label": "WEEK FOUR"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore the graphs of regions that text extraction drops from the Week Four note. Figures are described in words; none was invented."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "ed7c6abf37c22e3edbeea8d439a4c2be650ddaaea0758956377dcaf8652fa6da"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-008",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 5,
+      "title": "Functions: one-to-one and onto mappings, composite and inverse functions",
+      "objectives": [
+        "Define one-to-one and onto mappings.",
+        "Form composite functions fg(x) and gf(x).",
+        "Find the inverse f⁻¹(x) of a function."
+      ],
+      "body": "A mapping f : X → Y gives each element of X exactly one image in Y. It is ONE-TO-ONE if different elements have different images, and ONTO if every element of Y is the image of some element of X (the range equals the co-domain).\n\nCOMPOSITE FUNCTION. fg(x) = f(g(x)): apply g first, then f. In general fg ≠ gf.\nExample 1. f(x) = 3x – 1 and g(x) = x². fg(x) = 3x² – 1; gf(x) = (3x – 1)².\nExample 2. f(x) = x + 4 and g(x) = 2x. fg(x) = 2x + 4; gf(x) = 2(x + 4) = 2x + 8.\n\nINVERSE FUNCTION. f⁻¹ undoes f, so f⁻¹(f(x)) = x. Method: write y = f(x), swap the roles of x and y (make x the subject), then replace y by x.\nExample 3. f(x) = 2x + 3: y = 2x + 3, x = (y – 3)/2, so f⁻¹(x) = (x – 3)/2.\nExample 4. f(x) = (x + 1)/(x – 2), x ≠ 2. y(x – 2) = x + 1, xy – 2y = x + 1, x(y – 1) = 2y + 1, so f⁻¹(x) = (2x + 1)/(x – 1), x ≠ 1. Check: f(f⁻¹(x)) = x.\nOnly a one-to-one function has an inverse function. The graph of f⁻¹ is the reflection of the graph of f in the line y = x.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "f(x) = x + 4 and g(x) = 2x. Find fg(x) and gf(x).",
+          "answer": "fg(x) = 2x + 4; gf(x) = 2x + 8.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find f⁻¹(x) if f(x) = 5x – 2.",
+          "answer": "f⁻¹(x) = (x + 2)/5.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "f(x) = x² + 1 and g(x) = 2x – 3. Find fg(2) and gf(2).",
+          "answer": "g(2) = 1 so fg(2) = 2; f(2) = 5 so gf(2) = 7.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find f⁻¹(x) if f(x) = 3/(x + 1), x ≠ –1.",
+          "answer": "x + 1 = 3/y, so f⁻¹(x) = (3 – x)/x, x ≠ 0.",
+          "marking": "1 mark rearrangement, 1 mark answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Is f(x) = x² on all real numbers one-to-one? Give a reason.",
+          "answer": "No: f(2) = f(–2) = 4.",
+          "marking": "1 mark answer, 1 mark reason."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-2-007"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-43c5ab51b87f"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-43c5ab51b87f",
+            "week_label": "WEEK SEVEN"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "a6aa279cb1798cd597be985a86e5a92377405681499103a79642516ab60bebbf"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-009",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 6,
+      "title": "Trigonometric ratios, special angles, general angles and identities",
+      "objectives": [
+        "Define the six trigonometric ratios.",
+        "Use the exact values for 30°, 45° and 60°.",
+        "Use quadrant rules and the basic identities."
+      ],
+      "body": "RATIOS. In a right-angled triangle, for an acute angle θ: sin θ = opp/hyp, cos θ = adj/hyp, tan θ = opp/adj = sin θ/cos θ. Reciprocals: sec θ = 1/cos θ, cosec θ = 1/sin θ, cot θ = 1/tan θ.\n\nSPECIAL ANGLES (from an equilateral triangle of side 2 and an isosceles right triangle):\nsin 30° = 1/2, cos 30° = √3/2, tan 30° = 1/√3; sin 45° = cos 45° = 1/√2, tan 45° = 1; sin 60° = √3/2, cos 60° = 1/2, tan 60° = √3.\n\nIDENTITIES: sin²θ + cos²θ = 1; 1 + tan²θ = sec²θ; 1 + cot²θ = cosec²θ.\n\nGENERAL ANGLES. Measure the angle anticlockwise from the positive x-axis. In quadrant 1 all ratios are positive; in quadrant 2 only sine; in quadrant 3 only tangent; in quadrant 4 only cosine (\"All, Sine, Tangent, Cosine\"). Reduce to an acute angle: sin(180° – θ) = sin θ, cos(180° – θ) = –cos θ, tan(180° – θ) = –tan θ; sin(180° + θ) = –sin θ, cos(180° + θ) = –cos θ, tan(180° + θ) = tan θ; sin(360° – θ) = –sin θ, cos(360° – θ) = cos θ, tan(360° – θ) = –tan θ.\n\nExample 1. sin θ = 5/13, θ acute: cos θ = 12/13, tan θ = 5/12, sec θ = 13/12.\nExample 2. sin 150° = sin 30° = 1/2; cos 210° = –cos 30° = –√3/2; tan 300° = –tan 60° = –√3.\nExample 3. Show (sin θ + cos θ)² = 1 + 2 sin θ cos θ: expand to sin²θ + 2 sin θ cos θ + cos²θ and use sin²θ + cos²θ = 1.\nExample 4. Solve sin θ = 1/2 for 0° ≤ θ ≤ 360°: θ = 30° or 150°.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "cos θ = 3/5, θ acute. Find sin θ and tan θ.",
+          "answer": "sin θ = 4/5, tan θ = 4/3.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Evaluate sin 135°, cos 120°, tan 225°.",
+          "answer": "√2/2, –1/2, 1.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Simplify cos θ tan θ.",
+          "answer": "cos θ × (sin θ/cos θ) = sin θ.",
+          "marking": "1 mark each step."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Solve cos θ = –1/2 for 0° ≤ θ ≤ 360°.",
+          "answer": "θ = 120° or 240°.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Prove tan²θ + 1 = sec²θ.",
+          "answer": "Divide sin²θ + cos²θ = 1 by cos²θ.",
+          "marking": "1 mark method, 1 mark conclusion."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-2-008"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-43c5ab51b87f"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-43c5ab51b87f",
+            "week_label": "WEEK EIGHT"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, fractions, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Algebra and Trigonometry: Right Triangle Trigonometry (via LibreTexts)",
+          "url": "https://math.libretexts.org/Bookshelves/Algebra/Book%3A_Algebra_and_Trigonometry_(OpenStax)/07%3A_The_Unit_Circle_-_Sine_and_Cosine_Functions/7.02%3A_Right_Triangle_Trigonometry/7.2E%3A_Right_Triangle_Trigonometry_(Exercises)"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "49fd845284cad8b6d33486e3fd169d207112811e0b1c9e8eb87b6a9a3bf3264b"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-010",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 1,
+      "title": "Flowcharts: symbols, algorithms and tracing",
+      "objectives": [
+        "Name the standard flowchart symbols.",
+        "Draw and trace a flowchart for a simple problem."
+      ],
+      "body": "A flowchart is a diagram that shows the steps of a solution (an algorithm) in order. Standard symbols: an OVAL for Start and Stop; a PARALLELOGRAM for input or output; a RECTANGLE for a process (a calculation); a DIAMOND for a decision with two exits labelled Yes and No; ARROWS for the direction of flow.\n\nAdvantages: it helps in planning a computer program; it makes a solution easy to follow and to check; it exposes errors in the logic before coding.\n\nExample 1 (perimeter of a rectangle). Start → Input l and b → P = 2(l + b) → Output P → Stop. For l = 7 and b = 3, P = 20.\nExample 2 (even or odd). Start → Input n → Is n ÷ 2 a whole number? Yes → Output \"even\"; No → Output \"odd\" → Stop.\nExample 3 (tracing a loop). Set S = 0 and i = 1. Decision: is i ≤ 4? If Yes: S = S + i, i = i + 1, go back to the decision; if No: output S. Trace: i = 1, S = 1; i = 2, S = 3; i = 3, S = 6; i = 4, S = 10; i = 5 stops, output 10.\nUse a trace table (columns for each variable) to check a flowchart with test values.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Draw (describe step by step) a flowchart for the area of a triangle, ½ × base × height.",
+          "answer": "Start; Input b and h; A = ½ × b × h; Output A; Stop.",
+          "marking": "1 mark symbols, 1 mark order, 1 mark formula."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Trace Example 3 with 'is i ≤ 5?' instead and state the output.",
+          "answer": "S = 15.",
+          "marking": "1 mark trace table, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Describe a flowchart that outputs the larger of two numbers a and b.",
+          "answer": "Input a, b; Is a > b? Yes: Output a; No: Output b; Stop.",
+          "marking": "1 mark decision, 1 mark both outputs."
+        },
+        {
+          "id": "Q04",
+          "prompt": "State two advantages of using a flowchart.",
+          "answer": "Any two: easier to understand, aids planning of a program, helps find errors.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-3-002"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-c7a7523bdb0d"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-c7a7523bdb0d",
+            "week_label": "WEEK 2"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore fractions, square roots, symbols and figures that text extraction drops from the Third Term note."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "9a8b54e1450f307360e59dbb96a6a7139b6e26e61d1ff8d478a5bd87d9f6ad85"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-011",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 2,
+      "title": "Gradients of straight lines and curves",
+      "objectives": [
+        "Calculate the gradient of a line from two points or from its equation.",
+        "Use y = mx + c, and the rules for parallel and perpendicular lines.",
+        "Estimate the gradient of a curve at a point."
+      ],
+      "body": "The gradient (slope) of a line measures how steeply y changes with x: m = (y₂ – y₁)/(x₂ – x₁).\n\nExample 1. P(7, –2) and Q(–1, 2): m = (2 – (–2))/(–1 – 7) = 4/(–8) = –1/2.\nExample 2. Gradient of 7x + 4y – 8 = 0: 4y = –7x + 8, y = –(7/4)x + 2, so m = –7/4 and the y-intercept is 2.\nExample 3. Sketch 4x – 3y = 12: x = 0 gives y = –4 (point (0, –4)); y = 0 gives x = 3 (point (3, 0)). m = 4/3.\nLines parallel to the x-axis have the form y = c (gradient 0). Lines parallel to the y-axis have the form x = a (gradient undefined).\nParallel lines have equal gradients; perpendicular lines satisfy m₁m₂ = –1.\n\nGRADIENT OF A CURVE. The gradient at a point of a curve is the gradient of the tangent at that point.\nExample 4. y = x²/4 for x = –2 to 3: y = 1, 0.25, 0, 0.25, 1, 2.25 (x = –2, –1, 0, 1, 2, 3). Draw the curve and the tangent at x = 3: it rises about 1.5 for each 1 across, so the gradient is 1.5. At x = –2 the tangent falls 1 for each 1 across, so the gradient is –1. A check by chords: from (3, 2.25) to (3.5, 3.0625) the gradient is 1.625, close to 1.5; shorter chords get closer.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find the gradient of the line through (1, 3) and (5, 11).",
+          "answer": "(11 – 3)/(5 – 1) = 2.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find the gradient and y-intercept of 3x + 2y = 12.",
+          "answer": "y = –(3/2)x + 6: m = –3/2, c = 6.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Find the gradient of a line parallel to 2x + y = 5 and of a line perpendicular to y = 2x + 1.",
+          "answer": "–2; –1/2.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Draw y = x²/2 for x = –2 to 2 and estimate the gradient at x = 2 by a tangent.",
+          "answer": "Table 2, 0.5, 0, 0.5, 2; gradient about 2 (accept 1.8–2.2).",
+          "marking": "1 mark table, 1 mark curve, 1 mark tangent, 1 mark gradient."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-3-003"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-c7a7523bdb0d"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-c7a7523bdb0d",
+            "week_label": "WEEK 3"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore fractions, square roots, symbols and figures that text extraction drops from the Third Term note."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "f74eb5184ab293b1983e51752a1da72d5ac4f867673af3e0d16edfa8c52300d6"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-012",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 3,
+      "title": "Angle of slope and the angle between two lines",
+      "objectives": [
+        "Find the angle of slope of a line from its gradient.",
+        "Find the angle between two lines."
+      ],
+      "body": "The ANGLE OF SLOPE θ of a line is the angle it makes with the positive x-axis, measured anticlockwise, and tan θ = m (the gradient).\nExample 1. Line through (3, 2) and (7, 10): m = 8/4 = 2, so θ = tan⁻¹ 2 = 63.4°.\nIf m is negative, θ is obtuse: θ = 180° – tan⁻¹|m|. For m = –1, θ = 135°. For m = –√3, θ = 120°.\n\nANGLE BETWEEN TWO LINES with gradients m₁ and m₂: tan φ = |(m₁ – m₂)/(1 + m₁m₂)|.\nExample 2. m₁ = 2 and m₂ = 1/3: tan φ = (2 – 1/3)/(1 + 2/3) = (5/3)/(5/3) = 1, so φ = 45°. (Alternatively θ₁ = 63.4°, θ₂ = 18.4°, and 63.4° – 18.4° = 45°.)\nIf m₁m₂ = –1 the denominator is 0 and the lines are perpendicular (φ = 90°). If m₁ = m₂ the numerator is 0 and the lines are parallel.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find the angle of slope of the line through (1, 1) and (4, 7).",
+          "answer": "m = 2, θ = 63.4°.",
+          "marking": "1 mark gradient, 1 mark angle."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find the acute angle between y = 3x + 1 and y = x – 2.",
+          "answer": "tan φ = (3 – 1)/(1 + 3) = 0.5, φ = 26.6°.",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Find the angle of slope when m = –√3.",
+          "answer": "180° – 60° = 120°.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Show that y = 2x + 1 and y = –x/2 + 3 are perpendicular.",
+          "answer": "2 × (–1/2) = –1.",
+          "marking": "1 mark product, 1 mark conclusion."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-3-004",
+        "FMATHS-3-008"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-c7a7523bdb0d"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-c7a7523bdb0d",
+            "week_label": "WEEK 4"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore fractions, square roots, symbols and figures that text extraction drops from the Third Term note."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry: Right Triangle Trigonometry (via LibreTexts)",
+          "url": "https://math.libretexts.org/Bookshelves/Algebra/Book%3A_Algebra_and_Trigonometry_(OpenStax)/07%3A_The_Unit_Circle_-_Sine_and_Cosine_Functions/7.02%3A_Right_Triangle_Trigonometry/7.2E%3A_Right_Triangle_Trigonometry_(Exercises)"
+        }
+      ],
+      "content_hash": "76e089413a123d795fe669a3d14b41d11c5721216ecc108a724442b30344abff"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-013",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 4,
+      "title": "Vectors: modulus, unit vectors, direction cosines and arithmetic",
+      "objectives": [
+        "Find the modulus of a vector.",
+        "Find a unit vector and direction cosines.",
+        "Add, subtract and scale vectors in component form."
+      ],
+      "body": "A vector r = ai + bj (or ai + bj + ck) has MODULUS |r| = √(a² + b²) (or √(a² + b² + c²)). The zero vector has modulus 0; the negative vector –a has the same size and opposite direction; two vectors are equal if they have the same magnitude and direction.\nExample 1. |3i + 4j| = √(9 + 16) = 5; |–2i – 5j| = √29; |3i – 4j + 12k| = √(9 + 16 + 144) = 13.\n\nUNIT VECTOR in the direction of r: r̂ = r/|r|, and |r̂| = 1.\nExample 2. r = 2i + 3j: |r| = √13, r̂ = (2i + 3j)/√13. q = 4i – 5j: |q| = √41, q̂ = (4i – 5j)/√41. p = 7i + 2j – 3k: |p| = √62, p̂ = (7i + 2j – 3k)/√62.\n\nDIRECTION COSINES of r = ai + bj + ck are a/|r|, b/|r|, c/|r| (the cosines of the angles r makes with the axes); their squares add to 1.\nExample 3. r = 2i + 3j + 6k: |r| = 7; direction cosines 2/7, 3/7, 6/7.\n\nARITHMETIC: add and subtract component by component; multiply every component by a scalar.\nExample 4. p = 2i – 3j, q = 3i + 5j, r = i + j. 2p + q + 3r = (4i – 6j) + (3i + 5j) + (3i + 3j) = 10i + 2j. 3p – 2q = (6i – 9j) – (6i + 10j) = –19j.\nExample 5. AB = a – b and AC = 2a + 3b, with a = 2i + 3j and b = 3i – 2j. BC = AC – AB = a + 4b = (2i + 3j) + (12i – 8j) = 14i – 5j.\n\nNOTE: the source note's Example (3p – 2q) uses 3p = 9i – 9j, which does not follow from p = 2i – 3j; the corrected working above is used here.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find |6i – 8j| and the unit vector in its direction.",
+          "answer": "10; (6i – 8j)/10 = 0.6i – 0.8j.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find the direction cosines of 2i + 3j + 6k.",
+          "answer": "2/7, 3/7, 6/7.",
+          "marking": "1 mark modulus, 1 mark cosines."
+        },
+        {
+          "id": "Q03",
+          "prompt": "a = i + 2j and b = 3i – j. Find 3a – 2b.",
+          "answer": "3i + 6j – 6i + 2j = –3i + 8j.",
+          "marking": "1 mark each part."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find the modulus of 2p + q + 3r in Example 4.",
+          "answer": "|10i + 2j| = √104 = 10.2.",
+          "marking": "1 mark result vector, 1 mark modulus."
+        },
+        {
+          "id": "Q05",
+          "prompt": "If |ai + 4j| = 5, find a.",
+          "answer": "a² + 16 = 25, a = ±3.",
+          "marking": "1 mark equation, 1 mark both values."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-3-005",
+        "FMATHS-3-006"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-c7a7523bdb0d"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-c7a7523bdb0d",
+            "week_label": "WEEK 5"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore fractions, square roots, symbols and figures that text extraction drops from the Third Term note. The source's Week 5 and Week 6 notes repeat the same vector content; the repeated content is covered once."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "fb5a56cf04081165987fc83ed985cd9c1afe6cffabbef7e19a299c7022cc8a2b"
+    },
+    {
+      "id": "SUP-SS1-FMATHS-014",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Further Mathematics",
+      "sequence": 5,
+      "title": "The equation of a straight line: gradient–point and two-point forms",
+      "objectives": [
+        "Find the equation of a line from a gradient and a point.",
+        "Find the equation of a line through two points."
+      ],
+      "body": "The equation of a straight line is y = mx + c, where m is the gradient and c is the y-intercept.\n\nGRADIENT AND ONE POINT: y – y₁ = m(x – x₁).\nExample 1. Gradient –1/3 through (–3, 2): y – 2 = –(1/3)(x + 3). Multiply by 3: 3y – 6 = –x – 3, so x + 3y = 3.\n\nTWO POINTS: (y – y₁)/(y₂ – y₁) = (x – x₁)/(x₂ – x₁), or find m = (y₂ – y₁)/(x₂ – x₁) first and use the one-point form.\nExample 2. Through (1, 4) and (–2, 6): m = (6 – 4)/(–2 – 1) = –2/3. y – 4 = –(2/3)(x – 1), so 3y – 12 = –2x + 2 and 2x + 3y = 14. Check (–2, 6): –4 + 18 = 14 ✓.\n\nPARALLEL AND PERPENDICULAR. Example 3. The line through (2, 3) parallel to 4x – 2y = 1 (m = 2): y – 3 = 2(x – 2), y = 2x – 1. The line through (0, 4) perpendicular to y = –x/2 + 1 has m = 2: y = 2x + 4.\n\nIntercepts: put y = 0 for the x-intercept and x = 0 for the y-intercept. For 3x – 4y = 12 these are (4, 0) and (0, –3).",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find the equation of the line with gradient 2 through (1, 5).",
+          "answer": "y – 5 = 2(x – 1), y = 2x + 3.",
+          "marking": "1 mark form, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find the equation of the line through (0, –1) and (3, 5).",
+          "answer": "m = 2, y = 2x – 1.",
+          "marking": "1 mark gradient, 1 mark equation."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Find the equation of the line through (2, 3) perpendicular to 2x + y = 5.",
+          "answer": "m = 1/2: y – 3 = (x – 2)/2, so x – 2y + 4 = 0.",
+          "marking": "1 mark gradient, 1 mark equation."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find the intercepts of 3x – 4y = 12.",
+          "answer": "(4, 0) and (0, –3).",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "FMATHS-3-009"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-c7a7523bdb0d"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-c7a7523bdb0d",
+            "week_label": "WEEK 8"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore fractions, square roots, symbols and figures that text extraction drops from the Third Term note."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "90fe16df998d72abb9c6316b71af83d8ced544c41ba3d22fb9fe150b0e48e193"
+    }
+  ],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [
+    {
+      "objective_id": "FMATHS-1-001",
+      "term_label": "1st Term",
+      "objective_text": "Indices: basic laws and application of indices",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK ONE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK ONE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-001"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-1-002",
+      "term_label": "1st Term",
+      "objective_text": "Indicial and exponential equations",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK TWO"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK TWO"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-002"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-1-003",
+      "term_label": "1st Term",
+      "objective_text": "Logarithms: laws and application",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK THREE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK THREE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-003"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-1-004",
+      "term_label": "1st Term",
+      "objective_text": "Review of basic concept of sets",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK FIVE",
+        "anchor": "IDEA OF SET, NOTATIONS, APPLICATIONS"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK FIVE",
+          "anchor": "IDEA OF SET, NOTATIONS, APPLICATIONS"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "The stranded Week Four label is attached to this row by rule FMATHS-R03."
+    },
+    {
+      "objective_id": "FMATHS-1-005",
+      "term_label": "1st Term",
+      "objective_text": "Sets: idea of a set, notations, disjoint sets, Venn diagram, applications",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK FIVE",
+        "anchor": "IDEA OF SET, NOTATIONS, APPLICATIONS"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK FIVE",
+          "anchor": "IDEA OF SET, NOTATIONS, APPLICATIONS"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-1-006",
+      "term_label": "1st Term",
+      "objective_text": "Operations on sets and Venn diagrams with three sets",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK FIVE",
+        "anchor": "Use of Venn diagrams to solve problems involving three sets"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK FIVE",
+          "anchor": "Use of Venn diagrams to solve problems involving three sets"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Worked examples with numbers are in extractable text; drawn diagrams are lost."
+    },
+    {
+      "objective_id": "FMATHS-1-007",
+      "term_label": "1st Term",
+      "objective_text": "First-half-term revision questions",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK SIX"
+      },
+      "status": "MARKER",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK SIX"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Revision-question row with no new teaching."
+    },
+    {
+      "objective_id": "FMATHS-1-008",
+      "term_label": "1st Term",
+      "objective_text": "Binary operations: closure, commutative, associative and distributive properties",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK SEVEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK SEVEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-1-009",
+      "term_label": "1st Term",
+      "objective_text": "Binary operations: identity and inverse elements",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK EIGHT"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK EIGHT"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-1-010",
+      "term_label": "1st Term",
+      "objective_text": "Surds: rules, simplification, conjugates and rationalisation",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK NINE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK NINE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-1-011",
+      "term_label": "1st Term",
+      "objective_text": "Statistics: mean, median and mode of ungrouped and grouped data",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-e9efc9a976ed",
+        "week_label": "WEEK TEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-e9efc9a976ed",
+          "week_label": "WEEK TEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-2-001",
+      "term_label": "2nd Term",
+      "objective_text": "Sequence and series: arithmetic progression",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK ONE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK ONE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-004"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-002",
+      "term_label": "2nd Term",
+      "objective_text": "Geometric progression",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK TWO"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK TWO"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-005"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-003",
+      "term_label": "2nd Term",
+      "objective_text": "Linear inequalities in one variable, quadratic inequalities, absolute values",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK THREE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK THREE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-006"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-004",
+      "term_label": "2nd Term",
+      "objective_text": "Inequalities in two variables and linear programming",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK FOUR"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK FOUR"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-007"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-005",
+      "term_label": "2nd Term",
+      "objective_text": "Mapping and functions: domain, co-domain, range",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK FIVE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK FIVE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-2-006",
+      "term_label": "2nd Term",
+      "objective_text": "Review of half-term work",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK SIX"
+      },
+      "status": "MARKER",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK SIX"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Revision marker row with no new teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-007",
+      "term_label": "2nd Term",
+      "objective_text": "Functions: one-to-one, onto, composite and inverse",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK SEVEN"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK SEVEN"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-008"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-008",
+      "term_label": "2nd Term",
+      "objective_text": "Trigonometric ratios, special angles, general angles and identities",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK EIGHT"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK EIGHT"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-009"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-2-009",
+      "term_label": "2nd Term",
+      "objective_text": "Logic: statements, negation, conditional and bi-conditional statements",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK NINE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK NINE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-2-010",
+      "term_label": "2nd Term",
+      "objective_text": "Logical reasoning: connectives, tautology and contradiction",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK TEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-43c5ab51b87f",
+          "week_label": "WEEK TEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "FMATHS-2-011",
+      "term_label": "2nd Term",
+      "objective_text": "Revision of Second Term and examination (scheme weeks 11-12)",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-43c5ab51b87f",
+        "week_label": "WEEK TEN"
+      },
+      "status": "UNRESOLVED",
+      "evidence": [],
+      "open_item_ids": [
+        "OI-FMATHS-003"
+      ],
+      "note": "Scheme weeks 11 and 12 have no body in the source."
+    },
+    {
+      "objective_id": "FMATHS-3-002",
+      "term_label": "3rd Term",
+      "objective_text": "Flowcharts",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 2"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 2"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-010"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-3-003",
+      "term_label": "3rd Term",
+      "objective_text": "Gradients of straight lines and curves",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 3"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 3"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-011"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-3-004",
+      "term_label": "3rd Term",
+      "objective_text": "Straight line: angle of slope and angle between lines",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 4"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 4"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-012"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-3-005",
+      "term_label": "3rd Term",
+      "objective_text": "Vectors: modulus, unit vector, arithmetic of vectors",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 5"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 5"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-013"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-3-006",
+      "term_label": "3rd Term",
+      "objective_text": "Vectors (Week 6 note repeats the Week 5 content)",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 6"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 6"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-013"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-3-008",
+      "term_label": "3rd Term",
+      "objective_text": "Angle between two lines",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 8"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 8"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-012"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "FMATHS-3-009",
+      "term_label": "3rd Term",
+      "objective_text": "Equation of a straight line: gradient-and-one-point and two-point forms",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-c7a7523bdb0d",
+        "week_label": "WEEK 8"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-c7a7523bdb0d",
+          "week_label": "WEEK 8"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-FMATHS-014"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    }
+  ],
+  "open_items": [
+    {
+      "id": "OI-FMATHS-001",
+      "kind": "OWNER_ACTION",
+      "description": "The importer text extraction drops Word equations, flattens superscripts (a^m appears as \"a m\"), loses fractions and square roots in the 3rd Term note, and drops drawn figures (Venn diagrams, graphs, mapping diagrams, flowcharts). Authored lessons carry the teaching where this loss is serious; original rows remain lossy.",
+      "owner_action": "Foundation owner / SS1-08: add SS1 equation and superscript recovery to extractText and decide how figures are bound; re-capture the original rows afterwards. No delivery correction is bound to a body hash for this reason.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed",
+        "SS1-SRC-43c5ab51b87f",
+        "SS1-SRC-c7a7523bdb0d"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-FMATHS-002",
+      "kind": "MISSING_MATERIAL",
+      "description": "The Third-Term source has no scheme of work and covers only Weeks 2, 3, 4, 5, 6 and 8. Weeks 1, 7, 9 and later have no source text, so no Third-Term objective can be listed for them.",
+      "owner_action": "Teacher supplies the Third-Term scheme and the missing weekly notes (or confirms which weeks do not exist); then objectives, coverage and lessons for them are added.",
+      "affected_ids": [
+        "SS1-SRC-c7a7523bdb0d"
+      ],
+      "blocks_student_delivery": true,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-FMATHS-003",
+      "kind": "MISSING_MATERIAL",
+      "description": "Second-Term scheme weeks 11 (revision) and 12 (examination) have no body in the source.",
+      "owner_action": "Teacher confirms whether a revision plan exists and supplies it, or confirms the weeks are examination-only.",
+      "affected_ids": [
+        "FMATHS-2-011"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-FMATHS-004",
+      "kind": "OTHER",
+      "description": "Third-Term Week 6 repeats the Week 5 vector content (modulus, unit vector, arithmetic of vectors). The two bodies are not byte-identical, so no exclude_proven_duplicate rule is justified; both rows are kept and one lesson covers them.",
+      "owner_action": "Teacher confirms Week 6 should repeat or supplies different Week 6 content.",
+      "affected_ids": [
+        "FMATHS-3-006",
+        "SUP-SS1-FMATHS-013"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-FMATHS-005",
+      "kind": "OTHER",
+      "description": "Source Third-Term Week 5 Example (3p - 2q) uses 3p = 9i - 9j although p = 2i - 3j (3p = 6i - 9j); the stated answer 3i - 19j is therefore wrong (correct: -19j). The Third-Term note also contains the stray word \"jss3\" and cites \"New General Mathematics for SSS 2\" (Week 3).",
+      "owner_action": "Teacher corrects the original note if needed.",
+      "affected_ids": [
+        "SS1-SRC-c7a7523bdb0d",
+        "SUP-SS1-FMATHS-013"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-FMATHS-007",
+      "kind": "OWNER_ACTION",
+      "description": "Authored lessons cite open textbooks only at page URLs that a web search listed; the pages were not opened or checked line by line, and wording is the worker's own. Teacher content approval has not been requested. SUPPORTED rows were judged adequate from extracted text only; figures were not inspected.",
+      "owner_action": "Teacher reviews the 14 lessons and the SUPPORTED rows; integrator checks reference URLs.",
+      "affected_ids": [
+        "SUP-SS1-FMATHS-001",
+        "SUP-SS1-FMATHS-014"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-FMATHS-008",
+      "kind": "MISSING_MATERIAL",
+      "description": "Drawn figures in the sources (Venn diagrams, mapping diagrams, graphs, flowcharts, vector and straight-line figures) are not extracted as assets; none was invented.",
+      "owner_action": "SS1-08 / owner: render and bind source figures.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed",
+        "SS1-SRC-43c5ab51b87f",
+        "SS1-SRC-c7a7523bdb0d"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    }
+  ]
+}

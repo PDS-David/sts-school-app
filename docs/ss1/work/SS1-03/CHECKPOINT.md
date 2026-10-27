@@ -5,7 +5,7 @@ Contract `ss1-subject-v1`. Base SHA 4182582d537712dbc73d6ce411b8b2feabd9c05b. Te
 | Subject | Status | Notes |
 |---|---|---|
 | mathematics | IN_PROGRESS — NOT COMPLETE | 2nd/3rd Term authored (16 equivalent lessons, 2 marker rules). 1st Term blocked: supplied file bytes differ from manifest (OI-MATHS-001). |
-| further-mathematics | NOT STARTED | |
+| further-mathematics | IMPLEMENTED — TESTING DEFERRED BY OWNER (NOT COMPLETE) | 1st/2nd/3rd Term sources all accounted for; 14 equivalent lessons; 3 rules. 3rd Term source has only weeks 2-6 and 8 (OI-FMATHS-002 blocks delivery of the rest). |
 | physics | NOT STARTED | |
 | technical-drawing | NOT STARTED | |
 
