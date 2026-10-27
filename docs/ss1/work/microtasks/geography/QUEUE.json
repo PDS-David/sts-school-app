@@ -1,0 +1,303 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Geography",
+  "slug": "geography",
+  "generated_from": {
+    "master_sha": "d01704cd15aa69241a8775c5e072fd2297b1d71b",
+    "package": null,
+    "task": "Missing Geography queue added from manifest and master's contract; no originals opened."
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Repository-only queue. No Geography package, week inventory or authored lessons exists in the reviewed tree.",
+    "Three source assignments require original-header verification. Unknown weeks are inventory tasks, not guessed lessons.",
+    "All SS1 terms are instructional. No tests, typechecks, importer or database operations run."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INVENTORY": 3,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 1
+  },
+  "status_counts": {
+    "PENDING": 7,
+    "BLOCKED": 1
+  },
+  "items": [
+    {
+      "id": "GEO-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+      "objective": "Register the 1st Term Geography source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug geography, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-SRC-T1.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "Manifest assignment SS1-SRC-1c1c1bdcecb4, SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc, 4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "GEO-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc",
+      "objective": "Register the 2nd Term Geography source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by GEO-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-SRC-T2.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Manifest assignment SS1-SRC-ba9dee61c27c, SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc, fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "GEO-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+      "objective": "Register the 3rd Term Geography source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by GEO-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-SRC-T3.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Manifest assignment SS1-SRC-74a10d374306, SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc, 54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "GEO-INV-T1",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "whole document",
+      "objective": "Inventory the 1st Term document's explicit scheme/week headings and substantive unlabelled sections, recording reproducible locators. Append one small indexing task per evidenced week/section. List maps, diagrams and tables needing separate visual inspection; do not recover or interpret all assets in this task. Do not add lessons or source rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Manifest assignment SS1-SRC-1c1c1bdcecb4, SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc, 4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "GEO-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "term": "2nd Term",
+      "week_or_locator": "whole document",
+      "objective": "Inventory the 2nd Term document's explicit scheme/week headings and substantive unlabelled sections, recording reproducible locators. Append one small indexing task per evidenced week/section. List maps, diagrams and tables needing separate visual inspection; do not recover or interpret all assets in this task. Do not add lessons or source rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T2.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Manifest assignment SS1-SRC-ba9dee61c27c, SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc, fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "GEO-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-74a10d374306",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Inventory the 3rd Term document's explicit scheme/week headings and substantive unlabelled sections, recording reproducible locators. Append one small indexing task per evidenced week/section. List maps, diagrams and tables needing separate visual inspection; do not recover or interpret all assets in this task. Do not add lessons or source rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T3.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Manifest assignment SS1-SRC-74a10d374306, SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc, 54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "GEO-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/geography.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document, source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/geography.package.test.mts",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1",
+        "GEO-SRC-T2",
+        "GEO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/geography.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "GEO-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any geography lessons. Separate stage; no agent may invent an approval_reference or verification.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/geography.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-INV-T2",
+        "GEO-INV-T3",
+        "GEO-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "d01704cd15aa69241a8775c5e072fd2297b1d71b",
+    "scope": "Repository-only queue completion; source bytes not reopened; testing deferred."
+  },
+  "next_runnable": [
+    "GEO-SRC-T1"
+  ]
+}

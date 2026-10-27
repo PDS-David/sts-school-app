@@ -97,8 +97,17 @@ These are candidate capabilities, not 17 automatically mandatory tasks or closur
 ## 5. PR disposition (reviewed 2026-10-27)
 
 - Do not merge #71 into master: the foundations are incompatible.
-- Keep it open for now as a clearly labelled reference for D-1 to D-4; new workers must branch from current master.
+- Closure is now appropriate without merging: D-1 to D-4 have explicit comparison/port tasks in the Physics, Mathematics and Further Mathematics queues. New workers must branch from current master.
 - Preserve branch `ss1/SS1-01-20261026-claude` and full head `b5ced7ebb0efe22df2351baa140266fbf40cbf41`. Closing a PR does not itself delete that branch or its commits.
 - Before closing, make the unique content's disposition explicit: bounded port tasks with immutable source paths/SHAs, or completed ports. Do not silently discard D-1 to D-4.
 - R-01 to R-17 are proposals, not prerequisites for closing this PR or blanket requirements to implement all 17 features. Evaluate each against an actual product requirement.
 - The PR description's historical foundation SHA is not its current head; retain the distinction above.
+
+### Port tracking established on 2026-10-27
+
+- D-1: physics/QUEUE.json, PHYS-PORT-D1-*.
+- D-2: mathematics/QUEUE.json, MATH-PORT-D2-*.
+- D-3: further-mathematics/QUEUE.json, FM-PORT-D3-*.
+- D-4: PHYS-CMP-D4-NOTES and FM-PORT-D4-* plus the Mathematics branch-comparison entries.
+
+All paths above are relative to docs/ss1/work/microtasks/. These are outstanding tasks, not completed ports. Their evidence points to immutable commit b5ced7ebb0efe22df2351baa140266fbf40cbf41. PR closure must retain the source branch; no unique content is being discarded.
