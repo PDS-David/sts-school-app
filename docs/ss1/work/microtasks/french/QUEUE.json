@@ -26,17 +26,17 @@
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 28,
     "SOURCE_PREAMBLE_INDEXING": 3,
-    "LESSON": 27,
+    "LESSON": 29,
     "CORRECTION_BINDING": 28,
-    "FACTUAL_DEPENDENCY": 5,
+    "FACTUAL_DEPENDENCY": 6,
     "ASSET": 2,
     "VISUAL_DISPOSITION": 5,
     "TEST": 2,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 59,
-    "PENDING": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 60,
+    "PENDING": 43,
     "BLOCKED": 4
   },
   "items": [
@@ -133,8 +133,8 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-001 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-PURPOSE-T1; correction SS1-02-french-COR-001 binds body 09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Existing row-level coverage FRENCH-BODY-001 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-PURPOSE-T1; correction SS1-02-french-COR-001 binds body 09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet. | Implemented: french.json coverage FRENCH-T1-W01-OBJ-1..5 added (OBJ-1 PARTIAL to SUP-SS1-FRENCH-PURPOSE-T1; OBJ-2, OBJ-3, OBJ-4, OBJ-5 UNRESOLVED), open items FRENCH-T1-W01-FACT-CLAIMS and FRENCH-T1-W01-UNCOVERED-CONTENT (both blocking). Week 1 is children 2-20 of w:body; it has no exercises, drawings or scheme table, so no classify_marker rule applies and no source exercise is displaced. Composite archive and member hashes verified; read from DOCX XML, not the importer. Follow-ups: FR-FACT-T1-W01-POLICY, FR-LES-T1-W01-NEIGHBOURS, FR-LES-T1-W01-BENEFITS. Record: docs/ss1/work/microtasks/french/FR-WK-T1-W01.md. Implemented, not approved or verified.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -2938,6 +2938,82 @@
       "completion_condition": "A disposition is recorded for every listed locator, without claiming app/display verification; any gap becomes an open item."
     },
     {
+      "id": "FR-FACT-T1-W01-POLICY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 children 3-14 (objectives 1-3)",
+      "objective": "Find dated authoritative primary sources for the Nigeria-specific policy and history claims in 1st Term Week 1 (objectives FRENCH-T1-W01-OBJ-1 to -3): French in Nigerian schools and higher institutions, the Badagry French village, and how French was adopted. Record what each source supports, and what it contradicts, with exact locators and retrieval dates.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-FACT-T1-W01-POLICY.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W01; see open item FRENCH-T1-W01-FACT-CLAIMS. Not started.",
+      "completion_condition": "Each of the three objectives has recorded evidence or is explicitly left unresolved; no lesson is authored and no source claim is taught unsupported."
+    },
+    {
+      "id": "FR-LES-T1-W01-NEIGHBOURS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 children 16-17 (objective FRENCH-T1-W01-OBJ-4)",
+      "objective": "Author one small original supplement for Nigeria's four Francophone neighbours and the reason for communicating with them, using an authoritative geography source, with practice and marking, then bind coverage for FRENCH-T1-W01-OBJ-4.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W01-NEIGHBOURS.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W01; see open item FRENCH-T1-W01-UNCOVERED-CONTENT. Not started.",
+      "completion_condition": "Supplement exists with provenance; coverage entry for OBJ-4 updated with evidence; package stays PENDING."
+    },
+    {
+      "id": "FR-LES-T1-W01-BENEFITS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 child 19 (objective FRENCH-T1-W01-OBJ-5)",
+      "objective": "Author a small supplement on the benefits of French in the scientific, technological and political fields named in the source, only from sourced facts; the cut-off source text must be confirmed or supplied by the owner or teacher first, and nothing may be invented.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W01-BENEFITS.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W01",
+        "FR-FACT-T1-W01-POLICY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W01; see open item FRENCH-T1-W01-UNCOVERED-CONTENT. Not started.",
+      "completion_condition": "Supplement exists with provenance, or the objective is left UNRESOLVED with the owner decision recorded."
+    },
+    {
       "id": "FR-FACT-REPLACEMENT-SCOPE",
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": null,
@@ -3114,6 +3190,9 @@
         "FR-PRE-T1",
         "FR-PRE-T2",
         "FR-PRE-T3",
+        "FR-FACT-T1-W01-POLICY",
+        "FR-LES-T1-W01-NEIGHBOURS",
+        "FR-LES-T1-W01-BENEFITS",
         "FR-FACT-REPLACEMENT-SCOPE",
         "FR-TEST-FULL-SOURCE-REGRESSION"
       ],
@@ -3135,6 +3214,6 @@
     }
   },
   "next_runnable": [
-    "FR-WK-T1-W01"
+    "FR-WK-T1-W02"
   ]
 }
