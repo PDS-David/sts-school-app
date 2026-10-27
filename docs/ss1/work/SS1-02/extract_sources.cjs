@@ -1,0 +1,4 @@
+// Source-authoring utility only; no importer, compiler, tests or database calls.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const mammoth=require('mammoth'),WordExtractor=require('word-extractor');
+(async()=>{const root=path.resolve(process.argv[2]);const records=JSON.parse(fs.readFileSync(root+'/assigned.json'));fs.mkdirSync(root+'/texts',{recursive:true});for(const r of records){const p=path.join(root,r.archive_member);const bytes=fs.readFileSync(p);if(crypto.createHash('sha256').update(bytes).digest('hex')!==r.sha256)throw Error('Source hash mismatch '+r.source_id);const text=/\.docx$/i.test(p)?(await mammoth.extractRawText({path:p})).value:(await new WordExtractor().extract(p)).getBody();fs.writeFileSync(root+'/texts/'+r.source_id+'.txt',text);console.log(r.source_id,text.length);}})().catch(e=>{console.error(e);process.exitCode=1});
