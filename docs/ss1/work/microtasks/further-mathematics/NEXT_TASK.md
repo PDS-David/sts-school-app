@@ -1,27 +1,38 @@
-# FM-PRE-T1 — Further Mathematics
-
-Copy the following prompt into one worker session. Attach the composite archive named below.
+# FM-WK-T1-W01 — Further Mathematics
 
 ```text
-TASK: SS1 FM-PRE-T1 ONLY
+Execute FM-WK-T1-W01 ONLY for SS1 Further Mathematics.
 Repository: PDS-David/sts-school-app
 Subject slug: further-mathematics
-Queue: docs/ss1/work/microtasks/further-mathematics/QUEUE.json
-Reviewed base: d01704cd15aa69241a8775c5e072fd2297b1d71b; start from latest origin/master, not this historical SHA.
-
-Implement exactly FM-PRE-T1 (SOURCE_PREAMBLE_INDEXING). Do not perform other weeks, other sources or the entire subject.
+Start from latest origin/master. Reviewed base was d016a10730dac538589e42009ca749de1f9dd4aa.
 
 START
-Fetch master, record SHA, read applicable AGENTS.md and check open PRs for this exact item. Use a separate branch/worktree. If already completed on master, report its evidence and stop without duplicating it. If another worker owns an open PR for it, report that PR and do not overwrite it. Confirm the queue prerequisites: FM-SRC-T1. Do not treat implementation-deferred status as approval or successful testing.
+Read applicable AGENTS.md. Fetch master and inspect open PRs for this task. Use an isolated branch/worktree. If this exact item is already complete on master, report the evidence and stop; do not repeat it or silently select another item. If an open PR owns it, do not overwrite that worker.
+
+QUEUE
+docs/ss1/work/microtasks/further-mathematics/QUEUE.json
+Prerequisites: FM-SRC-T1, FM-PRE-T1.
+Confirm each prerequisite's implementation is complete, without treating deferred verification as passed.
 
 OBJECTIVE
-Inventory all 1st Term text outside the ten parsed week rows (header, scheme-of-work table, revision/examination lines, reference list, any cover or letterhead page) and record the scheme topic listed for each week 1-10 so the week items can bind objectives to it. Re-read the header and record whether it verifies the subject.
+Index 1st Term Week 01 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.
 
 EXISTING EVIDENCE
-Package holds marker coverage COV-FM-T1-EXAM (objective "Revision and examination weeks; reference list", locator "scheme lines 11-12") bound to RULE-FM-T1-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite "scheme weeks 1-10" / "scheme topic n", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record. Legacy .doc: parsed by word-extractor in the importer.
+parsed row 0 of SS1-03 parsed_rows.json (week label "WEEK ONE", title "INDICES", 2731 characters). Existing coverage COV-FM-T1-R00 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-001 (task FM-PORT-D3-L001). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).
 
 COMPLETION CONDITION
-Every non-week text block is hash-accounted and either mapped to coverage or recorded as an open item; the week-to-scheme-topic list is written to the FM-PRE note; header verification result (matches / differs) is recorded; any letterhead or vendor branding is listed for FM-VIS-T1-BRANDING handling (or recorded as absent for the 1st Term). No lesson is authored in this item.
+Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments.
+
+
+ATTACH ONLY THIS ORIGINAL DOCUMENT
+Filename: 1ST TERM S1 FURTHER MATHEMATICS.doc
+Term: 1st Term
+Manifest source ID: SS1-SRC-e9efc9a976ed
+Manifest archive member: SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc
+SHA-256: 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145
+
+A standalone original matching this member hash is AUTHORISED and sufficient. Do NOT ask for the full ZIP or require its folder structure. Hash before conversion; render/extract a separate private working copy. A member extracted from another enclosing ZIP is equally acceptable if its exact bytes match this SHA-256. Record the actual supplied container and whether its hash was checked; never claim a composite hash check not performed. Keep archive_member in the package exactly as the manifest.
+If the complete composite ZIP is supplied instead, expected SHA-256 is 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. If the document hash differs, report the exact mismatch and do not substitute by name or size.
 
 READ
 - docs/ss1/work/microtasks/further-mathematics/QUEUE.json
@@ -32,42 +43,27 @@ READ
 - backend/src/db/ss1/compiler.ts
 - docs/ss1/work/SS1-03/CHECKPOINT.md
 - docs/ss1/work/SS1-03/evidence/parsed_rows.json
-Read the subject QUEUE_BUILD.md and relevant existing note if available. A package absent because this task creates it is not a missing input; use the strict contract's required envelope and arrays. Preserve existing package content if another completed task has since created it.
-
-ATTACHMENTS
-[
-  {
-    "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
-    "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-    "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
-    "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
-  }
-]
-The shared archive's display filename is SSS 1-20260507T072431Z-3-001 (1).zip. Verify its SHA-256 and the assigned member hash. Use only the source(s) specified above. If archive access is missing, request that exact archive; do not treat missing access as missing curriculum. Convert/render legacy DOC privately if necessary. Record tool/method and reproducible locators. Do not substitute a different document based on filename or size.
+Read the subject QUEUE_BUILD.md and relevant task notes where available. They are historical evidence; latest QUEUE.json and this assignment govern current scope. Reuse completed reviews; inspect originals only as needed for this exact task.
 
 ALLOWED WRITE PATHS
 - backend/src/db/ss1/subjects/further-mathematics.json
 - docs/ss1/work/microtasks/further-mathematics/QUEUE.json
-- docs/ss1/work/microtasks/further-mathematics/FM-PRE-T1.md
-No shared schema/compiler/importer, other subject, UI or JSS3 changes. The task note path above is explicitly authorised even if not previously present in the queue.
+- docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md
+The task note is explicitly authorised even if absent from the original item's list. No other subject, shared schema/compiler/importer, UI or JSS3 changes. Do not overwrite an existing package; preserve unrelated entries and stable IDs. If a required representation is unsupported, record the exact foundation dependency rather than adding unknown fields.
 
-IMPLEMENTATION RULES
-- Registration creates/adds only this source and justified metadata under master's schema; package stays PENDING. Do not fabricate header text or alias approval. A real subject/header mismatch becomes a precise open item, not silent reassignment.
-- Indexing records exact objectives, evidence and existing lesson associations for this item only. Add small PENDING follow-up tasks for genuine uncovered objectives; do not invent coverage or write the follow-up lessons now.
-- Header/preamble checks inspect only their stated scope; do not expand into a whole-subject audit.
-- Preserve original source wording, stable identities and other workers' changes. Correct teaching through separately tracked replacements, not silent source edits.
-- Source rules or coverage requiring unavailable exact parser identities must remain explicitly unresolved; never guess a hash or claim runtime validation. Parsing/importer execution is deferred in this stage.
-- Use the strict schema's supported fields. If required structure is unsupported, record the precise foundation dependency rather than changing the schema.
-- Do not assert approval, certification or successful verification. Keep genuinely unresolved items open.
+IMPLEMENT
+- For source registration, add ONLY this source to the existing package with its exact header, manifest identity and evidence. Inspect the document; never infer the subject solely from its filename. Keep package PENDING. Record genuine ambiguity; never fabricate alias approval or release existing holds.
+- For indexing, implement objective-level coverage using exact evidence and existing identities. Add separate small pending tasks for demonstrated gaps; do not author those follow-ups in this run.
+- For lesson authoring, implement teaching, examples, objectives, original practice, answers, marking breakdown, exact body hash and provenance under the existing contract. Marks must sum correctly. Content approval remains PENDING; implementation may be IMPLEMENTED; verification remains DEFERRED with no invented references. Citations do not by themselves grant copying rights.
+- For header verification, inspect only the assigned heading and update exact evidence where required; do not audit the whole term.
+- Existing source rows remain unchanged. Do not guess parser-generated hashes or activate whole-row corrections whose complete teaching scope is unresolved.
+- Pure source extraction/rendering is allowed. No tests, typechecks, importer/plan runs, database operations, device checks, deployment or production import. Check hashes, JSON syntax, references and diff only. Testing deferred by owner.
 - Do not commit original documents, full extracts, private renders or credentials.
 
 FINISH
-Update this item's status only when its implementation completion condition is met; recompute queue counts and next_runnable from actual satisfied dependencies. Retain completed evidence and add a short note at docs/ss1/work/microtasks/further-mathematics/FM-PRE-T1.md with input hashes, edits, remaining dependencies and starting SHA. Do not edit shared NEXT_ASSIGNMENTS.md or other subjects' prompts.
-
-CHECKS
-Only hashes, JSON syntax, reference consistency and diff inspection. No tests, typechecks, importer runs, database, device checks or deployment. Testing deferred by owner.
+Update this queue item honestly; record unresolved dependencies rather than declaring the subject complete. Recompute counts and next_runnable. Write a short task note with source hash, method/locators, changes and remaining work. Do not edit other subjects or shared NEXT_ASSIGNMENTS.md.
 
 DELIVERY
-Commit and push a unique subject/item branch; open a PR to master with FM-PRE-T1 in its title. Do not merge. If push access is unavailable, provide a downloadable binary-capable patch with its exact base SHA; do not request a token in chat.
-Report completion or precise blocker, files changed, commit/PR or patch, and the next eligible item. Stop after this ONE task.
+Commit and push a unique subject/item branch; open a PR to master with FM-WK-T1-W01 in its title. Do not merge. If push access is unavailable, supply a downloadable binary-capable patch with its exact base SHA. Do not request a token in chat.
+Report completion or precise blocker, files changed, commit/PR or patch, next eligible item and "Testing deferred by owner." Stop after this ONE item.
 ```

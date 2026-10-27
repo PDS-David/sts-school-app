@@ -1,41 +1,39 @@
-# SS1 next assignments
+# SS1 next assignments — 28 October 2026
 
-Reviewed master: d01704cd15aa69241a8775c5e072fd2297b1d71b (2026-10-27). All 21 manifest subjects now have queues. Geography's missing queue was added, and English's attachment fields and next-item metadata repaired. This is queue readiness, not curriculum completion.
+Reviewed master d016a10730dac538589e42009ca749de1f9dd4aa. PR98–117 supplied 20 completed assignments and are merged; no open PR remained. This review completes YO-SRC-T1 from the original, bringing all 21 previous assignments to implemented/testing-deferred. This is not completion of the 21 subjects.
 
-The 603 queue items were checked for unique IDs within each queue, existing dependency IDs, cycles and count consistency. Source attachment references were compared with the manifest. No curriculum tests, typechecks, importer, database or device checks were run.
+Corrections: FRENCH-BODY-001 now PARTIAL to match its objective-level findings; FR-COR-001 scope remains pending behind the identified content/policy tasks. Existing correction code is retained, and package gates/approval are unchanged. Standalone originals with manifest-matching hashes are explicitly accepted by every prompt; no complete ZIP is required.
 
-PR71 can close without merging: immutable head b5ced7ebb0efe22df2351baa140266fbf40cbf41 and its branch are retained; its useful content has explicit port tasks in the Physics/Mathematics/Further Mathematics queues. Those ports are not complete.
+## Run one task per subject
 
-## Use
+Different subjects may run concurrently. Same-subject tasks share package/queue files and must run sequentially. Each link contains the exact assignment, source hash, files, write scope and completion condition. These instructions supersede older NEXT_TASK versions. Source registration is implementation metadata, not teacher approval or full coverage.
 
-Attach **SSS 1-20260507T072431Z-3-001 (1).zip** to every worker below. SHA-256: 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Filename variants are acceptable with identical hash. Do not commit originals.
+| Subject slug | Task | Term | Single file to attach | Prompt |
+|---|---|---|---|---|
+| agricultural-science | `AG-SRC-T2` | 2nd Term | `2ND TERM S1 AGRICULTRAL SCIENCE.docx` | [Prompt](agricultural-science/NEXT_TASK.md) |
+| biology | `BIO-SRC-T2` | 2nd Term | `2ND TERM S1 BIOLOGY.doc` | [Prompt](biology/NEXT_TASK.md) |
+| bookkeeping | `BK-SRC-T2` | 2nd Term | `Book keeping.docx` | [Prompt](bookkeeping/NEXT_TASK.md) |
+| catering-craft | `CC-SRC-T3` | 3rd Term | `3RD TERM S1 CATERING CRAFT PRACTICES.doc` | [Prompt](catering-craft/NEXT_TASK.md) |
+| chemistry | `CHEM-SRC-T1B` | 1st Term | `CHEMISTRY SS11STTERM.docx` | [Prompt](chemistry/NEXT_TASK.md) |
+| civic-education | `CIV-SRC-T2` | 2nd Term | `CIVIC.docx` | [Prompt](civic-education/NEXT_TASK.md) |
+| commerce | `COM-SRC-T2` | 2nd Term | `commerce.docx` | [Prompt](commerce/NEXT_TASK.md) |
+| data-processing | `DP-SRC-T2` | 2nd Term | `Data processing.docx` | [Prompt](data-processing/NEXT_TASK.md) |
+| economics | `ECON-SRC-T2` | 2nd Term | `ECONOMICS.docx` | [Prompt](economics/NEXT_TASK.md) |
+| english | `ENG-LES-W01-NOUNS` | 1st Term | `1ST TERM S1 ENGLISH LANGUAGE.doc` | [Prompt](english/NEXT_TASK.md) |
+| financial-accounting | `FA-SRC-T2` | 2nd Term | `Account.docx` | [Prompt](financial-accounting/NEXT_TASK.md) |
+| food-and-nutrition | `FN-SRC-T2` | 2nd Term | `F _ N.docx` | [Prompt](food-and-nutrition/NEXT_TASK.md) |
+| french | `FR-LES-T1-W01-NEIGHBOURS` | 1st Term | `FRENCH Ss1.docx` | [Prompt](french/NEXT_TASK.md) |
+| further-mathematics | `FM-WK-T1-W01` | 1st Term | `1ST TERM S1 FURTHER MATHEMATICS.doc` | [Prompt](further-mathematics/NEXT_TASK.md) |
+| geography | `GEO-SRC-T2` | 2nd Term | `2ND TERM S1 GEOGRAPHY.doc` | [Prompt](geography/NEXT_TASK.md) |
+| government | `GOV-SRC-T2` | 2nd Term | `GOVT.docx` | [Prompt](government/NEXT_TASK.md) |
+| literature | `LIT-SRC-T2` | 2nd Term | `LITERATURE.docx` | [Prompt](literature/NEXT_TASK.md) |
+| mathematics | `MATH-FACT-HEADER-T2` | 2nd Term | `2ND TERM S1 MATHEMATICS.docx` | [Prompt](mathematics/NEXT_TASK.md) |
+| physics | `PHYS-SRC-T2` | 2nd Term | `2ND TERM S1 PHYSICS.doc` | [Prompt](physics/NEXT_TASK.md) |
+| technical-drawing | `TD-PRE-T2` | 2nd Term | `2ND TERM S1 TECHNICAL DRAWING.docx` | [Prompt](technical-drawing/NEXT_TASK.md) |
+| yoruba | `YO-SRC-T2` | 2nd Term | `2ND TERM S1 YORUBA.docx` | [Prompt](yoruba/NEXT_TASK.md) |
 
-Open one subject's prompt below and execute only that item. Different subjects may run concurrently; same-subject tasks must wait for the preceding PR to merge. No worker edits this shared assignment file. Refresh master before starting; completed items must not be repeated.
+## After these tasks
 
-| Subject | Item | Prompt |
-|---|---|---|
-| Agricultural Science | `AG-SRC-T1` | [Run this task](agricultural-science/NEXT_TASK.md) |
-| Biology | `BIO-SRC-T1` | [Run this task](biology/NEXT_TASK.md) |
-| Bookkeeping | `BK-SRC-T1` | [Run this task](bookkeeping/NEXT_TASK.md) |
-| Catering Craft | `CC-SRC-T2` | [Run this task](catering-craft/NEXT_TASK.md) |
-| Chemistry | `CHEM-SRC-T1A` | [Run this task](chemistry/NEXT_TASK.md) |
-| Civic Education | `CIV-SRC-T1` | [Run this task](civic-education/NEXT_TASK.md) |
-| Commerce | `COM-SRC-T1` | [Run this task](commerce/NEXT_TASK.md) |
-| Data Processing | `DP-SRC-T1` | [Run this task](data-processing/NEXT_TASK.md) |
-| Economics | `ECON-SRC-T1` | [Run this task](economics/NEXT_TASK.md) |
-| English Language | `ENG-WK-T1-W02` | [Run this task](english/NEXT_TASK.md) |
-| Financial Accounting | `FA-SRC-T1` | [Run this task](financial-accounting/NEXT_TASK.md) |
-| Food and Nutrition | `FN-SRC-T1` | [Run this task](food-and-nutrition/NEXT_TASK.md) |
-| French | `FR-WK-T1-W01` | [Run this task](french/NEXT_TASK.md) |
-| Further Mathematics | `FM-PRE-T1` | [Run this task](further-mathematics/NEXT_TASK.md) |
-| Geography | `GEO-SRC-T1` | [Run this task](geography/NEXT_TASK.md) |
-| Government | `GOV-SRC-T1` | [Run this task](government/NEXT_TASK.md) |
-| Literature | `LIT-SRC-T1` | [Run this task](literature/NEXT_TASK.md) |
-| Mathematics | `MATH-FACT-HEADER-T1` | [Run this task](mathematics/NEXT_TASK.md) |
-| Physics | `PHYS-SRC-T1` | [Run this task](physics/NEXT_TASK.md) |
-| Technical Drawing | `TD-SRC-T2` | [Run this task](technical-drawing/NEXT_TASK.md) |
-| Yoruba | `YO-SRC-T1` | [Run this task](yoruba/NEXT_TASK.md) |
+Review each subject PR against its single item's completion condition, fix concrete scoped defects, and merge reviewed work. Then publish one next dependency-satisfied implementation item for that subject. Do not restart queue-building or re-review unrelated sources. Registration proceeds toward inventory/indexing; identified lesson gaps proceed to bounded authoring. No testing stage starts without the owner's later authorisation.
 
-## Following round
-
-After these PRs are reviewed and merged, choose one next dependency-satisfied, unclaimed implementation item per subject. Missing sources require registration; unknown weeks require inventory; known weeks require objective indexing; a demonstrated uncovered objective permits lesson authoring. Do not automatically pick the first PENDING item or start tests. Refresh these per-subject task prompts from the then-current queues. Each subsequent worker still implements exactly one item.
+Pending approvals and missing material remain honest blockers. Historical term-archive/member checks are not a reason to request the entire composite again when the exact member hash matches.

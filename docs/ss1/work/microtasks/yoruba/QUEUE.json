@@ -1,334 +1,335 @@
 {
- "queue_version": "ss1-microtask-queue-v1",
- "subject": "Yoruba",
- "slug": "yoruba",
- "generated_from": {
-  "master_sha": "204849e1a71347a3e8c132f1a857efba0d08d038",
-  "package": null,
-  "task": "SS1 Yoruba subject queue (no package existed; queue created by SS1-YO-QUEUE from repository evidence only)"
- },
- "status_vocabulary": [
-  "PENDING",
-  "IN_PROGRESS",
-  "IMPLEMENTED_TESTING_DEFERRED",
-  "BLOCKED"
- ],
- "notes": [
-  "Built from repository evidence only. No curriculum document was opened and no original was available; nothing was run (tests, typechecks, importer, database, device). Testing deferred by owner.",
-  "Existing Yoruba work on master: none. There is no backend/src/db/ss1/subjects/yoruba.json, no assets directory, no test file, no queue, no source rules, lessons, corrections or coverage. The only SS1 Yoruba evidence is the three source rows (CSV and sourceRegistry.json, equal), the expected package path in WORKER_START.json, and one CHECKPOINT.md sentence that initial schemes/opening sections were read with no package yet.",
-  "Three Yoruba sources are assigned (1st, 2nd and 3rd Term). All carry mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: registered metadata, not verified document headers. Each registration item therefore requires its attachment.",
-  "The week inventory is unknown for all three documents, so one SOURCE_WEEK_INVENTORY item exists per document instead of week items. Each future worker discovers the weeks (and any substantive non-week or unlabelled sections) from the original and appends the small indexing items. No week was invented.",
-  "No lesson-writing, correction, asset or approval items exist because the repository names no uncovered objective, no corrected row, no figure and no authored lesson. They may be added only after indexing names a specific one.",
-  "Open PRs at review: only #71 (alternate foundation, DO NOT MERGE), which contains no Yoruba SS1 work (subjects/ holds mathematics, further-mathematics and physics only). Nothing is built on #71. No unmerged Yoruba work needs preserving; the Mathematics/Further Mathematics/Physics D-items do not apply.",
-  "Reference only, not SS1 evidence: JSS3 Yoruba work under docs/jss3/batch2-close/C_ENGLISH_YORUBA records that AI-written Yoruba tone marks had not been checked by a Yoruba speaker and that oral-text excerpts needed rights checks. Future SS1 lesson items should keep content approval, rights and verification separate; nothing here claims any of them.",
-  "Execute one queue item per worker. A source-reading item needs its attachment: archive SSS 1-20260507T072431Z-3-001.zip (a display name such as 'SSS 1-20260507T072431Z-3-001 (1).zip' is acceptable if the SHA-256 matches), the member path and member SHA-256 listed on the item. Do not commit the archive, source documents, extracts or renders."
- ],
- "counts": {
-  "SOURCE_REGISTRATION": 3,
-  "SOURCE_WEEK_INVENTORY": 3,
-  "SCOPE_DECOMPOSITION": 1,
-  "TEST": 1
- },
- "status_counts": {
-  "PENDING": 8
- },
- "items": [
-  {
-   "id": "YO-SRC-T1",
-   "kind": "SOURCE_REGISTRATION",
-   "source_id": "SS1-SRC-48b641249e3b",
-   "term": "1st Term",
-   "week_or_locator": "SSS 1/1st Term SS1_/YORUBA.docx",
-   "objective": "Register the 1st Term Yoruba source in the Yoruba package, creating the minimum package because none exists: header-verified source entry (and source_alias rule only if the heading requires it) plus the blocking open item YORUBA-OBJECTIVE-INDEXING.",
-   "required_files": [
-    "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-    "docs/ss1/contracts/CONTRACT.md",
-    "backend/src/db/ss1/subjectPackageSchema.ts",
-    "backend/src/db/ss1/compiler.ts",
-    "docs/ss1/work/SS1-02/CHECKPOINT.md",
-    "docs/ss1/work/SS1-02/author_packages.py",
-    "docs/ss1/work/SS1-02/extract_sources.cjs",
-    "scripts/ss1/prepare_sources.py",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "required_attachments": [
-    {
-     "archive": "SSS 1-20260507T072431Z-3-001.zip",
-     "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-     "member": "SSS 1/1st Term SS1_/YORUBA.docx",
-     "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
-    }
-   ],
-   "allowed_write_paths": [
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "depends_on": [],
-   "status": "PENDING",
-   "implementation_reference": "backend/src/db/ss1/sourceRegistry.json and docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv both list SS1-SRC-48b641249e3b with member 'SSS 1/1st Term SS1_/YORUBA.docx', sha256 7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef, 55974 bytes, term '1st Term', slug 'yoruba', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (the two copies were compared statically and are equal). This is REGISTERED METADATA ONLY: the document heading has not been recorded as verified in the repository. No yoruba.json exists on master; WORKER_START.json package_paths lists backend/src/db/ss1/subjects/yoruba.json as the expected path. SS1-02 CHECKPOINT.md states 'Yoruba: initial schemes/opening sections read only; no package yet' without recording any header, week or objective finding.",
-   "completion_condition": "PERMISSION: yoruba.json (an allowed write path) does not exist on master and this item is explicitly permitted to CREATE it, using only the existing ss1-subject-v1 contract and no other file. Done when yoruba.json exists and is schema-valid by inspection: schema_version ss1-subject-v1, subject_slug yoruba, canonical_subject confirmed from the document, package_status PENDING, sources contains exactly this source with archive_member/sha256/term equal to the CSV row, lessons/delivery_corrections/assets/coverage empty, and one open item YORUBA-OBJECTIVE-INDEXING (kind CONTENT, blocks_delivery true, affected_ids = registered source IDs, required_action pointing to the YO-INV items). Archive and member SHA-256 verified before reading. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not author lessons, coverage, approval or verification. Do not run tests, typechecks, importer or database. Testing deferred by owner."
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Yoruba",
+  "slug": "yoruba",
+  "generated_from": {
+    "master_sha": "204849e1a71347a3e8c132f1a857efba0d08d038",
+    "package": null,
+    "task": "SS1 Yoruba subject queue (no package existed; queue created by SS1-YO-QUEUE from repository evidence only)"
   },
-  {
-   "id": "YO-SRC-T2",
-   "kind": "SOURCE_REGISTRATION",
-   "source_id": "SS1-SRC-ec4a5095420d",
-   "term": "2nd Term",
-   "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
-   "objective": "Register the 2nd Term Yoruba source in yoruba.json with a header-verified source entry (and source_alias rule only if its heading requires it).",
-   "required_files": [
-    "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-    "docs/ss1/contracts/CONTRACT.md",
-    "backend/src/db/ss1/subjectPackageSchema.ts",
-    "backend/src/db/ss1/compiler.ts",
-    "docs/ss1/work/SS1-02/CHECKPOINT.md",
-    "docs/ss1/work/SS1-02/author_packages.py",
-    "docs/ss1/work/SS1-02/extract_sources.cjs",
-    "scripts/ss1/prepare_sources.py",
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "required_attachments": [
-    {
-     "archive": "SSS 1-20260507T072431Z-3-001.zip",
-     "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-     "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
-     "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
-    }
-   ],
-   "allowed_write_paths": [
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "depends_on": [
-    "YO-SRC-T1"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "backend/src/db/ss1/sourceRegistry.json and docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv both list SS1-SRC-ec4a5095420d with member 'SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx', sha256 73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac, 66197 bytes, term '2nd Term', slug 'yoruba', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (the two copies were compared statically and are equal). This is REGISTERED METADATA ONLY: the document heading has not been recorded as verified in the repository. Depends on YO-SRC-T1 only because that item creates yoruba.json. If YO-SRC-T2 and YO-SRC-T3 are run concurrently they edit the same file: rebase, do not overwrite the other's source entry.",
-   "completion_condition": "Archive and member SHA-256 verified. A single sources[] entry for this source is added with fields equal to the CSV row; the open item YORUBA-OBJECTIVE-INDEXING affected_ids gains this source ID. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not repeat T1 registration, author lessons or invent approval. Testing deferred by owner."
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only. No curriculum document was opened and no original was available; nothing was run (tests, typechecks, importer, database, device). Testing deferred by owner.",
+    "Existing Yoruba work on master: none. There is no backend/src/db/ss1/subjects/yoruba.json, no assets directory, no test file, no queue, no source rules, lessons, corrections or coverage. The only SS1 Yoruba evidence is the three source rows (CSV and sourceRegistry.json, equal), the expected package path in WORKER_START.json, and one CHECKPOINT.md sentence that initial schemes/opening sections were read with no package yet.",
+    "Three Yoruba sources are assigned (1st, 2nd and 3rd Term). All carry mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: registered metadata, not verified document headers. Each registration item therefore requires its attachment.",
+    "The week inventory is unknown for all three documents, so one SOURCE_WEEK_INVENTORY item exists per document instead of week items. Each future worker discovers the weeks (and any substantive non-week or unlabelled sections) from the original and appends the small indexing items. No week was invented.",
+    "No lesson-writing, correction, asset or approval items exist because the repository names no uncovered objective, no corrected row, no figure and no authored lesson. They may be added only after indexing names a specific one.",
+    "Open PRs at review: only #71 (alternate foundation, DO NOT MERGE), which contains no Yoruba SS1 work (subjects/ holds mathematics, further-mathematics and physics only). Nothing is built on #71. No unmerged Yoruba work needs preserving; the Mathematics/Further Mathematics/Physics D-items do not apply.",
+    "Reference only, not SS1 evidence: JSS3 Yoruba work under docs/jss3/batch2-close/C_ENGLISH_YORUBA records that AI-written Yoruba tone marks had not been checked by a Yoruba speaker and that oral-text excerpts needed rights checks. Future SS1 lesson items should keep content approval, rights and verification separate; nothing here claims any of them.",
+    "Execute one queue item per worker. A source-reading item needs its attachment: archive SSS 1-20260507T072431Z-3-001.zip (a display name such as 'SSS 1-20260507T072431Z-3-001 (1).zip' is acceptable if the SHA-256 matches), the member path and member SHA-256 listed on the item. Do not commit the archive, source documents, extracts or renders."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INVENTORY": 3,
+    "SCOPE_DECOMPOSITION": 1,
+    "TEST": 1
   },
-  {
-   "id": "YO-SRC-T3",
-   "kind": "SOURCE_REGISTRATION",
-   "source_id": "SS1-SRC-4cc6aae9ed7d",
-   "term": "3rd Term",
-   "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
-   "objective": "Register the 3rd Term Yoruba source in yoruba.json with a header-verified source entry (and source_alias rule only if its heading requires it).",
-   "required_files": [
-    "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-    "docs/ss1/contracts/CONTRACT.md",
-    "backend/src/db/ss1/subjectPackageSchema.ts",
-    "backend/src/db/ss1/compiler.ts",
-    "docs/ss1/work/SS1-02/CHECKPOINT.md",
-    "docs/ss1/work/SS1-02/author_packages.py",
-    "docs/ss1/work/SS1-02/extract_sources.cjs",
-    "scripts/ss1/prepare_sources.py",
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "required_attachments": [
-    {
-     "archive": "SSS 1-20260507T072431Z-3-001.zip",
-     "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-     "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
-     "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
-    }
-   ],
-   "allowed_write_paths": [
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "depends_on": [
-    "YO-SRC-T1"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "backend/src/db/ss1/sourceRegistry.json and docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv both list SS1-SRC-4cc6aae9ed7d with member 'SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx', sha256 a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3, 68373 bytes, term '3rd Term', slug 'yoruba', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (the two copies were compared statically and are equal). This is REGISTERED METADATA ONLY: the document heading has not been recorded as verified in the repository. Depends on YO-SRC-T1 only because that item creates yoruba.json. If YO-SRC-T2 and YO-SRC-T3 are run concurrently they edit the same file: rebase, do not overwrite the other's source entry.",
-   "completion_condition": "Archive and member SHA-256 verified. A single sources[] entry for this source is added with fields equal to the CSV row; the open item YORUBA-OBJECTIVE-INDEXING affected_ids gains this source ID. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not repeat T1 registration, author lessons or invent approval. Testing deferred by owner."
+  "status_counts": {
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 7
   },
-  {
-   "id": "YO-INV-T1",
-   "kind": "SOURCE_WEEK_INVENTORY",
-   "source_id": "SS1-SRC-48b641249e3b",
-   "term": "1st Term",
-   "week_or_locator": "whole document: week structure, non-week sections, embedded objects",
-   "objective": "Discover from the original 1st Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.",
-   "required_files": [
-    "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-    "docs/ss1/contracts/CONTRACT.md",
-    "backend/src/db/ss1/subjectPackageSchema.ts",
-    "backend/src/db/ss1/compiler.ts",
-    "docs/ss1/work/SS1-02/CHECKPOINT.md",
-    "docs/ss1/work/SS1-02/author_packages.py",
-    "docs/ss1/work/SS1-02/extract_sources.cjs",
-    "scripts/ss1/prepare_sources.py",
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/work/microtasks/french/QUEUE.json",
-    "backend/src/db/ingestTopics.ts"
-   ],
-   "required_attachments": [
+  "items": [
     {
-     "archive": "SSS 1-20260507T072431Z-3-001.zip",
-     "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-     "member": "SSS 1/1st Term SS1_/YORUBA.docx",
-     "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+      "id": "YO-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/YORUBA.docx",
+      "objective": "Register the 1st Term Yoruba source in the Yoruba package, creating the minimum package because none exists: header-verified source entry (and source_alias rule only if the heading requires it) plus the blocking open item YORUBA-OBJECTIVE-INDEXING.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on review of d016a10730dac538589e42009ca749de1f9dd4aa: backend/src/db/ss1/subjects/yoruba.json; original archive and member hashes match. Exact heading and extraction limits recorded in docs/ss1/work/microtasks/yoruba/YO-SRC-T1.md. No curriculum tests or importer run.",
+      "completion_condition": "PERMISSION: yoruba.json (an allowed write path) does not exist on master and this item is explicitly permitted to CREATE it, using only the existing ss1-subject-v1 contract and no other file. Done when yoruba.json exists and is schema-valid by inspection: schema_version ss1-subject-v1, subject_slug yoruba, canonical_subject confirmed from the document, package_status PENDING, sources contains exactly this source with archive_member/sha256/term equal to the CSV row, lessons/delivery_corrections/assets/coverage empty, and one open item YORUBA-OBJECTIVE-INDEXING (kind CONTENT, blocks_delivery true, affected_ids = registered source IDs, required_action pointing to the YO-INV items). Archive and member SHA-256 verified before reading. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not author lessons, coverage, approval or verification. Do not run tests, typechecks, importer or database. Testing deferred by owner."
+    },
+    {
+      "id": "YO-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+      "objective": "Register the 2nd Term Yoruba source in yoruba.json with a header-verified source entry (and source_alias rule only if its heading requires it).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+          "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/sourceRegistry.json and docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv both list SS1-SRC-ec4a5095420d with member 'SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx', sha256 73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac, 66197 bytes, term '2nd Term', slug 'yoruba', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (the two copies were compared statically and are equal). This is REGISTERED METADATA ONLY: the document heading has not been recorded as verified in the repository. Depends on YO-SRC-T1 only because that item creates yoruba.json. If YO-SRC-T2 and YO-SRC-T3 are run concurrently they edit the same file: rebase, do not overwrite the other's source entry.",
+      "completion_condition": "Archive and member SHA-256 verified. A single sources[] entry for this source is added with fields equal to the CSV row; the open item YORUBA-OBJECTIVE-INDEXING affected_ids gains this source ID. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not repeat T1 registration, author lessons or invent approval. Testing deferred by owner."
+    },
+    {
+      "id": "YO-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+      "objective": "Register the 3rd Term Yoruba source in yoruba.json with a header-verified source entry (and source_alias rule only if its heading requires it).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/sourceRegistry.json and docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv both list SS1-SRC-4cc6aae9ed7d with member 'SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx', sha256 a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3, 68373 bytes, term '3rd Term', slug 'yoruba', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (the two copies were compared statically and are equal). This is REGISTERED METADATA ONLY: the document heading has not been recorded as verified in the repository. Depends on YO-SRC-T1 only because that item creates yoruba.json. If YO-SRC-T2 and YO-SRC-T3 are run concurrently they edit the same file: rebase, do not overwrite the other's source entry.",
+      "completion_condition": "Archive and member SHA-256 verified. A single sources[] entry for this source is added with fields equal to the CSV row; the open item YORUBA-OBJECTIVE-INDEXING affected_ids gains this source ID. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not repeat T1 registration, author lessons or invent approval. Testing deferred by owner."
+    },
+    {
+      "id": "YO-INV-T1",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "whole document: week structure, non-week sections, embedded objects",
+      "objective": "Discover from the original 1st Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
+      "completion_condition": "Archive/member hashes verified. YO-INV-T1.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T1): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T1-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T1-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
+    },
+    {
+      "id": "YO-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "term": "2nd Term",
+      "week_or_locator": "whole document: week structure, non-week sections, embedded objects",
+      "objective": "Discover from the original 2nd Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+          "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T2.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
+      "completion_condition": "Archive/member hashes verified. YO-INV-T2.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T2): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T2-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T2-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
+    },
+    {
+      "id": "YO-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "week_or_locator": "whole document: week structure, non-week sections, embedded objects",
+      "objective": "Discover from the original 3rd Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
+      "completion_condition": "Archive/member hashes verified. YO-INV-T3.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T3): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T3-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T3-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
+    },
+    {
+      "id": "YO-SCOPE-OBJECTIVE-INDEXING",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open item YORUBA-OBJECTIVE-INDEXING (created by YO-SRC-T1)",
+      "objective": "Umbrella record for objective-level coverage of all three Yoruba sources. It is a scope record, not a lesson. It closes only when every item appended by the YO-INV items is complete and the open item is replaced by precise dispositions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "depends_on": [
+        "YO-INV-T1",
+        "YO-INV-T2",
+        "YO-INV-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No Yoruba package, coverage or open item exists on master; row-level or objective-level coverage cannot be assumed. Child items do not yet exist beyond the YO-INV items: their IDs are appended to depends_on by each YO-INV worker.",
+      "completion_condition": "All dependencies (including appended YO-WK-*, YO-PRE-*, YO-VIS-* and foundation-request items) are complete, every source has coverage, every PARTIAL/UNRESOLVED entry has an explicit open item and a separate small PENDING queue item, and YORUBA-OBJECTIVE-INDEXING is replaced by precise open items or removed with evidence. A lesson-writing item exists only for a specifically named uncovered objective."
+    },
+    {
+      "id": "YO-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/yoruba.package.test.mts (does not exist)",
+      "objective": "Write (not run) the deferred Yoruba package test file following tests/ss1/french.package.test.mts: schema, hash, marking, source-identity and correction guards for whatever exists in yoruba.json at that time.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/yoruba.package.test.mts",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json"
+      ],
+      "depends_on": [
+        "YO-SCOPE-OBJECTIVE-INDEXING"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No Yoruba test file exists (tests/ss1 contains french, mathematics and further-mathematics package tests only).",
+      "completion_condition": "Test file written and statically consistent with yoruba.json. It is NOT run: tests, typechecks, importer, database and device checks are deferred by the owner and happen only in the later authorised verification stage."
     }
-   ],
-   "allowed_write_paths": [
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md"
-   ],
-   "depends_on": [
-    "YO-SRC-T1"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
-   "completion_condition": "Archive/member hashes verified. YO-INV-T1.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T1): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T1-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T1-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "204849e1a71347a3e8c132f1a857efba0d08d038",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001.zip",
+      "display_filename_variant": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 3,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
+    }
   },
-  {
-   "id": "YO-INV-T2",
-   "kind": "SOURCE_WEEK_INVENTORY",
-   "source_id": "SS1-SRC-ec4a5095420d",
-   "term": "2nd Term",
-   "week_or_locator": "whole document: week structure, non-week sections, embedded objects",
-   "objective": "Discover from the original 2nd Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.",
-   "required_files": [
-    "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-    "docs/ss1/contracts/CONTRACT.md",
-    "backend/src/db/ss1/subjectPackageSchema.ts",
-    "backend/src/db/ss1/compiler.ts",
-    "docs/ss1/work/SS1-02/CHECKPOINT.md",
-    "docs/ss1/work/SS1-02/author_packages.py",
-    "docs/ss1/work/SS1-02/extract_sources.cjs",
-    "scripts/ss1/prepare_sources.py",
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/work/microtasks/french/QUEUE.json",
-    "backend/src/db/ingestTopics.ts"
-   ],
-   "required_attachments": [
-    {
-     "archive": "SSS 1-20260507T072431Z-3-001.zip",
-     "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-     "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
-     "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
-    }
-   ],
-   "allowed_write_paths": [
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/work/microtasks/yoruba/YO-INV-T2.md"
-   ],
-   "depends_on": [
+  "next_runnable": [
     "YO-SRC-T2"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
-   "completion_condition": "Archive/member hashes verified. YO-INV-T2.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T2): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T2-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T2-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
-  },
-  {
-   "id": "YO-INV-T3",
-   "kind": "SOURCE_WEEK_INVENTORY",
-   "source_id": "SS1-SRC-4cc6aae9ed7d",
-   "term": "3rd Term",
-   "week_or_locator": "whole document: week structure, non-week sections, embedded objects",
-   "objective": "Discover from the original 3rd Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.",
-   "required_files": [
-    "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
-    "docs/ss1/contracts/CONTRACT.md",
-    "backend/src/db/ss1/subjectPackageSchema.ts",
-    "backend/src/db/ss1/compiler.ts",
-    "docs/ss1/work/SS1-02/CHECKPOINT.md",
-    "docs/ss1/work/SS1-02/author_packages.py",
-    "docs/ss1/work/SS1-02/extract_sources.cjs",
-    "scripts/ss1/prepare_sources.py",
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/work/microtasks/french/QUEUE.json",
-    "backend/src/db/ingestTopics.ts"
-   ],
-   "required_attachments": [
-    {
-     "archive": "SSS 1-20260507T072431Z-3-001.zip",
-     "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-     "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
-     "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
-    }
-   ],
-   "allowed_write_paths": [
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md"
-   ],
-   "depends_on": [
-    "YO-SRC-T3"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
-   "completion_condition": "Archive/member hashes verified. YO-INV-T3.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T3): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T3-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T3-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
-  },
-  {
-   "id": "YO-SCOPE-OBJECTIVE-INDEXING",
-   "kind": "SCOPE_DECOMPOSITION",
-   "source_id": null,
-   "term": null,
-   "week_or_locator": "open item YORUBA-OBJECTIVE-INDEXING (created by YO-SRC-T1)",
-   "objective": "Umbrella record for objective-level coverage of all three Yoruba sources. It is a scope record, not a lesson. It closes only when every item appended by the YO-INV items is complete and the open item is replaced by precise dispositions.",
-   "required_files": [
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json",
-    "docs/ss1/contracts/CONTRACT.md"
-   ],
-   "required_attachments": [],
-   "allowed_write_paths": [
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "depends_on": [
-    "YO-INV-T1",
-    "YO-INV-T2",
-    "YO-INV-T3"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "No Yoruba package, coverage or open item exists on master; row-level or objective-level coverage cannot be assumed. Child items do not yet exist beyond the YO-INV items: their IDs are appended to depends_on by each YO-INV worker.",
-   "completion_condition": "All dependencies (including appended YO-WK-*, YO-PRE-*, YO-VIS-* and foundation-request items) are complete, every source has coverage, every PARTIAL/UNRESOLVED entry has an explicit open item and a separate small PENDING queue item, and YORUBA-OBJECTIVE-INDEXING is replaced by precise open items or removed with evidence. A lesson-writing item exists only for a specifically named uncovered objective."
-  },
-  {
-   "id": "YO-TEST-PACKAGE",
-   "kind": "TEST",
-   "source_id": null,
-   "term": null,
-   "week_or_locator": "tests/ss1/yoruba.package.test.mts (does not exist)",
-   "objective": "Write (not run) the deferred Yoruba package test file following tests/ss1/french.package.test.mts: schema, hash, marking, source-identity and correction guards for whatever exists in yoruba.json at that time.",
-   "required_files": [
-    "backend/src/db/ss1/subjects/yoruba.json",
-    "tests/ss1/french.package.test.mts",
-    "backend/src/db/ss1/subjectPackageSchema.ts"
-   ],
-   "required_attachments": [],
-   "allowed_write_paths": [
-    "tests/ss1/yoruba.package.test.mts",
-    "docs/ss1/work/microtasks/yoruba/QUEUE.json"
-   ],
-   "depends_on": [
-    "YO-SCOPE-OBJECTIVE-INDEXING"
-   ],
-   "status": "PENDING",
-   "implementation_reference": "No Yoruba test file exists (tests/ss1 contains french, mathematics and further-mathematics package tests only).",
-   "completion_condition": "Test file written and statically consistent with yoruba.json. It is NOT run: tests, typechecks, importer, database and device checks are deferred by the owner and happen only in the later authorised verification stage."
-  }
- ],
- "review": {
-  "date": "2026-10-27",
-  "reviewed_master_sha": "204849e1a71347a3e8c132f1a857efba0d08d038",
-  "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
-  "source_archive": {
-   "filename": "SSS 1-20260507T072431Z-3-001.zip",
-   "display_filename_variant": "SSS 1-20260507T072431Z-3-001 (1).zip",
-   "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-   "manifest_matches": 3,
-   "mismatches": 0,
-   "availability": "User attachment; not committed to Git. Attach this archive (or the exact member) to source-reading workers."
-  }
- },
- "next_runnable": [
-  "YO-SRC-T1"
- ]
+  ]
 }

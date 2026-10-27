@@ -35,8 +35,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 60,
-    "PENDING": 43,
+    "IMPLEMENTED_TESTING_DEFERRED": 59,
+    "PENDING": 44,
     "BLOCKED": 4
   },
   "items": [
@@ -1942,11 +1942,14 @@
       "depends_on": [
         "FR-LES-PURPOSE-T1",
         "FR-SRC-T1",
-        "FR-WK-T1-W01"
+        "FR-WK-T1-W01",
+        "FR-FACT-T1-W01-POLICY",
+        "FR-LES-T1-W01-NEIGHBOURS",
+        "FR-LES-T1-W01-BENEFITS"
       ],
-      "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "french.json delivery_corrections[id=SS1-02-french-COR-001] source_lesson_id=SS1-SRC-945dfb24eaf6:BODY:09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d body_sha256=09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d replacement_id=SUP-SS1-FRENCH-PURPOSE-T1. The binding exists as code. Its stated reason keeps 'whole-block objective scope subject to deferred review'; that review is NOT done (see FR-WK-T1-W01). Do not activate delivery until the review closes.",
-      "completion_condition": "Binding implemented (done). Scope review is tracked by the week item and FR-FACT-REPLACEMENT-SCOPE; this item closes only if the review finds a defect that needs the binding changed, in which case record it here."
+      "status": "PENDING",
+      "implementation_reference": "french.json delivery_corrections[id=SS1-02-french-COR-001] source_lesson_id=SS1-SRC-945dfb24eaf6:BODY:09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d body_sha256=09796ff91bf3f02297f223ab8c67f3ea7e339d18ada14a42552e5ae6025f493d replacement_id=SUP-SS1-FRENCH-PURPOSE-T1. The binding exists as code. Its stated reason keeps 'whole-block objective scope subject to deferred review'; that review is NOT done (see FR-WK-T1-W01). Do not activate delivery until the review closes. Review 2026-10-28: FR-WK-T1-W01 has now demonstrated incomplete objective scope; binding code is retained but its scope completion is reopened. Package remains PENDING with blocking gaps.",
+      "completion_condition": "Existing binding code is not proof of scope completion. Reconcile every displaced Week 1 objective against corrected/supplement teaching; keep all unresolved claims and missing material open. A one-to-one replacement may activate only when its one replacement lesson covers the complete intended row scope. No teacher approval or runtime verification is implied."
     },
     {
       "id": "FR-COR-002",
@@ -3214,6 +3217,6 @@
     }
   },
   "next_runnable": [
-    "FR-WK-T1-W02"
+    "FR-LES-T1-W01-NEIGHBOURS"
   ]
 }
