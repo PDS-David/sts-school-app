@@ -1,0 +1,20 @@
+# SS1 foundation verification — REGISTERED FOR THE LATER VERIFICATION PHASE (SS1-09).
+# Manual trigger only (workflow_dispatch): publishing the PR does NOT start it, and it is not a substitute for the
+# owner's planned whole-code verification. Pure unit tests; no database, no secrets, no deploy.
+name: ss1-foundation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ss1-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: python3 -m unittest discover -s tests -p "test_ss1_prepare_sources.py"
+      - run: node --import tsx --test tests/ss1/foundation.test.mts

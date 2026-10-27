@@ -1,0 +1,121 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "geography",
+  "canonical_subject": "Geography",
+  "package_status": {
+    "implementation": "IN_PROGRESS",
+    "content_approval": "NOT_REQUESTED",
+    "verification": "NOT_RUN",
+    "updated_by": "SYNTHETIC EXAMPLE — not production data",
+    "note": "This file only illustrates the shape. Its lesson text, hashes and locators are invented; it lives OUTSIDE backend/src/db/ss1/subjects/ so it can never be loaded."
+  },
+  "sources": [
+    {
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c",
+      "archive_member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Geography",
+      "document_header_subject": "SUBJECT: GEOGRAPHY (synthetic header text)",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "first non-empty line of the document (synthetic)"
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "rule_id": "GEO-R01",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "source_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c",
+      "reason": "Synthetic: a scheme-of-work table row with no teaching text.",
+      "week_label": "WEEK 1",
+      "anchor": "SYNTHETIC SCHEME LINE: map reading",
+      "classification": "SCHEME_ONLY"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "SUP-SS1-GEO-001",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Geography",
+      "sequence": 1,
+      "title": "Synthetic example lesson: reading a contour map",
+      "objectives": [
+        "Identify contour lines on a map.",
+        "State what closely spaced contour lines show."
+      ],
+      "body": "SYNTHETIC EXAMPLE BODY. A contour line joins places of equal height above sea level. When contour lines are close together the slope is steep; when they are far apart the slope is gentle. Learners trace a contour with a finger, name the contour interval, and describe the relief between two marked points. This paragraph is invented to demonstrate the schema's minimum length rule and is not curriculum content for any school.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "What does a contour line join?",
+          "answer": "Places of equal height above sea level.",
+          "marking": "1 mark for equal height, 1 mark for sea level."
+        }
+      ],
+      "covers_objectives": [
+        "GEO-1-001"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-1c1c1bdcecb4"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-1c1c1bdcecb4",
+            "week_label": "WEEK 1"
+          }
+        ],
+        "origin_statement": "Synthetic example: original wording written for illustration only."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "Example reference (synthetic)",
+          "url": "https://example.org/contours"
+        }
+      ],
+      "content_hash": "94ce8a849325abd5d2a494daeeb9fadd1a18becb1053cea27c8efea354e832df"
+    }
+  ],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [
+    {
+      "objective_id": "GEO-1-001",
+      "term_label": "1st Term",
+      "objective_text": "Read and interpret contour lines on a topographic map (synthetic).",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-1c1c1bdcecb4",
+        "week_label": "WEEK 1"
+      },
+      "status": "UNRESOLVED",
+      "evidence": [],
+      "open_item_ids": [
+        "OI-GEO-001"
+      ],
+      "note": "Synthetic: left UNRESOLVED to show that unfinished work is stated, not hidden."
+    }
+  ],
+  "open_items": [
+    {
+      "id": "OI-GEO-001",
+      "kind": "OWNER_ACTION",
+      "description": "Synthetic open item: the teacher must confirm which map extract the school uses.",
+      "owner_action": "Teacher supplies the map extract or approves a licensed equivalent.",
+      "affected_ids": [
+        "SUP-SS1-GEO-001",
+        "GEO-1-001"
+      ],
+      "blocks_student_delivery": true,
+      "status": "OPEN"
+    }
+  ]
+}

@@ -95,6 +95,9 @@ import {
   type Jss3DuplicateClaim,
   type Jss3ThirdTermRecord,
 } from './jss3ThirdTermRedistribution.js';
+// SS1 foundation (contract ss1-subject-v1). Used ONLY for SS 1 documents; all other classes never touch it.
+import { Ss1ImportSession, isSs1Class, type Ss1SourceBinding } from './ss1/importerHooks.js';
+import type { SnapshotRow as Ss1SnapshotRow } from './ss1/compiler.js';
 
 // ── Class name normalization ──────────────────────────────────────────────
 // Longest/most-specific patterns first so "sss 1" doesn't get eaten by a
@@ -444,6 +447,8 @@ async function main() {
   if (!root || !schoolCode || !['primary', 'secondary'].includes(schoolCode)) {
     console.log(`Usage:
   npx tsx src/db/ingestTopics.ts --root <path> --school-code primary|secondary [--default-term "1st Term"] [--jss3-supplements] [--yes]
+  SS 1 only (all optional): [--ss1-plan-out <file>] [--ss1-snapshot <rows.json>] [--ss1-packages-dir <dir>]
+                            [--ss1-allow-partial-sources] [--ss1-require-all-packages]
 
 --default-term is used ONLY for files whose path gives no term clue at all
 (e.g. a standalone file not organized into a "1st/2nd/3rd Term" folder) —
@@ -495,6 +500,23 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
   const jss3ThirdTermClaims: Array<Jss3DuplicateClaim & { source: string }> = [];
   const jss3ThirdTermRecords: Jss3ThirdTermRecord[] = [];
   const jss3ThirdTermFilesSeen = new Set<string>();
+  // SS1: created lazily on the first SS 1 document so every other class path is untouched.
+  const argValue = (flag: string) => { const i = process.argv.indexOf(flag); return i >= 0 ? process.argv[i + 1] : undefined; };
+  const ss1Holder: { session?: Ss1ImportSession } = {}; // holder object (not a closure-assigned let) keeps TS narrowing honest
+  const ss1Session = (): Ss1ImportSession => {
+    if (!ss1Holder.session) {
+      const snapshotPath = argValue('--ss1-snapshot');
+      ss1Holder.session = new Ss1ImportSession({
+        root,
+        subjectsDir: argValue('--ss1-packages-dir'),
+        allowPartialSources: process.argv.includes('--ss1-allow-partial-sources'),
+        requireAllPackages: process.argv.includes('--ss1-require-all-packages'),
+        planOut: argValue('--ss1-plan-out'),
+        snapshot: snapshotPath ? (JSON.parse(readFileSync(snapshotPath, 'utf8')) as Ss1SnapshotRow[]) : undefined,
+      });
+    }
+    return ss1Holder.session;
+  };
 
   for (const filePath of allFiles) {
     try {
@@ -538,6 +560,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
       const bytes = readFileSync(filePath);
       const sourceHash = createHash('sha256').update(bytes).digest('hex');
+
+      // SS1: bind this document to the authoritative manifest by exact content hash (unknown bytes => gate).
+      let ss1Binding: Ss1SourceBinding | null = null;
+      if (schoolCode === 'secondary' && isSs1Class(validClassNames)) {
+        ss1Binding = ss1Session().bindSource({ sourceIdentity: sourceIdentity(filePath), basename: path.basename(filePath), termLabel, sourceHash });
+      }
 
       let text = await extractText(filePath);
       if (schoolCode === 'primary') {
@@ -693,6 +721,11 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
         }));
       }
 
+      if (ss1Binding) {
+        const binding = ss1Binding;
+        sections = sections.map(section => ({ ...section, subjectName: ss1Session().resolveSubject(binding, section.subjectName) }));
+      }
+
       // Exact-copy suppression is deliberately subject-aware. Commit 10 keyed
       // only class + term + bytes, which could hide a byte-identical file that
       // had been misfiled under a different subject. Resolve the document's
@@ -718,7 +751,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
           if (section.subjectName.fallback) {
             fallbackSubjects.add(`${sourceIdentity(filePath)} / ${className} / ${termLabel} → ${section.subjectName.name}`);
           }
-          const parsedAll = parseTopics(section.sectionText)
+          const parsedBase = parseTopics(section.sectionText)
             .map(topic => schoolCode === 'primary'
               ? resolvePrimaryParsedTopic(path.basename(filePath), topic)
               : className === 'JSS 1'
@@ -730,6 +763,10 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
               ? resolveJss3SecondTermParsedTopic(path.basename(filePath), termLabel, topic)
               : topic)
             .filter((topic): topic is ParsedTopic => topic !== null);
+          // SS1: hash-scoped declarative package rules (split/attach/classify/exclude). No-op for every other class.
+          const parsedAll: ParsedTopic[] = ss1Binding
+            ? ss1Session().applyTopicRules(ss1Binding, section.subjectName.name, parsedBase)
+            : parsedBase;
           let parsed: Array<ParsedTopic & { destinationTerm?: string }> = parsedAll;
           if (className === 'JSS 3' && termLabel === '3rd Term' && parsedAll.length > 0) {
             jss3ThirdTermFilesSeen.add(path.basename(filePath));
@@ -775,10 +812,12 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
                 `${sourceIdentity(filePath)} / ${className} / ${section.subjectName.name} / ${termLabel} / ${t.weekLabel} → "${t.title}"`,
               );
             }
-            rows.push({
+            const row: Row = {
               filePath, className, termLabel: t.destinationTerm ?? termLabel, subjectName: section.subjectName.name,
               weekLabel: t.weekLabel, orderIndex: i, title: t.title, sourceReference: t.body,
-            });
+            };
+            rows.push(row);
+            if (ss1Binding && className === 'SS 1') ss1Session().attachRow(ss1Binding, row.subjectName, t, row, row.termLabel);
           });
         }
       }
@@ -802,6 +841,10 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     }
   }
 
+  // SS1: compile package lessons into APPENDED rows (after every original row of their bucket). Never reorders originals.
+  const ss1 = ss1Holder.session;
+  if (ss1) rows.push(...ss1.compile());
+
   // One sequence per complete bucket, retaining stable file/section/topic order.
   const bucketKey = (r: Row) => JSON.stringify([r.className, r.subjectName, r.termLabel]);
   const normalRows = rows.filter(r => r.className !== 'SS 3');
@@ -812,6 +855,9 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
     r.orderIndex = (nextOrder.get(key) ?? 0) + 1;
     nextOrder.set(key, r.orderIndex);
   }
+  // SS1: identity plan + optional snapshot compatibility, now that order_index values are final.
+  if (ss1) ss1.finalize(normalRows);
+
   // Compare topic bodies only within the SAME class/subject/term. Reporting
   // partial overlap as well as whole-file copies prevents duplicated lessons.
   const contentFiles = new Map<string, Set<string>>();
@@ -983,13 +1029,14 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
       for (const item of jss3PendingGate) console.log(`  ${item}`);
     }
   }
+  if (ss1?.active) for (const line of ss1.reportLines()) console.log(line);
   console.log('\nNormal curriculum order (1-based, per class/subject/term):');
   for (const r of normalRows) {
     console.log(`  ${r.className} / ${r.subjectName} / ${r.termLabel} #${r.orderIndex}: ${sourceIdentity(r.filePath)} / ${r.weekLabel} / ${r.title}`);
   }
   const blocked = unmappedClass.size + missingTerm.size + noWeekMarkers.length + errors.length
     + unsupported.length + fallbackSubjects.size + duplicates.length + identityCollisions.length
-    + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length;
+    + subjectConflicts.size + suspiciousTopics.size + jss3Gate.length + (ss1?.gates.length ?? 0);
   if (blocked || jss3PendingGate.length > 0 || allFiles.length === 0) {
     console.log(`\nAUDIT BLOCKED — resolve the reported conditions before import. No database changes made.${allFiles.length === 0 ? ' No supported source files found.' : ''}`);
     process.exitCode = 1;

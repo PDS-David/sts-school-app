@@ -1,0 +1,347 @@
+{
+  "contract_version": "ss1-subject-v1",
+  "status": "FROZEN — changes require the foundation owner (SS1-01) and a new contract version",
+  "published_commit": "Recorded in the PR/report, not in this file (avoids a self-referential hash).",
+  "authoritative_source": {
+    "archive": "SSS 1-20260507T072431Z-3-001.zip",
+    "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+    "library_file_id": "libfile_c7ec4e1ab0d88191b888fc536b2778f0",
+    "documents": 61,
+    "manifest": "backend/src/db/ss1/data/sourceManifest.json"
+  },
+  "schema": {
+    "zod": "backend/src/db/ss1/subjectPackageSchema.ts",
+    "contract_doc": "docs/ss1/contracts/CONTRACT.md",
+    "synthetic_example": "docs/ss1/contracts/example-subject-package.json"
+  },
+  "package_dir": "backend/src/db/ss1/subjects/",
+  "packages": [
+    {
+      "slug": "agricultural-science",
+      "canonical_subject": "Agricultural Science",
+      "id_token": "AGRIC",
+      "worker": "C",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+      "package_path": "backend/src/db/ss1/subjects/agricultural-science.json",
+      "lesson_id_pattern": "SUP-SS1-AGRIC-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-7aa642b0085b",
+        "SS1-SRC-956594d97094",
+        "SS1-SRC-458a07f7ea5a"
+      ]
+    },
+    {
+      "slug": "biology",
+      "canonical_subject": "Biology",
+      "id_token": "BIO",
+      "worker": "C",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+      "package_path": "backend/src/db/ss1/subjects/biology.json",
+      "lesson_id_pattern": "SUP-SS1-BIO-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-422e0e6ddde9",
+        "SS1-SRC-eb6e9665f42c",
+        "SS1-SRC-78059230037f"
+      ]
+    },
+    {
+      "slug": "bookkeeping",
+      "canonical_subject": "Book Keeping",
+      "id_token": "BOOKKEEP",
+      "worker": "D",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+      "package_path": "backend/src/db/ss1/subjects/bookkeeping.json",
+      "lesson_id_pattern": "SUP-SS1-BOOKKEEP-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-62b02f2adcb3",
+        "SS1-SRC-97c1db5b1eb0",
+        "SS1-SRC-97f226215927"
+      ]
+    },
+    {
+      "slug": "catering-craft",
+      "canonical_subject": "Catering Craft Practices",
+      "id_token": "CATERING",
+      "worker": "F",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+      "package_path": "backend/src/db/ss1/subjects/catering-craft.json",
+      "lesson_id_pattern": "SUP-SS1-CATERING-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-f433169ca25c",
+        "SS1-SRC-d068ede78d16"
+      ]
+    },
+    {
+      "slug": "chemistry",
+      "canonical_subject": "Chemistry",
+      "id_token": "CHEM",
+      "worker": "C",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+      "package_path": "backend/src/db/ss1/subjects/chemistry.json",
+      "lesson_id_pattern": "SUP-SS1-CHEM-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-58b4a44c3afa",
+        "SS1-SRC-84df18289b7a",
+        "SS1-SRC-80b770d18aa8",
+        "SS1-SRC-28ed32f52548"
+      ]
+    },
+    {
+      "slug": "civic-education",
+      "canonical_subject": "Civic Education",
+      "id_token": "CIVIC",
+      "worker": "E",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+      "package_path": "backend/src/db/ss1/subjects/civic-education.json",
+      "lesson_id_pattern": "SUP-SS1-CIVIC-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-fe52495abec9",
+        "SS1-SRC-21ddf6abc2dc",
+        "SS1-SRC-0dc1f445683f"
+      ]
+    },
+    {
+      "slug": "commerce",
+      "canonical_subject": "Commerce",
+      "id_token": "COMMERCE",
+      "worker": "D",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+      "package_path": "backend/src/db/ss1/subjects/commerce.json",
+      "lesson_id_pattern": "SUP-SS1-COMMERCE-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-d96373071a7e",
+        "SS1-SRC-0ccdf9dd3768",
+        "SS1-SRC-d436db5f412d"
+      ]
+    },
+    {
+      "slug": "data-processing",
+      "canonical_subject": "Data Processing",
+      "id_token": "DATAPROC",
+      "worker": "E",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+      "package_path": "backend/src/db/ss1/subjects/data-processing.json",
+      "lesson_id_pattern": "SUP-SS1-DATAPROC-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-a92792eaa7ef",
+        "SS1-SRC-6880a598b05b",
+        "SS1-SRC-6763fdc397c3"
+      ]
+    },
+    {
+      "slug": "economics",
+      "canonical_subject": "Economics",
+      "id_token": "ECON",
+      "worker": "D",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+      "package_path": "backend/src/db/ss1/subjects/economics.json",
+      "lesson_id_pattern": "SUP-SS1-ECON-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-2ab0c50bcab6",
+        "SS1-SRC-03d0cac39679",
+        "SS1-SRC-6a6ff668d5a9"
+      ]
+    },
+    {
+      "slug": "english",
+      "canonical_subject": "English Language",
+      "id_token": "ENG",
+      "worker": "A",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+      "package_path": "backend/src/db/ss1/subjects/english.json",
+      "lesson_id_pattern": "SUP-SS1-ENG-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-a00657d42196",
+        "SS1-SRC-d8bd8f85fd73",
+        "SS1-SRC-50fa9b1eb2fd"
+      ]
+    },
+    {
+      "slug": "financial-accounting",
+      "canonical_subject": "Financial Accounting",
+      "id_token": "FINACC",
+      "worker": "D",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+      "package_path": "backend/src/db/ss1/subjects/financial-accounting.json",
+      "lesson_id_pattern": "SUP-SS1-FINACC-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-cf77df509ac3",
+        "SS1-SRC-167817613690",
+        "SS1-SRC-8165a1af2444"
+      ]
+    },
+    {
+      "slug": "food-and-nutrition",
+      "canonical_subject": "Food & Nutrition",
+      "id_token": "FOODNUT",
+      "worker": "F",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+      "package_path": "backend/src/db/ss1/subjects/food-and-nutrition.json",
+      "lesson_id_pattern": "SUP-SS1-FOODNUT-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-de2cdd0b85f6",
+        "SS1-SRC-0579303326ae",
+        "SS1-SRC-136db891415d"
+      ]
+    },
+    {
+      "slug": "french",
+      "canonical_subject": "French",
+      "id_token": "FRENCH",
+      "worker": "A",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+      "package_path": "backend/src/db/ss1/subjects/french.json",
+      "lesson_id_pattern": "SUP-SS1-FRENCH-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-945dfb24eaf6",
+        "SS1-SRC-b6245ffb69e5",
+        "SS1-SRC-8a2ec1fe30e3"
+      ]
+    },
+    {
+      "slug": "further-mathematics",
+      "canonical_subject": "Further Mathematics",
+      "id_token": "FMATHS",
+      "worker": "B",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/03_WORKER_B_MATHEMATICS_PHYSICS_DRAWING.md",
+      "package_path": "backend/src/db/ss1/subjects/further-mathematics.json",
+      "lesson_id_pattern": "SUP-SS1-FMATHS-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-e9efc9a976ed",
+        "SS1-SRC-43c5ab51b87f",
+        "SS1-SRC-c7a7523bdb0d"
+      ]
+    },
+    {
+      "slug": "geography",
+      "canonical_subject": "Geography",
+      "id_token": "GEO",
+      "worker": "C",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+      "package_path": "backend/src/db/ss1/subjects/geography.json",
+      "lesson_id_pattern": "SUP-SS1-GEO-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-1c1c1bdcecb4",
+        "SS1-SRC-ba9dee61c27c",
+        "SS1-SRC-74a10d374306"
+      ]
+    },
+    {
+      "slug": "government",
+      "canonical_subject": "Government",
+      "id_token": "GOVT",
+      "worker": "E",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+      "package_path": "backend/src/db/ss1/subjects/government.json",
+      "lesson_id_pattern": "SUP-SS1-GOVT-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-40ce7dcaf672",
+        "SS1-SRC-c76f430c7cf8",
+        "SS1-SRC-5f34b9f4efc4"
+      ]
+    },
+    {
+      "slug": "literature",
+      "canonical_subject": "Literature-in-English",
+      "id_token": "LIT",
+      "worker": "A",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+      "package_path": "backend/src/db/ss1/subjects/literature.json",
+      "lesson_id_pattern": "SUP-SS1-LIT-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-470d43e54e5b",
+        "SS1-SRC-1728961e97b5",
+        "SS1-SRC-2422e423a240"
+      ]
+    },
+    {
+      "slug": "mathematics",
+      "canonical_subject": "Mathematics",
+      "id_token": "MATHS",
+      "worker": "B",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/03_WORKER_B_MATHEMATICS_PHYSICS_DRAWING.md",
+      "package_path": "backend/src/db/ss1/subjects/mathematics.json",
+      "lesson_id_pattern": "SUP-SS1-MATHS-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-0c9004137f95",
+        "SS1-SRC-b802686e83d2",
+        "SS1-SRC-ca00ca94afb9"
+      ]
+    },
+    {
+      "slug": "physics",
+      "canonical_subject": "Physics",
+      "id_token": "PHYS",
+      "worker": "B",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/03_WORKER_B_MATHEMATICS_PHYSICS_DRAWING.md",
+      "package_path": "backend/src/db/ss1/subjects/physics.json",
+      "lesson_id_pattern": "SUP-SS1-PHYS-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-5c0149cda71d",
+        "SS1-SRC-2c924c964660",
+        "SS1-SRC-bed91bb4ef0e"
+      ]
+    },
+    {
+      "slug": "technical-drawing",
+      "canonical_subject": "Technical Drawing",
+      "id_token": "TECHDRAW",
+      "worker": "B",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/03_WORKER_B_MATHEMATICS_PHYSICS_DRAWING.md",
+      "package_path": "backend/src/db/ss1/subjects/technical-drawing.json",
+      "lesson_id_pattern": "SUP-SS1-TECHDRAW-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-af4868d2c026"
+      ]
+    },
+    {
+      "slug": "yoruba",
+      "canonical_subject": "Yoruba",
+      "id_token": "YORUBA",
+      "worker": "A",
+      "prompt": "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+      "package_path": "backend/src/db/ss1/subjects/yoruba.json",
+      "lesson_id_pattern": "SUP-SS1-YORUBA-NNN",
+      "manifest_source_ids": [
+        "SS1-SRC-48b641249e3b",
+        "SS1-SRC-ec4a5095420d",
+        "SS1-SRC-4cc6aae9ed7d"
+      ]
+    }
+  ],
+  "worker_owns": [
+    "backend/src/db/ss1/subjects/<assigned-slug>.json",
+    "private asset files (never the importer, routes or shared records)"
+  ],
+  "foundation_owns": [
+    "backend/src/db/ss1/** except subjects/",
+    "backend/src/db/ingestTopics.ts (SS1 hooks)",
+    "scripts/ss1/",
+    "docs/ss1/contracts/"
+  ],
+  "output_interface": {
+    "importer_flags": [
+      "--ss1-plan-out <file>",
+      "--ss1-snapshot <rows.json>",
+      "--ss1-packages-dir <dir>",
+      "--ss1-allow-partial-sources",
+      "--ss1-require-all-packages"
+    ],
+    "supplement_rows": "appended AFTER the originals of their (subject, term) bucket; topics.source_file = <LESSON_ID>.json; weekLabel = 'SUPPLEMENT <LESSON_ID>'",
+    "row_identity": "(school_code='secondary', class_name='SS 1', subject, term_label, order_index) — never hard-code a topic id",
+    "plan_file": "ss1-plan-out JSON: rows, assets (with final order_index), delivery_corrections, scheme_only_rows, excluded_duplicates, gates",
+    "assemble": "node --import tsx scripts/ss1/build_subject_packages.mts --plan <plan.json> --output <NEW_DIR> [--assets-dir <DIR>]",
+    "stage_sources": "python3 scripts/ss1/prepare_sources.py --archive <zip> [--archive <zip>...] --output <NEW_DIR> [--allow-partial]",
+    "asset_attach": "backend/src/db/attachTopicAssets.ts with the attach_manifest_<slug>_<term>.csv files (run later, not now)"
+  },
+  "rule_operations": [
+    "split_before_anchor",
+    "attach_stranded_label",
+    "classify_marker",
+    "explicit_source_alias",
+    "exclude_proven_duplicate"
+  ],
+  "escalation": "Need a new operation, field, subject name or hash rule? Do NOT invent keys. Record an open_item and hand off to the foundation owner.",
+  "testing": "DEFERRED BY OWNER. Write tests; do not run suites, typechecks, importer dry runs, DB or device checks in SS1-02..08.",
+  "report_status": "IMPLEMENTED — TESTING DEFERRED BY OWNER"
+}
