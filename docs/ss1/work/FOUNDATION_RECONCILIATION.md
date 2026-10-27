@@ -57,7 +57,7 @@ Status: **DOCUMENTATION ONLY. Static read of both trees. Nothing was run** (no t
 
 ## 3. Useful #71 capabilities absent from master (each a separate future item)
 
-Each item must be added to master's existing schema/compiler without renaming existing fields. Items marked **[schema]** need an additive, owner-approved foundation version decision (the contract says unsupported structure requires a versioned foundation change). Others need no schema change.
+These are candidate capabilities, not 17 automatically mandatory tasks or closure gates. Adopt an item only where a concrete requirement justifies it; any adopted item must extend master's existing schema/compiler without renaming existing fields. Items marked **[schema]** need an additive, owner-approved foundation version decision (the contract says unsupported structure requires a versioned foundation change). Others need no schema change.
 
 | ID | Item | #71 source | Notes |
 |---|---|---|---|
@@ -92,14 +92,13 @@ Each item must be added to master's existing schema/compiler without renaming ex
   - **D-3:** `further-mathematics.json` (IMPLEMENTED/NOT COMPLETE; 14 lessons, 3 rules, 7 open items, 0 corrections). Master's version has 6 lessons, 6 corrections, 1 asset.
   - **D-4:** `docs/ss1/work/SS1-03/` notes and `tests/ss1/{mathematics,further-mathematics,physics}.test.mts` (#71 schema).
   - Overlap between the D-2/D-3 lessons and master's lessons was **not** assessed here.
-- Each D item must be ported by a separate owner-authorized task into master's schema, reusing the existing reviews and evidence (no source re-review). Until then #71's head `b5ced7e` is their only home.
+- Each D item needs a separate bounded port task into master's schema, reusing existing reviews and evidence. Compare overlap and changed mappings where necessary; do not repeat unrelated source audits. Until then #71's head `b5ced7e` is their only home.
 
-## 5. Can #71 be closed?
+## 5. PR disposition (reviewed 2026-10-27)
 
-- **Not now.** It is the only copy of D-1 to D-4, and the useful capabilities R-01 to R-17 are not yet implemented.
-- **Yes, after the dependencies are removed.** #71 can be closed without merging (it conflicts and a merge would replace master's schema) once all of the following hold:
-  - D-1 to D-3 are ported to master's schema, or the owner explicitly drops them.
-  - Each R item is implemented in a separate PR, or the owner records it as declined.
-  - The branch `ss1/SS1-01-20261026-claude` and SHA `b5ced7e` are retained (do not delete) as the reference.
-- No further SS1 worker task should be based on #71.
-- Owner action: the stale #71 description says "Head: 4182582" while the actual head is `b5ced7e`.
+- Do not merge #71 into master: the foundations are incompatible.
+- Keep it open for now as a clearly labelled reference for D-1 to D-4; new workers must branch from current master.
+- Preserve branch `ss1/SS1-01-20261026-claude` and full head `b5ced7ebb0efe22df2351baa140266fbf40cbf41`. Closing a PR does not itself delete that branch or its commits.
+- Before closing, make the unique content's disposition explicit: bounded port tasks with immutable source paths/SHAs, or completed ports. Do not silently discard D-1 to D-4.
+- R-01 to R-17 are proposals, not prerequisites for closing this PR or blanket requirements to implement all 17 features. Evaluate each against an actual product requirement.
+- The PR description's historical foundation SHA is not its current head; retain the distinction above.
