@@ -1,0 +1,367 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Literature",
+  "slug": "literature",
+  "generated_from": {
+    "master_sha": "4df391a5779d42ae88ecfc7389fad2d3b3231b4a",
+    "package": null,
+    "task": "SS1 subject queue: Literature (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv, the Worker A prompt and the SS1-02 checkpoint)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Finding: there is no literature package, no tests and no assets on master. The only existing work is a statement in docs/ss1/work/SS1-02/CHECKPOINT.md that the T1 opening and the T2/T3 schemes/openings were read only and that no package exists, plus a draft canonical label in author_packages.py that produced nothing. No origin/ss1/* branch holds Literature work. Literature is not among the FOUNDATION_RECONCILIATION.md D-items. Nothing is recorded as implemented; the checkpoint's observations are not treated as source evidence.",
+    "Three documents are assigned (one per term). All three assignments are filename-based (mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER); no header has been verified. The 1st Term member is named \"LIT. IN ENGLISH.docx\", the others \"LITERATURE.docx\".",
+    "Worker A requires the actual book/extract named in each source to be determined; a modern equivalent must be labelled and never presented as the school's prescribed text; no page numbers or editions may be invented. This governs later work; nothing is invented here.",
+    "The 2nd and 3rd Term documents are described as near-identical but have different hashes and sizes. LIT-FACT-T2-T3-RELATIONSHIP records the comparison; no duplicate exclusion is made (the contract has no cross-term exclusion).",
+    "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
+    "LIT-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). LIT-SRC-T2/T3 depend on it so only one item creates the file.",
+    "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INVENTORY": 3,
+    "FACTUAL_DEPENDENCY": 2,
+    "TEST": 1
+  },
+  "status_counts": {
+    "PENDING": 8,
+    "BLOCKED": 1
+  },
+  "items": [
+    {
+      "id": "LIT-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+      "objective": "Register the 1st Term Literature source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug literature, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-SRC-T1.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "No literature package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-470d43e54e5b, sha256=732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea, 31804 bytes, member 'SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. The SS1-02 checkpoint says the T1 opening was read only; no package was created. Not registered. The canonical name must come from the header: SS1-02's draft authoring script (docs/ss1/work/SS1-02/author_packages.py) uses the label \"Literature-in-English\", but that script produced no package and its label is not evidence. The member filename is \"LIT. IN ENGLISH.docx\" (the other terms are \"LITERATURE.docx\"); a filename variation is a candidate for a source-backed alias only if the header supports it, and an alias needs an approval_reference (never invented).",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example English Language), record an explicit handoff open item; do not delete or silently reassign. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "LIT-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+      "objective": "Register the 2nd Term Literature source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by LIT-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "backend/src/db/ss1/subjects/literature.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-SRC-T2.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No literature package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-1728961e97b5, sha256=a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757, 57389 bytes, member 'SSS 1/2nd Term SS1_/LITERATURE.docx', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. The SS1-02 checkpoint says the T2 scheme and opening were read only; no package was created. Not registered. The canonical name must come from the header: SS1-02's draft authoring script (docs/ss1/work/SS1-02/author_packages.py) uses the label \"Literature-in-English\", but that script produced no package and its label is not evidence. The 2nd and 3rd Term members have different SHA-256 values and sizes (57389 and 56647 bytes) but the SS1-02 checkpoint calls them near-identical extracts; see LIT-FACT-T2-T3-RELATIONSHIP. The current contract has no cross-term duplicate exclusion, so neither is excluded here.",
+      "completion_condition": "Package file exists; this source's entry is added and no other source touched; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example English Language), record an explicit handoff open item; do not delete or silently reassign. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "LIT-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-2422e423a240",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/LITERATURE.docx",
+      "objective": "Register the 3rd Term Literature source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by LIT-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "backend/src/db/ss1/subjects/literature.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/LITERATURE.docx",
+          "member_sha256": "319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-SRC-T3.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No literature package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-2422e423a240, sha256=319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3, 56647 bytes, member 'SSS 1/3rd Term SS1_/LITERATURE.docx', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. The SS1-02 checkpoint says the T3 scheme and opening were read only; no package was created. Not registered. The canonical name must come from the header: SS1-02's draft authoring script (docs/ss1/work/SS1-02/author_packages.py) uses the label \"Literature-in-English\", but that script produced no package and its label is not evidence. The 2nd and 3rd Term members have different SHA-256 values and sizes (57389 and 56647 bytes) but the SS1-02 checkpoint calls them near-identical extracts; see LIT-FACT-T2-T3-RELATIONSHIP. The current contract has no cross-term duplicate exclusion, so neither is excluded here.",
+      "completion_condition": "Package file exists; this source's entry is added and no other source touched; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example English Language), record an explicit handoff open item; do not delete or silently reassign. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "LIT-INV-T1",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 1st Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, image or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Determine the actual book, play, poem or extract the document names or quotes, with the exact wording that names it, and record whether the document supplies the text itself or only refers to it. Do not invent titles, authors, page numbers or editions; a modern equivalent must be labelled, never presented as the school's prescribed text. Note any quoted passage whose reuse permission or attribution would need checking, and any literary-term definition or biographical/historical statement that may be inaccurate, so that later correction work keeps the source's original wording distinct from the corrected fact. Keep any drama, prose and poetry strands distinct without a target count.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-INV-T1.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, parsed-row evidence or source notes. The SS1-02 checkpoint says the T1 opening was read only; no package was created. Week count and the named text are unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, states what text/book/extract each section names (or that none is named), and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "LIT-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 2nd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, image or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Determine the actual book, play, poem or extract the document names or quotes, with the exact wording that names it, and record whether the document supplies the text itself or only refers to it. Do not invent titles, authors, page numbers or editions; a modern equivalent must be labelled, never presented as the school's prescribed text. Note any quoted passage whose reuse permission or attribution would need checking, and any literary-term definition or biographical/historical statement that may be inaccurate, so that later correction work keeps the source's original wording distinct from the corrected fact. Keep any drama, prose and poetry strands distinct without a target count.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-INV-T2.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, parsed-row evidence or source notes. The SS1-02 checkpoint says the T2 scheme and opening were read only; no package was created. Week count and the named text are unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, states what text/book/extract each section names (or that none is named), and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "LIT-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-2422e423a240",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 3rd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, image or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Determine the actual book, play, poem or extract the document names or quotes, with the exact wording that names it, and record whether the document supplies the text itself or only refers to it. Do not invent titles, authors, page numbers or editions; a modern equivalent must be labelled, never presented as the school's prescribed text. Note any quoted passage whose reuse permission or attribution would need checking, and any literary-term definition or biographical/historical statement that may be inaccurate, so that later correction work keeps the source's original wording distinct from the corrected fact. Keep any drama, prose and poetry strands distinct without a target count.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/LITERATURE.docx",
+          "member_sha256": "319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-INV-T3.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, parsed-row evidence or source notes. The SS1-02 checkpoint says the T3 scheme and opening were read only; no package was created. Week count and the named text are unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, states what text/book/extract each section names (or that none is named), and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "LIT-FACT-T2-T3-RELATIONSHIP",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "2nd Term and 3rd Term LITERATURE.docx",
+      "objective": "Compare the 2nd and 3rd Term documents section by section and record exactly which parts are identical, which differ, and in what way (text, scheme, named book/extract, images). Do not exclude either document or any section as a duplicate; the current contract supports only byte-identical same-term source exclusion. Record the finding as evidence so that week items can link genuinely repeated coverage precisely.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        },
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/LITERATURE.docx",
+          "member_sha256": "319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-FACT-T2-T3-RELATIONSHIP.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T2",
+        "LIT-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The SS1-02 checkpoint describes T2/T3 Literature as near-identical extracts, \"not yet proved identical or fully read\", and says a cross-term source must not be excluded under the current contract. The documents are different files (SHA-256 a12244cb\u2026 vs 319a4898\u2026; 57389 vs 56647 bytes). The relationship has not been recorded.",
+      "completion_condition": "A per-section comparison is written to the FACT note with locators; no exclusion rule is added; any difference that affects objectives is passed to the week items."
+    },
+    {
+      "id": "LIT-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/literature.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document, source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/literature.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/literature.package.test.mts",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "depends_on": [
+        "LIT-SRC-T1",
+        "LIT-SRC-T2",
+        "LIT-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/literature.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "LIT-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any literature lessons. Separate stage; no agent may invent an approval_reference or verification.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/literature.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-INV-T2",
+        "LIT-INV-T3",
+        "LIT-FACT-T2-T3-RELATIONSHIP",
+        "LIT-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "4df391a5779d42ae88ecfc7389fad2d3b3231b4a",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 3,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+    }
+  },
+  "next_runnable": [
+    "LIT-SRC-T1"
+  ]
+}
