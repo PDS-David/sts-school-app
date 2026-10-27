@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "physics",
+  "canonical_subject": "Physics",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "archive_member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Physics",
+      "header_text": "SUBJECT: PHYSICS\t\t\t\t\t\t\t\t            CLASS: SS 1",
+      "header_evidence": {
+        "locator": "SS1-SRC-5c0149cda71d: the subject line (line 19 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), after the line 'FIRST TERM E-LEARNING NOTE'; trailing whitespace of the line is not included",
+        "explanation": "The subject line occurs once in the extracted text ('PHYSICS' alone occurs 4 times). It names Physics, class SS 1 (the class label is complete on this line, unlike the unverified PR #71 claim), so the subject is verified by the document and not by the filename. The 11-week scheme and Week One teaching confirm it: introduction to physics and the laboratory, measurement, motion and forces, friction, vectors and scalars, density, upthrust and pressure, work, energy and power, viscosity. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-5c0149cda71d-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "anchor": "SUBJECT: PHYSICS\t\t\t\t\t\t\t\t            CLASS: SS 1",
+      "evidence": {
+        "locator": "SS1-SRC-5c0149cda71d: subject line of extracted text (line 19)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT: PHYSICS\t\t\t\t\t\t\t\t            CLASS: SS 1",
+      "canonical_subject": "Physics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "PHYSICS-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source subject line is 'SUBJECT: PHYSICS' with 'CLASS: SS 1'. It differs from the canonical subject name 'Physics' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-5c0149cda71d-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d-R001",
+        "SS1-SRC-5c0149cda71d"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}

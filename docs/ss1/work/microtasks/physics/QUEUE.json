@@ -37,7 +37,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "PENDING": 59,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 58,
     "BLOCKED": 7
   },
   "total": 66,
@@ -69,8 +70,8 @@
         "docs/ss1/work/microtasks/physics/PHYS-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no physics.json (loader would report MISSING_PACKAGE) and docs/ss1/work/SS1-03/CHECKPOINT.md lists Physics as NOT STARTED. Manifest row: sha256=cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206, 8479232 bytes, legacy binary .doc, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename, header verification required). PR #71 records header 'SUBJECT: PHYSICS CLASS: SS' on document line 3 with the class number on the next line; that is an unverified branch claim, not registered or verified metadata. Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/physics.json created (package_status PENDING; lessons, source rules other than the alias, delivery_corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-5c0149cda71d sha256=cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206 archive_member='SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc' term='1st Term' canonical_subject='Physics' header_text='SUBJECT: PHYSICS' + whitespace + 'CLASS: SS 1' (line 19 of word-extractor 1.0.4 getBody(); single occurrence confirmed; 'PHYSICS' alone occurs 4 times); rule SS1-SRC-5c0149cda71d-R001 (source_alias, approval_reference PENDING-OWNER); open item PHYSICS-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Physics from the header; no handoff needed. Evidence note: docs/ss1/work/microtasks/physics/PHYS-SRC-T1.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that fact and a source_alias need as an open item rather than guessing. PERMISSION TO CREATE THE MINIMUM PACKAGE: because no physics.json exists on master, this item may create backend/src/db/ss1/subjects/physics.json containing only the envelope (schema_version ss1-subject-v1, subject_slug physics, canonical_subject confirmed from the document, package_status PENDING), this source entry, and empty arrays for every other required section. Nothing else may be authored in it. Do not author lessons, rules or coverage here."
     },
     {
@@ -2232,7 +2233,21 @@
     }
   },
   "next_runnable": [
-    "PHYS-SRC-T1"
+    "PHYS-SRC-T2",
+    "PHYS-SRC-T3",
+    "PHYS-PRE-T1",
+    "PHYS-WK-T1-W01",
+    "PHYS-WK-T1-W02",
+    "PHYS-WK-T1-W03",
+    "PHYS-WK-T1-W04",
+    "PHYS-WK-T1-W05-W06",
+    "PHYS-WK-T1-W06",
+    "PHYS-WK-T1-W07",
+    "PHYS-WK-T1-W08",
+    "PHYS-WK-T1-W09",
+    "PHYS-VIS-T1",
+    "PHYS-PORT-D1-COV-T1",
+    "PHYS-CMP-D4-NOTES"
   ],
   "runnable_now": [
     "PHYS-SRC-T1",
