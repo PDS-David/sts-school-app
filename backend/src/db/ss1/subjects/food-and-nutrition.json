@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "food-and-nutrition",
+  "canonical_subject": "Food and Nutrition",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7",
+      "archive_member": "SSS 1/1st Term SS1_/F _ N.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Food and Nutrition",
+      "header_text": "SCHEME OF WORK FOR ALPHA TERM",
+      "header_evidence": {
+        "locator": "SS1-SRC-de2cdd0b85f6: first paragraph of word/document.xml (the first body element); the next paragraph is the 'WEEK / TOPIC' scheme table heading",
+        "explanation": "The opening heading is a generic scheme title; it does not name the subject, the class or '1st Term' (it reads 'ALPHA TERM'; the term comes from the archive folder '1st Term SS1_'). The document has no 'SUBJECT:' or 'CLASS:' line. The subject is therefore confirmed from teaching content only: the scheme's Week 1 topic reads 'Introduction to food and nutrition', the lesson body opens with 'WEEK 1 / INTRODUCTION TO FOOD AND NUTRITION', and the scheme covers nutrients, vitamins, mineral salts, deficiency symptoms and the digestive system. It is not Catering Craft; 'Hotel and catering management' appears only as one item in a Week 2 careers list. The filename 'F _ N.docx' was not used as evidence. Heading occurs once in text extracted directly from the original DOCX XML; uniqueness was not checked on importer/mammoth output (importer run deferred)."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-de2cdd0b85f6-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "source_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7",
+      "anchor": "SCHEME OF WORK FOR ALPHA TERM",
+      "evidence": {
+        "locator": "SS1-SRC-de2cdd0b85f6: first paragraph of word/document.xml",
+        "explanation": "Source metadata only; original text is retained. The generic heading differs from the canonical subject name, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SCHEME OF WORK FOR ALPHA TERM",
+      "canonical_subject": "Food and Nutrition",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject confirmed from its teaching content because the document has no SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "FOOD-AND-NUTRITION-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source's opening heading is the generic title 'SCHEME OF WORK FOR ALPHA TERM', not the subject name, and the document has no SUBJECT line. The source_alias rule SS1-SRC-de2cdd0b85f6-R001 declares it for Food and Nutrition with approval_reference PENDING-OWNER. The subject is read from the scheme topics and Week 1 heading only.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one. The 2nd Term (F _ N.docx) and 3rd Term (FOOD _ NUTRITION.docx) sources are registered separately and may carry different headings.",
+      "affected_ids": [
+        "SS1-SRC-de2cdd0b85f6-R001",
+        "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
