@@ -41,8 +41,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 16,
-    "PENDING": 70,
+    "IMPLEMENTED_TESTING_DEFERRED": 17,
+    "PENDING": 69,
     "BLOCKED": 9
   },
   "total": 95,
@@ -135,8 +135,8 @@
       "depends_on": [
         "MATH-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Recorded: header_text=\"SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM\"; header_evidence.locator=\"document title line (first line of extracted text)\". mapping_status in the CSV is FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER, i.e. assignment by filename with document-header verification still required. PR #71 head recorded that the file its worker received in chat (MATHss1.docx, 150666 bytes) did NOT match this manifest source (819678 bytes, OI-MATHS-001); the worker must confirm the member's SHA-256 equals the manifest value before reading, and must not read any other copy.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against the original document (member SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb equals manifest; 819678 bytes; archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). Title line 'SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM' is line 3 of mammoth 1.12.2 extractRawText() output (lines 1-2 blank), occurs once, names SS1, first term and General Mathematics; no SUBJECT/CLASS line; 'FURTHER' does not occur; page header text is 'Lesson note'. Recorded header_text is correct and unchanged; header_evidence.locator corrected from 'first line of extracted text' to the exact line. No mismatch, so no new open item. Alias approval_reference NOT changed (MATH-APPROVAL-ALIASES). Note: docs/ss1/work/microtasks/mathematics/MATH-FACT-HEADER-T1.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Exact header lines (verbatim, short) and their locator recorded in the item note and in the source's header_evidence where they differ; any mismatch with Mathematics recorded as an open item and reported. The alias approval_reference is NOT changed here (see MATH-APPROVAL-ALIASES)."
     },
     {
@@ -3074,7 +3074,24 @@
     }
   },
   "next_runnable": [
-    "MATH-FACT-HEADER-T1"
+    "MATH-FACT-HEADER-T2",
+    "MATH-FACT-HEADER-T3",
+    "MATH-PRE-T1",
+    "MATH-WK-T1-W01",
+    "MATH-WK-T1-W02",
+    "MATH-WK-T1-W03",
+    "MATH-WK-T1-W04",
+    "MATH-WK-T1-W05",
+    "MATH-WK-T1-W06",
+    "MATH-WK-T1-W07",
+    "MATH-WK-T1-W08",
+    "MATH-WK-T1-W09",
+    "MATH-WK-T1-W10",
+    "MATH-WK-T1-W11",
+    "MATH-FACT-LOG-TABLES",
+    "MATH-VIS-T1",
+    "MATH-PORT-D2-RULES",
+    "MATH-CMP-D4-NOTES"
   ],
   "runnable_now": [
     "MATH-FACT-HEADER-T1",
