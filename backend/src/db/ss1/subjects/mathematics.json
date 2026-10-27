@@ -1,0 +1,1595 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "mathematics",
+  "canonical_subject": "Mathematics",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-0c9004137f95",
+      "sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "archive_member": "SSS 1/1st Term SS1_/MATHss1.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Mathematics",
+      "header_text": "SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM",
+      "header_evidence": {
+        "locator": "document title line (first line of extracted text)",
+        "explanation": "Title names \"GENERAL MATHEMATICS\" for SS1 first term; scheme lists mathematics topics (number bases, logarithms, variation). No separate SUBJECT line exists."
+      }
+    },
+    {
+      "source_id": "SS1-SRC-b802686e83d2",
+      "sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "header_text": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\t\tCLASS: SS 1",
+      "header_evidence": {
+        "locator": "line 2 \"SUBJECT: ... CLASS: SS 1\"",
+        "explanation": "Subject line reads MATHEMATICS, class SS 1, second term; scheme lists quadratics, sets, trigonometry, circles, logic."
+      }
+    },
+    {
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "header_text": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\tCLASS: SSS 1",
+      "header_evidence": {
+        "locator": "line 2 \"SUBJECT: ... CLASS: SSS 1\"",
+        "explanation": "Subject line reads MATHEMATICS, class SSS 1, third term; scheme lists mensuration, constructions, statistics."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "RULE-MATH-T1-ALIAS",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "anchor": "SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM",
+      "observed_subject": "SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM",
+      "canonical_subject": "Mathematics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "evidence": {
+        "locator": "title line",
+        "explanation": "Heading says GENERAL MATHEMATICS; canonical subject is Mathematics (distinct from Further Mathematics)."
+      }
+    },
+    {
+      "id": "RULE-MATH-T2-ALIAS",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "anchor": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\t\tCLASS: SS 1",
+      "observed_subject": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\t\tCLASS: SS 1",
+      "canonical_subject": "Mathematics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "evidence": {
+        "locator": "SUBJECT line",
+        "explanation": "Heading is a full SUBJECT/CLASS line, not the bare subject name."
+      }
+    },
+    {
+      "id": "RULE-MATH-T3-ALIAS",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "anchor": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\tCLASS: SSS 1",
+      "observed_subject": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\tCLASS: SSS 1",
+      "canonical_subject": "Mathematics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document; subject also fixed by SOURCE_ASSIGNMENTS.csv filename assignment; owner confirmation not yet recorded",
+      "evidence": {
+        "locator": "SUBJECT line",
+        "explanation": "Heading is a full SUBJECT/CLASS line, not the bare subject name."
+      }
+    },
+    {
+      "id": "RULE-MATH-T1-W07-REVISION",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "anchor": "Review of first half  and periodic test",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "row 6 (WEEK 7)",
+        "explanation": "Revision/periodic-test marker row; body retained."
+      }
+    },
+    {
+      "id": "RULE-MATH-T1-W11-REVISION",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "anchor": "Week 11 Revision",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "row 10 (Week 11)",
+        "explanation": "Revision marker row; body retained."
+      }
+    },
+    {
+      "id": "RULE-MATH-T1-SCHEME-EXAM",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "anchor": "Revision.\n\nExamination.\n\nExamination\n\nREFERENCE  BOOKS",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "scheme preamble, final scheme lines and reference-book heading",
+        "explanation": "Scheme-only lines for revision/examination weeks and the heading of the reference-book list; not teaching bodies."
+      }
+    },
+    {
+      "id": "RULE-MATH-T2-W06-REVISION",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "anchor": "Review of the first half term’s work and periodic test",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "row 5 (WEEK SIX)",
+        "explanation": "Half-term review row; body retained."
+      }
+    },
+    {
+      "id": "RULE-MATH-T3-W07-REVISION",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "anchor": "WEEK 7\n\nREVISION",
+      "kind": "REVISION",
+      "evidence": {
+        "locator": "row 6 (WEEK 7)",
+        "explanation": "Revision row; body retained."
+      }
+    }
+  ],
+  "lessons": [
+    {
+      "id": "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Revision and basic operations on integers (divisibility tests)",
+      "objectives": [
+        "Apply the divisibility tests for 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11 to a whole number",
+        "Add, subtract, multiply and divide integers, including negative integers, with correct signs"
+      ],
+      "body": "REVISION AND BASIC OPERATIONS ON INTEGERS\n\nWhat you will learn: how to test quickly whether one whole number divides another, and how to add, subtract, multiply and divide positive and negative integers correctly.\n\n1. Integers\nIntegers are the whole numbers and their negatives: ... -3, -2, -1, 0, 1, 2, 3 ... Fractions and decimals such as 1.5 or 3/5 are not integers.\n\n2. Divisibility tests\nA number is divisible by:\n- 2 if its last digit is 0, 2, 4, 6 or 8.\n- 3 if the sum of its digits is divisible by 3.\n- 4 if the number made by its last two digits is divisible by 4.\n- 5 if its last digit is 0 or 5.\n- 6 if it is divisible by both 2 and 3.\n- 8 if the number made by its last three digits is divisible by 8.\n- 9 if the sum of its digits is divisible by 9.\n- 10 if its last digit is 0.\n- 11 if (sum of digits in odd places) - (sum of digits in even places) is 0 or a multiple of 11.\n- 7: there is a test. Remove the last digit, double it, and subtract it from the rest of the number. If the result is divisible by 7 (or is 0), so is the original. Repeat if the result is still large.\n\nWorked example 1. Test 7168.\nLast digit 8 is even, so it is divisible by 2. Last two digits 68 = 4 x 17, so by 4. Last three digits 168 = 8 x 21, so by 8. Digit sum 7+1+6+8 = 22, not divisible by 3 or 9, so not by 3, 6 or 9. It does not end in 0 or 5, so not by 5 or 10. For 11: 8 - 6 + 1 - 7 = -4, not a multiple of 11. For 7: 716 - 2 x 8 = 700, which is divisible by 7, so 7168 is divisible by 7. Answer: 2, 4, 7 and 8.\n\nWorked example 2. Which of 2, 3, 4, 5, 6, 8, 9, 10, 11 divide 35120?\nEnds in 0: divisible by 2, 5 and 10. Last two digits 20 = 4 x 5: divisible by 4. Last three digits 120 = 8 x 15: divisible by 8. Digit sum 3+5+1+2+0 = 11: not divisible by 3, 6 or 9. For 11: 0 - 2 + 1 - 5 + 3 = -3: not divisible. Answer: 2, 4, 5, 8 and 10.\n\nWorked example 3. Is 24739 divisible by 11?\nDigits from the right: 9, 3, 7, 4, 2. Odd places: 9+7+2 = 18. Even places: 3+4 = 7. Difference 18 - 7 = 11, a multiple of 11. So yes: 24739 = 11 x 2249.\n\n3. Operations on integers\nAddition and subtraction of larger numbers: write the numbers in columns with units under units, tens under tens, and carry or borrow carefully.\n- 961 + 86 + 422 = 1469.\n- 4312 + 504 + 614 + 24 = 5454 (units 2+4+4+4 = 14, write 4 carry 1; tens 1+0+1+2+1 = 5; hundreds 3+5+6 = 14, write 4 carry 1; thousands 4+1 = 5).\n- 306 - 287 = 19.\n- 452 x 219 = 452 x 200 + 452 x 19 = 90400 + 8588 = 98988.\n\nSigns: subtracting a negative number adds its positive. Two numbers with the same sign multiplied or divided give a positive result; different signs give a negative result.\n- 8 - (+7) = 8 - 7 = 1.\n- -5 - (-9) = -5 + 9 = 4.\n- ((-8) x (-12)) / (-10) = 96 / (-10) = -9.6.\n\nCommon mistakes: forgetting that 9 needs the digit sum divisible by 9 (divisible by 3 alone is not enough); dropping a carried digit in column addition; losing a minus sign when two negatives meet.\n",
+      "body_sha256": "03206bf6b426ad0c316aa1e3ad653bcbd296e56750eeec7f7b81d0915a5d2ef2",
+      "practice": [
+        {
+          "id": "M1W1-Q1",
+          "question": "For each of these numbers state which of 2, 3, 4, 5, 6, 8, 9, 10, 11 divide it exactly: 3591, 2408, 7700, 18054, 2032, 1827, 23624, 468.",
+          "answer": "3591: divisible by 3, 9\n2408: divisible by 2, 4, 8\n7700: divisible by 2, 4, 5, 10, 11\n18054: divisible by 2, 3, 6, 9\n2032: divisible by 2, 4, 8\n1827: divisible by 3, 9\n23624: divisible by 2, 4, 8\n468: divisible by 2, 3, 4, 6, 9\n(Shown using the tests above; each can be confirmed by direct division.)",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Correct list for 3591",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 2408",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 7700",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 18054",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 2032",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 1827",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 23624",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct list for 468",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q2",
+          "question": "Evaluate: (a) 8 - (+7)  (b) -5 - (-9)  (c) ((-18) x (-5) x 3) / (9 x (-2))  (d) (12 x (-15) x (-9)) / ((5 - 2) x (-3) x (-4)).",
+          "answer": "(a) 1  (b) 4  (c) 270 / (-18) = -15  (d) 1620 / 36 = 45",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "(a) correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) numerator 270 and correct sign",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) final -15",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) numerator 1620 and denominator 36",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) final 45",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W1-Q3",
+          "question": "Find (a) 4312 + 504 + 614 + 24  (b) 5412 x 99 (hint: 5412 x 100 - 5412)  (c) 867 / 17.",
+          "answer": "(a) 5454  (b) 541200 - 5412 = 535788  (c) 51",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) 5454",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) method",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) 535788",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) 51",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 1 of the 1st-term scheme; row 0",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Operations on numbers in other bases and binary codes",
+      "objectives": [
+        "Add, subtract and multiply numbers expressed in the same base",
+        "Find an unknown base from an equation, rejecting impossible values",
+        "Represent letters using binary codes"
+      ],
+      "body": "OPERATIONS ON NUMBERS IN OTHER BASES\n\nWhat you will learn: rules for working in a base, how to add, subtract and multiply numbers in the same base, how to find an unknown base, and how binary is used to encode letters.\n\n1. Rules\n- In base b the only digits allowed are 0, 1, ..., b-1. In base 5 the digit 5 never appears; in base 2 only 0 and 1 appear.\n- Numbers in the same base can be added, subtracted and multiplied directly. Numbers in different bases are first converted to base ten (or to one common base).\n- When you add and a column reaches b or more, write the remainder after dividing by b and carry the quotient. When you subtract and must borrow, the borrowed 1 is worth b (not 10) in the column you borrow into.\n\n2. Worked examples\nExample 1. Add 174 and 233 in base eight.\nUnits: 4 + 3 = 7 (less than 8, write 7). Eights: 7 + 3 = 10 = 1 x 8 + 2, write 2 carry 1. Sixty-fours: 1 + 2 + 1 = 4. Answer: 427 (base 8). Check in base ten: 124 + 155 = 279 and 4 x 64 + 2 x 8 + 7 = 279.\n\nExample 2. Simplify 2311 - 213 in base four.\nConvert: 2311 (base 4) = 2 x 64 + 3 x 16 + 1 x 4 + 1 = 181. 213 (base 4) = 2 x 16 + 1 x 4 + 3 = 39. 181 - 39 = 142. Convert back: 142 = 2 x 64 + 0 x 16 + 3 x 4 + 2, so the answer is 2032 (base 4).\n\nExample 3. Multiply 214 by 23 in base five.\n214 (base 5) = 59 and 23 (base 5) = 13. 59 x 13 = 767. Convert: 767 = 1 x 625 + 1 x 125 + 0 x 25 + 3 x 5 + 2, so 11032 (base 5).\n\nExample 4. If 104 in base x equals 68 in base ten, find x.\nx² + 0 + 4 = 68, so x² = 64 and x = 8. A base is a positive whole number greater than 1 and larger than every digit used (here 4), so only x = 8 is allowed; the value -8 is rejected.\n\n3. Binary codes for letters\nComputers store letters as numbers, written in binary. If A = 1, B = 2, C = 3, ... Z = 26, each letter can be written with five binary digits: A = 00001, B = 00010, C = 00011, P = 10000, Z = 11010. In a yes/no code, Yes = 1 and No = 0.\n\nExample 5. Write \"HI\" in this five-digit code. H is the 8th letter: 8 = 1000 in binary, so 01000. I is the 9th letter: 9 = 1001, so 01001. \"HI\" = 01000 01001.\n",
+      "body_sha256": "9782d282a763a2d9507ed5356b035e026d889982c5f505fd2cff49415c5301b2",
+      "practice": [
+        {
+          "id": "M1W3-Q1",
+          "question": "(a) Add 3452 and 2631 in base seven. (b) Subtract 506 from 614 in base eight. (c) Find the base y if 123 in base y equals 83 in base ten.",
+          "answer": "(a) 6413 (base 7)  (b) 106 (base 8)  (c) y² + 2y + 3 = 83, y² + 2y - 80 = 0, (y - 8)(y + 10) = 0, so y = 8 (reject -10)",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "(a) correct method with carrying",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) correct answer",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) correct method with borrowing",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) correct answer",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) forms y² + 2y + 3 = 83",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) y = 8 with -10 rejected",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W3-Q2",
+          "question": "Find x if 4103 (base six) = 2112 (base six) + x (base six).",
+          "answer": "x = 1551 (base 6): x = 4103 - 2112 with borrowing in base six; check 4103 (base 6) = 903 and 2112 (base 6) = 476, difference 427 = 1551 (base 6).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Writes x = 4103 - 2112 in base six",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct borrowing in base six",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct answer in base six",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W3-Q3",
+          "question": "Using A = 1, B = 2, ... Z = 26 with five binary digits per letter, write \"I LOVE MATHEMATICS\" in code.",
+          "answer": "01001 01100 01111 10110 00101 01101 00001 10100 01000 00101 01101 00001 10100 01001 00011 10011  (five digits per letter; spaces between words are not coded)",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Correct letter values",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct binary conversion for at least 10 letters",
+              "marks": 1
+            },
+            {
+              "criterion": "All 16 letters correct",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 3 of the 1st-term scheme; row 2",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Modular arithmetic: reducing, operations and equations",
+      "objectives": [
+        "Reduce positive and negative integers modulo n",
+        "Add, subtract and multiply in a modulus",
+        "Solve linear equations in a modulus and recognise when there is more than one solution"
+      ],
+      "body": "MODULAR ARITHMETIC\n\nWhat you will learn: how to reduce a number to its remainder in a given modulus, add, subtract and multiply in a modulus, and solve simple modular equations.\n\n1. Meaning\nModular arithmetic describes repeating (cyclic) situations such as hours on a clock, days of the week or months of the year. Working modulo n means we only care about the remainder after dividing by n. We write a = r (mod n) when a and r leave the same remainder on division by n, so a - r is a multiple of n. The possible results are 0, 1, ..., n-1. Any integer, positive or negative, can be reduced; the number being reduced does not have to be smaller than the modulus.\n\n2. Reducing\n- 15 (mod 4): 15 = 3 x 4 + 3, so 3.\n- 102 (mod 4): 102 = 25 x 4 + 2, so 2.\n- Clock: the short hand points to 5. After 30 hours it points to (5 + 30) mod 12 = 35 mod 12 = 11.\nNegative numbers: add multiples of n until the result is between 0 and n-1.\n- -5 (mod 6) = -5 + 6 = 1.   - -17 (mod 10) = -17 + 20 = 3.   - -75 (mod 7) = -75 + 77 = 2.\n\n3. Addition, subtraction, multiplication\nAdd, subtract or multiply as usual, then reduce.\n- (42 + 28) mod 8 = 70 mod 8 = 6.   - (54 + 25) mod 5 = 79 mod 5 = 4.\n- (16 x 7) mod 5 = 112 mod 5 = 2.   - (21 x 65) mod 4 = 1365 mod 4 = 1.\nNote: 16 x 7 = 112 (not 117); the answer 2 only happens to be correct because 117 mod 5 is also 2. Always check the product.\n\n4. Equations\nExample 1. Solve 3x = 5 (mod 7). Test x = 0 to 6, or add 7 to the right side until it divides by 3: 5, 12. 3x = 12 gives x = 4. Check: 3 x 4 = 12 = 5 (mod 7).\nExample 2. Solve 2x + 3 = 1 (mod 6). Subtract 3: 2x = -2 = 4 (mod 6). Test x = 0..5: x = 2 gives 4, x = 5 gives 10 = 4 (mod 6). Both work, so x = 2 or x = 5 (mod 6). Check: 2 x 5 + 3 = 13 = 1 (mod 6). When the coefficient of x and the modulus share a factor (here 2 and 6), there can be more than one solution.\n",
+      "body_sha256": "0ed48fe41aba6d8684b87418468375fd012e725d8e0ac0f1b72d178e7854f7b5",
+      "practice": [
+        {
+          "id": "M1W4-Q1",
+          "question": "Simplify in modulo 4: (a) 62 (b) 102 (c) -56 (d) -78 (e) -202.",
+          "answer": "(a) 2 (b) 2 (c) 0 (d) 2 (e) 2",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "a correct",
+              "marks": 1
+            },
+            {
+              "criterion": "b correct",
+              "marks": 1
+            },
+            {
+              "criterion": "c correct",
+              "marks": 1
+            },
+            {
+              "criterion": "d correct",
+              "marks": 1
+            },
+            {
+              "criterion": "e correct",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q2",
+          "question": "A toy car starts at 0 and runs around a circular track of circumference 2 m. How far along the track from the start is it after 6 m, 15 m, 21 m and 87 m?",
+          "answer": "Work modulo 2: 6 mod 2 = 0 m; 15 mod 2 = 1 m; 21 mod 2 = 1 m; 87 mod 2 = 1 m.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Identifies modulus 2",
+              "marks": 1
+            },
+            {
+              "criterion": "6 m gives 0",
+              "marks": 1
+            },
+            {
+              "criterion": "15 m, 21 m and 87 m each give 1",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "M1W4-Q3",
+          "question": "Solve in each modulus: (a) 3x + 4 = 7 (mod 8) (b) 4x - 3 = 6 (mod 7).",
+          "answer": "(a) [1] (b) [4]",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) method",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) x = 1 (mod 8)",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) method",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) x = 4 (mod 7)",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 4 of the 1st-term scheme; row 3",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Standard form and approximation",
+      "objectives": [
+        "Write numbers in standard form a x 10ⁿ with 1 <= a < 10",
+        "Add, subtract, multiply and divide numbers in standard form",
+        "Round numbers to a place value, decimal places and significant figures"
+      ],
+      "body": "STANDARD FORM AND APPROXIMATION\n\nWhat you will learn: how to write numbers in standard form, calculate with them, and round to a given place value, decimal places or significant figures.\n\n1. Standard form\nA number is in standard form when written as a x 10ⁿ, where 1 <= a < 10 and n is an integer (positive, zero or negative). n tells how many places the decimal point moves.\n- 9 = 9 x 10⁰   - 54.6 = 5.46 x 10¹   - 570200 = 5.702 x 10⁵\n- 0.02 = 2 x 10⁻²   - 0.000175 = 1.75 x 10⁻⁴\n\n2. Adding and subtracting\nWrite each number in ordinary form (or give both the same power of ten), calculate, then convert back.\n- 5.14 x 10⁷ + 2.842 x 10⁵ = 51 400 000 + 284 200 = 51 684 200 = 5.16842 x 10⁷.\n- 5.24 x 10⁻⁵ - 4.33 x 10⁻⁶ = 0.0000524 - 0.00000433 = 0.00004807 = 4.807 x 10⁻⁵.\n\n3. Multiplying and dividing\nMultiply or divide the numbers in front, and add or subtract the powers of ten.\n- (8.222 x 10⁻⁴) x (6.32 x 10⁴) = 51.96304 x 10⁰ = 5.196304 x 10¹.\n- (2.8 x 10⁸) / (1.5 x 10⁴) = 1.8667 x 10⁴ (to 5 s.f.).\n\n4. Approximation\nRounding to a place value: look at the digit to the right. If it is 5 or more, round up; otherwise keep the digit.\n- 7562: nearest ten 7560; nearest hundred 7600; nearest thousand 8000.\n- 907235: nearest ten 907240; nearest hundred 907200; nearest thousand 907000.\n- 8991: nearest ten 8990; nearest hundred 9000; nearest thousand 9000.\nDecimal places count digits after the decimal point; significant figures count from the first non-zero digit.\n- 799.8094 to 1 s.f. = 800; to 3 s.f. = 800 (the digits 8, 0, 0 are the three significant figures); to 2 d.p. = 799.81.\n- 0.0014698 to 3 d.p. = 0.001; to 2 s.f. = 0.0015.\n",
+      "body_sha256": "91ff1d9f686a94b883f4bde90649ca47b4ce3fad4401b680a6e519fee95052a6",
+      "practice": [
+        {
+          "id": "M1W5-Q1",
+          "question": "Write in standard form: (a) 7560 (b) 7560000000 (c) 0.00756 (d) 0.000000756.",
+          "answer": "(a) 7.56 x 10³ (b) 7.56 x 10⁹ (c) 7.56 x 10⁻³ (d) 7.56 x 10⁻⁷",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) correct",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W5-Q2",
+          "question": "Calculate, leaving the answer in standard form: (a) (4 x 10⁵) x (2.6 x 10⁻²) (b) (6.4 x 10⁷) / (8 x 10³) (c) (9.05 x 10⁴) + (6.5 x 10³).",
+          "answer": "(a) 10.4 x 10³ = 1.04 x 10⁴ (b) 0.8 x 10⁴ = 8 x 10³ (c) 90500 + 6500 = 97000 = 9.7 x 10⁴",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "(a) product 10.4 and powers added",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) converted to 1.04 x 10⁴",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) quotient 0.8 and powers subtracted",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) 8 x 10³",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) 97000",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) 9.7 x 10⁴",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W5-Q3",
+          "question": "Express each number to (i) 1 s.f. (ii) 3 s.f. (iii) 2 d.p.: (a) 799.8094 (b) 6.3006 (c) 0.0014698.",
+          "answer": "(a) 800; 800; 799.81 (b) 6; 6.30; 6.30 (c) 0.001; 0.00147; 0.00",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) three correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) 3 s.f. shown as 800 with trailing zeros as needed",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) three correct",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) three correct",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 5 of the 1st-term scheme; row 4",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T1-W06-INDICES",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Indices: laws and positive, zero, negative and fractional powers",
+      "objectives": [
+        "State and apply the laws of indices",
+        "Evaluate expressions with zero, negative and fractional indices",
+        "Solve simple equations in which the unknown is an index"
+      ],
+      "body": "INDICES (POWERS)\n\nWhat you will learn: the laws of indices and how to use them with positive, zero, negative and fractional indices.\n\n1. Meaning\naⁿ means a multiplied by itself n times. a is the base and n is the index (power).\n\n2. Laws of indices (a, b not zero where division occurs)\n1. aᵐ x aⁿ = aᵐ⁺ⁿ\n2. aᵐ / aⁿ = aᵐ⁻ⁿ\n3. (aᵐ)ⁿ = aᵐⁿ\n4. a⁰ = 1\n5. a⁻ⁿ = 1 / aⁿ\n6. a^(1/n) = the n-th root of a, and a^(m/n) = (the n-th root of a)ᵐ\n7. (ab)ⁿ = aⁿbⁿ and (a/b)ⁿ = aⁿ / bⁿ\n\n3. Worked examples\nExample 1. 7⁶ x 7² = 7⁶⁺² = 7⁸.\nExample 2. 5x² x 4x⁰ x 2x⁻⁶ = (5 x 4 x 2) x^(2 + 0 - 6) = 40x⁻⁴ = 40 / x⁴.\nExample 3. 16r¹¹ / 4r⁷ = 4r⁴.\nExample 4. (2³)⁵ = 2¹⁵.\nExample 5. (8/27)^(-2/3): a negative index turns the fraction over, so = (27/8)^(2/3) = ((cube root of 27/8))² = (3/2)² = 9/4 = 2.25.\nExample 6. Simplify √(25x⁴/16) x (x/2)⁻³. √(25x⁴/16) = 5x²/4. (x/2)⁻³ = (2/x)³ = 8/x³. Product = (5x²/4) x (8/x³) = 10/x.\nExample 7. Simplify 3x^(1/3) y^(1/2) / (6x^(1/6) y^(3/4)). Divide numbers: 3/6 = 1/2. Subtract indices: x^(1/3 - 1/6) = x^(1/6); y^(1/2 - 3/4) = y^(-1/4). Result: x^(1/6) / (2y^(1/4)).\n\nCommon mistakes: adding indices when bases are multiplied inside brackets (use law 3 for a power of a power); writing 40x⁻⁴ as -40x⁴ (a negative index does not make the number negative).\n",
+      "body_sha256": "536e4fb821bf48ea2ec5002ee9f29c8b492e87d3e13d65c7571c0f93c6b01874",
+      "practice": [
+        {
+          "id": "M1W6-Q1",
+          "question": "Evaluate without a calculator: (a) 27^(-2/3) (b) 125^(2/3) x 25⁰ (c) 4^(3/2).",
+          "answer": "(a) 1/9 (b) 25 x 1 = 25 (c) 8",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) uses reciprocal and cube root giving 1/9",
+              "marks": 2
+            },
+            {
+              "criterion": "(b) 25",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) 8",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W6-Q2",
+          "question": "Simplify: (a) -10a²b³ / (-5a^(3/2) b^(-1/2)) (b) 27^(m+2) x 4^m / 6^(2m).",
+          "answer": "(a) 2a^(1/2) b^(7/2) (b) 27^(m+2) x 4^m / 36^m = 3^(3m+6) x 2^(2m) / (2^(2m) x 3^(2m)) = 3^(m+6)",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) coefficient 2",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) a^(1/2)b^(7/2)",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) expresses in prime bases 3 and 2",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) 3^(m+6)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W6-Q3",
+          "question": "Find the value of x: (a) 2^x = 32 (b) 9^x = 1/27.",
+          "answer": "(a) x = 5 (b) 3^(2x) = 3^(-3), so x = -3/2",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "(a) x = 5",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) same base 3",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) x = -3/2",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 6 of the 1st-term scheme; row 5; the delivered text of this row omits all index laws",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Simple equations, change of subject and variation",
+      "objectives": [
+        "Solve linear equations including fractions",
+        "Make a letter the subject of a formula, including formulae with roots",
+        "Set up and solve direct, inverse, joint and partial variation problems"
+      ],
+      "body": "SIMPLE EQUATIONS, CHANGE OF SUBJECT AND VARIATION\n\nWhat you will learn: solve simple equations, rearrange formulae, and solve problems on direct, inverse, joint and partial variation.\n\n1. Simple equations\nDo the same operation to both sides.\n- p - 7 = 24: add 7, p = 31.\n- 5(c + 2) - 3(3c - 5) = 1: 5c + 10 - 9c + 15 = 1; -4c + 25 = 1; -4c = -24; c = 6.\n\n2. Change of subject\nIsolate the required letter using inverse operations.\n- A = ax + b, make x the subject: A - b = ax, so x = (A - b)/a.\n- T = a + (n - 1)d, make a the subject: a = T - (n - 1)d.\n- T = 2π√(l/g), make g the subject. Divide by 2π: T/(2π) = √(l/g). Square both sides: T²/(4π²) = l/g. Cross-multiply: gT² = 4π²l. So g = 4π²l / T². (A frequent mistake is to forget that squaring also squares T and 2π.)\n\n3. Variation\nDirect: y varies as x, y = kx. Inverse: y varies as 1/x, y = k/x. Joint: y varies as x and z, y = kxz. Partial: part constant and part varying, for example x = k + ay. To solve: write the equation with k, substitute the given values to find k, then use the equation.\n\nExample 1 (direct). Cost is proportional to the number of bottles; 10 bottles cost ₦400. N = kC with 10 = 400k so k = 1/40. For 18 bottles: C = 40N = ₦720. ₦200 buys N = 200/40 = 5 bottles.\nExample 2 (inverse). y is inversely proportional to x and y = 9 when x = 4. 9 = k/4, k = 36, y = 36/x.\nExample 3 (joint). y varies jointly as x and z, and y = 30 when x = 2, z = 3. y = kxz so 30 = k x 2 x 3 = 6k, k = 5, and y = 5xz. (Check: 5 x 2 x 3 = 30.)\nExample 4 (partial). x is partly constant and partly varies as y. When y = 5, x = 7 and when y = 7, x = 8. x = k + ay gives 7 = k + 5a and 8 = k + 7a. Subtract: 1 = 2a, so a = 1/2. Then k = 7 - 5/2 = 9/2. Law: x = 9/2 + y/2, or 2x = 9 + y. When y = 11: 2x = 20, x = 10.\n",
+      "body_sha256": "7694cd042c0e101326341185824c5ed2260066255f32fc6f747db427a286c87e",
+      "practice": [
+        {
+          "id": "M1W10-Q1",
+          "question": "Solve: (a) 8y - 19 = 5 + 3y (b) 2x/3 + x/4 = 6.",
+          "answer": "(a) 5y = 24, y = 24/5 = 4.8 (b) multiply by 12: 8x + 3x = 72, 11x = 72, x = 72/11",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) collects terms 5y = 24",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) y = 4.8",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) multiplies by 12",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) x = 72/11",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W10-Q2",
+          "question": "Make g the subject of T = 2π√(l/g), then find g (to 2 d.p.) when T = 2 s and l = 1 m (use π = 3.142).",
+          "answer": "g = 4π²l/T². With π = 3.142: g = 4 x 9.872 x 1 / 4 = 9.87 m/s² (to 2 d.p.)",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Squares both sides correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "g = 4π²l/T²",
+              "marks": 2
+            },
+            {
+              "criterion": "Substitutes correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "9.87 with unit",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W10-Q3",
+          "question": "The speed s km/h of a car is partly constant and partly varies as the time t for which the brake is applied. When t = 0, s = 40 and when t = 8, s = 30. Find s when t = 10 and t when s = 24.",
+          "answer": "s = k + at; k = 40; 30 = 40 + 8a so a = -5/4; s = 40 - 5t/4. When t = 10: s = 27.5 km/h. When s = 24: 5t/4 = 16, t = 12.8.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Sets s = k + at",
+              "marks": 1
+            },
+            {
+              "criterion": "k = 40",
+              "marks": 1
+            },
+            {
+              "criterion": "a = -5/4",
+              "marks": 1
+            },
+            {
+              "criterion": "s = 27.5",
+              "marks": 1
+            },
+            {
+              "criterion": "t = 12.8",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W10-Q4",
+          "question": "The price of a material varies inversely as the number of people demanding it. With 80 people the price is ₦3.50. Find the price when there are 56 people.",
+          "answer": "P = k/n; k = 3.5 x 80 = 280; P = 280/56 = ₦5.00",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Inverse relation P = k/n",
+              "marks": 1
+            },
+            {
+              "criterion": "k = 280",
+              "marks": 1
+            },
+            {
+              "criterion": "Price ₦5.00",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 10 of the 1st-term scheme; row 9",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The teaching sequence follows the school's own scheme in the cited source. ",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
+  "delivery_corrections": [
+    {
+      "id": "CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
+      "body_sha256": "333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+      "reason": "Delivered text keeps source arithmetic slip 4312+504+614+24=5430 (correct 5454) and says there is no divisibility test for 7.",
+      "evidence": {
+        "locator": "Mathematics 1st term; parsed row 0 (\"REVISION AND BASIC OPERATIONS OF INTEGER\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7",
+      "body_sha256": "afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+      "reason": "Source solves 104 in base x = 68 as x = ±8 (a base cannot be negative) and gives 2311₄−213₄ as 2033₄ (correct 2032₄).",
+      "evidence": {
+        "locator": "Mathematics 1st term; parsed row 2 (\"RULES OF BASE NUMBER\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308",
+      "body_sha256": "6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+      "reason": "Source states the modulus must exceed the number reduced (false), gives 16×7=117 (correct 112) and lists only x=2 for 2x+3≡1 (mod 6) (x=2 and x=5).",
+      "evidence": {
+        "locator": "Mathematics 1st term; parsed row 3 (\"MODULAR ARITHMETIC\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T1-W05-STANDARD-FORM",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf",
+      "body_sha256": "6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
+      "reason": "Source defines the leading factor as between 1 and 9 (must be 1 ≤ a < 10), contains an inconsistent subtraction result (0.00004803 then 4.807×10⁻⁵) and its exercises lose all exponents in delivered text.",
+      "evidence": {
+        "locator": "Mathematics 1st term; parsed row 4 (\"STANDARD FORM AND APPROXIMATION\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T1-W06-INDICES",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c",
+      "body_sha256": "222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W06-INDICES",
+      "reason": "Delivered text contains no laws of indices at all (every equation is dropped by the plain extractor); the row cannot teach its objective.",
+      "evidence": {
+        "locator": "Mathematics 1st term; parsed row 5 (\"INDICES\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T1-W10-EQUATIONS-VARIATION",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:737b7542a452ab2a72f617e3baf943615c8d6f46172c5607c716d63ead4b5afc",
+      "body_sha256": "737b7542a452ab2a72f617e3baf943615c8d6f46172c5607c716d63ead4b5afc",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION",
+      "reason": "Source gives g = 2lπ/T (correct g = 4π²l/T²), solves joint variation 30 = 6k as k = 6 (correct k = 5) and writes 2k = 1 for a subtraction that gives 2a = 1.",
+      "evidence": {
+        "locator": "Mathematics 1st term; parsed row 9 (\"SIMPLE EQUATION AND VARIATION\")",
+        "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
+      }
+    }
+  ],
+  "assets": [],
+  "coverage": [
+    {
+      "id": "COV-MATH-T1-R00",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Revision of JSS3 work and basic operations of integers",
+      "objective_locator": "1st-term scheme line 1; parsed row 0",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R01",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Number bases: conversion to base ten, decimal fractions (bicimals), conversion between bases",
+      "objective_locator": "1st-term scheme line 2; parsed row 1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
+      ],
+      "evidence": [
+        {
+          "locator": "1st-term scheme line 2; parsed row 1",
+          "explanation": "Original arithmetic checked and correct (1007→1757₈, 1111101111₂; 761→535₁₂, 2F9₁₆; 313₆→165₈; 1011.01₂=11¾), but 291 characters of equation content are absent from the delivered text; replacement not yet authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R02",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Operations in number bases; application to computer programming",
+      "objective_locator": "1st-term scheme line 3; parsed row 2",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+        "SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R03",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Modular arithmetic",
+      "objective_locator": "1st-term scheme line 4; parsed row 3",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SS1-SRC-0c9004137f95:BODY:6e2fa5f217bd426a73119160aa6aee148582c91d3abbc8f9fce730cf5ed91308"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R04",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Standard form and approximation",
+      "objective_locator": "1st-term scheme line 5; parsed row 4",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
+        "SS1-SRC-0c9004137f95:BODY:6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
+          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R05",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Indices: laws, negative, zero and fractional",
+      "objective_locator": "1st-term scheme line 6; parsed row 5",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W06-INDICES",
+        "SS1-SRC-0c9004137f95:BODY:222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W06-INDICES",
+          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R06",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Review of first half term and periodic test",
+      "objective_locator": "1st-term scheme line 7; parsed row 6",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:937a1e6ee37a38c9836b7952746edf31c8722f74f1cc4ef07fa58bb5eaa66dd9"
+      ],
+      "evidence": [
+        {
+          "locator": "1st-term scheme line 7; parsed row 6",
+          "explanation": "Revision marker classified by RULE-MATH-T1-W07-REVISION (exact anchor); body retained."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R07",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Logarithms of whole numbers (use of tables)",
+      "objective_locator": "1st-term scheme line 8; parsed row 7",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439"
+      ],
+      "evidence": [
+        {
+          "locator": "1st-term scheme line 8; parsed row 7",
+          "explanation": "Body teaches table-based logarithms but the 4-figure tables are not supplied; 331 characters of equation content absent from delivered text; no replacement authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R08",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Logarithms continued: powers, roots; relation between indices and logarithms",
+      "objective_locator": "1st-term scheme line 9; parsed row 8",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c"
+      ],
+      "evidence": [
+        {
+          "locator": "1st-term scheme line 9; parsed row 8",
+          "explanation": "Body teaches table-based powers/roots but the tables are not supplied; 364 characters of equation content absent; no replacement authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R09",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Simple equations and variation; change of subject",
+      "objective_locator": "1st-term scheme line 10; parsed row 9",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION",
+        "SS1-SRC-0c9004137f95:BODY:737b7542a452ab2a72f617e3baf943615c8d6f46172c5607c716d63ead4b5afc"
+      ],
+      "evidence": [
+        {
+          "locator": "supplement SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION",
+          "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-R10",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Revision",
+      "objective_locator": "1st-term scheme line 11; parsed row 10",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:02958063f6c5c33c3a2d25f2685177164a617fb9254e9d3477f6d10421ac62cd"
+      ],
+      "evidence": [
+        {
+          "locator": "1st-term scheme line 11; parsed row 10",
+          "explanation": "Revision marker classified by RULE-MATH-T1-W11-REVISION (exact anchor); body retained."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-EXAM",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Examination weeks and reference-book list",
+      "objective_locator": "scheme final lines",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-MATH-T1-SCHEME-EXAM"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme preamble",
+          "explanation": "Scheme-only items; no teaching content to cover."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R00",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Quadratic equations by factorization and completing the square",
+      "objective_locator": "scheme topic 1; parsed row 0 (Quadratic equation by (a) Factorization (b) Comple)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 0",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 44); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R01",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "General form and formula method (ax²+bx+c=0)",
+      "objective_locator": "scheme topic 2; parsed row 1 (General form of quadratic equation leading to Form)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 1",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 123); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R02",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Graphical solution; roots, minimum/maximum, line of symmetry",
+      "objective_locator": "scheme topic 3; parsed row 2 (Solution of quadratic equation by graphical method)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 2",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 0); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R03",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Idea of sets: universal, finite/infinite, empty set, subset",
+      "objective_locator": "scheme topic 4; parsed row 3 (IDEA OF SETS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:9772dd71184f9931abd054784823b48e2d671fe8207283f62f329f48e763decc"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 3",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 2); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R04",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Union, intersection, complements, disjoint sets; Venn diagrams (two and three sets)",
+      "objective_locator": "scheme topic 5; parsed row 4 (SETS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 4",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 2); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R05",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Review of first half term and periodic test",
+      "objective_locator": "scheme topic 6; parsed row 5",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:53e9baa06bb4e4dfcba2a7a83089eae3f3933ab0a42ba120352aa27419737047"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 5",
+          "explanation": "Half-term review marker classified by RULE-MATH-T2-W06-REVISION; body retained."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R06",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Trigonometric ratios: sine, cosine, tangent; tables; chord length; graphs",
+      "objective_locator": "scheme topic 7; parsed row 6 (TRIGONOMETRIC RATIOS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 6",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 6); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R07",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Applications: right-angled triangles, elevation/depression, bearings",
+      "objective_locator": "scheme topic 8; parsed row 7 (Application of sine, cosine and tangent, simple pr)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 7",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 2); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R08",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Circle and its properties; arc length, sector, segment, triangle area",
+      "objective_locator": "scheme topic 9; parsed row 8 (Introduction of circle and its properties)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 8",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 33); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-R09",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Logic: statements, negation, contrapositive, implication",
+      "objective_locator": "scheme topic 10; parsed row 9 (LOGIC)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 9",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 6); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R00",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Mensuration of solids: surface areas and volumes",
+      "objective_locator": "scheme topic 1; parsed row 0 (Mensuration: The concept of B – D a shape cube, cu)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 0",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 2); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R01",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Frustums and pyramids; angle sum of a triangle and exterior angle proofs",
+      "objective_locator": "scheme topic 2; parsed row 1 ((a) Volumes of frustums of cone, rectangular based)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 1",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 52); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R02",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Revision of triangle constructions",
+      "objective_locator": "scheme topic 3; parsed row 2 (Revision of Construction of Triangle)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 2",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 5); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R03",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Constructions: angle bisection and special angles, parallelogram, equilateral triangle, loci",
+      "objective_locator": "scheme topic 4; parsed row 3 (CONSTRUCTIONS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 3",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 0); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R04",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Deductive proof: angle sums, triangles on a line, parallel lines, congruence, parallelogram, intercept theorem",
+      "objective_locator": "scheme topic 5; parsed row 4 (Deductive proof)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 4",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 1); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R05",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Statistics: collection, tabulation, presentation; range, median, mode of ungrouped data",
+      "objective_locator": "scheme topic 6; parsed row 5 (STATISTICS)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 5",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 0); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R06",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Revision",
+      "objective_locator": "scheme topic 7; parsed row 6",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:e36c3dbaa9c53f6f5a9d69971d977738b93e7fdd8310805e721dacb57d1b8b87"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 6",
+          "explanation": "Revision marker classified by RULE-MATH-T3-W07-REVISION; body retained."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R07",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Grouped data: collection, tabulation, presentation",
+      "objective_locator": "scheme topic 8; parsed row 7 (Collection, Tabulation and Presentation of Grouped)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 7",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 132); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R08",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Range, median and mode of grouped data",
+      "objective_locator": "scheme topic 9; parsed row 8 (Calculation of Range, Median and Mode of Grouped d)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 8",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 0); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R09",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Statistical graphs: bar chart, pie chart, histogram, cumulative frequency",
+      "objective_locator": "scheme topic 10; parsed row 9 (Statistical Graphs)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 9",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 0); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-R10",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Mean deviation, variance and standard deviation of grouped data",
+      "objective_locator": "scheme topic 11; parsed row 10 (Mean Deviation, Variance and standard Deviation of)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
+      ],
+      "evidence": [
+        {
+          "locator": "parsed row 10",
+          "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 223); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T3-EXAM",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "objective": "Revision/Examination week and reference-book list",
+      "objective_locator": "scheme final lines",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": []
+    }
+  ],
+  "open_items": [
+    {
+      "id": "OI-MATH-001",
+      "kind": "OWNER_ACTION",
+      "detail": "The importer reads .docx with plain mammoth text extraction. Word equations (OMML) and superscript/subscript runs are dropped. Counts in these sources: 1st term 333 equations; 2nd term 62 equations, 510 superscript runs; 3rd term 53 equations, 504 superscript runs and 13 embedded WMF equation objects. Delivered original rows therefore show e.g. \"ax2\" for ax² and empty formulae.",
+      "required_action": "SS1-01/SS1-08 owner: decide between (a) an SS1 equation-aware extractor (OMML→text plus superscript/subscript mapping, as already done for JSS3 in jss3EquationRecovery.ts; this changes the content-bound row IDs and needs a reviewed migration) or (b) replacement lessons for every affected row. Until then every unreplaced Mathematics row listed in affected_ids is delivered with lost notation.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
+        "SS1-SRC-0c9004137f95:BODY:937a1e6ee37a38c9836b7952746edf31c8722f74f1cc4ef07fa58bb5eaa66dd9",
+        "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439",
+        "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c",
+        "SS1-SRC-0c9004137f95:BODY:02958063f6c5c33c3a2d25f2685177164a617fb9254e9d3477f6d10421ac62cd",
+        "SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
+        "SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
+        "SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
+        "SS1-SRC-b802686e83d2:BODY:9772dd71184f9931abd054784823b48e2d671fe8207283f62f329f48e763decc",
+        "SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
+        "SS1-SRC-b802686e83d2:BODY:53e9baa06bb4e4dfcba2a7a83089eae3f3933ab0a42ba120352aa27419737047",
+        "SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
+        "SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
+        "SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
+        "SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
+        "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
+        "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
+        "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
+        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
+        "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
+        "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
+        "SS1-SRC-ca00ca94afb9:BODY:e36c3dbaa9c53f6f5a9d69971d977738b93e7fdd8310805e721dacb57d1b8b87",
+        "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
+        "SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf",
+        "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
+        "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-002",
+      "kind": "CONTENT",
+      "detail": "2nd-term (10 rows) and 3rd-term (11 rows) bodies and 1st-term weeks 2, 8, 9 have not been reviewed in full for factual accuracy, worked-example arithmetic, or alignment with the scheme objective in this stage; no replacement lessons exist for them.",
+      "required_action": "Review each row against its scheme objective, recompute worked examples, and author replacement lessons (explanation, worked steps, practice with answers and marks) where defects or lost notation are found.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
+        "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439",
+        "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c",
+        "SS1-SRC-b802686e83d2:BODY:d2440053f789bcf88e5559706a07d733447fd52c65e94a3eb01e4ea4789c30a1",
+        "SS1-SRC-b802686e83d2:BODY:890e05d9a42ee7fecf2a868aea1a1d41eea9d63e60fd54788a9fb5070188c346",
+        "SS1-SRC-b802686e83d2:BODY:01edf4857460b435c9bd947057228f6b8224b7325d2251a93791c75391116b1e",
+        "SS1-SRC-b802686e83d2:BODY:9772dd71184f9931abd054784823b48e2d671fe8207283f62f329f48e763decc",
+        "SS1-SRC-b802686e83d2:BODY:01e53b03fac6a4ee1bf2c1fb22b687c81fa33337830021e3c81f1c5b916b35c1",
+        "SS1-SRC-b802686e83d2:BODY:be330ef013d323aed5a10818b2becac26f77a10d4c64dccbcda7bd309c70c27b",
+        "SS1-SRC-b802686e83d2:BODY:6eba4b01b95dde6d0988fc68113d0978f881ddd574c192632b891c2a85535ac2",
+        "SS1-SRC-b802686e83d2:BODY:1bd0d798258f4f7ced3f5d7cb81bf52f3dbbb2b021e3a9bb1a915c97fa7586eb",
+        "SS1-SRC-b802686e83d2:BODY:606ae363396d2637fb43e7650242ff1ac348b4f0b8c81f2f515125969e6390c1",
+        "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
+        "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
+        "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
+        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
+        "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
+        "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
+        "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
+        "SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf",
+        "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
+        "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-003",
+      "kind": "FACT",
+      "detail": "1st-term Weeks 8 and 9 teach logarithms by 4-figure tables, but the tables themselves are not in the supplied archive and the school has not stated whether table or calculator methods are to be taught.",
+      "required_action": "Owner to supply the mathematical-table edition used (and reuse permission) or confirm a calculator-based method so equivalent lessons can be authored.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:9845ee9c306e6b421fa832fe26090238b8b6095e7d03e6673869dd8611b3e439",
+        "SS1-SRC-0c9004137f95:BODY:9c052fdda3bb80b2f01bbd76bdae8800596d1a518a4042281ccf9f46227dc85c"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-004",
+      "kind": "CONTENT",
+      "detail": "3rd-term source embeds 13 OLE/WMF equation objects (word/embeddings/oleObject1-13.bin with image1-10.wmf) that neither the plain extractor nor OMML recovery reads. Their formulae are not yet transcribed. Embedded controls were not executed.",
+      "required_action": "Render the WMF files (not executed as macros) and transcribe each formula into the matching replacement lesson.",
+      "affected_ids": [
+        "SS1-SRC-ca00ca94afb9:BODY:467b2e3bca5157dd13ce1e584650997cd5c1cbde97e3cd0be71fbf40e0c882b4",
+        "SS1-SRC-ca00ca94afb9:BODY:6c1435556d83024c537489d1c57474903c784a7a810deae2763a97e234866b53",
+        "SS1-SRC-ca00ca94afb9:BODY:705eba8a05d0b5437b4c5cb82fc64113b0275da93475b8c03d730aa7200bf922",
+        "SS1-SRC-ca00ca94afb9:BODY:1e8146b6d225cd951f6c73d4b3c60580a72da6bf3a2027a89ba73f2f9c650423",
+        "SS1-SRC-ca00ca94afb9:BODY:b4c9c1684f4fbbd0fc847bc76796b15bf320b7e1e34ba2ad9d65b2edf4a1db9b",
+        "SS1-SRC-ca00ca94afb9:BODY:bc592b28a6f14efc1350d1c82252443557fc6e116f789147b107c70a2d4315a6",
+        "SS1-SRC-ca00ca94afb9:BODY:e36c3dbaa9c53f6f5a9d69971d977738b93e7fdd8310805e721dacb57d1b8b87",
+        "SS1-SRC-ca00ca94afb9:BODY:9fcb6ed4875cb91e2e49002de00a776b513cf9e0c0bf3e931dd5c6c41a76d2f8",
+        "SS1-SRC-ca00ca94afb9:BODY:6e8fa7df3a37b7b6f4a11fe0e7908ed63fa230526f68b321bfd2f2c3bfe03ebf",
+        "SS1-SRC-ca00ca94afb9:BODY:949ec967282cf592bef63ddfab25f50289ce37e04d3f367dbd4f0ca4b0ae8e92",
+        "SS1-SRC-ca00ca94afb9:BODY:d79a5d282ea90131ab9c94d115af2caa9f3a6021a4fdfeb9d80e1eba989e590e"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-005",
+      "kind": "OWNER_ACTION",
+      "detail": "All six authored supplements and three heading aliases await content approval; no approval reference exists.",
+      "required_action": "Owner/teacher to review, then record approval_reference per lesson; alias approval_reference to be replaced with the owner confirmation.",
+      "affected_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
+        "SUP-SS1-MATHEMATICS-T1-W06-INDICES",
+        "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-006",
+      "kind": "CONTENT",
+      "detail": "3rd-term scheme item \"Revision/Examination\" and its reference-book lines are not bound to a classification rule (anchor ambiguity); examination content is not source teaching.",
+      "required_action": "Add a SCHEME_ONLY rule with a unique anchor in a reviewed revision, or confirm no mapping is needed.",
+      "affected_ids": [
+        "COV-MATH-T3-EXAM"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-007",
+      "kind": "VERIFICATION",
+      "detail": "Nothing in this package has been executed: schema parse, compiler plan, row-ID alignment with the live parser, asset hashes, and all tests/ss1/mathematics.* are deferred by owner instruction.",
+      "required_action": "Run docs/ss1/work/SS1-03/DEFERRED_COMMANDS.md in SS1-09.",
+      "affected_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
+        "SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC",
+        "SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM",
+        "SUP-SS1-MATHEMATICS-T1-W06-INDICES",
+        "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION"
+      ],
+      "blocks_delivery": false
+    }
+  ]
+}
