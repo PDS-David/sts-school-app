@@ -1,0 +1,1078 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "physics",
+  "canonical_subject": "Physics",
+  "package_status": {
+    "implementation": "IMPLEMENTED",
+    "content_approval": "NOT_REQUESTED",
+    "verification": "NOT_RUN",
+    "updated_by": "SS1-03 worker B (Claude)",
+    "note": "All three manifest sources are accounted for. NOT COMPLETE: revision weeks have no body (OI-PHYS-003) and source weeks lack answer keys (OI-PHYS-005)."
+  },
+  "sources": [
+    {
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "archive_member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Physics",
+      "document_header_subject": "SUBJECT: PHYSICS CLASS: SS",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "Document header line 3 (the class number 1 is on the next line)"
+      }
+    },
+    {
+      "source_id": "SS1-SRC-2c924c964660",
+      "sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Physics",
+      "document_header_subject": "SUBJECT: PHYSICS CLASS: SS 1",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "Document header line 2"
+      }
+    },
+    {
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Physics",
+      "document_header_subject": null,
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "The document has no subject header (it opens with 'THIRD TERM E-LEARNING NOTE'); assignment rests on the archive path and the manifest"
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "rule_id": "PHYS-R01",
+      "op": "split_before_anchor",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "reason": "The importer reads 'WEEK FIVE AND SIX' as one row. The scheme lists Week 5 (vectors, scalars, equations of motion) and Week 6 (calculations on the velocity-time graph) separately; the second part starts at the 'GRAPHS' heading. All original lines and their order are kept.",
+      "week_label": "WEEK FIVE AND SIX",
+      "anchor": "GRAPHS\nThe motion of an object is best represented",
+      "new_title": "GRAPHS OF MOTION AND CALCULATIONS ON THE VELOCITY-TIME GRAPH"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "SUP-SS1-PHYS-001",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Physics",
+      "sequence": 1,
+      "title": "Heat and temperature: meaning, units, differences and effects of heat",
+      "objectives": [
+        "Distinguish between heat and temperature.",
+        "Convert between the Celsius and Kelvin scales.",
+        "State the effects of heat on a body."
+      ],
+      "body": "HEAT is a form of energy that flows from a hotter body to a colder body because of a temperature difference. Its SI unit is the joule (J). TEMPERATURE tells how hot or cold a body is; it is related to the average kinetic energy of its molecules. Its SI unit is the kelvin (K); the Celsius scale (°C) is also used. Heat is measured with a calorimeter; temperature is measured with a thermometer.\n\nDIFFERENCES. (1) Heat is energy (joules); temperature is a degree of hotness (kelvin or °C). (2) Heat depends on the mass and the substance as well as the temperature; temperature does not depend on the amount of substance. (3) Heat flows because of a temperature difference; temperature is the property that decides the direction of the flow.\nExample: a bucket of warm water and a cup of warm water at 40 °C have the same temperature, but the bucket holds more heat energy because it has more mass.\n\nSCALES. T(K) = θ(°C) + 273. Example 1: 27 °C = 300 K. Example 2: 350 K = 77 °C. The temperature difference is the same on both scales: a rise of 10 °C is a rise of 10 K.\n\nEFFECTS OF HEAT. When heat is added to a body: (1) its temperature rises; (2) it expands; (3) it may change state (melting, boiling, evaporation); (4) a metal heated to a high temperature can emit electrons (thermionic emission); (5) chemical changes can occur (e.g. cooking, burning).\nExample 3 (heat gained). The heat needed to raise the temperature of a mass m of a substance by Δθ is Q = mcΔθ, where c is the specific heat capacity (water: about 4200 J/kg °C). For 2 kg of water heated from 20 °C to 30 °C: Q = 2 × 4200 × 10 = 84 000 J.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Convert 47 °C to kelvin and 250 K to °C.",
+          "answer": "47 + 273 = 320 K; 250 – 273 = –23 °C.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "State three differences between heat and temperature.",
+          "answer": "Heat is energy in joules, temperature is hotness in K or °C; heat depends on mass, temperature does not; heat flows because of temperature difference.",
+          "marking": "1 mark each, max 3."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Name four effects of heat on a body.",
+          "answer": "Rise in temperature, expansion, change of state, thermionic emission (or chemical change).",
+          "marking": "1 mark each, max 4."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find the heat needed to raise 0.5 kg of water from 25 °C to 85 °C (c = 4200 J/kg °C).",
+          "answer": "Q = 0.5 × 4200 × 60 = 126 000 J.",
+          "marking": "1 mark formula, 1 mark substitution, 1 mark answer with unit."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Why does the bucket of warm water hold more heat than the cup at the same temperature?",
+          "answer": "It has more mass, hence more molecules each carrying energy.",
+          "marking": "1 mark."
+        }
+      ],
+      "covers_objectives": [
+        "PHYS-2-001"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-2c924c964660"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-2c924c964660",
+            "week_label": "WEEK ONE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform because the source week lists topics or definitions without a usable explanation, worked examples or answers; it follows the source week's scope. No third-party text is reproduced. NOTE: the source Week One note defines heat as 'the study of relative motion of fluid'; that wording is not used here (heat is energy in transit)."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax College Physics 2e, 14.4 Heat Transfer Methods",
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-4-heat-transfer-methods"
+        }
+      ],
+      "content_hash": "2db3b0e1f7498ccc8032cf5f54513b93efc885f56ea9ef6e5b8e5f9f4f24e835"
+    },
+    {
+      "id": "SUP-SS1-PHYS-002",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Physics",
+      "sequence": 2,
+      "title": "Thermal expansion of solids: effects, applications and a simple calculation",
+      "objectives": [
+        "Explain why solids expand on heating.",
+        "Describe applications and disadvantages of thermal expansion.",
+        "Calculate a change in length."
+      ],
+      "body": "WHY SOLIDS EXPAND. The molecules of a solid vibrate about fixed positions. When the solid is heated they vibrate with larger amplitude, so the average distance between them increases and the solid expands. When it cools it contracts. Different solids expand by different amounts.\n\nLINEAR EXPANSION. The increase in length ΔL of a rod of original length L₀ for a temperature rise Δθ is ΔL = αL₀Δθ, where α is the linear expansivity of the material (unit per kelvin, K⁻¹). New length L = L₀(1 + αΔθ).\nExample 1. A steel rail 20 m long, α = 1.2 × 10⁻⁵ K⁻¹, warms by 40 K: ΔL = 1.2 × 10⁻⁵ × 20 × 40 = 9.6 × 10⁻³ m = 9.6 mm. Gaps are left between rails for this reason.\nExample 2. An aluminium rod 5 m long, α = 2.3 × 10⁻⁵ K⁻¹, is heated by 60 K: ΔL = 2.3 × 10⁻⁵ × 5 × 60 = 6.9 × 10⁻³ m, so the new length is 5.0069 m.\n\nAPPLICATIONS (useful). Bimetallic strip: two metals (e.g. brass and iron) joined together bend when heated because one expands more than the other; used in thermostats, fire alarms and flashers. Tight-fitting rims on wheels and red-hot rivets in ship building: the metal is put on hot and contracts to hold tightly.\nDISADVANTAGES and design precautions. Bridges rest on rollers at one end and concrete roads have gaps so that expansion does not cause buckling; overhead cables sag in hot weather; glass cracks if hot liquid is poured into it suddenly because the inner wall expands before the outer; pipes can burst or leak when they expand and contract repeatedly.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Why are small gaps left between sections of a railway track?",
+          "answer": "So that the rails can expand in hot weather without buckling.",
+          "marking": "1 mark."
+        },
+        {
+          "id": "Q02",
+          "prompt": "A copper rod 2 m long (α = 1.7 × 10⁻⁵ K⁻¹) is heated through 50 K. Find the increase in length.",
+          "answer": "1.7 × 10⁻⁵ × 2 × 50 = 1.7 × 10⁻³ m = 1.7 mm.",
+          "marking": "1 mark formula, 1 mark substitution, 1 mark answer with unit."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Why does a thick glass tumbler crack if boiling water is poured in suddenly?",
+          "answer": "The inner surface expands first while the outer surface is still cool; the uneven expansion cracks the glass.",
+          "marking": "1 mark each part."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Explain how a bimetallic strip bends when heated.",
+          "answer": "The two metals expand by different amounts; the metal that expands more is on the outside of the curve.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q05",
+          "prompt": "A bar of length 3 m at 20 °C has α = 1.2 × 10⁻⁵ K⁻¹. Find its length at 120 °C.",
+          "answer": "ΔL = 1.2 × 10⁻⁵ × 3 × 100 = 3.6 × 10⁻³ m, so L = 3.0036 m.",
+          "marking": "1 mark Δθ, 1 mark ΔL, 1 mark L."
+        }
+      ],
+      "covers_objectives": [
+        "PHYS-2-003"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-2c924c964660"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-2c924c964660",
+            "week_label": "WEEK THREE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform because the source week lists topics or definitions without a usable explanation, worked examples or answers; it follows the source week's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax College Physics 2e, 14.4 Heat Transfer Methods",
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-4-heat-transfer-methods"
+        }
+      ],
+      "content_hash": "bd3743eb0445118d1e05daac203794ecb7089b5cfdbb0de12efe65b79320519a"
+    },
+    {
+      "id": "SUP-SS1-PHYS-003",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Physics",
+      "sequence": 1,
+      "title": "The fuse: ratings, fusing factor and choosing a fuse",
+      "objectives": [
+        "Define a fuse, current rating, fusing current and fusing factor.",
+        "Choose a suitable fuse for an appliance.",
+        "List types of fuse and ways of detecting faults."
+      ],
+      "body": "A FUSE is a safety device placed in an electric circuit. It contains a thin wire (the fuse element) that heats up and melts when too much current flows, opening the circuit and protecting the appliance and wiring from damage or fire. A fuse is always fitted in the LIVE wire.\n\nTERMS. Current rating: the largest current the fuse can carry continuously without melting. Fusing current: the smallest current that will melt the element. Fusing factor = fusing current ÷ current rating (always more than 1).\nExample 1. A fuse has a rating of 10 A and a fusing current of 15 A: fusing factor = 15 ÷ 10 = 1.5.\n\nCHOOSING A FUSE. Find the normal working current I = P ÷ V and choose the fuse whose rating is just above it.\nExample 2. A 1.5 kW electric iron works from a 240 V supply. I = 1500 ÷ 240 = 6.25 A. Available ratings: 3 A, 5 A, 10 A, 13 A. The 3 A and 5 A fuses are too low and would blow; choose the 10 A fuse.\nExample 3. A 60 W lamp on 240 V draws 60 ÷ 240 = 0.25 A, so a 3 A fuse is suitable.\n\nTYPES. Rewirable fuse (element can be replaced), cartridge fuse (sealed glass or ceramic tube), high breaking-capacity fuse (for large fault currents).\nDETECTING FAULTS in a circuit. Continuity tester (is the circuit complete?), insulation-resistance tester (is there leakage through insulation?), polarity test with a test lamp or bell (is the switch in the live wire?), earth-loop impedance tester (is the earth connection good?).",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Define fusing factor and calculate it for a fuse rated 5 A that blows at 8 A.",
+          "answer": "Fusing current ÷ current rating = 8 ÷ 5 = 1.6.",
+          "marking": "1 mark definition, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "A 2.4 kW heater works from 240 V. Calculate the working current and suggest a fuse from 5 A, 10 A, 13 A, 30 A.",
+          "answer": "I = 2400 ÷ 240 = 10 A; choose 13 A (a 10 A fuse has no margin).",
+          "marking": "1 mark current, 1 mark choice with reason."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Why is a fuse placed in the live wire?",
+          "answer": "So that the appliance is disconnected from the live supply when the fuse blows.",
+          "marking": "1 mark."
+        },
+        {
+          "id": "Q04",
+          "prompt": "List three types of fuse.",
+          "answer": "Rewirable, cartridge, high breaking-capacity.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Name two instruments used to test an installation for faults and say what each tests.",
+          "answer": "Continuity tester: the circuit is complete; insulation-resistance tester: no leakage through the insulation.",
+          "marking": "1 mark each pair."
+        }
+      ],
+      "covers_objectives": [
+        "PHYS-3-004"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-bed91bb4ef0e"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-bed91bb4ef0e",
+            "week_label": "WEEK 4"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform because the source week lists topics or definitions without a usable explanation, worked examples or answers; it follows the source week's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [],
+      "content_hash": "1ba98b7a689a9e166a6d5ddcd0e4ce3609e7914a64b213aee32a7df467104e31"
+    },
+    {
+      "id": "SUP-SS1-PHYS-004",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Physics",
+      "sequence": 2,
+      "title": "Surface tension: meaning, effects, applications and reduction",
+      "objectives": [
+        "Define surface tension and state its unit.",
+        "Explain surface tension using molecular forces.",
+        "Describe effects, applications and ways of reducing surface tension."
+      ],
+      "body": "MEANING. Inside a liquid each molecule is pulled equally in all directions by its neighbours. A molecule at the surface has neighbours only below and beside it, so there is a net pull inward. The surface therefore behaves like a stretched elastic skin that tries to have the smallest possible area. SURFACE TENSION γ is the force acting along the surface, at right angles to a line of unit length: γ = F/L. Its unit is newton per metre (N/m). For a soap film on a wire frame the film has two surfaces, so F = 2γL, i.e. γ = F/2L.\nExample 1. A soap film on a frame 5 cm (0.05 m) wide pulls with a force of 2.0 × 10⁻³ N. γ = F/2L = 2.0 × 10⁻³ ÷ (2 × 0.05) = 0.02 N/m.\nExample 2. Water has γ = 0.072 N/m. The pull on 8 cm (0.08 m) of its surface (one surface): F = γL = 0.072 × 0.08 = 5.8 × 10⁻³ N.\n\nEFFECTS. Soap bubbles and small droplets are spherical (a sphere has the smallest area for its volume); water striders walk on water; a clean needle or razor blade placed gently on water floats; mercury spilled on glass forms spherical beads.\nAPPLICATIONS. Waterproofing of cloth (the pores do not wet), blotting paper and wicks, the rise of molten wax up a candle wick.\nREDUCING SURFACE TENSION. Add soap, detergent, alcohol or similar impurities; heat the liquid (γ falls as temperature rises). This is why detergent helps to wash grease off cloth: the liquid spreads and wets better.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Define surface tension and give its SI unit.",
+          "answer": "The force per unit length acting along the surface of a liquid; N/m.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Why are small drops of liquid spherical?",
+          "answer": "Surface tension makes the surface contract to the smallest area; a sphere has the least surface for a given volume.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q03",
+          "prompt": "A soap film on a frame 6 cm wide pulls with a force of 3.0 × 10⁻³ N. Find γ.",
+          "answer": "γ = 3.0 × 10⁻³ ÷ (2 × 0.06) = 0.025 N/m.",
+          "marking": "1 mark formula, 1 mark substitution, 1 mark answer with unit."
+        },
+        {
+          "id": "Q04",
+          "prompt": "State three ways of reducing surface tension and two applications.",
+          "answer": "Add soap/detergent, add alcohol, heat; applications: waterproofing, blotting paper, wicks.",
+          "marking": "1 mark each (max 5)."
+        },
+        {
+          "id": "Q05",
+          "prompt": "A needle floats on water but sinks when a drop of detergent is added. Explain.",
+          "answer": "Detergent reduces the surface tension, so the surface skin can no longer support the needle's weight.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "PHYS-3-007"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-bed91bb4ef0e"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-bed91bb4ef0e",
+            "week_label": "WEEK 7"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform because the source week lists topics or definitions without a usable explanation, worked examples or answers; it follows the source week's scope. No third-party text is reproduced. The source gives γ = F/2L; the 2 is explained here (two surfaces of a film)."
+      },
+      "reuse": [],
+      "references": [],
+      "content_hash": "27bd5e5637c7f327d9826c22fd2fd026a7913b6741a30e623ae66c6b0c1360fc"
+    },
+    {
+      "id": "SUP-SS1-PHYS-005",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Physics",
+      "sequence": 3,
+      "title": "Capillarity: cohesion, adhesion and the rise or fall of liquids in narrow tubes",
+      "objectives": [
+        "Distinguish between cohesion and adhesion.",
+        "Explain capillary rise and fall using molecular forces.",
+        "Give applications of capillarity."
+      ],
+      "body": "DEFINITIONS. Cohesion is the force of attraction between molecules of the SAME substance (e.g. water–water). Adhesion is the force of attraction between molecules of DIFFERENT substances (e.g. water–glass). Capillarity is the rise or fall of a liquid in a narrow (capillary) tube.\n\nEXPLANATION (kinetic theory). In a glass tube dipped in water, the adhesion between water and glass molecules is stronger than the cohesion between water molecules. The water molecules at the wall are pulled up, the surface curves upward (concave meniscus), surface tension pulls the liquid up the tube, and it stops rising when the weight of the raised column balances the upward pull. In mercury the cohesion is stronger than the adhesion to glass, so the mercury surface curves downward (convex meniscus) and the level in the tube is DEPRESSED below the outside level. Water wets glass; mercury does not.\n\nNARROWER TUBES. The narrower the tube, the greater the rise. Worked example: if water rises 30 mm in a tube of radius 0.5 mm, then in a tube of radius 1 mm (twice as wide) it rises about 15 mm, because the rise is inversely proportional to the radius (an experimental result; the full formula is beyond this lesson).\n\nAPPLICATIONS. Oil rising up a lamp wick; a towel or blotting paper soaking up a spill; water rising from the soil through the fine tubes in plant roots and stems; ink flowing in a pen nib. Capillarity in building walls causes damp, which is why damp-proof courses are laid.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Differentiate between cohesion and adhesion.",
+          "answer": "Cohesion: attraction between like molecules; adhesion: attraction between unlike molecules.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Explain why water rises in a glass capillary tube.",
+          "answer": "Adhesion of water to glass is greater than cohesion in water, so the water is pulled up the wall and surface tension raises the column.",
+          "marking": "1 mark each of: adhesion > cohesion, surface curved, column rises."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Why is mercury depressed in a glass tube?",
+          "answer": "Cohesion between mercury molecules is greater than adhesion to glass.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Water rises 24 mm in a tube of radius 0.5 mm. How far will it rise in a tube of radius 1.5 mm?",
+          "answer": "Rise inversely proportional to radius: 24 ÷ 3 = 8 mm.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Give three applications of capillarity.",
+          "answer": "Oil in a wick, blotting paper, water rising in plants.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "PHYS-3-008"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-bed91bb4ef0e"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-bed91bb4ef0e",
+            "week_label": "WEEK 8"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform because the source week lists topics or definitions without a usable explanation, worked examples or answers; it follows the source week's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [],
+      "content_hash": "8e21fd930d96e4596434ef3495253ecbb59c3a19b49cf8e87bf80b7e057ee99c"
+    }
+  ],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [
+    {
+      "objective_id": "PHYS-1-001",
+      "term_label": "1st Term",
+      "objective_text": "Introduction to physics; fundamental quantities, units and dimensions",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK ONE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK ONE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-002",
+      "term_label": "1st Term",
+      "objective_text": "Measurement of mass, weight, length, time and volume",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK TWO"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK TWO"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-003",
+      "term_label": "1st Term",
+      "objective_text": "Motion in nature, force, circular motion, centripetal acceleration and force",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK THREE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK THREE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-004",
+      "term_label": "1st Term",
+      "objective_text": "Friction: laws, advantages, disadvantages and reduction",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK FOUR"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK FOUR"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-005",
+      "term_label": "1st Term",
+      "objective_text": "Scalar and vector quantities; distance, displacement, speed, velocity, acceleration; equations of uniformly accelerated motion",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK FIVE AND SIX",
+        "anchor": "equations of uniformly accelerated motion"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK FIVE AND SIX",
+          "anchor": "equations of uniformly accelerated motion"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Row is split into Week 5 and Week 6 parts by rule PHYS-R01."
+    },
+    {
+      "objective_id": "PHYS-1-006",
+      "term_label": "1st Term",
+      "objective_text": "Distance-time and velocity-time graphs; calculations on the velocity-time graph",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK FIVE AND SIX",
+        "anchor": "Fig. 6: Distance-time graph"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK FIVE AND SIX",
+          "anchor": "Fig. 6: Distance-time graph"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Row is split into Week 5 and Week 6 parts by rule PHYS-R01; drawn graphs are lost on extraction."
+    },
+    {
+      "objective_id": "PHYS-1-007",
+      "term_label": "1st Term",
+      "objective_text": "Density and relative density",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK SEVEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK SEVEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-008",
+      "term_label": "1st Term",
+      "objective_text": "Pressure, Archimedes principle, upthrust and law of floatation",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK 8"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK 8"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-009",
+      "term_label": "1st Term",
+      "objective_text": "Work, energy and power; energy conversion; world energy resources",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK 9"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK 9"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-010",
+      "term_label": "1st Term",
+      "objective_text": "Viscosity and terminal velocity",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK TEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-5c0149cda71d",
+          "week_label": "WEEK TEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-1-011",
+      "term_label": "1st Term",
+      "objective_text": "Revision (scheme Week 11)",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-5c0149cda71d",
+        "week_label": "WEEK TEN"
+      },
+      "status": "UNRESOLVED",
+      "evidence": [],
+      "open_item_ids": [
+        "OI-PHYS-003"
+      ],
+      "note": "Scheme Week 11 has no body in the source."
+    },
+    {
+      "objective_id": "PHYS-2-001",
+      "term_label": "2nd Term",
+      "objective_text": "Heat energy; concept of heat and temperature; effects of heat",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK ONE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK ONE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-PHYS-001"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "The source week lists topics or definitions without worked examples or answers, so the authored lesson supplies the teaching."
+    },
+    {
+      "objective_id": "PHYS-2-002",
+      "term_label": "2nd Term",
+      "objective_text": "Thermometers, fixed points, evaporation and boiling",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK TWO"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK TWO"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-003",
+      "term_label": "2nd Term",
+      "objective_text": "Expansion of solids; effects and applications",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK THREE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK THREE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-PHYS-002"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "The source week lists topics or definitions without worked examples or answers, so the authored lesson supplies the teaching."
+    },
+    {
+      "objective_id": "PHYS-2-004",
+      "term_label": "2nd Term",
+      "objective_text": "Linear, area and volume expansivity; anomalous expansion of water; real and apparent expansivity",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK FOUR"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK FOUR"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-005",
+      "term_label": "2nd Term",
+      "objective_text": "Heat transfer: conduction, convection, radiation and applications",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK FIVE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK FIVE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-006",
+      "term_label": "2nd Term",
+      "objective_text": "Electric charges: production, types, distribution and storage",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK SIX"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK SIX"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-007",
+      "term_label": "2nd Term",
+      "objective_text": "Gold-leaf electroscope and its uses; lightning and lightning conductor",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK SEVEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK SEVEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-008",
+      "term_label": "2nd Term",
+      "objective_text": "Fields: gravitational and magnetic field; force of gravity",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK 8"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK 8"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-009",
+      "term_label": "2nd Term",
+      "objective_text": "Electric field, lines of force and their properties",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK NINE"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK NINE"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-2-010",
+      "term_label": "2nd Term",
+      "objective_text": "Production of continuous electric current",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-2c924c964660",
+        "week_label": "WEEK TEN"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-2c924c964660",
+          "week_label": "WEEK TEN"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-001",
+      "term_label": "3rd Term",
+      "objective_text": "Electric circuit (DC): components, quantities and Ohm's law",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 1"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 1"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-002",
+      "term_label": "3rd Term",
+      "objective_text": "Resistors and cells in series and parallel",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 2"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 2"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-003",
+      "term_label": "3rd Term",
+      "objective_text": "Electrical energy and power",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 3"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 3"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-004",
+      "term_label": "3rd Term",
+      "objective_text": "Safety device: the fuse",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 4"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 4"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-PHYS-003"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "The source week lists topics or definitions without worked examples or answers, so the authored lesson supplies the teaching."
+    },
+    {
+      "objective_id": "PHYS-3-005",
+      "term_label": "3rd Term",
+      "objective_text": "Atomic structure, states of matter, diffusion, osmosis, Brownian motion",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 5"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 5"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-006",
+      "term_label": "3rd Term",
+      "objective_text": "Crystal structure; crystalline and amorphous substances",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 6"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 6"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-007",
+      "term_label": "3rd Term",
+      "objective_text": "Surface tension",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 7"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 7"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-PHYS-004"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "The source week lists topics or definitions without worked examples or answers, so the authored lesson supplies the teaching."
+    },
+    {
+      "objective_id": "PHYS-3-008",
+      "term_label": "3rd Term",
+      "objective_text": "Capillarity",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 8"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 8"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-PHYS-005"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "The source week lists topics or definitions without worked examples or answers, so the authored lesson supplies the teaching."
+    },
+    {
+      "objective_id": "PHYS-3-009",
+      "term_label": "3rd Term",
+      "objective_text": "Elasticity: Hooke's law, stress, strain and Young modulus",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 9"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 9"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-010",
+      "term_label": "3rd Term",
+      "objective_text": "Energy stored in an elastic material",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 10"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-bed91bb4ef0e",
+          "week_label": "WEEK 10"
+        }
+      ],
+      "open_item_ids": []
+    },
+    {
+      "objective_id": "PHYS-3-011",
+      "term_label": "3rd Term",
+      "objective_text": "Revision and examination (scheme Weeks 11-12)",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-bed91bb4ef0e",
+        "week_label": "WEEK 10"
+      },
+      "status": "UNRESOLVED",
+      "evidence": [],
+      "open_item_ids": [
+        "OI-PHYS-003"
+      ],
+      "note": "Scheme Weeks 11 and 12 have no body in the source."
+    }
+  ],
+  "open_items": [
+    {
+      "id": "OI-PHYS-001",
+      "kind": "OWNER_ACTION",
+      "description": "The importer text extraction flattens superscripts and subscripts (v2, I2R, 10-6, R1) and loses fractions, drawn figures, circuit diagrams, ray and field diagrams. Most Physics rows are still readable and are reused as SUPPORTED; the original rows stay lossy.",
+      "owner_action": "Foundation owner / SS1-08: add SS1 equation, superscript and figure recovery to extractText, and decide how figures are bound.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d",
+        "SS1-SRC-2c924c964660",
+        "SS1-SRC-bed91bb4ef0e"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-PHYS-002",
+      "kind": "OTHER",
+      "description": "Factual or formula defects in the source notes (not corrected in the original rows): 1st Term Week 5 shows S = (v+u)t over 2 where the fraction is lost (S = ½(u+v)t); 2nd Term Week 1 defines heat as \"the study of relative motion of fluid\" and lists photoelectric emission as an effect of heat; 3rd Term Week 10 working \"F = EAαeLӨ/eL\" is garbled (the result F = EAαӨ is correct); expansivity working uses a stray \"X\" for α. Equivalent lessons avoid these.",
+      "owner_action": "Teacher corrects the original notes if wanted.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d",
+        "SS1-SRC-2c924c964660",
+        "SS1-SRC-bed91bb4ef0e"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-PHYS-003",
+      "kind": "MISSING_MATERIAL",
+      "description": "Scheme revision weeks (1st Term Week 11; 3rd Term Weeks 11-12 including the examination) have no body in the sources.",
+      "owner_action": "Teacher confirms a revision plan exists or that these weeks are revision/examination only.",
+      "affected_ids": [
+        "PHYS-1-011",
+        "PHYS-3-011"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-PHYS-004",
+      "kind": "MISSING_MATERIAL",
+      "description": "Drawn figures (graphs, circuit diagrams, apparatus, field lines) are not extracted as assets; none was invented.",
+      "owner_action": "SS1-08 / owner: render and bind source figures.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d",
+        "SS1-SRC-2c924c964660",
+        "SS1-SRC-bed91bb4ef0e"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-PHYS-005",
+      "kind": "OWNER_ACTION",
+      "description": "SUPPORTED rows were judged adequate from extracted text only; many source weeks contain evaluation questions and weekend assignments without answer keys. The five authored lessons have answers and marking but cite no external reference (none was verified). Teacher content approval has not been requested.",
+      "owner_action": "Teacher reviews the 5 lessons and decides whether an answer key is needed for the source weeks.",
+      "affected_ids": [
+        "SUP-SS1-PHYS-001",
+        "SUP-SS1-PHYS-005"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    }
+  ]
+}
