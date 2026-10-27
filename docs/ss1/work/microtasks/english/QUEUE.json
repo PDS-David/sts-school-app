@@ -1,0 +1,2506 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "English Language",
+  "slug": "english",
+  "generated_from": {
+    "master_sha": "fc6f8e275ccf9475a065f79f072da975a808d4b2",
+    "package_blob_sha": "4805f45fd0512f7914c79a6fa05dded95d7da76c",
+    "package": "backend/src/db/ss1/subjects/english.json",
+    "task": "SS1-02 English (PR #70 content, merged)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from the repository only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Existing English work is the merged package english.json (3 sources, 50 rules, 16 lessons, 24 corrections, 89 coverage entries, 3 open items). Package status stays PENDING; no approval or verification exists.",
+    "Open PRs affecting English: none found. Only the PR #70 content is on master; the #71 branch has no English package. The GitHub API was rate-limited in this session, so PR state was inferred from git refs (origin/pull/*); re-check before starting work.",
+    "Unavailable (not committed, so not counted as completed): private extracts and rendered pages of the three English originals; the audio model; prescribed-book extracts; any approval record; any English test file.",
+    "Every source was read at row level per the checkpoint, so no source has a first-unreviewed week. The coverage entries are body-level only, so one indexing item exists per source week to reach objective level. Absence from the package is not a claim that an objective is absent from the source.",
+    "No new lesson items were invented; they are to be added only after week indexing shows what is uncovered.",
+    "Review correction: IN_PROGRESS means an actively claimed task, not inherited partial coverage. Unclaimed incomplete indexing is PENDING. Existing correction code is retained, but correction items remain PENDING until replacement scope is reviewed.",
+    "Execute one queue item per worker. Existing implementation evidence is a starting point, not a request to repeat completed audits. Tests remain deferred. A required attachment absent from a worker session is an input blocker, not evidence that curriculum content is absent."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 32,
+    "LESSON": 16,
+    "CORRECTION_BINDING": 24,
+    "FACTUAL_DEPENDENCY": 11,
+    "ASSET": 1,
+    "TEST": 6
+  },
+  "status_counts": {
+    "IMPLEMENTED_TESTING_DEFERRED": 19,
+    "PENDING": 70,
+    "BLOCKED": 4
+  },
+  "items": [
+    {
+      "id": "ENG-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+      "objective": "Register the 1st Term English Language source with its manifest hash, canonical subject and header evidence, and its hash-scoped structural rules.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json sources[0] source_id=SS1-SRC-a00657d42196 sha256=4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef (matches docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv); header_text='FIRST TERM E-LEARNING NOTE'; canonical_subject=English Language; rules SS1-SRC-a00657d42196-R001..SS1-SRC-a00657d42196-R027 (27: {'source_alias': 1, 'split_before': 26}). Merged to master via PR #70; branch ss1/task02-languages-20261027-codex.",
+      "completion_condition": "Registration is implemented. Closure for later stages: rule anchors confirmed against the importer's parser output and the English test items pass, both DEFERRED BY OWNER; no approval or verification is recorded."
+    },
+    {
+      "id": "ENG-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+      "objective": "Register the 2nd Term English Language source with its manifest hash, canonical subject and header evidence, and its hash-scoped structural rules.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json sources[1] source_id=SS1-SRC-d8bd8f85fd73 sha256=ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966 (matches docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv); header_text='SIGMA TERM ENGLISH LANGUAGE CLASS : SS.1'; canonical_subject=English Language; rules SS1-SRC-d8bd8f85fd73-R001..SS1-SRC-d8bd8f85fd73-R002 (2: {'source_alias': 1, 'split_before': 1}). Merged to master via PR #70; branch ss1/task02-languages-20261027-codex.",
+      "completion_condition": "Registration is implemented. Closure for later stages: rule anchors confirmed against the importer's parser output and the English test items pass, both DEFERRED BY OWNER; no approval or verification is recorded."
+    },
+    {
+      "id": "ENG-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+      "objective": "Register the 3rd Term English Language source with its manifest hash, canonical subject and header evidence, and its hash-scoped structural rules.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json sources[2] source_id=SS1-SRC-50fa9b1eb2fd sha256=3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f (matches docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv); header_text='THIRD TERM E-LEARNING NOTE'; canonical_subject=English Language; rules SS1-SRC-50fa9b1eb2fd-R001..SS1-SRC-50fa9b1eb2fd-R021 (21: {'source_alias': 1, 'split_before': 20}). Merged to master via PR #70; branch ss1/task02-languages-20261027-codex.",
+      "completion_condition": "Registration is implemented. Closure for later stages: rule anchors confirmed against the importer's parser output and the English test items pass, both DEFERRED BY OWNER; no approval or verification is recorded."
+    },
+    {
+      "id": "ENG-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 1",
+      "objective": "Index 1st Term Week 1 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-001, ENGLISH-BODY-002, ENGLISH-BODY-003 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-001=\"TOPIC: GENERAL REVISION OF LAST TERM'S EXAMINATION; REVIEW OF PARTS OF\"; ENGLISH-BODY-002='B. Review of Word Class- Parts of Speech'; ENGLISH-BODY-003='C: Spelling: Doubling of Consonants. Rules of Spelling'. Corrected rows: ENGLISH-BODY-002 <- SS1-02-english-COR-001 -> SUP-SS1-ENGLISH-WORD-CLASSES-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 1 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 2",
+      "objective": "Index 1st Term Week 2 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-004, ENGLISH-BODY-005, ENGLISH-BODY-006, ENGLISH-BODY-007 (4 body-level rows; statuses {'PARTIAL': 4}). Row titles: ENGLISH-BODY-004='TOPICS: COMPREHENSION, READING SKILLS; RELIGION.'; ENGLISH-BODY-005='B.  TOPIC: STRUCTURE: INTRODUCTION TO PHRASAL VERBS.'; ENGLISH-BODY-006='C. Adverbs, Conjunction and Preposition'; ENGLISH-BODY-007='D. TOPIC: VOCABULARY DEVELOPMENT: WORDS ASSOCIATED WITH LIBRARY'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 2 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 3",
+      "objective": "Index 1st Term Week 3 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-008, ENGLISH-BODY-009, ENGLISH-BODY-010, ENGLISH-BODY-011 (4 body-level rows; statuses {'PARTIAL': 3, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-008='TOPICS: ESSAY WRITING: TYPES OF ESSAYS; SPEECH WORK: MONOTHONGS, IDIOM'; ENGLISH-BODY-009='B. SPEECH WORK: MONOTHONGS'; ENGLISH-BODY-010='C. IDIOMS.'; ENGLISH-BODY-011='D. VOCABULARY DEVELOPMENT: Words Associated with Entertainment.'. Corrected rows: ENGLISH-BODY-009 <- SS1-02-english-COR-005 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 3 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 4",
+      "objective": "Index 1st Term Week 4 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-012, ENGLISH-BODY-013, ENGLISH-BODY-014 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-012='TOPICS: COMPREHENSION/ READING SKILLS: SKIMMING AND SCANNING.'; ENGLISH-BODY-013='B. STRUCTURE: NOUN PHRASE AND VERB PHRASE.'; ENGLISH-BODY-014='VOCABULARY OF AGRICULTURE - GENERAL TERMS'. Corrected rows: ENGLISH-BODY-013 <- SS1-02-english-COR-002 -> SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 4 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 5",
+      "objective": "Index 1st Term Week 5 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-015, ENGLISH-BODY-016, ENGLISH-BODY-017 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-015='A. STRUCTURE: KINDS OF SENTENCES- SIMPLE, MULTIPLE, COMPOUND, COMPLEX'; ENGLISH-BODY-016='B. ESSAY WRITING: EXPOSITORY'; ENGLISH-BODY-017='C. VOCABULARY DEVELOPMENT:  STOCK EXCHANGE and INSURANCE-'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 5 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6",
+      "objective": "Index 1st Term Week 6 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-018, ENGLISH-BODY-019, ENGLISH-BODY-020, ENGLISH-BODY-021 (4 body-level rows; statuses {'PARTIAL': 3, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-018='TOPICS: COMPREHENSION/ORAL SKILLS: FIGURES OF SPEECH- SIMILE, METAPHOR'; ENGLISH-BODY-019='B. FIGURES OF SPEECH'; ENGLISH-BODY-020='C. ESSAY WRITING (DESCRIPTIVE)'; ENGLISH-BODY-021='D. SPEECH WORK: DIPHTHONGS'. Corrected rows: ENGLISH-BODY-021 <- SS1-02-english-COR-006 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 6 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 7",
+      "objective": "Index 1st Term Week 7 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-022, ENGLISH-BODY-023, ENGLISH-BODY-024, ENGLISH-BODY-025 (4 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 2}). Row titles: ENGLISH-BODY-022='TOPICS: VOCABULARY DEVELOPMENT-TRANSPORTATION'; ENGLISH-BODY-023='B. STRUCTURE: NOUN CLAUSE'; ENGLISH-BODY-024='B. INTRODUCTION TO CONSONANT SOUNDS.'; ENGLISH-BODY-025='C. WRITING NARRATIVE'. Corrected rows: ENGLISH-BODY-023 <- SS1-02-english-COR-003 -> SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1, ENGLISH-BODY-024 <- SS1-02-english-COR-007 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 7 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 8",
+      "objective": "Index 1st Term Week 8 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-026, ENGLISH-BODY-027, ENGLISH-BODY-028 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-026='TOPICS: COMPREHENSION/ READING SKILLS'; ENGLISH-BODY-027='B. STRUCTURE: ADJECTIVE AND ADJECTIVAL PHRASE'; ENGLISH-BODY-028='C. ESSAY WRITING: ARGUMENTATIVE ESSAY'. Corrected rows: ENGLISH-BODY-027 <- SS1-02-english-COR-004 -> SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 8 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 9",
+      "objective": "Index 1st Term Week 9 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-029, ENGLISH-BODY-030, ENGLISH-BODY-031 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-029='TOPICS: COMPREHENSION: READING SKILLS: INTRODUCTION TO ANSWERING COMPR'; ENGLISH-BODY-030='B. VOCABULARY DEVELOPMENT: WORDS ASSOCIATED WITH RELIGION'; ENGLISH-BODY-031='C. SPEECH WORK: FORMAL AND INFORMAL CONVERSATION: EMPHATIC STRESS'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 9 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 10",
+      "objective": "Index 1st Term Week 10 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-032, ENGLISH-BODY-033, ENGLISH-BODY-034 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-032='TOPICS: COMPREHENSION AND WRITING SKILLS:'; ENGLISH-BODY-033='B. SPELLING: PREFIXES AND SUFFIXES'; ENGLISH-BODY-034='C. ADVERBIAL AND PREPOSITIONAL PHRASES'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 10 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T1-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 11",
+      "objective": "Index 1st Term Week 11 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-035, ENGLISH-BODY-036, ENGLISH-BODY-037 (3 body-level rows; statuses {'IMPLEMENTED_EQUIVALENT': 2, 'PARTIAL': 1}). Row titles: ENGLISH-BODY-035='TOPICS: ESSAY WRITING: INFORMAL LETTER- \"A LETTER TO THE SISTER WHO PL'; ENGLISH-BODY-036='B. STRUCTURE: DEFINITE AND INDEFINITE ARTICLES'; ENGLISH-BODY-037='C. SPEECH WORK: MORE ON CONSONANTS'. Corrected rows: ENGLISH-BODY-035 <- SS1-02-english-COR-009 -> SUP-SS1-ENGLISH-LETTERS-T1, ENGLISH-BODY-037 <- SS1-02-english-COR-008 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 11 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1",
+      "objective": "Index 2nd Term Week 1 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-038, ENGLISH-BODY-048 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-038='WEEK 1:   WORD FORMATION PROCESS – AFFIXATION [PREFIX AND SUFFIX]'; ENGLISH-BODY-048='TOPIC:  AFFIX (AFFIXATION)'. Corrected rows: ENGLISH-BODY-048 <- SS1-02-english-COR-010 -> SUP-SS1-ENGLISH-AFFIXES-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 1 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2",
+      "objective": "Index 2nd Term Week 2 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-039, ENGLISH-BODY-049 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-039='WEEK 2:  COMPREHENSION- NOSEC . HOME AND FAMILY LIFE.'; ENGLISH-BODY-049='TOPIC:  COMPREHENSION (THE QUEST FOR HEALTH) page 68 -69'. Corrected rows: ENGLISH-BODY-049 <- SS1-02-english-COR-011 -> SUP-SS1-ENGLISH-READING-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 2 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3",
+      "objective": "Index 2nd Term Week 3 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-040, ENGLISH-BODY-050, ENGLISH-BODY-051 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-040='WEEK 3:  COMPOSITION/ LETTER WRITING- FORMAL LETTER'; ENGLISH-BODY-050='TOPIC: COMPOSITION/ WRITING: LETTER TO THE CHAIRMAN OF YOUR LOCAL GOVE'; ENGLISH-BODY-051='STRUCTURE : TENSE (simple, present, tense, simple past tense, present'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 3 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4",
+      "objective": "Index 2nd Term Week 4 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-041, ENGLISH-BODY-052 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-041='WEEK 4:  VOCABULARY DEVELOPMENT- SYNONYMS'; ENGLISH-BODY-052=': VOCABULARY DEVELOPNMENT; SYNONYMNS (WORDS EXACTLY THE SAME INMEANING'. Corrected rows: ENGLISH-BODY-052 <- SS1-02-english-COR-013 -> SUP-SS1-ENGLISH-MEANING-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 4 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5",
+      "objective": "Index 2nd Term Week 5 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-042, ENGLISH-BODY-053 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-042='WEEK 5:  COMPREHENSION- READING [SCANNING]'; ENGLISH-BODY-053='TOPIC: (WRITING AND LISTENING) THE HINDING PARTH OF STEEL DEVELOPNMENT'. Corrected rows: ENGLISH-BODY-053 <- SS1-02-english-COR-012 -> SUP-SS1-ENGLISH-READING-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 5 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6",
+      "objective": "Index 2nd Term Week 6 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-043, ENGLISH-BODY-054 (2 body-level rows; statuses {'PARTIAL': 2}). Row titles: ENGLISH-BODY-043='WEEK 6:  WORDS ASSOCIATED  WITH PHOTOGRAPHY'; ENGLISH-BODY-054='TOPIC: VOCABULARY DEVELOPNMENT (SEXUALITY AND RELIGION) WORDS ASSOCIAT'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 6 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 7",
+      "objective": "Index 2nd Term Week 7 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-044, ENGLISH-BODY-055 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-044='WEEK 7:  GRAMMAR –ADVERBS AND TENSE'; ENGLISH-BODY-055='GRAMMAR: ADVERBS AND TENSE'. Corrected rows: ENGLISH-BODY-055 <- SS1-02-english-COR-014 -> SUP-SS1-ENGLISH-ADVERBS-TENSE-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 7 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8",
+      "objective": "Index 2nd Term Week 8 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-045, ENGLISH-BODY-056 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-045='WEEK 8:  ANTONYMS'; ENGLISH-BODY-056='Antonyms is a concept used to describe oppositeness of meaning. Unlike'. Corrected rows: ENGLISH-BODY-056 <- SS1-02-english-COR-015 -> SUP-SS1-ENGLISH-MEANING-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 8 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9",
+      "objective": "Index 2nd Term Week 9 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-046, ENGLISH-BODY-057 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-046='WEEK 9:  COMPOSITION –MORE ON ESSAY TYPES'; ENGLISH-BODY-057='TOPIC :   COMPOSITION : MORE ON ESSAY TYPES'. Corrected rows: ENGLISH-BODY-057 <- SS1-02-english-COR-016 -> SUP-SS1-ENGLISH-ESSAY-TYPES-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 9 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10",
+      "objective": "Index 2nd Term Week 10 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-047, ENGLISH-BODY-058 (2 body-level rows; statuses {'PARTIAL': 2}). Row titles: ENGLISH-BODY-047='WEEK 10:  GENERAL REVISION CLASS [GRC]'; ENGLISH-BODY-058='WEEK 10: GENERAL REVISION CLASS [GRC]'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 10 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1",
+      "objective": "Index 3rd Term Week 1 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-059, ENGLISH-BODY-060 (2 body-level rows; statuses {'PARTIAL': 2}). Row titles: ENGLISH-BODY-059=\"Revision of last term's work and examination\"; ENGLISH-BODY-060='D. The Use of Dictionary'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 1 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2",
+      "objective": "Index 3rd Term Week 2 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-061, ENGLISH-BODY-062, ENGLISH-BODY-063 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-061='Practical Approach to Summary Writing'; ENGLISH-BODY-062='Vocabulary Development: Advertising'; ENGLISH-BODY-063='Narrative Essay'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 2 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 3",
+      "objective": "Index 3rd Term Week 3 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-064, ENGLISH-BODY-065, ENGLISH-BODY-066, ENGLISH-BODY-067, ENGLISH-BODY-068 (5 body-level rows; statuses {'PARTIAL': 5}). Row titles: ENGLISH-BODY-064='Comprehension: Fishing in Hausa Land.'; ENGLISH-BODY-065='Summary Writing: Leisure Time ( page 152 - 153) of Effective English B'; ENGLISH-BODY-066='STRUCTURE:  INTRODUCTION TO CLAUSES'; ENGLISH-BODY-067='Writing: Expository Essay'; ENGLISH-BODY-068='Family Relationship:'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 3 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4",
+      "objective": "Index 3rd Term Week 4 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-069 (1 body-level rows; statuses {'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-069='Speech Work: Rhymes'. Corrected rows: ENGLISH-BODY-069 <- SS1-02-english-COR-017 -> SUP-SS1-ENGLISH-PHONETICS-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 4 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5",
+      "objective": "Index 3rd Term Week 5 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-070, ENGLISH-BODY-071 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-070='Comprehension / Reading Skills: More on scanning and skimming'; ENGLISH-BODY-071='Speech Work: Contrasting /s/ and /z/ and  /ʒ/, /f/ and /v/'. Corrected rows: ENGLISH-BODY-071 <- SS1-02-english-COR-018 -> SUP-SS1-ENGLISH-PHONETICS-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 5 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 6",
+      "objective": "Index 3rd Term Week 6 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-072, ENGLISH-BODY-073, ENGLISH-BODY-074 (3 body-level rows; statuses {'IMPLEMENTED_EQUIVALENT': 2, 'PARTIAL': 1}). Row titles: ENGLISH-BODY-072='Structures: Prefixes and Negation'; ENGLISH-BODY-073='B. Speech Work:  Words of two Syllables which are stressed on the firs'; ENGLISH-BODY-074='C.  Essay Writing'. Corrected rows: ENGLISH-BODY-072 <- SS1-02-english-COR-019 -> SUP-SS1-ENGLISH-AFFIXES-T3, ENGLISH-BODY-073 <- SS1-02-english-COR-020 -> SUP-SS1-ENGLISH-STRESS-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 6 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7",
+      "objective": "Index 3rd Term Week 7 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-075, ENGLISH-BODY-076, ENGLISH-BODY-077 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-075='Comprehension and Reading Skills'; ENGLISH-BODY-076='B: Structure : Sentence Structure and Formation'; ENGLISH-BODY-077=\"C. Spelling Dropping  'e' and retaining 'e'\". Corrected rows: ENGLISH-BODY-076 <- SS1-02-english-COR-021 -> SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 7 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8",
+      "objective": "Index 3rd Term Week 8 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-078, ENGLISH-BODY-079, ENGLISH-BODY-080 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-078='Comprehension: Summarising in a specified number of sentences .'; ENGLISH-BODY-079='B:  Speech Work:  Intonation'; ENGLISH-BODY-080='C: Functions of Comparatives'. Corrected rows: ENGLISH-BODY-079 <- SS1-02-english-COR-022 -> SUP-SS1-ENGLISH-STRESS-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 8 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 9",
+      "objective": "Index 3rd Term Week 9 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-081, ENGLISH-BODY-082, ENGLISH-BODY-083 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-081='Comprehension: Identifying statutory topics, theme, and key sentences'; ENGLISH-BODY-082='B:  Vocabulary Development :  Words Associated with Journalism and  Ad'; ENGLISH-BODY-083='C. Antonyms as Words Opposite  in meaning'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 9 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 10",
+      "objective": "Index 3rd Term Week 10 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-084, ENGLISH-BODY-085, ENGLISH-BODY-086 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-084='Comprehension : Speaking Skills'; ENGLISH-BODY-085='B: Speech Work : Contrasting /I/ and /i:/'; ENGLISH-BODY-086='C. Essay Writing : Argumentative'. Corrected rows: ENGLISH-BODY-085 <- SS1-02-english-COR-023 -> SUP-SS1-ENGLISH-PHONETICS-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 10 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-WK-T3-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 11",
+      "objective": "Index 3rd Term Week 11 at objective level: list each scheme objective, bind it to exact source rows and/or supplements, and confirm each replacement's scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-087, ENGLISH-BODY-088, ENGLISH-BODY-089 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-087='Comprehension :  Summarizing in a specified number of words'; ENGLISH-BODY-088='B: Vocabulary Development: Words Associated with Building'; ENGLISH-BODY-089='C: Structure : Synonyms: Word  Nearest in meaning'. Corrected rows: ENGLISH-BODY-089 <- SS1-02-english-COR-024 -> SUP-SS1-ENGLISH-MEANING-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "completion_condition": "Every objective of Week 11 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing."
+    },
+    {
+      "id": "ENG-LES-WORD-CLASSES-T1",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-WORD-CLASSES-T1",
+      "objective": "Authored, labelled equivalent lesson 'Word classes and noun categories' for 1st Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-WORD-CLASSES-T1] title='Word classes and noun categories'; body_sha256=ecd8402e03e21cfad8558fd38a87af85e106d92c55487216f45fac13300839fc; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: nouns; Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-001.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-PHRASES-CLAUSES-T1",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1",
+      "objective": "Authored, labelled equivalent lesson 'Phrases, clauses and sentence functions' for 1st Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1] title='Phrases, clauses and sentence functions'; body_sha256=119a7559dfd40cf491090f722be32a4bea52c155b8e36022ffee8a8c92e816b1; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-002, SS1-02-english-COR-003, SS1-02-english-COR-004.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-PHONETICS-T1",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-PHONETICS-T1",
+      "objective": "Authored, labelled equivalent lesson 'English sound symbols and listening contrasts' for 1st Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-PHONETICS-T1] title='English sound symbols and listening contrasts'; body_sha256=5bade9733d303e9de245318df7bd8966a7eafd7ec622ae1b002613d2cf5cc27b; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: BBC Learning English: Sounds of English chart; British Council: LearnEnglish Sounds Right. Bound by corrections SS1-02-english-COR-005, SS1-02-english-COR-006, SS1-02-english-COR-007, SS1-02-english-COR-008.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-LETTERS-T1",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-LETTERS-T1",
+      "objective": "Authored, labelled equivalent lesson 'Writing a respectful informal letter' for 1st Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-LETTERS-T1] title='Writing a respectful informal letter'; body_sha256=54b42b21fb0c1b74209270e2e3f77981db537a0bd53141894706bcd6fea7a951; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-009.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-AFFIXES-T2",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-AFFIXES-T2",
+      "objective": "Authored, labelled equivalent lesson 'Affixes and reliable word formation' for 2nd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-AFFIXES-T2] title='Affixes and reliable word formation'; body_sha256=96c15f6b58eb869959be308e98c185e100cff33e9acc9de36d5a2b5de41fb95f; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-010.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-READING-T2",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-READING-T2",
+      "objective": "Authored, labelled equivalent lesson 'Reading details, inference, scanning and summary with an original passage' for 2nd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-READING-T2] title='Reading details, inference, scanning and summary with an original passage'; body_sha256=7c5883178f99e9d6800bb9136625912b51a9db271e5dc5c5b12a8dbd2c3bdfa5; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Purdue OWL: quoting, paraphrasing and summarizing. Bound by corrections SS1-02-english-COR-011, SS1-02-english-COR-012.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-MEANING-T2",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-MEANING-T2",
+      "objective": "Authored, labelled equivalent lesson 'Synonyms, antonyms and contextual choice' for 2nd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-MEANING-T2] title='Synonyms, antonyms and contextual choice'; body_sha256=2ef041fcc51633f4f763d6817d284c985d4179d81099758fe1b56cdfb03b8319; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-013, SS1-02-english-COR-015.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-ADVERBS-TENSE-T2",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2",
+      "objective": "Authored, labelled equivalent lesson 'Adverbs and tense in context' for 2nd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-ADVERBS-TENSE-T2] title='Adverbs and tense in context'; body_sha256=d4ce742b5f802886546a6d1f6228cfe55437aacf44b5532fc7ff8d74c1698297; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-014.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-ESSAY-TYPES-T2",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+      "objective": "Authored, labelled equivalent lesson 'Planning four essay types' for 2nd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-ESSAY-TYPES-T2] title='Planning four essay types'; body_sha256=e31d747d6cc58c94c1861e32c34f2ea4b5f156d95fef129a3ecce6996c319bcf; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses; Purdue OWL: quoting, paraphrasing and summarizing. Bound by corrections SS1-02-english-COR-016.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-PHONETICS-T3",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-PHONETICS-T3",
+      "objective": "Authored, labelled equivalent lesson 'English sound symbols and listening contrasts' for 3rd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-PHONETICS-T3] title='English sound symbols and listening contrasts'; body_sha256=5bade9733d303e9de245318df7bd8966a7eafd7ec622ae1b002613d2cf5cc27b; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: BBC Learning English: Sounds of English chart; British Council: LearnEnglish Sounds Right. Bound by corrections SS1-02-english-COR-017, SS1-02-english-COR-018, SS1-02-english-COR-023.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-AFFIXES-T3",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-AFFIXES-T3",
+      "objective": "Authored, labelled equivalent lesson 'Affixes and reliable word formation' for 3rd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-AFFIXES-T3] title='Affixes and reliable word formation'; body_sha256=96c15f6b58eb869959be308e98c185e100cff33e9acc9de36d5a2b5de41fb95f; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-019.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-STRESS-T3",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-STRESS-T3",
+      "objective": "Authored, labelled equivalent lesson 'Word stress, intonation and dictionary use' for 3rd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-STRESS-T3] title='Word stress, intonation and dictionary use'; body_sha256=8df0269eee4c1bccfcfe301bd38450a6a70bc242d5dc74c9e3f78d65ac41b9b7; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: British Council: LearnEnglish Sounds Right; Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-020, SS1-02-english-COR-022.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-PHRASES-CLAUSES-T3",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3",
+      "objective": "Authored, labelled equivalent lesson 'Phrases, clauses and sentence functions' for 3rd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3] title='Phrases, clauses and sentence functions'; body_sha256=119a7559dfd40cf491090f722be32a4bea52c155b8e36022ffee8a8c92e816b1; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-021.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-MEANING-T3",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-MEANING-T3",
+      "objective": "Authored, labelled equivalent lesson 'Synonyms, antonyms and contextual choice' for 3rd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-MEANING-T3] title='Synonyms, antonyms and contextual choice'; body_sha256=2ef041fcc51633f4f763d6817d284c985d4179d81099758fe1b56cdfb03b8319; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Cambridge English Grammar Today: words, sentences and clauses. Bound by corrections SS1-02-english-COR-024.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-READING-T1",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-READING-T1",
+      "objective": "Authored, labelled equivalent lesson 'Reading details, inference, scanning and summary with an original passage' for 1st Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-READING-T1] title='Reading details, inference, scanning and summary with an original passage'; body_sha256=7c5883178f99e9d6800bb9136625912b51a9db271e5dc5c5b12a8dbd2c3bdfa5; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Purdue OWL: quoting, paraphrasing and summarizing. Not referenced by any correction or coverage entry.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-LES-READING-T3",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-READING-T3",
+      "objective": "Authored, labelled equivalent lesson 'Reading details, inference, scanning and summary with an original passage' for 3rd Term.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-READING-T3] title='Reading details, inference, scanning and summary with an original passage'; body_sha256=7c5883178f99e9d6800bb9136625912b51a9db271e5dc5c5b12a8dbd2c3bdfa5; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}; provenance: Purdue OWL: quoting, paraphrasing and summarizing. Not referenced by any correction or coverage entry.",
+      "completion_condition": "Implemented in the package. Delivery remains blocked: content approval is PENDING with no approval_reference and verification is DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "ENG-COR-001",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-002: SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Common/concrete categories and auxiliary/non-finite explanations need correction.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-WORD-CLASSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-001] source_lesson_id=SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 body_sha256=954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 replacement_id=SUP-SS1-ENGLISH-WORD-CLASSES-T1; paired coverage entry ENGLISH-BODY-002 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-002",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-013: SS1-SRC-a00657d42196:BODY:1c98310e1fd9b30d4be570da432c1a4203dfa79ddbf55acbd0f1a1fb7bcca830",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Source labels object complements as subject complements.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHRASES-CLAUSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-002] source_lesson_id=SS1-SRC-a00657d42196:BODY:1c98310e1fd9b30d4be570da432c1a4203dfa79ddbf55acbd0f1a1fb7bcca830 body_sha256=1c98310e1fd9b30d4be570da432c1a4203dfa79ddbf55acbd0f1a1fb7bcca830 replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1; paired coverage entry ENGLISH-BODY-013 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-003",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-023: SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Source swaps prepositional and object-complement examples.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHRASES-CLAUSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-003] source_lesson_id=SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383 body_sha256=a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383 replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1; paired coverage entry ENGLISH-BODY-023 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-004",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-027: SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Relative clauses are incorrectly labelled phrases.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHRASES-CLAUSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-004] source_lesson_id=SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea body_sha256=802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1; paired coverage entry ENGLISH-BODY-027 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-005",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-009: SS1-SRC-a00657d42196:BODY:fa385ddd2653424798fad83c378ca8b79ce3b40486330f26cf3c657e23928dae",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Mixed phonetic symbols and inappropriate examples.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHONETICS-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-005] source_lesson_id=SS1-SRC-a00657d42196:BODY:fa385ddd2653424798fad83c378ca8b79ce3b40486330f26cf3c657e23928dae body_sha256=fa385ddd2653424798fad83c378ca8b79ce3b40486330f26cf3c657e23928dae replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-009 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-006",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-021: SS1-SRC-a00657d42196:BODY:00bd8299727d438d9c64eecc056d38d2ce81071eb86aade06647b1e8ca863128",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Inconsistent symbols and faulty example spellings.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHONETICS-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-006] source_lesson_id=SS1-SRC-a00657d42196:BODY:00bd8299727d438d9c64eecc056d38d2ce81071eb86aade06647b1e8ca863128 body_sha256=00bd8299727d438d9c64eecc056d38d2ce81071eb86aade06647b1e8ca863128 replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-021 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-007",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-024: SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+      "objective": "Bind the exact source row to its same-term replacement lesson: /k/ mislabels alveolar /t/ and /j/ is incorrectly called voiceless.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHONETICS-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-007] source_lesson_id=SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b body_sha256=5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-024 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-008",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-037: SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+      "objective": "Bind the exact source row to its same-term replacement lesson: /dz/ is not the intended affricate /dʒ/.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-PHONETICS-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-008] source_lesson_id=SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c body_sha256=6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-037 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-009",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "ENGLISH-BODY-035: SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Replace prescriptive pressure to oppose a relative’s divorce with respectful advice-writing.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-LES-LETTERS-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-009] source_lesson_id=SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 body_sha256=d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 replacement_id=SUP-SS1-ENGLISH-LETTERS-T1; paired coverage entry ENGLISH-BODY-035 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-010",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-048: SS1-SRC-d8bd8f85fd73:BODY:235e723631894ab44d5dcacc9885edff74bc1644abe38d511afeeb031881da76",
+      "objective": "Bind the exact source row to its same-term replacement lesson: False suffix classes and root examples.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-AFFIXES-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-010] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:235e723631894ab44d5dcacc9885edff74bc1644abe38d511afeeb031881da76 body_sha256=235e723631894ab44d5dcacc9885edff74bc1644abe38d511afeeb031881da76 replacement_id=SUP-SS1-ENGLISH-AFFIXES-T2; paired coverage entry ENGLISH-BODY-048 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-011",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-049: SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Missing passage plus oversimplified health assertions; original equivalent reading task.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-READING-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-011] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e body_sha256=210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e replacement_id=SUP-SS1-ENGLISH-READING-T2; paired coverage entry ENGLISH-BODY-049 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-012",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-053: SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Textbook pointer lacks the required reading text and questions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-READING-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-012] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9 body_sha256=3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9 replacement_id=SUP-SS1-ENGLISH-READING-T2; paired coverage entry ENGLISH-BODY-053 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-013",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-052: SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Print/paint confusion and incomplete semantic distinctions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-MEANING-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-013] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa body_sha256=d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa replacement_id=SUP-SS1-ENGLISH-MEANING-T2; paired coverage entry ENGLISH-BODY-052 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-014",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-055: SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Correct adverb explanation and tense distinctions with answer keys.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-ADVERBS-TENSE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-014] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc body_sha256=48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc replacement_id=SUP-SS1-ENGLISH-ADVERBS-TENSE-T2; paired coverage entry ENGLISH-BODY-055 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-015",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-056: SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Clarify gradability/complementarity rather than identifying them with comparative forms.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-MEANING-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-015] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09 body_sha256=e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09 replacement_id=SUP-SS1-ENGLISH-MEANING-T2; paired coverage entry ENGLISH-BODY-056 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-016",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "ENGLISH-BODY-057: SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Heading-only essay list requires actual teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2",
+        "ENG-LES-ESSAY-TYPES-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-016] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69 body_sha256=7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69 replacement_id=SUP-SS1-ENGLISH-ESSAY-TYPES-T2; paired coverage entry ENGLISH-BODY-057 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-017",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-069: SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Ride/site is not a rhyme; sound rather than letter matching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-PHONETICS-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-017] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a body_sha256=b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a replacement_id=SUP-SS1-ENGLISH-PHONETICS-T3; paired coverage entry ENGLISH-BODY-069 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-018",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-071: SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Source reverses /ʃ/ and /ʒ/ word columns and has non-contrast pairs.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-PHONETICS-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-018] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c body_sha256=69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c replacement_id=SUP-SS1-ENGLISH-PHONETICS-T3; paired coverage entry ENGLISH-BODY-071 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-019",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-072: SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Prefix meanings shifted and derivational suffixes called tense suffixes.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-AFFIXES-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-019] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a body_sha256=5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a replacement_id=SUP-SS1-ENGLISH-AFFIXES-T3; paired coverage entry ENGLISH-BODY-072 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-020",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-073: SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Source noun/verb stress rule overgeneralises and includes incorrect pairs.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-STRESS-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-020] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 body_sha256=10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 replacement_id=SUP-SS1-ENGLISH-STRESS-T3; paired coverage entry ENGLISH-BODY-073 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-021",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-076: SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Direct objects mislabelled indirect and compound-complex mislabelled compound.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-PHRASES-CLAUSES-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-021] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c body_sha256=76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3; paired coverage entry ENGLISH-BODY-076 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-022",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-079: SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867",
+      "objective": "Bind the exact source row to its same-term replacement lesson: No universal rising tune for every request or command.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-STRESS-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-022] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 body_sha256=dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 replacement_id=SUP-SS1-ENGLISH-STRESS-T3; paired coverage entry ENGLISH-BODY-079 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-023",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-085: SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Correct /ɪ/ versus /iː/ notation and the chief/thief classification.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-PHONETICS-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-023] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 body_sha256=f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 replacement_id=SUP-SS1-ENGLISH-PHONETICS-T3; paired coverage entry ENGLISH-BODY-085 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-COR-024",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "ENGLISH-BODY-089: SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98",
+      "objective": "Bind the exact source row to its same-term replacement lesson: Reject/emit are not interchangeable synonyms.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3",
+        "ENG-LES-MEANING-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-024] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 body_sha256=f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 replacement_id=SUP-SS1-ENGLISH-MEANING-T3; paired coverage entry ENGLISH-BODY-089 (status IMPLEMENTED_EQUIVALENT).",
+      "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred."
+    },
+    {
+      "id": "ENG-FACT-SCHEME-OBJECTIVE-REVIEW",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-SCHEME-OBJECTIVE-REVIEW",
+      "objective": "Close the package open item that body-level mappings are not a per-scheme-strand reconciliation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W01",
+        "ENG-WK-T1-W02",
+        "ENG-WK-T1-W03",
+        "ENG-WK-T1-W04",
+        "ENG-WK-T1-W05",
+        "ENG-WK-T1-W06",
+        "ENG-WK-T1-W07",
+        "ENG-WK-T1-W08",
+        "ENG-WK-T1-W09",
+        "ENG-WK-T1-W10",
+        "ENG-WK-T1-W11",
+        "ENG-WK-T2-W01",
+        "ENG-WK-T2-W02",
+        "ENG-WK-T2-W03",
+        "ENG-WK-T2-W04",
+        "ENG-WK-T2-W05",
+        "ENG-WK-T2-W06",
+        "ENG-WK-T2-W07",
+        "ENG-WK-T2-W08",
+        "ENG-WK-T2-W09",
+        "ENG-WK-T2-W10",
+        "ENG-WK-T3-W01",
+        "ENG-WK-T3-W02",
+        "ENG-WK-T3-W03",
+        "ENG-WK-T3-W04",
+        "ENG-WK-T3-W05",
+        "ENG-WK-T3-W06",
+        "ENG-WK-T3-W07",
+        "ENG-WK-T3-W08",
+        "ENG-WK-T3-W09",
+        "ENG-WK-T3-W10",
+        "ENG-WK-T3-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json open_items[id=ENGLISH-SCHEME-OBJECTIVE-REVIEW] kind=CONTENT blocks_delivery=true, affected_ids = the three English source IDs; checkpoint docs/ss1/work/SS1-02/CHECKPOINT.md: 'some broad source rows contain objectives missing from narrow replacements'.",
+      "completion_condition": "All 32 week-indexing items are finished, then the open item is removed or rewritten to name only what remains."
+    },
+    {
+      "id": "ENG-FACT-REPLACEMENT-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "24 IMPLEMENTED_EQUIVALENT coverage rows",
+      "objective": "Reconcile a documented inconsistency: all 24 corrected rows are marked IMPLEMENTED_EQUIVALENT, yet the SS1-02 checkpoint says some replacements are narrower than their source rows and must not be activated.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W01",
+        "ENG-WK-T1-W02",
+        "ENG-WK-T1-W03",
+        "ENG-WK-T1-W04",
+        "ENG-WK-T1-W05",
+        "ENG-WK-T1-W06",
+        "ENG-WK-T1-W07",
+        "ENG-WK-T1-W08",
+        "ENG-WK-T1-W09",
+        "ENG-WK-T1-W10",
+        "ENG-WK-T1-W11",
+        "ENG-WK-T2-W01",
+        "ENG-WK-T2-W02",
+        "ENG-WK-T2-W03",
+        "ENG-WK-T2-W04",
+        "ENG-WK-T2-W05",
+        "ENG-WK-T2-W06",
+        "ENG-WK-T2-W07",
+        "ENG-WK-T2-W08",
+        "ENG-WK-T2-W09",
+        "ENG-WK-T2-W10",
+        "ENG-WK-T3-W01",
+        "ENG-WK-T3-W02",
+        "ENG-WK-T3-W03",
+        "ENG-WK-T3-W04",
+        "ENG-WK-T3-W05",
+        "ENG-WK-T3-W06",
+        "ENG-WK-T3-W07",
+        "ENG-WK-T3-W08",
+        "ENG-WK-T3-W09",
+        "ENG-WK-T3-W10",
+        "ENG-WK-T3-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-02/CHECKPOINT.md (English paragraph) vs backend/src/db/ss1/subjects/english.json coverage: 24 IMPLEMENTED_EQUIVALENT entries, one per correction ENG-COR-001..024.",
+      "completion_condition": "For each of the 24 rows the missing objectives, if any, are recorded as separate PARTIAL/UNRESOLVED coverage entries (or the replacement scope is confirmed as whole-row), per the week-indexing results."
+    },
+    {
+      "id": "ENG-FACT-READING-T1-T3-UNBOUND",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": "1st Term / 3rd Term",
+      "week_or_locator": "SUP-SS1-ENGLISH-READING-T1, SUP-SS1-ENGLISH-READING-T3",
+      "objective": "Decide the source rows (if any) that READING-T1 and READING-T3 are equivalents for; today no coverage entry or correction references them.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W02",
+        "ENG-WK-T1-W04",
+        "ENG-WK-T1-W08",
+        "ENG-WK-T1-W09",
+        "ENG-WK-T1-W10",
+        "ENG-WK-T3-W03",
+        "ENG-WK-T3-W05",
+        "ENG-WK-T3-W07",
+        "ENG-WK-T3-W08",
+        "ENG-WK-T3-W09",
+        "ENG-WK-T3-W10",
+        "ENG-WK-T3-W11",
+        "ENG-LES-READING-T1",
+        "ENG-LES-READING-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-READING-T1 and -T3 appear in no coverage lesson_ids and no delivery_corrections; only READING-T2 is bound (ENG-COR-011, ENG-COR-012). Their bodies are identical to READING-T2 (same body_sha256).",
+      "completion_condition": "Each lesson is either bound by exact coverage/correction entries to indexed rows, or the owner decides it is unneeded; no binding is invented."
+    },
+    {
+      "id": "ENG-FACT-CROSS-TERM-IDENTICAL-BODIES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "five shared bodies",
+      "objective": "Confirm whether the same replacement body is intended in more than one term, or whether per-term differentiation is needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-FACT-REPLACEMENT-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json identical body_sha256: PHRASES-CLAUSES T1/T3; PHONETICS T1/T3; AFFIXES T2/T3; MEANING T2/T3; READING T1/T2/T3.",
+      "completion_condition": "Compare the named repeated lessons against each term's exact objectives and record the mapping. Repeated text alone is not a defect. Add separate small lesson items for demonstrated uncovered objectives. Request owner input only for an unresolved policy choice, not for source comparison."
+    },
+    {
+      "id": "ENG-FACT-PRESCRIBED-PASSAGES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-PRESCRIBED-PASSAGES",
+      "objective": "Obtain exact authorised extracts/editions for the named prescribed books, or have the owner accept the labelled equivalent reading activity.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-LES-READING-T1",
+        "ENG-LES-READING-T2",
+        "ENG-LES-READING-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json open_items[id=ENGLISH-PRESCRIBED-PASSAGES] kind=CONTENT blocks_delivery=true; affected: SUP-SS1-ENGLISH-READING-T1/-T2/-T3. Blocked on owner-supplied material or an owner decision; neither is in the repository.",
+      "completion_condition": "Owner supplies authorised extracts with edition, or records acceptance of the equivalent activity; the open item is updated accordingly."
+    },
+    {
+      "id": "ENG-FACT-ORAL-AUDIO",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-ORAL-OBSERVATION",
+      "objective": "Identify an authorised audio model and record its rights and the exact phonetics/stress objectives it supports. Oral observation is a separate deferred verification.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-LES-PHONETICS-T1",
+        "ENG-LES-PHONETICS-T3",
+        "ENG-LES-STRESS-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "No authorised audio supplied in the reviewed package. Acquisition/permission is unresolved; oral observation stays deferred and does not block recording acquisition evidence.",
+      "completion_condition": "A concrete audio file or accessible authorised recording and permission basis are documented for ENG-ASSET-AUDIO-MODEL. This task does not require asset installation or oral observation. Keep the package's oral-observation open item open until later verification."
+    },
+    {
+      "id": "ENG-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package_status PENDING; 16 lessons",
+      "objective": "Teacher/owner content approval of the authored lessons.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-FACT-REPLACEMENT-SCOPE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json package_status=PENDING; every lesson state: content_approval=PENDING, approval_reference=null, verification=DEFERRED. Approval comes only from the owner; none is recorded.",
+      "completion_condition": "A real approval reference is supplied by the owner for each lesson; it must not be written by an agent."
+    },
+    {
+      "id": "ENG-FACT-PROVENANCE-REVIEW",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "lesson provenance entries",
+      "objective": "Check that each lesson provenance entry (reference title, URL, rights basis, reuse_status) is accurate before delivery.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[].provenance: all reuse_status=PERMITTED on the basis 'original teaching prose authored for this project'; references include Cambridge English Grammar Today, Purdue OWL, BBC Learning English and British Council pages; the URLs were not re-checked here.",
+      "completion_condition": "Check each cited primary page and the actual reuse basis; correct inaccurate references. Record unresolved permissions as open items. Owner confirmation is required only where permission cannot otherwise be established, not for ordinary factual URL checks."
+    },
+    {
+      "id": "ENG-FACT-VISUAL-DISPOSITION-T1",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "private rendered pages (not in repository)",
+      "objective": "Record visual dispositions (figures, tables, layout-only content) for the 1st Term source.",
+      "required_files": [
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-02/CHECKPOINT.md: all 12 SS1-02 originals were rendered privately and 'full visual dispositions' are still needed for English. Those renders and the private extracts are not committed, so they are unavailable. Regenerating them needs the named archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e) in a task that has it. Review 2026-10-27: the attached composite archive is available and all 61 document hashes match. Prior private renders need not be recovered: regenerate privately from the assigned original.",
+      "completion_condition": "Dispositions are recorded from a fresh private render of the named archive; no rendering is committed to Git. Any needed figure becomes a separate ASSET item."
+    },
+    {
+      "id": "ENG-FACT-VISUAL-DISPOSITION-T2",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "private rendered pages (not in repository)",
+      "objective": "Record visual dispositions (figures, tables, layout-only content) for the 2nd Term source.",
+      "required_files": [
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-02/CHECKPOINT.md: all 12 SS1-02 originals were rendered privately and 'full visual dispositions' are still needed for English. Those renders and the private extracts are not committed, so they are unavailable. Regenerating them needs the named archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e) in a task that has it. Review 2026-10-27: the attached composite archive is available and all 61 document hashes match. Prior private renders need not be recovered: regenerate privately from the assigned original.",
+      "completion_condition": "Dispositions are recorded from a fresh private render of the named archive; no rendering is committed to Git. Any needed figure becomes a separate ASSET item."
+    },
+    {
+      "id": "ENG-FACT-VISUAL-DISPOSITION-T3",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "private rendered pages (not in repository)",
+      "objective": "Record visual dispositions (figures, tables, layout-only content) for the 3rd Term source.",
+      "required_files": [
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "SSS 1-20260507T072431Z-3-001 (1).zip"
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "docs/ss1/work/SS1-02/CHECKPOINT.md: all 12 SS1-02 originals were rendered privately and 'full visual dispositions' are still needed for English. Those renders and the private extracts are not committed, so they are unavailable. Regenerating them needs the named archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e) in a task that has it. Review 2026-10-27: the attached composite archive is available and all 61 document hashes match. Prior private renders need not be recovered: regenerate privately from the assigned original.",
+      "completion_condition": "Dispositions are recorded from a fresh private render of the named archive; no rendering is committed to Git. Any needed figure becomes a separate ASSET item."
+    },
+    {
+      "id": "ENG-ASSET-AUDIO-MODEL",
+      "kind": "ASSET",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "backend/src/db/ss1/assets/english/",
+      "objective": "Hold an authorised audio model (audio/mpeg or audio/wav) for the phonetics and stress lessons, if the owner supplies one.",
+      "required_files": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/english.json"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/assets/english/",
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-FACT-ORAL-AUDIO"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "No English assets exist: backend/src/db/ss1/subjects/english.json assets=[]; backend/src/db/ss1/assets/english/ is absent on master. Nothing is available to register.",
+      "completion_condition": "Owner supplies audio with a rights statement; the asset is added with exact sha256, bytes, alt text and a lesson_id binding, per the contract."
+    },
+    {
+      "id": "ENG-TEST-SCHEMA-TERMS",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/english.package.test.mts",
+      "objective": "Package parses against the frozen schema, keeps English Language as canonical subject and keeps all three source terms/SS 1.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/french.package.test.mts"
+      ],
+      "allowed_write_paths": [
+        "tests/ss1/english.package.test.mts",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-SRC-T2",
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    },
+    {
+      "id": "ENG-TEST-LESSON-HASHES-MARKING",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/english.package.test.mts",
+      "objective": "Authored bodies have exact body_sha256, unique IDs, complete answers and marking totals.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/french.package.test.mts"
+      ],
+      "allowed_write_paths": [
+        "tests/ss1/english.package.test.mts",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-SRC-T2",
+        "ENG-SRC-T3",
+        "ENG-LES-WORD-CLASSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    },
+    {
+      "id": "ENG-TEST-CORRECTION-IDENTITY",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/english.package.test.mts",
+      "objective": "All 24 corrections bind a same-term replacement and preserve original source/body identity hashes with no duplicate target.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/french.package.test.mts"
+      ],
+      "allowed_write_paths": [
+        "tests/ss1/english.package.test.mts",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-SRC-T2",
+        "ENG-SRC-T3",
+        "ENG-COR-001",
+        "ENG-COR-002",
+        "ENG-COR-003",
+        "ENG-COR-004",
+        "ENG-COR-005",
+        "ENG-COR-006",
+        "ENG-COR-007",
+        "ENG-COR-008",
+        "ENG-COR-009",
+        "ENG-COR-010",
+        "ENG-COR-011",
+        "ENG-COR-012",
+        "ENG-COR-013",
+        "ENG-COR-014",
+        "ENG-COR-015",
+        "ENG-COR-016",
+        "ENG-COR-017",
+        "ENG-COR-018",
+        "ENG-COR-019",
+        "ENG-COR-020",
+        "ENG-COR-021",
+        "ENG-COR-022",
+        "ENG-COR-023",
+        "ENG-COR-024"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    },
+    {
+      "id": "ENG-TEST-NO-FABRICATED-STATE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/english.package.test.mts",
+      "objective": "No lesson or package records invented approval, verification or an approval_reference.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/french.package.test.mts"
+      ],
+      "allowed_write_paths": [
+        "tests/ss1/english.package.test.mts",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-SRC-T2",
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    },
+    {
+      "id": "ENG-TEST-RULE-GUARDS",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/english.package.test.mts",
+      "objective": "Rules reject wrong-source hashes and repeated or missing anchors, and preserve every original character.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/french.package.test.mts"
+      ],
+      "allowed_write_paths": [
+        "tests/ss1/english.package.test.mts",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-SRC-T2",
+        "ENG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    },
+    {
+      "id": "ENG-TEST-REGRESSION-EXAMPLES",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/english.package.test.mts",
+      "objective": "Regression assertions on corrected source defects (for example /dʒ/ not /dz/, ride/site not a rhyme, /ʃ/ vs /ʒ/ columns, noun/verb stress overgeneralisation).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/french.package.test.mts"
+      ],
+      "allowed_write_paths": [
+        "tests/ss1/english.package.test.mts",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-SRC-T1",
+        "ENG-SRC-T2",
+        "ENG-SRC-T3",
+        "ENG-LES-WORD-CLASSES-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "fc6f8e275ccf9475a065f79f072da975a808d4b2",
+    "reviewed_pr_head": "c8b055580ae037294fdeeb73e7507a7ca573ce09",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 61,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive to source-reading workers."
+    }
+  }
+}
