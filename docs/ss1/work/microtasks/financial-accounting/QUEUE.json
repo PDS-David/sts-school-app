@@ -32,7 +32,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -64,8 +65,8 @@
         "docs/ss1/work/microtasks/financial-accounting/FA-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No financial-accounting package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-cf77df509ac3, sha256=c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb, 1166213 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/financial-accounting.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-cf77df509ac3 sha256=c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb archive_member='SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx' term='1st Term' canonical_subject='Financial Accounting' header_text='SUBJECT: FINANCIAL ACCOUNTING' + whitespace + 'CLASS: SS1' (single occurrence confirmed with mammoth.extractRawText; 'FINANCIAL ACCOUNTING' alone occurs 9 times); rule SS1-SRC-cf77df509ac3-R001 (source_alias, approval_reference PENDING-OWNER); open item FINANCIAL-ACCOUNTING-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the composite archive (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified) and equals SOURCE_ASSIGNMENTS.csv (1,166,213 bytes). Header names Financial Accounting, not Bookkeeping; no handoff needed. Record: docs/ss1/work/microtasks/financial-accounting/FA-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example Bookkeeping), record an explicit handoff open item; do not delete, merge into bookkeeping or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -312,6 +313,8 @@
     }
   },
   "next_runnable": [
-    "FA-SRC-T1"
+    "FA-SRC-T2",
+    "FA-SRC-T3",
+    "FA-INV-T1"
   ]
 }
