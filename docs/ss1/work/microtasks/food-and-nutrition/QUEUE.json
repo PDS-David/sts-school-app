@@ -32,7 +32,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -64,8 +65,8 @@
         "docs/ss1/work/microtasks/food-and-nutrition/FN-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No food-and-nutrition package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-de2cdd0b85f6, sha256=398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7, 38569 bytes, member 'SSS 1/1st Term SS1_/F _ N.docx', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/food-and-nutrition.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-de2cdd0b85f6 sha256=398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7 archive_member='SSS 1/1st Term SS1_/F _ N.docx' term='1st Term' canonical_subject='Food and Nutrition' header_text='SCHEME OF WORK FOR ALPHA TERM'; rule SS1-SRC-de2cdd0b85f6-R001 (source_alias, approval_reference PENDING-OWNER); open item FOOD-AND-NUTRITION-ALIAS-APPROVAL (OWNER_ACTION, blocking). Composite archive SHA-256 and member SHA-256 verified. Header read from the DOCX XML, not via the importer. The heading names no subject and the document has no SUBJECT line; subject confirmed from scheme/Week 1 content. Record: docs/ss1/work/microtasks/food-and-nutrition/FN-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example Catering Craft), record an explicit handoff open item; do not delete, merge into catering-craft or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The filename variation between the terms ('F _ N' versus 'FOOD _ NUTRITION') is a candidate for source-backed aliasing only: record what the header shows, never discard a file. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -312,6 +313,8 @@
     }
   },
   "next_runnable": [
-    "FN-SRC-T1"
+    "FN-SRC-T2",
+    "FN-SRC-T3",
+    "FN-INV-T1"
   ]
 }
