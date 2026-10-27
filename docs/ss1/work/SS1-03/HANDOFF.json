@@ -1,0 +1,17 @@
+{
+  "task": "SS1-03 worker B",
+  "contract": "ss1-subject-v1 as merged in PR #69 (master af06b0d)",
+  "branch": "ss1/SS1-03-20261027-b",
+  "subjects": {
+    "mathematics": {"status": "IMPLEMENTED_PARTIAL", "lessons": 6, "corrections": 6, "blockers": ["OI-MATH-001..006"]},
+    "further-mathematics": {"status": "IMPLEMENTED_PARTIAL", "lessons": 6, "corrections": 6, "assets": 1, "blockers": ["OI-FM-001..005"]},
+    "physics": {"status": "NOT_STARTED"},
+    "technical-drawing": {"status": "NOT_STARTED"}
+  },
+  "foundation_requests": [
+    "Plain mammoth/word-extractor text drops OMML equations and superscript/subscript runs in the Mathematics, Further Mathematics and Technical Drawing sources; decide equation-aware SS1 extraction (changes content-bound IDs; reviewed migration) or replacement lessons.",
+    "Rights: several sources embed a commercial tutor's advertising pages (personal contact details); owner must confirm licence before delivery."
+  ],
+  "executed": "Nothing from the repo (no tests, tsc, importer, DB). Only authoring self-checks listed in DEFERRED_COMMANDS.md.",
+  "approval": "No content approval or verification recorded for any lesson or asset."
+}

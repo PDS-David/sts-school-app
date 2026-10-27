@@ -81,5 +81,5 @@ test('plan for this subject has only declared blockers', needPlan, () => {
 });
 '''
 for slug in sys.argv[1:]:
-    open(f'/home/claude/sts-school-app/tests/ss1/{slug}.test.mts','w').write(TEMPLATE.replace('__SLUG__',slug))
+    open(f'/home/claude/sts-school-app/tests/ss1/{slug}.package.test.mts','w').write(TEMPLATE.replace('__SLUG__',slug))
     print('wrote',slug)
