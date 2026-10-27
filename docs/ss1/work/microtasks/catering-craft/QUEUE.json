@@ -31,7 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 4,
     "BLOCKED": 1
   },
   "items": [
@@ -63,8 +64,8 @@
         "docs/ss1/work/microtasks/catering-craft/CC-SRC-T2.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No catering-craft package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-f433169ca25c, sha256=fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59, 207872 bytes, member 'SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/catering-craft.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-f433169ca25c sha256=fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 archive_member='SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc' term='2nd Term' canonical_subject='Catering Craft' header_text='SUBJECT:  CATERING CRAFT PRACTICE' + tabs/spaces + 'CLASS:  SS 1' (single occurrence confirmed with word-extractor getBody(); 'CATERING CRAFT PRACTICE' alone occurs twice); rule SS1-SRC-f433169ca25c-R001 (source_alias, approval_reference PENDING-OWNER); open item CATERING-CRAFT-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the supplied '2nd Term SS1' zip (SHA-256 94a32a4ec4af7d492d26feecdf06cedfedf846d3c65c27a5473a1693d0d33c0a), NOT the composite archive; the composite hash was not checked. Record: docs/ss1/work/microtasks/catering-craft/CC-SRC-T2.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. No 1st Term scheme is created or implied. If the header names a different subject (for example Food and Nutrition), record an explicit handoff open item; do not delete, merge into food-and-nutrition or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -239,6 +240,7 @@
     }
   },
   "next_runnable": [
-    "CC-SRC-T2"
+    "CC-SRC-T3",
+    "CC-INV-T2"
   ]
 }
