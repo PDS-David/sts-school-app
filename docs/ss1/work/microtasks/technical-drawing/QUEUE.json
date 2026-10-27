@@ -1,0 +1,1426 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Technical Drawing",
+  "slug": "technical-drawing",
+  "generated_from": {
+    "master_sha": "f4117a6427aa7f59454a1d70c0834231b9c0fb10",
+    "package": "backend/src/db/ss1/subjects/technical-drawing.json (does not exist on master)",
+    "task": "SS1-TD-QUEUE (built from the CSV manifest, SS1-03 checkpoint and parsed-row evidence)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only. No curriculum document was opened and nothing was run (tests, typechecks, importer, DB, device).",
+    "FINDING: no technical-drawing.json exists on master or on any ss1/* branch or PR (searched by path), and the SS1-03 checkpoint lists the subject as NOT STARTED. Nothing is registered or implemented; TD-SRC-T2 is explicitly allowed to create the minimum package.",
+    "Only one source is assigned: the 2nd Term document. The 1st and 3rd Term documents are not supplied; their absence is recorded as BLOCKED TD-MISSING-T1/T3 and is not proof the terms do not exist.",
+    "Parsed-row evidence (19 rows): rows 0-10 are scheme-table lines for Weeks 1-11 (row 10 'Revision and Examination' is 655 characters) and rows 11-18 are the teaching rows (Weeks 1, 2, 3, 4, 5, 6-7, 8-9, 10). Every row has its own item.",
+    "No unmerged Technical Drawing work exists, so there are no branch port items. PR #71 holds none (its checkpoint also says NOT STARTED).",
+    "Technical drawing content is largely figures: 94 drawings, 17 OLE objects and WMF figures are recorded, but their row locations are not. Visual items are inventory-first and append bounded asset tasks.",
+    "Lesson-writing items are not created: no specific uncovered objective is established. The one suspected gap (enlargement in Weeks 6-7) is a verification item that appends a lesson task only if confirmed.",
+    "Workers start from current master and change only their own entries; PENDING means unclaimed."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 1,
+    "MISSING_MATERIAL": 2,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_WEEK_INDEXING": 19,
+    "FACTUAL_DEPENDENCY": 1,
+    "VISUAL_DISPOSITION": 9,
+    "ASSET": 2,
+    "OWNER_DECISION": 1,
+    "SCOPE_DECOMPOSITION": 1,
+    "TEST": 2
+  },
+  "status_counts": {
+    "PENDING": 34,
+    "BLOCKED": 5
+  },
+  "total": 39,
+  "items": [
+    {
+      "id": "TD-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+      "objective": "Register the 2nd Term Technical Drawing source with manifest hash, member, term, canonical subject and verified header_text/header_evidence read from the original document, creating the minimum package.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/README.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SRC-T2.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no technical-drawing.json (loader would report MISSING_PACKAGE) and no branch holds one (all ss1/* remote branches and PR #71 were searched by path). Manifest row: sha256=69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d, 2865886 bytes, .docx, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename; header verification required). No header text is recorded anywhere in the repository. Repository evidence is limited to docs/ss1/work/SS1-03/CHECKPOINT.md section 4 (NOT STARTED: parser yields 19 rows; rows 0-10 are scheme-table lines of 15-79 characters, rows 11-18 are the real lessons; 94 drawings, 17 OLE objects, WMF figures, WMF not an allowed asset MIME) and parsed_rows.json.",
+      "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that and any source_alias need as an open item without guessing. PERMISSION TO CREATE THE MINIMUM PACKAGE: because no technical-drawing.json exists on master, this item may create backend/src/db/ss1/subjects/technical-drawing.json containing only the envelope (schema_version ss1-subject-v1, subject_slug technical-drawing, canonical_subject confirmed from the document, package_status PENDING), this source entry, and empty arrays for every other required section. Nothing else may be authored in it."
+    },
+    {
+      "id": "TD-MISSING-T1",
+      "kind": "MISSING_MATERIAL",
+      "source_id": null,
+      "term": "1st Term",
+      "week_or_locator": "1st Term Technical Drawing document (not supplied)",
+      "objective": "Record the 1st Term Technical Drawing source as an unresolved item: no document for this term is in the assignment manifest. The owner supplies it, or confirms it does not exist.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/IMPLEMENTATION_20261026/03_WORKER_B_MATHEMATICS_PHYSICS_DRAWING.md",
+        "backend/src/db/ss1/subjects/technical-drawing.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "depends_on": [
+        "TD-SRC-T2"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "SOURCE_ASSIGNMENTS.csv has exactly one technical-drawing row (2nd Term). The worker prompt says absence of First/Third-Term documents is not proof those terms do not exist, and the contract requires missing terms to be unresolved items, not invented sources. The 2nd Term scheme's Week 1 'Revision of the work for last term' implies earlier work exists, but that is not a document.",
+      "completion_condition": "Blocked on the owner. When a document is supplied, a new registration item is appended with its manifest row; until then an open item names the missing term. Never marked complete and no scheme is invented."
+    },
+    {
+      "id": "TD-MISSING-T3",
+      "kind": "MISSING_MATERIAL",
+      "source_id": null,
+      "term": "3rd Term",
+      "week_or_locator": "3rd Term Technical Drawing document (not supplied)",
+      "objective": "Record the 3rd Term Technical Drawing source as an unresolved item: no document for this term is in the assignment manifest. The owner supplies it, or confirms it does not exist.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/IMPLEMENTATION_20261026/03_WORKER_B_MATHEMATICS_PHYSICS_DRAWING.md",
+        "backend/src/db/ss1/subjects/technical-drawing.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "depends_on": [
+        "TD-SRC-T2"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "SOURCE_ASSIGNMENTS.csv has exactly one technical-drawing row (2nd Term). The worker prompt says absence of First/Third-Term documents is not proof those terms do not exist, and the contract requires missing terms to be unresolved items, not invented sources.",
+      "completion_condition": "Blocked on the owner. When a document is supplied, a new registration item is appended with its manifest row; until then an open item names the missing term. Never marked complete and no scheme is invented."
+    },
+    {
+      "id": "TD-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "text outside the parsed rows (header/title, text before WEEK 1, text after WEEK TEN)",
+      "objective": "Inventory all 2nd Term text outside the 19 parsed rows (title, class/subject lines, any introduction, reference list or trailing text) and record each block as a mapped objective, a marker, or an open item.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-PRE-T2.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The repository records no preamble content. Rows 0-10 are scheme-table lines produced by the parser and are handled by the TD-SCH items, not here. Repository evidence is limited to docs/ss1/work/SS1-03/CHECKPOINT.md section 4 (NOT STARTED: parser yields 19 rows; rows 0-10 are scheme-table lines of 15-79 characters, rows 11-18 are the real lessons; 94 drawings, 17 OLE objects, WMF figures, WMF not an allowed asset MIME) and parsed_rows.json.",
+      "completion_condition": "Every non-row text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item."
+    },
+    {
+      "id": "TD-SCH-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 1 scheme-table row (parsed row 0)",
+      "objective": "Record the scheme objective in WEEK 1 (parsed row 0, 79 characters: \"Revision of the work for last term. Inscribed and circumscribed\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W01.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 0 (label 'WEEK 1', body sha256 08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889, 79 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 2 scheme-table row (parsed row 1)",
+      "objective": "Record the scheme objective in WEEK 2 (parsed row 1, 31 characters: \"Escribed circle\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 1 (label 'WEEK 2', body sha256 e3b8e93efcf30567d0a6e891a8d4de2815581d457109a5ad5221636a3f7f71d4, 31 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 3 scheme-table row (parsed row 2)",
+      "objective": "Record the scheme objective in WEEK 3 (parsed row 2, 15 characters: \"Polygons\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W03.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 2 (label 'WEEK 3', body sha256 889970c0e7531c64896709e01c2ea08cfd39b1061bb2d7d56a18fb9dee3723df, 15 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 4 scheme-table row (parsed row 3)",
+      "objective": "Record the scheme objective in WEEK 4 (parsed row 3, 27 characters: \"Plain scales\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W04.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 3 (label 'WEEK 4', body sha256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab, 27 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 5 scheme-table row (parsed row 4)",
+      "objective": "Record the scheme objective in WEEK 5 (parsed row 4, 41 characters: \"Diagonal and chordalScales\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W05.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 4 (label 'WEEK 5', body sha256 8c5c6c7a65e58f85552c3dbf582106d0d999c3459d4fb6aefe6fce7309a57be1, 41 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 6 scheme-table row (parsed row 5)",
+      "objective": "Record the scheme objective in WEEK 6 (parsed row 5, 57 characters: \"Enlargement and reduction of plain figures\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W06.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 5 (label 'WEEK 6', body sha256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4, 57 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 5 and 6 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 7 scheme-table row (parsed row 6)",
+      "objective": "Record the scheme objective in WEEK 7 (parsed row 6, 57 characters: \"Enlargement and reduction of plain figures\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W07.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 6 (label 'WEEK 7', body sha256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa, 57 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 5 and 6 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 8 scheme-table row (parsed row 7)",
+      "objective": "Record the scheme objective in WEEK 8 (parsed row 7, 36 characters: \"Equal area of figures\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W08.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 7 (label 'WEEK 8', body sha256 ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e, 36 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 7 and 8 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 9 scheme-table row (parsed row 8)",
+      "objective": "Record the scheme objective in WEEK 9 (parsed row 8, 36 characters: \"Equal area of figures\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W09.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 8 (label 'WEEK 9', body sha256 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189, 36 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 7 and 8 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 10 scheme-table row (parsed row 9)",
+      "objective": "Record the scheme objective in WEEK 10 (parsed row 9, 22 characters: \"Tangency\"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W10.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 9 (label 'WEEK 10', body sha256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea, 22 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-SCH-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 11 scheme-table row (parsed row 10)",
+      "objective": "Inspect the substantive 'Revision and Examination' row (655 characters), decide by its body whether it holds teaching, an examination paper or only scheme text, and classify it accordingly (REVISION/EXAMINATION/SCHEME_ONLY rule with a unique anchor, or coverage with an open item).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-SCH-W11.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 10 (label 'WEEK 11', body sha256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337, 655 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. The prompt requires classification by body: a revision heading may contain substantive teaching.",
+      "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
+    },
+    {
+      "id": "TD-WK-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row (parsed row 11)",
+      "objective": "Index the teaching row 'WEEK ONE' (Revision of last term work. Inscribed and circumscribed circles) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W01 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W01.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 11 (source label 'WEEK ONE', title \"Revision of last term work. Inscribed and circumscribed circles\", 4889 characters, body sha256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6); scheme week(s) WEEK 1 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO teaching row (parsed row 12)",
+      "objective": "Index the teaching row 'WEEK TWO' (Escribed circles) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W02 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W02.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 12 (source label 'WEEK TWO', title \"Escribed circles\", 4668 characters, body sha256 04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd); scheme week(s) WEEK 2 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE teaching row (parsed row 13)",
+      "objective": "Index the teaching row 'WEEK THREE' (Polygons and irregular figures) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W03 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W03.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 13 (source label 'WEEK THREE', title \"Polygons and irregular figures\", 11124 characters, body sha256 032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf); scheme week(s) WEEK 3 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. Equation-aware extraction recovered about 38 more characters than the plain extractor (SS1-03 author evidence), so delivered text loses notation.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR teaching row (parsed row 14)",
+      "objective": "Index the teaching row 'WEEK FOUR' (Plain scales and their uses) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W04 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W04.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 14 (source label 'WEEK FOUR', title \"Plain scales and their uses\", 5707 characters, body sha256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd); scheme week(s) WEEK 4 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE teaching row (parsed row 15)",
+      "objective": "Index the teaching row 'WEEK FIVE' (Diagonal and chordal scale and their uses.) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W05 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W05.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 15 (source label 'WEEK FIVE', title \"Diagonal and chordal scale and their uses.\", 5414 characters, body sha256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc); scheme week(s) WEEK 5 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W06-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN teaching row (parsed row 16)",
+      "objective": "Index the teaching row 'WEEK SIX AND SEVEN' (Reduction of plain figures) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W06, TD-SCH-W07 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W06-W07.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W06",
+        "TD-SCH-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 16 (source label 'WEEK SIX AND SEVEN', title \"Reduction of plain figures\", 7297 characters, body sha256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05); scheme week(s) WEEKS 6 and 7 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. Scheme Weeks 6-7 read 'Enlargement and reduction of plain figures' but this teaching row is titled 'Reduction of plain figures'; see TD-FACT-ENLARGEMENT-SCOPE. The source label combines two weeks; master's split_before takes numeric labels only, and any split changes content-bound row identity, so record the facts rather than splitting here.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W08-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK EIGHT-NINE teaching row (parsed row 17)",
+      "objective": "Index the teaching row 'WEEK EIGHT-NINE' (Equal area of  planefigures) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W08, TD-SCH-W09 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W08-W09.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W08",
+        "TD-SCH-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 17 (source label 'WEEK EIGHT-NINE', title \"Equal area of  planefigures\", 11658 characters, body sha256 865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a); scheme week(s) WEEKS 8 and 9 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. The source label combines two weeks; master's split_before takes numeric labels only, and any split changes content-bound row identity, so record the facts rather than splitting here.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-WK-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN teaching row (parsed row 18)",
+      "objective": "Index the teaching row 'WEEK TEN' (Tangency involving circles, arcs and lines.) at objective level: list each drawing task and construction taught, bind it to the scheme objective(s) TD-SCH-W10 with reproducible locators, and record dimensions, labels, exercises and any marking criteria or answers the source provides or omits.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-WK-W10.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2",
+        "TD-SCH-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Parsed row 18 (source label 'WEEK TEN', title \"Tangency involving circles, arcs and lines.\", 8427 characters, body sha256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863); scheme week(s) WEEK 10 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
+    },
+    {
+      "id": "TD-FACT-ENLARGEMENT-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "scheme Weeks 6-7 vs teaching row 16 (WEEK SIX AND SEVEN)",
+      "objective": "Inspect the Weeks 6-7 teaching row and record whether it teaches enlargement as well as reduction of plain figures, with locators for each construction found.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-ENLARGEMENT-SCOPE.md"
+      ],
+      "depends_on": [
+        "TD-SCH-W06",
+        "TD-SCH-W07",
+        "TD-WK-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Scheme rows 5 and 6 both read 'Enlargement and reduction of plain figures'; teaching row 16 is titled 'Reduction of plain figures'. Whether the body also covers enlargement is not recorded.",
+      "completion_condition": "Finding recorded. If enlargement is not taught, the uncovered objective is named precisely and a bounded lesson task (with drawing task, dimensions and marking criteria) is appended; otherwise coverage is recorded as supported with evidence."
+    },
+    {
+      "id": "TD-VIS-INVENTORY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "94 drawings, 17 OLE objects and WMF figures (CHECKPOINT.md)",
+      "objective": "Count and locate every drawing, picture, OLE object and WMF figure in the document by parsed row, record each cluster's nature (construction step, finished figure, scale, table), and any embedded advertising/branding pages. Inventory only; do not dispose inline.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-INVENTORY.md"
+      ],
+      "depends_on": [
+        "TD-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "CHECKPOINT.md records 94 drawings, 17 OLE objects and WMF figures but not their row locations. Drawings can exist without media images, so counts must come from the document structure, not only media files. The contract's allowed asset MIME types exclude WMF.",
+      "completion_condition": "Per-row counts and kinds recorded with locators; per-row disposition items below are updated with their counts; embedded controls are not executed; no contact details are copied into Git."
+    },
+    {
+      "id": "TD-VIS-W01",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK ONE (parsed row 11)",
+      "objective": "Record a disposition for every drawing and object in the WEEK ONE teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W01.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W02",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK TWO (parsed row 12)",
+      "objective": "Record a disposition for every drawing and object in the WEEK TWO teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W02.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W03",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK THREE (parsed row 13)",
+      "objective": "Record a disposition for every drawing and object in the WEEK THREE teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W03.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W04",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK FOUR (parsed row 14)",
+      "objective": "Record a disposition for every drawing and object in the WEEK FOUR teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W04.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W05",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK FIVE (parsed row 15)",
+      "objective": "Record a disposition for every drawing and object in the WEEK FIVE teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W05.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W06-W07",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK SIX AND SEVEN (parsed row 16)",
+      "objective": "Record a disposition for every drawing and object in the WEEK SIX AND SEVEN teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W06-W07.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W06-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W08-W09",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK EIGHT-NINE (parsed row 17)",
+      "objective": "Record a disposition for every drawing and object in the WEEK EIGHT-NINE teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W08-W09.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W08-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-W10",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "drawings and objects in WEEK TEN (parsed row 18)",
+      "objective": "Record a disposition for every drawing and object in the WEEK TEN teaching row: what it shows, whether the lesson needs a faithful derivative, and the residual gap. A PDF conversion alone is not visual inspection. Append one bounded asset task per figure to bind.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-W10.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY",
+        "TD-WK-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No disposition exists. The source is a technical-drawing lesson: figures are likely the instructional content, so a missing figure leaves the lesson unusable. Exact geometry or a labelled faithful derivative with provenance is required; no AI-invented diagrams.",
+      "completion_condition": "Every figure in the row has a disposition (bind as asset / describe in text / excluded with reason); no display or app verification is claimed."
+    },
+    {
+      "id": "TD-VIS-OLE",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "17 OLE objects",
+      "objective": "Locate each of the 17 OLE objects by parsed row, render any image preview WITHOUT executing embedded controls, and record a per-object transcription or an unreadable status. Transcription only.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-OLE.md"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "CHECKPOINT.md: 17 OLE objects. HANDOFF.json notes plain extraction drops equations in this source. Contents unknown.",
+      "completion_condition": "Each object's row, preview/rendering result and transcription (or reason) recorded; open item narrowed accordingly."
+    },
+    {
+      "id": "TD-VIS-WMF",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WMF figures (not an allowed asset MIME)",
+      "objective": "Identify each WMF figure, determine a faithful conversion route to an allowed MIME type (svg/png) that preserves exact geometry, and record the original bytes' hash and the provenance of any derivative; do not convert anything that cannot be shown faithful.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-VIS-WMF.md",
+        "backend/src/db/ss1/assets/technical-drawing/"
+      ],
+      "depends_on": [
+        "TD-VIS-INVENTORY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "CHECKPOINT.md: WMF figures exist and WMF is not an allowed asset MIME (png/jpeg/gif/svg/pdf/mp3/wav). Assets must live under backend/src/db/ss1/assets/technical-drawing/ with sha256, bytes, alt text, locator and provenance (the worker prompt mentions curriculum-assets/ss1/, but the schema and contract path governs). Original bytes stay private.",
+      "completion_condition": "Per-figure conversion decision recorded; converted files (if any) added under the allowed asset path with hashes and provenance, or an open item records why not. Nothing displayed or verified in the app."
+    },
+    {
+      "id": "TD-OWNER-EXTRACTION-STRATEGY",
+      "kind": "OWNER_DECISION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "equation/superscript/figure recovery for the Technical Drawing source",
+      "objective": "Owner/foundation decides how SS1 extraction handles dropped equations, superscripts/subscripts and figures here, versus replacement lessons.",
+      "required_files": [
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "depends_on": [
+        "TD-SRC-T2"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "HANDOFF.json lists Technical Drawing among sources where plain extraction drops equations and sub/superscripts; the same foundation decision is open for Mathematics (OI-MATH-001) and Physics.",
+      "completion_condition": "Decision recorded; follow-up tasks appended by the owner or integration worker."
+    },
+    {
+      "id": "TD-SCOPE-AUTHORING-FINISH",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "Technical Drawing NOT STARTED on master",
+      "objective": "Decomposition record for the whole subject. A scope umbrella, not a lesson: close only when every child item is complete and the package has precise coverage and open items.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "depends_on": [
+        "TD-PRE-T2",
+        "TD-SCH-W01",
+        "TD-SCH-W02",
+        "TD-SCH-W03",
+        "TD-SCH-W04",
+        "TD-SCH-W05",
+        "TD-SCH-W06",
+        "TD-SCH-W07",
+        "TD-SCH-W08",
+        "TD-SCH-W09",
+        "TD-SCH-W10",
+        "TD-SCH-W11",
+        "TD-WK-W01",
+        "TD-WK-W02",
+        "TD-WK-W03",
+        "TD-WK-W04",
+        "TD-WK-W05",
+        "TD-WK-W06-W07",
+        "TD-WK-W08-W09",
+        "TD-WK-W10",
+        "TD-FACT-ENLARGEMENT-SCOPE",
+        "TD-VIS-OLE",
+        "TD-VIS-WMF",
+        "TD-VIS-W01",
+        "TD-VIS-W02",
+        "TD-VIS-W03",
+        "TD-VIS-W04",
+        "TD-VIS-W05",
+        "TD-VIS-W06-W07",
+        "TD-VIS-W08-W09",
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "CHECKPOINT.md: NOT STARTED; no package on master or any branch. Missing terms are tracked separately by TD-MISSING-T1/T3 and are not closed by this item.",
+      "completion_condition": "Every child complete; remaining gaps recorded as precise open items; missing terms remain open."
+    },
+    {
+      "id": "TD-TEST-PACKAGE-NEW",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/technical-drawing.package.test.mts (does not exist)",
+      "objective": "Deferred: add a package test modelled on tests/ss1/mathematics.package.test.mts only in the authorised testing stage.",
+      "required_files": [
+        "tests/ss1/mathematics.package.test.mts",
+        "backend/src/db/ss1/subjects/technical-drawing.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "depends_on": [
+        "TD-SRC-T2"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "No Technical Drawing test exists. Testing is deferred by owner until SS1-09; nothing is written or run by this queue.",
+      "completion_condition": "Written and run only in the authorised later stage."
+    },
+    {
+      "id": "TD-TEST-FULL-SOURCE-REGRESSION",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "full-source regression",
+      "objective": "Deferred: regression check of every parsed row, marker and asset against the final package.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json"
+      ],
+      "depends_on": [
+        "TD-SCOPE-AUTHORING-FINISH",
+        "TD-TEST-PACKAGE-NEW"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
+      "completion_condition": "Run only in the later authorised verification stage."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "f4117a6427aa7f59454a1d70c0834231b9c0fb10",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 1,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. A filename variant is acceptable if the archive hash matches. Attach this archive (or the exact member) to source-reading workers."
+    }
+  },
+  "next_runnable": [
+    "TD-SRC-T2"
+  ],
+  "runnable_now": [
+    "TD-SRC-T2"
+  ]
+}
