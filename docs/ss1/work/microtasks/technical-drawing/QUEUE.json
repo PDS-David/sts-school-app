@@ -36,8 +36,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "PENDING": 34,
-    "BLOCKED": 5
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "BLOCKED": 5,
+    "PENDING": 33
   },
   "total": 39,
   "items": [
@@ -68,8 +69,8 @@
         "docs/ss1/work/microtasks/technical-drawing/TD-SRC-T2.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no technical-drawing.json (loader would report MISSING_PACKAGE) and no branch holds one (all ss1/* remote branches and PR #71 were searched by path). Manifest row: sha256=69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d, 2865886 bytes, .docx, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename; header verification required). No header text is recorded anywhere in the repository. Repository evidence is limited to docs/ss1/work/SS1-03/CHECKPOINT.md section 4 (NOT STARTED: parser yields 19 rows; rows 0-10 are scheme-table lines of 15-79 characters, rows 11-18 are the real lessons; 94 drawings, 17 OLE objects, WMF figures, WMF not an allowed asset MIME) and parsed_rows.json.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/technical-drawing.json created (package_status PENDING; lessons, delivery_corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-af4868d2c026 sha256=69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d archive_member='SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx' term='2nd Term' canonical_subject='Technical Drawing' header_text='SUBJECT:TECHNICAL DRAWING' (line 3 of mammoth 1.12.2 extractRawText(); single occurrence confirmed; class on line 5 'CLASS:SS1'); rule SS1-SRC-af4868d2c026-R001 (source_alias, approval_reference PENDING-OWNER); open item TECHNICAL-DRAWING-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Technical Drawing from the header; no handoff needed. Evidence note: docs/ss1/work/microtasks/technical-drawing/TD-SRC-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that and any source_alias need as an open item without guessing. PERMISSION TO CREATE THE MINIMUM PACKAGE: because no technical-drawing.json exists on master, this item may create backend/src/db/ss1/subjects/technical-drawing.json containing only the envelope (schema_version ss1-subject-v1, subject_slug technical-drawing, canonical_subject confirmed from the document, package_status PENDING), this source entry, and empty arrays for every other required section. Nothing else may be authored in it."
     },
     {
@@ -1418,7 +1419,8 @@
     }
   },
   "next_runnable": [
-    "TD-SRC-T2"
+    "TD-PRE-T2",
+    "TD-VIS-INVENTORY"
   ],
   "runnable_now": [
     "TD-SRC-T2"

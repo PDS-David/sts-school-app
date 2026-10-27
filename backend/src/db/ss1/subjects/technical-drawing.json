@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "technical-drawing",
+  "canonical_subject": "Technical Drawing",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-af4868d2c026",
+      "sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Technical Drawing",
+      "header_text": "SUBJECT:TECHNICAL DRAWING",
+      "header_evidence": {
+        "locator": "SS1-SRC-af4868d2c026: line 3 of mammoth 1.12.2 extractRawText() output (the importer's own .docx call), the second line of the title block after 'SECOND TERM E-LEARNING NOTE'; the class is on the separate line 5 ('CLASS:SS1') and line 7 reads 'TITLE:SECOND TERM SCHEME OF WORK'",
+        "explanation": "The subject line occurs once in the extracted text ('TECHNICAL DRAWING' case-insensitively occurs 12 times, in reference materials and teaching text). It names Technical Drawing; the next title lines give class SS1 and the second-term scheme of work, so subject, class and term are verified by the document and not by the filename. The 11-week scheme confirms it: inscribed, circumscribed and escribed circles, polygons, plain, diagonal and chordal scales, enlargement and reduction, equal areas, tangency; references include Technical Drawing by J.N. Green. The heading differs from the canonical name by the 'SUBJECT:' label, so a source_alias is declared."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-af4868d2c026-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "SUBJECT:TECHNICAL DRAWING",
+      "evidence": {
+        "locator": "SS1-SRC-af4868d2c026: subject line of extracted text (line 3)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT:TECHNICAL DRAWING",
+      "canonical_subject": "Technical Drawing",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "TECHNICAL-DRAWING-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source subject line is 'SUBJECT:TECHNICAL DRAWING' (class on the next title line, 'CLASS:SS1'). It differs from the canonical subject name 'Technical Drawing' by the label, so the contract requires a source_alias declaration; rule SS1-SRC-af4868d2c026-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026-R001",
+        "SS1-SRC-af4868d2c026"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
