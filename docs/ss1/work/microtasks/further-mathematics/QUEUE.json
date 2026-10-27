@@ -1,0 +1,2666 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Further Mathematics",
+  "slug": "further-mathematics",
+  "generated_from": {
+    "master_sha": "8fb376f413cf70403d161439800738677bbc396a",
+    "package": "backend/src/db/ss1/subjects/further-mathematics.json",
+    "task": "SS1 subject queue: Further Mathematics (existing package content and PR71-only work recognised; queue created by the SS1 Further Mathematics queue task)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Existing Further Mathematics work on master is further-mathematics.json: 3 sources, 7 source rules (3 aliases with PENDING-OWNER approval, 2 REVISION markers, 2 SCHEME_ONLY markers), 6 lessons (all 3rd Term), 6 corrections, 1 asset, 30 coverage entries and 6 open items. package_status PENDING; no approval or verification exists.",
+    "Week inventory: 1st Term has ten week labels (WEEK ONE..WEEK TEN; WEEK FIVE carries two parsed rows), 2nd Term ten (WEEK ONE..WEEK TEN), both taken from SS1-03 parsed_rows.json and matching the coverage locators. 3rd Term has six parsed week rows (Weeks 2, 3, 4, 5, 6, 8). Whether any week holds additional teaching sections, and whether the 3rd Term has other weeks, is for FM-PRE-* and FM-INV-T3 to confirm from the originals.",
+    "Existing coverage is row-level and does not prove that every scheme objective was checked. 1st/2nd Term coverage is PARTIAL (no replacement lessons; rows unreviewed) so every week is PENDING; 3rd Term coverage is IMPLEMENTED_EQUIVALENT at row level and each replacement-scope review is still carried by its FM-WK-T3 item.",
+    "Existing lessons, corrections and the asset are IMPLEMENTED_TESTING_DEFERRED (code exists, unverified); content approval and verification are separate, still PENDING/DEFERRED.",
+    "PR71 (alternate foundation, not used as a base) holds a different Further Mathematics package at head b5ced7ebb0efe22df2351baa140266fbf40cbf41: 14 lessons (3 for 1st Term, 6 for 2nd Term, 5 for 3rd Term), 3 rules, 0 corrections, 7 open items, authored in PR71 schema. This is FOUNDATION_RECONCILIATION.md item D-3 (plus D-4 notes and test). It is recorded as 14 FM-PORT-D3-* comparison items and 2 FM-PORT-D4-* items, all PENDING; none is counted as implemented on master.",
+    "No lesson-writing item exists: no specific uncovered objective is established. Lesson or replacement items are to be appended only after a week item names one. Broad \"finish authoring\" (OI-FM-002) is decomposed into FM-SCOPE-OI-FM-002.",
+    "New task kind BRANCH_PORT_COMPARISON is used for unmerged-branch comparison items (the Chemistry queue uses SOURCE_COMPARISON for a related purpose).",
+    "Audio is not involved in this subject."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_WEEK_INVENTORY": 1,
+    "SOURCE_WEEK_INDEXING": 26,
+    "LESSON": 6,
+    "CORRECTION_BINDING": 6,
+    "ASSET": 1,
+    "VISUAL_DISPOSITION": 7,
+    "FACTUAL_DEPENDENCY": 9,
+    "SCOPE_DECOMPOSITION": 2,
+    "BRANCH_PORT_COMPARISON": 16,
+    "TEST": 2
+  },
+  "status_counts": {
+    "IMPLEMENTED_TESTING_DEFERRED": 17,
+    "PENDING": 58,
+    "BLOCKED": 6
+  },
+  "items": [
+    {
+      "id": "FM-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+      "objective": "Register the 1st Term Further Mathematics source with its manifest hash, canonical subject and header evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json sources[source_id=SS1-SRC-e9efc9a976ed] sha256=995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145 archive_member='SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc' term='1st Term' canonical_subject=Further Mathematics: all fields equal the SOURCE_ASSIGNMENTS.csv row (1460736 bytes; mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER). Source alias rule RULE-FM-T1-ALIAS exists with an approval_reference beginning \"PENDING-OWNER\". Header: the package records \"SUBJECT:  FURTHER MATHEMATICS ... CLASS:  SS1\" (line 2) as header evidence, written by the SS1-03 worker; this queue task did not reopen the document, so the header is recorded but not re-verified here.",
+      "completion_condition": "Registration is implemented. Header re-verification belongs to FM-PRE-T1; alias approval is tracked in FM-FACT-ALIAS-APPROVAL. Later closure: package tests pass (DEFERRED BY OWNER). Do not request duplicate registration."
+    },
+    {
+      "id": "FM-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+      "objective": "Register the 2nd Term Further Mathematics source with its manifest hash, canonical subject and header evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json sources[source_id=SS1-SRC-43c5ab51b87f] sha256=3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36 archive_member='SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx' term='2nd Term' canonical_subject=Further Mathematics: all fields equal the SOURCE_ASSIGNMENTS.csv row (420997 bytes; mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER). Source alias rule RULE-FM-T2-ALIAS exists with an approval_reference beginning \"PENDING-OWNER\". Header: the package records \"SUBJECT: FURTHER MATHEMATICS\" (line 2) as header evidence, written by the SS1-03 worker; this queue task did not reopen the document, so the header is recorded but not re-verified here.",
+      "completion_condition": "Registration is implemented. Header re-verification belongs to FM-PRE-T2; alias approval is tracked in FM-FACT-ALIAS-APPROVAL. Later closure: package tests pass (DEFERRED BY OWNER). Do not request duplicate registration."
+    },
+    {
+      "id": "FM-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+      "objective": "Register the 3rd Term Further Mathematics source with its manifest hash, canonical subject and header evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json sources[source_id=SS1-SRC-c7a7523bdb0d] sha256=83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5 archive_member='SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx' term='3rd Term' canonical_subject=Further Mathematics: all fields equal the SOURCE_ASSIGNMENTS.csv row (1034874 bytes; mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER). Source alias rule RULE-FM-T3-ALIAS exists with an approval_reference beginning \"PENDING-OWNER\". Header: the package records \"New Further Mathematics project 1, by Adigun et al. Page 178\" (first reference-material line; the document has no title or subject line) as header evidence, written by the SS1-03 worker; this queue task did not reopen the document, so the header is recorded but not re-verified here. No subject heading exists in this source: the subject rests on the cited textbook title, filename and content, so RULE-FM-T3-ALIAS is an inference awaiting owner confirmation.",
+      "completion_condition": "Registration is implemented. Header re-verification belongs to FM-INV-T3; alias approval is tracked in FM-FACT-ALIAS-APPROVAL. Later closure: package tests pass (DEFERRED BY OWNER). Do not request duplicate registration."
+    },
+    {
+      "id": "FM-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "text outside the parsed week rows: header line, scheme-of-work table (weeks 1-10 topics; weeks 11-12), reference list",
+      "objective": "Inventory all 1st Term text outside the ten parsed week rows (header, scheme-of-work table, revision/examination lines, reference list, any cover or letterhead page) and record the scheme topic listed for each week 1-10 so the week items can bind objectives to it. Re-read the header and record whether it verifies the subject.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PRE-T1.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Package holds marker coverage COV-FM-T1-EXAM (objective \"Revision and examination weeks; reference list\", locator \"scheme lines 11-12\") bound to RULE-FM-T1-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite \"scheme weeks 1-10\" / \"scheme topic n\", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record. Legacy .doc: parsed by word-extractor in the importer.",
+      "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage or recorded as an open item; the week-to-scheme-topic list is written to the FM-PRE note; header verification result (matches / differs) is recorded; any letterhead or vendor branding is listed for FM-VIS-T1-BRANDING handling (or recorded as absent for the 1st Term). No lesson is authored in this item."
+    },
+    {
+      "id": "FM-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "text outside the parsed week rows: header line, scheme-of-work table (weeks 1-10 topics; weeks 11-12), reference list",
+      "objective": "Inventory all 2nd Term text outside the ten parsed week rows (header, scheme-of-work table, revision/examination lines, reference list, any cover or letterhead page) and record the scheme topic listed for each week 1-10 so the week items can bind objectives to it. Re-read the header and record whether it verifies the subject.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PRE-T2.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Package holds marker coverage COV-FM-T2-EXAM (objective \"Revision and examination weeks; reference list\", locator \"scheme lines 11-12\") bound to RULE-FM-T2-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite \"scheme weeks 1-10\" / \"scheme topic n\", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record.",
+      "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage or recorded as an open item; the week-to-scheme-topic list is written to the FM-PRE note; header verification result (matches / differs) is recorded; any letterhead or vendor branding is listed for FM-VIS-T2-BRANDING handling. No lesson is authored in this item."
+    },
+    {
+      "id": "FM-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Verify the 3rd Term document inventory from the original: confirm that it has no scheme of work, confirm the six week headings already parsed (Weeks 2, 3, 4, 5, 6, 8), establish whether any further week heading, unlabelled teaching section, cover or letterhead page, figure object group or textbook-reference block exists, and record the header evidence. Append one small SOURCE_WEEK_INDEXING item per newly found week and a preamble/visual item for each further unlabelled substantive section.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-INV-T3.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Repository evidence (SS1-03 parsed_rows.json, 6 rows) shows Weeks 2, 3, 4, 5, 6, 8 only; OI-FM-003 and COV-FM-T3-SCHEME (UNRESOLVED) state that the source has no scheme and that Weeks 1, 7 and 9-12 are not in the supplied archive. That absence claim comes from the earlier worker and has not been re-checked in this task. The only in-document subject evidence recorded is the first reference line \"New Further Mathematics project 1, by Adigun et al. Page 178\".",
+      "completion_condition": "Week and unlabelled-section inventory written to FM-INV-T3.md with locators; absence of weeks 1, 7 and 9-12 either confirmed or refuted with evidence; new indexing items appended for any week not already in this queue; no week is invented."
+    },
+    {
+      "id": "FM-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 01 (source label 'WEEK ONE')",
+      "objective": "Index 1st Term Week 01 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 0 of SS1-03 parsed_rows.json (week label \"WEEK ONE\", title \"INDICES\", 2731 characters). Existing coverage COV-FM-T1-R00 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-001 (task FM-PORT-D3-L001). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 02 (source label 'WEEK TWO')",
+      "objective": "Index 1st Term Week 02 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK TWO\", title \"INDICIAL AND EXPONENTIAL EQUATIONS\", 4831 characters). Existing coverage COV-FM-T1-R01 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-002 (task FM-PORT-D3-L002). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 03 (source label 'WEEK THREE')",
+      "objective": "Index 1st Term Week 03 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK THREE\", title \"LOGARITHM - SOLVING PROBLEMS BASED ON LAWS OF LOGARITHM\", 11419 characters). Existing coverage COV-FM-T1-R02 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-003 (task FM-PORT-D3-L003). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 04 (source label 'WEEK FOUR')",
+      "objective": "Index 1st Term Week 04 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK FOUR\", title \"REVIEW OF BASIC CONCEPT OF SET\", 107 characters). Existing coverage COV-FM-T1-R03 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). The parsed row is only 107 characters; PR71 treats it as a stranded topic label belonging to the following Sets row (rule FMATHS-R03). FM-FACT-T1-W04-STRANDED-LABEL handles that structural question separately. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 05 (source label 'WEEK FIVE')",
+      "objective": "Index 1st Term Week 05 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 4 and 5 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"SETS; OPERATION OF SET AND VENN DIAGRAMS (two parsed rows carry this week label)\", 18114 characters). Existing coverage COV-FM-T1-R04 + COV-FM-T1-R05 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). Two parsed rows (SETS, 10737 characters; OPERATION OF SET AND VENN DIAGRAMS, 7377 characters) carry the label WEEK FIVE; the item covers both rows. Venn diagram objects are handled in FM-VIS-T1-W05-VENN. PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 06 (source label 'WEEK SIX')",
+      "objective": "Index 1st Term Week 06 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 6 of SS1-03 parsed_rows.json (week label \"WEEK SIX\", title \"First Half Term Revision Questions\", 1399 characters). Existing coverage COV-FM-T1-R06 is MARKER (marker row, body retained). Row is classified REVISION by RULE-FM-T1-W06-REVISION (anchor \"First Half  Term Revision Questions\"); body retained. The item confirms what the scheme assigns to this week and whether the revision questions carry content needing any objective. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 07 (source label 'WEEK SEVEN')",
+      "objective": "Index 1st Term Week 07 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 7 of SS1-03 parsed_rows.json (week label \"WEEK SEVEN\", title \"BINARY OPERATIONS: BASIC CONCEPT OF BINARY OPEATIONS\", 5736 characters). Existing coverage COV-FM-T1-R07 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 08 (source label 'WEEK EIGHT')",
+      "objective": "Index 1st Term Week 08 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK EIGHT\", title \"BINARY OPERATIONS: IDENTITY AND INVERSE ELEMENTS\", 3173 characters). Existing coverage COV-FM-T1-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 09 (source label 'WEEK NINE')",
+      "objective": "Index 1st Term Week 09 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"SURDS\", 7506 characters). Existing coverage COV-FM-T1-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 10 (source label 'WEEK TEN')",
+      "objective": "Index 1st Term Week 10 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T1), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 10 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"STATISTICS: MEASURES OF CENTRAL TENDENCY\", 10289 characters). Existing coverage COV-FM-T1-R10 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 01 (source label 'WEEK ONE')",
+      "objective": "Index 2nd Term Week 01 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 0 of SS1-03 parsed_rows.json (week label \"WEEK ONE\", title \"SEQUENCE & SERIES\", 8291 characters). Existing coverage COV-FM-T2-R00 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-004 (task FM-PORT-D3-L004). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 02 (source label 'WEEK TWO')",
+      "objective": "Index 2nd Term Week 02 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK TWO\", title \"SEQUENCE AND SERIES (II)\", 6131 characters). Existing coverage COV-FM-T2-R01 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-005 (task FM-PORT-D3-L005). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 03 (source label 'WEEK THREE')",
+      "objective": "Index 2nd Term Week 03 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK THREE\", title \"LINEAR INEQUALITIES\", 6194 characters). Existing coverage COV-FM-T2-R02 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-006 (task FM-PORT-D3-L006). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 04 (source label 'WEEK FOUR')",
+      "objective": "Index 2nd Term Week 04 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK FOUR\", title \"LINEAR INEQUALITY (PART TWO)\", 11333 characters). Existing coverage COV-FM-T2-R03 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-007 (task FM-PORT-D3-L007). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 05 (source label 'WEEK FIVE')",
+      "objective": "Index 2nd Term Week 05 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 4 of SS1-03 parsed_rows.json (week label \"WEEK FIVE\", title \"MAPPING AND FUNCTIONS\", 5989 characters). Existing coverage COV-FM-T2-R04 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 06 (source label 'WEEK SIX')",
+      "objective": "Index 2nd Term Week 06 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 5 of SS1-03 parsed_rows.json (week label \"WEEK SIX\", title \"Revision of half term work\", 56 characters). Existing coverage COV-FM-T2-R05 is MARKER (marker row, body retained). Row is only 56 characters, classified REVISION by RULE-FM-T2-W06-REVISION (anchor \"Revision of half term work\"); body retained. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 07 (source label 'WEEK SEVEN')",
+      "objective": "Index 2nd Term Week 07 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 6 of SS1-03 parsed_rows.json (week label \"WEEK SEVEN\", title \"Composite Mapping and Inverse Mapping\", 5326 characters). Existing coverage COV-FM-T2-R06 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-008 (task FM-PORT-D3-L008). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 08 (source label 'WEEK EIGHT')",
+      "objective": "Index 2nd Term Week 08 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 7 of SS1-03 parsed_rows.json (week label \"WEEK EIGHT\", title \"TRIGONOMETRIC RATIO\", 10680 characters). Existing coverage COV-FM-T2-R07 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 52 characters of equation content lost from this row (parsed_rows eqExtra). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-009 (task FM-PORT-D3-L009). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 09 (source label 'WEEK NINE')",
+      "objective": "Index 2nd Term Week 09 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 8 of SS1-03 parsed_rows.json (week label \"WEEK NINE\", title \"LOGIC\", 11019 characters). Existing coverage COV-FM-T2-R08 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10 (source label 'WEEK TEN')",
+      "objective": "Index 2nd Term Week 10 at objective level: list each scheme objective for the week (from the scheme table recorded by FM-PRE-T2), bind it to exact source rows with reproducible locators, review the row for factual defects and lost notation, and record whether the row needs a replacement or can stand.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T2-W10.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 9 of SS1-03 parsed_rows.json (week label \"WEEK TEN\", title \"Logical reasing continues\", 3203 characters). Existing coverage COV-FM-T2-R09 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). SS1-03 records 45 characters of equation content lost from this row (parsed_rows eqExtra). PR71 judged this row SUPPORTED from extracted text only, without inspecting figures; that judgement is unreviewed. Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 02 (source label 'WEEK 2')",
+      "objective": "Index 3rd Term Week 02 at objective level: list each objective the week's own Topic/Content text states (the source has no scheme), bind each to exact source locators and to the existing replacement lesson, and confirm that the replacement preserves the scope of every exercise in the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 0 of SS1-03 parsed_rows.json (week label \"WEEK 2\", title \"A flowchart is a diagrammatical representation of a solution to a problem.\", 755 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS (FM-LES-T3-W02) and correction CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS (FM-COR-T3-W02); coverage COV-FM-T3-R00 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 0). PR71-only counterpart (not on master): SUP-SS1-FMATHS-010 (FMATHS-3-002). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 03 (source label 'WEEK 3')",
+      "objective": "Index 3rd Term Week 03 at objective level: list each objective the week's own Topic/Content text states (the source has no scheme), bind each to exact source locators and to the existing replacement lesson, and confirm that the replacement preserves the scope of every exercise in the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK 3\", title \"Gradients of straight lines and curves\", 3801 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES (FM-LES-T3-W03) and correction CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES (FM-COR-T3-W03); coverage COV-FM-T3-R01 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 167). PR71-only counterpart (not on master): SUP-SS1-FMATHS-011 (FMATHS-3-003). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 04 (source label 'WEEK 4')",
+      "objective": "Index 3rd Term Week 04 at objective level: list each objective the week's own Topic/Content text states (the source has no scheme), bind each to exact source locators and to the existing replacement lesson, and confirm that the replacement preserves the scope of every exercise in the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 2 of SS1-03 parsed_rows.json (week label \"WEEK 4\", title \"Straight line\", 2353 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR (FM-LES-T3-W04) and correction CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR (FM-COR-T3-W04); coverage COV-FM-T3-R02 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 299). PR71-only counterpart (not on master): SUP-SS1-FMATHS-012 (FMATHS-3-004; shared with Week 8). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 05 (source label 'WEEK 5')",
+      "objective": "Index 3rd Term Week 05 at objective level: list each objective the week's own Topic/Content text states (the source has no scheme), bind each to exact source locators and to the existing replacement lesson, and confirm that the replacement preserves the scope of every exercise in the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 3 of SS1-03 parsed_rows.json (week label \"WEEK 5\", title \"Vectors\", 2500 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT (FM-LES-T3-W05) and correction CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT (FM-COR-T3-W05); coverage COV-FM-T3-R03 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 438). PR71-only counterpart (not on master): SUP-SS1-FMATHS-013 (FMATHS-3-005; shared with Week 6). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 06 (source label 'WEEK 6')",
+      "objective": "Index 3rd Term Week 06 at objective level: list each objective the week's own Topic/Content text states (the source has no scheme), bind each to exact source locators and to the existing replacement lesson, and confirm that the replacement preserves the scope of every exercise in the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 4 of SS1-03 parsed_rows.json (week label \"WEEK 6\", title \"MAGNITUDE OF A VECTOR\", 2723 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES (FM-LES-T3-W06) and correction CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES (FM-COR-T3-W06); coverage COV-FM-T3-R04 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 438). PR71-only counterpart (not on master): SUP-SS1-FMATHS-013 (FMATHS-3-006; shared with Week 5). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 08 (source label 'WEEK 8')",
+      "objective": "Index 3rd Term Week 08 at objective level: list each objective the week's own Topic/Content text states (the source has no scheme), bind each to exact source locators and to the existing replacement lesson, and confirm that the replacement preserves the scope of every exercise in the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "parsed row 5 of SS1-03 parsed_rows.json (week label \"WEEK 8\", title \"Straight line\", 3455 characters). Existing replacement lesson SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS (FM-LES-T3-W08) and correction CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS (FM-COR-T3-W08); coverage COV-FM-T3-R05 is IMPLEMENTED_EQUIVALENT at row level only. Source equation loss recorded for this row by SS1-03 (parsed_rows eqExtra = 163). PR71-only counterpart (not on master): SUP-SS1-FMATHS-012 and SUP-SS1-FMATHS-014 (FMATHS-3-008, FMATHS-3-009). The coverage entry does not certify that every scheme objective was checked; the 3rd Term source has no scheme (OI-FM-003).",
+      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; the replacement-scope review for this row is recorded (preserved / gap, with the gap becoming an open item and a separate small PENDING item); any PARTIAL/UNRESOLVED entry has an OPEN open item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-LES-T3-W02",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
+      "objective": "Authored, labelled equivalent lesson \"Flowcharts: symbols, algorithms and trace tables\" for 3rd Term Week 02.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/author/fm_pkg.py",
+        "docs/ss1/work/SS1-03/author/fm_t3.py"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS]: 3 objectives, 3 practice items; state={content_approval: PENDING, approval_reference: null, implementation: IMPLEMENTED, verification: DEFERRED, verification_reference: null}. Referenced by coverage COV-FM-T3-R00 and bound by correction CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS. Implemented code, not verified; the SS1-03 checkpoint says answers were verified in code, which is the earlier worker's claim, not re-run here.",
+      "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented. Approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-LES-T3-W03",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES",
+      "objective": "Authored, labelled equivalent lesson \"Gradients of straight lines and curves; equation of a line\" for 3rd Term Week 03.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/author/fm_pkg.py",
+        "docs/ss1/work/SS1-03/author/fm_t3.py"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES]: 4 objectives, 4 practice items; state={content_approval: PENDING, approval_reference: null, implementation: IMPLEMENTED, verification: DEFERRED, verification_reference: null}. Referenced by coverage COV-FM-T3-R01 and bound by correction CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES. Implemented code, not verified; the SS1-03 checkpoint says answers were verified in code, which is the earlier worker's claim, not re-run here.",
+      "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented. Approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-LES-T3-W04",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR",
+      "objective": "Authored, labelled equivalent lesson \"Angle of slope; parallel and perpendicular lines\" for 3rd Term Week 04.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/author/fm_pkg.py",
+        "docs/ss1/work/SS1-03/author/fm_t3.py"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR]: 3 objectives, 4 practice items; state={content_approval: PENDING, approval_reference: null, implementation: IMPLEMENTED, verification: DEFERRED, verification_reference: null}. Referenced by coverage COV-FM-T3-R02 and bound by correction CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR. Implemented code, not verified; the SS1-03 checkpoint says answers were verified in code, which is the earlier worker's claim, not re-run here.",
+      "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented. Approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-LES-T3-W05",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT",
+      "objective": "Authored, labelled equivalent lesson \"Vectors: magnitude, special vectors and unit vectors\" for 3rd Term Week 05.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/author/fm_pkg.py",
+        "docs/ss1/work/SS1-03/author/fm_t3.py"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT]: 3 objectives, 3 practice items; state={content_approval: PENDING, approval_reference: null, implementation: IMPLEMENTED, verification: DEFERRED, verification_reference: null}. Referenced by coverage COV-FM-T3-R03 and bound by correction CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT. Implemented code, not verified; the SS1-03 checkpoint says answers were verified in code, which is the earlier worker's claim, not re-run here.",
+      "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented. Approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-LES-T3-W06",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES",
+      "objective": "Authored, labelled equivalent lesson \"Vector operations and direction cosines\" for 3rd Term Week 06.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/author/fm_pkg.py",
+        "docs/ss1/work/SS1-03/author/fm_t3.py"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES]: 3 objectives, 3 practice items; state={content_approval: PENDING, approval_reference: null, implementation: IMPLEMENTED, verification: DEFERRED, verification_reference: null}. Referenced by coverage COV-FM-T3-R04 and bound by correction CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES. Implemented code, not verified; the SS1-03 checkpoint says answers were verified in code, which is the earlier worker's claim, not re-run here.",
+      "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented. Approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-LES-T3-W08",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS",
+      "objective": "Authored, labelled equivalent lesson \"Angle between two lines and forms of the equation of a line\" for 3rd Term Week 08.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/author/fm_pkg.py",
+        "docs/ss1/work/SS1-03/author/fm_t3.py"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS]: 3 objectives, 5 practice items; state={content_approval: PENDING, approval_reference: null, implementation: IMPLEMENTED, verification: DEFERRED, verification_reference: null}. Referenced by coverage COV-FM-T3-R05 and bound by correction CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS. Implemented code, not verified; the SS1-03 checkpoint says answers were verified in code, which is the earlier worker's claim, not re-run here.",
+      "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented. Approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-COR-T3-W02",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS: SS1-SRC-c7a7523bdb0d:BODY:a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273",
+      "objective": "Delivery correction binding CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS: source row (3rd Term Week 02) -> SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS. Record whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W02",
+        "FM-SRC-T3",
+        "FM-WK-T3-W02"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS] source_lesson_id=SS1-SRC-c7a7523bdb0d:BODY:a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273 body_sha256=a307a0d825d3f99be658c4a6bd4d72edf80fef99eb2bc686ffa1b6f584a26273 replacement_id=SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS. Stated defect: source gives a prompt and advantages but no flowchart and no solution. The binding exists as code. Its whole-row scope review is NOT done and is carried by FM-WK-T3-W02; the PR71 branch has no correction for it (0 corrections there).",
+      "completion_condition": "Binding implemented (done). This item closes further only if FM-WK-T3-W02 finds a defect requiring the binding to change; record that here. Do not activate delivery until the scope review closes and content approval is recorded."
+    },
+    {
+      "id": "FM-COR-T3-W03",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES: SS1-SRC-c7a7523bdb0d:BODY:891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35",
+      "objective": "Delivery correction binding CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES: source row (3rd Term Week 03) -> SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES. Record whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W03",
+        "FM-SRC-T3",
+        "FM-WK-T3-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES] source_lesson_id=SS1-SRC-c7a7523bdb0d:BODY:891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35 body_sha256=891a74c3fab4c9ee3f28751039858ed48785dc775533781395cad3e3fee95e35 replacement_id=SUP-SS1-FURTHER-MATHEMATICS-T3-W03-GRADIENTS-LINES-CURVES. Stated defect: delivered text omits equation content (167 characters) and gradient examples use ambiguous notation. The binding exists as code. Its whole-row scope review is NOT done and is carried by FM-WK-T3-W03; the PR71 branch has no correction for it (0 corrections there).",
+      "completion_condition": "Binding implemented (done). This item closes further only if FM-WK-T3-W03 finds a defect requiring the binding to change; record that here. Do not activate delivery until the scope review closes and content approval is recorded."
+    },
+    {
+      "id": "FM-COR-T3-W04",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR: SS1-SRC-c7a7523bdb0d:BODY:ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3",
+      "objective": "Delivery correction binding CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR: source row (3rd Term Week 04) -> SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR. Record whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W04",
+        "FM-SRC-T3",
+        "FM-WK-T3-W04"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR] source_lesson_id=SS1-SRC-c7a7523bdb0d:BODY:ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3 body_sha256=ea882527937415376d5a1b41a89c96daf28e49b3f7d578ae9fd1d4a9887582d3 replacement_id=SUP-SS1-FURTHER-MATHEMATICS-T3-W04-SLOPE-PARALLEL-PERPENDICULAR. Stated defect: perpendicular example is headed \"parallel\"; delivered text loses equation content (299 characters). The binding exists as code. Its whole-row scope review is NOT done and is carried by FM-WK-T3-W04; the PR71 branch has no correction for it (0 corrections there).",
+      "completion_condition": "Binding implemented (done). This item closes further only if FM-WK-T3-W04 finds a defect requiring the binding to change; record that here. Do not activate delivery until the scope review closes and content approval is recorded."
+    },
+    {
+      "id": "FM-COR-T3-W05",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT: SS1-SRC-c7a7523bdb0d:BODY:0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8",
+      "objective": "Delivery correction binding CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT: source row (3rd Term Week 05) -> SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT. Record whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W05",
+        "FM-SRC-T3",
+        "FM-WK-T3-W05"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT] source_lesson_id=SS1-SRC-c7a7523bdb0d:BODY:0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8 body_sha256=0fb860b227582acd82c9fb62da0ffd27d58c93dd39aabd4bdef55007f20c83e8 replacement_id=SUP-SS1-FURTHER-MATHEMATICS-T3-W05-VECTOR-MAGNITUDE-UNIT. Stated defect: |-2i-5j| written as sqrt(-2^2-5^2); equation content lost (438 characters). The binding exists as code. Its whole-row scope review is NOT done and is carried by FM-WK-T3-W05; the PR71 branch has no correction for it (0 corrections there).",
+      "completion_condition": "Binding implemented (done). This item closes further only if FM-WK-T3-W05 finds a defect requiring the binding to change; record that here. Do not activate delivery until the scope review closes and content approval is recorded."
+    },
+    {
+      "id": "FM-COR-T3-W06",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES: SS1-SRC-c7a7523bdb0d:BODY:857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573",
+      "objective": "Delivery correction binding CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES: source row (3rd Term Week 06) -> SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES. Record whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W06",
+        "FM-SRC-T3",
+        "FM-WK-T3-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES] source_lesson_id=SS1-SRC-c7a7523bdb0d:BODY:857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573 body_sha256=857ea4cf4f38fa2a65597ac92f87d0aac55f8b7d878c98ba71fcc4bfd8065573 replacement_id=SUP-SS1-FURTHER-MATHEMATICS-T3-W06-VECTOR-OPERATIONS-DIRECTION-COSINES. Stated defect: 3p computed as 9i-9j (should be 6i-9j) so 3p-2q = 3i-19j is wrong (correct: -19j); row repeats Week 5. The binding exists as code. Its whole-row scope review is NOT done and is carried by FM-WK-T3-W06; the PR71 branch has no correction for it (0 corrections there).",
+      "completion_condition": "Binding implemented (done). This item closes further only if FM-WK-T3-W06 finds a defect requiring the binding to change; record that here. Do not activate delivery until the scope review closes and content approval is recorded."
+    },
+    {
+      "id": "FM-COR-T3-W08",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS: SS1-SRC-c7a7523bdb0d:BODY:dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6",
+      "objective": "Delivery correction binding CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS: source row (3rd Term Week 08) -> SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS. Record whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W08",
+        "FM-SRC-T3",
+        "FM-WK-T3-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json delivery_corrections[id=CORR-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS] source_lesson_id=SS1-SRC-c7a7523bdb0d:BODY:dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6 body_sha256=dd82f130d519f605f6e50e2f23a9929ea904a1edc1a78d94649f9580276ea0b6 replacement_id=SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS. Stated defect: no solution for the vertical-line case; tan alpha written with ambiguous brackets. The binding exists as code. Its whole-row scope review is NOT done and is carried by FM-WK-T3-W08; the PR71 branch has no correction for it (0 corrections there).",
+      "completion_condition": "Binding implemented (done). This item closes further only if FM-WK-T3-W08 finds a defect requiring the binding to change; record that here. Do not activate delivery until the scope review closes and content approval is recorded."
+    },
+    {
+      "id": "FM-ASSET-T3-W02-FLOWCHART-PERIMETER",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "ASSET-SS1-FM-T3-W02-FLOWCHART-PERIMETER",
+      "objective": "Authored SVG flowchart for P = 2(l+b) bound to the Week 2 flowchart lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/assets/further-mathematics/fm3-w2-flowchart-perimeter.svg"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W02"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "further-mathematics.json assets[id=ASSET-SS1-FM-T3-W02-FLOWCHART-PERIMETER] path backend/src/db/ss1/assets/further-mathematics/fm3-w2-flowchart-perimeter.svg sha256=c90c42d558ea2d20780c3bfc21b5e9ca4dabdc7cf737e7893b8143ff88b73373 bytes=1452 (the file on master has this size and SHA-256), media_type image/svg+xml, order 0; rights record: deterministic SVG authored for Sow the Seed Schools, labelled derivative (the source has the prompt but no drawn figure); state approval PENDING, verification DEFERRED. Not rendered or displayed in the app in this task.",
+      "completion_condition": "Implemented (done). Visual correctness and app display are unverified; approval is tracked in FM-FACT-CONTENT-APPROVAL."
+    },
+    {
+      "id": "FM-VIS-T1-W05-VENN",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 5 Venn diagram figures (rows SETS and OPERATION OF SET AND VENN DIAGRAMS)",
+      "objective": "Record a visual/object disposition for: 1st Term Week 5 Venn diagram figures (rows SETS and OPERATION OF SET AND VENN DIAGRAMS). Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. Locate the figures by exact position in the document.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T1-W05-VENN.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PR71 OI-FMATHS-008 and coverage FMATHS-1-006 state that drawn Venn diagrams are lost by text extraction while the numeric worked examples survive in text. That is a PR71 claim made from extracted text; master records no disposition and no figure inventory for the 1st Term .doc.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-VIS-T2-W05-W07-MAPPING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term Weeks 5 and 7 mapping/function diagrams (rows MAPPING AND FUNCTIONS; Composite Mapping and Inverse Mapping)",
+      "objective": "Record a visual/object disposition for: 2nd Term Weeks 5 and 7 mapping/function diagrams (rows MAPPING AND FUNCTIONS; Composite Mapping and Inverse Mapping). Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. Locate the figures by exact position in the document.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T2-W05-W07-MAPPING.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PR71 OI-FMATHS-008 states that mapping diagrams are not extracted. SS1-03 recorded 51 equation objects and 214 subscripts in the 2nd Term source overall. Master has no figure inventory or disposition for these rows.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-VIS-T3-W03-GRAPHS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "3rd Term Week 3 graphs (y = 5, y = -3, x = 2, x = -4 and the curve with tangents)",
+      "objective": "Record a visual/object disposition for: 3rd Term Week 3 graphs (y = 5, y = -3, x = 2, x = -4 and the curve with tangents). Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. State whether the figures are absent from the document or present as an object that the importer does not read.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T3-W03-GRAPHS.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "OI-FM-003 states that Week 3 refers to these figures but the source does not draw them, and that the replacement lesson describes them in text only. That statement was not checked against the document in this task.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-VIS-T3-VECTOR-FIGURES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "3rd Term Weeks 5 and 6 vector figures",
+      "objective": "Record a visual/object disposition for: 3rd Term Weeks 5 and 6 vector figures. Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. Cover both rows (Week 6 repeats Week 5).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T3-VECTOR-FIGURES.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PR71 OI-FMATHS-008 lists vector figures among drawn figures that are not extracted. Master has lessons for both weeks (FM-LES-T3-W05, FM-LES-T3-W06) but no figure disposition.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-VIS-T3-LINE-FIGURES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "3rd Term Weeks 4 and 8 straight-line figures",
+      "objective": "Record a visual/object disposition for: 3rd Term Weeks 4 and 8 straight-line figures. Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. Cover both rows.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T3-LINE-FIGURES.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PR71 OI-FMATHS-008 lists straight-line figures among drawn figures that are not extracted. Master has lessons for both weeks (FM-LES-T3-W04, FM-LES-T3-W08) but no figure disposition.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-VIS-T2-BRANDING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term advertising letterhead and cover-page images of a commercial tutor (\"MR OSHO TUTORS\")",
+      "objective": "Record a visual/object disposition for: 2nd Term advertising letterhead and cover-page images of a commercial tutor (\"MR OSHO TUTORS\"). Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. Record locations and whether any phone number, e-mail or sale offer also appears in the extracted lesson text; do not copy contact details into the repository.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T2-BRANDING.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true) records that the 2nd Term source embeds a commercial tutor's letterhead and cover page with a personal phone number and e-mail, and that the images were deliberately not bound as lesson assets. Reuse rights are unconfirmed. Locations were not recorded.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-VIS-T3-BRANDING",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "3rd Term advertising letterhead and cover-page images of a commercial tutor (\"MR OSHO TUTORS\")",
+      "objective": "Record a visual/object disposition for: 3rd Term advertising letterhead and cover-page images of a commercial tutor (\"MR OSHO TUTORS\"). Inspect the source object itself (a text extract or PDF conversion alone is not visual inspection), state what it adds, whether an existing lesson or asset covers it, and any residual gap. Record locations and whether any phone number, e-mail or sale offer also appears in the extracted lesson text; do not copy contact details into the repository.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-VIS-T3-BRANDING.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true) records that the 3rd Term source embeds a commercial tutor's letterhead and cover page with a personal phone number and e-mail, and that the images were deliberately not bound as lesson assets. Reuse rights are unconfirmed. Locations were not recorded.",
+      "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
+    },
+    {
+      "id": "FM-FACT-T1-W04-STRANDED-LABEL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 4 row (107 characters, \"REVIEW OF BASIC CONCEPT OF SET\")",
+      "objective": "Inspect the 1st Term source around the Week 4 heading and establish whether the 107-character parsed row is only a stray topic label that belongs with the Sets row that follows. Record the exact anchor text and whether master's attach_stranded_label operation (week_label, following_anchor) fits. Do not add a rule that would change existing content-bound row identities without recording that effect.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-FACT-T1-W04-STRANDED-LABEL.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Master parsed row 3 (WEEK FOUR, 107 characters) is bound by COV-FM-T1-R03 (PARTIAL) and listed in OI-FM-001/OI-FM-002 affected_ids. Master package has no attach_stranded_label rule. PR71 rule FMATHS-R03 (attach_stranded_label, label_anchor \"TOPIC:  REVIEW OF BASIC CONCEPT OF SET\", direction NEXT) exists only in PR71's incompatible schema; master's operation supports attach-to-following only.",
+      "completion_condition": "Finding recorded with exact anchor text. Either a master-schema rule is added with its effect on row identity stated, or an open item records why not. No lesson is authored."
+    },
+    {
+      "id": "FM-FACT-T3-W06-REPEATS-W05",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "3rd Term Week 5 and Week 6 rows",
+      "objective": "Compare the Week 5 (Vectors) and Week 6 (MAGNITUDE OF A VECTOR) text in the source and record exactly which parts are repeated and which differ, so that the existing replacement lessons and the \"row repeats Week 5\" note can be checked.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-FACT-T3-W06-REPEATS-W05.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "CORR-FURTHER-MATHEMATICS-T3-W06 states the row repeats Week 5. PR71 OI-FMATHS-004 says the bodies are not byte-identical so no exclusion is justified, and asks the teacher whether the repeat is intended. Master body hashes differ (W05 0fb860b2..., W06 857ea4cf...). Master's exclude_duplicate applies only to byte-identical whole sources.",
+      "completion_condition": "Repeated and differing passages are listed with locators; the finding is recorded for the Week 5 and Week 6 items. Teacher input is requested only if the inspection cannot show whether a repeat is intended."
+    },
+    {
+      "id": "FM-FACT-EQUATION-LOSS-T1",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "1st Term equation, superscript and subscript loss by row",
+      "objective": "For each of the 1st Term parsed rows, establish from the original document and the SS1-03 parsed text which equations, superscripts, subscripts or objects are lost or flattened, and whether the delivered text remains instructionally usable. Record a per-row table. Do not author replacements.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-FACT-EQUATION-LOSS-T1.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "The 1st Term source is a legacy .doc read by word-extractor; OI-FM-001 states MathType/OLE objects are not read. No per-row loss counts exist for the 1st Term (parsed_rows eqExtra is null). No per-row usability finding exists.",
+      "completion_condition": "Per-row loss and usability finding recorded with locators; rows needing a replacement are named for later items; no lesson is authored."
+    },
+    {
+      "id": "FM-FACT-EQUATION-LOSS-T2",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "2nd Term equation, superscript and subscript loss by row",
+      "objective": "For each of the 2nd Term parsed rows, establish from the original document and the SS1-03 parsed text which equations, superscripts, subscripts or objects are lost or flattened, and whether the delivered text remains instructionally usable. Record a per-row table. Do not author replacements.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-FACT-EQUATION-LOSS-T2.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-PRE-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "SS1-03 recorded 51 Word equations, 401 superscripts and 214 subscripts lost or flattened in the 2nd Term source (OI-FM-001); per-row eqExtra shows 52 (Week 8) and 45 (Week 10) with 0 elsewhere, but the figures differ in kind and have not been reconciled. No per-row usability finding exists.",
+      "completion_condition": "Per-row loss and usability finding recorded with locators; rows needing a replacement are named for later items; no lesson is authored."
+    },
+    {
+      "id": "FM-FACT-EQUATION-EXTRACTOR-DECISION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items OI-FM-001",
+      "objective": "Owner decision (SS1-01/SS1-08): adopt an equation-aware SS1 extractor with a reviewed ID migration, or rely on replacement lessons for every affected row.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "docs/ss1/work/SS1-03/author/recover_equations.mts"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-FACT-EQUATION-LOSS-T1",
+        "FM-FACT-EQUATION-LOSS-T2"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "OI-FM-001 (OWNER_ACTION). Changing extraction changes content-bound row IDs (reviewed ID migration). The decision is not an inspectable fact. A prototype recover_equations.mts exists under docs/ss1/work/SS1-03/author/; it was not run.",
+      "completion_condition": "Owner decision recorded. Replacement items are appended only for the rows the decision leaves uncovered."
+    },
+    {
+      "id": "FM-FACT-T3-MISSING-MATERIAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "open_items OI-FM-003",
+      "objective": "Obtain from the owner the missing 3rd Term material (scheme of work and Weeks 1, 7, 9-12, if they exist), or the owner's confirmation that the supplied document is the whole term. Do not infer a scheme from filenames.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "depends_on": [
+        "FM-INV-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "OI-FM-003 and COV-FM-T3-SCHEME (UNRESOLVED, no lesson_ids). Blocked until FM-INV-T3 has confirmed the absence from the document and the owner supplies the material or confirms. Nothing in the repository supplies it.",
+      "completion_condition": "Material supplied (then a new registration/indexing item is appended) or the owner confirmation is recorded and the open item updated."
+    },
+    {
+      "id": "FM-FACT-VENDOR-PERMISSION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items OI-FM-004 (2nd and 3rd Term sources)",
+      "objective": "Owner confirms the licence under which the school may deliver the commercial tutor's notes, and approves removal of branding and contact details from anything delivered.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "depends_on": [
+        "FM-VIS-T2-BRANDING",
+        "FM-VIS-T3-BRANDING"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true). Reuse rights unconfirmed; branding images were not bound as assets. This is a rights decision that an agent cannot settle by inspection.",
+      "completion_condition": "Licence/permission decision recorded with its reference, or the open item kept blocking delivery."
+    },
+    {
+      "id": "FM-FACT-ALIAS-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "RULE-FM-T1-ALIAS, RULE-FM-T2-ALIAS, RULE-FM-T3-ALIAS approval_reference",
+      "objective": "Owner approval of the three source_alias rules, replacing each \"PENDING-OWNER\" approval_reference with a real reference. The 3rd Term alias rests only on a cited textbook title.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-PRE-T1",
+        "FM-PRE-T2",
+        "FM-INV-T3"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Package source_rules alias entries carry approval_reference text beginning \"PENDING-OWNER\". Approval is a separate stage from the header inspection done in the dependency items; it must not be invented.",
+      "completion_condition": "Each alias has a recorded approval_reference, or remains pending with the reason recorded."
+    },
+    {
+      "id": "FM-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items OI-FM-005",
+      "objective": "Owner/teacher content review of the six authored 3rd Term supplements and the flowchart SVG; record approval_reference values. Approval is separate from implementation and verification.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-LES-T3-W02",
+        "FM-LES-T3-W03",
+        "FM-LES-T3-W04",
+        "FM-LES-T3-W05",
+        "FM-LES-T3-W06",
+        "FM-LES-T3-W08",
+        "FM-ASSET-T3-W02-FLOWCHART-PERIMETER",
+        "FM-WK-T3-W02",
+        "FM-WK-T3-W03",
+        "FM-WK-T3-W04",
+        "FM-WK-T3-W05",
+        "FM-WK-T3-W06",
+        "FM-WK-T3-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "OI-FM-005 (OWNER_ACTION, blocks_delivery true): lessons, asset and aliases await approval; no approval_reference exists anywhere in the package.",
+      "completion_condition": "approval_reference recorded for each lesson and the asset, or changes requested are recorded as new items."
+    },
+    {
+      "id": "FM-SCOPE-OI-FM-002",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items OI-FM-002 (1st and 2nd Term rows unreviewed)",
+      "objective": "Decomposition record for OI-FM-002: 1st Term (11 rows) and 2nd Term (10 rows) have not been reviewed and no replacement lessons exist on master. It is a scope umbrella, not a lesson. Close it only when the child items are complete and the open item is replaced by precise dispositions.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-PRE-T1",
+        "FM-PRE-T2",
+        "FM-WK-T1-W01",
+        "FM-WK-T1-W02",
+        "FM-WK-T1-W03",
+        "FM-WK-T1-W04",
+        "FM-WK-T1-W05",
+        "FM-WK-T1-W06",
+        "FM-WK-T1-W07",
+        "FM-WK-T1-W08",
+        "FM-WK-T1-W09",
+        "FM-WK-T1-W10",
+        "FM-WK-T2-W01",
+        "FM-WK-T2-W02",
+        "FM-WK-T2-W03",
+        "FM-WK-T2-W04",
+        "FM-WK-T2-W05",
+        "FM-WK-T2-W06",
+        "FM-WK-T2-W07",
+        "FM-WK-T2-W08",
+        "FM-WK-T2-W09",
+        "FM-WK-T2-W10",
+        "FM-FACT-EQUATION-LOSS-T1",
+        "FM-FACT-EQUATION-LOSS-T2",
+        "FM-VIS-T1-W05-VENN",
+        "FM-VIS-T2-W05-W07-MAPPING"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "OI-FM-002 (CONTENT) is unchanged in further-mathematics.json. Children: objective review = FM-WK-T1-*, FM-WK-T2-*, FM-PRE-*; notation loss = FM-FACT-EQUATION-LOSS-*; figures = FM-VIS-*; branch comparisons = FM-PORT-D3-L001..L009.",
+      "completion_condition": "All dependencies complete and OI-FM-002 replaced by precise open items or removed with evidence."
+    },
+    {
+      "id": "FM-SCOPE-OI-FM-003",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "open_items OI-FM-003 (3rd Term scheme and missing weeks; figures)",
+      "objective": "Decomposition record for OI-FM-003: 3rd Term scheme absent, Weeks 1, 7, 9-12 reported absent, Week 3 figures not drawn. Scope umbrella, not a lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-INV-T3",
+        "FM-FACT-T3-MISSING-MATERIAL",
+        "FM-VIS-T3-W03-GRAPHS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "OI-FM-003 (CONTENT) and COV-FM-T3-SCHEME (UNRESOLVED) are unchanged in further-mathematics.json.",
+      "completion_condition": "All dependencies complete and OI-FM-003 / COV-FM-T3-SCHEME replaced by precise dispositions."
+    },
+    {
+      "id": "FM-PORT-D3-L001",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-001",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-001 \"Laws of indices and their applications\" with the 1st Term Week 01 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L001.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-001] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-001; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L002",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-002",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-002 \"Indicial and exponential equations, including quadratic\" with the 1st Term Week 02 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L002.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-002] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-002; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L003",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-003",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-003 \"Logarithms: laws, equations and change of base\" with the 1st Term Week 03 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L003.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-003] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-003; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L004",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-004",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-004 \"Sequences and series: the arithmetic progression\" with the 2nd Term Week 01 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L004.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-WK-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-004] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-001; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L005",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-005",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-005 \"Geometric progressions: nth term, sums, geometric mean\" with the 2nd Term Week 02 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L005.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-WK-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-005] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-002; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L006",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-006",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-006 \"Linear and quadratic inequalities in one variable\" with the 2nd Term Week 03 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L006.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-WK-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-006] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-003; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L007",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-007",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-007 \"Inequalities in two variables, graphical solution and linear programming\" with the 2nd Term Week 04 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L007.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-WK-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-007] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-004; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L008",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-008",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-008 \"Functions: one-to-one and onto mappings, composite and inverse\" with the 2nd Term Week 07 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L008.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-WK-T2-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-008] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-007; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L009",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "term": "2nd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-009",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-009 \"Trigonometric ratios, special angles, general angles\" with the 2nd Term Week 08 source row and port it into master's schema if the week item finds that the row needs a replacement; otherwise record that it is not needed.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L009.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T2",
+        "FM-WK-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-009] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-2-008; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim.",
+      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+    },
+    {
+      "id": "FM-PORT-D3-L010",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-010",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-010 \"Flowcharts: symbols, algorithms and tracing\" with the existing master lesson(s) for 3rd Term Week(s) 02 and record what, if anything, the PR71 lesson adds (an example, a case, a defect it caught) that master lacks. Port only a genuine gap, into master's schema, without duplicating the master lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L010.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3",
+        "FM-WK-T3-W02",
+        "FM-LES-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-010] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-002; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W02. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
+    },
+    {
+      "id": "FM-PORT-D3-L011",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-011",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-011 \"Gradients of straight lines and curves\" with the existing master lesson(s) for 3rd Term Week(s) 03 and record what, if anything, the PR71 lesson adds (an example, a case, a defect it caught) that master lacks. Port only a genuine gap, into master's schema, without duplicating the master lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L011.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3",
+        "FM-WK-T3-W03",
+        "FM-LES-T3-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-011] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-003; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W03. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
+    },
+    {
+      "id": "FM-PORT-D3-L012",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-012",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-012 \"Angle of slope and the angle between two lines\" with the existing master lesson(s) for 3rd Term Week(s) 04, 08 and record what, if anything, the PR71 lesson adds (an example, a case, a defect it caught) that master lacks. Port only a genuine gap, into master's schema, without duplicating the master lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L012.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3",
+        "FM-WK-T3-W04",
+        "FM-WK-T3-W08",
+        "FM-LES-T3-W04",
+        "FM-LES-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-012] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-004, FMATHS-3-008; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W04, FM-LES-T3-W08. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
+    },
+    {
+      "id": "FM-PORT-D3-L013",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-013",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-013 \"Vectors: modulus, unit vectors, direction cosines and arithmetic\" with the existing master lesson(s) for 3rd Term Week(s) 05, 06 and record what, if anything, the PR71 lesson adds (an example, a case, a defect it caught) that master lacks. Port only a genuine gap, into master's schema, without duplicating the master lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L013.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3",
+        "FM-WK-T3-W05",
+        "FM-WK-T3-W06",
+        "FM-LES-T3-W05",
+        "FM-LES-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-013] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-005, FMATHS-3-006; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W05, FM-LES-T3-W06. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
+    },
+    {
+      "id": "FM-PORT-D3-L014",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "PR71 b5ced7e: SUP-SS1-FMATHS-014",
+      "objective": "Compare PR71 lesson SUP-SS1-FMATHS-014 \"The equation of a straight line: gradient-point and two-point forms\" with the existing master lesson(s) for 3rd Term Week(s) 08 and record what, if anything, the PR71 lesson adds (an example, a case, a defect it caught) that master lacks. Port only a genuine gap, into master's schema, without duplicating the master lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L014.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T3",
+        "FM-WK-T3-W08",
+        "FM-LES-T3-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-014] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), covering FMATHS-3-009; written in PR71's schema (content_hash, covers_objectives, sequence, provenance object, references[]). Master already holds FM-LES-T3-W08. Overlap between the two was not assessed (FOUNDATION_RECONCILIATION.md, D-3). PR71 has 0 delivery corrections.",
+      "completion_condition": "Comparison recorded with the PR71 lesson text read at the immutable SHA. Either a bounded gap is ported into the existing master lesson (state PENDING/DEFERRED, no approval invented) or the PR71 lesson is recorded as fully covered. Overlap is not counted as new implementation."
+    },
+    {
+      "id": "FM-PORT-D4-NOTES",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "PR71 b5ced7e: docs/ss1/work/SS1-03/CHECKPOINT.md (blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c) and docs/ss1/work/SS1-03/HANDOFF.json (blob f3ee7c4559931744ab679bc6f8975fd7091c0710)",
+      "objective": "Compare the PR71 SS1-03 checkpoint and handoff with master's SS1-03 checkpoint and handoff for Further Mathematics and record any fact, finding or open item that exists only on PR71 (for example OI-FMATHS-001..008 content not mirrored by OI-FM-001..006). Do not repeat source audits.",
+      "required_files": [
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/HANDOFF.json",
+        "docs/ss1/work/FOUNDATION_RECONCILIATION.md",
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D4-NOTES.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "PR71 holds its own docs/ss1/work/SS1-03/CHECKPOINT.md and HANDOFF.json (different content from master's files of the same name). Open-item text present on PR71: OI-FMATHS-004 (Week 6 repeats Week 5), -005 (3p miscalculation, already corrected on master), -007 (unchecked OpenStax references), -008 (figures not extracted).",
+      "completion_condition": "Branch-only facts listed with their PR71 path/blob; each is mapped to an existing queue item or to a new small PENDING item appended here. No file is copied wholesale."
+    },
+    {
+      "id": "FM-PORT-D4-TEST-COMPARE",
+      "kind": "BRANCH_PORT_COMPARISON",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "PR71 b5ced7e: tests/ss1/further-mathematics.test.mts (blob b88d3d64b8311d4bab759997b686a7a3cb25d072)",
+      "objective": "Read (do not run) the PR71 Further Mathematics test file and record whether any of its guards (for example the \"Third Term gap is a blocking open item\" check) has no counterpart in master's tests/ss1/further-mathematics.package.test.mts. Static reading only.",
+      "required_files": [
+        "tests/ss1/further-mathematics.package.test.mts",
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-PORT-D4-TEST-COMPARE.md"
+      ],
+      "depends_on": [
+        "FM-TEST-PACKAGE-EXISTING"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PR71 file has 4 tests written against PR71's schema (parseSubjectPackage, lessonContentHash, validatePackageStatic) and cannot be ported verbatim; master has a different 11-test file. Neither has been run. Rewriting or running tests is deferred by the owner.",
+      "completion_condition": "Gap list recorded. Any resulting test change is added to FM-TEST-FULL-SOURCE-REGRESSION; no test is written or run here."
+    },
+    {
+      "id": "FM-TEST-PACKAGE-EXISTING",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/further-mathematics.package.test.mts",
+      "objective": "Existing deferred package test file: sources vs manifest, coverage/blocker, correction identity and related guards.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "tests/ss1/further-mathematics.package.test.mts"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-SRC-T2",
+        "FM-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "tests/ss1/further-mathematics.package.test.mts exists on master with 11 test() calls; its header says DEFERRED BY OWNER (SS1-03) and source-dependent tests skip when SS1_PLAN is absent (a skip is not a pass). Written, NOT RUN. docs/ss1/work/SS1-03/DEFERRED_COMMANDS.md lists the command.",
+      "completion_condition": "Run only in the later authorised verification stage (SS1-09). Not run here."
+    },
+    {
+      "id": "FM-TEST-FULL-SOURCE-REGRESSION",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "later source-dependent regression for all three terms",
+      "objective": "Deferred: after the week, preamble and equation items land, write/extend source-dependent regression checks and run them in the authorised verification stage.",
+      "required_files": [
+        "tests/ss1/further-mathematics.package.test.mts",
+        "backend/src/db/ss1/subjects/further-mathematics.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "FM-TEST-PACKAGE-EXISTING",
+        "FM-SCOPE-OI-FM-002",
+        "FM-SCOPE-OI-FM-003",
+        "FM-PORT-D4-TEST-COMPARE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Testing is deferred by the owner until SS1-09 and is not authorised in this stage. Nothing here may be marked complete.",
+      "completion_condition": "Tests written and executed in the authorised verification stage with results recorded."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "8fb376f413cf70403d161439800738677bbc396a",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 3,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+    },
+    "unmerged_work": {
+      "pr": 71,
+      "branch": "ss1/SS1-01-20261026-claude",
+      "head_sha": "b5ced7ebb0efe22df2351baa140266fbf40cbf41",
+      "paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee)",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md (blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c)",
+        "docs/ss1/work/SS1-03/HANDOFF.json (blob f3ee7c4559931744ab679bc6f8975fd7091c0710)",
+        "tests/ss1/further-mathematics.test.mts (blob b88d3d64b8311d4bab759997b686a7a3cb25d072)"
+      ],
+      "disposition": "Preserve; do not merge #71 or copy its schema. Ports are bounded items FM-PORT-D3-* and FM-PORT-D4-*."
+    }
+  },
+  "next_runnable": [
+    "FM-PRE-T1"
+  ]
+}
