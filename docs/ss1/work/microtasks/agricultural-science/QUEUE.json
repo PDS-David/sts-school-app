@@ -29,7 +29,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -61,8 +62,8 @@
         "docs/ss1/work/microtasks/agricultural-science/AG-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No agricultural-science package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-7aa642b0085b, sha256=df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526, 1076843 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-7aa642b0085b sha256=df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 archive_member='SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx' term='1st Term' canonical_subject='Agricultural Science' header_text='FIRST TERM E-LEARNING NOTE'; rule SS1-SRC-7aa642b0085b-R001 (source_alias, approval_reference PENDING-OWNER); open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL (OWNER_ACTION, blocking). Member SHA-256 verified from the standalone/term-archive copy; the enclosing archive supplied was '1st Term SS1' zip (SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636), NOT the composite archive, so the composite hash was not checked. Header read from the DOCX XML, not via the importer. Record: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T1.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -309,6 +310,6 @@
     }
   },
   "next_runnable": [
-    "AG-SRC-T1"
+    "AG-SRC-T2"
   ]
 }

@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "agricultural-science",
+  "canonical_subject": "Agricultural Science",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526",
+      "archive_member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Agricultural Science",
+      "header_text": "FIRST TERM E-LEARNING NOTE",
+      "header_evidence": {
+        "locator": "SS1-SRC-7aa642b0085b: first text paragraph of word/document.xml (one image-only paragraph precedes it); subject line is the next paragraph",
+        "explanation": "The opening heading is the generic template title; it does not name the subject. The subject is confirmed by the next paragraph, 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS1' (whitespace/tabs not reproduced here), and by the scheme-of-work topics. Read from the original DOCX XML; uniqueness of the heading was checked on that text, not on importer/mammoth output (importer run deferred)."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-7aa642b0085b-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "source_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526",
+      "anchor": "FIRST TERM E-LEARNING NOTE",
+      "evidence": {
+        "locator": "SS1-SRC-7aa642b0085b: first text paragraph of word/document.xml",
+        "explanation": "Source metadata only; original text is retained. The generic heading differs from the canonical subject name, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "FIRST TERM E-LEARNING NOTE",
+      "canonical_subject": "Agricultural Science",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "AGRICULTURAL-SCIENCE-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source's opening heading is the generic title 'FIRST TERM E-LEARNING NOTE', not the subject name. The source_alias rule SS1-SRC-7aa642b0085b-R001 declares it for Agricultural Science with approval_reference PENDING-OWNER. The subject itself is read from the document's SUBJECT line.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-7aa642b0085b-R001",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
