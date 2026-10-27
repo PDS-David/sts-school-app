@@ -14,7 +14,7 @@
       "header_text": "SUBJECT:  FURTHER MATHEMATICS\t\t\t\t                          CLASS:  SS1",
       "header_evidence": {
         "locator": "line 2 \"SUBJECT: ... CLASS: SS1\"",
-        "explanation": "Subject line reads FURTHER MATHEMATICS, class SS1; scheme lists indices, logarithms, sets, binary operations, surds, statistics."
+        "explanation": "Subject line reads FURTHER MATHEMATICS, class SS1; scheme lists indices, logarithms, sets, binary operations, surds, statistics. Re-read by FM-PRE-T1: header_text equals line 18 of word-extractor 1.0.4 getBody() output (the importer's own legacy .doc call) and occurs once; it names Further Mathematics and class SS1, so the subject is verified by the document, not only by the filename. The earlier locator 'line 2' does not use getBody() numbering."
       }
     },
     {
@@ -121,6 +121,18 @@
       "evidence": {
         "locator": "scheme lines 11-12",
         "explanation": "Revision and examination weeks listed in the scheme only."
+      }
+    },
+    {
+      "id": "RULE-FM-T1-REFERENCES",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "source_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145",
+      "anchor": "REFERENCE(S)\nFurther Mathematics project 1 by Tuttuh Adegun et al\nNew General Mathematics for SSS1, SSS 2 and SSS 3 by M. F. Macrae et al",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "getBody() lines 46-48: REFERENCE(S) heading and two textbook titles, directly after the scheme table",
+        "explanation": "Reference list printed after the scheme of work; scheme-only text outside the parsed week rows. The anchor occurs once in getBody() output (word-extractor 1.0.4). Body retained."
       }
     },
     {
@@ -1079,6 +1091,22 @@
       ]
     },
     {
+      "id": "COV-FM-T1-REFERENCES",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Reference list printed after the 1st Term scheme of work",
+      "objective_locator": "scheme: REFERENCE(S) block, getBody() lines 46-48",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-FM-T1-REFERENCES"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme",
+          "explanation": "Scheme-only reference list; COV-FM-T1-EXAM covers scheme items 11-12 only. Compiler disposition for this rule has not been generated (importer run deferred)."
+        }
+      ]
+    },
+    {
       "id": "COV-FM-T2-R00",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Arithmetic progression",
@@ -1481,6 +1509,16 @@
         "SUP-SS1-FURTHER-MATHEMATICS-T3-W08-ANGLE-BETWEEN-LINES-EQUATION-FORMS"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "OI-FM-007",
+      "kind": "PERMISSION",
+      "detail": "The 1st Term source also carries the commercial tutor's advertising material that OI-FM-004 records for the 2nd and 3rd Terms: an image-only cover page (page 1) and an image letterhead above the SUBJECT line (page 2), both with a logo, tutor name, tagline and personal contact details, plus a running page header/footer naming the tutor, term, subject and class. The cover and letterhead are pictures and the running header is outside the body, so word-extractor getBody() output contains none of it; the importer's text path does not carry it. Reuse rights are unconfirmed and the pictures are not bound as assets. Rendered private PDF page numbers are from a LibreOffice conversion, not app display.",
+      "required_action": "Owner confirms the licence or approves removal of the branding and contact details from anything delivered (FM-FACT-VENDOR-PERMISSION); FM-VIS-T1-BRANDING records the disposition of each object. Do not copy contact details into the repository.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
