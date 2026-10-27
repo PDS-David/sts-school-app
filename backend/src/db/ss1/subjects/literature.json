@@ -1,0 +1,54 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "literature",
+  "canonical_subject": "Literature-in-English",
+  "package_status": "PENDING",
+  "sources": [
+    {
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea",
+      "archive_member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Literature-in-English",
+      "header_text": "SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS",
+      "header_evidence": {
+        "locator": "SS1-SRC-470d43e54e5b: third line of mammoth 1.12.2 extractRawText() output (the importer's own .docx call), after the title line 'LIT-IN-ENGLISH'; trailing whitespace of the line is not included",
+        "explanation": "The document opens with the title 'LIT-IN-ENGLISH' (occurs once) and then this scheme heading, which occurs once and names Literature-in-English and class SS1; the document has no 'SUBJECT:' line. The subject is verified by the document and not by the filename, and it is not English Language: the scheme lists introduction to the study of literature, genres (drama, prose, poetry), fiction and non-fiction, elements of prose, features and forms of poetry, drama, oral literature, and Week 1 teaching separates English Literature from Literature-In-English. The heading differs from the canonical name by the 'SCHEME OF WORK FOR' prefix and class label, so a source_alias is declared."
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "SS1-SRC-470d43e54e5b-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "source_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea",
+      "anchor": "SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS",
+      "evidence": {
+        "locator": "SS1-SRC-470d43e54e5b: scheme heading line of extracted text (line 3)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS",
+      "canonical_subject": "Literature-in-English",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias and of the canonical name 'Literature-in-English' not yet recorded; not teacher approval of lesson content"
+    }
+  ],
+  "lessons": [],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [],
+  "open_items": [
+    {
+      "id": "LITERATURE-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source heading is 'SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS' (title line 'LIT-IN-ENGLISH'). It differs from the canonical subject name 'Literature-in-English' by prefix and class text, so the contract requires a source_alias declaration; rule SS1-SRC-470d43e54e5b-R001 carries approval_reference PENDING-OWNER. The canonical spelling comes from this header, not from SS1-02's draft script label.",
+      "required_action": "Owner records an approval reference for the alias and canonical name (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-470d43e54e5b-R001",
+        "SS1-SRC-470d43e54e5b"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}

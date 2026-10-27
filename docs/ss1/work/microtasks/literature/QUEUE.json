@@ -31,7 +31,8 @@
     "TEST": 1
   },
   "status_counts": {
-    "PENDING": 8,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 7,
     "BLOCKED": 1
   },
   "items": [
@@ -64,8 +65,8 @@
         "docs/ss1/work/microtasks/literature/LIT-SRC-T1.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No literature package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-470d43e54e5b, sha256=732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea, 31804 bytes, member 'SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. The SS1-02 checkpoint says the T1 opening was read only; no package was created. Not registered. The canonical name must come from the header: SS1-02's draft authoring script (docs/ss1/work/SS1-02/author_packages.py) uses the label \"Literature-in-English\", but that script produced no package and its label is not evidence. The member filename is \"LIT. IN ENGLISH.docx\" (the other terms are \"LITERATURE.docx\"); a filename variation is a candidate for a source-backed alias only if the header supports it, and an alias needs an approval_reference (never invented).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/literature.json created (package_status PENDING; lessons, delivery_corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-470d43e54e5b sha256=732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea archive_member='SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx' term='1st Term' canonical_subject='Literature-in-English' header_text='SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS' (line 3 of mammoth 1.12.2 extractRawText(); single occurrence confirmed; title line 'LIT-IN-ENGLISH' also occurs once); rule SS1-SRC-470d43e54e5b-R001 (source_alias, approval_reference PENDING-OWNER); open item LITERATURE-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Literature-in-English from the header, not English Language; no handoff needed. Evidence note: docs/ss1/work/microtasks/literature/LIT-SRC-T1.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example English Language), record an explicit handoff open item; do not delete or silently reassign. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -288,7 +289,7 @@
         "LIT-SRC-T3"
       ],
       "status": "PENDING",
-      "implementation_reference": "The SS1-02 checkpoint describes T2/T3 Literature as near-identical extracts, \"not yet proved identical or fully read\", and says a cross-term source must not be excluded under the current contract. The documents are different files (SHA-256 a12244cb\u2026 vs 319a4898\u2026; 57389 vs 56647 bytes). The relationship has not been recorded.",
+      "implementation_reference": "The SS1-02 checkpoint describes T2/T3 Literature as near-identical extracts, \"not yet proved identical or fully read\", and says a cross-term source must not be excluded under the current contract. The documents are different files (SHA-256 a12244cb… vs 319a4898…; 57389 vs 56647 bytes). The relationship has not been recorded.",
       "completion_condition": "A per-section comparison is written to the FACT note with locators; no exclusion rule is added; any difference that affects objectives is passed to the week items."
     },
     {
@@ -362,6 +363,8 @@
     }
   },
   "next_runnable": [
-    "LIT-SRC-T1"
+    "LIT-SRC-T2",
+    "LIT-SRC-T3",
+    "LIT-INV-T1"
   ]
 }
