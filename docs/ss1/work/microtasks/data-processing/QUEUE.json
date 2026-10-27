@@ -1,0 +1,316 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Data Processing",
+  "slug": "data-processing",
+  "generated_from": {
+    "master_sha": "f32ff234baa6333d1b568724ce6950014c6fc040",
+    "package": null,
+    "task": "SS1 subject queue: Data Processing (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv and the Worker E prompt)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Finding: there is no data-processing package, no SS1-06/Worker E checkpoint or handoff, no existing tests, no assets and no source notes on master, and no unmerged SS1 data-processing work on any origin/ss1/* branch (matches outside JSS3 documents are only the Worker E prompt, WORKER_START manifest, SOURCE_ASSIGNMENTS.csv and sourceRegistry.json). Nothing is recorded as implemented.",
+    "Three documents are assigned (one per term). All three assignments are filename-based (mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER); the header of none has been verified, so registration items read the header before anything is committed.",
+    "Policy (Foundation and Worker E): Data Processing is present in all three SS1 terms and must not be excluded under JSS3's Third-Term instruction ban or Computer Studies exclusion. It must not be silently translated into Computer Studies or ICT in the database; any alias needs an approval_reference and is recorded as an open item, never invented.",
+    "Worker E requires actual computer concepts, diagrams and accessible practical steps without exposing passwords or requiring unsafe execution. These govern later work; no content is invented here.",
+    "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
+    "DP-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). DP-SRC-T2/T3 depend on it so only one item creates the file.",
+    "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INVENTORY": 3,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 1
+  },
+  "status_counts": {
+    "PENDING": 7,
+    "BLOCKED": 1
+  },
+  "items": [
+    {
+      "id": "DP-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+      "objective": "Register the 1st Term Data Processing source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug data-processing, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-SRC-T1.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "No data-processing package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-a92792eaa7ef, sha256=a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b, 1056355 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx', worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. Do not map Data Processing to Computer Studies or ICT: if the header supports such an alias, record an open item (an alias needs an approval_reference; do not invent it). The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "DP-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/Data processing.docx",
+      "objective": "Register the 2nd Term Data Processing source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by DP-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-SRC-T2.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No data-processing package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-6880a598b05b, sha256=83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4, 193094 bytes, member 'SSS 1/2nd Term SS1_/Data processing.docx', worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. Do not map Data Processing to Computer Studies or ICT: if the header supports such an alias, record an open item (an alias needs an approval_reference; do not invent it). The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "DP-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+      "objective": "Register the 3rd Term Data Processing source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by DP-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-SRC-T3.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No data-processing package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-6763fdc397c3, sha256=09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804, 1493833 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx', worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. Do not map Data Processing to Computer Studies or ICT: if the header supports such an alias, record an open item (an alias needs an approval_reference; do not invent it). The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "DP-INV-T1",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 1st Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each diagram, table, screenshot, flowchart or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note computer concepts, diagrams and practical steps for separate preservation items, and any statement that may be outdated, unsafe to execute, or that exposes a password or credential: later correction work must keep the source's original wording distinct from the corrected fact and must not require unsafe execution. Data Processing is present in this term and must not be excluded under JSS3 policy. Do not rename it Computer Studies or ICT.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T1.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "DP-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 2nd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each diagram, table, screenshot, flowchart or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note computer concepts, diagrams and practical steps for separate preservation items, and any statement that may be outdated, unsafe to execute, or that exposes a password or credential: later correction work must keep the source's original wording distinct from the corrected fact and must not require unsafe execution. Data Processing is present in this term and must not be excluded under JSS3 policy. Do not rename it Computer Studies or ICT.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "DP-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 3rd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each diagram, table, screenshot, flowchart or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note computer concepts, diagrams and practical steps for separate preservation items, and any statement that may be outdated, unsafe to execute, or that exposes a password or credential: later correction work must keep the source's original wording distinct from the corrected fact and must not require unsafe execution. Data Processing is present in this term and must not be excluded under JSS3 policy. Do not rename it Computer Studies or ICT.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T3.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "DP-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/data-processing.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document, source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/data-processing.package.test.mts",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "depends_on": [
+        "DP-SRC-T1",
+        "DP-SRC-T2",
+        "DP-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/data-processing.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "DP-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any data-processing lessons. Separate stage; no agent may invent an approval_reference or verification.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/data-processing.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-INV-T2",
+        "DP-INV-T3",
+        "DP-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "f32ff234baa6333d1b568724ce6950014c6fc040",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 3,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+    }
+  },
+  "next_runnable": [
+    "DP-SRC-T1"
+  ]
+}
