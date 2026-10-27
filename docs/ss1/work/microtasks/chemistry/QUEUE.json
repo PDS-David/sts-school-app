@@ -31,7 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "PENDING": 10,
+    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "PENDING": 9,
     "BLOCKED": 1
   },
   "items": [
@@ -63,8 +64,8 @@
         "docs/ss1/work/microtasks/chemistry/CHEM-SRC-T1A.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-58b4a44c3afa, sha256=07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a, 2187976 bytes, member 'SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. This is one of TWO 1st Term Chemistry files; neither is a duplicate until CHEM-CMP-T1 compares them (the two have different hashes and sizes).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/chemistry.json created (package_status PENDING; lessons, corrections, assets, coverage empty). sources[0]: source_id=SS1-SRC-58b4a44c3afa sha256=07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a archive_member='SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx' term='1st Term' canonical_subject='Chemistry' header_text='SUBJECT:  CHEMISTRY' + 7 tabs + 'CLASS: SS1' (single occurrence confirmed with mammoth.extractRawText; 'CHEMISTRY' alone occurs 9 times); rule SS1-SRC-58b4a44c3afa-R001 (source_alias, approval_reference PENDING-OWNER); open item CHEMISTRY-ALIAS-APPROVAL (OWNER_ACTION, blocking). Composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 verified. Record: docs/ss1/work/microtasks/chemistry/CHEM-SRC-T1A.md. Implemented, not approved or verified.",
       "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -428,6 +429,9 @@
     }
   },
   "next_runnable": [
-    "CHEM-SRC-T1A"
+    "CHEM-SRC-T1B",
+    "CHEM-SRC-T2",
+    "CHEM-SRC-T3",
+    "CHEM-INV-T1A"
   ]
 }
