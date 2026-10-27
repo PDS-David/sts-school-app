@@ -1,0 +1,1787 @@
+{
+  "schema_version": "ss1-subject-v1",
+  "subject_slug": "mathematics",
+  "canonical_subject": "Mathematics",
+  "package_status": {
+    "implementation": "IN_PROGRESS",
+    "content_approval": "NOT_REQUESTED",
+    "verification": "NOT_RUN",
+    "updated_by": "SS1-03 worker B (Claude)",
+    "note": "Second and Third Term are implemented; First Term is blocked on the manifest source bytes (OI-MATHS-001). Set IMPLEMENTED only after that source is bound."
+  },
+  "sources": [
+    {
+      "source_id": "SS1-SRC-0c9004137f95",
+      "sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "archive_member": "SSS 1/1st Term SS1_/MATHss1.docx",
+      "class_name": "SS 1",
+      "term_label": "1st Term",
+      "canonical_subject": "Mathematics",
+      "document_header_subject": null,
+      "assignment_confirmed": false,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "NOT OPENED: the file supplied in chat (MATHss1.docx, 150666 bytes) has different bytes from the manifest source (819678 bytes); cannot be bound"
+      }
+    },
+    {
+      "source_id": "SS1-SRC-b802686e83d2",
+      "sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "document_header_subject": "SUBJECT: MATHEMATICS CLASS: SS 1",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "Header line 2 of the document"
+      }
+    },
+    {
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "document_header_subject": "SUBJECT: MATHEMATICS CLASS: SSS 1",
+      "assignment_confirmed": true,
+      "role": "PRIMARY",
+      "evidence_locator": {
+        "kind": "HEADER",
+        "value": "Header line 2 of the document"
+      }
+    }
+  ],
+  "source_rules": [
+    {
+      "rule_id": "MATHS-R01",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "reason": "Week Six is only a review/periodic-test heading with no teaching text (64 characters); kept as a marker row, not counted as teaching.",
+      "week_label": "WEEK SIX",
+      "anchor": "Review of the first half",
+      "classification": "EXAM_OR_REVISION_MARKER"
+    },
+    {
+      "rule_id": "MATHS-R02",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-ca00ca94afb9",
+      "source_sha256": "9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2",
+      "reason": "Week 7 is only the word REVISION (16 characters); kept as a marker row, not counted as teaching.",
+      "week_label": "WEEK 7",
+      "anchor": "REVISION",
+      "classification": "EXAM_OR_REVISION_MARKER"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "SUP-SS1-MATHS-001",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 1,
+      "title": "Solving quadratic equations by factorisation and by completing the square",
+      "objectives": [
+        "Recognise a quadratic equation and write it in the form ax² + bx + c = 0.",
+        "Solve quadratic equations by factorisation using the zero-product rule.",
+        "Solve quadratic equations by completing the square."
+      ],
+      "body": "A quadratic equation is an equation in which the highest power of the unknown is 2. Its standard form is ax² + bx + c = 0, where a, b and c are numbers and a is not 0. Examples: 2x² – 5x – 3 = 0, n² + 50 = 27n (rearranged to n² – 27n + 50 = 0) and 49 = k².\n\nTHE ZERO-PRODUCT RULE. If a × b = 0, then a = 0 or b = 0 (or both). So once a quadratic expression is written as a product of factors and the other side is 0, set each factor equal to 0.\n\nExample 1. Solve (x – 2)(x + 7) = 0. Either x – 2 = 0 or x + 7 = 0, so x = 2 or x = –7.\n\nExample 2. Solve m² – 5m – 14 = 0. Find two numbers whose product is –14 and whose sum is –5: they are –7 and +2. So (m – 7)(m + 2) = 0, giving m = 7 or m = –2.\n\nExample 3 (leading coefficient not 1). Solve 4y² + 5y – 21 = 0. Multiply a × c = 4 × (–21) = –84. Find two numbers with product –84 and sum +5: they are 12 and –7. Split the middle term: 4y² + 12y – 7y – 21 = 0. Group: 4y(y + 3) – 7(y + 3) = 0, so (y + 3)(4y – 7) = 0. Hence y = –3 or y = 7/4. Check y = –3: 4(9) + 5(–3) – 21 = 36 – 15 – 21 = 0. ✓\n\nExample 4 (difference of two squares). Solve m² = 16. Rewrite as m² – 16 = 0, so (m – 4)(m + 4) = 0 and m = 4 or m = –4.\n\nExample 5 (repeated root). Solve 9f² + 12f + 4 = 0. This is (3f + 2)² = 0, so f = –2/3 (a repeated root, counted twice).\n\nExample 6 (a factor outside the brackets). Solve d(d – 4)(d + 6) = 0. d = 0, 4 or –6.\n\nCOMPLETING THE SQUARE. Use this when the expression does not factorise easily.\nStep 1: Move the constant to the right: x² + bx = –c.\nStep 2: Add (b/2)² to both sides.\nStep 3: Write the left side as a perfect square (x + b/2)².\nStep 4: Take square roots of both sides (remember ±) and solve.\n\nExample 7. Solve x² + 6x – 7 = 0. x² + 6x = 7. Add 3² = 9: x² + 6x + 9 = 16, so (x + 3)² = 16. Then x + 3 = 4 or x + 3 = –4, so x = 1 or x = –7.\n\nExample 8 (a not 1). Solve 2x² + 4x – 5 = 0. Divide by 2: x² + 2x = 5/2. Add 1: (x + 1)² = 7/2. So x + 1 = ±√3.5 = ±1.871, giving x = 0.87 or x = –2.87 (2 d.p.).\n\nAlways check answers by substitution in the original equation.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Solve (x – 3)(x + 8) = 0.",
+          "answer": "x = 3 or x = –8.",
+          "marking": "1 mark each root; accept 'x = 3, –8'."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Solve x² – 15x + 54 = 0 by factorisation.",
+          "answer": "(x – 6)(x – 9) = 0, so x = 6 or x = 9.",
+          "marking": "1 mark factors, 1 mark each root."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Solve 12y² + y – 35 = 0.",
+          "answer": "(3y – 5)(4y + 7) = 0, so y = 5/3 or y = –7/4.",
+          "marking": "2 marks factorisation (split 21y and –20y), 1 mark each root."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Solve u² – 8u – 9 = 0 and check one answer by substitution.",
+          "answer": "(u – 9)(u + 1) = 0, so u = 9 or u = –1. Check u = –1: 1 + 8 – 9 = 0.",
+          "marking": "1 mark factors, 1 mark roots, 1 mark check."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Solve x² + 8x + 3 = 0 by completing the square, correct to 2 decimal places.",
+          "answer": "x² + 8x = –3; (x + 4)² = 13; x = –4 ± √13, so x = –0.39 or x = –7.61.",
+          "marking": "1 mark completing the square, 1 mark ±√13, 1 mark both values."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-001"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK ONE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "b2847fbb6c280b25504de68406dd637565881f97633c21b3feea5ec64936cfb8"
+    },
+    {
+      "id": "SUP-SS1-MATHS-002",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 2,
+      "title": "The quadratic formula, the discriminant, and the sum and product of roots",
+      "objectives": [
+        "Derive and use the quadratic formula x = (–b ± √(b² – 4ac)) / 2a.",
+        "Use the discriminant b² – 4ac to describe the nature of the roots.",
+        "Use α + β = –b/a and αβ = c/a to find expressions in the roots."
+      ],
+      "body": "DERIVING THE FORMULA. Start with ax² + bx + c = 0 (a not 0). Divide by a: x² + (b/a)x + c/a = 0. Move the constant: x² + (b/a)x = –c/a. Add the square of half the coefficient of x, (b/2a)², to both sides: x² + (b/a)x + b²/4a² = b²/4a² – c/a = (b² – 4ac)/4a². The left side is (x + b/2a)². Take square roots: x + b/2a = ±√(b² – 4ac) / 2a. Therefore\n\nx = (–b ± √(b² – 4ac)) / 2a.\n\nUSING THE FORMULA. Identify a, b, c with their signs, then substitute.\n\nExample 1. Solve 3x² – 5x – 3 = 0 (2 d.p.). a = 3, b = –5, c = –3. b² – 4ac = 25 + 36 = 61, √61 = 7.810. x = (5 ± 7.810)/6, so x = 2.135 or x = –0.468. Answer: x = 2.14 or x = –0.47.\n\nExample 2. Solve 6x² + 13x + 6 = 0. b² – 4ac = 169 – 144 = 25. x = (–13 ± 5)/12, so x = –8/12 = –2/3 or x = –18/12 = –3/2.\n\nExample 3. Solve 3x² – 12x + 10 = 0. b² – 4ac = 144 – 120 = 24, √24 = 4.899. x = (12 ± 4.899)/6, so x = 2.82 or x = 1.18 (2 d.p.).\n\nTHE DISCRIMINANT D = b² – 4ac. If D > 0 there are two different real roots. If D = 0 there is one repeated root. If D < 0 there are no real roots (the graph does not meet the x-axis).\n\nSUM AND PRODUCT OF ROOTS. If the roots are α and β, then ax² + bx + c = a(x – α)(x – β), so\nα + β = –b/a and αβ = c/a.\n\nExample 4. The roots of 3x² – 4x – 1 = 0 are α and β. Then α + β = 4/3 and αβ = –1/3.\nFind α/β + β/α. Write it as (α² + β²)/αβ = ((α + β)² – 2αβ)/αβ = (16/9 + 2/3)/(–1/3) = (22/9) × (–3) = –22/3.\nFind α – β. (α – β)² = (α + β)² – 4αβ = 16/9 + 4/3 = 28/9, so α – β = ±√28/3 = ±2√7/3.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Use the formula to solve t² – 8t + 2 = 0 to 2 decimal places.",
+          "answer": "D = 64 – 8 = 56, √56 = 7.483; t = (8 ± 7.483)/2 = 7.74 or 0.26.",
+          "marking": "1 mark substitution, 1 mark D, 1 mark each root."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Use the formula to solve t² + 3t + 1 = 0 to 2 decimal places.",
+          "answer": "D = 9 – 4 = 5; t = (–3 ± 2.236)/2 = –0.38 or –2.62.",
+          "marking": "1 mark D, 1 mark each root."
+        },
+        {
+          "id": "Q03",
+          "prompt": "If α and β are the roots of 2x² – 11x + 5 = 0, find α – β (take α > β).",
+          "answer": "α + β = 11/2, αβ = 5/2; (α – β)² = 121/4 – 10 = 81/4; α – β = 9/2.",
+          "marking": "1 mark each of sum and product, 1 mark (α – β)², 1 mark answer."
+        },
+        {
+          "id": "Q04",
+          "prompt": "If α and β are the roots of 2x² – 7x – 3 = 0, find αβ² + α²β.",
+          "answer": "α + β = 7/2, αβ = –3/2; αβ(α + β) = (–3/2)(7/2) = –21/4.",
+          "marking": "1 mark factorisation αβ(α + β), 1 mark values, 1 mark answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Without solving, state the nature of the roots of 9x² – 12x + 4 = 0.",
+          "answer": "D = 144 – 144 = 0, so the roots are equal (x = 2/3 twice).",
+          "marking": "1 mark D, 1 mark statement."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-002"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK TWO"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "71f500f4dbbdac612e9e8657a330295830c1022367e5998a63ae1391fa47d83c"
+    },
+    {
+      "id": "SUP-SS1-MATHS-003",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 3,
+      "title": "Graphs of quadratic functions: roots, maximum and minimum values, line of symmetry",
+      "objectives": [
+        "Draw the graph of a quadratic function from a table of values.",
+        "Read roots, the maximum or minimum value and the line of symmetry from the graph.",
+        "Find the equation of a parabola from its roots and one other point."
+      ],
+      "body": "STEPS FOR DRAWING y = ax² + bx + c. (1) Use the given range of x-values (choose a sensible range if none is given). (2) Work out y for each x and write a table. (3) Choose a scale that fits the paper. (4) Draw axes and plot the points. (5) Join them with a smooth curve (not straight segments).\n\nSHAPE. If a > 0 the curve is U-shaped and has a minimum point. If a < 0 it is ∩-shaped and has a maximum point.\n\nROOTS. The roots of ax² + bx + c = 0 are the x-values where the curve meets the x-axis (y = 0). The curve can cut the axis twice (two roots), touch it once (a repeated root) or miss it (no real roots).\n\nLINE OF SYMMETRY. A vertical line through the turning point, x = –b/2a, divides the curve into two equal halves.\n\nExample 1. Draw y = 11 + 8x – 2x² for x from –2 to 6.\nx:  –2, –1, 0, 1, 2, 3, 4, 5, 6\ny: –13, 1, 11, 17, 19, 17, 11, 1, –13\n(e.g. x = –2: 11 – 16 – 8 = –13.) Scale: 2 cm to 1 unit on x, 1 cm to 5 units on y.\nReading the graph: the curve meets the x-axis at about x = –1.1 and x = 5.1, so these are the roots of 11 + 8x – 2x² = 0, which is the same equation as 2x² – 8x – 11 = 0 (multiply by –1). Check by formula: x = (8 ± √152)/4 = 5.08 or –1.08. The maximum value of y is 19 at x = 2, and the line of symmetry is x = 2.\n\nExample 2. y = 4x² – 12x + 9 = (2x – 3)². The table for x = –1 to 4 gives y = 25, 9, 1, 1, 9, 25 (x = –1, 0, 1, 2, 3, 4; note y = 0 at x = 1.5). The curve touches the x-axis at x = 1.5 (repeated root), the minimum value is 0 and the line of symmetry is x = 1.5.\n\nFINDING THE EQUATION FROM A GRAPH. If the roots are p and q, then y = k(x – p)(x – q). Use one more point, usually the y-intercept, to find k.\nExample 3. The curve cuts the x-axis at x = –2 and x = ½ and the y-axis at y = –2. Then y = k(x + 2)(x – ½). At x = 0: k(2)(–½) = –k = –2, so k = 2. y = 2(x + 2)(x – ½) = 2x² + 3x – 2.\nExample 4. A curve touches the x-axis at x = –4 and cuts the y-axis at y = 16. Then y = k(x + 4)², and 16k = 16 gives k = 1: y = x² + 8x + 16.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Complete a table for y = x² – 2x for x = –2 to 4 and use it to read the roots, the least value of y and the values of x when y = 7.",
+          "answer": "y = 8, 3, 0, –1, 0, 3, 8. Roots x = 0 and x = 2; least value –1 at x = 1; y = 7 when x = 1 ± √8, i.e. x = 3.83 or –1.83.",
+          "marking": "2 marks table, 1 mark curve, 1 mark roots, 1 mark least value, 1 mark each x for y = 7 (±0.1 allowed from the graph)."
+        },
+        {
+          "id": "Q02",
+          "prompt": "For y = x² + 2x – 2 find the minimum value, the line of symmetry and the roots of x² + 2x – 2 = 0 (2 d.p.).",
+          "answer": "Minimum y = –3 at x = –1; line of symmetry x = –1; roots x = –1 ± √3 = 0.73 or –2.73.",
+          "marking": "1 mark each of minimum, axis; 1 mark each root."
+        },
+        {
+          "id": "Q03",
+          "prompt": "A parabola cuts the x-axis at x = 1 and x = 4 and passes through (0, 8). Find its equation.",
+          "answer": "y = k(x – 1)(x – 4); at x = 0: 4k = 8, k = 2; y = 2x² – 10x + 8.",
+          "marking": "1 mark form, 1 mark k, 1 mark expansion."
+        },
+        {
+          "id": "Q04",
+          "prompt": "For y = x² + 3x – 4 find the roots, the least value of y and the values of x when y = 1 (2 d.p.).",
+          "answer": "Roots –4 and 1; least value –6.25 at x = –1.5; for y = 1: x² + 3x – 5 = 0, x = 1.19 or –4.19.",
+          "marking": "1 mark roots, 1 mark each of least value and axis, 1 mark each x."
+        },
+        {
+          "id": "Q05",
+          "prompt": "State, without drawing, whether y = –x² + 4x – 7 has a maximum or minimum, and find it.",
+          "answer": "a = –1 < 0 so a maximum; at x = 2, y = –4 + 8 – 7 = –3.",
+          "marking": "1 mark maximum, 1 mark x = 2, 1 mark y = –3."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-003"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK THREE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore the graphs and equations that text extraction drops from source Week Three. NOTE: source Week Three, Example 2 (finding an equation from a graph) states a y-intercept of 15 but derives a constant of –16; that inconsistent example is not reproduced, and Example 4 above is a consistent replacement."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Intermediate Algebra 2e (open textbook, CC BY)",
+          "url": "https://openstax.org/books/intermediate-algebra-2e/pages/preface"
+        }
+      ],
+      "content_hash": "a1d4ef263b2e77e184f76d28c7e7e8c0ea9ccb87711b4a50a3139f9663af3457"
+    },
+    {
+      "id": "SUP-SS1-MATHS-004",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 4,
+      "title": "Venn diagrams: solving problems with two and three sets",
+      "objectives": [
+        "Describe regions of a Venn diagram using set notation.",
+        "Solve two-set problems by forming and solving an equation from the regions.",
+        "Solve three-set problems, including exactly-one and exactly-two regions."
+      ],
+      "body": "A Venn diagram shows sets as closed curves inside a rectangle that represents the universal set U (or ε). Regions are described with ∩ (intersection), ∪ (union) and ′ (complement). The key fact: the numbers in all regions add up to n(U).\n\nFor two sets A and B: n(A ∪ B) = n(A) + n(B) – n(A ∩ B).\n\nExample 1. Of 400 students, 300 offer Biology (B), 190 offer Chemistry (C) and 70 offer neither. Let x offer both. Regions: B only = 300 – x, both = x, C only = 190 – x, neither = 70. (300 – x) + x + (190 – x) + 70 = 400, so 560 – x = 400 and x = 160. (i) Both: 160. (ii) At least one subject: 400 – 70 = 330.\n\nExample 2. A club has 94 members: 60 like modern music (M), 50 like traditional (T). The number who like both is three times the number who like neither. Let neither = x, both = 3x. (60 – 3x) + 3x + (50 – 3x) + x = 94, so 110 – 2x = 94, x = 8. Only one type: (60 – 24) + (50 – 24) = 36 + 26 = 62 members.\n\nTHREE SETS. Work from the middle outwards: first the triple intersection, then the pair regions (pair total minus triple), then 'only' regions.\nExample 3. 290 people read at least one of three newspapers: D = 181, G = 142, P = 117; D∩G = 75, D∩P = 60, G∩P = 54. Let x read all three. n(D ∪ G ∪ P) = 181 + 142 + 117 – 75 – 60 – 54 + x = 251 + x = 290, so x = 39.\nExactly two papers: (75 – 39) + (60 – 39) + (54 – 39) = 36 + 21 + 15 = 72.\nExactly one: D only = 181 – (36 + 21 + 39) = 85; G only = 142 – (36 + 15 + 39) = 52; P only = 117 – (21 + 15 + 39) = 42; total 179.\nCheck: 39 + 72 + 179 = 290. ✓\n\nSketch each problem: draw the rectangle, the curves, put x in the middle, then fill the other regions in terms of x.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Of 50 students, 23 answered question A only, 15 answered B only, 2 answered both and 2x answered neither. Find x.",
+          "answer": "23 + 15 + 2 + 2x = 50, so 2x = 10 and x = 5.",
+          "marking": "1 mark equation, 1 mark x."
+        },
+        {
+          "id": "Q02",
+          "prompt": "In a class of 50, 24 like oranges, 23 like apples and 7 like both. How many like neither, and what percentage like apples only?",
+          "answer": "Neither = 50 – (24 + 23 – 7) = 10. Apples only = 23 – 7 = 16, which is 16/50 = 32%.",
+          "marking": "1 mark each: union, neither, apples only, percentage."
+        },
+        {
+          "id": "Q03",
+          "prompt": "In a group of 60 learners, 30 are in the English club (E), 25 in Maths (M), 20 in Science (S); E∩M = 10, E∩S = 8, M∩S = 7 and 4 are in all three. How many are in at least one club, in none, and in English only?",
+          "answer": "At least one: 30 + 25 + 20 – 10 – 8 – 7 + 4 = 54. None: 6. English only: 30 – (10 + 8 – 4) = 16.",
+          "marking": "1 mark each part; 1 mark for a correct diagram."
+        },
+        {
+          "id": "Q04",
+          "prompt": "U = {1,…,10}, A = {2,4,6,8}, B = {1,2,5,9}, C = {2,3,9,10}. Find A∩B∩C and C∩(A∩B)′.",
+          "answer": "A∩B∩C = {2}. (A∩B)′ = {1,3,4,5,6,7,8,9,10}, so C∩(A∩B)′ = {3,9,10}.",
+          "marking": "1 mark each answer; method shown."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-005"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK FIVE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Contemporary Mathematics, Chapter 1 key terms (sets)",
+          "url": "https://openstax.org/books/contemporary-mathematics/pages/1-key-terms"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "5bd36f146bb0b5ca283d33c28b92a3ddad954361ed050bf4dd7107aa0400b1f6"
+    },
+    {
+      "id": "SUP-SS1-MATHS-005",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 5,
+      "title": "Trigonometric ratios of acute angles, tables, chords and graphs of sine and cosine",
+      "objectives": [
+        "Define sine, cosine and tangent in a right-angled triangle.",
+        "Use tables or a calculator to find ratios and angles.",
+        "Find the length of a chord and sketch y = sin x and y = cos x for 0° ≤ x ≤ 360°."
+      ],
+      "body": "In a right-angled triangle label the sides from the chosen acute angle θ: opposite (opp), adjacent (adj) and hypotenuse (hyp, the side opposite the right angle).\nsin θ = opp/hyp, cos θ = adj/hyp, tan θ = opp/adj. (Memory aid: SOH CAH TOA.) Also tan θ = sin θ / cos θ.\n\nExample 1. A triangle has opp = 5, adj = 12, hyp = 13. sin θ = 5/13, cos θ = 12/13, tan θ = 5/12. To find θ: tan θ = 5/12 = 0.4167, so θ = 22.6° (use tan⁻¹ on a calculator or the table of tangents).\n\nSPECIAL ANGLES. sin 30° = ½, cos 30° = √3/2 = 0.8660, tan 30° = 0.5774; sin 45° = cos 45° = 0.7071, tan 45° = 1; sin 60° = 0.8660, cos 60° = ½, tan 60° = 1.7321. Also sin θ = cos(90° – θ).\n\nUSING TABLES. Four-figure tables list sin, cos, tan for angles in degrees and tenths; read the row (degrees) and column (tenths) and, for cos, subtract the 'difference' columns. A calculator in degree mode gives the same values; check the mode first.\n\nLENGTH OF A CHORD. A chord subtends an angle θ at the centre of a circle of radius r. Draw the perpendicular from the centre to the chord: it bisects the chord and the angle. Half the chord = r sin(θ/2), so chord = 2r sin(θ/2).\nExample 2. r = 7 cm, θ = 100°. Chord = 2 × 7 × sin 50° = 14 × 0.7660 = 10.72 cm.\n\nGRAPHS. For y = sin x: y = 0 at 0°, 180°, 360°; y = 1 at 90°; y = –1 at 270°. For y = cos x: y = 1 at 0° and 360°; y = 0 at 90° and 270°; y = –1 at 180°. Both are smooth waves between –1 and 1; the cosine curve is the sine curve shifted 90° to the left. Plot points every 30° to draw them.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "A right-angled triangle has hypotenuse 25 and opposite side 7. Find the adjacent side, sin θ, cos θ and tan θ.",
+          "answer": "adj = √(625 – 49) = 24; sin θ = 7/25, cos θ = 24/25, tan θ = 7/24.",
+          "marking": "1 mark adj, 1 mark each ratio."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find θ (nearest 0.1°) if sin θ = 0.6.",
+          "answer": "θ = 36.9°.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Find the length of a chord that subtends 60° at the centre of a circle of radius 10 cm.",
+          "answer": "2 × 10 × sin 30° = 10 cm.",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Without a calculator, state sin 90°, cos 180° and the angles in 0° ≤ x ≤ 360° where sin x = 0.",
+          "answer": "sin 90° = 1; cos 180° = –1; sin x = 0 at 0°, 180°, 360°.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Find the chord length for r = 12 cm and angle at centre 80°, to 1 d.p.",
+          "answer": "2 × 12 × sin 40° = 24 × 0.6428 = 15.4 cm.",
+          "marking": "1 mark formula, 1 mark substitution, 1 mark answer."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-007"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK SEVEN"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Algebra and Trigonometry: Right Triangle Trigonometry (via LibreTexts)",
+          "url": "https://math.libretexts.org/Bookshelves/Algebra/Book%3A_Algebra_and_Trigonometry_(OpenStax)/07%3A_The_Unit_Circle_-_Sine_and_Cosine_Functions/7.02%3A_Right_Triangle_Trigonometry/7.2E%3A_Right_Triangle_Trigonometry_(Exercises)"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "bfb92d6e9f0cd88a411a309801526bf1152a79c6bfbce5bb64b155371a884b62"
+    },
+    {
+      "id": "SUP-SS1-MATHS-006",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 6,
+      "title": "Applying trigonometry: right-angled triangles, angles of elevation and depression, and bearings",
+      "objectives": [
+        "Solve right-angled triangle problems using sine, cosine and tangent.",
+        "Solve problems with angles of elevation and depression.",
+        "Use three-figure bearings and find reverse bearings."
+      ],
+      "body": "SOLVING TRIANGLES. Choose the ratio that links the known and unknown sides: to find a side use opp = hyp × sin θ, adj = hyp × cos θ, opp = adj × tan θ; to find an angle use the inverse function.\n\nELEVATION AND DEPRESSION. The angle of elevation is measured upwards from the horizontal to the line of sight; the angle of depression is measured downwards from the horizontal. The angle of depression of a point from above equals the angle of elevation of the observer from that point (alternate angles).\nExample 1. From a point 50 m from the foot of a tower, the angle of elevation of the top is 35°. Height = 50 × tan 35° = 50 × 0.7002 = 35.0 m.\nExample 2. From the top of a 60 m cliff the angle of depression of a boat is 25°. The horizontal distance = 60 / tan 25° = 60 / 0.4663 = 128.7 m.\n\nBEARINGS. A bearing is an angle measured clockwise from North, written with three figures (e.g. 075°, 240°). To go back, add 180° if the bearing is below 180°, subtract 180° if it is above.\nExample 3. A ship sails 12 km on a bearing of 060°. Distance north = 12 cos 60° = 6 km; distance east = 12 sin 60° = 10.39 km. The bearing of the start from the ship is 240°.\nExample 4. A plane flies 80 km on a bearing of 120°. East = 80 sin 120° = 80 × 0.8660 = 69.3 km; the plane is also 80 cos 60° = 40 km south of its start.\n\nAlways draw a clear diagram marking North lines, the angle given and the unknown.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "A 6 m ladder makes an angle of 70° with the ground. How high up the wall does it reach (1 d.p.)?",
+          "answer": "6 sin 70° = 6 × 0.9397 = 5.6 m.",
+          "marking": "1 mark diagram, 1 mark ratio, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "The angle of elevation of the top of a tree from a point 40 m from its base is 42°. Find the height.",
+          "answer": "40 tan 42° = 40 × 0.9004 = 36.0 m.",
+          "marking": "1 mark ratio, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "A plane flies 80 km on a bearing of 120°. How far east and how far south of its start is it?",
+          "answer": "East = 80 sin 120° = 69.3 km; south = 80 cos 60° = 40 km.",
+          "marking": "1 mark each distance, 1 mark diagram."
+        },
+        {
+          "id": "Q04",
+          "prompt": "The bearing of B from A is 075°. Find the bearing of A from B.",
+          "answer": "075° + 180° = 255°.",
+          "marking": "1 mark method, 1 mark answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "From the top of a 45 m building the angle of depression of a car is 30°. How far is the car from the foot of the building?",
+          "answer": "45 / tan 30° = 45 / 0.5774 = 77.9 m.",
+          "marking": "1 mark ratio, 1 mark answer."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-008"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK EIGHT"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Algebra and Trigonometry: Right Triangle Trigonometry (via LibreTexts)",
+          "url": "https://math.libretexts.org/Bookshelves/Algebra/Book%3A_Algebra_and_Trigonometry_(OpenStax)/07%3A_The_Unit_Circle_-_Sine_and_Cosine_Functions/7.02%3A_Right_Triangle_Trigonometry/7.2E%3A_Right_Triangle_Trigonometry_(Exercises)"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "fb6157d761b144f34f2ae282e41c535d9a6a89ebd58f92f2181ee597edf3e465"
+    },
+    {
+      "id": "SUP-SS1-MATHS-007",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 7,
+      "title": "Circles: properties, arc length, sector and segment areas",
+      "objectives": [
+        "State and use the main circle properties.",
+        "Calculate arc length and perimeter of a sector.",
+        "Calculate areas of sectors, segments and triangles."
+      ],
+      "body": "CIRCLE PROPERTIES. (1) The angle at the centre is twice the angle at the circumference on the same arc. (2) Angles in the same segment are equal. (3) The angle in a semicircle is 90°. (4) Opposite angles of a cyclic quadrilateral add to 180°. (5) A tangent is perpendicular to the radius at the point of contact. (6) Tangents drawn from an outside point have equal lengths.\n\nFORMULAS (θ is the angle at the centre in degrees).\nArc length = (θ/360) × 2πr. Sector area = (θ/360) × πr². Perimeter of a sector = arc length + 2r.\nTriangle area = ½ab sin C. Segment area = sector area – triangle area = (θ/360)πr² – ½r² sin θ.\n\nExample 1 (π = 22/7). r = 7 cm, θ = 60°. Arc = (60/360) × 2 × 22/7 × 7 = 44/6 = 7.33 cm. Sector area = (1/6) × 22/7 × 49 = 25.67 cm². Perimeter = 7.33 + 14 = 21.33 cm.\n\nExample 2 (π = 3.142). r = 10 cm, θ = 90°. Sector = (1/4) × 3.142 × 100 = 78.55 cm². Triangle = ½ × 10 × 10 × sin 90° = 50 cm². Segment = 78.55 – 50 = 28.55 cm².\n\nExample 3. The angle at the centre is 100°. The angle at the circumference standing on the same arc is 50°.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find the arc length for r = 14 cm, θ = 45° (π = 22/7).",
+          "answer": "(45/360) × 2 × 22/7 × 14 = 11 cm.",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Find the area of a sector with r = 6 cm and θ = 120° (π = 3.142, 2 d.p.).",
+          "answer": "(1/3) × 3.142 × 36 = 37.70 cm².",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Find the perimeter of a sector with r = 10 cm and θ = 72° (2 d.p.).",
+          "answer": "Arc = 4π = 12.57; perimeter = 12.57 + 20 = 32.57 cm.",
+          "marking": "1 mark arc, 1 mark adding 2r."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find the area of the segment cut off by a chord that subtends 60° at the centre of a circle of radius 8 cm (2 d.p.).",
+          "answer": "Sector 33.51; triangle ½ × 64 × sin 60° = 27.71; segment = 5.80 cm².",
+          "marking": "1 mark each: sector, triangle, subtraction."
+        },
+        {
+          "id": "Q05",
+          "prompt": "State the size of the angle in a semicircle and of the angle between a tangent and the radius.",
+          "answer": "Both are 90°.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-009"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK NINE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "2c7e7c1f2114fd866f9e3550658573820d091f4562ed0640e921dbb1f89aff11"
+    },
+    {
+      "id": "SUP-SS1-MATHS-008",
+      "class_name": "SS 1",
+      "term_label": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 8,
+      "title": "Logic: statements, negation, and conditional statements",
+      "objectives": [
+        "Decide whether a simple statement is true or false.",
+        "Write the negation of a statement.",
+        "Write the converse, inverse and contrapositive of a conditional statement and judge their truth."
+      ],
+      "body": "A STATEMENT is a sentence that is either true or false, never both. 'Lagos is in Nigeria' is true; '7 + 2 = 10' is false; 'Close the door' is not a statement.\n\nNEGATION. The negation of p, written ¬p (not p), has the opposite truth value. Negation of 'x > 5' is 'x ≤ 5'. Negation of 'All students passed' is 'Not all students passed' (at least one did not).\n\nCONDITIONAL (IMPLICATION). 'If p then q' is written p ⇒ q. p is the antecedent (hypothesis) and q the consequent (conclusion). It is false only when p is true and q is false.\nTruth table: p T, q T → T; p T, q F → F; p F, q T → T; p F, q F → T.\n\nRELATED STATEMENTS of p ⇒ q:\nConverse: q ⇒ p. Inverse: ¬p ⇒ ¬q. Contrapositive: ¬q ⇒ ¬p.\nThe contrapositive always has the same truth value as the original statement; the converse and inverse need not.\n\nExample. Original: 'If a number is divisible by 6, then it is divisible by 3' (true). Contrapositive: 'If a number is not divisible by 3, then it is not divisible by 6' (true). Converse: 'If a number is divisible by 3, then it is divisible by 6' (false: 9 is a counterexample).\n\nA false statement is disproved by one counterexample.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Write the negation of 'All the pupils passed'.",
+          "answer": "Not all the pupils passed (some pupil did not pass).",
+          "marking": "1 mark meaning, 1 mark correct wording."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Write the negation of 'x > 5'.",
+          "answer": "x ≤ 5.",
+          "marking": "1 mark."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Write the contrapositive of 'If a shape is a square, then it has four equal sides'.",
+          "answer": "If a shape does not have four equal sides, then it is not a square.",
+          "marking": "2 marks: reversed and both negated."
+        },
+        {
+          "id": "Q04",
+          "prompt": "State the converse of 'If a number is divisible by 6 then it is divisible by 3' and say whether it is true.",
+          "answer": "If a number is divisible by 3 then it is divisible by 6. False (9).",
+          "marking": "1 mark converse, 1 mark counterexample."
+        },
+        {
+          "id": "Q05",
+          "prompt": "Is 'If 2 + 2 = 5 then 3 is odd' true or false?",
+          "answer": "True: the antecedent is false, so the implication is true.",
+          "marking": "1 mark answer, 1 mark reason."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-2-010"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-b802686e83d2"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-b802686e83d2",
+            "week_label": "WEEK TEN"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "abf0c6ec8d8eaefa99a1abfc0485de59964434abc1838b3aa3a76e8f258d21a7"
+    },
+    {
+      "id": "SUP-SS1-MATHS-009",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 1,
+      "title": "Mensuration of solids: surface area and volume of cubes, cuboids, cylinders, prisms, cones and pyramids",
+      "objectives": [
+        "State the faces, edges and vertices of common solids.",
+        "Calculate surface areas and volumes of cube, cuboid, cylinder, prism, cone and pyramid."
+      ],
+      "body": "PROPERTIES. A cube has 6 square faces, 12 edges and 8 vertices. A cuboid has 6 rectangular faces, 12 edges and 8 vertices. A triangular prism has 5 faces (3 rectangles, 2 triangles), 9 edges and 6 vertices. A rectangular-based pyramid has 5 faces, 8 edges and 5 vertices. Each solid has a net: the flat shape that folds into it.\n\nFORMULAS (V = volume, A = total surface area).\nCube (side a): V = a³, A = 6a².\nCuboid (l, b, h): V = lbh, A = 2(lb + lh + bh).\nPrism: V = (area of cross-section) × length; A = 2 × cross-section + (perimeter of cross-section × length).\nCylinder (radius r, height h): V = πr²h; curved area = 2πrh; A = 2πr(r + h).\nCone: slant height l = √(r² + h²); V = ⅓πr²h; curved area = πrl; A = πr(r + l).\nPyramid: V = ⅓ × (base area) × h.\n\nExample 1. Cylinder r = 7 cm, h = 10 cm, π = 22/7. V = 22/7 × 49 × 10 = 1540 cm³. A = 2 × 22/7 × 7 × (7 + 10) = 44 × 17 = 748 cm².\nExample 2. Cone r = 3 cm, h = 4 cm. l = 5 cm. V = ⅓π(9)(4) = 12π = 37.70 cm³. A = π × 3 × (3 + 5) = 24π = 75.40 cm².\nExample 3. Triangular prism with a right-angled triangle (3, 4, 5 cm) cross-section and length 10 cm. V = ½ × 3 × 4 × 10 = 60 cm³. A = 2 × 6 + (3 + 4 + 5) × 10 = 12 + 120 = 132 cm².\nExample 4. Square-based pyramid, base 6 cm, height 4 cm. V = ⅓ × 36 × 4 = 48 cm³. Slant height of a triangular face = √(3² + 4²) = 5 cm, so A = 36 + 4 × (½ × 6 × 5) = 96 cm².\n\nAlways state units: cm² for area, cm³ for volume.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "A cuboid measures 8 cm by 5 cm by 3 cm. Find its volume and total surface area.",
+          "answer": "V = 120 cm³; A = 2(40 + 24 + 15) = 158 cm².",
+          "marking": "1 mark each formula, 1 mark each answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "A cylinder has radius 3.5 cm and height 12 cm. Find its volume (π = 22/7).",
+          "answer": "22/7 × 12.25 × 12 = 462 cm³.",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "A cone has base radius 5 cm and height 12 cm. Find the slant height, volume and total surface area (π = 3.142).",
+          "answer": "l = 13 cm; V = ⅓ × 3.142 × 25 × 12 = 314.2 cm³; A = 3.142 × 5 × 18 = 282.8 cm².",
+          "marking": "1 mark each of l, V, A."
+        },
+        {
+          "id": "Q04",
+          "prompt": "A square-based pyramid has base 10 cm and height 12 cm. Find its volume.",
+          "answer": "⅓ × 100 × 12 = 400 cm³.",
+          "marking": "1 mark formula, 1 mark answer."
+        },
+        {
+          "id": "Q05",
+          "prompt": "A triangular prism has cross-section a right-angled triangle with legs 6 cm and 8 cm and length 15 cm. Find its volume.",
+          "answer": "½ × 6 × 8 × 15 = 360 cm³.",
+          "marking": "1 mark area of triangle, 1 mark answer."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-001"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK ONE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "63b702e095bfdda22a3ad072d198d98bf575e1c1e628cd86ccb61ab92b08c7bf"
+    },
+    {
+      "id": "SUP-SS1-MATHS-010",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 2,
+      "title": "Volumes of frustums, the angle sum of a triangle, and the exterior angle theorem",
+      "objectives": [
+        "Find the volume of a frustum of a cone and of a pyramid.",
+        "Prove that the angles of a triangle sum to 180°.",
+        "State and use the exterior angle theorem."
+      ],
+      "body": "FRUSTUM. A frustum is a cone or pyramid with its top cut off by a plane parallel to the base. Method 1: volume of the large solid minus volume of the small solid removed (similar solids: lengths in ratio k, volumes in ratio k³). Method 2 (formulas):\nFrustum of a cone (radii R and r, height h): V = ⅓πh(R² + Rr + r²).\nFrustum of a pyramid (base areas A₁ and A₂, height h): V = ⅓h(A₁ + √(A₁A₂) + A₂).\nExample 1. Cone frustum R = 6 cm, r = 3 cm, h = 4 cm: V = ⅓ × π × 4 × (36 + 18 + 9) = 84π = 263.9 cm³.\nExample 2. Square-based pyramid frustum with bases 6 cm and 3 cm sides, h = 4 cm: A₁ = 36, A₂ = 9, √(A₁A₂) = 18; V = ⅓ × 4 × 63 = 84 cm³.\n\nANGLE SUM OF A TRIANGLE. Given triangle ABC, draw a line through A parallel to BC. The angle between this line and AB equals angle B (alternate angles); the angle between it and AC equals angle C (alternate angles). These two angles and angle A lie on a straight line, so they add up to 180°. Hence A + B + C = 180°.\n\nEXTERIOR ANGLE THEOREM. If side BC is extended to D, the exterior angle ACD = 180° – C = A + B. The exterior angle equals the sum of the two interior opposite angles.\nExample 3. Triangle angles 50° and 60°: the third angle is 70°; the exterior angle at the 70° vertex is 110° = 50° + 60°.\nExample 4. Angles x, 2x, 3x: 6x = 180°, x = 30°; angles 30°, 60°, 90°.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Find the volume of a cone frustum with R = 8 cm, r = 4 cm and h = 6 cm (π = 3.142).",
+          "answer": "⅓ × 3.142 × 6 × (64 + 32 + 16) = 703.8 cm³.",
+          "marking": "1 mark formula, 1 mark substitution, 1 mark answer."
+        },
+        {
+          "id": "Q02",
+          "prompt": "A cone of height 12 cm is cut by a plane 8 cm above the base, parallel to the base; the small cone removed has height 4 cm. What fraction of the volume of the whole cone is removed?",
+          "answer": "Ratio of heights 4:12 = 1:3, volumes 1:27, so 1/27 is removed.",
+          "marking": "1 mark ratio, 1 mark cube, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Two angles of a triangle are 48° and 67°. Find the third angle and the exterior angle at the vertex of the 48° angle.",
+          "answer": "Third angle 65°; exterior angle at the 48° vertex = 180° – 48° = 132° (= 67° + 65°).",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Write a short proof that the angles of a triangle add up to 180°.",
+          "answer": "Draw a line through one vertex parallel to the opposite side; alternate angles give the other two angles; the three angles lie on a straight line = 180°.",
+          "marking": "1 mark construction, 1 mark alternate angles, 1 mark conclusion."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-002"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK TWO"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "3fb53dec38253b9bf8c9717bb446200bbc8fd6dd5c480d9e4b52c5fd09c9abd2"
+    },
+    {
+      "id": "SUP-SS1-MATHS-011",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 3,
+      "title": "Geometrical constructions with ruler and compasses, quadrilaterals and loci",
+      "objectives": [
+        "Bisect line segments and angles with ruler and compasses.",
+        "Construct angles of 90°, 60°, 45°, 30°, 120°, 135° and 22½°.",
+        "Construct triangles, a parallelogram and an equilateral triangle, and describe simple loci."
+      ],
+      "body": "TOOLS. Use a sharp pencil, ruler, compasses and protractor. Keep construction arcs visible; do not rub them out.\n\nPERPENDICULAR BISECTOR of AB. With the compasses set to more than half of AB, draw arcs from A and from B so they cross above and below the line. Join the two crossing points. This line cuts AB at its midpoint at 90°.\n\nANGLE BISECTOR of angle ABC. Put the compass point on B and draw an arc cutting BA and BC at P and Q. From P and Q draw arcs of equal radius that cross at R. Join B to R.\n\n60° and equilateral triangle. Draw a line AB. With A as centre and radius AB draw an arc; with B as centre and the same radius draw a second arc crossing it at C. Triangle ABC is equilateral; each angle is 60°.\n90°. Construct the perpendicular at a point on a line (arcs of equal radius on both sides of the point, then bisect).\nDerived angles: bisect 90° for 45°; bisect 60° for 30°; 60° + 60° for 120°; 90° + 45° for 135°; bisect 45° for 22½°; 90° – 22½° for 67½°.\n\nTRIANGLES. SSS: draw the base, then arcs from each end with the other two sides to find the apex. SAS: draw one side, construct the given angle, mark the second side. ASA: draw the side, construct the angles at both ends.\n\nPARALLELOGRAM ABCD given AB, AD and angle A: draw AB, construct angle A, mark D on that ray with AD, then draw arcs from D (radius AB) and from B (radius AD) crossing at C.\n\nLOCI. A locus is the path of a point obeying a rule. Points equidistant from two fixed points lie on their perpendicular bisector. Points equidistant from two intersecting lines lie on the angle bisectors. Points at a constant distance from a fixed point lie on a circle. Points at a constant distance from a line lie on two parallel lines.\n\nSCHEME NOTE: the scheme lists '57½°'; 57½° cannot be constructed by bisection from standard angles, so it is probably a typing slip for 67½°. This lesson teaches 22½° and 67½°.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Construct triangle ABC with AB = 7 cm, BC = 6 cm and AC = 5 cm. Measure angle B and check by calculation.",
+          "answer": "cos B = (49 + 36 – 25)/(2 × 7 × 6) = 60/84, so B = 44.4°. Accept 44° ± 1° on the drawing.",
+          "marking": "2 marks accurate construction (±2 mm), 1 mark measured angle, 1 mark calculation."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Construct an angle of 22½° and label the steps.",
+          "answer": "Construct 90°, bisect to 45°, bisect again to 22½°; arcs shown.",
+          "marking": "1 mark each correct stage, 1 mark accuracy (±1°)."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Construct a parallelogram ABCD with AB = 6 cm, AD = 4 cm and angle A = 60°.",
+          "answer": "Opposite sides equal and parallel; BD ≈ 5.3 cm (√(36 + 16 – 2 × 6 × 4 × cos 60°) = √28 ≈ 5.29).",
+          "marking": "2 marks construction, 1 mark BD check."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Describe and draw the locus of points 3 cm from a fixed line segment AB of length 6 cm.",
+          "answer": "Two lines parallel to AB at 3 cm on either side joined by semicircles of radius 3 cm at the ends (a 'stadium' shape).",
+          "marking": "1 mark each: parallels, semicircles, accuracy."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-003",
+        "MATHS-3-004"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK THREE"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "90b51d08b2629ba26e7e0ded47833c3b3f5d3da78995cb0c752c9a6a4d5a106c"
+    },
+    {
+      "id": "SUP-SS1-MATHS-012",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 4,
+      "title": "Deductive proofs: congruent triangles, parallelograms and the intercept theorem",
+      "objectives": [
+        "State the conditions for congruent triangles.",
+        "Prove simple results about parallelograms using congruence.",
+        "State and apply the intercept theorem."
+      ],
+      "body": "A DEDUCTIVE PROOF starts from known facts (definitions, earlier theorems) and reaches the result by logical steps, giving a reason for each step.\n\nKNOWN FACTS. Angles on a straight line add to 180°. Vertically opposite angles are equal. Corresponding and alternate angles between parallel lines are equal; co-interior angles add to 180°. Angles of a triangle add to 180°.\n\nCONGRUENT TRIANGLES have equal corresponding sides and angles. The conditions: SSS (three sides), SAS (two sides and the included angle), ASA or AAS (two angles and a corresponding side), RHS (right angle, hypotenuse and one side).\n\nProof 1. Opposite sides of a parallelogram ABCD are equal. Draw diagonal AC. In triangles ABC and CDA: angle BAC = angle DCA (alternate angles, AB ∥ DC); angle BCA = angle DAC (alternate angles, BC ∥ AD); AC is common. So the triangles are congruent (ASA), hence AB = CD and BC = DA.\nProof 2. The diagonals of a parallelogram bisect each other. In triangles AOB and COD (O the meeting point): angle OAB = angle OCD and angle OBA = angle ODC (alternate angles) and AB = CD (Proof 1), so the triangles are congruent (ASA); so AO = OC and BO = OD.\nProof 3. Opposite angles of a parallelogram are equal: from the congruent triangles ABC and CDA, angle B = angle D.\n\nINTERCEPT THEOREM. If a line parallel to one side of a triangle meets the other two sides, it divides them in the same ratio. In triangle ABC, if DE ∥ BC with D on AB and E on AC, then AD/DB = AE/EC (and AD/AB = AE/AC = DE/BC).\nExample. AD = 4 cm, DB = 6 cm, AE = 3 cm. Then AE/EC = 4/6, so EC = 4.5 cm.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "List the four conditions for triangles to be congruent.",
+          "answer": "SSS, SAS, ASA (or AAS) and RHS.",
+          "marking": "1 mark for each correct pair, max 4."
+        },
+        {
+          "id": "Q02",
+          "prompt": "In a parallelogram ABCD the diagonals meet at O. Prove that AO = OC.",
+          "answer": "Triangles AOB and COD: AB = CD (opposite sides), angle OAB = angle OCD and angle OBA = angle ODC (alternate angles); congruent by ASA; so AO = OC.",
+          "marking": "1 mark each: equal sides, equal angles with reasons, congruence condition, conclusion."
+        },
+        {
+          "id": "Q03",
+          "prompt": "In triangle PQR, S lies on PQ and T on PR with ST ∥ QR. PS = 5 cm, SQ = 7.5 cm and PT = 4 cm. Find TR.",
+          "answer": "PS/SQ = PT/TR, so TR = 4 × 7.5 / 5 = 6 cm.",
+          "marking": "1 mark ratio, 1 mark answer."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Prove that the exterior angle of a triangle equals the sum of the two interior opposite angles.",
+          "answer": "Exterior angle + interior angle at the vertex = 180° (straight line); the three interior angles also sum to 180°; so the exterior angle = the sum of the other two.",
+          "marking": "1 mark each of two facts, 1 mark conclusion."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-005"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK 5"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        },
+        {
+          "title": "OpenStax Elementary Algebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/elementary-algebra/pages/preface"
+        }
+      ],
+      "content_hash": "bf90107960590299b24bdc2856cd53a214852995db0960217c2c2dc1f4c2356f"
+    },
+    {
+      "id": "SUP-SS1-MATHS-013",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 5,
+      "title": "Statistics 1: collecting, tabulating and presenting data; range, median and mode of ungrouped data",
+      "objectives": [
+        "Collect and tabulate raw data using a tally and frequency table.",
+        "Find the range, mean, median and mode of ungrouped data."
+      ],
+      "body": "DATA COLLECTION. Data can be collected by counting, measuring or asking, e.g. heights, ages, test scores, types of vehicles passing the school gate. Raw data are first recorded, then tallied (|||| = 5) and summarised in a FREQUENCY TABLE with columns: value, tally, frequency.\n\nMEASURES for a list of values:\nRange = highest value – lowest value.\nMean = (sum of values) ÷ (number of values). From a frequency table, mean = Σfx / Σf.\nMedian = the middle value when the data are arranged in order (the mean of the two middle values when there is an even number of values).\nMode = the most frequent value (there can be more than one, or none).\n\nExample. Scores of 10 pupils: 4, 7, 5, 7, 9, 6, 7, 3, 8, 5.\nOrdered: 3, 4, 5, 5, 6, 7, 7, 7, 8, 9.\nRange = 9 – 3 = 6. Mode = 7 (appears three times). Median = (6 + 7)/2 = 6.5. Mean = 61/10 = 6.1.\n\nFrequency table version.\nScore: 3 4 5 6 7 8 9; frequency: 1 1 2 1 3 1 1 (Σf = 10); Σfx = 3 + 4 + 10 + 6 + 21 + 8 + 9 = 61; mean = 6.1. ✓\n\nChoosing a measure: the mean uses every value but is pulled by extreme values; the median is better when there are extreme values; the mode is the only measure for category data such as types of vehicles.\n\nPRESENTING DATA. A bar chart suits categories (e.g. types of vehicles); the bars have equal widths and gaps and a labelled scale.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Heights (cm): 150, 155, 160, 155, 170, 165, 155. Find the range, mode, median and mean (2 d.p.).",
+          "answer": "Range 20; mode 155; median 155; mean 1110/7 = 158.57.",
+          "marking": "1 mark each measure."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Make a frequency table for the vehicles seen in a morning: car, bus, bike, car, car, bike, bus, car, bike, car. Which is the mode?",
+          "answer": "Car 5, bus 2, bike 3. Mode = car.",
+          "marking": "2 marks table, 1 mark mode."
+        },
+        {
+          "id": "Q03",
+          "prompt": "The mean of five numbers is 8. Four of them are 5, 7, 9 and 12. Find the fifth.",
+          "answer": "Sum = 40; fifth = 40 – 33 = 7.",
+          "marking": "1 mark sum, 1 mark answer."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Find the median of 12, 7, 3, 9, 15, 4.",
+          "answer": "Ordered 3, 4, 7, 9, 12, 15; median = (7 + 9)/2 = 8.",
+          "marking": "1 mark ordering, 1 mark answer."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-006"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK 6"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Introductory Business Statistics 2e, Chapter 2 key terms (descriptive statistics)",
+          "url": "https://openstax.org/books/introductory-business-statistics-2e/pages/2-key-terms"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "97ab6066b7288eff4ae42f09e3d27e62a2d594b734db0117cd4df8bbbb62ed2d"
+    },
+    {
+      "id": "SUP-SS1-MATHS-014",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 6,
+      "title": "Statistics 2: grouped data — frequency tables, mean, median, mode and range",
+      "objectives": [
+        "Group data into class intervals and tabulate.",
+        "Find the mean, median and mode of grouped data."
+      ],
+      "body": "CLASS INTERVALS. For continuous or large data we group values into classes such as 10–19, 20–29, 30–39. Class limits are the stated ends (10 and 19); class boundaries are halfway between neighbouring classes (9.5 and 19.5). The class width is upper boundary – lower boundary (10). The mid-value x of a class is (lower limit + upper limit)/2 (e.g. 14.5).\n\nExample table (30 pupils' marks).\nClass: 10–19, 20–29, 30–39, 40–49, 50–59\nf: 3, 7, 12, 6, 2 (Σf = 30)\nx: 14.5, 24.5, 34.5, 44.5, 54.5\nfx: 43.5, 171.5, 414, 267, 109 (Σfx = 1005)\n\nMEAN = Σfx / Σf = 1005/30 = 33.5.\n\nMEDIAN. Use cumulative frequency: 3, 10, 22, 28, 30. N/2 = 15 lies in the class 30–39 (the median class). Median = L + ((N/2 – F)/f) × c, where L = lower boundary of the median class (29.5), F = cumulative frequency before it (10), f = its frequency (12), c = class width (10). Median = 29.5 + (5/12) × 10 = 33.67.\n\nMODE. The modal class has the highest frequency: 30–39. Mode = L + (d₁/(d₁ + d₂)) × c, where d₁ = f – frequency before (12 – 7 = 5) and d₂ = f – frequency after (12 – 6 = 6). Mode = 29.5 + (5/11) × 10 = 34.05.\n\nRANGE (estimate) = highest upper boundary – lowest lower boundary = 59.5 – 9.5 = 50.\n\nWrite results to a sensible accuracy (usually 1 or 2 decimal places) and show each column of the working.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "Marks: 1–10: 2, 11–20: 5, 21–30: 8, 31–40: 4, 41–50: 1. Find the mean.",
+          "answer": "x = 5.5, 15.5, 25.5, 35.5, 45.5; Σfx = 480; mean = 480/20 = 24.",
+          "marking": "1 mark each: midpoints, fx, Σfx, mean."
+        },
+        {
+          "id": "Q02",
+          "prompt": "For the same data find the median.",
+          "answer": "N/2 = 10; median class 21–30; 20.5 + (3/8) × 10 = 24.25.",
+          "marking": "1 mark class, 1 mark formula values, 1 mark answer."
+        },
+        {
+          "id": "Q03",
+          "prompt": "For the same data find the modal class and the mode.",
+          "answer": "Modal class 21–30; d₁ = 3, d₂ = 4; mode = 20.5 + (3/7) × 10 = 24.79.",
+          "marking": "1 mark class, 1 mark d-values, 1 mark answer."
+        },
+        {
+          "id": "Q04",
+          "prompt": "State the class boundaries and class width for the class 41–50.",
+          "answer": "Boundaries 40.5 and 50.5; width 10.",
+          "marking": "1 mark each."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-008",
+        "MATHS-3-009"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK 8"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Introductory Business Statistics 2e, Chapter 2 key terms (descriptive statistics)",
+          "url": "https://openstax.org/books/introductory-business-statistics-2e/pages/2-key-terms"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "770e111b53ee43712c06ec95ea8444b9488db35cc2f94b8e56492b8efeeb5871"
+    },
+    {
+      "id": "SUP-SS1-MATHS-015",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 7,
+      "title": "Statistical graphs: bar charts, pie charts, histograms and cumulative frequency curves",
+      "objectives": [
+        "Draw bar charts, pie charts and histograms.",
+        "Draw a cumulative frequency curve and read the median from it."
+      ],
+      "body": "BAR CHART. Bars of equal width with equal gaps; the vertical axis shows frequency from 0; both axes are labelled and the chart has a title.\n\nPIE CHART. Angle for a category = (frequency ÷ total) × 360°.\nExample. 100 pupils' transport: walk 40, bus 30, bicycle 20, car 10. Angles: 144°, 108°, 72°, 36° (total 360°). Draw a circle, then the sectors in order with a protractor, and label each.\n\nHISTOGRAM. For grouped continuous data draw touching rectangles. Use the class boundaries on the horizontal axis (e.g. 9.5, 19.5, 29.5, …). With equal class widths, the height is the frequency.\n\nCUMULATIVE FREQUENCY CURVE (OGIVE). Cumulative frequency is a running total. Plot each cumulative frequency against the UPPER class boundary and join the points with a smooth curve starting at the lowest boundary with frequency 0.\nUsing the 30 marks of the previous lesson: upper boundaries 19.5, 29.5, 39.5, 49.5, 59.5 with cumulative frequencies 3, 10, 22, 28, 30 (and 0 at 9.5).\nTo read the median, go across from N/2 = 15 on the vertical axis to the curve, then down to the horizontal axis: the reading is about 33.7. Quartiles are read at N/4 and 3N/4.\n\nREADING INFERENCES. Say what the graph shows in a sentence, e.g. 'Most pupils scored between 30 and 39 marks; about 22 of the 30 pupils scored below 40.'",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "A class of 60 pupils chose a favourite subject: Maths 24, English 18, Science 12, Others 6. Find each pie-chart angle.",
+          "answer": "144°, 108°, 72°, 36°.",
+          "marking": "1 mark method, 2 marks all four."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Draw a cumulative frequency table for marks 1–10: 2, 11–20: 5, 21–30: 8, 31–40: 4, 41–50: 1.",
+          "answer": "Upper boundaries 10.5, 20.5, 30.5, 40.5, 50.5 with cumulative frequencies 2, 7, 15, 19, 20.",
+          "marking": "1 mark boundaries, 2 marks cumulative values."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Use the table in Question 2 to estimate the median from the curve.",
+          "answer": "N/2 = 10, between 20.5 and 30.5: about 24.",
+          "marking": "1 mark N/2, 1 mark reading (24 ± 1)."
+        },
+        {
+          "id": "Q04",
+          "prompt": "Why are class boundaries, not class limits, used for a histogram?",
+          "answer": "So that the rectangles touch and the scale is continuous (no gaps between classes).",
+          "marking": "1 mark."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-010"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK TEN"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Introductory Business Statistics 2e, Chapter 2 key terms (descriptive statistics)",
+          "url": "https://openstax.org/books/introductory-business-statistics-2e/pages/2-key-terms"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "45f81d87d8f928d3a875e5c458813ffb7ab09eb2b360d764864695ea6b094144"
+    },
+    {
+      "id": "SUP-SS1-MATHS-016",
+      "class_name": "SS 1",
+      "term_label": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "sequence": 8,
+      "title": "Mean deviation, variance and standard deviation of grouped data",
+      "objectives": [
+        "Calculate the mean deviation of grouped data.",
+        "Calculate the variance and standard deviation of grouped data and interpret them."
+      ],
+      "body": "These measures of spread tell how far the data are scattered about the mean x̄.\n\nFor classes with mid-values x and frequencies f (N = Σf):\nx̄ = Σfx / N.\nMean deviation = Σf|x – x̄| / N.\nVariance = Σf(x – x̄)² / N = Σfx²/N – x̄².\nStandard deviation (SD) = √variance.\n\nExample. Mid-values 5, 15, 25, 35, 45 with f = 2, 5, 8, 4, 1 (N = 20).\nΣfx = 10 + 75 + 200 + 140 + 45 = 470, so x̄ = 23.5.\nDeviations x – x̄: –18.5, –8.5, 1.5, 11.5, 21.5.\nΣf|x – x̄| = 37 + 42.5 + 12 + 46 + 21.5 = 159, so mean deviation = 159/20 = 7.95.\nΣf(x – x̄)² = 2(342.25) + 5(72.25) + 8(2.25) + 4(132.25) + 1(462.25) = 684.5 + 361.25 + 18 + 529 + 462.25 = 2055, so variance = 102.75.\nCheck with the second formula: Σfx² = 2(25) + 5(225) + 8(625) + 4(1225) + 2025 = 13100; 13100/20 – 23.5² = 655 – 552.25 = 102.75. ✓\nSD = √102.75 = 10.14.\n\nInterpretation: a small SD means the values are close to the mean; a large SD means they are widely spread. Two classes with the same mean can have different SDs; the class with the smaller SD is more consistent.",
+      "practice": [
+        {
+          "id": "Q01",
+          "prompt": "The values 3, 5, 7 have frequencies 2, 4, 2. Find the mean, mean deviation, variance and standard deviation.",
+          "answer": "Mean 5; MD = (4 + 0 + 4)/8 = 1; variance = (8 + 0 + 8)/8 = 2; SD = 1.41.",
+          "marking": "1 mark each."
+        },
+        {
+          "id": "Q02",
+          "prompt": "Mid-values 10, 20, 30, 40, 50 with f = 4, 6, 8, 6, 4. Find the mean, mean deviation and standard deviation (2 d.p.).",
+          "answer": "N = 28; mean 30; MD = 280/28 = 10; variance = 4400/28 = 157.14; SD = 12.54.",
+          "marking": "1 mark each of mean, MD, variance, SD."
+        },
+        {
+          "id": "Q03",
+          "prompt": "Class A has mean 60 and SD 4; class B has mean 60 and SD 12. Which class is more consistent and why?",
+          "answer": "Class A: the smaller SD means marks are closer to the mean.",
+          "marking": "1 mark class, 1 mark reason."
+        }
+      ],
+      "covers_objectives": [
+        "MATHS-3-011"
+      ],
+      "provenance": {
+        "kind": "AUTHORED_EQUIVALENT",
+        "source_ids": [
+          "SS1-SRC-ca00ca94afb9"
+        ],
+        "source_locators": [
+          {
+            "source_id": "SS1-SRC-ca00ca94afb9",
+            "week_label": "WEEK ELEVEN"
+          }
+        ],
+        "origin_statement": "Original wording written for this platform to restore teaching that the importer's text extraction loses (equations, superscripts, figures) from the source week it names; worked examples follow the source's scope. No third-party text is reproduced."
+      },
+      "reuse": [],
+      "references": [
+        {
+          "title": "OpenStax Introductory Business Statistics 2e, Chapter 2 key terms (descriptive statistics)",
+          "url": "https://openstax.org/books/introductory-business-statistics-2e/pages/2-key-terms"
+        },
+        {
+          "title": "OpenStax Prealgebra (open textbook, CC BY)",
+          "url": "https://openstax.org/books/prealgebra/pages/preface"
+        }
+      ],
+      "content_hash": "46c30d8b3de492e99890529979bcfce7e9232aaba1bee54b06b6d71b73fca3b1"
+    }
+  ],
+  "delivery_corrections": [],
+  "assets": [],
+  "coverage": [
+    {
+      "objective_id": "MATHS-2-001",
+      "term_label": "2nd Term",
+      "objective_text": "Quadratic equations by factorisation and completing the square",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK ONE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK ONE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-001"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-002",
+      "term_label": "2nd Term",
+      "objective_text": "General form of the quadratic equation leading to the formula method; sum and product of roots",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK TWO"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK TWO"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-002"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-003",
+      "term_label": "2nd Term",
+      "objective_text": "Solution of quadratic equations by graphical methods: roots, maximum/minimum values, line of symmetry",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK THREE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK THREE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-003"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-007",
+      "term_label": "2nd Term",
+      "objective_text": "Trigonometric ratios of acute angles, tables, chords, graphs of sine and cosine",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK SEVEN"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK SEVEN"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-005"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-008",
+      "term_label": "2nd Term",
+      "objective_text": "Application of sine, cosine and tangent; elevation and depression; bearings and distances",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK EIGHT"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK EIGHT"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-006"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-009",
+      "term_label": "2nd Term",
+      "objective_text": "Circle and its properties; arc length and perimeter of a sector; areas of sectors, segments and triangles",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK NINE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK NINE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-007"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-010",
+      "term_label": "2nd Term",
+      "objective_text": "Logic: true/false statements, negation and contrapositive, antecedent, consequent and implication",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK TEN"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK TEN"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-008"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; equations, superscripts and figures are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-2-004",
+      "term_label": "2nd Term",
+      "objective_text": "Idea of sets: universal, finite, infinite, empty sets, subsets; notation for union and intersection",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK FOUR"
+      },
+      "status": "SUPPORTED",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK FOUR"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source body states definitions, notation, examples and evaluation in extractable text."
+    },
+    {
+      "objective_id": "MATHS-2-005",
+      "term_label": "2nd Term",
+      "objective_text": "Complements of sets, disjoint sets, Venn diagrams with two and three sets and real-life problems",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK FIVE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK FIVE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-004"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source Venn diagrams are drawn shapes that are lost on extraction; the lesson restates the diagrams in words and equations."
+    },
+    {
+      "objective_id": "MATHS-2-006",
+      "term_label": "2nd Term",
+      "objective_text": "Review of the first half-term work and periodic test",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-b802686e83d2",
+        "week_label": "WEEK SIX"
+      },
+      "status": "MARKER",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-b802686e83d2",
+          "week_label": "WEEK SIX"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Revision/test marker row with no new teaching."
+    },
+    {
+      "objective_id": "MATHS-3-001",
+      "term_label": "3rd Term",
+      "objective_text": "Mensuration of solids: cube, cuboid, cylinder, triangular prism, cone, pyramid; surface areas and volumes",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK ONE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK ONE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-009"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-002",
+      "term_label": "3rd Term",
+      "objective_text": "Volumes of frustums; proof that angles of a triangle sum to 180°; the exterior angle",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK TWO"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK TWO"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-010"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-003",
+      "term_label": "3rd Term",
+      "objective_text": "Geometrical constructions: triangles, bisection of line segments and angles (90°, 45°, 135°, 22½°, 30°, 60°, 120°, 150°)",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK THREE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK THREE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-011"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-004",
+      "term_label": "3rd Term",
+      "objective_text": "Constructions: quadrilaterals, equilateral triangle, loci of moving points",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK FOUR"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK FOUR"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-011"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-005",
+      "term_label": "3rd Term",
+      "objective_text": "Deductive proofs: angle sum, triangles on a straight line, parallel lines, congruent triangles, parallelogram properties, intercept theorem",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK 5"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK 5"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-012"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-006",
+      "term_label": "3rd Term",
+      "objective_text": "Statistics: collection, tabulation and presentation of data; range, median and mode of ungrouped data",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK 6"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK 6"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-013"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-008",
+      "term_label": "3rd Term",
+      "objective_text": "Collection, tabulation and presentation of grouped data",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK 8"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK 8"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-014"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-009",
+      "term_label": "3rd Term",
+      "objective_text": "Range, median and mode of grouped data",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK NINE"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK NINE"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-014"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-010",
+      "term_label": "3rd Term",
+      "objective_text": "Statistical graphs: bar chart, pie chart, histogram, cumulative frequency curve and inferences",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK TEN"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK TEN"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-015"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-011",
+      "term_label": "3rd Term",
+      "objective_text": "Mean deviation, variance and standard deviation of grouped data",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK ELEVEN"
+      },
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK ELEVEN"
+        },
+        {
+          "kind": "SUPPLEMENT",
+          "lesson_id": "SUP-SS1-MATHS-016"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Source week is retained; drawn figures, equations and superscripts are lost by text extraction, so the authored lesson carries the teaching."
+    },
+    {
+      "objective_id": "MATHS-3-007",
+      "term_label": "3rd Term",
+      "objective_text": "Revision",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK 7"
+      },
+      "status": "MARKER",
+      "evidence": [
+        {
+          "kind": "SOURCE_LESSON",
+          "source_id": "SS1-SRC-ca00ca94afb9",
+          "week_label": "WEEK 7"
+        }
+      ],
+      "open_item_ids": [],
+      "note": "Revision marker row with no new teaching."
+    },
+    {
+      "objective_id": "MATHS-3-012",
+      "term_label": "3rd Term",
+      "objective_text": "Revision/Examination",
+      "scheme_locator": {
+        "source_id": "SS1-SRC-ca00ca94afb9",
+        "week_label": "WEEK ELEVEN"
+      },
+      "status": "UNRESOLVED",
+      "evidence": [],
+      "open_item_ids": [
+        "OI-MATHS-003"
+      ],
+      "note": "Scheme item 12 has no body in the source; scheme_locator points at the last lesson row as the nearest row."
+    }
+  ],
+  "open_items": [
+    {
+      "id": "OI-MATHS-001",
+      "kind": "SOURCE_BYTES_DIFFER",
+      "description": "The First-Term Mathematics source in the manifest (SS1-SRC-0c9004137f95, 819678 bytes, sha256 d8cd4954...) was not supplied: the file attached in chat as MATHss1.docx is 150666 bytes with a different hash. No First-Term Mathematics scheme, lesson or coverage can be bound.",
+      "owner_action": "Owner supplies SSS 1-20260507T072431Z-3-001.zip (or confirms the 150666-byte file is the intended source and updates the manifest). Then First-Term Mathematics is authored and this package set to IMPLEMENTED.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95",
+        "MATHS-1-000"
+      ],
+      "blocks_student_delivery": true,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-MATHS-002",
+      "kind": "OWNER_ACTION",
+      "description": "The importer text extraction (mammoth) drops Word equations (OMML), flattens superscripts (x² appears as x2) and drops drawn figures (graphs, Venn diagrams, solids, constructions) in the Second- and Third-Term sources. The authored lessons carry the teaching, but the original rows remain lossy.",
+      "owner_action": "Foundation owner / SS1-08: add an SS1 equation and superscript recovery step to extractText (as JSS3 did for its Mathematics) and decide how drawn figures are bound. Re-capture the original rows afterwards; no delivery correction here is bound to a body hash for this reason.",
+      "affected_ids": [
+        "SS1-SRC-b802686e83d2",
+        "SS1-SRC-ca00ca94afb9"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-MATHS-003",
+      "kind": "MISSING_MATERIAL",
+      "description": "Third-Term scheme item 12 (Revision/Examination) has no body in the source document, which ends at Week Eleven. It is a revision/examination slot, not teaching content.",
+      "owner_action": "Teacher confirms whether a Week 12 revision plan exists and supplies it, or confirms the slot is examination-only.",
+      "affected_ids": [
+        "MATHS-3-012"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-MATHS-004",
+      "kind": "MISSING_MATERIAL",
+      "description": "Drawn figures in the sources (parabolas and axes, Venn diagrams, solids and their nets, geometric constructions) are not extracted as assets. The lessons describe the figures in words and tables; no figure was invented.",
+      "owner_action": "SS1-08 / owner: render and bind the source figures (or approve labelled derivatives) for Weeks 3 and 5 of Second Term and Weeks 1-4 of Third Term.",
+      "affected_ids": [
+        "SUP-SS1-MATHS-003",
+        "SUP-SS1-MATHS-004",
+        "SUP-SS1-MATHS-009",
+        "SUP-SS1-MATHS-011"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-MATHS-005",
+      "kind": "OWNER_ACTION",
+      "description": "The authored lessons cite open textbooks only at the page URLs that a web search listed; these pages were not opened and checked line by line, and the lesson wording is the worker's own. Teacher content approval has not been requested.",
+      "owner_action": "Teacher reviews the 16 lessons; integrator checks the reference URLs resolve before release.",
+      "affected_ids": [
+        "SUP-SS1-MATHS-001",
+        "SUP-SS1-MATHS-016"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-MATHS-006",
+      "kind": "OTHER",
+      "description": "The scheme lists \"57½°\" among angles to construct; 57½° is not constructible by bisection from standard angles, so the scheme probably means 67½°. The lesson teaches 22½° and 67½°.",
+      "owner_action": "Teacher confirms the intended angle.",
+      "affected_ids": [
+        "MATHS-3-003",
+        "SUP-SS1-MATHS-011"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-MATHS-007",
+      "kind": "OTHER",
+      "description": "Source Second-Term Week Three, Example 2 (finding an equation from a graph) states a y-intercept of 15 but derives a constant of -16; it is an internal inconsistency in the original and is not reproduced in the lesson.",
+      "owner_action": "Teacher decides whether to correct the original note.",
+      "affected_ids": [
+        "SS1-SRC-b802686e83d2",
+        "SUP-SS1-MATHS-003"
+      ],
+      "blocks_student_delivery": false,
+      "status": "OPEN"
+    }
+  ]
+}

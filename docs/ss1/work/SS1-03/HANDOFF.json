@@ -1,0 +1,14 @@
+{
+  "worker": "SS1-03-B",
+  "contract_version": "ss1-subject-v1",
+  "base_sha": "4182582d537712dbc73d6ce411b8b2feabd9c05b",
+  "owned_paths": ["backend/src/db/ss1/subjects/mathematics.json", "backend/src/db/ss1/subjects/further-mathematics.json", "backend/src/db/ss1/subjects/physics.json", "backend/src/db/ss1/subjects/technical-drawing.json", "curriculum-assets/ss1/", "tests/ss1/", "docs/ss1/work/SS1-03/"],
+  "subjects": {
+    "mathematics": {"implementation": "IN_PROGRESS", "completed_source_ids": ["SS1-SRC-b802686e83d2", "SS1-SRC-ca00ca94afb9"], "unresolved_source_ids": ["SS1-SRC-0c9004137f95"], "open_items": ["OI-MATHS-001", "OI-MATHS-002", "OI-MATHS-003", "OI-MATHS-004", "OI-MATHS-005", "OI-MATHS-006", "OI-MATHS-007"]},
+    "further-mathematics": {"implementation": "NOT_STARTED"},
+    "physics": {"implementation": "NOT_STARTED"},
+    "technical-drawing": {"implementation": "NOT_STARTED"}
+  },
+  "required_integration_changes": ["Foundation owner: SS1 equation/superscript/figure recovery in extractText (OI-MATHS-002)", "Owner: re-supply Mathematics 1st-Term source matching manifest (OI-MATHS-001)"],
+  "verification": "NOT_RUN"
+}
