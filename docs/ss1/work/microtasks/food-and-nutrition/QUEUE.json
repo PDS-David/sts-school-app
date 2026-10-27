@@ -1,0 +1,317 @@
+{
+  "queue_version": "ss1-microtask-queue-v1",
+  "subject": "Food and Nutrition",
+  "slug": "food-and-nutrition",
+  "generated_from": {
+    "master_sha": "4f7aa8a964a6b22a749a0777ae07e00728c68b02",
+    "package": null,
+    "task": "SS1 subject queue: Food and Nutrition (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv and the Worker F prompt)"
+  },
+  "status_vocabulary": [
+    "PENDING",
+    "IN_PROGRESS",
+    "IMPLEMENTED_TESTING_DEFERRED",
+    "BLOCKED"
+  ],
+  "notes": [
+    "Built from repository evidence only; no curriculum document was opened. Nothing was run (tests, typechecks, importer, DB, device).",
+    "Finding: there is no food-and-nutrition package, no SS1-07/Worker F checkpoint or handoff, no existing tests, no assets and no source notes on master, and no unmerged SS1 food-and-nutrition work on any origin/ss1/* branch (matches outside JSS3 documents are only the Worker F prompt, WORKER_START manifest, SOURCE_ASSIGNMENTS.csv and sourceRegistry.json). Nothing is recorded as implemented.",
+    "Three documents are assigned (one per term). All three assignments are filename-based (mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER); the header of none has been verified, so registration items read the header before anything is committed.",
+    "Filenames vary: 'F _ N.docx' (1st and 2nd Term) and 'FOOD _ NUTRITION.docx' (3rd Term). Worker F treats such variations as candidates for source-backed aliasing, not reasons to discard files. Each registration item records what its header shows; any alias needs an approval_reference that is recorded as an open item, never invented.",
+    "Boundary: Food and Nutrition stays separate from Catering Craft (slug catering-craft, two other documents, its own queue). A header naming another subject is recorded as a handoff open item.",
+    "Worker F requires food preparation processes, nutrition tables, equipment illustrations and practical assessment rubrics to be preserved, unsafe food hygiene, allergy, burns/fire or chemical advice to be corrected from authoritative primary sources with original provenance kept separately, no treatment or doses, and no fabricated classroom practical observation. These govern later work; none is invented here.",
+    "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
+    "FN-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). FN-SRC-T2/T3 depend on it so only one item creates the file.",
+    "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+  ],
+  "counts": {
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INVENTORY": 3,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 1
+  },
+  "status_counts": {
+    "PENDING": 7,
+    "BLOCKED": 1
+  },
+  "items": [
+    {
+      "id": "FN-SRC-T1",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "SSS 1/1st Term SS1_/F _ N.docx",
+      "objective": "Register the 1st Term Food and Nutrition source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). PERMISSION: because no package exists, this item may create the minimum package under the existing contract (schema_version ss1-subject-v1, subject_slug food-and-nutrition, canonical_subject confirmed from the header, package_status PENDING, all other arrays empty) and register this one source in it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-SRC-T1.md"
+      ],
+      "depends_on": [],
+      "status": "PENDING",
+      "implementation_reference": "No food-and-nutrition package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-de2cdd0b85f6, sha256=398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7, 38569 bytes, member 'SSS 1/1st Term SS1_/F _ N.docx', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "completion_condition": "Package file exists with the minimum envelope and this one registered source; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example Catering Craft), record an explicit handoff open item; do not delete, merge into catering-craft or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The filename variation between the terms ('F _ N' versus 'FOOD _ NUTRITION') is a candidate for source-backed aliasing only: record what the header shows, never discard a file. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "FN-SRC-T2",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-0579303326ae",
+      "term": "2nd Term",
+      "week_or_locator": "SSS 1/2nd Term SS1_/F _ N.docx",
+      "objective": "Register the 2nd Term Food and Nutrition source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by FN-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/F _ N.docx",
+          "member_sha256": "ba05f9778cb70c628fc4743e549191d3270b91cd95f1883419ad050d64e93a20"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-SRC-T2.md"
+      ],
+      "depends_on": [
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No food-and-nutrition package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-0579303326ae, sha256=ba05f9778cb70c628fc4743e549191d3270b91cd95f1883419ad050d64e93a20, 34932 bytes, member 'SSS 1/2nd Term SS1_/F _ N.docx', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Catering Craft), record an explicit handoff open item; do not delete, merge into catering-craft or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The filename variation between the terms ('F _ N' versus 'FOOD _ NUTRITION') is a candidate for source-backed aliasing only: record what the header shows, never discard a file. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "FN-SRC-T3",
+      "kind": "SOURCE_REGISTRATION",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+      "objective": "Register the 3rd Term Food and Nutrition source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by FN-SRC-T1; add only this source's entry and rules.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-SRC-T3.md"
+      ],
+      "depends_on": [
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No food-and-nutrition package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-136db891415d, sha256=13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee, 29286 bytes, member 'SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. Filename variant: 'FOOD _ NUTRITION.docx' versus 'F _ N.docx' in the 1st and 2nd Term folders; a filename variation is not proof of a different subject or of duplication.",
+      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Catering Craft), record an explicit handoff open item; do not delete, merge into catering-craft or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The filename variation between the terms ('F _ N' versus 'FOOD _ NUTRITION') is a candidate for source-backed aliasing only: record what the header shows, never discard a file. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+    },
+    {
+      "id": "FN-INV-T1",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 1st Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each nutrition table, equipment illustration, drawing or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note food preparation processes, nutrition tables, equipment illustrations and practical assessment rubrics for separate preservation items, and any food hygiene, allergy, burns/fire or chemical statements that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Do not prescribe treatment or doses, and do not record any classroom practical observation that was not made. Do not merge Food and Nutrition into Catering Craft.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md"
+      ],
+      "depends_on": [
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "FN-INV-T2",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-0579303326ae",
+      "term": "2nd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 2nd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each nutrition table, equipment illustration, drawing or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note food preparation processes, nutrition tables, equipment illustrations and practical assessment rubrics for separate preservation items, and any food hygiene, allergy, burns/fire or chemical statements that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Do not prescribe treatment or doses, and do not record any classroom practical observation that was not made. Do not merge Food and Nutrition into Catering Craft.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/F _ N.docx",
+          "member_sha256": "ba05f9778cb70c628fc4743e549191d3270b91cd95f1883419ad050d64e93a20"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T2.md"
+      ],
+      "depends_on": [
+        "FN-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "FN-INV-T3",
+      "kind": "SOURCE_WEEK_INVENTORY",
+      "source_id": "SS1-SRC-136db891415d",
+      "term": "3rd Term",
+      "week_or_locator": "whole document",
+      "objective": "Discover the 3rd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each nutrition table, equipment illustration, drawing or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note food preparation processes, nutrition tables, equipment illustrations and practical assessment rubrics for separate preservation items, and any food hygiene, allergy, burns/fire or chemical statements that may be unsafe or outdated: later correction work needs authoritative primary sources and must keep the source's original wording distinct from the corrected fact. Do not prescribe treatment or doses, and do not record any classroom practical observation that was not made. Do not merge Food and Nutrition into Catering Craft.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+          "member_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T3.md"
+      ],
+      "depends_on": [
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+    },
+    {
+      "id": "FN-TEST-PACKAGE",
+      "kind": "TEST",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "tests/ss1/food-and-nutrition.package.test.mts",
+      "objective": "Write (do not run) the package test file following tests/ss1/french.package.test.mts: schema parse, one registered source per assigned document, source hash and member equal to SOURCE_ASSIGNMENTS.csv, no fabricated approval or verification state, and guards for any rules or lessons the package contains at the time of writing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "tests/ss1/french.package.test.mts",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "tests/ss1/food-and-nutrition.package.test.mts",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "depends_on": [
+        "FN-SRC-T1",
+        "FN-SRC-T2",
+        "FN-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "tests/ss1/food-and-nutrition.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
+    },
+    {
+      "id": "FN-FACT-CONTENT-APPROVAL",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "package approval and verification",
+      "objective": "Owner content approval and later verification of any food-and-nutrition lessons. Separate stage; no agent may invent an approval_reference, verification or classroom practical observation.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-INV-T2",
+        "FN-INV-T3",
+        "FN-TEST-PACKAGE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    }
+  ],
+  "review": {
+    "date": "2026-10-27",
+    "reviewed_master_sha": "4f7aa8a964a6b22a749a0777ae07e00728c68b02",
+    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "source_archive": {
+      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
+      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+      "manifest_matches": 3,
+      "mismatches": 0,
+      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
+    }
+  },
+  "next_runnable": [
+    "FN-SRC-T1"
+  ]
+}
