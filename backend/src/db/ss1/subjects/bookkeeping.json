@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-62b02f2adcb3: third paragraph of mammoth.extractRawText output (the importer's own call); the document opens with paragraphs 'FIRST TERM' and 'SCHEME OF WORKS', then this subject line",
         "explanation": "The subject line 'SUBJECT: BOOK-KEEPING' / 'CLASS: SS 1' occurs once in the extracted text (the phrase 'book keeping' elsewhere is body text, lower case and unhyphenated). It names the subject Book-keeping, not Financial Accounting. Teaching content confirms it: single and double column cash book, contra entry, principles of double entry, posting from cash book to ledger. The heading differs from the canonical name by the 'SUBJECT:' label, hyphen and class label, so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "archive_member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Bookkeeping",
+      "header_text": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1",
+      "header_evidence": {
+        "locator": "SS1-SRC-97c1db5b1eb0: third non-empty paragraph of mammoth.extractRawText output (the importer's own call); the document opens with paragraphs 'SIGMA TERM' and 'SCHEME OF WORKS', then this subject line; a separate ' TOPIC' paragraph follows",
+        "explanation": "The subject line 'SUBJECT: BOOK-KEEPING' / 'CLASS: SS 1' occurs once in the extracted text and names the subject Book-keeping, not Financial Accounting. Teaching content confirms it: single and double column cash book, contra entry, double entry. The subject was read from the document, not its filename. The opening term title is 'SIGMA TERM', not the manifest's '2nd Term'; the manifest term comes from the archive folder, so this is recorded but not treated as a conflict. The heading differs from the canonical name by the 'SUBJECT:' label, hyphen and class label, so a source_alias is declared. Unlike the 1st Term source the class label is not followed by TOPIC on the same line, so the header_text stops at 'SS 1'. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -32,6 +45,20 @@
       "observed_subject": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1  TOPIC",
       "canonical_subject": "Bookkeeping",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-97c1db5b1eb0-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1",
+      "evidence": {
+        "locator": "SS1-SRC-97c1db5b1eb0: third non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1",
+      "canonical_subject": "Bookkeeping",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -46,6 +73,28 @@
       "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
       "affected_ids": [
         "SS1-SRC-62b02f2adcb3-R001",
+        "SS1-SRC-62b02f2adcb3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-ALIAS-APPROVAL-T2",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: BOOK-KEEPING' with 'CLASS: SS 1'. It differs from the canonical subject name 'Bookkeeping' by label, hyphen and class text, so the contract requires a source_alias declaration; rule SS1-SRC-97c1db5b1eb0-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-97c1db5b1eb0-R001",
+        "SS1-SRC-97c1db5b1eb0"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T2-TEXT-MATCHES-T1",
+      "kind": "OWNER_ACTION",
+      "detail": "Apart from its first line ('SIGMA TERM' instead of 'FIRST TERM') and a line break around 'TOPIC', the extracted text of the 2nd Term source (SS1-SRC-97c1db5b1eb0) is identical to that of the 1st Term source (SS1-SRC-62b02f2adcb3): the same scheme of work and the same body text, beginning with revision, single and double column cash book and contra entry. Compared on whitespace-trimmed mammoth raw text only. This may mean the 2nd Term file is a copy of the 1st Term file rather than its own 2nd Term teaching, but that is not established here and no duplicate coverage is linked.",
+      "required_action": "Owner confirms whether this file is the intended 2nd Term Bookkeeping document or supplies the correct one. Indexing (BK-INV-T2) and any duplicate-coverage linking must wait for that answer.",
+      "affected_ids": [
+        "SS1-SRC-97c1db5b1eb0",
         "SS1-SRC-62b02f2adcb3"
       ],
       "blocks_delivery": true
