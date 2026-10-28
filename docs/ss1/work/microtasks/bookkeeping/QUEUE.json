@@ -31,9 +31,9 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 5,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "BLOCKED": 1,
+    "PENDING": 4
   },
   "items": [
     {
@@ -134,8 +134,8 @@
       "depends_on": [
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No bookkeeping package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-97f226215927, sha256=343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d, 92755 bytes, member 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json: sources[2] SS1-SRC-97f226215927 (sha256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d, member 'SSS 1/3rd Term SS1_/BOOK KEEPING_.docx', term '3rd Term', canonical_subject 'Bookkeeping'), header_text 'SS 1 OMEGA TERM BOOK- KEEPING' (first non-empty paragraph, line 5; single occurrence; no SUBJECT label), source_alias rule SS1-SRC-97f226215927-R001 (approval_reference PENDING-OWNER) and open item BOOKKEEPING-ALIAS-APPROVAL-T3 (OWNER_ACTION, blocks_delivery). Subject confirmed from the heading, scheme and body; no handoff needed. Evidence note: docs/ss1/work/microtasks/bookkeeping/BK-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Financial Accounting), record an explicit handoff open item; do not delete, merge into financial-accounting or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -312,6 +312,9 @@
     }
   },
   "next_runnable": [
-    "BK-SRC-T3"
+    "BK-INV-T1",
+    "BK-INV-T2",
+    "BK-INV-T3",
+    "BK-TEST-PACKAGE"
   ]
 }

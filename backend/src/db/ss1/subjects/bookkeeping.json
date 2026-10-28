@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-97c1db5b1eb0: third non-empty paragraph of mammoth.extractRawText output (the importer's own call); the document opens with paragraphs 'SIGMA TERM' and 'SCHEME OF WORKS', then this subject line; a separate ' TOPIC' paragraph follows",
         "explanation": "The subject line 'SUBJECT: BOOK-KEEPING' / 'CLASS: SS 1' occurs once in the extracted text and names the subject Book-keeping, not Financial Accounting. Teaching content confirms it: single and double column cash book, contra entry, double entry. The subject was read from the document, not its filename. The opening term title is 'SIGMA TERM', not the manifest's '2nd Term'; the manifest term comes from the archive folder, so this is recorded but not treated as a conflict. The heading differs from the canonical name by the 'SUBJECT:' label, hyphen and class label, so a source_alias is declared. Unlike the 1st Term source the class label is not followed by TOPIC on the same line, so the header_text stops at 'SS 1'. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
       }
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "archive_member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Bookkeeping",
+      "header_text": "SS 1 OMEGA TERM BOOK- KEEPING",
+      "header_evidence": {
+        "locator": "SS1-SRC-97f226215927: first non-empty paragraph of word/document.xml and line 5 of mammoth 1.12.2 extractRawText() output (the importer's own call); lines 1-4 are blank; the line is indented by leading spaces, which are not part of header_text; the next non-empty line is 'SCHEME OF WORK'",
+        "explanation": "The opening heading names the class ('SS 1'), a term label ('OMEGA TERM') and the subject 'BOOK- KEEPING' (with a space after the hyphen); it contains no 'SUBJECT:' label, unlike the 1st and 2nd Term sources. The heading occurs exactly once in the extracted text. It names Book-keeping, not Financial Accounting, and the scheme of work (revision, petty cash book, trial balance and correction of errors, suspense account, trading account, profit and loss account, balance sheet, revision, exam) and the body (petty cash book, imprest system) confirm it. The subject was read from the document, not its filename ('BOOK KEEPING_.docx'). The term label 'OMEGA TERM' is not the manifest's '3rd Term'; the manifest term comes from the archive folder, so this is recorded but not treated as a conflict. The heading differs from the canonical name by the class text, term label and spelling, so a source_alias is declared. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -57,6 +70,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT: BOOK-KEEPING\t\t\t\tCLASS: SS 1",
+      "canonical_subject": "Bookkeeping",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-97f226215927-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "SS 1 OMEGA TERM BOOK- KEEPING",
+      "evidence": {
+        "locator": "SS1-SRC-97f226215927: first non-empty paragraph of word/document.xml (line 5 of extracted text)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SS 1 OMEGA TERM BOOK- KEEPING",
       "canonical_subject": "Bookkeeping",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -96,6 +123,17 @@
       "affected_ids": [
         "SS1-SRC-97c1db5b1eb0",
         "SS1-SRC-62b02f2adcb3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-ALIAS-APPROVAL-T3",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source's opening heading is 'SS 1 OMEGA TERM BOOK- KEEPING' (class, term label and subject on one line; no 'SUBJECT:' label), not the canonical name 'Bookkeeping'. The source_alias rule SS1-SRC-97f226215927-R001 declares it with approval_reference PENDING-OWNER. The subject is read from the heading and confirmed by the scheme of work and body.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-97f226215927-R001",
+        "SS1-SRC-97f226215927"
       ],
       "blocks_delivery": true
     }
