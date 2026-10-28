@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-03d0cac39679: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), at character offset 0; the next non-empty paragraph is 'SCHEMES OF WORK', followed by 'WEEK 1: CAPITAL AS A FACTOR OF PRODUCTION'",
         "explanation": "The heading 'SSS ONE ECONOMICS' occurs once in the extracted text ('ECONOMICS' alone occurs 3 times, plus once as 'Economics'). It names Economics, not Commerce or another business subject. Teaching content confirms it: factors of production (capital, entrepreneur), division of labour, scale of production, firm and industry, business organisation, population, labour market. The heading differs from the canonical name by the class words 'SSS ONE', so a source_alias is declared to Economics only."
       }
+    },
+    {
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Economics",
+      "header_text": "SUBJECT:  ECONOMICS\t\t\t\t\t\t\t        \t\tCLASS:  SSS 1",
+      "header_evidence": {
+        "locator": "SS1-SRC-6a6ff668d5a9: second non-empty paragraph of word-extractor getBody() output (the importer's own legacy .doc call); the first non-empty paragraph is 'THIRD TERM E-LEARNING NOTE', and 'SCHEME OF WORK' follows",
+        "explanation": "The subject line occurs once in the extracted text: 'SUBJECT:  ECONOMICS', 7 tabs, 8 spaces, 2 tabs, 'CLASS:  SSS 1'. 'ECONOMICS' alone occurs once capitalised and 24 times ignoring case, so the full subject-and-class line is the unique header_text. It names Economics, not Commerce or another business subject; 'commerce' occurs twice, only in a body-text classification of economic activities ('General Commerce'). Teaching content confirms Economics: distributive trade, middlemen, money and its functions, with WEEK ONE to WEEK TEN bodies. The document's own term line 'THIRD TERM E-LEARNING NOTE' agrees with the manifest 3rd Term. The subject was read from the document, not its filename. The heading differs from the canonical name by the 'SUBJECT:' label and class text, so a source_alias is declared. Checked on word-extractor 1.0.4 body text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
       "observed_subject": "SSS ONE ECONOMICS",
       "canonical_subject": "Economics",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-6a6ff668d5a9-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-6a6ff668d5a9",
+      "source_sha256": "9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d",
+      "anchor": "SUBJECT:  ECONOMICS\t\t\t\t\t\t\t        \t\tCLASS:  SSS 1",
+      "evidence": {
+        "locator": "SS1-SRC-6a6ff668d5a9: second non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT:  ECONOMICS\t\t\t\t\t\t\t        \t\tCLASS:  SSS 1",
+      "canonical_subject": "Economics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-03d0cac39679-R001",
         "SS1-SRC-03d0cac39679"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-ALIAS-APPROVAL-T3",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source's heading is 'SUBJECT:  ECONOMICS' with 'CLASS:  SSS 1'. It differs from the canonical subject name 'Economics' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-6a6ff668d5a9-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-6a6ff668d5a9-R001",
+        "SS1-SRC-6a6ff668d5a9"
       ],
       "blocks_delivery": true
     }
