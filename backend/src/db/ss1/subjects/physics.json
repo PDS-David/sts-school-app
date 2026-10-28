@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-5c0149cda71d: the subject line (line 19 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), after the line 'FIRST TERM E-LEARNING NOTE'; trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('PHYSICS' alone occurs 4 times). It names Physics, class SS 1 (the class label is complete on this line, unlike the unverified PR #71 claim), so the subject is verified by the document and not by the filename. The 11-week scheme and Week One teaching confirm it: introduction to physics and the laboratory, measurement, motion and forces, friction, vectors and scalars, density, upthrust and pressure, work, energy and power, viscosity. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-2c924c964660",
+      "sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Physics",
+      "header_text": "SUBJECT:  PHYSICS\t\t\t\t\t\t      \t\t           CLASS: SS 1",
+      "header_evidence": {
+        "locator": "SS1-SRC-2c924c964660: the subject line (line 3 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), directly after the line 'SECOND TERM E-LEARNING NOTE' (line 1); trailing whitespace of the line is not included",
+        "explanation": "The subject line occurs once in the extracted text ('PHYSICS' alone occurs 15 times, all in other lines). It names Physics, class SS 1, so the subject is verified by the document and not by the filename; the line above names the second term. The 10-week scheme and Week One teaching confirm it: heat energy, temperature and thermometers, expansion, heat transfer, electric charges and the electroscope, fields, electric field, continuous electric current. The heading differs from the canonical name by the 'SUBJECT:' and class labels, so a source_alias is declared."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT: PHYSICS\t\t\t\t\t\t\t\t            CLASS: SS 1",
+      "canonical_subject": "Physics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-2c924c964660-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "anchor": "SUBJECT:  PHYSICS\t\t\t\t\t\t      \t\t           CLASS: SS 1",
+      "evidence": {
+        "locator": "SS1-SRC-2c924c964660: subject line of extracted text (line 3)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT:  PHYSICS\t\t\t\t\t\t      \t\t           CLASS: SS 1",
       "canonical_subject": "Physics",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-5c0149cda71d-R001",
         "SS1-SRC-5c0149cda71d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T2-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: PHYSICS' (two spaces after the colon) with 'CLASS: SS 1'. It differs from the canonical subject name 'Physics' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-2c924c964660-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660-R001",
+        "SS1-SRC-2c924c964660"
       ],
       "blocks_delivery": true
     }

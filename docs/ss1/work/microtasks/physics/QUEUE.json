@@ -37,8 +37,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 58,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 57,
     "BLOCKED": 7
   },
   "total": 66,
@@ -103,8 +103,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no physics.json (loader would report MISSING_PACKAGE) and docs/ss1/work/SS1-03/CHECKPOINT.md lists Physics as NOT STARTED. Manifest row: sha256=3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7, 466432 bytes, legacy binary .doc, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename, header verification required). PR #71 records header 'SUBJECT: PHYSICS CLASS: SS 1' on document line 2; that is an unverified branch claim, not registered or verified metadata. Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: physics.json sources[] entry SS1-SRC-2c924c964660 (sha256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7, archive_member 'SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc', term '2nd Term', canonical_subject 'Physics', header_text 'SUBJECT:  PHYSICS' + whitespace + 'CLASS: SS 1', line 3 of word-extractor 1.0.4 getBody(), single occurrence confirmed; 'PHYSICS' alone occurs 15 times); rule SS1-SRC-2c924c964660-R001 (source_alias, approval_reference PENDING-OWNER); open item PHYSICS-T2-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Physics from the header; no handoff needed. Member hash verified from the partial ZIP '2nd_Term_SS1_-20230730T171417Z-001.zip' (SHA-256 94a32a4e…3c0a); composite hash not checked. Evidence note: docs/ss1/work/microtasks/physics/PHYS-SRC-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that fact and a source_alias need as an open item rather than guessing. The package file is created by PHYS-SRC-T1; this item only appends this source entry. Do not author lessons, rules or coverage here."
     },
     {
@@ -2233,7 +2233,7 @@
     }
   },
   "next_runnable": [
-    "PHYS-SRC-T2"
+    "PHYS-SRC-T3"
   ],
   "runnable_now": [
     "PHYS-SRC-T1",
