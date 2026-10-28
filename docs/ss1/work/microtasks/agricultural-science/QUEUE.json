@@ -29,9 +29,9 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 5,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "BLOCKED": 1,
+    "PENDING": 4
   },
   "items": [
     {
@@ -132,8 +132,8 @@
       "depends_on": [
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No agricultural-science package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-458a07f7ea5a, sha256=9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, 5406306 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. File size (5.4 MB) suggests embedded media but nothing in the repository establishes what it contains.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json: sources[2] SS1-SRC-458a07f7ea5a (sha256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, member 'SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx', term '3rd Term', canonical_subject 'Agricultural Science'), header_text 'THIRD TERM E-LEARNING NOTE' (first paragraph; single occurrence), source_alias rule SS1-SRC-458a07f7ea5a-R001 (approval_reference PENDING-OWNER) and open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T3 (OWNER_ACTION, blocks_delivery). Subject confirmed from the SUBJECT line, scheme and teaching headings; no handoff needed. Evidence note: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -310,6 +310,9 @@
     }
   },
   "next_runnable": [
-    "AG-SRC-T3"
+    "AG-INV-T1",
+    "AG-INV-T2",
+    "AG-INV-T3",
+    "AG-TEST-PACKAGE"
   ]
 }
