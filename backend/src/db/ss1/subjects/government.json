@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-40ce7dcaf672: the subject line (line 19 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), after the line 'FIRST TERM E-LEARNING NOTE'; trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('GOVERNMENT' alone occurs 24 times). It names Government, class SS1, so the subject is verified by the document and not by the filename; the file is not misfiled Geography despite sharing a byte size with the 1st Term Geography member (different SHA-256). The scheme of work and Week One teaching confirm it: meaning and scope of government, features and functions, power, authority, legitimacy, sovereignty, democracy, ideologies, political culture, unitary and federal government. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782",
+      "archive_member": "SSS 1/2nd Term SS1_/GOVT.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Government",
+      "header_text": "SUBJECT: GOVERNMENT",
+      "header_evidence": {
+        "locator": "SS1-SRC-c76f430c7cf8: the subject line (line 3 of mammoth 1.12.2 extractRawText output, the importer's .docx call; the third non-empty paragraph of word/document.xml), after 'TERM: 2ND TERM' and before 'CLASS: SS 1'; trailing whitespace of the line is not included",
+        "explanation": "The subject line occurs once in the extracted text ('GOVERNMENT' alone occurs 25 times). It names Government, and the neighbouring lines name the 2nd Term and class SS 1, so the subject and term are verified by the document and not by the filename 'GOVT.docx'. The scheme of work and teaching confirm it: colonial administration and indirect rule, nationalism, constitutional development, Nigerian federalism, political parties. The heading differs from the canonical name by the 'SUBJECT:' label, so a source_alias is declared; the filename variation GOVT is not itself used as an alias."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT:  GOVERNMENT\t\t\t\t\t\t       CLASS:  SS1",
+      "canonical_subject": "Government",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-c76f430c7cf8-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-c76f430c7cf8",
+      "source_sha256": "bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782",
+      "anchor": "SUBJECT: GOVERNMENT",
+      "evidence": {
+        "locator": "SS1-SRC-c76f430c7cf8: subject line of extracted text (line 3)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT: GOVERNMENT",
       "canonical_subject": "Government",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-40ce7dcaf672-R001",
         "SS1-SRC-40ce7dcaf672"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T2-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: GOVERNMENT', with 'TERM: 2ND TERM' and 'CLASS: SS 1' on separate lines. It differs from the canonical subject name 'Government' by the label, so the contract requires a source_alias declaration; rule SS1-SRC-c76f430c7cf8-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-c76f430c7cf8-R001",
+        "SS1-SRC-c76f430c7cf8"
       ],
       "blocks_delivery": true
     }
