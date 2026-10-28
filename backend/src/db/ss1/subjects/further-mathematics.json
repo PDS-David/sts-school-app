@@ -150,6 +150,247 @@
   ],
   "lessons": [
     {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Laws of indices and their applications",
+      "objectives": [
+        "State the meaning of an index and the eight laws of indices, with their conditions",
+        "Evaluate expressions with zero, negative and fractional indices, taking the root first",
+        "Simplify numerical and algebraic expressions using the laws, writing every index explicitly"
+      ],
+      "body": "In this lesson we write every index with a caret: a^m means \"a to the power m\". Fractions in an index are in brackets, so 8^(2/3) means 8 to the power two-thirds. The sign ∛ means cube root, and the n-th root of a is written with the words \"n-th root of a\" and as a^(1/n).\n\n1. THE MEANING OF AN INDEX\nLet m be a positive whole number. Then a^m means that m copies of a are multiplied together: a^m = a × a × ... × a, with m factors. The number a is the base and m is the index (plural indices), also called the power or exponent. For example 2^5 = 2 × 2 × 2 × 2 × 2 = 32, and 2^1 = 2.\n\nConditions used in this lesson: a and b are non-zero real numbers. Whenever an index is a fraction, take a and b to be positive, because an even root of a negative number is not a real number (for example no real number multiplied by itself four times gives -16, so (-16)^(1/4) is not a real number).\n\n2. THE EIGHT LAWS\nLaw 1 (multiplication): a^m × a^n = a^(m+n).\nWhy: x^4 × x^3 = (x × x × x × x) × (x × x × x) = x^7, which is x^(4+3).\nLaw 2 (division): a^m ÷ a^n = a^(m-n), with a not equal to 0.\nWhy: y^9 ÷ y^4 cancels four factors, leaving y^5, which is y^(9-4).\nLaw 3 (power of a power): (a^m)^n = a^(m×n).\nWhy: (z^2)^5 means five copies of z^2, so z^(2+2+2+2+2) = z^10.\nLaw 4 (zero index): a^0 = 1, with a not equal to 0.\nWhy: a^m ÷ a^m = 1 because anything non-zero divided by itself is 1. By Law 2 it is also a^(m-m) = a^0. So a^0 = 1. If a = 0 this argument divides by zero, so a^0 = 1 is stated only for a not equal to 0 and 0^0 is not defined here. Examples: 7^0 = 1 and (3k)^0 = 1 when k is not 0.\nLaw 5 (product and quotient to a power): (ab)^m = a^m × b^m, and (a/b)^m = a^m / b^m with b not equal to 0.\nExample: (3xy)^3 = 3^3 × x^3 × y^3 = 27x^3y^3.\nLaw 6 (negative index): a^(-m) = 1 / a^m, with a not equal to 0.\nExample: 5^(-2) = 1 / 5^2 = 1/25. A negative index does not make the answer negative; it takes the reciprocal.\nLaw 7 (root as an index): a^(1/n) = the n-th root of a, for a positive and n a whole number of at least 2.\nExamples: 36^(1/2) = 6 because 6 × 6 = 36, and 125^(1/3) = 5 because 5 × 5 × 5 = 125. So a^(1/3) is ∛a, and the cube root of 27 is 3, not 27^(1/3) = 3^3.\nLaw 8 (fractional index): a^(m/n) = (the n-th root of a)^m = the n-th root of (a^m), with a positive. The two forms are equal because a^(m/n) = (a^(1/n))^m = (a^m)^(1/n), using Law 3.\nTake the root first, because the numbers stay small. In a^(m/n) the top number m is the power and the bottom number n is the root.\nExample: 16^(3/4) = (4th root of 16)^3 = 2^3 = 8. Check with the other form: 16^3 = 4096, and the 4th root of 4096 is 8, because 8^4 = 4096.\n\n3. APPLYING THE LAWS\nMethod: write each number as a power of a small base, then apply the laws, and check the sign of each index at every step.\n\nExample A (negative fractional index). Evaluate 27^(-2/3).\n27^(-2/3) = 1 / 27^(2/3)   (Law 6)\n27^(2/3) = (∛27)^2 = 3^2 = 9   (Law 8: the root is 3 and the power is 2)\nSo 27^(-2/3) = 1/9.\nA common slip is to write 27^(2/3) = ∛27 = 9: the cube root of 27 is 3, and the power 2 is applied after taking the root.\n\nExample B (negative index on a fraction). Evaluate (1/4)^(-1/2).\n(1/4)^(-1/2) = (4/1)^(1/2) = 4^(1/2) = 2. A negative index turns the fraction upside down.\n\nExample C (decimal). Write (0.001)^3 as a power of 10.\n0.001 = 1/1000 = 10^(-3). So (0.001)^3 = (10^(-3))^3 = 10^(-9) = 0.000000001 (nine decimal places). Note that 0.001 is one thousandth, not one hundredth.\n\nExample D (algebra). Simplify (x^3 y^2)^2 ÷ (x^2 y).\n(x^3 y^2)^2 = x^6 y^4   (Laws 5 and 3)\nx^6 y^4 ÷ (x^2 y) = x^(6-2) y^(4-1) = x^4 y^3   (Law 2, with y = y^1)\n\nExample E (mixed). Evaluate 8^(2/3) × 4^(-3/2).\n8^(2/3) = (∛8)^2 = 2^2 = 4, and 4^(-3/2) = 1 / 4^(3/2) = 1 / ((square root of 4)^3) = 1/2^3 = 1/8. So the product is 4 × 1/8 = 1/2.\n\nAlways evaluate an expression like 4^2 in full (16) before moving on, and keep brackets balanced. Use the word \"evaluate\" when you find a number and \"simplify\" when you reduce an expression. Equations in which the unknown is the index belong to the next scheme week and are not set here.\n",
+      "body_sha256": "7745eb2b4ea9f09762f8fefac60339a4a998569ac635b13ceca9d6ab4aa2d4c8",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Evaluate (a) 64^(2/3) and (b) 81^(3/4). Show the root first.",
+          "answer": "(a) 64^(2/3) = (∛64)^2 = 4^2 = 16. (b) 81^(3/4) = (4th root of 81)^3 = 3^3 = 27.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "(a) root 4 found",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) answer 16",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) root 3 found",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) answer 27",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Evaluate 32^(-2/5).",
+          "answer": "32^(-2/5) = 1 / 32^(2/5) = 1 / (5th root of 32)^2 = 1 / 2^2 = 1/4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Reciprocal taken (Law 6)",
+              "marks": 1
+            },
+            {
+              "criterion": "5th root of 32 = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 1/4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Simplify 2^6 × 2^(-4) ÷ 2^0 and give the value.",
+          "answer": "2^6 × 2^(-4) = 2^2 (Law 1) and 2^0 = 1 (Law 4), so the result is 2^2 ÷ 1 = 4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Law 1 gives 2^2",
+              "marks": 1
+            },
+            {
+              "criterion": "2^0 = 1",
+              "marks": 1
+            },
+            {
+              "criterion": "Value 4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Simplify (2a^2 b)^3 ÷ (4ab^2). Take a and b to be non-zero.",
+          "answer": "(2a^2 b)^3 = 8a^6 b^3 (Laws 5 and 3). Then 8a^6 b^3 ÷ (4ab^2) = 2a^5 b (divide 8 by 4, subtract indices: a^(6-1), b^(3-2)).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Cube expanded to 8a^6 b^3",
+              "marks": 1
+            },
+            {
+              "criterion": "Coefficient 2",
+              "marks": 1
+            },
+            {
+              "criterion": "a^5",
+              "marks": 1
+            },
+            {
+              "criterion": "b",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Write (0.0001)^2 as a power of 10 and then as a decimal.",
+          "answer": "0.0001 = 10^(-4), so (0.0001)^2 = (10^(-4))^2 = 10^(-8) = 0.00000001 (eight decimal places).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "0.0001 = 10^(-4)",
+              "marks": 1
+            },
+            {
+              "criterion": "10^(-8)",
+              "marks": 1
+            },
+            {
+              "criterion": "Decimal 0.00000001",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Evaluate (1/9)^(-3/2).",
+          "answer": "(1/9)^(-3/2) = 9^(3/2) = (square root of 9)^3 = 3^3 = 27.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Fraction inverted",
+              "marks": 1
+            },
+            {
+              "criterion": "Root 3 found",
+              "marks": 1
+            },
+            {
+              "criterion": "Answer 27",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Evaluate (27^(2/3) × 4^(3/2)) ÷ 16^(1/4).",
+          "answer": "27^(2/3) = 9, 4^(3/2) = 8 and 16^(1/4) = 2. So the value is (9 × 8) ÷ 2 = 36.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "27^(2/3) = 9",
+              "marks": 1
+            },
+            {
+              "criterion": "4^(3/2) = 8",
+              "marks": 1
+            },
+            {
+              "criterion": "16^(1/4) = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Value 36",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "Show from Law 2 that a^0 = 1, and state the condition on a. Then explain why (-16)^(1/4) is not a real number.",
+          "answer": "a^m ÷ a^m = 1 and, by Law 2, a^m ÷ a^m = a^(m-m) = a^0, so a^0 = 1; this needs a not equal to 0 because division by 0 is undefined. A real number multiplied by itself four times is never negative, so no real number equals the 4th root of -16.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Divides a^m by itself and applies Law 2",
+              "marks": 1
+            },
+            {
+              "criterion": "States a not equal to 0",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth power of a real number is never negative",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q9",
+          "question": "A student writes 27^(2/3) = ∛27 = 3^2 = 9. Find the error in the working and write a correct chain.",
+          "answer": "The first equality drops the power 2: ∛27 is 27^(1/3) = 3, not 27^(2/3). Correct: 27^(2/3) = (∛27)^2 = 3^2 = 9. The final value 9 is right but the chain is false.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies that the power 2 is missing in the first step",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct chain (∛27)^2",
+              "marks": 1
+            },
+            {
+              "criterion": "3^2 = 9",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-e9efc9a976ed (SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc)",
+          "locator": "Week ONE, TOPIC: INDICES, getBody() lines 65-144 (row SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2); the source teaching scope (definition, eight laws, applications) is followed, its printed exercises are not reused",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. Every index, root and fraction is written explicitly because the source's superscripts are flattened by extraction.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        },
+        {
+          "title": "PR71 candidate lesson SUP-SS1-FMATHS-001 (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), consulted as a prior draft",
+          "locator": "backend/src/db/ss1/subjects/further-mathematics.json at b5ced7e (blob 2a5849ac9566caebd8051af526e492d983f3a3ee); read at that SHA by FM-PORT-D3-L001. Its selection of laws and example types was consulted; its wording, schema and references were not carried over",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/further-mathematics.json",
+          "rights": "Prior draft in this repository; no sentence is reproduced. The replacement is rewritten and every answer recomputed.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; structure consulted only."
+        },
+        {
+          "title": "OpenStax, Intermediate Algebra (Lynn Marecek and Andrea Honeycutt Mathis), section 8.3 Simplify Rational Exponents",
+          "locator": "Opened on 2026-10-28: definitions of a^(1/n) and a^(m/n), the Properties of Exponents box (conditions a not equal to 0 and b not equal to 0), and the worked example showing (-16)^(1/4) has no real value. Used to check the conditions and the root-first method only; no text reproduced",
+          "url": "https://openstax.org/books/intermediate-algebra/pages/8-3-simplify-rational-exponents",
+          "rights": "OpenStax content is licensed CC BY; attribution to OpenStax is required. Nothing is copied from it.",
+          "reuse_status": "PERMITTED",
+          "attribution": "OpenStax, Intermediate Algebra, section 8.3, CC BY."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
       "id": "SUP-SS1-FURTHER-MATHEMATICS-T3-W02-FLOWCHARTS",
       "class_name": "SS 1",
       "term": "3rd Term",
@@ -923,9 +1164,10 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Indices: basic concept and basic laws of indices (scheme week 1 'Indices: Basic Laws & Application of indices'; row bullet 'Basic Concept of Laws of Indices'): definition of a^m with base and index, and the eight laws with one worked example each (multiplication, division, power, zero index, product power, negative index, root power, fraction index).",
       "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 68 (row bullet), 70-108 (section; SHA-256 ad52a0739ec7862296586760f9e8c1abf8ded495762f60d120820acaf57bde57); scheme line 23 (week 1 topic); parsed row 0 'WEEK ONE' / 'INDICES' = lines 65-144 after trimming, id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES"
       ],
       "evidence": [
         {
@@ -939,6 +1181,10 @@
         {
           "locator": "PR71 b5ced7e SUP-SS1-FMATHS-001 (not on master)",
           "explanation": "A PR71-only candidate replacement exists; it is not bound here, not copied and not read at its immutable SHA by this item. Row needs a replacement; the port decision belongs to FM-PORT-D3-L001, otherwise FM-LES-T1-W01-INDICES."
+        },
+        {
+          "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES: body sections 1-2 (definition and Laws 1-8) and practice Q1, Q2, Q3, Q8",
+          "explanation": "Read at PR71 b5ced7e and ported as one corrected supplement (FM-PORT-D3-L001). It states the definition with m factors, all eight laws with a reason or example each, a != 0 for division, zero and negative index, positive base for fractional indices, the intermediate step between (a^m)^(1/n) and (n-th root of a)^m, and writes every index explicitly. It answers defects 1-6 and 9 of OI-FM-T1-W01-FACT-DEFECTS and the notation loss for this section. Content approval PENDING, verification DEFERRED; delivery is not activated because no delivery correction is bound (FM-COR-T1-W01 owns that)."
         }
       ]
     },
@@ -949,7 +1195,8 @@
       "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 69 (row bullet), 110-144 (section; SHA-256 35d60c52b90b3366a1c497c88908514e9ec7a6fbe5ead17e811829e0799e7e60): examples 112-128, general evaluation 130-131, reading assignment 133, weekend assignment 135-140, theory 142-144; scheme line 23; parsed row 0, id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
       "status": "PARTIAL",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES"
       ],
       "evidence": [
         {
@@ -963,6 +1210,10 @@
         {
           "locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 108, 131, 136-140, 143-144",
           "explanation": "Flattening makes several printed questions ambiguous: '3 x = 1/81' reads as 3 times x, '3-y = 243' as 3 minus y, '10-8' as ten minus eight, '163/2' as 163 over 2, and the two stacked theory fractions on lines 143-144 lose their layout. Details in OI-FM-T1-W01-NOTATION-LOSS."
+        },
+        {
+          "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES: body section 3 (Examples A-E) and practice Q1-Q9; source lines 107-108, 112-131, 135-144",
+          "explanation": "The supplement teaches evaluating and simplifying numerical and algebraic expressions with fractional, zero and negative indices, with decimal-to-power-of-10 conversion, and gives original answered practice (30 marks, every mark breakdown sums). Worked examples avoid source defects 7, 8 and 10 and the printed items are not reused as a key. Still PARTIAL: weekend items 1, 3 and 4 (solving 3^x = 1/81 and similar) are exponential equations that scheme week 2 teaches and are not reproduced, pending FM-WK-T1-W02 confirmation; general evaluation (f) is not reused because its intended exponent is unconfirmed (FM-FACT-T1-W01-GEN-EVAL-F); the reading assignment page range is unchecked."
         }
       ]
     },

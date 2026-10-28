@@ -39,8 +39,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
-    "PENDING": 59,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 58,
     "BLOCKED": 7
   },
   "items": [
@@ -2285,8 +2285,8 @@
         "FM-SRC-T1",
         "FM-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-001] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-001; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim. | FM-WK-T1-W01 finding: the row needs a replacement (OI-FM-T1-W01-FACT-DEFECTS, -NOTATION-LOSS, -ASSESSMENT-GAPS). The PR71 lesson, if ported, must be checked against that defect list, and only one replacement may be bound to the row by FM-COR-T1-W01.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-001] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-001; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim. | FM-WK-T1-W01 finding: the row needs a replacement (OI-FM-T1-W01-FACT-DEFECTS, -NOTATION-LOSS, -ASSESSMENT-GAPS). The PR71 lesson, if ported, must be checked against that defect list, and only one replacement may be bound to the row by FM-COR-T1-W01. | Implemented: PR71's SUP-SS1-FMATHS-001 was read at b5ced7ebb0efe22df2351baa140266fbf40cbf41 (blob 2a5849ac9566caebd8051af526e492d983f3a3ee) and found reusable only after correction. Defects in the candidate: it says a is multiplied by itself m times with no restriction on m; it states all laws for non-zero reals and rational indices, which is false for even roots of negative bases; it lists seven laws against the source's eight (the root and fractional-index laws are merged, as are the product-power and quotient-power laws); its practice marking is free text, not the structured criteria with integer marks that master's schema requires, and the total for Q04 is ambiguous; it has five practice items and none on decimals-to-powers-of-10 conversion beyond one example; and its two references are preface pages (the Intermediate Algebra 2e preface was seen and teaches nothing about indices; the Elementary Algebra preface was not opened). Its arithmetic (Examples 1-7, Q01-Q05) was recomputed and is correct. Ported and corrected as ONE supplement lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES] in master's schema (body_sha256 7745eb2b4ea9f09762f8fefac60339a4a998569ac635b13ceca9d6ab4aa2d4c8; 9 practice items, 30 marks; state PENDING / IMPLEMENTED / DEFERRED). Reference checked: OpenStax Intermediate Algebra section 8.3 opened 2026-10-28 (it confirms the a != 0 conditions, the root-first method and that (-16)^(1/4) has no real value); the two preface references were dropped. COV-FM-T1-W01-OBJ-1 -> IMPLEMENTED_EQUIVALENT; OBJ-2 stays PARTIAL (exponential-equation items left to week 2, item (f) unconfirmed). No delivery correction added (FM-COR-T1-W01). Follow-up: FM-LES-T1-W01-INDICES can be closed by reference to this lesson. Original member hash 995cba8c verified from a supplied '1st Term SS1' zip (container SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636); composite hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e NOT checked; row id re-derived from lines 65-144. Record: docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L001.md. Implemented, not approved or verified.",
       "completion_condition": "Read and compare the preserved lesson at immutable SHA b5ced7ebb0efe22df2351baa140266fbf40cbf41 against the recorded Week 1 objectives and defect list. If reusable, port and correct ONE supplement under master's schema, with original answered practice, accurate notation, checked references, exact body hash and pending approval/deferred verification; update objective coverage with evidence. If unsuitable, document exact reasons for the authoring fallback. Do not add a delivery correction here: FM-COR-T1-W01 owns the binding after scope closure. Do not copy the alternate schema or blindly adopt its claims."
     },
     {
@@ -2785,6 +2785,6 @@
     }
   },
   "next_runnable": [
-    "FM-PORT-D3-L001"
+    "FM-PRE-T2"
   ]
 }
