@@ -29,9 +29,9 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 5,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "BLOCKED": 1,
+    "PENDING": 4
   },
   "items": [
     {
@@ -132,8 +132,8 @@
       "depends_on": [
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No biology package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-78059230037f, sha256=1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4, 416847 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/biology.json: sources[2] SS1-SRC-78059230037f (sha256 1e9a758cdd07bd13511059b6d8ef6db0f618f99b14cdf11d20d33c183cb1bca4, member 'SSS 1/3rd Term SS1_/3RD TERM S1 BIOLOGY.docx', term '3rd Term', canonical_subject 'Biology'), header_text 'THIRD TERM E-LEARNING NOTE' (first paragraph; single occurrence), source_alias rule SS1-SRC-78059230037f-R001 (approval_reference PENDING-OWNER) and open item BIOLOGY-ALIAS-APPROVAL-T3 (OWNER_ACTION, blocks_delivery). Subject confirmed from the SUBJECT line and scheme; no handoff needed. Evidence note: docs/ss1/work/microtasks/biology/BIO-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -310,6 +310,9 @@
     }
   },
   "next_runnable": [
-    "BIO-SRC-T3"
+    "BIO-INV-T1",
+    "BIO-INV-T2",
+    "BIO-INV-T3",
+    "BIO-TEST-PACKAGE"
   ]
 }
