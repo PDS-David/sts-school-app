@@ -25,8 +25,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -93,8 +93,8 @@
       "depends_on": [
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Manifest assignment SS1-SRC-ba9dee61c27c, SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc, fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: geography.json sources[] entry SS1-SRC-ba9dee61c27c (sha256 fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5, archive_member 'SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc', term '2nd Term', canonical_subject 'Geography', header_text = 'SUBJECT: GEOGRAPHY' + whitespace + 'CLASS: SS 1', line 3 of word-extractor 1.0.4 getBody(), single occurrence confirmed; 'GEOGRAPHY' alone occurs 11 times); rule SS1-SRC-ba9dee61c27c-R001 (source_alias, approval_reference PENDING-OWNER); open item GEOGRAPHY-T2-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Geography from the header; no handoff needed. Document hash verified; supplied container was the partial ZIP '2nd_Term_SS1_-20230730T171417Z-001.zip' (SHA-256 94a32a4e…3c0a), so the composite hash was not checked. Evidence note: docs/ss1/work/microtasks/geography/GEO-SRC-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -299,6 +299,6 @@
     "scope": "Repository-only queue completion; source bytes not reopened; testing deferred."
   },
   "next_runnable": [
-    "GEO-SRC-T2"
+    "GEO-SRC-T3"
   ]
 }
