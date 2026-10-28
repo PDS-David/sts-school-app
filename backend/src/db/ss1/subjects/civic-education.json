@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-fe52495abec9: opening two paragraphs of mammoth.extractRawText output (the importer's own call), separated by a blank line",
         "explanation": "'CIVIC EDUCATION' alone occurs 6 times in the text (topic titles and week content), so the contract's single-occurrence rule needs the two-paragraph heading, as in the Biology and French packages. The first paragraph 'ALPHA TERM SCHEME OF WORK FOR SS1' marks the class and term label (the document uses 'ALPHA TERM'; the 1st Term assignment comes from the manifest folder, not from this text). The second paragraph names the subject. Teaching content confirms it: meaning and need for civic education, values, community service, youth empowerment. It does not name Government."
       }
+    },
+    {
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef",
+      "archive_member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Civic Education",
+      "header_text": "SUBJECT:\tCIVIC EDUCATION",
+      "header_evidence": {
+        "locator": "SS1-SRC-21ddf6abc2dc: second non-empty paragraph of mammoth.extractRawText output (the importer's own call); the first non-empty paragraph is 'TERM:<tab>2ND TERM', then 'SS 1' and 'SCHEME OF WORK' follow",
+        "explanation": "The subject line 'SUBJECT:<tab>CIVIC EDUCATION' occurs once in the extracted text and names Civic Education, not Government or another subject. The document's own term line 'TERM: 2ND TERM' agrees with the manifest. Teaching content confirms the subject: voter education, voting, elections, electoral bodies in Nigeria, free and fair elections, electoral malpractice. The subject was read from the document, not its filename ('CIVIC.docx'). The heading differs from the canonical name by the 'SUBJECT:' label, so a source_alias is declared, as for other 'SUBJECT:' headings; the bare phrase 'CIVIC EDUCATION' also occurs once and would equal the canonical name, which the owner may prefer. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The two-paragraph heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "ALPHA TERM SCHEME OF WORK FOR SS1\n\nCIVIC EDUCATION",
+      "canonical_subject": "Civic Education",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-21ddf6abc2dc-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "source_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef",
+      "anchor": "SUBJECT:\tCIVIC EDUCATION",
+      "evidence": {
+        "locator": "SS1-SRC-21ddf6abc2dc: second non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT:\tCIVIC EDUCATION",
       "canonical_subject": "Civic Education",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-fe52495abec9-R001",
         "SS1-SRC-fe52495abec9"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CIVIC-EDUCATION-ALIAS-APPROVAL-T2",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: CIVIC EDUCATION'. It differs from the canonical subject name 'Civic Education' by the 'SUBJECT:' label, so the contract requires a source_alias declaration; rule SS1-SRC-21ddf6abc2dc-R001 carries approval_reference PENDING-OWNER. The bare phrase 'CIVIC EDUCATION' also occurs once in the text and would equal the canonical name without an alias; the owner may choose that header_text instead.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it, or chooses the bare-name header_text); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-21ddf6abc2dc-R001",
+        "SS1-SRC-21ddf6abc2dc"
       ],
       "blocks_delivery": true
     }
