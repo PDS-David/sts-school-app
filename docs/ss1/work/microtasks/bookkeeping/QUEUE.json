@@ -31,8 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -99,9 +99,9 @@
       "depends_on": [
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No bookkeeping package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-97c1db5b1eb0, sha256=c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3, 38245 bytes, member 'SSS 1/2nd Term SS1_/Book keeping.docx', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. Size note: the 1st and 2nd Term files differ by only 30 bytes (38275 vs 38245); this is a prompt to compare their content, not proof of duplication. Duplicate coverage may only be linked precisely after reading both.",
-      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Financial Accounting), record an explicit handoff open item; do not delete, merge into financial-accounting or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json (existing package from BK-SRC-T1; only additions): sources[1] source_id=SS1-SRC-97c1db5b1eb0 sha256=c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3 archive_member='SSS 1/2nd Term SS1_/Book keeping.docx' (verbatim from the manifest) term='2nd Term' canonical_subject='Bookkeeping' header_text='SUBJECT: BOOK-KEEPING<4 tabs>CLASS: SS 1'; rule SS1-SRC-97c1db5b1eb0-R001 (source_alias, approval_reference PENDING-OWNER); open items BOOKKEEPING-ALIAS-APPROVAL-T2 and BOOKKEEPING-T2-TEXT-MATCHES-T1 (both OWNER_ACTION, blocking). Subject confirmed from the document (subject line and cash-book/double-entry teaching), not the filename. The opening term title is 'SIGMA TERM'. FINDING: apart from that title and a line break around 'TOPIC', the extracted text is identical to the 1st Term source's; compared on whitespace-trimmed raw text only; not treated as proven duplication; no duplicate coverage linked. Container: member extracted from the complete composite ZIP (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified); member SHA-256 verified from the extracted bytes and equals SOURCE_ASSIGNMENTS.csv (38,245 bytes). Method: mammoth 1.12.2 extractRawText in a private scratch directory; importer/plan run not performed (deferred). Record: docs/ss1/work/microtasks/bookkeeping/BK-SRC-T2.md. Implemented, not approved or verified.",
+      "completion_condition": "Registered source entry added to the existing package with no other source touched. Package stays PENDING; the 'source without coverage' blocker remains until BK-INV-T2 indexing, which should wait for the owner's answer on BOOKKEEPING-T2-TEXT-MATCHES-T1. Alias owner approval is an open item, not invented. Testing deferred by owner."
     },
     {
       "id": "BK-SRC-T3",
@@ -312,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "BK-SRC-T2"
+    "BK-SRC-T3",
+    "BK-INV-T1",
+    "BK-INV-T2"
   ]
 }
