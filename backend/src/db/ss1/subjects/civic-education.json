@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-21ddf6abc2dc: second non-empty paragraph of mammoth.extractRawText output (the importer's own call); the first non-empty paragraph is 'TERM:<tab>2ND TERM', then 'SS 1' and 'SCHEME OF WORK' follow",
         "explanation": "The subject line 'SUBJECT:<tab>CIVIC EDUCATION' occurs once in the extracted text and names Civic Education, not Government or another subject. The document's own term line 'TERM: 2ND TERM' agrees with the manifest. Teaching content confirms the subject: voter education, voting, elections, electoral bodies in Nigeria, free and fair elections, electoral malpractice. The subject was read from the document, not its filename ('CIVIC.docx'). The heading differs from the canonical name by the 'SUBJECT:' label, so a source_alias is declared, as for other 'SUBJECT:' headings; the bare phrase 'CIVIC EDUCATION' also occurs once and would equal the canonical name, which the owner may prefer. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
       }
+    },
+    {
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Civic Education",
+      "header_text": "S.S.1.       CIVICS   EDUCATION",
+      "header_evidence": {
+        "locator": "SS1-SRC-0dc1f445683f: second non-empty paragraph of mammoth.extractRawText output (the importer's own call); the first non-empty paragraph is 'THIRD  TERM  E- NOTES', then the scheme of work with WEEK 1 to WEEK 11 & 12 follows",
+        "explanation": "The heading 'S.S.1.' + 7 spaces + 'CIVICS' + 3 spaces + 'EDUCATION' occurs once in the extracted text. It names the subject as 'CIVICS EDUCATION' (with an S), not Government or another subject; 'CIVICS' occurs once in the whole text. Teaching content confirms Civic Education: cultism, law and order, respect for constituted authority, employment and unemployment, capitalist democracy; a reading assignment cites 'Civic Education SS 2' by R.W. Okunloye. The word 'government' appears only in body text. The document's own term line 'THIRD TERM E- NOTES' agrees with the manifest 3rd Term. The subject was read from the document, not its filename. The heading differs from the canonical name by the 'S.S.1.' class label, the extra S in 'CIVICS' and spacing, so a source_alias is declared. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
       "observed_subject": "SUBJECT:\tCIVIC EDUCATION",
       "canonical_subject": "Civic Education",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-0dc1f445683f-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-0dc1f445683f",
+      "source_sha256": "8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1",
+      "anchor": "S.S.1.       CIVICS   EDUCATION",
+      "evidence": {
+        "locator": "SS1-SRC-0dc1f445683f: second non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "S.S.1.       CIVICS   EDUCATION",
+      "canonical_subject": "Civic Education",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-21ddf6abc2dc-R001",
         "SS1-SRC-21ddf6abc2dc"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CIVIC-EDUCATION-ALIAS-APPROVAL-T3",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source's heading is 'S.S.1.       CIVICS   EDUCATION'. It differs from the canonical subject name 'Civic Education' by the class label, the plural-looking 'CIVICS' and spacing, so the contract requires a source_alias declaration; rule SS1-SRC-0dc1f445683f-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-0dc1f445683f-R001",
+        "SS1-SRC-0dc1f445683f"
       ],
       "blocks_delivery": true
     }
