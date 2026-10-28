@@ -44,6 +44,18 @@
         "locator": "SS1-SRC-af4868d2c026: line 7 of mammoth 1.12.2 extractRawText() output; the anchor occurs once; lines 1-10 precede the first parsed row ('WEEK 1:' on line 11)",
         "explanation": "Title block outside every parsed row: 'SECOND TERM E-LEARNING NOTE' (line 1), the registered subject line (line 3), 'CLASS:SS1' (line 5) and 'TITLE:SECOND TERM SCHEME OF WORK' (line 7). It states document identity only and has no teaching objective. Classification only; the text is retained."
       }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "Revision of the work for last term. Inscribed and circumscribed",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "SS1-SRC-af4868d2c026: line 11 of mammoth 1.12.2 extractRawText() output ('WEEK 1:' scheme-table line) = parsed row 0 (label 'WEEK 1', 79 characters, body SHA-256 08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889, id SS1-SRC-af4868d2c026:BODY:08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889); the anchor is the 63 characters after the label",
+        "explanation": "Scheme-table line for Week 1 only: it names the week's objective and carries no teaching body (the teaching is parsed row 11, 'WEEK ONE'). The anchor occurs exactly once in the unmodified extracted text (also once case-insensitively; the nearby phrase 'Inscribed and circumscribed' alone occurs twice, so the full 63-character anchor is used) and lies inside parsed row 0 only, so it binds exactly one parsed row. Classification only; the row body is retained and nothing is discarded."
+      }
     }
   ],
   "lessons": [],
@@ -63,6 +75,34 @@
         {
           "locator": "lines 1-10; SHA-256 45128bbd38eb5c8ab57b4f2a54e9e4f1db8831f9f556062dbb853202a13af9d4 (lines joined with \\n)",
           "explanation": "Classified by SS1-SRC-af4868d2c026-R002 as scheme-only preamble. Line 3 is the registered header_text (see rule SS1-SRC-af4868d2c026-R001); lines 2, 4, 6 and 8-10 are blank. The scheme-of-work lines that follow (11-31) are parsed rows 0-10 and belong to the TD-SCH items."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W01",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 1 scheme objective, verbatim: \"Revision of the work for last term. Inscribed and circumscribed\" (the teaching row's title reads \"Revision of last term work. Inscribed and circumscribed circles\"): revision of last term's construction work; inscribed and circumscribed circles",
+      "objective_locator": "SS1-SRC-af4868d2c026: scheme-table line 11 of mammoth 1.12.2 extractRawText() output = parsed row 0 ('WEEK 1', 79 characters, id SS1-SRC-af4868d2c026:BODY:08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889, classified SCHEME_ONLY by rule SS1-SRC-af4868d2c026-R003); taught in parsed row 11 'WEEK ONE', lines 59-342 after trimming, id SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-af4868d2c026: lines 75-195 (SHA-256 8402719aa8dd35b28c8698a4a414663efb08a5ab40e2955fa52f926158185531, lines joined with \\n), 'Inscribed circles' with evaluation questions 1-2 on lines 191-195",
+          "explanation": "Teaches inscribing a circle with four numbered constructions: in a given triangle (Example 1), three equal circles in an equilateral triangle, in a sector, and in a regular polygon, rhombus or deltoid (kite). Each has a stepwise method; two evaluation questions follow."
+        },
+        {
+          "locator": "SS1-SRC-af4868d2c026: lines 201-239 (SHA-256 8299e517d9cbc78a46de7dec40a5560a0f00a3157ba3370242bd7fe342608d67), 'Circumcribedcircles' (sic) with evaluation questions 1-2 on lines 233-239",
+          "explanation": "Teaches circumscribing a circle on a triangle (equivalently inscribing a triangle in a circle) with a three-step method by bisecting two sides, followed by two evaluation questions."
+        },
+        {
+          "locator": "SS1-SRC-af4868d2c026: line 61 (SHA-256 a6ed9397037038b4426fbb62fc2d8202e55ae43cb4c0b6abe9425f09a4afa447) and lines 243-261 (SHA-256 101c2bc440f02e9c2598f883306b001015cbb1133a0be81c56fe3ee33aac9072), 'General evaluation/revisionalquestions'",
+          "explanation": "The row title states the revision aim, and five general evaluation/revision constructions (triangle from perimeter and base angle, from base, height and vertical angle, from perimeter and ratio, a similar triangle of given perimeter, an octagon in a square; three marked WAEC) provide the revision practice. There is no separate worked revision of last term's topics. The scheme does not name those topics and the 1st Term source is not supplied (TD-MISSING-T1), so the revision scope is unverified: open item TD-T2-W01-REVISION-SCOPE."
+        },
+        {
+          "locator": "SS1-SRC-af4868d2c026: parsed row 11, lines 59-342 (body SHA-256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6); weekend assignment lines 271-337",
+          "explanation": "This entry certifies only that the row's text teaches the objective at topic level. It is not a factual or answer-key review and not a certification of delivered quality: the row's drawings (for example 'the figure shown above' on lines 283, 301 and 315) are absent from the extracted text and belong to TD-VIS-W01, and the superscript degree signs flatten to '670' (line 193), '1050' (lines 237, 335), '550' (line 251) and '600' (lines 257, 331) in the extracted text, a notation loss for TD-WK-W01 to review. Neither is resolved here."
         }
       ]
     }
@@ -96,6 +136,17 @@
       "required_action": "Owner confirms the footer/header are non-instructional and must not be reproduced in student lessons; no text is copied into Git.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-W01-REVISION-SCOPE",
+      "kind": "VERIFICATION",
+      "detail": "The Week 1 scheme objective begins 'Revision of the work for last term' without naming the topics. Parsed row 11 provides revision through its title and five general evaluation/revision constructions (lines 243-261), but the 1st Term Technical Drawing document is not supplied (TD-MISSING-T1), so whether those questions revise the actual first-term topics could not be checked. Coverage COV-TD-T2-SCH-W01 is SUPPORTED at topic level on that basis and is not certified for revision scope.",
+      "required_action": "Owner or teacher confirms the revision questions fit last term's work once the 1st Term source is supplied or confirmed absent; if they do not, a revision lesson is added. Do not mark verified without that confirmation.",
+      "affected_ids": [
+        "COV-TD-T2-SCH-W01",
+        "SS1-SRC-af4868d2c026-R003"
       ],
       "blocks_delivery": false
     }
