@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-167817613690: second non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call), directly after the first non-empty paragraph 'SS1' and before 'SIGMA – TERM' and 'SCHEME OF WORK'; the paragraph is 'FINANCIAL ACCOUNTING' with no surrounding spaces",
         "explanation": "The heading 'FINANCIAL ACCOUNTING' occurs once in the extracted text and there is no 'SUBJECT:' label, no 'BOOK-KEEPING' or 'BOOKKEEPING' wording and no Commerce or Economics heading. It equals the canonical subject 'Financial Accounting' apart from case, so no source_alias rule is declared. The filename 'Account.docx' is not used as evidence. The scheme headings agree: partnership accounts (admission of partners, goodwill, dissolution), accounting ratios, single entry and incomplete records, accounts of non-profit organisations. The term label in the document reads 'SIGMA – TERM' (not '2nd Term'); the 2nd Term assignment rests on the manifest folder and is recorded as an observation, not changed. Only the header and opening scheme were inspected; no week inventory is recorded here."
       }
+    },
+    {
+      "source_id": "SS1-SRC-8165a1af2444",
+      "sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 FINANCIAL ACCOUNT.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Financial Accounting",
+      "header_text": "SUBJECT:\tFINANCIAL ACCOUNTING\t\t\t\t\t\tCLASS: SS1",
+      "header_evidence": {
+        "locator": "SS1-SRC-8165a1af2444: second non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call; character offset 30), directly after the first paragraph 'THIRD TERM E-LEARNING NOTE' (offset 0) and before 'SCHEME OF WORK' (offset 79); trailing whitespace of the line is not included",
+        "explanation": "The subject line occurs once in the extracted text and it is the only 'SUBJECT' occurrence; the upper-case string 'FINANCIAL ACCOUNTING' occurs only in this line, so the whole line is the unique header_text. It names Financial Accounting, not Bookkeeping, Commerce or Economics; there is no 'SUBJECT: BOOK-KEEPING' line and no Commerce or Economics heading. The scheme of work opens with the bank account and its operations, bank reconciliation statement, final accounts of a sole trader, the balance sheet, and opening entries and subsequent transactions. Topic overlap with the separate Bookkeeping package is not evidence; the header decides the subject, so no handoff is needed. The filename suffix 'FINANCIAL ACCOUNT' is not used as evidence. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared. Only the header and opening scheme were inspected; no week inventory is recorded here."
+      }
     }
   ],
   "source_rules": [
@@ -43,6 +56,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT: FINANCIAL ACCOUNTING\t\t\t\t\t\t\t    CLASS: SS1",
+      "canonical_subject": "Financial Accounting",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its header; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-8165a1af2444-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-8165a1af2444",
+      "source_sha256": "943d381416381610e47215cdec5b06c63c819f34604edbab2034ff28e1ccf170",
+      "anchor": "SUBJECT:\tFINANCIAL ACCOUNTING\t\t\t\t\t\tCLASS: SS1",
+      "evidence": {
+        "locator": "SS1-SRC-8165a1af2444: subject line of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT:\tFINANCIAL ACCOUNTING\t\t\t\t\t\tCLASS: SS1",
       "canonical_subject": "Financial Accounting",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its header; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -60,6 +87,17 @@
       "affected_ids": [
         "SS1-SRC-cf77df509ac3-R001",
         "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-ALIAS-APPROVAL-3RD-TERM",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source subject line is 'SUBJECT: FINANCIAL ACCOUNTING' with 'CLASS: SS1'. It differs from the canonical subject name 'Financial Accounting' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-8165a1af2444-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-8165a1af2444-R001",
+        "SS1-SRC-8165a1af2444"
       ],
       "blocks_delivery": true
     }
