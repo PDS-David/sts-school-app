@@ -31,8 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 9,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 8,
     "BLOCKED": 1
   },
   "items": [
@@ -99,9 +99,9 @@
       "depends_on": [
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-84df18289b7a, sha256=0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a, 1656948 bytes, member 'SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. This is one of TWO 1st Term Chemistry files; neither is a duplicate until CHEM-CMP-T1 compares them (the two have different hashes and sizes).",
-      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/chemistry.json (existing package from CHEM-SRC-T1A; only additions): sources[1] source_id=SS1-SRC-84df18289b7a sha256=0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a archive_member='SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx' (verbatim from the manifest) term='1st Term' canonical_subject='Chemistry' header_text='CHEMISTRY SS1'; rule SS1-SRC-84df18289b7a-R001 (source_alias, approval_reference PENDING-OWNER); open item CHEMISTRY-ALIAS-APPROVAL-T1B (OWNER_ACTION, blocking). Subject confirmed from the document (heading 'CHEMISTRY SS1', scheme of work for 'ALPHA TERM', chemistry teaching content), not the filename. Duplication with the other 1st Term file was NOT decided or checked; CHEM-CMP-T1 owns that. Container: member extracted from the complete composite ZIP (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified); member SHA-256 verified from the extracted bytes and equals SOURCE_ASSIGNMENTS.csv (1,656,948 bytes). Method: mammoth 1.12.2 extractRawText in a private scratch directory; importer/plan run not performed (deferred). Record: docs/ss1/work/microtasks/chemistry/CHEM-SRC-T1B.md. Implemented, not approved or verified.",
+      "completion_condition": "Registered source entry added to the existing package with no other source touched. Package stays PENDING; the 'source without coverage' blocker remains until CHEM-INV-T1B indexing. Duplication is not decided here. Alias owner approval is an open item, not invented. Testing deferred by owner."
     },
     {
       "id": "CHEM-SRC-T2",
@@ -429,6 +429,9 @@
     }
   },
   "next_runnable": [
-    "CHEM-SRC-T1B"
+    "CHEM-SRC-T2",
+    "CHEM-SRC-T3",
+    "CHEM-INV-T1A",
+    "CHEM-INV-T1B"
   ]
 }

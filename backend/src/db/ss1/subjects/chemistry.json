@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-58b4a44c3afa: second non-empty paragraph of mammoth.extractRawText output (the importer's own call) after about 30 empty paragraphs; the first non-empty paragraph is 'FIRST TERM E-LEARNING NOTE'",
         "explanation": "The subject line occurs once in the extracted text ('CHEMISTRY' alone occurs 9 times). It names Chemistry, not another science subject. Teaching content confirms it: introduction to chemistry, laboratory apparatus, nature of matter, elements and symbols, separation techniques, atomic structure. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared. This is one of two 1st Term Chemistry sources; no duplicate or relationship to the other is claimed."
       }
+    },
+    {
+      "source_id": "SS1-SRC-84df18289b7a",
+      "sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a",
+      "archive_member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "canonical_subject": "Chemistry",
+      "header_text": "CHEMISTRY SS1",
+      "header_evidence": {
+        "locator": "SS1-SRC-84df18289b7a: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), after two empty paragraphs; the second non-empty paragraph is 'SCHEME OF WORK FOR ALPHA TERM'",
+        "explanation": "The heading 'CHEMISTRY SS1' occurs once in the extracted text (case-insensitively too; 'CHEMISTRY' alone occurs 9 times). It names Chemistry, not another science subject. The term is introduced as 'ALPHA TERM', the manifest's 1st Term; the manifest term comes from the archive folder. The scheme of work (introduction to chemistry, nature of matter, elements, atomicity, relative atomic masses, compounds, IUPAC nomenclature, mixtures, separation practicals) and the WEEK 1 onward sections confirm the subject. The subject was read from the document, not its filename. The heading differs from the canonical name by the class text, so a source_alias is declared. This is one of two 1st Term Chemistry sources; no duplicate or relationship to the other is claimed or checked here. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT:  CHEMISTRY\t\t\t\t\t\t\tCLASS: SS1",
+      "canonical_subject": "Chemistry",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-84df18289b7a-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "source_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a",
+      "anchor": "CHEMISTRY SS1",
+      "evidence": {
+        "locator": "SS1-SRC-84df18289b7a: first non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "CHEMISTRY SS1",
       "canonical_subject": "Chemistry",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-58b4a44c3afa-R001",
         "SS1-SRC-58b4a44c3afa"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CHEMISTRY-ALIAS-APPROVAL-T1B",
+      "kind": "OWNER_ACTION",
+      "detail": "The second 1st Term source's heading is 'CHEMISTRY SS1'. It differs from the canonical subject name 'Chemistry' by the class text, so the contract requires a source_alias declaration; rule SS1-SRC-84df18289b7a-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-84df18289b7a-R001",
+        "SS1-SRC-84df18289b7a"
       ],
       "blocks_delivery": true
     }
