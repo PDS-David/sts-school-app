@@ -911,6 +911,58 @@
         {
           "locator": "parsed row 0",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "FM-WK-T1-W01 (docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md)",
+          "explanation": "Row reviewed in full by FM-WK-T1-W01 against the original document: two scheme objectives, bound at objective level in COV-FM-T1-W01-OBJ-1 and COV-FM-T1-W01-OBJ-2 (both PARTIAL). Factual defects, lost notation and assessment gaps are recorded in OI-FM-T1-W01-FACT-DEFECTS, OI-FM-T1-W01-NOTATION-LOSS and OI-FM-T1-W01-ASSESSMENT-GAPS. The row needs a replacement; none is authored here. This entry stays a row-level association and is not an objective-level certification."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W01-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Indices: basic concept and basic laws of indices (scheme week 1 'Indices: Basic Laws & Application of indices'; row bullet 'Basic Concept of Laws of Indices'): definition of a^m with base and index, and the eight laws with one worked example each (multiplication, division, power, zero index, product power, negative index, root power, fraction index).",
+      "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 68 (row bullet), 70-108 (section; SHA-256 ad52a0739ec7862296586760f9e8c1abf8ded495762f60d120820acaf57bde57); scheme line 23 (week 1 topic); parsed row 0 'WEEK ONE' / 'INDICES' = lines 65-144 after trimming, id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 71-72 (definition) and 73-105 (laws 1-8)",
+          "explanation": "The source does teach every law with a worked example, so the objective is present in the row. It is not certified: line 88 says any number to the power zero is 1 (false for 0), line 100 ends '(3)^3 = 3' (should be 27), line 105 equates the cube root of 27 with 3^2 (the exponent 2 belongs outside the root), line 71 says a is multiplied by itself m times (a^m has m factors) and ends on a comma, and conditions a != 0 (lines 78, 85-87, 95) and the even-root condition (line 98) are omitted. Details in OI-FM-T1-W01-FACT-DEFECTS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 71-108 (every exponent), private LibreOffice render pages 3-4",
+          "explanation": "Exponents are formatted superscripts in the original and are flattened to baseline text by word-extractor, e.g. 'am', 'p3' and '3 -2'; root indices are flattened ('3√27' reads as 3 times the square root of 27); line 108 item 2 shows 1000000000 with a superscript zero as the 11-character '10000000000'. The original has no equation objects, pictures or subscripts in this row. Details in OI-FM-T1-W01-NOTATION-LOSS."
+        },
+        {
+          "locator": "PR71 b5ced7e SUP-SS1-FMATHS-001 (not on master)",
+          "explanation": "A PR71-only candidate replacement exists; it is not bound here, not copied and not read at its immutable SHA by this item. Row needs a replacement; the port decision belongs to FM-PORT-D3-L001, otherwise FM-LES-T1-W01-INDICES."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W01-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Indices: application of the laws of indices (scheme week 1 'Application of indices'; row bullet 'Application of Laws of Indices'): evaluating and simplifying numeric and algebraic expressions with fractional, zero and negative indices, with five worked examples, a general evaluation set, a reading assignment, a five-item objective weekend assignment and two theory questions.",
+      "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 69 (row bullet), 110-144 (section; SHA-256 35d60c52b90b3366a1c497c88908514e9ec7a6fbe5ead17e811829e0799e7e60): examples 112-128, general evaluation 130-131, reading assignment 133, weekend assignment 135-140, theory 142-144; scheme line 23; parsed row 0, id SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 112-128 (examples i-v)",
+          "explanation": "Worked examples reach correct values for 32^(3/5)=8, 343^(2/3)=49 and 14^0=1. Example iv is printed as '0.001' on line 114 but solved as (0.001)^3 on line 125, and line 125 writes (0.001)^3 = (1/100)^3 although 0.001 = 1/1000 (the final 10^-9 is right). Lines 120 and 123 have unbalanced brackets and line 123 stops at 4^2 without the value 16. Line 113 says 'Solve' for evaluation items."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 107-108, 130-131, 135-144",
+          "explanation": "Practice is present but has no answers or solutions anywhere in the row. Weekend items 1, 3 and 4 (lines 136, 138, 139) ask the learner to solve exponential equations, which scheme week 2 ('Indicial and Exponential Equations') teaches, not week 1. General evaluation (f) on line 131, 625^(3/8) x 25, evaluates to 125*sqrt(5) as printed; 625^(3/4) x 25 would give 3125, so a typing slip is possible and unconfirmed. Details in OI-FM-T1-W01-FACT-DEFECTS and OI-FM-T1-W01-ASSESSMENT-GAPS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 108, 131, 136-140, 143-144",
+          "explanation": "Flattening makes several printed questions ambiguous: '3 x = 1/81' reads as 3 times x, '3-y = 243' as 3 minus y, '10-8' as ten minus eight, '163/2' as 163 over 2, and the two stacked theory fractions on lines 143-144 lose their layout. Details in OI-FM-T1-W01-NOTATION-LOSS."
         }
       ]
     },
@@ -1517,6 +1569,36 @@
       "required_action": "Owner confirms the licence or approves removal of the branding and contact details from anything delivered (FM-FACT-VENDOR-PERMISSION); FM-VIS-T1-BRANDING records the disposition of each object. Do not copy contact details into the repository.",
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W01-FACT-DEFECTS",
+      "kind": "FACT",
+      "detail": "1st Term Week 1 (INDICES) contains factual defects, by getBody() line: (1) line 88 'Any number raised to power of zero is 1' is false for 0 (0^0 is undefined); the derivation on lines 85-87 needs a != 0; (2) line 100 '27^(1/3) = cube root of 27 = 3 ie (3)^3 = 3' ends with a false equality (3^3 = 27); (3) line 105 '27^(2/3) = cube root of 27 = 3^2 = 9' equates the cube root of 27 (which is 3) with 3^2, the exponent 2 belonging outside the root; the value 9 is right; (4) line 71 says a is multiplied by itself m times (a^m has m factors of a), is a sentence ending on a comma, and gives no restriction on m; (5) division, negative-index and root laws (lines 78, 95, 98) omit a != 0 and the non-negative base needed for even roots; (6) line 103 jumps from (a^m)^(1/n) to (nth root of a)^m without the nth root of a^m; (7) example iv is printed as '0.001' on line 114 but solved as (0.001)^3 from line 125, and line 125 writes (0.001)^3 = (1/100)^3 although 0.001 = 1/1000 (final 10^-9 is correct); (8) lines 120 and 123 have unbalanced brackets and line 123 never evaluates 4^2; (9) lines 86 and 90 write the zero exponent as the letter o ('a^o', '3^o', 'c^o', 'y^o'); (10) line 113 labels evaluation items 'Solve the following'; (11) line 131 item (f) 625^(3/8) x 25 is 125*sqrt(5) as printed (625^(3/4) x 25 would be 3125); the intended exponent is unconfirmed; (12) line 137 weekend item 2 uses r in the question but p and P in three options. Everything else in the row was recomputed and reaches the right value, apart from the omitted conditions in (5): laws 1-3, 5 and 6, examples i, ii, iii and v, and every weekend item has its correct option among those listed (1: -4, 2: 18r^8, 3: -5, 4: -2/5, 5: 10^-8). The row needs a replacement for delivery; none is authored.",
+      "required_action": "Author a replacement for this row (decision on the PR71 candidate in FM-PORT-D3-L001, otherwise FM-LES-T1-W01-INDICES) that states the zero-index condition, corrects defects 2, 3, 4, 7 and 8 and does not teach defects 1 and 11 as printed; bind it with FM-COR-T1-W01. Teacher or owner confirms the intended exponent in item (f) (FM-FACT-T1-W01-GEN-EVAL-F). The original wording is preserved, not edited.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W01-NOTATION-LOSS",
+      "kind": "CONTENT",
+      "detail": "In 1st Term Week 1 every exponent is a superscript run in the original (about 121 runs in a private LibreOffice conversion) and word-extractor getBody() flattens them to baseline text; the nth-root indices are flattened the same way. The original row has no equation objects, pictures, text boxes or subscripts. Ambiguous lines: 71-72, 73-105 (a^m as 'am', a^(m+n) as 'am + n'), 96 ('3 -2'), 98-105 ('3√27' reads as 3 times the square root of 27, 'n√a'), 108 (item 1 '275/3' reads as 275 divided by 3; item 2 shows 1000000000 with a superscript 0 as the 11-character '10000000000', which looks like ten billion; item 3 '2x-1 x 22x+2'), 114-128 (all indices), 131 ('6253/8 x 25'), 136-140 ('3 x = 1/81' reads as 3 times x, '3-y = 243' as 3 minus y, '25-5n', '10-8' as ten minus eight), 143-144 (the numerator and denominator of the two theory fractions are stacked on two lines and '163/2 x 82/3' reads as 163/2). The delivered row text is therefore not reliable for these items. The Unicode characters in the row (the half and three-quarter fractions, the radical sign, the division sign) survive. A per-row census and the extractor decision belong to FM-FACT-EQUATION-LOSS-T1 and FM-FACT-EQUATION-EXTRACTOR-DECISION.",
+      "required_action": "Replacement lesson must restate every index, root and fraction explicitly. Owner decision on an equation-aware extractor (OI-FM-001) remains open. Do not alter the source row text.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W01-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "1st Term Week 1 gives no answers, solutions or marking for any of its practice: Evaluation (lines 107-108, three items), General Evaluation (130-131, six items), Weekend Assignment (135-140, five multiple-choice items) and Theory (142-144, two items). Weekend items 1, 3 and 4 (lines 136, 138, 139) require solving exponential equations, which the scheme assigns to week 2 (Indicial and Exponential Equations); the row never teaches that method. The reading assignment (line 133) cites 'Further Mathematics project book 1 (New third edition), Chapter 2 pg. 4-6'; the scheme (lines 46-48) names 'Further Mathematics project 1 by Tuttuh Adegun et al'. The page range was not checked against the book.",
+      "required_action": "Replacement lesson supplies original practice with complete answers and marking breakdown under the contract, and either teaches or drops the equation-solving items; FM-WK-T1-W02 should confirm how week 2 covers them. Do not copy the printed items as an answer key.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
       ],
       "blocks_delivery": true
     }
