@@ -29,8 +29,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -97,9 +97,9 @@
       "depends_on": [
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No agricultural-science package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-956594d97094, sha256=e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042, 188799 bytes, member 'SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. The 2nd Term filename spells 'AGRICULTRAL'; a filename is not evidence of the header.",
-      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/agricultural-science.json (existing package from AG-SRC-T1; only additions): sources[1] source_id=SS1-SRC-956594d97094 sha256=e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 archive_member='SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx' (verbatim from the manifest) term='2nd Term' canonical_subject='Agricultural Science' header_text='SECOND TERM E-LEARNING NOTE'; rule SS1-SRC-956594d97094-R001 (source_alias, approval_reference PENDING-OWNER); open item AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T2 (OWNER_ACTION, blocking). Subject confirmed from the document: the opening heading is the generic template title (occurs once); the next line reads 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS 1'; the filename spelling 'AGRICULTRAL' was not used as evidence. Container supplied: the complete composite ZIP (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified) and the member's own SHA-256 was also verified from the extracted bytes; both equal SOURCE_ASSIGNMENTS.csv (188,799 bytes). Method: DOCX XML paragraphs plus mammoth 1.12.2 extractRawText in a private scratch directory; importer/plan run not performed (deferred). Record: docs/ss1/work/microtasks/agricultural-science/AG-SRC-T2.md. Implemented, not approved or verified.",
+      "completion_condition": "Registered source entry added to the existing package with no other source touched. Package stays PENDING; the 'source without coverage' blocker remains until AG-INV-T2 indexing. Alias owner approval is an open item, not invented. Testing deferred by owner."
     },
     {
       "id": "AG-SRC-T3",
@@ -310,6 +310,8 @@
     }
   },
   "next_runnable": [
-    "AG-SRC-T2"
+    "AG-SRC-T3",
+    "AG-INV-T1",
+    "AG-INV-T2"
   ]
 }
