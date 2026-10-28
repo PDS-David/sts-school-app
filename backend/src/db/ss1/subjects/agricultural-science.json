@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-956594d97094: first text paragraph of word/document.xml (first non-empty line of mammoth extractRawText); subject line is the next non-empty line",
         "explanation": "The opening heading is the generic template title; it does not name the subject. The subject is confirmed by the next line, 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS 1' (whitespace/tabs not reproduced here), and by the scheme of work and reference list (cultural practices, crop husbandry, agricultural ecology, rocks and soil formation; Agricultural Science textbooks). The subject was read from the document, not its filename (which spells 'AGRICULTRAL'). The heading occurs exactly once in the document, checked on the DOCX XML paragraph text and on mammoth 1.12.2 raw text; the importer run itself is deferred."
       }
+    },
+    {
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Agricultural Science",
+      "header_text": "THIRD TERM E-LEARNING NOTE",
+      "header_evidence": {
+        "locator": "SS1-SRC-458a07f7ea5a: first text paragraph of word/document.xml (no image-only paragraph precedes it); line 1 of mammoth 1.12.2 extractRawText(); the subject line is on line 5",
+        "explanation": "The opening heading is the generic template title; it does not name the subject. The subject is confirmed by line 5, 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS1' (tabs not reproduced here), by the scheme of work (simple farm tools, farm power, farm mechanization, anatomy and physiology of farm animals, reproduction in farm animals, environmental physiology, livestock management, revision, examination), by the reference list (Agricultural Science and animal production textbooks) and by the WEEK ONE and WEEK TWO teaching headings (simple farm tools; farm power). The subject was read from the document, not its filename. The heading occurs exactly once, checked on the DOCX XML paragraph text and on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
       "observed_subject": "SECOND TERM E-LEARNING NOTE",
       "canonical_subject": "Agricultural Science",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-458a07f7ea5a-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "anchor": "THIRD TERM E-LEARNING NOTE",
+      "evidence": {
+        "locator": "SS1-SRC-458a07f7ea5a: first text paragraph of word/document.xml",
+        "explanation": "Source metadata only; original text is retained. The generic heading differs from the canonical subject name, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "THIRD TERM E-LEARNING NOTE",
+      "canonical_subject": "Agricultural Science",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-956594d97094-R001",
         "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T3",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source's opening heading is the generic title 'THIRD TERM E-LEARNING NOTE', not the subject name. The source_alias rule SS1-SRC-458a07f7ea5a-R001 declares it for Agricultural Science with approval_reference PENDING-OWNER. The subject itself is read from the document's SUBJECT line.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-458a07f7ea5a-R001",
+        "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
     }
