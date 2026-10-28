@@ -32,8 +32,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "PENDING": 4,
     "BLOCKED": 1
   },
   "items": [
@@ -135,8 +135,8 @@
       "depends_on": [
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No economics package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-6a6ff668d5a9, sha256=9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d, 360448 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/economics.json: added sources[2] source_id=SS1-SRC-6a6ff668d5a9 sha256=9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d archive_member='SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc' term='3rd Term' canonical_subject='Economics' header_text='SUBJECT:  ECONOMICS' + 7 tabs + 8 spaces + 2 tabs + 'CLASS:  SSS 1' (single occurrence confirmed with word-extractor getBody()); rule SS1-SRC-6a6ff668d5a9-R001 (source_alias, approval_reference PENDING-OWNER); open item ECONOMICS-ALIAS-APPROVAL-T3 (OWNER_ACTION, blocking). Member SHA-256 verified from the supplied '3rd Term SS1' zip (SHA-256 411c596e24f3ae755326a095478db1d47d52ed3ddb7eff7e95d666d4de2aa445), NOT the composite archive; the composite hash was not checked. Additions only; other sources untouched. Record: docs/ss1/work/microtasks/economics/ECON-SRC-T3.md. Implemented, not approved or verified.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Commerce), record an explicit handoff open item; do not delete, merge into another business subject or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -313,6 +313,9 @@
     }
   },
   "next_runnable": [
-    "ECON-SRC-T3"
+    "ECON-INV-T1",
+    "ECON-INV-T2",
+    "ECON-INV-T3",
+    "ECON-TEST-PACKAGE"
   ]
 }
