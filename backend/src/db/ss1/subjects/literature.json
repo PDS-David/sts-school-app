@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-1728961e97b5: the subject line (line 5 of mammoth 1.12.2 extractRawText output, the importer's .docx call), after 'SECOND TERM SCHEME OF WORK 2016/2017' (line 1) and 'CLASS: SS1' (line 3); the line is 'LITERATURE – IN – ENGLISH' with U+2013 en dashes, and its trailing space is not included",
         "explanation": "The subject line occurs once in the extracted text ('LITERATURE' alone occurs 4 times). It names Literature-in-English, and lines 1 and 3 name the second term and class SS1, so subject and term are verified by the document and not by the filename. The scheme lists African drama (Harvest of Corruption, The Blood of a Stranger), African poetry (Piano and Drums) and further set texts, and Week One teaches Harvest of Corruption, so it is not English Language. The heading differs from the canonical name 'Literature-in-English' (used by LIT-SRC-T1) by spaces and en dashes, so a source_alias is declared. The title line carries a session year, 2016/2017, which is not used as evidence of the term."
       }
+    },
+    {
+      "source_id": "SS1-SRC-2422e423a240",
+      "sha256": "319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3",
+      "archive_member": "SSS 1/3rd Term SS1_/LITERATURE.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Literature-in-English",
+      "header_text": "LITERATURE – IN – ENGLISH",
+      "header_evidence": {
+        "locator": "SS1-SRC-2422e423a240: the subject line (line 5 of mammoth 1.12.2 extractRawText output, the importer's .docx call), after 'THIRD TERM SCHEME OF WORK' (line 1) and 'CLASS: SS1' (line 3); the line is 'LITERATURE – IN – ENGLISH' with U+2013 en dashes, and its trailing space is not included",
+        "explanation": "The subject line occurs once in the extracted text ('LITERATURE' alone occurs 4 times case-insensitively, 1 time in upper case). It names Literature-in-English, and lines 1 and 3 name the third term and class SS1, so subject and term are verified by the document and not by the filename. The scheme lists African drama (Harvest of Corruption, The Blood of a Stranger), African poetry (Piano and Drums, The Dining Table, The Anvil and the Hammer) and non-African drama (Othello, She Stoops to Conquer), and Week One teaches Harvest of Corruption, so it is not English Language. The heading differs from the canonical name 'Literature-in-English' (used by LIT-SRC-T1) by spaces and en dashes, so a source_alias is declared. Unlike the 2nd Term title, this title line carries no session year."
+      }
     }
   ],
   "source_rules": [
@@ -54,6 +67,20 @@
       "anchor": "LITERATURE – IN – ENGLISH",
       "evidence": {
         "locator": "SS1-SRC-1728961e97b5: subject line of extracted text (line 5)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace (spaced en dashes), so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "LITERATURE – IN – ENGLISH",
+      "canonical_subject": "Literature-in-English",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-2422e423a240-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-2422e423a240",
+      "source_sha256": "319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3",
+      "anchor": "LITERATURE – IN – ENGLISH",
+      "evidence": {
+        "locator": "SS1-SRC-2422e423a240: subject line of extracted text (line 5)",
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace (spaced en dashes), so the contract requires an explicit alias declaration."
       },
       "observed_subject": "LITERATURE – IN – ENGLISH",
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-1728961e97b5-R001",
         "SS1-SRC-1728961e97b5"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "LITERATURE-T3-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source subject line is 'LITERATURE – IN – ENGLISH' (spaced en dashes) under the title 'THIRD TERM SCHEME OF WORK' and 'CLASS: SS1'. It differs from the canonical subject name 'Literature-in-English' by spacing and dash characters, so the contract requires a source_alias declaration; rule SS1-SRC-2422e423a240-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-2422e423a240-R001",
+        "SS1-SRC-2422e423a240"
       ],
       "blocks_delivery": true
     }
