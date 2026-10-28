@@ -1,0 +1,11 @@
+# J02 — implement ONE supplied Yoruba decision
+
+```text
+Repository: PDS-David/sts-school-app. Fetch latest master, read applicable AGENTS.md and check open PRs. Work on a unique branch. Do not repeat completed work or overwrite another worker. SS1 files are outside scope. Testing is deferred: no tests, typechecks, importer, DB, staging/device or production operations. Source reading, hashes, JSON/reference/diff checks are allowed. Do not invent approvals or claim certification. Commit/push a scoped PR; do not merge. If unable to push, deliver a binary-capable patch with exact base SHA. No token requests. Stop after the one task.
+
+REQUIRED BEFORE START: one explicit school/qualified-teacher response naming a single unresolved item in docs/jss3/SCHOOL_DECISIONS_REQUIRED.md, the confirmed reading/context, approver and evidence. A source document alone is not that response. Do not dispatch without it. A1, unresolved parts of A2/A4/A5/A6/A7, or one prescribed-book decision may qualify; completed marriage and contextual nko teaching must not be reopened.
+
+Read that decision sheet, docs/jss3/completion/Y3_QUESTION_CONTEXT_20261025/REPORT.md, docs/jss3/completion/Y3_A6_MARRIAGE/REPORT.md, and the specific lesson/coverage record in backend/src/db/data/jss3Supplements.json. For ONE wording decision, implement accurate teaching and answered practice supported by that response; preserve original-source wording as provenance. Restrict changes to the selected lesson and its exact coverage/evidence records. Follow the existing body/hash conventions and inspect the relevant builder before updating any generated-record hash; do not invent hashes or run deferred generators. If regeneration requires execution, record the precise deferred command in your note rather than pretending it ran.
+
+Allowed scope: selected lesson entry only, its matching existing coverage/implemented-record entry where derivable without executing importer, docs/jss3/SCHOOL_DECISIONS_REQUIRED.md for that item only, and docs/jss3/completion/MICROTASKS_20261028/J02_RESULT.md. No new global schema, holds or other Yoruba lesson changes. A book-title response without usable text/material does not authorize fabricated book teaching; report that exact dependency and finish independently supported scope. Keep verification deferred. Do not combine several decisions in this run.
+```

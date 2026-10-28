@@ -1,38 +1,10 @@
-# ECON-SRC-T3 — Economics
+# ECON-INV-T1 — Economics
 
 ```text
-Implement exactly ECON-SRC-T3 for SS1 Economics.
-Repository: PDS-David/sts-school-app
-Subject slug: economics
-Start from latest origin/master, not a fixed old commit.
-Reviewed base: e98ac3fd0aa6aa012997b1fb81d76128340efc45
+Execute ONE task: ECON-INV-T1. Repository PDS-David/sts-school-app, latest master.
+Reviewed base 0ee6033d585098bbb418be5b8fbda3ac7809f67a; fetch current master, read AGENTS.md if present, inspect this task and open PRs. If already done, report its evidence and stop. If another PR owns it, do not duplicate it. Use a unique branch from master.
 
-START
-Fetch master, read applicable AGENTS.md and check open PRs for this exact item. Use an isolated branch/worktree. If completed on master, report evidence and stop without repeating it. If another worker owns an open PR, do not overwrite it. Prerequisites: ECON-SRC-T1; confirm their implementation states. Deferred testing is not successful verification.
-
-QUEUE
-docs/ss1/work/microtasks/economics/QUEUE.json
-
-OBJECTIVE
-Register the 3rd Term Economics source: open the document, read its exact opening heading and teaching content, confirm the subject from the header (not from the filename), and add its sources[] entry (source_id, sha256, archive_member verbatim, term, canonical_subject, uniquely occurring header_text, header_evidence). The package file is created by ECON-SRC-T1; add only this source's entry and rules.
-
-EXISTING EVIDENCE
-No economics package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-6a6ff668d5a9, sha256=9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d, 360448 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.
-
-COMPLETION CONDITION
-This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Commerce), record an explicit handoff open item; do not delete, merge into another business subject or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task.
-
-ATTACHMENT — ONE STANDALONE ORIGINAL IS SUFFICIENT
-File: 3RD TERM S1 ECONOMICS.doc
-Term: 3rd Term
-Source ID: SS1-SRC-6a6ff668d5a9
-Manifest member: SSS 1/3rd Term SS1_/3RD TERM S1 ECONOMICS.doc
-SHA-256: 9e257c8b25ec5e7ae0ce8c6f9fa325f82ee3d5d327c587450811b877c5ea185d
-
-Verify exact document bytes before conversion. Accept this standalone file, or identical member bytes extracted from any supplied archive. Do not demand the full ZIP or original folder structure when the member hash matches. Record actual input/container and checks performed; never claim a composite archive hash was verified when it was not. Retain the manifest archive_member verbatim in the package.
-If the full original ZIP is supplied, its expected SHA-256 is 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. A filename/size match alone never substitutes for the member hash. If the named source is truly missing, identify this exact file; do not invent its content.
-
-READ
+READ THESE REPOSITORY FILES
 - docs/ss1/work/microtasks/economics/QUEUE.json
 - docs/ss1/contracts/CONTRACT.md
 - backend/src/db/ss1/subjectPackageSchema.ts
@@ -40,26 +12,38 @@ READ
 - backend/src/db/ss1/compiler.ts
 - docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md
 - backend/src/db/ss1/subjects/economics.json
-Use the existing task evidence and subject notes; do not rerun unrelated audits. A historical note that a package did not exist is not current authority to recreate/overwrite it.
 
-ALLOWED WRITE PATHS
-- backend/src/db/ss1/subjects/economics.json
+PREREQUISITES
+ECON-SRC-T1. Confirm each is implemented; deferred verification is not a test pass.
+
+OBJECTIVE
+Discover the 1st Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, graph, diagram, equation or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note graphs, schedules, tables, calculation steps and currency for separate preservation items, and any economic figures, statistics, institutions, policies or laws that may be stale: later correction work must date each fact, distinguish curriculum concepts from stale current-affairs figures, and cite primary data, keeping the source's original wording distinct from the corrected fact. A revision heading may contain substantive teaching: classify by body. Do not import every short scheme heading as a complete lesson. Do not merge Economics into Commerce, Financial Accounting or Bookkeeping.
+
+EXISTING EVIDENCE (historical descriptions must be checked against current files)
+No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.
+
+COMPLETION CONDITION
+A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written.
+
+EXACT ATTACHMENTS
+- Standalone original: 1ST TERM S1 ECONOMICS (1) (1).doc
+  Manifest member: SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc
+  SHA-256: 8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc
+Accept standalone matching bytes or that member from any supplied container. Do not demand the full ZIP. Hash before conversion; retain archive_member verbatim. If a source is absent, request only the exact file above. Never invent its headings. The full ZIP, if used, has SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; claim its verification only if actually checked.
+
+WRITE SCOPE
 - docs/ss1/work/microtasks/economics/QUEUE.json
-- docs/ss1/work/microtasks/economics/ECON-SRC-T3.md
-The task note above is explicitly authorised. No other subject, JSS3, UI or shared foundation/schema/compiler/importer changes.
+- docs/ss1/work/microtasks/economics/ECON-INV-T1.md
+No other subject, JSS3, UI, shared schema/compiler, or shared next-assignment index changes. This prompt explicitly permits the task evidence note. Do not recreate an existing package from a historical 'package absent' note.
 
-IMPLEMENTATION RULES
-- Make the requested scoped implementation, not just a recommendation. Preserve unrelated entries, stable IDs and original source text.
-- Registration adds one source with exact verified heading and manifest metadata. Keep package PENDING; don't invent alias/content approval or release existing holds. Report actual subject ambiguity, not a filename-based guess.
-- Inventory/indexing implements exact mappings and bounded follow-up items. Do not author all follow-ups. Source markers cannot discard instructional bodies.
-- Authoring/porting must include actual teaching, examples, original answered practice and marking whose marks sum, objective-level coverage, provenance and exact UTF-8 body SHA-256. Keep approval PENDING, implementation IMPLEMENTED where earned and verification DEFERRED. Check current/uncertain factual claims against authoritative sources; never put unverified claims into an answer key.
-- Source extraction and private rendering are permitted. Do not guess parser identities or claim importer validation. Unsupported representation becomes a precise foundation dependency, not an undeclared schema change.
-- Missing external pages or approvals stay open. Complete independent in-scope work; do not pretend a partial objective is fully covered.
-- Tests, typechecks, importer/plan runs, database, device, deployment and production import are deferred/prohibited here. Only source reading/extraction, hashes, JSON syntax, reference and diff checks. Do not commit originals, full extracts, private renders or secrets.
+IMPLEMENT
+- Preserve unrelated data and stable IDs. Keep original documents/full extracts/private renders out of Git.
+- Inventory tasks: inspect ONE document; commit exact section/week inventory and bounded follow-up items, including unlabelled teaching, markers and visual groups. Do not write every resulting lesson. Append IDs without changing existing ones; dependency on this inventory is allowed only after it is marked implemented.
+- Indexing tasks: implement actual objective-level coverage/rules under the existing schema, not just a prose recommendation. Read all objectives/exercises within the assigned section. Missing content gets a precise open item and a small lesson task. An exam/revision heading cannot erase teaching.
+- Lesson tasks: write teaching, worked examples, original answered practice and marking whose marks sum; precise objective coverage, provenance and exact UTF-8 body hash. Verify disputed factual claims against authoritative sources. Keep approval PENDING and verification DEFERRED. Do not copy unavailable textbook pages or infer whole-row coverage from one objective.
+- Preserve current holds and approvals; no invented owner/teacher response. Missing approval does not prevent writing a pending implementation. Unsupported schema needs a precise separate dependency, not a silent schema edit.
+- Testing deferred by owner: NO tests, typechecks, importer/plan runs, database/device checks, migration, import or deployment. Source extraction/rendering, hashes, JSON syntax, ID/reference checks and diff review are allowed.
 
-FINISH
-Update only the assigned queue item honestly, refresh counts and eligible next_runnable, and record short evidence at docs/ss1/work/microtasks/economics/ECON-SRC-T3.md. Do not edit shared NEXT_ASSIGNMENTS.md or other subjects' prompts. Do not claim the subject complete.
-
-DELIVERY
-Commit and push a unique subject/item branch; open a PR to master with ECON-SRC-T3 in its title; do not merge. If pushing fails, supply a downloadable binary-capable patch with exact base SHA. Never request a token in chat. Report task outcome, changed files, commit/PR or patch, actual blockers and next eligible item. State "Testing deferred by owner." Stop after ONE task.
+FINISH AND PUBLISH
+Record what changed and exact evidence in docs/ss1/work/microtasks/economics/ECON-INV-T1.md; update this queue item honestly, counts and eligible next_runnable. Mark only completed scope IMPLEMENTED_TESTING_DEFERRED. Fetch master again before publishing; preserve other agents' edits and resolve only your overlap. Commit/push a unique branch and open a PR to master titled with ECON-INV-T1; do not merge. If push is unavailable, deliver a binary-capable patch with base SHA, do not request a token. Report PR/commit or patch, actual blockers and next eligible task. Stop after this ONE task; do not claim the subject or class complete.
 ```
