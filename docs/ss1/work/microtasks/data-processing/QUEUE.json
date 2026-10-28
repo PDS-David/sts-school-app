@@ -31,8 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -99,8 +99,8 @@
       "depends_on": [
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No data-processing package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-6880a598b05b, sha256=83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4, 193094 bytes, member 'SSS 1/2nd Term SS1_/Data processing.docx', worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/data-processing.json sources[1]: source_id=SS1-SRC-6880a598b05b sha256=83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4 archive_member='SSS 1/2nd Term SS1_/Data processing.docx' term='2nd Term' canonical_subject='Data Processing' header_text='Data processing' (single occurrence in mammoth.extractRawText output; equals the canonical subject apart from case, so no source_alias rule and no new open item). Document SHA-256 verified from a supplied standalone-equivalent member (inside a different 2nd Term zip, SHA-256 94a32a4ec4af7d492d26feecdf06cedfedf846d3c65c27a5473a1693d0d33c0a, member path '2nd Term SS1 /Data processing.docx'); the composite archive hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e was NOT checked. Record: docs/ss1/work/microtasks/data-processing/DP-SRC-T2.md. Implemented, not approved or verified.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. Do not map Data Processing to Computer Studies or ICT: if the header supports such an alias, record an open item (an alias needs an approval_reference; do not invent it). The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -312,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "DP-SRC-T2"
+    "DP-SRC-T3",
+    "DP-INV-T1",
+    "DP-INV-T2"
   ]
 }

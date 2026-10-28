@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-a92792eaa7ef: second non-empty paragraph of mammoth.extractRawText output (the importer's own call) after about 30 empty paragraphs; the first non-empty paragraph is 'FIRST TERM E-LEARNING NOTE'",
         "explanation": "The subject line occurs once in the extracted text ('DATA PROCESSING' alone occurs 7 times). It names Data Processing, not Computer Studies or ICT. Teaching content confirms it: data and information, history and classification of computers, digitalization of data, ICT applications. The heading differs from the canonical name by the 'SUBJECT:' label and class label (written 'SSS1'), so a source_alias is declared to Data Processing only; no Computer Studies or ICT mapping is made."
       }
+    },
+    {
+      "source_id": "SS1-SRC-6880a598b05b",
+      "sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4",
+      "archive_member": "SSS 1/2nd Term SS1_/Data processing.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Data Processing",
+      "header_text": "Data processing",
+      "header_evidence": {
+        "locator": "SS1-SRC-6880a598b05b: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), at character offset 16 (preceded by 16 spaces); the paragraph is '                Data processing  ' (leading and trailing spaces trimmed in header_text); the next non-empty paragraph is 'WEEK 2<6 tabs>TOPIC: information processing'",
+        "explanation": "The heading 'Data processing' occurs once in the extracted text (case-insensitive, whitespace-tolerant search also finds one occurrence). It equals the canonical subject 'Data Processing' apart from case, which the contract allows without an alias, so no source_alias rule is declared. The document has no SUBJECT, CLASS or term label and no Computer Studies or ICT wording; its content (information processing, transmission of information, computer ethics, computer safety, operating systems) is consistent with Data Processing. No Computer Studies or ICT mapping is made."
+      }
     }
   ],
   "source_rules": [
