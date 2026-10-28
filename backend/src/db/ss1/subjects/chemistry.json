@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-84df18289b7a: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), after two empty paragraphs; the second non-empty paragraph is 'SCHEME OF WORK FOR ALPHA TERM'",
         "explanation": "The heading 'CHEMISTRY SS1' occurs once in the extracted text (case-insensitively too; 'CHEMISTRY' alone occurs 9 times). It names Chemistry, not another science subject. The term is introduced as 'ALPHA TERM', the manifest's 1st Term; the manifest term comes from the archive folder. The scheme of work (introduction to chemistry, nature of matter, elements, atomicity, relative atomic masses, compounds, IUPAC nomenclature, mixtures, separation practicals) and the WEEK 1 onward sections confirm the subject. The subject was read from the document, not its filename. The heading differs from the canonical name by the class text, so a source_alias is declared. This is one of two 1st Term Chemistry sources; no duplicate or relationship to the other is claimed or checked here. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
       }
+    },
+    {
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7",
+      "archive_member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Chemistry",
+      "header_text": "E-NOTE FOR CHEMISTRY  SS1",
+      "header_evidence": {
+        "locator": "SS1-SRC-80b770d18aa8: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), after four empty paragraphs and with two leading spaces; the next non-empty paragraph is 'SCHEME OF WORK FOR SECOND TERM SS1 CHEMISTRY.'",
+        "explanation": "The heading 'E-NOTE FOR CHEMISTRY  SS1' occurs once in the extracted text (case-insensitively too; 'CHEMISTRY' alone occurs twice, 4 times ignoring case), so it is the unique header_text; the two leading spaces of the paragraph are not part of header_text. It names Chemistry, not another science subject. The scheme of work (revision of first term and the mole concept, Avogadro's constant calculations, empirical and molecular formulae, writing and balancing chemical equations, chemical laws, bonding, the kinetic theory of matter, gas laws, Gay-Lussac's law, air and flame) and the WEEK 1 onward sections confirm the subject. The subject was read from the document, not its filename. The heading differs from the canonical name by the 'E-NOTE FOR' label and the class text, so a source_alias is declared. Whether this file duplicates or relates to any other Chemistry source was not decided here. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
       "observed_subject": "CHEMISTRY SS1",
       "canonical_subject": "Chemistry",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-80b770d18aa8-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "source_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7",
+      "anchor": "E-NOTE FOR CHEMISTRY  SS1",
+      "evidence": {
+        "locator": "SS1-SRC-80b770d18aa8: first non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "E-NOTE FOR CHEMISTRY  SS1",
+      "canonical_subject": "Chemistry",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-84df18289b7a-R001",
         "SS1-SRC-84df18289b7a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CHEMISTRY-ALIAS-APPROVAL-T2",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source's heading is 'E-NOTE FOR CHEMISTRY  SS1'. It differs from the canonical subject name 'Chemistry' by the label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-80b770d18aa8-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-80b770d18aa8-R001",
+        "SS1-SRC-80b770d18aa8"
       ],
       "blocks_delivery": true
     }
