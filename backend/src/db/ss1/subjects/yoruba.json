@@ -29,6 +29,19 @@
         "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T2.md; line 5 of mammoth 1.12.2 extractRawText() output, the subject/class line after 'SECOND TERM E-NOTE' (line 3)",
         "explanation": "Original DOCX heading names YORUBA and class SS1 on one line (six tab characters between the two labels; no trailing whitespace); the line occurs exactly once in the extracted text. The next heading is 'ILANA ISE OSOOSE FUN SAA KEJI', so the subject and term are verified by the document and not by the filename. Tone-marked and subdot letters (for example e with subdot, o with subdot, acute and grave vowels) exist in the body text as precomposed characters, identical in the document XML and the extraction; the extracted text is already NFC and no normalization was applied to the anchor or text. The extraction also contains one U+00AD soft hyphen (line 1053, inside an option list) that is not in the w:t runs."
       }
+    },
+    {
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Yoruba",
+      "header_text": "ISE-:EDE YORUBA\t\t\t\t                               CLASS: SS1",
+      "header_evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T3.md; line 1 of mammoth 1.12.2 extractRawText() output, the first non-empty line, before 'ILANA ISE OSOOSE FUN SAA KETA' (line 3)",
+        "explanation": "Original DOCX heading names EDE YORUBA (the Yoruba language) and class SS1 on one line: 'ISE-:EDE YORUBA', four tab characters, 31 spaces, 'CLASS: SS1' (60 characters, no trailing whitespace); the whole line occurs exactly once in the extracted text (SHA-256 cd75f590d1060a7b6cefbd92ba58e0bf42064f11a9439b9f0db209a4a1d87504). The next heading, 'ILANA ISE OSOOSE FUN SAA KETA', reads as the third-term scheme of work, and the running footer code '1GSCHS/3RD TERM/YOR/SS1' (word/footer2.xml, not returned by extractRawText) independently names third term, YOR and SS1, so subject, class and term are verified by the document and not by the filename. No tone-marked or subdot letters and no combining marks exist in the document: the w:t text and the extraction contain only ASCII letters plus quotation marks, en dashes and ellipses, and extraction removed nothing. The text is NFC (equal to its NFD form) and no normalization was applied to the anchor or text."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
         "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T2.md; line 5 of mammoth 1.12.2 extractRawText() output, the subject/class line after 'SECOND TERM E-NOTE' (line 3)",
         "explanation": "The heading differs from the canonical subject name beyond case and whitespace (labels 'SUBJECT;' and 'CLASS-;', a full stop, class text), so a source_alias is declared. Source metadata only; original text is retained."
       }
+    },
+    {
+      "id": "SS1-SRC-4cc6aae9ed7d-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "source_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3",
+      "anchor": "ISE-:EDE YORUBA\t\t\t\t                               CLASS: SS1",
+      "observed_subject": "ISE-:EDE YORUBA\t\t\t\t                               CLASS: SS1",
+      "canonical_subject": "Yoruba",
+      "approval_reference": "Assigned-subject mapping supported by the original heading and recorded in docs/ss1/work/microtasks/yoruba/YO-SRC-T3.md; not teacher approval of lesson content.",
+      "evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T3.md; line 1 of mammoth 1.12.2 extractRawText() output, the first non-empty line, before 'ILANA ISE OSOOSE FUN SAA KETA' (line 3)",
+        "explanation": "The heading differs from the canonical subject name beyond case and whitespace (the 'ISE-:' label, the 'EDE ' prefix and the 'CLASS: SS1' text), so a source_alias is declared. Source metadata only; original text is retained."
+      }
     }
   ],
   "lessons": [],
@@ -69,11 +96,12 @@
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "Only First-Term and Second-Term source registration are implemented. Source-week inventory and objective coverage are not complete.",
-      "required_action": "Complete YO-INV-T1, then its bounded indexing tasks. Register remaining assigned sources separately and extend this item's affected_ids.",
+      "detail": "First-, Second- and Third-Term source registration are implemented. Source-week inventory and objective coverage are not complete.",
+      "required_action": "Complete YO-INV-T1, YO-INV-T2 and YO-INV-T3, then their bounded indexing tasks. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
-        "SS1-SRC-ec4a5095420d"
+        "SS1-SRC-ec4a5095420d",
+        "SS1-SRC-4cc6aae9ed7d"
       ],
       "blocks_delivery": true
     }
