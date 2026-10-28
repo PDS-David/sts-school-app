@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-1c1c1bdcecb4: the subject line (line 19 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), directly after the line 'FIRST TERM E-LEARNING NOTE'; trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('GEOGRAPHY' alone occurs 5 times, all in teaching text or questions). It names Geography, class SS1, so the subject is verified by the document and not by the filename. The scheme of work and Week One-Two teaching confirm it: meaning, scope and value of geography, the solar system and the earth as a planet, latitude and longitude, structure of the earth, rocks, GIS, land forms. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "sha256": "fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 GEOGRAPHY.doc",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Geography",
+      "header_text": "SUBJECT: GEOGRAPHY   \t\t\t\t\t\t       CLASS: SS 1",
+      "header_evidence": {
+        "locator": "SS1-SRC-ba9dee61c27c: the subject line (line 3 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), directly after the line 'SECOND TERM E-LEARNING NOTE'; the line ends at 'SS 1' with no trailing whitespace",
+        "explanation": "The subject line occurs once in the extracted text ('GEOGRAPHY' alone occurs 11 times, all in other lines). It names Geography, class SS 1, so the subject is verified by the document and not by the filename. The scheme of work and Week One teaching confirm it: revision and mountains, plateaux, lowlands, the environment, weather and climate, GIS, map reading. The heading differs from the canonical name by the 'SUBJECT:' and class labels, so a source_alias is declared."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT:  GEOGRAPHY\t\t\t\t\t\t\t       CLASS:  SS1",
+      "canonical_subject": "Geography",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-ba9dee61c27c-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-ba9dee61c27c",
+      "source_sha256": "fa120c0e9f2f7a47df2c775afdfe049b41ab2acb1972c1457b31c85e70b3a2e5",
+      "anchor": "SUBJECT: GEOGRAPHY   \t\t\t\t\t\t       CLASS: SS 1",
+      "evidence": {
+        "locator": "SS1-SRC-ba9dee61c27c: subject line of extracted text (line 3)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT: GEOGRAPHY   \t\t\t\t\t\t       CLASS: SS 1",
       "canonical_subject": "Geography",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-1c1c1bdcecb4-R001",
         "SS1-SRC-1c1c1bdcecb4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GEOGRAPHY-T2-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: GEOGRAPHY' with 'CLASS: SS 1' (note the space in 'SS 1', unlike the 1st Term line). It differs from the canonical subject name 'Geography' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-ba9dee61c27c-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-ba9dee61c27c-R001",
+        "SS1-SRC-ba9dee61c27c"
       ],
       "blocks_delivery": true
     }
