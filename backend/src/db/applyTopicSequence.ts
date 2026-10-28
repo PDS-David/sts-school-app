@@ -100,10 +100,17 @@ export async function applySequencePlan(q: Q, plan: SequencePlan, o: { schoolCod
 
 export interface RollbackResult { dryRun: boolean; restored: number[]; skippedEdited: number[] }
 export async function rollbackSequencePlan(q: Q, o: { schoolCode: string; planVersion: string; apply: boolean }): Promise<RollbackResult> {
+  // A re-applied plan can leave an older skipped audit for the same topic/rank.
+  // Select the latest event BEFORE filtering rolled-back events so old history cannot resurface.
   const { rows } = await q(
-    `SELECT a.id, a.topic_id, a.previous_rank, a.new_rank, t.sequence_rank AS current_rank, t.class_name, t.source_file FROM topic_sequence_audit a
+    `WITH latest AS (
+       SELECT DISTINCT ON (topic_id) * FROM topic_sequence_audit
+       WHERE school_code=$1 AND plan_version=$2
+       ORDER BY topic_id, applied_at DESC, id DESC
+     )
+     SELECT a.id, a.topic_id, a.previous_rank, a.new_rank, t.sequence_rank AS current_rank, t.class_name, t.source_file FROM latest a
      JOIN topics t ON t.id=a.topic_id
-     WHERE a.school_code=$1 AND a.plan_version=$2 AND a.rolled_back_at IS NULL AND t.school_code=$1 ORDER BY a.applied_at`, [o.schoolCode, o.planVersion]);
+     WHERE a.rolled_back_at IS NULL AND t.school_code=$1 ORDER BY a.applied_at, a.id`, [o.schoolCode, o.planVersion]);
   // Audit rows may only ever point at JSS 3 supplement rows. Anything else aborts before any write (dry run included).
   const outOfScope = rows.filter((r: any) => r.class_name !== 'JSS 3' || !SUP_FILE.test(r.source_file ?? ''));
   if (outOfScope.length) throw new Error(`Rollback refused: audit row(s) reference topic(s) outside JSS 3 supplements: ${outOfScope.map((r: any) => r.topic_id).join(', ')}`);
