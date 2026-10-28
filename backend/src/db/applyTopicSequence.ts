@@ -30,6 +30,8 @@ export async function applySequencePlan(q: Q, plan: SequencePlan, o: { schoolCod
   const byAnchor = new Map<string, PlannedChange[]>();
   const changes: PlannedChange[] = [];
   const staged: Array<{ ch: PlannedChange; key: string }> = [];
+  // P1 write boundary: the identity each candidate was verified under, re-asserted by the UPDATE itself.
+  const scope = new Map<number, { subjectId: number; termLabel: string; sourceFile: string }>();
   for (const p of approved) {
     const lesson = JSS3_SUPPLEMENTS.find(s => s.id === p.supplement_id)!;
     const { rows } = await q(
@@ -39,6 +41,7 @@ export async function applySequencePlan(q: Q, plan: SequencePlan, o: { schoolCod
       [o.schoolCode, `${lesson.id}.json`, lesson.subjectName, lesson.termLabel]);
     if (rows.length !== 1) throw new Error(`${p.supplement_id}: expected exactly one supplement row in ${o.schoolCode}, found ${rows.length}`);
     const sup = rows[0];
+    scope.set(sup.id, { subjectId: sup.subject_id, termLabel: sup.term_label, sourceFile: `${lesson.id}.json` });
     if (norm(sup.title) !== norm(lesson.title)) throw new Error(`${p.supplement_id}: stored title differs from the plan's lesson`);
     if (sha(sup.source_reference ?? '') !== sha(supplementReference(lesson))) throw new Error(`${p.supplement_id}: stored body differs from the reviewed lesson`);
     const k = p.after_original_order_index!;
@@ -75,7 +78,16 @@ export async function applySequencePlan(q: Q, plan: SequencePlan, o: { schoolCod
     if (tx) await q('BEGIN');
     try {
       for (const ch of changes.filter(c => !c.noop)) {
-        await q('UPDATE topics SET sequence_rank=$1 WHERE id=$2 AND school_code=$3 AND sequence_rank IS NULL', [ch.new_rank, ch.topic_id, o.schoolCode]);
+        // The mutation itself is confined to the verified JSS 3 supplement row (school, class, subject, term, source file),
+        // not merely the row id the earlier SELECT returned. Exactly one row must change or the transaction rolls back.
+        const sc = scope.get(ch.topic_id)!;
+        const { rows: upd } = await q(
+          `UPDATE topics SET sequence_rank=$1
+            WHERE id=$2 AND school_code=$3 AND class_name='JSS 3' AND subject_id=$4 AND term_label=$5 AND source_file=$6
+              AND source_file ~ '^SUP-[A-Z0-9-]+\\.json$' AND sequence_rank IS NULL
+            RETURNING id`,
+          [ch.new_rank, ch.topic_id, o.schoolCode, sc.subjectId, sc.termLabel, sc.sourceFile]);
+        if (upd.length !== 1) throw new Error(`${ch.supplement_id}: topic ${ch.topic_id} is no longer the in-scope JSS 3 supplement row; nothing committed`);
         await q(`INSERT INTO topic_sequence_audit(plan_version, plan_hash, school_code, topic_id, previous_rank, new_rank) VALUES($1,$2,$3,$4,NULL,$5)`,
           [plan.plan_version, hash, o.schoolCode, ch.topic_id, ch.new_rank]);
         written++;
@@ -89,16 +101,24 @@ export async function applySequencePlan(q: Q, plan: SequencePlan, o: { schoolCod
 export interface RollbackResult { dryRun: boolean; restored: number[]; skippedEdited: number[] }
 export async function rollbackSequencePlan(q: Q, o: { schoolCode: string; planVersion: string; apply: boolean }): Promise<RollbackResult> {
   const { rows } = await q(
-    `SELECT a.id, a.topic_id, a.previous_rank, a.new_rank, t.sequence_rank AS current_rank FROM topic_sequence_audit a
+    `SELECT a.id, a.topic_id, a.previous_rank, a.new_rank, t.sequence_rank AS current_rank, t.class_name, t.source_file FROM topic_sequence_audit a
      JOIN topics t ON t.id=a.topic_id
      WHERE a.school_code=$1 AND a.plan_version=$2 AND a.rolled_back_at IS NULL AND t.school_code=$1 ORDER BY a.applied_at`, [o.schoolCode, o.planVersion]);
+  // Audit rows may only ever point at JSS 3 supplement rows. Anything else aborts before any write (dry run included).
+  const outOfScope = rows.filter((r: any) => r.class_name !== 'JSS 3' || !SUP_FILE.test(r.source_file ?? ''));
+  if (outOfScope.length) throw new Error(`Rollback refused: audit row(s) reference topic(s) outside JSS 3 supplements: ${outOfScope.map((r: any) => r.topic_id).join(', ')}`);
   const restored: number[] = [], skippedEdited: number[] = [];
   for (const r of rows) (r.current_rank != null && Number(r.current_rank) === Number(r.new_rank) ? restored : skippedEdited).push(r.topic_id);
   if (o.apply) {
     await q('BEGIN');
     try {
       for (const r of rows.filter((x: any) => restored.includes(x.topic_id))) {
-        await q('UPDATE topics SET sequence_rank=$1 WHERE id=$2 AND school_code=$3 AND sequence_rank=$4', [r.previous_rank, r.topic_id, o.schoolCode, r.new_rank]);
+        const { rows: upd } = await q(
+          `UPDATE topics SET sequence_rank=$1
+            WHERE id=$2 AND school_code=$3 AND class_name='JSS 3' AND source_file ~ '^SUP-[A-Z0-9-]+\\.json$' AND sequence_rank=$4
+            RETURNING id`,
+          [r.previous_rank, r.topic_id, o.schoolCode, r.new_rank]);
+        if (upd.length !== 1) throw new Error(`Rollback aborted: topic ${r.topic_id} changed or left JSS 3 scope; nothing committed`);
         await q('UPDATE topic_sequence_audit SET rolled_back_at=now() WHERE id=$1', [r.id]);
       }
       await q('COMMIT');
