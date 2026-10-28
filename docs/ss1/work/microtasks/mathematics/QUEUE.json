@@ -41,8 +41,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 18,
-    "PENDING": 68,
+    "IMPLEMENTED_TESTING_DEFERRED": 19,
+    "PENDING": 67,
     "BLOCKED": 9
   },
   "total": 95,
@@ -199,8 +199,8 @@
       "depends_on": [
         "MATH-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Recorded: header_text=\"SUBJECT: MATHEMATICS\\t\\t\\t\\t\\t\\t\\tCLASS: SSS 1\"; header_evidence.locator=\"line 2 \\\"SUBJECT: ... CLASS: SSS 1\\\"\". mapping_status in the CSV is FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER, i.e. assignment by filename with document-header verification still required.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against the original document (member SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2 equals manifest and the task note; 1,365,317 bytes; supplied inside the partial ZIP '3rd_Term_SS1_-20230730T172330Z-001.zip', SHA-256 411c596e…a445, supplied twice byte-identical; composite hash not checked). 'SUBJECT: MATHEMATICS' + seven tabs + 'CLASS: SSS 1' is line 5 of mammoth 1.12.2 extractRawText() output (no trailing whitespace), occurs once, preceded by 'THIRD TERM E-LEARNING NOTE'; names Mathematics, class SSS 1 and the 3rd Term. 'FURTHER' does not occur, so it is not Further Mathematics (a separate member, 3RD TERM S1 FURTHER MATHEMATICS.docx, SHA-256 83af9855…a2c5, was not used). Page header holds a picture; footer reads 'MR OSHO/SS 1/MATHEMATICS/3RD TERM Page N'. Recorded header_text is correct and unchanged; header_evidence locator corrected from 'line 2' to line 5. No mismatch, so no new open item. Alias approval_reference NOT changed (MATH-APPROVAL-ALIASES). Note: docs/ss1/work/microtasks/mathematics/MATH-FACT-HEADER-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Exact header lines (verbatim, short) and their locator recorded in the item note and in the source's header_evidence where they differ; any mismatch with Mathematics recorded as an open item and reported. The alias approval_reference is NOT changed here (see MATH-APPROVAL-ALIASES)."
     },
     {
@@ -3074,7 +3074,7 @@
     }
   },
   "next_runnable": [
-    "MATH-FACT-HEADER-T3"
+    "MATH-PRE-T1"
   ],
   "runnable_now": [
     "MATH-FACT-HEADER-T1",
