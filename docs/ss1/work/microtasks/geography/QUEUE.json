@@ -25,8 +25,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "PENDING": 4,
     "BLOCKED": 1
   },
   "items": [
@@ -128,8 +128,8 @@
       "depends_on": [
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Manifest assignment SS1-SRC-74a10d374306, SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc, 54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: geography.json sources[] entry SS1-SRC-74a10d374306 (sha256 54931bac00bfde6b2ff5d32e2b645872af74dc32d8e0f69d0585f40e443726c6, archive_member 'SSS 1/3rd Term SS1_/3RD TERM S1 GEOGRAPHY.doc', term '3rd Term', canonical_subject 'Geography', header_text = 'SUBJECT:  GEOGRAPHY' + whitespace + 'CLASS:  SS1', line 3 of word-extractor 1.0.4 getBody(), single occurrence confirmed; upper-case 'GEOGRAPHY' occurs only in that line); rule SS1-SRC-74a10d374306-R001 (source_alias, approval_reference PENDING-OWNER); open item GEOGRAPHY-T3-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Geography from the header; no handoff needed. Document hash verified; supplied container was the partial ZIP '3rd_Term_SS1_-20230730T172330Z-001.zip' (SHA-256 411c596e24f3ae755326a095478db1d47d52ed3ddb7eff7e95d666d4de2aa445), so the composite hash was not checked. Evidence note: docs/ss1/work/microtasks/geography/GEO-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -299,6 +299,6 @@
     "scope": "Repository-only queue completion; source bytes not reopened; testing deferred."
   },
   "next_runnable": [
-    "GEO-SRC-T3"
+    "GEO-INV-T1"
   ]
 }
