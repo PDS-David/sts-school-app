@@ -32,12 +32,41 @@
       "observed_subject": "SUBJECT:TECHNICAL DRAWING",
       "canonical_subject": "Technical Drawing",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "TITLE:SECOND TERM SCHEME OF WORK",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "SS1-SRC-af4868d2c026: line 7 of mammoth 1.12.2 extractRawText() output; the anchor occurs once; lines 1-10 precede the first parsed row ('WEEK 1:' on line 11)",
+        "explanation": "Title block outside every parsed row: 'SECOND TERM E-LEARNING NOTE' (line 1), the registered subject line (line 3), 'CLASS:SS1' (line 5) and 'TITLE:SECOND TERM SCHEME OF WORK' (line 7). It states document identity only and has no teaching objective. Classification only; the text is retained."
+      }
     }
   ],
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-TD-T2-TITLE-BLOCK",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Title block (document, subject, class and scheme-of-work title lines); no teaching objective",
+      "objective_locator": "lines 1-10 of mammoth extractRawText() output, before the first parsed row",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 1-10; SHA-256 45128bbd38eb5c8ab57b4f2a54e9e4f1db8831f9f556062dbb853202a13af9d4 (lines joined with \\n)",
+          "explanation": "Classified by SS1-SRC-af4868d2c026-R002 as scheme-only preamble. Line 3 is the registered header_text (see rule SS1-SRC-af4868d2c026-R001); lines 2, 4, 6 and 8-10 are blank. The scheme-of-work lines that follow (11-31) are parsed rows 0-10 and belong to the TD-SCH items."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "TECHNICAL-DRAWING-ALIAS-APPROVAL",
@@ -49,6 +78,26 @@
         "SS1-SRC-af4868d2c026"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-REFERENCES-IN-ROW-10",
+      "kind": "CONTENT",
+      "detail": "The 'Reference materials:' list (lines 35-54 of the extracted text, eight textbook entries) is not preamble to the parser: it sits inside parsed row 10 (scheme 'WEEK 11.Revision and Examination.', lines 31-58). It is source reference material, not teaching content, and no rule or coverage was added for it here so that row 10 is not pre-classified.",
+      "required_action": "TD-SCH-W11 decides how row 10 is classified (REVISION/EXAMINATION/SCHEME_ONLY) and how the reference list is mapped; do not discard the text.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-FOOTER-TAGLINE",
+      "kind": "OWNER_ACTION",
+      "detail": "The running footer (word/footer1.xml) reads a school/term/class/subject code followed by a religious tagline and a page number; the running header (word/header1.xml) is a blank 'Name / Class' form line. Neither is returned by the importer's extractRawText() call, so neither is in any parsed row or lesson body. Footer text SHA-256 eaa6b97681cec1dc8914332146fefb80c681944091b37f714d1710ec375127aa; header text SHA-256 c71a57eb63b2833932eb537b9432a507d23ef07fecaac444429cabf913182bc4 (concatenated w:t runs).",
+      "required_action": "Owner confirms the footer/header are non-instructional and must not be reproduced in student lessons; no text is copied into Git.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
