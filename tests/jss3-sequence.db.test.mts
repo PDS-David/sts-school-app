@@ -253,7 +253,17 @@ if (!URL_) {
   test('completions and assets are untouched by apply/rollback (counts and ids)', async () => {
     const c0 = (await q('SELECT count(*) n FROM topic_completions WHERE student_id=$1', [studentIds[`${SC}_stu`]])).rows[0].n;
     await applySequencePlan(q, plan(), { schoolCode: SC, apply: true });
-    await rollbackSequencePlan(q, { schoolCode: SC, planVersion: 'TEST-PLAN-v1', apply: true });
+    const rolled = await rollbackSequencePlan(q, { schoolCode: SC, planVersion: 'TEST-PLAN-v1', apply: true });
+    assert.deepEqual([...rolled.restored].sort((a, b) => a - b), [ids[SC].S1, ids[SC].S2].sort((a, b) => a - b));
+    assert.equal(await rankOf(SC, 'S1'), null);
+    assert.equal(await rankOf(SC, 'S2'), null);
+    // The skipped historical S2 audit from R1/R2 must neither cause a duplicate
+    // update above nor resurface after the newest event has been rolled back.
+    assert.equal((await rollbackSequencePlan(q, { schoolCode: SC, planVersion: 'TEST-PLAN-v1', apply: true })).restored.length, 0);
+    await q('UPDATE topics SET sequence_rank=2.002 WHERE id=$1', [ids[SC].S2]);
+    assert.equal((await rollbackSequencePlan(q, { schoolCode: SC, planVersion: 'TEST-PLAN-v1', apply: true })).restored.length, 0);
+    assert.equal(await rankOf(SC, 'S2'), '2.002000', 'historical audit cannot overwrite a later edit');
+    await q('UPDATE topics SET sequence_rank=NULL WHERE id=$1', [ids[SC].S2]);
     assert.equal((await q('SELECT count(*) n FROM topic_completions WHERE student_id=$1', [studentIds[`${SC}_stu`]])).rows[0].n, c0);
   });
 }
