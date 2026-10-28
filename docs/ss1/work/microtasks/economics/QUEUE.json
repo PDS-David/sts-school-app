@@ -32,8 +32,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -100,8 +100,8 @@
       "depends_on": [
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No economics package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-03d0cac39679, sha256=7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e, 88680 bytes, member 'SSS 1/2nd Term SS1_/ECONOMICS.docx', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/economics.json sources[1]: source_id=SS1-SRC-03d0cac39679 sha256=7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e archive_member='SSS 1/2nd Term SS1_/ECONOMICS.docx' term='2nd Term' canonical_subject='Economics' header_text='SSS ONE ECONOMICS' (single occurrence in mammoth.extractRawText output); rule SS1-SRC-03d0cac39679-R001 (source_alias, approval_reference PENDING-OWNER); open item ECONOMICS-ALIAS-APPROVAL-T2 (OWNER_ACTION, blocking). Document SHA-256 verified from a member of a supplied 2nd Term zip (SHA-256 94a32a4ec4af7d492d26feecdf06cedfedf846d3c65c27a5473a1693d0d33c0a, member path '2nd Term SS1 /ECONOMICS.docx'); the composite archive hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e was NOT checked. Record: docs/ss1/work/microtasks/economics/ECON-SRC-T2.md. Implemented, not approved or verified.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Commerce), record an explicit handoff open item; do not delete, merge into another business subject or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -313,6 +313,8 @@
     }
   },
   "next_runnable": [
-    "ECON-SRC-T2"
+    "ECON-SRC-T3",
+    "ECON-INV-T1",
+    "ECON-INV-T2"
   ]
 }

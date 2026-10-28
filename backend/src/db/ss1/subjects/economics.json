@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-2ab0c50bcab6: the subject line, after the paragraph 'FIRST TERM E-LEARNING NOTE', in word-extractor getBody() output (the importer's own legacy .doc call); trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('ECONOMICS' alone occurs 10 times). It names Economics, not Commerce or another business subject. Teaching content confirms it: meaning and scope of economics, opportunity cost, basic economic problems, production, land and labour as factors of production. The copy-style filename suffix '(1) (1)' is not used as evidence. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-03d0cac39679",
+      "sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e",
+      "archive_member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Economics",
+      "header_text": "SSS ONE ECONOMICS",
+      "header_evidence": {
+        "locator": "SS1-SRC-03d0cac39679: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), at character offset 0; the next non-empty paragraph is 'SCHEMES OF WORK', followed by 'WEEK 1: CAPITAL AS A FACTOR OF PRODUCTION'",
+        "explanation": "The heading 'SSS ONE ECONOMICS' occurs once in the extracted text ('ECONOMICS' alone occurs 3 times, plus once as 'Economics'). It names Economics, not Commerce or another business subject. Teaching content confirms it: factors of production (capital, entrepreneur), division of labour, scale of production, firm and industry, business organisation, population, labour market. The heading differs from the canonical name by the class words 'SSS ONE', so a source_alias is declared to Economics only."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT: ECONOMICS\t\t\t\t\t\t\t      CLASS: SS1",
+      "canonical_subject": "Economics",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-03d0cac39679-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "source_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e",
+      "anchor": "SSS ONE ECONOMICS",
+      "evidence": {
+        "locator": "SS1-SRC-03d0cac39679: first non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SSS ONE ECONOMICS",
       "canonical_subject": "Economics",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-2ab0c50bcab6-R001",
         "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-ALIAS-APPROVAL-T2",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source heading is 'SSS ONE ECONOMICS'. It differs from the canonical subject name 'Economics' by the class words 'SSS ONE', so the contract requires a source_alias declaration; rule SS1-SRC-03d0cac39679-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-03d0cac39679-R001",
+        "SS1-SRC-03d0cac39679"
       ],
       "blocks_delivery": true
     }
