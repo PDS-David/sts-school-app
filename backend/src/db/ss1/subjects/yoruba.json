@@ -16,6 +16,19 @@
         "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T1.md; mammoth 1.12.2 raw text line 3 / first non-empty body paragraph",
         "explanation": "Original DOCX heading names YORUBA and SS 1; heading occurs exactly once. XML confirms original spelling. No tone-marked Latin letters or combining marks exist in the body text; extraction did not remove those marks. No Unicode normalization applied."
       }
+    },
+    {
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Yoruba",
+      "header_text": "SUBJECT; YORUBA. \t\t\t\t\t\tCLASS-; SS1",
+      "header_evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T2.md; line 5 of mammoth 1.12.2 extractRawText() output, the subject/class line after 'SECOND TERM E-NOTE' (line 3)",
+        "explanation": "Original DOCX heading names YORUBA and class SS1 on one line (six tab characters between the two labels; no trailing whitespace); the line occurs exactly once in the extracted text. The next heading is 'ILANA ISE OSOOSE FUN SAA KEJI', so the subject and term are verified by the document and not by the filename. Tone-marked and subdot letters (for example e with subdot, o with subdot, acute and grave vowels) exist in the body text as precomposed characters, identical in the document XML and the extraction; the extracted text is already NFC and no normalization was applied to the anchor or text. The extraction also contains one U+00AD soft hyphen (line 1053, inside an option list) that is not in the w:t runs."
+      }
     }
   ],
   "source_rules": [
@@ -32,6 +45,20 @@
         "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T1.md; mammoth 1.12.2 raw text line 3 / first non-empty body paragraph",
         "explanation": "Original DOCX heading names YORUBA and SS 1; heading occurs exactly once. XML confirms original spelling. No tone-marked Latin letters or combining marks exist in the body text; extraction did not remove those marks. No Unicode normalization applied."
       }
+    },
+    {
+      "id": "SS1-SRC-ec4a5095420d-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "source_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac",
+      "anchor": "SUBJECT; YORUBA. \t\t\t\t\t\tCLASS-; SS1",
+      "observed_subject": "SUBJECT; YORUBA. \t\t\t\t\t\tCLASS-; SS1",
+      "canonical_subject": "Yoruba",
+      "approval_reference": "Assigned-subject mapping supported by the original heading and recorded in docs/ss1/work/microtasks/yoruba/YO-SRC-T2.md; not teacher approval of lesson content.",
+      "evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T2.md; line 5 of mammoth 1.12.2 extractRawText() output, the subject/class line after 'SECOND TERM E-NOTE' (line 3)",
+        "explanation": "The heading differs from the canonical subject name beyond case and whitespace (labels 'SUBJECT;' and 'CLASS-;', a full stop, class text), so a source_alias is declared. Source metadata only; original text is retained."
+      }
     }
   ],
   "lessons": [],
@@ -42,10 +69,11 @@
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "Only First-Term source registration is implemented. Source-week inventory and objective coverage are not complete.",
+      "detail": "Only First-Term and Second-Term source registration are implemented. Source-week inventory and objective coverage are not complete.",
       "required_action": "Complete YO-INV-T1, then its bounded indexing tasks. Register remaining assigned sources separately and extend this item's affected_ids.",
       "affected_ids": [
-        "SS1-SRC-48b641249e3b"
+        "SS1-SRC-48b641249e3b",
+        "SS1-SRC-ec4a5095420d"
       ],
       "blocks_delivery": true
     }
