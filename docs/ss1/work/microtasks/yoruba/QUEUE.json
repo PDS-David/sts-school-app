@@ -30,8 +30,8 @@
     "TEST": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 6
   },
   "items": [
     {
@@ -103,8 +103,8 @@
       "depends_on": [
         "YO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/sourceRegistry.json and docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv both list SS1-SRC-ec4a5095420d with member 'SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx', sha256 73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac, 66197 bytes, term '2nd Term', slug 'yoruba', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (the two copies were compared statically and are equal). This is REGISTERED METADATA ONLY: the document heading has not been recorded as verified in the repository. Depends on YO-SRC-T1 only because that item creates yoruba.json. If YO-SRC-T2 and YO-SRC-T3 are run concurrently they edit the same file: rebase, do not overwrite the other's source entry.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/yoruba.json: sources[] gained SS1-SRC-ec4a5095420d (sha256 73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac, member 'SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx', term '2nd Term', canonical_subject 'Yoruba'), header_text 'SUBJECT; YORUBA.' + six tabs + 'CLASS-; SS1' (line 5 of mammoth 1.12.2 extractRawText(); single occurrence), source_alias rule SS1-SRC-ec4a5095420d-R001 (mapping support only, not teacher approval), and YORUBA-OBJECTIVE-INDEXING affected_ids extended. Diacritics and subdots survive extraction unchanged (precomposed, NFC); one U+00AD soft hyphen at line 1053. Evidence note: docs/ss1/work/microtasks/yoruba/YO-SRC-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Archive and member SHA-256 verified. A single sources[] entry for this source is added with fields equal to the CSV row; the open item YORUBA-OBJECTIVE-INDEXING affected_ids gains this source ID. Open the member, read its exact opening heading and record it as sources[].header_text (exact, uniquely occurring in the unmodified extracted text; follow the convention in author_packages.py source()). Confirm canonical_subject from that heading ('Yoruba' is only the name author_packages.py uses for the slug, not evidence). If the heading differs from canonical_subject beyond case/whitespace (for example by Yoruba diacritics), add a source_alias rule with a unique exact anchor and honest evidence; approval_reference must state only that the assigned-subject mapping is supported by this heading, not teacher approval. If the heading shows a different subject, do NOT register: record the specific discrepancy as a FACT open item/queue note and stop. Also record whether Yoruba diacritics/subdots survive the extraction unchanged (no normalisation of anchors or text). Do not repeat T1 registration, author lessons or invent approval. Testing deferred by owner."
     },
     {
@@ -330,6 +330,8 @@
     }
   },
   "next_runnable": [
-    "YO-SRC-T2"
+    "YO-SRC-T3",
+    "YO-INV-T1",
+    "YO-INV-T2"
   ]
 }
