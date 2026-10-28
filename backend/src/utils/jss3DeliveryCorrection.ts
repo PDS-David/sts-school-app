@@ -21,6 +21,8 @@ import correctionsData from '../db/data/jss3DeliveryCorrections.json' with { typ
  */
 export const JSS3_CORRECTION_MARKER = '[JSS3 DELIVERY CORRECTION]';
 export const JSS3_WITHHELD_MARKER = '[JSS3 TOPIC WITHHELD]';
+const JSS3_SCHOOL_CODE = 'secondary';
+const JSS3_CLASS_NAME = 'JSS 3';
 
 export interface DeliveryCorrection {
   id: string; school_code: string; class_name: string; subject_name?: string; term_label?: string;
@@ -93,15 +95,19 @@ export type Q = (text: string, params?: unknown[]) => Promise<{ rows: any[] }>;
  * and unlinked together with that summary update. Idempotent. Submissions and topic_completions are untouched.
  */
 export async function retireStaleJss3Cache(query: Q, topicId: unknown, r: DeliveryResolution): Promise<{ retired: boolean; closedAssessments: number }> {
+  // P1 write boundary: every statement below is confined to secondary / JSS 3 rows, so an id from any other class or school
+  // locks, closes and rewrites nothing (the whole statement becomes a no-op), regardless of what the caller resolved.
   const { rows } = await query(
-    `WITH t AS (SELECT id, generated_assessment_id FROM topics WHERE id=$1 FOR UPDATE),
-          stale AS (SELECT a.id FROM assessments a JOIN t ON a.id=t.generated_assessment_id WHERE a.content_fingerprint IS DISTINCT FROM $3),
-          closed AS (UPDATE assessments SET status='closed' WHERE id IN (SELECT id FROM stale) AND status<>'closed' RETURNING id),
+    `WITH t AS (SELECT id, generated_assessment_id FROM topics WHERE id=$1 AND school_code=$4 AND class_name=$5 FOR UPDATE),
+          stale AS (SELECT a.id FROM assessments a JOIN t ON a.id=t.generated_assessment_id
+                     WHERE a.school_code=$4 AND a.class_name=$5 AND a.content_fingerprint IS DISTINCT FROM $3),
+          closed AS (UPDATE assessments SET status='closed'
+                      WHERE id IN (SELECT id FROM stale) AND status<>'closed' AND school_code=$4 AND class_name=$5 RETURNING id),
           upd AS (UPDATE topics SET summary=$2,
                     generated_assessment_id=CASE WHEN EXISTS (SELECT 1 FROM stale) THEN NULL ELSE generated_assessment_id END
-                  WHERE id=$1 AND (summary IS DISTINCT FROM $2 OR EXISTS (SELECT 1 FROM stale)) RETURNING id)
+                  WHERE id=$1 AND school_code=$4 AND class_name=$5 AND (summary IS DISTINCT FROM $2 OR EXISTS (SELECT 1 FROM stale)) RETURNING id)
      SELECT (SELECT count(*) FROM upd) AS retired, (SELECT count(*) FROM closed) AS closed_assessments`,
-    [topicId, r.text, r.kind === 'corrected' ? r.fingerprint : '__withheld__']);
+    [topicId, r.text, r.kind === 'corrected' ? r.fingerprint : '__withheld__', JSS3_SCHOOL_CODE, JSS3_CLASS_NAME]);
   return { retired: Number(rows[0]?.retired ?? 0) > 0, closedAssessments: Number(rows[0]?.closed_assessments ?? 0) };
 }
 
