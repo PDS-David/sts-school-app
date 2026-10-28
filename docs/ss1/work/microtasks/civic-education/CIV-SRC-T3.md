@@ -3,7 +3,7 @@
 Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; not approved, not verified). Testing deferred by owner.
 
 ## Inputs
-- Base: latest `origin/master` at the time of the branch (after PR #144 and before PR #145 merged). CIV-SRC-T1 and CIV-SRC-T2 were already implemented on master. No open PR or branch touched CIV-SRC-T3.
+- Base: `origin/master` `c354940f97b3f03893c5ca0364d18ea9917e3384` (includes merged PRs #144 and #145). CIV-SRC-T1 and CIV-SRC-T2 were already implemented on master. No open PR or branch touched CIV-SRC-T3.
 - Source `SS1-SRC-0dc1f445683f`, manifest member `SSS 1/3rd Term SS1_/3RD TERM S1 CIVIC EDUCATION.docx`.
 - Container: the supplied "3rd Term SS1" zip (SHA-256 `411c596e24f3ae755326a095478db1d47d52ed3ddb7eff7e95d666d4de2aa445`), member `3rd Term SS1 /3RD TERM S1 CIVIC EDUCATION.docx`. An earlier attempt in this session stopped because only the 2nd Term zip had been attached. The composite archive hash (`024487…65c9a3e`) was **not** checked because the composite was not supplied.
 - Member SHA-256 `8790f478409619cb22a9a00d31a0069589c5277c27ecd81221ef76edf16d3ea1` **verified** from the extracted bytes (50,715 bytes); equals `SOURCE_ASSIGNMENTS.csv`.
