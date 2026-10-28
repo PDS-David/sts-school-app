@@ -20,18 +20,23 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "BIO-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). BIO-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "BIO-INV-T1 (2026-10-28) inventoried the 1st Term original and appended preamble, week-indexing, unlabelled-section and visual items; the 2nd and 3rd Term inventories remain unread. No lesson, coverage entry, rule, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "FACTUAL_DEPENDENCY": 1,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_WEEK_INDEXING": 10,
+    "SOURCE_SECTION_INDEXING": 2,
+    "VISUAL_DISPOSITION": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
     "BLOCKED": 1,
-    "PENDING": 4
+    "PENDING": 31
   },
   "items": [
     {
@@ -167,8 +172,8 @@
       "depends_on": [
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence (SS1-03 evidence covers other subjects). Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-10-28 from the member BIOLOGY 1 alfa term - Copy.docx (SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8 verified before conversion; extracted from the supplied 1st Term archive 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636, composite archive not checked). Inventory: ten teaching weeks (body blocks 13-1104; heading labels in mixed word/digit forms, with a second label per week at each assignment), a ten-line scheme with no revision/examination/reference text, two unlabelled teaching sections inside Week 3, 53 drawings (11 hand-drawn images + 42 shapes with VML fallbacks, 15 text boxes), 4 tables, no equation objects. Appended 28 PENDING items: BIO-PRE-T1, BIO-WK-T1-W01..W10, BIO-SEC-T1-AGRI-ECOLOGY, BIO-SEC-T1-PESTS-DISEASES, 15 BIO-VIS-T1-* items. Parser-rule findings recorded as findings only. Record: docs/ss1/work/microtasks/biology/BIO-INV-T1.md. Implemented, not approved or verified; no tests, importer, typecheck, database or device run.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -295,6 +300,1070 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "BIO-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "blocks 0-12 (range sha256 5e35e4ce64e6bf70cf09fd56ca0a7d14e8a55fb4da727d8a4d3dfa187c95202c)",
+      "objective": "Inventory the 1st Term text before WEEK ONE and map or classify each block: title 'BIOLOGY' (0), 'SCHEME OF WORK S S ONE' (1), the ten scheme lines 'Week 1 -…' to 'Week 10 -…' (2-11) and the blank block 12. Scheme titles are listed by BIO-WK items; no revision, examination or reference-book list exists in this source.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-PRE-T1.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): blocks 0-12, range sha256 5e35e4ce64e6bf70cf09fd56ca0a7d14e8a55fb4da727d8a4d3dfa187c95202c; scheme lines are plain paragraphs (no list numbering) with inconsistent spacing (block 5 has extra spaces after the hyphen). No REVISION, EXAMINATION or references text occurs anywhere in the document. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Every non-week block hash-accounted and mapped or recorded as an explicit open item; no coverage, rule or lesson invented by this item."
+    },
+    {
+      "id": "BIO-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 (blocks 13-41; range sha256 b525781e0c5aa33f22f18a3896b527830e31892386fa39b05d1bad8cd0a2a450)",
+      "objective": "Index 1st Term Week 1 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 13-41. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 13 \"WEEK ONE\" (sha256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b); blocks 13-41; range sha256 b525781e0c5aa33f22f18a3896b527830e31892386fa39b05d1bad8cd0a2a450. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 2): 'Week 1 -Recognizing Living things'. Body: Biology and inquiry, branches, scientific process, theory (blocks 14-40). The body heading is 'BIOLOGY AND INQUIRY' (block 14); the scheme title is not repeated in the body. No assignment section in this range; the first assignment (block 122) is a combined Weeks 1-2 block.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 (blocks 42-132; range sha256 3f8bb1d8f9370ac595b47404008b1aab7e570100bb966d0d660e6683ec7cb5d9)",
+      "objective": "Index 1st Term Week 2 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 42-132. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 42 \"WEEK TWO\" (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); blocks 42-132; range sha256 3f8bb1d8f9370ac595b47404008b1aab7e570100bb966d0d660e6683ec7cb5d9. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 3): 'Week 2 -Living things and non-living things'. Body: characteristics of living things (48-67), plant/animal differences laid out with tabs and two header shapes (68-87), microscope parts and diagram (89-109). Block 122 'ASSIGNMENT' and block 123 'WEEK ONE AND TWO' carry a combined Weeks 1-2 assignment (blocks 124-132); question 1 (block 124, 'Which of the following groups embraces the rest?') tests classification ranks that the document teaches in Week 3.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 (blocks 133-644; range sha256 0103345f39d4a3f64705635245f85b0bbbc69edfea60ec9d843c00cf6d88e227)",
+      "objective": "Index 1st Term Week 3 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 133-644. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 133 \"WEEK THREE\" (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); blocks 133-644; range sha256 0103345f39d4a3f64705635245f85b0bbbc69edfea60ec9d843c00cf6d88e227. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 4): 'Week 3 -Classification of Living things'. Body runs 133-630 and contains much more than the scheme title: ranks and five-kingdom characteristics (135-187), plant divisions (188-247), agricultural classification of crops and life cycles (248-264), Relevance of Biology to Agriculture (265-267), animal kingdom and invertebrate/vertebrate phyla and classes (268-447), then two sections the scheme does not name (blocks 448-549 and 550-629; see BIO-SEC-T1-AGRI-ECOLOGY and BIO-SEC-T1-PESTS-DISEASES). Assignment: block 631 'ASSIGNMENT', block 632 'WEEK THREE', items 634-642 (labelled-drawing and tabular-difference questions, blocks 640-642). Blank blocks 643-644.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 4 (blocks 645-678; range sha256 25c2f1150d9175195b12b81080a2660f1dded05b377e67460248afc6d4cb14af)",
+      "objective": "Index 1st Term Week 4 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 645-678. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 645 \"WEEK FOUR\" (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); blocks 645-678; range sha256 25c2f1150d9175195b12b81080a2660f1dded05b377e67460248afc6d4cb14af. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 5): 'Week 4 -        Organization of life'. Body blocks 646-664 (levels of organization, advantages and disadvantages of complexity). There is no ASSIGNMENT heading or second WEEK FOUR label; a 'Questions to practice' block (666-677) follows and mixes organization-of-life items with Week 3 items (monocot/dicot differences block 675, animal group features block 677).",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 (blocks 679-780; range sha256 4686f3b47c869d4b3359ada8483a6d7324db6f10dbf211eed9346ed7dd28b8f4)",
+      "objective": "Index 1st Term Week 5 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 679-780. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 679 \"WEEK FIVE \" (sha256 8ee47ba1948276278acd4756c10e25cf6739d5687371d857fd9be652bde6a506); blocks 679-780; range sha256 4686f3b47c869d4b3359ada8483a6d7324db6f10dbf211eed9346ed7dd28b8f4. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 6): 'Week 5 -Plant Nutrition'. Body: photosynthesis (block 680 onward), light and dark reaction scheme drawn as shapes (683-701), chemosynthesis (710-713), then Experiments I-V (714-765): Experiment I has no figure; II-V have hand-drawn figures (blocks 733, 746, 754, 765). Assignment: block 773 'ASSIGNMENT', block 774 'WEEK FIVE', questions 775-778. Practical content is present - see Practical and chemical content below.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 (blocks 781-834; range sha256 e6df637e58ce695ff642859639fbd24c3206509327af1c1612c71ddcddec77d6)",
+      "objective": "Index 1st Term Week 6 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 781-834. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 781 \"WEEK 6\" (sha256 03792d537a25eed5326e922c8a90f71cfb1c9739ed47959db18710e2aa49a653); blocks 781-834; range sha256 e6df637e58ce695ff642859639fbd24c3206509327af1c1612c71ddcddec77d6. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 7): 'Week 6 - Nutrient cycling in Nature'. Heading label is the digit form 'WEEK 6' (block 781). Body has a carbon cycle (784-803) and a water cycle with importance to plants and animals (804-825); no nitrogen cycle text exists in blocks 781-834. Assignment (block 826 'ASSIGNMENT', block 827 'WEEK 6') asks about food classes (carbohydrate, protein, lipid) and enzymes (blocks 828-833), which the document teaches in Week 7.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 (blocks 835-925; range sha256 d447b3593efc132f6eed1264640b15969a8a5712d3111a4e0470d6c8adb553a6)",
+      "objective": "Index 1st Term Week 7 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 835-925. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 835 \"WEEK 7\" (sha256 5d222602d23f6b6f007aa6721de2a971a44013ddf864d5b98d8b6d25dcaeace1); blocks 835-925; range sha256 d447b3593efc132f6eed1264640b15969a8a5712d3111a4e0470d6c8adb553a6. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 8): 'Week 7 -Nutrition in Animals'. Heading label is the digit form 'WEEK 7' (block 835). Body: food substances, protein/fats/minerals/vitamins/water, balanced diet, enzymes (836-920) with three tables (881, 888, 920) and a protein breakdown shape (859). Assignment: block 921 'ASSIGNMENT', block 922 'WEEK SEVEN', questions 923-924 (enzymes only). Blank block 925.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 8 (blocks 926-950; range sha256 8e3ce87be34a1523b5aa2d9c478c9e817276070dad81a74fd1d46dfbe86b8d5a)",
+      "objective": "Index 1st Term Week 8 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 926-950. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 926 \"WEEK EIGHT\" (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); blocks 926-950; range sha256 8e3ce87be34a1523b5aa2d9c478c9e817276070dad81a74fd1d46dfbe86b8d5a. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 9): 'Week 8 -Mode of Nutrition'. Body 927-944: autotrophic/heterotrophic, holozoic, parasitic, symbiotic, saprophytic, commensalism, carnivorous plants, filter and fluid feeding. Assignment: block 945 'ASSIGNMENT', block 946 'WEEK EIGHT', questions 947-949.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 9 (blocks 951-984; range sha256 e0fd7a606c08dec6adab6b72e24bb790bf4e05a77905ea2ec9230f504917f7dd)",
+      "objective": "Index 1st Term Week 9 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 951-984. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 951 \"WEEK NINE\" (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); blocks 951-984; range sha256 e0fd7a606c08dec6adab6b72e24bb790bf4e05a77905ea2ec9230f504917f7dd. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 10): 'Week 9 - Basic ecological concept'. Body 952-974: ecological concepts, habitat, spheres, ecosystem components (a short week). Assignment: block 975 'ASSIGNMENT', block 976 'WEEK NINE', questions 977-983.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10 (blocks 985-1104; range sha256 9c91bae8cde7ad21425a3c40ab314c04aa4c62c7b2cde3f7da40798633501bea)",
+      "objective": "Index 1st Term Week 10 at objective level: list each scheme objective, bind it to exact source blocks (locators from BIO-INV-T1), and confirm scope against every exercise, experiment and assignment inside blocks 985-1104. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not invent experiment quantities or safety instructions the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 985 \"WEEK TEN\" (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); blocks 985-1104; range sha256 9c91bae8cde7ad21425a3c40ab314c04aa4c62c7b2cde3f7da40798633501bea. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 11): 'Week 10 -Growth, Irritability and Movement'. Body 986-1092: growth and mitosis (four hand-drawn figures, blocks 997-1021), plant growth hormones and animal hormone table (1029-1056), irritability (1057-1073), movement and cyclosis (1074-1092). Unlike other weeks the label 'WEEK TEN' (block 1094) comes BEFORE the 'ASSIGNMENT' heading (block 1095); assignment questions 1096-1103.",
+      "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BIO-SEC-T1-AGRI-ECOLOGY",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "blocks 448-549 inside the WEEK THREE body (range sha256 9b687134eb1369508738f144502584713f5c27da3cfd92abe30df000c7d29cc9)",
+      "objective": "Index the unlabelled teaching section 'EFFECTS OF AGRICULTURAL ACTIVITIES ON ECOLOGICAL SYSTEM' and 'EFFECTS OF DIFFERENT KIND OF FARMING ON ECOLOGICAL SYSTEM' (bush clearing, bush burning, tillage, fertilizer, pesticides and herbicides, crop rotation, mixed farming, continuous cropping, monoculture, shift cultivation): record that no scheme line names it, record where it should be taught (stay in Week 3 or be reassigned by the owner), and bind its objectives to exact blocks. Do not move or delete source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-SEC-T1-AGRI-ECOLOGY.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 448 heading 'EFFECTS OF AGRICULTURAL ACTIVITIES ON ECOLOGICAL SYSTEM'; block 502 'EFFECTS OF DIFFERENT KIND OF FARMING ON ECOLOGICAL SYSTEM'; table block 514 (crop rotation, 6 x 6). Range blocks 448-549, range sha256 9b687134eb1369508738f144502584713f5c27da3cfd92abe30df000c7d29cc9. Chemical content (fertilizer, pesticides, herbicides, blocks 487-501) is descriptive; no rates, doses or handling instructions were found in the inventory read. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Section classified against the scheme with exact locators and an explicit owner-placement open item if needed; nothing invented."
+    },
+    {
+      "id": "BIO-SEC-T1-PESTS-DISEASES",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "blocks 550-629 inside the WEEK THREE body (range sha256 4b3d3a1ca273e08edbcb5ef984b35b8522406648f2c0a42c0674b00b3fde5cd3)",
+      "objective": "Index the unlabelled teaching sections 'THE PEST' (blocks 550-604, with life-cycle drawings 582-593) and 'DISEASES OF AGRICULTURAL IMPORTANCE' (605-629): record that no scheme line names them, bind objectives to exact blocks, and list the animal-disease and control statements for later fact checks. Do not move or delete source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-SEC-T1-PESTS-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 550 'THE PEST'; block 568 'EFFECT OF PEST'; block 605 'DISEASES OF AGRICULTURAL IMPORTANCE'; disease examples at blocks 607-610 (include Rinder pest, anthrax, brucellosis, tuberculosis, trypanosomiasis, piroplasmosis); control list blocks 620-629 mentions chemicals, vaccines and isolation without doses. Range blocks 550-629, range sha256 4b3d3a1ca273e08edbcb5ef984b35b8522406648f2c0a42c0674b00b3fde5cd3. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Sections classified against the scheme with exact locators; disease and control statements listed as fact-check candidates; nothing invented."
+    },
+    {
+      "id": "BIO-VIS-T1-PLANT-ANIMAL-HDR",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, blocks 69-87 (drawings 2, VML fallbacks 2, text boxes 0 in blocks 69-70)",
+      "objective": "Disposition the plants-versus-animals comparison: two header shapes (blocks 69-70) over ten tab-aligned two-column text rows (71-87). Decide whether the pairing survives plain-text extraction and whether a supplement must restate it as a table.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PLANT-ANIMAL-HDR.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): shape text 'PlantsAnimals' at block 69; block 70 shape has no text. Rows 1-10 are single paragraphs with tab/space alignment, not a w:tbl. Block hashes: 69 6276cd623ed0cd7b.. , 71 cd779cc06db8c66a..",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-MICROSCOPE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, block 109 (media/image1.jpeg, 239x211) under heading block 108",
+      "objective": "Disposition the labelled microscope diagram: record its labels, compare them with the written parts list (blocks 92-106, objectives x4, x10, x40), and decide on a preserved asset or redraw. Note any label that conflicts with the text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MICROSCOPE.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: a labelled photograph-style diagram with eyepiece, arm, stage controls, objective lenses, coarse focus, fine focus, mechanical stage, disc diaphragm and illuminator labels; resolution is low (239x211) and one objective-magnification label is hard to read at this size, so it must be read at full resolution in the asset task. sha256 0f9ab7f639c112ac4eaae536b9e477a1d0dc982094895f59c21a08e435df3600.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-CLASS-HIERARCHY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, blocks 137-155 (drawings 6, VML fallbacks 6, text boxes 0)",
+      "objective": "Disposition the taxonomic-rank diagram: six shapes labelled Kingdom, Phylum or Division, Class, Order, Family and 'Genius' (block 152), then 'Species' as plain text (block 155). Decide how the ranking order and arrows are preserved and whether the spelling 'Genius' is corrected only in a delivery replacement.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-CLASS-HIERARCHY.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): shape texts at blocks 137 'Kingdom', 140 'Phylum or Division', 143 'Class', 146 'Order', 149 'Family', 152 'Genius'; block 155 'Species' is a normal paragraph. Intervening blocks 138-139, 141-142, 144-145, 147-148, 150-151, 153-154 are empty.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-MONOCOT-DICOT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, blocks 235-244 (drawings 2, VML fallbacks 2, text boxes 0)",
+      "objective": "Disposition the monocotyledon/dicotyledon comparison: two header shapes (block 235) over tab-aligned rows (235-244). Decide whether pairing survives plain-text extraction and whether a table restatement is needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MONOCOT-DICOT.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 235 holds two shapes and the first row ('Leaves have parallel veins' / 'Leaves have network veins'); rows ii-vii and an example row follow in blocks 236-244, with row iv wrapped across blocks 238-239. Not a w:tbl.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-PEST-LIFECYCLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, blocks 582-593 (drawings 9, VML fallbacks 9, text boxes 15)",
+      "objective": "Disposition the pest life-cycle drawings (grasshopper-type nymph cycle and moth/borer larval cycle shapes with text-box labels): list every label, record which cycle each drawing shows and whether the labels survive extraction, and decide on preserved assets.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PEST-LIFECYCLES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): all 15 text boxes in the document sit here: block 582 (1), 585 (2), 586 (2), 590 (2), 593 (8). Extracted fragments include 'adults', 'Larvae', 'Nymphs egg in the ground', 'Egg AdultsPupaLarvae' and, in block 593, 'After ninety days therefore, the larvae changes into a pupa in a cacoon…'. Heading context: block 550 'THE PEST'.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 5, blocks 683-713 (drawings 13, VML fallbacks 13, text boxes 0)",
+      "objective": "Disposition the photosynthesis and chemosynthesis shapes (overall equation, light-reaction scheme with ADP/ATP, NADP and water splitting, the sugar equation, and the chemosynthesis equation): record exact shape text, how arrows and flow are preserved, and the equation defects below for later correction work.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 683 extracts as '6CO2+6H2O  Sunlight energy  C6H12O6+6CO2' (the product side repeats CO2 where oxygen is expected - verify against the rendered shape before any correction); block 713 extracts as '2H2S + O2  S + 2H2O + Chemical energy' (coefficient on S absent as extracted - verify). Other fragments: 'Sunlight' (687), 'Chlorophyll' (688), '2H20 20H- +2H+ ADP+ PI ATP' (689), '2H+2e-  2H' (693), '2H + NADP NADPH2' (695), '40H  2H20 + 02' (697). Nothing was rendered here.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-EXPERIMENT-FIGURES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 5, blocks 733, 746, 754, 765 (media/image2-5.jpeg)",
+      "objective": "Disposition the four hand-drawn experiment figures (covered leaf with black paper; leaf in conical flask with caustic soda; variegated leaf with white patch and green colour; Elodea in beaker under funnel and test tube) and record that Experiment I (blocks 715-724) has no figure. Decide on preserved assets and label transcription; do not add quantities.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-EXPERIMENT-FIGURES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: exercise-book hand drawings. block 733 image2 (1043x445, sha256 069e41b3c8437b1dcb0bfc1e573338779776e6f6601da2e3429ae9e47a8e1827) under Experiment II; block 746 image3 (1338x689, sha256 0247c4e6d6b28a8a9154bcb1a119c8c62b7db137ef5da5b9d461ad608bcea7b6) under Experiment III; block 754 image4 (993x479, sha256 7199a1d3791c8ad6816e88ed2f119881b1ef08b6c3f70393d0921688ce372b66) under Experiment IV; block 765 image5 (677x423, sha256 273f28a32f0ea205afa828a9cd1310bb6f8f26ae3757ce67e6539f9322aac6cc) under Experiment V. Visible labels include 'black paper', 'covered leaf', 'conical flask', 'split cork', 'caustic soda', 'leaf outside', 'white patch', 'green colour', 'test tube', 'beaker', 'funnel', 'Elodea plant', 'oxygen collected'.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-NUTRIENT-CYCLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, blocks 795 and 821 (media/image6.jpeg, image7.jpeg)",
+      "objective": "Disposition the two hand-drawn cycle diagrams (carbon cycle; water cycle): transcribe every label and arrow direction, compare with the written cycle text (blocks 784-803, 804-825), and decide on preserved assets. Record that no nitrogen cycle diagram or text exists in Week 6.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-NUTRIENT-CYCLES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: block 795 image6 (556x513, sha256 87e5a6ee5d40cdd770056a899b8c2131ad8fe8c76481bf950e047714e0de7f1e) is a carbon cycle sketch (CO2 in atmosphere, photosynthesis, animals, plants, fossil fuels, combustion in industries, sea as reservoir of CO2); block 821 image7 (651x408, sha256 d9713621b42933a7d3d63f23703e3e0236c28bd87303f39dec0f30f7ae83497c) is a water cycle sketch (water in the atmosphere, evaporation, precipitation as rainfall, run-off from ponds, lakes, river and sea, animals, plants). Handwriting is partly faint.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-PROTEIN-BREAKDOWN",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, block 859 (drawings 3, VML fallbacks 3, text boxes 0)",
+      "objective": "Disposition the protein-breakdown flow (Protein, Peptone, Polypeptide, Amino acid): record the order and arrows as drawn and decide whether the sequence survives extraction; check the order against the source's own enzyme text before any correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PROTEIN-BREAKDOWN.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 859 extracts as 'Protein  Peptone  Polypeptide  Amino acid' from three shapes; the order as extracted lists peptone before polypeptide. Not rendered here. Heading context: block 857 'PROTEIN'.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-MITOSIS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, blocks 997, 1006, 1015, 1021 (media/image8-11.jpeg) under heading block 992",
+      "objective": "Disposition the four hand-drawn cell-division figures (interphase and prophase; spindle with centromeres on the equator; daughter chromatids moving apart; telophase/cytokinesis): transcribe labels, match each to the written stage text, and decide on preserved assets.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MITOSIS.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: block 997 image8 (1270x378, sha256 70ad9bf4b5a5f11ad5e618fe604bc9bc1acc7facda628741a8a2058587deeb49); block 1006 image9 (1094x546, sha256 1856557c993326c599280e472b5578aee6ec8bad90b1e749d438ff697b6792aa); block 1015 image10 (1043x555, sha256 2b026f3701d6b6fb880410646a205a319041b21791124755f919495766017500); block 1021 image11 (1144x193, sha256 1333f9277cf8581d6e74ad31e0a3ba5c8aa8bb96c6d17b10fa043313dcc883ce). Visible labels include 'Interphase', 'prophase', 'spindle fibre', 'centromere on equator of the spindle', 'chromatid', 'daughter chromatids move apart'.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-HORMONE-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, blocks 1042-1049 (drawings 4, VML fallbacks 4, text boxes 0)",
+      "objective": "Disposition the animal-hormone listing: four header shapes (GLANDS, SITE, HORMONE) over seven tab-aligned rows (1043-1049). Decide whether the three columns survive extraction; flag hormone names for later authoritative checking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-HORMONE-TABLE.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 1042 extracts as 'GLANDSSITEHORMONE'; rows list pituitary (Pituitrin), thyroid (Thyroxine), parathyroid (Parathormone), pancreas (Insulin), adrenal (Adrenaline), testes (Testosterone), ovaries (Progesterone). Not a w:tbl.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-MOVEMENT-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, blocks 1083-1092 (drawings 3, VML fallbacks 3, text boxes 0)",
+      "objective": "Disposition the organisms/organelles/mechanism of movement listing: three shapes (blocks 1083-1084) over tab-aligned rows (1085-1092). Decide whether the three columns survive extraction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MOVEMENT-TABLE.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): block 1084 extracts as 'OrganismsOrganelles for movementMechanism of movement'; rows run Amoeba to Toads and frogs (1085-1092) with one row wrapped across blocks 1088-1089. Not a w:tbl.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-TBL-CROP-ROTATION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, table block 514 (6 rows x 6 columns; block sha256 aca001d2dd2f691dc1db5f67f795517f7bf451c66d170ab63c16361f29485b6e)",
+      "objective": "Disposition the crop-rotation table (plots by year): record whether plot/year pairing survives plain-text extraction and whether a supplement must restate it. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-CROP-ROTATION.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): w:tbl under heading block 513 'CROP ROTATION TABLE'; first cells extract as '1st plot2nd plot3rd plot4th plot5th plot1st YearMaizeCassavaFallowGroundnutYam2nd YearCassava…' (cell boundaries lost in flattened text).",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, table blocks 881 (11 x 4) and 888 (10 x 4)",
+      "objective": "Disposition the mineral-salt table (mineral, source, function, deficiency symptoms) and the vitamin table (vitamin, source, function, deficiency/symptoms): record whether row/column pairing survives extraction and list the health statements for later fact checks. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-MINERALS-VITAMINS.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): two w:tbl objects; block 881 under 'MINERAL SALT' (block 879), block 888 under 'VITAMINS' (block 883). Hashes: 881 06eed3e685ee6092d944997a20cdb2036a9cccfc26ddd455e013b5d9cde7cf2f; 888 67f3d30a41c694ce09a608aca73c0a40794efbe105d7e8e63a67ab9ce8046ab4. Deficiency symptoms are health statements; later work needs authoritative sources and must keep source wording distinct from verified fact.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
+    },
+    {
+      "id": "BIO-VIS-T1-TBL-ENZYMES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, table block 920 (8 x 5; block sha256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5)",
+      "objective": "Disposition the digestive-enzymes table (enzyme, source, location, substrate, effect/product): record whether column pairing survives extraction and flag enzyme/location claims for later fact checks. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-ENZYMES.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BIO-INV-T1): w:tbl under heading block 919 'Digestive enzymes and functions'; first row extracts as 'EnzymesSourcesLocationSubstrate acted uponEffect/productPtyalin…'.",
+      "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     }
   ],
   "review": {
@@ -310,9 +1379,36 @@
     }
   },
   "next_runnable": [
-    "BIO-INV-T1",
+    "BIO-WK-T1-W06",
     "BIO-INV-T2",
     "BIO-INV-T3",
-    "BIO-TEST-PACKAGE"
+    "BIO-TEST-PACKAGE",
+    "BIO-PRE-T1",
+    "BIO-WK-T1-W01",
+    "BIO-WK-T1-W02",
+    "BIO-WK-T1-W03",
+    "BIO-WK-T1-W04",
+    "BIO-WK-T1-W05",
+    "BIO-WK-T1-W07",
+    "BIO-WK-T1-W08",
+    "BIO-WK-T1-W09",
+    "BIO-WK-T1-W10",
+    "BIO-SEC-T1-AGRI-ECOLOGY",
+    "BIO-SEC-T1-PESTS-DISEASES",
+    "BIO-VIS-T1-PLANT-ANIMAL-HDR",
+    "BIO-VIS-T1-MICROSCOPE",
+    "BIO-VIS-T1-CLASS-HIERARCHY",
+    "BIO-VIS-T1-MONOCOT-DICOT",
+    "BIO-VIS-T1-PEST-LIFECYCLES",
+    "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME",
+    "BIO-VIS-T1-EXPERIMENT-FIGURES",
+    "BIO-VIS-T1-NUTRIENT-CYCLES",
+    "BIO-VIS-T1-PROTEIN-BREAKDOWN",
+    "BIO-VIS-T1-MITOSIS",
+    "BIO-VIS-T1-HORMONE-TABLE",
+    "BIO-VIS-T1-MOVEMENT-TABLE",
+    "BIO-VIS-T1-TBL-CROP-ROTATION",
+    "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
+    "BIO-VIS-T1-TBL-ENZYMES"
   ]
 }
