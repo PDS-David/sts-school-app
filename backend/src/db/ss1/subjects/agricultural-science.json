@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-7aa642b0085b: first text paragraph of word/document.xml (one image-only paragraph precedes it); subject line is the next paragraph",
         "explanation": "The opening heading is the generic template title; it does not name the subject. The subject is confirmed by the next paragraph, 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS1' (whitespace/tabs not reproduced here), and by the scheme-of-work topics. Read from the original DOCX XML; uniqueness of the heading was checked on that text, not on importer/mammoth output (importer run deferred)."
       }
+    },
+    {
+      "source_id": "SS1-SRC-956594d97094",
+      "sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "archive_member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Agricultural Science",
+      "header_text": "SECOND TERM E-LEARNING NOTE",
+      "header_evidence": {
+        "locator": "SS1-SRC-956594d97094: first text paragraph of word/document.xml (first non-empty line of mammoth extractRawText); subject line is the next non-empty line",
+        "explanation": "The opening heading is the generic template title; it does not name the subject. The subject is confirmed by the next line, 'SUBJECT: AGRICULTURAL SCIENCE ... CLASS: SS 1' (whitespace/tabs not reproduced here), and by the scheme of work and reference list (cultural practices, crop husbandry, agricultural ecology, rocks and soil formation; Agricultural Science textbooks). The subject was read from the document, not its filename (which spells 'AGRICULTRAL'). The heading occurs exactly once in the document, checked on the DOCX XML paragraph text and on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The generic heading differs from the canonical subject name, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "FIRST TERM E-LEARNING NOTE",
+      "canonical_subject": "Agricultural Science",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "SECOND TERM E-LEARNING NOTE",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: first text paragraph of word/document.xml",
+        "explanation": "Source metadata only; original text is retained. The generic heading differs from the canonical subject name, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SECOND TERM E-LEARNING NOTE",
       "canonical_subject": "Agricultural Science",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-7aa642b0085b-R001",
         "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-ALIAS-APPROVAL-T2",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source's opening heading is the generic title 'SECOND TERM E-LEARNING NOTE', not the subject name. The source_alias rule SS1-SRC-956594d97094-R001 declares it for Agricultural Science with approval_reference PENDING-OWNER. The subject itself is read from the document's SUBJECT line. The 2nd Term filename spells 'AGRICULTRAL'; the filename was not used as evidence.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-956594d97094-R001",
+        "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
     }
