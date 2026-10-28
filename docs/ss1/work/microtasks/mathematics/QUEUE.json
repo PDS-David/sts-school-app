@@ -41,8 +41,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 17,
-    "PENDING": 69,
+    "IMPLEMENTED_TESTING_DEFERRED": 18,
+    "PENDING": 68,
     "BLOCKED": 9
   },
   "total": 95,
@@ -167,8 +167,8 @@
       "depends_on": [
         "MATH-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Recorded: header_text=\"SUBJECT: MATHEMATICS\\t\\t\\t\\t\\t\\t\\t\\tCLASS: SS 1\"; header_evidence.locator=\"line 2 \\\"SUBJECT: ... CLASS: SS 1\\\"\". mapping_status in the CSV is FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER, i.e. assignment by filename with document-header verification still required.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against the original document (member SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368 equals manifest; supplied inside the partial ZIP '2nd_Term_SS1_-20230730T171417Z-001.zip', SHA-256 94a32a4e…3c0a; composite hash not checked). 'SUBJECT: MATHEMATICS' + tabs + 'CLASS: SS 1' is line 5 of mammoth 1.12.2 extractRawText() output (trailing tab excluded), occurs once, preceded by 'SECOND TERM E-LEARNING NOTE'; names Mathematics, class SS 1 and the 2nd Term. 'FURTHER' occurs twice, only in reading-assignment titles ('Further Maths Project'). Page header holds a picture and the footer reads 'MR OSHO/1ST TERM/SS 1/MATHEMATICS Page N' (says 1ST TERM; noted for MATH-FACT-ADVERT-T2, not audited here). Recorded header_text is correct and unchanged; header_evidence locator corrected from 'line 2' to line 5. No mismatch, so no new open item. Alias approval_reference NOT changed (MATH-APPROVAL-ALIASES). Note: docs/ss1/work/microtasks/mathematics/MATH-FACT-HEADER-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Exact header lines (verbatim, short) and their locator recorded in the item note and in the source's header_evidence where they differ; any mismatch with Mathematics recorded as an open item and reported. The alias approval_reference is NOT changed here (see MATH-APPROVAL-ALIASES)."
     },
     {
@@ -3074,7 +3074,7 @@
     }
   },
   "next_runnable": [
-    "MATH-FACT-HEADER-T2"
+    "MATH-FACT-HEADER-T3"
   ],
   "runnable_now": [
     "MATH-FACT-HEADER-T1",
