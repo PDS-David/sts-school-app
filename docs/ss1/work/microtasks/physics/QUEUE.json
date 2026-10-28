@@ -37,8 +37,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 57,
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "PENDING": 56,
     "BLOCKED": 7
   },
   "total": 66,
@@ -136,8 +136,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "NOT registered on master: backend/src/db/ss1/subjects/ has no physics.json (loader would report MISSING_PACKAGE) and docs/ss1/work/SS1-03/CHECKPOINT.md lists Physics as NOT STARTED. Manifest row: sha256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688, 107008 bytes, legacy binary .doc, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER (assignment by filename, header verification required). PR #71 records that the document has NO subject header (it opens 'THIRD TERM E-LEARNING NOTE') and that assignment rests on the archive path and manifest; that is an unverified branch claim, not registered or verified metadata. Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: physics.json sources[] entry SS1-SRC-bed91bb4ef0e (sha256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688, archive_member 'SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc', term '3rd Term', canonical_subject 'Physics', header_text 'THIRD TERM E-LEARNING NOTE' = line 1 of word-extractor 1.0.4 getBody(), single occurrence confirmed); rule SS1-SRC-bed91bb4ef0e-R001 (source_alias, approval_reference PENDING-OWNER); open item PHYSICS-T3-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). FINDING: the document body names NO subject (no SUBJECT/CLASS line; upper-case 'PHYSICS' absent; 'physics' occurs 10 times, only in 'New school physics' reading-assignment lines), confirming the PR #71 claim by direct reading. The page header/footer reads 'WKLAS/SS1/3rd term/Physics' (outside the body text the importer reads) and the scheme is Physics teaching, so canonical_subject is Physics; no handoff to another subject. PHYS-OWNER-ALIAS-T3 is therefore needed and remains BLOCKED on the owner. Document hash verified from the partial ZIP '3rd_Term_SS1_-20230730T172330Z-001.zip' (SHA-256 411c596e24f3ae755326a095478db1d47d52ed3ddb7eff7e95d666d4de2aa445); the composite hash was not checked. Evidence note: docs/ss1/work/microtasks/physics/PHYS-SRC-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Source entry added with sha256, archive_member and term equal to the CSV row, canonical_subject from the document, exact uniquely occurring header_text and a reproducible header_evidence locator; if the document names no subject, record that fact and a source_alias need as an open item rather than guessing. The package file is created by PHYS-SRC-T1; this item only appends this source entry. Do not author lessons, rules or coverage here."
     },
     {
@@ -2233,7 +2233,7 @@
     }
   },
   "next_runnable": [
-    "PHYS-SRC-T3"
+    "PHYS-PRE-T1"
   ],
   "runnable_now": [
     "PHYS-SRC-T1",

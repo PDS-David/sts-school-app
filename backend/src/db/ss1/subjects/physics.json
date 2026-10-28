@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-2c924c964660: the subject line (line 3 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), directly after the line 'SECOND TERM E-LEARNING NOTE' (line 1); trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('PHYSICS' alone occurs 15 times, all in other lines). It names Physics, class SS 1, so the subject is verified by the document and not by the filename; the line above names the second term. The 10-week scheme and Week One teaching confirm it: heat energy, temperature and thermometers, expansion, heat transfer, electric charges and the electroscope, fields, electric field, continuous electric current. The heading differs from the canonical name by the 'SUBJECT:' and class labels, so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Physics",
+      "header_text": "THIRD TERM E-LEARNING NOTE",
+      "header_evidence": {
+        "locator": "SS1-SRC-bed91bb4ef0e: line 1 of word-extractor 1.0.4 getBody() output (the importer's own legacy .doc call), the first line of the body, directly before 'THIRD TERM SCHEME OF WORK' (line 2); the line has 32 leading and 2 trailing spaces, which are not included in header_text",
+        "explanation": "The opening heading occurs once in the extracted text. It names the term (third) but NOT the subject: the body has no 'SUBJECT:' line and no 'CLASS:' line, and the upper-case word 'PHYSICS' does not occur. 'physics' occurs 10 times case-insensitively, all in 'Reading Assignment' lines citing the textbook 'New school physics'. The page header and footer (not part of the body text the importer reads, so they cannot serve as header_text) read 'WKLAS/SS1/3rd term/Physics' followed by 'Page 14', which names Physics, class SS1 and the 3rd Term. The 10-week scheme and teaching corroborate Physics: electric circuit, resistors and cells in series and parallel, electrical energy and power, fuse, atomic structure, crystal structure of matter, surface tension, capillarity, elasticity, energy stored in an elastic material. canonical_subject 'Physics' therefore rests on the page header/footer, the teaching content and the manifest assignment, not on a body heading, and the filename was not used as evidence. Because the heading differs from the canonical name, a source_alias is declared and its approval is left to the owner."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
       "observed_subject": "SUBJECT:  PHYSICS\t\t\t\t\t\t      \t\t           CLASS: SS 1",
       "canonical_subject": "Physics",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-bed91bb4ef0e-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "anchor": "THIRD TERM E-LEARNING NOTE",
+      "evidence": {
+        "locator": "SS1-SRC-bed91bb4ef0e: opening heading of extracted text (line 1)",
+        "explanation": "Source metadata only; original text is retained. The only body heading names the term, not the subject, so it differs from the canonical subject name beyond case/whitespace and the contract requires an explicit alias declaration. The subject is corroborated by the page header/footer 'WKLAS/SS1/3rd term/Physics' and by the teaching content."
+      },
+      "observed_subject": "THIRD TERM E-LEARNING NOTE",
+      "canonical_subject": "Physics",
+      "approval_reference": "PENDING-OWNER: the source body has no subject heading (opening heading is 'THIRD TERM E-LEARNING NOTE'); subject indicated by the page header/footer and teaching content and by the manifest assignment; owner confirmation of this assignment and alias not yet recorded (PHYS-OWNER-ALIAS-T3); not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-2c924c964660-R001",
         "SS1-SRC-2c924c964660"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T3-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source body names no subject: it has no 'SUBJECT:' or 'CLASS:' line and opens with 'THIRD TERM E-LEARNING NOTE'. The page header/footer reads 'WKLAS/SS1/3rd term/Physics' and the teaching content is Physics, but neither is a body heading. The registered header_text is therefore the term heading, which differs from the canonical subject name 'Physics', so the contract requires a source_alias declaration; rule SS1-SRC-bed91bb4ef0e-R001 carries approval_reference PENDING-OWNER. Queue item PHYS-OWNER-ALIAS-T3 tracks this.",
+      "required_action": "Owner confirms the filename/manifest assignment of this document to Physics and records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-bed91bb4ef0e-R001",
+        "SS1-SRC-bed91bb4ef0e"
       ],
       "blocks_delivery": true
     }
