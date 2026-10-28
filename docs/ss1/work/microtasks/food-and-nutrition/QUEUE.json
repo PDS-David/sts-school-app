@@ -32,8 +32,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "PENDING": 4,
     "BLOCKED": 1
   },
   "items": [
@@ -135,8 +135,8 @@
       "depends_on": [
         "FN-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No food-and-nutrition package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-136db891415d, sha256=13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee, 29286 bytes, member 'SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx', worker F, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. Filename variant: 'FOOD _ NUTRITION.docx' versus 'F _ N.docx' in the 1st and 2nd Term folders; a filename variation is not proof of a different subject or of duplication.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/food-and-nutrition.json sources[2]: source_id=SS1-SRC-136db891415d sha256=13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee archive_member='SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx' term='3rd Term' canonical_subject='Food and Nutrition' header_text='OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION' (single occurrence in mammoth.extractRawText output, offset 0; plural 'FOODS' differs from the canonical name); rule SS1-SRC-136db891415d-R001 (source_alias, approval_reference PENDING-OWNER); open item FOOD-AND-NUTRITION-ALIAS-APPROVAL-3RD-TERM (OWNER_ACTION, blocking). Header does not name Catering Craft; no handoff needed. Member SHA-256 verified from a member of a supplied '3rd Term SS1' zip (container SHA-256 411c596e24f3ae755326a095478db1d47d52ed3ddb7eff7e95d666d4de2aa445, member path '3rd Term SS1 /FOOD _ NUTRITION.docx') and equals SOURCE_ASSIGNMENTS.csv (29,286 bytes); the composite archive hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e was NOT checked. Record: docs/ss1/work/microtasks/food-and-nutrition/FN-SRC-T3.md. Implemented, not approved or verified.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Catering Craft), record an explicit handoff open item; do not delete, merge into catering-craft or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The filename variation between the terms ('F _ N' versus 'FOOD _ NUTRITION') is a candidate for source-backed aliasing only: record what the header shows, never discard a file. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -313,6 +313,9 @@
     }
   },
   "next_runnable": [
-    "FN-SRC-T3"
+    "FN-INV-T1",
+    "FN-INV-T2",
+    "FN-INV-T3",
+    "FN-TEST-PACKAGE"
   ]
 }
