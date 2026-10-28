@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-c76f430c7cf8: the subject line (line 3 of mammoth 1.12.2 extractRawText output, the importer's .docx call; the third non-empty paragraph of word/document.xml), after 'TERM: 2ND TERM' and before 'CLASS: SS 1'; trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('GOVERNMENT' alone occurs 25 times). It names Government, and the neighbouring lines name the 2nd Term and class SS 1, so the subject and term are verified by the document and not by the filename 'GOVT.docx'. The scheme of work and teaching confirm it: colonial administration and indirect rule, nationalism, constitutional development, Nigerian federalism, political parties. The heading differs from the canonical name by the 'SUBJECT:' label, so a source_alias is declared; the filename variation GOVT is not itself used as an alias."
       }
+    },
+    {
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 GOVERNMENT.doc",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Government",
+      "header_text": "SUBJECT: GOVERNMENT                                                                             CLASS: SS 1",
+      "header_evidence": {
+        "locator": "SS1-SRC-5f34b9f4efc4: the subject line (line 3 of word-extractor 1.0.4 getBody() output, the importer's own legacy .doc call), directly after the line 'THIRD TERM E-LEARNING NOTE'; the line ends at 'SS 1' with no trailing whitespace",
+        "explanation": "The subject line occurs once in the extracted text; the upper-case word 'GOVERNMENT' occurs only in that line (109 occurrences case-insensitively, all in teaching text). It names Government, class SS 1, so the subject is verified by the document and not by the filename (the manifest row was a FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER assignment). The scheme of work and the Week Two teaching confirm it: fundamental human rights, citizenship, constitutionalism, public opinion, pressure groups, political parties, party systems, franchise and suffrage, electoral systems and constituencies, with revision and examination in weeks 12/13. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared."
+      }
     }
   ],
   "source_rules": [
@@ -59,6 +72,20 @@
       "observed_subject": "SUBJECT: GOVERNMENT",
       "canonical_subject": "Government",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-5f34b9f4efc4-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-5f34b9f4efc4",
+      "source_sha256": "04171c3632d3f6bcac893a2900e3c05dc3bd7fa089369e3ef575239701db368e",
+      "anchor": "SUBJECT: GOVERNMENT                                                                             CLASS: SS 1",
+      "evidence": {
+        "locator": "SS1-SRC-5f34b9f4efc4: subject line of extracted text (line 3)",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT: GOVERNMENT                                                                             CLASS: SS 1",
+      "canonical_subject": "Government",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -85,6 +112,17 @@
       "affected_ids": [
         "SS1-SRC-c76f430c7cf8-R001",
         "SS1-SRC-c76f430c7cf8"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T3-ALIAS-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source subject line is 'SUBJECT: GOVERNMENT' with 'CLASS: SS 1' on the same line. It differs from the canonical subject name 'Government' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-5f34b9f4efc4-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-5f34b9f4efc4-R001",
+        "SS1-SRC-5f34b9f4efc4"
       ],
       "blocks_delivery": true
     }
