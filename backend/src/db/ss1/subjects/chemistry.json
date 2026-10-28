@@ -42,6 +42,19 @@
         "locator": "SS1-SRC-80b770d18aa8: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), after four empty paragraphs and with two leading spaces; the next non-empty paragraph is 'SCHEME OF WORK FOR SECOND TERM SS1 CHEMISTRY.'",
         "explanation": "The heading 'E-NOTE FOR CHEMISTRY  SS1' occurs once in the extracted text (case-insensitively too; 'CHEMISTRY' alone occurs twice, 4 times ignoring case), so it is the unique header_text; the two leading spaces of the paragraph are not part of header_text. It names Chemistry, not another science subject. The scheme of work (revision of first term and the mole concept, Avogadro's constant calculations, empirical and molecular formulae, writing and balancing chemical equations, chemical laws, bonding, the kinetic theory of matter, gas laws, Gay-Lussac's law, air and flame) and the WEEK 1 onward sections confirm the subject. The subject was read from the document, not its filename. The heading differs from the canonical name by the 'E-NOTE FOR' label and the class text, so a source_alias is declared. Whether this file duplicates or relates to any other Chemistry source was not decided here. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
       }
+    },
+    {
+      "source_id": "SS1-SRC-28ed32f52548",
+      "sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Chemistry",
+      "header_text": "SUBJECT: CHEMISTRY\tCLASS: SS 1",
+      "header_evidence": {
+        "locator": "word-extractor 1.0.4 getBody(): second non-empty line, after THIRD TERM E-LEARNING NOTE; exact heading occurs once.",
+        "explanation": "Document heading explicitly names Chemistry and SS 1. Scheme and opening teaching discuss acids, bases, salts, carbon and hydrocarbons. Source identity only; no content accuracy, duplication or coverage approval claimed."
+      }
     }
   ],
   "source_rules": [
@@ -86,6 +99,20 @@
       "observed_subject": "E-NOTE FOR CHEMISTRY  SS1",
       "canonical_subject": "Chemistry",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-28ed32f52548-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "source_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435",
+      "anchor": "SUBJECT: CHEMISTRY\tCLASS: SS 1",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(): second non-empty line, after THIRD TERM E-LEARNING NOTE; exact heading occurs once.",
+        "explanation": "Document heading explicitly names Chemistry and SS 1. Scheme and opening teaching discuss acids, bases, salts, carbon and hydrocarbons. Source identity only; no content accuracy, duplication or coverage approval claimed."
+      },
+      "observed_subject": "SUBJECT: CHEMISTRY\tCLASS: SS 1",
+      "canonical_subject": "Chemistry",
+      "approval_reference": "PENDING-OWNER: observed heading includes subject/class labels; no approval invented"
     }
   ],
   "lessons": [],
@@ -123,6 +150,17 @@
       "affected_ids": [
         "SS1-SRC-80b770d18aa8-R001",
         "SS1-SRC-80b770d18aa8"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CHEMISTRY-ALIAS-APPROVAL-T3",
+      "kind": "OWNER_ACTION",
+      "detail": "Observed Third-Term Chemistry subject/class heading registered with a pending source_alias declaration.",
+      "required_action": "Record an actual alias approval reference; this is separate from curriculum content approval.",
+      "affected_ids": [
+        "SS1-SRC-28ed32f52548",
+        "SS1-SRC-28ed32f52548-R001"
       ],
       "blocks_delivery": true
     }

@@ -31,8 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -169,8 +169,8 @@
       "depends_on": [
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No chemistry package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-28ed32f52548, sha256=0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435, 350720 bytes, member 'SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc', worker C, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Legacy .doc format: needs DOC-aware extraction. Not registered; header unread.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Registered exact Third-Term DOC heading and manifest identity; original archive and member SHA-256 verified. Evidence: docs/ss1/work/microtasks/chemistry/CHEM-SRC-T3.md. Source alias pending owner approval; no lesson, coverage, parser execution or certification.",
       "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -429,9 +429,10 @@
     }
   },
   "next_runnable": [
-    "CHEM-SRC-T3",
     "CHEM-INV-T1A",
     "CHEM-INV-T1B",
-    "CHEM-INV-T2"
+    "CHEM-INV-T2",
+    "CHEM-INV-T3",
+    "CHEM-TEST-PACKAGE"
   ]
 }
