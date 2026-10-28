@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-6880a598b05b: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), at character offset 16 (preceded by 16 spaces); the paragraph is '                Data processing  ' (leading and trailing spaces trimmed in header_text); the next non-empty paragraph is 'WEEK 2<6 tabs>TOPIC: information processing'",
         "explanation": "The heading 'Data processing' occurs once in the extracted text (case-insensitive, whitespace-tolerant search also finds one occurrence). It equals the canonical subject 'Data Processing' apart from case, which the contract allows without an alias, so no source_alias rule is declared. The document has no SUBJECT, CLASS or term label and no Computer Studies or ICT wording; its content (information processing, transmission of information, computer ethics, computer safety, operating systems) is consistent with Data Processing. No Computer Studies or ICT mapping is made."
       }
+    },
+    {
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 DATA PROCESSING.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Data Processing",
+      "header_text": "SUBJECT: DATA PROCESSING\t\t\t\t\t\tCLASS: SS1",
+      "header_evidence": {
+        "locator": "SS1-SRC-6763fdc397c3: second non-empty paragraph of mammoth.extractRawText output (the importer's own call); the first non-empty paragraph is 'THIRD TERM E-LEARNING NOTE', and 'SCHEME OF WORK' follows",
+        "explanation": "The subject line 'SUBJECT: DATA PROCESSING', 6 tabs, 'CLASS: SS1' occurs once in the extracted text; 'DATA PROCESSING' alone occurs once in capitalised form and 5 times ignoring case, so the full subject-and-class line is the unique header_text. It names Data Processing, not Computer Studies, ICT or another subject; 'Computer Studies' occurs only in textbook titles in the references and reading assignments. Teaching content confirms the subject: word processing, spreadsheets and database management, with WEEK ONE to WEEK NINE bodies, revision and examination. The document's own term line 'THIRD TERM E-LEARNING NOTE' agrees with the manifest 3rd Term. The subject was read from the document, not its filename. The heading differs from the canonical name by the 'SUBJECT:' label and class text, so a source_alias is declared; Data Processing is not mapped to Computer Studies or ICT. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -43,6 +56,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT:  DATA PROCESSING\t\t\t\t\t\tCLASS:  SSS1",
+      "canonical_subject": "Data Processing",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-6763fdc397c3-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-6763fdc397c3",
+      "source_sha256": "09e34afd68c595dc5da1e8d067d4f299f7114990aab0f71883488d2853167804",
+      "anchor": "SUBJECT: DATA PROCESSING\t\t\t\t\t\tCLASS: SS1",
+      "evidence": {
+        "locator": "SS1-SRC-6763fdc397c3: second non-empty paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SUBJECT: DATA PROCESSING\t\t\t\t\t\tCLASS: SS1",
       "canonical_subject": "Data Processing",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -60,6 +87,17 @@
       "affected_ids": [
         "SS1-SRC-a92792eaa7ef-R001",
         "SS1-SRC-a92792eaa7ef"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-ALIAS-APPROVAL-T3",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source's heading is 'SUBJECT: DATA PROCESSING' with 'CLASS: SS1'. It differs from the canonical subject name 'Data Processing' by label and class text, so the contract requires a source_alias declaration; rule SS1-SRC-6763fdc397c3-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-6763fdc397c3-R001",
+        "SS1-SRC-6763fdc397c3"
       ],
       "blocks_delivery": true
     }
