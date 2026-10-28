@@ -36,9 +36,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
     "BLOCKED": 5,
-    "PENDING": 33
+    "PENDING": 32
   },
   "total": 39,
   "items": [
@@ -154,8 +154,8 @@
       "depends_on": [
         "TD-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no preamble content. Rows 0-10 are scheme-table lines produced by the parser and are handled by the TD-SCH items, not here. Repository evidence is limited to docs/ss1/work/SS1-03/CHECKPOINT.md section 4 (NOT STARTED: parser yields 19 rows; rows 0-10 are scheme-table lines of 15-79 characters, rows 11-18 are the real lessons; 94 drawings, 17 OLE objects, WMF figures, WMF not an allowed asset MIME) and parsed_rows.json.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "technical-drawing.json: added rule SS1-SRC-af4868d2c026-R002 (classify_marker SCHEME_ONLY, anchor 'TITLE:SECOND TERM SCHEME OF WORK', occurs once, line 7), coverage COV-TD-T2-TITLE-BLOCK (MARKER, target R002) for the only text outside the 19 parsed rows (lines 1-10 of mammoth 1.12.2 extractRawText(), SHA-256 45128bbd38eb5c8ab57b4f2a54e9e4f1db8831f9f556062dbb853202a13af9d4), and open items TD-T2-REFERENCES-IN-ROW-10 (CONTENT, non-blocking; the reference list lies inside parsed row 10, routed to TD-SCH-W11) and TD-T2-FOOTER-TAGLINE (OWNER_ACTION, non-blocking; running header/footer are not in extractRawText output). No text follows the last parsed row (the document ends inside row 18). Scheme-of-work lines 11-31 are parsed rows 0-10 and stay with TD-SCH-W01..W11. Evidence note: docs/ss1/work/microtasks/technical-drawing/TD-PRE-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Every non-row text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item."
     },
     {
@@ -1419,7 +1419,18 @@
     }
   },
   "next_runnable": [
-    "TD-PRE-T2"
+    "TD-SCH-W01",
+    "TD-SCH-W02",
+    "TD-SCH-W03",
+    "TD-SCH-W04",
+    "TD-SCH-W05",
+    "TD-SCH-W06",
+    "TD-SCH-W07",
+    "TD-SCH-W08",
+    "TD-SCH-W09",
+    "TD-SCH-W10",
+    "TD-SCH-W11",
+    "TD-VIS-INVENTORY"
   ],
   "runnable_now": [
     "TD-SRC-T2"
