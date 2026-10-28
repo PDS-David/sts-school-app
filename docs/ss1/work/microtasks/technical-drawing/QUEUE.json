@@ -36,9 +36,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
     "BLOCKED": 5,
-    "PENDING": 32
+    "PENDING": 31
   },
   "total": 39,
   "items": [
@@ -193,8 +193,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (label 'WEEK 1', body sha256 08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889, 79 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "technical-drawing.json: added rule SS1-SRC-af4868d2c026-R003 (classify_marker SCHEME_ONLY, anchor 'Revision of the work for last term. Inscribed and circumscribed' (63 characters), occurs once in the unmodified extracted text and only inside parsed row 0), coverage COV-TD-T2-SCH-W01 (SUPPORTED, target parsed row 11 'WEEK ONE', id SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6; inscribed and circumscribed circles taught with methods and evaluation questions; revision delivered by the row title and five general revision constructions) and open item TD-T2-W01-REVISION-SCOPE (VERIFICATION, non-blocking; the 1st Term source is not supplied so the revision scope is unverified). Row 0 ('WEEK 1', 79 characters, line 11, SHA-256 08c316219062202674404113758809456aaa229a8faaabbb1ca19dcbab0cc889) hash-accounted; the SCHEME_ONLY rule is row-bound, so its compiler disposition is keyed to the row 0 body ID, not the rule ID. Row 11's drawings are left to TD-VIS-W01 and its lost degree signs ('670', '1050') to TD-WK-W01. Source verified from the standalone member bytes (SHA-256 69198ac6...094d, 2,865,886 bytes). Evidence note: docs/ss1/work/microtasks/technical-drawing/TD-SCH-W01.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1419,7 +1419,7 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W01"
+    "TD-SCH-W02"
   ],
   "runnable_now": [
     "TD-SRC-T2"
