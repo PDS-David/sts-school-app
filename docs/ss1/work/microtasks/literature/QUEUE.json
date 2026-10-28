@@ -31,8 +31,8 @@
     "TEST": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 6,
     "BLOCKED": 1
   },
   "items": [
@@ -101,8 +101,8 @@
       "depends_on": [
         "LIT-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No literature package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-1728961e97b5, sha256=a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757, 57389 bytes, member 'SSS 1/2nd Term SS1_/LITERATURE.docx', worker A, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. The SS1-02 checkpoint says the T2 scheme and opening were read only; no package was created. Not registered. The canonical name must come from the header: SS1-02's draft authoring script (docs/ss1/work/SS1-02/author_packages.py) uses the label \"Literature-in-English\", but that script produced no package and its label is not evidence. The 2nd and 3rd Term members have different SHA-256 values and sizes (57389 and 56647 bytes) but the SS1-02 checkpoint calls them near-identical extracts; see LIT-FACT-T2-T3-RELATIONSHIP. The current contract has no cross-term duplicate exclusion, so neither is excluded here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: literature.json sources[] entry SS1-SRC-1728961e97b5 (sha256 a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757, archive_member 'SSS 1/2nd Term SS1_/LITERATURE.docx', term '2nd Term', canonical_subject 'Literature-in-English', header_text 'LITERATURE – IN – ENGLISH' with en dashes, line 5 of mammoth 1.12.2 extractRawText, single occurrence confirmed; 'LITERATURE' alone occurs 4 times); rule SS1-SRC-1728961e97b5-R001 (source_alias, approval_reference PENDING-OWNER); open item LITERATURE-T2-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Literature-in-English from the header; no handoff needed. Member hash verified from the partial ZIP '2nd_Term_SS1_-20230730T171417Z-001.zip' (SHA-256 94a32a4e…3c0a); the composite hash was not checked. 3rd Term relationship stays with LIT-FACT-T2-T3-RELATIONSHIP; nothing excluded. Evidence note: docs/ss1/work/microtasks/literature/LIT-SRC-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Package file exists; this source's entry is added and no other source touched; no lessons, coverage, corrections or assets are invented. If the header names a different subject (for example English Language), record an explicit handoff open item; do not delete or silently reassign. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -363,6 +363,6 @@
     }
   },
   "next_runnable": [
-    "LIT-SRC-T2"
+    "LIT-SRC-T3"
   ]
 }
