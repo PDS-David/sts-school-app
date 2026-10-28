@@ -31,8 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -99,8 +99,8 @@
       "depends_on": [
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No government package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-c76f430c7cf8, sha256=bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782, 591018 bytes, member 'SSS 1/2nd Term SS1_/GOVT.docx' (.docx), worker E, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread. The member filename is \"GOVT.docx\", unlike the other terms; the filename variation is a candidate for a source-backed alias only if the header supports it, and an alias needs an approval_reference (never invented).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: government.json sources[] entry SS1-SRC-c76f430c7cf8 (sha256 bce2ae4a8b26f1737631e99387fed3cba661e328da3df274f673b6850088d782, archive_member 'SSS 1/2nd Term SS1_/GOVT.docx', term '2nd Term', canonical_subject 'Government', header_text 'SUBJECT: GOVERNMENT', line 3 of mammoth 1.12.2 extractRawText, single occurrence confirmed; 'GOVERNMENT' alone occurs 25 times); rule SS1-SRC-c76f430c7cf8-R001 (source_alias, approval_reference PENDING-OWNER); open item GOVERNMENT-T2-ALIAS-APPROVAL (OWNER_ACTION, blocks_delivery). Subject confirmed as Government from the header; no handoff needed. Document hash verified from a standalone GOVT.docx (591,018 bytes); an earlier supplied 'GOVT.docx' inside the partial 2nd Term ZIP (SHA-256 7034bc4f…5e, 36,001 bytes) did NOT match and was not used; no composite hash was checked. Evidence note: docs/ss1/work/microtasks/government/GOV-SRC-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Package file exists; this source's entry is added and no other source touched; no lessons, coverage, corrections or assets are invented. If the header names a different subject, record an explicit handoff open item; do not delete or silently reassign. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
     },
     {
@@ -312,6 +312,6 @@
     }
   },
   "next_runnable": [
-    "GOV-SRC-T2"
+    "GOV-SRC-T3"
   ]
 }
