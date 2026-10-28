@@ -26,17 +26,17 @@
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 28,
     "SOURCE_PREAMBLE_INDEXING": 3,
-    "LESSON": 29,
+    "LESSON": 31,
     "CORRECTION_BINDING": 28,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "ASSET": 2,
     "VISUAL_DISPOSITION": 5,
     "TEST": 2,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 60,
-    "PENDING": 43,
+    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "PENDING": 45,
     "BLOCKED": 4
   },
   "items": [
@@ -170,8 +170,8 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-002 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-COUNTRIES-T1; correction SS1-02-french-COR-002 binds body 970d1e7a3d6d98a9953ce01c9180cd1c077c2fd1c61f3b9d60e6d8868856a7e5 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Existing row-level coverage FRENCH-BODY-002 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-COUNTRIES-T1; correction SS1-02-french-COR-002 binds body 970d1e7a3d6d98a9953ce01c9180cd1c077c2fd1c61f3b9d60e6d8868856a7e5 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet. | Implemented: french.json coverage FRENCH-T1-W02-OBJ-1..5 added (OBJ-1 and OBJ-5 IMPLEMENTED_EQUIVALENT to SUP-SS1-FRENCH-COUNTRIES-T1; OBJ-2, OBJ-3, OBJ-4 PARTIAL), open items FRENCH-T1-W02-UNCOVERED-EXERCISES (CONTENT) and FRENCH-T1-W02-HEADINGS-INTENT (OWNER_ACTION), both blocking. Week 2 is children 21-77 of w:body (label at 21, Week 3 label at 78); it has no scheme table, no tracked, hidden, text-box or OMML content, and 36 Word drawings (each with a pict fallback) in children 23, 30-46, 52-66, 71-73, left to FR-VIS-T1-COUNTRY-SEPARATORS. Two DEVOIR exercises (48-49, 68-69) are displaced by the replacement; neither is fully reproduced. No classify_marker rule added. Member hash verified from a supplied '1st Term SS1' zip (container SHA-256 8055d852938afa44d20b03139af9958b0c9f7da6874419aa667174854895e636); composite archive hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e NOT checked. Read from DOCX XML, not the importer; body hash 970d1e7a not recomputed. Follow-ups: FR-LES-T1-W02-ANGLOPHONE, FR-LES-T1-W02-DEMONYMS, FR-FACT-T1-W02-HEADS-OF-STATE. Record: docs/ss1/work/microtasks/french/FR-WK-T1-W02.md. Implemented, not approved or verified.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3017,6 +3017,81 @@
       "completion_condition": "Supplement exists with provenance, or the objective is left UNRESOLVED with the owner decision recorded."
     },
     {
+      "id": "FR-LES-T1-W02-ANGLOPHONE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 children 48-66 (objective FRENCH-T1-W02-OBJ-2)",
+      "objective": "Author a small supplement with original answered practice replacing the DEVOIR 'write the Anglophone countries in Africa', only from dated official-language sources; do not reuse the source's unverified grouping.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W02-ANGLOPHONE.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W02; see open item FRENCH-T1-W02-UNCOVERED-EXERCISES. Not started.",
+      "completion_condition": "Supplement exists with provenance and marks that sum, or the objective is left PARTIAL with the owner decision recorded."
+    },
+    {
+      "id": "FR-LES-T1-W02-DEMONYMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 children 68-73 (objective FRENCH-T1-W02-OBJ-3)",
+      "objective": "Author a small supplement with original answered practice on French nationality words for the countries in the Week 2 reference lists beyond Nigeria, Egypt and Ghana, with forms checked against an authoritative French dictionary or grammar source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W02-DEMONYMS.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W02; see open item FRENCH-T1-W02-UNCOVERED-EXERCISES. Not started.",
+      "completion_condition": "Supplement exists with provenance and marks that sum, or the objective is left PARTIAL with the owner decision recorded."
+    },
+    {
+      "id": "FR-FACT-T1-W02-HEADS-OF-STATE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 children 75-76 (objectives FRENCH-T1-W02-OBJ-4 and -5)",
+      "objective": "After the owner or teacher states the intended scope of the headings 'Chefs d'etats/presidents' and 'Mornaies.', record dated official sources for any heads of state the scope requires, with retrieval dates. Do not author a lesson and do not invent leaders.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-FACT-T1-W02-HEADS-OF-STATE.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W02; see open item FRENCH-T1-W02-HEADINGS-INTENT. Not started; blocked on the owner or teacher answer.",
+      "completion_condition": "Each in-scope country has a dated source recorded or the objective is left PARTIAL; no content is invented."
+    },
+    {
       "id": "FR-FACT-REPLACEMENT-SCOPE",
       "kind": "FACTUAL_DEPENDENCY",
       "source_id": null,
@@ -3196,6 +3271,9 @@
         "FR-FACT-T1-W01-POLICY",
         "FR-LES-T1-W01-NEIGHBOURS",
         "FR-LES-T1-W01-BENEFITS",
+        "FR-LES-T1-W02-ANGLOPHONE",
+        "FR-LES-T1-W02-DEMONYMS",
+        "FR-FACT-T1-W02-HEADS-OF-STATE",
         "FR-FACT-REPLACEMENT-SCOPE",
         "FR-TEST-FULL-SOURCE-REGRESSION"
       ],
@@ -3217,6 +3295,6 @@
     }
   },
   "next_runnable": [
-    "FR-WK-T1-W02"
+    "FR-WK-T1-W03"
   ]
 }
