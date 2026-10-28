@@ -29,6 +29,19 @@
         "locator": "SS1-SRC-0579303326ae: second non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call; character offset 18), directly after the first paragraph 'SIGMA TERM (2nd)' (offset 0) and before 'SSS 1' and 'SCHEME OF WORK FOR SIGMA TERM'; the paragraph is 'FOOD AND NUTRITION' with no surrounding spaces",
         "explanation": "The heading 'FOOD AND NUTRITION' occurs once in the extracted text (case-insensitive search also finds one occurrence). It names Food and Nutrition, not Catering Craft; the document has no SUBJECT or CLASS label and no catering wording. It equals the canonical subject 'Food and Nutrition' apart from case, so no source_alias rule is declared. The filename 'F _ N.docx' was not used as evidence. The scheme agrees: revision of the scientific study of foods, measurement, effects of heat on food, food tests, the food composition table, meal planning, reproductive health and malnutrition. The document's own term label is 'SIGMA TERM (2nd)', which matches the manifest 2nd Term folder. Only the header and opening scheme were inspected; no week inventory is recorded here."
       }
+    },
+    {
+      "source_id": "SS1-SRC-136db891415d",
+      "sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee",
+      "archive_member": "SSS 1/3rd Term SS1_/FOOD _ NUTRITION.docx",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Food and Nutrition",
+      "header_text": "OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION",
+      "header_evidence": {
+        "locator": "SS1-SRC-136db891415d: first non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call; character offset 0), directly before 'Scheme of work' (offset 51); the paragraph is the whole line with an en dash (U+2013) and no surrounding spaces",
+        "explanation": "The heading occurs once in the extracted text. It names SS1 'FOODS AND NUTRITION' (plural 'FOODS'), so it differs from the canonical name 'Food and Nutrition' by more than case and a source_alias is declared. It does not name Catering Craft; no catering wording occurs in the extracted text. The document has no SUBJECT line. The scheme agrees: food hygiene and food laws (NAFDAC, SON), cooking and heat transfer, moist and dry heat methods, cereals, legumes. The document's own term label is 'OMEGA TERM', consistent with the manifest 3rd Term folder. The filename 'FOOD _ NUTRITION.docx' and its difference from 'F _ N.docx' in earlier terms were not used as evidence. Only the header and opening scheme were inspected; no week inventory is recorded here."
+      }
     }
   ],
   "source_rules": [
@@ -45,6 +58,20 @@
       "observed_subject": "SCHEME OF WORK FOR ALPHA TERM",
       "canonical_subject": "Food and Nutrition",
       "approval_reference": "PENDING-OWNER: heading observed in the source document; subject confirmed from its teaching content because the document has no SUBJECT line; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-136db891415d-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-136db891415d",
+      "source_sha256": "13f16ea0b3b0456275e9d0841d4725a01fa459da50b12c6e1cfb957dd9415dee",
+      "anchor": "OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION",
+      "evidence": {
+        "locator": "SS1-SRC-136db891415d: first paragraph of extracted text",
+        "explanation": "Source metadata only; original text is retained. The heading ('FOODS AND NUTRITION') is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION",
+      "canonical_subject": "Food and Nutrition",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its header; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
   ],
   "lessons": [],
@@ -60,6 +87,17 @@
       "affected_ids": [
         "SS1-SRC-de2cdd0b85f6-R001",
         "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FOOD-AND-NUTRITION-ALIAS-APPROVAL-3RD-TERM",
+      "kind": "OWNER_ACTION",
+      "detail": "The 3rd Term source's opening heading is 'OMEGA TERM E – NOTE FOR SS1 FOODS AND NUTRITION'. It names 'FOODS AND NUTRITION' (plural) rather than the canonical 'Food and Nutrition', so the contract requires a source_alias declaration; rule SS1-SRC-136db891415d-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-136db891415d-R001",
+        "SS1-SRC-136db891415d"
       ],
       "blocks_delivery": true
     }
