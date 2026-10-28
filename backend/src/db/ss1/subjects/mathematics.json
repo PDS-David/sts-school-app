@@ -39,8 +39,8 @@
       "canonical_subject": "Mathematics",
       "header_text": "SUBJECT: MATHEMATICS\t\t\t\t\t\t\tCLASS: SSS 1",
       "header_evidence": {
-        "locator": "line 2 \"SUBJECT: ... CLASS: SSS 1\"",
-        "explanation": "Subject line reads MATHEMATICS, class SSS 1, third term; scheme lists mensuration, constructions, statistics."
+        "locator": "line 5 of mammoth 1.12.2 extractRawText() output (the importer's own .docx call; lines 2-4 are blank) = second non-empty body paragraph of word/document.xml, after 'THIRD TERM E-LEARNING NOTE' (line 1); the line ends at 'SSS 1' with no trailing whitespace. Verified by MATH-FACT-HEADER-T3 on the member whose SHA-256 equals the manifest value",
+        "explanation": "Subject line reads 'SUBJECT: MATHEMATICS' + seven tabs + 'CLASS: SSS 1' in one line and occurs once; the line above it reads 'THIRD TERM E-LEARNING NOTE', so subject, class and term are named by the document and not by the filename. The word 'FURTHER' does not occur anywhere in the extracted text, so it is not Further Mathematics or another subject. The scheme lists mensuration, geometrical constructions and statistics. The document's class label is 'SSS 1' while class_name is the normalised 'SS 1'; the other occurrences of 'SSS 1' are in a textbook title and worked examples. The page header holds a picture and the footer reads 'MR OSHO/SS 1/MATHEMATICS/3RD TERM Page N', consistent with the 3rd Term. The earlier locator 'line 2' was imprecise (line 2 is blank)."
       }
     }
   ],
