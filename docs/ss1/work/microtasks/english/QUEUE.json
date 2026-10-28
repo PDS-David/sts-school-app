@@ -36,8 +36,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 21,
-    "PENDING": 75,
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "PENDING": 74,
     "BLOCKED": 4
   },
   "items": [
@@ -3092,8 +3092,8 @@
         "ENG-WK-T1-W01",
         "ENG-LES-WORD-CLASSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE in english.json. Source rows: BODY 954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 (locators in each coverage entry).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-NOUNS-T1] title='Noun forms: plurals, possessives, collectives and special cases'; body_sha256=cce7ed93cdaae1f20e8071f3c5cba4287536cb8a16c6550b9c5bc16f781a8daa; 3 objectives, 8 practice items (29 marks, marking sums checked); state={content_approval PENDING, approval_reference null, implementation IMPLEMENTED, verification DEFERRED, verification_reference null}; provenance: Scribbr plural nouns, Scribbr collective-noun agreement, Lund AWELU atypical nouns (reference only; prose original). Coverage ENGLISH-T1-W01-N02..N11 -> IMPLEMENTED_EQUIVALENT (lesson_ids include SUP-SS1-ENGLISH-NOUNS-T1). Open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE updated, still blocking (remaining P02, A01-A03, R01, V02, V04). SS1-02-english-COR-001 unchanged and still not to be activated. The original 1st Term document was NOT supplied in this run; the task used the reviewed coverage evidence from ENG-WK-T1-W01 and no source text was re-read. Record: docs/ss1/work/microtasks/english/ENG-LES-W01-NOUNS.md. Implemented, not approved or verified.",
       "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented; SS1-02-english-COR-001 stays inactive until this and ENG-LES-W01-PRONOUN-ADJ-VERB are done.",
       "required_attachments": [
         {
@@ -3294,6 +3294,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W01-NOUNS"
+    "ENG-LES-W01-PRONOUN-ADJ-VERB"
   ]
 }
