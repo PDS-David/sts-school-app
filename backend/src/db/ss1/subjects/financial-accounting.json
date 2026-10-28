@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-cf77df509ac3: second non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call; character offset 62), directly after the paragraph 'FIRST TERM E-LEARNING NOTE' (offset 32) and before 'SCHEME OF WORK'; trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('FINANCIAL ACCOUNTING' alone occurs 9 times, so the whole line is the unique header_text) and it is the only 'SUBJECT:' line. It names Financial Accounting, not Bookkeeping, Commerce or Economics; no 'SUBJECT: BOOK-KEEPING' line exists. The opening scheme headings agree: introduction to book-keeping and accounting, transactions, books of accounts, double entry and ledger posting, trial balance, source documents, subsidiary books. These overlap with the separate Bookkeeping package, so the header, not topic overlap, decides the subject; no handoff is needed. The filename suffix 'FINANCIAL ACCOUNT' is not used as evidence. The heading differs from the canonical name by the 'SUBJECT:' label and class label, so a source_alias is declared. Only the header and opening scheme were inspected; no week inventory is recorded here."
       }
+    },
+    {
+      "source_id": "SS1-SRC-167817613690",
+      "sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f",
+      "archive_member": "SSS 1/2nd Term SS1_/Account.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Financial Accounting",
+      "header_text": "FINANCIAL ACCOUNTING",
+      "header_evidence": {
+        "locator": "SS1-SRC-167817613690: second non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call), directly after the first non-empty paragraph 'SS1' and before 'SIGMA – TERM' and 'SCHEME OF WORK'; the paragraph is 'FINANCIAL ACCOUNTING' with no surrounding spaces",
+        "explanation": "The heading 'FINANCIAL ACCOUNTING' occurs once in the extracted text and there is no 'SUBJECT:' label, no 'BOOK-KEEPING' or 'BOOKKEEPING' wording and no Commerce or Economics heading. It equals the canonical subject 'Financial Accounting' apart from case, so no source_alias rule is declared. The filename 'Account.docx' is not used as evidence. The scheme headings agree: partnership accounts (admission of partners, goodwill, dissolution), accounting ratios, single entry and incomplete records, accounts of non-profit organisations. The term label in the document reads 'SIGMA – TERM' (not '2nd Term'); the 2nd Term assignment rests on the manifest folder and is recorded as an observation, not changed. Only the header and opening scheme were inspected; no week inventory is recorded here."
+      }
     }
   ],
   "source_rules": [
