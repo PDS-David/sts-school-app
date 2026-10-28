@@ -28,11 +28,16 @@
     "SOURCE_REGISTRATION": 2,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "FACTUAL_DEPENDENCY": 6,
+    "SOURCE_WEEK_INDEXING": 10,
+    "SOURCE_SECTION_INDEXING": 1,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "VISUAL_DISPOSITION": 6,
+    "SOURCE_PRESERVATION": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 2,
-    "PENDING": 3,
+    "IMPLEMENTED_TESTING_DEFERRED": 3,
+    "PENDING": 30,
     "BLOCKED": 1
   },
   "items": [
@@ -134,8 +139,8 @@
       "depends_on": [
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory complete: 12 WEEK markers (WEEK ONE-WEEK TWELVE), opening/scheme/references block, 6 source tables, no embedded images/drawings found, no practical rubric found. Member SHA-256 fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 verified against SOURCE_ASSIGNMENTS.csv from the supplied '2nd Term SS1' zip (SHA-256 94a32a4ec4af7d492d26feecdf06cedfedf846d3c65c27a5473a1693d0d33c0a); the composite archive hash was NOT checked. Locators and findings: docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md. 28 follow-up items appended, all PENDING. No lesson, coverage entry or rule written. Implemented, not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -225,6 +230,1014 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "CC-IDX-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE / TOPIC: FOOD COMMODITIES / getBody lines 26-223 / sha256 364cab63782211430375a9bb7bc524e31cffb050f98dbae6fce6cb893b254c70",
+      "objective": "Index WEEK ONE (TOPIC: FOOD COMMODITIES): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Contains a 10-row Animal Source/Name table (lines 57-66), meat/poultry/game preparation, preservation and storage passages and a week-closing assignment block. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W01.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 364cab63782211430375a9bb7bc524e31cffb050f98dbae6fce6cb893b254c70; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO / TOPIC: FOOD COMMODITIES / getBody lines 226-381 / sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2",
+      "objective": "Index WEEK TWO (TOPIC: FOOD COMMODITIES): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Eggs and fish; includes an egg-drawing exercise prompt (line 248), cooking-method lists and a general evaluation with kitchen-accident/fire-fighting questions (lines 363-364). Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W02.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE / TOPIC: FOOD COMMODITIES / getBody lines 384-613 / sha256 e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330",
+      "objective": "Index WEEK THREE (TOPIC: FOOD COMMODITIES): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Milk, dairy, vegetables and fruits; includes milk heat-treatment and storage passages (lines 415-445) and fruit freezing/cold-storage figures (lines 582-583). Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W03.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 e3fc8b5b4a674e546281d2dacf8f8f5f340d273675e09eb2588a31507bfd5330; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / TOPIC: FOOD COMMODITIES / getBody lines 616-763 / sha256 6adadb605e85b92b405850e67bc1958bf903108220235f117be5f903a5f8c2f1",
+      "objective": "Index WEEK FOUR (TOPIC: FOOD COMMODITIES): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Cereals, pulses, nuts, herbs/spices, flavourings and colourings; includes a four-column English/Yoruba/Hausa/Igbo names table and two Natural/Artificial additive tables. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W04.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 6adadb605e85b92b405850e67bc1958bf903108220235f117be5f903a5f8c2f1; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE / TOPIC: FLOUR COOKERY / getBody lines 765-842 / sha256 431204f54c36231a7ba9d86b1163df6738dd6a691a53ae54de9f9c884e23da4d",
+      "objective": "Index WEEK FIVE (TOPIC: FLOUR COOKERY): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Flour cookery. Body heading reads FLOUR COOKERY while the scheme row reads \"Floor Cookery\"; record the discrepancy, do not correct it. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W05.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 431204f54c36231a7ba9d86b1163df6738dd6a691a53ae54de9f9c884e23da4d; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX / TOPIC: COOKING OF FOODS / getBody lines 845-927 / sha256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de",
+      "objective": "Index WEEK SIX (TOPIC: COOKING OF FOODS): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Cooking of foods, heat transfer, reasons and factors; scheme row reads \"Principle of Cooking Methods\" while the body topic reads COOKING OF FOODS. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W06.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 fb7e873509e94a65eaba0d93790c2171ee68729f1bc5ee049e8dc8bed204e1de; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SEVEN / TOPIC: METHODS OF COOKING / getBody lines 930-1053 / sha256 75cb9e77384b8ec9600411fc758a8ada252f3798d264a4f20e6ce0b25711cf6c",
+      "objective": "Index WEEK SEVEN (TOPIC: METHODS OF COOKING): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Boiling, poaching and steaming with rules, advantages and disadvantages. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W07.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 75cb9e77384b8ec9600411fc758a8ada252f3798d264a4f20e6ce0b25711cf6c; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK EIGHT / TOPIC: METHODS OF COOKING / getBody lines 1056-1194 / sha256 6be75e678b358c3684ba8982f989c814e6a543b2e930a67e0e3b464d63f47a93",
+      "objective": "Index WEEK EIGHT (TOPIC: METHODS OF COOKING): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Stewing and frying, including deep-frying oil stages and frying rules (lines 1131-1156). Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W08.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 6be75e678b358c3684ba8982f989c814e6a543b2e930a67e0e3b464d63f47a93; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK NINE / TOPIC: METHODS OF COOKING - DRY HEAT / getBody lines 1197-1298 / sha256 975255ca14ee602af9ee500d0acd4fdc3530f918f93eea233bb8c99622a02ccb",
+      "objective": "Index WEEK NINE (TOPIC: METHODS OF COOKING - DRY HEAT): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Baking, roasting and grilling (dry heat); body topic suffix \"- DRY HEAT\" is not in the scheme row. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W09.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 975255ca14ee602af9ee500d0acd4fdc3530f918f93eea233bb8c99622a02ccb; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / TOPIC: STANDARD AND LOCAL MEASURING EQUIPMENT / getBody lines 1301-1398 / sha256 1cc8cb6acd059ffa9ee5a12e610ce7303b146dd2a33bc85410c44f24b3149786",
+      "objective": "Index WEEK TEN (TOPIC: STANDARD AND LOCAL MEASURING EQUIPMENT): record its sections, evaluation/reading/weekend-assignment/theory blocks and objective candidates by line number against the locator, and add this week's source-coverage index entry to the package only where the contract allows. Standard and local measuring equipment; Standard/Local tools table (line 1310) and Local/Standard (metric) conversion table (line 1337); no equipment illustration was found. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W10.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 1cc8cb6acd059ffa9ee5a12e610ce7303b146dd2a33bc85410c44f24b3149786; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T2-OPEN",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "Opening: E-LEARNING NOTE / SUBJECT line / SCHEME OF WORK / REFERENCES / getBody lines 1-23 / sha256 3c10522d21d78355387d09884a4928244dc768f330ae5c826ff378d15d4d173d",
+      "objective": "Index the unlabelled opening block: the 'SECOND TERM E-LEARNING NOTE' title, subject/class line, the 12-row SCHEME OF WORK week/topic list (lines 7-19, tab-separated paragraphs, not a Word table) and the two REFERENCES (lines 22-23). Record the scheme-to-body label discrepancies for weeks 5, 6 and 9 as findings. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-OPEN.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-MARK-T2-W11",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ELEVEN / PRACTICAL & REVISION / getBody lines 1401-1402 / sha256 82e377b7878d4797f7c4af7596d9b86c20695f4a4b69d9522ec3b3e407bac722",
+      "objective": "Disposition the revision marker 'PRACTICAL & REVISION' under WEEK ELEVEN: the marker has no instructional body in this source (two lines only). Classify it as a marker, not a lesson, and record that no practical task, rubric, examination paper or marking scheme is present. Do not invent content. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-MARK-T2-W11.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric or examination content exists in the source; nothing invented."
+    },
+    {
+      "id": "CC-MARK-T2-W12",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWELVE / EXAMINATION / getBody lines 1405-1406 / sha256 5d936f03520df3e053a872e5628c15873dcccf0404d69cc8bfa231c88c491e31",
+      "objective": "Disposition the examination marker 'EXAMINATION' under WEEK TWELVE: the marker has no instructional body in this source (two lines only). Classify it as a marker, not a lesson, and record that no practical task, rubric, examination paper or marking scheme is present. Do not invent content. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-MARK-T2-W12.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric or examination content exists in the source; nothing invented."
+    },
+    {
+      "id": "CC-VIS-T2-W01-TBL1",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE / approx. getBody lines 57-66 / header text anchor in CC-INV-T2.md",
+      "objective": "Give a visual/table disposition to the source table in WEEK ONE: Animal Source / Name (Cow-Beef, Calf-Veal ... Domesticated birds-Poultry), 10 rows x 2 columns in a private LibreOffice render. Choose, with the source wording preserved verbatim, whether it is represented as structured table data, text, or an unsupported representation needing a precise foundation dependency (do not change the schema here). Line range is approximate: the importer's word-extractor flattens Word tables into tab-separated lines; table identity comes from the private LibreOffice docx render (table order 1-6). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T2-W01-TBL1.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-VIS-T2-W04-TBL2",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / approx. getBody lines 681-695 / header text anchor in CC-INV-T2.md",
+      "objective": "Give a visual/table disposition to the source table in WEEK FOUR: NAMES(English) / Yoruba / Hausa / Igbo, 15 rows x 4 columns; many cells hold \"-\"; contains Yoruba, Hausa and Igbo plant names that need language-aware verification before reuse. Choose, with the source wording preserved verbatim, whether it is represented as structured table data, text, or an unsupported representation needing a precise foundation dependency (do not change the schema here). Line range is approximate: the importer's word-extractor flattens Word tables into tab-separated lines; table identity comes from the private LibreOffice docx render (table order 1-6). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T2-W04-TBL2.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-VIS-T2-W04-TBL3",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / approx. getBody lines 713-728 / header text anchor in CC-INV-T2.md",
+      "objective": "Give a visual/table disposition to the source table in WEEK FOUR: Natural / Artificial table under FLAVOURINGS, 2 rows x 2 columns (lists sit inside cells). Choose, with the source wording preserved verbatim, whether it is represented as structured table data, text, or an unsupported representation needing a precise foundation dependency (do not change the schema here). Line range is approximate: the importer's word-extractor flattens Word tables into tab-separated lines; table identity comes from the private LibreOffice docx render (table order 1-6). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T2-W04-TBL3.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-VIS-T2-W04-TBL4",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / approx. getBody lines 731-741 / header text anchor in CC-INV-T2.md",
+      "objective": "Give a visual/table disposition to the source table in WEEK FOUR: Natural / Artificial table under COLOURINGS, 2 rows x 2 columns; Artificial column names coal tars, dyes and a colour enhancer. Choose, with the source wording preserved verbatim, whether it is represented as structured table data, text, or an unsupported representation needing a precise foundation dependency (do not change the schema here). Line range is approximate: the importer's word-extractor flattens Word tables into tab-separated lines; table identity comes from the private LibreOffice docx render (table order 1-6). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T2-W04-TBL4.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-VIS-T2-W10-TBL5",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / approx. getBody lines 1310-1322 / header text anchor in CC-INV-T2.md",
+      "objective": "Give a visual/table disposition to the source table in WEEK TEN: STANDARD TOOLS / LOCAL TOOLS, 2 rows x 2 columns (lists sit inside cells). Choose, with the source wording preserved verbatim, whether it is represented as structured table data, text, or an unsupported representation needing a precise foundation dependency (do not change the schema here). Line range is approximate: the importer's word-extractor flattens Word tables into tab-separated lines; table identity comes from the private LibreOffice docx render (table order 1-6). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T2-W10-TBL5.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-VIS-T2-W10-TBL6",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / approx. getBody lines 1337-1376 / header text anchor in CC-INV-T2.md",
+      "objective": "Give a visual/table disposition to the source table in WEEK TEN: LOCAL / STANDARD (METRIC) conversion table, 3 rows x 2 columns; contains measurement quantities that need arithmetic and unit checking before reuse. Choose, with the source wording preserved verbatim, whether it is represented as structured table data, text, or an unsupported representation needing a precise foundation dependency (do not change the schema here). Line range is approximate: the importer's word-extractor flattens Word tables into tab-separated lines; table identity comes from the private LibreOffice docx render (table order 1-6). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T2-W10-TBL6.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-PRES-T2-PROCESSES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "multiple weeks / see objective for getBody line ranges",
+      "objective": "Preserve the food preparation processes taught in weeks 1-9 (poultry preparation lines 175-179, egg dishes and cooking methods 261-282, fish preparation 335-365, boiling/poaching/steaming rules 937-1031, stewing/frying 1062-1166, baking/roasting/grilling 1204-1272) as separate source-faithful preservation units with original wording kept apart from any later correction. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-PRES-T2-PROCESSES.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W01",
+        "CC-IDX-T2-W02",
+        "CC-IDX-T2-W03",
+        "CC-IDX-T2-W04",
+        "CC-IDX-T2-W05",
+        "CC-IDX-T2-W06",
+        "CC-IDX-T2-W07",
+        "CC-IDX-T2-W08",
+        "CC-IDX-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-PRES-T2-FOODVALUE",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "multiple weeks / see objective for getBody line ranges",
+      "objective": "Preserve the food-value / nutritive-value passages as text (no nutrition table exists in this source): meat 47-53, poultry 154-160, eggs 235-240, fish 325-331, milk 392-399, vegetables 501-507, fruits 555-559, cereals/legumes/nuts 624-664. Record that these are prose lists, not tables, and flag no figures as verified. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-PRES-T2-FOODVALUE.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W01",
+        "CC-IDX-T2-W02",
+        "CC-IDX-T2-W03",
+        "CC-IDX-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-PRES-T2-ASSESSMENT-BLOCKS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "multiple weeks / see objective for getBody line ranges",
+      "objective": "Preserve each EVALUATION, GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT (objective questions) and THEORY block per week with locators. Record that no practical assessment rubric, mark allocation or answer key appears anywhere in the source (searched for rubric, marks, score and practical). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-PRES-T2-ASSESSMENT-BLOCKS.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W01",
+        "CC-IDX-T2-W02",
+        "CC-IDX-T2-W03",
+        "CC-IDX-T2-W04",
+        "CC-IDX-T2-W05",
+        "CC-IDX-T2-W06",
+        "CC-IDX-T2-W07",
+        "CC-IDX-T2-W08",
+        "CC-IDX-T2-W09",
+        "CC-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-PRES-T2-MEASURING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "multiple weeks / see objective for getBody line ranges",
+      "objective": "Preserve the Week Ten measuring-equipment material (lines 1303-1394) including the Standard/Local tools and local-to-metric conversion tables; record that no equipment illustration, drawing or embedded image was found. Do not add measurements not in the source. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-PRES-T2-MEASURING.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T2-MILK-HEAT-STORAGE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody line locators in objective",
+      "objective": "Verify later: milk storage duration (line 427), milk digestibility claims (415-424) and heat-treatment temperature/time statements for pasteurization 65 degrees C for 30 minutes, sterilization 120 degrees C for up to an hour and UHT at least 135 degrees C for 1 second (441-443); fruit freezing below -18 degrees C and apple cold storage 1-4 degrees C (582-583). Findings and source locators only. Later correction work needs authoritative primary sources (for example national food-safety regulators, WHO/FAO/Codex and national food-composition/regulatory documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation that was not made. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MILK-HEAT-STORAGE.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody line locators in objective",
+      "objective": "Verify later: hanging poultry for at least one hour (line 176), rinsing raw poultry with lime/lemon (178), live and dressed-frozen poultry storage (180-183), offal handling without a refrigerator (92), meat preservation by canning with chemical preservatives and by smoking with phenols/aldehydes described as natural preservatives (134-135), tenderizing with papain (110), and egg freshness tests including shake and salted-water tests (261-267). Findings and source locators only. Later correction work needs authoritative primary sources (for example national food-safety regulators, WHO/FAO/Codex and national food-composition/regulatory documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation that was not made. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W01",
+        "CC-IDX-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T2-FRYING-HEAT-FIRE-BURNS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody line locators in objective",
+      "objective": "Verify later: deep-frying oil stages including blue haze smoke and decomposition (lines 1131-1135), frying rules about water, covering hot food and cooling oil before straining (1137-1146), burning/charring statements in stewing, frying, baking and grilling disadvantages (1099, 1166, 1224-1226), and pressure-cooker mention (114). Findings and source locators only. Later correction work needs authoritative primary sources (for example national food-safety regulators, WHO/FAO/Codex and national food-composition/regulatory documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation that was not made. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-FRYING-HEAT-FIRE-BURNS.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W08",
+        "CC-IDX-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T2-ADDITIVES-COLOURINGS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody line locators in objective",
+      "objective": "Verify later: flavouring and colouring statements (lines 708-741), including artificial colourings named as coal tars and dyes (737-738), and any claim about colour enhancers; regulatory status needs a primary source. Findings and source locators only. Later correction work needs authoritative primary sources (for example national food-safety regulators, WHO/FAO/Codex and national food-composition/regulatory documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation that was not made. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-ADDITIVES-COLOURINGS.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody line locators in objective",
+      "objective": "Record that questions on electric shock (line 206), fire-fighting equipment (363), accident prevention in the kitchen (364) and safety precautions in catering establishments (594) appear in evaluation lists, but a keyword scan found no teaching text answering them in this source. Do not supply answers or create safety teaching content in this item. Findings and source locators only. Later correction work needs authoritative primary sources (for example national food-safety regulators, WHO/FAO/Codex and national food-composition/regulatory documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation that was not made. Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W01",
+        "CC-IDX-T2-W02",
+        "CC-IDX-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     }
   ],
   "review": {
@@ -240,6 +1253,26 @@
     }
   },
   "next_runnable": [
-    "CC-INV-T2"
+    "CC-INV-T3",
+    "CC-TEST-PACKAGE",
+    "CC-IDX-T2-W01",
+    "CC-IDX-T2-W02",
+    "CC-IDX-T2-W03",
+    "CC-IDX-T2-W04",
+    "CC-IDX-T2-W05",
+    "CC-IDX-T2-W06",
+    "CC-IDX-T2-W07",
+    "CC-IDX-T2-W08",
+    "CC-IDX-T2-W09",
+    "CC-IDX-T2-W10",
+    "CC-IDX-T2-OPEN",
+    "CC-MARK-T2-W11",
+    "CC-MARK-T2-W12",
+    "CC-VIS-T2-W01-TBL1",
+    "CC-VIS-T2-W04-TBL2",
+    "CC-VIS-T2-W04-TBL3",
+    "CC-VIS-T2-W04-TBL4",
+    "CC-VIS-T2-W10-TBL5",
+    "CC-VIS-T2-W10-TBL6"
   ]
 }
