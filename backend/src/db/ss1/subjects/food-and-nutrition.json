@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-de2cdd0b85f6: first paragraph of word/document.xml (the first body element); the next paragraph is the 'WEEK / TOPIC' scheme table heading",
         "explanation": "The opening heading is a generic scheme title; it does not name the subject, the class or '1st Term' (it reads 'ALPHA TERM'; the term comes from the archive folder '1st Term SS1_'). The document has no 'SUBJECT:' or 'CLASS:' line. The subject is therefore confirmed from teaching content only: the scheme's Week 1 topic reads 'Introduction to food and nutrition', the lesson body opens with 'WEEK 1 / INTRODUCTION TO FOOD AND NUTRITION', and the scheme covers nutrients, vitamins, mineral salts, deficiency symptoms and the digestive system. It is not Catering Craft; 'Hotel and catering management' appears only as one item in a Week 2 careers list. The filename 'F _ N.docx' was not used as evidence. Heading occurs once in text extracted directly from the original DOCX XML; uniqueness was not checked on importer/mammoth output (importer run deferred)."
       }
+    },
+    {
+      "source_id": "SS1-SRC-0579303326ae",
+      "sha256": "ba05f9778cb70c628fc4743e549191d3270b91cd95f1883419ad050d64e93a20",
+      "archive_member": "SSS 1/2nd Term SS1_/F _ N.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Food and Nutrition",
+      "header_text": "FOOD AND NUTRITION",
+      "header_evidence": {
+        "locator": "SS1-SRC-0579303326ae: second non-empty paragraph of mammoth.extractRawText output (the importer's own .docx call; character offset 18), directly after the first paragraph 'SIGMA TERM (2nd)' (offset 0) and before 'SSS 1' and 'SCHEME OF WORK FOR SIGMA TERM'; the paragraph is 'FOOD AND NUTRITION' with no surrounding spaces",
+        "explanation": "The heading 'FOOD AND NUTRITION' occurs once in the extracted text (case-insensitive search also finds one occurrence). It names Food and Nutrition, not Catering Craft; the document has no SUBJECT or CLASS label and no catering wording. It equals the canonical subject 'Food and Nutrition' apart from case, so no source_alias rule is declared. The filename 'F _ N.docx' was not used as evidence. The scheme agrees: revision of the scientific study of foods, measurement, effects of heat on food, food tests, the food composition table, meal planning, reproductive health and malnutrition. The document's own term label is 'SIGMA TERM (2nd)', which matches the manifest 2nd Term folder. Only the header and opening scheme were inspected; no week inventory is recorded here."
+      }
     }
   ],
   "source_rules": [
