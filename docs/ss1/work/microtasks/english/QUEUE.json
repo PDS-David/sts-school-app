@@ -36,8 +36,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 22,
-    "PENDING": 74,
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "PENDING": 73,
     "BLOCKED": 4
   },
   "items": [
@@ -3125,8 +3125,8 @@
         "ENG-WK-T1-W01",
         "ENG-LES-WORD-CLASSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE in english.json. Source row: BODY 954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json lessons[id=SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1] title='Pronouns, adjectives and verbs: types, kinds, formation and look-alike pairs'; body_sha256=cd32486d12e6307489ad4970188598b095c7f953f6808440650e7bd8f4475da5; 6 objectives, 10 practice items (64 marks, marking sums checked); state={content_approval PENDING, approval_reference null, implementation IMPLEMENTED, verification DEFERRED, verification_reference null}; provenance: ACARA English glossary, Scribbr possessive pronouns, Scribbr adjectives, KSE Academy forming adjectives, Oxford Learner's Dictionaries work/works, iPleaders damage/damages, Dictionary.com stationary/stationery, University of Jijel auxiliary-verb notes, Thesaurus.com transitive/intransitive (reference only; prose original). Coverage ENGLISH-T1-W01-P02, A01, A02, A03, V02, V04 -> IMPLEMENTED_EQUIVALENT (lesson_ids include the new supplement). ENGLISH-T1-W01-R01 stays PARTIAL: the works/work, damages/damage and stationery/stationary contrasts are taught (paragraph 7, Q6) but the Countdown pp. 240-241 reading assignment was not supplied and stays unresolved under ENGLISH-T1-W01-EXTERNAL-MATERIALS / ENG-FACT-W01-EXTERNAL-MATERIALS. ENGLISH-BODY-002 stays PARTIAL; open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE updated and still blocking; SS1-02-english-COR-001 unchanged and still not to be activated. Original 1st Term document supplied and verified (sha256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef, standalone file and identical member of the 1st Term SS1 archive); full archive hash not verified. Record: docs/ss1/work/microtasks/english/ENG-LES-W01-PRONOUN-ADJ-VERB.md. Implemented, not approved or verified.",
       "completion_condition": "Implement the self-contained pronoun/adjective/verb teaching objectives with original worked examples, answered practice, marking and exact supplement coverage. For R01, distinguish the language contrasts actually taught from the unavailable prescribed-page activity: keep that external-material component PARTIAL/UNRESOLVED under ENG-FACT-W01-EXTERNAL-MATERIALS; it does not prevent implementing the independently teachable objectives. Do not claim the whole row is covered or activate its correction while any displaced objective remains unresolved. Keep approval PENDING and verification DEFERRED.",
       "required_attachments": [
         {
@@ -3294,6 +3294,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W01-PRONOUN-ADJ-VERB"
+    "ENG-LES-W02-WORD-MEANINGS"
   ]
 }
