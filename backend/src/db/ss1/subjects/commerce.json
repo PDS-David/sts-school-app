@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-d96373071a7e: the subject line, after the paragraphs 'FIRST TERM E-LEARNING NOTE' and a one-space line, in word-extractor getBody() output (the importer's own legacy .doc call); trailing whitespace of the line is not included",
         "explanation": "The subject line occurs once in the extracted text ('COMMERCE' alone occurs 8 times). It names Commerce, not Economics. Teaching content confirms it: meaning, scope and functions of commerce, occupation, production, retail and wholesale trade, warehousing. The heading differs from the canonical name by the 'SUBJECT:' label and class label (written 'SSS 1'), so a source_alias is declared."
       }
+    },
+    {
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86",
+      "archive_member": "SSS 1/2nd Term SS1_/commerce.docx",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "canonical_subject": "Commerce",
+      "header_text": "SIGMA TERM SCHEME OF WORK FOR SS1\n\nCOMMERCE",
+      "header_evidence": {
+        "locator": "SS1-SRC-0ccdf9dd3768: opening two paragraphs of mammoth.extractRawText output (the importer's own call), after two empty paragraphs and separated by a blank line",
+        "explanation": "The first paragraph 'SIGMA TERM SCHEME OF WORK FOR SS1' marks the term and class (the document's own name for the term; the 2nd Term assignment comes from the manifest folder, not from this text). The second paragraph 'COMMERCE' names the subject, not Economics (the word 'economics' does not occur in the text). The bare word 'COMMERCE' occurs once in capitals but three times ignoring case (the other two are body text), so, as in the Biology and Civic Education packages, the two-paragraph heading is used because it is unique either way. Teaching content confirms the subject: retail trade, foreign trade, export procedure and documents, customs and excise, export promotion, ports and airports authorities, transportation. The subject was read from the document, not its filename. The heading differs from the canonical name by the added term and class line, so a source_alias is declared. Checked on mammoth 1.12.2 raw text; the importer run itself is deferred."
+      }
     }
   ],
   "source_rules": [
@@ -30,6 +43,20 @@
         "explanation": "Source metadata only; original text is retained. The heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
       },
       "observed_subject": "SUBJECT: COMMERCE \t\t                                                               CLASS: SSS 1",
+      "canonical_subject": "Commerce",
+      "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-0ccdf9dd3768-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "source_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86",
+      "anchor": "SIGMA TERM SCHEME OF WORK FOR SS1\n\nCOMMERCE",
+      "evidence": {
+        "locator": "SS1-SRC-0ccdf9dd3768: opening two paragraphs of extracted text",
+        "explanation": "Source metadata only; original text is retained. The two-paragraph heading is not equal to the canonical subject name beyond case/whitespace, so the contract requires an explicit alias declaration."
+      },
+      "observed_subject": "SIGMA TERM SCHEME OF WORK FOR SS1\n\nCOMMERCE",
       "canonical_subject": "Commerce",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     }
@@ -47,6 +74,17 @@
       "affected_ids": [
         "SS1-SRC-d96373071a7e-R001",
         "SS1-SRC-d96373071a7e"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-ALIAS-APPROVAL-T2",
+      "kind": "OWNER_ACTION",
+      "detail": "The 2nd Term source heading is the two-paragraph text 'SIGMA TERM SCHEME OF WORK FOR SS1' / 'COMMERCE'. It differs from the canonical subject name 'Commerce' by the added term and class line, so the contract requires a source_alias declaration; rule SS1-SRC-0ccdf9dd3768-R001 carries approval_reference PENDING-OWNER.",
+      "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
+      "affected_ids": [
+        "SS1-SRC-0ccdf9dd3768-R001",
+        "SS1-SRC-0ccdf9dd3768"
       ],
       "blocks_delivery": true
     }

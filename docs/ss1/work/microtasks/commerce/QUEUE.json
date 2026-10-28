@@ -31,8 +31,8 @@
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 1,
-    "PENDING": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 2,
+    "PENDING": 5,
     "BLOCKED": 1
   },
   "items": [
@@ -99,9 +99,9 @@
       "depends_on": [
         "COM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No commerce package exists on master (backend/src/db/ss1/subjects lists only english, french, mathematics, further-mathematics). SOURCE_ASSIGNMENTS.csv/sourceRegistry.json row: source_id=SS1-SRC-0ccdf9dd3768, sha256=c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86, 33727 bytes, member 'SSS 1/2nd Term SS1_/commerce.docx', worker D, mapping_status FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER: this is a filename-based assignment, NOT a verified document header. Not registered; header unread.",
-      "completion_condition": "This source's entry is added to the existing package; no other source touched. If the header names a different subject (for example Economics), record an explicit handoff open item; do not delete, merge into another business subject or silently reassign. If the header differs from the canonical subject only by an alias needing an approval_reference, record an open item; do not invent the reference. The package stays PENDING; the 'source without coverage' blocker remains until indexing. Registration is not performed by the queue-building task."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/commerce.json (existing package from COM-SRC-T1; only additions): sources[1] source_id=SS1-SRC-0ccdf9dd3768 sha256=c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86 archive_member='SSS 1/2nd Term SS1_/commerce.docx' (verbatim from the manifest) term='2nd Term' canonical_subject='Commerce' header_text='SIGMA TERM SCHEME OF WORK FOR SS1<blank line>COMMERCE'; rule SS1-SRC-0ccdf9dd3768-R001 (source_alias, approval_reference PENDING-OWNER); open item COMMERCE-ALIAS-APPROVAL-T2 (OWNER_ACTION, blocking). Subject confirmed from the document (second heading paragraph 'COMMERCE' and trade/transport content; not Economics), not the filename. Container: member extracted from the complete composite ZIP (SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, verified); member SHA-256 verified from the extracted bytes and equals SOURCE_ASSIGNMENTS.csv (33,727 bytes). Method: mammoth 1.12.2 extractRawText in a private scratch directory; importer/plan run not performed (deferred). Record: docs/ss1/work/microtasks/commerce/COM-SRC-T2.md. Implemented, not approved or verified.",
+      "completion_condition": "Registered source entry added to the existing package with no other source touched. Package stays PENDING; the 'source without coverage' blocker remains until COM-INV-T2 indexing. Alias owner approval is an open item, not invented. Testing deferred by owner."
     },
     {
       "id": "COM-SRC-T3",
@@ -312,6 +312,8 @@
     }
   },
   "next_runnable": [
-    "COM-SRC-T2"
+    "COM-SRC-T3",
+    "COM-INV-T1",
+    "COM-INV-T2"
   ]
 }
