@@ -2287,7 +2287,7 @@
       ],
       "status": "PENDING",
       "implementation_reference": "On PR71 only (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), not on master: lessons[id=SUP-SS1-FMATHS-001] in backend/src/db/ss1/subjects/further-mathematics.json (blob 2a5849ac9566caebd8051af526e492d983f3a3ee), objective FMATHS-1-001; 1 PR71 lesson for this row, no master lesson exists. PR71 provenance cites open textbooks (OpenStax pages) whose pages were listed by a web search and not opened (PR71 OI-FMATHS-007); the references and the lesson accuracy are unchecked. Authored in PR71's incompatible schema, so it cannot be copied verbatim. | FM-WK-T1-W01 finding: the row needs a replacement (OI-FM-T1-W01-FACT-DEFECTS, -NOTATION-LOSS, -ASSESSMENT-GAPS). The PR71 lesson, if ported, must be checked against that defect list, and only one replacement may be bound to the row by FM-COR-T1-W01.",
-      "completion_condition": "Decision recorded with the PR71 lesson read at the immutable SHA and its cited references checked (see implementation_reference). If ported: lesson added to master's package in master's field names with state content_approval PENDING / verification DEFERRED, coverage entry and (if the row is displaced) a correction binding that references the week item's scope review. Not ported: reason recorded. Do not copy PR71 schema or IDs."
+      "completion_condition": "Read and compare the preserved lesson at immutable SHA b5ced7ebb0efe22df2351baa140266fbf40cbf41 against the recorded Week 1 objectives and defect list. If reusable, port and correct ONE supplement under master's schema, with original answered practice, accurate notation, checked references, exact body hash and pending approval/deferred verification; update objective coverage with evidence. If unsuitable, document exact reasons for the authoring fallback. Do not add a delivery correction here: FM-COR-T1-W01 owns the binding after scope closure. Do not copy the alternate schema or blindly adopt its claims."
     },
     {
       "id": "FM-PORT-D3-L002",
@@ -2785,6 +2785,6 @@
     }
   },
   "next_runnable": [
-    "FM-PRE-T2"
+    "FM-PORT-D3-L001"
   ]
 }

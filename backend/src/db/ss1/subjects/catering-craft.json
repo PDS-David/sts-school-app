@@ -16,6 +16,19 @@
         "locator": "SS1-SRC-f433169ca25c: third paragraph of word-extractor getBody() output (the importer's own legacy .doc call); the document opens with 'SECOND TERM E-LEARNING NOTE', then this subject line",
         "explanation": "The subject line occurs once in the extracted text; 'CATERING CRAFT PRACTICE' alone occurs twice (also in a reference title), so the full subject-and-class line is the unique header_text. It names Catering Craft Practice, not Food and Nutrition. Teaching content confirms it: food commodities, principles of cooking methods, methods of cooking, measuring equipment. The heading differs from the canonical name by the 'SUBJECT:' label, the word 'PRACTICE' and the class label, so a source_alias is declared. No 1st Term scheme is created or implied."
       }
+    },
+    {
+      "source_id": "SS1-SRC-d068ede78d16",
+      "sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e",
+      "archive_member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "canonical_subject": "Catering Craft",
+      "header_text": "SUBJECT:  CATERING CRAFT PRACTICE\t\t\t\t\tCLASS:  SS 1",
+      "header_evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), line 3; docs/ss1/work/microtasks/catering-craft/CC-SRC-T3.md",
+        "explanation": "The exact subject/class line occurs once after THIRD TERM E-LEARNING NOTE. It names Catering Craft Practice and SS 1. Scheme headings describe personnel, food service and table setting. No source text normalized."
+      }
     }
   ],
   "source_rules": [
@@ -32,6 +45,20 @@
       "observed_subject": "SUBJECT:  CATERING CRAFT PRACTICE\t\t\t\t          \tCLASS:  SS 1",
       "canonical_subject": "Catering Craft",
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-d068ede78d16-R001",
+      "op": "source_alias",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "source_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e",
+      "anchor": "SUBJECT:  CATERING CRAFT PRACTICE\t\t\t\t\tCLASS:  SS 1",
+      "observed_subject": "SUBJECT:  CATERING CRAFT PRACTICE\t\t\t\t\tCLASS:  SS 1",
+      "canonical_subject": "Catering Craft",
+      "approval_reference": "PENDING-OWNER: exact heading observed and subject mapping evidenced in CC-SRC-T3.md; existing alias approval hold remains; not teacher approval.",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), line 3; docs/ss1/work/microtasks/catering-craft/CC-SRC-T3.md",
+        "explanation": "The exact subject/class line occurs once after THIRD TERM E-LEARNING NOTE. It names Catering Craft Practice and SS 1. Scheme headings describe personnel, food service and table setting. No source text normalized."
+      }
     }
   ],
   "lessons": [],
@@ -42,11 +69,13 @@
     {
       "id": "CATERING-CRAFT-ALIAS-APPROVAL",
       "kind": "OWNER_ACTION",
-      "detail": "The 2nd Term source subject line is 'SUBJECT: CATERING CRAFT PRACTICE' with 'CLASS: SS 1'. It differs from the canonical subject name 'Catering Craft' by label, the word 'PRACTICE' and class text, so the contract requires a source_alias declaration; rule SS1-SRC-f433169ca25c-R001 carries approval_reference PENDING-OWNER.",
+      "detail": "The 2nd Term source subject line is 'SUBJECT: CATERING CRAFT PRACTICE' with 'CLASS: SS 1'. It differs from the canonical subject name 'Catering Craft' by label, the word 'PRACTICE' and class text, so the contract requires a source_alias declaration; rule SS1-SRC-f433169ca25c-R001 carries approval_reference PENDING-OWNER. Third-Term heading uses the same Catering Craft Practice subject wording and has a separate alias rule; its approval is also pending.",
       "required_action": "Owner records an approval reference for the alias (or rejects it); do not invent one.",
       "affected_ids": [
         "SS1-SRC-f433169ca25c-R001",
-        "SS1-SRC-f433169ca25c"
+        "SS1-SRC-f433169ca25c",
+        "SS1-SRC-d068ede78d16",
+        "SS1-SRC-d068ede78d16-R001"
       ],
       "blocks_delivery": true
     }
