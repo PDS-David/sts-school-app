@@ -2171,14 +2171,230 @@
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
         }
       ]
+    },
+    {
+      "id": "YO-T1-W08-SCHEME-EDE",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 20: Aroko kiko (essay writing)",
+      "objective_locator": "opening scheme list line 47 (SHA-256 9cc37dda5b519da18909c89920e192ec8be33399d5d6589dda79724d079cab45); body EDE part lines 1687-1721 (SHA-256 2b977b369de03f112a2001e10db0288a80af04dfe40457a08a99fbeff843ca4b)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 47; scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "The opening 22-topic list carries no week numbers. Topic 20 is \"Aroko kiko\" at line 47, which matches the EDE heading at 1689 (\"AKOLE ISE: AROKO KIKO\") word for word apart from the label. Week 8 is the eighth and last block of the list and carries three topics (lines 47, 49 and 51), the first week since Week 5 with three. Classification of the list belongs to YO-PRE-T1-1 (PENDING); the inference is recorded in YORUBA-T1-W08-SCHEME-MAPPING."
+        },
+        {
+          "locator": "source lines 1687-1721 (EKA ISE: EDE; AKOLE ISE at 1689)",
+          "explanation": "The body teaches the topic in four parts, indexed as YO-T1-W08-EDE-01..04, all PARTIAL: the definition of an essay, the seven named essay types, three of the six principles of essay writing, and the remaining three principles. No deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-SCHEME-ASA",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 21: Ise abinibi ile Yoruba (indigenous Yoruba occupations)",
+      "objective_locator": "opening scheme list line 49 (SHA-256 bb95eae146bcda9103bc39caa33b4960d07de229e0718099878dea74779799e2); body ASA part lines 1725-1759 (SHA-256 8661224ad5d44c2c083e4ec272077f15f6e411df8fc4785218d2512ca8ed1cf5)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 49; scheme list lines 9-51",
+          "explanation": "Mapped to Week 8 by position and by exact heading match: line 49 is \"Ise abinibi ile Yoruba\" and the ASA heading at 1727 is \"AKOLE ISE: ISE ABINIBI ILE YORUBA\" (case and label aside). The topic occurs once in the 22-topic list."
+        },
+        {
+          "locator": "source lines 1725-1759 (EKA ISE: ASA; AKOLE ISE at 1727)",
+          "explanation": "The body teaches the topic in three parts, indexed as YO-T1-W08-ASA-01..03, all PARTIAL: the definition of ise abinibi and its passing from parents, the ten named occupations, and the \"Ise ona\" sub-list of three materials. No deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-SCHEME-LIT",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 22: Itupale asayan iwe ti ajo WAEC/NECO yan (analysis of the set literature text)",
+      "objective_locator": "opening scheme list line 51 (SHA-256 992009c87a20eb22a098e463edd36ffb1759bce857e1a28f192b2ad46646bafa); LITIRESO heading lines 1763-1765 (SHA-256 184c9bfc5a6b4887333410edf2b0889e4425022d6c54654425cee6c54ed9656d)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 51; scheme list lines 9-51",
+          "explanation": "Mapped to Week 8 by position: line 51 is \"Itupale asayan iwe ti ajo WAEC/NECO yan.\" and the LITIRESO heading at 1765 is \"AKOLE ISE: ITUPALE ASAYAN IWE LITIRESO APILEKO TI AJO WAEC /NECO YAN.\" The scheme wording omits \"LITIRESO APILEKO\" and the body adds a space before \"/NECO\"; the topic is otherwise the same. The strand teaches nothing: 1763 is \"EKA ISE: LITIRESO\", 1765 is the heading, and 1767 is \"Igbelewon :\", so no text, author, edition or year is given and no analysis is present."
+        },
+        {
+          "locator": "source lines 1763-1765 (EKA ISE: LITIRESO; heading only)",
+          "explanation": "The LITIRESO strand is a heading with no body, so the objective is UNRESOLVED rather than PARTIAL. YORUBA-T1-W08-LITIRESO-EMPTY raises the owner decision on which WAEC/NECO text is to be analysed, and YO-T1-W08-LIT-01 records the gap without inventing a text."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-EDE-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Aroko defined as the expression of thought on one subject in writing for a reader",
+      "objective_locator": "line 1691; SHA-256 3fcb3d225b16ea14567eb251249c6ad47e6fe08568486a7dab861e0ab83a8db0",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 1691",
+          "explanation": "The definition reads \"Aroko ni atinuda ero eni, ti a ko lori ori oro kan Pataki si inu iwe fun onkawe lati ka.\" (an essay is the expression of one's thought written on one important subject in a book for a reader to read). It gives no length, purpose or audience beyond the reader, and it contains a capital \"Pataki\" mid-sentence, \"ori oro\" un-hyphenated and \"si inu\" for \"sinu\"."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-EDE-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The seven named essay types",
+      "objective_locator": "lines 1693-1707; SHA-256 9eaa117a63dc3f7cdafeedd7cc05406ec64a6f82773ee3fcc2c8344b98a05f70",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1693-1707",
+          "explanation": "Line 1693 announces \"Orisi aroko ti o wa niyi;\" (the kinds of essay are these), and seven numbered items follow whose numbers extraction drops: \"Aroko oni leta\" (letter essay, 1695), \"Aroko onisorogbesi\" (1697), \"Aroko alariyanyan\" (1699), \"Aroko alapejuwe\" (description, 1701), \"Aroko ojemo – isipaya\" (1703, two names joined by the week's only en dash), \"Aroko atonisona asotan\" (1705) and \"Aroko oniroyin\" (news report, 1707). None is described, illustrated or given a specimen, and the exercise at 1771 asks for six types against these seven."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-EDE-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Three principles of essay writing: choosing a subject, planning, and writing to time",
+      "objective_locator": "lines 1709-1715; SHA-256 a27ad9f80a7892778c2df8684741d1dcc00e605b80b11b7ebd1511401cc7ee94",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1709-1715",
+          "explanation": "Line 1709 heads the section \"Awon ilana to se Pataki fun aroko kiko\" (with the same mid-sentence capital \"Pataki\"), and the first three of six numbered principles follow: \"Yiyan ori-oro\" (1711, choosing the subject, with the garbled \"fa ile tere si ebe\"), \"Sise ilepa ero\" (1713, planning the thought) and \"Kiko aroko\" (1715, writing the essay to time). Each consists of one sentence and none is applied to a specimen."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-EDE-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The remaining principles: paragraphing, full language, and the conclusion",
+      "objective_locator": "lines 1717-1721; SHA-256 323951958d2b8f891da5fa51774087bd5592d38b57ff5fede02ffcd10ea752ab",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1717-1721",
+          "explanation": "The last three numbered principles: \"Ipinro\" (1717, paragraphing, which names \"afiwe, owe, akanlo ede\" as devices), \"ILO-EDE\" (1719, which states that full language is important but gives no directive, unlike the other five) and \"IGUNLE/IKADi\" (1721, the conclusion, with mixed capitalisation in \"IKADi\" and the unpunctuated \"aroko o gbodo se akotan gbodo koko\"). The list therefore has six items, three of which are indexed here."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-ASA-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Ise abinibi defined as inherited traditional work",
+      "objective_locator": "lines 1729-1731; SHA-256 08363e8ce58ea2470957c16f80309f0487583eb18fe3379ffc3a2fe2b6fda3a1",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1729-1731",
+          "explanation": "Line 1729 defines the term: \"Ise abinibi/isenbeye ni ise iran ti a jogun lati owo awon baba nla wa.\" (ise abinibi is traditional work inherited from our forebears), offering two spellings in the headword. Line 1731 adds a paragraph on how every lineage has a known occupation, on Yoruba opposition to idleness, on children being trained in the family occupation and on parents consulting \"ifa akosejaye\" at birth, and then announces \"Awon ise abinibi  Yoruba niwonyi;\". The paragraph is garbled around \"f ease-file omo lowo\", \"Ni geere\" and \"ti ele daa yan\", and contains a double space."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-ASA-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Ten named indigenous occupations",
+      "objective_locator": "lines 1733-1753; SHA-256 f15a1a545ab24a19d34b42ce1308b66cddbd1a19c58e0ce063142b613ead068e",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1733-1753",
+          "explanation": "Line 1733 is a second, indented lead-in with trailing spaces, \"Awon ise isembaye Yoruba ni wonyi;\" (a third spelling of the term and a repetition of 1731), and ten numbered items follow: \"Ise Agbe\" (farming, 1735), \"Ilu lilu\" (drumming, 1737), \"Ikoko mimo\" (pot washing, 1739), \"eni hihun\" (1741), \"aro dida\" (1743), \"Ise ode\" (hunting, 1745), \"Ise onidiri\" (weaving, 1747), \"Ise akope\" (1749), \"Ise Alagbede\" (smithing, 1751) and \"Ise ona bii;\" (1753). Capitalisation is inconsistent (\"Ise Agbe\" beside \"eni hihun\"), the items mix occupations with tasks, no occupation is defined or illustrated, and no tool or product is named."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-ASA-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The Ise ona sub-list: wood, stone and leather work",
+      "objective_locator": "lines 1753-1759; SHA-256 a699870adbaa738a5a47fea038b923a073164b5268438dd000b7ec034ca3bf6c",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1753-1759",
+          "explanation": "The tenth numbered item \"Ise ona bii;\" (1753) opens a sub-list, and three further numbered items follow: \"Ona igi\" (wood work, 1755), \"Ona okuta\" (stone work, 1757) and \"Ona awo \" (leather work, 1759, with a trailing space). The three are materials rather than occupations, they are numbered as if they continued the occupation list, and no product or process is given."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-LIT-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Analysis of the set WAEC/NECO literature text",
+      "objective_locator": "source lines 1763-1765 contain only the heading; LITIRESO block SHA-256 184c9bfc5a6b4887333410edf2b0889e4425022d6c54654425cee6c54ed9656d",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1763-1765; no body paragraph",
+          "explanation": "The scheme topic at line 51 and the LITIRESO heading at 1765 both announce the analysis of a WAEC/NECO set text, but the strand consists only of \"EKA ISE: LITIRESO\" (1763) and the heading (1765). No text, author, edition, year, theme, character, setting or language point is supplied, and the exercise block at 1767 contains no literature question. The objective is therefore UNRESOLVED, and YORUBA-T1-W08-LITIRESO-EMPTY raises the owner decision."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W08-ASSESS",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Five Igbelewon questions and one practical item, with no answers, marks or completion criteria",
+      "objective_locator": "lines 1767-1777; SHA-256 db192f0c3d588022037a223f4450938cbf9cc8aa0db7a6b6afb30cf4ba4b75c3; line 1779; SHA-256 a711b83b0ee115ec1e2a1b1cff5fe5d1204a8b13965f95d2fb890e67956da8e7",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1767-1777 (Igbelewon)",
+          "explanation": "Five numbered questions whose numbers extraction drops: \"Fun aroko ni oriki\" (1769, give a profile of an essay), \"Ko orisi aroko mefa\" (1771, write six essay types), \"Salaye awon ilana ti alaroko yoo fi sokan bi o ba n ko aroko\" (1773, explain the principles a writer should follow), \"Kin ni ise isembaye/\" (1775, ending in a slash instead of a question mark) and \"Ko awon ise isembaye ile Yoruba\" (1777). No answer, model response, mark allocation or completion standard is given; 1771 asks for six types when seven are listed; and no question covers the literature strand."
+        },
+        {
+          "locator": "source line 1779 (Ise asetilewa)",
+          "explanation": "One practical item: \"Ise aetilewa: mu okan lara ise isembaye ile Yoruba ki o si salaye lekun-un-rere\" (take one of the indigenous Yoruba occupations and explain it fully). The label is misspelled \"aetilewa\" for \"asetilewa\", the term \"isembaye\" is used again, and the item asks for a full explanation although no occupation is explained anywhere in the strand."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1-7 of the 1st Term are indexed at objective level (15, 15, 23, 19, 14, 12 and 12 coverage entries; week items YO-WK-T1-W01..W07), of which the two Week 5 LITIRESO entries and the Week 7 ASA benefits entry are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section. Week 8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
-      "required_action": "Complete YO-WK-T1-W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. All of the 2nd and 3rd Terms, and the preamble/visual/foundation items, remain.",
+      "required_action": "Complete the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
@@ -2350,6 +2566,91 @@
       "required_action": "Record the missing answers, marks and completion criteria in YO-FACT-T1-W07-DEFECTS and decide how the ten-spelling exercises are to be bounded to forms the corrected table pairs; the assessment gap is recorded here, not filled.",
       "affected_ids": [
         "YO-T1-W07-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W08-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 8 is identified in the unnumbered 22-topic opening list (lines 9-51) as topics 20-22 (lines 47, 49, 51), bound to the EDE heading at 1689, the ASA heading at 1727 and the LITIRESO heading at 1765. Topic 20 \"Aroko kiko\" and topic 21 \"Ise abinibi ile Yoruba\" match their headings word for word apart from case and label; topic 22 reads \"Itupale asayan iwe ti ajo WAEC/NECO yan.\" while the heading inserts \"LITIRESO APILEKO\" and a space before \"/NECO\". Week 8 closes the list and the document: it has three strands and three topics, the first week since Week 5 with three, and the document ends at line 1781 with no examination or revision section after the week.",
+      "required_action": "Confirm the position-based mapping of all 22 topics to the eight teaching sections, including the two-topic Weeks 6 and 7 and the three-topic Week 8, together with hash-accounting and classification of the whole list, under YO-PRE-T1-1 (PENDING); if confirmed, record it once for the term rather than per week. No objective was invented beyond the source text.",
+      "affected_ids": [
+        "YO-T1-W08-SCHEME-EDE",
+        "YO-T1-W08-SCHEME-ASA",
+        "YO-T1-W08-SCHEME-LIT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W08-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "Week 8 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1685-1781 (YO-FND-T1-01; the Week 1-7 ROW-IDENTITY items record the same document-wide condition). All 12 Week 8 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids. Week 8 has no Word table and no drawing: it is a plain list week with 31 automatically numbered paragraphs.",
+      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 8 coverage entries to identity targets and re-run the plan audit.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W08-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Eight defects found in Week 8 (lines 1685-1781): (1) 1691: the definition capitalises \"Pataki\" mid-sentence, leaves \"ori oro\" un-hyphenated and writes \"si inu\" for \"sinu\", and gives no purpose or audience beyond \"onkawe\"; (2) 1693-1707: seven essay types are named but none is described or illustrated, \"Aroko ojemo – isipaya\" joins two names with an en dash without saying whether it is one type or two, and the exercise at 1771 asks for six; (3) 1709-1721: the section heading has no colon or final stop, six items are numbered as one list although \"ILO-EDE\" states an importance rather than a principle, \"IGUNLE/IKADi\" mixes capital and lower case, and 1721 is unpunctuated between \"aroko\" and \"o gbodo\"; (4) 1729-1733: the same term is spelled three ways — \"abinibi\" in the heading and definition, \"isenbeye\" in the definition headword and \"isembaye\" at 1733, 1775, 1777 and 1779 — and 1733 is an indented duplicate lead-in with trailing spaces; (5) 1731: \"f ease-file omo lowo\", \"Ni geere\" and \"ti ele daa yan\" are garbled, and \"abinibi  Yoruba\" has a double space; (6) 1735-1759: capitalisation is inconsistent (\"Ise Agbe\" against \"eni hihun\"), the list mixes occupations (\"Ise Agbe\", \"Ise ode\") with tasks (\"Ikoko mimo\", \"aro dida\"), \"Ise ona bii;\" is numbered as an occupation although the three items under it are materials, \"Ona awo \" has a trailing space, and no occupation has a definition, tool or product; (7) 1763-1765: the LITIRESO strand is a heading only, the heading ends with a full stop and \"WAEC /NECO\" has a space before the slash, and no set text is named; (8) 1767-1779: five questions rather than six, no answers or marks, 1771 asks for six types against seven listed, 1775 ends with a slash instead of a question mark, no question covers literature, 1779 misspells \"asetilewa\" as \"aetilewa\" and asks for a full explanation of an occupation that the body never explains.",
+      "required_action": "Obtain one recorded subject-expert decision on every listed defect together with the notation decision (YORUBA-T1-W08-NOTATION) and the set-text decision (YORUBA-T1-W08-LITIRESO-EMPTY) under YO-FACT-T1-W08-DEFECTS; the Week 8 lessons must not copy the uncorrected text. No correction wording is authored here.",
+      "affected_ids": [
+        "YO-T1-W08-SCHEME-EDE",
+        "YO-T1-W08-SCHEME-ASA",
+        "YO-T1-W08-SCHEME-LIT",
+        "YO-T1-W08-EDE-01",
+        "YO-T1-W08-EDE-02",
+        "YO-T1-W08-EDE-03",
+        "YO-T1-W08-EDE-04",
+        "YO-T1-W08-ASA-01",
+        "YO-T1-W08-ASA-02",
+        "YO-T1-W08-ASA-03",
+        "YO-T1-W08-LIT-01",
+        "YO-T1-W08-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W08-NOTATION",
+      "kind": "CONTENT",
+      "detail": "The Week 8 text contains no tone-marked or sub-dot character: across lines 1685-1781 there are 0 characters in U+00C0-U+024F and 0 combining marks. The only non-ASCII character in the week is the en dash (U+2013) in \"Aroko ojemo – isipaya\" at 1703. This is the same document-wide condition as YORUBA-T1-W01..W07-NOTATION, and it bears on the EDE strand because essay writing is the point at which correct spelling is taught: every Yoruba word in the definition, the type names and the principles is written without tone or sub-dot, and the model essays that the lesson must supply cannot be checked against the source.",
+      "required_action": "Apply the term-wide notation decision recorded in YO-FACT-T1-W05-DEFECTS (or the superseding decision in YO-FACT-T1-W06/W07/W08-DEFECTS) to the definition, the seven type names and the six principles before the lessons are authored. Until then the spellings cannot be verified.",
+      "affected_ids": [
+        "YO-T1-W08-SCHEME-EDE",
+        "YO-T1-W08-SCHEME-ASA",
+        "YO-T1-W08-SCHEME-LIT",
+        "YO-T1-W08-EDE-01",
+        "YO-T1-W08-EDE-02",
+        "YO-T1-W08-EDE-03",
+        "YO-T1-W08-EDE-04",
+        "YO-T1-W08-ASA-01",
+        "YO-T1-W08-ASA-02",
+        "YO-T1-W08-ASA-03",
+        "YO-T1-W08-LIT-01",
+        "YO-T1-W08-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W08-LITIRESO-EMPTY",
+      "kind": "OWNER_ACTION",
+      "detail": "The LITIRESO strand of Week 8 (1763-1765) is a heading only. The scheme topic at line 51 and the heading at 1765 announce the analysis of a WAEC/NECO set text, but the week names no text, no author, no edition and no year, and teaches nothing: 1763 is \"EKA ISE: LITIRESO\", 1765 is the heading, and 1767 is \"Igbelewon :\". The exercise block contains no literature question. No Year group or exam session is recorded against this document, so the set text cannot be inferred from the source.",
+      "required_action": "The owner must name the WAEC/NECO literature text that this Year group is to study (title, author, edition and the year whose syllabus applies) or confirm that the strand is to be dropped for this term; the answer becomes the factual basis of YO-LES-T1-W08-LIT. Until then the LITIRESO objectives YO-T1-W08-SCHEME-LIT and YO-T1-W08-LIT-01 are UNRESOLVED.",
+      "affected_ids": [
+        "YO-T1-W08-SCHEME-LIT",
+        "YO-T1-W08-LIT-01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W08-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "The Week 8 exercise block has five Igbelewon questions at 1769-1777 and one practical item at 1779. All five carry Word automatic numbering that extraction drops. No answers, model responses, mark allocation or completion standard are given. Question 1771 asks for six essay types while the body lists seven; question 1775 ends with a slash instead of a question mark; question 1777 asks for the occupations that 1735-1759 lists but never explains; the practical at 1779, misspelled \"Ise aetilewa\", asks for a full explanation of one occupation although none is explained; and no question covers the LITIRESO strand.",
+      "required_action": "Record the missing answers, marks and completion criteria in YO-FACT-T1-W08-DEFECTS and decide how the six-type question is to be reconciled with the seven listed types and how the explanation question is to be supplied; the assessment gap is recorded here, not filled.",
+      "affected_ids": [
+        "YO-T1-W08-ASSESS"
       ],
       "blocks_delivery": true
     },
