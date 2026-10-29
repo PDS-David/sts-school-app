@@ -16,7 +16,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; not approved, not verifie
 | `Silebu` | 39 | `de31a8b4…bc3d41f4` | EDE heading line 1289 `AKOLE ISE: SILEBU` — exact apart from the label, the first exact scheme-to-heading match in the list |
 | `Awon owe ti o suyo ninu ise ati ise Yoruba ` | 41 | `9a14381c…a4d567e1` | ASA heading line 1439, word for word (case, label and trailing space aside) |
 
-- Week 6 has **two strands and no LITIRESO section**, and the list is consistent with that: no LITIRESO topic occurs between line 37 (Week 5 topic 15) and line 51 (Week 8 topic 22), so the three-topic grouping that held for Weeks 2–5 ends after Week 5.
+- Week 6 has **two strands and no LITIRESO section**, and the list is consistent with that: no LITIRESO topic occurs between line 37 (Week 5 topic 15) and line 51 (Week 8 topic 22), so Weeks 6 and 7 each carry two topics; Week 8 carries three again (lines 47, 49 and 51).
 - Lines 43 and 45 are Week 7: `Akoto ede Yoruba` matches its EDE heading at 1507 (`AKOLE ISE: AKOTO EDE YORUBA`) and `Iwa omoluabi ati anfaani re` matches its ASA heading at 1645. Line 47 `Aroko kiko` opens Week 8 (heading 1689).
 - The inference is recorded as open item `YORUBA-T1-W06-SCHEME-MAPPING`; hash-accounting and classification of the whole list belong to `YO-PRE-T1-1` (PENDING).
 
