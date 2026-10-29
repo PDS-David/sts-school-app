@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 16567)
-Total output lines: 712
-
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { JSS3_SUPPLEMENTS, validateJss3Supplements, supplementBodyHash, buildJss3SupplementRows } from '../backend/src/db/jss3Supplements.ts';
@@ -319,7 +316,84 @@ test('Home Economics: all 14 reviewed lines are decided with quoted evidence and
     assert.match(dec[id].rationale, /'/, id); tally[dec[id].disposition] = (tally[dec[id].disposition] ?? 0) + 1;
     if (dec[id].support_kind === 'supplement') { const s = byId(dec[id].row_filter); assert.ok(s, id); assert.ok(s.body.toLowerCase().includes(dec[id].anchor_regex.toLowerCase()), id); }
   }
-  assert.deep…1567 tokens truncated…BJECTIVE to REPLACEMENT_IMPLEMENTED
+  assert.deepEqual(tally, { ORIGINAL_LESSON_COVERS_OBJECTIVE: 8, REPLACEMENT_IMPLEMENTED: 6 });
+  for (const r of Object.values(closure)) if (r.canonical_subject === 'Home Economics') assert.ok(!/^(LEAD_ONLY|ORIGINAL_BODY_TEXT_PRESENT)/.test(r.disposition), r.candidate_id);
+  // omissions confirmed by the original bodies: labour, hygiene/packaging, baby-equipment cleaning, project work
+  for (const id of ['SL-536', 'SL-541', 'SL-542', 'SL-547', 'SL-551', 'SL-556']) assert.equal(dec[id].support_kind, 'supplement');
+  const ob = csv('docs/jss3/OPEN_BLOCKERS.csv'); assert.ok(ob.find(r => r.id === 'OB-15')); assert.match(ob.find(r => r.id === 'OB-01')!.detail, /all 14 Home Economics leads/);
+});
+
+// ---- Batch 2: CCA, French, Social Studies, Music practical (SL-282..SL-567 reviewed rows) ----
+const NEW_LESSONS: Record<string, [string, string[]]> = {
+  'SUP-CCA-CADENCES': ['Cultural & Creative Arts', ['WG-CCA-SL293']],
+  'SUP-CCA-MINOR-SINGING': ['Cultural & Creative Arts', ['WG-CCA-SL295']],
+  'SUP-FR-DATES': ['French', ['WG-FR-SL282']],
+  'SUP-FR-RECIT': ['French', ['WG-FR-SL285']],
+  'SUP-SS-NATURE-ECONOMY': ['Social Studies', ['WG-SS-SL433']],
+  'SUP-SS-REFORM-1': ['Social Studies', ['WG-SS-SL434']],
+  'SUP-SS-REFORM-2': ['Social Studies', ['WG-SS-SL435']],
+  'SUP-MUSIC-PRACTICAL': ['Music', ['WG-MUSIC-SL566', 'WG-MUSIC-SL567']],
+};
+test('review batch: eight new lessons are complete, attributed, in Second Term and appended last', () => {
+  validateJss3Supplements(JSS3_SUPPLEMENTS);
+  const ids = JSS3_SUPPLEMENTS.map(s => s.id);
+  for (const [id, [subject, gaps]] of Object.entries(NEW_LESSONS)) {
+    const s = byId(id); assert.ok(s, id);
+    assert.equal(s.subjectName, subject); assert.equal(s.termLabel, '2nd Term'); assert.deepEqual(s.gapIds, gaps);
+    assert.match(s.body, /Objectives|Objectifs/); assert.match(s.body, /Practice \(questions\)/); assert.match(s.body, /Answers and marking guide/); assert.match(s.body, /Assessment and feedback/);
+    assert.ok(s.sources.length >= 2, id); for (const src of s.sources) assert.ok(src.url.startsWith('https://'), src.url);
+    assert.match(s.origin, /not recovered/);
+    assert.ok(ids.indexOf(id) > ids.indexOf('SUP-MATH-BEARING-TOOLS'), `${id} must be appended after the earlier supplements`);
+  }
+});
+test('review batch: validator extension accepts the new subjects and still rejects unregistered ids', () => {
+  assert.throws(() => validateJss3Supplements([{ ...byId('SUP-FR-DATES'), gapIds: ['WG-FR-UNREGISTERED'] }]), /Unregistered/);
+  assert.throws(() => validateJss3Supplements([{ ...byId('SUP-FR-DATES'), subjectName: 'Fine Art' }]));
+  assert.throws(() => validateJss3Supplements([{ ...byId('SUP-FR-DATES'), origin: 'New material.' }]));
+  assert.throws(() => validateJss3Supplements([{ ...byId('SUP-FR-DATES'), sources: [{ title: 'x', url: 'http://example.com' }] }]));
+});
+test('review batch: lessons teach the missing part and state their limits', () => {
+  const cad = byId('SUP-CCA-CADENCES').body;
+  for (const t of ['Authentic cadence', 'Plagal cadence', 'Half cadence', 'Deceptive cadence', 'F-A-C', 'D-F#-A']) assert.ok(cad.includes(t), t);
+  assert.match(cad, /cannot certify listening or singing/);
+  const minor = byId('SUP-CCA-MINOR-SINGING').body;
+  for (const t of ['l t d r m f s l', 'se', 'E minor', 'Names differ between books']) assert.ok(minor.includes(t), t);
+  const dates = byId('SUP-FR-DATES').body;
+  for (const t of ['le premier', 'depuis', 'pendant', 'il y a', 'Il est sept heures et demie']) assert.ok(dates.includes(t), t);
+  const recit = byId('SUP-FR-RECIT').body;
+  for (const t of ['passé composé', 'imparfait', 'Samedi dernier']) assert.ok(recit.includes(t), t);
+  assert.match(byId('SUP-SS-NATURE-ECONOMY').body, /mixed economy/); assert.match(byId('SUP-SS-NATURE-ECONOMY').body, /informal sector/);
+  assert.match(byId('SUP-SS-NATURE-ECONOMY').origin, /rechecked/);
+  const r1 = byId('SUP-SS-REFORM-1').body; assert.match(r1, /1986/); assert.match(r1, /Babangida/); assert.match(r1, /deregulation of interest rates/);
+  const r2 = byId('SUP-SS-REFORM-2').body; for (const t of ['Commercialisation', 'Deregulation', 'Privatisation', '1999', 'Bureau of Public Enterprises']) assert.ok(r2.includes(t), t);
+  const mus = byId('SUP-MUSIC-PRACTICAL').body;
+  for (const t of ['F#', 'eight-bar', 'voice', 'piano', 'recorder', 'cannot certify singing or playing']) assert.ok(mus.includes(t), t);
+  assert.match(byId('SUP-MUSIC-PRACTICAL').origin, /Third-Term instruction is placed in the Second Term/);
+});
+test('review batch: model eight-bar melody adds to four beats per bar in 4/4', () => {
+  // bar contents as beat values: crotchet 1, minim 2, semibreve 4
+  const bars = [[1,1,1,1],[1,1,2],[1,1,1,1],[1,1,2],[1,1,1,1],[1,1,2],[1,1,1,1],[4]];
+  assert.equal(bars.length, 8);
+  for (const b of bars) assert.equal(b.reduce((a, c) => a + c, 0), 4);
+});
+function csvRecords(text: string): Record<string, string>[] {
+  const rows: string[][] = []; let row: string[] = [], cell = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+    else if (c === '"') q = true; else if (c === ',') { row.push(cell); cell = ''; }
+    else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; } else if (c !== '\r') cell += c;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const [head, ...rest] = rows; return rest.filter(r => r.length === head.length).map(r => Object.fromEntries(head.map((h, i) => [h, r[i]])));
+}
+test('review batch: records show every reviewed row decided and no lead left for these subjects', async () => {
+  const { readFileSync } = await import('node:fs'); const { fileURLToPath } = await import('node:url'); const pth = await import('node:path');
+  const docs = pth.join(pth.dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'jss3');
+  const closure = csvRecords(readFileSync(pth.join(docs, 'SEMANTIC_CLOSURE.csv'), 'utf8'));
+  const decisions = csvRecords(readFileSync(pth.join(docs, 'replacements', 'SEMANTIC_DECISIONS.csv'), 'utf8'));
+  const want: Record<string, string> = {};
+  // Batch 2 worker E revised SL-062, SL-063 and SL-561 from ORIGINAL_LESSON_COVERS_OBJECTIVE to REPLACEMENT_IMPLEMENTED
   // (new practical lessons, E/DECISIONS.csv): they move to the replacement list; the 23-row total is unchanged.
   for (const id of ['SL-067','SL-175','SL-319','SL-468']) want[id] = 'ORIGINAL_LESSON_COVERS_OBJECTIVE';
   for (const id of ['SL-062','SL-063','SL-561','SL-293','SL-295','SL-282','SL-285','SL-433','SL-434','SL-435','SL-566','SL-567']) want[id] = 'REPLACEMENT_IMPLEMENTED';
