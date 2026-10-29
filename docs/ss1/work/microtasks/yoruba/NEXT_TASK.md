@@ -1,54 +1,50 @@
-# YO-INV-T1 — Yoruba
+# YO-WK-T1-W05 Yoruba
 
-```text
-Execute ONE task: YO-INV-T1. Repository PDS-David/sts-school-app, latest master.
-Reviewed base 0ee6033d585098bbb418be5b8fbda3ac7809f67a; fetch current master, read AGENTS.md if present, inspect this task and open PRs. If already done, report its evidence and stop. If another PR owns it, do not duplicate it. Use a unique branch from master.
+Execute only YO-WK-T1-W05 in PDS-David/sts-school-app. Reviewed master: 9f745bb896f2a2430269fdc491ad2eaf74874513 on 30 October 2026.
 
-READ THESE REPOSITORY FILES
+Fetch current master, read applicable AGENTS.md, and inspect open PRs. Create an isolated branch. Re-read this task's current QUEUE.json record. If it is now implemented, cite that evidence and stop; do not repeat it or pick another task without assignment. If another PR owns this subject/package, coordinate or wait rather than overwrite it. This is one small task, not completion of the whole subject.
+
+## Read
 - docs/ss1/work/microtasks/yoruba/QUEUE.json
 - docs/ss1/contracts/CONTRACT.md
 - backend/src/db/ss1/subjectPackageSchema.ts
-- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - backend/src/db/ss1/compiler.ts
+- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - docs/ss1/work/SS1-02/CHECKPOINT.md
 - docs/ss1/work/SS1-02/author_packages.py
 - docs/ss1/work/SS1-02/extract_sources.cjs
 - scripts/ss1/prepare_sources.py
 - backend/src/db/ss1/subjects/yoruba.json
-- docs/ss1/work/microtasks/french/QUEUE.json
+- docs/ss1/work/microtasks/yoruba/YO-INV-T1.md
 - backend/src/db/ingestTopics.ts
 
-PREREQUISITES
-YO-SRC-T1. Confirm each is implemented; deferred verification is not a test pass.
+## Scope
+Type: SOURCE_WEEK_INDEXING
+Term and locator: 1st Term / Week 5 (source label "OSE KARUN-UN" at extractRawText line 1171; section lines 1171-1284)
+Dependencies: YO-SRC-T1. Check their committed implementation evidence; testing deferred is not verified.
 
-OBJECTIVE
-Discover from the original 1st Term Yoruba document how many week/teaching sections it has and what each is, then append the resulting small indexing items to this queue. The week inventory for this document is NOT known to the repository.
+Index 1st Term Week 5 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.
 
-EXISTING EVIDENCE (historical descriptions must be checked against current files)
-No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.
+## Exact input
+- Attach standalone `YORUBA.docx` or extract `SSS 1/1st Term SS1_/YORUBA.docx` from a supplied container. Member SHA-256: `7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef`.
+The full archive is optional. If Library access exists, retrieve SSS 1-20260507T072431Z-3-001 (1).zip there before asking for another upload; validate the member hash. Accept matching bytes regardless of filename. Do not require the full ZIP or assert its hash unless checked. Do not infer source headings from filenames. If inaccessible, state the exact missing member and checkpoint any independent work; never invent evidence.
 
-COMPLETION CONDITION
-Archive/member hashes verified. YO-INV-T1.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T1): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T1-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T1-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner.
-
-EXACT ATTACHMENTS
-- Standalone original: YORUBA.docx
-  Manifest member: SSS 1/1st Term SS1_/YORUBA.docx
-  SHA-256: 7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef
-Accept standalone matching bytes or that member from any supplied container. Do not demand the full ZIP. Hash before conversion; retain archive_member verbatim. If a source is absent, request only the exact file above. Never invent its headings. The full ZIP, if used, has SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; claim its verification only if actually checked.
-
-WRITE SCOPE
+## Permitted writes
+- backend/src/db/ss1/subjects/yoruba.json
 - docs/ss1/work/microtasks/yoruba/QUEUE.json
-- docs/ss1/work/microtasks/yoruba/YO-INV-T1.md
-No other subject, JSS3, UI, shared schema/compiler, or shared next-assignment index changes. This prompt explicitly permits the task evidence note. Do not recreate an existing package from a historical 'package absent' note.
+- docs/ss1/work/microtasks/yoruba/YO-WK-T1-W05.md
 
-IMPLEMENT
-- Preserve unrelated data and stable IDs. Keep original documents/full extracts/private renders out of Git.
-- Inventory tasks: inspect ONE document; commit exact section/week inventory and bounded follow-up items, including unlabelled teaching, markers and visual groups. Do not write every resulting lesson. Append IDs without changing existing ones; dependency on this inventory is allowed only after it is marked implemented.
-- Indexing tasks: implement actual objective-level coverage/rules under the existing schema, not just a prose recommendation. Read all objectives/exercises within the assigned section. Missing content gets a precise open item and a small lesson task. An exam/revision heading cannot erase teaching.
-- Lesson tasks: write teaching, worked examples, original answered practice and marking whose marks sum; precise objective coverage, provenance and exact UTF-8 body hash. Verify disputed factual claims against authoritative sources. Keep approval PENDING and verification DEFERRED. Do not copy unavailable textbook pages or infer whole-row coverage from one objective.
-- Preserve current holds and approvals; no invented owner/teacher response. Missing approval does not prevent writing a pending implementation. Unsupported schema needs a precise separate dependency, not a silent schema edit.
-- Testing deferred by owner: NO tests, typechecks, importer/plan runs, database/device checks, migration, import or deployment. Source extraction/rendering, hashes, JSON syntax, ID/reference checks and diff review are allowed.
+No UI, JSS3, other subject, shared compiler/schema, runtime, production data or shared assignment-index changes. Existing packages are present: ignore historical prose saying otherwise. Preserve stable IDs and all unrelated entries.
 
-FINISH AND PUBLISH
-Record what changed and exact evidence in docs/ss1/work/microtasks/yoruba/YO-INV-T1.md; update this queue item honestly, counts and eligible next_runnable. Mark only completed scope IMPLEMENTED_TESTING_DEFERRED. Fetch master again before publishing; preserve other agents' edits and resolve only your overlap. Commit/push a unique branch and open a PR to master titled with YO-INV-T1; do not merge. If push is unavailable, deliver a binary-capable patch with base SHA, do not request a token. Report PR/commit or patch, actual blockers and next eligible task. Stop after this ONE task; do not claim the subject or class complete.
-```
+## Implementation and completion
+Index 1st Term Week 5 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner.
+
+For INVENTORY: inspect this document and append bounded indexing/visual tasks with real locators; no lesson authoring or structural rule implementation. For INDEXING: implement supported coverage/rules under the existing schema within the named section; preserve source wording, distinguish markers from teaching, and record precise remaining gaps plus small follow-up items. Unsupported schema operations become an explicit blocker, not a silent skip or shared-schema change. Never discard teaching under a revision heading.
+
+Use exact UTF-8 body hashes and unique source anchors where the contract requires them. Do not label citations as reuse permission. Keep approval PENDING without actual approval evidence and verification DEFERRED. A factual uncertainty can remain open without preventing honest implementation of established content.
+
+Testing is deferred by the owner: do not run typechecks, unit suites, importer, database, device or full-corpus validation. Basic JSON parsing, hash calculation, checking references/IDs, and inspecting the diff are permitted authoring checks; report them as such, not tests. Do not install/run the application merely to produce a task note.
+
+Update only this queue item to IMPLEMENTED_TESTING_DEFERRED when its completion condition is met, recording the exact evidence file; otherwise use BLOCKED with the precise reason. Recompute queue counts/status_counts from items. Do not mark the whole subject complete. Commit a concise evidence note with source hashes, locators, changes and remaining work. Never commit original documents, full private extracts, renders or credentials.
+
+Commit and push your branch and open one PR to master. Do not merge other agents' PRs. If GitHub write access fails, finish the local implementation and deliver a binary-capable patch plus commit/base SHA and changed paths; do not ask for a pasted token. State exactly whether publication succeeded. Stop after this item; name the next eligible item without executing it.
