@@ -22,17 +22,23 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "CIV-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). CIV-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "CIV-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, table, preservation and factual items. The scheme is a 13x2 Word table with 11 teaching rows and a \"12 – 13\" revision/examination row, but the body has only eight week markers: community service (row 4), HIV/AIDS (rows 5-6) and nationalism (row 11) have no teaching, and body weeks 5-8 map to scheme rows 7-10. There are no images or other media. Nothing was run. No lesson, coverage, rule, correction or asset was written. CIV-FACT-CONTENT-APPROVAL stays BLOCKED pending CIV-INV-T2/T3 and CIV-TEST-PACKAGE."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "FACTUAL_DEPENDENCY": 4,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_WEEK_INDEXING": 8,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "VISUAL_DISPOSITION": 1,
+    "SOURCE_PRESERVATION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 19,
     "BLOCKED": 1
   },
   "items": [
@@ -169,8 +175,8 @@
       "depends_on": [
         "CIV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory complete: member SHA-256 ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a verified against SOURCE_ASSIGNMENTS.csv from the supplied composite archive; member 24,152 bytes; archive_member kept verbatim. Raw text 20,117 characters / 511 lines. Opening (1-120): \"ALPHA TERM SCHEME OF WORK FOR SS1\", \"CIVIC EDUCATION\" and a 13x2 Word table (body child 2) with eleven teaching rows plus \"12 – 13 / REVISION AND EXAMINATION\". Body has eight week markers only (lines 121, 173, 211, 245, 275, 371, 393, 433); scheme rows 4, 5, 6 and 11 have no body, and body WEEK FOUR is a bullet of scheme row 3. No images, drawings, OLE objects, text boxes, equations, headers or superscript runs; the scheme table is the only table. 16 follow-up items appended (1 SOURCE_PREAMBLE_INDEXING, 2 SOURCE_MARKER_DISPOSITION, 8 SOURCE_WEEK_INDEXING, 1 VISUAL_DISPOSITION, 1 SOURCE_PRESERVATION, 3 FACTUAL_DEPENDENCY), all PENDING. Locators and findings: docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md. Nothing was run. No lesson, coverage entry, rule, correction or asset was written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -297,6 +303,563 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "CIV-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE / TOPIC: INTRODUCTION TO CIVIC EDUCATION (123) / mammoth lines 121-172 / sha256 ed1a4c1908619ef6e710bffb3e95bdf5c7b5f500d9dd97e3e80f2610846cd275",
+      "objective": "Index WEEK ONE: definition paragraphs (127-129), NEEDS FOR CIVIC EDUCATION (131-141, five points), OBJECTIVES OF CIVIC EDUCATION IN SCHOOLS (143-157, intro at 145 and six points at 147-157) and IMPORTANCE OF CIVIC EDUCATION TO NATION BUILDING (159-171, intro at 161 and four points at 165-171). This week has no EVALUATION, reading, weekend or assignment block. Record objective candidates from the four sections. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 ed1a4c1908619ef6e710bffb3e95bdf5c7b5f500d9dd97e3e80f2610846cd275; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TWO / TOPIC: VALUES (175) / mammoth lines 173-210 / sha256 1dfa4413154b91e1dd63f78e9fede595bea987f5ec3c638d17d9737688377915",
+      "objective": "Index WEEK TWO: definition of values (177-179), TYPES OF VALUE (181-197: selflessness, hard work, discipline, justice, love, contentment, integrity etc.), SELFLESSNESS with the Chief Ganiyu Fawehinmi example (199), JUSTICE (201) and the Assignment block (205-209: \"Discuss at least four (4) values showing their attributes manifestation\"). Record objective candidates. Lines 199 and 201 stop mid-sentence in the source; record the truncation and do not complete the sentences. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 1dfa4413154b91e1dd63f78e9fede595bea987f5ec3c638d17d9737688377915; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE / ACCEPTABLE SOCIETAL VALUES (213; no \"TOPIC:\" prefix) / mammoth lines 211-244 / sha256 60fd0099c08e4d3d38c9c47507fda014c3715d59ecd0bf7b37e41b75e281b4ec",
+      "objective": "Index WEEK THREE: ACCEPTABLE SOCIETAL VALUES heading (213, no \"TOPIC:\" prefix), TYPES OF JUSTICE (215-225: distributive, procedure, restoration/restitution, retributive), IMPORTANCE OF JUSTICE (227-235, four points) and IMPORTANCE OF VALUES (237-243, three points). No assessment block. Note that the scheme row for this topic spells \"EXCETATION\" and also lists \"Opportunity to defrend oneself\", which the body teaches as its own WEEK FOUR. Record objective candidates. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 60fd0099c08e4d3d38c9c47507fda014c3715d59ecd0bf7b37e41b75e281b4ec; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FOUR / OPPORTUNITY TO DEFENT ONESELF (247; no \"TOPIC:\" prefix; source spelling \"DEFENT\") / mammoth lines 245-274 / sha256 9b1e5d2ba70914b9401a0f5fa38ac977b157a86423057e3d64bb18cad7eac0a2",
+      "objective": "Index WEEK FOUR: fairness and self-defence definitions (247-251), BENEFITS OF OPPORTUNITY TO DEFEND ONESELF (253-259, three points) and HOW TO DEFEND ONESELF AGAINST BEING ATTACKED (261-269, four numbered points). Point 3 at 267 reads \"Do not use sexually attractive or provocative diseases especially in the public\" - preserve verbatim and do not guess the intended word (see CIV-PRES-T1-DEFENCE-ADVICE). Assignment block at 271-273: \"Explain five importance of defending one self\". Record objective candidates. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 9b1e5d2ba70914b9401a0f5fa38ac977b157a86423057e3d64bb18cad7eac0a2; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FIVE / TOPIC: YOUTH EMPOWERMENT (277) / mammoth lines 275-370 / sha256 8e31d34913f624400a1e453c4ef1f221b3ef15fd59080cb7e61bf62bb9d82ccf",
+      "objective": "Index WEEK FIVE: definition of youth empowerment (279-283), life working coping skills (285-317, including the fifteen strategies credited to \"Chesney M. (2005) in a British Journal\"), manipulating skills (319-331: power, unsolicited rescuing/helping, guilt, weakness), intellectual skills (333-343), communication skills (345-359) and artistic skills (361), plus the ASSIGNMENT block (363-369: \"Explain fives roles of government in empowering Nigeria youth\"). Record objective candidates. The assignment asks about government roles although government is taught in WEEK EIGHT; record the cross-topic gap without answering it. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 8e31d34913f624400a1e453c4ef1f221b3ef15fd59080cb7e61bf62bb9d82ccf; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SIX / IMPORTANCE AND BENEFITS OF YOUTH EMPOWERMENT (373; no \"TOPIC:\" prefix) / mammoth lines 371-392 / sha256 21c28cdb999ece33d7c4d662e3daee41738f7a120725fc4fe175f9558b12e52e",
+      "objective": "Index WEEK SIX: seven numbered importance/benefit points (375-387) and the Assignment block (389-391: \"Write out eight (8) problems of youth empowerment in Nigeria\"). Record objective candidates. The body teaches benefits, not problems, and the assignment asks for eight problems while seven benefits are listed; record the mismatch without inventing problems or answers. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 21c28cdb999ece33d7c4d662e3daee41738f7a120725fc4fe175f9558b12e52e; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN / TOPIC: GOALS OF CITIZENSHIP EDUCATION (395) / mammoth lines 393-432 / sha256 59878b0c569a280014879e25e4f01c202ea231147ad495ad3ac4bcf8d149f159",
+      "objective": "Index WEEK SEVEN: citizenship definition (397), goals of citizenship (399-407), ACQUISITION OF CITIZENSHIP (409-421: by birth, by registration through marriage or adoption of a foreign child with the Ministry of Internal Affairs, by naturalization with a stated 15-year residence, and dual citizenship for a child born abroad to a Nigerian parent) and the ASSIGNMENT block (423-429: \"Explain five roles of a patriotic citizens in Nigeria\"). No EVALUATION block. Record objective candidates. The acquisition claims are verified later in CIV-FACT-T1-CITIZENSHIP-LAW; do not correct them here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 59878b0c569a280014879e25e4f01c202ea231147ad495ad3ac4bcf8d149f159; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK EIGHT / TOPIC: GOVERNMENT (435) / mammoth lines 433-511 / sha256 1b8a0d08f5c7b0c79ee0cbf0287eac36bf8ae0c8dc554e889160c3c895355437",
+      "objective": "Index WEEK EIGHT: definition of government (437), STRUCTURE OF GOVERNMENT (439-449: three tiers, federal executive, bicameral federal legislature and unicameral state House of Assembly, judiciary), Functions of Government (451-453), The Executive (455-467, six functions), The Legislature (469-489, nine functions) and The Judiciary (491-503, its symbol and four functions). The file ends at line 503 with no EVALUATION, reading, weekend or assignment block and no WEEK NINE marker. Record objective candidates. Constitutional-office and power claims are verified later in CIV-FACT-T1-GOVERNMENT-STRUCTURE; do not correct them here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 1b8a0d08f5c7b0c79ee0cbf0287eac36bf8ae0c8dc554e889160c3c895355437; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "Opening: ALPHA TERM SCHEME OF WORK FOR SS1 / CIVIC EDUCATION / 13x2 scheme table / mammoth lines 1-120 / sha256 6c36e8838f857b2148cbfd1d82c817a38dc50f93f8b4235e361f7d640020a9cb",
+      "objective": "Index the opening block: \"ALPHA TERM SCHEME OF WORK FOR SS1\" (1), \"CIVIC EDUCATION\" (3), and the scheme table at body child 2 (13 rows x 2 cells: header WEEK/TOPIC plus week rows 1-11 and row \"12 – 13\" / \"REVISION AND EXAMINATION\" at 115-117). The scheme is a real Word table; mammoth raw text linearises its cells, so the week numbers appear as bare digit lines 1-11 and the last row as \"12 – 13\" with an en dash (U+2013). Record each row label verbatim, including the source spellings \"EXCETATION\" (row 3), \"defrend\" (row 3 bullet) and \"Capentry\" (row 8), and record that the body contains only eight week markers (see CIV-MARK-T1-SCHEME-GAPS). No teaching occurs in the opening itself. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-PRE-T1.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-MARK-T1-SCHEME-GAPS",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "Scheme rows 4, 5, 6 and 11 (mammoth lines 39-45, 47-53, 55-65, 107-113) vs body markers WEEK ONE-WEEK EIGHT (121, 173, 211, 245, 275, 371, 393, 433)",
+      "objective": "Disposition the scheme-to-body gap precisely: the scheme lists eleven teaching rows plus a revision/examination row, but the body has only eight week markers. Rows 4 (COMMUNITY SERVICE AND ITS VALUES), 5 (HIV/AIDS: meaning, differences, causes, transmission, signs) and 6 (HIV/AIDS: prevention, care, stigmatisation of PLWHA) have no body at all; row 11 (NATIONALISM and civic problems) also has no body. Body WEEK FOUR (OPPORTUNITY TO DEFENT ONESELF) is a bullet inside scheme row 3, not its own scheme row. Body WEEK FIVE to WEEK EIGHT map to scheme rows 7 to 10, so body week numbers run behind the scheme by three from WEEK FIVE onward. Record each gap as a named missing-content open item with its scheme locator; do not invent the missing teaching and do not renumber the body. A small lesson task for any gap may be added only through a later indexing item. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-MARK-T1-SCHEME-GAPS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Every scheme row is mapped to a body week or explicitly recorded as having no body; no missing content is invented, no lesson is written and no body week is renumbered."
+    },
+    {
+      "id": "CIV-MARK-T1-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "Scheme row \"12 – 13\" / \"REVISION AND EXAMINATION\" (mammoth lines 115-117) / no body marker",
+      "objective": "Disposition the revision and examination marker: the scheme table has one row \"12 – 13\" (en dash, U+2013) with the label \"REVISION AND EXAMINATION\" (115-117). There is no WEEK NINE or later body marker, no revision note, no examination paper and no marking scheme anywhere in the document. Classify it as a scheme marker, not a lesson, and do not invent revision or examination content. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-MARK-T1-REVEXAM.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Marker classified with its exact locator and an explicit statement that no revision note, examination paper or marking scheme exists; nothing invented."
+    },
+    {
+      "id": "CIV-VIS-T1-TBL-SCHEME",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "Body child 2 / 13x2 scheme table / mammoth lines 5-117 / see objective",
+      "objective": "Give a representation disposition to the source's only table: a 13-row x 2-column Word table (body child 2) holding the scheme header \"WEEK\"/\"TOPIC\" and twelve data rows. It is a structured table, not a picture, and it is the only table in the document; there are no images, drawings, VML shapes, OLE objects or text boxes anywhere (0 blips, 0 w:object, 0 w:pict, 0 w:txbxContent). Decide how the table is represented in the package so that week numbers, topic headings and their bullet objectives stay distinct; do not flatten each cell into one run-together string and do not lose the \"12 – 13\" row. No visual item is needed for images because none exist. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-VIS-T1-TBL-SCHEME.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-PRES-T1-DEFENCE-ADVICE",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FOUR / HOW TO DEFEND ONESELF AGAINST BEING ATTACKED (mammoth lines 261-269) / see objective",
+      "objective": "Preserve the Week 4 self-defence advice verbatim: the definition that self-defence is \"the use of force to protect oneself against someone attacking us\" (251), the three benefits (255-259) and the four numbered steps (263-269), including the garbled third step \"Do not use sexually attractive or provocative diseases especially in the public\" (267) and the suspicious-gift advice (269). Do not guess the intended word, do not rewrite the advice as a corrected procedure and do not add legal or safety guidance here. Any later correction or clarification must be recorded separately from the source wording. No lesson, coverage or rule is written here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-PRES-T1-DEFENCE-ADVICE.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-FACT-T1-CITIZENSHIP-LAW",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN / ACQUISITION OF CITIZENSHIP (mammoth lines 409-421) and goals (399-407) / see objective",
+      "objective": "Verify later, against the Constitution of the Federal Republic of Nigeria and the citizenship legislation in force with effective/reference dates: the four acquisition methods stated at 415-421 (by birth, by registration through marriage or adoption of a foreign child with the Ministry of Internal Affairs, by naturalization after a stated 15-year residence, and dual citizenship for a child born abroad to a Nigerian parent) and the goals of citizenship education (399-407). Record each claim with its locator, flag any statement that treats a proposal or historical arrangement as law in force, and keep the source wording distinct from the corrected fact. Teaching must stay neutral on contested political questions. Do not state a corrected rule here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T1-CITIZENSHIP-LAW.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-FACT-T1-GOVERNMENT-STRUCTURE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK EIGHT / STRUCTURE AND FUNCTIONS OF GOVERNMENT (mammoth lines 437-503) / see objective",
+      "objective": "Verify later, against the Constitution of the Federal Republic of Nigeria as amended and the standing orders/current official sources with effective dates: the three-tier structure (439-449), the federal executive composition (445), bicameral federal legislature and unicameral state House of Assembly (447), the description of the judiciary and its heads (449, including the phrasing \"justice of the federation\"), the six executive functions (457-467), nine legislative functions (471-489, including treaty approval and investigation powers) and the four judicial functions (493-503). Record each claim with its locator, flag any description that may be outdated or that treats a proposal as law in force, and keep the source wording distinct from the corrected fact. Teaching must stay neutral on contested political questions. Do not state a corrected rule here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T1-GOVERNMENT-STRUCTURE.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-FACT-T1-SELF-DEFENCE-LAW",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FOUR / self-defence statement (mammoth line 251) / see objective",
+      "objective": "Verify later, against the Nigerian Criminal Code/Penal Code self-defence provisions in force with effective dates, the statement that self-defence \"is the use of force to protect oneself against someone attacking us\" (251), and check whether the source's four practical steps (263-269) are consistent with the lawful limits of self-defence. Record the claim and locator, keep the source wording distinct from any corrected statement, and do not present legal advice as a lesson fact. Do not state a corrected rule here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 5c13b2993572de127842693962da27c4f82085bd11dd1085d8c8015b53d0182d (20,117 characters, 511 lines; member 24,152 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T1.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CIVIC SSS1.docx",
+          "member_sha256": "ee459b07229cc9ddea7b338c10fc4080261afdbceb2fe5d8765ef1ce520ce80a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T1-SELF-DEFENCE-LAW.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T1",
+        "CIV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     }
   ],
   "review": {
@@ -312,9 +875,24 @@
     }
   },
   "next_runnable": [
-    "CIV-INV-T1",
     "CIV-INV-T2",
     "CIV-INV-T3",
-    "CIV-TEST-PACKAGE"
+    "CIV-TEST-PACKAGE",
+    "CIV-WK-T1-W01",
+    "CIV-WK-T1-W02",
+    "CIV-WK-T1-W03",
+    "CIV-WK-T1-W04",
+    "CIV-WK-T1-W05",
+    "CIV-WK-T1-W06",
+    "CIV-WK-T1-W07",
+    "CIV-WK-T1-W08",
+    "CIV-PRE-T1",
+    "CIV-MARK-T1-SCHEME-GAPS",
+    "CIV-MARK-T1-REVEXAM",
+    "CIV-VIS-T1-TBL-SCHEME",
+    "CIV-PRES-T1-DEFENCE-ADVICE",
+    "CIV-FACT-T1-CITIZENSHIP-LAW",
+    "CIV-FACT-T1-GOVERNMENT-STRUCTURE",
+    "CIV-FACT-T1-SELF-DEFENCE-LAW"
   ]
 }
