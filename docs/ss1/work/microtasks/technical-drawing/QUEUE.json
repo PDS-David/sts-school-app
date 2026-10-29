@@ -21,7 +21,8 @@
     "No unmerged Technical Drawing work exists, so there are no branch port items. PR #71 holds none (its checkpoint also says NOT STARTED).",
     "Technical drawing content is largely figures: 94 drawings, 17 OLE objects and WMF figures are recorded, but their row locations are not. Visual items are inventory-first and append bounded asset tasks.",
     "Lesson-writing items are not created: no specific uncovered objective is established. The one suspected gap (enlargement in Weeks 6-7) is a verification item that appends a lesson task only if confirmed.",
-    "Workers start from current master and change only their own entries; PENDING means unclaimed."
+    "Workers start from current master and change only their own entries; PENDING means unclaimed.",
+    "TD-SCH-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) indexed the 2nd Term scheme week 2 row. technical-drawing.json now has 4 source_rules (added SS1-SRC-af4868d2c026-R004, SCHEME_ONLY) and 3 coverage entries (added COV-TD-T2-SCH-W02, SUPPORTED). \"Escribed circle.\" (with the source full stop) is the only unique form of the scheme line; the teaching row 12 \"WEEK TWO\" covers it and the second objective (circles touching given points). Figures are routed to TD-VIS-W02. Note 1 is the queue-generation snapshot. Hashes and mapping are in docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md. Nothing was run; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -36,9 +37,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "BLOCKED": 5,
-    "PENDING": 31
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 30,
+    "BLOCKED": 5
   },
   "total": 39,
   "items": [
@@ -232,8 +233,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 1 (label 'WEEK 2', body sha256 e3b8e93efcf30567d0a6e891a8d4de2815581d457109a5ad5221636a3f7f71d4, 31 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on master 4159336c7068d2235209221f5f14adc4986acec5 (TD-SCH-W02, 2026-10-29). Prerequisite sources/rules: TD-SRC-T2 and TD-PRE-T2 are IMPLEMENTED_TESTING_DEFERRED on master; TD-SCH-W01 is implemented. Source SS1-SRC-af4868d2c026, member \"SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx\" sha256 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d (2,865,886 bytes, re-verified from the supplied archive). mammoth 1.12.2 extractRawText(): 60,458 characters, 4,199 lines. Scheme row 1 (parsed row 1) is line 13 (offset 184), 31 characters \"WEEK 2         Escribed circle.\", SHA-256 e3b8e93efcf30567d0a6e891a8d4de2815581d457109a5ad5221636a3f7f71d4 (equals parsed_rows.json). The anchor occurs exactly once; \"Escribed circle\" without the full stop occurs 4 times and \"Escribed circles\" 3 times, so the full 31-character row body is used. Teaching coverage: parsed row 12 \"WEEK TWO\" (line 343 to WEEK THREE at 711), trimmed body sha256 04066d5e7502b3a90b291d9c0053dfc81a77f9a8579dcbe516add089052f4ffd, content lines 349-353, Example 1 lines 357-377, Example 2 lines 383-429, evaluation lines 433-437, second objective (circles through/touching given points) lines 447-521, weekend assignment lines 619-705. Package edits: added SS1-SRC-af4868d2c026-R004 (classify_marker SCHEME_ONLY; 31-character row-body anchor, unique) and COV-TD-T2-SCH-W02 (SUPPORTED; target row 12 body ID; three evidence entries). Source rules 3->4, coverage 2->3; sources (1), lessons (0), delivery_corrections (0), assets (0), open_items (4) and package_status PENDING unchanged. No open item added: a unique anchor exists. Figures (11 w:drawing + 13 w:pict in the row; no OLE/oMath) are routed to TD-VIS-W02; the reading assignment cites JN Green pages 21, 73-75 (noted for TD-WK-W02). No superscript runs occur in this row. Evidence note: docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md. Not approved, not verified; no schema/compiler/test/importer run (testing deferred by owner).",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1407,8 +1408,8 @@
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "f4117a6427aa7f59454a1d70c0834231b9c0fb10",
+    "date": "2026-10-29",
+    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -1419,9 +1420,20 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W02"
+    "TD-SCH-W03"
   ],
   "runnable_now": [
-    "TD-SRC-T2"
+    "TD-SCH-W03",
+    "TD-SCH-W04",
+    "TD-SCH-W05",
+    "TD-SCH-W06",
+    "TD-SCH-W07",
+    "TD-SCH-W08",
+    "TD-SCH-W09",
+    "TD-SCH-W10",
+    "TD-SCH-W11",
+    "TD-WK-W01",
+    "TD-WK-W02",
+    "TD-VIS-INVENTORY"
   ]
 }
