@@ -16,17 +16,22 @@
   "notes": [
     "Repository-only queue. No Geography package, week inventory or authored lessons exists in the reviewed tree.",
     "Three source assignments require original-header verification. Unknown weeks are inventory tasks, not guessed lessons.",
-    "All SS1 terms are instructional. No tests, typechecks, importer or database operations run."
+    "All SS1 terms are instructional. No tests, typechecks, importer or database operations run.",
+    "GEO-INV-T1 inventoried the 1st Term document (scheme rows 1-11, WEEK ONE..WEEK TEN, markers, visual groups); thirteen indexing/visual items appended. No coverage or rule was written by the inventory."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "SOURCE_WEEK_INDEXING": 10,
+    "VISUAL_DISPOSITION": 1,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 16,
     "BLOCKED": 1
   },
   "items": [
@@ -137,7 +142,7 @@
       "kind": "SOURCE_WEEK_INVENTORY",
       "source_id": "SS1-SRC-1c1c1bdcecb4",
       "term": "1st Term",
-      "week_or_locator": "whole document",
+      "week_or_locator": "whole document, getBody lines 1-708",
       "objective": "Inventory the 1st Term document's explicit scheme/week headings and substantive unlabelled sections, recording reproducible locators. Append one small indexing task per evidenced week/section. List maps, diagrams and tables needing separate visual inspection; do not recover or interpret all assets in this task. Do not add lessons or source rules.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
@@ -163,8 +168,8 @@
       "depends_on": [
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Manifest assignment SS1-SRC-1c1c1bdcecb4, SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc, 4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c. No Geography subject package exists at d01704cd15aa69241a8775c5e072fd2297b1d71b; original header and week inventory not inspected.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: docs/ss1/work/microtasks/geography/GEO-INV-T1.md inventories the 1st Term document read with word-extractor 1.0.4 getBody() (708 lines; whole-body SHA-256 13e8d0c013ef89c6b8965b8cc6d4a5308c5ee450a7df3588d2462db68c86ee3e), an OLE piece-table decode and an antiword cross-check. Scheme rows 23-37 (SHA-256 bf7374729b4b8a317a0cd991497ec32d8f29e5233ab41301707033e1ac135611): eleven rows, weeks 1-3 unnumbered, no week 12. Body labels WEEK ONE 43 .. WEEK TEN 639 with per-week spans and block SHA-256; markers 16 EVALUATION QUESTIONS, 2 singular, 9 GENERAL EVALUATION*, 9 READING ASSIGNMENT, 10 WEEKEND ASSIGNMENT, 10 THEORY; Week 9 lacks EVALUATION QUESTIONS and READING ASSIGNMENT. Unlabelled sections: 228 'B: EARTH REVOLUTION', 242-243 'Dawn and Twilight', 354/378, glued label 402, tab-aligned lists 673-684. Visual groups: cover JPEG 3306x2515 SHA-256 b334a0e1... (Data offset 2396), header letterhead JPEG 949x359 SHA-256 edd416d4... (WordDocument offset 109649; byte-identical to the FM 2nd Term header image), solar table 99-109 (50 cell marks vs antiword 4 columns), 0x08 anchors at 307 and the document opening, and drawing prompts at 491/536/705-706 with no supplied figure. Appended GEO-PRE-T1, GEO-MARK-T1, GEO-WK-T1-W01..W10 and GEO-VIS-T1 (all PENDING, depending on GEO-INV-T1 and GEO-SRC-T1). No coverage, rule, lesson or package edit. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -291,14 +296,508 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "GEO-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "preamble, getBody lines 1-42 ('FIRST TERM E-LEARNING NOTE' at 18, subject header at 19, 'SCHEME OF WORK' at 21 with rows 23-37, 'REFERENCE' at 39-40)",
+      "objective": "Index every 1st Term text block outside the ten week spans at objective level: map the title and subject line to the source header evidence and coverage, map the eleven scheme rows (including rows 1-3 whose numerals are missing and the scheme-only 'Revision.' row) and the reference list to coverage, using a classify_marker SCHEME_ONLY rule where the schema allows, and hash-account each block with its exact locator. No lesson is authored and no scheme row is silently dropped.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-PRE-T1.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No preamble rule or coverage exists; geography.json has only the three source_alias rules and three alias open items. Inventory evidence: lines 1-17 empty (page 1 cover); 18 title; 19 subject/class line equals header_text and occurs once; block 18-19 SHA-256 b4bda78d8bcc62f32bf49f1faf55a1b47a57fd530b8401d064053c266ec74372; scheme block 21-37 SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032 (rows 23-37 bf7374729b4b8a317a0cd991497ec32d8f29e5233ab41301707033e1ac135611); reference 39-40 SHA-256 af634813ec13a3bece122248b9baf7c6ef8bea0f597f6ba596c323de4a9cb16a. Scheme rows 1-3 have no numerals; week 11 'Revision.' has no body row; there is no week 12. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks by order where numerals are absent; no teaching, lesson or invented scheme row is written."
+    },
+    {
+      "id": "GEO-MARK-T1",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "recurring markers and unlabelled sections: EVALUATION QUESTIONS 52, 111, 157, 193, 206, 223, 301, 327, 374, 444, 464, 504, 513, 562, 581, 658; EVALUATION QUESTION 67, 394; GENERAL EVALUATION 70, 331, 397, 468, 517; GENERAL EVALUATION QUESTIONS 161, 249, 620, 686; READING ASSIGNMENT 77, 168, 256, 337, 402, 475, 524, 592, 693; WEEKEND ASSIGNMENT 80, 171, 259, 340, 405, 478, 527, 595, 627, 696; THEORY 87, 178, 266, 347, 412, 490, 535, 602, 634, 705; unlabelled or irregular sections at 228 ('B: EARTH REVOLUTION'), 242-243 ('Dawn and Twilight'), 354, 378, 402, 645-684",
+      "objective": "Dispose of every recurring marker and irregular section in the 1st Term document: classify each marker occurrence with a classify_marker rule and coverage entry per the contract, including the two singular 'EVALUATION QUESTION' headings, the READING ASSIGNMENT label glued to line 402 and the Week 9 absence, and map the lettered or unlabelled sections (Week 3 'B:', 'Dawn and Twilight', Week 5 subsections, Week 10 (a)-(d) and its tab-aligned lists) to coverage or precise open items. No marker may be used as evidence that teaching was covered.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-MARK-T1.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No classify_marker rule exists for this source; geography.json has only three source_alias rules. Inventory counts from GEO-INV-T1: 16 EVALUATION QUESTIONS, 2 singular EVALUATION QUESTION, 9 GENERAL EVALUATION*, 9 READING ASSIGNMENT, 10 WEEKEND ASSIGNMENT, 10 THEORY. Week 9 has no EVALUATION QUESTIONS and no READING ASSIGNMENT; Week 5's READING ASSIGNMENT label sits at the end of line 402 after a long run of spaces. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every marker occurrence and irregular section has a rule-and-coverage disposition or a precise open item; anchors occur exactly once in the unmodified extracted text; no marker is treated as covering teaching; no lesson is authored."
+    },
+    {
+      "id": "GEO-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 1, getBody lines 43-89 ('WEEK ONE' at 43, subtitle at 44; next label 'WEEK TWO' at 92)",
+      "objective": "Index 1st Term Week 1 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 43-89; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 43-89, block SHA-256 52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5; markers: EVALUATION QUESTIONS 52; EVALUATION QUESTION 67; GENERAL EVALUATION 70; READING ASSIGNMENT 77; WEEKEND ASSIGNMENT 80; THEORY 87. Observation recorded by GEO-INV-T1: The general evaluation (70-75) includes a state-capital recall question at 75 and the theory (88-89) asks for state capitals; the item decides whether these fall inside the week's stated objectives. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, getBody lines 92-180 ('WEEK TWO' at 92, subtitle at 93; next label 'WEEK THREE' at 183)",
+      "objective": "Index 1st Term Week 2 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 92-180; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 92-180, block SHA-256 2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603; markers: EVALUATION QUESTIONS 111, 157; GENERAL EVALUATION QUESTIONS 161; READING ASSIGNMENT 168; WEEKEND ASSIGNMENT 171 (page break); THEORY 178. Observation recorded by GEO-INV-T1: The solar-system table (lines 99-109) and its 'nine planets' including Pluto are content the item must verify against an authoritative source. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, getBody lines 183-268 ('WEEK THREE' at 183, subtitle at 184; next label 'WEEK FOUR' at 271)",
+      "objective": "Index 1st Term Week 3 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 183-268; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 183-268, block SHA-256 5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25; markers: EVALUATION QUESTIONS 193, 206, 223; GENERAL EVALUATION QUESTIONS 249; READING ASSIGNMENT 256; WEEKEND ASSIGNMENT 259 (page break); THEORY 266. Observation recorded by GEO-INV-T1: 'B: EARTH REVOLUTION' (228) is lettered while the rotation section (213) is not; 'Dawn and Twilight' (242-243) has no evaluation. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 4, getBody lines 271-349 ('WEEK FOUR' at 271, subtitle at 272; next label 'WEEK FIVE' at 352)",
+      "objective": "Index 1st Term Week 4 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 271-349; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 271-349, block SHA-256 f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64; markers: EVALUATION QUESTIONS 301, 327; GENERAL EVALUATION 331; READING ASSIGNMENT 337; WEEKEND ASSIGNMENT 340; THEORY 347. Observation recorded by GEO-INV-T1: The latitude/longitude differences block (305-319) is tab-aligned text with drawn-object anchors at 307, not a Word table. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 5, getBody lines 352-413 ('WEEK FIVE' at 352, subtitle at 353; next label 'WEEK SIX' at 416)",
+      "objective": "Index 1st Term Week 5 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 352-413; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 352-413, block SHA-256 aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17; markers: EVALUATION QUESTIONS 374; EVALUATION QUESTION 394; GENERAL EVALUATION 397; READING ASSIGNMENT 402 (glued to a question line); WEEKEND ASSIGNMENT 405; THEORY 412. Observation recorded by GEO-INV-T1: Two unnumbered calculation subsections at 354 and 378; line 372 prints the result as '7,7770km' and degrees use the letter 'o' (e.g. 30oS); the local-time example at 386-392 is arithmetically consistent with 15 degrees = 1 hour. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, getBody lines 416-492 ('WEEK SIX' at 416, subtitle at 417; next label 'WEEK SEVEN' at 495)",
+      "objective": "Index 1st Term Week 6 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 416-492; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 416-492, block SHA-256 3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70; markers: EVALUATION QUESTIONS 444, 464; GENERAL EVALUATION 468; READING ASSIGNMENT 475; WEEKEND ASSIGNMENT 478; THEORY 490. Observation recorded by GEO-INV-T1: Evaluation blocks at 444 and 464 are interleaved inside the outer-zone teaching, so their scope must be read from the questions; the theory at 491 asks for a drawing that is not supplied. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, getBody lines 495-537 ('WEEK SEVEN' at 495, subtitle at 496; next label 'WEEK EIGHT' at 540)",
+      "objective": "Index 1st Term Week 7 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 495-537; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 495-537, block SHA-256 b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7; markers: EVALUATION QUESTIONS 504, 513; GENERAL EVALUATION 517; READING ASSIGNMENT 524; WEEKEND ASSIGNMENT 527; THEORY 535. Observation recorded by GEO-INV-T1: Layer descriptions are split by evaluation blocks (504 between crust and mantle); the theory at 536 repeats the Week 6 drawing request. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 8, getBody lines 540-604 ('WEEK EIGHT' at 540, subtitle at 541; next label 'WEEK NINE' at 607)",
+      "objective": "Index 1st Term Week 8 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 540-604; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 540-604, block SHA-256 d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f; markers: EVALUATION QUESTIONS 562, 581; GENERAL EVALUATION 585; READING ASSIGNMENT 592; WEEKEND ASSIGNMENT 595; THEORY 602. Observation recorded by GEO-INV-T1: Sedimentary characteristics at 566-571 include 'do not contain fossils', which contradicts the same week's organically formed rocks (578); verify in the lesson work. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 9, getBody lines 607-636 ('WEEK NINE' at 607, subtitle at 608; next label 'WEEK TEN' at 639)",
+      "objective": "Index 1st Term Week 9 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 607-636; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 607-636, block SHA-256 ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e; markers: no EVALUATION QUESTIONS; GENERAL EVALUATION QUESTIONS 620; no READING ASSIGNMENT; WEEKEND ASSIGNMENT 627 (page break); THEORY 634. Observation recorded by GEO-INV-T1: No in-text evaluation or reading assignment; the body carries two Wikipedia hyperlink fields (text offsets 34,813 and 34,907) that need provenance handling. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, getBody lines 639-707 ('WEEK TEN' at 639, subtitle at 640; end of document at 708)",
+      "objective": "Index 1st Term Week 10 at objective level: read every heading, body paragraph, evaluation question, reading assignment and weekend/theory exercise in getBody lines 639-707; bind each objective and exercise to coverage entries with exact locators and evidence; missing content gets a precise open item and a small lesson item. An evaluation or revision heading cannot stand in for teaching.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 639-707, block SHA-256 5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080; markers: EVALUATION QUESTIONS 658; GENERAL EVALUATION QUESTIONS 686; READING ASSIGNMENT 693; WEEKEND ASSIGNMENT 696; THEORY 705. Observation recorded by GEO-INV-T1: Sub-headings (a)-(d) at 645/653/663/668; importance and disadvantage lists at 673-684 are tab-aligned, not a table; theory at 705-706 requires a diagram that is not supplied. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+    },
+    {
+      "id": "GEO-VIS-T1",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "page-1 cover (Data stream offset 2,396; drawn-object anchors at full-text paragraphs 4-5); header letterhead (WordDocument stream offset 109,649; picture character at text offset 41,887); solar-system table getBody 99-109; latitude/longitude differences block getBody 305-319 with anchors at 307; drawing prompts at 491, 536 and 705-706",
+      "objective": "Record a visual/object disposition for each listed group: inspect an actual render or the image bytes and state what each object adds or whether the content is reproducible as text, decide the solar table's true column structure and the drawn status of the latitude/longitude block, and record residual gaps. Do not bind branding images or reproduce vendor contact details; record the permission open item before any asset binding. Do not recover or interpret every asset.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-VIS-T1.md"
+      ],
+      "depends_on": [
+        "GEO-INV-T1",
+        "GEO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence: cover JPEG 3306x2515, 870,389 bytes, Data offset 2396, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a; header letterhead JPEG 949x359, 106,941 bytes, WordDocument offset 109649, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the Further Mathematics 2nd Term header image); solar table 99-109 has 50 cell marks (5x10) while antiword reports 4 columns; latitude/longitude block 305-319 is tab text with two 0x08 anchors at 307; no map, diagram or figure image is embedded, so the three drawing prompts have no supplied figure. Rendering was not possible in this environment (no LibreOffice or Word), so placement is unverified. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Each listed group has a disposition based on actual inspection (a text extraction alone is not visual inspection); branding assets stay unbound without an owner permission reference and no contact details are published; the missing diagrams are recorded as gaps for the week items."
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "d01704cd15aa69241a8775c5e072fd2297b1d71b",
-    "scope": "Repository-only queue completion; source bytes not reopened; testing deferred."
+    "date": "2026-10-29",
+    "reviewed_master_sha": "451369d1f5c77bf8f3360e0b17926b4251388848",
+    "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
-    "GEO-INV-T1"
+    "GEO-PRE-T1"
   ]
 }
