@@ -24,7 +24,8 @@
     "Review correction: IN_PROGRESS means an actively claimed task, not inherited partial coverage. Unclaimed incomplete indexing is PENDING. Existing correction code is retained, but correction items remain PENDING until replacement scope is reviewed.",
     "Execute one queue item per worker. Existing implementation evidence is a starting point, not a request to repeat completed audits. Tests remain deferred. A required attachment absent from a worker session is an input blocker, not evidence that curriculum content is absent.",
     "ENG-WK-T1-W01 (2026-10-27): Week 1 indexed at objective level from master fc2aef1f0761f25fe50c06ed4592b2357a117bff. The replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 was found NOT to preserve every objective of the row it displaces; follow-up items ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed.",
-    "ENG-WK-T1-W02 (2026-10-27): Week 2 indexed at objective level from master c48a012225c4b142bb6515a2fd8e5bf4d440509e (24 new coverage entries; rule R029 classifies scheme row 2). The four Week 2 source rows are not displaced by any SS1-02 correction; their gaps are source-side (unsupplied book pages, one scheme objective not taught, wording defects, missing keys). Follow-up items ENG-LES-W02-WORD-MEANINGS, ENG-LES-W02-PHRASAL-VERBS, ENG-LES-W02-ADVERB-CONJ-PREP and ENG-FACT-W02-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed. QUEUE_BUILD.md was outside this item's write paths and still names W02 as next."
+    "ENG-WK-T1-W02 (2026-10-27): Week 2 indexed at objective level from master c48a012225c4b142bb6515a2fd8e5bf4d440509e (24 new coverage entries; rule R029 classifies scheme row 2). The four Week 2 source rows are not displaced by any SS1-02 correction; their gaps are source-side (unsupplied book pages, one scheme objective not taught, wording defects, missing keys). Follow-up items ENG-LES-W02-WORD-MEANINGS, ENG-LES-W02-PHRASAL-VERBS, ENG-LES-W02-ADVERB-CONJ-PREP and ENG-FACT-W02-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed. QUEUE_BUILD.md was outside this item's write paths and still names W02 as next.",
+    "ENG-LES-W02-WORD-MEANINGS (2026-10-29): Week 2 word-meanings supplement authored from master a98983a8. New lesson SUP-SS1-ENGLISH-MEANING-T1 (32 marks) bound to coverage ENGLISH-T1-W02-CM02, which moved from UNRESOLVED to IMPLEMENTED_EQUIVALENT. Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE closed because its required action is complete; approval stays PENDING and verification DEFERRED. ENGLISH-BODY-004 remains PARTIAL (unsupplied passage). The source was re-extracted privately: member and archive hashes re-verified and the scheme-only status of the objective re-confirmed. Dictionary confirmations for brackish, inflammable, childish/childlike and the senses of sharp were not re-fetched (network unavailable) and are listed for owner review in the task note. next_runnable: ENG-LES-W02-PHRASAL-VERBS."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -36,8 +37,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
-    "PENDING": 73,
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
+    "PENDING": 72,
     "BLOCKED": 4
   },
   "items": [
@@ -3179,8 +3180,8 @@
       "depends_on": [
         "ENG-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE in english.json. Scheme row 2 of the source (rule SS1-SRC-a00657d42196-R029) names the objective; WEEK TWO body 3e5b19ca3d9197f9adbcde08a2f0d6b08ed471bcbea63fa53f87eb17e9bfe3e5 does not teach it.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice for the Week 2 scheme objective in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-MEANING-T1 (13 body paragraphs, 3 objectives, 8 practice items, 32 marks; every item's marking sums to its marks; body_sha256 c3655c8969428d3576a9ba5f1d320ddffd32ee3b1c75a4e1c8aad735c5ddbe40 recomputed from the body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W02-CM02 set to IMPLEMENTED_EQUIVALENT with lesson_ids [SUP-SS1-ENGLISH-MEANING-T1] and a third evidence entry; the original 'not taught by any source row' evidence is retained. ENGLISH-BODY-004 stays PARTIAL because its passage and exercise are still unsupplied; its evidence now records that the word-meanings part is supplied. Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE removed because its required action (author and bind the missing teaching) is complete; the lesson's own PENDING approval keeps delivery blocked. The source was re-extracted privately to re-check the gap: member sha256 4852226f… verified again from the composite archive (sha256 024487129… checked), 81,965 characters, getBody sha256 8c3faa979ab73ef5de1cbc97976405c20332d505d49233cc147bfef691034a4e, 1,698 lines; 'Word Meanings in Context' occurs only in the scheme row (line 24), and the WEEK TWO row (lines 331-443) mentions 'meaning' only for phrasal verbs and the unsupplied comprehension passage. No source text or textbook passage is reproduced. Record: docs/ss1/work/microtasks/english/ENG-LES-W02-WORD-MEANINGS.md. Implemented, not approved or verified.",
       "completion_condition": "ENGLISH-T1-W02-CM02 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3294,6 +3295,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W02-WORD-MEANINGS"
+    "ENG-LES-W02-PHRASAL-VERBS"
   ]
 }
