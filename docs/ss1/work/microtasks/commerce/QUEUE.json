@@ -22,17 +22,23 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "COM-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). COM-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "COM-INV-T1 appended the 1st Term inventory items (19) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 19 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (COM-INV-T1.md)."
   ],
   "counts": {
+    "FACTUAL_DEPENDENCY": 5,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_PRESERVATION": 2,
     "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 10,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "VISUAL_DISPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 22,
     "BLOCKED": 1
   },
   "items": [
@@ -169,8 +175,8 @@
       "depends_on": [
         "COM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory record: docs/ss1/work/microtasks/commerce/COM-INV-T1.md. Member 'SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc' (1,166,848 bytes, SHA-256 ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a) verified from the composite archive 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e (hash checked). word-extractor 1.0.4 getBody(): 57,453 chars, 1,064 lines, SHA-256 fa0ff13e0ee6cfd8d60b0f4674542c628c0f52c1720fc1e533123def69bfe035. Ten teaching weeks, each with a body: W1 39-121 80762112..., W2 124-183 85dc8167..., W3 186-252 62d49f7f..., W4 254-325 7d32a714..., W5 328-458 c7d75a62..., W6 461-564 554747ad..., W7 567-701 3a8136f2..., W8 704-852 90cf8f41..., W9 854-978 be60e449..., W10 980-1063 218cdd2b... (full hashes in the record). Unlabelled opening/scheme 1-36 d8658c5c...; scheme rows 1-10 map to the ten bodies and rows 11-12 (Revision/Examination, 35-36) have no body. No Word tables (two BEL marks at CP 2-3 are an empty start shell; antiword: 0 table/mediaobject/graphic); one JPEG in the footer (publisher advertisement with contact details, 3,306x2,515, SHA-256 b334a0e1..., not committed); the only diagram is the Week Five TRADE chart at 341-351 built from 13 drawn anchors (CP 16,607-16,693). Appended 19 PENDING items: COM-PRE-T1, COM-WK-T1-W01..W10, COM-MARK-T1-SCHEME-REVEXAM, COM-VIS-T1-W05-DIAGRAM, COM-PRES-T1-LAYOUT, COM-PRES-T1-SOURCE-WORDING, COM-FACT-T1-HISTORY-NIGERIA, COM-FACT-T1-CUSTOMS-WAREHOUSING, COM-FACT-T1-NIGERIA-EXAMPLES, COM-FACT-T1-OCCUPATION-CLASSIFICATION. No lesson, coverage entry, asset or parser rule written; no tests or importer run (deferred).",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -297,6 +303,709 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "COM-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "opening unlabelled block, lines 1-36 (SHA-256 d8658c5c643ff3336b8b240a9c89a6abbdd1a45ba35f2a423ff25ef45cdad092)",
+      "objective": "Index the unlabelled opening block and the scheme as what they are, not as teaching weeks. The block holds blank lines 1-17, 'FIRST TERM E-LEARNING NOTE' (18), the subject/class line 'SUBJECT: COMMERCE ... CLASS: SSS 1' (20), 'SCHEME OF WORK' (22), the tab-aligned header 'WEEK  \\tTOPIC' (24) and twelve rows (25-36): 1 Meaning, Scope and Functions of Commerce.; 2 Occupation; 3 Production; 4 Division of Labour, Specialization and Exchange; 5 Retail Trade; 6 Small Scale Retailing; 7 Large Scale Retailing; 8 Modern Trends in Retailing; 9 Wholesale Trade; 10 Warehousing; 11 Revision; 12 Examination. Map rows 1-10 to the body weeks and record the differences (Week Five teaches the TRADE chart before RETAIL TRADE; Weeks Six, Nine and Ten add sections the scheme row does not name), and record that rows 11-12 have no body (disposed by COM-MARK-T1-SCHEME-REVEXAM). Implement the resulting identity/scheme facts under the existing schema with provenance: source_id, exact line range and body hash. Do not invent a reference-book list (none exists in this source) and do not treat a one-line scheme heading as evidence that its topic was taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-PRE-T1.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no scheme/identity coverage or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (opening 1-36, scheme rows 25-36).",
+      "completion_condition": "Identity and scheme rows are represented under the existing schema with exact provenance; rows 11-12 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 39-121 (marker 'WEEK ONE', topic 'TOPIC: MEANING, SCOPE AND FUNCTIONS OF COMMERCE'), SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1",
+      "objective": "Index Week 1 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 39-121, exact label 'WEEK ONE', topic line 'TOPIC: MEANING, SCOPE AND FUNCTIONS OF COMMERCE', body SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1) and every exercise in it: definition of commerce (46-48), importance/functions (49-56), stages in the history and development of commerce (57-63), EVALUATION (64-66), factors that delayed the development of commerce in Nigeria/West Africa (68-78), growth factors (79-87), divisions of commerce (88-95), EVALUATION (96-98), READING ASSIGNMENT (100-102), WEEKEND ASSIGNMENT with five multiple-choice questions (104-110), THEORY (112-114), GENERAL EVALUATION (116-121). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The historical/development claims in this week must carry COM-FACT-T1-HISTORY-NIGERIA and teaching must stay neutral on contested historical and political questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 39-121, SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1; assessment blocks listed there).",
+      "completion_condition": "Week 1 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 124-183 (marker 'WEEK TWO', topic 'TOPIC: OCCUPATION'), SHA-256 85dc81676442434e28c7a8e1568f8e576741de98eaef0fc6b0be27d4bcc44b57",
+      "objective": "Index Week 2 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 124-183, exact label 'WEEK TWO', topic line 'TOPIC: OCCUPATION', body SHA-256 85dc81676442434e28c7a8e1568f8e576741de98eaef0fc6b0be27d4bcc44b57) and every exercise in it: definition of occupation (129-131), classification into six divisions (132-144), EVALUATION (145-151), factors influencing occupation (153-158), EVALUATION (159-161), READING ASSIGNMENT (163-165), WEEKEND ASSIGNMENT (167-172), THEORY (174-176), GENERAL EVALUATION (178-183). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The occupation-classification claim at 149 ('secondary occupation') must carry COM-FACT-T1-OCCUPATION-CLASSIFICATION.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 124-183, SHA-256 85dc81676442434e28c7a8e1568f8e576741de98eaef0fc6b0be27d4bcc44b57; assessment blocks listed there).",
+      "completion_condition": "Week 2 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 186-252 (marker 'WEEK THREE', topic 'TOPIC: PRODUCTION'), SHA-256 62d49f7f9ea3a4adb3446d139de78083d3e8d2fb81e83f7bf7e969a099e88979",
+      "objective": "Index Week 3 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 186-252, exact label 'WEEK THREE', topic line 'TOPIC: PRODUCTION', body SHA-256 62d49f7f9ea3a4adb3446d139de78083d3e8d2fb81e83f7bf7e969a099e88979) and every exercise in it: a four-line contents list (189-192) that repeats later headings, definition of production (193-194), types of goods (196-199), classification of production (200-204), EVALUATION (205-207), factors of production (209-215), functions of the entrepreneur (216-223), the process of production (224-227), EVALUATION (228-230), READING ASSIGNMENT (232-234), WEEKEND ASSIGNMENT (236-241), THEORY (243-245), GENERAL EVALUATION (247-252). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 186-252, SHA-256 62d49f7f9ea3a4adb3446d139de78083d3e8d2fb81e83f7bf7e969a099e88979; assessment blocks listed there).",
+      "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 254-325 (marker 'WEEK FOUR', topic 'TOPIC:  DIVISION OF LABOUR, SPECIALIZATION AND EXCHANGE'), SHA-256 7d32a714feb55e15a17e199436facf3d6d94dc9dc5ae35e35d4deb69b888218a",
+      "objective": "Index Week 4 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 254-325, exact label 'WEEK FOUR', topic line 'TOPIC:  DIVISION OF LABOUR, SPECIALIZATION AND EXCHANGE', body SHA-256 7d32a714feb55e15a17e199436facf3d6d94dc9dc5ae35e35d4deb69b888218a) and every exercise in it: definition of terms (257-266), advantages of division of labour/specialization (267-275), EVALUATION (276-278, including the misprinted 'Divine the term Division of Labour' at 277), disadvantages (280-286), limitations (287-293), exchange (294-297), EVALUATION (298-301), READING ASSIGNMENT (303-305), WEEKEND ASSIGNMENT (307-314), THEORY (316-318), GENERAL EVALUATION (320-325). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 254-325, SHA-256 7d32a714feb55e15a17e199436facf3d6d94dc9dc5ae35e35d4deb69b888218a; assessment blocks listed there).",
+      "completion_condition": "Week 4 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 328-458 (marker 'WEEK FIVE', topic 'TOPIC: RETAIL TRADE'), SHA-256 c7d75a62829dfcd230f70c8454d2cc64c3e1ae48fbb12752c791a1801634831c",
+      "objective": "Index Week 5 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 328-458, exact label 'WEEK FIVE', topic line 'TOPIC: RETAIL TRADE', body SHA-256 c7d75a62829dfcd230f70c8454d2cc64c3e1ae48fbb12752c791a1801634831c) and every exercise in it: contents list (331-336), TRADE and its divisions (337-352) with the drawn TRADE chart at 341-351 (COM-VIS-T1-W05-DIAGRAM), RETAIL TRADE definition (354-356), characteristics of the retailer (357-366), functions of the retailer (367-393), EVALUATION (394-397), factors in setting up a retail business (399-409), factors for purchases (410-419, heading wrapped across two lines), reasons why a retail business may fail (420-431), EVALUATION (432-435), READING ASSIGNMENT (437-439), WEEKEND ASSINGNMENT (441-447), THEORY (449-451), GENERAL EVALUATION (453-458). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The drawn TRADE chart (341-351) is disposed by COM-VIS-T1-W05-DIAGRAM; do not describe it as an image that exists.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 328-458, SHA-256 c7d75a62829dfcd230f70c8454d2cc64c3e1ae48fbb12752c791a1801634831c; assessment blocks listed there).",
+      "completion_condition": "Week 5 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 461-564 (marker 'WEEK SIX', topic 'TOPIC: SMALL SCALE RETAILING'), SHA-256 554747adf043eb5a9b3909c7ce4b31b50504a030d1d50f464b4eb19b681fed9a",
+      "objective": "Index Week 6 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 461-564, exact label 'WEEK SIX', topic line 'TOPIC: SMALL SCALE RETAILING', body SHA-256 554747adf043eb5a9b3909c7ce4b31b50504a030d1d50f464b4eb19b681fed9a) and every exercise in it: contents list (463-469), types of small scale retailing (471-473), features of hawking/itinerant trading (474-481), advantages (482-491), disadvantages (492-504), an orphaned second 'OTHER TYPES OF SMALL SCALE RETAILING' fragment with items numbered 2-3 (505-510), EVALUATION (511-514), the complete 'OTHER TYPES OF SMALL SCALE RETAILING' with items 1-4 (516-521), reasons for many small businesses in Nigeria/West Africa (522-530), problems encountered (531-538), EVALUATION (539-542), READING ASSIGNMENT (544-545), WEEKEND ASSIGMENT (547-552), THEORY (554-557), GENERAL EVALUATION (559-564). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The orphaned fragment at 505-510 and its complete repeat at 516-521 must be indexed as the source orders them, not reordered silently.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 461-564, SHA-256 554747adf043eb5a9b3909c7ce4b31b50504a030d1d50f464b4eb19b681fed9a; assessment blocks listed there).",
+      "completion_condition": "Week 6 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 567-701 (marker 'WEEK SEVEN', topic 'TOPIC: LARGE SCALE RETAILING'), SHA-256 3a8136f2ddb3fa6e24a7a3db7bddd4fc6d77e17a88160230303ec1307410b013",
+      "objective": "Index Week 7 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 567-701, exact label 'WEEK SEVEN', topic line 'TOPIC: LARGE SCALE RETAILING', body SHA-256 3a8136f2ddb3fa6e24a7a3db7bddd4fc6d77e17a88160230303ec1307410b013) and every exercise in it: types of large scale retailing (569-572, no CONTENT line), multiple shops (573-599), departmental stores (600-621), EVALUATION (622-625), further types including supermarket, mail order, co-operative and variety chain stores (627-676, with the Nigeria claim at 671), EVALUATION (677-679), READING ASSIGNMENT (681-682), WEEKEND ASSIGNMENT (684-690), THEORY (692-694), GENERAL EVALUATION (696-701). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The Nigeria/current-example claims (671, and the EVALUATION at 677-679) must carry COM-FACT-T1-NIGERIA-EXAMPLES.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 567-701, SHA-256 3a8136f2ddb3fa6e24a7a3db7bddd4fc6d77e17a88160230303ec1307410b013; assessment blocks listed there).",
+      "completion_condition": "Week 7 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 704-852 (marker 'WEEK EIGHT', topic 'TOPIC: MODERN TRENDS IN RETAILING'), SHA-256 90cf8f4102af707789f334283801d2475880cd6685a98d919b4f96f06a11f9ce",
+      "objective": "Index Week 8 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 704-852, exact label 'WEEK EIGHT', topic line 'TOPIC: MODERN TRENDS IN RETAILING', body SHA-256 90cf8f4102af707789f334283801d2475880cd6685a98d919b4f96f06a11f9ce) and every exercise in it: notes and self-service (712-744), branding (745-763), EVALUATION QUESTION (764-767), after-sales services (769-793), automatic vending (794-820), EVALUATION QUESTIONS (821-825), READING ASSIGNMENT (827-829), WEEKEND ASSIGNMENT (831-841), THEORY (843-845), GENERAL EVALUATION (847-852). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 704-852, SHA-256 90cf8f4102af707789f334283801d2475880cd6685a98d919b4f96f06a11f9ce; assessment blocks listed there).",
+      "completion_condition": "Week 8 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 854-978 (marker 'WEEK NINE', topic 'TOPIC: WHOLESALE TRADE'), SHA-256 be60e44943862b668b8126b916ca5c7453d431df5c9235186ff7f59deef27bf0",
+      "objective": "Index Week 9 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 854-978, exact label 'WEEK NINE', topic line 'TOPIC: WHOLESALE TRADE', body SHA-256 be60e44943862b668b8126b916ca5c7453d431df5c9235186ff7f59deef27bf0) and every exercise in it: note (863-864), functions of the wholesaler (866-885), types of wholesalers/middlemen (886-897), EVALUATION QUESTIONS (898-902), CHANNEL OF DISTIBUTION and the five routes (904-912), factors in choosing a channel (913-938), why wholesale prices are lower than retail prices (939-945), why many middlemen should not be encouraged (946-952), EVALUATION (953-956), READING ASSIGNMENT (958-960), WEEKEND ASSIGNMENT (962-972), GENERAL EVALUATION QUESTIONS (973-978); no THEORY block. Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The distribution and wholesale-price claims (904-952) must carry COM-FACT-T1-NIGERIA-EXAMPLES where they assert current market facts.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 854-978, SHA-256 be60e44943862b668b8126b916ca5c7453d431df5c9235186ff7f59deef27bf0; assessment blocks listed there).",
+      "completion_condition": "Week 9 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "lines 980-1063 (marker 'WEEK TEN', topic 'TOPIC: WAREHOUSING'), SHA-256 218cdd2bd36992d55e869d405472f302f8e08117090c27234e62503a9c564a28",
+      "objective": "Index Week 10 of the 1st Term Commerce source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 980-1063, exact label 'WEEK TEN', topic line 'TOPIC: WAREHOUSING', body SHA-256 218cdd2bd36992d55e869d405472f302f8e08117090c27234e62503a9c564a28) and every exercise in it: note (988-990), importance of warehousing (991-1000), types including bonded and state warehouses (1001-1008), EVALUATION (1009-1011), usefulness of bonded warehouses in foreign trade (1013-1020), factors in siting a warehouse (1021-1032), documents used in warehousing (1033-1036), EVALUATION (1037-1040), READING ASSIGNMENT (1042-1044), WEEKEND ASSIGNMENT (1046-1056), GENERAL EVALUATION (1058-1063); no THEORY block. Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Commerce into Economics, Financial Accounting or Bookkeeping. The customs/warehousing legal claims (1006-1007, 1013-1020, 1033-1036) must carry COM-FACT-T1-CUSTOMS-WAREHOUSING.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 980-1063, SHA-256 218cdd2bd36992d55e869d405472f302f8e08117090c27234e62503a9c564a28; assessment blocks listed there).",
+      "completion_condition": "Week 10 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "COM-MARK-T1-SCHEME-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "scheme rows 11-12, lines 35-36 ('11\\t\\tRevision', '12\\t\\tExamination'); no WEEK ELEVEN/TWELVE body marker",
+      "objective": "Disposition the only revision/examination markers in the source: scheme rows 11 Revision (35) and 12 Examination (36). The body has no WEEK ELEVEN or WEEK TWELVE marker and no revision or examination content (the last week body ends at GENERAL EVALUATION 1058-1063). Classify them as calendar markers, not teaching weeks: no empty lesson, coverage row or asset may be created for them, and the parser finding (classify_marker: rows must not split) is recorded, not implemented as a rule here. The document has no revision body, so nothing is erased by a revision heading; if a later source supplies revision bodies they must be classified by body, not by heading.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-MARK-T1-SCHEME-REVEXAM.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no marker rule is added. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (scheme rows 25-36; no WEEK ELEVEN/TWELVE marker).",
+      "completion_condition": "Both markers have an explicit disposition under the existing schema; no empty lesson or coverage row is created and no parser rule is silently added. Testing deferred by owner."
+    },
+    {
+      "id": "COM-VIS-T1-W05-DIAGRAM",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Five, lines 337-351 (chart labels 341-351; 13 drawn-object anchors at CP 16607-16693)",
+      "objective": "Give a visual disposition to the only diagram in the source: the TRADE classification chart in Week Five (lines 337-351, body SHA-256 c7d75a62829dfcd230f70c8454d2cc64c3e1ae48fbb12752c791a1801634831c). It is built from 13 drawn objects (\\x08 anchors at CP 16,607-16,693) plus tab-positioned labels, isolated by the page break at CP 16,599: Trade -> Home Trade / Foreign Trade; Home Trade -> Retail Trade / Wholesaler Trade; Foreign Trade -> Import / Export / Entrepot. There is no image file to extract: getBody() keeps the eight labels but loses the connectors and placement (lines 341-351 come out as tab-separated words). The structure is corroborated by the adjacent prose (338 and 352), so it can be represented as a source-anchored relationship list or a new original diagram without copying the author's layout; no invented branch may be added. Do not commit a rendered image of the source and do not claim the original connector geometry.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T1-W05-DIAGRAM.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no representation or asset is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (diagram group; 13 drawn anchors CP 16607-16693).",
+      "completion_condition": "The chart has a documented disposition under the existing schema, derived only from the surviving labels and the adjacent prose; no fabricated geometry or committed source render. Testing deferred by owner."
+    },
+    {
+      "id": "COM-PRES-T1-LAYOUT",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "document layout: 478 tabs, 8 page breaks, 15 drawn anchors, 2 table marks, legacy Word 97 .doc",
+      "objective": "Preserve the source's layout evidence so later authoring does not mistake flattening for the original structure: 478 tab characters drive the scheme (24-36), the Week Three contents list (189-192), the Week Five chart labels (341-351) and the Week Nine channel list (907-911); 8 page breaks (CP 6, 5,387, 10,651, 12,661, 16,599, 21,118, 45,356, 52,739) separate printed pages; 15 drawn-object anchors (2 in the empty start shell at CP 5/8, 13 in the Week Five chart); 2 BEL marks (CP 2-3) are an empty table shell, not a teaching table. antiword renders zero tables and zero graphics. Record that getBody() drops all of these, that the legacy .doc format is binary Word 97 (nFib 193) with no ObjectPool, and that the one JPEG lives in the footer, not the body. Do not add schema fields silently; if the representation is unsupported, raise a precise separate dependency.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-PRES-T1-LAYOUT.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no preservation rule or schema change is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Tables, Embedded media, Diagram group, parser findings).",
+      "completion_condition": "The layout marks and their loss under plain-text extraction are recorded under the existing schema without a silent schema edit; any unsupported representation is a separate precise dependency. Testing deferred by owner."
+    },
+    {
+      "id": "COM-PRES-T1-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "verbatim wording and defects: lines 277, 441, 547, 675, 769, 890-896, 904, 946, 1013, 1021, 505-510, 257",
+      "objective": "Preserve the source's own wording, including its defects, as source-faithful text distinct from any later correction: 'Divine the term Division of Labour' (277), 'WEEKEND ASSINGNMENT' (441), 'WEEKEND ASSIGMENT' (547), 'AFTER SALES SEVICES' (769), the unnumbered lower-case agent list 890-896 ending 'Auctioneerss' (894), 'CHANNEL OF DISTIBUTION' (904), 'EFFECTS OR REASON WHY LARGE NUMBR OF MIDDLEMEN...' (946), 'USEFULNESS OF BONDED WAREHOSUE IN  FOREIGN TRADE' (1013), 'FACTORS TO BE CONSIDERED IN SITTING A WAREHOUSE' (1021), the merged list items 3-5 in one paragraph at 675, the orphaned Week Six fragment 505-510 (items 2, 3 before the complete repeat 516-521 with items 1-4) and the Week Four CONTENT line that says only 'Definition of terms ' (257). Record each with its exact line and hash context; lesson authors may quote the original and flag a defect, but may not silently normalize the source or present a corrected wording as the author's. No source page or private render is committed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-PRES-T1-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no lesson or correction is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Content issues recorded).",
+      "completion_condition": "Every listed defect and ordering anomaly is recorded under the existing schema with exact lines; corrections stay separate from the preserved original wording; no source page is committed. Testing deferred by owner."
+    },
+    {
+      "id": "COM-FACT-T1-HISTORY-NIGERIA",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week One, lines 57-63 and 68-87 (history, development and delayed-growth factors for Nigeria/West Africa)",
+      "objective": "Verify later, with dated authoritative sources, the Week One historical claims about the stages in the history and development of commerce (57-63) and the factors that delayed or grew commerce in Nigeria/West Africa (68-87, including 'Development of efficient means of transportation and communication' at 83) before any lesson states them as fact. Each claim needs a source with a publication or reference date and must distinguish a curriculum concept from a dated historical account of a particular economy; the source's original wording must stay distinct from the corrected statement, and teaching must remain neutral on contested historical and political questions. Record nothing as verified until the evidence exists.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T1-HISTORY-NIGERIA.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1",
+        "COM-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no correction is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Factual and neutrality flags).",
+      "completion_condition": "Each historical claim has a dated authoritative citation (or an explicit unresolved flag) kept distinct from the source's wording, and no approval or verification state is invented. Testing deferred by owner."
+    },
+    {
+      "id": "COM-FACT-T1-CUSTOMS-WAREHOUSING",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Ten, lines 1001-1008, 1013-1020 and 1033-1036 (bonded/state warehouses, customs duties, dock warrant, delivery order)",
+      "objective": "Verify later, with current Nigerian customs and warehousing law and primary regulatory sources carrying effective dates, the Week Ten claims that: a bonded warehouse stores goods whose customs duties are unpaid until settled (1006); a state warehouse (printed 'Queen's warehousing or Government warehouse') holds seized contraband until auction (1007); the period of bond lets customs inspect and value goods (1017); goods can be sold in bond with the buyer settling duty (1018); production steps can be done in bond (1019); and the dock warrant/delivery order are documents of title (1033-1036). These are legal and regulatory statements that may be stale or jurisdiction-specific. Each corrected fact needs a dated statute/regulation or official source; the source's original wording must remain distinct from the corrected fact and no legal advice may be presented as settled without a citation.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T1-CUSTOMS-WAREHOUSING.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1",
+        "COM-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no correction is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Factual and neutrality flags).",
+      "completion_condition": "Each customs/warehousing claim has a dated authoritative citation or an explicit unresolved flag, kept distinct from the source's wording; no approval or verification is invented. Testing deferred by owner."
+    },
+    {
+      "id": "COM-FACT-T1-NIGERIA-EXAMPLES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Seven line 671; Weeks Six and Nine current-market claims (522-530, 939-952)",
+      "objective": "Verify later, with dated primary data or current market evidence, the source's current-affairs and Nigeria-specific claims: 'No notable example can easily be found in Nigeria' for variety chain stores (671); the reasons for the existence of many small scale retail businesses in Nigeria/West Africa (522-530, including low per-capita income and unemployment); and why wholesale prices are lower than retail prices (939-945) and why many middlemen should not be encouraged (946-952) where they assert present market facts. Separate the durable commercial concept from the dated example or figure, cite primary data with its date, and keep the source's original wording distinct from the updated fact. Teaching must stay neutral on contested economic-policy claims.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T1-NIGERIA-EXAMPLES.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1",
+        "COM-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no update is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Factual and neutrality flags).",
+      "completion_condition": "Each Nigeria-specific/current claim is either dated and sourced or explicitly flagged unresolved, distinct from the source's wording; concept and stale example are separated. Testing deferred by owner."
+    },
+    {
+      "id": "COM-FACT-T1-OCCUPATION-CLASSIFICATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "Week Two, line 149 ('COMMERCIAL OCCUPATION: This is referred to as secondary occupation ...')",
+      "objective": "Verify later the Week Two occupation-classification claim at 149 that commercial occupation 'is referred to as secondary occupation', against an authoritative curriculum/textbook classification. The same week defines extractive as primary (141), manufacturing and constructive as secondary (142-143) and then lists commercial occupation, direct services and indirect services (149-151), which the standard primary/secondary/tertiary model places in tertiary. Determine whether the source is using a two-way (primary vs secondary) scheme or is mistaken, cite the authoritative classification with a date, keep the source's original wording distinct from any corrected statement, and do not change the definition silently. Teaching must not present a contested or inconsistent classification as settled.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T1-OCCUPATION-CLASSIFICATION.md"
+      ],
+      "depends_on": [
+        "COM-INV-T1",
+        "COM-SRC-T1",
+        "COM-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no correction is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Factual and neutrality flags).",
+      "completion_condition": "The classification is either supported by an authoritative dated source or flagged as inconsistent, with the source's wording preserved; no silent edit of the definition. Testing deferred by owner."
     }
   ],
   "review": {
@@ -312,9 +1021,23 @@
     }
   },
   "next_runnable": [
-    "COM-INV-T1",
     "COM-INV-T2",
     "COM-INV-T3",
-    "COM-TEST-PACKAGE"
+    "COM-TEST-PACKAGE",
+    "COM-PRE-T1",
+    "COM-WK-T1-W01",
+    "COM-WK-T1-W02",
+    "COM-WK-T1-W03",
+    "COM-WK-T1-W04",
+    "COM-WK-T1-W05",
+    "COM-WK-T1-W06",
+    "COM-WK-T1-W07",
+    "COM-WK-T1-W08",
+    "COM-WK-T1-W09",
+    "COM-WK-T1-W10",
+    "COM-MARK-T1-SCHEME-REVEXAM",
+    "COM-VIS-T1-W05-DIAGRAM",
+    "COM-PRES-T1-LAYOUT",
+    "COM-PRES-T1-SOURCE-WORDING"
   ]
 }
