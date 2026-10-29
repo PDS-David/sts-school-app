@@ -91,17 +91,346 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "YO-T1-W01-SCHEME-EDE",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 1: Atunyewo awon eya ara ifo (revision of the speech organs)",
+      "objective_locator": "opening scheme list line 9 (SHA-256 728506938dc97baab9f448f8a3a520ca66bbbd5f045276255a6f236484d17d6b); body EDE part lines 63-101 (SHA-256 5e55d8601e599af6f4bd94ba38d823e8a65d44620658b540522457cd0ff644ee)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 9; scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "The opening 22-topic list carries no week numbers and no week markers. Topic 1 is the first of three topics whose titles match Week 1's three EKA ISE headings word for word (EDE line 65, ASA line 107, LITIRESO line 239), so Week 1 is mapped to topics 1-3 by position and heading match. Classification of the list itself belongs to YO-PRE-T1-1 (PENDING)."
+        },
+        {
+          "locator": "source lines 63-101 (EKA ISE: EDE; AKOLE ISE: ATUYEWO AWON EYA ARA - IFO (EYA ARA ISORO), line 65)",
+          "explanation": "The body teaches the topic in five parts, indexed as YO-T1-W01-EDE-01..05, all PARTIAL: the source teaches the topic, but no deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-SCHEME-ASA",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 2: Atunyewo Eko ile- asa ikini (revision of home training and greeting culture)",
+      "objective_locator": "opening scheme list line 11 (SHA-256 dace5d13eab82aef21b5fadd05ebf0aa3412a267660a8e6b0d48b0199ff56d0c); body ASA part lines 105-233 (SHA-256 1fee1829482f7a88df25539567596636baf3314bef80e25bfb5d75b7f9abb400)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 11 (one trailing space); scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "Topic 2 immediately follows topic 1 and matches the Week 1 ASA heading AKOLE ISE: EKO ILE- ASA IKINI (line 107). Mapping by position and heading match; the list has no week numbers (YO-PRE-T1-1)."
+        },
+        {
+          "locator": "source lines 105-233 (EKA ISE: ASA, line 105; AKOLE ISE, line 107; two tables at lines 121 and 173-177)",
+          "explanation": "The body holds a short definition of home training (107-113) and two flattened greeting tables (117-165, 169-233), indexed as YO-T1-W01-ASA-01..03, all PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-SCHEME-LIT",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 3: Atunyewo orisirisi eya litireso (revision of the types of literature)",
+      "objective_locator": "opening scheme list line 13 (SHA-256 53aa8bdd1edd5ccb634751f911de26658a42ca1362b30b10ab4c065051fe7763); body LITIRESO part lines 237-279 (SHA-256 16a4aa757b260440ca15e8bc5911c7f9b0005a68948f2c8ee7d2073df106f97d)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 13 (one trailing space); scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "Topic 3 matches the Week 1 LITIRESO heading AKOLE ISE: ATUYEWO ORISIRISI EYA LITIRESO (line 239). Mapping by position and heading match; the list has no week numbers (YO-PRE-T1-1)."
+        },
+        {
+          "locator": "source lines 237-279 (EKA ISE: LITIRESO, line 237)",
+          "explanation": "The body defines literature and its two types and sub-types (241-279), indexed as YO-T1-W01-LIT-01..03, all PARTIAL because defects and ambiguous notation remain (YORUBA-T1-W01-SOURCE-DEFECTS, YORUBA-T1-W01-NOTATION) and no lesson exists."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-EDE-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Eya ara ifo (speech organs): definition and function in producing speech sounds",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 65-67; SHA-256 9316a3f2214a964110b04cd36783f998138d6863216117deaadf44faec1551cb (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 67",
+          "explanation": "Definition: \"Eya ara ifo ni eya ara ti a maa n lo fun gbigbe iro ifo jade\" (speech organs are the body parts used to produce speech sounds). The heading at line 65 adds that they are also called EYA ARA ISORO. It is a one-sentence definition with no examples or explanation of the airstream mechanism."
+        },
+        {
+          "locator": "YO-T1-W01-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and no parsed row identity exists for this source; the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-EDE-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Two classes of speech organs: visible organs and organs that cannot be seen, with their examples",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 69-73; SHA-256 c649f23453ab4fc5762ac52134831dfeb32f76f077040c17d159ecc1577b35cf (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 69-73",
+          "explanation": "Line 69 divides the organs into two classes. Line 71 lists the visible class (lips, teeth, tongue, gum, palate, uvula, jaw, nostrils and others); line 73 lists the invisible class (larynx, trachea, bronchi, pharynx and others). The lists are examples only, with no role described for each organ."
+        },
+        {
+          "locator": "YORUBA-T1-W01-SOURCE-DEFECTS",
+          "explanation": "Several names in these two lists are misspelt or inconsistently spelt (see the open item), so the lists cannot be taught verbatim without expert correction."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-EDE-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Afipe (articulators): definition and the two classes apipe asunsi (raisable) and afipe akanmole (fixed), with examples",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 77-83; SHA-256 58a1bf0fdc96315143b03acbf554f78e1490bdc772c74e0656862f003dfd85fd (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 77-83",
+          "explanation": "Line 79 defines afipe as every speech organ that takes part in producing speech sounds and splits the articulators into two classes; line 81 names the asunsi class with examples; line 83 names the akanmole class with examples. No organ-by-organ explanation is given."
+        },
+        {
+          "locator": "source line 83 and line 71",
+          "explanation": "The example list at line 83 repeats olele, which line 71 places among the visible organs, and contains unexplained or garbled names (for example \"iganna ofun\"); recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-EDE-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Tongue position in vowel production: front, central and back vowels with their vowel sets",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 85-95; SHA-256 a6668cfd251ecdfe3a6cef970cc0359b3e88f3c5a94c9aa7759e57e55fdee475 (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 85-95",
+          "explanation": "Line 87 explains that the tongue rises during vowel production; line 89 announces three classes; line 91 gives the front set, line 93 the central set and line 95 the back set."
+        },
+        {
+          "locator": "source line 93",
+          "explanation": "The central set is written \"a, en\". The nasal \"en\" duplicates a front nasal vowel already listed at line 91 and leaves the central nasal \"an\" out; front (5) + central (2) + back (5) = 12 vowels only if the central set is \"a, an\". Recorded as a source defect; not corrected here."
+        },
+        {
+          "locator": "source lines 91, 93, 95, 99, 101",
+          "explanation": "The sets are written with plain e and o, so e/e-dot and o/o-dot cannot be distinguished; the exact sets cannot be verified without tone and sub-dot marks (YORUBA-T1-W01-NOTATION)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-EDE-05",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Lip position in vowel production: spread (perese) and rounded (roboto) vowels with their vowel sets",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 97-101; SHA-256 a8e7c684aeb10a3b090a8d44fd12543c3d33be1b844787ae5e6784aaf1270e1b (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 97-101",
+          "explanation": "Line 97 states that the lips are either spread or rounded during vowel production; line 99 gives the spread set; line 101 gives the rounded set."
+        },
+        {
+          "locator": "source lines 99, 101",
+          "explanation": "Both sets use plain e and o, so the membership of e/e-dot and o/o-dot cannot be verified (YORUBA-T1-W01-NOTATION)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-ASA-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Eko ile (home training) defined as moral upbringing taught by parents from childhood, including respect greetings for father, mother and elders",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 107-113; SHA-256 e23f07dc7e4fd42a870cf244a7aa809dd752fbab5f2ac364afcdccde6fe182fe (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 107-113",
+          "explanation": "Line 109 defines home training as character formation (iwa rere, iwa to to) taught by parents from childhood; line 111 says it lasts for life; line 113 makes greeting father, mother and elders an obligation. No examples of iwa omoluabi are given and the greeting forms themselves are not taught here."
+        },
+        {
+          "locator": "YO-T1-W01-SCHEME-ASA",
+          "explanation": "Scheme topic 2 also names asa ikini; the greeting content is indexed at YO-T1-W01-ASA-02 and -03."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-ASA-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Greetings by time of day (ikini akoko / igba): seven time labels with their greetings",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 117-165; SHA-256 7d14e249d8915eac3156c6acd57c16d7dd5cc8ee7d5159e03981bbd0c62fc416 (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 117-165; Word table 0 (IGBA / AKOKO at line 121, 8 rows, 24 cells)",
+          "explanation": "The table gives seven rows: I / Ojo / Eku ojo or otutu; Ii / Oye / Eku oye; Iii / Iyan / Eku aheje kiri o; Iv / Ni owuro / Ekaa oro; V / Ni osan / Ekaa san; Vi / Ni irole / Eeku irole; Vii / Ni oru / Ekuaajin. extractRawText emits cells as separate lines, so the table structure is not represented in the text (YO-VIS-T1-03)."
+        },
+        {
+          "locator": "source lines 143-165",
+          "explanation": "The row numerals mix cases (I, Ii, Iii, Iv, V, Vi, Vii) and the greetings carry no tone marks; recorded in YORUBA-T1-W01-SOURCE-DEFECTS and YORUBA-T1-W01-NOTATION. No answers or usage notes are supplied."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-ASA-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Greetings by occupation (ikini ise) with the expected response (idahun) for seven occupations",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 169-233; SHA-256 877987fb8243fad2fe9e3adeb6cce795d2dfe6401162cf9788fb1c58c98e9601 (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 169-233; Word table 1 (ISE / IKINI / IDAHUN, 8 rows, 32 cells)",
+          "explanation": "Seven rows: Agbe / Aroko bodu de o / Ase; Onidiri / Oju gbooro, eku ewa / Iyemoja; Babalawo / Aboru boye, sboye bo sise / Amin; Awako / Oko a re foo, goun a pana mo o / Amin o; Akope / Igba a ro o / O o; Osise ijoba / Oko oba ko ni sa yin lese / Ase; Iya oloja / Aje a wo gba o / Ase. The table structure is flattened in the extraction (YO-VIS-T1-03)."
+        },
+        {
+          "locator": "source lines 199, 229-233",
+          "explanation": "The Babalawo greeting/response text at line 199 is garbled (\"Aboru boye, sboye bo sise\"), and the Iya oloja greeting at line 231 is not explained; recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-LIT-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Litireso (literature) defined, and its two broad types litireso alohun and litireso apileko",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 239-247; SHA-256 88c3ab93b39fbf0aafc90046e5b751b69db425dabf535786c809055ae3d9f06a (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 239-247",
+          "explanation": "Line 241 defines literature; line 243 announces the types; line 245 names litireso alohun and line 247 litireso apileko. The distinguishing criteria are given later at 249-279."
+        },
+        {
+          "locator": "YO-T1-W01-SCHEME-LIT",
+          "explanation": "The scheme topic is the same title; no lesson exists and the row has no parsed identity."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-LIT-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Litireso alohun (oral literature): definition, oral transmission, and three sub-types (ewi, oro geere, ere onise)",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 249-265; SHA-256 a6205bc41c61c5de2f250ccdde03a44a18c00acb4bace5959aeb6b52f6ebce88 (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 249-265",
+          "explanation": "Line 249 defines alohun as poetry inherited from forebears; line 251 says it is transmitted orally with no written record; line 259 announces three sub-types; lines 261-265 list them."
+        },
+        {
+          "locator": "source line 253",
+          "explanation": "The explanatory sentence is garbled (\"Litireso alohun kun fun o gbon imo ati oye agba, nigba ti imo moo ko moo-ke ko ti de ile wa ohun ni awon baba nla wa n lo ninu igbo ke gbodo won.\") and cannot be taught verbatim; recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "source lines 261-265",
+          "explanation": "The sub-type list uses the letters a., b., d. (c is omitted); recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-LIT-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Litireso apileko (written literature): definition, relation to alohun, and three sub-types (ewi, ese-onitan, itan aroso)",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 267-279; SHA-256 50ab376812025df9ab757580f3822b90e8101d78d89f35d227c831d83401b433 (UTF-8, 1-based extractRawText lines joined with \\n, edge blanks trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 267-279",
+          "explanation": "Line 267 defines apileko as literature written down after literacy arrived; line 269 states that it is the written type; line 271 calls alohun its forerunner; lines 273-279 list ewi, ese-onitan and itan aroso."
+        },
+        {
+          "locator": "source lines 269, 275-279",
+          "explanation": "Line 269 reads \"Litireso yin je litireso alakosile\" (yin for yi) and the sub-type list again uses a., b., d.; recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W01-ASSESS",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Week 1 exercises: six Igbelewon questions and six Ise asetilewa greeting tasks, with no answers or marking",
+      "objective_locator": "SS1-SRC-48b641249e3b lines 281-293; SHA-256 44282742c31a4972c1e82a9b8fc59a370a774e78c8c634edf8d7973a47c0ae11; and lines 295-307; SHA-256 08d0f6692d0931d1b259445bb9b835d3f4a0ef87183f4a7a3137c4b30ad1ed15",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 281-293 (Igbelewon)",
+          "explanation": "Six questions: name the speech organs; classify the speech organs; explain the organs used to produce speech sounds; define literature; explain the types of literature; name home training. All six paragraphs carry Word automatic list numbering (w:numPr), so the extracted text has no visible numbers. No answers or marking are supplied."
+        },
+        {
+          "locator": "source lines 295-307 (Ise asetilewa)",
+          "explanation": "Six tasks asking how to greet the Oba, \"Ontayo\", an expectant mother (Alaboyun), a town chief, a new mother and an Akope. No answers or marking are supplied; \"Ontayo\" is unexplained (YORUBA-T1-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration are implemented. Source-week inventory and objective coverage are not complete.",
-      "required_action": "Complete YO-INV-T1, YO-INV-T2 and YO-INV-T3, then their bounded indexing tasks. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Week 1 of the 1st Term is indexed at objective level (15 PARTIAL coverage entries, week items YO-WK-T1-W01); weeks 2-8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
+      "required_action": "Complete YO-WK-T1-W02..W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
         "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "The 1st Term opening list (extractRawText lines 9-51, 22 topics, SHA-256 afccd54e...) has no week numbers and no week markers. Week 1 was mapped to the first three topics (lines 9, 11, 13) because their titles match the Week 1 EKA ISE headings word for word and appear first; the mapping is inferred, not stated. The list also contains one extra topic (\"Ogbon itopinpin litireso ede Yoruba\", line 31) between the Week 4 ASA topic and the Week 5 topics, which has no matching body part and is most plausibly the Week 4 LITIRESO objective with no body (for YO-WK-T1-W04 to confirm).",
+      "required_action": "Teacher or owner confirms that the opening list is in chronological week order and that Week 1 is topics 1-3; YO-PRE-T1-1 must hash-account the whole list and classify it. Until then the scheme mapping is PARTIAL.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "The parser produces no rows for this source because its week headings are Yoruba ordinals (\"OSE KIN-IN-NI\" etc.), so no SS1-SRC-48b641249e3b:BODY:<sha256> identity exists (YO-FND-T1-01). All 15 Week 1 coverage entries therefore cite exact line ranges and UTF-8 block hashes instead of parsed-row targets, and carry empty lesson_ids.",
+      "required_action": "Land the foundation change requested by YO-FND-T1-01 (source-specific week-label pattern with in-anchor occurrence checks), then re-bind the Week 1 coverage entries to identity targets and re-run the plan audit.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Defects in the Week 1 body (lines 61-310): (1) line 93 central vowel set \"a, en\" should read \"a, an\"; \"en\" duplicates the front nasal vowel at line 91 and the 5+2+5 vowel inventory does not close otherwise; (2) line 71 \"evigi\" vs line 83 \"erigi\", \"iwaju a lo n\" and \"aarin lion\" for iwaju ahon / aarin ahon, spaced \"e yin isale\", and both \"aja enu\" and \"aja-enu\" listed; (3) line 81 \"Eju isale\" where line 71 has \"eyin isale\"; (4) line 199 Babalawo greeting \"Aboru boye, sboye bo sise\" garbled; (5) line 253 explanatory sentence garbled (quoted in LIT-02); (6) line 269 \"Litireso yin je litireso alakosile\" (yin for yi); (7) sub-type lists at 261-265 and 275-279 use a., b., d. (c omitted); (8) time-table numerals mix case (Iv for IV, etc.); (9) \"Ontayo\" in the Ise asetilewa list (line 299) is unexplained.",
+      "required_action": "Subject expert confirms or corrects each defect; lessons must not copy the uncorrected text. No correction wording is authored here.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-NOTATION",
+      "kind": "CONTENT",
+      "detail": "The document has no tone-marked or sub-dot letters at all (verified in YO-INV-T1: 0 characters in U+1E00-U+1EFF, 0 combining marks, 0 accented Latin-1 letters). Week 1 vowel sets are written with plain e/o, so e/e-dot and o/o-dot cannot be distinguished and the EDE-04/EDE-05 sets cannot be verified; greetings and definitions also lack tone marks, which changes meaning and orthography in Yoruba.",
+      "required_action": "Subject expert supplies tone-marked and sub-dotted forms (or approves a documented ASCII convention) for the Week 1 material; no marks were added or normalised in this inventory.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W01-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "The six Igbelewon questions (lines 281-293) and the six Ise asetilewa greeting tasks (lines 295-307) have no answers, solutions or marking scheme. The Igbelewon questions also rely on Word automatic numbering, which extractRawText does not emit.",
+      "required_action": "Supply an answer key and marking scheme, or record an explicit decision that these exercises are teacher-marked without a key; do not fabricate answers.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
       ],
       "blocks_delivery": true
     }
