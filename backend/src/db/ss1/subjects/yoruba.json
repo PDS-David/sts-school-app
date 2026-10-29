@@ -1955,14 +1955,230 @@
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
         }
       ]
+    },
+    {
+      "id": "YO-T1-W07-SCHEME-EDE",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 18: Akoto ede Yoruba (the 1974 Yoruba orthography)",
+      "objective_locator": "opening scheme list line 43 (SHA-256 28840fc0c93ed61e24b6e6f78ee920128029c97f15ba42487151fc75a2030070); body EDE part lines 1505-1641 (SHA-256 f84b2dbd835dbf67a4d9084143fa043ae4e162a09a2fdf3a24b9959c30d42fb4)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 43; scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "The opening 22-topic list carries no week numbers. Topic 18 is \"Akoto ede Yoruba\" at line 43, which matches the EDE heading at 1507 (\"AKOLE ISE: AKOTO EDE YORUBA\") word for word apart from the label. Week 7 is the seventh block of the list and carries only two topics (lines 43 and 45); Week 8 supplies three again (lines 47, 49 and 51). Classification of the list belongs to YO-PRE-T1-1 (PENDING); the inference is recorded in YORUBA-T1-W07-SCHEME-MAPPING."
+        },
+        {
+          "locator": "source lines 1505-1641 (EKA ISE: EDE; AKOLE ISE at 1507)",
+          "explanation": "The body teaches the topic in six parts, indexed as YO-T1-W07-EDE-01..06, all PARTIAL: what akoto is and that changes are listed, then table 8 with five rows of old-to-new spellings under three explanatory notes (vowel deletion, doubled consonants, vowel quantity, the syllabic nasal and word separation). No deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-SCHEME-ASA",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 19: Iwa omoluabi ati anfaani re (good character and its benefits)",
+      "objective_locator": "opening scheme list line 45 (SHA-256 85727e39d0978fb17de3ab70a59104b5ecc36842e5a395fca5da9fbb2bcae849); body ASA part lines 1643-1667 (SHA-256 afeefeac7862f376f508becc0f78ff24a92bd8c0c40e49ca38390ce98949d61d)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 45; scheme list lines 9-51",
+          "explanation": "Mapped to Week 7 by position and by exact heading match: line 45 is \"Iwa omoluabi ati anfaani re\" and the ASA heading at 1645 is \"AKOLE ISE: IWA OMOLUABI ATI ANFAANI RE\" (case and label aside). The topic occurs once in the 22-topic list and names two things - good character and its benefits - of which the body teaches only the first."
+        },
+        {
+          "locator": "source lines 1643-1667 (EKA ISE: ASA; AKOLE ISE at 1645)",
+          "explanation": "The body teaches the definition and the list of behaviours, indexed as YO-T1-W07-ASA-01 and -02 (PARTIAL); the benefits promised in the title are never addressed, so YO-T1-W07-ASA-03 is UNRESOLVED and YORUBA-T1-W07-BENEFITS-MISSING raises the gap. No deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-EDE-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Akoto defined as the 1974 new spelling, and changes announced",
+      "objective_locator": "lines 1509-1511; SHA-256 287dde53161cf4ff3404860b9b4723f473884726e40f82d498fe7651bc53163d",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1509-1511",
+          "explanation": "Line 1509 defines the term in one sentence: \"Akoto ni sipeli tuntun ti awon onimo ede Yoruba fi enu ko le lori ni odun 1974 lati fi maa ko ede Yoruba sile.\" (akoto is the new spelling that Yoruba language scholars agreed orally in 1974 for writing Yoruba). Line 1511 announces the list that follows, \"Awon ayipada ti o de ba kiko ede Yoruba sile ni wonyi\", with no final stop. Nothing says what changed, why, or which body made the decision."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-EDE-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Table 8 introduced, and the first change: the vowel `i` dropped in `Aiya`, `Aiye`, `Eiye`",
+      "objective_locator": "lines 1513-1533 (table 8, header and first row); SHA-256 bb722d9f3af067120d69583bdc8e4996bf012f66d084f61942279d09d91e229a",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1513-1533 (Word table 8)",
+          "explanation": "After the announcement the week has its only Word table, 3 columns by 6 rows (1513-1639), headed \"SIPELI ATIJO\", \"SIPELI TUNTUN\" and \"IFIYESI\" (old spelling, new spelling, explanation). Its first row reads \"Aiya\", \"Aiye\", \"Eiye\" against \"Aya\", \"Aye\", \"Eye\", with the note \"A gbodo yo faweli “I” nitori a ko pe e\" (the vowel i must be dropped because it is not pronounced) split over 1531 and 1533. The note uses a capital \"I\" for the lower-case vowel and the only curly double quotes in the week; no pair is linked to its example and no tone or sub-dot mark appears on any form."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-EDE-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Second change: doubled consonants simplified in place names",
+      "objective_locator": "lines 1535-1551; SHA-256 feaad67e5813e738f573813c4ee7d0b813ab0dd6764c9b60f3775b3bfc9f5a07",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1535-1551",
+          "explanation": "The second row pairs \"Otta\", \"Oshogbo\", \"Ogbomosho\" and \"Ebute-Meta\" with \"Ota\", \"Osogbo\", \"Ogbomoso\" and \"Ebute-Meta\", under the note \"Konsonanti meji kii tele ara ninu ihun ede Yoruba\" (two consonants do not follow one another in Yoruba structure). Three of the four pairs show the change; \"Ebute-Meta\" is repeated unchanged, so the row also silently demonstrates a form that does not change, and no pairing is marked."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-EDE-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Third change: vowel length marked by doubling",
+      "objective_locator": "lines 1553-1581; SHA-256 2451530cf6029c24e2830205b29686de2fc765a0c1cab4e4b9f32e068a81a0e0",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1553-1581",
+          "explanation": "The third row pairs seven forms: \"Olopa\", \"Alanu\", \"Lailai\", \"Na\", \"Papa\", \"Miran\", \"Yi\" with \"Olopaa\", \"Alaaanu\", \"Laelae\", \"Naa\", \"Paapaa\", \"Miiran\", \"Yii\", under the note \"Iye iro faweli ti a ba pe ni ki a ko sile\" (write as many vowel sounds as are pronounced). It is the largest row, and the only rule that accounts for every pair; \"Lailai\" to \"Laelae\" is a vowel change rather than a doubling, so the row mixes two kinds of change under one heading."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-EDE-05",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Fourth change: syllabic nasal and vowel forms (`On` to `Oun`, `Enia` to `Eniyan`)",
+      "objective_locator": "lines 1583-1605; SHA-256 18325f0f999871eb7a6b42d46c51af1a2157a4a93b6b93c02dce1a95d877508d",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1583-1605",
+          "explanation": "The fourth row pairs six forms: \"On\", \"Enia\", \"Okorin\", \"Obirin\", \"Nkan\", \"Onje\" with \"Oun\", \"Eniyan\", \"Okunrin\", \"Obinrin\", \"Nnkan\", \"Ounje\". The IFIYESI cell for this row is empty, so the six pairs are given with no rule; \"Okorin\" to \"Okunrin\" is not a respelling of the same string and the relation between the pairs is left to the reader."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-EDE-06",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Fifth change: word division (`Tani` to `Ta ni`)",
+      "objective_locator": "lines 1607-1639; SHA-256 4dab716c075618f3b5fbb061f2c30ef5f35b4f4ba79ea1603978422b4331135c",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1607-1639",
+          "explanation": "The fifth row pairs \"Tani\", \"Kini\", \"Gegebi\", \"Gbagbo\", \"Nitoripe\", \"Lehina\", \"Biotilejepe\" with \"Ta ni\", \"Kin ni\", \"Wi pe\", \"Gege bi\", \"Gba gbo\", \"Nitori pe\", \"Leyin naa\", \"Bi o tile jepe\", under the note \"A ni lati ya awon oro yii soto\" (these words must be separated). The new column holds eight forms against seven old ones: \"Wi pe\" has no old counterpart, and read by position the pairs disagree from the third item onwards (\"Gegebi\" facing \"Wi pe\"), so the row cannot be reconstructed without the subject expert."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-ASA-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Omoluabi defined, and the home named as where character is taught",
+      "objective_locator": "lines 1647-1649; SHA-256 728cc5d4f3a3bd44d8c1c2faa4dcab65be768bc0d5203de237f006e95db8720b",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1647-1649",
+          "explanation": "Line 1647 defines the term: \"Omoluabi ni omo ti a bi ti a si ko ti o gba eko rere.\" (an omoluabi is a child who is born and trained and has received good education). Line 1649 adds two sentences: \"Ile ni a ti n ko eso rode. ise ati iwa omoluabi bere lati inu ile ti a ti bii.\" (the home is where the bush falcon is trained; good character begins in the home where one is born). The second sentence starts with a lower-case \"ise\" after a full stop, \"ko eso rode\" is garbled, and \"omoluabi\" is never given a behaviour beyond \"good education\"."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-ASA-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Eight named iwa omoluabi, listed without definition or example",
+      "objective_locator": "lines 1651-1667; SHA-256 e1abf6346e1fa07039f810e11dd5632ca31eff4a466ebfbf30165c31abfb9e98",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1651-1667",
+          "explanation": "Line 1651 introduces the list, \"Lara awon iwa omoluabi ni,\", and eight items follow as bare noun phrases whose automatic numbers extraction drops: \"Iwa ikini\" (greeting behaviour), \"Bibowo ati titeriba fun agba\" (honouring and respecting elders), \"Hihuwa pele lawujo\" (gentle conduct in society), \"Ooto sise\" (truthfulness), \"Iwa irele ati suuru\" (generosity and patience), \"Iwa igboran\" (obedience), \"Sise oyaye\" (being considerate) and \"Iwa iran-ra-eni lowo.\" (helping others). None is defined, illustrated or tied to the definition at 1647."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-ASA-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The benefits (anfaani) of iwa omoluabi promised by the topic",
+      "objective_locator": "source lines 1643-1667 contain no treatment of anfaani; the word occurs only in the heading at 1645 (ASA block SHA-256 afeefeac7862f376f508becc0f78ff24a92bd8c0c40e49ca38390ce98949d61d)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1643-1667; heading 1645; no body paragraph",
+          "explanation": "The scheme topic and the ASA heading both name \"anfaani re\" (its benefits), but the word \"anfaani\" occurs only in the heading at 1645 and nothing in the week states a single benefit of good character. The strand ends at 1667 with the eighth behaviour and the exercise block begins at 1669, so the second half of the topic is not taught at all. The objective is therefore UNRESOLVED rather than PARTIAL, and YORUBA-T1-W07-BENEFITS-MISSING raises the owner decision."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W07-ASSESS",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Four Igbelewon questions and one practical item, with no answers, marks or completion criteria",
+      "objective_locator": "lines 1669-1677; SHA-256 42e1b169235e4b2b46d3829ca03f81412a5c7e3a5ff42216928b05c3204ba869; line 1681; SHA-256 a00fccf1dc044678ec8950923d8b80ff68e9cfcc10aca16eefddc9e0f9036f6f",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1669-1677 (Igbelewon)",
+          "explanation": "Four numbered questions whose numbers extraction drops: \"Kin ni akoto?\" (1671), \"Ko sipeli atijo mewaa ki o si ko akoto re gege bii awon onimo se so\" (1673, write ten old spellings and their new forms as the scholars stated), \"Fun iwa omoluabi loriki\" (1675) and \"Ko iwa omoluabi marun-un ki o si salaye\" (1677, write five and explain). No answer, model response, mark allocation or completion standard is given for any of them."
+        },
+        {
+          "locator": "source line 1681 (Ise asetilewa)",
+          "explanation": "One practical item repeats question 1673 almost word for word and adds the requirement to explain the change in each: \"Ise asetilewa: ko sipeli atijo mewaa ki o si salaye awon ayipada ti o de ba okookan won gege bi awon onimo se fi enu ko ni odun 1974\". The table supplies 24 old forms in five unequal groups (3, 4, 7, 6 and 7), and the last group cannot be paired reliably (EDE-06), so ten spellings cannot be answered from the text as it stands."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1-6 of the 1st Term are indexed at objective level (15, 15, 23, 19, 14 and 12 coverage entries; week items YO-WK-T1-W01..W06), of which the two Week 5 LITIRESO entries are UNRESOLVED because that strand has a heading and no body; Week 6 has two strands and no LITIRESO section. Weeks 7-8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
-      "required_action": "Complete YO-WK-T1-W07..W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1-7 of the 1st Term are indexed at objective level (15, 15, 23, 19, 14, 12 and 12 coverage entries; week items YO-WK-T1-W01..W07), of which the two Week 5 LITIRESO entries and the Week 7 ASA benefits entry are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section. Week 8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
+      "required_action": "Complete YO-WK-T1-W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
@@ -2050,6 +2266,90 @@
       "required_action": "Record the missing answers, marks and completion criteria in YO-FACT-T1-W06-DEFECTS and decide how the practical is to be bounded to occupations the body actually covers; the assessment gap is recorded here, not filled.",
       "affected_ids": [
         "YO-T1-W06-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W07-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 7 is identified in the unnumbered 22-topic opening list (lines 9-51) as topics 18-19 (lines 43, 45), bound to the EDE heading at 1507 and the ASA heading at 1645. Topic 18 \"Akoto ede Yoruba\" matches 1507 exactly apart from the label; topic 19 \"Iwa omoluabi ati anfaani re\" matches 1645 word for word apart from case and the label. Week 7, like Week 6, carries **two** strands and has no LITIRESO section; Week 8 carries three topics again (lines 47, 49 and 51) and three strands, so the two-topic structure holds only for Weeks 6 and 7. No week number, week label or per-week grouping exists in the list.",
+      "required_action": "Confirm the position-based mapping of all 22 topics to the eight teaching sections, including the two-topic Weeks 6 and 7 and the three-topic Week 8, together with hash-accounting and classification of the whole list, under YO-PRE-T1-1 (PENDING); if confirmed, record it once for the term rather than per week. No objective was invented beyond the source text.",
+      "affected_ids": [
+        "YO-T1-W07-SCHEME-EDE",
+        "YO-T1-W07-SCHEME-ASA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W07-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "Week 7 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1503-1684 (YO-FND-T1-01; the Week 1-6 ROW-IDENTITY items record the same document-wide condition). All 12 Week 7 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week contains a 3 x 6 Word table whose cells are the substance of the lesson.",
+      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 7 coverage entries to identity targets and re-run the plan audit.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W07-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Seven defects found in Week 7 (lines 1503-1684): (1) 1509-1511: the definition is a single run-on sentence with \"fi enu ko le lori\", nothing states what changed or why, and 1511 has no final stop before the table; (2) table 8 at 1513-1639: the IFIYESI column is filled in only four of the five data rows (the row at 1583-1605 has none), its notes are not tied to individual pairs, every cell stacks several forms as separate paragraphs so extraction joins them without separators (\"AiyaAiyeEiye\"), \"Ebute-Meta\" is repeated unchanged in the second row, and the fifth row pairs eight new forms with seven old ones (\"Wi pe\" has no old counterpart, so positional pairing breaks from the third item); (3) 1531: the note writes a capital \"I\" for the lower-case vowel and uses curly double quotes, the only non-ASCII characters in the week; (4) 1541/1549 and 1535-1549: the place names carry no tone marks and no sub-dot letters (\"Osogbo\", \"Ogbomoso\", \"Ota\"), so the spellings the row teaches are incomplete; (5) ASA 1647-1649: a two-sentence definition then a new sentence beginning with lower-case \"ise\", with \"ko eso rode\" garbled and \"bii\" for \"bi\", and no benefit of good character anywhere; (6) ASA 1651-1667: eight bare noun phrases with no definition, example or explanation, and no link back to the definition at 1647; (7) 1671-1681: four questions and one practical, all automatically numbered, with no answers or marks, the practical repeating question 1673, and both asking for ten old spellings while the table supplies 24 in five unequal groups whose last group cannot be paired.",
+      "required_action": "Obtain one recorded subject-expert decision on every listed defect together with the notation decision (YORUBA-T1-W07-NOTATION) under YO-FACT-T1-W07-DEFECTS; the Week 7 lessons must not copy the uncorrected text and must not reuse the table's misaligned rows. No correction wording is authored here.",
+      "affected_ids": [
+        "YO-T1-W07-SCHEME-EDE",
+        "YO-T1-W07-SCHEME-ASA",
+        "YO-T1-W07-EDE-01",
+        "YO-T1-W07-EDE-02",
+        "YO-T1-W07-EDE-03",
+        "YO-T1-W07-EDE-04",
+        "YO-T1-W07-EDE-05",
+        "YO-T1-W07-EDE-06",
+        "YO-T1-W07-ASA-01",
+        "YO-T1-W07-ASA-02",
+        "YO-T1-W07-ASA-03",
+        "YO-T1-W07-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W07-NOTATION",
+      "kind": "CONTENT",
+      "detail": "The Week 7 text contains no tone-marked or sub-dot character: across lines 1503-1684 there are 0 characters in U+00C0-U+024F and 0 combining marks. The only non-ASCII characters are one pair of curly double quotes (U+201C/U+201D) at 1531. This is the same document-wide condition as YORUBA-T1-W01..W06-NOTATION, but in a week whose subject is spelling it is decisive: the old and new forms in table 8 are exactly where sub-dot letters (o, e, s) and vowel marks belong, so \"Osogbo\", \"Ogbomoso\", \"Ota\", \"Olopaa\", \"Alaaanu\" and every other form omit letters the lesson is about, and the difference between \"Olopa\" and \"Olopaa\" cannot be seen as a vowel-length change in the orthography the document itself uses.",
+      "required_action": "Apply the term-wide notation decision recorded in YO-FACT-T1-W05-DEFECTS (or the superseding decision in YO-FACT-T1-W06/W07-DEFECTS) to every old and new form in table 8 and to the ASA list before the lessons are authored. Until then the spellings cannot be verified.",
+      "affected_ids": [
+        "YO-T1-W07-SCHEME-EDE",
+        "YO-T1-W07-SCHEME-ASA",
+        "YO-T1-W07-EDE-01",
+        "YO-T1-W07-EDE-02",
+        "YO-T1-W07-EDE-03",
+        "YO-T1-W07-EDE-04",
+        "YO-T1-W07-EDE-05",
+        "YO-T1-W07-EDE-06",
+        "YO-T1-W07-ASA-01",
+        "YO-T1-W07-ASA-02",
+        "YO-T1-W07-ASA-03",
+        "YO-T1-W07-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W07-BENEFITS-MISSING",
+      "kind": "OWNER_ACTION",
+      "detail": "The scheme topic and the ASA heading at 1645 are \"Iwa omoluabi ati anfaani re\" (good character and its benefits), but the body at 1647-1667 teaches only the definition and eight named behaviours; \"anfaani\" occurs nowhere in the week except the heading, and nothing states a single benefit. The second half of the topic is therefore untaught and YO-T1-W07-ASA-03 is UNRESOLVED.",
+      "required_action": "The owner must decide whether the Week 7 ASA lesson teaches the benefits from an authoritative source that must be named (a textbook, the scheme note or a recorded expert statement), or whether the topic is to be scoped to the eight behaviours and the benefits explicitly deferred. No benefit is invented in this item.",
+      "affected_ids": [
+        "YO-T1-W07-SCHEME-ASA",
+        "YO-T1-W07-ASA-03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W07-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "The Week 7 exercise block has four Igbelewon questions at 1671-1677 and one practical item at 1681. All five carry Word automatic numbering that extraction drops. No answers, model responses, mark allocation or completion standard are given. The practical repeats question 1673, both ask for ten old spellings, and the table supplies 24 old forms in five unequal groups (3, 4, 7, 6 and 7) whose last group cannot be paired, so ten cannot be selected and answered unambiguously. Question 1671 asks for a definition of \"akoto\" that the body gives in one sentence at 1509, and question 1677 asks for five behaviours and an explanation although none of the eight is explained.",
+      "required_action": "Record the missing answers, marks and completion criteria in YO-FACT-T1-W07-DEFECTS and decide how the ten-spelling exercises are to be bounded to forms the corrected table pairs; the assessment gap is recorded here, not filled.",
+      "affected_ids": [
+        "YO-T1-W07-ASSESS"
       ],
       "blocks_delivery": true
     },
