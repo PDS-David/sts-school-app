@@ -60,6 +60,18 @@
       }
     },
     {
+      "id": "RULE-MATH-T1-TITLE",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "anchor": "SS1 GENERAL MATHEMATICS SCHEME OF WORK FOR FIRST TERM",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "MATH-PRE-T1: mammoth 1.12.2 extractRawText() line 3 (the registered header_text; the line's single trailing space is not part of the anchor) and line 5 ('WEEK[S] ... TOPIC'); lines 1-2 and 4 are blank. Block SHA-256: line 3 alone 4f69457fb98d5f8bae0adadeb8c7f60080125030ece078745d2f2898fddfa833; line 5 alone b0dc014ff28cc622ac333ea55b91be3f727c95c28bcf10e9dc7c2c435091321b; lines 3-5 65262773200258982a17bc7f02dbbc5fde81e4d9ff83f1692659c5ce56b0be14 (lines joined with \\n, edge blank lines trimmed, UTF-8, no trailing newline). The anchor occurs exactly once in the extracted text.",
+        "explanation": "Document title plus scheme-table column header. They state document identity only and carry no teaching objective. The scheme rows that follow (extracted lines 7-31) are one Word decimal list (numbering.xml abstractNum 20: decimal, start 1, level text %1), so Word shows week numbers 1-13 while mammoth extractRawText emits no list numbers. Revision and examination rows and the reference list are classified by separate rules."
+      }
+    },
+    {
       "id": "RULE-MATH-T2-ALIAS",
       "op": "source_alias",
       "source_id": "SS1-SRC-b802686e83d2",
@@ -116,11 +128,23 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-0c9004137f95",
       "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
-      "anchor": "Revision.\n\nExamination.\n\nExamination\n\nREFERENCE  BOOKS",
+      "anchor": "Revision.\n\nExamination.\n\nExamination",
       "kind": "SCHEME_ONLY",
       "evidence": {
-        "locator": "scheme preamble, final scheme lines and reference-book heading",
-        "explanation": "Scheme-only lines for revision/examination weeks and the heading of the reference-book list; not teaching bodies."
+        "locator": "MATH-PRE-T1: mammoth extractRawText() lines 27-31 ('Revision.', 'Examination.', 'Examination'); block SHA-256 7d9e656eb6916ccd863b2ba66defe54c10a54b319d3bfa3fbbc00a37c79a4cba (lines joined with \\n, edge blank lines trimmed). The 36-character anchor occurs exactly once in the extracted text and matches no parsed row (the first parsed body starts at 'Week 1.', line 41). These are auto-numbered scheme rows 11-13 (numbering.xml numId 20 -> abstractNum 20, decimal, start 1).",
+        "explanation": "Revision and the two examination rows of the 1st Term scheme. The rows are auto-numbered 11-13 in Word but the extract carries no numbers; the parsed body stops at Week 11 (revision), so scheme rows 12-13 have no teaching body and are markers only. The reference-book heading is classified by RULE-MATH-T1-REFERENCES."
+      }
+    },
+    {
+      "id": "RULE-MATH-T1-REFERENCES",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "anchor": "REFERENCE  BOOKS\n\nMAN MATHEMATICS FOR SENIOR SECONDARY SCHOOLS 1\n\nESSENTIAL MATHEMATICS FOR SENIOR SECONDARY SCHOOLS 1 BY A.J.S OLUWASANMI\n\nNEW GENERAL MATHEMATICS FOR SENIOR SECONDARY SCHOOL 1 BY M.F.MACRAE ETAL\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "MATH-PRE-T1: mammoth extractRawText() lines 33-39 ('REFERENCE  BOOKS' with two spaces, then the three titles; line 39 ends with 13 tab characters, included verbatim in the anchor). Block SHA-256 a817c8c4fb8f8cc24a694d09e990830b2924985f5c519fa9c6a530d046b053f0 (lines joined with \\n, edge blank lines trimmed). The 225-character anchor occurs exactly once in the extracted text and matches no parsed row.",
+        "explanation": "Reference-book list printed directly after the scheme of work; scheme-only text with no teaching content. Titles recorded verbatim: \"MAN MATHEMATICS FOR SENIOR SECONDARY SCHOOLS 1\"; \"ESSENTIAL MATHEMATICS FOR SENIOR SECONDARY SCHOOLS 1 BY A.J.S OLUWASANMI\"; \"NEW GENERAL MATHEMATICS FOR SENIOR SECONDARY SCHOOL 1 BY M.F.MACRAE ETAL\". No edition, publisher or year is stated in the source and none is added."
       }
     },
     {
@@ -910,6 +934,22 @@
   "assets": [],
   "coverage": [
     {
+      "id": "COV-MATH-T1-TITLE",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Document title and scheme-table column header; no teaching objective",
+      "objective_locator": "mammoth extractRawText() lines 3-5",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-MATH-T1-TITLE"
+      ],
+      "evidence": [
+        {
+          "locator": "line 3 (title) SHA-256 4f69457fb98d5f8bae0adadeb8c7f60080125030ece078745d2f2898fddfa833; line 5 (WEEK[S]/TOPIC) SHA-256 b0dc014ff28cc622ac333ea55b91be3f727c95c28bcf10e9dc7c2c435091321b; lines 3-5 SHA-256 65262773200258982a17bc7f02dbbc5fde81e4d9ff83f1692659c5ce56b0be14; text before the first parsed label 'Week 1.' (line 41) SHA-256 63fa18ae46b16474b0452c0c2be4513ae991c68f4e0de9a8193308c54ad41b87",
+          "explanation": "Line 3 is the registered header_text and line 5 is the scheme-table column header. The ten scheme topic rows (lines 7-25) map one-to-one to MATH-WK-T1-W01..W10; the revision row (line 27) is scheme row 11 and is covered by COV-MATH-T1-R10; the two examination rows (lines 29 and 31) are COV-MATH-T1-EXAM; the reference list (lines 33-39) is COV-MATH-T1-REFERENCES. The last hash is the exact value the compiler PREAMBLE_REQUIRES_COVERAGE detail will hold for text.slice(0, index of \"Week 1.\"), computed here without running the importer."
+        }
+      ]
+    },
+    {
       "id": "COV-MATH-T1-R00",
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Revision of JSS3 work and basic operations of integers",
@@ -1094,16 +1134,32 @@
     {
       "id": "COV-MATH-T1-EXAM",
       "source_id": "SS1-SRC-0c9004137f95",
-      "objective": "Examination weeks and reference-book list",
-      "objective_locator": "scheme final lines",
+      "objective": "Revision and examination scheme rows (11-13); no teaching body",
+      "objective_locator": "mammoth extractRawText() lines 27-31; scheme rows 11-13",
       "status": "MARKER",
       "lesson_ids": [
         "RULE-MATH-T1-SCHEME-EXAM"
       ],
       "evidence": [
         {
-          "locator": "scheme preamble",
-          "explanation": "Scheme-only items; no teaching content to cover."
+          "locator": "lines 27-31; SHA-256 7d9e656eb6916ccd863b2ba66defe54c10a54b319d3bfa3fbbc00a37c79a4cba",
+          "explanation": "Three auto-numbered scheme rows: \"Revision.\" (row 11, whose teaching body is parsed Week 11) and \"Examination.\" / \"Examination\" (rows 12-13, with no teaching body in the document). Classified by RULE-MATH-T1-SCHEME-EXAM (SCHEME_ONLY); marker bodies are retained and nothing is discarded."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-REFERENCES",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Reference-book list printed after the 1st Term scheme of work",
+      "objective_locator": "mammoth extractRawText() lines 33-39",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-MATH-T1-REFERENCES"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 33-39; SHA-256 a817c8c4fb8f8cc24a694d09e990830b2924985f5c519fa9c6a530d046b053f0",
+          "explanation": "Heading \"REFERENCE  BOOKS\" and three titles: \"MAN MATHEMATICS FOR SENIOR SECONDARY SCHOOLS 1\", \"ESSENTIAL MATHEMATICS FOR SENIOR SECONDARY SCHOOLS 1 BY A.J.S OLUWASANMI\", \"NEW GENERAL MATHEMATICS FOR SENIOR SECONDARY SCHOOL 1 BY M.F.MACRAE ETAL\". The anchor contains line 39's exact tab run and occurs once. Scheme-only text; no teaching content. No edition, publisher or year is stated or invented."
         }
       ]
     },
