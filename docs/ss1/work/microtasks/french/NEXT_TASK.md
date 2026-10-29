@@ -1,51 +1,46 @@
-# FR-WK-T1-W03 — French
+# FR-WK-T1-W04 French
 
-```text
-Execute ONE task: FR-WK-T1-W03. Repository PDS-David/sts-school-app, latest master.
-Reviewed base 0ee6033d585098bbb418be5b8fbda3ac7809f67a; fetch current master, read AGENTS.md if present, inspect this task and open PRs. If already done, report its evidence and stop. If another PR owns it, do not duplicate it. Use a unique branch from master.
+Execute only FR-WK-T1-W04 in PDS-David/sts-school-app. Reviewed master: 9f745bb896f2a2430269fdc491ad2eaf74874513 on 30 October 2026.
 
-READ THESE REPOSITORY FILES
+Fetch current master, read applicable AGENTS.md, and inspect open PRs. Create an isolated branch. Re-read this task's current QUEUE.json record. If it is now implemented, cite that evidence and stop; do not repeat it or pick another task without assignment. If another PR owns this subject/package, coordinate or wait rather than overwrite it. This is one small task, not completion of the whole subject.
+
+## Read
 - docs/ss1/work/microtasks/french/QUEUE.json
 - docs/ss1/contracts/CONTRACT.md
 - backend/src/db/ss1/subjectPackageSchema.ts
-- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
-- backend/src/db/ss1/subjects/french.json
 - backend/src/db/ss1/compiler.ts
+- backend/src/db/ss1/subjects/french.json
+- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - docs/ss1/work/SS1-02/CHECKPOINT.md
 - docs/ss1/work/SS1-02/FRENCH_SOURCE_NOTES.md
 
-PREREQUISITES
-FR-SRC-T1. Confirm each is implemented; deferred verification is not a test pass.
+## Scope
+Type: SOURCE_WEEK_INDEXING
+Term and locator: 1st Term / Week 4 (source label '4')
+Dependencies: FR-SRC-T1. Check their committed implementation evidence; testing deferred is not verified.
 
-OBJECTIVE
-Index 1st Term Week 3 at objective level: list each scheme objective for the week, bind it to exact source rows and/or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.
+Index 1st Term Week 4 at objective level: list each scheme objective for the week, bind it to exact source rows and/or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.
 
-EXISTING EVIDENCE (historical descriptions must be checked against current files)
-Existing row-level coverage FRENCH-BODY-003 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-GREETINGS-T1; correction SS1-02-french-COR-003 binds body 142d0eb60b9384edcf42f8a302829dc51b7c3277fcda1457c70d19ffcec59f98 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.
+## Exact input
+- Attach standalone `FRENCH Ss1.docx` or extract `SSS 1/1st Term SS1_/FRENCH Ss1.docx` from a supplied container. Member SHA-256: `2bedee524a17700d40d81dc1df8d10f529b49d4a918f38a83914ce7b0c43e864`.
+The full archive is optional. If Library access exists, retrieve SSS 1-20260507T072431Z-3-001 (1).zip there before asking for another upload; validate the member hash. Accept matching bytes regardless of filename. Do not require the full ZIP or assert its hash unless checked. Do not infer source headings from filenames. If inaccessible, state the exact missing member and checkpoint any independent work; never invent evidence.
 
-COMPLETION CONDITION
-Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments.
-
-EXACT ATTACHMENTS
-- Standalone original: FRENCH Ss1.docx
-  Manifest member: SSS 1/1st Term SS1_/FRENCH Ss1.docx
-  SHA-256: 2bedee524a17700d40d81dc1df8d10f529b49d4a918f38a83914ce7b0c43e864
-Accept standalone matching bytes or that member from any supplied container. Do not demand the full ZIP. Hash before conversion; retain archive_member verbatim. If a source is absent, request only the exact file above. Never invent its headings. The full ZIP, if used, has SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; claim its verification only if actually checked.
-
-WRITE SCOPE
+## Permitted writes
 - backend/src/db/ss1/subjects/french.json
 - docs/ss1/work/microtasks/french/QUEUE.json
-- docs/ss1/work/microtasks/french/FR-WK-T1-W03.md
-No other subject, JSS3, UI, shared schema/compiler, or shared next-assignment index changes. This prompt explicitly permits the task evidence note. Do not recreate an existing package from a historical 'package absent' note.
+- docs/ss1/work/microtasks/french/FR-WK-T1-W04.md
 
-IMPLEMENT
-- Preserve unrelated data and stable IDs. Keep original documents/full extracts/private renders out of Git.
-- Inventory tasks: inspect ONE document; commit exact section/week inventory and bounded follow-up items, including unlabelled teaching, markers and visual groups. Do not write every resulting lesson. Append IDs without changing existing ones; dependency on this inventory is allowed only after it is marked implemented.
-- Indexing tasks: implement actual objective-level coverage/rules under the existing schema, not just a prose recommendation. Read all objectives/exercises within the assigned section. Missing content gets a precise open item and a small lesson task. An exam/revision heading cannot erase teaching.
-- Lesson tasks: write teaching, worked examples, original answered practice and marking whose marks sum; precise objective coverage, provenance and exact UTF-8 body hash. Verify disputed factual claims against authoritative sources. Keep approval PENDING and verification DEFERRED. Do not copy unavailable textbook pages or infer whole-row coverage from one objective.
-- Preserve current holds and approvals; no invented owner/teacher response. Missing approval does not prevent writing a pending implementation. Unsupported schema needs a precise separate dependency, not a silent schema edit.
-- Testing deferred by owner: NO tests, typechecks, importer/plan runs, database/device checks, migration, import or deployment. Source extraction/rendering, hashes, JSON syntax, ID/reference checks and diff review are allowed.
+No UI, JSS3, other subject, shared compiler/schema, runtime, production data or shared assignment-index changes. Existing packages are present: ignore historical prose saying otherwise. Preserve stable IDs and all unrelated entries.
 
-FINISH AND PUBLISH
-Record what changed and exact evidence in docs/ss1/work/microtasks/french/FR-WK-T1-W03.md; update this queue item honestly, counts and eligible next_runnable. Mark only completed scope IMPLEMENTED_TESTING_DEFERRED. Fetch master again before publishing; preserve other agents' edits and resolve only your overlap. Commit/push a unique branch and open a PR to master titled with FR-WK-T1-W03; do not merge. If push is unavailable, deliver a binary-capable patch with base SHA, do not request a token. Report PR/commit or patch, actual blockers and next eligible task. Stop after this ONE task; do not claim the subject or class complete.
-```
+## Implementation and completion
+Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments.
+
+For INVENTORY: inspect this document and append bounded indexing/visual tasks with real locators; no lesson authoring or structural rule implementation. For INDEXING: implement supported coverage/rules under the existing schema within the named section; preserve source wording, distinguish markers from teaching, and record precise remaining gaps plus small follow-up items. Unsupported schema operations become an explicit blocker, not a silent skip or shared-schema change. Never discard teaching under a revision heading.
+
+Use exact UTF-8 body hashes and unique source anchors where the contract requires them. Do not label citations as reuse permission. Keep approval PENDING without actual approval evidence and verification DEFERRED. A factual uncertainty can remain open without preventing honest implementation of established content.
+
+Testing is deferred by the owner: do not run typechecks, unit suites, importer, database, device or full-corpus validation. Basic JSON parsing, hash calculation, checking references/IDs, and inspecting the diff are permitted authoring checks; report them as such, not tests. Do not install/run the application merely to produce a task note.
+
+Update only this queue item to IMPLEMENTED_TESTING_DEFERRED when its completion condition is met, recording the exact evidence file; otherwise use BLOCKED with the precise reason. Recompute queue counts/status_counts from items. Do not mark the whole subject complete. Commit a concise evidence note with source hashes, locators, changes and remaining work. Never commit original documents, full private extracts, renders or credentials.
+
+Commit and push your branch and open one PR to master. Do not merge other agents' PRs. If GitHub write access fails, finish the local implementation and deliver a binary-capable patch plus commit/base SHA and changed paths; do not ask for a pasted token. State exactly whether publication succeeded. Stop after this item; name the next eligible item without executing it.

@@ -1,52 +1,47 @@
-# TD-SCH-W02 — Technical Drawing
+# TD-SCH-W03 Technical Drawing
 
-```text
-Execute ONE task: TD-SCH-W02. Repository PDS-David/sts-school-app, latest master.
-Reviewed base 0ee6033d585098bbb418be5b8fbda3ac7809f67a; fetch current master, read AGENTS.md if present, inspect this task and open PRs. If already done, report its evidence and stop. If another PR owns it, do not duplicate it. Use a unique branch from master.
+Execute only TD-SCH-W03 in PDS-David/sts-school-app. Reviewed master: 9f745bb896f2a2430269fdc491ad2eaf74874513 on 30 October 2026.
 
-READ THESE REPOSITORY FILES
+Fetch current master, read applicable AGENTS.md, and inspect open PRs. Create an isolated branch. Re-read this task's current QUEUE.json record. If it is now implemented, cite that evidence and stop; do not repeat it or pick another task without assignment. If another PR owns this subject/package, coordinate or wait rather than overwrite it. This is one small task, not completion of the whole subject.
+
+## Read
 - docs/ss1/work/microtasks/technical-drawing/QUEUE.json
 - docs/ss1/contracts/CONTRACT.md
 - backend/src/db/ss1/subjectPackageSchema.ts
-- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
-- backend/src/db/ss1/subjects/technical-drawing.json
 - backend/src/db/ss1/compiler.ts
+- backend/src/db/ss1/subjects/technical-drawing.json
+- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - docs/ss1/work/SS1-03/CHECKPOINT.md
 - docs/ss1/work/SS1-03/HANDOFF.json
 - docs/ss1/work/SS1-03/evidence/parsed_rows.json
 
-PREREQUISITES
-TD-SRC-T2, TD-PRE-T2. Confirm each is implemented; deferred verification is not a test pass.
+## Scope
+Type: SOURCE_WEEK_INDEXING
+Term and locator: 2nd Term / WEEK 3 scheme-table row (parsed row 2)
+Dependencies: TD-SRC-T2, TD-PRE-T2. Check their committed implementation evidence; testing deferred is not verified.
 
-OBJECTIVE
-Record the scheme objective in WEEK 2 (parsed row 1, 31 characters: "Escribed circle"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.
+Record the scheme objective in WEEK 3 (parsed row 2, 15 characters: "Polygons"), bind it to the teaching row that covers it, and classify this row as scheme-only with a SCHEME_ONLY rule whose anchor is unique, or record why none is possible.
 
-EXISTING EVIDENCE (historical descriptions must be checked against current files)
-Parsed row 1 (label 'WEEK 2', body sha256 e3b8e93efcf30567d0a6e891a8d4de2815581d457109a5ad5221636a3f7f71d4, 31 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.
+## Exact input
+- Attach standalone `2ND TERM S1 TECHNICAL DRAWING.docx` or extract `SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx` from a supplied container. Member SHA-256: `69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d`.
+The full archive is optional. If Library access exists, retrieve SSS 1-20260507T072431Z-3-001 (1).zip there before asking for another upload; validate the member hash. Accept matching bytes regardless of filename. Do not require the full ZIP or assert its hash unless checked. Do not infer source headings from filenames. If inaccessible, state the exact missing member and checkpoint any independent work; never invent evidence.
 
-COMPLETION CONDITION
-Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded.
-
-EXACT ATTACHMENTS
-- Standalone original: 2ND TERM S1 TECHNICAL DRAWING.docx
-  Manifest member: SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx
-  SHA-256: 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d
-Accept standalone matching bytes or that member from any supplied container. Do not demand the full ZIP. Hash before conversion; retain archive_member verbatim. If a source is absent, request only the exact file above. Never invent its headings. The full ZIP, if used, has SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; claim its verification only if actually checked.
-
-WRITE SCOPE
+## Permitted writes
 - backend/src/db/ss1/subjects/technical-drawing.json
 - docs/ss1/work/microtasks/technical-drawing/QUEUE.json
-- docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md
-No other subject, JSS3, UI, shared schema/compiler, or shared next-assignment index changes. This prompt explicitly permits the task evidence note. Do not recreate an existing package from a historical 'package absent' note.
+- docs/ss1/work/microtasks/technical-drawing/TD-SCH-W03.md
 
-IMPLEMENT
-- Preserve unrelated data and stable IDs. Keep original documents/full extracts/private renders out of Git.
-- Inventory tasks: inspect ONE document; commit exact section/week inventory and bounded follow-up items, including unlabelled teaching, markers and visual groups. Do not write every resulting lesson. Append IDs without changing existing ones; dependency on this inventory is allowed only after it is marked implemented.
-- Indexing tasks: implement actual objective-level coverage/rules under the existing schema, not just a prose recommendation. Read all objectives/exercises within the assigned section. Missing content gets a precise open item and a small lesson task. An exam/revision heading cannot erase teaching.
-- Lesson tasks: write teaching, worked examples, original answered practice and marking whose marks sum; precise objective coverage, provenance and exact UTF-8 body hash. Verify disputed factual claims against authoritative sources. Keep approval PENDING and verification DEFERRED. Do not copy unavailable textbook pages or infer whole-row coverage from one objective.
-- Preserve current holds and approvals; no invented owner/teacher response. Missing approval does not prevent writing a pending implementation. Unsupported schema needs a precise separate dependency, not a silent schema edit.
-- Testing deferred by owner: NO tests, typechecks, importer/plan runs, database/device checks, migration, import or deployment. Source extraction/rendering, hashes, JSON syntax, ID/reference checks and diff review are allowed.
+No UI, JSS3, other subject, shared compiler/schema, runtime, production data or shared assignment-index changes. Existing packages are present: ignore historical prose saying otherwise. Preserve stable IDs and all unrelated entries.
 
-FINISH AND PUBLISH
-Record what changed and exact evidence in docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md; update this queue item honestly, counts and eligible next_runnable. Mark only completed scope IMPLEMENTED_TESTING_DEFERRED. Fetch master again before publishing; preserve other agents' edits and resolve only your overlap. Commit/push a unique branch and open a PR to master titled with TD-SCH-W02; do not merge. If push is unavailable, deliver a binary-capable patch with base SHA, do not request a token. Report PR/commit or patch, actual blockers and next eligible task. Stop after this ONE task; do not claim the subject or class complete.
-```
+## Implementation and completion
+Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded.
+
+For INVENTORY: inspect this document and append bounded indexing/visual tasks with real locators; no lesson authoring or structural rule implementation. For INDEXING: implement supported coverage/rules under the existing schema within the named section; preserve source wording, distinguish markers from teaching, and record precise remaining gaps plus small follow-up items. Unsupported schema operations become an explicit blocker, not a silent skip or shared-schema change. Never discard teaching under a revision heading.
+
+Use exact UTF-8 body hashes and unique source anchors where the contract requires them. Do not label citations as reuse permission. Keep approval PENDING without actual approval evidence and verification DEFERRED. A factual uncertainty can remain open without preventing honest implementation of established content.
+
+Testing is deferred by the owner: do not run typechecks, unit suites, importer, database, device or full-corpus validation. Basic JSON parsing, hash calculation, checking references/IDs, and inspecting the diff are permitted authoring checks; report them as such, not tests. Do not install/run the application merely to produce a task note.
+
+Update only this queue item to IMPLEMENTED_TESTING_DEFERRED when its completion condition is met, recording the exact evidence file; otherwise use BLOCKED with the precise reason. Recompute queue counts/status_counts from items. Do not mark the whole subject complete. Commit a concise evidence note with source hashes, locators, changes and remaining work. Never commit original documents, full private extracts, renders or credentials.
+
+Commit and push your branch and open one PR to master. Do not merge other agents' PRs. If GitHub write access fails, finish the local implementation and deliver a binary-capable patch plus commit/base SHA and changed paths; do not ask for a pasted token. State exactly whether publication succeeded. Stop after this item; name the next eligible item without executing it.
