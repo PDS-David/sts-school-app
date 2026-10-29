@@ -23,21 +23,21 @@
     "Execute one queue item per worker. A source-reading item needs the attachment in required_attachments (archive SSS 1-20260507T072431Z-3-001.zip, member and member hash given). Registration of sources is complete; do not repeat it."
   ],
   "counts": {
-    "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 28,
-    "SOURCE_PREAMBLE_INDEXING": 3,
-    "LESSON": 31,
+    "ASSET": 2,
     "CORRECTION_BINDING": 28,
     "FACTUAL_DEPENDENCY": 7,
-    "ASSET": 2,
-    "VISUAL_DISPOSITION": 5,
+    "LESSON": 33,
+    "SCOPE_DECOMPOSITION": 1,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 28,
     "TEST": 2,
-    "SCOPE_DECOMPOSITION": 1
+    "VISUAL_DISPOSITION": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 61,
-    "PENDING": 45,
-    "BLOCKED": 4
+    "BLOCKED": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
+    "PENDING": 46
   },
   "items": [
     {
@@ -179,7 +179,7 @@
       "kind": "SOURCE_WEEK_INDEXING",
       "source_id": "SS1-SRC-945dfb24eaf6",
       "term": "1st Term",
-      "week_or_locator": "Week 3 (source label '3')",
+      "week_or_locator": "Week 3 children 78-145 (label 'WEEK 3' at child 78; next label 'WEEK 4' at child 146)",
       "objective": "Index 1st Term Week 3 at objective level: list each scheme objective for the week, bind it to exact source rows and/or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
       "required_files": [
         "backend/src/db/ss1/subjects/french.json",
@@ -207,8 +207,8 @@
       "depends_on": [
         "FR-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-003 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-GREETINGS-T1; correction SS1-02-french-COR-003 binds body 142d0eb60b9384edcf42f8a302829dc51b7c3277fcda1457c70d19ffcec59f98 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Existing row-level coverage FRENCH-BODY-003 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-GREETINGS-T1; correction SS1-02-french-COR-003 binds body 142d0eb60b9384edcf42f8a302829dc51b7c3277fcda1457c70d19ffcec59f98 to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet. | Implemented: french.json coverage FRENCH-T1-W03-OBJ-1 and FRENCH-T1-W03-OBJ-2 added (both PARTIAL -> SUP-SS1-FRENCH-GREETINGS-T1), open items FRENCH-T1-W03-GREETING-SCOPE (CONTENT) and FRENCH-T1-W03-ESSAY-SCOPE (CONTENT), both blocking. Week 3 is children 78-145 of w:body: label at 78, lead-in at 79-82 ('L'introduction au cours'), empty 83, greeting list 84-133 (heading plus 49 rows, 47 distinct strings), empty 135, self-presentation 136-145 (heading, task line 137, eight prompts 138-145). There is no scheme-of-work table and no tracked, hidden, text-box, table, OMML or drawing content. No lesson, correction or asset added or changed; FRENCH-BODY-003 and correction SS1-02-french-COR-003 are unchanged. Follow-ups: FR-LES-T1-W03-GREETING-SET, FR-LES-T1-W03-SELF-ESSAY. Record: docs/ss1/work/microtasks/french/FR-WK-T1-W03.md. Implemented, not approved or verified.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
     },
     {
@@ -3273,6 +3273,8 @@
         "FR-LES-T1-W01-BENEFITS",
         "FR-LES-T1-W02-ANGLOPHONE",
         "FR-LES-T1-W02-DEMONYMS",
+        "FR-LES-T1-W03-GREETING-SET",
+        "FR-LES-T1-W03-SELF-ESSAY",
         "FR-FACT-T1-W02-HEADS-OF-STATE",
         "FR-FACT-REPLACEMENT-SCOPE",
         "FR-TEST-FULL-SOURCE-REGRESSION"
@@ -3280,6 +3282,56 @@
       "status": "PENDING",
       "implementation_reference": "french.json open_items[id=FRENCH-AUTHORING-FINISH] kind=CONTENT blocks_delivery=true (unchanged). Children: objective mapping = FR-WK-* and FR-PRE-*; scope reconciliation = FR-FACT-REPLACEMENT-SCOPE; visual pages = FR-VIS-*; tests = FR-TEST-FULL-SOURCE-REGRESSION (existing FR-TEST-PACKAGE-EXISTING already written).",
       "completion_condition": "All dependencies complete and FRENCH-AUTHORING-FINISH replaced by precise open items or removed with evidence."
+    },
+    {
+      "id": "FR-LES-T1-W03-GREETING-SET",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 children 84-133 (objective FRENCH-T1-W03-OBJ-1)",
+      "objective": "Author a supplement with original answered practice that teaches the Week 3 courtesy and celebration expressions the replacement omits, in situations, with spelling and usage checked against an authoritative French reference, and record any expression whose intended meaning is unclear as an owner decision rather than guessing.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W03.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W03-GREETING-SET.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W03; see open item FRENCH-T1-W03-GREETING-SCOPE. Not started.",
+      "completion_condition": "Supplement exists with provenance and marks that sum, and every expression either taught or recorded as an owner decision; or the objective is left PARTIAL with the owner decision recorded."
+    },
+    {
+      "id": "FR-LES-T1-W03-SELF-ESSAY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 children 136-145 (objective FRENCH-T1-W03-OBJ-2)",
+      "objective": "Author a supplement with a model paragraph and original answered practice for the source's eight-field written self-presentation, including the state, language, address or domicile and favourite dish or colour fields, with guidance that a private home address is not required.",
+      "required_files": [
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/FR-WK-T1-W03.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/work/microtasks/french/FR-LES-T1-W03-SELF-ESSAY.md"
+      ],
+      "depends_on": [
+        "FR-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FR-WK-T1-W03; see open item FRENCH-T1-W03-ESSAY-SCOPE. Not started.",
+      "completion_condition": "Supplement exists with a model paragraph, answered practice and marks that sum, and coverage for FRENCH-T1-W03-OBJ-2 is raised to IMPLEMENTED_EQUIVALENT or the objective is left PARTIAL with the owner decision recorded."
     }
   ],
   "review": {
@@ -3295,6 +3347,6 @@
     }
   },
   "next_runnable": [
-    "FR-WK-T1-W03"
+    "FR-WK-T1-W04"
   ]
 }

@@ -3536,6 +3536,46 @@
       ]
     },
     {
+      "id": "FRENCH-T1-W03-OBJ-1",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "objective": "Recognise and use the week's greeting and courtesy expressions, choosing one suited to a situation.",
+      "objective_locator": "SS1-SRC-945dfb24eaf6: word/document.xml, 0-based children of w:body 84-133 (heading 'LES SALUTATIONS' and 49 expression rows, 47 distinct strings); child-text hash 0af4ba7442e5f2915eaec1d90498962322037e434e547ad78b55e8987f609e0e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-FRENCH-GREETINGS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-945dfb24eaf6: word/document.xml children 84-133",
+          "explanation": "The source is a bare vocabulary list: no situation, model dialogue, translation, exercise or answer. Its 49 rows carry 47 distinct strings; 'Bon noel' repeats (98, 133) and 'Je vais bien' repeats (113, 129). Several items are misspelled, are not greetings, or have no confident reading: 'Bonsoir nuit' (92), 'Bonjour nee' (96), 'Bon paque' (114), 'Bon marriage' (131), 'Bon naissance / felicitation' (132), 'Bon voyager' (134), 'Bonne appetite' (122), 'Bon vaccance' (123), 'Bonjourmes mes camarades de la classe' (117). Most items lack their accents. The list is recorded verbatim in FR-WK-T1-W03.md; this entry does not present the errors as correct French."
+        },
+        {
+          "locator": "SUP-SS1-FRENCH-GREETINGS-T1: body paragraph 1 and practice Q2-Q3",
+          "explanation": "The replacement teaches bonjour, bonsoir, salut, au revoir and à demain with situations, merci and s'il vous plaît, and tu versus vous, and tests polite address (Q2) and à demain with merci (Q3). It does not teach the celebration, weekday, departure, meal, work, comeback and response items of the source list, so the objective is PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "FRENCH-T1-W03-OBJ-2",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "objective": "Present oneself in writing using the source's prompted fields: name, age, nationality, state, language, address or domicile, profession, favourite dish or colour.",
+      "objective_locator": "SS1-SRC-945dfb24eaf6: word/document.xml, 0-based children of w:body 136-145 (heading 'L’introduction/presentation', task line 137, eight prompts 138-145); child-text hash c74af09a026b7942a1d32958bf9f97150d8db521a2ff023107dccf556aca8630",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-FRENCH-GREETINGS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-945dfb24eaf6: word/document.xml children 136-145",
+          "explanation": "The source gives one writing task (137, 'Ecrivez sur une redaction moi-meme') followed by eight fill-in prompts: name, age, nationality, state, language, address or domicile, profession, favourite dish or colour (138-145). There is no model text, no answer and no mark allocation; 'Votre etat' (141) is a state or status field with no explanation, and 'Votre address/domicile' (143) asks for a home address the replacement deliberately does not require."
+        },
+        {
+          "locator": "SUP-SS1-FRENCH-GREETINGS-T1: body paragraphs 3-4 and practice Q1",
+          "explanation": "The replacement's introduction sentences cover name, age, nationality, residence and profession in first and third person, with 'J'aime lire' as a liking, and Q1 tests a three-sentence third-person introduction. It does not teach the state field, the language field, an address or domicile field, or a favourite dish or colour, and it has no counterpart to the source's self-description essay, so the objective is PARTIAL."
+        }
+      ]
+    },
+    {
       "id": "FRENCH-BODY-004",
       "source_id": "SS1-SRC-945dfb24eaf6",
       "objective": "GRAMMAIRE ET CONJUGASION",
@@ -4039,6 +4079,28 @@
       "affected_ids": [
         "FRENCH-T1-W02-OBJ-4",
         "FRENCH-T1-W02-OBJ-5"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FRENCH-T1-W03-GREETING-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The replacement SUP-SS1-FRENCH-GREETINGS-T1 teaches only the core situational greetings. The source's 49-row list also contains celebration items ('Bon noel' twice, 'Bonne annee', 'Bon aniversaire', 'Bon marriage', 'Bon naissance'), weekday items ('A lundi', 'A mardi', 'A dimance'), departure items ('Bon voyager', 'Bon vaccance'), a meal item ('Bonne appetite'), work and encouragement items ('Bon travail', 'Du courage'), comeback and response items ('De rien', 'Cava?', 'Je vais bien' twice, 'Comment?') and other formulae. Several are misspelled, and three have no confident reading ('Bonsoir nuit', 'Bonjour nee', 'Bon paque'); none of this is taught.",
+      "required_action": "Author a sourced supplement that teaches the remaining expressions in situations, using authoritative French references for spelling and usage, and record any expression whose intended meaning is unclear as an owner decision rather than guessing.",
+      "affected_ids": [
+        "FRENCH-T1-W03-OBJ-1",
+        "SUP-SS1-FRENCH-GREETINGS-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FRENCH-T1-W03-ESSAY-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The source's written self-presentation task (children 136-145) asks for a redaction covering eight prompted fields: name, age, nationality, state, language, address or domicile, profession, favourite dish or colour. The replacement teaches name, age, nationality, residence and profession and has a three-sentence third-person practice; it has no counterpart to the essay task and no teaching for the state, language, address or favourite dish or colour fields.",
+      "required_action": "Author a supplement with a model paragraph and answered practice for the eight-field self-presentation, including the state, language, address and favourite dish or colour fields, with guidance that a private home address is not required, and bind coverage for OBJ-2.",
+      "affected_ids": [
+        "FRENCH-T1-W03-OBJ-2",
+        "SUP-SS1-FRENCH-GREETINGS-T1"
       ],
       "blocks_delivery": true
     }
