@@ -22,18 +22,24 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "DP-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). DP-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "DP-INV-T1 appended the 1st Term inventory items (21) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 21 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (DP-INV-T1.md)."
   ],
   "counts": {
+    "FACTUAL_DEPENDENCY": 4,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_PRESERVATION": 2,
     "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 10,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "VISUAL_DISPOSITION": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
-    "BLOCKED": 1
+    "BLOCKED": 1,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 24
   },
   "items": [
     {
@@ -169,8 +175,8 @@
       "depends_on": [
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory record: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md. Member 'SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx' (1,056,355 bytes, SHA-256 a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b) verified from the composite archive 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e (hash checked this session). mammoth 1.12.2 extractRawText: 39,578 chars, 1,773 lines, SHA-256 2f3f7c4c1165bff1d58a62d7cf2cf2ad793ceffbdf16d71fa0e85f74d8b5d375. Ten teaching weeks, each with a body: W1 87-281 836f73d0..., W2 287-429 c5d048b4..., W3 435-581 23f33f0d..., W4 585-725 210e0a92..., W5 729-827 83265555..., W6 833-955 f5baab60..., W7 961-1193 217a893e..., W8 1197-1455 ee64f1ac..., W9 1459-1607 7c54fd09..., W10 1613-1771 e581a7b5... (full hashes in the record). Unlabelled opening/scheme/references 1-81 07f34cdc...; scheme rows 1-10 map to the bodies with drift (no row names 'GENERATIONS OF COMPUTERS'; rows 3-4 overlap) and rows 11-12 (Revision/Examination, 69/71) have no body. 3 tables (1 x 1 empty shell child 2; 6 x 6 generations child 294; 6 x 5 information ages child 457); 2 publisher JPEGs (cover advertisement 3,306 x 2,515 SHA-256 b334a0e1...; tutor logo 949 x 359 SHA-256 e0c6cda0...; both carry contact details, not committed); the only diagram is the input -> processing -> output flow drawn twice with VML arrows (105 and 169). 334 auto-numbered paragraphs and 8 superscripts flatten in the text. Appended 21 PENDING items: DP-PRE-T1, DP-WK-T1-W01..W10, DP-MARK-T1-REVEXAM, DP-VIS-T1-W01-CYCLE, DP-VIS-T1-W04-TBL-GENERATIONS, DP-VIS-T1-W07-TBL-AGES, DP-VIS-T1-PUBLISHER-MEDIA, DP-PRES-T1-NUMBERING, DP-PRES-T1-SUPERSCRIPT, DP-FACT-T1-GENERATIONS, DP-FACT-T1-HARDWARE-MODELS, DP-FACT-T1-DIGITALIZATION-CLAIMS. No lesson, coverage entry, asset or parser rule written; no tests or importer run (deferred).",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -297,6 +303,786 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "DP-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "opening unlabelled block, lines 1-81 (SHA-256 07f34cdccb656a70155d2a989ffc5a737c39292a710d37021c16e7e6307c1d54)",
+      "objective": "Index the unlabelled opening block and the scheme as what they are, not as teaching weeks. The block holds the publisher advertisement and blank space (1-34), 'FIRST TERM E-LEARNING NOTE' (35) with the tutor logo strip, the subject/class line 'SUBJECT:  DATA PROCESSING' + six tabs + 'CLASS:  SSS1' (39), 'SCHEME OF WORK' (43), the tab header 'WEEK\\tTOPIC' (47), twelve auto-numbered scheme rows (49-71: Introduction to Data Processing; History of Computing; History of Computer I.; History of Computer II.; Classification of Computers I.; Classification of Computers II.; Digitalization of Data I.; Digitalization of Data II.; ICT Application in Everyday Life; Data and Information; Revision; Examination) and 'REFERENCES' (75) with three numbered entries (77-81: 'Data Processing forSenior Secondary Education by Hiit Plc.', 'A Handbook on Computer Studies by NiyiAdekolegan.', 'On-line Materials.'). Map rows 1-10 to the ten body weeks and record the drift: no row names 'GENERATIONS OF COMPUTERS' (Week Three's actual body topic), rows 3-4 both say 'History of Computer', and rows 11-12 have no body (disposed by DP-MARK-T1-REVEXAM). Implement the resulting identity/scheme/reference facts under the existing schema with provenance: source_id, exact line range and body hash. Do not treat a one-line scheme heading as evidence that its topic was taught, and do not translate the subject into Computer Studies or ICT.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-PRE-T1.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (opening 1-81, scheme rows 49-71, references 75-81).",
+      "completion_condition": "Identity, scheme rows and the three references are represented under the existing schema with exact provenance; rows 11-12 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 87-281 (marker 'WEEK ONE', topic 'TOPIC: INTRODUCTION TO DATA PROCESSING'), SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567",
+      "objective": "Index Week 1 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 87-281, exact label 'WEEK ONE', topic line 'TOPIC: INTRODUCTION TO DATA PROCESSING', body SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567) and every exercise in it: DEFINITION OF DATA (95), the input-processing-output labels (105), WHAT IS DATA PROCESSING? (111), PROPERTIES OF DATA (129-147), DATA PROCESSING CYCLE (149), the duplicate cycle labels at 169, EVALUATION (179-186), DATA PROCESSING ACTIVITIES (187) with INPUT ACTIVITY (197), PROCESSING ACTIVITY (207), OUTPUT ACTIVITY (221), IMPORTANCE OF DATA PROCESSING (227), GENERAL EVALUATION (233-246), READING ASSIGNMENT (247-252), WEEKEND ASSIGNMENT (253-276), THEORY (277-281). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. The cycle labels at 105 and 169 are the same input -> processing -> output flow drawn twice with VML arrows; the disposition is DP-VIS-T1-W01-CYCLE. The 'three steps' at 191-205 are conceptual stages, not instructions to execute.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 87-281, SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567; assessment blocks listed there).",
+      "completion_condition": "Week 1 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 287-429 (marker 'WEEK TWO', topic 'TOPIC: HISTORY OF COMPUTING'), SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b",
+      "objective": "Index Week 2 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 287-429, exact label 'WEEK TWO', topic line 'TOPIC: HISTORY OF COMPUTING', body SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b) and every exercise in it: EARLY MECHANICAL COUNTING/CALCULATING DEVICES (291), EARLY ELECTRO-MECHANICAL COUNTING DEVICES (299), EARLY ELECTRONIC COUNTING DEVICES (313), ABACUS (325), NAPIER'S BONE (331), EVALUATION (337-344), PASCALINE (345), LEIBNITZ CALCULATING MACHINE (355), JACQUARD'S LOOM (361), PUNCHED CARD (367), CONCLUSION (373), NUMBER SYSTEM (REVISION) (379-392), GENERAL EVALUATION (393-404), READING ASSIGNMENT (405-410), WEEKEND ASSIGNMENT (411-424), THEORY (425-429). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. NUMBER SYSTEM (REVISION) at 379-392 is a revision heading carrying substantive teaching inside the week; classify it by its body, not as a calendar marker. The historical device claims are dated and must carry a dated-citation dependency in later correction work.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 287-429, SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b; assessment blocks listed there).",
+      "completion_condition": "Week 2 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 435-581 (marker 'WEEK THREE', topic 'TOPIC:  GENERATIONS OF COMPUTERS'), SHA-256 23f33f0dfe418f06a5570aa13bc045679fcc1dab8de099cd55d87f70dd832c65",
+      "objective": "Index Week 3 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 435-581, exact label 'WEEK THREE', topic line 'TOPIC:  GENERATIONS OF COMPUTERS', body SHA-256 23f33f0dfe418f06a5570aa13bc045679fcc1dab8de099cd55d87f70dd832c65) and every exercise in it: FIRST GENERATION (439) with its characteristics list (443-455), SECOND GENERATION (457) with FEATURES (463-473), THIRD GENERATION (475) with its notes (479-489), CONCLUSION (491), EVALUATION (497-504), FOURTH GENERATION (505), FIFTH GENERATION (511-519), CONCLUSION (521), EVALUATION (527-534), GENERAL EVALUATION (535-546), READING ASSIGNMENT (547-552), WEEKEND ASSIGNMENT (553-566, including the option 'Robort' at 559), THEORY (567-580) asking for VLSI, SSI and LSI (573-577). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. This is the week where the scheme and body drift most: no scheme row names 'GENERATIONS OF COMPUTERS'. The years, technology and 'AI and Expertsystem' claims are dated and belong to DP-FACT-T1-GENERATIONS; the table in Week Four has the same subject.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 435-581, SHA-256 23f33f0dfe418f06a5570aa13bc045679fcc1dab8de099cd55d87f70dd832c65; assessment blocks listed there).",
+      "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 585-725 (marker 'WEEK FOUR', topic 'TOPIC:  HISTORY OF COMPUTERS'), SHA-256 210e0a92f9873777c7b9ffe98c3ca60de11c8e6b05a89344fd7c1b4fa35440cd",
+      "objective": "Index Week 4 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 585-725, exact label 'WEEK FOUR', topic line 'TOPIC:  HISTORY OF COMPUTERS', body SHA-256 210e0a92f9873777c7b9ffe98c3ca60de11c8e6b05a89344fd7c1b4fa35440cd) and every exercise in it: the table introduction 'Consider the table below:' (589), the 6 x 6 generations table (document child 294; generations First 1951-1958, Second 1959-1964, Third 1965-1975, Fourth 1975-1982, Fifth 1982 and above), GENERAL EVALUATION (689-700), READING ASSIGNMENT (701-706), WEEKEND ASSIGNMENT (707-720), THEORY (721-724). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. This week has no EVALUATION block and opens with a table before any prose heading, so the topic line is the only anchor. The table survives in mammoth only as a flattened cell sequence; the disposition is DP-VIS-T1-W04-TBL-GENERATIONS, and its dated claims belong to DP-FACT-T1-GENERATIONS.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 585-725, SHA-256 210e0a92f9873777c7b9ffe98c3ca60de11c8e6b05a89344fd7c1b4fa35440cd; assessment blocks listed there).",
+      "completion_condition": "Week 4 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 729-827 (marker 'WEEK FIVE', topic 'TOPIC: CLASSIFICATION OF COMPUTER BY TYPES'), SHA-256 83265555dcb256a4cd41958b45dd22a1618be77da7fc2b6384229abf0ead1a54",
+      "objective": "Index Week 5 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 729-827, exact label 'WEEK FIVE', topic line 'TOPIC: CLASSIFICATION OF COMPUTER BY TYPES', body SHA-256 83265555dcb256a4cd41958b45dd22a1618be77da7fc2b6384229abf0ead1a54) and every exercise in it: the three types by type (733), DIGITAL COMPUTER (735 and 743), ANALOGUE COMPUTER (737 and 749), HYBRID COMPUTER (741 and 755), EVALUATION (761-768), CLASSIFICATION OF COMPUTER BY FUNCTIONALITY (769) with SPECIAL PURPOSE COMPUTERS (779) and GENERAL PURPOSE COMPUTERS (785), GENERAL EVALUATION (791-802), READING ASSIGNMENT (803-808), WEEKEND ASSIGNMENT (809-822), THEORY (823-826). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. The by-type names are defined twice (735-741 as a list, 743-759 as prose); both occurrences must be recorded, not silently deduplicated. Only the functional classification is named by the scheme as 'Classification of Computers I.'",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 729-827, SHA-256 83265555dcb256a4cd41958b45dd22a1618be77da7fc2b6384229abf0ead1a54; assessment blocks listed there).",
+      "completion_condition": "Week 5 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 833-955 (marker 'WEEK SIX', topic 'TOPIC:  CLASSIFICATION OF COMPUTERS BY SIZE'), SHA-256 f5baab600d56c2f882b56fe1ba4cc979b80be57cf0379e0080e371b1c27dc020",
+      "objective": "Index Week 6 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 833-955, exact label 'WEEK SIX', topic line 'TOPIC:  CLASSIFICATION OF COMPUTERS BY SIZE', body SHA-256 f5baab600d56c2f882b56fe1ba4cc979b80be57cf0379e0080e371b1c27dc020) and every exercise in it: the four sizes (837), SUPER COMPUTER (849), MAINFRAME COMPUTERS (857, with the model list at 883: PDP II, VAX 750/6000, NCR 9300, DEC, HP 3000), CONCLUSION (865), EVALUATION (871-878), MINI COMPUTERS (879), MICRO COMPUTERS (887), REASONS WHY MICRO COMPUTERS ARE WIDELY USED (895), CONCLUSION (907), GENERAL EVALUATION (913-924), READING ASSIGNMENT (925-930), WEEKEND ASSIGNMENT (931-948), THEORY (949-955). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. The named hardware models and the mainframe/supercomputer claims are dated and belong to DP-FACT-T1-HARDWARE-MODELS. Week Seven's GENERAL EVALUATION reuses this week's size questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 833-955, SHA-256 f5baab600d56c2f882b56fe1ba4cc979b80be57cf0379e0080e371b1c27dc020; assessment blocks listed there).",
+      "completion_condition": "Week 6 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 961-1193 (marker 'WEEK SEVEN', topic 'TOPIC: DIGITALIZATION OF DATAI'), SHA-256 217a893e0cb0aa5333726149e6d6a1d02bf70bff44646d49aa5b0813cda519fc",
+      "objective": "Index Week 7 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 961-1193, exact label 'WEEK SEVEN', topic line 'TOPIC: DIGITALIZATION OF DATAI', body SHA-256 217a893e0cb0aa5333726149e6d6a1d02bf70bff44646d49aa5b0813cda519fc) and every exercise in it: BENEFITS OF DIGITALIZATION (973), TYPES OF DIGITAL COMPUTER (983), TECHNOLOGY OF DIFFERENT INFORMATION AGE (995) with the 6 x 5 ages table (document child 457: Stone, Iron, Middle, Industrial, Electronic age), EVALUATION (1075-1082), EARLY COUNTING DEVICES (1083) with FINGERS AND TOES (1099), STONES AND PEBBLES (1109), GRAINS (1119), STICKS (1125), MARKS ON THE WALL (1131) and DISADVANTAGES OF EARLY COUNTING DEVICES (1139), GENERAL EVALUATION (1155-1166), READING ASSIGNMENT (1169-1174), WEEKEND ASSIGNMENT (1175-1188), THEORY (1189-1193). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. The topic is printed 'DIGITALIZATION OF DATAI' (no space before I); record the exact label. The ages table survives only as flattened cells (DP-VIS-T1-W07-TBL-AGES). The GENERAL EVALUATION at 1155-1166 mixes Week Six questions (computer sizes, mainframe, mini computers) and duplicates 919; record it, do not invent which week owns it. Digitalization claims belong to DP-FACT-T1-DIGITALIZATION-CLAIMS.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 961-1193, SHA-256 217a893e0cb0aa5333726149e6d6a1d02bf70bff44646d49aa5b0813cda519fc; assessment blocks listed there).",
+      "completion_condition": "Week 7 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 1197-1455 (marker 'WEEK EIGHT', topic 'TOPIC: DIGITALIZATION OF DATA II.'), SHA-256 ee64f1ac95194f79236dd14b516909f92668b6b3987ddf26bf7f246b31912685",
+      "objective": "Index Week 8 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 1197-1455, exact label 'WEEK EIGHT', topic line 'TOPIC: DIGITALIZATION OF DATA II.', body SHA-256 ee64f1ac95194f79236dd14b516909f92668b6b3987ddf26bf7f246b31912685) and every exercise in it: COMPONENTS OF A COMPUTER SYSTEM (1201), HARDWARE COMPONENT (1213) with CPU/SYSTEM UNIT (1237), CONTROL UNIT (1249), ARITHMETIC AND LOGIC UNIT (1255) and MEMORY UNIT (1261), PERIPHERALS (1271), EVALUATION (1277-1284), SOFTWARE (1285) with SYSTEM SOFTWARE (1295) and APPLICATION SOFTWARE (1301), EVALUATION (1307-1314), PEOPLE WARE (1315), EVALUATION (1325-1336), PERIPHERALS (1337) with its three categories (1339), EVALUATION (1349-1356), MICRO COMPUTER (1357), PARTS OF MICROCOMPUTER (1363), THE MICROCOMPUTER (1375) with COMPUTER AS A MACHINE (1383), COMPUTER PROCESSES DATA (1387), A COMPUTER IS CONTROLLED BY A STORED PROGRAM (1395), MAIN PARTS OF A MICRO COMPUTER (1401), CONCLUSION (1413), GENERAL EVALUATION (1419-1430), READING ASSIGNMENT (1431-1436), WEEKEND ASSIGNMENT (1437-1450), THEORY (1451-1455). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. This week has four EVALUATION blocks; index all of them. The claim at 1397 that 'A computer does not understand English or any of the Nigerian languages' is a dated technical statement listed under DP-FACT-T1-DIGITALIZATION-CLAIMS. The software/hardware definitions are the week's core and must not be skipped because the scheme row says only 'Digitalization of Data II.'",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 1197-1455, SHA-256 ee64f1ac95194f79236dd14b516909f92668b6b3987ddf26bf7f246b31912685; assessment blocks listed there).",
+      "completion_condition": "Week 8 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 1459-1607 (marker 'WEEK NINE', topic 'TOPIC:  ICT APPLICATION IN EVERYDAY LIFE'), SHA-256 7c54fd0952ff030b07ba5ee999adb19c57fc586ff569525d6fb5579b893fe89b",
+      "objective": "Index Week 9 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 1459-1607, exact label 'WEEK NINE', topic line 'TOPIC:  ICT APPLICATION IN EVERYDAY LIFE', body SHA-256 7c54fd0952ff030b07ba5ee999adb19c57fc586ff569525d6fb5579b893fe89b) and every exercise in it: INTRODUCTION (1463), SECTORS WHERE ICT HAS PLAYED MAJOR ROLE (1471) with EDUCATION (1483), BANKING SECTOR (1499), INDUSTRY (1511) and COMMERCE (1523), IMPACT OF ICT ON THE SOCIETY (1535), NEGATIVE EFFECTS OF ICT (1549), EVALUATION (1563-1570), GENERAL EVALUATION (1571-1582), READING ASSIGNMENT (1583-1588), WEEKEND ASSIGNMENT (1589-1602), THEORY (1603-1607). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. The sector examples and the impact/negative-effect lists assert current social and economic effects; they are dated claims for DP-FACT-T1-DIGITALIZATION-CLAIMS and teaching must stay neutral on contested claims. The references to CD-ROM, Internet, Intranet and extranets are dated too.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 1459-1607, SHA-256 7c54fd0952ff030b07ba5ee999adb19c57fc586ff569525d6fb5579b893fe89b; assessment blocks listed there).",
+      "completion_condition": "Week 9 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "lines 1613-1771 (marker 'WEEK TEN', topic 'TOPIC:  DATA AND INFORMATION'), SHA-256 e581a7b51abd74f527a8f2b59a11cf64fc385346bf20a586dddf01cf946b3901",
+      "objective": "Index Week 10 of the 1st Term Data Processing source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 1613-1771, exact label 'WEEK TEN', topic line 'TOPIC:  DATA AND INFORMATION', body SHA-256 e581a7b51abd74f527a8f2b59a11cf64fc385346bf20a586dddf01cf946b3901) and every exercise in it: DEFINITION OF DATA (1617), TYPES OF DATA (1623), SUBDIVISION OF QUANTITATIVE DATA (1631), FORMS OF DATA (1639), EXAMPLES OF DATA (1649), SOURCES OF DATA (1655), EVALUATION (1661-1670), INFORMATION (1671), EXAMPLES OF INFORMATION (1679), SOURCES OF INFORMATION (1693), CHARACTERISTICS OF GOOD INFORMATION (1699), DATA HANDLING (1713), WAYS OF HANDLING DATA (1719), GENERAL EVALUATION (1727-1740), READING ASSIGNMENT (1741-1746), WEEKEND ASSIGNMENT (1747-1766), THEORY (1767-1771). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not rename Data Processing as Computer Studies or ICT. Practical steps stay conceptual and must not require unsafe execution; no password or credential may be exposed. The last content line is 1771; the file ends at blank line 1773. 'WEEKEND ASSIGNMENT ' at 1747 carries a trailing space and must keep it in the locator. The data/information distinction is the terminal objective of the term and needs its unanswered questions recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 1613-1771, SHA-256 e581a7b51abd74f527a8f2b59a11cf64fc385346bf20a586dddf01cf946b3901; assessment blocks listed there).",
+      "completion_condition": "Week 10 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "DP-MARK-T1-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "scheme rows 11-12, lines 69 and 71 ('Revision', 'Examination'); in-body revision section 'NUMBER SYSTEM (REVISION)' 379-392",
+      "objective": "Disposition the source's revision and examination markers without erasing teaching. Scheme rows 11 and 12 (69 and 71) are auto-numbered list items whose numbers do not appear in the extracted text; the body has no WEEK ELEVEN or WEEK TWELVE marker and no revision or examination content (the last week body ends at THEORY 1767-1771). Classify rows 11-12 as calendar markers, not teaching weeks: no empty lesson, coverage row or asset may be created for them, and the parser finding (classify_marker: scheme rows must not split) is recorded, not implemented as a rule here. The opposite case is NUMBER SYSTEM (REVISION) at 379-392 inside Week Two, which is a revision heading carrying substantive teaching and must be classified by body: it belongs to Week Two's coverage and no revision label may erase it. If a later source supplies revision bodies they must be classified by body, not by heading.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-MARK-T1-REVEXAM.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (scheme rows 11-12; NUMBER SYSTEM (REVISION) 379-392; no WEEK ELEVEN/TWELVE marker).",
+      "completion_condition": "Rows 11-12 and the in-body revision section each have an explicit disposition under the existing schema; no empty lesson or coverage row is created, no revision heading erases teaching, and no parser rule is silently added. Testing deferred by owner."
+    },
+    {
+      "id": "DP-VIS-T1-W01-CYCLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week One, lines 105 and 169 (VML arrow shapes in document children 51 and 83; labels 'INPUT', 'PROCESSING', 'OUTPUT')",
+      "objective": "Give a visual disposition to the only diagram type in the source: two copies of the same input -> processing -> output flow in Week One. Line 105 is 'INPUT\\t\\tPROCESSING\\t\\t\\tOUTPUT' (paragraph child 51, two VML straight connectors, a page break follows); line 169 is 'INPUT                               PROCESSINGOUTPUT' (paragraph child 83, two VML straight connectors) under 'Element of data processing;'. The arrows are VML shapes (w:pict, shape type #_x0000_t32), not images: mammoth keeps the three labels but loses the connectors and their geometry, so no picture can be extracted. The structure is corroborated by the adjacent prose (95-175), so it can be represented as a source-anchored ordered relationship list or a new original diagram without copying the author's layout; no invented stage may be added. Do not commit a rendered image of the source and do not claim the original connector geometry. Record that the two occurrences are duplicates of the same flow.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T1-W01-CYCLE.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Diagrams; VML shapes at body children 51 and 83).",
+      "completion_condition": "The flow has a documented disposition under the existing schema derived only from the surviving labels and adjacent prose; duplicates are recorded; no fabricated geometry or committed source render. Testing deferred by owner."
+    },
+    {
+      "id": "DP-VIS-T1-W04-TBL-GENERATIONS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Four, from line 589 ('Consider the table below:'); document table child 294, 6 rows x 6 columns",
+      "objective": "Give a structural disposition to the generations table in Week Four (document child 294, introduced at 589). Headers: Generations Of computers / Year of development / The TechnologyUsed / Characteristics / SoftwareInstruction / StorageCapacity; data rows First 1951-1958, Second 1959-1964, Third 1965-1975, Fourth 1975-1982, Fifth 1982 and above. mammoth flattens each cell into its own paragraph and splits wrapped cells ('Generations ' / 'Of computers' at 591-593; 'Year of ' / 'development' at 595-597), so the table survives only as a loose cell sequence. Reconstruct the cell-to-row mapping from the docx structure (w:tbl/w:tr/w:tc) with exact provenance, record the superscript flattening ('10' + '6' chips rendered as '106chips'), and keep the dated years and technology claims distinct from the table's own wording (they belong to DP-FACT-T1-GENERATIONS). Do not commit a rendered image of the source and do not invent cells the document does not contain.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T1-W04-TBL-GENERATIONS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Tables, child 294; 6 x 6).",
+      "completion_condition": "The table's rows, headers and exact cell text are represented under the existing schema with provenance, flattening is recorded, and no cell or claim is invented. Testing deferred by owner."
+    },
+    {
+      "id": "DP-VIS-T1-W07-TBL-AGES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Seven, from line 995 ('TECHNOLOGY OF DIFFERENT INFORMATION AGE'); document table child 457, 6 rows x 5 columns",
+      "objective": "Give a structural disposition to the information-ages table in Week Seven (document child 457, introduced at 995). Headers: Information age / Tools used / Purpose / Time period / Examples of tools in that age; data rows Stone, Iron, Middle, Industrial and Electronic age. mammoth flattens each cell into its own paragraph, so the table survives only as a loose cell sequence; reconstruct the cell-to-row mapping from w:tbl/w:tr/w:tc with exact provenance. Record that 'VLSIC' and other compressed wording are the source's own text and must be preserved as written, with any correction kept separate. Do not commit a rendered image and do not invent cells or periods the document does not contain.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T1-W07-TBL-AGES.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Tables, child 457; 6 x 5).",
+      "completion_condition": "The table's rows, headers and exact cell text are represented under the existing schema with provenance, and no cell or period is invented. Testing deferred by owner."
+    },
+    {
+      "id": "DP-VIS-T1-PUBLISHER-MEDIA",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "word/media/image1.jpeg (870,389 bytes, 3,306 x 2,515, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a) and word/media/image2.jpeg (106,321 bytes, 949 x 359, SHA-256 e0c6cda049555ab6...)",
+      "objective": "Disposition the source's only two embedded pictures, both publisher branding rather than teaching content: image1.jpeg is the cover-page advertisement (3,306 x 2,515; byte-identical to the Commerce source's footer advert) and image2.jpeg is the tutor logo strip beside the title (949 x 359). Both carry a telephone number and an e-mail address (personal contact details). Record that they are non-teaching, that they must not be committed, rendered into lessons, treated as curriculum assets or reproduced, and that no OCR of the contact details may be stored. The headers are empty and the working footer carries only 'MR OSHO/1ST TERM/DATA PROCESSING/SS1Page 2', which is also non-teaching. If a later teaching image is found it needs its own disposition; none exists in this document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T1-PUBLISHER-MEDIA.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Embedded media; both JPEG hashes and dimensions).",
+      "completion_condition": "Both pictures have an explicit non-teaching disposition under the existing schema, are excluded from assets, and no contact detail is committed or reused. Testing deferred by owner."
+    },
+    {
+      "id": "DP-PRES-T1-NUMBERING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "document-wide auto-numbering: 334 w:numPr paragraphs, including scheme rows 49-71, references 77-81 and the properties list 131-147",
+      "objective": "Preserve the source's list-numbering evidence so later authoring does not mistake flattening for the original structure: 334 paragraphs carry w:numPr, and mammoth's extractRawText drops every number, so the twelve scheme rows (49-71), the three references (77-81) and every numbered content list (for example the properties of data at 131-147) appear as unnumbered lines. Record which lists are Word-numbered, their indentation level and their line range, using the docx numbering part as evidence; do not renumber them by guess and do not add schema fields silently. If the representation is unsupported, raise a precise separate dependency rather than editing the shared schema. Keep the original line text distinct from any reconstructed numbering.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-PRES-T1-NUMBERING.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (parser findings; 334 auto-numbered paragraphs).",
+      "completion_condition": "Every auto-numbered list that matters (scheme, references, content lists) is recorded with its line range and numbering evidence, without silent schema changes; unsupported representation is a separate precise dependency. Testing deferred by owner."
+    },
+    {
+      "id": "DP-PRES-T1-SUPERSCRIPT",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "8 superscript runs, including '106chips' in the Week Seven table and '12th', '13th', '18th', '19th' century markers",
+      "objective": "Preserve the source's superscript and typographic evidence: 8 runs carry w:vertAlign superscript, and mammoth flattens them, producing '106chips' (10 to the power 6 chips) in the second table's Fifth generation row and century markers printed as '12th', '13th', '18th', '19th'. Record each occurrence with its exact line, the intended reading and the flattened text, so a later author can restore the exponent without presenting the flattened string as correct. Also record the special characters that must survive re-authoring: 13 non-breaking spaces, 93 ellipsis fills (U+2026), 16 right single quotes, 3 en dashes and 2 curly double quotes. Do not silently normalize the source, and keep any corrected rendering distinct from the original wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-PRES-T1-SUPERSCRIPT.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (parser findings; 8 superscript runs, character counts).",
+      "completion_condition": "Every superscript occurrence and the special-character inventory are recorded with exact lines and intended readings; corrections stay separate from the source's wording. Testing deferred by owner."
+    },
+    {
+      "id": "DP-FACT-T1-GENERATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Three 439-519 and Week Four table (child 294); years, technology and 1945/UNIVAC claims",
+      "objective": "Verify later, with dated authoritative sources, the generation claims before any lesson states them as fact: the First to Fifth generation years and technologies in Week Three (439-519) and the Week Four table (First 1951-1958 vacuum tube, Second 1959-1964, Third 1965-1975, Fourth 1975-1982, Fifth 1982 and above with 'AI and Expertsystem'), and the Week Three statement that electronic machines 'evolved about 1945' with UNIVAC as example. Each claim needs a source with a publication or reference date; the source's original wording must stay distinct from the corrected statement; a curriculum concept (the generation model) must be distinguished from contested historical dates. Record nothing as verified until the evidence exists, and do not change the preserved table or prose.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T1-GENERATIONS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W03",
+        "DP-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Factual flags; W3 439-519, W4 child 294).",
+      "completion_condition": "Each generation claim has a dated authoritative citation (or an explicit unresolved flag) kept distinct from the source's wording, and no approval or verification state is invented. Testing deferred by owner."
+    },
+    {
+      "id": "DP-FACT-T1-HARDWARE-MODELS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Six 849-905, especially the model list at 883 (PDP II, VAX 750/6000, NCR 9300, DEC, HP 3000) and mainframe/supercomputer claims 857-861",
+      "objective": "Verify later, with dated authoritative sources, the Week Six hardware claims before any lesson presents them as current: the mainframe and supercomputer descriptions (849-869), the model list 'PDP II, VAX 750/6000, NCR 9300, DEC, HP 3000' (883) and the mini/micro descriptions (879-905). These are obsolete or dated models; a lesson needs current, dated examples rather than these presented as current, while the curriculum classification by size must remain teachable. Cite primary or authoritative dated sources, keep the source's wording distinct from the updated statement, and record nothing as verified until the evidence exists.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T1-HARDWARE-MODELS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Factual flags; W6 849-905).",
+      "completion_condition": "Each hardware claim has a dated authoritative citation (or an explicit unresolved flag) kept distinct from the source's wording, and no approval or verification state is invented. Testing deferred by owner."
+    },
+    {
+      "id": "DP-FACT-T1-DIGITALIZATION-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "Week Seven 961-1193, Week Eight 1395-1399, Week Nine 1535-1562 (digitalization, CD-ROM/Internet/Intranet, language and ICT-impact claims)",
+      "objective": "Verify later, with dated authoritative sources, the dated technical and social claims before any lesson states them as fact: the benefits and types of digitalization (973-993), the information-age table periods (995 onwards), the references to CD-ROM, Internet, Intranet and extranets (981), the Week Eight claim that 'A computer does not understand English or any of the Nigerian languages' (1397) and the stored-program statement (1395-1399), and the Week Nine impact/negative-effect lists (1535-1562) where they assert current social or economic effects. Each claim needs a dated source; keep the source's original wording distinct from the corrected fact; teach contested social claims neutrally; record nothing as verified until the evidence exists.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T1-DIGITALIZATION-CLAIMS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W07",
+        "DP-WK-T1-W08",
+        "DP-WK-T1-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Factual flags; W7, W8 1397, W9 1535-1562).",
+      "completion_condition": "Each dated digitalization, language and ICT-impact claim has a dated authoritative citation (or an explicit unresolved flag) kept distinct from the source's wording, with neutral teaching and no invented verification. Testing deferred by owner."
     }
   ],
   "review": {
@@ -312,9 +1098,26 @@
     }
   },
   "next_runnable": [
-    "DP-INV-T1",
     "DP-INV-T2",
     "DP-INV-T3",
-    "DP-TEST-PACKAGE"
+    "DP-TEST-PACKAGE",
+    "DP-PRE-T1",
+    "DP-WK-T1-W01",
+    "DP-WK-T1-W02",
+    "DP-WK-T1-W03",
+    "DP-WK-T1-W04",
+    "DP-WK-T1-W05",
+    "DP-WK-T1-W06",
+    "DP-WK-T1-W07",
+    "DP-WK-T1-W08",
+    "DP-WK-T1-W09",
+    "DP-WK-T1-W10",
+    "DP-MARK-T1-REVEXAM",
+    "DP-VIS-T1-W01-CYCLE",
+    "DP-VIS-T1-W04-TBL-GENERATIONS",
+    "DP-VIS-T1-W07-TBL-AGES",
+    "DP-VIS-T1-PUBLISHER-MEDIA",
+    "DP-PRES-T1-NUMBERING",
+    "DP-PRES-T1-SUPERSCRIPT"
   ]
 }
