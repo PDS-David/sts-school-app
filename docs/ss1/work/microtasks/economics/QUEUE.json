@@ -23,18 +23,24 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "ECON-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). ECON-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "ECON-INV-T1 appended the 1st Term inventory items (25) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 25 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (ECON-INV-T1.md)."
   ],
   "counts": {
+    "FACTUAL_DEPENDENCY": 4,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_PRESERVATION": 3,
     "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 10,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "VISUAL_DISPOSITION": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
-    "BLOCKED": 1
+    "BLOCKED": 1,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 28
   },
   "items": [
     {
@@ -170,8 +176,8 @@
       "depends_on": [
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory record: docs/ss1/work/microtasks/economics/ECON-INV-T1.md. Member 'SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc' (1,264,128 bytes, SHA-256 8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc) verified from the composite archive 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e (hash checked this session). word-extractor 1.0.4 getBody(): 53,430 chars, 1,060 lines, SHA-256 026eeec9b2b8a68bba6bed3719a921e08030d56b2bb4cfdafd40352133e5037e. Ten teaching weeks, each with a body: W1 44-116 45063722..., W2 117-169 9e6974c4..., W3 172-247 98bac31f..., W4 250-300 3f34480c..., W5 302-369 debf4842..., W6 372-615 d723b2c5..., W7 618-797 7c4a4e30..., W8 800-896 ca2649e6..., W9 899-982 edf633f4..., W10 985-1059 b6565467... (full hashes in the record). Unlabelled opening/scheme/references 1-43 619fc6e5...; scheme rows 1-10 map to the bodies and rows 11-13 (Revision; Examination, 35-36) have no body. 12 tables (229 cell ends + 57 row ends = 286 BEL): four-student scores, bar/pie data and pie solution (Week Six), two tally/frequency tables and a weekend table (Week Seven), diminishing returns (Week Nine), plus a 1 x 1 empty shell. 102 drawn-object anchors form a demand curve, simple/component/multiple bar charts, a linear graph and a weekend pie figure (labels split into a 226-char textbox stream); the only picture is the publisher JPEG (870,389 bytes, 3,306 x 2,515, SHA-256 b334a0e1..., identical to the Commerce/Data Processing advertisement, not committed). 6 page breaks, 219 tabs, header/footer 'MR OSHO/1ST TERM/ecONOMICS/SS1'. Appended 25 PENDING items: ECON-PRE-T1, ECON-WK-T1-W01..W10, ECON-MARK-T1-REVEXAM, ECON-VIS-T1-W06-TABLE-EXAMPLES, ECON-VIS-T1-W06-GRAPHS, ECON-VIS-T1-W06-BAR-CHARTS, ECON-VIS-T1-W06-PIE-CHARTS, ECON-VIS-T1-W07-FREQUENCY-TABLES, ECON-VIS-T1-W09-DIMINISHING-TABLE, ECON-VIS-T1-PUBLISHER-MEDIA, ECON-PRES-T1-CALCULATIONS, ECON-PRES-T1-SOURCE-WORDING, ECON-PRES-T1-LAYOUT, ECON-FACT-T1-DEFINITIONS, ECON-FACT-T1-DATED-EXAMPLES, ECON-FACT-T1-CALCULATION-VERIFY. No lesson, coverage entry, asset or parser rule written; no tests or importer run (deferred).",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -298,6 +304,937 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "ECON-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "opening unlabelled block, lines 1-43 (SHA-256 619fc6e5db6827df8bd4ce0289b0b59be7b207c8daa798c1f42fdd2fb9fb8a9b)",
+      "objective": "Index the unlabelled opening block and the scheme/reference list as what they are, not as teaching weeks. The block holds blank space (1-17), 'FIRST TERM E-LEARNING NOTE' (18), the subject/class line 'SUBJECT: ECONOMICS' + seven tabs + 'CLASS: SS1' (20), 'SCHEME' (22), the tab header 'WEEK\\tTOPIC ' (24), thirteen scheme rows (25-36: Meaning of Economics; Economics as a Science, Arts or Social subject; Basic Concept of Economics; Importance of Opportunity Cost to an Individual, Firms and the Government; Basic Economic Problems of the Society; Basic Tools for Economics Analysis; Data Collection and Presentation; Theory of Production; Land as a Factor of Production; Labour as a Factor of Production; Revision; Examination), 'REFERENCE BOOKS' (38) and three unnumbered entries (39-41: Amplified and Simplified Economics for Senior Secondary School by Femi Longe; Comprehensive Economics for Senior Secondary School by J.V. Anyaele; Fundamentals of Economics for SSS by R.A.I. Anyanwuocha). Map rows 1-10 to the ten body weeks and record that rows 11 and 12 (& 13) have no body (disposed by ECON-MARK-T1-REVEXAM). Record that rows 1-6 lose their literal numbers while rows 7-13 keep them, so numbering must not be inferred. Implement the resulting identity/scheme/reference facts under the existing schema with provenance: source_id, exact line range and body hash. Do not treat a one-line scheme heading as evidence that its topic was taught, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRE-T1.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (opening 1-43, scheme rows 25-36, references 38-41).",
+      "completion_condition": "Identity, scheme rows and the three references are represented under the existing schema with exact provenance; rows 11-13 are left to the marker item; no lesson or coverage entry is invented from a scheme heading. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 44-116 (marker 'WEEK ONE', topic 'DEFINITION AND THE SCOPE OF ECONOMICS'), SHA-256 4506372278dd7327422d43ac169351c46754ed5af63d3df6810bdd3be6b148eb",
+      "objective": "Index Week 1 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 44-116, exact label 'WEEK ONE', topic line 'DEFINITION AND THE SCOPE OF ECONOMICS', body SHA-256 4506372278dd7327422d43ac169351c46754ed5af63d3df6810bdd3be6b148eb) and every exercise in it: CONTENT (47-49), definitions and meaning (51-62: Adam Smith 1776, John Stuart Mill 1843, Alfred Marshal 1890, three undated definitions, Lionel C. Robins 1932), THE SCOPE OF ECONOMICS (64-69), EVALUATION (71-73), THE BRANCHES OF ECONOMICS (75-78: micro and macro), EVALUATION (80-82), WHY DO WE STUDY ECONOMICS (83-91), EVALUATION (93-95), READING ASSIGNMENT (97-98), GENERAL EVALUATION QUESTIONS (100-105), WEEKEND ASSIGNMENT with five multiple-choice items (107-112), SECTION B (114-116). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The dated economist definitions belong to ECON-FACT-T1-DEFINITIONS. The source writes 'Alfred Marshal', 'Edvins Canon', 'H. J. Daven Port' and 'Robins'; preserve the wording and let the factual item verify attributions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 44-116, SHA-256 4506372278dd7327422d43ac169351c46754ed5af63d3df6810bdd3be6b148eb; assessment blocks listed there).",
+      "completion_condition": "Week 1 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 117-169 (marker 'WEEK TWO', topic 'ECONOMICS AS A SCIENCE, ARTS OR SOCIAL SCIENCE'), SHA-256 9e6974c4a9cbd17d6cca9dcbb21d80306a04589f8c67a8e3f6860664bd70f5e8",
+      "objective": "Index Week 2 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 117-169, exact label 'WEEK TWO', topic line 'ECONOMICS AS A SCIENCE, ARTS OR SOCIAL SCIENCE', body SHA-256 9e6974c4a9cbd17d6cca9dcbb21d80306a04589f8c67a8e3f6860664bd70f5e8) and every exercise in it: CONTENT (120-121), ECONOMICS AS A SOCIAL SCIENCE (123-131), EVALUATION (133-135), CAREER PROSPECT FOR STUDYING ECONOMICS (137-143), EVALUATION (145-147), READING ASSIGNMENT (149-150), GENERAL EVALUATION QUESTIONS (152-157, including 'Who are the principle economic unit in any  system? '), WEEKEND ASSIGNMENT (159-165), SECTION B (167-169). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The career prospect list is undated and must be kept as a conceptual list with current dated job-market examples added later. No West Africa question occurs in this week; that question is in Week Three at 231.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 117-169, SHA-256 9e6974c4a9cbd17d6cca9dcbb21d80306a04589f8c67a8e3f6860664bd70f5e8; assessment blocks listed there).",
+      "completion_condition": "Week 2 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 172-247 (marker 'WEEK THREE', topic 'BASIC CONCEPTS OF ECONOMICS'), SHA-256 98bac31f435a7d6d60f273226168882ffecb7f1853ac0abea8d9676142602ee2",
+      "objective": "Index Week 3 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 172-247, exact label 'WEEK THREE', topic line 'BASIC CONCEPTS OF ECONOMICS', body SHA-256 98bac31f435a7d6d60f273226168882ffecb7f1853ac0abea8d9676142602ee2) and every exercise in it: CONTENT (174-177), CONCEPT OF HUMAN WANTS (179-184), SCARCITY (186-191), EVALUATION (193-195), CHOICE (197-203), SCALE OF PREFERENCE (205-207) with IMPORTANCE OF SCALE OF PREFERENCE (208-213), OPPORTUNITY COST (215-219), EVALUATION (220-222), READING ASSIGNMENT (224-225), GENERAL EVALUATION QUESTIONS (227-232, including the 'West Africa countries' question at 231), WEEKEND ASSIGNMENT (234-240), SECTION B (242-247, with N1,000 / N50,000 / N60,000 examples at 246-247). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The Naira examples at 246-247 are hypothetical and undated; preserve them as the source's currency notation. The West Africa question is dated-ish current-affairs framing and belongs to ECON-FACT-T1-DATED-EXAMPLES.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 172-247, SHA-256 98bac31f435a7d6d60f273226168882ffecb7f1853ac0abea8d9676142602ee2; assessment blocks listed there).",
+      "completion_condition": "Week 3 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 250-300 (marker 'WEEK FOUR', topic 'Importance of opportunity cost to individual'), SHA-256 3f34480ce990164ec6ea6007b4eb1e0b4b107de63687ea63549f030c8f8b3cb9",
+      "objective": "Index Week 4 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 250-300, exact label 'WEEK FOUR', topic line 'Importance of opportunity cost to individual', body SHA-256 3f34480ce990164ec6ea6007b4eb1e0b4b107de63687ea63549f030c8f8b3cb9) and every exercise in it: CONTENTS (252-256), IMPORTANCE OF OPPORTUNITY COST TO INDIVIDUAL (258-263), IMPORTANCE OF OPPORTUNITY COST TO FIRMS (265-269), Importance of Opportunity Cost to the Government (271-275), EVALUATION (277-279), READING ASSIGNMENT (281-282), REVISION/ GENERAL EVALUATION (284-289, questions only), WEEKEND ASSIGNMENT (291-296), SECTION B (298-300). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The topic line is lower case and names only the individual while the CONTENT and body add firms and government; record both. The revision heading at 284 carries only questions and is classified by body (also ECON-MARK-T1-REVEXAM).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 250-300, SHA-256 3f34480ce990164ec6ea6007b4eb1e0b4b107de63687ea63549f030c8f8b3cb9; assessment blocks listed there).",
+      "completion_condition": "Week 4 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 302-369 (marker 'WEEK FIVE', topic 'BASIC ECONOMIC PROBLEMS OF THE SOCIETY'), SHA-256 debf4842510a2259847a6f266982c44e1fe5c5f306f030137e2d94975f972afe",
+      "objective": "Index Week 5 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 302-369, exact label 'WEEK FIVE', topic line 'BASIC ECONOMIC PROBLEMS OF THE SOCIETY', body SHA-256 debf4842510a2259847a6f266982c44e1fe5c5f306f030137e2d94975f972afe) and every exercise in it: CONTENT (304-308), BASIC ECONOMIC PROBLEMS OF THE SOCIETY (310-316), WHAT TO PRODUCE (317-321), EVALUATION (323-325), HOW TO PRODUCE (327-332, labour-intensive and capital-intensive), FOR WHOM TO PRODUCE (334-335), EFFECTIVE ALLOCATION OF RESOURCES (337-338), EVALUATION (340-345), READING ASSIGNMENT (347-348), GENERAL EVALUATION QUESTIONS (350-358), WEEKEND ASSIGNMENT (360-365), SECTION B (367-369). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The allocation questions are conceptual and comparative across economic systems; teaching must stay neutral and must not import a policy prescription. 'BASIC ECONOMIC PROBLEMS OF THE SOCIETY' repeats the CONTENT list at 310-316.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 302-369, SHA-256 debf4842510a2259847a6f266982c44e1fe5c5f306f030137e2d94975f972afe; assessment blocks listed there).",
+      "completion_condition": "Week 5 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 372-615 (marker 'WEEK SIX', topic 'TOOLS OF ECONOMIC ANALYSIS'), SHA-256 d723b2c583388290363f5f59ea6ef45d093f57b310596838ccad264ca8ada93c",
+      "objective": "Index Week 6 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 372-615, exact label 'WEEK SIX', topic line 'TOOLS OF ECONOMIC ANALYSIS', body SHA-256 d723b2c583388290363f5f59ea6ef45d093f57b310596838ccad264ca8ada93c) and every exercise in it: CONTENT (374-379), TABLES OR SCHEDULES (381-388), USES OR IMPORTANCE OF A TABLE (390-395), EXAMPLES OF A TABLE (397-404), EVALUATION (406-408), USE OF A GRAPH (410-411), EXAMPLE OF A GRAPH (413-424), FEATURES OF A GRAPH (425-431), IMPORTANCE OF A GRAPH (433-438), EVALUATION (440-442), USE OF A CHART and BAR CHART (444-451), simple bar example (452-467), component bar example (469-487), multiple bar example (488-498), EVALUATION (499-501), PIE CHARTS with example and degree solution (503-518), LINEAR GRAPH with the Q = 42 - 2p worked example (520-552), EVALUATION (553-555), READING ASSIGNMENT (557-558), GENERAL EVALUATION QUESTIONS (560-577, including a 'budget estimate of a state for 2010' and Jos 2001-2004 data), WEEKEND ASSIGNMENT (579-600, including a drawn pie-chart question), SECTION B (602-615). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. This week carries all 6 data tables and all 4 drawn chart groups in the document; the visual items ECON-VIS-T1-W06-TABLE-EXAMPLES, -GRAPHS, -BAR-CHARTS and -PIE-CHARTS hold their dispositions. The printed arithmetic is not all correct (56 at 535, 89 at 472, 810/540/450/1800 at 513-518, stray lines 526 and 531): that is ECON-FACT-T1-CALCULATION-VERIFY. The 2010 budget and 2001-2004 data are dated and belong to ECON-FACT-T1-DATED-EXAMPLES.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 372-615, SHA-256 d723b2c583388290363f5f59ea6ef45d093f57b310596838ccad264ca8ada93c; assessment blocks listed there).",
+      "completion_condition": "Week 6 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 618-797 (marker 'WEEK SEVEN', topic 'DATA COLLECTION AND PRESENTATION'), SHA-256 7c4a4e30ce0d310dac3a22467cbb36d4d8241887d776c797a572924146e92ca7",
+      "objective": "Index Week 7 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 618-797, exact label 'WEEK SEVEN', topic line 'DATA COLLECTION AND PRESENTATION', body SHA-256 7c4a4e30ce0d310dac3a22467cbb36d4d8241887d776c797a572924146e92ca7) and every exercise in it: CONTENT (620-622), FORMULATION OF FREQUENCY TABLE FOR UNGROUPED DATA (624-627), PREPARATION OF A TALLY SHEET (629) and OF A FREQUENCY TABLE (631), worked frequency example with the 30 scores (632-644), MEASURES OF CENTRAL TENDENCY (654-660), THE MEAN with definitions, types, worked example, advantages and disadvantages (662-691), EVALUATION (693-695), THE MEDIAN with three worked examples and lists of advantages/disadvantages (697-747), EVALUATION (768-770), THE MODE with example, merits and demerits (750-766), READING ASSIGNMENT (772-774), REVISION/GENERAL EVALUATION (776-782, questions only), WEEKEND ASSIGNMENT (784-793, including a table at 789-790), SECTION B (795-797). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The two frequency tables (637-644, 726-735) and the weekend table (789-790) are visual items ECON-VIS-T1-W07-FREQUENCY-TABLES. The median formula at 736-737 is garbled ('70th' for 10th) and belongs to ECON-FACT-T1-CALCULATION-VERIFY; the mean and the two simpler medians are arithmetically correct. The revision heading carries only questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 618-797, SHA-256 7c4a4e30ce0d310dac3a22467cbb36d4d8241887d776c797a572924146e92ca7; assessment blocks listed there).",
+      "completion_condition": "Week 7 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 800-896 (marker 'WEEK EIGHT', topic 'PRODUCTION'), SHA-256 ca2649e66ba10258568a5ab880d31268aa5586b9320cfdab3a4af7950481e299",
+      "objective": "Index Week 8 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 800-896, exact label 'WEEK EIGHT', topic line 'PRODUCTION', body SHA-256 ca2649e66ba10258568a5ab880d31268aa5586b9320cfdab3a4af7950481e299) and every exercise in it: CONTENT (802-806), DEFINITION AND MEANING OF PRODUCTION (808-812), TYPES OF GOODS (814-824), EVALUATION (826-828), TYPES OF PRODUCTION (830-833: direct and indirect), CLASSIFICATION OF PRODUCTION (835-843: primary, secondary, tertiary), FACTORS OF PRODUCTION (845-846) with the tab-aligned factor/reward list (848-852), FACTORS DETERMINING VOLUME OF PRODUCTION (854-861), IMPORTANCE OF PRODUCTION (863-870), EVALUATION (872-875), READING ASSIGNMENT (877-878), GENERAL EVALUATION QUESTIONS (880-885), WEEKEND ASSIGNMENT (887-892), SECTION B (894-896). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The factor/reward list at 848-852 is tab-aligned, not a table; preserve its alignment. The definitions and factor classifications are conceptual; no dated figures occur.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 800-896, SHA-256 ca2649e66ba10258568a5ab880d31268aa5586b9320cfdab3a4af7950481e299; assessment blocks listed there).",
+      "completion_condition": "Week 8 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 899-982 (marker 'WEEK NINE', topic 'LAND AS A FACTOR OF PRODUCTION'), SHA-256 edf633f4bbbc5d07bfc9a5edaed1eb6300e54f5fcb6fe0320cb5aaa49f703b07",
+      "objective": "Index Week 9 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 899-982, exact label 'WEEK NINE', topic line 'LAND AS A FACTOR OF PRODUCTION', body SHA-256 edf633f4bbbc5d07bfc9a5edaed1eb6300e54f5fcb6fe0320cb5aaa49f703b07) and every exercise in it: CONTENT (901-905), LAND definition (907), CHARACTERISTICS (909-915), THE LAW OF DIMINISHING RETURNS (917-920), the 4-hectare table (921-931), the '15 tons of yams' explanation (933-935), MERITS (937-942), EVALUATION (944-946), IMPORTANCE OF LAND TO ECONOMIC ACTIVITIES (948-955, including Nigeria at 952), EVALUATION (957-959), READING ASSIGNMENT (961-964), GENERAL REVISION (966-971, questions only), WEEKEND ASSIGNMENT (973-978), SECTION B (980-982). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The diminishing-returns table is ECON-VIS-T1-W09-DIMINISHING-TABLE; its TP/AP/MP arithmetic checks out (15, 32, 54, 72, 85, 90, 84; AP and MP consistent). The Nigeria reference at 952 is a dated illustration for ECON-FACT-T1-DATED-EXAMPLES. The revision heading carries only questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 899-982, SHA-256 edf633f4bbbc5d07bfc9a5edaed1eb6300e54f5fcb6fe0320cb5aaa49f703b07; assessment blocks listed there).",
+      "completion_condition": "Week 9 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "lines 985-1059 (marker 'WEEK TEN', topic 'LABOUR AS A FACTOR OF PRODUCTION'), SHA-256 b65654678f1202523b6bf2a5d61b5cd9c70f785a9a9677e0c4a37c996e3d757d",
+      "objective": "Index Week 10 of the 1st Term Economics source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 985-1059, exact label 'WEEK TEN', topic line 'LABOUR AS A FACTOR OF PRODUCTION', body SHA-256 b65654678f1202523b6bf2a5d61b5cd9c70f785a9a9677e0c4a37c996e3d757d) and every exercise in it: CONTENT (987-992), LABOUR definition (994), CHARACTERISTICS (996-1001), TYPES OF LABOUR (1003-1007), IMPORTANCE OF LABOUR (1009-1013), EVALUATION (1016-1018), EFFICIENCY OF LABOUR (1020-1023), FACTORS AFFECTING EFFICIENCY OF LABOUR (1025-1033), EVALUATION (1035-1037), READING ASSIGNMENT (1039-1041), GENERAL REVISION (1043-1048, questions only), WEEKEND ASSIGNMENT (1050-1055), SECTION B (1057-1059). Record objectives, sub-topics and every EVALUATION, WEEKEND ASSIGNMENT, THEORY, SECTION B and GENERAL EVALUATION/REVISION question with exact wording and line numbers; a question that the source does not answer gets a precise open item and a small lesson task, not an invented answer. One-line scheme headings are not evidence of coverage. Do not import the scheme heading as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Economics into Commerce, Financial Accounting or Bookkeeping. Practical examples stay illustrative and must not require live execution. The last content line is 1059; the file ends at blank line 1060. The Nigeria reference at 1046 is a dated illustration for ECON-FACT-T1-DATED-EXAMPLES. The revision heading carries only questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 985-1059, SHA-256 b65654678f1202523b6bf2a5d61b5cd9c70f785a9a9677e0c4a37c996e3d757d; assessment blocks listed there).",
+      "completion_condition": "Week 10 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-MARK-T1-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "scheme rows 11-13, lines 35-36 ('11. Revision.', '12 & 13. Examination.'); in-body revision headings 284, 776, 966, 1043",
+      "objective": "Disposition the source's revision and examination markers without erasing teaching. Scheme rows 11 (35) and 12 (36) are '11. Revision.' and '12 & 13. Examination.'; the body has no WEEK ELEVEN, TWELVE or THIRTEEN marker and no revision or examination content (the last week body ends at SECTION B 1057-1059). Classify rows 11-13 as calendar markers, not teaching weeks: no empty lesson, coverage row or asset may be created for them, and the parser finding (classify_marker: scheme rows must not split) is recorded, not implemented as a rule here. The in-body headings REVISION/ GENERAL EVALUATION (284-289), REVISION/GENERAL EVALUATION (776-782), GENERAL REVISION (966-971) and GENERAL REVISION (1043-1048) carry only questions inside Weeks Four, Seven, Nine and Ten; classify them by body as assessment blocks, not as calendar markers. No revision teaching exists to be erased; if a later source supplies a revision body it must be classified by body.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-MARK-T1-REVEXAM.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (scheme rows 11-13; in-body revision headings 284, 776, 966, 1043; no WEEK ELEVEN-THIRTEEN marker).",
+      "completion_condition": "Rows 11-13 and each in-body revision heading have an explicit disposition under the existing schema; no empty lesson or coverage row is created, no revision heading erases teaching, and no parser rule is silently added. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-W06-TABLE-EXAMPLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Six lines 397-404, 452-454, 469-473, 488-492, 503-510, 513-518; 12 tables overall, 6 in this week plus a 1 x 1 empty shell at the start",
+      "objective": "Give a structural disposition to Week Six's data tables (the document has 12 tables in all: 229 cell ends + 57 row ends = 286 BEL marks). In this week: the four-student performance table (399-404, 6 x 5), simple-bar data (453-454, 2 x 6), component-bar data (470-473, 4 x 4), multiple-bar data (489-492, 4 x 4), pie data (507-510, 4 x 2) and the pie degree solution (513-518, 6 x 4); a 1 x 1 empty shell sits at the start of the document. word-extractor renders each table as tab-separated lines with trailing tabs and merges multi-line headers and wrapped cells, so the cell-to-row mapping must be rebuilt from the .doc structure, not guessed. Preserve the source's own cell text (including 'S. S. 1p', 'Produce line Tunner', the year '200' and the wrong total 89 and degree values 810/540/450/1800) and keep any correction separate. Do not commit a rendered image of the source and do not invent cells.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-W06-TABLE-EXAMPLES.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Tables 2-7; 286 BEL marks).",
+      "completion_condition": "Every Week Six table is represented under the existing schema with exact rows, headers and source text; flattening and defects are recorded; no cell is invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-W06-GRAPHS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Six lines 413-424 (demand curve, 10 drawn anchors CP 24,090-24,450) and 520-552 (linear graph, 4 anchors CP 27,710-28,152)",
+      "objective": "Give a visual disposition to Week Six's two line graphs, which are drawn with VML/drawn-object anchors (0x08) rather than images: the illustrative demand curve (413-424: Price (N) / Quantity axes, D points at 7, 5, 3 and 5/10/15, labels 'Demand Curve' and 'D') and the worked linear graph for Q = 42 - 2p at p = N1, N3, N5, N7, N9 (520-552: axes Price (N)/Quantity, plotted points, data lines 533-538). The anchors do not carry labels in the text stream, and the drawn geometry is lost on extraction, so the figures can only be represented from the surviving labels, the adjacent prose and the data table; no invented point or axis may be added. Record that the printed data table gives Q = 56 at p = 3 where the formula gives 36 (535) and that 526 and 531 contain stray/wrong equations; those belong to ECON-FACT-T1-CALCULATION-VERIFY. Do not commit a rendered image of the source and do not claim the original geometry.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-W06-GRAPHS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Diagrams: demand curve and linear graph; anchor clusters).",
+      "completion_condition": "Both graphs have a documented disposition derived only from surviving labels, prose and the data table; no fabricated geometry or committed source render. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-W06-BAR-CHARTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Six lines 452-467 (simple, 22 anchors CP 26,021-26,046), 469-487 (component, 23 anchors CP 26,311-26,344), 488-498 (multiple, 24 anchors CP 26,510); textbox labels in the 226-char stream",
+      "objective": "Give a visual disposition to Week Six's three bar-chart groups, all drawn with VML/drawn-object anchors rather than images: the simple bar chart (452-467, Frequency axis, scores 2/4/6/8/10), the component bar chart (469-487, stacked bars; textbox labels KEY, 50/40/30/20/10, Girls, Boys, S. S. 1p, S. S. 1w) and the multiple bar chart (488-498, grouped bars; textbox labels Year, 2000/2001/2002, KEY, 800/600/400/200). The labels live in a separate textbox stream and cannot be paired to anchors automatically; the bar geometry is lost on extraction. Represent each chart only from its data table and the textbox labels, record that component-bar row S. S. 1w prints a total of 89 where 17 + 22 = 39 (472) and that the multiple-bar header prints 'Tunner' and '200' for 2001 (489), and keep corrections separate. Do not invent bar heights or commit source renders.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-W06-BAR-CHARTS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Diagrams: bar charts; textbox labels at CP 53,621-53,847).",
+      "completion_condition": "Each bar chart has a documented disposition from its data table and surviving labels; defects are recorded and no geometry is invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-W06-PIE-CHARTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Six lines 503-518 (pie data and degree solution) and 582-599 (drawn weekend pie figure, 14 anchors CP 29,729-30,056)",
+      "objective": "Give a visual disposition to Week Six's pie-chart material: the worked example (503-518) has a pie data table (507-510: English 9, Mathematics 6, Science 5, Others 20 periods) and a degree solution table (513-518) but no drawn circle; the weekend assignment (582-599) depends on a drawn pie figure (14 anchors) whose textbox labels are Banana 600, Carrot 1000, Mango 1200, 0range 80, 1 - 16 yrs, 19 - 60 yrs and 9 yrs. Record that the solution prints 810/540/450/1800 and '3600' where the correct degrees are 81, 54, 45 and 180 from 360 degrees; that belongs to ECON-FACT-T1-CALCULATION-VERIFY. Record that the weekend question cannot be answered from the flattened text alone because the sector geometry is drawn. Represent the example from its two tables only; do not invent sector angles for the drawn figure or commit a source render.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-W06-PIE-CHARTS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Diagrams: pie example and weekend pie figure).",
+      "completion_condition": "The pie example and the drawn weekend figure each have a documented disposition; the degree error and the incomplete printed question are recorded; no sector geometry is invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-W07-FREQUENCY-TABLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Seven lines 637-644 (7 x 3 frequency table), 726-735 (9 x 3 median table), 789-790 (2 x 7 weekend table); 3 drawn anchors CP 31,959-31,999",
+      "objective": "Give a structural disposition to Week Seven's tally/frequency tables: the 30-score frequency table (637-644, Scores/Tally/Frequency, total 30), the 20-mark median table (726-735, Marks/Tally/Frequency, total 20) and the weekend meat-frequency table (789-790, 2 x 7). The tally column is made of the characters I, l and spaces, so it must be preserved exactly and not normalised to 'tally marks'; the rows arrive as tab-separated lines. Three drawn anchors at CP 31,959-31,999 sit beside the first table with no labels and are probably border marks; record them as such rather than inventing a figure. Verify that 4+8+4+6+5+3 = 30 and 2+3+6+2+3+2+1+1 = 20 and keep any correction separate (the median formula at 736-737 is ECON-FACT-T1-CALCULATION-VERIFY).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-W07-FREQUENCY-TABLES.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Tables 9-11; 3 anchors near CP 31,959).",
+      "completion_condition": "Each tally/frequency table is represented with exact rows, characters and totals; the stray anchors are recorded as unlabelled; no tally is normalised or invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-W09-DIMINISHING-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Nine lines 921-931 (8 x 5 table: 4 hectares, 1-7 men, TP/AP/MP)",
+      "objective": "Give a structural disposition to the law-of-diminishing-returns table in Week Nine (921-931): 4 Hectares / No of Men Employed (Variable factor) / Total Product / Average Product / Marginal Product, with 1-7 men and TP 15, 32, 54, 72, 85, 90, 84. The header spans lines 922-924 and every row ends with a tab; rebuild the cell-to-row mapping from the .doc table structure, not by splitting on tabs alone. Record that the numbers are internally consistent (AP = TP/men; MP is the difference in TP, reaching -6 at the seventh man) and that the adjacent explanation at 933-935 uses '15 tons of yams' as an illustration. Do not merge this table into the Week Six tools tables and do not invent units the source does not state.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-W09-DIMINISHING-TABLE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Table 12; 922-931).",
+      "completion_condition": "The table is represented with exact rows, header and units; its arithmetic is recorded; no cell or unit is invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-VIS-T1-PUBLISHER-MEDIA",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Data-stream JPEG at offset 10,508 (870,389 bytes, 3,306 x 2,515, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a); header/footer stream",
+      "objective": "Disposition the document's only embedded picture: the publisher advertisement in the textbox stream (870,389 bytes, 3,306 x 2,515, SHA-256 b334a0e1..., byte-identical to the advertisement in the Commerce and Data Processing sources). It carries a telephone number and e-mail address (personal contact details); record that it is not teaching content and must not be committed, rendered into lessons, treated as a curriculum asset or reproduced, and that no OCR of the contact details may be stored. The header and footer both print 'MR OSHO/1ST TERM/ecONOMICS/SS1' and the page number and are also non-teaching. If a later teaching image is found it needs its own disposition; none exists in this document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T1-PUBLISHER-MEDIA.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Embedded media and layout).",
+      "completion_condition": "The picture and the header/footer have an explicit non-teaching disposition under the existing schema, are excluded from assets, and no contact detail is committed or reused. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-PRES-T1-CALCULATIONS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "calculation notation and worked steps: Naira amounts (246-247, 610-614), 3600-degree solution (513-518), Q = 42 - 2p (523-538), median formula (736-737), table 12 (922-931)",
+      "objective": "Preserve the source's calculation notation and worked steps so later authoring does not mistake a defect for the original method or silently rewrite it: the Naira prefix 'N' before amounts (N1,000, N50,000, N60,000 at 246-247; N60, N40, N50, N70, N70 at 610-614), 'x' for multiplication, line-broken formulas (736-737), the degree working 9/40 x 3600, 6/40 x 3600, 5/40 x 3600, 20/40 x 3600 (513-518), the Q = 42 - 2p substitution table (523-538) and the diminishing-returns table (922-931). Record each with its exact line range, the intended reading and any defect: 56 for 36 (535), 89 for 39 (472), 810/540/450/1800 and '3600' for 81/54/45/180 and 360 degrees (513-518), '70th' for 10th and the garbled formula (736-737), stray 'Q = 42 - 21' (526) and '42 x 2 x N7' (531). Corrections belong to ECON-FACT-T1-CALCULATION-VERIFY; the preserved text stays as the author wrote it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRES-T1-CALCULATIONS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Content issues: arithmetic).",
+      "completion_condition": "Every calculation notation and defect is recorded with exact lines and intended readings; corrections stay separate from the preserved text. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-PRES-T1-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "verbatim wording and defects: lines 56, 57, 58, 60, 471, 472, 489, 521, 571, 914, 953, 933 and the header/footer 'ecONOMICS'",
+      "objective": "Preserve the source's own wording, including its defects, as source-faithful text distinct from any later correction: 'Alfred Marshal' (56), 'H. J. Daven Port' (57), 'Edvins Canon' (58), 'Robins' (60), 'S. S. 1p' (471), 'The 89 total' (472), 'Produce line Tunner' and year '200' (489), 'priving' (521), 'Different between a bar chart and a linear graph' (571), 'It's quality' (914), 'Bodies of water' (953), the 'yams' illustration (933), and the repeated 'ecONOMICS' in the header/footer. Record each with its exact line and hash context; lesson authors may quote the original and flag a defect, but may not silently normalise the source or present a corrected wording as the author's. Also record the lower-case Week Four topic line (251), the scheme header's trailing space (24) and the trailing space in 'WEEKEND ASSIGNMENT ' (360). No source page or private render is committed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRES-T1-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Content issues: typos and spacing).",
+      "completion_condition": "Every listed defect and formatting quirk is recorded under the existing schema with exact lines; corrections stay separate from the preserved original wording. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-PRES-T1-LAYOUT",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "legacy .doc layout: 219 tabs, 6 page breaks (CP 6, 17,608, 22,346, 26,535, 27,816, 34,628), 102 drawn anchors, 12 tables, 226-char textbox stream",
+      "objective": "Preserve the source's layout evidence so later authoring does not mistake flattening for the original structure: 219 tab characters drive the scheme (24-36), the factor/reward list (848-852), the pie degree table (513-518) and every data table; 6 page breaks at CP 6, 17,608, 22,346, 26,535, 27,816 and 34,628 separate printed pages (before the title, Week Five, Week Five SECTION B, the multiple-bar chart, the linear-graph example and the Week Seven median solution); 102 drawn anchors form four chart groups; 12 tables carry 286 BEL marks; the 226-character textbox stream holds chart labels that are separated from their anchors; the header/footer repeats 'MR OSHO/1ST TERM/ecONOMICS/SS1'. Record that word-extractor drops drawn geometry and tab layout, that the file is binary Word 97 (nFib 193, no ObjectPool) with one JPEG in the textbox stream, and that document properties name Adeniyi Adeyanju with a 2019-08-28 date. Do not add schema fields silently; if the representation is unsupported, raise a precise separate dependency.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRES-T1-LAYOUT.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Embedded media and layout; parser findings).",
+      "completion_condition": "The layout marks, page breaks, textbox stream and their loss under plain-text extraction are recorded under the existing schema without a silent schema edit; any unsupported representation is a separate precise dependency. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-FACT-T1-DEFINITIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week One lines 51-62 (Adam Smith 1776, John Stuart Mill 1843, Alfred Marshal 1890, three undated definitions, Lionel C. Robins 1932)",
+      "objective": "Verify later, with dated authoritative sources, the Week One definitional claims before any lesson states them as fact: the attribution to Adam Smith ('Father of Economics') in 1776 (54), John Stuart Mill in 1843 (55), Alfred Marshall in 1890 (56), H. J. Daven Port (57), Edvins Canon (58), A. I. Pigou (59) and Lionel C. Robbins in 1932 (60). Each attribution needs a source with a publication date; check the quotation wording and the spelling of each name; distinguish a curriculum concept (competing definitions of economics) from a contested historical attribution. Keep the source's original wording distinct from the corrected statement, record nothing as verified until the evidence exists, and do not alter the preserved Week One text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T1-DEFINITIONS.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1",
+        "ECON-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Factual flags: definitions and attributions).",
+      "completion_condition": "Each definition and attribution has a dated authoritative citation (or an explicit unresolved flag) kept distinct from the source's wording, and no approval or verification state is invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-FACT-T1-DATED-EXAMPLES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "date-sensitive examples: 562-569 (state budget for 2010), 572-577 (Jos 2001-2004), 606-607 and 610-614 (Naira amounts), 231 (West Africa), 952 and 1046 (Nigeria)",
+      "objective": "Verify later, with dated authoritative sources, or explicitly date as illustrative, the source's current-affairs examples before a lesson presents them as current: the `budget estimate of a state for 2010` used for a bar-chart exercise (562-569), the carrot/onion production data for 2001-2004 (572-577), the undated Naira amounts in the weekend sales and pie exercises (606-607, 610-614), the `Has the concept of opportunity cost any relevance to the West Africa countries?` question (231) and the Nigeria references (952, 1046). Each must be presented as a dated illustration, not as a current statistic; keep the source's original wording distinct from any updated figure, cite primary or authoritative data for any replacement, and stay neutral on contested policy or social claims. Record nothing as verified until the evidence exists.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T1-DATED-EXAMPLES.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1",
+        "ECON-WK-T1-W02",
+        "ECON-WK-T1-W03",
+        "ECON-WK-T1-W06",
+        "ECON-WK-T1-W09",
+        "ECON-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Factual flags: dated examples and figures).",
+      "completion_condition": "Each date-sensitive example is either given a dated authoritative citation or explicitly framed as a dated illustration kept distinct from the source's wording, with no invented verification. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-FACT-T1-CALCULATION-VERIFY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "worked arithmetic: 472, 489, 513-518, 526, 531, 535, 674-678, 704-719, 736-737, 922-931",
+      "objective": "Recheck every worked calculation and statistical example before a lesson adopts an answer, and record the correct value with its derivation: the student-performance totals (399-404), the component-bar total 89 for 39 (472), the Q = 42 - 2p data table where p = 3 gives 56 instead of 36 (535) and the stray/wrong equations at 526 and 531, the pie degrees 810/540/450/1800 for 81/54/45/180 and `3600` for 360 degrees (513-518), the mean 144/8 = 18 (674-678, correct), the two medians 8 and 15.5 (704-719, correct), the frequency-table median formula with `70th` for 10th and the garbled lines (736-737), the frequency totals 30 and 20 (644, 735), and the diminishing-returns TP/AP/MP series (922-931, correct). Keep each correction distinct from the source's wording (ECON-PRES-T1-CALCULATIONS preserves the original), and do not present a corrected answer as if the author wrote it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T1-CALCULATION-VERIFY.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T1",
+        "ECON-SRC-T1",
+        "ECON-WK-T1-W06",
+        "ECON-WK-T1-W07",
+        "ECON-WK-T1-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Content issues: arithmetic).",
+      "completion_condition": "Every worked example is rechecked with a recorded derivation; correct values are separated from the preserved source text; no answer is adopted unverified. Testing deferred by owner."
     }
   ],
   "review": {
@@ -313,9 +1250,30 @@
     }
   },
   "next_runnable": [
-    "ECON-INV-T1",
     "ECON-INV-T2",
     "ECON-INV-T3",
-    "ECON-TEST-PACKAGE"
+    "ECON-TEST-PACKAGE",
+    "ECON-PRE-T1",
+    "ECON-WK-T1-W01",
+    "ECON-WK-T1-W02",
+    "ECON-WK-T1-W03",
+    "ECON-WK-T1-W04",
+    "ECON-WK-T1-W05",
+    "ECON-WK-T1-W06",
+    "ECON-WK-T1-W07",
+    "ECON-WK-T1-W08",
+    "ECON-WK-T1-W09",
+    "ECON-WK-T1-W10",
+    "ECON-MARK-T1-REVEXAM",
+    "ECON-VIS-T1-W06-TABLE-EXAMPLES",
+    "ECON-VIS-T1-W06-GRAPHS",
+    "ECON-VIS-T1-W06-BAR-CHARTS",
+    "ECON-VIS-T1-W06-PIE-CHARTS",
+    "ECON-VIS-T1-W07-FREQUENCY-TABLES",
+    "ECON-VIS-T1-W09-DIMINISHING-TABLE",
+    "ECON-VIS-T1-PUBLISHER-MEDIA",
+    "ECON-PRES-T1-CALCULATIONS",
+    "ECON-PRES-T1-SOURCE-WORDING",
+    "ECON-PRES-T1-LAYOUT"
   ]
 }
