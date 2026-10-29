@@ -2530,6 +2530,24 @@
       "blocks_delivery": true
     },
     {
+      "id": "YORUBA-T1-WEEK-LABELS",
+      "kind": "OWNER_ACTION",
+      "detail": "The premise recorded when this item was raised is partly wrong. It is true that the 1st Term source yields zero parsed rows today: backend/src/db/ingestTopics.ts WEEK_MARKER (lines 314-317) and the BARE_NUMBER_LINE fallback (line 333, used at lines 402-414) each match nothing in the private extract, so parseTopics returns [] (line 424) and compiler.ts raises NO_PARSED_LESSONS (line 79). But the structure is expressible without any foundation change. compiler.ts applyRules (lines 17-34) inserts a \"WEEK <n>\" line before any unique line-start anchor for op split_before (CONTRACT.md line 103; subjectPackageSchema.ts line 13 permits a numeric week_label), and the eight Yoruba ordinal headings are unique exact strings that each begin a line of the extract (lines 61, 311, 483, 725, 1171, 1285, 1503 and 1685). The document contains no occurrence of the word \"week\" and no bare-number line. English already carries 47 split_before rules, including content-heading anchors (english.json, for example \"B. Review of Word Class- Parts of Speech\" with week_label 1), so the mechanism is proven in this repository. A private text-level simulation of the eight insertions (not a parser, compiler or importer run) yields eight marker blocks whose titles are the ordinals and a preamble of lines 1-60. The only genuine gap is the label: split_before accepts a numeric week label only, so the stored weekLabel would read \"WEEK 1\"..\"WEEK 8\" while the source ordinal survives as the row title and as the first body line. Two bounded options follow in the required action; nothing has been added to source_rules and no schema or compiler file is touched.",
+      "required_action": "Choose and record one option. Option A (recommended, no foundation change): add eight split_before rules SS1-SRC-48b641249e3b-R003..R010 for source SS1-SRC-48b641249e3b with week_label 1..8 and the anchors \"OSE KIN-IN-NI\", \"OSE KEJI\", \"OSE KETA\", \"OSE KERIN\", \"OSE KARUN-UN\", \"\\tOSE KEFA\\t\", \"OSE KEJE\", \"OSE KEJO\" (each occurs exactly once and starts a line; week 6 \"\\tOSE KEFA\\t\" must keep its leading and trailing tab so the anchor starts at a line boundary); this deletes no source character and yields rows titled with the ordinals. Option B only if the stored week label must read \"OSE KIN-IN-NI\"..\"OSE KEJO\": approve a bounded foundation change (a schema field plus compiler/parser support for an explicit label, with a contract version bump) - not made here. Either way, do not use docs/ss1/work/SS1-02/author_packages.py source(split_lines=...) unchanged: SPLITS has no entry for this source and the label defaults to \"1\" (line 47), which would collapse all eight weeks. Then re-bind the eight Week 1 rows and re-run the plan audit (deferred by owner).",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "YORUBA-T1-W01-ROW-IDENTITY",
+        "YORUBA-T1-W02-ROW-IDENTITY",
+        "YORUBA-T1-W03-ROW-IDENTITY",
+        "YORUBA-T1-W04-ROW-IDENTITY",
+        "YORUBA-T1-W05-ROW-IDENTITY",
+        "YORUBA-T1-W06-ROW-IDENTITY",
+        "YORUBA-T1-W07-ROW-IDENTITY",
+        "YORUBA-T1-W08-ROW-IDENTITY"
+      ],
+      "blocks_delivery": true
+    },
+    {
       "id": "YORUBA-T1-W06-SCHEME-MAPPING",
       "kind": "CONTENT",
       "detail": "Week 6 is identified in the unnumbered 22-topic opening list (lines 9-51) as topics 16-17 (lines 39, 41), bound to the EDE heading at 1289 and the ASA heading at 1439. Topic 16 is the single word \"Silebu\" and matches 1289 exactly apart from the label, the first exact match in the list. Topic 17 reads \"Awon owe ti o suyo ninu ise ati ise Yoruba \" with one trailing space and matches 1439 word for word apart from case and the label. Week 6 has **two** strands and no LITIRESO section, and the list is consistent with that: no LITIRESO topic is listed between line 37 (Week 5) and line 51 (Week 8), so Weeks 6 and 7 each carry two topics; Week 8 carries three again (lines 47, 49 and 51). Line 43 \"Akoto ede Yoruba\" is Week 7 (heading 1507) and line 45 \"Iwa omoluabi ati anfaani re\" is its ASA topic (heading 1645); line 47 \"Aroko kiko\" opens Week 8 (heading 1689). No week number, week label or per-week grouping exists in the list.",
@@ -2544,7 +2562,7 @@
       "id": "YORUBA-T1-W06-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 6 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1285-1502 (YO-FND-T1-01; the Week 1-5 ROW-IDENTITY items record the same document-wide condition). All 12 Week 6 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week contains one Word table and five floating arrow connectors.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 6 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 6 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2627,7 +2645,7 @@
       "id": "YORUBA-T1-W07-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 7 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1503-1684 (YO-FND-T1-01; the Week 1-6 ROW-IDENTITY items record the same document-wide condition). All 12 Week 7 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week contains a 3 x 6 Word table whose cells are the substance of the lesson.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 7 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 7 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2712,7 +2730,7 @@
       "id": "YORUBA-T1-W08-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 8 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1685-1781 (YO-FND-T1-01; the Week 1-7 ROW-IDENTITY items record the same document-wide condition). All 12 Week 8 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids. Week 8 has no Word table and no drawing: it is a plain list week with 31 automatically numbered paragraphs.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 8 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 8 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2831,7 +2849,7 @@
       "id": "YORUBA-T1-W05-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 5 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1171-1284 (YO-FND-T1-01; the Week 1-4 ROW-IDENTITY items record the same document-wide condition). All 14 Week 5 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids. The week contains no Word table, drawing, picture, text box, OLE object, equation or media file.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 5 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 5 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2916,7 +2934,7 @@
       "id": "YORUBA-T1-W04-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 4 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 725-1167 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY, YORUBA-T1-W02-ROW-IDENTITY and YORUBA-T1-W03-ROW-IDENTITY record the same document-wide condition). All 19 Week 4 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week itself contains four Word tables.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 4 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 4 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2997,7 +3015,7 @@
       "id": "YORUBA-T1-W03-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 3 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 483-719 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY and YORUBA-T1-W02-ROW-IDENTITY record the same document-wide condition). All 23 Week 3 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 3 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 3 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -3095,7 +3113,7 @@
       "id": "YORUBA-T1-W02-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 2 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 311-477 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY records the same document-wide condition). All 15 Week 2 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 2 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 2 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -3159,7 +3177,7 @@
       "id": "YORUBA-T1-W01-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "The parser produces no rows for this source because its week headings are Yoruba ordinals (\"OSE KIN-IN-NI\" etc.), so no SS1-SRC-48b641249e3b:BODY:<sha256> identity exists (YO-FND-T1-01). All 15 Week 1 coverage entries therefore cite exact line ranges and UTF-8 block hashes instead of parsed-row targets, and carry empty lesson_ids.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01 (source-specific week-label pattern with in-anchor occurrence checks), then re-bind the Week 1 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 1 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
