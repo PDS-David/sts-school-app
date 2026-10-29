@@ -2497,14 +2497,270 @@
           "explanation": "The block contains 0 characters in U+00C0-U+024F, 0 combining marks and no other non-ASCII character, so the topic titles carry no tone or sub-dot; this is consistent with the Week 1-8 notation items (YORUBA-T1-W01..W08-NOTATION) and is not normalised here."
         }
       ]
+    },
+    {
+      "id": "YO-T2-W01-SCHEME-EDE",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Scheme Week 1 EDE objective: Atunyewo awon isori oro (revision of the parts of speech), with the five listed sub-topics oro aropo oruko, oro aropo afarajoruko, oro atokun, oro asopo and oro-ise",
+      "objective_locator": "scheme row lines 9-23 (SHA-256 1d57865591bfc8d86e0690f5806f73279f4f89dc8ee1f64c979a0d278ddc3d51); body EDE part lines 151-783 (SHA-256 5d1ea2ce156102539b77b74473b0ab0716d50a2da804618c51e452dafa00e406)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 9 (SHA-256 4738cd57e6e8eb10346a3bcc4c482aae81fccd259cb4258ae4b1a668c08625f0); sub-list lines 11, 13, 15, 17 and 19 (SHA-256 375188e50735e3d2651b502fcf7b5ead627bea50f8f611c3e90edf12e2b9304d / b40d362efb7cade2b6f978cb47c9619da4b94afdd3eb28656bf88394110de2da / c19a1d54b1becdad6cdc1f3d062d0779779304828bec2f15e0d74b1915ad5bd5 / 39041cc524fffe51cde02e28bf4dc966c97882d2b2f5fa5ca05ad4d93098a8f7 / 27ca69ad0c8ddf5e6f30ca4340be5aec07ca3bdf88cd51082d175b098ddb3b2a)",
+          "explanation": "The 2nd Term scheme names the week and the strand on one line, so Week 1 is identified by the document and not by position. The sub-list names five EDE topics; the body teaches those five plus oro aponle (YO-T2-W01-EDE-03) and oro apejuwe (YO-T2-W01-EDE-07), which fall under the general heading Atunyewo awon isori oro."
+        },
+        {
+          "locator": "source lines 151-783 (ORI-ORO heading line 151, SHA-256 4bc0e7ab0f4d5df165944bc631a691462b17de755a443d234080042d24b0e3a2; body hash 5d1ea2ce156102539b77b74473b0ab0716d50a2da804618c51e452dafa00e406)",
+          "explanation": "Seven EDE parts are indexed as YO-T2-W01-EDE-01..07, all PARTIAL: the source teaches each part, but no deliverable lesson exists and no parsed body identity exists for this source (YORUBA-T2-W01-ROW-IDENTITY). Line 153 announces -Oro-oruko but no oro-oruko section follows; the scheme places oro-oruko in Week 10 (line 125)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-SCHEME-ASA",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Scheme Week 1 ASA objective: Oge sise (personal adornment and plaiting)",
+      "objective_locator": "scheme line 21 (SHA-256 48233c583aa2b2c55b43eb58d9ad833fd8d1854c8456dd50c35ed312b8e8de3b); no teaching body; the phrase occurs in Week 1 only inside the Igbelewon questions at lines 797 and 799",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme line 21 (SHA-256 48233c583aa2b2c55b43eb58d9ad833fd8d1854c8456dd50c35ed312b8e8de3b); body lines 149-854 (SHA-256 53462d0b7dc26f243193177332b13216518a3aa3ad4949fa10cb3454169a1190)",
+          "explanation": "The ASA strand has no section, definition, list or example in Week 1. The objective is named in the scheme and presupposed by two evaluation questions that ask pupils to define oge sise and to name old-time ways of adornment, but the body teaches neither. Recorded as YORUBA-T2-W01-CONTENT-GAPS; replacement lesson YO-LES-T2-W01-ASA is appended. No content is invented here."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-SCHEME-LIT",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Scheme Week 1 LITIRESO objective: Itupale asayan iwe litireso (study of a selected literature text)",
+      "objective_locator": "scheme line 23 (SHA-256 52f8f3bb4624b204376cb4d5834aaefadc65c857c43d1b627f7ea3c60283c15a); pointer lines 405-407 (SHA-256 2ea3db94da4890e5138af71f8787a8436689e44f8e0f4987c120fcd0a2c154a3)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 405-407 (LITIRESO. line 405, SHA-256 0760a50dc8a82c9755b7aec2ffa5486ecf500bd6bbe900a8e7f47a093c116d9b; block SHA-256 2ea3db94da4890e5138af71f8787a8436689e44f8e0f4987c120fcd0a2c154a3)",
+          "explanation": "The whole LITIRESO part is the heading and the instruction Kika iwe litireso (read a literature book). No selected text is named, no author or edition is given and no analysis is taught, so the scheme objective cannot be bound to body content. Recorded as YORUBA-T2-W01-CONTENT-GAPS; replacement lesson YO-LES-T2-W01-LIT is appended."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-01",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro aropo oruko: definition, six abuda, and the three irisi (oluwa, abo, eyan) with person and number",
+      "objective_locator": "source lines 157-323 (SHA-256 3a8a876ec0a148549a4520242a964fd195680e62e21725875ba5be7e1e14ae13)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition lines 169-177 (SHA-256 cd76b38ee3b51ec9f111312168df81dee845b8619f9237e5625a0279d15d3d0e)",
+          "explanation": "AKOONU at 167 defines oro aropo oruko and gives four example sentences, including the contrast between Bola as a noun and o as its pronoun substitute."
+        },
+        {
+          "locator": "abuda lines 179-235 (SHA-256 a4b8e761b9bbd3781a3b68ea9c67e4b9f37215f94059985e2a1662350514e715)",
+          "explanation": "Six abuda are taught: number (181), person (187), position/case (201), no coordination (215), incompatibility with da/nko/ni/ko (223) and incompatibility with eyan (231). Item 2 at line 187 is unnumbered although items 1 and 3-6 are numbered (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "irisi lines 237-317 (SHA-256 34ebb93a7c6cdd2a83cc218032402c7733b5eff24f5ac2636dcaaeadfbf68b26)",
+          "explanation": "Three irisi are taught with person/number tables: oluwa (247-267), abo (269-291) and eyan (293-317). The abo table puts faweli in the singular cell at line 279 (source oddity recorded in YORUBA-T2-W01-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "Igbelewon lines 319-323",
+          "explanation": "Two questions close the part: define oro aropo oruko and explain it with examples. No answers are given (YORUBA-T2-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-02",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro aropo afarajoruko: definition, five abuda, and irisi as subject",
+      "objective_locator": "source lines 329-403 (SHA-256 008e6aaa8a97befcac3c916a527e5ee37970e91703c215a03d6a3b45493e93cc)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition lines 337-343 (SHA-256 c380066d3127b66f4943272b49edf0083447be49ac4ffbec241b69ab6b0764ad)",
+          "explanation": "AKOONU at 337 defines oro aropo afarajoruko and lists the six forms emi, iwo, oun, awa, eyin, awon with two example sentences."
+        },
+        {
+          "locator": "abuda lines 345-395 (SHA-256 54eb61cfe6c9b0507e57c381e3bf004eaf2622ab00ce4e0db24d1875e5158b1e)",
+          "explanation": "Five abuda are taught: number and person (347), coordination by oro asopo (365), use with da/nko/ko (371), two syllables (379) and acceptance of eyan (385); the ni-fronting rule is added at 391."
+        },
+        {
+          "locator": "irisi lines 397-403 (SHA-256 bd46b07ed21fe07e9a3ef2a56d2dbd76faa5550af51a8a2d597ce8d8c1b3d749)",
+          "explanation": "IRISI states that oro aropo afarajoruko serves as oluwa (subject), with two examples."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-03",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro aponle: definition, two types (aiseda and aseda), and derived examples",
+      "objective_locator": "source lines 411-497 (SHA-256 0e6cdff6a7684d5ddb6aceda9c84f8448c058724f75f2464654cdb7f50215ffe); not named in the Week 1 scheme sub-list but within Atunyewo awon isori oro",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition lines 419-437 (SHA-256 75c14e64a11dd5b36e07a2986bd0843b39d6141ec6e18c84ea7a2f7bd68636a2)",
+          "explanation": "AKOONU at 419 defines oro aponle as the modifier of oro-ise, states that it occurs inside apola-ise and gives four examples."
+        },
+        {
+          "locator": "types lines 441-473 (SHA-256 9cbab650db3fba53093051271546a8bfa8f6833c77af2ae362cb892454d3da8b)",
+          "explanation": "Two types are taught: aiseda (447-457) and aseda by reduplication (461-473). The two-item list at 447-449 carries no numbers, while the aseda definition at 461 is numbered 2 (YORUBA-T2-W01-SOURCE-DEFECTS); line 469 writes peleple for pelepele."
+        },
+        {
+          "locator": "examples lines 477-497 (SHA-256 c3c2fc0843fd35722a95400c4f34a61af651e4dbff6256fc4ac49839c3b6ff27)",
+          "explanation": "Five derived aponle examples close the part (yoboyobo, yobo, gboo, yanyan, rokoso)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-04",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro-ise: definition, four identification tests, nine isori, and the asinpo worked example",
+      "objective_locator": "source lines 501-563 (SHA-256 b5350e2fb2307831fc21f775bc4f5f90ab33885088a9cca824a3743bc759e7fd)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition and tests lines 515-531 (SHA-256 4f54520bf556e295990d97c2600999b3d1689862a4c37d9f27b75f0647fd1aea)",
+          "explanation": "AKOONU at 515 defines oro-ise as the sentence nucleus and gives the deletion test; four positional tests follow at 525-531 (after oluwa, after the progressive n, after yoo/maa/fi/ti, after the negative atoka ko/o). Line 515 runs gbolohun and oro-ise together and writes ituom/opomulero (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "isori lines 533-553 (SHA-256 17d4846499b00022836b2a60f240ea205b7284ff526bc52a8479ccb067ee9158)",
+          "explanation": "Nine isori are taught: agbabo (537), asebeere (539), asokunfa (541), elela (543), akanmoruko (545), asapejuwe (547), asoluwadabo (549), alapepada (551) and asinpo (553). None carries a number or letter in the extraction (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "worked example lines 555-563 (SHA-256 f35701c35d096beca1195e9730477554b38eaee4bcbc6ba8a4d8dda5198c202e)",
+          "explanation": "The asinpo example Bolu sare lo gbe aga wa is split into its three underlying clauses."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-05",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro-asopo: definition, function, and the uses of ati/pelu/oun and sugbon/tabi/amo",
+      "objective_locator": "source lines 569-655 (SHA-256 d04ad84a6cbc0706c9e88ec99a5fcfab4fc65511edc4084ded1856548148dd18)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition lines 583-601 (SHA-256 972942bb06fef36754516d2e69190203c8a4fff9a3e0885bf1219fbdbcd0c040)",
+          "explanation": "AKOONU at 583 defines oro-asopo as the particle that joins two or more words or sentences into one, with two worked contrasts (589-593 and 595-601); line 601 lists the particles in a run-together string (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "function line 605",
+          "explanation": "The function is stated at 605: to join words or sentences."
+        },
+        {
+          "locator": "uses lines 609-655 (SHA-256 ac30faa7ed5921dc14a9477ba73a8a45de7310a798ce089dc359cc9260a443b7)",
+          "explanation": "The uses of ati/pelu/oun for nouns (609-621) and for pronouns (625-643) and of sugbon/tabi/amo for clauses (647-655) are taught. The lettered items run (a), (b), (d), (e): c is omitted (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-06",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro-atokun: definition and the three uses si, ti and ni",
+      "objective_locator": "source lines 659-727 (SHA-256 3dd6d3a35bcbfc29fcd91b2697279a97359ba1f900fcfdf5c4ebff4f7ae28f66)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition lines 671-677",
+          "explanation": "AKOONU at 671 defines oro-atokun as the particle that relates two nouns and names the three wunren si, ti and ni, with the example at 677."
+        },
+        {
+          "locator": "uses lines 683-727",
+          "explanation": "Three uses are taught with examples: destination with si (687-697), origin with ti (703-713) and location with ni (717-727). The numerals mix punctuation (I. / II / III.) and the term wunren recurs (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-EDE-07",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Oro apejuwe: definition, examples, and two types (ipile and iseda by reduplication)",
+      "objective_locator": "source lines 737-783 (SHA-256 b22615f49e6c9c8ce7236685d7f12ada452598c280e7deec369c4113b334e502); not named in the Week 1 scheme sub-list but within Atunyewo awon isori oro",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition and examples lines 739-761",
+          "explanation": "AKOONU at 739 defines oro apejuwe as the qualifier of a noun and gives examples at 741-761, including the claims that adjectives begin with a consonant (751) and occur inside apola oruko (757)."
+        },
+        {
+          "locator": "types lines 765-783",
+          "explanation": "Two types are taught: ipile (767) and iseda by apetunpe (769-783). The closing example at 779-783 is garbled and the second type is called iseda here but aseda in the aponle section at 461 (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-ASSESS-ADJ",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Igbelewon (785-793): identify the adjective in three sentences; unnumbered, no answers",
+      "objective_locator": "source lines 785-793 (SHA-256 33aa4b42dce9352ec2c7948a82e46e0400ef165d78432f19311f499b9df09152)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 785-793 (SHA-256 33aa4b42dce9352ec2c7948a82e46e0400ef165d78432f19311f499b9df09152)",
+          "explanation": "The instruction at 787 asks pupils to point out the adjective in the sentence, and three sentences follow at 789, 791 and 793. None is numbered and no answers or marking are given (YORUBA-T2-W01-ASSESSMENT-GAPS). Line 789 reads Sile mefamefa ni oluko fun wa (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-ASSESS-REVISION",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Igbelewon (795-803): four revision questions - oge sise (two), oro-ise (one) and three isori oro-oruko with three examples each; only Q1 numbered",
+      "objective_locator": "source lines 795-803 (SHA-256 96e6e4ad235cbbccc35a5c044dfdf3eb4b3f233aebe091fbad273e15f2713f1a)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 795-803 (SHA-256 96e6e4ad235cbbccc35a5c044dfdf3eb4b3f233aebe091fbad273e15f2713f1a)",
+          "explanation": "Four questions follow the heading at 795: define oge sise (797, numbered 1), name old-time ways of adornment (799), define oro-ise (801) and explain three isori oro-oruko with three examples each (803). Q2-Q4 carry no number in the extraction and none has an answer (YORUBA-T2-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-ASSESS-ISE",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Ise asetilewa (811-841): five multiple-choice questions on oro-aponle and oro-asopo; no key and incomplete options; reading list at 805-809",
+      "objective_locator": "source lines 805-841 (IWE AKATILEWA 805-809 SHA-256 e8b6f1be20052e48850cee279e33c5b00ffee7a9082c5128449811bca58e341d; ISE ASETILEWA 811-841 SHA-256 cf47123e26143c71ff43f4d12b79236334ec198a8a82c88962eb0e6163fc42cd)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "IWE AKATILEWA lines 805-809 (SHA-256 e8b6f1be20052e48850cee279e33c5b00ffee7a9082c5128449811bca58e341d)",
+          "explanation": "Two references are listed: Imo, ede, asa ati litireso fun ile-eko sekondiri agba i.o. 163 and Eko ede Yoruba titun i. o.105. The abbreviation i.o. is undefined and its spacing differs between the two lines (YORUBA-T2-W01-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "ISE ASETILEWA lines 811-841 (SHA-256 cf47123e26143c71ff43f4d12b79236334ec198a8a82c88962eb0e6163fc42cd)",
+          "explanation": "Five objective questions are set: three on oro-aponle (815, 821, 827) and two on oro-asopo (831, 837). Every option list is (a), (b), (d) with c omitted, Q3 has an empty option (d) and an unclosed quotation, and no key is given (YORUBA-T2-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T2-W01-ASSESS-APA",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "objective": "Apa keji (843-853): explain oro-ise, oro-atokun and oro-asopo with three examples each; no answers",
+      "objective_locator": "source lines 843-853 (SHA-256 aafd4aed26d0187cb1b9fa92a388f396b773373462d27940447c2bb885161a11)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 843-853 (SHA-256 aafd4aed26d0187cb1b9fa92a388f396b773373462d27940447c2bb885161a11)",
+          "explanation": "One instruction at 845 (explain these isori oro with three examples each) is followed by three prompts at 847, 849 and 851 for oro-ise, oro-atokun and oro-asopo. No answer or marking is given (YORUBA-T2-W01-ASSESSMENT-GAPS)."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term preamble (title, term heading and 22-topic scheme list, lines 3-51) is indexed and classified scheme-only (YO-PRE-T1-1; three MARKER entries). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. All of the 2nd and 3rd Terms, and the preamble/visual/foundation items, remain.",
-      "required_action": "Complete the pending visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term preamble (title, term heading and 22-topic scheme list, lines 3-51) is indexed and classified scheme-only (YO-PRE-T1-1; three MARKER entries). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. The 2nd Term is now indexed at objective level for Week 1 (14 coverage entries; YO-WK-T2-W01), all PARTIAL except the two UNRESOLVED entries for the untaught ASA and LITIRESO objectives. Weeks 2-12, the 2nd Term preamble and foundation item, and all of the 3rd Term remain.",
+      "required_action": "Complete the pending visual and foundation items, then the remaining 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend the affected_ids of this item if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
@@ -3210,6 +3466,68 @@
       "required_action": "Supply an answer key and marking scheme, or record an explicit decision that these exercises are teacher-marked without a key; do not fabricate answers.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T2-W01-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "The 2nd Term scheme row for Week 1 (lines 9-23, SHA-256 1d57865591bfc8d86e0690f5806f73279f4f89dc8ee1f64c979a0d278ddc3d51) is explicit: Ose kinni- Ede-Atunyewo awon isori oro (line 9) with five EDE sub-topics (lines 11-19), Asa- Oge sise (line 21) and Litireso-Itupale asayan iwe litireso (line 23). The EDE body (lines 151-783) teaches seven parts: the five listed and also oro aponle (411) and oro apejuwe (737), which fall under the general heading of the row but are not named in the sub-list; oro-asopo and oro-atokun appear in the body in the reverse of the scheme order (569, 659). Line 153 announces -Oro-oruko but no oro-oruko section follows, and the scheme places oro-oruko in Week 10 (line 125). The ASA objective has no teaching body and the LITIRESO objective has only a three-line pointer (YORUBA-T2-W01-CONTENT-GAPS).",
+      "required_action": "Owner or teacher confirms that Week 1 is the scheme row at lines 9-23, that oro aponle and oro apejuwe are in scope under Atunyewo awon isori oro although the sub-list omits them, and that the ASA and LITIRESO objectives are supplied separately or formally deferred. No objective is invented here.",
+      "affected_ids": [
+        "SS1-SRC-ec4a5095420d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T2-W01-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "The parser produces no rows for this source: the extraction contains no week substring and no bare-number line, so WEEK_MARKER and BARE_NUMBER_LINE match zero times and parseTopics returns [] (NO_PARSED_LESSONS). Week 1 is labelled with the Yoruba ordinal OSE KINNI (line 149, SHA-256 b7e9218db066e7bbdddb0fb05a076de376ecb45fe31923e958c4f8133f2d6989), not an English week marker. All 14 Week 1 coverage entries therefore cite exact line ranges and UTF-8 block hashes instead of SS1-SRC-ec4a5095420d:BODY:<sha256> targets, with empty lesson_ids. The 1st Term audit (YO-FND-T1-01) showed that the eight ordinal headings of that document are expressible with split_before rules; whether the nine 2nd Term section labels (149, 855, 1075, 1303, 1451, 1611, 1683, 2017, 2221) are equally unique and line-start has not been verified and belongs to YO-FND-T2-01 (PENDING).",
+      "required_action": "Run YO-FND-T2-01, then add whatever rules it authorises and re-bind the Week 1 coverage entries to identity targets and re-run the plan audit. No rule is added and no parser run is claimed here.",
+      "affected_ids": [
+        "SS1-SRC-ec4a5095420d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T2-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Defects in the Week 1 body (lines 149-854). Numbering losses: the second of the six abuda of oro aropo oruko at 187 is unnumbered although items 1 and 3-6 are numbered; the two-item aponle list at 447-449 is unnumbered while the aseda definition at 461 is numbered 2; the asopo items run (a), (b), (d), (e) at 609, 625, 635 and 647 with c omitted; the Igbelewon questions at 799-803 carry no number although Q1 at 797 is numbered 1; every multiple-choice option list in Ise asetilewa is (a), (b), (d) with c omitted and Q3 option (d) at 829 is empty. Garbled text: 431 ituom for itumo; 469 peleple for pelepele; 515 gbolohunoro-ise joins gbolohun and oro-ise without a space, with opomulero; 535 Orisiirisii; 549 Eyi nip e a le si; 553 ti a le ri fayo; 601 a run-together particle list (ati pelu, oun afi sugbon nigba ti, ayafi, abi, amo, bee ni, yala, tabi anbosi bosi abbl); 627 apeeere; 635 oro-aropo for oro aropo; 739 Oro-apejuwe-; and ohun ti a n soro ba ninu iso; 779-783 the closing reduplication example is garbled (nla- ile nlanla ni won fun wa); 789 Sile mefamefa ni oluko fun wa; 827 the quotation mark is not closed and lau je je is truncated; 831 a stray dot in 4.   .; 837 Iwo oun Deinde kii segbe. Terminology and spacing: wunren at 371, 391, 575, 671 and 703 where the particle term is normally written iwunren; atoka at 687 and 717 beside atokun elsewhere; iseda at 769 against aseda at 461 for the same derived class; A won spaced at 451; nip e spaced at 549; the abo table puts faweli in the singular cell at 279; the ORI-ORO heading at 151 runs ORI-ORO-;ATUNYEWO together.",
+      "required_action": "Subject expert confirms or corrects each defect; lessons must not copy the uncorrected text. No correction wording is authored here.",
+      "affected_ids": [
+        "SS1-SRC-ec4a5095420d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T2-W01-NOTATION",
+      "kind": "CONTENT",
+      "detail": "Week 1 (lines 149-854) contains no precomposed diacritic and no combining mark: its only non-ASCII characters are 80 curly quotes, 12 en dashes and one ellipsis. The 133 precomposed diacritics counted document-wide by YO-INV-T2 all lie outside Week 1. Consequently e/e-dot and o/o-dot cannot be distinguished anywhere in this week and no tone is marked, although the grammar examples (pronominal person forms, aponle tone patterns, minimal pairs) depend on both.",
+      "required_action": "Subject expert supplies tone-marked and sub-dotted forms (or approves a documented ASCII convention) for the Week 1 material; no marks were added or normalised in this inventory.",
+      "affected_ids": [
+        "SS1-SRC-ec4a5095420d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T2-W01-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "No exercise in Week 1 has an answer, solution or marking scheme: Igbelewon 319-323 (two questions on oro aropo oruko), Igbelewon 785-793 (identify the adjective in three unnumbered sentences), Igbelewon 795-803 (four revision questions, only Q1 numbered), Ise asetilewa 811-841 (five multiple-choice questions) and Apa keji 843-853 (three explain-with-three-examples tasks). The option lists are (a), (b), (d) with c omitted and Q3 has an empty option (d).",
+      "required_action": "Supply an answer key and marking scheme, or record an explicit decision that these exercises are teacher-marked without a key; do not fabricate answers.",
+      "affected_ids": [
+        "SS1-SRC-ec4a5095420d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T2-W01-CONTENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Two scheme objectives have no teaching body in Week 1. ASA Oge sise (scheme line 21) appears only in the evaluation questions at lines 797 and 799, which ask pupils to define oge sise and to name old-time ways of adornment; no definition, list or explanation is taught. LITIRESO Itupale asayan iwe litireso (scheme line 23) has only the three-line pointer LITIRESO. / Kika iwe litireso. at 405-407: no selected text is named and no analysis is taught. In addition, line 153 announces -Oro-oruko under the ORI-ORO heading but no oro-oruko section follows, and the scheme places oro-oruko in Week 10.",
+      "required_action": "Supply source text for Oge sise and for the selected literature text, or record an explicit deferral; replacement lessons YO-LES-T2-W01-ASA and YO-LES-T2-W01-LIT author the missing content once a decision exists. Do not invent content.",
+      "affected_ids": [
+        "SS1-SRC-ec4a5095420d",
+        "YO-T2-W01-SCHEME-ASA",
+        "YO-T2-W01-SCHEME-LIT"
       ],
       "blocks_delivery": true
     }
