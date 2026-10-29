@@ -1479,18 +1479,359 @@
           "explanation": "The exercise block closes all three strands (EDE, ASA and LITIRESO); no deliverable lesson or parsed row identity exists, so the objective is PARTIAL, not SUPPORTED."
         }
       ]
+    },
+    {
+      "id": "YO-T1-W05-SCHEME-EDE",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 13: Itesiwaju lori eko lori iro ede (iro ohun ) (further work on Yoruba speech sounds, here the tones)",
+      "objective_locator": "opening scheme list line 33 (SHA-256 be9efc1f783fa1cf3560c1dd1d26c6a9dfb821e57051dc4a374c8afbe5e69f06); body EDE part lines 1173-1233 (SHA-256 19b0edb497cb0746601908f79fff1fe4edcd80fd7d1a32203f7898713f290076)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 33; scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "The opening 22-topic list carries no week numbers. Topic 13 is mapped to Week 5 by position (fifth block of three) and by heading match: line 33 reads \"Itesiwaju lori eko lori iro ede (iro ohun )\" and differs from line 27 (Week 4 topic 10) by \"lori\" in place of \"nipa\" and by the parenthetical; the Week 5 EDE heading at 1175 reads \"AKOLE ISE: ITESIWAJU LORI EKO IRO EDE YORUBA (ILO OHUN).\", which adds \"YORUBA\" and replaces the scheme parenthetical \"iro ohun\" with \"ILO OHUN\". As in Weeks 2, 3 and 4, the three Week 5 topics (lines 33, 35, 37) appear in the same order as the three body strands (EDE, ASA, LITIRESO); the following topic, line 39 \"Silebu\", is Week 6, whose heading at 1289 reads \"AKOLE ISE: SILEBU\" - the first exact scheme-to-heading match in the list. Classification of the list belongs to YO-PRE-T1-1 (PENDING); the inference is recorded in YORUBA-T1-W05-SCHEME-MAPPING."
+        },
+        {
+          "locator": "source lines 1173-1233 (EKA ISE: EDE; AKOLE ISE at 1175)",
+          "explanation": "The body teaches the topic in seven parts, indexed as YO-T1-W05-EDE-01..07, all PARTIAL: the definition of tone and its two classes, the level tone and its three members, examples of each level tone, the contour tone and its two kinds, the rising contour with examples, the falling contour with examples, and the orthographic note. No deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-SCHEME-ASA",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 14: Awon owe ti o je mo asa Yoruba (proverbs connected with Yoruba culture)",
+      "objective_locator": "opening scheme list line 35 (SHA-256 6e5735d36e31133768bc9c01245e388557ef5d8206f22432418ce4d4944dd780); body ASA part lines 1237-1255 (SHA-256 52304171dc66b6ca5b8a3904352087ab3130291dd23c00f563a11dc57407ebb5)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 35; scheme list lines 9-51",
+          "explanation": "Mapped to Week 5 by position and by exact heading match: line 35 is \"Awon owe ti o je mo asa yoruba\" and the ASA heading at 1239 is \"AKOLE ISE: AWON OWE TI O JE MO ASA YORUBA\" (same words in capitals, AKOLE ISE label aside). The topic occurs once in the 22-topic list."
+        },
+        {
+          "locator": "source lines 1237-1255 (EKA ISE: ASA; AKOLE ISE at 1239)",
+          "explanation": "The body teaches two objectives, indexed as YO-T1-W05-ASA-01..02, both PARTIAL: the marriage custom with two proverbs and the mutual-aid custom with four proverbs. No deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-SCHEME-LIT",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 15: Itupale asayan iwe itan aroso ti ajo WAEC/NECO yan (analysis of the WAEC/NECO-selected prose text)",
+      "objective_locator": "opening scheme list line 37 (SHA-256 255e2ffe4a499edb17bf6b2616bcee0773c09f3d2c0f88653e3f698223f6c526); body LITIRESO part lines 1259-1261 (SHA-256 65a665691440e2aee2b4806f9b215c38348744adeeee1d66af2783ba13275eab)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 37; scheme list lines 9-51",
+          "explanation": "Mapped to Week 5 by position and by near-exact heading match: line 37 is \"Itupale asayan iwe itan aroso ti ajo WAEC/NECO yan\" and the LITIRESO heading at 1261 is \"AKOLE ISE: ITUPALE ASAYAN IWE ITAN AROSO APILEKO TI AJO WAEC/ NECO YAN\", which inserts \"APILEKO\" after \"AROSO\" and writes \"WAEC/ NECO\" with a space after the slash."
+        },
+        {
+          "locator": "source lines 1259-1261 (EKA ISE: LITIRESO; AKOLE ISE at 1261)",
+          "explanation": "The strand consists of the label at 1259 and the title at 1261 and nothing else: the next non-blank line is \"Igbelewon:\" at 1265. No text is named, no author is given and no analysis is taught, so the objective is UNRESOLVED, not PARTIAL. Recorded in YORUBA-T1-W05-LITIRESO-EMPTY."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Iro ohun (tone) defined as the raising and lowering of the voice in speech, and the two tone classes named",
+      "objective_locator": "lines 1177-1183; SHA-256 7b56f1dd512c0549f9539da08d459621daaac7446b26030f15925a5cefeb3dd3",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1177-1183",
+          "explanation": "Line 1177 reads \"Iro ohun ni lilo soke, lilo sodo ohun eniyan nigba ti a ba n soro.\" (tone is the raising and lowering of a speaker's voice in speech); line 1179 reads \"Iro ohun inu ede Yoruba pin si ona meji;\" (Yoruba tones divide into two ways) and is followed by the two class names \"Iro ohun geere\" (1181) and \"Iro ohun eleyoo\" (1183), which carry Word automatic numbering that extraction drops. The definition is compressed and does not say what distinguishes the two classes (defect 1)."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Iro ohun geere (level tone) defined, and its three members named with the marks used for them",
+      "objective_locator": "lines 1185-1193; SHA-256 c755b13fe07d758a9dd4f5157ad55264ca0a9ab53b94998d5a66feb5504ded78",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1185-1193",
+          "explanation": "Line 1185 defines the level tone: \"Iro ohun geere: Eyi ni iro ohun ti o duro ni ori silebu lai ni eyo rara.\" (a tone that stays on one syllable without a glide), where \"lai ni eyo rara\" is garbled. Lines 1187-1193 list three members under the lead-in \"Awon iro bee ni;\": \"a. Iro ohun oke ( / ) – M\" (1189), \"b. Iro ohun isale ( \\ ) – D\" (1191) and \"d. Iro ohun aarin ( - ) – R\" (1193). The lettering runs a, b, d and skips c; the letters M, D and R are never expanded; the marks are ASCII punctuation in parentheses (solidus, reverse solidus, hyphen) rather than the acute, grave and macron marks they stand for (defects 1-2)."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Three examples given for each of the three level tones",
+      "objective_locator": "lines 1195-1213; SHA-256 30d7e199475a989d13b9de744e9f82facc34fe84953d665e7f4d6cb4d6ed1f53",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1195-1213",
+          "explanation": "Three example blocks, each headed by a line with a wide gap after the en dash: high tone at 1195 (\"Apeere iro ohun oke –                              mimo\") with \"titi\" (1197), \"jide\" (1199) and \"kola abbl.\" (1201); low tone at 1203 (\"Apeere iro ohun Isale –                              ogede\") with \"Isale\" (1205) and \"Iwa abbl\" (1207); mid tone at 1209 (\"Apeere iro ohun aarin -                              rere\") with \"Igba\" (1211) and \"Akin abbl\" (1213). Only the high block has three examples; the low and mid blocks have two. None of the ten words carries the tone mark it is meant to illustrate, so the three sets are typographically indistinguishable (YORUBA-T1-W05-NOTATION); \"Isale\" is capitalised mid-list and \"abbl.\" is used without a stop at 1207."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Iro ohun eleyoo (contour tone) defined, and its two kinds named",
+      "objective_locator": "lines 1215-1217; SHA-256 d68e452a77abcfd1c78eb92ca2456581a48f2ead8fffb2a6c7baff4d6ad67990",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1215-1217",
+          "explanation": "Line 1215 defines the contour tone: \"Iro ohun eleyoo: Eyi ni iro ti o n yo lati ipo iro ohun tire lo si ipo iro ohun miiran.\" (a tone that glides from one pitch level to another), where \"tire\" is garbled for \"tira\". Line 1217 reads \"Iro ohun eleyo meji ni o wa;\" (there are two contour tones), spelling \"eleyo\" without the double o used at 1183 and 1215."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-05",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Iro ohun eleyoo roke (rising contour) defined, with three examples",
+      "objective_locator": "lines 1219-1225; SHA-256 21e295a12325f6eb12bbe7da8ecf0c5cda5140f306a90e6373cfd052116e3bdd",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1219-1225",
+          "explanation": "Line 1219 defines the rising contour with the ASCII mark \"(V)\": \"Iro ohun eleyoo roke (V): eyi ni awon iro ohun ti a pe nigba ti a gbe ohun wa towa si isale lo si oke lee kan naa. Apeere\", where \"towa\" is garbled and the definition runs into the example lead-in. The examples are written as dash-separated pairs: \"Olopaa – olopa\" (1221), \"Paapaa – paapaa \" (1223, trailing space) and \"Yii – yii\" (1225). Each pair is visually identical because neither member carries a tone mark, so the rising contrast the heading asks for cannot be seen."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-06",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Iro ohun eleyoo rodo (falling contour) defined, with two examples",
+      "objective_locator": "lines 1227-1231; SHA-256 6d6810b0f61d06467b38aeef55c61cb24f4d44990fb29f9c5855eaf2fa78caf3",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1227-1231",
+          "explanation": "Line 1227 defines the falling contour with the ASCII mark \"(^)\": \"Iro ohun eleyoo rodo (^): eyi ni awon iro ohun ti a pe nigba ti a gbe ohun wa lati oke lo si isale leekan naa. Apeere\". Two examples follow: \"Yoo – yoo\" (1229) and \"Naa – naa\" (1231). Only two are given, so the week supplies five contour examples in total, while the practical at 1275 asks for five of each kind (see YORUBA-T1-W05-ASSESSMENT-GAPS)."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-EDE-07",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Statement that the contour-tone marks are no longer used in present-day Yoruba orthography",
+      "objective_locator": "line 1233; SHA-256 c576f643020e7bc89ddcabbba8eb3de059284e27e666a971a05f5ab072590ad1",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 1233",
+          "explanation": "One sentence: \"Akiyesi: A kii lo ami ohun eleyooroke ati eleyorodo mo ninu akoto ede Yoruba ode oni.\" (note: the rising and falling tone marks are no longer used in the modern Yoruba alphabet). \"eleyooroke\" and \"eleyorodo\" are written as single unspaced compounds, unlike the spaced forms at 1219 and 1227; the statement is not reconciled with the two contour sections that precede it."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-ASA-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Marriage custom (asa igbeyawo) illustrated by two proverbs",
+      "objective_locator": "lines 1239-1245; SHA-256 4e639fa1a73406ad2a519d6c35784fb678df528490b4793a36e07d0b1f0a45f2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1239-1245",
+          "explanation": "After the strand title at 1239, the sub-heading \"Asa igbeyawo\" (1241) is followed by two proverbs carrying Word automatic numbering that extraction drops: \"Ati gbeyawo ko to pon, owo obe lo soro\" (1243) and \"Bi aya ba moju oko tan, alarina a yeba\" (1245). Neither proverb is translated, explained or connected to a teaching point, and neither carries tone marks, although Yoruba proverbs are tone-dependent (YORUBA-T1-W05-NOTATION); \"owo obe\" is garbled (defect 3)."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-ASA-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Mutual-aid custom (asa iran-ra-eni lowo) illustrated by four proverbs",
+      "objective_locator": "lines 1247-1255; SHA-256 558818e5ae8a4ac59136a374d21a72d645e423802afd2819cbf8aad50eff7706",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1247-1255",
+          "explanation": "The sub-heading \"Asa iran-ra-eni lowo\" (1247) is followed by four numbered proverbs: \"Ajeje owo kan ko gberudori\" (1249), \"Ka fi owo we owo ni owo se I mo\" (1251), \"Ka ro so mo di, ka rodi maso, a ni ki idi sa ti ma gbofo\" (1253) and \"Ko kunrin rejo, kobinrin paa, a ni ki ejo sa ti ma lo abbl.\" (1255). As in the marriage block, no translation, explanation or link to the custom is given; 1251 has a capital \"I\" where lower-case l is meant, and 1253, 1255 are garbled and end without the expected \"abbl.\" in 1253 (defect 3)."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-LIT-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Analysis of the prose text selected by WAEC/NECO for the year",
+      "objective_locator": "line 1261; SHA-256 0100b43233c4f82a8a5257f85f6e402205be66f4468b7cdb09ebbc23f138cbbe",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 1261 (strand label at 1259)",
+          "explanation": "The whole LITIRESO strand is the label \"EKA ISE: LITIRESO\" (1259) and the title \"AKOLE ISE: ITUPALE ASAYAN IWE ITAN AROSO APILEKO TI AJO WAEC/ NECO YAN\" (1261). Lines 1262-1264 are blank and 1265 begins the exercise block. No text, author, edition, theme, character, setting or language point is named, so no objective beyond the title itself is taught; the entry is UNRESOLVED, and the replacement lesson cannot be authored until an owner decision names the set text (YORUBA-T1-W05-LITIRESO-EMPTY)."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and no parsed row identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W05-ASSESS",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Three Igbelewon questions and one practical item, with no answers, marks or completion criteria",
+      "objective_locator": "lines 1265-1271; SHA-256 dd8a086b6f1fabfbde48eed56d2810ef774cee2d8f9e0405ff44ff22f58404f7; line 1275; SHA-256 c29ed76a219c1cda0c4679363c13fc916e57e9748827c123c8d3372a10bc9703",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 1265-1271 (Igbelewon)",
+          "explanation": "Three numbered questions: \"Fun iro ede loriki\" (1267, give an account of the tones of the language), \"Salaye pelu apeere isori iro ede Yoruba\" (1269, explain the classes of Yoruba tones with examples) and \"Ko owe ti o je mo asa igbeyawo ati asa iran-ra-eni-lowo\" (1271, write proverbs connected with the marriage and mutual-aid customs). No answer, model response, mark allocation or completion standard accompanies them."
+        },
+        {
+          "locator": "source line 1275 (Ise asetilewa)",
+          "explanation": "One practical item: \"Ise asetilewa:  ko apeere iro ohun eleyoo-rodo ati eleyoo-roke marun-un marun-un\" (write five examples each of falling and rising contour tones), with a double space after the colon. The source gives two falling and three rising examples at 1221-1231, so the learner is asked for five more than the text supplies; \"eleyoo-rodo\" and \"eleyoo-roke\" are hyphenated here but not at 1219 and 1227."
+        },
+        {
+          "locator": "package state",
+          "explanation": "No deliverable lesson exists and no parsed row identity exists for this source (YO-FND-T1-01), so the objective is PARTIAL. The gaps are recorded in YORUBA-T1-W05-ASSESSMENT-GAPS and are not filled here."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1, 2, 3 and 4 of the 1st Term are indexed at objective level (15, 15, 23 and 19 PARTIAL coverage entries; week items YO-WK-T1-W01, YO-WK-T1-W02, YO-WK-T1-W03 and YO-WK-T1-W04); weeks 5-8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
-      "required_action": "Complete YO-WK-T1-W05..W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1, 2, 3, 4 and 5 of the 1st Term are indexed at objective level (15, 15, 23, 19 and 14 coverage entries; week items YO-WK-T1-W01..W05), of which the two Week 5 LITIRESO entries are UNRESOLVED because that strand has a heading and no body; weeks 6-8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
+      "required_action": "Complete YO-WK-T1-W06..W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
         "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W05-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 5 is identified by position in the unnumbered 22-topic opening list (lines 9-51): topics 13-15 (lines 33, 35, 37) are bound to the EDE heading at 1175, the ASA heading at 1239 and the LITIRESO heading at 1261. Line 33 reads \"Itesiwaju lori eko lori iro ede (iro ohun )\" and differs from line 27 (Week 4 topic 10) by \"lori\" in place of \"nipa\" and by the trailing parenthetical; heading 1175 reads \"AKOLE ISE: ITESIWAJU LORI EKO IRO EDE YORUBA (ILO OHUN).\" and so replaces the scheme parenthetical \"iro ohun\" with \"ILO OHUN\" and adds \"YORUBA\" and \"AKOLE ISE: \". Line 35 matches 1239 word for word apart from case and the AKOLE ISE label. Line 37 matches 1261 apart from capitals, the AKOLE ISE label, an inserted \"APILEKO\" after \"AROSO\" and \"WAEC/ NECO\" written with a space after the slash. The three topics appear in the same order as the three body strands, as in Weeks 2-4. The following topic, line 39 \"Silebu\", is Week 6 and matches its heading at 1289 exactly, which supports the position-based reading. No week number, week label or per-week grouping exists in the list.",
+      "required_action": "Confirm the position-based mapping of all 22 topics to the eight teaching sections, together with hash-accounting and classification of the whole list, under YO-PRE-T1-1 (PENDING); if confirmed, record it once for the term rather than per week. No objective was invented beyond the source text.",
+      "affected_ids": [
+        "YO-T1-W05-SCHEME-EDE",
+        "YO-T1-W05-SCHEME-ASA",
+        "YO-T1-W05-SCHEME-LIT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W05-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "Week 5 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1171-1284 (YO-FND-T1-01; the Week 1-4 ROW-IDENTITY items record the same document-wide condition). All 14 Week 5 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids. The week contains no Word table, drawing, picture, text box, OLE object, equation or media file.",
+      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 5 coverage entries to identity targets and re-run the plan audit.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W05-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Eight defects found in Week 5 (lines 1171-1284): (1) EDE 1177-1183: the definition of tone at 1177 is compressed (\"lilo soke, lilo sodo ohun eniyan\") and line 1179 names two classes without saying what separates them; (2) EDE 1185-1193: the level-tone definition ends \"lai ni eyo rara\", the three members are lettered a, b, d with c missing, the labels M, D and R are never expanded, and the marks are ASCII solidus, reverse solidus and hyphen in parentheses, the hyphen colliding with the ordinary hyphen; (3) EDE 1195-1213: the high block has three examples but the low and mid blocks two each (\"Isale\" capitalised mid-list, \"abbl\" without a stop at 1207); (4) EDE 1215-1225: \"tire\" for \"tira\" at 1215, \"eleyo\" without the double o at 1217, \"towa\" and the run-on definition at 1219, and dash-separated pairs that are identical in both members because no tone mark is present; (5) EDE 1227-1231: only two falling examples are given, and \"Yoo – yoo\" and \"Naa – naa\" are likewise identical pairs; (6) ASA 1239-1255: the strand is a bare list of six proverbs under two sub-headings with no translation, explanation or teaching text, \"owo obe\" at 1243 is garbled, 1251 writes capital \"I\" for l, and 1253/1255 are garbled and lack final stops; (7) LITIRESO 1259-1261: the strand is a heading only with no body, no text named and no author (YORUBA-T1-W05-LITIRESO-EMPTY); (8) assessment 1265-1275: three questions and one practical item carry automatic numbering that extraction drops, no answers, model responses or marks are given, the practical asks for five examples of each contour tone while the text supplies two and three, and \"eleyoo-rodo\"/\"eleyoo-roke\" are hyphenated inconsistently with 1219 and 1227.",
+      "required_action": "Obtain one recorded subject-expert decision on every listed defect together with the notation decision (YORUBA-T1-W05-NOTATION) under YO-FACT-T1-W05-DEFECTS; the Week 5 lessons must not copy the uncorrected text. No correction wording is authored here.",
+      "affected_ids": [
+        "YO-T1-W05-SCHEME-EDE",
+        "YO-T1-W05-SCHEME-ASA",
+        "YO-T1-W05-SCHEME-LIT",
+        "YO-T1-W05-EDE-01",
+        "YO-T1-W05-EDE-02",
+        "YO-T1-W05-EDE-03",
+        "YO-T1-W05-EDE-04",
+        "YO-T1-W05-EDE-05",
+        "YO-T1-W05-EDE-06",
+        "YO-T1-W05-EDE-07",
+        "YO-T1-W05-ASA-01",
+        "YO-T1-W05-ASA-02",
+        "YO-T1-W05-LIT-01",
+        "YO-T1-W05-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W05-NOTATION",
+      "kind": "CONTENT",
+      "detail": "The Week 5 text contains no tone-marked or sub-dot character: across lines 1171-1284 there are 0 characters in U+00C0-U+024F and 0 combining marks; the only non-ASCII characters are ten en dashes (1189, 1191, 1193, 1195, 1203, 1221, 1223, 1225, 1229, 1231). This is the same document-wide condition as YORUBA-T1-W01..W04-NOTATION, but it is fatal here because the whole week is a lesson on tone: the three level tones are distinguished only by their marks, and the ten example words at 1197-1213 carry none, so high, low and mid are typographically identical; the contour examples at 1221-1231 are dash-separated pairs whose members are spelled identically, so the rising and falling contrasts are invisible; and every ASA proverb at 1243-1255 is tone-dependent. Where the text does mark tone it uses ASCII punctuation in parentheses - \"( / )\", \"( \\ )\", \"( - )\", \"(V)\" and \"(^)\" - never the acute, grave, macron or caron characters. No marks or symbols were added or normalised.",
+      "required_action": "Decide one notation for the whole term (acute, grave, macron and caron forms, how they are encoded, and how they are shown in examples) and apply it to every Week 5 example and proverb before the lessons are authored; record the decision in YO-FACT-T1-W05-DEFECTS. Until then the level-tone and contour-tone examples cannot be verified.",
+      "affected_ids": [
+        "YO-T1-W05-EDE-01",
+        "YO-T1-W05-EDE-02",
+        "YO-T1-W05-EDE-03",
+        "YO-T1-W05-EDE-04",
+        "YO-T1-W05-EDE-05",
+        "YO-T1-W05-EDE-06",
+        "YO-T1-W05-EDE-07",
+        "YO-T1-W05-ASA-01",
+        "YO-T1-W05-ASA-02",
+        "YO-T1-W05-LIT-01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W05-LITIRESO-EMPTY",
+      "kind": "OWNER_ACTION",
+      "detail": "The LITIRESO strand of Week 5 (1259-1261) is a heading only. The title \"ITUPALE ASAYAN IWE ITAN AROSO APILEKO TI AJO WAEC/ NECO YAN\" announces the analysis of a prose text set by WAEC/NECO, but the week names no text, no author and no edition and teaches nothing: lines 1262-1264 are blank and 1265 is \"Igbelewon:\". The scheme topic at line 37 carries the same words with \"ti ajo WAEC/NECO yan\" and no \"APILEKO\". No Year group or exam session is recorded against this document, so the set text cannot be inferred from the source.",
+      "required_action": "The owner must name the WAEC/NECO prose text that this Year group is to study (title, author, edition and the year whose syllabus applies) or confirm that the strand is to be dropped for this term; the answer becomes the factual basis of YO-LES-T1-W05-LIT. Until then the LITIRESO objective is UNRESOLVED.",
+      "affected_ids": [
+        "YO-T1-W05-SCHEME-LIT",
+        "YO-T1-W05-LIT-01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W05-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "The Week 5 exercise block has three Igbelewon questions at 1267-1271 and one practical item at 1275. All four carry Word automatic numbering that extraction drops. No answers, model responses, mark allocation or completion standard are given for any of them. The practical asks for five examples each of falling and rising contour tones, but the text supplies three rising (1221-1225) and two falling (1229-1231), so the learner is asked for ten examples where the source provides five, and the three identical dash-separated pairs give no model of the required marking. Question 1269 asks for the classes of Yoruba tones and question 1267 for an account of them, so the two overlap without distinguishing their expected answers.",
+      "required_action": "Record the missing answers, marks and completion criteria in YO-FACT-T1-W05-DEFECTS and decide whether the practical keeps its five-and-five demand or is reduced to the examples the text supports; the assessment gap is recorded here, not filled.",
+      "affected_ids": [
+        "YO-T1-W05-ASSESS"
       ],
       "blocks_delivery": true
     },
