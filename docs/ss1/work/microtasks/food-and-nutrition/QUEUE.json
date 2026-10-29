@@ -23,18 +23,24 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "FN-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). FN-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "FN-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The scheme has thirteen rows but only eleven teaching bodies; rows 12 Revision and 13 Examination have no body and are SCHEME_ONLY markers (FN-MARK-T1-REVEXAM). The document has no practical, equipment, hygiene, allergy, burns/fire or chemical content, and only three assessment lines (FN-INV-T1.md). Nothing was run (tests, typechecks, importer, DB, device)."
   ],
   "counts": {
+    "FACTUAL_DEPENDENCY": 2,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_PRESERVATION": 3,
     "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 11,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "VISUAL_DISPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
-    "BLOCKED": 1
+    "BLOCKED": 1,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 23
   },
   "items": [
     {
@@ -170,8 +176,8 @@
       "depends_on": [
         "FN-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Record: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md. Member 'SSS 1/1st Term SS1_/F _ N.docx', 38,569 bytes, SHA-256 398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7 verified from the composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e (verified). mammoth.extractRawText: 21,131 characters, 865 lines, 360 non-blank, whole-text SHA-256 b9bfbdfc1952ef26444e64ed49c529a9e25e5b436ef8881ca0b885ea70c1c8b2. One scheme opening (lines 1-99, SHA-256 f2306a69...) with a 14x2 scheme table (13 rows: 1-11 teaching, 12 Revision, 13 Examination) and eleven teaching bodies: WEEK 1 107-153 (f34469bf...), WEEK 2 155-185 (77aac236...), WEEK 3 189-225 (5ea5a657...), WEEK 4 227-269 (eb3b9c32...), 'Week five' 275-305 (97189433...), 'Week 6' 313-359 (322a9796...), WEEK 7 363-505 (4a36f78c...), WEEK 8 511-607 (99fe5893...), WEEK 9 641-681 (9a17956b...), WEEK 10 697-723 (dd6859e9...), WEEK 11 751-851 (827fceee...). No WEEK 12 or WEEK 13 body exists, so rows 12-13 are SCHEME_ONLY markers. Structure: 3 real tables (14x2 scheme, 4x2 fats/oils, 5x5 digestion), 3 drawing anchors (w:pict, 4 v:shape) inside the Week 11 digestion table block, 29 numbered-list entries, 2 tabs, no page breaks, no media, no headers/footers; only three assessment lines exist in the whole document (Evaluation at 185, Assignment at 681 and Assignment at 851). Appended 20 PENDING items: FN-PRE-T1, FN-WK-T1-W01..W11, FN-MARK-T1-REVEXAM, FN-VIS-T1-SCHEME-TABLE, FN-VIS-T1-W6-FATS-OILS, FN-VIS-T1-W11-DIGESTION-TABLE, FN-PRES-T1-NUTRIENT-TABLES, FN-PRES-T1-PROCESS-STEPS, FN-PRES-T1-SOURCE-WORDING, FN-FACT-T1-NUTRITION-CLAIMS. No lesson, coverage entry, correction, asset or rule was written. Implemented, not approved or verified; tests deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -298,6 +304,752 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "FN-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 1-99 (title 'SCHEME OF WORK FOR ALPHA TERM' at 1, a 14-row two-cell scheme table with header 'WEEK | TOPIC' and rows 1-13), SHA-256 f2306a69a9573116b0c42b9323a24e0f7a8a4dc02d49e116d2628b2505bd2068",
+      "objective": "Index the unlabelled opening of the 1st Term Food and Nutrition source (lines 1-99, body SHA-256 f2306a69a9573116b0c42b9323a24e0f7a8a4dc02d49e116d2628b2505bd2068) and implement what the existing schema supports. The opening is a single title line, 'SCHEME OF WORK FOR ALPHA TERM', followed by a real 14-row table: a 'WEEK | TOPIC' header and thirteen rows (1 Introduction to food and nutrition with definitions, importance and factors; 2 Careers; 3 Relationship to other subjects; 4 Basic food nutrient - carbohydrate, functions, food sources, symptoms of dietary deficiency; 5 protein; 6 symptoms of dietary deficiency - fats and oils; 7 vitamins, chemical names, functions, food sources; 8 mineral salts and water, functions, food sources, symptoms of deficiencies; 9 dietary deficiencies such as kwashiorkor and marasmus; 10 the digestive system, meaning of digestion, absorption, assimilation and metabolism, digestion in mouth, stomach and small intestines; 11 enzymes involved in digestion, absorption and the role of water; 12 Revision; 13 Examination). Rows 4-11 carry multi-line sub-bullets inside a single cell. The document has no SUBJECT line and no term heading beyond this title. Mammoth flattens the table so each row number arrives as a bare line ('1', '2', ... '13') and each cell paragraph on its own line, which a parser could mistake for headings: record the table structure and the row-to-line mapping, treat the numbers as table cells, and never split or import a scheme row as a lesson. Rows 12-13 are handled by FN-MARK-T1-REVEXAM; the table's drawn structure by FN-VIS-T1-SCHEME-TABLE. Do not edit the scheme wording, the mixed spellings or the row text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRE-T1.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "The scheme is represented under the existing schema (or recorded as needing no rule beyond the week split) with all thirteen rows and their multi-line cells preserved verbatim; the bare row numbers are not parsed as headings; no lesson is created from a scheme row; no approval or verification is invented."
+    },
+    {
+      "id": "FN-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 107-153 (marker 'WEEK 1', title 'INTRODUCTION TO FOOD AND NUTRITION'), SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97",
+      "objective": "Index Week 1 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 107-153, body SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97): the title (109), the opening statements on the search for food (111), the definitions of food and of nutrients (113-115), the definition of nutrition including the printed duplication 'Nutrition is therefore is the science of food in relation to health' (117), 'Importance of human nutrition' with eight numbered points (119-135), and 'Factors affecting human nutrition' with six numbered points (141-153). There is no evaluation, weekend assignment or theory block inside this section; the only evaluation in the document that addresses this content is printed at 185 at the end of Week 2. Record the objectives and every question/assignment with exact wording and line numbers, note that Week 1 carries no assessment of its own, and record any missing assessment as a precise open item plus a small lesson task. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 1 objective-level coverage or marker rules exist under the existing schema for the definitions, the eight importance points and the six factors, with exact locators; the absent Week 1 assessment is recorded as an open item plus a small lesson task; nothing is marked approved or verified."
+    },
+    {
+      "id": "FN-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 155-185 (marker 'WEEK 2', careers content), SHA-256 77aac236fae2bc4c5a326ae466103cd3e41adc3d669017c4e3c659189d747b35",
+      "objective": "Index Week 2 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 155-185, body SHA-256 77aac236fae2bc4c5a326ae466103cd3e41adc3d669017c4e3c659189d747b35): the marker at 155, the untitled list of twelve career opportunities (157-181: teaching, dietetics, hospitality and tourism, food science, food science and technology, food engineering, hotel and catering management, food research and development, community nutrition, institutional matron, clinical nutrition, nutrition in media), and the sole assessment line 'Evaluation: mention the importance of human nutrition.' (185). Two findings must be recorded, not silently fixed: (a) Week 2 has no topic title and no teaching text beyond the career list, so the scheme objective 'Careers in food and nutrition' is a bare list with no descriptions; (b) the only evaluation (185) asks about Week 1's importance of human nutrition, not about careers, so it is misfiled. Record both as precise open items plus small lesson tasks (descriptions of each career; an assessment of the careers objective). Do not invent descriptions or answers. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 2 objective-level coverage or marker rules exist under the existing schema for the twelve careers, with exact locators; the missing career descriptions and the misfiled evaluation are precise open items plus small lesson tasks; nothing is invented."
+    },
+    {
+      "id": "FN-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 189-225 (marker 'WEEK 3', title 'Relationship between food and nutrition to other subjects'), SHA-256 5ea5a6577e5feea1074ed64173cafae653c2634b6975d45cc17013b66f60e606",
+      "objective": "Index Week 3 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 189-225, body SHA-256 5ea5a6577e5feea1074ed64173cafae653c2634b6975d45cc17013b66f60e606): the marker and title (189-191), the statement that food and nutrition cuts across disciplines (193), the agriculture relationship and the FAO statement 'both comes under one world organization: FAO' with 'headquarters in Rome' (195-197), and the list of thirteen related subjects (199-225: agricultural science, biology, chemistry, physiology, food technology, home economics, food science, food engineering, microbiology, medicine, economics, physics, physical and health education). There is no assessment in this section and no explanation of how each subject relates, only the list. Record the objectives and the list with exact wording and line numbers, record the missing per-subject explanation and the missing assessment as precise open items plus small lesson tasks, and hand the FAO/Rome claim to FN-FACT-T1-NUTRITION-CLAIMS. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 3 objective-level coverage or marker rules exist under the existing schema for the relationship objective and the thirteen subjects, with exact locators; missing explanations and assessment are precise open items plus small lesson tasks; the FAO claim is handed to the fact item."
+    },
+    {
+      "id": "FN-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 227-269 (marker 'WEEK 4', title 'BASIC FOOD NUTRIENTS'), SHA-256 eb3b9c326652d6934a6dba776cee86ab6971967a7d3350f79e42fb67c99d8c67",
+      "objective": "Index Week 4 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 227-269, body SHA-256 eb3b9c326652d6934a6dba776cee86ab6971967a7d3350f79e42fb67c99d8c67): the marker and title (227-229), the macro/micro nutrient definition and the deficiency statement (231), CARBOHYDRATES with their composition and plant synthesis (233-235), the three classes (237-241), the definitions of monosaccharides, oligosaccharides and polysaccharides with their examples (243-253, including 'GA lactose' at 245 and 'pepsin' among the polysaccharides at 253), the five functions (255-265) and the food sources list (267-269). The scheme row for Week 4 promises 'symptoms of dietary deficiency' but the body stops at food sources and never teaches carbohydrate deficiency symptoms: record that as a precise open item plus a small lesson task. Record every list with exact wording and line numbers and hand the factual defects ('GA lactose', 'pepsin' as a polysaccharide, 'adds bulk to faces') to FN-FACT-T1-NUTRITION-CLAIMS; do not correct them here. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 4 objective-level coverage or marker rules exist under the existing schema for the carbohydrate classes, functions and food sources, with exact locators; the promised deficiency symptoms are a precise open item plus a small lesson task; factual defects are handed to the fact item without being corrected."
+    },
+    {
+      "id": "FN-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 275-305 (marker 'Week five', title 'PROTEINS'), SHA-256 971894331ed1464d7a399fb0f8ae6712b6895165b70c16d404a8341e3939cf19",
+      "objective": "Index Week 5 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 275-305, body SHA-256 971894331ed1464d7a399fb0f8ae6712b6895165b70c16d404a8341e3939cf19). The marker is printed in mixed case as 'Week five' (275) followed by 'Topic: PROTEINS' (277), unlike the upper-case markers of the other weeks: record that for the split rule. The section teaches the protein definition and its first-class/second-class classification (279), eight functions (281-297), the deficiency statement including kwashiorkor and marasmus in infants (299-301) and the food sources list (303-305). There is no assessment. Record the objectives and lists with exact wording and line numbers, note the case-inconsistent marker, and hand the deficiency claims to FN-FACT-T1-NUTRITION-CLAIMS (where the same diseases recur in Week 9). Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 5 objective-level coverage or marker rules exist under the existing schema for the classification, functions, deficiency and food sources, with exact locators; the mixed-case marker is recorded; deficiency claims are handed to the fact item."
+    },
+    {
+      "id": "FN-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 313-359 (marker 'Week 6', title 'FATS AND OILS'), SHA-256 322a97961e3c032dd8b6dbbf197b24c10fe990b96f7e27dfab5cac9a63f4fe20",
+      "objective": "Index Week 6 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 313-359, body SHA-256 322a97961e3c032dd8b6dbbf197b24c10fe990b96f7e27dfab5cac9a63f4fe20). The marker is printed 'Week 6' (313) with 'Topic: FATS AND OILS' (315), also mixed case. The section teaches the fat/oil definition and composition (319), a fats-versus-oils comparison in a real two-column table (321-337; table disposition in FN-VIS-T1-W6-FATS-OILS), seven functions (341-355), the excessive-consumption note (357) and the food sources list (359). The scheme row promises 'Symptoms of dietary deficiency' and the body gives none apart from the obesity remark: record that as a precise open item plus a small lesson task. Record the comparison rows and lists with exact wording and line numbers, note that the comparison table's cell text arrives split across runs ('saturated fatty | acid.'), and hand the obesity claim to FN-FACT-T1-NUTRITION-CLAIMS. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 6 objective-level coverage or marker rules exist under the existing schema for the comparison, functions, excess note and food sources, with exact locators; the promised deficiency symptoms are a precise open item plus a small lesson task; the table is delegated to its visual item."
+    },
+    {
+      "id": "FN-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 363-505 (marker 'WEEK 7', title 'Topic: Vitamins.'), SHA-256 4a36f78c27cbf9ce990ada8a4f1080566629ccda14a549a3d96052f2edceb71c",
+      "objective": "Index Week 7 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 363-505, body SHA-256 4a36f78c27cbf9ce990ada8a4f1080566629ccda14a549a3d96052f2edceb71c): the marker and topic (363-365), the claim 'Vitamins are inorganic in nature' and the two-group classification (367-371), water-soluble vitamins with the B-complex and C list (373), fat-soluble vitamins and the 'ADEK' line (375-377), the pro-vitamin/anti-vitamin paragraph (379), and then one block per vitamin giving its chemical name, functions and food sources: B1 thiamine (381-391), B2 riboflavin (393-403), B3 niacin (405-415), B5 with the duplicated 'pantothenic' lines (417-427), B6 pyridoxine (429-437), B12 cyanocobalamine (439-447), C ascorbic acid (449-467), A retinol (469-481), D cholecalciferol (483-493), E (495-505). Two gaps must be recorded: (a) the 'ADEK' line names vitamin K but no vitamin K block exists; (b) the water-soluble list names folic acid, biotin, pantothenic acid and B15 but only B1, B2, B3, B5, B6, B12 and C are described. Record every chemical name, function and food source with exact wording and line numbers, turn each gap into a precise open item plus a small lesson task, and hand the factual defects ('inorganic', 'tocopherolis', the duplicate B5 lines, 'garbage' in the vitamin C food sources) to FN-FACT-T1-NUTRITION-CLAIMS. There is no assessment in this section. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 7 objective-level coverage or marker rules exist under the existing schema for each described vitamin and the two-group classification, with exact locators; the undescribed vitamins are precise open items plus small lesson tasks; factual defects are handed to the fact item."
+    },
+    {
+      "id": "FN-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 511-607 (marker 'WEEK 8', title 'MINERAL ELEMENTS' then 'WATER.'), SHA-256 99fe589391fd1d357f478e2a926bf3e2634769289edb60656b60c76c519bc1d7",
+      "objective": "Index Week 8 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 511-607, body SHA-256 99fe589391fd1d357f478e2a926bf3e2634769289edb60656b60c76c519bc1d7): the marker and title (511-513), the mineral-element definition and two-group classification (515-519), the classification paragraph that calls the macro elements 'trace elements' and lists them including 'Sculpture' (521), the macro elements one by one - calcium 525-535, magnesium 537-543, phosphorus 545-553, sodium 555-559, sulphur 561-563, potassium 565-571 - the micro elements iron 577-579 and fluorine 581-585, and WATER from 589 to 607 with its properties, six functions and sources. The scheme row promises 'Functions, food sources, symptoms of deficiencies' but the body gives no deficiency symptoms for any mineral: record that as a precise open item plus a small lesson task. Record every element, function and source with exact wording and line numbers and hand the classification claim, 'Sculpture', 'blood clothing', 'hearth beat', 'milk water', 'heamoglobin' and the 'two thirds' body-water statement to FN-FACT-T1-NUTRITION-CLAIMS. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 8 objective-level coverage or marker rules exist under the existing schema for each mineral, the classification and water, with exact locators; missing deficiency symptoms are a precise open item plus a small lesson task; factual defects are handed to the fact item."
+    },
+    {
+      "id": "FN-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 641-681 (marker 'WEEK 9', title 'DIETARY DEFICIENCY'), SHA-256 9a17956b8e9b929057cbfe8d4ae27cf53e720d97cc4f92af04879e6c9d608d90",
+      "objective": "Index Week 9 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 641-681, body SHA-256 9a17956b8e9b929057cbfe8d4ae27cf53e720d97cc4f92af04879e6c9d608d90): the marker and title (641-643), the malnutrition definition, the under-nutrition/over-nutrition distinction (645-647), and the three worked deficiencies - kwashiorkor with symptoms and a treatment line (649-663), marasmus with symptoms and treatment (665-675), anaemia with cause, symptoms and treatment (677-679) - followed by the inline assignment 'List other 5 dietary deficiencies, symptoms, and their treatments.' (681). Record every symptom and every treatment line exactly with line numbers, and treat the three treatment paragraphs as health advice that FN-FACT-T1-NUTRITION-CLAIMS must check against authoritative sources; the inventory does not prescribe any treatment or dose. The assignment has no answer in the source: record it as a precise open item plus a small lesson task. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 9 objective-level coverage or marker rules exist under the existing schema for malnutrition, the three deficiencies and the assignment, with exact locators; treatment lines are preserved as source wording and handed to the fact item; the assignment is an open item plus a small lesson task."
+    },
+    {
+      "id": "FN-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 697-723 (marker 'WEEK 10', title 'THE DIGESTIVE SYSTEM'), SHA-256 dd6859e9b83c113e899bec6b739609f44d838e3930ef93cf4dab1fb56562279c",
+      "objective": "Index Week 10 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 697-723, body SHA-256 dd6859e9b83c113e899bec6b739609f44d838e3930ef93cf4dab1fb56562279c): the marker and title (697-699), the need for alteration before absorption (701), the definition of digestion (703), the alimentary canal with its four 'major sections' - mouth, stomach, duodenum and small intestine (705), the mouth paragraph on saliva, mucin, ptyalin and teeth (707), the stomach paragraph with hydrochloric acid and the lost list numbering that starts at '2.' (709-713), and the duodenum paragraph with pancreatic juice, bile, emulsification and the three enzymes amylase, trypsin and lipase (715-723). Two scheme objectives are not taught here and must be recorded as precise open items plus small lesson tasks: (a) 'Digestion of food in ... small intestines' stops at the duodenum; (b) the scheme's 'Meaning of ... Absorption, Assimilation and Metabolism' is not defined in this section. Record every statement with exact wording and line numbers and hand the factual defects ('saliva secreted by many enzymes', 'chime', 'o of hydrochloric acid', the missing '1.') to FN-FACT-T1-NUTRITION-CLAIMS. There is no assessment in this section. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 10 objective-level coverage or marker rules exist under the existing schema for the digestion definition, the four sections and the three enzymes, with exact locators; the untaught small-intestine digestion and the missing definitions are precise open items plus small lesson tasks; factual defects are handed to the fact item."
+    },
+    {
+      "id": "FN-WK-T1-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "lines 751-851 (marker 'WEEK 11', title 'ABSORPTION'), SHA-256 827fceeea070db616011e690b71913be09b40758f75d72e2235ea0180aff3d7e",
+      "objective": "Index Week 11 of the 1st Term Food and Nutrition source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 751-851, body SHA-256 827fceeea070db616011e690b71913be09b40758f75d72e2235ea0180aff3d7e): the marker and title (751-753), the absorption definition and the villi/lymphatic statement (755), the cell-by-cell digestion table flattened into lines 757-849 (column headings Site, Digestive juice, Optimum pH, Enzyme, Functions at 757-765; rows for mouth 767-775, stomach 777-791, duodenum 793-821 and small intestine/ileum 823-837), and the closing assignment 'draw and label fully a diagram showing the alimentary canal.' (851). The table is a real five-column table whose cell text is fragmented ('M|outh', 'S|aliva', 'A|lkaline', 'P|tyalin') and whose reaction arrows are lost (775, 817-821), and the small-intestine row lists the enzymes Maltase, Lactase, Sucrose, Peptidase and Lipase without their reactions and prints 'Sucrose' where sucrase is meant; FN-VIS-T1-W11-DIGESTION-TABLE holds the table disposition and FN-FACT-T1-NUTRITION-CLAIMS the factual check. The scheme also promises 'the role of water in digestion and absorption', which this section does not teach: record it as a precise open item plus a small lesson task. The drawing assignment has no supplied figure: record it as an open item plus a small lesson task and do not draw or claim an observed practical. Every question or assignment the source does not answer gets a precise open item plus a small lesson task, never an invented answer. A one-line scheme heading is not evidence of coverage; do not import a scheme row as a complete lesson, do not infer whole-row coverage from one objective, and do not merge Food and Nutrition into Catering Craft. Do not record a classroom practical observation that was not made and do not prescribe treatment or doses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W11.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Week 11 objective-level coverage or marker rules exist under the existing schema for absorption, the villi statement and every table row, with exact locators; the water-role gap and the drawing assignment are precise open items plus small lesson tasks; the table is delegated to its visual item."
+    },
+    {
+      "id": "FN-MARK-T1-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "scheme rows 12 'Revision' (line 95) and 13 'Examination.' (line 99) in the scheme table (table 0), with no body anywhere in the document",
+      "objective": "Dispose of the two calendar markers in the 1st Term Food and Nutrition scheme. Rows 12 and 13 of the scheme table print 'Revision' (95) and 'Examination.' (99) and the document contains no WEEK 12 or WEEK 13 body: after WEEK 11 the text ends with the alimentary-canal assignment at 851. Classify both rows under the existing schema as SCHEME_ONLY markers with a rule anchored on the scheme-table text that occurs exactly once, and prove that the anchor is not matched inside any parsed week body. The anchors for rows 1-11 must not be treated as markers. If a later version of the document supplied a revision or examination body, it would have to be classified by body, not by the heading; record that rule. Do not create a lesson, an answer key or an assessment from these rows, and do not invent a revision document.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-MARK-T1-REVEXAM.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Both rows are classified as SCHEME_ONLY under the existing schema with a unique anchor and a check that no week body contains it; no lesson or answer is created; the by-body rule for any future revision content is recorded."
+    },
+    {
+      "id": "FN-VIS-T1-SCHEME-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "scheme table (table 0, 14 rows x 2 cells, header 'WEEK | TOPIC'), lines 1-99",
+      "objective": "Dispose of the scheme-of-work table of the 1st Term Food and Nutrition source. It is the only real table in the opening: 14 rows and 2 cells per row (a 'WEEK' cell and a 'TOPIC' cell), header row then rows 1-13. Rows 4-11 hold several paragraphs inside one topic cell (for example row 4 contains 'Basic food nutrient', '--carbohydrate', '--functions of carbohydrate', '-food sources', '-symptoms of dietary deficiency'), and the row number is a separate cell. Mammoth flattens the table to one line per cell paragraph, so the numbers 1-13 appear as bare lines and the multi-line topics lose their grouping. Record the exact row and cell content, the row-to-line mapping and the flattening behaviour, and decide under the existing schema how a later indexing task should preserve the scheme as a table rather than as a numbered list. No teaching content is in this table beyond the topic list; do not create a lesson from it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-VIS-T1-SCHEME-TABLE.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "The scheme table's rows, cells and flattening behaviour are recorded with exact content and a row-to-line mapping, and a disposition exists for preserving it as a table; no lesson is created."
+    },
+    {
+      "id": "FN-VIS-T1-W6-FATS-OILS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 comparison table (table 1, 4 rows x 2 cells), lines 321-337",
+      "objective": "Dispose of the fats-versus-oils comparison in Week 6 of the 1st Term Food and Nutrition source (lines 321-337). It is a real two-column table with header cells 'Fats' and 'Oils' (323-325) and three numbered comparison rows: solid versus liquid at room temperature (327-329), saturated versus unsaturated fatty acids (331-333), animal versus plant origin (335-337). In the extracted XML some cell text arrives split mid-sentence across runs ('2. Fats contain saturated fatty | acid.' and 'Oils contain unsaturated fatty | acids.'), and at least one cell holds a line break that mammoth turns into a separate paragraph. Record the header cells, the three row pairs and the run splits, and decide under the existing schema how a later lesson preserves the pairing (a two-column table, not a merged prose list). Hand the factual content to FN-FACT-T1-NUTRITION-CLAIMS. Do not merge the two columns into one list and do not correct wording here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-VIS-T1-W6-FATS-OILS.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "The header cells, all three row pairs and the run splits are recorded with exact content and a disposition that keeps the pairing; the factual content is handed to the fact item; nothing is merged or corrected."
+    },
+    {
+      "id": "FN-VIS-T1-W11-DIGESTION-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 11 digestion table (table 2, 5 rows x 5 cells) at lines 757-849, with three drawing anchors (w:pict, 4 v:shape) inside the same table block",
+      "objective": "Dispose of the digestion/absorption table in Week 11 of the 1st Term Food and Nutrition source. It is a real five-column table with header cells 'Site', 'Digestive juice', 'Optimum pH', 'Enzyme', 'Functions (reactions)' (757-765) and four data rows: mouth (767-775), stomach (777-791), duodenum (793-821) and small intestine/ileum (823-837). The extracted text is badly fragmented: the first cells arrive as 'M|outh', 'S|aliva', 'A|lkaline' and 'P|tyalin' because each word is split across runs; reaction arrows are lost, so 'Starch maltose' (775, 817), 'Protein peptides/peptones' (819) and 'Fats fatty acids and glycerol' (821) read as bare pairs; the duodenum row groups two juices, two pH values and 'Contains no enzyme but bile salts amylase' / 'Trypsin lipase' cells out of column order; and the small-intestine row lists five enzymes with no reaction cells at all. Record the header, every cell in its intended column and row, the run splits and the lost arrows, and decide under the existing schema how a later lesson re-renders the table with an explicit 'converts X to Y' text for each reaction instead of an arrow. Three tiny textless drawing anchors (w:pict, four v:shape) sit inside this table's block; record them as textless layout artefacts that carry no content. The factual content goes to FN-FACT-T1-NUTRITION-CLAIMS.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-VIS-T1-W11-DIGESTION-TABLE.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Every header and data cell is recorded in its intended column and row with the run splits and lost arrows noted, a re-render disposition exists with explicit reaction wording, and the three AutoShapes are recorded as textless artefacts; no content is invented."
+    },
+    {
+      "id": "FN-PRES-T1-NUTRIENT-TABLES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "whole 1st Term document: the nutrient lists and the two comparison/digestion tables",
+      "objective": "Preserve the structured nutrition data of the 1st Term Food and Nutrition source when any lesson is written. Required: the class/example lists for carbohydrates, proteins, fats and vitamins stay lists, not prose; the fats-versus-oils pairing stays a two-column comparison; the digestion table stays a table with the columns Site, Digestive juice, Optimum pH, Enzyme, Functions (reactions); every chemical name keeps its exact source spelling ('thiamine', 'riboflavin', 'niacin', 'panthothenic/pantothenic', 'pyridoxine', 'cyanocobalamine', 'ascorbic acid', 'retinol', 'cholecalciferol', 'tocopherolis'); every food-source list is quoted as printed, including the odd entries; and no row, element or vitamin is merged with another. A later lesson may add a corrected statement beside the source's wording but must not delete the source's entry silently. Record the rule and the locators it applies to; do not rewrite any table here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRES-T1-NUTRIENT-TABLES.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "A preservation record lists each structured list and table with its locator and the rule a later lesson must follow; nothing is rewritten or merged."
+    },
+    {
+      "id": "FN-PRES-T1-PROCESS-STEPS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "whole 1st Term document: the digestion sequence and the enzyme-to-product statements at 703-723 and 757-849",
+      "objective": "Preserve the ordered process and enzyme statements of the 1st Term Food and Nutrition source when any lesson is written. Required: the digestion path mouth, stomach, duodenum, small intestine keeps its order and its four-section framing (705); each enzyme keeps its exact name and its stated substrate and product - ptyalin with starch to maltose, pepsin and rennin in the stomach, amylase, trypsin and lipase from the pancreatic juice, and the small-intestine enzymes maltase, lactase, 'Sucrose', peptidase and lipase (719-723, 773-837); the numbering defect in the stomach paragraph, where the list jumps from a lost '1.' to '2.' and '3.' (709-713), is preserved as printed and not silently renumbered; the lost reaction arrows are replaced only by explicit wording, never by a guessed direction. The source's absorption statement about villi and the lymphatic route (755) keeps its wording. Record the rule and locators; do not correct or renumber here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRES-T1-PROCESS-STEPS.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "A preservation record states the ordered path and every enzyme pair with its locator, the numbering defect and the arrow convention, and the rule later lessons must follow; nothing is renumbered or corrected."
+    },
+    {
+      "id": "FN-PRES-T1-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "whole 1st Term document; key defects at 117, 245, 253, 261, 269, 367, 419-423, 451, 467, 497, 521, 529, 531, 535, 577, 591, 707, 709, 715, 723, 833",
+      "objective": "Preserve the source wording of the 1st Term Food and Nutrition document separately from any corrected prose. Record at least: 'Nutrition is therefore is the science of food in relation to health' (117); 'GA lactose' (245); 'pepsin' listed among the polysaccharides (253); 'adds bulk to faces' (261); 'rhye' (269); 'Vitamins are inorganic in nature' (367); the duplicated B5 lines 'panthothenic acid' and 'pantothenic acid' (419, 423); 'it is a simple sugar, it is the most active naturally occurring and reducing agent' (451); 'garbage' in the vitamin C food sources (467); 'tocopherolis' (497); 'The macro elements are also called trace elements' with 'Sculpture' in the list (521); 'blood clothing' (529); 'nerve rhythmic hearth beat' (531); 'milk water' (535); 'heamoglobin' (577); 'about two thirds of the total body composition' (591); 'secreted by many enzymes' (707); 'the presence o of hydrochloric acid' with the lost '1.' (709); 'chime' (715); 'fatty acid glycerol' (723); and 'Sucrose' among the small-intestine enzymes (833). For each, record the exact text, locator and whether it is a typographical defect, a terminology choice, a lost structural element or an unverified claim. A later lesson may quote the source exactly and state a correction, but must not silently rewrite the source text or the scheme. Do not correct anything here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-PRES-T1-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "A wording record lists each defect with exact text, locator and classification; the rule is that later lessons keep the source wording distinct from any correction; nothing is corrected in this item."
+    },
+    {
+      "id": "FN-FACT-T1-NUTRITION-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "whole 1st Term document: definitions, vitamin and mineral facts, deficiency diseases and treatments, digestion and enzyme statements, FAO claim",
+      "objective": "Verify every factual claim in the 1st Term Food and Nutrition source against authoritative sources before a lesson adopts it, keep the source's wording distinct from the corrected fact, and do not prescribe treatment or doses. At least: 'Vitamins are inorganic in nature' (367, vitamins are organic micronutrients); the macro/micro mineral classification and the 'trace elements' label (521, where macro elements are not trace elements and 'Sculpture' stands for sulphur); the chemical names (thiamine, riboflavin, niacin, pantothenic acid, pyridoxine, cyanocobalamine, ascorbic acid, retinol, cholecalciferol, tocopherol); the vitamin A, D, E and C functions and food sources (449-505); the claim that vitamin C 'prevents cold' (457); the mineral functions and food sources (525-585); the body-water proportion 'about two thirds' (591); the kwashiorkor, marasmus and anaemia symptoms and their treatment paragraphs (649-681); the digestion statements (saliva, ptyalin, hydrochloric acid, bile emulsification, enzyme actions at 703-723 and 757-849); and the FAO claim and headquarters (195-197). Each claim needs a citation to a primary or authoritative source (WHO, FAO, a national health service or the national curriculum) or an explicit unverified flag with the reason; if a source cannot be consulted in the run, record that limitation rather than inventing a citation. Health advice is presented as the source's dated statement with a correction, never as a prescription, and no dose or treatment is added. No classroom practical observation is recorded. Do not edit the source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-FACT-T1-NUTRITION-CLAIMS.md"
+      ],
+      "depends_on": [
+        "FN-INV-T1",
+        "FN-SRC-T1",
+        "FN-WK-T1-W04",
+        "FN-WK-T1-W07",
+        "FN-WK-T1-W08",
+        "FN-WK-T1-W09",
+        "FN-WK-T1-W10",
+        "FN-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "completion_condition": "Every listed claim carries a verified citation or an explicit unverified flag with the reason; no treatment, dose or fact is invented and no practical observation is claimed; the source wording remains distinct."
     }
   ],
   "review": {
@@ -313,9 +1065,27 @@
     }
   },
   "next_runnable": [
-    "FN-INV-T1",
     "FN-INV-T2",
     "FN-INV-T3",
-    "FN-TEST-PACKAGE"
+    "FN-TEST-PACKAGE",
+    "FN-PRE-T1",
+    "FN-WK-T1-W01",
+    "FN-WK-T1-W02",
+    "FN-WK-T1-W03",
+    "FN-WK-T1-W04",
+    "FN-WK-T1-W05",
+    "FN-WK-T1-W06",
+    "FN-WK-T1-W07",
+    "FN-WK-T1-W08",
+    "FN-WK-T1-W09",
+    "FN-WK-T1-W10",
+    "FN-WK-T1-W11",
+    "FN-MARK-T1-REVEXAM",
+    "FN-VIS-T1-SCHEME-TABLE",
+    "FN-VIS-T1-W6-FATS-OILS",
+    "FN-VIS-T1-W11-DIGESTION-TABLE",
+    "FN-PRES-T1-NUTRIENT-TABLES",
+    "FN-PRES-T1-PROCESS-STEPS",
+    "FN-PRES-T1-SOURCE-WORDING"
   ]
 }
