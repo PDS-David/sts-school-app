@@ -7,9 +7,16 @@ test('contextual question exercise has an answer and preserves ambiguity of the 
  assert.match(lesson.body,/In a self-introduction, what does Ìwọ ńkọ́/);
  assert.match(lesson.body,/Introduce themselves/);
  assert.match(lesson.body,/does not supply enough context/);
- assert.match(lesson.body,/taki.*iwure.*remain inferred/);
+ assert.match(lesson.body,/'taki' and 'iwure' remain unresolved source wording/);
+ assert.match(lesson.body,/does not assert that either printed form has been deciphered/);
  assert.doesNotMatch(lesson.body,/both readings of ńkọ́ stay open/);
  const tasks=lesson.body.split('**Practice (questions).**')[1].split('**Answers')[0];
+ assert.doesNotMatch(tasks,/taki|iwure/);
+ assert.match(tasks,/6\. Choose ta or kí:/);
+ const answers=lesson.body.split('**Answers and marking guide (22 marks).**')[1];
+ assert.match(answers,/6\. \(a\) ta; \(b\) kí \(1 mark each\)/);
+ assert.match(answers,/For Ṣé Adé wá\?, accept Bẹ́ẹ̀ ni, Adé wá and Bẹ́ẹ̀ kọ́, Adé kò wá/);
+ assert.match(answers,/For Ṣé Bísí mú ìwé náà wá\?, accept Bẹ́ẹ̀ ni, Bísí mú ìwé náà wá and Bẹ́ẹ̀ kọ́, Bísí kò mú ìwé náà wá/);
  const marks=[...tasks.matchAll(/\((\d+) marks\)/g)].map(m=>Number(m[1]));
  assert.equal(marks.length,7);assert.equal(marks.reduce((a,b)=>a+b,0),22);
  assert.match(lesson.body,/marking guide \(22 marks\)/);

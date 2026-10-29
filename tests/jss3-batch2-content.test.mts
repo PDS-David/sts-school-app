@@ -81,7 +81,8 @@ test('Yoruba review lessons sit in the term the scheme names, with complete teac
 });
 test('new Yoruba lessons keep uncertain scheme terms uncertain and invent no traditional verse', () => {
   assert.match(byId('SUP-YO-ISUNKI').body, /'iparoje'[^.]*no source consulted defines it/); assert.match(byId('SUP-YO-ISUNKI').body, /no definition is invented/);
-  assert.match(byId('SUP-YO-IBEERE').body, /inference, not confirmed/);
+  assert.match(byId('SUP-YO-IBEERE').body, /'taki' and 'iwure' remain unresolved source wording/);
+  assert.match(byId('SUP-YO-IBEERE').body, /does not assert that either printed form has been deciphered/);
   const ob = byId('SUP-YO-OBATALA').body; assert.match(ob, /Ọbalúayé/); assert.match(ob, /unconfirmed/); assert.match(ob, /not taught in this lesson/);
   const t = byId('SUP-YO-ORAL-TEXTS'); assert.match(t.body, /No Ṣàngó pípè, Ọya pípè or iwì egúngún verse is supplied or invented/);
   assert.match(t.body, /First produced by the National Open University of Nigeria/); assert.match(t.body, /CC BY-SA 4\.0/); assert.match(t.body, /Kolawole 2023, p\. 86;[^*]*CC BY-SA 4\.0 as stated on the article page/);
