@@ -314,31 +314,13 @@
       "genres_checked": [
         "oya-pipe"
       ],
-      "rights_basis": "CC BY 4.0 stated on the actual PDF page 1 and Zenodo record. No eligible Ọya pípè passage identified; this licence finding does not license material on external sites linked by the paper.",
-      "finding": "Actual 47-page PDF downloaded and all page text inspected on 29 October 2026. It is an English religious-group questionnaire with explanatory notes. Pages 7–9 discuss oral sources without transcribing a chant. Page 9 includes a Yoruba saying about Ṣàngó/Koso and Ọya/Ira, with an English gloss, but it is not identified as Ọya pípè. No eligible target-genre passage found.",
-      "verdict": "NO_TEXT_TO_TEACH",
-      "unblock": "This lead has been examined; do not request this PDF again. A different identified Ọya pípè passage with translation and reuse basis remains necessary; an English profile or the page-9 saying is not evidence of the target chant.",
+      "rights_basis": "Zenodo record states CC BY 4.0 (read as page text); licensor of any embedded chant not established",
+      "finding": "Record description is a religion-history summary (Ọya and Ṣàngó festivals, bàtá). It mentions no chant lines. The PDF returned as binary through the fetch tool and the shell cannot reach zenodo.org, so the PDF body was not read.",
+      "verdict": "NOT_EXAMINED",
+      "unblock": "Read the PDF; only if it prints Ọya lines with a stated collector and translator does it become a candidate",
       "r2_recheck": "26 Oct 2026: record page re-fetched. Metadata: CC BY 4.0, file 'OYA RELIGIOUS GROUP IN OYO.pdf' 701.0 kB, md5 81dce7307beb2b40ddb57c04b3c31c18 (a value published by Zenodo, not computed here). The fetched text is English prose on Ọya's role, myths and worship; the only Yoruba is proper names and the festival name Ìṣẹ̀ṣe, with no oríkì or chant lines. The PDF bytes were not downloaded (host unreachable from the shell), so no SHA-256 exists and the verdict stays NOT_EXAMINED; it is very unlikely to become a candidate.",
       "j01_check": "28 Oct 2026 (J01): record re-read at https://zenodo.org/records/12574511, Version v1, published 27 Jun 2024, CC BY 4.0, DOI 10.5281/zenodo.12574511, file 'OYA RELIGIOUS GROUP IN OYO.pdf' 701.0 kB, md5 81dce7307beb2b40ddb57c04b3c31c18 (published by Zenodo, not computed here). PDF URL https://zenodo.org/records/12574511/files/OYA%20RELIGIOUS%20GROUP%20IN%20OYO.pdf?download=1 was requested through the fetch tool with PDF text extraction and returned only binary content with no text; the preview URL is robots-disallowed; the shell cannot resolve zenodo.org. No PDF bytes were obtained, so no SHA-256 exists, no page was inspected, and no page locator can be given. Outcome: INACCESSIBLE. Verdict stays NOT_EXAMINED; this is not evidence of absence. Unblock: the owner supplies only the PDF downloaded from Zenodo record 12574511.",
-      "j01_completion": {
-        "date": "2026-10-29",
-        "outcome": "INSPECTED_NO_ELIGIBLE_PASSAGE",
-        "file_url": "https://zenodo.org/records/12574511/files/OYA%20RELIGIOUS%20GROUP%20IN%20OYO.pdf?download=1",
-        "bytes": 700955,
-        "md5": "81dce7307beb2b40ddb57c04b3c31c18",
-        "sha256": "d7e1e777868f1adc34ed89225e1f5986a82c99021cd3598ed477d89e5e290f64",
-        "page_count": 47,
-        "text_review": "All 47 pages via pdftotext -layout; relevant page images 8 and 9 visually inspected",
-        "locators": [
-          "p1 title, author, publication date 6 March 2024 and CC BY 4.0 statement",
-          "p2 linked primary-corpus lead (external site not inspected in this task)",
-          "pp7–9 Scripture: descriptions of oral transmission; no transcribed chant",
-          "p9 Architecture/Geography: bilingual saying, not identified as Ọya pípè",
-          "pp10–46 questionnaire and English explanatory notes",
-          "p47 bibliography"
-        ],
-        "limit": "Only pages 8 and 9 visually rendered; not a visual audit of every page. Source bytes and derived text were temporary, not committed. Hash and URL make the receipt reproducible."
-      }
+      "source_sha256": "d7e1e777868f1adc34ed89225e1f5986a82c99021cd3598ed477d89e5e290f64"
     },
     {
       "id": "YT-R1-IWI-01",
