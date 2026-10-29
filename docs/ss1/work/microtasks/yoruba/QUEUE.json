@@ -30,7 +30,8 @@
     "YO-WK-T1-W03 (2026-10-29) indexed 1st Term Week 3: 23 PARTIAL coverage entries in yoruba.json bound to line ranges and UTF-8 block hashes (no parsed row identity exists for this source), 5 open items for scheme mapping, row identity, eight source defects, notation and assessment gaps, and three Week 3 lesson items plus one factual-dependency item appended and blocked on the expert decisions. Week 3 has no Word table; its ATE FAWELI chart is one VML drawing and 47 auto-numbered paragraphs lose their markers in extraction. The objective of YO-FACT-T1-W02-DEFECTS was corrected from \"eight\" to \"nine\" defects. Nothing was run; testing deferred by owner.",
     "YO-WK-T1-W04 (2026-10-29) indexed 1st Term Week 4: 19 PARTIAL coverage entries in yoruba.json bound to line ranges and UTF-8 block hashes (no parsed row identity exists for this source), 5 open items for scheme mapping, row identity, nine source defects, notation and assessment gaps, and three Week 4 lesson items plus one factual-dependency item appended and blocked on the expert decisions. Week 4 is the first indexed week with Word tables: tables 3-6 are the place, manner, voicing and ATE IRO KONSONANTI tables; it has no drawing, picture or media. The inventory claim that Week 4 has no LITIRESO heading was corrected: a heading exists at 1131 but not in the EKA ISE: form. Nothing was run; testing deferred by owner.",
     "YO-WK-T1-W05 (2026-10-29) indexed 1st Term Week 5: the week is a lesson on tone (iro ohun) - the two tone classes, three level tones and two contour tones - with six proverbs on two customs and a LITIRESO heading that has no body. 14 coverage entries in yoruba.json (12 PARTIAL, 2 UNRESOLVED) bound to line ranges and UTF-8 block hashes; six open items for scheme mapping, row identity, eight source defects, notation, the empty LITIRESO strand (OWNER_ACTION: the set text must be named) and assessment gaps; three Week 5 lesson items plus one factual-dependency item appended and blocked on the expert decisions. The source has no tone or sub-dot character at all, so a week whose whole subject is tone carries no distinguishable examples. Nothing was run; testing deferred by owner.",
-    "YO-WK-T1-W06 (2026-10-29) indexed 1st Term Week 6: the week teaches the syllable (Silebu) with its four parts, three structures and worked segmentations, and fourteen proverbs on character, work and trading. It has two strands and no LITIRESO section, and the scheme list is consistent with that. 12 PARTIAL coverage entries in yoruba.json bound to line ranges and UTF-8 block hashes, including the week's only Word table (4 x 5 at 1301-1389); six open items for scheme mapping, row identity, eight source defects, notation, the five arrow connectors (YO-VIS-T1-02) and assessment gaps; two Week 6 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner."
+    "YO-WK-T1-W06 (2026-10-29) indexed 1st Term Week 6: the week teaches the syllable (Silebu) with its four parts, three structures and worked segmentations, and fourteen proverbs on character, work and trading. It has two strands and no LITIRESO section, and the scheme list is consistent with that. 12 PARTIAL coverage entries in yoruba.json bound to line ranges and UTF-8 block hashes, including the week's only Word table (4 x 5 at 1301-1389); six open items for scheme mapping, row identity, eight source defects, notation, the five arrow connectors (YO-VIS-T1-02) and assessment gaps; two Week 6 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner.",
+    "YO-WK-T1-W07 (2026-10-30) indexed 1st Term Week 7: the week teaches the 1974 Yoruba orthography (akoto) as a five-row old-to-new spelling table with three explanatory rules, and eight named iwa omoluabi. It has two strands and no LITIRESO section, and the scheme lists two topics for it. 12 coverage entries in yoruba.json (11 PARTIAL, 1 UNRESOLVED because the benefits named in the ASA topic are never taught); six open items for scheme mapping, row identity, seven source defects, notation (no sub-dot letters in a spelling week), the missing benefits (OWNER_ACTION) and assessment gaps; two Week 7 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -38,16 +39,16 @@
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 1,
     "SOURCE_WEEK_INDEXING": 31,
-    "LESSON": 17,
-    "FACTUAL_DEPENDENCY": 6,
+    "LESSON": 19,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 4,
     "VISUAL_DISPOSITION": 3,
     "FOUNDATION_REQUEST": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "PENDING": 54,
-    "BLOCKED": 6
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "PENDING": 55,
+    "BLOCKED": 7
   },
   "items": [
     {
@@ -1486,9 +1487,140 @@
       "depends_on": [
         "YO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KEJE\" at extractRawText line 1503 (SHA-256 da1345dfd886a58a9cecfdad7f0909aba73123f5abff15c85a468fb375743e88); section lines 1503-1684, trimmed section SHA-256 bfab796f499c382f7b0df35ae0cccafe235f26d7f6e845a93f43e763f54a7ef9; EKA ISE: EDE line 1505 (AKOLE line 1507), EKA ISE: ASA line 1643 (AKOLE line 1645); no LITIRESO heading in this week; Igbelewon line 1669; Ise asetilewa line 1681. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-10-30 on base 7c0e86c (the Week 6 branch head, PR #201; this branch also carries the Week 4 and Week 5 chain, PRs #199 and #200). Week label \"OSE KEJE\" line 1503, SHA-256 da1345dfd886a58a9cecfdad7f0909aba73123f5abff15c85a468fb375743e88; section lines 1503-1684, trimmed section SHA-256 bfab796f499c382f7b0df35ae0cccafe235f26d7f6e845a93f43e763f54a7ef9, equal to the YO-INV-T1 value; EKA ISE: EDE 1505-1641 (f84b2dbd835dbf67a4d9084143fa043ae4e162a09a2fdf3a24b9959c30d42fb4), EKA ISE: ASA 1643-1667 (afeefeac7862f376f508becc0f78ff24a92bd8c0c40e49ca38390ce98949d61d), Igbelewon 1669-1677 (42e1b169235e4b2b46d3829ca03f81412a5c7e3a5ff42216928b05c3204ba869), Ise asetilewa 1681 (a00fccf1dc044678ec8950923d8b80ff68e9cfcc10aca16eefddc9e0f9036f6f). No LITIRESO section: Week 7 has two strands and the scheme lists two topics for it (lines 43/45); Week 8 lists three again. Scheme topics 18-19 at lines 43/45 bound by position and exact heading match. 12 coverage entries: 11 PARTIAL and 1 UNRESOLVED (the ASA benefits named in the topic are absent from the body). Six open items: YORUBA-T1-W07-SCHEME-MAPPING, -ROW-IDENTITY, -SOURCE-DEFECTS (seven defects), -NOTATION, -BENEFITS-MISSING (OWNER_ACTION) and -ASSESSMENT-GAPS. Table 8 is 3 x 6 at 1513-1639 and is the week's only visual object; no drawing, picture, text box, OLE object, equation, VML shape or media file occurs in the week. 12 paragraphs carry automatic numbering and extraction drops their markers (eight behaviours and four questions). The parser produces no rows for this source (YO-FND-T1-01). Appended YO-LES-T1-W07-EDE/ASA (LESSON, PENDING) and YO-FACT-T1-W07-DEFECTS (FACTUAL_DEPENDENCY, BLOCKED); items 72->75; status 13 implemented / 55 pending / 7 blocked; next_runnable YO-WK-T1-W08. No lesson authored, no importer run; testing deferred by owner.",
       "completion_condition": "Index 1st Term Week 7 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-LES-T1-W07-EDE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "source lines 1505-1641 (objectives YO-T1-W07-EDE-01..06)",
+      "objective": "Author the Week 7 EDE lesson that replaces the source text for delivery: what the 1974 akoto is, who agreed it and why, and a corrected old-to-new table organised by rule (dropped vowels, doubled consonants, vowel length, syllabic nasal and vowel forms, word division) with every pair aligned, every form tone-marked and sub-dotted, and a worked explanation for each pair, with practice with complete answers and marking that sums exactly.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T1-W07-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1",
+        "YO-WK-T1-W07",
+        "YO-FACT-T1-W07-DEFECTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by YO-WK-T1-W07 (2026-10-30, base 7c0e86c). The EDE part (source lines 1505-1641 (objectives YO-T1-W07-EDE-01..06)) is indexed as YO-T1-W07-EDE-01..06, all PARTIAL. Defects and notation gaps are listed in YORUBA-T1-W07-SOURCE-DEFECTS and YORUBA-T1-W07-NOTATION and must be decided in YO-FACT-T1-W07-DEFECTS first. No lesson is authored in YO-WK-T1-W07.",
+      "completion_condition": "A lesson in yoruba.json teaches every Week 7 EDE objective with a corrected, aligned table that the expert decision in YO-FACT-T1-W07-DEFECTS approves, uses the approved notation for every form, explains each change by its rule, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "id": "YO-LES-T1-W07-ASA",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "source lines 1643-1667 (objectives YO-T1-W07-ASA-01..03)",
+      "objective": "Author the Week 7 ASA lesson that replaces the source text for delivery: what an omoluabi is, the eight named behaviours each defined and illustrated, and the benefits of good character from the source the owner names under YORUBA-T1-W07-BENEFITS-MISSING, in corrected tone-marked spelling, with practice with complete answers and marking that sums exactly.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T1-W07-ASA.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1",
+        "YO-WK-T1-W07",
+        "YO-FACT-T1-W07-DEFECTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by YO-WK-T1-W07 (2026-10-30, base 7c0e86c). The ASA part (source lines 1643-1667 (objectives YO-T1-W07-ASA-01..03)) is indexed as YO-T1-W07-ASA-01..03, of which YO-T1-W07-ASA-03 (the benefits) is UNRESOLVED. Defects and notation gaps are listed in YORUBA-T1-W07-SOURCE-DEFECTS and YORUBA-T1-W07-NOTATION and must be decided in YO-FACT-T1-W07-DEFECTS first. No lesson is authored in YO-WK-T1-W07.",
+      "completion_condition": "A lesson in yoruba.json teaches all three Week 7 ASA objectives, including the benefits from a named authoritative source, defines and illustrates each of the eight behaviours, uses the corrections agreed in YO-FACT-T1-W07-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance, and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "id": "YO-FACT-T1-W07-DEFECTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 7, source lines 1503-1684 (both strands)",
+      "objective": "Obtain one recorded subject-expert decision on the seven Week 7 source defects, on the tone notation, on the missing benefits of iwa omoluabi and on how table 8 is to be corrected and aligned, so the two Week 7 lessons can be authored without copying errors.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W07.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-FACT-T1-W07-DEFECTS.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1",
+        "YO-WK-T1-W07"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by YO-WK-T1-W07 (2026-10-30). Decisions needed, with locators: (1) the definition sentence at 1509-1511 and what, if anything, is to be added about the 1974 decision; (2) table 8 at 1513-1639: the empty IFIYESI cell in the fourth row, the unchanged \"Ebute-Meta\" pair, the eight-against-seven fifth row and the correct pairing of \"Wi pe\", \"Gegebi\" and \"Gbagbo\"; (3) whether \"Okorin\" to \"Okunrin\" is a spelling change or a different word (1587/1599) and whether \"Lailai\" to \"Laelae\" belongs under vowel length; (4) the correct tone-marked and sub-dotted form of every old and new entry in the table; (5) the ASA definition at 1647-1649, including \"ko eso rode\" and \"bii\"; (6) the eight behaviours at 1653-1667: a definition and one example for each; (7) the benefits of iwa omoluabi, with the authoritative source to be named (YORUBA-T1-W07-BENEFITS-MISSING); (8) the exercise block at 1671-1681: expected answers, marks, and which ten old spellings the practical is to use; (9) the tone notation to be applied (YORUBA-T1-W07-NOTATION). No correction is invented in this item.",
+      "completion_condition": "Every listed defect, the notation decision, the missing-benefits decision and the table-alignment decision are resolved by a named expert decision recorded with evidence and locators; the two Week 7 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     },
     {
       "id": "YO-WK-T1-W08",
@@ -3074,6 +3206,6 @@
     }
   },
   "next_runnable": [
-    "YO-WK-T1-W07"
+    "YO-WK-T1-W08"
   ]
 }
