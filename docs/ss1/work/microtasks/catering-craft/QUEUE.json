@@ -22,22 +22,23 @@
     "The week inventory is unknown for both documents, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "CC-SRC-T2 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). CC-SRC-T3 depends on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "CC-INV-T3 (2026-10-29) inventoried the 3rd Term original and appended the preamble, marker, week-indexing, visual, preservation and fact items. The document has ten teaching-week labels plus one combined WEEK ELEVEN AND TWELVE marker; WEEK TEN is title-only with no body. It has no Word tables and one inline JPEG (table-cloth laying, Week 8). Nothing was run. No lesson, coverage, rule, correction or asset was written. CC-FACT-CONTENT-APPROVAL stays BLOCKED pending CC-TEST-PACKAGE."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 2,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 6,
-    "SOURCE_WEEK_INDEXING": 10,
-    "SOURCE_SECTION_INDEXING": 1,
-    "SOURCE_MARKER_DISPOSITION": 2,
-    "VISUAL_DISPOSITION": 6,
-    "SOURCE_PRESERVATION": 4
+    "FACTUAL_DEPENDENCY": 9,
+    "SOURCE_WEEK_INDEXING": 20,
+    "SOURCE_SECTION_INDEXING": 2,
+    "SOURCE_MARKER_DISPOSITION": 3,
+    "VISUAL_DISPOSITION": 7,
+    "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 30,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 47,
     "BLOCKED": 1
   },
   "items": [
@@ -174,8 +175,8 @@
       "depends_on": [
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory complete: member SHA-256 a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e verified against SOURCE_ASSIGNMENTS.csv from the supplied composite archive \"SSS 1-20260507T072431Z-3-001 (1).zip\", whose own SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e was checked this session; member 537,088 bytes; archive_member kept verbatim. 12 week markers: WEEK ONE to WEEK TEN plus WEEK ELEVEN AND TWELVE; WEEK TEN (lines 934-935) is title-only with no body and WEEK ELEVEN AND TWELVE (938-939) is the revision/examination marker. Opening/scheme/references at lines 1-22. No Word tables (0 BEL cell marks in the piece-table text; 0 tables in an antiword DocBook render). One inline JPEG (1,102x748, after line 772 in WEEK EIGHT; Data stream SHA-256 7a64c327035440c83ebc4161eeb45986692650cc3247a002ab17b171b71da991), no other image, OLE object or drawing part. 18 follow-up items appended (10 SOURCE_WEEK_INDEXING, 1 SOURCE_SECTION_INDEXING, 1 SOURCE_MARKER_DISPOSITION, 1 VISUAL_DISPOSITION, 2 SOURCE_PRESERVATION, 3 FACTUAL_DEPENDENCY), all PENDING. Locators and findings: docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md. Nothing was run. No lesson, coverage entry, rule, correction or asset was written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1238,6 +1239,654 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-IDX-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK ONE / TOPIC: PERSONNEL IN FOOD AND BEVERAGE AREA / getBody lines 25-146 / sha256 d66002d402925448427be9a924a04d073df1939ec500b6ee02c02505235a2e7c",
+      "objective": "Index WEEK ONE (scheme row 1, \"Personnel in Food and Beverage area and their functions- Restaurant\"): the four key requirements for deploying staff (32-39), food and beverage personnel and their functions (43-122: F&B manager 44-55, restaurant manager/supervisor 57-66, head waiter/maître d'hôtel 68-78, station head waiter 84-92, station waiters 94-103, junior/assistant waiters 109-116, reception head waiter 117-121), its two EVALUATION blocks (80-82, 105-107) and the closing GENERAL EVALUATION QUESTIONS (123-129), READING ASSIGNMENT (130-133), WEEKEND ASSIGNMENT (134-143) and THEORY (144-146) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W01.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 d66002d402925448427be9a924a04d073df1939ec500b6ee02c02505235a2e7c; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK\t TWO / TOPIC: FOODS AND BEVERAGE PERSONNEL AND THEIR FUNCTIONS / getBody lines 149-246 / sha256 c6c96f7cc9a5dcf3c9f6e3308791a710252100f7b4ce281e7b5c55978c351598",
+      "objective": "Index WEEK TWO (scheme row 2, \"Personnel in Food and Beverage area and their functions- Bar\"; body topic is the broader \"FOODS AND BEVERAGE PERSONNEL AND THEIR FUNCTIONS\"): bar personnel and their functions (155-189: bar head, bar-man/bar tender/bar keeper/mixologist 164-175, wine butler/steward/sommelier 176-185), BANQUETS and banquet personnel and their responsibilities (190-224), its two EVALUATION blocks (186-188, 212-214) and the closing GENERAL EVALUATION (225-231), READING (232-235), WEEKEND (236-243) and THEORY (244-246) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W02.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 c6c96f7cc9a5dcf3c9f6e3308791a710252100f7b4ce281e7b5c55978c351598; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK THREE / TOPIC\t: KITCHEN STAFF / getBody lines 249-329 / sha256 4b774484b08469a53248b935f47c87d54b1dcfbc5f5ff1d4488fac72eded1d84",
+      "objective": "Index WEEK THREE (scheme row 3, \"Personnel in Food and Beverage area and their functions- Kitchen\"): kitchen staff/kitchen brigade (254-306, including the larder cook 291, aboyeur 301 and still room man 305), its two EVALUATION blocks (277-279, 297-306) and the closing GENERAL EVALUATION (307-313), READING (314-317), WEEKEND (318-326) and THEORY (327-329) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W03.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 4b774484b08469a53248b935f47c87d54b1dcfbc5f5ff1d4488fac72eded1d84; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK FOUR / TOPIC: HOUSE-KEEPING PERSONNEL AND RECEPTIONISTS / getBody lines 332-485 / sha256 b67f351733eca73cbf6af668955f9d9c9db13157dbe70210ed5910d0e615dc53",
+      "objective": "Index WEEK FOUR (scheme row 4, \"House-keeping personnel and Receptionists\"): meaning of housekeeping and departmental responsibilities (340-358), the three personnel categories (359-364), functions of the chief executive/head housekeeper, assistant/deputy, floor housekeepers/supervisors, room attendants/chambermaids, floor/house porter (365-411), BED LINEN (416-431) and BED MAKING (432-444), the reception/front office and receptionist duties (445-462), its three EVALUATION blocks (355-358, 412-415, 441-444) and the closing GENERAL EVALUATION (463-469), READING (470-473), WEEKEND (474-482) and THEORY (483-485) blocks. Bed linen and bed making are taught beyond the scheme row and must not be dropped; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W04.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 b67f351733eca73cbf6af668955f9d9c9db13157dbe70210ed5910d0e615dc53; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK\t FIVE / TOPIC\t: FOOD SERVICE / getBody lines 490-597 / sha256 a85514eb698443ed4b46f508182a83ced819ee23df6eb8e9f6057d5cd10ab231",
+      "objective": "Index WEEK FIVE (scheme row 5, \"Types of food service- Table service\"; body topic \"FOOD SERVICE\"): meaning of food service (493-498), the three service types (499-503), TABLE SERVICE (504-539) including gueridon service, its mise-en-place (513-526) and procedures (527-539), the remaining table-service types, silver/English, American/plated and family service (544-570, 575-576), its two EVALUATION blocks (540-543, 571-576) and the closing GENERAL EVALUATION (577-583), READING (584-587), WEEKEND (588-594) and THEORY (595-597) blocks; record objective candidates. Hot-plate/food-warmer and gueridon statements at 520, 529 and 533 are indexed here but their safety verification belongs to CC-FACT-T3-HOT-PLATE-GUERIDON. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W05.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 a85514eb698443ed4b46f508182a83ced819ee23df6eb8e9f6057d5cd10ab231; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK\t SIX / TOPIC\t: TYPES OF FOOD SERVICE / getBody lines 600-690 / sha256 2af938625792ef9708c0380c04d14557edad1519b8639b5e0378ef49381c09cc",
+      "objective": "Index WEEK SIX (scheme row 6, \"Types of food service- Self service\"; body topic \"TYPES OF FOOD SERVICE\"): self service (603-627), single point service and its main forms (632-670, including vending machines 653-670), its two EVALUATION blocks (628-631, 647-652) and the closing GENERAL EVALUATION (671-677), READING (678-680), WEEKEND (681-687) and THEORY (688-690) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W06.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 2af938625792ef9708c0380c04d14557edad1519b8639b5e0378ef49381c09cc; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK SEVEN / TOPIC: TYPES OF SERVICE / getBody lines 691-740 / sha256 4f9043032b815a1adbc901a9319cc7e1d899a0af30a987e3074983d0af386da1",
+      "objective": "Index WEEK SEVEN (scheme row 7, \"Types of food service- Specialized service\"; body topic \"TYPES OF SERVICE\"): specialized (in situ) service and its six types a-f (697-707), banquet service and its two forms (712-718), its single EVALUATION block (708-711; the banquet section has no separate evaluation) and the closing GENERAL EVALUATION (719-725), READING (726-728), WEEKEND (729-737) and THEORY (738-740) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W07.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 4f9043032b815a1adbc901a9319cc7e1d899a0af30a987e3074983d0af386da1; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK EIGHT / TOPIC: TABLE LAYING AND TABLE SETTING / getBody lines 743-852 / sha256 8db76942a11d5ea72146a80298ad5d1c8e1fd89a83a4f8cf60ed461e404b9752",
+      "objective": "Index WEEK EIGHT (scheme row 8, \"Table laying and table setting\"): TABLE LAYING (751-778, including steps for laying the table cloth 761-773 and the checks at 768-772), the inline picture placed after line 772 (dispositioned by CC-VIS-T3-W08-IMG1), TABLE SETTING (779-829: types 782-786, items 792-809, steps 810-819, guidelines 820-829), its three EVALUATION blocks (775-777, 788-791, 806-809) and the closing GENERAL EVALUATION (830-836), READING (837-840), WEEKEND (841-849) and THEORY (850-852) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W08.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 8db76942a11d5ea72146a80298ad5d1c8e1fd89a83a4f8cf60ed461e404b9752; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK NINE / TOPIC: TABLE (SERVICE) COVER / getBody lines 855-931 / sha256 9cfab96fa04d46aaec33e7ef22fb94abe60e6bc16f4b576a24a6c1d734c6c0c6",
+      "objective": "Index WEEK NINE (scheme row 9, \"Types of table cover\"; body topic \"TABLE (SERVICE) COVER\"): meaning of cover (862-868), characteristics of a cover (869-878, including the one-inch and about-60cm claims recorded for CC-FACT-T3-COVER-DIMENSIONS), types of cover (883-911: a la carte 884-893, classic/basic lay-up 894-899, table d'hote 900-911), its two EVALUATION blocks (879-882, 896-899) and the closing GENERAL EVALUATION (912-918), READING (919-921), WEEKEND (922-928) and THEORY (929-931) blocks; record objective candidates. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W09.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 9cfab96fa04d46aaec33e7ef22fb94abe60e6bc16f4b576a24a6c1d734c6c0c6; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK TEN / TOPIC\t: PRACTICAL DEMONSTRATION OF TABLE LAYING AND SETTING / getBody lines 934-935 / sha256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344",
+      "objective": "Index WEEK TEN (scheme row 10, \"Demonstration of table laying and setting\") and record the gap precisely: the source has only the label (934) and TOPIC line (935); lines 936-937 are blank and the next marker is WEEK ELEVEN AND TWELVE at 938, so there is no demonstration text, no equipment list, no assessment rubric and no record of any practical being performed. Do not invent a demonstration or claim a classroom practical observation. Add a small lesson task for this objective only after recording the missing body as a named open item; the taught steps in WEEK EIGHT (CC-IDX-T3-W08) may later be linked as supporting material but are not this week's body. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W10.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CC-IDX-T3-OPEN",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Opening: THIRD TERM E-LEARNING NOTE / SUBJECT line / SCHEME OF WORK / REFERENCE BOOK / getBody lines 1-22 / sha256 39432ed91f7f93160118b27cb2585d2ee7ff6491af650b49e878c7b9a5f7aaed",
+      "objective": "Index the unlabelled opening block: \"THIRD TERM E-LEARNING NOTE\" (1), the subject/class line (3), SCHEME OF WORK (5) with its tab header WEEK<TAB>TOPIC (7), the ten topic rows (8-17) and the \"11-12.\\tRevision and Examination\" row (18), and REFERENCE BOOK (20) with the two named books (21-22). The ten leading rows carry no week number in the importer's extracted text: antiword renders them as an automatically numbered list 1-10, so the numbers are list numbering, not characters in the body. Record the scheme-to-body label differences (row 2 body is the broader \"FOODS AND BEVERAGE PERSONNEL AND THEIR FUNCTIONS\"; row 5 body is \"FOOD SERVICE\"; row 6 body is \"TYPES OF FOOD SERVICE\"; row 7 body is \"TYPES OF SERVICE\"; row 9 body is \"TABLE (SERVICE) COVER\"; row 10 has a TOPIC line but no body) as findings. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-OPEN.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-MARK-T3-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK\\t ELEVEN AND TWELVE / REVISION AND EXAMINATION / getBody lines 938-939 / sha256 a769b7e88df5e469591f3eb3b20c9a25f583dccffc6af97ead2eea2830d7e280",
+      "objective": "Disposition the combined revision/examination marker WEEK<TAB> ELEVEN AND TWELVE with second line \"REVISION AND EXAMINATION\": the marker has no instructional body (two lines only, file ends at 939), no examination paper, no marking scheme and no revision notes; it matches the scheme row \"11-12.\\tRevision and Examination\" (line 18). Classify it as a marker, not a lesson, and do not invent revision or examination content. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-MARK-T3-REVEXAM.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric, revision note or examination content exists in the source; nothing invented."
+    },
+    {
+      "id": "CC-VIS-T3-W08-IMG1",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK EIGHT / inline picture between getBody lines 772 and 775 / JPEG SHA-256 d48e6dcd9d9ba066355b9f0fc8d16f75f29d284a02a7cfabbb720acae67ea728",
+      "objective": "Give a visual disposition to the source's only embedded picture: a four-panel scanned photograph (lettered a-d) showing a waiter laying a white tablecloth on a table, inline in WEEK EIGHT after the paragraph at line 772 and before EVALUATION at 775. It is a 1,102x748 JPEG stored at offset 261 in the 379,993-byte Data stream (stream SHA-256 7a64c327035440c83ebc4161eeb45986692650cc3247a002ab17b171b71da991); the scan carries faint book/watermark text and a cut-off caption line at its bottom edge. Decide, with provenance, whether to deploy a faithful derivative under curriculum-assets/ss1/catering-craft/ with meaningful alt text (the four cloth-laying stages) or to record an unsupported representation needing a precise foundation dependency (do not change the schema here). Do not AI-invent a replacement technical diagram and do not discard the original bytes. No lesson, coverage or rule is written here. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-VIS-T3-W08-IMG1.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-PRES-T3-SERVICE-SEQUENCES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 5-9 / service and table-laying sequences / getBody line ranges in the objective",
+      "objective": "Preserve the source's service sequences verbatim as separate source-faithful units: gueridon mise-en-place and procedure (514-539), the remaining table-service types (544-570), self-service and single-point service including vending (603-670), specialized service types a-f (697-707) and banquet service (712-718), table laying and table setting steps (751-829), and the a la carte/classic/table d'hote cover lay-ups (883-911). Keep every original step, order and item list; any later correction or enrichment must be recorded separately from the original wording. No lesson, coverage or rule is written here. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-PRES-T3-SERVICE-SEQUENCES.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3",
+        "CC-IDX-T3-W05",
+        "CC-IDX-T3-W06",
+        "CC-IDX-T3-W07",
+        "CC-IDX-T3-W08",
+        "CC-IDX-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-PRES-T3-ASSESSMENT-BLOCKS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 1-9 / EVALUATION, GENERAL EVALUATION QUESTIONS, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY blocks / getBody line ranges in the objective",
+      "objective": "Preserve every in-week assessment block with its exact wording and position: the EVALUATION blocks (80-82, 105-107, 186-188, 212-214, 277-279, 297-306, 355-358, 412-415, 441-444, 540-543, 571-576, 628-631, 647-652, 708-711, 775-777, 788-791, 806-809, 879-882, 896-899), the GENERAL EVALUATION QUESTIONS blocks (123-129, 225-231, 307-313, 463-469, 577-583, 671-677, 719-725, 830-836, 912-918), and the READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY blocks of weeks 1-9. Record that no answer key, marking scheme, mark allocation, practical rubric or score appears anywhere in the document (searched answer, marking, marks, score and rubric); the unseen practical in WEEK TEN has no assessment text. Do not author answers here. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-PRES-T3-ASSESSMENT-BLOCKS.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3",
+        "CC-IDX-T3-W01",
+        "CC-IDX-T3-W02",
+        "CC-IDX-T3-W03",
+        "CC-IDX-T3-W04",
+        "CC-IDX-T3-W05",
+        "CC-IDX-T3-W06",
+        "CC-IDX-T3-W07",
+        "CC-IDX-T3-W08",
+        "CC-IDX-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T3-HOT-PLATE-GUERIDON",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK FIVE / getBody lines 520, 529, 533-536 / see objective",
+      "objective": "Verify later, with authoritative hospitality-service safety sources: the gueridon statements that hot plates or food warmers are placed on the left-hand side on top of the gueridon (520), that the gueridon must always be pushed and never pulled to avoid accidents (529), and the handling of hot serving plates and transfer of foods and liquids from service flats (533-536). No temperature, time, treatment or dose is stated in the source and none may be added here. Record findings and locators only; later correction must keep the source's original wording distinct from any corrected fact and must not prescribe treatment. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T3-HOT-PLATE-GUERIDON.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3",
+        "CC-IDX-T3-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T3-HYGIENE-TEMPERATURE-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 1, 3, 4, 8 and 9 / getBody lines 210, 267, 341, 353, 374, 381, 827, 863 / see objective",
+      "objective": "Verify later, with authoritative food-safety and hospitality-hygiene sources: that meals are served \"at the right temperature\" with no figure given (210), kitchen hygiene and sanitation oversight (267), housekeeping duties to keep the property clean and to observe hygiene and safety precautions (341, 353, 374, 381), the requirement that all table-laying materials be properly cleaned (827), and the cover/napkin statement about indicating \"all precautions\" (863). The document contains no numeric holding temperature, no allergen statement, no cleaning-chemical name or concentration and no first-aid advice; do not infer any. Record findings and locators only; keep original wording distinct from any later correction. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T3-HYGIENE-TEMPERATURE-CLAIMS.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3",
+        "CC-IDX-T3-W01",
+        "CC-IDX-T3-W03",
+        "CC-IDX-T3-W04",
+        "CC-IDX-T3-W08",
+        "CC-IDX-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CC-FACT-T3-COVER-DIMENSIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK NINE / getBody lines 871 and 877 / see objective",
+      "objective": "Verify later, against a primary table-service standard, the two cover measurements stated as characteristics: that cutlery must be at least an inch from the table edge (871) and that \"A cover is normally about 60cm long\" (877). Record them as a factual dependency with locators; do not alter the original wording here and do not state a corrected figure until a permitted primary source is cited. Locator: word-extractor 1.0.4 extract(path).getBody() of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at last non-blank line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Full getBody() SHA-256 b3499393aa9c5958398d008115ef024d58f039f85978d7d4460e03449fdac666 (56,838 characters, 940 lines). Preserve the source's original wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T3.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T3-COVER-DIMENSIONS.md"
+      ],
+      "depends_on": [
+        "CC-INV-T3",
+        "CC-SRC-T3",
+        "CC-IDX-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     }
   ],
   "review": {
@@ -1253,7 +1902,6 @@
     }
   },
   "next_runnable": [
-    "CC-INV-T3",
     "CC-TEST-PACKAGE",
     "CC-IDX-T2-W01",
     "CC-IDX-T2-W02",
@@ -1273,6 +1921,19 @@
     "CC-VIS-T2-W04-TBL3",
     "CC-VIS-T2-W04-TBL4",
     "CC-VIS-T2-W10-TBL5",
-    "CC-VIS-T2-W10-TBL6"
+    "CC-VIS-T2-W10-TBL6",
+    "CC-IDX-T3-W01",
+    "CC-IDX-T3-W02",
+    "CC-IDX-T3-W03",
+    "CC-IDX-T3-W04",
+    "CC-IDX-T3-W05",
+    "CC-IDX-T3-W06",
+    "CC-IDX-T3-W07",
+    "CC-IDX-T3-W08",
+    "CC-IDX-T3-W09",
+    "CC-IDX-T3-W10",
+    "CC-IDX-T3-OPEN",
+    "CC-MARK-T3-REVEXAM",
+    "CC-VIS-T3-W08-IMG1"
   ]
 }
