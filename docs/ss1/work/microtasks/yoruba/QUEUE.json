@@ -32,7 +32,8 @@
     "YO-WK-T1-W05 (2026-10-29) indexed 1st Term Week 5: the week is a lesson on tone (iro ohun) - the two tone classes, three level tones and two contour tones - with six proverbs on two customs and a LITIRESO heading that has no body. 14 coverage entries in yoruba.json (12 PARTIAL, 2 UNRESOLVED) bound to line ranges and UTF-8 block hashes; six open items for scheme mapping, row identity, eight source defects, notation, the empty LITIRESO strand (OWNER_ACTION: the set text must be named) and assessment gaps; three Week 5 lesson items plus one factual-dependency item appended and blocked on the expert decisions. The source has no tone or sub-dot character at all, so a week whose whole subject is tone carries no distinguishable examples. Nothing was run; testing deferred by owner.",
     "YO-WK-T1-W06 (2026-10-29) indexed 1st Term Week 6: the week teaches the syllable (Silebu) with its four parts, three structures and worked segmentations, and fourteen proverbs on character, work and trading. It has two strands and no LITIRESO section, and the scheme list is consistent with that. 12 PARTIAL coverage entries in yoruba.json bound to line ranges and UTF-8 block hashes, including the week's only Word table (4 x 5 at 1301-1389); six open items for scheme mapping, row identity, eight source defects, notation, the five arrow connectors (YO-VIS-T1-02) and assessment gaps; two Week 6 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner.",
     "YO-WK-T1-W07 (2026-10-30) indexed 1st Term Week 7: the week teaches the 1974 Yoruba orthography (akoto) as a five-row old-to-new spelling table with three explanatory rules, and eight named iwa omoluabi. It has two strands and no LITIRESO section, and the scheme lists two topics for it. 12 coverage entries in yoruba.json (11 PARTIAL, 1 UNRESOLVED because the benefits named in the ASA topic are never taught); six open items for scheme mapping, row identity, seven source defects, notation (no sub-dot letters in a spelling week), the missing benefits (OWNER_ACTION) and assessment gaps; two Week 7 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner.",
-    "YO-WK-T1-W08 (2026-10-30) indexed 1st Term Week 8: the last week of the document teaches essay writing (a definition, seven named types and six principles) and indigenous Yoruba occupations (a definition, ten occupations and three Ise ona materials), and closes with a LITIRESO heading that has no body. It has three strands, as the scheme lists three topics for it. 12 coverage entries in yoruba.json (10 PARTIAL, 2 UNRESOLVED because the WAEC/NECO set text is not named and nothing is taught); six open items for scheme mapping, row identity, eight source defects, notation (no sub-dot letters), the empty LITIRESO strand (OWNER_ACTION) and assessment gaps; three Week 8 lesson items plus one factual-dependency item appended. With this the 1st Term is fully indexed at objective level. Nothing was run; testing deferred by owner."
+    "YO-WK-T1-W08 (2026-10-30) indexed 1st Term Week 8: the last week of the document teaches essay writing (a definition, seven named types and six principles) and indigenous Yoruba occupations (a definition, ten occupations and three Ise ona materials), and closes with a LITIRESO heading that has no body. It has three strands, as the scheme lists three topics for it. 12 coverage entries in yoruba.json (10 PARTIAL, 2 UNRESOLVED because the WAEC/NECO set text is not named and nothing is taught); six open items for scheme mapping, row identity, eight source defects, notation (no sub-dot letters), the empty LITIRESO strand (OWNER_ACTION) and assessment gaps; three Week 8 lesson items plus one factual-dependency item appended. With this the 1st Term is fully indexed at objective level. Nothing was run; testing deferred by owner.",
+    "YO-PRE-T1-1 (2026-10-30) indexed the 1st Term preamble: the title \"ODUN IGBEKO YORUBA-SS 1\" (line 3), the term heading \"ISE OOJO-SAA KIN-IN-NI\" (line 5) and the unnumbered 22-topic scheme list (lines 9-51) are recorded as three MARKER entries and classified SCHEME_ONLY by a new classify_marker rule; Week 1 starts at line 61, so nothing is teaching text. One open item, YORUBA-T1-PRE-SCHEME-LIST, keeps the term-wide confirmation of the 22-to-eight mapping with the owner. No item was added to the queue; status 15 implemented / 56 pending / 8 blocked; next_runnable YO-VIS-T1-01. Nothing was run; testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -47,8 +48,8 @@
     "FOUNDATION_REQUEST": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 14,
-    "PENDING": 57,
+    "IMPLEMENTED_TESTING_DEFERRED": 15,
+    "PENDING": 56,
     "BLOCKED": 8
   },
   "items": [
@@ -1876,8 +1877,8 @@
       "depends_on": [
         "YO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): title line 3 \"ODUN IGBEKO YORUBA-SS 1\" (SHA-256 d8437b734b0870428d488cfd4d6d70ded08f6c26a2337419605f7c37998f09a9); heading line 5 \"ISE OOJO-SAA KIN-IN-NI\" (SHA-256 fc6b29dc4fad10257b786ae43b32e23305fcfaf44e402aa1ad38022a617e42b5); 22 topic paragraphs on lines 9-51 (SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6); block lines 3-51 (SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32). The list carries no week numbers and no \"WEEK\" markers; it is not a week teaching body.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-10-30 on base 4dd88b4 (the Week 8 branch head, PR #203; this branch also carries the Week 4-8 chain, PRs #199-#203). The non-week opening block is lines 3-51: title \"ODUN IGBEKO YORUBA-SS 1\" line 3 (SHA-256 d8437b734b0870428d488cfd4d6d70ded08f6c26a2337419605f7c37998f09a9), term heading \"ISE OOJO-SAA KIN-IN-NI\" line 5 (SHA-256 fc6b29dc4fad10257b786ae43b32e23305fcfaf44e402aa1ad38022a617e42b5) and 22 topic paragraphs lines 9-51 (SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6); trimmed block 3-51 (SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32). Week 1 begins at line 61 (\"OSE KIN-IN-NI\"), so the block is preamble and not teaching text. Three MARKER coverage entries added (YO-T1-PRE-TITLE, -TERM, -SCHEME-LIST) and one source rule, SS1-SRC-48b641249e3b-R002 (classify_marker, SCHEME_ONLY, anchor at line 3). One open item added, YORUBA-T1-PRE-SCHEME-LIST, for the term-wide confirmation of the 22-to-eight mapping and the irregular term heading. The block contains 0 non-ASCII characters. No lesson authored, no asset, no importer run; items stay 79; status 15 implemented / 56 pending / 8 blocked; next_runnable YO-VIS-T1-01. Testing deferred by owner.",
       "completion_condition": "The title and 22-topic opening list are hash-accounted with locators; the section is either classified as scheme-only/preamble under the existing schema or recorded as a precise open item; no teaching is invented and nothing is discarded. Testing deferred by owner."
     },
     {
@@ -3382,6 +3383,6 @@
     }
   },
   "next_runnable": [
-    "YO-PRE-T1-1"
+    "YO-VIS-T1-01"
   ]
 }
