@@ -1,3 +1,5 @@
+> **29 October current closeout:** [NO_RESPONSE_CLOSEOUT/REMAINING.md](NO_RESPONSE_CLOSEOUT/REMAINING.md) supersedes older remaining-work lists. Five written lesson corrections and the actual Zenodo source check are merged (PR172/173). Certification, final acceptance and production deployment are not claimed.
+
 > **28 October P4 correction:** Retain existing ordering and progression; no placement activation is requested. D6/D7/placement responses are required for a future activation, not for unchanged-order source implementation. The committed plan is empty, but no live ranks or target configuration were inspected. The earlier mandatory-column failure is fixed by `SEQUENTIAL_CLOSEOUT_20261025/SEQUENCE_SCHEMA_COMPATIBILITY.md`; do not treat the historical R7 warning as a current defect. See `NO_RESPONSE_CLOSEOUT/P4_EXISTING_ORDER.md`. Release verification and approval remain separate.
 
 # JSS3 — current integration status (24 Oct 2026, R6 integrator)
