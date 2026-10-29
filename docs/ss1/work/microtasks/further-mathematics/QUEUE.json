@@ -25,23 +25,23 @@
     "Audio is not involved in this subject."
   ],
   "counts": {
-    "SOURCE_REGISTRATION": 3,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_WEEK_INVENTORY": 1,
-    "SOURCE_WEEK_INDEXING": 26,
-    "LESSON": 7,
-    "CORRECTION_BINDING": 7,
     "ASSET": 1,
-    "VISUAL_DISPOSITION": 8,
-    "FACTUAL_DEPENDENCY": 10,
-    "SCOPE_DECOMPOSITION": 2,
     "BRANCH_PORT_COMPARISON": 16,
-    "TEST": 2
+    "CORRECTION_BINDING": 7,
+    "FACTUAL_DEPENDENCY": 10,
+    "LESSON": 7,
+    "SCOPE_DECOMPOSITION": 2,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 26,
+    "SOURCE_WEEK_INVENTORY": 1,
+    "TEST": 2,
+    "VISUAL_DISPOSITION": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "PENDING": 58,
-    "BLOCKED": 7
+    "BLOCKED": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 57
   },
   "items": [
     {
@@ -146,7 +146,7 @@
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "term": "2nd Term",
-      "week_or_locator": "text outside the parsed week rows: header line, scheme-of-work table (weeks 1-10 topics; weeks 11-12), reference list",
+      "week_or_locator": "text outside the parsed week rows: body children 0-30 (title, subject/class, scheme heading and 13-row scheme table, reference list) plus header/footer parts",
       "objective": "Inventory all 2nd Term text outside the ten parsed week rows (header, scheme-of-work table, revision/examination lines, reference list, any cover or letterhead page) and record the scheme topic listed for each week 1-10 so the week items can bind objectives to it. Re-read the header and record whether it verifies the subject.",
       "required_files": [
         "backend/src/db/ss1/subjects/further-mathematics.json",
@@ -174,8 +174,8 @@
       "depends_on": [
         "FM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Package holds marker coverage COV-FM-T2-EXAM (objective \"Revision and examination weeks; reference list\", locator \"scheme lines 11-12\") bound to RULE-FM-T2-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite \"scheme weeks 1-10\" / \"scheme topic n\", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Package holds marker coverage COV-FM-T2-EXAM (objective \"Revision and examination weeks; reference list\", locator \"scheme lines 11-12\") bound to RULE-FM-T2-SCHEME-EXAM (classify_marker SCHEME_ONLY). Row-level coverage locators cite \"scheme weeks 1-10\" / \"scheme topic n\", so a scheme table exists, but its text and its week-to-topic list are not recorded in the repository. The header text was recorded by SS1-03 and is not re-verified. OI-FM-004 reports advertising letterhead/cover pages in the 2nd and 3rd Term sources; the 1st Term has no such record. | Implemented: preamble read from the verified member (sha256 3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36, 420,997 bytes; composite archive 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified). Body children 0-30 hold all text before WEEK ONE at child 31: title 0, subject 2, class 3, SCHEME OF WORK 4, 13-row scheme table 5, 19 empty paragraphs 6-24, reference heading and three titles 25-28, two empty paragraphs 29-30; per-block child-text hashes and the table hash are in FM-PRE-T2.md. Scheme rows 1-10 are recorded verbatim in the note and mapped to COV-FM-T2-R00..R09; their objective_locators now cite the exact scheme row, body child 5 and table hash 6b18d95f. Rows 11-12 (Revision and Examination only) remain COV-FM-T2-EXAM with an exact locator. The reference list was given its own SCHEME_ONLY rule RULE-FM-T2-REFERENCES (anchor occurs once in mammoth 1.12.2 extractRawText) and MARKER coverage COV-FM-T2-REFERENCES; COV-FM-T2-EXAM's objective text was left unchanged. Header re-read: body child 2 equals the registered header_text after trimming one trailing space; the subject is verified and the class is on child 3. Branding listed for FM-VIS-T2-BRANDING: no body picture before Week One; header1.xml carries an anchored picture (docPr 'LOGO 2.jpg', media/image1.jpeg, 106,941 bytes, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) used as the default header of the first section (section break at body child 73); header2.xml is the final section's default header with a Name/Class line; footer2 and footer4 carry the vendor and term line. No separate full-page cover picture was found; contact details were not reproduced and the image was not viewed. Record: docs/ss1/work/microtasks/further-mathematics/FM-PRE-T2.md. Implemented, not approved or verified.",
       "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage or recorded as an open item; the week-to-scheme-topic list is written to the FM-PRE note; header verification result (matches / differs) is recorded; any letterhead or vendor branding is listed for FM-VIS-T2-BRANDING handling. No lesson is authored in this item."
     },
     {
@@ -1786,7 +1786,7 @@
         "FM-SRC-T2"
       ],
       "status": "PENDING",
-      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true) records that the 2nd Term source embeds a commercial tutor's letterhead and cover page with a personal phone number and e-mail, and that the images were deliberately not bound as lesson assets. Reuse rights are unconfirmed. Locations were not recorded.",
+      "implementation_reference": "OI-FM-004 (PERMISSION, blocks_delivery true) records that the 2nd Term source embeds a commercial tutor's letterhead and cover page with a personal phone number and e-mail, and that the images were deliberately not bound as lesson assets. Reuse rights are unconfirmed. Locations were not recorded. | Locations recorded by FM-PRE-T2 (still needs visual inspection here): word/header1.xml has one anchored picture (docPr name 'Picture 1', descr 'LOGO 2.jpg') embedding word/media/image1.jpeg (106,941 bytes, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14), extent 3933825x933450 EMU, referenced as the default header of the first section (section break at body child 73); word/header2.xml is the final section's default header and holds a Name/Class line; footer2 reads 'MR OSHO/2nd TERM/further mathematics/SS 1Page 2' and footer4 'GSS/2ndTERM/further mathematics/SS 1Page 39'; footer1 and footer3 are empty. No picture occurs in body children 0-30, so no separate full-page cover picture was found. Contact details are not reproduced here and the image was not viewed.",
       "completion_condition": "A disposition is recorded for every object in the stated locator, without claiming app/display verification; no asset is acquired or installed here; any gap becomes an open item."
     },
     {
@@ -2785,6 +2785,6 @@
     }
   },
   "next_runnable": [
-    "FM-PRE-T2"
+    "FM-INV-T3"
   ]
 }

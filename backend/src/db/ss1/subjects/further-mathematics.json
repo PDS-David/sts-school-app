@@ -26,8 +26,8 @@
       "canonical_subject": "Further Mathematics",
       "header_text": "SUBJECT: FURTHER MATHEMATICS",
       "header_evidence": {
-        "locator": "line 2 \"SUBJECT: FURTHER MATHEMATICS\"",
-        "explanation": "Subject line reads FURTHER MATHEMATICS, class SS1, second term; scheme lists AP/GP, inequalities, functions, trigonometry, logic."
+        "locator": "body child 2 (mammoth raw-text line 5): 'SUBJECT: FURTHER MATHEMATICS'; class line at body child 3 (mammoth line 7)",
+        "explanation": "Re-read by FM-PRE-T2 from word/document.xml and mammoth 1.12.2 extractRawText. The SUBJECT line equals the registered header_text after trimming one trailing space; the tabs and spaces are layout only. The registered string occurs exactly once in the extracted text, and the subject is FURTHER MATHEMATICS. The class appears on the next line ('CLASS: SS1') and in the running footer, not inside header_text. The title line (body child 0) reads 'SECOND TERM E-LEARNING NOTE'. Subject verified; the earlier locator 'line 2' was not a mammoth line number."
       }
     },
     {
@@ -145,6 +145,18 @@
       "evidence": {
         "locator": "scheme lines 11-12",
         "explanation": "Revision and examination weeks listed in the scheme only."
+      }
+    },
+    {
+      "id": "RULE-FM-T2-REFERENCES",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "source_sha256": "3f9b36a0d90af06f9eb82bacd4dbc29a7737290566fd1109f51983537844bb36",
+      "anchor": "REFERECES\n\nFutherMaths Project 1 and 2 by TuttuhAdegun (main text).\n\nAdditional Mathematics by Godman\n\nFurther Mathematics by E. Egbe et al.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "body children 25-28; mammoth raw-text lines 101-107",
+        "explanation": "Reference list printed after the scheme table and before WEEK ONE. The heading is spelled 'REFERECES' and the first title 'FutherMaths' in the source; both are preserved verbatim in the anchor and not corrected. The anchor occurs exactly once in mammoth 1.12.2 extractRawText output. Child-text block hash ebf260dc0ea8562f776f8a7413dbbcd2c172c59900b161ebb9e2073888b57a85 (children 25-28); mammoth line hash 1141a68d7fb5df0c0f8bda95e350f156e779c39ce16917882ac0fc275dfb9576 (lines 101-107). Body retained."
       }
     }
   ],
@@ -1413,7 +1425,7 @@
       "id": "COV-FM-T2-R00",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Arithmetic progression",
-      "objective_locator": "scheme topic 1; parsed row 0 (SEQUENCE & SERIES)",
+      "objective_locator": "scheme topic 1 (scheme table row 1, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 0 (SEQUENCE & SERIES)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:68308394250a628aac746455a78f33540941edfce409287450901b1a661f572f"
@@ -1429,7 +1441,7 @@
       "id": "COV-FM-T2-R01",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Geometric progression",
-      "objective_locator": "scheme topic 2; parsed row 1 (SEQUENCE AND SERIES (II))",
+      "objective_locator": "scheme topic 2 (scheme table row 2, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 1 (SEQUENCE AND SERIES (II))",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:ca008efbb57ba36fe4e13f491cc27a518ed00614510698b7785736c52d5556e0"
@@ -1445,7 +1457,7 @@
       "id": "COV-FM-T2-R02",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Linear inequalities in one variable",
-      "objective_locator": "scheme topic 3; parsed row 2 (LINEAR INEQUALITIES)",
+      "objective_locator": "scheme topic 3 (scheme table row 3, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 2 (LINEAR INEQUALITIES)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:c5f9d0b5b576adea9dd6781f63f618585c8115c59fef4cecf22636d462c49dfc"
@@ -1461,7 +1473,7 @@
       "id": "COV-FM-T2-R03",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Inequalities in two variables (graphs)",
-      "objective_locator": "scheme topic 4; parsed row 3 (LINEAR INEQUALITY (PART TWO))",
+      "objective_locator": "scheme topic 4 (scheme table row 4, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 3 (LINEAR INEQUALITY (PART TWO))",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:cac3192ff08bf834c435da4b2e5c35c4c4d8caf64e8d168d25d36d08203e8a37"
@@ -1477,7 +1489,7 @@
       "id": "COV-FM-T2-R04",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Concept of functions",
-      "objective_locator": "scheme topic 5; parsed row 4 (MAPPING AND FUNCTIONS)",
+      "objective_locator": "scheme topic 5 (scheme table row 5, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 4 (MAPPING AND FUNCTIONS)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:f13157ec4e04a3795422bc8f86bfa396551558a7cf364d44354f9cea12e04939"
@@ -1493,7 +1505,7 @@
       "id": "COV-FM-T2-R05",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Review of half-term work",
-      "objective_locator": "parsed row 5",
+      "objective_locator": "scheme topic 6 (scheme table row 6, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 5",
       "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:db5de097b36aa8e4bbab1c53aa57c57b40efef9438a123596b66e4d5e425a84f"
@@ -1509,7 +1521,7 @@
       "id": "COV-FM-T2-R06",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Functions: one-to-one, onto, composite, inverse",
-      "objective_locator": "scheme topic 7; parsed row 6 (Composite Mapping and Inverse Mapping)",
+      "objective_locator": "scheme topic 7 (scheme table row 7, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 6 (Composite Mapping and Inverse Mapping)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:c9158495ed49375d8ad340bc83cbc3f3eef760a4b89985df3e4a5bc8863ecbd6"
@@ -1525,7 +1537,7 @@
       "id": "COV-FM-T2-R07",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Trigonometric ratios; graphs; special angles; applications",
-      "objective_locator": "scheme topic 8; parsed row 7 (TRIGONOMETRIC RATIO)",
+      "objective_locator": "scheme topic 8 (scheme table row 8, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 7 (TRIGONOMETRIC RATIO)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:e86ddcd3f65982c29bb026792fa4d288c75a9f95a204aa89cbcb141c6cc606fe"
@@ -1541,7 +1553,7 @@
       "id": "COV-FM-T2-R08",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Logical reasoning: statements, negation, converse, contrapositive",
-      "objective_locator": "scheme topic 9; parsed row 8 (LOGIC)",
+      "objective_locator": "scheme topic 9 (scheme table row 9, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 8 (LOGIC)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:d3d1920311377de95341891a1e20ffd0db191cf66f80abe82e40e245bda49591"
@@ -1557,7 +1569,7 @@
       "id": "COV-FM-T2-R09",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Compound statements, connectives, conditionals",
-      "objective_locator": "scheme topic 10; parsed row 9 (Logical reasing continues)",
+      "objective_locator": "scheme topic 10 (scheme table row 10, body child 5, table sha256 6b18d95fc63347bc091d1c093cc113dd2b08f60f5e7a256f8571335a53a82b7e); parsed row 9 (Logical reasing continues)",
       "status": "PARTIAL",
       "lesson_ids": [
         "SS1-SRC-43c5ab51b87f:BODY:6a5fab126bb2321e0385327297cc9ec0e43f4f80f816e1ff7024f99e786d29b4"
@@ -1573,15 +1585,31 @@
       "id": "COV-FM-T2-EXAM",
       "source_id": "SS1-SRC-43c5ab51b87f",
       "objective": "Revision and examination weeks; reference list",
-      "objective_locator": "scheme lines 11-12",
+      "objective_locator": "scheme table rows 11-12 (body child 5); scheme-only markers",
       "status": "MARKER",
       "lesson_ids": [
         "RULE-FM-T2-SCHEME-EXAM"
       ],
       "evidence": [
         {
-          "locator": "scheme",
-          "explanation": "Scheme-only lines."
+          "locator": "scheme table rows 11-12 (body child 5)",
+          "explanation": "Scheme-only rows 11 ('Revision of Second Term’s lesson') and 12 ('Examination'); no body row exists. The reference list is covered separately by COV-FM-T2-REFERENCES. RULE-FM-T2-SCHEME-EXAM anchor occurs once in mammoth 1.12.2 extractRawText output."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T2-REFERENCES",
+      "source_id": "SS1-SRC-43c5ab51b87f",
+      "objective": "Reference list printed after the 2nd Term scheme of work",
+      "objective_locator": "body children 25-28; mammoth raw-text lines 101-107",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-FM-T2-REFERENCES"
+      ],
+      "evidence": [
+        {
+          "locator": "body children 25-28; mammoth raw-text lines 101-107",
+          "explanation": "Scheme-only reference list of three textbook titles; COV-FM-T2-EXAM covers scheme rows 11-12 only. Compiler disposition for this rule has not been generated (importer run deferred)."
         }
       ]
     },
