@@ -33,7 +33,8 @@
     "YO-WK-T1-W06 (2026-10-29) indexed 1st Term Week 6: the week teaches the syllable (Silebu) with its four parts, three structures and worked segmentations, and fourteen proverbs on character, work and trading. It has two strands and no LITIRESO section, and the scheme list is consistent with that. 12 PARTIAL coverage entries in yoruba.json bound to line ranges and UTF-8 block hashes, including the week's only Word table (4 x 5 at 1301-1389); six open items for scheme mapping, row identity, eight source defects, notation, the five arrow connectors (YO-VIS-T1-02) and assessment gaps; two Week 6 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner.",
     "YO-WK-T1-W07 (2026-10-30) indexed 1st Term Week 7: the week teaches the 1974 Yoruba orthography (akoto) as a five-row old-to-new spelling table with three explanatory rules, and eight named iwa omoluabi. It has two strands and no LITIRESO section, and the scheme lists two topics for it. 12 coverage entries in yoruba.json (11 PARTIAL, 1 UNRESOLVED because the benefits named in the ASA topic are never taught); six open items for scheme mapping, row identity, seven source defects, notation (no sub-dot letters in a spelling week), the missing benefits (OWNER_ACTION) and assessment gaps; two Week 7 lesson items plus one factual-dependency item appended. Nothing was run; testing deferred by owner.",
     "YO-WK-T1-W08 (2026-10-30) indexed 1st Term Week 8: the last week of the document teaches essay writing (a definition, seven named types and six principles) and indigenous Yoruba occupations (a definition, ten occupations and three Ise ona materials), and closes with a LITIRESO heading that has no body. It has three strands, as the scheme lists three topics for it. 12 coverage entries in yoruba.json (10 PARTIAL, 2 UNRESOLVED because the WAEC/NECO set text is not named and nothing is taught); six open items for scheme mapping, row identity, eight source defects, notation (no sub-dot letters), the empty LITIRESO strand (OWNER_ACTION) and assessment gaps; three Week 8 lesson items plus one factual-dependency item appended. With this the 1st Term is fully indexed at objective level. Nothing was run; testing deferred by owner.",
-    "YO-PRE-T1-1 (2026-10-30) indexed the 1st Term preamble: the title \"ODUN IGBEKO YORUBA-SS 1\" (line 3), the term heading \"ISE OOJO-SAA KIN-IN-NI\" (line 5) and the unnumbered 22-topic scheme list (lines 9-51) are recorded as three MARKER entries and classified SCHEME_ONLY by a new classify_marker rule; Week 1 starts at line 61, so nothing is teaching text. One open item, YORUBA-T1-PRE-SCHEME-LIST, keeps the term-wide confirmation of the 22-to-eight mapping with the owner. No item was added to the queue; status 15 implemented / 56 pending / 8 blocked; next_runnable YO-VIS-T1-01. Nothing was run; testing deferred by owner."
+    "YO-PRE-T1-1 (2026-10-30) indexed the 1st Term preamble: the title \"ODUN IGBEKO YORUBA-SS 1\" (line 3), the term heading \"ISE OOJO-SAA KIN-IN-NI\" (line 5) and the unnumbered 22-topic scheme list (lines 9-51) are recorded as three MARKER entries and classified SCHEME_ONLY by a new classify_marker rule; Week 1 starts at line 61, so nothing is teaching text. One open item, YORUBA-T1-PRE-SCHEME-LIST, keeps the term-wide confirmation of the 22-to-eight mapping with the owner. No item was added to the queue; status 15 implemented / 56 pending / 8 blocked; next_runnable YO-VIS-T1-01. Nothing was run; testing deferred by owner.",
+    "YO-VIS-T1-01 (2026-10-30) disposed of the ATE FAWELI vowel chart: it sits in Week 3 EDE (lines 551-569 inside 485-573), not Week 1 as the assignment text says, and it is two side-by-side copies of one vowel quadrilateral, each an AlternateContent pair of 8 modern and 8 VML connectors with no text boxes and no media, so its labels stay tab-positioned paragraphs. Read with the prose at 519-545 it shows the seven oral vowels on the left and the five nasal vowels on the right, which makes it content-bearing; the decision is to recreate it as structured data once the notation and defect decisions land, so YO-ASSET-T1-W03-VOWEL-CHART is appended BLOCKED. One evidence entry was added to YO-T1-W03-EDE-07 and one open item, YORUBA-T1-W03-VISUALS, to the Week 3 block. 80 items: 16 implemented / 55 pending / 9 blocked; next_runnable YO-VIS-T1-02. Nothing was run; testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,12 +46,13 @@
     "FACTUAL_DEPENDENCY": 8,
     "SOURCE_PREAMBLE_INDEXING": 4,
     "VISUAL_DISPOSITION": 3,
-    "FOUNDATION_REQUEST": 3
+    "FOUNDATION_REQUEST": 3,
+    "ASSET": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
-    "PENDING": 56,
-    "BLOCKED": 8
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
+    "PENDING": 55,
+    "BLOCKED": 9
   },
   "items": [
     {
@@ -1918,8 +1920,8 @@
       "depends_on": [
         "YO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not yet inspected. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): heading \"ATE FAWELI\" line 551; chart labels lines 551-569 (SHA-256 2710e096a6c18874b9321936f332893863db6d11c496f2a3a53353dc58489cc0). The figure is 2 w:drawing + 2 w:pict objects plus 17 v:shape elements in XML paragraph 275; no raster media exists in the DOCX; mammoth 1.12.2 ignored v:stroke and emitted only the flattened label grid.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on review of ss1/yo-pre-t1-1 at d5e5069, master 4159336c7068d2235209221f5f14adc4986acec5. The figure is the ATE FAWELI vowel chart of Week 3 EDE, not Week 1: lines 551-569 sit inside the EDE part 485-573, between OSE KETA (483) and OSE KERIN (725); label block SHA-256 2710e096a6c18874b9321936f332893863db6d11c496f2a3a53353dc58489cc0 re-verified. It is two side-by-side copies of one vowel grid (Group 563 at 48.2pt, 210 x 148.5pt; Group 554 at 282.7pt, 191.5 x 140.55pt), each an mc:AlternateContent with 8 modern wps shapes plus a VML fallback of 8 v:shape of type #_x0000_t32, so the paragraph holds 16 v:shape (8 connectors x 2 copies, not 17) in the 277th w:p of word/document.xml (275 closed paragraphs precede it). Both copies share coordorigin 2550,10950 and coordsize 4410,2790: wide top, narrow base, horizontals at y=765 and y=1785, interior lines meeting at (1995,2310). No wps:txbx and no w:txbxContent exists, so the figure carries no labels; the letters are tab-positioned paragraphs and the left panel holds the seven oral vowels while the right holds the five nasal ones. Decision: recreate as structured data, no render committed; asset YO-ASSET-T1-W03-VOWEL-CHART appended BLOCKED and open item YORUBA-T1-W03-VISUALS raised; YO-T1-W03-EDE-07 gains a superseding evidence entry. Status 16 implemented / 55 pending / 9 blocked; next_runnable YO-VIS-T1-02. Nothing was run; testing deferred by owner.",
       "completion_condition": "The figure is identified and its content role recorded with a reproducible locator; a decision (recreate, reference, or omit with reason) is recorded and any resultant asset task is appended; no render is committed. Testing deferred by owner."
     },
     {
@@ -3367,6 +3369,39 @@
       "objective": "Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone/sub-dot notation, so the three Week 1 lessons can be authored without copying errors.",
       "implementation_reference": "Raised by YO-WK-T1-W01 (2026-10-29). Decisions needed, with locators: (1) line 93 central vowel set \"a, en\" vs \"a, an\" (open item YORUBA-T1-W01-SOURCE-DEFECTS); (2) spelling pairs evigi/erigi (71/83), iwaju a lo n and aarin lion (71), aja enu/aja-enu (71), Eju isale (81) vs eyin isale (71); (3) garbled Babalawo greeting line 199, garbled explanation line 253, \"yin\" for \"yi\" line 269; (4) a./b./d. sub-type letters at 261-265 and 275-279; (5) mixed-case Roman numerals in the time table (I, Ii, Iii, Iv, V, Vi, Vii); (6) unexplained \"Ontayo\" line 299; (7) tone and sub-dot forms for every Week 1 word (open item YORUBA-T1-W01-NOTATION; the document has no diacritics at all). No correction is invented in this item.",
       "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 1 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "id": "YO-ASSET-T1-W03-VOWEL-CHART",
+      "kind": "ASSET",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "ASSET-SS1-YO-T1-W03-VOWEL-CHART",
+      "objective": "Authored two-panel vowel-chart asset (seven oral and five nasal vowels on a four-row, three-column grid) for the Week 3 EDE lesson, rebuilt from the prose at lines 519-545 rather than from the collapsed chart labels.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/YO-VIS-T1-01.md",
+        "backend/src/db/ss1/assets/yoruba/yo1-w3-vowel-chart.svg"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "backend/src/db/ss1/assets/yoruba/yo1-w3-vowel-chart.svg"
+      ],
+      "depends_on": [
+        "YO-FACT-T1-W03-DEFECTS",
+        "YO-LES-T1-W03-EDE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Not yet authored. YO-VIS-T1-01 (2026-10-30) fixed the content reading: the source figure at lines 551-569 is two identical 8-connector grids with no text boxes and no media, and its letters are tab-positioned paragraphs (left panel oral i/U/e/o/e/o/a, right panel nasal in/un/en/on/an). The asset is to be rebuilt from the prose lists at 521-533 (seven oral vowels with height, backness and lip posture) and 537-545 (five nasal vowels), not from the tab layout, which extraction flattens.",
+      "completion_condition": "An authored SVG at backend/src/db/ss1/assets/yoruba/yo1-w3-vowel-chart.svg, recorded in yoruba.json assets[] with its sha256, byte size, media_type image/svg+xml, alt text naming both panels and every vowel, and a rights record stating a labelled derivative authored for Sow the Seed Schools; sub-dot letters follow the notation decision recorded under YO-FACT-T1-W03-DEFECTS and no letter is invented where the source is ambiguous. No render of the source DOCX is committed and nothing is displayed in the app in this task. Testing deferred by owner."
     }
   ],
   "review": {
@@ -3383,6 +3418,6 @@
     }
   },
   "next_runnable": [
-    "YO-VIS-T1-01"
+    "YO-VIS-T1-02"
   ]
 }

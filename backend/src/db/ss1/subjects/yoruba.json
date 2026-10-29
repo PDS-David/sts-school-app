@@ -853,6 +853,10 @@
         {
           "locator": "YO-T1-W03-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "word/document.xml 277th w:p (extractRawText lines 551-569; block SHA-256 2710e096a6c18874b9321936f332893863db6d11c496f2a3a53353dc58489cc0)",
+          "explanation": "Structural capture by YO-VIS-T1-01 supersedes the earlier reading above in two points. The drawing is two side-by-side copies of one grid, not one grid with interleaved nasal vowels: Group 563 (anchored at 48.2pt, 210 x 148.5pt) and Group 554 (282.7pt, 191.5 x 140.55pt) share coordorigin 2550,10950 and coordsize 4410,2790 and have identical child geometry. Each copy is an mc:AlternateContent holding 8 modern wps shapes and a VML fallback of 8 v:shape of type #_x0000_t32, so the 16 v:shape are 8 connectors doubled, not 8 distinct figures. Inside each grid: a top edge (0,0)-(4410,0), sides sloping in to (1020,2715) and (3345,2790), one horizontal at y=765, one at y=1785, and two interior lines from (705,0) and (3585,0) meeting at (1995,2310) - four height bands crossed by three backness columns. No wps:txbx and no w:txbxContent exists, so the grid carries no labels of its own and every letter is a tab-positioned paragraph. Read against the prose at 519-545, the left panel holds the seven oral vowels (i and U at 555, e and o at 561, e and o at 567, a at 569) and the right panel the five nasal ones (in at 555, un at 557, en and on at 565, an at 567); \"an\" is the central open-mid nasal, not a back vowel. The letters e and o each stand for two distinct vowels and \"U\" is capitalised, so the grid cannot be rebuilt letter-for-letter until the notation decision lands (YORUBA-T1-W03-VISUALS; asset YO-ASSET-T1-W03-VOWEL-CHART)."
         }
       ]
     },
@@ -3006,6 +3010,19 @@
       "required_action": "Author practice with complete answers and marking that sums exactly in the Week 3 lesson items, and record any assessment decision not derivable from the source as an expert decision rather than inventing it.",
       "affected_ids": [
         "YO-T1-W03-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-VISUALS",
+      "kind": "VERIFICATION",
+      "detail": "The ATE FAWELI figure (lines 551-569, block SHA-256 2710e096a6c18874b9321936f332893863db6d11c496f2a3a53353dc58489cc0) is content-bearing: it is the only place where the four height classes and three backness columns taught in prose at 493-545 are laid out as a grid. It is two side-by-side copies of one vowel quadrilateral - Group 563 at 48.2pt (210 x 148.5pt) and Group 554 at 282.7pt (191.5 x 140.55pt), both coordorigin 2550,10950 and coordsize 4410,2790 - each carried as an mc:AlternateContent with 8 modern wps shapes plus a VML fallback of 8 v:shape of type #_x0000_t32, so the paragraph holds 16 v:shape (8 connectors x 2 copies). The grid has a wide top edge, sides sloping to a narrow base, two horizontals at y=765 and y=1785 and two interior lines meeting at (1995,2310): four height bands by three backness columns. No wps:txbx and no w:txbxContent exists, so all letters are tab-positioned paragraphs - the left panel reads i, U, e, o, e, o, a (seven oral vowels) and the right in, un, en, on, an (five nasal vowels). Two errors in the assignment are corrected here: the chart belongs to Week 3 EDE (the section runs 485-573 between OSE KETA at 483 and OSE KERIN at 725), not Week 1, and the paragraph holds 16 v:shape, not 17, in the 277th w:p of word/document.xml (275 is the number of closed paragraphs before it). The duplication, the 0.912 scale difference of the second copy and the missing repeated \"Ahanudiepe\" label for the right panel are source artefacts; nothing is fabricated to fill them.",
+      "required_action": "Recreate the figure as structured data, not as a render of the source: two grids (7 oral and 5 nasal vowels) rebuilt from the prose descriptions at 521-533 and 537-545, with the letters carrying the sub-dot marks named in the notation decision. The authored asset is queued as YO-ASSET-T1-W03-VOWEL-CHART (BLOCKED on YO-FACT-T1-W03-DEFECTS and YO-LES-T1-W03-EDE). No image of the source is committed and no letter is invented before the notation decision.",
+      "affected_ids": [
+        "YO-T1-W03-EDE-03",
+        "YO-T1-W03-EDE-05",
+        "YO-T1-W03-EDE-06",
+        "YO-T1-W03-EDE-07"
       ],
       "blocks_delivery": true
     },
