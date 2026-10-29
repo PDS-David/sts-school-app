@@ -21,7 +21,8 @@
     "Unmerged work on PR #71 head b5ced7ebb0efe22df2351baa140266fbf40cbf41 (mathematics.json blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8: 16 lessons for 2nd/3rd Term, 2 rules, 22 coverage entries, 7 open items) is NOT implemented on master. It is tracked as MATH-PORT-D2-* and MATH-CMP-D4-* items; do not merge #71 or copy its schema.",
     "Port items cite PR #71's version; master has no 2nd/3rd Term lessons, so the 16 lessons do not overlap master's six T1 lessons.",
     "Several items write the same package file. Workers must start from current master, change only their own entries and rebase; PENDING means unclaimed.",
-    "No new lesson-writing task is created for an unproven gap. The only lesson tasks are the two BLOCKED T1 logarithm lessons, whose uncovered objectives and blocker (OI-MATH-003) are named in the package; indexing workers append others only for objectives they identify."
+    "No new lesson-writing task is created for an unproven gap. The only lesson tasks are the two BLOCKED T1 logarithm lessons, whose uncovered objectives and blocker (OI-MATH-003) are named in the package; indexing workers append others only for objectives they identify.",
+    "MATH-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. mathematics.json now has 10 source_rules (added RULE-MATH-T1-TITLE and RULE-MATH-T1-REFERENCES; re-anchored RULE-MATH-T1-SCHEME-EXAM) and 36 coverage entries (added COV-MATH-T1-TITLE and COV-MATH-T1-REFERENCES; updated COV-MATH-T1-EXAM). Note 1 is the queue-generation snapshot. Per-block hashes and the auto-numbering finding are in docs/ss1/work/microtasks/mathematics/MATH-PRE-T1.md. Nothing was run; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -41,8 +42,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
-    "PENDING": 67,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "PENDING": 66,
     "BLOCKED": 9
   },
   "total": 95,
@@ -208,7 +209,7 @@
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "source_id": "SS1-SRC-0c9004137f95",
       "term": "1st Term",
-      "week_or_locator": "scheme table and any text outside the parsed week rows",
+      "week_or_locator": "scheme table and any text outside the parsed week rows (mammoth extractRawText lines 1-40)",
       "objective": "Inventory all 1st Term text outside the parsed week rows (scheme table lines, any opening text, examination/revision lines, reference-book list) and map or classify each block.",
       "required_files": [
         "backend/src/db/ss1/subjects/mathematics.json",
@@ -236,8 +237,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "RULE-MATH-T1-SCHEME-EXAM (SCHEME_ONLY) covers 'scheme preamble, final scheme lines and reference-book heading' with anchor 'Revision.\\n\\nExamination.\\n\\nExamination\\n\\nREFERENCE  BOOKS'; COV-MATH-T1-EXAM (MARKER). The rule was recorded without reproducible per-block hashes; the reference-book list content and any opening text are not recorded in the repository.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on master 4159336c7068d2235209221f5f14adc4986acec5 (MATH-PRE-T1, 2026-10-29). Source MATHss1.docx sha256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb (819,678 bytes; member hash re-verified). mammoth 1.12.2 extractRawText(): 28,396 characters, 1,209 lines, 564 non-blank. Non-week region = lines 1-39: title line 3 (SHA-256 4f69457fb98d5f8bae0adadeb8c7f60080125030ece078745d2f2898fddfa833), scheme column header line 5 (b0dc014ff28cc622ac333ea55b91be3f727c95c28bcf10e9dc7c2c435091321b), ten scheme topic rows lines 7-25 (70d03f876ed4017074b68f0bad8ac26422035ebd0499a4007943c7581e3155a7; per-line hashes and one-to-one mapping to MATH-WK-T1-W01..W10 in the note), revision/examination rows lines 27-31 (7d9e656eb6916ccd863b2ba66defe54c10a54b319d3bfa3fbbc00a37c79a4cba), reference list lines 33-39 (a817c8c4fb8f8cc24a694d09e990830b2924985f5c519fa9c6a530d046b053f0); whole region b4714bdb55b30d3a9d9a4910874072ad7e07f0b91ebf0896faebaacbe5e1862a; text before the first \"Week 1.\" label 63fa18ae46b16474b0452c0c2be4513ae991c68f4e0de9a8193308c54ad41b87. The scheme rows are one Word decimal list (numbering.xml abstractNum 20, start 1) rendered 1-13; mammoth drops the numbers, and scheme rows 12-13 (the two examination rows) have no teaching body. Package edits: added RULE-MATH-T1-TITLE (SCHEME_ONLY; title anchor) and COV-MATH-T1-TITLE (MARKER); re-anchored RULE-MATH-T1-SCHEME-EXAM to the 36-character lines 27-31 anchor (unique; still matches no parsed row) and updated COV-MATH-T1-EXAM to scheme rows 11-13; added RULE-MATH-T1-REFERENCES (SCHEME_ONLY; exact 225-character lines 33-39 anchor including 13 tabs on line 39) and COV-MATH-T1-REFERENCES (MARKER). Sources (3), lessons (6), delivery_corrections (6), assets (0), open_items (7) and package_status PENDING unchanged; T2/T3 rules and coverage untouched. Header/footer part text (\"Lesson   note\"; PAGE field) recorded only in the note as page furniture. Evidence note: docs/ss1/work/microtasks/mathematics/MATH-PRE-T1.md. Not approved, not verified; no schema/compiler/test/importer run (testing deferred by owner).",
       "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an explicit open item. Per-week scheme objectives are handled by the MATH-WK items."
     },
     {
@@ -3052,8 +3053,8 @@
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "b49a1a5a2f72037ca4cf1fa2abbe217246b12a38",
+    "date": "2026-10-29",
+    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -3074,12 +3075,66 @@
     }
   },
   "next_runnable": [
-    "MATH-PRE-T1"
+    "MATH-PRE-T2"
   ],
   "runnable_now": [
-    "MATH-FACT-HEADER-T1",
-    "MATH-FACT-HEADER-T2",
-    "MATH-FACT-HEADER-T3",
+    "MATH-PRE-T2",
+    "MATH-PRE-T3",
+    "MATH-WK-T1-W01",
+    "MATH-WK-T1-W02",
+    "MATH-WK-T1-W03",
+    "MATH-WK-T1-W04",
+    "MATH-WK-T1-W05",
+    "MATH-WK-T1-W06",
+    "MATH-WK-T1-W07",
+    "MATH-WK-T1-W08",
+    "MATH-WK-T1-W09",
+    "MATH-WK-T1-W10",
+    "MATH-WK-T1-W11",
+    "MATH-WK-T2-W01",
+    "MATH-WK-T2-W02",
+    "MATH-WK-T2-W03",
+    "MATH-WK-T2-W04",
+    "MATH-WK-T2-W05",
+    "MATH-WK-T2-W06",
+    "MATH-WK-T2-W07",
+    "MATH-WK-T2-W08",
+    "MATH-WK-T2-W09",
+    "MATH-WK-T2-W10",
+    "MATH-WK-T3-W01",
+    "MATH-WK-T3-W02",
+    "MATH-WK-T3-W03",
+    "MATH-WK-T3-W04",
+    "MATH-WK-T3-W05",
+    "MATH-WK-T3-W06",
+    "MATH-WK-T3-W07",
+    "MATH-WK-T3-W08",
+    "MATH-WK-T3-W09",
+    "MATH-WK-T3-W10",
+    "MATH-WK-T3-W11",
+    "MATH-FACT-LOG-TABLES",
+    "MATH-VIS-T1",
+    "MATH-VIS-T2",
+    "MATH-VIS-T3",
+    "MATH-VIS-T3-OLE",
+    "MATH-FACT-ADVERT-T2",
+    "MATH-FACT-ADVERT-T3",
+    "MATH-PORT-D2-T2-L001",
+    "MATH-PORT-D2-T2-L002",
+    "MATH-PORT-D2-T2-L003",
+    "MATH-PORT-D2-T2-L004",
+    "MATH-PORT-D2-T2-L005",
+    "MATH-PORT-D2-T2-L006",
+    "MATH-PORT-D2-T2-L007",
+    "MATH-PORT-D2-T2-L008",
+    "MATH-PORT-D2-T3-L009",
+    "MATH-PORT-D2-T3-L010",
+    "MATH-PORT-D2-T3-L011",
+    "MATH-PORT-D2-T3-L012",
+    "MATH-PORT-D2-T3-L013",
+    "MATH-PORT-D2-T3-L014",
+    "MATH-PORT-D2-T3-L015",
+    "MATH-PORT-D2-T3-L016",
     "MATH-PORT-D2-RULES",
     "MATH-CMP-D4-NOTES"
   ]
