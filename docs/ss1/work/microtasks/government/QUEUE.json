@@ -22,17 +22,22 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "GOV-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). GOV-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "GOV-INV-T1 executed on 2026-10-29 from the supplied 1st Term source (header verified by GOV-SRC-T1): ten teaching weeks plus a scheme-only revision/examination row; fourteen indexing/visual items appended; no package, coverage, rule or lesson written. The 2nd and 3rd Term headers remain unverified and their inventories unknown; the earlier notes describe the state when the queue was built.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "SOURCE_WEEK_INDEXING": 10,
+    "VISUAL_DISPOSITION": 1,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 17,
     "BLOCKED": 1
   },
   "items": [
@@ -143,7 +148,7 @@
       "kind": "SOURCE_WEEK_INVENTORY",
       "source_id": "SS1-SRC-40ce7dcaf672",
       "term": "1st Term",
-      "week_or_locator": "whole document",
+      "week_or_locator": "whole document, getBody lines 1-865",
       "objective": "Discover the 1st Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, diagram or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note statements about institutions, constitutional powers, laws, officeholders and dates that may be outdated or that treat a proposal or historical arrangement as law in force: later correction work needs primary authoritative texts with effective/reference dates and must keep the source's original wording distinct from the corrected fact. Teaching must stay neutral on contested political questions. Do not merge Government into Civic Education.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
@@ -169,8 +174,8 @@
       "depends_on": [
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Executed from the supplied 1st Term Government document (SS1-SRC-40ce7dcaf672, member and archive SHA-256 verified): ten teaching weeks and a scheme-only revision/examination row, with the full inventory, block hashes, marker variants, parser rule findings and factual/neutrality findings recorded in docs/ss1/work/microtasks/government/GOV-INV-T1.md. Fourteen bounded items appended (preamble, revision marker, marker disposition, ten weeks, visual disposition), each depending on GOV-INV-T1 and GOV-SRC-T1. No package, coverage, rule, lesson or asset was written and no test, typecheck, importer or plan run was performed. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -297,12 +302,530 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "GOV-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 1-44 (cover, title, subject header, scheme of work)",
+      "objective": "Index the opening section of the 1st Term source as preamble: the sixteen blank cover paragraphs (1-16), the title `FIRST TERM E-LEARNING NOTE` (17), the subject header (19, the registered header_text) and the scheme of work `SCHEME OF WORK` (21), header row 23 `WEEK<TAB>TOPIC`, rows 24-42 (block SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8), and blanks 43-44. Map the scheme to the ten week items and cross-reference row 42 `11.<TAB><TAB>Revision/examination` to GOV-REV-T1 rather than to a teaching week. Handle the structural traps recorded in GOV-INV-T1: rows 1-3 continue on line-start sub-lines (25-27, 29-31) that are not new week rows; rows 4-9 pack sub-topics on one tab-separated line and mix `i)`, `ii)` and `(ii)`; row 1 uses ten spaces before a tab. Write the preamble coverage entries under the existing schema and hash-account the preamble privately. Write no lesson and no rule beyond a marker classification if one is genuinely needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-PRE-T1.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No preamble rule or coverage exists: government.json has the three sources and their three alias rules only, with coverage[], lessons[], assets[] and delivery_corrections[] empty. Inventory evidence: lines 1-16 blank, 17 title, 19 subject/class line equals header_text and occurs once (block 17-20 SHA-256 f75dff4d596cd843cf2c4edc3e7521087aad9269eedb7972b91f5a4a362d2496), scheme 21-42 SHA-256 7282181eb168ae114a2311b961108afe4a7111d2211eabe8e0139a97d38bb0a8, blanks 43-44. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Preamble coverage exists and the scheme is accounted for with its hash and row map; week rows point at the week items; row 42 points at GOV-REV-T1; no lesson, invented heading or guessed week is written. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-REV-T1",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody line 42 `11.<TAB><TAB>Revision/examination`, scheme block 21-42",
+      "objective": "Dispose the only revision or examination marker in the source: scheme row 42 `11.<TAB><TAB>Revision/examination`, whose anchor occurs once in the whole document and nowhere in the teaching body. Record as evidence that the document ends with Week Ten (teaching through line 864) and contains no `WEEK ELEVEN` label, no revision content and no examination paper. Dispose the row as a scheme-only marker (classify_marker with a scheme-only kind) so that it neither creates an eleventh teaching week nor erases Week Ten teaching. Keep the original wording; write no revision lesson and no examination paper.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-REV-T1.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No marker rule or coverage exists: government.json has the three sources and their alias rules only. Inventory evidence: line 42 `11.<TAB><TAB>Revision/examination` is the only occurrence of Revision or examination in the document; the body has no WEEK ELEVEN label and teaching ends at Week Ten (line 864). Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "The row is disposed as a scheme-only revision/examination marker with its anchor and single occurrence recorded; no eleventh week, lesson, examination paper or coverage of teaching is fabricated. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-MARK-T1",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody markers across 45-864, irregular sections at 495, 510-517, 574, 720, 796, 840, 852",
+      "objective": "Dispose the recurring marker vocabulary and the irregular sections found by GOV-INV-T1. Vocabulary: `EVALUATION QUESTION` (7: 58, 74, 121, 203, 282, 311, 399); `EVALUATION QUESTIONS` (8: 147, 226, 347, 432, 523, 607, 675, 723); bare `EVALUATION` (3: 495, 796, 840); `GENERAL EVALUATION/REVISION QUESTIONS` (10 lines) plus `GENERAL EVALUATION` (574, mid-week in Week Seven); `READING ASSIGNMENT` (10, two with a trailing colon at 357 and 617); `WEEKEND` (10, spelled `ASSINGMENT` at 88, 162, 240, 446, 735, `ASSINGNMENT` at 361, `ASSIGNMENT` at 537, 621, 689, 854); `THEORY` (10, two with a trailing space at 174 and 549). Classify by whole line, never by substring: the word `THEORY` also occurs inside a Week One option line (91). Irregular sections: the second Week One evaluation (74-76) repeats the first (58-60) and the first asks about the academic field before the section is taught at 69; the Week Six bare evaluation at 495 and its class-list numbering break (511, 512, 516, 517); the Week Seven mid-week general evaluation at 574; the indented Week Nine agent line 720; the two Week Ten bare evaluations (796, 840) and its page-numberless reading citation (852); the duplicate TOPIC lines (`TOPIC: BASIC CONCEPTS IN GOVERNMENT` four times, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` twice) that make those anchors ambiguous for any split rule. Write classify_marker rules under the schema where a marker needs disposition, and record the split_before and attach_stranded_label conclusions from GOV-INV-T1 as findings: no split is needed because every teaching week already carries a `WEEK <WORD>` label, and no label is stranded after content. Write no lesson and no coverage of teaching content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-MARK-T1.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No marker rule or coverage exists: government.json has the three sources and their alias rules only. Inventory evidence: EVALUATION QUESTION 7 occurrences, EVALUATION QUESTIONS 8, bare EVALUATION 3 (495, 796, 840), GENERAL EVALUATION/REVISION QUESTIONS 10 plus GENERAL EVALUATION 574, READING ASSIGNMENT 10 (colon at 357 and 617), WEEKEND spelled ASSINGMENT 5 / ASSINGNMENT 1 / ASSIGNMENT 4, THEORY 10 (trailing space at 174 and 549); the word THEORY also occurs inside the Week One option line 91. Irregular sections at 495, 510-517, 574, 720, 796, 840 and 852. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every marker occurrence in the list is classified or explicitly left ORIGINAL, ambiguous anchors are recorded as findings, no substring classification is used, and no lesson or teaching coverage is written. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 45-102 (block SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04)",
+      "objective": "Index week 1 of the 1st Term source: lines 45-102, block SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04. Labels and sections: `WEEK ONE` 45, `TOPIC: THE MEANING AND SCOPE OF THE SUBJECT MATTER: GOVERNMENT` 46, `CONTENT` 47; sections `GOVERNMENT AS AN INSTITUTION OF THE STATE` 52, `GOVERNMENT AS A PROCESS OR ART OF GOVERNING` 62, `GOVERNMENT AS AN ACADEMIC FIELD OF STUDY` 69; markers 58, 74, 78, 84, 88, 100. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify against primary texts: the Hobbes attribution and the quoted description at 53-54 (the source says `solitary, poor, wicked and short`; keep the source wording separate from the primary wording), the `primitive society` framing, and the duplicated evaluation that asks about the academic field at 59 and 75 before and after its section. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 45-102, block SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04; `WEEK ONE` 45, `TOPIC: THE MEANING AND SCOPE OF THE SUBJECT MATTER: GOVERNMENT` 46, `CONTENT` 47; sections `GOVERNMENT AS AN INSTITUTION OF THE STATE` 52, `GOVERNMENT AS A PROCESS OR ART OF GOVERNING` 62, `GOVERNMENT AS AN ACADEMIC FIELD OF STUDY` 69; markers 58, 74, 78, 84, 88, 100. Findings recorded by GOV-INV-T1 that this item must settle: Verify against primary texts: the Hobbes attribution and the quoted description at 53-54 (the source says `solitary, poor, wicked and short`; keep the source wording separate from the primary wording), the `primitive society` framing, and the duplicated evaluation that asks about the academic field at 59 and 75 before and after its section. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 105-176 (block SHA-256 7033a59e217a778fa0e5d8008fab1a1c9fa348e77b8b85ebcc6b3e573336f6dd)",
+      "objective": "Index week 2 of the 1st Term source: lines 105-176, block SHA-256 7033a59e217a778fa0e5d8008fab1a1c9fa348e77b8b85ebcc6b3e573336f6dd. Labels and sections: `WEEK TWO` 105, `TOPIC: FEATURES/CHARACTERISTICS OF GOVERNMENT` 106, `CONTENT` 107; sections `FEATURES OF GOVERNMENT` 112, `FUNCTIONS OF GOVERNMENT` 124, `WHY DO WE STUDY GOVERNMENT?` 136; markers 121, 147, 151, 158, 162, 174. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the evaluative claim at 144 that `The ultimate aim of government is to make us political scientists` and the list of functions (126-134) against a current, citable authority; present the aim as attributed opinion. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 105-176, block SHA-256 7033a59e217a778fa0e5d8008fab1a1c9fa348e77b8b85ebcc6b3e573336f6dd; `WEEK TWO` 105, `TOPIC: FEATURES/CHARACTERISTICS OF GOVERNMENT` 106, `CONTENT` 107; sections `FEATURES OF GOVERNMENT` 112, `FUNCTIONS OF GOVERNMENT` 124, `WHY DO WE STUDY GOVERNMENT?` 136; markers 121, 147, 151, 158, 162, 174. Findings recorded by GOV-INV-T1 that this item must settle: Verify the evaluative claim at 144 that `The ultimate aim of government is to make us political scientists` and the list of functions (126-134) against a current, citable authority; present the aim as attributed opinion. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 179-254 (block SHA-256 ca5d9266b095cb44c896e4bef54d55d2c71a5a87d085ca1ee710d076ce1220d4)",
+      "objective": "Index week 3 of the 1st Term source: lines 179-254, block SHA-256 ca5d9266b095cb44c896e4bef54d55d2c71a5a87d085ca1ee710d076ce1220d4. Labels and sections: `WEEK THREE` 179, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` 180, `CONTENT` 181; sections `POWER` 186, `Forms of power` 189, `SOURCES OF POWER` 195, `AUTHORITY` 207, `Sources of Political Authority` 212, `Types of Authority` 218; markers 203, 226, 230, 236, 240, 252. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. The CONTENT list (182-184) omits Forms of power and both authority lists that the body teaches; cover them rather than the list. Verify the Weber attribution at 213, the traditional-authority examples at 214, and the generalising claim about military coups in Africa at 198 against dated sources. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 179-254, block SHA-256 ca5d9266b095cb44c896e4bef54d55d2c71a5a87d085ca1ee710d076ce1220d4; `WEEK THREE` 179, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` 180, `CONTENT` 181; sections `POWER` 186, `Forms of power` 189, `SOURCES OF POWER` 195, `AUTHORITY` 207, `Sources of Political Authority` 212, `Types of Authority` 218; markers 203, 226, 230, 236, 240, 252. Findings recorded by GOV-INV-T1 that this item must settle: The CONTENT list (182-184) omits Forms of power and both authority lists that the body teaches; cover them rather than the list. Verify the Weber attribution at 213, the traditional-authority examples at 214, and the generalising claim about military coups in Africa at 198 against dated sources. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 257-375 (block SHA-256 4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14)",
+      "objective": "Index week 4 of the 1st Term source: lines 257-375, block SHA-256 4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14. Labels and sections: `WEEK FOUR` 257, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 258, `CONTENT` 259; sections `LEGITIMACY` 264, `Factors that affect Legitimacy` 269, `SOVEREIGNTY` 286, `Types of Sovereignty` 291, `Characteristics of Sovereignty` 303, `DEMOCRACY` 315, `Types of Democracy` 320, `Features of Democracy` 325, `Demerits of Democracy` 339; markers 282, 311, 347, 351, 357, 361, 373. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the Bodin dates and definition at 287-289, the absoluteness claim at 306 (`receives order from none`) as a doctrinal position contested in international law, the Lincoln attribution at 318, and the evaluative claim that democracy `is regarded as the best form of government`; attribute, do not endorse. Line 308 carries a leading space. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 257-375, block SHA-256 4600502e06ee8281ddb70919d0632d20da79425322fc2ae7bf795b372cecfe14; `WEEK FOUR` 257, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 258, `CONTENT` 259; sections `LEGITIMACY` 264, `Factors that affect Legitimacy` 269, `SOVEREIGNTY` 286, `Types of Sovereignty` 291, `Characteristics of Sovereignty` 303, `DEMOCRACY` 315, `Types of Democracy` 320, `Features of Democracy` 325, `Demerits of Democracy` 339; markers 282, 311, 347, 351, 357, 361, 373. Findings recorded by GOV-INV-T1 that this item must settle: Verify the Bodin dates and definition at 287-289, the absoluteness claim at 306 (`receives order from none`) as a doctrinal position contested in international law, the Lincoln attribution at 318, and the evaluative claim that democracy `is regarded as the best form of government`; attribute, do not endorse. Line 308 carries a leading space. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 378-460 (block SHA-256 df5ed63115006e7219e10b98a3a5be0710360ba8a104d7956e51ea09d86639d3)",
+      "objective": "Index week 5 of the 1st Term source: lines 378-460, block SHA-256 df5ed63115006e7219e10b98a3a5be0710360ba8a104d7956e51ea09d86639d3. Labels and sections: `WEEK FIVE` 378, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` 379, `CONTENT` 380; sections `COMMUNALISM` 384, `Features of Communalism` 388, `FEUDALISM` 403, `Features of Feudalism` 408, `Merits of Feudalism` 418, `Demerits of Feudalism` 425; markers 399, 432, 436, 442, 446, 458. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the historical framing of feudalism at 404-407 (Western Europe, the Middle Ages, fief and vassal) and the claim that industrialisation ended it, against dated historical authorities; keep communalism described as a model, not as a present legal order. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 378-460, block SHA-256 df5ed63115006e7219e10b98a3a5be0710360ba8a104d7956e51ea09d86639d3; `WEEK FIVE` 378, `TOPIC: BASIC CONCEPTS OF GOVERNMENT` 379, `CONTENT` 380; sections `COMMUNALISM` 384, `Features of Communalism` 388, `FEUDALISM` 403, `Features of Feudalism` 408, `Merits of Feudalism` 418, `Demerits of Feudalism` 425; markers 399, 432, 436, 442, 446, 458. Findings recorded by GOV-INV-T1 that this item must settle: Verify the historical framing of feudalism at 404-407 (Western Europe, the Middle Ages, fief and vassal) and the claim that industrialisation ended it, against dated historical authorities; keep communalism described as a model, not as a present legal order. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 463-551 (block SHA-256 8227531375c147ea6c7e79e4c09e0c301d46ae3c8049c19143afd15e5588ef16)",
+      "objective": "Index week 6 of the 1st Term source: lines 463-551, block SHA-256 8227531375c147ea6c7e79e4c09e0c301d46ae3c8049c19143afd15e5588ef16. Labels and sections: `WEEK SIX` 463, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 464, `CONTENT` 465; sections `SOCIALISM` 470, `Features of Socialism` 475, `COMMUNISM` 483, `Features of Communism` 488, `CAPITALISM` 499, `Features of Capitalism` 504 with the class list 510-517; markers 495, 523, 527, 533, 537, 549. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the Marx dates at 473 (`1816 - 1883`), the absolute claim at 486 `No country has ever practiced Communism.`, the date-free claim at 502 about the fall of socialism `in the 1900s`, and the class definitions at 510-517 whose numbering breaks (i, ii), c), unnumbered Proletariat). Treat all three ideologies as contested positions and teach them neutrally. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 463-551, block SHA-256 8227531375c147ea6c7e79e4c09e0c301d46ae3c8049c19143afd15e5588ef16; `WEEK SIX` 463, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 464, `CONTENT` 465; sections `SOCIALISM` 470, `Features of Socialism` 475, `COMMUNISM` 483, `Features of Communism` 488, `CAPITALISM` 499, `Features of Capitalism` 504 with the class list 510-517; markers 495, 523, 527, 533, 537, 549. Findings recorded by GOV-INV-T1 that this item must settle: Verify the Marx dates at 473 (`1816 - 1883`), the absolute claim at 486 `No country has ever practiced Communism.`, the date-free claim at 502 about the fall of socialism `in the 1900s`, and the class definitions at 510-517 whose numbering breaks (i, ii), c), unnumbered Proletariat). Treat all three ideologies as contested positions and teach them neutrally. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 553-633 (block SHA-256 fc675359774f5f136d0e2590c7224937fe30ac56d2ffaee4343b4eb24f5437d8)",
+      "objective": "Index week 7 of the 1st Term source: lines 553-633, block SHA-256 fc675359774f5f136d0e2590c7224937fe30ac56d2ffaee4343b4eb24f5437d8. Labels and sections: `WEEK SEVEN` 553, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 554, `CONTENT` 555; sections `FASCISM` 560, `Features of Fascism` 565, `NAZISM` 578, `Features of Nazism` 583, `TOTALITARIANISM` 594, `Features of Totalitarianism` 599; markers 574 (mid-week), 607, 611, 617, 621, 631. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the date ranges at 563 (Fascism in Italy 1922-1943) and 579 (Nazism in Germany 1933-1945), the equation of totalitarianism with authoritarianism at 595, and the racial-superiority claim at 579, which must be presented as the ideology's claim and not as fact. Cover the mid-week evaluation at 574 as an evaluation, not as a week boundary. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 553-633, block SHA-256 fc675359774f5f136d0e2590c7224937fe30ac56d2ffaee4343b4eb24f5437d8; `WEEK SEVEN` 553, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 554, `CONTENT` 555; sections `FASCISM` 560, `Features of Fascism` 565, `NAZISM` 578, `Features of Nazism` 583, `TOTALITARIANISM` 594, `Features of Totalitarianism` 599; markers 574 (mid-week), 607, 611, 617, 621, 631. Findings recorded by GOV-INV-T1 that this item must settle: Verify the date ranges at 563 (Fascism in Italy 1922-1943) and 579 (Nazism in Germany 1933-1945), the equation of totalitarianism with authoritarianism at 595, and the racial-superiority claim at 579, which must be presented as the ideology's claim and not as fact. Cover the mid-week evaluation at 574 as an evaluation, not as a week boundary. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 635-701 (block SHA-256 18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca)",
+      "objective": "Index week 8 of the 1st Term source: lines 635-701, block SHA-256 18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca. Labels and sections: `WEEK EIGHT` 635, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 636, `CONTENT` 637; sections `STATE` 642, `Characteristics of a State` 645, `NATION` 655, `POLITICAL CULTURE` 660, `Components of political Culture` 663, `Determinants of political Culture` 668; markers 675, 679, 685, 689, 699. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the definitional claim at 658 that a nation has every attribute of a state except sovereignty, the permanence claim at 653 (`unless it is conquered in a war`), and the colonial-legacy claim about Nigerian federal structure at 671 against dated, citable sources. Cover the components and determinants that the CONTENT list omits. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 635-701, block SHA-256 18f42d69b8171e73a693a0f6e333706ccdf511bfa42e1074dd577fec0d01dbca; `WEEK EIGHT` 635, `TOPIC: BASIC CONCEPTS IN GOVERNMENT` 636, `CONTENT` 637; sections `STATE` 642, `Characteristics of a State` 645, `NATION` 655, `POLITICAL CULTURE` 660, `Components of political Culture` 663, `Determinants of political Culture` 668; markers 675, 679, 685, 689, 699. Findings recorded by GOV-INV-T1 that this item must settle: Verify the definitional claim at 658 that a nation has every attribute of a state except sovereignty, the permanence claim at 653 (`unless it is conquered in a war`), and the colonial-legacy claim about Nigerian federal structure at 671 against dated, citable sources. Cover the components and determinants that the CONTENT list omits. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 703-747 (block SHA-256 86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2)",
+      "objective": "Index week 9 of the 1st Term source: lines 703-747, block SHA-256 86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2. Labels and sections: `WEEK NINE` 703, `TOPIC: POLITICAL SOCIALIZATION` 704, `CONTENT` 705; sections `POLITICAL SOCIALIZATION` 709, `Agents of Political Socialization` 714; markers 723, 727, 731, 735, 745. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the claim at 720 that `politics and religion go hand in hand` and the role assigned to religious groups as an agent; present it descriptively and neutrally. Line 720 begins with a space. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 703-747, block SHA-256 86deb98f3e2a279c5b0db3740445df80f6791965cb44d496702e2e34ed3046f2; `WEEK NINE` 703, `TOPIC: POLITICAL SOCIALIZATION` 704, `CONTENT` 705; sections `POLITICAL SOCIALIZATION` 709, `Agents of Political Socialization` 714; markers 723, 727, 731, 735, 745. Findings recorded by GOV-INV-T1 that this item must settle: Verify the claim at 720 that `politics and religion go hand in hand` and the role assigned to religious groups as an agent; present it descriptively and neutrally. Line 720 begins with a space. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "getBody lines 750-864 (block SHA-256 ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1)",
+      "objective": "Index week 10 of the 1st Term source: lines 750-864, block SHA-256 ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1. Labels and sections: `WEEK TEN` 750, `TOPIC: TYPES AND CHARACTERISTICS OF GOVERNMENT` 751, `CONTENT` 752; sections `UNITARY FORM OF GOVERNMENT` 756, `FEATURES` 759, `REASONS` 769, `ADVANTAGES` 777, `DISADVANTAGES` 786, `FEDERAL SYSTEM OF GOVERNMENT` 800, `FEATURES` 803, `REASONS` 813, `MERITS` 821, `DEMERITS` 830; markers 796, 840, 844, 850, 854, 862. Read every objective and exercise inside the span (the week's evaluation questions, general evaluation, reading assignment, weekend assignment and theory questions) before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task; an evaluation or assignment heading cannot erase teaching. Verify the country lists at 757 (Britain, France, Italy as unitary) and 801 (Nigeria, U.S.A, India, Russia as federal) against dated constitutional sources, and the claims at 764-765 that a unitary constitution is flexible and the parliament supreme, which hold for some states only. The evaluation at 848 and the theory question at 864 ask for `Federal Character`, which the document never defines: record a precise open item and a small lesson task instead of inventing the definition. The reading citation at 852 ends `pages` with no page numbers. Keep approval PENDING and verification DEFERRED, keep Government separate from Civic Education, and teach contested political questions neutrally with attribution.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 750-864, block SHA-256 ee1e05d99499ee072b0f55cda5a1e30fce140fbf305e42be956fe61b468f14b1; `WEEK TEN` 750, `TOPIC: TYPES AND CHARACTERISTICS OF GOVERNMENT` 751, `CONTENT` 752; sections `UNITARY FORM OF GOVERNMENT` 756, `FEATURES` 759, `REASONS` 769, `ADVANTAGES` 777, `DISADVANTAGES` 786, `FEDERAL SYSTEM OF GOVERNMENT` 800, `FEATURES` 803, `REASONS` 813, `MERITS` 821, `DEMERITS` 830; markers 796, 840, 844, 850, 854, 862. Findings recorded by GOV-INV-T1 that this item must settle: Verify the country lists at 757 (Britain, France, Italy as unitary) and 801 (Nigeria, U.S.A, India, Russia as federal) against dated constitutional sources, and the claims at 764-765 that a unitary constitution is flexible and the parliament supreme, which hold for some states only. The evaluation at 848 and the theory question at 864 ask for `Federal Character`, which the document never defines: record a precise open item and a small lesson task instead of inventing the definition. The reading citation at 852 ends `pages` with no page numbers. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-VIS-T1",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "Data stream offset 432; WordDocument stream offset 96337; paragraph 2 (cell marks) and the absent Week 7 table",
+      "objective": "Dispose the three visual groups found by GOV-INV-T1. (1) Page-1 cover: one JPEG, 3306x2515 px, 870,389 bytes at `Data` offset 432, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a, byte-identical to the Geography 1st Term cover, a subject-agnostic vendor template carrying personal contact details. (2) Page header: one JPEG, 949x359 px, 106,941 bytes at `WordDocument` offset 96,337, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14, byte-identical to the Further Mathematics 2nd Term and Geography 1st Term header images, referenced from the header story (0x01 at paragraph 881). (3) Layout table and absent figures: the only table structure is an empty row above the cover (two cell marks in paragraph 2; antiword reports 1 column and 1 row with no frame), and the body has no table, diagram, map or figure, while Week Seven THEORY (632) asks for a comparison table the document does not print. Record a permission open item for the vendor branding and personal contact details before any asset is bound; keep both images out of Git; dispose the empty row as a layout artefact; do not invent the missing figure or table. If a render is needed to decide whether the letterhead prints on every page, record that as an open item rather than guessing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-VIS-T1.md"
+      ],
+      "depends_on": [
+        "GOV-INV-T1",
+        "GOV-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence: cover JPEG 3306x2515, 870,389 bytes, Data offset 432, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a (byte-identical to the Geography 1st Term cover); header letterhead JPEG 949x359, 106,941 bytes, WordDocument offset 96337, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the Further Mathematics 2nd Term and Geography 1st Term headers); the only table structure is an empty 1x1 row above the cover (two cell marks in paragraph 2; antiword reports 1 column, 1 row); no other table, diagram, map or figure and no PNG, WMF, EMF or GIF image in either stream. Rendering was not possible in this environment (no LibreOffice or Word), so placement is unverified. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Each group has a disposition, the branding permission is an open item, no image bytes or private render is committed, the empty row is disposed as an artefact, and no missing table or figure is fabricated. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "8fb376f413cf70403d161439800738677bbc396a",
-    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "date": "2026-10-29",
+    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
+    "scope": "1st Term inventory executed from the supplied source; 2nd and 3rd Term inventories still unknown; no importer, compiler, database or test run; testing deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -312,6 +835,6 @@
     }
   },
   "next_runnable": [
-    "GOV-INV-T1"
+    "GOV-PRE-T1"
   ]
 }
