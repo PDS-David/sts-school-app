@@ -285,6 +285,10 @@
         {
           "locator": "source lines 143-165",
           "explanation": "The row numerals mix cases (I, Ii, Iii, Iv, V, Vi, Vii) and the greetings carry no tone marks; recorded in YORUBA-T1-W01-SOURCE-DEFECTS and YORUBA-T1-W01-NOTATION. No answers or usage notes are supplied."
+        },
+        {
+          "locator": "extractRawText lines 121-165 (table 1, w:tbl body after the heading \"Ikini akoko / igba.\" at 117); block SHA-256 1f0eda29b8072c0e8c4252416b496f8ac68a60411ca83f42d3583663fb670d46",
+          "explanation": "Table 1 is a 3-column x 8-row Word table (grid 753/2373/2484 twips; 24 cells, 24 paragraphs, 1 empty cell, no merged cell, no repeated header row). Its header is a blank corner, \"IGBA / AKOKO\" and \"IKINI\"; seven rows follow, each pairing a time label with the greeting used at that time. The row pairing is content-bearing and extraction loses it: each cell arrives as its own line, with blank lines between cells, so the time and its greeting are no longer associated. YORUBA-T1-TABLES requires the lesson to render this as a 3-column table with the blank corner kept, not as a list of greetings."
         }
       ]
     },
@@ -303,6 +307,10 @@
         {
           "locator": "source lines 199, 229-233",
           "explanation": "The Babalawo greeting/response text at line 199 is garbled (\"Aboru boye, sboye bo sise\"), and the Iya oloja greeting at line 231 is not explained; recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "extractRawText lines 173-233 (table 2, w:tbl body after the caption \"Ikini akoko Ise\" at 169); block SHA-256 e15985eb6b3f709ab6d59f6f159c3d0e949fd582e51dd80c619953201ff29bba",
+          "explanation": "Table 2 is a 4-column x 8-row Word table (grid 918/1638/3330/1800 twips; 32 cells, 32 paragraphs, 1 empty cell, no merged cell). The header is a blank corner followed by \"ISE\", \"IKINI\" and \"IDAHUN\"; seven rows pair an occupation with a greeting and its expected response. The ordinal labels run I to Viii and skip Vii, already recorded in YORUBA-T1-W01-SOURCE-DEFECTS. The three-way row association is content-bearing and extraction flattens it into one line per cell. YORUBA-T1-TABLES requires a 4-column table that keeps the blank corner and keeps the response in its own column."
         }
       ]
     },
@@ -1201,6 +1209,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 749-801 (table 3, w:tbl body after the heading \"Alaye lori ibi isenupe\" at 747); block SHA-256 3dde3ebd92cc0bf6a9b290578d62847976a988447867920975f07bf4cc109f2e",
+          "explanation": "Table 3 is a 3-column x 9-row Word table (grid 1818/1800/5400 twips; 27 cells, 27 paragraphs, no empty or merged cell). The header is \"IBI ISENUPE\", \"KONSONANTI TI A PE\" and \"ISESI AFIPE\"; eight rows give one place class, its consonants as a comma-separated list, and a sentence of articulation description. The class-to-members association is content-bearing: extraction gives 27 separate lines and loses the row boundaries. YORUBA-T1-TABLES requires a 3-column table with the consonant lists kept in their own column; the garbled glosses are on record in YORUBA-T1-W04-SOURCE-DEFECTS."
         }
       ]
     },
@@ -1223,6 +1235,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 815-861 (table 4, w:tbl body after the heading \"Alaye lori ona isenupe\" at 813); block SHA-256 6df126d2c82c850456367249c7160375029c03d1dc495404d919b44a0c256c8f",
+          "explanation": "Table 4 is a 3-column x 8-row Word table (grid 1908/2970/2820 twips; 24 cells, 24 paragraphs, no empty or merged cell). The header is \"ONA ISENUPE\", \"KONSONANTI TI A PE\" and \"IRU IDIWO TI AFIPE SE FUN EEMI\"; seven rows give one manner class, its consonants and an airflow description. The class-to-members association is content-bearing and extraction loses the row boundaries. YORUBA-T1-TABLES requires a 3-column table with the consonant list in its own column; the capital I for l and the J listed against table 6's Dz are already in YORUBA-T1-W04-SOURCE-DEFECTS."
         }
       ]
     },
@@ -1245,6 +1261,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 871-885 (table 5, w:tbl body after the heading \"Alaye ni kikun\" at 867); block SHA-256 f566899a4290f09b40ab85fd9f992bda8bc664f1c3c56d798c6e8662250eea30",
+          "explanation": "Table 5 is a 3-column x 3-row Word table (grid 2678/2811/2673 twips; 9 cells, 9 paragraphs, 1 empty corner, no merged cell). The header is a blank corner followed by \"IRO KONSONANTI\" and \"ALAYE\"; two rows give the voiced class and the voiceless class with their consonants and a description. The pair of rows is content-bearing and extraction loses it. YORUBA-T1-TABLES requires a 3-column table with the blank corner kept; the voiced list omitting b and g and the voiceless list doubling s are already in YORUBA-T1-W04-SOURCE-DEFECTS."
         }
       ]
     },
@@ -1267,6 +1287,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 891-1079 (table 6, w:tbl body; its caption \"ATE IRO KONSONANTI\" is the separate paragraph at 889); block SHA-256 c288585298c0c273b120deb0dcac13f6c94970f5e546abec3a89a6048584ddaf",
+          "explanation": "Table 6 is the 10-column x 9-row classification matrix (grid 1260/1087/810/935/720/970/705/810/990/1080 twips; 90 cells, 96 paragraphs, 48 empty cells, no gridSpan, no vMerge, no repeated header row). The first column carries the seven manner labels, the second the voicing label (\"Akunyun\", \"Aikunyun\", and the misspelt \"Akinyun\" in three rows), and the last eight columns are places of articulation; four place headers split across two paragraphs inside one cell. The location of each consonant in the grid is the classification, so the structure is content-bearing and the 48 blanks are meaningful. Extraction produces 48 non-blank lines in row-major order with no column membership at all. YORUBA-T1-TABLES requires this table to be a 10-column matrix with its two label columns and its blank cells preserved; the missing P and Y, the J/Dz inconsistency and the \"II\" for l are on record in YORUBA-T1-W04-SOURCE-DEFECTS and must not be silently filled."
         }
       ]
     },
@@ -1821,6 +1845,10 @@
         {
           "locator": "package state",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 1303-1389 (table 7, w:tbl body after the lead-in \"Apeere apa silebu ni wonyi;\" at 1301); block SHA-256 753a9d0315c4df2fb8ae3e702623fd2ddb9aabb6e4fceb3d4808dbc19e136c7d",
+          "explanation": "Table 7 is a 4-column x 5-row Word table (grid 2000/2610/1543/1260 twips; 20 cells, 38 paragraphs, no empty cell, no merged cell). The header is \"APA\", \"ALEYE\", \"APEERE ORO\" and a fourth \"APA\" that repeats the first column's label, already recorded as a defect. Four rows give the syllable part, its explanation, example words and example sounds, and 10 of the 20 cells stack several items as separate paragraphs. Extraction keeps those paragraphs as separate lines but drops every row boundary and, inside the stacked cells, the alignment between example and sound. YORUBA-T1-TABLES requires a 4-column table whose stacked examples stay on separate aligned lines."
         }
       ]
     },
@@ -2045,6 +2073,10 @@
         {
           "locator": "package state",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 1513-1639 (table 8, w:tbl body after the lead-in at 1511); block SHA-256 fba577d1a6d77517c9656182643e563707ae35fa61826015bcaa65f47abadb83",
+          "explanation": "Table 8 is a 3-column x 6-row Word table (grid 1458/1800/1710 twips; 18 cells, 63 paragraphs, 1 empty cell, no merged cell). The header is \"SIPELI ATIJO\", \"SIPELI TUNTUN\" and \"IFIYESI\"; five rows pair old and new spellings and add a note, and 11 of the 18 cells stack several forms as separate paragraphs. This table supplies the rows used by YO-T1-W07-EDE-02 to EDE-06. The old-to-new pairing is content-bearing, so extraction's 63 lines lose which new form answers which old one and run stacked words together. YORUBA-T1-TABLES requires a 3-column table with the pairs aligned; the empty note cell in the fifth row and the seven-against-eight pairing of the last row are already in YORUBA-T1-W07-SOURCE-DEFECTS and must not be filled or re-paired."
         }
       ]
     },
@@ -2477,6 +2509,23 @@
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
         "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-TABLES",
+      "kind": "VERIFICATION",
+      "detail": "The document holds eight top-level w:tbl elements - 56 rows and 244 cells - and no table occurs in Weeks 2, 3, 5 or 8. Weeks and anchors: tables 1 and 2 in Week 1 (extractRawText 121-165 and 173-233), tables 3, 4, 5 and 6 in Week 4 (749-801, 815-861, 871-885 and 891-1079, the last captioned \"ATE IRO KONSONANTI\" at 889), table 7 in Week 6 (1303-1389) and table 8 in Week 7 (1513-1639). No table uses gridSpan, vMerge or a repeating header row; the corners of tables 1, 2 and 5 are empty; tables 6, 7 and 8 stack several paragraphs inside cells (96 paragraphs in 90 cells, 38 in 20 and 63 in 18), and tables 1, 2, 5, 6 and 8 contain empty cells. extractRawText writes every cell paragraph on its own line with blank lines between cells, so a table arrives as a flat sequence with no row or column membership: the 10-column matrix of table 6 becomes 48 non-blank lines out of 90 cells and the pairs of table 8 become 63 lines. Every table is content-bearing - tables 1 and 2 pair a time or occupation with its greeting and response, tables 3, 4 and 5 pair a consonant class with its members and description, table 6's meaning is its manner-by-place position, table 7 pairs a syllable part with explanation, words and sounds, and table 8 pairs old and new spellings - so a lesson built from the extract as prose would teach unassociated lists. YO-VIS-T1-03 disposed of all eight on 2026-10-30 without committing any render; this item keeps the representation rule with the lessons.",
+      "required_action": "Every lesson that uses a table must render it as a table with its header row above its columns and one row per source row: tables 1, 2, 3, 4, 5, 7 and 8 with their 3 or 4 columns, and table 6 as a 10-column matrix with its two label columns intact. Keep the empty cells empty, keep stacked cell paragraphs on separate lines, do not fill a gap from the prose, do not reorder rows, and do not pair table 8's last row positionally. The defects already recorded in YORUBA-T1-W01/W04/W06/W07-SOURCE-DEFECTS are corrected only through their YO-FACT items. No render of any table is committed.",
+      "affected_ids": [
+        "YO-T1-W01-ASA-02",
+        "YO-T1-W01-ASA-03",
+        "YO-T1-W04-EDE-02",
+        "YO-T1-W04-EDE-03",
+        "YO-T1-W04-EDE-04",
+        "YO-T1-W04-EDE-05",
+        "YO-T1-W06-EDE-02",
+        "YO-T1-W07-EDE-02"
       ],
       "blocks_delivery": true
     },

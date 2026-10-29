@@ -35,7 +35,8 @@
     "YO-WK-T1-W08 (2026-10-30) indexed 1st Term Week 8: the last week of the document teaches essay writing (a definition, seven named types and six principles) and indigenous Yoruba occupations (a definition, ten occupations and three Ise ona materials), and closes with a LITIRESO heading that has no body. It has three strands, as the scheme lists three topics for it. 12 coverage entries in yoruba.json (10 PARTIAL, 2 UNRESOLVED because the WAEC/NECO set text is not named and nothing is taught); six open items for scheme mapping, row identity, eight source defects, notation (no sub-dot letters), the empty LITIRESO strand (OWNER_ACTION) and assessment gaps; three Week 8 lesson items plus one factual-dependency item appended. With this the 1st Term is fully indexed at objective level. Nothing was run; testing deferred by owner.",
     "YO-PRE-T1-1 (2026-10-30) indexed the 1st Term preamble: the title \"ODUN IGBEKO YORUBA-SS 1\" (line 3), the term heading \"ISE OOJO-SAA KIN-IN-NI\" (line 5) and the unnumbered 22-topic scheme list (lines 9-51) are recorded as three MARKER entries and classified SCHEME_ONLY by a new classify_marker rule; Week 1 starts at line 61, so nothing is teaching text. One open item, YORUBA-T1-PRE-SCHEME-LIST, keeps the term-wide confirmation of the 22-to-eight mapping with the owner. No item was added to the queue; status 15 implemented / 56 pending / 8 blocked; next_runnable YO-VIS-T1-01. Nothing was run; testing deferred by owner.",
     "YO-VIS-T1-01 (2026-10-30) disposed of the ATE FAWELI vowel chart: it sits in Week 3 EDE (lines 551-569 inside 485-573), not Week 1 as the assignment text says, and it is two side-by-side copies of one vowel quadrilateral, each an AlternateContent pair of 8 modern and 8 VML connectors with no text boxes and no media, so its labels stay tab-positioned paragraphs. Read with the prose at 519-545 it shows the seven oral vowels on the left and the five nasal vowels on the right, which makes it content-bearing; the decision is to recreate it as structured data once the notation and defect decisions land, so YO-ASSET-T1-W03-VOWEL-CHART is appended BLOCKED. One evidence entry was added to YO-T1-W03-EDE-07 and one open item, YORUBA-T1-W03-VISUALS, to the Week 3 block. 80 items: 16 implemented / 55 pending / 9 blocked; next_runnable YO-VIS-T1-02. Nothing was run; testing deferred by owner.",
-    "YO-VIS-T1-02 (2026-10-30) disposed of the five Week 6 inline objects: five right-pointing arrows, one per segmented example (lines 1415-1423), each an AlternateContent of one modern wps connector and one VML fallback, so five v:shape rather than the six the assignment text states. The assignment paragraphs are the 708th-712th w:p start tags (700-704 closed paragraphs before them). The arrows cross the tab gap from the word to its segmentation, but both members of each pair stay in one paragraph, so extraction keeps \"Ke [tabs] k – e\" and the arrow adds direction only; the decision is to omit the objects and write each pair as text in the lesson, recorded on YORUBA-T1-W06-VISUALS and YO-T1-W06-EDE-05. 80 items: 17 implemented / 54 pending / 9 blocked; next_runnable YO-VIS-T1-03. Nothing was run; testing deferred by owner."
+    "YO-VIS-T1-02 (2026-10-30) disposed of the five Week 6 inline objects: five right-pointing arrows, one per segmented example (lines 1415-1423), each an AlternateContent of one modern wps connector and one VML fallback, so five v:shape rather than the six the assignment text states. The assignment paragraphs are the 708th-712th w:p start tags (700-704 closed paragraphs before them). The arrows cross the tab gap from the word to its segmentation, but both members of each pair stay in one paragraph, so extraction keeps \"Ke [tabs] k – e\" and the arrow adds direction only; the decision is to omit the objects and write each pair as text in the lesson, recorded on YORUBA-T1-W06-VISUALS and YO-T1-W06-EDE-05. 80 items: 17 implemented / 54 pending / 9 blocked; next_runnable YO-VIS-T1-03. Nothing was run; testing deferred by owner.",
+    "YO-VIS-T1-03 (2026-10-30) disposed of the eight Word tables. All are top-level body tables, 56 rows and 244 cells, with no gridSpan, vMerge or repeated header row, and they map to Week 1 (tables 1-2, lines 121-165 and 173-233), Week 4 (tables 3-6, 749-801, 815-861, 871-885 and 891-1079), Week 6 (table 7, 1303-1389) and Week 7 (table 8, 1513-1639); Weeks 2, 3, 5 and 8 have no table. The structure was read from word/document.xml - grid widths, row and cell counts, paragraph counts per cell - not from a render. All eight are content-bearing (pairs, or in table 6 a manner-by-place matrix whose meaning is position); tables 6-8 stack several paragraphs in cells and tables 1, 2, 5, 6 and 8 have empty cells, while extractRawText emits each cell paragraph on its own line, so the association is lost. One evidence entry was added to each of the eight source objectives the tables serve, and YORUBA-T1-TABLES records the representation rule for lessons. 80 items: 18 implemented / 53 pending / 9 blocked; next_runnable YO-FND-T1-01. Nothing was run; testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -51,8 +52,8 @@
     "ASSET": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 17,
-    "PENDING": 54,
+    "IMPLEMENTED_TESTING_DEFERRED": 18,
+    "PENDING": 53,
     "BLOCKED": 9
   },
   "items": [
@@ -2003,8 +2004,8 @@
       "depends_on": [
         "YO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not yet inspected as objects. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): 8 w:tbl elements, 56 rows, 244 cells. Anchors: \"IGBA / AKOKO\" line 121 (Week 1 ASA), \"IDAHUN\" line 177 (Week 1 ASA), \"IBI ISENUPE\" line 749 (Week 4 EDE), \"ONA ISENUPE\" line 815 (Week 4 EDE), \"IRO KONSONANTI\" line 871 (Week 4 EDE), second \"IRO KONSONANTI\" grid line 889 (Week 4 EDE), \"APA\" line 1303 (Week 6 EDE), \"SIPELI ATIJO\" line 1513 (Week 7 EDE). extractRawText emits cell text as separate lines, so table structure is not represented in the text.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposed by YO-VIS-T1-03 (2026-10-30, ss1/yo-vis-t1-02 a6872ad). Eight w:tbl, all top-level body tables: 56 rows, 244 cells, no gridSpan, no vMerge, no tblHeader. Week map and body blocks: table 1 Week 1 121-165 (3 x 8), table 2 Week 1 173-233 (4 x 8), table 3 Week 4 749-801 (3 x 9), table 4 Week 4 815-861 (3 x 8), table 5 Week 4 871-885 (3 x 3), table 6 Week 4 891-1079 (10 x 9, caption at 889), table 7 Week 6 1303-1389 (4 x 5), table 8 Week 7 1513-1639 (3 x 6); no table in Weeks 2, 3, 5 or 8. Paragraphs per table 24/32/27/24/9/96/38/63 show the multi-paragraph cells of tables 6-8; empty cells occur in tables 1, 2, 5, 6 and 8. Structure read from word/document.xml only; no render committed and no table text copied. The per-table evidence sits on the eight coverage objectives and the representation rule on YORUBA-T1-TABLES.",
       "completion_condition": "Every table is mapped to its week with an anchor, its structure is captured from the DOCX XML (not from a render) or a precise limitation recorded, and lessons are told how to represent it; no render is committed. Testing deferred by owner."
     },
     {
@@ -3419,6 +3420,6 @@
     }
   },
   "next_runnable": [
-    "YO-VIS-T1-03"
+    "YO-FND-T1-01"
   ]
 }
