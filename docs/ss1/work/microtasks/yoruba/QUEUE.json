@@ -21,17 +21,22 @@
     "No lesson-writing, correction, asset or approval items exist because the repository names no uncovered objective, no corrected row, no figure and no authored lesson. They may be added only after indexing names a specific one.",
     "Open PRs at review: only #71 (alternate foundation, DO NOT MERGE), which contains no Yoruba SS1 work (subjects/ holds mathematics, further-mathematics and physics only). Nothing is built on #71. No unmerged Yoruba work needs preserving; the Mathematics/Further Mathematics/Physics D-items do not apply.",
     "Reference only, not SS1 evidence: JSS3 Yoruba work under docs/jss3/batch2-close/C_ENGLISH_YORUBA records that AI-written Yoruba tone marks had not been checked by a Yoruba speaker and that oral-text excerpts needed rights checks. Future SS1 lesson items should keep content approval, rights and verification separate; nothing here claims any of them.",
-    "Execute one queue item per worker. A source-reading item needs its attachment: archive SSS 1-20260507T072431Z-3-001.zip (a display name such as 'SSS 1-20260507T072431Z-3-001 (1).zip' is acceptable if the SHA-256 matches), the member path and member SHA-256 listed on the item. Do not commit the archive, source documents, extracts or renders."
+    "Execute one queue item per worker. A source-reading item needs its attachment: archive SSS 1-20260507T072431Z-3-001.zip (a display name such as 'SSS 1-20260507T072431Z-3-001 (1).zip' is acceptable if the SHA-256 matches), the member path and member SHA-256 listed on the item. Do not commit the archive, source documents, extracts or renders.",
+    "YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) inventoried the whole 1st Term Yoruba document and appended 13 items: YO-WK-T1-W01..W08 (one per teaching week, labels \"OSE KIN-IN-NI\" through \"OSE KEJO\"), YO-PRE-T1-1 (title and 22-topic opening scheme list, lines 3-51), YO-VIS-T1-01..03 (ATE FAWELI vowel chart, five Week 6 inline syllable objects, eight tables) and YO-FND-T1-01 (Yoruba week labels cannot be parsed or expressed under the current schema/compiler). Every new item depends on YO-SRC-T1 and has been added to YO-SCOPE-OBJECTIVE-INDEXING.depends_on. The document has no tone-marked characters in XML or extraction; phonetic symbols use ASCII substitutes typed in the source. No extract or render was committed; yoruba.json was not edited; nothing was run and testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "SCOPE_DECOMPOSITION": 1,
-    "TEST": 1
+    "TEST": 1,
+    "SOURCE_WEEK_INDEXING": 8,
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "VISUAL_DISPOSITION": 3,
+    "FOUNDATION_REQUEST": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 5
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 17
   },
   "items": [
     {
@@ -181,8 +186,8 @@
       "depends_on": [
         "YO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week list, scheme text or opening-section finding for this document exists in the repository (CHECKPOINT.md records only that initial schemes/opening sections were read). Do not take week counts from other subjects. Repository hints only, NOT findings for this document: (a) ingestTopics.ts documents that a scheme table and the real teaching body can both use WEEK markers, so the generic parser may ingest both as separate rows; (b) docs/ss1/work/SS1-03/author/parse_topics_copy.cjs records that some of this school's Yoruba-language files flatten the week table so the label appears as a bare number on its own line after the Yoruba word for week; whether that applies here must be read from the source; (c) master's week labels are numeric only (split_before / attach_stranded_label), see FOUNDATION_RECONCILIATION.md R-12.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on master 4159336c7068d2235209221f5f14adc4986acec5 (YO-INV-T1, 2026-10-29). Prerequisite YO-SRC-T1 is IMPLEMENTED_TESTING_DEFERRED. Source SS1-SRC-48b641249e3b, member \"SSS 1/1st Term SS1_/YORUBA.docx\", 55,974 bytes, SHA-256 7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef (re-verified from the supplied archive; archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e verified: 35,828,550 bytes). mammoth 1.12.2 extractRawText(): 26,329 characters, 1,781 lines, 749 non-blank; 882 body paragraphs. Structure: title line 3 \"ODUN IGBEKO YORUBA-SS 1\"; non-week scheme/topic heading line 5 \"ISE OOJO-SAA KIN-IN-NI\" with 22 topic paragraphs on lines 9-51; then eight teaching sections with Yoruba ordinal headings at lines 61, 311, 483, 725, 1171, 1285, 1503 and 1685 (\"OSE KIN-IN-NI\" through \"OSE KEJO\"; week 6's label is tab-wrapped). Each week is one teaching section made of EKA ISE EDE/ASA/(LITIRESO) components under the single week heading; weeks 4, 6 and 7 have no separate LITIRESO heading. Section ranges and SHA-256: W01 61-310 953d3f99..., W02 311-482 8d9ce15f..., W03 483-724 ddc960d3..., W04 725-1170 237de99a..., W05 1171-1284 07f19f39..., W06 1285-1502 fc386f54..., W07 1503-1684 bfab796f..., W08 1685-1781 1df0a9b8... . Embedded objects: 8 tables (56 rows, 244 cells), 7 w:drawing and 7 w:pict (two figure groups: ATE FAWELI vowel chart at lines 551-569 and five inline syllable objects at lines 1415-1423), 23 v:shape, 6 v:stroke, 0 OLE, 0 oMath, 0 media files. Diacritics: none in the source or the extraction - 0 tone-marked/subdot characters in word/document.xml w:t and 0 in extractRawText; the only non-ASCII characters are en dash, pound sign and curly quotes; phonetic symbols are ASCII substitutes typed in the source (\"d3\", \">\", \"£\", \"e-/o-\"). No parser, importer, compiler or test was run. Appended 13 queue items (8 YO-WK-T1-Wnn, YO-PRE-T1-1, 3 YO-VIS-T1-nn, YO-FND-T1-01) and added them to YO-SCOPE-OBJECTIVE-INDEXING.depends_on. yoruba.json not edited. Evidence note: docs/ss1/work/microtasks/yoruba/YO-INV-T1.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Archive/member hashes verified. YO-INV-T1.md (no extract, no render, no document text beyond short week labels/headings needed as anchors) records: every week/teaching section with its verbatim label and a reproducible locator; whether each row is a scheme-table entry or a teaching body, and whether any week holds more than one teaching section; every substantive opening/preamble/unlabelled section with a locator; embedded objects (drawings, images, tables, equations) and whether Yoruba diacritics survive extraction. Then append to QUEUE.json, with the same field set as this queue and real dependency IDs (each depending on YO-SRC-T1): one SOURCE_WEEK_INDEXING item per established week (ID YO-WK-T1-Wnn), one SOURCE_PREAMBLE_INDEXING item (YO-PRE-T1-n) per substantive non-week section, one VISUAL_DISPOSITION item per object needing inspection, and a separate foundation-request item for any structure the current schema cannot express (state the specific limitation; do not change schema or compiler). Add every appended ID to YO-SCOPE-OBJECTIVE-INDEXING.depends_on and refresh counts. Do not index objectives, author lessons or edit yoruba.json in this item. Testing deferred by owner."
     },
     {
@@ -285,7 +290,20 @@
       "depends_on": [
         "YO-INV-T1",
         "YO-INV-T2",
-        "YO-INV-T3"
+        "YO-INV-T3",
+        "YO-WK-T1-W01",
+        "YO-WK-T1-W02",
+        "YO-WK-T1-W03",
+        "YO-WK-T1-W04",
+        "YO-WK-T1-W05",
+        "YO-WK-T1-W06",
+        "YO-WK-T1-W07",
+        "YO-WK-T1-W08",
+        "YO-PRE-T1-1",
+        "YO-VIS-T1-01",
+        "YO-VIS-T1-02",
+        "YO-VIS-T1-03",
+        "YO-FND-T1-01"
       ],
       "status": "PENDING",
       "implementation_reference": "No Yoruba package, coverage or open item exists on master; row-level or objective-level coverage cannot be assumed. Child items do not yet exist beyond the YO-INV items: their IDs are appended to depends_on by each YO-INV worker.",
@@ -314,11 +332,544 @@
       "status": "PENDING",
       "implementation_reference": "No Yoruba test file exists (tests/ss1 contains french, mathematics and further-mathematics package tests only).",
       "completion_condition": "Test file written and statically consistent with yoruba.json. It is NOT run: tests, typechecks, importer, database and device checks are deferred by the owner and happen only in the later authorised verification stage."
+    },
+    {
+      "id": "YO-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 (source label \"OSE KIN-IN-NI\" at extractRawText line 61; section lines 61-310)",
+      "objective": "Index 1st Term Week 1 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KIN-IN-NI\" at extractRawText line 61 (SHA-256 3dbfebf0dd6f4796e35b20bb67c1688c782d3db0ba86a6b1881c2ff5bbebcee3); section lines 61-310, trimmed section SHA-256 953d3f997edbec82be8ffbe9ccfa54e09fd174edd15dd2779d0fd9362eacc940; EKA ISE: EDE line 63 (AKOLE line 65), EKA ISE: ASA line 105 (AKOLE line 107), EKA ISE: LITIRESO line 237 (AKOLE line 239); Igbelewon line 281; Ise asetilewa line 295. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 1 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 2 (source label \"OSE KEJI\" at extractRawText line 311; section lines 311-482)",
+      "objective": "Index 1st Term Week 2 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KEJI\" at extractRawText line 311 (SHA-256 a22da429bb21ce15cdb9daf531aebe39dbae2143a01bad8841d6ff34b1211409); section lines 311-482, trimmed section SHA-256 8d9ce15f7d4ac50c2b45dd5da5c7c16d9c6bb30ea7156e62e94550dc95d3365c; EKA ISE: EDE line 313 (AKOLE line 315), EKA ISE: ASA line 407 (AKOLE line 409), EKA ISE: LITIRESO line 445 (AKOLE line 447); Igbelewon line 465; Ise asetilewa line 477. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 2 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 (source label \"OSE KETA\" at extractRawText line 483; section lines 483-724)",
+      "objective": "Index 1st Term Week 3 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KETA\" at extractRawText line 483 (SHA-256 4ed1dfb73c9327f8b8bfae03213768c47008e9a68b38f1190a6cecc15012d83b); section lines 483-724, trimmed section SHA-256 ddc960d351bbb3dc644d42b56fcf6c23e1a449df0bc65c11e65f3f6c7d8b0d13; EKA ISE: EDE line 485 (AKOLE line 487), EKA ISE: ASA line 575 (AKOLE line 577), EKA ISE: LITIRESO line 683 (AKOLE line 685); Igbelewon line 701; Ise asetilewa line 713. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 3 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 4 (source label \"OSE KERIN\" at extractRawText line 725; section lines 725-1170)",
+      "objective": "Index 1st Term Week 4 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KERIN\" at extractRawText line 725 (SHA-256 bab86961830e5bba67f9143ca9d195c7744ce0e8029dcab3b61dd67772c4c14b); section lines 725-1170, trimmed section SHA-256 237de99a8e8fd2a31bd829d116d0b731d3c1200a53e632f90ca0979e4d0ec5b7; EKA ISE: EDE line 727 (AKOLE line 729), EKA ISE: ASA line 1097 (AKOLE line 1099); no LITIRESO heading in this week; Igbelewon line 1149; Ise asetilewa line 1161; tables 3-6 sit inside this week (lines 749, 815, 871, 889). One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 4 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 5 (source label \"OSE KARUN-UN\" at extractRawText line 1171; section lines 1171-1284)",
+      "objective": "Index 1st Term Week 5 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W05.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KARUN-UN\" at extractRawText line 1171 (SHA-256 c38d7fb8bf630de53c8e0cb026405e464d01a67b867bd47da84a7d66891e936f); section lines 1171-1284, trimmed section SHA-256 07f19f39fec135479547187c28daee6b79daea8e61ee0c5262f95fa99280cd0f; EKA ISE: EDE line 1173 (AKOLE line 1175), EKA ISE: ASA line 1237 (AKOLE line 1239), EKA ISE: LITIRESO line 1259 (AKOLE line 1261); Igbelewon line 1265; Ise asetilewa line 1275. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 5 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 6 (source label \"OSE KEFA\" at extractRawText line 1285; section lines 1285-1502)",
+      "objective": "Index 1st Term Week 6 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W06.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KEFA\" at extractRawText line 1285 (SHA-256 a63bba1de0fe3b6c011ea6a8ae8da2b671683e706a68cfc6c7785a2756311b5b); section lines 1285-1502, trimmed section SHA-256 fc386f54c1e65fe74b607f590407df56ef7dc6553b927b1429d16e571c29ad4b; EKA ISE: EDE line 1287 (AKOLE line 1289), EKA ISE: ASA line 1437 (AKOLE line 1439); no LITIRESO heading in this week; Igbelewon line 1481; Ise asetilewa line 1493; five inline syllable objects at lines 1415-1423 (YO-VIS-T1-02). One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 6 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 7 (source label \"OSE KEJE\" at extractRawText line 1503; section lines 1503-1684)",
+      "objective": "Index 1st Term Week 7 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KEJE\" at extractRawText line 1503 (SHA-256 da1345dfd886a58a9cecfdad7f0909aba73123f5abff15c85a468fb375743e88); section lines 1503-1684, trimmed section SHA-256 bfab796f499c382f7b0df35ae0cccafe235f26d7f6e845a93f43e763f54a7ef9; EKA ISE: EDE line 1505 (AKOLE line 1507), EKA ISE: ASA line 1643 (AKOLE line 1645); no LITIRESO heading in this week; Igbelewon line 1669; Ise asetilewa line 1681. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 7 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "Week 8 (source label \"OSE KEJO\" at extractRawText line 1685; section lines 1685-1781)",
+      "objective": "Index 1st Term Week 8 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): teaching-body heading \"OSE KEJO\" at extractRawText line 1685 (SHA-256 17b96c33e684f322652efe11cdcd93ee1ffef87062ec90bd2ece514824fe6dc8); section lines 1685-1781, trimmed section SHA-256 1df0a9b8cccccb476253677de79e32156becb71cd3cb6622ed91d268672d28fd; EKA ISE: EDE line 1687 (AKOLE line 1689), EKA ISE: ASA line 1725 (AKOLE line 1727), EKA ISE: LITIRESO line 1763 (AKOLE line 1765); Igbelewon line 1767; assignment line 1779 (spelled \"Ise aetilewa:\" in the source); document ends at line 1781, with no examination or revision section after it. One teaching section for the week (all EKA ISE components sit under the single week heading). Yoruba week headings, not English \"WEEK\" markers; see YO-FND-T1-01. No objective-level coverage exists yet.",
+      "completion_condition": "Index 1st Term Week 8 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-PRE-T1-1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "document title and opening scheme/topic list before the first week heading (extractRawText lines 3-51)",
+      "objective": "Index the non-week opening section of the 1st Term Yoruba document: the title line and the 22-topic scheme/topic list. Record verbatim anchors and hashes, decide under the existing schema whether it is scheme-only text or requires an open item, and do not invent teaching.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-PRE-T1-1.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet indexed. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): title line 3 \"ODUN IGBEKO YORUBA-SS 1\" (SHA-256 d8437b734b0870428d488cfd4d6d70ded08f6c26a2337419605f7c37998f09a9); heading line 5 \"ISE OOJO-SAA KIN-IN-NI\" (SHA-256 fc6b29dc4fad10257b786ae43b32e23305fcfaf44e402aa1ad38022a617e42b5); 22 topic paragraphs on lines 9-51 (SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6); block lines 3-51 (SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32). The list carries no week numbers and no \"WEEK\" markers; it is not a week teaching body.",
+      "completion_condition": "The title and 22-topic opening list are hash-accounted with locators; the section is either classified as scheme-only/preamble under the existing schema or recorded as a precise open item; no teaching is invented and nothing is discarded. Testing deferred by owner."
+    },
+    {
+      "id": "YO-VIS-T1-01",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "ATE FAWELI vowel chart, extractRawText lines 551-569 (figure in XML paragraph 275)",
+      "objective": "Dispose of the ATE FAWELI vowel-chart figure: determine what it depicts, whether it is content-bearing for Week 1 EDE, and how a lesson should represent it, without committing a render.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-VIS-T1-01.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet inspected. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): heading \"ATE FAWELI\" line 551; chart labels lines 551-569 (SHA-256 2710e096a6c18874b9321936f332893863db6d11c496f2a3a53353dc58489cc0). The figure is 2 w:drawing + 2 w:pict objects plus 17 v:shape elements in XML paragraph 275; no raster media exists in the DOCX; mammoth 1.12.2 ignored v:stroke and emitted only the flattened label grid.",
+      "completion_condition": "The figure is identified and its content role recorded with a reproducible locator; a decision (recreate, reference, or omit with reason) is recorded and any resultant asset task is appended; no render is committed. Testing deferred by owner."
+    },
+    {
+      "id": "YO-VIS-T1-02",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "five inline syllable objects in Week 6, extractRawText lines 1413-1423 (XML paragraphs 700-704)",
+      "objective": "Dispose of the five small inline objects attached to the Week 6 syllable examples: identify what they mark and whether they carry teaching meaning beyond the surrounding text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-VIS-T1-02.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet inspected. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): lead-in line 1413 and five example lines 1415-1423 (SHA-256 1a0b94445d2c6821f698d589d1798d0e8a9047d814b07f15ae1f36e437305db2). Five w:drawing + five w:pict pairs (XML paragraphs 700-704) and 6 v:shape elements; no raster media.",
+      "completion_condition": "Each object or the group is identified with a locator and its teaching role stated; a decision (recreate, reference, or omit with reason) is recorded; no render is committed. Testing deferred by owner."
+    },
+    {
+      "id": "YO-VIS-T1-03",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "eight Word tables in the document (8 w:tbl, 56 rows, 244 cells); anchors at lines 121, 177, 749, 815, 871, 889, 1303 and 1513",
+      "objective": "Dispose of the eight tables: record which week each belongs to, whether cell structure is content-bearing, and how a lesson must represent it given that extractRawText flattens cells into separate lines.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-VIS-T1-03.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not yet inspected as objects. Found by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5): 8 w:tbl elements, 56 rows, 244 cells. Anchors: \"IGBA / AKOKO\" line 121 (Week 1 ASA), \"IDAHUN\" line 177 (Week 1 ASA), \"IBI ISENUPE\" line 749 (Week 4 EDE), \"ONA ISENUPE\" line 815 (Week 4 EDE), \"IRO KONSONANTI\" line 871 (Week 4 EDE), second \"IRO KONSONANTI\" grid line 889 (Week 4 EDE), \"APA\" line 1303 (Week 6 EDE), \"SIPELI ATIJO\" line 1513 (Week 7 EDE). extractRawText emits cell text as separate lines, so table structure is not represented in the text.",
+      "completion_condition": "Every table is mapped to its week with an anchor, its structure is captured from the DOCX XML (not from a render) or a precise limitation recorded, and lessons are told how to represent it; no render is committed. Testing deferred by owner."
+    },
+    {
+      "id": "YO-FND-T1-01",
+      "kind": "FOUNDATION_REQUEST",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "term": "1st Term",
+      "week_or_locator": "week headings in Yoruba ordinal form (\"OSE KIN-IN-NI\" ... \"OSE KEJO\") across the whole document",
+      "objective": "State the specific limitation that prevents the current schema/compiler from expressing this document's week structure, and request a bounded foundation change. Do not edit schema or compiler here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T1.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/YORUBA.docx",
+          "member_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-FND-T1-01.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by YO-INV-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Limitation: backend/src/db/ingestTopics.ts WEEK_MARKER matches English \"week\" plus numerals/English ordinals only, so this document's teaching headings (\"OSE KIN-IN-NI\" line 61, \"OSE KEJI\" line 311, \"OSE KETA\" line 483, \"OSE KERIN\" line 725, \"OSE KARUN-UN\" line 1171, \"OSE KEFA\" line 1285, \"OSE KEJE\" line 1503, \"OSE KEJO\" line 1685) yield no parsed rows and therefore no SS1-SRC-48b641249e3b:BODY:* IDs. compiler.ts applyRules accepts only numeric week_label values for split_before/attach_stranded_label, and the package schema has no field for a source-specific week-label pattern, so the headings cannot be introduced by source_rules either. Consequence: objective-level coverage for this source cannot bind to parsed row IDs without a foundation change or another approved identity mechanism.",
+      "completion_condition": "The limitation is confirmed against the named files with a reproducible explanation, and a bounded proposal (for example a documented label-pattern or explicit-label mechanism) is recorded for the integrator; no schema or compiler edit is made and no parser run is claimed. Testing deferred by owner."
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "204849e1a71347a3e8c132f1a857efba0d08d038",
+    "date": "2026-10-29",
+    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001.zip",
@@ -330,6 +881,6 @@
     }
   },
   "next_runnable": [
-    "YO-INV-T1"
+    "YO-INV-T2"
   ]
 }
