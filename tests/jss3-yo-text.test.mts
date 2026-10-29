@@ -166,11 +166,19 @@ test('Task 04: Oya acquisition record is complete, names an unblock for every le
     assert.ok(oyaSources.some((s: any) => s.id === id), `${id} must stay recorded`);
   for (const s of oyaSources) {
     assert.ok(String(s.unblock).trim().length > 0, `${s.id}: unblock must be stated`);
-    assert.ok(!s.source_sha256, `${s.id}: no source bytes were hashed for an Oya lead, so no hash may be claimed`);
+    if (s.id !== 'YT-R1-01') assert.ok(!s.source_sha256, `${s.id}: no new source-byte receipt was supplied for this lead`);
     assert.notEqual(s.verdict, 'USABLE_VERIFIED');
   }
   const zen = register.sources.find((s: any) => s.id === 'YT-R1-01');
-  assert.equal(zen.verdict, 'NOT_EXAMINED', 'PDF bytes were never read, so the verdict must not be upgraded');
+  assert.equal(zen.verdict, 'NO_TEXT_TO_TEACH', 'the inspected questionnaire supplies no eligible target-genre passage');
+  assert.equal(zen.source_sha256, 'd7e1e777868f1adc34ed89225e1f5986a82c99021cd3598ed477d89e5e290f64');
+  assert.equal(zen.j01_completion.sha256, zen.source_sha256);
+  assert.equal(zen.j01_completion.md5, '81dce7307beb2b40ddb57c04b3c31c18');
+  assert.equal(zen.j01_completion.bytes, 700955);
+  assert.equal(zen.j01_completion.page_count, 47);
+  assert.equal(zen.j01_completion.outcome, 'INSPECTED_NO_ELIGIBLE_PASSAGE');
+  assert.match(zen.finding, /saying.*not identified as Ọya pípè/);
+  assert.match(zen.unblock, /do not request this PDF again/);
   assert.match(zen.r2_recheck, /not computed here/);
   const oya = register.genres.find((g: any) => g.id === 'oya-pipe');
   assert.equal(oya.status, 'NOT_SUPPORTED');

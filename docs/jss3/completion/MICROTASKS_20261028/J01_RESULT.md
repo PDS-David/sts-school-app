@@ -1,3 +1,19 @@
+# J01 completed — 29 October 2026
+
+**Outcome: INSPECTED / NO ELIGIBLE ỌYA PÍPÈ PASSAGE.** This supersedes the earlier INACCESSIBLE result below. Do not ask for this PDF or repeat this lead. YO-SL-094 remains partial; this finding does not establish that no suitable passage exists elsewhere.
+
+The exact Zenodo PDF was downloaded with curl, 700,955 bytes, 47 pages. Computed MD5 `81dce7307beb2b40ddb57c04b3c31c18` matches the record. SHA-256: `d7e1e777868f1adc34ed89225e1f5986a82c99021cd3598ed477d89e5e290f64`.
+
+URL: https://zenodo.org/records/12574511/files/OYA%20RELIGIOUS%20GROUP%20IN%20OYO.pdf?download=1
+
+All extracted page text was inspected. Pages 8 and 9 were also rendered and read visually. The PDF is an English religious-group questionnaire. Page 1 identifies Olusegun Oladosu, Database of Religious History, publication 6 March 2024, and CC BY 4.0; Zenodo's later deposit date is a separate date. Pages 7–9 describe oral sources and transmission, without presenting a chant. Page 9 does print a short Yoruba saying with an English gloss about Ṣàngó/Koso and Ọya/Ira; it is not labelled Ọya pípè. It must not be misrepresented as the missing chant. Pages 10–46 contain further questionnaire responses; page 47 is bibliography. Page 2 links to an external primary-corpus lead; that site's text and rights were not investigated here, and the PDF's licence cannot be assumed to cover it.
+
+Reproduce: download the exact URL, verify both hashes, run `pdfinfo` and `pdftotext -layout`, review PDF pages (not extracted line numbers); render pages 8–9 with `pdftoppm`. Only receipt metadata and findings are committed; no paper or full extraction is placed in Git. No curriculum content, test expectations, holds, database or production state changed. No certification claimed.
+
+---
+
+## Historical 28 October attempt (retained)
+
 # J01 result — YT-R1-01 (Oladosu 2024, Zenodo 12574511)
 
 **Outcome: INACCESSIBLE.** The PDF bytes could not be obtained, so nothing was inspected. This is not a finding that no Ọya passage exists, and it does not unblock the text-study implementation. YO-SL-094 stays open.
