@@ -655,18 +655,537 @@
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
         }
       ]
+    },
+    {
+      "id": "YO-T1-W03-SCHEME-EDE",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 7: Itesiwaju lori eko nipa iro ede (further work on Yoruba speech sounds), realised as the description of vowels",
+      "objective_locator": "opening scheme list line 21 (SHA-256 68048e4082784bf7a6352c994856574c64c7b9e255f8852d1aa53430ce414d56); body EDE part lines 485-573 (SHA-256 3ee35b93dd9190c5da994b96165e400a293cf49e69bce3a11abf23ae5ac1566c)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 21; scheme list lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "The opening 22-topic list carries no week numbers. Topic 7 is line 21 and is byte-identical to line 15, Week 2 topic 4 (same SHA-256 68048e4082784bf7a6352c994856574c64c7b9e255f8852d1aa53430ce414d56), so position alone separates the two weeks. Heading match does not separate them either: the Week 3 heading at line 487 reads \"AKOLE ISE: ITESIWAJU LORI EKO IRO EDE YORUBA\" and the Week 2 heading at 315 reads \"Akole ise: Itesiwaju lori eko iro ede Yoruba.\"; only the body content distinguishes them (Week 2 treats consonants, vowel classes and IPA; Week 3 describes vowels by articulation and charts them). Recorded in YORUBA-T1-W03-SCHEME-MAPPING."
+        },
+        {
+          "locator": "source lines 485-573 (EKA ISE: EDE; AKOLE ISE at line 487)",
+          "explanation": "The body teaches the topic in seven parts, indexed as YO-T1-W03-EDE-01..07, all PARTIAL: the source teaches vowel description, but no deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-SCHEME-ASA",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 8: Owe (Yoruba proverbs)",
+      "objective_locator": "opening scheme list line 23 (SHA-256 9ae5c149557fe692d33f985e8d2dd3206de447b2bc0ee68b54613d97545a3767); body ASA part lines 575-679 (SHA-256 d6937ab73e3917b416b2d7dfaded6d403022cf4b865fbdce63ed6eeb89eaa840)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 23; scheme list lines 9-51",
+          "explanation": "Line 23 reads \"Owe\" and the Week 3 ASA heading at 577 reads \"AKOLE ISE: OWE\", an exact match. The bare title is unique in the list, but the word recurs in two later topics (line 35 \"Awon owe ti o je mo asa yoruba\", line 41 \"Awon owe ti o suyo ninu ise ati ise Yoruba\"), which are not this week's topic; position (topic 8 of 22) and the body at 575-679 confirm the binding. Recorded in YORUBA-T1-W03-SCHEME-MAPPING."
+        },
+        {
+          "locator": "source lines 575-679 (EKA ISE: ASA; AKOLE ISE at line 577)",
+          "explanation": "The body teaches the topic in eight parts: definition and standing (579-583), the five categories (587-589), the five category sections with thirteen example proverbs and glosses (591-659) and the uses of proverbs (663-677), indexed as YO-T1-W03-ASA-01..08, all PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-SCHEME-LIT",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Scheme topic 9: Eko lori igbadun ti o wa ninu litireso alohun (the pleasures of oral literature)",
+      "objective_locator": "opening scheme list line 25 (SHA-256 fdf72ff3dd383fe6dbc5dea586620ddd325bc99fa210f1e50f4479c8e31543ff); body LITIRESO part lines 683-697 (SHA-256 aed54e20d20e66b400b04e32372085c92ba7f6d2c3df586c67307737eece39fb)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 25; scheme list lines 9-51",
+          "explanation": "Line 25 repeats Week 2 topic 6 (line 19) with one trailing space and therefore a different hash. The Week 3 heading at 685 repeats Week 2 heading 447 except that \"AKoLE\" is typed with a lower-case o. Position (topic 9, the topic after the proverb topic) and the body content separate the weeks: Week 2 names three pleasures (artistry, voice, drum/song/dance); Week 3 lists the forms and the pleasures of recitation, history and social gathering. Recorded in YORUBA-T1-W03-SCHEME-MAPPING."
+        },
+        {
+          "locator": "source lines 683-697 (EKA ISE: LITIRESO; AKOLE ISE at line 685)",
+          "explanation": "The body teaches the topic in four parts, indexed as YO-T1-W03-LIT-01..04, all PARTIAL: the source teaches the topic, but no deliverable lesson exists and no parsed body identity exists for this source (YO-FND-T1-01)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Vowels described by four articulatory criteria, as the week announces",
+      "objective_locator": "lines 489-511; SHA-256 3410db9a3430b9d6c5a8bf719ab39cb45aa755eb526bba220f4833635bba3264",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 489-511",
+          "explanation": "The heading \"Apejuwe iro faweli\" (489) introduces the topic and 491 announces four ways (\"ona merin wonyi\"). Eight paragraphs carry Word automatic numbering (493, 495, 497, 499, 501, 507, 509, 511) but the four criteria are never stated as four: \"Ipo ti afase wa\" appears twice (493, 501), \"Ipo ti ete wa\" (499) and \"Ipo ete\" (511) are two labels for the lip criterion, \"Ipo ahon\" (507) is a further label, 499 has no description attached, and 507 breaks off at \"Bi apa\". Defect 1 in YORUBA-T1-W03-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Tongue criteria: which part of the tongue is raised, and how high",
+      "objective_locator": "lines 493-497; SHA-256 7b079652d06f4cfae5a4d043502329b1677b6faa928ecfde0e6b231d9dba8592; lines 507-509; SHA-256 405999ff275f697a0ea9cc2cbe482bdaa40ed832bcee05081c546bb928d8e72f",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 493-497",
+          "explanation": "\"Ipo ti afase wa\" (493) names the tongue criterion; 495 states that the part of the tongue raised highest is meant (\"Apa kan ara ahon to gbe soke ju lo ninu enu\") and 497 that its height is measured inside the mouth (\"Bi apa to ga soke naa se ga to ninu enu\"). \"Afase\" is used for the tongue although \"ahon\" is the ordinary word at 495, and no example vowel is attached to either criterion."
+        },
+        {
+          "locator": "source lines 507-509",
+          "explanation": "The criterion is restated as \"Ipo ahon\" and the sentence stops after \"Bi apa\" (507); 509 repeats 497 in different words (\"Eyi ni iwon bi ahon se ga to ninu enu\"). The truncated line leaves the restatement unusable as written."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Lip criteria: spread (perese) and rounded (roboto) posture, with the vowels listed for each",
+      "objective_locator": "line 499; SHA-256 a16eaaeaae88c87c0929afb1050cd6d99846d765151d5665ba9e0f52286dcdc8; lines 511-515; SHA-256 345b143d87af2800751298b25a778a2c255948518311512b79ca61f2e317e1da",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 499",
+          "explanation": "\"Ipo ti ete wa\" announces the lip criterion, but the next paragraph (501) restarts the tongue heading, so the criterion is named without a description at that point."
+        },
+        {
+          "locator": "source lines 511-515",
+          "explanation": "511 states that the lips take two postures when a vowel is produced; 513 gives the spread (\"perese\") set as \"a e e I an en in\" and 515 the rounded (\"roboto\") set as \"o, u, o, un, on\". Each list mixes oral and nasal vowels under one lip criterion, and without sub-dots the two e and the two o cannot be told apart (defect 2 in YORUBA-T1-W03-SOURCE-DEFECTS; YORUBA-T1-W03-NOTATION). 499 has its content only here, eight numbered paragraphs later."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Oral and nasal vowels defined by the position of the tongue",
+      "objective_locator": "lines 503-505; SHA-256 6c9467a28bda3fafd4b702fefef6cb0ffff108dfd0d849c632f6843f96daff01",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 503-505",
+          "explanation": "503 defines oral vowels (\"Iro faweli airanmupe\") as those produced when the tongue is raised, and lists \"a e e I o o u\"; 505 defines nasal vowels (\"Iro faweli aranmupe\") as those produced when the tongue is lowered, and lists \"an en in on un\". Seven oral and five nasal names are given, but without sub-dots or tone the two e and the two o are indistinguishable and the capital I is unexplained (YORUBA-T1-W03-NOTATION). Week 3 states no total count."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-05",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The seven oral vowels described by height, backness and lip posture",
+      "objective_locator": "lines 519-533; SHA-256 da46e6b8e0c634233a03f7c1efcba2aebee1441775d9afa1ab305bac807299e7; line 521 SHA-256 42f2f07c28bf03992c93d1f13c5ecb6a06c65c9415f91d2fc9d275eca2aae48d; line 527 SHA-256 8067f1a11e4e4c976921ee377f2ea7dd22d9f9ff7cad54c82c55ae3a86f1cbd9",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 519-533",
+          "explanation": "After the heading at 519 come seven rows: a (521), e (523), e (525), i (527), o (529), o (531), u (533). Each row gives height (ahanupe, ahanu diepe, ayanu diepe, ayanupe), backness (iwaju, aarin, eyin) and lip posture (perese, roboto), but no IPA and no sub-dot: the two e rows and the two o rows are identical in extraction (YORUBA-T1-W03-NOTATION). The first and fourth rows carry Word automatic numbering instead of a written vowel letter, so extractRawText shows no symbol for a or i while the other five print \"e-\", \"o-\" and \"u-\" literally (defect 3 in YORUBA-T1-W03-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-06",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The five nasal vowels described on the same three criteria",
+      "objective_locator": "lines 535-545; SHA-256 0968e263a99932d31d4beaee7bce1b5dd8f5bd0ffd1acacda7cdbc3d3eb6f1a4",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 535-545",
+          "explanation": "After the heading at 535 come five rows: An (537), En (539), In (541), On (543), Un (545), each with height, backness and lip posture. No IPA is given and no row carries a tilde or tone; the capitalised spellings An/En/In/On/Un are the only mark of nasality. En (539) and On (543) are both classed \"ayanu diepe (ebado)\", matching the oral rows at 525 and 531, but nothing links each nasal vowel to its oral counterpart."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-EDE-07",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The ATE FAWELI vowel chart",
+      "objective_locator": "lines 551-569; SHA-256 2710e096a6c18874b9321936f332893863db6d11c496f2a3a53353dc58489cc0; header line 551 SHA-256 37020eb70f719b6f414807431e3925f1a101df35117541a9502c7c8c249070d9",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 551-569",
+          "explanation": "\"ATE FAWELI\" (551) is followed by 19 lines of tab-separated labels forming a two-axis vowel chart: front, central and back columns crossed with height rows, with the nasal vowels interleaved. The chart is one VML drawing (16 straight connectors in 2 groups) with no text boxes and no media file; its labels are ordinary paragraphs positioned by tabs, so extraction flattens the columns: the axis header repeats \"Iwaju aarin eyin\" twice (553), \"U\" is capitalised (555), and \"an\" is set under \"Ayanudiepe\" in the back column (567). No tone or sub-dot appears anywhere in it. YO-VIS-T1-01 owns the structural capture; no YO-VIS item covers Week 3 (defect 4 in YORUBA-T1-W03-SOURCE-DEFECTS)."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Owe defined, and its standing as the elders' vehicle of speech",
+      "objective_locator": "lines 579-583; SHA-256 720751ec763e51dd1c505582258458c8b49170dc7c7477ab46a4a77c9147f310; supporting proverb line 581 SHA-256 d7887d0ff94672cbf4a07a5cae3d009560385e96cfca7dcd950c8d81de2ae955",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 579",
+          "explanation": "The definition \"Owe ni afo to kun fun imo ijinle ogbon ati iriir awon agba\" is garbled in two words: \"afo\" and \"iriir\" (for iriiri). As printed the sentence cannot be parsed with certainty."
+        },
+        {
+          "locator": "source lines 581-583",
+          "explanation": "581 quotes \"Owe lesin oro, oro lesin owe, bi oro ba sonu owe ni a fi n wa\" with no gloss; 583 says elders use proverbs to settle weighty speech (\"yaju oro to takoko\"). 583 is repeated with variations at 677 (\"fi yaju\", \"ta koko\"), and neither \"yaju\" nor \"takoko\" is explained. Defect 5 in YORUBA-T1-W03-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The five categories of Yoruba proverbs",
+      "objective_locator": "lines 587-589; SHA-256 c8a75a1fea9cf57d53ae96166500815c53ec2265c86c3581b084ee0a5a636487; count line 589 SHA-256 c1ffc54cb1f3c5917f15de9c02a6dc8f47541c27fbe087548725ad5fc184c5f6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 587-589",
+          "explanation": "\"Orisi owe\" (587) and \"Isori marun-un ni a le pin owe Yoruba si. Awon niyi,\" (589) announce five categories; the five headings that follow are ibawi (591), ikilo (607), imoran (623), alaye (639) and isiri (651). All five headings carry Word automatic numbering, as do the thirteen example proverbs and the seven uses, so extraction shows no numbers. \"OWE FUN IMORAN\" (623) alone is typed without a colon, and the fifth category name \"isiri\" is not explained anywhere in the text (defect 6)."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "OWE FUN IBAWI: three proverbs for rebuke, with interpretations",
+      "objective_locator": "lines 591-603; SHA-256 1dca61e499a5be9c055a73177964278aa318893f7c824103b1aca5f31fe8dfe7",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 591-603",
+          "explanation": "Three proverbs at 593, 597 and 601, each followed by an ITUNMO line (595, 599, 603). 593 and 597 are readable; 601 (\"A n gba oromodie lowo iku, o ni won o je ki oun lo ori aatan lo je\") and its gloss 603 (\"ti a si s fun-un to sin fe se ife inu ara re\") are garbled, and 595 reads as a general maxim (\"Iwa ogbon lo ye ki a ba lowo agba\") that does not identify which words of 593 it interprets. No source, occasion or usage rule is supplied for any of the three."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "OWE FUN IKILO: three proverbs of warning",
+      "objective_locator": "lines 607-619; SHA-256 6d318a3703fc16927a138c39b20eab54bb701f6f061f6b0cbdce11a77ec2f6f0",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 607-619",
+          "explanation": "Three proverbs at 609, 613 and 617 with glosses at 611, 615 and 619. This is the clearest block in the week: all six lines parse. 611 and 615 explain the warning in general terms; 619 glosses \"Ise ni oogun ise\" with another proverb (\"Eni ba fe segun osi a tepa (mura) mo se\"). No example situations, source or usage rule are given."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-05",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "OWE FUN IMORAN: three proverbs of advice",
+      "objective_locator": "lines 623-635; SHA-256 b1c4c79b0fd89e59b9a46f3d7e50ca3d371d471cf1cd33f332b12d7fc44f1785",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 623-635",
+          "explanation": "Three proverbs at 625, 629 and 633 with glosses at 627, 631 and 635. All three pairs are defective: \"ajeeweyin\" (625) and \"hawo\" (627) are unexplained; 629 (\"Igi ganganran ma gun ni loju ati okere ni a ti n yee\") and 631 (\"Ohun ti o le se akoba fun eniyan ko gbodo ja fara lori re\") do not parse; 633 contains \"kokoro arinya\" and \"here-huru\" and 635 ends \"ta ba ni\". Defect 6 in YORUBA-T1-W03-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-06",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "OWE FUN ALAYE: two proverbs that explain a situation",
+      "objective_locator": "lines 639-647; SHA-256 f24b277a28347d90561e574f0c3c0ac81724b3f70185a82954ce036ffc3577c2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 639-647",
+          "explanation": "Two proverbs at 641 and 645 with glosses at 643 and 647. 641 (\"... awo tan- n- ganran\") and 643 (\"ede aiyede\", \"hu u sita\") are garbled; 645 (\"bi nnkan o le, a je pe o n le nnkan\") is obscure and 647 (\"Eni to n sise karakara mo idi ti oun fi n se loju mejeeji\") does not resolve it. Defect 6."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-07",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "OWE FUN ISIRI: two proverbs of consolation",
+      "objective_locator": "lines 651-659; SHA-256 d24eb4dceb39a0d9d5586971597f4b71746ffee4855d62be90e927a57112a90d",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 651-659",
+          "explanation": "Category heading at 651; proverbs at 653 (\"Bi ori ba pe nile yoo dire\") and 657 (\"Pipe ni yoo pe, akololo yoo pe baba\") with glosses at 655 and 659. The category name \"isiri\" appears only in the heading at 651 and in the gloss at 655 and is not explained; 655 promises consolation that \"ojo ola yoo dara\" but its sentence is garbled (\"de ibi lo pe o fe bohun\"); 659 ends \"ni ikeyin ireti wa\", which does not parse. Defect 6."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASA-08",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "IWULO OWE: the uses of proverbs",
+      "objective_locator": "lines 663-677; SHA-256 b9ce3213aaeb2fcab8b29630e31765be95940f1bedf78b6ab02e228840c030c4; closing line 677 SHA-256 fc76bb0c2841d69f475ed53ae0e03180d6c49b16d489a14282cd533300f7c463",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 663-677",
+          "explanation": "Seven numbered uses (665-677): to correct without anger, to say what is hard to say, to give the language honour (\"Owe n gbe ogo ede yo\"), to reprove bad conduct, to warn against corruption, to settle a matter, and to settle weighty speech. The last (677) repeats 583 with different wording, and the seven are listed without examples or any distinction between the overlapping uses at 671-675."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-LIT-01",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The forms of oral literature named: ere onise, egungun chant and ijala",
+      "objective_locator": "line 687; SHA-256 d5cb8a6341d5cdf2a50e9ac8f80f51693d6ff9b399920d82f9aba7d4e83cdcb8",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 687",
+          "explanation": "The line reads \"Ere – onise -  ese/iwi egungun , ijala\": it names drama or performance (\"ere onise\"), egungun chant (\"ese/iwi egungun\") and ijala, but is a fragment with no verb, separates its items with an en dash, a hyphen and a space-preceded comma, and leaves \"onise\" undefined. No example of any form is quoted. Defect 7 in YORUBA-T1-W03-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-LIT-02",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Oriki and etiological narratives as a source of pleasure",
+      "objective_locator": "line 689; SHA-256 1aa48cb7742b1dcb036f894e1d8df79732da4d1d87b5f9209b0a6fac80ccccd1; line 693; SHA-256 13f1457bc004e8a08af1f91c8deeaf3db9760ddaefe49e6553a1b008a0190dd0",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source line 689",
+          "explanation": "689 says the pleasure of \"litireso atenudenu\" lies in oriki, historical narratives and the customs inherited from Yoruba tradition, but the sentence is circular (\"... Yoruba ni eyi\" after \"tabi eyi to n so\") and \"atenudenu\" is never defined."
+        },
+        {
+          "locator": "source line 693",
+          "explanation": "693 gives the kind of narrative meant: why the vulture is bald, why the sky is far from the earth, why the dead are buried, with the list left open (\"abbl\"). \"isedele\" and \"isedale\" (689) and \"isedala\" (691) are three spellings of the same word. Defect 7."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-LIT-03",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Kiki ati kike: recitation and chanting as a pleasure",
+      "objective_locator": "lines 691-693; SHA-256 4737c40364043abdb1a1eef914564e2e7720874d4c648e7f9896ab78e87bc213",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 691-693",
+          "explanation": "691 names \"kiki ati kike\" as one of the pleasures and says the historical narratives encountered in oral literature recall origins and make listeners love the tradition, but \"kiki ati kike\" is not defined, \"leti orirun ibi ti awon eniyan kan ti se\" does not parse, and no chant or recitation is quoted or described. Part of defect 7."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-LIT-04",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Lessons, wisdom, entertainment and social cohesion as pleasures of oral literature",
+      "objective_locator": "lines 695-697; SHA-256 00e60fc3e74bacf3f6b611000930263c56835213cbc26062a1483b1440a328d7; closing line 697 SHA-256 78a24b3523e3762527499c0359fd73169516f0d183a1165feb7ee2a28cfd8ec0",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 695-697",
+          "explanation": "695 says oral literature carries many lessons and shows what should and should not be done; 697 names \"ikorajopo, idaraya, ipanilerin ati tita-opolo\" as abundant in it and says they sustain Yoruba culture. \"onirunru\" (695), \"tita-opolo\" and \"ji po jatirere\" (697) are garbled, and \"ipanilerin\" is not explained. Defect 7."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-W03-ASSESS",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Four Igbelewon questions and one practical task, with no answers or marking",
+      "objective_locator": "lines 701-709; SHA-256 27295f968e6d591c70c5adce19a2b86d50078265ae0c3cf1ae38fdd6c2c80522; lines 713-719; SHA-256 5378380315919b8d3fee0df7ed435a22bae308feaa7499725bf899c95fc86e69; task line 713 SHA-256 61c9b742ec2b21f03c8c90c942a96adcbdc211cbd57ae033166982d50b15f435",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 701-709",
+          "explanation": "Four questions: \"Sapejuwe iro faweeli ni ona merin\" (703, misspelling \"faweli\"), \"Fun owe ni oriki\" (705), \"Salaye orisi owe pelu apeere\" (707), and \"Ko igbadun ti o wa ninu litireso alohun ere onise\" (709, two topics run together with no conjunction). All four carry automatic numbering. No answer, model response or mark allocation is given."
+        },
+        {
+          "locator": "source lines 713-719",
+          "explanation": "One practical task (\"salaye awon owe wonyi ... pelu apeere irufe owe bee meji meji\") with three numbered types (owe imoran 715, Owe ibawi 717, Owe ikilo 719), requiring two examples of each. No answers, marking scheme or completion standard. Defect 8 in YORUBA-T1-W03-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "YO-T1-W03-SCHEME-EDE",
+          "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1 and 2 of the 1st Term are indexed at objective level (15 PARTIAL coverage entries each, week items YO-WK-T1-W01 and YO-WK-T1-W02); weeks 3-8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
-      "required_action": "Complete YO-WK-T1-W03..W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). Objective coverage is still incomplete: Weeks 1, 2 and 3 of the 1st Term are indexed at objective level (15, 15 and 23 PARTIAL coverage entries; week items YO-WK-T1-W01, YO-WK-T1-W02 and YO-WK-T1-W03); weeks 4-8 of the 1st Term, all of the 2nd and 3rd Terms, and the preamble/visual/foundation items remain.",
+      "required_action": "Complete YO-WK-T1-W04..W08 and the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
         "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 3 is identified by position in the unnumbered 22-topic opening list (lines 9-51): topics 7-9 (lines 21, 23, 25) are bound to the EDE heading at 487, the ASA heading at 577 and the LITIRESO heading at 685. Position is the only reliable discriminator for the EDE and LITIRESO topics: line 21 is byte-identical to line 15 (Week 2 topic 4, SHA-256 68048e4082784bf7a6352c994856574c64c7b9e255f8852d1aa53430ce414d56), line 25 repeats Week 2 topic 6 with one trailing space, and the headings at 487 and 685 repeat Week 2 headings 315 and 447 (case and one typo aside). The bare topic \"Owe\" at line 23 is unique, but the word recurs in the later topics at lines 35 and 41.",
+      "required_action": "Confirm the position-based mapping of all 22 topics to the eight teaching sections, with hash-accounting and classification of the whole list, under YO-PRE-T1-1 (PENDING); if confirmed, record it once for the term rather than per week. No objective was invented beyond the source text.",
+      "affected_ids": [
+        "YO-T1-W03-SCHEME-EDE",
+        "YO-T1-W03-SCHEME-ASA",
+        "YO-T1-W03-SCHEME-LIT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "Week 3 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 483-719 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY and YORUBA-T1-W02-ROW-IDENTITY record the same document-wide condition). All 23 Week 3 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids.",
+      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 3 coverage entries to identity targets and re-run the plan audit.",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Eight defects found in Week 3 (lines 483-719): (1) lines 489-511 announce four ways of describing a vowel (\"ona merin\", 491) but carry eight numbered paragraphs and no four distinct criteria: \"Ipo ti afase wa\" appears twice (493 and 501), \"Ipo ti ete wa\" (499) and \"Ipo ete\" (511) are two labels for one criterion, \"Ipo ahon\" (507) is a further label, 499 has no description and 507 is truncated at \"Bi apa\"; (2) lines 503-515 mix oral and nasal vowels in each lip-posture list (513 \"a e e I an en in\"; 515 \"o, u, o, un, on\") and give no sub-dots, so the two e and two o cannot be told apart; (3) lines 521-533 present seven oral-vowel rows but the a row (521) and the i row (527) carry Word automatic numbering instead of a written letter, so extraction shows no symbol, and no IPA is given; (4) lines 551-569 are a VML-drawn chart (16 connectors, 2 groups, no text boxes, no media) whose tab-positioned labels collapse in extraction, with the axis header repeated twice (553), a stray capital \"U\" (555) and \"an\" misplaced under Ayanudiepe (567); (5) lines 579-583 garble the definition (\"afo\", \"iriir\"), leave 581 unglossed and repeat 583 at 677 with different wording; (6) family of proverb defects in 591-659: the glosses at 601-603, 625-627, 629-631, 633-635, 641-643, 645-647 and 653-657 are garbled or unreadable, 595 glosses a maxim rather than the proverb at 593, and the fifth category name \"isiri\" (651) is unexplained; (7) the LITIRESO part (687-697) opens with a verbless fragment (687), uses \"atenudenu\" on five lines without defining it, spells the same word \"isedele\", \"isedale\" and \"isedala\" differently, leaves \"kiki ati kike\" undefined, and garbles \"leti orirun\" (691), \"onirunru\" (695), \"tita-opolo\" and \"ji po jatirere\" (697), quoting no oral text; (8) the assessment (701-719) has four questions, one misspelt (\"faweeli\", 703) and one running two topics together with no conjunction (709), plus a practical task requiring two examples of each of three proverb types, with no answers, model responses, marks or completion standard.",
+      "required_action": "Obtain one recorded subject-expert decision on every listed defect together with the notation decision (YORUBA-T1-W03-NOTATION) under YO-FACT-T1-W03-DEFECTS; the Week 3 lessons must not copy the uncorrected text. No correction wording is authored here.",
+      "affected_ids": [
+        "YO-T1-W03-EDE-01",
+        "YO-T1-W03-EDE-02",
+        "YO-T1-W03-EDE-03",
+        "YO-T1-W03-EDE-04",
+        "YO-T1-W03-EDE-05",
+        "YO-T1-W03-EDE-06",
+        "YO-T1-W03-EDE-07",
+        "YO-T1-W03-ASA-01",
+        "YO-T1-W03-ASA-02",
+        "YO-T1-W03-ASA-03",
+        "YO-T1-W03-ASA-04",
+        "YO-T1-W03-ASA-05",
+        "YO-T1-W03-ASA-06",
+        "YO-T1-W03-ASA-07",
+        "YO-T1-W03-ASA-08",
+        "YO-T1-W03-LIT-01",
+        "YO-T1-W03-LIT-02",
+        "YO-T1-W03-LIT-03",
+        "YO-T1-W03-LIT-04",
+        "YO-T1-W03-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-NOTATION",
+      "kind": "CONTENT",
+      "detail": "The Week 3 text contains no tone-marked or sub-dot character at all: the only non-ASCII character in lines 483-719 is the en dash, three times (687, 689, 697). This is the same document-wide condition as YORUBA-T1-W01-NOTATION and YORUBA-T1-W02-NOTATION, but it is fatal here because the week is a lesson on vowels and on proverbs: the oral set is printed \"a e e I o o u\" (503) and the lip sets \"a e e I an en in\" / \"o, u, o, un, on\" (513, 515) so e/e-dot and o/o-dot cannot be told apart; the seven oral rows at 521-533 repeat the same vowels with no mark; the nasal set is written \"an en in on un\" (505) with no tilde; the chart at 551-569 carries no mark at all; and the thirteen proverbs at 591-659 and the oral-literature terms at 687-697 are tone-dependent, so their meaning cannot be reproduced without tone. Week 3 uses no IPA, unlike Week 2. No marks or symbols were added or normalised.",
+      "required_action": "Decide one notation for the whole term (tone and sub-dot forms, the nasal vowel convention, and how the ATE FAWELI chart is to be represented) and apply it to every Week 3 inventory and proverb before the lessons are authored; record the decision in YO-FACT-T1-W03-DEFECTS. Until then the EDE sets and the ASA examples cannot be verified.",
+      "affected_ids": [
+        "YO-T1-W03-EDE-03",
+        "YO-T1-W03-EDE-04",
+        "YO-T1-W03-EDE-05",
+        "YO-T1-W03-EDE-06",
+        "YO-T1-W03-EDE-07",
+        "YO-T1-W03-ASA-01",
+        "YO-T1-W03-ASA-03",
+        "YO-T1-W03-ASA-04",
+        "YO-T1-W03-ASA-05",
+        "YO-T1-W03-ASA-06",
+        "YO-T1-W03-ASA-07",
+        "YO-T1-W03-LIT-01",
+        "YO-T1-W03-LIT-02",
+        "YO-T1-W03-LIT-03",
+        "YO-T1-W03-LIT-04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-W03-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Igbelewon (701-709) has four questions and Ise asetilewa (713-719) one practical task requiring two examples of each of three proverb types. The week has 47 paragraphs carrying Word automatic numbering - the eight criteria paragraphs at 493-511, two vowel rows at 521 and 527, the five proverb headings, thirteen example proverbs and seven uses at 591-677, five LITIRESO paragraphs at 689-697, four Igbelewon questions and three task types - so extractRawText shows neither numbers nor letters. There are no answers, model responses, mark allocations or completion standards, and nothing in the source tells a teacher what a correct answer contains.",
+      "required_action": "Author practice with complete answers and marking that sums exactly in the Week 3 lesson items, and record any assessment decision not derivable from the source as an expert decision rather than inventing it.",
+      "affected_ids": [
+        "YO-T1-W03-ASSESS"
       ],
       "blocks_delivery": true
     },
