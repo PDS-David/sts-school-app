@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import lessonsData from '../db/data/jss3Supplements.json' with { type: 'json' };
 import revisionsData from '../db/data/jss3YorubaRevisions.json' with { type: 'json' };
+import closeoutRevisions from '../db/data/jss3CloseoutRevisions.json' with { type: 'json' };
 import { supplementReference, type SupplementReferenceLesson } from '../db/jss3SupplementReference.js';
 import type { DeliveryTopic, DeliveryResolution } from './jss3DeliveryCorrection.js';
 
@@ -44,4 +45,4 @@ export function createSupplementRevisionResolver(revisions: readonly Revision[],
       fingerprint: p.fingerprint, sourceHash: p.currentHash, replacementLessonIds: [p.r.lessonId], matchedBy: 'hash' };
   };
 }
-export const resolveSupplementRevision = createSupplementRevisionResolver(revisionsData, lessonsData);
+export const resolveSupplementRevision = createSupplementRevisionResolver([...revisionsData, ...closeoutRevisions], lessonsData);
