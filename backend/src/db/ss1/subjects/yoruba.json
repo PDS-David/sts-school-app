@@ -86,6 +86,18 @@
         "locator": "docs/ss1/work/microtasks/yoruba/YO-SRC-T3.md; line 1 of mammoth 1.12.2 extractRawText() output, the first non-empty line, before 'ILANA ISE OSOOSE FUN SAA KETA' (line 3)",
         "explanation": "The heading differs from the canonical subject name beyond case and whitespace (the 'ISE-:' label, the 'EDE ' prefix and the 'CLASS: SS1' text), so a source_alias is declared. Source metadata only; original text is retained."
       }
+    },
+    {
+      "id": "SS1-SRC-48b641249e3b-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "source_sha256": "7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef",
+      "anchor": "ODUN IGBEKO YORUBA-SS 1",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "docs/ss1/work/microtasks/yoruba/YO-PRE-T1-1.md; mammoth 1.12.2 raw text lines 3-51, block SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32",
+        "explanation": "The opening block is the title (line 3), the term heading (line 5) and the unnumbered 22-topic scheme list (lines 9-51). It contains no teaching text and no week marker, so it is classified SCHEME_ONLY. The anchor occurs exactly once. No text is removed and no lesson is authored against the block."
+      }
     }
   ],
   "lessons": [],
@@ -2387,14 +2399,72 @@
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
         }
       ]
+    },
+    {
+      "id": "YO-T1-PRE-TITLE",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Document title naming the year group and subject (`ODUN IGBEKO YORUBA-SS 1`)",
+      "objective_locator": "opening block line 3 (SHA-256 d8437b734b0870428d488cfd4d6d70ded08f6c26a2337419605f7c37998f09a9); block lines 3-51 (SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32)",
+      "status": "MARKER",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 3; opening block lines 3-51, SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32",
+          "explanation": "The first non-empty line of the document is \"ODUN IGBEKO YORUBA-SS 1\"; it occurs exactly once, carries no teaching text and is already the anchor of the declared source alias rule SS1-SRC-48b641249e3b-R001. The block contains no non-ASCII character at all: 0 tone marks, 0 sub-dot characters and 0 combining marks."
+        },
+        {
+          "locator": "source line 3; scheme-only classification",
+          "explanation": "Classified as a scheme/preamble marker with rule SS1-SRC-48b641249e3b-R002 (classify_marker, SCHEME_ONLY), so no lesson is authored against it and nothing is discarded. A marker carries no lesson_ids and no delivery weight."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-PRE-TERM",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "Term heading `ISE OOJO-SAA KIN-IN-NI` announcing the first-term scheme of work",
+      "objective_locator": "opening block line 5 (SHA-256 fc6b29dc4fad10257b786ae43b32e23305fcfaf44e402aa1ad38022a617e42b5)",
+      "status": "MARKER",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText line 5; opening block lines 3-51, SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32",
+          "explanation": "Line 5 is \"ISE OOJO-SAA KIN-IN-NI\", between the title and the 22-topic list. It is the document's only term heading and is not a week label: the teaching weeks use \"OSE ...\" (\"OSE KIN-IN-NI\" at line 61). It carries no teaching text, and its spelling is irregular (\"OOJO\", \"SAA\" and the hyphenated \"KIN-IN-NI\") without any tone mark or sub-dot."
+        },
+        {
+          "locator": "source line 5; scheme-only classification",
+          "explanation": "Classified as a scheme/preamble marker alongside the title. No lesson is authored against it; the exact string is retained so a later notation decision can correct it without re-extraction."
+        }
+      ]
+    },
+    {
+      "id": "YO-T1-PRE-SCHEME-LIST",
+      "source_id": "SS1-SRC-48b641249e3b",
+      "objective": "The unnumbered 22-topic scheme list for the 1st Term",
+      "objective_locator": "opening scheme list lines 9-51 (SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6); block lines 3-51 (SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32)",
+      "status": "MARKER",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "extractRawText lines 9-51; 22 non-blank paragraphs, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6",
+          "explanation": "The list is 22 topic paragraphs, one per topic, from \"Atunyewo awon eya ara ifo\" (9) to \"Itupale asayan iwe ti ajo WAEC/NECO yan.\" (51). It carries no week numbers and no week markers, so it cannot be parsed as week rows; it is the term's topic list, not a teaching body."
+        },
+        {
+          "locator": "source lines 9-51; week bindings recorded in YO-T1-W01..W08-SCHEME-*",
+          "explanation": "All 22 topics are bound to the eight teaching weeks by position and by exact heading match, three per week for Weeks 1-5 and Week 8 and two for Weeks 6 and 7; every binding is recorded in the per-week SCHEME coverage entries with its own line hash. The list itself teaches nothing, so this entry is MARKER: it records the scheme and the bindings without authoring content. The confirmation of the whole 22-to-eight mapping remains open in YORUBA-T1-PRE-SCHEME-LIST."
+        },
+        {
+          "locator": "source lines 3-51; notation audit",
+          "explanation": "The block contains 0 characters in U+00C0-U+024F, 0 combining marks and no other non-ASCII character, so the topic titles carry no tone or sub-dot; this is consistent with the Week 1-8 notation items (YORUBA-T1-W01..W08-NOTATION) and is not normalised here."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. All of the 2nd and 3rd Terms, and the preamble/visual/foundation items, remain.",
-      "required_action": "Complete the pending preamble, visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term preamble (title, term heading and 22-topic scheme list, lines 3-51) is indexed and classified scheme-only (YO-PRE-T1-1; three MARKER entries). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. All of the 2nd and 3rd Terms, and the preamble/visual/foundation items, remain.",
+      "required_action": "Complete the pending visual and foundation items, then the 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend this item's affected_ids if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
         "SS1-SRC-ec4a5095420d",
@@ -2651,6 +2721,40 @@
       "required_action": "Record the missing answers, marks and completion criteria in YO-FACT-T1-W08-DEFECTS and decide how the six-type question is to be reconciled with the seven listed types and how the explanation question is to be supplied; the assessment gap is recorded here, not filled.",
       "affected_ids": [
         "YO-T1-W08-ASSESS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-PRE-SCHEME-LIST",
+      "kind": "CONTENT",
+      "detail": "The 1st Term opening block (lines 3-51) has been indexed and classified as scheme-only: title \"ODUN IGBEKO YORUBA-SS 1\" (line 3, SHA-256 d8437b734b0870428d488cfd4d6d70ded08f6c26a2337419605f7c37998f09a9), term heading \"ISE OOJO-SAA KIN-IN-NI\" (line 5, SHA-256 fc6b29dc4fad10257b786ae43b32e23305fcfaf44e402aa1ad38022a617e42b5) and the unnumbered 22-topic list (lines 9-51, SHA-256 afccd54e46ad92e7b72d22f583a12872251a079401e20f00d4d9af7c5b4f6af6), with the whole block at SHA-256 843e0cf1d5ae2076d0c8149392dd73f41064dddcbd66f27042cffe2fab741e32 and no non-ASCII character in it. Three MARKER coverage entries (YO-T1-PRE-TITLE, -TERM, -SCHEME-LIST) and rule SS1-SRC-48b641249e3b-R002 (classify_marker, SCHEME_ONLY) record the decision. What remains is the confirmation of the mapping: the list has no week numbers, so topics 1-22 are bound to Weeks 1-8 by position and by exact heading match (three topics for Weeks 1-5 and 8, two for Weeks 6 and 7), and each binding is asserted in its week's SCHEME entries. The term heading itself is irregularly spelled (\"OOJO\", \"SAA\", \"KIN-IN-NI\") and the list has no heading of its own beyond that line.",
+      "required_action": "The scheme mapping recorded across YO-T1-W01..W08-SCHEME-* must be confirmed once for the term by the subject owner or expert (the 22 topics in order, the eight week boundaries and the two-topic Weeks 6 and 7), and the irregular term heading must be decided under the notation and defect decisions; until then the per-week SCHEME-MAPPING items stay open. No teaching is authored and no topic is renumbered here.",
+      "affected_ids": [
+        "YO-T1-PRE-TITLE",
+        "YO-T1-PRE-TERM",
+        "YO-T1-PRE-SCHEME-LIST",
+        "YO-T1-W01-SCHEME-EDE",
+        "YO-T1-W01-SCHEME-ASA",
+        "YO-T1-W01-SCHEME-LIT",
+        "YO-T1-W02-SCHEME-EDE",
+        "YO-T1-W02-SCHEME-ASA",
+        "YO-T1-W02-SCHEME-LIT",
+        "YO-T1-W03-SCHEME-EDE",
+        "YO-T1-W03-SCHEME-ASA",
+        "YO-T1-W03-SCHEME-LIT",
+        "YO-T1-W04-SCHEME-EDE",
+        "YO-T1-W04-SCHEME-ASA",
+        "YO-T1-W04-SCHEME-LIT",
+        "YO-T1-W05-SCHEME-EDE",
+        "YO-T1-W05-SCHEME-ASA",
+        "YO-T1-W05-SCHEME-LIT",
+        "YO-T1-W06-SCHEME-EDE",
+        "YO-T1-W06-SCHEME-ASA",
+        "YO-T1-W07-SCHEME-EDE",
+        "YO-T1-W07-SCHEME-ASA",
+        "YO-T1-W08-SCHEME-EDE",
+        "YO-T1-W08-SCHEME-ASA",
+        "YO-T1-W08-SCHEME-LIT"
       ],
       "blocks_delivery": true
     },
