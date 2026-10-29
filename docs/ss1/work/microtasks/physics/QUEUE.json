@@ -20,7 +20,8 @@
     "The sources are legacy binary .doc files; equation-recovery loss was not measured for Physics.",
     "Defects reported in the SS1-03 checkpoint (T3 Weeks 1-5) are queued as PHYS-FACT-T3-* verification items, not as established facts.",
     "Unmerged work on PR #71 head b5ced7ebb0efe22df2351baa140266fbf40cbf41 (physics.json blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3: 5 lessons for 2nd/3rd Term, 1 rule, 32 coverage entries, 5 open items; reconciliation item D-1) is NOT implemented on master. It is tracked as PHYS-PORT-D1-* and PHYS-CMP-D4-* items. Do not merge #71 or copy its schema.",
-    "Several items write the same package file. Workers start from current master, change only their own entries and rebase; PENDING means unclaimed."
+    "Several items write the same package file. Workers start from current master, change only their own entries and rebase; PENDING means unclaimed.",
+    "PHYS-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. physics.json now has 5 source_rules (added SS1-SRC-5c0149cda71d-R002 and SS1-SRC-5c0149cda71d-R003, both SCHEME_ONLY) and 2 coverage entries (COV-PHYS-T1-TITLE and COV-PHYS-T1-REFERENCES, both MARKER). Scheme week 11 (Revision) has no parsed row or teaching body; scheme weeks 5 and 6 share the parsed WEEK FIVE AND SIX row. Note 1 is the queue-generation snapshot. Per-block hashes and the scheme-row mapping are in docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Nothing was run; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -37,8 +38,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 56,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 55,
     "BLOCKED": 7
   },
   "total": 66,
@@ -168,7 +169,7 @@
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "source_id": "SS1-SRC-5c0149cda71d",
       "term": "1st Term",
-      "week_or_locator": "text outside the parsed week rows (opening text, scheme table, revision/examination lines)",
+      "week_or_locator": "text outside the parsed week rows (word-extractor getBody() lines 1-40: title, scheme table, reference list)",
       "objective": "Inventory all 1st Term text outside the parsed week rows and record each block as a mapped scheme objective, a marker, or an explicit open item. Record which scheme weeks have no teaching body.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json",
@@ -195,8 +196,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no T1 scheme or preamble text. PR #71 (branch-only) says the scheme has a Week 11 revision with no body (OI-PHYS-003, coverage PHYS-1-011 UNRESOLVED).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on master 4159336c7068d2235209221f5f14adc4986acec5 (PHYS-PRE-T1, 2026-10-29). Source 1ST TERM S1 PHYSICS.doc sha256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206 (8,479,232 bytes; member hash re-verified). word-extractor 1.0.4 getBody() (the importer's own legacy .doc call): 69,817 characters, 1,288 lines, 971 non-blank. Non-week region = lines 1-40, all text before the first parsed body label 'WEEK ONE' at offset 916: title line 17 (a85bde6fd6d2022b18ecfd09c17b8f7561ddecd2bfc198ba2c0bbdccb98ccb29), SUBJECT/CLASS line 19 (7bd29fab80379ce82a02d5bbf22bfe83fc00b60f635a31e1380616ff619d38fd), 'SCHEME OF WORK ' line 21 (9a1edea67fde0bc46713614fa571eb74549f90b179095fdf807589ea65c1badd), 'WEEK<TAB>TOPICS' line 23 (4dd89118d23a0e86029fca78c2f62a7cd887376cb87d09517465313d0466fd0f), block lines 17-23 (ff33782b1b272afe24347702dd16fc2546d643763a662a068002381c7c0ddaa4); eleven scheme rows lines 24-34 (30ced6e49564dacf976545cf2c495b9ed251d589252a5dbc2c26c37109417a3f; per-line hashes and label mapping in the note); reference list lines 36-38 (dced20d64f822d9d06ced2c4000816c03743ac1cc536f9bb6fad7b9048009bcd); whole region lines 1-40 (dfcf419b461a6b13b30b4965b301a5981f8b074422c8e2004af089dcf1c9745d); pre-body slice (7f060b51b9406b1bc2d0386a8b044bb64e277980d0dc1e7ba38c6957a72c8ede). The scheme has 11 rows against 9 parsed rows: scheme weeks 5 and 6 share the parsed 'WEEK FIVE AND SIX' row, and scheme week 11 (Revision) has no parsed row and no teaching body. That revision row is left to PHYS-RULE-T1-REVISION-SCHEME, which depends on this task. Package edits: added SS1-SRC-5c0149cda71d-R002 (classify_marker SCHEME_ONLY; 26-character title anchor, unique, matches no parsed row) and COV-PHYS-T1-TITLE (MARKER); added SS1-SRC-5c0149cda71d-R003 (classify_marker SCHEME_ONLY; exact 104-character lines 36-38 reference anchor including line 37's trailing space, unique, matches no parsed row) and COV-PHYS-T1-REFERENCES (MARKER). Source rules 3->5, coverage 0->2; sources (3), lessons (0), delivery_corrections (0), assets (0), open_items (3) and package_status PENDING unchanged; T2/T3 rules and coverage untouched, so T2/T3 still have no coverage. The legacy .doc getBody() call does not expose page headers/footers; none were inventoried. Evidence note: docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Not approved, not verified; no schema/compiler/test/importer run (testing deferred by owner).",
       "completion_condition": "Every non-week text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item; the list of scheme weeks without a parsed row is stated explicitly. Per-week objectives belong to the PHYS-WK items."
     },
     {
@@ -2211,8 +2212,8 @@
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "77f31485e3e3dbcdb1cfa2a55913c27b4a25b8ad",
+    "date": "2026-10-29",
+    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -2233,10 +2234,53 @@
     }
   },
   "next_runnable": [
-    "PHYS-PRE-T1"
+    "PHYS-RULE-T1-REVISION-SCHEME"
   ],
   "runnable_now": [
-    "PHYS-SRC-T1",
+    "PHYS-PRE-T2",
+    "PHYS-PRE-T3",
+    "PHYS-WK-T1-W01",
+    "PHYS-WK-T1-W02",
+    "PHYS-WK-T1-W03",
+    "PHYS-WK-T1-W04",
+    "PHYS-WK-T1-W05-W06",
+    "PHYS-WK-T1-W06",
+    "PHYS-WK-T1-W07",
+    "PHYS-WK-T1-W08",
+    "PHYS-WK-T1-W09",
+    "PHYS-WK-T2-W01",
+    "PHYS-WK-T2-W02",
+    "PHYS-WK-T2-W03",
+    "PHYS-WK-T2-W04",
+    "PHYS-WK-T2-W05",
+    "PHYS-WK-T2-W06",
+    "PHYS-WK-T2-W07",
+    "PHYS-WK-T2-W08",
+    "PHYS-WK-T2-W09",
+    "PHYS-WK-T2-W10",
+    "PHYS-WK-T3-W01",
+    "PHYS-WK-T3-W02",
+    "PHYS-WK-T3-W03",
+    "PHYS-WK-T3-W04",
+    "PHYS-WK-T3-W05",
+    "PHYS-WK-T3-W06",
+    "PHYS-WK-T3-W07",
+    "PHYS-WK-T3-W08",
+    "PHYS-WK-T3-W09",
+    "PHYS-WK-T3-W10",
+    "PHYS-RULE-T1-REVISION-SCHEME",
+    "PHYS-FACT-T3-FUSE-RATING",
+    "PHYS-FACT-T3-W04-ASSIGNMENT",
+    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
+    "PHYS-VIS-T1",
+    "PHYS-VIS-T2",
+    "PHYS-VIS-T3",
+    "PHYS-PORT-D1-T2-L001",
+    "PHYS-PORT-D1-T2-L002",
+    "PHYS-PORT-D1-T3-L003",
+    "PHYS-PORT-D1-T3-L004",
+    "PHYS-PORT-D1-T3-L005",
+    "PHYS-PORT-D1-COV-T1",
     "PHYS-CMP-D4-NOTES"
   ]
 }

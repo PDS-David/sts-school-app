@@ -60,6 +60,30 @@
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     },
     {
+      "id": "SS1-SRC-5c0149cda71d-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "anchor": "FIRST TERM E-LEARNING NOTE",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "PHYS-PRE-T1: word-extractor 1.0.4 getBody() lines 17-23 ('FIRST TERM E-LEARNING NOTE', blank, the SUBJECT/CLASS line, blank, 'SCHEME OF WORK ' with one trailing space, blank, 'WEEK<TAB>TOPICS'). Hash of line 17 a85bde6fd6d2022b18ecfd09c17b8f7561ddecd2bfc198ba2c0bbdccb98ccb29; line 19 7bd29fab80379ce82a02d5bbf22bfe83fc00b60f635a31e1380616ff619d38fd; line 21 9a1edea67fde0bc46713614fa571eb74549f90b179095fdf807589ea65c1badd; line 23 4dd89118d23a0e86029fca78c2f62a7cd887376cb87d09517465313d0466fd0f; block lines 17-23 ff33782b1b272afe24347702dd16fc2546d643763a662a068002381c7c0ddaa4 (lines joined with \\n, edge blank lines trimmed, UTF-8, no trailing newline). The anchor occurs exactly once in the extracted text.",
+        "explanation": "Document title, subject/class line and scheme-table heading. None carries a teaching objective, so the block is a marker. The eleven scheme rows that follow (lines 24-34) are per-week scheme objectives and belong to the PHYS-WK-T1-* queue items; scheme row 11 (line 34, Revision) has no teaching body and is owned by PHYS-RULE-T1-REVISION-SCHEME. The reference list is classified by SS1-SRC-5c0149cda71d-R003."
+      }
+    },
+    {
+      "id": "SS1-SRC-5c0149cda71d-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "source_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206",
+      "anchor": "REFERENCE BOOKS\nNew School Physics. By Prof. M.W Anyakoha \nNew System Physics. By Dr. Charles Chow et.al",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "PHYS-PRE-T1: word-extractor getBody() lines 36-38 ('REFERENCE BOOKS', then the two titles; line 37 ends with one space, included verbatim in the anchor). Hash of line 36 9bd03b2bc99e78b4e6c9c3d91f75e59e63d583a765f288217d2a417daa68caae; line 37 2436ab5ef15d64b7d1e67c22ec8bb94a767698acc438e06a1d86963d6fb0f10f; line 38 331d4a936cbb6ad9eb5466ff5386a77a44bf34c053a60e9d51e785ba1cc063d0; block lines 36-38 dced20d64f822d9d06ced2c4000816c03743ac1cc536f9bb6fad7b9048009bcd. The 104-character anchor occurs exactly once in the extracted text and matches no parsed row.",
+        "explanation": "Reference-book list printed directly after the scheme of work; scheme-only text with no teaching content. Titles verbatim: \"New School Physics. By Prof. M.W Anyakoha\"; \"New System Physics. By Dr. Charles Chow et.al\". No edition, publisher or year is stated in the source and none is added."
+      }
+    },
+    {
       "id": "SS1-SRC-2c924c964660-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-2c924c964660",
@@ -91,7 +115,40 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-PHYS-T1-TITLE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Document title, subject/class line and scheme heading; no teaching objective",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 17-23",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "line 17 (title) SHA-256 a85bde6fd6d2022b18ecfd09c17b8f7561ddecd2bfc198ba2c0bbdccb98ccb29; line 19 (SUBJECT/CLASS line) SHA-256 7bd29fab80379ce82a02d5bbf22bfe83fc00b60f635a31e1380616ff619d38fd; line 21 ('SCHEME OF WORK ' with one trailing space) SHA-256 9a1edea67fde0bc46713614fa571eb74549f90b179095fdf807589ea65c1badd; line 23 ('WEEK<TAB>TOPICS') SHA-256 4dd89118d23a0e86029fca78c2f62a7cd887376cb87d09517465313d0466fd0f; lines 17-23 SHA-256 ff33782b1b272afe24347702dd16fc2546d643763a662a068002381c7c0ddaa4; text before the first parsed body label 'WEEK ONE' (line 41, offset 916) SHA-256 7f060b51b9406b1bc2d0386a8b044bb64e277980d0dc1e7ba38c6957a72c8ede",
+          "explanation": "Title, subject/class line and scheme heading. The scheme rows that follow (lines 24-34) are scheme weeks 1-11 and map to the PHYS-WK-T1-* items by label: WEEK ONE..WEEK FOUR (rows 1-4), WEEK FIVE AND SIX (one parsed row covering scheme weeks 5 and 6), WEEK SEVEN, WEEK 8, WEEK 9, WEEK TEN. Scheme week 11 (Revision, line 34) has no parsed row and no teaching body; it is assigned to PHYS-RULE-T1-REVISION-SCHEME. The reference list (lines 36-38) is COV-PHYS-T1-REFERENCES. The last hash is the exact value the compiler PREAMBLE_REQUIRES_COVERAGE detail will hold for text.slice(0, index of \"WEEK ONE\"), computed here without running the importer."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-REFERENCES",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Reference-book list printed after the 1st Term scheme of work",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 36-38",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 36-38; SHA-256 dced20d64f822d9d06ced2c4000816c03743ac1cc536f9bb6fad7b9048009bcd",
+          "explanation": "Heading \"REFERENCE BOOKS\" and two titles: \"New School Physics. By Prof. M.W Anyakoha\" and \"New System Physics. By Dr. Charles Chow et.al\". The anchor includes line 37's trailing space and occurs once. Scheme-only text; no teaching content. No edition, publisher or year is stated in the source or invented here."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "PHYSICS-ALIAS-APPROVAL",
