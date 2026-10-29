@@ -22,17 +22,21 @@
     "The week inventory is unknown for every document, so each gets one SOURCE_WEEK_INVENTORY item. The worker reading it appends the per-week and visual items. No week, lesson, correction or asset item is invented. Lesson-writing items may be added only after indexing identifies a specific uncovered objective.",
     "LIT-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). LIT-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
+    "LIT-INV-T1 inventoried the 1st Term Literature document: nine teaching blocks (Week 5 and Week 6 share one span), 13 class-work/assignment markers, no revision row, no set text and no visual group. Eleven items were appended (LIT-PRE-T1, LIT-MARK-T1 and LIT-WK-T1-W01..W10, with LIT-WK-T1-W05-W06 for the combined block); each depends on LIT-INV-T1 + LIT-SRC-T1 and stays PENDING. No package, coverage, rule, lesson or asset was written; the alias approvals are untouched.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
-    "FACTUAL_DEPENDENCY": 2,
-    "TEST": 1
+    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "SOURCE_WEEK_INDEXING": 9,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 3,
-    "PENDING": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "PENDING": 15,
     "BLOCKED": 1
   },
   "items": [
@@ -146,7 +150,7 @@
       "kind": "SOURCE_WEEK_INVENTORY",
       "source_id": "SS1-SRC-470d43e54e5b",
       "term": "1st Term",
-      "week_or_locator": "whole document",
+      "week_or_locator": "whole document, mammoth extractRawText lines 1-609",
       "objective": "Discover the 1st Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, image or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Determine the actual book, play, poem or extract the document names or quotes, with the exact wording that names it, and record whether the document supplies the text itself or only refers to it. Do not invent titles, authors, page numbers or editions; a modern equivalent must be labelled, never presented as the school's prescribed text. Note any quoted passage whose reuse permission or attribution would need checking, and any literary-term definition or biographical/historical statement that may be inaccurate, so that later correction work keeps the source's original wording distinct from the corrected fact. Keep any drama, prose and poetry strands distinct without a target count.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
@@ -173,8 +177,8 @@
       "depends_on": [
         "LIT-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, parsed-row evidence or source notes. The SS1-02 checkpoint says the T1 opening was read only; no package was created. Week count and the named text are unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventoried: source SS1-SRC-470d43e54e5b (member hash verified, 31,804 bytes), mammoth 1.12.2 extractRawText 609 lines / 28,705 characters / 230 non-blank paragraphs, whole extract 1-609 SHA-256 b21b9f132325f619ca818cdbf6ee55e8bde510fe8644bc30c2a046bc5569dfd7. Scheme: header 3 `SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS ` (equals header_text), rows 7-23 block 9b3c5dbd7a64cc0808c0bfcce734295b3b07d7ba4edffc7d4c68210e67943b03 with nine rows for ten weeks (row 15 `WEEK 5&6: WHAT IS PROSE? TYPES OF PROSE`), and no revision or examination row. Nine teaching blocks: W01 37-99 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; W02 107-181 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2; W03 187-243 e37d851557183031e0ce5e9da84d4063403217849e96a98f848155529496566b; W04 249-283 c702dce3f3654c5e65841498fd0757837b02da867ba0c5e1a6567670c4b9eebd; W05-06 289-369 416b3b78cd59923af0277bf91297216978a9e645082849a47cc818e122fb9ea7; W07 377-429 5aaaf029f1ded1dbe6d8704ea8562e13d305928db13b7a5b9f93e2891e5739c8; W08 437-465 ca279c15c5003235e0d684fd7cfd00a0b4c9a2fa4b1c556bd5f91f5cd0a01f36; W09 471-569 4528c1a5b375db155daa875ac5123fc97ca1e99516a0cbbf73b337f4b9701270; W10 575-603 d75fcb4a083bab6e067caa95211695fa1f9d9868c9819cca7e40ee95cb6a2b14. Markers: 13 only — class work 9 (95, 173, 239 `Class Work     `, 275, 353 `CLASS – WORK `, 411 `CLASS-WORK `, 463, 547, 589) and assignment 4 (365, 427, 559, 599); no evaluation, reading-assignment, theory or weekend block. No set text is named or supplied (only in-sentence examples at 159-233, 299, 323, 347, 443-453 and 505); no reading assignment, edition or page. No table, drawing, picture, media, header or footer part. Parser findings: split_before unnecessary and anchor-ambiguous (`FICTION AND NON-FICTION` at 191 and 321); attach_stranded_label not required; classify_marker needed for the class-work and assignment spellings. Findings recorded for later correction: source typos (`Friction`, `genie`, `muter`), the nonstandard glossary at 295, garbled titles and authors at 159-167, 199-233, 443-453 and 505, and the Wordsworth rendering at 387. Evidence note: docs/ss1/work/microtasks/literature/LIT-INV-T1.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, states what text/book/extract each section names (or that none is named), and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -348,11 +352,418 @@
       "status": "BLOCKED",
       "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
+    },
+    {
+      "id": "LIT-PRE-T1",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 1-23 (title and scheme of work)",
+      "objective": "Index the opening section of the 1st Term source as preamble: the title `LIT-IN-ENGLISH` (1), the scheme header `SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS ` (3, trailing space; this equals the registered header_text), rows 7-23 (block SHA-256 9b3c5dbd7a64cc0808c0bfcce734295b3b07d7ba4edffc7d4c68210e67943b03) and the blank runs 4-6 and 24-36. The nine scheme rows cover ten weeks because row 15 `WEEK 5&6: WHAT IS PROSE? TYPES OF PROSE` packs two weeks; map every row to its week item and point row 15 at LIT-WK-T1-W05-W06. Record the scheme/body divergences instead of harmonising them: row 1 has no space after the colon; row 9 says `GENRES OF LITERATURE-DRAMA,PROSE AND POETRY` while the body heading (111) says `GENRE OF LITERATURE – PROSE, POETRY AND DRAMA`; row 13 says `ELEMENT OF PROSE FICTION-PLOT,SETTING, NARRATIVE TECHNIQUE` while the body heading (253) says `ELEMENT OF PROSE`; row 17 has `FEATURES OF   POETRY.` (three spaces) while the body says `Characteristics of poetry` (393); row 21 says `FEATURES OF DRAMA.` while the body says `Features of Drama` (481); row 23 says `ORAL FORMS OF LITERATURE.` while the body heading (579) says `ORAL TRADITION OF LITERATURE`. There is no revision or examination row and no week 11, so no row points at a revision item. Write the preamble coverage entries under the existing schema and hash-account the preamble privately. Write no lesson and no rule beyond a marker classification if one is genuinely needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-PRE-T1.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No preamble rule or coverage exists: literature.json has the three sources and their three alias rules only, with coverage[], lessons[], assets[] and delivery_corrections[] empty. Inventory evidence: line 1 `LIT-IN-ENGLISH`, line 3 `SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS ` (equals header_text, occurs once), block 1-3 SHA-256 e4939af27366cab6bee96734ed9cee829995e2e39b9dd4f93fd3018cd6f250b7; scheme 7-23 SHA-256 9b3c5dbd7a64cc0808c0bfcce734295b3b07d7ba4edffc7d4c68210e67943b03; blanks 4-6 and 24-36. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Preamble coverage exists and the scheme is accounted for with its hash and row map; every scheme row points at its week item and row 15 at LIT-WK-T1-W05-W06; divergences are recorded as findings, not rewritten; no lesson, invented heading or guessed week is written. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any set text: the document supplies none."
+    },
+    {
+      "id": "LIT-MARK-T1",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 95-599 (13 markers)",
+      "objective": "Dispose of the source's marker vocabulary. The document has 13 question markers and only two kinds: class work 9 — `Class Work` (95, 173, 275, 463, 547, 589), `Class Work     ` (239, trailing spaces), `CLASS – WORK ` (353, en dash U+2013 and trailing space), `CLASS-WORK ` (411, hyphen and trailing space) — and assignment 4 — `ASSIGNMENT:` (365 and 427, both with a trailing space), `Assignment` (559), `Assignment ` (599, trailing space). W05-06, W07, W09 and W10 carry both kinds, so class work and assignment must stay distinct. Classify each marker by whole line: neither word occurs mid-sentence anywhere in the document, but the forms differ byte for byte, and a classifier built only for `EVALUATION`, `GENERAL EVALUATION`, `READING ASSIGNMENT`, `THEORY` or `WEEKEND` (none of which occur here) would classify nothing. The questions under each marker are the week's exercises; do not promote a marker to a teaching heading and do not drop the questions. Add a classification rule only if the existing schema supports the vocabulary; otherwise record the precise gap.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-MARK-T1.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No marker classification exists: literature.json contains the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: class work at 95, 173, 239 (`Class Work     `), 275, 353 (`CLASS – WORK `), 411 (`CLASS-WORK `), 463, 547, 589; assignment at 365 and 427 (`ASSIGNMENT:`), 559 (`Assignment`), 599 (`Assignment `). No evaluation, general-evaluation, reading-assignment, theory or weekend marker occurs anywhere. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every one of the 13 markers has a disposition that keeps its exact wording, spelling and line; class work and assignment stay distinct within a week; no lesson is written; no marker vocabulary the document does not contain is invented. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T1-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 37-99 (block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518)",
+      "objective": "Index week 1 of the 1st Term source: lines 37-99, block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518. Labels and sections: label `\\tWEEK 1\\t` 37 (tab-padded; scheme row 7 says `INTRODUCTION TO THE STUDY OF LITERATURE` while the body heading 41 adds `-In-English`), heading `Introduction to the study of Literature-In-English` 41, sections `What is literature as a subject of study?` 47, `English Literature and Literature-In-English` 53, `Reasons for the study of Literature` 59, `(Aims and Objective)` 61, `What is Literary Appreciation?` 87; marker `Class Work` 95 with questions 97 and 99. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: 49 says `It minors the society.`; 55 makes two checkable claims (`Beowulf ... between the 8th to the 11th centuries` and `Literature In English focuses on literary works from other British colonies, including the U.S.`) that need an authoritative reference; the 11-item reasons list (63-83) is what question 99 asks students to reproduce; no assignment marker exists in this week.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W01.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 37-99, block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; label `\\tWEEK 1\\t` 37 (tab-padded; scheme row 7 says `INTRODUCTION TO THE STUDY OF LITERATURE` while the body heading 41 adds `-In-English`), heading `Introduction to the study of Literature-In-English` 41, sections `What is literature as a subject of study?` 47, `English Literature and Literature-In-English` 53, `Reasons for the study of Literature` 59, `(Aims and Objective)` 61, `What is Literary Appreciation?` 87; marker `Class Work` 95 with questions 97 and 99. Findings recorded by LIT-INV-T1 that this item must settle: 49 says `It minors the society.`; 55 makes two checkable claims (`Beowulf ... between the 8th to the 11th centuries` and `Literature In English focuses on literary works from other British colonies, including the U.S.`) that need an authoritative reference; the 11-item reasons list (63-83) is what question 99 asks students to reproduce; no assignment marker exists in this week. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 107-181 (block SHA-256 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2)",
+      "objective": "Index week 2 of the 1st Term source: lines 107-181, block SHA-256 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2. Labels and sections: label `WEEK 2` 107, heading `GENRE OF LITERATURE – PROSE, POETRY AND DRAMA` 111, sections `What is Prose?` 117, `Characteristics of Prose` 123, `The Elements of Prose Fiction` 139, `Type of Prose` 157; marker `Class Work` 173 with questions 175-181. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: scheme row 9 promises drama, prose and poetry but this week teaches prose only (poetry at 381, drama at 475), so the gap is recorded rather than invented; the five novel types (159-167) carry garbled titles and author names and dates needing bibliographic confirmation (keep the source wording separate from any corrected form); 113 uses `genie` and `muter`.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W02.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 107-181, block SHA-256 1e5bf5325a56d432b9630af84b6608064fdfe291b17eeb1bf837e339fdec00b2; label `WEEK 2` 107, heading `GENRE OF LITERATURE – PROSE, POETRY AND DRAMA` 111, sections `What is Prose?` 117, `Characteristics of Prose` 123, `The Elements of Prose Fiction` 139, `Type of Prose` 157; marker `Class Work` 173 with questions 175-181. Findings recorded by LIT-INV-T1 that this item must settle: scheme row 9 promises drama, prose and poetry but this week teaches prose only (poetry at 381, drama at 475), so the gap is recorded rather than invented; the five novel types (159-167) carry garbled titles and author names and dates needing bibliographic confirmation (keep the source wording separate from any corrected form); 113 uses `genie` and `muter`. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 187-243 (block SHA-256 e37d851557183031e0ce5e9da84d4063403217849e96a98f848155529496566b)",
+      "objective": "Index week 3 of the 1st Term source: lines 187-243, block SHA-256 e37d851557183031e0ce5e9da84d4063403217849e96a98f848155529496566b. Labels and sections: label `WEEK 3` 187, heading `FICTION AND NON-FICTION` 191 (the same heading recurs at 321, so it is not a unique anchor), `What is Friction?` 193, `Example of Friction` 197 with eight entries 199-215, `What is Non-Friction?` 219, `Examples of Non-Friction` 227 with four entries 229-235; marker `Class Work     ` 239 (trailing spaces) with questions 241 and 243. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: the week lists eight examples while 243 asks for `the 6 examples`; 201 splices the example into the definition; 205 claims `Jesus spoke or gave out 40 parables`; 215's `William Gowing` cannot be identified; 229 credits a Byron biography to `Marchland`; the fiction/non-fiction definitions are restated at 321-325 and must not be double-counted.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W03.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 187-243, block SHA-256 e37d851557183031e0ce5e9da84d4063403217849e96a98f848155529496566b; label `WEEK 3` 187, heading `FICTION AND NON-FICTION` 191 (the same heading recurs at 321, so it is not a unique anchor), `What is Friction?` 193, `Example of Friction` 197 with eight entries 199-215, `What is Non-Friction?` 219, `Examples of Non-Friction` 227 with four entries 229-235; marker `Class Work     ` 239 (trailing spaces) with questions 241 and 243. Findings recorded by LIT-INV-T1 that this item must settle: the week lists eight examples while 243 asks for `the 6 examples`; 201 splices the example into the definition; 205 claims `Jesus spoke or gave out 40 parables`; 215's `William Gowing` cannot be identified; 229 credits a Byron biography to `Marchland`; the fiction/non-fiction definitions are restated at 321-325 and must not be double-counted. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 249-283 (block SHA-256 c702dce3f3654c5e65841498fd0757837b02da867ba0c5e1a6567670c4b9eebd)",
+      "objective": "Index week 4 of the 1st Term source: lines 249-283, block SHA-256 c702dce3f3654c5e65841498fd0757837b02da867ba0c5e1a6567670c4b9eebd. Labels and sections: label `WEEK 4` 249, heading `ELEMENT OF PROSE` 253 (scheme row 13 adds `FICTION-PLOT,SETTING, NARRATIVE TECHNIQUE`), sections `Plot` 255, `Setting` 263, `Example` 265, `Narrative Technique` 267, `First person narrative point of view` 269, `Third person narrative essay of view` 271; marker `Class Work` 275 with questions 277-283. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: plot, setting and narrative technique were already tabulated at 139-153, so the week's fuller treatment must not be counted as new content twice; 265's Harry Potter example is truncated (`non-magical) wor with the “muggle” folks`) and must not be completed from memory; 271 says `essay` for person.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W04.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 249-283, block SHA-256 c702dce3f3654c5e65841498fd0757837b02da867ba0c5e1a6567670c4b9eebd; label `WEEK 4` 249, heading `ELEMENT OF PROSE` 253 (scheme row 13 adds `FICTION-PLOT,SETTING, NARRATIVE TECHNIQUE`), sections `Plot` 255, `Setting` 263, `Example` 265, `Narrative Technique` 267, `First person narrative point of view` 269, `Third person narrative essay of view` 271; marker `Class Work` 275 with questions 277-283. Findings recorded by LIT-INV-T1 that this item must settle: plot, setting and narrative technique were already tabulated at 139-153, so the week's fuller treatment must not be counted as new content twice; 265's Harry Potter example is truncated (`non-magical) wor with the “muggle” folks`) and must not be completed from memory; 271 says `essay` for person. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W05-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 289-369 (block SHA-256 416b3b78cd59923af0277bf91297216978a9e645082849a47cc818e122fb9ea7)",
+      "objective": "Index the combined week 5 and 6 block of the 1st Term source: lines 289-369, block SHA-256 416b3b78cd59923af0277bf91297216978a9e645082849a47cc818e122fb9ea7. Labels and sections: label `WEEK 5 & 6` 289 (scheme row 15 packs `WEEK 5&6: WHAT IS PROSE? TYPES OF PROSE`), heading `WHAT IS PROSE?` 293, sections `TYPE OF PROSE` 305 with six entries 307-317, `FICTION AND NON-FICTION` 321 with 323 and 325, `FEATURES OR CHARACTERISTICS OF PROSE` 329 with entries 331-349; markers `CLASS – WORK ` 353 with questions 355-361 and `ASSIGNMENT:` 365 with 367-369. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: the document gives no boundary between week 5 and week 6 and the scheme has one row for both, so this span covers both weeks and no split may be invented; 295 is one run-on paragraph whose glossary (AGONIST, MARCEAU, POT BOILER, EXEMPLUM, TALL STORY/FAIRY TALE, SARCASTIC HUMOUR, PARODY) is nonstandard in places; the prose and fiction material repeats weeks 2-3 (117-153, 193-235). The two weeks are one span in the document: do not split it, do not merge it into another week, and keep the combined label.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W05-W06.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 289-369, block SHA-256 416b3b78cd59923af0277bf91297216978a9e645082849a47cc818e122fb9ea7; label `WEEK 5 & 6` 289 (scheme row 15 packs `WEEK 5&6: WHAT IS PROSE? TYPES OF PROSE`), heading `WHAT IS PROSE?` 293, sections `TYPE OF PROSE` 305 with six entries 307-317, `FICTION AND NON-FICTION` 321 with 323 and 325, `FEATURES OR CHARACTERISTICS OF PROSE` 329 with entries 331-349; markers `CLASS – WORK ` 353 with questions 355-361 and `ASSIGNMENT:` 365 with 367-369. Findings recorded by LIT-INV-T1 that this item must settle: the document gives no boundary between week 5 and week 6 and the scheme has one row for both, so this span covers both weeks and no split may be invented; 295 is one run-on paragraph whose glossary (AGONIST, MARCEAU, POT BOILER, EXEMPLUM, TALL STORY/FAIRY TALE, SARCASTIC HUMOUR, PARODY) is nonstandard in places; the prose and fiction material repeats weeks 2-3 (117-153, 193-235). Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 377-429 (block SHA-256 5aaaf029f1ded1dbe6d8704ea8562e13d305928db13b7a5b9f93e2891e5739c8)",
+      "objective": "Index week 7 of the 1st Term source: lines 377-429, block SHA-256 5aaaf029f1ded1dbe6d8704ea8562e13d305928db13b7a5b9f93e2891e5739c8. Labels and sections: label `WEEK 7` 377, heading `WHAT IS POETRY?` 381 (scheme row 17 says `WHAT IS POETRY? FEATURES OF   POETRY.`), definition and Wordsworth sentence 383-389, `Characteristics of poetry` 393 with seven entries 395-407; markers `CLASS-WORK ` 411 with questions 413-423 and `ASSIGNMENT:` 427 with 429. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: the Wordsworth wording at 387 (`an overflow of spontaneous emotions recaptured in tranquility`) is a loose rendering of the Preface to Lyrical Ballads and needs the primary text before it is quoted; 407 uses `Triplet` for what is usually a tercet; no poem text is supplied.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W07.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 377-429, block SHA-256 5aaaf029f1ded1dbe6d8704ea8562e13d305928db13b7a5b9f93e2891e5739c8; label `WEEK 7` 377, heading `WHAT IS POETRY?` 381 (scheme row 17 says `WHAT IS POETRY? FEATURES OF   POETRY.`), definition and Wordsworth sentence 383-389, `Characteristics of poetry` 393 with seven entries 395-407; markers `CLASS-WORK ` 411 with questions 413-423 and `ASSIGNMENT:` 427 with 429. Findings recorded by LIT-INV-T1 that this item must settle: the Wordsworth wording at 387 (`an overflow of spontaneous emotions recaptured in tranquility`) is a loose rendering of the Preface to Lyrical Ballads and needs the primary text before it is quoted; 407 uses `Triplet` for what is usually a tercet; no poem text is supplied. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 437-465 (block SHA-256 ca279c15c5003235e0d684fd7cfd00a0b4c9a2fa4b1c556bd5f91f5cd0a01f36)",
+      "objective": "Index week 8 of the 1st Term source: lines 437-465, block SHA-256 ca279c15c5003235e0d684fd7cfd00a0b4c9a2fa4b1c556bd5f91f5cd0a01f36. Labels and sections: label `WEEK 8` 437, heading `DIFFERENT FORMS OF POETRY AND TYPES OF POETRY` 441, nine forms at 443-459 (Ballad 443, Elegy/Dirge 445, Didantic Poem 447, Epic 449, Narrative Poem 451, Ode 453, Chant 455, Incantation 457, Recitation 459); marker `Class Work` 463 with question 465. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: the form names, titles and author names are heavily garbled (443 `Literacy ballad` and `The rhyme of the Ancient Mariner`; 445 `Lycida`; 447 `Didantic` and `Essay an Nlan`; 449 `idaure`; 453 `Coffin’s` and `shally’s`; 455 `gciregorian` and `oew notes`) and must be attributed from a bibliographic source, not guessed; 465 asks the difference between `clergy` and an Epic; no poem is supplied.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W08.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 437-465, block SHA-256 ca279c15c5003235e0d684fd7cfd00a0b4c9a2fa4b1c556bd5f91f5cd0a01f36; label `WEEK 8` 437, heading `DIFFERENT FORMS OF POETRY AND TYPES OF POETRY` 441, nine forms at 443-459 (Ballad 443, Elegy/Dirge 445, Didantic Poem 447, Epic 449, Narrative Poem 451, Ode 453, Chant 455, Incantation 457, Recitation 459); marker `Class Work` 463 with question 465. Findings recorded by LIT-INV-T1 that this item must settle: the form names, titles and author names are heavily garbled (443 `Literacy ballad` and `The rhyme of the Ancient Mariner`; 445 `Lycida`; 447 `Didantic` and `Essay an Nlan`; 449 `idaure`; 453 `Coffin’s` and `shally’s`; 455 `gciregorian` and `oew notes`) and must be attributed from a bibliographic source, not guessed; 465 asks the difference between `clergy` and an Epic; no poem is supplied. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 471-569 (block SHA-256 4528c1a5b375db155daa875ac5123fc97ca1e99516a0cbbf73b337f4b9701270)",
+      "objective": "Index week 9 of the 1st Term source: lines 471-569, block SHA-256 4528c1a5b375db155daa875ac5123fc97ca1e99516a0cbbf73b337f4b9701270. Labels and sections: label `WEEK 9` 471, heading `WHAT IS DRAMA` 475 (scheme row 21 adds `FEATURES OF DRAMA.`), definition 477, `Features of Drama` 481 with nine entries 483-499, `FORMS OF DRAMA` 503 with Tragedy 505, Comedy 507 and Tragic-Comedy 509, `Characterization:` 519, `Types of Character` 525 with five entries 527-535, the three ways to assess a character 537-543; markers `Class Work` 547 with 549-555 and `Assignment` 559 with 561-569. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: the week's own definitions need checking: 477's `penetration of life through artificial means`, 497's `Auditor` (a casting/audition practice), the unfinished `Soliloquies` entry at 499, and 533's definition of a minor character; 505 names `Macbeth` and `The God’s are not to be Blame by Ola-Rotimi`; no play text is supplied.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W09.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 471-569, block SHA-256 4528c1a5b375db155daa875ac5123fc97ca1e99516a0cbbf73b337f4b9701270; label `WEEK 9` 471, heading `WHAT IS DRAMA` 475 (scheme row 21 adds `FEATURES OF DRAMA.`), definition 477, `Features of Drama` 481 with nine entries 483-499, `FORMS OF DRAMA` 503 with Tragedy 505, Comedy 507 and Tragic-Comedy 509, `Characterization:` 519, `Types of Character` 525 with five entries 527-535, the three ways to assess a character 537-543; markers `Class Work` 547 with 549-555 and `Assignment` 559 with 561-569. Findings recorded by LIT-INV-T1 that this item must settle: the week's own definitions need checking: 477's `penetration of life through artificial means`, 497's `Auditor` (a casting/audition practice), the unfinished `Soliloquies` entry at 499, and 533's definition of a minor character; 505 names `Macbeth` and `The God’s are not to be Blame by Ola-Rotimi`; no play text is supplied. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-WK-T1-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "mammoth extractRawText lines 575-603 (block SHA-256 d75fcb4a083bab6e067caa95211695fa1f9d9868c9819cca7e40ee95cb6a2b14)",
+      "objective": "Index week 10 of the 1st Term source: lines 575-603, block SHA-256 d75fcb4a083bab6e067caa95211695fa1f9d9868c9819cca7e40ee95cb6a2b14. Labels and sections: label `WEEK 10` 575, heading `ORAL TRADITION OF LITERATURE` 579 (scheme row 23 says `ORAL FORMS OF LITERATURE.`), 581 defines oral tradition and orality, `Folklore` 583, `A Folklorist` 585; markers `Class Work` 589 with 591-595 and `Assignment ` 599 with 601-603. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings recorded by LIT-INV-T1 that this item must settle: the scheme promises oral forms but the span describes none beyond naming folksongs and tales at 583, so the gap is recorded as missing content rather than filled by invention; 581 says `charts` for chants and `Ballade`; 583's `Folklore:Is a dictations stay ...` is garbled; no oral text is supplied.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W10.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T1",
+        "LIT-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 575-603, block SHA-256 d75fcb4a083bab6e067caa95211695fa1f9d9868c9819cca7e40ee95cb6a2b14; label `WEEK 10` 575, heading `ORAL TRADITION OF LITERATURE` 579 (scheme row 23 says `ORAL FORMS OF LITERATURE.`), 581 defines oral tradition and orality, `Folklore` 583, `A Folklorist` 585; markers `Class Work` 589 with 591-595 and `Assignment ` 599 with 601-603. Findings recorded by LIT-INV-T1 that this item must settle: the scheme promises oral forms but the span describes none beyond naming folksongs and tales at 583, so the gap is recorded as missing content rather than filled by invention; 581 says `charts` for chants and `Ballade`; 583's `Folklore:Is a dictations stay ...` is garbled; no oral text is supplied. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     }
   ],
   "review": {
-    "date": "2026-10-27",
-    "reviewed_master_sha": "4df391a5779d42ae88ecfc7389fad2d3b3231b4a",
+    "date": "2026-10-29",
+    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -363,6 +774,6 @@
     }
   },
   "next_runnable": [
-    "LIT-INV-T1"
+    "LIT-PRE-T1"
   ]
 }
