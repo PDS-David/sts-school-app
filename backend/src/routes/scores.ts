@@ -237,31 +237,43 @@ router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
 // ── Report read authorisation (shared by /report and /session-report) ────────
 // Explicit allow-list: student (own record), parent (linked ward), teacher (own
 // school and, when an assigned class is set, that class), admin (all). Every
-// other role, including finance_admin, is refused.
+// other role, including finance_admin, is refused. Soft-deleted students are
+// admin-only (see the end of this function).
 // Teacher scope reuses checkTeacherStudentScope. No termId is passed because
 // this is a read, so the helper's class-lock branch (which only applies when a
 // termId is given) is not triggered. Its error wording refers to writes; it is
 // returned unchanged on purpose.
 async function authoriseReportAccess(
   user: AuthUser,
-  student: { id: string; user_id: string | null },
+  student: { id: string; user_id: string | null; deleted_at?: string | Date | null },
 ): Promise<{ status: number; error: string } | null> {
+  let denied: { status: number; error: string } | null;
   switch (user.role) {
     case 'student':
-      return student.user_id === user.id ? null : { status: 403, error: 'Access denied' };
+      denied = student.user_id === user.id ? null : { status: 403, error: 'Access denied' };
+      break;
     case 'parent': {
       const { rows: pw } = await query(
         'SELECT 1 FROM parent_wards WHERE parent_id=$1 AND student_id=$2', [user.id, student.id],
       );
-      return pw.length ? null : { status: 403, error: 'Not your ward' };
+      denied = pw.length ? null : { status: 403, error: 'Not your ward' };
+      break;
     }
     case 'teacher':
-      return checkTeacherStudentScope(user, student.id);
+      denied = await checkTeacherStudentScope(user, student.id);
+      break;
     case 'admin':
-      return null;
+      denied = null;
+      break;
     default:
-      return { status: 403, error: 'Access denied' };
+      denied = { status: 403, error: 'Access denied' };
   }
+  if (denied) return denied;
+  // A soft-deleted student's report is visible to admin only (history is kept
+  // for restore/records); every other role gets 404. Checked after the role
+  // allow-list so unauthorised callers still see 403.
+  if (student.deleted_at && user.role !== 'admin') return { status: 404, error: 'Student not found' };
+  return null;
 }
 
 // ── GET /scores/report/:student_id  (full term report) ───────────────────────

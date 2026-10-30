@@ -24,11 +24,11 @@ Files changed: `backend/src/routes/scores.ts`, this note.
 | teacher without assigned class | allowed | allowed (school-wide read kept) | 403 (scope.ts:59-61 wording) |
 | admin | allowed | allowed | allowed |
 | finance_admin | 403 Access denied | 403 Access denied | 403 Access denied |
-A missing student returns 404 before authorisation, as before.
+A missing student returns 404 before authorisation, as before. For a soft-deleted student every cell above becomes 404 except admin (allowed), after the allow-list check.
 
 ## Behaviour differences to be aware of
 - Teachers: class-assigned teachers lose read access to other classes (intended). Teachers without an assigned class keep school-wide read, as the prompt states.
-- Teachers now also get 404 for a soft-deleted student, because the helper checks `deleted_at` (`scope.ts:50`). Before, the report handlers did not check `deleted_at` for any role, so the old behaviour was not a 404 for soft-deleted students. Admin, student and parent paths are unchanged and still do not check `deleted_at`.
+- Soft-deleted students: the old report handlers did not check `deleted_at` for any role. They now return 404 `Student not found` for every role except admin, checked after the role allow-list so an unauthorised caller still gets 403. Admin keeps read access, consistent with `students.ts:131` (admin sees deleted records) and the restore route. Parents, who previously could read a deleted ward's report through the surviving `parent_wards` row, are now refused. A deleted student's own login is already blocked by `middleware/auth.ts:30,62`. This follows the system reference (soft deletion keeps dependent history with explicit admin restore; the reference states no parent or teacher access to deleted students' reports). Writes still reject deleted students for every role including admin (`scope.ts:50`); reads differ on purpose.
 - Teacher denial messages come from the helper and say "write records"; the wording is unchanged because `scope.ts` is outside this task's writes.
 - `admin` is now an explicit branch instead of an accidental fall-through; `finance_admin` is no longer treated as admin.
 
