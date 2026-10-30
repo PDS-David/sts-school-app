@@ -25,20 +25,21 @@
     "Execute one queue item per worker. Existing implementation evidence is a starting point, not a request to repeat completed audits. Tests remain deferred. A required attachment absent from a worker session is an input blocker, not evidence that curriculum content is absent.",
     "ENG-WK-T1-W01 (2026-10-27): Week 1 indexed at objective level from master fc2aef1f0761f25fe50c06ed4592b2357a117bff. The replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 was found NOT to preserve every objective of the row it displaces; follow-up items ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed.",
     "ENG-WK-T1-W02 (2026-10-27): Week 2 indexed at objective level from master c48a012225c4b142bb6515a2fd8e5bf4d440509e (24 new coverage entries; rule R029 classifies scheme row 2). The four Week 2 source rows are not displaced by any SS1-02 correction; their gaps are source-side (unsupplied book pages, one scheme objective not taught, wording defects, missing keys). Follow-up items ENG-LES-W02-WORD-MEANINGS, ENG-LES-W02-PHRASAL-VERBS, ENG-LES-W02-ADVERB-CONJ-PREP and ENG-FACT-W02-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed. QUEUE_BUILD.md was outside this item's write paths and still names W02 as next.",
-    "ENG-LES-W02-WORD-MEANINGS (2026-10-29): Week 2 word-meanings supplement authored from master a98983a8. New lesson SUP-SS1-ENGLISH-MEANING-T1 (32 marks) bound to coverage ENGLISH-T1-W02-CM02, which moved from UNRESOLVED to IMPLEMENTED_EQUIVALENT. Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE closed because its required action is complete; approval stays PENDING and verification DEFERRED. ENGLISH-BODY-004 remains PARTIAL (unsupplied passage). The source was re-extracted privately: member and archive hashes re-verified and the scheme-only status of the objective re-confirmed. Dictionary confirmations for brackish, inflammable, childish/childlike and the senses of sharp were not re-fetched (network unavailable) and are listed for owner review in the task note. next_runnable: ENG-LES-W02-PHRASAL-VERBS."
+    "ENG-LES-W02-WORD-MEANINGS (2026-10-29): Week 2 word-meanings supplement authored from master a98983a8. New lesson SUP-SS1-ENGLISH-MEANING-T1 (32 marks) bound to coverage ENGLISH-T1-W02-CM02, which moved from UNRESOLVED to IMPLEMENTED_EQUIVALENT. Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE closed because its required action is complete; approval stays PENDING and verification DEFERRED. ENGLISH-BODY-004 remains PARTIAL (unsupplied passage). The source was re-extracted privately: member and archive hashes re-verified and the scheme-only status of the objective re-confirmed. Dictionary confirmations for brackish, inflammable, childish/childlike and the senses of sharp were not re-fetched (network unavailable) and are listed for owner review in the task note. next_runnable: ENG-LES-W02-PHRASAL-VERBS.",
+    "ENG-WK-T1-W03 (2026-10-30): Week 3 indexed at objective level; 19 coverage entries and rule R030 added to english.json, five open items opened and six PENDING follow-up items appended. Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 21,
+    "LESSON": 26,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 13,
+    "FACTUAL_DEPENDENCY": 14,
     "ASSET": 1,
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 24,
-    "PENDING": 72,
+    "IMPLEMENTED_TESTING_DEFERRED": 25,
+    "PENDING": 77,
     "BLOCKED": 4
   },
   "items": [
@@ -225,8 +226,8 @@
       "depends_on": [
         "ENG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-008, ENGLISH-BODY-009, ENGLISH-BODY-010, ENGLISH-BODY-011 (4 body-level rows; statuses {'PARTIAL': 3, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-008='TOPICS: ESSAY WRITING: TYPES OF ESSAYS; SPEECH WORK: MONOTHONGS, IDIOM'; ENGLISH-BODY-009='B. SPEECH WORK: MONOTHONGS'; ENGLISH-BODY-010='C. IDIOMS.'; ENGLISH-BODY-011='D. VOCABULARY DEVELOPMENT: Words Associated with Entertainment.'. Corrected rows: ENGLISH-BODY-009 <- SS1-02-english-COR-005 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-10-30 from master $BASE; source document sha256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef verified (standalone member inside the supplied '1st Term SS1' archive; the composite archive was not supplied, so its hash was not checked). backend/src/db/ss1/subjects/english.json: row-level entries ENGLISH-BODY-008..011 retained unchanged and 19 new Week 3 entries added: ENGLISH-T1-W03-SCHEME-ROW, ES01-ES05, MN01-MN04, ID01-ID02, EN01-EN07; classify_marker/SCHEME_ONLY rule SS1-SRC-a00657d42196-R030. Outcome of the new entries: 3 SUPPORTED, 1 IMPLEMENTED_EQUIVALENT, 1 MARKER, 9 PARTIAL, 5 UNRESOLVED. Replacement scope checked: SUP-SS1-ENGLISH-PHONETICS-T1 (correction SS1-02-english-COR-005) covers the twelve-vowel list (MN02) but not the definition (MN01) or the 'two examples' task (MN03). Open items: ENGLISH-T1-W03-EXTERNAL-MATERIALS, ESSAY-REPORT-SCOPE, SOURCE-WORDING-REVIEW, ANSWER-KEYS, PHONETICS-REPLACEMENT-SCOPE. Record: docs/ss1/work/microtasks/english/ENG-WK-T1-W03.md.",
       "completion_condition": "Every objective of Week 3 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -3277,6 +3278,155 @@
       "implementation_reference": "english.json open_items[id=ENGLISH-T1-W02-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-004, ENGLISH-BODY-007, ENGLISH-T1-W02-CM01, CM03, LB02, LB03, LB05. Needs owner-supplied material or an owner decision.",
       "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
       "required_attachments": []
+    },
+    {
+      "id": "ENG-FACT-W03-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W03-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 3 refers to but the source does not contain (Count Down in English pages 2-5; Standard Speech 10 / Diction in English Course page 11; Effective English for SS 1 page 148; Countdown page 169; Countdown page 352 Passage A numbers 1-18, with answers), or have the owner accept a labelled equivalent activity.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W03-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-008, ENGLISH-BODY-010, ENGLISH-BODY-011, ENGLISH-T1-W03-ES05, MN04, EN04, EN05, EN07. Needs owner-supplied material or an owner decision.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
+    },
+    {
+      "id": "ENG-LES-W03-ESSAY-REPORT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, essay types, formal report and minutes (coverage ENGLISH-T1-W03-ES01, ES02, ES03, ES04)",
+      "objective": "Author original reviewed teaching for the five essay types, a formal report and the minutes of a meeting, with a model scenario and keyed practice. Do not copy source text and do not invent the missing book pages.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open items ENGLISH-T1-W03-ESSAY-REPORT-SCOPE and ENGLISH-T1-W03-ANSWER-KEYS in english.json. Source row: BODY 449da7006b26f4ac12a197463e14953838e91a15ced4a14cb66eae77136fffb5.",
+      "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W03-IDIOMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, idioms (coverage ENGLISH-T1-W03-ID02)",
+      "objective": "Author original reviewed idiom teaching: a checked idiom set with meanings and example sentences, a keyed exercise, and review of the flagged source entries. Do not copy source text.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW in english.json. Source row: BODY 5729b94b873d9022c6655ae94546989abcd917fbd273fdf3a9faaceca23ff913.",
+      "completion_condition": "ID02 reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W03-ENTERTAINMENT-VOCAB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, entertainment vocabulary (coverage ENGLISH-T1-W03-EN02, EN03)",
+      "objective": "Author original reviewed teaching for words associated with entertainment (sport and theatre), with reviewed glosses, example sentences and a keyed exercise. Do not copy source text.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW in english.json. Source row: BODY dc0a9d077a9bfc0422295f67472f40f519200d1e4846093969b02007838b1d09.",
+      "completion_condition": "EN02 and EN03 reach IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W03-MONOPHTHONGS-SCOPE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, monophthongs (coverage ENGLISH-T1-W03-MN01, MN03)",
+      "objective": "Review SUP-SS1-ENGLISH-PHONETICS-T1 against the Monophthongs objective and extend it with original teaching: a definition of monophthongs against diphthongs, and a keyed 'give two examples of each sound' exercise. Oral and listening verification is out of scope.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open items ENGLISH-T1-W03-PHONETICS-REPLACEMENT-SCOPE and ENGLISH-T1-W03-ANSWER-KEYS in english.json; correction SS1-02-english-COR-005 binds ENGLISH-BODY-009 to the replacement.",
+      "completion_condition": "MN01 and MN03 reach IMPLEMENTED_EQUIVALENT only after the replacement's scope is reviewed; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W03-REVISION-KEYS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, general evaluation/revision questions (coverage ENGLISH-T1-W03-EN06)",
+      "objective": "Author a reviewed, keyed revision set on reported speech, suffixation and the passive voice as original teaching. Do not infer the answers from the source options.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W03-ANSWER-KEYS in english.json. Source row: BODY dc0a9d077a9bfc0422295f67472f40f519200d1e4846093969b02007838b1d09.",
+      "completion_condition": "EN06 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
     }
   ],
   "review": {
