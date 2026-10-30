@@ -458,15 +458,24 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
     return rows;
   }
 
-  // admin — same deleted_at fix as the teacher branch above.
-  const { rows } = await query(
-    `SELECT DISTINCT u.id, u.username, u.full_name, u.role
-     FROM users u
-     LEFT JOIN students s ON s.user_id = u.id
-     WHERE u.is_active = TRUE AND u.id <> $1
-       AND (u.role <> 'student' OR s.deleted_at IS NULL)
-     ORDER BY u.full_name`,
-    [user.id],
-  );
-  return rows;
+  if (user.role === 'admin') {
+    // admin — same deleted_at fix as the teacher branch above.
+    const { rows } = await query(
+      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
+       FROM users u
+       LEFT JOIN students s ON s.user_id = u.id
+       WHERE u.is_active = TRUE AND u.id <> $1
+         AND (u.role <> 'student' OR s.deleted_at IS NULL)
+       ORDER BY u.full_name`,
+      [user.id],
+    );
+    return rows;
+  }
+
+  // Fail closed (SEC-02): any role without an explicit branch above —
+  // finance_admin today, or a role added in future — gets no contacts rather
+  // than falling into the admin directory. finance_admin has no messages.*
+  // permission (rbac.ts), so this is defence in depth alongside the
+  // permission check in routes/messages.ts.
+  return [];
 }
