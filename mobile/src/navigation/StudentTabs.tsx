@@ -21,7 +21,6 @@ import TermPinRedeemScreen from '../screens/TermPinRedeemScreen';
 import StudyPlanScreen from '../screens/student/StudyPlanScreen';
 import AssessmentsScreen from '../screens/AssessmentsScreen';
 import TakeAssessmentScreen from '../screens/TakeAssessmentScreen';
-import AssessmentResultsScreen from '../screens/AssessmentResultsScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
 import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
@@ -67,7 +66,6 @@ function AssessmentsStackNavigator() {
       <AssessmentsStack.Screen name="AssessmentsHome" component={StudentAssessmentsHomeScreen} />
       <AssessmentsStack.Screen name="Assessments" component={AssessmentsScreen} options={{ headerShown: true, title: 'Assessments', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="TakeAssessment" component={TakeAssessmentScreen} options={{ headerShown: true, title: 'Take Assessment', ...stackScreenOptions }} />
-      <AssessmentsStack.Screen name="AssessmentResults" component={AssessmentResultsScreen} options={{ headerShown: true, title: 'Results', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...stackScreenOptions }} />
     </AssessmentsStack.Navigator>
