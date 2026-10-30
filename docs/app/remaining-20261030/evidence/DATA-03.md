@@ -1,7 +1,7 @@
 # DATA-03 evidence — historical reports no longer follow today's class
 
 Status: `IMPLEMENTED_TESTING_DEFERRED` (implemented, not approved, not verified)
-**BLOCKED: owner decision D5.** Implemented as the prompt's recommended default (snapshot on the score row), opened as a draft PR. Not for merge until the owner answers D5.
+**Owner decision D5 answered (2026-10-30): yes, a past report keeps the class, session and term it was issued for.** Implemented as the prompt's recommended default (snapshot on the score row). Merged as PR #282. The backfill of older rows is DATA-03b (`DATA-03b.md`).
 Base: `origin/master` `1764f62`. The prompt's line numbers were written against `8ffcd12`; SEC-01/SEC-01b/SEC-03 have since changed `scores.ts` and `students.ts`, so citations below are at `1764f62`.
 OPS-01 (migration ledger) has not landed. Per the README fallback, the schema change is added by hand to `backend/schema.sql` in its existing style; no numbered migration file exists to add.
 

@@ -14,6 +14,7 @@
     "db:curriculum-audit": "node --import tsx src/db/ingestTopics.ts",
     "db:curriculum-coverage": "node --import tsx src/db/topicsCoverageReport.ts",
     "db:check-drift": "tsx src/db/checkDrift.ts",
+    "db:backfill-score-class": "tsx src/db/backfillScoreClass.ts",
     "db:check-schools": "tsx src/db/checkSchools.ts"
   },
   "dependencies": {
