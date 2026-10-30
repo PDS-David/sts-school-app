@@ -5015,13 +5015,291 @@
           "explanation": "The front matter contains exactly 4 non-ASCII characters, all U+2013 en dashes at lines 55, 59, 69 and 71 inside scheme rows 4-6; the title block has none and there is no tone mark, no sub-dot and no combining mark anywhere in the block. In word/document.xml (485,316 bytes, SHA-256 dafcae0608c9ce426d79b65c2d174261664227529ba6aedea947657071c62680; 1,216 paragraphs, 0 tables) 94 paragraphs carry w:numPr; 14 of them are this scheme's sub-topic paragraphs: seven bulleted with numId 19 (lines 11, 13, 15, 17, 19, 73 and 95) and seven numbered with lower-Roman numerals via numId 20 (51, 53), 21 (61), 22 (101, 103) and 23 (115, 117). The twelve \"Ose\" label paragraphs themselves carry no w:numPr. extractRawText emits no generated bullet or number, so those markers are absent from the text; the literal lines are retained and no numbering is invented."
         }
       ]
+    },
+    {
+      "id": "YO-T3-W01-SCHEME-EDE",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Scheme Week 1 EDE objective: Isori oro; Oro oruko - oriki, orisii oro oruko, ise oro-oruko ninu gbolohun",
+      "objective_locator": "scheme line 7 (SHA-256 62087120c9ffa2229e23a6955a5fba01c61168b08ddbda544e768f8c47ffa2ea); body EDE part lines 125-213 (SHA-256 d2c2d686d2520be9417362f5758ceedee15bf3a39f617d9bd72b409770e92c51)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme group lines 7-11 (SHA-256 62d8c558c9d8d7d25842a84a51e4c20d27b5e3922b26c39a310fb62ce891aa8e)",
+          "explanation": "The 3rd Term scheme carries no week numbers: line 5 is only \"Ose: \" and the eleven groups that follow are distinguished by position and by their repeated EDE/ASA/LIT prefixes, so Week 1 is the first triple at lines 7-11. The mapping is documentary by position and confirmed by the teaching label OSE KINNI at line 121 (YORUBA-T3-W01-SCHEME-MAPPING)."
+        },
+        {
+          "locator": "EDE part lines 125-213 (SHA-256 d2c2d686d2520be9417362f5758ceedee15bf3a39f617d9bd72b409770e92c51)",
+          "explanation": "The EDE part teaches the definition (135-141), ten eya oro oruko (145-175) and three functions (179-211). The listed sub-topics oriki (127) and lilo (133) have no section of their own; they are indexed as YO-T3-W01-EDE-04 and -EDE-05."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-SCHEME-ASA",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Scheme Week 1 ASA objective: Asa isomoloruko - amutorunwa, abiso, inagije abbl.",
+      "objective_locator": "scheme line 9 (SHA-256 c0bb982e8d72a27d18fd1f454318a307413ca2cc7c77938b11e1733fa0d864bd); body ASA part lines 223-345 (SHA-256 7fb7228a0007d353b7bf6daaffbd820c05761f19af9b5c8b437b0af6e00ed307)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme group lines 7-11 (SHA-256 62d8c558c9d8d7d25842a84a51e4c20d27b5e3922b26c39a310fb62ce891aa8e)",
+          "explanation": "The scheme names Amutorunwa, abiso and inagije and closes with \"abbl.\"; the body teaches four categories, adding oruko abiku (heading 235, section 271-289), which is within the open-ended \"abbl.\" range but is not named in the scheme row."
+        },
+        {
+          "locator": "ASA part lines 223-345 (SHA-256 7fb7228a0007d353b7bf6daaffbd820c05761f19af9b5c8b437b0af6e00ed307)",
+          "explanation": "Four ASA objectives are indexed as YO-T3-W01-ASA-01..04, all PARTIAL: the source teaches each category with definition, name list and meanings, but no deliverable lesson exists and no parsed body identity exists for this source (YORUBA-T3-W01-ROW-IDENTITY)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-SCHEME-LIT",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Scheme Week 1 LITIRESO objective: Itupale ewi apileko, with amuye ewi and koko ewi",
+      "objective_locator": "scheme line 11 (SHA-256 a3b6191c4b57f77dcbf853c733ee019d9521eb09f209ca4d00cbfc6b6bfea206); body LITIRESO part lines 363-385 (SHA-256 e12aaf57954e421b722ac1b0bb9bd5ff5ae2f27a137fb4874877ee73b5975718)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme line 11 (SHA-256 a3b6191c4b57f77dcbf853c733ee019d9521eb09f209ca4d00cbfc6b6bfea206)",
+          "explanation": "The scheme reads \"Itupale ewi apileko. Amuye ewi, koko ewi abbl.\" The body teaches ewi apileko and the devices of akanlo ede ayaworan, but no part is titled amuye ewi or koko ewi; the equivalence is left to the owner (YORUBA-T3-W01-SCHEME-MAPPING) and the two named sub-topics are indexed UNRESOLVED as YO-T3-W01-LIT-02."
+        },
+        {
+          "locator": "LITIRESO part lines 363-385 (SHA-256 e12aaf57954e421b722ac1b0bb9bd5ff5ae2f27a137fb4874877ee73b5975718)",
+          "explanation": "The closing task at 391 asks for an analysis of \"asayan iwe ewi kin-in-ni ti ijoba yan\" without naming the text, author or edition, so the scheme objective is set but cannot be bound to a named selected text in this section (YORUBA-T3-W01-CONTENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-EDE-01",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Oro-oruko: definition (a word that can stand as oluwa, abo or eyan in a sentence) with three example sentences",
+      "objective_locator": "source lines 135-141 (SHA-256 b3efad3d3ee0ec17104d8ee6114e16d0377daab71cf97c14263ea6dd8585c624)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition line 135 (SHA-256 b3efad3d3ee0ec17104d8ee6114e16d0377daab71cf97c14263ea6dd8585c624)",
+          "explanation": "Line 135 defines oro-oruko by the three sentence positions and marks the example list with \"AP.\" (apeere); lines 137-141 give Baba ko ebe, Tolu fo aso and Mama se isu ewura. The abbreviation is undefined and used throughout the EDE part (YORUBA-T3-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-EDE-02",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Eya oro oruko: the ten noun types - person, non-person, animate, inanimate, visible, place, abstract, countable, uncountable and time",
+      "objective_locator": "source lines 145-175 (SHA-256 51881a0fda6b098fa707451e9ac20ac637185320f8c27acfaf5b6fdf29956c08)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "EYA ORO ORUKO heading line 145 and items 147-175 (SHA-256 51881a0fda6b098fa707451e9ac20ac637185320f8c27acfaf5b6fdf29956c08)",
+          "explanation": "Ten types are taught with examples only: ORUKO ENIYAN (147), alaiseeyan (159), elemi (161), alailemii (163), aridimu (165), ibikan (167), afoyemo (169), aseeka (171), alaiseeka (173) and igba (175). The first type carries no numeral while the remaining nine are numbered 2-10, and no exercise closes the list (YORUBA-T3-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-EDE-03",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Ise oro-oruko ninu gbolohun: the three functions oluwa, abo and eyan, with examples",
+      "objective_locator": "source lines 179-211 (SHA-256 53d039ae2d22d50e03dc5323ab5b5187e34c398d4b6ab3bb1e01737ebd60aa98)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "ISE TI ORO-ORUKO N SE NINU GBOLOHUN lines 179-211 (SHA-256 53d039ae2d22d50e03dc5323ab5b5187e34c398d4b6ab3bb1e01737ebd60aa98)",
+          "explanation": "Line 181 states that a noun can serve in three ways; oluwa is defined at 191 with two examples, abo at 199 with two, and eyan at 207 with two. The part has no exercise and no answer key (YORUBA-T3-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-EDE-04",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Oriki as a named sub-topic of oro oruko",
+      "objective_locator": "source line 127 (listed only; no teaching section exists)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "contents list lines 127-133 (SHA-256 e45b19252cb1b86e79e74453b8cfa1724c7015dc924a408be3b77f894a5a3acf); oriki line 127 (SHA-256 cf8c47752ef2f27a8ab9e11ec03e071d5166722fe8c54bddd4926a96e96cd1dc)",
+          "explanation": "oriki is announced as a sub-topic at 127 but the EDE part never defines it, names a type or gives an example; the definition at 135 and the ten types at 145-175 do not mention it. Within Week 1 the word occurs only at 127 (other occurrences at 431 and later belong to later weeks). The objective is in the scheme and the contents list but is not taught here."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-EDE-05",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Lilo oro oruko ninu gbolohun: using nouns in sentences",
+      "objective_locator": "source line 133 (SHA-256 dba5963e295d3c0f06ab304a2945e341bc992790fd091b70df3c08b8676f4557); examples 137-141 and 193-211; closing task 213 (SHA-256 b38da643d5d23a40543674baceac4cd8fae3c8a395f4ae8a19c73227a8669c62)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "contents list line 133 (SHA-256 dba5963e295d3c0f06ab304a2945e341bc992790fd091b70df3c08b8676f4557); examples 137-141 (b3efad3d3ee0ec17104d8ee6114e16d0377daab71cf97c14263ea6dd8585c624); oluwa/abo/eyan examples 193-211 (53d039ae2d22d50e03dc5323ab5b5187e34c398d4b6ab3bb1e01737ebd60aa98)",
+          "explanation": "lilo is announced at 133 but has no section: use is only demonstrated inside the definition, the type list and the function examples. The closing task at 213 asks pupils to name four types of ere idaraya, which does not exercise noun use, so the sub-topic is neither explained nor assessed directly (YORUBA-T3-W01-CONTENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASA-01",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Oruko amutorunwa: definition and the table of birth names with meanings",
+      "objective_locator": "source lines 241-267 (SHA-256 37413dfebea663552d2481a1d37ee5707ae1e2ce7f30d343023266622630bc9c)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition 241 and repeated heading 245; table 247-267 (SHA-256 37413dfebea663552d2481a1d37ee5707ae1e2ce7f30d343023266622630bc9c)",
+          "explanation": "Line 241 defines amutorunwa as a name given by observing the circumstances or behaviour at birth, and 245 repeats the same heading immediately before the table. The table gives ten rows (Ige, Aina, Ojo, Oke twice, Dada, Ilori, Oni, Babarinsa, Abiona); Oke appears twice with different meanings at 253 and 257 and Abiona at 267 has no meaning (YORUBA-T3-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASA-02",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Oruko abiku: definition and seven names with meanings",
+      "objective_locator": "source lines 271-289 (SHA-256 6cd68a6256d02792d5033f49f27dc7e3c15ebafc250ad531ed95f4b6f83ae176)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition 271-273; table 275-289 (SHA-256 6cd68a6256d02792d5033f49f27dc7e3c15ebafc250ad531ed95f4b6f83ae176)",
+          "explanation": "Line 271 defines abiku and 273 explains that such children are given names that are pleas or curses; the table gives seven names (Durojaye, Rotimi, Malomo, Kosoko, Kasimaawoo, Bamitale, Aja) with meanings. No exercise closes the part (YORUBA-T3-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASA-03",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Oruko inagije: definition and four examples",
+      "objective_locator": "source lines 293-301 (SHA-256 daa745faa9bddccb27d5802a38ca0ebffdb0fc836fe677c6408c6401cf161da9)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition 293; examples 295-301 (SHA-256 daa745faa9bddccb27d5802a38ca0ebffdb0fc836fe677c6408c6401cf161da9)",
+          "explanation": "Line 293 defines inagije as a nickname a person or others give to describe appearance or behaviour, followed by four examples (Eyinafe, Ajisafe, Peleyeju, Oginni) with explanations."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASA-04",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Oruko abiso: names marking family position or religion and the parents' prior circumstances or the time of birth",
+      "objective_locator": "source lines 305-345 (SHA-256 0c9e40679758af309c795fb7a25978d5149547d28149a284db1c0032fe70542b)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition 305; first table 311-327; second table 331-345 (SHA-256 0c9e40679758af309c795fb7a25978d5149547d28149a284db1c0032fe70542b)",
+          "explanation": "Line 305 defines abiso as a name marking the family position or the parents' situation or the time of birth. The first table gives eight position/religion rows (Oba, Eleegun, Jagunjagun, Onisona, Elesin Ifa, Onisango, Orisa Oko/Idobatala, Orisa Ogun) with name lists; the second gives three names (Ekundayo, Olabode, Tokunbo). The Tokunbo meaning is split across the cells at 343-345 (YORUBA-T3-W01-SOURCE-DEFECTS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-LIT-01",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Ewi apileko: definition and the akanlo ede ayaworan devices awitunwi, asorege/asodun, owe, akanlo ede and iforodara",
+      "objective_locator": "LITIRESO part lines 363-385 (SHA-256 e12aaf57954e421b722ac1b0bb9bd5ff5ae2f27a137fb4874877ee73b5975718); device list line 365 (2adc4e660afa2ed4ce689fc74d7d27ac6e1eede0f86bf4843331ccbdd4a2df49)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "definition and device list line 365 (SHA-256 2adc4e660afa2ed4ce689fc74d7d27ac6e1eede0f86bf4843331ccbdd4a2df49); sections 367-385 (8849bca316602259ba1bcffae9a2676648ccdd2c14e16e3fbb376c3de992ab80 / 996bbe14e3febf96cf94f817d35a60dd827f2069d268047a26a9d973f0f1a187)",
+          "explanation": "Line 365 defines ewi and names six devices (awitunwi, asorege/asodun, owe, akanlo ede, akude gbolohun, afiwe). Five sections follow: awitunwi 367, asorege/asodun 369, owe 371, akanlo ede 373 and iforodara 375-385. akude gbolohun and afiwe are named but not taught, while iforodara is taught but not in the list (YORUBA-T3-W01-CONTENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-LIT-02",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Amuye ewi and koko ewi as named in the scheme",
+      "objective_locator": "scheme line 11 (SHA-256 a3b6191c4b57f77dcbf853c733ee019d9521eb09f209ca4d00cbfc6b6bfea206); no body section exists",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme line 11 (SHA-256 a3b6191c4b57f77dcbf853c733ee019d9521eb09f209ca4d00cbfc6b6bfea206); LITIRESO part lines 363-385 (e12aaf57954e421b722ac1b0bb9bd5ff5ae2f27a137fb4874877ee73b5975718)",
+          "explanation": "The two sub-topics occur only in the scheme row: no heading, definition or example in the LITIRESO part uses either term, and the part teaches akanlo ede ayaworan instead. Whether the akanlo ede ayaworan teaching satisfies the scheme wording is an owner decision (YORUBA-T3-W01-SCHEME-MAPPING); no equivalence is asserted here."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASSESS-01",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Igbelewon (ASA): name five items used in the naming ceremony and explain their use; give five Yoruba names with explanations",
+      "objective_locator": "source lines 349-353 (SHA-256 18c35d4f5f8f7838b148a8d444a1e43ddb5ec8f517f0266bfcba915985907089)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "IGBELEWON 349-353 (SHA-256 18c35d4f5f8f7838b148a8d444a1e43ddb5ec8f517f0266bfcba915985907089)",
+          "explanation": "Two tasks are set at 351 and 353 and no answer, solution or marking scheme is given (YORUBA-T3-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASSESS-02",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Igbelewon (LITIRESO): analyse the first selected poetry text named by government",
+      "objective_locator": "source lines 389-391 (SHA-256 3eb47fdacfcd73eaa065da0e943121b6f225ccf81c99438da7cbb5f0bcef0145)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "IGBELEWON 389-391 (SHA-256 3eb47fdacfcd73eaa065da0e943121b6f225ccf81c99438da7cbb5f0bcef0145)",
+          "explanation": "Line 391 asks for an analysis of the first selected poetry text with no text, author or edition named anywhere in the section; the IWE ITOKASI bibliography at 91-113 lists titles but nothing ties one of them to this task (YORUBA-T3-W01-CONTENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASSESS-03",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Apapo igbelewon: ten oro oruko examples; five each for abiso, amutorunwa and inagije; six akanlo ede ayaworan",
+      "objective_locator": "source lines 395-401 (SHA-256 af93b7cf4e98c8c460140b58fdb869d571def9d74d8b8225300f5a3cae610827)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "APAPO IGBELEWON 395-401 (SHA-256 af93b7cf4e98c8c460140b58fdb869d571def9d74d8b8225300f5a3cae610827)",
+          "explanation": "Three tasks are set at 397, 399 and 401 with no answers. Task 401 asks for six akanlo ede ayaworan examples, consistent with the six devices named at 365 although only five are taught (YORUBA-T3-W01-CONTENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASSESS-04",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Ise amurele: five multiple-choice questions on oluwa, abo and eyan and on name types",
+      "objective_locator": "source lines 407-417 (SHA-256 09deae4610f1d9d553e013d858fe3239650c51bf72c19d889855b3677c2dbc08)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "ISE AMURELE 407-417 (SHA-256 09deae4610f1d9d553e013d858fe3239650c51bf72c19d889855b3677c2dbc08)",
+          "explanation": "Five multiple-choice questions at 409, 411, 413, 415 and 417; every option list is [a], [b], [d] with c omitted, the Q4 stem at 415 offers names unrelated to its name list, and no answer key is given (YORUBA-T3-W01-SOURCE-DEFECTS, YORUBA-T3-W01-ASSESSMENT-GAPS)."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W01-ASSESS-05",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Apa keji: five amutorunwa names; five abuda of oro oruko with two examples each",
+      "objective_locator": "source lines 419-423 (SHA-256 670a27bfb7428ae824f60e3269d11db8dd17a326eb82074454481f87dc321772)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "APA KEJI 419-423 (SHA-256 670a27bfb7428ae824f60e3269d11db8dd17a326eb82074454481f87dc321772)",
+          "explanation": "Two tasks are set at 421 and 423 (\"marun-n\" at 423 for marun-un) with no answers; abuda is not defined anywhere in the EDE part, so the second task uses a term the section never explains (YORUBA-T3-W01-CONTENT-GAPS)."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "YORUBA-OBJECTIVE-INDEXING",
       "kind": "CONTENT",
-      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term preamble (title, term heading and 22-topic scheme list, lines 3-51) is indexed and classified scheme-only (YO-PRE-T1-1; three MARKER entries). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. The 2nd Term is now indexed at objective level for Weeks 1-12 (14, 15, 18, 18, 16, 14, 17, 9, 17, 17, 1 and 1 coverage entry; YO-WK-T2-W01..W12). Week 1 has 12 PARTIAL and 2 UNRESOLVED entries (oge sise and the literature objective), Week 2 has 13 PARTIAL and 2 UNRESOLVED (oge sise and the literature objective), Week 3 has 16 PARTIAL and 2 UNRESOLVED (the untaught alaye type and the literature objective), Week 4 has 15 PARTIAL and 3 UNRESOLVED (the untaught essay-writing procedure, the ohun elo idana list and the literature objective), Week 5 has 14 PARTIAL and 2 UNRESOLVED (the untaught ana sise strand and the literature objective), Week 6 has 9 PARTIAL and 5 UNRESOLVED (the untaught translation strand, the undefined Yigi type and the literature objectives), Week 7 has 17 PARTIAL entries (thin number coverage, the one-clause aajo, the undefined eewo/oro idile and the substituted itan oloro geere), Week 8 has 3 PARTIAL and 6 UNRESOLVED entries: it is the only instructional week with no teaching section at all, and only Week 9's ASA name-type inventory partly covers two of its objectives while the dialect, ajumolo and literature objectives are untaught. Week 9 has 13 PARTIAL and 4 UNRESOLVED entries: its EDE aroko oniroyin and ASA name-type inventory are taught only thinly, and its whole LITIRESO strand (aalo types, iwulo aalo and the language devices in aalo) is named in the scheme but absent from the section. Week 10 has 15 PARTIAL and 2 UNRESOLVED entries: its EDE noun definition, ten-type outline and three functions and its ASA advertising lesson are thin and defect-ridden, the scheme Oriki and ipolowo pelu ohun enu are untaught, and the LITIRESO strand (ewi alohun, oriki orile, ijala) is absent from the section and only partly covered by Week 7 elsewhere. Week 11 is a MARKER, not a week with content: its scheme row 139 is a term-wide revision pointer (Agbeyewo ise saa keji lapapo) whose anchor occurs once, no revision heading or body exists, so it adds one MARKER entry, no objective and no lesson, and it cannot erase the Weeks 1-10 teaching. Week 12 is a MARKER as well: its scheme row 141 is the examination pointer (Idanwo saa keji) whose anchor occurs once, and no examination heading, examination paper, question set or mark scheme exists, so it adds one MARKER entry, no objective and no lesson. The 2nd Term preamble is now indexed and classified scheme-only (YO-PRE-T2-1: title block 3-5 and the 12-row ILANA ISE OSOOSE FUN SAA KEJI scheme 7-141, every row mapped to YO-WK-T2-W01..W12, rows 8, 11 and 12 disposed as scheme-only, two MARKER entries, the page header and footer parts recorded outside extractRawText, and open item YORUBA-T2-PRE-SCHEME-MAPPING for the term-wide confirmation and the lost automatic numbering). The 2nd Term foundation audit is delivered in YO-FND-T2-01 and leaves open item YORUBA-T2-WEEK-LABELS (nine week-label rules, Week 8 representation and rows 11-12 marker binding); all of the 3rd Term remains.",
+      "detail": "First-, Second- and Third-Term source registration is implemented. Source-week inventory is complete for all three terms (YO-INV-T1/T2/T3). The 1st Term preamble (title, term heading and 22-topic scheme list, lines 3-51) is indexed and classified scheme-only (YO-PRE-T1-1; three MARKER entries). The 1st Term is now indexed at objective level for all eight weeks (15, 15, 23, 19, 14, 12, 12 and 12 coverage entries; week items YO-WK-T1-W01..W08), of which the two Week 5 LITIRESO entries, the Week 7 ASA benefits entry and the two Week 8 LITIRESO entries are UNRESOLVED, and Weeks 6 and 7 have two strands and no LITIRESO section while Week 8 has a LITIRESO heading with no body. The 2nd Term is now indexed at objective level for Weeks 1-12 (14, 15, 18, 18, 16, 14, 17, 9, 17, 17, 1 and 1 coverage entry; YO-WK-T2-W01..W12). Week 1 has 12 PARTIAL and 2 UNRESOLVED entries (oge sise and the literature objective), Week 2 has 13 PARTIAL and 2 UNRESOLVED (oge sise and the literature objective), Week 3 has 16 PARTIAL and 2 UNRESOLVED (the untaught alaye type and the literature objective), Week 4 has 15 PARTIAL and 3 UNRESOLVED (the untaught essay-writing procedure, the ohun elo idana list and the literature objective), Week 5 has 14 PARTIAL and 2 UNRESOLVED (the untaught ana sise strand and the literature objective), Week 6 has 9 PARTIAL and 5 UNRESOLVED (the untaught translation strand, the undefined Yigi type and the literature objectives), Week 7 has 17 PARTIAL entries (thin number coverage, the one-clause aajo, the undefined eewo/oro idile and the substituted itan oloro geere), Week 8 has 3 PARTIAL and 6 UNRESOLVED entries: it is the only instructional week with no teaching section at all, and only Week 9's ASA name-type inventory partly covers two of its objectives while the dialect, ajumolo and literature objectives are untaught. Week 9 has 13 PARTIAL and 4 UNRESOLVED entries: its EDE aroko oniroyin and ASA name-type inventory are taught only thinly, and its whole LITIRESO strand (aalo types, iwulo aalo and the language devices in aalo) is named in the scheme but absent from the section. Week 10 has 15 PARTIAL and 2 UNRESOLVED entries: its EDE noun definition, ten-type outline and three functions and its ASA advertising lesson are thin and defect-ridden, the scheme Oriki and ipolowo pelu ohun enu are untaught, and the LITIRESO strand (ewi alohun, oriki orile, ijala) is absent from the section and only partly covered by Week 7 elsewhere. Week 11 is a MARKER, not a week with content: its scheme row 139 is a term-wide revision pointer (Agbeyewo ise saa keji lapapo) whose anchor occurs once, no revision heading or body exists, so it adds one MARKER entry, no objective and no lesson, and it cannot erase the Weeks 1-10 teaching. Week 12 is a MARKER as well: its scheme row 141 is the examination pointer (Idanwo saa keji) whose anchor occurs once, and no examination heading, examination paper, question set or mark scheme exists, so it adds one MARKER entry, no objective and no lesson. The 2nd Term preamble is now indexed and classified scheme-only (YO-PRE-T2-1: title block 3-5 and the 12-row ILANA ISE OSOOSE FUN SAA KEJI scheme 7-141, every row mapped to YO-WK-T2-W01..W12, rows 8, 11 and 12 disposed as scheme-only, two MARKER entries, the page header and footer parts recorded outside extractRawText, and open item YORUBA-T2-PRE-SCHEME-MAPPING for the term-wide confirmation and the lost automatic numbering). The 2nd Term foundation audit is delivered in YO-FND-T2-01 and leaves open item YORUBA-T2-WEEK-LABELS (nine week-label rules, Week 8 representation and rows 11-12 marker binding). The 3rd Term is now indexed at objective level for Week 1 (19 coverage entries: 17 PARTIAL and 2 UNRESOLVED, for oriki and for the scheme terms amuye ewi and koko ewi), with Weeks 2-11, the two 3rd Term preambles and the 3rd Term foundation audit still open.",
       "required_action": "Complete the pending visual and foundation items, then the remaining 2nd- and 3rd-Term indexes; only then can YO-SCOPE-OBJECTIVE-INDEXING be closed. All three assigned sources are registered; extend the affected_ids of this item if further sources are assigned.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b",
@@ -6510,6 +6788,68 @@
         "YORUBA-T2-W10-ROW-IDENTITY",
         "YO-T2-W11-SCHEME-REVISION",
         "YO-T2-W12-SCHEME-EXAMINATION"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T3-W01-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "The 3rd Term scheme is flat and unnumbered: line 5 is only \"Ose: \" and the eleven groups at 7-83 are separated only by position and the repeated EDE/ASA/LIT prefixes, so Week 1 is the first triple at lines 7-11 (SHA-256 62d8c558c9d8d7d25842a84a51e4c20d27b5e3922b26c39a310fb62ce891aa8e). The mapping is documentary by position, confirmed by the teaching label OSE KINNI at line 121 (SHA-256 3ec2404b1133235660a37e10356a14795fb26c6fc1e2206aa73de767c8e4f5eb) and the section 121-426 (SHA-256 b9d0b35a3b6075c9c1565b6bdda3c263fa85324eaa443f99f18fe9253afd21f3). Scheme EDE (line 7, 62087120c9ffa2229e23a6955a5fba01c61168b08ddbda544e768f8c47ffa2ea) names Isori oro and Oro oruko with Oriki, Orisii Oruko and Ise Oro-Oruko ninu Gbolohun; the body teaches the definition (135-141), ten types (145-175) and three functions (179-211) but never teaches oriki (YO-T3-W01-EDE-04) and develops lilo only through examples (YO-T3-W01-EDE-05). Scheme ASA (line 9, c0bb982e8d72a27d18fd1f454318a307413ca2cc7c77938b11e1733fa0d864bd) names Amutorunwa, abiso and inagije with \"abbl.\"; the body adds abiku (235, 271-289). Scheme LIT (line 11, a3b6191c4b57f77dcbf853c733ee019d9521eb09f209ca4d00cbfc6b6bfea206) names Itupale ewi apileko with Amuye ewi and koko ewi; the body teaches ewi apileko and akanlo ede ayaworan (365-385) but uses neither scheme term (YO-T3-W01-LIT-02).",
+      "required_action": "Owner or teacher confirms that Week 1 is the first scheme triple at lines 7-11 (the scheme carries no week numbers), that oruko abiku is in scope under \"abbl.\", and whether the akanlo ede ayaworan teaching satisfies the scheme terms Amuye ewi and koko ewi. No objective is invented here.",
+      "affected_ids": [
+        "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T3-W01-ROW-IDENTITY",
+      "kind": "VERIFICATION",
+      "detail": "The parser produces no rows for this source: the extraction contains zero \"week\" substrings, WEEK_MARKER and BARE_NUMBER_LINE both match zero times, and parseTopics returns [] (NO_PARSED_LESSONS). Week 1 is labelled with the Yoruba ordinal OSE KINNI (line 121, 9 characters, SHA-256 3ec2404b1133235660a37e10356a14795fb26c6fc1e2206aa73de767c8e4f5eb, char offset 2,970), not an English week marker, and the scheme itself carries no numerals or ordinal labels. All 19 Week 1 coverage entries therefore cite exact line ranges and UTF-8 block hashes instead of SS1-SRC-4cc6aae9ed7d:BODY:<sha256> targets, with empty lesson_ids. Static check this run: each of the ten teaching labels OSE KINNI, OSE KEJI, OSE KETA, OSE KERIN, OSE KARUN-UN, OSE KEFA, OSE KEJE, OSE KEJO, OSE KESAN-AN and OSE KEWAA occurs exactly once in the 2,463-line extraction, and lines 121, 427, 679, 963, 1,281, 1,357, 1,625, 1,879, 2,161 and 2,313 are line-initial (the 2nd Term audit YO-FND-T2-01 is the precedent for the tab-bearing anchors). Whether split_before rules are adopted, and with which week labels, belongs to YO-FND-T3-01 (PENDING).",
+      "required_action": "Decide the 3rd Term row-identity approach in YO-FND-T3-01 (the ten ordinal labels are unique and line-initial, but the scheme supplies no week numbers), then re-bind the Week 1 coverage entries to identity targets and re-run the plan audit. No rule is added and no parser run is claimed here.",
+      "affected_ids": [
+        "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T3-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Defects in the Week 1 section (lines 121-426, SHA-256 b9d0b35a3b6075c9c1565b6bdda3c263fa85324eaa443f99f18fe9253afd21f3). Numbering: the first of the ten eya oro oruko at 147 carries no numeral while the other nine are numbered 2-10 at 159-175; in the ASA category list at 233-239 the first item (Oruko amutorunwa) is unnumbered while the next three are ii, iii and iv, so item i is missing; line 241 and line 245 repeat the heading \"Oruko amutorunwa:-\" immediately before the table; every Ise amurele option list at 409-417 is [a], [b], [d] with c omitted. Garbled or inconsistent text: 135, 147, 159 and 187 use the undefined abbreviation \"AP.\" for apeere; 125 writes \"ORO- ORUKO\" with a stray space; 213 asks for four types of ere idaraya inside the EDE part, unrelated to noun use; 253 and 257 both give the name Oke with different meanings and 267 Abiona has no meaning; 273 splits \"sit un\"; 315 ends \"Eegunjo bi\" as a fragment; 343-345 split the Tokunbo meaning across two cells; 365 repeats \"akanlo ede ayaworan\" twice in one sentence; 367 writes \"awitun\" and \"Awiunwi\" for awitunwi; 373 garbles \"Baba agba tit a teru\"; 383-385 garbles both iforodara examples; 411 ends its stem \"oluwa, ..... ati eyan\"; 415 pairs a name-list stem with the unrelated options Olugbodi/Idoha/Salako; 423 writes \"marun-n\".",
+      "required_action": "Subject expert confirms or corrects each defect; lessons must not copy the uncorrected text. No correction wording is authored here.",
+      "affected_ids": [
+        "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T3-W01-NOTATION",
+      "kind": "CONTENT",
+      "detail": "Week 1 (lines 121-426) contains exactly two non-ASCII characters: one en dash U+2013 in \"Oro –oruko\" at 135 and one ellipsis U+2026 in \"Iyalaje…abbl\" at 157. There is no precomposed diacritic, combining mark or soft hyphen anywhere in the section, so e and e-dot, o and o-dot and all tones are indistinguishable; the name tables (amutorunwa, abiku, inagije, abiso) and the grammar examples depend on both sub-dots and tone. No marks were added or normalised.",
+      "required_action": "Subject expert supplies tone-marked and sub-dotted forms (or approves a documented ASCII convention) for the Week 1 material; no marks were added or normalised in this inventory.",
+      "affected_ids": [
+        "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T3-W01-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "No exercise in Week 1 has an answer, solution or marking scheme: Igbelewon 349-353 (two ASA tasks), Igbelewon 389-391 (one LITIRESO analysis task), Apapo igbelewon 395-401 (three tasks), Ise amurele 407-417 (five multiple-choice questions) and Apa keji 419-423 (two tasks), plus the stranded task at 213. The multiple-choice lists omit option c and the Q4 options at 415 do not answer the stem (YORUBA-T3-W01-SOURCE-DEFECTS).",
+      "required_action": "Supply an answer key and marking scheme, or record an explicit decision that these exercises are teacher-marked without a key; do not fabricate answers.",
+      "affected_ids": [
+        "SS1-SRC-4cc6aae9ed7d"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T3-W01-CONTENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Objectives the section does not teach. (1) oriki is announced at 127 but never defined or exemplified (YO-T3-W01-EDE-04). (2) lilo at 133 has no section; noun use is only shown inside examples, and the closing task at 213 asks for sports types instead (YO-T3-W01-EDE-05). (3) abuda, used by the Apa keji task at 423, is never defined in the EDE part. (4) The scheme's amuye ewi and koko ewi appear nowhere in the body (YO-T3-W01-LIT-02). (5) The device list at 365 names six akanlo ede ayaworan devices but only five have sections: akude gbolohun and afiwe are announced and not taught, while iforodara is taught and not announced (YO-T3-W01-LIT-01). (6) The LITIRESO analysis task at 391 names no selected text, author or edition. (7) The cited pages of Adewoyin (2014) - 137-141 for EDE at 219 and 101-119 for ASA at 359 - are not supplied in the document.",
+      "required_action": "Supply source text for oriki, lilo, abuda, amuye/koko ewi, akude gbolohun, afiwe and the named poetry text, or record an explicit deferral; replacement lessons YO-LES-T3-W01-EDE, -ASA and -LIT author the missing content once a decision exists. Do not invent content.",
+      "affected_ids": [
+        "SS1-SRC-4cc6aae9ed7d",
+        "YO-T3-W01-EDE-04",
+        "YO-T3-W01-LIT-02"
       ],
       "blocks_delivery": true
     }
