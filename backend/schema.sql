@@ -466,6 +466,28 @@ CREATE TABLE IF NOT EXISTS device_push_tokens (
 
 CREATE INDEX IF NOT EXISTS idx_device_push_tokens_user ON device_push_tokens(user_id);
 
+-- DATA-04: durable push delivery ledger — one row per attempted push to one
+-- device token, written by utils/push.ts. Records what the provider (Expo)
+-- answered at send time ('accepted' = a ticket was issued, which is NOT proof
+-- of delivery; Expo receipts are not polled). Only a short body_preview is
+-- kept, never the full message. user_id is SET NULL so rows outlive an
+-- account. No retention/pruning job exists yet and no route exposes this table.
+CREATE TABLE IF NOT EXISTS push_deliveries (
+  id                 BIGSERIAL PRIMARY KEY,
+  user_id            UUID REFERENCES users(id) ON DELETE SET NULL,
+  token              TEXT NOT NULL,
+  title              TEXT,
+  body_preview       TEXT,
+  status             TEXT NOT NULL CHECK (status IN ('queued','accepted','error','pruned')),
+  provider_ticket_id TEXT,
+  error              TEXT,
+  message_id         UUID NULL,
+  created_at         TIMESTAMPTZ DEFAULT now(),
+  updated_at         TIMESTAMPTZ DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_push_deliveries_user  ON push_deliveries(user_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_push_deliveries_token ON push_deliveries(token, id DESC);
+
 
 -- ── Audit Log ─────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS audit_log (
