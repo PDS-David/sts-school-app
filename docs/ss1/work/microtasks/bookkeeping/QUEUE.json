@@ -24,23 +24,25 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "BK-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, preservation and visual items. The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and has no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Nothing was run. No lesson, coverage entry, rule, correction or asset was written. BK-INV-T2 should still wait for the owner's answer on BOOKKEEPING-T2-TEXT-MATCHES-T1.",
-    "BK-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended 13 PENDING items (preamble, two markers, four weeks, two preservation, four visual). The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Every week range and parsed week body is byte-identical (same SHA-256) to the 1st Term source's; only the title block ('SIGMA TERM') and the split scheme header differ, and the document properties differ in creation date. BOOKKEEPING-T2-TEXT-MATCHES-T1 is still an open owner action: BK-*-T2 indexing items should not be run before the owner confirms the file, and no duplicate coverage is linked. Nothing was run."
+    "BK-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended 13 PENDING items (preamble, two markers, four weeks, two preservation, four visual). The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Every week range and parsed week body is byte-identical (same SHA-256) to the 1st Term source's; only the title block ('SIGMA TERM') and the split scheme header differ, and the document properties differ in creation date. BOOKKEEPING-T2-TEXT-MATCHES-T1 is still an open owner action: BK-*-T2 indexing items should not be run before the owner confirms the file, and no duplicate coverage is linked. Nothing was run.",
+    "BK-WK-T1-W02 (2026-10-30) indexed 1st Term Week 2 (blocks 87-108, range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218) at objective level and added nine coverage entries (seven PARTIAL, two UNRESOLVED) and five open items. Scheme entries 5-7 map to the week by label order and by topic. Entry 6's difference sub-item is untaught anywhere in the document; the example (nine April transactions under the placeholder year 19x9) has no solution; no double column cash book is balanced in any week. Appended two LESSON items (BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP) and one BLOCKED FACTUAL_DEPENDENCY item (BK-FACT-T1-W02-DEFECTS). Week 2 carries no table, drawing, image, equation or media object; the document's three tables (blocks 122, 135, 175) and eight drawing objects (blocks 49, 56, 70, 79, 170) sit in Weeks 1, 3 and 4. Nothing was run: no lesson, no rule, no asset, no importer or plan run. Testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1,
+    "FACTUAL_DEPENDENCY": 2,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 4,
     "SOURCE_WEEK_INDEXING": 8,
     "SOURCE_PRESERVATION": 4,
-    "VISUAL_DISPOSITION": 8
+    "VISUAL_DISPOSITION": 8,
+    "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 28,
-    "BLOCKED": 1
+    "PENDING": 29,
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -491,8 +493,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1): blocks 87-108; range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218. Sections: label 87, heading 88 'DOUBLE COLUMN CASH BOOK', meaning 89, accounting entries 90-92, example instruction 93-94, placeholder year '19x9' (block 95), nine dated transactions 96-104, blank blocks 105-108. Parsed row (mammoth raw text, regex replication only, importer not run): title 'DOUBLE COLUMN CASH BOOK', body 1,148 characters, body sha256 bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b. No solution follows the example; no 'difference between single and double column cash book' section exists in the body; there is no assessment section in this week. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-219; block 220 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented by BK-WK-T1-W02 (2026-10-30; master f0a7964; note docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W02.md). Nine coverage entries added (seven PARTIAL, two UNRESOLVED) and five open items. Scheme entries 5-7 map to blocks 87-108 by label order and topic. Entry 6's difference sub-item is untaught anywhere in the document; the nine-transaction example has no solution; no double column cash book is balanced in any week. Week 2 carries no table, drawing, equation or media object. Nothing was run. Testing deferred by owner; not approved and not verified.",
       "completion_condition": "Each objective listed with a block locator and a status; the missing worked solution and any objective without a body recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
     },
     {
@@ -1292,6 +1294,137 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (BK-INV-T2): block 171 has empty text and holds one VML shape 'Right Brace 1' (7.15pt wide, 42.7pt high) anchored beside blocks 172-173. It is the eighth and last VML object in the member; there are no image parts, no OLE objects and no equations. Extracted text contains nothing for it, so its removal loses no wording. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BK-FACT-T1-W02-DEFECTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
+      "objective": "Obtain one recorded subject-expert decision on the seven Week 2 source defects, on the contra treatment of the two transfer transactions and on the placeholder year, so the two Week 2 lessons can be authored without copying errors or inventing policy.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-FACT-T1-W02-DEFECTS.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-WK-T1-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by BK-WK-T1-W02 (2026-10-30): the seven defects in BOOKKEEPING-T1-W02-SOURCE-DEFECTS with their block locators; whether the April 4 and April 29 transfers are contra entries before the scheme's entry 8 (BOOKKEEPING-T1-W02-CONTRA-SEQUENCING); and whether the '19x9' placeholder year is retained or replaced by a dated example (BK-PRES-T1-CURRENCY). No correction is invented here.",
+      "completion_condition": "Every numbered defect and both open decisions are resolved by a named expert decision recorded with evidence and locators; the two Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "id": "BK-LES-T1-W02-DIFF",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, scheme block 14 (sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7) and Week 2 body blocks 87-108; objective COV-BK-T1-W02-DIFF (UNRESOLVED)",
+      "objective": "Author the Week 2 lesson for scheme entry 6's difference sub-item: the difference between the single column cash book and the double column cash book, with corrected terminology, an explicit comparison (columns per side, accounts kept, treatment of cheques, balancing), and practice with complete answers and marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ingestTopics.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-LES-T1-W02-DIFF.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-WK-T1-W01",
+        "BK-WK-T1-W02",
+        "BK-FACT-T1-W02-DEFECTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by BK-WK-T1-W02 (2026-10-30): the sub-item is untaught in the whole source, so COV-BK-T1-W02-DIFF is UNRESOLVED and BOOKKEEPING-T1-W02-DIFFERENCE-MISSING is open. It depends on BK-WK-T1-W01 because the single column book and its two accounts are taught there, and on BK-FACT-T1-W02-DEFECTS for the terminology decision ('two column' against 'double column'). No comparison is authored in BK-WK-T1-W02.",
+      "completion_condition": "A lesson in bookkeeping.json teaches the comparison from the single column content indexed by BK-WK-T1-W01, carries the decisions of BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "id": "BK-LES-T1-W02-PREP",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218); objectives COV-BK-T1-W02-SCHEME-6, -SCHEME-7, -EXAMPLE and -BALANCE",
+      "objective": "Author the Week 2 lesson for scheme entries 6 and 7, preparation of a double column cash book: the layout and rules, the worked solution and balancing of the block 93-104 example (nine April transactions), the closing and brought-down balances, the solution labelled as authored, and practice with marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ingestTopics.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-LES-T1-W02-PREP.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-WK-T1-W02",
+        "BK-PRES-T1-WORKED",
+        "BK-FACT-T1-W02-DEFECTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by BK-WK-T1-W02 (2026-10-30): the example has no solution (blocks 105-108 empty), no double column book is balanced anywhere in the document, and the source's only balancing model is the defective Week 1 text. COV-BK-T1-W02-SCHEME-6, -SCHEME-7 and -EXAMPLE are PARTIAL and -BALANCE is UNRESOLVED; BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION, -BALANCING-UNTAUGHT and -CONTRA-SEQUENCING are open.",
+      "completion_condition": "A lesson in bookkeeping.json prepares a double column cash book from the nine source transactions, states every derived total and balance, labels the solution as authored rather than as the source's, resolves the two transfers as decided in BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     }
   ],
   "review": {
@@ -1307,7 +1440,6 @@
     }
   },
   "next_runnable": [
-    "BK-WK-T1-W02",
     "BK-WK-T1-W04",
     "BK-WK-T1-W01",
     "BK-WK-T1-W03",
@@ -1334,6 +1466,8 @@
     "BK-VIS-T2-BRACE-W04",
     "BK-PRES-T2-WORKED",
     "BK-PRES-T2-CURRENCY",
-    "BK-TEST-PACKAGE"
+    "BK-TEST-PACKAGE",
+    "BK-LES-T1-W02-DIFF",
+    "BK-LES-T1-W02-PREP"
   ]
 }

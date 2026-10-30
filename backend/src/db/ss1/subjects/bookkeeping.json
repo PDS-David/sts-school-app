@@ -91,7 +91,162 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-BK-T1-W02-SCHEME-5",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 5: the double column cash book - its meaning and the items recorded in it",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 10-12 (range sha256 af820d7350176e7c73a31ad9aebe92a2b98e387837bc44e8ae252234db0a0189); WEEK TWO label block 87 (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme list blocks 0-29 (range sha256 581587fcf71c6d77b82abac943b40f79becbda4807c855bd3431cf63bc6d302b); block 10 '5.Double column cash book' (sha256 ffb61cbdc6dd8137827c7598adf0610780d1996cc6a195fc2717c968db022b26); block 11 '-Meaning of double column cash book.' (sha256 f801883455de37839f2031c29f5b1cc4db4a4d09f41d22d07ac349c2dbfbe6ab); block 12 '-Items in double column cash book' (sha256 95b18fa37e2062a023ff694afd07cb2321ab1d5c47d849755060daec7a3727b5)",
+          "explanation": "The scheme carries no week numbers. Week 2 is the second labelled week (block 87 'WEEK TWO') and is the only week whose body defines the double column cash book (block 88 heading 'DOUBLE COLUMN CASH BOOK', block 89 meaning), so entry 5 is mapped to this week by label order and by topic. Blocks are direct children of w:body in word/document.xml of the verified member, 0-based (block 220 is w:sectPr); block text is the concatenation of its w:t runs with tab elements dropped; a range hash is the SHA-256 of the block texts first..last joined with \\n."
+        },
+        {
+          "locator": "body block 89 (sha256 3a8acf3d47622167f3591dffda4f919431925d2c8e92779832662b3131e5b16c); entry rules blocks 90-92 (range sha256 3f86c2bd635d757b6a3e7c7da0daf81d388fa063903990fd17a69eea3d4516e0)",
+          "explanation": "The meaning half of entry 5 is taught at block 89 and both columns are named, one cash and one bank. The items half is not developed: the body never lists what is recorded in or excluded from the book, and blocks 91-92 give two payment-side rules only. PARTIAL: taught in part, no deliverable lesson, and no parsed-row identity is declared for this source (no source rule; importer not run)."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-SCHEME-6",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 6: the double column cash book - its difference from the single column cash book and its preparation",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 13-15 (range sha256 5e226de310583020debfaae32f84b55afc519cd97b20632b8569044b0972a1ff); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 13 '6.Double column cash book' (sha256 cd132870619b16dcee484abbc2feb4005251670cbf44c62f7ff41aa97080c595); block 14 '-Difference between single column cash book.' (sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7); block 15 '-Preparation of double column cash book.' (sha256 e5818ceb257356431c8226e7de4a8d1e8af538fdc177294d1c2bb5d64c0ccc17)",
+          "explanation": "Entry 6 carries two sub-items. The difference sub-item is not taught in this week or anywhere else in the document, so COV-BK-T1-W02-DIFF is UNRESOLVED. The preparation sub-item is set as an exercise only. PARTIAL overall."
+        },
+        {
+          "locator": "example statement blocks 93-94 (range sha256 f0c6b7c7b2b0da3fe47601e0b27c9b161dc3ce04f4d90fb58f1baf438535d90c); transactions blocks 96-104 (range sha256 2ba067dca64e73480a72396b6182127fd34d2f691f0914392f1b7421d2e061ae); blank blocks 105-108 (range sha256 6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167)",
+          "explanation": "The week's only preparation material is the instruction at block 94 and nine transactions at 96-104. No worked cash book, totals, balances or folio marks follow; blocks 105-108 are empty. A scheme sub-item set without a preparation is PARTIAL, not SUPPORTED."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-SCHEME-7",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 7: preparation of the double column cash book",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 16-17 (range sha256 5002456ae48f4ababa65f4c2fe7f86c2c7ab41319d9dfa31edf3406731754074); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 16 '7.Double column cash book.' (sha256 7570480347ecf6e428976a66d0f114e1f15ebbf949344ddf69f181333b14041e); block 17 '-Preparation of double column cash book.' (sha256 e5818ceb257356431c8226e7de4a8d1e8af538fdc177294d1c2bb5d64c0ccc17)",
+          "explanation": "Block 17 is byte-identical to block 15 (same SHA-256), so entry 7 restates entry 6's preparation sub-item and adds no content of its own. The repeated scheme line does not create a second objective body, and the same single unsolved example (blocks 93-104) is the only preparation material. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-MEANING",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The meaning of the double column cash book: cash and bank columns on each side, used for mixed cash and bank transactions",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body block 89 (sha256 3a8acf3d47622167f3591dffda4f919431925d2c8e92779832662b3131e5b16c); heading block 88 (sha256 6cc6e346f1e66d4d8dfb36bc6da9dc9a3a77fd402a833dbeb8536966262df867)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 89 text: 'Meaning: The two column Cash book so-called because for both debit and credit entries, it has two columns, one for recording cash transactions and the other for bank transactions. It is therefore used for recording mixed cash and bank transaction.' (247 characters)",
+          "explanation": "The definition names both sides and both columns and states the mixed cash-and-bank use, so the meaning is taught. It is one ungrammatical sentence ('The two column Cash book so-called because' lacks a verb), it gives no illustration, and it calls the book 'two column' where the scheme (blocks 10, 13, 16) and the heading (block 88) say 'double column'. The wording is recorded in BOOKKEEPING-T1-W02-SOURCE-DEFECTS and is not corrected here. PARTIAL: taught, but no deliverable lesson exists."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-ITEMS",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The items of the double column cash book: the cash and bank columns and the receipts and payments entered in them",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 89-92 (range sha256 1adb5fdfb4e9ce4f3b60d87ebd236572eb99ea1c77b75528c5fbbd83ec184ea8)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 89; heading block 90 'Accounting Entries' (sha256 a85a00d02e8dca75f11b2d3e228dbd4c4a77e8e346183ee14c8023032648a94e); rules blocks 91-92",
+          "explanation": "The only item-level teaching is the statement that one column records cash transactions and the other bank transactions (block 89) plus the heading 'Accounting Entries' (block 90) and two rules (91-92). The body never lists the items, prints no column headings, has no opening or closing balance lines, does not state that credit transactions are excluded (compare Week 1 block 34), and does not treat discount columns. The items objective is therefore only partly met. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-ENTRIES",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Accounting entries for the double column cash book: cash payments credited to the cash column, cheque payments credited to the bank column, and the bank withdrawal entry",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 90-92 (range sha256 3f86c2bd635d757b6a3e7c7da0daf81d388fa063903990fd17a69eea3d4516e0)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 91 (sha256 44940ca59a36f722cf96e5401529ef0163310143e2575f2107e39b5f1572a03e): 'All payments in cash are recorded by crediting the cash column of the cash book. If the payment is by cheque the bank column is credited.'",
+          "explanation": "The rule states the two payment-side entries correctly but gives no example and no receipt-side counterpart. A learner is taught how money leaves the book and not how it enters it."
+        },
+        {
+          "locator": "block 92 (sha256 924ac9f21c8ee34a078880ce11867f6c46933e9d8c3e49ac950008e9e89ad5bc): 'When cash is withdrawn from the bank (e.g for paying wages and sundry expenses), the cash column is debited and the bank column is credited with the amount involved.'",
+          "explanation": "The withdrawal entry is stated for the withdrawal case only, with wages as its illustration. Applied to block 104 'Wages paid by cheque N75' - a direct cheque payment, not a withdrawal - the wording would debit cash instead of wages. The conflict is recorded in BOOKKEEPING-T1-W02-SOURCE-DEFECTS and is one of the decisions booked in BK-FACT-T1-W02-DEFECTS. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-DIFF",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The difference between the single column cash book and the double column cash book",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme block 14 (sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 14 '-Difference between single column cash book.'; the whole body blocks 0-219 (range sha256 ca09a3081a2be0f916c72103932c2099b7fe83a52da0c2b3b5cda8df3aaf842f)",
+          "explanation": "The word 'difference' occurs once in the whole document: in the scheme line that names this sub-item. No paragraph anywhere compares the two books."
+        },
+        {
+          "locator": "Week 1 body blocks 30-86 (range sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3); Week 3 blocks 109-157 (range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997)",
+          "explanation": "Week 1 defines the single column book and its cash and bank accounts without comparing it with the double column book ('single column' appears only in the preamble, blocks 5, 6, 7, 8, 9 and 14). Week 2 never mentions the single column book. Weeks 3 and 4 teach contra entry and double entry and do not compare the two books either. The objective is untaught in the whole source, not merely absent from this body. UNRESOLVED; the bounded lesson task BK-LES-T1-W02-DIFF is appended."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-EXAMPLE",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The worked example: record nine April transactions in a two column cash book, balance it and bring down the balances of cash in hand and cash at bank",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 example blocks 93-104 (range sha256 3c2e4b49833b728e0e3f972ece51482c01f2904e97a4be7a767349a998afef3c); placeholder year block 95 (sha256 9a0adea5a3daa4b083fcd92f2645b188884efb89f8fd30a82bfe913f947d55d3)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 93 'Example:' (sha256 872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad); block 94 (sha256 aa33184e3aaa9800611e3f1d3e30ff6b2e91e79483cdabaf6ca506bbd5856908)",
+          "explanation": "The instruction asks for the transactions to be recorded in a two column cash book, the cash book balanced and the balances of cash in hand and cash at bank brought down at the end of the period. No business name, opening balances or answer format are given."
+        },
+        {
+          "locator": "placeholder year block 95; transaction blocks 96-104 (range sha256 2ba067dca64e73480a72396b6182127fd34d2f691f0914392f1b7421d2e061ae)",
+          "explanation": "Nine dated April transactions sit under the placeholder year '19x9'. Two of the nine - 'April 4: Paid N1,850 of the capital into bank' (block 97) and 'April 29: Cash paid into bank N1,000' (block 103) - transfer money between cash and bank and are contra entries, while the scheme schedules contra entry as entry 8 (blocks 18-21), after this week. Recorded in BOOKKEEPING-T1-W02-CONTRA-SEQUENCING and decided in BK-FACT-T1-W02-DEFECTS."
+        },
+        {
+          "locator": "blank blocks 105-108 (range sha256 6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167; each block sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)",
+          "explanation": "No solution follows: the four blocks after the transactions are empty and the week contains no table, totals, balances, folio marks or assessment section. Week 2's only task is therefore this unsolved example, with no practice questions and no marking scheme. Any solution authored later must be labelled as authored, not as the source's (BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION). PARTIAL, not UNRESOLVED: the exercise is set; only its answer is missing."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W02-BALANCE",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Balancing the double column cash book at the end of a period and bringing down the balances of cash in hand and cash at bank",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 instruction block 94 (sha256 aa33184e3aaa9800611e3f1d3e30ff6b2e91e79483cdabaf6ca506bbd5856908); the only balancing shown in the document, Week 1 blocks 56-57 and 78",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 94; Week 2 example blocks 93-104 (range sha256 3c2e4b49833b728e0e3f972ece51482c01f2904e97a4be7a767349a998afef3c); Week 3 cash books blocks 121-122 (50f7bcab93db04a2fa33854ba34f46d6e95918e4455540913256e0bd02990bb8 at block 122) and 134-135 (bc543e99e8376f0fe5228f6c3310772051ac2dcd1c71bb8bb96202015256fcc7 at block 135); Week 4 posting illustration blocks 183-205 (range sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878)",
+          "explanation": "The instruction requires balancing and both balances brought down, but no week demonstrates balancing a double column cash book: this week's example has no solution, the two contra cash books of Week 3 are not closed, and Week 4's posting illustration is unsolved. The method - balancing each of the two columns separately and carrying each balance down on the opposite side - is stated nowhere."
+        },
+        {
+          "locator": "block 56 'Bal. c/d1,010' (sha256 88698540eb62883e2db610f83f684bdd70c5aa2ed3f903d434e724347b8ba2a0); block 57 '2,1152,115' (sha256 bcc30f30a2899e257df0a87ab32fe5ee06022fcaa444ca169b865f4b6213918f); block 78 'Bal. b/d 1,910Bal. c/d1,010' (sha256 4699386dcdafd23bf812b74b1c3ab5cd7beb819ae079264dd314393a643e9047)",
+          "explanation": "The only balancing shown in the document is inside Week 1's single column cash and bank accounts, and those figures are themselves defective (BK-WK-T1-W01, BK-PRES-T1-WORKED), so they cannot serve as the model for a two column balance without correction. UNRESOLVED; folded into the bounded lesson task BK-LES-T1-W02-PREP."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "BOOKKEEPING-ALIAS-APPROVAL",
@@ -134,6 +289,70 @@
       "affected_ids": [
         "SS1-SRC-97f226215927-R001",
         "SS1-SRC-97f226215927"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W02-DIFFERENCE-MISSING",
+      "kind": "CONTENT",
+      "detail": "Scheme entry 6's sub-item '-Difference between single column cash book.' (block 14, sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7) is not taught anywhere in the 1st Term document. The word 'difference' occurs once, in that scheme line. Week 1 (blocks 30-86) defines the single column cash book and its cash and bank accounts without comparing it with the double column book, and Weeks 2-4 never compare the two; Week 2's body does not mention the single column book at all.",
+      "required_action": "Author the comparison as BK-LES-T1-W02-DIFF, bounded to the differences that matter for the source's own material, and state explicitly what the source does not settle. Do not invent a comparison list or copy one from an unsupplied textbook.",
+      "affected_ids": [
+        "COV-BK-T1-W02-DIFF",
+        "COV-BK-T1-W02-SCHEME-6",
+        "BK-LES-T1-W02-DIFF"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT",
+      "kind": "CONTENT",
+      "detail": "Block 94 instructs the learner to 'Balance the cash book and bring down the balances of cash in hand and cash at bank', but no week demonstrates balancing a double column cash book. Week 2's example has no solution (blocks 105-108 are empty), Week 3's two contra cash books (blocks 121-122 and 134-135) are not closed, and Week 4's posting illustration (blocks 183-205) is unsolved. The only balancing shown is Week 1's single column account (blocks 56-57 and 78), whose figures are themselves defective.",
+      "required_action": "Author the balancing procedure and the closing and brought-down lines for the Week 2 example inside BK-LES-T1-W02-PREP, labelled as authored, and state which balance figures are derived rather than printed by the source.",
+      "affected_ids": [
+        "COV-BK-T1-W02-BALANCE",
+        "COV-BK-T1-W02-EXAMPLE",
+        "BK-LES-T1-W02-PREP"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION",
+      "kind": "CONTENT",
+      "detail": "The Week 2 example (blocks 93-104) sets nine April transactions for the placeholder year '19x9' and asks for a balanced two column cash book with the balances brought down, but the source supplies no solution: blocks 105-108 are empty and no table, totals, balances or folio marks follow. Week 2 also has no assessment section, no practice questions and no marking scheme, so this unsolved example is the week's only task.",
+      "required_action": "Author a complete worked solution, practice and marking in BK-LES-T1-W02-PREP, and label the whole solution as authored by the project, not as the source's; the source text stays unchanged (BK-PRES-T1-WORKED).",
+      "affected_ids": [
+        "COV-BK-T1-W02-EXAMPLE",
+        "COV-BK-T1-W02-BALANCE",
+        "BK-LES-T1-W02-PREP",
+        "BK-PRES-T1-WORKED"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W02-CONTRA-SEQUENCING",
+      "kind": "CONTENT",
+      "detail": "Two of the nine Week 2 example transactions move money between cash and bank: 'April 4: Paid N1,850 of the capital into bank' (block 97, sha256 fae83f79ab16560d9edbbc9dcf5a09fb6421ae6741d5678c485606c916e4d542) and 'April 29: Cash paid into bank N1,000' (block 103, sha256 7d34d6ef7381c46f9c155cc5b5a8607ef6412c9675f7d6039971b60013aaf977). Both are contra entries, and the scheme schedules contra entry as entry 8 (blocks 18-21), after this week. No Week 2 text mentions contra, the folio column or the 'C' folio, so a learner working the example before Week 3 has no taught treatment for these two items.",
+      "required_action": "Record one expert decision in BK-FACT-T1-W02-DEFECTS on whether the two transfers are treated as contra entries in the authored solution (with the 'C' folio) or carried unposted, and on whether the Week 2 lesson may introduce contra before its scheme entry. Do not decide it inside the lesson.",
+      "affected_ids": [
+        "COV-BK-T1-W02-EXAMPLE",
+        "COV-BK-T1-W02-ENTRIES",
+        "BK-FACT-T1-W02-DEFECTS",
+        "BK-WK-T1-W03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W02-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Week 2 source defects, all retained uncorrected: (1) block 89 reads 'The two column Cash book so-called because' with no verb, calls the book 'two column' where the scheme and heading say 'double column', and uses the singular 'transaction' for several transactions. (2) The heading 'Accounting Entries' (block 90) introduces two payment-side rules only; no receipt-side entry is stated. (3) Block 92 presents the bank-withdrawal case with wages as its illustration, which conflicts with block 104 'Wages paid by cheque N75' - a direct cheque payment, not a withdrawal. (4) Block 94 gives no business name and no opening balances, and does not state that each column is balanced separately. (5) Block 95 '19x9' is a placeholder year, with no term or opening date. (6) Blocks 96-104 use no folio column, and block 104 alone ends with a full stop. (7) Blocks 105-108 are four empty blocks with no solution and no assessment.",
+      "required_action": "Correct nothing in the source. In BK-FACT-T1-W02-DEFECTS record one expert decision per numbered defect (retain, correct or replace) so the authored lesson does not copy the wording; the source text stays unchanged.",
+      "affected_ids": [
+        "COV-BK-T1-W02-MEANING",
+        "COV-BK-T1-W02-ENTRIES",
+        "COV-BK-T1-W02-EXAMPLE",
+        "BK-FACT-T1-W02-DEFECTS",
+        "BK-LES-T1-W02-PREP"
       ],
       "blocks_delivery": true
     }
