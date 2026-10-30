@@ -637,6 +637,148 @@
           "explanation": "Debits 2,500 + 450 + 230 = 3,180. Credits are 650 + 750 + 50 + 30 + 25 = 1,505 plus a carried-down 1,010 = 2,515, not the 3,180 printed at block 80. Blocks 73-76 repeat Illustration 1 July entries and June 9 is omitted; block 78 prints an unexplained Bal. b/d 1,910. PARTIAL; see BOOKKEEPING-T1-W01-FIGURE-CHECKS."
         }
       ]
+    },
+    {
+      "id": "COV-BK-T1-W03-SCHEME-8",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 8: the contra entry - explain it, identify it and record it",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 18-21 (sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters); body blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1362 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme blocks 18-21 (sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters): 8.Contra Entry. / -Explain contra entry / -Identify contra entry / -Recording contra entry",
+          "explanation": "Entry 8 carries three sub-items. All three have a body - explanation at 111-113, identification at 116-118 and 130-132, recording at 119-124 and 133-135 - but none is fully carried, so the entry as a whole is PARTIAL rather than SUPPORTED."
+        },
+        {
+          "locator": "body blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1362 characters)",
+          "explanation": "The section is 1,362 characters over 49 blocks, of which 23 carry text and 26 are empty; blocks 136-157 are empty. It sets no exercise, prints no totals and no balance, and never states a general posting rule for contra."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W03-EXPLAIN",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The meaning of a contra entry: what it is, which two accounts it affects and when it arises",
+      "objective_locator": "body blocks 111-113 (sha256 ea3f1b450e4001fcda10161cfa809cf821936497a530a3f8ead7bf54ec5b9d72, 353 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 111 (sha256 7cf4798488d8862d3049c68c4deaff32799d35136baf5f4d036a5a27893e80ff, 154 characters): Contra is a latin word which shows that cash has been withdrawn from the office and deposited in the bank or withdrawals of cash from bank for office use.",
+          "explanation": "Both directions are given, but in one run-on sentence that calls contra a latin word. The sentence never says that two accounts are affected or that the same amount is entered on both sides, which is what makes the entry a contra."
+        },
+        {
+          "locator": "block 112 (sha256 719ff225f6361ae3ea42dcfff41978fccbf8ee0659f963479b76a461313aa9dd, 101 characters): It is an entry involving the payment of cash into the bank and is denoted by C in the folio column.",
+          "explanation": "Narrows contra to the payment of cash into the bank, contradicting the withdrawal case taught fourteen blocks later at 126-135. The C is wrapped in curly double quotation marks (U+201C, U+201D)."
+        },
+        {
+          "locator": "block 113 (sha256 13f67fc44e12b751cab49ef74f630d855fc25ad1de7b46ced1a29de10877a7c7, 96 characters): It may simply be defined as the transfer of an account to the identical side of another account.",
+          "explanation": "Wrong as a definition: the week's own effect and action pairs (117-118, 131-132) post the same transaction to the opposite side of the other account. Recorded as BOOKKEEPING-T1-W03-CONCEPT-ERROR."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W03-IDENTIFY",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Identifying a contra entry: for each direction, which balance falls, which rises and which column is credited or debited",
+      "objective_locator": "body blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a, 103 characters) and blocks 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a, 107 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a, 103 characters): EffectAction Required / Cash balance is decreasedCr. Cash column / Bank balance is increasedDr. Bank column",
+          "explanation": "Gives the effect and the column to be written for money paid into the bank. It does not name the folio mark, does not pair the two statements as one entry, and runs the label, the debit or credit and the column together without a separator because the row is a flattened table (BK-VIS-T1-TBL-W03)."
+        },
+        {
+          "locator": "blocks 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a, 107 characters): EffectAction Required / Bank balance will decreaseCr. Bank column / Cash balance will increaseDr. Cash column",
+          "explanation": "Mirrors the first pair for withdrawals, and blocks 131 and 132 each end with a trailing space. Block 116 is byte-identical to block 130 (sha256 1db4bc45a5efc035e858390ba776222e60cb197f34071115e157e232365c432c), so the heading is reused without change."
+        },
+        {
+          "locator": "body blocks 109-135 (sha256 b987157e53da2cad32fe0518951cf18d298d6ea1bf3435f624a624085f030149, 1340 characters): the two pairs are the only identification material in the week",
+          "explanation": "No non-contra transaction is placed beside them, so nothing shows how a learner tells a contra entry from an ordinary receipt or payment, and no question asks for the identification. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W03-FOLIO",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The folio column mark for a contra entry: the capital C, written on both sides of the cash book",
+      "objective_locator": "body block 112 (sha256 719ff225f6361ae3ea42dcfff41978fccbf8ee0659f963479b76a461313aa9dd, 101 characters) and block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 112 (sha256 719ff225f6361ae3ea42dcfff41978fccbf8ee0659f963479b76a461313aa9dd, 101 characters): ...is denoted by C in the folio column.",
+          "explanation": "Introduces the mark but not the folio column: the week never says what a folio reference records, why this one is a capital C, or that ordinary entries carry a reference to the other account. Only the contra mark is taught."
+        },
+        {
+          "locator": "block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters): Note: C must be put on both sides to represent contra entry.",
+          "explanation": "States the both-sides requirement in one sentence, and both tables carry C in the folio cell of each side (block 122 row 2 and row 3, block 135 row 2). The convention is therefore shown as well as stated, but its general setting is not."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W03-RECORD-A",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Recording the payment of cash into the bank as a contra entry: the example at 119-120 and its cash book at 121-122",
+      "objective_locator": "body blocks 119-124 (sha256 6baddec62249c0b72b24c6f3ec79c371d1a93c2f562435c6f554b425285b4212, 279 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 119-120 (sha256 2ebd7521de05ff26bb2a1bd74a7858de613d06b9a58115c4a8a6c45c62b63f0d, 84 characters): E.g: Jan. 1 cash balanced N300 / Jan. 2 cash paid into the bank amounted to N710",
+          "explanation": "The two figures do not reconcile: a N300 cash balance is followed by N710 paid into the bank, and no bank balance, receipt or earlier balance appears anywhere in the week. The second line is indented with six literal spaces. Recorded in BOOKKEEPING-T1-W03-FIGURE-CHECKS."
+        },
+        {
+          "locator": "blocks 121-122 (sha256 e16c3df4c979444fee32970bba99015955a1adfd1226fd5eb6cb2d7adbbbfa2e, 130 characters), with the table at block 122 (sha256 50f7bcab93db04a2fa33854ba34f46d6e95918e4455540913256e0bd02990bb8, 116 characters)",
+          "explanation": "Block 121 runs Dr, the account title and Cr together as DrCash BookCr. The table has four rows of ten cells (Date, Particulars, Folio, Cash, Bank, twice). Read by cell, row 2 is Dr Bank 300 against Cr Cash 300 and row 3 is Dr Bank 710 against Cr Cash 710: money paid in debits Bank and credits Cash, which is right. The table carries no total and no balance."
+        },
+        {
+          "locator": "block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters): Note: C must be put on both sides to represent contra entry.",
+          "explanation": "Follows the table as its only explanation. It states the folio rule but not the posting rule the table applies, and the table's four bare N header cells never label the Cash and Bank columns."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W03-RECORD-B",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Recording the withdrawal of cash from the bank as a contra entry: the example at 127-133 and its cash book at 134-135",
+      "objective_locator": "body blocks 126-127 (sha256 1e8586577c6046518f209b00512050f11b7efca2049f02db6985ce681761731d, 200 characters) and blocks 133-135 (sha256 d8712897f37d3fac9bf31732cdee21c39d30aff853b900a0f054b447202badbd, 151 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 126-127 (sha256 1e8586577c6046518f209b00512050f11b7efca2049f02db6985ce681761731d, 200 characters): b.Withdrawals from bank for office use. / When there is no sufficient cash in the office to meet payments, cash can be withdrawn from bank. When this occurs, the effect and action will be started below.",
+          "explanation": "Block 127 prints started where the sense requires stated, and announces the effect and action below rather than stating them. The reason given (insufficient cash) is the mirror of block 115 (too much cash in the office), which is consistent."
+        },
+        {
+          "locator": "blocks 133-135 (sha256 d8712897f37d3fac9bf31732cdee21c39d30aff853b900a0f054b447202badbd, 151 characters): E.g: Jan. 4 withdrew cash N800 from bank for office use. / Dr Cr / the table at block 135 (sha256 bc543e99e8376f0fe5228f6c3310772051ac2dcd1c71bb8bb96202015256fcc7, 88 characters)",
+          "explanation": "Block 134 prints only Dr Cr, unlike block 121's DrCash BookCr, so the two tables are headed differently. Read by cell, the three-row table has Dr Cash 800 against Cr Bank 800, correct for a withdrawal. The N800 has no stated source: no bank balance is ever given and the N300 cash balance at 119 is not referred to."
+        },
+        {
+          "locator": "blocks 133-135 (sha256 d8712897f37d3fac9bf31732cdee21c39d30aff853b900a0f054b447202badbd, 151 characters): the second example closes the teaching",
+          "explanation": "Blocks 136-157 are empty, so the week ends on this table with no totals, no resulting balances and no exercise."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W03-RULE",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The posting rule that makes an entry a contra: debit the account or column that receives, credit the one that gives, and mark both C",
+      "objective_locator": "body blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a, 103 characters), blocks 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a, 107 characters) and block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a) and 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a): Cr. Cash column / Dr. Bank column and Cr. Bank column / Dr. Cash column",
+          "explanation": "The two worked directions are correct and consistent with each other, but the week never generalises them into a rule, and never says that the two amounts are equal and opposite or that a contra leaves the total of the cash book unchanged."
+        },
+        {
+          "locator": "block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters)",
+          "explanation": "The only rule-like sentence in the week, and it covers the folio mark alone. A pupil who reads the week can copy both examples but is not given the rule that would let them classify or record a new contra. PARTIAL."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -901,6 +1043,79 @@
         "COV-BK-T1-W01-SCHEME-4",
         "COV-BK-T1-W01-ILLUS-1",
         "COV-BK-T1-W01-ILLUS-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W03-SCHEME-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Scheme entry 8 (blocks 18-21, sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters) reads 8.Contra Entry. with the sub-items -Explain contra entry, -Identify contra entry and -Recording contra entry. It is carried by Week 3, blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997): label 109, heading 110, definition 111-113, direction (a) 114-124, direction (b) 126-135, then 22 empty blocks. The twelve scheme entries carry no week numbers, so the mapping rests on label order and topic, as for Weeks 1, 2 and 4; the term-wide mapping remains BK-PRE-T1 (PENDING). Two sequencing facts need a decision before the lesson is written: Week 3 records its examples in a cash book with Cash and Bank columns, the two-column form first taught in Week 2, and no block in Week 3 re-states that ruling; and the Week 2 example already contains two transfers between cash and bank (BOOKKEEPING-T1-W02-CONTRA-SEQUENCING, affected id BK-WK-T1-W03), which teaches the transaction before the scheme entry that explains it.",
+      "required_action": "Complete BK-PRE-T1's term-wide mapping, and record in BK-FACT-T1-W03-DEFECTS whether the Week 3 lesson may rely on the Week 2 two-column ruling and how it is to be ordered against the decision required by BOOKKEEPING-T1-W02-CONTRA-SEQUENCING.",
+      "affected_ids": [
+        "COV-BK-T1-W03-SCHEME-8",
+        "COV-BK-T1-W03-EXPLAIN",
+        "COV-BK-T1-W03-IDENTIFY",
+        "COV-BK-T1-W03-FOLIO",
+        "COV-BK-T1-W03-RECORD-A",
+        "COV-BK-T1-W03-RECORD-B",
+        "COV-BK-T1-W03-RULE",
+        "BK-FACT-T1-W03-DEFECTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W03-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Thirteen defects found in Week 3 (blocks 109-157), retained uncorrected: (1) block 111: the definition is one 154-character run-on sentence that calls contra a latin word and never says two accounts are affected. (2) block 112: limits contra to the payment of cash into the bank although 126-135 teaches the reverse direction, and wraps the C in curly double quotation marks. (3) block 113: the transfer of an account to the identical side of another account is wrong, since the week's own pairs post to opposite sides. (4) blocks 116 and 130: EffectAction Required runs the two column headings together, and blocks 117-118 and 131-132 run the effect, the debit or credit and the column together (decreasedCr. Cash column). (5) blocks 116-118 and 130-132 are a Word table flattened to paragraph text, so row grouping survives only as position (BK-VIS-T1-TBL-W03). (6) blocks 119-120: a cash balance of N300 is followed by N710 paid into the bank, and the N710 has no stated source. (7) block 120: the line begins with six literal spaces, not a tab. (8) block 121: DrCash BookCr runs Dr, the account title and Cr together, while block 134 prints only Dr Cr, so the two tables are headed differently. (9) blocks 122 and 135: neither table has a total, a balance carried down or a balance brought down, so the effect of the contra on the two balances is never shown. (10) blocks 122 and 135: each header row ends with four bare N cells and no column label, so Cash cannot be told from Bank except by counting cells. (11) block 124: the both-sides folio rule is stated once, in a note, with curly quotation marks. (12) block 127: the effect and action will be started below should read stated. (13) blocks 136-157 are 22 empty blocks, so the week closes with no exercise.",
+      "required_action": "Correct nothing in the source. Record one numbered decision per defect (retain, correct or replace) in BK-FACT-T1-W03-DEFECTS so the authored lesson does not copy the printed wording.",
+      "affected_ids": [
+        "COV-BK-T1-W03-EXPLAIN",
+        "COV-BK-T1-W03-IDENTIFY",
+        "COV-BK-T1-W03-FOLIO",
+        "COV-BK-T1-W03-RECORD-A",
+        "COV-BK-T1-W03-RECORD-B",
+        "COV-BK-T1-W03-RULE",
+        "BK-LES-T1-W03-CONTRA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W03-FIGURE-CHECKS",
+      "kind": "VERIFICATION",
+      "detail": "Example (a) cannot be reconciled as printed. Block 119 states Jan. 1 cash balanced N300 and block 120 states Jan. 2 cash paid into the bank amounted to N710. A cash balance of N300 cannot fund a transfer of N710, and the week supplies no opening bank balance, receipt, loan or earlier balance from which N710 could come; block 122 then enters 300 and 710 on both sides, so the table agrees with itself while the narrative does not. Example (b) withdraws N800 (block 133) from a bank balance that is never stated, and against the N300 cash balance the resulting cash would be N1,100, which the week never states because neither table carries a total or balance. Only Jan. 1, Jan. 2 and Jan. 4 are dated and no year is given, so the two examples cannot be read as one continuous cash book either. No figure can be reused without being re-derived.",
+      "required_action": "Re-derive both examples from a stated opening position, show every figure and label it, and record the resulting balances in BK-FACT-T1-W03-DEFECTS; the lesson must state the opening cash and bank balances it assumes.",
+      "affected_ids": [
+        "COV-BK-T1-W03-RECORD-A",
+        "COV-BK-T1-W03-RECORD-B",
+        "COV-BK-T1-W03-RULE",
+        "BK-LES-T1-W03-CONTRA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W03-CONCEPT-ERROR",
+      "kind": "FACT",
+      "detail": "Block 113 (sha256 13f67fc44e12b751cab49ef74f630d855fc25ad1de7b46ced1a29de10877a7c7, 96 characters) defines a contra entry as the transfer of an account to the identical side of another account. That is the reverse of the recognised rule and of the week's own worked examples: a contra entry moves money between cash and bank, so the same amount is debited to one account or column and credited to the other, as blocks 117-118 direct (Cr. Cash column, Dr. Bank column) and blocks 131-132 direct (Cr. Bank column, Dr. Cash column), and as the two tables record by cell (block 122 Dr Bank 300 and 710 against Cr Cash 300 and 710; block 135 Dr Cash 800 against Cr Bank 800). Block 112 adds a second error by defining contra only as payment of cash into the bank, which would exclude the withdrawal case the week itself teaches.",
+      "required_action": "Approve the corrected definition in BK-FACT-T1-W03-DEFECTS. This is a factual correction to a stated definition, not an editorial preference, and the lesson cannot teach block 113 as printed.",
+      "affected_ids": [
+        "COV-BK-T1-W03-SCHEME-8",
+        "COV-BK-T1-W03-EXPLAIN",
+        "COV-BK-T1-W03-RULE",
+        "BK-LES-T1-W03-CONTRA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W03-NO-EXERCISE",
+      "kind": "CONTENT",
+      "detail": "Week 3 sets no exercise, assignment, question or revision item. Blocks 136-157 are empty and the week consists of one definitional passage and two worked examples. There is no answer key, mark allocation or completion criterion, and nothing asks a pupil to classify a given transaction as a contra entry, to choose the side to debit or credit, or to write up a cash book containing both directions.",
+      "required_action": "Author pupil practice with complete answers and marking in BK-LES-T1-W03-CONTRA; the source supplies none and the examples are not usable without correction.",
+      "affected_ids": [
+        "COV-BK-T1-W03-SCHEME-8",
+        "COV-BK-T1-W03-IDENTIFY",
+        "COV-BK-T1-W03-RECORD-A",
+        "COV-BK-T1-W03-RECORD-B",
+        "BK-LES-T1-W03-CONTRA"
       ],
       "blocks_delivery": true
     }

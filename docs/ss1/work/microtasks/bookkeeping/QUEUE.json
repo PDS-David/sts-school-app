@@ -27,24 +27,25 @@
     "BK-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended 13 PENDING items (preamble, two markers, four weeks, two preservation, four visual). The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Every week range and parsed week body is byte-identical (same SHA-256) to the 1st Term source's; only the title block ('SIGMA TERM') and the split scheme header differ, and the document properties differ in creation date. BOOKKEEPING-T2-TEXT-MATCHES-T1 is still an open owner action: BK-*-T2 indexing items should not be run before the owner confirms the file, and no duplicate coverage is linked. Nothing was run.",
     "BK-WK-T1-W02 (2026-10-30) indexed 1st Term Week 2 (blocks 87-108, range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218) at objective level and added nine coverage entries (seven PARTIAL, two UNRESOLVED) and five open items. Scheme entries 5-7 map to the week by label order and by topic. Entry 6's difference sub-item is untaught anywhere in the document; the example (nine April transactions under the placeholder year 19x9) has no solution; no double column cash book is balanced in any week. Appended two LESSON items (BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP) and one BLOCKED FACTUAL_DEPENDENCY item (BK-FACT-T1-W02-DEFECTS). Week 2 carries no table, drawing, image, equation or media object; the document's three tables (blocks 122, 135, 175) and eight drawing objects (blocks 49, 56, 70, 79, 170) sit in Weeks 1, 3 and 4. Nothing was run: no lesson, no rule, no asset, no importer or plan run. Testing deferred by owner.",
     "BK-WK-T1-W04 (2026-10-30) indexed 1st Term Week 4 (label block 158 sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2; blocks 158-219 sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7) at objective level and added 13 coverage entries (10 PARTIAL, 3 UNRESOLVED) and 6 open items. Scheme entries 9 (blocks 22-24: meaning of double entry, identify the account to be credited and debited; sha256 1aed243f2989ac1e5bfc3e0d678ff629046bde1e1735729ed06797859d0bf4c2) and 10 (blocks 25-27: posting from cash book to ledger, rule of double entry; sha256 a72a51e2a1824cc25595785aa53e43a9f61255a0b957ccb0cf20ffa74412f9f7) are carried by the week. It teaches the definition (160), three rules (161-164), the receiver/giver application (166-172), an eleven-row answered identification table (175), the meaning of posting (179) and two posting rules (181-182). It supplies no ledger account anywhere in the document, never explains balancing although block 185 demands it, and gives no solution to the twenty-transaction June illustration (186-205) or to ASSIGNMENT 2 (211-217); ASSIGNMENT 1 points to an unsupplied textbook page. Eleven defects are recorded uncorrected, including the truncated instruction at 174, the blanket 'all items' posting rule, the personal withdrawal at 194 and the N20 motor van at 196. Follow-ups appended: BK-LES-T1-W04-DOUBLE-ENTRY and BK-LES-T1-W04-POSTING (LESSON, PENDING), BK-FACT-T1-W04-BRIEF and BK-FACT-T1-W04-TEXTBOOK (FACTUAL_DEPENDENCY, BLOCKED). Coverage 9->22; open items 9->15; source_rules 3; lessons 0; assets 0; items 37->41; notes 12->13; status 7 implemented / 30 pending / 4 blocked; next_runnable head BK-WK-T1-W01. No lesson, delivery, schema, compiler, parser or importer change; bookkeeping.json edited for coverage and open items only. Evidence note: docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W04.md. Not approved, not verified; nothing run (testing deferred by owner).",
-    "BK-WK-T1-W01 (2026-10-30) indexed 1st Term Week 1 (blocks 30-86, sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3) at objective level and added 11 coverage entries (9 PARTIAL, 2 UNRESOLVED) and 6 open items. Scheme entries 2-4 (blocks 4-9, sha256 7914229a77efd82c9b24e1d88235825f5f51c1424951b4b36e3e6af6eba3eab8) name the cash book, the single column cash book and its continuing preparation; the body defines the book and the cash and bank accounts, then prints two T-account solutions. The scheme items sub-item has no teaching, no single column format or folio column is shown, balancing is printed but never explained, and both printed solutions disagree with their questions: Illustration 1 prints 115 for 155 and 750 for 700 with a balance of 1,010 instead of 1,100; Illustration 2 repeats Illustration 1 credit entries, omits the June 9 cheque of 300 and prints a false 3,180 equality. No exercise or assignment exists; the illustrations are teaching, not assessment. Blocks 30-86 contain zero non-ASCII characters and no tab characters; the account rules are drawing objects at blocks 49, 56, 70 and 79, not Word tables. Appended one PENDING lesson (BK-LES-T1-W01-CASH-BOOK) and one BLOCKED FACTUAL_DEPENDENCY (BK-FACT-T1-W01-DEFECTS). Nothing was run: no lesson, no rule, no asset, no importer or plan run. Testing deferred by owner."
+    "BK-WK-T1-W01 (2026-10-30) indexed 1st Term Week 1 (blocks 30-86, sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3) at objective level and added 11 coverage entries (9 PARTIAL, 2 UNRESOLVED) and 6 open items. Scheme entries 2-4 (blocks 4-9, sha256 7914229a77efd82c9b24e1d88235825f5f51c1424951b4b36e3e6af6eba3eab8) name the cash book, the single column cash book and its continuing preparation; the body defines the book and the cash and bank accounts, then prints two T-account solutions. The scheme items sub-item has no teaching, no single column format or folio column is shown, balancing is printed but never explained, and both printed solutions disagree with their questions: Illustration 1 prints 115 for 155 and 750 for 700 with a balance of 1,010 instead of 1,100; Illustration 2 repeats Illustration 1 credit entries, omits the June 9 cheque of 300 and prints a false 3,180 equality. No exercise or assignment exists; the illustrations are teaching, not assessment. Blocks 30-86 contain zero non-ASCII characters and no tab characters; the account rules are drawing objects at blocks 49, 56, 70 and 79, not Word tables. Appended one PENDING lesson (BK-LES-T1-W01-CASH-BOOK) and one BLOCKED FACTUAL_DEPENDENCY (BK-FACT-T1-W01-DEFECTS). Nothing was run: no lesson, no rule, no asset, no importer or plan run. Testing deferred by owner.",
+    "BK-WK-T1-W03 (2026-10-30) indexed 1st Term Week 3 (blocks 109-157, sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1362 characters) at objective level and added 7 coverage entries, all PARTIAL, and 5 open items. Scheme entry 8 (blocks 18-21, sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9) names explain, identify and record contra entry; the body carries all three, but block 113 defines contra as a transfer to the identical side, the opposite of the rule its own two examples apply, block 112 limits contra to payments into the bank, and N710 is paid in against a N300 cash balance with no stated source. The two Word tables are correct contras when read by cell - Dr Bank 300 and 710 against Cr Cash at block 122, Dr Cash 800 against Cr Bank at block 135 - and each carries the C folio on both sides. No total, balance or exercise exists and blocks 136-157 are empty. Follow-ups appended: BK-LES-T1-W03-CONTRA (LESSON, PENDING) and BK-FACT-T1-W03-DEFECTS (FACTUAL_DEPENDENCY, BLOCKED). Coverage 33->40; open items 21->26; items 43->45; notes 14->15; status 9 implemented / 30 pending / 6 blocked; next_runnable head BK-PRE-T1. No lesson, delivery, schema, compiler, parser or importer change; bookkeeping.json edited for coverage and open items only. Evidence note: docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W03.md. Not approved, not verified; nothing run (testing deferred by owner)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 5,
+    "FACTUAL_DEPENDENCY": 6,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 4,
     "SOURCE_WEEK_INDEXING": 8,
     "SOURCE_PRESERVATION": 4,
     "VISUAL_DISPOSITION": 8,
-    "LESSON": 5
+    "LESSON": 6
   },
   "status_counts": {
     "PENDING": 30,
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "BLOCKED": 5
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "BLOCKED": 6
   },
   "items": [
     {
@@ -533,8 +534,8 @@
         "BK-INV-T1",
         "BK-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T1): blocks 109-157; range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997. Sections: label 109, heading 110 'CONTRA ENTRY', definitions 111-113, (a) payment of cash to bank 114-115, flattened Effect/Action pairs 116-118, example 119-120, cash book table 122, 'C' note 124, (b) withdrawals from bank 126-127, second Effect/Action pair 130-132, example 133, cash book table 135, blank blocks 136-157. Parsed row (mammoth raw text, regex replication only, importer not run): title 'CONTRA ENTRY', body 1,555 characters, body sha256 194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a. Reading checks for later authoring: blocks 116-118 and 130-132 are table rows flattened to paragraph text (see BK-VIS-T1-TBL-W03); the source writes the contra folio symbol as a capital C in curly quotes and states it must appear on both sides (block 124); the account tables are correct contras by cell position (Dr Bank/Cr Cash at block 122, Dr Cash/Cr Bank at block 135), but the prose 'Jan. 1 cash balanced N300' followed by 'Jan. 2 cash paid into the bank amounted to N710' (blocks 119-120) does not explain where the N710 came from and needs an authoring check. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-219; block 220 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-10-30 on branch ss1/bk-wk-t1-w03, cut from origin/master 1764f62 (merge of PR #281, app/data-01-finance-transaction) and rebased onto aee5120 (merge of PR #284, YO-WK-T3-W06) before opening; no other open PR touched the Bookkeeping package or queue. Prerequisites BK-SRC-T1 and BK-INV-T1 are implemented. Source SS1-SRC-62b02f2adcb3, member SSS 1/1st Term SS1_/book keeping.docx sha256 9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0 (38,275 bytes). Method: zipfile + XML over word/document.xml; block = direct child of w:body, 0-based, block text = concatenation of w:t runs with w:tab omitted; range hash = SHA-256 of block texts first..last joined with \\n. Week 3 label block 109 WEEK THREE (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51, 10 characters); section blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1,362 block-text characters, 49 blocks of which 23 carry text and 26 are empty). Scheme entry 8: blocks 18-21 (sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters) - 8.Contra Entry. / -Explain contra entry / -Identify contra entry / -Recording contra entry; block 18 605593e0c3a42059afb7d322ad166e011b561802c8c3aec2603fa441504181a0, blocks 19-21 296958eab046e8aa7574a68fc542864ccafab97b28b15df86098e3444c00c91d (68 characters). Parts: heading 110 c4a1f9c685d7291ea019e08f6b00a9bf1e49150feb39d0e7a2dba5f18334ba26; definition 111-113 ea3f1b450e4001fcda10161cfa809cf821936497a530a3f8ead7bf54ec5b9d72 (353 characters) - 111 7cf4798488d8862d3049c68c4deaff32799d35136baf5f4d036a5a27893e80ff (154), 112 719ff225f6361ae3ea42dcfff41978fccbf8ee0659f963479b76a461313aa9dd (101), 113 13f67fc44e12b751cab49ef74f630d855fc25ad1de7b46ced1a29de10877a7c7 (96); (a) payment of cash to bank 114-115 19408ee162179f7c8d64ed4ae2610328323cff386dc6ae98d53c3673361fd43b (114 characters); Effect/Action 116-118 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a (103 characters), header 116 = 130 1db4bc45a5efc035e858390ba776222e60cb197f34071115e157e232365c432c; example 119-120 2ebd7521de05ff26bb2a1bd74a7858de613d06b9a58115c4a8a6c45c62b63f0d (84 characters); DrCash BookCr and table 121-122 e16c3df4c979444fee32970bba99015955a1adfd1226fd5eb6cb2d7adbbbfa2e (130 characters), table 122 50f7bcab93db04a2fa33854ba34f46d6e95918e4455540913256e0bd02990bb8 (116 characters); note 124 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a (62 characters); (b) withdrawals from bank 126-127 1e8586577c6046518f209b00512050f11b7efca2049f02db6985ce681761731d (200 characters); Effect/Action 130-132 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a (107 characters); example, Dr Cr and table 133-135 d8712897f37d3fac9bf31732cdee21c39d30aff853b900a0f054b447202badbd (151 characters), table 135 bc543e99e8376f0fe5228f6c3310772051ac2dcd1c71bb8bb96202015256fcc7 (88 characters); empty blocks 136-157. bookkeeping.json: 7 coverage entries added, all PARTIAL (scheme entry 8, the definition, identification, the C folio, the two worked directions and the posting rule); 5 open items added (BOOKKEEPING-T1-W03-SCHEME-MAPPING, -SOURCE-DEFECTS with thirteen numbered defects, -FIGURE-CHECKS as VERIFICATION, -CONCEPT-ERROR as FACT and -NO-EXERCISE). Findings: block 113 defines contra as the transfer of an account to the identical side of another account, the reverse of the rule the week's own pairs apply (117-118 Cr. Cash column / Dr. Bank column; 131-132 Cr. Bank column / Dr. Cash column), and block 112 limits contra to payments into the bank; read by cell, table 122 is Dr Bank 300 and 710 against Cr Cash 300 and 710 and table 135 is Dr Cash 800 against Cr Bank 800, both correct, and each carries the C folio on both sides; the narrative cannot be reconciled - a N300 cash balance at 119 is followed by N710 paid in at 120 with no stated source, the N800 withdrawal has no stated bank balance, and neither table carries a total or balance. Notation: exactly four non-ASCII characters in blocks 109-157, all curly double quotation marks (U+201C and U+201D at 112 and at 124) and zero tabs; the naira is the bare N as recorded by BK-PRES-T1-CURRENCY. The two tables are Word tables and are disposed of by BK-VIS-T1-TBL-W03; the Week 3 sequencing question is linked to BOOKKEEPING-T1-W02-CONTRA-SEQUENCING. Follow-ups appended: BK-LES-T1-W03-CONTRA (LESSON, PENDING, depending on BK-FACT-T1-W03-DEFECTS and BK-VIS-T1-TBL-W03) and BK-FACT-T1-W03-DEFECTS (FACTUAL_DEPENDENCY, BLOCKED). Coverage 33->40; open items 21->26; source_rules 3; lessons 0; assets 0; items 43->45; notes 14->15; status 9 implemented / 30 pending / 6 blocked; next_runnable head BK-PRE-T1. No lesson, delivery, schema, compiler, parser or importer change; bookkeeping.json edited for coverage and open items only. Evidence note: docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W03.md. Not approved, not verified; nothing run (testing deferred by owner).",
       "completion_condition": "Each objective listed with a block locator and a status; the folio convention and both examples recorded with their arithmetic state; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
     },
     {
@@ -1685,6 +1686,96 @@
       "status": "BLOCKED",
       "implementation_reference": "Raised by BK-WK-T1-W01 (2026-10-30): fourteen defects in blocks 30-86, including Illustration 1 printing 115 for 155 and 750 for 700, and Illustration 2 repeating Illustration 1 credit entries, omitting the June 9 cheque and printing a false 3,180 equality. No correction is authored in BK-WK-T1-W01.",
       "completion_condition": "Each defect in BOOKKEEPING-T1-W01-SOURCE-DEFECTS and each figure in BOOKKEEPING-T1-W01-FIGURE-CHECKS is answered with the treatment to be used, recorded with a reference; the answer is binding on BK-LES-T1-W01-CASH-BOOK and on any later presentation of the two illustrations."
+    },
+    {
+      "id": "BK-LES-T1-W03-CONTRA",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 3, scheme blocks 18-21 (sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9) and body blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997); objectives COV-BK-T1-W03-SCHEME-8, -EXPLAIN, -IDENTIFY, -FOLIO, -RECORD-A, -RECORD-B and -RULE",
+      "objective": "Author the Week 3 lesson on the contra entry: the definition, the two accounts it affects, the debit and credit for each direction, the C folio on both sides, and the recording of both directions in a two-column cash book, with the two source examples re-solved from stated opening balances and practice with complete answers and marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ingestTopics.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-LES-T1-W03-CONTRA.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-WK-T1-W03",
+        "BK-FACT-T1-W03-DEFECTS",
+        "BK-VIS-T1-TBL-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by BK-WK-T1-W03 (2026-10-30): all seven coverage entries are PARTIAL. The definition at block 113 states the opposite of the rule and block 112 limits contra to payments into the bank; the N710 paid in against a N300 cash balance has no source; neither table carries a total or balance and neither example states its opening bank balance; no exercise exists. Defects are in BOOKKEEPING-T1-W03-SOURCE-DEFECTS, the arithmetic in BOOKKEEPING-T1-W03-FIGURE-CHECKS and the definitional error in BOOKKEEPING-T1-W03-CONCEPT-ERROR, all to be decided in BK-FACT-T1-W03-DEFECTS first. The table layouts are disposed of by BK-VIS-T1-TBL-W03.",
+      "completion_condition": "A lesson in bookkeeping.json defines the contra entry correctly, states for both directions which account or column is debited and credited and why the amounts are equal, teaches the C folio on both sides, and records both directions in a two-column cash book from stated opening balances with every figure derived and shown; it corrects the definition under the decision in BK-FACT-T1-W03-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
+    },
+    {
+      "id": "BK-FACT-T1-W03-DEFECTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 3, blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997), with the arithmetic in BOOKKEEPING-T1-W03-FIGURE-CHECKS",
+      "objective": "Obtain one recorded subject-expert decision on the thirteen Week 3 source defects and the definitional error, on the opening balances the two examples may assume, and on the sequencing question recorded in BOOKKEEPING-T1-W03-SCHEME-MAPPING, before the contra entry lesson is authored.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ingestTopics.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-FACT-T1-W03-DEFECTS.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by BK-WK-T1-W03 (2026-10-30): thirteen defects in blocks 109-157, including the identical side definition at 113, the payment-into-bank-only definition at 112, the underived N710 against a N300 balance at 119-120, the two tables with no total or balance at 122 and 135, and 22 empty blocks with no exercise. No correction is authored in BK-WK-T1-W03.",
+      "completion_condition": "Each defect in BOOKKEEPING-T1-W03-SOURCE-DEFECTS, the definition in BOOKKEEPING-T1-W03-CONCEPT-ERROR and each figure in BOOKKEEPING-T1-W03-FIGURE-CHECKS is answered with the treatment to be used, recorded with a reference, together with the opening balances the lesson may assume and the sequencing decision; the answer is binding on BK-LES-T1-W03-CONTRA and on any later presentation of the two examples."
     }
   ],
   "review": {
@@ -1700,7 +1791,6 @@
     }
   },
   "next_runnable": [
-    "BK-WK-T1-W03",
     "BK-PRE-T1",
     "BK-MARK-T1-REVISION",
     "BK-MARK-T1-EXAM",
@@ -1729,6 +1819,7 @@
     "BK-LES-T1-W02-PREP",
     "BK-LES-T1-W04-DOUBLE-ENTRY",
     "BK-LES-T1-W04-POSTING",
-    "BK-LES-T1-W01-CASH-BOOK"
+    "BK-LES-T1-W01-CASH-BOOK",
+    "BK-LES-T1-W03-CONTRA"
   ]
 }
