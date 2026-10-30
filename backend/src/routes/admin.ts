@@ -83,8 +83,22 @@ function classTeacherUsername(className: string): string {
   return className.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
+// Empty or whitespace-only text means "no value" for these optional columns.
+// `?? null` alone does not catch it (an empty string is not null/undefined), and
+// users.school_code references schools(code), so '' is never a meaningful value.
+// Non-empty values are returned untouched (not trimmed).
+function blankToNull<T>(v: T): T | null {
+  if (v === undefined || v === null) return null;
+  if (typeof v === 'string' && v.trim() === '') return null;
+  return v;
+}
+
 router.post('/users', async (req, res) => {
   const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body;
+  const schoolCodeN = blankToNull(school_code);
+  const assignedClassN = blankToNull(assigned_class);
+  const phoneN = blankToNull(phone);
+  const emailN = blankToNull(email);
 
   // Class teacher: username is hard-coded from the class, ignoring
   // whatever (if anything) was typed into the Username field — see
@@ -123,8 +137,8 @@ router.post('/users', async (req, res) => {
       `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
          phone,email,must_change_pw,access_expires_at,activation_code)
        VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
-      [uname, hash, full_name, school_code ?? null,
-       assigned_class ?? null, phone ?? null, email ?? null, expiresAt],
+      [uname, hash, full_name, schoolCodeN,
+       assignedClassN, phoneN, emailN, expiresAt],
     );
     const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
     for (const sid of subjectIds) {
@@ -146,8 +160,8 @@ router.post('/users', async (req, res) => {
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
        phone,email,must_change_pw,access_expires_at,activation_code)
      VALUES($1,NULL,$2,$3,$4,$5,$6,$7,FALSE,$8,$9) RETURNING id,username,role,school_code,access_expires_at`,
-    [uname, role, full_name, school_code ?? null,
-     assigned_class ?? null, phone ?? null, email ?? null, expiresAt, activationCode],
+    [uname, role, full_name, schoolCodeN,
+     assignedClassN, phoneN, emailN, expiresAt, activationCode],
   );
   const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
   for (const sid of subjectIds) {
@@ -179,6 +193,12 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
 
 router.put('/users/:id', async (req, res) => {
   const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body;
+  // Blank text must never be persisted: COALESCE would write '' over the stored
+  // value. Normalised here to null, which COALESCE treats as "leave unchanged".
+  const schoolCodeN = blankToNull(school_code);
+  const assignedClassN = blankToNull(assigned_class);
+  const phoneN = blankToNull(phone);
+  const emailN = blankToNull(email);
   // clear_expiry: true lets the admin explicitly remove an expiry (grant indefinite access)
   // without that being confused with "field simply not sent" (which COALESCE would ignore).
   //
@@ -191,13 +211,17 @@ router.put('/users/:id', async (req, res) => {
   const reactivating = is_active === true;
   const { rows } = await query(
     `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
-       school_code=COALESCE($3,school_code), assigned_class=COALESCE($4,assigned_class),
+       school_code=COALESCE($3,school_code),
+       -- Staff accounts (admin, finance_admin) have no class: clear it explicitly,
+       -- because a null parameter alone would leave an existing value in place.
+       assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
+                           ELSE COALESCE($4,assigned_class) END,
        is_active=COALESCE($5,is_active),
        phone=COALESCE($6,phone), email=COALESCE($7,email),
        access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
        revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
      WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
-    [full_name, role, school_code, assigned_class, is_active, phone, email,
+    [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
      access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
   );
   if (!rows[0]) return res.status(404).json({ error: 'User not found' });
