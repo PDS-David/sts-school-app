@@ -1,5 +1,5 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 
 const router = Router();
@@ -127,15 +127,23 @@ router.post('/invoices', requireRole('finance_admin'), async (req, res) => {
   }
 
   const total = items.reduce((s, i) => s + Number(i.amount), 0);
-  const { rows } = await query(
-    'INSERT INTO invoices(student_id,term_id,total) VALUES($1,$2,$3) RETURNING *',
-    [student_id, term_id, total],
-  );
-  for (const item of items) {
-    await query('INSERT INTO invoice_items(invoice_id,fee_item_id,amount) VALUES($1,$2,$3)',
-      [rows[0].id, item.id, item.amount]);
-  }
-  return res.status(201).json({ invoice: rows[0] });
+  // DATA-01: header and every line commit together or not at all, so a failure
+  // part-way through the loop cannot leave an invoice whose total does not
+  // match its lines. All validation and the total above stay outside the
+  // transaction and unchanged; the total is still computed from the validated
+  // fee items, never from client input.
+  const invoice = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'INSERT INTO invoices(student_id,term_id,total) VALUES($1,$2,$3) RETURNING *',
+      [student_id, term_id, total],
+    );
+    for (const item of items) {
+      await client.query('INSERT INTO invoice_items(invoice_id,fee_item_id,amount) VALUES($1,$2,$3)',
+        [rows[0].id, item.id, item.amount]);
+    }
+    return rows[0];
+  });
+  return res.status(201).json({ invoice });
 });
 
 // ── PUT /finance/invoices/:id/status — finance_admin only ──────────────────────
