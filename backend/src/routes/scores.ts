@@ -6,6 +6,7 @@ import { getGrade } from '../utils/grades.js';
 import { audit } from '../utils/audit.js';
 import { termRank } from '../utils/terms.js';
 import { checkTeacherStudentScope } from '../utils/scope.js';
+import type { AuthUser } from '../types/index.js';
 import { sendPushToUser } from '../utils/push.js';
 
 const router = Router();
@@ -233,6 +234,36 @@ router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
   return res.json({ saved: saved.length });
 });
 
+// ── Report read authorisation (shared by /report and /session-report) ────────
+// Explicit allow-list: student (own record), parent (linked ward), teacher (own
+// school and, when an assigned class is set, that class), admin (all). Every
+// other role, including finance_admin, is refused.
+// Teacher scope reuses checkTeacherStudentScope. No termId is passed because
+// this is a read, so the helper's class-lock branch (which only applies when a
+// termId is given) is not triggered. Its error wording refers to writes; it is
+// returned unchanged on purpose.
+async function authoriseReportAccess(
+  user: AuthUser,
+  student: { id: string; user_id: string | null },
+): Promise<{ status: number; error: string } | null> {
+  switch (user.role) {
+    case 'student':
+      return student.user_id === user.id ? null : { status: 403, error: 'Access denied' };
+    case 'parent': {
+      const { rows: pw } = await query(
+        'SELECT 1 FROM parent_wards WHERE parent_id=$1 AND student_id=$2', [user.id, student.id],
+      );
+      return pw.length ? null : { status: 403, error: 'Not your ward' };
+    }
+    case 'teacher':
+      return checkTeacherStudentScope(user, student.id);
+    case 'admin':
+      return null;
+    default:
+      return { status: 403, error: 'Access denied' };
+  }
+}
+
 // ── GET /scores/report/:student_id  (full term report) ───────────────────────
 router.get('/report/:student_id', async (req, res) => {
   const { term_id } = req.query as { term_id?: string };
@@ -244,16 +275,8 @@ router.get('/report/:student_id', async (req, res) => {
   if (!student) return res.status(404).json({ error: 'Student not found' });
 
   // Authorisation: student sees own, parent sees ward, teacher sees own class, admin sees all
-  if (user.role === 'student') {
-    if (student.user_id !== user.id) return res.status(403).json({ error: 'Access denied' });
-  } else if (user.role === 'parent') {
-    const { rows: pw } = await query(
-      'SELECT 1 FROM parent_wards WHERE parent_id=$1 AND student_id=$2', [user.id, student.id],
-    );
-    if (!pw.length) return res.status(403).json({ error: 'Not your ward' });
-  } else if (user.role === 'teacher') {
-    if (student.school_code !== user.school_code) return res.status(403).json({ error: 'Wrong school' });
-  }
+  const denied = await authoriseReportAccess(user, student);
+  if (denied) return res.status(denied.status).json({ error: denied.error });
 
   // Resolve term
   let resolvedTermId = term_id;
@@ -352,16 +375,8 @@ router.get('/session-report/:student_id', async (req, res) => {
   if (!student) return res.status(404).json({ error: 'Student not found' });
 
   // Same authorisation as /scores/report/:student_id
-  if (user.role === 'student') {
-    if (student.user_id !== user.id) return res.status(403).json({ error: 'Access denied' });
-  } else if (user.role === 'parent') {
-    const { rows: pw } = await query(
-      'SELECT 1 FROM parent_wards WHERE parent_id=$1 AND student_id=$2', [user.id, student.id],
-    );
-    if (!pw.length) return res.status(403).json({ error: 'Not your ward' });
-  } else if (user.role === 'teacher') {
-    if (student.school_code !== user.school_code) return res.status(403).json({ error: 'Wrong school' });
-  }
+  const denied = await authoriseReportAccess(user, student);
+  if (denied) return res.status(denied.status).json({ error: denied.error });
 
   // Resolve the session (academic_year): default to the year of the school's current term
   let year = academic_year;
