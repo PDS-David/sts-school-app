@@ -15,6 +15,8 @@ export type ScoreRow = {
   updatedAt: Date | null;
   termStart: Date | null;       // start of the term's first day (school time)
   termEndExclusive: Date | null; // start of the day AFTER the term's last day
+  /** True when this row's term is the one covered by the First Term report cards. */
+  isReportCardTerm?: boolean;
 };
 
 export type StudentRow = { studentId: string; currentClass: string | null };
@@ -22,7 +24,7 @@ export type StudentRow = { studentId: string; currentClass: string | null };
 export type Stamp = {
   scoreId: number;
   className: string;
-  basis: 'no_history_current_class' | 'promotion_history';
+  basis: 'first_term_report_card' | 'no_history_current_class' | 'promotion_history';
 };
 
 export type Skip = { scoreId: number; studentId: string; reason: SkipReason };
@@ -71,6 +73,8 @@ export function planBackfill(input: {
   events: ClassEvent[];
   /** Students with at least one promote/demote audit row whose detail could not be parsed. */
   studentsWithUnparsedEvents: Set<string>;
+  /** Class printed on the First Term report card, already resolved to the school's current class names. */
+  reportCardClassByStudent?: ReadonlyMap<string, string>;
 }): { stamps: Stamp[]; skipped: Skip[] } {
   const students = new Map(input.students.map(s => [s.studentId, s]));
   const byStudent = new Map<string, ClassEvent[]>();
@@ -88,6 +92,13 @@ export function planBackfill(input: {
     const skip = (reason: SkipReason) => skipped.push({ scoreId: sc.scoreId, studentId: sc.studentId, reason });
     const student = students.get(sc.studentId);
     if (!student) { skip('student_missing'); continue; }
+    // The report card is a record made at the time, so it outranks any reconstruction.
+    const cardClass = sc.isReportCardTerm ? input.reportCardClassByStudent?.get(sc.studentId) : undefined;
+    if (cardClass) {
+      stamps.push({ scoreId: sc.scoreId, className: cardClass, basis: 'first_term_report_card' });
+      continue;
+    }
+
     const current = student.currentClass?.trim() || null;
     if (!current) { skip('current_class_blank'); continue; }
 

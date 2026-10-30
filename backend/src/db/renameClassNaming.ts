@@ -37,27 +37,9 @@
 
 import { pool } from './pool.js';
 import type { PoolClient } from 'pg';
+import { LEGACY_CLASS_MAPPING } from './classNaming.js';
 
-const MAPPING: Record<string, string> = {
-  JSS1: 'JSS 1',
-  JSS2: 'JSS 2',
-  JSS3: 'JSS 3',
-  SS1: 'SS 1',
-  SS2: 'SS 2',
-  SS3: 'SS 3',
-  'Grade 1': 'Primary 1',
-  'Grade 2': 'Primary 2',
-  'Grade 3': 'Primary 3',
-  'Grade 4': 'Primary 4',
-  'Grade 5': 'Primary 5',
-  'Grade 6': 'Primary 6',
-  'PRY 1': 'Primary 1',
-  'PRY 2': 'Primary 2',
-  'PRY 3': 'Primary 3',
-  'PRY 4': 'Primary 4',
-  'PRY 5': 'Primary 5',
-  'PRY 6': 'Primary 6',
-};
+const MAPPING = LEGACY_CLASS_MAPPING; // shared with backfillScoreClass.ts / importGenuineFirstTerm.ts
 
 // [table, column] for every place a class-name-shaped string lives.
 const TABLES: Array<[string, string]> = [
@@ -73,6 +55,9 @@ const TABLES: Array<[string, string]> = [
   // the "future migration adds another class_name-shaped column" case the
   // comment above warns about.
   ['topics', 'class_name'],
+  // DATA-03: the class stamped on each score when it was saved. Without this a
+  // rename would leave stamped scores on the old name and split a class in reports.
+  ['scores', 'class_name'],
 ];
 
 async function countAll(runner: { query: (sql: string, params?: unknown[]) => Promise<{ rows: any[] }> }) {
