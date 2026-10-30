@@ -202,6 +202,10 @@ export default function AdminUsersScreen() {
       ...form,
       full_name: isNewClassTeacher ? form.assigned_class : form.username,
     };
+    // The form keeps these as strings, but an empty value means "none": send null
+    // instead of '' so the server never stores an empty string for them.
+    payload.school_code = form.school_code || null;
+    payload.assigned_class = form.assigned_class || null;
     if (!showsExpiry || !form.access_expires_at) {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
