@@ -11,8 +11,6 @@ export default function TeacherMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
-    { icon: 'stats-chart-outline', label: 'Analytics', sub: 'Coming soon' },
-    { icon: 'calendar-number-outline', label: 'Calendar', sub: 'Coming soon' },
     { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
     { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
     // No "Security Question" entry here (deliberately, not an omission):

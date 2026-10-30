@@ -8,9 +8,6 @@ import { openNotifications } from '../../navigation/navigationRef';
 
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; screen: string | null; color: string }[] = [
   { icon: 'clipboard-outline', label: 'Assignments',   sub: "Ward's current assignments", screen: 'MyResults', color: '#1565C0' },
-  { icon: 'time-outline',      label: 'Upcoming Tests', sub: 'Coming soon',                screen: null,        color: '#00838F' },
-  { icon: 'calendar-outline',  label: 'Calendar',       sub: 'Coming soon',                screen: null,        color: '#6A1B9A' },
-  { icon: 'megaphone-outline', label: 'School Events',  sub: 'Coming soon',                screen: null,        color: '#E65100' },
 ];
 
 export default function ParentActivitiesScreen({ navigation }: any) {
