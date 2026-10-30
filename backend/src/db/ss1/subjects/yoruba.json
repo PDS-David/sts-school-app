@@ -285,6 +285,10 @@
         {
           "locator": "source lines 143-165",
           "explanation": "The row numerals mix cases (I, Ii, Iii, Iv, V, Vi, Vii) and the greetings carry no tone marks; recorded in YORUBA-T1-W01-SOURCE-DEFECTS and YORUBA-T1-W01-NOTATION. No answers or usage notes are supplied."
+        },
+        {
+          "locator": "extractRawText lines 121-165 (table 1, w:tbl body after the heading \"Ikini akoko / igba.\" at 117); block SHA-256 1f0eda29b8072c0e8c4252416b496f8ac68a60411ca83f42d3583663fb670d46",
+          "explanation": "Table 1 is a 3-column x 8-row Word table (grid 753/2373/2484 twips; 24 cells, 24 paragraphs, 1 empty cell, no merged cell, no repeated header row). Its header is a blank corner, \"IGBA / AKOKO\" and \"IKINI\"; seven rows follow, each pairing a time label with the greeting used at that time. The row pairing is content-bearing and extraction loses it: each cell arrives as its own line, with blank lines between cells, so the time and its greeting are no longer associated. YORUBA-T1-TABLES requires the lesson to render this as a 3-column table with the blank corner kept, not as a list of greetings."
         }
       ]
     },
@@ -303,6 +307,10 @@
         {
           "locator": "source lines 199, 229-233",
           "explanation": "The Babalawo greeting/response text at line 199 is garbled (\"Aboru boye, sboye bo sise\"), and the Iya oloja greeting at line 231 is not explained; recorded in YORUBA-T1-W01-SOURCE-DEFECTS."
+        },
+        {
+          "locator": "extractRawText lines 173-233 (table 2, w:tbl body after the caption \"Ikini akoko Ise\" at 169); block SHA-256 e15985eb6b3f709ab6d59f6f159c3d0e949fd582e51dd80c619953201ff29bba",
+          "explanation": "Table 2 is a 4-column x 8-row Word table (grid 918/1638/3330/1800 twips; 32 cells, 32 paragraphs, 1 empty cell, no merged cell). The header is a blank corner followed by \"ISE\", \"IKINI\" and \"IDAHUN\"; seven rows pair an occupation with a greeting and its expected response. The ordinal labels run I to Viii and skip Vii, already recorded in YORUBA-T1-W01-SOURCE-DEFECTS. The three-way row association is content-bearing and extraction flattens it into one line per cell. YORUBA-T1-TABLES requires a 4-column table that keeps the blank corner and keeps the response in its own column."
         }
       ]
     },
@@ -1201,6 +1209,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 749-801 (table 3, w:tbl body after the heading \"Alaye lori ibi isenupe\" at 747); block SHA-256 3dde3ebd92cc0bf6a9b290578d62847976a988447867920975f07bf4cc109f2e",
+          "explanation": "Table 3 is a 3-column x 9-row Word table (grid 1818/1800/5400 twips; 27 cells, 27 paragraphs, no empty or merged cell). The header is \"IBI ISENUPE\", \"KONSONANTI TI A PE\" and \"ISESI AFIPE\"; eight rows give one place class, its consonants as a comma-separated list, and a sentence of articulation description. The class-to-members association is content-bearing: extraction gives 27 separate lines and loses the row boundaries. YORUBA-T1-TABLES requires a 3-column table with the consonant lists kept in their own column; the garbled glosses are on record in YORUBA-T1-W04-SOURCE-DEFECTS."
         }
       ]
     },
@@ -1223,6 +1235,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 815-861 (table 4, w:tbl body after the heading \"Alaye lori ona isenupe\" at 813); block SHA-256 6df126d2c82c850456367249c7160375029c03d1dc495404d919b44a0c256c8f",
+          "explanation": "Table 4 is a 3-column x 8-row Word table (grid 1908/2970/2820 twips; 24 cells, 24 paragraphs, no empty or merged cell). The header is \"ONA ISENUPE\", \"KONSONANTI TI A PE\" and \"IRU IDIWO TI AFIPE SE FUN EEMI\"; seven rows give one manner class, its consonants and an airflow description. The class-to-members association is content-bearing and extraction loses the row boundaries. YORUBA-T1-TABLES requires a 3-column table with the consonant list in its own column; the capital I for l and the J listed against table 6's Dz are already in YORUBA-T1-W04-SOURCE-DEFECTS."
         }
       ]
     },
@@ -1245,6 +1261,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 871-885 (table 5, w:tbl body after the heading \"Alaye ni kikun\" at 867); block SHA-256 f566899a4290f09b40ab85fd9f992bda8bc664f1c3c56d798c6e8662250eea30",
+          "explanation": "Table 5 is a 3-column x 3-row Word table (grid 2678/2811/2673 twips; 9 cells, 9 paragraphs, 1 empty corner, no merged cell). The header is a blank corner followed by \"IRO KONSONANTI\" and \"ALAYE\"; two rows give the voiced class and the voiceless class with their consonants and a description. The pair of rows is content-bearing and extraction loses it. YORUBA-T1-TABLES requires a 3-column table with the blank corner kept; the voiced list omitting b and g and the voiceless list doubling s are already in YORUBA-T1-W04-SOURCE-DEFECTS."
         }
       ]
     },
@@ -1267,6 +1287,10 @@
         {
           "locator": "YO-T1-W04-SCHEME-EDE",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 891-1079 (table 6, w:tbl body; its caption \"ATE IRO KONSONANTI\" is the separate paragraph at 889); block SHA-256 c288585298c0c273b120deb0dcac13f6c94970f5e546abec3a89a6048584ddaf",
+          "explanation": "Table 6 is the 10-column x 9-row classification matrix (grid 1260/1087/810/935/720/970/705/810/990/1080 twips; 90 cells, 96 paragraphs, 48 empty cells, no gridSpan, no vMerge, no repeated header row). The first column carries the seven manner labels, the second the voicing label (\"Akunyun\", \"Aikunyun\", and the misspelt \"Akinyun\" in three rows), and the last eight columns are places of articulation; four place headers split across two paragraphs inside one cell. The location of each consonant in the grid is the classification, so the structure is content-bearing and the 48 blanks are meaningful. Extraction produces 48 non-blank lines in row-major order with no column membership at all. YORUBA-T1-TABLES requires this table to be a 10-column matrix with its two label columns and its blank cells preserved; the missing P and Y, the J/Dz inconsistency and the \"II\" for l are on record in YORUBA-T1-W04-SOURCE-DEFECTS and must not be silently filled."
         }
       ]
     },
@@ -1821,6 +1845,10 @@
         {
           "locator": "package state",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 1303-1389 (table 7, w:tbl body after the lead-in \"Apeere apa silebu ni wonyi;\" at 1301); block SHA-256 753a9d0315c4df2fb8ae3e702623fd2ddb9aabb6e4fceb3d4808dbc19e136c7d",
+          "explanation": "Table 7 is a 4-column x 5-row Word table (grid 2000/2610/1543/1260 twips; 20 cells, 38 paragraphs, no empty cell, no merged cell). The header is \"APA\", \"ALEYE\", \"APEERE ORO\" and a fourth \"APA\" that repeats the first column's label, already recorded as a defect. Four rows give the syllable part, its explanation, example words and example sounds, and 10 of the 20 cells stack several items as separate paragraphs. Extraction keeps those paragraphs as separate lines but drops every row boundary and, inside the stacked cells, the alignment between example and sound. YORUBA-T1-TABLES requires a 4-column table whose stacked examples stay on separate aligned lines."
         }
       ]
     },
@@ -1875,6 +1903,10 @@
         {
           "locator": "package state",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "word/document.xml 708th-712th w:p (extractRawText lines 1415-1423; block SHA-256 1a0b94445d2c6821f698d589d1798d0e8a9047d814b07f15ae1f36e437305db2)",
+          "explanation": "Structural capture by YO-VIS-T1-02: each of the five lines carries exactly one arrow, an mc:AlternateContent whose Choice is a w:drawing holding a single wps straightConnector1 (575 is a bentConnector3) and whose Fallback is one VML v:shape of type #_x0000_t32 (575 of type #_x0000_t34), so the five lines hold five v:shape in total, not six; the document total of 21 is these five plus the sixteen in the Week 3 ATE FAWELI chart. Every arrow is 60pt wide (575 at 56.25pt), 0.75pt line, no fill, tailEnd \"triangle\", no headEnd, anchored to text at 51pt (575 at 54.75pt) with zero height (575 at 0.05pt): a right-pointing pointer drawn across the tab gap, with no text box and no picture. The earlier evidence entry above overstates their role - the word and its segmentation sit in the same paragraph, so extraction returns \"Ke [tabs] k – e\" and the pairing survives without the arrow; only the drawn pointer is lost. Decision: omit the five arrows from the lesson and write each pair as text (word, colon or right arrow, segmentation)."
         }
       ]
     },
@@ -2041,6 +2073,10 @@
         {
           "locator": "package state",
           "explanation": "No deliverable lesson exists and the source produces no parsed row identity (Yoruba ordinal week headings; YO-FND-T1-01), so the objective is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "extractRawText lines 1513-1639 (table 8, w:tbl body after the lead-in at 1511); block SHA-256 fba577d1a6d77517c9656182643e563707ae35fa61826015bcaa65f47abadb83",
+          "explanation": "Table 8 is a 3-column x 6-row Word table (grid 1458/1800/1710 twips; 18 cells, 63 paragraphs, 1 empty cell, no merged cell). The header is \"SIPELI ATIJO\", \"SIPELI TUNTUN\" and \"IFIYESI\"; five rows pair old and new spellings and add a note, and 11 of the 18 cells stack several forms as separate paragraphs. This table supplies the rows used by YO-T1-W07-EDE-02 to EDE-06. The old-to-new pairing is content-bearing, so extraction's 63 lines lose which new form answers which old one and run stacked words together. YORUBA-T1-TABLES requires a 3-column table with the pairs aligned; the empty note cell in the fifth row and the seven-against-eight pairing of the last row are already in YORUBA-T1-W07-SOURCE-DEFECTS and must not be filled or re-paired."
         }
       ]
     },
@@ -2477,6 +2513,41 @@
       "blocks_delivery": true
     },
     {
+      "id": "YORUBA-T1-TABLES",
+      "kind": "VERIFICATION",
+      "detail": "The document holds eight top-level w:tbl elements - 56 rows and 244 cells - and no table occurs in Weeks 2, 3, 5 or 8. Weeks and anchors: tables 1 and 2 in Week 1 (extractRawText 121-165 and 173-233), tables 3, 4, 5 and 6 in Week 4 (749-801, 815-861, 871-885 and 891-1079, the last captioned \"ATE IRO KONSONANTI\" at 889), table 7 in Week 6 (1303-1389) and table 8 in Week 7 (1513-1639). No table uses gridSpan, vMerge or a repeating header row; the corners of tables 1, 2 and 5 are empty; tables 6, 7 and 8 stack several paragraphs inside cells (96 paragraphs in 90 cells, 38 in 20 and 63 in 18), and tables 1, 2, 5, 6 and 8 contain empty cells. extractRawText writes every cell paragraph on its own line with blank lines between cells, so a table arrives as a flat sequence with no row or column membership: the 10-column matrix of table 6 becomes 48 non-blank lines out of 90 cells and the pairs of table 8 become 63 lines. Every table is content-bearing - tables 1 and 2 pair a time or occupation with its greeting and response, tables 3, 4 and 5 pair a consonant class with its members and description, table 6's meaning is its manner-by-place position, table 7 pairs a syllable part with explanation, words and sounds, and table 8 pairs old and new spellings - so a lesson built from the extract as prose would teach unassociated lists. YO-VIS-T1-03 disposed of all eight on 2026-10-30 without committing any render; this item keeps the representation rule with the lessons.",
+      "required_action": "Every lesson that uses a table must render it as a table with its header row above its columns and one row per source row: tables 1, 2, 3, 4, 5, 7 and 8 with their 3 or 4 columns, and table 6 as a 10-column matrix with its two label columns intact. Keep the empty cells empty, keep stacked cell paragraphs on separate lines, do not fill a gap from the prose, do not reorder rows, and do not pair table 8's last row positionally. The defects already recorded in YORUBA-T1-W01/W04/W06/W07-SOURCE-DEFECTS are corrected only through their YO-FACT items. No render of any table is committed.",
+      "affected_ids": [
+        "YO-T1-W01-ASA-02",
+        "YO-T1-W01-ASA-03",
+        "YO-T1-W04-EDE-02",
+        "YO-T1-W04-EDE-03",
+        "YO-T1-W04-EDE-04",
+        "YO-T1-W04-EDE-05",
+        "YO-T1-W06-EDE-02",
+        "YO-T1-W07-EDE-02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "YORUBA-T1-WEEK-LABELS",
+      "kind": "OWNER_ACTION",
+      "detail": "The premise recorded when this item was raised is partly wrong. It is true that the 1st Term source yields zero parsed rows today: backend/src/db/ingestTopics.ts WEEK_MARKER (lines 314-317) and the BARE_NUMBER_LINE fallback (line 333, used at lines 402-414) each match nothing in the private extract, so parseTopics returns [] (line 424) and compiler.ts raises NO_PARSED_LESSONS (line 79). But the structure is expressible without any foundation change. compiler.ts applyRules (lines 17-34) inserts a \"WEEK <n>\" line before any unique line-start anchor for op split_before (CONTRACT.md line 103; subjectPackageSchema.ts line 13 permits a numeric week_label), and the eight Yoruba ordinal headings are unique exact strings that each begin a line of the extract (lines 61, 311, 483, 725, 1171, 1285, 1503 and 1685). The document contains no occurrence of the word \"week\" and no bare-number line. English already carries 47 split_before rules, including content-heading anchors (english.json, for example \"B. Review of Word Class- Parts of Speech\" with week_label 1), so the mechanism is proven in this repository. A private text-level simulation of the eight insertions (not a parser, compiler or importer run) yields eight marker blocks whose titles are the ordinals and a preamble of lines 1-60. The only genuine gap is the label: split_before accepts a numeric week label only, so the stored weekLabel would read \"WEEK 1\"..\"WEEK 8\" while the source ordinal survives as the row title and as the first body line. Two bounded options follow in the required action; nothing has been added to source_rules and no schema or compiler file is touched.",
+      "required_action": "Choose and record one option. Option A (recommended, no foundation change): add eight split_before rules SS1-SRC-48b641249e3b-R003..R010 for source SS1-SRC-48b641249e3b with week_label 1..8 and the anchors \"OSE KIN-IN-NI\", \"OSE KEJI\", \"OSE KETA\", \"OSE KERIN\", \"OSE KARUN-UN\", \"\\tOSE KEFA\\t\", \"OSE KEJE\", \"OSE KEJO\" (each occurs exactly once and starts a line; week 6 \"\\tOSE KEFA\\t\" must keep its leading and trailing tab so the anchor starts at a line boundary); this deletes no source character and yields rows titled with the ordinals. Option B only if the stored week label must read \"OSE KIN-IN-NI\"..\"OSE KEJO\": approve a bounded foundation change (a schema field plus compiler/parser support for an explicit label, with a contract version bump) - not made here. Either way, do not use docs/ss1/work/SS1-02/author_packages.py source(split_lines=...) unchanged: SPLITS has no entry for this source and the label defaults to \"1\" (line 47), which would collapse all eight weeks. Then re-bind the eight Week 1 rows and re-run the plan audit (deferred by owner).",
+      "affected_ids": [
+        "SS1-SRC-48b641249e3b",
+        "YORUBA-T1-W01-ROW-IDENTITY",
+        "YORUBA-T1-W02-ROW-IDENTITY",
+        "YORUBA-T1-W03-ROW-IDENTITY",
+        "YORUBA-T1-W04-ROW-IDENTITY",
+        "YORUBA-T1-W05-ROW-IDENTITY",
+        "YORUBA-T1-W06-ROW-IDENTITY",
+        "YORUBA-T1-W07-ROW-IDENTITY",
+        "YORUBA-T1-W08-ROW-IDENTITY"
+      ],
+      "blocks_delivery": true
+    },
+    {
       "id": "YORUBA-T1-W06-SCHEME-MAPPING",
       "kind": "CONTENT",
       "detail": "Week 6 is identified in the unnumbered 22-topic opening list (lines 9-51) as topics 16-17 (lines 39, 41), bound to the EDE heading at 1289 and the ASA heading at 1439. Topic 16 is the single word \"Silebu\" and matches 1289 exactly apart from the label, the first exact match in the list. Topic 17 reads \"Awon owe ti o suyo ninu ise ati ise Yoruba \" with one trailing space and matches 1439 word for word apart from case and the label. Week 6 has **two** strands and no LITIRESO section, and the list is consistent with that: no LITIRESO topic is listed between line 37 (Week 5) and line 51 (Week 8), so Weeks 6 and 7 each carry two topics; Week 8 carries three again (lines 47, 49 and 51). Line 43 \"Akoto ede Yoruba\" is Week 7 (heading 1507) and line 45 \"Iwa omoluabi ati anfaani re\" is its ASA topic (heading 1645); line 47 \"Aroko kiko\" opens Week 8 (heading 1689). No week number, week label or per-week grouping exists in the list.",
@@ -2491,7 +2562,7 @@
       "id": "YORUBA-T1-W06-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 6 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1285-1502 (YO-FND-T1-01; the Week 1-5 ROW-IDENTITY items record the same document-wide condition). All 12 Week 6 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week contains one Word table and five floating arrow connectors.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 6 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 6 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2542,8 +2613,8 @@
     {
       "id": "YORUBA-T1-W06-VISUALS",
       "kind": "VERIFICATION",
-      "detail": "Week 6 contains one Word table and five floating straight-arrow connectors, with no picture, text box, OLE object, equation or media file (word/media/ is empty); the only drawing objects in the week are the five connectors, each carried as a w:drawing/w:pict pair. Table 7 (4 columns by 5 rows) carries the four syllable parts at 1301-1389. The five connectors are paired VML shape elements named \"Straight Arrow Connector 572\" to \"576\" (four of type \"#_x0000_t32\" and 575 of type \"#_x0000_t34\"), anchored at zero height (575 at 0.05pt) over the tab gap in the five segmented examples at 1415-1423; they are the only mark that ties each word (\"Ke\", \"Je\", \"Fe\", \"Gba\", \"Sun\") to its segmentation (\"k – e\" and so on), and they are invisible to text extraction. The document's other 16 v:shape elements (duplicated AutoShape 19-26 and 28-35) sit outside the week. YO-VIS-T1-02 owns the disposition of these five objects.",
-      "required_action": "Treat the five arrow connectors as part of the Week 6 EDE presentation when YO-VIS-T1-02 disposes of the visual items: either redraw the word-to-segment link as text (an arrow character or a colon) or carry it into the lesson as a figure with alt text. No asset is created or changed here.",
+      "detail": "Week 6 contains one Word table and five floating straight-arrow connectors, with no picture, text box, OLE object, equation or media file (word/media/ is empty); the only drawing objects in the week are the five connectors, each carried as a w:drawing/w:pict pair. Table 7 (4 columns by 5 rows) carries the four syllable parts at 1301-1389. The five connectors are paired VML shape elements named \"Straight Arrow Connector 572\" to \"576\" (four of type \"#_x0000_t32\" and 575 of type \"#_x0000_t34\"), anchored at zero height (575 at 0.05pt) over the tab gap in the five segmented examples at 1415-1423; they are the only mark that ties each word (\"Ke\", \"Je\", \"Fe\", \"Gba\", \"Sun\") to its segmentation (\"k – e\" and so on), and they are invisible to text extraction. The document's other 16 v:shape elements (duplicated AutoShape 19-26 and 28-35) sit outside the week. YO-VIS-T1-02 owns the disposition of these five objects. YO-VIS-T1-02 disposed of them on 2026-10-30: five arrows, one per example paragraph, five v:shape rather than six (the document total of 21 is these five plus the sixteen in the Week 3 chart), each an AlternateContent of one wps connector and one VML fallback, with no text box and no picture; because word and segmentation stay in one paragraph, the pairing survives text extraction, so the arrow adds direction only.",
+      "required_action": "Write each of the five Week 6 examples as a text pair - word, then a colon or right arrow, then the segmentation (\"Ke: k – e\") - in YO-LES-T1-W06-EDE, and do not reproduce the five connectors as a figure. No asset is created or changed here.",
       "affected_ids": [
         "YO-T1-W06-EDE-05"
       ],
@@ -2574,7 +2645,7 @@
       "id": "YORUBA-T1-W07-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 7 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1503-1684 (YO-FND-T1-01; the Week 1-6 ROW-IDENTITY items record the same document-wide condition). All 12 Week 7 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week contains a 3 x 6 Word table whose cells are the substance of the lesson.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 7 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 7 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2659,7 +2730,7 @@
       "id": "YORUBA-T1-W08-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 8 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1685-1781 (YO-FND-T1-01; the Week 1-7 ROW-IDENTITY items record the same document-wide condition). All 12 Week 8 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids. Week 8 has no Word table and no drawing: it is a plain list week with 31 automatically numbered paragraphs.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 8 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 8 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2778,7 +2849,7 @@
       "id": "YORUBA-T1-W05-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 5 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 1171-1284 (YO-FND-T1-01; the Week 1-4 ROW-IDENTITY items record the same document-wide condition). All 14 Week 5 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids. The week contains no Word table, drawing, picture, text box, OLE object, equation or media file.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 5 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 5 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2863,7 +2934,7 @@
       "id": "YORUBA-T1-W04-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 4 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 725-1167 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY, YORUBA-T1-W02-ROW-IDENTITY and YORUBA-T1-W03-ROW-IDENTITY record the same document-wide condition). All 19 Week 4 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids, even though the week itself contains four Word tables.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 4 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 4 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -2944,7 +3015,7 @@
       "id": "YORUBA-T1-W03-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 3 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 483-719 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY and YORUBA-T1-W02-ROW-IDENTITY record the same document-wide condition). All 23 Week 3 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 3 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 3 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -3042,7 +3113,7 @@
       "id": "YORUBA-T1-W02-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "Week 2 has no parsed row identity: the parser produces no rows for this source because its week headings are Yoruba ordinals, so no SS1-SRC-48b641249e3b:BODY:<sha256> target exists for lines 311-477 (YO-FND-T1-01; YORUBA-T1-W01-ROW-IDENTITY records the same document-wide condition). All 15 Week 2 coverage entries therefore cite line ranges and UTF-8 block hashes and carry empty lesson_ids.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01, then re-bind the Week 2 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 2 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
@@ -3106,7 +3177,7 @@
       "id": "YORUBA-T1-W01-ROW-IDENTITY",
       "kind": "VERIFICATION",
       "detail": "The parser produces no rows for this source because its week headings are Yoruba ordinals (\"OSE KIN-IN-NI\" etc.), so no SS1-SRC-48b641249e3b:BODY:<sha256> identity exists (YO-FND-T1-01). All 15 Week 1 coverage entries therefore cite exact line ranges and UTF-8 block hashes instead of parsed-row targets, and carry empty lesson_ids.",
-      "required_action": "Land the foundation change requested by YO-FND-T1-01 (source-specific week-label pattern with in-anchor occurrence checks), then re-bind the Week 1 coverage entries to identity targets and re-run the plan audit.",
+      "required_action": "Adopt the eight split_before rules recorded in YORUBA-T1-WEEK-LABELS (SS1-SRC-48b641249e3b-R003..R010), then re-bind the Week 1 coverage entries to identity targets and re-run the plan audit.",
       "affected_ids": [
         "SS1-SRC-48b641249e3b"
       ],
