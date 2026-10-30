@@ -38,7 +38,8 @@
     "YO-VIS-T1-02 (2026-10-30) disposed of the five Week 6 inline objects: five right-pointing arrows, one per segmented example (lines 1415-1423), each an AlternateContent of one modern wps connector and one VML fallback, so five v:shape rather than the six the assignment text states. The assignment paragraphs are the 708th-712th w:p start tags (700-704 closed paragraphs before them). The arrows cross the tab gap from the word to its segmentation, but both members of each pair stay in one paragraph, so extraction keeps \"Ke [tabs] k – e\" and the arrow adds direction only; the decision is to omit the objects and write each pair as text in the lesson, recorded on YORUBA-T1-W06-VISUALS and YO-T1-W06-EDE-05. 80 items: 17 implemented / 54 pending / 9 blocked; next_runnable YO-VIS-T1-03. Nothing was run; testing deferred by owner.",
     "YO-VIS-T1-03 (2026-10-30) disposed of the eight Word tables. All are top-level body tables, 56 rows and 244 cells, with no gridSpan, vMerge or repeated header row, and they map to Week 1 (tables 1-2, lines 121-165 and 173-233), Week 4 (tables 3-6, 749-801, 815-861, 871-885 and 891-1079), Week 6 (table 7, 1303-1389) and Week 7 (table 8, 1513-1639); Weeks 2, 3, 5 and 8 have no table. The structure was read from word/document.xml - grid widths, row and cell counts, paragraph counts per cell - not from a render. All eight are content-bearing (pairs, or in table 6 a manner-by-place matrix whose meaning is position); tables 6-8 stack several paragraphs in cells and tables 1, 2, 5, 6 and 8 have empty cells, while extractRawText emits each cell paragraph on its own line, so the association is lost. One evidence entry was added to each of the eight source objectives the tables serve, and YORUBA-T1-TABLES records the representation rule for lessons. 80 items: 18 implemented / 53 pending / 9 blocked; next_runnable YO-FND-T1-01. Nothing was run; testing deferred by owner.",
     "YO-FND-T1-01 (2026-10-30) audited the 1st Term week-label limitation and refuted its main clause: the document's eight Yoruba ordinal headings can be expressed with eight split_before rules (anchors at lines 61, 311, 483, 725, 1171, 1285, 1503, 1685; week 6 tab-wrapped), because the compiler inserts a numeric WEEK marker before any unique line-start anchor and English already does this 47 times. The real limitation is narrower - no rules are present yet, so the source still yields no parsed rows (NO_PARSED_LESSONS) - and the only residual gap is that split_before labels are numeric, leaving weekLabel as WEEK 1..WEEK 8 with the ordinal as the row title. The request was recorded as open item YORUBA-T1-WEEK-LABELS with option A (add R003-R010, no foundation change) and option B (bounded explicit-label change if the stored label must be the ordinal); the eight 1st Term ROW-IDENTITY items now point at it. No rule was added, no schema/compiler/helper edit and no parser or plan run; coverage unchanged. Items 80; status 19 implemented / 52 pending / 9 blocked; next_runnable YO-WK-T2-W01. Testing deferred by owner.",
-    "YO-WK-T2-W01 (2026-10-30) indexed 2nd Term Week 1 at objective level. The scheme row (lines 9-23) is explicit, so week mapping is by the document, not by position: Ede-Atunyewo awon isori oro with five sub-topics, Asa-Oge sise and Litireso-Itupale asayan iwe litireso. The body (lines 149-854, SHA-256 53462d0b7dc26f243193177332b13216518a3aa3ad4949fa10cb3454169a1190) teaches seven EDE parts (the five listed plus oro aponle and oro apejuwe), a three-line LITIRESO pointer and no ASA section; oge sise occurs only in questions 797 and 799. Added 14 coverage entries (12 PARTIAL, 2 UNRESOLVED for ASA and LIT) and 6 open items (scheme mapping, row identity, source defects, notation, assessment gaps, content gaps). Row identity: the parser still yields no rows (no week substring, no bare-number line), so every entry cites lines and block hashes; the 1st Term audit is cited as precedent while the 2nd Term labels are left to YO-FND-T2-01. Defects: numbering losses (187, 447/461, 609-647, 799-803, MCQ c omitted), garbled lines (431, 469, 515, 535, 549, 553, 601, 627, 635, 739, 779-783, 789, 827, 831, 837), terminology inconsistencies and no diacritics anywhere in Week 1. Coverage 125->139; open items 49->55; items 80->84; status 20 implemented / 54 pending / 10 blocked; next_runnable YO-WK-T2-W02. No lesson, rule, schema, compiler, parser or importer change; nothing run (testing deferred by owner)."
+    "YO-WK-T2-W01 (2026-10-30) indexed 2nd Term Week 1 at objective level. The scheme row (lines 9-23) is explicit, so week mapping is by the document, not by position: Ede-Atunyewo awon isori oro with five sub-topics, Asa-Oge sise and Litireso-Itupale asayan iwe litireso. The body (lines 149-854, SHA-256 53462d0b7dc26f243193177332b13216518a3aa3ad4949fa10cb3454169a1190) teaches seven EDE parts (the five listed plus oro aponle and oro apejuwe), a three-line LITIRESO pointer and no ASA section; oge sise occurs only in questions 797 and 799. Added 14 coverage entries (12 PARTIAL, 2 UNRESOLVED for ASA and LIT) and 6 open items (scheme mapping, row identity, source defects, notation, assessment gaps, content gaps). Row identity: the parser still yields no rows (no week substring, no bare-number line), so every entry cites lines and block hashes; the 1st Term audit is cited as precedent while the 2nd Term labels are left to YO-FND-T2-01. Defects: numbering losses (187, 447/461, 609-647, 799-803, MCQ c omitted), garbled lines (431, 469, 515, 535, 549, 553, 601, 627, 635, 739, 779-783, 789, 827, 831, 837), terminology inconsistencies and no diacritics anywhere in Week 1. Coverage 125->139; open items 49->55; items 80->84; status 20 implemented / 54 pending / 10 blocked; next_runnable YO-WK-T2-W02. No lesson, rule, schema, compiler, parser or importer change; nothing run (testing deferred by owner).",
+    "YO-WK-T2-W02 (2026-10-30) indexed 2nd Term Week 2 at objective level. The scheme row (lines 27-35) names structural sentence types, three ASA items and the literature study. The body (lines 855-1074, SHA-256 95fd2ac951255d2721b66c9c3017933c6ad7cb7f9b8a25ee576f1bf059f0d61a) teaches the three structural types eleyo oro-ise, olopo oro-ise and alakanpo, aso wiwo and its three classes, the men/women garment comparison and the change to modern dress; it does not teach Oge sise and has no literature part. A stray gbolohun ase definition at 911 belongs to the Week 3 function classification, and the exercises test alaye, ase and ibeere which Week 2 does not teach. Added 15 coverage entries (13 PARTIAL, 2 UNRESOLVED for Oge sise and the literature objective) and 6 open items (scheme mapping, row identity, source defects, notation, assessment gaps, content gaps). Row identity: the parser still yields no rows (no week substring, no bare-number line), so every entry cites lines and block hashes; YO-FND-T2-01 remains the row-identity item. Defects: garbled definition 861; oro-lse 875; only one olopo example decomposed; garment columns collapse after 973 with buba in both columns and Adiro twice; de baa so wiwo 999; Oge odi sise 1005; numbering 1/b/d and 2/b/d with a and c missing; options (a)/(b)/(d); Gbolohun kani 1039; pea so 1047; soft hyphen 1053; Apa keji repeats 1023-1027. Notation: 12 precomposed characters (8 ó, 4 ù) only in gbolohun, one U+00AD, no ẹ/ọ. Coverage 139->154; open items 55->61; items 84->88; status 21 implemented / 56 pending / 11 blocked; next_runnable YO-WK-T2-W03. No lesson, rule, schema, compiler, parser or importer change; nothing run (testing deferred by owner)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -46,17 +47,17 @@
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 1,
     "SOURCE_WEEK_INDEXING": 31,
-    "LESSON": 25,
-    "FACTUAL_DEPENDENCY": 9,
+    "LESSON": 28,
+    "FACTUAL_DEPENDENCY": 10,
     "SOURCE_PREAMBLE_INDEXING": 4,
     "VISUAL_DISPOSITION": 3,
     "FOUNDATION_REQUEST": 3,
     "ASSET": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "PENDING": 54,
-    "BLOCKED": 10
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 56,
+    "BLOCKED": 11
   },
   "items": [
     {
@@ -2126,11 +2127,11 @@
       "depends_on": [
         "YO-SRC-T2"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-WK-T2-W02",
       "week_or_locator": "Week 2 (scheme row lines 27-35, label \"Ose keji  Ede- Awon isori gbolohun gege bi ihun won.\"; teaching label \"OSE KEJI\" at extractRawText line 855, char offset 13236; section lines 855-1074)",
       "objective": "Index 2nd Term Week 2 at objective level: read every EDE, ASA and LITIRESO objective and every exercise in section lines 855-1074 (scheme row lines 27-35), list each objective, bind it to exact source rows or supplements with reproducible locators, and record any scheme objective or exercise the body does not teach as a precise PENDING open item plus, where content is missing, a small lesson item.",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T2 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Scheme row lines 27-35, SHA-256 b53285363baae5728ce43137e19f236e58d9c264234c8cb54fdaee1319d33650; teaching section lines 855-1074, trimmed body SHA-256 95fd2ac951255d2721b66c9c3017933c6ad7cb7f9b8a25ee576f1bf059f0d61a. Parts: EDE ori-oro 859 (gbolohun by structure); ASA 943 with ori-oro 945 aso wiwo; IWE AKATILEWA 1029; APA KEJI 1055. Litireso is not taught. No objective-level coverage exists; yoruba.json has no coverage entries. The body must be read from the original attachment. No lesson is authored in this item.",
+      "implementation_reference": "Implemented 2026-10-30 on branch ss1/yo-wk-t2-w02, started from aa51b1b (the ss1/yo-wk-t2-w01 tip; PR #210 open against ss1/yo-fnd-t1-01) which stacks on the merged #199-#207 chain; origin/master is still 9f745bb with only PR #199. Prerequisite YO-SRC-T2 is implemented. Source SS1-SRC-ec4a5095420d, member SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx sha256 73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac (66,197 bytes, re-verified for YO-WK-T2-W01 and unchanged). mammoth 1.12.2 extractRawText: 53,525 characters, 2,433 lines. Scheme row lines 27-35, SHA-256 b53285363baae5728ce43137e19f236e58d9c264234c8cb54fdaee1319d33650; teaching label OSE KEJI line 855 (SHA-256 a22da429bb21ce15cdb9daf531aebe39dbae2143a01bad8841d6ff34b1211409); section lines 855-1074, SHA-256 95fd2ac951255d2721b66c9c3017933c6ad7cb7f9b8a25ee576f1bf059f0d61a, equal to the YO-INV-T2 value. Parts: EDE ori-oro 859-937 (ac85e3c5cf848f3446322f6195cde834f9aa57112cc46d1726c26af30f51caf4) with three structural types; ASA 943-1027 (e0e18801e15f4c54329752695b3983d563693ab104d0cbf81419477c32734ff8) with aso wiwo 947-959, the gender comparison 961-997 and the changes 999-1019; IWE AKATILEWA 1029-1031 (b6a0e958fe90111978c0abc9954933954d7f6ef2e2a1f1e4027812ffc3bb1054); ISE ASETILEWA 1033-1053 (9e13532f5f6ac9d72298d9e022d499373513f9b1cdc1bcd7a6537a828366ed68); Apa keji 1055-1071 (f9fd256ae9eab27e5340a8d512077ab888a09f68ba700157ee7185074647bb95). No LITIRESO part and no Oge sise teaching. yoruba.json: 15 coverage entries added, 13 PARTIAL with empty lesson_ids and 2 UNRESOLVED (YO-T2-W02-ASA-01, -SCHEME-LIT); 6 open items added (YORUBA-T2-W02-SCHEME-MAPPING, -ROW-IDENTITY, -SOURCE-DEFECTS, -NOTATION, -ASSESSMENT-GAPS, -CONTENT-GAPS); YORUBA-OBJECTIVE-INDEXING updated. The parser yields no rows for this source (no week substring, no bare-number line; NO_PARSED_LESSONS), so every entry cites line ranges and UTF-8 block hashes; YO-FND-T2-01 remains the row-identity item. Week 2 contains no Word table and no drawing, picture, OLE object or equation (YO-INV-T2); the sentence-example and garment lists are tab-aligned paragraphs. Defects: definition garbled at 861; oro-lse at 875; only the first olopo example decomposed (901-905 vs 907/909); gbolohun ase inserted at 911; connector list 923; Gblolohun 933; garment columns collapse after 973 with a duplicated Adiro and buba in both columns; de baa so wiwo 999; Oge odi sise 1005; ode-ni 1007; exercise numbering 1/b/d and 2/b/d; options (a)/(b)/(d); Gbolohun kani 1039; pea so 1047; soft hyphen 1053; Apa keji duplicates 1023-1027. Notation: 12 precomposed characters (8 ó, 4 ù) only in gbolohun at 873/895/911, one U+00AD at 1053, no ẹ/ọ. Follow-ups appended: YO-LES-T2-W02-EDE, -ASA, -LIT (LESSON, PENDING) and YO-FACT-T2-W02-DEFECTS (FACTUAL_DEPENDENCY, BLOCKED). Counts: items 84->88, coverage 139->154, open items 55->61, source_rules 4, lessons 0, assets 0; status 21 implemented / 56 pending / 11 blocked; next_runnable YO-WK-T2-W03. No lesson, delivery, schema, compiler, parser or importer change; yoruba.json edited for coverage and open items only. Evidence note: docs/ss1/work/microtasks/yoruba/YO-WK-T2-W02.md. Not approved, not verified; nothing run (testing deferred by owner).",
       "completion_condition": "Every scheme objective and every body exercise for the week is enumerated with an exact locator and hash; an objective or exercise the body does not teach becomes a precise PENDING open item and, where content is missing, a small lesson item; no lesson is authored, no objective is invented, and no schema or compiler edit is made here."
     },
     {
@@ -3581,6 +3582,185 @@
       "objective": "Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone and sub-dot notation, so the three Week 1 lessons can be authored without copying errors.",
       "implementation_reference": "Raised by YO-WK-T2-W01 (2026-10-30). Decisions needed, with locators: (1) numbering at 187 (abuda item 2), 447-461 (unnumbered two-item list, aseda numbered 2), 609/625/635/647 (asopo c omitted), 799-803 (Q2-Q4 unnumbered) and the (a)/(b)/(d) option lists with Q3 option (d) empty at 829; (2) spelling at 431 ituom, 469 peleple, 515 gbolohunoro-ise/opomulero, 535 Orisiirisii, 549 nip e, 553 ri fayo, 601 run-together particle list, 627 apeeere, 635 oro-aropo, 739 Oro-apejuwe-;/iso, 779-783 nlanla, 789 Sile mefamefa, 827 unclosed quote/lau je je, 837 kii segbe; (3) terminology wunren/iwunren, atoka/atokun, iseda/aseda; (4) the abo table faweli at 279 and the ORI-ORO heading at 151; (5) tone and sub-dot forms for every Week 1 word (YORUBA-T2-W01-NOTATION; Week 1 has no diacritic at all). No correction is invented in this item.",
       "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 1 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "term": "2nd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T2.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W01.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+          "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T2-W02-EDE.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T2",
+        "YO-WK-T2-W02",
+        "YO-FACT-T2-W02-DEFECTS"
+      ],
+      "status": "PENDING",
+      "id": "YO-LES-T2-W02-EDE",
+      "week_or_locator": "2nd Term Week 2, EDE part: source lines 859-937 (objectives YO-T2-W02-EDE-01..04)",
+      "objective": "Author the Week 2 EDE lesson that replaces the source text for delivery: the sentence and the three structural types - eleyo oro-ise, olopo oro-ise and alakanpo - with their constituents, the verb-count rule, connectors and worked decompositions, using corrected spelling and an approved tone and sub-dot notation, with practice and complete answers and marking.",
+      "implementation_reference": "Not authored. Required by YO-WK-T2-W02 (2026-10-30). The EDE part (lines 859-937, SHA-256 ac85e3c5cf848f3446322f6195cde834f9aa57112cc46d1726c26af30f51caf4) teaches four objectives, all PARTIAL: definition and type list 861-871 (d62c1c11349abde51b2289311cb5faa46c4db68eccbabc2b438aa2843b512051 / 5a1206ba787bd7c333b27331cf8d11bdbd2766d10e5d311ec503d877b4192806), eleyo 873-891 (8e7838bedc4d6751312bfa48196f4e8bb90e565362603c225cd35ccde34d5d89), olopo 895-909 (915b3b96a0b777412df677e8dc64419bcc9eedea14046ab037d47fe63ada0464) and alakanpo 911-927 (931e5dcb7de5578c2c57b516010697a181297b17c17172fda33d371f956aa0e8). Defects: garbled definition at 861; naming by function at 863; oro-lse at 875; only one olopo example decomposed; the stray gbolohun ase definition at 911; Gblolohun at 933; inconsistent diacritics. Open items YORUBA-T2-W02-SOURCE-DEFECTS and YORUBA-T2-W02-NOTATION must be decided first. No lesson is authored in YO-WK-T2-W02.",
+      "completion_condition": "A lesson in yoruba.json teaches every Week 2 EDE objective, excludes the function-based gbolohun ase that belongs to Week 3, uses the corrections and notation decision agreed in YO-FACT-T2-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "term": "2nd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T2.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W01.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+          "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T2-W02-ASA.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T2",
+        "YO-WK-T2-W02",
+        "YO-FACT-T2-W02-DEFECTS"
+      ],
+      "status": "PENDING",
+      "id": "YO-LES-T2-W02-ASA",
+      "week_or_locator": "2nd Term Week 2, ASA part: source lines 943-1027 (objectives YO-T2-W02-ASA-02..04); Oge sise is covered by YO-LES-T2-W01-ASA",
+      "objective": "Author the Week 2 ASA lesson that replaces the source text for delivery: aso wiwo and its three classes, the comparison of men and women clothing with the garment lists, and the change from old-time to modern dress, using corrected wording and an approved tone and sub-dot notation, with practice and complete answers and marking.",
+      "implementation_reference": "Not authored. Required by YO-WK-T2-W02 (2026-10-30). The ASA part (lines 943-1027, SHA-256 e0e18801e15f4c54329752695b3983d563693ab104d0cbf81419477c32734ff8) teaches three of the four scheme items: aso wiwo and its classes 947-959 (2cabca20949a7660e9a2ecda4689fc6202add9fd43fd8794f6bbc8ca1375c7cc), the gender comparison 961-997 (091bcd7687785303b660ee1438e0b97c4a3115cc0bb031566583d94bf97af9f4) and the changes 999-1019 (16a1879658043d0b5807e64c57ff4b1e537245cc1545cc15c9525020e092388e). Oge sise (scheme line 29) is untaught and is the repeated Week 1 objective already covered by YO-LES-T2-W01-ASA; this lesson must not duplicate it. Defects: run-on paragraph 961; garment columns collapse after 973 with a duplicated Adiro and buba in both columns; de baa so wiwo 999; Oge odi sise 1005; ode-ni 1007; option and numbering defects in the exercises. No lesson is authored in YO-WK-T2-W02.",
+      "completion_condition": "A lesson in yoruba.json teaches the three taught Week 2 ASA objectives with the garment lists preserved as a table, uses approved corrections and notation, has practice with complete answers and marking that sum exactly, body_sha256, provenance and PENDING approval; it does not duplicate the Oge sise lesson and no content is invented."
+    },
+    {
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "term": "2nd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T2.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W01.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+          "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T2-W02-LIT.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T2",
+        "YO-WK-T2-W02",
+        "YO-FACT-T2-W02-DEFECTS"
+      ],
+      "status": "PENDING",
+      "id": "YO-LES-T2-W02-LIT",
+      "week_or_locator": "2nd Term Week 2, LITIRESO part: scheme line 35 (objective Itupale asayan iwe litireso); no literature body exists in Week 2",
+      "objective": "Author the Week 2 LITIRESO lesson that replaces the missing source text for delivery: study of the selected literature text named by the owner or teacher, with approved tone and sub-dot notation and practice with complete answers and marking.",
+      "implementation_reference": "Not authored. Required by YO-WK-T2-W02 (2026-10-30) because the scheme objective has no teaching body: scheme line 35 (SHA-256 f698bad3bad40c8162c89b56708183affc2874035ce768561aa26550e5fd542e) names Litireso- Itupale asayan iwe litireso and Week 2 (855-1074) has no literature heading, selected text or instruction. No text, author or edition is named. Open item YORUBA-T2-W02-CONTENT-GAPS records the gap and requires a selected text or an explicit deferral. No content is invented in YO-WK-T2-W02.",
+      "completion_condition": "A lesson in yoruba.json analyses the literature text selected by the owner or teacher, uses approved notation, has practice with complete answers and marking that sum exactly, body_sha256, provenance and PENDING approval; no text or objective is invented and no schema or compiler edit is made."
+    },
+    {
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-ec4a5095420d",
+      "term": "2nd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T2.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W01.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T2-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx",
+          "member_sha256": "73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-FACT-T2-W02-DEFECTS.md"
+      ],
+      "depends_on": [
+        "YO-SRC-T2",
+        "YO-WK-T2-W02"
+      ],
+      "status": "BLOCKED",
+      "id": "YO-FACT-T2-W02-DEFECTS",
+      "week_or_locator": "2nd Term Week 2, source lines 855-1074",
+      "objective": "Obtain one recorded subject-expert decision on the Week 2 source defects and on the tone and sub-dot notation, so the three Week 2 lessons can be authored without copying errors.",
+      "implementation_reference": "Raised by YO-WK-T2-W02 (2026-10-30). Decisions needed, with locators: (1) the garbled definition at 861 and the function-naming sentence at 863; (2) the stray gbolohun ase definition at 911 and the function types tested at 1035/1039/1063-1065; (3) oro-lse at 875, Gblolohun at 933, Gbolohun kani at 1039 and pea so at 1047; (4) only one olopo example decomposed (901-905 against 907/909); (5) the garment list at 963-997: column collapse after 973, women list of five against a men list to 997, buba in both columns, Adiro twice, case inconsistency; (6) de baa so wiwo 999, Oge odi sise 1005, ode-ni 1007, marun-unmarun-un 1027; (7) the duplicated Apa keji questions 1067-1071 with numbering 2/b/d; (8) the o.i reference abbreviation at 1031; (9) tone and sub-dot forms for every Week 2 word and the U+00AD at 1053 (YORUBA-T2-W02-NOTATION). No correction is invented in this item.",
+      "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     }
   ],
   "review": {
@@ -3597,6 +3777,6 @@
     }
   },
   "next_runnable": [
-    "YO-WK-T2-W02"
+    "YO-WK-T2-W03"
   ]
 }
