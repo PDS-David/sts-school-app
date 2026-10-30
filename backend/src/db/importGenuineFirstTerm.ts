@@ -93,6 +93,7 @@ import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { pool, query } from './pool.js';
+import { resolveClassName } from './classNaming.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -143,6 +144,20 @@ async function resolveStudentId(ref: StudentRef): Promise<string | null> {
   }
   studentCache.set(cacheKey, id);
   return id;
+}
+
+// DATA-03: stamp each score with the class printed on the report card (the class that
+// term), written in the school's current class naming. Null when the school has no
+// matching class, in which case the row is left unstamped rather than guessed.
+const classNamesCache = new Map<string, Set<string>>();
+async function stampClassFor(school_code: string, raw: string): Promise<string | null> {
+  let names = classNamesCache.get(school_code);
+  if (!names) {
+    const { rows } = await query('SELECT name FROM classes WHERE school_code=$1', [school_code]);
+    names = new Set<string>(rows.map((r: any) => r.name));
+    classNamesCache.set(school_code, names);
+  }
+  return resolveClassName(raw, names);
 }
 
 const subjectCache = new Map<string, number | null>();
@@ -235,12 +250,14 @@ async function main() {
       );
       continue;
     }
+    const stampClass = await stampClassFor(s.school_code, s.class_name);
     await query(
-      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,updated_at)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,now())
+      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,updated_at,class_name)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,now(),$9)
        ON CONFLICT(student_id,subject_id,term_id)
-       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,updated_at=now()`,
-      [studentId, subjectId, termId, s.ca1, s.ca2, s.exam, s.grade, s.teacher_remark],
+       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,updated_at=now(),
+                     class_name=COALESCE(scores.class_name,$9)`,
+      [studentId, subjectId, termId, s.ca1, s.ca2, s.exam, s.grade, s.teacher_remark, stampClass],
     );
     scoresSaved++;
   }
