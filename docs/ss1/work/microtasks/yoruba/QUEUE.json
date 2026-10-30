@@ -52,7 +52,8 @@
     "YO-WK-T2-W12 (2026-10-30) disposed of the 2nd Term Week 12 examination row, which has NO body. Scheme row line 141, \"Ose kejila-  Idanwo saa keji.\" plus two trailing spaces and two tabs, 33 characters, SHA-256 aa097f81f0441460a3fe8b00396ccc6ca1cd78fa38dcf732732079b423f43f3d, char offset 2,616, 0 non-ASCII; scheme rows 139-141 (SHA-256 4d367455936267cd3957e487abe25bdd6ac0177ecd60f90d197b74926e10cdd7); scheme list lines 7-141 (SHA-256 1239d3fde57b34ddf1e8a401d21bb709e3ede3f669daefe4f8e0845b52d95cc7). The exact line occurs exactly once in the 2,433-line extraction and the trimmed text too; idanwo occurs only at 141 and at 529 (an example sentence inside the Week 1 grammar explanation, Akekoo yoo se idanwo, not an exam item); kejila occurs as a standalone word only at 141 and otherwise only inside Ikejila at 1727. No examination section exists: the body runs 149-2423 (SHA-256 c3123aaff4325becd71368c53f47d732a762342e64faed52963eefc59e474683) with nine OSE sections (149, 855, 1075, 1303, 1451, 1611, 1683, 2017, 2221), no OSE label after 2221 and no week-12 or examination heading, paper, question set, mark scheme, time allowance or reference; the last section OSE KEWAA 2221-2423 (SHA-256 4f053c8c065a7260053db902b189ad6ce0c0a1a6a8e165cecd2054fcd44e0bd5) closes with Apa keji 2417-2423, 2423 is the last non-blank line, and lines 2424-2433 are whitespace only. Decision: the row is classified under the existing schema as a classify_marker EXAMINATION rule (SS1-SRC-ec4a5095420d-R003) plus one MARKER coverage entry (YO-T2-W12-SCHEME-EXAMINATION, lesson_ids [], 3 evidence entries), and no open item is raised because the row carries no teaching and creates no delivery defect; its surface defects (double space before Idanwo, no strand prefix, trailing spaces and tabs) are recorded in the entry evidence and not normalised. Recorded that an examination marker adds no objective, removes none, cannot erase or replace the Weeks 1-11 teaching and cannot supply the still-missing content; no examination paper, question, mark scheme or answer key is authored. Coverage 281->282; open items stay 112; source_rules 5->6; items stay 120; notes 35->36; status 31 implemented / 70 pending / 19 blocked; next_runnable YO-PRE-T2-1. No lesson, schema, compiler, parser or importer change; nothing run (testing deferred by owner).",
     "YO-PRE-T2-1 (2026-10-30) indexed the 2nd Term front matter and classified it scheme-only. Title block lines 3-5, 54 characters, SHA-256 12c4f4d35d0f0e7c1e22491d7d2985a8eaa763039fed3ecd60fa7b83111e51fe: \"SECOND TERM E-NOTE\" (3, f79e08bd1b5aee7b204e71b0d86d8488df0ee4f980f6848177c64d3459939c2b) and \"SUBJECT; YORUBA. \" plus six tabs plus \"CLASS-; SS1\" (5, 7f60b3e1794cd6ae3378d951088a300853029505c79bd2ca1326d51bfe2d5bcc), 0 non-ASCII. Scheme heading \"ILANA ISE OSOOSE FUN SAA KEJI\" line 7 (a0b97e0f1529e5e76c45a2bbc346c526b4fdb1334ad63c0abf65d04660f10130); 12 rows lines 9-141 (b3d8ec826acef71bc7419fb4e5612959e8089751cbf50d852232c71eb22d0b12): W01 9-23 1d57865591bfc8d86e0690f5806f73279f4f89dc8ee1f64c979a0d278ddc3d51, W02 27-35 b53285363baae5728ce43137e19f236e58d9c264234c8cb54fdaee1319d33650, W03 37-43 2d55c9d18854ce5458f51a5afc2542918b006d82b6e7426a78e2f72f6f7208fb, W04 45-55 21818e1ffba31b71926e8292140cacf0315b00187358446a68feea8297baf6d2, W05 57-67 55c53e211535fa77ed6c031487d304be3141521cf8e093de9408c34abd5f659a, W06 69-79 2de02ce7721cc33f01b7ade59a9be44cce27128c7302d955b7c284e4688f2810, W07 81-91 90af69d72b37b7347417348791b180ad3d5b37aab457eefc80e2ea0d077a0d88, W08 93-105 5e8dee089a86032a35e024eaaf1bffb5a95dafd66ad0971eeca5e0a64e825d37, W09 107-123 d6f35818a8c31544d32b7324e5e17c62e5c2ab03c70b71b42b11fb7b0dda6027, W10 125-137 6f81346dd5b5fb196cf342cad485c8e10474df2337d60cbb53ae713b8716fb8f, W11 139 c8639358723f993c5605c822e3392ca3a6f4a772825dfa509886c158d9f31027, W12 141 aa097f81f0441460a3fe8b00396ccc6ca1cd78fa38dcf732732079b423f43f3d; scheme 7-141 is 2,591 characters (1239d3fde57b34ddf1e8a401d21bb709e3ede3f669daefe4f8e0845b52d95cc7), front matter 3-141 2,647 characters (044ca198991b51d73a9afe62b4d402e5a855210bdd0cd60dc02a4d92c82a1cbc); lines 142-148 are whitespace only (143 is three tabs) and the first teaching label OSE KINNI is line 149 (b7e9218db066e7bbdddb0fb05a076de376ecb45fe31923e958c4f8133f2d6989). Mapping is documentary, by each row's explicit Yoruba ordinal label, not positional; rows 8, 11 and 12 are scheme-only (Week 8 has no teaching section at all, Week 11 is the REVISION marker of SS1-SRC-ec4a5095420d-R002, Week 12 the EXAMINATION marker of SS1-SRC-ec4a5095420d-R003). Decision: rule SS1-SRC-ec4a5095420d-R004 (classify_marker, SCHEME_ONLY, anchor \"SECOND TERM E-NOTE\", occurs exactly once) plus two MARKER coverage entries, YO-T2-PRE-TITLE (3-5) and YO-T2-PRE-SCHEME-LIST (7-141), each with 3 evidence entries and with SS1-SRC-ec4a5095420d-R004 in lesson_ids, matching the MARKER pattern of physics.json, mathematics.json and english.json; the five earlier Yoruba MARKER entries (YO-T1-PRE-TITLE/-TERM/-SCHEME-LIST and YO-T2-W11/W12-SCHEME-*) carry empty lesson_ids and are left unchanged, to be reconciled with the compiler MARKER proof requirement in YO-FND-T2-01. Page metadata outside extractRawText: word/header1.xml 1,762 bytes (2831364fe6929ee316c4129699c5984f50017cd19a3a44ce77a0751dd7533bbc), default header rId7, literal NAME/CLASS fill-in line of 57 characters with U+2026 ellipses and one tab (text 0a8a06be902cea9070a5b1376719624c23b85f4b52f3661bd69249d406eed1c9); word/footer2.xml 2,155 bytes (27904d82969625457f9a286ccecef7023ad4124f8b04fdedc91c6671498c9c0b), default footer rId9, PAGE field with cached result 1 plus \"WKLAS/2ND TERM/YORUBA/S.S. 1\" (28 characters, text 610538f2403ece869479f76d814705148eb69ec157dcd9ae2fbe67a85b95c7cd, run-split WKLA + S/2ND + \" TERM/\" + YORUBA/S.S. 1); word/footer1.xml 1,324 bytes (5b6de2d077ca8c65c9a2b8d3162a95d02c0af6033496df86b3d07f078a330f57), even footer rId8, only a PAGE field with no cached result (YO-INV-T2 said it has no text; it has no literal text beyond the field). None of the strings occurs in the 2,433-line extraction. word/document.xml 485,316 bytes (dafcae0608c9ce426d79b65c2d174261664227529ba6aedea947657071c62680), 1,216 paragraphs, 0 tables; 94 paragraphs carry w:numPr, 14 of them the scheme sub-topics (7 bulleted numId 19 at 11, 13, 15, 17, 19, 73, 95; 7 lower-Roman numId 20 at 51 and 53, 21 at 61, 22 at 101 and 103, 23 at 115 and 117) and none an \"Ose\" label paragraph; extractRawText emits none of those markers. Notation: exactly 4 non-ASCII characters in 3-141, all U+2013 en dashes at 55, 59, 69 and 71; no tone mark, sub-dot or combining mark; the title block has none. 1 CONTENT open item added, YORUBA-T2-PRE-SCHEME-MAPPING (blocks_delivery true), for the term-wide mapping confirmation and the decision on preserving the lost automatic numbering; the per-week YORUBA-T2-W01..W10-SCHEME-MAPPING items stay open. Coverage 282->284; open items 112->113; source_rules 6->7; items stay 120; notes 36->37; status 32 implemented / 69 pending / 19 blocked; next_runnable YO-FND-T2-01. No lesson, asset, schema, compiler, parser or importer change; nothing run (testing deferred by owner).",
     "YO-FND-T2-01 (2026-10-30) audited the 2nd Term week-label limitation and refuted its main clause: the nine Yoruba ordinal headings (lines 149, 855, 1075, 1303, 1451, 1611, 1683, 2017 and 2221; five carry leading whitespace and 1075 also a trailing space) can be expressed with nine split_before rules, because the compiler inserts a numeric WEEK marker before any unique line-start anchor and the exact tab-bearing anchors remain line-initial. Static checks: 0 \"week\" substrings, WEEK_MARKER 0 and BARE_NUMBER_LINE 0, so the source still yields no rows (NO_PARSED_LESSONS). A private text-level simulation of the nine insertions (not a parser run) gives nine ordinal-titled blocks with expected hashes and a 148-line preamble 69ce399e.... Week 8 has no section and is already UNRESOLVED coverage; rows 11-12 are preamble scheme lines, and the true residual is that R002/R003 (REVISION/EXAMINATION) can never bind a parsed row under compiler.ts 85 and CONTRACT.md 105. Recorded open item YORUBA-T2-WEEK-LABELS with option A (R005-R013 plus SCHEME_ONLY binding for rows 11-12 and the three 1st Term PRE entries, no foundation change), option B (explicit ordinal label and/or preamble marker binding, bounded foundation change) and option C (split rows 11-12, not recommended); the ten T2 ROW-IDENTITY items now point to it. No rule added, no schema/compiler/helper edit, no parser or plan run; coverage unchanged at 284; open items 113->114; items 120; status 33 implemented / 68 pending / 19 blocked; next_runnable YO-WK-T3-W01. Testing deferred by owner.",
-    "YO-WK-T3-W01 (2026-10-30) indexed 3rd Term Week 1 at objective level from origin/master 5a78054. Scheme group lines 7-11 (SHA-256 62d8c558c9d8d7d25842a84a51e4c20d27b5e3922b26c39a310fb62ce891aa8e); teaching label OSE KINNI line 121 (3ec2404b1133235660a37e10356a14795fb26c6fc1e2206aa73de767c8e4f5eb, offset 2,970); section 121-426 (b9d0b35a3b6075c9c1565b6bdda3c263fa85324eaa443f99f18fe9253afd21f3), equal to YO-INV-T3. Parts: EDE 125-213 (d2c2d686d2520be9417362f5758ceedee15bf3a39f617d9bd72b409770e92c51) - definition 135-141 (b3efad3d3ee0ec17104d8ee6114e16d0377daab71cf97c14263ea6dd8585c624), ten types 145-175 (51881a0fda6b098fa707451e9ac20ac637185320f8c27acfaf5b6fdf29956c08), three functions 179-211 (53d039ae2d22d50e03dc5323ab5b5187e34c398d4b6ab3bb1e01737ebd60aa98); ASA 223-345 (7fb7228a0007d353b7bf6daaffbd820c05761f19af9b5c8b437b0af6e00ed307) - amutorunwa 241-267 (37413dfebea663552d2481a1d37ee5707ae1e2ce7f30d343023266622630bc9c), abiku 271-289 (6cd68a6256d02792d5033f49f27dc7e3c15ebafc250ad531ed95f4b6f83ae176), inagije 293-301 (daa745faa9bddccb27d5802a38ca0ebffdb0fc836fe677c6408c6401cf161da9), abiso 305-345 (0c9e40679758af309c795fb7a25978d5149547d28149a284db1c0032fe70542b); LITIRESO 363-385 (e12aaf57954e421b722ac1b0bb9bd5ff5ae2f27a137fb4874877ee73b5975718) - device list 365 (2adc4e660afa2ed4ce689fc74d7d27ac6e1eede0f86bf4843331ccbdd4a2df49); exercises 349-353 (18c35d4f5f8f7838b148a8d444a1e43ddb5ec8f517f0266bfcba915985907089), 389-391 (3eb47fdacfcd73eaa065da0e943121b6f225ccf81c99438da7cbb5f0bcef0145), 395-401 (af93b7cf4e98c8c460140b58fdb869d571def9d74d8b8225300f5a3cae610827), 407-417 (09deae4610f1d9d553e013d858fe3239650c51bf72c19d889855b3677c2dbc08), 419-423 (670a27bfb7428ae824f60e3269d11db8dd17a326eb82074454481f87dc321772). 19 coverage entries (17 PARTIAL, 2 UNRESOLVED: oriki at 127 and amuye/koko ewi); 6 open items (SCHEME-MAPPING, ROW-IDENTITY, SOURCE-DEFECTS, NOTATION, ASSESSMENT-GAPS, CONTENT-GAPS). The parser still yields no rows (0 \"week\" substrings, WEEK_MARKER 0, BARE_NUMBER_LINE 0), and all ten ordinal labels are unique and line-initial, but 3rd Term row identity stays with YO-FND-T3-01. Notation: only an en dash at 135 and an ellipsis at 157; no diacritics. Follow-ups YO-LES-T3-W01-EDE/-ASA/-LIT and YO-FACT-T3-W01-DEFECTS appended. Coverage 284->303; open items 114->120; rules 7; items 120->124; notes 38->39; status 34 implemented / 70 pending / 20 blocked; next_runnable YO-WK-T3-W02. No lesson or code change; nothing run (testing deferred by owner)."
+    "YO-WK-T3-W01 (2026-10-30) indexed 3rd Term Week 1 at objective level from origin/master 5a78054. Scheme group lines 7-11 (SHA-256 62d8c558c9d8d7d25842a84a51e4c20d27b5e3922b26c39a310fb62ce891aa8e); teaching label OSE KINNI line 121 (3ec2404b1133235660a37e10356a14795fb26c6fc1e2206aa73de767c8e4f5eb, offset 2,970); section 121-426 (b9d0b35a3b6075c9c1565b6bdda3c263fa85324eaa443f99f18fe9253afd21f3), equal to YO-INV-T3. Parts: EDE 125-213 (d2c2d686d2520be9417362f5758ceedee15bf3a39f617d9bd72b409770e92c51) - definition 135-141 (b3efad3d3ee0ec17104d8ee6114e16d0377daab71cf97c14263ea6dd8585c624), ten types 145-175 (51881a0fda6b098fa707451e9ac20ac637185320f8c27acfaf5b6fdf29956c08), three functions 179-211 (53d039ae2d22d50e03dc5323ab5b5187e34c398d4b6ab3bb1e01737ebd60aa98); ASA 223-345 (7fb7228a0007d353b7bf6daaffbd820c05761f19af9b5c8b437b0af6e00ed307) - amutorunwa 241-267 (37413dfebea663552d2481a1d37ee5707ae1e2ce7f30d343023266622630bc9c), abiku 271-289 (6cd68a6256d02792d5033f49f27dc7e3c15ebafc250ad531ed95f4b6f83ae176), inagije 293-301 (daa745faa9bddccb27d5802a38ca0ebffdb0fc836fe677c6408c6401cf161da9), abiso 305-345 (0c9e40679758af309c795fb7a25978d5149547d28149a284db1c0032fe70542b); LITIRESO 363-385 (e12aaf57954e421b722ac1b0bb9bd5ff5ae2f27a137fb4874877ee73b5975718) - device list 365 (2adc4e660afa2ed4ce689fc74d7d27ac6e1eede0f86bf4843331ccbdd4a2df49); exercises 349-353 (18c35d4f5f8f7838b148a8d444a1e43ddb5ec8f517f0266bfcba915985907089), 389-391 (3eb47fdacfcd73eaa065da0e943121b6f225ccf81c99438da7cbb5f0bcef0145), 395-401 (af93b7cf4e98c8c460140b58fdb869d571def9d74d8b8225300f5a3cae610827), 407-417 (09deae4610f1d9d553e013d858fe3239650c51bf72c19d889855b3677c2dbc08), 419-423 (670a27bfb7428ae824f60e3269d11db8dd17a326eb82074454481f87dc321772). 19 coverage entries (17 PARTIAL, 2 UNRESOLVED: oriki at 127 and amuye/koko ewi); 6 open items (SCHEME-MAPPING, ROW-IDENTITY, SOURCE-DEFECTS, NOTATION, ASSESSMENT-GAPS, CONTENT-GAPS). The parser still yields no rows (0 \"week\" substrings, WEEK_MARKER 0, BARE_NUMBER_LINE 0), and all ten ordinal labels are unique and line-initial, but 3rd Term row identity stays with YO-FND-T3-01. Notation: only an en dash at 135 and an ellipsis at 157; no diacritics. Follow-ups YO-LES-T3-W01-EDE/-ASA/-LIT and YO-FACT-T3-W01-DEFECTS appended. Coverage 284->303; open items 114->120; rules 7; items 120->124; notes 38->39; status 34 implemented / 70 pending / 20 blocked; next_runnable YO-WK-T3-W02. No lesson or code change; nothing run (testing deferred by owner).",
+    "YO-WK-T3-W02 (2026-10-30) indexed 3rd Term Week 2 at objective level from origin/master 8ffcd12. Scheme group lines 13-17 (SHA-256 12b984e154f5bab69dc520e5c609e3606ce32be1a4a9e437068aead476c6bc60); teaching label OSE KEJI line 427 (a22da429bb21ce15cdb9daf531aebe39dbae2143a01bad8841d6ff34b1211409, offset 10,299); section 427-678 (4e9c5de3a0d9b20e958f97b3178a968e84002c7b7a8b6025c6e1b810bb657083), equal to YO-INV-T3. Parts: EDE 429-591 (9041f3c35f5557e8a74088746af989d9fb611ae84795048a6c9c196862305c37) with Oriki 431, Abuda 433, Ate 435 and Irisi 437, definition 441-449 (cd76b38ee3b51ec9f111312168df81dee845b8619f9237e5625a0279d15d3d0e), abuda 451-505 (2d0951a414239019dde308196e6f1104b3e801802355d1c0ab4e3ddca11bfeab) and irisi 509-591 (6344d86fe001ca4e6870e54c21f10ba15d803e907a97d83e8f8defbcc6bf0ad1); IGBELEWON 595-599 (339bc53d16f7ad3b18d809fc24b1eba52bf62323b822b7128d31c7b8bf4d2d03); ASA 603-607 (a426e87b3fc97e252944d22c0ddd1ffd27b1050360166b3145a386f099333078, 29 characters, heading only); IWE AKATILEWA 611-613 (c394056506d8597c41bfa04fa6f3d92889b4ec834b298f52ec6a37178211241b); LITIRESO 617-623 (684a68029efcc5744f7c5e0da4469ab7ed2d2fa756ae9d8c2cbee177b410bf74, 87 characters, title and Iya Atata citation only); APAPO 627-635 (b3405577dbeb17f46dd8882c32966284918be84e0964c1ecc10281dabb5cfa5f); ISE AMURELE 639-649 (5f29f03bfe8eb667618f804561e1dd05b6fd2c6629a376bb293cfd71e9e0a784); APA KEJI 651-661 (5a853c1bbc1e153a252dc5e6f019096a747155ee3fc6cb596d5bc9a86a4977e7). 16 coverage entries (8 PARTIAL, 8 UNRESOLVED: scheme ASA, scheme LITIRESO, ate, oriki, the two ASA advertising objectives and the two LITIRESO objectives); 6 open items (SCHEME-MAPPING, ROW-IDENTITY, SOURCE-DEFECTS, NOTATION, ASSESSMENT-GAPS, CONTENT-GAPS). The parser still yields no rows (0 \"week\" substrings, WEEK_MARKER 0, BARE_NUMBER_LINE 0); OSE KEJI is unique and line-initial; 3rd Term row identity stays with YO-FND-T3-01. Notation: 9 non-ASCII characters (five U+2018, three U+2019, one U+2013 at 509); no tone, no sub-dot. Follow-ups YO-LES-T3-W02-EDE/-ASA/-LIT and YO-FACT-T3-W02-DEFECTS appended. Coverage 303->319; open items 120->126; rules 7; items 124->128; notes 39->40; status 35 implemented / 72 pending / 21 blocked; next_runnable YO-WK-T3-W03. No lesson or code change; nothing run (testing deferred by owner)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -60,17 +61,17 @@
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 1,
     "SOURCE_WEEK_INDEXING": 31,
-    "LESSON": 55,
-    "FACTUAL_DEPENDENCY": 19,
+    "LESSON": 58,
+    "FACTUAL_DEPENDENCY": 20,
     "SOURCE_PREAMBLE_INDEXING": 4,
     "VISUAL_DISPOSITION": 3,
     "FOUNDATION_REQUEST": 3,
     "ASSET": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "PENDING": 70,
-    "BLOCKED": 20
+    "IMPLEMENTED_TESTING_DEFERRED": 35,
+    "PENDING": 72,
+    "BLOCKED": 21
   },
   "items": [
     {
@@ -2714,11 +2715,11 @@
       "depends_on": [
         "YO-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-WK-T3-W02",
       "week_or_locator": "Week 2 (scheme group lines 13-17, no week label; leading EDE text \"Oro Aropo-Oruko\"; teaching label \"OSE KEJI\" at extractRawText line 427, char offset 10299; section lines 427-678)",
       "objective": "Index 3rd Term Week 2 at objective level: read every EDE, ASA and LITIRESO objective and every exercise in section lines 427-678 (scheme group lines 13-17, which carries no week label), list each objective, bind it to exact source rows or supplements with reproducible locators, and record any scheme objective or exercise the body does not teach as a precise PENDING open item plus, where content is missing, a small lesson item.",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T3 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Scheme group lines 13-17, SHA-256 12b984e154f5bab69dc520e5c609e3606ce32be1a4a9e437068aead476c6bc60; teaching section lines 427-678, trimmed body SHA-256 4e9c5de3a0d9b20e958f97b3178a968e84002c7b7a8b6025c6e1b810bb657083. Parts: EDE 429 ORO AROPO ORUKO (abuda, ate, irisi, ipo oluwa/abo/eyan) 439-591 with IGBELEWON 595-599; ASA 603 IPOLOWO OJA 605-607; LITIRESO 617-623 SISE ATUPALE EWI KEJI NINU IWE TI IJOBA YAN (Iya Atata reference only); APAPO IGBELEWON 627-635; ISE AMURELE 639-649; APA KEJI 651-661; IWE AKATILEWA 611-613. No objective-level coverage exists; yoruba.json has no coverage entries. The body must be read from the original attachment. No lesson is authored in this item.",
+      "implementation_reference": "Implemented 2026-10-30 on branch ss1/yo-wk-t3-w02, started from origin/master 8ffcd12b4b4067072787268b8de3ef1dd1eaabef (the refreshed assignment index docs/ss1/work/NEXT_ASSIGNMENTS_20261030.md assigns YO-WK-T3-W02). Prerequisite YO-SRC-T3 and predecessor YO-WK-T3-W01 are implemented. Source SS1-SRC-4cc6aae9ed7d, member SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx sha256 a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3 (68,373 bytes, re-verified this run against archive sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). mammoth 1.12.2 extractRawText: 63,445 characters, 2,463 lines (whole-file SHA-256 4def7729a08d67235d5a7c6fbbcb19a15a93ffdacb96cafc6e477a14edb4d726), identical to the YO-INV-T3 and YO-WK-T3-W01 measurement. Scheme group lines 13-17 (SHA-256 12b984e154f5bab69dc520e5c609e3606ce32be1a4a9e437068aead476c6bc60; rows 13, 15 and 17 carry SHA-256 8fc7b7c25a47192dce095d4604ffbef7305c955e046c7fb7c350beb147483ed8, 0b550bf09a710537a233a9d671f4ec974aed98a6781be2f66f70708165314000 and 877c508bb10a799b4103aff69547f7f9171524e212c5aeb6c5a975ab1e721547); teaching label OSE KEJI line 427 (SHA-256 a22da429bb21ce15cdb9daf531aebe39dbae2143a01bad8841d6ff34b1211409, char offset 10,299); section lines 427-678 (SHA-256 4e9c5de3a0d9b20e958f97b3178a968e84002c7b7a8b6025c6e1b810bb657083), equal to the YO-INV-T3 value. Parts: EDE 429-591 (9041f3c35f5557e8a74088746af989d9fb611ae84795048a6c9c196862305c37) with sub-headings Oriki 431, Abuda 433, Ate 435 and Irisi 437, definition 441-449 (cd76b38ee3b51ec9f111312168df81dee845b8619f9237e5625a0279d15d3d0e), abuda 451-505 (2d0951a414239019dde308196e6f1104b3e801802355d1c0ab4e3ddca11bfeab) and irisi 509-591 (6344d86fe001ca4e6870e54c21f10ba15d803e907a97d83e8f8defbcc6bf0ad1) with oluwa 519-541, abo 543-565 and eyan 567-591; IGBELEWON 595-599 (339bc53d16f7ad3b18d809fc24b1eba52bf62323b822b7128d31c7b8bf4d2d03); ASA 603-607 (a426e87b3fc97e252944d22c0ddd1ffd27b1050360166b3145a386f099333078, 29 characters); IWE AKATILEWA 611-613 (c394056506d8597c41bfa04fa6f3d92889b4ec834b298f52ec6a37178211241b); LITIRESO 617-623 (684a68029efcc5744f7c5e0da4469ab7ed2d2fa756ae9d8c2cbee177b410bf74, 87 characters); APAPO IGBELEWON 627-635 (b3405577dbeb17f46dd8882c32966284918be84e0964c1ecc10281dabb5cfa5f, 167 characters); ISE AMURELE 639-649 (5f29f03bfe8eb667618f804561e1dd05b6fd2c6629a376bb293cfd71e9e0a784, 454 characters); APA KEJI 651-661 (5a853c1bbc1e153a252dc5e6f019096a747155ee3fc6cb596d5bc9a86a4977e7, 230 characters). yoruba.json: 16 coverage entries added (8 PARTIAL with empty lesson_ids and 8 UNRESOLVED - the scheme ASA and scheme LITIRESO objectives, ate, oriki, iwulo ipolowo, orisii ona ipolowo and the two LITIRESO objectives); 6 open items added (YORUBA-T3-W02-SCHEME-MAPPING, -ROW-IDENTITY, -SOURCE-DEFECTS, -NOTATION, -ASSESSMENT-GAPS, -CONTENT-GAPS); YORUBA-OBJECTIVE-INDEXING updated with the 3rd Term Weeks 1-2 sentence. The parser still yields no rows for this source, so every entry cites line ranges and UTF-8 block hashes; OSE KEJI occurs exactly once and line-initial, and row identity stays with YO-FND-T3-01. Week 2 has no Word table, drawing, picture, OLE object or equation (YO-INV-T3), so no visual item is raised although 549-565 are laid out as tab grids in raw text. Notation: 9 non-ASCII characters in the section, five U+2018, three U+2019 and one U+2013 at 509; no tone and no sub-dot anywhere. Defects recorded: the abuda numbering 1/unnumbered/3-6 at 453-501, the abo grid row at 553, the eyan grid at 575-577, the missing space at 441, Bolu/Bola at 443/447, the unanswered questions at 495-499, the bare fragments at 513-517, Enikin-in at 549, the stray Oro-ise line at 555, the lowercase o eyan at 567, S.S.S. 2 and Corpromutt at 613, the broken stem at 649 and the unmodelled 653/655 tasks. Follow-ups appended: YO-LES-T3-W02-EDE, -ASA and -LIT (LESSON, PENDING) and YO-FACT-T3-W02-DEFECTS (FACTUAL_DEPENDENCY, BLOCKED). Coverage 303->319; open items 120->126; source_rules 7; lessons 0; assets 0; items 124->128; notes 39->40; status 35 implemented / 72 pending / 21 blocked; next_runnable YO-WK-T3-W03. No lesson, delivery, schema, compiler, parser or importer change; yoruba.json edited for coverage and open items only. Evidence note: docs/ss1/work/microtasks/yoruba/YO-WK-T3-W02.md. Not approved, not verified; nothing run (testing deferred by owner).",
       "completion_condition": "Every scheme objective and every body exercise for the week is enumerated with an exact locator and hash; an objective or exercise the body does not teach becomes a precise PENDING open item and, where content is missing, a small lesson item; no lesson is authored, no objective is invented, and no schema or compiler edit is made here."
     },
     {
@@ -5525,6 +5526,181 @@
       "objective": "Obtain one recorded subject-expert decision on the Week 1 source defects and on the tone and sub-dot notation, so the three Week 1 lessons can be authored without copying errors.",
       "implementation_reference": "Raised by YO-WK-T3-W01 (2026-10-30). Decisions needed, with locators: (1) numbering at 147 (first of ten noun types unnumbered, the rest numbered 2-10), at 233-239 (item i missing before ii/iii/iv) and the duplicated amutorunwa heading at 241/245; (2) the unclear name table entries at 253/257 (Oke twice) and 267 (Abiona with no meaning) and the split Tokunbo meaning at 343-345; (3) the stranded sports task at 213; (4) garbled or inconsistent text at 125, 135 \"AP.\", 273, 315, 365, 367 (awitun/Awiunwi), 373, 383-385, 411, 415, 423; (5) whether the scheme terms amuye ewi and koko ewi are satisfied by the akanlo ede ayaworan teaching and whether akude gbolohun and afiwe must be added; (6) tone and sub-dot forms for every Week 1 word (YORUBA-T3-W01-NOTATION; the section has no diacritic at all). No correction is invented in this item.",
       "completion_condition": "Every listed defect and the notation decision is resolved by a named expert decision recorded with evidence and locators; the three Week 1 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-WK-T3-W02",
+        "YO-FACT-T3-W02-DEFECTS"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W02-EDE.md"
+      ],
+      "status": "PENDING",
+      "id": "YO-LES-T3-W02-EDE",
+      "week_or_locator": "3rd Term Week 2, EDE part: source lines 429-591 (objectives YO-T3-W02-EDE-01..05)",
+      "objective": "Author the Week 2 EDE lesson that replaces the source text for delivery: oro aropo oruko defined, its six abuda, the ate tonal pattern, the three irisi oluwa, abo and eyan with their pronoun sets, and oriki where the scheme names it - with corrected spelling, an approved tone and sub-dot notation, and practice with complete answers and marking.",
+      "implementation_reference": "Not authored. Required by YO-WK-T3-W02 (2026-10-30). The EDE part (lines 429-591, SHA-256 9041f3c35f5557e8a74088746af989d9fb611ae84795048a6c9c196862305c37) teaches the definition 441-449 (cd76b38ee3b51ec9f111312168df81dee845b8619f9237e5625a0279d15d3d0e), six abuda 451-505 (2d0951a414239019dde308196e6f1104b3e801802355d1c0ab4e3ddca11bfeab) and the three irisi 509-591 (6344d86fe001ca4e6870e54c21f10ba15d803e907a97d83e8f8defbcc6bf0ad1), all PARTIAL; ate (435) and oriki (431) are listed but not taught (YO-T3-W02-EDE-03, -EDE-05). Source defects: the abuda list numbers 1, leaves the person property unnumbered, then continues 3-6 at 453-501; the abo grid row at 553 and the eyan grid at 575-577; the missing space at 441; Bolu at 443 against Bola at 447; the unanswered questions at 495-499; the three bare fragments at 513-517 after a three-way announcement at 511; \"Enikin-in\" at 549 against \"Enikin-ni\" at 525/573; the stray \"Oro-ise.\" at 555; and no tone or sub-dot anywhere in the section. Open items YORUBA-T3-W02-SOURCE-DEFECTS and YORUBA-T3-W02-NOTATION must be decided first. No lesson is authored in YO-WK-T3-W02.",
+      "completion_condition": "A lesson in yoruba.json teaches every Week 2 objective for the strand, uses the corrections and notation decision agreed in YO-FACT-T3-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-WK-T3-W02",
+        "YO-FACT-T3-W02-DEFECTS"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W02-ASA.md"
+      ],
+      "status": "PENDING",
+      "id": "YO-LES-T3-W02-ASA",
+      "week_or_locator": "3rd Term Week 2, ASA part: source lines 603-607 (objectives YO-T3-W02-ASA-01..02)",
+      "objective": "Author the Week 2 ASA lesson for ipolowo oja: its iwulo and pataki and the orisii ona of advertising a market in the past and today, because the source part carries only the heading.",
+      "implementation_reference": "Not authored. Required by YO-WK-T3-W02 (2026-10-30). The ASA part is a heading only: IPOLOWO OJA at 603 with the topic line at 605-607 (29 characters, SHA-256 a426e87b3fc97e252944d22c0ddd1ffd27b1050360166b3145a386f099333078); no paragraph, example or answer follows, so YO-T3-W02-ASA-01 and -ASA-02 are UNRESOLVED and YORUBA-T3-W02-CONTENT-GAPS records the gap. The same week's exercises do ask for advertising content - five multiple-choice questions at 641-647 (YO-T3-W02-ASSESS-03) and five past plus five present methods with advertisements for gari, oole and eja at 653-655 (YO-T3-W02-ASSESS-04) - but they are prompts with no taught body. A lesson must therefore be written from an approved external source, not from this document, and YO-FACT-T3-W02-DEFECTS decision 6 records the licence question. No lesson is authored in YO-WK-T3-W02.",
+      "completion_condition": "A lesson in yoruba.json teaches every Week 2 objective for the strand, uses the corrections and notation decision agreed in YO-FACT-T3-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-WK-T3-W02",
+        "YO-FACT-T3-W02-DEFECTS"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-LES-T3-W02-LIT.md"
+      ],
+      "status": "PENDING",
+      "id": "YO-LES-T3-W02-LIT",
+      "week_or_locator": "3rd Term Week 2, LITIRESO part: source lines 617-623 (objectives YO-T3-W02-LIT-01..02)",
+      "objective": "Author the Week 2 LITIRESO lesson for the second poem in the government-selected text, or record it as waiting on the textbook, because the source gives only a title and an Iya Atata reference.",
+      "implementation_reference": "Not authored. Required by YO-WK-T3-W02 (2026-10-30). The LITIRESO part is a title and a citation only: SISE ATUPALE EWI KEJI NINU IWE TI IJOBA YAN with \"Iya Atata: Fadiya, O. (WAEC).\" at 617-623 (87 characters, SHA-256 684a68029efcc5744f7c5e0da4469ab7ed2d2fa756ae9d8c2cbee177b410bf74); no poem text, analysis, question or answer follows, so YO-T3-W02-LIT-01 and -LIT-02 are UNRESOLVED. Iya Atata is the only selected title named in the body of this document and its text is not in the source archive, so the poem cannot be reproduced in the package for licensing reasons. The Week 1 counterpart YO-LES-T3-W01-LIT carries the same blocker.",
+      "completion_condition": "A lesson in yoruba.json teaches every Week 2 objective for the strand, uses the corrections and notation decision agreed in YO-FACT-T3-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
+    },
+    {
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/work/SS1-02/author_packages.py",
+        "docs/ss1/work/SS1-02/extract_sources.cjs",
+        "scripts/ss1/prepare_sources.py",
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-INV-T3.md",
+        "docs/ss1/work/microtasks/yoruba/YO-WK-T3-W02.md",
+        "backend/src/db/ingestTopics.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 YORUBA.docx",
+          "member_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3"
+        }
+      ],
+      "depends_on": [
+        "YO-SRC-T3",
+        "YO-WK-T3-W02"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/yoruba.json",
+        "docs/ss1/work/microtasks/yoruba/QUEUE.json",
+        "docs/ss1/work/microtasks/yoruba/YO-FACT-T3-W02-DEFECTS.md"
+      ],
+      "status": "BLOCKED",
+      "id": "YO-FACT-T3-W02-DEFECTS",
+      "week_or_locator": "3rd Term Week 2, source lines 427-678",
+      "objective": "Obtain one recorded subject-expert decision on the Week 2 source defects and on the tone and sub-dot notation, so the three Week 2 lessons can be authored without copying errors.",
+      "implementation_reference": "Raised by YO-WK-T3-W02 (2026-10-30). Decisions needed, with locators: (1) the abuda numbering at 453-501, which numbers 1, leaves the person property at 459 unnumbered and then continues 3 at 473 through 6 at 501; (2) the abo pronoun grid row at 553 (\"Eniketa\\tfaweli\\t\\ttwon\") and the eyan grid at 575-577, where enikeji and eniketa both read \"re/e\"; (3) the three ways announced at 511 that arrive as bare fragments at 513, 515 and 517, and the stray \"Oro-ise.\" at 555; (4) spelling and spacing at 441 (no space before \"apeere\"), 443/447 (Bolu against Bola), 525/549/573 (\"Enikin-ni\" against \"Enikin-in\"), 567 (lowercase \"o eyan\") and 613 (\"S.S.S. 2\" cited for an SS1 class, \"Corpromutt Publihers\" misspelt); (5) the unanswered questions at 495-499 and the incoherent stem at 649; (6) whether the ASA heading at 603-607 and the LITIRESO title at 617-623 are to be taught from an approved external text, and under which licence; (7) tone and sub-dot forms for every Week 2 word (YORUBA-T3-W02-NOTATION; the section has no diacritic or tone at all). No correction is invented in this item.",
+      "completion_condition": "Every listed defect and the notation and external-text decisions are resolved by a named expert decision recorded with evidence and locators; the three Week 2 lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     }
   ],
   "review": {
@@ -5541,6 +5717,6 @@
     }
   },
   "next_runnable": [
-    "YO-WK-T3-W02"
+    "YO-WK-T3-W03"
   ]
 }
