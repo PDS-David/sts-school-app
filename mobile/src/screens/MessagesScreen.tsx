@@ -17,11 +17,10 @@ interface Msg     { id: string; sender_id: string; body: string; created_at: str
 
 export default function MessagesScreen() {
   const { user } = useAuth();
-  // Used by admin (AdminTabs.tsx) and finance_admin (FinanceAdminTabs.tsx)
-  // — this one flat screen doubles as both the contact list and the thread
-  // view, and is what a message-push deep link now targets for those two
-  // roles (see navigationRef.ts's openMessageThread + App.tsx's tap
-  // handler). Deliberately not swapped for the newer ChatsScreen/
+  // Used by admin (AdminTabs.tsx) — this one flat screen doubles as both
+  // the contact list and the thread view, and is what a message-push deep
+  // link targets for admin (see navigationRef.ts's openMessageThread +
+  // App.tsx's tap handler). finance_admin no longer has a Chats tab (SEC-02). Deliberately not swapped for the newer ChatsScreen/
   // ChatThreadScreen used by student/teacher/parent — chat was left as-is
   // in the tab-bar redesign pass, only the surrounding navigation shell
   // changed. A `contact` route param means "open straight into this

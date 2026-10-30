@@ -6,21 +6,19 @@ import { Colors } from '../theme';
 import { SidebarLayout, SidebarItem } from '../components/Sidebar';
 import { useIsWide } from '../components/layout';
 
-// Replaces FinanceAdminStack.tsx. finance_admin only ever had 2 real
-// destinations (Finance, Messages) plus account-settings screens, so this
-// is a much lighter version of the same tab-bar treatment given to every
-// other role — 3 tabs, no grouping decisions needed since there's nothing
-// to group. Chat (MessagesScreen, route name "Messages") deliberately
-// unchanged — same reasoning as AdminTabs.tsx.
+// Replaces FinanceAdminStack.tsx. finance_admin has one real destination
+// (Finance) plus account-settings screens, so this is a much lighter version
+// of the same tab-bar treatment given to every other role — 2 tabs, no
+// grouping decisions needed since there's nothing to group. No Chats tab
+// (SEC-02 / owner decision D2): finance_admin has no messages.* permission
+// and the contacts endpoint now returns nothing for this role.
 import FinanceScreen from '../screens/FinanceScreen';
-import MessagesScreen from '../screens/MessagesScreen';
 import FinanceAdminMoreScreen from '../screens/admin/FinanceAdminMoreScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 
 const Tab = createBottomTabNavigator();
 const FinanceStack = createNativeStackNavigator();
-const ChatsStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 
 const opts: NativeStackNavigationOptions = { headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white };
@@ -30,14 +28,6 @@ function FinanceStackNavigator() {
     <FinanceStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <FinanceStack.Screen name="Finance" component={FinanceScreen} options={{ headerShown: true, title: 'Finance', ...opts }} />
     </FinanceStack.Navigator>
-  );
-}
-
-function ChatsStackNavigator() {
-  return (
-    <ChatsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
-      <ChatsStack.Screen name="Messages" component={MessagesScreen} options={{ headerShown: true, title: 'Messages', ...opts }} />
-    </ChatsStack.Navigator>
   );
 }
 
@@ -53,7 +43,6 @@ function MoreStackNavigator() {
 
 const SIDEBAR_ITEMS: SidebarItem[] = [
   { routeName: 'FinanceTab', label: 'Finance', icon: 'receipt' },
-  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
   { routeName: 'MoreTab', label: 'More', icon: 'menu' },
 ];
 
@@ -70,7 +59,6 @@ export default function FinanceAdminTabs() {
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen name="FinanceTab" component={FinanceStackNavigator} options={{ title: 'Finance', tabBarIcon: ({ color, size }) => <Ionicons name="receipt" size={size} color={color} /> }} />
-        <Tab.Screen name="ChatsTab" component={ChatsStackNavigator} options={{ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} /> }} />
         <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
       </Tab.Navigator>
     </SidebarLayout>
