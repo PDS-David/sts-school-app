@@ -22,23 +22,24 @@
     "CHEM-SRC-T1A may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). The other registration items depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "CHEM-INV-T1A (2026-10-29) inventoried the first 1st Term original and appended the opening, marker, week-indexing, visual, preservation and safety items. Ten teaching-week labels WEEK ONE to WEEK TEN; the scheme has 13 rows and rows 10-11 both map to WEEK TEN; REVISION and EXAMINATION have no bodies; WEEK EIGHT and WEEK NINE titles are stranded. 58 media entries are really 51 1x1 spacer PNGs plus 7 images, and the Week 6/Week 9 images are proprietary Encarta/Microsoft stock that does not match the captions; Week 10 orbital shapes are missing. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-FACT-CONTENT-APPROVAL stays BLOCKED pending the remaining inventories, comparison and package test."
+    "CHEM-INV-T1A (2026-10-29) inventoried the first 1st Term original and appended the opening, marker, week-indexing, visual, preservation and safety items. Ten teaching-week labels WEEK ONE to WEEK TEN; the scheme has 13 rows and rows 10-11 both map to WEEK TEN; REVISION and EXAMINATION have no bodies; WEEK EIGHT and WEEK NINE titles are stranded. 58 media entries are really 51 1x1 spacer PNGs plus 7 images, and the Week 6/Week 9 images are proprietary Encarta/Microsoft stock that does not match the captions; Week 10 orbital shapes are missing. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-FACT-CONTENT-APPROVAL stays BLOCKED pending the remaining inventories, comparison and package test.",
+    "CHEM-INV-T1B (2026-10-30) inventoried the second 1st Term original (CHEMISTRY SS11STTERM.docx). Ten teaching weeks plus a \"Week 6b\" label; the WEEK 9 label starts with a non-breaking space so the importer would fold WEEK 9 into WEEK 8; WEEK 10 is title-only; the scheme has ten rows and no REVISION or EXAMINATION. Weeks 3-9 labels sit inside one layout table; 78 media parts, 26 tables, one ActiveX part, 113 external hyperlinks. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-CMP-T1 is now eligible (both 1st Term inventories done)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 4,
     "SOURCE_WEEK_INVENTORY": 4,
     "SOURCE_COMPARISON": 1,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 2,
-    "SOURCE_WEEK_INDEXING": 10,
-    "SOURCE_SECTION_INDEXING": 1,
-    "SOURCE_MARKER_DISPOSITION": 1,
-    "VISUAL_DISPOSITION": 4,
-    "SOURCE_PRESERVATION": 2
+    "FACTUAL_DEPENDENCY": 5,
+    "SOURCE_WEEK_INDEXING": 20,
+    "SOURCE_SECTION_INDEXING": 2,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "VISUAL_DISPOSITION": 14,
+    "SOURCE_PRESERVATION": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 24,
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 51,
     "BLOCKED": 1
   },
   "items": [
@@ -245,8 +246,8 @@
       "depends_on": [
         "CHEM-SRC-T1B"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory complete: member SHA-256 0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a verified from the supplied 1st Term SS1 zip (SHA-256 of the zip not asserted; composite archive hash not checked); member 1,656,948 bytes; archive_member kept verbatim. Ten week labels (WEEK 1 ... WEEK 8, WEEK 10, plus \"Week 6b\") and an unmatched non-breaking-space \"WEEK 9\" at mammoth lines 43, 729, 1347, 1455, 1537, 1887, 1895, 1959, 2713, 2761, 3299; WEEK 10 is title-only; scheme has ten topic rows and no REVISION/EXAMINATION row (lines 9-27). Weeks 3-9 labels sit inside one layout table (body block 598). 78 media parts: 76 raster images, one image52.wmf and one 1x1 spacer gif; 26 w:tbl (9 top-level, 17 nested); one ActiveX control part. Evidence file: docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md. Nothing was run; no lesson, coverage, rule, correction or asset was written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1090,6 +1091,1009 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 1 / \"Chemistry as a Subject and as a Central Science\" (49) / mammoth lines 43-728 / sha256 f5fb2013de4658198475c1106b421e5e28adde12b6892f4b88d6159e4f2083f4",
+      "objective": "Index WEEK 1 (scheme row 1, \"INTRODUCTION TO CHEMISTRY\"): CHEMISTRY AS A DISCIPLINE (53), CHEMISTRY AS A SUBJECT AND AS A CENTRAL SCIENCE (57), CHEMISTRY-A CENTRAL SCIENCE (71), BRANCHES OF CHEMISTRY with Pure (103) and Applied (117) branches, CAREER OPPORTUNITIES (149; careers wheel image1.png dispositioned by CHEM-VIS-T1B-W01-CAREERS), first EVALUATION (185-265, with a fill-in item at 225), THE SCIENTIFIC METHOD (267-289), CHEMISTRY LABORATORY COMMON EQUIPMENT (291-657: photo-and-name table at body block 148 and the captioned equipment photographs, dispositioned by CHEM-VIS-T1B-W01-EQUIPMENT; equipment descriptions and safety wording split out to CHEM-FACT-T1B-SAFETY) and the second EVALUATION (659-728, fill-in at 699). Importer view: the week body is 25,141 characters, SHA-256 f4afd8770866b2355948dd1ca8eb092cd9de7645611e1a460ab4440c9bd854de, parsed title \"Chemistry as a Subject and as a Central Science\". Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W01.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK  2 (two spaces) / \"PARTICULATE NATURE OF MATTER\" (731) / mammoth lines 729-1346 / sha256 7bf6ab74ead834c12c50830bc00f89df57cfa5e5d1610f1feaac029ac33f3d3c",
+      "objective": "Index WEEK 2 (scheme row 2, \"NATURE OF MATTER\"; the body is headed \"PARTICULATE NATURE OF MATTER\" twice, 731 and 741, the same heading as WEEK 5 which teaches atomic structure): particle model with ACTIVITY 4.1-4.5 (747-825, preserved by CHEM-PRES-T1B-ACTIVITIES; activities 4.2, 4.3 and 4.5 name potassium permanganate and concentrated ammonia and go to CHEM-FACT-T1B-SAFETY), characteristics of particles (833-841), constituent-particles list with examples (845-853, tab/non-breaking-space aligned text, not a table), STATES OF MATTER (855) with solids (859), liquids (873) and gases (887), plasma (925), physical and chemical properties (about 1005-1025, tables at body blocks 469-475), changes of state (about 1041-1117, table at block 492), chemical change (about 1121-1183), SUMMARY (1203), EVALUATION (1231-1346, with discussion questions 1271-1281). The 1x1 spacer gif image51.gif sits here and is not content. Importer view: 25,175 characters, SHA-256 1b7df20c542af71b86dd225a652cb8bf0295c8396088665d625cb5a5ad8a4cc3, parsed title \"PARTICULATE NATURE OF MATTER\". Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W02.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 3. (trailing full stop; label sits inside the layout table at body block 598) / \"ELEMENTS\" (1349) / mammoth lines 1347-1454 / sha256 3e805204787d90c9f63f5343c184769145fcc1722b64b86e7594bf0bdcfd1997",
+      "objective": "Index WEEK 3 (scheme row 3, \"ELEMENTS\"): element definition (1351), first-20-elements list (1355, one flattened line of number-symbol-name triples), atom structure (nucleus, quarks, mass number, 1375-1403; the \"Structure of an atom\" image53.jpeg is dispositioned by CHEM-VIS-T1B-W03-W05-ATOM) and EVALUATION (1415-1454). Importer view: 5,961 characters, SHA-256 8fe976069a05f519bd7f37536256589fa77b62798a15c9e34e17dafe29f786a5, parsed title \"ELEMENTS\". Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W03.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 4. / \"MOLECULES AND ATOMICITY\" (1457) / mammoth lines 1455-1536 / sha256 0d8cda131a403ef1c0ab83348c391736a7ec8fdd960bc974c1d1609ae4616d9b",
+      "objective": "Index WEEK 4 (scheme row 4, \"MOLECULES AND ATOMICITY\"): molecule definition and examples (1459-1463), ATOMICITY OF ELEMENTS (1465), Dalton postulates passage (about 1505) and EVALUATION (1517-1536). Importer view: 5,403 characters, SHA-256 0d4576746507c7784a938ac07aa89eb92773fab3b5395571c717e5e9a38b937a, parsed title \"MOLECULES AND ATOMICITY\". Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W04.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 5 / \"PARTICULATE NATURE OF MATTER\" (1539) / mammoth lines 1537-1886 / sha256 ed4b66a2a51738ea52c58342a257d4724e7adbdc8e9dd214898de93901d4bc69",
+      "objective": "Index WEEK 5 (scheme row 5, \"PARTICULATE NATURE OF MATTER\"): atomic structure and subshells (1539-1581), RULES FOR FILLING ORBITALS (1583), electron-configuration material with the exceptions table and box/arrow orbital diagrams (dispositioned by CHEM-VIS-T1B-W05-ORBITALS, -ION-IMAGES and -TABLE), three worked answers headed SOLUTION (1737, 1757, 1789; preserved by CHEM-PRES-T1B-WORKED), ion and electrolyte passages (about 1803-1859) and EVALUATION (1873-1886). The week repeats the WEEK 2 heading but teaches different content; do not merge them. Importer view: 21,501 characters, SHA-256 d68b08af23b1273729b043d845f716c7919106034fcdc710e3fb04e611087630. Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W05.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 6. (1887) and \"Week 6b\" (1895, tab-suffixed) / \"THE RELATIVE ATOMIC MASSES OF ELEMENTS.\" (1889) / mammoth lines 1887-1958 / combined sha256 255ace96472658a8f41aa554caa150f5ea7e9011319281b32f6c6be5b728745d",
+      "objective": "Index WEEK 6 (scheme row 6, \"THE RELATIVE ATOMIC MASSES OF ELEMENTS\"), which the source splits across two labels: \"WEEK 6.\" (1887-1894, sha256 5f68297d81a518c9f102c8d8c3c962bcd41865ffc6539b8b85086ecbcb6dffe5: title, ISOTOPE definition) and \"Week 6b\" (1895-1958, sha256 198588d902014ae9544f78e500e0268fb387d425de45530fb27fe5bdb0ae2620: ATOMIC WEIGHTS AND ISOTOPIC ABUNDANCE 1897, EVALUATION 1945). Record that the importer view keeps these as two parsed rows (345 and 2,117 characters, body SHA-256 74d29aad72d0a0c1f2964878b20fbb5a2afe0b8ed5b12876bfedbb2368ce44b1 and 66b0fa2f3aaadede16398e7057e7754f36408cc43e0b3dc0e4ab0ced43641977) both labelled week 6; do not decide the merge here. Atomic-weight statements go to CHEM-FACT-T1B-DATED. Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W06.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 7 / \"COMPOUND\" (1961) / mammoth lines 1959-2712 / sha256 168837ded68a245e5e1a6ed422a7632164a4b72d2587de7e3d66d7977ff7d42b",
+      "objective": "Index WEEK 7 (scheme rows 7 \"COMPOUNDS\" and 8 \"IUPAC NOMENCLATURE OF CHEMICAL COMPOUNDS\", both carried by this one body): compound definition and examples (1961-1989), common-name exceptions (1991), systematic naming of ionic and covalent compounds with the prefix list (about 2425-2433), polyatomic ion tables, NAMING ACIDS (2439-2645), valency-based formula construction (2675-2687) and EVALUATION (2703-2712). Twelve nested tables (listed in CHEM-INV-T1B.md) are dispositioned by CHEM-VIS-T1B-W07-TABLES; the text refers to a \"Table 2.1\" (2443), so the item must check which nested table that is. Importer view: 10,258 characters, SHA-256 6794d1f8d5f56181eab82a4626cbc8e8a527b2c2d5e79b1e31be21bad0a68ff9, parsed title \"COMPOUND\". Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W07.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 8 (trailing space) / \"OXIDATION NUMBERS\" (2715) / mammoth lines 2713-2760 / sha256 a0523847b11597ae30b15f9c760b0224a63b6440ed3a87ca914f13f6a72ffcc5",
+      "objective": "Index WEEK 8 (no scheme row names oxidation numbers): rules for assigning oxidation numbers (2719-2747) and EVALUATION (2749-2759, K2Cr2O7, KMnO4, H2SO4 and a \"CrO7-2\" item that needs an authoring check). Importer-view hazard: the \"WEEK 9\" label at 2761 begins with a non-breaking space and is not matched by the importer, so the parsed WEEK 8 body runs 2713-3298 (21,827 characters, SHA-256 c0c2ba357ba05bd40f76e857ebb7b368ca61ddb929b07085ba3a9191b135c78f; mammoth range 2713-3298 sha256 035979ed922492f1d3450fefc485d9c25596134c3e390fab8c0effe9c79bf7c1). Index only 2713-2760 here. Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W08.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "\"\\u00a0WEEK 9\" (label begins with a non-breaking space) / \"MIXTURES AND SEPERATION TECHNIQUES\" (2763, source spelling) / mammoth lines 2761-3298 / sha256 dd3252366c47dc5d10726d1e07defa2f466937aa2046f42e98a4aeb08690cb89",
+      "objective": "Index WEEK 9 (scheme row 9, \"MIXTURES\"; the label sits inside the layout table at body block 598): mixture definition and sweets/iron-sulphur examples (2765-2773), mixtures versus compounds (2775-2829, nested 6x3 table), SEPARATION OF MIXTURES USING DIFFERENT TECHNIQUES (2831-3283; the 15x3 technique table at body block 619 and the Amrita/olabs apparatus images are dispositioned by CHEM-VIS-T1B-W09-TABLES and -APPARATUS; the Word form-field leftover \"Bottom of Form\" at 3281 is a non-teaching artifact) and EVALUATION (3285-3295). Separation statements that mention heating, distillation, antidotes or acids go to CHEM-FACT-T1B-SAFETY. The 1x1 spacer gif image51.gif occurs here and is not content. Record objective candidates only. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W09.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK  10 (two spaces, trailing space) / \"PRACTICALS ON SEPERATION TECHNIQUES\" (3301, source spelling) / mammoth lines 3299-3303 / sha256 0ddbb2aaf8efaa7d760ee99d111e9445b33530253945f8054284fcfdd5170a69",
+      "objective": "Index WEEK 10 (scheme row 10, \"PRACTICALS ON SEPERATION OF MIXTURES\"): the body is the label and one title line only, 46 characters in the importer view (SHA-256 52e8ccda7ef391f0ab8a8bb4d3cc6931df57170d66e5807d8680b804aed6cd94); there is no procedure, apparatus list, observation or assignment. Record it as a title-only week; do not invent practical content and do not borrow the WEEK 9 text as its body without an owner decision. Record objective candidates only (none expected). Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-W10.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-IDX-T1B-OPEN",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "Opening / scheme of work / mammoth lines 1-42 / sha256 3f04d417eb61e69a8495462a8d480e22fd8e224c65d5f9eadb7dde1f1298ea4d",
+      "objective": "Index the opening: title \"CHEMISTRY SS1\" (3), \"SCHEME OF WORK FOR ALPHA TERM\" (5), the header row \"WEEKS TOPICS\" (7) and ten scheme topics (9-27, source spellings retained: \"SEPERATION\"). The WEEKS column carries no numbers, so the topic-to-week mapping is an observation (CHEM-MARK-T1B-SCHEME), not source text. No REVISION or EXAMINATION row exists. The opening differs from the first 1st Term Chemistry source and its comparison belongs to CHEM-CMP-T1. Classify as scheme, not lesson. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1B-OPEN.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-MARK-T1B-SCHEME",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "Scheme rows 1-10 (lines 9-27) against WEEK labels / WEEK 10 title-only (3299-3303) / no revision or examination marker",
+      "objective": "Disposition the scheme-versus-body relationships without altering source text: ten scheme rows and ten body weeks, but rows 7 and 8 both fall to WEEK 7, WEEK 8 (oxidation numbers) has no scheme row, row 2 \"NATURE OF MATTER\" and row 5 \"PARTICULATE NATURE OF MATTER\" are carried by two bodies that share one heading, WEEK 6 is split by a \"Week 6b\" label, and WEEK 10 is title-only. State plainly that the source contains no REVISION marker, no EXAMINATION marker, no examination paper and no marking scheme, and that nothing may be invented. Classify nothing as lesson here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-MARK-T1B-SCHEME.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "The named sections are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W01-CAREERS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 1 / image1.png (552x387, 233,694 bytes) / drawing named \"Picture 68\" with web-address description / CAREER OPPORTUNITIES (149)",
+      "objective": "Give a visual disposition to the careers wheel (image1.png; \"CAREERS IN CHEMISTRY\" hub with thirteen labelled spokes, seen in this inventory). Its description attribute is an external web address (chemistry-assignment.com) and its background is a scanned-page texture, so record provenance and rights as unresolved, do not treat the citation as reuse permission, and decide whether the labels can be re-expressed as owned text/diagram. Do not discard the original bytes. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W01-CAREERS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Disposition recorded with locator and provenance finding; no asset is added unless supported by the existing schema."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W01-EQUIPMENT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 1 / body block 146 (1x1 table) and block 148 (8x4 table with 32 thumbnail photos image2-image33.jpeg, 144x192 each) / seventeen captioned photographs image34-image50.jpeg / lines 291-657",
+      "objective": "Give a visual disposition to the laboratory-equipment media: the 32 thumbnail photographs in the 8x4 table (block 148, image2.jpeg-image33.jpeg; each drawing description is a smc.edu web address and the cell text lists the equipment names in reading order, e.g. Balance, Beakers, Bunsen Burner, Buret, Clay Triangle, Crucible) and the seventeen captioned photographs image34-image50.jpeg (title graphic \"Functions of common pieces of laboratory equipment\", safety goggles, beakers, Erlenmeyer flask, test tubes, watch glass, funnel, graduated cylinders, volumetric flask, dropper, Pasteur pipette, burette, forceps (caption misspelled \"Foreceps\"), scoopulas, thermometer, lit Bunsen burner, triple beam balance). Record the name-to-photo pairing from cell order only after checking it image by image, the rights/provenance problem, and which photos are the primary diagram for an apparatus and which are decorative. Never substitute an image count for recovered content, do not AI-invent replacements and do not discard the original bytes. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W01-EQUIPMENT.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each equipment image has a recorded disposition with locator and hash; rights/provenance recorded as unresolved; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W02-TABLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 2 / body blocks 469 (1x2), 473 (1x1), 475 (2x2), 492 (7x3) and 527 (2x2, empty cells, one 1x1 spacer gif) / lines about 1005-1117",
+      "objective": "Give a table disposition to the Week 2 tables: Chemical properties (469) and Physical properties (475) definition boxes under the \"Physical and Chemical Properties\" banner (473), the change-of-state table (492: Start from, Change to, Name; rows for melting, freezing and the gas transitions), and the empty layout table at 527 that only holds the 1x1 spacer image51.gif. State which carry teaching data and which are layout, and how a cell-per-line flattening affects row grouping. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W02-TABLES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each table has a recorded disposition with locator; layout tables identified as such; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W03-W05-ATOM",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 3 and WEEK 5 / image53.jpeg (557x500, 47,992 bytes, description \"Structure of an atom\") referenced twice / each beside a 32x32 empty Word rectangle / activeX1.bin control",
+      "objective": "Give a visual disposition to the atom-structure diagram (image53.jpeg: nucleus with labelled protons and neutrons, two shells, labelled electron, as seen in this inventory), which is referenced once in WEEK 3 and once in WEEK 5 from the same media part. Also record the two empty 32x32 \"Rectangle\" drawing objects beside it, the embedded ActiveX control part (activeX1.xml, classid {5512D11C-5CC6-11CF-8D67-00AA00BDCE1D}, binary activeX1.bin) and the image52.wmf part: they carry no recovered teaching content, and mammoth warns that the WMF and the w:control element are not rendered. Check the diagram against its text (electron count and shell filling) before it supports any lesson. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W03-W05-ATOM.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W03",
+        "CHEM-IDX-T1B-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Diagram and non-content objects recorded with locators; accuracy check outcome recorded; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W05-ORBITALS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 5 / image54.jpeg (aufbau diagonal chart), image55-image58.jpeg (Nitrogen, Oxygen, Aluminum, Iridium box diagrams), image59.gif (1000x150, black background) and image60.jpeg (2000x300)",
+      "objective": "Give a visual disposition to the electron-configuration diagrams: the diagonal filling-order chart (image54.jpeg, 1s-7p), the box-and-arrow diagrams for nitrogen, oxygen, aluminum and iridium (image55-58), and the two wide orbital strips (image59.gif white-on-black; image60.jpeg). Record that the iridium diagram shown here stops at 3p although iridium has many more occupied subshells, so it is incomplete or mislabelled and must not support a lesson; check the nitrogen, oxygen and aluminum boxes against Hund rule and the stated atomic numbers by reading; record the web-address descriptions on image59 and the rights/provenance as unresolved. Do not AI-invent replacements and do not discard the original bytes. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W05-ORBITALS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each diagram has a recorded disposition and accuracy finding with locator and hash; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W05-ION-IMAGES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 5 / nine small PNG formula pictures image61-image69.png (30x21 to 112x24 pixels, descriptions image0.png-image8.png)",
+      "objective": "Give a disposition to the nine formula pictures that replace typed text: Na+, \"Na+ cation\", \"Mg2+ cation\", \"Cl- anion\", 1s2 2s2 2p6 3s1, 1s2 2s2 2p6, 1s2 2s2 2p6 3s2 3p6, \"NH4+\" and \"NO3-\". Record that the last two are mis-set in the pictures (the charge is drawn as part of the subscript: \"NH\" with a lowered \"4+\", \"NO\" with a lowered \"3-\"), so the pictures must not be copied as correct notation; the typed formula must be recovered as text with correct subscripts and superscripts in a separate item. Never substitute the image count for the recovered notation. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W05-ION-IMAGES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each picture transcribed or dispositioned with locator and hash; mis-set notation recorded; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W05-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 5 / nested table inside body block 598: 16 rows x 2 columns, 669 characters, begins \"Table 1: Exceptions to Electron Configuration Tren...\"",
+      "objective": "Give a table disposition to the \"Table 1: Exceptions to Electron Configuration Trends\" table (16x2): record row-by-row what it holds, whether each row is teaching data, how cell-per-line flattening loses the pairing of element and configuration, and any entry that needs checking against a primary source later. Do not complete or correct entries here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W05-TABLE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Table disposition recorded with locator and hash; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W07-TABLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 7 / twelve nested tables inside body block 598 (sizes in CHEM-INV-T1B.md): 3x4, 4x5, 3x5, 3x5, 2x2, 5x4, 15x5, 3x2, 5x4, 22x5, 3x2 and two 1x1 example boxes",
+      "objective": "Give a table disposition to the Week 7 naming tables: sample compound names, simple cations, variable-charge cations (two naming styles), H3O+/NH4+, anions, the 15x5 polyatomic ion table (\"-1 ions HCO3- bicarbonate ...\"), binary covalent names, the numerical prefix table (1 mono- to 10 deca-), the 22x5 NAMING ACIDS table, the sodium hydrogen carbonate row and the two worked \"Example\" boxes (water molecule; sulfate (2-) ion). Check which one is the \"Table 2.1\" cited at line 2443, how many columns are really data, and where ion charges are flattened (e.g. \"CH3CO2-\" at 2223). Do not correct any name here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W07-TABLES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each table has a recorded disposition with locator and hash; the Table 2.1 reference resolved or recorded as unresolved; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W09-APPARATUS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 / image71.gif (sweets separation), image72.png (chromatography), image73.png (centrifuge tube, anchored), image74.png (simple distillation), image75.png (fractional distillation), image76.png (evaporating basin with labels), image77.png (filtration with labels), image78.gif (banner \"Separating mixtures\"), plus spacer image51.gif",
+      "objective": "Give a visual disposition to the separation-technique media. image72, 73, 74 and 75 have web-address descriptions pointing at Amrita olabs files and show apparatus on black backgrounds (a chromatography jar and strip, a capped centrifuge tube, two distillation rigs with stands and heating mantles); image76 and image77 carry their own labels (evaporating basin, solution, heat; filter paper, filter funnel, solid and liquid); image71 shows a mixed pile of sweets and the separated piles; image78 is a typographic banner. Check each against the technique it sits beside, record rights/provenance as unresolved, and record the 1x1 spacer as non-content. Do not AI-invent replacements and do not discard the original bytes. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W09-APPARATUS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each image has a recorded disposition with locator and hash; nothing marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T1B-W09-TABLES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 / nested 6x3 table inside body block 598 (starts \"Mixture Compound Composition ...\", 668 characters) and top-level body block 619 (15 rows x 3 columns, 2,316 characters: technique, basis for separation, apply this technique to)",
+      "objective": "Give a table disposition to the mixtures-versus-compounds comparison table (6x3) and the separation-techniques table (15x3). Record row groupings, which cells hold hazard-relevant or health-claim wording (adsorption, extraction, distillation uses; split those to CHEM-FACT-T1B-SAFETY) and that cell-per-line flattening loses the technique-to-use pairing. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T1B-W09-TABLES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Each table has a recorded disposition with locator and hash; nothing marked approved."
+    },
+    {
+      "id": "CHEM-PRES-T1B-FORMULAE",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 2, 4, 5, 7, 8 and 9 / chemical formulae, ion charges, valencies and oxidation-number examples / 367 sub/superscript runs in the XML (W2 11, W3 5, W4 13, W5 132, W7 164, W8 39, W9 3)",
+      "objective": "Preserve chemical formulae, ion charges, electron configurations, valency and oxidation-number notation as exact source-faithful units. Mammoth drops sub/superscript formatting, so \"H2SO4\", \"CH3CO2-\", \"CrO7-2\", \"NH4+\", \"(NH4)2SO4\", \"1s2 2s2\" and similar appear as flat characters in the raw text; recover the formatting from word/document.xml (w:vertAlign) and record both views without correcting either. Distinguish the source notation (for example \"CrO7-2\") from any corrected formula, which belongs to a later item with primary data. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T1B-FORMULAE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W05",
+        "CHEM-IDX-T1B-W07",
+        "CHEM-IDX-T1B-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Notation units recorded with locators and hashes; no correction applied; nothing marked approved."
+    },
+    {
+      "id": "CHEM-PRES-T1B-ACTIVITIES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 2 / ACTIVITY 4.1 (747), 4.2 (767), 4.3 (787), 4.4 (801), 4.5 (815) / lines 745-827",
+      "objective": "Preserve the five particle-model activities verbatim as procedure units with their stated expected observations (\"It is observed that ...\"): sugar in 50 cm3 of water in a 100 cm3 beaker; ten-fold dilution of KMnO4 through 100 cm3 beakers; concentrated aqueous ammonia in a room corner and an incense stick; blue ink in water; potassium permanganate in cold and hot water. The observations are the source's statements, not observations made in this work; record that no laboratory observation was made and add no safety text, quantity or apparatus beyond what the source gives. Any demonstration must cite an authoritative source and stay separate from this wording. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T1B-ACTIVITIES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Five activities recorded verbatim with locators; nothing marked approved or verified."
+    },
+    {
+      "id": "CHEM-PRES-T1B-WORKED",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 5 SOLUTION blocks (1737, 1757, 1789) and WEEK 7/8 worked examples (valency-formula examples 2675-2701; oxidation-number rule examples 2721-2747)",
+      "objective": "Preserve the source worked answers and examples as exact units, with the question each one answers: the three \"SOLUTION\" blocks in WEEK 5, the ammonia and sulfate-ion formula examples in WEEK 7 and the oxidation-number worked lines in WEEK 8 (for example \"SO2: (+4) + 2(-2) = 0\"). Mark any answer whose reasoning or arithmetic needs later checking by reading; do not complete answers the source omits (the EVALUATION questions have no answers) and do not correct any. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T1B-WORKED.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W05",
+        "CHEM-IDX-T1B-W07",
+        "CHEM-IDX-T1B-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Worked units recorded with locators and hashes; unanswered evaluation items listed; nothing marked approved."
+    },
+    {
+      "id": "CHEM-FACT-T1B-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 1 safety and apparatus statements (413-425, 459, 471, 485, 641-643); WEEK 2 activities 4.2, 4.3, 4.5 (771-825); WEEK 9 (2935-2943, 3091-3107, 3179, 3251-3269)",
+      "objective": "Verify later, with authoritative laboratory-safety and chemical-handling sources, the statements that could be unsafe or outdated before any lesson relies on them: safety goggles, latex gloves and apron rules (421-425), never heating a capped flask or test tube (459, 471, 485), Bunsen burner \"utmost safety\" (643), uncapped concentrated ammonia opened in a room and smelled at a distance (791-797), potassium permanganate dilution and hot-water crystal use (773-825), distillation of alcohol and heating a fermented mash through copper coils (2943, 3269), activated-charcoal wording \"used as a universal antidote for poisoning\" and water-purifier removal claims (3105-3107), hot concentrated phosphoric acid washing (3179). The source gives no first-aid instruction and no emergency procedure in these sections; add none. Keep the source wording distinct from any corrected fact. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T1B-SAFETY.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W01",
+        "CHEM-IDX-T1B-W02",
+        "CHEM-IDX-T1B-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CHEM-FACT-T1B-DATED",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 1 career statistic (153); WEEK 1 history/date statements; WEEK 2 plasma and state statements (1041, 925); WEEK 3 element list and nucleus dates (1355, 1375); WEEK 6 atomic weights (1897-1943); WEEK 7 naming conventions",
+      "objective": "Record, for later primary-source checking, statements that may be dated or stale: \"Chemical industries employ about 66% of all the chemists\" (153), the Erlenmeyer flask date and history remarks in the equipment text (about 455), the plasma-as-state debate wording (1041), the first-20-elements list (1355), nucleus discovery dates (1375), atomic-weight and isotopic-abundance statements (1897-1943: authoritative standard atomic weights are published by IUPAC and have changed in form since this text was prepared), and the IUPAC naming conventions in WEEK 7. The file was created and last modified 2017-09-14 (docProps/core.xml, revision 2). No figure is changed here; later correction needs dated primary data. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T1B-DATED.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W01",
+        "CHEM-IDX-T1B-W06",
+        "CHEM-IDX-T1B-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Findings recorded with locators only; nothing corrected; nothing marked approved or verified."
+    },
+    {
+      "id": "CHEM-FACT-T1B-PROVENANCE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-84df18289b7a",
+      "term": "1st Term",
+      "week_or_locator": "Whole document / 115 hyperlink relationships (113 external web addresses) / media description attributes carrying web addresses",
+      "objective": "Record the provenance of web-derived text and images: 113 external hyperlink targets (en.wikipedia.org 25, chemistry.about.com 22, antoine.frostburg.edu 18, chemwiki.ucdavis.edu 16, www.livescience.com 15, www.bbc.co.uk 5, whatis.techtarget.com 4, searchcio-midmarket.techtarget.com 4, www.ibchem.com 2, and one each for www.inel.gov, www.chemistry-assignment.com and users.rcn.com) and image description attributes naming smc.edu, chemistry-assignment.com, chemwiki.ucdavis.edu, ibchem.com, antoine.frostburg.edu and amrita.olabs.co.in addresses. Map which week text and which images each source belongs to by reading, and record rights as unresolved. A citation is not reuse permission. Do not fetch or copy the linked pages here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; range ends at the last line before the next marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 05f0cdbe8ac5f71a677ad7adc38851d922b0ef51822b5afde7979508c055c862 (118,241 characters, 3,303 lines; member 1,656,948 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1B.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/CHEMISTRY SS11STTERM.docx",
+          "member_sha256": "0f7e40f7ca0b8e75192f69a03a2a49776dd0b90aa69ad877565674c9002b335a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T1B-PROVENANCE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1B",
+        "CHEM-SRC-T1B",
+        "CHEM-IDX-T1B-W01",
+        "CHEM-IDX-T1B-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
+      "completion_condition": "Provenance map recorded with locators; rights marked unresolved; nothing marked approved."
     }
   ],
   "review": {
@@ -1105,10 +2109,10 @@
     }
   },
   "next_runnable": [
-    "CHEM-INV-T1B",
     "CHEM-INV-T2",
     "CHEM-INV-T3",
     "CHEM-TEST-PACKAGE",
+    "CHEM-CMP-T1",
     "CHEM-IDX-T1A-W01",
     "CHEM-IDX-T1A-W02",
     "CHEM-IDX-T1A-W03",
@@ -1124,6 +2128,28 @@
     "CHEM-VIS-T1A-W02-APPARATUS",
     "CHEM-VIS-T1A-W06-MEDIA",
     "CHEM-VIS-T1A-W09-ISOTOPE",
-    "CHEM-VIS-T1A-W10-ORBITAL-SHAPES"
+    "CHEM-VIS-T1A-W10-ORBITAL-SHAPES",
+    "CHEM-IDX-T1B-W01",
+    "CHEM-IDX-T1B-W02",
+    "CHEM-IDX-T1B-W03",
+    "CHEM-IDX-T1B-W04",
+    "CHEM-IDX-T1B-W05",
+    "CHEM-IDX-T1B-W06",
+    "CHEM-IDX-T1B-W07",
+    "CHEM-IDX-T1B-W08",
+    "CHEM-IDX-T1B-W09",
+    "CHEM-IDX-T1B-W10",
+    "CHEM-IDX-T1B-OPEN",
+    "CHEM-MARK-T1B-SCHEME",
+    "CHEM-VIS-T1B-W01-CAREERS",
+    "CHEM-VIS-T1B-W01-EQUIPMENT",
+    "CHEM-VIS-T1B-W02-TABLES",
+    "CHEM-VIS-T1B-W03-W05-ATOM",
+    "CHEM-VIS-T1B-W05-ORBITALS",
+    "CHEM-VIS-T1B-W05-ION-IMAGES",
+    "CHEM-VIS-T1B-W05-TABLE",
+    "CHEM-VIS-T1B-W07-TABLES",
+    "CHEM-VIS-T1B-W09-APPARATUS",
+    "CHEM-VIS-T1B-W09-TABLES"
   ]
 }
