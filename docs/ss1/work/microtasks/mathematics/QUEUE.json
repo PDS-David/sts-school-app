@@ -42,8 +42,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "PENDING": 66,
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 65,
     "BLOCKED": 9
   },
   "total": 95,
@@ -274,8 +274,8 @@
         "MATH-SRC-T2",
         "MATH-FACT-HEADER-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Coverage locators 'scheme topic 1..10' (COV-MATH-T2-R00..R09) show a scheme table exists before/alongside the ten parsed rows. No T2 preamble, examination or reference-book rule or coverage entry exists, and the repository does not record whether such text is present.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented on master 89d8fbc (MATH-PRE-T2, 2026-10-30). Evidence: docs/ss1/work/microtasks/mathematics/MATH-PRE-T2.md. Source 2ND TERM S1 MATHEMATICS.docx sha256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368 (1,110,196 bytes; member hash re-verified from the supplied partial ZIP; composite hash not checked). mammoth 1.12.2 extractRawText(): 70,220 characters, 5,609 lines, 1889 non-blank. Non-week region = lines 1-82: title line 1 (SHA-256 c3a8dc39c250fd530499bc2d27d4d50ed829835a1e586e85165d2d16dad0edd9), subject/class line 5 (af4cb4b9d92b6ef817117fad4273be49afd11d835472fddeebab3c4af85016cb), SCHEME OF WORK line 9 (8104f5ba0f84b6d0bd6c7197460d87d05b526578cebae1ae784ad29a8b48f15e), column header line 13 (0a7bcefdb62032fcabc408940fc69708f54b2d2b8d2daa70f3af30be038a450e), lines 1-13 (8675f847251f5d8e5a29b97ac819869ec7fd04b83c2b4e74ad1587006e1917b0); ten scheme topic rows lines 15-73 (f36a6acce562c3133ec10472d24ea5e4d986c439c7664ab06786728f0b052151; per-row hashes and one-to-one mapping to MATH-WK-T2-W01..W10 in the note; existing COV-MATH-T2-R00..R09 unchanged); reference list lines 77-81 (5701d218625e6ca58d67b9a72e50505a9450895a05fc4fa74ec0dab9365a3714); whole region 1-81 (ae5daacc723ce3eabd2000ff7da0b57e039f7e308edab410cd80a75bce072a52); text before the first parsed label 'WEEK ONE' (line 83) ccfe36eee1ca42b3df6f30f2c4b828bdf5633f7750476d96288c59ff8e8b84c9. The scheme rows are Word auto-numbered paragraphs (numbering.xml abstractNum 24, decimal) rendered 1-10; mammoth drops the numbers. This term's scheme has no examination row; only the Week 6 revision row (existing RULE-MATH-T2-W06-REVISION). Package edits: added RULE-MATH-T2-TITLE (SCHEME_ONLY; title anchor) and COV-MATH-T2-TITLE (MARKER); added RULE-MATH-T2-REFERENCES (SCHEME_ONLY; exact 140-character lines 77-81 anchor) and COV-MATH-T2-REFERENCES (MARKER). Sources (3), lessons (6), delivery_corrections (6), assets (0), open_items (7) and package_status PENDING unchanged; no 1st or 3rd Term entry touched. Not approved, not verified; testing deferred by owner; zod parse, compiler/plan, importer, tests, typecheck and database were not run.",
       "completion_condition": "Every non-week text block is hash-accounted and either mapped to coverage (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an explicit open item. Per-week scheme objectives are handled by the MATH-WK items."
     },
     {
@@ -3075,10 +3075,9 @@
     }
   },
   "next_runnable": [
-    "MATH-PRE-T2"
+    "MATH-PRE-T3"
   ],
   "runnable_now": [
-    "MATH-PRE-T2",
     "MATH-PRE-T3",
     "MATH-WK-T1-W01",
     "MATH-WK-T1-W02",

@@ -86,6 +86,18 @@
       }
     },
     {
+      "id": "RULE-MATH-T2-TITLE",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "anchor": "SECOND TERM E-LEARNING NOTE",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "MATH-PRE-T2: mammoth 1.12.2 extractRawText() line 1 (title) with lines 5, 9 and 13 (subject/class line, 'SCHEME OF WORK', 'WEEK<tab>TOPIC '); lines 2-4, 6-8 and 10-12 are blank. Block SHA-256: line 1 alone c3a8dc39c250fd530499bc2d27d4d50ed829835a1e586e85165d2d16dad0edd9; line 5 alone af4cb4b9d92b6ef817117fad4273be49afd11d835472fddeebab3c4af85016cb; line 9 alone 8104f5ba0f84b6d0bd6c7197460d87d05b526578cebae1ae784ad29a8b48f15e; line 13 alone 0a7bcefdb62032fcabc408940fc69708f54b2d2b8d2daa70f3af30be038a450e; lines 1-13 8675f847251f5d8e5a29b97ac819869ec7fd04b83c2b4e74ad1587006e1917b0 (lines joined with \\\\n, edge blank lines trimmed, UTF-8, no trailing newline). The anchor occurs exactly once in the extracted text and matches no parsed row.",
+        "explanation": "Document title, subject/class line, scheme heading and scheme-table column header. They state document identity only and carry no teaching objective. The scheme rows that follow (extracted lines 15-73) are Word auto-numbered paragraphs (numbering.xml abstractNum 24: decimal, start 1, level text %1.), so Word shows week numbers 1-10 while mammoth extractRawText emits no list numbers. The reference list is classified by a separate rule; the registered header (line 5) stays with RULE-MATH-T2-ALIAS."
+      }
+    },
+    {
       "id": "RULE-MATH-T3-ALIAS",
       "op": "source_alias",
       "source_id": "SS1-SRC-ca00ca94afb9",
@@ -157,6 +169,18 @@
       "evidence": {
         "locator": "row 5 (WEEK SIX)",
         "explanation": "Half-term review row; body retained."
+      }
+    },
+    {
+      "id": "RULE-MATH-T2-REFERENCES",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "source_sha256": "9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368",
+      "anchor": "REFERENCE BOOK\n\nNew General Mathematics SSS 1 M.F. Macrae et al \n\nWABP Essential Mathematics For Senior Secondary Schools 1 A.J.S Oluwasanmi",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "MATH-PRE-T2: mammoth extractRawText() lines 77-81 ('REFERENCE BOOK' with one space, then the two titles; line 79 ends with one trailing space, included verbatim in the anchor). Block SHA-256 5701d218625e6ca58d67b9a72e50505a9450895a05fc4fa74ec0dab9365a3714 (lines joined with \\\\n, edge blank lines trimmed). The 140-character anchor occurs exactly once in the extracted text and matches no parsed row.",
+        "explanation": "Reference-book list printed directly after the scheme of work; scheme-only text with no teaching content. Titles recorded verbatim: \"New General Mathematics SSS 1 M.F. Macrae et al\"; \"WABP Essential Mathematics For Senior Secondary Schools 1 A.J.S Oluwasanmi\". No edition, publisher or year is stated in the source and none is added."
       }
     },
     {
@@ -1164,6 +1188,22 @@
       ]
     },
     {
+      "id": "COV-MATH-T2-TITLE",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Document title, subject line, scheme heading and scheme-table column header; no teaching objective",
+      "objective_locator": "mammoth extractRawText() lines 1-13",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-MATH-T2-TITLE"
+      ],
+      "evidence": [
+        {
+          "locator": "line 1 (title) SHA-256 c3a8dc39c250fd530499bc2d27d4d50ed829835a1e586e85165d2d16dad0edd9; line 5 (subject/class) SHA-256 af4cb4b9d92b6ef817117fad4273be49afd11d835472fddeebab3c4af85016cb; line 9 (SCHEME OF WORK) SHA-256 8104f5ba0f84b6d0bd6c7197460d87d05b526578cebae1ae784ad29a8b48f15e; line 13 (WEEK/TOPIC) SHA-256 0a7bcefdb62032fcabc408940fc69708f54b2d2b8d2daa70f3af30be038a450e; lines 1-13 SHA-256 8675f847251f5d8e5a29b97ac819869ec7fd04b83c2b4e74ad1587006e1917b0; text before the first parsed label 'WEEK ONE' (line 83) SHA-256 ccfe36eee1ca42b3df6f30f2c4b828bdf5633f7750476d96288c59ff8e8b84c9",
+          "explanation": "Line 5 is the registered header_text (RULE-MATH-T2-ALIAS) and line 13 is the scheme-table column header. The ten scheme topic rows (lines 15-73) map one-to-one to MATH-WK-T2-W01..W10 and are cited by COV-MATH-T2-R00..R09 (row 6, line 41, is the Week 6 revision row, RULE-MATH-T2-W06-REVISION); the reference list (lines 77-81) is COV-MATH-T2-REFERENCES; this term's scheme has no examination row. The last hash is the exact value the compiler PREAMBLE_REQUIRES_COVERAGE detail will hold for text.slice(0, index of the first parsed body), computed here without running the importer."
+        }
+      ]
+    },
+    {
       "id": "COV-MATH-T2-R00",
       "source_id": "SS1-SRC-b802686e83d2",
       "objective": "Quadratic equations by factorization and completing the square",
@@ -1320,6 +1360,22 @@
         {
           "locator": "parsed row 9",
           "explanation": "Original body exists in this row but its full text has not yet been reviewed for correctness against the scheme objective, and the delivered text loses superscripts/subscripts and Word equations (OMML characters lost in this row: 6); no replacement lesson authored yet."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T2-REFERENCES",
+      "source_id": "SS1-SRC-b802686e83d2",
+      "objective": "Reference-book list printed after the 2nd Term scheme of work",
+      "objective_locator": "mammoth extractRawText() lines 77-81",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-MATH-T2-REFERENCES"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 77-81; SHA-256 5701d218625e6ca58d67b9a72e50505a9450895a05fc4fa74ec0dab9365a3714",
+          "explanation": "Heading \"REFERENCE BOOK\" and two titles: \"New General Mathematics SSS 1 M.F. Macrae et al\", \"WABP Essential Mathematics For Senior Secondary Schools 1 A.J.S Oluwasanmi\". The anchor contains line 79's exact trailing space and occurs once. Scheme-only text; no teaching content. No edition, publisher or year is stated or invented."
         }
       ]
     },
