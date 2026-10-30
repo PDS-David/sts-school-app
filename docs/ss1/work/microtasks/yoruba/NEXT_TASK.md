@@ -1,43 +1,45 @@
-# YO-WK-T1-W05 Yoruba
+# YO-WK-T2-W03 Yoruba
 
-Execute only YO-WK-T1-W05 in PDS-David/sts-school-app. Reviewed master: 9f745bb896f2a2430269fdc491ad2eaf74874513 on 30 October 2026.
-
-Fetch current master, read applicable AGENTS.md, and inspect open PRs. Create an isolated branch. Re-read this task's current QUEUE.json record. If it is now implemented, cite that evidence and stop; do not repeat it or pick another task without assignment. If another PR owns this subject/package, coordinate or wait rather than overwrite it. This is one small task, not completion of the whole subject.
+Execute only YO-WK-T2-W03 in PDS-David/sts-school-app. Reviewed master b85fd07a4e1666deb701ba8319b397418a665dbc, 30 October 2026.
+Fetch latest master, inspect applicable AGENTS.md and open PRs, then create an isolated branch. Re-read this task's QUEUE.json entry and its prerequisite YO-SRC-T2. If already implemented, cite the evidence and stop; do not repeat it or silently choose another. If another PR owns the Yoruba package, do not overwrite it.
 
 ## Read
-- docs/ss1/work/microtasks/yoruba/QUEUE.json
+- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - docs/ss1/contracts/CONTRACT.md
 - backend/src/db/ss1/subjectPackageSchema.ts
 - backend/src/db/ss1/compiler.ts
-- docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv
 - docs/ss1/work/SS1-02/CHECKPOINT.md
 - docs/ss1/work/SS1-02/author_packages.py
 - docs/ss1/work/SS1-02/extract_sources.cjs
 - scripts/ss1/prepare_sources.py
 - backend/src/db/ss1/subjects/yoruba.json
-- docs/ss1/work/microtasks/yoruba/YO-INV-T1.md
+- docs/ss1/work/microtasks/yoruba/QUEUE.json
+- docs/ss1/work/microtasks/yoruba/YO-INV-T2.md
 - backend/src/db/ingestTopics.ts
 
-## Scope
-Type: SOURCE_WEEK_INDEXING
-Term and locator: 1st Term / Week 5 (source label "OSE KARUN-UN" at extractRawText line 1171; section lines 1171-1284)
-Dependencies: YO-SRC-T1. Check their committed implementation evidence; testing deferred is not verified.
+## Objective and boundary
+Index 2nd Term Week 3 at objective level: read every EDE, ASA and LITIRESO objective and every exercise in section lines 1075-1302 (scheme row lines 37-43), list each objective, bind it to exact source rows or supplements with reproducible locators, and record any scheme objective or exercise the body does not teach as a precise PENDING open item plus, where content is missing, a small lesson item.
 
-Index 1st Term Week 5 at objective level: list each scheme objective for the week, bind it to exact source rows or supplements with reproducible locators, and confirm the replacement's scope against every exercise in the row it displaces.
+Week 3 (scheme row lines 37-43, label " Ose keta    Ede- Awon isori gbolohun gege bi ise won."; teaching label " OSE KETA " at extractRawText line 1075, char offset 17392; section lines 1075-1302)
 
-## Exact input
-- Attach standalone `YORUBA.docx` or extract `SSS 1/1st Term SS1_/YORUBA.docx` from a supplied container. Member SHA-256: `7403d8243ee646a221bb3d92fe18d202c73be0bde4deb10fa68a3dec0b4a6aef`.
-The full archive is optional. If Library access exists, retrieve SSS 1-20260507T072431Z-3-001 (1).zip there before asking for another upload; validate the member hash. Accept matching bytes regardless of filename. Do not require the full ZIP or assert its hash unless checked. Do not infer source headings from filenames. If inaccessible, state the exact missing member and checkpoint any independent work; never invent evidence.
+The locator/hash figures above are inherited pointers, not fresh extraction results. Reproduce them with the source method or record the exact alternate extraction method and revised locators. Historical prose saying no package/coverage exists is obsolete; inspect and preserve current yoruba.json.
+
+## Exact attachment
+Standalone original: 2ND TERM S1 YORUBA.docx
+Archive member: SSS 1/2nd Term SS1_/2ND TERM S1 YORUBA.docx
+SHA-256: 73bfb9760a678e113e9a44c4d5073c5d59eb463d0846e384483726fc94bcc9ac
+Accept matching member bytes from any container. The full ZIP is not required. If accessible, recover the named SS1 source archive from Library before asking for an upload. No teacher response is required to index existing source content. Do not invent uncertain meanings or missing literature.
 
 ## Permitted writes
 - backend/src/db/ss1/subjects/yoruba.json
 - docs/ss1/work/microtasks/yoruba/QUEUE.json
-- docs/ss1/work/microtasks/yoruba/YO-WK-T1-W05.md
+- docs/ss1/work/microtasks/yoruba/YO-WK-T2-W03.md
 
-No UI, JSS3, other subject, shared compiler/schema, runtime, production data or shared assignment-index changes. Existing packages are present: ignore historical prose saying otherwise. Preserve stable IDs and all unrelated entries.
+No changes to shared schema/compiler, other subjects, JSS3, UI or production. This is indexing only, not authoring every resulting missing lesson.
 
-## Implementation and completion
-Index 1st Term Week 5 at objective level: every listed objective bound to exact source rows or supplements with reproducible locators and UTF-8 body hashes; existing schema respected (no schema or compiler edit); any missing content recorded as a precise open item plus a small lesson task; nothing discarded. Testing deferred by owner.
+## Completion
+Every scheme objective and every body exercise for the week is enumerated with an exact locator and hash; an objective or exercise the body does not teach becomes a precise PENDING open item and, where content is missing, a small lesson item; no lesson is authored, no objective is invented, and no schema or compiler edit is made here.
+
 
 For INVENTORY: inspect this document and append bounded indexing/visual tasks with real locators; no lesson authoring or structural rule implementation. For INDEXING: implement supported coverage/rules under the existing schema within the named section; preserve source wording, distinguish markers from teaching, and record precise remaining gaps plus small follow-up items. Unsupported schema operations become an explicit blocker, not a silent skip or shared-schema change. Never discard teaching under a revision heading.
 
