@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
@@ -549,41 +549,46 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
         { userId: user.id, role: user.role },
       ) as Array<{ stem: string; options: unknown; correct_keys: string[]; marks?: number }>;
 
-      const questionIds: number[] = [];
-      for (const d of drafts) {
-        const { rows: qRows } = await query(
-          `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
-           VALUES($1,$2,$3,$4,'mcq',$5,$6,$7,$8,NULL) RETURNING id`,
+      // ASM-03: the model call above is finished before BEGIN; everything
+      // below is DB-only and commits as one unit, so a failure cannot leave
+      // orphan questions or an assessment with missing question links. Any
+      // throw rolls back and falls to the catch below (assessment_status null).
+      assessment_status = await withTransaction(async (client): Promise<string | null> => {
+        const questionIds: number[] = [];
+        for (const d of drafts) {
+          const { rows: qRows } = await client.query(
+            `INSERT INTO questions(school_code,subject_id,class_name,term_id,type,stem,options,correct_keys,marks,created_by)
+             VALUES($1,$2,$3,$4,'mcq',$5,$6,$7,$8,NULL) RETURNING id`,
+            [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
+             d.stem, JSON.stringify(d.options ?? []), d.correct_keys ?? [], d.marks ?? 1],
+          );
+          questionIds.push(qRows[0].id);
+        }
+
+        const { rows: aRows } = await client.query(
+          `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
+           VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
           [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-           d.stem, JSON.stringify(d.options ?? []), d.correct_keys ?? [], d.marks ?? 1],
+           `${topic.title} — Topic Assessment`, questionIds.length, delivery?.kind === 'corrected' ? delivery.fingerprint : null],
         );
-        questionIds.push(qRows[0].id);
-      }
+        const assessmentId = aRows[0].id;
 
-      const { rows: aRows } = await query(
-        `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,status,created_by,content_fingerprint)
-         VALUES($1,$2,$3,$4,$5,$6,'open',NULL,$7) RETURNING id`,
-        [topic.school_code, topic.subject_id, topic.class_name, topic.term_id,
-         `${topic.title} — Topic Assessment`, questionIds.length, delivery?.kind === 'corrected' ? delivery.fingerprint : null],
-      );
-      const assessmentId = aRows[0].id;
+        for (let i = 0; i < questionIds.length; i++) {
+          await client.query(
+            `INSERT INTO assessment_questions(assessment_id, question_id, points, order_index) VALUES($1,$2,1,$3)`,
+            [assessmentId, questionIds[i], i],
+          );
+        }
 
-      for (let i = 0; i < questionIds.length; i++) {
-        await query(
-          `INSERT INTO assessment_questions(assessment_id, question_id, points, order_index) VALUES($1,$2,1,$3)`,
-          [assessmentId, questionIds[i], i],
-        );
-      }
-
-      // Link only if no concurrent request linked one first; the loser closes its own copy (no duplicate open assessments).
-      const { rows: linked } = await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2 AND generated_assessment_id IS NULL RETURNING id', [assessmentId, topic.id]);
-      if (linked[0]) {
-        assessment_status = 'open';
-      } else {
-        await query("UPDATE assessments SET status='closed' WHERE id=$1", [assessmentId]);
-        const { rows: winner } = await query('SELECT a.status FROM topics t JOIN assessments a ON a.id=t.generated_assessment_id WHERE t.id=$1', [topic.id]);
-        assessment_status = winner[0]?.status ?? null;
-      }
+        // Link only if no concurrent request linked one first; the loser closes its own copy (no duplicate open assessments).
+        // Still a compare-and-set: under READ COMMITTED a second transaction's UPDATE waits on the
+        // first one's row lock, then re-checks `generated_assessment_id IS NULL` and matches nothing.
+        const { rows: linked } = await client.query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2 AND generated_assessment_id IS NULL RETURNING id', [assessmentId, topic.id]);
+        if (linked[0]) return 'open';
+        await client.query("UPDATE assessments SET status='closed' WHERE id=$1", [assessmentId]);
+        const { rows: winner } = await client.query('SELECT a.status FROM topics t JOIN assessments a ON a.id=t.generated_assessment_id WHERE t.id=$1', [topic.id]);
+        return winner[0]?.status ?? null;
+      });
     } catch {
       assessment_status = null;
     }
@@ -873,24 +878,30 @@ router.post('/assessments', requirePerm('assessments.create'), async (req, res) 
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
   const total_marks = (question_ids ?? []).reduce((s, q) => s + (q.points ?? 1), 0);
-  const { rows } = await query(
-    `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,
-       start_at,end_at,shuffle,created_by)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
-    [sc, subject_id, class_name, term_id ?? null, title, total_marks,
-     start_at ?? null, end_at ?? null, shuffle !== false, req.user!.id],
-  );
-  const assessment = rows[0];
-
-  // Link questions
-  for (let i = 0; i < (question_ids ?? []).length; i++) {
-    const q = question_ids[i];
-    await query(
-      `INSERT INTO assessment_questions(assessment_id,question_id,points,order_index)
-       VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
-      [assessment.id, q.id, q.points ?? 1, i],
+  // ASM-03: header and question links commit together or not at all, so a
+  // failure part-way through the loop cannot leave an assessment with missing
+  // questions and a total_marks that no longer matches them.
+  const assessment = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      `INSERT INTO assessments(school_code,subject_id,class_name,term_id,title,total_marks,
+         start_at,end_at,shuffle,created_by)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+      [sc, subject_id, class_name, term_id ?? null, title, total_marks,
+       start_at ?? null, end_at ?? null, shuffle !== false, req.user!.id],
     );
-  }
+    const created = rows[0];
+
+    // Link questions
+    for (let i = 0; i < (question_ids ?? []).length; i++) {
+      const q = question_ids[i];
+      await client.query(
+        `INSERT INTO assessment_questions(assessment_id,question_id,points,order_index)
+         VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING`,
+        [created.id, q.id, q.points ?? 1, i],
+      );
+    }
+    return created;
+  });
   return res.status(201).json({ assessment });
 });
 
@@ -1020,6 +1031,11 @@ function reviewBacklog(gradingStatuses: string[]): { pending_review_count: numbe
   return { pending_review_count, fully_graded: pending_review_count === 0 };
 }
 
+// Thrown inside the submit transaction when this student already has a
+// submission, so the rollback is translated to the existing 409 instead of a
+// generic 500 (ASM-03).
+class AlreadySubmittedError extends Error {}
+
 // ── POST /assessments/:id/submit (student) ────────────────────────────────────
 router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (req, res) => {
   const user = req.user!;
@@ -1093,54 +1109,34 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
     }
   }
 
-  const { rows } = await query(
-    `INSERT INTO submissions(assessment_id,student_id,answers,auto_score,total_score,started_at,submitted_at)
-     VALUES($1,$2,$3,$4,$4,now(),now())
-     ON CONFLICT(assessment_id,student_id) DO NOTHING
-     RETURNING *`,
-    [req.params.id, student_id, JSON.stringify(answers), auto_score],
+  // Early duplicate check (ASM-03). Essay grading below now runs BEFORE the
+  // submission row exists, so without this a repeat submit would spend a
+  // model call per essay before being rejected. The in-transaction insert
+  // below stays authoritative for the concurrent-request race.
+  const { rows: existingSub } = await query(
+    'SELECT 1 FROM submissions WHERE assessment_id=$1 AND student_id=$2', [req.params.id, student_id],
   );
-  const submission = rows[0];
-  if (!submission) {
+  if (existingSub[0]) {
     return res.status(409).json({ error: 'Assessment already submitted; previous results are preserved' });
   }
 
-  // Resubmission support: this student's assessment_questions haven't
-  // changed shape, but their answers have — replace the prior per-question
-  // breakdown rather than leaving stale rows behind.
-  // A new submission has no previous answer rows to delete.
-
-  let essayPointsTotal = 0;
-  // grading_status of each essay row written below, fed to reviewBacklog().
-  const essayStatuses: string[] = [];
-
-  // MCQ rows — final immediately, same as auto_score above.
-  for (const q of qRows) {
-    if (q.type !== 'mcq') continue;
-    const selected = answers[q.question_id] ?? null;
-    const correct = !!selected && q.correct_keys.includes(selected);
-    await query(
-      `INSERT INTO submission_answers(submission_id,question_id,question_type,selected_key,max_points,awarded_points,grading_status)
-       VALUES($1,$2,'mcq',$3,$4,$5,'auto')`,
-      [submission.id, q.question_id, selected, q.points, correct ? q.points : 0],
-    );
-  }
-
-  // Essay rows — Brainee grades each one. An unanswered essay gets 0 with no
-  // AI call (nothing to grade). A failed Brainee call leaves it explicitly
-  // 'ai_unavailable' rather than silently scoring it 0 or dropping it —
-  // a teacher has to grade it by hand via PUT /submissions/:id/answers/:answerId.
+  // Essay marking — Brainee grades each one, in memory, BEFORE any
+  // transaction opens (ASM-03: never hold a pool client across a model call).
+  // An unanswered essay gets 0 with no AI call (nothing to grade). A failed
+  // Brainee call leaves it explicitly 'ai_unavailable' rather than silently
+  // scoring it 0 or dropping it — an admin has to grade it by hand via
+  // PUT /submissions/:id/answers/:answerId/review.
+  type GradedEssay = {
+    question_id: number; points: number; answer_text: string;
+    status: 'auto' | 'ai_graded' | 'ai_unavailable';
+    awarded: number | null; feedback: string | null;
+  };
+  const gradedEssays: GradedEssay[] = [];
   for (const e of essayRows) {
     if (!e.answer_text.trim()) {
-      await query(
-        `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,awarded_points,grading_status)
-         VALUES($1,$2,'essay',$3,$4,0,'auto')`,
-        [submission.id, e.question_id, e.answer_text, e.points],
-      );
-      essayStatuses.push('auto');
+      gradedEssays.push({ question_id: e.question_id, points: e.points, answer_text: e.answer_text, status: 'auto', awarded: 0, feedback: null });
       continue;
     }
-
     try {
       const prompt =
         `Grade this student's essay answer out of ${e.points} marks.\n` +
@@ -1150,54 +1146,109 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
       const result: any = await generateJSON(prompt, 'essay-mark', { userId: user.id, role: user.role });
       const points = Math.max(0, Math.min(e.points, Number(result?.points) || 0));
       const feedback = typeof result?.feedback === 'string' ? result.feedback : null;
-
-      await query(
-        `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,awarded_points,ai_suggested_points,ai_feedback,grading_status)
-         VALUES($1,$2,'essay',$3,$4,$5,$5,$6,'ai_graded')`,
-        [submission.id, e.question_id, e.answer_text, e.points, points, feedback],
-      );
-      essayPointsTotal += points;
-      essayStatuses.push('ai_graded');
+      gradedEssays.push({ question_id: e.question_id, points: e.points, answer_text: e.answer_text, status: 'ai_graded', awarded: points, feedback });
     } catch {
-      essayStatuses.push('ai_unavailable');
-      await query(
-        `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,grading_status)
-         VALUES($1,$2,'essay',$3,$4,'ai_unavailable')`,
-        [submission.id, e.question_id, e.answer_text, e.points],
-      );
+      gradedEssays.push({ question_id: e.question_id, points: e.points, answer_text: e.answer_text, status: 'ai_unavailable', awarded: null, feedback: null });
     }
   }
 
+  // grading_status of each essay row, fed to reviewBacklog().
+  const essayStatuses = gradedEssays.map(g => g.status);
+  const essayPointsTotal = gradedEssays.reduce((sum, g) => sum + (g.status === 'ai_graded' ? Number(g.awarded) : 0), 0);
   const total_score = auto_score + essayPointsTotal;
-  const { rows: updated } = await query(
-    `UPDATE submissions SET total_score=$2, fully_graded=$3 WHERE id=$1 RETURNING *`,
-    [submission.id, total_score, reviewBacklog(essayStatuses).fully_graded],
-  );
 
-  // If this assessment is a topic's auto-generated "standard assessment"
-  // (topics.generated_assessment_id), record the student's pass/fail on the
-  // matching topic_completions row — this is what drives the next topic's
-  // lock state in GET /topics above (score_percent >= 60 to unlock it).
-  // Topic-generated assessments are always all-MCQ (see the generation
-  // prompt in POST /topics/:id/complete), so total_score is already final
-  // the moment this route finishes — there's no essay/ai_unavailable case
-  // to wait on here the way a human-authored assessment might have.
-  if (assessment.total_marks > 0) {
-    const { rows: topicRows } = await query(
-      'SELECT id FROM topics WHERE generated_assessment_id=$1', [req.params.id],
-    );
-    if (topicRows[0]) {
-      const score_percent = Math.round((total_score / assessment.total_marks) * 10000) / 100;
-      await query(
-        `INSERT INTO topic_completions(topic_id, student_id, passed, score_percent)
-         VALUES($1,$2,$3,$4)
-         ON CONFLICT (topic_id, student_id) DO UPDATE SET passed=EXCLUDED.passed, score_percent=EXCLUDED.score_percent`,
-        [topicRows[0].id, student_id, score_percent >= 60, score_percent],
+  // One transaction for every write: submission row, per-answer rows, final
+  // total/fully_graded, and the topic_completions upsert. A failure at any
+  // statement rolls all of it back, so no submission can exist without its
+  // answers (which previously blocked resubmission with a 409 and had no marks).
+  let updatedSubmission: any;
+  try {
+    updatedSubmission = await withTransaction(async (client) => {
+      const { rows } = await client.query(
+        `INSERT INTO submissions(assessment_id,student_id,answers,auto_score,total_score,started_at,submitted_at)
+         VALUES($1,$2,$3,$4,$4,now(),now())
+         ON CONFLICT(assessment_id,student_id) DO NOTHING
+         RETURNING *`,
+        [req.params.id, student_id, JSON.stringify(answers), auto_score],
       );
+      const submission = rows[0];
+      if (!submission) throw new AlreadySubmittedError();
+
+      // A new submission has no previous answer rows to delete.
+
+      // MCQ rows — final immediately, same as auto_score above.
+      for (const q of qRows) {
+        if (q.type !== 'mcq') continue;
+        const selected = answers[q.question_id] ?? null;
+        const correct = !!selected && q.correct_keys.includes(selected);
+        await client.query(
+          `INSERT INTO submission_answers(submission_id,question_id,question_type,selected_key,max_points,awarded_points,grading_status)
+           VALUES($1,$2,'mcq',$3,$4,$5,'auto')`,
+          [submission.id, q.question_id, selected, q.points, correct ? q.points : 0],
+        );
+      }
+
+      // Essay rows, in the same order as before (MCQ rows first, then essays).
+      for (const g of gradedEssays) {
+        if (g.status === 'auto') {
+          await client.query(
+            `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,awarded_points,grading_status)
+             VALUES($1,$2,'essay',$3,$4,0,'auto')`,
+            [submission.id, g.question_id, g.answer_text, g.points],
+          );
+        } else if (g.status === 'ai_graded') {
+          await client.query(
+            `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,awarded_points,ai_suggested_points,ai_feedback,grading_status)
+             VALUES($1,$2,'essay',$3,$4,$5,$5,$6,'ai_graded')`,
+            [submission.id, g.question_id, g.answer_text, g.points, g.awarded, g.feedback],
+          );
+        } else {
+          await client.query(
+            `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,grading_status)
+             VALUES($1,$2,'essay',$3,$4,'ai_unavailable')`,
+            [submission.id, g.question_id, g.answer_text, g.points],
+          );
+        }
+      }
+
+      const { rows: updated } = await client.query(
+        `UPDATE submissions SET total_score=$2, fully_graded=$3 WHERE id=$1 RETURNING *`,
+        [submission.id, total_score, reviewBacklog(essayStatuses).fully_graded],
+      );
+
+      // If this assessment is a topic's auto-generated "standard assessment"
+      // (topics.generated_assessment_id), record the student's pass/fail on the
+      // matching topic_completions row — this is what drives the next topic's
+      // lock state in GET /topics above (score_percent >= 60 to unlock it).
+      // Topic-generated assessments are always all-MCQ (see the generation
+      // prompt in POST /topics/:id/complete), so total_score is already final
+      // the moment this route finishes — there's no essay/ai_unavailable case
+      // to wait on here the way a human-authored assessment might have.
+      if (assessment.total_marks > 0) {
+        const { rows: topicRows } = await client.query(
+          'SELECT id FROM topics WHERE generated_assessment_id=$1', [req.params.id],
+        );
+        if (topicRows[0]) {
+          const score_percent = Math.round((total_score / assessment.total_marks) * 10000) / 100;
+          await client.query(
+            `INSERT INTO topic_completions(topic_id, student_id, passed, score_percent)
+             VALUES($1,$2,$3,$4)
+             ON CONFLICT (topic_id, student_id) DO UPDATE SET passed=EXCLUDED.passed, score_percent=EXCLUDED.score_percent`,
+            [topicRows[0].id, student_id, score_percent >= 60, score_percent],
+          );
+        }
+      }
+
+      return updated[0];
+    });
+  } catch (e) {
+    if (e instanceof AlreadySubmittedError) {
+      return res.status(409).json({ error: 'Assessment already submitted; previous results are preserved' });
     }
+    throw e;
   }
 
-  return res.json({ submission: updated[0], auto_score });
+  return res.json({ submission: updatedSubmission, auto_score });
 });
 
 // ── GET /assessments/:id/results (admin oversight only) ────────────────────────
