@@ -258,7 +258,18 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
 
   // No admin bypass — see comment above. Only the actual class teacher of
   // the class this student is CURRENTLY in.
-  if (!user.assigned_class || user.assigned_class !== student.class_name) {
+  // The school check comes first: assigned_class and class_name are plain-text
+  // labels such as "JSS 1" that repeat across schools, so the class match alone
+  // does not prove the student belongs to this teacher's school. Both failures
+  // return the same 403 so the response does not reveal whether the student
+  // exists in another school. This guard runs before the action branches, so
+  // promote, demote and retain are all covered. checkTeacherStudentScope is not
+  // used here: this route needs its own denial wording, and passing no termId
+  // (so a class lock never blocks a promotion) is already how this route behaves.
+  if (
+    !user.school_code || student.school_code !== user.school_code
+    || !user.assigned_class || user.assigned_class !== student.class_name
+  ) {
     return res.status(403).json({ error: 'You can only promote, demote, or retain students in your own assigned class' });
   }
 
