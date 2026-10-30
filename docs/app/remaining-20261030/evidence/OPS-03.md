@@ -9,7 +9,7 @@ Files changed: this note only. No application, schema or permission change.
 
 - `backend/schema.sql` contains no `ROW LEVEL SECURITY`, `CREATE POLICY` or `BYPASSRLS` (grep over the file returns nothing). Confirmed.
 - Of the seven tables the prompt lists for Option B, only `students` has a `school_code` column in its `CREATE TABLE` (`schema.sql:175-185`). `scores`, `attendance`, `class_records`, `weekly_efforts`, `invoices` and `submissions` have none, and no `ADD COLUMN IF NOT EXISTS school_code` exists for them. A policy on those six would have to join through `students` (or `terms`) on every row check.
-- The pool is one shared `pg.Pool` and `query()` is `pool.query` (`backend/src/db/pool.ts:60-66`); a transaction helper exists (`withTransaction`, `pool.ts:68-79`) but is used by only two route files (`finance.ts` 2 refs, `learning.ts` 4 refs).
+- The pool is one shared `pg.Pool` and `query()` is `pool.query` (`backend/src/db/pool.ts:49-59`); a transaction helper exists (`withTransaction`, `pool.ts:62-75`) but is called from only two route files (`finance.ts:135`; `learning.ts:556`, `:884`, `:1166`).
 
 ## Current surface (derived from the tree)
 
@@ -32,7 +32,7 @@ These three are the same shape as the QA Pass 4 incident documented at `scope.ts
 
 ### C. Admin-only, id-keyed, no school predicate (12)
 
-`admin.ts` applies `requireRole('admin')` to the whole router (`admin.ts:10`). Admin is unrestricted across schools by design (`scope.ts:25-30`, `:51`), so none of these is a defect against the current model; they are counted because they are exactly what a "school-bound admin" model, or RLS, would change.
+`admin.ts` applies `requireRole('admin')` to the whole router (`admin.ts:11`). Admin is unrestricted across schools by design (`scope.ts:28`, `:52`), so none of these is a defect against the current model; they are counted because they are exactly what a "school-bound admin" model, or RLS, would change.
 
 - `admin.ts:179-192` reissue-activation-code · `:194-236` `PUT /users/:id` · `:238-244` reset-password · `:251-255` approve · `:257-265` `DELETE /users/:id`
 - `admin.ts:391` student lookup for `POST /term-pins`; `admin.ts:415-425` `GET /term-pins` (no school filter at all, returns every school's live PINs)
@@ -43,7 +43,7 @@ These three are the same shape as the QA Pass 4 incident documented at `scope.ts
 
 ### D. `finance_admin`, global by design (1)
 
-- `PUT /finance/invoices/:id/status` — `finance.ts:152-162`, `UPDATE invoices ... WHERE id=$2`. `finance_admin` has `school_code = NULL` (`students.ts:17-19` comment), so a school predicate cannot be expressed for that role today.
+- `PUT /finance/invoices/:id/status` — `finance.ts:152-162`, `UPDATE invoices ... WHERE id=$2`. `finance_admin` has `school_code = NULL` (`students.ts:17-18` comment), so a school predicate cannot be expressed for that role today.
 
 ### E. Id-keyed **with** an in-handler school comparison (9)
 
@@ -66,7 +66,7 @@ The number that matters for the decision is **A = 3**: three live endpoints reac
 ### Option A (recommended default) — application-only, hardened and documented
 
 - The API is the only DB client. The deployed DB role should have no `SUPERUSER`, no `BYPASSRLS`, no `CREATEROLE`, and accept connections only from the API host. These are **operational settings the repository cannot show**; nothing here claims they are set. `OPS-05` is where they would be inspected with owner credentials.
-- TLS validation is already enforced in production (`pool.ts:19-42`, OPS-02).
+- TLS validation is already enforced in production (`pool.ts:19-47`, OPS-02).
 - Residual risk: one missed `WHERE` is one leak. Section A above is the live evidence.
 - Follow-ups that fit this option and are **not** part of this task: close A1–A3 with the existing helpers; decide whether admin should become school-bound (changes class C); give `finance_admin` an explicit school list.
 
@@ -79,7 +79,7 @@ The number that matters for the decision is **A = 3**: three live endpoints reac
   2. **Global roles.** `admin` (cross-school) and `finance_admin` (`school_code NULL`) need explicit bypass policies, which reproduces the class C/D gaps inside the database.
   3. **Unauthenticated and pre-auth paths** that read tables before a user exists: `/auth/login`, `/refresh`, `/self-claim`, `/self-register`, `/activate`, `/forgot-password/*` (`auth.ts:13`, `:111`, `:301`, `:417`, `:524`, `:621`).
   4. **Background / service-level queries** with no request user: `utils/push.ts`, `utils/email.ts`, `utils/audit.ts`, and all `backend/src/db/*.ts` CLI scripts (imports, resets, ingest). These need a service role that bypasses RLS, which is the same blind spot as Option A for those paths.
-  5. **Cross-school reads that are intentional:** admin `GET /students` with a `school_code` override (`students.ts:17-19`).
+  5. **Cross-school reads that are intentional:** admin `GET /students` with a `school_code` override (`students.ts:17-20`).
 - Phasing (design only, no policy SQL here): (1) OPS-01 migration ledger first; (2) introduce a request-scoped DB handle behind `query()` with no policy change; (3) close A1–A3 in the app; (4) enable RLS in `FORCE` mode on `students` only, behind a feature flag, with a bypass role for CLI scripts; (5) extend table by table, each with its own tests (currently deferred by the owner).
 
 ### Option C — no change, accepted risk
