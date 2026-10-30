@@ -24,22 +24,23 @@
     "FA-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). FA-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "FA-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten in seven labelled sections, from the document itself (FA-INV-T1.md); no revision or examination section exists, so no marker item was created. The document SHA-256 was verified in this run from the composite archive; nothing was run (tests, typechecks, importer, DB, device)."
+    "FA-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten in seven labelled sections, from the document itself (FA-INV-T1.md); no revision or examination section exists, so no marker item was created. The document SHA-256 was verified in this run from the composite archive; nothing was run (tests, typechecks, importer, DB, device).",
+    "FA-INV-T2 appended the 2nd Term inventory items (18) and is IMPLEMENTED_TESTING_DEFERRED. Counts reflect items, not content completeness: the new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The week count is ten in five labelled sections (WEEK ONE, WEEK TWO - THREE, WEEK FOUR, WEEK FIVE – SIX, WEEK SEVEN – TEN), from the document itself (FA-INV-T2.md); there is no revision or examination section, so no marker item was created. The document ends with a questions-1-to-5 prompt whose questions are absent. The document SHA-256 was verified in this run from the supplied 2nd Term zip; the composite archive hash was not checked; nothing was run (tests, typechecks, importer, DB, device)."
   ],
   "counts": {
-    "FACTUAL_DEPENDENCY": 4,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_PRESERVATION": 3,
+    "FACTUAL_DEPENDENCY": 7,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_PRESERVATION": 6,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 7,
+    "SOURCE_WEEK_INDEXING": 12,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 6
+    "VISUAL_DISPOSITION": 12
   },
   "status_counts": {
     "BLOCKED": 1,
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 23
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 40
   },
   "items": [
     {
@@ -210,8 +211,8 @@
       "depends_on": [
         "FA-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Record: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md. Document SHA-256 422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f verified (144,645 bytes) from the supplied 2nd Term zip (SHA-256 94a32a4ec4af7d492d26feecdf06cedfedf846d3c65c27a5473a1693d0d33c0a, member path '2nd Term SS1 /Account.docx'); equal to SOURCE_ASSIGNMENTS.csv and to source SS1-SRC-167817613690 (registered by FA-SRC-T2). The composite archive hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e was NOT checked. Extracted with mammoth.extractRawText (1.12.2): 52,810 characters, 4,667 lines, 1,699 non-blank, whole-text SHA-256 566d0cfef230d320748e942b1452b683d0b903a6c7656df26c7e8af1eaf36745. One preamble (lines 1-33, SHA-256 d4f5d3b9a912750e9e5da9255f00ba6b970875a95b60bf1ad3ec280da0bd8a04) and five labelled sections for ten scheme weeks: WEEK ONE 35-545 (c17967fd...), WEEK TWO - THREE 551-1705 (dcfde491...), WEEK FOUR 1709-2461 (830b1bcf...), WEEK FIVE – SIX 2467-3493 (da180edd...), WEEK SEVEN – TEN 3499-4653 (84e758aa...). No revision or examination section exists (scheme rows only). The document ends with 'Use the Data Below to Answer Questions 1 to 5:' and a table; the questions are absent. 53 tables, 38 drawn-shape anchors (all connectors or text-box groups, no embedded media), 58 Word equation objects (invisible to text extraction), no header, footer or media part. Appended 18 items, each PENDING, with dependencies FA-INV-T2 + FA-SRC-T2 (plus specific week or equation items for the three factual items): FA-PRE-T2, FA-WK-T2-W01, FA-WK-T2-W02-W03, FA-WK-T2-W04, FA-WK-T2-W05-W06, FA-WK-T2-W07-W10, FA-VIS-T2-W01-LEDGERS, FA-VIS-T2-W02-W03-ACCOUNTS, FA-VIS-T2-W04-FORMULA-GROUPS, FA-VIS-T2-EQUATIONS, FA-VIS-T2-W05-W06-STATEMENTS, FA-VIS-T2-W07-W10-NFP-ACCOUNTS, FA-PRES-T2-COLUMNS, FA-PRES-T2-CURRENCY, FA-PRES-T2-SOURCE-WORDING, FA-FACT-T2-DATED-REFERENCES, FA-FACT-T2-ARITHMETIC, FA-FACT-T2-SCHEME-COVERAGE. No lesson, coverage entry, rule, correction or asset was written; no source text, extract or render is committed. Implemented, not approved or verified; testing deferred by owner.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1049,6 +1050,683 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md.",
       "completion_condition": "Every external reading and exercise reference is recorded with its locator and bounded by an explicit no-claim rule; neither book is fetched, quoted or committed; missing content is an open item, not an invented lesson."
+    },
+    {
+      "id": "FA-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 1-33 (`SS1` at 1, `FINANCIAL ACCOUNTING` at 3, `SIGMA – TERM` at 5, `SCHEME OF WORK ` at 7, header `WEEK ` at 9, eleven auto-numbered scheme rows at 11-33 plus one unnumbered continuation line at 19), SHA-256 d4f5d3b9a912750e9e5da9255f00ba6b970875a95b60bf1ad3ec280da0bd8a04",
+      "objective": "Index the unlabelled preamble of the 2nd Term Financial Accounting source (lines 1-33, body SHA-256 d4f5d3b9a912750e9e5da9255f00ba6b970875a95b60bf1ad3ec280da0bd8a04) and implement what the existing schema supports. The preamble holds `SS1` (1), the subject header `FINANCIAL ACCOUNTING` already registered by FA-SRC-T2 (3), the term label `SIGMA – TERM` (5; it does not say 2nd Term, the assignment rests on the manifest folder), `SCHEME OF WORK ` (7), a header line `WEEK ` (9) with no TOPIC column, and the scheme at 11-33: `Revision of 1st term’s work` (11), `Partnership Accounts – Admission of new partners. Terminologies Goodwill accounts, valuation of assets, treatment of goodwill according to profit sharing ratio.` (13), `Dissolution of partners reasons for dissolution, entry requirements in closing the firm’s books of account (settlement account).` (15), `Accounting Ratio` (17) with the unnumbered continuation `Introduction to ratio, types with working exercise.` (19), `Single entry/incomplete records – ...` (21), `Accounts of non-profit making organization – ...` (23), `Receipts and payments account, income and expenditure account – ...` (25), `Treatment of subscriptions other nominal ledgers in arrears and in advance.` (27), `Preparation of income and expenditure account and balance sheet with working exercise.` (29), `Revision` (31), `Examination ` (33). The rows are an automatic Word list (numId 1, decimal `%1.`), so no row number appears in the extracted text; the rendered numbers 1-11 are inferred from the numbering definition, not printed. Lines 7, 9, 11 and 33 carry a trailing space. Treat the scheme as preamble, not teaching: a scheme row is never imported as a complete lesson, and the row-to-week mapping is not stated in the source, so do not invent one (eleven rows face five week labels for ten weeks). `Revision` (31), `Examination ` (33) and `Revision of 1st term’s work` (11) are scheme rows only: the document has no revision or examination section, so no classify_marker rule is required; record that finding instead of adding one. If the package needs a preamble marker to keep the scheme out of the week bodies, add the narrowest existing-schema rule and prove its anchor occurs once; note that the header line `WEEK ` (9) must not be mistaken for a week marker (a rule must require a number word). Do not edit the scheme wording, spacing or the term label.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRE-T2.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "The preamble is represented under the existing schema (or explicitly recorded as needing no rule beyond the week split), with the scheme rows, their automatic numbering, the unnumbered continuation line, the trailing spaces and `SIGMA – TERM` preserved verbatim; no lesson is created from a scheme row; no approval or verification is invented."
+    },
+    {
+      "id": "FA-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 35-545 (marker `WEEK ONE`, topic line `GOODWILL` at 37), SHA-256 c17967fd2075934f6c8ec189054b509bbe47314b7ce35c49fd87700402f74089",
+      "objective": "Index Week One of the 2nd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 35-545, body SHA-256 c17967fd2075934f6c8ec189054b509bbe47314b7ce35c49fd87700402f74089): the goodwill definition (39); eight factors giving rise to goodwill (41-57); situations in which goodwill is introduced - admission, change of ratio, retirement or death, dissolution, business purchase (59-71); the three types, inherent, fugitive and purchased, with the statement that the first two are non-purchased (73-83); four named valuation methods with no formula or worked valuation (85-95); accounting for goodwill with and without a goodwill account and the two-step capital-account adjustment (97-113); apportionment of profit when a change falls mid-year, with the time-basis rule (115-117); and Illustration 4, `Change in profit-sharing ratio` (121-197: Shola and Shogo, data in tables 0 and 1, revised terms at 149-157, additional information 187-191, Required 193-197) with its Solution (199-545: appropriation account in table 2 at 205-469 and partners' current accounts in table 3 at 473-545). There is no TOPIC/CONTENT list, no evaluation block, no exercise and no assignment in this section. The profit-sharing fractions in the illustration are Word equation objects (six in this section, at 157, 429 and 443), invisible in the extracted text (`Shola – , Shogo-` at 157), and are delegated to FA-VIS-T2-EQUATIONS; the tables and drawn rules are delegated to FA-VIS-T2-W01-LEDGERS; amounts and column conventions to FA-PRES-T2-COLUMNS and FA-PRES-T2-CURRENCY; arithmetic to FA-FACT-T2-ARITHMETIC. The valuation methods are named only: record a precise open item and a small lesson task rather than inventing formulas. The illustration is labelled `Illustration 4` although it is the first in the document; do not renumber it. Do not import the scheme row as a complete lesson and do not merge Financial Accounting into Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Week One objective-level coverage or marker rules exist under the existing schema for goodwill (meaning, factors, introduction, types, valuation names, accounting) and for the profit-sharing-ratio illustration; the unwritten valuation formulas are a precise open item plus a small lesson task; visuals, equations, wording and arithmetic are handed to their items; nothing is invented as an answer."
+    },
+    {
+      "id": "FA-WK-T2-W02-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 551-1705 (marker `WEEK TWO - THREE`, topic line `ADMISSION OF NEW PARTNER AND RETIREMENT OF AN EXISTING PARTNER IN CONTINUING BUSINESS` at 553), SHA-256 dcfde491546e223a2c94a10a72364bdfde4f9c73c014d0b98b1bde868cea2a1f",
+      "objective": "Index the combined Week Two-Three section of the 2nd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 551-1705, body SHA-256 dcfde491546e223a2c94a10a72364bdfde4f9c73c014d0b98b1bde868cea2a1f): the one-paragraph introduction on mid-year partnership changes (555); Illustration 5, `Admission of a new partner` (557-687: Dami and Lola at 3:2 admit Bola on 1 October 2010; data tables 4-7 at 561-671, revaluation at 631-647, goodwill agreed at N40,000 with no goodwill account at 651, capital and loan at 653, new agreement at 673-679, Required at 681-687); its Solution and Workings (689-1349: revaluation account 695-739, goodwill working 743-757, capital accounts table 9 at 759-879, trading, profit and loss and appropriation account table 10 at 907-1201 with 9-month, 3-month and year columns, current accounts table 11 at 1203-1347); `Essay Type Questions` on the meaning and legal position of a partnership (1351-1361); a trial-balance question for Sam and Dan at 30 April 2011 (1365-1553: table 12 at 1365-1523, additional information 1525-1545, Required 1547-1553); and a retirement question for Bose, Bukky and Biola at 3:2:1 with Shola admitted on 31 December 2010 (1557-1705: trial balance table 13 at 1559-1673, agreed matters 1681-1699, Required 1701-1705). Findings to carry forward, not silently fix: (a) the heading promises retirement of an existing partner but the section teaches it only through an unsolved question (1557-1705) with no explanatory prose; (b) no Solution, answer or key is printed for the essay, the Sam and Dan question or the retirement question (the only `Solution` label is at 689); (c) the section contains no EVALUATION, ASSIGNMENT or EXERCISE label, so the assessment blocks are identified by their wording, not by a marker; (d) profit shares and goodwill shares are Word equation objects (twelve, at 679, 711, 713, 747, 749, 753, 755, 757, 1167 and 1181), invisible in the extracted text (`Dami -  , Lola   and Bola -` at 679, `Dami ( x 40,000)` at 747), delegated to FA-VIS-T2-EQUATIONS. The illustration is labelled `Illustration 5`, the same label used again at 1747. Tables are delegated to FA-VIS-T2-W02-W03-ACCOUNTS.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T2-W02-W03.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Week Two-Three objective-level coverage or marker rules exist under the existing schema for admission of a partner with revaluation and goodwill, for the unsolved Sam and Dan and retirement questions and for the essay; the missing retirement teaching and the missing answers are precise open items plus a small lesson task; visuals, equations and arithmetic are handed to their items; nothing is invented as an answer."
+    },
+    {
+      "id": "FA-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 1709-2461 (marker `WEEK FOUR`, topic line `ACCOUNTING RATIOS AND INCOMPLETE RECORDS` at 1711), SHA-256 830b1bcfb72c9d990ff581e6cf29f10e39f4be0d5a196173a182f7f26494c6f4",
+      "objective": "Index Week Four of the 2nd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 1709-2461, body SHA-256 830b1bcfb72c9d990ff581e6cf29f10e39f4be0d5a196173a182f7f26494c6f4): the introduction on using accounting ratios when records are destroyed or incomplete (1713-1715); the four named ratios Mark-up, Margin, Rate of turnover and Manager's commission (1717-1723); Mark-up with its formula and Illustration 5 (1725-1771); Margin with its formula and Illustration 6 (1773-1807); conversion of mark-up to margin and of margin to mark-up (1809-1845); Illustration 7 (1847-1855); Illustration 8, God Grace Venture, with the trading account in table 14 at 1905-1947 (1857-1903); Stock Turnover and its formula in times and in days (1951-1973); Manager's Commission and its formula (1975-1981); Illustration 9, Folarin Ventures (1983-2171: table 15, creditors ledger control account table 16, trading and profit and loss account table 17); Illustration 10, Madam Adeotun (2173-2273: table 18); `Exercise` (2275) with `Objective Questions` (2277-2327: five four-option items) and `Fill in the Blanks` (2329-2339: five items, the last a 7½% commission calculation); and `Assignment` with `Essay Type Questions` (2341-2461: tables 19-21, `You are required to calculate` at 2371-2381, a Mary Parker bank-account summary at 2383, and a trading, profit and loss account and balance sheet question labelled `(SSCE, June 1993)` at 2455-2461). Findings to carry forward: (a) despite the title, the body teaches ratios only; incomplete-records preparation is Week Five-Six; (b) the scheme promises `types` of ratio (19) but only the four named ratios are taught; (c) no key is printed for any objective or fill-in item and no solution for the Assignment; (d) every formula is a drawn text-box group or a Word equation (forty equation objects, 1771-2041; six formula groups at 1729-1799; two `x 365` boxes at 2081 and 2087), so the extracted text shows `Profit`, `Cost Price`, `x 100` as separate lines at 1729-1733 and loses the fraction layout, delegated to FA-VIS-T2-W04-FORMULA-GROUPS and FA-VIS-T2-EQUATIONS; (e) the margin solution prints `2.5%` for 15,000 / 60,000 at 1807 while also printing `0.25` and `¼`, an arithmetic item owned by FA-FACT-T2-ARITHMETIC; (f) `Mark – up` (spaced en dash, 1717, 1725, 1735) and `Mark-up` (hyphen, 1759) both occur; wording is owned by FA-PRES-T2-SOURCE-WORDING. The illustration label `Illustration 5` repeats 557.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Week Four objective-level coverage or marker rules exist under the existing schema for mark-up, margin, their conversion, stock turnover, manager's commission, Illustrations 5-10 and each assessment block; the missing `types of ratio` teaching and the missing keys are precise open items plus a small lesson task; the 2.5% discrepancy is handed to FA-FACT-T2-ARITHMETIC; nothing is invented as an answer."
+    },
+    {
+      "id": "FA-WK-T2-W05-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 2467-3493 (marker `WEEK FIVE – SIX`, topic line `SINGLE ENTRY AND INCOMPLETE RECORDS` at 2469), SHA-256 da180edd74e71e377b916ca8482aa5df0abfd140be4fd4c00b56a634cb2288bb",
+      "objective": "Index the combined Week Five-Six section of the 2nd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 2467-3493, body SHA-256 da180edd74e71e377b916ca8482aa5df0abfd140be4fd4c00b56a634cb2288bb): Introduction (2473-2475); Meaning of single entry/incomplete records (2479-2483); Features (2487-2499, six); Areas where single entry is used (2503-2519, seven); Preparation of Statement of Affairs (2521-2641: meaning and use at 2523-2527, the blank format as tables 22-24 with `XXX` placeholders at 2529-2633, opening capital = total assets - liabilities at 2559, and the two profit formulas at 2639-2641); Illustration 1 (2643-2685, Abraka Ventures at 1 January 2016, table 25 at 2645-2677); Illustration 2 (2687-2757, table 26 at 2689-2747); `PREPARATION OF FINAL ACCOUNTS FROM INCOMPLETE RECORDS:` and `Conversion of Single Entry to Double Entry` (2761-2793: five books or accounts listed at 2767-2775 and eight steps at 2779-2793); Illustration 3, Arsenal Ventures (2799-3323: data tables 27-29, requirements at 2901-2905, Solution at 2907 with opening statement of affairs, cash book, debtors and creditors ledger control accounts, accrued expenses account, trading and profit and loss account at 3109 and balance sheet at 3229); and Illustration 4 (3335-3493: tables 37-39, additional information at 3399, depreciation rates at 3487-3491, Required at 3493). Findings to carry forward: (a) only Illustration 3 carries a `Solution` label; Illustrations 1, 2 and 4 have data and requirements and no printed answer; (b) the section has no EVALUATION, EXERCISE or ASSIGNMENT block and no equation objects; (c) the scheme row for single entry also names `balance sheet from incomplete records` and the title shares `INCOMPLETE RECORDS` with Week Four, so topic ownership must follow the body; (d) the drawn rules are nine connector anchors (2549, 2555, 2593, 3309 x4, 3315, 3323) delegated to FA-VIS-T2-W05-W06-STATEMENTS, with the tables; (e) dates mix 2008, 2009, 2010 and 2016 across illustrations (FA-FACT-T2-DATED-REFERENCES); (f) `debtors were owning` (2869) belongs to FA-PRES-T2-SOURCE-WORDING. Do not import the scheme row as a complete lesson.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T2-W05-W06.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Week Five-Six objective-level coverage or marker rules exist under the existing schema for single entry (meaning, features, uses), the statement of affairs, conversion to double entry and Illustrations 1-4; the unanswered illustrations are precise open items plus a small lesson task; visuals and arithmetic are handed to their items; nothing is invented as an answer."
+    },
+    {
+      "id": "FA-WK-T2-W07-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 3499-4653 (marker `WEEK SEVEN – TEN ` with a trailing space, topic line `ACCOUNTS FOR NOT-FOR-PROFIT ORGANIZATIONS` at 3501), SHA-256 84e758aa569f8969fd3a96912e5abb04cf974a47163107e3d83c38a58c522e1a",
+      "objective": "Index the combined Week Seven-Ten section of the 2nd Term Financial Accounting source and implement actual objective-level coverage/rules under the existing schema. Read the whole section (lines 3499-4653, body SHA-256 84e758aa569f8969fd3a96912e5abb04cf974a47163107e3d83c38a58c522e1a): LEARNING OBJECTIVES (3503-3521: three objectives, the third a four-item list of accounts ending `Accumulated fund.`); Introduction (3523-3537); Receipts and Payments Account (3539-3617: definition, format and a `Hypothetical Example of Receipts and Payments Account for the year Ended…` whose heading ends in an ellipsis at 3549, table 40 at 3549-3613, notes at 3615-3617); Income and Expenditure Account (3621-3629) and a two-column comparison of the two accounts as table 41 at 3631-3653; Membership Subscription (3657-3671: arrears treated under the accrual concept or the prudence concept); Illustration 1, Barca fans club (3673-3797: Solution at 3687, subscriptions account table 42 at 3689-3793, matching-concept note at 3795-3797); Life Membership (3801-3805); Accumulated Fund (3809-3813); Illustration 2 (3815-3909: table 43, requirements at 3905-3909, no Solution); Bar Trading Account (3913-3917); Illustration 3, chop-1-chop Fun Club (3923-4599: receipts and payments table 44 at 3927-4021, balances table 45 at 4027-4075, depreciation at 4079, requirements 4081-4087, Solution at 4097 with bar trading account 4099-4159, income and expenditure account 4165-4267, balance sheet 4273-4341, accumulated fund calculation 4345-4457, `Workings` at 4475 with subscription and insurance accounts at 4479-4599); and a final block `Use the Data Below to Answer Questions 1 to 5:` (4601) followed by a receipts and payments account for the year ended 31 December 2008 as table 52 (4603-4653). Findings to carry forward: (a) the questions 1 to 5 announced at 4601 do not exist anywhere in the document, which ends at 4653 with the table, so record a precise open item and do not invent them; (b) there is no EVALUATION, EXERCISE or ASSIGNMENT label and no key; (c) Illustration 1 asks for the account `as it would be at the end of 31 December 2006` (3685) while its data are for the year ended 31 December 2008 (3675), and the balances table heads read `31/12/2016` and `31/12/2007` (4031-4033) inside a year-ended-2007 illustration (FA-FACT-T2-DATED-REFERENCES); (d) `generally accepted account principles` (3529) and the accrual, prudence and matching concepts (3667, 3669, 3797) are source claims for FA-FACT-T2-DATED-REFERENCES; (e) wording defects `non-for-profit` (3531), `paid in advanced` (3683), `owning` (3755, 3857, 4043) belong to FA-PRES-T2-SOURCE-WORDING; (f) six drawn connector rules (3733, 3775, 3971, 4021, 4229, 4267) and all thirteen tables are delegated to FA-VIS-T2-W07-W10-NFP-ACCOUNTS. Four teaching weeks share one section; do not split it by invented week boundaries. Do not import the scheme rows as complete lessons.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-WK-T2-W07-W10.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Week Seven-Ten objective-level coverage or marker rules exist under the existing schema for the receipts and payments account, the income and expenditure account, subscriptions, life membership, the accumulated fund, the bar trading account and Illustrations 1-3; the absent questions 1 to 5, the unsolved Illustration 2 and the date contradictions are precise open items plus a small lesson task; visuals and arithmetic are handed to their items; nothing is invented as an answer."
+    },
+    {
+      "id": "FA-VIS-T2-W01-LEDGERS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 123-545: tables 0-3 (0 at 123-145, 3x3; 1 at 159-183, 2x2; 2 at 205-469, 17x3; 3 at 473-545, 5x6) and eleven drawn-rule anchors at lines 227, 331, 343 (two), 405 (four), 461, 465, 469",
+      "objective": "Dispose of the account formats and drawn rules in Week One of the 2nd Term Financial Accounting source. Table 0 (123-145, 3x3) holds the capital and current account balances of Shola and Shogo; table 1 (159-183, 2x2) the year's trading figures (sales spread evenly, cost of sales, rent, wages, general expenses); table 2 (205-469, 17x3) the trading, profit and loss and appropriation account; table 3 (473-545, 5x6) the partners' current accounts with Shola and Shogo columns on both sides and `Bal. c/d` and `Bal. b/d` rows. Eleven drawn-shape anchors (all connector rules: eight groups of three connectors and three single connectors, 27 connector shapes in total) sit at 227, 331, 343 (two), 405 (four), 461, 465 and 469; they are totals and column rules whose meaning the extracted text does not show. Record, for each table, the exact column count and order and which side each column is, the anchor lines of every rule group, and decide under the existing schema whether each is a table, a preserved text rendering or a blocked visual. A lesson must keep both sides and the total lines explicit and must not reflow an account into prose. Do not commit any rendering or binary drawing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T2-W01-LEDGERS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Each of the four tables and the eleven rule anchors has a recorded disposition that preserves column order, sides and totals without inventing labels; no binary drawing or rendering is committed."
+    },
+    {
+      "id": "FA-VIS-T2-W02-W03-ACCOUNTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 561-1673: tables 4-13 (4 at 561-597; 5 at 605-627; 6 at 631-647; 7 at 655-671; 8 at 695-739; 9 at 759-879, 2x8; 10 at 907-1201, 21x7; 11 at 1203-1347, 9x8; 12 at 1365-1523, 22x3; 13 at 1559-1673, 2x3); no drawn-rule anchors",
+      "objective": "Dispose of the ten tables in Weeks Two-Three of the 2nd Term Financial Accounting source. Tables 4-7 hold the trading figures, the opening capital and current balances of Dami and Lola, the asset revaluation and the drawings; table 8 (695-739, 2x4) is the revaluation account (`Particulars | N | Particulars | N`); table 9 (759-879, 2x8) the three partners' capital accounts side by side on both sides (`Dami (N) | Lola(N) | Bola(N)` repeated); table 10 (907-1201, 21x7) the trading, profit and loss and appropriation account with nine-month, three-month and year columns; table 11 (1203-1347, 9x8) the current accounts; table 12 (1365-1523, 22x3) the Sam and Dan trial balance at 30 April 2011; table 13 (1559-1673, 2x3) the Bose, Bukky and Biola trial balance with `Dr (N)` and `Cr (N)` columns. This section has no drawn-rule anchors; its fractions are Word equations (FA-VIS-T2-EQUATIONS). Record exact column order and which side is which for each table, decide under the existing schema whether each is a table, a preserved text rendering or a blocked visual, and do not reflow any account. Do not commit any rendering.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T2-W02-W03-ACCOUNTS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Each of the ten tables has a recorded disposition that preserves column order, sides and totals without inventing labels; no binary drawing or rendering is committed."
+    },
+    {
+      "id": "FA-VIS-T2-W04-FORMULA-GROUPS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 1729-2453: eight tables (14 at 1905-1947; 15 at 1985-2019; 16 at 2045-2073; 17 at 2101-2161; 18 at 2209-2273; 19 at 2345-2369; 20 at 2383-2415; 21 at 2419-2453) and twelve drawn-shape anchors (formula groups at 1729, 1753, 1761, 1777, 1781, 1799; connector at 1903; `x 365` boxes at 2081 and 2087 with a connector at 2083; connectors at 2273 (two))",
+      "objective": "Dispose of the formula drawings and tables in Week Four of the 2nd Term Financial Accounting source. Six anchored groups are text-box fractions each made of three rectangles and one connector: `Profit` over `Cost Price` times `x 100` (1729, 1753), `10,000` over `50,000` times `x 100` (1761), `Profit` over `Sales` times `x 100` (1777, 1781) and `15,000` over `60,000` times `x 100` (1799). Two further boxes carry `x 365` (2081, 2087) beside a connector (2083), and further single connectors sit at 1903 and 2273 (two). The extracted text keeps the box words as separate lines (for example `Profit`, `Cost Price`, `x 100` at 1729-1733) and loses the fraction layout, so a reader of the text cannot tell numerator from denominator; the formulas written as plain text at 1955-1957, 1963-1965 and 1979-1981 have the same positional dependence. Record the exact words of each group with its anchor, state the intended fraction for each, and decide under the existing schema whether each is a formula rendering, a preserved text rendering or a blocked visual. Tables 14-21 are trading, ledger-control, profit and loss and bank-summary formats to be recorded with their column order. Do not commit any rendering.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T2-W04-FORMULA-GROUPS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Each of the twelve drawn-shape anchors and eight tables has a recorded disposition that preserves numerator, denominator and multiplier order and the account column order without inventing labels; no binary drawing or rendering is committed."
+    },
+    {
+      "id": "FA-VIS-T2-EQUATIONS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "58 Word equation objects (OMML), each a single fraction: Week One 6 (lines 157, 429, 443); Week Two-Three 12 (679, 711, 713, 747, 749, 753, 755, 757, 1167, 1181); Week Four 40 (1771; 1823-1841; 1853-1855; 1867; 1889-1893; 2041)",
+      "objective": "Dispose of every equation object in the 2nd Term Financial Accounting source. The document holds 58 Word math objects, each a single fraction, and the importer's text extraction ignores them (FA-SRC-T2 recorded the unrecognised-oMath warning), so the extracted lines show the surrounding words with the fractions missing: `Shola – , Shogo-` (157), `Dami -  , Lola   and Bola -` (679), `Dami ( x 40,000)` (747), `Mark-up =   to margin =   =` (1829), `The business uses a uniform mark-up rate of 33 %` (1867, where the mixed fraction is lost). The values are profit-sharing and goodwill-sharing fractions (fifths and halves) in Weeks One and Two-Three and mark-up and margin conversion fractions (including P/CP, P/SP, P/(SP-P) and unit fractions such as 1/(4+1)) in Week Four. Read each object from the original document, record its exact numerator and denominator with the extraction line it belongs to, and decide under the existing schema whether it is a formula rendering or a blocked visual. No lesson, worked answer or ratio may be written from the extracted text alone, because the shares and conversion rules are only in these objects. Do not commit any rendering.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T2-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "All 58 equation objects are recorded with exact numerator, denominator and line, and a disposition; the profit-sharing, goodwill and conversion fractions are no longer missing from any later lesson; no value is guessed from the surrounding text."
+    },
+    {
+      "id": "FA-VIS-T2-W05-W06-STATEMENTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 2531-3483: tables 22-39 (22 at 2531-2555; 23 at 2567-2593; 24 at 2597-2633; 25 at 2645-2677; 26 at 2689-2747; 27 at 2801-2829; 28 at 2833-2865; 29 at 2873-2897; 30 at 2909-2955; 31 at 2963-3025; 32 at 3029-3063; 33 at 3067-3103; 34 at 3109-3217; 35 at 3229-3287; 36 at 3287-3323; 37 at 3337-3395; 38 at 3401-3453; 39 at 3463-3483) and nine drawn-rule anchors (2549, 2555, 2593, 3309 x4, 3315, 3323)",
+      "objective": "Dispose of the eighteen tables and nine drawn rules in Weeks Five-Six of the 2nd Term Financial Accounting source. Tables 22-24 are the blank statement-of-affairs and closing-capital formats written with `X` placeholders; tables 25-26 and 27-29 hold the assets and liabilities of Abraka Ventures and Arsenal Ventures; tables 30-36 are the solution of Illustration 3 (opening statement of affairs, the receipts and payments cash book at 2963, the debtors ledger control account at 3029, the accrued expenses account at 3067, the trading, profit and loss account at 3109, and the balance sheet at 3229 with `Cost | Depreciation | Net | NET Book Value` columns and a `Financed by` lower table at 3287); tables 37-39 are the data of Illustration 4. Nine connector anchors (2549, 2555, 2593, 3309 x4, 3315, 3323) are rules for totals and sub-totals. Record each table's exact column order and sides, the placeholders as placeholders (not as zero amounts), the lines of each rule group, and decide under the existing schema whether each is a table, a preserved text rendering or a blocked visual. Table 36 (3287-3323) is a one-row, four-cell continuation of the balance sheet and must be kept with table 35. Do not commit any rendering.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T2-W05-W06-STATEMENTS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Each of the eighteen tables and nine rule anchors has a recorded disposition that preserves column order, sides, placeholders and totals without inventing labels; no binary drawing or rendering is committed."
+    },
+    {
+      "id": "FA-VIS-T2-W07-W10-NFP-ACCOUNTS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 3549-4653: tables 40-52 (40 at 3549-3613; 41 at 3631-3653; 42 at 3689-3793; 43 at 3817-3901; 44 at 3927-4021; 45 at 4027-4075; 46 at 4099-4159; 47 at 4165-4267; 48 at 4273-4341; 49 at 4347-4457; 50 at 4479-4547; 51 at 4551-4599; 52 at 4603-4653) and six drawn-rule anchors (3733, 3775, 3971, 4021, 4229, 4267)",
+      "objective": "Dispose of the thirteen tables and six drawn rules in Weeks Seven-Ten of the 2nd Term Financial Accounting source. Table 40 is the hypothetical receipts and payments format (`Receipts | N | Payment | N`, eight rows) under a heading whose date is cut off by an ellipsis (3549); table 41 (3631-3653, 5x2) sets the receipts and payments account against the income and expenditure account; table 42 is the subscriptions account of Illustration 1; tables 43-45 are the data of Illustrations 2 and 3, including a balances table headed `31/12/2016` and `31/12/2007` (4031-4033) inside a year-ended-2007 illustration; tables 46-51 are the solution of Illustration 3 (bar trading account, income and expenditure account with `Expenditure | N | Income | N`, balance sheet, accumulated fund calculation, workings); table 52 (4603-4653) is the receipts and payments account whose questions 1 to 5 are missing. Six connector anchors (3733, 3775, 3971, 4021, 4229, 4267) are total rules. Record each table's exact column order and sides, the lines of each rule group, and decide under the existing schema whether each is a table, a preserved text rendering or a blocked visual; table 52 stays a data block and must not be given invented questions. Do not commit any rendering.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-VIS-T2-W07-W10-NFP-ACCOUNTS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Each of the thirteen tables and six rule anchors has a recorded disposition that preserves column order, sides and totals without inventing labels; table 52 is recorded as an orphan data block; no binary drawing or rendering is committed."
+    },
+    {
+      "id": "FA-PRES-T2-COLUMNS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "whole 2nd Term document: two-sided accounts, per-partner columns, Dr/Cr trial balances, c/d and b/d forms, comparative columns (tables 3, 8-13, 16, 20, 21, 31-36, 38, 40-52; lines 901, 1559-1673, 3229-3287)",
+      "objective": "Preserve the accounting-column conventions of the 2nd Term Financial Accounting source when any lesson is written. Required: the two sides of every account stay explicit, with the side named in text where the source relies on a drawn rule; `Particulars | N | Particulars | N` accounts (tables 8, 42, 50, 51), `Particulars | N | N` accounts (tables 46, 49) and `Receipts | N | Payments | N` accounts (tables 40, 44, 52) keep both sides, and the three-cell `Receipts | N | N` forms (tables 20, 31) are recorded as printed; partner accounts keep one column per partner on each side (tables 9 and 11: `Dami | Lola | Bola` on both sides; table 3: `Shola | Shogo`); the trial balance keeps `Dr (N)` and `Cr (N)` (1559-1673); the nine-month, three-month and year columns of the appropriation account (905-907) survive; carry labels survive in every printed form (`Bal. c/d` and `Bal. b/d`, `Bal c/f`, `Bal. b/f`, `Balance b/f`, `Balance c/f`, and `Gross profit c/d` at 901); the balance sheet keeps `Cost | Depreciation | Net | NET Book Value` (3229-3287) and `Financed by` (table 36); the income and expenditure account keeps `Expenditure | N | Income | N` (table 47); the statement-of-affairs formats keep their `X` placeholders (tables 22-24); comparative columns keep their dates (tables 21, 38, 45). No lesson may reflow an account into prose, drop a side, or turn a placeholder into a number. Record each convention with its locator and the rule a later lesson must follow. Do not write any lesson here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRES-T2-COLUMNS.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "A preservation record lists each column convention with its source locator and the rule a later lesson must follow; no lesson is written here and no column meaning is invented."
+    },
+    {
+      "id": "FA-PRES-T2-CURRENCY",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "whole 2nd Term document: plain capital `N` currency, amounts with comma thousands, dates in several forms, percentage and fraction forms (for example 123, 559, 1687, 1807, 2037, 2339, 3683, tables 21, 38 and 45)",
+      "objective": "Preserve currency, date and number forms of the 2nd Term Financial Accounting source separately from any corrected prose. Record: currency written as a plain capital `N` (column headers `N`, `N10,000`, `N40,000`, `N54,500`) and with a stray space in `N 6,000` (1687); thousands written with a comma and no space (`10,000`, `266,250`) unlike the 1st Term spacing; date forms `1 January 2010`, `1 July, 2010`, `31 December, 2010`, `30 April 2011`, `31 Dec. 2008` (2037), numeric `30/06/2010`, `01/01/2008`, `31/12/2008` and a glued header `01/01/2009N` (table 38); percentages and fractions in several forms (`20% or 0.2`, `0.091`, `¼` at 1807, `7½%` at 2339, `33 %` at 1867 where the fraction is an equation object, `10% per annum`, `5%`, `20%`); and the repeated use of `X` and `XXX` as placeholders. Quoted amounts keep the printed form. A later lesson may normalise only if it records the original beside the normalised form. Do not correct anything here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRES-T2-CURRENCY.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "A currency, date and number-form record lists each printed form with locator; the rule is that later lessons keep the source form beside any normalised form; nothing is corrected in this item."
+    },
+    {
+      "id": "FA-PRES-T2-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "whole 2nd Term document; key items at 5, 555, 559, 683, 685, 1549, 1691, 1715, 1717, 1725, 1735, 1759, 1789, 1819, 2039, 2869, 3529, 3531, 3549, 3683, 3755, 3857, 4043, 4617-4619; duplicate labels at 557 and 1747",
+      "objective": "Preserve the source wording of the 2nd Term Financial Accounting document separately from any corrected prose. Record at least: the term label `SIGMA – TERM` (5); `the accounting records are contrived without interruption` (555, a wording to be checked, not changed); `in the ration of 3:2` (559) and `in the same ration as earlier` (1691); `Prepared the capital accounts` (683); `appropriate account` (685) and `appropriate accounts` (1549) where `appropriation` is meant; `the accountant need to see` (1715); `Mark – up` with a spaced en dash (1717, 1725, 1735) beside `Mark-up` (1759); `Magin =` (1789); the derivation line `SP = CP = P (ii)` (1819) between `SP = CP + P (i)` (1817) and `SP – P = CP (iii)` (1821); `Solution:` followed by a tab and the firm name (2039); `debtors were owning` (2869), `subscription owning at` (3755), `Subscription owning for 2009` (3857) and `Wages owning` (4043); `generally accepted account principles` (3529, a claim for FA-FACT-T2-DATED-REFERENCES); `non-for-profit` (3531); the heading `Hypothetical Example of Receipts and Payments Account for the year Ended…` (3549); `paid in advanced` (3683); `Receipt and` / `payment a/c` split across two lines (4617-4619); and the repeated label `Illustration 5` (557, 1747) with illustration numbers restarting in Week Five-Six and Week Seven-Ten. For each, record the exact text, locator and whether it is a typographical defect, a terminology choice, a label problem or an unverified claim. A later lesson may quote the source exactly and state a correction, but must not silently rewrite the source text. The `2.5%` margin figure at 1807 is an arithmetic item owned by FA-FACT-T2-ARITHMETIC. Do not correct anything here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-PRES-T2-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "A wording record lists each defect and claim with exact text, locator and classification; the rule is that later lessons keep the source wording distinct from any correction; nothing is corrected in this item."
+    },
+    {
+      "id": "FA-FACT-T2-DATED-REFERENCES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "line 2461 (`SSCE, June 1993`); illustration dates 2007-2011 and 2016 (123, 559, 1365, 1559, 1985, 2383, 2645, 2679, 2713-2715, 2801, 3405, 3675-3685, 3925, 4031-4033); rates at 151, 675, 1529-1541, 2339, 3487-3491, 4079; concepts at 3529, 3667-3669, 3797, 3805; partnership essay at 1353-1361",
+      "objective": "Verify and date every dated, legal and standards claim in the 2nd Term Financial Accounting source before a lesson adopts it, and keep the source wording distinct from the corrected fact. At least: the examination attribution `(SSCE, June 1993)` (2461), which must be traced to a primary source or flagged unverified and never treated as reuse permission; the illustration dates, which are dated illustrations, not current law, rates or statistics (year ended 31 December 2010 at 195 and 205; 1 October 2010 at 559; 30 April 2011 at 1365; 31 December 2010 at 1559-1677; 2008 at 1985, 2383 and 2801; 1 January 2016 at 2645; 31 December 2010 at 2679; 2008 and 2009 at 2713-2715; 2009 at 3405; 31 December 2008 at 3675; 2007 at 3925; 2009 at 3909); the internal contradictions to be reported without being resolved here (`as it would be at the end of 31 December 2006` at 3685 against a year ended 31 December 2008 at 3675; a table heading `31/12/2016` beside `31/12/2007` at 4031-4033; `1 January, 2016` at 2645 beside 2010 in the next illustration); the illustrative rates (interest on loan 10% and interest on capital 5% at 151 and 675, depreciation 10% and 20% at 1537-1539, 5% and 20% at 3487-3491 and 4079, commission 7½% at 2339); the accounting-principle claims `generally accepted account principles` (3529), the accrual concept (3667), the prudence concept (3669), the matching concept (3797) and the life-membership treatment (3805); and the legal questions about partnership (1353-1361), whose answer depends on the applicable partnership law. Each claim must be checked against an authoritative primary source (statute, standards body or official examination record) and either confirmed with a citation or flagged as unverified, with the year, the name and the rule checked separately. If a source cannot be consulted in the run, record that limitation and leave the claim flagged rather than inventing a citation. Do not edit the source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T2-DATED-REFERENCES.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2",
+        "FA-WK-T2-W04",
+        "FA-WK-T2-W05-W06",
+        "FA-WK-T2-W07-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Every dated, legal or standards claim listed here carries a verified citation or an explicit unverified flag with the reason; the date contradictions are reported with their lines; no fact, rate or law is invented or modernised; the source wording remains distinct."
+    },
+    {
+      "id": "FA-FACT-T2-ARITHMETIC",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 199-545 (Illustration 4), 689-1349 (Illustration 5), 1751-2273 (Illustrations 5-10), 2907-3323 (Illustration 3), 3687-3797 (Illustration 1) and 4097-4599 (Illustration 3 solution), plus the unsolved questions 1365-1553, 1557-1705, 2275-2461 and 3815-3909",
+      "objective": "Re-check every worked answer in the 2nd Term Financial Accounting source by reading and arithmetic before a lesson adopts it, and record a verdict per figure. Reviewed or to be reviewed: Illustration 4 appropriation and current accounts (tables 2-3; the shares are equation objects, so check them against FA-VIS-T2-EQUATIONS first); Illustration 5 revaluation, goodwill working (743-757: 24,000 and 16,000 in the old 3:2 shares of N40,000, then 16,000, 16,000 and 8,000 in the new shares), capital accounts, appropriation and current accounts (tables 8-11); the Week Four solutions: Illustration 5 mark-up 20% (1751-1771), Illustration 6 margin (1795-1807), Illustration 7 mark-up 0.1 and margin 0.091 (1851-1855), Illustration 8 margin 25%, profit N100,000, cost of sales N300,000 and purchases N304,000 (1887-1903), Illustration 9 average stock N120,000, 99.5 days printed as 100 days and gross profit 20% and net profit 10% of sales (2039-2171), Illustration 10 closing stock N10,000 (2195-2207); Illustration 3 of Weeks Five-Six (2907-3323); and in Weeks Seven-Ten the subscriptions account of Illustration 1 and the whole solution of Illustration 3 (tables 42, 46-51). A first read during this inventory recomputed and found agreeing: 20% (10,000 / 50,000), 0.1 and 0.091, margin 25% and the N100,000, N300,000 and N304,000 chain, 99.5 days from 120,000 / 440,000 x 365, 20% and 10% of N550,000, closing stock N10,000, the goodwill shares 24,000 / 16,000 and 16,000 / 16,000 / 8,000, and the subscriptions account (income 266,250; both sides 360,750). One disagreement is already visible and stays open: Illustration 6 prints `= 2.5%` at 1807 for 15,000 / 60,000, which is 25%, beside the correct `0.25` and `¼`. No key is printed for the five objective items (2279-2327) or the five fill-in items (2331-2339); the unsolved questions have no printed answer, so none may be presented as source-supplied. Each listed figure gets a verdict (agrees, disagrees with the reason, or unreadable), the 2.5% is resolved or explicitly left open, and no correction is applied silently.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T2-ARITHMETIC.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2",
+        "FA-WK-T2-W01",
+        "FA-WK-T2-W02-W03",
+        "FA-WK-T2-W04",
+        "FA-WK-T2-W05-W06",
+        "FA-WK-T2-W07-W10",
+        "FA-VIS-T2-EQUATIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Each listed figure has a recorded reading/arithmetic verdict (agrees, disagrees with the reason, or unreadable); the 2.5% margin figure is resolved or explicitly left open; no correction is applied silently and no test is claimed."
+    },
+    {
+      "id": "FA-FACT-T2-SCHEME-COVERAGE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-167817613690",
+      "term": "2nd Term",
+      "week_or_locator": "lines 11-33 (scheme rows) against the five week sections; lines 69 and 4601-4653",
+      "objective": "Record, as findings, which scheme rows of the 2nd Term Financial Accounting source have a body and which do not, before any lesson claims coverage. The scheme (11-33) lists `Revision of 1st term’s work` (11), `Dissolution of partners ...` (15) with settlement-account entries, `Accounting Ratio` with `types` (17-19), `Revision` (31) and `Examination ` (33); the body has five week sections (WEEK ONE, WEEK TWO - THREE, WEEK FOUR, WEEK FIVE – SIX, WEEK SEVEN – TEN) for ten weeks. Dissolution occurs only as a trigger for introducing goodwill (69) and the settlement account never appears; there is no revision section and no examination section, so the three rows have no body; ratio `types` are not taught beyond four named ratios (1717-1723); the retirement of a partner is taught only by an unsolved question (1557-1705); and the document ends with `Use the Data Below to Answer Questions 1 to 5:` (4601) and a table (4603-4653) with no questions. The scheme rows carry no week numbers and the mapping of eleven rows to five labels is not stated. For each row record the body locator or `no body`, and the precise open item or small follow-up task, without writing any lesson, quiz or question. Do not infer coverage from a scheme row.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Account.docx",
+          "member_sha256": "422b187f2d81a3f692a4b2e8fcb51932bd6d8e19a3627f59843ad8fd91106f6f"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T2-SCHEME-COVERAGE.md"
+      ],
+      "depends_on": [
+        "FA-INV-T2",
+        "FA-SRC-T2",
+        "FA-PRE-T2",
+        "FA-WK-T2-W07-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
+      "completion_condition": "Every scheme row has a recorded body locator or an explicit `no body` finding; the missing dissolution, revision, examination, ratio-types, retirement teaching and questions 1 to 5 are precise open items; no lesson, question or coverage is invented."
     }
   ],
   "review": {
@@ -1064,7 +1742,6 @@
     }
   },
   "next_runnable": [
-    "FA-INV-T2",
     "FA-INV-T3",
     "FA-TEST-PACKAGE",
     "FA-PRE-T1",
@@ -1084,6 +1761,21 @@
     "FA-PRES-T1-COLUMNS",
     "FA-PRES-T1-CURRENCY",
     "FA-PRES-T1-SOURCE-WORDING",
-    "FA-FACT-T1-EXTERNAL-MATERIALS"
+    "FA-FACT-T1-EXTERNAL-MATERIALS",
+    "FA-PRE-T2",
+    "FA-WK-T2-W01",
+    "FA-WK-T2-W02-W03",
+    "FA-WK-T2-W04",
+    "FA-WK-T2-W05-W06",
+    "FA-WK-T2-W07-W10",
+    "FA-VIS-T2-W01-LEDGERS",
+    "FA-VIS-T2-W02-W03-ACCOUNTS",
+    "FA-VIS-T2-W04-FORMULA-GROUPS",
+    "FA-VIS-T2-EQUATIONS",
+    "FA-VIS-T2-W05-W06-STATEMENTS",
+    "FA-VIS-T2-W07-W10-NFP-ACCOUNTS",
+    "FA-PRES-T2-COLUMNS",
+    "FA-PRES-T2-CURRENCY",
+    "FA-PRES-T2-SOURCE-WORDING"
   ]
 }
