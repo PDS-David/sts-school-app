@@ -6,7 +6,7 @@ import { useNotifications } from '../components/NotificationsContext';
 import { Empty } from '../components/UI';
 
 const KIND_ICON: Record<string, string> = {
-  message: 'chatbubble', assessment: 'clipboard', grade: 'bar-chart', system: 'information-circle',
+  message: 'chatbubble', assessment: 'clipboard', grade: 'bar-chart', system: 'information-circle', announcement: 'megaphone',
 };
 
 export default function NotificationsScreen({ navigation }: any) {

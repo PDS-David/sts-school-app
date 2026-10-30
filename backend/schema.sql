@@ -862,3 +862,27 @@ CREATE TABLE IF NOT EXISTS topic_assets (
 -- Screen-reader description of the picture (distinct from the visible caption).
 ALTER TABLE topic_assets ADD COLUMN IF NOT EXISTS alt_text TEXT;
 CREATE INDEX IF NOT EXISTS idx_topic_assets_topic_id ON topic_assets(topic_id);
+
+-- ── Announcements (PRD-01, owner decision D8: read-only, admin-authored) ───────
+-- A notice published by an admin to a school, optionally narrowed to one role
+-- and/or one class. Read through GET /announcements; written only through
+-- POST/DELETE /announcements (admin). No attachments, comments, read receipts
+-- or push in this version.
+--   audience_role : NULL = every role.
+--   class_name    : NULL = every class in the school; otherwise must name a row
+--                   in `classes` for the same school (checked by the route).
+--   expires_at    : NULL = never expires.
+--   created_by    : ON DELETE SET NULL so deleting an admin account (DELETE
+--                   /admin/users/:id) is never blocked by their announcements.
+CREATE TABLE IF NOT EXISTS announcements (
+  id            BIGSERIAL PRIMARY KEY,
+  school_code   TEXT NOT NULL REFERENCES schools(code) ON DELETE CASCADE,
+  title         TEXT NOT NULL,
+  body          TEXT NOT NULL,
+  audience_role TEXT CHECK (audience_role IN ('student','parent','teacher','finance_admin')),
+  class_name    TEXT,
+  created_by    UUID REFERENCES users(id) ON DELETE SET NULL,
+  created_at    TIMESTAMPTZ DEFAULT now(),
+  expires_at    TIMESTAMPTZ
+);
+CREATE INDEX IF NOT EXISTS idx_announcements_school ON announcements(school_code, created_at DESC);

@@ -16,6 +16,7 @@ import learningRouter    from './routes/learning.js';
 import adminRouter       from './routes/admin.js';
 import financeRouter     from './routes/finance.js';
 import aiRouter          from './routes/ai.js';
+import announcementsRouter from './routes/announcements.js';
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ app.use('/learning',       learningRouter);
 app.use('/admin',          adminRouter);
 app.use('/finance',        financeRouter);
 app.use('/ai',              aiRouter);
+app.use('/announcements',  announcementsRouter);
 
 // 404
 app.use((_req, res) => res.status(404).json({ error: 'Route not found' }));
