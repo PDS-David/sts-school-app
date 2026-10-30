@@ -23,22 +23,23 @@
     "COM-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). COM-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "COM-INV-T1 appended the 1st Term inventory items (19) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 19 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (COM-INV-T1.md)."
+    "COM-INV-T1 appended the 1st Term inventory items (19) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 19 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (COM-INV-T1.md).",
+    "COM-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written."
   ],
   "counts": {
     "FACTUAL_DEPENDENCY": 5,
-    "SOURCE_MARKER_DISPOSITION": 1,
-    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_MARKER_DISPOSITION": 3,
+    "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_PRESERVATION": 2,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 10,
+    "SOURCE_WEEK_INDEXING": 19,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 1
+    "VISUAL_DISPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 22,
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 35,
     "BLOCKED": 1
   },
   "items": [
@@ -210,8 +211,8 @@
       "depends_on": [
         "COM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-10-30 from the 2nd Term original (SHA-256 c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86 verified before conversion against the copy inside the supplied '2nd Term SS1' archive; the composite archive was not supplied, so its hash was not checked). Inventory: nine labelled weeks (WEEK ONE-NINE, blocks 17-358), scheme table (block 3) listing ten weeks plus revision/examination, two tables (blocks 3, 138), one equation object (block 165), no images or OLE objects, no evaluations or assignments, no doses or calculations beyond the terms-of-trade formula. Appended 14 PENDING items: COM-PRE-T2, COM-MARK-T2-W10, COM-MARK-T2-REVEXAM, COM-WK-T2-W01, COM-WK-T2-W02, COM-WK-T2-W03, COM-WK-T2-W04, COM-WK-T2-W05, COM-WK-T2-W06, COM-WK-T2-W07, COM-WK-T2-W08, COM-WK-T2-W09, COM-VIS-T2-EQ-TOT, COM-VIS-T2-TBL-DOMFOR. Evidence: docs/ss1/work/microtasks/commerce/COM-INV-T2.md. Inventory only; no lesson, coverage, rule, correction or asset written; not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1006,6 +1007,538 @@
       "status": "PENDING",
       "implementation_reference": "PENDING - by design: no correction is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Factual and neutrality flags).",
       "completion_condition": "The classification is either supported by an authoritative dated source or flagged as inconsistent, with the source's wording preserved; no silent edit of the definition. Testing deferred by owner."
+    },
+    {
+      "id": "COM-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "blocks 0-16 (range sha256 220f78abbf21e1063f61234ec0ae67b36525813cd9d25f9b3aec9f8acc252baa)",
+      "objective": "Inventory all 2nd Term text outside the nine week bodies and map or classify each block: title lines 'SIGMA TERM SCHEME OF WORK FOR SS1' (1) and 'COMMERCE' (2), the two-column scheme table (block 3, 12 rows: header, weeks 1-10 and '11 – 12 REVISION / EXAMINATION'), and blank blocks 4-16. The document has no references list. Per-week objectives belong to the COM-WK-T2 items; the Week 10 and revision/examination rows belong to COM-MARK-T2-W10 and COM-MARK-T2-REVEXAM.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-PRE-T2.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): blocks 0-16, range sha256 220f78abbf21e1063f61234ec0ae67b36525813cd9d25f9b3aec9f8acc252baa. Block 3 is a w:tbl of 12 rows x 2 columns (WEEKS | TOPICS): 1 Trading – Modern trade in retail trade; 2 Foreign Trade; 3 Export procedure involved in foreign trade; 4 Documents used in foreign trade; 5 Custom and Excise Authority; 6 Export Promotion Council; 7 Nigeria Port Authority (NPA); 8 Nigeria Airport Authority (NAA); 9 Transportation; 10 Documents involved in transportation; 11 – 12 REVISION / EXAMINATION. The week numbers here are literal cell text. Block 3's extracted text begins 'WEEKSTOPICS1Trading…' with no separators. Block 1 reads 'SIGMA TERM SCHEME OF WORK FOR SS1' with no term name in the extracted text, so term identity rests on the registered source header, not this line. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Every block in the range mapped or classified with its locator; scheme week numbers not read from text are marked inferred; nothing invented."
+    },
+    {
+      "id": "COM-MARK-T2-W10",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "scheme table row 10 'Documents involved in transportation' (block 3, row index 10); no Week 10 label or body (last label block 320, WEEK NINE; document ends at block 358)",
+      "objective": "Disposition the scheme-only Week 10 row 'Documents involved in transportation': classify as a scheme marker without a body, record that no WEEK TEN label exists and that Week 4's body covers documents used in foreign trade only, and do not import it as a lesson or invent content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-MARK-T2-W10.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): the scheme table lists ten weeks but the body stops after Week 9 (transport by rail, block 355). No block mentions documents involved in transportation (a keyword scan of blocks 320-358 found none), so the row has no body. Importer behaviour not run (testing deferred).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body exists; nothing invented."
+    },
+    {
+      "id": "COM-MARK-T2-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "scheme table row 11 '11 – 12 | REVISION / EXAMINATION' (block 3, row index 11)",
+      "objective": "Disposition the scheme row '11 – 12 REVISION / EXAMINATION' (block 3): classify as a marker, not a lesson, and record that the document has no revision worksheet, examination paper, marking scheme or Week 11/12 body. Do not invent content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-MARK-T2-REVEXAM.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): the row is the last row of the scheme table (block 3). There is no 'revision', 'examination' or 'evaluation' heading anywhere in blocks 17-358. Importer behaviour not run (testing deferred).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body exists; nothing invented."
+    },
+    {
+      "id": "COM-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1 (blocks 17-111; range sha256 e73c38b1320e3b03e07ea7a45841ee4ac2d32eaef665bb3c2c6aa29a01d2927a)",
+      "objective": "Index 2nd Term 'WEEK ONE' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 17-111. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 17 text \"WEEK ONE \" (sha256 d6daf1e694c6b67d3872739f78e9ed66d657349d3adba8de1bdc261001e1fef8); blocks 17-111; range sha256 e73c38b1320e3b03e07ea7a45841ee4ac2d32eaef665bb3c2c6aa29a01d2927a. Topic: Modern Trends in Retail Trade (scheme: Trading – Modern trade in retail trade). Self-service (27), branding (50), pre-packing (66), automatic vending (81), credit cards (94), electronic retailing (104), each with advantages and disadvantages. The opening list (blocks 21-26) names credit cards twice (23, 25) and omits automatic vending, which has its own section (81). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 (blocks 112-161; range sha256 8ef08a297c6408b13b5bc475302cdbdbfa0c2ed7a02b6e7620a8a89feb736dae)",
+      "objective": "Index 2nd Term 'WEEK TWO' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 112-161. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 112 text \"WEEK TWO\" (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); blocks 112-161; range sha256 8ef08a297c6408b13b5bc475302cdbdbfa0c2ed7a02b6e7620a8a89feb736dae. Topic: International Trade (scheme: Foreign Trade). Forms of foreign trade (116; bilateral 117, multilateral 118, invisible imports 119, export trade 121), barriers (126), difference between domestic and foreign trade (137; table block 138), similarities (140), reasons (147), advantages (153), disadvantages (157). Block 127 mentions exchange-rate differences as a barrier; the figures and institutions are curriculum concepts, not dated data. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3 (blocks 162-185; range sha256 b08a3404019b49664fe1598665140c17a8f5417cb66c1b493b87fb1b702ee49d)",
+      "objective": "Index 2nd Term 'WEEK THREE' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 162-185. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 162 text \"WEEK THREE\" (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); blocks 162-185; range sha256 b08a3404019b49664fe1598665140c17a8f5417cb66c1b493b87fb1b702ee49d. Topic: Concepts of International Trade (scheme: Export procedure involved in foreign trade). Terms of trade (164; formula block 165 is an equation object with no extracted text), visible/invisible exports (167), imports (168), balance of payment deficits (170), causes (172), measures to correct deficit (178: devaluation 179, IMF and World Bank borrowing 185). The scheme row names export procedure but the body covers terms of trade and balance of payments: a scheme/body mismatch. Block 179 and 185 are economic policy statements to date and source in correction work. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4 (blocks 186-236; range sha256 35bd00c7d0e1e1a215a104ad8fcf25e10c9a65aa8632e32c2fb65f78ef831ae3)",
+      "objective": "Index 2nd Term 'WEEK FOUR' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 186-236. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 186 text \"WEEK FOUR\" (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); blocks 186-236; range sha256 35bd00c7d0e1e1a215a104ad8fcf25e10c9a65aa8632e32c2fb65f78ef831ae3. Topic: Documents Used in Foreign Trade (no TOPIC: line; the first line is the heading). List of 18 documents (189-206), then definitions and uses: bill of lading (209; dirty/clean bill 211-213; importance 214-218), airway bill (219), certificate of origin (220), consular invoice (221), weight note (222), indent (223; open and closed 224-225), certificate of insurance (226), export/import licence (227), dock warrant (228), freight note (229), shipping agents (230), export invoice (231), custom specification (232) and following. No TOPIC: line, unlike other weeks. Document formats are described in prose only; no specimen layouts are in the source. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5 (blocks 237-254; range sha256 04858324491d45c93c690133d57f566b86e65ebb0529b3dd1aeae938e828bfe4)",
+      "objective": "Index 2nd Term 'WEEK FIVE' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 237-254. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 237 text \"WEEK FIVE \" (sha256 8ee47ba1948276278acd4756c10e25cf6739d5687371d857fd9be652bde6a506); blocks 237-254; range sha256 04858324491d45c93c690133d57f566b86e65ebb0529b3dd1aeae938e828bfe4. Topic: Customs and Excise Authority. Customs authority and its functions (244 onward); block 250 refers to checking illegal trafficking of naira and block 247 to generating revenue. The institution's name, powers and organisation are dated facts to check against primary sources in correction work. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6 (blocks 255-271; range sha256 2b8fa310ee0a82c24a980a5c7fb73bbaecb82621e503e0b10a33ee5e9307436e)",
+      "objective": "Index 2nd Term 'WEEK SIX' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 255-271. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 255 text \"WEEK SIX\" (sha256 8c07e3bd938cea9a3897d0d69eb6c600bf1fbace15d21b346bf0372fa095c038); blocks 255-271; range sha256 2b8fa310ee0a82c24a980a5c7fb73bbaecb82621e503e0b10a33ee5e9307436e. Topic: Export Promotion Council (Nigerian Export Promotion Council). Export trade definition (257) and functions of the Nigerian Export Promotion Council (260 onward, incl. export marketing 266 and export document preparation 267). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 7 (blocks 272-295; range sha256 b78b4d6ebdf1263347a2d54d3a61e091ea7c4139f16396356d3ab46ec67214c8)",
+      "objective": "Index 2nd Term 'WEEK SEVEN' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 272-295. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 272 text \"WEEK SEVEN \" (sha256 c4cb3335062b77e8bb479794362d37bdf626d4c49ade1925626e6066ebab2cfe); blocks 272-295; range sha256 b78b4d6ebdf1263347a2d54d3a61e091ea7c4139f16396356d3ab46ec67214c8. Topic: Nigeria Port Authority (NPA). Definition (274), seaports named at block 276 (Apapa Lagos, Port Harcourt, Warri, Calabar, Sapele), functions of the NPA (277), functions of seaports (285). The list of ports and the authority's powers are dated institutional facts. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 (blocks 296-319; range sha256 16ed2f0016218442f5e71ab828fc0c0f2a79658cdcae697985021fe48703e14e)",
+      "objective": "Index 2nd Term 'WEEK EIGHT' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 296-319. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 296 text \"WEEK EIGHT\" (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); blocks 296-319; range sha256 16ed2f0016218442f5e71ab828fc0c0f2a79658cdcae697985021fe48703e14e. Topic: Nigeria Airport Authority (NAA). Definition (298), functions of the NAA (299), functions of airports (308; housing of security agents 303, passenger security 305, administration 306). The body's institution name is a dated fact to check. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9 (blocks 320-358; range sha256 fba13460a8ab4b6e6ae36a7958042bb5236b92d7095cd9694d0e8b594963bb73)",
+      "objective": "Index 2nd Term 'WEEK NINE' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from COM-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 320-358. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent figures, currency amounts or document layouts the source lacks; Nigerian institutions, policy statements and trade facts are dated and need primary-source correction work that keeps the source wording distinct from the corrected fact; do not merge Commerce into Economics, Financial Accounting or Bookkeeping.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): label block 320 text \"WEEK NINE\" (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); blocks 320-358; range sha256 fba13460a8ab4b6e6ae36a7958042bb5236b92d7095cd9694d0e8b594963bb73. Topic: Transportation. Importance of transport (323), forms of transportation (332), road transportation (341; advantages 342, disadvantages 346), transport by rail (350-355; block 354 describes rail as a federal monopoly of the Nigeria railway corporation). The document ends at block 355 with trailing blank blocks; air, water and pipeline forms are not given their own headings. The rail statement is a dated institutional fact. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "COM-VIS-T2-EQ-TOT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3 equation, block 165 (OMML fraction; block text sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855; sits between blocks 164 and 166)",
+      "objective": "Record a disposition for the terms-of-trade formula in Week 3: it is a Word equation object (price index of exports over price index of imports, times 100) whose text is lost from plain-text extraction (the block text is empty). Decide how a supplement restates it without altering the source, and note that block 166 explains what greater or smaller values mean.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T2-EQ-TOT.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): block 165 contains one m:oMath with an m:f fraction; its m:t pieces read 'price index of export', 'price index of imports ' and ' x 100'. The block's w:t text is empty, so the formula is invisible to extraction. No worked example, currency amount or calculation steps appear around it.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "COM-VIS-T2-TBL-DOMFOR",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 table, block 138 (4 rows x 2 columns; block text sha256 ee98d2d356b4f57ba1defb08df0859ac077ab0689ab3b24e71d5c0589f9bc004)",
+      "objective": "Record a disposition for the Domestic Trade vs Foreign Trade comparison table in Week 2: whether it survives plain-text extraction as readable paired rows (the extracted block text concatenates cells with no separators), and whether a supplement must restate it as paired rows. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/commerce.docx",
+          "member_sha256": "c18e26659058445f2341ca9365be0eaa71cceea88e388731fc98da531a2add86"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T2-TBL-DOMFOR.md"
+      ],
+      "depends_on": [
+        "COM-INV-T2",
+        "COM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (COM-INV-T2): block 138 is a w:tbl of 4 rows x 2 columns (header DOMESTIC TRADE | FOREIGN TRADE, then three numbered contrasts: boundary of a country vs other countries, same vs different currencies, same vs different weights and measures). Block 140 'SIMILARITIES' follows. Extractor output was not generated (importer deferred).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     }
   ],
   "review": {
@@ -1021,7 +1554,6 @@
     }
   },
   "next_runnable": [
-    "COM-INV-T2",
     "COM-INV-T3",
     "COM-TEST-PACKAGE",
     "COM-PRE-T1",
@@ -1038,6 +1570,20 @@
     "COM-MARK-T1-SCHEME-REVEXAM",
     "COM-VIS-T1-W05-DIAGRAM",
     "COM-PRES-T1-LAYOUT",
-    "COM-PRES-T1-SOURCE-WORDING"
+    "COM-PRES-T1-SOURCE-WORDING",
+    "COM-PRE-T2",
+    "COM-MARK-T2-W10",
+    "COM-MARK-T2-REVEXAM",
+    "COM-WK-T2-W01",
+    "COM-WK-T2-W02",
+    "COM-WK-T2-W03",
+    "COM-WK-T2-W04",
+    "COM-WK-T2-W05",
+    "COM-WK-T2-W06",
+    "COM-WK-T2-W07",
+    "COM-WK-T2-W08",
+    "COM-WK-T2-W09",
+    "COM-VIS-T2-EQ-TOT",
+    "COM-VIS-T2-TBL-DOMFOR"
   ]
 }
