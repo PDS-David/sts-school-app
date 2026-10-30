@@ -1005,6 +1005,21 @@ router.get('/assessments/:id/questions', async (req, res) => {
   return res.json({ assessment, questions: qRows });
 });
 
+// ── Essay review backlog (ASM-04) ─────────────────────────────────────────────
+// One definition of "still needs a human" for a submission: an essay answer is
+// unconfirmed while it is 'ai_graded' (Brainee marked it but its mark is hidden
+// from the student until reviewed — see GET /submissions/:id/answers) or
+// 'ai_unavailable' (Brainee failed). Only 'auto' and 'teacher_reviewed' are
+// final. `fully_graded` therefore means "no review outstanding", not "Brainee
+// has seen every answer". The SQL constant must list the same statuses.
+const PENDING_REVIEW_STATUSES = ['ai_graded', 'ai_unavailable'];
+const PENDING_REVIEW_SQL = "('ai_graded','ai_unavailable')";
+
+function reviewBacklog(gradingStatuses: string[]): { pending_review_count: number; fully_graded: boolean } {
+  const pending_review_count = gradingStatuses.filter(s => PENDING_REVIEW_STATUSES.includes(s)).length;
+  return { pending_review_count, fully_graded: pending_review_count === 0 };
+}
+
 // ── POST /assessments/:id/submit (student) ────────────────────────────────────
 router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (req, res) => {
   const user = req.user!;
@@ -1096,7 +1111,8 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   // A new submission has no previous answer rows to delete.
 
   let essayPointsTotal = 0;
-  let anyUngraded = false;
+  // grading_status of each essay row written below, fed to reviewBacklog().
+  const essayStatuses: string[] = [];
 
   // MCQ rows — final immediately, same as auto_score above.
   for (const q of qRows) {
@@ -1121,6 +1137,7 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
          VALUES($1,$2,'essay',$3,$4,0,'auto')`,
         [submission.id, e.question_id, e.answer_text, e.points],
       );
+      essayStatuses.push('auto');
       continue;
     }
 
@@ -1140,8 +1157,9 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
         [submission.id, e.question_id, e.answer_text, e.points, points, feedback],
       );
       essayPointsTotal += points;
+      essayStatuses.push('ai_graded');
     } catch {
-      anyUngraded = true;
+      essayStatuses.push('ai_unavailable');
       await query(
         `INSERT INTO submission_answers(submission_id,question_id,question_type,answer_text,max_points,grading_status)
          VALUES($1,$2,'essay',$3,$4,'ai_unavailable')`,
@@ -1153,7 +1171,7 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   const total_score = auto_score + essayPointsTotal;
   const { rows: updated } = await query(
     `UPDATE submissions SET total_score=$2, fully_graded=$3 WHERE id=$1 RETURNING *`,
-    [submission.id, total_score, !anyUngraded],
+    [submission.id, total_score, reviewBacklog(essayStatuses).fully_graded],
   );
 
   // If this assessment is a topic's auto-generated "standard assessment"
@@ -1197,12 +1215,16 @@ router.get('/assessments/:id/results', requirePerm('aiResults.read'), async (req
   const { rows } = await query(
     `SELECT sub.id,sub.answers,sub.auto_score,sub.total_score,sub.submitted_at,sub.fully_graded,
             st.full_name AS student_name,st.class_name,
-            (SELECT count(*) FROM submission_answers sa WHERE sa.submission_id=sub.id AND sa.grading_status='ai_unavailable') AS pending_essay_count
+            (SELECT count(*)::int FROM submission_answers sa WHERE sa.submission_id=sub.id AND sa.grading_status IN ${PENDING_REVIEW_SQL}) AS pending_review_count
      FROM submissions sub JOIN students st ON st.id=sub.student_id
      WHERE sub.assessment_id=$1 ORDER BY st.full_name`,
     [req.params.id],
   );
-  return res.json({ results: rows });
+  // `pending_essay_count` is the old name for this number. It used to count
+  // only 'ai_unavailable'; AssessmentResultsScreen still reads it, so it is
+  // kept for one release as an alias of pending_review_count (ASM-04).
+  // Remove once the mobile screen reads pending_review_count.
+  return res.json({ results: rows.map((r: any) => ({ ...r, pending_essay_count: r.pending_review_count })) });
 });
 
 // ── GET /assessments/:id/submissions (teacher/admin) ───────────────────────────
@@ -1220,9 +1242,10 @@ router.get('/assessments/:id/submissions', requirePerm('aiResults.read'), async 
 
   const { rows } = await query(
     `SELECT sub.id AS submission_id, sub.auto_score, sub.total_score, sub.fully_graded, sub.submitted_at,
-            st.full_name AS student_name, st.class_name
+            st.full_name AS student_name, st.class_name,
+            (SELECT count(*)::int FROM submission_answers sa WHERE sa.submission_id=sub.id AND sa.grading_status IN ${PENDING_REVIEW_SQL}) AS pending_review_count
      FROM submissions sub JOIN students st ON st.id=sub.student_id
-     WHERE sub.assessment_id=$1 ORDER BY sub.fully_graded ASC, st.full_name`,
+     WHERE sub.assessment_id=$1 ORDER BY pending_review_count DESC, st.full_name`,
     [req.params.id],
   );
   return res.json({ assessment_title: aRows[0].title, submissions: rows });
@@ -1321,7 +1344,7 @@ router.put('/submissions/:id/answers/:answerId/review', requirePerm('aiGrading.o
     [req.params.id],
   );
   const total = allAnswers.reduce((sum: number, a: any) => sum + (a.awarded_points != null ? Number(a.awarded_points) : 0), 0);
-  const fully_graded = !allAnswers.some((a: any) => a.grading_status === 'ai_unavailable');
+  const { fully_graded } = reviewBacklog(allAnswers.map((a: any) => a.grading_status));
 
   const { rows: updatedSub } = await query(
     `UPDATE submissions SET total_score=$2, fully_graded=$3 WHERE id=$1 RETURNING *`,
