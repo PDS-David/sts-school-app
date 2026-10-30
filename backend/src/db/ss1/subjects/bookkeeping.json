@@ -245,6 +245,200 @@
           "explanation": "The only balancing shown in the document is inside Week 1's single column cash and bank accounts, and those figures are themselves defective (BK-WK-T1-W01, BK-PRES-T1-WORKED), so they cannot serve as the model for a two column balance without correction. UNRESOLVED; folded into the bounded lesson task BK-LES-T1-W02-PREP."
         }
       ]
+    },
+    {
+      "id": "COV-BK-T1-W04-SCHEME-9",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 9: the principle of double entry - its meaning and identifying the account to be debited and credited",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 22-24 (sha256 1aed243f2989ac1e5bfc3e0d678ff629046bde1e1735729ed06797859d0bf4c2): block 22 '9.Principle of Double entry.' (sha256 daae5ba714732fab0d5e2b741b97356a0eb4d50bcf2b4f00e45e96f42363493c), block 23 '-Meaning of Double entry' (sha256 02eff34492fb25ae7e167e6169dbaa292f917eb1ef885bddc83456575dafd862), block 24 '-Identify the account to be credited and debited.' (sha256 671a9fe63d8c23d995219b4e10721fd83440b8f9dfa5ad1db0c6e36d186fb454); body blocks 158-219 (sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 158 'WEEK FOUR' label (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); body title block 159 'PRINCIPLE OF DOUBLE ENTRY'",
+          "explanation": "The label at 158 is the fourth week marker and the body title matches both scheme entries 9 and 10, which share identical title text. The body defines double entry at 160 and identifies accounts at 166-172 and in the answered table at 175, so entry 9 is taught in outline. No deliverable lesson exists and the defects below must be settled first; the scheme-to-week binding is by label order, as in Weeks 2 and 3."
+        },
+        {
+          "locator": "block 160 definition (sha256 ed8bf2b13857b1bea39adf8a04626c7aa0ac662d1ce79e6469bbb5f293bda451)",
+          "explanation": "The meaning sub-item is one sentence: double entry takes advantage of the two-fold aspect of every transaction, debiting the receiving account and crediting the giving account. It is the only definition in the week."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-SCHEME-10",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 10: posting of transactions from the cash book to the ledger and the rule of double entry",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 25-27 (sha256 a72a51e2a1824cc25595785aa53e43a9f61255a0b957ccb0cf20ffa74412f9f7): block 25 '10.Principle of Double entry.' (sha256 9e6539a5c7608b558940faf1886b35bfd5cd2126871a38941e5eb03b3d47bc83), block 26 '-Posting of transaction from cash book to ledger.' (sha256 fe7beb7ab9998e062690862c86c6b46385a30f14c763b9727f5db7d1c0feff6b), block 27 '-Rule of double entry.' (sha256 5c307887771076f6d7655f18f155210577e78db77fe0ea17c5bf7d34cc4e4ccf); body blocks 177-182 (sha256 180b0e8476564e21f1201906c2b7aeeb1955d11d933fbce9c5cc1d3f0e99ce2b) and blocks 183-205 (sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 177-182: two headings (177, 178), a definition of posting (179) and two rules (181-182)",
+          "explanation": "Posting and its two transfer rules are stated, but no ledger account is ever shown and no posting is worked, so the objective is taught in precept only. The rules are also stated without the contra exception that the cash book illustration at 186-205 requires."
+        },
+        {
+          "locator": "block 185 instruction (sha256 f085fb0bdd0394a71f4a4a7cef1e5410fa12bccc5342728c7402341ea67c803f): 'Enter the following in a two column cash book. Balance off at the end of the month and post to all necessary ledgers.'; blocks 186-205 (sha256 5696ac3563a15cb54e9075d7c98ba9cdcf6b50aecfb8d21c671f0907f3905f75)",
+          "explanation": "The illustration is a bare statement of twenty June transactions with no cash book, no ledger and no answer, so the rule of double entry is never applied where a learner could see it applied."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-MEANING",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The meaning of double entry book keeping: the two-fold aspect of every transaction, debiting the receiver and crediting the giver",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body block 160 (sha256 ed8bf2b13857b1bea39adf8a04626c7aa0ac662d1ce79e6469bbb5f293bda451); heading block 159 within blocks 159-164 (sha256 a3d34292a08749fd57984e48817c940b6b12a936c36d2f8645cdf36df0811c75)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 160: 'Definition: Double entry book keeping is the system of keeping account, which take advantages of the two-fold aspect of every transaction, whereby one account that receives is debited and another account, which gives, is credited.' (253 characters)",
+          "explanation": "The definition carries the core idea and names both sides. It is ungrammatical ('which take advantages'), says 'keeping account' rather than 'keeping accounts', and gives no example inside the definition. The wording is retained in BOOKKEEPING-T1-W04-SOURCE-DEFECTS and is not corrected here."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-RULES",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The three stated rules of double entry",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 161-164 (sha256 06c65a5bb561f891c21d2882840ab396091c2507390092a8d47a9318ebd36e67); intro block 161, rules a-c at 162-164",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 161: 'The following simple rules of double entry should be fully understood and memorized.'; block 162 a, block 163 b, block 164 c",
+          "explanation": "Rules a and b are one rule read from opposite ends (a credit entry needs a matching debit elsewhere and a debit entry needs a matching credit elsewhere); rule c restates both as 'all transactions must be recorded in two accounts'. The week therefore teaches two rules and repeats one, and nothing shows when the rule does not apply (contra transfers inside one cash book, or a compound entry)."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-TWO-ACCOUNTS",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Every transaction involves two accounts: the receiving account debited with the value received and the giving account credited with the value given",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 166-172 (sha256 faf1477c139e9072d715986c1f5e8494fa58d84cb4605a26560b60576c75a304); application heading 166, points 167-169, Dr/Cr statements 171-172",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 166-169: 'APPLICATION OF THE PRINCIPLES OF DOUBLE ENTRY', '1.Any transaction involves two accounts.', 'a.Receiving account or receiver.', 'b.Giving account or giver.'",
+          "explanation": "The receiver/giver framing is taught in four short lines, numbered only as 1, with no worked transaction. It is the only place in the week that explains why one account is debited and the other credited."
+        },
+        {
+          "locator": "blocks 171-172: 'a.Dr. Receiving accountWith value it receives' and 'b.Cr. Giving accountWith value it gives out.'",
+          "explanation": "The Dr/Cr statements lose the separator between the account name and its value, so as printed they read as single run-on strings. The rule itself is complete; the rendering defect is recorded."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-IDENTIFY",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Identifying the account to be debited and the account to be credited, applied to eleven transactions",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 174-175 (sha256 e796b64fdf747a4082f5c1409fbcfe661e859509b3c04b5887fae6b707f3b9db): instruction block 174 (sha256 ef7ba1dae1b8c67aa7deb11ad2fd2411128c2e061558bc0758da5438e8dff36d) and the eleven-row table block 175 (sha256 35d1163dd177a22a8987a9ff139ad68ad22462b43b152e07172182d5a834597a, 528 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 175 rows i-xi: start business with N800 cash (Cash/Capital); goods sold on credit to Mr. Ayo (Ayo/Sales); paid creditor Mr. Olu by cheque (Mr. Olu/Bank); goods bought by cheque (Purchases/Bank); sold goods for cash (Cash/Sales); goods returned to Mr. Kufor (Kufor/Returns Outwards); Biodun lent us N80 cash (Cash/Loan (Biodun)); took N20 of the cash and paid into the bank (Bank/Cash); bought a motor van by cheque (Motor van/Bank); goods returned to Olotu (Olotu/Returns Outwards); paid further cash into the business as capital (Cash/Capital)",
+          "explanation": "This is the only fully answered exercise in the week and its eleven answers are correct as double entries, so the identification skill is demonstrated. But the instruction at 174 is truncated ('Illustration: Complete the following table. Account to be.') and the answers are already printed, so the table cannot serve as practice; it is evidence, not an exercise. The contra row (viii) also depends on Week 3 entry 8."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-POSTING-MEANING",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The meaning of posting and the order of work: write up the cash book first and then transfer to the ledgers",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 177-182 (sha256 180b0e8476564e21f1201906c2b7aeeb1955d11d933fbce9c5cc1d3f0e99ce2b); definition block 179 (sha256 54afe5a0d19dc003a27841784c03f25bc5109bf4f6591d2c2d1b9ef613265018)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 179: 'Posting is the act of using one book as a means for entering the items to other accounts so as to complete double entry. When applying the principle of double entry, students are advised to write up the cash book first and then transfer to the ledgers.'",
+          "explanation": "The sequencing advice (cash book first, then ledgers) is the clearest teaching in the week. The definition never names the ledger, the account or the folio, so a learner is told what posting achieves but not what a posted entry looks like."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-POSTING-RULES",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The two rules for posting from the cash book to the ledger",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 180-182 (sha256 5f7d2a885735af5207ee564c4fe587726223ce17ea99b71ab339917baa9cdbaa): heading block 180, rule 1 block 181, rule 2 block 182",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 181: 'All items on the debit side of the cash book must be transferred to the credit side of individual ledgers.'; block 182: 'All items on the credit side of the cash book must be posted to the debit side of individual ledgers'",
+          "explanation": "The mirror rule is correct for the entries that are posted and is the whole of the posting instruction. It says 'all items', which would include the contra 'C' rows at 188, 190, 191, 193, 194 and 201 that are not posted at all because they stay inside the cash book; the exception is never mentioned. No ledger account is shown, so 'individual ledgers' is never illustrated."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-ILLUSTRATION",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The illustration: enter twenty June transactions in a two column cash book, balance it off and post to all necessary ledgers",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 183-205 (sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878): heading 184, instruction 185 (sha256 f085fb0bdd0394a71f4a4a7cef1e5410fa12bccc5342728c7402341ea67c803f), blocks 186-205 (sha256 5696ac3563a15cb54e9075d7c98ba9cdcf6b50aecfb8d21c671f0907f3905f75)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 186-205: twenty dated June transactions from 'Started business with cash N3,200' to 'The proprietor put further cash N1,320 into the business as capital.'",
+          "explanation": "The transactions are stated cleanly and in date order and would support a full worked solution. None is supplied: no cash book, no balance, no ledger, no answer. Two entries need expert reading before any solution is authored - June 12 (block 194, a withdrawal for personal use, which is drawings) and June 16 (block 196, a motor van at N20). Both are recorded in BOOKKEEPING-T1-W04-SOURCE-DEFECTS and the figure check is BOOKKEEPING-T1-W04-FIGURE-CHECKS."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-ASSIGN-1",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "ASSIGNMENT 1: write up the two column cash book from an external textbook and post it to the ledgers",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 207-217 (sha256 73781b75f66ee0a9b1ed2b4fdfe9d7ab5b4c395b5354de05921e4785b924df52); question block 208 (sha256 e55f8bbf829cebee0b50a2432f6b5783134f2acac94827be827b41a750602827)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 208: '1.Write up the two column cash book in simplified and amplified book-keeping and accounting page 56 revision question 5x.'; block 209: 'Note: Post the entries from the prepared two column cash to all relevant ledger account'",
+          "explanation": "The exercise is set in a book that is not supplied and cannot be reproduced. Its page and question number cannot be verified from this document, so the objective cannot be taught or answered from the source. Raised as BOOKKEEPING-T1-W04-EXTERNAL-TEXT for the owner."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-ASSIGN-2",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "ASSIGNMENT 2: write up the accounts for seven January transactions",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 210-217 (sha256 619f7deddd146921d3e221645641f01ab471a0d011f37b6ac169b519eac25a26); instruction block 210, transactions 211-217",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 211-217: Jan. 1 started business with N12,000 in the bank; Jan. 2 stationery on credit from Okete N200; Jan. 3 goods on credit from Ogundele N3,000; Jan. 6 rent in cash N30; Jan. 8 sold goods on credit to Ajala N500; Jan. 12 returned goods to Ogundele N150; Jan. 19 wages in cash N30.",
+          "explanation": "Seven transactions are set with no answer and no statement of the book or accounts required beyond 'write up the accounts'. The set is usable as practice once an expert settles the required form and the answers are authored; recorded in BOOKKEEPING-T1-W04-NO-SOLUTIONS."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-LEDGER-FORMAT",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The form of a ledger account needed in order to post: ruling, date, particulars, folio, debit and credit columns, and the balancing of an account",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 whole document: the heading block 178 'POSTING TO THE LEDGERS.' (sha256 ebe4f8b8e3cbcecf7b6a6750d2efab64a96d5fe04485c494de9d792cdb8b7d17) and blocks 177-182 (sha256 180b0e8476564e21f1201906c2b7aeeb1955d11d933fbce9c5cc1d3f0e99ce2b) are the only instructions to post; 'ledger' occurs only in blocks 26, 177, 178, 179, 181, 182, 185 and 209 and no ledger account appears anywhere in the document",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 177-182, 185 and 209 are the only mentions of ledgers; the document has no ledger heading, no specimen account and no ledger folio convention",
+          "explanation": "Posting is required by scheme block 26 and by the illustration at 185, but the account into which items must be posted is never shown. The 'C' folio convention taught in Week 3 (blocks 121-135) applies to the cash book only. A learner cannot post an item from this document alone. This is the largest content gap in the week and is raised as BOOKKEEPING-T1-W04-LEDGER-FORMAT-MISSING."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W04-BALANCE-OFF",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Balancing off the cash book at the end of the month and bringing the balance down",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 body block 185 (sha256 f085fb0bdd0394a71f4a4a7cef1e5410fa12bccc5342728c7402341ea67c803f) within blocks 183-205 (sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 185 requires 'Balance off at the end of the month' but no block in Week 4 explains balancing and the week contains no balanced cash book",
+          "explanation": "Week 2 recorded the same absence (BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT): no week of the 1st Term document shows a cash book being balanced or a balance brought down. Week 4 asks for the skill without teaching it, so the requirement is UNRESOLVED here too and is raised as BOOKKEEPING-T1-W04-BALANCING-UNTAUGHT."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -353,6 +547,79 @@
         "COV-BK-T1-W02-EXAMPLE",
         "BK-FACT-T1-W02-DEFECTS",
         "BK-LES-T1-W02-PREP"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W04-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Eleven defects are retained uncorrected in Week 4 (blocks 158-219): (1) block 174 truncates the illustration instruction at 'Illustration: Complete the following table. Account to be.', so the column instruction is cut and the table at 175 already prints the answers it asks for; (2) blocks 171-172 run the account name into its value with no separator ('Dr. Receiving accountWith value it receives'); (3) block 179 defines posting circularly as 'using one book as a means for entering the items to other accounts' and never names the ledger account, date, particulars or folio; (4) blocks 181-182 require 'all items' on each cash book side to be posted to the opposite side of the ledgers, contradicting the contra 'C' rows at 188, 190, 191, 193, 194 and 201 that are not posted at all; (5) block 194 (June 12) withdraws cash from the bank for personal use, which is drawings (Dr Drawings, Cr Bank) but is set among cash book transactions where it would be written as a bank-to-cash transfer; (6) block 196 (June 16) 'Bought motor van by cheque N20' prices a motor van at N20 against the N3,200 opening capital at 186 and the N1,020 loan at 203 in the same list; (7) block 203 reads 'Yinka lend us N1,020 cash' (tense and agreement); (8) block 208 sends ASSIGNMENT 1 to an external book ('simplified and amplified book-keeping and accounting page 56 revision question 5x') that is not supplied; (9) blocks 210-217 set seven January transactions without stating the book or form of accounts required; (10) scheme entries 9 and 10 carry the identical title 'Principle of Double entry.' at blocks 22 and 25, so only the sub-items distinguish them; (11) the document nowhere shows a ledger account, which the week's posting objective requires.",
+      "required_action": "Obtain one recorded subject-expert decision on each numbered defect and on the corrected wording the lessons may use; no correction is invented in this task and the lessons must not copy the uncorrected text.",
+      "affected_ids": [
+        "COV-BK-T1-W04-SCHEME-9",
+        "COV-BK-T1-W04-SCHEME-10",
+        "COV-BK-T1-W04-TWO-ACCOUNTS",
+        "COV-BK-T1-W04-IDENTIFY",
+        "COV-BK-T1-W04-POSTING-RULES",
+        "COV-BK-T1-W04-ILLUSTRATION",
+        "COV-BK-T1-W04-ASSIGN-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W04-NO-SOLUTIONS",
+      "kind": "CONTENT",
+      "detail": "Week 4 sets three exercises and supplies no solution to any of them: the identification table at 175 prints its own answers and its instruction is truncated; the twenty-transaction illustration at 186-205 has no cash book, balance or posted ledger; ASSIGNMENT 1 at 208 is external and ASSIGNMENT 2 at 211-217 has no answer. The only fully worked material in the week is the table at 175.",
+      "required_action": "Author complete answers with working and marks inside BK-LES-T1-W04-DOUBLE-ENTRY and BK-LES-T1-W04-POSTING after the defects and figures are settled; do not present the answered table as an exercise.",
+      "affected_ids": [
+        "COV-BK-T1-W04-IDENTIFY",
+        "COV-BK-T1-W04-ILLUSTRATION",
+        "COV-BK-T1-W04-ASSIGN-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W04-LEDGER-FORMAT-MISSING",
+      "kind": "CONTENT",
+      "detail": "The posting objective (scheme block 26) and the illustration (block 185) require entries to be posted to ledgers, but the whole document contains no ledger account: no heading, no ruling, no specimen, no folio column and no worked posting. The eight mentions of 'ledger' (blocks 26, 177, 178, 179, 181, 182, 185, 209) are all instructions to do it. The Week 3 'C' folio convention applies to the cash book, not to ledgers.",
+      "required_action": "Supply an author-created standard ledger account format, clearly labelled as author-supplied and not taken from the source, inside BK-LES-T1-W04-POSTING, and teach posting into it with folio references.",
+      "affected_ids": [
+        "COV-BK-T1-W04-SCHEME-10",
+        "COV-BK-T1-W04-POSTING-RULES",
+        "COV-BK-T1-W04-ILLUSTRATION",
+        "COV-BK-T1-W04-LEDGER-FORMAT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W04-BALANCING-UNTAUGHT",
+      "kind": "CONTENT",
+      "detail": "Block 185 requires the two column cash book to be balanced off at the end of the month, but Week 4 never explains balancing and contains no balanced cash book. Week 2 recorded the same absence for the double column cash book (BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT); this item carries that gap into the week that demands the skill.",
+      "required_action": "Teach the balancing of the cash book, the balance carried down and brought down and the treatment of both columns inside BK-LES-T1-W04-POSTING, and close this item together with BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT when the lessons exist.",
+      "affected_ids": [
+        "COV-BK-T1-W04-ILLUSTRATION",
+        "COV-BK-T1-W04-BALANCE-OFF"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W04-EXTERNAL-TEXT",
+      "kind": "OWNER_ACTION",
+      "detail": "ASSIGNMENT 1 (block 208) directs the learner to 'simplified and amplified book-keeping and accounting page 56 revision question 5x', a textbook that is not part of the supplied source. Its content cannot be read, verified or reproduced, and the citation alone gives no reuse permission.",
+      "required_action": "Owner supplies the page and question, an approved substitute exercise, or confirms that ASSIGNMENT 1 is to be replaced by original practice in the lesson. Do not reproduce the external text.",
+      "affected_ids": [
+        "COV-BK-T1-W04-ASSIGN-1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W04-FIGURE-CHECKS",
+      "kind": "VERIFICATION",
+      "detail": "Two figures and one classification in the June list need expert verification before a solution is authored: block 196 prices a motor van at N20, implausible against the N3,200 capital at 186 and the N1,020 loan at 203; block 194 records a personal withdrawal from the bank, which is drawings rather than a cash book transfer; and the list as a whole contains no arithmetic that can be checked because no cash book or balance is presented.",
+      "required_action": "A named subject expert confirms or corrects the N20 motor van figure, the drawings treatment at 194 and the classification of every transfer row as contra or posted, with the decision recorded against BOOKKEEPING-T1-W04-SOURCE-DEFECTS.",
+      "affected_ids": [
+        "COV-BK-T1-W04-ILLUSTRATION",
+        "BOOKKEEPING-T1-W04-SOURCE-DEFECTS"
       ],
       "blocks_delivery": true
     }
