@@ -23,7 +23,8 @@
     "LIT-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). LIT-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "LIT-INV-T1 inventoried the 1st Term Literature document: nine teaching blocks (Week 5 and Week 6 share one span), 13 class-work/assignment markers, no revision row, no set text and no visual group. Eleven items were appended (LIT-PRE-T1, LIT-MARK-T1 and LIT-WK-T1-W01..W10, with LIT-WK-T1-W05-W06 for the combined block); each depends on LIT-INV-T1 + LIT-SRC-T1 and stays PENDING. No package, coverage, rule, lesson or asset was written; the alias approvals are untouched.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "LIT-PRE-T1 (2026-10-30, master 4bdb581) indexed the 1st Term preamble: literature.json now has 13 source_rules (added SS1-SRC-470d43e54e5b-R002..R011, all SCHEME_ONLY) and 2 coverage entries (COV-LIT-T1-TITLE, COV-LIT-T1-SCHEME, both MARKER). Evidence: LIT-PRE-T1.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -35,8 +36,8 @@
     "FACTUAL_DEPENDENCY": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 25,
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 24,
     "BLOCKED": 1
   },
   "items": [
@@ -386,8 +387,8 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No preamble rule or coverage exists: literature.json has the three sources and their three alias rules only, with coverage[], lessons[], assets[] and delivery_corrections[] empty. Inventory evidence: line 1 `LIT-IN-ENGLISH`, line 3 `SCHEME OF WORK FOR LITERATURE-IN-ENGLISH, SS1 CLASS ` (equals header_text, occurs once), block 1-3 SHA-256 e4939af27366cab6bee96734ed9cee829995e2e39b9dd4f93fd3018cd6f250b7; scheme 7-23 SHA-256 9b3c5dbd7a64cc0808c0bfcce734295b3b07d7ba4edffc7d4c68210e67943b03; blanks 4-6 and 24-36. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented (2026-10-30, master 4bdb581). Evidence: docs/ss1/work/microtasks/literature/LIT-PRE-T1.md. Member SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea verified. literature.json: added SS1-SRC-470d43e54e5b-R002 (title) and R003..R011 (nine scheme rows), all SCHEME_ONLY with unique anchors, and coverage COV-LIT-T1-TITLE and COV-LIT-T1-SCHEME (MARKER). Scheme rows 7-23 block 9b3c5dbd7a64cc0808c0bfcce734295b3b07d7ba4edffc7d4c68210e67943b03 equals the queue value; row 5 points at LIT-WK-T1-W05-W06; no revision or examination row. Pre-row slice (lines 1-6, offset 72) SHA-256 fec129311ed1d9d38c17f41fcfb738eb0569a1ca3e25a4ee240dd173a27c3b68. The queue's earlier block 1-3 hash e4939af2... could not be reproduced (computed 7ed027225877f6e1512d601bb0ff744494ebe64b279ea8e3f1a6d18ea4a2006d). Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Preamble coverage exists and the scheme is accounted for with its hash and row map; every scheme row points at its week item and row 15 at LIT-WK-T1-W05-W06; divergences are recorded as findings, not rewritten; no lesson, invented heading or guessed week is written. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any set text: the document supplies none."
     },
     {
@@ -1181,6 +1182,6 @@
     }
   },
   "next_runnable": [
-    "LIT-PRE-T1"
+    "LIT-MARK-T1"
   ]
 }
