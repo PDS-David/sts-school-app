@@ -46,7 +46,13 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
     setLoading(true);
     const items: AppNotification[] = [];
     try {
-      if (user.role === 'student' || user.role === 'parent') {
+      // Student only (SEC-04). GET /learning/assessments requires
+      // `assessments.read`, which the parent role does not have (rbac.ts),
+      // so asking for it as a parent was a guaranteed 403 swallowed below.
+      // It also returns class-wide assessments, so parents must not get it
+      // until a ward-scoped endpoint exists — do not re-add 'parent' here
+      // or widen the permission as a shortcut.
+      if (user.role === 'student') {
         const { data } = await api.get('/learning/assessments');
         const open = (data.assessments ?? []).filter((a: any) => a.status === 'open');
         for (const a of open.slice(0, 5)) {
