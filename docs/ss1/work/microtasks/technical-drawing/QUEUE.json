@@ -22,7 +22,8 @@
     "Technical drawing content is largely figures: 94 drawings, 17 OLE objects and WMF figures are recorded, but their row locations are not. Visual items are inventory-first and append bounded asset tasks.",
     "Lesson-writing items are not created: no specific uncovered objective is established. The one suspected gap (enlargement in Weeks 6-7) is a verification item that appends a lesson task only if confirmed.",
     "Workers start from current master and change only their own entries; PENDING means unclaimed.",
-    "TD-SCH-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) indexed the 2nd Term scheme week 2 row. technical-drawing.json now has 4 source_rules (added SS1-SRC-af4868d2c026-R004, SCHEME_ONLY) and 3 coverage entries (added COV-TD-T2-SCH-W02, SUPPORTED). \"Escribed circle.\" (with the source full stop) is the only unique form of the scheme line; the teaching row 12 \"WEEK TWO\" covers it and the second objective (circles touching given points). Figures are routed to TD-VIS-W02. Note 1 is the queue-generation snapshot. Hashes and mapping are in docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md. Nothing was run; testing remains deferred."
+    "TD-SCH-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) indexed the 2nd Term scheme week 2 row. technical-drawing.json now has 4 source_rules (added SS1-SRC-af4868d2c026-R004, SCHEME_ONLY) and 3 coverage entries (added COV-TD-T2-SCH-W02, SUPPORTED). \"Escribed circle.\" (with the source full stop) is the only unique form of the scheme line; the teaching row 12 \"WEEK TWO\" covers it and the second objective (circles touching given points). Figures are routed to TD-VIS-W02. Note 1 is the queue-generation snapshot. Hashes and mapping are in docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md. Nothing was run; testing remains deferred.",
+    "TD-SCH-W03 (2026-10-30, master e60b1fe) recorded the 2nd Term week 3 scheme row (parsed row 2, 'WEEK 3:Polygons'): technical-drawing.json now has 5 source_rules (added SS1-SRC-af4868d2c026-R005, SCHEME_ONLY) and 4 coverage entries (added COV-TD-T2-SCH-W03, SUPPORTED, bound to teaching row 13). Evidence: TD-SCH-W03.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -37,9 +38,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 30,
-    "BLOCKED": 5
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "BLOCKED": 5,
+    "PENDING": 29
   },
   "total": 39,
   "items": [
@@ -272,8 +273,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (label 'WEEK 3', body sha256 889970c0e7531c64896709e01c2ea08cfd39b1061bb2d7d56a18fb9dee3723df, 15 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented (2026-10-30, master e60b1fe). Evidence: docs/ss1/work/microtasks/technical-drawing/TD-SCH-W03.md. Member SHA-256 69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d verified. Parsed row 2, line 15 'WEEK 3:Polygons' (15 characters, SHA-256 889970c0e7531c64896709e01c2ea08cfd39b1061bb2d7d56a18fb9dee3723df) classified by SS1-SRC-af4868d2c026-R005 (SCHEME_ONLY, unique anchor) and bound by coverage COV-TD-T2-SCH-W03 (SUPPORTED) to teaching row 13 WEEK THREE (lines 711-1472, body SHA-256 032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf). Figures routed to TD-VIS-W03; nothing invented. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1408,8 +1409,8 @@
     }
   ],
   "review": {
-    "date": "2026-10-29",
-    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
+    "date": "2026-10-30",
+    "reviewed_master_sha": "e60b1fe7ac28c2fd94841cd67a2f3622b42f09f9",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -1420,10 +1421,9 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W03"
+    "TD-SCH-W04"
   ],
   "runnable_now": [
-    "TD-SCH-W03",
     "TD-SCH-W04",
     "TD-SCH-W05",
     "TD-SCH-W06",
@@ -1434,6 +1434,7 @@
     "TD-SCH-W11",
     "TD-WK-W01",
     "TD-WK-W02",
+    "TD-WK-W03",
     "TD-VIS-INVENTORY"
   ]
 }
