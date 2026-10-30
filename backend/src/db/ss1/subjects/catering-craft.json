@@ -64,7 +64,30 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-CC-T2-W01-SCHEME-1",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "objective": "Scheme week 1: Food Commodities- Meat and poultry",
+      "objective_locator": "opening scheme list line 8 (SHA-256 f621f76fed7818e5cd4e7ab9a862a5de28a940315076c99e1798ef34d11d596f); body WEEK ONE lines 26-223 (SHA-256 364cab63782211430375a9bb7bc524e31cffb050f98dbae6fce6cb893b254c70)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() line 8; scheme list lines 7-19 (SHA-256 fdccb94d2a5100376ee767ad8b99fcee0211232818b0ff4b4380ff4d5b6fc097); WEEK ONE label line 26 and CONTENT lines 28-30",
+          "explanation": "Scheme row 1 reads 'Food Commodities- Meat and poultry'. Week One is the first labelled week, its topic line is 'TOPIC: FOOD COMMODITIES', and its own CONTENT list at lines 28-30 names only Meat and Poultry, so the row is mapped to this week by position and by that list. Classification of the opening block itself belongs to the 2nd Term opening/scheme item, not to this entry."
+        },
+        {
+          "locator": "source lines 26-223; section index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W01.md",
+          "explanation": "The body teaches the objective under the MEAT sections (lines 44-140, including the Animal Source / Name table at 57-66) and the POULTRY sections (lines 142-187), each followed by an EVALUATION block, and closes with a general evaluation, reading assignment, weekend assignment and theory (lines 201-223). PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, the evaluation, weekend-assignment and theory questions have no answers or marking in the source, and the factual passages recorded in the FACT queue items are unverified. Parsed-row identity (regex replication only, importer not run): title 'FOOD COMMODITIES', body SHA-256 364cab63782211430375a9bb7bc524e31cffb050f98dbae6fce6cb893b254c70, equal to the line-range hash, so it is not bound here as a lesson id."
+        },
+        {
+          "locator": "source lines 32-42 and 189-199",
+          "explanation": "The same body also carries a general food-commodities definition and list (32-42) and a GAME section (189-199) that scheme row 1 does not name; both are assessed in the general evaluation (202, 205). They are indexed with this entry and not given separate scheme coverage, and the teaching under them is retained."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "CATERING-CRAFT-ALIAS-APPROVAL",

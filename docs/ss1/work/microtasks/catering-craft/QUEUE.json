@@ -23,13 +23,14 @@
     "CC-SRC-T2 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). CC-SRC-T3 depends on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "CC-INV-T3 (2026-10-29) inventoried the 3rd Term original and appended the preamble, marker, week-indexing, visual, preservation and fact items. The document has ten teaching-week labels plus one combined WEEK ELEVEN AND TWELVE marker; WEEK TEN is title-only with no body. It has no Word tables and one inline JPEG (table-cloth laying, Week 8). Nothing was run. No lesson, coverage, rule, correction or asset was written. CC-FACT-CONTENT-APPROVAL stays BLOCKED pending CC-TEST-PACKAGE."
+    "CC-INV-T3 (2026-10-29) inventoried the 3rd Term original and appended the preamble, marker, week-indexing, visual, preservation and fact items. The document has ten teaching-week labels plus one combined WEEK ELEVEN AND TWELVE marker; WEEK TEN is title-only with no body. It has no Word tables and one inline JPEG (table-cloth laying, Week 8). Nothing was run. No lesson, coverage, rule, correction or asset was written. CC-FACT-CONTENT-APPROVAL stays BLOCKED pending CC-TEST-PACKAGE.",
+    "CC-IDX-T2-W01 (2026-10-30) indexed 2nd Term WEEK ONE (getBody lines 26-223): 29 sections with per-section hashes, four EVALUATION blocks plus GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY. One PARTIAL coverage entry (COV-CC-T2-W01-SCHEME-1) was added to the package; no lesson, rule, correction, asset or answer. One FACT follow-up item was appended for the game section. Nothing was run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 2,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 9,
+    "FACTUAL_DEPENDENCY": 10,
     "SOURCE_WEEK_INDEXING": 20,
     "SOURCE_SECTION_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 3,
@@ -37,7 +38,7 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
     "PENDING": 47,
     "BLOCKED": 1
   },
@@ -263,8 +264,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed from the verified member (member sha256 fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59, 207,872 bytes, read from the per-term archive 2nd_Term_SS1_-20230730T171417Z-001.zip; the composite archive was not supplied and its hash was not checked). word-extractor 1.0.4 getBody(): 67,884 characters, SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a; WEEK ONE lines 26-223 re-hashed to 364cab63782211430375a9bb7bc524e31cffb050f98dbae6fce6cb893b254c70 (matches the locator and the replicated parsed-row body hash). 29 sections (including the label and topic lines), four EVALUATION blocks, GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT (5 questions, no answers) and THEORY (2 questions) listed with per-section SHA-256 in the record. One coverage entry added to backend/src/db/ss1/subjects/catering-craft.json: COV-CC-T2-W01-SCHEME-1 (scheme row 1, status PARTIAL, no lesson ids, so it still blocks delivery). One follow-up FACT item appended (CC-FACT-T2-GAME-CLASSIFICATION-STORAGE). No lesson, rule, correction, asset or answer written; package stays PENDING. Record: docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W01.md. Implemented, not approved or verified; nothing was run (tests, typechecks, importer, DB, device).",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 364cab63782211430375a9bb7bc524e31cffb050f98dbae6fce6cb893b254c70; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1241,6 +1242,41 @@
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
+      "id": "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody lines 189-199 (WEEK ONE GAME section) and line 63 (table row 'Bush animals like rabbit, antelope, deer / Game')",
+      "objective": "Verify later, as findings and source locators only: the three-way classification of game with its examples (line 192 lists wild duck, eagles and ostrich among feathered game, 193 lists rabbit, antelope and grass cutter, 194 lists alligator), the statement that game is less fatty than poultry or meat and more easily digested except water fowl (line 196), and the statement that hanging is essential for all game (line 199). Do not correct the source and do not supply replacement teaching in this item. Later correction work needs authoritative primary sources (for example national food-safety and wildlife regulators, WHO/FAO/Codex and national food-composition documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-IDX-T2-W01 (see CC-IDX-T2-W01.md). Source wording on these lines is retained in the package source; nothing was changed.",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
       "id": "CC-IDX-T3-W01",
       "kind": "SOURCE_WEEK_INDEXING",
       "source_id": "SS1-SRC-d068ede78d16",
@@ -1903,7 +1939,6 @@
   },
   "next_runnable": [
     "CC-TEST-PACKAGE",
-    "CC-IDX-T2-W01",
     "CC-IDX-T2-W02",
     "CC-IDX-T2-W03",
     "CC-IDX-T2-W04",
