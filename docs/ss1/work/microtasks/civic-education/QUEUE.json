@@ -23,22 +23,23 @@
     "CIV-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). CIV-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "CIV-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, table, preservation and factual items. The scheme is a 13x2 Word table with 11 teaching rows and a \"12 – 13\" revision/examination row, but the body has only eight week markers: community service (row 4), HIV/AIDS (rows 5-6) and nationalism (row 11) have no teaching, and body weeks 5-8 map to scheme rows 7-10. There are no images or other media. Nothing was run. No lesson, coverage, rule, correction or asset was written. CIV-FACT-CONTENT-APPROVAL stays BLOCKED pending CIV-INV-T2/T3 and CIV-TEST-PACKAGE."
+    "CIV-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, table, preservation and factual items. The scheme is a 13x2 Word table with 11 teaching rows and a \"12 – 13\" revision/examination row, but the body has only eight week markers: community service (row 4), HIV/AIDS (rows 5-6) and nationalism (row 11) have no teaching, and body weeks 5-8 map to scheme rows 7-10. There are no images or other media. Nothing was run. No lesson, coverage, rule, correction or asset was written. CIV-FACT-CONTENT-APPROVAL stays BLOCKED pending CIV-INV-T2/T3 and CIV-TEST-PACKAGE.",
+    "CIV-INV-T2 (2026-10-30) inventoried the 2nd Term original (CIVIC.docx). Ten week bodies (WEEK ONE is a review instruction only; WEEK THREE repeats the WEEK TWO title; WEEK TEN holds two unheaded blocks), a paragraph scheme with a \"12 & 13 Test & Examination\" marker and no paper, no tables or media. Workbook exercises and the \"Akwa Past Question Papers Nos 1-100\" it refers to are not supplied. Source statements naming parties and contested evaluations are flagged for neutral handling. Nothing was run. No lesson, coverage, rule, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 4,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_WEEK_INDEXING": 8,
-    "SOURCE_MARKER_DISPOSITION": 2,
+    "FACTUAL_DEPENDENCY": 7,
+    "SOURCE_WEEK_INDEXING": 18,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_MARKER_DISPOSITION": 4,
     "VISUAL_DISPOSITION": 1,
-    "SOURCE_PRESERVATION": 1
+    "SOURCE_PRESERVATION": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 19,
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 35,
     "BLOCKED": 1
   },
   "items": [
@@ -210,8 +211,8 @@
       "depends_on": [
         "CIV-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory complete: member SHA-256 1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef verified from the supplied 2nd Term SS1 zip; member 21,865 bytes; archive_member kept verbatim. Ten week markers WEEK ONE-WEEK TEN at mammoth lines 75, 85, 121, 157, 187, 227, 251, 311, 369, 403 (WEEK THREE has a trailing space; WEEK SIX has no TOPIC: line); opening and scheme lines 1-74 (paragraph scheme, no table); \"12 & 13 Test & Examination\" is a scheme marker with no body; no tables, no media. Evidence file: docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md. Nothing was run; no lesson, coverage, rule, correction or asset was written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -860,6 +861,609 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CIV-INV-T1 (see CIV-INV-T1.md).",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE / TOPIC: Reviewed of last Term’s work (77) / mammoth lines 75-84 / sha256 315922ebd527d378d4f67b0e0d40feaf0733af3824362ef52f1753085885c3ab",
+      "objective": "Index WEEK ONE (scheme row \"Revision of Last Term’s Work\"): the title (77) and one instruction line (81, \"Teacher Review last Term work with the students and corrected them where necessary.\"). It carries no student-facing teaching content and no evaluation block. Classify as a review/instruction week, not a lesson with new objectives; never invent the last-term content it refers to. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO / TOPIC:  VOTER EDUCATION (87) / mammoth lines 85-120 / sha256 b050de97dd85a021799f2b6f025a39e43cc5680e8d8faae24261537f1be33de1",
+      "objective": "Index WEEK TWO (scheme rows on voter education and the meaning of voting): CONTENT (89) with the definition of voter’s education (91), Voting (95-105: meaning, polling station, ballot paper and thumbprint), VOTER’S REGISTRATION (109-113: official record of qualified voters and the display of the voters list) and Evaluation (117-119, \"See your work book for exercise.\"; the workbook is not supplied). Record objective candidates. Electoral procedure statements are verified later in CIV-FACT-T2-ELECTORAL-LAW. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE / TOPIC: VOTER EDUCATION (123; same title as WEEK TWO, label has a trailing space) / mammoth lines 121-156 / sha256 0acd4692fd6b5d442885f5c30ddd7987aceba51cb5034f81b1cfd5ab176ea9b8",
+      "objective": "Index WEEK THREE (scheme rows \"Process of voting\" and \"Importance of voting\"): Process of Voting (125-135: registration, voter’s card, accreditation, ballot paper), IMPORTANCE OF VOTING (139-149, five numbered points whose list numbers are not in the raw text) and Evaluation (151-153, \"List the importance of voting or see your work book for exercise.\"). The title repeats WEEK TWO’s title: record the duplicate-title hazard for the parsed rows; do not merge the weeks. Line 145 is garbled (\"either to vote against during election period\"); preserve verbatim. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR / TOPIC: MEANING OF ELECTION (159) / mammoth lines 157-186 / sha256 f364ed3d65896dd38561bc120e652e2cd8cb2ec579d72a62ab3d1909f5d264b8",
+      "objective": "Index WEEK FOUR (scheme row \"Election: Meaning, Importance of election\"): the definition and concept of election (161-163), IMPORTANCE OF ELECTION (167-177: five named points, choice of leaders, promotes democracy, peaceful change of government, checks excesses of leaders, political education) and Evaluation (181-183, \"See your work book for exercise.\"). Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE / TOPIC: ELECTORAL BODIES IN NIGERIA (189) / mammoth lines 187-226 / sha256 5a3221d85029c7732764f52b711c5109719a865a9924545949e2677ed583bd85",
+      "objective": "Index WEEK FIVE (scheme row \"Electoral Bodies in Nigeria: INEC, SIEC; Composition and roles\"): INEC (191-193), Functions of Electoral Commission (195-205), State Independent Electoral Commission (209-217: \"has power to\" at 211 is an unfinished sentence; SIEC \"has its own chairman and seven other persons that are normally appointed by INEC\" at 217) and Evaluation (221-223). INEC composition, which the scheme promises, has no body text. Institutional claims are verified later in CIV-FACT-T2-ELECTORAL-LAW; party names at 199 go to CIV-FACT-T2-NEUTRALITY. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX / FREE AND FAIR ELECTION (229; no TOPIC: prefix) / mammoth lines 227-250 / sha256 7912400a484f58bf1e0e1c09c744edd4e4bca25ca6efa34317fb5f793fb99233",
+      "objective": "Index WEEK SIX (scheme row \"Free & Fair Elections: Meaning, Importance\"): heading (229, no TOPIC: line; the importer falls back to the first credible line), reasons free and fair elections matter (231-241) and Evaluation (245-247). The scheme’s \"Meaning\" has no separate definition line; record the gap, do not fill it. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SEVEN / TOPIC: Electoral Malpractice (253) / mammoth lines 251-310 / sha256 64c8d01ca1f8b5ed666a16d5b1568f3a845bfd0ead1f661a52b97bdad9dd4549",
+      "objective": "Index WEEK SEVEN (scheme row \"Electoral malpractice: Meaning & Forms, Causes, Ways of preventing\"): Sub Topic Forms of Electoral Malpractices in Nigeria (255-273, eight forms), Causes (277-291), WAYS OF PREVENTING ELECTORAL MALPRACTICES IN NIGERIA (295-305) and Evaluation (307-309). Line 287 attributes electoral malpractice to a named political party and praises a named leader and party: record it for CIV-FACT-T2-NEUTRALITY and do not carry it into a lesson as fact. The scheme’s \"Meaning\" of malpractice has no definition line. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK EIGHT / TOPIC: Planning for Results (313) / mammoth lines 311-368 / sha256 7bf55d4220c4968441f547d0aa757b09b918371b37ce9dce44a0c9c42413a2a0",
+      "objective": "Index WEEK EIGHT (scheme row \"Planning for results\"): NEED FOR PLANNING (315-325), BENEFITS OF PLANNING (329-339), CONSEQUENCIS OF NOT PLANNING (343-353, source spelling) and MEANING OF PLANNING (357-359, placed after the other sections) and Evaluation (363-365). Record that the definition comes last and that this week is economic and development planning, not electoral material; no factual claim is verified here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK NINE / TOPIC: The Current Nigerian constitution. (371) / mammoth lines 369-402 / sha256 57ea3043b537c32e20af05c6a84df73e2dfbe8d6f0b98f1cbafdc358dd9b11d1",
+      "objective": "Index WEEK NINE (scheme row \"The current Nigerian constitution: Meaning, Sources of Nigerian constitution\"): Meaning (373-375), SOURCES OF THE CONSTITUTION (379-395: history of the people, acts of parliaments, customs and traditions, the United States constitutions as a model of the 1979 constitution, and books by named Nigerian leaders; line 395 has spelling and name errors to keep verbatim) and the evaluation line (399, \"See Akwa Past Questions papers for more practice\"; the past-question papers are not supplied). Claims about which constitution is current go to CIV-FACT-T2-CONSTITUTION. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / TOPIC: FEATURES OF THE 1999 CONSTITUTION (405) / mammoth lines 403-499 / sha256 3d358321e2e3fe635260a7185f3d8f37458ac74d52cd3cfc7fb8213aa5f1f936",
+      "objective": "Index WEEK TEN (scheme row \"The current Nigerian Constitution: Features, Functions\"): SUB TOPIC Functions of the 1999 constitution (407) with features headed Preamble, political structure, political institutions, party system, fundamental human rights and tenure of office (409-431); FUNCTIONS (435-445); two UNHEADED blocks, one on the presidential system, state executive and judicial powers and the National Assembly (449-457) and one list of advantages with a truncated first line \"The long list of local Government functions are state there\" (461-471), whose headings are missing; DEMERITS OF THE 1999 CONSTITUTION (475-485) and Evaluation (489-495: \"Treat Akwa Past Question Papers\", \"Nos 1 -100\", \"Best wishes.\"). Record the unheaded blocks as unlabelled sections, do not invent headings. Note line 431 cites the 1979 constitution under a 1999 heading. Constitutional claims and the contested evaluative demerits go to CIV-FACT-T2-CONSTITUTION and CIV-FACT-T2-NEUTRALITY. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T2-W10.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "The week's sections and assessment blocks are listed with line locators matching the stated sha256; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
+    },
+    {
+      "id": "CIV-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "Opening and scheme of work / mammoth lines 1-74 / sha256 7863ba61d068760f3c4da248c4a6105faec4c9d1a49bceef0fabb6ad0cc29d55 (scheme 7-73 sha256 0919ec7d70498d96522d01ae41e720c39dc4aa0523e2f6c094206b193816eb53)",
+      "objective": "Index the opening: header lines \"TERM:<tab>2ND TERM\" (1), \"SUBJECT:<tab>CIVIC EDUCATION\" (3), \"SS 1\" (5), \"SCHEME OF WORK\" (7), column header \"WEEKS <tabs> TOPICS\" (9) and the scheme (11-73). The scheme is ordinary paragraphs (not a Word table; ten of its paragraphs carry Word auto-numbering whose numbers are not in the text), with nine topic groups and sub-topics and a final row \"12 & 13 <tabs> Test & Examination\" (73). The WEEKS column carries no week numbers except that row. The scheme’s \"The current Nigerian\" / \"Constitution\" topic is split across two lines (65-67). Classify as scheme, not lesson; there is no teaching text before WEEK ONE. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-PRE-T2.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "Opening classified with exact locators; scheme topics recorded verbatim; nothing marked approved."
+    },
+    {
+      "id": "CIV-MARK-T2-SCHEME-GAPS",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "Scheme rows (11-71) against WEEK ONE-TEN bodies / no WEEK ELEVEN-THIRTEEN marker",
+      "objective": "Disposition the scheme-versus-body relationships without altering source text: the scheme has no numbered weeks, ten body weeks exist, WEEK ONE is a review instruction only, voter education is spread over WEEK TWO and WEEK THREE (the same title), WEEK EIGHT planning is a separate topic, and the scheme’s promised sub-topics without body text are INEC composition (35), the meaning of free and fair elections (39), and the meaning of electoral malpractice (45). Weeks 11-13 have no body. Record each gap; do not author the missing content from the scheme labels. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-MARK-T2-SCHEME-GAPS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "Gaps recorded with locators; nothing invented; nothing marked approved."
+    },
+    {
+      "id": "CIV-MARK-T2-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "Scheme row \"12 & 13 Test & Examination\" (73) / closing Evaluation block (489-495) / no examination paper",
+      "objective": "Disposition the test/examination markers: the scheme row \"12 & 13 <tabs> Test & Examination\" (73) exists only as a scheme marker, and the final Evaluation (489-495) tells the teacher to \"Treat Akwa Past Question Papers\" for \"Nos 1 -100\" and ends \"Best wishes.\" State plainly that the document contains no test, examination paper, past-question text or marking scheme, that the referenced Akwa papers are not supplied, and that nothing may be invented. Classify as markers, not lessons; they must not create a WEEK TWELVE or THIRTEEN body. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-MARK-T2-REVEXAM.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "Markers classified with exact locators and an explicit statement that no paper or marking scheme exists in the source; nothing invented."
+    },
+    {
+      "id": "CIV-PRES-T2-LISTS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO-TEN / Word auto-numbered list items (76 body paragraphs and 10 scheme paragraphs carry w:numPr; numbers absent from raw text)",
+      "objective": "Preserve list structure that the raw text flattens: 86 paragraphs carry Word auto-numbering (w:numPr), so list numbers or bullets such as the five points of IMPORTANCE OF VOTING (139-149), the eight forms of malpractice (259-273) and the demerits (477-485) are not in the extracted text. Recover each list’s numbering style from word/numbering.xml and record item order and level without changing wording. Do not renumber, merge or complete lists, and keep truncated items (for example 211, 279, 461) verbatim. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-PRES-T2-LISTS.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2",
+        "CIV-WK-T2-W03",
+        "CIV-WK-T2-W07",
+        "CIV-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "List units recorded with locators and numbering evidence; nothing corrected; nothing marked approved."
+    },
+    {
+      "id": "CIV-FACT-T2-ELECTORAL-LAW",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TWO (95-113), WEEK THREE (125-135), WEEK FIVE (191-217)",
+      "objective": "Verify later, against the Constitution and the Electoral Act in force with effective and reference dates, the electoral statements in WEEK TWO, THREE and FIVE: voting and registration procedure (voter’s card, accreditation, thumbprint, public display of the voters list, 95-135), INEC as a permanent constitutional body organising federal, state and local government council elections (193), INEC functions including control of political parties and delimitation (199-205), and the SIEC statements (211-217), including that the SIEC chairman and seven others are \"normally appointed by INEC\" (217) and that the SIEC organises local government elections (213). Keep the source wording distinct from any corrected fact; no correction is made here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T2-ELECTORAL-LAW.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2",
+        "CIV-WK-T2-W02",
+        "CIV-WK-T2-W03",
+        "CIV-WK-T2-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-FACT-T2-CONSTITUTION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK NINE (375-395) and WEEK TEN (409-485)",
+      "objective": "Verify later, against the Constitution as amended with effective dates, the constitutional statements in WEEK NINE and TEN: which constitution is \"current\" (371, 405), the 1979 constitution tenure of four years cited under the 1999 heading (431), the amendment procedure \"2/3 majority of both houses\" (441), the presidential and state executive powers and court structure (449-453), the National Assembly size and constituency counts (457: 109 senators, 360 representatives), local government functions (461), and the unitary/federal and separation-of-powers statements (415, 449). Record each as source wording with its reference date question; do not correct here. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T2-CONSTITUTION.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2",
+        "CIV-WK-T2-W09",
+        "CIV-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CIV-FACT-T2-NEUTRALITY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-21ddf6abc2dc",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE (199), WEEK SEVEN (279-291), WEEK TEN (477-485)",
+      "objective": "Flag, for neutral handling in any later lesson, source statements that name parties or leaders or state contested evaluations as fact: party names as examples (199), the cause statement naming a party and praising a leader and a party’s 2015 election result (287, with 279-283 on ethnic hegemony), and the demerits that the constitution was imposed by a military head of state, was drafted to favour named military rulers, vested too much power in the president and centralised the judiciary against federalism (477-485). Teaching must stay neutral on contested political questions: preserve the wording as source text, label it as the source’s view, and do not adopt it as lesson fact or add counter-claims here. Primary documents with dates are needed for any factual portion. Locator: mammoth 1.12.2 extractRawText of the verified member; text split on \"\\n\"; line numbers 1-based; a range ends at the last line before the next week marker; sha256 over the UTF-8 lines joined with \"\\n\". Whole raw text SHA-256 2fa8d04c6b9f241c5e2ef2a51cd6f6f9a2d925d222579eb4abb3f2c037589c26 (15,331 characters, 499 lines; member 21,865 bytes). Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-INV-T2.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CIVIC.docx",
+          "member_sha256": "1e2505c4b9e197087a55e0532c3a6efc7c08765bf1d86697c6720d253d22cdef"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-FACT-T2-NEUTRALITY.md"
+      ],
+      "depends_on": [
+        "CIV-INV-T2",
+        "CIV-SRC-T2",
+        "CIV-WK-T2-W05",
+        "CIV-WK-T2-W07",
+        "CIV-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
+      "completion_condition": "Statements recorded with locators and a neutrality disposition; nothing rewritten; nothing marked approved."
     }
   ],
   "review": {
@@ -875,7 +1479,6 @@
     }
   },
   "next_runnable": [
-    "CIV-INV-T2",
     "CIV-INV-T3",
     "CIV-TEST-PACKAGE",
     "CIV-WK-T1-W01",
@@ -893,6 +1496,23 @@
     "CIV-PRES-T1-DEFENCE-ADVICE",
     "CIV-FACT-T1-CITIZENSHIP-LAW",
     "CIV-FACT-T1-GOVERNMENT-STRUCTURE",
-    "CIV-FACT-T1-SELF-DEFENCE-LAW"
+    "CIV-FACT-T1-SELF-DEFENCE-LAW",
+    "CIV-WK-T2-W01",
+    "CIV-WK-T2-W02",
+    "CIV-WK-T2-W03",
+    "CIV-WK-T2-W04",
+    "CIV-WK-T2-W05",
+    "CIV-WK-T2-W06",
+    "CIV-WK-T2-W07",
+    "CIV-WK-T2-W08",
+    "CIV-WK-T2-W09",
+    "CIV-WK-T2-W10",
+    "CIV-PRE-T2",
+    "CIV-MARK-T2-SCHEME-GAPS",
+    "CIV-MARK-T2-REVEXAM",
+    "CIV-PRES-T2-LISTS",
+    "CIV-FACT-T2-ELECTORAL-LAW",
+    "CIV-FACT-T2-CONSTITUTION",
+    "CIV-FACT-T2-NEUTRALITY"
   ]
 }
