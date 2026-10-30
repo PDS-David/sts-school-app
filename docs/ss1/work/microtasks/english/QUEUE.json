@@ -2655,7 +2655,7 @@
         "ENG-LES-READING-T3"
       ],
       "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-READING-T1 and -T3 appear in no coverage lesson_ids and no delivery_corrections; only READING-T2 is bound (ENG-COR-011, ENG-COR-012). Their bodies are identical to READING-T2 (same body_sha256).",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-READING-T1 and -T3 appear in no coverage lesson_ids and no delivery_corrections; only READING-T2 is bound (ENG-COR-011, ENG-COR-012). Their bodies are identical to READING-T2 (same body_sha256). UNR-01 (2026-10-30, master 8ffcd12): SUP-SS1-ENGLISH-READING-T1 was reviewed against the ten UNRESOLVED 1st Term rows and teaches none of their objectives (each names a specific textbook page or exercise); not bound, no status change. SUP-SS1-ENGLISH-READING-T3 cannot bind to those 1st Term rows. Both stay unbound; remaining blocker is an owner decision. Evidence: docs/ss1/work/microtasks/english/UNR-01.md.",
       "completion_condition": "Each lesson is either bound by exact coverage/correction entries to indexed rows, or the owner decides it is unneeded; no binding is invented.",
       "required_attachments": []
     },
@@ -3275,7 +3275,7 @@
         "ENG-WK-T1-W02"
       ],
       "status": "PENDING",
-      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W02-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-004, ENGLISH-BODY-007, ENGLISH-T1-W02-CM01, CM03, LB02, LB03, LB05. Needs owner-supplied material or an owner decision.",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W02-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-004, ENGLISH-BODY-007, ENGLISH-T1-W02-CM01, CM03, LB02, LB03, LB05. Needs owner-supplied material or an owner decision. UNR-01 (2026-10-30, master 8ffcd12): CM01, CM03, LB02, LB03 and LB05 reviewed against SUP-SS1-ENGLISH-READING-T1; none bound, all stay UNRESOLVED. Still needs owner-supplied material or owner acceptance of a labelled equivalent. Evidence: UNR-01.md.",
       "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
       "required_attachments": []
     },
@@ -3294,7 +3294,7 @@
         "ENG-WK-T1-W03"
       ],
       "status": "PENDING",
-      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W03-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-008, ENGLISH-BODY-010, ENGLISH-BODY-011, ENGLISH-T1-W03-ES05, MN04, EN04, EN05, EN07. Needs owner-supplied material or an owner decision.",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W03-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-008, ENGLISH-BODY-010, ENGLISH-BODY-011, ENGLISH-T1-W03-ES05, MN04, EN04, EN05, EN07. Needs owner-supplied material or an owner decision. UNR-01 (2026-10-30, master 8ffcd12): ES05, MN04, EN04, EN05 and EN07 reviewed against SUP-SS1-ENGLISH-READING-T1; none bound, all stay UNRESOLVED. Still needs owner-supplied material or owner acceptance of a labelled equivalent. Evidence: UNR-01.md.",
       "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
       "required_attachments": []
     },
