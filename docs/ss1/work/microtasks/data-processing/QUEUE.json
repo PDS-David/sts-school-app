@@ -23,23 +23,24 @@
     "DP-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). DP-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "DP-INV-T1 appended the 1st Term inventory items (21) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 21 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (DP-INV-T1.md)."
+    "DP-INV-T1 appended the 1st Term inventory items (21) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 21 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (DP-INV-T1.md).",
+    "DP-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, week-indexing and visual items; the 3rd Term inventory remains unread. The document has no Week 1, scheme or revision/examination marker, recorded as source gaps. No lesson, coverage entry, rule, correction or asset was written."
   ],
   "counts": {
     "FACTUAL_DEPENDENCY": 4,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "SOURCE_PREAMBLE_INDEXING": 1,
+    "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_PRESERVATION": 2,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 10,
+    "SOURCE_WEEK_INDEXING": 18,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 4
+    "VISUAL_DISPOSITION": 11
   },
   "status_counts": {
     "BLOCKED": 1,
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 24
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 39
   },
   "items": [
     {
@@ -210,8 +211,8 @@
       "depends_on": [
         "DP-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-10-30 from the 2nd Term original (SHA-256 83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4 verified before conversion against the copy inside the supplied '2nd Term SS1' archive; the composite archive was not supplied, so its hash was not checked). Inventory: eight labelled week blocks (WEEK 2, 3-4, 5, 6, 7, 8, 9, 10; blocks 2-261); no Week 1, scheme, references, revision or examination; one table (block 193); ten embedded images (eight picture blocks plus a layer diagram and an icon); no equations or OLE objects; no credentials or executable content. Appended 16 PENDING items: DP-PRE-T2, DP-WK-T2-W02, DP-WK-T2-W03-04, DP-WK-T2-W05, DP-WK-T2-W06, DP-WK-T2-W07, DP-WK-T2-W08, DP-WK-T2-W09, DP-WK-T2-W10, DP-VIS-T2-FIG-CHART, DP-VIS-T2-FIG-RADIO, DP-VIS-T2-FIG-TELEPHONE, DP-VIS-T2-FIG-TELEVISION, DP-VIS-T2-FIG-WIRELESS, DP-VIS-T2-FIG-SATELLITE, DP-VIS-T2-TBL-OSLAYERS. Evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T2.md. Inventory only; no lesson, coverage, rule, correction or asset written; not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1083,6 +1084,614 @@
       "status": "PENDING",
       "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Factual flags; W7, W8 1397, W9 1535-1562).",
       "completion_condition": "Each dated digitalization, language and ICT-impact claim has a dated authoritative citation (or an explicit unresolved flag) kept distinct from the source's wording, with neutral teaching and no invented verification. Testing deferred by owner."
+    },
+    {
+      "id": "DP-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "blocks 0-1 (range sha256 906999658bdbe8a8e746d16114778bde078577dca4a31e49d8b36a83eb9accd9)",
+      "objective": "Inventory the only text before the first week label (blocks 0-1): the title line 'Data processing' (block 0) and a blank block. Record that the document has no scheme table, references list, SUBJECT/CLASS line or term title, that no 'WEEK 1' exists (the first label is 'WEEK 2' in block 2), and that Weeks 11-12 are absent. Do not infer a term title or week numbers from the filename.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-PRE-T2.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): blocks 0-1, range sha256 906999658bdbe8a8e746d16114778bde078577dca4a31e49d8b36a83eb9accd9. Block 0 is the title 'Data processing' (padded with spaces) and block 1 is empty. The first teaching label is block 2 ('WEEK 2TOPIC: information processing'), so Week 1 is either missing from the source or was never written; nothing in the document explains the gap. Term identity rests on the registered source header, not on this document's text. Footer/page text, if any, is not teaching. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Blocks 0-1 classified; the missing Week 1, scheme and Weeks 11-12 are recorded as source gaps (open items) and nothing is invented."
+    },
+    {
+      "id": "DP-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 (blocks 2-30; range sha256 b91c8db71c5bb8b4dbba677f00caf3b418e58f5f62253ac7c3fb57a610b9cdf6)",
+      "objective": "Index 2nd Term 'WEEK 2TOPIC: information processing' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 2-30. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 2 text \"WEEK 2TOPIC: information processing  \" (sha256 34318dd8f35b4dd372586bf9ca06f0dd9f71aad0d93d08e1b41ec0121664a070); blocks 2-30; range sha256 b91c8db71c5bb8b4dbba677f00caf3b418e58f5f62253ac7c3fb57a610b9cdf6. Topic: Information Processing. Label and topic share one paragraph (block 2: 'WEEK 2TOPIC: information processing'); there is no Week 1 label before it. Information processing (4), collation (10), information organization (15), analysis (19), interpretation (24). Blocks 26-30 are a list of survey-style 'Items' (for example 'Our employees…' with coefficients such as (0.46), (0.65) at blocks 28-29) that read as pasted organisational-research text and need a relevance and provenance check. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W03-04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 (blocks 31-97; range sha256 bc92f6a3ac9e32662be1547438da8dccd738a76fd60e99ffbbad3091dc75b823)",
+      "objective": "Index 2nd Term 'WEEK 3-4' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 31-97. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W03-04.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 31 text \"WEEK 3-4\" (sha256 669f4bd65b43eba80377394dc6ae7e83b41aac7072ffd3fb814f181d176e5497); blocks 31-97; range sha256 bc92f6a3ac9e32662be1547438da8dccd738a76fd60e99ffbbad3091dc75b823. Topic: Process of Information Transmission. One label for two weeks. Chart (34; pie-chart picture block 35), mobile phone (45), newspaper (50), radio (52; pictures 53, 55), telephone (60; pictures 61, 63; block 66 gives Alexander Graham Bell and 1876, a historical statement to check), television (68; picture 69), types of information transmission (74): wireless (76; picture 77), communications satellite (84; picture 85), cable (89), receiver (92). Footnote-style markers such as [n 1] and [4] show web-encyclopedia text pasted in. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5 (blocks 98-108; range sha256 d1f46e12939bc556937879cc4d401d218129a032fcd3c0e9d860ae954a14d829)",
+      "objective": "Index 2nd Term 'WEEK 5' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 98-108. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 98 text \"WEEK 5\" (sha256 9b12d637a3be5c04d474a2a0a187bf2dbe2d7e32f3c32d244f3f83ddd4b7f550); blocks 98-108; range sha256 d1f46e12939bc556937879cc4d401d218129a032fcd3c0e9d860ae954a14d829. Topic: Means of Transmitting Information. Electronic transmission (102) and non-electronic transmission (105-107, newspaper and charts). Short week, no evaluation. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6 (blocks 109-173; range sha256 40fee4c3d4570646ff712c27d1e0cd57d32ab0111d295c6d555260b732e1a226)",
+      "objective": "Index 2nd Term 'WEEK 6' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 109-173. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 109 text \"WEEK 6\" (sha256 03792d537a25eed5326e922c8a90f71cfb1c9739ed47959db18710e2aa49a653); blocks 109-173; range sha256 40fee4c3d4570646ff712c27d1e0cd57d32ab0111d295c6d555260b732e1a226. Topic: Computer Ethics. 'Computer Lab Rules and Ethics – Concept Outline' (113) with numbered rules I-XI: introduction (115), personal items (122), project work and what students may not do (125-134), no food or drink and handling of media (136-140, block 140 'Take care when handling media.'), posture (142), classroom rules (144), consequences by offense (146-151), etiquette (153), copyright (155-159), hacking with a named school-district discipline policy (161-164), Internet safety (166-171). Text names other schools and a US Social Security number (blocks 115, 162, 168): it is school-specific and US-specific, not this school's policy. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 7 (blocks 174-188; range sha256 af1b2e7ab31a573fb906dc085b6a460259bbbe459a7081b07a13e5c2609d96ff)",
+      "objective": "Index 2nd Term 'WEEK 7' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 174-188. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 174 text \"WEEK 7\" (sha256 5d222602d23f6b6f007aa6721de2a971a44013ddf864d5b98d8b6d25dcaeace1); blocks 174-188; range sha256 af1b2e7ab31a573fb906dc085b6a460259bbbe459a7081b07a13e5c2609d96ff. Topic: Computer Safety Measures. Bullet list of safety measures (177-186): anti-virus, updates, firewall, malware removal then 'change your Online Banking password' (182), unsolicited attachments, typing an address such as www.key.com (184), signing out, shutting down. Source appears to come from a bank's customer-security page; no credential, password or command text is exposed, but bank-specific advice needs rewording in correction work and must not require execution of anything. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 (blocks 189-214; range sha256 9069b70bfd34238ffc6324ee38f60ccf2b6cf4bcb7fadead4717c795a5dfb12a)",
+      "objective": "Index 2nd Term 'WEEK 8' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 189-214. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 189 text \"WEEK 8\" (sha256 9d3aa1f293bf6811cada35e94cde675c7a57a2ed333349152dec9e06fdedf73c); blocks 189-214; range sha256 9069b70bfd34238ffc6324ee38f60ccf2b6cf4bcb7fadead4717c795a5dfb12a. Topic: Operating System. Definition (194), time-sharing (195), intermediary role (196), examples sentence (197), types of operating systems (198): single- and multi-tasking (199), single- and multi-user (201), distributed (203), templated (205), embedded (207), real-time (209), library (211). Block 193 is a navigation-style table with a layer diagram picture. Footnote markers [1][2] appear in block 196. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9 (blocks 215-229; range sha256 4794d2c86e62ddbc8fa43ba139cdf4eed770f457dba115b67f5963f8c1a22347)",
+      "objective": "Index 2nd Term 'WEEK 9' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 215-229. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 215 text \"WEEK 9\" (sha256 5507bbd0365e299edbfda9ab200d1c590f7f9ff975c5d8146b10662f82ed993e); blocks 215-229; range sha256 4794d2c86e62ddbc8fa43ba139cdf4eed770f457dba115b67f5963f8c1a22347. Topic: Examples of Operating System. Examples of common personal-computer operating systems (219-225): Windows 7, Windows Vista, Windows Server 2003, Linux, Mac OS X, SunOS; 'Alternate Spellings: OS, O/S, kernel' (226). These named products are dated and need a currency check in correction work; source wording kept distinct. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10 (blocks 230-261; range sha256 386c4ec44eea2996becf8264570b188b0a2c1069d104dd2f286990bd233384de)",
+      "objective": "Index 2nd Term 'WEEK 10' at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from DP-INV-T2) and to any supplement, and confirm scope against every evaluation, assignment and theory item inside blocks 230-261. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. An evaluation/revision heading cannot erase teaching. Do not invent content for Week 1 or for evaluation, assignment or revision sections the source lacks; much of the text is pasted web, bank or school-policy text with other-school and US-specific details, and named software versions are dated, so correction work must keep the source's wording distinct from corrected fact and must not require unsafe execution; Data Processing keeps its own name (not Computer Studies or ICT).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T2-W10.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2): label block 230 text \"WEEK 10    \" (sha256 e43ab1958d1e3704a19d4eec692db39be153d434bff021e26302f680c1dfc4ac); blocks 230-261; range sha256 386c4ec44eea2996becf8264570b188b0a2c1069d104dd2f286990bd233384de. Topic: Functions of Operating System (topic line has a leading space). Basic functions (233-237): booting the computer (238, 243), basic computer tasks (245), user interface (247; command line and GUI 240, 248), handling system resources (249), file management (251), file systems (253-259: FAT 254, 256; NTFS 255, 257-259). Block 238 and 243 both carry the heading 'Booting the computer'. No evaluation or assignment. The document ends at block 261. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "DP-VIS-T2-FIG-CHART",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 chart picture, blocks 35 (media/image1.png sha256 708a31fd9ebddf78d922252a03729d63821f8a4b96788e843ddb08f5166408c4)",
+      "objective": "Record a disposition for the chart picture in Weeks 3-4: whether the picture(s) are teaching figures or decoration, that they are absent from extracted text, and whether a supplement or an asset item must preserve them with their captions. Do not alter the source captions. The figures are real-world political data used as a chart example; do not present them as curriculum data.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-FIG-CHART.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 35 is a pie chart with labelled slices Bloc Québécois 54, NDP 19, Conservative 98 and Liberal 133 (an election-seat example), placed under the heading 'Chart' (block 34). Image blocks 35 hold w:drawing inline pictures with empty block text (image1.png 220x208); captions are separate text blocks (none; block 36 starts the definition). Plain-text extraction keeps the captions and drops the pictures. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-VIS-T2-FIG-RADIO",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 radio pictures, blocks 53/55 (media/image2.jpeg sha256 3678bed1a1858c6558ed0d8dce8119665980d23cd2bfa2b9c7801a1c5dbdd67b, media/image3.jpeg sha256 c795e226d3465a8d883e8d8b5e2654091fcd9f035babddcef3facb8036b3afd4)",
+      "objective": "Record a disposition for the radio pictures in Weeks 3-4: whether the picture(s) are teaching figures or decoration, that they are absent from extracted text, and whether a supplement or an asset item must preserve them with their captions. Do not alter the source captions. ",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-FIG-RADIO.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 53 shows a broadcasting mast on a building and block 55 a classic radio tuning dial. Image blocks 53, 55 hold w:drawing inline pictures with empty block text (image2.jpeg 240x351; image3.jpeg 240x179); captions are separate text blocks (blocks 54 'The Alexandra Palace, here: mast of the broadcasting station' and 56 'Classic radio receiver dial'). Plain-text extraction keeps the captions and drops the pictures. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-VIS-T2-FIG-TELEPHONE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 telephone pictures, blocks 61/63 (media/image4.jpeg sha256 b76a7bdc05ed76a54b979259ae0446c7504bb1534ea8b20b954864d44c3f69b7, media/image5.jpeg sha256 8b7dfbf6c5fd46e3158d4de2d13cd0dcb4ff6e4c961a5f4edd6b3608cefb1ebc)",
+      "objective": "Record a disposition for the telephone pictures in Weeks 3-4: whether the picture(s) are teaching figures or decoration, that they are absent from extracted text, and whether a supplement or an asset item must preserve them with their captions. Do not alter the source captions. ",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-FIG-TELEPHONE.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 61 shows a rotary dial telephone and block 63 a push-button telephone. Image blocks 61, 63 hold w:drawing inline pictures with empty block text (image4.jpeg 220x189; image5.jpeg 220x123); captions are separate text blocks (blocks 62 'A rotary dial telephone, c.1940s' and 64 'Modern telephones use push buttons'). Plain-text extraction keeps the captions and drops the pictures. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-VIS-T2-FIG-TELEVISION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 television picture, blocks 69 (media/image6.jpeg sha256 3677a3b7d0098babad24963a4c256b39b8bd196a3f283e20eb48ce4497ddb744)",
+      "objective": "Record a disposition for the television picture in Weeks 3-4: whether the picture(s) are teaching figures or decoration, that they are absent from extracted text, and whether a supplement or an asset item must preserve them with their captions. Do not alter the source captions. ",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-FIG-TELEVISION.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 69 shows a wall of flat-screen televisions in a store. Image blocks 69 hold w:drawing inline pictures with empty block text (image6.jpeg 300x225); captions are separate text blocks (block 70 'Flat-screen televisions for sale at a consumer electronics store'). Plain-text extraction keeps the captions and drops the pictures. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-VIS-T2-FIG-WIRELESS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 wireless picture, blocks 77 (media/image7.jpeg sha256 de7432250decb24087c351cb1b856ccb81abc02b6b2e309116b9ae7fc5e09f16)",
+      "objective": "Record a disposition for the wireless picture in Weeks 3-4: whether the picture(s) are teaching figures or decoration, that they are absent from extracted text, and whether a supplement or an asset item must preserve them with their captions. Do not alter the source captions. ",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-FIG-WIRELESS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 77 shows a hand holding an orange handheld marine radio. Image blocks 77 hold w:drawing inline pictures with empty block text (image7.jpeg 235x313); captions are separate text blocks (block 78 'A handheld On-board communication station of the maritime mobile service'). Plain-text extraction keeps the captions and drops the pictures. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-VIS-T2-FIG-SATELLITE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 3-4 satellite picture, blocks 85 (media/image8.jpeg sha256 73c6730b40ef28927a7c16b1c3f42d52c004c50af5268683cf9f273ca5e3aba9)",
+      "objective": "Record a disposition for the satellite picture in Weeks 3-4: whether the picture(s) are teaching figures or decoration, that they are absent from extracted text, and whether a supplement or an asset item must preserve them with their captions. Do not alter the source captions. ",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-FIG-SATELLITE.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 85 shows a communications satellite above the Earth. Image blocks 85 hold w:drawing inline pictures with empty block text (image8.jpeg 220x157); captions are separate text blocks (block 86 (caption beginning 'An Advanced Extremely High Frequency communications satellite relays secure communications for…')). Plain-text extraction keeps the captions and drops the pictures. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-VIS-T2-TBL-OSLAYERS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-6880a598b05b",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 table, block 193 (5 rows x 1 column with two pictures: media/image9.png sha256 6b673513cc622589ddfb09fdd1f39a9cc09b092ef68aa10acd313f57b940a7e9, media/image10.png sha256 166a0a8d965376a814bcd76d6e8ca74f9fe2f11ded4ae471a292d662f7f609a8; block text sha256 0ab3b6e67ca928191fca86de0ca35c956ef5427316a56a46a0f5c9a6b4338e5e)",
+      "objective": "Record a disposition for the Week 8 table in block 193: a one-column navigation-style table (Operating systems; Common features: process management, interrupts, memory management, file system, device drivers, networking, security, I/O) containing a layer diagram and a small icon. Decide whether the list survives extraction, whether the diagram (User, Application, Operating System, Hardware with arrows) needs a described figure or asset, and that the 20x20 information icon is decoration.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Data processing.docx",
+          "member_sha256": "83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-VIS-T2-TBL-OSLAYERS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T2",
+        "DP-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 193 is a w:tbl of 5 rows x 1 column; its extracted text is 'Operating systems Common features Process management Interrupts Memory management File system Device drivers Networking Security I / O' with no separators. media/image9.png (165x244) is a four-layer diagram (User, Application, Operating System, Hardware, with arrows between layers); media/image10.png (20x20) is a small blue information icon. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     }
   ],
   "review": {
@@ -1098,7 +1707,6 @@
     }
   },
   "next_runnable": [
-    "DP-INV-T2",
     "DP-INV-T3",
     "DP-TEST-PACKAGE",
     "DP-PRE-T1",
@@ -1118,6 +1726,22 @@
     "DP-VIS-T1-W07-TBL-AGES",
     "DP-VIS-T1-PUBLISHER-MEDIA",
     "DP-PRES-T1-NUMBERING",
-    "DP-PRES-T1-SUPERSCRIPT"
+    "DP-PRES-T1-SUPERSCRIPT",
+    "DP-PRE-T2",
+    "DP-WK-T2-W02",
+    "DP-WK-T2-W03-04",
+    "DP-WK-T2-W05",
+    "DP-WK-T2-W06",
+    "DP-WK-T2-W07",
+    "DP-WK-T2-W08",
+    "DP-WK-T2-W09",
+    "DP-WK-T2-W10",
+    "DP-VIS-T2-FIG-CHART",
+    "DP-VIS-T2-FIG-RADIO",
+    "DP-VIS-T2-FIG-TELEPHONE",
+    "DP-VIS-T2-FIG-TELEVISION",
+    "DP-VIS-T2-FIG-WIRELESS",
+    "DP-VIS-T2-FIG-SATELLITE",
+    "DP-VIS-T2-TBL-OSLAYERS"
   ]
 }
