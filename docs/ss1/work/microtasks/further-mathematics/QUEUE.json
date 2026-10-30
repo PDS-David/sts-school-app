@@ -22,7 +22,8 @@
     "PR71 (alternate foundation, not used as a base) holds a different Further Mathematics package at head b5ced7ebb0efe22df2351baa140266fbf40cbf41: 14 lessons (3 for 1st Term, 6 for 2nd Term, 5 for 3rd Term), 3 rules, 0 corrections, 7 open items, authored in PR71 schema. This is FOUNDATION_RECONCILIATION.md item D-3 (plus D-4 notes and test). It is recorded as 14 FM-PORT-D3-* comparison items and 2 FM-PORT-D4-* items, all PENDING; none is counted as implemented on master.",
     "No lesson-writing item exists: no specific uncovered objective is established. Lesson or replacement items are to be appended only after a week item names one. Broad \"finish authoring\" (OI-FM-002) is decomposed into FM-SCOPE-OI-FM-002.",
     "New task kind BRANCH_PORT_COMPARISON is used for unmerged-branch comparison items (the Chemistry queue uses SOURCE_COMPARISON for a related purpose).",
-    "Audio is not involved in this subject."
+    "Audio is not involved in this subject.",
+    "FM-INV-T3 (2026-10-30) inventoried the 3rd Term original: no scheme of work; six week labels only (Weeks 2, 3, 4, 5, 6, 8); Weeks 1, 7 and 9-12 confirmed absent from the source; one unlabelled Week 8 'PERIOD 3' section appended as FM-SEC-T3-W08-PERIOD3. Week 3 figures are drawn as VML objects in the source. No lesson, coverage entry, rule, correction or asset was written."
   ],
   "counts": {
     "ASSET": 1,
@@ -33,14 +34,15 @@
     "SCOPE_DECOMPOSITION": 2,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_REGISTRATION": 3,
+    "SOURCE_SECTION_INDEXING": 1,
     "SOURCE_WEEK_INDEXING": 26,
     "SOURCE_WEEK_INVENTORY": 1,
     "TEST": 2,
     "VISUAL_DISPOSITION": 8
   },
   "status_counts": {
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
     "BLOCKED": 7,
-    "IMPLEMENTED_TESTING_DEFERRED": 21,
     "PENDING": 57
   },
   "items": [
@@ -210,8 +212,8 @@
       "depends_on": [
         "FM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Repository evidence (SS1-03 parsed_rows.json, 6 rows) shows Weeks 2, 3, 4, 5, 6, 8 only; OI-FM-003 and COV-FM-T3-SCHEME (UNRESOLVED) state that the source has no scheme and that Weeks 1, 7 and 9-12 are not in the supplied archive. That absence claim comes from the earlier worker and has not been re-checked in this task. The only in-document subject evidence recorded is the first reference line \"New Further Mathematics project 1, by Adigun et al. Page 178\".",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-10-30 from the 3rd Term original (SHA-256 83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5 verified against the standalone copy in the supplied '3rd Term SS1' archive; the composite archive was not supplied and its hash was not checked). Confirmed: no scheme of work, title, subject line, revision/examination marker or reference list; six week labels only (WEEK 2 block 5, WEEK 3 block 51, WEEK 4 block 180, WEEK 5 block 257, WEEK 6 block 334, WEEK 8 block 410; blocks 0-476, no text before block 5); Weeks 1, 7 and 9-12 absent from the source. One further unlabelled substantive section found: Week 8 'PERIOD 3' lesson (blocks 443-473). Header evidence is the Week 2 textbook line (block 6), not a heading. Eight VML figure objects (seven paragraphs) in Weeks 2-3 (blocks 12, 31, 62, 72, 104, 117, 133), refuting the claim that Week 3 draws no graphs; none in Weeks 4-8; 129 m:oMath groups; two brand images (cover image in block 4, header banner). Appended 1 PENDING item: FM-SEC-T3-W08-PERIOD3. Evidence: docs/ss1/work/microtasks/further-mathematics/FM-INV-T3.md. Inventory only; no lesson, coverage, rule, correction or asset written; not approved or verified; no tests, importer, typecheck, database or device run.",
       "completion_condition": "Week and unlabelled-section inventory written to FM-INV-T3.md with locators; absence of weeks 1, 7 and 9-12 either confirmed or refuted with evidence; new indexing items appended for any week not already in this queue; no week is invented."
     },
     {
@@ -2758,6 +2760,42 @@
       "status": "BLOCKED",
       "implementation_reference": "Testing is deferred by the owner until SS1-09 and is not authorised in this stage. Nothing here may be marked complete.",
       "completion_condition": "Tests written and executed in the authorised verification stage with results recorded."
+    },
+    {
+      "id": "FM-SEC-T3-W08-PERIOD3",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-c7a7523bdb0d",
+      "term": "3rd Term",
+      "week_or_locator": "Week 8 blocks 443-473 (marker 'PERIOD 3' at 443; range sha256 bc586a6d016376bb45a0097567d73f1f20a741dca876c37996a4925968b22ec9)",
+      "objective": "Index the unlabelled second lesson inside the WEEK 8 body: marker 'PERIOD 3' (443), 'Topic: Equation of a straight line' with sub-topic gradient, one-point and two-point form (444-445), duration, references, previous knowledge, instructional materials, content (451-469), Evaluation (470), Conclusion (471) and the two Assignment lines (472-473). Record its objectives against the existing FM-LES-T3-W08 replacement lesson and coverage COV-FM-T3-R05, and state whether the Week 8 row-level coverage already reaches blocks 443-473. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Do not discard it as a marker; do not invent a Period 1 or Period 2.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 FURTHER MATHEMATICS.docx",
+          "member_sha256": "83af98556a1b01fa0811df6274e7cca3bec978d1e7b411c17994613b2a34a2c5"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-SEC-T3-W08-PERIOD3.md"
+      ],
+      "depends_on": [
+        "FM-INV-T3",
+        "FM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (FM-INV-T3): block 443 text 'PERIOD 3' (sha256 ced01b423102c586b9ed9d23acb24d2d75d6a46ca97170a24a5d9123447edd34); block 444 'Topic: Equation of a straight line' (sha256 5f1ea5453107309c00bcd0f8e3bd3116c488bf924350d6eb72bf377fd898a92b); blocks 443-473 range sha256 bc586a6d016376bb45a0097567d73f1f20a741dca876c37996a4925968b22ec9; 442 and 474-476 empty; the only PERIOD marker in the document. SS1-03 parsed_rows row 5 (WEEK 8, 3455 characters) is the unit that may or may not include this section; not checked here. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-476; block 477 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "completion_condition": "Section objectives listed with block locators and a status; coverage reach against FM-LES-T3-W08 recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     }
   ],
   "review": {
@@ -2785,6 +2823,6 @@
     }
   },
   "next_runnable": [
-    "FM-INV-T3"
+    "FM-SEC-T3-W08-PERIOD3"
   ]
 }
