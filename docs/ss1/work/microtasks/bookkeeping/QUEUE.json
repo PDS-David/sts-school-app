@@ -23,23 +23,24 @@
     "BK-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). BK-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "BK-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, preservation and visual items. The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and has no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Nothing was run. No lesson, coverage entry, rule, correction or asset was written. BK-INV-T2 should still wait for the owner's answer on BOOKKEEPING-T2-TEXT-MATCHES-T1."
+    "BK-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, preservation and visual items. The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and has no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Nothing was run. No lesson, coverage entry, rule, correction or asset was written. BK-INV-T2 should still wait for the owner's answer on BOOKKEEPING-T2-TEXT-MATCHES-T1.",
+    "BK-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended 13 PENDING items (preamble, two markers, four weeks, two preservation, four visual). The document holds four week bodies (WEEK ONE to WEEK FOUR) for a twelve-entry scheme and no Week 5-12 bodies; three tables, eight VML drawing objects and no image/OLE/equation parts. Every week range and parsed week body is byte-identical (same SHA-256) to the 1st Term source's; only the title block ('SIGMA TERM') and the split scheme header differ, and the document properties differ in creation date. BOOKKEEPING-T2-TEXT-MATCHES-T1 is still an open owner action: BK-*-T2 indexing items should not be run before the owner confirms the file, and no duplicate coverage is linked. Nothing was run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 1,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_MARKER_DISPOSITION": 2,
-    "SOURCE_WEEK_INDEXING": 4,
-    "SOURCE_PRESERVATION": 2,
-    "VISUAL_DISPOSITION": 4
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_MARKER_DISPOSITION": 4,
+    "SOURCE_WEEK_INDEXING": 8,
+    "SOURCE_PRESERVATION": 4,
+    "VISUAL_DISPOSITION": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "BLOCKED": 1,
-    "PENDING": 16
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 28,
+    "BLOCKED": 1
   },
   "items": [
     {
@@ -210,8 +211,8 @@
       "depends_on": [
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory read from the verified member (member sha256 c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3, 38,245 bytes, extracted from the per-term archive 2nd_Term_SS1_-20230730T171417Z-001.zip supplied for this session; the composite archive was not supplied and its hash was not checked here). Four teaching weeks, not a guessed count: 'WEEK ONE ' (block 31), 'WEEK TWO' (88), 'WEEK THREE' (110), 'WEEK FOUR' (159); 222 body children (blocks 0-220 plus w:sectPr at 221); whole-body range sha256 31d2a6ba26971e8592078e9730ac070100a7f3ddaa88d3da77134d0781207e4f. Preamble blocks 0-30 (SIGMA TERM, SCHEME OF WORKS, split scheme header, twelve manually numbered scheme entries). Three tables (blocks 123, 136, 176); eight VML objects in five paragraphs (blocks 50, 57, 71, 80, 171) and no image/OLE/equation parts. All four week ranges and parsed week bodies have the same SHA-256 as the 1st Term source's; only block 0 and the split scheme header differ from it. 13 PENDING items appended (BK-PRE-T2; BK-MARK-T2-REVISION, BK-MARK-T2-EXAM; BK-WK-T2-W01..W04; BK-PRES-T2-WORKED, BK-PRES-T2-CURRENCY; BK-VIS-T2-TACC-W01, BK-VIS-T2-TBL-W03, BK-VIS-T2-TBL-W04, BK-VIS-T2-BRACE-W04). No lesson, coverage, rule, correction or asset written; no duplicate coverage linked; BOOKKEEPING-T2-TEXT-MATCHES-T1 remains an open owner action. Record: docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md. Implemented, not approved or verified; nothing was run (tests, typechecks, importer, DB, device).",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -797,6 +798,500 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (BK-INV-T1): block 170 has empty text and holds one VML shape 'Right Brace 1' (7.15pt wide, 42.7pt high) anchored beside blocks 171-172. It is the eighth and last VML object in the member; there are no image parts, no OLE objects and no equations. Extracted text contains nothing for it, so its removal loses no wording. No importer run (deferred).",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BK-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "blocks 0-30 (range sha256 4adb4f4b5643b1c3ad04e7e0b8b82f9849d93ee0a0fd9ac0ab5350294af3e527); the same text is the 959-character mammoth preamble, sha256 74432c33823e083b135e5b4b6ce3f19ee99ed6f67d90d8841a84b0e26fef0b8c",
+      "objective": "Inventory all 2nd Term text outside the four week bodies and map or classify each block: 'SIGMA TERM' (block 0), 'SCHEME OF WORKS' (1), the flattened scheme header 'SUBJECT: BOOK-KEEPING' + 'CLASS: SS 1 ' (2), the stranded column label ' TOPIC' (3), and the twelve manually numbered scheme entries with their dashed sub-items (4-30). Record the scheme-to-body mapping: entries 2-4 are carried by Week 1, 5-7 by Week 2, 8 by Week 3, 9-10 by Week 4; entries 1 and 11 are revision markers and 12 is the examination marker (their own items). Map each scheme sub-item to the teaching that carries it, and for any sub-item with no teaching body append a precise bounded task or open item - for example entry 6's sub-item 'Difference between single column cash book.' (block 15). Record as findings, without inventing weeks, that the document contains four week bodies and no Week 5-12 bodies, that the scheme's twelve entries do not correspond one-to-one to twelve teaching weeks, and that the term title reads 'SIGMA TERM' rather than a numbered or 'SECOND' label (the registered term is 2nd Term and the title is not treated as proof either way).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRE-T2.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 0-30; range sha256 4adb4f4b5643b1c3ad04e7e0b8b82f9849d93ee0a0fd9ac0ab5350294af3e527. Block hashes: block 0 951a8bb4eb584e37ab0cd2c3dcaf38b1c2d646948bd918bc8844cc82c294248a, block 2 ada98ed5c567f1328310167a41477acc11a5d1451487f911cd57d5c113568b12, block 3 e3dcbd0e259a23e7b3513205012fdea07c8bfc4cb07cd7f283d55aca30af6409. Scheme entries: 1 Revision (4); 2 Cash book (5; subs 6-7); 3 Single column cash book (8; sub 9); 4 Preparation of single column cash-book (continues) (10); 5 Double column cash book (11; subs 12-13); 6 Double column cash book (14; subs 15-16); 7 Double column cash book. (17; sub 18); 8 Contra Entry. (19; subs 20-22); 9 Principle of Double entry. (23; subs 24-25); 10 Principle of Double entry. (26; subs 27-28); 11 Revision. (29); 12 Examination (30). The entries are manually numbered text, not a Word auto-numbered list (w:numPr absent from blocks 0-30). The preamble differs from the 1st Term preamble only in block 0 ('SIGMA TERM' vs 'FIRST TERM') and in the scheme header being split across blocks 2 and 3 ('SUBJECT: BOOK-KEEPINGCLASS: SS 1 ' and ' TOPIC'). All entries precede the first WEEK marker at block 31, so this material is preamble outside every parsed row and must be mapped by coverage rather than assumed noninstructional. The scheme header (block 2) is also the header_text registered for this source by BK-SRC-T2. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Every non-week block hash-accounted and mapped or recorded as an explicit open item; the scheme-to-body mapping recorded including sub-items with no body; no coverage, rule or lesson invented by this item beyond what it names."
+    },
+    {
+      "id": "BK-MARK-T2-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "scheme entry '1.Revision.' (block 4; block text sha256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c) and scheme entry '11.Revision.' (block 29; block text sha256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9)",
+      "objective": "Disposition the two revision markers in the scheme list: classify both as markers, not as lessons. Record that this document contains no revision worksheet, revision questions, answers or marking scheme for either line and that neither line is followed by a revision body. Do not invent revision content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-MARK-T2-REVISION.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): block 4 '1.Revision.' (sha256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c) is the first scheme entry, immediately before '2.Cash book'; block 29 '11.Revision.' (sha256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9) is the eleventh, immediately before '12.Examination'. Both sit in the preamble (before the first WEEK marker at block 31), so neither is inside a parsed row. The only ASSIGNMENT heading (block 208) is inside Week 4 and is not a revision marker. No EVALUATION or REVISION heading occurs inside any week body. classify_marker with kind SCHEME_ONLY is the contract op that covers preamble material outside parsed rows; no rule is written by this item. Parser behaviour not run (testing deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Both markers classified with their locators and an explicit statement that no instructional body, questions or marking scheme exists; nothing invented."
+    },
+    {
+      "id": "BK-MARK-T2-EXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "scheme entry '12.Examination' (block 30; block text sha256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9)",
+      "objective": "Disposition the examination marker: classify it as a marker. Record that no examination paper, questions, answers, marks or duration exist in this document, that it is the last scheme entry, and that no examination body follows it. Do not invent an examination.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-MARK-T2-EXAM.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): block 30 '12.Examination' (sha256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9) is the twelfth and last scheme entry; block 31 begins the Week One body, so nothing follows the marker and the document ends with the Week 4 ASSIGNMENT (blocks 208-218) and blank blocks 219-220. classify_marker/SCHEME_ONLY applicable; no rule written by this item. Parser behaviour not run (testing deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Marker classified with its locator and an explicit statement that no examination material exists; nothing invented."
+    },
+    {
+      "id": "BK-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1 (label block 31 'WEEK ONE ', label sha256 d6daf1e694c6b67d3872739f78e9ed66d657349d3adba8de1bdc261001e1fef8; blocks 31-87; range sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
+      "objective": "Index 2nd Term Week 1 at objective level: list each scheme objective this body carries (scheme entries 2-4: cash book, single column cash book, preparation of a single column cash book) and bind each to exact source blocks and to any supplement; confirm scope against both illustrations and both account layouts. The printed solutions are teaching, not questions: check their arithmetic and their agreement with the transaction lists before reuse (see BK-PRES-T2-WORKED). Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. Preserve the source's bare-'N' naira notation and add no figures the source lacks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 31-87; range sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3. Sections: label 31, topic line 32 '1.0.Topic: Single Column cash book', introduction and NOTE 34-35, CASH ACCOUNT definition 37, Illustration 1 statement 38-48, its T-account solution 49-58, bank-account definition 59, Illustration 2 statement 60-68, its solution 70-81, blank blocks 82-87. Parsed row (mammoth raw text, regex replication only, importer not run): title '1.0.\\tTopic: Single Column cash book', body 1,934 characters, body sha256 e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd. Observed source defects to check, not corrected here: Illustration 1's solution prints 115 (block 54) where its question says 155 (block 48) and 750 (block 53) where the question says 700 (block 44); Illustration 2 is a bank account opened with 'cash in hand' (block 63), its credit side repeats Illustration 1's dates and items (blocks 73-77), the June 9 cheque purchase of 300 (block 68) is omitted, June 7 has no amount (block 67), and its totals do not reconcile (see BK-PRES-T2-WORKED). Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and arithmetic gaps recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BK-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 (label block 88 'WEEK TWO', label sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6; blocks 88-109; range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
+      "objective": "Index 2nd Term Week 2 at objective level: the body carries scheme entries 5-7 (double column cash book: meaning, items, difference from the single column book, preparation). Bind each to exact blocks. Determine specifically whether entry 6's sub-item 'Difference between single column cash book.' (block 15) is taught anywhere in this body and, if it is not, append a bounded lesson task rather than a note. Record that the worked example has no solution in the source and that any solution authored later must be labelled as authored, not as the source's. Missing or mis-scoped teaching becomes an appended bounded task.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 88-109; range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218. Sections: label 88, heading 89 'DOUBLE COLUMN CASH BOOK', meaning 90, accounting entries 91-93, example instruction 94-95, placeholder year '19x9' (block 96), nine dated transactions 97-105, blank blocks 106-109. Parsed row (mammoth raw text, regex replication only, importer not run): title 'DOUBLE COLUMN CASH BOOK', body 1,148 characters, body sha256 bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b. No solution follows the example; no 'difference between single and double column cash book' section exists in the body; there is no assessment section in this week. Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Each objective listed with a block locator and a status; the missing worked solution and any objective without a body recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BK-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3 (label block 110 'WEEK THREE', label sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51; blocks 110-158; range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997)",
+      "objective": "Index 2nd Term Week 3 at objective level: the body carries scheme entry 8 (contra entry: explain, identify, record). Bind each to exact blocks, including the two contra examples and their cash book tables, and confirm that the 'C' folio convention is taught as the source states it. Check by reading and arithmetic the two examples (a cash balance of N300 followed by N710 paid into the bank) before reuse; record any gap as a precise open item or bounded task, not a note. Preserve the source's wording and its bare-'N' notation.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 110-158; range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997. Sections: label 110, heading 111 'CONTRA ENTRY', definitions 112-114, (a) payment of cash to bank 115-116, flattened Effect/Action pairs 117-119, example 120-121, 'Dr Cash Book Cr' line 122, cash book table 123, 'C' note 125, (b) withdrawals from bank 127-128, second Effect/Action pair 131-133, example 134, 'Dr Cr' line 135, cash book table 136, blank blocks 137-158. Parsed row (mammoth raw text, regex replication only, importer not run): title 'CONTRA ENTRY', body 1,555 characters, body sha256 194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a. Reading checks for later authoring: blocks 117-119 and 131-133 are table rows flattened to paragraph text (see BK-VIS-T2-TBL-W03); the source writes the contra folio symbol as a capital C in curly quotes and states it must appear on both sides (block 125); the account tables are correct contras by cell position (Dr Bank/Cr Cash at block 123, Dr Cash/Cr Bank at block 136), but the prose 'Jan. 1 cash balanced N300' followed by 'Jan. 2 cash paid into the bank amounted to N710' (blocks 120-121) does not explain where the N710 came from, and the table at block 123 records contra entries of 300 on Jan. 1 and 710 on Jan. 2, so more is paid in than the stated cash balance; this needs an authoring check. Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Each objective listed with a block locator and a status; the folio convention and both examples recorded with their arithmetic state; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BK-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4 (label block 159 'WEEK FOUR', label sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2; blocks 159-220; range sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7)",
+      "objective": "Index 2nd Term Week 4 at objective level: the body carries scheme entries 9-10 (double entry: meaning, identify the account to be debited and credited, posting from the cash book to the ledger, rule of double entry). Bind each to exact blocks. Record that the posting illustration and both ASSIGNMENT questions have no solution or answers in the source, and that ASSIGNMENT 1 points to an external textbook page that is not supplied and must not be copied. Check by arithmetic and reading before authoring from the illustration (a motor van bought by cheque for N20 needs verification). Missing or mis-scoped teaching becomes an appended bounded task.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 159-220; range sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7. Sections: label 159, heading 160, definition 161, three rules 162-165, application 167-173, illustration 175-176 (an eleven-row table that already contains the debit and credit answers; its instruction is truncated at 'Account to be.'), posting definition 178-183, illustration statement 185-206 (twenty June transactions, no solution), ASSIGNMENT 208-218, blank blocks 219-220. Parsed row (mammoth raw text, regex replication only, importer not run): title 'PRINCIPLE OF DOUBLE ENTRY', body 3,833 characters, body sha256 890fb8fac8b6f9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409. Reading checks for later authoring: June 16 'Bought motor van by cheque N20' (block 197) is implausible for a motor van and needs verification; June 12 'Withdrew cash from bank for personal use N30' (block 195) is drawings, not a contra, and must not be taught as one; ASSIGNMENT 1 (block 209) cites 'simplified and amplified book-keeping and accounting page 56 revision question 5x', which is not supplied; ASSIGNMENT 2 (blocks 211-218) has no answers; block 204 reads 'Yinka lend us' (source wording retained). Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Each objective listed with a block locator and a status; the unsolved illustration and unanswered assignment recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "BK-PRES-T2-WORKED",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1 blocks 38-58 and 60-81; Week 2 blocks 94-105; Week 3 blocks 120-123 and 134-136; Week 4 blocks 175-176, 185-206 and 208-218",
+      "objective": "Preserve the source's worked solutions and calculation steps as separate source-faithful material, and record by reading and arithmetic which of them reconcile, which disagree with their own transaction lists, and which have no solution at all: Illustration 1 (blocks 38-58), Illustration 2 (60-81), the two contra examples (120-123, 134-136), the answered debit/credit table (175-176), the unsolved two-column example (94-105), the unsolved posting illustration (185-206) and the unanswered ASSIGNMENT (208-218). Record the debit and credit columns, the folio 'C', and the balance b/f, c/d and b/d steps so later authoring can reproduce or correct them. Do not correct the source silently; work authored later must be labelled as authored.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T2-WORKED.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2), arithmetic by reading only, same figures as the 1st Term file: Illustration 1 prints debit 1,500 + 500 + 115 = 2,115 and credit 250 + 750 + 50 + 30 + 25 + balance 1,010 = 2,115, so it reconciles internally but uses 115 and 750 where its question states 155 (block 48) and 700 (block 44); with the question's figures the debit is 2,155, the credit items 1,055 and the balance 1,100. Illustration 2 prints debit 2,500 + 450 + 230 = 3,180, credit items 650 + 750 + 50 + 30 + 25 = 1,505 against a printed credit total of 3,180 (gap 1,675), and printed balances of 1,910 and 1,010 that sum to 2,920; the June 9 cheque purchase of 300 is missing and June 7 has no amount. Block 123 and block 136 are correct contras by cell position (see BK-VIS-T2-TBL-W03), but block 123 contra entries total 1,010 against a stated cash balance of 300. Block 176's eleven answers are complete and consistent by reading; rows vi and x both read 'Goods were returned to <name>' and are answered as Returns Outwards, which needs an authoring check of the direction. Blocks 106-109, 207 and 219-220 are empty: the Week 2 example, the Week 4 posting illustration and both ASSIGNMENT questions have no solution. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Each worked item listed with its locator, its preserved steps and an explicit consistency finding; no source figure altered and no solution invented by this item."
+    },
+    {
+      "id": "BK-PRES-T2-CURRENCY",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "whole document: currency headings and amounts, e.g. blocks 40, 51, 62, 72, 79, 81, 96, 120-121, 123, 134, 136, 176, 193-218",
+      "objective": "Preserve the source's currency and figure conventions and record them as dated findings: the naira is written as a bare capital 'N' in the column headings and before amounts, with no naira sign and no currency code; the Week 2 example uses the placeholder year '19x9'; and every money figure is historical (the file's document properties record creation on 2016-01-26 and last modification on 2020-05-30). Record that any figure presented as current teaching would be stale and that later authored updates need dated primary data. Do not convert, inflate or update any amount here, and do not present the document's figures as today's prices.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T2-CURRENCY.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): the only currency marker in the text is a bare 'N' (column header block 40 '   N', block 51 '    N    N', table sub-header cells 'N' in blocks 123 and 136, and amounts such as 'N2,900', 'N1,850' and 'N75' in blocks 97-105). No naira sign and no 'NGN'/'kobo' text appears. Block 96 contains '19x9' as a deliberate placeholder year. docProps/core.xml of the verified member records dc:creator 'oladoyin faasoranti', cp:lastModifiedBy 'ADEDOLAPO', cp:revision 2, dcterms:created 2016-01-26T13:32:00Z and dcterms:modified 2020-05-30T12:08:00Z (the 1st Term file records both dates as 2020-05-30T10:24:00Z); docProps/app.xml records 10 pages, 1,372 words and 7,825 characters. No figure is changed by this item. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Currency notation and the dated figures recorded with locators and the document's date; no figure changed; any need for updated data becomes an open item rather than an invented figure."
+    },
+    {
+      "id": "BK-VIS-T2-TACC-W01",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1: Cash account solution blocks 50-58 and Bank account solution blocks 71-81; drawn VML objects in blocks 50, 57, 71 and 80",
+      "objective": "Record a disposition for the two drawn account formats: whether the tab-aligned text that survives extraction is a faithful, teachable representation of the ruled T-account (debit and credit sides, folio and amount columns, balance carried down and brought down), and whether a supplement must restate each as a two-sided table. Do not alter source wording and do not commit the drawing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T2-TACC-W01.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2), objects enumerated: the member has no image parts at all (no word/media directory) and no OLE objects or equations (m:oMath absent), but eight VML objects (w:pict) sit in five paragraphs. Block 50 holds 'Straight Arrow Connector 18' (vertical, height 242.8pt) and 'Straight Arrow Connector 17' (horizontal, width 405.25pt) - the ruled T. Block 57 holds 'Group 14' and 'Group 11' (each 55.25pt x 22.6pt) - the double rule under the debit total. Block 71 repeats the connector pair ('Straight Arrow Connector 10' vertical, height 224.3pt; 'Straight Arrow Connector 9' horizontal, width 405.25pt). Block 80 holds 'Group 2' (267.1pt x 22.6pt, nested groups and AutoShapes) - the double rule under the bank total. Extracted text keeps dates and amounts as tab-separated runs and the 'DR ... CR' header line, but the ruled box, the column rules and the visual separation of the two sides are geometry only. The same eight objects exist in the 1st Term file one block earlier. Importer/plan output not generated (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BK-VIS-T2-TBL-W03",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3: cash book table block 123 (4 rows x 10 columns; block text sha256 50f7bcab93db04a2fa33854ba34f46d6e95918e4455540913256e0bd02990bb8) and block 136 (3 rows x 10 columns; block text sha256 bc543e99e8376f0fe5228f6c3310772051ac2dcd1c71bb8bb96202015256fcc7); flattened Effect/Action pairs at blocks 117-119 and 131-133",
+      "objective": "Record a disposition for the two Week 3 cash book tables (Date, Particulars, Folio, Cash and Bank on each side, with a currency sub-header row) and for the two 'Effect / Action Required' pairs that exist only as flattened paragraph text. State what the extracted text preserves (one cell per line, empty cells as empty lines) and what it loses (row grouping and column position, so Cash cannot be told from Bank without counting cells), and whether a supplement must restate them as tables. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T2-TBL-W03.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2), cells read directly from w:tbl: block 123 header ['Date','Particulars','Folio','Cash','Bank'] twice, row 1 ['','','','N','N',...], row 2 ['Jan. 1','Cash','C','','300','Jan. 1','Bank','C','300',''], row 3 the same with 710 - the amount sits in the Bank cell on the debit side and the Cash cell on the credit side, so this is Dr Bank / Cr Cash. Block 136 row 2 ['Jan. 4','Bank','C','800','','Jan. 4','Cash','C','','800'] - Dr Cash / Cr Bank. The 'Effect / Action Required' pairs are paragraphs, not a table: blocks 117 and 131 have identical block text ('EffectAction Required', sha256 1db4bc45a5efc035e858390ba776222e60cb197f34071115e157e232365c432c), so a block-text locator alone is ambiguous - cite the index - and each is followed by two row paragraphs such as 'Cash balance is decreasedCr. Cash column' (block 118). Mammoth emits table cells one per line, so row grouping survives only as blank-line positions. No importer or plan run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BK-VIS-T2-TBL-W04",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4: debit/credit table block 176 (12 rows x 4 columns including the header row; block text sha256 35d1163dd177a22a8987a9ff139ad68ad22462b43b152e07172182d5a834597a)",
+      "objective": "Record a disposition for the completed debit/credit table: whether the extracted text still pairs each row (i-xi, the transaction, the account to be debited, the account to be credited) once the header row and the column positions are lost, and whether a supplement must restate it as a table. Record that the table already contains the answers, so it is a worked illustration and not a practice question. Do not alter source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T2-TBL-W04.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2), cells read directly from w:tbl: 12 rows; header ['','','Debited','Credited']; row i ['i.','Start business with N800 cash','Cash ','Capital']; ii ['ii.','Goods sold on credit to Mr. Ayo','Ayo','Sales']; iii ['iii.','We paid creditor Mr. Olu by cheque','Mr. Olu','Bank']; iv ['iv.','Goods bought by cheque','Purchases','Bank']; v ['v.','Sold goods for cash','Cash','Sales']; vi ['vi.','Goods were returned to Mr. Kufor','Kufor','Returns Outwards']; vii ['vii.','Biodun lent us N80 cash','Cash','Loan (Biodun)']; viii ['viii.','Took N20 of the cash and paid into the bank','Bank','Cash']; ix ['ix.','Bought a motor van by cheque','Motor van','Bank']; x ['x.','Goods were returned to Olotu','Olotu','Returns Outwards']; xi ['xi.','Paid further cash into the business as capital','Cash','Capital']. All eleven answers are present; no arithmetic is involved; rows vi and x need the direction check recorded in BK-PRES-T2-WORKED. Mammoth emits one cell per line, so the two account columns and the header lose their positions and a reader sees marker, transaction, debit account, credit account in sequence. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BK-VIS-T2-BRACE-W04",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4: VML 'Right Brace 1' in block 171, immediately before the receiving/giving account lines at blocks 172-173",
+      "objective": "Record the disposition of the single decorative right brace: it carries no text, marks the grouping of the 'a. Dr. Receiving account' / 'b. Cr. Giving account' lines and holds no teaching geometry, so it is excluded from delivered lessons and the wording it brackets is preserved as text. Do not commit the drawing.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/Book keeping.docx",
+          "member_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T2-BRACE-W04.md"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (BK-INV-T2): block 171 has empty text and holds one VML shape 'Right Brace 1' (7.15pt wide, 42.7pt high) anchored beside blocks 172-173. It is the eighth and last VML object in the member; there are no image parts, no OLE objects and no equations. Extracted text contains nothing for it, so its removal loses no wording. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     }
   ],
   "review": {
@@ -825,8 +1320,20 @@
     "BK-VIS-T1-BRACE-W04",
     "BK-PRES-T1-WORKED",
     "BK-PRES-T1-CURRENCY",
-    "BK-INV-T2",
     "BK-INV-T3",
+    "BK-WK-T2-W02",
+    "BK-WK-T2-W04",
+    "BK-WK-T2-W01",
+    "BK-WK-T2-W03",
+    "BK-PRE-T2",
+    "BK-MARK-T2-REVISION",
+    "BK-MARK-T2-EXAM",
+    "BK-VIS-T2-TACC-W01",
+    "BK-VIS-T2-TBL-W03",
+    "BK-VIS-T2-TBL-W04",
+    "BK-VIS-T2-BRACE-W04",
+    "BK-PRES-T2-WORKED",
+    "BK-PRES-T2-CURRENCY",
     "BK-TEST-PACKAGE"
   ]
 }
