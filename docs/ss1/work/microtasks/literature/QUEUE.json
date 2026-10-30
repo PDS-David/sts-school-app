@@ -28,15 +28,15 @@
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_MARKER_DISPOSITION": 1,
-    "SOURCE_WEEK_INDEXING": 9,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "SOURCE_WEEK_INDEXING": 18,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 15,
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 25,
     "BLOCKED": 1
   },
   "items": [
@@ -213,8 +213,8 @@
       "depends_on": [
         "LIT-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, parsed-row evidence or source notes. The SS1-02 checkpoint says the T2 scheme and opening were read only; no package was created. Week count and the named text are unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: inventory note docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Source SS1-SRC-1728961e97b5, member SSS 1/2nd Term SS1_/LITERATURE.docx, SHA-256 a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757 verified (57,389 bytes; supplied partial archive 2nd_Term_SS1_-20230730T171417Z-001.zip SHA-256 94a32a4ec4af7d49...; composite hash not checked). Extract: mammoth 1.12.2 extractRawText, 1,225 lines, whole-extract block 1-1223 SHA-256 27ea88a8e6a4b529755803e359413a3a224ac31d486ef803fdd216f5fba51f0c. Scheme table (docx body child 3) lines 7-53; nine teaching weeks WEEK ONE..WEEK NINE at lines 83, 265, 377, 539, 641, 785, 861, 965, 1115; scheme rows REVISION (49) and EXAMINATION (53) have no body; no images, drawings, headers or footers. Eleven PENDING items appended: LIT-PRE-T2, LIT-MARK-T2, LIT-WK-T2-W01..W09; no visual item. Parser findings: split_before and attach_stranded_label not needed; classify_marker has no kind for the seven assignment markers; SCHEME_ONLY fits REVISION and EXAMINATION rows. Not approved, not verified; testing deferred by owner; no package, coverage, lesson or rule was written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, states what text/book/extract each section names (or that none is named), and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -759,6 +759,413 @@
       "status": "PENDING",
       "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 575-603, block SHA-256 d75fcb4a083bab6e067caa95211695fa1f9d9868c9819cca7e40ee95cb6a2b14; label `WEEK 10` 575, heading `ORAL TRADITION OF LITERATURE` 579 (scheme row 23 says `ORAL FORMS OF LITERATURE.`), 581 defines oral tradition and orality, `Folklore` 583, `A Folklorist` 585; markers `Class Work` 589 with 591-595 and `Assignment ` 599 with 601-603. Findings recorded by LIT-INV-T1 that this item must settle: the scheme promises oral forms but the span describes none beyond naming folksongs and tales at 583, so the gap is recorded as missing content rather than filled by invention; 581 says `charts` for chants and `Ballade`; 583's `Folklore:Is a dictations stay ...` is garbled; no oral text is supplied. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
+    },
+    {
+      "id": "LIT-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 1-82 (title, class, header and scheme table; docx body child 3)",
+      "objective": "Index the opening section of the 2nd Term source as preamble: title `SECOND TERM SCHEME OF WORK 2016/2017` (1), `CLASS: SS1` (3), the registered header `LITERATURE – IN – ENGLISH ` (5), the 12 x 2 scheme table (docx body child 3, lines 7-53, block SHA-256 98ce4b4f1941cb55af76c05e1e74a3e41ed9a0763b9fe10d2a35d5612925c6a1) and the blank run 54-82 (block 1-82 SHA-256 1ddce9e0747bb5ea222b91e7c785b4388ec92fd2829ca1915a763e3a67c55c36). Map each scheme row to its week item: rows 1-9 to LIT-WK-T2-W01 to W09 and rows 10 and 11 (`REVISION` 49, `11 – 12 ` / `EXAMINATION` 51-53) to no body, because the document has no revision or examination body. Record the scheme/body divergences listed in LIT-INV-T2.md instead of harmonising them. Write the preamble coverage entries under the existing schema and hash-account the preamble privately. Write no lesson and no rule beyond a SCHEME_ONLY marker classification if LIT-MARK-T2 shows one is needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-PRE-T2.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level preamble coverage exists with exact anchors and the source hash; every scheme row is accounted for; no lesson claims approval or verification; nothing in the scheme is invented or harmonised."
+    },
+    {
+      "id": "LIT-MARK-T2",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 49, 53 and 235-1223 (7 assignment markers; 2 scheme-only rows)",
+      "objective": "Dispose of the source's markers. Seven assignment markers: `Assignment ` 235, `Assignment` 499, `Assignment` 629, `Assignment ` 751, `ASSIGNMENT` 805, `Assignment:` 1109, `Assignment:` 1221 (trailing spaces as stated); none is class work; Weeks Two and Seven have none; Week Six's block holds 21 non-blank exercise lines (807-847). The existing schema's classify_marker has only REVISION, EXAMINATION and SCHEME_ONLY kinds, so the assignment markers cannot be classified: record that gap precisely as a dependency, and do not change the shared schema. The scheme rows `REVISION` (49) and `EXAMINATION` (53) bind no parsed row, so only SCHEME_ONLY fits them; the anchors occur once each in the extract. Do not promote a marker to a teaching heading and do not drop any exercise line.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-MARK-T2.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No rule exists from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Every marker is accounted for; each classification is written only where the existing schema supports it; the assignment-marker gap is recorded as an explicit blocker or dependency; nothing is silently skipped and the shared schema is untouched."
+    },
+    {
+      "id": "LIT-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 83-241 (block SHA-256 2ec677a55a9701a8838cbb20e80ef8aab5807740d1af2762d33c26034fbd9a68)",
+      "objective": "Index the Week 1 block of the 2nd Term source: lines 83-241, block SHA-256 2ec677a55a9701a8838cbb20e80ef8aab5807740d1af2762d33c26034fbd9a68. Label `WEEK ONE` 83 (scheme week cell `1` 11, topic cell ` AFRICAN DRAMA : INRODUCTION TO HARVEST OF CORRUPTION` 13). Strand: African drama. Sections: `TOPIC: INTRODUCTION TO AFRICA DRAMA – HARVEST OF CORRUPTION ` 85; `HARVEST OF CORRUPTION` 87; `ABOUT THE AUTHOR` 89 (91-95); `SEQUENCE OF EVENTS` 97; `PLOT` 99; `THEME – THE CENTRAL MESSAGE OF HARVEST OF CORRUPTION` 131; `CHARACTERIZATION` 177 with `CHIEF ADE AMAKA:` 179 and `2. ALOHO:` 223. Text named: `HARVEST OF CORRUPTION` (87, and the topic line 85); the author named under `ABOUT THE AUTHOR` is `Frank Ogodo Ogbeche` (91); the document never writes `by` or `written by` for this play. Supplied as summary (plot, themes, characters); dialogue-style passages at 141-149, 159, 165-175 and 189 are interleaved with the summary. Markers: `Assignment ` 235 (trailing space) with three questions 237, 239, 241. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: Author biography 91-95 (institutions, `ANA`, `NIPE`, `NUJ`, plays named at 95) needs a source; dialogue-style passages 141-149, 159, 165-175, 189 need an attribution and reuse check; `Ochuole or Aloho` (241) and `Chief Ade Amaka` / `Ade-Amaka` / `Chief A. Amaka` vary the same name. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 265-345 (block SHA-256 5849c3e14507e456c06999f4f98e5d5caa2a7d9b451fc5484f63c616125d80e9)",
+      "objective": "Index the Week 2 block of the 2nd Term source: lines 265-345, block SHA-256 5849c3e14507e456c06999f4f98e5d5caa2a7d9b451fc5484f63c616125d80e9. Label `WEEK TWO` 265 (scheme week cell `2` 15, topic cell `THE BLOOD OF A STRANGER` 17). Strand: African drama. Sections: `TOPIC: THE BLOOD OF A STRANGER` 267; `ABOUT THE AUTHOR` 269 (271); `THE PLOT/STORY LINE – SEQUENCE OF EVENT` 273; `THEME` 291 with `EXPLOITATION` 293 and `SELFISHNESS AND DECEIT` 317; `SETTING` 325; `AUTHOR’S STYLE` 329; `CHARACTERIZATION` 333 with `MALIGU` 335 and `SOKO` 343. Text named: `THE BLOOD OF A STRANGER` (267); the author named under `ABOUT THE AUTHOR` is `Raymond Caleb Ayodele Charley` (271); the document never writes `by` for this play. Supplied as summary only. Markers: none (no assignment or class-work marker in this week). Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: 271 biography, including `born in 27th March 1948`, `Leads University London`, `Milton Mar gal Teacher Training College` and the claim that he led his group to `FESTAC 1977 in Lagos` where it `won the best play in the tournament`; the scheme row for this week carries no strand label (it inherits African drama from row 13). Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 377-503 (block SHA-256 fd6867988435487fae05ea226165a4ef4952339f8600582301cf706d14dc2e91)",
+      "objective": "Index the Week 3 block of the 2nd Term source: lines 377-503, block SHA-256 fd6867988435487fae05ea226165a4ef4952339f8600582301cf706d14dc2e91. Label `WEEK THREE` 377 (scheme week cell `3` 19, topic cell `AFRICAN POETRY : PIANO AND DRUMS` 21). Strand: African poetry. Sections: `TOPIC: AFRICAN PEOTRY` 379; author paragraph `GABRIEL IMOMOTINE OBAINBAING OKARA:` 381 and 383; `PIANO AND DRUMS` 385; poem 387-451; `Analysis:` 461; `POETIC DEVICES` 475 (`Imagery:` 481, `Enjambment:` 489). Text named: `PIANO AND DRUMS` (385) by `GABRIEL IMOMOTINE OBAINBAING OKARA` (381; the name is spelt `Gabriel okra` in 501 and 503). The poem is supplied in full at 387-451. Markers: `Assignment` 499 with two questions 501, 503. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: Okara biography 381-383 (`born in 1921`, `Black Orpheus`, the novel `the voice, published in 1964`) needs a source; the full poem 387-451 needs a reuse-permission check; the poetic-device passage 475-497 may misstate terms and must keep source wording apart from any correction. The quoted poem is lines 387-451 (block SHA-256 bf935cc4b31571b598a3ae4837d7bad975b90ffe488b471903ceacc421b1db38); do not copy it into a lesson without a recorded reuse-permission decision. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 539-633 (block SHA-256 b2959866c7d1dba0f5b1390b61333d8469e6c8afd11a0d8ac94634c08ce3b08c)",
+      "objective": "Index the Week 4 block of the 2nd Term source: lines 539-633, block SHA-256 b2959866c7d1dba0f5b1390b61333d8469e6c8afd11a0d8ac94634c08ce3b08c. Label `WEEK FOUR` 539 (scheme week cell `4` 23, topic cell `THE DINING TABLE` 25). Strand: African poetry. Sections: `TPOIC:  THE DINNING TABLE (GBANABOM HALLOWELL)` 541 (two spaces after the colon); `ABOUT THE POET` 543 (545); `The Poem ` 547; poem 549-603; `Analysis` 607; `THEME` 623. Text named: `THE DINNING TABLE (GBANABOM HALLOWELL)` (541). Supplied in full at 549-603. 545 says `A dinning table is from the collection of his poems` without naming the collection. Markers: `Assignment` 629 followed by `Rhetorical Question` 631 and a quoted line 633; whether these two lines are a question or a worked example is not stated, so both are recorded verbatim and not classified. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: 545 `He is a sierra Leonia writer` is the whole biography and the poet's name appears only in 541; the full poem 549-603 needs a reuse-permission check and an attribution check; no poetic-device section exists in this week. The quoted poem is lines 549-603 (block SHA-256 0286af76a104674f95899737bafea3b86ee9ac1890d612b9c9ce10eb2d58f147); do not copy it into a lesson without a recorded reuse-permission decision. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 641-755 (block SHA-256 047b8582e461cb5916d04f6bd53a7a5cc10f0fd39b88e9763f6a6c7dfcb451d0)",
+      "objective": "Index the Week 5 block of the 2nd Term source: lines 641-755, block SHA-256 047b8582e461cb5916d04f6bd53a7a5cc10f0fd39b88e9763f6a6c7dfcb451d0. Label `WEEK FIVE` 641 (scheme week cell `5` 27, topic cell `THE ANVIL AND THE HAMMER` 29). Strand: African poetry. Sections: `TOPIC: THE ANVIL AND THE HAMMER` 643; `Written by Kofi Awoonor` 645 (647); `The Anvil and the Hammer` 649; poem 651-693; `ANALYSIS` 697; `POETIC DIVICES` 719 with `FIGURE OF SPEECH` 725, `Enjambment or run on line:` 727, `Repetition:` 735, `Alliteration` 739. Text named: `THE ANVIL AND THE HAMMER` (643) `Written by Kofi Awoonor` (645). Supplied in full at 651-693. Markers: `Assignment ` 751 (trailing space) with two questions 753, 755. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: 647 biography needs a source (birthplace, parentage, schools); the full poem 651-693 needs a reuse-permission check; the poetic-device passage 719-747 may misstate terms (`Repetition` / `Alliteration` examples at 741-747) and must keep source wording apart from any correction; `Awonor` (753, 755) and `Discouss` (755) are spelling variants. The quoted poem is lines 651-693 (block SHA-256 f659f449f8e43efcd007cfdde247dd36e18af17dc94a48bcc5bba6d5b5bd141f); do not copy it into a lesson without a recorded reuse-permission decision. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 785-847 (block SHA-256 02626434963c7f4bd45732e649691d15b5efb6e9aafc82433014512cf555475d)",
+      "objective": "Index the Week 6 block of the 2nd Term source: lines 785-847, block SHA-256 02626434963c7f4bd45732e649691d15b5efb6e9aafc82433014512cf555475d. Label `WEEK SIX` 785 (scheme week cell `6` 31, topic cell `NON AFRICAN DRAMA : OTHELLO` 33). Strand: non-African drama. Sections: `TOPIC: NON – AFRICAN DRAMA – OTHELLO By Shakespare` 787; `OTHELLO:` 789 (791); `PLOT/STORY LINE` 793; `ASSIGNMENT` 805. Text named: `OTHELLO By Shakespare` (787; `Shakespare` is the source spelling). Supplied as a plot summary only (791-803); short quoted lines appear only inside the assignment at 825-831 and 841. Markers: `ASSIGNMENT` 805 (upper case, no colon, no trailing space) followed by nine multiple-choice questions 807-823 and passage questions 825-847 (speaker/addressee prompts at 833-837 and 843-847); no answer key is given. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: the assignment misspells names (`Lago`, `Casio`, `Bratiano`, `Bar Brantio`) and gives no answers; quoted lines 825-831 and 841 need an attribution check against an identified edition, which the document does not name; this is the only week whose assignment block is multiple-choice. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 861-939 (block SHA-256 13ca9dbea132c89d8c5f86966787329f694457f4d81ff2002ea6e891163dc047)",
+      "objective": "Index the Week 7 block of the 2nd Term source: lines 861-939, block SHA-256 13ca9dbea132c89d8c5f86966787329f694457f4d81ff2002ea6e891163dc047. Label `WEEK SEVEN` 861 (scheme week cell `7` 35, topic cell `SHE STOOPS TO CONQUER BY OLIVER GOLDSMITH` 37). Strand: non-African drama. Sections: `TOPIC: SHE STOOPS TO CONQUER` 863; `ABOUT THE AUTHOR` 865 (867-877); `THEMES IN SHE STOOPS TO CONQUER` 881 with `1. UP BRINGING OF THE CHILDREN` 883, `2. TRUE LOVE WILL FIND ITS WAY` 897, `SELFISHNESS AND AFFECTION` 913, `CONTENTMENT:` 925; `CHARACTERIZATION:` 929 with `MR. DICK HARDCASTLE:` 931. Text named: `SHE STOOPS TO CONQUER` (863); scheme row 37 adds `BY OLIVER GOLDSMITH`, and 867 begins `Oliver goldsmith is an Irishman`. Supplied as summary (themes, characters) only. Markers: none (no assignment or class-work marker in this week). Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: line 877 `He died in 1974.` (Goldsmith); line 869 says he `graduated and obtained degree in medicine practice as a physician in 1753` and was `elected to medical society in January 1753`; line 867 gives `born ... in 1728 at pallas`; the works lists at 871-877 carry garbled titles; none of these is adjudicated here; the scheme row has no strand label (inherited from row 33); `MR. DICK HARDCASTLE:` 931 is a character-heading spelling to confirm. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 965-1113 (block SHA-256 99035d9af9f91feb8019ab23b4274b4cfaace054b4587bf1314388705923946b)",
+      "objective": "Index the Week 8 block of the 2nd Term source: lines 965-1113, block SHA-256 99035d9af9f91feb8019ab23b4274b4cfaace054b4587bf1314388705923946b. Label `WEEK EIGHT` 965 (scheme week cell `8` 39, topic cell `NON AFRICAN POETRY : PULLEY` 41). Strand: non-African poetry. Sections: `TOPIC: NON-AFRICAN POETRY` 967; `PULLEY` 969; `ABOUT THE AUTHOR` 971 (973-977); `The Poem` 979; `The Pulley` 981 with commentary 983-985; poem 989-1037; `Analysis:` 1041; `Theme:` 1053 (1055-1061); `POETIC DEVICES` 1063 (alliteration 1065, `when` repetition 1075, metaphor 1083, `Synecdoche:` 1089, `Assonance:` 1093, `Rhyming scheme:` 1099). Text named: `PULLEY` (969) and `The Pulley` (981); the author named under `ABOUT THE AUTHOR` is `George Herbert (1593-1633)` (973; 1111 and 1113 say `George Herbert`). Supplied in full at 989-1037. The commentary at 983-985 is attributed to `{palmer}` (985, lower case, in braces) with no first name, title or edition. Markers: `Assignment:` 1109 with two questions 1111, 1113. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: 973 says Herbert held a pastoral post `at Bremerton`; 977 says the `164 poems that make up the temple`; the full poem 989-1037 needs a reuse-permission check; the Palmer commentary 983-985 needs an attribution and reuse check; the poetic-device passage 1063-1107 may misstate terms and must keep source wording apart from any correction; the scheme row (41) reads `NON AFRICAN POETRY : PULLEY`. The quoted poem is lines 989-1037 (block SHA-256 d2a3c01db42b7f05feef7bd72ae55966db039aa513d8f9581bdf8db868012a61); do not copy it into a lesson without a recorded reuse-permission decision. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-1728961e97b5",
+      "term": "2nd Term",
+      "week_or_locator": "mammoth extractRawText lines 1115-1223 (block SHA-256 afeb14f07a4de98cf01a9b09e589f0a0caa942c151a36df9678a0f61fdcd0ab8)",
+      "objective": "Index the Week 9 block of the 2nd Term source: lines 1115-1223, block SHA-256 afeb14f07a4de98cf01a9b09e589f0a0caa942c151a36df9678a0f61fdcd0ab8. Label `WEEK NINE` 1115 (scheme week cell `9.` 43, topic cell `THE SCHOOL BOY BY WILLIAM BLAKE` 45). Strand: non-African poetry. Sections: `TOPIC: THE SCHOOLBOY` 1117; `BY WILLIAMS BLAKES` 1119 (1121); poem 1123-1189; `Analysis:` 1193; `THEME:` 1207 (1209-1217). Text named: `THE SCHOOLBOY` (1117) `BY WILLIAMS BLAKES` (1119); scheme row 45 reads `THE SCHOOL BOY BY WILLIAM BLAKE`, and 1121 begins `Williams Blake was born`. Supplied in full at 1123-1189. Markers: `Assignment:` 1221 with one question 1223. Read every objective and exercise inside the span before writing anything. Implement actual objective-level coverage under the existing schema, with the exact anchor that occurs once and the source hash, and add a source rule only if the structure genuinely needs one. Missing content gets a precise open item and a small lesson task. Findings by LIT-INV-T2 that this item must settle: 1121 biography (`born on the 28th November 1757`, apprenticeship and schools) needs a source; the full poem 1123-1189 needs a reuse-permission check; this is the last body block, so no span follows it and there is no revision or examination body. The quoted poem is lines 1123-1189 (block SHA-256 235215fd8094963fad8fc0fcd6bdb75019b672f87132a5de84d36c1b3b062967); do not copy it into a lesson without a recorded reuse-permission decision. Keep drama and poetry strands distinct; do not present any named work as a prescribed text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/LITERATURE.docx",
+          "member_sha256": "a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "LIT-INV-T2",
+        "LIT-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     }
   ],
   "review": {
