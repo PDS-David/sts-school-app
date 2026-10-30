@@ -118,10 +118,14 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
   const grade = getGrade(d.ca1 + d.ca2 + d.exam);
 
   const { rows } = await query(
-    `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now())
+    // class_name (DATA-03): stamped from the students row at write time, never
+    // from the request. On conflict the original stamp is kept; a row that has
+    // none yet (recorded before this column existed) is stamped now.
+    `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
      ON CONFLICT(student_id,subject_id,term_id)
-     DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now()
+     DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                   class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
      RETURNING *`,
     [d.student_id, d.subject_id, d.term_id, d.ca1, d.ca2, d.exam,
      grade, d.teacher_remark ?? null, req.user!.id],
@@ -193,10 +197,12 @@ router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
   for (const s of scores) {
     const grade = getGrade(s.ca1 + s.ca2 + s.exam);
     const { rows } = await query(
-      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now())
+      // class_name stamp: same rule as POST /scores above (DATA-03).
+      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
        ON CONFLICT(student_id,subject_id,term_id)
-       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now()
+       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                     class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
        RETURNING *`,
       [s.student_id, s.subject_id, s.term_id, s.ca1, s.ca2, s.exam,
        grade, s.teacher_remark ?? null, req.user!.id],
@@ -303,12 +309,22 @@ router.get('/report/:student_id', async (req, res) => {
   const { rows: termRows } = await query('SELECT * FROM terms WHERE id=$1', [resolvedTermId]);
   const term = termRows[0];
 
+  // DATA-03: class comparison uses the class recorded on each score row
+  // (scores.class_name, stamped when the score was written) so promoting a
+  // student does not move a past term's average/highest/position. Where a row
+  // has no snapshot (recorded before the column existed — not backfilled) it
+  // falls back to the live students.class_name, i.e. exactly the old
+  // behaviour; so historic reports stay approximate, not certified. For each
+  // score row the target class is COALESCE(sc.class_name, $1) and a peer
+  // counts when COALESCE(s2.class_name, st2.class_name) equals it.
   const { rows: scoreRows } = await query(
     `SELECT sc.*, sub.name AS subject_name,
             (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
-             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1) AS class_average,
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
             (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
-             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1) AS class_highest,
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
             -- Position within the class for THIS subject/term — standard
             -- competition ranking (ties share a position; the next distinct
             -- score skips ahead by the tie count, e.g. two students tied
@@ -317,7 +333,8 @@ router.get('/report/:student_id', async (req, res) => {
             -- uses (see reportPdf.ts) — added in the same pass that
             -- rebuilt the template to match it.
             (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
-             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id AND st2.class_name=$1
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
                AND s2.total > sc.total) AS subject_position
      FROM scores sc
      JOIN subjects sub ON sub.id=sc.subject_id
@@ -344,12 +361,25 @@ router.get('/report/:student_id', async (req, res) => {
   // Deliberately a fresh query rather than reusing scoreRows/totalScore
   // above: those are just this one student's rows, but ranking needs every
   // student in the class summed the same way.
+  // DATA-03: rank within the class this student was recorded in for the term —
+  // the most common scores.class_name among their own rows (first seen wins a
+  // tie), or the live class when none of their rows carries a snapshot. Peers
+  // are matched on COALESCE(snapshot, live class) exactly as above.
+  const snapshotCounts = new Map<string, number>();
+  for (const r of scoreRows) {
+    if (r.class_name) snapshotCounts.set(r.class_name, (snapshotCounts.get(r.class_name) ?? 0) + 1);
+  }
+  let termClass: string = student.class_name;
+  let bestCount = 0;
+  for (const [cn, count] of snapshotCounts) {
+    if (count > bestCount) { termClass = cn; bestCount = count; }
+  }
   const { rows: classTotals } = await query(
     `SELECT s3.student_id, SUM(s3.total) AS grand_total
      FROM scores s3 JOIN students st3 ON st3.id = s3.student_id
-     WHERE st3.class_name = $1 AND s3.term_id = $2
+     WHERE COALESCE(s3.class_name, st3.class_name) = $1 AND s3.term_id = $2
      GROUP BY s3.student_id`,
-    [student.class_name, resolvedTermId],
+    [termClass, resolvedTermId],
   );
   const classSize = classTotals.length;
   const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;

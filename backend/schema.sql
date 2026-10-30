@@ -220,6 +220,14 @@ CREATE TABLE IF NOT EXISTS scores (
   UNIQUE(student_id, subject_id, term_id)
 );
 
+-- DATA-03: the student's class at the moment this score was first recorded.
+-- Stamped server-side by routes/scores.ts (never from client input) and kept
+-- on later edits so promotion cannot rewrite a past term's class statistics.
+-- Nullable on purpose: existing rows are NOT backfilled (the only source would
+-- be today's class, which is the problem being fixed); reports fall back to
+-- students.class_name where this is NULL.
+ALTER TABLE scores ADD COLUMN IF NOT EXISTS class_name TEXT;
+
 -- ── Attendance ────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS attendance (
   id           SERIAL PRIMARY KEY,
