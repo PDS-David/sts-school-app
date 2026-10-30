@@ -24,23 +24,24 @@
     "ECON-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). ECON-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "ECON-INV-T1 appended the 1st Term inventory items (25) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 25 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (ECON-INV-T1.md)."
+    "ECON-INV-T1 appended the 1st Term inventory items (25) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 25 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (ECON-INV-T1.md).",
+    "ECON-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing, visual, preservation and factual items; the 3rd Term inventory (ECON-INV-T3) remains unread. No lesson, coverage entry, rule, correction or asset was written."
   ],
   "counts": {
-    "FACTUAL_DEPENDENCY": 4,
-    "SOURCE_MARKER_DISPOSITION": 1,
-    "SOURCE_PREAMBLE_INDEXING": 1,
-    "SOURCE_PRESERVATION": 3,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 10,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 7
+    "FACTUAL_DEPENDENCY": 5,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_WEEK_INDEXING": 21,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "VISUAL_DISPOSITION": 10,
+    "SOURCE_PRESERVATION": 4
   },
   "status_counts": {
-    "BLOCKED": 1,
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 28
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "PENDING": 45,
+    "BLOCKED": 1
   },
   "items": [
     {
@@ -211,8 +212,8 @@
       "depends_on": [
         "ECON-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-10-30 from the 2nd Term original (member 'ECONOMICS.docx', SHA-256 7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e) taken from the supplied '2nd Term SS1' archive and hashed before conversion; equals the task's Member SHA-256. The composite archive hash was not checked (not supplied). word/document.xml: 817 body blocks (0-815 paragraphs, 816 sectPr); no w:tbl, media, header, footer or equation. Opening and scheme blocks 0-62 (sha256 7c5cb5a2df5d15275b77e3cdc8eed6eca6c9b16b075d06d9f1d00218001c5667); eleven labelled week bodies: W1 63-101 f4d5ed96...; W2 102-139 a2140890...; W3 140-188 856dc08e...; W4 189-281 5c5d8056...; W5 282-374 459c058c...; W6 375-436 229468c3...; W7 437-517 7a6f7710...; W8 518-613 1a451646...; W9 614-646 3c4dcd06...; W10 647-770 0fae9e75...; W11 771-815 dd872416...; scheme week 12 'REVISIONS AND EXAMINATION' (62) has no body. Public Enterprises sit inside Week 7 with no label; Population structure is scheme Week 9 but body Week 10. Seven drawing-bearing blocks (Week 4 curves and text-box tables); Week 8 population data is plain paragraphs. Appended 18 PENDING items: ECON-PRE-T2, ECON-MARK-T2-REVEXAM, ECON-WK-T2-W01 to W11, ECON-VIS-T2-W04-CURVES, ECON-VIS-T2-W04-TP-AP-MP-TABLE, ECON-VIS-T2-W08-POPULATION-DATA, ECON-PRES-T2-SOURCE-WORDING, ECON-FACT-T2-LAW-AND-DATA. Evidence: docs/ss1/work/microtasks/economics/ECON-INV-T2.md. Inventory only; no lesson, coverage, rule, correction or asset written; not approved or verified.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -1235,6 +1236,699 @@
       "status": "PENDING",
       "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Content issues: arithmetic).",
       "completion_condition": "Every worked example is rechecked with a recorded derivation; correct values are separated from the preserved source text; no answer is adopted unverified. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-WK-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1 (blocks 63-101; label block 63 text 'WEEK ONE' sha256 02d023b19be8af138a9384a85f999ef47567ccf1302b9ebab417bc092420e26c; range sha256 f4d5ed9649e02f6c299865a90b5c7b3df764749165a9e5b01c935604ed2becf3)",
+      "objective": "Index 2nd Term Economics Week 1 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 63-101. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W01.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 63, blocks 63-101, range sha256 f4d5ed9649e02f6c299865a90b5c7b3df764749165a9e5b01c935604ed2becf3. TOPIC: CAPITAL (64); types of capital 68-73 (fixed, circulating or working, current or liquid, social); importance of capital 74-81; THE ENTREPRENEUR 82-84 and functions 85-91; Questions: 92-97; blank blocks 98-101. Scheme blocks 2-3 also name 'meaning, types, characteristics, importance of capital' and the entrepreneur (meaning and functions); no heading for capital's characteristics was found, and question 97 asks for them. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 (blocks 102-139; label block 102 text 'WEEK 2DIVISION OF LABOUR' sha256 2edbfedc2d0804b4091414959cf3a0bc393bb82a8e6dd385e71f449bf870af35; range sha256 a2140890a7df0b135a99880e933d9e9fa47b61f262af6b246eee93afb103d63d)",
+      "objective": "Index 2nd Term Economics Week 2 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 102-139. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W02.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 102, blocks 102-139, range sha256 a2140890a7df0b135a99880e933d9e9fa47b61f262af6b246eee93afb103d63d. Division of labour 103; advantages 105-113; disadvantages 114-119; limitations 120-126; SPECIALISATION 127-129 with classification 130-134; QUESTIONS 135-138; blank 139. The label is glued to its topic with no separator. Scheme block 4 also asks for 'origin' of division of labour; no origin passage was found by heading. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3 (blocks 140-188; label block 140 text 'WEEK 3: SCALE OF PRODUCTION' sha256 783f4181394be489112ba0d12650f9b897f7ba711999b7744848cc289b1c186b; range sha256 856dc08e675aacc9e06d857c8be69ec6e43c82039b8c4c4ac5e40c7bf62069dc)",
+      "objective": "Index 2nd Term Economics Week 3 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 140-188. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W03.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 140, blocks 140-188, range sha256 856dc08e675aacc9e06d857c8be69ec6e43c82039b8c4c4ac5e40c7bf62069dc. Scale of production 141-145 (small, medium, large); economies of scale 146-151; INTERNAL ECONOMIES OF SCALE 152-162 with classification 155 (financial and managerial are at 156-157); INTERNAL DISECONOMIES 163-164; DISADVANTAGES OF LARGE SCALE PRODUCTION 165-170; EXTERNAL ECONOMIES 171-180 with classification 173; Questions 181-188 (block 181 is whitespace-prefixed; block 188 is numbered '4.' while 182-187 are unnumbered). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4 (blocks 189-281; label block 189 text 'WEEK 4: DEFINITION OF FIRM, PLANT AND INDUSTRY FIRM.' sha256 825075ff3236c7f4f2ec0b9f36505e546b3a66580749a6a28390e17686285c74; range sha256 5c5d805637b2f96d5115239dcf3bdb6856b3d473c9baec6eac6e6220b8b0344d)",
+      "objective": "Index 2nd Term Economics Week 4 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 189-281. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W04.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 189, blocks 189-281, range sha256 5c5d805637b2f96d5115239dcf3bdb6856b3d473c9baec6eac6e6220b8b0344d. Firm 190-191, plant 192-193, industry 194-195; factors that determine the size of a firm 196-205 (nine items); concept of TP, AP and MP 206-247 (TP curve drawn in blocks 208-216, AP curve 222-229, MP curve 232-241, formulas 217, 230, 244-246); TP/AP/MP data table 248-258 (drawn text boxes, with ellipsis cells for the pupil to fill and a '-4' in block 258); relationship between TP, AP and MP 259-260; QUESTIONS 262-263; fertiliser/total-product/marginal-product table 265-275 (ellipsis cells); calculation questions 281; blank 276-280. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 5 (blocks 282-374; label block 282 text 'WEEK 5 BUSINESS ORAGNISATION' sha256 44b4d1e0000962625450a55f3915d8ed992231a1b4699515366ecab9cdbaeb17; range sha256 459c058cc1d2b97a6b0c77c45d3ef91b3080570cb2772b24883eda171c795acb)",
+      "objective": "Index 2nd Term Economics Week 5 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 282-374. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W05.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 282, blocks 282-374, range sha256 459c058cc1d2b97a6b0c77c45d3ef91b3080570cb2772b24883eda171c795acb. Types of business organisations 284-293 (private enterprises 285; PUBLIC ENTERPRISES 286-293 with features 288); SOLE-PROPRIETORSHIP 294-330 (characteristics 297, source of capital 306, advantages 312, disadvantage 323); THE PARTNERSHIP 331-370 (features 333, types of partnership 341, types of partner 345, advantages 352, disadvantages 358, sources of capital 365); QUESTIONS: 371-373; blank 374. The label misspells ORAGNISATION. Scheme block 20 lists 'Contributions to the economy'; no heading with that name was found in this week. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6 (blocks 375-436; label block 375 text 'WEEK 6' sha256 58eb0cc319df5c86533ef8e746535b35bae59b8c6ff1c655fff69236f814a9d2; range sha256 229468c32722114915f7b3656f326c73a26fe78cee99e30cb4709f3e678de6e7)",
+      "objective": "Index 2nd Term Economics Week 6 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 375-436. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W06.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 375, blocks 375-436, range sha256 229468c32722114915f7b3656f326c73a26fe78cee99e30cb4709f3e678de6e7. The label is a stranded, space-prefixed 'WEEK 6' with the topic on the next block. PRIVATE LIMITED LIABILITY COMPANY 376-398 (features 378, advantages 386, disadvantages 393); PUBLIC LIMITED LIABILITY COMPANY 399-427 (features 401, advantages 411, disadvantages 420); SHARES, BOUNDS AND DEBENTURES 428-431 (BOUNDS is the source spelling; debenture defined at 430); QUESTTIONS: 432-436. Scheme block 25 lists 'Contributions to the economy'; no such heading was found. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 7 (blocks 437-517; label block 437 text 'WEEK 7:CO-OPERATIVE SOCIETIES' sha256 df35dd1660e6cf27746f4c6ee1dfe2bfdb87623d1670432fd45ea5d5668eb8d5; range sha256 7a6f7710b4c6c9ac549289bce77c9f07b19442beef82ca5ee867f2adff7b5557)",
+      "objective": "Index 2nd Term Economics Week 7 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 437-517. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W07.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 437, blocks 437-517, range sha256 7a6f7710b4c6c9ac549289bce77c9f07b19442beef82ca5ee867f2adff7b5557. CO-OPERATIVE SOCIETIES 438-472 (types 439, features 443, advantages 456, disadvantages 464); PUBLIC ENTERPRISES 473-511 with no separate WEEK label (features 475, advantages 483, disadvantages 493, REASONS FOR PUBLIC ENTERPRISES 502); QUESTIONS: 512-516; blank 517. The scheme gives two lines both labelled 'WEEK 7' (blocks 27 co-operative society and 33 public enterprises); the body carries one label for both. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 (blocks 518-613; label block 518 text 'WEEK 8: POPULATION' sha256 517692bb4a260c455a67255aac4580050869e0e8e9686f7212f0ec05df642d82; range sha256 1a451646ec315c65e8f18c4054cf8f5fee6da34c53c6a4a12b48afa2ce53bbfb)",
+      "objective": "Index 2nd Term Economics Week 8 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 518-613. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W08.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 518, blocks 518-613, range sha256 1a451646ec315c65e8f18c4054cf8f5fee6da34c53c6a4a12b48afa2ce53bbfb. FACTORS AFFECTING POPULATION GROWTH 520-525; BIRTH RATE 526-534; DEATH RATE 535-542; MIGRATION 543-549 (types 545); factors responsible for increase in population 550-559; consequences of rapidly growing population 560-569; AGEING OR DECLINING POPULATION 570-594 (factors 573, advantages of declining 581, disadvantages 587); QUESTIONS 595-613 with a data question (597-604, a population-data layout built from plain paragraphs, not a table object; titled 'Pollution statistics of a country in 1980 and 1996') and calculation parts 608-613. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9 (blocks 614-646; label block 614 text ' WEEK 9:                            POPULATION CENSUS' sha256 4ea84c337121772c31491a95e1857b6476c86878951572771c18124d86137270; range sha256 3c4dcd06a35f356a1918a753b8dedca3bf08676177c35437b13aba78c366af76)",
+      "objective": "Index 2nd Term Economics Week 9 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 614-646. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W09.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 614, blocks 614-646, range sha256 3c4dcd06a35f356a1918a753b8dedca3bf08676177c35437b13aba78c366af76. Census definition 615-624; TYPES OF POPULATION CENSUS 625-627 (de facto, de jure); IMPORTANCE 628-634; PROBLEMS 635-641; QUESTIONS 642-645. Scheme blocks 48-49 place 'Population structure or distribution (sex, age, geographical and occupational distribution)' in Week 9; the body places POPULATION DISTRIBUTION OR STURCTURE at 728-765 inside Week 10. The label has a leading space and a run of spaces. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10 (blocks 647-770; label block 647 text 'WEEK 10:                   THEORIES OF POPULATION' sha256 ddb6d05cdee72ede079a1b9cec37dc1c182772625316f3d9c15185e6ff03b90c; range sha256 0fae9e7585763adbe763de6e62c7664acb9903b0accffe3ca23f39b4ce98c31e)",
+      "objective": "Index 2nd Term Economics Week 10 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 647-770. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W10.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 647, blocks 647-770, range sha256 0fae9e7585763adbe763de6e62c7664acb9903b0accffe3ca23f39b4ce98c31e. Malthusian theory 648-658; DEMOGRAPHIC TRANSITION THEORY 659-671 (three stages); UNDER POPULATION 672-691; OPTIMUM POPULATION 692-704; OVER POPULATION 705-727 (control at 721); POPULATION DISTRIBUTION OR STURCTURE 728-765 (age 731, dependants 741, occupational 749, sex 757, geographical 762); QUESTIONS 766-769; blank 770. Scheme blocks 54 and 55 repeat 'How to control population growth'; the body's control passage is at 721 (control of over-population). The body has no separate passage found for population growth control beyond that. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-WK-T2-W11",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 11 (blocks 771-815; label block 771 text 'WEEK 11: LABOUR MARKET' sha256 2329345ea3dbe9c603b679e03e76f72fdaf2581ea5365dfedf419a9f0d64c660; range sha256 dd87241629d2f58debbeaf41af14bc498ea182d03fe90439bfd384b9a6ef7c12)",
+      "objective": "Index 2nd Term Economics Week 11 at objective level: list each scheme objective for the week, bind it to exact source blocks (locators from ECON-INV-T2) and to any supplement, and confirm scope against every QUESTIONS and calculation item inside blocks 771-815. Missing or mis-scoped teaching becomes an appended bounded lesson, correction or asset task, not a note. A QUESTIONS heading cannot erase teaching. Keep Economics separate from Commerce, Financial Accounting and Bookkeeping; keep source wording distinct from any later correction.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-WK-T2-W11.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): label block 771, blocks 771-815, range sha256 dd87241629d2f58debbeaf41af14bc498ea182d03fe90439bfd384b9a6ef7c12. Labour market 771; THE CONCEPT OF LABOUR FORCE 772-776; FACTORS AFFECTING THE SUPPLY OF LABOUR 777-783; MOBILITY OF LABOUR 784-789; TYPES 790-796; CAUSES 797-808; Questions 809-812; blank 813-815. Scheme block 56 'WEEK: 11' is a stranded label with the topic in block 57, and 'DEFINITION' (58) and 'FACTORS AFFECTIONG' (60) carry source typos. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+    },
+    {
+      "id": "ECON-PRE-T2",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "opening block 0-62 (range sha256 7c5cb5a2df5d15275b77e3cdc8eed6eca6c9b16b075d06d9f1d00218001c5667)",
+      "objective": "Index the unlabelled opening and the scheme of work as what they are, not as teaching weeks: 'SSS ONE ECONOMICS' (0), 'SCHEMES OF WORK' (1) and the scheme (2-62: WEEK 1 to WEEK: 12 with topic lines, including two lines labelled WEEK 7, a duplicated 'How to control population growth' at 54-55, and a topic line split across blocks 48-49). Map scheme weeks 1-11 to the body weeks (ECON-WK-T2-W01 to W11) and record that scheme week 12 (62) has no body (disposed by ECON-MARK-T2-REVEXAM). The document has no reference-books list, no subject/class line and no header or footer. Do not treat a one-line scheme heading as evidence that its topic was taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRE-T2.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): blocks 0-62, range sha256 7c5cb5a2df5d15275b77e3cdc8eed6eca6c9b16b075d06d9f1d00218001c5667. Scheme label blocks: 2 'WEEK 1: CAPITAL AS A FACTOR OF PRODUCTION', 4 'WEEK 2: DIVISION OF LABOUR ...', 6 'WEEK 3: SCALE OF PRODUCTION ...', 9 'WEEK 4 FIRM AND INDUSTRY', 13 'WEEK 5:  Business organization', 21 'WEEK 6 : Joint stock companies', 27 'WEEK 7:   Co-operation society', 33 'WEEK 7 :  Public Enterprises', 38 'WEEK 8: Population', 43 'WEEK 9: Population census', 50 'WEEK 10: Theories of population', 56 'WEEK: 11' (topic 57 'LABOUR MARKET'), 62 'WEEK: 12 REVISIONS AND EXAMINATION'. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Blocks 0-62 mapped or classified with locators; scheme week numbers and the duplicated Week 7 recorded as read; nothing invented."
+    },
+    {
+      "id": "ECON-MARK-T2-REVEXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "scheme block 62 'WEEK: 12 REVISIONS AND EXAMINATION' (text sha256 25bfb9b1c0604897e2ac2e9aaffed1e1484d5c39ce118a6f8622bfa4840fb498); no body label for Week 12",
+      "objective": "Disposition the one revision/examination marker: scheme block 62. Classify it as a calendar marker, not a teaching week: no empty lesson, coverage row or asset may be created, and the parser finding (classify_marker) is recorded, not implemented as a rule. Record that the document has no Week 12 body, revision worksheet or examination paper. The in-body QUESTIONS blocks (92, 135, 181, 262, 371, 432, 512, 595, 642, 766, 809) are assessment inside teaching weeks, not markers.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-MARK-T2-REVEXAM.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): block 62 text 'WEEK: 12 REVISIONS AND EXAMINATION'; last text block is 812 (Week 11 question), blocks 813-815 are empty and 816 is w:sectPr. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Marker classified with locator and an explicit statement that no instructional body exists; nothing invented."
+    },
+    {
+      "id": "ECON-VIS-T2-W04-CURVES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4 blocks 208-216 (TP curve), 222-229 (AP curve), 232-241 (MP curve): DrawingML groups, no raster image (range sha256 96afbe5d8b5c4732cf6b60c02428f10e6d7329166b242feecf883a6b1dab9f13)",
+      "objective": "Give a visual disposition to the three product curves in Week 4, drawn with DrawingML shape groups (wgp/wsp) and loose axis labels in the paragraphs around them (210-215, 223-229, 233-241): TP with 'Point of diminishing returns', AP and MP against 'Unit of Labour'. Record whether the plain-text extraction keeps any of the meaning (axis letters and fragments only), whether a supplement must describe the curves in words, and keep the formulas TP = AP X Q (217), AP=TP/Q (230) and MP = CHANGE IN TP/CHANGE IN VARIABLE FACTOR (244-246) verbatim. Do not invent curve points the drawing does not show.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T2-W04-CURVES.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2",
+        "ECON-WK-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): drawing-bearing blocks 208 (1 drawing: group + 3 shapes), 216 (3 drawings), 222, 232 (1 each); no w:tbl, media or equation objects anywhere in the document. Range 208-241 sha256 96afbe5d8b5c4732cf6b60c02428f10e6d7329166b242feecf883a6b1dab9f13. The drawings were not rendered; shape content beyond text-box text was not interpreted. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T2-W04-TP-AP-MP-TABLE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4 blocks 248-258 (range sha256 e3763df68b3ad511066f66dc174e888a5c96173917616f81bc3769ec9d4235cd) and 265-275 (range sha256 9cc08af3fa1850092488a61388b8dff3361eff72f4c3849482244ba358f05d6c)",
+      "objective": "Give a structural disposition to the two data layouts in Week 4 that are built from drawn text boxes, not table objects: the TP/AP/MP table (248-258: headings 'VARIABLE UNIT OF LABOUR', 'FIXED FACTOR hectares of land', 'TOTAL PRODUCT (Kg)', 'AVERAGE PRODUCT (Kg)', 'MARGINAL PRODUCT (kg)'; rows 1-8; ellipsis cells and one '-4' at block 258) and the fertiliser table (265-275: 'Tonnes of fertilizer applied', 'total product in bags', 'marginal product', rows 0-9 with ellipsis cells). Extracted text concatenates the cells without separators (for example '2318910'), so the cell-to-row mapping must be rebuilt from the shapes before any figure is quoted. Record every figure verbatim; do not fill the ellipsis cells and do not answer the questions at 262-263 and 281.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T2-W04-TP-AP-MP-TABLE.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2",
+        "ECON-WK-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): blocks 249-250 and 265 carry the heading text boxes (drawing counts 1+1 and 3); rows are plain paragraphs 251-258 and 266-275. Block 258 reads '83567             -4'. Not rendered; cell boundaries inferred only from shape order, so the mapping is unverified. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-VIS-T2-W08-POPULATION-DATA",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Week 8 blocks 597-604 (range sha256 2b6e2513c22ae9ec7900b95d28048fd7321e852c25cfaae352a0c3875593e19e): population-data layout from plain paragraphs",
+      "objective": "Give a structural disposition to the population-data question in Week 8 (597-604): the lead line 'Use the information in the table and answer the following questions.' (597), the title 'Pollution statistics of a country in 1980 and 1996' (598), the 'Year 19801996' header (599) and the rows for births, deaths, immigration, emigration and total population in million (600-604, dashes and unseparated figures), followed by five calculation parts (608-613). It is described as a table but is not a table object: columns must be rebuilt from the text, and the title says 'Pollution' although the rows are population data. Keep the source wording; do not compute or fill the missing values.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-VIS-T2-W08-POPULATION-DATA.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2",
+        "ECON-WK-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): block 599 'Year 19801996'; 600 'No of Birth in Million------48'; 604 'Total population in Million5698'. No w:tbl in the document. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "ECON-PRES-T2-SOURCE-WORDING",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "verbatim wording and defects: blocks 3, 60, 102, 134, 282, 286-287, 428, 432, 570-587, 598-599, 728",
+      "objective": "Preserve the source's own wording, including its defects, as source-faithful text distinct from any later correction: 'FACOR' (3), 'AFFECTIONG' (60), the glued label 'WEEK 2DIVISION OF LABOUR' (102), 'TERRITORIA' (134), 'ORAGNISATION' (282), 'PULIC ENTERPRISES' (287), 'BOUNDS' for bonds (428), 'QUESTTIONS:' (432), 'DECLING' (581, 587), 'Pollution statistics' for population data (598), 'Year 19801996' (599), 'STURCTURE' (728), the space-prefixed labels 63, 375, 614 and the two scheme lines both labelled WEEK 7 (27, 33). Lesson authors may quote the original and flag a defect, but may not silently normalise it or present a corrected wording as the author's. No source page or private render is committed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-PRES-T2-SOURCE-WORDING.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): defect strings listed in the objective were read directly from word/document.xml block text. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-815 are w:p; block 816 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text inside drawings is included); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). A week range runs from its label block to the block before the next label (the last to block 815).",
+      "completion_condition": "Every listed defect is recorded under the existing schema with exact blocks; corrections stay separate from the preserved original wording."
+    },
+    {
+      "id": "ECON-FACT-T2-LAW-AND-DATA",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-03d0cac39679",
+      "term": "2nd Term",
+      "week_or_locator": "Nigerian examples, legal limits and dated statements: blocks 191, 285, 287, 334, 377, 474, 633, 649, 765, 599-604",
+      "objective": "Verify later, with dated authoritative sources, the statements that tie curriculum concepts to Nigerian law, institutions and examples before a lesson presents them as current: firm examples (191), private and public enterprise examples (285, 287, 474), the partner limits 'two to twenty ... two to ten for a banking business' (334), the private-company shareholder limit 'two to fifty' and the company-name abbreviation rule (377), the census importance example naming Lagos and Kano (633), the Malthus essay date and description (649) and the Nigeria distribution example (765), plus the 1980/1996 figures in 599-604. Present each as a dated illustration or cite the primary law or data with its effective date; keep the source's original wording distinct from any corrected fact; do not treat Economics statements as Commerce or Financial Accounting law. Record nothing as verified until the evidence exists.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ECONOMICS.docx",
+          "member_sha256": "7f353ce448daaeb3de68f9f40fc1deb0694e9a0c998d8ad5759eb0b87927020e"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T2-LAW-AND-DATA.md"
+      ],
+      "depends_on": [
+        "ECON-INV-T2",
+        "ECON-SRC-T2",
+        "ECON-WK-T2-W04",
+        "ECON-WK-T2-W05",
+        "ECON-WK-T2-W06",
+        "ECON-WK-T2-W07",
+        "ECON-WK-T2-W08",
+        "ECON-WK-T2-W09",
+        "ECON-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory (ECON-INV-T2): statements flagged from reading only; none was checked against any external source in this item.",
+      "completion_condition": "Each date-sensitive or legal statement is either given a dated authoritative citation or explicitly framed as a dated illustration kept distinct from the source's wording, with no invented verification."
     }
   ],
   "review": {
@@ -1250,7 +1944,6 @@
     }
   },
   "next_runnable": [
-    "ECON-INV-T2",
     "ECON-INV-T3",
     "ECON-TEST-PACKAGE",
     "ECON-PRE-T1",
@@ -1274,6 +1967,20 @@
     "ECON-VIS-T1-PUBLISHER-MEDIA",
     "ECON-PRES-T1-CALCULATIONS",
     "ECON-PRES-T1-SOURCE-WORDING",
-    "ECON-PRES-T1-LAYOUT"
+    "ECON-PRES-T1-LAYOUT",
+    "ECON-WK-T2-W01",
+    "ECON-WK-T2-W02",
+    "ECON-WK-T2-W03",
+    "ECON-WK-T2-W04",
+    "ECON-WK-T2-W05",
+    "ECON-WK-T2-W06",
+    "ECON-WK-T2-W07",
+    "ECON-WK-T2-W08",
+    "ECON-WK-T2-W09",
+    "ECON-WK-T2-W10",
+    "ECON-WK-T2-W11",
+    "ECON-PRE-T2",
+    "ECON-MARK-T2-REVEXAM",
+    "ECON-PRES-T2-SOURCE-WORDING"
   ]
 }
