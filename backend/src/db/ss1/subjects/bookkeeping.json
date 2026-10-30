@@ -439,6 +439,204 @@
           "explanation": "Week 2 recorded the same absence (BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT): no week of the 1st Term document shows a cash book being balanced or a balance brought down. Week 4 asks for the skill without teaching it, so the requirement is UNRESOLVED here too and is raised as BOOKKEEPING-T1-W04-BALANCING-UNTAUGHT."
         }
       ]
+    },
+    {
+      "id": "COV-BK-T1-W01-SCHEME-2",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 2: the cash book, its meaning (\"measuring\" in the scheme) and the items of a single column cash book",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 4-6 (sha256 2fb2e055f03ddf888eb4c12a792b1dc354e0dad5cc6277b837a357b68106ea0e, 84 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme blocks 4-6: 2.Cash book / -Measuring of single column cash book. / -Items of single column cash book",
+          "explanation": "Entry 2 carries two sub-items, meaning and items. The word Measuring in block 5 appears to intend Meaning. The body defines the cash book at 33 but never lists its items, so the entry is only partly carried."
+        },
+        {
+          "locator": "body blocks 33-34 (sha256 e0e73db149a8e950a9762ca9e8930f1023aa7f194118615b3c0f8fdd40eac9db, 160 characters)",
+          "explanation": "The introduction defines the book and forbids credit entries, which answers the meaning sub-item in general terms. It never names the single column type or its items. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-SCHEME-3",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 3: the single column cash book and the preparation of a single column cash book",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 7-8 (sha256 324140ef4425dab006678c59bd2d0648b998385fe02dbc6d2127b1c5f4bbe409, 66 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme blocks 7-8: 3.Single column cash book / -Preparation of single column cash book.",
+          "explanation": "The entry names the type and its preparation. The body contains one preparation exercise (Illustration 1) but it is set in a cash account, not a single column cash book, and its printed solution disagrees with its own question."
+        },
+        {
+          "locator": "body blocks 37-57 (sha256 3b807c5b6396b525b897e40dc65d31fffd9f9846b5faf362c70d0533dcdcc222, 531 characters)",
+          "explanation": "Illustration 1 asks for the Olaide transactions to be entered in the cash account and prints a T-account solution. No cash book ruling, no folio column and no single amount column appears. PARTIAL; the figure check is BOOKKEEPING-T1-W01-FIGURE-CHECKS."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-SCHEME-4",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Scheme entry 4: preparation of the single column cash book (continues)",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme block 9 (sha256 1da5ea888ede0fa3c16ee689678ca42c29863f266d1fca3346bd19b18bdb8a8a, 52 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme block 9: 4.Preparation of single column cash-book (continues)",
+          "explanation": "The entry promises a second preparation lesson. No second single column cash book is prepared anywhere in the section; the only later preparation is Illustration 2, which is a bank account."
+        },
+        {
+          "locator": "body blocks 59-80 (sha256 5007752ec00927ef08b8ecf7e1233652b7b1ec008cda94c6a7a6d8f6ad41724a, 555 characters)",
+          "explanation": "Illustration 2 enters June transactions in a bank account, not a cash book, and its solution copies Illustration 1 credit entries. The continuation is therefore carried by a different account. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-MEANING",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The meaning of the cash book: the book for recording receipts and payments of money in cash or cheque, with no credit transaction recorded",
+      "objective_locator": "body blocks 33-34 (sha256 e0e73db149a8e950a9762ca9e8930f1023aa7f194118615b3c0f8fdd40eac9db, 160 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 33: INTRODUCTION: This is the book for recording receipts and payments of money in cash or cheque.",
+          "explanation": "The definition is one sentence and covers cash and cheque receipts and payments. It never says that the book is the single column type or that it has one amount column per side."
+        },
+        {
+          "locator": "block 34: NOTE: No credit transaction should be recorded in the cash book.",
+          "explanation": "The no-credit rule is stated plainly and is the only rule attached to the definition. The definition is usable but general; the scheme type is not defined. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-ITEMS",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Items of the single column cash book: the columns and the receipts and payments that are recorded in them",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme block 6 (sha256 b327c1b07f17e954d9c92ccc746ecf9618e8fcb824ae5cc1cca116ceba506ef1, 33 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme block 6: -Items of single column cash book",
+          "explanation": "The sub-item is named in the scheme and never developed in the body. No list of columns (date, particulars, folio, amount) or of receipt and payment items appears."
+        },
+        {
+          "locator": "body blocks 33-36, 39 and 49-50",
+          "explanation": "The only headings are the bare N at blocks 39 and 61 and the Dr/Cr account line at 49 and 70. A column heading is not an items lesson. UNRESOLVED; the gap is BOOKKEEPING-T1-W01-ITEMS-MISSING."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-FORMAT",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The form and ruling of a single column cash book needed to prepare one: date, particulars, folio and amount columns",
+      "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 7-9 (sha256 50330b5b475e5f15d0f836f02e8e9c17b8e248a8a0ebb16f9724b99c3c623ae5); body blocks 49-57 (sha256 c6cc1788f5cf6a2b3cf0f985d9fa3e172bd20c82610ec0d8066a725343519ccc) and 70-80 (sha256 4217801cae93fd2979dd22162e95b5db4a0b709168796ddde63e32020d61491c)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "body blocks 49-57: the Illustration 1 solution",
+          "explanation": "The solution is a T-account: a DR/CASH ACCOUNT/CR line at 49, a N/N line at 50, entries at 51-56 and totals at 57. It has no date column, no particulars column, no folio column and no running balance, so it is not a single column cash book."
+        },
+        {
+          "locator": "body blocks 70-80 and the drawings at blocks 49, 56, 70 and 79",
+          "explanation": "The Illustration 2 solution repeats the T-account form for a bank account. The account rules are drawing objects, not a Word table, and no cash book format exists anywhere in the week. UNRESOLVED; the gap is BOOKKEEPING-T1-W01-FORMAT-MISSING."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-CASH-ACCOUNT",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The cash account: the account for money received and paid in cash, the balance called cash in hand, receipts debited and payments credited",
+      "objective_locator": "body block 36 (sha256 5da149f2ada3277cd07127cecf11dceddcdc84d4c4a0acb32d402ac0a6db8f6b, 228 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 36: CASH ACCOUNT: This is the account which is used for recording money received and paid with cash. The balance is referred to as CASH IN HAND. All cash received must be debited while cash paid will be credited to the cash account.",
+          "explanation": "The account is defined and the debit/credit rule is stated correctly for cash receipts and payments. The balance name cash in hand is given."
+        },
+        {
+          "locator": "blocks 33 and 36 read together",
+          "explanation": "The section never connects the cash account to the cash book of block 33, so a pupil cannot tell whether the two are the same thing or how one relates to the other. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-BALANCING",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Balancing the cash and bank accounts: the balance carried down and brought down at the end of the period",
+      "objective_locator": "body blocks 56-57 (sha256 0d8692ae3cd6a3c23e5b1dd6fcd108c1aac32b42b2ba3f6a74fe9bedafd6d28a) and block 78 (sha256 4699386dcdafd23bf812b74b1c3ab5cd7beb819ae079264dd314393a643e9047, 27 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 56: Bal. c/d1,010 and block 57: 2,1152,115",
+          "explanation": "A closing balance is printed with no rule for finding it: the reader is not told to add the two sides, subtract the smaller total, or carry the difference down. The figure is also wrong against the question."
+        },
+        {
+          "locator": "block 78: Bal. b/d 1,910Bal. c/d1,010",
+          "explanation": "The bank solution prints a brought-down and a carried-down balance side by side with no explanation of either, and both disagree with the transaction list. The only balancing model in the week is unusable. PARTIAL; the gap is BOOKKEEPING-T1-W01-BALANCING-UNTAUGHT."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-ILLUS-1",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Illustration 1: enter eight July transactions for Olaide in a cash account and balance it",
+      "objective_locator": "body blocks 37-48 (sha256 82ab7015b5e6a78452764d28f3f6a77419ed676234a73ae8ee43c236eef78054, question) and 49-57 (sha256 c6cc1788f5cf6a2b3cf0f985d9fa3e172bd20c82610ec0d8066a725343519ccc, solution)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 40-47: July 1 cash in hand 1,500; July 3 Okola 250; July 5 sales 500; July 6 purchases 700; July 7 stationery 50; July 9 insurance 30; July 10 wages 25; July 12 sales 155",
+          "explanation": "Receipts total 2,155 and payments 1,055, so the opening 1,500 leaves a closing balance of 1,100. The question is complete and could be solved as set."
+        },
+        {
+          "locator": "blocks 49-57: the printed solution",
+          "explanation": "Debits 1,500 + 500 + 115 = 2,115; credits 250 + 750 + 50 + 30 + 25 + 1,010 = 2,115. The solution balances with itself but not with the question: block 53 prints 115 for 155 and block 52 prints 750 for 700, and the balance 1,010 is 90 below the correct 1,100. PARTIAL; the arithmetic is BOOKKEEPING-T1-W01-FIGURE-CHECKS."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-BANK-ACCOUNT",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "The bank account: the record of money deposited and withdrawn, cheques received debited and cheques issued credited",
+      "objective_locator": "body block 58 (sha256 d786b6745b91b0f1b1d0440d640294494a4d4d50555ecf75814996a19feb2bf9, 190 characters)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 58: BANK ACCOUNT: The bank account is a record of money deposited into the bank and money withdrawn from the bank. All cheques received must be debited while cheques issued out must be credited.",
+          "explanation": "The definition and the cheque rule are stated correctly for a bank account."
+        },
+        {
+          "locator": "block 58 against the Week 2 scheme",
+          "explanation": "The section teaches the bank as a separate account. It does not mention the bank column of a cash book, which Week 2 introduces, so the treatment is correct but out of sequence with the scheme. PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T1-W01-ILLUS-2",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "objective": "Illustration 2: enter six June transactions for Ogundele in a bank account and balance it",
+      "objective_locator": "body blocks 59-69 (sha256 39c4f48ca9399b168348d14c007e7fc75d150e87f77ff6dac8971c45a1aed492, question) and 70-80 (sha256 4217801cae93fd2979dd22162e95b5db4a0b709168796ddde63e32020d61491c, solution)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 62-67: June 1 Cash in hand2,500; June 3 Paid to Okocha by cheque 650; June 5 sold goods, received cheque 450; June 6 cheque from Agali 230; June 7 sent cheque to Komolafe (no amount); June 9 bought goods with cheque 300",
+          "explanation": "Receipts total 3,180 (2,500 + 450 + 230) and the known payments 950 (650 + 300), so the closing balance should be 2,230. June 7 has no amount, so the question cannot be completed as printed."
+        },
+        {
+          "locator": "blocks 72-80: the printed solution",
+          "explanation": "Debits 2,500 + 450 + 230 = 3,180. Credits are 650 + 750 + 50 + 30 + 25 = 1,505 plus a carried-down 1,010 = 2,515, not the 3,180 printed at block 80. Blocks 73-76 repeat Illustration 1 July entries and June 9 is omitted; block 78 prints an unexplained Bal. b/d 1,910. PARTIAL; see BOOKKEEPING-T1-W01-FIGURE-CHECKS."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -620,6 +818,89 @@
       "affected_ids": [
         "COV-BK-T1-W04-ILLUSTRATION",
         "BOOKKEEPING-T1-W04-SOURCE-DEFECTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Fourteen defects found in Week 1 (blocks 30-86), retained uncorrected: (1) block 49: DRCASH ACCOUNTCR runs the Dr and Cr headings together with no separator, while block 70 uses DRBANK ACCOUNT   CR, so the two layouts are inconsistent. (2) blocks 51-56: no fixed spacing between particulars and amounts (bal. b/f1,500, Okola   250) and the debit and credit columns are separated by runs of three to five spaces. (3) block 52: Purchaser misspells purchases and prints 750 where the question at block 43 says 700. (4) block 53: prints 115 where the question at block 47 says 155. (5) block 56: Bal. c/d1,010 has no space, and 1,010 is 90 below the 1,100 the question gives. (6) block 57: the totals 2,1152,115 run together with no separator and pair with the wrong figures. (7) blocks 39 and 61: the column heading is only N, with no debit and credit column labels beyond the Dr/Cr account line. (8) block 62: a bank account is opened with Cash in hand2,500; an opening bank balance cannot be cash in hand, and the entry should open the account with a balance brought down. (9) block 66: June 7 Sent Cheque to Komolafe has no amount, so the credit side cannot be completed or balanced. (10) block 67: the June 9 cheque purchase of 300 is omitted from the solution. (11) blocks 73-76: the credit side repeats Illustration 1 July 3, 6, 7, 9 and 10 entries and amounts (Okocha 650, Purchaser 750, Stationery 50, Insurance 30, wages 25) instead of the June transactions; only the 650 belongs to this question. (12) block 78: Bal. b/d 1,910 and Bal. c/d1,010 are printed without explanation, and the c/d is copied from Illustration 1. (13) block 80: 3,1803,180 runs together, and the equality is false: the debit side is 3,180 but the credit items are 1,505 plus 1,010 = 2,515. (14) block 72: June 1 bal. b/f2,500 uses b/f for an opening balance, normally b/d or the opening entry.",
+      "required_action": "Decide the correction wording and the treatment of both illustrations in BK-FACT-T1-W01-DEFECTS before the cash book lesson is authored; no correction is authored here and no figure may be copied from the printed solutions unverified.",
+      "affected_ids": [
+        "COV-BK-T1-W01-SCHEME-2",
+        "COV-BK-T1-W01-SCHEME-3",
+        "COV-BK-T1-W01-SCHEME-4",
+        "COV-BK-T1-W01-MEANING",
+        "COV-BK-T1-W01-ITEMS",
+        "COV-BK-T1-W01-FORMAT",
+        "COV-BK-T1-W01-CASH-ACCOUNT",
+        "COV-BK-T1-W01-BALANCING",
+        "COV-BK-T1-W01-ILLUS-1",
+        "COV-BK-T1-W01-BANK-ACCOUNT",
+        "COV-BK-T1-W01-ILLUS-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W01-FIGURE-CHECKS",
+      "kind": "VERIFICATION",
+      "detail": "Arithmetic checks on both illustrations. Illustration 1 (blocks 37-57): the question gives receipts 1,500 + 500 + 155 = 2,155 and payments 250 + 700 + 50 + 30 + 25 = 1,055, so the closing balance is 1,100. The solution gives debits 1,500 + 500 + 115 = 2,115 and credits 250 + 750 + 50 + 30 + 25 + 1,010 = 2,115: it balances with itself but understates receipts by 40 (115 for 155), overstates payments by 50 (750 for 700) and understates the balance by 90 (1,010 for 1,100). Illustration 2 (blocks 59-80): the question gives receipts 2,500 + 450 + 230 = 3,180, known payments 650 + 300 = 950 and therefore a closing balance of 2,230, with June 7 unquantified. The solution gives debits 3,180 and credits 650 + 750 + 50 + 30 + 25 = 1,505 plus 1,010 = 2,515, so the printed 3,180 equality at block 80 is false, the 1,910 at block 78 has no derivation, and both printed balances are irreconcilable with the transaction list.",
+      "required_action": "Carry these checks into BK-FACT-T1-W01-DEFECTS and BK-LES-T1-W01-CASH-BOOK: every figure in the lesson must be derived and shown, and the printed solutions must not be reused as correct.",
+      "affected_ids": [
+        "COV-BK-T1-W01-ILLUS-1",
+        "COV-BK-T1-W01-ILLUS-2",
+        "COV-BK-T1-W01-BALANCING"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W01-ITEMS-MISSING",
+      "kind": "CONTENT",
+      "detail": "The scheme sub-item Items of single column cash book (block 6) has no teaching. Nothing in blocks 30-86 lists the columns of the book (date, particulars, folio, amount) or the receipts and payments that belong in each column. Blocks 33-36 describe a cash book, a cash account and a bank account in prose, and the only headings are the bare N at blocks 39 and 61 and the Dr/Cr line at 49 and 70.",
+      "required_action": "Author the items list in BK-LES-T1-W01-CASH-BOOK, with the column names, the entries that belong in each, and a worked placement exercise.",
+      "affected_ids": [
+        "COV-BK-T1-W01-SCHEME-2",
+        "COV-BK-T1-W01-MEANING",
+        "COV-BK-T1-W01-ITEMS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W01-FORMAT-MISSING",
+      "kind": "CONTENT",
+      "detail": "The scheme asks for preparation of a single column cash book (blocks 7-9) but the body prepares T-accounts: blocks 49-57 and 70-80 carry a DR/CASH ACCOUNT/CR or DR/BANK ACCOUNT/CR line, an N/N heading and rules drawn as shapes at blocks 49, 56, 70 and 79. No cash book ruling, date column, particulars column, folio column, running balance or distinction between the cash book and the cash account is given, so a pupil cannot prepare the book the scheme names.",
+      "required_action": "Author the single column cash book format and a preparation procedure in BK-LES-T1-W01-CASH-BOOK, using the source transactions re-solved and labelled as authored where the printed solutions are wrong.",
+      "affected_ids": [
+        "COV-BK-T1-W01-SCHEME-3",
+        "COV-BK-T1-W01-SCHEME-4",
+        "COV-BK-T1-W01-FORMAT",
+        "COV-BK-T1-W01-ILLUS-1",
+        "COV-BK-T1-W01-ILLUS-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W01-BALANCING-UNTAUGHT",
+      "kind": "CONTENT",
+      "detail": "Balancing is shown, not taught. Block 56 prints Bal. c/d1,010 and block 78 prints Bal. b/d 1,910 alongside Bal. c/d1,010, with no rule for when to balance, how to find the difference between the sides, what to do when payments exceed receipts, or why a brought-down balance differs from a carried-down one. The only printed balances are also arithmetically wrong (BOOKKEEPING-T1-W01-FIGURE-CHECKS), so the week contains no usable model of balancing.",
+      "required_action": "Teach balancing in BK-LES-T1-W01-CASH-BOOK: the closing and opening balances, the c/d and b/d steps, and practice whose answers are derived from the corrected figures.",
+      "affected_ids": [
+        "COV-BK-T1-W01-BALANCING",
+        "COV-BK-T1-W01-ILLUS-1",
+        "COV-BK-T1-W01-ILLUS-2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-W01-NO-EXERCISE",
+      "kind": "CONTENT",
+      "detail": "Week 1 sets no exercise, assignment or question of any kind: both illustrations are printed with solutions (blocks 37-57 and 59-80) and no unsolved practice, answer key, mark allocation or completion criterion exists. The printed solutions are teaching material recorded under BK-PRES-T1-WORKED, not assessment, so no Week 1 assessment entry can be indexed and nothing in the week can test the pupil.",
+      "required_action": "Append the practice and marking to BK-LES-T1-W01-CASH-BOOK as authored questions with complete answers, not as source questions.",
+      "affected_ids": [
+        "COV-BK-T1-W01-SCHEME-3",
+        "COV-BK-T1-W01-SCHEME-4",
+        "COV-BK-T1-W01-ILLUS-1",
+        "COV-BK-T1-W01-ILLUS-2"
       ],
       "blocks_delivery": true
     }
