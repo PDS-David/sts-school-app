@@ -21,7 +21,8 @@
     "Defects reported in the SS1-03 checkpoint (T3 Weeks 1-5) are queued as PHYS-FACT-T3-* verification items, not as established facts.",
     "Unmerged work on PR #71 head b5ced7ebb0efe22df2351baa140266fbf40cbf41 (physics.json blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3: 5 lessons for 2nd/3rd Term, 1 rule, 32 coverage entries, 5 open items; reconciliation item D-1) is NOT implemented on master. It is tracked as PHYS-PORT-D1-* and PHYS-CMP-D4-* items. Do not merge #71 or copy its schema.",
     "Several items write the same package file. Workers start from current master, change only their own entries and rebase; PENDING means unclaimed.",
-    "PHYS-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. physics.json now has 5 source_rules (added SS1-SRC-5c0149cda71d-R002 and SS1-SRC-5c0149cda71d-R003, both SCHEME_ONLY) and 2 coverage entries (COV-PHYS-T1-TITLE and COV-PHYS-T1-REFERENCES, both MARKER). Scheme week 11 (Revision) has no parsed row or teaching body; scheme weeks 5 and 6 share the parsed WEEK FIVE AND SIX row. Note 1 is the queue-generation snapshot. Per-block hashes and the scheme-row mapping are in docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Nothing was run; testing remains deferred."
+    "PHYS-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. physics.json now has 5 source_rules (added SS1-SRC-5c0149cda71d-R002 and SS1-SRC-5c0149cda71d-R003, both SCHEME_ONLY) and 2 coverage entries (COV-PHYS-T1-TITLE and COV-PHYS-T1-REFERENCES, both MARKER). Scheme week 11 (Revision) has no parsed row or teaching body; scheme weeks 5 and 6 share the parsed WEEK FIVE AND SIX row. Note 1 is the queue-generation snapshot. Per-block hashes and the scheme-row mapping are in docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Nothing was run; testing remains deferred.",
+    "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -38,9 +39,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
-    "PENDING": 55,
-    "BLOCKED": 7
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "BLOCKED": 7,
+    "PENDING": 54
   },
   "total": 66,
   "items": [
@@ -205,7 +206,7 @@
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "source_id": "SS1-SRC-2c924c964660",
       "term": "2nd Term",
-      "week_or_locator": "text outside the parsed week rows (opening text, scheme table, revision/examination lines)",
+      "week_or_locator": "word-extractor 1.0.4 getBody() lines 1-21 (title, scheme table, reference list); first body label WEEK ONE at line 24, offset 958",
       "objective": "Inventory all 2nd Term text outside the parsed week rows and record each block as a mapped scheme objective, a marker, or an explicit open item. Record which scheme weeks have no teaching body.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json",
@@ -232,8 +233,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no T2 scheme or preamble text and no revision/examination claim for this term.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented (2026-10-30, master e60b1fe). Evidence: docs/ss1/work/microtasks/physics/PHYS-PRE-T2.md. Member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7 verified from the supplied partial archive 2nd_Term_SS1_-20230730T171417Z-001.zip (composite hash not checked). Added SS1-SRC-2c924c964660-R002 (title, SCHEME_ONLY) and -R003 (reference list, SCHEME_ONLY) and coverage COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES (MARKER) to physics.json. Scheme has 10 untyped-number rows (lines 8-17) mapped by order to the 10 parsed bodies and PHYS-WK-T2-W01..W10; all 10 bodies re-sliced and equal to parsed_rows.json; no revision, examination or week 11 row or body exists. Pre-body slice hash c4096b4540e348f01df78a6bc9eb5b92d2035fc171c91b0634bb5c55cb0c2358. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Every non-week text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item; the list of scheme weeks without a parsed row is stated explicitly. Per-week objectives belong to the PHYS-WK items."
     },
     {
@@ -2237,7 +2238,6 @@
     "PHYS-RULE-T1-REVISION-SCHEME"
   ],
   "runnable_now": [
-    "PHYS-PRE-T2",
     "PHYS-PRE-T3",
     "PHYS-WK-T1-W01",
     "PHYS-WK-T1-W02",

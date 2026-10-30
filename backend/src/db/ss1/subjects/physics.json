@@ -98,6 +98,30 @@
       "approval_reference": "PENDING-OWNER: heading observed in the source document and subject confirmed by its content; owner confirmation of this alias not yet recorded; not teacher approval of lesson content"
     },
     {
+      "id": "SS1-SRC-2c924c964660-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "anchor": "SECOND TERM E-LEARNING NOTE",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "PHYS-PRE-T2: word-extractor 1.0.4 getBody() lines 1-7 ('SECOND TERM E-LEARNING NOTE', blank, the SUBJECT/CLASS line, blank, 'SCHEME OF WORK ' with one trailing space, blank, 'WEEK' + 13 spaces + 'TOPIC'). Hash of line 1 c3a8dc39c250fd530499bc2d27d4d50ed829835a1e586e85165d2d16dad0edd9; line 3 0af0e588285c1f96b726f3452960f957292bae0e709b313f2e57133e75fc89c3; line 5 9a1edea67fde0bc46713614fa571eb74549f90b179095fdf807589ea65c1badd; line 7 c09d3f0079f8525eaf2ac0acf598d26d4bd3fecea8f4f19b32a60579be22e910; block lines 1-7 1788510fd400cc6bcc3248268c52b6b4ec87b00bda963bb5b815d48ea4c5cbb3 (lines joined with \\n, edge blank lines trimmed, UTF-8, no trailing newline). The anchor occurs exactly once in the extracted text and matches no parsed row.",
+        "explanation": "Document title, subject/class line and scheme-table heading. None carries a teaching objective, so the block is a marker. The ten scheme rows that follow (lines 8-17) carry no typed week numbers; they map by order to the ten parsed bodies WEEK ONE..WEEK TEN and to the PHYS-WK-T2-W01..W10 items. The scheme has no revision or examination row and the body has none either. The reference list is classified by SS1-SRC-2c924c964660-R003. The subject/class line (line 3) stays the registered header_text and the anchor of the existing alias rule -R001."
+      }
+    },
+    {
+      "id": "SS1-SRC-2c924c964660-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "anchor": "REFERENCE BOOK\nNew School Physics By M.W Anyakoha\nSenior Secondary School Physics By P.N Okeke",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "PHYS-PRE-T2: word-extractor getBody() lines 19-21 ('REFERENCE BOOK' singular, then two titles; no trailing spaces). Hash of line 19 6bbe776398074a2362562c545a25dfb3bd589d202cde0b7470f80314684b3ff8; line 20 759abfa4e6ff6d132c0c9afb3415e5ddaf0541c75cd8a6668d956067129ebdf1; line 21 836921694b7316cbfdf527c1ef8687603619aa582cafdb588132e97af3c2900f; block lines 19-21 91493c91b29b7ba7402d3a3c1c8299fcac404b27ee417dee4fb0bfa3c86c8560. The 94-character anchor occurs exactly once in the extracted text and matches no parsed row.",
+        "explanation": "Reference-book list printed directly after the scheme of work; scheme-only text with no teaching content. Titles verbatim: \"New School Physics By M.W Anyakoha\"; \"Senior Secondary School Physics By P.N Okeke\". No edition, publisher or year is stated in the source and none is added. The 1st Term list names different titles (New School Physics. By Prof. M.W Anyakoha; New System Physics. By Dr. Charles Chow et.al); both are recorded as found and not reconciled."
+      }
+    },
+    {
       "id": "SS1-SRC-bed91bb4ef0e-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-bed91bb4ef0e",
@@ -145,6 +169,38 @@
         {
           "locator": "lines 36-38; SHA-256 dced20d64f822d9d06ced2c4000816c03743ac1cc536f9bb6fad7b9048009bcd",
           "explanation": "Heading \"REFERENCE BOOKS\" and two titles: \"New School Physics. By Prof. M.W Anyakoha\" and \"New System Physics. By Dr. Charles Chow et.al\". The anchor includes line 37's trailing space and occurs once. Scheme-only text; no teaching content. No edition, publisher or year is stated in the source or invented here."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-TITLE",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Document title, subject/class line and scheme heading; no teaching objective",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1-7",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-2c924c964660-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "line 1 (title) SHA-256 c3a8dc39c250fd530499bc2d27d4d50ed829835a1e586e85165d2d16dad0edd9; line 3 (SUBJECT/CLASS line) SHA-256 0af0e588285c1f96b726f3452960f957292bae0e709b313f2e57133e75fc89c3; line 5 ('SCHEME OF WORK ' with one trailing space) SHA-256 9a1edea67fde0bc46713614fa571eb74549f90b179095fdf807589ea65c1badd; line 7 ('WEEK' + 13 spaces + 'TOPIC') SHA-256 c09d3f0079f8525eaf2ac0acf598d26d4bd3fecea8f4f19b32a60579be22e910; lines 1-7 SHA-256 1788510fd400cc6bcc3248268c52b6b4ec87b00bda963bb5b815d48ea4c5cbb3; text before the first parsed body label 'WEEK ONE' (line 24, offset 958) SHA-256 c4096b4540e348f01df78a6bc9eb5b92d2035fc171c91b0634bb5c55cb0c2358",
+          "explanation": "Title, subject/class line and scheme heading. The ten scheme rows that follow (lines 8-17, no typed week numbers) map by order to the parsed bodies WEEK ONE, WEEK TWO, WEEK THREE, WEEK FOUR, WEEK FIVE, WEEK SIX, WEEK SEVEN, WEEK 8, WEEK NINE, WEEK TEN and to PHYS-WK-T2-W01..W10; every scheme row has a parsed body, and there is no revision or examination row or body. The reference list (lines 19-21) is COV-PHYS-T2-REFERENCES. The last hash is the exact value the compiler PREAMBLE_REQUIRES_COVERAGE detail will hold for text.slice(0, index of \"WEEK ONE\"), computed here by slicing without running the importer."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-REFERENCES",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Reference-book list printed after the 2nd Term scheme of work",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 19-21",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-2c924c964660-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 19-21; SHA-256 91493c91b29b7ba7402d3a3c1c8299fcac404b27ee417dee4fb0bfa3c86c8560",
+          "explanation": "Heading \"REFERENCE BOOK\" and two titles: \"New School Physics By M.W Anyakoha\" and \"Senior Secondary School Physics By P.N Okeke\". The anchor occurs once. Scheme-only text; no teaching content. No edition, publisher or year is stated in the source or invented here."
         }
       ]
     }
