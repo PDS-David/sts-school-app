@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { query } from '../db/pool.js';
+import { createHash } from 'node:crypto';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
@@ -413,6 +414,144 @@ router.delete('/:id/unlink-user', requireRole('admin'), async (req, res) => {
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
   await audit(req.user!, 'unlink_student_user', 'student', req.params.id, '');
   return res.json({ ok: true });
+});
+
+// ── POST /students/:id/erasure  (admin only) ──────────────────────────────────
+// OPS-04 (owner decision D7, recommended default: soft delete + PII redaction,
+// history retained). This is NOT hard deletion: the students row, its id,
+// school_code and class_name stay, so scores, attendance, remarks, weekly
+// efforts, invoices and submissions keep pointing at a valid row and academic
+// and financial history remain internally consistent.
+//
+// What changes on the students row (these are the only personal columns the
+// table has — there is no phone, email or birth_date column on it):
+//   full_name        -> 'Erased student'
+//   gender           -> NULL
+//   date_of_birth    -> NULL
+//   admission_number -> 'ERASED-<12 hex of sha256(id)>' (deterministic, not
+//                       reversible, unique per student so the per-school
+//                       unique constraint on (school_code, admission_number)
+//                       still holds)
+//   deleted_at/by    -> set only if the student was not already soft-deleted
+//
+// Trade-off, by design: every existing read that joins students will now show
+// "Erased student" instead of the historical name (reports, finance lists,
+// assessment results, Excel export). Restoring an erased student
+// (POST /:id/restore) is still possible but does NOT bring the redacted
+// values back; they are not kept anywhere, including the audit row.
+//
+// Not touched here (see evidence/OPS-04.md): the student's own login in
+// `users` (name, username, phone, email), parent links, and any free text
+// that other tables hold (remarks, weekly-effort comments, submission answers,
+// messages).
+const ERASED_NAME = 'Erased student';
+const erasedAdmissionToken = (id: string) =>
+  'ERASED-' + createHash('sha256').update(id).digest('hex').slice(0, 12);
+
+const erasureSchema = z.object({
+  // Must equal the student's current admission number (or, when the student
+  // has none, their current full name). The expected value is never echoed.
+  confirmation: z.string().trim().min(1),
+  // Free text kept in the audit log. Do not put the student's personal
+  // details in it: the audit row is retained.
+  reason: z.string().trim().min(5).max(500),
+});
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+router.post('/:id/erasure', requireRole('admin'), async (req, res) => {
+  const user = req.user!;
+  const id = req.params.id;
+  if (!UUID_RE.test(id)) return res.status(404).json({ error: 'Student not found' });
+
+  const parsed = erasureSchema.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({ error: 'confirmation and reason (5-500 characters) are required' });
+  }
+  const { confirmation, reason } = parsed.data;
+
+  type Outcome =
+    | { status: number; error: string }
+    | { status: 200; alreadyErased: boolean; student: Record<string, unknown> };
+
+  const outcome: Outcome = await withTransaction(async (client): Promise<Outcome> => {
+    const { rows } = await client.query(
+      `SELECT id, school_code, class_name, admission_number, full_name, gender,
+              date_of_birth, deleted_at
+       FROM students WHERE id=$1 FOR UPDATE`,
+      [id],
+    );
+    const st = rows[0];
+    if (!st) return { status: 404, error: 'Student not found' };
+
+    // An admin bound to a school may only erase that school's students. An
+    // admin with no school_code is cross-school everywhere else in the app
+    // (scope.ts), so it is not restricted here either.
+    if (user.school_code && st.school_code !== user.school_code) {
+      return { status: 403, error: "You can't erase a student outside your school" };
+    }
+
+    const expected = st.admission_number ?? st.full_name;
+    if (confirmation !== expected) {
+      return { status: 400, error: 'Confirmation does not match this student' };
+    }
+
+    const token = erasedAdmissionToken(st.id);
+    const alreadyErased =
+      st.full_name === ERASED_NAME && st.admission_number === token &&
+      st.gender === null && st.date_of_birth === null && st.deleted_at !== null;
+
+    // Field NAMES only, never the old values.
+    const fieldsChanged: string[] = [];
+    if (!alreadyErased) {
+      if (st.full_name !== ERASED_NAME) fieldsChanged.push('full_name');
+      if (st.gender !== null) fieldsChanged.push('gender');
+      if (st.date_of_birth !== null) fieldsChanged.push('date_of_birth');
+      if (st.admission_number !== token) fieldsChanged.push('admission_number');
+      if (st.deleted_at === null) fieldsChanged.push('deleted_at', 'deleted_by');
+    }
+
+    let result = { ...st };
+    if (!alreadyErased) {
+      const { rows: updated } = await client.query(
+        `UPDATE students
+            SET full_name=$2, gender=NULL, date_of_birth=NULL, admission_number=$3,
+                deleted_by = CASE WHEN deleted_at IS NULL THEN $4::uuid ELSE deleted_by END,
+                deleted_at = COALESCE(deleted_at, now())
+          WHERE id=$1
+          RETURNING id, school_code, class_name, admission_number, full_name, deleted_at`,
+        [id, ERASED_NAME, token, user.id],
+      );
+      result = updated[0];
+    }
+
+    // Written inside the same transaction (not via utils/audit.ts, which
+    // swallows failures): an erasure with no audit row must not commit.
+    await client.query(
+      `INSERT INTO audit_log(actor_id, actor_name, action, entity, entity_id, school_code, detail)
+       VALUES ($1,$2,'erase_student','student',$3,$4,$5)`,
+      [
+        user.id, user.username, id, st.school_code,
+        JSON.stringify({ reason, fields_changed: fieldsChanged, already_erased: alreadyErased }),
+      ],
+    );
+
+    return {
+      status: 200,
+      alreadyErased,
+      student: {
+        id: result.id, school_code: result.school_code, class_name: result.class_name,
+        admission_number: result.admission_number, full_name: result.full_name,
+        deleted_at: result.deleted_at,
+      },
+    };
+  });
+
+  if (outcome.status !== 200) {
+    const o = outcome as { status: number; error: string };
+    return res.status(o.status).json({ error: o.error });
+  }
+  const done = outcome as { status: 200; alreadyErased: boolean; student: Record<string, unknown> };
+  return res.json({ ok: true, erased: true, already_erased: done.alreadyErased, student: done.student });
 });
 
 export default router;
