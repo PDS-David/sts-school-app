@@ -236,12 +236,13 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // progression) — there's no separate ordering column to define or keep in
 // sync.
 //
-// Deliberately no historical class snapshot: per explicit school-owner
-// decision, past terms' class-based figures (class_average/class_highest in
-// GET /scores, which join the student's live class_name) are allowed to
-// follow wherever the student ends up going forward — a new session's worth
-// of records supersedes them every term regardless, so class_name is simply
-// overwritten here rather than preserved per-term.
+// students.class_name is still simply overwritten here (no enrolment-history
+// table). Superseded earlier decision (DATA-03, owner decision D5 pending):
+// past terms' class figures (class_average/class_highest/subject_position in
+// GET /scores/report) used to follow the student's live class_name. They now
+// use scores.class_name, stamped when each score is recorded (routes/scores.ts),
+// and fall back to the live class only for rows with no stamp. Nothing is
+// written to scores from this route.
 router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   const user = req.user!;
   const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' };
