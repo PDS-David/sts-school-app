@@ -4,7 +4,7 @@ import { useAuth } from '../api/AuthContext';
 
 export interface AppNotification {
   id: string;
-  kind: 'message' | 'assessment' | 'grade' | 'system';
+  kind: 'message' | 'assessment' | 'grade' | 'system' | 'announcement';
   title: string;
   body: string;
   createdAt: string;
@@ -76,6 +76,21 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
           title: `New message from ${c.full_name}`,
           body: c.unread_count === 1 ? '1 unread message' : `${c.unread_count} unread messages`,
           createdAt: c.last_message_at ?? new Date().toISOString(),
+        });
+      }
+    } catch { /* offline or endpoint unavailable — skip silently */ }
+    // PRD-01: school announcements, read-only, for every authenticated role.
+    // The API scopes them to the viewer's school/class/role. A 404 from an
+    // older server, or an offline failure, simply leaves the feed as it was.
+    try {
+      const { data } = await api.get('/announcements');
+      for (const a of (data.announcements ?? []).slice(0, 10)) {
+        items.push({
+          id: `announcement-${a.id}`,
+          kind: 'announcement',
+          title: a.title,
+          body: a.body,
+          createdAt: a.created_at ?? new Date().toISOString(),
         });
       }
     } catch { /* offline or endpoint unavailable — skip silently */ }
