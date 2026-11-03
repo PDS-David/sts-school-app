@@ -1118,6 +1118,19 @@
         "BK-LES-T1-W03-CONTRA"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "BOOKKEEPING-T1-SCHEME-VS-BODY",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term scheme lists twelve manually numbered entries (blocks 3-29, range sha256 581587fcf71c6d77b82abac943b40f79becbda4807c855bd3431cf63bc6d302b) but the document contains only four week bodies and no Week 5-12 body: the string 'WEEK' occurs only at block 30 'WEEK ONE ' (sha256 d6daf1e694c6b67d3872739f78e9ed66d657349d3adba8de1bdc261001e1fef8), block 87 'WEEK TWO' (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6), block 109 'WEEK THREE' (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51) and block 158 'WEEK FOUR' (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2). The entries do not correspond one-to-one to teaching weeks: entries 2-4 are carried by Week 1, entries 5-7 by Week 2, entry 8 by Week 3 and entries 9-10 by Week 4, while entries 1 and 11 ('Revision.', blocks 3 and 28) and entry 12 ('Examination', block 29) are markers with no teaching body. No week, lesson or missing-material claim was invented by BK-PRE-T1.",
+      "required_action": "Owner to confirm whether Weeks 5-12 of this subject exist in another assigned document or are intentionally absent, and, if absent, whether the four-week body is the intended 1st Term scope. No week is invented and no scope is assumed until that answer is recorded; the four week bodies remain the only registered teaching for this term.",
+      "affected_ids": [
+        "COV-BK-T1-W01-SCHEME-2",
+        "COV-BK-T1-W02-SCHEME-5",
+        "COV-BK-T1-W03-SCHEME-8",
+        "COV-BK-T1-W04-SCHEME-9"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
