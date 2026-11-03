@@ -91,7 +91,52 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-BIO-T1-W06-SCHEME-6",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 6: nutrient cycling in nature",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 7 (sha256 c2c9d6de15c9e85f2424f85a328436ae6ff161dbde8bde99962005840f02280e); Week 6 label block 781 (sha256 03792d537a25eed5326e922c8a90f71cfb1c9739ed47959db18710e2aa49a653); Week 6 body blocks 781-825 (range sha256 3628d37fa086d39c4c9c1c53a1a57fa732421e4004120ad02114f65ba3d79975)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 7 (sha256 c2c9d6de15c9e85f2424f85a328436ae6ff161dbde8bde99962005840f02280e); heading block 782 (sha256 3bf73e7e62ad294a58a3f408d5b7a71ee63e86c0473df26d1eb449ba327ae50c); definition block 783 (sha256 daa620280a5f71981116d809fd3df7b4e76e87fdcca4aaaf3c1bf5fda2a68282)",
+          "explanation": "The scheme gives one entry, 'Week 6 - Nutrient cycling in Nature'. The heading repeats it and block 783 defines a nutrient cycle as the circulation of nutrients such as carbon, sulphur and water. The week then teaches the carbon and water cycles only; the sulphur example is not developed (see COV-BIO-T1-W06-SULPHUR)."
+        },
+        {
+          "locator": "carbon cycle blocks 784-803 (range sha256 8bec1554dfa9d9c51a5497ace59e3081808cce34dfb384d33ffa22c8b72c9500); definition block 785 (sha256 0045951d0b5ae6bc7527db143932eaf5b1d867e43bc0b5b930aee4f53a92cdef); processes blocks 786-790; importance blocks 791-795",
+          "explanation": "The carbon cycle is defined at 785 as the use and return of carbon(IV) oxide, with photosynthesis, respiration, putrefaction and combustion named. Each process is taught at 786-789, sea-atmosphere exchange at 790, and four importance points at 792-795. The cycle image at block 795 (media/image6.jpeg) has its own disposition item, BIO-VIS-T1-NUTRIENT-CYCLES."
+        },
+        {
+          "locator": "water cycle blocks 804-825 (range sha256 2216c6958a8a91fe4d04ba12a95415986d519fec0f3f14faeca354dbb081239e); definition block 805 (sha256 9b7b5c4038e4e42a0632d0276cb9d4a45cfa3c2c5ce5a7e70a9ebc9932d404cb); importance to plants blocks 806-812; importance to animals blocks 813-819; water-cycle image block 821",
+          "explanation": "The water cycle is defined at 805 through evaporation and condensation, with plant absorption, transpiration, animal use, run-off, percolation, underground water and ocean return described. Six importance points for plants (806-812) and seven for animals (813-819) follow. The cycle image at block 821 (media/image7.jpeg) has its own disposition item, BIO-VIS-T1-NUTRIENT-CYCLES. The source prints 'transportation' for transpiration at 805 and 807; that is recorded, not corrected."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "No lesson and no parsed row exist for this week, so the two taught cycles are not deliverable. PARTIAL: taught in the source, no deliverable lesson. Delivery is blocked by BIOLOGY-T1-W06-COVERAGE."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W06-SULPHUR",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "The sulphur cycle, named as an example of nutrient cycling in the Week 6 definition",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 definition block 783 (sha256 daa620280a5f71981116d809fd3df7b4e76e87fdcca4aaaf3c1bf5fda2a68282); scheme block 7 (sha256 c2c9d6de15c9e85f2424f85a328436ae6ff161dbde8bde99962005840f02280e)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 783 (sha256 daa620280a5f71981116d809fd3df7b4e76e87fdcca4aaaf3c1bf5fda2a68282); blocks 784-825 (range sha256 3628d37fa086d39c4c9c1c53a1a57fa732421e4004120ad02114f65ba3d79975)",
+          "explanation": "Block 783 names carbon, sulphur and water as examples of circulating nutrients. Blocks 784-795 teach carbon and blocks 804-819 teach water; no block in Week 6 names or describes a sulphur cycle, sulphur oxidation or reduction, or the role of sulphur bacteria in cycling."
+        },
+        {
+          "locator": "whole-document text search; blocks 712, 860 and 881",
+          "explanation": "The string 'sulphur' occurs at only four blocks in the document: 783 (this definition), 712 (a Week 5 example of sulphur bacteria oxidising hydrogen sulphide in chemosynthesis), 860 (sulphur as a constituent element of protein in Week 7) and 881 (a mineral table). None of these teaches a sulphur cycle. UNRESOLVED: named in the week's own definition, never taught. The bounded supplement BIO-LES-T1-W06-SULPHUR is appended; whether a full sulphur cycle is required is put to BIO-FACT-T1-W06-SCOPE."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "BIOLOGY-ALIAS-APPROVAL",
@@ -123,6 +168,42 @@
       "affected_ids": [
         "SS1-SRC-78059230037f-R001",
         "SS1-SRC-78059230037f"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W06-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 6's scheme entry 6 is taught in the source but is not deliverable: the package has no lesson and no parsed row for the week and the importer has not been run, so COV-BIO-T1-W06-SCHEME-6 is PARTIAL. The week's own definition (block 783) names carbon, sulphur and water, but only carbon (784-795) and water (804-819) are taught; COV-BIO-T1-W06-SULPHUR is UNRESOLVED. Nitrogen is not named by the scheme line or by any Week 6 block and is therefore not asserted as an objective here; BIO-FACT-T1-W06-SCOPE asks whether the curriculum requires it. The bounded supplement BIO-LES-T1-W06-SULPHUR is appended and waits on that decision.",
+      "required_action": "Owner/expert settles BIO-FACT-T1-W06-SCOPE, then the sulphur supplement is authored and approved; the two taught cycles still need the normal import/parse step before delivery. Do not invent a sulphur or nitrogen cycle and present it as source teaching.",
+      "affected_ids": [
+        "COV-BIO-T1-W06-SCHEME-6",
+        "COV-BIO-T1-W06-SULPHUR",
+        "BIO-LES-T1-W06-SULPHUR",
+        "BIO-FACT-T1-W06-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED",
+      "kind": "CONTENT",
+      "detail": "Week 6's assignment (blocks 826-833) asks for the constituent elements, food sources and functions of carbohydrate, protein and lipid (828-831) and for the definition and characteristics of an enzyme (832-833). None of that is Week 6 content: food substances are taught in Week 7 from block 837 and enzymes from block 903, where the characteristics are listed at 905-909. Week 6 therefore ends with no question on nutrient cycling at all, and its only assessment tests the following week's material. The misplacement is recorded, not corrected in the source. The bounded supplement BIO-LES-T1-W06-ASSESSMENT is appended to supply keyed Week 6 practice.",
+      "required_action": "Record the disposition of the misplaced assignment in BIO-FACT-T1-W06-SCOPE (withdraw it from Week 6, re-scope it, or replace it), then author the Week 6 assessment supplement. Do not move or rewrite source text and do not infer an answer key for the Week 7 questions from Week 6.",
+      "affected_ids": [
+        "SS1-SRC-422e0e6ddde9",
+        "BIO-LES-T1-W06-ASSESSMENT",
+        "BIO-FACT-T1-W06-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W06-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Week 6 wording defects, retained uncorrected: (1) block 783 calls carbon, sulphur and water 'certain nutrient' in the singular and treats water, a compound, as a nutrient example; (2) block 788 prints 'C02' with a zero; (3) block 793 reads 'carbon in item'; (4) blocks 805 and 807 print 'transportation' where transpiration is meant; (5) block 805 reads 'form underground water empties into the oceans' and its condensation sentence repeats 'when' and lacks a main clause; (6) block 792 reads 'made up of carbon component'; (7) block 828 says 'two function' for two functions; (8) block 833 labels the second enzyme question 'b' with no 'a'. No source byte is corrected here.",
+      "required_action": "Record one disposition per numbered defect in BIO-FACT-T1-W06-SCOPE; the authored supplements must not copy the faulty wording. Source text stays unchanged.",
+      "affected_ids": [
+        "COV-BIO-T1-W06-SCHEME-6",
+        "BIO-FACT-T1-W06-SCOPE"
       ],
       "blocks_delivery": true
     }
