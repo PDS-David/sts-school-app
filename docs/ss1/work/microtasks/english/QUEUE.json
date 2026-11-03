@@ -37,7 +37,8 @@
     "ENG-LES-W03-MONOPHTHONGS-SCOPE (2026-11-03): Week 3 monophthong supplement authored on the stacked Week 3 branch (PR #301, #302, #303). New lesson SUP-SS1-ENGLISH-MONOPHTHONGS-T1 (60 marks) bound to coverage ENGLISH-T1-W03-MN01 and MN03, now IMPLEMENTED_EQUIVALENT; no correction binding; open items ENGLISH-T1-W03-PHONETICS-REPLACEMENT-SCOPE and ENGLISH-T1-W03-SOURCE-WORDING-REVIEW removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-REVISION-KEYS.",
     "ENG-LES-W03-REVISION-KEYS (2026-11-03): Week 3 revision supplement authored on the stacked Week 3 branch (PR #301, #302, #303, #304). New lesson SUP-SS1-ENGLISH-REVISION-W03-T1 (60 marks) bound to coverage ENGLISH-T1-W03-EN06, now IMPLEMENTED_EQUIVALENT; no correction binding and no answer inferred from the source options; open item ENGLISH-T1-W03-ANSWER-KEYS removed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND).",
     "ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE (2026-11-03): Week 4 noun-phrase and verb-phrase supplement authored on the stacked Week 3 branch (PR #301-#305). New lesson SUP-SS1-ENGLISH-NOUN-PHRASE-FUNCTIONS-T1 (60 marks) bound to coverage ENGLISH-T1-W04-NP01, NP03, NP04, NP05, NP08 and EV01, now IMPLEMENTED_EQUIVALENT; no correction binding and COR-002 unchanged; open item ENGLISH-T1-W04-PHRASES-REPLACEMENT-SCOPE removed, ANSWER-KEYS narrowed to AG04, SP02 and RV01, SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-AGRICULTURE-VOCAB (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND).",
-    "ENG-LES-W04-AGRICULTURE-VOCAB (2026-11-03): Week 4 agriculture vocabulary supplement authored on the stacked Week 4 branch (PR #301-#306). New lesson SUP-SS1-ENGLISH-AGRICULTURE-VOCAB-T1 (60 marks) bound to coverage ENGLISH-T1-W04-AG01, AG02, AG03 and AG04, now IMPLEMENTED_EQUIVALENT; the flagged source glosses are reviewed and the fishery table is restated in prose; AG05 stays UNRESOLVED under EXTERNAL-MATERIALS. ANSWER-KEYS narrowed to SP02 and RV01; SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-SPELLING-MISSPELT (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND)."
+    "ENG-LES-W04-AGRICULTURE-VOCAB (2026-11-03): Week 4 agriculture vocabulary supplement authored on the stacked Week 4 branch (PR #301-#306). New lesson SUP-SS1-ENGLISH-AGRICULTURE-VOCAB-T1 (60 marks) bound to coverage ENGLISH-T1-W04-AG01, AG02, AG03 and AG04, now IMPLEMENTED_EQUIVALENT; the flagged source glosses are reviewed and the fishery table is restated in prose; AG05 stays UNRESOLVED under EXTERNAL-MATERIALS. ANSWER-KEYS narrowed to SP02 and RV01; SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-SPELLING-MISSPELT (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND).",
+    "ENG-LES-W04-SPELLING-MISSPELT (2026-11-03): Week 4 spelling supplement authored on the stacked Week 4 branch (PR #301-#307). New lesson SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1 (60 marks) bound to coverage ENGLISH-T1-W04-SP01 and SP02, now IMPLEMENTED_EQUIVALENT; SP03 stays UNRESOLVED under EXTERNAL-MATERIALS. The reviewed list supplies the missing patterns, records the six identical table rows, the repeated words and the corrected headword philanderer, and gives a stated dictation passage with twelve marked target words. ANSWER-KEYS narrowed to RV01; SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-REVISION-KEYS (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -49,8 +50,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 36,
-    "PENDING": 79,
+    "IMPLEMENTED_TESTING_DEFERRED": 37,
+    "PENDING": 78,
     "BLOCKED": 4
   },
   "items": [
@@ -3551,8 +3552,8 @@
       "depends_on": [
         "ENG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open items ENGLISH-T1-W04-SOURCE-WORDING-REVIEW and ENGLISH-T1-W04-ANSWER-KEYS in english.json. Source row: BODY 9a0782678ccf117f1b370a215502adeb890414f7b3165e45d741ec906cb46b35.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1 (9 paragraphs, 6 objectives, 6 practice items, 60 marks; body_sha256 6de254a753c121e0c6dced5e68d5e001a0d0e310369467096b217a6ca4c318dc recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W04-SP01 and SP02 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original targets and add the supplement); SP03 stays UNRESOLVED under EXTERNAL-MATERIALS. The reviewed list supplies the missing spelling patterns, records the six identical table rows, the repeated words and the corrected headword philanderer, and gives a stated dictation passage with per-word marking. No source prose is reproduced. Open item ENGLISH-T1-W04-ANSWER-KEYS now covers RV01; SOURCE-WORDING-REVIEW drops SP01; EXTERNAL-MATERIALS for SP03 is unchanged. Record: docs/ss1/work/microtasks/english/ENG-LES-W04-SPELLING-MISSPELT.md.",
       "completion_condition": "SP01 and SP02 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3768,6 +3769,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W04-SPELLING-MISSPELT"
+    "ENG-LES-W04-REVISION-KEYS"
   ]
 }
