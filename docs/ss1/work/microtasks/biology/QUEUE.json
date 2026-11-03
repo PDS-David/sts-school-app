@@ -22,23 +22,25 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "BIO-INV-T1 (2026-10-28) inventoried the 1st Term original and appended preamble, week-indexing, unlabelled-section and visual items; the 2nd and 3rd Term inventories remain unread. No lesson, coverage entry, rule, correction or asset was written.",
-    "BIO-INV-T2 (2026-10-30) inventoried the 2nd Term original (read from a LibreOffice conversion of the .doc) and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written."
+    "BIO-INV-T2 (2026-10-30) inventoried the 2nd Term original (read from a LibreOffice conversion of the .doc) and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
+    "BIO-WK-T1-W06 (2026-11-03) indexed Week 6 at objective level: carbon and water cycles taught in blocks 781-825; sulphur named at 783 but never taught; assignment at 826-833 is Week 7 food-substance and enzyme material. Two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1,
+    "FACTUAL_DEPENDENCY": 2,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_WEEK_INDEXING": 20,
     "SOURCE_SECTION_INDEXING": 2,
     "VISUAL_DISPOSITION": 24,
-    "SOURCE_MARKER_DISPOSITION": 1
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "BLOCKED": 1,
-    "PENDING": 51
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "BLOCKED": 2,
+    "PENDING": 52
   },
   "items": [
     {
@@ -565,8 +567,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 781 \"WEEK 6\" (sha256 03792d537a25eed5326e922c8a90f71cfb1c9739ed47959db18710e2aa49a653); blocks 781-834; range sha256 e6df637e58ce695ff642859639fbd24c3206509327af1c1612c71ddcddec77d6. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 7): 'Week 6 - Nutrient cycling in Nature'. Heading label is the digit form 'WEEK 6' (block 781). Body has a carbon cycle (784-803) and a water cycle with importance to plants and animals (804-825); no nitrogen cycle text exists in blocks 781-834. Assignment (block 826 'ASSIGNMENT', block 827 'WEEK 6') asks about food classes (carbohydrate, protein, lipid) and enzymes (blocks 828-833), which the document teaches in Week 7.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 781 \"WEEK 6\" (sha256 03792d537a25eed5326e922c8a90f71cfb1c9739ed47959db18710e2aa49a653); blocks 781-834; range sha256 e6df637e58ce695ff642859639fbd24c3206509327af1c1612c71ddcddec77d6. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 7): 'Week 6 - Nutrient cycling in Nature'. Heading label is the digit form 'WEEK 6' (block 781). Body has a carbon cycle (784-803) and a water cycle with importance to plants and animals (804-825); no nitrogen cycle text exists in blocks 781-834. Assignment (block 826 'ASSIGNMENT', block 827 'WEEK 6') asks about food classes (carbohydrate, protein, lipid) and enzymes (blocks 828-833), which the document teaches in Week 7. Indexing result (2026-11-03): scheme entry 6 mapped to blocks 781-825; COV-BIO-T1-W06-SCHEME-6 PARTIAL (carbon 784-795 and water 804-819 taught, no lesson or parsed row); COV-BIO-T1-W06-SULPHUR UNRESOLVED (named at 783, taught nowhere); assignment at 826-833 tests Week 7 food substances and enzymes; open items BIOLOGY-T1-W06-COVERAGE, BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED and BIOLOGY-T1-W06-SOURCE-DEFECTS added; BIO-LES-T1-W06-SULPHUR, BIO-LES-T1-W06-ASSESSMENT and BIO-FACT-T1-W06-SCOPE appended; record docs/ss1/work/microtasks/biology/BIO-WK-T1-W06.md. Implemented, not approved or verified.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -2164,6 +2166,125 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (BIO-INV-T2): block 827 holds a drawing of 10 shapes and 18 text boxes; its extracted text is HAWKS, LIZARDS, GRASSHOPPERS, GRASSES, the numbers 25, 12, 4 and a 'Decreasing number of ogranisms' (sic) caption, and the whole text appears twice, which looks like duplicated alternate-content fallback and may double text in a parser. Order and relative size are carried by the shapes.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-LES-T1-W06-SULPHUR",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 6, definition block 783 (sha256 daa620280a5f71981116d809fd3df7b4e76e87fdcca4aaaf3c1bf5fda2a68282); objective COV-BIO-T1-W06-SULPHUR (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson on the sulphur cycle, which Week 6's own definition names at block 783 but never teaches. Teach only content cleared by BIO-FACT-T1-W06-SCOPE, label the lesson as a Week 6 supplement rather than source teaching, and include practice with complete answers and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-SULPHUR.md"
+      ],
+      "depends_on": [
+        "BIO-SRC-T1",
+        "BIO-WK-T1-W06",
+        "BIO-FACT-T1-W06-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): block 783 names sulphur among the circulating nutrients, while no block in Week 6 or elsewhere teaches a sulphur cycle; COV-BIO-T1-W06-SULPHUR is UNRESOLVED and BIOLOGY-T1-W06-COVERAGE is open. BIO-WK-T1-W06 authors no cycle text.",
+      "completion_condition": "A lesson in biology.json teaches the sulphur cycle content cleared by BIO-FACT-T1-W06-SCOPE, labels itself a Week 6 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "BIO-LES-T1-W06-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 6, assignment blocks 826-833 (range sha256 930277826bf374e8b7a9efa9bd02241bc23b52983f7e9e8049f0a52b890fdc9d)",
+      "objective": "Author a keyed Week 6 assessment supplement on nutrient cycling, because the source assignment at blocks 826-833 tests Week 7 food substances and enzymes and leaves Week 6 with no question on its own topic. Cover carbon and water cycles and, if cleared, the sulphur cycle; include complete answers, criterion-level marking and a mark total. Do not reuse or infer answers for the misplaced Week 7 questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W06-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "BIO-SRC-T1",
+        "BIO-WK-T1-W06",
+        "BIO-FACT-T1-W06-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by BIO-WK-T1-W06 (2026-11-03): blocks 828-833 ask about carbohydrates, proteins, lipids and enzymes, taught at Week 7 blocks 837-909; no Week 6 question exists. BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED is open. BIO-WK-T1-W06 authors no assessment and infers no answer key.",
+      "completion_condition": "A lesson in biology.json supplies Week 6 practice on nutrient cycling with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; it does not reproduce the Week 7 questions or infer their key, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "BIO-FACT-T1-W06-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 6, blocks 781-834 (range sha256 e6df637e58ce695ff642859639fbd24c3206509327af1c1612c71ddcddec77d6); specifically blocks 783, 788, 792-793, 805, 807, 826-833",
+      "objective": "Obtain one recorded subject-expert decision on every Week 6 scope and wording question so the two appended lessons and any re-scoping proceed without invented content: (1) whether the sulphur cycle is required and which content is cleared for it; (2) whether the nitrogen cycle is required although neither the scheme line nor any Week 6 block names it; (3) what to do with the assignment at 826-833, which tests Week 7 food substances and enzymes; (4) one disposition per wording defect in BIOLOGY-T1-W06-SOURCE-DEFECTS. Do not supply a key for the misplaced Week 7 questions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W06-SCOPE.md"
+      ],
+      "depends_on": [
+        "BIO-SRC-T1",
+        "BIO-WK-T1-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by BIO-WK-T1-W06 (2026-11-03): COV-BIO-T1-W06-SULPHUR is UNRESOLVED, BIOLOGY-T1-W06-ASSIGNMENT-MISPLACED and BIOLOGY-T1-W06-SOURCE-DEFECTS are open, and the nitrogen question is recorded but not asserted. No correction or content is invented here.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     }
   ],
   "review": {
@@ -2179,7 +2300,6 @@
     }
   },
   "next_runnable": [
-    "BIO-WK-T1-W06",
     "BIO-INV-T3",
     "BIO-TEST-PACKAGE",
     "BIO-PRE-T1",
