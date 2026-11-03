@@ -34,7 +34,8 @@
     "ENG-LES-W03-ESSAY-REPORT (2026-11-03): Week 3 essay, formal report and minutes supplement authored on branch ss1/eng-les-w03-essay-report-20261103. New lesson SUP-SS1-ENGLISH-ESSAY-REPORT-T1 (62 marks) bound to coverage ENGLISH-T1-W03-ES01, ES02, ES03 and ES04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-ESSAY-REPORT-SCOPE removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to MN03 and EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-IDIOMS.",
     "ENG-LES-W03-IDIOMS (2026-11-03): Week 3 idiom supplement authored on the ENG-LES-W03-ESSAY-REPORT branch (stacked on PR #301). New lesson SUP-SS1-ENGLISH-IDIOMS-T1 (62 marks) bound to coverage ENGLISH-T1-W03-ID02, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW narrowed to the entertainment glosses and the monophthong word lists. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-ENTERTAINMENT-VOCAB.",
     "ENG-LES-W03-ENTERTAINMENT-VOCAB (2026-11-03): Week 3 entertainment vocabulary supplement authored on the stacked Week 3 branch (PR #301, #302). New lesson SUP-SS1-ENGLISH-ENTERTAINMENT-VOCAB-T1 (62 marks) bound to coverage ENGLISH-T1-W03-EN02 and EN03, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW narrowed to the monophthong word lists. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-MONOPHTHONGS-SCOPE.",
-    "ENG-LES-W03-MONOPHTHONGS-SCOPE (2026-11-03): Week 3 monophthong supplement authored on the stacked Week 3 branch (PR #301, #302, #303). New lesson SUP-SS1-ENGLISH-MONOPHTHONGS-T1 (60 marks) bound to coverage ENGLISH-T1-W03-MN01 and MN03, now IMPLEMENTED_EQUIVALENT; no correction binding; open items ENGLISH-T1-W03-PHONETICS-REPLACEMENT-SCOPE and ENGLISH-T1-W03-SOURCE-WORDING-REVIEW removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-REVISION-KEYS."
+    "ENG-LES-W03-MONOPHTHONGS-SCOPE (2026-11-03): Week 3 monophthong supplement authored on the stacked Week 3 branch (PR #301, #302, #303). New lesson SUP-SS1-ENGLISH-MONOPHTHONGS-T1 (60 marks) bound to coverage ENGLISH-T1-W03-MN01 and MN03, now IMPLEMENTED_EQUIVALENT; no correction binding; open items ENGLISH-T1-W03-PHONETICS-REPLACEMENT-SCOPE and ENGLISH-T1-W03-SOURCE-WORDING-REVIEW removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-REVISION-KEYS.",
+    "ENG-LES-W03-REVISION-KEYS (2026-11-03): Week 3 revision supplement authored on the stacked Week 3 branch (PR #301, #302, #303, #304). New lesson SUP-SS1-ENGLISH-REVISION-W03-T1 (60 marks) bound to coverage ENGLISH-T1-W03-EN06, now IMPLEMENTED_EQUIVALENT; no correction binding and no answer inferred from the source options; open item ENGLISH-T1-W03-ANSWER-KEYS removed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -46,8 +47,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 33,
-    "PENDING": 82,
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
+    "PENDING": 81,
     "BLOCKED": 4
   },
   "items": [
@@ -3424,8 +3425,8 @@
       "depends_on": [
         "ENG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open item ENGLISH-T1-W03-ANSWER-KEYS in english.json. Source row: BODY dc0a9d077a9bfc0422295f67472f40f519200d1e4846093969b02007838b1d09.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-REVISION-W03-T1 (10 paragraphs, 6 objectives, 6 practice items, 60 marks; body_sha256 8e37cd0aeadee234c7caa84c0a2a674105c0d515925b7cecd137633191aac94e recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W03-EN06 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the source anchor and add the supplement). The lesson is an equivalent, not a correction: the source row and its unanswered questions are unchanged, so no delivery_correction was added. No answer is inferred from the source options; the keyed set is original. Open item ENGLISH-T1-W03-ANSWER-KEYS is closed because both answerless Week 3 tasks are now covered. Grammar descriptions were written from general knowledge and not fetched, and are listed for owner review in the task note. Record: docs/ss1/work/microtasks/english/ENG-LES-W03-REVISION-KEYS.md.",
       "completion_condition": "EN06 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3765,6 +3766,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W03-REVISION-KEYS"
+    "ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE"
   ]
 }
