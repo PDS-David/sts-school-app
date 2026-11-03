@@ -36,7 +36,8 @@
     "ENG-LES-W03-ENTERTAINMENT-VOCAB (2026-11-03): Week 3 entertainment vocabulary supplement authored on the stacked Week 3 branch (PR #301, #302). New lesson SUP-SS1-ENGLISH-ENTERTAINMENT-VOCAB-T1 (62 marks) bound to coverage ENGLISH-T1-W03-EN02 and EN03, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW narrowed to the monophthong word lists. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-MONOPHTHONGS-SCOPE.",
     "ENG-LES-W03-MONOPHTHONGS-SCOPE (2026-11-03): Week 3 monophthong supplement authored on the stacked Week 3 branch (PR #301, #302, #303). New lesson SUP-SS1-ENGLISH-MONOPHTHONGS-T1 (60 marks) bound to coverage ENGLISH-T1-W03-MN01 and MN03, now IMPLEMENTED_EQUIVALENT; no correction binding; open items ENGLISH-T1-W03-PHONETICS-REPLACEMENT-SCOPE and ENGLISH-T1-W03-SOURCE-WORDING-REVIEW removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-REVISION-KEYS.",
     "ENG-LES-W03-REVISION-KEYS (2026-11-03): Week 3 revision supplement authored on the stacked Week 3 branch (PR #301, #302, #303, #304). New lesson SUP-SS1-ENGLISH-REVISION-W03-T1 (60 marks) bound to coverage ENGLISH-T1-W03-EN06, now IMPLEMENTED_EQUIVALENT; no correction binding and no answer inferred from the source options; open item ENGLISH-T1-W03-ANSWER-KEYS removed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND).",
-    "ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE (2026-11-03): Week 4 noun-phrase and verb-phrase supplement authored on the stacked Week 3 branch (PR #301-#305). New lesson SUP-SS1-ENGLISH-NOUN-PHRASE-FUNCTIONS-T1 (60 marks) bound to coverage ENGLISH-T1-W04-NP01, NP03, NP04, NP05, NP08 and EV01, now IMPLEMENTED_EQUIVALENT; no correction binding and COR-002 unchanged; open item ENGLISH-T1-W04-PHRASES-REPLACEMENT-SCOPE removed, ANSWER-KEYS narrowed to AG04, SP02 and RV01, SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-AGRICULTURE-VOCAB (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND)."
+    "ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE (2026-11-03): Week 4 noun-phrase and verb-phrase supplement authored on the stacked Week 3 branch (PR #301-#305). New lesson SUP-SS1-ENGLISH-NOUN-PHRASE-FUNCTIONS-T1 (60 marks) bound to coverage ENGLISH-T1-W04-NP01, NP03, NP04, NP05, NP08 and EV01, now IMPLEMENTED_EQUIVALENT; no correction binding and COR-002 unchanged; open item ENGLISH-T1-W04-PHRASES-REPLACEMENT-SCOPE removed, ANSWER-KEYS narrowed to AG04, SP02 and RV01, SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-AGRICULTURE-VOCAB (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND).",
+    "ENG-LES-W04-AGRICULTURE-VOCAB (2026-11-03): Week 4 agriculture vocabulary supplement authored on the stacked Week 4 branch (PR #301-#306). New lesson SUP-SS1-ENGLISH-AGRICULTURE-VOCAB-T1 (60 marks) bound to coverage ENGLISH-T1-W04-AG01, AG02, AG03 and AG04, now IMPLEMENTED_EQUIVALENT; the flagged source glosses are reviewed and the fishery table is restated in prose; AG05 stays UNRESOLVED under EXTERNAL-MATERIALS. ANSWER-KEYS narrowed to SP02 and RV01; SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W04-SPELLING-MISSPELT (ENG-LES-W04-SKIM-SCAN still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -48,8 +49,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 35,
-    "PENDING": 80,
+    "IMPLEMENTED_TESTING_DEFERRED": 36,
+    "PENDING": 79,
     "BLOCKED": 4
   },
   "items": [
@@ -3524,8 +3525,8 @@
       "depends_on": [
         "ENG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open items ENGLISH-T1-W04-SOURCE-WORDING-REVIEW and ENGLISH-T1-W04-ANSWER-KEYS in english.json. Source row: BODY 9a0782678ccf117f1b370a215502adeb890414f7b3165e45d741ec906cb46b35. Week 5's topic line also names fisheries and animal husbandry vocabulary; check for overlap when ENG-WK-T1-W05 is indexed. ENG-WK-T1-W05 (2026-11-03): overlap checked. The Week 5 topic line 'Words Associated with Fisheries and Animal Husbandry' (coverage ENGLISH-T1-W05-VF01) carries no vocabulary text, so Week 5 adds no fishery or livestock terms to this item; the owner decision on that line is ENG-FACT-W05-VOCAB-OBJECTIVE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-AGRICULTURE-VOCAB-T1 (9 paragraphs, 6 objectives, 7 practice items, 60 marks; body_sha256 7a1e93c73240e6255d0b3b0d16d7934965555c5c927a1ae84a3e377aca9d5ece recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W04-AG01, AG02, AG03 and AG04 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original targets and add the supplement). The four flagged source glosses (arable land, amortize, ranches, 'animal droopings') are reviewed with corrected glosses; the flattened fishery table is restated in prose and the cane-pole-and-line, ripples and fishery glosses are corrected. No source sentence or gloss is reproduced beyond short fault excerpts. Open item ENGLISH-T1-W04-ANSWER-KEYS now covers SP02 and RV01; SOURCE-WORDING-REVIEW drops AG01, AG02 and AG03; EXTERNAL-MATERIALS for AG05 is unchanged. Record: docs/ss1/work/microtasks/english/ENG-LES-W04-AGRICULTURE-VOCAB.md.",
       "completion_condition": "AG01 to AG04 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3767,6 +3768,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W04-AGRICULTURE-VOCAB"
+    "ENG-LES-W04-SPELLING-MISSPELT"
   ]
 }
