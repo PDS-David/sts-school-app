@@ -9,13 +9,27 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
-// The block appended to schema.sql for Task 2.
-function ddlBlock() {
-  const s = read('backend/schema.sql');
+// Inspect only the lesson-assets migration section, not later migrations.
+function ddlBlock(s = read('backend/schema.sql')) {
   const i = s.indexOf('CREATE TABLE IF NOT EXISTS topic_assets');
   assert.ok(i >= 0, 'topic_assets DDL present');
-  return s.slice(i);
+  const tail = s.slice(i);
+  const nextSection = /^-- ── /m.exec(tail);
+  return nextSection ? tail.slice(0, nextSection.index) : tail;
 }
+
+test('schema: asset section excludes later migrations but retains unsafe statements within it', () => {
+  const assets = [
+    'CREATE TABLE IF NOT EXISTS topic_assets (id SERIAL PRIMARY KEY);',
+    'ALTER TABLE topic_assets ADD COLUMN IF NOT EXISTS alt_text TEXT;',
+    'CREATE INDEX IF NOT EXISTS idx_topic_assets_topic_id ON topic_assets(topic_id);',
+  ].join('\n');
+  const later = '\n-- ── Independent migration ──\nCREATE TABLE IF NOT EXISTS announcements (id BIGSERIAL PRIMARY KEY);\n';
+  assert.equal(ddlBlock(assets), assets, 'works when assets are the final section');
+  assert.equal(ddlBlock(assets + later).trimEnd(), assets, 'later tables are outside the asset-only guarantee');
+  const unsafe = assets + '\nDROP TABLE topics;\n';
+  assert.match(ddlBlock(unsafe + later), /DROP TABLE topics;/, 'unsafe SQL inside the asset section must remain visible');
+});
 const stripSqlComments = (s) => s.replace(/--.*$/gm, '');
 
 test('schema: topic_assets DDL is idempotent and additive only', () => {
