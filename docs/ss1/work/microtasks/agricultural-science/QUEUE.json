@@ -22,22 +22,24 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "AG-INV-T1 (2026-10-28) inventoried the 1st Term original and appended the preamble, marker, week-indexing and visual items; the 2nd and 3rd Term inventories remain unread. No lesson, coverage entry, rule, correction or asset was written.",
-    "AG-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written."
+    "AG-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
+    "AG-WK-T1-W09 (2026-11-03) indexed Week 9 at objective level: scheme entry 9 taught in blocks 721-843; farmstead (785-786) and forestry (793-801, 855) untaught anywhere in the term; two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1,
+    "FACTUAL_DEPENDENCY": 2,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 4,
     "SOURCE_WEEK_INDEXING": 17,
-    "VISUAL_DISPOSITION": 7
+    "VISUAL_DISPOSITION": 7,
+    "LESSON": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "BLOCKED": 1,
-    "PENDING": 32
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "BLOCKED": 2,
+    "PENDING": 33
   },
   "items": [
     {
@@ -754,8 +756,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 721 text \"WEEK 9                                                                                               DATE ………………………………\" (sha256 e49a67c5f9ee04d211c522971f42cfc83eaf339ea51894512b072dbb1082f102); blocks 721-865; range sha256 888982547014538459e63665cd22a6f311c6acbeeb72bb511cf855ff495b4018. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Environmental Factors Affecting Agricultural Production. Largest and most irregular week: climate factors rainfall/temperature/sunlight/wind/relative humidity (729-779), General Evaluation (781-786), Reading (788-789), 'WEEKEND ASSIGNMENT(WK 9A)' (790-801), then biotic factors (805-824) and edaphic factors (826-842), General Evaluation (844-849), Reading (850-851) and 'WEEKEND ASSIGNMENT(WK 9B)' (852-863). General Evaluation 4-5 (blocks 785-786) ask about farm vs farmstead and farmstead layout, which no block teaches. WK 9A items (blocks 791-801) concern forestry (taungya, forest regulation, afforestation); no block in the week teaches forestry. Reading assignments (789, 851) point to Pasture and forage crops, not to this week's content. Pests, parasites, diseases and weeds appear as biotic factors (blocks 816-824) with no control chemicals, doses or handling instructions.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (AG-INV-T1): label block 721 text \"WEEK 9                                                                                               DATE ………………………………\" (sha256 e49a67c5f9ee04d211c522971f42cfc83eaf339ea51894512b072dbb1082f102); blocks 721-865; range sha256 888982547014538459e63665cd22a6f311c6acbeeb72bb511cf855ff495b4018. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Environmental Factors Affecting Agricultural Production. Largest and most irregular week: climate factors rainfall/temperature/sunlight/wind/relative humidity (729-779), General Evaluation (781-786), Reading (788-789), 'WEEKEND ASSIGNMENT(WK 9A)' (790-801), then biotic factors (805-824) and edaphic factors (826-842), General Evaluation (844-849), Reading (850-851) and 'WEEKEND ASSIGNMENT(WK 9B)' (852-863). General Evaluation 4-5 (blocks 785-786) ask about farm vs farmstead and farmstead layout, which no block teaches. WK 9A items (blocks 791-801) concern forestry (taungya, forest regulation, afforestation); no block in the week teaches forestry. Reading assignments (789, 851) point to Pasture and forage crops, not to this week's content. Pests, parasites, diseases and weeds appear as biotic factors (blocks 816-824) with no control chemicals, doses or handling instructions. Indexing result (2026-11-03): scheme entry 9 mapped to Week 9 blocks 721-843; COV-AG-T1-W09-SCHEME-9 PARTIAL (taught in source, no lesson or parsed row); COV-AG-T1-W09-FARMSTEAD (785-786) and COV-AG-T1-W09-FORESTRY (793-801, 855) UNRESOLVED, taught nowhere; open items AGRICULTURAL-SCIENCE-T1-W09-COVERAGE and AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE added; AG-LES-T1-W09-FARMSTEAD, AG-LES-T1-W09-FORESTRY and AG-FACT-T1-W09-SCOPE appended; record docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md. Implemented, not approved or verified.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -1441,6 +1443,125 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (AG-INV-T2), viewed directly: word/media/image1.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) is referenced only by header2.xml and is a tutor brand banner with logo, tagline and contact details; it has no agricultural teaching content. The document body has no w:drawing, w:pict, equation (m:oMath) or OLE objects. Header1 and header3 have no text or objects; footer2 holds the subject/term/class line and a page field.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "AG-LES-T1-W09-FARMSTEAD",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 9, General Evaluation blocks 785-786 (block 785 sha256 d5cf8e34fdad4fab40e51a03bc7b2b1f1cba6649e5a6f27a74cf648f39fecb30; block 786 sha256 b0ebee3f5260b3eef4ff302b7c4b6f56e73843d84b99faf2f77e1f35217b9b56); objective COV-AG-T1-W09-FARMSTEAD (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson on the difference between a farm and a farmstead and the five principles of farmstead layout, which Week 9's General Evaluation asks for but no block in the 1st Term document teaches. Teach only content supported by a recorded expert decision, label the lesson as a Week 9 evaluation supplement rather than the environmental-factors objective, and include practice with complete answers and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W09-FARMSTEAD.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W09",
+        "AG-FACT-T1-W09-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 785-786 ask the two questions and 'farmstead' occurs nowhere else among the 933 blocks; COV-AG-T1-W09-FARMSTEAD is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no farmstead text.",
+      "completion_condition": "A lesson in agricultural-science.json teaches the farm/farmstead distinction and the layout principles cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 evaluation supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "AG-LES-T1-W09-FORESTRY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 9, WK 9A blocks 790-801 (range sha256 b62f2832092cb5e127201a28ded8a3087d90f5395e45224b35a5fd5016a64455) and WK 9B block 855 (sha256 e0aa20d02e167f22c95ce77b8c9159ef947f90cc3106fb42592e8558f8616d45); objective COV-AG-T1-W09-FORESTRY (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson for the forestry cluster that Week 9 assesses but never teaches: the forest and its uses, forestry-department functions, taungya, forest regulation, selective exploitation (printed 'selective exploration' at block 801), afforestation, reforestation and primary forest products. Use only content cleared by AG-FACT-T1-W09-SCOPE, distinguish it from the one-sentence Week 7 definition at block 560, and include practice with complete answers and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W09-FORESTRY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W09",
+        "AG-FACT-T1-W09-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W09 (2026-11-03): blocks 793-801 and 855 assess forestry, while the only teaching mention in the document is the one-sentence Week 7 definition at block 560; COV-AG-T1-W09-FORESTRY is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W09-COVERAGE is open. AG-WK-T1-W09 authors no forestry text.",
+      "completion_condition": "A lesson in agricultural-science.json teaches the forestry cluster cleared by AG-FACT-T1-W09-SCOPE, labels itself a Week 9 assessment supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented, no answer key is inferred, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "AG-FACT-T1-W09-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 9, blocks 721-865 (range sha256 888982547014538459e63665cd22a6f311c6acbeeb72bb511cf855ff495b4018); specifically blocks 723, 731, 750, 779, 785-786, 790-801, 851, 853-855 and 857",
+      "objective": "Obtain one recorded subject-expert decision on every Week 9 item that the source does not teach or words defectively, so the two appended lessons and any re-scoping proceed without invented content: (1) the farm/farmstead distinction and five principles of farmstead layout; (2) the forestry cluster and the correct term for 'selective exploration'; (3) whether compost (854) and mulching (857) belong to another term or week or should be withdrawn; (4) the misdirected reading at 851; (5) whether pressure, named at 731, is to be taught; (6) which wording defects are retained or corrected through a delivery replacement.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W09-SCOPE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W09"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by AG-WK-T1-W09 (2026-11-03): the numbered items in AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE and the untaught objectives COV-AG-T1-W09-FARMSTEAD and COV-AG-T1-W09-FORESTRY. No correction or content is invented here.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
     }
   ],
   "review": {
@@ -1456,7 +1577,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W09",
     "AG-INV-T3",
     "AG-TEST-PACKAGE",
     "AG-PRE-T1",

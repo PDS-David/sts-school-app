@@ -91,7 +91,70 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-AG-T1-W09-SCHEME-9",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme entry 9: environmental factors affecting agricultural production (crop and animal distribution and production)",
+      "objective_locator": "SS1-SRC-7aa642b0085b scheme block 20 (sha256 1e4075c136a07535f22ac8963cc4d9f183203098cff2e00a4995e097e233eace); Week 9 label block 721 (sha256 e49a67c5f9ee04d211c522971f42cfc83eaf339ea51894512b072dbb1082f102); Week 9 body blocks 721-843 (range sha256 833dd27676e7de0cb43acff696f032a35ab5bed08277f1a81eb18cee0a5a1a74)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme block 20 (sha256 1e4075c136a07535f22ac8963cc4d9f183203098cff2e00a4995e097e233eace); heading block 723 (sha256 ed754c41b1d5f9de5e75f60ce3fead1bc511f6546c7151640d60f5d38f4a23ec); grouping blocks 725-728; climate definition block 729 (sha256 42818eeefbab66377a722f857e300325534e6978ece39106d37ccb0328cfdc04)",
+          "explanation": "The scheme gives one entry for Week 9. The body heading repeats the topic and the grouping blocks name three factor groups: climate, biotic and edaphic. Climate is defined at block 729. The scheme objective is therefore taught in the source, not merely labelled."
+        },
+        {
+          "locator": "climate blocks 723-779 (range sha256 3a4c2289e40468922e03ba632c242c718dc6da4edff0efd9f84e048765a16e85); evaluation blocks 739-741; reading blocks 788-789 (block 789 sha256 e1652dbaed3c54b1ee85abfe0456658bc2295b26801b0d0969d5eddb7fcded59)",
+          "explanation": "Rainfall (734-748), temperature (750-756), sunlight (758-762), wind (764-770) and relative humidity (772-779) are each defined or listed with effects on crops and livestock. The factors list at block 731 also names pressure, but no block in the week or elsewhere teaches pressure; that omission is recorded, not corrected. The evaluation at 739-741 is answerable from blocks 734-738, and the reading at 789 cites the correct environmental-factors chapter, pages 212-216."
+        },
+        {
+          "locator": "biotic blocks 805-824 (range sha256 75d06260eb1575528710641f69fc5f6fa2493187fa141883dcf8889d84025559); edaphic blocks 826-842 (range sha256 616c211cc25cf697c95d7bf06c560cae40e91aea6a2a86ceca9395467d569192); evaluations blocks 817-819 and 844-849",
+          "explanation": "Biotic factors are predators (807), parasites with endo- and ecto-types (809-813), soil organisms (814-815), pests (816), diseases (820-821), mutualism (822-823) and weeds (824). Edaphic factors are soil pH (827-830), texture (832-836) and structure (838-842). The evaluations at 817-819 and 844-849 are answerable from these blocks; the five soil organisms asked for at block 849 are available at block 814."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/agricultural-science.json lessons[] length 0; importer not run",
+          "explanation": "No lesson and no parsed row exist for this week, so the source teaching is not deliverable. PARTIAL: taught in the source, no deliverable lesson. Delivery is blocked by AGRICULTURAL-SCIENCE-T1-W09-COVERAGE."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W09-FARMSTEAD",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Farm versus farmstead, and the five principles of farmstead layout",
+      "objective_locator": "SS1-SRC-7aa642b0085b General Evaluation blocks 785-786 (range sha256 2e4908baf2ec05bd720b5f4132437f0f6789c3c81225aa7a7af9172e52d639b1); block 785 (sha256 d5cf8e34fdad4fab40e51a03bc7b2b1f1cba6649e5a6f27a74cf648f39fecb30); block 786 (sha256 b0ebee3f5260b3eef4ff302b7c4b6f56e73843d84b99faf2f77e1f35217b9b56)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 781-786 (range sha256 2e4908baf2ec05bd720b5f4132437f0f6789c3c81225aa7a7af9172e52d639b1)",
+          "explanation": "The General Evaluation after the climate half asks at 785 for the difference between a farm and a farmstead and at 786 for five principles of farmstead layout. The preceding Week 9 blocks 723-779 teach climate only; no block in the week defines a farm or a farmstead or names a layout principle."
+        },
+        {
+          "locator": "whole-document text search; Week 7 uses of land blocks 554-565 (range sha256 a0404cdc0a76bc8d42ea7de094e4b2aa1d7651cebebe6af7f6fac66b70e19346)",
+          "explanation": "The string 'farmstead' occurs only at blocks 785 and 786 among all 933 blocks; it appears in no scheme line and in no teaching paragraph. Week 7's uses of land (554-565) covers crop production, grazing, fishery, forestry and wildlife conservation, not the farm/farmstead distinction or farmstead layout. Asked, never taught: UNRESOLVED. The bounded supplement AG-LES-T1-W09-FARMSTEAD is appended."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W09-FORESTRY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Forestry: the forest and its uses; taungya; forest regulation; selective exploitation; afforestation; reforestation; forestry-department functions; primary forest products",
+      "objective_locator": "SS1-SRC-7aa642b0085b WK 9A blocks 790-801 (range sha256 b62f2832092cb5e127201a28ded8a3087d90f5395e45224b35a5fd5016a64455); block 793 (sha256 212cf4bb83443c54d1c4d8e9d808c3f34c5038678b6336dcc6f5677912ad029c); block 794 (sha256 f186a6a5da7b080ccbfe47cfd85b4800e2350f278c1a8ce964b01ffd87dbc99e); blocks 798-799 (block 798 sha256 bbc590953e616ede7ab2e5e1db6bff44d715ca1bebc68e47fcb6cf46fc466b9b; block 799 sha256 7fb0d0c46cb948d988ef02ff300731ed718c909d7f7b281c39f71af189960950); block 801 (sha256 a66282bf015a8f8896d676ccc57dcc7b1612ed6f95c8b6f82a486313c6ba7508); WK 9B block 855 (sha256 e0aa20d02e167f22c95ce77b8c9159ef947f90cc3106fb42592e8558f8616d45)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 790-801 (range sha256 b62f2832092cb5e127201a28ded8a3087d90f5395e45224b35a5fd5016a64455); block 855 (sha256 e0aa20d02e167f22c95ce77b8c9159ef947f90cc3106fb42592e8558f8616d45)",
+          "explanation": "The Week 9 assessment asks four forestry matters: functions of the forestry department (793), the taungya system (794), a definition of forest and eight uses of the forest and its resources (798-799), and notes on forest regulation, 'selective exploration', afforestation and reforestation (801). WK 9B asks for a primary product of forest trees (855)."
+        },
+        {
+          "locator": "whole-document text search; Week 7 block 560 (sha256 57fda2632ce1f81206132ce90dbbe2772e5a8c7d4dd2c223698e61fb74482958)",
+          "explanation": "The only teaching mention of forestry is block 560, in Week 7's uses of land, and it gives one sentence on managing forest land and its resources. It names no taungya, forest regulation, afforestation or reforestation. The string 'taungya' occurs only at block 794; 'afforestation', 'reforestation' and 'forest regulation' only at block 801; 'selective' only at block 801. Week 9's body never mentions forestry. Asked, never taught: UNRESOLVED. The bounded supplement AG-LES-T1-W09-FORESTRY is appended."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "AGRICULTURAL-SCIENCE-ALIAS-APPROVAL",
@@ -123,6 +186,32 @@
       "affected_ids": [
         "SS1-SRC-458a07f7ea5a-R001",
         "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 9's scheme entry 9 is taught in the source but is not deliverable: the package has no lesson or parsed row for the week and the importer has not been run, so COV-AG-T1-W09-SCHEME-9 is PARTIAL. Two topics asked by the week's own General Evaluation and assignments are not taught anywhere in the 1st Term document: the farm/farmstead distinction and five principles of farmstead layout (blocks 785-786; 'farmstead' occurs nowhere else), and the forestry cluster (blocks 793-801 and 855; the only teaching mention is the one-sentence definition at Week 7 block 560). COV-AG-T1-W09-FARMSTEAD and COV-AG-T1-W09-FORESTRY are UNRESOLVED. Bounded supplements AG-LES-T1-W09-FARMSTEAD and AG-LES-T1-W09-FORESTRY are appended, both waiting on the expert decision in AG-FACT-T1-W09-SCOPE.",
+      "required_action": "Owner/expert settles AG-FACT-T1-W09-SCOPE, then the two bounded lessons are authored and approved; the week's source teaching still needs the normal import/parse step before delivery. Do not invent farmstead-layout principles or forestry content.",
+      "affected_ids": [
+        "COV-AG-T1-W09-SCHEME-9",
+        "COV-AG-T1-W09-FARMSTEAD",
+        "COV-AG-T1-W09-FORESTRY",
+        "AG-LES-T1-W09-FARMSTEAD",
+        "AG-LES-T1-W09-FORESTRY",
+        "AG-FACT-T1-W09-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 9's assessment contains items that no 1st Term block teaches and one misdirected reading. (1) WK 9B Q2 (block 854) asks for 'compost'; 'compost' occurs nowhere else in the document and no block teaches manure making. (2) WK 9B Q4 (block 857) asks how to prevent excessive evaporation; 'mulch' occurs only at block 414 (a Week 4 pest-control question) and block 857, never in teaching text. (3) The WK 9B reading assignment (block 851) directs the learner to 'Pasture and forage crops ... pages 179-182', which is not this week's topic; the WK 9A reading (block 789) correctly cites the environmental-factors chapter, pages 212-216. (4) Block 731 lists pressure among the climate factors, but no block in Week 9 or elsewhere teaches it. (5) WK 9B Q1 (block 853) repeats WK 9A Q5 (blocks 795-796) almost verbatim. (6) Retained wording defects: block 723 runs 'CROPAND' together; block 750 has 'coaster' for coastal; block 779 has 'forms the re-growth of disease pathogen'; block 796 prints 'Soil pHB. Soil texture'; block 853 prints 'C. soil organic'; block 855 prints 'PulpB. timber'; block 801 prints 'Selective exploration', which is not the standard term (selective exploitation). No source byte is corrected here.",
+      "required_action": "Record one expert decision per numbered item in AG-FACT-T1-W09-SCOPE: whether each untaught assessment item is re-scoped, replaced or removed, whether pressure is taught, and which wording is retained. Do not correct the source bytes or infer an answer key.",
+      "affected_ids": [
+        "SS1-SRC-7aa642b0085b",
+        "AG-FACT-T1-W09-SCOPE"
       ],
       "blocks_delivery": true
     }
