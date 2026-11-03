@@ -24,7 +24,8 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "CC-INV-T3 (2026-10-29) inventoried the 3rd Term original and appended the preamble, marker, week-indexing, visual, preservation and fact items. The document has ten teaching-week labels plus one combined WEEK ELEVEN AND TWELVE marker; WEEK TEN is title-only with no body. It has no Word tables and one inline JPEG (table-cloth laying, Week 8). Nothing was run. No lesson, coverage, rule, correction or asset was written. CC-FACT-CONTENT-APPROVAL stays BLOCKED pending CC-TEST-PACKAGE.",
-    "CC-IDX-T2-W01 (2026-10-30) indexed 2nd Term WEEK ONE (getBody lines 26-223): 29 sections with per-section hashes, four EVALUATION blocks plus GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY. One PARTIAL coverage entry (COV-CC-T2-W01-SCHEME-1) was added to the package; no lesson, rule, correction, asset or answer. One FACT follow-up item was appended for the game section. Nothing was run."
+    "CC-IDX-T2-W01 (2026-10-30) indexed 2nd Term WEEK ONE (getBody lines 26-223): 29 sections with per-section hashes, four EVALUATION blocks plus GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY. One PARTIAL coverage entry (COV-CC-T2-W01-SCHEME-1) was added to the package; no lesson, rule, correction, asset or answer. One FACT follow-up item was appended for the game section. Nothing was run.",
+    "CC-TEST-PACKAGE (2026-11-03) wrote tests/ss1/catering-craft.package.test.mts and did NOT run it. The test parses the package with the frozen schema and reads SOURCE_ASSIGNMENTS.csv directly: exactly two assigned documents (2nd and 3rd Term), member, SHA-256 and term equal to the manifest, no 1st Term source. It guards the two alias rules (exact anchor equals header_text, PENDING-OWNER reference, no approval text), checks that no lesson/asset/correction fabricates approval or verification, keeps vacuous lesson body and marking guards for later content, checks coverage targets resolve and any PARTIAL/UNRESOLVED coverage is paired with a PENDING package and a blocking open item, and runs negative controls on alias rules for a wrong-source hash, ambiguous anchor and missing anchor. No package, schema, compiler or other-subject view changed; items remain 53. Status 6 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W02. Coverage stays 1, lessons 0, open items 1. Execution remains deferred by the owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 2,
@@ -38,8 +39,8 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 47,
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 46,
     "BLOCKED": 1
   },
   "items": [
@@ -205,8 +206,8 @@
         "CC-SRC-T2",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/catering-craft.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "tests/ss1/catering-craft.package.test.mts does not exist; the package does not exist yet. Pattern file: tests/ss1/french.package.test.mts (written, not run). | Written (CC-TEST-PACKAGE, 2026-11-03; the package now exists at backend/src/db/ss1/subjects/catering-craft.json, PENDING with two sources): tests/ss1/catering-craft.package.test.mts created following tests/ss1/french.package.test.mts. It covers schema parse; exactly the two assigned documents read from SOURCE_ASSIGNMENTS.csv with matching archive member, SHA-256 and term and no 1st Term source; the two source_alias rules binding each exact header and carrying PENDING-OWNER references; no fabricated lesson, correction or asset approval or verification; lesson body and marking guards that stay vacuous while the package has no lessons; coverage target resolution and PARTIAL/UNRESOLVED visibility; and alias negative controls for a wrong-source hash, an ambiguous anchor and a missing anchor. NOT RUN (testing deferred by owner).",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -1938,7 +1939,6 @@
     }
   },
   "next_runnable": [
-    "CC-TEST-PACKAGE",
     "CC-IDX-T2-W02",
     "CC-IDX-T2-W03",
     "CC-IDX-T2-W04",
