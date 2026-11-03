@@ -30,7 +30,8 @@
     "ENG-WK-T1-W04 (2026-11-03): Week 4 indexed at objective level; 27 coverage entries and rule R031 added to english.json, six open items opened and seven PENDING follow-up items appended (ENG-FACT-W04-EXTERNAL-MATERIALS, ENG-FACT-W04-UNIFIED-TEST, ENG-LES-W04-SKIM-SCAN, -NOUN-VERB-PHRASE-SCOPE, -AGRICULTURE-VOCAB, -SPELLING-MISSPELT, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next.",
     "ENG-WK-T1-W05 (2026-11-03): Week 5 indexed at objective level; 20 coverage entries and rule R032 added to english.json, seven open items opened and six PENDING follow-up items appended (ENG-FACT-W05-EXTERNAL-MATERIALS, ENG-FACT-W05-VOCAB-OBJECTIVE, ENG-LES-W05-SENTENCE-KINDS, -EXPOSITORY-ESSAY, -STOCK-INSURANCE-VOCAB, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next.",
     "ENG-LES-W02-PHRASAL-VERBS (2026-11-03): Week 2 phrasal-verbs supplement authored on the ENG-WK-T1-W05 branch (stacked on PR #298). New lesson SUP-SS1-ENGLISH-PHRASAL-VERBS-T1 (46 marks) bound to coverage ENGLISH-T1-W02-PV02, PV05 and LB04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W02-ANSWER-KEYS closed and ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W02-ADVERB-CONJ-PREP.",
-    "ENG-LES-W02-ADVERB-CONJ-PREP (2026-11-03): Week 2 adverb, conjunction and preposition supplement authored on branch ss1/eng-les-w02-adverb-conj-prep-20261103. New lesson SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1 (58 marks) bound to coverage ENGLISH-T1-W02-AV02, AV03, CJ04, PP02 and PP03, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed to the row-level entry ENGLISH-BODY-006. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-ESSAY-REPORT."
+    "ENG-LES-W02-ADVERB-CONJ-PREP (2026-11-03): Week 2 adverb, conjunction and preposition supplement authored on branch ss1/eng-les-w02-adverb-conj-prep-20261103. New lesson SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1 (58 marks) bound to coverage ENGLISH-T1-W02-AV02, AV03, CJ04, PP02 and PP03, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed to the row-level entry ENGLISH-BODY-006. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-ESSAY-REPORT.",
+    "ENG-LES-W03-ESSAY-REPORT (2026-11-03): Week 3 essay, formal report and minutes supplement authored on branch ss1/eng-les-w03-essay-report-20261103. New lesson SUP-SS1-ENGLISH-ESSAY-REPORT-T1 (62 marks) bound to coverage ENGLISH-T1-W03-ES01, ES02, ES03 and ES04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-ESSAY-REPORT-SCOPE removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to MN03 and EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-IDIOMS."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -42,8 +43,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 29,
-    "PENDING": 86,
+    "IMPLEMENTED_TESTING_DEFERRED": 30,
+    "PENDING": 85,
     "BLOCKED": 4
   },
   "items": [
@@ -3316,8 +3317,8 @@
       "depends_on": [
         "ENG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open items ENGLISH-T1-W03-ESSAY-REPORT-SCOPE and ENGLISH-T1-W03-ANSWER-KEYS in english.json. Source row: BODY 449da7006b26f4ac12a197463e14953838e91a15ced4a14cb66eae77136fffb5.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-ESSAY-REPORT-T1 (62 marks; body_sha256 b7baafa0405b3f72fd3094a9b82b1579aa5726e03659e39eabfe3a8e044bd724 recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W03-ES01, ES02, ES03 and ES04 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original body and add the supplement; one evidence entry appended to each, earlier evidence retained). The lesson is an equivalent, not a correction: the original row ENGLISH-BODY-008 is unchanged and still delivered, so no delivery_correction was added; ES05 (pages 2-5 of Count Down in English) is outside this lesson and stays UNRESOLVED. Open item ENGLISH-T1-W03-ESSAY-REPORT-SCOPE removed because its action is complete; ENGLISH-T1-W03-ANSWER-KEYS narrowed to MN03 and EN06. The composition conventions were paraphrased from general knowledge and not fetched, and are listed for owner review in the task note. Record: docs/ss1/work/microtasks/english/ENG-LES-W03-ESSAY-REPORT.md.",
       "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3761,6 +3762,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W03-ESSAY-REPORT"
+    "ENG-LES-W03-IDIOMS"
   ]
 }
