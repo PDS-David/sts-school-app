@@ -31,7 +31,8 @@
     "ENG-WK-T1-W05 (2026-11-03): Week 5 indexed at objective level; 20 coverage entries and rule R032 added to english.json, seven open items opened and six PENDING follow-up items appended (ENG-FACT-W05-EXTERNAL-MATERIALS, ENG-FACT-W05-VOCAB-OBJECTIVE, ENG-LES-W05-SENTENCE-KINDS, -EXPOSITORY-ESSAY, -STOCK-INSURANCE-VOCAB, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next.",
     "ENG-LES-W02-PHRASAL-VERBS (2026-11-03): Week 2 phrasal-verbs supplement authored on the ENG-WK-T1-W05 branch (stacked on PR #298). New lesson SUP-SS1-ENGLISH-PHRASAL-VERBS-T1 (46 marks) bound to coverage ENGLISH-T1-W02-PV02, PV05 and LB04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W02-ANSWER-KEYS closed and ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W02-ADVERB-CONJ-PREP.",
     "ENG-LES-W02-ADVERB-CONJ-PREP (2026-11-03): Week 2 adverb, conjunction and preposition supplement authored on branch ss1/eng-les-w02-adverb-conj-prep-20261103. New lesson SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1 (58 marks) bound to coverage ENGLISH-T1-W02-AV02, AV03, CJ04, PP02 and PP03, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed to the row-level entry ENGLISH-BODY-006. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-ESSAY-REPORT.",
-    "ENG-LES-W03-ESSAY-REPORT (2026-11-03): Week 3 essay, formal report and minutes supplement authored on branch ss1/eng-les-w03-essay-report-20261103. New lesson SUP-SS1-ENGLISH-ESSAY-REPORT-T1 (62 marks) bound to coverage ENGLISH-T1-W03-ES01, ES02, ES03 and ES04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-ESSAY-REPORT-SCOPE removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to MN03 and EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-IDIOMS."
+    "ENG-LES-W03-ESSAY-REPORT (2026-11-03): Week 3 essay, formal report and minutes supplement authored on branch ss1/eng-les-w03-essay-report-20261103. New lesson SUP-SS1-ENGLISH-ESSAY-REPORT-T1 (62 marks) bound to coverage ENGLISH-T1-W03-ES01, ES02, ES03 and ES04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-ESSAY-REPORT-SCOPE removed and ENGLISH-T1-W03-ANSWER-KEYS narrowed to MN03 and EN06. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-IDIOMS.",
+    "ENG-LES-W03-IDIOMS (2026-11-03): Week 3 idiom supplement authored on the ENG-LES-W03-ESSAY-REPORT branch (stacked on PR #301). New lesson SUP-SS1-ENGLISH-IDIOMS-T1 (62 marks) bound to coverage ENGLISH-T1-W03-ID02, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW narrowed to the entertainment glosses and the monophthong word lists. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W03-ENTERTAINMENT-VOCAB."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -43,8 +44,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 30,
-    "PENDING": 85,
+    "IMPLEMENTED_TESTING_DEFERRED": 31,
+    "PENDING": 84,
     "BLOCKED": 4
   },
   "items": [
@@ -3343,8 +3344,8 @@
       "depends_on": [
         "ENG-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW in english.json. Source row: BODY 5729b94b873d9022c6655ae94546989abcd917fbd273fdf3a9faaceca23ff913.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-IDIOMS-T1 (62 marks; body_sha256 3ef92806e67e91f66b61cd40845222ec10a76f6e1f9da6ba288105184f39ef54 recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W03-ID02 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original body and add the supplement). The lesson is an equivalent, not a correction: the original row ENGLISH-BODY-010 is unchanged and still delivered, so no delivery_correction was added; MN03 and MN04 stay with their own items. Open item ENGLISH-T1-W03-SOURCE-WORDING-REVIEW narrowed to the entertainment glosses and the monophthong word lists. Idiom forms and senses were paraphrased from general knowledge and not fetched, and are listed for owner review in the task note. Record: docs/ss1/work/microtasks/english/ENG-LES-W03-IDIOMS.md.",
       "completion_condition": "ID02 reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3762,6 +3763,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W03-IDIOMS"
+    "ENG-LES-W03-ENTERTAINMENT-VOCAB"
   ]
 }
