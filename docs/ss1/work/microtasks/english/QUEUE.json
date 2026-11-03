@@ -26,20 +26,21 @@
     "ENG-WK-T1-W01 (2026-10-27): Week 1 indexed at objective level from master fc2aef1f0761f25fe50c06ed4592b2357a117bff. The replacement SUP-SS1-ENGLISH-WORD-CLASSES-T1 was found NOT to preserve every objective of the row it displaces; follow-up items ENG-LES-W01-NOUNS, ENG-LES-W01-PRONOUN-ADJ-VERB and ENG-FACT-W01-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed.",
     "ENG-WK-T1-W02 (2026-10-27): Week 2 indexed at objective level from master c48a012225c4b142bb6515a2fd8e5bf4d440509e (24 new coverage entries; rule R029 classifies scheme row 2). The four Week 2 source rows are not displaced by any SS1-02 correction; their gaps are source-side (unsupplied book pages, one scheme objective not taught, wording defects, missing keys). Follow-up items ENG-LES-W02-WORD-MEANINGS, ENG-LES-W02-PHRASAL-VERBS, ENG-LES-W02-ADVERB-CONJ-PREP and ENG-FACT-W02-EXTERNAL-MATERIALS were added. Indexing complete does not mean the gaps are closed. QUEUE_BUILD.md was outside this item's write paths and still names W02 as next.",
     "ENG-LES-W02-WORD-MEANINGS (2026-10-29): Week 2 word-meanings supplement authored from master a98983a8. New lesson SUP-SS1-ENGLISH-MEANING-T1 (32 marks) bound to coverage ENGLISH-T1-W02-CM02, which moved from UNRESOLVED to IMPLEMENTED_EQUIVALENT. Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE closed because its required action is complete; approval stays PENDING and verification DEFERRED. ENGLISH-BODY-004 remains PARTIAL (unsupplied passage). The source was re-extracted privately: member and archive hashes re-verified and the scheme-only status of the objective re-confirmed. Dictionary confirmations for brackish, inflammable, childish/childlike and the senses of sharp were not re-fetched (network unavailable) and are listed for owner review in the task note. next_runnable: ENG-LES-W02-PHRASAL-VERBS.",
-    "ENG-WK-T1-W03 (2026-10-30): Week 3 indexed at objective level; 19 coverage entries and rule R030 added to english.json, five open items opened and six PENDING follow-up items appended. Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED."
+    "ENG-WK-T1-W03 (2026-10-30): Week 3 indexed at objective level; 19 coverage entries and rule R030 added to english.json, five open items opened and six PENDING follow-up items appended. Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED.",
+    "ENG-WK-T1-W04 (2026-11-03): Week 4 indexed at objective level; 27 coverage entries and rule R031 added to english.json, six open items opened and seven PENDING follow-up items appended (ENG-FACT-W04-EXTERNAL-MATERIALS, ENG-FACT-W04-UNIFIED-TEST, ENG-LES-W04-SKIM-SCAN, -NOUN-VERB-PHRASE-SCOPE, -AGRICULTURE-VOCAB, -SPELLING-MISSPELT, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 26,
+    "LESSON": 31,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 14,
+    "FACTUAL_DEPENDENCY": 16,
     "ASSET": 1,
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 25,
-    "PENDING": 77,
+    "IMPLEMENTED_TESTING_DEFERRED": 26,
+    "PENDING": 83,
     "BLOCKED": 4
   },
   "items": [
@@ -259,8 +260,8 @@
       "depends_on": [
         "ENG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-012, ENGLISH-BODY-013, ENGLISH-BODY-014 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-012='TOPICS: COMPREHENSION/ READING SKILLS: SKIMMING AND SCANNING.'; ENGLISH-BODY-013='B. STRUCTURE: NOUN PHRASE AND VERB PHRASE.'; ENGLISH-BODY-014='VOCABULARY OF AGRICULTURE - GENERAL TERMS'. Corrected rows: ENGLISH-BODY-013 <- SS1-02-english-COR-002 -> SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-11-03 from master 541e8b0182a1bf31807cb84713b23b8fe3d1ad38; source document sha256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef verified (standalone member; the composite archive was not supplied, so its hash was not checked). backend/src/db/ss1/subjects/english.json: row-level entries ENGLISH-BODY-012..014 retained unchanged and 27 new Week 4 entries added: ENGLISH-T1-W04-SCHEME-ROW, SK01, DR01-DR03, NP01-NP08, VP01, EV01, RA01, AG01-AG05, UT01, SP01-SP03, RV01, WA01; classify_marker/SCHEME_ONLY rule SS1-SRC-a00657d42196-R031. Outcome of the new entries: 4 IMPLEMENTED_EQUIVALENT, 1 MARKER, 13 PARTIAL, 9 UNRESOLVED. Replacement scope checked: SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1 (correction SS1-02-english-COR-002) covers subject, object, complement labels and verb phrases (NP02, NP06, NP07, VP01) but not a pronoun head (NP01), gerund and infinitive phrases (NP03, NP04), an adjective as head (NP05), the complement of a preposition by name (NP08) or the source's functions exercise (EV01). SK01 (skimming and scanning) is UNRESOLVED: no source body teaches it and SUP-SS1-ENGLISH-READING-T1 is not bound (owner decision in ENG-FACT-READING-T1-T3-UNBOUND). No visual or asset is required by Week 4. Open items: ENGLISH-T1-W04-EXTERNAL-MATERIALS, ANSWER-KEYS, SOURCE-WORDING-REVIEW, PHRASES-REPLACEMENT-SCOPE, SKIM-SCAN-BINDING, UNIFIED-TEST. Record: docs/ss1/work/microtasks/english/ENG-WK-T1-W04.md.",
       "completion_condition": "Every objective of Week 4 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -2655,7 +2656,7 @@
         "ENG-LES-READING-T3"
       ],
       "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-READING-T1 and -T3 appear in no coverage lesson_ids and no delivery_corrections; only READING-T2 is bound (ENG-COR-011, ENG-COR-012). Their bodies are identical to READING-T2 (same body_sha256). UNR-01 (2026-10-30, master 8ffcd12): SUP-SS1-ENGLISH-READING-T1 was reviewed against the ten UNRESOLVED 1st Term rows and teaches none of their objectives (each names a specific textbook page or exercise); not bound, no status change. SUP-SS1-ENGLISH-READING-T3 cannot bind to those 1st Term rows. Both stay unbound; remaining blocker is an owner decision. Evidence: docs/ss1/work/microtasks/english/UNR-01.md.",
+      "implementation_reference": "backend/src/db/ss1/subjects/english.json: SUP-SS1-ENGLISH-READING-T1 and -T3 appear in no coverage lesson_ids and no delivery_corrections; only READING-T2 is bound (ENG-COR-011, ENG-COR-012). Their bodies are identical to READING-T2 (same body_sha256). UNR-01 (2026-10-30, master 8ffcd12): SUP-SS1-ENGLISH-READING-T1 was reviewed against the ten UNRESOLVED 1st Term rows and teaches none of their objectives (each names a specific textbook page or exercise); not bound, no status change. SUP-SS1-ENGLISH-READING-T3 cannot bind to those 1st Term rows. Both stay unbound; remaining blocker is an owner decision. Evidence: docs/ss1/work/microtasks/english/UNR-01.md. ENG-WK-T1-W04 (2026-11-03): the Week 4 skimming-and-scanning objective (coverage ENGLISH-T1-W04-SK01, row ENGLISH-BODY-012) is a case UNR-01 did not review: READING-T1's 'Skim by looking' paragraph teaches the generic skill, but the row's objective is attached to the Unit 4 drama passage of Effective English. Not bound, SK01 stays UNRESOLVED; this item's dependency on ENG-WK-T1-W04 is now met.",
       "completion_condition": "Each lesson is either bound by exact coverage/correction entries to indexed rows, or the owner decides it is unneeded; no binding is invented.",
       "required_attachments": []
     },
@@ -3427,6 +3428,175 @@
           "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
         }
       ]
+    },
+    {
+      "id": "ENG-FACT-W04-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W04-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 4 refers to but the source does not contain (the Unit 4 drama passage and its questions, Effective English pages 68-71; Countdown page 236, pages 144-145 and pages 353-354 Passage B numbers 19-30; Count down in English by Evans pages 58-62, with answers), or have the owner accept a labelled equivalent activity.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W04-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-012, ENGLISH-BODY-013, ENGLISH-BODY-014, ENGLISH-T1-W04-DR01, DR02, DR03, RA01, AG05, SP03, WA01. Needs owner-supplied material or an owner decision.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of an equivalent activity; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
+    },
+    {
+      "id": "ENG-LES-W04-SKIM-SCAN",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 4, skimming and scanning (coverage ENGLISH-T1-W04-SK01)",
+      "objective": "Author original skimming and scanning teaching tied to a drama extract, with an answered, marked practice set, only if the owner declines to bind SUP-SS1-ENGLISH-READING-T1 to this objective. Do not reproduce the Effective English Unit 4 passage.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04",
+        "ENG-FACT-READING-T1-T3-UNBOUND"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W04-SKIM-SCAN-BINDING in english.json. Source row: BODY d8bc6522b3e9f5faad42588517ef7db56406dfa3290a9e83b6807ec22e256392. Skip this item if the owner binds READING-T1 as a labelled equivalent.",
+      "completion_condition": "SK01 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W04-NOUN-VERB-PHRASE-SCOPE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 4, noun phrase and verb phrase (coverage ENGLISH-T1-W04-NP01, NP03, NP04, NP05, NP08, EV01)",
+      "objective": "Review the scope of SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1 against Week 4 and author the missing original teaching: a pronoun as head of a noun phrase, gerund and infinitive phrases as noun phrases, an adjective as head, the noun phrase as complement of a preposition, plus a keyed functions exercise covering noun-phrase and verb-phrase items. Choose between extending the supplement and adding a new one when the item is executed.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open items ENGLISH-T1-W04-PHRASES-REPLACEMENT-SCOPE and ENGLISH-T1-W04-ANSWER-KEYS in english.json. Source row: BODY 1c98310e1fd9b30d4be570da432c1a4203dfa79ddbf55acbd0f1a1fb7bcca830. Correction SS1-02-english-COR-002 already binds the row to SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1.",
+      "completion_condition": "NP01, NP03, NP04, NP05, NP08 and EV01 reach IMPLEMENTED_EQUIVALENT with a supplement target; the correction binding is changed only after the replacement's scope is reviewed; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W04-AGRICULTURE-VOCAB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 4, vocabulary development: agriculture (coverage ENGLISH-T1-W04-AG01, AG02, AG03, AG04)",
+      "objective": "Author original reviewed vocabulary teaching on agriculture, livestock and fishery: a checked word set with glosses and example sentences, a keyed exercise that includes model sentences for the choose-five-words task, and review of the flagged source glosses. Do not copy source text.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open items ENGLISH-T1-W04-SOURCE-WORDING-REVIEW and ENGLISH-T1-W04-ANSWER-KEYS in english.json. Source row: BODY 9a0782678ccf117f1b370a215502adeb890414f7b3165e45d741ec906cb46b35. Week 5's topic line also names fisheries and animal husbandry vocabulary; check for overlap when ENG-WK-T1-W05 is indexed.",
+      "completion_condition": "AG01 to AG04 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W04-SPELLING-MISSPELT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 4, spelling: words commonly misspelt (coverage ENGLISH-T1-W04-SP01, SP02)",
+      "objective": "Author original reviewed spelling teaching on commonly misspelt words: a dictionary-checked word list with the pattern behind each error, and a keyed dictation with a stated text and marking. Do not copy source text.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open items ENGLISH-T1-W04-SOURCE-WORDING-REVIEW and ENGLISH-T1-W04-ANSWER-KEYS in english.json. Source row: BODY 9a0782678ccf117f1b370a215502adeb890414f7b3165e45d741ec906cb46b35.",
+      "completion_condition": "SP01 and SP02 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W04-REVISION-KEYS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 4, general evaluation/revision questions (coverage ENGLISH-T1-W04-RV01)",
+      "objective": "Author a reviewed, keyed revision set on word meaning in context as original teaching. Do not infer the answers from the source options.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Open item ENGLISH-T1-W04-ANSWER-KEYS in english.json. Source row: BODY 9a0782678ccf117f1b370a215502adeb890414f7b3165e45d741ec906cb46b35.",
+      "completion_condition": "RV01 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-FACT-W04-UNIFIED-TEST",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W04-UNIFIED-TEST",
+      "objective": "Obtain the Week 4 unified test (paper, scope, marking scheme and timing), or have the owner state that it is an external examination, so that the objective can be covered or classified.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W04-UNIFIED-TEST] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-014, ENGLISH-T1-W04-UT01. Needs an owner-supplied instrument or an owner decision.",
+      "completion_condition": "Owner supplies the instrument or records its status; the open item and UT01 are updated accordingly.",
+      "required_attachments": []
     }
   ],
   "review": {
