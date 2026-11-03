@@ -28,7 +28,8 @@
     "ENG-LES-W02-WORD-MEANINGS (2026-10-29): Week 2 word-meanings supplement authored from master a98983a8. New lesson SUP-SS1-ENGLISH-MEANING-T1 (32 marks) bound to coverage ENGLISH-T1-W02-CM02, which moved from UNRESOLVED to IMPLEMENTED_EQUIVALENT. Open item ENGLISH-T1-W02-WORD-MEANINGS-SCOPE closed because its required action is complete; approval stays PENDING and verification DEFERRED. ENGLISH-BODY-004 remains PARTIAL (unsupplied passage). The source was re-extracted privately: member and archive hashes re-verified and the scheme-only status of the objective re-confirmed. Dictionary confirmations for brackish, inflammable, childish/childlike and the senses of sharp were not re-fetched (network unavailable) and are listed for owner review in the task note. next_runnable: ENG-LES-W02-PHRASAL-VERBS.",
     "ENG-WK-T1-W03 (2026-10-30): Week 3 indexed at objective level; 19 coverage entries and rule R030 added to english.json, five open items opened and six PENDING follow-up items appended. Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED.",
     "ENG-WK-T1-W04 (2026-11-03): Week 4 indexed at objective level; 27 coverage entries and rule R031 added to english.json, six open items opened and seven PENDING follow-up items appended (ENG-FACT-W04-EXTERNAL-MATERIALS, ENG-FACT-W04-UNIFIED-TEST, ENG-LES-W04-SKIM-SCAN, -NOUN-VERB-PHRASE-SCOPE, -AGRICULTURE-VOCAB, -SPELLING-MISSPELT, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next.",
-    "ENG-WK-T1-W05 (2026-11-03): Week 5 indexed at objective level; 20 coverage entries and rule R032 added to english.json, seven open items opened and six PENDING follow-up items appended (ENG-FACT-W05-EXTERNAL-MATERIALS, ENG-FACT-W05-VOCAB-OBJECTIVE, ENG-LES-W05-SENTENCE-KINDS, -EXPOSITORY-ESSAY, -STOCK-INSURANCE-VOCAB, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next."
+    "ENG-WK-T1-W05 (2026-11-03): Week 5 indexed at objective level; 20 coverage entries and rule R032 added to english.json, seven open items opened and six PENDING follow-up items appended (ENG-FACT-W05-EXTERNAL-MATERIALS, ENG-FACT-W05-VOCAB-OBJECTIVE, ENG-LES-W05-SENTENCE-KINDS, -EXPOSITORY-ESSAY, -STOCK-INSURANCE-VOCAB, -REVISION-KEYS). Indexing complete, content gaps not closed; approval stays PENDING and verification DEFERRED. NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and still name W04 as next.",
+    "ENG-LES-W02-PHRASAL-VERBS (2026-11-03): Week 2 phrasal-verbs supplement authored on the ENG-WK-T1-W05 branch (stacked on PR #298). New lesson SUP-SS1-ENGLISH-PHRASAL-VERBS-T1 (46 marks) bound to coverage ENGLISH-T1-W02-PV02, PV05 and LB04, now IMPLEMENTED_EQUIVALENT; no correction binding; open item ENGLISH-T1-W02-ANSWER-KEYS closed and ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W02-ADVERB-CONJ-PREP."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -40,8 +41,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 27,
-    "PENDING": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 28,
+    "PENDING": 87,
     "BLOCKED": 4
   },
   "items": [
@@ -3215,8 +3216,8 @@
       "depends_on": [
         "ENG-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open items ENGLISH-T1-W02-SOURCE-WORDING-REVIEW and ENGLISH-T1-W02-ANSWER-KEYS in english.json. Source rows: BODY 3bf9e57695b44faa72ac28d81de2c17c964ead8b92356981b6d4fb3bb088f781 and BODY ecb99bd6ceeaf6fa93a91b083b03bc06f1ddcc7605164be60de6c81d9ca64267.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-PHRASAL-VERBS-T1 (9 body paragraphs, 3 objectives, 7 practice items, 46 marks; every item's marking sums to its marks; body_sha256 71893c9aaea9dd561b885a9bbb91452f44346cb6da7aae78f303b7e9fddf29e8 recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W02-PV02, PV05 and LB04 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original body and add the supplement; one evidence entry appended to each, earlier evidence retained). LB04 is an equivalent keyed set, not a repair of the source items: the source revision questions are unchanged, unkeyed, and source item 2 still has no fitting option. No correction binding was added: the supplement does not cover PV01, PV03 or PV04 and so cannot displace ENGLISH-BODY-005, which still delivers them. Open item ENGLISH-T1-W02-ANSWER-KEYS removed because its required action (meanings, examples and a keyed set for PV05 and LB04) is complete; ENGLISH-T1-W02-SOURCE-WORDING-REVIEW narrowed (PV02 and ENGLISH-BODY-005 removed, remaining entries unchanged). The dictionary senses were paraphrased from general knowledge and not fetched, and are listed for owner review in the task note. Record: docs/ss1/work/microtasks/english/ENG-LES-W02-PHRASAL-VERBS.md.",
       "completion_condition": "Each listed coverage entry reaches IMPLEMENTED_EQUIVALENT with a supplement target; a correction binding is added only after the replacement's scope is reviewed; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -3759,6 +3760,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-LES-W02-PHRASAL-VERBS"
+    "ENG-LES-W02-ADVERB-CONJ-PREP"
   ]
 }
