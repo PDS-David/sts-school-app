@@ -23,23 +23,24 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "CHEM-INV-T1A (2026-10-29) inventoried the first 1st Term original and appended the opening, marker, week-indexing, visual, preservation and safety items. Ten teaching-week labels WEEK ONE to WEEK TEN; the scheme has 13 rows and rows 10-11 both map to WEEK TEN; REVISION and EXAMINATION have no bodies; WEEK EIGHT and WEEK NINE titles are stranded. 58 media entries are really 51 1x1 spacer PNGs plus 7 images, and the Week 6/Week 9 images are proprietary Encarta/Microsoft stock that does not match the captions; Week 10 orbital shapes are missing. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-FACT-CONTENT-APPROVAL stays BLOCKED pending the remaining inventories, comparison and package test.",
-    "CHEM-INV-T1B (2026-10-30) inventoried the second 1st Term original (CHEMISTRY SS11STTERM.docx). Ten teaching weeks plus a \"Week 6b\" label; the WEEK 9 label starts with a non-breaking space so the importer would fold WEEK 9 into WEEK 8; WEEK 10 is title-only; the scheme has ten rows and no REVISION or EXAMINATION. Weeks 3-9 labels sit inside one layout table; 78 media parts, 26 tables, one ActiveX part, 113 external hyperlinks. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-CMP-T1 is now eligible (both 1st Term inventories done)."
+    "CHEM-INV-T1B (2026-10-30) inventoried the second 1st Term original (CHEMISTRY SS11STTERM.docx). Ten teaching weeks plus a \"Week 6b\" label; the WEEK 9 label starts with a non-breaking space so the importer would fold WEEK 9 into WEEK 8; WEEK 10 is title-only; the scheme has ten rows and no REVISION or EXAMINATION. Weeks 3-9 labels sit inside one layout table; 78 media parts, 26 tables, one ActiveX part, 113 external hyperlinks. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-CMP-T1 is now eligible (both 1st Term inventories done).",
+    "CHEM-INV-T2 (2026-11-03) inventoried the 2nd Term original: nine week labels cover ten teaching weeks because WEEK 4 & 5 share one label; every label starts at a block boundary and the importer WEEK_MARKER matches it, so no split_before or attach_stranded_label rule is needed; there is no REVISION or EXAMINATION marker, paper or marking scheme. The scheme has nine rows (rows 1-3 automatically numbered, rows \"4&5\"-\"10.\" typed) and the WEEK 1 body contains no revision section; WEEK 4 & 5 teaches conservation of mass and definite proportions but not multiple proportions, which appears only in the WEEK 3 lead-in. 253 automatic list paragraphs, 7 top-level tables, 42 raster references in 41 media parts (image5.jpeg is a 17x9 spacer; image21.png is used twice), 72 w:pict elements that are all shape fallbacks, 114 w:drawing (42 images, 69 connectors, 3 text boxes), 11 OMML equations with a \"Type equation here.\" placeholder, 1,177 sub/superscript runs and 52 external hyperlink relationships (38 used). 26 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 4,
     "SOURCE_WEEK_INVENTORY": 4,
     "SOURCE_COMPARISON": 1,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 5,
-    "SOURCE_WEEK_INDEXING": 20,
-    "SOURCE_SECTION_INDEXING": 2,
-    "SOURCE_MARKER_DISPOSITION": 2,
-    "VISUAL_DISPOSITION": 14,
-    "SOURCE_PRESERVATION": 5
+    "FACTUAL_DEPENDENCY": 8,
+    "SOURCE_WEEK_INDEXING": 29,
+    "SOURCE_SECTION_INDEXING": 3,
+    "SOURCE_MARKER_DISPOSITION": 3,
+    "VISUAL_DISPOSITION": 21,
+    "SOURCE_PRESERVATION": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 51,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 76,
     "BLOCKED": 1
   },
   "items": [
@@ -281,8 +282,8 @@
       "depends_on": [
         "CHEM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed. [CHEM-INV-T2 2026-11-03] Inventory complete: 9 week labels for 10 teaching weeks (WEEK   1 block 39, WEEK  2 247, WEEK  3 679, WEEK  4 & 5 912, WEEK  6 971, WEEK 7 1239, WEEK  8 1389, WEEK  9 1732, WEEK 10 2111; per-week ranges and sha256 in CHEM-INV-T2.md); opening/scheme blocks 0-38 (three auto-numbered rows plus six manual rows), no revision or examination marker, 253 automatic list paragraphs, 7 top-level tables, 42 raster image references in 41 media parts, 11 OMML equations, 1,177 sub/superscript runs and 52 external hyperlink relationships. 26 PENDING items appended. No lesson, coverage, rule, correction or asset written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -2094,6 +2095,969 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CHEM-INV-T1B (see CHEM-INV-T1B.md).",
       "completion_condition": "Provenance map recorded with locators; rights marked unresolved; nothing marked approved."
+    },
+    {
+      "id": "CHEM-IDX-T2-OPEN",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "Opening / scheme of work / blocks 0-38 (text blocks 2, 4, 6, 7-15) / range sha256 66ec694d3ce0c6540ea5f81478831fa2c33990b4fdb73cbf7ac90a7cc8574d6d",
+      "objective": "Index the 2nd Term opening: block 2 \"  E-NOTE FOR CHEMISTRY  SS1\" (two leading spaces), block 4 \"SCHEME OF WORK FOR SECOND TERM SS1 CHEMISTRY.\", block 6 \"WEEKS               TOPICS\", then nine scheme rows covering ten teaching weeks. Rows at blocks 7-9 are automatically numbered 1-3 (numId 80, decimal \"%1.\") and read \"REVISION OF FIRST TERM /INTRODUCTION TO MOLE CONCEPT.\", \"CALCULATIONS IN TERMS OF AVOGADRO'S CONSTANT,EMPIRICAL FORMULA AND MOLECULAR FORMULA\" and \"WRITING AND BALANCING OF CHEMICAL EQUATIONS.\"; blocks 10-15 carry manual numbers \"4&5\" (STATE, ILLUSTRATIONS AND VERIFICATION OF CHEMICAL LAWS), \"6.\" (CHEMICAL COMBINATIONS OR BONDING), \"7.\" (THE KINETIC THEORY OF MATTER), \"8.\" (GAS LAWS AND CALCULATIONS), \"9.\" (GAY-LUSSAC'S LAW) and \"10.\" (AIR & FLAME). No REVISION or EXAMINATION row exists. The opening precedes the first week marker, so the compiler will report PREAMBLE_REQUIRES_COVERAGE; the scheme must be coverage-mapped, never treated as a lesson. Record the automatic numbering explicitly because raw text drops it. Scheme-versus-body relationships belong to CHEM-MARK-T2-SCHEME. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-OPEN.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The opening/scheme is indexed with exact block locators and range hash; the automatic numbering of rows 1-3 is recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK   1\" block 39 / range 39-246 / sha256 ca2bc4cb64e3ac080f9c89f84b3b9d3cb9f6ce0d160bf22878fe90a160363e24",
+      "objective": "Index WEEK   1 (blocks 39-246; 134 non-empty blocks, 6,816 non-empty characters; source title \"INTRODUCTION TO MOLE CONCEPT\"): matter/atom/molecule/atomicity/ions (41-55), relative formula mass (57-63), relative atomic mass (65-69), mole definition and Avogadro's number (136-157), molar mass (158-169), the mole concept (170-210) and QUESTION (211-246). The body contains no \"revision of first term\" section even though scheme row 1 promises one. Source notation is flattened (for example \"0-2\", \"S042-\", \"Cr2072-\"). Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W01.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK  2\" block 247 / range 247-678 / sha256 796a9f42a80a95cce2f318b1ce3258f9f72c4dbb7389b09cc2bf0743a13991b0",
+      "objective": "Index WEEK  2 (blocks 247-678; 317 non-empty blocks, 13,122 non-empty characters; source title \"MOLE IN TERMS OF THE RELATIVE ATOMIC MASS OR RELATIVE MOLECULAR MASS OF ASUBSTANCE.\"): moles in terms of number of particles (289-388), moles in terms of volume and molar volume (393-490), SUMMARY (491-517), empirical and molecular formulae (518-622) and percentage of element (623-640), then QUESTIONS (641-678). Record the empirical-formula exercise data at 541-544 and the summary tables; they are source statements, not observations. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W02.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK  3\" block 679 / range 679-911 / sha256 fd364da491339fb51013057efc6001cf214ea95300d904532e474a0a1afc46bc",
+      "objective": "Index WEEK  3 (blocks 679-911; 168 non-empty blocks, 8,323 non-empty characters; source title \"Balancing Chemical Equations\"): laws lead-in (685-687), balancing conventions and method (688-737), stoichiometry with the FeS2/coal example (738-754), limiting reactant and theoretical/actual/percent yield (755-806) and EVALUATION (807-911). The EVALUATION equations are automatically numbered (numId 55, decimal \"%1.\") and raw text loses the numbers; block 813 also begins with a typed \"5.\" while sitting in the same automatic list, so numbering may render twice. The last items are three multiple-choice questions (875-911). No answers are given. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W03.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W04-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK  4 & 5\" block 912 / range 912-970 / sha256 89e9d740beaeb627f823f4132b8b161dbeeee93c52e3c16e5657785151131f8f",
+      "objective": "Index WEEK  4 & 5 (blocks 912-970; 39 non-empty blocks, 3,709 non-empty characters; source title \"STATE,ILLUSTRATION AND VERIFICATION OF CHEMICAL LAWS\"): law of conservation of mass (914-927), law of definite proportions / constant composition (929-959) with the Zinc Oxide table at block 963, and QUESTIONS (960-970). One label covers scheme weeks 4 and 5. The body does not teach the law of multiple proportions although it is listed at 687; that is recorded by CHEM-MARK-T2-SCHEME. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W04-W05.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK  6\" block 971 / range 971-1238 / sha256 782862c6180465ecb7e707745cb83bc9d04156f08bf5c245fee6798f4191fa0d",
+      "objective": "Index WEEK  6 (blocks 971-1238; 176 non-empty blocks, 15,516 non-empty characters; source title \"CHEMICAL BONDING\"): introduction and Lewis history (973-981), main types (983-987), electrovalent/ionic formation with tables at 991, 1000 and 1006 (989-1021), properties of ionic compounds (1022-1052), covalent bonds and examples with the table at 1043 (1054-1075), hydrogen bond (1077-1086), other binding forces and the electron-gas/metallic model (1088-1157), coordinate covalent combination and the ammonium-ion exercise (1158-1181) and QUESTIONS 1-10 (1183-1238). No answers are given. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W06.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK 7\" block 1239 / range 1239-1388 / sha256 4dfc30b37a87d665f93f474c72b69fc46cf19ac1a5ae8dc0e95a2091595652e8",
+      "objective": "Index WEEK 7 (blocks 1239-1388; 86 non-empty blocks, 6,788 non-empty characters; source title \"KINETIC THEORY OF GASES\"): kinetic assumptions (1241-1246), pressure exerted by gases (1248-1266), kinetic-theory summary and the four physical states (1267-1294), Brownian movement (1302-1317), diffusion in gases, liquids and solids (1319-1358), osmosis (1359-1367) and EVALUATION (1369-1388). The source title is \"KINETIC THEORY OF GASES\" while scheme row 7 reads \"THE KINETIC THEORY OF MATTER\"; record both, choose nothing. No answers are given. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W07.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK  8\" block 1389 / range 1389-1731 / sha256 86a9c454e0cf796b511954366f91c989ed307e2401ca41fd0e81c9ec36006b67",
+      "objective": "Index WEEK  8 (blocks 1389-1731; 245 non-empty blocks, 13,930 non-empty characters; source title \"GAS LAWS\"): Boyle's law (1392-1470), absolute temperature and conversion (1471-1493), Charles's law (1494-1570), general gas equation (1571-1600), S.T.P. (1601-1615), ideal gas equation (1616-1656), Dalton's law of partial pressures and gas collected over water (1653-1668), EXERCISES with solutions (1669-1705) and EVALUATION plus a second EXERCISES heading (1706-1731). No answers are given for the EVALUATION questions. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W08.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK  9\" block 1732 / range 1732-2110 / sha256 a8150aceb0198ed60316ff741491b0dcf147932553083c10c3ac2a7eba89fac6",
+      "objective": "Index WEEK  9 (blocks 1732-2110; 296 non-empty blocks, 12,226 non-empty characters; source title \"GAY LUSSAC'S LAW: It states that when gasses react, they do so in volumes ... (the law statement is fused with the title in block 1733)\"): Gay-Lussac's law and volume exercises (1732-1767), Avogadro's law and its use with Gay-Lussac (1768-1776), relative vapour density (1777-1799), Graham's law of diffusion (1800-1833), applications of the mole concept including mass-mass, gas-volume and mass-liquid-volume calculations (1834-1992) and mole fraction/mole percent (1993-2074), then QUESTION 1-4 (2075-2110). The scheme names only \"GAY-LUSSAC'S LAW\" for this week although the body is much broader. No standalone title exists, so the importer's first-credible-line rule would take the law sentence as the title. No answers are given. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W09.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T2-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "\"WEEK 10\" block 2111 / range 2111-2219 / sha256 1904ac56a083b1e542538a6e1757e100d4eb2f1410edadf712338b169120602a",
+      "objective": "Index WEEK 10 (blocks 2111-2219; 60 non-empty blocks, 15,917 non-empty characters; source title \"AIR AND FLAMES\"): air as a mixture and the evidence for it (2113-2120), determination of oxygen, carbon(IV) oxide, water vapour and nitrogen (2121-2166), air pollutants (2171-2173), FLAMES including structure, cool flames and the metal-gauze demonstration (2174-2210), Bunsen burner and types of flame with the table at 2212 (2211-2213) and QUESTIONS 1-4 (2214-2219). The range ends at the last paragraph block; block 2220 is an empty sectPr. The scheme title is \"AIR & FLAME\"; the body title is \"AIR AND FLAMES\". No answers are given. Record objective candidates only; the week is one parsed row and is not split. All 9 week labels start at a block boundary and the importer WEEK_MARKER matches them, so no split_before or attach_stranded_label rule is needed here. Preserve exact labels, including the multiple spaces. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T2-W10.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The week is indexed with its exact label, block range and range hash, and objective candidates are recorded; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-MARK-T2-SCHEME",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "Scheme rows 1-3 (blocks 7-9, automatic numbers 1-3) and rows \"4&5\"-\"10.\" (blocks 10-15) against labels WEEK 1-WEEK 10 (blocks 39-2219)",
+      "objective": "Disposition scheme-versus-body relationships without altering source text: nine scheme rows cover ten teaching weeks because one row is numbered \"4&5\"; all ten weeks have bodies under nine labels; scheme row 1 \"REVISION OF FIRST TERM /INTRODUCTION TO MOLE CONCEPT\" has no revision body (WEEK 1 is mole concept only); row 9 names only Gay-Lussac's law while WEEK 9 also teaches Avogadro, vapour density, Graham and mole-concept applications; row 10 \"AIR & FLAME\" appears as \"AIR AND FLAMES\"; row 7 \"THE KINETIC THEORY OF MATTER\" appears as \"KINETIC THEORY OF GASES\"; and the WEEK 4 & 5 body teaches conservation of mass and definite proportions but not multiple proportions, which appears only in the WEEK 3 lead-in at 687. State plainly that the source contains no REVISION marker, no EXAMINATION marker, no examination paper and no marking scheme, and that nothing may be invented. The opening is a preamble handled by CHEM-IDX-T2-OPEN, not a marker row. Classify nothing as a lesson here. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-MARK-T2-SCHEME.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-OPEN",
+        "CHEM-IDX-T2-W01",
+        "CHEM-IDX-T2-W04-W05",
+        "CHEM-IDX-T2-W09",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Scheme-versus-body relationships are recorded without changing source text; the absence of revision/examination material is stated; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-VIS-T2-W03-STOICHIOMETRY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 3 / image1.gif block 697, image2.gif 795, image3.gif 804, image4.gif 806, image5.jpeg 850",
+      "objective": "Disposition the stoichiometry visuals: image1.gif (230x116) is a two-pan balance illustrating conservation of mass beside the sentence that a chemical equation must have the same atoms on both sides; image2.gif (307x50) is the percent-yield formula \"actual yield / theoretical yield x 100\"; image3.gif (582x148) and image4.gif (544x53) are worked percent-yield examples from a web page; image5.jpeg is 17x9 pixels and 377 bytes, a blank spacer next to the EVALUATION equations. Check each against the surrounding text (percent yield is taught at 791-806, so the images fit), record rights/provenance as unresolved, and record image5 as non-content. Do not AI-invent replacements and do not discard the original bytes. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-W03-STOICHIOMETRY.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each image has a recorded disposition with block locator, dimensions and rights note; the spacer is recorded as non-content; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T2-W06-IONIC-COVALENT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 6 / image6.jpeg 976, image7.png 996, image8.gif 1021, image9.gif 1043, image10.jpeg 1060, image11.png 1072, image12.jpeg 1080, tables 991/1000/1006",
+      "objective": "Disposition the ionic and covalent visuals: image6.jpeg (500x168) is a photograph of sodium metal plus chlorine gas yielding table salt; image7.png (560x293) shows NaCl and MgO shell diagrams with ion charges; image8.gif (306x304) shows sodium-chloride electron transfer; the tables at 991, 1000 and 1006 give before/after electron configurations for Na/Cl, Mg/O and Mg/Cl. image10.jpeg (535x246) is a Lewis/shell diagram for carbon, hydrogen and methane; image11.png (362x362) is a dense compound-name/formula/structural-formula table that exists only as pixels; image12.jpeg (466x400) shows polar bonds and hydrogen bonding in water. image9.gif (320x263, MgO/MgCl shell formation) sits inside the 2x1 table at 1043 whose cell text is a web article headed \"Covalent Bonds\"; record that the image is ionic and the text is covalent, and do not silently move either. Do not treat image11 or the tables as recovered text. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-W06-IONIC-COVALENT.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each visual and table has a recorded disposition with block locator and dimensions; the 1043 text/image mismatch is stated; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T2-W06-METALLIC-COORDINATE",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 6 / image13.gif 1090, image14.png 1107, image15.png 1117, image16.png 1134, image17.png 1142, image18.png 1148, image19.png 1163, image20.png 1167, image21.png 1169 and 1171, image22.png 1173",
+      "objective": "Disposition the metallic and coordinate-bond visuals: image13.gif (150x147) is the electron-sea model, anchored at 1090, thirteen blocks before the \"ELECTRON GAS MODEL\" heading at 1103; image14.png (457x258) is a kernel/mobile-valence-electron table; image15.png (488x141) gives metal-bond-strength trends for Na/Mg/Al; image16.png (510x273) shows force applied to a metal crystal and the deformed lattice; image17.png (456x215) is a dense seven-row metal-properties table and image18.png (598x441) a further metal-properties diagram, both existing only as pixels. image19.png (410x79) is a donor/acceptor to ozone-molecule diagram, image20.png (434x37) an O:S:/SO2 notation strip, image21.png (410x140) an ammonium-ion formation diagram used at two consecutive blocks, and image22.png (356x68) a C::C/C=C notation strip; all four support the coordinate-covalent section beginning at 1158. Record the early anchor of image13 and the duplicate use of image21; do not infer equations from the pictures. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-W06-METALLIC-COORDINATE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each visual has a recorded disposition with block locator and dimensions; the early anchor and duplicate use are stated; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T2-W07-KINETIC",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 7 / image23.gif 1270, image24.gif 1274, image25.gif 1277, image26.png 1283, image27.png 1316, image28.png 1326, image29.png 1333, image30.png 1368",
+      "objective": "Disposition the kinetic-theory visuals: image23.gif (105x149) shows an ordered solid particle box, image24.gif (105x149) a disordered liquid, image25.gif (105x149) a spread-out gas and image26.png (100x100) a plasma box, matching the four state definitions at 1270-1285; image27.png (218x201) is the zigzag Brownian path beside the Brownian text; image28.png (415x313) is a two-colour particle mixture for diffusion; image30.png (416x283) is a labelled osmosis cell (plastic cylinder, sugar solution, water, semi-permeable membrane) beside the osmosis text. image29.png (665x283) shows a gas-pressure/volume apparatus (volume halved, pressure doubled) but is anchored at 1333 inside the diffusion paragraph, so record it as a displaced/possibly leftover gas-law figure without moving it. Do not substitute image counts for the diagrams' content. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-W07-KINETIC.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each visual has a recorded disposition with block locator and dimensions; the image29 displacement is stated; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T2-W08-GAS-LAWS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 8 / image31.png 1413, image32.gif 1436, image33.gif 1546, image34.gif 1561, image35.gif 1628, image36.gif 1659; OMML degree signs at 1472 and 1715",
+      "objective": "Disposition the gas-law visuals: image31.png (771x476) is a gas-syringe/water-trough diagram with volume and pressure labels; image32.gif (175x151) is a pressure-versus-volume (Boyle) graph; image34.gif (175x151) is a volume-versus-absolute-temperature (Charles) graph; image35.gif (100x50) is the d=PM/RT formula; image36.gif (224x108) shows gas collected over water with water vapour, matching Dalton's law. image33.gif (745x368) is a Boyle apparatus labelled 100 cm3 at 1 atm then 50 cm3 at 2 atm, but it sits at 1546 inside the Charles's-law kinetic explanation, so record it as displaced by one subsection without moving it. The degree signs at 1472 and 1715 are the only math content in those paragraphs. Record rights/provenance as unresolved and do not reconstruct equations from the pictures. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-W08-GAS-LAWS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each visual has a recorded disposition with block locator and dimensions; the image33 displacement is stated; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T2-W10-AIR-FLAME",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 10 / image37.png 2128, image38.jpeg 2188, image39.jpeg 2192, image40.jpeg 2206, image41.jpeg 2213; tables 2201 and 2212",
+      "objective": "Disposition the air/flame visuals: image37.png (400x216) is a composition-of-air pie chart beside the constituents text; image38.jpeg (300x331) shows labelled gas/candle flame zones and colours; image39.jpeg (700x231) is a row of flame photographs; image40.jpeg (600x347) compares luminous and non-luminous Bunsen flames; image41.jpeg (517x222) labels the outer and inner flame of a Bunsen burner. The 2x1 table at 2201 is empty and the 1x1 table at 2212 wraps a 1,356-character Bunsen-burner text with three bullet-numbered paragraphs; record both as layout wrappers, not content tables. No image covers the metal-gauze or asbestos-paper demonstration at 2200-2202. Do not AI-invent missing apparatus images. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-W10-AIR-FLAME.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each visual and table wrapper has a recorded disposition with block locator and dimensions; nothing is marked approved and no source bytes are discarded."
+    },
+    {
+      "id": "CHEM-VIS-T2-SHAPES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "Whole document / 114 w:drawing, 72 w:pict, 3 text boxes; blocks 156, 523, 529, 592, 1343, 1347, 1349, mostly W8-W9",
+      "objective": "Record the non-image drawing layer: of 114 w:drawing, 42 carry a raster image, 69 are AutoShape straight connectors/arrowheads used to draw fraction bars and arrows (concentrated in WEEK 9, 28 drawings) and 3 are text boxes (\"Jelly\" at 1343, \"CuSO4 CRYSTALS\" at 1347, \"Rubber bung\" at 1349); all 72 w:pict elements are VML fallbacks of those same shapes, not 72 figures. The drawings at 156, 523, 529 and 592 carry no raster image. Record this so the fraction/equation layout is not mistaken for image content and the pict count is not inflated; preserve the shapes' text and positions for later reconstruction. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T2-SHAPES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W01",
+        "CHEM-IDX-T2-W02",
+        "CHEM-IDX-T2-W08",
+        "CHEM-IDX-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The drawing layer is classified by block with counts; picts are identified as fallbacks; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-PRES-T2-FORMULAE",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 1-10 / 1,177 w:vertAlign runs (830 subscript, 347 superscript): W1 104, W2 217, W3 235, W4&5 0, W6 58, W7 7, W8 259, W9 241, W10 56",
+      "objective": "Preserve chemical formulae, ion charges, electron configurations, units and powers as exact source-faithful units. Raw text flattens sub/superscripts, producing forms such as \"0-2\", \"S042-\", \"Cr2072-\", \"MnO4-\", \"22.4dm3\", \"6.02 x 1023\", \"Nm-2\", \"cm3\", \"2,8,1\" and \"126C\". Recover the exact formatting from word/document.xml (w:vertAlign and the run order) and record both views without correcting either. Keep source notation distinct from any later corrected formula, which needs primary data. Do not normalise, round or rewrite charges, coefficients or units. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T2-FORMULAE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W01",
+        "CHEM-IDX-T2-W02",
+        "CHEM-IDX-T2-W03",
+        "CHEM-IDX-T2-W04-W05",
+        "CHEM-IDX-T2-W06",
+        "CHEM-IDX-T2-W08",
+        "CHEM-IDX-T2-W09",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "The preserved formula/notation units are recorded with block locators and sub/superscript evidence; source notation remains distinct from any correction; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-PRES-T2-EQUATIONS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 8 block 1472 and 1715; WEEK 9 blocks 1803, 1805, 1806, 1808 (two equations), 1811, 1812, 1814, 1815; shape-drawn fractions in W9",
+      "objective": "Preserve the 11 m:oMath equations and the shape-drawn fraction layout exactly. The OMML text is degraded: 1472 and 1715 contain only a degree sign; 1803 is \"1/√∂\"; 1805 is \"∂\"; 1806 is the placeholder \"Type equation here.\"; 1808 is \"1/√∂₁1/√∂\"; 1811 and 1812 are \"√∂₁\" and \"√∂₂\"; 1814 and 1815 are bare \"√\". The surrounding raw text also splits Graham's-law and vapour-density fractions across blocks (\"R1 =\", \"R2 =\", \"2 x V.D = ...\"), and 69 straight-connector shapes draw the fraction bars/arrows. Record each equation block, the OMML fragment and the shape positions; do not invent the missing symbols, values or rearrangement. Correcting the physics belongs to a later factual item with authoritative sources. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T2-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W08",
+        "CHEM-IDX-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Every equation block and OMML fragment is recorded with a locator; the placeholder and missing symbols are stated; no equation is invented or corrected."
+    },
+    {
+      "id": "CHEM-PRES-T2-TABLES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "Whole document / 7 top-level w:tbl at blocks 963, 991, 1000, 1006, 1043, 2201, 2212",
+      "objective": "Preserve the seven top-level tables exactly: 963 is 3x3 Zinc Oxide mass data (Sample 1 20.0g/16.22g; Sample 2 26.4g/21.7g); 991 is 3x3 Na/Cl before-and-after electron configurations; 1000 is 3x3 Mg/O; 1006 is 3x3 Mg/Cl; 1043 is 2x1 and combines a web article headed \"Covalent Bonds\" with the ionic image9.gif; 2201 is 2x1 and empty; 2212 is 1x1 and wraps the 1,356-character Bunsen-burner text. Record cell text, row/column shape and the image in 1043. Note that substantive tables also exist only as raster images (image11.png compound/structural-formula table; image14.png kernel table; image15.png bond-strength table; image17.png metal-properties table; image18.png metal-properties diagram) and must not be treated as recovered text. Do not normalise cells or merge tables. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T2-TABLES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W04-W05",
+        "CHEM-IDX-T2-W06",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Every top-level table is recorded with block locator, shape and content; image-only tables are flagged; no table is normalised or merged."
+    },
+    {
+      "id": "CHEM-PRES-T2-ACTIVITIES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 4&5 916/940-942/961; WEEK 6 1035-1040; WEEK 7 1306-1311/1327-1353/1365-1367; WEEK 10 2130-2166/2200-2213",
+      "objective": "Preserve the source's experiments and demonstrations as written, without recording any observation that was not made here: heating mercuric oxide, heating copper in oxygen, dissolving copper in nitric acid and igniting cupric nitrate (916, 940-942), reducing Zinc Oxide in a stream of hydrogen (961), dissolving sodium chloride (1035-1040), Brown's pollen-grain observation (1306-1311), the NH3/HCl diffusion tube (1327-1331), jelly and copper(II) sulphate crystal diffusion (1337-1353), the dried bean-seed osmosis example (1365-1367), burning copper/lead/magnesium and white phosphorus, alkaline pyrogallol, limewater, sodium hydroxide and the separation of nitrogen from air (2130-2166), and the metal-gauze, asbestos-paper and Bunsen-burner demonstrations (2200-2213). Keep source claims such as \"Observation:\" and \"Conclusion:\" labelled as source statements. Do not add procedures, quantities or results. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T2-ACTIVITIES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W04-W05",
+        "CHEM-IDX-T2-W06",
+        "CHEM-IDX-T2-W07",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each activity/demonstration is recorded with a block locator and its source wording; no procedure or observation is added; no lesson or coverage is written."
+    },
+    {
+      "id": "CHEM-PRES-T2-WORKED",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 1 99-135/196-210/223-246; WEEK 2 306-490/533-640/655-678; WEEK 3 738-806/875-911; WEEK 8 1450-1470/1520-1543/1567-1600/1604-1656/1669-1729; WEEK 9 1739-2110",
+      "objective": "Preserve the worked examples and solutions as exact source units: relative formula/molecular mass (99-135), mole calculations (196-246), particles/volume/empirical and molecular formulae (306-640), stoichiometry, limiting reactant and percent yield (738-806), Boyle/Charles/general/ideal-gas/Dalton calculations (1450-1729), Gay-Lussac volume ratios, Graham's law, mole-concept mass-mass, gas-volume and mass-liquid-volume calculations and mole fraction/percent (1739-2110). Keep every figure, unit, rounding step and the source's layout (including fractions split across blocks). State that QUESTIONS and EVALUATION items have no answer key in the source; do not infer or author answers here. Do not silently correct arithmetic; any correction needs a separate factual item and primary evidence. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T2-WORKED.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W01",
+        "CHEM-IDX-T2-W02",
+        "CHEM-IDX-T2-W03",
+        "CHEM-IDX-T2-W08",
+        "CHEM-IDX-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Every worked example is recorded with a block locator and exact figures; the absence of an answer key is stated; no answer is inferred or authored."
+    },
+    {
+      "id": "CHEM-FACT-T2-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 4&5 916/940-942/961; WEEK 6 975; WEEK 7 1365-1367; WEEK 10 2130/2137/2142-2145/2150-2161/2200-2213",
+      "objective": "Verify later, with authoritative laboratory-safety and chemical-handling sources, every statement that could be unsafe or outdated before a lesson relies on it: sodium reacting violently with water and producing flames, and chlorine described as poisonous (975); heating mercuric oxide (916, 945), heating copper in oxygen, dissolving copper in nitric acid and igniting cupric nitrate (940-942), and reducing Zinc Oxide in a hydrogen stream (961); white phosphorus catching fire easily, being stored under water and smouldering in air (2137, 2143); burning copper, lead, magnesium and phosphorus (2130-2137); alkaline pyrogallol and benzene-1,2,3-triol (2142-2145); limewater, concentrated KOH/NaOH and solid NaOH handling (2150-2159); concentrated tetraoxosulphate(VI) acid (2161); holding asbestos paper across a flame (2202); and Bunsen-burner strike-back, poisonous gases and \"never leave\" advice (2202, 2212). The document contains no goggles, gloves, fume-cupboard, first-aid or emergency procedure; add none. Keep the source wording distinct from any corrected fact. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T2-SAFETY.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W04-W05",
+        "CHEM-IDX-T2-W06",
+        "CHEM-IDX-T2-W07",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each safety/handling concern is recorded with a block locator and exact wording; authoritative verification remains outstanding; no correction is applied."
+    },
+    {
+      "id": "CHEM-FACT-T2-ACCURACY-DATED",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK 3 808-819/875-882; WEEK 4&5 942-966; WEEK 6 975/1058; WEEK 8 1472-1492/1574/1592/1611/1637; WEEK 9 1743/1775/1783-1795/1806-1815; WEEK 10 2149/2150-2159/2212",
+      "objective": "Verify later against authoritative sources, without silently correcting, the accuracy and dated-content candidates: absolute zero described as \"0C or 273K\" at 1472 while 1475 gives \"00C =273K, -2730C =0K\"; limewater milkiness attributed to soluble Ca(HCO3)2 at 2153 while 2150-2151 attribute it to CaCO3; the hydrate equations at 2158-2159; \"2CO2 (g) + O2 (g)2CO2 (g)\" at 1743 (the preceding equation at 1741 is 2CO + O2 -> 2CO2); \"2H2O + O2 -> 2H2O\" at 1058; carbon(IV) oxide said to remain constant at 0.03% by volume (2149); the Zinc Oxide samples at 963 (16.22/20.0 = 81.1% Zn versus 21.7/26.4 = 82.2% Zn) against the definite-proportion claim; the empirical-formula masses at 542-544 (0.46g in a 3.2g sample is 14.4%, not the stated 12.8%); the Graham/vapour-density symbols and the \"Type equation here.\" placeholder (1803-1815); \"Charles Law - V alpha Ti\" at 1574; \"Avogadro2mols 1molecules 2molecules\" at 1775; and the Bunsen-burner claims at 2212 (strike-back described as \"too much oxygen\" with a green flame; non-luminous flame said to need a partially open air hole). Also record dated/historical claims (1916 Lewis at 977, World War I chlorine at 975, 1774 Priestley at 916) and the 2018 document metadata. Keep source wording distinct from corrected fact; no correction is applied here. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T2-ACCURACY-DATED.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-W03",
+        "CHEM-IDX-T2-W04-W05",
+        "CHEM-IDX-T2-W06",
+        "CHEM-IDX-T2-W08",
+        "CHEM-IDX-T2-W09",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Each accuracy/dated candidate is recorded with a block locator and exact source wording; verification remains outstanding; no silent correction is applied."
+    },
+    {
+      "id": "CHEM-FACT-T2-PROVENANCE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-80b770d18aa8",
+      "term": "2nd Term",
+      "week_or_locator": "Whole document / 52 hyperlink relationships (38 w:hyperlink elements); docProps; table 1043; image-encoded tables",
+      "objective": "Record provenance and reuse uncertainty: the package has 52 external hyperlink relationships but only 38 hyperlink elements in the body (14 relationships are unused); targets are www.visionlearning.com (20), www.chemistry-assignment.com (13), en.wikipedia.org (10), crescentok.com (4), hyperphysics.phy-astr.gsu.edu (4) and sites.google.com (1). Several visuals and the table at 1043 are paste-sourced web content, and image11.png, image14.png, image15.png, image17.png and image18.png encode tables that are otherwise absent from the text. docProps records creator \"AKINOLA\", lastModifiedBy \"hp\", revision 3, created/modified 2018-01-15, 15,903 words, 90,650 characters and 1 reported page; the glossary part contains only \"Type equation here.\" Citation is not reuse permission and rights remain unresolved. Do not copy source text into teaching and do not invent a licence. Locator: word/document.xml direct children of w:body, 0-based; block text is the concatenation of its w:t runs (w:tab omitted, no normalisation); range sha256 is SHA-256 over the block texts first..last joined with \"\\n\", empty blocks included. Whole body blocks 0-2220: SHA-256 60db0c49b150ebdab160d6d3ee7cb86629788cd1a73c58ace7f1cef831f74c72 (99,355 characters, 2,221 children; member 1,973,278 bytes). Member SHA-256 236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7. Preserve the source wording exactly; do not author lessons, coverage, rules, corrections or answers here beyond what this one item names. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T2.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/CHEMISTRY.docx",
+          "member_sha256": "236b1bdb2e752f652dd22e8f2df831279237e669ceeec356825cecc4ef8911e7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T2-PROVENANCE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T2",
+        "CHEM-SRC-T2",
+        "CHEM-IDX-T2-OPEN",
+        "CHEM-IDX-T2-W03",
+        "CHEM-IDX-T2-W06",
+        "CHEM-IDX-T2-W07",
+        "CHEM-IDX-T2-W08",
+        "CHEM-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
+      "completion_condition": "Provenance, hyperlink counts and reuse uncertainty are recorded with evidence; no licence is invented and no source text is copied into teaching."
     }
   ],
   "review": {
@@ -2109,7 +3073,6 @@
     }
   },
   "next_runnable": [
-    "CHEM-INV-T2",
     "CHEM-INV-T3",
     "CHEM-TEST-PACKAGE",
     "CHEM-CMP-T1",
@@ -2150,6 +3113,24 @@
     "CHEM-VIS-T1B-W05-TABLE",
     "CHEM-VIS-T1B-W07-TABLES",
     "CHEM-VIS-T1B-W09-APPARATUS",
-    "CHEM-VIS-T1B-W09-TABLES"
+    "CHEM-VIS-T1B-W09-TABLES",
+    "CHEM-IDX-T2-OPEN",
+    "CHEM-IDX-T2-W01",
+    "CHEM-IDX-T2-W02",
+    "CHEM-IDX-T2-W03",
+    "CHEM-IDX-T2-W04-W05",
+    "CHEM-IDX-T2-W06",
+    "CHEM-IDX-T2-W07",
+    "CHEM-IDX-T2-W08",
+    "CHEM-IDX-T2-W09",
+    "CHEM-IDX-T2-W10",
+    "CHEM-MARK-T2-SCHEME",
+    "CHEM-VIS-T2-W03-STOICHIOMETRY",
+    "CHEM-VIS-T2-W06-IONIC-COVALENT",
+    "CHEM-VIS-T2-W06-METALLIC-COORDINATE",
+    "CHEM-VIS-T2-W07-KINETIC",
+    "CHEM-VIS-T2-W08-GAS-LAWS",
+    "CHEM-VIS-T2-W10-AIR-FLAME",
+    "CHEM-VIS-T2-SHAPES"
   ]
 }
