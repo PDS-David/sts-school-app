@@ -987,6 +987,232 @@
         {
           "locator": "supplement SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
           "explanation": "Authored lesson with explanation, worked examples recomputed from first principles, practice with full answers and marking; replaces the original row for delivery."
+        },
+        {
+          "locator": "objective-level entries COV-MATH-T1-W01-OBJ-1 to COV-MATH-T1-W01-OBJ-8 (MATH-WK-T1-W01, 2026-11-05)",
+          "explanation": "This row-level entry is the delivery claim for parsed row 0; it is not objective-level proof. Objective review found six objectives equivalent to the supplement and two PARTIAL (OBJ-4 vocabulary 'simplify' and 'evaluate'; OBJ-8 eight of the twelve ASSESSMENT items). The bound supplement SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS therefore does not yet cover every objective of the row, and OBJ-4 and OBJ-8 block delivery independently."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-1",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "State and apply the divisibility tests for 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11, and say what a divisibility test is",
+      "objective_locator": "1st-term scheme line 1 (SHA-256 7983ef7f2c914c795c00044aabb2dcb4365b3f8ac9837c16935aa8d7074954fd); parsed row 0, mammoth extractRawText() lines 45-69",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 45-69 SHA-256 2b287e636b09d9d279ab02b2a353e9b47b862a3bc7297ccbc8062c43141d1a68; rule list 47-67 SHA-256 fe48b62b3c3cd681ba7cf3ccdf9d813b81c51cfac1b3f1e5149f6b5c5ae3dc09; individual rules 49-67 SHA-256 436a004562a8cd38c2469899814e0b79caf6c61c77c3c54a5bae846b67439b75; definition line 69 SHA-256 b27917cc2d7312901fe3edf00049bdac4f33dd33ce0944c15780dcaad1ad21cf",
+          "explanation": "The row teaches all ten numbered tests plus the definition of a divisibility test; the supplement section 2 teaches the same ten tests and the same idea, so the equivalence is at objective level (which tests a learner can apply), not word overlap. The heading 'RULES OF DIVISIBILITY TEST' is line 45 SHA-256 2d915e0da24447e1bed50fbc3c26ef0a0bcec85bd7d91b8ff98fbc90213f63c4."
+        },
+        {
+          "locator": "line 59 SHA-256 bc5a7c47339ddc1539c2b6f06df5586a97b906e12fffaf581673ce7e74609643",
+          "explanation": "Source defect: '7: no rule to it yet.' is false - the row's own first example satisfies it (7168 = 7 x 1024). The supplement supplies a usable 7-test (remove the last digit, double it, subtract from the rest) and applies it to 7168: 716 - 2 x 8 = 700 = 7 x 100, so 7168 is divisible by 7 (reviewer recomputation)."
+        },
+        {
+          "locator": "line 63 SHA-256 ed4e7f73c6f5b70f2b617bc24bee9ce7be92b20158f585d96000345af16241f5; line 57 SHA-256 c8d26c78ba0dd80c3bc130b8214a77996c82771e3addf2a7c1b37f4519c58813",
+          "explanation": "Source defects: the rule for 9 is given as 'the sum of the digits is divisible by 9 and 3' (the test is divisibility of the digit sum by 9 alone; the extra 'and 3' states a second, unnecessary condition and invites the wrong test), and the rule for 6 prints 'both 2and 3' without a space (quoted verbatim; spelling is preserved, not corrected in the source row). The supplement gives the 9 test alone and names the confusion under 'Common mistakes'."
+        },
+        {
+          "locator": "line 67 SHA-256 1943f8e63088f98798d3f6cddd2725ebf1cbe86132030d1ef5dd0ac585b30321; supplement section 2 final bullet",
+          "explanation": "Recorded so a later reviewer does not raise a false defect: the row states the 11-test as odd-position minus even-position using positions counted from the left, the supplement counts from the right. For 24739 both give a difference of 11 (left: 2+7+9=18 against 4+3=7; right: 9+7+2=18 against 3+4=7), and for any number the two conventions differ at most in sign, which the 'multiple of 11' clause absorbs. No correction is needed on this point."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-2",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Apply the tests to given numbers in worked examples: test 7168, test 35120, test 24739 for 11",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 71-95 (three EXAMPLE blocks 71-77, 79-87, 89-95)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 71-77 SHA-256 d7a2e32c4911d99670f9b779667990ddb0145bbc03e840fe6f9fa41d00aee094 (question line 73 SHA-256 89df1ed3c8032cd9407ebc924dba56fa9d9c8f0003a7277e13cb794ce13c9b2f, solution line 77 SHA-256 553363a22426a1f1d1092fc96eb16564cefe1ac3cf489f707ab0006d17264773)",
+          "explanation": "Recomputed: 7168 digit sum 22 so not 3, 6 or 9; last two digits 68 = 4 x 17 so 4; last three 168 = 8 x 21 so 8; last digit 8 so 2; does not end in 0 or 5 so not 5 or 10; 8 - 6 + 1 - 7 = -4 so not 11. The row's printed conclusion at line 77 ('not divisible by 3, 5, 6, 9, 10 and 11 ... but 2 ... 4 ... 8') agrees, and the question line 73 lists 2, 3, 4, 5, 6, 8, 9, 10 and 11 (7 is not asked). The supplement keeps the same example and adds the 7-test result."
+        },
+        {
+          "locator": "lines 79-87 SHA-256 181c162fdad64288f6e9a568a0bf48fc517311394fabf6bd9873cec24d2ee990; question line 81 SHA-256 386e0f9f001362116c18870b96d662335d6f9476759c120ecf2d7fbc118c005e; reasoning line 87 SHA-256 2b222ed39b99022bd1d55c9f33a8832bf45b815c1dda09f1b6067125373c28bc",
+          "explanation": "Source defects: line 81 asks 'Which number is divisible by 35120?', which is the question inverted - as printed it asks for multiples of 35120, while the solution answers which of 2, 4, 5, 8 and 10 divide 35120; and line 87 justifies the 8-test with 'the last digit 120', where the rule taught at line 61 is the number formed by the last three digits. Recomputation: 35120 digit sum 11 so not 3, 6 or 9; last two 20 = 4 x 5 so 4; last three 120 = 8 x 15 so 8; ends in 0 so 2, 5 and 10; 0 - 2 + 1 - 5 + 3 = -3 so not 11. Line 85 (SHA-256 a1dafe98a94404288faeb633cb431fa9bcc963b60b95237ce36aa12871dad57e) answer list '2,4,5,8and 10' is therefore correct and the supplement restates the question in the intended direction."
+        },
+        {
+          "locator": "lines 89-95 SHA-256 1f63b7b7ae226cf56cf8ea640f7fdad73cfc61ed11fb22847c9c5d8add797b4a; solution line 95 SHA-256 bc4f564e15c905edba0c4c75e7d6446b838880144516b23f3f0172cacf6b171d",
+          "explanation": "Recomputed: 24739 odd positions 2+7+9 = 18, even positions 4+3 = 7, difference 18-7 = 11, a multiple of 11, so divisible by 11; the row's arithmetic is right. The supplement adds the quotient 24739 = 11 x 2249, which checks (11 x 2249 = 24739)."
+        },
+        {
+          "locator": "supplement body, worked examples 1-3",
+          "explanation": "All three source examples are restated as correctly posed questions with the full test-by-test working; no source row text was altered. Status: IMPLEMENTED_EQUIVALENT."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-3",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "CLASS WORK: identify which of the taught divisors divide each of 3591, 2408, 7700, 18054, 2032, 1827, 23624 and 468",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 97-101 (block SHA-256 8258bf0a654c70b9d235e03479ed36d66c0246d9526aeec9e9f4e14dd700ce11)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "line 97 SHA-256 2056fd92c528e776df440dfce44f461a756c35e14732b69c1b89d0e86e733d77; question line 99 SHA-256 89987c167d611069cbcb61e949bf052b14e0c90f16812737210e82c8755c03c3; eight numbers line 101 SHA-256 808a0292373085c8cf37a650afd50c0d04ec93f796cc51292bb9eba46d322cc4",
+          "explanation": "The row poses eight numbers and gives no answer, no marking and no worked test for any of them; the block heading is line 97 'CLASS WORK'. The question as printed asks only for 2, 4, 5, 6, 8 and 9, although ten tests are taught at lines 49-67 and 6 is itself a compound test needing 3 - so the class work narrows the objective it follows. The source text is preserved unchanged; the narrowing is recorded in OI-MATH-T1-W01-FACT-DEFECTS."
+        },
+        {
+          "locator": "supplement practice[M1W1-Q1]",
+          "explanation": "The supplement carries the same eight numbers, asks for 2, 3, 4, 5, 6, 8, 9, 10 and 11 (the full set taught) and supplies an answer per number with 1 mark each, total 8 marks; the marking array is eight criteria of 1 mark each, which sums to the declared 8."
+        },
+        {
+          "locator": "reviewer recomputation of M1W1-Q1 (not an answer key; verification of the existing supplement)",
+          "explanation": "All eight lists check: 3591 -> 3, 9 (odd, digit sum 18, 91 not by 4, 1-9+5-3 = -6 not by 11); 2408 -> 2, 4, 8 (sum 14, 08 by 4, 408 = 8 x 51); 7700 -> 2, 4, 5, 10, 11 (700 not by 8, alternating difference 0); 18054 -> 2, 3, 6, 9 (54 not by 4, 054 not by 8, sum 18); 2032 -> 2, 4, 8 (sum 7); 1827 -> 3, 9 (odd); 23624 -> 2, 4, 8 (sum 17, 24 by 4, 624 = 8 x 78); 468 -> 2, 3, 4, 6, 9 (468 = 8 x 58.5 so not 8). No error found in the supplement's key."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-4",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Revise the meaning of integer, simplify and evaluate",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 103-107 (block SHA-256 8e38b0c0ca6ba79b1a6e06faadc60e847fd1b373ae0beaa12ba47c4ada298ab5)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "line 103 SHA-256 2c8988b733d9fa7336f1b2baeeeaf693fc2aa6f28eaa3600118738ae95142f2b; supplement body section 1",
+          "explanation": "Covered. The row defines integers as whole numbers and gives counter-examples; the supplement section 1 states integers as the whole numbers and their negatives and excludes fractions and decimals. Note that line 103 as delivered reads 'integers are whole numberse.g. 1,3, 6,7,9. etc. not 1.5,,5.' because two of the three counter-examples are OMML and are dropped: the rendered form is 'not 1.5, 3 3/5, 5 1/2'. See OI-MATH-T1-W01-NOTATION-LOSS."
+        },
+        {
+          "locator": "line 105 SHA-256 f98fda289198bf7ff7a2a6ac8579dc270a03595618a0e5fa50514c0576025ff5; line 107 SHA-256 dadc0dc31e710853ab41cb96bee38b85aa03a368c0c36bab587ffa35707997b7",
+          "explanation": "NOT covered. The row teaches two vocabulary definitions - 'SIMPLIFY: Simplify is to make easier to do or understand.' (line 105) and 'EVALUATE:To Evaluate is to form a value or quality after thinking , resolving or working a problem.' (line 107). Neither word is defined anywhere in SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS; the supplement uses 'Evaluate:' only as an instruction in practice[M1W1-Q2], which is exactly the command-word the row stops to explain. This is the reason the objective is PARTIAL rather than equivalent."
+        },
+        {
+          "locator": "MATH-LES-T1-W01-VOCABULARY (appended bounded task)",
+          "explanation": "The gap becomes an implementation task, not a note: extend the bound supplement with the two command-word definitions the row teaches, keeping the source wording accounted for. Status stays PARTIAL (blocks delivery) until that task lands and this entry is re-indexed."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-5",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Add and subtract whole numbers in columns, with carrying and borrowing: 961 + 86 + 422; 4312 + 504 + 614 + 24; 306 - 287",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 111-133 (addition block 111-123 SHA-256 496fbda57e6c28c4bde491920132139fbb7dea468bda89e80e7812403dffed65; subtraction block 125-133 SHA-256 0ed1cd481bac7f4987551afb37ab02ee0efc85ef24e9d941771fc1bbbfc87991)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "question line 113 SHA-256 efea160009056cc93f821bab58fb10914b6a109a2d619ea396eff3507d49b5fa; working lines 117-123 (line 117 SHA-256 6e755d42c713580a42849672e38dab8dea34c5431f074179c193c0d543f2afed, line 121 SHA-256 118e4190731e42ab480c8e84db360fcb9aa59cb46b4885df47ea13e57f597ea4, line 123 SHA-256 a794238aeee7c05c1b6d0296bfe8ed2ccb049760244e6c2f6794acc499a05040)",
+          "explanation": "Recomputed (a): 961 + 86 + 422 = 1469, matching line 123's printed '14 6 9' and the supplement. Recomputed (b): the printed column holds three addends 4312, 504, 614 totalling 5430, which is what line 123 prints, but line 113 asks for four numbers '4312,504,614 and 24' - for the question as asked the sum is 5454. The row is internally inconsistent and which side was meant is not stated; this is the defect already cited in the reason of CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS, and the supplement teaches the question as asked (5454 with the carry working shown)."
+        },
+        {
+          "locator": "layout lines 117, 119, 121, 123; line 119 SHA-256 273571792fb8e9dddb47f991abf1f66fd993b4bda0857c2dc14f9cdf538cdbe2",
+          "explanation": "The two sums are laid out side by side in one paragraph pair, so the delivered text interleaves them: '(a)' labels the left column but 'b.' labels the right, and the two columns of digits read as one row. Line 119 additionally loses formatting: the original has the second '+' of the addition sign as a subscript-formatted run (rendered by an equation-aware reader as +_{+}), so the delivered text shows '8 6    ++      5 0 4'. Notation loss of this kind is cosmetic here but makes the block unreadable as teaching; it is recorded in OI-MATH-T1-W01-NOTATION-LOSS."
+        },
+        {
+          "locator": "subtraction lines 125-133 (line 129 SHA-256 b38cf72c8f9f5eafd8c9792d693b5a4cbca2f751a78ed48e094c77bfba0deae0, line 131 SHA-256 dd7fcf1c475126c3ba28679de3e15850a23570cc1a0c79bfef76e70effbb9ac6, line 133 SHA-256 bf20dff0912e02365e4edc3ca25be8879f3f9e4aa702b1ce28d926bede2109b4)",
+          "explanation": "Recomputed: 306 - 287 = 19, printed as '0 1 9' with the leading zero from the column layout; correct. The supplement gives the same result. Note the row's phrasing 'Subtract 287 from 306' is the correct direction for the working shown (306 - 287), unlike the reversed question at line 81."
+        },
+        {
+          "locator": "drawings in lines 121 and 123",
+          "explanation": "Each ruled answer is a drawing, not text: line 121 and line 123 each carry two straightConnector1 shapes (the rule under the column of addends, 428625 and 628650 EMU long) plus two zero-width rectangle shapes, so 4 drawing references per line. Text extraction shows none of them, so the delivered row loses the visual separation between working and answer. No teaching diagram or figure exists in this block - see OI-MATH-T1-W01-NOTATION-LOSS for the full census and for the finding that the row contains no diagrammatic content at all."
+        },
+        {
+          "locator": "supplement body section 3; supplement practice[M1W1-Q3] item (a)",
+          "explanation": "The supplement teaches column addition and subtraction with the carry/borrow rule, states 1469, 5454 and 19, and re-asks the four-addend sum as M1W1-Q3(a) with answer 5454 and 1 mark."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-6",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Multiply whole numbers by the partial-product method: the product of 452 and 219",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 135-147 (block SHA-256 912719fadbb282f8ca5cd3222362ee555a0b62905933ac19d457c35b2e002dd2)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "line 135 question SHA-256 954e2584db63987225fbe7e6eeb20abe76deb7404903a7fb9506a3210877165c; lines 139-147 working (line 139 SHA-256 549a2fac47d713cc00f2db498ad6b5574fb03c9293aef6c7ad50a11b394c197d, line 141 SHA-256 e439ab1cbe36c841fad1a45daa72cd63a315b76eee25322427fe006fbd4d4915, line 143 SHA-256 5b6eba095c88a27e393ed6136ae9c8a979c6dd8eb5ddd000c543c4692ab1cb99, line 145 SHA-256 94657ec409313fa22fd19922380b7b19aeb7469f5339e73be38e4d6c46d4b806, line 147 SHA-256 91d21644d277b5498c046d1fe36365b4cc47790d82346fcffb6f45e83ab1a063)",
+          "explanation": "Recomputed: 452 x 9 = 4068, 452 x 1 ten = 4520, 452 x 2 hundreds = 90400; 4068 + 4520 + 90400 = 98988, which matches the printed total at line 147. The row prints the partial products without their place-value zeros (4068, 452, 904), which is the standard column method but is only readable because of the shifted layout and the ruled lines; in the delivered text the 'X 219' sign, the first partial product and one tab run are one line (line 141). Correct as printed."
+        },
+        {
+          "locator": "drawings in lines 141, 145 and 147",
+          "explanation": "Each of these three lines carries one straightConnector1 (1114425 and 1114426 EMU long) and one zero-width rectangle: 6 further drawing references. They are the rules separating the partial products from the final product. The row therefore contains no diagrams; every drawing reference in it is an arithmetic rule or a degenerate shape, which matters for MATH-VIS-T1 (the 1st-term visual census) and is recorded in OI-MATH-T1-W01-NOTATION-LOSS."
+        },
+        {
+          "locator": "supplement body section 3; supplement practice[M1W1-Q3] items (b)",
+          "explanation": "The supplement gives 452 x 219 = 452 x 200 + 452 x 19 = 90400 + 8588 = 98988 (reviewer check: 452 x 19 = 8588, 90400 + 8588 = 98988, agrees with the source) and carries a further product with a method mark in M1W1-Q3(b)."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-7",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "Evaluate expressions on signed integers, including a fraction-bar division: 8 - (+7); -5 - (-9); ((-8) x (-12)) / (-10)",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 149-161 (block SHA-256 e590550297afef26ae1d364f32347226a226a0668a4af7b5bc0c1c98e7ddd0e2)",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS",
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "question line 151 SHA-256 9a1ce3399430eea6a91cb30823b4faafb51a0893d8f014a4bcca11774c893f7d",
+          "explanation": "This is the clearest case where the flattened text must not be trusted. As delivered line 151 reads '8(+7).  b. 5  (9).  (C )'. The five OMML objects on that line restore the line to '8 - (+7).  b. -5 - (-9).  (C ) ((-8) x (-12))/(-10)': the minus operator of item (a), the leading sign and the operator of item (b), the sign of 9, and the whole of item (c) are equation content, not plain text. The three items are therefore subtraction of a positive, subtraction of a negative, and a signed fraction, which is what the supplement teaches."
+        },
+        {
+          "locator": "solution line 157 SHA-256 8de08dd7a29a8f2ec1cbaec3c3999d7f12ea0b8ab801687b9766f547767f6e3b; solution line 159 SHA-256 6759b60e50ff4cbe4027edbfaa4ae713a7bc44923b5a005fa666688d47f4759e",
+          "explanation": "Recomputed with the restored notation: line 157 is '8 - (+7) = 8 - 7 = +1' (correct); line 159 is '-5 - (-9) = -5 + 9 = +4' (correct, and its operators happen to survive in the delivered text as hyphens). Both supplement results agree (1 and 4)."
+        },
+        {
+          "locator": "solution line 161 SHA-256 b4d7ac7ccd2740c61629815af39d3e1489966b7f9a525fdfa95b6f901355c4f3",
+          "explanation": "Defect caused by notation loss, and the reason this objective must not be read from the delivered text: line 161 renders '[[MATH:((-8) x (-12))/(-10)]] = [[MATH:(+96)/(-10)]] = [[MATH:-]]9.6', i.e. ((-8) x (-12))/(-10) = (+96)/(-10) = -9.6. Extracted without equation content the line is '  =  =9.6' - the numerator, denominator and the leading minus sign all disappear, so the delivered row prints a worked answer of +9.6 for a question whose answer is -9.6. The supplement states it correctly as 96/(-10) = -9.6; OI-MATH-T1-W01-FACT-DEFECTS and OI-MATH-T1-W01-NOTATION-LOSS both carry this item."
+        },
+        {
+          "locator": "supplement body section 3 (sign rule and the three worked lines); supplement practice[M1W1-Q2] items (a) and (b)",
+          "explanation": "The supplement teaches the sign rules for multiplication and division of integers and carries items (a) and (b) of this block as practice with 1 mark each, so the objective is taught and assessed with answers. Labelling note: the source marks its third item '(C )' and gives the first item no '(a)'; that is source wording, preserved verbatim in the row, and not treated as a substantive defect."
+        }
+      ]
+    },
+    {
+      "id": "COV-MATH-T1-W01-OBJ-8",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "objective": "ASSESSMENT: the twelve end-of-week items - three products, two subtractions, five divisions and two signed fraction evaluations",
+      "objective_locator": "parsed row 0, mammoth extractRawText() lines 163-181 (block SHA-256 c99d40d3ec7e8ff9c0f17e7a7c4007d415917dbe41a2e78b873811f749a11bfc)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "evidence": [
+        {
+          "locator": "line 163 SHA-256 0802df4d252dbe2be1dfa99c87ae70a6615916aced014d13a78705f50f3e25bc; products block 165-167 SHA-256 efe3833aeee18e639b1a459b10d342886e8074f19fe12199d0a90e1644b33b1c (items line 167 SHA-256 9e27124c8bf50697bc99630c47ab9bc4a479ed50228c61002511d03de3bbc599); subtraction block 169-171 SHA-256 a22a28d518bdedfcaf3b132333a090d9816705f5b0e43d724601065f714ac4a5 (items line 171 SHA-256 9264f5f81d87f88b64428c9a695b2ccbd42917adea72a5cfeae3052042bb5a3d); division block 173-175 SHA-256 1f952230d4949d275ab6ea168238d31f0b2ba230ad30500173edb7907af542f7 (items line 175 SHA-256 039c364603554885de559489d8c4dbc46c340afa7fc292b47110649aad51b0be)",
+          "explanation": "Twelve items in four blocks, and the row supplies no answer, no working and no marks for any of them: products 2184x11, 5412x99, 217x405 (line 167); subtraction 23 from 36, 94 from 104 (line 171); division 336÷4, 867÷17, 1848÷12, (-18)÷(-3), -25÷4 (line 175, the division sign survives extraction); and the two fraction items (lines 177-181). Reviewer values for the record are 24024, 535788, 87885; 13, 10; 84, 51, 154, 6, -6.25; -15, 45 - recomputed here to size the gap, not offered as an answer key for the source row."
+        },
+        {
+          "locator": "fraction block 177-181 SHA-256 ff87ed9be1b85dd0003773fe04f55c80a4febc1ad7f84b437215b11aac731d69; line 177 SHA-256 84ad1bd901750a9b45b632ef9b4f955a31d5134683af480bba8ca74cb1390745; line 179 SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855; line 181 SHA-256 9b1dc1a79afe099d503689085f55d6efee999bdbdce6c48a17e95a32cf81597b",
+          "explanation": "Total loss, not flattening: the block heading 'find the values of the following:' survives (line 177), line 179 extracts as the empty string (its digest is the empty-string digest e3b0c442...), and line 181 extracts as '       b.  '. The two questions are OMML fractions and vanish, leaving a heading with nothing under it. Restored, the items are (a) ((-18) x (-5) x 3) / (9 x (-2)) = 270/(-18) = -15 and (b) (12 x (-15) x (-9)) / ((5 - 2) x (-3) x (-4)) = 1620/36 = 45. A learner reading the delivered row cannot see either question."
+        },
+        {
+          "locator": "supplement practice[M1W1-Q2] items (c) and (d); supplement practice[M1W1-Q3] items (b) and (c)",
+          "explanation": "The bound supplement carries 4 of the 12 items: the two restored fraction items as M1W1-Q2(c) and (d) with answers -15 and 45 and marking criteria summing to the declared 6 marks, 5412x99 as M1W1-Q3(b) and 867÷17 as M1W1-Q3(c) with answers 535788 and 51 within the declared 4 marks. All four were recomputed and agree."
+        },
+        {
+          "locator": "MATH-LES-T1-W01-ASSESSMENT-PRACTICE (appended bounded task)",
+          "explanation": "Eight items are in neither place - 2184x11, 217x405, 23 from 36, 94 from 104, 336÷4, 1848÷12, (-18)÷(-3) and -25÷4 - and -25÷4 is the only non-terminating signed division in the set. The end-of-week assessment is therefore only a third covered, so the objective is PARTIAL and becomes the appended implementation task rather than a note. Status stays PARTIAL (blocks delivery) until that task lands."
         }
       ]
     },
@@ -1702,6 +1928,38 @@
         "SUP-SS1-MATHEMATICS-T1-W10-EQUATIONS-VARIATION"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "OI-MATH-T1-W01-FACT-DEFECTS",
+      "kind": "FACT",
+      "detail": "Factual and wording defects found in 1st Term Week 1 (parsed row 0) by recomputation; the row text is left unchanged. (1) Line 59 (SHA-256 bc5a7c47339ddc1539c2b6f06df5586a97b906e12fffaf581673ce7e74609643) '7: no rule to it yet.' is false: 7168, the row's own first example, is 7 x 1024. (2) Line 63 (SHA-256 ed4e7f73c6f5b70f2b617bc24bee9ce7be92b20158f585d96000345af16241f5) states the 9-test as 'the sum of the digits is divisible by 9 and 3'; the test is divisibility of the digit sum by 9 alone and the extra condition invites the 3-test in its place. (3) Line 81 (SHA-256 386e0f9f001362116c18870b96d662335d6f9476759c120ecf2d7fbc118c005e) asks 'Which number is divisible by 35120?', the inverse of the question the solution answers. (4) Line 87 (SHA-256 2b222ed39b99022bd1d55c9f33a8832bf45b815c1dda09f1b6067125373c28bc) justifies the 8-test with 'the last digit 120', where the rule at line 61 needs the number formed by the last three digits. (5) Lines 113/123 (SHA-256 efea160009056cc93f821bab58fb10914b6a109a2d619ea396eff3507d49b5fa and a794238aeee7c05c1b6d0296bfe8ed2ccb049760244e6c2f6794acc499a05040): the question names four addends (4312, 504, 614 and 24) but the printed column has three and totals 5430; 4312 + 504 + 614 + 24 = 5454. Which side is the slip is not stated by the source and no teacher decision exists, so the supplement's choice (teach the question as asked, 5454) is an assumption; this is the defect already cited by CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS. (6) Line 161 (SHA-256 b4d7ac7ccd2740c61629815af39d3e1489966b7f9a525fdfa95b6f901355c4f3) delivers a worked answer of '+9.6' where the restored expression ((-8) x (-12))/(-10) = (+96)/(-10) = -9.6; the sign is lost with the fraction, so the printed working is wrong as well as incomplete. (7) Line 99 (SHA-256 89987c167d611069cbcb61e949bf052b14e0c90f16812737210e82c8755c03c3) asks the class work for 2, 4, 5, 6, 8 and 9 only, narrowing the ten tests taught four lines earlier. Everything else in the row recomputes correctly: 1469, 19, 98988 and its partial products 4068/4520/90400, the 7168 conclusions (68 = 4 x 17, 168 = 8 x 21, digit sum 22, 8-6+1-7 = -4), the 35120 answer list 2, 4, 5, 8, 10 (digit sum 11, 0-2+1-5+3 = -3), and the 24739 test 18-7 = 11.",
+      "required_action": "Do not alter the source row. The bound supplement already repairs (1), (3), (5) and (6) and states the 9-test correctly; MATH-LES-T1-W01-VOCABULARY and MATH-LES-T1-W01-ASSESSMENT-PRACTICE carry the remaining gaps. Teacher or owner to confirm the intent of the four-addend sum at line 113 before the row is called equivalent in that worked example.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-T1-W01-NOTATION-LOSS",
+      "kind": "CONTENT",
+      "detail": "Census for parsed row 0 only, from a private render of the supplied MATHss1.docx that walks word/document.xml, keeps every m:oMath object, maps m:f to (num)/(den), m:sSup to base^{script}, m:sSub to base_{script}, m:rad to a radical, flags each w:vertAlign run and each w:drawing, and reads the drawing relationships and shape extents. Result for the row: 15 m:oMath objects across 6 lines (103, 151, 157, 159, 161, 181) carrying 33 m:t text runs; 0 superscript runs and 1 subscript run in the whole document's row (the document holds 1784 baseline and 1 subscript vertAlign runs, so this row's powers are not Word-formatted superscripts); 0 tables and 0 text boxes in the row (37 text-box paragraphs exist elsewhere in the document and are not in any extraction); 0 OLE or embedded equation objects (unlike the 3rd-term source, OI-MATH-004); and 14 drawing references - 7 straightConnector1 lines (the rules under the column answers at lines 121 and 123, and the separators at 141, 145 and 147) plus 7 rectangle shapes reported with zero EMU width, i.e. degenerate. mammoth extractRawText() emits no text for m:oMath and none for w:drawing, so the row loses every fraction and every rule: line 179 extracts as the empty string (digest e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855), line 181 as '       b.  ', line 103 as 'not 1.5,,5.' and line 161 as '  =  =9.6'. The SS1-03 author evidence records 127 extra characters for this row when an equation-aware extractor is used (parsed_rows.json eqExtra for row 0); the independent render above recovers 15 fragments totalling 148 characters including the spaces and the x and / operators it inserts, in exactly the 6 lines listed, which is the same finding by a different method. The row contains no diagram: every drawing is an arithmetic rule, so no visual asset is missing and none is being claimed.",
+      "required_action": "No extractor change here (the shared decision is OI-MATH-001, which deliberately lists only the unreplaced 1st-term rows; row 0 is absent from its affected_ids because a supplement is bound). Keep the restored reading of lines 103, 151, 157, 159, 161, 179 and 181 as the only defensible basis for teaching this row, and re-verify against the render rather than the flattened text when MATH-LES-T1-W01-VOCABULARY and MATH-LES-T1-W01-ASSESSMENT-PRACTICE are implemented. Do not alter the source row text.",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "OI-MATH-T1-W01-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "1st Term Week 1 provides no answers, working or marks for any of its 20 practice items: CLASS WORK (lines 97-101, eight numbers) and ASSESSMENT (lines 163-181, twelve items in four blocks). The bound supplement covers 12 of the 20: all eight class-work numbers as M1W1-Q1 (8 marks, key recomputed and correct) and four assessment items as M1W1-Q2(c)/(d) and M1W1-Q3(b)/(c) (the marking arrays sum to the declared 6 and 4 marks). Eight assessment items are covered nowhere: 2184x11, 217x405 (line 167); 23 from 36, 94 from 104 (line 171); 336÷4, 1848÷12, (-18)÷(-3), -25÷4 (line 175, all written with the division sign). Two of the twelve (line 179 and the first half of line 181) are additionally invisible in the delivered text because they are OMML fractions, so a learner sees the heading 'find the values of the following:' with nothing under it. The source also never states marks or a marking scheme for anything in the week.",
+      "required_action": "MATH-LES-T1-W01-ASSESSMENT-PRACTICE extends the bound supplement's practice with the eight uncarried items, each with its own answer and marking criteria under the contract, and MATH-LES-T1-W01-VOCABULARY supplies the two command-word definitions the row teaches at lines 105 and 107. Do not copy the printed items into the package as an answer key, and do not record teacher-approved marks: no approval exists (OI-MATH-005).",
+      "affected_ids": [
+        "SS1-SRC-0c9004137f95:BODY:333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5",
+        "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS"
+      ],
+      "blocks_delivery": true
     }
   ]
 }

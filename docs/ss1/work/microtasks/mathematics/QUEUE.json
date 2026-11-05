@@ -29,7 +29,7 @@
     "FACTUAL_DEPENDENCY": 6,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 8,
+    "LESSON": 10,
     "CORRECTION_BINDING": 6,
     "OWNER_DECISION": 3,
     "VISUAL_DISPOSITION": 3,
@@ -42,11 +42,11 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 21,
-    "PENDING": 65,
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "PENDING": 66,
     "BLOCKED": 9
   },
-  "total": 95,
+  "total": 97,
   "items": [
     {
       "id": "MATH-SRC-T1",
@@ -349,9 +349,9 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (source label 'Week 1', title \"REVISION AND BASIC OPERATIONS OF INTEGER\", 2872 characters, body sha256 333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R00 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS and correction CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 127 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
-      "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "INDEXED 2026-11-05 by MATH-WK-T1-W01 from origin/master cc6cf68: 8 objective-level coverage entries COV-MATH-T1-W01-OBJ-1..8 map every scheme objective identifiable in parsed row 0 (mammoth 1.12.2 extractRawText() lines 41-181; for this file document paragraph P = (L+1)/2). Six are IMPLEMENTED_EQUIVALENT against SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS (divisibility tests 2-11, the three worked examples, CLASS WORK, column addition/subtraction, 452x219, signed operations) and two are PARTIAL: OBJ-4 vocabulary (SIMPLIFY and EVALUATE are not defined in the supplement) and OBJ-8 assessment (8 of the 20 practice items are not carried). Those two gaps are appended bounded tasks MATH-LES-T1-W01-VOCABULARY and MATH-LES-T1-W01-ASSESSMENT-PRACTICE, not notes. New open items: OI-MATH-T1-W01-FACT-DEFECTS (blocks delivery; 7 recorded source defects with per-line digests, including '7: no rule to it yet', false because 7168 = 7 x 1024), OI-MATH-T1-W01-NOTATION-LOSS (does NOT block delivery because the bound supplement carries all 15 recovered fragments; census: 15 m:oMath across 6 lines with 33 m:t runs, 0 superscript and 1 subscript vertAlign in the row, 14 drawing references = 7 straightConnector1 + 7 zero-width rect, 0 tables, 0 text boxes, 0 OLE objects, so the row contains no diagram; eqExtra 127 vs 15 fragments / 148 characters by independent render), OI-MATH-T1-W01-ASSESSMENT-GAPS (blocks delivery; 8 uncovered practice items with reviewer values). COV-MATH-T1-R00 gained bounding evidence: its row-level equivalence does not cover OBJ-4 or OBJ-8. 62 cited SHA-256 digests recomputed against the source member; schema-shape check clean; nothing executed, so OI-MATH-007 still applies. Prior reference (queue creation): Parsed row 0 (source label 'Week 1', title \"REVISION AND BASIC OPERATIONS OF INTEGER\", 2872 characters, body sha256 333ee632535e7bd44c86711adbb43750bfa3e66cd9b1d9880a1f0792ee768fb5) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R00 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS and correction CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 127 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note. MET for indexing only: Week 1 is indexed at objective level, not certified and not fully taught - COV-MATH-T1-W01-OBJ-4 and OBJ-8 stay PARTIAL, SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS stays approval PENDING and verification DEFERRED, and OI-MATH-005 and OI-MATH-007 still apply."
     },
     {
       "id": "MATH-WK-T1-W02",
@@ -1555,6 +1555,79 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS] body_sha256=03206bf6b426ad0c316aa1e3ad653bcbd296e56750eeec7f7b81d0915a5d2ef2; 2 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R00; bound by CORR-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W01.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
+    },
+    {
+      "id": "MATH-LES-T1-W01-VOCABULARY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS (add section for parsed row 0, lines 103-107)",
+      "objective": "Close COV-MATH-T1-W01-OBJ-4: extend the 1st Term Week 1 equivalent lesson with the two command-word definitions the source row teaches (SIMPLIFY, EVALUATE) and the mixed-number counter-examples the plain extractor drops from the INTEGERS line.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/mathematics/MATH-WK-T1-W01.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/MATHss1.docx",
+          "member_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/mathematics/MATH-LES-T1-W01-VOCABULARY.md"
+      ],
+      "depends_on": [
+        "MATH-SRC-T1",
+        "MATH-LES-T1-W01-DIVISIBILITY-INTEGERS",
+        "MATH-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by MATH-WK-T1-W01 on 2026-11-05 from origin/master cc6cf68. COV-MATH-T1-W01-OBJ-4 is PARTIAL: line 103 (SHA-256 2c8988b733d9fa7336f1b2baeeeaf693fc2aa6f28eaa3600118738ae95142f2b) defines integers and the supplement section 1 covers it, but line 105 (SHA-256 f98fda289198bf7ff7a2a6ac8579dc270a03595618a0e5fa50514c0576025ff5) defines SIMPLIFY and line 107 (SHA-256 dadc0dc31e710853ab41cb96bee38b85aa03a368c0c36bab587ffa35707997b7) defines EVALUATE, and neither word is defined anywhere in SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS - the supplement only uses 'Evaluate:' as an instruction in practice[M1W1-Q2], the very command-word the row stops to explain. Line 103 also delivers 'not 1.5,,5.' where the document reads 'not 1.5, 3 3/5, 5 1/2' (two OMML counter-examples lost; OI-MATH-T1-W01-NOTATION-LOSS). Deliverable: a vocabulary section in the lesson body carrying both definitions in the source's own wording plus the restored counter-examples, body_sha256 recomputed, then OBJ-4 re-indexed to IMPLEMENTED_EQUIVALENT and OI-MATH-T1-W01-ASSESSMENT-GAPS required_action narrowed. Do not touch content_approval (stays PENDING, approval_reference null) or verification (stays DEFERRED).",
+      "completion_condition": "The bound supplement defines every vocabulary item in parsed row 0 lines 103-107 with a reproducible locator, COV-MATH-T1-W01-OBJ-4 is no longer PARTIAL, and the lesson body hash is recomputed. Any part still untaught becomes a further bounded task; content approval and verification are never invented."
+    },
+    {
+      "id": "MATH-LES-T1-W01-ASSESSMENT-PRACTICE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS (add practice for parsed row 0, lines 163-181)",
+      "objective": "Close COV-MATH-T1-W01-OBJ-8: extend the 1st Term Week 1 equivalent lesson's practice so all eight uncarried ASSESSMENT items are taught with their own answer and marking criteria.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/work/microtasks/mathematics/MATH-WK-T1-W01.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/MATHss1.docx",
+          "member_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/mathematics/MATH-LES-T1-W01-ASSESSMENT-PRACTICE.md"
+      ],
+      "depends_on": [
+        "MATH-SRC-T1",
+        "MATH-LES-T1-W01-DIVISIBILITY-INTEGERS",
+        "MATH-WK-T1-W01",
+        "MATH-LES-T1-W01-VOCABULARY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by MATH-WK-T1-W01 on 2026-11-05 from origin/master cc6cf68. COV-MATH-T1-W01-OBJ-8 is PARTIAL and OI-MATH-T1-W01-ASSESSMENT-GAPS blocks delivery. The row's twelve assessment items sit in four blocks - products 165-167 (SHA-256 efe3833aeee18e639b1a459b10d342886e8074f19fe12199d0a90e1644b33b1c), subtraction 169-171 (a22a28d518bdedfcaf3b132333a090d9816705f5b0e43d724601065f714ac4a5), division 173-175 (1f952230d4949d275ab6ea168238d31f0b2ba230ad30500173edb7907af542f7) and the two OMML fraction items 177-181 (ff87ed9be1b85dd0003773fe04f55c80a4febc1ad7f84b437215b11aac731d69, where line 179 extracts to the empty string and line 181 to '       b.  '). The supplement carries 4 of 12 (M1W1-Q2(c)/(d), M1W1-Q3(b)/(c)). Eight are carried nowhere: 2184x11 and 217x405 (line 167), 23 from 36 and 94 from 104 (line 171), and 336÷4, 1848÷12, (-18)÷(-3), -25÷4 (line 175, division sign survives extraction). Reviewer values recorded for sizing only in COV-MATH-T1-W01-OBJ-8: 24024, 87885, 13, 10, 84, 154, 6, -6.25. Depends on MATH-LES-T1-W01-VOCABULARY because both edit the same lesson body; start from its delivered body_sha256. Deliverable: practice items for the eight, each with answer and marking criteria whose sum equals the declared marks under the schema. Do not copy the printed source items into the package as an answer key and do not record teacher-approved marks - none exists (OI-MATH-005).",
+      "completion_condition": "Every item in parsed row 0 lines 163-181 is either taught by the bound supplement with its own answer and marking criteria or accounted for by a further bounded task; COV-MATH-T1-W01-OBJ-8 leaves PARTIAL, OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed or closed with evidence, and the lesson body hash and marking arithmetic are recomputed. Approval and verification stay PENDING/DEFERRED."
     },
     {
       "id": "MATH-LES-T1-W03-BASE-OPERATIONS",
@@ -3079,7 +3152,6 @@
   ],
   "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W01",
     "MATH-WK-T1-W02",
     "MATH-WK-T1-W03",
     "MATH-WK-T1-W04",
@@ -3111,6 +3183,7 @@
     "MATH-WK-T3-W09",
     "MATH-WK-T3-W10",
     "MATH-WK-T3-W11",
+    "MATH-LES-T1-W01-VOCABULARY",
     "MATH-FACT-LOG-TABLES",
     "MATH-VIS-T1",
     "MATH-VIS-T2",
