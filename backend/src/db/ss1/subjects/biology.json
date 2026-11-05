@@ -135,6 +135,200 @@
           "explanation": "The string 'sulphur' occurs at only four blocks in the document: 783 (this definition), 712 (a Week 5 example of sulphur bacteria oxidising hydrogen sulphide in chemosynthesis), 860 (sulphur as a constituent element of protein in Week 7) and 881 (a mineral table). None of these teaches a sulphur cycle. UNRESOLVED: named in the week's own definition, never taught. The bounded supplement BIO-LES-T1-W06-SULPHUR is appended; whether a full sulphur cycle is required is put to BIO-FACT-T1-W06-SCOPE."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-SCHEME-1",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 1 for the week: 'Week 1 -Recognizing Living things'",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 2 (sha256 b6fa7da3944e18a573ba816bd780fc8033197df0c554893a8e6c891e55a6b383); Week 1 label block 13 (sha256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b); Week 1 body blocks 13-41 (range sha256 b525781e0c5aa33f22f18a3896b527830e31892386fa39b05d1bad8cd0a2a450)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme block 2 (sha256 b6fa7da3944e18a573ba816bd780fc8033197df0c554893a8e6c891e55a6b383); blocks 13-41 (range sha256 b525781e0c5aa33f22f18a3896b527830e31892386fa39b05d1bad8cd0a2a450)",
+          "explanation": "The scheme gives one entry for the week, 'Week 1 -Recognizing Living things'. Nothing in the week's own range teaches recognising living things: the string 'recogniz' occurs at block 2 (this scheme line) and at block 961 (sha256 898c0b42de15216fbef0775573741f14fd73036a59264d0ffb6590a9b5f79452, a Week 9 sentence about biomes) and nowhere else in the 1,106 blocks. The body title of the week is 'BIOLOGY AND INQUIRY' (block 14, sha256 ca183cbf9fef1ce5df9e0b663b0b2adce98a3b3c780428181ae46213205d29b5), a topic the scheme does not name for any week. UNRESOLVED: the objective the scheme assigns to Week 1 has no teaching bound to Week 1; the decision is put to BIO-FACT-T1-W01-SCOPE and no lesson text is invented here."
+        },
+        {
+          "locator": "living/non-living definitions blocks 45-46 (range sha256 f7aded0bf71baf079599156767d19bd2b88cc8aeeda90e754f2c1cf6bb84107c); characteristics blocks 48-67 (range sha256 f7db1d1dab282a6e8bd49197de50900dbdf6d1e3317cb6bec21a87706ff0101b); plant/animal differences blocks 68-87 (range sha256 86037b08f5147933c1cf5864e5cd7c8be4824a4b2e0187ab004051743d47e495); the three together blocks 45-87 (range sha256 8839e55f241f7f195ca572c975aaa7347079454a957e551d9939b4f0fcf7ef95)",
+          "explanation": "The only teaching that answers the scheme's Week 1 wording sits inside Week 2's range (blocks 42-132, range sha256 3f8bb1d8f9370ac595b47404008b1aab7e570100bb966d0d660e6683ec7cb5d9): living and non-living things defined at 45-46, ten characteristics at 48-67 and the plant/animal comparison at 68-87. The scheme assigns that teaching to Week 2 in its own next line ('Week 2 -Living things and non-living things', block 3, sha256 046f1ca8950cb6ab6a05ba314bcc5a5b61ffd35f81caa7eef9f8529e2d8258be). The source is not re-scope here."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "No lesson and no parsed row exists for this week, so even the teaching that does match the scheme line (Week 2's blocks 45-87) is not deliverable. Recorded by BIOLOGY-T1-W01-COVERAGE and BIOLOGY-T1-W01-SCHEME-BODY-MISMATCH."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-BIOLOGY-SCIENCE",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "What science is, what Biology is and how the word is formed, and the division of Biology into Zoology and Botany",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 Week 1 label block 13 (sha256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b); title block 14 (sha256 ca183cbf9fef1ce5df9e0b663b0b2adce98a3b3c780428181ae46213205d29b5); teaching blocks 15-18 (range sha256 68d3f2723d4435e3b4fb9e4e30bf013fedf60630dae16c0dcd29c06578e3dc6b)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 15 (sha256 7eff33e6f85baba9cb0c13f4c02bb62741c88366ebba86fa9caaf3b93835b628); block 16 (sha256 da95b157311bad85feafd26a0b176849f0a26bc5de71d157dc0ecaeb32066d09); blocks 15-16 (range sha256 e7c5ed6f568f99114d8da4cd01182a06c5b61eaf6981d47af576ef67a8f6b1ed)",
+          "explanation": "Block 15 defines science as 'a systematic process of making enquiry about the living things and non-living things in our environment', derives Biology from the Greek bios (life) and Logos (study), gives the school definition 'study of life' and a wider definition reaching 'from the unicellular organisms to the study of global interaction among millions of organisms'. The sentence is cut at the end of block 15 and completed by block 16 ('Organisms. Biology is broadly divided into two:'), so the definition is not a self-contained block; the run of spaces inside block 15 is literal spaces in one w:t, not a tab."
+        },
+        {
+          "locator": "block 17 (sha256 a347cd089f7edaebf58f94df83e439c8649e9ddcc8cc1d4475c0e81470b8b3dd); block 18 (sha256 14a8b171b954469ea40cdf4160073d1e3f0ff262dbbec519c6deab7f418f6d4c)",
+          "explanation": "The two branches are taught in one line each: '(a) Zoology: which is the study of animal, their behavior, feeding and life history?' and '(b) Botany: is the study of different type of plant.' Both are definitions, yet block 17 ends with a question mark and block 18 has no subject (it opens with 'is'). Each block also carries one w:tab that the locator rule drops from block text, because block text is the concatenation of w:t runs only; no content is hidden by that loss here, since the tab follows the '(a)'/'(b)' marker."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "Taught in the source with no deliverable lesson or parsed row for the week. PARTIAL; delivery is blocked by BIOLOGY-T1-W01-COVERAGE and the wording by BIOLOGY-T1-W01-SOURCE-DEFECTS."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-BRANCHES",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "The further aspects of Biology the learner is asked to know by name",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 20-21 (range sha256 e0eda69b9f67fddba1c5a8e75b0b0e4ac14459ae620f18ed2f142f7560ffe4a2); lead-in block 20 (sha256 29e61eaaab882c9b205b4c4e433bc421e3bea3ab7c390a3e09055d87148a082c); list block 21 (sha256 5265f69ebf664d056495d24ca54729fa15958a0d53ce6b61c04e2320c1bbd0f9)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 20 (sha256 29e61eaaab882c9b205b4c4e433bc421e3bea3ab7c390a3e09055d87148a082c); block 21 (sha256 5265f69ebf664d056495d24ca54729fa15958a0d53ce6b61c04e2320c1bbd0f9)",
+          "explanation": "Block 20 reads 'Some other specific aspects of Biology are:' and block 21 gives thirteen names in one comma-separated line, closing with 'e.t.c': Morphology, Anatomy, Physiology, Genetics, Ecology, Virology, Bacteriology, Microbiology, Taxonomy, Histology, Mycology, Embryology, Evolution. No branch is defined, exemplified or connected to the Zoology/Botany division of blocks 17-18; the teaching here is a list to be recalled by name."
+        },
+        {
+          "locator": "whole-document text search over all 1106 blocks; blocks 21, 156, 654, 953 and 135",
+          "explanation": "Morphology, Anatomy, Genetics, Virology, Bacteriology, Microbiology, Histology and Mycology occur at block 21 and nowhere else in the 1st Term document. Physiology and Embryology recur only as criteria of the 'modern classification system' at block 156 (sha256 d004feb04357069024c2498a4f43466201e946e0e701c01b7a0edf6535891c64, Week 3); Evolution only as 'the evolutionary trend' at block 654 (sha256 3efb6e870fdcf73c908a43a673b8a0da4feef093c7a818f3b7fbc3e71de6d518, Week 4); Ecology alone is defined, at block 953 (sha256 2f47be0cc93961b4c7c4b2663067a8704cd4885c21738e6f2f85708d292d3e9f) in Week 9. Taxonomy is never named again after block 21; the work is taught from block 135 (sha256 3b54e41aea64251250dee97be73a580d7041fdb51fcdcc6b5459929b4dbb9659) as 'classification' and 'TAXANOMY'. The names are therefore not carried by any later teaching of this term."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "Taught in the source as a list, with no deliverable lesson. PARTIAL; BIO-LES-T1-W01-BIOLOGY-AND-INQUIRY would turn the list into taught content only if BIO-FACT-T1-W01-SCOPE clears it, because the source itself supplies no definitions to carry over."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-INQUIRY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "The nature and role of inquiry in Biology, and what the scientific process or approach is",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 section heading block 23 (sha256 e2dc16ecb7ec3bd020fb3672cf67acfc935d5271eaa4432d282e37dbb9f94b98); teaching blocks 25-26 (range sha256 93100dc5694573b09cb189b062bed395e98a37bb5170b71faf50c58be4a051c0)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 25 (sha256 08b5758d5c9705d457d65dde0d85bfa7a4f5d4f067f9ce9bb3ba21c169445815); block 23 (sha256 e2dc16ecb7ec3bd020fb3672cf67acfc935d5271eaa4432d282e37dbb9f94b98)",
+          "explanation": "Block 23 opens the section 'SCIENTIFIC PROCESS OR APPROACH'. Block 25 states that inquiry is the knowledge of 'the nature and the role of inquiry to science', that inquiry in Biology 'enables us to acquaint ourselves with living things around us in a careful systematic manner', that facts must be known through science to understand the processes of enquiry, and that 'the orderly and systematic arrangement of facts is achieved through the process of science or scientific approach'."
+        },
+        {
+          "locator": "block 26 (sha256 37ab8249eda7d994413d2fac35246a499f71ea3bad06202eb2a78b0de1ca0a78)",
+          "explanation": "Block 26 defines the scientific approach as 'a process of science which involves the process of making sequence of enquiries about an object or thing under study'. The week gives no worked example of an inquiry, no exercise and no activity inside blocks 13-41; the range contains 0 drawings, 0 pictures, 0 embedded objects, 0 tables, 0 text boxes, 0 line breaks and 0 hyperlinks (verified on the block XML), so nothing in it can be taught as a practical."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "Taught in the source, no deliverable lesson or parsed row. PARTIAL; delivery blocked by BIOLOGY-T1-W01-COVERAGE."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-PROCESS-ORDER",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "The ordered sequence of steps the week says the scientific process runs through",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 block 27 (sha256 6f85d0af621f25a53e3b94e1fceade1b03df4de8a6d5f9e9a9f30257621ac42a)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 27 (sha256 6f85d0af621f25a53e3b94e1fceade1b03df4de8a6d5f9e9a9f30257621ac42a); blocks 29-31",
+          "explanation": "Block 27 lists the order: 'Scientific process begins with observation, followed by classification, inference, measurement, identification, hypothesis, experiment, control or conclusion, theory law or principle.' Only three of those steps are then defined in the week - observation (29), hypothesis (30) and experiment (31) - so the list is taught as a sequence to recite rather than as steps the learner is shown. 'control or conclusion' is written as one step, and the closing three words carry no separators ('theory law or principle')."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "The sequence is present in the source with no deliverable lesson. PARTIAL; the steps the list promises but never defines are indexed separately as COV-BIO-T1-W01-PROCESS-GAP (UNRESOLVED)."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-PROCESS-STEPS",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Observation, hypothesis and experiment defined, and the parts of an experiment: aim, apparatus/materials, method or procedure, result, conclusion",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 29-37 (range sha256 9a4c7d7c2d622d417eff50ad395d94037c5830a1d7521982f2c632d441ea8950); individual blocks 29 (81fb22d23f7667f21a2ad5935fb1daf3673b706fc01ccf3e5658f85d99ffa68c), 30 (25201ef11d2d68c83de4e7d890a8b16b5f9047ce44c8c7018bb881fffa635690), 31 (a819d5a107f17ee1355287a6570143bf82e3fe554e87d44474e1ccfd89554bf7), 33 (dc207ae44a9ff390ecfb05665a4441df24d9ce17b77f35ae60567f0307738cdd), 34 (3c6c936ca682ba9dcdc7c61d8e3c87b0315813308666ac680c775aaaa2399c43), 35 (76a64fc90235c2bff2da746656d9279067d1a927226cf69a4625f922e88297a8), 36 (59736e67eb2b7bac9dec52812e6c01416c00fe98737e5ebc1066525ef14d82a9), 37 (2c4b6a41c79cce3f6be563b4218b7dde063c184dbab63761656f5500c5e5a988)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 29-31; block 29 (sha256 81fb22d23f7667f21a2ad5935fb1daf3673b706fc01ccf3e5658f85d99ffa68c); block 30 (sha256 25201ef11d2d68c83de4e7d890a8b16b5f9047ce44c8c7018bb881fffa635690); block 31 (sha256 a819d5a107f17ee1355287a6570143bf82e3fe554e87d44474e1ccfd89554bf7)",
+          "explanation": "Observation (29) is 'the use of human senses to describe an observation by using the characteristics and properties of material', with the same block pointing on from observation to classification, inference, measurement and identification. Hypothesis (30) is 'a sensible proposal or reasonable assumption or a scientific guess that can be subjected to verification or being tested'. Experiment (31) is 'the process used for testing of hypothesis through experimentation during which data are collected', which defines the thing in terms of itself."
+        },
+        {
+          "locator": "blocks 33-37 (range sha256 06042285142e6d7de0ebc1d0334ffc90e60301025f852a02158627a077f710d0)",
+          "explanation": "The parts of an experiment are given one line each: AIM (33) 'the purpose for which the experiment is carried out'; APPARATUS//MATERIALS (34) 'the materials that will be used for the experiment'; METHOD or PROCEDURE (35) 'used to describe the details that are required step by step'; RESULT (36) 'the record of what is seen during and after the experiment'; CONCLUSION (37) 'used to finalize the outcome of the whole experiment'. They are numbered (iv)-(viii), continuing the (i)-(iii) of blocks 29-31, so the source presents the parts of an experiment as peers of observation, hypothesis and experiment itself. No experiment, apparatus list, quantity or safety instruction is given anywhere in blocks 13-41; the first experiments with materials in this document are the Week 5 experiments I-V at blocks 714-765, and this item invents none."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "Taught in the source, no deliverable lesson or parsed row for the week. PARTIAL; delivery blocked by BIOLOGY-T1-W01-COVERAGE."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-PROCESS-GAP",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Classification, inference, measurement, identification and control as steps of the scientific process listed by the week",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 block 27 (sha256 6f85d0af621f25a53e3b94e1fceade1b03df4de8a6d5f9e9a9f30257621ac42a); block 29 (sha256 81fb22d23f7667f21a2ad5935fb1daf3673b706fc01ccf3e5658f85d99ffa68c)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "whole-document text search over all 1106 blocks",
+          "explanation": "The words 'inference', 'measurement' and 'identification' occur at exactly two blocks each - 27 (the list) and 29 (the pointer inside the observation definition) - and nowhere else in the 1st Term document, so none is defined, exemplified or practised. 'classification' occurs at blocks 4, 27, 29, 134, 135, 156, 188, 248, 249, 261 and 278: blocks 4, 134-278 are the Week 3 taxonomy teaching (scheme line 'Week 3 -Classification of Living things', block 4, sha256 90846288953e56236069142972ddfd5b1db1e76a5d61e83007ecc1f7af34b813), not the process step, so the step is named at 27 and 29 and never taught as a process step."
+        },
+        {
+          "locator": "whole-document text search for the string \"control\"; blocks 575, 620, 744, 974, 1052",
+          "explanation": "'control' occurs fifteen times in the document. Besides block 27, the hits are pest and disease control (blocks 573-579, 617, 620), the wording of a Week 5 experiment (722, 744), abiotic factors (974) and a hormone function (1052). No block teaches a control as a scientific-process step, and the source's own phrasing 'control or conclusion' (27) merges two different ideas into one item. UNRESOLVED: steps the week lists but never teaches. BIO-FACT-T1-W01-SCOPE must say whether the missing steps are required; no definition is invented here."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "There is nothing in the source for this objective to import, so no parsed row can carry it; it needs an authored supplement gated by BIO-FACT-T1-W01-SCOPE (BIO-LES-T1-W01-BIOLOGY-AND-INQUIRY)."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-THEORY-LAW",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "How a hypothesis is tested and becomes a theory, and how the source says a theory becomes a law or principle",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 38-40 (range sha256 58d3c24e95a33a4a3d3296c0759c9690ccc1f577d4bf496c26af19bda6cfb9c1); block 38 (sha256 2737da6218ec130068352fc64ed16554d3927e11eb32917dfa5478aed50d0b11); block 40 (sha256 50188a7f28f8dcac90ac3da602d1a481fe920f8ec95855ccf27036acf7a71689)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 38 (sha256 2737da6218ec130068352fc64ed16554d3927e11eb32917dfa5478aed50d0b11)",
+          "explanation": "Block 38 makes the end of the experiment the test of the hypothesis: if later experiments show it false the idea 'is then repeated or rejected', and 'when the hypothesis is true after several repeated experiment it is accepted and becomes a THEORY'."
+        },
+        {
+          "locator": "block 40 (sha256 50188a7f28f8dcac90ac3da602d1a481fe920f8ec95855ccf27036acf7a71689)",
+          "explanation": "Block 40 defines a THEORY as 'a tested hypothesis that has been confirmed to be true' and states that 'By the time the theory is extensively tested and proven to be true, it becomes a LAW OR PRINCIPLE'. This item records that wording and does not correct it; whether the escalation of a confirmed theory into a law is what the curriculum requires is the factual question held by BIOLOGY-T1-W01-THEORY-LAW-FACT and BIO-FACT-T1-W01-SCOPE. The words 'theory', 'law' and 'hypothesis' occur in this document only at blocks 27, 30, 31, 38 and 40, so there is no other passage to check the claim against."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
+          "explanation": "Taught in the source, no deliverable lesson. PARTIAL; the passage cannot be delivered as written until the factual question above is settled, and no authoritative reference is available in the repository to settle it here."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W01-ASSESSMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 1's assessment: the term's first assignment, set jointly over Weeks 1 and 2",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment blocks 122-132 (range sha256 446679e98fe2de07ff9266dde247ee2923865140ca99a907e5677b4bf9590304); heading blocks 122-123 (range sha256 899cfdf915fe641c22b721772d4051f253f6f0c9d4ef76c566a1672a642ecb21); block 122 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3) 'ASSIGNMENT' and block 123 (sha256 fc089902cb7e989b14ac612760156fae7424f882f9974592ce4a907c0f1f904e) 'WEEK ONE AND TWO'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 122-123; blocks 124-130 (range sha256 3b22e23dd5d230d8ae5aa17058d15ea88f0dcadc6899b35279944c300f1c2d5f); blocks 131-132 (range sha256 6dc62d04b5aa5c76f0e87e4b4ca555ee05c62cd62d662aa0e33f2b9a1fac482d)",
+          "explanation": "There is no assignment section inside blocks 13-41. The term's first assessment is the block at 122-132, headed 'ASSIGNMENT' / 'WEEK ONE AND TWO': four objective items (124-130) and one essay (131-132, '(5)State five differences between plant and animal'). Question 1 (124-125, range sha256 4afc00ad436fb4c1d2486926e6e85bedabccea5a27712c906bf563a61b55a166) asks 'Which of the following groups embraces the rest?' over Class/Kingdom/Phylum/Species; question 2 (126-127, bcf23c55457e2fba37076af765e5fb811f5ec8b317b8c0c99b6971393617f7c5) asks which characteristic most plants do not possess; question 3 (128-129, 6621f634ef0afe2cfc24efbb45d17e9fa2e18a995e32fd96a77efe265ca0d378) asks in what form carbohydrates are stored in animal cells; question 4 (130, 7d0913a0987a48bdae1474fa00696ef56eb2357982b4c7cf14c585a2d6ff9ab6) asks what all living organisms do."
+        },
+        {
+          "locator": "blocks 48-67 (range sha256 f7db1d1dab282a6e8bd49197de50900dbdf6d1e3317cb6bec21a87706ff0101b); blocks 68-87 (range sha256 86037b08f5147933c1cf5864e5cd7c8be4824a4b2e0187ab004051743d47e495); block 75 (sha256 8b2b929ae80693af5a9a911f38f8a8acec2a648450e49b0b202c786be54b0f44); blocks 134-143 (range sha256 61f3ebaa12c6471ed4e020335c1b57511ca518ae0642ac78f810af664ebbf79d)",
+          "explanation": "Questions 2, 3, 4 and 5 are answered by the living-things teaching of Week 2: the characteristics at 48-67, the plant/animal comparison at 68-87 and, for question 3, the table line at block 75 'Plant stores food as starch except in ... Animal stores food as glycogen'. Question 1 is answered only by the taxonomic ranks taught in Week 3 at blocks 134-143 (the rank list is set out at 136, sha256 a018fe50087dde8c17c5bd502f6ebae306ad9ecd3ee1f828ab9026d123662087), i.e. after the question is set - the same misplacement BIO-INV-T1 recorded for this question."
+        },
+        {
+          "locator": "blocks 13-41 against blocks 122-132",
+          "explanation": "No question in blocks 122-132 asks about science, the definition of Biology, Zoology or Botany, the named aspects of block 21, the scientific approach, the process steps, hypothesis, experiment or theory. Week 1's own teaching is therefore untested by the term's first assessment, and the assessment carries a Week 3 requirement. UNRESOLVED for Week 1: recorded by BIOLOGY-T1-W01-ASSESSMENT-MISPLACED, with the bounded supplement BIO-LES-T1-W01-ASSESSMENT appended. No answer key exists for any of these questions (lessons[] length 0) and none is inferred here."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -204,6 +398,79 @@
       "affected_ids": [
         "COV-BIO-T1-W06-SCHEME-6",
         "BIO-FACT-T1-W06-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 has no deliverable teaching. Nine coverage entries were indexed for blocks 13-41 and the combined assignment: COV-BIO-T1-W01-BIOLOGY-SCIENCE, -BRANCHES, -INQUIRY, -PROCESS-ORDER, -PROCESS-STEPS and -THEORY-LAW are PARTIAL (taught in the source, but the package has no lesson and no parsed row for the week and the importer has not been run), and COV-BIO-T1-W01-SCHEME-1, -PROCESS-GAP and -ASSESSMENT are UNRESOLVED (the scheme's Week 1 objective is not taught in Week 1; four of the steps the week lists are never defined; the first assessment sets no question on the week's own teaching). The appended supplement BIO-LES-T1-W01-BIOLOGY-AND-INQUIRY is gated on BIO-FACT-T1-W01-SCOPE because the missing steps and the untaught scheme objective cannot be filled from the source.",
+      "required_action": "Run the normal import/parse step for the 1st Term source, then author and approve a Week 1 lesson carrying the teaching that is actually at blocks 15-40. Before that, record in BIO-FACT-T1-W01-SCOPE whether the living-things teaching at blocks 45-87 is re-scoped to Week 1 or stays in Week 2. Do not move source blocks, do not write lesson content the source does not supply, and do not invent the experiment quantities or safety instructions the week lacks.",
+      "affected_ids": [
+        "COV-BIO-T1-W01-SCHEME-1",
+        "COV-BIO-T1-W01-BIOLOGY-SCIENCE",
+        "COV-BIO-T1-W01-BRANCHES",
+        "COV-BIO-T1-W01-INQUIRY",
+        "COV-BIO-T1-W01-PROCESS-ORDER",
+        "COV-BIO-T1-W01-PROCESS-STEPS",
+        "COV-BIO-T1-W01-PROCESS-GAP",
+        "COV-BIO-T1-W01-THEORY-LAW",
+        "COV-BIO-T1-W01-ASSESSMENT",
+        "BIO-LES-T1-W01-BIOLOGY-AND-INQUIRY",
+        "BIO-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W01-SCHEME-BODY-MISMATCH",
+      "kind": "CONTENT",
+      "detail": "The scheme and the body disagree about what Week 1 teaches. Scheme block 2 reads 'Week 1 -Recognizing Living things' but the Week 1 body title (block 14) is 'BIOLOGY AND INQUIRY', a topic the scheme never names; 'recogniz' occurs only at block 2 and at block 961 (Week 9, biomes). The teaching that matches the scheme line is at blocks 45-87, inside Week 2's range, which the scheme itself labels 'Week 2 -Living things and non-living things' (block 3). The document has no lesson text, so whether Week 1 is meant to teach living things (with the Week 2 blocks moved up) or Biology and inquiry (with the scheme line wrong) is a teacher/curriculum question, not something the source settles.",
+      "required_action": "Record one authoritative decision in BIO-FACT-T1-W01-SCOPE: correct the scheme line, re-scope blocks 45-87 into Week 1, or add a bounded Week 1 living-things supplement labelled as a supplement. Source scheme lines and teaching blocks stay unchanged either way.",
+      "affected_ids": [
+        "COV-BIO-T1-W01-SCHEME-1",
+        "SS1-SRC-422e0e6ddde9",
+        "BIO-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W01-ASSESSMENT-MISPLACED",
+      "kind": "CONTENT",
+      "detail": "The term's first assignment (blocks 122-132, headed 'ASSIGNMENT' / 'WEEK ONE AND TWO') tests none of Week 1's teaching and part of it cannot be answered yet. Questions 2-5 are answered by Week 2's living-things teaching (48-67, 68-87, glycogen at 75); question 1 ('Which of the following groups embraces the rest?') needs the taxonomic ranks taught in Week 3 at 134-143; nothing asks about science, Biology, Zoology, Botany, the named aspects, the scientific approach, observation, hypothesis, experiment, theory or law. The block also has no answer key, and the tab-aligned options at 125, 127-130 lose their column separation under the block-text rule (the tab characters are not w:t text), which matters for how the options must be read.",
+      "required_action": "Decide in BIO-FACT-T1-W01-SCOPE whether question 1 stays with a note that it precedes its teaching, and what Week 1 practice is required; then author the keyed supplement BIO-LES-T1-W01-ASSESSMENT, which also depends on BIO-WK-T1-W02 so the combined Weeks 1-2 assignment is dispositioned once. Do not infer or publish a key for the source's objective items without recording the basis, and do not rewrite source question text.",
+      "affected_ids": [
+        "COV-BIO-T1-W01-ASSESSMENT",
+        "SS1-SRC-422e0e6ddde9",
+        "BIO-LES-T1-W01-ASSESSMENT",
+        "BIO-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Week 1 wording and structure defects, retained uncorrected: (1) the definition of Biology is cut across blocks 15 and 16, so 16 opens with the fragment 'Organisms.'; (2) block 15 writes 'two Greek work' and glosses bios and Logos with inconsistent capitalisation; (3) block 17, a definition of Zoology, ends with a question mark and uses the singular 'animal' for animals; (4) block 18 reads 'is the study of different type of plant' with no subject; (5) block 21 lists thirteen branches and closes with 'e.t.c', defining none of them; (6) block 26 uses 'process' three times in one sentence; (7) block 27 promises classification, inference, measurement, identification and control and writes 'control or conclusion' as one step; (8) block 29 defines observation as 'the use of human senses to describe an observation'; (9) block 31 defines experiment as 'the process used for testing of hypothesis through experimentation'; (10) the parts of an experiment are numbered (iv)-(viii) at 33-37, continuing the (i)-(iii) of 29-31 as though aim, apparatus, method, result and conclusion were steps of the same order as observation, hypothesis and experiment; (11) block 34 prints 'APPARATUS//MATERIALS'; (12) block 37 has no final stop; (13) block 40 states that a theory proven to be true 'becomes a LAW OR PRINCIPLE' (see BIOLOGY-T1-W01-THEORY-LAW-FACT).",
+      "required_action": "Give each numbered item one disposition in BIO-FACT-T1-W01-SCOPE. Authored supplements must not copy the faulty wording. No source byte is corrected by this item.",
+      "affected_ids": [
+        "COV-BIO-T1-W01-BIOLOGY-SCIENCE",
+        "COV-BIO-T1-W01-BRANCHES",
+        "COV-BIO-T1-W01-INQUIRY",
+        "COV-BIO-T1-W01-PROCESS-ORDER",
+        "COV-BIO-T1-W01-PROCESS-STEPS",
+        "COV-BIO-T1-W01-PROCESS-GAP",
+        "COV-BIO-T1-W01-THEORY-LAW",
+        "BIO-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W01-THEORY-LAW-FACT",
+      "kind": "FACT",
+      "detail": "Block 40 (sha256 50188a7f28f8dcac90ac3da602d1a481fe920f8ec95855ccf27036acf7a71689) teaches that 'By the time the theory is extensively tested and proven to be true, it becomes a LAW OR PRINCIPLE', and block 38 that a hypothesis confirmed by repeated experiment 'becomes a THEORY'. Whether that escalation is what the approved curriculum requires is a factual question the source cannot settle: the words theory, law and hypothesis occur in this document only at blocks 27, 30, 31, 38 and 40, there is no other passage to check against, and the repository holds no approved curriculum reference for Biology. No authority is invented here.",
+      "required_action": "Obtain the curriculum or textbook reference (with edition and page) that the teacher actually uses, and record the decision in BIO-FACT-T1-W01-SCOPE, before any Week 1 lesson states the theory/law relationship. Until then the source wording stays recorded as wording and is not delivered as fact.",
+      "affected_ids": [
+        "COV-BIO-T1-W01-THEORY-LAW",
+        "BIO-FACT-T1-W01-SCOPE"
       ],
       "blocks_delivery": true
     }
