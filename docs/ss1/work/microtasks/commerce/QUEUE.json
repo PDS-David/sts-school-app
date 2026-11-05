@@ -24,23 +24,25 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "COM-INV-T1 appended the 1st Term inventory items (19) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 19 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (COM-INV-T1.md).",
-    "COM-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written."
+    "COM-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
+    "COM-WK-T1-W01 (2026-11-05) indexed 1st Term Week 1 at objective level: 14 coverage entries (7 PARTIAL, 7 UNRESOLVED) and 10 open items in commerce.json, with the COM-FACT-T1-W01-SCOPE decision item and three lesson tasks appended. Week 1 is indexed, not certified: no lesson, no parsed row, no answer key and no approval exists. Source bytes and private extracts stayed outside Git."
   ],
   "counts": {
-    "FACTUAL_DEPENDENCY": 5,
-    "SOURCE_MARKER_DISPOSITION": 3,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_PRESERVATION": 2,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 19,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 3
+    "FACTUAL_DEPENDENCY": 6,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_WEEK_INDEXING": 19,
+    "SOURCE_MARKER_DISPOSITION": 3,
+    "VISUAL_DISPOSITION": 3,
+    "SOURCE_PRESERVATION": 2,
+    "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 35,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 37,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -375,8 +377,8 @@
         "COM-INV-T1",
         "COM-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/commerce/COM-INV-T1.md (Week table, lines 39-121, SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED_TESTING_DEFERRED (2026-11-05, PR to master, not merged). Member SHA-256 ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a verified and word-extractor 1.0.4 getBody() reproduced on it: 57,453 characters, 1,064 lines, 873 non-blank, text SHA-256 fa0ff13e0ee6cfd8d60b0f4674542c628c0f52c1720fc1e533123def69bfe035, Week One lines 39-121 SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1 and opening block lines 1-36 SHA-256 d8658c5c643ff3336b8b240a9c89a6abbdd1a45ba35f2a423ff25ef45cdad092, all equal to COM-INV-T1. commerce.json had coverage[] length 0 before this item; 14 coverage entries are written for the 1st Term source, 7 PARTIAL (SCHEME-1, MEANING, FUNCTIONS, HISTORY, DELAYED-FACTORS, GROWTH-FACTORS, DIVISIONS) and 7 UNRESOLVED (SCOPE, EVALUATION-1, EVALUATION-2, READING-ASSIGNMENT, WEEKEND-ASSIGNMENT, THEORY, GENERAL-EVALUATION), all with lesson_ids empty because lessons[] length 0, the importer has not been run and SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json. Ten open items added (COMMERCE-T1-W01-COVERAGE, COMMERCE-T1-W01-SCOPE-GAP, COMMERCE-T1-W01-OUTLINE-GAP, COMMERCE-T1-W01-HISTORY-FACTS, COMMERCE-T1-W01-ASSESSMENT-NO-KEY, COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS, COMMERCE-T1-W01-ASSESSMENT-SCOPE, COMMERCE-T1-W01-READING-RIGHTS, COMMERCE-T1-W01-HEADING-AMBIGUITY, COMMERCE-T1-W01-SOURCE-DEFECTS), 7 of them blocking delivery. All six body sections and all sixteen questions plus the two reading items are indexed with their own line digests; 127 digest references were re-derived from a fresh extraction of the member in a separate verifier. Nothing is answered, keyed, ranked, dated or corrected: no answer option, no relative-importance ranking, no scope statement, no textbook page content and no dated history is invented, and Commerce is not merged into Economics, Financial Accounting or Bookkeeping. Appended COM-FACT-T1-W01-SCOPE (BLOCKED) and the lesson tasks COM-LES-T1-W01-SCOPE, COM-LES-T1-W01-KEY-ASSESSMENT and COM-LES-T1-W01-ANCILLARY-SERVICES. Record: docs/ss1/work/microtasks/commerce/COM-WK-T1-W01.md. Testing, importer, plan, database and deployment deferred by owner.",
       "completion_condition": "Week 1 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -1539,6 +1541,166 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (COM-INV-T2): block 138 is a w:tbl of 4 rows x 2 columns (header DOMESTIC TRADE | FOREIGN TRADE, then three numbered contrasts: boundary of a country vs other countries, same vs different currencies, same vs different weights and measures). Block 140 'SIMILARITIES' follows. Extractor output was not generated (importer deferred).",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "COM-FACT-T1-W01-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1); specifically lines 25, 40, 42-44, 47, 57-62, 66, 68-77, 79-86, 88-94, 98, 110, 113-114, 117-121, 323, 341-351, 983-1013",
+      "objective": "Obtain one recorded subject-expert decision on every Week 1 scope and wording question so the three appended lessons can bind to it without invented content: (1) whether the scope of commerce is taught in Week 1 at all, given that the word occurs only at lines 25, 40 and 323 and no Week 1 line states it (COMMERCE-T1-W01-SCOPE-GAP); (2) whether the three sections the body teaches but the CONTENT outline at 42-44 omits - the definition at 47, the delaying factors at 69-77 and the growth factors at 80-86 - are Week 1 content or not (COMMERCE-T1-W01-OUTLINE-GAP); (3) whether the seven aids to trade named at lines 93-94, the six unexplained functions at 50-55 and the two divisions at 90-91 must be explained in Week 1 or stay as lists (COV-COM-T1-W01-DIVISIONS, -FUNCTIONS, -GROWTH-FACTORS); (4) whether the out-of-week assessment items - Weekend question 5 on a basic want of man, THEORY question 1 and GENERAL EVALUATION question 2 on ancillary services, THEORY question 2 and GENERAL EVALUATION question 5 on transport, GENERAL EVALUATION question 3 on advertising - stay in Week 1, and whether the phrase ancillary services to trade is the same list as the seven aids to trade at 93-94 (COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS); (5) whether the Week 1 GENERAL EVALUATION tests the week or the term, since question 4 is answered in Week Ten (COMMERCE-T1-W01-ASSESSMENT-SCOPE); (6) whether the five history stages and the sixteen factor lines may be taught as stated while COM-FACT-T1-HISTORY-NIGERIA has no dated source (COMMERCE-T1-W01-HISTORY-FACTS); (7) one disposition per numbered defect in COMMERCE-T1-W01-SOURCE-DEFECTS, including the wording of the definition at line 47, which makes commerce a field of study rather than an activity. Do not answer the source objective items or supply a ranking of the divisions without recording the basis.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T1.md",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T1-W01-SCOPE.md"
+      ],
+      "depends_on": [
+        "COM-SRC-T1",
+        "COM-INV-T1",
+        "COM-WK-T1-W01"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by COM-WK-T1-W01 (2026-11-05), whose delivery summary is COMMERCE-T1-W01-COVERAGE: 14 coverage entries written for lines 39-121, 7 PARTIAL and 7 UNRESOLVED, 10 open items added and 3 lesson tasks appended. COV-COM-T1-W01-SCOPE is UNRESOLVED because the word is never stated, COV-COM-T1-W01-THEORY and -GENERAL-EVALUATION because their questions turn on terms the term never teaches. No scope statement, ranking, dated history, answer key or lesson text is invented here.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the three lesson items may then bind to that decision; no answer key, scope statement or historical date is invented and no lesson is authored here."
+    },
+    {
+      "id": "COM-LES-T1-W01-SCOPE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1); objectives COV-COM-T1-W01-SCOPE, COV-COM-T1-W01-SCHEME-1 and COV-COM-T1-W01-MEANING",
+      "objective": "Author one bounded Week 1 supplement carrying the meaning and the scope of commerce as cleared by COM-FACT-T1-W01-SCOPE, quoting the source definition wording at line 47 only where the source is being shown, and teaching the six functions at lines 50-55 as the functions list. Include practice with complete answers and criterion-level marking. Do not present the divisions at 89-94 or the Week Five TRADE chart at 341-351 as the scope, do not reproduce pages 1-8 of Longe or pages 29-36 of Anyaele, do not reproduce or paraphrase pages 1-8 of Longe or pages 29-36 of Anyaele while COMMERCE-T1-W01-READING-RIGHTS is open, and do not copy the source defect wording identified in COMMERCE-T1-W01-SOURCE-DEFECTS.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T1.md",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-LES-T1-W01-SCOPE.md"
+      ],
+      "depends_on": [
+        "COM-SRC-T1",
+        "COM-WK-T1-W01",
+        "COM-FACT-T1-W01-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by COM-WK-T1-W01 (2026-11-05): the scheme row and the topic line both name the scope, and the whole extract holds the word only at lines 25, 40 and 323, so no source content states it. COV-COM-T1-W01-SCOPE is UNRESOLVED and COMMERCE-T1-W01-SCOPE-GAP blocks delivery.",
+      "completion_condition": "A lesson in commerce.json teaches the scope cleared by COM-FACT-T1-W01-SCOPE, labels itself a Week 1 supplement rather than source teaching, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with reuse_status PENDING unless rights are cleared, and PENDING content approval; no textbook page content and no scope statement is invented, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "COM-LES-T1-W01-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1 assessment blocks: EVALUATION 64-66, EVALUATION 96-98, WEEKEND ASSIGNMENT 104-110, THEORY 112-114, GENERAL EVALUATION 116-121; objectives COV-COM-T1-W01-EVALUATION-1, -EVALUATION-2, -WEEKEND-ASSIGNMENT, -THEORY, -GENERAL-EVALUATION",
+      "objective": "Author the keyed assessment supplement for the sixteen Week 1 questions that COM-WK-T1-W01 indexed: quote each question with its line number and digest, give the answer the source actually supports, and give criterion marks that sum exactly to each question total. Questions with no support in this source - the relative importance ranking at line 98, the basic-want item at line 110, the ancillary-services items at 113 and 118, the transport items at 114 and 121 and the advertising item at 119 - stay open and are referred back to COM-FACT-T1-W01-SCOPE and COM-LES-T1-W01-ANCILLARY-SERVICES rather than answered. The two identical EVALUATION headings (lines 64 and 96) must be addressed by line and digest, not by heading text, per COMMERCE-T1-W01-HEADING-AMBIGUITY, and the delivery-blocking summary of this week sits in COMMERCE-T1-W01-COVERAGE.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T1.md",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-LES-T1-W01-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "COM-SRC-T1",
+        "COM-WK-T1-W01",
+        "COM-FACT-T1-W01-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by COM-WK-T1-W01 (2026-11-05): no answer, marking, marks, score or rubric word occurs anywhere in lines 39-121 and the term-wide occurrence at line 746 is a branding sentence, so all five blocks are UNRESOLVED and COMMERCE-T1-W01-ASSESSMENT-NO-KEY blocks delivery.",
+      "completion_condition": "Every keyed item carries the question wording with its line locator, a complete answer with its basis, integer criterion marks summing to the question marks, provenance and PENDING content approval; no option letter, ranking or out-of-week answer is invented, and no schema, compiler or shared file is edited."
+    },
+    {
+      "id": "COM-LES-T1-W01-ANCILLARY-SERVICES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 88-94 (the seven aids to trade) and the questions that depend on them at 110, 113, 114, 118, 119, 120, 121; objective COV-COM-T1-W01-DIVISIONS",
+      "objective": "Author one bounded supplement teaching what the Week 1 questions ask about the aids to trade, only as cleared by COM-FACT-T1-W01-SCOPE: what each of the seven named aids does for trade, whether ancillary services and aids to trade are the same list, and how transport, advertising and warehousing help a trader. Warehousing teaching exists in Week Ten (lines 983, 991, 1011, 1013) and may be cited as that week, not moved into Week 1; transport and advertising have no teaching block anywhere in this 1st Term source, so their content needs an approved external reference with rights cleared. Include practice with complete answers and criterion marks.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-INV-T1.md",
+        "docs/ss1/work/microtasks/commerce/COM-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 COMMERCE.doc",
+          "member_sha256": "ba6b7fee7987713d60e598066f9f718d1ad042e38e09507a7980b087b577c42a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-LES-T1-W01-ANCILLARY-SERVICES.md"
+      ],
+      "depends_on": [
+        "COM-SRC-T1",
+        "COM-WK-T1-W01",
+        "COM-FACT-T1-W01-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by COM-WK-T1-W01 (2026-11-05): ancillary occurs only at lines 113 and 118, transport at 14 lines with no teaching heading, and the advertising advantages request at line 119 has no corresponding heading in the term, so COV-COM-T1-W01-THEORY and -GENERAL-EVALUATION are UNRESOLVED under COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS.",
+      "completion_condition": "A lesson in commerce.json teaches only the aids cleared by COM-FACT-T1-W01-SCOPE, labels itself a Week 1 supplement, carries dated and rights-cleared provenance for anything the source does not teach, has practice with complete answers and marking that sums exactly, and PENDING content approval; no aid, transport or advertising advantage is invented and no Week Ten teaching is relabelled as Week One."
     }
   ],
   "review": {
@@ -1557,7 +1719,6 @@
     "COM-INV-T3",
     "COM-TEST-PACKAGE",
     "COM-PRE-T1",
-    "COM-WK-T1-W01",
     "COM-WK-T1-W02",
     "COM-WK-T1-W03",
     "COM-WK-T1-W04",
@@ -1571,6 +1732,7 @@
     "COM-VIS-T1-W05-DIAGRAM",
     "COM-PRES-T1-LAYOUT",
     "COM-PRES-T1-SOURCE-WORDING",
+    "COM-FACT-T1-HISTORY-NIGERIA",
     "COM-PRE-T2",
     "COM-MARK-T2-W10",
     "COM-MARK-T2-REVEXAM",

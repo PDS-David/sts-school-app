@@ -91,7 +91,336 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-COM-T1-W01-SCHEME-1",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "Scheme row 1 of the 1st Term Commerce scheme of work: 'Meaning, Scope and Functions of Commerce.'",
+      "objective_locator": "scheme row 1 line 25 (SHA-256 85daea8f714ffcb8dd566bb9e9823a729e8fae3c368741873b165269aeaba6a9) inside the unlabelled opening block lines 1-36 (SHA-256 d8658c5c643ff3336b8b240a9c89a6abbdd1a45ba35f2a423ff25ef45cdad092); the week it governs is Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "scheme row 1 line 25 (SHA-256 85daea8f714ffcb8dd566bb9e9823a729e8fae3c368741873b165269aeaba6a9); the DEFINITION OF COMMERCE block lines 46-47 (SHA-256 4ec1bf60f04ac99073196624522062ba6966162862a462197c3b613ff9eac666); the THE IMPORTANCE (FUNCTIONS) OF COMMERCE block lines 49-55 (SHA-256 dacdaa4698537288b3ded4822fb399e89d2d21ee39d4c9b1a2b101b9ddb564ea)",
+          "explanation": "The scheme row is one tab-aligned line and is not teaching text. Two of its three parts are taught inside the week: the meaning at lines 46-47 and the functions at lines 49-55. The third, scope, is not: 'scope' occurs at lines 25, 40 and 323 in the whole extract and none of those lines teaches anything (see COV-COM-T1-W01-SCOPE). PARTIAL for the row, because one of its three named parts is absent from the week."
+        },
+        {
+          "locator": "the week marker and topic line lines 39-40 (SHA-256 3b8fc8307dfeaab4a8374876db854a81699c0021ad88b929eb084225121a3251); the CONTENT outline lines 41-44 (SHA-256 ef4c47defeb3f6680086a9fe61944fea9e329a67f1b63c851d9f603a4166831c)",
+          "explanation": "The week restates the row as its topic line, 'TOPIC: MEANING, SCOPE AND FUNCTIONS OF COMMERCE', and then prints a three-item CONTENT outline. That outline omits three of the six sections the body teaches and adds none for scope (see COMMERCE-T1-W01-OUTLINE-GAP). A scheme row and a topic line are not evidence that the row is covered."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-MEANING",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The meaning of commerce: a definition of the subject",
+      "objective_locator": "the DEFINITION OF COMMERCE block lines 46-47 (SHA-256 4ec1bf60f04ac99073196624522062ba6966162862a462197c3b613ff9eac666); the heading line 46 (SHA-256 09003ec65c319b5e364c2cd3a6dd8909c86159426571900c55a97aece514ac64) and the single-sentence definition line 47 (SHA-256 312fdd283ea8092bf5d2364915fa8da6238bcdd045a41068eb683759d98b014a) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the definition line 47 (SHA-256 312fdd283ea8092bf5d2364915fa8da6238bcdd045a41068eb683759d98b014a); SS1-SRC-d96373071a7e word-extractor 1.0.4 getBody() line 47 is the only sentence in the week that states what commerce is; first EVALUATION question 1 line 65 (SHA-256 fbf0da554152ba9962fe58d7a180f66c50f75d1304ab59283ea2ae8b9bc98c6f) and GENERAL EVALUATION question 1 line 117 (SHA-256 4362a5fdd3fd12a306b0586d3ec3f83b1d7f6e2b89d2344f887c106c5d4d54a1) both ask for it; whole-extract search: 'Commerce is' occurs at line 47 only and 'Commerce can be' at line 89 only",
+          "explanation": "The week teaches one definition, quoted in part: commerce as 'the study of production, distribution and exchange' of goods and services to satisfy human wants and earn a living (line 47). It is quoted unchanged and not corrected. The wording describes a field of study rather than the activity itself, which is recorded as defect 1 of COMMERCE-T1-W01-SOURCE-DEFECTS; no cleared alternative definition exists in this source, so none is supplied here."
+        },
+        {
+          "locator": "the CONTENT outline lines 41-44 (SHA-256 ef4c47defeb3f6680086a9fe61944fea9e329a67f1b63c851d9f603a4166831c); Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+          "explanation": "The CONTENT outline at lines 41-44 does not name the definition as a sub-topic even though the body opens with it, so the outline is not a complete list of what the week teaches. The taught definition is present but not deliverable."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-FUNCTIONS",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The importance (functions) of commerce",
+      "objective_locator": "the THE IMPORTANCE (FUNCTIONS) OF COMMERCE block lines 49-55 (SHA-256 dacdaa4698537288b3ded4822fb399e89d2d21ee39d4c9b1a2b101b9ddb564ea); the six numbered points lines 50-55 (SHA-256 4343f744b06d6e5ef1012b2a815591e9482a94728da4ec568f8161c0b78ac009) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the six numbered functions lines 50-55 (SHA-256 4343f744b06d6e5ef1012b2a815591e9482a94728da4ec568f8161c0b78ac009)",
+          "explanation": "Six functions are taught, one line each: employment, making production and exchange possible, an improved standard of living, national and international co-operation through inter-dependence, division of labour and specialisation, and technological and infrastructural development. Each is an unexplained assertion, so the count is complete but the explanation is not. The first EVALUATION asks for four of them (line 66) and Week Six's GENERAL EVALUATION at line 458 asks for six, which is the number this list holds."
+        },
+        {
+          "locator": "outline item 1 line 42 (SHA-256 d107768c75907fa90f62fd0647b37eef155ed74743fa7f07e796dc1f4342623c); first EVALUATION question 2 line 66 (SHA-256 aed19bad8311b2e003b103b58359edba177360292c20d8e01c175af4bfe0710c); SS1-SRC-d96373071a7e word-extractor 1.0.4 getBody() line 66 reads 'State four functions of Commerce .'",
+          "explanation": "The outline names 'The Importance of Commerce' and the body heading at line 49 equates importance with functions, so one block serves both scheme words. Whole-extract search for 'function' followed by 'of Commerce' returns six lines: the scheme row 25, the topic line 40, this heading 49, the question 66, a Week Two option 169 and the Week Six request 458; the teaching behind all of them is this same six-line list."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-SCOPE",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The scope of commerce, named in scheme row 1 and repeated in the week's topic line",
+      "objective_locator": "scheme row 1 line 25 (SHA-256 85daea8f714ffcb8dd566bb9e9823a729e8fae3c368741873b165269aeaba6a9); the topic line line 40 (SHA-256 542e8fb9368baa0e0d0eddfecaf067ef457f6dad1f10ed3d6fc4a5edd3db3553) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Whole-extract search over all 1064 lines: 'scope' occurs at lines 25, 40 and 323; scheme row 1 line 25 (SHA-256 85daea8f714ffcb8dd566bb9e9823a729e8fae3c368741873b165269aeaba6a9); the topic line line 40 (SHA-256 542e8fb9368baa0e0d0eddfecaf067ef457f6dad1f10ed3d6fc4a5edd3db3553); Week Four GENERAL EVALUATION question 4 line 323 (SHA-256 2e8fbbe3bbe9e51d27c1101a4f8400e10cb2233e978d4d66ed54c453e35e39f8)",
+          "explanation": "Two of the three occurrences are the scheme row and the week's own topic line, which promise the scope without stating it. The third, line 323, is Week Four's question 'With the aid of a diagram, illustrate the scope of commerce', which asks for a diagram the document does not supply and which sits in Week Four's range, not this week's. No line in Week One bounds, lists or pictures the scope of commerce. UNRESOLVED: named by the scheme and by the topic line, absent from the body."
+        },
+        {
+          "locator": "the CONTENT outline lines 41-44 (SHA-256 ef4c47defeb3f6680086a9fe61944fea9e329a67f1b63c851d9f603a4166831c); the DIVISIONS OF COMMERCE block lines 88-94 (SHA-256 bc14d17c53079bd8639ccc03463d8ff3d25674539bd11acc1065579139450ea4)",
+          "explanation": "The nearest things to a scope statement in the week are the divisions at lines 88-94, which enumerate trade and seven aids to trade but never relate them to the scope of the subject, and the definition at line 47, which names production, distribution and exchange. Whether either is the scope the scheme intends is a curriculum decision recorded in COMMERCE-T1-W01-SCOPE-GAP; the bounded supplement COM-LES-T1-W01-SCOPE authors it only after that decision. No scope statement is invented here."
+        },
+        {
+          "locator": "the Week Five TRADE chart lines 341-351 lines 341-351 (SHA-256 cc26ff9feb28fa26fe8974bab857da22ba0230c89732e6c4192d99af62e887c4)",
+          "explanation": "The only structural classification picture in the term is the drawn TRADE chart in Week Five (lines 341-351), whose connector lines and placement the text extraction loses; it is owned by COM-VIS-T1-W05-DIAGRAM and is not Week One content. It is recorded here so that a later scope lesson does not silently borrow it as Week One teaching."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-HISTORY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "Stages in the history and development of commerce",
+      "objective_locator": "the STAGES IN THE HISTORY AND DEVELOPMENT OF COMMERCE block lines 57-62 (SHA-256 1d78bd4fa7aaaad4bac6e267978fd920d15adc175e605cb014374c2c392d59e8); the five roman-numbered stages lines 58-62 (SHA-256 f24e295168de51cb4e86fd52bee313242a289953a00626a4e9dc2bda526b48c1) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the five stages (i) to (v) lines 58-62 (SHA-256 f24e295168de51cb4e86fd52bee313242a289953a00626a4e9dc2bda526b48c1)",
+          "explanation": "Five stages are listed: subsistence production at the earliest time, exchange by barter, exchange through commodity money, the introduction of notes and coins as a medium of exchange, and improvement in aids to trade. Each stage is one line with no explanation, no dated period and no place - the block contains no digits and no century or era wording - so the sequence cannot be checked from this text alone. The outline calls the section 'History of Commerce in Nigeria /West Africa' while the body heading drops the place name."
+        },
+        {
+          "locator": "Whole-extract searches: 'barter' at line 59; 'commodity money' at line 60; 'subsisten' at line 58; 'medium of exchange' at lines 61 and 965; 'aids to trade' at lines 62, 85, 91, 92, 105, 107 and 182",
+          "explanation": "Barter, commodity money and subsistence each appear once, inside this list, and are never defined in the document. 'Medium of exchange' recurs at line 965 only as an option of a Week Nine multiple-choice question on the functions of money. 'Aids to trade' is used as the final stage here and taught as a division at lines 91-94, so the historical claim leans on a term the same week leaves unexplained. The dated narrative this block needs is owned by COM-FACT-T1-HISTORY-NIGERIA; no period, people or place is supplied here."
+        },
+        {
+          "locator": "the FACTORS THAT DELAYED THE DEVELOPMENT OF COMMERCE  IN NIGERIA/ WEST AFRICA block lines 68-77 (SHA-256 9503db42af76cb880f2741c53771fc87e68e1e897404cb815223874f69c12c9e); the FACTORS THAT HAVE CONTRIBUTED TO THE GROWTH OF COMMERCE IN NIGERIA/WEST AFRICA block lines 79-86 (SHA-256 af6486a06a43079209c8af6cdb04c66f6b3d050c0423b6483dafc9497122b65f)",
+          "explanation": "The two Nigeria and West Africa factor lists are the second half of the history the outline promises and are indexed separately as COV-COM-T1-W01-DELAYED-FACTORS and COV-COM-T1-W01-GROWTH-FACTORS; both carry the same dated-fact dependency."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-DELAYED-FACTORS",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "Factors that delayed the development of commerce in Nigeria and West Africa",
+      "objective_locator": "the FACTORS THAT DELAYED THE DEVELOPMENT OF COMMERCE  IN NIGERIA/ WEST AFRICA block lines 68-77 (SHA-256 9503db42af76cb880f2741c53771fc87e68e1e897404cb815223874f69c12c9e); the nine numbered factors lines 69-77 (SHA-256 b21409bfa162dc90d58cb03f961da57d2ef5c6f8a640dcbae525cbfe468d7cb8) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the nine factors lines 69-77 (SHA-256 b21409bfa162dc90d58cb03f961da57d2ef5c6f8a640dcbae525cbfe468d7cb8)",
+          "explanation": "Nine factors are listed as bare noun phrases: political instability, low savings, absence of developed markets, poor communication system, illiteracy, inadequate capital, low level of technology, inadequate or poor infrastructural facilities, and low national income. None is explained, dated, illustrated or attributed, and none is linked to a specific Nigerian or West African period. The heading prints 'NIGERIA/ WEST AFRICA' with a space after the slash and a double space before 'IN'; line 79 prints 'NIGERIA/WEST AFRICA' with no spaces, so the same phrase is written two ways in adjacent headings (COMMERCE-T1-W01-SOURCE-DEFECTS, defect 3)."
+        },
+        {
+          "locator": "the CONTENT outline lines 41-44 (SHA-256 ef4c47defeb3f6680086a9fe61944fea9e329a67f1b63c851d9f603a4166831c)",
+          "explanation": "This block is not named by the CONTENT outline at lines 42-44, which lists only importance, history and divisions; the body teaches it as its own section. It is indexed because it is taught, not because the scheme asked for it."
+        },
+        {
+          "locator": "second EVALUATION question 1 line 97 (SHA-256 afa201509fd0d2023e1c1598ba00941f38a258fd226ab6eff9b3dd33d829fa10); whole-extract search: 'Nigeria' occurs at 11 lines lines",
+          "explanation": "No EVALUATION, WEEKEND ASSIGNMENT, THEORY or GENERAL EVALUATION item in Week 1 asks about the delaying factors, so the nine lines are taught and never checked. The dated Nigeria and West Africa claims are owned by COM-FACT-T1-HISTORY-NIGERIA and the current-affairs examples by COM-FACT-T1-NIGERIA-EXAMPLES; teaching must stay neutral on contested historical and political questions."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-GROWTH-FACTORS",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "Factors that have contributed to the growth of commerce in Nigeria and West Africa",
+      "objective_locator": "the FACTORS THAT HAVE CONTRIBUTED TO THE GROWTH OF COMMERCE IN NIGERIA/WEST AFRICA block lines 79-86 (SHA-256 af6486a06a43079209c8af6cdb04c66f6b3d050c0423b6483dafc9497122b65f); the seven numbered factors lines 80-86 (SHA-256 50d9bb00670bf6a866ce0391bf52d1e55286b33119ecac2face2e482e17b5491) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the seven factors lines 80-86 (SHA-256 50d9bb00670bf6a866ce0391bf52d1e55286b33119ecac2face2e482e17b5491)",
+          "explanation": "Seven factors are listed: modern techniques of production, political stability, development of financial institutions, efficient means of transportation and communication, availability of warehousing facilities, improvements in aids to trade 'e.g. Insurance, Advertising etc', and advancement in levels of education or literacy. The mirror image of the delaying list (stability against instability, literacy against illiteracy) is present but never drawn, and no factor is explained, dated or evidenced."
+        },
+        {
+          "locator": "factors 4 to 6 lines 83-85 (SHA-256 d3e7907c80c7f60ebee3dbf9d43e85f9b525324b7f3b287e9437d76158906cd3); SS1-SRC-d96373071a7e word-extractor 1.0.4 getBody() lines 83-85 name transportation and communication, warehousing, and aids to trade including insurance and advertising; whole-extract search: 'transport' occurs at 14 lines lines, 'warehous' at 46 lines lines, 'advertis' at 21 lines lines",
+          "explanation": "Three of the seven growth factors name subjects the term teaches elsewhere or not at all: warehousing is Week Ten (its importance heading at line 991), transportation is never taught as a topic in this 1st Term source, and advertising appears only inside other weeks' retailing and wholesaling points and inside option lists. The week credits growth to services it does not explain, which is the same gap the THEORY and GENERAL EVALUATION blocks run into."
+        },
+        {
+          "locator": "the CONTENT outline lines 41-44 (SHA-256 ef4c47defeb3f6680086a9fe61944fea9e329a67f1b63c851d9f603a4166831c)",
+          "explanation": "Like the delaying factors, this block is absent from the three-item CONTENT outline. PARTIAL: taught as a list, unexplained, undeliverable, and dependent on dated factual clearance."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-DIVISIONS",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "Divisions of commerce: trade and aids to trade, with the aids subdivided",
+      "objective_locator": "the DIVISIONS OF COMMERCE block lines 88-94 (SHA-256 bc14d17c53079bd8639ccc03463d8ff3d25674539bd11acc1065579139450ea4); lines 89-94 lines 89-94 (SHA-256 74f1efde19f1a87f62fd0b3f08384b285a185aa1786ff975c3e5c20bcddce939) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the two-division statement lines 89-91 (SHA-256 d46e85d10f9d5064f3ffbd30ccc114663e2f2f26fed58e5735873bef5fc687af); the subdivision of the aids lines 92-94 (SHA-256 b8d2b19ef901adecf84f0d5555e9f892c11a75bdb2f69e6cf13e97725ab92be1)",
+          "explanation": "Line 89 states that commerce groups into two main branches or divisions, lines 90-91 name them Trade and Aids to trade, and lines 92-94 subdivide the aids into seven items lettered (a) to (g): Transport, Insurance, Banking and Finance, Advertising, Warehousing, Communication and Tourism. No aid is defined or explained and neither division is. Line 92 is an orphan paragraph that begins with a tab and carries no number, and the lettered list runs across two lines with only item (a) tab-separated from its letter, so a line-based reader sees a numbered pair, a stray sentence and two letter lines (COMMERCE-T1-W01-HEADING-AMBIGUITY)."
+        },
+        {
+          "locator": "WEEKEND ASSIGNMENT question 1 line 105 (SHA-256 e2d0949c01b3fb9a0ab1199a8a467ac29111558ea49ab93ee28a68469a4b0660); second EVALUATION question 2 line 98 (SHA-256 6f6880e154ecf916537157bcb141c3843fd5d21deed207f469b21252d03cadb9)",
+          "explanation": "The divisions are the only Week 1 teaching that later assessment items quote directly. The relative importance asked at line 98 is stated nowhere: 'relative importance' occurs at line 98 in the whole extract. The seven aids are also the pool that Weekend question 3 and THEORY question 1 draw on; 'aids to trade' occurs at lines 62, 85, 91, 92, 105, 107 and 182."
+        },
+        {
+          "locator": "outline item 3 line 44 (SHA-256 8f92f603198ed4fa1438e37d68c5b52cec333e56d4c1d71eee6b223609088214)",
+          "explanation": "The outline names 'Divisions of Commerce', so this is the one body section outside the definition and the functions that the scheme also asks for by name. PARTIAL: enumerated in the source, never explained, not deliverable as a lesson."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/commerce.json lessons[] length 0; delivery_corrections[] length 0; importer not run, so SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+          "explanation": "Nothing in this week is deliverable: the package holds no lesson, so the objective has no lesson to point at, and the importer has not been run over the .doc, so no parsed row exists for this source either. PARTIAL or UNRESOLVED records what the source contains, not what can be taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-EVALUATION-1",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The first EVALUATION of Week 1: two questions on the definition and the functions",
+      "objective_locator": "the first EVALUATION block lines 64-66 (SHA-256 39689b4c09a1ec53462577b45582624fb5b091b155a8a61ab9a3c7c2902a1e61); questions 1-2 lines 65-66 (SHA-256 bdda776f47a00739e761c5fc9994eb53f5cc29d672726a0c8e511d933218be2c) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the first EVALUATION block lines 64-66 (SHA-256 39689b4c09a1ec53462577b45582624fb5b091b155a8a61ab9a3c7c2902a1e61); question 1 line 65 (SHA-256 fbf0da554152ba9962fe58d7a180f66c50f75d1304ab59283ea2ae8b9bc98c6f); question 2 line 66 (SHA-256 aed19bad8311b2e003b103b58359edba177360292c20d8e01c175af4bfe0710c); SS1-SRC-d96373071a7e word-extractor 1.0.4 getBody() line 66 reads 'State four functions of Commerce .'",
+          "explanation": "Two questions, both drawn from the week's own teaching: question 1 asks for the definition at line 47 and question 2 for four of the six functions at lines 50-55. The block has no answer key, no worked answer, no marking and no marks, so it cannot be assessed as delivered. UNRESOLVED as an assessment objective: the questions are present, the answers and marking are not, and none is invented here."
+        },
+        {
+          "locator": "the heading at line 64 line 64 (SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da) and the heading at line 96 line 96 (SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da)",
+          "explanation": "Both headings are the identical string 'EVALUATION' with no trailing space, so they carry the same SHA-256 and neither is a unique anchor for a classify_marker or attach_stranded_label rule. Recorded in COMMERCE-T1-W01-HEADING-AMBIGUITY; the two blocks are indexed separately so a rule worker can address them by line rather than by heading text."
+        },
+        {
+          "locator": "Whole-extract search for 'answer', 'marking', 'marks', 'score', 'rubric' inside lines 39-121 returns nowhere; the only such line in the whole 1064-line extract is line 746",
+          "explanation": "No key or marking exists for this block or for any other Week 1 block. The single term-wide occurrence of those words is line 746, inside Week Eight's explanation of branding, where 'marks' and 'trade mark' name product features, not awarding. The keyed supplement COM-LES-T1-W01-KEY-ASSESSMENT is authored only after the teacher decides which blocks need keys (COMMERCE-T1-W01-ASSESSMENT-NO-KEY)."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-EVALUATION-2",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The second EVALUATION of Week 1: essentiality and the principal divisions",
+      "objective_locator": "the second EVALUATION block lines 96-98 (SHA-256 b2c511354a5f934ad44b2f9b6ffd4f693119ed18907e4fcab22a9f7e25f5d522); questions 1-2 lines 97-98 (SHA-256 787ecf778f515e2f1dae1a6fe3d48588c33e22a48ccfcb139c80d3592c5f28ea) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the second EVALUATION block lines 96-98 (SHA-256 b2c511354a5f934ad44b2f9b6ffd4f693119ed18907e4fcab22a9f7e25f5d522); question 1 line 97 (SHA-256 afa201509fd0d2023e1c1598ba00941f38a258fd226ab6eff9b3dd33d829fa10); question 2 line 98 (SHA-256 6f6880e154ecf916537157bcb141c3843fd5d21deed207f469b21252d03cadb9)",
+          "explanation": "Question 1 asks why commerce is essential to modern society, which maps onto the six importance points at lines 50-55; question 2 asks for the principal divisions and then for 'an idea of the relative importance of each division'. The divisions are at lines 89-94; the ranking is stated nowhere in the document. No key, marking or marks exist for either question. UNRESOLVED: one clause is answerable from taught lines, one is not answerable from this source at all, and neither is answered here."
+        },
+        {
+          "locator": "Whole-extract search: 'relative importance' occurs at line 98",
+          "explanation": "The phrase the question turns on appears only inside the question. A later key needs the teacher's ranking of trade against aids to trade; line 89 calls them 'two main branches or divisions' without weighting them, so no ranking is derivable from the source."
+        },
+        {
+          "locator": "WEEKEND ASSIGNMENT question 1 line 105 (SHA-256 e2d0949c01b3fb9a0ab1199a8a467ac29111558ea49ab93ee28a68469a4b0660); question 4 line 109 (SHA-256 6b35595dcb9b4280baa56ebbaf94bc008981ed8def6a38971d5bfcc3eeb6a35f)",
+          "explanation": "The same divisions are tested twice more within the week, as a four-option recall and as a definition-matching item, so the divisions carry three assessment items and no explanation. No option is marked correct here."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-READING-ASSIGNMENT",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The READING ASSIGNMENT: two external textbook readings set for the week",
+      "objective_locator": "the READING ASSIGNMENT block lines 100-102 (SHA-256 66f0f7a68f43db2864a9a188174b92517decf1ce81ced645435d2b162552d2a7); items 1-2 lines 101-102 (SHA-256 868c5b34ec3f89c11d7f7b73585360bfd0d5c3f84789dad78b95235e0180e388) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the READING ASSIGNMENT block lines 100-102 (SHA-256 66f0f7a68f43db2864a9a188174b92517decf1ce81ced645435d2b162552d2a7); item 1 line 101 (SHA-256 a1902611dcf482bdf973291653a15d17d51fe1d6e1e741b1452da1fd5224eba4); item 2 line 102 (SHA-256 9b90b2f42c8564110e721bb7240491e887e267e019212757057daf2c42eab430)",
+          "explanation": "Two readings are set: 'Essential Commerce for SSS by O.A. Longe Page 1-8' and 'Comprehensive Commerce for SSS by J.U Anyaele Page 29-36'. Neither book is in the archive, no page of either is quoted in the source, and the unlabelled opening block (lines 1-36) carries no reference-book list, so the assignment cannot be verified against this document. UNRESOLVED: the citation is complete as a citation and the assigned work is absent."
+        },
+        {
+          "locator": "Whole-extract search: 'Longe' occurs at 8 lines lines and 'Anyaele' at 5 lines lines across the ten READING ASSIGNMENT blocks listed in COM-INV-T1 (100-102, 163-165, 232-234, 303-305, 437-439, 544-545, 681-682, 827-829, 958-960, 1042-1044)",
+          "explanation": "The two textbooks are re-cited through the whole term, so they are its standing source of taught content rather than a one-off reference. Whether pages 1-8 of Longe and pages 29-36 of Anyaele may be reproduced, summarised or quoted is a rights question recorded in COMMERCE-T1-W01-READING-RIGHTS; a citation is not a reuse permission."
+        },
+        {
+          "locator": "the subject and class line line 20 (SHA-256 ec8525bc2d261b41ce379347f3743cc74990955a6862adb05d5068544795a4e8); the unlabelled opening block lines 1-36 (SHA-256 d8658c5c643ff3336b8b240a9c89a6abbdd1a45ba35f2a423ff25ef45cdad092)",
+          "explanation": "The scheme block and the opening lines name no textbook edition, publisher or ISBN, so the edition the page numbers refer to is not identifiable from the document. A teacher decision is required before any lesson quotes from these pages; nothing is quoted here."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-WEEKEND-ASSIGNMENT",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The WEEKEND ASSIGNMENT: five multiple-choice questions",
+      "objective_locator": "the WEEKEND ASSIGNMENT block lines 104-110 (SHA-256 72d0834d8f4ad8f1dffde34ff8a6f1c34a098350fcff059bbc8067f8eee43911); questions 1-5 lines 105-110 (SHA-256 6cadbbb9141713c74aac8e99b7013f1d3df872574817fc121e1715806c1fbd70) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the WEEKEND ASSIGNMENT block lines 104-110 (SHA-256 72d0834d8f4ad8f1dffde34ff8a6f1c34a098350fcff059bbc8067f8eee43911); question 1 line 105 (SHA-256 e2d0949c01b3fb9a0ab1199a8a467ac29111558ea49ab93ee28a68469a4b0660); question 2 line 106 (SHA-256 a625f13fced5b3e058c5f9ee048cc1fa6e06d0140f133ab6a406f0a18c442eb3); question 3, whose option (d) is wrapped onto line 108 lines 107-108 (SHA-256 d5632777e9561f82ac46dface82093420d71aefbda8c02bf4df071a530d2f2f4); question 4 line 109 (SHA-256 6b35595dcb9b4280baa56ebbaf94bc008981ed8def6a38971d5bfcc3eeb6a35f); question 5 line 110 (SHA-256 862ef5f63cc1120b089c108506b99a04959ff79673b512b3dfb8198f635bd3dd)",
+          "explanation": "Five objective questions printed as running text with lettered options and no table. Question 1 asks the main divisions (taught at 89-91), question 2 which option is not a benefit (against the six functions at 50-55), question 3 which option is not an aid to trade (against the seven at 93-94), question 4 what is defined as trade and aid to trade, and question 5 which option is not a basic want of man. No option is marked correct anywhere in the document, so the block has no deliverable key."
+        },
+        {
+          "locator": "question 5 line 110 (SHA-256 862ef5f63cc1120b089c108506b99a04959ff79673b512b3dfb8198f635bd3dd); SS1-SRC-d96373071a7e word-extractor 1.0.4 getBody() line 110 lists Transport, Food, Water and Clothing; whole-extract search: 'basic want' and 'wants of man' occur at line 110; 'want' occurs at 6 lines lines",
+          "explanation": "Question 5 turns on a classification of human wants that Week 1 never teaches: 'basic want' appears only inside this question, and the week's only use of wants is the definition at line 47. It is recorded as an item beyond the taught scope in COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS; no answer is inferred from the option list."
+        },
+        {
+          "locator": "question 3 across two lines lines 107-108 (SHA-256 d5632777e9561f82ac46dface82093420d71aefbda8c02bf4df071a530d2f2f4)",
+          "explanation": "Question 3 is the only item whose options break across lines: (a) to (c) end at line 107 and '(d) Banking' stands alone at line 108 with no number and no leading tab. A per-line reader sees a three-option question followed by an orphan fragment, which is recorded in COMMERCE-T1-W01-HEADING-AMBIGUITY for whoever writes the parser rules. The wording stays as printed."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-THEORY",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The THEORY block: two structured questions on ancillary services and transport",
+      "objective_locator": "the THEORY block lines 112-114 (SHA-256 3a9f34003d3c890cb7f21a83e66abbdb113d781b89fde9e7550113edd420834a); questions 1-2 lines 113-114 (SHA-256 9f6234440394cd194403386e84cb7bbbabf0b3ac4e7f7ea7993dcce393aa75bb) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the THEORY block lines 112-114 (SHA-256 3a9f34003d3c890cb7f21a83e66abbdb113d781b89fde9e7550113edd420834a); question 1 line 113 (SHA-256 481875116e67b70c4547902671ee06a40c24899be95421d077ba13294c63856f); question 2 line 114 (SHA-256 0b510266c2aea6ba5f1c5ce2cf096eff0497ebaf989a0e1befde6984673494e6); SS1-SRC-d96373071a7e word-extractor 1.0.4 getBody() line 113 reads 'State three ancillary services to trade .'",
+          "explanation": "Two essay questions with no key, no marking and no mark allocation. Question 1 asks for three ancillary services to trade and question 2 for three ways by which transport aids trade. UNRESOLVED for the whole block: neither term is taught in the week and no answer exists in the document."
+        },
+        {
+          "locator": "Whole-extract search: 'ancillary' occurs at lines 113 and 118; the aids to trade list lines 91-94 (SHA-256 2ca159bf35b69b7391018402cb2573af045810cfecf3c4bf92820fc70e1737ef)",
+          "explanation": "'Ancillary services to trade' is used only in this question and in GENERAL EVALUATION question 2 at line 118. The week's own term is 'Aids to trade' (lines 91-94), which names seven items and never calls them ancillary and never explains any of them. Whether the two phrases mean the same list is a teacher decision recorded in COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS; the count mismatch (three asked, seven named, none explained) is noted rather than resolved."
+        },
+        {
+          "locator": "Whole-extract search: 'transport' occurs at 14 lines lines: lines 83, 93, 105, 107, 110, 114, 121, 149, 203, 226, 416, 873, 966 and 1027",
+          "explanation": "Question 2 asks how transport aids trade. In this 1st Term source transport is named in the aids list (93), in the growth factors (83), in assessment options (105, 107, 110) and in later weeks' points about tertiary production, cost and warehouse siting (203, 226, 416, 873, 966, 1027); no block in the term teaches what transport does for trade, and no all-uppercase TRANSPORT heading occurs anywhere in the extract. The 2nd Term Commerce source is the one registered as teaching transportation (see its header_evidence for SS1-SRC-0ccdf9dd3768), and that content is not imported into Week 1 here."
+        }
+      ]
+    },
+    {
+      "id": "COV-COM-T1-W01-GENERAL-EVALUATION",
+      "source_id": "SS1-SRC-d96373071a7e",
+      "objective": "The GENERAL EVALUATION: five un-numbered end-of-week structured questions",
+      "objective_locator": "the GENERAL EVALUATION block lines 116-121 (SHA-256 9c8dff3b9815bc5dd94131c8d794435aa05a11a5ddc9bfb5415043e44e0c2d09); the five questions lines 117-121 (SHA-256 a9d58e13cc08166f9ec8af1d70c68401c5f70249c3f34c61e84628f96ab8d495) of Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "the GENERAL EVALUATION block lines 116-121 (SHA-256 9c8dff3b9815bc5dd94131c8d794435aa05a11a5ddc9bfb5415043e44e0c2d09); question 1 line 117 (SHA-256 4362a5fdd3fd12a306b0586d3ec3f83b1d7f6e2b89d2344f887c106c5d4d54a1); question 2 line 118 (SHA-256 fec163ac41c06210c585c672e360d919ab9ca71d76d620c2c987d97129ee4970); question 3 line 119 (SHA-256 38300e34eccebb820a25600b1b3da3bdb2d36a2beca4004ddd5231a18345a340); question 4 line 120 (SHA-256 1ad0885841bf007983b1dab4a7b88ca898e95941b9546cc88175f0743b2e5d2c); question 5 line 121 (SHA-256 c9e0aeefefbab81a56f25bbf10943bbc56dfd7b52a4701a201946946e6a70f47)",
+          "explanation": "Five un-numbered essay questions: the meaning of commerce, the importance of any five ancillary services to trade, five advantages of advertising, five ways warehousing is useful to businessmen, and the ways transport aids trade. Only question 1 is answered by Week 1's own teaching at line 47. The block carries no key, no marking and no marks, so it is UNRESOLVED as a whole, and because its items reach past the week it is also a scope question for the teacher."
+        },
+        {
+          "locator": "question 2 line 118 (SHA-256 fec163ac41c06210c585c672e360d919ab9ca71d76d620c2c987d97129ee4970); question 3 line 119 (SHA-256 38300e34eccebb820a25600b1b3da3bdb2d36a2beca4004ddd5231a18345a340); whole-extract searches: 'ancillary' at lines 113 and 118, 'advertis' at 21 lines lines with no 'ADVANTAGES OF ADVERTISING' heading anywhere in the term",
+          "explanation": "Questions 2 and 3 repeat the ancillary-services gap of THEORY question 1 and ask for advantages of advertising, which no block in this term teaches: advertising appears inside retailing and wholesaling points in Weeks Five to Nine and inside option lists, always as something a business does, never as a heading with advantages enumerated. Neither answer is invented here."
+        },
+        {
+          "locator": "question 4 line 120 (SHA-256 1ad0885841bf007983b1dab4a7b88ca898e95941b9546cc88175f0743b2e5d2c); Week Ten outline line 983 line 983 (SHA-256 1b2136fed961f0add1e29ceb580e2db8034149cc3d6493711cd45103eb245ee0); Week Ten heading line 991 line 991 (SHA-256 40e368fe6a5a64a7c4c8d4b0fb51e535fae893cae8cfc3dc9b530c587d4ccbcf); Week Ten EVALUATION line 1011 line 1011 (SHA-256 803146650c2995cc2b61af654c76fdf1a6bce2b8525d1570096644e1e91a3138); Week Ten heading line 1013 line 1013 (SHA-256 63bd51978d232989efa6d3f8317327f5c8abb83a40c3aac0e48401ddae07ce73)",
+          "explanation": "Question 4 asks how warehousing is useful to businessmen. The teaching for it is in Week Ten (lines 980-1063), whose outline and headings cover the importance of warehousing and the usefulness of a bonded warehouse, and whose EVALUATION at line 1011 asks for five importances. Week 1 names warehousing once as aid (e) at line 94 and once as a growth factor at line 84. A Week 1 general evaluation answered in Week 10 is a placement question for the teacher, recorded in COMMERCE-T1-W01-ASSESSMENT-SCOPE; no answer is moved across weeks here."
+        },
+        {
+          "locator": "question 5 line 121 (SHA-256 c9e0aeefefbab81a56f25bbf10943bbc56dfd7b52a4701a201946946e6a70f47); THEORY question 2 line 114 (SHA-256 0b510266c2aea6ba5f1c5ce2cf096eff0497ebaf989a0e1befde6984673494e6)",
+          "explanation": "Question 5 repeats THEORY question 2 almost word for word ('In what ways does transport aid trade.' against 'Mention three ways by which transport aids trade.'), so the same untaught content is asked twice inside one week, once with a count and once without. Both stay unanswered."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "COMMERCE-ALIAS-APPROVAL",
@@ -125,6 +454,158 @@
         "SS1-SRC-d436db5f412d"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 is indexed at objective level but is not deliverable. 14 coverage entries were written for Week One lines 39-121 (SHA-256 80762112630c0de4a9d919f58346945accdc800fa04a774d338059a0d74a78c1): 7 PARTIAL (meaning, functions, history stages, both factor lists and the divisions are taught in the source) and 7 UNRESOLVED (scope, both EVALUATION blocks, the READING ASSIGNMENT, the WEEKEND ASSIGNMENT, THEORY and GENERAL EVALUATION). commerce.json still has lessons[] length 0, delivery_corrections[] length 0 and assets[] length 0, the importer has not been run, and SS1-SRC-d96373071a7e has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json, so no delivery row exists for any objective. The two other Commerce sources in the package (2nd Term SS1-SRC-0ccdf9dd3768 and 3rd Term SS1-SRC-d436db5f412d) still have no coverage at all.",
+      "required_action": "Run the importer for the 1st Term .doc, then author and approve lessons for the objectives that are actually taught, or replace the teaching. Keep the package PENDING until owner approval. An indexed week is not a certified or fully taught week, and indexing Week 1 does not cover the 2nd or 3rd Term sources.",
+      "affected_ids": [
+        "COV-COM-T1-W01-SCHEME-1",
+        "COV-COM-T1-W01-MEANING",
+        "COV-COM-T1-W01-FUNCTIONS",
+        "COV-COM-T1-W01-SCOPE",
+        "COV-COM-T1-W01-HISTORY",
+        "COV-COM-T1-W01-DELAYED-FACTORS",
+        "COV-COM-T1-W01-GROWTH-FACTORS",
+        "COV-COM-T1-W01-DIVISIONS",
+        "COV-COM-T1-W01-EVALUATION-1",
+        "COV-COM-T1-W01-EVALUATION-2",
+        "COV-COM-T1-W01-READING-ASSIGNMENT",
+        "COV-COM-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-COM-T1-W01-THEORY",
+        "COV-COM-T1-W01-GENERAL-EVALUATION",
+        "COM-WK-T1-W01",
+        "COM-TEST-PACKAGE",
+        "COM-FACT-CONTENT-APPROVAL"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-SCOPE-GAP",
+      "kind": "CONTENT",
+      "detail": "The scheme row and the week's topic line both promise the scope of commerce and the body never states it. 'scope' occurs at lines 25, 40 and 323 in the whole 1,064-line extract: the scheme row (line 25), this week's topic line (line 40) and Week Four's GENERAL EVALUATION question 'With the aid of a diagram, illustrate the scope of commerce' (line 323). Nothing in Week One bounds or lists the scope, and the only classification picture in the term is the drawn TRADE chart at lines 341-351 in Week Five, which the extraction flattens and which COM-VIS-T1-W05-DIAGRAM owns.",
+      "required_action": "Teacher states what the scope of commerce is to be taught in Week 1, or removes the word from the week objective; COM-LES-T1-W01-SCOPE then authors the bounded supplement from that decision. Do not present the divisions list (89-94) or the definition (47) as the scope without that decision, and do not borrow the Week Five chart as Week 1 content.",
+      "affected_ids": [
+        "COV-COM-T1-W01-SCHEME-1",
+        "COV-COM-T1-W01-SCOPE",
+        "COM-LES-T1-W01-SCOPE",
+        "COM-FACT-T1-W01-SCOPE",
+        "COM-VIS-T1-W05-DIAGRAM"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-OUTLINE-GAP",
+      "kind": "CONTENT",
+      "detail": "The CONTENT outline (the CONTENT outline lines 41-44) names three sub-topics - The Importance of Commerce, History of Commerce in Nigeria /West Africa, Divisions of Commerce - while the body prints six headed sections: definition (46-47), importance/functions (49-55), history stages (57-62), delayed factors (68-77), growth factors (79-86) and divisions (88-94). Three taught sections are not in the outline, and the outline's own first word, 'Importance', is matched by a heading that renames it 'THE IMPORTANCE (FUNCTIONS) OF COMMERCE'.",
+      "required_action": "Teacher records whether the outline is the authoritative week content list (in which case the three extra sections are out of scope for Week 1) or a partial index (in which case it should be extended when the lesson is written). Source lines stay unchanged; the extra sections are indexed as taught either way.",
+      "affected_ids": [
+        "COV-COM-T1-W01-DELAYED-FACTORS",
+        "COV-COM-T1-W01-GROWTH-FACTORS",
+        "COV-COM-T1-W01-MEANING",
+        "COV-COM-T1-W01-SCHEME-1",
+        "COM-PRES-T1-SOURCE-WORDING"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "COMMERCE-T1-W01-HISTORY-FACTS",
+      "kind": "FACT",
+      "detail": "Week 1 teaches a dated-sounding historical narrative with no dates: five development stages (the STAGES IN THE HISTORY AND DEVELOPMENT OF COMMERCE block lines 57-62) containing no digits and no century or era wording, nine delaying factors and seven growth factors for Nigeria and West Africa, all as bare unexplained noun phrases. 'barter' (line 59), 'commodity money' (line 60) and 'subsisten' (line 58) each occur only inside the stage list and are never defined in the document.",
+      "required_action": "COM-FACT-T1-HISTORY-NIGERIA must supply dated scholarly or primary sources for each stage and each factor claim, keep the source wording distinct from the corrected statement, and stay neutral on contested historical and political questions. Until then the lines are quoted, not taught as settled fact; no period, people, place or cause is invented.",
+      "affected_ids": [
+        "COV-COM-T1-W01-HISTORY",
+        "COV-COM-T1-W01-DELAYED-FACTORS",
+        "COV-COM-T1-W01-GROWTH-FACTORS",
+        "COM-FACT-T1-HISTORY-NIGERIA"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "Week 1 sets five assessment blocks carrying sixteen questions - EVALUATION (the first EVALUATION block lines 64-66), EVALUATION (the second EVALUATION block lines 96-98), WEEKEND ASSIGNMENT with five multiple-choice items (the WEEKEND ASSIGNMENT block lines 104-110), THEORY with two questions (the THEORY block lines 112-114) and GENERAL EVALUATION with five un-numbered questions (the GENERAL EVALUATION block lines 116-121) - plus a READING ASSIGNMENT of two textbook pages (the READING ASSIGNMENT block lines 100-102). No answer key, worked answer, marking scheme, mark allocation, score or rubric exists anywhere in the document; the words answer, marking, marks, score and rubric do not occur in lines 39-121 at all.",
+      "required_action": "Teacher decides which blocks need a key and supplies or approves it; COM-LES-T1-W01-KEY-ASSESSMENT then authors the keyed supplement with complete answers and criterion marks that sum exactly. No option letter and no ranking is inferred or invented here.",
+      "affected_ids": [
+        "COV-COM-T1-W01-EVALUATION-1",
+        "COV-COM-T1-W01-EVALUATION-2",
+        "COV-COM-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-COM-T1-W01-THEORY",
+        "COV-COM-T1-W01-GENERAL-EVALUATION",
+        "COM-LES-T1-W01-KEY-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS",
+      "kind": "CONTENT",
+      "detail": "Six of the sixteen Week 1 questions turn on content the week does not teach: WEEKEND question 5 on a basic want of man ('basic want' occurs only at line 110); THEORY question 1 and GENERAL EVALUATION question 2 on 'ancillary services to trade' (the term occurs only at lines 113 and 118, while the week's own phrase is 'aids to trade', seven items named and none explained); THEORY question 2 and GENERAL EVALUATION question 5 on how transport aids trade ('transport' occurs at 14 lines lines in the term and never under a teaching heading); and GENERAL EVALUATION question 3 on five advantages of advertising ('advertis' occurs at 21 lines lines, none of them an advantages heading). GENERAL EVALUATION question 4, warehousing's usefulness to businessmen, is taught in Week Ten (983, 991, 1011, 1013), not Week One.",
+      "required_action": "Teacher decides whether these items stay in Week 1 (in which case COM-LES-T1-W01-ANCILLARY-SERVICES authors the missing teaching, clearly labelled as a supplement) or move to the week that teaches the content. Do not answer a question from a topic the source never teaches and do not import the 2nd Term transportation or advertising teaching into this week.",
+      "affected_ids": [
+        "COV-COM-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-COM-T1-W01-THEORY",
+        "COV-COM-T1-W01-GENERAL-EVALUATION",
+        "COV-COM-T1-W01-DIVISIONS",
+        "COM-LES-T1-W01-ANCILLARY-SERVICES",
+        "COM-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-ASSESSMENT-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The GENERAL EVALUATION block is asked in Week 1 but reads as a term-end paper: four of its five questions are answered in other weeks or nowhere in this source. Week 1's own two EVALUATION blocks, by contrast, are answerable from the week's teaching. Whether the block tests the week or the term changes what a Week 1 lesson must contain, and the source does not settle it; the same pattern repeats at the end of every week in the term (178-183, 247-252, 320-325, 453-458, 559-564, 696-701, 847-852, 973-978, 1058-1063).",
+      "required_action": "Teacher records one disposition for the Week 1 GENERAL EVALUATION (keep as week work, re-scope it as term work, or move the out-of-week questions) so the lesson task can bind to it. Recorded in COM-FACT-T1-W01-SCOPE together with the scope and ancillary-services questions.",
+      "affected_ids": [
+        "COV-COM-T1-W01-GENERAL-EVALUATION",
+        "COV-COM-T1-W01-EVALUATION-1",
+        "COV-COM-T1-W01-EVALUATION-2",
+        "COM-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-READING-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "The READING ASSIGNMENT sets pages 1-8 of O.A. Longe's Essential Commerce for SSS and pages 29-36 of J.U Anyaele's Comprehensive Commerce for SSS (the READING ASSIGNMENT block lines 100-102 (SHA-256 66f0f7a68f43db2864a9a188174b92517decf1ce81ced645435d2b162552d2a7)). Neither book is in the archive, no edition, publisher or ISBN appears anywhere in the document, and the source's own reference list is empty (the unlabelled opening block lines 1-36 holds a scheme of work and nothing else). The teaching in this week is plausibly a paraphrase of those pages, but that cannot be checked from the supplied material.",
+      "required_action": "Owner decides whether the cited pages may be obtained and quoted, summarised or only cited. Until then no lesson reproduces, paraphrases or claims to verify textbook page content, and provenance for any lesson drawn from them stays reuse_status PENDING. A citation alone is not reuse permission.",
+      "affected_ids": [
+        "COV-COM-T1-W01-READING-ASSIGNMENT",
+        "COMMERCE-ALIAS-APPROVAL",
+        "COM-FACT-CONTENT-APPROVAL"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T1-W01-HEADING-AMBIGUITY",
+      "kind": "CONTENT",
+      "detail": "Two anchor hazards inside the week. First, line 64 line 64 (SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da) and line 96 line 96 (SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da) are the identical string 'EVALUATION' and hash the same, so a heading-text anchor selects two places; the term also spells its assessment headings inconsistently (EVALUATION / EVALUATION QUESTION / EVALUATION QUESTIONS, GENERAL EVALUATION / GENERAL EVALUATION QUESTIONS, WEEKEND ASSIGNMENT / WEEKEND ASSINGNMENT / WEEKEND ASSIGMENT), which COM-INV-T1 records as needing case-insensitive matching rather than exact strings. Second, line 92 line 92 (SHA-256 50db20509407217744fac3a6ffc9ae232e561866c0c4429bd082fbffe96bdb2f) is an un-numbered paragraph beginning with a tab, lines 93-94 lines 93-94 (SHA-256 0d957bc34b93c765d9e280aee8a7ba304e3e6eedbd6a46de6f4ab3f9d849a9aa) carry a lettered list split across two lines with only item (a) tab-separated, line 108 line 108 (SHA-256 40844dcf310b712c62aeb265a1e434115cba99ee4c8c3291d9482c03e7238f35) holds the wrapped option '(d) Banking' with no number, line 115 line 115 (SHA-256 36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068) is a single space, and the heading line 116 (SHA-256 5582c3b1073eb2151930e5a86dd09533f12d754a4a2ad4afdd8f1971107a7168) at line 116 prints 'GENERAL EVALUATION ' with a trailing space.",
+      "required_action": "The rule worker (COM-PRES-T1-LAYOUT, COM-MARK-T1-SCHEME-REVEXAM) must anchor on line position plus digest, never on these heading strings alone, and must keep the wrapped option with its question. No parser rule is added by this item and no source text is edited.",
+      "affected_ids": [
+        "COV-COM-T1-W01-EVALUATION-1",
+        "COV-COM-T1-W01-EVALUATION-2",
+        "COV-COM-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-COM-T1-W01-GENERAL-EVALUATION",
+        "COV-COM-T1-W01-DIVISIONS",
+        "COM-PRES-T1-LAYOUT",
+        "COM-MARK-T1-SCHEME-REVEXAM"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "COMMERCE-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Defects in the Week 1 teaching text, quoted and not corrected: (1) line 47 defines commerce as 'the study of production, distribution and exchange', naming a field of study rather than the activity; (2) lines 66 and 113 print a space before the final full stop ('functions of Commerce .', 'services to trade .'); (3) the heading at line 68 prints 'COMMERCE  IN NIGERIA/ WEST AFRICA' with a double space and a space after the slash while line 79 prints 'NIGERIA/WEST AFRICA'; (4) the outline line 43 prints 'Nigeria /West Africa' with the space before the slash, a third spelling of the same phrase; (5) the aids list at 93-94 is split across two lines and only '(a)' is followed by a tab, the rest by single spaces; (6) the five GENERAL EVALUATION questions at 117-121 carry no numbers while every other Week 1 item list is numbered; (7) line 121 ends a question with a full stop ('In what ways does transport aid trade.'); (8) line 110 asks about 'a basic want of man'. Line 115 holds a single space between the THEORY and GENERAL EVALUATION blocks.",
+      "required_action": "Teacher records one disposition per numbered defect; authored supplements must not copy the faulty wording, and COM-PRES-T1-SOURCE-WORDING keeps the source rows unchanged. Nothing here is silently normalised.",
+      "affected_ids": [
+        "COV-COM-T1-W01-MEANING",
+        "COV-COM-T1-W01-DIVISIONS",
+        "COV-COM-T1-W01-GENERAL-EVALUATION",
+        "COV-COM-T1-W01-DELAYED-FACTORS",
+        "COM-PRES-T1-SOURCE-WORDING"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
