@@ -24,23 +24,25 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "DP-INV-T1 appended the 1st Term inventory items (21) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 21 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (DP-INV-T1.md).",
-    "DP-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, week-indexing and visual items; the 3rd Term inventory remains unread. The document has no Week 1, scheme or revision/examination marker, recorded as source gaps. No lesson, coverage entry, rule, correction or asset was written."
+    "DP-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, week-indexing and visual items; the 3rd Term inventory remains unread. The document has no Week 1, scheme or revision/examination marker, recorded as source gaps. No lesson, coverage entry, rule, correction or asset was written.",
+    "DP-WK-T1-W01 (2026-11-05) indexed the 1st Term Week 1 body at objective level and appended 5 follow-up items (4 LESSON, 1 FACTUAL_DEPENDENCY). Counts below reflect items, not content completeness: no Week 1 coverage entry carries a lesson, and the week is indexed rather than certified or fully taught."
   ],
   "counts": {
-    "FACTUAL_DEPENDENCY": 4,
-    "SOURCE_MARKER_DISPOSITION": 1,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_PRESERVATION": 2,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 18,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 11
+    "FACTUAL_DEPENDENCY": 5,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_WEEK_INDEXING": 18,
+    "SOURCE_MARKER_DISPOSITION": 1,
+    "VISUAL_DISPOSITION": 11,
+    "SOURCE_PRESERVATION": 2,
+    "LESSON": 4
   },
   "status_counts": {
-    "BLOCKED": 1,
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 39
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 42,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -375,8 +377,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 87-281, SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed on 2026-11-05 by DP-WK-T1-W01: 18 coverage entries COV-DP-T1-W01-* over lines 87-281 (11 PARTIAL teaching sections, 7 UNRESOLVED assessment or promise sections, none SUPPORTED, every lesson_ids empty) and 12 open items DATA-PROCESSING-T1-W01-* in backend/src/db/ss1/subjects/data-processing.json, 8 of them blocking. Each locator is a mammoth 1.12.2 raw-text line or line range with a re-derivable SHA-256 over the trimmed lines. Cycle flow at 105 and 169 left to DP-VIS-T1-W01-CYCLE: no asset recovered, redrawn or committed. Follow-ups appended here: DP-LES-T1-W01-MANUAL-ELECTRONIC, DP-LES-T1-W01-PROPERTIES-CYCLE, DP-LES-T1-W01-KEY-ASSESSMENT, DP-LES-T1-W01-COMPUTER-TOOL, DP-FACT-T1-W01-TEACHER-DECISIONS. Evidence and method: docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md and DP-INV-T1.md. An indexed week is not a certified or fully taught week; testing deferred by owner.",
       "completion_condition": "Week 1 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -1692,6 +1694,206 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (DP-INV-T2), viewed directly: block 193 is a w:tbl of 5 rows x 1 column; its extracted text is 'Operating systems Common features Process management Interrupts Memory management File system Device drivers Networking Security I / O' with no separators. media/image9.png (165x244) is a four-layer diagram (User, Application, Operating System, Hardware, with arrows between layers); media/image10.png (20x20) is a small blue information icon. Provenance and licence of the picture are unknown; a citation or caption is not reuse permission.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "DP-LES-T1-W01-MANUAL-ELECTRONIC",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1 line 91 (the outcome that distinguishes manual from electronic data processing) inside lines 87-281 SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567, and lines 1721-1723 SHA-256 63b516f94bf65bfbaf5bacb5df50c3b824853cdd62ace306d7d7f895c459acdd under the Week Ten heading at line 1719 SHA-256 938b15103d8163e69ba4076ba43d8442efac214eb791b83ac0b0d5d87d938aef; objective COV-DP-T1-W01-OUTCOMES (UNRESOLVED)",
+      "objective": "Author the Week 1 lesson that teaches the manual versus electronic data processing distinction the outcome line promises, after DP-FACT-T1-W01-TEACHER-DECISIONS records the scheduling decision. The distinction is only named at line 91 in this week; the contrast itself is printed in Week Ten as Electronic methods and Non-Electronic methods, so either supply the Week 1 content from sources the teacher uses, or move the outcome line, on the recorded decision. Keep every practical step conceptual: no software installation, no device handling, no account, password or credential entry, and no claim about a specific product.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W01-MANUAL-ELECTRONIC.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1",
+        "DP-INV-T1",
+        "DP-WK-T1-W01",
+        "DP-FACT-T1-W01-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by DP-WK-T1-W01 (2026-11-05): COV-DP-T1-W01-OUTCOMES is UNRESOLVED with lesson_ids empty and DATA-PROCESSING-T1-W01-MANUAL-VS-ELECTRONIC is open and blocking. Evidence: manual appears on 3 lines of the 1,773-line extract (91, 321, 1723) and the phrase electronic data processing on line 91 only.",
+      "completion_condition": "A lesson in data-processing.json teaches the distinction with sources, body_sha256 over the UTF-8 body, provenance and PENDING content approval, is bound in lesson_ids of COV-DP-T1-W01-OUTCOMES and closes DATA-PROCESSING-T1-W01-MANUAL-VS-ELECTRONIC; no Week Ten wording is imported without the recorded decision, no step needs unsafe execution and no credential is collected."
+    },
+    {
+      "id": "DP-LES-T1-W01-PROPERTIES-CYCLE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1: properties lines 131-145 SHA-256 1542eb7f5175e12401da4a94c51ff34fb7ad9507604abd0083286d1370bec6a3 under the heading at line 129, cycle stage labels 153-163 SHA-256 1d3d851c3b731db144043b68a2562a8fefc35d6a9798e6bdbd2635a788f53eb5 under the heading at line 149, and the element paragraphs 167-175 SHA-256 02eb20bf9b7cdd8fcc34a96ab550cb115a36436e53c97ad8218570f128804221; objectives COV-DP-T1-W01-PROPERTIES and COV-DP-T1-W01-CYCLE (both PARTIAL)",
+      "objective": "Author the Week 1 lesson that explains the eight properties of data and the six stages of the data processing cycle. The source prints the eight properties and the six stage labels as list items with no explanation, example or ordering, and data gathering and data collation are named only as labels (collation occurs on line 155 alone in the whole extract). Supply the explanation and one worked example per property and per stage from the authority the teacher uses, keep the source wording separate from the added explanation, and settle what the lesson says about storage given that the week lists storage as a cycle stage and also teaches it as a processing activity at line 217.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W01-PROPERTIES-CYCLE.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1",
+        "DP-INV-T1",
+        "DP-WK-T1-W01",
+        "DP-FACT-T1-W01-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by DP-WK-T1-W01 (2026-11-05): COV-DP-T1-W01-PROPERTIES and COV-DP-T1-W01-CYCLE are PARTIAL with lesson_ids empty; DATA-PROCESSING-T1-W01-PROPERTIES-NOT-EXPLAINED is open and blocking. GENERAL EVALUATION 3 (line 239) and weekend item 5 (lines 271-273) both test this content.",
+      "completion_condition": "A lesson in data-processing.json explains every property and every cycle stage with sources, body_sha256 over the UTF-8 body, provenance and PENDING content approval, is bound in lesson_ids of both entries and closes DATA-PROCESSING-T1-W01-PROPERTIES-NOT-EXPLAINED; source labels are quoted no longer than needed to identify them and the added explanation is attributed, not presented as the source."
+    },
+    {
+      "id": "DP-LES-T1-W01-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1 assessment blocks: EVALUATION lines 179-183 SHA-256 c656b21cb3e0eca4d0e21ed207ec91b5330a0fc3be9079e2243f7d202c882ec1, GENERAL EVALUATION 233-243 SHA-256 924b2fba9ff92ff11b72441d85e4356e0bfad68c42320012a6722701a917e490, WEEKEND ASSIGNMENT 253-273 SHA-256 67a4e378f97e7af95c81e4ab6387de38f04c71586f23a44f6f0bdddbd90cffcf, THEORY 277-281 SHA-256 1bbe895ebb01046f6618e5fdcdfa893d915f4b32f088be41702d1025d1d065c4; objectives COV-DP-T1-W01-EVALUATION, -GENERAL-EVALUATION, -WEEKEND-ASSIGNMENT and -THEORY (all UNRESOLVED)",
+      "objective": "Author the Week 1 assessment supplement: an answer for each of the 14 questions the week sets, the mark each question carries and who marks it. The source gives no key anywhere - a case-insensitive scan of the whole extract finds answer, marking, score and rubric on no line and marks only at lines 1131 and 1135, where it means physical marks on a wall - and no option letter is marked. Record the basis for every objective answer against the lines that teach it, keep the two questions the source repeats (line 279 duplicates line 235 byte for byte and line 281 repeats line 237 with two words added) as printed, and do not silently rewrite an item: the defects DP-LES-T1-W01-COMPUTER-TOOL and DATA-PROCESSING-T1-W01-WEEKEND-ITEM4-TWO-CORRECT-OPTIONS are decided by DP-FACT-T1-W01-TEACHER-DECISIONS first.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W01-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1",
+        "DP-INV-T1",
+        "DP-WK-T1-W01",
+        "DP-FACT-T1-W01-TEACHER-DECISIONS",
+        "DP-LES-T1-W01-PROPERTIES-CYCLE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by DP-WK-T1-W01 (2026-11-05): the four assessment objectives are UNRESOLVED with lesson_ids empty and DATA-PROCESSING-T1-W01-ASSESSMENT-NO-KEY is open and blocking.",
+      "completion_condition": "A lesson in data-processing.json supplies every Week 1 answer with its basis, a marking scheme whose marks sum exactly, and PENDING content approval, is bound in lesson_ids of the four assessment entries and closes DATA-PROCESSING-T1-W01-ASSESSMENT-NO-KEY; no answer is invented without a recorded basis and the source wording is reproduced only as far as the key needs it."
+    },
+    {
+      "id": "DP-LES-T1-W01-COMPUTER-TOOL",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1 GENERAL EVALUATION question 4, line 241 SHA-256 b87cc08e3d97d4af74fed4635c745145abb3674e554cc970a07c3778ba7d8568, inside 233-243 SHA-256 924b2fba9ff92ff11b72441d85e4356e0bfad68c42320012a6722701a917e490, with line 91 (the manual and electronic promise) SHA-256 4551c76be9c22005aaa8117e6a28757bd8676e60501d9b13a4bacbe116fe6d24; objective COV-DP-T1-W01-GENERAL-EVALUATION (UNRESOLVED)",
+      "objective": "Author the teaching that makes GENERAL EVALUATION question 4 answerable: why a computer is a better tool for data processing than the alternatives. The week never compares the two - better tool occurs on line 241 alone in the extract and advantage or disadvantage occurs only at lines 1139, 1193 and 1591, all outside Week 1 - so supply the comparison from the authority the teacher uses, or move the question to the week that carries that content, on the decision recorded by DP-FACT-T1-W01-TEACHER-DECISIONS. Keep any practical illustration conceptual: no software installation, no device handling and no account or credential.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W01-COMPUTER-TOOL.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1",
+        "DP-INV-T1",
+        "DP-WK-T1-W01",
+        "DP-FACT-T1-W01-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by DP-WK-T1-W01 (2026-11-05): COV-DP-T1-W01-GENERAL-EVALUATION is UNRESOLVED with lesson_ids empty and DATA-PROCESSING-T1-W01-GENERAL-EVALUATION-4-UNTAUGHT is open and blocking.",
+      "completion_condition": "A lesson in data-processing.json supplies the comparison with sources, body_sha256 over the UTF-8 body, provenance and PENDING content approval, is bound in lesson_ids of COV-DP-T1-W01-GENERAL-EVALUATION and closes DATA-PROCESSING-T1-W01-GENERAL-EVALUATION-4-UNTAUGHT; no advantage is asserted without an attributed source and no practical step needs unsafe execution."
+    },
+    {
+      "id": "DP-FACT-T1-W01-TEACHER-DECISIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 87-281 SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567; specifically lines 91, 129-145, 149-163, 167-175, 179-183, 233-243, 247-249, 253-273, 277-281",
+      "objective": "Obtain one recorded subject-expert decision on every Week 1 question the source leaves open, so the four appended lessons bind to a decision instead of invented content: (1) whether Week 1 teaches the manual versus electronic distinction or the outcome line at 91 is reworded, given the contrast is printed at 1721-1723 in Week Ten; (2) the explanation and example for each of the eight properties at 131-145 and for the gathering and collation stages at 153 and 155; (3) whether storage belongs to the cycle stage at 161 or the processing activity at 217 in this week; (4) the answer, mark and marker for each of the 14 questions, per DATA-PROCESSING-T1-W01-ASSESSMENT-NO-KEY; (5) weekend item 4 at 267-269, where the taught text supports two options and excludes a third; (6) whether GENERAL EVALUATION 4 at 241 is taught in Week 1, moved, or removed; (7) the rights position and edition for the reading set at 247-249, which gives no pages, edition or year; (8) how the repeated questions at 235/279 and 237/281 are used and marked. Representation of the cycle flow at 105 and 169 stays with DP-VIS-T1-W01-CYCLE, the printed numbering with DP-PRES-T1-NUMBERING and the storage-media currency with DP-FACT-T1-HARDWARE-MODELS; name the owner of each rather than deciding it here.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx",
+          "member_sha256": "a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T1-W01-TEACHER-DECISIONS.md"
+      ],
+      "depends_on": [
+        "DP-SRC-T1",
+        "DP-INV-T1",
+        "DP-WK-T1-W01"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by DP-WK-T1-W01 (2026-11-05): 11 coverage entries are PARTIAL and 7 UNRESOLVED with lesson_ids empty, and 8 of the 12 open items DATA-PROCESSING-T1-W01-* block delivery. No answer, definition, source fact, rights position or lesson is invented here.",
+      "completion_condition": "Every numbered question above has a named decision recorded with its evidence and locators, and each decision is cited by the lesson or item that acts on it; no lesson is authored here and no week is reported complete on the strength of these decisions alone."
     }
   ],
   "review": {
@@ -1710,7 +1912,6 @@
     "DP-INV-T3",
     "DP-TEST-PACKAGE",
     "DP-PRE-T1",
-    "DP-WK-T1-W01",
     "DP-WK-T1-W02",
     "DP-WK-T1-W03",
     "DP-WK-T1-W04",
