@@ -24,23 +24,24 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "CHEM-INV-T1A (2026-10-29) inventoried the first 1st Term original and appended the opening, marker, week-indexing, visual, preservation and safety items. Ten teaching-week labels WEEK ONE to WEEK TEN; the scheme has 13 rows and rows 10-11 both map to WEEK TEN; REVISION and EXAMINATION have no bodies; WEEK EIGHT and WEEK NINE titles are stranded. 58 media entries are really 51 1x1 spacer PNGs plus 7 images, and the Week 6/Week 9 images are proprietary Encarta/Microsoft stock that does not match the captions; Week 10 orbital shapes are missing. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-FACT-CONTENT-APPROVAL stays BLOCKED pending the remaining inventories, comparison and package test.",
     "CHEM-INV-T1B (2026-10-30) inventoried the second 1st Term original (CHEMISTRY SS11STTERM.docx). Ten teaching weeks plus a \"Week 6b\" label; the WEEK 9 label starts with a non-breaking space so the importer would fold WEEK 9 into WEEK 8; WEEK 10 is title-only; the scheme has ten rows and no REVISION or EXAMINATION. Weeks 3-9 labels sit inside one layout table; 78 media parts, 26 tables, one ActiveX part, 113 external hyperlinks. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-CMP-T1 is now eligible (both 1st Term inventories done).",
-    "CHEM-INV-T2 (2026-11-03) inventoried the 2nd Term original: nine week labels cover ten teaching weeks because WEEK 4 & 5 share one label; every label starts at a block boundary and the importer WEEK_MARKER matches it, so no split_before or attach_stranded_label rule is needed; there is no REVISION or EXAMINATION marker, paper or marking scheme. The scheme has nine rows (rows 1-3 automatically numbered, rows \"4&5\"-\"10.\" typed) and the WEEK 1 body contains no revision section; WEEK 4 & 5 teaches conservation of mass and definite proportions but not multiple proportions, which appears only in the WEEK 3 lead-in. 253 automatic list paragraphs, 7 top-level tables, 42 raster references in 41 media parts (image5.jpeg is a 17x9 spacer; image21.png is used twice), 72 w:pict elements that are all shape fallbacks, 114 w:drawing (42 images, 69 connectors, 3 text boxes), 11 OMML equations with a \"Type equation here.\" placeholder, 1,177 sub/superscript runs and 52 external hyperlink relationships (38 used). 26 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written."
+    "CHEM-INV-T2 (2026-11-03) inventoried the 2nd Term original: nine week labels cover ten teaching weeks because WEEK 4 & 5 share one label; every label starts at a block boundary and the importer WEEK_MARKER matches it, so no split_before or attach_stranded_label rule is needed; there is no REVISION or EXAMINATION marker, paper or marking scheme. The scheme has nine rows (rows 1-3 automatically numbered, rows \"4&5\"-\"10.\" typed) and the WEEK 1 body contains no revision section; WEEK 4 & 5 teaches conservation of mass and definite proportions but not multiple proportions, which appears only in the WEEK 3 lead-in. 253 automatic list paragraphs, 7 top-level tables, 42 raster references in 41 media parts (image5.jpeg is a 17x9 spacer; image21.png is used twice), 72 w:pict elements that are all shape fallbacks, 114 w:drawing (42 images, 69 connectors, 3 text boxes), 11 OMML equations with a \"Type equation here.\" placeholder, 1,177 sub/superscript runs and 52 external hyperlink relationships (38 used). 26 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written.",
+    "CHEM-INV-T3 (2026-11-03) inventoried the 3rd Term original: 8 week labels cover 10 teaching weeks (WEEK TWO AND THREE and WEEK EIGHT AND NINE are shared; WEEK<NBSP>FOUR contains U+00A0); the importer WEEK_MARKER matches every label, so no split_before or attach_stranded_label rule is needed. The scheme has 13 numbered rows (1, 2-3, 4, 5, 6, 7, 8-9, 10, 11 Revision, 12-13 Examination) but the body has no revision or examination marker, paper or marking scheme; WEEK ONE has no revision section and WEEK SEVEN omits the metallic-carbonate occurrences/preparation/uses promised by row 7. 15 table-like groups, two unresolved carbon-structure figure areas with no chemistry image, three U+001E non-breaking hyphens (lines 220 and 287), one embedded 949x359 \"MR OSHO TUTORS\" branding JPEG with a phone number and e-mail address, no hyperlinks and Word 97 metadata (2019). 21 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 4,
     "SOURCE_WEEK_INVENTORY": 4,
     "SOURCE_COMPARISON": 1,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 8,
-    "SOURCE_WEEK_INDEXING": 29,
-    "SOURCE_SECTION_INDEXING": 3,
-    "SOURCE_MARKER_DISPOSITION": 3,
-    "VISUAL_DISPOSITION": 21,
-    "SOURCE_PRESERVATION": 10
+    "FACTUAL_DEPENDENCY": 12,
+    "SOURCE_WEEK_INDEXING": 37,
+    "SOURCE_SECTION_INDEXING": 4,
+    "SOURCE_MARKER_DISPOSITION": 4,
+    "VISUAL_DISPOSITION": 24,
+    "SOURCE_PRESERVATION": 14
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 76,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 96,
     "BLOCKED": 1
   },
   "items": [
@@ -317,8 +318,8 @@
       "depends_on": [
         "CHEM-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed. [CHEM-INV-T3 2026-11-03] Inventory complete: 8 week labels for 10 teaching weeks (WEEK ONE 25, WEEK TWO AND THREE 277, WEEK<NBSP>FOUR 583, WEEK FIVE 736, WEEK SIX 897, WEEK SEVEN 993, WEEK EIGHT AND NINE 1085, WEEK TEN 1263; line ranges and sha256 in CHEM-INV-T3.md); opening/scheme lines 1-24 and 5-17, no revision or examination marker, 15 table-like groups, 2 unresolved carbon-structure figure areas, one embedded branding JPEG (949x359; phone/email personal data) and no chemistry image; three U+001E non-breaking hyphens (lines 220 and 287); header/footer \"MR OSHO/3rd TERM/chemistry/sS 1\" and Word 97 metadata. 21 PENDING items appended. No lesson, coverage, rule, correction or asset written.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -3058,6 +3059,806 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CHEM-INV-T2 (see CHEM-INV-T2.md).",
       "completion_condition": "Provenance, hyperlink counts and reuse uncertainty are recorded with evidence; no licence is invented and no source text is copied into teaching."
+    },
+    {
+      "id": "CHEM-IDX-T3-OPEN",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Opening lines 1-24 / sha256 ba556b7118ec2b07475cd62697bfd0e4c6c6be93a531e792b9cd98e9e861ee8c; scheme lines 5-17 / sha256 6e4210ca1311223dc4e9a57825197d9ea30c732ca60f9f7a8f88cd3da419beef",
+      "objective": "Index the 3rd Term opening (lines 1-24, range sha256 ba556b7118ec2b07475cd62697bfd0e4c6c6be93a531e792b9cd98e9e861ee8c; 1,544 characters, 19 non-empty lines): line 1 \"THIRD TERM E-LEARNING NOTE\"; line 3 \"SUBJECT: CHEMISTRY\\tCLASS: SS 1\"; lines 5-17 the scheme (range sha256 6e4210ca1311223dc4e9a57825197d9ea30c732ca60f9f7a8f88cd3da419beef; 1,258 characters) with column header \"WEEK\\t    \\tTOPIC\" and thirteen numbered rows covering teaching weeks 1-10 plus row 11 \"Revision.\" and rows 12-13 \"Examination\": 1 \"Revision /Acids: Properties, Preparation and Uses. pH Scale\"; 2-3 \"Bases: Properties, Preparation.  Salts: Classification, Methods of preparation, Types and Characteristics\"; 4 \"Carbon- Allotropes and their Structures, Properties, Differences between Diamond and Graphite.\"; 5 \"Carbon (ii) Oxide (CO), Carbon (iv) Oxide (CO2): their Preparation, Properties and Uses.\"; 6 \"Coal: Types of Coal, Destructive Distillation of Coal, Uses of the Products, Coke: Gasification and Uses.\"; 7 \"Metallic Carbonate: Occurrences, Preparation and Uses, Test for Trioxocarbonate ion. Trioxocarbonate (iv) acid: Preparation, Properties and Uses.\"; 8-9 \"Introduction to Hydrocarbons: Sources of Hydrocarbons, Classification of Aliphatic Hydrocarbons. Petroleum and Natural gases: Refining of Petroleum by Fractional Distillation, Uses of different Fractions, Cracking of Petroleum (Thermal and Catalytic), Anti-knock and Octane rating.\"; 10 \"Applied Chemistry: Raw material used in Chemical industries and their Sources. Division of the Chemical Industries: Heavy chemicals, Fine chemicals, Fertilizers, Plastics, Metallurgy, Pharmaceutical, Glass, Ceramics, Cements, Soap and Detergents.\" The row numbers are typed text, not automatic numbering. Lines 19-23 are REFERENCE MATERIALS (two textbooks, WAEC and UTME past questions; range sha256 5d0bbcb9de1985c6a2b906fbb83548bcde61c98311af042633f90b59e47291b2). No REVISION or EXAMINATION body, paper or marking scheme exists. The opening precedes the first week marker, so the compiler will report PREAMBLE_REQUIRES_COVERAGE; the scheme must be coverage-mapped, never treated as a lesson. Scheme-versus-body relationships belong to CHEM-MARK-T3-SCHEME. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-OPEN.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The opening/scheme is indexed with exact line locators and range hashes, including all thirteen scheme rows; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK ONE\" lines 25-276 / sha256 f810a252493dc9fc8c96662cbff8f917c3a0889755e2cba345128031baa73058",
+      "objective": "Index WEEK ONE (lines 25-276; 210 non-empty lines, 11,414 characters; source title \"REVISION/ACIDS\"): definition and classes of acids (33-62), strength and ionisation equations (63-76), basicity table (77-84), physical and chemical properties (90-109), preparation methods and uses (110-151), pH/pOH definitions, scale and relationship (152-198), worked pH examples (199-239), measurement with universal indicator (240-245), EVALUATION (246-250), GENERAL EVALUATION/REVISION (251-259), READING ASSIGNMENT (260-262), WEEKEND ASSIGNMENT (263-269) and THEORY (270-276). Scheme row 1 promises revision of the first term but the body contains no revision section. The formulas and dilution statements are flattened. Exact label: \"WEEK ONE\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W01.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W02-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK TWO AND THREE\" lines 277-582 / sha256 f56dabf601a9e1dd3c15154ee6533cfc84634ccd11adeb334e2f98368b936269",
+      "objective": "Index WEEK TWO AND THREE (lines 277-582; 259 non-empty lines, 16,266 characters; source title \"BASES AND SALTS\"): bases and alkalis (284-301), strength (302-312), physical and chemical properties (313-326), uses table (327-338), neutralization and oxonium ion (346-368), salts and five types (369-409), hydrolysis (410-416), uses of salts (417-427), solubility-rule tables (433-448), preparation and recovery methods (449-476), anhydrous/hydrated salts with a worked calculation (477-525), efflorescence, deliquescence, hygroscopy and drying agents (527-550), EVALUATION (551-554), GENERAL EVALUATION/REVISION (555-561), READING ASSIGNMENT (562-564), WEEKEND ASSIGNMENT (565-573) and THEORY (574-582). One label covers scheme weeks 2 and 3; the importer produces one parsed row and must not split it. Exact label: \"WEEK TWO AND THREE\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W02-W03.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK FOUR\" lines 583-735 / sha256 b2e0cdbe6238c0cd0f097568df6fcc5d5098ff8f9a1a24503a19a14df88cd1bd",
+      "objective": "Index WEEK<NBSP>FOUR (lines 583-735; 114 non-empty lines, 9,703 characters; source title \"CARBON AND ITS PROPERTIES\"): occurrence and allotropes (589-613), diamond properties and uses (614-629), graphite properties and uses (630-652), industrial graphite and the Acheson process (653-657), diamond/graphite comparison table (658-665), amorphous carbon (671-677), physical and chemical properties (678-714), EVALUATION (715-718), READING ASSIGNMENT (719-721), WEEKEND ASSIGNMENT (722-729) and THEORY (730-735). The label uses U+00A0 between WEEK and FOUR; JavaScript \\s and the importer WEEK_MARKER match it, but the parsed weekLabel contains the NBSP. Lines 605-611 are blank before the caption \"Basic Tetrahedral Shape in Diamond Crystals\" at 612, and lines 631-636 are blank after the graphite introduction at 630; both are unresolved figure areas (see CHEM-VIS-T3-W04-CARBON-STRUCTURES). Exact label: \"WEEK<NBSP>FOUR\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W04.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK FIVE\" lines 736-896 / sha256 e253243903d2ca00af22141667707e0e0f7e475bfcebf0ed4173a30773788b09",
+      "objective": "Index WEEK FIVE (lines 736-896; 136 non-empty lines, 10,906 characters; source title \"OXIDE OF CARBON.\"): carbon(IV) oxide (742-815) including laboratory preparation, Kipp apparatus, gas collection, industrial preparation, physical and chemical properties, limewater test and uses; carbon(II) oxide (816-870) including preparation, fume-cupboard caution, physical and chemical properties, haemoglobin binding, formate, carbonyl and phosgene chemistry, test and uses; EVALUATION (810-814 and 866-870), GENERAL EVALUATION/REVISION (871-877), READING ASSIGNMENT (878-880), WEEKEND ASSIGNMENT (881-889) and THEORY (890-896). No figure is present despite the Kipp apparatus description. Exact label: \"WEEK FIVE\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W05.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK SIX\" lines 897-992 / sha256 f1fac005982318be0f532c806e841139b08713ca1628ca315234385e949cad7e",
+      "objective": "Index WEEK SIX (lines 897-992; 81 non-empty lines, 6,887 characters; source title \"COAL AND FUEL GASES\"): coal composition and carbonization (903-908), types of coal (909-919), destructive distillation and products (920-937), uses of coal (938-941), EVALUATION (942-945), producer gas, water gas and synthetic gas (946-967), EVALUATION (968-972), READING ASSIGNMENT (973-975), WEEKEND ASSIGNMENT (976-987) and THEORY (988-992). Exact label: \"WEEK SIX\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W06.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK SEVEN\" lines 993-1084 / sha256 a2ca76ca71a7cb37dd783635c98bbfda3031f1d995765a5fc99aa29dcba102ec",
+      "objective": "Index WEEK SEVEN (lines 993-1084; 77 non-empty lines, 6,025 characters; source title \"TRIOXOCARBONATE (iv) ACID\"): H2CO3 and the two salt series (994-1001), preparation of soluble and insoluble trioxocarbonates (1002-1015), properties and the metal/heat/acid table (1016-1034), carbonate test (1035-1038), EVALUATION (1039-1042), hydrogen trioxocarbonate preparation and properties (1043-1057), EVALUATION (1058-1061), GENERAL EVALUATION/REVISION (1062-1068), READING ASSIGNMENT (1069-1071), WEEKEND ASSIGNMENT (1072-1080) and THEORY (1081-1084). Scheme row 7 also promises occurrences, preparation and uses of metallic carbonates; the body teaches the acid, its salts and tests but not those occurrences/preparations/uses. Record that for CHEM-MARK-T3-SCHEME. Exact label: \"WEEK SEVEN\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W07.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W08-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK EIGHT AND NINE\" lines 1085-1262 / sha256 8ced131ec507d667ecc6bac758a790b8c38916f3f5a917d7a2be0afb9cb40770",
+      "objective": "Index WEEK EIGHT AND NINE (lines 1085-1262; 141 non-empty lines, 18,300 characters; source title \"INTRODUCTION TO HYDROCARBONS\"): hydrocarbons and classification (1086-1108), petroleum origin and occurrence (1109-1114), refining by fractional distillation (1115-1124), fractions and uses with a misaligned table (1125-1147), cracking and reforming (1149-1167), octane number with heptane/iso-octane structural layouts (1168-1187), grades and octane-number table (1188-1204), synthetic petrol and petrochemicals (1205-1216), problems and solutions (1217-1228), EVALUATION (1229-1233), GENERAL EVALUATION/REVISION (1234-1242), READING ASSIGNMENT (1243-1245), WEEKEND ASSIGNMENT (1246-1253) and THEORY (1254-1262). One label covers scheme weeks 8 and 9; the importer produces one parsed row and must not split it. The structural formula layout at 1175-1182 is handled by CHEM-VIS-T3-W08-ORGANIC-STRUCTURES. Exact label: \"WEEK EIGHT AND NINE\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W08-W09.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-IDX-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "\"WEEK TEN\" lines 1263-1338 / sha256 ce8babfd90d0e8a456204d1b28529fb61f9f2f5c8865f9f5cfb2b0f6d29451f8",
+      "objective": "Index WEEK TEN (lines 1263-1338; 54 non-empty lines, 8,431 characters; importer title \"APPPLIED CHEMISTRY\"): chemical-industry definition (1269-1273), raw materials and sources (1274-1284), division of chemical industries (1285-1291), heavy and fine chemicals (1292-1298), fertilizer, paint, cement, plastic and pharmaceutical industries (1299-1318), EVALUATION (1319-1323), READING ASSIGNMENT (1324-1326), WEEKEND ASSIGNMENT (1327-1335) and THEORY (1336-1338). There is no TOPIC line; the first credible line is the misspelt \"APPPLIED CHEMISTRY\". Scheme row 10 says \"Applied Chemistry\"; rows 11 (Revision) and 12-13 (Examination) have no body. Exact label: \"WEEK TEN\". Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-IDX-T3-W10.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The week is indexed with its exact label, line range and range hash, and objective candidates are recorded; shared labels are left unsplit; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-MARK-T3-SCHEME",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme rows 1-13 (lines 8-17) against labels WEEK ONE-WEEK TEN (lines 25-1338)",
+      "objective": "Disposition scheme-versus-body relationships without altering source text: ten teaching weeks are covered by eight body labels because \"WEEK TWO AND THREE\" and \"WEEK EIGHT AND NINE\" each cover two scheme rows, while \"WEEK FOUR\" carries U+00A0. The scheme has thirteen numbered rows: 1, 2-3, 4, 5, 6, 7, 8-9, 10, 11 Revision and 12-13 Examination. Row 1 promises revision of the first term but WEEK ONE teaches acids only; row 7 promises metallic-carbonate occurrences, preparation and uses, but WEEK SEVEN teaches the trioxocarbonate acid, its salts and tests only; row 10 \"Applied Chemistry\" appears in the body as \"APPPLIED CHEMISTRY\" (three Ps); the WEEK FIVE title carries a full stop and the WEEK SEVEN title uses lower-case \"(iv)\". No REVISION marker, no EXAMINATION marker, no examination paper and no marking scheme exists in the body. The opening is a preamble handled by CHEM-IDX-T3-OPEN, not a marker row. The importer will produce eight week rows, not ten; coverage must map shared rows without inventing a split. Classify nothing as a lesson here. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-MARK-T3-SCHEME.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-OPEN",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09",
+        "CHEM-IDX-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Scheme-versus-body relationships are recorded without changing source text; the absence of revision/examination material is stated; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-VIS-T3-W04-CARBON-STRUCTURES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK<NBSP>FOUR / diamond area lines 604-612 (caption 612) and graphite area lines 630-636",
+      "objective": "Disposition the two missing carbon-structure figures. Before the caption \"Basic Tetrahedral Shape in Diamond Crystals\" (line 612) the body leaves lines 605-611 empty; after the graphite paragraph at 630 the body leaves lines 631-636 empty. Neither word-extractor 1.0.4 nor antiword 0.37 emits a picture or image element here, and the DocBook render contains no mediaobject/imagedata. The file contains exactly one JPEG (106,941 bytes, 949x359) appended after the text at WordDocument stream offset 174,161-281,102; it is the \"MR OSHO TUTORS\" branding banner, not a chemistry diagram, so neither blank area has image data. Record both areas as unresolved figures with exact line locators, not as evidence that no figure was intended. Do not AI-invent a diamond or graphite lattice, and do not treat the caption as recovered content. If an approved source for the two diagrams is later supplied, record its provenance and rights; otherwise mark the figures missing. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T3-W04-CARBON-STRUCTURES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Each figure area has a recorded disposition with line locator and rights note; the figures are marked unresolved rather than invented; nothing is marked approved."
+    },
+    {
+      "id": "CHEM-VIS-T3-W08-ORGANIC-STRUCTURES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK EIGHT AND NINE / structural formula layout lines 1175-1182; cracking equations 1157-1158",
+      "objective": "Disposition the organic structural-formula layout: line 1175 is a straight-chain heptane skeleton, 1176 labels it with octane number 0, and 1178-1182 lay out 2,2,4-trimethylpentane (iso-octane) with tabs and separate CH3/C/CH2 fragments and octane number 100. Lines 1157-1158 give C16H34 -> C8H18 + C8H16 and a branched C10H22 -> C8H18 + C2H4 example. The layout is text-and-tab art, not an image; preserve the exact spacing and line order, and record that a rendered diagram may be needed for learners. Do not infer the missing bonds or redraw the molecules from the flattened text alone. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T3-W08-ORGANIC-STRUCTURES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W08-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The layout is preserved with exact spacing and line locators; any rendering need is recorded; no molecule is inferred beyond the source text."
+    },
+    {
+      "id": "CHEM-VIS-T3-BRANDING-JPEG",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Only raster image / JPEG appended at WordDocument stream offset 174,161-281,102 (after the text stream); no text anchor exposed",
+      "objective": "Disposition the only raster image in the source: a 949x359 JPEG (106,941 bytes) stored after the text at WordDocument stream offset 174,161-281,102. It is a two-panel \"MR OSHO TUTORS\" letterhead/banner: a green circular logo with stacked books, a graduation cap and the slogan \"Making the time right!\", plus the text \"MR OSHO\", \"TUTORS\", role descriptions and a phone number and e-mail address (withheld here as personal contact data). Neither word-extractor 1.0.4 nor antiword 0.37 exposes its anchor, so its page and paragraph placement is unresolved; the body text has no image marker. The 8,108-byte Data stream contains no PNG, JPEG, GIF, WMF, EMF or embedded OLE signature, so this is the only raster object. Do not commit the image, reproduce the personal contact details, render it into a lesson or treat it as subject content; record rights and personal-data handling as unresolved and require owner direction. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-VIS-T3-BRANDING-JPEG.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The branding image is recorded with byte locator, dimensions and content; placement, rights and personal-data handling are unresolved; no asset or personal contact detail is committed."
+    },
+    {
+      "id": "CHEM-PRES-T3-FORMULAE",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Whole document / flattened formulae and powers, e.g. lines 66-75, 220-226, 515, 680, 770, 1153, 1277",
+      "objective": "Preserve chemical formulae, charges, oxidation states, powers of ten, units and temperatures as exact source-faithful units. The .doc body arrives with formatting flattened, producing forms such as \"H3O+\", \"SO42-\", \"CO32-\", \"10-14\", \"10-3\", \"H2C204.2H20\", \"CaC03\", \"35000C\", \"4000C\", \"-780C\" and \"300atoms\". Recover the sub/superscript runs and the degree/arrow formatting from the original Word 97 binary character properties and record both the flattened text and the formatted reading; do not normalise, balance, round or rewrite any formula, charge, coefficient, unit or exponent. Source notation must remain distinct from any later corrected fact, which needs authoritative data. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T3-FORMULAE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09",
+        "CHEM-IDX-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The preserved formula/notation units are recorded with line locators and formatting evidence; source notation remains distinct from any correction; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-PRES-T3-EQUATIONS",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Whole document / word equations and reaction equations, e.g. lines 66-75, 98-107, 345-358, 411-414, 690-714, 775-808, 845-856, 1030, 1055, 1157-1158, 1210, 1224",
+      "objective": "Preserve every chemical equation exactly as written, including missing arrows, missing state symbols, word-equation layouts, repeated or missing coefficients and typographical fragments. Examples: \"H2SO4 2H+ + SO42-\" (66), \"HNO3 H+ + NO3-\" (67), the hydrolysis set \"Na2CO3 + H2O -> NaOH + H2CO3\" (412), \"AlCl3 + H2O -> Al(OH)3 + HCl\" (413) and \"Na2S + H2O -> NaOH + H2S\" (414), the limewater sequence \"Ca(HCO3)(aq)\" (796), the formate fragment \"2HCOONa(aq) + H2(g) 4000C COONa\" (849), and the pyrolysis fragment \"C10H22 H2 + C C5H12 + CH3-CH=CH-CH3\" (1224). Do not balance, complete or correct an equation here; record the exact source and flag the defect for later authoritative correction. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T3-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Each equation is recorded with a line locator and its exact source form; defects are flagged but not corrected; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-PRES-T3-TABLES",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Whole document / fifteen table-like groups: scheme 7-17; organic acids 39-45; inorganic acids 55-58; basicity 79-83; acid uses 138-151; hydroxide nature 293-300; alkali uses 328-338; solubility rules 434-447; hydrated salts 486-493; drying agents 543-548; diamond/graphite 659-664; coal distillates 933-936; carbonate heat 1026-1033; petroleum fractions 1133-1147; octane numbers 1194-1201",
+      "objective": "Preserve the cell boundaries and row order of every table-like group. Twelve groups were emitted as <informaltable> by antiword 0.37 DocBook output; the scheme (7-17), petroleum-fraction table (1133-1147) and octane-number table (1194-1201) are tab text and were not. The petroleum table is visibly misaligned (for example \"2. Petrol 40 - 200 4 - 12 Fuel in aeroplanes and motor vehicles\" spans lines 1138-1139) and the octane table has blank-separated columns (1194-1201). Record each cell against its header without reconstructing missing columns or silently reflowing the text; do not substitute a rendered table for the original cell content. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T3-TABLES.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-OPEN",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Every table is preserved with line locators, headers and cell order; misalignment is recorded but not silently repaired; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-PRES-T3-WORKED",
+      "kind": "SOURCE_PRESERVATION",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK ONE worked pH examples lines 199-239; WEEK TWO AND THREE water-of-crystallisation calculation lines 500-525; general-evaluation calculations 555-560",
+      "objective": "Preserve the worked examples as complete step sequences: the two pH/pOH examples (199-239), including \"pH = 14 - 11.4 = 2.6\" and \"Antilog(-2.6) = 0.0025\", and the hydrated-oxalic-acid calculation (500-525), including the ratio layout, \"x = 2.007\" and \"28.57%\". Keep the arithmetic and the notation exactly as printed, including superscripts flattened to \"10-14\", \"10-3\" and \"H2C204.2H20\". Do not silently correct rounding, algebra or unit wording; flag any inconsistency for a later factual item. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-PRES-T3-WORKED.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "The worked examples are preserved with line locators and exact steps; arithmetic is not silently corrected; no lesson, coverage or rule is written."
+    },
+    {
+      "id": "CHEM-FACT-T3-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK ONE 93; WEEK TWO AND THREE 317; WEEK FIVE 822-856; WEEK SIX 949-962; WEEK EIGHT AND NINE 1226-1227; WEEK TEN 1317",
+      "objective": "Verify later, with authoritative laboratory-safety and chemical-handling sources, every statement that could be unsafe or outdated before a lesson relies on it: strong acids and concentrated caustic alkalis described as corrosive (93, 317); preparing CO in a fume cupboard and the statement that even 1% CO in air may cause death (826, 829); CO binding haemoglobin (844); phosgene (COCl2) described as a First-World-War poison (856); heating coke and passing steam/air at high temperature (949-962); lead tetraethyl as an anti-knock additive (1226-1227); and the pharmaceutical list \"Potassium bromine\", \"bismuth carbonate\", \"mercury nitrate\" and \"mercury (1) chloride\" (1317). The document contains no goggles, gloves, fume-cupboard procedure beyond the one CO sentence, first-aid or emergency instruction; add none. Keep the source wording distinct from any corrected fact. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T3-SAFETY.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W08-W09",
+        "CHEM-IDX-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Each safety/handling concern is recorded with a line locator and exact wording; authoritative verification remains outstanding; no correction is applied."
+    },
+    {
+      "id": "CHEM-FACT-T3-ACCURACY-DATA",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Whole document / numeric and dated claims, e.g. 242, 680, 743, 767, 770, 834, 954, 962, 965, 1073, 1127-1153, 1195-1203, 1275-1277, 1293-1294",
+      "objective": "Verify later against authoritative chemistry and current data: the universal-indicator range \"3 and 11\" (242); carbon melting point \"35000C\" (680); atmospheric CO2 \"about 0.03%\" (743); CO2 \"about 1.5 times denser than air\" (767); dry ice \"(-780C)\" (770); \"CO is neither lighter nor heavier than air\" (834); water-gas catalyst \"4500C\" (954), producer/water gas \"above 10000C\" (962) and synthetic gas \"8000C\" (965); the WEEK SEVEN question that treats BaCO3 as not decomposed (1073); the temperature series 4000C/400C, 500C-2000C, 1700C-2500C, 3000C-3600C, 3500C-5000C, 6000C and 5000C (1127-1154); thermal cracking \"about 300atoms\" pressure (1153); the octane table values and molecular masses, especially octane 144 and -27 and nonane 128 and -45 (1195-1203); \"HN4O3\" (1275); \"CaC03\" (1277); and \"calcium trioxocarbonate (iv) acid\"/\"Sodium trioxocarbonate(iv) acid\" (1293-1294). Treat flattened superscripts (4000C, -780C) as possible formatting loss before declaring an error. Keep source wording distinct from any corrected value. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T3-ACCURACY-DATA.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09",
+        "CHEM-IDX-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Each numeric or data concern is recorded with a line locator and exact wording; authoritative verification remains outstanding; no correction is applied."
+    },
+    {
+      "id": "CHEM-FACT-T3-ACCURACY-EQUATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Whole document / unbalanced or malformed equations, e.g. 412-414, 796-808, 845-849, 1030, 1055, 1157-1158, 1224",
+      "objective": "Verify later against authoritative chemistry: the hydrolysis equations (412-414) are not mass-balanced; the limewater product is written \"Ca(HCO3)(aq)\" (796); the formate decomposition (845-849) is garbled; the silver-carbonate decomposition (1030) and sodium-hydrogen-carbonate/sulfuric-acid equation (1055) need atom checks; the cracking examples (1157-1158) and the pyrolysis fragment (1224) need stoichiometric review. Also check the neutralisation set at 345-358, including \"H3OCl\", \"(H3O)2SO4\" and the oxonium/hydroxide equation. Record the exact source first; do not rewrite or balance it until an authoritative correction is approved. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T3-ACCURACY-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Each equation defect is recorded with a line locator and exact source form; authoritative verification remains outstanding; no correction is applied."
+    },
+    {
+      "id": "CHEM-FACT-T3-PROVENANCE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-28ed32f52548",
+      "term": "3rd Term",
+      "week_or_locator": "Whole document / references lines 19-23; document properties; no hyperlinks",
+      "objective": "Record provenance and rights without inferring approval: the only references are two textbooks (Ababio; Tan Yan Ton et al.), WAEC past questions and UTME past questions (19-23); the body contains no URL or hyperlink. The Word 97 file properties say author \"WPS Office\", last saved by \"tosyno\", revision 43, created 2006-04-26, last saved 2019-09-03, 43 pages, 13,376 words and 76,249 characters; the header/footer text is \"MR OSHO/3rd TERM/chemistry/sS 1\" with page number 43. The only raster image is the \"MR OSHO TUTORS\" branding banner carrying a phone number and e-mail address (see CHEM-VIS-T3-BRANDING-JPEG); that is personal contact information and must not be committed or reproduced. No in-text citation identifies copied passages, no licence or reuse permission is present, and the reference list is not proof of source clearance. Mark rights unresolved and do not treat any statement as approved or verified. Locator: word-extractor 1.0.4 getBody() text, lines 1-based; range sha256 is SHA-256 over lines a..b joined with \"\\n\" (the body has LF endings; line 1,339 is the trailing empty line). Whole body: SHA-256 2b83b851ea8de54b62fb49a9396bc0f23c3b8b95941a1f8ea1ea65515fde886f (89,485 characters, 1,339 lines; member 350,720 bytes, SHA-256 0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435). Preserve the source wording exactly; no lesson, coverage, rule, correction or answer is authored here. No tests, importer, database or device runs (testing deferred by owner).",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T3.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CHEMISTRY.doc",
+          "member_sha256": "0b8f96389c722ed7bfeed046e4478771b98613cb1bfdf004226b7794922ea435"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T3-PROVENANCE.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T3",
+        "CHEM-SRC-T3",
+        "CHEM-IDX-T3-OPEN",
+        "CHEM-IDX-T3-W01",
+        "CHEM-IDX-T3-W02-W03",
+        "CHEM-IDX-T3-W04",
+        "CHEM-IDX-T3-W05",
+        "CHEM-IDX-T3-W06",
+        "CHEM-IDX-T3-W07",
+        "CHEM-IDX-T3-W08-W09",
+        "CHEM-IDX-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-INV-T3 (see CHEM-INV-T3.md).",
+      "completion_condition": "Provenance and rights are recorded with locators; rights remain unresolved; nothing is marked approved or verified."
     }
   ],
   "review": {
@@ -3073,9 +3874,8 @@
     }
   },
   "next_runnable": [
-    "CHEM-INV-T3",
-    "CHEM-TEST-PACKAGE",
     "CHEM-CMP-T1",
+    "CHEM-TEST-PACKAGE",
     "CHEM-IDX-T1A-W01",
     "CHEM-IDX-T1A-W02",
     "CHEM-IDX-T1A-W03",
@@ -3131,6 +3931,19 @@
     "CHEM-VIS-T2-W07-KINETIC",
     "CHEM-VIS-T2-W08-GAS-LAWS",
     "CHEM-VIS-T2-W10-AIR-FLAME",
-    "CHEM-VIS-T2-SHAPES"
+    "CHEM-VIS-T2-SHAPES",
+    "CHEM-IDX-T3-OPEN",
+    "CHEM-IDX-T3-W01",
+    "CHEM-IDX-T3-W02-W03",
+    "CHEM-IDX-T3-W04",
+    "CHEM-IDX-T3-W05",
+    "CHEM-IDX-T3-W06",
+    "CHEM-IDX-T3-W07",
+    "CHEM-IDX-T3-W08-W09",
+    "CHEM-IDX-T3-W10",
+    "CHEM-MARK-T3-SCHEME",
+    "CHEM-VIS-T3-W04-CARBON-STRUCTURES",
+    "CHEM-VIS-T3-W08-ORGANIC-STRUCTURES",
+    "CHEM-VIS-T3-BRANDING-JPEG"
   ]
 }
