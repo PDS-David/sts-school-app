@@ -9,7 +9,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; content approval PENDING,
 - All web sources read 2026-11-05.
 
 ## Changes
-- `french.json`: new lesson `SUP-SS1-FRENCH-ANGLOPHONE-T1` (8 body paragraphs after the label line, 3 objectives, 5 practice items, 14 marks, 6 provenance entries); body SHA-256 `8eca580ffcae1b7687b83d7c3e9994473d9b95e662ab35700e1e88dc7b405136`.
+- `french.json`: new lesson `SUP-SS1-FRENCH-ANGLOPHONE-T1` (8 body paragraphs after the label line, 3 objectives, 5 practice items, 14 marks, 6 provenance entries); body SHA-256 `469a249b6596ffdd2b679b17db1551e730d8ff21a5bd05efe4d297facde94611`.
 - Coverage `FRENCH-T1-W02-OBJ-2` → IMPLEMENTED_EQUIVALENT, lesson added after `SUP-SS1-FRENCH-COUNTRIES-T1`, evidence appended (earlier entries kept).
 - `FRENCH-T1-W02-UNCOVERED-EXERCISES` narrowed to OBJ-3 (still blocking; `FR-LES-T1-W02-DEMONYMS` remains PENDING). New blocking FACT item `FRENCH-T1-W02-ANGLOPHONE-SOURCE-CHECKS`.
 - `QUEUE.json`: item → IMPLEMENTED_TESTING_DEFERRED; `status_counts` recomputed (64 / 47 / 4); `next_runnable` untouched.
@@ -18,7 +18,7 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; content approval PENDING,
 ## Claim-to-source map
 | Claim | Statement in lesson | Source (provenance entry) |
 |---|---|---|
-| NA-1 | Namibia Art. 3(1): official language is English; Art. 3(3): other languages may be permitted for some purposes in some areas; page undated | Namibian UN Mission, Constitution Chapter 1 (read in full) |
+| NA-1 | In the edition dated May 2018, Art. 3(1) names English as the official language (documentary example, not current law; Art. 3(3) removed from the lesson) | Konrad-Adenauer-Stiftung, The Constitution of the Republic of Namibia (Annotated Edition), 2nd ed. 2018 (reprint 2021), hosted by the Electoral Commission of Namibia (provenance entry replaces the UN Mission page) |
 | KE-1 | Kenya Art. 7(1) national language Kiswahili; Art. 7(2) official languages Kiswahili and English | Kenya Law Reform Commission Art. 7 (read in full) |
 | KE-2 | Kenya Art. 7(3): State protects language diversity | same |
 | KE-3 | Constitution commenced 27 August 2010 | Kenya Law (search extract only) |
@@ -40,6 +40,9 @@ Status: **IMPLEMENTED_TESTING_DEFERRED** (implemented; content approval PENDING,
 - No typecheck, suite, importer, database or device run.
 
 ## Remaining
-- Dated, amended official copies for Namibia, South Africa (commencement of the 2023 amendment) and Kenya: `FRENCH-T1-W02-ANGLOPHONE-SOURCE-CHECKS`.
+- `FRENCH-T1-W02-ANGLOPHONE-SOURCE-CHECKS`: **Namibia resolved for the dated educational example only.** Source: *The Constitution of the Republic of Namibia (Annotated Edition)*, second edition, 2018, reprint 2021, Konrad-Adenauer-Stiftung Namibia-Angola, hosted by the Electoral Commission of Namibia, https://www.ecn.na/wp-content/uploads/2024/11/Constitution-of-Namibia-English-2021.pdf; Chapter 1, Article 3(1), p. 23 per the table of contents; accessed 2026-11-05. Title pages read "Windhoek, May 2018" (edition date, distinct from the access date); the copyright page gives only "Second edition, 2018". The file read is the 2021 reprint. It is not a government-published consolidation. The lesson wording is « Dans l’édition de la Constitution namibienne datée de mai 2018, l’article 3(1) désigne l’anglais comme langue officielle. » (not "publiée en mai 2018", because the edition does not state a publication month.) Article 3(3) detail was removed.
+- Namibia evidence limits: amending Acts 34 of 1998 (only Art. 134) and 8 of 2014 (GG 5589; no Art. 3) were read; Act 7 of 2010 was read only in part (sections 2-6); amendments after 2014 were not exhaustively checked and no claim about current law is made. Parliament's own PDFs and the UN Mission page could not be fetched.
+- **Still OPEN:** South Africa (commencement of the 2023 amendment) and Kenya (dated Kenya Law consolidation).
+- Stale outside this task's write paths: `QUEUE.json` still records the earlier body hash `8eca580f…`; it needs the new value.
 - Owner content approval and verification.
 - OBJ-3 (`FR-LES-T1-W02-DEMONYMS`) and the headings item are unchanged.
