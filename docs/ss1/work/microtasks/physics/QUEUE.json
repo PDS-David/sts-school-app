@@ -22,7 +22,8 @@
     "Unmerged work on PR #71 head b5ced7ebb0efe22df2351baa140266fbf40cbf41 (physics.json blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3: 5 lessons for 2nd/3rd Term, 1 rule, 32 coverage entries, 5 open items; reconciliation item D-1) is NOT implemented on master. It is tracked as PHYS-PORT-D1-* and PHYS-CMP-D4-* items. Do not merge #71 or copy its schema.",
     "Several items write the same package file. Workers start from current master, change only their own entries and rebase; PENDING means unclaimed.",
     "PHYS-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. physics.json now has 5 source_rules (added SS1-SRC-5c0149cda71d-R002 and SS1-SRC-5c0149cda71d-R003, both SCHEME_ONLY) and 2 coverage entries (COV-PHYS-T1-TITLE and COV-PHYS-T1-REFERENCES, both MARKER). Scheme week 11 (Revision) has no parsed row or teaching body; scheme weeks 5 and 6 share the parsed WEEK FIVE AND SIX row. Note 1 is the queue-generation snapshot. Per-block hashes and the scheme-row mapping are in docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Nothing was run; testing remains deferred.",
-    "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md."
+    "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md.",
+    "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -31,19 +32,20 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 4,
+    "FACTUAL_DEPENDENCY": 5,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
-    "TEST": 2
+    "TEST": 2,
+    "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "BLOCKED": 7,
-    "PENDING": 54
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "BLOCKED": 8,
+    "PENDING": 56
   },
-  "total": 66,
+  "total": 70,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -306,8 +308,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (source label 'WEEK ONE', title \"INTRODUCTION TO PHYSICS\", 8760 characters, body sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level in backend/src/db/ss1/subjects/physics.json: 14 coverage entries COV-PHYS-T1-W01-OBJ-1..OBJ-14 and 8 open items PHYSICS-T1-W01-LABORATORY, -COVERAGE, -SCIENTIFIC-METHOD, -DIMENSIONAL-GAPS, -ASSESSMENT-NO-KEY, -FACT-DEFECTS, -NOTATION-LOSS, -SOURCE-DEFECTS. physics.json now has 18 coverage entries and 11 open items; package_status stays PENDING and lessons[] stays empty (0 delivery_corrections, 0 assets). Locator method (unchanged from PHYS-PRE-T1): word-extractor 1.0.4 getBody() lines, 1-based, block digest = SHA-256 over the stated lines joined with \\n (UTF-8, leading/trailing blank lines of the block trimmed, no trailing newline, tabs kept). The parsed body is lines 41-191 with the trailing blank lines 192-193 trimmed by the importer's trim(); its digest e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc equals the parsed row 0 identity in docs/ss1/work/SS1-03/evidence/parsed_rows.json, so every PARTIAL entry binds lesson_ids [SS1-SRC-5c0149cda71d:BODY:e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc] exactly. Source verified before indexing: member 'SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc', 8,479,232 bytes, sha256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206 from archive 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; re-extraction reproduced 1,288 lines whose whole text sha256 is 23a1a9aed418ac382bcfa0c4302eaf70c8a348bba82dbe6c2893c10b9bd86908 and whose nine week rows reproduce the SS1-03 evidence digests. Result: 8 PARTIAL (OBJ-1 meaning of Physics and its branches 48-59; OBJ-3 fundamental quantities and units 65-91; OBJ-4 derived quantities and units 93-105; OBJ-5 the two comparison tables 107-121; OBJ-6 dimensions 123-129; OBJ-8 the dimensional analysis of force 143-147; OBJ-9 Table 2.3 149-158; OBJ-12 the reading assignment 165-166). 6 UNRESOLVED (OBJ-2 'Familiarization of Physics Laboratory', the second clause of the scheme row at line 24 - 'laborator' occurs nowhere else in 1,288 lines; OBJ-7 dimensional analysis of density, velocity and acceleration 131-141, whose operands are empty text at lines 133-134, 137 and 141; OBJ-10 EVALUATION 61-63 - the scientific method is never taught; OBJ-11 EVALUATION 160-163 - 7 of the 15 named quantities are untaught; OBJ-13 WEEKEND ASSIGNMENT 168-182 and OBJ-14 THEORY 184-191 - no answer key, no mark allocation). No SUPPORTED entry: the package has no lesson for this row, so no objective is deliverable. Binary evidence for the lost-formula and lost-figure questions: the verified member has 0 equation objects (no Equation.3 / Equation.DS4.0 class names, no MTEF payload, 0 EQ field instructions, single-byte and UTF-16 both searched) but 76 complete embedded PNG images and 4 JPEG streams, so the empty operands were never text. The non-body streams add a header (39 characters of page furniture naming an individual tutor, the class and a page number - the name is deliberately not copied into Git; hash 864b418e8c4c73e66ebf52de86ebce2ddde7e2a91d50b96b9a69121453c78f6d), a footer (460438d1c6bdcf1e9e7798798f44c592fe3f0be6c3632c1971862f0b4b3e51b1), 482 characters of text-box diagram labels (833455d3cd0fab9f56afa131825c27440b6226116db389bf8b0a983234ecf623, including V(m/s), t(s), 20m/s and a gradient note) and empty footnotes, endnotes and annotations. backend/src/db/ingestTopics.ts:299-302 imports a legacy .doc as getBody() alone and the equation recovery at :289-295 is .docx/JSS3-Mathematics-only, so none of it reaches the database. This corrects the PHYS-PRE-T1 statement that non-body text was not available in that extraction. Defects recorded, never corrected in the source: SI abbreviations M, S, Kg and Cd in Table 2.0 (lines 85-91); three quantities at line 75 against seven table rows; empty Derivation cells at lines 100-102; 'Length × breath × height' at line 99; the empty Time unit at line 129; Momentum tabulated at line 156 undefined; tables numbered 2.0-2.3 in a 1st Term document; 'N(ma)' at line 155; 'ML-1 T-2' at line 158; exponents flattened by extraction with the minus encoded as an ASCII hyphen at lines 145-158 and as U+2212 at line 171; U+00D7 at lines 98, 99, 103, 145, 146 against the letter x at lines 105, 144, 186, 187; mixed quotation marks at lines 62 and 105; inconsistent item numbering at lines 163, 172, 174, 176, 188, 190; and the duplicate heading strings at lines 44/48 and 46/123, which make either pair an unusable single anchor for a classify_marker rule (reported to PHYS-RULE-T1-REVISION-SCHEME). Not done here and left with its owner: the term-wide figure inventory (PHYS-VIS-T1), the superscript/fraction/figure rendering decision (PHYS-OWNER-EXTRACTION-STRATEGY, BLOCKED), reconciliation of the unmerged PR #71 Week 1 entries PHYS-1-001..PHYS-1-011 (PHYS-PORT-D1-COV-T1; the branch drops the laboratory clause from PHYS-1-001) and the subject-package approval items. Full tests, typecheck, importer run, database and device checks remain deferred; CI was left enabled. No lesson, correction, rule, asset, source document, credential or shared file was written, and no stored row or order_index was renumbered. Gaps became four appended bounded tasks instead of notes: PHYS-LES-T1-W01-LABORATORY, PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS and PHYS-LES-T1-W01-KEY-ASSESSMENT (LESSON, PENDING) plus PHYS-FACT-T1-W01-SCOPE (FACTUAL_DEPENDENCY, BLOCKED). An indexed week is not a certified or fully taught week.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2210,6 +2212,168 @@
       "status": "BLOCKED",
       "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
       "completion_condition": "Run only in the later authorised verification stage; nothing is run by this queue."
+    },
+    {
+      "id": "PHYS-LES-T1-W01-LABORATORY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc); the unmapped objective is the second clause of the scheme row at word-extractor 1.0.4 getBody() line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc); coverage entry COV-PHYS-T1-W01-OBJ-2 (UNRESOLVED); open item PHYSICS-T1-W01-LABORATORY",
+      "objective": "Author one bounded Week 1 supplement lesson covering laboratory familiarisation for SS1 Physics - the room, the apparatus and instruments a student first meets, and the safety practice the teacher expects - because the 1st Term source teaches none of it: 'laborator' occurs only at line 24 in all 1,288 extracted lines and the WEEK ONE body (lines 41-191) has no laboratory, apparatus, instrument or safety teaching. Label it a supplement, not source teaching; teach only what the teacher clears in PHYS-FACT-T1-W01-SCOPE; invent no apparatus list, no experiment and no safety rule beyond that decision, and do not present any of it as the source's wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W01-LABORATORY.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W01",
+        "PHYS-FACT-T1-W01-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-2 is UNRESOLVED and PHYSICS-T1-W01-LABORATORY blocks delivery. The scheme clause is the only evidence that the objective exists.",
+      "completion_condition": "A lesson in physics.json teaches the laboratory content the teacher cleared, identifies itself as a Week 1 supplement with the scheme line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc) as its provenance objective, carries practice with complete answers and marking that sums exactly, has body_sha256 over the UTF-8 body and PENDING content approval, and adds no apparatus, experiment or safety claim the teacher did not approve; no schema, compiler, rule or shared file is edited."
+    },
+    {
+      "id": "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc), heading block lines 131-141 (sha256 4df785308606c86cfa907b21a2193a579e4ae5c79cfb14258e6217ec9cf186cb): density 0800008143ad95620af8e5f949a2493a8786aa0d47f8a68875ed28fbe824fb19, velocity c94b757c50c02a0d8c497943013807688eb21ac5c1b4b984f7c2cb4922179186, acceleration 216e9dc14588cd34c7b68f673b1d6744c74e0ce3d22a9690eb76e3a5ad5df816; coverage entry COV-PHYS-T1-W01-OBJ-7 (UNRESOLVED); open item PHYSICS-T1-W01-DIMENSIONAL-GAPS",
+      "objective": "Author one bounded Week 1 supplement lesson giving the dimensional analysis of density, velocity and acceleration that the source states in words but never shows: line 132 defines density as mass per unit volume, line 133 (sha256 34a75ea9ad17b9920de0eaddc65f6dffdaf2ddd68140f42b38bcdae08039b29e) ends at an equals sign, line 134 (sha256 6fca6169bbaa4c0d047a1cbe63d82e29685a0121ddfdd68f72ec2d990ac2f47c) is 54 spaces and an equals sign, line 137 (sha256 18c3a261822efa05042bf790088ba21bafb1149ac35b9c51e5d7a12851c4ffe5) reads 'Velocity =   = ' and line 141 (sha256 de213b1abae274aed6bba0f6c349e3764bec21056377fbe85e6f4bcea1f33b88) reads 'Acceleration =    = ', and the member file has no equation objects at all (0 Equation class names, 0 MTEF payloads, 0 EQ fields) while carrying 76 embedded PNG images. Reuse the taught force working at lines 143-147 (sha256 600ab9205133e7108dd43dbaa5c62095c2bd2884efe3d6b91ded1bfcb153c983) as the pattern the week itself demonstrates. Follow the rendering decision of PHYS-OWNER-EXTRACTION-STRATEGY for exponents; label the lesson a supplement; do not claim these steps come from lines 133-134, 137 or 141.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-7 is UNRESOLVED and PHYSICS-T1-W01-DIMENSIONAL-GAPS blocks delivery. Whether the missing operands were pictures is PHYS-VIS-T1's question and the exponent rendering is PHYS-OWNER-EXTRACTION-STRATEGY's; neither is decided here.",
+      "completion_condition": "A lesson in physics.json derives the dimensions of density, velocity and acceleration from the taught definitions at lines 132, 136 and 140, states plainly that the source shows no working, matches the force pattern at lines 143-147, carries practice with complete answers and marking that sums exactly, has body_sha256 over the UTF-8 body and PENDING content approval, uses the exponent rendering PHYS-OWNER-EXTRACTION-STRATEGY decides, and invents no figure or attributed source equation; no schema, compiler, rule, asset or shared file is edited."
+    },
+    {
+      "id": "PHYS-LES-T1-W01-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc): EVALUATION lines 61-63 (sha256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb) and 160-163 (sha256 f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1), WEEKEND ASSIGNMENT lines 168-182 (sha256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85) and THEORY lines 184-191 (sha256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0); coverage entries COV-PHYS-T1-W01-OBJ-10, -OBJ-11, -OBJ-13 and -OBJ-14 (UNRESOLVED); open item PHYSICS-T1-W01-ASSESSMENT-NO-KEY",
+      "objective": "Author one bounded Week 1 supplement that keys the week's own assessment: the two EVALUATION blocks, the seven-item WEEKEND ASSIGNMENT and the four-question THEORY block, all of which carry no answer, no worked solution and no mark allocation anywhere in the source (searches for mark, answer, allocation, score and solution across lines 41-191 return nothing). Key only what Week 1 teaches; for the items that reach beyond the week (weekend items 1, 3, 4, 5 and 7 and theory items 2 and 3, and the 7 untaught names in the classification question) use only the answers PHYS-FACT-T1-W01-SCOPE clears and record that the source does not teach them. Marking must sum exactly and label the key a supplement.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W01-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W01",
+        "PHYS-FACT-T1-W01-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W01 (2026-11-05): COV-PHYS-T1-W01-OBJ-10, -OBJ-11, -OBJ-13 and -OBJ-14 are UNRESOLVED and PHYSICS-T1-W01-ASSESSMENT-NO-KEY blocks delivery. Five of the seven weekend questions and two of the four theory questions turn on quantities Week 1 never teaches ('thrust' at lines 170 and 181 only, 'ohm' at line 175 only, 'tension'/'impulse'/'upthrust' at line 177, 'work' at line 173; 'strain' occurs nowhere in 1,288 lines).",
+      "completion_condition": "A keyed assessment supplement in physics.json answers every item at lines 61-63, 160-163, 168-182 and 184-191 that Week 1 teaches, states the basis for each answer drawn from the taught lines, marks each beyond-syllabus item as pending PHYS-FACT-T1-W01-SCOPE rather than inventing a quantity, has marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no schema, compiler, rule, asset or shared file is edited."
+    },
+    {
+      "id": "PHYS-FACT-T1-W01-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE, parsed row 0 (body lines 41-191, sha256 e343ec3389f73a5ba8ff6c475e11ed5128d6b7276d0089c7a4a6aa9b741d4ffc); the scheme row at getBody() line 24 (sha256 107871e4a26a044a789c101b4fd1778fddfe046ce599b8cdcbee1f19fece62cc); the two EVALUATION blocks (sha256 13fbd968dc602854a2b4c11d5f460c86d6fa1468ab3b3953e29a15b9657d7dbb and f36ebd540908d5a7d2f543a394513fa0ca5a22a5b4fca9a68fb2e613e9822ed1); WEEKEND ASSIGNMENT (sha256 f13123b9c03651004f38dfa7af99fe84845a34bc644a27d54f1d1f20ddb48b85); THEORY (sha256 5759524099c558672bf2d297392244c38c60e00f819fe260fe4c61cd04cc60e0); cross-week teaching at lines 195, 591, 883, 987, 1096, 1128 and 1218",
+      "objective": "Obtain one recorded subject-expert decision on every Week 1 scope, factual and wording question so the three appended lessons can proceed without invented content: (1) whether 'Familiarization of Physics Laboratory' is taught at all in Week 1 and what it covers; (2) whether the scientific method, asked at line 63 and taught nowhere in the term, is in scope and from what authority; (3) whether the 7 quantities the classification question at line 163 names but Week 1 never teaches (weight, torque, speed, power, energy, heat capacity, relative density) are expected of a Week 1 student; (4) whether the beyond-week assessment items (weekend 1, 3, 4, 5, 7 and theory 2, 3) stay in Week 1 or move to their own weeks; (5) whether the dimensional analyses at lines 131-141 were pictures in the original document (PHYS-VIS-T1) and how flattened exponents, the two minus encodings and the letter x used as a multiplication sign are rendered (PHYS-OWNER-EXTRACTION-STRATEGY); (6) the correct SI symbols for metre, second, kilogram and candela, the three-versus-seven quantity count, the empty Derivation cells at lines 100-102 and the empty Time unit at line 129, and whether tables numbered 2.0-2.3 belong to a 1st Term document; (7) one disposition per numbered defect in PHYSICS-T1-W01-SOURCE-DEFECTS. Do not supply any answer, symbol or definition without recording the authority the teacher actually uses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W01-SCOPE.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W01"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by PHYS-WK-T1-W01 (2026-11-05): 6 coverage entries are UNRESOLVED, 8 are PARTIAL, and PHYSICS-T1-W01-LABORATORY, -COVERAGE, -SCIENTIFIC-METHOD, -DIMENSIONAL-GAPS, -ASSESSMENT-NO-KEY and -FACT-DEFECTS are open and blocking while -NOTATION-LOSS and -SOURCE-DEFECTS are open and non-blocking. No lesson, correction, rule, asset or source byte was written and no answer invented.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the three lesson items then bind to those decisions; no correction is invented, no lesson authored and no shared file edited here."
     }
   ],
   "review": {
@@ -2235,11 +2399,11 @@
     }
   },
   "next_runnable": [
-    "PHYS-RULE-T1-REVISION-SCHEME"
+    "PHYS-RULE-T1-REVISION-SCHEME",
+    "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS"
   ],
   "runnable_now": [
     "PHYS-PRE-T3",
-    "PHYS-WK-T1-W01",
     "PHYS-WK-T1-W02",
     "PHYS-WK-T1-W03",
     "PHYS-WK-T1-W04",
@@ -2281,6 +2445,7 @@
     "PHYS-PORT-D1-T3-L004",
     "PHYS-PORT-D1-T3-L005",
     "PHYS-PORT-D1-COV-T1",
-    "PHYS-CMP-D4-NOTES"
+    "PHYS-CMP-D4-NOTES",
+    "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS"
   ]
 }
