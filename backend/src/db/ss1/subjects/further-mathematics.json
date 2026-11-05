@@ -1230,6 +1230,78 @@
       ]
     },
     {
+      "id": "COV-FM-T1-W02-OBJ-1",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Indicial and exponential equations: exponential equation of linear form (row CONTENT bullet 'Exponential Equation of Linear Form', which the row states twice - once in the CONTENT list and once as the section heading): the equal-base principle and solving linear-form exponential equations by writing both sides on a single base, taught with five worked examples a) to e) and a three-item Evaluation.",
+      "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 176 (CONTENT bullet) and 178 (section heading), 179 (principle), 181-210 (Examples a-e with Solutions; block SHA-256 b33800c01a6ba53698fc66e086079f2c51e1d578e32f30658367c6c2f34f13b3), 212-214 (Evaluation; block SHA-256 ff933853a3dd0677d4cfda7fac1b5cc98275b3238b04b3c87f8f428cbc41549e), 279-280 and 283 (Weekend Assignment items 1, 2 and 5); scheme line 25 ('2 Indicial and Exponential Equations', no sub-objectives listed); parsed row 1 = lines 173-287 (4,831 chars, SHA-256 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c), id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 178-210",
+          "explanation": "The row does teach the objective: the section states the method and works five examples. Every worked calculation was recomputed on 2026-11-05 and reaches the printed value: a) (1/2)^x = 8 gives x = -3 (2^-3 = 1/8, and (1/2)^-3 = 8); b) (0.25)^(x+1) = 16 gives x = -3 (0.25^-2 = 16); c) 3^x = 1/81 gives x = -4; d) 10^x = 1/0.001 gives x = 3; e) 4/2^x = 64^x gives x = 2/7 (both sides 3.281341424030552). The line 198 repetition of '10^x = 10^3' is duplication, not an error. Objective present, not certified."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() line 179",
+          "explanation": "The stated principle is unqualified and its claimed converse is false: 'if the base numbers of any equation are equal, then the power will be equal & vice versa'. a^x = a^y implies x = y only for a > 0 and a not equal to 1 (for a = 1 every x satisfies the equation), and the converse - equal powers implying equal bases - fails outright (4^2 = 2^4 gives the same value from different bases). The working of lines 186-193 and 195-198 silently uses 0.25 = 4^-1 and 1/81 = 3^-4, so the learner is never told when the step is legitimate. Defect 1 of OI-FM-T1-W02-FACT-DEFECTS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 212-214, 279-280, 283",
+          "explanation": "The linear-form practice is present but entirely unanswered: Evaluation items a) 2^x = 0.125, b) 25^(5x) = 625 and c) 10^x = 1/100000 have no solution or mark anywhere in the row (recomputed values x = -3, x = 2/5 and x = -5), and Weekend items 1, 2 and 5 have no key either (recomputed: 1) -3, option (a); 2) 2, option (c); 5) 6, option (b)). Weekend item 1 (line 279) is the same equation as worked example b) (line 183). Details in OI-FM-T1-W02-ASSESSMENT-GAPS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 183-283; the same member read with a CHPX-superscript reader",
+          "explanation": "In parsed row 1 every exponent is a formatted superscript run - 268 superscript groups over 51 lines, no subscripts - and word-extractor getBody() flattens all of them to baseline text, so '2 ^{2}^{-}{x}' is delivered as '2 2-x' and '(1/2)^x = 8' as '(1/2) x = 8'. The unknown x also doubles as the multiplication sign in the same lines (183 '4/2^{x} = 64^{x}' against 221 '4 x 5 ^{x+1}'). The delivered row text is therefore not instructionally usable for this objective. Details in OI-FM-T1-W02-NOTATION-LOSS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 195-198 against Week 1 line 136; lines 179 and 186-193 against Week 1 lines 138 and 140",
+          "explanation": "Week 1 linkage, established from the text rather than from the titles: Week 1 Weekend item 1 (line 136, 'Evaluate 3^{x} = 1/81') is the identical equation to Week 2 example c) (line 183), which Week 2 solves literally at lines 195-198 to x = -4 - Week 1 option (b). Week 1 items 3 (line 138, '3^{-y} = 243', y = -5, option (a)) and 4 (line 140, '25^{-5n} = 625', n = -2/5, option (d)) are linear-form applications of the principle stated at line 179 and of the one-base pattern worked at lines 186-193. So this week's teaching does support the exponential-equation questions carried in Week 1, but it is taught after them, Week 1 has no key for them, and Week 2 supplies no key either; the Week 1 supplement SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES left them unreproduced for exactly this reason and its COV-FM-T1-W01-OBJ-2 entry still says 'pending FM-WK-T1-W02 confirmation' - this entry is that confirmation."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/further-mathematics.json: lessons[] (no 1st Term Week 2 lesson); delivery_corrections[] (no 1st Term entry)",
+          "explanation": "No replacement lesson exists for this row and no delivery correction binds it, so the objective cannot be delivered as certified content. Status PARTIAL: the teaching is present in the source but is defective (line 179), unusable as delivered text (lost superscripts), unanswered in every assessment block, and it depends on two equation objects the extractor drops. The port decision on PR71 SUP-SS1-FMATHS-002 belongs to FM-PORT-D3-L002 and authoring to FM-LES-T1-W02-EQUATIONS; the binding belongs to FM-COR-T1-W02. No lesson is authored by this item."
+        }
+      ]
+    },
+    {
+      "id": "COV-FM-T1-W02-OBJ-2",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "objective": "Indicial and exponential equations: exponential equation of quadratic form (row CONTENT bullet 'Exponential Equation of Quadratic Form'): reducing an exponential equation to a quadratic by substituting the power for an unknown, solving the quadratic, rejecting the branch that gives a negative power, and finding x, taught with three worked examples a) to c) and a two-item Evaluation.",
+      "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 177 (CONTENT bullet), 216-222 (section heading, statement and Examples a-c; block SHA-256 f0536b2ba8c377c5ef4beb6dc93623743dd9adf7a2ce4f9b86c670ea0ea07c35), 224-266 (Solutions a-c; block SHA-256 26265e09909cadeecfc777d256fc46b5760a46d6517c2fe61a186d0fef4bcf99), 268-269 (Evaluation; block SHA-256 1885c441af3fc49d2d24c083beb0b9917f076858a71cad96e238cf195b32cc4b), 271-274 (General Evaluation; block SHA-256 09f492e60a0ef42730a00e6bc5213f7286875c7c943a558ea78a112be71841c8), 281-282 (Weekend Assignment items 3 and 4), 285-287 (Theory; block SHA-256 45ddc9049e808173c4b07fe0c2f02ba08797fafb95755ac59d4debc693e886f8); scheme line 25; parsed row 1 = lines 173-287, id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 216-266",
+          "explanation": "The row does teach the substitution method and works three examples. All three were recomputed on 2026-11-05 and reach the printed values: a) 2^(2x) - 6(2^x) + 8 = 0 factorises to (y-2)(y-4) = 0, giving x = 1 and x = 2; b) 5^(2x) + 4*5^(x+1) - 125 = 0 becomes p^2 + 20p - 125 = 0, (p-5)(p+25) = 0, so x = 1; c) 3^(2x) - 9 = 0 gives a = plus or minus 3 and x = 1. The rejected branches 5^x = -25 (line 251) and 3^x = -3 (line 265) are the correct rejections. Objective present, not certified."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 252 and 266 (object anchors at character positions 7711, 7714 and 7924)",
+          "explanation": "Both rejected branches end in an embedded object instead of text, so the conclusion that the learner is meant to read is absent from the delivered row: line 251 '5^{x} = -25' is followed by an object on line 252, and line 265 '3^{x} = - 3' by an object on line 266. The member's OLE directory holds exactly two 'Equation Native' (Microsoft Equation 3.0) streams, 41 bytes each, byte-identical, content SHA-256 90cd4ff61eb943baef83b6d8a5d4509cca596be6e9a4bd5e49c9cf2d339b0655; word-extractor deletes the object characters in its clean() step and this item did not decode the MTEF payload, so no text is recovered. The anchor-to-pool mapping was not established (it needs the ObjectLocation FSPA table). Recorded in OI-FM-T1-W02-NOTATION-LOSS; the recovery decision is FM-FACT-T1-W02-EQ-OBJECTS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 268-269",
+          "explanation": "The quadratic Evaluation is present and unanswered. Recomputed: item (b) 9^(2x+1) = 81^(x-2)/3^x gives x = -10 (both sides 3^-38) and is solvable by this week's method. Item (a) 3(2^(2x+3)) - 5(2^(x+2)) - 156 = 0 reduces to 24y^2 - 20y - 156 = 0, then 6y^2 - 5y - 39 = 0, so 2^x = 3 and x = log2 3, about 1.585 - a value the equal-base method of this week cannot reach; it needs scheme week 3 (Logarithms), which the row does not teach. Defect 8 of OI-FM-T1-W02-FACT-DEFECTS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 271-274, 281-282, 285-287, 276",
+          "explanation": "The remaining quadratic-form assessment is present and unanswered: General Evaluation a) 2^(2x+1) - 5(2^x) + 2 = 0 gives x = 1 and x = -1; b) 3^(2x) - 4(3^(x+1)) + 27 = 0 gives x = 1 and x = 2; Weekend item 3 (2^(2x) + 2^(x+1) - 8 = 0) gives x = 1, option (a), and item 4 ('The second value of x in question 3') has no second value, so only option (d) 'No solution' is defensible and the wording presupposes a value that does not exist; Theory 1) ((3^x))^2 + 2(3^x) - 3 = 0 gives x = 0 (the zero index comes from week 1) and 2) 5^(2x+1) - 26(5^x) + 5 = 0 gives x = 1 and x = -1. The Reading Assignment (line 276) cites 'Further Mathematics Project Book 1(New third edition).Chapter 2 pg. 6- 10', against the scheme references at lines 46-48; the page range was not checked against the book. Details in OI-FM-T1-W02-ASSESSMENT-GAPS."
+        },
+        {
+          "locator": "SS1-SRC-e9efc9a976ed: getBody() lines 220-221, 225-235, 249-265",
+          "explanation": "Two delivery defects specific to this objective: every exponent here is a superscript run flattened by word-extractor (220-221 prints as '22x - 6 (2x) + 8 = 0', indistinguishable from arithmetic multiplication), and the two-column working of example a) is interleaved by the extractor, so lines 225-229 read 'When y = 4 then, and When y = 2 then' across scrambled value lines even though the conclusions x = 2, x = 1 and 'x = 1 and 2' are correct. Lines 185 and 193 and 279-280 also switch the unknown to a capital X. Details in OI-FM-T1-W02-NOTATION-LOSS and defects 2 and 6 of OI-FM-T1-W02-FACT-DEFECTS."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/further-mathematics.json: lessons[] (no 1st Term Week 2 lesson); delivery_corrections[] (no 1st Term entry)",
+          "explanation": "No replacement lesson exists for this row and no delivery correction binds it. Status PARTIAL: the method is taught and its own working is arithmetically right, but the two lost conclusions, the unanswered practice, the item that needs week 3 logarithms and the flattened notation make the delivered row undeliverable as certified content. Authoring belongs to FM-PORT-D3-L002 then FM-LES-T1-W02-EQUATIONS; the binding to FM-COR-T1-W02. No lesson is authored by this item."
+        }
+      ]
+    },
+    {
       "id": "COV-FM-T1-R01",
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Indicial and exponential equations",
@@ -1242,6 +1314,10 @@
         {
           "locator": "parsed row 1",
           "explanation": "Row exists, but its full text has not been reviewed for factual accuracy and alignment with the scheme objective, and the delivered legacy-.doc text may lose superscripts, subscripts and MathType objects; no replacement lesson authored."
+        },
+        {
+          "locator": "FM-WK-T1-W02 (docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md)",
+          "explanation": "Row reviewed in full by FM-WK-T1-W02 against the attached member (SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145): the row states two CONTENT objectives, bound at objective level in COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 (both PARTIAL). Factual defects, lost notation, the three dropped object anchors and the unanswered practice are recorded in OI-FM-T1-W02-FACT-DEFECTS, OI-FM-T1-W02-NOTATION-LOSS and OI-FM-T1-W02-ASSESSMENT-GAPS. The scheme row is ordinary teaching content, so no classify_marker or other source rule applies to it. The row needs a replacement; none is authored here. This entry stays a row-level association and is not an objective-level certification."
         }
       ]
     },
@@ -1878,6 +1954,36 @@
       "required_action": "Replacement lesson supplies original practice with complete answers and marking breakdown under the contract, and either teaches or drops the equation-solving items; FM-WK-T1-W02 should confirm how week 2 covers them. Do not copy the printed items as an answer key.",
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:621448ae265154b2df510f38fd61d342b29b0b93e742aa7e53c2d93bc1b74cc2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W02-FACT-DEFECTS",
+      "kind": "FACT",
+      "detail": "1st Term Week 2 (INDICIAL AND EXPONENTIAL EQUATIONS) contains factual defects, by getBody() line: (1) line 179 states the working principle unconditionally - 'if the base numbers of any equation are equal, then the power will be equal & vice versa' - but a^x = a^y gives x = y only for a > 0 and a not equal to 1, and the claimed converse is false (4^2 = 2^4 is the same value from different bases); (2) the unknown is written x in the question (lines 183, 279, 280) but X in the working (185, 193, 279, 280); (3) line 198 repeats '10^{x} = 10^{3}' from line 197, a duplicated step; (4) the letter x serves both as the unknown and as the multiplication sign in the same section (line 183 '4/2^{x} = 64^{x}' against line 221 '4 x 5 ^{x+1}' and line 238 '4 x (5^{x} x 5^{1})'), which cannot be told apart once the superscripts are flattened; (5) lines 246-251 and 264-265 keep only the positive branch ('Since 5^{x} = p, p = 5') and never state the reason the negative branch is rejected; (6) the two-column working of quadratic example a) (lines 225-235) is interleaved by the extractor, so line 227 reads 'When y = 4 then, and When y = 2 then' across scrambled value lines, although the conclusions x = 2, x = 1 and 'x = 1 and 2' are correct; (7) the rejected branches end in embedded objects rather than text - line 251 '5^{x} = -25' then an object on line 252, line 265 '3^{x} = - 3' then an object on line 266 - so the conclusion the learner is meant to read is missing from the delivered row; (8) quadratic Evaluation item (a) on line 269, 3(2^(2x+3)) - 5(2^(x+2)) - 156 = 0, reduces to 6y^2 - 5y - 39 = 0, so 2^x = 3 and x = log2 3 (about 1.585), which the equal-base method this week teaches cannot reach - the method needed is scheme week 3 (Logarithms); (9) Weekend Assignment item 4 (line 282) asks for 'The second value of x in question 3', but question 3 (line 281) has one value, x = 1, since 2^x = -4 is rejected, so the wording presupposes a value that does not exist and only option (d) 'No solution' is defensible. Everything else in the row was recomputed on 2026-11-05 and reaches the printed value: linear examples a) x = -3, b) x = -3, c) x = -4, d) x = 3, e) x = 2/7 (both sides 3.281341424030552); quadratic examples a) x = 1 and 2, b) x = 1, c) x = 1; and the unanswered items evaluate to linear Evaluation a) -3, b) 2/5, c) -5, quadratic Evaluation b) x = -10, General Evaluation a) 1 and -1, b) 1 and 2, Weekend 1) -3 (option a), 2) 2 (c), 3) 1 (a), 5) 6 (b), Theory 1) 0, 2) 1 and -1. The row needs a replacement for delivery; none is authored.",
+      "required_action": "Author a replacement for this row (the port decision on PR71 SUP-SS1-FMATHS-002 belongs to FM-PORT-D3-L002, otherwise FM-LES-T1-W02-EQUATIONS) that states the base conditions for the equal-base step and drops the false converse, keeps one letter for the unknown and a distinct multiplication sign, gives the reason for rejecting a negative branch in words rather than as an object, replaces or teaches item (a) of the quadratic Evaluation, and rewords weekend item 4; bind it with FM-COR-T1-W02. FM-FACT-T1-W02-EQ-OBJECTS owns the decision on the two lost equation objects. The original wording is preserved, not edited.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W02-NOTATION-LOSS",
+      "kind": "CONTENT",
+      "detail": "In 1st Term Week 2 every exponent is a superscript run in the original and word-extractor getBody() flattens it to baseline text. Measured on the attached member with a CHPX reader that maps the character-format runs of the WordDocument stream back onto the body: parsed row 1 (lines 173-287) carries 268 superscript groups spread over 51 lines and no subscript groups; the whole document carries 1105 superscript and 229 subscript groups. Ambiguous lines: 183, 185-189, 195-198, 200-204, 214, 220-221, 225-238, 243-251, 253-265, 269, 273-274, 279-283, 287 - for example line 220 '2^{2}^{x} - 6 (2^{x}) + 8 = 0' is delivered as '22x - 6 (2x) + 8 = 0', and line 214 '25 ^{(5x)} = 625' as '25 (5x) = 625'. Three object anchors inside the row are deleted by word-extractor's clean() step (it strips characters 0x00-0x07): character positions 7711 and 7714 on line 252 and 7924 on line 266. The member's OLE directory holds exactly two 'Equation Native' (Microsoft Equation 3.0) streams, 41 bytes each, byte-identical, content SHA-256 90cd4ff61eb943baef83b6d8a5d4509cca596be6e9a4bd5e49c9cf2d339b0655; the MTEF payload was not decoded by this item and no text was recovered, and the anchor-to-pool mapping (which needs the ObjectLocation FSPA table) was not established. Doc-wide the extractor output shows 18 object anchors at lines 252, 266, 1051, 1476, 1478, 1483, 1493, 1997 and 2021 - some lines carry several - which corrects the note in docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md that all of the document's embedded objects sit after the Week 2 label; three of them sit inside Week 2. The Unicode that does survive includes the en dash used as a minus (lines 187, 189, 220) and the division sign at lines 201-202. The delivered row text is therefore not reliable for any item in it.",
+      "required_action": "The replacement lesson must restate every index, power and equation explicitly, including the two lost conclusions in words. Owner decision on an equation-aware extractor remains open in OI-FM-001, and the per-row census across the term belongs to FM-FACT-EQUATION-LOSS-T1. Do not alter the source row text.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "OI-FM-T1-W02-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "1st Term Week 2 gives no answers, solutions or marking for any of its practice: Evaluation (lines 212-214, three items), the quadratic Evaluation (268-269, two items), General Evaluation (271-274, two items), Weekend Assignment (278-283, five multiple-choice items) and Theory (285-287, two items) - thirteen items in all; only the five linear examples (181-210) and the three quadratic examples (216-266) are worked. The reading assignment (line 276) cites 'Further Mathematics Project Book 1(New third edition).Chapter 2 pg. 6- 10' while the scheme references (lines 46-48) name 'Further Mathematics project 1 by Tuttuh Adegun et al'; the page range was not checked against the book. Week 1 linkage, established from the text rather than from the titles and recorded to close the question in OI-FM-T1-W01-ASSESSMENT-GAPS: Week 1 Weekend item 1 (line 136, 'Evaluate 3^{x} = 1/81') is the identical equation to Week 2 example c) (line 183) and is literally solved at Week 2 lines 195-198 to x = -4, which is Week 1 option (b); Week 1 items 3 (line 138, '3^{-y} = 243', y = -5, option (a)) and 4 (line 140, '25^{-5n} = 625', n = -2/5, option (d)) are linear-form applications of the principle at Week 2 line 179 worked in the one-base pattern of lines 186-193. So Week 2 does teach what Week 1's three equation questions assume, but it teaches it after they are set, neither row supplies a key, and the Week 1 supplement SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES deliberately left those items unreproduced (its COV-FM-T1-W01-OBJ-2 entry still reads 'pending FM-WK-T1-W02 confirmation' - this open item and COV-FM-T1-W02-OBJ-1 are that confirmation; that entry was not edited by this item).",
+      "required_action": "The Week 2 replacement (FM-PORT-D3-L002, then FM-LES-T1-W02-EQUATIONS) must supply original answered practice with a complete marking breakdown under the contract, must not reuse the printed items as a key, and must not quietly teach the week-3 logarithm step needed by quadratic Evaluation item (a) - either teach it or replace the item. Week 1 delivery remains bound to FM-COR-T1-W01 and is not activated by this finding.",
+      "affected_ids": [
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
       ],
       "blocks_delivery": true
     }

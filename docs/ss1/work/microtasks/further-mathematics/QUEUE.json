@@ -28,9 +28,9 @@
   "counts": {
     "ASSET": 1,
     "BRANCH_PORT_COMPARISON": 16,
-    "CORRECTION_BINDING": 7,
-    "FACTUAL_DEPENDENCY": 10,
-    "LESSON": 7,
+    "CORRECTION_BINDING": 8,
+    "FACTUAL_DEPENDENCY": 11,
+    "LESSON": 8,
     "SCOPE_DECOMPOSITION": 2,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_REGISTRATION": 3,
@@ -41,8 +41,8 @@
     "VISUAL_DISPOSITION": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
-    "PENDING": 56,
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
+    "PENDING": 58,
     "BLOCKED": 7
   },
   "items": [
@@ -288,9 +288,107 @@
         "FM-SRC-T1",
         "FM-PRE-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "parsed row 1 of SS1-03 parsed_rows.json (week label \"WEEK TWO\", title \"INDICIAL AND EXPONENTIAL EQUATIONS\", 4831 characters). Existing coverage COV-FM-T1-R01 is PARTIAL (row exists; full text not reviewed for accuracy or alignment with the scheme objective; no replacement lesson). PR71-only candidate replacement (not on master): SUP-SS1-FMATHS-002 (task FM-PORT-D3-L002). Row-level association only; no objective-level entry exists yet. Delivered legacy/extracted text may lose superscripts, subscripts, equations and MathType objects (OI-FM-001, OI-FM-002).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed in full on 2026-11-05 from the attached member (SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145 verified). Parsed row 1 re-derived as getBody() lines 173-287 (4,831 chars, join SHA-256 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c, matching SS1-03 parsed_rows.json). Scheme line 25 gives one topic with no sub-objectives; the row states two CONTENT objectives (lines 176 and 177), each bound at objective level: COV-FM-T1-W02-OBJ-1 (linear form, lines 176/178-210/212-214 plus weekend items 1, 2, 5) and COV-FM-T1-W02-OBJ-2 (quadratic form, lines 177/216-266/268-269 plus general evaluation, weekend items 3-4 and theory) - both PARTIAL with per-block SHA-256 locators. COV-FM-T1-R01 gained a pointer evidence entry only; it stays a row-level association. No source rule applies: the row is ordinary teaching content, not a revision/examination/scheme-only marker, and its label 'WEEK TWO' is not stranded. Every worked calculation was recomputed and is correct (linear a) -3, b) -3, c) -4, d) 3, e) 2/7; quadratic a) 1 and 2, b) 1, c) 1); the unanswered items were evaluated too (linear Evaluation -3, 2/5, -5; quadratic Evaluation b) -10; general evaluation 1 and -1, 1 and 2; weekend -3/2/1/no second value/6; theory 0, and 1 and -1). Nine factual defects are recorded in OI-FM-T1-W02-FACT-DEFECTS (unqualified equal-base principle and its false converse at line 179; X versus x; duplicated step at 198; x as both unknown and multiplication sign; unstated rejection of the negative branch; interleaved two-column working; two conclusions lost to objects; quadratic Evaluation item (a) needing week 3 logarithms; weekend item 4 presupposing a value that does not exist). Notation loss measured on this member with a CHPX reader: 268 superscript groups over 51 lines in the row, no subscripts, and three object anchors deleted by word-extractor (character positions 7711 and 7714 on line 252, 7924 on line 266); the document holds exactly two 41-byte 'Equation Native' streams, byte-identical, SHA-256 90cd4ff61eb943baef83b6d8a5d4509cca596be6e9a4bd5e49c9cf2d339b0655, not decoded - details and the doc-wide 18-anchor census (which corrects the 'all objects sit after the Week 2 label' note in FM-WK-T1-W01.md) in OI-FM-T1-W02-NOTATION-LOSS. Week 1 linkage established from the text, not the titles: week 1 weekend item 1 (line 136) is the identical equation to week 2 example c) (line 183) and is solved at lines 195-198 (x = -4 = week 1 option (b)); week 1 items 3 and 4 are linear-form applications of the principle at line 179 (y = -5, option (a); n = -2/5, option (d)) - so week 2 does supply the method week 1 assumes, but teaches it after the questions are set and supplies no key; recorded in OI-FM-T1-W02-ASSESSMENT-GAPS and COV-FM-T1-W02-OBJ-1, and OI-FM-T1-W01-ASSESSMENT-GAPS and COV-FM-T1-W01-OBJ-2 were left unchanged. New bounded items: FM-LES-T1-W02-EQUATIONS (author the one replacement after the FM-PORT-D3-L002 decision), FM-COR-T1-W02 (bind the row to it) and FM-FACT-T1-W02-EQ-OBJECTS (owner decision on the two lost equation objects). No lesson, correction, asset or source rule added; nothing approved or verified; package_status unchanged at PENDING. Record: docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md. Implemented, not approved or verified.",
       "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; factual defects and notation loss are listed; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing or defective, a separate small PENDING queue item (a lesson item only for a specifically named uncovered objective). No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+    },
+    {
+      "id": "FM-LES-T1-W02-EQUATIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 02 (parsed row 1, id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c, getBody() lines 173-287); objectives COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2",
+      "objective": "Author ONE replacement supplement for 1st Term Week 02 (Indicial and Exponential Equations) covering both CONTENT objectives - linear-form equations (equal-base method) and quadratic-form equations (substitution, rejecting the impossible branch) - with original answered practice, complete marking breakdown, correct under every defect in OI-FM-T1-W02-FACT-DEFECTS, every index and power written explicitly (OI-FM-T1-W02-NOTATION-LOSS) and both lost conclusions stated in words. Do this only if FM-PORT-D3-L002 did not port a replacement that passes the defect list; if it did, close this item by reference. Never copy the printed source exercises as the key.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W02-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "FM-SRC-T1",
+        "FM-PRE-T1",
+        "FM-WK-T1-W02",
+        "FM-PORT-D3-L002"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FM-WK-T1-W02. The row needs a replacement (OI-FM-T1-W02-FACT-DEFECTS, OI-FM-T1-W02-NOTATION-LOSS, OI-FM-T1-W02-ASSESSMENT-GAPS). No 1st Term Week 2 lesson exists on master. Bounds the item must respect: state a > 0 and a not equal to 1 for the equal-base step and drop the false converse at line 179; one letter for the unknown and a distinct multiplication sign; give the reason a negative branch is rejected in words (the row loses both conclusions to equation objects at lines 252 and 266); either teach the logarithm step or replace quadratic Evaluation item (a) (3(2^(2x+3)) - 5(2^(x+2)) - 156 = 0 needs x = log2 3, a week 3 method); reword the item that asks for a 'second value' that does not exist. Not started.",
+      "completion_condition": "Supplement exists with provenance, objectives, original practice with complete answers and marks that sum, exact body hash, state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED; both coverage entries COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 updated to point at it with objective-level evidence; or closed by reference to a ported replacement that passes the defect list. Approval and verification are not invented."
+    },
+    {
+      "id": "FM-COR-T1-W02",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "parsed row 1 SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+      "objective": "Bind the original Week 02 row to its single replacement with a delivery correction, after the replacement exists and its scope review against COV-FM-T1-W02-OBJ-1 and -OBJ-2 is recorded. Only one replacement may be bound to the row.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-COR-T1-W02.md"
+      ],
+      "depends_on": [
+        "FM-WK-T1-W02",
+        "FM-LES-T1-W02-EQUATIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by FM-WK-T1-W02. No delivery_corrections entry exists for the 1st Term; the row id and body hash are both 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c (the row id is SS1-SRC-e9efc9a976ed:BODY:<that hash>). Not started.",
+      "completion_condition": "delivery_corrections entry added with exact source id, source SHA-256, source lesson id, body hash, replacement id, reason and evidence; no whole-row correction is activated while teaching scope is unresolved."
+    },
+    {
+      "id": "FM-FACT-T1-W02-EQ-OBJECTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-e9efc9a976ed",
+      "term": "1st Term",
+      "week_or_locator": "Week 02 lines 252 and 266 (object anchors at character positions 7711, 7714 and 7924)",
+      "objective": "Establish what the two 41-byte Microsoft Equation 3.0 objects that close the rejected branches 5^x = -25 (line 251) and 3^x = -3 (line 265) displayed, so the Week 2 replacement can state the conclusion instead of guessing it. Either decode the MTEF payload of the two 'Equation Native' streams (content SHA-256 90cd4ff61eb943baef83b6d8a5d4509cca596be6e9a4bd5e49c9cf2d339b0655, byte-identical) or record the teacher's or owner's reading of the original page. Also establish which text anchor maps to which ObjectPool entry (needs the ObjectLocation FSPA table).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/further-mathematics.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc",
+          "member_sha256": "995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/further-mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/further-mathematics/FM-FACT-T1-W02-EQ-OBJECTS.md"
+      ],
+      "depends_on": [
+        "FM-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Defects 5 and 7 and the object census of OI-FM-T1-W02-FACT-DEFECTS / OI-FM-T1-W02-NOTATION-LOSS, recorded by FM-WK-T1-W02. That item attempted an inflate of the compressed tail of the 41-byte stream and did not decode the payload; the MTEF grammar and the owner's reading are both outside it. It does not block drafting the replacement, which must state the rejection reason in words rather than reproduce the object.",
+      "completion_condition": "The displayed content of the two objects is recorded with its method (decoded bytes or owner statement), or the item is left unresolved with the reason; no lesson is authored here and the source row is not edited."
     },
     {
       "id": "FM-WK-T1-W03",
@@ -2233,10 +2331,13 @@
         "FM-VIS-T2-W05-W07-MAPPING",
         "FM-LES-T1-W01-INDICES",
         "FM-COR-T1-W01",
-        "FM-FACT-T1-W01-GEN-EVAL-F"
+        "FM-FACT-T1-W01-GEN-EVAL-F",
+        "FM-LES-T1-W02-EQUATIONS",
+        "FM-COR-T1-W02",
+        "FM-FACT-T1-W02-EQ-OBJECTS"
       ],
       "status": "PENDING",
-      "implementation_reference": "OI-FM-002 (CONTENT) is unchanged in further-mathematics.json. Children: objective review = FM-WK-T1-*, FM-WK-T2-*, FM-PRE-*; notation loss = FM-FACT-EQUATION-LOSS-*; figures = FM-VIS-*; branch comparisons = FM-PORT-D3-L001..L009.",
+      "implementation_reference": "OI-FM-002 (CONTENT) is unchanged in further-mathematics.json. Children: objective review = FM-WK-T1-*, FM-WK-T2-*, FM-PRE-*; notation loss = FM-FACT-EQUATION-LOSS-*; figures = FM-VIS-*; branch comparisons = FM-PORT-D3-L001..L009. FM-WK-T1-W02 (2026-11-05) added its Week 2 children to this list: FM-LES-T1-W02-EQUATIONS, FM-COR-T1-W02 and FM-FACT-T1-W02-EQ-OBJECTS.",
       "completion_condition": "All dependencies complete and OI-FM-002 replaced by precise open items or removed with evidence."
     },
     {
