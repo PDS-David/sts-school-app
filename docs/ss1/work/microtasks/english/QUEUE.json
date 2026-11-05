@@ -42,20 +42,21 @@
     "ENG-LES-W04-REVISION-KEYS (2026-11-03): Week 4 revision supplement authored on the stacked Week 4 branch (PR #301-#308). New lesson SUP-SS1-ENGLISH-REVISION-W04-T1 (60 marks) bound to coverage ENGLISH-T1-W04-RV01, now IMPLEMENTED_EQUIVALENT; the lost underlining is replaced with square brackets and all answers are original. ANSWER-KEYS is closed because AG04, SP02 and RV01 now all have keyed teaching; SOURCE-WORDING-REVIEW drops RV01. Week 4 lesson work is complete except ENG-LES-W04-SKIM-SCAN, which still depends on the pending FACT item ENG-FACT-READING-T1-T3-UNBOUND. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W05-SENTENCE-KINDS (first Week 5 lesson).",
     "ENG-LES-W05-SENTENCE-KINDS (2026-11-03): Week 5 sentence-kinds supplement authored on the stacked Week 5 branch (PR #301-#309). New lesson SUP-SS1-ENGLISH-SENTENCE-KINDS-T1 (60 marks) bound to coverage ENGLISH-T1-W05-KS01 to KS07, now IMPLEMENTED_EQUIVALENT. It teaches the sentence definition including commands, clause counting, the four standard kinds, the course-book ‘multiple sentence’ label without deciding it for the course, and a keyed five-sentence task. Open item SENTENCE-KINDS-BINDING remains only for the owner's label choice; ANSWER-KEYS and SOURCE-WORDING-REVIEW are narrowed but stay open for the essay, revision and vocabulary tasks. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W05-EXPOSITORY-ESSAY.",
     "ENG-LES-W05-EXPOSITORY-ESSAY (2026-11-03): Week 5 expository-essay supplement authored on the stacked Week 5 branch (PR #301-#310). New lesson SUP-SS1-ENGLISH-EXPOSITORY-ESSAY-T1 (60 marks) bound to coverage ENGLISH-T1-W05-ES01 to ES04, now IMPLEMENTED_EQUIVALENT. It teaches the features, planning, a worked plan and model paragraphs for ‘Honesty is the Best Legacy’, the narrative trap and a marked task with a scheme. Open item EXPOSITORY-ESSAY is closed; ANSWER-KEYS now affects only RV01 and SOURCE-WORDING-REVIEW drops ES02 and ES03. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W05-REVISION-KEYS.",
-    "ENG-LES-W05-REVISION-KEYS (2026-11-03): Week 5 revision supplement authored on the stacked Week 5 branch (PR #301-#311). New lesson SUP-SS1-ENGLISH-REVISION-W05-T1 (60 marks) bound to coverage ENGLISH-T1-W05-RV01, now IMPLEMENTED_EQUIVALENT. It teaches adjective order, tag questions and their special patterns, asthma and silent-letter spelling, and determiners, with a new keyed mixed set. ANSWER-KEYS is closed; SOURCE-WORDING-REVIEW drops RV01. No lesson is now runnable without owner input: ENG-LES-W05-STOCK-INSURANCE-VOCAB depends on ENG-FACT-W05-VOCAB-OBJECTIVE and ENG-LES-W04-SKIM-SCAN depends on ENG-FACT-READING-T1-T3-UNBOUND. Approval stays PENDING and verification DEFERRED. next_runnable: []."
+    "ENG-LES-W05-REVISION-KEYS (2026-11-03): Week 5 revision supplement authored on the stacked Week 5 branch (PR #301-#311). New lesson SUP-SS1-ENGLISH-REVISION-W05-T1 (60 marks) bound to coverage ENGLISH-T1-W05-RV01, now IMPLEMENTED_EQUIVALENT. It teaches adjective order, tag questions and their special patterns, asthma and silent-letter spelling, and determiners, with a new keyed mixed set. ANSWER-KEYS is closed; SOURCE-WORDING-REVIEW drops RV01. No lesson is now runnable without owner input: ENG-LES-W05-STOCK-INSURANCE-VOCAB depends on ENG-FACT-W05-VOCAB-OBJECTIVE and ENG-LES-W04-SKIM-SCAN depends on ENG-FACT-READING-T1-T3-UNBOUND. Approval stays PENDING and verification DEFERRED. next_runnable: [].",
+    "ENG-WK-T1-W06 (2026-11-05): Week 6 indexed at objective level; 31 coverage entries and rule R033 added to english.json, seven open items opened and seven PENDING follow-up items appended (ENG-FACT-W06-EXTERNAL-MATERIALS, ENG-LES-W06-COMPREHENSION-ADVERTISING, -FIGURES-OF-SPEECH, -DESCRIPTIVE-ESSAY, -DIPHTHONGS, -ADVERBIAL-CLAUSE, -REVISION-KEYS). Indexing complete, content gaps not closed; ENGLISH-BODY-021 keeps its row-level IMPLEMENTED_EQUIVALENT status although the objective-level entries show the replacement is narrower (open item DIPHTHONG-SCOPE). Approval stays PENDING and verification DEFERRED. next_runnable, NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 35,
+    "LESSON": 41,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 18,
+    "FACTUAL_DEPENDENCY": 19,
     "ASSET": 1,
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 41,
-    "PENDING": 74,
+    "IMPLEMENTED_TESTING_DEFERRED": 42,
+    "PENDING": 80,
     "BLOCKED": 4
   },
   "items": [
@@ -341,8 +342,8 @@
       "depends_on": [
         "ENG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-018, ENGLISH-BODY-019, ENGLISH-BODY-020, ENGLISH-BODY-021 (4 body-level rows; statuses {'PARTIAL': 3, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-018='TOPICS: COMPREHENSION/ORAL SKILLS: FIGURES OF SPEECH- SIMILE, METAPHOR'; ENGLISH-BODY-019='B. FIGURES OF SPEECH'; ENGLISH-BODY-020='C. ESSAY WRITING (DESCRIPTIVE)'; ENGLISH-BODY-021='D. SPEECH WORK: DIPHTHONGS'. Corrected rows: ENGLISH-BODY-021 <- SS1-02-english-COR-006 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-11-05 from master a188f910e909d0ee01b25c60b7926158b58d8533; source document sha256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef verified (standalone member; the composite archive was not supplied, so its hash was not checked). Text extracted privately with word-extractor getBody() (sha256 8c3faa979ab73ef5de1cbc97976405c20332d505d49233cc147bfef691034a4e); rules R001 to R032 applied; the four Week 6 rows reproduced by the WEEK-marker logic with body hashes equal to the existing coverage (018 73014c2829d4ca795dcf0ef9e26585f722587ffe12c4c875c0dafedb6006844d, 019 c5c16195920aafba58d825bd8f6012c8de49cbed4bc20717785640ee4cc69daa, 020 037d4440860558dd7fabaac2f05cf623d7c8bbb7a44bfbd3df31f20fa3e65c12, 021 00bd8299727d438d9c64eecc056d38d2ce81071eb86aade06647b1e8ca863128). The document was rendered privately to PDF (pages 23 to 26) to inspect the diphthong notation and the underlining. backend/src/db/ss1/subjects/english.json: row-level entries ENGLISH-BODY-018..021 retained unchanged and 31 new Week 6 entries added: ENGLISH-T1-W06-SCHEME-ROW, CO01-CO03, FS01-FS08, AC01, DE01-DE04, DP01-DP12, RV01, WA01; classify_marker/SCHEME_ONLY rule SS1-SRC-a00657d42196-R033. Outcome of the new entries: 1 MARKER, 1 IMPLEMENTED_EQUIVALENT (DP02, the diphthong inventory, through SUP-SS1-ENGLISH-PHONETICS-T1), 21 PARTIAL, 8 UNRESOLVED (CO01, CO02, CO03, FS08, AC01, DE04, DP12, WA01). Replacement scope checked: correction SS1-02-english-COR-006 replaces ENGLISH-BODY-021 with SUP-SS1-ENGLISH-PHONETICS-T1, which names the eight diphthongs with one example each but teaches no spelling variants and has no diphthong exercise, so the row-level IMPLEMENTED_EQUIVALENT on ENGLISH-BODY-021 (left unchanged) overstates it; no supplement or correction covers figures of speech or the descriptive essay, and no text anywhere teaches the adverbial clause. Open items: ENGLISH-T1-W06-EXTERNAL-MATERIALS, ANSWER-KEYS, FIGURES-OF-SPEECH, DESCRIPTIVE-ESSAY, DIPHTHONG-SCOPE, SOURCE-WORDING-REVIEW, ADVERBIAL-CLAUSE. No visual or asset is required (the only embedded images are on pages 1 and 2). No evidence note file was written: the task permitted only english.json and QUEUE.json.",
       "completion_condition": "Every objective of Week 6 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -3746,6 +3747,224 @@
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-REVISION-W05-T1 (9 paragraphs, 6 objectives, 6 practice items, 60 marks; body_sha256 61662a28c27d77c30fe67da5c658eb6da5f6839da9516dd6d4c47f037d1021f3 recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W05-RV01 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original target and add the supplement). The source items and options are not reproduced or used to infer answers, and the garbled item is not repaired. Open item ANSWER-KEYS is closed; SOURCE-WORDING-REVIEW drops RV01 and now affects SE01 and SE02; EXTERNAL-MATERIALS and INSURANCE-VOCAB are unchanged. Record: docs/ss1/work/microtasks/english/ENG-LES-W05-REVISION-KEYS.md.",
+      "completion_condition": "RV01 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-FACT-W06-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W06-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 6 refers to but the source does not contain (Effective English pages 86-87, 85-86 and 34; Essential Literature in English for SSS pages 42-43; Standard Speech Book 10: Diction in English language Course pages 16-18; Countdown questions 41-60, pages 355-357, with answers and the correct author and edition), or have the owner accept labelled equivalent activities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W06-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-018 to ENGLISH-BODY-021, ENGLISH-T1-W06-CO01, CO02, CO03, FS08, DE04, DP12, WA01. Needs owner-supplied material or an owner decision.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of equivalent activities; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
+    },
+    {
+      "id": "ENG-LES-W06-COMPREHENSION-ADVERTISING",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, comprehension/oral skills (coverage ENGLISH-T1-W06-CO01, CO02)",
+      "objective": "Author an original advertising comprehension passage on the two purposes of advertising (inform; create or stimulate demand through persuasion), with keyed, marked comprehension questions and a short oral task, only after the owner accepts an equivalent activity in ENG-FACT-W06-EXTERNAL-MATERIALS. Original teaching only: do not copy source text, do not infer answers from the source options, keep content approval PENDING and verification DEFERRED, and bind additively through coverage lesson_ids (no second correction on a row that already has one).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06",
+        "ENG-FACT-W06-EXTERNAL-MATERIALS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Blocked on the owner decision in ENG-FACT-W06-EXTERNAL-MATERIALS; coverage CO01 and CO02 stay UNRESOLVED until then.",
+      "completion_condition": "CO01 and CO02 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W06-FIGURES-OF-SPEECH",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, figures of speech (coverage ENGLISH-T1-W06-FS01 to FS07)",
+      "objective": "Author an original lesson on figures of speech: an accurate definition, simile, metaphor, personification, irony and the rhetorical question, each with checked and attributed or original examples, and a keyed, marked exercise (identify the figure, state its effect, write one example of each). Original teaching only: do not copy source text, do not infer answers from the source options, keep content approval PENDING and verification DEFERRED, and bind additively through coverage lesson_ids (no second correction on a row that already has one).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Awaiting authoring; open items ENGLISH-T1-W06-FIGURES-OF-SPEECH, ANSWER-KEYS and SOURCE-WORDING-REVIEW name the exact gaps. SUP-SS1-ENGLISH-MEANING-T1 paragraph 10 is a lead only.",
+      "completion_condition": "FS01 to FS07 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W06-DESCRIPTIVE-ESSAY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, descriptive essay (coverage ENGLISH-T1-W06-DE01 to DE03)",
+      "objective": "Author an original descriptive-essay lesson: scope, dominant impression, sensory detail, organisation, a worked plan and model paragraph for 'A rainy day I will live to remember', and a marked writing task with a marking scheme. Original teaching only: do not copy source text, do not infer answers from the source options, keep content approval PENDING and verification DEFERRED, and bind additively through coverage lesson_ids (no second correction on a row that already has one).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Awaiting authoring; open items ENGLISH-T1-W06-DESCRIPTIVE-ESSAY and ANSWER-KEYS name the exact gaps. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 paragraph 3 is a lead only.",
+      "completion_condition": "DE01 to DE03 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W06-DIPHTHONGS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, diphthongs (coverage ENGLISH-T1-W06-DP01, DP03 to DP11)",
+      "objective": "Author an original diphthong lesson that extends SUP-SS1-ENGLISH-PHONETICS-T1: the definition, the eight diphthongs in consistent IPA, spelling variants for each reviewed against a pronunciation dictionary with accent notes, and a keyed, marked exercise that asks for two checked examples of each. Oral and listening verification is out of scope. Original teaching only: do not copy source text, do not infer answers from the source options, keep content approval PENDING and verification DEFERRED, and bind additively through coverage lesson_ids (no second correction on a row that already has one).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Awaiting authoring; open items ENGLISH-T1-W06-DIPHTHONG-SCOPE, ANSWER-KEYS and SOURCE-WORDING-REVIEW name the exact gaps. DP02 is already IMPLEMENTED_EQUIVALENT through SUP-SS1-ENGLISH-PHONETICS-T1.",
+      "completion_condition": "DP01 and DP03 to DP11 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W06-ADVERBIAL-CLAUSE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, structure: adverbial clause (coverage ENGLISH-T1-W06-AC01)",
+      "objective": "Author an original lesson on the adverbial clause: definition, the main kinds (time, place, reason, condition, concession, purpose, result, manner), subordinators, punctuation, and a keyed, marked exercise. Do not use the Week 10 adverbial-phrase row as coverage. Original teaching only: do not copy source text, do not infer answers from the source options, keep content approval PENDING and verification DEFERRED, and bind additively through coverage lesson_ids (no second correction on a row that already has one).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Awaiting authoring; open item ENGLISH-T1-W06-ADVERBIAL-CLAUSE names the gap. The scheme row is the only evidence that Week 6 should include it; the owner may defer it.",
+      "completion_condition": "AC01 reaches IMPLEMENTED_EQUIVALENT with a supplement target, or the owner records that it is deferred; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-W06-REVISION-KEYS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 6, general evaluation/revision questions (coverage ENGLISH-T1-W06-RV01)",
+      "objective": "Author a reviewed, keyed vowel-sound revision set as original items covering the single vowel sounds the source stems test, with the target letters shown in square brackets. Do not infer the answers from the source options and do not repair the source items.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Awaiting authoring; open items ENGLISH-T1-W06-ANSWER-KEYS and SOURCE-WORDING-REVIEW name the gap. ENG-LES-W03-MONOPHTHONGS-SCOPE (SUP-SS1-ENGLISH-MONOPHTHONGS-T1) is a lead only.",
       "completion_condition": "RV01 reaches IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
       "required_attachments": [
         {
