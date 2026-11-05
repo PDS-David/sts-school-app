@@ -91,7 +91,324 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-ECON-T1-W01-SCHEME-1",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Scheme row 1 of the 1st Term Economics scheme of work: the printed row 'Meaning of Economics.' that the WEEK ONE body answers.",
+      "objective_locator": "line 25 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 25 (scheme row 1, printed exactly as Meaning of Economics. with a full stop and no week number) SHA-256 e811a525b79a7903f2d0737fb7a1805b26f22afc701b88ef9172d3806bddb78a; lines 44-116 (the whole WEEK ONE body) SHA-256 4506372278dd7327422d43ac169351c46754ed5af63d3df6810bdd3be6b148eb",
+          "explanation": "The scheme row names meaning only. The body under the WEEK ONE marker (line 44) carries the topic line DEFINITION AND THE SCOPE OF ECONOMICS (line 45) and teaches five labelled sections, so the row is indexed here as one objective and the rest are indexed separately rather than folded into this entry."
+        },
+        {
+          "locator": "lines 24-36 (the tab-delimited scheme table, WEEK<TAB>TOPIC header plus thirteen rows) SHA-256 0f6909d39c1b1a1488935604f59ace2b45823507d9d95d0786428aa5f6d5a03f",
+          "explanation": "Scheme context. Rows 11 and 12 & 13 are calendar markers with no body and belong to ECON-MARK-T1-REVEXAM; the opening block that holds this table (lines 1-43, SHA-256 619fc6e5db6827df8bd4ce0289b0b59be7b207c8daa798c1f42fdd2fb9fb8a9b) belongs to ECON-PRE-T1 and is not indexed here."
+        },
+        {
+          "locator": "lines 44-45 (WEEK ONE marker and topic line) SHA-256 9e2bbb99946d6602ca0412be7f0b6fa40684c3f19dddb4092b0e9111af7d7a26",
+          "explanation": "The marker and topic line that anchor every other Week 1 locator in this file."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-DEFINITIONS",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Definition and meaning of Economics: the framing statement that the subject has many definitions, the seven definitions the source prints, and the two reasons it gives for the popularity of the 1932 definition.",
+      "objective_locator": "lines 51-62 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 51-62 (the whole DEFINITION AND MEANING OF ECONOMICS section) SHA-256 c2840ed07f94a0c5b6e9122979720bd6a71ab636e750f4648ab977e905f5b7bd",
+          "explanation": "Teaching is present in the source: the introductory pair lines 52-53 SHA-256 1f07a4fc758bc98499eaeeeac4c5edf464b7af26353dfe0ede3a723e4433109f is followed by one printed definition per line. Nothing is deliverable: the section has no lesson, no parsed row and the attributions and quotations are unverified, so this is PARTIAL and never SUPPORTED."
+        },
+        {
+          "locator": "line 54 (Adam Smith, described in the source as an 18th Century British Economist and Called the Father of Economics, dated 1776) SHA-256 516018a5fb0870513529e212219b90c85b12baa8b8c97c70c67c91cfa9ff18e9",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 55 (John Stuart Mill, dated 1843) SHA-256 d28088d625bde806955b004d2c11d6da0d8e58f0caeed8f55004eeb8c0c85031",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 56 (the source prints the name as Alfred Marshal, dated 1890) SHA-256 0b998b7a0a130bf8a892f8950ca2bc53112cebe0c9b7955380fbf9eeb074b4a3",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 57 (the source prints the name as H. J. Daven Port, undated) SHA-256 23e526cc4f58ad73b6216908b57aacf9be1e3b30f85a0c16d97bbd882f7dca58",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 58 (the source prints the name as Edvins Canon, undated) SHA-256 70584daf0ee471514a2a57b6ec0f47275edd080c477bad890ff73ae2ad186adb",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 59 (A.I. Pigou, undated; the closing quotation mark is printed as two apostrophes) SHA-256 670b52090ef840419e1eaeb599afd902b48c8bf6c6ad10e3d08b57a9cc11e850",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 60 (the source prints the name as Professor Lionel C. Robins, dated 1932, and calls it the most acceptable and widely used definition) SHA-256 dbdf60fa06054d1339489ec17fcf109b3e31523b17d1fe896f0d559f1c2a8431",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "lines 61-62 (the two reasons the source gives for the popularity of that definition) SHA-256 0346c5e5bf8579255a79909f6df39bd3a95618e5b98326c3dd26e692916ca7d7",
+          "explanation": "The source states that the 1932 definition is the only one that mentions the basic economic problem of scarcity and choice (line 61) and the fact that economics is a social science (line 62). Both claims are the source own assessment and are unverified here."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-SCOPE",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The scope of Economics: the relationship the source claims with other social sciences, what the subject studies, that it studies behaviour in daily economic activity, the administration of scarce resources, and the positive rather than normative claim.",
+      "objective_locator": "lines 64-69 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 64-69 (the whole THE SCOPE OF ECONOMICS section) SHA-256 dd622e2929e1802e9746ec488e516528d3bde7babdb09fc937712517c7cfe348",
+          "explanation": "Five teaching statements, one paragraph each. Line 65 lists the other social sciences the subject relies on and ends with etc; no figure, table or worked example supports any of the five statements."
+        },
+        {
+          "locator": "line 65 (relation to other social sciences) SHA-256 16c92fdd751715240db807eceb26ddb8600063f6f3040fd866d7da63bbfb9def",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 66 (what the subject studies: production, exchange, distribution and consumption) SHA-256 46cbea0e6348554b513eb6b927f4e3a4c458dbd255c2b954bb1b8a0838bf87d0",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 67 (behaviour in daily economic activity) SHA-256 35455d0b694b087bf307182a61d3b84fdeb100ebf65a5090e075fd667a6b9e9d",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 68 (administration of scarce resources) SHA-256 ab1e2a5a4df824090705116b2e27dad95a7e2d4a4a30ef72f9d6e0ccb42808aa",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 69 (positive not normative, closing with the real or opportunity cost of achieving ends) SHA-256 5060bc14cb30ff98e82353fe8b890acd6201b3240be34c4707eb2952ff2a7b06",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-BRANCHES",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The branches of Economics: the division into micro economics and macro economics and the one-paragraph description given for each.",
+      "objective_locator": "lines 75-78 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 75-78 (the whole THE BRANCHES OF ECONOMICS section) SHA-256 7a131e1ec1bb4020bd79c8b4a484c097ba1a2aacf12968b019bdec208c85116b",
+          "explanation": "This section is taught in the body but is absent from the week CONTENT outline (lines 46-49), recorded as an open item rather than resolved here."
+        },
+        {
+          "locator": "line 76 (the two-branch statement) SHA-256 32e6fd9cb3b3849cdee3b3f17756d428f305284457a848e38e8ec74229203b19",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 77 (micro economics) SHA-256 1c150d4988da402074180f14da8e808f7b5b2631e8f1d383cfd99314ef193210",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 78 (macro economics) SHA-256 c04b6baaa7ea6d782ff88c178ab0bf657b197562d05e3b45faf95e9a35f6361e",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-WHY-STUDY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Why we study Economics: the framing sentence and the seven reasons the source lists.",
+      "objective_locator": "lines 83-91 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 83-91 (the whole WHY DO WE STUDY ECONOMICS section) SHA-256 c20085183b31b5b9b3e08fd606a2f941519a295fcc86f4603f28a21626dda190",
+          "explanation": "Seven un-numbered reason lines (85-91). The heading sits on line 83 immediately after the second EVALUATION question on line 82 with no blank line between them, which the importer will have to separate; recorded for ECON-PRES-T1-LAYOUT."
+        },
+        {
+          "locator": "lines 85-91 (the seven reasons, one per line) SHA-256 80c18eddb4c9dd99a34532880bc036a5a1e471876759443c07f7f4553fc96c74",
+          "explanation": "Per-reason locators: line 85 SHA-256 b3fb53d4b6919abc182f681a9bbfeb326b71464c85f804f7b5034b412c3284cd; line 86 SHA-256 2f422a3a369f52a4faaca5cb15f8ec0baa8cd629d115025571e11dfff0d3f4bc; line 87 SHA-256 25dea9ccba321a78e62279daed331d0d63704b588dd895c4f421216781cea4de; line 88 SHA-256 836a5dde2dc5905cb2defe00fb5f9edb55a73d70f12d4ebfa00508a62152067d; line 89 SHA-256 dbbb802d279e9d53aaa8a6f04b99920e61fad62187fbf9ecc165daa26a35529c; line 90 SHA-256 56aa530f2b1ada628ee457aa3c0019cd88092147e87c85063593a80535fc32ed; line 91 SHA-256 6c5446445028f24d03f7d07cf713b064617676a5a3e2bf25db83603af4fb5003."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-EVALUATION-1",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The first EVALUATION of Week 1: two questions asking for three definitions of economics and for a short note on the scope of economics.",
+      "objective_locator": "lines 71-73 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 71-73 (EVALUATION heading and two questions) SHA-256 47928a488bf8eecdb97adfad785f1eb7a75602ef78908557787e7848d29e1320",
+          "explanation": "Two questions, printed unanswered; the source supplies no key for them (ECONOMICS-T1-W01-ASSESSMENT-NO-KEY)."
+        },
+        {
+          "locator": "line 72 (question 1) SHA-256 5e62e952acf07e077573548cb1efc06b46dfa2686b43ebd528159d2634f4cc4c",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 73 (question 2) SHA-256 ab53a21016bd6a86cd19b65b8f3b7f857af45e26ea36123adaca63ad6c521ca5",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-EVALUATION-2",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The second EVALUATION of Week 1: two questions asking how the student would define Economics and to name and explain the two branches.",
+      "objective_locator": "lines 80-82 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 80-82 (EVALUATION heading and two questions) SHA-256 cd548418979c7fd69468284becabbdc7af8f55a6d090873cffd2a7367a122eb3",
+          "explanation": "Question 2 asks for an explanation, which the two-paragraph section at 75-78 only partially supplies."
+        },
+        {
+          "locator": "line 81 (question 1) SHA-256 7eddb57f0bd55647a8ac8d0b2e51085ea6a6b716e28bffa077de323222e19e89",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 82 (question 2) SHA-256 fc1aca9bb585197e6356ac31733d6c0d17700f4c93570286d3900bf4f2c72b13",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-EVALUATION-3",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The third EVALUATION of Week 1: a two-paragraph explanation of why we study economics and a question naming the father of economics and his definition.",
+      "objective_locator": "lines 93-95 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 93-95 (EVALUATION heading and two questions) SHA-256 c19903eeede7373257b539a092aea20eb00bf886f6913959a27fafdf6a5a99ea",
+          "explanation": "Question 2 depends on the unverified attribution carried in the definition line at 54."
+        },
+        {
+          "locator": "line 94 (question 1) SHA-256 e896b86c3f66f3f700efd7b8a1748f20415ba726506770393ce5d5bd0eb63c10",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 95 (question 2) SHA-256 df9cf20ebea5f62f7b7bf804a176a01918d4292d3ddefdf55f75661b74c4d8e5",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-READING-ASSIGNMENT",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The READING ASSIGNMENT: one external textbook reading set for the week with a page range.",
+      "objective_locator": "lines 97-98 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 97-98 (READING ASSIGNMENT heading and its single entry) SHA-256 a689e69a0532667360b9b5265877c205823ee84ee5bc166196d249c069922c3b",
+          "explanation": "The entry cites pages 1 to 3 of a Femi Longe textbook whose printed short title is Amplified and Simplified Economics for SSS. The reference-books list in the opening block gives the same author under a longer title (line 39, SHA-256 f64e42292aa63a1c8021446003886b9c82a9740cc51170e547598f8d9e7ada9c), so the two forms have to be reconciled before any page content is used. No page text is reproduced here and no rights are recorded."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-GENERAL-EVALUATION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The GENERAL EVALUATION QUESTIONS of Week 1: five un-numbered written questions on economic activities, producer goods, the classical school, its theories and the neo-classical schools.",
+      "objective_locator": "lines 100-105 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 100-105 (GENERAL EVALUATION QUESTIONS heading and five questions) SHA-256 78877dc4888c18fa29f2a34029ac2e32017863521423138e89abfb692b4aedd0",
+          "explanation": "Three of the five ask for content this week does not teach and the document does not teach anywhere; see the unanswered-questions open item."
+        },
+        {
+          "locator": "line 101 (question 1, economic activities) SHA-256 2b1f3c3936535ca5eb3c595c3932f46832010bac82a76ea331ccc690c2c54548",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 102 (question 2, six producer goods) SHA-256 8cf769d042cd116fb315db0d5a65c2e77c302b9c52da619670f35f02590fbe16",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 103 (question 3, three classical Economist school of thought) SHA-256 1d164ee7c27325e4bd866205696e3ecf6e6990828df33702ef12d586aebfa778",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 104 (question 4, two theories of the classical school) SHA-256 94e5c29ae77091028ac161e8a9b9fa69dec74ac02dbf50b92e0b2bcdd9c3014e",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 105 (question 5, two Neo-classical schools) SHA-256 0214fa1d7e650e3cd34a9e729a96ce0a5e6fff2da37197cf1bd30b325e1773f0",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-WEEKEND-ASSIGNMENT",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The WEEKEND ASSIGNMENT of Week 1: five multiple-choice questions with four options each, printed without a key.",
+      "objective_locator": "lines 107-112 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 107-112 (WEEKEND ASSIGNMENT heading and five items) SHA-256 215274a803e5d2f2865b2bff24da8a5393d24c65bdf748b8a18f066680fe6465",
+          "explanation": "Five questions. Options are printed inline on the same line and the gaps are filled with runs of periods, so the four-option structure survives only in the raw text; line 109 carries multiple internal spaces."
+        },
+        {
+          "locator": "line 108 (item 1, positive or normative framing) SHA-256 510a83bf78c30b9d1edff6be7277611dddcfd998b7971f448644eb33e3f155d3",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 109 (item 2, best description of economics) SHA-256 b7d52cef11ffa2cd15f3e819d15e9153b3d43f86d8ea5bb60ad9913b5cc4804f",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 110 (item 3, what study enables individuals to do) SHA-256 ea25d03574a46ace3c0cc681a5782b46a9919646a225cdfb1e1df7f171c7c73c",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 111 (item 4, value judgement view) SHA-256 507a9a34f9c889b722ed1e4b4257b728603ba48a06239b5082f12cec47becbd0",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 112 (item 5, three major mankind economic activities) SHA-256 b8926acd434e0ef43b4e8bad087f9402432860a0bfe22670f540fec3e51d4abc",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W01-SECTION-B",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The SECTION B block of Week 1: two written questions asking for the generally accepted definition and for three definitions of economics.",
+      "objective_locator": "lines 114-116 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 114-116 (SECTION B heading and two questions) SHA-256 8bab18ad9cc93dafc8550025de8c03eb160901cfd9d6b45a4d8b0b4034fbae44",
+          "explanation": "Question 2 on line 116 asks for the same three definitions as the first EVALUATION question on line 72; the two lines carry the same words but different terminal punctuation, so they are not byte-identical (line 72 SHA-256 5e62e952acf07e077573548cb1efc06b46dfa2686b43ebd528159d2634f4cc4c, line 116 SHA-256 7efe8aec2734c3d7750409c69b4fc6225ccb15a9b773f4f1df98f8dc97d03c76). Question 1 on line 115 restates the demand that line 60 already answers by naming the most acceptable definition. No THEORY heading occurs in this week."
+        },
+        {
+          "locator": "line 115 (question 1) SHA-256 1177489b82fe660be122542954cb87bfb73c8556efbc6280057ae7e7494cf167",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        },
+        {
+          "locator": "line 116 (question 2, the same words as the first EVALUATION item but different terminal punctuation) SHA-256 7efe8aec2734c3d7750409c69b4fc6225ccb15a9b773f4f1df98f8dc97d03c76",
+          "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "ECONOMICS-ALIAS-APPROVAL",
@@ -125,6 +442,143 @@
         "SS1-SRC-6a6ff668d5a9"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 of the 1st Term Economics source is indexed at objective level (twelve coverage entries, five PARTIAL teaching sections and seven UNRESOLVED assessment or reading blocks) and nothing in it is deliverable: the package holds no lesson, no asset and no delivery correction, the importer has never been run for this source, and the source has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json.",
+      "required_action": "Author the bounded lessons listed in the queue, then run the importer and the plan when the owner lifts the testing deferral. Do not upgrade any entry to SUPPORTED before a real source lesson exists for it.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-SCHEME-1",
+        "COV-ECON-T1-W01-DEFINITIONS",
+        "COV-ECON-T1-W01-SCOPE",
+        "COV-ECON-T1-W01-BRANCHES",
+        "COV-ECON-T1-W01-WHY-STUDY",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-DEFINITION-ATTRIBUTIONS",
+      "kind": "FACT",
+      "detail": "Seven definitions are printed as fact, one per line at 54, 55, 56, 57, 58, 59 and 60 (each hashed on its own: line 54 SHA-256 516018a5fb0870513529e212219b90c85b12baa8b8c97c70c67c91cfa9ff18e9; line 55 SHA-256 d28088d625bde806955b004d2c11d6da0d8e58f0caeed8f55004eeb8c0c85031; line 56 SHA-256 0b998b7a0a130bf8a892f8950ca2bc53112cebe0c9b7955380fbf9eeb074b4a3; line 57 SHA-256 23e526cc4f58ad73b6216908b57aacf9be1e3b30f85a0c16d97bbd882f7dca58; line 58 SHA-256 70584daf0ee471514a2a57b6ec0f47275edd080c477bad890ff73ae2ad186adb; line 59 SHA-256 670b52090ef840419e1eaeb599afd902b48c8bf6c6ad10e3d08b57a9cc11e850; line 60 SHA-256 dbdf60fa06054d1339489ec17fcf109b3e31523b17d1fe896f0d559f1c2a8431). Each carries an author and, for five of them, a year: Adam Smith 1776 with the claim that he is called the Father of Economics, John Stuart Mill 1843, the spelling Alfred Marshal for 1890, the spellings H. J. Daven Port and Edvins Canon with no year, A.I. Pigou with no year, and Professor Lionel C. Robins 1932 described as the most acceptable and widely used definition. None of these quotations, dates, spellings or attributions has been checked against any authority, and the popularity claim and the two reasons at lines 61-62 are the source opinion, not a verified fact.",
+      "required_action": "ECON-FACT-T1-DEFINITIONS verifies every quotation, date, spelling and attribution against authoritative sources and records the effective date of each check. The source spelling stays printed as it is until that item decides otherwise; a corrected statement must be kept visibly separate from the wording at lines 54-60.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-DEFINITIONS",
+        "COV-ECON-T1-W01-SECTION-B",
+        "COV-ECON-T1-W01-EVALUATION-3",
+        "ECON-FACT-T1-DEFINITIONS",
+        "ECON-LES-T1-W01-DEFINITIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-UNANSWERED-QUESTIONS",
+      "kind": "CONTENT",
+      "detail": "Four of the five GENERAL EVALUATION QUESTIONS cannot be answered from the taught content. Line 102 asks for six producer goods: the phrase producer good occurs twice in the whole extract, at the question itself and at line 820 inside Week Eight, where the label that opens the line reads Capital / Producer goods (line 820 SHA-256 830c5bac59f8719f8cc9250a3b2a0538413742a3bad48e92f30c3c58d6dbbb4b, inside the goods classification at lines 815-822 SHA-256 9f4df850b8d78537a2382d1fe55b582aede23962860fb45637eaeb9b9df0f7d2). Lines 103, 104 and 105 ask for three classical schools of thought, two classical theories and two neo-classical schools: the word classical occurs in the extract only at those three question lines and school of thought only there as well, so no teaching of either school exists anywhere in this source.",
+      "required_action": "Teacher decides whether these questions belong to Week 1 at all and, if they do, which approved material supplies them; the bounded lesson task ECON-LES-T1-W01-SCHOOLS-PRODUCER-GOODS carries that decision. Do not invent a list of classical or neo-classical schools, do not import Week Eight goods classifications into Week 1 and do not answer the questions in the package.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-GENERAL-EVALUATION",
+        "ECON-LES-T1-W01-SCHOOLS-PRODUCER-GOODS",
+        "ECON-FACT-T1-W01-TEACHER-DECISIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-ECONOMIC-ACTIVITIES-CONFLICT",
+      "kind": "CONTENT",
+      "detail": "Two questions ask for an enumeration the week never prints. Line 101 asks What are the Economic activities? and line 112 asks for the three major mankind economic activities with option sets that include occupation, production, distribution, exchange, consumption and utilisation. The only teaching statement that enumerates activities is line 66, inside the scope section, and it lists four: production, exchange, distribution and consumption. The source nowhere states a three-item set, so the expected answer is not determined by the taught text.",
+      "required_action": "Teacher decides which enumeration Week 1 teaches and whether line 66 four-item list or a three-item list is the answer; ECON-FACT-T1-W01-TEACHER-DECISIONS records that decision and ECON-LES-T1-W01-SCOPE-BRANCHES authors from it. Do not silently rewrite line 66 and do not mark an option correct in this package.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-SCOPE",
+        "COV-ECON-T1-W01-GENERAL-EVALUATION",
+        "COV-ECON-T1-W01-WEEKEND-ASSIGNMENT",
+        "ECON-FACT-T1-W01-TEACHER-DECISIONS",
+        "ECON-LES-T1-W01-SCOPE-BRANCHES",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "Week 1 prints eighteen questions with no answer available in the source: three EVALUATION blocks (lines 71-73, 80-82, 93-95), GENERAL EVALUATION QUESTIONS (100-105), five multiple-choice WEEKEND ASSIGNMENT items (107-112) and SECTION B (114-116). A case-insensitive search of lines 44-116 for answer, marking, marks, score, rubric and scheme of mark returns no hit at all, and document-wide the only hits are statistics wording elsewhere (answer once at line 586 as an instruction to read a pie chart, marks once at line 726 as a frequency-table row label, score eleven times as data labels in Weeks Six and Seven) while marking, rubric and scheme of mark never occur. No option letter can therefore be recorded as correct and no mark allocation exists to preserve.",
+      "required_action": "The teacher or owner authors the key and the mark allocation as a separate deliverable (ECON-LES-T1-W01-KEY-ASSESSMENT); until then every assessment block stays UNRESOLVED and no lesson may present an option as correct.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-EVALUATION-1",
+        "COV-ECON-T1-W01-EVALUATION-2",
+        "COV-ECON-T1-W01-EVALUATION-3",
+        "COV-ECON-T1-W01-GENERAL-EVALUATION",
+        "COV-ECON-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-ECON-T1-W01-SECTION-B",
+        "ECON-LES-T1-W01-KEY-ASSESSMENT",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-OUTLINE-GAP",
+      "kind": "CONTENT",
+      "detail": "The week CONTENT outline (lines 46-49, SHA-256 744b3320322f313d8623fa9877a011928b7adab596fbacaf48eb7d1873ad74a8) lists three items: definition and meaning, the scope and why do we study economics. The body teaches a fourth section, THE BRANCHES OF ECONOMICS (lines 75-78), which the outline and the scheme row at line 25 both omit.",
+      "required_action": "Teacher decides whether the branches section is part of the Week 1 objective or a fifth heading to be indexed on its own terms. Recorded here only; the outline text is not rewritten.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-BRANCHES",
+        "COV-ECON-T1-W01-SCHEME-1",
+        "ECON-PRE-T1",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "ECONOMICS-T1-W01-DUPLICATE-QUESTION",
+      "kind": "CONTENT",
+      "detail": "Lines 72 and 116 ask the same question in the same words and differ only in terminal punctuation (line 72 ends with a question mark, SHA-256 5e62e952acf07e077573548cb1efc06b46dfa2686b43ebd528159d2634f4cc4c; line 116 ends with a full stop, SHA-256 7efe8aec2734c3d7750409c69b4fc6225ccb15a9b773f4f1df98f8dc97d03c76), so the SECTION B block restates the first EVALUATION question instead of adding a new one. Line 115 restates the same demand in different words by asking for the generally accepted definition that line 60 already identifies.",
+      "required_action": "Teacher decides whether both copies are delivered or the duplicate is dropped from the lesson; the printed source keeps both and the wording is preserved by ECON-PRES-T1-SOURCE-WORDING.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-SECTION-B",
+        "COV-ECON-T1-W01-EVALUATION-1",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "ECONOMICS-T1-W01-READING-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "The READING ASSIGNMENT (lines 97-98) sets pages 1 to 3 of a Femi Longe textbook, printed under the short title Amplified and Simplified Economics for SSS, while the opening reference-books list (line 39) gives the same author under the longer title Amplified and Simplified Economics for Senior Secondary School, and lines 40-41 add J.V. Anyaele and R.A.I. Anyanwuocha. No rights, licence or availability record exists for any of these books, and no page text was read for this item.",
+      "required_action": "Owner records the rights position and confirms which edition the two title forms refer to before any page range is used in a lesson. Nothing from the cited pages is reproduced, summarised as fact or imported here.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-READING-ASSIGNMENT",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Defects that a lesson must not silently repair: line 59 closes its quotation with two apostrophes; line 69 quotes What is and What should be with mismatched marks; line 53 reads Some definition given by some economists includes; line 54 capitalises Called inside an otherwise lower-case parenthetical attribution; the names are printed as Alfred Marshal (56), H. J. Daven Port (57), Edvins Canon (58) and Robins (60); line 78 reads Macro economics in the other hand; the multiple-choice items (108-112) are separated by runs of periods, line 109 begins with a space and carries several internal double spaces inside its options; line 82 is followed immediately by the heading on line 83 with no blank line.",
+      "required_action": "Wording is preserved by ECON-PRES-T1-SOURCE-WORDING and layout by ECON-PRES-T1-LAYOUT; any normalisation is a later owner decision and must keep the printed form retrievable.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-DEFINITIONS",
+        "COV-ECON-T1-W01-SCOPE",
+        "COV-ECON-T1-W01-BRANCHES",
+        "COV-ECON-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-ECON-T1-W01-WHY-STUDY",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "ECONOMICS-T1-W01-PARSED-ROW-MISSING",
+      "kind": "VERIFICATION",
+      "detail": "No importer or plan run was made for this item, as testing is deferred by the owner, so the WEEK ONE body has no parsed row identity: the original lesson identity SS1-SRC-2ab0c50bcab6:BODY:4506372278dd7327422d43ac169351c46754ed5af63d3df6810bdd3be6b148eb was computed directly from the getBody() range and is not a value the compiler has ever emitted.",
+      "required_action": "Run the importer and compare the parsed row and its body_sha256 with the range hash recorded here when the owner lifts the deferral; until then every entry in this file keeps lesson_ids empty.",
+      "affected_ids": [
+        "COV-ECON-T1-W01-SCHEME-1",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
