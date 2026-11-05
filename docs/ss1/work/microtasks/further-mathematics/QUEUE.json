@@ -41,9 +41,9 @@
     "VISUAL_DISPOSITION": 8
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 22,
-    "BLOCKED": 7,
-    "PENDING": 57
+    "IMPLEMENTED_TESTING_DEFERRED": 23,
+    "PENDING": 56,
+    "BLOCKED": 7
   },
   "items": [
     {
@@ -1893,8 +1893,8 @@
         "FM-WK-T1-W01",
         "FM-PORT-D3-L001"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FM-WK-T1-W01; see COV-FM-T1-W01-OBJ-1, COV-FM-T1-W01-OBJ-2 and the three OI-FM-T1-W01-* open items. Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Closed by reference, no new lesson authored: backend/src/db/ss1/subjects/further-mathematics.json lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES] title='Laws of indices and their applications', ported and corrected by FM-PORT-D3-L001 (record docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L001.md). Compared against this item's authoring requirements on current master: ONE replacement for both objectives (definition, Laws 1-8, Examples A-E); 9 original practice items, 30 marks, every marking list sums to its item and every answer present; body_sha256 7745eb2b4ea9f09762f8fefac60339a4a998569ac635b13ceca9d6ab4aa2d4c8 recomputed over the UTF-8 body; state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED with null references; 3 provenance entries; id follows SUP-SS1-<SLUG>-<SUFFIX>. Defect list OI-FM-T1-W01-FACT-DEFECTS: 1 zero index states a != 0; 2 and 3 cube-root chains corrected (Law 7, Example A, Q9); 4 definition with m factors and m a positive whole number; 5 conditions stated; 6 intermediate n-th root step in Law 8; 7 and 8 Example C and brackets balanced (checked per line), 4^2 evaluated; 9 zero index typed as the digit 0; 10 no 'Solve' for evaluation items; 11 item (f) not reused; 12 weekend item 2 not reproduced. Notation (OI-FM-T1-W01-NOTATION-LOSS): every index, root and fraction written explicitly. Printed source exercises are not used as a key. Numeric claims in the body and answer key rechecked with exact rational arithmetic on 2026-11-05. Coverage: COV-FM-T1-W01-OBJ-1 IMPLEMENTED_EQUIVALENT and COV-FM-T1-W01-OBJ-2 PARTIAL both already point at the lesson with objective-level evidence; neither changed. STILL SEPARATE AND UNRESOLVED: Week 2 exponential-equation coverage (weekend items 1, 3, 4; FM-WK-T1-W02 PENDING); the ambiguous exponent in general-evaluation item (f) (FM-FACT-T1-W01-GEN-EVAL-F BLOCKED); the unchecked reading-assignment reference (OI-FM-T1-W01-ASSESSMENT-GAPS; no queue item); delivery binding (FM-COR-T1-W01 PENDING, no delivery correction exists, nothing activated). OI-FM-T1-W01-FACT-DEFECTS, -NOTATION-LOSS and -ASSESSMENT-GAPS stay OPEN and blocking. Content approval and verification not invented. Record: docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W01-INDICES.md. Implemented, not approved or verified.",
       "completion_condition": "Supplement exists with provenance, objectives, original practice with complete answers and marks that sum, exact body hash, state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED; both coverage entries are updated to point at it with objective-level evidence; or closed by reference to the ported replacement. Approval and verification are not invented."
     },
     {
