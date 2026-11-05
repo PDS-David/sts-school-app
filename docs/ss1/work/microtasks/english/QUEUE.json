@@ -44,7 +44,8 @@
     "ENG-LES-W05-EXPOSITORY-ESSAY (2026-11-03): Week 5 expository-essay supplement authored on the stacked Week 5 branch (PR #301-#310). New lesson SUP-SS1-ENGLISH-EXPOSITORY-ESSAY-T1 (60 marks) bound to coverage ENGLISH-T1-W05-ES01 to ES04, now IMPLEMENTED_EQUIVALENT. It teaches the features, planning, a worked plan and model paragraphs for ‘Honesty is the Best Legacy’, the narrative trap and a marked task with a scheme. Open item EXPOSITORY-ESSAY is closed; ANSWER-KEYS now affects only RV01 and SOURCE-WORDING-REVIEW drops ES02 and ES03. Approval stays PENDING and verification DEFERRED. next_runnable: ENG-LES-W05-REVISION-KEYS.",
     "ENG-LES-W05-REVISION-KEYS (2026-11-03): Week 5 revision supplement authored on the stacked Week 5 branch (PR #301-#311). New lesson SUP-SS1-ENGLISH-REVISION-W05-T1 (60 marks) bound to coverage ENGLISH-T1-W05-RV01, now IMPLEMENTED_EQUIVALENT. It teaches adjective order, tag questions and their special patterns, asthma and silent-letter spelling, and determiners, with a new keyed mixed set. ANSWER-KEYS is closed; SOURCE-WORDING-REVIEW drops RV01. No lesson is now runnable without owner input: ENG-LES-W05-STOCK-INSURANCE-VOCAB depends on ENG-FACT-W05-VOCAB-OBJECTIVE and ENG-LES-W04-SKIM-SCAN depends on ENG-FACT-READING-T1-T3-UNBOUND. Approval stays PENDING and verification DEFERRED. next_runnable: [].",
     "ENG-WK-T1-W06 (2026-11-05): Week 6 indexed at objective level; 31 coverage entries and rule R033 added to english.json, seven open items opened and seven PENDING follow-up items appended (ENG-FACT-W06-EXTERNAL-MATERIALS, ENG-LES-W06-COMPREHENSION-ADVERTISING, -FIGURES-OF-SPEECH, -DESCRIPTIVE-ESSAY, -DIPHTHONGS, -ADVERBIAL-CLAUSE, -REVISION-KEYS). Indexing complete, content gaps not closed; ENGLISH-BODY-021 keeps its row-level IMPLEMENTED_EQUIVALENT status although the objective-level entries show the replacement is narrower (open item DIPHTHONG-SCOPE). Approval stays PENDING and verification DEFERRED. next_runnable, NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
-    "ENG-LES-W06-FIGURES-OF-SPEECH (2026-11-05): Week 6 figures-of-speech supplement authored. New lesson SUP-SS1-ENGLISH-FIGURES-OF-SPEECH-T1 (46 marks) bound additively to coverage ENGLISH-T1-W06-FS01 to FS07, now IMPLEMENTED_EQUIVALENT. It teaches the definition, simile, metaphor, personification, verbal and situational irony with context, and the rhetorical question, with a keyed exercise on identification, effect and creation. Open item FIGURES-OF-SPEECH is closed; ANSWER-KEYS and SOURCE-WORDING-REVIEW are narrowed. FS08 stays UNRESOLVED. Approval stays PENDING and verification DEFERRED. next_runnable is unchanged."
+    "ENG-LES-W06-FIGURES-OF-SPEECH (2026-11-05): Week 6 figures-of-speech supplement authored. New lesson SUP-SS1-ENGLISH-FIGURES-OF-SPEECH-T1 (46 marks) bound additively to coverage ENGLISH-T1-W06-FS01 to FS07, now IMPLEMENTED_EQUIVALENT. It teaches the definition, simile, metaphor, personification, verbal and situational irony with context, and the rhetorical question, with a keyed exercise on identification, effect and creation. Open item FIGURES-OF-SPEECH is closed; ANSWER-KEYS and SOURCE-WORDING-REVIEW are narrowed. FS08 stays UNRESOLVED. Approval stays PENDING and verification DEFERRED. next_runnable is unchanged.",
+    "ENG-LES-W06-DESCRIPTIVE-ESSAY (2026-11-05): Week 6 descriptive-essay supplement authored. New lesson SUP-SS1-ENGLISH-DESCRIPTIVE-ESSAY-T1 (40 marks) bound additively to coverage ENGLISH-T1-W06-DE01 to DE03, now IMPLEMENTED_EQUIVALENT. It teaches scope, dominant impression, sensory detail and organisation, with a worked plan and an original model paragraph for ‘A rainy day I will live to remember’, a keyed writing task, a model response and a 20-mark rubric. Open item DESCRIPTIVE-ESSAY is closed; ANSWER-KEYS and SOURCE-WORDING-REVIEW are narrowed. DE04 stays UNRESOLVED. Approval stays PENDING and verification DEFERRED. next_runnable is unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -56,8 +57,8 @@
     "TEST": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 43,
-    "PENDING": 79,
+    "IMPLEMENTED_TESTING_DEFERRED": 44,
+    "PENDING": 78,
     "BLOCKED": 4
   },
   "items": [
@@ -3868,8 +3869,8 @@
       "depends_on": [
         "ENG-WK-T1-W06"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Awaiting authoring; open items ENGLISH-T1-W06-DESCRIPTIVE-ESSAY and ANSWER-KEYS name the exact gaps. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 paragraph 3 is a lead only.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored original teaching and practice in backend/src/db/ss1/subjects/english.json: lesson SUP-SS1-ENGLISH-DESCRIPTIVE-ESSAY-T1 (8 paragraphs, 5 objectives, 5 practice items, 40 marks; body_sha256 0187f0a2d71e65c91ca0acd67287c2f3c506a32b58002fd33effeee99aec355e recomputed from the UTF-8 body). Content approval PENDING, implementation IMPLEMENTED, verification DEFERRED; no reference is invented. Coverage ENGLISH-T1-W06-DE01 to DE03 set to IMPLEMENTED_EQUIVALENT (lesson_ids keep the original target and add the supplement). The lesson is an equivalent, not a correction: ENGLISH-BODY-020 is unchanged and no delivery_correction was added. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 paragraph 3 was inspected and its short descriptive plan is cited, not duplicated. The source checklist and task wording are not reproduced. Open item ENGLISH-T1-W06-DESCRIPTIVE-ESSAY is closed; ANSWER-KEYS drops DE03 and SOURCE-WORDING-REVIEW drops DE02. DE04 (reading assignment, Effective English page 34) is not touched and stays UNRESOLVED under EXTERNAL-MATERIALS, so ENGLISH-BODY-020 stays PARTIAL. Teaching rests on general composition knowledge, not fetched references; the owner should confirm it and the marking guide at content review. The attachment hash 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef was verified; the source was not re-audited.",
       "completion_condition": "DE01 to DE03 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
       "required_attachments": [
         {
