@@ -66,3 +66,7 @@ PR71's candidate is a 16-line body with 9 worked examples and 5 practice items i
 
 ## Not done
 No source row changed and no source rule added; no delivery correction (`FM-COR-T1-W02` owns the binding, and only one replacement may be bound to the row); no asset; no approval, verification, teacher decision, rights or source fact invented; nothing run (tests, type checks, importer, compiler, database, device). `package_status` stays PENDING. `FM-LES-T1-W02-EQUATIONS` is deliberately left PENDING rather than closed here — it is another item's decision, although its own completion condition ("or closed by reference to a ported replacement that passes the defect list") allows it to be closed by reference to this lesson, exactly as FM-PORT-D3-L001 left FM-LES-T1-W01-INDICES. PR71 was not merged and nothing was copied from it verbatim.
+
+## Integration clarification — 2026-11-06
+
+The discussion above labelled the equal-base biconditional itself a false converse. That judgement was incorrect: for a fixed a > 0, a ≠ 1, a^x = a^y if and only if x = y. Equal values from different bases are a different claim. The student lesson now distinguishes these statements and no longer says the valid biconditional runs one way only. Its updated body hash is recorded in the package and live coverage/queue references. The historical hash above describes the pre-correction body, not the current one. Approval and verification remain pending/deferred; separate row binding is unchanged.
