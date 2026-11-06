@@ -25,23 +25,25 @@
     "CHEM-INV-T1A (2026-10-29) inventoried the first 1st Term original and appended the opening, marker, week-indexing, visual, preservation and safety items. Ten teaching-week labels WEEK ONE to WEEK TEN; the scheme has 13 rows and rows 10-11 both map to WEEK TEN; REVISION and EXAMINATION have no bodies; WEEK EIGHT and WEEK NINE titles are stranded. 58 media entries are really 51 1x1 spacer PNGs plus 7 images, and the Week 6/Week 9 images are proprietary Encarta/Microsoft stock that does not match the captions; Week 10 orbital shapes are missing. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-FACT-CONTENT-APPROVAL stays BLOCKED pending the remaining inventories, comparison and package test.",
     "CHEM-INV-T1B (2026-10-30) inventoried the second 1st Term original (CHEMISTRY SS11STTERM.docx). Ten teaching weeks plus a \"Week 6b\" label; the WEEK 9 label starts with a non-breaking space so the importer would fold WEEK 9 into WEEK 8; WEEK 10 is title-only; the scheme has ten rows and no REVISION or EXAMINATION. Weeks 3-9 labels sit inside one layout table; 78 media parts, 26 tables, one ActiveX part, 113 external hyperlinks. Nothing was run. No lesson, coverage, rule, correction or asset was written. CHEM-CMP-T1 is now eligible (both 1st Term inventories done).",
     "CHEM-INV-T2 (2026-11-03) inventoried the 2nd Term original: nine week labels cover ten teaching weeks because WEEK 4 & 5 share one label; every label starts at a block boundary and the importer WEEK_MARKER matches it, so no split_before or attach_stranded_label rule is needed; there is no REVISION or EXAMINATION marker, paper or marking scheme. The scheme has nine rows (rows 1-3 automatically numbered, rows \"4&5\"-\"10.\" typed) and the WEEK 1 body contains no revision section; WEEK 4 & 5 teaches conservation of mass and definite proportions but not multiple proportions, which appears only in the WEEK 3 lead-in. 253 automatic list paragraphs, 7 top-level tables, 42 raster references in 41 media parts (image5.jpeg is a 17x9 spacer; image21.png is used twice), 72 w:pict elements that are all shape fallbacks, 114 w:drawing (42 images, 69 connectors, 3 text boxes), 11 OMML equations with a \"Type equation here.\" placeholder, 1,177 sub/superscript runs and 52 external hyperlink relationships (38 used). 26 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written.",
-    "CHEM-INV-T3 (2026-11-03) inventoried the 3rd Term original: 8 week labels cover 10 teaching weeks (WEEK TWO AND THREE and WEEK EIGHT AND NINE are shared; WEEK<NBSP>FOUR contains U+00A0); the importer WEEK_MARKER matches every label, so no split_before or attach_stranded_label rule is needed. The scheme has 13 numbered rows (1, 2-3, 4, 5, 6, 7, 8-9, 10, 11 Revision, 12-13 Examination) but the body has no revision or examination marker, paper or marking scheme; WEEK ONE has no revision section and WEEK SEVEN omits the metallic-carbonate occurrences/preparation/uses promised by row 7. 15 table-like groups, two unresolved carbon-structure figure areas with no chemistry image, three U+001E non-breaking hyphens (lines 220 and 287), one embedded 949x359 \"MR OSHO TUTORS\" branding JPEG with a phone number and e-mail address, no hyperlinks and Word 97 metadata (2019). 21 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written."
+    "CHEM-INV-T3 (2026-11-03) inventoried the 3rd Term original: 8 week labels cover 10 teaching weeks (WEEK TWO AND THREE and WEEK EIGHT AND NINE are shared; WEEK<NBSP>FOUR contains U+00A0); the importer WEEK_MARKER matches every label, so no split_before or attach_stranded_label rule is needed. The scheme has 13 numbered rows (1, 2-3, 4, 5, 6, 7, 8-9, 10, 11 Revision, 12-13 Examination) but the body has no revision or examination marker, paper or marking scheme; WEEK ONE has no revision section and WEEK SEVEN omits the metallic-carbonate occurrences/preparation/uses promised by row 7. 15 table-like groups, two unresolved carbon-structure figure areas with no chemistry image, three U+001E non-breaking hyphens (lines 220 and 287), one embedded 949x359 \"MR OSHO TUTORS\" branding JPEG with a phone number and e-mail address, no hyperlinks and Word 97 metadata (2019). 21 PENDING items appended. Nothing was run. No lesson, coverage, rule, correction or asset was written.",
+    "CHEM-IDX-T1A-W01 (2026-11-06) indexed 1st Term WEEK ONE (mammoth lines 90-245, sha256 8b348aa6be31cc15d603c4054646f4a0cdd0874c7c0cd38fd14c12fb3d3519f3) into 14 hashed sections and added seven coverage entries, none with lesson ids: six PARTIAL (scheme row, definition, branches, scientific method, applications, careers) and two UNRESOLVED (adverse effects of chemicals, which questions 203 and 227 ask for and no text supplies; and laboratory apparatus, which the CONTENT list and theory question 241 promise but only Week Two teaches). Week One holds no image, text box, table or equation; all fourteen exercise questions (three, two, two, five and two per block) have no answers. Follow-ups appended: CHEM-LES-T1A-W01-ADVERSE-EFFECTS (LESSON, PENDING) and CHEM-FACT-T1A-W01-STATEMENTS (FACTUAL_DEPENDENCY, PENDING). Items 105->107; status 9 implemented / 97 pending / 1 blocked; next_runnable head CHEM-CMP-T1. No lesson, delivery, schema, compiler, parser or importer change; chemistry.json edited for coverage only. Evidence note: docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W01.md. Not approved, not verified; nothing run (testing deferred by owner)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 4,
     "SOURCE_WEEK_INVENTORY": 4,
     "SOURCE_COMPARISON": 1,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 12,
+    "FACTUAL_DEPENDENCY": 13,
     "SOURCE_WEEK_INDEXING": 37,
     "SOURCE_SECTION_INDEXING": 4,
     "SOURCE_MARKER_DISPOSITION": 4,
     "VISUAL_DISPOSITION": 24,
-    "SOURCE_PRESERVATION": 14
+    "SOURCE_PRESERVATION": 14,
+    "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 96,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "PENDING": 97,
     "BLOCKED": 1
   },
   "items": [
@@ -455,8 +457,8 @@
         "CHEM-INV-T1A",
         "CHEM-SRC-T1A"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-11-06 from origin/master bf66c92 and the verified member (member sha256 07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a, 2,187,976 bytes, supplied directly; the composite archive was not supplied and its hash was not checked). mammoth 1.12.2 extractRawText: 55,382 characters, 2,129 lines, SHA-256 f88594cb2127d95a5bec7f17fd785efcda3c02ee1ccde5564eaa21774748e702 (equals the task); WEEK ONE lines 90-245 re-hashed to 8b348aa6be31cc15d603c4054646f4a0cdd0874c7c0cd38fd14c12fb3d3519f3 (matches the locator). 14 sections listed with per-section SHA-256: label 91, topic 93, CONTENT 95-101, science 103-105, branches 109-125, scientific methods 129-149, EVALUATION 153-159 (3 questions), applications 163-165, careers 169-195, EVALUATION 199-203 (2 questions), GENERAL EVALUATION 207-211 (2), READING ASSIGNMENT 215-219 (two textbook references, not supplied), WEEKEND ASSIGNMENT 223-233 (5 questions, no answers) and THEORY 237-241 (2). Week One holds no image, text box, table or equation. Eight coverage entries added to backend/src/db/ss1/subjects/chemistry.json (COV-CHEM-T1A-W01-SCHEME-1, -DEFINITION, -BRANCHES, -METHOD, -APPLICATIONS, -CAREERS PARTIAL; -ADVERSE-EFFECTS and -APPARATUS UNRESOLVED), none with lesson ids, so all still block delivery. Two follow-ups appended: CHEM-LES-T1A-W01-ADVERSE-EFFECTS (LESSON, PENDING) and CHEM-FACT-T1A-W01-STATEMENTS (FACTUAL_DEPENDENCY, PENDING). No lesson, rule, correction, asset or answer written; package stays PENDING. Record: docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W01.md. Implemented, not approved or verified; nothing was run (tests, typechecks, importer, DB, device).",
       "completion_condition": "The week's sections and assessment blocks are listed with line locators matching sha256 8b348aa6be31cc15d603c4054646f4a0cdd0874c7c0cd38fd14c12fb3d3519f3; no section is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1092,6 +1094,77 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CHEM-INV-T1A (see CHEM-INV-T1A.md).",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
+      "id": "CHEM-LES-T1A-W01-ADVERSE-EFFECTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE getBody-equivalent mammoth lines 90-245 (SHA-256 8b348aa6be31cc15d603c4054646f4a0cdd0874c7c0cd38fd14c12fb3d3519f3)",
+      "objective": "Author, as visibly original teaching with truthful provenance, the missing Week One content that evaluation question 203 and weekend question 227 ask for: adverse effects of chemicals and how they can be controlled. The source supplies no such text (lines 90-245), so the lesson must draw on authoritative primary sources named in its provenance, keep that content distinct from the source wording, give complete answers and marks for any practice it adds, and prescribe no treatment, dose or laboratory procedure. Content approval stays PENDING and verification DEFERRED; no approval_reference is invented. Do not answer the source's own questions inside the source wording and do not touch Week Two or later weeks.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1A.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx",
+          "member_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-LES-T1A-W01-ADVERSE-EFFECTS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1A",
+        "CHEM-SRC-T1A",
+        "CHEM-IDX-T1A-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-IDX-T1A-W01 (see CHEM-IDX-T1A-W01.md). Source wording on these lines is retained in the package source; nothing was changed.",
+      "completion_condition": "One lesson (or an exact reuse of an existing original lesson id) with provenance, practice and keys exists in the package, COV-CHEM-T1A-W01-ADVERSE-EFFECTS is updated truthfully, and nothing is marked approved or verified."
+    },
+    {
+      "id": "CHEM-FACT-T1A-W01-STATEMENTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "term": "1st Term",
+      "week_or_locator": "WEEK ONE getBody-equivalent mammoth lines 90-245 (SHA-256 8b348aa6be31cc15d603c4054646f4a0cdd0874c7c0cd38fd14c12fb3d3519f3)",
+      "objective": "Verify later, as findings and source locators only: the seven-stage list of the scientific method including the stage 'Pattern' and its order (lines 133-145); the explanation of hypothesis, theory and scientific law (line 149); the three one-line branch descriptions, in particular physical chemistry as 'quantum theory, heat and electricity' (lines 121-125); the definition of chemistry (line 105); and the reading assignment, which names 'O.Y Ababio' for a title that the reference list at line 77 credits to 'Osei Yaw A.' and spells 'Collegs' at line 219 (lines 77, 217, 219). Do not correct the source and do not supply replacement teaching in this item. Later correction work needs authoritative primary sources (for example IUPAC, national syllabus and textbook publisher records) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/chemistry.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-INV-T1A.md",
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 CHEMISTRY.docx",
+          "member_sha256": "07053f977dcbef91ee05d74a2e4dab9c3fa921cbb3792dc8698287a55197bb3a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/chemistry/QUEUE.json",
+        "docs/ss1/work/microtasks/chemistry/CHEM-FACT-T1A-W01-STATEMENTS.md"
+      ],
+      "depends_on": [
+        "CHEM-INV-T1A",
+        "CHEM-SRC-T1A",
+        "CHEM-IDX-T1A-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CHEM-IDX-T1A-W01 (see CHEM-IDX-T1A-W01.md). Source wording on these lines is retained in the package source; nothing was changed.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -3876,7 +3949,6 @@
   "next_runnable": [
     "CHEM-CMP-T1",
     "CHEM-TEST-PACKAGE",
-    "CHEM-IDX-T1A-W01",
     "CHEM-IDX-T1A-W02",
     "CHEM-IDX-T1A-W03",
     "CHEM-IDX-T1A-W04",

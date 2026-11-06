@@ -118,7 +118,124 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-CHEM-T1A-W01-SCHEME-1",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 1: INTRODUCTION TO CHEMISTRY",
+      "objective_locator": "opening scheme list line 47 (SHA-256 de25f4dcc88343a6b5d5848b9a015f75bda18e571c9afdc8bb90dc52fcc9a2cd); body WEEK ONE source lines 90-245 (SHA-256 8b348aa6be31cc15d603c4054646f4a0cdd0874c7c0cd38fd14c12fb3d3519f3)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 47; scheme list lines 45-71; WEEK ONE label line 91, TOPIC line 93 and CONTENT lines 95-101",
+          "explanation": "Scheme row 1 reads 'INTRODUCTION TO CHEMISTRY' and matches the week topic line 'TOPIC: INTRODUCTION TO CHEMISTRY' exactly, so the mapping is by title as well as by position. Week One is the first of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings."
+        },
+        {
+          "locator": "source lines 91-241; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W01.md",
+          "explanation": "The body has twelve content sections (CONTENT list, science and chemistry, branches, scientific methods, two evaluations, applications, careers, general evaluation, reading, weekend and theory blocks). PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking. The importer was not run, so no parsed-row identity is confirmed and none is bound here as a lesson id. Week One contains no image, text box, table or equation (checked in the DOCX XML), so no visual item is raised for it."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-DEFINITION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Chemistry as a science subject: what science and chemistry are",
+      "objective_locator": "body lines 103-105 (SHA-256 ba96937eef00b92cba4e758b9cba6632ae207be9e4fc1fb20ed6fb41389edd8e); questions 155 and 211",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 103-105: 'CHEMISTRY AS A SCIENCE SUBJECT' and the definition paragraph at 105",
+          "explanation": "One paragraph defines science and chemistry (nature, structure, composition, properties, uses of matter and its changes). The CONTENT list at line 97 and evaluation question 155 both point at it. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-BRANCHES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "The three branches of chemistry: physical, organic, inorganic",
+      "objective_locator": "body lines 109-125 (SHA-256 ac4881b2203ab72a9d7a92f183bf3f7a8ea8e3f417417fab78b35d1aee511898); questions 211 and 225",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 111-125: intro, three branch names (113, 115, 117) and one description each (121, 123, 125)",
+          "explanation": "Each branch gets one sentence. No example, sub-branch or distinction between the branches is given. The weekend question at 225 offers a fourth named option that the week never teaches; it is indexed, not corrected. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-METHOD",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scientific method of discovery: stages and when a theory becomes a law",
+      "objective_locator": "body lines 129-149 (SHA-256 53abf8b03437989796e1009b2bef5366ffc9f8c09578b6b81cd44107f95aa22c); questions 157, 159, 229, 231",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 131-149: stage list 133-145 (Observation, Pattern, Problem, Hypothesis, Experiments, Theory, Law) and the definition paragraph 149",
+          "explanation": "The seven stages are listed as bare words (135 has a leading space, 139 a trailing comma) and only hypothesis, theory and law are explained, in one paragraph. Observation, pattern, problem and experiments are never explained, and no example of a discovery is given. The stage order and wording are recorded as written and left for the factual follow-up. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-APPLICATIONS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Applications of chemistry in daily life",
+      "objective_locator": "body lines 163-165 (SHA-256 2cd660ffa87f3229d105db5dc1a34244d40279f3bab01d0c037bf33e795535d4); questions 201 and 239",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 163-165: one paragraph naming cooking, washing, digestion, drugs, health care, transport, food, houses and clothes",
+          "explanation": "The paragraph names the areas but explains none of them. Questions 201 and 239 ask for five applications, which the paragraph supplies as a list. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-ADVERSE-EFFECTS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Adverse effects of chemicals and how they can be controlled",
+      "objective_locator": "questions 203 and 227 (no teaching text in lines 90-245)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 203 (evaluation 2, question 2: 'Mention five adverse effects of chemicals and how they can be controlled.') and line 227 (weekend question 2)",
+          "explanation": "No section, sentence or list in the week names an adverse effect of chemicals or a control measure; lines 163-165 teach applications only. Both questions therefore ask for content the source does not supply. Nothing is invented here; the gap becomes the bounded lesson item CHEM-LES-T1A-W01-ADVERSE-EFFECTS."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-CAREERS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Career prospects in chemistry",
+      "objective_locator": "body lines 169-195 (SHA-256 623ef66e2b08207b6b328e334208ee820b12669c244230fc81e50d8622335140); questions 209 and 233",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 171-195: one lead-in sentence and a list of twelve fields (173-195, the last ending 'etc')",
+          "explanation": "The list names twelve fields without describing any. General evaluation question 209 asks for ten, which the list supplies by count. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W01-APPARATUS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Some laboratory apparatuses and their uses (promised by the CONTENT list)",
+      "objective_locator": "CONTENT line 101; theory question 241 (no teaching text in lines 90-245); Week Two apparatus section per CHEM-INV-T1A",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 101 ('SOME LABORATORY APPARATUSES AND THEIR USES') and line 241 (theory question 2: 'Mention five laboratory apparatus and their uses')",
+          "explanation": "The CONTENT list promises an apparatus topic and the theory block asks for it, but Week One has no section on it. CHEM-INV-T1A records apparatus and uses in Week Two (lines 265-327), which is a different week and is indexed by CHEM-IDX-T1A-W02 and CHEM-FACT-T1A-SAFETY. This entry is UNRESOLVED for Week One only: it claims no coverage from Week Two and does not move the question between weeks."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "CHEMISTRY-ALIAS-APPROVAL",
