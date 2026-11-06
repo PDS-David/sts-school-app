@@ -26,7 +26,8 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "ECON-INV-T1 appended the 1st Term inventory items (25) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 25 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (ECON-INV-T1.md).",
     "ECON-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing, visual, preservation and factual items; the 3rd Term inventory (ECON-INV-T3) remains unread. No lesson, coverage entry, rule, correction or asset was written.",
-    "ECON-WK-T1-W01 (2026-11-05) indexed Week One lines 44-116 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED, none SUPPORTED) and 10 open items, and appended ECON-FACT-T1-W01-TEACHER-DECISIONS plus five lesson tasks; no lesson, correction, asset, rule or parser change was written and the source wording is unmodified."
+    "ECON-WK-T1-W01 (2026-11-05) indexed Week One lines 44-116 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED, none SUPPORTED) and 10 open items, and appended ECON-FACT-T1-W01-TEACHER-DECISIONS plus five lesson tasks; no lesson, correction, asset, rule or parser change was written and the source wording is unmodified.",
+    "2026-11-06 ECON-LES-T1-W01-WHY-STUDY: lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY authored in economics.json (body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 4 practice items / 27 marks) and COV-ECON-T1-W01-WHY-STUDY upgraded PARTIAL -> SUPPORTED with only the lesson id bound. The model answer and its marks are proposals: Week 1 prints no key, so the printed assessment blocks stay UNRESOLVED, the line 95 attribution question stays unanswered, and ECONOMICS-T1-W01-COVERAGE and ECONOMICS-T1-W01-PARSED-ROW-MISSING remain open and blocking respectively non-blocking. Week 1 is not complete."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -41,8 +42,8 @@
     "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 49,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 48,
     "BLOCKED": 2
   },
   "items": [
@@ -2077,8 +2078,8 @@
         "ECON-WK-T1-W01",
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by ECON-WK-T1-W01 (2026-11-05): COV-ECON-T1-W01-WHY-STUDY is PARTIAL with lesson_ids empty and no parsed row exists for this source.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Authored 2026-11-06 from the registered archive member (SHA-256 8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc, 1,264,128 bytes, verified in this run; the standalone member was used and no whole-document audit was repeated - the five completed Week 1 hashes were re-derived from the indexed extract). backend/src/db/ss1/subjects/economics.json now holds lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY (title \"Why we study Economics: the seven reasons the scheme states and the two-paragraph answer\", 3 objectives, body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 33 body lines / 6,753 characters, 4 practice items E1W1-Q1 to E1W1-Q4 summing to 27 marks with criterion lists that add to each item, 2 provenance entries, state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED). The seven reasons at lines 85-91 are each taught in newly written wording with the line that states them, beside the framing line 84; the reason-to-reader grouping the lesson adds is labelled inside the body as a lesson-authored study aid, not the source arrangement, and no 30-character run of the row is reproduced. COV-ECON-T1-W01-WHY-STUDY moves PARTIAL -> SUPPORTED with lesson_ids [SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY] and two appended evidence entries; its original objective, objective locator and both evidence entries are byte-identical. Only the lesson id is bound - the parsed row identity has never been emitted by the compiler, so ECONOMICS-T1-W01-PARSED-ROW-MISSING stays open and its required_action now says that no entry binds the unemitted row identity. The two-paragraph model answer for line 94 and its marks are recorded as proposals awaiting the teacher: Week 1 prints no answer, no mark allocation and no key, so the printed EVALUATION, GENERAL EVALUATION, WEEKEND ASSIGNMENT and SECTION B blocks stay UNRESOLVED under ECONOMICS-T1-W01-ASSESSMENT-NO-KEY, no option is marked correct, and the line 95 father-of-economics question is left unanswered because ECONOMICS-T1-W01-DEFINITION-ATTRIBUTIONS holds those names unverified. ECONOMICS-T1-W01-COVERAGE stays blocking with its counts narrowed to the four sections still PARTIAL and the seven blocks still UNRESOLVED; package_status, sources, source_rules, assets, delivery_corrections, the other eleven coverage entries and the other eleven open items are untouched. No printed reason was found materially inaccurate, so no owner question was raised. Week 1 is not complete: the section lessons for lines 52-78 and the key deliverable ECON-LES-T1-W01-KEY-ASSESSMENT stay PENDING. Testing deferred by owner.",
       "completion_condition": "A lesson in economics.json teaches all seven reasons with locators, supplies a worked model of the two-paragraph answer and its marking, and introduces no example the source does not contain. Testing deferred by owner."
     },
     {
@@ -2206,7 +2207,6 @@
     "ECON-WK-T2-W11",
     "ECON-PRE-T2",
     "ECON-MARK-T2-REVEXAM",
-    "ECON-PRES-T2-SOURCE-WORDING",
-    "ECON-LES-T1-W01-WHY-STUDY"
+    "ECON-PRES-T2-SOURCE-WORDING"
   ]
 }
