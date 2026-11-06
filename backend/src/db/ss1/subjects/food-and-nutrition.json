@@ -77,7 +77,178 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-FN-T1-W01-SCHEME-1",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "Scheme row 1 of the 1st Term Food and Nutrition scheme of work: the printed row 'Introduction to food and nutrition –definition—importance of human nutrition- factors affecting human nutrition' that the WEEK 1 body answers.",
+      "objective_locator": "lines 5-7 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 5-7 (row number cell at 5, topic cell at 7) SHA-256 e2e7f2edc36afade01d863e15337ac1ebf2ac09cf4dd88d6b9d45442c68888bd; line 7 SHA-256 5c3b34f25f281e055c7e947dfe01bfad06ca90fd09d9f68e313bf233f35db747; lines 107-153 (the whole WEEK 1 body) SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97",
+          "explanation": "The row names three topics: definition, importance of human nutrition and factors affecting human nutrition. The body teaches them in separate blocks, indexed separately below rather than folded into this entry. The row number is a table cell flattened onto its own line."
+        },
+        {
+          "locator": "lines 107-109 (WEEK 1 marker, blank line and title INTRODUCTION TO FOOD AND NUTRITION) SHA-256 6cecfd640b105d663f3f09883c00a4ae035ff3e74cf9f6ba6481c8b950d4f46d",
+          "explanation": "Marker and title anchors for every other Week 1 locator in this file."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-W01-OPENING",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "The opening statements of Week 1: the search for food has been the occupation of mankind from the onset and food is very important to day to day life (line 111).",
+      "objective_locator": "line 111 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 111 SHA-256 1c33b1f40f3e4c8ce84ab7a6cca8feba81b08384d5d3fc5de9257ed39492991b",
+          "explanation": "Two framing sentences, undated and without any claim that needs a citation beyond the general one; they teach no definition."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-W01-DEFINITION-FOOD",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "The definitions of food and of nutrients: food as what nourishes the body, any substance which after consumption, digestion and absorption produces energy, promotes growth, repairs body tissues and regulates all body processes (line 113), and nutrients as the chemicals in food that let it do so (line 115).",
+      "objective_locator": "lines 113-115 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 113 SHA-256 c4027be6dc8287c27642c97f5a7658e7ae726ca9457c413980b1370d01e8257c",
+          "explanation": "Definition of food with four stated functions (energy, growth, repair of tissues, regulation of body processes)."
+        },
+        {
+          "locator": "line 115 SHA-256 2da598e99435e013cab8900a43d79964ce47fd3c90935960f5995513bf28d9d6",
+          "explanation": "Definition of nutrients as 'the chemicals present in it'. The source does not name any nutrient or class of nutrient in Week 1."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-W01-DEFINITION-NUTRITION",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "The definition of nutrition: the study of the various nutrients in relation to their effect on the human body, and the statement that nutrition is the science of food in relation to health (line 117).",
+      "objective_locator": "line 117 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 117 SHA-256 10f7ea2bb174a4f6957845ec86266d0c916ac48b6961f37fffdf53c28d12e4b2",
+          "explanation": "Printed with a duplicated word: 'Nutrition is therefore is the science of food in relation to health'. The wording is preserved as found; its disposition belongs to FN-PRES-T1-SOURCE-WORDING and is not corrected here."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-W01-IMPORTANCE",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "Importance of human nutrition: the eight numbered points the source prints (lines 121-135).",
+      "objective_locator": "lines 119-135 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 119-135 (heading and eight numbered points) SHA-256 4d39445b3ca1a44b2163d19791fdb0b1fb63ed8984e983b2ded09cb0c78bddb1",
+          "explanation": "The whole block as printed. The heading is printed 'Importance of human nutrition   .' with trailing spaces and a stray full stop."
+        },
+        {
+          "locator": "line 121 SHA-256 7dda51812d3d84d59597fd1186a39dfca75212078aba5354ac6094bc88db1f64",
+          "explanation": "Point 1, exact wording: '1. Food is important to man'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 123 SHA-256 d24a6bfe807ee11fbae6e0cd4a38f973935257878fc194b342918f108a29e648",
+          "explanation": "Point 2, exact wording: '2. There is strong correlation between good food and intellectual development.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 125 SHA-256 aaf52a414125fac732574d2d9e38e47b8befde7d10440edacb6d32d5ee37d5ef",
+          "explanation": "Point 3, exact wording: '3. It helps in maintenance of good health.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 127 SHA-256 47e451f81192eb680f5d27883dcde7a9e69e301c7ef09ec385559c5e0a00a348",
+          "explanation": "Point 4, exact wording: '4. To know the principles of food processing, food preservation and food preparation.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 129 SHA-256 ef622d9021b13133d565148af3af49c2cec77bdb7c67ef312a2efef0e2ab9ad8",
+          "explanation": "Point 5, exact wording: '5. People that are well fed have more resistance to diseases than those that are poorly nourished.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 131 SHA-256 990671575ac2edc901368a4666f76d863945eda3d1dff45b2e4f5acd6861d9da",
+          "explanation": "Point 6, exact wording: '6. To know the kind of food that could meet the dietary requirements of different age groups and those under psychological condition.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 133 SHA-256 a7bb7d62aa253c07dcd73b5bb6243439448f50a0e32fbbd8a79ea0e1d9d25139",
+          "explanation": "Point 7, exact wording: '7. The proportion of food consumed has positive or negative effect on the body.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "line 135 SHA-256 9b6dd512156e9c772bac97dbdf9adf6eedd87a82dae76f46255b4c9bed8f546f",
+          "explanation": "Point 8, exact wording: '8. It helps to understand the basic knowledge and principles of nutrition.'. Printed wording quoted exactly as extracted."
+        },
+        {
+          "locator": "lines 123 and 129",
+          "explanation": "Point 2 (a strong correlation between good food and intellectual development) and point 5 (well fed people resist diseases better than the poorly nourished) are health claims stated without a source; see FOOD-AND-NUTRITION-T1-W01-NUTRITION-CLAIMS."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-W01-FACTORS",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "Factors affecting human nutrition: the introductory line and the six numbered points the source prints (lines 141-153), each a bare label with no explanation.",
+      "objective_locator": "lines 141-153 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 141-153 (introduction and six numbered points) SHA-256 db4791d19dee9ae2e42b2c6e3619b5e4128391c76e45a043fa92af7383d1c56e",
+          "explanation": "The whole block as printed. The introduction says the factors 'include', so the list is open-ended. Lines 136-140 are blank separators."
+        },
+        {
+          "locator": "line 143 SHA-256 ca2a21feb61c7c5b5fc1ccd69e7038548f4232c5f739dbef1f8499ea1c4deccf",
+          "explanation": "Point 1, exact wording: '1. Availability of food.'. Label only; the source gives no explanation or example."
+        },
+        {
+          "locator": "line 145 SHA-256 bdbc481eedbe6a9ad915f2156bf4c44d6e8787516d231aa5bf2037d661e931ba",
+          "explanation": "Point 2, exact wording: '2. Income.'. Label only; the source gives no explanation or example."
+        },
+        {
+          "locator": "line 147 SHA-256 1bba1f489e434e6d6e864314d47aba399a2332042e16dd1dc841ebbe77694acf",
+          "explanation": "Point 3, exact wording: '3. Food in season.'. Label only; the source gives no explanation or example."
+        },
+        {
+          "locator": "line 149 SHA-256 70bc244d192f8919f963e0805fb4a87c02e1c526c48e59c1d01462d477037473",
+          "explanation": "Point 4, exact wording: '4. Ignorance'. Label only; the source gives no explanation or example."
+        },
+        {
+          "locator": "line 151 SHA-256 aaa62d9cfe62554bf92b0c62bf294ffaa2fd2773d9b791cbeb3fd0f7c338819e",
+          "explanation": "Point 5, exact wording: '5. storage/preservation.'. Label only; the source gives no explanation or example."
+        },
+        {
+          "locator": "line 153 SHA-256 e599161c52934fc0175741f9b569c50084dd6f43f332cfc57fe7b1b1d66063df",
+          "explanation": "Point 6, exact wording: '6. Facilities available.'. Label only; the source gives no explanation or example."
+        }
+      ]
+    },
+    {
+      "id": "COV-FN-T1-W01-ASSESSMENT",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "objective": "Week 1 assessment: the WEEK 1 body (lines 107-153) carries no EVALUATION, WEEKEND ASSIGNMENT, THEORY, READING ASSIGNMENT or SECTION B block of its own. The only evaluation that addresses this content is printed at line 185 at the end of the Week 2 block.",
+      "objective_locator": "lines 107-153 and line 185 of mammoth.extractRawText 1.12.2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 107-153 SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97",
+          "explanation": "A case-insensitive scan of the body for evaluation, assignment, theory, question, exercise, answer, mark and section b returns 0 hits, so Week 1 has no assessment of its own."
+        },
+        {
+          "locator": "line 185 SHA-256 8eee0f0136f411fa247c88fa5902952dd5024d2cffcf2b371f6695848de8501a",
+          "explanation": "Exact wording: 'Evaluation: mention the importance of human nutrition.' It is printed at the end of the Week 2 block (lines 155-185) but asks for the importance of human nutrition, which is the Week 1 block at lines 119-135. It is recorded here as a cross-reference only; the Week 2 block, including this line, is indexed by FN-WK-T1-W02. No key, model answer or marks exist, and the eight points at 121-135 do not say how many the question expects."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "FOOD-AND-NUTRITION-ALIAS-APPROVAL",
@@ -100,6 +271,79 @@
         "SS1-SRC-136db891415d"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "FOOD-AND-NUTRITION-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 (lines 107-153) is indexed but nothing in it is delivered. The six PARTIAL objectives (scheme row 1, opening, definition of food and nutrients, definition of nutrition, importance, factors) have no lesson: lessons[] is empty and no original lesson id exists for this source because the importer has never run for it. No SUPPORTED claim was made, so no existing originalLessonId was reused or replaced.",
+      "required_action": "Author the lessons named by FN-LES-T1-W01-DEFINITIONS and FN-LES-T1-W01-IMPORTANCE-FACTORS, then upgrade only the entry each lesson fully covers and bind its lesson id. Do not infer coverage of the scheme row from one objective.",
+      "affected_ids": [
+        "COV-FN-T1-W01-SCHEME-1",
+        "COV-FN-T1-W01-OPENING",
+        "COV-FN-T1-W01-DEFINITION-FOOD",
+        "COV-FN-T1-W01-DEFINITION-NUTRITION",
+        "COV-FN-T1-W01-IMPORTANCE",
+        "COV-FN-T1-W01-FACTORS",
+        "FN-LES-T1-W01-DEFINITIONS",
+        "FN-LES-T1-W01-IMPORTANCE-FACTORS",
+        "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FOOD-AND-NUTRITION-T1-W01-NO-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "Week 1 has no assessment of its own: no evaluation, weekend assignment, theory, reading assignment or section B block exists inside lines 107-153. The only evaluation that addresses the content is line 185, Evaluation: mention the importance of human nutrition., printed at the end of the Week 2 block. It has no key, model answer or marks, and the source does not say how many of the eight points the answer needs.",
+      "required_action": "Owner decides whether an original Week 1 assessment is authored (visibly the author's proposal, not source content) or whether line 185 is adopted as the Week 1 evaluation; FN-LES-T1-W01-ASSESSMENT carries that work. Do not attribute an invented question to the source, and do not index line 185 twice: FN-WK-T1-W02 owns it.",
+      "affected_ids": [
+        "COV-FN-T1-W01-ASSESSMENT",
+        "FN-LES-T1-W01-ASSESSMENT",
+        "FN-FACT-T1-W01-TEACHER-DECISIONS",
+        "FN-WK-T1-W02",
+        "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FOOD-AND-NUTRITION-T1-W01-THIN-TEACHING",
+      "kind": "CONTENT",
+      "detail": "The importance points and the factors are labels rather than teaching. Point 1 (Food is important to man) restates line 111 and points 3, 7 and 8 are generic; the six factors (availability of food, income, food in season, ignorance, storage/preservation, facilities available) have no explanation or example, and the introduction says the factors include these, so the list is open-ended. Any explanation a lesson adds is new content, not source content.",
+      "required_action": "Author explanations only as visibly original teaching with truthful provenance, flag every added claim for FN-FACT-T1-NUTRITION-CLAIMS, and do not present the list as exhaustive.",
+      "affected_ids": [
+        "COV-FN-T1-W01-IMPORTANCE",
+        "COV-FN-T1-W01-FACTORS",
+        "FN-LES-T1-W01-IMPORTANCE-FACTORS",
+        "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "FOOD-AND-NUTRITION-T1-W01-NUTRITION-CLAIMS",
+      "kind": "FACT",
+      "detail": "Week 1 makes health claims without a source: a strong correlation between good food and intellectual development (line 123), well fed people having more resistance to diseases than the poorly nourished (line 129), and the proportion of food consumed having a positive or negative effect on the body (line 133), alongside the four functions of food at line 113. The existing item FN-FACT-T1-NUTRITION-CLAIMS lists claims from later weeks only and does not depend on FN-WK-T1-W01. No dose, treatment or classroom observation occurs anywhere in the Week 1 body (scanned).",
+      "required_action": "Verify or flag lines 113, 123, 129 and 133 through FN-FACT-T1-NUTRITION-CLAIMS before a lesson adopts them, keeping the source wording separate from any correction; add no dose, treatment or practical observation.",
+      "affected_ids": [
+        "COV-FN-T1-W01-DEFINITION-FOOD",
+        "COV-FN-T1-W01-IMPORTANCE",
+        "FN-FACT-T1-NUTRITION-CLAIMS",
+        "FN-LES-T1-W01-IMPORTANCE-FACTORS",
+        "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FOOD-AND-NUTRITION-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Printed defects preserved as found: 'Nutrition is therefore is the science of food in relation to health' at line 117 (duplicated word); the heading at line 119 printed with trailing spaces and a stray full stop; point 4 of the factors at line 149 printed without a full stop and point 5 at line 151 starting in lower case; list numbers typed by hand; five blank lines at 136-140 where the other blocks have one; and the scheme row printing its dashes as mixed en and em dashes.",
+      "required_action": "Keep printed wording when quoting the source; FN-PRES-T1-SOURCE-WORDING decides any correction, and a lesson marks its own corrections as the author's.",
+      "affected_ids": [
+        "COV-FN-T1-W01-DEFINITION-NUTRITION",
+        "COV-FN-T1-W01-IMPORTANCE",
+        "COV-FN-T1-W01-FACTORS",
+        "COV-FN-T1-W01-SCHEME-1",
+        "SS1-SRC-de2cdd0b85f6"
+      ],
+      "blocks_delivery": false
     }
   ]
 }

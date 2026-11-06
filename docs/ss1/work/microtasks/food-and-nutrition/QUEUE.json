@@ -25,23 +25,25 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "FN-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The scheme has thirteen rows but only eleven teaching bodies; rows 12 Revision and 13 Examination have no body and are SCHEME_ONLY markers (FN-MARK-T1-REVEXAM). The document has no practical, equipment, hygiene, allergy, burns/fire or chemical content, and only three assessment lines (FN-INV-T1.md). Nothing was run (tests, typechecks, importer, DB, device).",
-    "FN-INV-T2 appended the 2nd Term inventory items (17) and is IMPLEMENTED_TESTING_DEFERRED. All 17 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The body has ten teaching weeks; the scheme's Revision (11) and Examination (12) have no body and the closing line reads 'Week 12 & 13' (FN-MARK-T2-REVEXAM). One real table, no drawings or media. No practical observation, treatment or dose was recorded (FN-INV-T2.md). Nothing was run (tests, typechecks, importer, DB, device)."
+    "FN-INV-T2 appended the 2nd Term inventory items (17) and is IMPLEMENTED_TESTING_DEFERRED. All 17 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The body has ten teaching weeks; the scheme's Revision (11) and Examination (12) have no body and the closing line reads 'Week 12 & 13' (FN-MARK-T2-REVEXAM). One real table, no drawings or media. No practical observation, treatment or dose was recorded (FN-INV-T2.md). Nothing was run (tests, typechecks, importer, DB, device).",
+    "2026-11-07 FN-WK-T1-W01: indexed Week 1 lines 107-153 of the 1st Term source into 7 coverage entries (6 PARTIAL, 1 UNRESOLVED) and 5 open items (3 blocking), and appended FN-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus three lesson tasks. Week 1 has no assessment of its own; nothing is approved, verified or deliverable. Week 1 is not complete."
   ],
   "counts": {
-    "FACTUAL_DEPENDENCY": 3,
-    "SOURCE_MARKER_DISPOSITION": 2,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_PRESERVATION": 6,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 21,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 4
+    "FACTUAL_DEPENDENCY": 4,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_WEEK_INDEXING": 21,
+    "SOURCE_MARKER_DISPOSITION": 2,
+    "VISUAL_DISPOSITION": 4,
+    "SOURCE_PRESERVATION": 6,
+    "LESSON": 3
   },
   "status_counts": {
-    "BLOCKED": 1,
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 39
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 41,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -376,8 +378,8 @@
         "FN-INV-T1",
         "FN-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED_TESTING_DEFERRED (2026-11-07). Member SHA-256 398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7 (38,569 bytes) verified on the attached file and mammoth 1.12.2 extractRawText reproduced on it: 21,131 characters, 865 lines, text SHA-256 b9bfbdfc1952ef26444e64ed49c529a9e25e5b436ef8881ca0b885ea70c1c8b2, Week 1 lines 107-153 SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97, all equal to FN-INV-T1. food-and-nutrition.json now carries 7 Week 1 coverage entries, all with source_id SS1-SRC-de2cdd0b85f6 and lesson_ids empty because no lesson delivers them and the importer has never run for this source: 6 PARTIAL, COV-FN-T1-W01-SCHEME-1, -OPENING, -DEFINITION-FOOD, -DEFINITION-NUTRITION, -IMPORTANCE (eight points), -FACTORS (six points), and 1 UNRESOLVED, COV-FN-T1-W01-ASSESSMENT, recording that Week 1 carries no assessment of its own (scan of lines 107-153 returned 0 hits) and cross-referencing the only evaluation, line 185, which FN-WK-T1-W02 owns. No SUPPORTED entry: no original lesson id exists to reuse. Block digests: scheme row 5-7 e2e7f2edc36afade01d863e15337ac1ebf2ac09cf4dd88d6b9d45442c68888bd; marker and title 107-109 6cecfd640b105d663f3f09883c00a4ae035ff3e74cf9f6ba6481c8b950d4f46d; definitions 111-117 a393273033e6e81f6605499e6daaaa9511efcadb1170ba501a9a57e916b7592b; importance 119-135 4d39445b3ca1a44b2163d19791fdb0b1fb63ed8984e983b2ded09cb0c78bddb1; factors 141-153 db4791d19dee9ae2e42b2c6e3619b5e4128391c76e45a043fa92af7383d1c56e. 5 open items appended to the 2 alias items: FOOD-AND-NUTRITION-T1-W01-COVERAGE, -NO-ASSESSMENT and -NUTRITION-CLAIMS block delivery; -THIN-TEACHING and -SOURCE-DEFECTS do not. Appended: FN-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED, four decisions) and lesson tasks FN-LES-T1-W01-DEFINITIONS, FN-LES-T1-W01-IMPORTANCE-FACTORS and FN-LES-T1-W01-ASSESSMENT (PENDING). No lesson, asset, correction, rule or parser change; package_status stays PENDING; no dose, treatment or classroom observation was recorded. Record: docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W01.md.",
       "completion_condition": "Week 1 objective-level coverage or marker rules exist under the existing schema for the definitions, the eight importance points and the six factors, with exact locators; the absent Week 1 assessment is recorded as an open item plus a small lesson task; nothing is marked approved or verified."
     },
     {
@@ -1684,6 +1686,154 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/food-and-nutrition/FN-INV-T2.md.",
       "completion_condition": "Each listed claim has the source wording, an authoritative primary source and a separately recorded corrected or confirmed statement, or an explicit open item; no treatment, dose or observation is invented; owner approval stays PENDING."
+    },
+    {
+      "id": "FN-FACT-T1-W01-TEACHER-DECISIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 body lines 107-153 SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97 and the cross-referenced evaluation at line 185 SHA-256 8eee0f0136f411fa247c88fa5902952dd5024d2cffcf2b371f6695848de8501a.",
+      "objective": "Owner or teacher decides the Week 1 questions this indexing could not answer: 1. Whether Week 1 gets an original authored assessment (visibly the author's proposal) or adopts the evaluation at line 185 as its own, given that FN-WK-T1-W02 indexes that line with the Week 2 block. 2. Who authors the key and mark allocation for whichever assessment is delivered, and on what basis, since the source prints none. 3. Which approved material, if any, explains the six factors and the eight importance points, and whether the open-ended 'include' at line 141 is kept. 4. Whether the health claims at lines 113, 123, 129 and 133 are verified through FN-FACT-T1-NUTRITION-CLAIMS before any lesson adopts them. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-FACT-T1-W01-TEACHER-DECISIONS.md"
+      ],
+      "depends_on": [
+        "FN-WK-T1-W01",
+        "FN-INV-T1",
+        "FN-SRC-T1"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED - waiting for the owner, created by FN-WK-T1-W01 (2026-11-07). Evidence sits in food-and-nutrition.json open items FOOD-AND-NUTRITION-T1-W01-NO-ASSESSMENT, FOOD-AND-NUTRITION-T1-W01-THIN-TEACHING and FOOD-AND-NUTRITION-T1-W01-NUTRITION-CLAIMS, and in docs/ss1/work/microtasks/food-and-nutrition/FN-WK-T1-W01.md. No decision was taken here and no answer invented.",
+      "completion_condition": "Every one of the four decisions is recorded with its author and evidence, the open items it clears are updated in food-and-nutrition.json, and no answer is marked correct in any lesson before a key exists for it. Testing deferred by owner."
+    },
+    {
+      "id": "FN-LES-T1-W01-DEFINITIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 lines 111-117 SHA-256 a393273033e6e81f6605499e6daaaa9511efcadb1170ba501a9a57e916b7592b; objectives COV-FN-T1-W01-OPENING, COV-FN-T1-W01-DEFINITION-FOOD and COV-FN-T1-W01-DEFINITION-NUTRITION (PARTIAL)",
+      "objective": "Author the opening and definitions lesson from lines 111-117, keeping the printed wording of line 117 visibly the source's and flagging the food-function claims at line 113 as unverified.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-LES-T1-W01-DEFINITIONS.md"
+      ],
+      "depends_on": [
+        "FN-WK-T1-W01",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FN-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in food-and-nutrition.json teaches the opening statements and the three definitions with exact source locators, does not silently correct line 117, and upgrades only the coverage entries it fully covers (closing FOOD-AND-NUTRITION-T1-W01-COVERAGE for them). Testing deferred by owner."
+    },
+    {
+      "id": "FN-LES-T1-W01-IMPORTANCE-FACTORS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 lines 119-135 SHA-256 4d39445b3ca1a44b2163d19791fdb0b1fb63ed8984e983b2ded09cb0c78bddb1 and 141-153 SHA-256 db4791d19dee9ae2e42b2c6e3619b5e4128391c76e45a043fa92af7383d1c56e; objectives COV-FN-T1-W01-IMPORTANCE and COV-FN-T1-W01-FACTORS (PARTIAL)",
+      "objective": "Author the importance and factors lesson from the eight points and six factors, adding explanations only as visibly original teaching, flagging every added or health claim as unverified, and giving no dose, treatment or practical observation.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-LES-T1-W01-IMPORTANCE-FACTORS.md"
+      ],
+      "depends_on": [
+        "FN-WK-T1-W01",
+        "FN-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FN-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in food-and-nutrition.json teaches the eight points and six factors with exact source locators, states that the factor list is open-ended and label-only in the source, and upgrades only the coverage entries it fully covers. Testing deferred by owner."
+    },
+    {
+      "id": "FN-LES-T1-W01-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-de2cdd0b85f6",
+      "term": "1st Term",
+      "week_or_locator": "Week 1 absent assessment: lines 107-153 SHA-256 f34469bf0472df86f85c5153d24d5e71b4cf734aeeee66718569fd146867ba97 and cross-referenced line 185 SHA-256 8eee0f0136f411fa247c88fa5902952dd5024d2cffcf2b371f6695848de8501a; objective COV-FN-T1-W01-ASSESSMENT (UNRESOLVED)",
+      "objective": "After the owner decision, author the Week 1 assessment as an original set with a visibly proposed key and marks that add up, or bind the line 185 evaluation per the decision; no question is attributed to the source unless it is printed there.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/07_WORKER_F_FOOD_CATERING.md",
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/F _ N.docx",
+          "member_sha256": "398b0e1f1383e88f7d71148253f8466fbfed95fefdca068907b5ba35083f4ff7"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/food-and-nutrition.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/QUEUE.json",
+        "docs/ss1/work/microtasks/food-and-nutrition/FN-LES-T1-W01-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "FN-WK-T1-W01",
+        "FN-FACT-T1-W01-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FN-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A practice set in food-and-nutrition.json assesses the Week 1 objectives with truthful provenance, a key whose marks add up and exact locators for any source-printed question, and leaves COV-FN-T1-W01-ASSESSMENT UNRESOLVED until the key is authorised. Testing deferred by owner."
     }
   ],
   "review": {
@@ -1700,9 +1850,7 @@
   },
   "next_runnable": [
     "FN-INV-T3",
-    "FN-TEST-PACKAGE",
     "FN-PRE-T1",
-    "FN-WK-T1-W01",
     "FN-WK-T1-W02",
     "FN-WK-T1-W03",
     "FN-WK-T1-W04",
@@ -1735,6 +1883,8 @@
     "FN-VIS-T2-W5-KITCHEN-TABLE",
     "FN-PRES-T2-UNITS-NOTATION",
     "FN-PRES-T2-FOOD-TESTS",
-    "FN-PRES-T2-SOURCE-WORDING"
+    "FN-PRES-T2-SOURCE-WORDING",
+    "FN-LES-T1-W01-DEFINITIONS",
+    "FN-LES-T1-W01-IMPORTANCE-FACTORS"
   ]
 }
