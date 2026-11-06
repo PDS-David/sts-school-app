@@ -25,7 +25,8 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "CIV-INV-T1 (2026-10-29) inventoried the 1st Term original and appended the preamble, marker, week-indexing, table, preservation and factual items. The scheme is a 13x2 Word table with 11 teaching rows and a \"12 – 13\" revision/examination row, but the body has only eight week markers: community service (row 4), HIV/AIDS (rows 5-6) and nationalism (row 11) have no teaching, and body weeks 5-8 map to scheme rows 7-10. There are no images or other media. Nothing was run. No lesson, coverage, rule, correction or asset was written. CIV-FACT-CONTENT-APPROVAL stays BLOCKED pending CIV-INV-T2/T3 and CIV-TEST-PACKAGE.",
     "CIV-INV-T2 (2026-10-30) inventoried the 2nd Term original (CIVIC.docx). Ten week bodies (WEEK ONE is a review instruction only; WEEK THREE repeats the WEEK TWO title; WEEK TEN holds two unheaded blocks), a paragraph scheme with a \"12 & 13 Test & Examination\" marker and no paper, no tables or media. Workbook exercises and the \"Akwa Past Question Papers Nos 1-100\" it refers to are not supplied. Source statements naming parties and contested evaluations are flagged for neutral handling. Nothing was run. No lesson, coverage, rule, correction or asset was written.",
-    "CIV-WK-T1-W01 (2026-11-06) indexed 1st Term Week 1 (mammoth lines 121-172, digest ed1a4c1908619ef6e710bffb3e95bdf5c7b5f500d9dd97e3e80f2610846cd275) from the verified member: four sections (definition 127-129, NEEDS 131-141 with five points, OBJECTIVES IN SCHOOLS 143-157 with intro 145 and six points, IMPORTANCE TO NATION BUILDING 159-171 with intro 161, lead 163 and four points), all 25 non-blank lines assigned, plus the scheme row 1 promise and 15 preserved source defects. The census confirms CIV-INV-T1 that this week carries no assessment block of any kind, and that EVALUATION, QUESTION, TEST, EXERCISE, WEEKEND, READING, THEORY, ANSWER, MARKING, SCORE, RUBRIC, PRACTICE, HOMEWORK and CLASS WORK never occur anywhere in the document. The three point lists are Word auto-numbered (decimal a-f styles differ per list) and their ordinals are absent from the text view. Evidence-only task: no coverage row, rule, lesson, correction, asset, answer or new queue item was written and civic-education.json stays PENDING and untouched; the next action is a Week 1 authoring item, named in the implementation reference and gated by CIV-FACT-CONTENT-APPROVAL. Nothing was run; testing deferred by owner."
+    "CIV-WK-T1-W01 (2026-11-06) indexed 1st Term Week 1 (mammoth lines 121-172, digest ed1a4c1908619ef6e710bffb3e95bdf5c7b5f500d9dd97e3e80f2610846cd275) from the verified member: four sections (definition 127-129, NEEDS 131-141 with five points, OBJECTIVES IN SCHOOLS 143-157 with intro 145 and six points, IMPORTANCE TO NATION BUILDING 159-171 with intro 161, lead 163 and four points), all 25 non-blank lines assigned, plus the scheme row 1 promise and 15 preserved source defects. The census confirms CIV-INV-T1 that this week carries no assessment block of any kind, and that EVALUATION, QUESTION, TEST, EXERCISE, WEEKEND, READING, THEORY, ANSWER, MARKING, SCORE, RUBRIC, PRACTICE, HOMEWORK and CLASS WORK never occur anywhere in the document. The three point lists are Word auto-numbered (decimal a-f styles differ per list) and their ordinals are absent from the text view. Evidence-only task: no coverage row, rule, lesson, correction, asset, answer or new queue item was written and civic-education.json stays PENDING and untouched; the next action is a Week 1 authoring item, named in the implementation reference and gated by CIV-FACT-CONTENT-APPROVAL. Nothing was run; testing deferred by owner.",
+    "2026-11-06 closeout correction: CIV-LES-T1-W01-MEANING provides the missing bounded authoring follow-up. Drafting does not depend on final content approval; all approval and release gates remain blocked until their own evidence is supplied. Earlier no-authoring/gated-next-action notes describe their historical task scope, not a prohibition on this new pending draft."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -36,11 +37,12 @@
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 4,
     "VISUAL_DISPOSITION": 1,
-    "SOURCE_PRESERVATION": 2
+    "SOURCE_PRESERVATION": 2,
+    "LESSON": 1
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 34,
+    "PENDING": 35,
     "BLOCKED": 1
   },
   "items": [
@@ -1465,6 +1467,34 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Locator established by CIV-INV-T2 (see CIV-INV-T2.md).",
       "completion_condition": "Statements recorded with locators and a neutrality disposition; nothing rewritten; nothing marked approved."
+    },
+    {
+      "id": "CIV-LES-T1-W01-MEANING",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-fe52495abec9",
+      "term": "1st Term",
+      "week_or_locator": "CIV-WK-T1-W01: meaning section, mammoth lines 127-129; scheme meaning objective line 13",
+      "objective": "Author one short original supplementary lesson defining civic education and explaining rights, responsibilities and informed participation through neutral everyday examples. Use the completed CIV-WK-T1-W01 index to locate the curricular objective; independently source the educational definition from an authoritative civic-education institution. Do not reproduce or endorse the source's 'good followers' wording. Include three original questions, complete answers and criterion marks. This is drafting, not approval: keep content_approval PENDING, verification DEFERRED and package_status PENDING. Cover only meaning; do not claim the needs, school objectives, nation-building sections or Week 1 as a whole are complete. No whole-row replacement or delivery activation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-WK-T1-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/civic-education.json",
+        "docs/ss1/work/microtasks/civic-education/QUEUE.json",
+        "docs/ss1/work/microtasks/civic-education/CIV-LES-T1-W01-MEANING.md"
+      ],
+      "depends_on": [
+        "CIV-SRC-T1",
+        "CIV-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Added during the 2026-11-06 closeout review: CIV-WK-T1-W01 indexed the meaning objective but left no executable authoring item. The contract separates implementation from content approval. Existing approval/release gates remain unchanged; this item produces an unapproved draft with source attribution, not a policy decision or source-text alteration.",
+      "completion_condition": "One original lesson with checked provenance, UTF-8 body hash, three answered marked questions and objective-level coverage for the meaning objective only. Preserve source records and all approval/release gates. Keep broader source questions open. Record any necessary owner choice immediately; no approval or verification fabricated."
     }
   ],
   "review": {
@@ -1481,7 +1511,6 @@
   },
   "next_runnable": [
     "CIV-INV-T3",
-    "CIV-TEST-PACKAGE",
     "CIV-WK-T1-W02",
     "CIV-WK-T1-W03",
     "CIV-WK-T1-W04",
@@ -1510,9 +1539,6 @@
     "CIV-PRE-T2",
     "CIV-MARK-T2-SCHEME-GAPS",
     "CIV-MARK-T2-REVEXAM",
-    "CIV-PRES-T2-LISTS",
-    "CIV-FACT-T2-ELECTORAL-LAW",
-    "CIV-FACT-T2-CONSTITUTION",
-    "CIV-FACT-T2-NEUTRALITY"
+    "CIV-LES-T1-W01-MEANING"
   ]
 }
