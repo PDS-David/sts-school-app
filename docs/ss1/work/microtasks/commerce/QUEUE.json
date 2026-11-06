@@ -26,7 +26,8 @@
     "COM-INV-T1 appended the 1st Term inventory items (19) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 19 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (COM-INV-T1.md).",
     "COM-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "COM-WK-T1-W01 (2026-11-05) indexed 1st Term Week 1 at objective level: 14 coverage entries (7 PARTIAL, 7 UNRESOLVED) and 10 open items in commerce.json, with the COM-FACT-T1-W01-SCOPE decision item and three lesson tasks appended. Week 1 is indexed, not certified: no lesson, no parsed row, no answer key and no approval exists. Source bytes and private extracts stayed outside Git.",
-    "COM-VIS-T2-TBL-DOMFOR (2026-11-06): block 138 (Domestic vs Foreign Trade, 4 rows x 2 columns) re-read from the 2nd Term member with its hash verified. The importer's mammoth extractRawText emits its eight cells as consecutive paragraphs, so pairs survive by position only; the smallest repair under the existing schema is an explicit paired-row restatement in a Week 2 supplement (open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION). The Foreign cells of rows 2 and 3 are universal-sounding claims kept as source claims; follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS and open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS added. App display not verified; no lesson or coverage created."
+    "COM-VIS-T2-TBL-DOMFOR (2026-11-06): block 138 (Domestic vs Foreign Trade, 4 rows x 2 columns) re-read from the 2nd Term member with its hash verified. The importer's mammoth extractRawText emits its eight cells as consecutive paragraphs, so pairs survive by position only; the smallest repair under the existing schema is an explicit paired-row restatement in a Week 2 supplement (open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION). The Foreign cells of rows 2 and 3 are universal-sounding claims kept as source claims; follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS and open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS added. App display not verified; no lesson or coverage created.",
+    "COM-FACT-T2-TBL-DOMFOR-CLAIMS (2026-11-06): the two Foreign cells of block 138 were checked against dated authoritative sources. Row 2 (different currencies) is true with exceptions (currency unions such as the euro area and the West African CFA franc; invoicing in a third currency); row 3 (different weights and measures) is not to be taught as written (SI is the internationally agreed, preferred system of world trade; Nigeria's Cap. W3 makes trade within Nigeria exclusively metric from 1 January 1979). Endorsed claim limits are recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS, which no longer blocks delivery; the paired-row restatement item still does. Nigerian indigenous-measures regulations, later amendments to Cap. W3 and the revocation order were not read and stay open. next_runnable recomputed without deferred TEST tasks (COM-TEST-PACKAGE excluded). No teaching text drafted, nothing approved or verified, app display unchecked."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -41,8 +42,8 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 37,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 36,
     "BLOCKED": 2
   },
   "items": [
@@ -1564,8 +1565,8 @@
       "depends_on": [
         "COM-VIS-T2-TBL-DOMFOR"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by COM-VIS-T2-TBL-DOMFOR; see open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS. Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-06 with no original document (attachments: none). Cell-text SHA-256 recomputed and matched to COM-VIS-T2-TBL-DOMFOR (8ea29a4a80cd9b83… and 6cf46d640f167617…; joined-cells hash f0d8271b…c7b0). Verdicts: row 2 Foreign cell 'Different currencies used for business' TRUE WITH STATED EXCEPTIONS (currency unions: euro area, 21 members from 1 January 2026 per ECB press release; West African CFA franc per BCEAO; third-currency invoicing per ECB special feature 11 June 2025); row 3 Foreign cell 'Different weight and measures are used' NOT TO BE TAUGHT AS WRITTEN (SI is the internationally agreed, preferred system of world trade per BIPM SI Brochure v4.01; US designates metric preferred not exclusive per 15 U.S.C. 205b; Nigeria's Weights and Measures Act Cap. W3 LFN 2004 ss.1, 6, 52 makes trade within Nigeria exclusively metric from 1 January 1979, with s.51(2) excluding goods despatched abroad). Endorsed claim limits and dated citations recorded in open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS (now blocks_delivery false) and in docs/ss1/work/microtasks/commerce/COM-FACT-T2-TBL-DOMFOR-CLAIMS.md. Still open and not taught: Nigerian indigenous-measures regulations, any Cap. W3 amendment since 2004 (text read from the PLAC copy), the revocation order, current US customary-unit use. No teaching text drafted; no lesson, coverage, correction, asset or source rule changed; not approved or verified.",
       "completion_condition": "Each of the two cells has a recorded verdict (generally true / true with stated exceptions / not to be taught as written), dated citations and endorsed supplement wording, and the open item is updated or closed; no teaching text is drafted and no approval is invented."
     },
     {
@@ -1743,7 +1744,6 @@
   },
   "next_runnable": [
     "COM-INV-T3",
-    "COM-TEST-PACKAGE",
     "COM-PRE-T1",
     "COM-WK-T1-W02",
     "COM-WK-T1-W03",
@@ -1771,7 +1771,6 @@
     "COM-WK-T2-W07",
     "COM-WK-T2-W08",
     "COM-WK-T2-W09",
-    "COM-VIS-T2-EQ-TOT",
-    "COM-FACT-T2-TBL-DOMFOR-CLAIMS"
+    "COM-VIS-T2-EQ-TOT"
   ]
 }
