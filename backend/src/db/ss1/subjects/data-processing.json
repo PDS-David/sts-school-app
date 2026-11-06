@@ -77,7 +77,380 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-DP-T1-W01-SCHEME-1",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "Scheme row 1 of the 1st Term Data Processing scheme of work: the list-numbered label 'INTRODUCTION TO DATA PROCESSING' at line 49, whose teaching body is the WEEK ONE section 87-281.",
+      "objective_locator": "49 (scheme row 1 label, printed exactly as INTRODUCTION TO DATA PROCESSING with no week number)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 49 (scheme row 1 label, printed exactly as INTRODUCTION TO DATA PROCESSING with no week number) SHA-256 759592f7a5d28c4f49c87154e6a07ffc4414367fc43764db17d698dbad82170c",
+          "explanation": "The twelve scheme rows are Word list-numbered paragraphs, so mammoth.extractRawText carries their text without the numbers; row 1 is identified by its position as the first row under the WEEK/TOPIC header at line 47. The label names a topic only: it is indexed here as one objective of the week and no whole-row coverage is claimed from it."
+        },
+        {
+          "locator": "lines 47-71 (WEEK<TAB>TOPIC header plus the twelve list-numbered scheme rows) SHA-256 ff975699f252329e3b5f8bc81941236993450acbcaf6eed837172a8fcae607e6",
+          "explanation": "Scheme context. 12 scheme rows are printed at 49 to 71. Rows 11 (REVISION) and 12 (EXAMINATION) have no WEEK marker or body of their own and belong to DP-MARK-T1-REVEXAM; rows 2 to 10 sit above Weeks Two to Ten and are indexed by their own DP-WK-T1-W02 to W10 items, with the drift DP-INV-T1 records: row 3 reads HISTORY OF COMPUTERI. while the Week Three topic line reads GENERATIONS OF COMPUTERS, so the row-to-week pairing is nominal and not verified as a match. The unlabelled opening block that holds this table (lines 1-81 raw, SHA-256 07f34cdccb656a70155d2a989ffc5a737c39292a710d37021c16e7e6307c1d54) belongs to DP-PRE-T1 and is not indexed here."
+        },
+        {
+          "locator": "lines 87-281 (the whole WEEK ONE body) SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567",
+          "explanation": "The body this row points at, indexed entry by entry below."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-OUTCOMES",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The outcomes the chapter itself promises at line 91: what data and information are, the difference between data and information, and an attempt to distinguish manual from electronic data processing.",
+      "objective_locator": "91 (the single outcome sentence under the topic line)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 91 (the single outcome sentence under the topic line) SHA-256 4551c76be9c22005aaa8117e6a28757bd8676e60501d9b13a4bacbe116fe6d24",
+          "explanation": "The sentence is the only place in Week 1 where manual processing is named: the word manual occurs on 3 lines document-wide (91, 321 and 1723) and on this one line inside the week, and the phrase electronic data processing occurs on this line alone. The week then teaches data, information, processing, properties, cycle and activities but never sets the two forms of processing side by side."
+        },
+        {
+          "locator": "lines 1721-1723 (Week Ten: the electronic methods line, a blank and the non-electronic line that names the manual method) SHA-256 63b516f94bf65bfbaf5bacb5df50c3b824853cdd62ace306d7d7f895c459acdd",
+          "explanation": "Where the distinction is actually taught: Week Ten calls the non-electronic method the manual method. That is out-of-week content and is recorded as an open item rather than imported into Week 1."
+        },
+        {
+          "locator": "lines 87-281 (the whole WEEK ONE body) SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567",
+          "explanation": "The whole body was searched for the promised distinction; only the promise line itself carries the wording."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-DATA",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "Definition of data and of information: data as a basic fact that may be input to a processing system, the processing system itself, and information as the end result that management uses for decision making.",
+      "objective_locator": "95-101 (DEFINITION OF DATA heading with the data paragraph, the processing-system sentence and the information paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 95-101 (DEFINITION OF DATA heading with the data paragraph, the processing-system sentence and the information paragraph) SHA-256 31fd0cc0d2f045d212cf3b5f49d807c1fe702c1440aa941e96f9a3748a400207",
+          "explanation": "Two definitions and one linking claim, taught as three prose lines (97 and 101) under the heading at 95. The paragraph at 101 ends by pointing at a diagram, which is indexed separately at COV-DP-T1-W01-CYCLE-DIAGRAM."
+        },
+        {
+          "locator": "line 97 (data definition) SHA-256 af29ae8b93aa1ad41f7d792ca42af959f0f514c60ead64dd851ed61981054ae2, line 101 (information definition) SHA-256 ec47790995faad34919585f579198ad6ec6c95b14f05b1b8c0796174df312b21",
+          "explanation": "The two definitional sentences keep their printed wording in the source; this entry records what they claim without restating them. The decision-making claim at 101 is the only support for the weekend item that asks the major reason for data processing, and that item also offers information generation, so the teaching does not settle it."
+        },
+        {
+          "locator": "line 105 (the label line the information paragraph points at) SHA-256 60190267edb54d9359ec3def7ebf5cea7e8f2993464bcd0ac7e6470490eed6d6",
+          "explanation": "Locator for the diagram the paragraph refers to; the labels survive as text and the connectors do not."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-CYCLE-DIAGRAM",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The input, processing and output flow the source draws twice in Week 1: the tab-separated label line at 105 that the information paragraph points at, and the space-separated label line at 169 under the element sentence.",
+      "objective_locator": "105 (first label line, INPUT and PROCESSING and OUTPUT separated by tabs)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 105 (first label line, INPUT and PROCESSING and OUTPUT separated by tabs) SHA-256 60190267edb54d9359ec3def7ebf5cea7e8f2993464bcd0ac7e6470490eed6d6",
+          "explanation": "Direct child 51 of w:body (the 0-based block numbering the DP inventory records for this document): the label paragraph holds two w:pict VML straight connectors of shape type #_x0000_t32, and the next two children are an empty paragraph and a page break. The connectors are vector shapes, not images: the paragraph carries no imagedata, blip or drawing element, so nothing can be extracted as a picture and the arrow direction is not in the extracted text."
+        },
+        {
+          "locator": "line 169 (second label line, the same three words separated by spaces with PROCESSING and OUTPUT run together) SHA-256 ab539b365231f938eec709dde984331d33415598533b71773437ffecc90cf07a",
+          "explanation": "Direct child 83 of w:body on the same 0-based block numbering, holding two more connectors of that shape type, printed under the element sentence at line 167. The two occurrences are duplicates of the same flow: the same three words, different whitespace, different digests, and the second one loses the space between PROCESSING and OUTPUT in extraction."
+        },
+        {
+          "locator": "lines 167-175 (element sentence, the duplicate labels and the two following paragraphs) SHA-256 02eb20bf9b7cdd8fcc34a96ab550cb115a36436e53c97ad8218570f128804221",
+          "explanation": "The surrounding prose is what makes the flow readable as input then processing then output; the geometry itself is gone. Disposition is owned by DP-VIS-T1-W01-CYCLE: no asset was recovered, redrawn or committed here, and three text labels are not evidence that a diagram was delivered."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-WHAT-IS-DP",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "What data processing is: the working definition, the weights illustration that turns a collection of data into information for a decision, and the closing definition of data processing as an operation on computer data involving entering, sorting, updating and retrieving.",
+      "objective_locator": "111-125 (WHAT IS DATA PROCESSING? heading and its four prose paragraphs)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 111-125 (WHAT IS DATA PROCESSING? heading and its four prose paragraphs) SHA-256 d8453c73dffb29151bf53f88bf88e7374211c39f0c1837228c560f777de7c03f",
+          "explanation": "Four prose lines (113, 117, 121 and 125) under one heading. The first and last are definitions and the middle two are one worked illustration about weights of individuals."
+        },
+        {
+          "locator": "line 113 (definition sentence) SHA-256 4f74ffad822716421f87f1ec2078249bc54faca9e0811e882572fb5d18a3c397, line 125 (computer-data restatement) SHA-256 a09cd50d0fa5985800c016c6d74b41a2335b5158e370b992ffd608e8b45f556e",
+          "explanation": "The two definitions are worded differently: 113 defines the task in terms of producing information, 125 restricts it to operations on computer data using a computer. Both are taught in the same block, so a lesson that says data processing is by definition computer-based would contradict 113; recorded as an open item for the teacher decision rather than resolved here."
+        },
+        {
+          "locator": "line 125 SHA-256 a09cd50d0fa5985800c016c6d74b41a2335b5158e370b992ffd608e8b45f556e; lines 87-281 (the whole WEEK ONE body) SHA-256 836f73d0570e28df4dca685d5e34818d0de10e41ee72d8226e422ace997b6567",
+          "explanation": "The four verbs at 125 (entering, sorting, updating, retrieving) never appear as a taught list: updating occurs on line 125 alone in the whole 1773-line extract, entering is taught as a coding example at 203 rather than as a stage, and retrieving is taught as an output activity at 195 and 223."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-PROPERTIES",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The properties of data: the eight list labels the source prints under PROPERTIES OF DATA - collected or captured, prepared, presented, precise, complete, accurate, purposeful and assigned.",
+      "objective_locator": "129-145 (PROPERTIES OF DATA heading and the eight list labels)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 129-145 (PROPERTIES OF DATA heading and the eight list labels) SHA-256 e658ea3871e27ec41c9c37c51a7b438efa2bd217d68e5f268224857570dfdcd6",
+          "explanation": "Eight list items, each on its own line with a blank line between, and every one of them a bare label: the week explains none of them and gives no example. The list is auto-numbered in the document, so the extracted text carries the eight labels without their numbers."
+        },
+        {
+          "locator": "lines 131, 133, 135, 137, 139, 141, 143 and 145 (the eight labels, one digest each) SHA-256 d9d6e4ee478235e36e0a322726878a91193ebe34aa548a71adfe831ad0c77408",
+          "explanation": "A single digest over the eight label lines in their printed order, so the list can be re-derived without restating it. The order is the printed order, not a ranking: nothing in the week says which property comes first."
+        },
+        {
+          "locator": "line 273 (the weekend option line that tests the list) SHA-256 1987f7a2e4506ffe014f79ef9433119eee5bb362257637603aa82b37a21640e5",
+          "explanation": "The only place the list is exercised: an odd-one-out item whose three distractors are drawn from these labels and whose fourth option, misuse, occurs on 1 line document-wide and on no teaching line at all. No key exists, so the item is indexed, not answered."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-CYCLE",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The data processing cycle: the framing sentence that the cycle describes the stages of data processing and the six stage labels the source lists.",
+      "objective_locator": "149-163 (DATA PROCESSING CYCLE heading, framing sentence and six stage labels)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 149-163 (DATA PROCESSING CYCLE heading, framing sentence and six stage labels) SHA-256 8c7d72420d9174f356cf6a7fd6a0eabb3ea13b39f9accb5b6557746cf0db4787",
+          "explanation": "Six list labels (gathering, collation, input stage, processing stage, storage stage, output stage) after one framing sentence. Three of the six carry their own teaching section later in the week (input at 197-203, processing at 207-217, output at 221-223). No section is titled data gathering: outside the stage label at 153 the word appears only inside the input activity, at line 199 under COLLECTION and at line 201 under VERIFICATION/VALIDATION (the word occurs on just these 3 lines in the whole extract: 153, 199, 201), which treats gathering as part of the input activity rather than as its own stage, and collation occurs on line 155 alone in the whole extract. Storage is named as a stage at 161 and separately as a processing activity at 217."
+        },
+        {
+          "locator": "line 155 (the collation label) SHA-256 9d2b85769804e18e87e9e1fc2acc0adde61c90cbb0ddf7ffd1a5c949473763c9",
+          "explanation": "The word collation occurs on this line alone in the whole 1,773-line extract, so no part of the source explains the stage it names. GENERAL EVALUATION 3 (line 239) asks for what is involved in each stage, and this stage cannot be answered from the week."
+        },
+        {
+          "locator": "lines 157-163 (the three stage labels that are taught and the storage label) SHA-256 9afc34d23b8af2353f8bf9099bdb5b5680d72bf734fbf02ab1900cb7ecd4508b",
+          "explanation": "Storage stage is listed but the only teaching about storing sits inside the processing activity list at 217, which assigns it elsewhere in the same week."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-ELEMENTS",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The elements of data processing: the sentence that most data processing work may be viewed as data, processor and output, with storage usually present as well, and the sentence that the same item of data serves many purposes.",
+      "objective_locator": "173-175 (the two element paragraphs)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 173-175 (the two element paragraphs) SHA-256 5f4019a8041583fef710f9000722caf025e7706df5930f289e66173a9b73c1bc",
+          "explanation": "Two prose lines under the element sentence at 167. They name three elements plus storage and give no further explanation, no diagram of their own and no worked example."
+        },
+        {
+          "locator": "line 167 (the element sentence, printed with a semicolon) SHA-256 16408f004f11a5e17f938cd7566391e9fbfca3d6347b42e6ec207465d1758478",
+          "explanation": "The heading-like line that introduces the duplicate label line at 169; it is punctuated with a semicolon and is not an upper-case heading, which is why the labels under it are indexed with their own locators at COV-DP-T1-W01-CYCLE-DIAGRAM."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-ACTIVITIES",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "Data processing activities: the framing sentence and the three lines that divide the activities into input, processing and output and name what each involves.",
+      "objective_locator": "187-195 (DATA PROCESSING ACTIVITIES heading, framing sentence and the three activity lines)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 187-195 (DATA PROCESSING ACTIVITIES heading, framing sentence and the three activity lines) SHA-256 1c7bdc6b2902d126375bee083b9a02972f8227632f4daa3de393e49b065aadbb",
+          "explanation": "The three lines are conceptual stages, not procedures: the input line itself says it involves three steps, and the week then teaches those steps as an activity list rather than as instructions to execute. Nothing in the block asks a student to run software, enter credentials or handle a device."
+        },
+        {
+          "locator": "line 191 (input line, three steps) SHA-256 3eb7dbc78518037d250781240f65499a762a77ed4b77d2eb3c32d7aa82eeb1a4, line 193 (processing line, five operations) SHA-256 6b8c1075a56f43e3ace9d3bb43a391d00a08d005e28e393715af2e05de4d13e9, line 195 (output line, three operations) SHA-256 b164e5a720aa57e11011cb33ba6eb9e3b03d8c38f6e1dd688e114e2aba06d9a2",
+          "explanation": "The three summary lines each enumerate their own operations. The processing line at 193 names five operations and the section below it teaches five lettered items, so the counts agree, but the two lists are not the same five: 193 says converting while the lettered items have no converting entry, and the d) SUMMARISE item at 215 has no matching word on 193. Likewise the output line at 195 says converting where the output section at 223 says printing. Both mismatches are recorded here as printed, not harmonised."
+        },
+        {
+          "locator": "lines 197-223 (the three activity sections the summary lines expand) SHA-256 55432659edbdb536dbb5ed5fde53ba8e1557dc619fc556dd864be6ab6d7396cb",
+          "explanation": "The expansion sits immediately after the summary, which is why the summary is indexed as PARTIAL teaching rather than as a heading with no content behind it."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-INPUT-ACTIVITY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The input activity: collection of data from sources to one location, verification or validation of accuracy and completeness to avoid garbage in garbage out, and coding data into machine-readable form.",
+      "objective_locator": "197-203 (INPUT ACTIVITY heading and its three labelled items)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 197-203 (INPUT ACTIVITY heading and its three labelled items) SHA-256 f0cfbd8315c61b56a0c03bc7456c64aa4c12bf51cad3deeaddec663cfad5ad84",
+          "explanation": "Three items, each a label plus one sentence. The count matches the three steps promised at line 191 exactly once, so this section is the teaching behind that summary line."
+        },
+        {
+          "locator": "line 199 (collection) SHA-256 d2b63b456055da73ad59d48b76b64c7eb8e61be6092f7e5245d2a1ecf064cf9c, line 201 (verification or validation, with the GIGO claim) SHA-256 71e47f030ad9e894d1ed91537100bbaec6a558f465e310b4c0abbd02668f6003, line 203 (code) SHA-256 a1111c4a4c8dec11c5da43bb82ede5f6bf45955a441c3cd035c71e6e3eebd14a",
+          "explanation": "Line 201 is the only place the extract carries the garbage-in garbage-out argument, and line 203 gives the only coding example, a computer terminal and keyboard. These are descriptions of stages, not executable steps, and are kept that way."
+        },
+        {
+          "locator": "line 267 (weekend item that tests this section) SHA-256 278feedcc0e08f3c71309213e086528deaac575083c2f4e5e2d685e10aae45ab, line 269 (its two remaining options) SHA-256 179f606c739db9def894d85e075c2b06ebb2d477345176892605b60935c4bd3c",
+          "explanation": "The item offers collection and verification, both taught here, alongside retrieving, which lines 195 and 223 assign to the output activity, and all of the above. The taught text therefore supports two options and excludes a third, and no key is printed; routed to an open item and a teacher decision."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-PROCESSING-ACTIVITY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The processing activity: the five lettered operations the source teaches, classification, sorting, calculation, summarising and storing, each with its own example.",
+      "objective_locator": "207-217 (PROCESSING ACTIVITY heading and the five lettered items)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 207-217 (PROCESSING ACTIVITY heading and the five lettered items) SHA-256 546816a446190f5319271b83fd29b008e6e57b12ae651cf2db523ae3760f5d75",
+          "explanation": "The five items keep their printed a) to e) letters in the extracted text, unlike the auto-numbered lists elsewhere in the week, so the lettering is a locator here and not an inference."
+        },
+        {
+          "locator": "line 209 (classification) SHA-256 8bb5fc9cecc32ac847d27658ae00bb8318f251078a93e52e866afaf347560b6b, line 211 (sort) SHA-256 2e01f8125adc8b8743fe2707949f7162ac69563571aff7e8041b8924c2a509d9, line 213 (calculation) SHA-256 039fcb70ec2d403d07261457adbab329f101b5b75a8a4610c4c2a0065389fa65",
+          "explanation": "Three of the five, each with worked examples drawn from sales, employee and student data. The sort item closes by saying data may be stored after classification, which overlaps the fifth item and the storage stage of the cycle."
+        },
+        {
+          "locator": "line 215 (summarise) SHA-256 4118953a5410447700fe0607e7a75f86083498b643860d4ce45b546767b8679a, line 217 (store, with the media examples) SHA-256 86fc5f678d0a4d5d65562d3634dfe1e63b448dd9cdc54593f1d13aa69d53b1d3",
+          "explanation": "Line 217 gives disk, tape or CD-ROM as the storage media. CD-ROM occurs on 2 lines document-wide (217 and 981) and is a dated example, so it is kept as the source wording and routed to factual verification rather than presented as current practice."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-OUTPUT-ACTIVITY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The output activity: the single sentence that it involves retrieving data, printing data and data communication.",
+      "objective_locator": "221-223 (OUTPUT ACTIVITY heading and its one sentence)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 221-223 (OUTPUT ACTIVITY heading and its one sentence) SHA-256 36f6aa0b2e98c93e73863e5336611515ea22dd8d551a14ca9ef736df0c2a1830",
+          "explanation": "One sentence for the whole activity, with no example, and it is the only teaching that supports retrieving as an output operation. The summary line at 195 says converting where this line says printing; both are recorded, neither was harmonised."
+        },
+        {
+          "locator": "line 195 (output summary line) SHA-256 b164e5a720aa57e11011cb33ba6eb9e3b03d8c38f6e1dd688e114e2aba06d9a2, line 223 (output activity sentence) SHA-256 4faaabcc3bcc9aacc5a122551b85bffe2742129eba067ce26b4d374186886f9e",
+          "explanation": "The two lines differ in their second operation while describing the same activity, which is why the output activity is indexed separately from the summary block."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-IMPORTANCE",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The importance of data processing: the paragraph that rising data volume, competition and the need for timely accurate information make processing indispensable when large volumes must be handled speedily.",
+      "objective_locator": "227-229 (IMPORTANCE OF DATA PROCESSING heading and its one paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 227-229 (IMPORTANCE OF DATA PROCESSING heading and its one paragraph) SHA-256 cd89cefdbbdedd402eb060241c98e22b10b0c926f82d5a36e0564057bf8955b7",
+          "explanation": "One paragraph, no enumeration of uses and no business setting: the phrase business organization, printed with a z, occurs on this extract at line 243 only, inside the GENERAL EVALUATION question that asks for the discussion, and the shorter word business occurs on 2 lines (243 and 1505), the second of them in Week Nine. The teaching therefore supports a general argument, not the specific discussion the question asks for."
+        },
+        {
+          "locator": "line 243 (the question that asks for it) SHA-256 5da123af76f33b64a079f99af382a300e9e594ae793c1d016bb3627c96435943",
+          "explanation": "Indexed here so the link between the taught paragraph and the unanswered question is explicit."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-EVALUATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The EVALUATION block of Week 1: two written questions, one asking the student to differentiate data from information and one asking for a definition of data processing.",
+      "objective_locator": "179-183 (EVALUATION heading and its two question lines)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 179-183 (EVALUATION heading and its two question lines) SHA-256 c656b21cb3e0eca4d0e21ed207ec91b5330a0fc3be9079e2243f7d202c882ec1",
+          "explanation": "Two questions, each on its own line with no numbering, no marks and no key. The teaching behind them sits at 95-101 and 111-125, so both are answerable in substance but nothing in the source states what a correct answer is."
+        },
+        {
+          "locator": "line 181 (question 1) SHA-256 d6f62aa3b2e113c612da158fadabc11fab6278be0ea0929c1c27198b16ae7efb, line 183 (question 2) SHA-256 6a9d8682da6cc23d88070281b1a0de3dffea33d88de02ea279c012d36b1d4350",
+          "explanation": "Per-question digests. Question 2 repeats the demand of GENERAL EVALUATION 1 (line 235) in different words, and question 1 asks for a differentiation the chapter outcome at line 91 promises but never delivers as a comparison."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-GENERAL-EVALUATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The GENERAL EVALUATION block of Week 1: five written questions on data processing itself, the cycle, what each stage involves, why a computer is a better tool, and why processing matters in a business organisation.",
+      "objective_locator": "233-243 (GENERAL EVALUATION heading and its five question lines)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 233-243 (GENERAL EVALUATION heading and its five question lines) SHA-256 924b2fba9ff92ff11b72441d85e4356e0bfad68c42320012a6722701a917e490",
+          "explanation": "Five un-numbered written questions, no marks, no key. Three of them restate taught content, one (line 241) asks for a comparison the week never makes and one (line 243) asks for a business discussion the week gives only a general paragraph for."
+        },
+        {
+          "locator": "line 235 SHA-256 7f85c8021684c5a976c4d009881ba98ed443b6ef718a0381438194b95b449b5a, line 237 SHA-256 13c45fd611ff043998a4a418add2fc83c02384dd090015546ed994e43a4f3ffe, line 239 SHA-256 00addab95780b58dfbade9bb4a29d70698e14f8b7e5a8eed37431c47af59c21d, line 241 SHA-256 b87cc08e3d97d4af74fed4635c745145abb3674e554cc970a07c3778ba7d8568, line 243 SHA-256 5da123af76f33b64a079f99af382a300e9e594ae793c1d016bb3627c96435943",
+          "explanation": "Per-question digests. Line 235 is byte-identical to THEORY question 1 at line 279 (same digest) and line 237 differs from line 281 only by the words and explain, so two of the five are asked again in the same week."
+        },
+        {
+          "locator": "line 241 (the unsupported comparison) SHA-256 b87cc08e3d97d4af74fed4635c745145abb3674e554cc970a07c3778ba7d8568",
+          "explanation": "The phrase better tool occurs on this line alone in the whole extract, and advantage or disadvantage occurs on 3 lines document-wide (1139, 1193 and 1591), none inside Week 1, so the question asks for a comparison the week does not teach."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-WEEKEND-ASSIGNMENT",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The WEEKEND ASSIGNMENT of Week 1: five objective items, printed as a stem line and an options line, on data, the converting methodology, the reason for processing, the input activity and the properties list.",
+      "objective_locator": "253-273 (WEEKEND ASSIGNMENT heading with the five items and their options)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 253-273 (WEEKEND ASSIGNMENT heading with the five items and their options) SHA-256 67a4e378f97e7af95c81e4ab6387de38f04c71586f23a44f6f0bdddbd90cffcf",
+          "explanation": "Five items in ten lines: stems at 255, 259, 263, 267 and 271 and their A to D options at 257, 261, 265, 269 and 273. Item 3 splits its options across 263 and 265, and item 1 prints its gap as a run of the ellipsis character rather than an underscore."
+        },
+        {
+          "locator": "lines 255 and 257 (item 1) SHA-256 214f1b4b1ec38c8cc217dc447fa08e37c11b419d7c4c2738a61af662b8fdbcc1; lines 259 and 261 (item 2) SHA-256 c47f6ff6852ffb3c1b4e86bb9713c79575bde53886a9ecd9a702039c138dea94; lines 263 and 265 (item 3) SHA-256 39766400fe58fce81f6b74bb4fdabaa771d6dd7ab1d3d57dadea57da30aeed71; lines 267 and 269 (item 4) SHA-256 295a074e30651ac4d907a53a811db8c6a75146fc5184dde00b66d9a07cb3eb34; lines 271 and 273 (item 5) SHA-256 d43bc37530dad23bdff63582ae3eef8120564e2558c36787484c77979b66f7bf",
+          "explanation": "Per-item digests over each stem line joined with its options line, so the five items are individually addressable. No option letter is marked correct anywhere in the document: answer, marking, score and rubric occur on no line of the 1,773-line extract at all, and the two marks hits (1131 and 1135) are a Week Seven heading about marks on a wall and a sentence about dirtying walls, not a mark allocation."
+        },
+        {
+          "locator": "line 263 (item 3 stem with its first two options) SHA-256 12c14a6164715cff33799b19c20b61245ccfa2f9824e0de2f3b65e44a40ba2c0, line 265 (its last two options) SHA-256 5ce322276923d37b6c0bd96cfe53d60c0d0c10ee37eb1be9e10ed91a741bcca2",
+          "explanation": "This item is the clearest case of an unanswered objective question: decision making is supported by the information paragraph at line 101 and information generation by the definition at line 113, so two of its four options follow from taught lines and the source prints no key to choose between them."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-THEORY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The THEORY block of Week 1: two written questions, one identical to a GENERAL EVALUATION question and one a widened form of another.",
+      "objective_locator": "277-281 (THEORY heading and its two question lines)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 277-281 (THEORY heading and its two question lines) SHA-256 1bbe895ebb01046f6618e5fdcdfa893d915f4b32f088be41702d1025d1d065c4",
+          "explanation": "The block ends the week at line 281; lines 282 to 286 are blank and the next marker WEEK TWO is at line 287, which is what makes 87-281 the week range."
+        },
+        {
+          "locator": "line 279 (question 1) SHA-256 7f85c8021684c5a976c4d009881ba98ed443b6ef718a0381438194b95b449b5a, line 281 (question 2) SHA-256 558b402ffd99f1514a00c64aba4cce393c6f8a35b98bd4c193940429d50ecc59",
+          "explanation": "Line 279 has the same digest as line 235, so the first theory question is a byte-identical repeat inside the same week; line 281 adds two words to line 237. Both are indexed as unanswered: no key, no mark allocation and no guidance on which block a teacher should mark."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W01-READING-ASSIGNMENT",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The READING ASSIGNMENT of Week 1: one external textbook reading set without a page range.",
+      "objective_locator": "247-249 (READING ASSIGNMENT heading and the reference line)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 247-249 (READING ASSIGNMENT heading and the reference line) SHA-256 1d10faed2408896196b4b41f879cc2556853acd4760f7f84044369a479b7fbc4",
+          "explanation": "The single reference names the Hiit senior secondary Data Processing textbook with the publisher words run together as printed (ByHiit) and gives no pages, edition or year. Across the ten READING ASSIGNMENT blocks in the document (247, 405, 547, 701, 803, 925, 1169, 1431, 1583, 1741), 8 print a page range; the Week One line here and the Week Four line at 703 do not, and the Week Four line names no title at all, so this week sets a reading that cannot be located in any edition. The same title occurs in the opening reference list at line 77 in a third printed form, again with two words fused; the full printed line is not reproduced here and is pinned by the digest. DP-PRE-T1 owns that block."
+        },
+        {
+          "locator": "line 77 (the opening reference list entry for the same publisher textbook) SHA-256 fc14cac2bb85b27afda665d1da92979ca806872489f5fc61492d89e413c2a70d",
+          "explanation": "Indexed by digest only, to show that the same reading is written three different ways in this document. No copy of the textbook is held, no rights position exists and nothing from it was imported."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "DATA-PROCESSING-ALIAS-APPROVAL",
@@ -100,6 +473,172 @@
         "SS1-SRC-6763fdc397c3"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 of the 1st Term Data Processing source is indexed at objective level only: 18 coverage entries over lines 87-281, 11 of them PARTIAL teaching sections and 7 UNRESOLVED assessment or promise sections, all with empty lesson_ids. No lesson, asset, correction or parser rule has been written, so nothing in the week is deliverable even where the source teaches the content.",
+      "required_action": "Author deliverable lessons for the PARTIAL sections and resolve the UNRESOLVED sections before any Week 1 lesson is published; do not mark the week complete while these entries carry no lesson.",
+      "affected_ids": [
+        "COV-DP-T1-W01-SCHEME-1",
+        "COV-DP-T1-W01-OUTCOMES",
+        "COV-DP-T1-W01-DATA",
+        "COV-DP-T1-W01-CYCLE-DIAGRAM",
+        "COV-DP-T1-W01-WHAT-IS-DP",
+        "COV-DP-T1-W01-PROPERTIES",
+        "COV-DP-T1-W01-CYCLE",
+        "COV-DP-T1-W01-ELEMENTS",
+        "COV-DP-T1-W01-ACTIVITIES",
+        "COV-DP-T1-W01-INPUT-ACTIVITY",
+        "COV-DP-T1-W01-PROCESSING-ACTIVITY",
+        "COV-DP-T1-W01-OUTPUT-ACTIVITY",
+        "COV-DP-T1-W01-IMPORTANCE",
+        "COV-DP-T1-W01-EVALUATION",
+        "COV-DP-T1-W01-GENERAL-EVALUATION",
+        "COV-DP-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-DP-T1-W01-THEORY",
+        "COV-DP-T1-W01-READING-ASSIGNMENT",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-MANUAL-VS-ELECTRONIC",
+      "kind": "CONTENT",
+      "detail": "Line 91 promises the student will distinguish manual from electronic data processing. The word manual occurs on 3 lines in the whole 1,773-line extract (91, 321, 1723) and the phrase electronic data processing on line 91 only, so within Week 1 the promise is the only mention; the distinction itself is printed at lines 1721 and 1723 under the Week Ten heading WAYS OF HANDLING DATA (1719), as Electronic methods and Non-Electronic methods.",
+      "required_action": "Owner decides whether Week 1 teaches the distinction itself, whether the Week Ten content is scheduled earlier, or whether the promise line is dropped from the outcome statement; a lesson may not import Week Ten content into Week 1 without that decision.",
+      "affected_ids": [
+        "COV-DP-T1-W01-OUTCOMES",
+        "DP-LES-T1-W01-MANUAL-ELECTRONIC",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-PROPERTIES-NOT-EXPLAINED",
+      "kind": "CONTENT",
+      "detail": "The eight properties of data at lines 131-145 are printed as bare labels with no explanation, example or ordering anywhere in the week, and the collation stage label at line 155 is the only occurrence of that word in the extract. GENERAL EVALUATION 3 (line 239) asks what is involved in each stage and the weekend item at lines 271-273 tests the property list, so both depend on content the source never supplies.",
+      "required_action": "Teacher or owner supplies the explanation for each property and for the gathering and collation stages, with sources, before a lesson teaches them; the eight labels may be carried as a list only if the lesson says the explanation is not in the source.",
+      "affected_ids": [
+        "COV-DP-T1-W01-PROPERTIES",
+        "COV-DP-T1-W01-CYCLE",
+        "DP-LES-T1-W01-PROPERTIES-CYCLE",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-CYCLE-DIAGRAM-MISSING",
+      "kind": "CONTENT",
+      "detail": "The input, processing and output flow appears twice in Week 1, at line 105 and line 169, drawn with VML straight connectors (w:pict, shape type #_x0000_t32) rather than as images. mammoth.extractRawText keeps the three labels and loses the connectors, so the direction of the flow survives only through the surrounding prose, and the second occurrence is printed with PROCESSING and OUTPUT run together. No picture exists to recover.",
+      "required_action": "DP-VIS-T1-W01-CYCLE disposes of the flow: it may be represented as a source-anchored ordered list or as a new original diagram. No asset was extracted, redrawn or committed here and the three text labels may not be reported as a delivered diagram.",
+      "affected_ids": [
+        "COV-DP-T1-W01-CYCLE-DIAGRAM",
+        "DP-VIS-T1-W01-CYCLE",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "Week 1 sets 14 questions, 2 written at lines 181 and 183, 5 written at 235 to 243, 5 objective items at 255 to 273 and 2 written at 279 and 281, and the source provides no answer to any of them. A case-insensitive scan of the whole 1,773-line extract finds answer, marking, score and rubric on no line at all, and marks only at 1131 and 1135 where it means physical marks on a wall in Week Seven. No option letter is marked and no mark allocation is printed.",
+      "required_action": "Owner supplies the key, the mark allocation and who marks each block before any Week 1 assessment is delivered; no answer was invented here.",
+      "affected_ids": [
+        "COV-DP-T1-W01-EVALUATION",
+        "COV-DP-T1-W01-GENERAL-EVALUATION",
+        "COV-DP-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-DP-T1-W01-THEORY",
+        "DP-LES-T1-W01-KEY-ASSESSMENT",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-WEEKEND-ITEM4-TWO-CORRECT-OPTIONS",
+      "kind": "CONTENT",
+      "detail": "The fourth of the five weekend items, at lines 267 and 269, asks what the input activity involves and offers collection, verification, retrieving and all of the above. Collection and verification are both taught as input steps at lines 191, 199 and 201, while retrieving is taught as an output operation at lines 195 and 223, so the taught text supports two of the options and excludes a third and all of the above cannot be right. The item has no defensible single answer as printed.",
+      "required_action": "Teacher or owner decides whether to reword the item, drop the all of the above option, or mark either of the two taught options acceptable; recorded as a defect rather than resolved.",
+      "affected_ids": [
+        "COV-DP-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-DP-T1-W01-INPUT-ACTIVITY",
+        "COV-DP-T1-W01-OUTPUT-ACTIVITY",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-GENERAL-EVALUATION-4-UNTAUGHT",
+      "kind": "CONTENT",
+      "detail": "GENERAL EVALUATION question 4 (line 241) asks why a computer is a better tool for data processing. The phrase better tool occurs on that line alone in the extract and advantage or disadvantage occurs only at lines 1139, 1193 and 1591, all outside Week 1, so the week never compares computer processing with any other means. Question 3 of the same block (line 239) is also only partly answerable because the collation stage is never explained.",
+      "required_action": "Owner decides whether the comparison is taught in Week 1 with sources, moved to the week that carries the advantages and disadvantages content, or removed from the block.",
+      "affected_ids": [
+        "COV-DP-T1-W01-GENERAL-EVALUATION",
+        "DP-LES-T1-W01-COMPUTER-TOOL",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-READING-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "The READING ASSIGNMENT at lines 247-249 sets the Hiit senior secondary Data Processing textbook, printed with the words run together as ByHiit, with no pages, edition or year; 8 of the 10 reading lines in this document do print a page range. The same textbook appears in the opening references at line 77 in a third printed form. No copy is held, no rights position is recorded and nothing was imported from it.",
+      "required_action": "Owner records the rights position and the edition before the reading is set in a delivered lesson.",
+      "affected_ids": [
+        "COV-DP-T1-W01-READING-ASSIGNMENT",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-DUPLICATE-QUESTIONS",
+      "kind": "CONTENT",
+      "detail": "Within one week the same questions are set twice: line 279 is byte-identical to line 235 (both SHA-256 7f85c8021684c5a976c4d009881ba98ed443b6ef718a0381438194b95b449b5a), and line 281 repeats line 237 with two words added. EVALUATION question 2 at line 183 asks for the same definition in a third wording. The blocks give no instruction on whether the repeats are practice, revision or separate marks.",
+      "required_action": "Teacher decides how the repeats are used and whether both blocks are marked; recorded as printed.",
+      "affected_ids": [
+        "COV-DP-T1-W01-THEORY",
+        "COV-DP-T1-W01-GENERAL-EVALUATION",
+        "COV-DP-T1-W01-EVALUATION",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-DATED-STORAGE-MEDIA",
+      "kind": "FACT",
+      "detail": "Line 217 teaches storing on a disk, tape or CD-ROM. CD-ROM occurs on 2 lines in the whole extract (217 and 981) and the media list is presented without a date or a currency claim. The claim is the source wording, kept distinct from any corrected current-practice statement.",
+      "required_action": "Supply a dated authoritative source for current storage media before the lesson states it as practice; keep the source wording separate from the correction.",
+      "affected_ids": [
+        "COV-DP-T1-W01-PROCESSING-ACTIVITY",
+        "DP-FACT-T1-HARDWARE-MODELS",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-LIST-NUMBERING-LOST",
+      "kind": "VERIFICATION",
+      "detail": "The properties list at lines 131-145, the cycle list at 153-163 and the scheme rows are Word list-numbered paragraphs, so extractRawText carries their text and their order but never their numbers; only the processing activity items at 209-217 keep printed letters. Any lesson that calls one of these a numbered list is asserting something the extracted text does not carry.",
+      "required_action": "DP-PRES-T1-NUMBERING owns the preservation decision; until then the lists are indexed by line order with the digests recorded here, not by their printed numbering.",
+      "affected_ids": [
+        "COV-DP-T1-W01-PROPERTIES",
+        "COV-DP-T1-W01-CYCLE",
+        "COV-DP-T1-W01-SCHEME-1",
+        "DP-PRES-T1-NUMBERING",
+        "DP-WK-T1-W01"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W01-PARSED-ROW-MISSING",
+      "kind": "VERIFICATION",
+      "detail": "The importer has not been run and this source has no parsed row in docs/ss1/work/SS1-03/evidence/parsed_rows.json, so no lesson id can be attached to any Week 1 coverage entry yet. Every entry here keeps lesson_ids empty for that reason.",
+      "required_action": "Run the importer against the verified member, then attach lesson ids; until then no coverage entry may claim a delivered lesson.",
+      "affected_ids": [
+        "COV-DP-T1-W01-SCHEME-1",
+        "SS1-SRC-a92792eaa7ef"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
