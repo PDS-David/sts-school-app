@@ -593,6 +593,314 @@
           "explanation": "Indexed by digest only, to show that the same reading is written three different ways in this document. No copy of the textbook is held, no rights position exists and nothing from it was imported."
         }
       ]
+    },
+    {
+      "id": "COV-DP-T1-W02-SCHEME-2",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "Scheme row 2 of the 1st Term Data Processing scheme of work: the list-numbered label 'HISTORY OF COMPUTING' at line 51, whose teaching body is the WEEK TWO section 287-429.",
+      "objective_locator": "51 (scheme row 2 label, printed exactly as HISTORY OF COMPUTING with no week number)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 51 (scheme row 2 label) SHA-256 f43fd59c24fa01a86ced23c67b523b2b88805a33968427513e16a1581289b3c1",
+          "explanation": "The scheme rows are Word list-numbered paragraphs, so extractRawText carries the text without the numbers; row 2 is identified by position as the second row under the WEEK/TOPIC header at line 47 (twelve rows, 49-71), and its label matches the body topic line 289 (TOPIC: HISTORY OF COMPUTING). The label names a topic only; it is one objective of the week and no whole-row coverage is claimed from it. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "lines 287-289 (marker WEEK TWO and topic line) SHA-256 c061dc793e5f6721efc896b2cc78e1d32ea8af26412a1c26e101722539626de5; whole week 287-429 SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b",
+          "explanation": "Week boundary re-derived from the verified member: the week runs from the marker at 287 to the last non-blank line 429 (THEORY), 430-434 are blanks and WEEK THREE is at 435. Scheme row 3 reads HISTORY OF COMPUTERI. (line 53) while the Week Three body is a separate topic; the row-to-week pairing is DP-INV-T1's finding and is not re-scoped here."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-DEVICE-LISTS",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The three printed device lists at the top of the week: EARLY MECHANICAL COUNTING/CALCULATING DEVICES (abacus, slide rule), EARLY ELECTRO-MECHANICAL COUNTING DEVICES (Napier bone, Pascal machine, Leibnitz machine, Jacquard loom, Babbage analytical machine) and EARLY ELECTRONIC COUNTING DEVICES (Hollerith punch card, Von Neumann machine).",
+      "objective_locator": "291-317 (three bold group headings and nine auto-numbered list labels)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 291-317 (three group headings with nine list labels) SHA-256 6bed4bb6da56bd4fb9083524bcb6b5a500c7056e7806f12e0959730ce228dcf6",
+          "explanation": "Headings at 291, 299 and 313 and labels at 293, 295, 301, 303, 305, 307, 309, 315 and 317. The nine labels sit in three separate Word lists of decimal numbering (body children 145-146, 149-153 and 156-157), so their ordinals exist only in the numbering definitions and are absent from the extracted text. Every label is a bare name: of the nine only the abacus, Napier, Pascal, Leibnitz and Jacquard are taught later in the week, and the group headings themselves are never explained. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 291 SHA-256 3e2c33e4dfd0a2150ef81da031d4b4127ed43e7d4811505b23e8470e8246d4a0, 293 7cf86485035a54ae302ec16da9a368146cde7a575c0d197e3a1242c12a0a2cb9, 295 f42832cfa35292a52d51942d820520508131268f52927b7cd24fcbe5557df690, 299 ad9983d6f3416131dddbacff9e752b245b7dd15fab3387f857f3002c98a8be18, 301 d3213798c55fdb171fda7d9b7485f1bca76cbcc8d9339dba4124a34c54db2b7b, 303 cd2fd8b49590fbc94c280ee5d20355a5887329f9401629a6b996e938eb7b937a, 305 ee7d6cc6318f1f1b1c7d675d0a69d49deae30f192ca37b83b3eb094ffa65fe1c, 307 717fdea848fee30356dbed4ff3c33fcf606ff33b899c2c8c3c08b96f3b99aceb, 309 218434046756145d49723f9c88cbfb47bba7eba3a33d302a1711db136dfeb1e2, 313 6da6cfa3e50782d214f240dc9d2f781540ae8f7221df5a346cff2edbc55d0437, 315 f3c2e86f8b94d74d923f124bc145d33d2993506370d1248f4d03c9231783fffa, 317 b5bc419634837a337b0a60730f4991ae764da11ac3a63d1cd5b15103f5160cda",
+          "explanation": "Per-line digests for every heading and label. The spellings Blaize (303) and Leitbnitz (305) differ from the body forms Leibnitz (355, 357), and line 313 ends with a colon where 291 and 299 do not; all kept as printed."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-INTRO-KINDS",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The framing paragraph that man searched for fast and accurate calculating devices, that the computer resulted, and that there are three kinds of calculating device: manual, mechanical and automatic.",
+      "objective_locator": "321 (the single unheaded framing paragraph after the device lists)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 321 (framing paragraph) SHA-256 29dfb58a1066db308486ddd40ae3c21c57ad8619140beb484311b9f7f8d55546",
+          "explanation": "One paragraph, no heading. Its three kinds (manual, mechanical, automatic) do not match the three group headings above it (mechanical, electro-mechanical, electronic) and are never explained or linked to them; manual occurs on 3 lines document-wide (91, 321, 1723) and automatic on 2 (321, 1599). The mismatch is recorded as printed, not harmonised. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-ABACUS",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The abacus: probably the first calculating device, invented by the Chinese, still used in some places, a frame divided by a horizontal bar with vertical threads of beads, used for simple addition and subtraction.",
+      "objective_locator": "325-327 (ABACUS heading and its one paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 325-327 (ABACUS heading and one paragraph) SHA-256 bcb532c806b824879d612ff351a052b839710a41f1493d7127d860ca3f0c5fd8",
+          "explanation": "One paragraph, no figure: the description of the frame, bar, threads and beads is words only and the week contains no picture, table or drawing. The paragraph hedges the claim to being the first device with the word probably, while the CONCLUSION at 375 states it without the hedge and weekend item 3 (417) tests it. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 325 SHA-256 beddd8509d3d6fb97e51afbf0ef9054b8ecddc874afec8499b891fe4de25aad7, line 327 SHA-256 01a6ae340aa03eff5f1cd96d1e19a714a51f39cca67c426e25148d91b32e606e",
+          "explanation": "The origin and still-in-use statements are dated, uncited claims and belong to DP-FACT-T1-W02-HISTORY-CLAIMS."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-NAPIER",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "Napier's bones: the need for a better device, John Napier as a Scottish mathematician, a set of eleven four-sided rods made of bone used as a multiplication tool, with numbers placed side by side to give products and quotients of large numbers.",
+      "objective_locator": "331-333 (NAPIER'S BONE heading and its one paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 331-333 (NAPIER'S BONE heading and one paragraph) SHA-256 7cff39d80f524ccb8d60b26cc51eac514ae3b518597dbcba532015b204b646b0",
+          "explanation": "One paragraph, no figure. The rod count (eleven, four sides each) and the bone material are stated as plain facts; weekend item 1 (413) offers nine, eleven, ten and twelve as options, and eleven occurs on this line only in the whole extract. The claim is dated and uncited and is routed to DP-FACT-T1-W02-HISTORY-CLAIMS, not settled here. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 331 SHA-256 e5608b0ba741b9fe29abfa88459fb812c208175787fa28af641c272156ff7379, line 333 SHA-256 c3578d08b59147f9862a360c2d317abcc768aebbf7bb930650afc524bb9183e9",
+          "explanation": "Line 301 files the bones under the electro-mechanical heading although the paragraph describes a set of hand-placed rods; the heading/body difference is recorded as printed."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-PASCALINE",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The Pascaline: the first mechanical calculating machine, invented in 1642 by Blaize Pascal, numbers entered by dialling numbered wheels, a dial showing the result, with addition and subtraction done normally and division by repeated subtraction and multiplication by repeated addition.",
+      "objective_locator": "345-351 (PASCALINE heading and its two paragraphs)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 345-351 (PASCALINE heading and two paragraphs) SHA-256 2ece813a7fd695776e0ad4332ccded6066a2825353b8185619e5967f5367326d",
+          "explanation": "Two prose paragraphs (347 and 351) with no figure. The year 1642 occurs on this line only in the whole extract. Line 347 calls it the first mechanical calculating machine while the abacus is listed as a mechanical device at 293 and called the first calculating device at 327 and 375, and the machine is filed under electro-mechanical at 303; recorded, not reconciled. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 345 SHA-256 70f567cd64950c5f01deee43298b36f9bf089c53771cea3bb31b2f39506b3f33, line 347 SHA-256 a402d1565229293686602d40a8c88a8494be76254e9ac7031d05567377751768, line 351 SHA-256 1f193ca3467d6ba6932e08d3bca0b1e7e0cdca324c92afb80d84dc4f1dba5345",
+          "explanation": "Line 351 opens with the word Through where the sense needs Though; the operations list it carries is the only teaching behind GENERAL EVALUATION question 2 (397). The 1642 date and the repeated-subtraction and repeated-addition statements belong to DP-FACT-T1-W02-HISTORY-CLAIMS."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-LEIBNITZ",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The Leibnitz calculating machine: built in 1694, able to add and, after changes, to multiply, with a special stepped gear mechanism for introducing the added digits that the source says is still being used.",
+      "objective_locator": "355-357 (LEIBNITZ CALCULATING MACHINE heading and its one paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 355-357 (LEIBNITZ CALCULATING MACHINE heading and one paragraph) SHA-256 85d25a4854519428d0b302197e94144806f0632136f326550f6818b045fae899",
+          "explanation": "One paragraph. It says Leibnitz invented a computer, built in 1694; the year 1694 occurs on this line only, and the final claim that the stepped gear is still used is a present-tense statement with no date or source. The spelling Leibnitz is the only form in the body while 305 prints Leitbnitz and the name Leibniz never occurs. Dated claims are routed to DP-FACT-T1-W02-HISTORY-CLAIMS. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 355 SHA-256 315b053af130de9165d220abafc5c7b75c54b8ec48a9aa818f8d776a1bc9b1d8, line 357 SHA-256 d4d9109663d007eb93d6a2b6f38bdc2147dc147a7f694adb3929fd45ecc02ddb",
+          "explanation": "Per-line digests. No question in the week asks about this machine directly."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-JACQUARD",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "Jacquard's loom: one of the first machines run by a program, a loom that controlled the raising of the thread by punched cards, with lines of holes on a card representing the weaving pattern.",
+      "objective_locator": "361-363 (JACQUARD'S LOOM heading and its one paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 361-363 (JACQUARD'S LOOM heading and one paragraph) SHA-256 10e198f01ec2afc8917421630734ac9a7d46925d566f33c4c748019dd4f7b4d9",
+          "explanation": "One paragraph, no figure. It is the only teaching behind weekend item 2 (415) and part of GENERAL EVALUATION question 1 (395). Line 307 files the loom under electro-mechanical devices; no heading explains that term. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 361 SHA-256 db88cd1830fee5cb0b78d16cc9022574526497c8a7653362eff9de8d4b33c020, line 363 SHA-256 2441e998805db83f5dbc47920c3b632ea943c17765512cecbb49c7c2ffbe702c",
+          "explanation": "The one-of-the-first-programmed-machines statement is a dated, uncited claim and is routed to DP-FACT-T1-W02-HISTORY-CLAIMS."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-PUNCHED-CARD",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The punched card: developed steadily in the 1920s and 1930s, a standard card of 80 columns and 12 rows, one, two or three holes in a column representing a character for a maximum of 80 characters per card, holes made by a punch machine with a typewriter-like keyboard.",
+      "objective_locator": "367-369 (PUNCHED CARD heading and its one paragraph)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 367-369 (PUNCHED CARD heading and one paragraph) SHA-256 04a66a047fbad9fe595e678d517f71a2774e5f4cae55352031656f63c7181d26",
+          "explanation": "One paragraph. It carries the only description a student could use for THEORY question 1 (427, a standard punch card). It never names Hollerith, although line 315 lists a Hollerith punch card under electronic devices, and the sentence about one character in the 80 columns is worded so that it reads as one character on the whole card before it gives the 80-character maximum; the intended sense is per column. The years1920 run-together and the sentence are kept as printed. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 367 SHA-256 cc7ce2b04aa3c6c0025fd7afb0962e1cd72b41867513cc4373b50040d42aea2b, line 369 SHA-256 52f0389d90db34f91bef5255868f7496d6e1a2e59196fc4c41b411793fa76503",
+          "explanation": "The 1920-1930 development claim and the 80-column, 12-row format are dated, uncited statements for DP-FACT-T1-W02-HISTORY-CLAIMS."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-CONCLUSION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The week's closing summary: various calculating devices and their ways of operating were learnt, and the abacus was the first calculating device.",
+      "objective_locator": "373-375 (CONCLUSION heading and its one sentence)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 373-375 (CONCLUSION heading and one sentence) SHA-256 379938b155437fd9a1b6c9935f85d4a1a19b9bd1f566d98d9ec560cf79bc167c",
+          "explanation": "A summary sentence, not new teaching. It restates the abacus claim without the word probably used at 327 and prints calculating devices where the sense needs the singular. It is not a calendar or revision marker and is indexed as a section of the week. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-NUMBER-SYSTEMS",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "NUMBER SYSTEM (REVISION): the lead sentence that using a computer requires knowing how data is represented and communicated to it, and the four named systems - decimal, binary, octal and hexadecimal.",
+      "objective_locator": "379-393 (NUMBER SYSTEM (REVISION) heading, lead sentence and four auto-numbered labels)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 379-393 (NUMBER SYSTEM (REVISION) heading, lead and four labels) SHA-256 2caa70c550a91acb2a99feaecadc6e01d3179c496b77dbf7645fc280bd30d8a5",
+          "explanation": "Classified by its body, not as a calendar marker: the heading says revision, but the block is a lead sentence (381) and four bare labels (383, 385, 387, 389) inside the history week, with no definition, base, digit set or example. The four labels are one Word list (body children 190-193, decimal numbering), so their ordinals are absent from the extracted text. The line 381 text prints communicatedto as one word and the label at 389 carries a full stop that the other three lack. Indexing only: lessons[] holds no Week 2 supplement and no parsed row exists, so taught in the source is not deliverable and no coverage is claimed beyond the index."
+        },
+        {
+          "locator": "line 379 SHA-256 844ca310200afac83d612de749f13d1a678b1336f683ec85d0f58c6d924d1f5f, 381 52224e4bac6ea3198810cc447da0d486d29a3372443ca0333ac6b3b932993dc1, 383 75e2db8484420b45b2d44648a2cf8ae7c6e2899e4c14be731da7ad5569d52615, 385 744ed44bd3d509837dab6f16a019409b429d77fddcf806b59902315303503645, 387 b9ec55b4fda4eecdac049542902927deae4a0e2b48579187308ec8210d0f0da7, 389 105626a4560965ffc2ca829a27b52d1a42d28a51fbf6561313793a01cf71945f",
+          "explanation": "Per-line digests. Whether the systems were taught in an earlier class or term is not evidenced anywhere in this source: the revision label is the only hint, and the untaught content is handled by COV-DP-T1-W02-NUMBER-SYSTEMS-UNTAUGHT."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-NUMBER-SYSTEMS-UNTAUGHT",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "What each of the four number systems is, including the base or radix of the decimal and octal systems, which the week and its questions need but never teach.",
+      "objective_locator": "381-389 (the four labels) read against GENERAL EVALUATION 399, WEEKEND ASSIGNMENT 419 and 421 and THEORY 429",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 381-389 SHA-256 ec4e8feb9386090df5dd5e7b72c4f4a9cbfe756ffb92c13d1b622223301ce00b and the question lines 399 SHA-256 d0424d6b404699a7bc4925c34edda1fd0a319151c316eb06869677be3a38c945, 419 SHA-256 1ae16ab1f85dcb29a2e600390bd1a6f504597c7ddc945bc3b969d7c0165ffe92, 421 SHA-256 a99968da94d599ff0f115a7f7607cd44b9e4d4ebb8252b0295b523a12e86bc47, 429 SHA-256 e09189f942095e05072e64a45e1353152f7e25ad07974153fc474f59c0e78539",
+          "explanation": "Case-insensitive census over the whole extract (1,773 lines, SHA-256 2f3f7c4c1165bff1d58a62d7cf2cf2ad793ceffbdf16d71fa0e85f74d8b5d375): radix occurs on 419 only, the word base on 421 and 1757 only, hexadecimal on 389 only, octal on 387 and 419, binary on 385, 965 and 969 (the later two are outside this week and were counted, not read), and number system on 379, 381, 389, 399, 419 and 429. No line defines any of the systems, so four of the 13 questions in the week test content the source never carries. No definition is supplied here; it must be authored as original, visibly authored teaching by DP-LES-T1-W02-NUMBER-SYSTEMS."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-DEVICES-UNTAUGHT",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The devices the lists name but the week never teaches - the slide rule, Babbage's analytical machine, the Hollerith punch card and the Von Neumann machine - and the meaning of the electro-mechanical and electronic group headings.",
+      "objective_locator": "295, 309, 315 and 317 (list labels) with the group headings at 299 and 313",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 295 SHA-256 f42832cfa35292a52d51942d820520508131268f52927b7cd24fcbe5557df690, 309 SHA-256 218434046756145d49723f9c88cbfb47bba7eba3a33d302a1711db136dfeb1e2, 315 SHA-256 f3c2e86f8b94d74d923f124bc145d33d2993506370d1248f4d03c9231783fffa, 317 SHA-256 b5bc419634837a337b0a60730f4991ae764da11ac3a63d1cd5b15103f5160cda; headings 299 SHA-256 ad9983d6f3416131dddbacff9e752b245b7dd15fab3387f857f3002c98a8be18 and 313 SHA-256 6da6cfa3e50782d214f240dc9d2f781540ae8f7221df5a346cff2edbc55d0437",
+          "explanation": "Census: slide rule occurs on 295, 417 (a weekend option) and 1177 (outside the week, counted not read); Babbage and analytical occur on 309 only; Hollerith on 315 only; Neumann on 317 only; the word electro occurs on the week's headings 299 and 313 and on other weeks' lines. None is taught here. The device claims that must be taught are dated and need independent, dated verification (DP-FACT-T1-W02-HISTORY-CLAIMS) before DP-LES-T1-W02-DEVICES writes them."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-EVALUATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The EVALUATION block of Week 2: two written questions, one on types of early counting devices and one on how the abacus and Napier's device function.",
+      "objective_locator": "337-341 (EVALUATION heading and its two list questions; DP-INV-T1's range 337-344 adds trailing blanks)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 337-341 (EVALUATION heading and two questions) SHA-256 8dd391d19ab4d51121e82b0351a5105c2c1874ee3539f8fd6e29e2ffbabf4aee",
+          "explanation": "Two auto-numbered questions (body children 168-169, decimal list, so the numbers are not in the extracted text) with no marks and no key. 339 is answerable in substance from the lists at 291-317 and the paragraph at 321, but those give two different kinds-of-device schemes; 341 is answerable from 327 and 333. Nothing states a correct answer. A page break follows the block in the document (body child 170)."
+        },
+        {
+          "locator": "line 339 (question 1) SHA-256 71107f2dccdf598f4a8559e0750350172af2e254f3a289c8b4c2e98d504838a8, line 341 (question 2) SHA-256 8f571000c05f5ff5ae2162257dc47183371289404164afcc570cf7e54db3b358",
+          "explanation": "Per-question digests. Question 2 ends with a full stop though it is a question, and 341 overlaps GENERAL EVALUATION question 1 (395), which asks the same about the abacus and Jacquard's loom."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-GENERAL-EVALUATION",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The GENERAL EVALUATION block of Week 2: four written questions on how the abacus and Jacquard's loom function, the operations the Pascaline can perform, the four number systems, and listing four early counting devices.",
+      "objective_locator": "393-401 (GENERAL EVALUATION heading and its four list questions)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 393-401 (GENERAL EVALUATION heading and four questions) SHA-256 6f99852878437c93ba0f243ddd19b9c60bfcf1e61d34ac318c501263ee2cdde0",
+          "explanation": "Four auto-numbered questions (body children 196-199, decimal list, numId 97) with no marks and no key. 395 is answerable from 327 and 363, 397 from 347 and 351, 401 from the lists; 399 asks for the four number systems, which are only named (381-389), so it cannot be answered from the week."
+        },
+        {
+          "locator": "line 395 SHA-256 e5f02f9f0e4904fb27087a5cb6ea8446312ee9f87a7fb012c27e1124bccd1eec, line 397 SHA-256 786529542e7403604d577a56097f23c9136894a75b4fef601bff34705bdcb7b8, line 399 SHA-256 d0424d6b404699a7bc4925c34edda1fd0a319151c316eb06869677be3a38c945, line 401 SHA-256 ac1c05499e8c94d273c3f5650288ee92f236ee2be94d3e5dcf80effc9adecc71",
+          "explanation": "Per-question digests. Line 399 says the four number system in the singular; 401 repeats the demand of EVALUATION question 1 (339) in another wording and 395 overlaps 341."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-WEEKEND-ASSIGNMENT",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The WEEKEND ASSIGNMENT of Week 2: five objective items, each printed as a single line with its A to D options, on the number of Napier's rods, the use of Jacquard's loom, the first calculating device, the radix of octal and the base of decimal.",
+      "objective_locator": "411-421 (WEEKEND ASSIGNMENT heading and five one-line items)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 411-421 (WEEKEND ASSIGNMENT heading and five items) SHA-256 afce86aae4cb3fc48cf234e83fa1f332a2b96a9214d084b58fdd33ff77ea004f",
+          "explanation": "Five auto-numbered items (body children 205-209, decimal list, numId 17) whose options are printed inline after an ellipsis gap, unlike Week 1 where options sit on their own lines. No option is marked and no marks are printed. Items 1, 2 and 3 are supported by 333, 363 and 327 in substance (the eleven-rod claim being dated); items 4 and 5 ask for the octal radix and the decimal base, which the week never teaches (see COV-DP-T1-W02-NUMBER-SYSTEMS-UNTAUGHT). Item 2 offers all of the above, and item 3's option slide rule is a device that is named but not taught."
+        },
+        {
+          "locator": "line 413 (item 1) SHA-256 2cce24c2059f7b886b00b1928a6bb5a745c93523e0c0d534e2519c698e329c44, line 415 (item 2) SHA-256 cc03338401946a35cdaa3cd0d2128f345985d3b1cb2bc01a98d3aacb52a96f87, line 417 (item 3) SHA-256 3f41b97c6dbcd570fa5eec6e2a01aa125a24bc4975a10b8c4ae658d1e406fa21, line 419 (item 4) SHA-256 1ae16ab1f85dcb29a2e600390bd1a6f504597c7ddc945bc3b969d7c0165ffe92, line 421 (item 5) SHA-256 a99968da94d599ff0f115a7f7607cd44b9e4d4ebb8252b0295b523a12e86bc47",
+          "explanation": "Per-item digests. Defects kept as printed: the gaps are runs of the ellipsis character (item 1 adds two full stops) and not underscores, and item 1 has a double space after the first word."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-THEORY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The THEORY block of Week 2: two written questions, describe a standard punch card and explain the decimal number system.",
+      "objective_locator": "425-429 (THEORY heading and its two list questions)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 425-429 (THEORY heading and two questions) SHA-256 388cff4b9a982bb670112f32ee0fd55e9971b6fe9b2fc784eb6f99f1c3dea3f7",
+          "explanation": "Two auto-numbered questions (body children 212-213, decimal list, numId 18) with no marks and no key. 427 is answerable from 369; 429 asks for the decimal system, which the week only names at 383. THEORY is the last block of the week; 430-434 are blanks and WEEK THREE is at 435."
+        },
+        {
+          "locator": "line 427 (question 1) SHA-256 b927b7eead43e1b6ac83a8213e5be098c3309432be22168e51add1ac793a687d, line 429 (question 2) SHA-256 e09189f942095e05072e64a45e1353152f7e25ad07974153fc474f59c0e78539",
+          "explanation": "Per-question digests. The theory questions are not duplicates of the evaluation questions, unlike Week 1."
+        }
+      ]
+    },
+    {
+      "id": "COV-DP-T1-W02-READING-ASSIGNMENT",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "objective": "The READING ASSIGNMENT of Week 2: one external textbook chapter with a page range.",
+      "objective_locator": "405-407 (READING ASSIGNMENT heading and the reference line)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 405-407 (READING ASSIGNMENT heading and the reference line) SHA-256 f6bb51c5aa287a01168fa843151cc2e4d3fa5800dd57a47f99e31629d7cd8ffe",
+          "explanation": "The line names a chapter and pages (Pg1-3) of a handbook titled with Computer Studies and an author name run together as printed (NiyiAdekolegan). Computer Studies occurs on 79, 407, 549 and 1171; the title is a printed reference and Data Processing is not renamed. It differs from the Week 1 reading, which names a different textbook and prints no pages; no copy of either is held and nothing was imported."
+        },
+        {
+          "locator": "line 407 SHA-256 f28da4abe1126cf32e338b448bb6a30204c7c4dc0e987b225400c1e1b83a144d",
+          "explanation": "The reading cannot be checked against a held edition; rights and edition stay with the owner (DATA-PROCESSING-T1-W02-READING-RIGHTS)."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -782,6 +1090,138 @@
         "COV-DP-T1-W01-SCHEME-1",
         "SS1-SRC-a92792eaa7ef",
         "COV-DP-T1-W01-CYCLE-DIAGRAM"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 2 (lines 287-429, SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b) is indexed section by section as 18 coverage rows (11 PARTIAL, 7 UNRESOLVED). No supplement teaches any of them, lessons[] holds only the Week 1 supplement and no parsed row exists for this source, so none is deliverable.",
+      "required_action": "Author the lessons named in the Week 2 queue items, then update the rows; map new teaching to exact source lines.",
+      "affected_ids": [
+        "COV-DP-T1-W02-SCHEME-2",
+        "COV-DP-T1-W02-DEVICE-LISTS",
+        "COV-DP-T1-W02-INTRO-KINDS",
+        "COV-DP-T1-W02-ABACUS",
+        "COV-DP-T1-W02-NAPIER",
+        "COV-DP-T1-W02-PASCALINE",
+        "COV-DP-T1-W02-LEIBNITZ",
+        "COV-DP-T1-W02-JACQUARD",
+        "COV-DP-T1-W02-PUNCHED-CARD",
+        "COV-DP-T1-W02-CONCLUSION",
+        "COV-DP-T1-W02-NUMBER-SYSTEMS",
+        "COV-DP-T1-W02-NUMBER-SYSTEMS-UNTAUGHT",
+        "COV-DP-T1-W02-DEVICES-UNTAUGHT",
+        "COV-DP-T1-W02-EVALUATION",
+        "COV-DP-T1-W02-GENERAL-EVALUATION",
+        "COV-DP-T1-W02-WEEKEND-ASSIGNMENT",
+        "COV-DP-T1-W02-THEORY",
+        "COV-DP-T1-W02-READING-ASSIGNMENT",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-DEVICES-UNTAUGHT",
+      "kind": "CONTENT",
+      "detail": "The week lists nine devices but teaches five; the slide rule (295), Babbage's analytical machine (309), the Hollerith punch card (315) and the Von Neumann machine (317) are bare labels, and the headings electro-mechanical (299) and electronic (313) are never explained.",
+      "required_action": "DP-LES-T1-W02-DEVICES writes original teaching for these devices and headings after the dated claims are verified; the owner confirms whether the four untaught devices are in scope.",
+      "affected_ids": [
+        "COV-DP-T1-W02-DEVICE-LISTS",
+        "COV-DP-T1-W02-DEVICES-UNTAUGHT",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-CLASSIFICATION-MISMATCH",
+      "kind": "CONTENT",
+      "detail": "The framing paragraph (321) says there are three kinds of calculating device, manual, mechanical and automatic, while the headings (291, 299, 313) group devices as mechanical, electro-mechanical and electronic; the abacus is listed as mechanical, the Napier bones, Pascal machine and Jacquard loom as electro-mechanical, and the Hollerith punch card as electronic, and the Pascaline is called the first mechanical machine at 347.",
+      "required_action": "Owner or subject expert records which classification the class is taught; the source wording is kept and not harmonised.",
+      "affected_ids": [
+        "COV-DP-T1-W02-INTRO-KINDS",
+        "COV-DP-T1-W02-DEVICE-LISTS",
+        "COV-DP-T1-W02-PASCALINE",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-NUMBER-SYSTEMS-NOT-TAUGHT",
+      "kind": "CONTENT",
+      "detail": "NUMBER SYSTEM (REVISION) (379-393) names decimal, binary, octal and hexadecimal and teaches none: radix occurs only in weekend item 4 (419), base only at 421 and 1757, and four of the week's 13 questions (399, 419, 421, 429) depend on them. Nothing in this source shows where the systems were first taught.",
+      "required_action": "DP-LES-T1-W02-NUMBER-SYSTEMS writes original teaching of the four systems and their bases; the owner confirms whether the revision label means the content is taught elsewhere and should instead be referenced.",
+      "affected_ids": [
+        "COV-DP-T1-W02-NUMBER-SYSTEMS",
+        "COV-DP-T1-W02-NUMBER-SYSTEMS-UNTAUGHT",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "The week sets 13 questions - 2 at EVALUATION (339, 341), 4 at GENERAL EVALUATION (395-401), 5 at WEEKEND ASSIGNMENT (413-421) and 2 at THEORY (427, 429) - with no answer, mark, marker or marked option; the word answer occurs on no line of the extract, and mark occurs only at 333 (numbers marked on the rods), 945, 1131 and 1135, never as a mark scheme.",
+      "required_action": "DP-LES-T1-W02-KEY-ASSESSMENT writes an answer, marks and marker for each of the 13 questions, each key tied to the lines that teach it; items needing untaught content wait for the two lessons.",
+      "affected_ids": [
+        "COV-DP-T1-W02-EVALUATION",
+        "COV-DP-T1-W02-GENERAL-EVALUATION",
+        "COV-DP-T1-W02-WEEKEND-ASSIGNMENT",
+        "COV-DP-T1-W02-THEORY",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-DATED-HISTORY-CLAIMS",
+      "kind": "FACT",
+      "detail": "The week states dated and uncited historical claims: the abacus as first calculating device and still in use (327, 375), eleven bone rods (333), Pascal 1642 and the repeated-subtraction and repeated-addition method (347, 351), Leibnitz 1694 and a stepped gear still in use (357), the loom as one of the first programmed machines (363) and the 1920-1930 punched-card format (369).",
+      "required_action": "DP-FACT-T1-W02-HISTORY-CLAIMS verifies each claim against dated authoritative sources before any lesson states it as fact; the source wording stays distinct from the corrected statement.",
+      "affected_ids": [
+        "COV-DP-T1-W02-ABACUS",
+        "COV-DP-T1-W02-NAPIER",
+        "COV-DP-T1-W02-PASCALINE",
+        "COV-DP-T1-W02-LEIBNITZ",
+        "COV-DP-T1-W02-JACQUARD",
+        "COV-DP-T1-W02-PUNCHED-CARD",
+        "DP-FACT-T1-W02-HISTORY-CLAIMS",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-READING-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "The READING ASSIGNMENT at lines 405-407 sets a chapter and pages of a handbook titled with Computer Studies, the author name printed run together. No copy is held, no rights position is recorded and nothing was imported from it.",
+      "required_action": "Owner records the rights position and edition before the reading is set in a delivered lesson; the subject stays named Data Processing.",
+      "affected_ids": [
+        "COV-DP-T1-W02-READING-ASSIGNMENT",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-OVERLAPPING-QUESTIONS",
+      "kind": "CONTENT",
+      "detail": "EVALUATION question 2 (341) and GENERAL EVALUATION question 1 (395) both ask how the abacus works, and EVALUATION question 1 (339) and GENERAL EVALUATION question 4 (401) both ask for early counting devices, in different wording; no instruction says which is marked.",
+      "required_action": "Teacher chooses which overlapping questions are marked when the key is written; none was removed.",
+      "affected_ids": [
+        "COV-DP-T1-W02-EVALUATION",
+        "COV-DP-T1-W02-GENERAL-EVALUATION",
+        "DP-WK-T1-W02"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T1-W02-LIST-NUMBERING-LOST",
+      "kind": "VERIFICATION",
+      "detail": "The nine device labels, four number-system labels and the questions of four blocks are Word auto-numbered lists (numIds 11, 12, 13, 14, 16, 17, 18 and 97, decimal), so their ordinals exist only in numbering.xml and are absent from the extracted text.",
+      "required_action": "Verify with DP-PRES-T1-NUMBERING that delivery keeps or deliberately drops the ordinals; do not renumber silently.",
+      "affected_ids": [
+        "COV-DP-T1-W02-DEVICE-LISTS",
+        "COV-DP-T1-W02-NUMBER-SYSTEMS",
+        "DP-PRES-T1-NUMBERING",
+        "DP-WK-T1-W02"
       ],
       "blocks_delivery": false
     }

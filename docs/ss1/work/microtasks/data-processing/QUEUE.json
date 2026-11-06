@@ -26,23 +26,24 @@
     "DP-INV-T1 appended the 1st Term inventory items (21) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 21 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (DP-INV-T1.md).",
     "DP-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, week-indexing and visual items; the 3rd Term inventory remains unread. The document has no Week 1, scheme or revision/examination marker, recorded as source gaps. No lesson, coverage entry, rule, correction or asset was written.",
     "DP-WK-T1-W01 (2026-11-05) indexed the 1st Term Week 1 body at objective level and appended 5 follow-up items (4 LESSON, 1 FACTUAL_DEPENDENCY). Counts below reflect items, not content completeness: no Week 1 coverage entry carries a lesson, and the week is indexed rather than certified or fully taught.",
-    "DP-VIS-T1-W01-CYCLE (2026-11-06) disposed of the two Week 1 arrow drawings as a readable ordered relationship in the first package lesson, SUP-SS1-DATA-PROCESSING-T1-W01-INPUT-PROCESSING-OUTPUT; COV-DP-T1-W01-CYCLE-DIAGRAM is IMPLEMENTED_EQUIVALENT, not SUPPORTED, because the diagram itself is still not delivered and DATA-PROCESSING-T1-W01-CYCLE-DIAGRAM-MISSING stays blocking. Counts below reflect items, not content completeness: 11 PARTIAL and 6 UNRESOLVED Week 1 coverage entries still carry no lesson, and the six-stage cycle and the Week 1 assessment key are untouched."
+    "DP-VIS-T1-W01-CYCLE (2026-11-06) disposed of the two Week 1 arrow drawings as a readable ordered relationship in the first package lesson, SUP-SS1-DATA-PROCESSING-T1-W01-INPUT-PROCESSING-OUTPUT; COV-DP-T1-W01-CYCLE-DIAGRAM is IMPLEMENTED_EQUIVALENT, not SUPPORTED, because the diagram itself is still not delivered and DATA-PROCESSING-T1-W01-CYCLE-DIAGRAM-MISSING stays blocking. Counts below reflect items, not content completeness: 11 PARTIAL and 6 UNRESOLVED Week 1 coverage entries still carry no lesson, and the six-stage cycle and the Week 1 assessment key are untouched.",
+    "DP-WK-T1-W02 (2026-11-07) indexed 1st Term Week 2 (lines 287-429, digest c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b) as 18 coverage rows (11 PARTIAL, 7 UNRESOLVED, 0 SUPPORTED) and 9 open items (7 blocking). The week has no table, picture or drawing; NUMBER SYSTEM (REVISION) is a lead sentence and four bare labels, classified by its body; the 13 questions have no key and four depend on number-system content never taught. One dated-citation FACTUAL_DEPENDENCY and three LESSON follow-ups were appended; no lesson, answer, rule, correction or asset was authored and package_status stays PENDING. next_runnable was recomputed by the stated rule, which excludes TEST items. Nothing was run; testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 5,
+    "FACTUAL_DEPENDENCY": 6,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_WEEK_INDEXING": 18,
     "SOURCE_MARKER_DISPOSITION": 1,
     "VISUAL_DISPOSITION": 11,
     "SOURCE_PRESERVATION": 2,
-    "LESSON": 4
+    "LESSON": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 44,
     "BLOCKED": 2
   },
   "items": [
@@ -415,8 +416,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Week table, lines 287-429, SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Week 2 indexed (2026-11-07): mammoth 1.12.2 extractRawText re-run on the verified member (a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b, 1,056,355 bytes), same text as DP-INV-T1 (digest 2f3f7c4c1165bff1d58a62d7cf2cf2ad793ceffbdf16d71fa0e85f74d8b5d375, 39,578 characters, 1,773 lines); lines 287-429 digest c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b equals week_or_locator. Structure from word/document.xml: Week 2 is body children 142-215, with no table, picture, VML, textbox or object (one page break at child 170) and eight Word decimal lists whose ordinals the text view loses. 18 coverage rows were appended to data-processing.json with per-line digests, 11 PARTIAL (scheme row 2 line 51, nine-device lists 291-317, framing paragraph 321, abacus 325-327, Napier 331-333, Pascaline 345-351, Leibnitz 355-357, Jacquard 361-363, punched card 367-369, conclusion 373-375, number-system revision 379-393) and 7 UNRESOLVED (untaught number-system content, untaught devices, EVALUATION 337-341 with 2 questions, GENERAL EVALUATION 393-401 with 4, WEEKEND ASSIGNMENT 411-421 with 5, THEORY 425-429 with 2, READING ASSIGNMENT 405-407); 0 SUPPORTED. NUMBER SYSTEM (REVISION) is classified by its body: a lead sentence and four bare labels, not a calendar marker. The 13 questions have no key anywhere; four (399, 419, 421, 429) depend on number-system content the source never teaches and the radix and base occur only in questions. Nine DATA-PROCESSING-T1-W02-* open items were appended (7 blocking, 2 non-blocking). No lesson, answer, rule, correction or asset was authored; package_status stays PENDING. Follow-ups appended: DP-FACT-T1-W02-HISTORY-CLAIMS (dated-citation dependency), DP-LES-T1-W02-DEVICES, DP-LES-T1-W02-NUMBER-SYSTEMS, DP-LES-T1-W02-KEY-ASSESSMENT. Evidence file: docs/ss1/work/microtasks/data-processing/DP-WK-T1-W02.md. Nothing was run: no Zod parse, importer, compiler, test, typecheck, database or device check (deferred by owner). This indexes one week; it is not a certified or taught week.",
       "completion_condition": "Week 2 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -1895,6 +1896,125 @@
       "status": "BLOCKED",
       "implementation_reference": "Raised by DP-WK-T1-W01 (2026-11-05): 11 coverage entries are PARTIAL and 7 UNRESOLVED with lesson_ids empty, and 8 of the 12 open items DATA-PROCESSING-T1-W01-* block delivery. No answer, definition, source fact, rights position or lesson is invented here.",
       "completion_condition": "Every numbered question above has a named decision recorded with its evidence and locators, and each decision is cited by the lesson or item that acts on it; no lesson is authored here and no week is reported complete on the strength of these decisions alone."
+    },
+    {
+      "id": "DP-FACT-T1-W02-HISTORY-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, lines 287-429 SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b; claims at 327, 333, 347, 351, 357, 363, 369 and 375",
+      "objective": "Verify later, with dated authoritative sources, the Week 2 history-of-computing claims before any lesson states them as fact: the abacus as first calculating device and still in use (327, 375), eleven four-sided bone rods (333), the Pascaline in 1642 and its repeated-subtraction and repeated-addition method (347, 351), the Leibnitz machine in 1694 and a stepped gear still in use (357), Jacquard's loom as one of the first programmed machines (363), and the 1920-1930 punched card of 80 columns and 12 rows (369). Each claim needs a source with a publication or reference date; keep the source wording distinct from the corrected statement; separate a curriculum classification from contested historical dates. Record nothing as verified until the evidence exists. Do not write a lesson, answer or correction here.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-FACT-T1-W02-HISTORY-CLAIMS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Created by DP-WK-T1-W02 (2026-11-07) as a bounded follow-up for the gaps in its coverage rows and open items.",
+      "completion_condition": "Each listed claim has a dated authoritative citation or an explicit unresolved note, the source wording is preserved separately, and no lesson text, approval or verification is invented."
+    },
+    {
+      "id": "DP-LES-T1-W02-DEVICES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2: device lists 291-317, framing paragraph 321 and the four untaught devices at 295, 309, 315, 317 inside lines 287-429 SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b",
+      "objective": "Author one short original supplement teaching the early counting devices the week lists but does not teach - the slide rule, Babbage's analytical machine, the Hollerith punch card and the Von Neumann machine - and what the electro-mechanical and electronic group headings mean, in the classification the owner records for the 321-versus-headings mismatch. Every dated claim must come from DP-FACT-T1-W02-HISTORY-CLAIMS; do not copy or silently repair source lines; keep the subject named Data Processing; keep every practical step conceptual with no installation, device handling, account or credential. Include original questions with complete answers and criterion marks. Drafting only: content_approval PENDING, verification DEFERRED, package_status PENDING; cover only these devices, not Week 2 as a whole.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W02-DEVICES.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W02",
+        "DP-FACT-T1-W02-HISTORY-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Created by DP-WK-T1-W02 (2026-11-07) as a bounded follow-up for the gaps in its coverage rows and open items.",
+      "completion_condition": "One original lesson with checked provenance, UTF-8 body hash and answered marked questions, and objective-level coverage updates limited to the untaught devices and group headings; no approval or verification fabricated."
+    },
+    {
+      "id": "DP-LES-T1-W02-NUMBER-SYSTEMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2: NUMBER SYSTEM (REVISION) 379-393 and questions 399, 419, 421, 429 inside lines 287-429 SHA-256 c5d048b437c13cff6b205906da399d2bed18f01bc0cadc0503d8fc346ac5366b",
+      "objective": "Author one short original supplement teaching the four number systems the revision block only names - decimal, binary, octal and hexadecimal - including the base or radix, digit set and a worked conversion example for each, so that GENERAL EVALUATION question 3 (399), weekend items 4 and 5 (419, 421) and THEORY question 2 (429) become answerable. Record the owner's answer on whether the revision label means the systems were taught elsewhere. Do not copy source lines; keep the subject named Data Processing; include original questions with complete answers and criterion marks. Drafting only: content_approval PENDING, verification DEFERRED, package_status PENDING.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W02-NUMBER-SYSTEMS.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Created by DP-WK-T1-W02 (2026-11-07) as a bounded follow-up for the gaps in its coverage rows and open items.",
+      "completion_condition": "One original lesson with checked provenance, UTF-8 body hash and answered marked questions, and objective-level coverage updates limited to the number-system rows; no approval or verification fabricated."
+    },
+    {
+      "id": "DP-LES-T1-W02-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a92792eaa7ef",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2 assessment blocks: EVALUATION 337-341 SHA-256 8dd391d19ab4d51121e82b0351a5105c2c1874ee3539f8fd6e29e2ffbabf4aee, GENERAL EVALUATION 393-401 SHA-256 6f99852878437c93ba0f243ddd19b9c60bfcf1e61d34ac318c501263ee2cdde0, WEEKEND ASSIGNMENT 411-421 SHA-256 afce86aae4cb3fc48cf234e83fa1f332a2b96a9214d084b58fdd33ff77ea004f, THEORY 425-429 SHA-256 388cff4b9a982bb670112f32ee0fd55e9971b6fe9b2fc784eb6f99f1c3dea3f7",
+      "objective": "Author the Week 2 assessment supplement: an answer, the mark and the marker for each of the 13 questions the week sets (339, 341, 395, 397, 399, 401, 413, 415, 417, 419, 421, 427, 429). The source gives no key and marks no option, so record the basis for every objective answer against the lines that teach it or the new lessons, keep the overlapping questions (341 and 395, 339 and 401) as printed, and do not silently rewrite any item. Do not write an answer for a question whose content is untaught until DP-LES-T1-W02-NUMBER-SYSTEMS and DP-LES-T1-W02-DEVICES exist. Drafting only: content_approval PENDING, verification DEFERRED, package_status PENDING.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-WK-T1-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/data-processing.json",
+        "docs/ss1/work/microtasks/data-processing/QUEUE.json",
+        "docs/ss1/work/microtasks/data-processing/DP-LES-T1-W02-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "DP-INV-T1",
+        "DP-SRC-T1",
+        "DP-WK-T1-W02",
+        "DP-FACT-T1-W02-HISTORY-CLAIMS",
+        "DP-LES-T1-W02-DEVICES",
+        "DP-LES-T1-W02-NUMBER-SYSTEMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Created by DP-WK-T1-W02 (2026-11-07) as a bounded follow-up for the gaps in its coverage rows and open items.",
+      "completion_condition": "Every one of the 13 questions has an answer with its basis, a mark and a marker, or a precise unresolved note; no approval or verification fabricated."
     }
   ],
   "review": {
@@ -1911,9 +2031,7 @@
   },
   "next_runnable": [
     "DP-INV-T3",
-    "DP-TEST-PACKAGE",
     "DP-PRE-T1",
-    "DP-WK-T1-W02",
     "DP-WK-T1-W03",
     "DP-WK-T1-W04",
     "DP-WK-T1-W05",
@@ -1943,6 +2061,8 @@
     "DP-VIS-T2-FIG-TELEVISION",
     "DP-VIS-T2-FIG-WIRELESS",
     "DP-VIS-T2-FIG-SATELLITE",
-    "DP-VIS-T2-TBL-OSLAYERS"
+    "DP-VIS-T2-TBL-OSLAYERS",
+    "DP-FACT-T1-W02-HISTORY-CLAIMS",
+    "DP-LES-T1-W02-NUMBER-SYSTEMS"
   ]
 }
