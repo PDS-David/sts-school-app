@@ -24,7 +24,8 @@
     "New task kind BRANCH_PORT_COMPARISON is used for unmerged-branch comparison items (the Chemistry queue uses SOURCE_COMPARISON for a related purpose).",
     "Audio is not involved in this subject.",
     "FM-INV-T3 (2026-10-30) inventoried the 3rd Term original: no scheme of work; six week labels only (Weeks 2, 3, 4, 5, 6, 8); Weeks 1, 7 and 9-12 confirmed absent from the source; one unlabelled Week 8 'PERIOD 3' section appended as FM-SEC-T3-W08-PERIOD3. Week 3 figures are drawn as VML objects in the source. No lesson, coverage entry, rule, correction or asset was written.",
-    "FM-PORT-D3-L002 (2026-11-06) compared PR71 SUP-SS1-FMATHS-002 with the 1st Term Week 02 row and ported it, corrected, as the single replacement lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in master schema (body_sha256 0f61001b9487a7d01eced4ade42cd5bc84299b14b793514f33159d11c7446871, 8 practice items, 33 marks, approval PENDING, verification DEFERRED). COV-FM-T1-W02-OBJ-1 and -OBJ-2 are IMPLEMENTED_EQUIVALENT; COV-FM-T1-R01 stays PARTIAL, no row is displaced, no correction is added and the three OI-FM-T1-W02-* items stay open and blocking. FM-PORT-D3-L003..L014 are untouched and no other PR71 lesson was read. 14 PR71 lessons still live only at b5ced7ebb0efe22df2351baa140266fbf40cbf41."
+    "FM-PORT-D3-L002 (2026-11-06) compared PR71 SUP-SS1-FMATHS-002 with the 1st Term Week 02 row and ported it, corrected, as the single replacement lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in master schema (body_sha256 0f61001b9487a7d01eced4ade42cd5bc84299b14b793514f33159d11c7446871, 8 practice items, 33 marks, approval PENDING, verification DEFERRED). COV-FM-T1-W02-OBJ-1 and -OBJ-2 are IMPLEMENTED_EQUIVALENT; COV-FM-T1-R01 stays PARTIAL, no row is displaced, no correction is added and the three OI-FM-T1-W02-* items stay open and blocking. FM-PORT-D3-L003..L014 are untouched and no other PR71 lesson was read. 14 PR71 lessons still live only at b5ced7ebb0efe22df2351baa140266fbf40cbf41.",
+    "FM-LES-T1-W02-EQUATIONS (2026-11-06) added the single logarithm step that finishes quadratic Evaluation item (a) to lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] (new section 8, Q9; body_sha256 fe5e13bd865d5efba54ae554d2f6cf70224451b0e2f6491cf39af78e21e64ce9, superseding 0f61001b9487a7d01eced4ade42cd5bc84299b14b793514f33159d11c7446871; 9 practice items, 38 marks; approval PENDING, verification DEFERRED). The earlier notes and the FM-PORT-D3-L002 record keep the hash that was current when they were written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -42,8 +43,8 @@
     "SOURCE_SECTION_INDEXING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 25,
-    "PENDING": 57,
+    "IMPLEMENTED_TESTING_DEFERRED": 26,
+    "PENDING": 56,
     "BLOCKED": 7
   },
   "items": [
@@ -328,8 +329,8 @@
         "FM-WK-T1-W02",
         "FM-PORT-D3-L002"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FM-WK-T1-W02. The row needs a replacement (OI-FM-T1-W02-FACT-DEFECTS, OI-FM-T1-W02-NOTATION-LOSS, OI-FM-T1-W02-ASSESSMENT-GAPS). No 1st Term Week 2 lesson exists on master. Bounds the item must respect: state a > 0 and a not equal to 1 for the equal-base step and drop the false converse at line 179; one letter for the unknown and a distinct multiplication sign; give the reason a negative branch is rejected in words (the row loses both conclusions to equation objects at lines 252 and 266); either teach the logarithm step or replace quadratic Evaluation item (a) (3(2^(2x+3)) - 5(2^(x+2)) - 156 = 0 needs x = log2 3, a week 3 method); reword the item that asks for a 'second value' that does not exist. Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Closed by reference to the replacement ported by FM-PORT-D3-L002, lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] in backend/src/db/ss1/subjects/further-mathematics.json, with one narrow addition. Checked against OI-FM-T1-W02-FACT-DEFECTS on 2026-11-06: defects 1 to 7 and 9 pass (qualified equal-base rule with a > 0 and a not 1 and no false converse; x for the unknown and × for multiplication; every index with a caret; both lost conclusions in words; weekend item 4 explained), and the equal-base contradiction is already corrected. Defect 8 was only named, so the lesson now teaches how to finish 2^x = 3: section 8 (log as the undoing of a power, x = log(k) ÷ log(a), worked examples 2^x = 3 and 5^x = 40), edited sentences in sections 5 and 7, objective 4, practice Q9 (3^(2x) - 4(3^x) - 21 = 0, 5 marks) and an OpenStax College Algebra 2e section 6.6 provenance entry. body_sha256 fe5e13bd865d5efba54ae554d2f6cf70224451b0e2f6491cf39af78e21e64ce9 (was 0f61001b9487a7d01eced4ade42cd5bc84299b14b793514f33159d11c7446871); 9 practice items, 38 marks, every marking list sums; state content_approval PENDING, approval_reference null, implementation IMPLEMENTED, verification DEFERRED, verification_reference null. Coverage COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 already point at the lesson; OBJ-2 gains one objective-level evidence entry, both lesson-hash literals are updated, and COV-FM-T1-R01 stays PARTIAL with a dated update. OI-FM-T1-W02-FACT-DEFECTS and OI-FM-T1-W02-ASSESSMENT-GAPS texts updated and still OPEN and blocking; no row binding (FM-COR-T1-W02), equation-object recovery or other task closed. Details in docs/ss1/work/microtasks/further-mathematics/FM-LES-T1-W02-EQUATIONS.md.",
       "completion_condition": "Supplement exists with provenance, objectives, original practice with complete answers and marks that sum, exact body hash, state content_approval PENDING / implementation IMPLEMENTED / verification DEFERRED; both coverage entries COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 updated to point at it with objective-level evidence; or closed by reference to a ported replacement that passes the defect list. Approval and verification are not invented."
     },
     {
