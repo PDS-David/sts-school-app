@@ -1040,6 +1040,251 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Further Mathematics",
+      "title": "Indicial and exponential equations: linear form and quadratic form",
+      "objectives": [
+        "Solve exponential equations of linear form by writing both sides as powers of one base, stating the conditions a > 0 and a not 1 before the indices are equated",
+        "Reduce an exponential equation of quadratic form to a quadratic by substituting the power for an unknown, solve it, and reject any root that asks a positive base for a zero or negative value, giving the reason in words",
+        "Answer the week Evaluation, General Evaluation, Weekend and Theory items exactly, and name the point at which the equal-base method cannot finish an equation"
+      ],
+      "body": "This lesson writes every index with a caret, exactly as Week 1 does: 2^x means \"two to the power x\", and an index that is a sum or a product is put in brackets, so 2^(x+1) and 2^(2x). The letter x is used only for the unknown; multiplication is always the sign ×, never the letter x. This matters for this week, because in the printed scheme every index here is a formatted superscript and the plain text of the file flattens it: the row line 220 arrives as \"22x - 6 (2x) + 8 = 0\" and its line 214 as \"25 (5x) = 625\". Everything below is the restored reading, written out in full so that nothing has to be guessed.\n\n1. THE EQUAL-BASE PRINCIPLE, WITH ITS CONDITIONS\nRow line 179 states the rule in one sentence: when the bases on the two sides of an equation match, the powers are taken to match as well, and it rounds itself off with \"& vice versa\". The first part is a real rule but only under conditions; the \"& vice versa\" is not true at all.\nRule used in this lesson: if a > 0 and a is not 1, then a^x = a^y if and only if x = y. So when both sides of an equation can be written as powers of one and the same positive base, the two indices may be set equal.\nWhy the conditions are needed: a = 1 gives 1^2 = 1^5 although 2 is not 5; a = -1 gives (-1)^2 = (-1)^4 although 2 is not 4; a = 0 gives 0 for every positive index; and a negative base has no real value for most fractional indices, because (-2)^(1/2) is not a real number. So the base must be positive and must not be 1.\nThe converse - equal values mean equal bases - is false and must never be used: 4^2 = 16 and 2^4 = 16, so one value has come from two different bases. The rule runs one way only: same base, then equal indices.\nMethod for the linear form: (i) write each number on both sides as a power of one small base; (ii) use the Week 1 laws, especially (a^m)^n = a^(m×n), a^(-m) = 1 / a^m and a^m ÷ a^n = a^(m-n); (iii) set the two indices equal; (iv) solve the linear equation in x; (v) substitute the answer back into the original equation and check.\n\n2. THE FIVE WORKED EXAMPLES OF THE LINEAR FORM (row lines 181-210)\nExample a) (1/2)^x = 8. Here 1/2 = 2^(-1) and 8 = 2^3, so (2^(-1))^x = 2^3, which is 2^(-x) = 2^3. Both bases are 2, which is positive and not 1, so -x = 3 and x = -3. Check: (1/2)^(-3) = 8.\nExample b) (0.25)^(x+1) = 16. Here 0.25 = 1/4 = 4^(-1) and 16 = 4^2, so 4^(-(x+1)) = 4^2 and -(x+1) = 2, giving x = -3. The row prints the middle line as 4^(-x-1), which is the same index. Check: (0.25)^(-2) = 16.\nExample c) 3^x = 1/81. Since 81 = 3^4, 1/81 = 3^(-4), so 3^x = 3^(-4) and x = -4. This is the identical equation to Week 1 Weekend item 1, which Week 1 leaves without a key; Week 1 option (b) is -4 and the working above is the key Week 1 asks for.\nExample d) 10^x = 1/0.001. Since 1/0.001 = 1000 = 10^3, x = 3. The row prints \"10^x = 10^3\" twice, on lines 197 and 198; that is a duplicated step, not a second conclusion.\nExample e) 4/2^x = 64^x. Since 4 = 2^2 and 64 = 2^6, 2^2 ÷ 2^x = (2^6)^x, so 2^(2-x) = 2^(6x), so 2 - x = 6x, so 2 = 7x and x = 2/7. Check with a calculator: 4 ÷ 2^(2/7) = 3.281341424030552 and 64^(2/7) = 3.281341424030552. A fraction is a perfectly good answer; x does not have to be a whole number.\n\n3. THE LINEAR EVALUATION ITEMS, ANSWERED (row lines 212-214)\nThe row sets three items here and gives no answer, no working and no marks for any of them. The five steps above finish all three.\na) 2^x = 0.125. Since 0.125 = 1/8 = 2^(-3), x = -3.\nb) 25^(5x) = 625. Since 625 = 25^2, 5x = 2 and x = 2/5. Note that the delivered text prints \"25 (5x) = 625\", because the brackets and the superscript are lost in extraction: it is 25 raised to the power 5x, and the answer is 2/5, not 2.\nc) 10^x = 1/100000. Since 100000 = 10^5, 1/100000 = 10^(-5) and x = -5.\n\n4. THE QUADRATIC FORM: SUBSTITUTE, SOLVE, THEN REJECT - AND SAY WHY\nSome exponential equations are quadratic equations wearing different clothes. Put y = a^x, so that a^(2x) = (a^x)^2 = y^2 and a^(x+1) = a × y, solve the quadratic for y, and only then find x.\nThe rejection rule, said out loud because the row says it only by quietly dropping the branch: a^x is positive for every real number x. A positive base raised to any power can never give zero and can never give a negative number. So any root with y less than or equal to zero is rejected, and it is rejected because no such x exists, not because it is inconvenient. Two of the three examples below end this way, and the printed row ends both with an embedded picture instead of words, so the conclusion the learner is meant to read is missing from the delivered text entirely.\nExample a) 2^(2x) - 6(2^x) + 8 = 0. Let y = 2^x: y^2 - 6y + 8 = 0, i.e. (y - 2)(y - 4) = 0, so y = 2 or y = 4. Both are positive, so both are kept: 2^x = 2 = 2^1 gives x = 1 and 2^x = 4 = 2^2 gives x = 2. Answer: x = 1 and x = 2. The row sets this working in two columns and the plain text scrambles the reading order of lines 225-235, although its three conclusions (x = 2, x = 1 and \"x = 1 and 2\") are right.\nExample b) 5^(2x) + 4 × 5^(x+1) - 125 = 0. Since 5^(x+1) = 5 × 5^x, putting p = 5^x gives p^2 + 20p - 125 = 0, i.e. (p - 5)(p + 25) = 0, so p = 5 or p = -25. The root p = -25 is rejected, and the reason in words is: 5^x = -25 has no real solution, because 5^x is positive for every x. That sentence is what the picture the row lost was meant to say. So 5^x = 5 = 5^1 and x = 1. Check in the original: 5^2 + 4(5^2) - 125 = 25 + 100 - 125 = 0.\nExample c) 3^(2x) - 9 = 0. With a = 3^x this is a^2 - 9 = 0, i.e. (a - 3)(a + 3) = 0, so a = 3 or a = -3. Again a = -3 is rejected because 3^x is positive for every x, which is the second lost conclusion in this row, so 3^x = 3 = 3^1 and x = 1. Check: 3^2 - 9 = 0.\n\n5. THE QUADRATIC EVALUATION AND GENERAL EVALUATION, ANSWERED (row lines 268-274)\nFive more items are set here and none is answered. Four of them finish with the method of this week; the first one does not, and that is said plainly instead of hidden.\nEvaluation a) 3(2^(2x+3)) - 5(2^(x+2)) - 156 = 0. With y = 2^x, 2^(2x+3) = 8y^2 and 2^(x+2) = 4y, so 24y^2 - 20y - 156 = 0, i.e. 6y^2 - 5y - 39 = 0, which factorises as (y - 3)(6y + 13) = 0. The root y = -13/6 is rejected because y = 2^x is positive. So 2^x = 3, and here the equal-base method stops: 3 is not a power of 2, so there is no index to write down. The value is x = log 3 ÷ log 2, about 1.584963, but that step belongs to scheme week 3 (Logarithms) and is not taught or used in this lesson; the practice below sets an item the method of this week can finish. What can be checked without any logarithm is the reduction: if 2^x = 3 then 2^(2x) = 9, so 2^(2x+3) = 72 and 2^(x+2) = 12, and 3(72) - 5(12) - 156 = 216 - 60 - 156 = 0.\nEvaluation b) 9^(2x+1) = 81^(x-2) ÷ 3^x. Write everything on base 3: (3^2)^(2x+1) = 3^(4x+2), and (3^4)^(x-2) ÷ 3^x = 3^(4x-8) ÷ 3^x = 3^(3x-8). So 4x + 2 = 3x - 8 and x = -10. Check: both sides equal 3^(-38).\nGeneral Evaluation a) 2^(2x+1) - 5(2^x) + 2 = 0. Since 2^(2x+1) = 2y^2, this is 2y^2 - 5y + 2 = 0, i.e. (2y - 1)(y - 2) = 0. y = 2 gives x = 1, and y = 1/2 = 2^(-1) gives x = -1. Answer: x = 1 and x = -1.\nGeneral Evaluation b) 3^(2x) - 4(3^(x+1)) + 27 = 0. Since 3^(x+1) = 3y, this is y^2 - 12y + 27 = 0, i.e. (y - 3)(y - 9) = 0, so x = 1 and x = 2.\n\n6. THE WEEKEND AND THEORY ITEMS, WITH THE TRAP IN WEEKEND ITEM 4 EXPLAINED (row lines 278-287)\nWeekend 1) (0.25)^(x+1) = 16 is the identical equation to worked example b), so x = -3 and the answer is option (a). The row sets the same equation twice without saying so.\nWeekend 2) 3(3)^x = 27 means 3^1 × 3^x = 3^(x+1) = 3^3, so x = 2, option (c).\nWeekend 3) 2^(2x) + 2^(x+1) - 8 = 0. With y = 2^x: y^2 + 2y - 8 = 0, i.e. (y + 4)(y - 2) = 0. y = -4 is rejected because 2^x is positive for every x, so 2^x = 2 and x = 1, option (a).\nWeekend 4) asks for \"the second value of x in question 3\". Question 3 has only one value: the other root asks for 2^x = -4, which no real x satisfies. So the only defensible choice is option (d) \"No solution\", and a learner who hunts for a second value is being misled by the wording. The wording is the school own and is not edited here; a teacher decision is needed before this item is set as printed.\nWeekend 5) 10^(-x) = 0.000001. Since 0.000001 = 10^(-6), -x = -6 and x = 6, option (b).\nTheory 1) (3^x)^2 + 2(3^x) - 3 = 0. With y = 3^x: y^2 + 2y - 3 = 0, i.e. (y + 3)(y - 1) = 0. y = -3 is rejected, so 3^x = 1 = 3^0 and x = 0; the zero index of Week 1 Law 4 is what finishes this one.\nTheory 2) 5^(2x+1) - 26(5^x) + 5 = 0. Since 5^(2x+1) = 5p^2 with p = 5^x, this is 5p^2 - 26p + 5 = 0, i.e. (5p - 1)(p - 5) = 0. p = 1/5 = 5^(-1) gives x = -1 and p = 5 gives x = 1.\n\n7. HOW TO FINISH ANY OF THESE\nPut both sides on one base, or substitute for the power, and the equation becomes ordinary algebra. Then say, in words, why any root that asks a positive base for a zero or negative value is thrown away: write the rejected branch as a sentence, never as silence. Check every answer by substituting it back into the equation as printed. And when the reduction ends with something like 2^x = 3, stop and say that the equal-base method cannot name that x - do not invent an index for it.\n",
+      "body_sha256": "20363a7e48b0d6cf0620d6c63cc672f645a7deee30d2c3a3c79e4ce82315d5ea",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Solve 9^x = 1/27.",
+          "answer": "9^x = (3^2)^x = 3^(2x) and 1/27 = 3^(-3), so 2x = -3 and x = -3/2. Check: 9^(-3/2) = 1/27.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "both sides written on base 3",
+              "marks": 1
+            },
+            {
+              "criterion": "index equation 2x = -3 stated",
+              "marks": 1
+            },
+            {
+              "criterion": "answer x = -3/2 with the check",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Solve (2/3)^x = 27/8.",
+          "answer": "27/8 = (3/2)^3 = (2/3)^(-3), so the two bases are already equal and x = -3. Check: (2/3)^(-3) = 27/8.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "27/8 written as a power of 2/3",
+              "marks": 1
+            },
+            {
+              "criterion": "answer x = -3",
+              "marks": 1
+            },
+            {
+              "criterion": "check by substitution",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Solve 8^(x+1) = 16^2.",
+          "answer": "8^(x+1) = 2^(3(x+1)) and 16^2 = 2^8, so 3(x+1) = 8, 3x = 5 and x = 5/3. Check: x + 1 = 8/3, so 8^(8/3) = 2^8 = 256 = 16^2.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "both sides written on base 2",
+              "marks": 1
+            },
+            {
+              "criterion": "index equation 3(x+1) = 8",
+              "marks": 1
+            },
+            {
+              "criterion": "solution x = 5/3",
+              "marks": 1
+            },
+            {
+              "criterion": "check gives 256 on both sides",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Solve 2^(2x) - 20(2^x) + 64 = 0.",
+          "answer": "Let y = 2^x: y^2 - 20y + 64 = 0, i.e. (y - 4)(y - 16) = 0, so y = 4 or y = 16. Both are positive, so both are kept: 2^x = 4 = 2^2 gives x = 2, and 2^x = 16 = 2^4 gives x = 4.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "substitution y = 2^x made",
+              "marks": 1
+            },
+            {
+              "criterion": "quadratic y^2 - 20y + 64 = 0",
+              "marks": 1
+            },
+            {
+              "criterion": "both roots y = 4 and y = 16",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 2",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 4",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Solve 3^(2x) - 6(3^x) + 9 = 0, and say why this equation gives only one value of x.",
+          "answer": "Let y = 3^x: y^2 - 6y + 9 = 0, i.e. (y - 3)^2 = 0, so y = 3 twice. The quadratic has equal roots, so only one value of x follows: 3^x = 3 = 3^1 and x = 1. No branch is rejected here - the single answer comes from the repeated root, not from throwing a negative one away.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "substitution y = 3^x made",
+              "marks": 1
+            },
+            {
+              "criterion": "y^2 - 6y + 9 factorised as (y - 3)^2",
+              "marks": 1
+            },
+            {
+              "criterion": "y = 3",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 1",
+              "marks": 1
+            },
+            {
+              "criterion": "reason given as equal roots, not a rejection",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Solve 4^(2x) - 9(4^x) + 8 = 0.",
+          "answer": "Let y = 4^x: y^2 - 9y + 8 = 0, i.e. (y - 1)(y - 8) = 0. y = 1 gives 4^x = 1 = 4^0, so x = 0. y = 8 gives 4^x = 8, i.e. 2^(2x) = 2^3, so x = 3/2.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "substitution y = 4^x made",
+              "marks": 1
+            },
+            {
+              "criterion": "factorised as (y - 1)(y - 8)",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 0 from the zero index",
+              "marks": 1
+            },
+            {
+              "criterion": "4^x = 8 rewritten on base 2",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 3/2",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q7",
+          "question": "Solve 5^(2x) + 2(5^(x+1)) - 75 = 0, and state in words why one of the two roots is not a solution.",
+          "answer": "5^(x+1) = 5 × 5^x, so with p = 5^x the equation is p^2 + 10p - 75 = 0, i.e. (p - 5)(p + 15) = 0, giving p = 5 or p = -15. p = -15 is rejected because 5^x = -15 has no real solution: a positive base raised to any power is positive. So 5^x = 5 = 5^1 and x = 1. Check: 5^2 + 2(5^2) - 75 = 25 + 50 - 75 = 0.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "5^(x+1) = 5p used with p = 5^x",
+              "marks": 1
+            },
+            {
+              "criterion": "quadratic p^2 + 10p - 75 = 0",
+              "marks": 1
+            },
+            {
+              "criterion": "both roots p = 5 and p = -15",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 1",
+              "marks": 1
+            },
+            {
+              "criterion": "rejection stated in words",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q8",
+          "question": "(a) A learner writes: 4^3 = 64 and 8^2 = 64, so by the equal-base rule 4 = 8. Explain what the rule actually says and why that step is not allowed. (b) State the conditions on a for a^x = a^y to force x = y. (c) Solve 4^x = 8.",
+          "answer": "(a) The rule runs from equal bases to equal indices, never backwards; two different bases giving the same value proves nothing about the bases (4^3 = 8^2 = 64 is the false converse). (b) a > 0 and a is not 1. (c) 4^x = 2^(2x) and 8 = 2^3, so 2x = 3 and x = 3/2.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "(a) direction of the rule stated",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) both conditions stated",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) x = 3/2",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-e9efc9a976ed (SSS 1/1st Term SS1_/1ST TERM S1 FURTHER MATHEMATICS.doc)",
+          "locator": "Week TWO, TOPIC: INDICIAL AND EXPONENTIAL EQUATIONS, word-extractor 1.0.4 getBody() lines 173-287 (row SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c); examples block b33800c01a6ba53698fc66e086079f2c51e1d578e32f30658367c6c2f34f13b3, evaluation block ff933853a3dd0677d4cfda7fac1b5cc98275b3238b04b3c87f8f428cbc41549e, quadratic blocks f0536b2ba8c377c5ef4beb6dc93623743dd9adf7a2ce4f9b86c670ea0ea07c35 and 26265e09909cadeecfc777d256fc46b5760a46d6517c2fe61a186d0fef4bcf99, 1885c441af3fc49d2d24c083beb0b9917f076858a71cad96e238cf195b32cc4b, 09f492e60a0ef42730a00e6bc5213f7286875c7c943a558ea78a112be71841c8, weekend a05bfafbee60b8f62059422cb0e9523e2480dc86240c5784abcec179942c0a57, theory 45ddc9049e808173c4b07fe0c2f02ba08797fafb95755ac59d4debc693e886f8. The source teaching scope (linear form, quadratic form, its five examples, its three quadratic examples and its thirteen unanswered items) is followed; its printed exercises are not reused as the practice key.",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. Every index, power and equation is written explicitly because the source superscripts are flattened by extraction and two of its conclusions are embedded pictures.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        },
+        {
+          "title": "PR71 candidate lesson SUP-SS1-FMATHS-002 (head b5ced7ebb0efe22df2351baa140266fbf40cbf41), read at that SHA by FM-PORT-D3-L002",
+          "locator": "backend/src/db/ss1/subjects/further-mathematics.json at b5ced7ebb0efe22df2351baa140266fbf40cbf41 (blob 2a5849ac9566caebd8051af526e492d983f3a3ee); body 16 lines, 5 practice items, references 2 preface pages. Its topic choice, its linear/quadratic split and its rule \"reject any y less than or equal to 0 because a^x is always positive\" were consulted; its wording, its schema (term_label, sequence, covers_objectives, prompt-only practice, content_hash) and its references were not carried over.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/further-mathematics.json",
+          "rights": "Prior draft inside this repository; no sentence is reproduced. All of its worked examples and answers were recomputed before use, and the row example it omits (5^(2x) + 4 × 5^(x+1) - 125 = 0) was restored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools; structure consulted only."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e, section 6.6 Exponential and Logarithmic Equations",
+          "locator": "Opened on 2026-11-06: it states the base condition b > 0, b not 1, solves exponential equations by rewriting each side as a power with the same base, and carries a quadratic-form substitution example. Used to check the conditions and the method only; no text reproduced. The candidate cited two preface pages (Elementary Algebra and Intermediate Algebra 2e); both were opened on 2026-11-06 and neither teaches any exponential equation, so both were dropped, following FM-PORT-D3-L001.",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-6-exponential-and-logarithmic-equations",
+          "rights": "OpenStax content is licensed CC BY 4.0 and attribution is required; nothing is copied from it.",
+          "reuse_status": "PERMITTED",
+          "attribution": "OpenStax, Algebra and Trigonometry 2e, section 6.6, CC BY 4.0."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -1234,9 +1479,10 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Indicial and exponential equations: exponential equation of linear form (row CONTENT bullet 'Exponential Equation of Linear Form', which the row states twice - once in the CONTENT list and once as the section heading): the equal-base principle and solving linear-form exponential equations by writing both sides on a single base, taught with five worked examples a) to e) and a three-item Evaluation.",
       "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 176 (CONTENT bullet) and 178 (section heading), 179 (principle), 181-210 (Examples a-e with Solutions; block SHA-256 b33800c01a6ba53698fc66e086079f2c51e1d578e32f30658367c6c2f34f13b3), 212-214 (Evaluation; block SHA-256 ff933853a3dd0677d4cfda7fac1b5cc98275b3238b04b3c87f8f428cbc41549e), 279-280 and 283 (Weekend Assignment items 1, 2 and 5); scheme line 25 ('2 Indicial and Exponential Equations', no sub-objectives listed); parsed row 1 = lines 173-287 (4,831 chars, SHA-256 5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c), id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS"
       ],
       "evidence": [
         {
@@ -1261,7 +1507,11 @@
         },
         {
           "locator": "backend/src/db/ss1/subjects/further-mathematics.json: lessons[] (no 1st Term Week 2 lesson); delivery_corrections[] (no 1st Term entry)",
-          "explanation": "No replacement lesson exists for this row and no delivery correction binds it, so the objective cannot be delivered as certified content. Status PARTIAL: the teaching is present in the source but is defective (line 179), unusable as delivered text (lost superscripts), unanswered in every assessment block, and it depends on two equation objects the extractor drops. The port decision on PR71 SUP-SS1-FMATHS-002 belongs to FM-PORT-D3-L002 and authoring to FM-LES-T1-W02-EQUATIONS; the binding belongs to FM-COR-T1-W02. No lesson is authored by this item."
+          "explanation": "As indexed by FM-WK-T1-W02 on 2026-11-05, no replacement lesson existed for this row and no delivery correction bound it, so the objective could not be delivered as certified content. (That sentence described the package at that date; the port is recorded in the entry appended below.) Status PARTIAL was recorded then: the teaching is present in the source but is defective (line 179), unusable as delivered text (lost superscripts), unanswered in every assessment block, and it depends on two equation objects the extractor drops. The port decision on PR71 SUP-SS1-FMATHS-002 belongs to FM-PORT-D3-L002 and authoring to FM-LES-T1-W02-EQUATIONS; the binding belongs to FM-COR-T1-W02. No lesson is authored by this item."
+        },
+        {
+          "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS: body sections 1, 2 and 3 (the qualified rule, worked examples a)-e), the three Evaluation items) plus the linear weekend items and practice Q1, Q2, Q3, Q8; lesson body_sha256 20363a7e48b0d6cf0620d6c63cc672f645a7deee30d2c3a3c79e4ce82315d5ea",
+          "explanation": "Ported and corrected on 2026-11-06 by FM-PORT-D3-L002. The PR71 candidate read at b5ced7ebb0efe22df2351baa140266fbf40cbf41 (blob 2a5849ac9566caebd8051af526e492d983f3a3ee) was checked against this row and against OI-FM-T1-W02-FACT-DEFECTS: its arithmetic is right, but it omits the row quadratic example b) 5^(2x) + 4 × 5^(x+1) - 125 = 0, answers 25^x = 625 instead of the row 25^(5x) = 625, never sets 10^x = 1/100000, states no condition on the base, writes its indices with unicode superscripts, marks in free text with no integer marks, and cites two preface pages. Only one replacement is added, and it is rewritten in master field names. The objective is now reached at objective level, not by word overlap: the lesson states the equal-base rule with its conditions (a > 0, a not 1) and drops the row false converse; it works the five linear examples a) x = -3, b) x = -3, c) x = -4, d) x = 3, e) x = 2/7 (block b33800c01a6ba53698fc66e086079f2c51e1d578e32f30658367c6c2f34f13b3) with every index written as a caret so nothing depends on the lost superscripts; it answers the three unanswered Evaluation items (block ff933853a3dd0677d4cfda7fac1b5cc98275b3238b04b3c87f8f428cbc41549e) as x = -3, x = 2/5 and x = -5; and it works the linear Weekend items 1, 2 and 5 (x = -3 option (a), x = 2 option (c), x = 6 option (b)) whose options the row leaves unkeyed. Practice Q1, Q2, Q3 and Q8 are original linear-form equations - none is a printed source item - worth 13 marks with complete answers and criterion marks that sum, and Q8 tests the direction of the rule and its conditions. Every value quoted here was recomputed on 2026-11-06. Not certified: content approval stays PENDING with no approval reference, verification stays DEFERRED, and the row is still not bound to this replacement (FM-COR-T1-W02)."
         }
       ]
     },
@@ -1270,9 +1520,10 @@
       "source_id": "SS1-SRC-e9efc9a976ed",
       "objective": "Indicial and exponential equations: exponential equation of quadratic form (row CONTENT bullet 'Exponential Equation of Quadratic Form'): reducing an exponential equation to a quadratic by substituting the power for an unknown, solving the quadratic, rejecting the branch that gives a negative power, and finding x, taught with three worked examples a) to c) and a two-item Evaluation.",
       "objective_locator": "SS1-SRC-e9efc9a976ed: getBody() lines (word-extractor 1.0.4, 1-based) 177 (CONTENT bullet), 216-222 (section heading, statement and Examples a-c; block SHA-256 f0536b2ba8c377c5ef4beb6dc93623743dd9adf7a2ce4f9b86c670ea0ea07c35), 224-266 (Solutions a-c; block SHA-256 26265e09909cadeecfc777d256fc46b5760a46d6517c2fe61a186d0fef4bcf99), 268-269 (Evaluation; block SHA-256 1885c441af3fc49d2d24c083beb0b9917f076858a71cad96e238cf195b32cc4b), 271-274 (General Evaluation; block SHA-256 09f492e60a0ef42730a00e6bc5213f7286875c7c943a558ea78a112be71841c8), 281-282 (Weekend Assignment items 3 and 4), 285-287 (Theory; block SHA-256 45ddc9049e808173c4b07fe0c2f02ba08797fafb95755ac59d4debc693e886f8); scheme line 25; parsed row 1 = lines 173-287, id SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
+        "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c",
+        "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS"
       ],
       "evidence": [
         {
@@ -1297,7 +1548,11 @@
         },
         {
           "locator": "backend/src/db/ss1/subjects/further-mathematics.json: lessons[] (no 1st Term Week 2 lesson); delivery_corrections[] (no 1st Term entry)",
-          "explanation": "No replacement lesson exists for this row and no delivery correction binds it. Status PARTIAL: the method is taught and its own working is arithmetically right, but the two lost conclusions, the unanswered practice, the item that needs week 3 logarithms and the flattened notation make the delivered row undeliverable as certified content. Authoring belongs to FM-PORT-D3-L002 then FM-LES-T1-W02-EQUATIONS; the binding to FM-COR-T1-W02. No lesson is authored by this item."
+          "explanation": "As indexed by FM-WK-T1-W02 on 2026-11-05, no replacement lesson existed for this row and no delivery correction bound it. (That sentence described the package at that date; the port is recorded in the entry appended below.) Status PARTIAL was recorded then: the method is taught and its own working is arithmetically right, but the two lost conclusions, the unanswered practice, the item that needs week 3 logarithms and the flattened notation make the delivered row undeliverable as certified content. Authoring belongs to FM-PORT-D3-L002 then FM-LES-T1-W02-EQUATIONS; the binding to FM-COR-T1-W02. No lesson is authored by this item."
+        },
+        {
+          "locator": "SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS: body sections 4, 5 and 6 (substitution, the three worked examples, the quadratic Evaluation and General Evaluation, the weekend and theory items) and practice Q4, Q5, Q6, Q7; lesson body_sha256 20363a7e48b0d6cf0620d6c63cc672f645a7deee30d2c3a3c79e4ce82315d5ea",
+          "explanation": "Ported and corrected on 2026-11-06 by FM-PORT-D3-L002. The substitution method, the three worked examples a) 2^(2x) - 6(2^x) + 8 = 0 → x = 1 and 2, b) 5^(2x) + 4 × 5^(x+1) - 125 = 0 → x = 1, c) 3^(2x) - 9 = 0 → x = 1 (blocks f0536b2ba8c377c5ef4beb6dc93623743dd9adf7a2ce4f9b86c670ea0ea07c35 and 26265e09909cadeecfc777d256fc46b5760a46d6517c2fe61a186d0fef4bcf99) and the five unanswered items (blocks 1885c441af3fc49d2d24c083beb0b9917f076858a71cad96e238cf195b32cc4b and 09f492e60a0ef42730a00e6bc5213f7286875c7c943a558ea78a112be71841c8: quadratic Evaluation a) and b) x = -10, General Evaluation a) x = 1 and -1, b) x = 1 and 2) are all taught, with the example the PR71 candidate dropped restored. The two conclusions that survive in the source only as embedded equation pictures are given as sentences: 5^x = -25 has no real solution because 5^x is positive for every x, and 3^x = -3 is rejected for the same reason. Weekend 3 (x = 1, option (a)), Weekend 4 (no second value exists, so only option (d) is defensible - the wording needs a teacher decision and is not edited), Weekend 5, Theory 1 (x = 0, using the Week 1 zero index) and Theory 2 (x = 1 and -1) are worked. Quadratic Evaluation item a) is taught as far as the method of this week reaches: it reduces to (y - 3)(6y + 13) = 0, leaves 2^x = 3, and the lesson says the equal-base method stops there and that naming that x belongs to scheme week 3 (Logarithms); it does not teach the logarithm step, and the practice sets Q4-Q7, which the method of this week can finish (20 marks, original equations, complete answers, criterion marks that sum). Every value was recomputed on 2026-11-06, including the residual check 3(72) - 5(12) - 156 = 0 and 6y^2 - 5y - 39 = (y - 3)(6y + 13). Not certified: approval PENDING, verification DEFERRED, row unbound."
         }
       ]
     },
@@ -1317,7 +1572,11 @@
         },
         {
           "locator": "FM-WK-T1-W02 (docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W02.md)",
-          "explanation": "Row reviewed in full by FM-WK-T1-W02 against the attached member (SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145): the row states two CONTENT objectives, bound at objective level in COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 (both PARTIAL). Factual defects, lost notation, the three dropped object anchors and the unanswered practice are recorded in OI-FM-T1-W02-FACT-DEFECTS, OI-FM-T1-W02-NOTATION-LOSS and OI-FM-T1-W02-ASSESSMENT-GAPS. The scheme row is ordinary teaching content, so no classify_marker or other source rule applies to it. The row needs a replacement; none is authored here. This entry stays a row-level association and is not an objective-level certification."
+          "explanation": "Row reviewed in full by FM-WK-T1-W02 against the attached member (SHA-256 995cba8c37479850ffa65824ad90df34c3294c970f091c8a576d7831a7839145): the row states two CONTENT objectives, bound at objective level in COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 (both PARTIAL then). Factual defects, lost notation, the three dropped object anchors and the unanswered practice are recorded in OI-FM-T1-W02-FACT-DEFECTS, OI-FM-T1-W02-NOTATION-LOSS and OI-FM-T1-W02-ASSESSMENT-GAPS. The scheme row is ordinary teaching content, so no classify_marker or other source rule applies to it. The row needed a replacement; none was authored by that item. This entry stays a row-level association and is not an objective-level certification."
+        },
+        {
+          "locator": "FM-PORT-D3-L002 (docs/ss1/work/microtasks/further-mathematics/FM-PORT-D3-L002.md)",
+          "explanation": "Port decision recorded on 2026-11-06. COV-FM-T1-W02-OBJ-1 and COV-FM-T1-W02-OBJ-2 are now IMPLEMENTED_EQUIVALENT and each binds the single replacement lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] (body_sha256 20363a7e48b0d6cf0620d6c63cc672f645a7deee30d2c3a3c79e4ce82315d5ea) next to this row id, so the teaching this row needs now exists in master field names. The row entry stays PARTIAL: the row itself is still not deliverable as certified content, because no delivery correction binds it (FM-COR-T1-W02 is PENDING), the three OI-FM-T1-W02-* open items stay open and blocking (the printed row is not edited), the two embedded equation objects are still unrecovered (FM-FACT-T1-W02-EQ-OBJECTS), and the school still has to decide the wording of weekend item 4 and the logarithm-dependent quadratic Evaluation item (a). The replacement content_approval is PENDING with no approval reference and its verification is DEFERRED. One replacement only is added for this row, as FM-COR-T1-W02 requires."
         }
       ]
     },
@@ -1961,7 +2220,7 @@
       "id": "OI-FM-T1-W02-FACT-DEFECTS",
       "kind": "FACT",
       "detail": "1st Term Week 2 (INDICIAL AND EXPONENTIAL EQUATIONS) contains factual defects, by getBody() line: (1) line 179 states the working principle unconditionally - 'if the base numbers of any equation are equal, then the power will be equal & vice versa' - but a^x = a^y gives x = y only for a > 0 and a not equal to 1, and the claimed converse is false (4^2 = 2^4 is the same value from different bases); (2) the unknown is written x in the question (lines 183, 279, 280) but X in the working (185, 193, 279, 280); (3) line 198 repeats '10^{x} = 10^{3}' from line 197, a duplicated step; (4) the letter x serves both as the unknown and as the multiplication sign in the same section (line 183 '4/2^{x} = 64^{x}' against line 221 '4 x 5 ^{x+1}' and line 238 '4 x (5^{x} x 5^{1})'), which cannot be told apart once the superscripts are flattened; (5) lines 246-251 and 264-265 keep only the positive branch ('Since 5^{x} = p, p = 5') and never state the reason the negative branch is rejected; (6) the two-column working of quadratic example a) (lines 225-235) is interleaved by the extractor, so line 227 reads 'When y = 4 then, and When y = 2 then' across scrambled value lines, although the conclusions x = 2, x = 1 and 'x = 1 and 2' are correct; (7) the rejected branches end in embedded objects rather than text - line 251 '5^{x} = -25' then an object on line 252, line 265 '3^{x} = - 3' then an object on line 266 - so the conclusion the learner is meant to read is missing from the delivered row; (8) quadratic Evaluation item (a) on line 269, 3(2^(2x+3)) - 5(2^(x+2)) - 156 = 0, reduces to 6y^2 - 5y - 39 = 0, so 2^x = 3 and x = log2 3 (about 1.585), which the equal-base method this week teaches cannot reach - the method needed is scheme week 3 (Logarithms); (9) Weekend Assignment item 4 (line 282) asks for 'The second value of x in question 3', but question 3 (line 281) has one value, x = 1, since 2^x = -4 is rejected, so the wording presupposes a value that does not exist and only option (d) 'No solution' is defensible. Everything else in the row was recomputed on 2026-11-05 and reaches the printed value: linear examples a) x = -3, b) x = -3, c) x = -4, d) x = 3, e) x = 2/7 (both sides 3.281341424030552); quadratic examples a) x = 1 and 2, b) x = 1, c) x = 1; and the unanswered items evaluate to linear Evaluation a) -3, b) 2/5, c) -5, quadratic Evaluation b) x = -10, General Evaluation a) 1 and -1, b) 1 and 2, Weekend 1) -3 (option a), 2) 2 (c), 3) 1 (a), 5) 6 (b), Theory 1) 0, 2) 1 and -1. The row needs a replacement for delivery; none is authored.",
-      "required_action": "Author a replacement for this row (the port decision on PR71 SUP-SS1-FMATHS-002 belongs to FM-PORT-D3-L002, otherwise FM-LES-T1-W02-EQUATIONS) that states the base conditions for the equal-base step and drops the false converse, keeps one letter for the unknown and a distinct multiplication sign, gives the reason for rejecting a negative branch in words rather than as an object, replaces or teaches item (a) of the quadratic Evaluation, and rewords weekend item 4; bind it with FM-COR-T1-W02. FM-FACT-T1-W02-EQ-OBJECTS owns the decision on the two lost equation objects. The original wording is preserved, not edited.",
+      "required_action": "Author a replacement for this row (the port decision on PR71 SUP-SS1-FMATHS-002 belongs to FM-PORT-D3-L002, otherwise FM-LES-T1-W02-EQUATIONS) that states the base conditions for the equal-base step and drops the false converse, keeps one letter for the unknown and a distinct multiplication sign, gives the reason for rejecting a negative branch in words rather than as an object, replaces or teaches item (a) of the quadratic Evaluation, and rewords weekend item 4; bind it with FM-COR-T1-W02. FM-FACT-T1-W02-EQ-OBJECTS owns the decision on the two lost equation objects. The original wording is preserved, not edited. Narrowed on 2026-11-06 by FM-PORT-D3-L002: the replacement now exists as lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] (body_sha256 20363a7e48b0d6cf0620d6c63cc672f645a7deee30d2c3a3c79e4ce82315d5ea), which states the base conditions and drops the false converse (defect 1), keeps x for the unknown and × for multiplication (defects 2 and 4), gives one clean working for example d) (defect 3), rejects both negative branches in words (defects 5 and 7), reads the quadratic examples in order (defect 6), teaches Evaluation item (a) to the point where the equal-base method stops and names scheme week 3 without teaching it, then sets a finishable item instead (defect 8), and teaches weekend item 4 with its missing second value explained (defect 9). What remains: the row is still unbound (FM-COR-T1-W02), the printed row is not edited, and defects 8 and 9 need a teacher decision about the wording the school set. This item stays OPEN and blocking.",
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
       ],
@@ -1971,7 +2230,7 @@
       "id": "OI-FM-T1-W02-NOTATION-LOSS",
       "kind": "CONTENT",
       "detail": "In 1st Term Week 2 every exponent is a superscript run in the original and word-extractor getBody() flattens it to baseline text. Measured on the attached member with a CHPX reader that maps the character-format runs of the WordDocument stream back onto the body: parsed row 1 (lines 173-287) carries 268 superscript groups spread over 51 lines and no subscript groups; the whole document carries 1105 superscript and 229 subscript groups. Ambiguous lines: 183, 185-189, 195-198, 200-204, 214, 220-221, 225-238, 243-251, 253-265, 269, 273-274, 279-283, 287 - for example line 220 '2^{2}^{x} - 6 (2^{x}) + 8 = 0' is delivered as '22x - 6 (2x) + 8 = 0', and line 214 '25 ^{(5x)} = 625' as '25 (5x) = 625'. Three object anchors inside the row are deleted by word-extractor's clean() step (it strips characters 0x00-0x07): character positions 7711 and 7714 on line 252 and 7924 on line 266. The member's OLE directory holds exactly two 'Equation Native' (Microsoft Equation 3.0) streams, 41 bytes each, byte-identical, content SHA-256 90cd4ff61eb943baef83b6d8a5d4509cca596be6e9a4bd5e49c9cf2d339b0655; the MTEF payload was not decoded by this item and no text was recovered, and the anchor-to-pool mapping (which needs the ObjectLocation FSPA table) was not established. Doc-wide the extractor output shows 18 object anchors at lines 252, 266, 1051, 1476, 1478, 1483, 1493, 1997 and 2021 - some lines carry several - which corrects the note in docs/ss1/work/microtasks/further-mathematics/FM-WK-T1-W01.md that all of the document's embedded objects sit after the Week 2 label; three of them sit inside Week 2. The Unicode that does survive includes the en dash used as a minus (lines 187, 189, 220) and the division sign at lines 201-202. The delivered row text is therefore not reliable for any item in it.",
-      "required_action": "The replacement lesson must restate every index, power and equation explicitly, including the two lost conclusions in words. Owner decision on an equation-aware extractor remains open in OI-FM-001, and the per-row census across the term belongs to FM-FACT-EQUATION-LOSS-T1. Do not alter the source row text.",
+      "required_action": "The replacement lesson must restate every index, power and equation explicitly, including the two lost conclusions in words. Owner decision on an equation-aware extractor remains open in OI-FM-001, and the per-row census across the term belongs to FM-FACT-EQUATION-LOSS-T1. Do not alter the source row text. Narrowed on 2026-11-06 by FM-PORT-D3-L002: lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] restates every index, power and equation of this row with carets and brackets and puts both lost conclusions into words, so the replacement no longer depends on the flattened text. What remains: the two embedded equation objects are still unrecovered (FM-FACT-T1-W02-EQ-OBJECTS), the extractor decision remains in OI-FM-001, the per-term census remains in FM-FACT-EQUATION-LOSS-T1, and the source row text is not altered. This item stays OPEN and blocking.",
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
       ],
@@ -1981,7 +2240,7 @@
       "id": "OI-FM-T1-W02-ASSESSMENT-GAPS",
       "kind": "CONTENT",
       "detail": "1st Term Week 2 gives no answers, solutions or marking for any of its practice: Evaluation (lines 212-214, three items), the quadratic Evaluation (268-269, two items), General Evaluation (271-274, two items), Weekend Assignment (278-283, five multiple-choice items) and Theory (285-287, two items) - thirteen items in all; only the five linear examples (181-210) and the three quadratic examples (216-266) are worked. The reading assignment (line 276) cites 'Further Mathematics Project Book 1(New third edition).Chapter 2 pg. 6- 10' while the scheme references (lines 46-48) name 'Further Mathematics project 1 by Tuttuh Adegun et al'; the page range was not checked against the book. Week 1 linkage, established from the text rather than from the titles and recorded to close the question in OI-FM-T1-W01-ASSESSMENT-GAPS: Week 1 Weekend item 1 (line 136, 'Evaluate 3^{x} = 1/81') is the identical equation to Week 2 example c) (line 183) and is literally solved at Week 2 lines 195-198 to x = -4, which is Week 1 option (b); Week 1 items 3 (line 138, '3^{-y} = 243', y = -5, option (a)) and 4 (line 140, '25^{-5n} = 625', n = -2/5, option (d)) are linear-form applications of the principle at Week 2 line 179 worked in the one-base pattern of lines 186-193. So Week 2 does teach what Week 1's three equation questions assume, but it teaches it after they are set, neither row supplies a key, and the Week 1 supplement SUP-SS1-FURTHER-MATHEMATICS-T1-W01-INDICES deliberately left those items unreproduced (its COV-FM-T1-W01-OBJ-2 entry still reads 'pending FM-WK-T1-W02 confirmation' - this open item and COV-FM-T1-W02-OBJ-1 are that confirmation; that entry was not edited by this item).",
-      "required_action": "The Week 2 replacement (FM-PORT-D3-L002, then FM-LES-T1-W02-EQUATIONS) must supply original answered practice with a complete marking breakdown under the contract, must not reuse the printed items as a key, and must not quietly teach the week-3 logarithm step needed by quadratic Evaluation item (a) - either teach it or replace the item. Week 1 delivery remains bound to FM-COR-T1-W01 and is not activated by this finding.",
+      "required_action": "The Week 2 replacement (FM-PORT-D3-L002, then FM-LES-T1-W02-EQUATIONS) must supply original answered practice with a complete marking breakdown under the contract, must not reuse the printed items as a key, and must not quietly teach the week-3 logarithm step needed by quadratic Evaluation item (a) - either teach it or replace the item. Week 1 delivery remains bound to FM-COR-T1-W01 and is not activated by this finding. Narrowed on 2026-11-06 by FM-PORT-D3-L002: lessons[id=SUP-SS1-FURTHER-MATHEMATICS-T1-W02-EQUATIONS] works each of the thirteen unanswered items in the body with its exact value (including the five weekend options) and sets eight original answered practice items worth 33 marks in total, every criterion list summing to its question; no printed source item is reused as the practice key, and the week-3 logarithm step is named as a stopping point rather than taught. What remains: no mark here is teacher-approved (content approval PENDING, approval_reference null), the reading-assignment page range at row line 276 is still unchecked against the book, and the row stays unbound until FM-COR-T1-W02. This item stays OPEN and blocking.",
       "affected_ids": [
         "SS1-SRC-e9efc9a976ed:BODY:5afb4090baf876604503aa80e92f0e7c6537967652d9a11f004b0d4520e1aa7c"
       ],
