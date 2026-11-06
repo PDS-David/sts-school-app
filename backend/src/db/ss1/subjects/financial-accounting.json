@@ -77,7 +77,342 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-FA-T1-W01-SCHEME-1",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "Scheme row 1 of the 1st Term Financial Accounting scheme of work: the printed row 'Introduction to Book-Keeping and Accounting' (no week number printed) that the WEEK ONE body answers.",
+      "objective_locator": "line 47 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 47 (scheme row 1, printed without a number) SHA-256 b4234efc8d8e2c91a6985ee16e850f54b0bb1503498ec44550cb326c9256c4b3; lines 65-263 (the whole WEEK ONE body) SHA-256 9c7f09369d4ed8878008d314426d26e60575fde599764f2cd6b6e1849d6f7e17",
+          "explanation": "The row names the topic only. The body teaches five CONTENT items and five assessment blocks, each indexed separately rather than folded into this entry."
+        },
+        {
+          "locator": "lines 65-67 (WEEK ONE marker and topic line) SHA-256 b222948c18a90f5fb588f232c729b18fec83c60eee488cab027ae3252d37d09b; lines 69-79 (CONTENT heading and five items) SHA-256 7d99af84cb342f6099c2ece99762deb98850b530a3d3e517f536b5f17c394b3c",
+          "explanation": "Marker, topic and outline anchors. The five outline items are at lines 71, 73, 75, 77 and 79 and map one to one onto the five teaching entries below."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-DEFINITIONS",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "The definitions of book-keeping (line 83) and accounting (line 87): systematic recording of daily financial transactions so that the financial position can be ascertained at any time; and recording, classifying, analyzing, summarizing, interpreting and communicating financial information to end-users.",
+      "objective_locator": "lines 83 and 87 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 83 SHA-256 25753aa50defbe65059ffc221b735869f0188f1f40edc0ae9e08fd68f05052cf",
+          "explanation": "Book-keeping definition. The line does not mention monetary terms, which weekend item 1 (line 245) uses in its stem."
+        },
+        {
+          "locator": "line 87 SHA-256 2a7afb52fef149dd91b3e17749fc2b30a9a7dac23f5e3e5cdbb254d6fce7a91e",
+          "explanation": "Accounting definition: six verbs in a stated order (recording, classifying, analyzing, summarizing, interpreting, communicating). The source never calls them stages; see FINANCIAL-ACCOUNTING-T1-W01-WEEKEND-AMBIGUOUS-ITEMS."
+        },
+        {
+          "locator": "line 71 SHA-256 41e7127b516be4a1c326d1337e82972bd9da50506479b1c3adb983be734f2b8c",
+          "explanation": "Outline item: Definition of Book-Keeping and Accounting."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-DIFFERENCES",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "Differences between book-keeping and accounting: the five differences the source prints (lines 93-101).",
+      "objective_locator": "lines 91-101 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 91-101 (heading and five differences) SHA-256 dbd871e84380bf864c9d6c5d8fefe3c4ba77c8094779b34ae27daa05180ea750",
+          "explanation": "The whole block as printed."
+        },
+        {
+          "locator": "line 93 SHA-256 aae3aa81fc3d2f9066471fdeade3a1c9a116031be83a1ab5d590bf30bdd2a845",
+          "explanation": "Difference: scope of work: routine recording only versus classifying, analysing, summarising and interpreting."
+        },
+        {
+          "locator": "line 95 SHA-256 a06c7fac5ccca606749b435008ff0abe79787d3d1db53197db7ebe08d056bea5",
+          "explanation": "Difference: scope: limited versus wider."
+        },
+        {
+          "locator": "line 97 SHA-256 6fea7cf7d174bdac1d22564db582c558dd28e1dd0f8f24ab4f5b1f5773e0d9ed",
+          "explanation": "Difference: training time: a few months versus about five years (a dated factual claim, routed to FA-FACT-T1-DATED-REFERENCES)."
+        },
+        {
+          "locator": "line 99 SHA-256 cf527babeee149c66e88f19031056db4ea5aecf91c1d6a6efb1766cd21701e22",
+          "explanation": "Difference: use of records: mainly internal versus internal and external."
+        },
+        {
+          "locator": "line 101 SHA-256 9c76029deabb7c9d9a18fefd26f52ea359339b15ba9fd5f739d5a5c4fbf1f866",
+          "explanation": "Difference: relationship: book-keeping is an integral part of accounting, which has it as one component."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-USERS",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "Users of accounting information and financial statements: the introductory sentence and ten user groups with their stated purposes (lines 105-181).",
+      "objective_locator": "lines 105-181 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 105-181 (heading, introduction and ten user groups) SHA-256 0cd0f37a76d8fd69cfac4c823354b0da3eed32ea28bcff0b8751c3d8b07fe231",
+          "explanation": "The whole block as printed; the introduction at line 107 says the users and their reasons should be noted."
+        },
+        {
+          "locator": "lines 109-115 (Owners of the Business; 3 stated purposes) SHA-256 e6a10cdb424a9a0135a01e8e2a3c865a214237098ad101dccf2a504bfe4eef12",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 117-123 (Shareholders of a Company; 3 stated purposes) SHA-256 70e3c403d3dd82a7fe05d290c35286ac9fc58554da1b81a74925feba67270955",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 125-135 (Loan Creditors; 5 stated purposes) SHA-256 dba9f4d573d121597e478c2808fefc0dda3d9ae3ba4f199932f4e9dbb3f8058e",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 137-143 (Trade Creditors/Suppliers; 3 stated purposes) SHA-256 4f8fd005202f6fa489a8ca2b574dea71684c31557ff2b99664cb062bbfd8c424",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 145-149 (Competitors; 2 stated purposes) SHA-256 8b0ec846cfe12b6264ed3903a8a8a403114c9ae207515b7ef308546dcb421120",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 151-155 (Customers; 2 stated purposes) SHA-256 facbebff639659a0475dd49411f1955892acb15ffda42bf4de4775f07e9ce538",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 157-163 (Employees of the Business; 3 stated purposes) SHA-256 880b624a3ee080d3601def8216e9a4dc94cb03e381e7edb6f9fbab71bd8a22e7",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 165-167 (Tax Authorities (LSBIR or FBIR named); 1 stated purposes) SHA-256 376597d68c20e9372641e9ac4b055f3ae6f69f46c317b1a2fae17a19122e0fc6",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 169-175 (The Government (CBN, NDIC, SEC, CAC, NSE named); 3 stated purposes) SHA-256 6e23409127d0cc4d2e922c685d8fcf76500cc31435dbaac7a662a095b3c79555",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "lines 177-181 (The Public; 2 stated purposes) SHA-256 ae2eac9d19263f52e73c9d968a3084ad201038587f8a270c83ee834c7d95fb88",
+          "explanation": "User group and its listed purposes, as printed."
+        },
+        {
+          "locator": "line 165 SHA-256 5414f5d0608a0b719e4436bc5c6f767c0d9eba17d23a6d78fb5d54c1b5404a02",
+          "explanation": "Names LSBIR and FBIR as examples of tax authorities; the abbreviations and the body names are routed to FA-FACT-T1-DATED-REFERENCES and are not verified here."
+        },
+        {
+          "locator": "line 175 SHA-256 89a0f7e9c15b82eea62fa8d1ffe99f42349c82e4b741bfe7e54e4a71047be49b",
+          "explanation": "Names CBN, NDIC, SEC, CAC and NSE as examples of regulating agencies; routed to FA-FACT-T1-DATED-REFERENCES and not verified here."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-IMPORTANCE",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "Importance of book-keeping and accounting, or reasons why accounting records are kept: the nine reasons the source prints (lines 195-211).",
+      "objective_locator": "lines 193-211 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 193-211 (heading and nine reasons) SHA-256 0dad229a1ccc08acf0fa135ebe5048eea4601a2b94770b5e856f85de7db9d00a",
+          "explanation": "The heading carries two titles joined by 'OR'. Weekend theory item b (line 261) asks for five reasons and evaluation 2 (line 231) asks for five benefits; the source teaches nine and does not say which five."
+        },
+        {
+          "locator": "line 195 SHA-256 0c347f6f8cfdc05b661f15ecc0fde8567415abf0d0ec92609f1a435ebf2bef99",
+          "explanation": "Reason 1 as printed."
+        },
+        {
+          "locator": "line 197 SHA-256 61275fb68e1f20a95c276d99db462125904c53e5626247cf3565caca6a531874",
+          "explanation": "Reason 2 as printed."
+        },
+        {
+          "locator": "line 199 SHA-256 1d7b503decef2e020b10bd66843ab834c0ca72588184066d6d777e9e1e296125",
+          "explanation": "Reason 3 as printed."
+        },
+        {
+          "locator": "line 201 SHA-256 d1b07941229c836a1edd14f013c0db3d393b13942e25270b27044c06eee13cb8",
+          "explanation": "Reason 4 as printed."
+        },
+        {
+          "locator": "line 203 SHA-256 495b4f4a4aa6ab9d653329028f20617d4aeca8936784f80f10119c13b4e9ef88",
+          "explanation": "Reason 5 as printed."
+        },
+        {
+          "locator": "line 205 SHA-256 f89effe98dd8abc2c88963c6df9a2473d499882a5f1d5312dcd2d6e8d109c28f",
+          "explanation": "Reason 6 as printed."
+        },
+        {
+          "locator": "line 207 SHA-256 4a97a15ea0833ceec59ed9ac89d478c6e84df811581f83738be337d136298836",
+          "explanation": "Reason 7 as printed."
+        },
+        {
+          "locator": "line 209 SHA-256 703cd4e70baf4093b6cc3d3042e2b65bae9eef792c66c6df024675091b128b4a",
+          "explanation": "Reason 8 as printed."
+        },
+        {
+          "locator": "line 211 SHA-256 88d327133d6354bce10ef83cb5179f790538f3c319ad842d5999c485c48efe2d",
+          "explanation": "Reason 9 as printed."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-HISTORY",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "History of the development of accounting: records as old as man (217), double entry developed in 1494 by Luca Pacioli with the royal charter to the Royal Niger Company in 1886 (221), and the founding of two Nigerian accounting bodies in 1965 and 1979 (225).",
+      "objective_locator": "lines 215-225 of mammoth.extractRawText 1.12.2",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 215-225 (heading and three paragraphs) SHA-256 9d022a5ff3a681da68100b5282b04f8960479ffead7a1c0b71427216fcfd7369",
+          "explanation": "The whole block as printed. It is a dated factual claim set and must not be taught as verified until FA-FACT-T1-DATED-REFERENCES records its position."
+        },
+        {
+          "locator": "line 217 SHA-256 0e0de757b699c8d470cc0c76b217e4d50b77f99aa40c0678bd3ac80af3f6c310",
+          "explanation": "Opening paragraph: no accurate record of when accounting started; record keeping said to be as old as man. Undated."
+        },
+        {
+          "locator": "line 221 SHA-256 38666a78adf040f0d0eae720254ee0ad9a2fc19f756c893e41eae2db1ead6037",
+          "explanation": "Dated claims: 1494 (Luca Pacioli, double entry system) and 1886 (royal charter, Royal Niger Company). Routed to FA-FACT-T1-DATED-REFERENCES; not verified here."
+        },
+        {
+          "locator": "line 225 SHA-256 81eab336f6f3e4c39047d2dbebb47624f3e04fb29fe64cfb7437fef915d69f64",
+          "explanation": "Dated claims: the Institute of Chartered Accountants of Nigeria on 1st September, 1965 and the Association of National Accountants of Nigeria on 31st July,1979 as 'the second professional accounting body'. Routed to FA-FACT-T1-DATED-REFERENCES; not verified here."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-EVALUATION-1",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "The first EVALUATION QUESTIONS block of Week 1: define book-keeping and accounting, and state three differences.",
+      "objective_locator": "lines 185-189 of mammoth.extractRawText 1.12.2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 185-189 (heading and two questions) SHA-256 6af921ada2622cc14b99286d3660f3f8e7e022965458b7519fd93e017fab815e",
+          "explanation": "Answerable in outline from lines 83, 87 and 93-101, but the source prints no key, model answer or marks, so the block stays UNRESOLVED."
+        },
+        {
+          "locator": "line 187 SHA-256 c7c0aa0ade6483d2ed18d6e3560da3daf684beec18f91169768409262e3dd9f8",
+          "explanation": "Question 1, exact wording: 'Define the following terms:a. Book-keeping   b. Accounting '. The stem and its two parts a and b are printed on one line separated by tabs with no space after the colon. Printed wording quoted exactly as extracted (a tab is shown as a space); the digest identifies the exact line."
+        },
+        {
+          "locator": "line 189 SHA-256 de6152dcd45863f5826cbfde684da01a71686b605351991d98fe81012eb6b581",
+          "explanation": "Question 2, exact wording: 'State three differences between book-keeping and accounting ' (trailing space printed). Five differences are taught, so which three the key expects is not determined."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-EVALUATION-2",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "The second EVALUATION QUESTIONS block of Week 1: list five benefits of book-keeping and accounting, and state four duties of an accountant in a business organisation.",
+      "objective_locator": "lines 229-233 of mammoth.extractRawText 1.12.2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 229-233 (heading and two questions) SHA-256 886d3384b20f6b1c61968ba244fd5facbf339e471eb3237f95ee47be0d2c93cf",
+          "explanation": "Question 1 is answerable from the nine reasons at 195-211; question 2 is not taught anywhere in the source."
+        },
+        {
+          "locator": "line 231 SHA-256 d6044dbcbe04b8ad0f3ff38da6f92de87b1756b67575d9383f1ff8e44b93d873",
+          "explanation": "Question 1, exact wording: 'List five benefits of book-keeping and accounting.'. The source calls the list importance or reasons, not benefits (the outline at line 77 says Importance/Benefits)."
+        },
+        {
+          "locator": "line 233 SHA-256 ebd3286543fe9223d459dcf86305f83743b45b635797d6e337fac9f92beaf093",
+          "explanation": "Question 2, exact wording: 'State four duties of an accountant in a business organisation ' (trailing space printed). Duty and duties occur nowhere else in the 1,691-line extract; the accounting definition at line 87 lists activities, not duties. NOT TAUGHT in the source."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-READING-ASSIGNMENT",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "The READING ASSIGNMENT of Week 1: one external textbook page range.",
+      "objective_locator": "lines 237-239 of mammoth.extractRawText 1.12.2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 237-239 (heading and one line) SHA-256 d94ab390434443955418a0832124f82e2540ec4a50c30cc687334044bcacfae0",
+          "explanation": "The only content is a pointer to an external book that was not supplied; there is nothing to teach or key."
+        },
+        {
+          "locator": "line 239 SHA-256 0cf8a7ee2bed6046b20e31c89ae670fdb33a8b2e36508b252ec17ae3b09150f8",
+          "explanation": "Exact wording: 'Simplified and Amplified Financial Accounting Page 1 – 7' (an en dash is printed in the page range). Disposition belongs to FA-FACT-T1-EXTERNAL-MATERIALS; no author or edition is stated and none is guessed."
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-WEEKEND-ASSIGNMENT",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "The WEEKEND ASSIGNMENT of Week 1: five multiple-choice questions with four options each, printed without a key.",
+      "objective_locator": "lines 243-253 of mammoth.extractRawText 1.12.2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 243-253 (heading and five items) SHA-256 4a99a2378f0afa25f930aefb648b187a8b50d2935e0729dc1c407f8a2bf4acf1",
+          "explanation": "One item per line. No key, answer letter, marks or marking wording exists, so no option letter is marked correct anywhere in this package. Printed wording quoted exactly as extracted (a tab is shown as a space); the digest identifies the exact line."
+        },
+        {
+          "locator": "line 245 SHA-256 3d57c4ff86ed8fa64f46a028a1206828c429896b4f804d3a13b31af5f63c15d3",
+          "explanation": "Item 1, exact wording: 'The systematic recording of business transactions in monetary terms is   A. auditing    B. book-keeping   C. debiting    D. crediting '"
+        },
+        {
+          "locator": "line 247 SHA-256 8be48185dfbe8edaf5d97501de75deba062813ac67fa7b08ca2224c9eba008f2",
+          "explanation": "Item 2, exact wording: 'Financial accounting information is for    A. internal use only     B. external use only       C. business use only    D. internal and external use '"
+        },
+        {
+          "locator": "line 249 SHA-256 89cb1b8ed8a7218b4192febb4c6b6373bd054a33bd394507afc8a417261323b6",
+          "explanation": "Item 3, exact wording: 'Which of the following is not a purpose of financial accounting     A. determining profit    B. fixing prices     C. credit dealings    D. determining cash balance '"
+        },
+        {
+          "locator": "line 251 SHA-256 bb8833c3d1ee1c5e07d9dd5df2862719c20cd1778c1b4e35fc4cbad3a2721d69",
+          "explanation": "Item 4, exact wording: 'The fourth stage of the accounting information system is    A. recording     B. summarizing    C. interpreting      D. classifying '"
+        },
+        {
+          "locator": "line 253 SHA-256 a73c0dcb2c99f2a1f255d01c81b0f2d388ffe4079ceba6e1c12f51e915dc83c2",
+          "explanation": "Item 5, exact wording: 'The double entry principle of accounting was developed by   A. Frank Wood      B. Akintola Williams    C. Luca Pacioli     D. William Pickles '"
+        }
+      ]
+    },
+    {
+      "id": "COV-FA-T1-W01-THEORY",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "objective": "The THEORY block of Week 1: three written questions on the meaning of book-keeping, five reasons why accounting records are kept and eight users of accounting information.",
+      "objective_locator": "lines 257-263 of mammoth.extractRawText 1.12.2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 257-263 (heading and three questions) SHA-256 243d375e29f98b8fc2d68efdb86bbe203b3af5a86131548098756d8542eac1e4",
+          "explanation": "Answerable in outline from lines 83, 195-211 and 109-179, but no key or marks are printed. The heading is spelled THEORY here."
+        },
+        {
+          "locator": "line 259 SHA-256 596603304d7e37eee4606cf684d0be1de60b721e443765643b11884966cd3d6c",
+          "explanation": "Question a, exact wording: 'a. What is book-keeping?'. It repeats part a of line 187 for book-keeping alone."
+        },
+        {
+          "locator": "line 261 SHA-256 7dd034a2d75f66e4b3a768a92e4746269aa463b284314ae7600b6a525c367562",
+          "explanation": "Question b, exact wording: 'b. Give five reasons why accounting records are kept.'. Nine reasons are taught, so which five is not determined."
+        },
+        {
+          "locator": "line 263 SHA-256 6991c96a04ab46d7a6710d224b449a040bae0142d641f8ab172d0b746c0d1849",
+          "explanation": "Question 3, exact wording: 'List eight users of accounting information.' (no letter printed). Ten user groups are taught, so which eight is not determined."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "FINANCIAL-ACCOUNTING-ALIAS-APPROVAL",
@@ -100,6 +435,125 @@
         "SS1-SRC-8165a1af2444"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 (lines 65-263) is indexed but nothing in it is delivered. The six PARTIAL objectives (scheme row 1, definitions, differences, users, importance, history) have no lesson: lessons[] is empty and no original lesson id exists for this source because the importer has never run for it. No SUPPORTED claim was made, so no existing originalLessonId was reused or replaced.",
+      "required_action": "Author the lessons named by the FA-LES-T1-W01 tasks, then upgrade only the entry each lesson fully covers and bind its lesson id. Do not infer coverage of the scheme row from one objective.",
+      "affected_ids": [
+        "COV-FA-T1-W01-SCHEME-1",
+        "COV-FA-T1-W01-DEFINITIONS",
+        "COV-FA-T1-W01-DIFFERENCES",
+        "COV-FA-T1-W01-USERS",
+        "COV-FA-T1-W01-IMPORTANCE",
+        "COV-FA-T1-W01-HISTORY",
+        "FA-LES-T1-W01-DEFINITIONS-DIFFERENCES",
+        "FA-LES-T1-W01-USERS",
+        "FA-LES-T1-W01-IMPORTANCE",
+        "FA-LES-T1-W01-HISTORY",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-DATED-CLAIMS",
+      "kind": "FACT",
+      "detail": "The history block carries dated factual claims: Luca Pacioli and double entry in 1494 and the royal charter to the Royal Niger Company in 1886 (line 221); the Institute of Chartered Accountants of Nigeria on 1st September, 1965 and the Association of National Accountants of Nigeria on 31st July,1979 as the second professional accounting body (line 225). The regulator and tax-body abbreviations (LSBIR and FBIR at line 165; CBN, NDIC, SEC, CAC and NSE at line 175) and the training-time claim at line 97 (a few months against about five years) are also factual claims. The existing item FA-FACT-T1-DATED-REFERENCES cites older line numbers for these claims (215-223 and 169-179, with the paragraph numbers 217 and 219); in the extract the history block is lines 215-225, the claims are at lines 221 and 225, and the regulators are at lines 165 and 175.",
+      "required_action": "Verify each claim against an authoritative primary source through FA-FACT-T1-DATED-REFERENCES, using the line numbers recorded here, and keep the source wording visibly separate from any corrected fact. Do not present any of them as verified in a lesson before that.",
+      "affected_ids": [
+        "COV-FA-T1-W01-HISTORY",
+        "COV-FA-T1-W01-USERS",
+        "COV-FA-T1-W01-DIFFERENCES",
+        "FA-FACT-T1-DATED-REFERENCES",
+        "FA-LES-T1-W01-HISTORY",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-UNANSWERED-QUESTIONS",
+      "kind": "CONTENT",
+      "detail": "Evaluation question 2 of the second block (line 233, state four duties of an accountant in a business organisation) cannot be answered from the source: duty and duties occur only in the question, and the accounting definition at line 87 lists activities rather than duties.",
+      "required_action": "Teacher decides which approved material supplies the duties of an accountant; the bounded lesson task FA-LES-T1-W01-ACCOUNTANT-DUTIES carries that decision. Do not invent a list of duties from the definition.",
+      "affected_ids": [
+        "COV-FA-T1-W01-EVALUATION-2",
+        "FA-LES-T1-W01-ACCOUNTANT-DUTIES",
+        "FA-FACT-T1-W01-TEACHER-DECISIONS",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-WEEKEND-AMBIGUOUS-ITEMS",
+      "kind": "CONTENT",
+      "detail": "Three weekend items cannot be keyed from the taught text alone. Item 3 (line 249, which is not a purpose of financial accounting) offers determining profit (taught at line 195), fixing prices (a competitor's purpose at line 147), credit dealings (a creditor's purpose at lines 135 and 139) and determining cash balance (never taught), so the answer depends on whose purpose is meant. Item 4 (line 251, the fourth stage of the accounting information system) uses the word stage, which occurs only there; the six verbs of the definition at line 87 are not called stages, and counting them gives summarizing, an inference the source does not state. Item 2 (line 247) says financial accounting information while line 99 speaks of accounting records. Items 1 (line 245) and 5 (line 253) point at lines 83 and 221 but no key states it.",
+      "required_action": "Teacher or key author decides the expected answer and wording for items 2 to 4 and records the basis; do not mark an option letter as correct from this indexing.",
+      "affected_ids": [
+        "COV-FA-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-FA-T1-W01-DEFINITIONS",
+        "FA-LES-T1-W01-KEY-ASSESSMENT",
+        "FA-FACT-T1-W01-TEACHER-DECISIONS",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "Week 1 prints 12 questions (2 at 187-189, 2 at 231-233, 5 weekend items at 245-253 and 3 theory questions at 259-263) and one reading pointer (239). No answer key, worked answer, marking scheme, mark allocation or rubric exists inside the week: a case-insensitive scan of lines 65-263 for answer, marking, marks, score, rubric and scheme of mark returns 0 hits. No option letter was marked correct and no mark total was invented.",
+      "required_action": "Author the key and mark allocation only after the decisions in FA-FACT-T1-W01-TEACHER-DECISIONS; FA-LES-T1-W01-KEY-ASSESSMENT carries that work. A model answer is a proposal, not a source key.",
+      "affected_ids": [
+        "COV-FA-T1-W01-EVALUATION-1",
+        "COV-FA-T1-W01-EVALUATION-2",
+        "COV-FA-T1-W01-WEEKEND-ASSIGNMENT",
+        "COV-FA-T1-W01-THEORY",
+        "FA-LES-T1-W01-KEY-ASSESSMENT",
+        "FA-FACT-T1-W01-TEACHER-DECISIONS",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-READING-EXTERNAL",
+      "kind": "PERMISSION",
+      "detail": "The READING ASSIGNMENT at line 239 points to pages 1 to 7 of a textbook titled Simplified and Amplified Financial Accounting that was not supplied. No author, edition or permission to reproduce its pages exists in the source.",
+      "required_action": "Keep the pointer only, with no quotation or paraphrase of the pages, and record its disposition through FA-FACT-T1-EXTERNAL-MATERIALS.",
+      "affected_ids": [
+        "COV-FA-T1-W01-READING-ASSIGNMENT",
+        "FA-FACT-T1-EXTERNAL-MATERIALS",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-COUNT-CHOICES",
+      "kind": "CONTENT",
+      "detail": "Several questions ask for a number of items the source teaches more of: three differences (line 189, five taught), five benefits and five reasons (lines 231 and 261, nine taught), eight users (line 263, ten groups taught). Part a of line 187 and question a at line 259 both ask for the meaning of book-keeping, and the source calls the list at lines 195-211 importance or reasons while line 231 asks for benefits.",
+      "required_action": "Decide which items a key accepts, whether any item set is fixed, and whether the repeated definition question is delivered once or twice. Do not choose silently.",
+      "affected_ids": [
+        "COV-FA-T1-W01-EVALUATION-1",
+        "COV-FA-T1-W01-EVALUATION-2",
+        "COV-FA-T1-W01-THEORY",
+        "COV-FA-T1-W01-IMPORTANCE",
+        "FA-FACT-T1-W01-TEACHER-DECISIONS",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "FINANCIAL-ACCOUNTING-T1-W01-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Printed defects preserved as found: 'interprete' at line 93; 'about few months' at line 97; the stem and parts a and b of line 187 joined by tabs with no space after the colon; tabs and trailing spaces in many heading and question lines; the importance heading at line 193 joined to a second title by OR; theory part labels a and b at 259 and 261 with no label at 263; line 239 printing an en dash in the page range; the Week 1 body written with both Book-Keeping and Book Keeping spellings; and blank lines of one to three between blocks.",
+      "required_action": "Keep printed wording when quoting the source; correct spelling only in authored lessons and mark the correction as the lesson author's, not the source's.",
+      "affected_ids": [
+        "COV-FA-T1-W01-DIFFERENCES",
+        "COV-FA-T1-W01-EVALUATION-1",
+        "COV-FA-T1-W01-IMPORTANCE",
+        "COV-FA-T1-W01-THEORY",
+        "SS1-SRC-cf77df509ac3"
+      ],
+      "blocks_delivery": false
     }
   ]
 }

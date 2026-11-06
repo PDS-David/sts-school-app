@@ -25,22 +25,24 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "FA-INV-T1 appended the 1st Term inventory items (20) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 20 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten in seven labelled sections, from the document itself (FA-INV-T1.md); no revision or examination section exists, so no marker item was created. The document SHA-256 was verified in this run from the composite archive; nothing was run (tests, typechecks, importer, DB, device).",
-    "FA-INV-T2 appended the 2nd Term inventory items (18) and is IMPLEMENTED_TESTING_DEFERRED. Counts reflect items, not content completeness: the new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The week count is ten in five labelled sections (WEEK ONE, WEEK TWO - THREE, WEEK FOUR, WEEK FIVE – SIX, WEEK SEVEN – TEN), from the document itself (FA-INV-T2.md); there is no revision or examination section, so no marker item was created. The document ends with a questions-1-to-5 prompt whose questions are absent. The document SHA-256 was verified in this run from the supplied 2nd Term zip; the composite archive hash was not checked; nothing was run (tests, typechecks, importer, DB, device)."
+    "FA-INV-T2 appended the 2nd Term inventory items (18) and is IMPLEMENTED_TESTING_DEFERRED. Counts reflect items, not content completeness: the new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. The week count is ten in five labelled sections (WEEK ONE, WEEK TWO - THREE, WEEK FOUR, WEEK FIVE – SIX, WEEK SEVEN – TEN), from the document itself (FA-INV-T2.md); there is no revision or examination section, so no marker item was created. The document ends with a questions-1-to-5 prompt whose questions are absent. The document SHA-256 was verified in this run from the supplied 2nd Term zip; the composite archive hash was not checked; nothing was run (tests, typechecks, importer, DB, device).",
+    "2026-11-07 FA-WK-T1-W01: indexed Week One lines 65-263 of the 1st Term source into 11 coverage entries (6 PARTIAL, 5 UNRESOLVED) and 8 open items (6 blocking), and appended FA-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED) plus six lesson tasks. Nothing is approved, verified or deliverable; the source prints no key for any of the 12 questions and does not teach the duties of an accountant. Week 1 is not complete."
   ],
   "counts": {
-    "FACTUAL_DEPENDENCY": 7,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_PRESERVATION": 6,
     "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INDEXING": 12,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "VISUAL_DISPOSITION": 12
+    "FACTUAL_DEPENDENCY": 8,
+    "SOURCE_PREAMBLE_INDEXING": 2,
+    "SOURCE_WEEK_INDEXING": 12,
+    "VISUAL_DISPOSITION": 12,
+    "SOURCE_PRESERVATION": 6,
+    "LESSON": 6
   },
   "status_counts": {
-    "BLOCKED": 1,
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "PENDING": 40
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "PENDING": 45,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -375,8 +377,8 @@
         "FA-INV-T1",
         "FA-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T1.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED_TESTING_DEFERRED (2026-11-07). Member SHA-256 c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb (1,166,213 bytes) verified on the attached file and mammoth 1.12.2 extractRawText reproduced on it: 41,252 characters, 1,691 lines, text SHA-256 8b5d32570047a689876a556a6492f95d6a6c1847413aef9d34b04e15a74b7686, Week One lines 65-263 SHA-256 9c7f09369d4ed8878008d314426d26e60575fde599764f2cd6b6e1849d6f7e17, all equal to FA-INV-T1. financial-accounting.json now carries 11 Week 1 coverage entries, all with source_id SS1-SRC-cf77df509ac3 and lesson_ids empty because no lesson delivers them and the importer has never run for this source: 6 PARTIAL, COV-FA-T1-W01-SCHEME-1, -DEFINITIONS, -DIFFERENCES, -USERS, -IMPORTANCE, -HISTORY, and 5 UNRESOLVED, COV-FA-T1-W01-EVALUATION-1, -EVALUATION-2, -READING-ASSIGNMENT, -WEEKEND-ASSIGNMENT, -THEORY. No SUPPORTED entry: no original lesson id exists to reuse. Block digests: marker and topic 65-67 b222948c18a90f5fb588f232c729b18fec83c60eee488cab027ae3252d37d09b; CONTENT 69-79 7d99af84cb342f6099c2ece99762deb98850b530a3d3e517f536b5f17c394b3c; definitions 83 and 87 one digest each; differences 91-101 dbd871e84380bf864c9d6c5d8fefe3c4ba77c8094779b34ae27daa05180ea750; users 105-181 0cd0f37a76d8fd69cfac4c823354b0da3eed32ea28bcff0b8751c3d8b07fe231; EVALUATION 185-189 6af921ada2622cc14b99286d3660f3f8e7e022965458b7519fd93e017fab815e; importance 193-211 0dad229a1ccc08acf0fa135ebe5048eea4601a2b94770b5e856f85de7db9d00a; history 215-225 9d022a5ff3a681da68100b5282b04f8960479ffead7a1c0b71427216fcfd7369; EVALUATION 229-233 886d3384b20f6b1c61968ba244fd5facbf339e471eb3237f95ee47be0d2c93cf; reading 237-239 d94ab390434443955418a0832124f82e2540ec4a50c30cc687334044bcacfae0; weekend 243-253 4a99a2378f0afa25f930aefb648b187a8b50d2935e0729dc1c407f8a2bf4acf1; theory 257-263 243d375e29f98b8fc2d68efdb86bbe203b3af5a86131548098756d8542eac1e4. All 12 questions are indexed by line with exact wording (187, 189, 231, 233, 245, 247, 249, 251, 253, 259, 261, 263). The task prompt quoted older line numbers for the early blocks; the numbers above are the extract's own and the whole-body digest matches. 8 open items appended (FINANCIAL-ACCOUNTING-T1-W01-COVERAGE, FINANCIAL-ACCOUNTING-T1-W01-DATED-CLAIMS, FINANCIAL-ACCOUNTING-T1-W01-UNANSWERED-QUESTIONS, FINANCIAL-ACCOUNTING-T1-W01-WEEKEND-AMBIGUOUS-ITEMS, FINANCIAL-ACCOUNTING-T1-W01-ASSESSMENT-NO-KEY and FINANCIAL-ACCOUNTING-T1-W01-READING-EXTERNAL block delivery; FINANCIAL-ACCOUNTING-T1-W01-COUNT-CHOICES and FINANCIAL-ACCOUNTING-T1-W01-SOURCE-DEFECTS do not) to the 2 alias items. Appended: FA-FACT-T1-W01-TEACHER-DECISIONS (BLOCKED, six decisions) and lesson tasks FA-LES-T1-W01-DEFINITIONS-DIFFERENCES, -USERS, -IMPORTANCE, -HISTORY, -ACCOUNTANT-DUTIES and -KEY-ASSESSMENT (PENDING). No lesson, asset, correction, rule or parser change; package_status stays PENDING. Record: docs/ss1/work/microtasks/financial-accounting/FA-WK-T1-W01.md.",
       "completion_condition": "Week 1 objective-level coverage or marker rules exist under the existing schema for every CONTENT objective and assessment block, with exact locators; unanswered questions are recorded as precise open items plus a small lesson task; nothing is marked approved, verified or implemented beyond what was actually written."
     },
     {
@@ -1727,6 +1729,265 @@
       "status": "PENDING",
       "implementation_reference": "Not started. Inventory and locators: docs/ss1/work/microtasks/financial-accounting/FA-INV-T2.md.",
       "completion_condition": "Every scheme row has a recorded body locator or an explicit `no body` finding; the missing dissolution, revision, examination, ratio-types, retirement teaching and questions 1 to 5 are precise open items; no lesson, question or coverage is invented."
+    },
+    {
+      "id": "FA-FACT-T1-W01-TEACHER-DECISIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One EVALUATION lines 185-189 SHA-256 6af921ada2622cc14b99286d3660f3f8e7e022965458b7519fd93e017fab815e and 229-233 SHA-256 886d3384b20f6b1c61968ba244fd5facbf339e471eb3237f95ee47be0d2c93cf, WEEKEND ASSIGNMENT lines 243-253 SHA-256 4a99a2378f0afa25f930aefb648b187a8b50d2935e0729dc1c407f8a2bf4acf1 and THEORY lines 257-263 SHA-256 243d375e29f98b8fc2d68efdb86bbe203b3af5a86131548098756d8542eac1e4.",
+      "objective": "Owner or teacher decides the Week 1 questions this indexing could not answer: 1. Which approved material supplies the duties of an accountant (line 233), since the source never teaches them. 2. The expected answers and wording for weekend items 2, 3 and 4 (lines 247, 249, 251), including whose purpose item 3 means and whether item 4 counts the six verbs of line 87 as stages. 3. Who authors the answer key and mark allocation for the 12 Week 1 questions, and on what basis, since the source prints none. 4. How the number-of-items questions are keyed (three of five differences, five of nine reasons, eight of ten users) and whether the repeated definition question (lines 187 and 259) is delivered once or twice. 5. Whether line 231 benefits and line 261 reasons are keyed from the one importance list at lines 195-211. 6. Whether the external reading at line 239 is replaced by an original equivalent or kept as a bare pointer, together with FA-FACT-T1-EXTERNAL-MATERIALS. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-FACT-T1-W01-TEACHER-DECISIONS.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-INV-T1",
+        "FA-SRC-T1"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED - waiting for the owner, created by FA-WK-T1-W01 (2026-11-07). Evidence sits in financial-accounting.json open items FINANCIAL-ACCOUNTING-T1-W01-UNANSWERED-QUESTIONS, FINANCIAL-ACCOUNTING-T1-W01-WEEKEND-AMBIGUOUS-ITEMS, FINANCIAL-ACCOUNTING-T1-W01-ASSESSMENT-NO-KEY, FINANCIAL-ACCOUNTING-T1-W01-COUNT-CHOICES and FINANCIAL-ACCOUNTING-T1-W01-READING-EXTERNAL, and in docs/ss1/work/microtasks/financial-accounting/FA-WK-T1-W01.md. No decision was taken here and no answer invented.",
+      "completion_condition": "Every one of the six decisions is recorded with its author and evidence, the open items it clears are updated in financial-accounting.json, and no option letter is marked correct in any lesson before a key exists for it. Testing deferred by owner."
+    },
+    {
+      "id": "FA-LES-T1-W01-DEFINITIONS-DIFFERENCES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One lines 83-87 and 91-101 SHA-256 dbd871e84380bf864c9d6c5d8fefe3c4ba77c8094779b34ae27daa05180ea750; objectives COV-FA-T1-W01-DEFINITIONS and COV-FA-T1-W01-DIFFERENCES (PARTIAL)",
+      "objective": "Author the definitions and differences lesson from lines 83, 87 and 93-101, keeping the source wording visibly the source's and marking the training-time claim at line 97 as unverified.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W01-DEFINITIONS-DIFFERENCES.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in financial-accounting.json teaches both definitions and the five differences with exact source locators, flags line 97 as an unverified claim, and upgrades only the coverage entries it fully covers. Testing deferred by owner."
+    },
+    {
+      "id": "FA-LES-T1-W01-USERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One lines 105-181 SHA-256 0cd0f37a76d8fd69cfac4c823354b0da3eed32ea28bcff0b8751c3d8b07fe231; objective COV-FA-T1-W01-USERS (PARTIAL)",
+      "objective": "Author the users lesson from the ten user groups and their purposes, keeping the regulator and tax-body abbreviations as source wording until FA-FACT-T1-DATED-REFERENCES verifies them.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W01-USERS.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in financial-accounting.json teaches the ten groups and purposes with exact source locators, states that the abbreviations are unverified, and upgrades COV-FA-T1-W01-USERS only if fully covered. Testing deferred by owner."
+    },
+    {
+      "id": "FA-LES-T1-W01-IMPORTANCE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One lines 193-211 SHA-256 0dad229a1ccc08acf0fa135ebe5048eea4601a2b94770b5e856f85de7db9d00a; objective COV-FA-T1-W01-IMPORTANCE (PARTIAL)",
+      "objective": "Author the importance lesson from the nine reasons at lines 195-211, saying that the source calls them importance or reasons and that the evaluation asks for benefits.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W01-IMPORTANCE.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in financial-accounting.json teaches the nine reasons with exact source locators and upgrades COV-FA-T1-W01-IMPORTANCE only if fully covered. Testing deferred by owner."
+    },
+    {
+      "id": "FA-LES-T1-W01-HISTORY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One lines 215-225 SHA-256 9d022a5ff3a681da68100b5282b04f8960479ffead7a1c0b71427216fcfd7369; objective COV-FA-T1-W01-HISTORY (PARTIAL)",
+      "objective": "Author the history lesson only with the verified positions from FA-FACT-T1-DATED-REFERENCES; source wording stays separate from any corrected fact.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W01-HISTORY.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-FACT-T1-DATED-REFERENCES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in financial-accounting.json teaches the history with each dated claim cited to its verification record, closes FINANCIAL-ACCOUNTING-T1-W01-DATED-CLAIMS for this block, and upgrades COV-FA-T1-W01-HISTORY only if fully covered. Testing deferred by owner."
+    },
+    {
+      "id": "FA-LES-T1-W01-ACCOUNTANT-DUTIES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One EVALUATION line 233 SHA-256 ebd3286543fe9223d459dcf86305f83743b45b635797d6e337fac9f92beaf093; objective COV-FA-T1-W01-EVALUATION-2 (UNRESOLVED)",
+      "objective": "After the owner decision, author the short teaching the duties question needs from approved material only; it must not invent a list from the definition at line 87.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W01-ACCOUNTANT-DUTIES.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-FACT-T1-W01-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A lesson in financial-accounting.json teaches the approved duties with provenance, cites the owner decision for their source, and leaves FINANCIAL-ACCOUNTING-T1-W01-UNANSWERED-QUESTIONS open until a key exists. Testing deferred by owner."
+    },
+    {
+      "id": "FA-LES-T1-W01-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-cf77df509ac3",
+      "term": "1st Term",
+      "week_or_locator": "Week One assessments: lines 185-189, 229-233, 243-253 SHA-256 4a99a2378f0afa25f930aefb648b187a8b50d2935e0729dc1c407f8a2bf4acf1 and 257-263; objectives COV-FA-T1-W01-EVALUATION-1, -EVALUATION-2, -WEEKEND-ASSIGNMENT and -THEORY",
+      "objective": "After the owner decisions, author the answer key and mark allocation for the 12 Week 1 questions, quoting each question exactly and giving each model answer a visibly proposed status; no option letter is marked correct before the key is authorised and the marks must add up per question.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 FINANCIAL ACCOUNT.docx",
+          "member_sha256": "c6d4a1b32ff8eb5377f8e7f1014cccfc4345a706bbeb333131a5d50afa6a3edb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/financial-accounting.json",
+        "docs/ss1/work/microtasks/financial-accounting/QUEUE.json",
+        "docs/ss1/work/microtasks/financial-accounting/FA-LES-T1-W01-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "FA-WK-T1-W01",
+        "FA-FACT-T1-W01-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by FA-WK-T1-W01 (2026-11-07): see the open items named in the completion condition.",
+      "completion_condition": "A practice set in financial-accounting.json keys every Week 1 question with marks that add up and exact source locators, and leaves the assessment coverage entries UNRESOLVED until a key exists for each block. Testing deferred by owner."
     }
   ],
   "review": {
@@ -1743,9 +2004,7 @@
   },
   "next_runnable": [
     "FA-INV-T3",
-    "FA-TEST-PACKAGE",
     "FA-PRE-T1",
-    "FA-WK-T1-W01",
     "FA-WK-T1-W02",
     "FA-WK-T1-W03",
     "FA-WK-T1-W04-W05",
@@ -1776,6 +2035,9 @@
     "FA-VIS-T2-W07-W10-NFP-ACCOUNTS",
     "FA-PRES-T2-COLUMNS",
     "FA-PRES-T2-CURRENCY",
-    "FA-PRES-T2-SOURCE-WORDING"
+    "FA-PRES-T2-SOURCE-WORDING",
+    "FA-LES-T1-W01-DEFINITIONS-DIFFERENCES",
+    "FA-LES-T1-W01-USERS",
+    "FA-LES-T1-W01-IMPORTANCE"
   ]
 }
