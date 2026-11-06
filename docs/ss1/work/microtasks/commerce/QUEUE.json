@@ -25,13 +25,14 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "COM-INV-T1 appended the 1st Term inventory items (19) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 19 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (COM-INV-T1.md).",
     "COM-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
-    "COM-WK-T1-W01 (2026-11-05) indexed 1st Term Week 1 at objective level: 14 coverage entries (7 PARTIAL, 7 UNRESOLVED) and 10 open items in commerce.json, with the COM-FACT-T1-W01-SCOPE decision item and three lesson tasks appended. Week 1 is indexed, not certified: no lesson, no parsed row, no answer key and no approval exists. Source bytes and private extracts stayed outside Git."
+    "COM-WK-T1-W01 (2026-11-05) indexed 1st Term Week 1 at objective level: 14 coverage entries (7 PARTIAL, 7 UNRESOLVED) and 10 open items in commerce.json, with the COM-FACT-T1-W01-SCOPE decision item and three lesson tasks appended. Week 1 is indexed, not certified: no lesson, no parsed row, no answer key and no approval exists. Source bytes and private extracts stayed outside Git.",
+    "COM-VIS-T2-TBL-DOMFOR (2026-11-06): block 138 (Domestic vs Foreign Trade, 4 rows x 2 columns) re-read from the 2nd Term member with its hash verified. The importer's mammoth extractRawText emits its eight cells as consecutive paragraphs, so pairs survive by position only; the smallest repair under the existing schema is an explicit paired-row restatement in a Week 2 supplement (open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION). The Foreign cells of rows 2 and 3 are universal-sounding claims kept as source claims; follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS and open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS added. App display not verified; no lesson or coverage created."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_WEEK_INDEXING": 19,
     "SOURCE_MARKER_DISPOSITION": 3,
@@ -40,7 +41,7 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
     "PENDING": 37,
     "BLOCKED": 2
   },
@@ -1538,9 +1539,34 @@
         "COM-INV-T2",
         "COM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (COM-INV-T2): block 138 is a w:tbl of 4 rows x 2 columns (header DOMESTIC TRADE | FOREIGN TRADE, then three numbered contrasts: boundary of a country vs other countries, same vs different currencies, same vs different weights and measures). Block 140 'SIMILARITIES' follows. Extractor output was not generated (importer deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Block 138 of SS1-SRC-0ccdf9dd3768 re-read from the member (SHA-256 c18e2665…2add86 verified; 4 rows x 2 columns, no merged cells, no nested content). All four rows accounted for: header DOMESTIC TRADE | FOREIGN TRADE, then three paired rows (boundary of a country | trade with other countries; same | different currencies; same | different weight and measures). Representation: the importer's mammoth 1.12.2 extractRawText emits the eight cells as eight consecutive paragraphs in row-major order with no column label or row grouping, so the pairing survives only by position (numbering is on the Domestic cells only); it is not stated. Open item COMMERCE-T2-TBL-DOMFOR-REPRESENTATION records the smallest repair under the existing schema: restate the header and each row as an explicit pair in a Week 2 supplement, original untouched. Facts: Foreign cells in rows 2 and 3 are universal-sounding claims that are recorded as source claims, not endorsed teaching; open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS and follow-up COM-FACT-T2-TBL-DOMFOR-CLAIMS. No lesson, coverage or app-display verification. Details in docs/ss1/work/microtasks/commerce/COM-VIS-T2-TBL-DOMFOR.md.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "COM-FACT-T2-TBL-DOMFOR-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 table, block 138: row 2 Foreign cell 'Different currencies used for business' and row 3 Foreign cell 'Different weight and measures are used' (cell text sha256 8ea29a4a80cd9b83… and 6cf46d640f167617… prefixes; full hashes in COM-VIS-T2-TBL-DOMFOR.md)",
+      "objective": "Check whether these two Foreign Trade cells are true of foreign trade in general, record the exceptions and the wording a supplement may endorse. Check, with dated primary or authoritative sources: (1) whether trade between countries that share a currency, or trade invoiced in a currency that is neither party's, contradicts 'different currencies used'; (2) whether international trade uses different weights and measures or mostly internationally standardised units, and what Nigeria's own legal system of units is. Do not alter source wording and do not draft the supplement.",
+      "required_files": [
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T2-TBL-DOMFOR.md",
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T2-TBL-DOMFOR-CLAIMS.md"
+      ],
+      "depends_on": [
+        "COM-VIS-T2-TBL-DOMFOR"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by COM-VIS-T2-TBL-DOMFOR; see open item COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS. Not started.",
+      "completion_condition": "Each of the two cells has a recorded verdict (generally true / true with stated exceptions / not to be taught as written), dated citations and endorsed supplement wording, and the open item is updated or closed; no teaching text is drafted and no approval is invented."
     },
     {
       "id": "COM-FACT-T1-W01-SCOPE",
@@ -1746,6 +1772,6 @@
     "COM-WK-T2-W08",
     "COM-WK-T2-W09",
     "COM-VIS-T2-EQ-TOT",
-    "COM-VIS-T2-TBL-DOMFOR"
+    "COM-FACT-T2-TBL-DOMFOR-CLAIMS"
   ]
 }
