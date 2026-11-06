@@ -18,7 +18,8 @@
     "Three source assignments require original-header verification. Unknown weeks are inventory tasks, not guessed lessons.",
     "All SS1 terms are instructional. No tests, typechecks, importer or database operations run.",
     "GEO-INV-T1 inventoried the 1st Term document (scheme rows 1-11, WEEK ONE..WEEK TEN, markers, visual groups); thirteen indexing/visual items appended. No coverage or rule was written by the inventory.",
-    "GEO-INV-T2 (2026-10-30) inventoried the 2nd Term original (nine scheme rows covering weeks 1-11, eight week labels covering weeks 1-10, 46 markers, header letterhead image, two weather tables, two drawing objects); eleven indexing/visual items appended. The 3rd Term inventory remains unread. No coverage, lesson, rule, correction or asset was written."
+    "GEO-INV-T2 (2026-10-30) inventoried the 2nd Term original (nine scheme rows covering weeks 1-11, eight week labels covering weeks 1-10, 46 markers, header letterhead image, two weather tables, two drawing objects); eleven indexing/visual items appended. The 3rd Term inventory remains unread. No coverage, lesson, rule, correction or asset was written.",
+    "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -28,12 +29,13 @@
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 2,
     "SOURCE_WEEK_INDEXING": 18,
-    "VISUAL_DISPOSITION": 2
+    "VISUAL_DISPOSITION": 2,
+    "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
-    "BLOCKED": 1,
-    "PENDING": 26
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "BLOCKED": 2,
+    "PENDING": 27
   },
   "items": [
     {
@@ -408,8 +410,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 43-89, block SHA-256 52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5; markers: EVALUATION QUESTIONS 52; EVALUATION QUESTION 67; GENERAL EVALUATION 70; READING ASSIGNMENT 77; WEEKEND ASSIGNMENT 80; THEORY 87. Observation recorded by GEO-INV-T1: The general evaluation (70-75) includes a state-capital recall question at 75 and the theory (88-89) asks for state capitals; the item decides whether these fall inside the week's stated objectives. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 43-89, block SHA-256 52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5; markers: EVALUATION QUESTIONS 52; EVALUATION QUESTION 67; GENERAL EVALUATION 70; READING ASSIGNMENT 77; WEEKEND ASSIGNMENT 80; THEORY 87. Observation recorded by GEO-INV-T1: The general evaluation (70-75) includes a state-capital recall question at 75 and the theory (88-89) asks for state capitals; the item decides whether these fall inside the week's stated objectives. Not approved, not verified; testing deferred by owner. Indexing result (2026-11-07): seven coverage rows written to geography.json. COV-GEO-T1-W01-MEANING (lines 45-48), COV-GEO-T1-W01-SCOPE (lines 49-50) and COV-GEO-T1-W01-VALUE (lines 57-65, seven values) are SUPPORTED against the reproduced generic parsed-row id SS1-SRC-1c1c1bdcecb4:BODY:52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5 (ten rows reproduced from word-extractor 1.0.4 getBody() with the importer's own WEEK_MARKER/parseTopics code; Week 1's row is lines 43-89 and its body SHA-256 equals the inventory block hash; the importer was not run, so the id is to be confirmed by the first reviewed plan). COV-GEO-T1-W01-NATURE is PARTIAL (the scheme row names Nature at line 24 and the word occurs nowhere else); COV-GEO-T1-W01-STATE-CAPITALS is UNRESOLVED (lines 75 and 88 ask the capitals of Lagos, Ebonyi, Plateau and Ogun; none is taught anywhere in the document); COV-GEO-T1-W01-READING is PARTIAL (line 78, book not supplied); COV-GEO-T1-W01-ASSESSMENT-KEYS is UNRESOLVED (no answer, mark or key anywhere in the document). Open items GEOGRAPHY-T1-W01-COVERAGE, GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE and GEOGRAPHY-T1-W01-FACT-CHECKS added; GEO-LES-T1-W01-NATURE, GEO-LES-T1-W01-KEYED-PRACTICE and GEO-LES-T1-W01-STATE-CAPITALS appended; record docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md. Implemented, not approved or verified.",
       "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
     },
     {
@@ -1209,6 +1211,123 @@
       "status": "PENDING",
       "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence (GEO-INV-T2): one JPEG 949x359, 106,941 bytes, WordDocument offset 83025, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the header image in the Geography 1st Term source and Further Mathematics); no page-1 cover image in this document; two Word tables of 2 rows by 13 cells; two drawing-object groups found in a LibreOffice .docx conversion (compass group with text boxes, bearing line shape); neither rendered.",
       "completion_condition": "Each listed group has a disposition based on actual inspection (a text extraction alone is not visual inspection); the branding asset stays unbound without an owner permission reference and no contact details are published; missing diagrams are recorded as gaps for the week items."
+    },
+    {
+      "id": "GEO-LES-T1-W01-NATURE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, scheme row line 24 and subtitle line 44; objective COV-GEO-T1-W01-NATURE (PARTIAL)",
+      "objective": "Author a bounded supplement lesson on the 'Nature' of Geography that scheme row 1 names (line 24) but Week 1 never teaches. Label it a Week 1 supplement rather than a replacement for the original, teach it as visibly original wording from taught or well-established content (say plainly which statements come from the course reference and which are the author's), keep it consistent with the man-environment and social-science statements at lines 46 and 50, and include practice with complete answers and criterion-level marking that sums exactly. Do not copy book text and do not claim teacher approval.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-LES-T1-W01-NATURE.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1",
+        "GEO-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by GEO-WK-T1-W01 (2026-11-07): the word nature occurs only in the scheme row at line 24, the Week 1 subtitle at line 44 omits it, and no paragraph teaches it; COV-GEO-T1-W01-NATURE is PARTIAL and GEOGRAPHY-T1-W01-COVERAGE is open. GEO-WK-T1-W01 authors no definition.",
+      "completion_condition": "A lesson in geography.json teaches the nature of geography, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-GEO-T1-W01-NATURE then cites it with evidence; no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "GEO-LES-T1-W01-KEYED-PRACTICE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 53-55, 68, 71-74, 81-85 and 89 (no key in source); objective COV-GEO-T1-W01-ASSESSMENT-KEYS (UNRESOLVED)",
+      "objective": "Author a bounded keyed-practice supplement for Week 1 that gives complete answers and criterion-level marking for the evaluation, general evaluation, weekend and theory items at lines 53-55, 68, 71-74, 81-85 and 89, restated in original wording where needed. Answer only from taught lines 45-65; for weekend question 4 (line 84) give the reasoning without claiming the source excludes Music, and for theory item 2 (line 89) accept any two of the seven values. The state-capital items at lines 75 and 88 are out of scope here and belong to GEO-LES-T1-W01-STATE-CAPITALS.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-LES-T1-W01-KEYED-PRACTICE.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1",
+        "GEO-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by GEO-WK-T1-W01 (2026-11-07): no answer, mark or key exists anywhere in the 1st Term document; COV-GEO-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GEOGRAPHY-T1-W01-COVERAGE is open. GEO-WK-T1-W01 authors no answer.",
+      "completion_condition": "A lesson in geography.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-GEO-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "GEO-LES-T1-W01-STATE-CAPITALS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-1c1c1bdcecb4",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 75 and 88; objective COV-GEO-T1-W01-STATE-CAPITALS (UNRESOLVED)",
+      "objective": "After the owner records option A, B or C in GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE, author what that option requires for the state-capital questions at line 75 (Lagos) and line 88 (Ebonyi, Plateau, Ogun): under option A one small original supplement teaching exactly those four capitals with a verifiable reference, labelled as outside scheme row 1, plus practice with complete answers and marking that sums exactly. Do not state any capital as an answer before the decision is recorded.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-INV-T1.md",
+        "docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GEOGRAPHY.doc",
+          "member_sha256": "4220757cb96c6d6ac5153f7a862b45725a7d87c8e64be5b11ec39a843ca1491c"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/geography.json",
+        "docs/ss1/work/microtasks/geography/QUEUE.json",
+        "docs/ss1/work/microtasks/geography/GEO-LES-T1-W01-STATE-CAPITALS.md"
+      ],
+      "depends_on": [
+        "GEO-SRC-T1",
+        "GEO-WK-T1-W01"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Not authored; BLOCKED on the owner decision recorded as open item GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE (raised by GEO-WK-T1-W01, 2026-11-07). COV-GEO-T1-W01-STATE-CAPITALS is UNRESOLVED. GEO-WK-T1-W01 states no capital as an answer.",
+      "completion_condition": "The owner decision is recorded with a reference; the lesson or exclusion it requires exists in geography.json with complete answers and marking that sums exactly where practice is authored; COV-GEO-T1-W01-STATE-CAPITALS then cites it with evidence; no source byte, correction or shared file is edited."
     }
   ],
   "review": {
@@ -1217,7 +1336,31 @@
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
   "next_runnable": [
+    "GEO-INV-T3",
     "GEO-PRE-T1",
-    "GEO-PRE-T2"
+    "GEO-MARK-T1",
+    "GEO-WK-T1-W02",
+    "GEO-WK-T1-W03",
+    "GEO-WK-T1-W04",
+    "GEO-WK-T1-W05",
+    "GEO-WK-T1-W06",
+    "GEO-WK-T1-W07",
+    "GEO-WK-T1-W08",
+    "GEO-WK-T1-W09",
+    "GEO-WK-T1-W10",
+    "GEO-VIS-T1",
+    "GEO-PRE-T2",
+    "GEO-MARK-T2",
+    "GEO-WK-T2-W01",
+    "GEO-WK-T2-W02",
+    "GEO-WK-T2-W03-04",
+    "GEO-WK-T2-W05",
+    "GEO-WK-T2-W06-07",
+    "GEO-WK-T2-W08",
+    "GEO-WK-T2-W09",
+    "GEO-WK-T2-W10",
+    "GEO-VIS-T2",
+    "GEO-LES-T1-W01-NATURE",
+    "GEO-LES-T1-W01-KEYED-PRACTICE"
   ]
 }
