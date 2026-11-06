@@ -559,6 +559,310 @@
           "explanation": "Printed source line used as an exact locator; the wording is preserved in the source document and is not reproduced in this package."
         }
       ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-SCHEME-2",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Scheme row 2 of the 1st Term Economics scheme of work: the printed row 'Economics as a Science, Arts or Social subject.' that the WEEK TWO body answers.",
+      "objective_locator": "line 26 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 26 (scheme row 2, printed with a full stop and no week number) SHA-256 ecdc1ba4b1e9b6b47cd65abab598132f35c55339f9827136c2504dcb85c8083c; lines 117-169 (the whole WEEK TWO body) SHA-256 9e6974c4a9cbd17d6cca9dcbb21d80306a04589f8c67a8e3f6860664bd70f5e8",
+          "explanation": "The scheme row names the classification question only. The body under the WEEK TWO marker teaches the classification (section 123-131) and a second topic, career prospects (137-143), that the row does not name, so the row is indexed here as one objective and the body sections are indexed separately rather than folded into this entry."
+        },
+        {
+          "locator": "lines 117-118 (WEEK TWO marker and topic line) SHA-256 5d3bd68b0e2d1b80980efb3211aa5dc445f14875f2676df525c210ccfc4fc37a; lines 119-121 (CONTENT heading and two outline items) SHA-256 d3b7fe00e31f1a002683b20b2b89a7d2971d5b5e36a005517cea0ed56203f3e5",
+          "explanation": "Marker, topic and outline anchors for every other Week 2 locator in this file. The outline asks two things: line 120 asks whether economics is a science, art or social subject and line 121 names the career prospect for studying economics."
+        },
+        {
+          "locator": "lines 24-36 (the tab-delimited scheme table) SHA-256 0f6909d39c1b1a1488935604f59ace2b45823507d9d95d0786428aa5f6d5a03f",
+          "explanation": "Scheme context only. The opening block that holds this table (lines 1-43) belongs to ECON-PRE-T1 and is not indexed here."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-SCIENCE-METHOD",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "How economics acquires knowledge in the way the pure sciences do: systematic observation of facts, classification of the data collected, generalisation of a law, application of the law to new situations, and reliance on the 'ceteris paribus' assumption (line 124).",
+      "objective_locator": "line 124 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 124 SHA-256 7f3a9a3cf5d5baf681ed001bdc4dcb5ae76626fa60bdef82523731deed35900f",
+          "explanation": "The source describes five steps in one sentence and glosses 'Ceteris Paribus' as 'All things being equal'. The printed gloss carries doubled apostrophes after both quoted phrases; the spelling is preserved in the source and not normalised here. The line says 'Like other pure sciences', so it supports the science side of the classification question only and says nothing about art."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-SOCIAL-SCIENCE-REASONS",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Why economics is classed as a social science and not an art or pure science: the claim and the five reasons the source gives (lines 125-130): fundamental facts are the daily observation; human observations cannot be reproduced exactly like laboratory ones; assumptions such as ceteris paribus replace logical deduction; economic laws rest on probabilities; behaviour of human beings cannot be predicted.",
+      "objective_locator": "lines 125-130 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 123-131 (heading ECONOMICS AS A SOCIAL SCIENCE and the whole section) SHA-256 a20124fe00656f514a9e42922ade76dfe6644abd363c387a6854184e4d868753",
+          "explanation": "The section as printed. Indexed here as four separate objectives (method 124, reasons 125-130, conclusion 131, and the art option) so that no whole-section coverage is inferred from one of them."
+        },
+        {
+          "locator": "line 125 SHA-256 11ad2d882e172d8f6336d5628895d1a943947fff30668dc3c757f057fc4399da",
+          "explanation": "The claim: economics is basically a social science subject and not an art or pure science, followed by 'due to the following reasons'."
+        },
+        {
+          "locator": "line 126 SHA-256 2fa69517eb8afbbd50463dc05b5a1e31a65dfb71ba59830aabd9f59ce874ea0f",
+          "explanation": "Reason 1: pure sciences observe, select and classify materials to formulate laws, but the fundamental facts of economics are the daily observation."
+        },
+        {
+          "locator": "line 127 SHA-256 d7feb8fa4097a08ad13bf110c4c0f870f33266be5471b12d3d29c49714f32500",
+          "explanation": "Reason 2: laboratory observation is more precise and exactly reproducible, but economic observations come from human beings and 'cannot be exactly produced' (printed so; reproduced is probably meant, see the source-defects item)."
+        },
+        {
+          "locator": "line 128 SHA-256 79815b499b1d38d823f960a18596a953cca644deb03873c3ee1378d424fb0d09",
+          "explanation": "Reason 3: physical-science theories come from logical deductions whereas economics uses assumptions such as 'ceteris paribus', 'though they both use scientific method'."
+        },
+        {
+          "locator": "line 129 SHA-256 375f7ea105ec91fdb22c5d1b62453d336a76a38f41a41a798910c1fdf25ac950",
+          "explanation": "Reason 4: economic laws are based on probabilities while pure sciences have exact relationships."
+        },
+        {
+          "locator": "line 130 SHA-256 932bf9d83797c203848f76e3044982a23423b6425078e35edeb017424fb6ea44",
+          "explanation": "Reason 5: economics is a social science dealing with human behaviour, which the line says cannot be predicted."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-SCIENCE-CONCLUSION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The conclusion that economics 'deserves to be called a science subject' because it uses scientific methods, both deductive and inductive (line 131).",
+      "objective_locator": "line 131 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 131 SHA-256 f8fe91684bf57432d47d7e91aa71cb91ca8cca60fba9f25ba9aeef4ddd289f68",
+          "explanation": "The concluding sentence. It calls economics a science subject on the strength of scientific method, which sits beside line 125 (a social science and not a pure science) and line 128 (deduction named for physical science only); the tension is recorded in ECONOMICS-T1-W02-CLASSIFICATION-WORDING and not resolved here. Inductive and deductive occur nowhere else in the 1,060-line extract, so neither method is defined."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-ART-OPTION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The 'Art' option in the CONTENT question 'Is Economics a science, Art or social subject?': the source names art in the scheme row, the topic line and the outline and denies it in one clause, but teaches nothing about what makes a subject an art.",
+      "objective_locator": "lines 120 and 125 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 120 SHA-256 a07ef3c85699f0a2d9691cc553d9accd2de774a2f31abce78d6a0b6e36b97287",
+          "explanation": "Outline question, exact wording: 'Is Economics a science, Art or social subject?'."
+        },
+        {
+          "locator": "line 125 SHA-256 11ad2d882e172d8f6336d5628895d1a943947fff30668dc3c757f057fc4399da",
+          "explanation": "The only denial: 'not an art or pure science'. The five reasons that follow (126-130) compare economics with the pure sciences only."
+        },
+        {
+          "locator": "lines 26, 118, 120 and 125 (whole-word art or arts hits outside the weekend options)",
+          "explanation": "A whole-word scan of the 1,060-line extract for art and arts returns lines 26, 118, 120, 125 and the option text of weekend item 1 at line 160 ('arts subjects'). No line defines or illustrates art as a classification, so the third option of the outline question has no taught answer beyond the bare denial."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-CAREER-PROSPECT",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "Career prospects for studying economics: the introductory claim (professionalism, employment in any organization where resources are involved) and the five-item list: lecturing in higher institution, marketing, banking, managing an organization and consultancy, etc (lines 137-143).",
+      "objective_locator": "lines 137-143 of word-extractor 1.0.4 getBody()",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 137-143 (heading, introduction and five-item list) SHA-256 1a87138fab54e0ea63a61059691393d4cb5f655aed46230be9c76b3b2a50d8d7",
+          "explanation": "The whole block as printed. The list is undated, names no employer, role title or figure, and ends with an open-ended etc, so it is indexed as a conceptual list only."
+        },
+        {
+          "locator": "line 138 SHA-256 a0791c6bc5dfa18c9b3807343b2f8daf83fc074bee2be755efdcffa0c8411f65",
+          "explanation": "Introduction: study of economics leads to professionalism and employment opportunities in any field or organization, because an economist fits wherever resources are involved."
+        },
+        {
+          "locator": "line 139 SHA-256 4cff657a0e91df9a2b701dcfa9d2a8e08adcdad67ddc8fa8d376b984eb7bd24f",
+          "explanation": "List item: Lecturing in higher institution."
+        },
+        {
+          "locator": "line 140 SHA-256 f5904cf7a1231a7a13a8cffbd2f0482984a1c69e96fc48dd96be8858a1707e60",
+          "explanation": "List item: Marketing."
+        },
+        {
+          "locator": "line 141 SHA-256 d7a596cdc2dabcf8b959386dba342f2bfac80a0dde2e2bb2f51cb78cde7b887a",
+          "explanation": "List item: Banking."
+        },
+        {
+          "locator": "line 142 SHA-256 7f8236b65dc5532de323f45f16dc21d8441e12cdb4557d4c6a7f8347299fc36f",
+          "explanation": "List item: Managing an organization."
+        },
+        {
+          "locator": "line 143 SHA-256 1696ccfabb305e761d29cbf6d993660b4e43ddc893cf83fab064a399619a6ccb",
+          "explanation": "List item: 'Consultancy, etc' (open-ended). Current dated job-market examples are not in the source and belong to ECON-FACT-T1-DATED-EXAMPLES."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-EVALUATION-1",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The first EVALUATION of Week 2: two questions asking the student to explain that economics is a science and to give two reasons why it is regarded as a social science.",
+      "objective_locator": "lines 133-135 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 133-135 (EVALUATION heading and two questions) SHA-256 f11432db267044717880501f413c23e6d78b7b9515b760a6ffb14fe23a4c0434",
+          "explanation": "Both questions are answerable in outline from lines 124-131, but no key, model answer or marks exist in the source, so the block stays UNRESOLVED rather than being answered here."
+        },
+        {
+          "locator": "line 134 SHA-256 d9a85658188cc6a79597365db934d9fdcd0827dd4487a75a01f02bcb117e8f0d",
+          "explanation": "Question 1, exact wording: 'Economics is a science, explain.'. Printed wording quoted exactly as extracted (a tab, where one is printed, is shown as a space); the digest identifies the exact line."
+        },
+        {
+          "locator": "line 135 SHA-256 2656c2ebd3c7d626c45cc8a6c549ead572c5694752758ef4a7226977c0d43bac",
+          "explanation": "Question 2, exact wording: 'Give two reasons why economics is regarded as a social science' (no final punctuation printed). Five reasons are taught at 126-130, so which two the key expects is not determined."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-EVALUATION-2",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The second EVALUATION of Week 2: two questions on how the study of economics is relevant to an individual career prospect and on itemizing the career opportunities open to an economist.",
+      "objective_locator": "lines 145-147 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 145-147 (EVALUATION heading and two questions) SHA-256 a59ab3f1e981fc770f0316c0d487b5153d187ed7a2762863d81e95a6c15b2066",
+          "explanation": "Answerable in outline from the career block 137-143, but the source prints no key, marking wording or marks."
+        },
+        {
+          "locator": "line 146 SHA-256 9ae5c384cc3dda6078430ad6f2348332a2622f3e048de24d66a1fe91e88e32fd",
+          "explanation": "Question 1, exact wording: \"How is the study of economics relevant to individual's career prospect?\"."
+        },
+        {
+          "locator": "line 147 SHA-256 7350294bb40c3d14c7487816a53fa3b304c5f2caa6ec25d5ae7c95d1f91b130c",
+          "explanation": "Question 2, exact wording: 'Itemize the career opportunities that are opened to an economist .' (a space is printed before the final full stop). The list has five items and ends with etc, so the number the key expects is not determined."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-READING-ASSIGNMENT",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The READING ASSIGNMENT of Week 2: one external textbook reading set for the week with a single page number.",
+      "objective_locator": "lines 149-150 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 149-150 (READING ASSIGNMENT heading and one line) SHA-256 b9b57d5d529d22d390869125f5e45ca747dddf0499f18274c473c6ba2f852a78",
+          "explanation": "The only content is a pointer to an external textbook page; there is nothing to teach or key."
+        },
+        {
+          "locator": "line 150 SHA-256 8a586ae88f8526ec487767d5e6de0e42ce06333e6d5b570cf1cf054353c85351",
+          "explanation": "Exact wording: 'Amplified and Simplified Economics for SSS by Femi Longe page 11 ' (trailing space printed). The title wording differs from the reference-books entry at line 39 (Amplified and Simplified Economics for Senior Secondary School by Femi Longe), so which edition page 11 belongs to is not stated; rights are recorded in ECONOMICS-T1-W02-READING-RIGHTS."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-GENERAL-EVALUATION",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The GENERAL EVALUATION QUESTIONS of Week 2: five un-numbered written questions on behavioral science, the definition of economics according to Adam Smith, subjects related to economics, economic rent and the principal economic units.",
+      "objective_locator": "lines 152-157 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 152-157 (heading and five questions) SHA-256 2296d00125094242e950181a5ce512fe692415d905a9f5638539fc7d9eabcaa2",
+          "explanation": "No question has a key. Questions 2 and 3 can be answered from Week 1 text (line 54 and line 65); questions 1, 4 and 5 are not taught anywhere in the source, as the three items below record."
+        },
+        {
+          "locator": "line 153 SHA-256 ab9aff7ce8098c69e6877805fe915639424a00f70611a0a4db71b2f8dde2a5ea",
+          "explanation": "Question 1, exact wording: 'What is behavioral Science?'. The word behavioral occurs only here; the extract uses behaviour (lines 60, 65, 66, 69, 77, 84, 87, 130, 160) and never defines behaviour or a behavioural science. NOT TAUGHT in the source."
+        },
+        {
+          "locator": "line 154 SHA-256 35151a64b5b49d57567c15a409a42472e1a4dae3d64bfce24071bea9feedd026",
+          "explanation": "Question 2, exact wording: 'Define Economics according to Adams Smith.'. Printed Adams, while the Week 1 definition at line 54 (SHA-256 516018a5fb0870513529e212219b90c85b12baa8b8c97c70c67c91cfa9ff18e9) reads Adam Smith, 1776, called Father of Economics. The matching definition is in Week 1 and was not copied into Week 2; spelling is preserved and attribution checking belongs to ECON-FACT-T1-DEFINITIONS."
+        },
+        {
+          "locator": "line 155 SHA-256 ee0a42799e8388e434863c1aa772f7385ac07cdb474b8cd8ef52854ba03a2a7d",
+          "explanation": "Question 3, exact wording: 'List other subjects related to Economics.'. Week 1 line 65 (SHA-256 16c92fdd751715240db807eceb26ddb8600063f6f3040fd866d7da63bbfb9def) lists the social sciences economics relies on (ethics, political science, sociology, geography, psychology, philosophy, anthropology, etc), so the list is taught in Week 1, not in Week 2."
+        },
+        {
+          "locator": "line 156 SHA-256 04b6bbca2fad0f09d24c464d51a7333873025225db0c5f1bfcf32aca0bbc16d9",
+          "explanation": "Question 4, exact wording: 'Define the term Economic rent.'. The phrase economic rent occurs only in this question. Rent otherwise appears only as the reward of land in Week Nine (factors table line 849 SHA-256 695b9fcbafc02325c09ae1908ccedac1b580e31c1219e88e2466caf01811320a, and lines 888, 907 and 978), which names a reward and never defines rent or economic rent. NOT TAUGHT in the source."
+        },
+        {
+          "locator": "line 157 SHA-256 f56e305c039f64d97e8438396b9a7b23968728e73e97a72e3ca7e26fc15f21c1",
+          "explanation": "Question 5, exact wording: 'Who are the principle economic unit in any  system? ' (principle for principal, a double space before system and a trailing space are printed). The source never uses the phrase economic unit. Line 77 (SHA-256 1c150d4988da402074180f14da8e808f7b5b2631e8f1d383cfd99314ef193210) names individuals, household and firms under micro economics and line 84 (SHA-256 004c89bb0a0ff3f814dd3f047d52775a431f01547d99630836bf46e6694fccd1) names the individual, firm and government, so the nearest teaching gives two different sets and the expected answer is not determined. NOT TAUGHT as stated."
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-WEEKEND-ASSIGNMENT",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The WEEKEND ASSIGNMENT of Week 2: five multiple-choice questions with four options each, printed without a key (item 2 is split across two lines).",
+      "objective_locator": "lines 159-165 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 159-165 (heading and five items) SHA-256 c422685f7b2ecedf774c89d20f22e9140658bcb8122bd15dcc6dbd80ca7ea0fc",
+          "explanation": "Five items over six lines (160, 161-162, 163, 164, 165). No key, answer letter, marks or marking wording exists, so no option letter is marked correct anywhere in this package. Printed wording quoted exactly as extracted (a tab, where one is printed, is shown as a space); the digest identifies the exact line."
+        },
+        {
+          "locator": "line 160 SHA-256 5e405371b75029b3bb839f87290bd06177f9e91786c4a4ae06d99ae324b2b6a1",
+          "explanation": "Item 1, exact wording: '1.  In order to reach a sound conclusion about human behaviour, economics relies on the findings of other........... (a) commercial subjects (b) arts subjects (c) pure science subjects (d) social science subjects'"
+        },
+        {
+          "locator": "line 161 SHA-256 017149940a3f0203bf9d10f192e35d2baaa4d9cfcc2f0367446c14516c400bb3",
+          "explanation": "Item 2 stem, exact wording: '2.   Unlike pure science, the generalized law in economics is majorly based on .......... ' (stem only; options are on the next line)."
+        },
+        {
+          "locator": "line 162 SHA-256 5115066b4918d01a49fd61fce9522ceca1c84573a453b1690c378799887aeb7d",
+          "explanation": "Item 2 options, exact wording: '(a) certainty (b) probability (c) precision (d) accuracy'"
+        },
+        {
+          "locator": "line 163 SHA-256 7d7ab2512888d400e54e418f3fcd82e76b0f6390d443867af68c2230c97d04f4",
+          "explanation": "Item 3, exact wording: '3.   Career prospect in the study of economics means.............. (a) employment avenue (b) fraudulent avenue (c) job scarcity (d) wealth distribution'"
+        },
+        {
+          "locator": "line 164 SHA-256 2f2839aa67ef85d652e5aee47ee39044d6b5c2d08b3268bf660b06a5745c6e54",
+          "explanation": "Item 4, exact wording: '4.   Economics is often described as a science because it   (a) adopts the use of laboratory experiments   (b) uses scientific method to explain observed phenomena (c) deals with observation and field work   (d) involves accurate prediction of human beings' (irregular spacing around the option labels is printed)."
+        },
+        {
+          "locator": "line 165 SHA-256 7c76ed17a575354065270346f4038e1a5270a70fec8997e3975ed534721fe7f6",
+          "explanation": "Item 5, exact wording: '5.  Economics as a field of study is a ........ (a) pure science (b) political science (c) social science (d) physical science'"
+        }
+      ]
+    },
+    {
+      "id": "COV-ECON-T1-W02-SECTION-B",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "objective": "The SECTION B block of Week 2: two written questions, a short note on the career prospect for studying economics and a two-paragraph discussion of the claim that economics is a science.",
+      "objective_locator": "lines 167-169 of word-extractor 1.0.4 getBody()",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 167-169 (SECTION B heading and two questions) SHA-256 66a0fd4b749def28fbea5333785bd6743babd99831f25815affb662838ac9415",
+          "explanation": "Both questions overlap earlier Week 2 evaluations and neither has a key or marks. The heading is printed with a trailing space. No THEORY heading occurs in this week."
+        },
+        {
+          "locator": "line 168 SHA-256 37583283144b0ce680f9fcdeb0946e2d6522664a47c51ac576834d7a8d987941",
+          "explanation": "Question 1, exact wording: 'Write short note on the career prospect for studying economics' (no final punctuation printed). It asks for the same subject as the evaluation questions at 146-147."
+        },
+        {
+          "locator": "line 169 SHA-256 7838090cb43a55d7c560c72388425a4a80c6de36a820731d1476f11a3d8cd05b",
+          "explanation": "Question 2, exact wording: 'Economics is a science, discuss in two paragraphs.'. The claim is the one set at line 134 with a different instruction (discuss in two paragraphs rather than explain), so the two lines are not byte-identical."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -729,6 +1033,139 @@
       "affected_ids": [
         "COV-ECON-T1-W01-SCHEME-1",
         "COV-ECON-T1-W01-WHY-STUDY",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "ECONOMICS-T1-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 2 (lines 117-169) is indexed but nothing in it is delivered. The five PARTIAL objectives (scheme row 2, scientific method, the five social-science reasons, the conclusion, career prospects) and the UNRESOLVED art option have no lesson: lessons[] holds only the Week 1 why-study supplement and no original lesson id exists for this source because the importer has never run for it. No SUPPORTED claim was made, so no existing originalLessonId was reused or replaced.",
+      "required_action": "Author the lessons named by ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE and ECON-LES-T1-W02-CAREER-PROSPECT, then upgrade only the entry each lesson fully covers and bind its lesson id. Do not infer coverage of the row from one objective.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-SCHEME-2",
+        "COV-ECON-T1-W02-SCIENCE-METHOD",
+        "COV-ECON-T1-W02-SOCIAL-SCIENCE-REASONS",
+        "COV-ECON-T1-W02-SCIENCE-CONCLUSION",
+        "COV-ECON-T1-W02-ART-OPTION",
+        "COV-ECON-T1-W02-CAREER-PROSPECT",
+        "ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE",
+        "ECON-LES-T1-W02-CAREER-PROSPECT",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W02-ART-NOT-TAUGHT",
+      "kind": "CONTENT",
+      "detail": "The outline question at line 120 offers three classifications (science, Art, social subject) and the scheme row at line 26 names Arts, but the source teaches only a bare denial at line 125 ('not an art or pure science'). Every reason at lines 126-130 compares economics with the pure sciences; none says what an art is or why economics is not one.",
+      "required_action": "Teacher decides what the lesson says about art and which approved material supplies it; the lesson task ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE carries that decision. Do not invent reasons the source does not give.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-ART-OPTION",
+        "ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W02-CLASSIFICATION-WORDING",
+      "kind": "CONTENT",
+      "detail": "The source says economics is a social science and not a pure science (line 125, 130) and also that it deserves to be called a science subject (line 131), the question at line 134 and the claim at line 169 both set 'Economics is a science', and weekend item 4 (line 164) says economics is often described as a science. Line 128 gives deduction as the method of the physical sciences while line 131 says economics uses both deductive and inductive methods. Line 130 says behaviour cannot be predicted while line 129 says economic laws rest on probabilities.",
+      "required_action": "Teacher decides the headline classification the lesson teaches (a social science that uses scientific method) and how lines 125, 128, 129, 130 and 131 are reconciled; preserve both source statements visibly and do not pick an answer for the science questions silently.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-SOCIAL-SCIENCE-REASONS",
+        "COV-ECON-T1-W02-SCIENCE-CONCLUSION",
+        "COV-ECON-T1-W02-EVALUATION-1",
+        "COV-ECON-T1-W02-WEEKEND-ASSIGNMENT",
+        "COV-ECON-T1-W02-SECTION-B",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+        "ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W02-UNANSWERED-QUESTIONS",
+      "kind": "CONTENT",
+      "detail": "Three of the five GENERAL EVALUATION QUESTIONS cannot be answered from the source. Line 153 (behavioral science) occurs nowhere else in the 1,060-line extract and economic rent (line 156) is never defined; rent otherwise appears only as the reward of land in Week Nine (lines 849, 888, 907 and 978). Line 157 asks for the principal economic units but the source never names economic units, and lines 77 and 84 give different sets (individuals, household and firms; the individual, firm and government). Lines 154 and 155 are answerable from Week 1 lines 54 and 65 but the Week 1 text is not repeated in Week 2.",
+      "required_action": "Teacher decides which approved material supplies behavioural science, economic rent and the economic units, and whether lines 154-155 are answered from Week 1; the bounded lesson task ECON-LES-T1-W02-UNTAUGHT-TERMS carries that decision. Do not invent definitions or a set of units, and do not import the Week Nine factors table into Week 2.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-GENERAL-EVALUATION",
+        "ECON-LES-T1-W02-UNTAUGHT-TERMS",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W02-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "Week 2 prints 16 questions (2 at 134-135, 2 at 146-147, 5 at 153-157, 5 multiple-choice items at 160-165 and 2 at 168-169) and one reading pointer (150). No answer key, worked answer, marking scheme, mark allocation or rubric exists inside the week: a case-insensitive scan of lines 117-169 for answer, marking, marks, score, rubric and scheme of mark returns 0 hits. No option letter was marked correct and no mark total was invented.",
+      "required_action": "Author the answer key and mark allocation only after the owner decisions in ECON-FACT-T1-W02-TEACHER-DECISIONS; ECON-LES-T1-W02-KEY-ASSESSMENT carries that work. A model answer is a proposal, not a source key.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-EVALUATION-1",
+        "COV-ECON-T1-W02-EVALUATION-2",
+        "COV-ECON-T1-W02-GENERAL-EVALUATION",
+        "COV-ECON-T1-W02-WEEKEND-ASSIGNMENT",
+        "COV-ECON-T1-W02-SECTION-B",
+        "ECON-LES-T1-W02-KEY-ASSESSMENT",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W02-READING-RIGHTS",
+      "kind": "PERMISSION",
+      "detail": "The READING ASSIGNMENT at line 150 points to page 11 of a Femi Longe textbook titled Amplified and Simplified Economics for SSS, while the reference-books entry at line 39 gives the title as Amplified and Simplified Economics for Senior Secondary School. The edition is not stated and no permission to reproduce the page exists in the source.",
+      "required_action": "Decide the edition and rights together with the Week 1 reading item (ECONOMICS-T1-W01-READING-RIGHTS); until then the package carries the pointer only and no page text.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-READING-ASSIGNMENT",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ECONOMICS-T1-W02-CAREER-LIST-UNDATED",
+      "kind": "FACT",
+      "detail": "The career list at lines 139-143 is undated and ends with 'etc'. It names no employer, salary, qualification or market figure, so it is kept as a conceptual list. Any statement about the current job market (demand, pay, employers) would be a new factual claim.",
+      "required_action": "Add current dated job-market examples only through ECON-FACT-T1-DATED-EXAMPLES with sources and dates; the career lesson must not present them as source content.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-CAREER-PROSPECT",
+        "ECON-FACT-T1-DATED-EXAMPLES",
+        "ECON-LES-T1-W02-CAREER-PROSPECT",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "ECONOMICS-T1-W02-OVERLAPPING-QUESTIONS",
+      "kind": "CONTENT",
+      "detail": "Week 2 repeats itself: line 134 ('Economics is a science, explain.') and line 169 ('Economics is a science, discuss in two paragraphs.') set the same claim with different instructions, and lines 146-147 and line 168 all ask about career prospects. Week Nine's GENERAL REVISION (lines 966-971) also asks 'Why is Economics a science?' (969), 'State three career prospect for the study of economics.' (970) and for at least five characteristics of science used by economics (968); the source never states which five.",
+      "required_action": "Decide whether the repeated questions are delivered once, twice or rewritten, and bind the Week Nine revision questions to the Week 2 teaching when ECON-WK-T1-W09 is indexed. Do not answer the five-characteristics question by guessing which five.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-EVALUATION-1",
+        "COV-ECON-T1-W02-EVALUATION-2",
+        "COV-ECON-T1-W02-SECTION-B",
+        "ECON-WK-T1-W09",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+        "SS1-SRC-2ab0c50bcab6"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "ECONOMICS-T1-W02-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Printed defects preserved as found: doubled apostrophes after the quoted phrases at line 124; 'cannot be exactly produced' at line 127 (reproduced is probably meant); 'its fundamental facts are the daily observation' at line 126; 'Career prospect for studying economic.' at line 121 (economic for economics); 'Adams Smith' at line 154; 'principle' for principal and a double space at line 157; a space before the full stop at line 147; weekend item 2 split over lines 161-162 and tab characters after the item numbers at 161, 163 and 164; a whitespace-only line at 122; and the SECTION B heading printed with a trailing space.",
+      "required_action": "Keep the printed wording when quoting the source; correct spelling only in authored lessons and mark the correction as the lesson author's, not the source's.",
+      "affected_ids": [
+        "COV-ECON-T1-W02-SCIENCE-METHOD",
+        "COV-ECON-T1-W02-SOCIAL-SCIENCE-REASONS",
+        "COV-ECON-T1-W02-GENERAL-EVALUATION",
+        "COV-ECON-T1-W02-WEEKEND-ASSIGNMENT",
+        "COV-ECON-T1-W02-SECTION-B",
         "SS1-SRC-2ab0c50bcab6"
       ],
       "blocks_delivery": false

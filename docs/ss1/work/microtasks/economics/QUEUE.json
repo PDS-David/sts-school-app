@@ -27,24 +27,25 @@
     "ECON-INV-T1 appended the 1st Term inventory items (25) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 25 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (ECON-INV-T1.md).",
     "ECON-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing, visual, preservation and factual items; the 3rd Term inventory (ECON-INV-T3) remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "ECON-WK-T1-W01 (2026-11-05) indexed Week One lines 44-116 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED, none SUPPORTED) and 10 open items, and appended ECON-FACT-T1-W01-TEACHER-DECISIONS plus five lesson tasks; no lesson, correction, asset, rule or parser change was written and the source wording is unmodified.",
-    "2026-11-06 ECON-LES-T1-W01-WHY-STUDY: lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY authored in economics.json (body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 4 practice items / 27 marks) and COV-ECON-T1-W01-WHY-STUDY upgraded PARTIAL -> SUPPORTED with only the lesson id bound. The model answer and its marks are proposals: Week 1 prints no key, so the printed assessment blocks stay UNRESOLVED, the line 95 attribution question stays unanswered, and ECONOMICS-T1-W01-COVERAGE and ECONOMICS-T1-W01-PARSED-ROW-MISSING remain open and blocking respectively non-blocking. Week 1 is not complete."
+    "2026-11-06 ECON-LES-T1-W01-WHY-STUDY: lesson SUP-SS1-ECONOMICS-T1-W01-WHY-STUDY authored in economics.json (body SHA-256 57d1e48f9976c6b8b52e330a25dc90f887b146879f8ebee38122672bf7cf6254, 4 practice items / 27 marks) and COV-ECON-T1-W01-WHY-STUDY upgraded PARTIAL -> SUPPORTED with only the lesson id bound. The model answer and its marks are proposals: Week 1 prints no key, so the printed assessment blocks stay UNRESOLVED, the line 95 attribution question stays unanswered, and ECONOMICS-T1-W01-COVERAGE and ECONOMICS-T1-W01-PARSED-ROW-MISSING remain open and blocking respectively non-blocking. Week 1 is not complete.",
+    "2026-11-07 ECON-WK-T1-W02: indexed Week Two lines 117-169 of the 1st Term source into 12 coverage entries (5 PARTIAL, 7 UNRESOLVED) and 9 open items (6 blocking), and appended ECON-FACT-T1-W02-TEACHER-DECISIONS (BLOCKED) plus four lesson tasks. Nothing is approved, verified or deliverable; no key exists in the source for any of the 16 questions; the art option, behavioural science, economic rent and the economic units are not taught in the source. Week 2 is not complete."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_WEEK_INDEXING": 21,
     "SOURCE_MARKER_DISPOSITION": 2,
     "VISUAL_DISPOSITION": 10,
     "SOURCE_PRESERVATION": 4,
-    "LESSON": 5
+    "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "PENDING": 48,
-    "BLOCKED": 2
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 51,
+    "BLOCKED": 3
   },
   "items": [
     {
@@ -416,8 +417,8 @@
         "ECON-INV-T1",
         "ECON-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/economics/ECON-INV-T1.md (Week table, lines 117-169, SHA-256 9e6974c4a9cbd17d6cca9dcbb21d80306a04589f8c67a8e3f6860664bd70f5e8; assessment blocks listed there).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED_TESTING_DEFERRED (2026-11-07). Member SHA-256 8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc (1,264,128 bytes) verified on the attached file and word-extractor 1.0.4 getBody() reproduced on it: 53,430 characters, 1,060 lines, text SHA-256 026eeec9b2b8a68bba6bed3719a921e08030d56b2bb4cfdafd40352133e5037e, Week Two lines 117-169 SHA-256 9e6974c4a9cbd17d6cca9dcbb21d80306a04589f8c67a8e3f6860664bd70f5e8, both equal to ECON-INV-T1. economics.json now carries 12 Week 2 coverage entries, all with source_id SS1-SRC-2ab0c50bcab6 and lesson_ids empty because no lesson delivers them and the importer has never run for this source: 5 PARTIAL teaching entries, COV-ECON-T1-W02-SCHEME-2, COV-ECON-T1-W02-SCIENCE-METHOD, COV-ECON-T1-W02-SOCIAL-SCIENCE-REASONS, COV-ECON-T1-W02-SCIENCE-CONCLUSION, COV-ECON-T1-W02-CAREER-PROSPECT, and 7 UNRESOLVED entries, COV-ECON-T1-W02-ART-OPTION, COV-ECON-T1-W02-EVALUATION-1, COV-ECON-T1-W02-EVALUATION-2, COV-ECON-T1-W02-READING-ASSIGNMENT, COV-ECON-T1-W02-GENERAL-EVALUATION, COV-ECON-T1-W02-WEEKEND-ASSIGNMENT, COV-ECON-T1-W02-SECTION-B. No SUPPORTED entry: no original lesson id exists for Week 2 to reuse. Block digests: marker and topic 117-118 5d3bd68b0e2d1b80980efb3211aa5dc445f14875f2676df525c210ccfc4fc37a; CONTENT 119-121 d3b7fe00e31f1a002683b20b2b89a7d2971d5b5e36a005517cea0ed56203f3e5; classification 123-131 a20124fe00656f514a9e42922ade76dfe6644abd363c387a6854184e4d868753; EVALUATION 133-135 f11432db267044717880501f413c23e6d78b7b9515b760a6ffb14fe23a4c0434; career 137-143 1a87138fab54e0ea63a61059691393d4cb5f655aed46230be9c76b3b2a50d8d7; EVALUATION 145-147 a59ab3f1e981fc770f0316c0d487b5153d187ed7a2762863d81e95a6c15b2066; reading 149-150 b9b57d5d529d22d390869125f5e45ca747dddf0499f18274c473c6ba2f852a78; general evaluation 152-157 2296d00125094242e950181a5ce512fe692415d905a9f5638539fc7d9eabcaa2; weekend 159-165 c422685f7b2ecedf774c89d20f22e9140658bcb8122bd15dcc6dbd80ca7ea0fc; SECTION B 167-169 66a0fd4b749def28fbea5333785bd6743babd99831f25815affb662838ac9415. All 16 questions are indexed by line with exact wording (134, 135, 146, 147, 153, 154, 155, 156, 157, 160, 161-162, 163, 164, 165, 168, 169). 9 open items appended: ECONOMICS-T1-W02-COVERAGE, ECONOMICS-T1-W02-ART-NOT-TAUGHT, ECONOMICS-T1-W02-CLASSIFICATION-WORDING, ECONOMICS-T1-W02-UNANSWERED-QUESTIONS, ECONOMICS-T1-W02-ASSESSMENT-NO-KEY and ECONOMICS-T1-W02-READING-RIGHTS block delivery; ECONOMICS-T1-W02-CAREER-LIST-UNDATED, ECONOMICS-T1-W02-OVERLAPPING-QUESTIONS and ECONOMICS-T1-W02-SOURCE-DEFECTS do not. Appended by this item: ECON-FACT-T1-W02-TEACHER-DECISIONS (FACTUAL_DEPENDENCY, BLOCKED, seven numbered decisions) and the lesson tasks ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE, ECON-LES-T1-W02-CAREER-PROSPECT, ECON-LES-T1-W02-UNTAUGHT-TERMS and ECON-LES-T1-W02-KEY-ASSESSMENT (LESSON, PENDING). No lesson, asset, correction, rule or parser change was written, package_status stays PENDING and no source wording was rewritten. Source files and private extracts stay outside Git. Record: docs/ss1/work/microtasks/economics/ECON-WK-T1-W02.md.",
       "completion_condition": "Week 2 objectives and exercises are represented under the existing schema with exact line provenance; unanswered or missing content has a precise open item and lesson task; no whole-section coverage is inferred from one objective. Testing deferred by owner."
     },
     {
@@ -2155,6 +2156,191 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by ECON-WK-T1-W01 (2026-11-05) through ECONOMICS-T1-W01-UNANSWERED-QUESTIONS; the shape of the content depends on decisions 2 and 3 of ECON-FACT-T1-W01-TEACHER-DECISIONS.",
       "completion_condition": "Each of lines 102, 103, 104 and 105 has sourced teaching material with a dated citation, the week it belongs to is recorded honestly, and no school-of-thought list or producer-goods list is invented. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-FACT-T1-W02-TEACHER-DECISIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Two classification section lines 123-131 SHA-256 a20124fe00656f514a9e42922ade76dfe6644abd363c387a6854184e4d868753, EVALUATION lines 133-135 SHA-256 f11432db267044717880501f413c23e6d78b7b9515b760a6ffb14fe23a4c0434 and 145-147 SHA-256 a59ab3f1e981fc770f0316c0d487b5153d187ed7a2762863d81e95a6c15b2066, GENERAL EVALUATION QUESTIONS lines 152-157 SHA-256 2296d00125094242e950181a5ce512fe692415d905a9f5638539fc7d9eabcaa2, WEEKEND ASSIGNMENT lines 159-165 SHA-256 c422685f7b2ecedf774c89d20f22e9140658bcb8122bd15dcc6dbd80ca7ea0fc and SECTION B lines 167-169 SHA-256 66a0fd4b749def28fbea5333785bd6743babd99831f25815affb662838ac9415.",
+      "objective": "Owner or teacher decides the Week 2 questions this indexing could not answer: 1. What the lesson teaches about the Art option of the line 120 question, given that the source gives only the denial at line 125. 2. The headline classification and how lines 125, 128, 129, 130 and 131 are reconciled (social science that uses scientific method; deductive and inductive; probability versus unpredictability). 3. Which approved material supplies behavioural science (line 153), economic rent (line 156) and the principal economic units (line 157), and whether lines 154 and 155 are answered from Week 1 lines 54 and 65. 4. Who authors the answer key and mark allocation for the 16 Week 2 questions, and on what basis, since the source prints none. 5. Whether the repeated questions (lines 134 and 169; 146-147 and 168) are delivered once, twice or rewritten, and how the Week Nine revision questions at 968-970 are bound to this teaching. 6. Which Longe edition page 11 (line 150) belongs to and what rights permit its use, decided with Week 1 decision 6. 7. Whether the open-ended 'etc' at line 143 is kept as printed or the list is extended, and by whom. Record each decision with who took it and the evidence used; do not let a lesson infer any of them.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-FACT-T1-W02-TEACHER-DECISIONS.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W02",
+        "ECON-INV-T1",
+        "ECON-SRC-T1"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED - waiting for the owner, created by ECON-WK-T1-W02 (2026-11-07). Evidence sits in economics.json open items ECONOMICS-T1-W02-ART-NOT-TAUGHT, ECONOMICS-T1-W02-CLASSIFICATION-WORDING, ECONOMICS-T1-W02-UNANSWERED-QUESTIONS, ECONOMICS-T1-W02-ASSESSMENT-NO-KEY, ECONOMICS-T1-W02-READING-RIGHTS and ECONOMICS-T1-W02-OVERLAPPING-QUESTIONS, and in docs/ss1/work/microtasks/economics/ECON-WK-T1-W02.md. No decision was taken here and no answer invented.",
+      "completion_condition": "Every one of the seven decisions is recorded with its author and evidence, the open items it clears are updated in economics.json, and no option letter is marked correct in any lesson before a key exists for it. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Two lines 123-131 SHA-256 a20124fe00656f514a9e42922ade76dfe6644abd363c387a6854184e4d868753; objectives COV-ECON-T1-W02-SCIENCE-METHOD, COV-ECON-T1-W02-SOCIAL-SCIENCE-REASONS and COV-ECON-T1-W02-SCIENCE-CONCLUSION (PARTIAL) and COV-ECON-T1-W02-ART-OPTION (UNRESOLVED)",
+      "objective": "Author the classification lesson from lines 124-131 and the owner decisions on the art option and the science versus social-science wording. It must keep the five reasons and the conclusion visibly the source's, state that no reason in the source is about art unless an approved decision supplies one, and not mark any evaluation or weekend answer as correct.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-LES-T1-W02-SCIENCE-SOCIAL-SCIENCE.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W02",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by ECON-WK-T1-W02 (2026-11-07): see the open items listed in the completion condition.",
+      "completion_condition": "A lesson in economics.json teaches the method, the five reasons and the conclusion with exact source locators, resolves the art option and the wording tension by citing the owner decisions rather than an invented answer, and upgrades only the coverage entries it fully covers (closing ECONOMICS-T1-W02-ART-NOT-TAUGHT and ECONOMICS-T1-W02-CLASSIFICATION-WORDING). Testing deferred by owner."
+    },
+    {
+      "id": "ECON-LES-T1-W02-CAREER-PROSPECT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Two lines 137-143 SHA-256 1a87138fab54e0ea63a61059691393d4cb5f655aed46230be9c76b3b2a50d8d7; objective COV-ECON-T1-W02-CAREER-PROSPECT (PARTIAL)",
+      "objective": "Author a conceptual career-prospects lesson from lines 138-143: the introduction and the five listed fields, with the undated list kept as source content and no market, salary or employer claim added. Current dated job-market examples are not authored here; they belong to ECON-FACT-T1-DATED-EXAMPLES.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-LES-T1-W02-CAREER-PROSPECT.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W02",
+        "ECON-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by ECON-WK-T1-W02 (2026-11-07): see the open items listed in the completion condition.",
+      "completion_condition": "A lesson in economics.json teaches the introduction and the five-item list with exact source locators, says that the list is undated and open-ended, adds no factual job-market claim, and upgrades COV-ECON-T1-W02-CAREER-PROSPECT only if the lesson fully covers it. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-LES-T1-W02-UNTAUGHT-TERMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Two GENERAL EVALUATION QUESTIONS lines 152-157 SHA-256 2296d00125094242e950181a5ce512fe692415d905a9f5638539fc7d9eabcaa2, lines 153, 156 and 157; objective COV-ECON-T1-W02-GENERAL-EVALUATION (UNRESOLVED)",
+      "objective": "After the owner decision, author the short teaching the three untaught questions need: behavioural science (line 153), economic rent (line 156) and the principal economic units (line 157), from approved material only. It must not invent definitions and must not import the Week Nine factors table.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-LES-T1-W02-UNTAUGHT-TERMS.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W02",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by ECON-WK-T1-W02 (2026-11-07): see the open items listed in the completion condition.",
+      "completion_condition": "A lesson in economics.json teaches the approved definitions with provenance, cites the owner decision for the source of each, and leaves ECONOMICS-T1-W02-UNANSWERED-QUESTIONS open until a key exists for all five general questions. Testing deferred by owner."
+    },
+    {
+      "id": "ECON-LES-T1-W02-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-2ab0c50bcab6",
+      "term": "1st Term",
+      "week_or_locator": "Week Two assessments: lines 133-135 SHA-256 f11432db267044717880501f413c23e6d78b7b9515b760a6ffb14fe23a4c0434, 145-147 SHA-256 a59ab3f1e981fc770f0316c0d487b5153d187ed7a2762863d81e95a6c15b2066, 152-157 SHA-256 2296d00125094242e950181a5ce512fe692415d905a9f5638539fc7d9eabcaa2, 159-165 SHA-256 c422685f7b2ecedf774c89d20f22e9140658bcb8122bd15dcc6dbd80ca7ea0fc and 167-169 SHA-256 66a0fd4b749def28fbea5333785bd6743babd99831f25815affb662838ac9415; objectives COV-ECON-T1-W02-EVALUATION-1, COV-ECON-T1-W02-EVALUATION-2, COV-ECON-T1-W02-GENERAL-EVALUATION, COV-ECON-T1-W02-WEEKEND-ASSIGNMENT and COV-ECON-T1-W02-SECTION-B",
+      "objective": "After the owner decisions, author the answer key and mark allocation for the 16 Week 2 questions, quoting each question exactly and giving each model answer a visibly proposed status. No option letter is marked correct before the key is authorised, and the marks must add up per question.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ECONOMICS (1) (1).doc",
+          "member_sha256": "8ad05c78b18edee3d6a011391d6ae057af457ab27f68a1ff05381d9c32e962bc"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/economics.json",
+        "docs/ss1/work/microtasks/economics/QUEUE.json",
+        "docs/ss1/work/microtasks/economics/ECON-LES-T1-W02-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "ECON-WK-T1-W02",
+        "ECON-FACT-T1-W02-TEACHER-DECISIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by ECON-WK-T1-W02 (2026-11-07): see the open items listed in the completion condition.",
+      "completion_condition": "A lesson or practice set in economics.json keys every Week 2 question with marks that add up and exact source locators, resolves the repeated questions by citing the owner decision, and leaves the assessment coverage entries UNRESOLVED until a key exists for each block. Testing deferred by owner."
     }
   ],
   "review": {
@@ -2171,9 +2357,7 @@
   },
   "next_runnable": [
     "ECON-INV-T3",
-    "ECON-TEST-PACKAGE",
     "ECON-PRE-T1",
-    "ECON-WK-T1-W02",
     "ECON-WK-T1-W03",
     "ECON-WK-T1-W04",
     "ECON-WK-T1-W05",
@@ -2207,6 +2391,7 @@
     "ECON-WK-T2-W11",
     "ECON-PRE-T2",
     "ECON-MARK-T2-REVEXAM",
-    "ECON-PRES-T2-SOURCE-WORDING"
+    "ECON-PRES-T2-SOURCE-WORDING",
+    "ECON-LES-T1-W02-CAREER-PROSPECT"
   ]
 }
