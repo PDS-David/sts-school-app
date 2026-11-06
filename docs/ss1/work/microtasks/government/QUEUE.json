@@ -23,20 +23,22 @@
     "GOV-SRC-T1 may create the minimum package (explicit permission, in its objective, allowed paths and completion condition). GOV-SRC-T2/T3 depend on it so only one item creates the file.",
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "GOV-INV-T1 executed on 2026-10-29 from the supplied 1st Term source (header verified by GOV-SRC-T1): ten teaching weeks plus a scheme-only revision/examination row; fourteen indexing/visual items appended; no package, coverage, rule or lesson written. The 2nd and 3rd Term headers remain unverified and their inventories unknown; the earlier notes describe the state when the queue was built.",
-    "Execute one queue item per worker. Missing material and deferred testing are never marked complete."
+    "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
+    "GOV-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning as institution, art of governing and academic field mapped SUPPORTED to the reproduced generic parsed-row id; the Hobbes passage at lines 53-54 was checked against Leviathan Part I ch. XIII and needs a delivery replacement, 'why we study government' is only partly taught in the span, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows, one more PARTIAL row and one UNRESOLVED row, four blocking open items (one OWNER_ACTION on the weekend key) and one lesson item were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
+    "TEST": 1,
+    "FACTUAL_DEPENDENCY": 1,
     "SOURCE_PREAMBLE_INDEXING": 1,
     "SOURCE_MARKER_DISPOSITION": 2,
     "SOURCE_WEEK_INDEXING": 10,
     "VISUAL_DISPOSITION": 1,
-    "TEST": 1,
-    "FACTUAL_DEPENDENCY": 1
+    "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 4,
+    "IMPLEMENTED_TESTING_DEFERRED": 5,
     "PENDING": 17,
     "BLOCKED": 1
   },
@@ -447,8 +449,8 @@
         "GOV-INV-T1",
         "GOV-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 45-102, block SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04; `WEEK ONE` 45, `TOPIC: THE MEANING AND SCOPE OF THE SUBJECT MATTER: GOVERNMENT` 46, `CONTENT` 47; sections `GOVERNMENT AS AN INSTITUTION OF THE STATE` 52, `GOVERNMENT AS A PROCESS OR ART OF GOVERNING` 62, `GOVERNMENT AS AN ACADEMIC FIELD OF STUDY` 69; markers 58, 74, 78, 84, 88, 100. Findings recorded by GOV-INV-T1 that this item must settle: Verify against primary texts: the Hobbes attribution and the quoted description at 53-54 (the source says `solitary, poor, wicked and short`; keep the source wording separate from the primary wording), the `primitive society` framing, and the duplicated evaluation that asks about the academic field at 59 and 75 before and after its section. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "No coverage, lesson or rule exists for this week: government.json has the three sources and their alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 45-102, block SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04; `WEEK ONE` 45, `TOPIC: THE MEANING AND SCOPE OF THE SUBJECT MATTER: GOVERNMENT` 46, `CONTENT` 47; sections `GOVERNMENT AS AN INSTITUTION OF THE STATE` 52, `GOVERNMENT AS A PROCESS OR ART OF GOVERNING` 62, `GOVERNMENT AS AN ACADEMIC FIELD OF STUDY` 69; markers 58, 74, 78, 84, 88, 100. Findings recorded by GOV-INV-T1 that this item must settle: Verify against primary texts: the Hobbes attribution and the quoted description at 53-54 (the source says `solitary, poor, wicked and short`; keep the source wording separate from the primary wording), the `primitive society` framing, and the duplicated evaluation that asks about the academic field at 59 and 75 before and after its section. Not approved, not verified; testing deferred by owner. Indexing result (2026-11-07): seven coverage rows written to government.json. COV-GOV-T1-W01-INSTITUTION-MEANING (line 56), COV-GOV-T1-W01-ART-OF-GOVERNING (lines 62-67) and COV-GOV-T1-W01-ACADEMIC-FIELD (lines 69-72) are SUPPORTED against the reproduced generic parsed-row id SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04 (ten rows reproduced with the importer's own WEEK_MARKER and week-matching logic; the importer was not run; the id is to be confirmed against identified_rows of the first reviewed plan). COV-GOV-T1-W01-INSTITUTION-NEED (lines 53-54, PARTIAL) records that the Hobbes passage is misquoted ('wicked' for 'nasty, brutish'), uses a 'primitive society' term that is not Hobbes's and states a contested contract account as fact, verified against Leviathan Part I ch. XIII; COV-GOV-T1-W01-WHY-STUDY (PARTIAL) and COV-GOV-T1-W01-READING (PARTIAL) and COV-GOV-T1-W01-ASSESSMENT-KEYS (UNRESOLVED, fifteen exercise items, no key or marks) complete the accounting, including the duplicated academic-field evaluation at lines 59 and 75. No source rule was added. Four blocking open items were added: GOVERNMENT-T1-W01-COVERAGE, -HOBBES-CORRECTION, -WEEKEND-KEY (OWNER_ACTION) and -FACT-CHECKS. One lesson item, GOV-LES-T1-W01-CORRECTED-WEEK, was appended. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no week is merged into Civic Education. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
     },
     {
@@ -820,6 +822,45 @@
       "status": "PENDING",
       "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence: cover JPEG 3306x2515, 870,389 bytes, Data offset 432, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a (byte-identical to the Geography 1st Term cover); header letterhead JPEG 949x359, 106,941 bytes, WordDocument offset 96337, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the Further Mathematics 2nd Term and Geography 1st Term headers); the only table structure is an empty 1x1 row above the cover (two cell marks in paragraph 2; antiword reports 1 column, 1 row); no other table, diagram, map or figure and no PNG, WMF, EMF or GIF image in either stream. Rendering was not possible in this environment (no LibreOffice or Word), so placement is unverified. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Each group has a disposition, the branding permission is an open item, no image bytes or private render is committed, the empty row is disposed as an artefact, and no missing table or figure is fabricated. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy unavailable textbook pages (the READING ASSIGNMENT citations name books and pages that are not supplied) and do not infer whole-row coverage from one objective."
+    },
+    {
+      "id": "GOV-LES-T1-W01-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, lines 45-102; objectives COV-GOV-T1-W01-INSTITUTION-NEED (PARTIAL), COV-GOV-T1-W01-WHY-STUDY (PARTIAL), COV-GOV-T1-W01-ASSESSMENT-KEYS (UNRESOLVED)",
+      "objective": "Author ONE visibly original supplement lesson, suggested id SUP-SS1-GOVERNMENT-T1-W01-CORRECTED, that can replace the Week 1 original at delivery. The contract resolves a correction to the whole original row, so the lesson must teach all three Week 1 objectives, not only the corrected passage: (1) why government exists, with Hobbes's argument attributed to Leviathan Part I ch. XIII in original wording, any quoted primary wording given separately, short and labelled as Hobbes's ('solitary, poor, nasty, brutish, and short'), never the source's 'wicked' version and never described as a 'primitive society', and the social-contract account presented as one attributed account with alternatives and no endorsement; (2) government as an art of governing and the three organs, citing a dated primary constitutional text for the Nigerian arrangement and distinguishing a state House of Assembly from the National Assembly; (3) government as an academic field of study, distinguishing the school subject from political science. Include practice with complete answers and criterion-level marking that sums exactly for the Week 1 evaluation, general evaluation and theory items and for weekend questions 2, 3 and 4, answering only from taught text. For 'Why do we study government?' use only what lines 70-72 teach and cross-refer to Week 2 without copying. Weekend questions 1 and 5 may be keyed only from the owner choice recorded in GOVERNMENT-T1-W01-WEEKEND-KEY; if it is not yet recorded, leave them out and keep that open item. Add the delivery_corrections entry binding SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04 to the lesson. Do not copy textbook pages and do not claim teacher approval.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/06_WORKER_E_CIVIC_GOVERNMENT_DATA.md",
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-INV-T1.md",
+        "docs/ss1/work/microtasks/government/GOV-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 GOVERNMENT.doc",
+          "member_sha256": "50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/government.json",
+        "docs/ss1/work/microtasks/government/QUEUE.json",
+        "docs/ss1/work/microtasks/government/GOV-LES-T1-W01-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "GOV-SRC-T1",
+        "GOV-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by GOV-WK-T1-W01 (2026-11-07): lines 53-54 need a delivery replacement (Hobbes wording and attribution, contested contract account stated as fact), the Week 1 exercises have no key, and 'why do we study government' is only partly taught in the span. COV-GOV-T1-W01-INSTITUTION-NEED and -WHY-STUDY are PARTIAL, COV-GOV-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GOVERNMENT-T1-W01-COVERAGE is open. GOV-WK-T1-W01 authors no lesson text, answer or correction.",
+      "completion_condition": "A lesson in government.json teaches the three Week 1 objectives with the corrected natural-condition passage, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with a dated primary text and PENDING content approval; a delivery_corrections entry binds the original lesson id and body hash to it; COV-GOV-T1-W01-INSTITUTION-NEED then cites it with evidence, and any entry it does not fully cover stays PARTIAL or UNRESOLVED; no source byte, schema or shared file is edited."
     }
   ],
   "review": {
@@ -835,6 +876,21 @@
     }
   },
   "next_runnable": [
-    "GOV-PRE-T1"
+    "GOV-INV-T2",
+    "GOV-INV-T3",
+    "GOV-PRE-T1",
+    "GOV-REV-T1",
+    "GOV-MARK-T1",
+    "GOV-WK-T1-W02",
+    "GOV-WK-T1-W03",
+    "GOV-WK-T1-W04",
+    "GOV-WK-T1-W05",
+    "GOV-WK-T1-W06",
+    "GOV-WK-T1-W07",
+    "GOV-WK-T1-W08",
+    "GOV-WK-T1-W09",
+    "GOV-WK-T1-W10",
+    "GOV-VIS-T1",
+    "GOV-LES-T1-W01-CORRECTED-WEEK"
   ]
 }

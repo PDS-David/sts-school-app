@@ -91,7 +91,156 @@
   "lessons": [],
   "delivery_corrections": [],
   "assets": [],
-  "coverage": [],
+  "coverage": [
+    {
+      "id": "COV-GOV-T1-W01-INSTITUTION-MEANING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Scheme row 1 item 'Government as an Institution of the State' (scheme line 25; body heading lines 48 and 52): what government is as an institution: the body of persons and institutions that make and enforce laws in a state, the instrument through which the purpose of the state is formulated, expressed and attained, and an agency established by the political community to promote the general welfare.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: scheme lines 25-27 (items of row 1) SHA-256 cbe85d4b95cd118391f1293f2f284a511b987f53d5ea7bee5695c7ec68952290; WEEK ONE line 45 SHA-256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b; heading line 52 SHA-256 c82b627fa3464052b3918343ad4908c3c7cea40816bffaa3a2ee7a84a270f2c8 anchor \"GOVERNMENT AS AN INSTITUTION OF THE STATE\" (occurs once in the extracted text); definition paragraph line 56 SHA-256 45afac2c6782cdc116fafabbda36de622c2b62dd4cc76c88c54e72eb03e17373 anchor \"Government therefore refers to the body of persons and institutions that make and enforce laws in a state.\" (occurs once in the extracted text)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04"
+      ],
+      "evidence": [
+        {
+          "locator": "line 56 SHA-256 45afac2c6782cdc116fafabbda36de622c2b62dd4cc76c88c54e72eb03e17373",
+          "explanation": "The paragraph states the three parts of the objective: government is the body of persons and institutions that make and enforce laws, it is the instrument through which the purpose of the state is formulated, expressed and attained, and it is an agency set up by the political community to promote the general welfare. It is taught in the source paragraph itself, not only named in a heading. The opening word 'therefore' leans on lines 53-54, which are mapped separately in COV-GOV-T1-W01-INSTITUTION-NEED because they need a correction; the definition itself does not depend on the Hobbes passage."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-W01-INSTITUTION-NEED",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Why government exists, taught under scheme item 'Government as an Institution of the State': diverse and conflicting interests, the wish for a peaceful society, the Thomas Hobbes attribution with the 'primitive society' description, the surrender of natural rights to government, and anarchy as disorder and lawlessness where might is right (lines 53-54), together with the questions that rest on it: general evaluation line 80 and theory line 102.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: paragraphs line 53 SHA-256 ee7617e3af48cbe20347dba3c1c4d2a268848fe98f4173ca58582115a020159f and line 54 SHA-256 4a14a957156422a17a44bfc936d8f186f93bf42ec94febca6b83acee323124c2 (range 53-54 SHA-256 960661cdade4caea2df18a25f6ce82cc222db7e108e4db26ecdff4e703bd7dfe) anchor \"the society would become what Thomas Hobbes referred to as a primitive society\" (occurs once in the extracted text); questions line 80 SHA-256 b7e0655f2b1593b1d306027eb7c57ea3138e298c1be040c7d5bbd2255f002332 and line 102 SHA-256 684693d405922dcd828bf1d9e50d52d19dd303122e2e5252be0582223c540296",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04"
+      ],
+      "evidence": [
+        {
+          "locator": "line 53 SHA-256 ee7617e3af48cbe20347dba3c1c4d2a268848fe98f4173ca58582115a020159f; line 54 SHA-256 4a14a957156422a17a44bfc936d8f186f93bf42ec94febca6b83acee323124c2",
+          "explanation": "The reasoning is taught in the source: people's interests conflict, a body is needed to regulate them, and without one society falls into disorder; line 54 defines anarchy as 'a state of disorder and lawlessness where might is right'. Questions 80 ('How would the world have been without governments?') and 102 ('Why is government necessary in a state?') are answerable from these lines and from line 56. No answer or marks are recorded for them; see COV-GOV-T1-W01-ASSESSMENT-KEYS."
+        },
+        {
+          "locator": "line 53 SHA-256 ee7617e3af48cbe20347dba3c1c4d2a268848fe98f4173ca58582115a020159f; primary text: Thomas Hobbes, Leviathan (1651), Part I, chapter XIII 'Of the Natural Condition of Mankind as concerning their Felicity and Misery' (Project Gutenberg ebook 3207; Fordham Internet History Sourcebook 'Thomas Hobbes: Leviathan, Chaps 13-14, 1651', sourcebooks.web.fordham.edu/mod/hobbes-lev13.asp), consulted 2026-11-07 through web copies of the chapter, not a page-cited printed edition",
+          "explanation": "SOURCE WORDING (kept exactly as printed, not corrected): 'Thomas Hobbes referred to as a primitive society. This is a society where life is solitary, poor, wicked and short.' PRIMARY WORDING, recorded here only as verification evidence: the chapter describes the life of man in that condition as 'solitary, poore, nasty, brutish, and short' (1651 spelling; modern 'poor'). Findings: (a) 'wicked' is not Hobbes's word and 'nasty, brutish' are missing from the source's version, so the source line is not a faithful quotation of Hobbes; (b) 'primitive society' is not Hobbes's term: his chapter is about the natural condition of mankind, a condition with no common power to keep all in awe, which he describes as a war of every man against every man, so teaching it as Hobbes's 'theory of a primitive society' misdescribes the argument; (c) in the same chapter Hobbes illustrates with peoples of America, a seventeenth-century illustration that a lesson must attribute to Hobbes and not state as established fact about any people."
+        },
+        {
+          "locator": "line 54 SHA-256 4a14a957156422a17a44bfc936d8f186f93bf42ec94febca6b83acee323124c2",
+          "explanation": "Line 54 states 'people will have to surrender their natural rights' to government as plain fact. That is the social-contract account associated with Hobbes (and, in different forms, with other contract theorists), and it is a contested position in political thought, not a settled rule. It must be taught as an attributed account with alternatives presented neutrally and no endorsement. The factual replacement is not authored here: it is a delivery replacement per the contract, tracked by GOV-LES-T1-W01-CORRECTED-WEEK and open item GOVERNMENT-T1-W01-HOBBES-CORRECTION."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-W01-ART-OF-GOVERNING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Scheme row 1 item 'Government as an Art of Governing' (scheme line 26; body heading line 62 reads 'Government as a Process or Art of Governing'): government as the process of governing through organs vested with power and authority that keep peace and security, make and enforce laws and formulate and implement policy; the division of government into three organs, the Executive, the Legislature and the Judiciary, with different but complementary functions, and what each does.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: scheme lines 25-27 (items of row 1) SHA-256 cbe85d4b95cd118391f1293f2f284a511b987f53d5ea7bee5695c7ec68952290; heading line 62 SHA-256 c37213eabda801b2b6a89d2e960ef9fee90306cef0cc4adc4b39164dd1e8b7bf anchor \"GOVERNMENT AS A PROCESS OR ART OF GOVERNING\" (occurs once in the extracted text); paragraphs line 63 SHA-256 8b6187d80fc7e619cbaee108f231d445e32bfcb47c91bf7e333e985a97ed43b3, line 65 SHA-256 7df90976c3ee34bccef8a8932c9180904319dfe94b1bd1bea2421968ab802c6c, line 67 SHA-256 e036cecd74625ec3bce4266f90ee0b9443a140262c52771472a46a25eb296a6a (range 62-67 SHA-256 5fcb70ffdcd2ede1d3bfcba9a63041d9cc66ce2bf321c364075b0ba84772c5a1)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04"
+      ],
+      "evidence": [
+        {
+          "locator": "line 63 SHA-256 8b6187d80fc7e619cbaee108f231d445e32bfcb47c91bf7e333e985a97ed43b3; line 65 SHA-256 7df90976c3ee34bccef8a8932c9180904319dfe94b1bd1bea2421968ab802c6c; line 67 SHA-256 e036cecd74625ec3bce4266f90ee0b9443a140262c52771472a46a25eb296a6a",
+          "explanation": "Line 63 defines government as a process of governing (organs with power and authority maintaining peace and security, making and enforcing laws, formulating and implementing policy, regulating citizens' activities and conducting the affairs of the state). Line 65 says government is divided into three organs and names them. Line 67 states the function of each (the Legislature makes laws and passes bills to the Executive; the Executive executes the laws; the Judiciary interprets the laws and punishes offenders). The objective is taught in the paragraphs, not only headed."
+        },
+        {
+          "locator": "line 79 SHA-256 33c3bb962665c51bc7dc0c7efd168b7c7dbb3926971360c57a4f4339a19ea886; line 81 SHA-256 728852ccb71145305b411a4cb2ac41209b9559f903c538e690b0545b00358901; line 101 SHA-256 af387cd027e5689a3b2b2895bdb79cd438f28da82840244978d98cfe2a9f1127",
+          "explanation": "General evaluation 79 ('How is government an art of governing?'), 81 ('Can only one organ of government run a state?') and theory 101 ('Describe the functions of the organs of government.') are answerable from lines 63-67 (line 65 says government is not vested in one organ). No key or marks exist; see COV-GOV-T1-W01-ASSESSMENT-KEYS."
+        },
+        {
+          "locator": "line 65 SHA-256 7df90976c3ee34bccef8a8932c9180904319dfe94b1bd1bea2421968ab802c6c; line 67 SHA-256 e036cecd74625ec3bce4266f90ee0b9443a140262c52771472a46a25eb296a6a",
+          "explanation": "Printed wording retained uncorrected: 'complimentary' at line 65 (for complementary), and '(House of Assembly)' at line 67, which names a state legislature and does not name the federal legislature. The three-organ division is stated as a general fact; which constitutional provisions give it effect in Nigeria needs a dated primary citation (GOVERNMENT-T1-W01-FACT-CHECKS). No delivery correction is authored here."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-W01-ACADEMIC-FIELD",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Scheme row 1 item 'Government as an Academic Field of Study' (scheme line 27; body heading lines 50 and 69): government as a school subject dealing with the whole process and structure of political institutions and the arms of government in running the state; its study of international organizations a state belongs to and of relations between states; the name political science.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: scheme lines 25-27 (items of row 1) SHA-256 cbe85d4b95cd118391f1293f2f284a511b987f53d5ea7bee5695c7ec68952290; heading line 69 SHA-256 36271e494a803cc75b4a4d3a8e0ea29226a99682e0fd9df7ab8edf504eca8424 anchor \"GOVERNMENT AS AN ACADEMIC FIELD OF STUDY\" (occurs once in the extracted text); paragraphs line 70 SHA-256 87360c13031630c918a2a3e45c827be4c3c46789dc389305a5dabd0f2cdb8777, line 72 SHA-256 296f85b966c34c1cba3addec77bf272672de230f8a4db2d86355c07d1e1dcd3c (range 69-72 SHA-256 5f3e5c5d0cf32f749120bcf1a2b496026b5700efd12c41246ff3e9ff9694e6c3)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04"
+      ],
+      "evidence": [
+        {
+          "locator": "line 70 SHA-256 87360c13031630c918a2a3e45c827be4c3c46789dc389305a5dabd0f2cdb8777; line 72 SHA-256 296f85b966c34c1cba3addec77bf272672de230f8a4db2d86355c07d1e1dcd3c",
+          "explanation": "Line 70 says government as a school subject deals with the whole process and structure of political institutions and helps us understand the arms of government involved in running the state. Line 72 adds international organizations, relations between states, and the name political science. The objective is taught in these two paragraphs."
+        },
+        {
+          "locator": "line 59 SHA-256 bcd915e26bd62aeea7401830e3d09218bead4c07f33962ad3dd2f383c3be5852; line 75 SHA-256 c3edab7d2c51b0ba700caca2eca3cecf95e1f9893d2f5e49a83bf75fe67759ba; line 76 SHA-256 e2b410a90229cb755399ed17aeb197fc02d6a8346fa18a1daed450a66f15a5a0; line 82 SHA-256 ff001bce6b36fca4e0d78fd3c7a7a8eadfb937425769386adbc9fa530a551a31",
+          "explanation": "The duplicated evaluation is accounted for. Line 59 ('Explain the term Government as an Academic Field of Study') and line 75 ('Explain the term government as an Academic Field of Study?') are the same question, differing only by a capital letter and the question mark. The first block (58-60) stands before the section it tests (heading at 69), so a student reading in order meets the question before the teaching; no teaching is lost, but delivered practice should place it after lines 69-72. Line 76 ('Why is government referred to as an Academic Field of Study?') and line 82 ('How is government an academic field of study?') are answerable from lines 70-72. No key or marks exist; see COV-GOV-T1-W01-ASSESSMENT-KEYS."
+        },
+        {
+          "locator": "line 72 SHA-256 296f85b966c34c1cba3addec77bf272672de230f8a4db2d86355c07d1e1dcd3c",
+          "explanation": "Printed wording retained uncorrected: 'This study is called political science' equates the school subject with political science. That is a loose equation of a school subject and a university discipline; the later lesson should attribute and distinguish rather than repeat it as a definition (GOVERNMENT-T1-W01-FACT-CHECKS). No delivery correction is authored here."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-W01-WHY-STUDY",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Reasons for studying government: evaluation question 'Why do we study government?' (line 60) and weekend question 1 'The study of government helps us to ----------------' (lines 89-90). The Week 1 scheme row names no such item; scheme row 2 lists 'Why we Study Government' (scheme line 31) under Week 2.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: line 60 SHA-256 db555182bded8cdb139770b88488089e10d806b6170f4a7a2ec71b45136c0e7d (the line also recurs verbatim at line 153, outside this span, so the two-line anchor is used) anchor \"Explain the term Government as an Academic Field of Study  \nWhy do we study government?\" (occurs once); weekend line 89 SHA-256 7c75b0df3799f107e812f5569c670eb66331428fff343bc29d62b6515eb0fd72 and line 90 SHA-256 18e0feb868b0b5087d3ecf755fc9b0b04a1d09bba497c94b448a2e17d81518c5; scheme line 31 SHA-256 68a19c59a00edb1a9d200d5aa3fa6b16700a569303fd7e9e5f3f206c3cfd7df7",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04"
+      ],
+      "evidence": [
+        {
+          "locator": "line 70 SHA-256 87360c13031630c918a2a3e45c827be4c3c46789dc389305a5dabd0f2cdb8777; line 72 SHA-256 296f85b966c34c1cba3addec77bf272672de230f8a4db2d86355c07d1e1dcd3c",
+          "explanation": "Inside the span, the only material that could answer 'why do we study government' is that the study helps us understand the arms of government involved in running the state and covers international organizations and relations between states. No list of reasons is taught in lines 45-102."
+        },
+        {
+          "locator": "line 90 SHA-256 18e0feb868b0b5087d3ecf755fc9b0b04a1d09bba497c94b448a2e17d81518c5",
+          "explanation": "Weekend question 1 offers 'know our rights', 'evade tax' and 'disobey government'. The span does not teach any of the three options; 'know our rights' is the only option consistent with the subject, but that is not a key and is not derived from the taught text."
+        },
+        {
+          "locator": "line 31 SHA-256 68a19c59a00edb1a9d200d5aa3fa6b16700a569303fd7e9e5f3f206c3cfd7df7; line 153 SHA-256 db555182bded8cdb139770b88488089e10d806b6170f4a7a2ec71b45136c0e7d",
+          "explanation": "Scheme line 31 places 'Why we Study Government' in Week 2, and the same question as line 60 is repeated at line 153 in the Week 2 block. The reasons are therefore expected to be taught there; GOV-WK-T1-W02 indexes that week. This entry stays PARTIAL until that indexing and the lesson task GOV-LES-T1-W01-CORRECTED-WEEK settle where Week 1's question is answered. No reason is invented here."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-W01-READING",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Week 1 reading assignment: Essential Government by C.C. Dibie, pages 1-2, and Comprehensive Government by J.U. Anyaele, pages 6-7.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: line 84 SHA-256 d2d7a214a5a0f0634d1642d210d03c5c58b01e539a5aeb117f59184035d7313d (READING ASSIGNMENT); line 85 SHA-256 8e46164246f120f9d9772505e867ac3ab158e69ab1bc3cdd6737e1ffb78c67e5 and line 86 SHA-256 0ea1875fcea392a0c8c7ccdbc616f02ffd1c34e4fc8cdd3fdce184c799992cb9 (range 85-86 SHA-256 9a17f68620c1f528a384c234efde93006a1b352d8510895d40cc1ab913fe2ad3)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 85 SHA-256 8e46164246f120f9d9772505e867ac3ab158e69ab1bc3cdd6737e1ffb78c67e5; line 86 SHA-256 0ea1875fcea392a0c8c7ccdbc616f02ffd1c34e4fc8cdd3fdce184c799992cb9",
+          "explanation": "The assignment names two textbooks with page ranges. Neither book was supplied, so the page ranges and what those pages teach are unverified. A reading pointer is not teaching content: no book text is recorded or committed, and the pointer cannot stand in for the missing teaching recorded in COV-GOV-T1-W01-WHY-STUDY. Recorded in GOVERNMENT-T1-W01-FACT-CHECKS."
+        }
+      ]
+    },
+    {
+      "id": "COV-GOV-T1-W01-ASSESSMENT-KEYS",
+      "source_id": "SS1-SRC-40ce7dcaf672",
+      "objective": "Answers and marking for the fifteen exercise items in Week 1: evaluation lines 59-60 and 75-76, general evaluation lines 79-82, weekend assignment lines 89-98 (five multiple-choice questions) and theory lines 101-102. The source gives no answer or mark for any of them.",
+      "objective_locator": "getBody() of word-extractor 1.0.4 (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 50508a226b21bc5862b1f814d14a3d6bf2a56ff9d29867116931f5a7e58c9c1a; Week 1 block lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04: EVALUATION QUESTION heading line 58 SHA-256 d94f5d9206f83557d43891f0108f338747553489e1303e785583157a2e867573 (the marker text occurs 15 times in the document, so it is not an anchor) and line 74 SHA-256 d94f5d9206f83557d43891f0108f338747553489e1303e785583157a2e867573 with questions line 59 SHA-256 bcd915e26bd62aeea7401830e3d09218bead4c07f33962ad3dd2f383c3be5852, line 60 SHA-256 db555182bded8cdb139770b88488089e10d806b6170f4a7a2ec71b45136c0e7d, line 75 SHA-256 c3edab7d2c51b0ba700caca2eca3cecf95e1f9893d2f5e49a83bf75fe67759ba, line 76 SHA-256 e2b410a90229cb755399ed17aeb197fc02d6a8346fa18a1daed450a66f15a5a0; GENERAL EVALUATION/REVISION QUESTIONS line 78 SHA-256 effc99d7347550da4f37664d00d1529ce66f23f1dd56a94f017e50dbed9a6d3a with questions lines 79-82 (range SHA-256 5274651ec28bf9e5b3d125f928d4628b07852ef41e05624548065c41d2463f65); WEEKEND ASSINGMENT line 88 SHA-256 a34c83f5f3a061e3d8f6f764f4e5b84863ac0a2330c5f8568fdf8271fa2022de with questions lines 89-98 (range SHA-256 a7b05c528330fa703c0555ed9d3a40344dcba3a05214c54eca70936b229e3060); THEORY line 100 SHA-256 abdac08bec83e6324009a8e49663f2fc25e232d744d3fc256629a5980a9df706 with items lines 101-102 (range SHA-256 af1241d5c7dc4cdd6c955398fc9d35f6c7183a92ef44e654247d2743deea48bd)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 45-102 SHA-256 cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04",
+          "explanation": "The week prints fifteen exercise items (two, two, four, five and two in the five blocks) and no answer, mark or marking guide. Marks are not stated for any item, so no marking arithmetic can be checked. Q60 recurs at line 153 outside the span; 75 repeats 59; 82 rewords 76 and 59."
+        },
+        {
+          "locator": "lines 89-98 SHA-256 a7b05c528330fa703c0555ed9d3a40344dcba3a05214c54eca70936b229e3060",
+          "explanation": "Weekend multiple-choice items, with what the span does and does not support (derivations only, not recorded keys): Q1 (89-90) is not supported by the span, see COV-GOV-T1-W01-WHY-STUDY. Q2 (91-92) 'The THEORY of a primitive society was initiated by' offers Nelson Mandela, Thomas Hobbes and Nnamdi Azikiwe; line 53 attributes the passage to Hobbes, but the stem inherits the 'primitive society' framing flagged in COV-GOV-T1-W01-INSTITUTION-NEED, so its wording needs a delivery replacement. Q3 (93-94) 'The fourth organ of government' offers High court, electoral commission, none of the above; lines 65 and 67 name three organs, and the span says nothing about independent commissions. Q4 (95-96) 'The absence of government in a state leads to' offers peaceful existence, anarchy, communism; line 54 says absence of government leads to anarchy. Q5 (97-98) 'One basic principle of government is' offers state and nation, authority, separation of power; the span names none of these as a principle (line 65 describes dividing government into three organs without naming separation of powers; 'authority' and 'State and Nation' are topics of later scheme rows), so no derivation is recorded and a teacher key is needed. Raised as open item GOVERNMENT-T1-W01-WEEKEND-KEY."
+        },
+        {
+          "locator": "line 91 SHA-256 4c7a9fbcd0f3c98df7ad9ff3eb367e918950e52aed9edc8ffd8953b27758af0a; line 100 SHA-256 abdac08bec83e6324009a8e49663f2fc25e232d744d3fc256629a5980a9df706",
+          "explanation": "The word THEORY also occurs inside weekend question 2 (line 91), as the inventory warned, so the THEORY marker at line 100 must be identified as a whole line when GOV-MARK-T1 classifies markers. The heading at line 78 contains the word REVISION, but the block is general evaluation of Week 1 content; no classify_marker rule is written here because such a rule classifies the whole containing row and would misdescribe a teaching week. GOV-MARK-T1 owns the decision."
+        }
+      ]
+    }
+  ],
   "open_items": [
     {
       "id": "GOVERNMENT-ALIAS-APPROVAL",
@@ -123,6 +272,64 @@
       "affected_ids": [
         "SS1-SRC-5f34b9f4efc4-R001",
         "SS1-SRC-5f34b9f4efc4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 (getBody lines 45-102) is indexed. The three scheme-row-1 objectives are taught in the source: government as an institution of the state (definition, line 56), as an art of governing (lines 62-67) and as an academic field of study (lines 69-72). COV-GOV-T1-W01-INSTITUTION-MEANING, -ART-OF-GOVERNING and -ACADEMIC-FIELD are SUPPORTED against the reproduced generic parsed-row id SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04. Four gaps remain: (1) lines 53-54 teach why government exists but misattribute and misquote Hobbes and present a contested account as fact (COV-GOV-T1-W01-INSTITUTION-NEED, PARTIAL); (2) 'Why do we study government?' is asked at line 60 and weekend question 1 and is taught only in part inside the span (COV-GOV-T1-W01-WHY-STUDY, PARTIAL); (3) the reading pointer at lines 84-86 is unverified and is not teaching (COV-GOV-T1-W01-READING, PARTIAL); (4) the source has no answers or marks for any of the fifteen exercise items (COV-GOV-T1-W01-ASSESSMENT-KEYS, UNRESOLVED). The row id was reproduced outside the importer by running the importer's own WEEK_MARKER and week-matching logic on the extracted text; the importer was not run. No source rule was added: WEEK ONE already begins a parsed row, so split_before and attach_stranded_label are not needed, and classify_marker would classify the whole teaching row.",
+      "required_action": "Author GOV-LES-T1-W01-CORRECTED-WEEK from taught or well-established content only, with complete answers and marking that sums exactly, then upgrade only the entries it fully covers and bind its lesson id. Do not infer a key from the source. When the first reviewed plan exists, confirm that its identified_rows contain the row id above and correct the three SUPPORTED entries if it differs.",
+      "affected_ids": [
+        "COV-GOV-T1-W01-INSTITUTION-MEANING",
+        "COV-GOV-T1-W01-INSTITUTION-NEED",
+        "COV-GOV-T1-W01-ART-OF-GOVERNING",
+        "COV-GOV-T1-W01-ACADEMIC-FIELD",
+        "COV-GOV-T1-W01-WHY-STUDY",
+        "COV-GOV-T1-W01-READING",
+        "COV-GOV-T1-W01-ASSESSMENT-KEYS",
+        "GOV-LES-T1-W01-CORRECTED-WEEK",
+        "SS1-SRC-40ce7dcaf672"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-W01-HOBBES-CORRECTION",
+      "kind": "FACT",
+      "detail": "Source line 53 says the society without government is what Thomas Hobbes 'referred to as a primitive society', where life is 'solitary, poor, wicked and short'. Checked against Hobbes, Leviathan (1651), Part I, chapter XIII (consulted through web copies on 2026-11-07, not a page-cited edition): Hobbes's wording is 'solitary, poore, nasty, brutish, and short'; 'wicked' is not his word; 'primitive society' is not his term (he writes of the natural condition of mankind and a war of every man against every man); and his illustration from peoples of America is a seventeenth-century claim, not established fact. Line 54 also states the surrender of natural rights to government as plain fact, which is a contested contract account. The source wording stays as printed in the original lesson; the corrected teaching is a delivery replacement, not an edit of the source.",
+      "required_action": "In GOV-LES-T1-W01-CORRECTED-WEEK, teach Hobbes's argument attributed to Leviathan Part I ch. XIII in original wording, give any quoted primary wording separately and labelled as Hobbes's (short quotation only), cite a page- or section-level edition with its date, present the social-contract account and its alternatives neutrally with attribution and no endorsement, and add a delivery_corrections entry binding SS1-SRC-40ce7dcaf672:BODY:cbce46f8555ccf042f113c0d5694daeb0e617e2cb7dfdb915fe1c7b939990e04 to the replacement. Do not paste the source's 'wicked' version into the replacement.",
+      "affected_ids": [
+        "COV-GOV-T1-W01-INSTITUTION-NEED",
+        "COV-GOV-T1-W01-ASSESSMENT-KEYS",
+        "GOV-LES-T1-W01-CORRECTED-WEEK",
+        "SS1-SRC-40ce7dcaf672"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-W01-WEEKEND-KEY",
+      "kind": "OWNER_ACTION",
+      "detail": "The source gives no key for the five weekend questions (lines 89-98). Three are derivable from the span (Q2 Thomas Hobbes, Q3 none of the above, Q4 anarchy) but Q2's stem uses the 'primitive society' framing. Two need a teacher choice: Q1 'The study of government helps us to' (line 89-90) is not supported by the span, and Q5 'One basic principle of government is' (lines 97-98) is not supported by the span for any option. Options: (A) the owner or subject teacher confirms intended keys for Q1 and Q5 (recommended: confirm Q1 'know our rights' as the only option consistent with the subject, and say whether Q5 intends 'separation of power'), and Q2's stem is reworded in delivery to refer to Hobbes's account of the natural condition of mankind; (B) Q1 and Q5 are left out of keyed practice until Week 2 is indexed and a teacher is available; (C) Q1 and Q5 are replaced by original questions on the taught text. This is a curriculum choice, not routine drafting.",
+      "required_action": "Owner chooses A, B or C and records the choice with a reference; do not invent a reference. GOV-LES-T1-W01-CORRECTED-WEEK may proceed on everything else, and must not state a Q1 or Q5 answer in any package field before the choice is recorded.",
+      "affected_ids": [
+        "COV-GOV-T1-W01-ASSESSMENT-KEYS",
+        "COV-GOV-T1-W01-WHY-STUDY",
+        "GOV-LES-T1-W01-CORRECTED-WEEK",
+        "SS1-SRC-40ce7dcaf672"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "GOVERNMENT-T1-W01-FACT-CHECKS",
+      "kind": "FACT",
+      "detail": "Week 1 items to settle before the text is delivered as teaching: (1) the reading assignment at lines 84-86 (Essential Government, C.C. Dibie, pages 1-2; Comprehensive Government, J.U. Anyaele, pages 6-7) was not checked against the books, which were not supplied, and no page is copied; (2) the three-organ division at lines 65-67 is stated as a general fact and needs a dated primary constitutional citation for the Nigerian arrangement, and '(House of Assembly)' at line 67 names a state legislature only; (3) 'This study is called political science' at line 72 equates a school subject with a discipline; (4) the first evaluation (lines 58-60) asks about the academic field before it is taught (line 69) and repeats at 74-76; (5) retained printed wording: 'complimentary' (line 65), 'WEEKEND ASSINGMENT' (line 88) and the 'Process or Art' heading (line 49, 62) against the scheme's 'Art' (line 26). Items (5) are printed wording, retained uncorrected; no delivery correction is authored here.",
+      "required_action": "A reader of the two books confirms the page ranges and that the pages cover meaning and scope; GOV-LES-T1-W01-CORRECTED-WEEK cites the Nigerian constitutional text with its date and distinguishes state and federal legislatures, distinguishes the school subject from political science, and orders delivered practice after lines 69-72. Do not invent a reference.",
+      "affected_ids": [
+        "COV-GOV-T1-W01-READING",
+        "COV-GOV-T1-W01-ART-OF-GOVERNING",
+        "COV-GOV-T1-W01-ACADEMIC-FIELD",
+        "GOV-LES-T1-W01-CORRECTED-WEEK",
+        "SS1-SRC-40ce7dcaf672"
       ],
       "blocks_delivery": true
     }
