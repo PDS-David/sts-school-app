@@ -25,7 +25,8 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "DP-INV-T1 appended the 1st Term inventory items (21) and is IMPLEMENTED_TESTING_DEFERRED. Counts below reflect items, not content completeness: the 21 new items are PENDING because no coverage, lesson, visual disposition, preservation record or factual correction has been written. Week count is ten, from the document itself (DP-INV-T1.md).",
     "DP-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, week-indexing and visual items; the 3rd Term inventory remains unread. The document has no Week 1, scheme or revision/examination marker, recorded as source gaps. No lesson, coverage entry, rule, correction or asset was written.",
-    "DP-WK-T1-W01 (2026-11-05) indexed the 1st Term Week 1 body at objective level and appended 5 follow-up items (4 LESSON, 1 FACTUAL_DEPENDENCY). Counts below reflect items, not content completeness: no Week 1 coverage entry carries a lesson, and the week is indexed rather than certified or fully taught."
+    "DP-WK-T1-W01 (2026-11-05) indexed the 1st Term Week 1 body at objective level and appended 5 follow-up items (4 LESSON, 1 FACTUAL_DEPENDENCY). Counts below reflect items, not content completeness: no Week 1 coverage entry carries a lesson, and the week is indexed rather than certified or fully taught.",
+    "DP-VIS-T1-W01-CYCLE (2026-11-06) disposed of the two Week 1 arrow drawings as a readable ordered relationship in the first package lesson, SUP-SS1-DATA-PROCESSING-T1-W01-INPUT-PROCESSING-OUTPUT; COV-DP-T1-W01-CYCLE-DIAGRAM is IMPLEMENTED_EQUIVALENT, not SUPPORTED, because the diagram itself is still not delivered and DATA-PROCESSING-T1-W01-CYCLE-DIAGRAM-MISSING stays blocking. Counts below reflect items, not content completeness: 11 PARTIAL and 6 UNRESOLVED Week 1 coverage entries still carry no lesson, and the six-stage cycle and the Week 1 assessment key are untouched."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -40,8 +41,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "PENDING": 42,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 41,
     "BLOCKED": 2
   },
   "items": [
@@ -784,8 +785,8 @@
         "DP-INV-T1",
         "DP-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "PENDING - by design: no coverage entry or rule is written. Inventory evidence: docs/ss1/work/microtasks/data-processing/DP-INV-T1.md (Diagrams; VML shapes at body children 51 and 83).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/data-processing.json: first lesson in the package - SUP-SS1-DATA-PROCESSING-T1-W01-INPUT-PROCESSING-OUTPUT (39 body lines, 5,209 chars, body SHA-256 ebe36255422aee084fbd0aeef8500012536538ca39f95430081cfb422807e5c7; 3 objectives; 4 answered exercises DP1W1-Q1..Q4 worth 5+4+3+3 = 15 marks; 2 provenance entries, url null, reuse_status PERMITTED; state PENDING/IMPLEMENTED/DEFERRED) - and COV-DP-T1-W01-CYCLE-DIAGRAM moved UNRESOLVED -> IMPLEMENTED_EQUIVALENT with that lesson bound. Disposition: readable text, not an image. The flow is written out as INPUT -> PROCESSING -> OUTPUT and each stage is anchored to the scheme line that supports it (97 for input and for processing, 101 for output, 175 for the same three-part structure in prose, 191-195 for the activity headings in the same order). Both occurrences are recorded as copies of one flow: document children 51 and 83, lines 105 (labels tabbed apart, page division after) and 169 (labels spaced, PROCESSING and OUTPUT pressed together), each carrying two w:pict shapes of type #_x0000_t32, four such shapes in the whole document and no other, and no v:imagedata, a:blip or w:drawing in either paragraph - re-inspected on the standalone member SSS 1/1st Term SS1_/1ST TERM S1 DATA PROCESSING.docx this run (1,056,355 bytes, SHA-256 a74e8492e632dc43368c7fc49e34389ae034381d4da3617b78824998e29e854b). No arrow geometry is claimed as recovered and no source page render is committed; the asset route was deliberately not taken because the brief prefers readable text over a new image asset. Storage (175) and the six-stage cycle (149-163) are kept out of the flow and COV-DP-T1-W01-CYCLE is untouched. Open items DATA-PROCESSING-T1-W01-CYCLE-DIAGRAM-MISSING and DATA-PROCESSING-T1-W01-COVERAGE narrowed and still blocking; DATA-PROCESSING-T1-W01-PARSED-ROW-MISSING narrowed, still non-blocking. Record: docs/ss1/work/microtasks/data-processing/DP-VIS-T1-W01-CYCLE.md. Content approval PENDING, verification DEFERRED; nothing was run against the importer, database or a device - testing deferred by owner.",
       "completion_condition": "The flow has a documented disposition under the existing schema derived only from the surviving labels and adjacent prose; duplicates are recorded; no fabricated geometry or committed source render. Testing deferred by owner."
     },
     {
@@ -1922,7 +1923,6 @@
     "DP-WK-T1-W09",
     "DP-WK-T1-W10",
     "DP-MARK-T1-REVEXAM",
-    "DP-VIS-T1-W01-CYCLE",
     "DP-VIS-T1-W04-TBL-GENERATIONS",
     "DP-VIS-T1-W07-TBL-AGES",
     "DP-VIS-T1-PUBLISHER-MEDIA",
