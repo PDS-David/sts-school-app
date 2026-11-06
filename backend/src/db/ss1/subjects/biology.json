@@ -329,6 +329,96 @@
           "explanation": "No question in blocks 122-132 asks about science, the definition of Biology, Zoology or Botany, the named aspects of block 21, the scientific approach, the process steps, hypothesis, experiment or theory. Week 1's own teaching is therefore untested by the term's first assessment, and the assessment carries a Week 3 requirement. UNRESOLVED for Week 1: recorded by BIOLOGY-T1-W01-ASSESSMENT-MISPLACED, with the bounded supplement BIO-LES-T1-W01-ASSESSMENT appended. No answer key exists for any of these questions (lessons[] length 0) and none is inferred here."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W02-SCHEME-2",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 2, 'Week 2 -Living things and non-living things': the definitions of living and non-living things and the ten characteristics of living things",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 3 (sha256 046f1ca8950cb6ab6a05ba314bcc5a5b61ffd35f81caa7eef9f8529e2d8258be); Week 2 label block 42 (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); blocks 45-67 (range sha256 b3df62db217cd8f9c81d29a180063ba904a53ed482a40499707645cb8a961b37)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982"
+      ],
+      "evidence": [
+        {
+          "locator": "definitions blocks 45-46 (range sha256 f7aded0bf71baf079599156767d19bd2b88cc8aeeda90e754f2c1cf6bb84107c); characteristics blocks 48-67 (range sha256 f7db1d1dab282a6e8bd49197de50900dbdf6d1e3317cb6bec21a87706ff0101b)",
+          "explanation": "Blocks 45-46 define living things (with plants and animals as the examples) and non-living things as lifeless objects. Blocks 49-67 teach ten characteristics, each defined: movement, nutrition (autotrophic and heterotrophic), respiration, excretion, growth, irritability, reproduction (sexual and asexual), adaptation, competition and death. This matches the scheme wording and is taught, not only listed. The source gives no examples of non-living things and no direct contrast beyond the definition; that thinness is recorded in the report and not treated as a missing objective."
+        },
+        {
+          "locator": "BIOLOGY-T1-W01-SCHEME-BODY-MISMATCH; COV-BIO-T1-W01-SCHEME-1",
+          "explanation": "Week 1's scheme line 'Recognizing Living things' has its matching teaching here at blocks 45-87. This row is Week 2's own scheme entry and stays SUPPORTED either way; whether any of it is re-scoped to Week 1 is the decision recorded in BIO-FACT-T1-W01-SCOPE, which neither moves nor rewrites a source block."
+        },
+        {
+          "locator": "Week 2 generic parsed row: label block 42 to the stranded ASSIGNMENT heading at block 122 (parsed body sha256 6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982; original lesson id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982)",
+          "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (lockfile version) and the importer's WEEK_MARKER/parseTopics expression copied verbatim into a private scratch script. That parse yields 28 rows, not ten: the ten scheme lines each start a row, and the combined assignment label WEEK ONE AND TWO (block 123) starts its own row, so Week 2's row stops at block 122. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W02-PLANT-ANIMAL",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Ten differences between plants and animals (taught in Week 2 although the scheme line does not name it)",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 Week 2 heading block 68; blocks 68-87 (range sha256 86037b08f5147933c1cf5864e5cd7c8be4824a4b2e0187ab004051743d47e495); header shapes blocks 69-70",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982"
+      ],
+      "evidence": [
+        {
+          "locator": "blocks 71-87 (ten numbered pairs; growth 71, response to stimuli 73, food storage starch/glycogen 75, sense organs 77, number of parts 78-79, gaseous exchange 80, cell wall and membrane 82, vacuole 83, mode of feeding 85, excretory organs 86)",
+          "explanation": "Each of the ten differences is stated for both plants and animals, so the essay question at block 132 and the glycogen question at block 128 are answerable from taught text. In the parsed body the two header words and the two columns stay on one line separated by tabs and spaces, so the pairing is visible in the text; whether that is enough for delivery is left to BIO-VIS-T1-PLANT-ANIMAL-HDR, which this task does not close."
+        },
+        {
+          "locator": "Week 2 generic parsed row: label block 42 to the stranded ASSIGNMENT heading at block 122 (parsed body sha256 6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982; original lesson id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982)",
+          "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (lockfile version) and the importer's WEEK_MARKER/parseTopics expression copied verbatim into a private scratch script. That parse yields 28 rows, not ten: the ten scheme lines each start a row, and the combined assignment label WEEK ONE AND TWO (block 123) starts its own row, so Week 2's row stops at block 122. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W02-MICROSCOPE",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "The microscope: its parts, their functions and the objective-lens magnifications (taught in Week 2 although no scheme line names it)",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 Week 2 heading block 89 (sha256 13484cd21d28a11ffe4d3604ef510fc23cf2949fc7cd72b1235d521db6d71b68); parts blocks 90-106 (range sha256 2c9af55c6f77e8f2931b14ee18086079f7d5dd0f141b55ace093e2d98df3c880); diagram heading block 108 (sha256 79390fe49e77c44ba799a16d9dbe9a26df6a618a5f7676572bb9034a8c28e818) and image block 109 (media/image1.jpeg); blocks 108-121 (range sha256 d13b100ab9a3fcc8651de525bedb373fe6dd3715539b9b3733b6621f3a4205ce)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982"
+      ],
+      "evidence": [
+        {
+          "locator": "blocks 92-106 (range sha256 e6554a54e15a13ba6b4e5380ae794afaba8ce66197cb075836d8e69d9f8c434a)",
+          "explanation": "The written parts list is taught: eyepiece (x10), body tube, revolving nose piece with objectives x4, x10 and x40, coarse and fine focus, arm, stage with clips and hole, condenser, mirror and base, each with a function. The week has no question on the microscope."
+        },
+        {
+          "locator": "diagram heading block 108 and the thirteen blocks 109-121 that follow it",
+          "explanation": "The only labelled microscope figure is the image at block 109 (media/image1.jpeg). Text extraction gives block 108 followed by empty lines, so the parsed lesson shows the heading with no figure, and the package has no assets[] entry. Taught in the source, not yet deliverable as a whole: the disposition of the figure remains with BIO-VIS-T1-MICROSCOPE, which this task does not close and does not duplicate."
+        },
+        {
+          "locator": "Week 2 generic parsed row: label block 42 to the stranded ASSIGNMENT heading at block 122 (parsed body sha256 6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982; original lesson id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982)",
+          "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (lockfile version) and the importer's WEEK_MARKER/parseTopics expression copied verbatim into a private scratch script. That parse yields 28 rows, not ten: the ten scheme lines each start a row, and the combined assignment label WEEK ONE AND TWO (block 123) starts its own row, so Week 2's row stops at block 122. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W02-ASSESSMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Disposition of the combined 'WEEK ONE AND TWO' assignment: four objective questions and one essay",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 122-132 (range sha256 446679e98fe2de07ff9266dde247ee2923865140ca99a907e5677b4bf9590304); label block 123 (sha256 fc089902cb7e989b14ac612760156fae7424f882f9974592ce4a907c0f1f904e); questions 124-132",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Q1 blocks 124-125 (range sha256 4afc00ad436fb4c1d2486926e6e85bedabccea5a27712c906bf563a61b55a166); Week 3 ranks blocks 134-143 (range sha256 61f3ebaa12c6471ed4e020335c1b57511ca518ae0642ac78f810af664ebbf79d)",
+          "explanation": "Question 1 asks which of class, kingdom, phylum and species embraces the rest. The ranks are taught only in Week 3 (blocks 134-143), so the question precedes its teaching."
+        },
+        {
+          "locator": "Q2 blocks 126-127 (range sha256 bcf23c55457e2fba37076af765e5fb811f5ec8b317b8c0c99b6971393617f7c5); Q3 blocks 128-129 (range sha256 6621f634ef0afe2cfc24efbb45d17e9fa2e18a995e32fd96a77efe265ca0d378); Q4 block 130 (sha256 7d0913a0987a48bdae1474fa00696ef56eb2357982b4c7cf14c585a2d6ff9ab6); Essay block 132 (sha256 40df9512d9419a0aa78bff3364852ca1d7334d6605cb2b9204b796f0b381b5fb)",
+          "explanation": "Q3 is answerable from block 75 (glycogen) and Q4 from block 57 (respiration) and the essay from blocks 71-87. Q2 asks what most plants cannot do, but block 49 defines movement for all living things and only block 73 says plants respond slowly; no block states that plants do not move from place to place, so Q2 rests on an unstated fact. Q4 lists move as an option while block 49 teaches movement as a characteristic of living things, so the stem has more than one defensible option under the source's own teaching. The stem of Q4 is also incomplete in extraction. No answer key exists anywhere in the document and none is supplied here."
+        },
+        {
+          "locator": "parsed rows: Week 2 row ends at the stranded ASSIGNMENT heading (block 122); the questions are the separate parsed row SS1-SRC-422e0e6ddde9:BODY:f427e44113cec4bc2da3efb128aaf1efc8f376a13515e339150b9b9df3ea49b8",
+          "explanation": "The label WEEK ONE AND TWO matches the importer's week marker, so the combined assignment is its own generic row. It is the same block range as COV-BIO-T1-W01-ASSESSMENT; the keyed supplement BIO-LES-T1-W01-ASSESSMENT already exists to disposition the block once, so no duplicate task is created here."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -471,6 +561,47 @@
       "affected_ids": [
         "COV-BIO-T1-W01-THEORY-LAW",
         "BIO-FACT-T1-W01-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 2's scheme entry, the plant/animal differences and the written microscope parts are taught in blocks 45-106 and mapped to the reproduced generic parsed-row id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982. Two gaps remain: the labelled microscope diagram (image at block 109) is not carried by the parsed text and has no asset (COV-BIO-T1-W02-MICROSCOPE, PARTIAL), and the combined assignment (blocks 122-132) has no key, its question 1 precedes the Week 3 ranks, and questions 2 and 4 rest on an unstated fact and on an option the source's own movement teaching also supports (COV-BIO-T1-W02-ASSESSMENT, UNRESOLVED).",
+      "required_action": "Close BIO-VIS-T1-MICROSCOPE for the diagram; author BIO-LES-T1-W01-ASSESSMENT, which already owns the combined assignment, recording the basis for each answer after BIO-FACT-T1-W02-WORDING settles questions 2 and 4. Do not infer a key and do not rewrite the source questions.",
+      "affected_ids": [
+        "COV-BIO-T1-W02-MICROSCOPE",
+        "COV-BIO-T1-W02-ASSESSMENT",
+        "BIO-VIS-T1-MICROSCOPE",
+        "BIO-LES-T1-W01-ASSESSMENT",
+        "BIO-FACT-T1-W02-WORDING"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W02-SOURCE-DEFECTS",
+      "kind": "FACT",
+      "detail": "Week 2 wording that needs an expert check before it is delivered as teaching (source text retained uncorrected): (1) block 55 names autotrophic nutrition 'halophytic' (the usual term is holophytic; halophytic means salt-tolerant); (2) block 56 says heterotrophic nutrition is 'strictly used by animals' and depends on products of plants, which excludes fungi and other non-green heterotrophs while block 75 mentions fungi under plants; (3) block 71 says animal growth is 'definite and interacting' (the sense intended is probably diffuse or intercalary); (4) block 90 says a microscope views organisms 'smaller that 0.001mm which cannot be seen by human naked eyes', a size claim that is not credible as stated; (5) block 49 teaches movement as a characteristic of all living things while question 2 (block 126) treats the ability to move away from stimuli as something most plants lack; (6) typographical run-ons and slips at blocks 82 ('rigid cellulose all wall'), 85 ('autotrophic ally'), 86 ('processes', 'excretorysystem') and 130 (incomplete stem). No size, quantity or safety instruction is given anywhere in blocks 42-132.",
+      "required_action": "Expert confirms or corrects each of items (1) to (5) with a recorded authoritative reference and says whether a delivery replacement is wanted; item (6) is recorded only. Do not invent a reference.",
+      "affected_ids": [
+        "COV-BIO-T1-W02-SCHEME-2",
+        "COV-BIO-T1-W02-PLANT-ANIMAL",
+        "COV-BIO-T1-W02-MICROSCOPE",
+        "COV-BIO-T1-W02-ASSESSMENT",
+        "BIO-FACT-T1-W02-WORDING"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W02-PARSE-ROWS",
+      "kind": "VERIFICATION",
+      "detail": "The generic parse of the 1st Term original was reproduced outside the importer (mammoth 1.12.2 and the importer's parse expression copied verbatim). It yields 28 rows, not the ten weeks: ten rows hold only the scheme lines (blocks 2-11, each begins Week <n>), ten hold the week bodies, and eight come from second labels at the assignments, among them WEEK ONE AND TWO at block 123, which splits the combined assignment from Week 2. Week 2's row is SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982 and the combined assignment row is SS1-SRC-422e0e6ddde9:BODY:f427e44113cec4bc2da3efb128aaf1efc8f376a13515e339150b9b9df3ea49b8. This resolves the split hazard left unverified in BIO-INV-T1 for these labels. No source rule was written, and the three SUPPORTED Week 2 rows and the other Week 2 rows cite the reproduced id.",
+      "required_action": "When the first reviewed plan exists, confirm both ids in identified_rows and correct every Biology row that cites them if they differ; BIO-PRE-T1 decides how the ten scheme-line rows are classified and whether the assignment rows need any rule.",
+      "affected_ids": [
+        "COV-BIO-T1-W02-SCHEME-2",
+        "COV-BIO-T1-W02-PLANT-ANIMAL",
+        "COV-BIO-T1-W02-MICROSCOPE",
+        "BIO-PRE-T1"
       ],
       "blocks_delivery": true
     }

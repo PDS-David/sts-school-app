@@ -24,13 +24,14 @@
     "BIO-INV-T1 (2026-10-28) inventoried the 1st Term original and appended preamble, week-indexing, unlabelled-section and visual items; the 2nd and 3rd Term inventories remain unread. No lesson, coverage entry, rule, correction or asset was written.",
     "BIO-INV-T2 (2026-10-30) inventoried the 2nd Term original (read from a LibreOffice conversion of the .doc) and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "BIO-WK-T1-W06 (2026-11-03) indexed Week 6 at objective level: carbon and water cycles taught in blocks 781-825; sulphur named at 783 but never taught; assignment at 826-833 is Week 7 food-substance and enzyme material. Two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
-    "BIO-WK-T1-W01 (2026-11-05) indexed Week 1 at objective level: Biology and inquiry taught at blocks 15-40 (six PARTIAL entries); the scheme's Week 1 objective 'Recognizing Living things' has no teaching in 13-41 while the matching teaching sits at 45-87 inside Week 2's range; the process steps named at 27 are defined nowhere; the term's first assignment (122-132) is combined with Week 2 and tests none of Week 1's teaching, with question 1 needing Week 3's ranks. Two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written."
+    "BIO-WK-T1-W01 (2026-11-05) indexed Week 1 at objective level: Biology and inquiry taught at blocks 15-40 (six PARTIAL entries); the scheme's Week 1 objective 'Recognizing Living things' has no teaching in 13-41 while the matching teaching sits at 45-87 inside Week 2's range; the process steps named at 27 are defined nowhere; the term's first assignment (122-132) is combined with Week 2 and tests none of Week 1's teaching, with question 1 needing Week 3's ranks. Two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
+    "BIO-WK-T1-W02 (2026-11-06) indexed Week 2 at objective level: scheme entry 2 and the plant/animal differences SUPPORTED against the reproduced generic parsed-row id; the microscope diagram is not carried (PARTIAL) and the combined assignment is unkeyed with two questions resting on unstated facts (UNRESOLVED). The generic parse reproduced outside the importer gives 28 rows, including a separate WEEK ONE AND TWO assignment row and ten scheme-line rows. One BLOCKED expert-decision item was appended. No source byte, rule, correction, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 3,
+    "FACTUAL_DEPENDENCY": 4,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_WEEK_INDEXING": 20,
     "SOURCE_SECTION_INDEXING": 2,
@@ -39,9 +40,9 @@
     "LESSON": 4
   },
   "status_counts": {
-    "PENDING": 53,
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "BLOCKED": 3
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "PENDING": 52,
+    "BLOCKED": 4
   },
   "items": [
     {
@@ -416,8 +417,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 42 \"WEEK TWO\" (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); blocks 42-132; range sha256 3f8bb1d8f9370ac595b47404008b1aab7e570100bb966d0d660e6683ec7cb5d9. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 3): 'Week 2 -Living things and non-living things'. Body: characteristics of living things (48-67), plant/animal differences laid out with tabs and two header shapes (68-87), microscope parts and diagram (89-109). Block 122 'ASSIGNMENT' and block 123 'WEEK ONE AND TWO' carry a combined Weeks 1-2 assignment (blocks 124-132); question 1 (block 124, 'Which of the following groups embraces the rest?') tests classification ranks that the document teaches in Week 3.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BIO-INV-T1): label block 42 \"WEEK TWO\" (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); blocks 42-132; range sha256 3f8bb1d8f9370ac595b47404008b1aab7e570100bb966d0d660e6683ec7cb5d9. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 3): 'Week 2 -Living things and non-living things'. Body: characteristics of living things (48-67), plant/animal differences laid out with tabs and two header shapes (68-87), microscope parts and diagram (89-109). Block 122 'ASSIGNMENT' and block 123 'WEEK ONE AND TWO' carry a combined Weeks 1-2 assignment (blocks 124-132); question 1 (block 124, 'Which of the following groups embraces the rest?') tests classification ranks that the document teaches in Week 3. Indexing result (2026-11-06): scheme entry 2 mapped to blocks 45-67 and the plant/animal differences to blocks 68-87, both SUPPORTED against the reproduced generic parsed-row id SS1-SRC-422e0e6ddde9:BODY:6f2bd20850d12e8d95dde39942900335096dd5ff5510b2bb3e90023e2ef2d982; the microscope parts (92-106) are taught but the diagram (image at block 109) is not carried, so COV-BIO-T1-W02-MICROSCOPE is PARTIAL; the combined assignment (122-132) has no key, question 1 precedes the Week 3 ranks and questions 2 and 4 rest on an unstated fact and on the source's own movement teaching, so COV-BIO-T1-W02-ASSESSMENT is UNRESOLVED. The parse reproduced outside the importer gives 28 rows: WEEK ONE AND TWO (block 123) is its own row SS1-SRC-422e0e6ddde9:BODY:f427e44113cec4bc2da3efb128aaf1efc8f376a13515e339150b9b9df3ea49b8 and the ten scheme lines are rows. No experiments, quantities or safety text occur in blocks 42-132. Open items BIOLOGY-T1-W02-COVERAGE, BIOLOGY-T1-W02-SOURCE-DEFECTS and BIOLOGY-T1-W02-PARSE-ROWS added; BIO-FACT-T1-W02-WORDING appended; the existing BIO-VIS-T1-MICROSCOPE, BIO-VIS-T1-PLANT-ANIMAL-HDR and BIO-LES-T1-W01-ASSESSMENT cover the figure, header shapes and keyed assessment, so no duplicate task was created; record docs/ss1/work/microtasks/biology/BIO-WK-T1-W02.md. Implemented, not approved or verified.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -2406,6 +2407,45 @@
       "status": "BLOCKED",
       "implementation_reference": "Raised by BIO-WK-T1-W01 (2026-11-05): COV-BIO-T1-W01-SCHEME-1, -PROCESS-GAP and -ASSESSMENT are UNRESOLVED, six further entries are PARTIAL, and BIOLOGY-T1-W01-COVERAGE, -SCHEME-BODY-MISMATCH, -ASSESSMENT-MISPLACED, -SOURCE-DEFECTS and -THEORY-LAW-FACT are open and blocking. No correction, definition, branch content or lesson is invented here.",
       "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "id": "BIO-FACT-T1-W02-WORDING",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 2, blocks 49, 55-56, 71, 85-86, 90, 126, 130; objectives COV-BIO-T1-W02-SCHEME-2, COV-BIO-T1-W02-MICROSCOPE and COV-BIO-T1-W02-ASSESSMENT",
+      "objective": "Obtain one recorded subject-expert decision on each numbered item of BIOLOGY-T1-W02-SOURCE-DEFECTS: (1) 'halophytic' at block 55; (2) 'strictly used by animals' at block 56; (3) 'interacting' at block 71; (4) the 0.001mm size claim at block 90; (5) movement as a characteristic of all living things (block 49) against question 2 (block 126) and question 4 (block 130); say for each whether a delivery replacement is wanted. Cite the textbook or curriculum authority the teacher actually uses. Do not supply answers to the source's objective items without recording their basis.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W02-WORDING.md"
+      ],
+      "depends_on": [
+        "BIO-SRC-T1",
+        "BIO-WK-T1-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Not decided. Required by BIO-WK-T1-W02 (2026-11-06): BIOLOGY-T1-W02-SOURCE-DEFECTS is open and no expert reference is recorded and none may be invented. BIO-WK-T1-W02 supplies no corrected wording.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; any delivery replacement the expert wants becomes its own bounded lesson item; no correction is invented and no lesson is authored here."
     }
   ],
   "review": {
@@ -2422,9 +2462,7 @@
   },
   "next_runnable": [
     "BIO-INV-T3",
-    "BIO-TEST-PACKAGE",
     "BIO-PRE-T1",
-    "BIO-WK-T1-W02",
     "BIO-WK-T1-W03",
     "BIO-WK-T1-W04",
     "BIO-WK-T1-W05",
