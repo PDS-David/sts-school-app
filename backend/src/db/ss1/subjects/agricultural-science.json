@@ -153,6 +153,106 @@
           "explanation": "The only teaching mention of forestry is block 560, in Week 7's uses of land, and it gives one sentence on managing forest land and its resources. It names no taungya, forest regulation, afforestation or reforestation. The string 'taungya' occurs only at block 794; 'afforestation', 'reforestation' and 'forest regulation' only at block 801; 'selective' only at block 801. Week 9's body never mentions forestry. Asked, never taught: UNRESOLVED. The bounded supplement AG-LES-T1-W09-FORESTRY is appended."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T1-W01-MEANING",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme entry 1, content item ‘Meaning of Agriculture’: the definition of agriculture and the Latin origin of the term",
+      "objective_locator": "SS1-SRC-7aa642b0085b scheme block 12 (sha256 0dcbcabe06920b2bccb6b073795531640607ee347e00b956c4682f15c9a44cd4); content list block 49 (sha256 1f42269ed8cb542763f77b920d3f7bb3727b2fb6f2ded263797b0e139ac3736f); Week 1 label block 45 (sha256 5eb6b6b00efdf9aae73f1cd5aa450709df1388889b447b0946caafccf24d0182); Meaning blocks 53-59 (range sha256 29937ac965560cfe4abc312bcac16c1901288f410db6d29336095b4c7a2b34a9)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9"
+      ],
+      "evidence": [
+        {
+          "locator": "definition block 54 (sha256 f663367db75b57f43d9f033d30bbdee50668f58853b024227d2a12eb39754248); derivation blocks 56-59 (block 57 sha256 f7a803fa62bf425b038bb010098ae588cbd6e2e12aac4143a64f7393f7265dc8; block 58 sha256 713541d8a45b12dae8dd9b1da8bd5527808d098db70043406f179948b994f7f5)",
+          "explanation": "Block 54 defines agriculture as cultivation of crops and rearing of animals, from production to distribution and marketing; blocks 56-59 give the two Latin roots, their meanings, and why field cultivation alone is incomplete because animals are also covered. The objective is taught in the source text itself, not only mentioned."
+        },
+        {
+          "locator": "Evaluation blocks 60-63 (range sha256 6ea2d9ec054653918a4a68e44dc4e18249f3942afb3fe12c79a61ddb9b1519b4); Weekend MCQ 1 blocks 127-128 (block 127 sha256 db2262c12f4da099773d63b83343be0229141c551f9917caeee0d1575ec4d451)",
+          "explanation": "The two evaluation questions and weekend question 1 are answerable from blocks 54 and 57-58. The source gives no key; none is supplied here. Block 58 spells the Latin noun ‘Culture’ while block 127 spells it ‘Cultura’; both are retained uncorrected and recorded in AGRICULTURAL-SCIENCE-T1-W01-FACT-CHECKS."
+        },
+        {
+          "locator": "Week 1 generic parsed row: label block 45 to block 140 (parsed body sha256 eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9; original lesson id SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9)",
+          "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (the repository lockfile version) extractRawText and the importer's WEEK_MARKER/parseTopics expression, copied verbatim into a private scratch script. It yields ten rows (WEEK 1 to WEEK 10); the eleven WEEKEND ASSIGNMENT lines and the scheme header do not start a row, so the weekend MCQ and theory stay inside this row. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W01-BRANCHES",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme entry 1, content item ‘Branches of Agriculture’: the eleven branches and what each contributes (the three crop-science aspects are tracked separately in COV-AG-T1-W01-CROP-SCIENCE-ASPECTS)",
+      "objective_locator": "SS1-SRC-7aa642b0085b scheme block 12 (sha256 0dcbcabe06920b2bccb6b073795531640607ee347e00b956c4682f15c9a44cd4); content list block 50 (sha256 9edbd72a6e98fcd1211a0534919432667369db0d992d422dbc051d6f40778807); Branches blocks 65-90 (range sha256 eb08e1019be3162bc3067ebbc22e732ea5ab4e25893e842ed0c92251be8051bd)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9"
+      ],
+      "evidence": [
+        {
+          "locator": "blocks 65-90 (eleven numbered branches: animal science; veterinary medicine; soil science; crop production; agricultural economics and farm management; agricultural engineering; extension and education; forestry and wildlife; fishery; apiculture; heliculture)",
+          "explanation": "Each of the eleven branches carries a sentence stating its role (for example veterinary medicine at blocks 69-71 and extension at blocks 82-83), so the objective is taught at objective level."
+        },
+        {
+          "locator": "Evaluation Q2 block 94 (sha256 76ae030cabc2c012e62ac069149c35ff82b95a143ad0d6302dc66f76504f1887); General Evaluation 2 block 117 (sha256 4f9fea1614ff8ed7daf4f6bf84d8b81ea3d26e272dc7bb9163e4239fe383e478); Theory 2 block 140 (sha256 0813725b357533857e8caa82d64d36843e89b1f1c3a6cd9a394f2107bfd73b55)",
+          "explanation": "Three functions of veterinary medicine and of extension are available from blocks 69-71 and 82-83. The source asks for eight (block 117) and ten (block 140) branches while eleven are taught; asking for fewer than are taught is not a scope defect, which resolves the branch-count query left open in AG-INV-T1. The source gives no key for these items."
+        },
+        {
+          "locator": "Week 1 generic parsed row: label block 45 to block 140 (parsed body sha256 eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9; original lesson id SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9)",
+          "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (the repository lockfile version) extractRawText and the importer's WEEK_MARKER/parseTopics expression, copied verbatim into a private scratch script. It yields ten rows (WEEK 1 to WEEK 10); the eleven WEEKEND ASSIGNMENT lines and the scheme header do not start a row, so the weekend MCQ and theory stay inside this row. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W01-IMPORTANCE",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme entry 1, content item ‘Importance of Agriculture’: the ten stated importances, including raw materials for agro-based industries",
+      "objective_locator": "SS1-SRC-7aa642b0085b scheme block 12 (sha256 0dcbcabe06920b2bccb6b073795531640607ee347e00b956c4682f15c9a44cd4); content list block 51 (sha256 adc5f50ae47a118aa5a6d255912ce9ab357c7cd8ab5507d6bc8011ce7f920a92); Importance blocks 97-107 (range sha256 f6fc7c792fd3269e4b580e3d2850a3a15f3bfd771de9182002f26ffd589d9a42)",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9"
+      ],
+      "evidence": [
+        {
+          "locator": "blocks 98-107 (range sha256 d00619a9c16e5c6f61934f5f151b72fc4be3d952b91f65b8d99295e233ef580d): food, clothing, shelter and furniture, income, employment, raw materials for industries, foreign exchange, market for industrial goods, rural development, recreation and tourism",
+          "explanation": "Exactly ten importances are taught, each with an explanation, so the five-item and ten-item questions at blocks 111, 120 and 139 are answerable from this span. Block 103 names cotton and wool (textile), cocoa, coffee, tea and kola nut (beverage) and rubber latex (tyres and foam), which supports the raw-material question at block 113."
+        },
+        {
+          "locator": "cross-week: Week 1 blocks 95, 112, 118, 135 versus Week 6 blocks 481-486 (block 482 definition; block 486 table of ten agro-based industries and raw materials)",
+          "explanation": "Week 1 asks what agro-based industries are (block 95; defined in the parenthesis of block 103), for five examples (block 112; block 103 names only textile, beverage, tyre and foam industries), for agro-allied industries and five examples (block 118) and in weekend MCQ 5 (block 135, which needs soap and paper). The full teaching of these is Week 6’s topic, so it is recorded as a cross-week dependency for AG-WK-T1-W06, not treated as missing Week 1 teaching and not rewritten as a Week 1 objective."
+        },
+        {
+          "locator": "Week 1 generic parsed row: label block 45 to block 140 (parsed body sha256 eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9; original lesson id SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9)",
+          "explanation": "Id reproduced, not importer-generated: the original was read with mammoth 1.12.2 (the repository lockfile version) extractRawText and the importer's WEEK_MARKER/parseTopics expression, copied verbatim into a private scratch script. It yields ten rows (WEEK 1 to WEEK 10); the eleven WEEKEND ASSIGNMENT lines and the scheme header do not start a row, so the weekend MCQ and theory stay inside this row. The id must be confirmed against identified_rows of the first reviewed plan; the importer, compiler and database were not run."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W01-CROP-SCIENCE-ASPECTS",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Definitions of the three aspects of crop production: agronomy, crop pathology and entomology",
+      "objective_locator": "SS1-SRC-7aa642b0085b Week 1 block 77 (sha256 123feadbedd18ec1767626dc1138178cbef6a9490650ab27d554f7eee9e06ce1); Evaluation Q1 blocks 92-93 (range sha256 59a54c48b03190181c0bcdea02ec30d0ef299f0904d2eb22ab6732bb43f3149e); General Evaluation 6 block 122 (sha256 f9e58c8259380c8bf9c107717fc13bdc49fb1013d6d5f7da625d9892d92cea50); Weekend MCQ 2-3 blocks 129-132 (range sha256 b18bbeb63acdaa05fbd38f5ce42656c011c071676dc19ae030d02e5fb11dfb2b)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 77 versus blocks 93, 122, 129, 131-132; term-wide search of all 933 blocks",
+          "explanation": "Block 77 only lists agronomy, crop pathology and entomology as aspects of crop production. Blocks 93 and 122 ask the learner to define them and weekend MCQs 2 and 3 test what entomology and pathology study. A string search for agronom, entomolog/enthomolog and patholog over all 933 blocks finds them only at blocks 77, 93, 122, 129, 131 and 132, so no block defines any of the three. This is missing teaching, not a heading that hides teaching. The source spells the term ‘Enthomology’ at blocks 93 and 122 and ‘Entomology’ at block 129; retained uncorrected. No definition is invented here; bounded follow-up AG-LES-T1-W01-CROP-ASPECTS is appended."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-W01-ASSESSMENT-KEYS",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Answers and marking for Week 1’s evaluation, general evaluation, weekend and theory questions",
+      "objective_locator": "SS1-SRC-7aa642b0085b Week 1 blocks 60-63, 91-95, 110-113, 115-122 (range sha256 dadeba15d9f21fee1b443d823ea8225527287e0ed10fcd739391933a4ece7b35), 126-136 (range sha256 c2b0a72dad10c6ce1f763691f19ab870c9b81179043f9e1e67705340faa1134e) and 137-140 (range sha256 cb2989d48f4970637de39a1624a411362eb47237f25476b0e63c2264a9ffe60f)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 126-140 (range sha256 762fd489d978a13f7f33ea8f7dee8c9fdfc7cb5f1bfa471825c457e6f68774d1)",
+          "explanation": "The five weekend multiple-choice questions and two theory questions carry no answers or mark scheme, and no block in the document contains an answer key or marking guide (a search for answer, marking and key finds nothing). Most are answerable from taught text, but weekend Q4 (block 133, ‘most important reason’) asks for a ranking that no block states, and weekend Q5 (block 135) depends on Week 6 teaching (blocks 481-486). Bounded follow-up AG-LES-T1-W01-KEYED-PRACTICE is appended; no answer is fabricated here."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -212,6 +312,32 @@
       "affected_ids": [
         "SS1-SRC-7aa642b0085b",
         "AG-FACT-T1-W09-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1’s three scheme content items (meaning, branches, importance) are taught in blocks 53-107 and mapped SUPPORTED to the reproduced generic parsed-row id SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9. Two gaps remain. (1) Agronomy, crop pathology and entomology are listed at block 77 and asked at blocks 93, 122 and 129-132 but defined nowhere in the 1st Term document (COV-AG-T1-W01-CROP-SCIENCE-ASPECTS, UNRESOLVED). (2) The source supplies no answers or marking for the evaluation, weekend or theory items, and weekend Q4 (block 133) and Q5 (block 135) need a judgement or Week 6 teaching (COV-AG-T1-W01-ASSESSMENT-KEYS, UNRESOLVED). The row id was reproduced outside the importer.",
+      "required_action": "Author AG-LES-T1-W01-CROP-ASPECTS, then AG-LES-T1-W01-KEYED-PRACTICE, from taught or well-established content only, with complete answers and marking that sums exactly; do not infer a key from the source. When the first reviewed plan exists, confirm that its identified_rows contain the id above and correct the three SUPPORTED rows if it differs.",
+      "affected_ids": [
+        "COV-AG-T1-W01-CROP-SCIENCE-ASPECTS",
+        "COV-AG-T1-W01-ASSESSMENT-KEYS",
+        "COV-AG-T1-W01-MEANING",
+        "COV-AG-T1-W01-BRANCHES",
+        "COV-AG-T1-W01-IMPORTANCE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W01-FACT-CHECKS",
+      "kind": "FACT",
+      "detail": "Week 1 wording that needs an expert check before the text is delivered as teaching: (1) block 58 gives the Latin root as ‘Culture’ while block 127 uses ‘Cultura’ (the Latin noun is cultura); (2) block 107 says agriculture leads to game reserves and provides horses for horse racing and polo, which is a loose claim; (3) block 103 defines agro-based industries as those depending on agriculture for raw materials while block 105 uses ‘agro-allied industries’ for suppliers of fertilizers, pesticides, tools and machines, and Week 6 block 482 treats agro-allied and agro-based as the same; (4) block 131-132 gives pathology as the study of diseases of crops and animals while block 77 lists crop pathology as an aspect of crop production; (5) reading pages at blocks 124-125 (Iwena pages 2-6, Okafor pages 1-4) were not checked against the books. Items (1) to (4) are source wording and are retained uncorrected; no delivery correction is authored here.",
+      "required_action": "Expert confirms or corrects each of items (1) to (4) with a recorded reference and says whether a delivery replacement is wanted; item (5) is checked against the listed books. Do not invent a reference.",
+      "affected_ids": [
+        "COV-AG-T1-W01-MEANING",
+        "COV-AG-T1-W01-IMPORTANCE",
+        "COV-AG-T1-W01-CROP-SCIENCE-ASPECTS"
       ],
       "blocks_delivery": true
     }

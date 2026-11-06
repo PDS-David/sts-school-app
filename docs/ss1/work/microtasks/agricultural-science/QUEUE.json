@@ -23,7 +23,8 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "AG-INV-T1 (2026-10-28) inventoried the 1st Term original and appended the preamble, marker, week-indexing and visual items; the 2nd and 3rd Term inventories remain unread. No lesson, coverage entry, rule, correction or asset was written.",
     "AG-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
-    "AG-WK-T1-W09 (2026-11-03) indexed Week 9 at objective level: scheme entry 9 taught in blocks 721-843; farmstead (785-786) and forestry (793-801, 855) untaught anywhere in the term; two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written."
+    "AG-WK-T1-W09 (2026-11-03) indexed Week 9 at objective level: scheme entry 9 taught in blocks 721-843; farmstead (785-786) and forestry (793-801, 855) untaught anywhere in the term; two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
+    "AG-WK-T1-W01 (2026-11-06) indexed Week 1 at objective level: scheme entry 1 mapped to blocks 53-107 as three SUPPORTED rows against the reproduced generic parsed-row id; agronomy, crop pathology and entomology (block 77) are never defined and the source has no answer key, so two UNRESOLVED rows and two bounded lessons were appended. The agro-based/agro-allied items at blocks 95, 112, 118 and 135 depend on Week 6. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -34,12 +35,12 @@
     "SOURCE_MARKER_DISPOSITION": 4,
     "SOURCE_WEEK_INDEXING": 17,
     "VISUAL_DISPOSITION": 7,
-    "LESSON": 2
+    "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "BLOCKED": 2,
-    "PENDING": 33
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "PENDING": 34,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -452,8 +453,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 45 text \"WEEK 1                 DATE ………………………………\" (sha256 5eb6b6b00efdf9aae73f1cd5aa450709df1388889b447b0946caafccf24d0182); blocks 45-142; range sha256 2c35bf392e022db022285268ace50e651d3ba15cff8c9a462194bb41bca4ac00. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Introduction to Agriculture: Meaning, Branches and Importance of Agriculture. Sub-sections: Meaning (blocks 53-63), Branches (65-95, eleven numbered branches), Importance (97-113, ten lead-in items), General Evaluation (115-122), Reading (123-125), Weekend MCQ 1-5 (126-136) and Theory (137-140). Source-text inconsistencies to check later, not corrected here: block 58 gives 'Culture' while block 127 uses 'Cultura'; 'Enthomology' (blocks 93, 122) vs 'Entomology' (block 129); General Evaluation 2 asks for eight branches (block 117), Theory 2 for ten (block 140), the text lists eleven.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (AG-INV-T1): label block 45 text \"WEEK 1                 DATE ………………………………\" (sha256 5eb6b6b00efdf9aae73f1cd5aa450709df1388889b447b0946caafccf24d0182); blocks 45-142; range sha256 2c35bf392e022db022285268ace50e651d3ba15cff8c9a462194bb41bca4ac00. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Introduction to Agriculture: Meaning, Branches and Importance of Agriculture. Sub-sections: Meaning (blocks 53-63), Branches (65-95, eleven numbered branches), Importance (97-113, ten lead-in items), General Evaluation (115-122), Reading (123-125), Weekend MCQ 1-5 (126-136) and Theory (137-140). Source-text inconsistencies to check later, not corrected here: block 58 gives 'Culture' while block 127 uses 'Cultura'; 'Enthomology' (blocks 93, 122) vs 'Entomology' (block 129); General Evaluation 2 asks for eight branches (block 117), Theory 2 for ten (block 140), the text lists eleven. Indexing result (2026-11-06): scheme entry 1 split into its three content items. COV-AG-T1-W01-MEANING (blocks 53-59), COV-AG-T1-W01-BRANCHES (blocks 65-90) and COV-AG-T1-W01-IMPORTANCE (blocks 97-107) are SUPPORTED against the reproduced generic parsed-row id SS1-SRC-7aa642b0085b:BODY:eb23c6d757163ec4e7bfce9f79ede198e00e4437be3317ac9781b3e9dec6c2b9 (ten rows reproduced with mammoth 1.12.2 and the importer’s parse expression; the importer was not run, so the id is to be confirmed by the first reviewed plan). COV-AG-T1-W01-CROP-SCIENCE-ASPECTS (agronomy, crop pathology, entomology listed at block 77 and asked at 93, 122, 129-132 but never defined) and COV-AG-T1-W01-ASSESSMENT-KEYS (no key anywhere in the source) are UNRESOLVED. Cross-week: agro-based/agro-allied items at blocks 95, 112, 118 and 135 rest on Week 6 blocks 481-486. Open items AGRICULTURAL-SCIENCE-T1-W01-COVERAGE and AGRICULTURAL-SCIENCE-T1-W01-FACT-CHECKS added; AG-LES-T1-W01-CROP-ASPECTS and AG-LES-T1-W01-KEYED-PRACTICE appended; record docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md. Implemented, not approved or verified.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -1562,6 +1563,85 @@
       "status": "BLOCKED",
       "implementation_reference": "Raised by AG-WK-T1-W09 (2026-11-03): the numbered items in AGRICULTURAL-SCIENCE-T1-W09-ASSESSMENT-SCOPE and the untaught objectives COV-AG-T1-W09-FARMSTEAD and COV-AG-T1-W09-FORESTRY. No correction or content is invented here.",
       "completion_condition": "Every numbered item has a named expert decision recorded with evidence and locators; the two lesson items may then bind to that decision; no correction is invented and no lesson is authored here."
+    },
+    {
+      "id": "AG-LES-T1-W01-CROP-ASPECTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, block 77 (sha256 123feadbedd18ec1767626dc1138178cbef6a9490650ab27d554f7eee9e06ce1) and questions at blocks 93, 122, 129-132; objective COV-AG-T1-W01-CROP-SCIENCE-ASPECTS (UNRESOLVED)",
+      "objective": "Author a bounded supplement lesson that defines the three aspects of crop production which Week 1 names at block 77 but never defines: agronomy, crop pathology and entomology. Use the spelling entomology, say exactly whether pathology is taught as the study of crop diseases only or of crop and animal diseases (see item 4 of AGRICULTURAL-SCIENCE-T1-W01-FACT-CHECKS), label the lesson as a Week 1 supplement rather than a replacement for the original, and include practice with complete answers and criterion-level marking that sums exactly. Do not invent doses, rates or handling instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-CROP-ASPECTS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): block 77 lists the three aspects, blocks 93, 122 and 129-132 ask for them, and no block among the 933 defines any of them; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no definition.",
+      "completion_condition": "A lesson in agricultural-science.json teaches the three definitions, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-CROP-SCIENCE-ASPECTS then cites it with evidence; no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "AG-LES-T1-W01-KEYED-PRACTICE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, blocks 60-63, 91-95, 110-113, 115-122, 126-140 (no key in source); objective COV-AG-T1-W01-ASSESSMENT-KEYS (UNRESOLVED)",
+      "objective": "Author a bounded keyed practice supplement for Week 1 that gives complete answers and criterion-level marking for the source’s evaluation, general evaluation, weekend and theory questions, restated in original wording where needed. Answer only from taught blocks 53-107 and the AG-LES-T1-W01-CROP-ASPECTS lesson; where an item needs Week 6 blocks 481-486 (blocks 95, 112, 118 and 135) cite them, and for weekend Q4 (block 133) give the reasoning without claiming the source states a ranking. Do not copy answers from anywhere that is not a taught block.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T1.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W01-KEYED-PRACTICE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W01",
+        "AG-LES-T1-W01-CROP-ASPECTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): no answer key or marking guide exists anywhere in the 1st Term document; COV-AG-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no answer.",
+      "completion_condition": "A lesson in agricultural-science.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
     }
   ],
   "review": {
@@ -1578,11 +1658,9 @@
   },
   "next_runnable": [
     "AG-INV-T3",
-    "AG-TEST-PACKAGE",
     "AG-PRE-T1",
     "AG-MARK-T1-REVISION",
     "AG-MARK-T1-EXAM",
-    "AG-WK-T1-W01",
     "AG-WK-T1-W02",
     "AG-WK-T1-W03",
     "AG-WK-T1-W04",
@@ -1607,6 +1685,7 @@
     "AG-VIS-T2-TBL-CEREALS",
     "AG-VIS-T2-TBL-LEGUMES",
     "AG-VIS-T2-TBL-ROOTS",
-    "AG-VIS-T2-BRANDING"
+    "AG-VIS-T2-BRANDING",
+    "AG-LES-T1-W01-CROP-ASPECTS"
   ]
 }
