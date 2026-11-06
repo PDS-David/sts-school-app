@@ -606,6 +606,27 @@
         "COM-PRES-T1-SOURCE-WORDING"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "COMMERCE-T2-TBL-DOMFOR-REPRESENTATION",
+      "kind": "CONTENT",
+      "detail": "Week 2 block 138 of SS1-SRC-0ccdf9dd3768 is a 4-row x 2-column table (header DOMESTIC TRADE | FOREIGN TRADE, then three contrast rows). The importer's own extractor (mammoth 1.12.2 extractRawText, run on the member whose SHA-256 is c18e2665…2add86) writes the eight cells as eight consecutive paragraphs separated by blank lines, in row-major order, with no column label, delimiter or row grouping. Every cell's text survives and the order is the only thing that keeps each Domestic cell next to its Foreign cell, so the pairs are recoverable by position but are not stated. Numbering '1.', '2.', '3.' appears only on the Domestic cells; the Foreign cells are unnumbered. An earlier note that cells 'concatenate with no separator' describes a plain w:t concatenation, not the importer's output. Whether the app displays the eight paragraphs readably was not checked.",
+      "required_action": "In whichever Week 2 supplement or delivery replacement restates this comparison, write the header and each row as an explicit pair in one line or one labelled item (for example 'Row 2 - Domestic trade: <cell text>; Foreign trade: <cell text>'), keep the original cell wording visible as the source claim, and apply the factual limits recorded in COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS before presenting rows 2 and 3 as teaching. No source character is altered and the original row stays delivered unchanged. Display of the result is not verified here.",
+      "affected_ids": [
+        "SS1-SRC-0ccdf9dd3768"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "COMMERCE-T2-TBL-DOMFOR-FOREIGN-CLAIMS",
+      "kind": "FACT",
+      "detail": "Two Foreign Trade cells state as universal what may hold only generally: row 2 (row index 2, column 1) 'Different currencies used for business' and row 3 (row index 3, column 1) 'Different weight and measures are used'. The paired Domestic cells ('2. Same currency is used to transact business', '3. Same weight and measures are used') and row 1 are not in question here. Not established by this record: whether trading partners that share a currency, or that invoice in a third currency, or that apply the same measurement system, make these statements untrue or misleading for some foreign trade. These cells must not be taught as 'all foreign trade involves different currencies / different weights and measures' until checked.",
+      "required_action": "Task COM-FACT-T2-TBL-DOMFOR-CLAIMS: check the two cells against primary or authoritative sources, record what is generally true, what has exceptions and the wording the supplement may endorse, with dated citations.",
+      "affected_ids": [
+        "SS1-SRC-0ccdf9dd3768",
+        "COMMERCE-T2-TBL-DOMFOR-REPRESENTATION"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
