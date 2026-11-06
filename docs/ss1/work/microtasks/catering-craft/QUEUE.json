@@ -25,13 +25,14 @@
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
     "CC-INV-T3 (2026-10-29) inventoried the 3rd Term original and appended the preamble, marker, week-indexing, visual, preservation and fact items. The document has ten teaching-week labels plus one combined WEEK ELEVEN AND TWELVE marker; WEEK TEN is title-only with no body. It has no Word tables and one inline JPEG (table-cloth laying, Week 8). Nothing was run. No lesson, coverage, rule, correction or asset was written. CC-FACT-CONTENT-APPROVAL stays BLOCKED pending CC-TEST-PACKAGE.",
     "CC-IDX-T2-W01 (2026-10-30) indexed 2nd Term WEEK ONE (getBody lines 26-223): 29 sections with per-section hashes, four EVALUATION blocks plus GENERAL EVALUATION, READING ASSIGNMENT, WEEKEND ASSIGNMENT and THEORY. One PARTIAL coverage entry (COV-CC-T2-W01-SCHEME-1) was added to the package; no lesson, rule, correction, asset or answer. One FACT follow-up item was appended for the game section. Nothing was run.",
-    "CC-TEST-PACKAGE (2026-11-03) wrote tests/ss1/catering-craft.package.test.mts and did NOT run it. The test parses the package with the frozen schema and reads SOURCE_ASSIGNMENTS.csv directly: exactly two assigned documents (2nd and 3rd Term), member, SHA-256 and term equal to the manifest, no 1st Term source. It guards the two alias rules (exact anchor equals header_text, PENDING-OWNER reference, no approval text), checks that no lesson/asset/correction fabricates approval or verification, keeps vacuous lesson body and marking guards for later content, checks coverage targets resolve and any PARTIAL/UNRESOLVED coverage is paired with a PENDING package and a blocking open item, and runs negative controls on alias rules for a wrong-source hash, ambiguous anchor and missing anchor. No package, schema, compiler or other-subject view changed; items remain 53. Status 6 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W02. Coverage stays 1, lessons 0, open items 1. Execution remains deferred by the owner."
+    "CC-TEST-PACKAGE (2026-11-03) wrote tests/ss1/catering-craft.package.test.mts and did NOT run it. The test parses the package with the frozen schema and reads SOURCE_ASSIGNMENTS.csv directly: exactly two assigned documents (2nd and 3rd Term), member, SHA-256 and term equal to the manifest, no 1st Term source. It guards the two alias rules (exact anchor equals header_text, PENDING-OWNER reference, no approval text), checks that no lesson/asset/correction fabricates approval or verification, keeps vacuous lesson body and marking guards for later content, checks coverage targets resolve and any PARTIAL/UNRESOLVED coverage is paired with a PENDING package and a blocking open item, and runs negative controls on alias rules for a wrong-source hash, ambiguous anchor and missing anchor. No package, schema, compiler or other-subject view changed; items remain 53. Status 6 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W02. Coverage stays 1, lessons 0, open items 1. Execution remains deferred by the owner.",
+    "CC-IDX-T2-W02 (2026-11-06) indexed 2nd Term WEEK TWO (lines 226-381, sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2, 156 lines) at section and objective level and added one coverage entry, COV-CC-T2-W02-SCHEME-2, PARTIAL with no lesson ids. The week teaches eggs (231-285) and fish (287-357) with four evaluations, a general evaluation, reading assignment, weekend assignment (5 questions, no answers) and theory; the drawing prompt at 248 has no figure, general evaluation 362 depends on Week One's game section, 363-364 have no teaching (already under CC-FACT-T2-SAFETY-QUESTIONS-WITHOUT-TEACHING) and weekend question 377 on offal depends on Week One. One follow-up appended: CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES (FACTUAL_DEPENDENCY, PENDING). Items 53->54; status 7 implemented / 46 pending / 1 blocked; next_runnable head CC-IDX-T2-W03. No lesson, delivery, schema, compiler, parser or importer change; catering-craft.json edited for coverage only. Evidence note: docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W02.md. Not approved, not verified; nothing run (testing deferred by owner)."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 2,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 10,
+    "FACTUAL_DEPENDENCY": 11,
     "SOURCE_WEEK_INDEXING": 20,
     "SOURCE_SECTION_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 3,
@@ -39,7 +40,7 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
     "PENDING": 46,
     "BLOCKED": 1
   },
@@ -300,8 +301,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed 2026-11-06 from origin/master 7906714 and the verified member (member sha256 fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59, 207,872 bytes, supplied directly; the composite archive was not supplied and its hash was not checked). word-extractor 1.0.4 getBody(): 67,884 characters, 1,407 lines, SHA-256 371aa91970bceb96c354a002a3ac7a5384ca597c1c2f404f51f13096b7324c8a; WEEK TWO lines 226-381 re-hashed to e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2 (matches the locator and the replicated parsed-row body hash; 156 lines, 6,429 characters). 24 sections (including the label, topic and content lines) listed with per-section SHA-256: eggs 231-285, fish 287-357, four EVALUATION blocks (247-249, 283-285, 321-323, 340-342), GENERAL EVALUATION (359-364, 5 questions), READING ASSIGNMENT (366-369, two textbook references, not supplied), WEEKEND ASSIGNMENT (371-377, 5 questions, no answers) and THEORY (379-381, 2 questions). One coverage entry added to backend/src/db/ss1/subjects/catering-craft.json: COV-CC-T2-W02-SCHEME-2 (scheme row 2, status PARTIAL, no lesson ids, so it still blocks delivery). One follow-up FACT item appended (CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES). No lesson, rule, correction, asset or answer written; package stays PENDING. Record: docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W02.md. Implemented, not approved or verified; nothing was run (tests, typechecks, importer, DB, device).",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 e0d57a0841e7779973959e7514dbf841906399a073d4bf1b934dcedfc6d4f8e2; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1278,6 +1279,41 @@
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
+      "id": "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "getBody lines 239, 242-245, 293-319, 326 and 336 (WEEK TWO egg composition and grading, fish classification, fish food value and fish cuts)",
+      "objective": "Verify later, as findings and source locators only: the water percentages for egg yolk and white (line 239); the weight bands for hen's egg grades, whose boundaries 53g, 63g and 73g appear in two adjacent bands and whose last band reads 'Very large: 73g' (lines 242-245); the description of molluscs as having 'a single hard inedible shell' while the examples at lines 310-313 are clams, scallops and oysters (line 309); the white/lean fish description that oil is stored in the liver (line 293) and the placement of examples such as skate, tuna and kingfish (lines 297, 304, 305); the statement that dried fish 'weighs more protein' than fresh fish (line 326); and the 'dressed fish' wording at line 336. Egg freshness tests (lines 261-267) are already owned by CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE and are not repeated here. Do not correct the source and do not supply replacement teaching in this item. Later correction work needs authoritative primary sources (for example national food-safety regulators, WHO/FAO/Codex and national food-composition documents) and must keep the source's original wording distinct from any corrected fact. Do not prescribe treatment or doses; do not record any classroom practical observation.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not started. Locator established by CC-IDX-T2-W02 (see CC-IDX-T2-W02.md). Source wording on these lines is retained in the package source; nothing was changed.",
+      "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
+    },
+    {
       "id": "CC-IDX-T3-W01",
       "kind": "SOURCE_WEEK_INDEXING",
       "source_id": "SS1-SRC-d068ede78d16",
@@ -1939,7 +1975,6 @@
     }
   },
   "next_runnable": [
-    "CC-IDX-T2-W02",
     "CC-IDX-T2-W03",
     "CC-IDX-T2-W04",
     "CC-IDX-T2-W05",
