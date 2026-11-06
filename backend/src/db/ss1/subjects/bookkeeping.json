@@ -325,6 +325,10 @@
         {
           "locator": "blocks 171-172: 'a.Dr. Receiving accountWith value it receives' and 'b.Cr. Giving accountWith value it gives out.'",
           "explanation": "The Dr/Cr statements lose the separator between the account name and its value, so as printed they read as single run-on strings. The rule itself is complete; the rendering defect is recorded."
+        },
+        {
+          "locator": "block 170 (empty text; sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855, 0 characters): VML/DrawingML shape 'Right Brace 1' (preset rightBrace, wp:docPr id 1; 90805 x 542290 EMU, 7.15pt x 42.7pt), anchored with wrapNone at 158.05pt from the column edge and 19.7pt below the top of block 170, so it sits beside blocks 171-172",
+          "explanation": "Visual disposition for BK-VIS-T1-BRACE-W04. The brace is a single decorative connector and the last of the eight VML objects in the member. It holds no text box and no w:t run, so no wording is lost by omitting it, and it has no data, angle, scale or measurement. From its coordinates it stands between each account name and its 'With value it receives' / 'With value it gives out.' phrase on blocks 171-172 and visually ties the two lines together; that reading comes from the stored geometry and was not checked against a rendered page. It is therefore excluded from delivered lessons and no asset is created; nothing is committed from the drawing. The wording it brackets is preserved as text in blocks 171-172, which keep their a. / b. labels, the Dr. / Cr. abbreviations and the receiving / giving pairing. What the text does not keep is the tab separator between the account name and its value phrase (block 172 has two tabs), already recorded as defect 2 of BOOKKEEPING-T1-W04-SOURCE-DEFECTS and in the previous evidence entry of this row; a lesson must restate that pairing as its own text. This adds no coverage: status stays PARTIAL, no lesson exists, and no display or app rendering was verified."
         }
       ]
     },
