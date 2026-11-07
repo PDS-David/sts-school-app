@@ -4,11 +4,11 @@ This is the entire **currently known English queue**: 84 individual task prompts
 
 Start at prompt 001. Use one active English writer and work in dependency order. The sequence gives every task; genuine owner/resource gates stay blocked while independent English work continues. Each linked file is a complete copyable prompt. To avoid copying 88 files, use RUN_ALL.md in one continuing agent session; it saves each completed item before continuing and leaves a resume checkpoint.
 
-## Current progress
+## Live progress and restart
 
-English: **48 implemented/testing-deferred, 79 pending, 5 blocked**; **84 tracked items remain**, including six test-drafting tasks whose execution stays deferred. The four completion instructions are workflow steps, not extra queue items. The previously missing English prompt 23 is now implemented as indexing; five new bounded teaching tasks and one textbook decision were exposed.
+Run `python3 scripts/ss1/english_status.py` from the repository root after fetching master. It reads all current queues, rejects duplicate English IDs, and lists unfinished items with unmet dependencies. The live English QUEUE.json and actual deliverables determine status; the numbered list below is a dispatch list, not a completion report. Completed audits can still leave teaching gaps in follow-up items.
 
-All SS1 queues: **326 implemented/testing-deferred, 985 pending, 104 blocked**; **1089 tracked items remain**. These are work items, not lesson counts or a curriculum-completion percentage. Package approval, verification and delivery are separate. Recompute after every subject; never reuse these numbers as a live total.
+Obsolete RESUME.md, SNAPSHOT.json, microtasks/english/NEXT_TASK.md and QUEUE_BUILD.md were deleted on 7 November 2026 because they instructed agents to restart completed work or reported superseded counts. Their historical versions remain in Git. Do not recreate static “next task” pointers. Record durable evidence in task-specific notes; derive the next assignment from the live queue and check current work before editing.
 
 ## Completion gates
 

@@ -82,12 +82,18 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run.",
     "2026-11-07 ENG-COR-016/017/021: completed correction-scope audits from the exact existing source-row IDs, replacement lessons and objective-level coverage evidence. Recorded per-objective statuses and retained precise existing blockers; no source text, lesson body, correction identity or coverage status changed. ENGLISH-BODY-057, ENGLISH-BODY-069 and ENGLISH-BODY-076 remain PARTIAL; their corrections remain inactive under ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION. Queue tasks marked IMPLEMENTED_TESTING_DEFERRED; approval remains PENDING and verification/runtime/compiler tests remain DEFERRED.",
     "2026-11-07 ENG-COR-023/024 and owner gates 074-078: verified COR-023 was already complete and retained its evidence. Completed COR-024 by making the reject/emit distinction explicit in the T3 meaning lesson, updating its UTF-8 body hash and keyed Q3, and recording the five objective statuses; ENGLISH-BODY-089 remains PARTIAL and the correction inactive because other synonym objectives and prescribed textbook assignments remain incomplete. Added precise owner/resource request evidence for prescribed passages, authorised audio model, per-lesson content approval and T1 W07 textbook assignments. The live package has 46 lessons (not 16 as stated in the older approval task); all remain PENDING with null approval references. No owner approvals, textbook extracts, rights statements or audio assets were invented; all five gate tasks remain BLOCKED.",
-    "2026-11-07 final English test-draft checkpoint: drafted schema/terms, lesson hash/marking, no-fabricated-state, rule-guard and regression assertions in tests/ss1/english.package.test.mts. No tests were run. ENG-TEST-CORRECTION-IDENTITY assertion is present but its queue item remains PENDING because ENG-COR-001–008 and ENG-COR-018–020 are still PENDING. All content approval remains PENDING and verification remains DEFERRED."
+    "2026-11-07 final English test-draft checkpoint: drafted schema/terms, lesson hash/marking, no-fabricated-state, rule-guard and regression assertions in tests/ss1/english.package.test.mts. No tests were run. ENG-TEST-CORRECTION-IDENTITY assertion is present but its queue item remains PENDING because ENG-COR-001–008 and ENG-COR-018–020 are still PENDING. All content approval remains PENDING and verification remains DEFERRED.",
+    "2026-11-07 coordination repair: renamed only the Second-Term Week 2 external-materials item to ENG-FACT-T2-W02-EXTERNAL-MATERIALS. First-Term ID and prompt unchanged. Removed a literal trailing backslash-n that made the JSON invalid; recomputed kind counts and status_counts separately. All agent implementation statuses retained."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 105,
-    "PENDING": 131,
-    "BLOCKED": 6
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 32,
+    "LESSON": 138,
+    "FACTUAL_DEPENDENCY": 37,
+    "CORRECTION_BINDING": 24,
+    "ASSET": 1,
+    "TEST": 6,
+    "OWNER_DECISION": 1
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 105,
@@ -5834,10 +5840,10 @@
       ]
     },
     {
-      "id": "ENG-FACT-W02-EXTERNAL-MATERIALS",
+      "id": "ENG-FACT-T2-W02-EXTERNAL-MATERIALS",
       "kind": "FACTUAL_DEPENDENCY",
-      "source_id": null,
-      "term": null,
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
       "week_or_locator": "open_items ENGLISH-T2-W02-EXTERNAL-MATERIALS",
       "objective": "Obtain the material Week 2 refers to but the source does not contain (the passage The Quest for Health pp. 68-69, the page 70 summary questions, and the NOSEC edition and the intended home-and-family passage), or have the owner accept labelled equivalent activities.",
       "required_files": [
@@ -7741,7 +7747,7 @@
     "ENG-LES-T2-W01-PREFIXES",
     "ENG-LES-T2-W01-SUFFIXES",
     "ENG-LES-T2-W01-PRACTICE-KEYS",
-    "ENG-FACT-W02-EXTERNAL-MATERIALS",
+    "ENG-FACT-T2-W02-EXTERNAL-MATERIALS",
     "ENG-LES-T2-W02-FAMILY-READING",
     "ENG-LES-T2-W02-CONTEXT-VOCAB",
     "ENG-LES-T2-W02-SUMMARY",

@@ -17,7 +17,7 @@ Run only one worker per subject. Different subjects may run concurrently because
 | commerce | COM-INV-T3 | 3RD TERM S1 COMMERCE.doc | [Open](microtasks/commerce/NEXT_TASK.md) |
 | data-processing | DP-INV-T3 | 3RD TERM S1 DATA PROCESSING.docx | [Open](microtasks/data-processing/NEXT_TASK.md) |
 | economics | ECON-INV-T3 | 3RD TERM S1 ECONOMICS.doc | [Open](microtasks/economics/NEXT_TASK.md) |
-| english | ENG-WK-T1-W04 | 1ST TERM S1 ENGLISH LANGUAGE.doc | [Open](microtasks/english/NEXT_TASK.md) |
+| english | Derive from live queue; historical assignment superseded | Repository source ZIP | [Live instructions](ENGLISH_COMPLETION_20261107/README.md) |
 | financial-accounting | FA-INV-T3 | 3RD TERM S1 FINANCIAL ACCOUNT.docx | [Open](microtasks/financial-accounting/NEXT_TASK.md) |
 | food-and-nutrition | FN-INV-T3 | FOOD _ NUTRITION.docx | [Open](microtasks/food-and-nutrition/NEXT_TASK.md) |
 | french | FR-WK-T1-W05 | FRENCH Ss1.docx | [Open](microtasks/french/NEXT_TASK.md) |
