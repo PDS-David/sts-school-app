@@ -34,21 +34,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 6,
+    "LESSON": 7,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 16,
-    "BLOCKED": 9,
-    "PENDING": 50
+    "IMPLEMENTED_TESTING_DEFERRED": 18,
+    "BLOCKED": 10,
+    "PENDING": 49
   },
-  "total": 75,
+  "total": 77,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -385,8 +385,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK THREE', title \"MOTION IN NATURE\", 9433 characters, body sha256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added four scheme-level coverage entries (motion/types; force/contact and field forces; circular motion/centripetal acceleration and force; centrifugal effect) bound to original authored supplement SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR (body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03). The original parsed row 2 title/body identity is recorded, but its full .doc bytes/text are not accessible in this execution session; source-row reconciliation remains open and no original-row subtopics, equations, figures or assessment details are claimed. Supplement has six keyed practice questions with marking totals checked. External provenance: Federal Ministry of Education Nigeria Inspire SS1 Motion/Causes of Motion and OpenStax University Physics Vol 1 §6.3; no source wording or figures copied. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2580,10 +2580,75 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): open items PHYSICS-T1-W02-EXTRACTION-ARTEFACT and PHYSICS-T1-W02-FACT-DEFECTS. Waits for the supplements and the expert decisions; no replacement exists to bind yet.",
       "completion_condition": "delivery_corrections[] has one entry with this source id, source sha256, source_lesson_id SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e, body_sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e and a replacement_id that resolves to an existing supplement of the same subject and term; the reason and evidence name each defect; no schema, compiler or other subject is edited."
+    },
+    {
+      "id": "PHYS-LES-T1-W03-MOTION-CIRCULAR",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE scheme row 3: Motion in Nature, Force, Circular Motion, Centripetal and Centrifugal Forces",
+      "objective": "Create an original SS1 supplement covering motion types, force/contact and field forces, circular motion, centripetal acceleration/force and the centrifugal effect, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W03-MOTION-CIRCULAR.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W03"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR (body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03) contains five objectives, an original teaching body and six keyed questions with exact marking totals. Scope corroborated by Federal Ministry of Education Nigeria Inspire SS1 lessons and OpenStax University Physics Volume 1 §6.3. No external wording, figures or exercises copied. Approval PENDING, verification DEFERRED.",
+      "completion_condition": "Lesson contains objectives, body hash, worked examples, keyed practice with marking totals, accurate formulae/units, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W03-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK THREE parsed row 2, title MOTION IN NATURE, 9,433-character body SHA-256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21",
+      "objective": "Inspect the original legacy .doc row and reconcile its actual subtopics, formulae, units, diagrams, evaluation and assignment items against the Week Three scheme and the new original supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W03-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W03"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: only the original member's hash and parsed row identity/title are available in this execution session; the legacy .doc bytes/text are not accessible. The scheme objectives are covered by the independent supplement, but original-row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect the original row and record exact subtopics, locators, formulas, units, figures, exercises and answer/marking evidence; reconcile the new supplement and original source without inventing content."
     }
   ],
   "review": {
-    "date": "2026-11-07",
+    "date": "2026-11-08",
     "reviewed_master_sha": "679ab8b4edf311c2c376d978f220a75071792cdf",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -2602,10 +2667,10 @@
       "tests_blob": "29f970835849cf756c585330b80f39866d35aa69",
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
-    }
+    },
+    "notes": "PHYS-WK-T1-W03 objective coverage and original supplement added; original .doc row reconciliation remains blocked by source-byte access. Testing deferred by owner."
   },
   "next_runnable": [
-    "PHYS-WK-T1-W03",
     "PHYS-WK-T1-W04",
     "PHYS-WK-T1-W05-W06",
     "PHYS-WK-T1-W06",
@@ -2646,7 +2711,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W03",
     "PHYS-WK-T1-W04",
     "PHYS-WK-T1-W05-W06",
     "PHYS-WK-T1-W06",
