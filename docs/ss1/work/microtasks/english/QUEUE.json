@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 154,
+    "PENDING": 153,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 84,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 154,
+    "PENDING": 153,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 84,
     "BLOCKED": 5
   },
   "items": [
@@ -2948,8 +2948,8 @@
         "ENG-SRC-T1",
         "ENG-LES-LETTERS-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-009] source_lesson_id=SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 body_sha256=d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 replacement_id=SUP-SS1-ENGLISH-LETTERS-T1; paired coverage entry ENGLISH-BODY-035 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Audited existing package binding SS1-02-english-COR-009: exact 1st-Term source row ENGLISH-BODY-035 / SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 (source SHA256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef; locator TOPICS: ESSAY WRITING: INFORMAL LETTER, sister planning divorce). Existing replacement SUP-SS1-ENGLISH-LETTERS-T1, 'Writing a respectful informal letter', is same-term and teaches informal-letter structure plus advice that respects agency and safety; its two objectives are organising an informal letter and giving advice without pressure. Three keyed exercises (4+2+4 marks) assess letter structure, considerate advice and a short friendly letter, with marking totals matching each question. Objective-by-objective coverage: ENGLISH-T1-W11-LT01 definition = IMPLEMENTED_EQUIVALENT; LT07 task's respectful-advice objective = IMPLEMENTED_EQUIVALENT; LT02 address, LT03 salutation, LT04 introduction, LT05 body/task compliance and LT06 close = PARTIAL; LT08 prescribed reading pages 70-72 = UNRESOLVED. These six remaining gaps are explicitly itemised in coverage evidence and tracked by blocking open item ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION. The binding and source remain unchanged; do not activate the replacement as a whole-row substitute while those gaps remain. No new package change was needed because the exact binding, partial row coverage and precise follow-up already exist. Implementation recorded; compiler/runtime verification deferred.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7703,7 +7703,6 @@
     "ENG-COR-006",
     "ENG-COR-007",
     "ENG-COR-008",
-    "ENG-COR-009",
     "ENG-COR-010",
     "ENG-COR-011",
     "ENG-COR-012",
