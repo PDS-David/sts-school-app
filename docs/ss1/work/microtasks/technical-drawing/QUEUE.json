@@ -39,9 +39,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
     "BLOCKED": 5,
-    "PENDING": 28
+    "PENDING": 27
   },
   "total": 39,
   "items": [
@@ -352,8 +352,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (label 'WEEK 5', body sha256 8c5c6c7a65e58f85552c3dbf582106d0d999c3459d4fb6aefe6fce7309a57be1, 41 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in package commit 359e5cdd14ffc4aff807c8a6704f537d5088838d. Rule SS1-SRC-af4868d2c026-R007 classifies the hash-accounted Week 5 scheme row as SCHEME_ONLY; coverage COV-TD-T2-SCH-W05 preserves the verbatim objective and binds it to the existing parsed original WEEK FIVE teaching row. Source DOCX hash and exact scheme-row paragraph checked. Evidence: docs/ss1/work/microtasks/technical-drawing/TD-SCH-W05.md. Approval and verification remain pending/deferred; tests not run.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1411,8 +1411,8 @@
   ],
   "review": {
     "date": "2026-11-07",
-    "reviewed_master_sha": "54edac346b11fb480c172f27d4ce7fe0e9ea2c78",
-    "scope": "TD-SCH-W04 only: source row hash/anchor, original teaching-row mapping, JSON identities and queue state; full curriculum tests, typechecks, importer, database and device checks deferred.",
+    "reviewed_master_sha": "359e5cdd14ffc4aff807c8a6704f537d5088838d",
+    "scope": "TD-SCH-W05 only: source DOCX hash, exact scheme row, parsed-row hash/locator, original teaching-row mapping, JSON identities; full curriculum tests, typechecks, importer/compiler, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -1422,10 +1422,9 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W05"
+    "TD-SCH-W06"
   ],
   "runnable_now": [
-    "TD-SCH-W05",
     "TD-SCH-W06",
     "TD-SCH-W07",
     "TD-SCH-W08",
