@@ -844,6 +844,18 @@
       "week_label": "11"
     },
     {
+      "id": "SS1-SRC-50fa9b1eb2fd-R022",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Revision of Last Term's Work and Examination \nComprehension- Reading to grasp word meanings in various contexts.\nCommonly Misspelt Words\nThe Use of Dictionary",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 1, lines 7-10 (before the first WEEK ONE heading on line 46)",
+        "explanation": "Unique scheme-row anchor: lines 7 to 10 joined with newlines, trailing space after Examination on line 7 kept exactly (the tab at the end of line 10 is outside the anchor). It occurs once in the unmodified extracted text and in no parsed body, so the compiler records it as a SCHEME_ONLY disposition. Metadata only, not teaching; no source text removed."
+      }
+    },
+    {
       "id": "SS1-SRC-a00657d42196-R034",
       "op": "classify_marker",
       "source_id": "SS1-SRC-a00657d42196",
@@ -16389,6 +16401,312 @@
           "explanation": "The five 2nd Term supplements each carry their own keyed practice, but the source does not say that they, or Weeks 1 to 9 as a whole, are what the revision class revises, so none is bound here as covering it. No coverage is inferred from their existence."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 1: Revision of Last Term's Work and Examination; Comprehension- Reading to grasp word meanings in various contexts; Commonly Misspelt Words; The Use of Dictionary",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 7-10; UTF-8 joined-line SHA256 bf88b4b67f58de9c48317abe21a2f4ed56ad04d3aeae2661acbab466be70a9e8; SS1-SRC-50fa9b1eb2fd-R022",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R022"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 7-10; UTF-8 joined-line SHA256 bf88b4b67f58de9c48317abe21a2f4ed56ad04d3aeae2661acbab466be70a9e8; rule SS1-SRC-50fa9b1eb2fd-R022",
+          "explanation": "In the original (private LibreOffice docx rendering, not committed) the scheme is a one-column table of 13 rows: the header TOPIC, rows 1 to 11 for Weeks 1 to 11, and row 12 'Revision and Examination'. Row 1 is one cell with four topic paragraphs. The text extraction flattens the table into unlabelled lines 7 to 43, before the first WEEK ONE heading (line 46), so no parsed body holds it; the compiler reports the text before the first body as the PREAMBLE_REQUIRES_COVERAGE disposition. The four topics are the four Week 1 objectives: the Week 1 section's own TOPIC list (lines 48 to 50) names the first three and the body ENGLISH-BODY-060 teaches the fourth under 'D. The Use of Dictionary'. Rule SS1-SRC-50fa9b1eb2fd-R022 classifies the row SCHEME_ONLY. Each topic is indexed on its own: revision ENGLISH-T3-W01-RV01, comprehension and word meanings ENGLISH-T3-W01-CM01 to CM07, misspelt words MS01 and MS02, dictionary DC01 to DC04. Rows 2 to 12 and the title lines 1 to 6 are not classified here: rows 2 to 11 are left to their week tasks and nothing yet covers the title block, so the PREAMBLE disposition for lines 1 to 45 is not closed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-RV01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Revision of last term's work and examination (the first scheme topic and the first line of the Week 1 TOPIC list)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 48; UTF-8 joined-line SHA256 80aa3360dccb9cecbcab9c32ff93988ac883f9d60ce50d45d58fb9ac9155a391; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 48; UTF-8 joined-line SHA256 80aa3360dccb9cecbcab9c32ff93988ac883f9d60ce50d45d58fb9ac9155a391; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "Line 48 repeats scheme topic 1 ('Revision of last term's work and examination'). The Week 1 section then gives no revision list, question, passage, assignment or key under it: what follows is comprehension (line 52 on), misspelt words and, in the next body, the dictionary. The source does not say which 2nd Term weeks or skills are revised or what the examination covers. Scheme row 12 'Revision and Examination' is the term-end row, not this one."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2, SUP-SS1-ENGLISH-READING-T2, SUP-SS1-ENGLISH-MEANING-T2, SUP-SS1-ENGLISH-ADVERBS-TENSE-T2, SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+          "explanation": "The 2nd Term supplements carry their own keyed practice, but the source does not say they are what is revised, so none is bound; no coverage is inferred from their existence (same treatment as ENGLISH-T2-W10-RV01)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comprehension passage for word meanings in context: the passage in unit 8, page 133 (Effective English), and the study heading and labels above it",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 52-56; UTF-8 joined-line SHA256 9b3f5c57413247d57be104bc27914ac14be64dd6b89b7c2fa8bacefcd6dc19bf; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 52-56; UTF-8 joined-line SHA256 9b3f5c57413247d57be104bc27914ac14be64dd6b89b7c2fa8bacefcd6dc19bf; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "Line 52 is the bold heading 'Comprehension: Reading to grasp words meanings in various contexts.' (the spelling differs from scheme row 1, 'word meanings'); 'Content:' and 'Reading' (lines 53, 54) are bold and automatically numbered in the docx, so their numerals are not in the extracted text; 'Contextual Usage of Words' is line 55. Line 56 only summarises the passage in one sentence (men interrupt discussion more than women; certain men consistently dominate talk). The passage is not supplied: no title, author, edition or text, so the summary cannot be checked and the later items that cite it (CM05) cannot be read against it. Nothing is reproduced or inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: whole lesson",
+          "explanation": "Its original passage teaches locating facts, inference, skimming, scanning and summary, not contextual word meaning, and it is not bound by any correction or coverage entry (queue item ENG-FACT-READING-T1-T3-UNBOUND). Not bound here; a lead only."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Contextual usage of words: a word has different meanings in different contexts, shown with the noun 'man' (an adult male human being)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 57; UTF-8 joined-line SHA256 c41cd0416fb9e156587c7d2981eec8f70bd184a69f85703bfc6d48896e4aa07d; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+        "SUP-SS1-ENGLISH-MEANING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 57; UTF-8 joined-line SHA256 c41cd0416fb9e156587c7d2981eec8f70bd184a69f85703bfc6d48896e4aa07d; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "One sentence states the principle and gives the first example, 'That man is my father', with 'man' glossed as an adult male human being. In the docx the word 'man' in that example is underlined; the text extraction loses it. The sentence has slips ('can be used to have various meanings in various context' and a semicolon after 'for example'), recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: first paragraph, sentences 5 to 8; last paragraph, last sentence",
+          "explanation": "The supplement shows one word with two senses (bright in 'a bright pupil' and 'a bright lamp') and the method of substituting a candidate, checking grammar and then the intended sense, and says to use a dictionary for an unfamiliar sense and check a full sentence. That supports the principle. It does not treat 'man' or a change of word class between senses, and no correction binds it to this body. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "'man' as a verb: 'to man the gate' glossed 'guide' and 'to man the office' glossed 'take charge, or manage'",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 65; UTF-8 joined-line SHA256 85fe05087a8cd079ec8e8806e98ba63657ac38bee7df4c5882814e985a927f90; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+        "SUP-SS1-ENGLISH-MEANING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 65; UTF-8 joined-line SHA256 85fe05087a8cd079ec8e8806e98ba63657ac38bee7df4c5882814e985a927f90; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "Line 65 follows the first evaluation list but continues the 'man' explanation; it is out of order in the extracted text. Both uses of 'man' are underlined in the docx. The glosses 'guide' and 'take charge, or manage' do not match the usual dictionary sense of the verb (to staff or operate a post); the glosses must be checked against a dictionary before delivery. The sentence has the slips \"'man ' here\" and \"He is to  man  the office\" (double spaces, a comma splice), recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: first paragraph, sentences 7 to 8",
+          "explanation": "Supports checking a candidate meaning in a full sentence, but does not teach the verb sense of 'man' or the two source glosses. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: state the synonyms of appreciate, debt and forgiveness",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 59-63; UTF-8 joined-line SHA256 fe0f13d5db479cf6ae4b486bb879e1b02069f96656dbe8669a9605c880218d4c; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+        "SUP-SS1-ENGLISH-MEANING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 59-63; UTF-8 joined-line SHA256 fe0f13d5db479cf6ae4b486bb879e1b02069f96656dbe8669a9605c880218d4c; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "The label EVALUATION is bold and the three words are an automatically numbered list in the docx (numerals not in the extracted text). The words are given without a sentence or context, though they belong to three word classes (a verb and two nouns) and 'appreciate' has more than one sense. There is no key and no marks; none is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: first paragraph; practice Q1 and Q3",
+          "explanation": "Teaches choosing a synonym that keeps meaning in context and marks two questions on that skill, but neither question uses these three words. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Word meanings taken from the passage: 'sex' means 'gender' (and another sense), and 'leave' in the first line of the second paragraph means 'make' (or vacate, or a short break from work)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 67-70; UTF-8 joined-line SHA256 a5cedc51ad4b7f44c45658a62be6c47732616b97de9db74e5ee1ca07437f2977; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 67-70; UTF-8 joined-line SHA256 a5cedc51ad4b7f44c45658a62be6c47732616b97de9db74e5ee1ca07437f2977; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "Both glosses depend on the unsupplied unit 8 passage ('as used in the passage', 'the first line of the second paragraph'), so neither can be checked: it cannot be shown that 'leave' means 'make' there, and the quoted line is not available. Line 68 states a second, sexual sense of 'sex'; this is a real dictionary sense but its classroom treatment needs teacher approval. No change is made and no source is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: give another word for the underlined words railed, rail and rail as used in the passage",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 72-76; UTF-8 joined-line SHA256 f5eea0e0c2531c95ef870d96e8b11157989f6a3623a29db899c8dc67b12df1b6; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+        "SUP-SS1-ENGLISH-MEANING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 72-76; UTF-8 joined-line SHA256 f5eea0e0c2531c95ef870d96e8b11157989f6a3623a29db899c8dc67b12df1b6; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "The docx underlines 'railed' (item 1) and 'rail' (items 2 and 3); the text extraction loses the underlining. The instruction says 'as used in the passage', but the three sentences are stand-alone and are not from the passage summarised on line 56. Item 2 ('I have walked down the rail on the stair case') is not idiomatic. The words are used in different senses (complain loudly, a hand-held bar, a track), which fits context teaching, but there is no key and no marks; none is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: first paragraph; practice Q1",
+          "explanation": "Supports the substitution method and one keyed question on a word with two senses; it does not treat rail or railed. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-CM07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Unit 10, page 162 of the Effective English",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 78-79; UTF-8 joined-line SHA256 7df27bd789729faee8e9fc17daeb5fa82236b5914297bdee85fcba18fe7432e8; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 78-79; UTF-8 joined-line SHA256 7df27bd789729faee8e9fc17daeb5fa82236b5914297bdee85fcba18fe7432e8; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The book is named only as 'the Effective English' with no author or edition, and the unit is not supplied; no question, answer, key or marks is given. Nothing is reproduced or inferred. The reference is outside the package, like other Effective English references (open item ENGLISH-PRESCRIBED-PASSAGES)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-MS01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Commonly misspelt words: the heading, the one-sentence introduction and the list of eleven misspelling and correct-spelling pairs",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 80-93; UTF-8 joined-line SHA256 c41e00d8e5834ff8ce0d7ae99d0d60123112b14e171943fa02e57b35b8e029f7; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 80-93; UTF-8 joined-line SHA256 c41e00d8e5834ff8ce0d7ae99d0d60123112b14e171943fa02e57b35b8e029f7; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "The docx has no table in this section: the pairs are tab-separated paragraphs, and only the doubled letters of 'Accommodation' (cc, mm) and of 'Beginning' (nn) are underlined, which the text extraction loses. The first pair sets the plural 'Accomodations' against the singular 'Accommodation'; three correct forms (covenant, diligent, grateful) are lower case and the others capitalised. The eleven correct forms are standard spellings. The source gives no reason or rule for any pair and no practice other than line 95 (MS02)."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1 (a 1st Term lesson bound to 1st Term rows; not bound here)",
+          "explanation": "Lead only: it discusses accommodation, beginning, covenant, diligent, enmity, environment and the -uous of continuous, but not clarify, definite, auxiliary or grateful, and it is not a 3rd Term lesson. No coverage is inferred from it; a 3rd Term lesson is needed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-MS02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write out the correct spellings of grammer, guidiance, fourty, intrest, grieivous, mispel, bustop, noticable, ocasion and occured",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 95; UTF-8 joined-line SHA256 f91815e95318c500d152509ae9f0190ce254293d00f96ea69cb9584aa3b6b3a7; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 95; UTF-8 joined-line SHA256 f91815e95318c500d152509ae9f0190ce254293d00f96ea69cb9584aa3b6b3a7; SS1-SRC-50fa9b1eb2fd:BODY:77f8f02556937f71ae4dcfa85f0cb3272e0597140d13fa895020bf42ea244750",
+          "explanation": "Ten misspelt words are given, with no key and no marks; none is inferred. 'bustop' is a single misspelt token, and the standard form is two words (bus stop), so it is not clear whether the intended target is a spelling or a word division. 'grieivous' and 'mispel' each carry more than one slip."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1 (a 1st Term lesson bound to 1st Term rows; not bound here)",
+          "explanation": "Lead only: it explains grievous (grief + ous) and misspell (mis + spell) among its words and none of the other eight. No coverage is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-DC01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The use of a dictionary: the heading and the eight purposes (meaning, spelling, pronunciation, usage, stress, collocation, transcription, parts of speech or word classes)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 97-98; UTF-8 joined-line SHA256 4aff396245b3fb2d253cdde41351ef9c952591067e38fd8e011ae79dae3cfb63; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+        "SUP-SS1-ENGLISH-STRESS-T3",
+        "SUP-SS1-ENGLISH-MEANING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 97-98; UTF-8 joined-line SHA256 4aff396245b3fb2d253cdde41351ef9c952591067e38fd8e011ae79dae3cfb63; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+          "explanation": "Line 97 is the bold heading 'D. The Use of Dictionary'; no A, B or C label appears in the section. Line 98 opens with a tab and has slips ('for the following of purposes'; 'etc. consider the word 'abuse'' starts a sentence in lower case), recorded, not repaired. The list of purposes is not explained beyond the worked entry that follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-STRESS-T3: paragraph 4, sentences 4 to 6; paragraph 5",
+          "explanation": "Says a dictionary entry can show spelling, word class, pronunciation, meanings and examples, that the stress mark and syllable divisions must be read carefully, and gives a read-the-entry-then-mark-stress routine. It does not name usage, collocation or transcription as dictionary functions. Bound additively as partial support."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: last paragraph, last sentence",
+          "explanation": "Says to use a dictionary for an unfamiliar sense and check a complete sentence; supports the meaning purpose only. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-DC02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Worked dictionary entry for 'abuse': word class noun and verb, transcription /abju:s/ (noun) and /abju:z/ (verb), meaning, collocation (drug, alcohol, substance abuse)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 99-103; UTF-8 joined-line SHA256 c8c6096b4a504b6f45d3675c6fa52f4eedc401f820eeacea5d0f7b596ceacb51; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+        "SUP-SS1-ENGLISH-PHONETICS-T3",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 99-103; UTF-8 joined-line SHA256 c8c6096b4a504b6f45d3675c6fa52f4eedc401f820eeacea5d0f7b596ceacb51; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+          "explanation": "The five lines are an automatically numbered list in the docx (numerals not in the extracted text). The schwa-like character in both transcriptions is U+04D9 (Cyrillic small letter schwa), not the IPA schwa U+0259; the length mark is an ordinary colon (U+003A); and neither transcription carries a stress mark. The meaning line is a run-on without punctuation ('misuse, unfair violent treatment insult'). The word-class and collocation lines are sound. All of this is recorded, not repaired, and the transcription must not be taught as written."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: first paragraph, sentences 1 to 4",
+          "explanation": "States a consistent phonemic notation and says the length mark is the character U+02D0, not an ordinary spelling colon, which contradicts the source's colon. It has no entry for 'abuse'. Bound additively as partial support."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-STRESS-T3: paragraph 1, sentence 2; paragraph 4",
+          "explanation": "Marks stress with the IPA mark before the stressed syllable and says spelling alone cannot supply stress; the source transcription has none. It has no entry for 'abuse'. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-DC03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Note: the transcription of 'abuse' already includes its stress, the collocation covers its usage, and the Oxford Advanced Dictionary is used",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 105; UTF-8 joined-line SHA256 98b4cd3acaf93b6c62e0b2ddb8438d008f2d9ec815f9ddb310bd6a44e30974af; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 105; UTF-8 joined-line SHA256 98b4cd3acaf93b6c62e0b2ddb8438d008f2d9ec815f9ddb310bd6a44e30974af; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+          "explanation": "The note's first claim is false of the transcription as written, which has no stress mark (see DC02). The note treats collocation as covering usage, which holds only in part. The dictionary is named without an edition or page and no entry text is reproduced."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-STRESS-T3: paragraph 1; paragraph 4, last sentence",
+          "explanation": "Teaches the stress mark and that spelling cannot supply stress, which is the correction needed; it does not address this note. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W01-DC04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: using a good dictionary, write the transcription, word class, meaning, stress and collocation or usage of rapport, acquaint, defer, solicit, acquiesce, cohere, comply, concur, obsess and concede",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 107-108; UTF-8 joined-line SHA256 ac802fde3868ec00064f9c2c54244cfd3c04f86d0dbc06b10752f50e5f790478; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 107-108; UTF-8 joined-line SHA256 ac802fde3868ec00064f9c2c54244cfd3c04f86d0dbc06b10752f50e5f790478; SS1-SRC-50fa9b1eb2fd:BODY:711dade4dd18b8758206db4e986a1429a31417ec8df5074f338219d721fcf2df",
+          "explanation": "Ten words with five requirements each, with no key and no marks; none is inferred. The list is punctuated as 'rapport, acquaint. Defer. Solicit, ...' (full stops and capitals mid-list), recorded, not repaired. 'A good dictionary' is not the Oxford Advanced Dictionary named on line 105, and no variety of English is given for the transcription. Dictionary entries are not reproduced; any key must be authored or licensed."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-STRESS-T3: paragraph 5; practice Q1 to Q3",
+          "explanation": "Gives the read, listen, mark-stress, use-in-a-sentence routine and three keyed questions on stress and intonation in general; none covers these ten words or the other four requirements. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -17338,6 +17656,70 @@
       "affected_ids": [
         "ENGLISH-T2-W10-RV01",
         "ENGLISH-BODY-058"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W01-REVISION-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The Week 1 revision topic has no content in the source: no revision list, questions, assignment, key, or statement of which 2nd Term weeks or skills are revised or whether a test is intended. The row ENGLISH-BODY-059 lists the topic and cannot be read as covering any teaching of it.",
+      "required_action": "Owner or teacher to confirm the intended scope (for example 2nd Term Weeks 1 to 10) and whether the class includes a test; then author original keyed, marked revision practice drawn only from taught 2nd Term content, labelled original (queue item ENG-LES-T3-W01-REVISION). Do not invent source revision material or infer a key.",
+      "affected_ids": [
+        "ENGLISH-T3-W01-RV01",
+        "ENGLISH-BODY-059"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W01-READING-MATERIAL",
+      "kind": "CONTENT",
+      "detail": "The word-meaning comprehension depends on Effective English unit 8, page 133 (a passage summarised in one sentence) and unit 10, page 162 (a reading assignment). Neither passage, nor an edition, questions, answers or marks, is supplied, so the passage-dependent glosses ('sex', 'leave') cannot be checked.",
+      "required_action": "Supply exact authorised extracts and the edition for both references, or have the owner accept a labelled original equivalent reading activity for contextual word meaning (see ENGLISH-PRESCRIBED-PASSAGES). Until then the two passage-dependent glosses are not taught as checked; do not infer the passage from the summary sentence (queue item ENG-FACT-T3-W01-EXTERNAL-MATERIALS).",
+      "affected_ids": [
+        "ENGLISH-T3-W01-CM01",
+        "ENGLISH-T3-W01-CM05",
+        "ENGLISH-T3-W01-CM07",
+        "ENGLISH-BODY-059"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W01-WORD-MEANING-PRACTICE",
+      "kind": "CONTENT",
+      "detail": "Contextual word meaning is supported only as a method by SUP-SS1-ENGLISH-MEANING-T3, which does not treat the noun and verb senses of 'man' (the verb glosses need a dictionary check), and the source's two evaluations (synonyms of appreciate, debt and forgiveness; another word for railed and rail) have no key or marks.",
+      "required_action": "Author original teaching on contextual word senses, including word-class change and a dictionary check of the verb 'man', and original keyed, marked evaluations on synonyms in context and on rail and railed, labelled original and bound additively to SUP-SS1-ENGLISH-MEANING-T3 (queue item ENG-LES-T3-W01-WORD-MEANING). Do not infer the source key or reproduce Effective English.",
+      "affected_ids": [
+        "ENGLISH-T3-W01-CM02",
+        "ENGLISH-T3-W01-CM03",
+        "ENGLISH-T3-W01-CM04",
+        "ENGLISH-T3-W01-CM06",
+        "ENGLISH-BODY-059"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W01-MISSPELT-PRACTICE",
+      "kind": "CONTENT",
+      "detail": "No 3rd Term lesson teaches the eleven listed misspellings or the ten evaluation words; the source gives a bare list with no reasons and no key, and 'bustop' has an unclear target (a spelling or a word division). The 1st Term spelling lesson is a lead, not a binding.",
+      "required_action": "Owner or teacher to confirm the intended target for 'bustop'; then author original teaching with a reason for each of the eleven pairs and original keyed, marked spelling practice for the ten evaluation words, labelled original (queue item ENG-LES-T3-W01-MISSPELT). Do not infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T3-W01-MS01",
+        "ENGLISH-T3-W01-MS02",
+        "ENGLISH-BODY-059"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W01-DICTIONARY-ENTRY",
+      "kind": "CONTENT",
+      "detail": "The dictionary-use body has no replacement. Its worked entry for 'abuse' is defective (a Cyrillic schwa, an ordinary colon for the length mark, no stress mark despite the note), the note about stress and usage is partly false, and the ten-word evaluation has no key and relies on dictionary entries that cannot be reproduced.",
+      "required_action": "Author original dictionary-use teaching with a corrected worked entry that follows SUP-SS1-ENGLISH-PHONETICS-T3 and SUP-SS1-ENGLISH-STRESS-T3 (IPA schwa, the length mark, the stress mark), and original keyed, marked practice for the ten words, authored or licensed and not copied from a dictionary, with the dictionary and variety of English confirmed by the owner (queue item ENG-LES-T3-W01-DICTIONARY). Do not teach the source transcription as written.",
+      "affected_ids": [
+        "ENGLISH-T3-W01-DC01",
+        "ENGLISH-T3-W01-DC02",
+        "ENGLISH-T3-W01-DC03",
+        "ENGLISH-T3-W01-DC04",
+        "ENGLISH-BODY-060"
       ],
       "blocks_delivery": true
     }
