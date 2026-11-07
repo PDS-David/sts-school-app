@@ -1092,6 +1092,1509 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W01-QUADRATIC-EQUATIONS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Solving quadratic equations by factorisation and by completing the square",
+      "objectives": [
+        "Recognise a quadratic equation and write it in the form ax² + bx + c = 0.",
+        "Solve quadratic equations by factorisation using the zero-product rule.",
+        "Solve quadratic equations by completing the square."
+      ],
+      "body": "A quadratic equation is an equation in which the highest power of the unknown is 2. Its standard form is ax² + bx + c = 0, where a, b and c are numbers and a is not 0. Examples: 2x² – 5x – 3 = 0, n² + 50 = 27n (rearranged to n² – 27n + 50 = 0) and 49 = k².\n\nTHE ZERO-PRODUCT RULE. If a × b = 0, then a = 0 or b = 0 (or both). So once a quadratic expression is written as a product of factors and the other side is 0, set each factor equal to 0.\n\nExample 1. Solve (x – 2)(x + 7) = 0. Either x – 2 = 0 or x + 7 = 0, so x = 2 or x = –7.\n\nExample 2. Solve m² – 5m – 14 = 0. Find two numbers whose product is –14 and whose sum is –5: they are –7 and +2. So (m – 7)(m + 2) = 0, giving m = 7 or m = –2.\n\nExample 3 (leading coefficient not 1). Solve 4y² + 5y – 21 = 0. Multiply a × c = 4 × (–21) = –84. Find two numbers with product –84 and sum +5: they are 12 and –7. Split the middle term: 4y² + 12y – 7y – 21 = 0. Group: 4y(y + 3) – 7(y + 3) = 0, so (y + 3)(4y – 7) = 0. Hence y = –3 or y = 7/4. Check y = –3: 4(9) + 5(–3) – 21 = 36 – 15 – 21 = 0. ✓\n\nExample 4 (difference of two squares). Solve m² = 16. Rewrite as m² – 16 = 0, so (m – 4)(m + 4) = 0 and m = 4 or m = –4.\n\nExample 5 (repeated root). Solve 9f² + 12f + 4 = 0. This is (3f + 2)² = 0, so f = –2/3 (a repeated root, counted twice).\n\nExample 6 (a factor outside the brackets). Solve d(d – 4)(d + 6) = 0. d = 0, 4 or –6.\n\nCOMPLETING THE SQUARE. Use this when the expression does not factorise easily.\nStep 1: Move the constant to the right: x² + bx = –c.\nStep 2: Add (b/2)² to both sides.\nStep 3: Write the left side as a perfect square (x + b/2)².\nStep 4: Take square roots of both sides (remember ±) and solve.\n\nExample 7. Solve x² + 6x – 7 = 0. x² + 6x = 7. Add 3² = 9: x² + 6x + 9 = 16, so (x + 3)² = 16. Then x + 3 = 4 or x + 3 = –4, so x = 1 or x = –7.\n\nExample 8 (a not 1). Solve 2x² + 4x – 5 = 0. Divide by 2: x² + 2x = 5/2. Add 1: (x + 1)² = 7/2. So x + 1 = ±√3.5 = ±1.871, giving x = 0.87 or x = –2.87 (2 d.p.).\n\nAlways check answers by substitution in the original equation.",
+      "body_sha256": "6c8ae42d69870ab98e1213b42cb6a3e059d904f4da8b0eb65b9a05ea40ec9c6b",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Solve (x – 3)(x + 8) = 0.",
+          "answer": "x = 3 or x = –8.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each root; accept 'x = 3, –8'.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Solve x² – 15x + 54 = 0 by factorisation.",
+          "answer": "(x – 6)(x – 9) = 0, so x = 6 or x = 9.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark factors, 1 mark each root.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Solve 12y² + y – 35 = 0.",
+          "answer": "(3y – 5)(4y + 7) = 0, so y = 5/3 or y = –7/4.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "2 marks factorisation (split 21y and –20y), 1 mark each root.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Solve u² – 8u – 9 = 0 and check one answer by substitution.",
+          "answer": "(u – 9)(u + 1) = 0, so u = 9 or u = –1. Check u = –1: 1 + 8 – 9 = 0.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark factors, 1 mark roots, 1 mark check.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Solve x² + 8x + 3 = 0 by completing the square, correct to 2 decimal places.",
+          "answer": "x² + 8x = –3; (x + 4)² = 13; x = –4 ± √13, so x = –0.39 or x = –7.61.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark completing the square, 1 mark ±√13, 1 mark both values.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK ONE. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-001 (sequence 1); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W02-QUADRATIC-FORMULA-DISCRIMINANT",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "The quadratic formula, the discriminant, and the sum and product of roots",
+      "objectives": [
+        "Derive and use the quadratic formula x = (–b ± √(b² – 4ac)) / 2a.",
+        "Use the discriminant b² – 4ac to describe the nature of the roots.",
+        "Use α + β = –b/a and αβ = c/a to find expressions in the roots."
+      ],
+      "body": "DERIVING THE FORMULA. Start with ax² + bx + c = 0 (a not 0). Divide by a: x² + (b/a)x + c/a = 0. Move the constant: x² + (b/a)x = –c/a. Add the square of half the coefficient of x, (b/2a)², to both sides: x² + (b/a)x + b²/4a² = b²/4a² – c/a = (b² – 4ac)/4a². The left side is (x + b/2a)². Take square roots: x + b/2a = ±√(b² – 4ac) / 2a. Therefore\n\nx = (–b ± √(b² – 4ac)) / 2a.\n\nUSING THE FORMULA. Identify a, b, c with their signs, then substitute.\n\nExample 1. Solve 3x² – 5x – 3 = 0 (2 d.p.). a = 3, b = –5, c = –3. b² – 4ac = 25 + 36 = 61, √61 = 7.810. x = (5 ± 7.810)/6, so x = 2.135 or x = –0.468. Answer: x = 2.14 or x = –0.47.\n\nExample 2. Solve 6x² + 13x + 6 = 0. b² – 4ac = 169 – 144 = 25. x = (–13 ± 5)/12, so x = –8/12 = –2/3 or x = –18/12 = –3/2.\n\nExample 3. Solve 3x² – 12x + 10 = 0. b² – 4ac = 144 – 120 = 24, √24 = 4.899. x = (12 ± 4.899)/6, so x = 2.82 or x = 1.18 (2 d.p.).\n\nTHE DISCRIMINANT D = b² – 4ac. If D > 0 there are two different real roots. If D = 0 there is one repeated root. If D < 0 there are no real roots (the graph does not meet the x-axis).\n\nSUM AND PRODUCT OF ROOTS. If the roots are α and β, then ax² + bx + c = a(x – α)(x – β), so\nα + β = –b/a and αβ = c/a.\n\nExample 4. The roots of 3x² – 4x – 1 = 0 are α and β. Then α + β = 4/3 and αβ = –1/3.\nFind α/β + β/α. Write it as (α² + β²)/αβ = ((α + β)² – 2αβ)/αβ = (16/9 + 2/3)/(–1/3) = (22/9) × (–3) = –22/3.\nFind α – β. (α – β)² = (α + β)² – 4αβ = 16/9 + 4/3 = 28/9, so α – β = ±√28/3 = ±2√7/3.",
+      "body_sha256": "737cb525fa7a64a26c3b37c96247914ff95c6a3e2a0c89ac221062f1299ab91b",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Use the formula to solve t² – 8t + 2 = 0 to 2 decimal places.",
+          "answer": "D = 64 – 8 = 56, √56 = 7.483; t = (8 ± 7.483)/2 = 7.74 or 0.26.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark substitution, 1 mark D, 1 mark each root.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Use the formula to solve t² + 3t + 1 = 0 to 2 decimal places.",
+          "answer": "D = 9 – 4 = 5; t = (–3 ± 2.236)/2 = –0.38 or –2.62.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark D, 1 mark each root.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "If α and β are the roots of 2x² – 11x + 5 = 0, find α – β (take α > β).",
+          "answer": "α + β = 11/2, αβ = 5/2; (α – β)² = 121/4 – 10 = 81/4; α – β = 9/2.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each of sum and product, 1 mark (α – β)², 1 mark answer.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "If α and β are the roots of 2x² – 7x – 3 = 0, find αβ² + α²β.",
+          "answer": "α + β = 7/2, αβ = –3/2; αβ(α + β) = (–3/2)(7/2) = –21/4.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark factorisation αβ(α + β), 1 mark values, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Without solving, state the nature of the roots of 9x² – 12x + 4 = 0.",
+          "answer": "D = 144 – 144 = 0, so the roots are equal (x = 2/3 twice).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark D, 1 mark statement.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK TWO. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-002 (sequence 2); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W03-QUADRATIC-GRAPHS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Graphs of quadratic functions: roots, maximum and minimum values, line of symmetry",
+      "objectives": [
+        "Draw the graph of a quadratic function from a table of values.",
+        "Read roots, the maximum or minimum value and the line of symmetry from the graph.",
+        "Find the equation of a parabola from its roots and one other point."
+      ],
+      "body": "STEPS FOR DRAWING y = ax² + bx + c. (1) Use the given range of x-values (choose a sensible range if none is given). (2) Work out y for each x and write a table. (3) Choose a scale that fits the paper. (4) Draw axes and plot the points. (5) Join them with a smooth curve (not straight segments).\n\nSHAPE. If a > 0 the curve is U-shaped and has a minimum point. If a < 0 it is ∩-shaped and has a maximum point.\n\nROOTS. The roots of ax² + bx + c = 0 are the x-values where the curve meets the x-axis (y = 0). The curve can cut the axis twice (two roots), touch it once (a repeated root) or miss it (no real roots).\n\nLINE OF SYMMETRY. A vertical line through the turning point, x = –b/2a, divides the curve into two equal halves.\n\nExample 1. Draw y = 11 + 8x – 2x² for x from –2 to 6.\nx:  –2, –1, 0, 1, 2, 3, 4, 5, 6\ny: –13, 1, 11, 17, 19, 17, 11, 1, –13\n(e.g. x = –2: 11 – 16 – 8 = –13.) Scale: 2 cm to 1 unit on x, 1 cm to 5 units on y.\nReading the graph: the curve meets the x-axis at about x = –1.1 and x = 5.1, so these are the roots of 11 + 8x – 2x² = 0, which is the same equation as 2x² – 8x – 11 = 0 (multiply by –1). Check by formula: x = (8 ± √152)/4 = 5.08 or –1.08. The maximum value of y is 19 at x = 2, and the line of symmetry is x = 2.\n\nExample 2. y = 4x² – 12x + 9 = (2x – 3)². The table for x = –1 to 4 gives y = 25, 9, 1, 1, 9, 25 (x = –1, 0, 1, 2, 3, 4; note y = 0 at x = 1.5). The curve touches the x-axis at x = 1.5 (repeated root), the minimum value is 0 and the line of symmetry is x = 1.5.\n\nFINDING THE EQUATION FROM A GRAPH. If the roots are p and q, then y = k(x – p)(x – q). Use one more point, usually the y-intercept, to find k.\nExample 3. The curve cuts the x-axis at x = –2 and x = ½ and the y-axis at y = –2. Then y = k(x + 2)(x – ½). At x = 0: k(2)(–½) = –k = –2, so k = 2. y = 2(x + 2)(x – ½) = 2x² + 3x – 2.\nExample 4. A curve touches the x-axis at x = –4 and cuts the y-axis at y = 16. Then y = k(x + 4)², and 16k = 16 gives k = 1: y = x² + 8x + 16.",
+      "body_sha256": "1aeb8b32c5ba626f640a259d0e08596cfd3977e5342809d101a27d91ccbe69d1",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Complete a table for y = x² – 2x for x = –2 to 4 and use it to read the roots, the least value of y and the values of x when y = 7.",
+          "answer": "y = 8, 3, 0, –1, 0, 3, 8. Roots x = 0 and x = 2; least value –1 at x = 1; y = 7 when x = 1 ± √8, i.e. x = 3.83 or –1.83.",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "2 marks table, 1 mark curve, 1 mark roots, 1 mark least value, 1 mark each x for y = 7 (±0.1 allowed from the graph).",
+              "marks": 7
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "For y = x² + 2x – 2 find the minimum value, the line of symmetry and the roots of x² + 2x – 2 = 0 (2 d.p.).",
+          "answer": "Minimum y = –3 at x = –1; line of symmetry x = –1; roots x = –1 ± √3 = 0.73 or –2.73.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each of minimum, axis; 1 mark each root.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A parabola cuts the x-axis at x = 1 and x = 4 and passes through (0, 8). Find its equation.",
+          "answer": "y = k(x – 1)(x – 4); at x = 0: 4k = 8, k = 2; y = 2x² – 10x + 8.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark form, 1 mark k, 1 mark expansion.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "For y = x² + 3x – 4 find the roots, the least value of y and the values of x when y = 1 (2 d.p.).",
+          "answer": "Roots –4 and 1; least value –6.25 at x = –1.5; for y = 1: x² + 3x – 5 = 0, x = 1.19 or –4.19.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "1 mark roots, 1 mark each of least value and axis, 1 mark each x.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "State, without drawing, whether y = –x² + 4x – 7 has a maximum or minimum, and find it.",
+          "answer": "a = –1 < 0 so a maximum; at x = 2, y = –4 + 8 – 7 = –3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark maximum, 1 mark x = 2, 1 mark y = –3.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK THREE. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-003 (sequence 3); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W05-VENN-DIAGRAMS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Venn diagrams: solving problems with two and three sets",
+      "objectives": [
+        "Describe regions of a Venn diagram using set notation.",
+        "Solve two-set problems by forming and solving an equation from the regions.",
+        "Solve three-set problems, including exactly-one and exactly-two regions."
+      ],
+      "body": "A Venn diagram shows sets as closed curves inside a rectangle that represents the universal set U (or ε). Regions are described with ∩ (intersection), ∪ (union) and ′ (complement). The key fact: the numbers in all regions add up to n(U).\n\nFor two sets A and B: n(A ∪ B) = n(A) + n(B) – n(A ∩ B).\n\nExample 1. Of 400 students, 300 offer Biology (B), 190 offer Chemistry (C) and 70 offer neither. Let x offer both. Regions: B only = 300 – x, both = x, C only = 190 – x, neither = 70. (300 – x) + x + (190 – x) + 70 = 400, so 560 – x = 400 and x = 160. (i) Both: 160. (ii) At least one subject: 400 – 70 = 330.\n\nExample 2. A club has 94 members: 60 like modern music (M), 50 like traditional (T). The number who like both is three times the number who like neither. Let neither = x, both = 3x. (60 – 3x) + 3x + (50 – 3x) + x = 94, so 110 – 2x = 94, x = 8. Only one type: (60 – 24) + (50 – 24) = 36 + 26 = 62 members.\n\nTHREE SETS. Work from the middle outwards: first the triple intersection, then the pair regions (pair total minus triple), then 'only' regions.\nExample 3. 290 people read at least one of three newspapers: D = 181, G = 142, P = 117; D∩G = 75, D∩P = 60, G∩P = 54. Let x read all three. n(D ∪ G ∪ P) = 181 + 142 + 117 – 75 – 60 – 54 + x = 251 + x = 290, so x = 39.\nExactly two papers: (75 – 39) + (60 – 39) + (54 – 39) = 36 + 21 + 15 = 72.\nExactly one: D only = 181 – (36 + 21 + 39) = 85; G only = 142 – (36 + 15 + 39) = 52; P only = 117 – (21 + 15 + 39) = 42; total 179.\nCheck: 39 + 72 + 179 = 290. ✓\n\nSketch each problem: draw the rectangle, the curves, put x in the middle, then fill the other regions in terms of x.",
+      "body_sha256": "e441d48df75b448fa2102e8273b9bbb63ab8228e69bf9f080bab0ad8b667c84d",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Of 50 students, 23 answered question A only, 15 answered B only, 2 answered both and 2x answered neither. Find x.",
+          "answer": "23 + 15 + 2 + 2x = 50, so 2x = 10 and x = 5.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark equation, 1 mark x.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "In a class of 50, 24 like oranges, 23 like apples and 7 like both. How many like neither, and what percentage like apples only?",
+          "answer": "Neither = 50 – (24 + 23 – 7) = 10. Apples only = 23 – 7 = 16, which is 16/50 = 32%.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each: union, neither, apples only, percentage.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "In a group of 60 learners, 30 are in the English club (E), 25 in Maths (M), 20 in Science (S); E∩M = 10, E∩S = 8, M∩S = 7 and 4 are in all three. How many are in at least one club, in none, and in English only?",
+          "answer": "At least one: 30 + 25 + 20 – 10 – 8 – 7 + 4 = 54. None: 6. English only: 30 – (10 + 8 – 4) = 16.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "1 mark each part; 1 mark for a correct diagram.",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "U = {1,…,10}, A = {2,4,6,8}, B = {1,2,5,9}, C = {2,3,9,10}. Find A∩B∩C and C∩(A∩B)′.",
+          "answer": "A∩B∩C = {2}. (A∩B)′ = {1,3,4,5,6,7,8,9,10}, so C∩(A∩B)′ = {3,9,10}.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each answer; method shown.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK FIVE. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-004 (sequence 4); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W07-TRIGONOMETRIC-RATIOS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Trigonometric ratios of acute angles, tables, chords and graphs of sine and cosine",
+      "objectives": [
+        "Define sine, cosine and tangent in a right-angled triangle.",
+        "Use tables or a calculator to find ratios and angles.",
+        "Find the length of a chord and sketch y = sin x and y = cos x for 0° ≤ x ≤ 360°."
+      ],
+      "body": "In a right-angled triangle label the sides from the chosen acute angle θ: opposite (opp), adjacent (adj) and hypotenuse (hyp, the side opposite the right angle).\nsin θ = opp/hyp, cos θ = adj/hyp, tan θ = opp/adj. (Memory aid: SOH CAH TOA.) Also tan θ = sin θ / cos θ.\n\nExample 1. A triangle has opp = 5, adj = 12, hyp = 13. sin θ = 5/13, cos θ = 12/13, tan θ = 5/12. To find θ: tan θ = 5/12 = 0.4167, so θ = 22.6° (use tan⁻¹ on a calculator or the table of tangents).\n\nSPECIAL ANGLES. sin 30° = ½, cos 30° = √3/2 = 0.8660, tan 30° = 0.5774; sin 45° = cos 45° = 0.7071, tan 45° = 1; sin 60° = 0.8660, cos 60° = ½, tan 60° = 1.7321. Also sin θ = cos(90° – θ).\n\nUSING TABLES. Four-figure tables list sin, cos, tan for angles in degrees and tenths; read the row (degrees) and column (tenths) and, for cos, subtract the 'difference' columns. A calculator in degree mode gives the same values; check the mode first.\n\nLENGTH OF A CHORD. A chord subtends an angle θ at the centre of a circle of radius r. Draw the perpendicular from the centre to the chord: it bisects the chord and the angle. Half the chord = r sin(θ/2), so chord = 2r sin(θ/2).\nExample 2. r = 7 cm, θ = 100°. Chord = 2 × 7 × sin 50° = 14 × 0.7660 = 10.72 cm.\n\nGRAPHS. For y = sin x: y = 0 at 0°, 180°, 360°; y = 1 at 90°; y = –1 at 270°. For y = cos x: y = 1 at 0° and 360°; y = 0 at 90° and 270°; y = –1 at 180°. Both are smooth waves between –1 and 1; the cosine curve is the sine curve shifted 90° to the left. Plot points every 30° to draw them.",
+      "body_sha256": "088181e008302facf518ded5efd249b07f17a7310a3a00475eb54c0f2d483fec",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "A right-angled triangle has hypotenuse 25 and opposite side 7. Find the adjacent side, sin θ, cos θ and tan θ.",
+          "answer": "adj = √(625 – 49) = 24; sin θ = 7/25, cos θ = 24/25, tan θ = 7/24.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark adj, 1 mark each ratio.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Find θ (nearest 0.1°) if sin θ = 0.6.",
+          "answer": "θ = 36.9°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark method, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Find the length of a chord that subtends 60° at the centre of a circle of radius 10 cm.",
+          "answer": "2 × 10 × sin 30° = 10 cm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Without a calculator, state sin 90°, cos 180° and the angles in 0° ≤ x ≤ 360° where sin x = 0.",
+          "answer": "sin 90° = 1; cos 180° = –1; sin x = 0 at 0°, 180°, 360°.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Find the chord length for r = 12 cm and angle at centre 80°, to 1 d.p.",
+          "answer": "2 × 12 × sin 40° = 24 × 0.6428 = 15.4 cm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark substitution, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK SEVEN. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-005 (sequence 5); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W08-APPLICATIONS-OF-TRIGONOMETRY",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Applying trigonometry: right-angled triangles, angles of elevation and depression, and bearings",
+      "objectives": [
+        "Solve right-angled triangle problems using sine, cosine and tangent.",
+        "Solve problems with angles of elevation and depression.",
+        "Use three-figure bearings and find reverse bearings."
+      ],
+      "body": "SOLVING TRIANGLES. Choose the ratio that links the known and unknown sides: to find a side use opp = hyp × sin θ, adj = hyp × cos θ, opp = adj × tan θ; to find an angle use the inverse function.\n\nELEVATION AND DEPRESSION. The angle of elevation is measured upwards from the horizontal to the line of sight; the angle of depression is measured downwards from the horizontal. The angle of depression of a point from above equals the angle of elevation of the observer from that point (alternate angles).\nExample 1. From a point 50 m from the foot of a tower, the angle of elevation of the top is 35°. Height = 50 × tan 35° = 50 × 0.7002 = 35.0 m.\nExample 2. From the top of a 60 m cliff the angle of depression of a boat is 25°. The horizontal distance = 60 / tan 25° = 60 / 0.4663 = 128.7 m.\n\nBEARINGS. A bearing is an angle measured clockwise from North, written with three figures (e.g. 075°, 240°). To go back, add 180° if the bearing is below 180°, subtract 180° if it is above.\nExample 3. A ship sails 12 km on a bearing of 060°. Distance north = 12 cos 60° = 6 km; distance east = 12 sin 60° = 10.39 km. The bearing of the start from the ship is 240°.\nExample 4. A plane flies 80 km on a bearing of 120°. East = 80 sin 120° = 80 × 0.8660 = 69.3 km; the plane is also 80 cos 60° = 40 km south of its start.\n\nAlways draw a clear diagram marking North lines, the angle given and the unknown.",
+      "body_sha256": "44d9d5f5d1437d6b013886120afaca04eccb54baeb3d8fe78a06381ee3536d4d",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "A 6 m ladder makes an angle of 70° with the ground. How high up the wall does it reach (1 d.p.)?",
+          "answer": "6 sin 70° = 6 × 0.9397 = 5.6 m.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark diagram, 1 mark ratio, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "The angle of elevation of the top of a tree from a point 40 m from its base is 42°. Find the height.",
+          "answer": "40 tan 42° = 40 × 0.9004 = 36.0 m.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark ratio, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A plane flies 80 km on a bearing of 120°. How far east and how far south of its start is it?",
+          "answer": "East = 80 sin 120° = 69.3 km; south = 80 cos 60° = 40 km.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each distance, 1 mark diagram.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "The bearing of B from A is 075°. Find the bearing of A from B.",
+          "answer": "075° + 180° = 255°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark method, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "From the top of a 45 m building the angle of depression of a car is 30°. How far is the car from the foot of the building?",
+          "answer": "45 / tan 30° = 45 / 0.5774 = 77.9 m.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark ratio, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK EIGHT. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-006 (sequence 6); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W09-CIRCLES",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Circles: properties, arc length, sector and segment areas",
+      "objectives": [
+        "State and use the main circle properties.",
+        "Calculate arc length and perimeter of a sector.",
+        "Calculate areas of sectors, segments and triangles."
+      ],
+      "body": "CIRCLE PROPERTIES. (1) The angle at the centre is twice the angle at the circumference on the same arc. (2) Angles in the same segment are equal. (3) The angle in a semicircle is 90°. (4) Opposite angles of a cyclic quadrilateral add to 180°. (5) A tangent is perpendicular to the radius at the point of contact. (6) Tangents drawn from an outside point have equal lengths.\n\nFORMULAS (θ is the angle at the centre in degrees).\nArc length = (θ/360) × 2πr. Sector area = (θ/360) × πr². Perimeter of a sector = arc length + 2r.\nTriangle area = ½ab sin C. Segment area = sector area – triangle area = (θ/360)πr² – ½r² sin θ.\n\nExample 1 (π = 22/7). r = 7 cm, θ = 60°. Arc = (60/360) × 2 × 22/7 × 7 = 44/6 = 7.33 cm. Sector area = (1/6) × 22/7 × 49 = 25.67 cm². Perimeter = 7.33 + 14 = 21.33 cm.\n\nExample 2 (π = 3.142). r = 10 cm, θ = 90°. Sector = (1/4) × 3.142 × 100 = 78.55 cm². Triangle = ½ × 10 × 10 × sin 90° = 50 cm². Segment = 78.55 – 50 = 28.55 cm².\n\nExample 3. The angle at the centre is 100°. The angle at the circumference standing on the same arc is 50°.",
+      "body_sha256": "18d3d57cdc2a343569d4747a488aed0700a41df496924c9bc1d2b78d10534572",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Find the arc length for r = 14 cm, θ = 45° (π = 22/7).",
+          "answer": "(45/360) × 2 × 22/7 × 14 = 11 cm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Find the area of a sector with r = 6 cm and θ = 120° (π = 3.142, 2 d.p.).",
+          "answer": "(1/3) × 3.142 × 36 = 37.70 cm².",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Find the perimeter of a sector with r = 10 cm and θ = 72° (2 d.p.).",
+          "answer": "Arc = 4π = 12.57; perimeter = 12.57 + 20 = 32.57 cm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark arc, 1 mark adding 2r.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Find the area of the segment cut off by a chord that subtends 60° at the centre of a circle of radius 8 cm (2 d.p.).",
+          "answer": "Sector 33.51; triangle ½ × 64 × sin 60° = 27.71; segment = 5.80 cm².",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each: sector, triangle, subtraction.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "State the size of the angle in a semicircle and of the angle between a tangent and the radius.",
+          "answer": "Both are 90°.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK NINE. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-007 (sequence 7); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T2-W10-LOGIC",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Mathematics",
+      "title": "Logic: statements, negation, and conditional statements",
+      "objectives": [
+        "Decide whether a simple statement is true or false.",
+        "Write the negation of a statement.",
+        "Write the converse, inverse and contrapositive of a conditional statement and judge their truth."
+      ],
+      "body": "A STATEMENT is a sentence that is either true or false, never both. 'Lagos is in Nigeria' is true; '7 + 2 = 10' is false; 'Close the door' is not a statement.\n\nNEGATION. The negation of p, written ¬p (not p), has the opposite truth value. Negation of 'x > 5' is 'x ≤ 5'. Negation of 'All students passed' is 'Not all students passed' (at least one did not).\n\nCONDITIONAL (IMPLICATION). 'If p then q' is written p ⇒ q. p is the antecedent (hypothesis) and q the consequent (conclusion). It is false only when p is true and q is false.\nTruth table: p T, q T → T; p T, q F → F; p F, q T → T; p F, q F → T.\n\nRELATED STATEMENTS of p ⇒ q:\nConverse: q ⇒ p. Inverse: ¬p ⇒ ¬q. Contrapositive: ¬q ⇒ ¬p.\nThe contrapositive always has the same truth value as the original statement; the converse and inverse need not.\n\nExample. Original: 'If a number is divisible by 6, then it is divisible by 3' (true). Contrapositive: 'If a number is not divisible by 3, then it is not divisible by 6' (true). Converse: 'If a number is divisible by 3, then it is divisible by 6' (false: 9 is a counterexample).\n\nA false statement is disproved by one counterexample.",
+      "body_sha256": "33160efa0e174cf3cdec27b2834bfdae0f3cdbc04312973a391bf8f6759083b8",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Write the negation of 'All the pupils passed'.",
+          "answer": "Not all the pupils passed (some pupil did not pass).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark meaning, 1 mark correct wording.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Write the negation of 'x > 5'.",
+          "answer": "x ≤ 5.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "1 mark.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Write the contrapositive of 'If a shape is a square, then it has four equal sides'.",
+          "answer": "If a shape does not have four equal sides, then it is not a square.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "2 marks: reversed and both negated.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "State the converse of 'If a number is divisible by 6 then it is divisible by 3' and say whether it is true.",
+          "answer": "If a number is divisible by 3 then it is divisible by 6. False (9).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark converse, 1 mark counterexample.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Is 'If 2 + 2 = 5 then 3 is odd' true or false?",
+          "answer": "True: the antecedent is false, so the implication is true.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark answer, 1 mark reason.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-b802686e83d2; archive member SSS 1/2nd Term SS1_/2ND TERM S1 MATHEMATICS.docx; registered SHA-256 9bcc6573d7b3c9babd7c984db1bf79cae6385e9fa3fd5820fdf8cf26af9b3368; 1110196 bytes; source week locator(s): WEEK TEN. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-008 (sequence 8); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W01-MENSURATION-SOLIDS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Mensuration of solids: surface area and volume of cubes, cuboids, cylinders, prisms, cones and pyramids",
+      "objectives": [
+        "State the faces, edges and vertices of common solids.",
+        "Calculate surface areas and volumes of cube, cuboid, cylinder, prism, cone and pyramid."
+      ],
+      "body": "PROPERTIES. A cube has 6 square faces, 12 edges and 8 vertices. A cuboid has 6 rectangular faces, 12 edges and 8 vertices. A triangular prism has 5 faces (3 rectangles, 2 triangles), 9 edges and 6 vertices. A rectangular-based pyramid has 5 faces, 8 edges and 5 vertices. Each solid has a net: the flat shape that folds into it.\n\nFORMULAS (V = volume, A = total surface area).\nCube (side a): V = a³, A = 6a².\nCuboid (l, b, h): V = lbh, A = 2(lb + lh + bh).\nPrism: V = (area of cross-section) × length; A = 2 × cross-section + (perimeter of cross-section × length).\nCylinder (radius r, height h): V = πr²h; curved area = 2πrh; A = 2πr(r + h).\nCone: slant height l = √(r² + h²); V = ⅓πr²h; curved area = πrl; A = πr(r + l).\nPyramid: V = ⅓ × (base area) × h.\n\nExample 1. Cylinder r = 7 cm, h = 10 cm, π = 22/7. V = 22/7 × 49 × 10 = 1540 cm³. A = 2 × 22/7 × 7 × (7 + 10) = 44 × 17 = 748 cm².\nExample 2. Cone r = 3 cm, h = 4 cm. l = 5 cm. V = ⅓π(9)(4) = 12π = 37.70 cm³. A = π × 3 × (3 + 5) = 24π = 75.40 cm².\nExample 3. Triangular prism with a right-angled triangle (3, 4, 5 cm) cross-section and length 10 cm. V = ½ × 3 × 4 × 10 = 60 cm³. A = 2 × 6 + (3 + 4 + 5) × 10 = 12 + 120 = 132 cm².\nExample 4. Square-based pyramid, base 6 cm, height 4 cm. V = ⅓ × 36 × 4 = 48 cm³. Slant height of a triangular face = √(3² + 4²) = 5 cm, so A = 36 + 4 × (½ × 6 × 5) = 96 cm².\n\nAlways state units: cm² for area, cm³ for volume.",
+      "body_sha256": "bac8e88e2333105d652bbeed3543ab62a64ecdf4bce8a129749807659f949cea",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "A cuboid measures 8 cm by 5 cm by 3 cm. Find its volume and total surface area.",
+          "answer": "V = 120 cm³; A = 2(40 + 24 + 15) = 158 cm².",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each formula, 1 mark each answer.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "A cylinder has radius 3.5 cm and height 12 cm. Find its volume (π = 22/7).",
+          "answer": "22/7 × 12.25 × 12 = 462 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A cone has base radius 5 cm and height 12 cm. Find the slant height, volume and total surface area (π = 3.142).",
+          "answer": "l = 13 cm; V = ⅓ × 3.142 × 25 × 12 = 314.2 cm³; A = 3.142 × 5 × 18 = 282.8 cm².",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each of l, V, A.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "A square-based pyramid has base 10 cm and height 12 cm. Find its volume.",
+          "answer": "⅓ × 100 × 12 = 400 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A triangular prism has cross-section a right-angled triangle with legs 6 cm and 8 cm and length 15 cm. Find its volume.",
+          "answer": "½ × 6 × 8 × 15 = 360 cm³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark area of triangle, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK ONE. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-009 (sequence 1); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W02-FRUSTUMS-TRIANGLE-ANGLES",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Volumes of frustums, the angle sum of a triangle, and the exterior angle theorem",
+      "objectives": [
+        "Find the volume of a frustum of a cone and of a pyramid.",
+        "Prove that the angles of a triangle sum to 180°.",
+        "State and use the exterior angle theorem."
+      ],
+      "body": "FRUSTUM. A frustum is a cone or pyramid with its top cut off by a plane parallel to the base. Method 1: volume of the large solid minus volume of the small solid removed (similar solids: lengths in ratio k, volumes in ratio k³). Method 2 (formulas):\nFrustum of a cone (radii R and r, height h): V = ⅓πh(R² + Rr + r²).\nFrustum of a pyramid (base areas A₁ and A₂, height h): V = ⅓h(A₁ + √(A₁A₂) + A₂).\nExample 1. Cone frustum R = 6 cm, r = 3 cm, h = 4 cm: V = ⅓ × π × 4 × (36 + 18 + 9) = 84π = 263.9 cm³.\nExample 2. Square-based pyramid frustum with bases 6 cm and 3 cm sides, h = 4 cm: A₁ = 36, A₂ = 9, √(A₁A₂) = 18; V = ⅓ × 4 × 63 = 84 cm³.\n\nANGLE SUM OF A TRIANGLE. Given triangle ABC, draw a line through A parallel to BC. The angle between this line and AB equals angle B (alternate angles); the angle between it and AC equals angle C (alternate angles). These two angles and angle A lie on a straight line, so they add up to 180°. Hence A + B + C = 180°.\n\nEXTERIOR ANGLE THEOREM. If side BC is extended to D, the exterior angle ACD = 180° – C = A + B. The exterior angle equals the sum of the two interior opposite angles.\nExample 3. Triangle angles 50° and 60°: the third angle is 70°; the exterior angle at the 70° vertex is 110° = 50° + 60°.\nExample 4. Angles x, 2x, 3x: 6x = 180°, x = 30°; angles 30°, 60°, 90°.",
+      "body_sha256": "1e21d67660ac3c66b0f7c1515a414e9bd6d0f0189d58a1b82c77627a34e76dbf",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Find the volume of a cone frustum with R = 8 cm, r = 4 cm and h = 6 cm (π = 3.142).",
+          "answer": "⅓ × 3.142 × 6 × (64 + 32 + 16) = 703.8 cm³.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark substitution, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "A cone of height 12 cm is cut by a plane 8 cm above the base, parallel to the base; the small cone removed has height 4 cm. What fraction of the volume of the whole cone is removed?",
+          "answer": "Ratio of heights 4:12 = 1:3, volumes 1:27, so 1/27 is removed.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark ratio, 1 mark cube, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Two angles of a triangle are 48° and 67°. Find the third angle and the exterior angle at the vertex of the 48° angle.",
+          "answer": "Third angle 65°; exterior angle at the 48° vertex = 180° – 48° = 132° (= 67° + 65°).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Write a short proof that the angles of a triangle add up to 180°.",
+          "answer": "Draw a line through one vertex parallel to the opposite side; alternate angles give the other two angles; the three angles lie on a straight line = 180°.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark construction, 1 mark alternate angles, 1 mark conclusion.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK TWO. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-010 (sequence 2); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Geometrical constructions with ruler and compasses, quadrilaterals and loci",
+      "objectives": [
+        "Bisect line segments and angles with ruler and compasses.",
+        "Construct angles of 90°, 60°, 45°, 30°, 120°, 135° and 22½°.",
+        "Construct triangles, a parallelogram and an equilateral triangle, and describe simple loci."
+      ],
+      "body": "TOOLS. Use a sharp pencil, ruler, compasses and protractor. Keep construction arcs visible; do not rub them out.\n\nPERPENDICULAR BISECTOR of AB. With the compasses set to more than half of AB, draw arcs from A and from B so they cross above and below the line. Join the two crossing points. This line cuts AB at its midpoint at 90°.\n\nANGLE BISECTOR of angle ABC. Put the compass point on B and draw an arc cutting BA and BC at P and Q. From P and Q draw arcs of equal radius that cross at R. Join B to R.\n\n60° and equilateral triangle. Draw a line AB. With A as centre and radius AB draw an arc; with B as centre and the same radius draw a second arc crossing it at C. Triangle ABC is equilateral; each angle is 60°.\n90°. To construct a perpendicular at a point P on a line, mark A and B on the line so PA = PB. With A and B as centres and the same radius greater than PA, draw arcs that meet at R. Join P to R; PR is perpendicular to the line.\nDerived angles: bisect 90° for 45°; bisect 60° for 30°; 60° + 60° for 120°; 90° + 45° for 135°; bisect 45° for 22½°; 90° – 22½° for 67½°.\n\nTRIANGLES. SSS: draw the base, then arcs from each end with the other two sides to find the apex. SAS: draw one side, construct the given angle, mark the second side. ASA: draw the side, construct the angles at both ends.\n\nPARALLELOGRAM ABCD given AB, AD and angle A: draw AB, construct angle A, mark D on that ray with AD, then draw arcs from D (radius AB) and from B (radius AD) crossing at C.\n\nLOCI. A locus is the path of a point obeying a rule. Points equidistant from two fixed points lie on their perpendicular bisector. Points equidistant from two intersecting lines lie on the angle bisectors. Points at a constant distance from a fixed point lie on a circle. Points at a constant distance from a line lie on two parallel lines.\n\nSCHEME NOTE: the source lists '57½°', but the listed construction set does not establish how to construct that value. Do not replace it with 67½° without teacher confirmation. A separate valid angle, 67½°, can be constructed by bisecting 45° and 90°; it is not treated here as a correction to the source. This lesson teaches 22½° and the separate 67½° construction.",
+      "body_sha256": "4025814cbda25e80d26d7d88fb3dcc8e5a078a077cb9d578aa648d83e3c28d6c",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Construct triangle ABC with AB = 7 cm, BC = 6 cm and AC = 5 cm. Measure angle B and check by calculation.",
+          "answer": "cos B = (49 + 36 – 25)/(2 × 7 × 6) = 60/84, so B = 44.4°. Accept 44° ± 1° on the drawing.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "2 marks accurate construction (±2 mm), 1 mark measured angle, 1 mark calculation.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Construct 22½°, 75° and 135°. The source also lists 57½°; state why that value remains unresolved rather than substituting 67½°.",
+          "answer": "Construct 22½° by bisecting 45°; construct 75° by adding 45° and 30°; construct 135° by adding 90° and 45°. The source's 57½° value is not derived by the listed constructions and requires teacher confirmation.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each for the three correct constructions and 1 mark for identifying 57½° as unresolved pending teacher confirmation.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Construct a parallelogram ABCD with AB = 6 cm, AD = 4 cm and angle A = 60°.",
+          "answer": "Opposite sides equal and parallel; BD ≈ 5.3 cm (√(36 + 16 – 2 × 6 × 4 × cos 60°) = √28 ≈ 5.29).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "2 marks construction, 1 mark BD check.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Describe and draw the locus of points 3 cm from a fixed line segment AB of length 6 cm.",
+          "answer": "Two lines parallel to AB at 3 cm on either side joined by semicircles of radius 3 cm at the ends (a 'stadium' shape).",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each: parallels, semicircles, accuracy.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK THREE. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-011 (sequence 3); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W05-DEDUCTIVE-PROOFS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Deductive proofs: congruent triangles, parallelograms and the intercept theorem",
+      "objectives": [
+        "State the conditions for congruent triangles.",
+        "Prove simple results about parallelograms using congruence.",
+        "State and apply the intercept theorem."
+      ],
+      "body": "A DEDUCTIVE PROOF starts from known facts (definitions, earlier theorems) and reaches the result by logical steps, giving a reason for each step.\n\nKNOWN FACTS. Angles on a straight line add to 180°. Vertically opposite angles are equal. Corresponding and alternate angles between parallel lines are equal; co-interior angles add to 180°. Angles of a triangle add to 180°.\n\nCONGRUENT TRIANGLES have equal corresponding sides and angles. The conditions: SSS (three sides), SAS (two sides and the included angle), ASA or AAS (two angles and a corresponding side), RHS (right angle, hypotenuse and one side).\n\nProof 1. Opposite sides of a parallelogram ABCD are equal. Draw diagonal AC. In triangles ABC and CDA: angle BAC = angle DCA (alternate angles, AB ∥ DC); angle BCA = angle DAC (alternate angles, BC ∥ AD); AC is common. So the triangles are congruent (ASA), hence AB = CD and BC = DA.\nProof 2. The diagonals of a parallelogram bisect each other. In triangles AOB and COD (O the meeting point): angle OAB = angle OCD and angle OBA = angle ODC (alternate angles) and AB = CD (Proof 1), so the triangles are congruent (ASA); so AO = OC and BO = OD.\nProof 3. Opposite angles of a parallelogram are equal: from the congruent triangles ABC and CDA, angle B = angle D.\n\nINTERCEPT THEOREM. If a line parallel to one side of a triangle meets the other two sides, it divides them in the same ratio. In triangle ABC, if DE ∥ BC with D on AB and E on AC, then AD/DB = AE/EC (and AD/AB = AE/AC = DE/BC).\nExample. AD = 4 cm, DB = 6 cm, AE = 3 cm. Then AE/EC = 4/6, so EC = 4.5 cm.",
+      "body_sha256": "bb2b0a0b4a08717ffc2ed6feec695a01f88d98c58691859c07feba384a842202",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "List the four conditions for triangles to be congruent.",
+          "answer": "SSS, SAS, ASA (or AAS) and RHS.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark for each correct pair, max 4.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "In a parallelogram ABCD the diagonals meet at O. Prove that AO = OC.",
+          "answer": "Triangles AOB and COD: AB = CD (opposite sides), angle OAB = angle OCD and angle OBA = angle ODC (alternate angles); congruent by ASA; so AO = OC.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each: equal sides, equal angles with reasons, congruence condition, conclusion.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "In triangle PQR, S lies on PQ and T on PR with ST ∥ QR. PS = 5 cm, SQ = 7.5 cm and PT = 4 cm. Find TR.",
+          "answer": "PS/SQ = PT/TR, so TR = 4 × 7.5 / 5 = 6 cm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark ratio, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Prove that the exterior angle of a triangle equals the sum of the two interior opposite angles.",
+          "answer": "Exterior angle + interior angle at the vertex = 180° (straight line); the three interior angles also sum to 180°; so the exterior angle = the sum of the other two.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each of two facts, 1 mark conclusion.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK 5. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-012 (sequence 4); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W06-STATISTICS-UNGROUPED-DATA",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Statistics 1: collecting, tabulating and presenting data; range, median and mode of ungrouped data",
+      "objectives": [
+        "Collect and tabulate raw data using a tally and frequency table.",
+        "Find the range, mean, median and mode of ungrouped data."
+      ],
+      "body": "DATA COLLECTION. Data can be collected by counting, measuring or asking, e.g. heights, ages, test scores, types of vehicles passing the school gate. Raw data are first recorded, then tallied (|||| = 5) and summarised in a FREQUENCY TABLE with columns: value, tally, frequency.\n\nMEASURES for a list of values:\nRange = highest value – lowest value.\nMean = (sum of values) ÷ (number of values). From a frequency table, mean = Σfx / Σf.\nMedian = the middle value when the data are arranged in order (the mean of the two middle values when there is an even number of values).\nMode = the most frequent value (there can be more than one, or none).\n\nExample. Scores of 10 pupils: 4, 7, 5, 7, 9, 6, 7, 3, 8, 5.\nOrdered: 3, 4, 5, 5, 6, 7, 7, 7, 8, 9.\nRange = 9 – 3 = 6. Mode = 7 (appears three times). Median = (6 + 7)/2 = 6.5. Mean = 61/10 = 6.1.\n\nFrequency table version.\nScore: 3 4 5 6 7 8 9; frequency: 1 1 2 1 3 1 1 (Σf = 10); Σfx = 3 + 4 + 10 + 6 + 21 + 8 + 9 = 61; mean = 6.1. ✓\n\nChoosing a measure: the mean uses every value but is pulled by extreme values; the median is better when there are extreme values; the mode is the only measure for category data such as types of vehicles.\n\nPRESENTING DATA. A bar chart suits categories (e.g. types of vehicles); the bars have equal widths and gaps and a labelled scale.",
+      "body_sha256": "3f53eb3a73c743e377be1dfe4d16aa80a6ac4728790caa5979e461897706f254",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Heights (cm): 150, 155, 160, 155, 170, 165, 155. Find the range, mode, median and mean (2 d.p.).",
+          "answer": "Range 20; mode 155; median 155; mean 1110/7 = 158.57.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each measure.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Make a frequency table for the vehicles seen in a morning: car, bus, bike, car, car, bike, bus, car, bike, car. Which is the mode?",
+          "answer": "Car 5, bus 2, bike 3. Mode = car.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "2 marks table, 1 mark mode.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "The mean of five numbers is 8. Four of them are 5, 7, 9 and 12. Find the fifth.",
+          "answer": "Sum = 40; fifth = 40 – 33 = 7.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark sum, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Find the median of 12, 7, 3, 9, 15, 4.",
+          "answer": "Ordered 3, 4, 7, 9, 12, 15; median = (7 + 9)/2 = 8.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark ordering, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK 6. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-013 (sequence 5); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W08-GROUPED-DATA",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Statistics 2: grouped data — frequency tables, mean, median, mode and range",
+      "objectives": [
+        "Group data into class intervals and tabulate.",
+        "Find the mean, median and mode of grouped data."
+      ],
+      "body": "CLASS INTERVALS. For continuous or large data we group values into classes such as 10–19, 20–29, 30–39. Class limits are the stated ends (10 and 19); class boundaries are halfway between neighbouring classes (9.5 and 19.5). The class width is upper boundary – lower boundary (10). The mid-value x of a class is (lower limit + upper limit)/2 (e.g. 14.5).\n\nExample table (30 pupils' marks).\nClass: 10–19, 20–29, 30–39, 40–49, 50–59\nf: 3, 7, 12, 6, 2 (Σf = 30)\nx: 14.5, 24.5, 34.5, 44.5, 54.5\nfx: 43.5, 171.5, 414, 267, 109 (Σfx = 1005)\n\nMEAN = Σfx / Σf = 1005/30 = 33.5.\n\nMEDIAN. Use cumulative frequency: 3, 10, 22, 28, 30. N/2 = 15 lies in the class 30–39 (the median class). Median = L + ((N/2 – F)/f) × c, where L = lower boundary of the median class (29.5), F = cumulative frequency before it (10), f = its frequency (12), c = class width (10). Median = 29.5 + (5/12) × 10 = 33.67.\n\nMODE. The modal class has the highest frequency: 30–39. Mode = L + (d₁/(d₁ + d₂)) × c, where d₁ = f – frequency before (12 – 7 = 5) and d₂ = f – frequency after (12 – 6 = 6). Mode = 29.5 + (5/11) × 10 = 34.05.\n\nRANGE (estimate) = highest upper boundary – lowest lower boundary = 59.5 – 9.5 = 50.\n\nWrite results to a sensible accuracy (usually 1 or 2 decimal places) and show each column of the working.",
+      "body_sha256": "13e555e156251c4d65b93df73c128b9187474556d651cf5b90786f56cd766a48",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Marks: 1–10: 2, 11–20: 5, 21–30: 8, 31–40: 4, 41–50: 1. Find the mean.",
+          "answer": "x = 5.5, 15.5, 25.5, 35.5, 45.5; Σfx = 480; mean = 480/20 = 24.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each: midpoints, fx, Σfx, mean.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "For the same data find the median.",
+          "answer": "N/2 = 10; median class 21–30; 20.5 + (3/8) × 10 = 24.25.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark class, 1 mark formula values, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "For the same data find the modal class and the mode.",
+          "answer": "Modal class 21–30; d₁ = 3, d₂ = 4; mode = 20.5 + (3/7) × 10 = 24.79.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark class, 1 mark d-values, 1 mark answer.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "State the class boundaries and class width for the class 41–50.",
+          "answer": "Boundaries 40.5 and 50.5; width 10.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK 8. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-014 (sequence 6); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W10-STATISTICAL-GRAPHS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Statistical graphs: bar charts, pie charts, histograms and cumulative frequency curves",
+      "objectives": [
+        "Draw bar charts, pie charts and histograms.",
+        "Draw a cumulative frequency curve and read the median from it."
+      ],
+      "body": "BAR CHART. Bars of equal width with equal gaps; the vertical axis shows frequency from 0; both axes are labelled and the chart has a title.\n\nPIE CHART. Angle for a category = (frequency ÷ total) × 360°.\nExample. 100 pupils' transport: walk 40, bus 30, bicycle 20, car 10. Angles: 144°, 108°, 72°, 36° (total 360°). Draw a circle, then the sectors in order with a protractor, and label each.\n\nHISTOGRAM. For grouped continuous data draw touching rectangles. Use the class boundaries on the horizontal axis (e.g. 9.5, 19.5, 29.5, …). With equal class widths, the height is the frequency.\n\nCUMULATIVE FREQUENCY CURVE (OGIVE). Cumulative frequency is a running total. Plot each cumulative frequency against the UPPER class boundary and join the points with a smooth curve starting at the lowest boundary with frequency 0.\nUsing the 30 marks of the previous lesson: upper boundaries 19.5, 29.5, 39.5, 49.5, 59.5 with cumulative frequencies 3, 10, 22, 28, 30 (and 0 at 9.5).\nTo read the median, go across from N/2 = 15 on the vertical axis to the curve, then down to the horizontal axis: the reading is about 33.7. Quartiles are read at N/4 and 3N/4.\n\nREADING INFERENCES. Say what the graph shows in a sentence, e.g. 'Most pupils scored between 30 and 39 marks; about 22 of the 30 pupils scored below 40.'",
+      "body_sha256": "1c80b87a0415252514f5c0bb3f3778076d9dc66ed6c269646072563a00151740",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "A class of 60 pupils chose a favourite subject: Maths 24, English 18, Science 12, Others 6. Find each pie-chart angle.",
+          "answer": "144°, 108°, 72°, 36°.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark method, 2 marks all four.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Draw a cumulative frequency table for marks 1–10: 2, 11–20: 5, 21–30: 8, 31–40: 4, 41–50: 1.",
+          "answer": "Upper boundaries 10.5, 20.5, 30.5, 40.5, 50.5 with cumulative frequencies 2, 7, 15, 19, 20.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark boundaries, 2 marks cumulative values.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Use the table in Question 2 to estimate the median from the curve.",
+          "answer": "N/2 = 10, between 20.5 and 30.5: about 24.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark N/2, 1 mark reading (24 ± 1).",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Why are class boundaries, not class limits, used for a histogram?",
+          "answer": "So that the rectangles touch and the scale is continuous (no gaps between classes).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "1 mark.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK TEN. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-015 (sequence 7); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-MATHEMATICS-T3-W11-STANDARD-DEVIATION",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Mathematics",
+      "title": "Mean deviation, variance and standard deviation of grouped data",
+      "objectives": [
+        "Calculate the mean deviation of grouped data.",
+        "Calculate the variance and standard deviation of grouped data and interpret them."
+      ],
+      "body": "These measures of spread tell how far the data are scattered about the mean x̄.\n\nFor classes with mid-values x and frequencies f (N = Σf):\nx̄ = Σfx / N.\nMean deviation = Σf|x – x̄| / N.\nVariance = Σf(x – x̄)² / N = Σfx²/N – x̄².\nStandard deviation (SD) = √variance.\n\nExample. Mid-values 5, 15, 25, 35, 45 with f = 2, 5, 8, 4, 1 (N = 20).\nΣfx = 10 + 75 + 200 + 140 + 45 = 470, so x̄ = 23.5.\nDeviations x – x̄: –18.5, –8.5, 1.5, 11.5, 21.5.\nΣf|x – x̄| = 37 + 42.5 + 12 + 46 + 21.5 = 159, so mean deviation = 159/20 = 7.95.\nΣf(x – x̄)² = 2(342.25) + 5(72.25) + 8(2.25) + 4(132.25) + 1(462.25) = 684.5 + 361.25 + 18 + 529 + 462.25 = 2055, so variance = 102.75.\nCheck with the second formula: Σfx² = 2(25) + 5(225) + 8(625) + 4(1225) + 2025 = 13100; 13100/20 – 23.5² = 655 – 552.25 = 102.75. ✓\nSD = √102.75 = 10.14.\n\nInterpretation: a small SD means the values are close to the mean; a large SD means they are widely spread. Two classes with the same mean can have different SDs; the class with the smaller SD is more consistent.",
+      "body_sha256": "4343e2909e1401f41b10448092a7844f03e45472e82f30fa6197c01653996d96",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "The values 3, 5, 7 have frequencies 2, 4, 2. Find the mean, mean deviation, variance and standard deviation.",
+          "answer": "Mean 5; MD = (4 + 0 + 4)/8 = 1; variance = (8 + 0 + 8)/8 = 2; SD = 1.41.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Mid-values 10, 20, 30, 40, 50 with f = 4, 6, 8, 6, 4. Find the mean, mean deviation and standard deviation (2 d.p.).",
+          "answer": "N = 28; mean 30; MD = 280/28 = 10; variance = 4400/28 = 157.14; SD = 12.54.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each of mean, MD, variance, SD.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Class A has mean 60 and SD 4; class B has mean 60 and SD 12. Which class is more consistent and why?",
+          "answer": "Class A: the smaller SD means marks are closer to the mean.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark class, 1 mark reason.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Mathematics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-ca00ca94afb9; archive member SSS 1/3rd Term SS1_/3RD TERM S1 MATHEMATICS.docx; registered SHA-256 9cc003bfd8d06f7da212d0586a44b04749a312c4759cc3422eae2290e2ec84f2; 1365317 bytes; source week locator(s): WEEK ELEVEN. Existing source/member verification is reused from prior project evidence; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation and worked examples authored for this school curriculum; no third-party passage reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Mathematics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8; branch lesson SUP-SS1-MATHS-016 (sequence 8); mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/mathematics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; generic preface URLs in the prior draft were not carried as topic-specific references.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Mathematics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -2370,6 +3873,16 @@
         "COV-MATH-T1-W02-EX-3"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "OI-MATH-T3-W03-ANGLE-57-5",
+      "detail": "The 3rd Term Mathematics scheme lists 57½° in the geometrical-construction angle set. The prior PR #71 draft speculated that this was a typing slip for 67½° because 67½° can be obtained by bisecting 45° and 90°. That inference is not established by the source. The ported lesson now presents 67½° only as a separate valid construction and does not silently substitute it for 57½°.",
+      "required_action": "Teacher to confirm whether the source intended 57½°, 67½°, or a different construction sequence, and whether the school wants a separate construction demonstrated. Until confirmed, keep the 57½° source item unresolved and do not mark its coverage complete.",
+      "blocks_delivery": true,
+      "affected_ids": [
+        "SS1-SRC-ca00ca94afb9",
+        "SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS"
+      ]
     }
   ]
 }
