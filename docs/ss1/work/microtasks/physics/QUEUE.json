@@ -23,7 +23,8 @@
     "Several items write the same package file. Workers start from current master, change only their own entries and rebase; PENDING means unclaimed.",
     "PHYS-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. physics.json now has 5 source_rules (added SS1-SRC-5c0149cda71d-R002 and SS1-SRC-5c0149cda71d-R003, both SCHEME_ONLY) and 2 coverage entries (COV-PHYS-T1-TITLE and COV-PHYS-T1-REFERENCES, both MARKER). Scheme week 11 (Revision) has no parsed row or teaching body; scheme weeks 5 and 6 share the parsed WEEK FIVE AND SIX row. Note 1 is the queue-generation snapshot. Per-block hashes and the scheme-row mapping are in docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Nothing was run; testing remains deferred.",
     "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md.",
-    "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written."
+    "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
+    "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -32,20 +33,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 5,
+    "FACTUAL_DEPENDENCY": 6,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 3
+    "LESSON": 6,
+    "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
-    "BLOCKED": 8,
-    "PENDING": 56
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "BLOCKED": 9,
+    "PENDING": 59
   },
-  "total": 70,
+  "total": 75,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -345,8 +347,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 1 (source label 'WEEK TWO', title \"MEASUREMENT OF MASS, WEIGHT, LENGTH & TIME\", 8197 characters, body sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, 'MEASUREMENT OF MASS, WEIGHT, LENGTH & TIME', 8197 characters) at objective level in backend/src/db/ss1/subjects/physics.json: 16 coverage entries COV-PHYS-T1-W02-OBJ-1..OBJ-16 and 9 open items PHYSICS-T1-W02-COVERAGE, -FIGURES-LOST, -MICROMETER, -VOLUME-GAP, -ASSESSMENT-NO-KEY, -FACT-DEFECTS, -EXTRACTION-ARTEFACT, -NOTATION-LOSS and -SOURCE-DEFECTS. physics.json now has 34 coverage entries and 20 open items; package_status stays PENDING and lessons[] stays empty (0 delivery_corrections, 0 assets). Locator method (unchanged from PHYS-PRE-T1 and PHYS-WK-T1-W01): word-extractor 1.0.4 getBody() lines, 1-based, block digest = SHA-256 over the stated lines joined with \\n (UTF-8, edge blank lines trimmed, no trailing newline, tabs kept). The parsed body is lines 194-340 with the trailing blank lines 341-342 trimmed by the importer's trim(); its digest b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e equals the parsed row 1 identity in docs/ss1/work/SS1-03/evidence/parsed_rows.json, so every PARTIAL entry binds lesson_ids [SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e] exactly. Source verified before indexing: member 'SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc', 8,479,232 bytes, sha256 cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206, supplied as the standalone member; re-extraction reproduced 1,288 lines whose whole text sha256 is 23a1a9aed418ac382bcfa0c4302eaf70c8a348bba82dbe6c2893c10b9bd86908. Result: 10 PARTIAL (OBJ-1 techniques and measurement 202-203; OBJ-2 metre rule and tape rule 205-206; OBJ-3 callipers 208-209; OBJ-4 vernier callipers and micrometer screw gauge 211-215; OBJ-5 the vernier reading rule 247-250; OBJ-8 time 218-219; OBJ-9 mass 225-227; OBJ-10 weight, the six-row difference table and W=mg 229-242; OBJ-11 volume 244-245; OBJ-14 the reading assignment 291-292). 6 UNRESOLVED (OBJ-6 Example 3.1 and OBJ-7 Example 3.2, whose figures are absent and, for the micrometer, whose reading rule is never stated and whose working prints 17.1mm or 1.711cm after summing to 17.11; OBJ-12 EVALUATION 1 221-223, OBJ-13 EVALUATION 2 287-289, OBJ-15 WEEKEND ASSIGNMENT 294-309 and OBJ-16 THEORY 311-340, none with an answer key or mark allocation). No SUPPORTED entry: the package has no lesson for this row, so no objective is deliverable. Binary evidence for the lost figures, from a scratch copy of word-extractor 1.0.4 patched to emit a marker for each Word 0x08 drawn-object and 0x01 inline-picture anchor before clean() (the marker-stripped text is byte-identical to the stored body): the row has 43 drawn-object anchors (line 253 x35, 257 x2, 262 x1, 273 x1, 316, 321, 327 and 334 x1 each) and no inline-picture anchor; whole document 139 and 45; weekend items 3, 7 and 10 point at diagrams yet lines 295-309 hold no anchor of either kind. The literal string 'undefined' occurs 98 times in theory item 5 (line 339) and once at line 995: the member holds 99 U+001F control characters and word-extractor's filters.js has no replacement for that code, so the word is an extractor artefact that the importer (ingestTopics.ts:299-302) would store. Defects recorded, never corrected in the source: 20 metres for a table-tennis board (203); 17.1mm against 1.711cm (285); weekend item 1 has no option matching the week's own vernier teaching (295 against 212); 'the dimension of a compound' undefined (314); scheme-versus-outline mismatch (weight against volume); 'time internal' x2 (219); Hook's law and the principle of moments used but not taught (238); burette, pipette, constantan, watt meter, relative humidity and dew point occur nowhere else and the hydrometer only in Week 7 (961); flattened exponents m/s2 and cm3 and U+2212 in the force-dimension options (302). Not done here and left with its owner: the term-wide figure inventory (PHYS-VIS-T1), the superscript/figure rendering decision (PHYS-OWNER-EXTRACTION-STRATEGY, BLOCKED), reconciliation of the unmerged PR #71 entries (PHYS-PORT-D1-COV-T1), the duplicate-heading constraint for any classify_marker rule (PHYS-RULE-T1-REVISION-SCHEME) and the subject-package approval items. Full tests, typecheck, importer run, database and device checks remain deferred; CI was left enabled. No lesson, correction, rule, asset, source document, credential or shared file was written, and no stored row or order_index was renumbered. Gaps became five appended bounded tasks instead of notes: PHYS-LES-T1-W02-MICROMETER-READING, PHYS-LES-T1-W02-VOLUME-MEASUREMENT and PHYS-LES-T1-W02-KEY-ASSESSMENT (LESSON, PENDING), PHYS-COR-T1-W02-BINDING (CORRECTION_BINDING, PENDING) and PHYS-FACT-T1-W02-SCOPE (FACTUAL_DEPENDENCY, BLOCKED). An indexed week is not a certified or fully taught week.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2374,6 +2376,209 @@
       "status": "BLOCKED",
       "implementation_reference": "Raised by PHYS-WK-T1-W01 (2026-11-05): 6 coverage entries are UNRESOLVED, 8 are PARTIAL, and PHYSICS-T1-W01-LABORATORY, -COVERAGE, -SCIENTIFIC-METHOD, -DIMENSIONAL-GAPS, -ASSESSMENT-NO-KEY and -FACT-DEFECTS are open and blocking while -NOTATION-LOSS and -SOURCE-DEFECTS are open and non-blocking. No lesson, correction, rule, asset or source byte was written and no answer invented.",
       "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the three lesson items then bind to those decisions; no correction is invented, no lesson authored and no shared file edited here."
+    },
+    {
+      "id": "PHYS-LES-T1-W02-MICROMETER-READING",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); micrometer block lines 214-215 (sha256 f31aae6491f2acfd68e0f89dfbf856b86af5e126a12ff6a03259edc9d73b6b22) and Example 3.2 lines 271-285 (sha256 e256cf3113fef995c699b95729e79ada010c489569deffcfc04a3c2adfcc24c9); coverage entries COV-PHYS-T1-W02-OBJ-4 and COV-PHYS-T1-W02-OBJ-7; open item PHYSICS-T1-W02-MICROMETER",
+      "objective": "Author one bounded Week 2 supplement lesson teaching how to read a micrometer screw gauge, which the source never states as a rule: line 215 gives its use and its 0.01 mm accuracy, the heading at line 271 promises 'How to read the micrometer scale', and the only working (lines 282-285, sha256 f691bc07ff6dee0be717f6a7e1b0505325ecf7fdaa29df7bf2e4ee84c2c0408e) adds 17.00 and 0.11 and then prints '17.1mm   or 1.711cm'. Teach the reading rule, show a worked example whose millimetre and centimetre forms agree, state zero error plainly, and mirror the vernier reading rule at line 248 (sha256 65a0425edf3f070343ba3122217bfe3925e45e7160f1753589742362907cf7e0). Label it a supplement; do not claim the example comes from the source and do not read any value from Fig. 3.4, whose drawn object (line 273) was not inspected.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W02-MICROMETER-READING.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-7 is UNRESOLVED and PHYSICS-T1-W02-MICROMETER blocks delivery. The rule and the consistent worked example are routine physics and need no expert decision; the figure and any extraction rendering stay with PHYS-VIS-T1 and PHYS-OWNER-EXTRACTION-STRATEGY.",
+      "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
+    },
+    {
+      "id": "PHYS-LES-T1-W02-VOLUME-MEASUREMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); volume block lines 244-245 (sha256 9215bf7c3ef2afdeae243f7717df481a2ecf97c80f7d5a26b09cd9f133321197); coverage entry COV-PHYS-T1-W02-OBJ-11; open item PHYSICS-T1-W02-VOLUME-GAP",
+      "objective": "Author one bounded Week 2 supplement lesson on measuring volume: the graduated cylinder (reading procedure and the meaning of the smallest division) and the displacement method for an irregular solid, which line 245 (sha256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917) names with the eureka can without describing either. Do not teach the burette or the pipette unless PHYS-FACT-T1-W02-SCOPE places them in Week 2, and treat the 1 cm3 accuracy claim at line 245 as an expert question, not a fact. Label it a supplement and invent no figure.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W02-VOLUME-MEASUREMENT.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-11 is PARTIAL and PHYSICS-T1-W02-VOLUME-GAP blocks delivery.",
+      "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
+    },
+    {
+      "id": "PHYS-LES-T1-W02-KEY-ASSESSMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); EVALUATION 1 lines 221-223 (sha256 f1c19c80c3b39616ce85ea1f2307dbf01f446defdab967b6b75c645f5312e197); EVALUATION 2 lines 287-289 (sha256 262e1818f4cac042398c130b2468eb82a1c162cebbf2e40503b46c819c12bad7); WEEKEND ASSIGNMENT lines 294-309 (sha256 7a815dea34bf06b174f2d5b2af875b7cdeb7e4be38169e801e3db45450cb9c4b); THEORY lines 311-340 (sha256 cef73700bd2e7f02ce13a1d752495d52a3a2ebd98a7b100c11b9d4701415904f); coverage entries COV-PHYS-T1-W02-OBJ-12, -13, -15 and -16; open item PHYSICS-T1-W02-ASSESSMENT-NO-KEY",
+      "objective": "Author one bounded Week 2 supplement giving a complete answer key and a marking breakdown that sums exactly for every assessment item that can be answered from text, using the teacher's decisions in PHYS-FACT-T1-W02-SCOPE for the questioned items (weekend item 1, theory item 1(d), the beyond-week items and theory item 5), and listing weekend items 3, 7 and 10 and theory items 2, 3 and 4 as waiting on PHYS-VIS-T1 rather than answering them. Never mark an option correct without the authority recorded there.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W02-KEY-ASSESSMENT.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W02",
+        "PHYS-FACT-T1-W02-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-12, -13, -15 and -16 are UNRESOLVED and PHYSICS-T1-W02-ASSESSMENT-NO-KEY blocks delivery. Waits for PHYS-FACT-T1-W02-SCOPE.",
+      "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
+    },
+    {
+      "id": "PHYS-FACT-T1-W02-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TWO, parsed row 1 (body lines 194-340, sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e); scheme row line 25 (sha256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3); the nine numbered questions in open item PHYSICS-T1-W02-FACT-DEFECTS and the wording defects in PHYSICS-T1-W02-SOURCE-DEFECTS",
+      "objective": "Obtain one recorded subject-expert decision on every Week 2 factual, scope and wording question so the lesson and correction tasks can proceed without invented content: (1) whether 20 metres for a table-tennis board (line 203) is a slip and what the intended example is; (2) which of 17.1 mm and 17.11 mm is the intended micrometer result at line 285; (3) the intended answer to weekend item 1 (line 295) given that the vernier callipers is not an option; (4) what 'the dimension of a compound' means at theory item 1(d) (line 314); (5) what the 98 U+001F characters of theory item 5 (line 339) stood for and what the three blanks ask; (6) whether weight or volume belongs in Week 2 where the scheme row and the outline differ; (7) whether the burette, pipette, hydrometer, relative humidity, dew point, constantan and watt meter items (weekend 5, 8, 9) and the force dimension (item 6) are expected of a Week 2 student; (8) whether the 1 cm3 graduated-cylinder accuracy at line 245 and the reliance on Hooke's law and the principle of moments at line 238 stand; (9) whether time measurement stops at clocks and stop watches (line 219). Do not supply any value, definition or answer without recording the authority the teacher actually uses.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W02-SCOPE.md"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W02"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by PHYS-WK-T1-W02 (2026-11-07): PHYSICS-T1-W02-FACT-DEFECTS, -SOURCE-DEFECTS and -EXTRACTION-ARTEFACT hold the evidence. Needs a named subject expert; nothing is decided or invented here.",
+      "completion_condition": "Every numbered item has a named expert decision recorded with its evidence and locators; the key-assessment lesson and the correction binding then bind to those decisions; no lesson authored and no shared file edited here."
+    },
+    {
+      "id": "PHYS-COR-T1-W02-BINDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e",
+      "objective": "Once the supplements exist, bind the original WEEK TWO row to its replacement in delivery_corrections[] so that the delivered text does not carry the three delivery defects: the 98 literal 'undefined' tokens of theory item 5 (line 339), Example 3.2's disagreeing 17.1 mm and 1.711 cm (line 285) and the implausible 20 m table-tennis example (line 203). Resolve exactly source id + original file hash + original lesson id + body hash to one supplement of the same subject and term, review whether the replacement preserves every instructional objective of the row it displaces, and never rewrite the source row.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md",
+        "docs/ss1/work/microtasks/physics/PHYS-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json"
+      ],
+      "depends_on": [
+        "PHYS-SRC-T1",
+        "PHYS-WK-T1-W02",
+        "PHYS-LES-T1-W02-MICROMETER-READING",
+        "PHYS-LES-T1-W02-KEY-ASSESSMENT",
+        "PHYS-FACT-T1-W02-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): open items PHYSICS-T1-W02-EXTRACTION-ARTEFACT and PHYSICS-T1-W02-FACT-DEFECTS. Waits for the supplements and the expert decisions; no replacement exists to bind yet.",
+      "completion_condition": "delivery_corrections[] has one entry with this source id, source sha256, source_lesson_id SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e, body_sha256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e and a replacement_id that resolves to an existing supplement of the same subject and term; the reason and evidence name each defect; no schema, compiler or other subject is edited."
     }
   ],
   "review": {
@@ -2400,11 +2605,12 @@
   },
   "next_runnable": [
     "PHYS-RULE-T1-REVISION-SCHEME",
-    "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS"
+    "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
+    "PHYS-LES-T1-W02-MICROMETER-READING",
+    "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
     "PHYS-PRE-T3",
-    "PHYS-WK-T1-W02",
     "PHYS-WK-T1-W03",
     "PHYS-WK-T1-W04",
     "PHYS-WK-T1-W05-W06",
@@ -2446,6 +2652,8 @@
     "PHYS-PORT-D1-T3-L005",
     "PHYS-PORT-D1-COV-T1",
     "PHYS-CMP-D4-NOTES",
-    "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS"
+    "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
+    "PHYS-LES-T1-W02-MICROMETER-READING",
+    "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ]
 }

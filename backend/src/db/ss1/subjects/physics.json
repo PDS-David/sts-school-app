@@ -531,6 +531,270 @@
           "explanation": "Both questions ask for the exponents of a dimension symbol whose superscripts the extraction flattens away, so as text they read as ordinary products of letters. The intended reading is recorded in PHYSICS-T1-W01-NOTATION-LOSS; the exponent values are not supplied here."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-1",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Techniques and measurement: every measurement needs a number and a unit (week outline heading TECHNIQUES AND MEASUREMENT; precedes the four scheme quantities)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 202-203; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "whole parsed body lines 194-340 SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e; label line 194 SHA-256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6 'WEEK TWO'; topic line 195 SHA-256 ffcac156af7c64c32017fa76f36148314c5a1921db8f97d79f9ca2f3b9aaf0d5; block lines 194-195 SHA-256 e01f740c9c1eb3bef4dffd317181273943431e9f0aa6ec85be00e943cad1683e; CONTENT outline lines 196-200 SHA-256 b141aa6dd96d9bed5191d64e1bfe3a9715729d075893614ae6fa63389889a412; outline words line 197 SHA-256 6d08d7fe9817b541e9cfd88f904e8897f322d91832e3eb078744a070a7d35bf5 'Measurement of Length', line 198 SHA-256 42c9b86f6ba910c1234943c53e8ef30c922b0b067f2a28dada0b0b165ff5a0c2 'Measurement of Time', line 199 SHA-256 a500a88328bf75e3a204d29fc602a23b68f619ea7f7f4f5ed49670fd2da3aa8d 'Measurement of Mass', line 200 SHA-256 22cd2ea2f2db447dde86c8466d9e213656fda6be18fbd50e7cbe403e6a3d8894 'Measurement of Volume'",
+          "explanation": "The parsed body label and topic line carry the scheme clause beyond case and the ampersand, and the body digest equals the parsed row 1 identity recorded in docs/ss1/work/SS1-03/evidence/parsed_rows.json. The week declares four outline headings of its own: length, time, mass and volume. The scheme row names mass, weight, length and time: weight is in the scheme but has no outline heading, volume has an outline heading but is not in the scheme row. This task indexes both lists (see PHYSICS-T1-W02-FACT-DEFECTS)."
+        },
+        {
+          "locator": "heading line 202 SHA-256 b2838ed9b5f80400581092269faa3872e0c8251390040b36d7e600db732d905d; paragraph line 203 SHA-256 6a6c75b6be874df8af073093c985e6cc887711f220ecd3cfb770110768a473a4; block lines 202-203 SHA-256 4785bcd4e4969253823a8e48a5903b3627a7c47adfde8aafa766324953c5eff4",
+          "explanation": "Line 203 states that physics rests on exact measurement and that every measurement needs two things, a number or quantity and a unit, and gives '20 metres as the length of a table tennis's board' as its example. The principle is taught at objective level. The example is implausible for a table-tennis table (a regulation table is about 2.74 m long) and is recorded, not corrected, in PHYSICS-T1-W02-FACT-DEFECTS. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-2",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Measurement of length: the metre rule and the tape rule (scheme clause Length)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 205-206; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 205 SHA-256 a60d4a6191dc37b6c64fa09baf957c5210f4b86c77bb7101622471dd1a08675a; paragraph line 206 SHA-256 3b1fbb77bfc3d5f993037a591acf1ff4595cd386cf87121232ad016ac6a5531f; block lines 205-206 SHA-256 2d833dbedf012db96b029d172cce7292c99895063292bd517640a31afaa38e4d",
+          "explanation": "Line 206 says the metre rule measures a few centimetres to some metres, that a tape rule is used for longer distances, and that the smallest graduation of a metre rule is 0.1 cm or 1 mm (the two values agree). The tape rule is named in one clause and never described. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-3",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Measurement of length: callipers for solid objects (scheme clause Length)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 208-209; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "heading line 208 SHA-256 c6dde29bdadfd24857c08f81fcd6ef990223824028bb1870bd24405e11e1381f; paragraph line 209 SHA-256 d7b2862f32d410fc860992616073146277e829ce350f1617c20dd370a978863a; block lines 208-209 SHA-256 39b42acc4346d9194312b8ba104a7d0562a3ae8daf59b574d6f8e2c5853a6dcb",
+          "explanation": "Line 209 describes ordinary callipers as hinged steel jaws closed on the object, with the jaw distance then read against a metre rule, and names external callipers. Internal callipers are implied by the phrase 'in the case of external callipers' but never described. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-4",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Measurement of length: the vernier callipers and the micrometer screw gauge, what each measures and to what accuracy (scheme clause Length)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 211-215; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "vernier heading line 211 SHA-256 ba50e5e424260251458a31e7a2dfc42f6b22ec1af347ce7f190720e30c763736; vernier paragraph line 212 SHA-256 3ab68b4d96bf5bf689346fa70cf7f1a22bc71712cb80baab028f1525d6a145e8; micrometer heading line 214 SHA-256 fbd9e0eaad80e7849d62a444a47c87ebc1905c9b8b376d4cdc76e7c7cb162c22; micrometer paragraph line 215 SHA-256 804d14b101661948340a0cf18ee3c4a35ccdf961c7e9208cad519f4e22969fc5; block lines 211-215 SHA-256 e20b2af0d521a57f8848b5ea09bac4d5fe32f9e63c9f348cde4767540a734b5f",
+          "explanation": "Line 212 gives the vernier callipers' use (thickness of a metre rule, internal and external diameters of a tube, diameter of a rod), the reading to the nearest 0.1 mm, and two jaws with a main and a vernier scale. Line 215 gives the micrometer screw gauge's use (diameter of a wire, thickness of paper, diameter of a pendulum bob) and its reading to 0.01 mm or 0.001 cm (the two values agree). The principle of the vernier scale and any treatment of zero error are not taught: the string 'zero error' occurs nowhere in the 1,288 extracted lines. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-5",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Reading a vernier calliper: the rule that the whole number and first decimal come from the main scale and the second decimal from the coinciding vernier mark",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 247-250; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "heading line 247 SHA-256 c08a03b4498f918bfc49bfab6dc12e8249a64bfc33f719e70567f1fa07a53aa4; rule line 248 SHA-256 65a0425edf3f070343ba3122217bfe3925e45e7160f1753589742362907cf7e0; lead-in line 250 SHA-256 693e3d3fb7f7083f56342b2345446d8312c9352df05ba95ded78389b85f0330b; block lines 247-250 SHA-256 4e524013ec6006c077ee2239b64d103fb079fc0abfbd76302d9ab8083c1861b9",
+          "explanation": "Line 248 states the reading rule in words: digits before and the first digit after the decimal point from the main scale, the second digit after the decimal point from the vernier mark that coincides with a main-scale mark. This is the only reading procedure the week gives for either instrument. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-6",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Worked reading of a vernier calliper: Example 3.1 (Fig. 3.3)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 252-268; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "example heading line 252 SHA-256 a804095d9fd8df7a8dbee2590247bb0654a32a6f94687d7854da616e20dab8e2; caption line 260 SHA-256 cd015e079add90ad1d30c093a3df9509bba5f8e0912fa4376b158b929794769b 'Fig. 3.3 '; solution lines 262-268 SHA-256 e31954695e507e2499e4be664bf9705d96d7eff4be402ccc268dafd67e840fda; lines 263-267 SHA-256 69a13903ffcd26cd2ed50ed222bf19617f458732dd6a5ecffdd62d122de17f74; note line 268 SHA-256 0007d8675c6a21e10d6dc65f2a0d37ad6f9fa60a4df3f01718d03457716b10cc; whole example lines 252-268 SHA-256 f8f6029b5b1cda6c5d843198695f15a44b7f75a824f6a9b9d0ea9128ae4e7d66",
+          "explanation": "UNRESOLVED: lines 253-259 are seven empty lines where the figure stood and the solution is written against it. Lines 265-267 read '( Total reading on the scale = 4.30', ' = 0.07' and '    4.37cm': the brace, plus sign and rule of the original sum did not survive extraction. The numbers 4.30 + 0.07 = 4.37 are internally consistent, but they cannot be checked against a diagram the extract does not contain, and line 268 refers to the end 'A' of the vernier and to a coincidence at 7 on that missing figure."
+        },
+        {
+          "locator": "drawn-object anchors (Word 0x08 characters) counted in a scratch copy of word-extractor 1.0.4 that emits a private-use marker for each 0x08 and 0x01 before the library's clean() step; the marker-stripped text is byte-identical to the stored body (SHA-256 23a1a9aed418ac382bcfa0c4302eaf70c8a348bba82dbe6c2893c10b9bd86908): line 253 has 35 anchors, line 257 has 2, line 262 has 1; no 0x01 inline-picture anchor occurs anywhere in lines 194-340",
+          "explanation": "The figure exists in the member file as 37 drawn objects in lines 253-257 plus 1 at line 262, which getBody() cannot emit and the importer has no legacy .doc path to recover (backend/src/db/ingestTopics.ts:299-302). The figure inventory stays with PHYS-VIS-T1 and the exponent/figure rendering decision with PHYS-OWNER-EXTRACTION-STRATEGY (BLOCKED); no reading is invented here. The figure numbers 3.3 and 3.4 start at 3 although the week contains no Fig. 3.1 or Fig. 3.2 and the preceding week numbers its tables 2.0-2.3, which suggests text lifted from a printed chapter 3 (unverified; reading pages are the unseen textbook at line 292)."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-7",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Reading a micrometer screw gauge: Example 3.2 (Fig. 3.4); the week gives no reading rule for this instrument",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 271-285; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "heading line 271 SHA-256 cbdc60edd77a8186edbf1294a7f6645cedd1735b8d2cf831c5711712abd57b23; question line 272 SHA-256 1ad740915b16e27c8e6053e97409dd4de7d13ff985ef23e862b78e0886bb16e0; caption line 280 SHA-256 0114114b80c8e4174307ceb5a23c8fd84fe44f8ed899a7683765cc0c6f5562f9; solution lines 281-285 SHA-256 ecc3e71c5fd5e17dc7b1082689814704506424d6f5c23b13dadd0866abc8b5d0; lines 282-285 SHA-256 f691bc07ff6dee0be717f6a7e1b0505325ecf7fdaa29df7bf2e4ee84c2c0408e; whole example lines 271-285 SHA-256 e256cf3113fef995c699b95729e79ada010c489569deffcfc04a3c2adfcc24c9",
+          "explanation": "UNRESOLVED on three counts. (1) The figure is absent: lines 274-279 are empty and a single drawn-object anchor sits at line 273 (see the anchor evidence below). (2) No micrometer reading rule is stated anywhere in the week: the heading at line 271 promises 'How to read the micrometer scale' but the only procedure is the working inside the solution (sleeve reading, plus thimble reading times 0.01), unlike the vernier rule at line 248. (3) The working is internally inconsistent: line 282 reads 17.00, line 283 '11 x 0.01' and line 284 '= 0.11', so the sum is 17.11 mm, yet line 285 reads '17.1mm   or 1.711cm': 17.1 mm equals 1.71 cm, not 1.711 cm. The source is recorded as found; a correction needs an authored supplement and is bound by PHYS-COR-T1-W02-BINDING."
+        },
+        {
+          "locator": "drawn-object anchors counted as in COV-PHYS-T1-W02-OBJ-6: line 273 has 1 anchor; no 0x01 anchor in lines 194-340",
+          "explanation": "A single drawn object stands for the missing micrometer picture. The text-box stream of the member (482 characters, SHA-256 833455d3cd0fab9f56afa131825c27440b6226116db389bf8b0a983234ecf623, also recorded by PHYS-WK-T1-W01) holds short labels such as 4cm, 5cm, 15mm and the letters A and B that are consistent with measuring-instrument drawings, but getBody() gives no anchor-to-label mapping, so no label is attributed to this figure."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-8",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Measurement of time: clocks, watches, stop clocks and stop watches (scheme clause Time)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 218-219; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 218 SHA-256 9fdb5bd34f110b3879779d0780fc2a5be908376630fa44d61ed063b47da4974e; paragraph line 219 SHA-256 d9b6170a0401c4455f19832f0d867a432cdb146d186438c8a395d17b4543f78d; block lines 218-219 SHA-256 ecadaf457ad9621c61272033564e92448da1a64dae1e2229743f0db8e73d939c",
+          "explanation": "Line 219 distinguishes time intervals of minutes or hours (clocks and watches) from shorter intervals of seconds (stop clocks or stop watches). The paragraph prints 'time internal' twice for 'time interval' and runs two sentences together without punctuation. The week does not teach how to use a stop watch or read its scale and does not restate the second as the unit (the unit is in Week 1 at line 86); whether anything beyond line 219 is required of Week 2 is a scope question held by PHYS-FACT-T1-W02-SCOPE. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-9",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Measurement of mass: mass as a quantity of matter, measured by comparison with standard masses on a balance (scheme clause Mass)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 225-227; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); heading line 225 SHA-256 0a4c8f8212ce04e195489d67140886261c655247f0ca0f9efa2beac295f1dc34; definition line 226 SHA-256 59dd0ff4351865a7991a029dfe13f28bbc4d39eeb3b71dc4f935e61b173fa6bf; balance types line 227 SHA-256 cd94fb3eb1e850964a12ac58420eb724e6157c314ea2a977e38c95d749954426; block lines 225-227 SHA-256 99dd265ab39fc0153f6c5f3399c7c007025e005c506580d5572682d586974985",
+          "explanation": "Line 226 defines mass as a measure of the quantity of matter in a body and says it is found by comparing with standard masses on a balance; line 227 names beam or chemical balance, lever balance and dial spring or direct reading balance. None of the balances is described or shown. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-10",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Weight: its definition, how it differs from mass, and the relationship W = mg (scheme clause Weight)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 229-242; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "scheme row line 25 SHA-256 18bb82f110afd09fa9e504a5c737c6e3f57d2dd2d5a9e235d51e5e613a1849a3 (text '2<5 spaces><tab>Measurement of Mass, Weight, Length and Time; ' with a trailing semicolon and space); definition line 229 SHA-256 e13d3cf52a0f8270cfaa1e38a0eb6c02be317018a21cae9af4ef4d6403ae3729; table heading line 231 SHA-256 d81bde82b662071915b06facfbb3ed16edea73a221b9b13de0bff853db4ae402; table lines 232-238 SHA-256 62105e74536688e7177f7d273f25ff8d10ace18661cab6f60356e9d6a7ff3607; relationship lines 240-242 SHA-256 083f8f6764cc2851bc433d513b0d75ed54273c6f418455fd5191cd6662f8fddd; whole block lines 229-242 SHA-256 49ecf2d2b1b87047f2ea2e3cdc7a19a010e6083de18834f43333ba7c62c9485c",
+          "explanation": "Line 229 defines weight as the force due to the earth's gravitational pull, measured with a spring balance in newtons. Lines 232-238 tabulate six differences between mass and weight (quantity of matter versus gravity, constant versus varying, scalar versus vector, kg versus N, balance versus spring balance, moments versus Hooke's law). Lines 240-242 give W = mg with W in N, m in kg and g in m/s2. Taught at objective level, with four limits: the value of g is not stated in the teaching (it appears only in the EVALUATION at line 289); row 6 at line 238 leans on the principle of moments and 'Hook's law', and the string 'hooke' occurs nowhere in the extract; the exponent of m/s2 is flattened; and the gravitational-field idea behind 'weight varies' is not explained. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-11",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Measurement of volume: the graduated cylinder (a week outline heading that is not in the scheme row)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 244-245; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "outline word line 200 SHA-256 22cd2ea2f2db447dde86c8466d9e213656fda6be18fbd50e7cbe403e6a3d8894; heading line 244 SHA-256 84a8c3425656f1de7f93e2a753de030bf7e3048721368bda503a5949906a2792; paragraph line 245 SHA-256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917; block lines 244-245 SHA-256 9215bf7c3ef2afdeae243f7717df481a2ecf97c80f7d5a26b09cd9f133321197",
+          "explanation": "Line 245 is the whole teaching of volume: a graduated cylinder measures volumes of liquids to the nearest 1 cm3 and, with the displacement or eureka can, the volume of an irregular solid such as a stone. The eureka can and the displacement method are named, not described; no reading procedure, no meniscus (the string 'meniscus' occurs nowhere), no litre or millilitre relation and no other volume instrument is taught, yet weekend item 5 asks about a burette and a pipette, which occur nowhere else in the extract. The accuracy claim of 1 cm3 is the source's and is held as an expert question in PHYS-FACT-T1-W02-SCOPE. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-12",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "EVALUATION 1 (after Time and before Mass): define length and time; list five length instruments",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 221-223; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "heading line 221 SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da; question lines 222-223 SHA-256 285214a3a93d76ef2c2cd1197cc3dfac6167957a3963066f2cad085d9ba6b516; line 222 SHA-256 cb77659b00e71acaade4041c8b09a6ffbc905f54bc9a42c071badbd7a820de24; line 223 SHA-256 82ea0b60e5041f22d629ebecc4053684eeda63ebf1f7e93411eb53f1fb21e8da; block lines 221-223 SHA-256 f1c19c80c3b39616ce85ea1f2307dbf01f446defdab967b6b75c645f5312e197",
+          "explanation": "UNRESOLVED: no answer key, worked answer or mark allocation exists. Question 1 asks for definitions of length and time that Week 2 never gives: the extract defines them only in Week 1 (length at line 77, time at line 81). Question 2 asks for five length instruments; the week names at least five at lines 206-215, so it is answerable from the week. Nothing is answered here."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-13",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "EVALUATION 2 (end of the week): differentiate mass and weight; weight of a 5000 g object with g = 10 m/s2",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 287-289; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "heading line 287 SHA-256 d618ddb656d0ccb554c00bf68091953b55a50bbdfd5b8441fd14724b218b08da; question 1 line 288 SHA-256 297198d1ac847697d8282501d49702c162f6956d10174730f7da6b1520e3fa23; question 2 line 289 SHA-256 fa92d8e476e41de1290c456b9b985b6a31ec45bf1968f525111ddd8c8afdd659; block lines 287-289 SHA-256 262e1818f4cac042398c130b2468eb82a1c162cebbf2e40503b46c819c12bad7",
+          "explanation": "UNRESOLVED: no answer key, worked answer or mark allocation exists. Question 1 is answerable from the table at lines 232-238. Question 2 needs W = mg (lines 241-242) and a step the week never teaches, converting the stated mass in grams to the kilogram that the unit of mass is stated to be at lines 236 and 242, and the line uses the letter g for both the gram and the gravitational acceleration. Nothing is answered here."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-14",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Reading assignment: New School Physics, Anyakoha, pages 3-11",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 291-292; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e"
+      ],
+      "evidence": [
+        {
+          "locator": "heading line 291 SHA-256 ddbf33f9ed140d3418ccd113b7180c61271508ca0868777e59393b370c760b38; reference line 292 SHA-256 dfa2131c7efaaff3ef7060fde3b7f6bb8083faa5c20820dbce23924782d5f8d9; block lines 291-292 SHA-256 7123fe1a53b28d7acfcd20e3f493542f0bc56a51cce4c3f0361ca9be86ba7e89",
+          "explanation": "The week points to pages 3-11 of the named textbook. The textbook is not in the repository, so the pages cannot be mapped to any objective above; the reference itself is recorded, and its credit style 'M.W.Anyakoha, Prof.' repeats Week 1. PARTIAL, not SUPPORTED, because physics.json lessons[] has length 0, no supplement exists for this row and the importer has not been run: taught in the source is not deliverable. The original parsed row is bound as the target so a later plan can identify the exact body."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-15",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "WEEKEND ASSIGNMENT: 10 four-option objective questions",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 294-309; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "heading line 294 SHA-256 50f52dd3fa11fa4e06f6668bc2461e71a7d989bf4462b8bd6bc676748fde1b9d; questions lines 295-309 SHA-256 9f353c8109e8da8d61f4d4db84ee9c1bd2d47dd257cc928e34b845be4667016c; item 1 line 295 SHA-256 b41a3c826d9aae23f2b774860c27d9ad5ba2af0a1adcc02a8ef54a2e636baa63; item 2 line 296 SHA-256 88677d4b485c2874d32e0f58b4294ff3d6d9bd886f5f81350aa2dca0816b7698; item 3 line 297 SHA-256 2e2b0a4b0f4a0673d1140c865c42cec9292a4a5a3b95b641260f548738b1690d; item 4 lines 298-299 SHA-256 e4d6b87c1edf0411871cb1b5bf03824fb66a51ac154f3e56d30a394820c9f36a; item 5 lines 300-301 SHA-256 2f3d130421cb6dd3c3b5b91b59902bc23584a3f1338dab4a6cd451090f636c2d; item 6 line 302 SHA-256 8d551553ca3555afe954975fb6137492eedaddac20f9503db563c71283864c0e; item 7 lines 303-304 SHA-256 b23bdf348826017e0c0420d0d6d08d0b0d13cb2f2cb81381dbbd8522f467f5ef; item 8 line 305 SHA-256 c78f5d59f73a85150f1faf06a86672e7a2db2bf7bc30d66fbd794b143b2d80af; item 9 lines 306-307 SHA-256 fe3e918f0f1dbdb0f8f989d83bdcbb20f09c11543cc2ea0b87c6ed811d35bc5a; item 10 lines 308-309 SHA-256 5e7d43f87d477066dacbd0246816c336fd7560a942e73fcbb3f564b60693e12d",
+          "explanation": "UNRESOLVED: there is no answer key, worked answer or mark allocation for any item. Source support per item: item 1 asks for the most accurate instrument for the internal diameter of a test-tube, but the week assigns internal diameters of a tube to the vernier callipers (line 212) and the vernier callipers is not among the four options, so no option matches the week's own teaching; item 2 turns on statements the table at lines 233-235 partly supports; items 3, 7 and 10 each point at a diagram that has no drawn-object or picture anchor anywhere in lines 295-309 (item 10 does not even name its instrument and lists its fourth option on the next line, with '(C)' capitalised); item 4 is answerable from lines 229 and 237; item 5 offers a burette and a pipette that occur nowhere else in the extract; item 6 is Week 1 content (force dimension, lines 143-147) with the minus printed as U+2212; item 8 is answerable from line 215 but names constantan, which occurs nowhere else, and a watt meter, which Week 2 does not teach; item 9 asks what a hydrometer measures, taught only in Week 7 at line 961, and offers 'attitude' and the terms relative humidity and dew point, which occur nowhere else. Nothing is answered here."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W02-OBJ-16",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "THEORY: 6 questions (instrument selection, three micrometer and vernier readings, SI units, differences between mass and weight)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 311-340; parsed body lines 194-340 (edge blank lines 341-342 trimmed)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "heading line 311 SHA-256 abdac08bec83e6324009a8e49663f2fc25e232d744d3fc256629a5980a9df706; item 1 lines 312-315 SHA-256 a6f01ad028f850afdfcab71bacb703d8b707beadb6ba35d5cfe29940e2929903; item 2 lines 316-325 stem line 316 SHA-256 ddca5615b49de6810f836568bbf81b38ed590643a340d009c5e04fbf6ec9df9d; item 3 line 326 SHA-256 160941feaca45417b0f49834847cf00d2e87635a1cc29abb46ed043132f39a43; item 4 line 333 SHA-256 c5b72adf9e5fb59f4c91af57471a597d4e889d2bfbbe7162d7b485d9266ef927; item 5 line 339 SHA-256 16371d0e5f8ac402c0b74571ffe7811db76e1330202951dc419082912977f3c4; item 6 line 340 SHA-256 a37cbeaae52849021d0f54cac175889c3ce8f02b0eb03c22bf3c3538a7990c7d; whole block lines 311-340 SHA-256 cef73700bd2e7f02ce13a1d752495d52a3a2ebd98a7b100c11b9d4701415904f",
+          "explanation": "UNRESOLVED: no answer key, worked answer or mark allocation exists. Item 1 names six quantities; five (weight, internal diameter of a test tube, mass, length of a table, diameter of a wire) are covered by lines 229, 212, 226, 206 and 215 and the sixth, 'the dimension of a compound', is not defined anywhere in the week (a scope question in PHYS-FACT-T1-W02-SCOPE). Item 6 is answerable from the table at lines 232-238. Items 2, 3 and 4 ask for readings from diagrams: drawn-object anchors sit at lines 316, 321, 327 and 334 and the figures themselves are not in the extract. Item 5 is a fill-in of three blanks on the internationally agreed SI system; its stem has been corrupted by the extractor, see the artefact evidence below."
+        },
+        {
+          "locator": "line 339 SHA-256 16371d0e5f8ac402c0b74571ffe7811db76e1330202951dc419082912977f3c4; the literal string 'undefined' occurs 98 times on line 339 and once more in the whole extract, at line 995 ('m2undefined', WEEK 8); a raw count in the member's main text before clean() finds 99 U+001F control characters, and node_modules/word-extractor/lib/filters.js maps U+001F through replaceTable, which has no entry for it, so the replacement callback returns the JavaScript value undefined and String.replace writes the word",
+          "explanation": "The 98 'undefined' tokens are not source text: they are the extractor's rendering of 98 U+001F characters in theory item 5. The importer stores this body (ingestTopics.ts:299-302), so a student would be shown the word. The intended content of those characters (blank lines for answers, soft hyphens or something else) cannot be told from the body text, and the three underscore runs show three blanks. Delivered text must not print the word; the defect is open item PHYSICS-T1-W02-EXTRACTION-ARTEFACT and is bound to PHYS-COR-T1-W02-BINDING. No source byte is edited."
+        },
+        {
+          "locator": "drawn-object anchors counted as in COV-PHYS-T1-W02-OBJ-6: lines 316, 321, 327 and 334 have 1 anchor each; theory items 2(a), 2(b), 3 and 4 follow those anchors",
+          "explanation": "The four figures that theory items 2-4 depend on are drawn objects the extract cannot emit; the figure inventory stays with PHYS-VIS-T1."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -686,6 +950,147 @@
         "COV-PHYS-T1-W01-OBJ-12",
         "COV-PHYS-T1-W01-OBJ-13",
         "COV-PHYS-T1-W01-OBJ-14"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 2 is indexed at objective level but is not deliverable: COV-PHYS-T1-W02-OBJ-1, -2, -3, -4, -5, -8, -9, -10, -11 and -14 are PARTIAL and OBJ-6, -7, -12, -13, -15 and -16 are UNRESOLVED; physics.json still has lessons[] length 0 and the importer has not been run. The original parsed row (body lines 194-340, SHA-256 b25cc5e52fe3eda43e116bfe65a3e741092f5690683031f26fc44ddbc2fea94e) is bound as the target of every PARTIAL entry.",
+      "required_action": "Run the importer and the compiler plan for this source, then approve or replace the teaching. An indexed week is not a certified or fully taught week.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-1",
+        "COV-PHYS-T1-W02-OBJ-2",
+        "COV-PHYS-T1-W02-OBJ-3",
+        "COV-PHYS-T1-W02-OBJ-4",
+        "COV-PHYS-T1-W02-OBJ-5",
+        "COV-PHYS-T1-W02-OBJ-6",
+        "COV-PHYS-T1-W02-OBJ-7",
+        "COV-PHYS-T1-W02-OBJ-8",
+        "COV-PHYS-T1-W02-OBJ-9",
+        "COV-PHYS-T1-W02-OBJ-10",
+        "COV-PHYS-T1-W02-OBJ-11",
+        "COV-PHYS-T1-W02-OBJ-12",
+        "COV-PHYS-T1-W02-OBJ-13",
+        "COV-PHYS-T1-W02-OBJ-14",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "COV-PHYS-T1-W02-OBJ-16",
+        "PHYS-WK-T1-W02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-FIGURES-LOST",
+      "kind": "CONTENT",
+      "detail": "Week 2 depends on figures that getBody() cannot emit. Drawn-object anchors (Word 0x08) in lines 194-340: 35 at line 253, 2 at line 257 and 1 at line 262 (Example 3.1, Fig. 3.3, caption line 260), 1 at line 273 (Example 3.2, Fig. 3.4, caption line 280), and 1 each at lines 316, 321, 327 and 334 (theory items 2(a), 2(b), 3 and 4); 43 anchors in all, and no 0x01 inline-picture anchor in the row. Weekend items 3, 7 and 10 (lines 297, 303-304, 308-309) each point at a diagram, yet lines 295-309 contain no anchor of either kind, so whether those three diagrams were deleted, placed somewhere the body text does not reach, or never present cannot be decided here. The text-box stream (482 characters, SHA-256 833455d3cd0fab9f56afa131825c27440b6226116db389bf8b0a983234ecf623) has no anchor mapping. Example 3.1 (lines 253-259) and Example 3.2 (lines 274-279) are runs of empty lines in the extract.",
+      "required_action": "PHYS-VIS-T1 inventories these figures and says which are recoverable from the member; the teacher or PHYS-OWNER-EXTRACTION-STRATEGY decides the rendering. No reading is to be taken from a figure that was not inspected, and no figure is to be redrawn and presented as the source.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-6",
+        "COV-PHYS-T1-W02-OBJ-7",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "COV-PHYS-T1-W02-OBJ-16",
+        "PHYS-VIS-T1",
+        "PHYS-OWNER-EXTRACTION-STRATEGY"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-MICROMETER",
+      "kind": "CONTENT",
+      "detail": "The week teaches how to read a vernier calliper in words (line 248, SHA-256 65a0425edf3f070343ba3122217bfe3925e45e7160f1753589742362907cf7e0) but gives no rule for reading a micrometer screw gauge; the only procedure is the working in Example 3.2 (lines 282-285, SHA-256 f691bc07ff6dee0be717f6a7e1b0505325ecf7fdaa29df7bf2e4ee84c2c0408e), which adds 17.00 and 0.11 and then prints '17.1mm   or 1.711cm', two values that disagree by a factor of ten in the last place. Zero error is not taught for either instrument.",
+      "required_action": "Author one bounded supplement (PHYS-LES-T1-W02-MICROMETER-READING) with the reading rule and a consistent worked example, labelled as a supplement; the correction of Example 3.2 is bound by PHYS-COR-T1-W02-BINDING.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-4",
+        "COV-PHYS-T1-W02-OBJ-7",
+        "PHYS-LES-T1-W02-MICROMETER-READING",
+        "PHYS-COR-T1-W02-BINDING"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-VOLUME-GAP",
+      "kind": "CONTENT",
+      "detail": "Measurement of volume is a week outline heading (line 200) but not a scheme word, and its whole teaching is one paragraph (line 245, SHA-256 995a2d06d59fb62f3bc304c4015e9e303a204a566e74ec90de8cb687468d9917) naming the graduated cylinder, the displacement method and the eureka can without describing them. Weekend item 5 (lines 300-301) asks about a burette and a pipette, which occur nowhere else in the 1,288 extracted lines.",
+      "required_action": "Author one bounded supplement (PHYS-LES-T1-W02-VOLUME-MEASUREMENT) covering the graduated cylinder and the displacement method; the teacher decides in PHYS-FACT-T1-W02-SCOPE whether the burette and pipette belong in Week 2.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-11",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "PHYS-LES-T1-W02-VOLUME-MEASUREMENT",
+        "PHYS-FACT-T1-W02-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-ASSESSMENT-NO-KEY",
+      "kind": "CONTENT",
+      "detail": "None of the four assessment blocks has an answer key, worked answer or mark allocation: EVALUATION 1 (lines 221-223, SHA-256 f1c19c80c3b39616ce85ea1f2307dbf01f446defdab967b6b75c645f5312e197), EVALUATION 2 (lines 287-289, SHA-256 262e1818f4cac042398c130b2468eb82a1c162cebbf2e40503b46c819c12bad7), the 10-item WEEKEND ASSIGNMENT (lines 294-309, SHA-256 7a815dea34bf06b174f2d5b2af875b7cdeb7e4be38169e801e3db45450cb9c4b) and the 6-item THEORY (lines 311-340, SHA-256 cef73700bd2e7f02ce13a1d752495d52a3a2ebd98a7b100c11b9d4701415904f); searches for mark, answer, allocation, score and solution inside those four blocks return nothing. Weekend items 3, 7 and 10 and theory items 2, 3 and 4 cannot be answered without figures the extract lacks.",
+      "required_action": "PHYS-LES-T1-W02-KEY-ASSESSMENT supplies a complete key and a marking breakdown that sums exactly for every item that can be answered from text, and names every figure-dependent item as waiting on PHYS-VIS-T1. No option is marked correct and no value supplied here.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-12",
+        "COV-PHYS-T1-W02-OBJ-13",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "COV-PHYS-T1-W02-OBJ-16",
+        "PHYS-LES-T1-W02-KEY-ASSESSMENT",
+        "PHYS-VIS-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-FACT-DEFECTS",
+      "kind": "FACT",
+      "detail": "Factual or scope questions the source raises, recorded as found and not corrected: (1) line 203 (SHA-256 6a6c75b6be874df8af073093c985e6cc887711f220ecd3cfb770110768a473a4) gives 20 metres as the length of a table-tennis board, implausible for a table of about 2.74 m; (2) line 285 (SHA-256 b6ca9b363253c7d03bb19e623c15425145289528edc678e16dcc5ff2ff88197a) prints 17.1mm or 1.711cm after the working at lines 282-284 gives 17.11; (3) weekend item 1 (line 295, SHA-256 b41a3c826d9aae23f2b774860c27d9ad5ba2af0a1adcc02a8ef54a2e636baa63) has no option matching the week's teaching that the vernier callipers measures internal diameters (line 212); (4) theory item 1(d) (line 314, SHA-256 06e43206ee4971b9296d548beeb7f2c90c215663e75a343bdf34463b1d87b65f) asks for the instrument for 'the dimension of a compound', which the week never defines; (5) the scheme row (line 25) names weight but the outline has no weight heading, and the outline (line 200) names volume that the scheme row lacks; (6) line 245 states a graduated cylinder is accurate to the nearest 1 cm3; (7) line 238 relies on the principle of moments and 'Hook's law', neither taught in the week; (8) weekend items 5, 6, 8 and 9 ask about burettes, pipettes, force dimensions, constantan, watt meters, hydrometers, relative humidity and dew point that Week 2 does not teach (force dimensions are in Week 1 lines 143-147, hydrometers in Week 7 line 961); (9) the time-measurement teaching stops at clock and stop-watch names (line 219).",
+      "required_action": "PHYS-FACT-T1-W02-SCOPE records one named subject-expert decision for each numbered question with its authority; authored supplements must not copy the faulty values.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-1",
+        "COV-PHYS-T1-W02-OBJ-7",
+        "COV-PHYS-T1-W02-OBJ-8",
+        "COV-PHYS-T1-W02-OBJ-10",
+        "COV-PHYS-T1-W02-OBJ-11",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "COV-PHYS-T1-W02-OBJ-16",
+        "PHYS-FACT-T1-W02-SCOPE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-EXTRACTION-ARTEFACT",
+      "kind": "CONTENT",
+      "detail": "Theory item 5 (line 339, SHA-256 16371d0e5f8ac402c0b74571ffe7811db76e1330202951dc419082912977f3c4) contains the word 'undefined' 98 times. It is not source text: the member holds 99 U+001F control characters in its main text and word-extractor 1.0.4 filters.js writes the JavaScript value undefined for that code, so the importer would store and show the word. The same artefact appears once at line 995 ('m2undefined', WEEK 8) and is reported to that week's indexing task, not edited here.",
+      "required_action": "Teacher or PHYS-OWNER-EXTRACTION-STRATEGY decides what the 98 characters were; delivered text must be a supplement with the question reconstructed, bound by PHYS-COR-T1-W02-BINDING. Do not print the word and do not edit the source.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-16",
+        "PHYS-COR-T1-W02-BINDING",
+        "PHYS-OWNER-EXTRACTION-STRATEGY"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "PHYSICS-T1-W02-NOTATION-LOSS",
+      "kind": "CONTENT",
+      "detail": "Notation the legacy extraction flattens: g in m/s2 (line 242, SHA-256 94a33c1dbd0d7836574f105ba0363e5bad1ed9ea59e6589a8da500c4279b8c8e) and g = 10m/s2 (line 289, SHA-256 fa92d8e476e41de1290c456b9b985b6a31ec45bf1968f525111ddd8c8afdd659); 1cm3 (line 245); the dimension options MLT−2, ML2T, ML2T−2 and MLT−3 (line 302, SHA-256 8d551553ca3555afe954975fb6137492eedaddac20f9503db563c71283864c0e), whose minus is U+2212 where Week 1 uses an ASCII hyphen; and the lost brace and plus sign of the worked sum at lines 265-267 (SHA-256 1b05370f16c9f83012b445e8c24c9ae5ffb4ed1ba019c663b0c57a3c90349d30). The multiplication sign is the letter x at line 283.",
+      "required_action": "Follow the rendering decision of PHYS-OWNER-EXTRACTION-STRATEGY when any supplement restates these.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-6",
+        "COV-PHYS-T1-W02-OBJ-10",
+        "COV-PHYS-T1-W02-OBJ-11",
+        "COV-PHYS-T1-W02-OBJ-13",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "PHYS-OWNER-EXTRACTION-STRATEGY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T1-W02-SOURCE-DEFECTS",
+      "kind": "CONTENT",
+      "detail": "Wording and layout defects retained: 'time internal' twice at line 219 (SHA-256 d9b6170a0401c4455f19832f0d867a432cdb146d186438c8a395d17b4543f78d); 'Hook's law' at line 238 (SHA-256 41e695514429860eedc766a068ade7c224ea8d10287c2bdfdec595ebd2e95e78); 'guage' at lines 297 and 305; 'Mere rule', 'watt meter' and 'constantan' at line 305 (SHA-256 c78f5d59f73a85150f1faf06a86672e7a2db2bf7bc30d66fbd794b143b2d80af); 'attitude' at line 307 (SHA-256 928601f80b2bfbd9ac460a6159d40475ed2d66b00872cd1cc804de7453105030); '(C)' capitalised and the fourth option wrapped onto line 309 at items 10 (lines 308-309); 'diametre' at line 313 and 'micro meter' at line 316; 'List five instrument' at line 223; 'tennis\\'s board' at line 203; 'e.g' without a full stop at lines 212 and 245; the weekend items are numbered with a bare tab after the full stop and the theory items with two spaces and a tab; and the outline lines 197-200 repeat the headings at 205, 218, 225 and 244 beyond case (and the word EVALUATION is the whole of two different lines, 221 and 287), so none of these strings is a unique anchor for a classify_marker rule.",
+      "required_action": "Teacher records one disposition per numbered defect in PHYS-FACT-T1-W02-SCOPE; authored supplements must not copy the faulty wording; any rule worker must avoid these repeated strings. Source text stays unchanged.",
+      "affected_ids": [
+        "COV-PHYS-T1-W02-OBJ-1",
+        "COV-PHYS-T1-W02-OBJ-8",
+        "COV-PHYS-T1-W02-OBJ-10",
+        "COV-PHYS-T1-W02-OBJ-15",
+        "COV-PHYS-T1-W02-OBJ-16",
+        "PHYS-RULE-T1-REVISION-SCHEME"
       ],
       "blocks_delivery": false
     }
