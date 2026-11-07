@@ -40,11 +40,11 @@
     "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
-    "BLOCKED": 5,
-    "PENDING": 27
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "BLOCKED": 6,
+    "PENDING": 26
   },
-  "total": 39,
+  "total": 54,
   "items": [
     {
       "id": "TD-SRC-T2",
@@ -1921,7 +1921,7 @@
     }
   ],
   "review": {
-    "date": "2026-11-07",
+    "date": "2026-11-08",
     "reviewed_master_sha": "359e5cdd14ffc4aff807c8a6704f537d5088838d",
     "scope": "TD-SCH-W05 only: source DOCX hash, exact scheme row, parsed-row hash/locator, original teaching-row mapping, JSON identities; full curriculum tests, typechecks, importer/compiler, database and device checks deferred.",
     "source_archive": {
@@ -1930,21 +1930,13 @@
       "manifest_matches": 1,
       "mismatches": 0,
       "availability": "User attachment; not committed to Git. A filename variant is acceptable if the archive hash matches. Attach this archive (or the exact member) to source-reading workers."
-    }
+    },
+    "notes": "Reconciled queue metadata with live item statuses after Week 6–10 coverage updates; formal tests remain deferred."
   },
   "next_runnable": [
     "TD-VIS-INVENTORY"
   ],
   "runnable_now": [
-    "TD-SCH-W06",
-    "TD-SCH-W07",
-    "TD-SCH-W08",
-    "TD-SCH-W09",
-    "TD-SCH-W10",
-    "TD-SCH-W11",
-    "TD-WK-W01",
-    "TD-WK-W02",
-    "TD-WK-W03",
     "TD-VIS-INVENTORY"
   ]
 }
