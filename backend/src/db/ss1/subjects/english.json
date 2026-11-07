@@ -578,6 +578,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R012",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 10:  GENERAL REVISION CLASS [GRC]",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 10, line 23 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-047 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -12119,14 +12131,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 10:  GENERAL REVISION CLASS [GRC]",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 10; exact body hash 2b9c75ed8062ffa05a019513688d0299bbfedeb4d3e45374e0c583aa35ef6487",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:2b9c75ed8062ffa05a019513688d0299bbfedeb4d3e45374e0c583aa35ef6487"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:2b9c75ed8062ffa05a019513688d0299bbfedeb4d3e45374e0c583aa35ef6487",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 23; UTF-8 joined-line SHA256 2b9c75ed8062ffa05a019513688d0299bbfedeb4d3e45374e0c583aa35ef6487; SS1-SRC-d8bd8f85fd73:BODY:2b9c75ed8062ffa05a019513688d0299bbfedeb4d3e45374e0c583aa35ef6487; rule SS1-SRC-d8bd8f85fd73-R012",
+          "explanation": "Scheme-of-work row 10 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one item, \"General revision class [GRC]\". The only other row is ENGLISH-BODY-058, the heading alone, the last non-blank line of the document (line 529), indexed at objective level as ENGLISH-T2-W10-RV01. Rule SS1-SRC-d8bd8f85fd73-R012 classifies the row SCHEME_ONLY. This is the last 2nd Term scheme row."
         }
       ]
     },
@@ -16357,6 +16369,26 @@
           "explanation": "The supplement says to write a plan before drafting, develop one point per paragraph, link paragraphs and revise for relevance, clarity, grammar and spelling, which supports the method for both titles. It has no plan, rubric or marks for these two titles. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W10-RV01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "General revision class [GRC]: the scheme objective and the week heading (the only content of the body)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 529; UTF-8 joined-line SHA256 2398bddbae5a6e77a30bbc6321a8efdba852ec0ea31c5f7d39c6edd8412204bd; SS1-SRC-d8bd8f85fd73:BODY:e2d18d8418ec5dec407ecaac0ddbe900d024585a30f71bbbe497247766bce706",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:e2d18d8418ec5dec407ecaac0ddbe900d024585a30f71bbbe497247766bce706"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 529; UTF-8 joined-line SHA256 2398bddbae5a6e77a30bbc6321a8efdba852ec0ea31c5f7d39c6edd8412204bd; SS1-SRC-d8bd8f85fd73:BODY:e2d18d8418ec5dec407ecaac0ddbe900d024585a30f71bbbe497247766bce706",
+          "explanation": "The body is the single heading line \"WEEK 10: GENERAL REVISION CLASS [GRC]\" (single space after the colon, unlike scheme row 10 on line 23, which has two). The source names no topic, revision list, question, passage, assignment or key, and does not say which weeks or skills are revised or whether a test is intended. Nothing is taught or set, so nothing is bound. The heading is plain in the docx and only blank lines follow it."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2, SUP-SS1-ENGLISH-READING-T2, SUP-SS1-ENGLISH-MEANING-T2, SUP-SS1-ENGLISH-ADVERBS-TENSE-T2, SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+          "explanation": "The five 2nd Term supplements each carry their own keyed practice, but the source does not say that they, or Weeks 1 to 9 as a whole, are what the revision class revises, so none is bound here as covering it. No coverage is inferred from their existence."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -17295,6 +17327,17 @@
       "required_action": "Owner or teacher to confirm the intended type for each title and whether one or both are written; then author original plans and marking criteria for both titles, labelled original (not a model essay presented as the source key), bound additively to SUP-SS1-ENGLISH-ESSAY-TYPES-T2. No type, length or marks is inferred.",
       "affected_ids": [
         "ENGLISH-T2-W09-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W10-REVISION-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The general revision class has no content in the source: no revision list, questions, assignment, key or statement of which 2nd Term weeks or skills it revises. The body row ENGLISH-BODY-058 is the heading alone and cannot be read as covering any teaching.",
+      "required_action": "Owner or teacher to confirm the intended scope (for example Weeks 1 to 9) and whether the class includes a test; then author original keyed, marked revision practice drawn only from taught 2nd Term content, labelled original (queue item ENG-LES-T2-W10-REVISION). Do not invent source revision material or infer a key.",
+      "affected_ids": [
+        "ENGLISH-T2-W10-RV01",
+        "ENGLISH-BODY-058"
       ],
       "blocks_delivery": true
     }
