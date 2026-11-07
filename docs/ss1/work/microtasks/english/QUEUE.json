@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 153,
+    "PENDING": 152,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 84,
+    "IMPLEMENTED_TESTING_DEFERRED": 85,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 153,
+    "PENDING": 152,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 84,
+    "IMPLEMENTED_TESTING_DEFERRED": 85,
     "BLOCKED": 5
   },
   "items": [
@@ -2981,8 +2981,8 @@
         "ENG-SRC-T2",
         "ENG-LES-AFFIXES-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-010] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:235e723631894ab44d5dcacc9885edff74bc1644abe38d511afeeb031881da76 body_sha256=235e723631894ab44d5dcacc9885edff74bc1644abe38d511afeeb031881da76 replacement_id=SUP-SS1-ENGLISH-AFFIXES-T2; paired coverage entry ENGLISH-BODY-048 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Audited existing same-term binding SS1-02-english-COR-010: source SS1-SRC-d8bd8f85fd73 / ENGLISH-BODY-048 / BODY:235e723631894ab44d5dcacc9885edff74bc1644abe38d511afeeb031881da76 (2nd Term member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966; locator TOPIC: AFFIX (AFFIXATION)). Existing replacement SUP-SS1-ENGLISH-AFFIXES-T2, 'Affixes and reliable word formation', is same-term, original, with two objectives (base/prefix/suffix distinction; avoiding false segmentation) and three keyed practices worth 2+3+2 marks; each marking breakdown sums to its question marks. Objective audit: PF01 and SF01 are IMPLEMENTED_EQUIVALENT (positional definitions); AF01 is PARTIAL (affix/affixation umbrella terms not defined); PF02 PARTIAL (9 of 13 distinct source prefix forms untaught); SF02/SF03/SF04 PARTIAL (several listed word-class suffixes absent or defective); RT01 PARTIAL (base used, root not defined; false source segmentations rejected but other examples absent); EV01/EV02/AS01 UNRESOLVED (source evaluations/assignment have ambiguous or unsupported answers and no authoritative key; replacement practice is distinct). Precise blockers already exist: ENGLISH-T2-W01-DEFINITION-GAP, PREFIX-GAP, SUFFIX-GAP and ANSWER-KEYS; overall ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION keeps ENGLISH-BODY-048 PARTIAL and this correction inactive until every objective is covered. Original source and correction remain unchanged; no additional package edit is justified. Implementation audit recorded; runtime/compiler tests deferred.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7703,7 +7703,6 @@
     "ENG-COR-006",
     "ENG-COR-007",
     "ENG-COR-008",
-    "ENG-COR-010",
     "ENG-COR-011",
     "ENG-COR-012",
     "ENG-COR-013",
