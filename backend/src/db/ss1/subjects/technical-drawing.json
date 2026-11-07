@@ -177,7 +177,166 @@
       }
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "id": "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Technical Drawing",
+      "title": "Enlargement of Plane Figures by a Given Ratio",
+      "objectives": [
+        "Define enlargement and identify the linear scale factor from an image-to-original ratio.",
+        "Explain how a centre of enlargement relates each original vertex to its image.",
+        "Construct an enlarged plane figure by multiplying all corresponding distances from the stated centre by one scale factor.",
+        "Check that corresponding angles remain equal and corresponding lengths share the same ratio."
+      ],
+      "body": "Enlargement changes the size of a plane figure while preserving its shape. Every corresponding length is multiplied by the same scale factor, and corresponding angles remain equal.\n\nThe scale factor is\n\nk = image length / original corresponding length.\n\nFor enlargement, k is greater than 1. For reduction, k is between 0 and 1. A ratio written image : original = 3 : 2 gives k = 3/2 = 1.5; a ratio 2 : 3 gives k = 2/3.\n\nCentre-of-enlargement construction\n1. Draw the original plane figure accurately and label its vertices in order, for example A, B, C and D.\n2. Choose and mark the centre of enlargement O.\n3. Draw a straight ray from O through each original vertex.\n4. Measure each original distance OA, OB, OC and OD.\n5. For an enlargement with factor k, mark A′, B′, C′ and D′ on the same rays so that OA′ = k × OA, OB′ = k × OB, and so on.\n6. Join A′, B′, C′ and D′ in the same order as the original vertices. Use thin construction lines first, then darken the final outline and label the image clearly.\n\nWorked example: enlarge a rectangle\nA rectangle ABCD is 40 mm long and 20 mm wide. Enlarge it by the ratio image : original = 3 : 2, using A as the centre.\n- Scale factor k = 3/2 = 1.5.\n- AB′ = 1.5 × 40 = 60 mm.\n- AD′ = 1.5 × 20 = 30 mm.\n- The opposite corner C′ is located by drawing through B′ a line parallel to AD and through D′ a line parallel to AB; their intersection is C′.\n- The enlarged rectangle is 60 mm by 30 mm. Its perimeter is 2(60 + 30) = 180 mm and its area is 60 × 30 = 1,800 mm².\n\nChecking an enlargement\n- Every corresponding side has the same ratio k.\n- Corresponding angles are unchanged.\n- The image has the same shape as the original.\n- The area changes by the square of the linear scale factor. For k = 3/2, the area factor is 9/4.\n\nCommon errors to avoid\n- Multiplying one side but leaving the other sides unchanged.\n- Using different scale factors for different vertices.\n- Measuring from a point other than the stated centre.\n- Joining image points in the wrong order.\n- Confusing the order of the ratio: image : original must be stated before calculating k.\n\nApplication\nEnlargement is useful when a small design must be drawn larger for clear construction, manufacture or presentation. The same method applies to triangles, quadrilaterals, regular polygons and irregular plane figures when their vertices or key points can be identified.",
+      "body_sha256": "0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273",
+      "practice": [
+        {
+          "id": "TD-W06-ENL-Q01",
+          "question": "Define enlargement in technical drawing and state the formula for its linear scale factor.",
+          "answer": "An enlargement produces a similar figure in which every corresponding length is multiplied by the same scale factor greater than 1. The linear scale factor is k = image length ÷ corresponding original length.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines enlargement as a proportional increase that preserves shape.",
+              "marks": 1
+            },
+            {
+              "criterion": "States k = image length ÷ corresponding original length.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W06-ENL-Q02",
+          "question": "A rectangle is 40 mm long and 20 mm wide. It is enlarged using image : original = 3 : 2. Find the new dimensions, perimeter and area.",
+          "answer": "k = 3/2 = 1.5. New length = 40 × 1.5 = 60 mm. New width = 20 × 1.5 = 30 mm. Perimeter = 2(60 + 30) = 180 mm. Area = 60 × 30 = 1,800 mm².",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Converts the ratio to k = 1.5.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds the new length as 60 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds the new width as 30 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds the perimeter as 180 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds the area as 1,800 mm².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W06-ENL-Q03",
+          "question": "A triangle has side lengths 30 mm, 40 mm and 50 mm. Enlarge it using image : original = 5 : 4. Find all three image side lengths.",
+          "answer": "k = 5/4 = 1.25. The image side lengths are 30 × 1.25 = 37.5 mm, 40 × 1.25 = 50 mm, and 50 × 1.25 = 62.5 mm.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates k = 1.25.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the first image side as 37.5 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second image side as 50 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the third image side as 62.5 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W06-ENL-Q04",
+          "question": "The distances from centre O to three vertices are OA = 20 mm, OB = 30 mm and OC = 40 mm. Find the image distances for an enlargement of 3 : 2.",
+          "answer": "k = 3/2 = 1.5. OA′ = 30 mm, OB′ = 45 mm and OC′ = 60 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates k = 1.5.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates OA′ = 30 mm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates OB′ = 45 mm and OC′ = 60 mm.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "TD-W06-ENL-Q05",
+          "question": "Construct an enlargement of a 40 mm by 20 mm rectangle using one corner A as the centre and image : original = 3 : 2. State the final dimensions.",
+          "answer": "Mark A as the centre. Draw rays from A through the other three vertices. Use k = 1.5: place B′ 60 mm from A along AB and D′ 30 mm from A along AD. Locate C′ using the corresponding ray and the intersection of lines through B′ parallel to AD and through D′ parallel to AB. Join and label A′B′C′D′. The image is 60 mm by 30 mm.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Marks the stated centre and draws rays through the original vertices.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates and applies k = 1.5.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates B′ 60 mm and D′ 30 mm from A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Locates C′ using the correct parallel construction.",
+              "marks": 1
+            },
+            {
+              "criterion": "Joins and labels the image correctly and states 60 mm by 30 mm.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Enlargement and Reduction of Figures | SS1 Technical Drawings",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1, Technical Drawings, Geometrical Constructions; overview and learning objectives.",
+          "url": "https://inspire.education.gov.ng/lessons/3888/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. This is an independently authored lesson; the official portal is cited only to corroborate the SS1 subject scope. No media reuse is claimed.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Enlargement and Reduction of Figures”, accessed 2026-11-08."
+        },
+        {
+          "title": "Design and Communication Technology Teacher Manual, Year One — Book One",
+          "locator": "Ministry of Education, Republic of Ghana, Section 2, Theme 2: Using Ratio to Enlarge and Reduce Plane Geometrical Figures, pp. 74–77; ratio method and centre/polar-point construction.",
+          "url": "https://t-tel.org/download/design-communication-technology_teacher-manual/?refresh=69930ac61fbcb1771244230&wpdmdl=9458",
+          "rights": "No wording or figures are reproduced. Construction teaching is independently authored from standard geometric principles; the manual is cited as an equivalent technical-drawing reference only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One (2024), pp. 74–77."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
   "delivery_corrections": [],
   "assets": [],
   "coverage": [
@@ -1028,12 +1187,26 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 6: enlargement of plain figures (scheme objective; teaching coverage not yet established).",
       "objective_locator": "Scheme coverage COV-TD-T2-SCH-W06; scheme row 5; candidate teaching row parsed row 16, WEEK SIX AND SEVEN.",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+      ],
       "evidence": [
         {
           "locator": "Scheme rows 5 and 6 (Weeks 6 and 7) both state “Enlargement and reduction of plain figures”; teaching row 16 title is “Reduction of plain figures”.",
           "explanation": "The scheme explicitly requires enlargement, but the teaching-row title names only reduction. No evidence in the current repository establishes that enlargement is taught in the row body. It is not marked supported or bound to a lesson ID pending TD-FACT-ENLARGEMENT-SCOPE."
+        },
+        {
+          "locator": "New original lesson SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273; objectives, five keyed practice questions and marking guides are in technical-drawing.json.",
+          "explanation": "The scheme objective is now taught by an independently authored SS1 supplement. This equivalent does not claim the original combined source row also teaches enlargement."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Enlargement and Reduction of Figures | SS1 Technical Drawings”; https://inspire.education.gov.ng/lessons/3888/preview.",
+          "explanation": "Official SS1 Technical Drawings lesson confirms enlargement and reduction of regular/irregular plane figures as the relevant subject scope."
+        },
+        {
+          "locator": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One, Section 2, pp. 74–77.",
+          "explanation": "Close-equivalent official technical-drawing method source supports use of a centre, rays through vertices and a given ratio to enlarge/reduce plane figures. No text or figures are reproduced."
         }
       ]
     },
@@ -1062,12 +1235,26 @@
       "source_id": "SS1-SRC-af4868d2c026",
       "objective": "Week 7: enlargement of plain figures (scheme objective; teaching coverage not yet established).",
       "objective_locator": "Scheme coverage COV-TD-T2-SCH-W07; scheme row 6; candidate teaching row parsed row 16, WEEK SIX AND SEVEN.",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT"
+      ],
       "evidence": [
         {
           "locator": "Scheme rows 5 and 6 (Weeks 6 and 7) both state “Enlargement and reduction of plain figures”; teaching row 16 title is “Reduction of plain figures”.",
           "explanation": "The scheme explicitly requires enlargement, but the teaching-row title names only reduction. No evidence in the current repository establishes that enlargement is taught in the row body. It is not marked supported or bound to a lesson ID pending TD-FACT-ENLARGEMENT-SCOPE."
+        },
+        {
+          "locator": "New original lesson SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273; objectives, five keyed practice questions and marking guides are in technical-drawing.json.",
+          "explanation": "The scheme objective is now taught by an independently authored SS1 supplement. This equivalent does not claim the original combined source row also teaches enlargement."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Enlargement and Reduction of Figures | SS1 Technical Drawings”; https://inspire.education.gov.ng/lessons/3888/preview.",
+          "explanation": "Official SS1 Technical Drawings lesson confirms enlargement and reduction of regular/irregular plane figures as the relevant subject scope."
+        },
+        {
+          "locator": "Ministry of Education, Republic of Ghana, Design and Communication Technology Teacher Manual, Year One Book One, Section 2, pp. 74–77.",
+          "explanation": "Close-equivalent official technical-drawing method source supports use of a centre, rays through vertices and a given ratio to enlarge/reduce plane figures. No text or figures are reproduced."
         }
       ]
     }
@@ -1118,8 +1305,8 @@
     {
       "id": "TD-T2-W06-TEACHING-ROW-MAPPING",
       "kind": "CONTENT",
-      "detail": "Week 6 and Week 7 scheme objectives (“Enlargement and reduction of plain figures”) are hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity of the combined Week 6–7 teaching row is not present in current TD evidence. Neither objective has a confirmed lesson_id binding yet.",
-      "required_action": "In TD-WK-W06-W07, inspect the exact source teaching row, record its parsed body SHA-256 and stable source lesson ID, and bind both Week 6 and Week 7 coverage entries only if the row actually teaches enlargement/reduction. If it does not, retain the objectives as unresolved and add a precise lesson follow-up.",
+      "detail": "The combined Week 6–7 teaching row is identified as parsed row 16, title “Reduction of plain figures”, body ID SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05. Reduction remains PARTIAL pending detailed construction/figure review. The scheme's enlargement objective is now covered by original supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT; whether the source row also teaches enlargement remains unreconciled because its full bytes are not available in this execution session.",
+      "required_action": "When the original DOCX member can be inspected, determine whether the combined row also teaches enlargement and record exact source locators. Retain the independent supplement unless a source-backed review proves it is redundant; do not mark the original row supported from its title alone.",
       "affected_ids": [
         "COV-TD-T2-SCH-W06",
         "COV-TD-T2-SCH-W07",
@@ -1127,7 +1314,7 @@
         "SS1-SRC-af4868d2c026-R009",
         "TD-WK-W06-W07"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "TD-T2-W08-W09-TEACHING-ROW-MAPPING",
@@ -1331,6 +1518,18 @@
         "TD-KEY-W06-W07-ANSWERS"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W06-W07-ORIGINAL-ENLARGEMENT-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The scheme's enlargement objective is covered by the new original supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT. The combined source row is titled “Reduction of plain figures”; the current execution environment does not provide the full source member bytes needed to determine whether enlargement is also present in the row body.",
+      "required_action": "When the original DOCX member is accessible, inspect parsed row 16 and record whether enlargement is already taught, with exact construction locators. Keep the supplement as equivalent coverage unless source evidence proves duplication; never infer original coverage from the row title.",
+      "affected_ids": [
+        "SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT",
+        "SS1-SRC-af4868d2c026:BODY:97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05",
+        "TD-FACT-ENLARGEMENT-SCOPE"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
