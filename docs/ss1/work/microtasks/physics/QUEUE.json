@@ -34,21 +34,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 12,
+    "FACTUAL_DEPENDENCY": 13,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 12,
+    "LESSON": 13,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 28,
-    "BLOCKED": 15,
-    "PENDING": 44
+    "IMPLEMENTED_TESTING_DEFERRED": 30,
+    "BLOCKED": 16,
+    "PENDING": 43
   },
-  "total": 87,
+  "total": 89,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -607,8 +607,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 8 (source label 'WEEK TEN', title \"VISCOSITY\", 4556 characters, body sha256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added five scheme-level coverage entries for viscosity definition, dynamic-viscosity coefficient/unit, factors, fluid drag/terminal velocity and applications; bound to original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY (body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e) with seven keyed questions and exact marking totals. Official FME Inspire SS1 lesson “Fluids at rest and in motion” corroborates viscosity scope. Original row content/figures/assessment are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2970,6 +2970,71 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
       "completion_condition": "Inspect original row and record exact week label, subtopics, equations/units, figures, examples, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W09-VISCOSITY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TEN parsed row 8: Viscosity",
+      "objective": "Create an original SS1 lesson on viscosity, fluid drag, terminal velocity, applications and a simple fair comparison investigation, with keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W09-VISCOSITY.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W09"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W09-VISCOSITY (body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e) with five objectives, seven keyed questions and 17 total marks; marking totals checked. Provenance includes Federal Ministry of Education Nigeria Inspire SS1 “Fluids at rest and in motion” and a public close-equivalent lesson note; no external wording/figures/exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has accurate viscosity/drag concepts, terminal-velocity force balance, safe investigation, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W09-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK TEN parsed row 8, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
+      "objective": "Inspect the original archive member and reconcile the exact Viscosity content, coefficient formula/units, temperature effects, terminal velocity, figures, exercises and answer/marking evidence against the new supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W09-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W09"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. The scheme topic is covered by an original supplement, but exact original-row content and assessment cannot be reconciled.",
+      "completion_condition": "Inspect original row and record exact viscosity subtopics, formulae/units, figures, applications, assignments and answer/marking coverage; reconcile the supplement without inventing source content."
     }
   ],
   "review": {
@@ -2993,10 +3058,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T1-W08 work/energy/power supplement added; public close-equivalent PDF labels the topic Week Eight while repo row 7 is Week 9, so original row reconciliation remains blocked pending source DOC access. Testing deferred by owner."
+    "notes": "PHYS-WK-T1-W09 viscosity supplement added; original legacy .doc row reconciliation and figure/assessment inspection remain blocked pending source access. Testing deferred by owner."
   },
   "next_runnable": [
-    "PHYS-WK-T1-W09",
     "PHYS-WK-T2-W01",
     "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
@@ -3031,7 +3095,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W09",
     "PHYS-WK-T2-W01",
     "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
