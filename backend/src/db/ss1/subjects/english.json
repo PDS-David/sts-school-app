@@ -962,6 +962,18 @@
         "locator": "word-extractor 1.0.4 getBody(), preamble scheme-of-work table, row 11 (three lines after the tab following '11')",
         "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text and in no parsed WEEK body; the WEEK ELEVEN heading and topic lines are in upper case). The second and third lines each end in one space, which the anchor keeps exactly; the tab after the third line is not part of the anchor. Metadata only, not teaching; no source text removed."
       }
+    },
+    {
+      "id": "SS1-SRC-50fa9b1eb2fd-R027",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Structures: Plural forms of Nouns and Compound Nouns.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+        "explanation": "Unique first-topic anchor for scheme-of-work table row 6. The original DOCX has a 13-row, one-column scheme table; this row contains three Week 6 scheme topics in the preamble before WEEK ONE. It is not a parsed teaching body. The compiler records the row as SCHEME_ONLY; this is structural classification, not evidence that the topics were taught, and no source text is removed."
+      }
     }
   ],
   "lessons": [
@@ -18583,6 +18595,328 @@
           "explanation": "'WEEKEND ASSIGNMENT' is bold in the docx. The questions are on page 205 of the unsupplied book (no edition) and their subject is not stated, so it cannot be seen which Week 5 topic they test. No question, key or mark is given and none is inferred."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 6: Structures: Plural forms of Nouns and Compound Nouns; Speech work: Words of two syllables stressed on the first or second syllables; Essay Writing: Story Writing—“It is a man’s world”.",
+      "objective_locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R027"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The original DOCX table row 6 contains these three scheme strands. Rule R027 classifies the complete preamble row as SCHEME_ONLY; the marker does not certify teaching coverage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-SO01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: plural forms of nouns and compound nouns, including regular, irregular, zero and compound plurals.",
+      "objective_locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f; row 6, first topic line",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f; row 6, first topic line",
+          "explanation": "The Week 6 body does not teach a systematic account of noun and compound-noun plurals. Existing same-subject lesson SUP-SS1-ENGLISH-NOUNS-T1 does: its body covers regular, irregular, zero and compound plurals, and its keyed practice includes regular forms, compound nouns and irregular forms. It is bound additively; its original 1st Term identity is retained."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: “Regular plurals”, “Irregular plurals”, “Plurals of compound nouns” and “Zero plurals”; keyed practice 1, 5 and 6.",
+          "explanation": "Objective-level teaching and keyed practice support the full scheme strand; no source row or source wording is changed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-SO02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: speech work, words of two syllables stressed on the first or second syllables.",
+      "objective_locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f; row 6, second topic line",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: Week 6 speech-work body; first-syllable list, prefix exception and noun/verb pairs.",
+          "explanation": "The source contains first-syllable examples, a prefix-related second-syllable exception, noun/verb stress pairs and an evaluation list. SUP-SS1-ENGLISH-STRESS-T3 teaches stress and a record/reCORD contrast, but does not preserve the source lists, the prefix exception examples or the source evaluation. The row-level correction status is broader than the demonstrated objective-level scope; see ENGLISH-T3-W06-STRESS-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-SO03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: essay writing, story writing illustrating the saying “It is a man’s world”.",
+      "objective_locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f; row 6, third topic line",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: Week 6 story-writing section and evaluation prompt.",
+          "explanation": "The source gives a short explanation of narrative sequence, climax and past-tense use, and sets the specific “It is a man’s world” task. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 provides generic narrative planning, but neither it nor the source row supplies a worked response/outline for this exact prompt or a specific marking rubric. See ENGLISH-T3-W06-STORY-WRITING-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-PF01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Prefixes: the Week 6 prefix list, meanings and examples (extra-, ex-, inter-, trans-, post-, pre-, super-, sub-, ab-, unn-, ante-, anti- and arch-).",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: section “a. Prefixes” through the final listed prefix “Arch”.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a",
+        "SUP-SS1-ENGLISH-AFFIXES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: section “a. Prefixes” and its source list.",
+          "explanation": "SUP-SS1-ENGLISH-AFFIXES-T3 teaches selected prefixes (re-, pre-, post-, anti-, inter- and bi-) and corrects the ante-/anti- distinction, but it does not teach the full source inventory or all its examples. The source glosses include apparent errors/garbling (for example ante/anti, “unn” and “arch”); they are recorded, not silently repaired. See ENGLISH-T3-W06-AFFIXES-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-NG01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Negation suffix -less and the source examples childless, fatherless, motherless, heartless, odourless, penniless and useless.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: from “Negation Suffixes are less” through the -less examples.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a",
+        "SUP-SS1-ENGLISH-AFFIXES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the “Negation Suffixes are less” line and following examples.",
+          "explanation": "SUP-SS1-ENGLISH-AFFIXES-T3 includes harmless as a suffix example, but does not explicitly teach -less as a negative suffix or work through the source examples. See ENGLISH-T3-W06-AFFIXES-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-PL01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Pluralisation suffixes -ies and -es, with the source examples babies, flies, cases and boxes.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: from “pluralization suffixes e.g ies, es” through the four examples.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a",
+        "SUP-SS1-ENGLISH-AFFIXES-T3",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the pluralisation suffix line and examples.",
+          "explanation": "SUP-SS1-ENGLISH-NOUNS-T1 explicitly teaches consonant+y to -ies and -es after s/x/z/ch/sh with keyed examples (cities, churches); SUP-SS1-ENGLISH-AFFIXES-T3 also teaches plural endings. Together they provide objective-level teaching and marked practice for the -ies/-es patterns."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-TN01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Tense-forming suffixes -en and the source’s “-ze” examples: strengthen, deafen, brighten, smoothen, widen, practicalize and mobilize.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: from “Tense Suffixes” through the -en and “-ze” examples.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a",
+        "SUP-SS1-ENGLISH-AFFIXES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the tense-suffix section and its examples.",
+          "explanation": "SUP-SS1-ENGLISH-AFFIXES-T3 teaches -ed and -ing patterns and warns about derivational -en, but does not teach the source's strengthen/smoothen/widen or practicalize/mobilize examples. The source label “-ze” is preserved as printed and not silently normalised to -ize. See ENGLISH-T3-W06-AFFIXES-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-ST01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Two-syllable words stressed on the first syllable: the source list (basic, solemn, credit, collar, Christian, certain, fortune, period, hatred, Hamlet, captain, victor, stupid and mansion).",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: the first-syllable stress list.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: first-syllable word list.",
+          "explanation": "The source supplies a specific list. SUP-SS1-ENGLISH-STRESS-T3 explains stress but does not teach or practise this list. See ENGLISH-T3-W06-STRESS-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-ST02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The source’s exception for two-syllable words containing a prefix, with second-syllable stress and its ten examples.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: from “Exceptions to the above rule” through the ten examples.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: prefix-related stress exception and ten examples.",
+          "explanation": "The source teaches a specific prefix-related exception and examples. The replacement does not cover that exception or those examples; its record/reCORD illustration is not an equivalent substitute. See ENGLISH-T3-W06-STRESS-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-ST03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Two-syllable noun/verb pairs whose stress changes with word class: content, consent, import and reform.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: the paragraph beginning “When a two-syllable word could double as a noun and a verb” and its four pairs.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: noun/verb stress pairs and source examples.",
+          "explanation": "The replacement explains that some noun/verb pairs shift stress and gives record/reCORD, but does not teach the four source pairs (content, consent, import, reform) or keyed practice on them. See ENGLISH-T3-W06-STRESS-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-ST04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: mark the stress in the seven source words (constract, remit, betray, arrange, baggar, hundred and primer).",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: the Week 6 stress evaluation immediately after “Stress the following words of two syllables”.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: the seven-word stress evaluation.",
+          "explanation": "The source gives seven words but no answer key or marks; the replacement has different practice and does not answer this evaluation. Source spellings are retained pending review; “constract” and “baggar” are not silently corrected. See ENGLISH-T3-W06-STRESS-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-ES01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Story-writing instruction: imagination, chronological sequence, building to a climax and frequent use of the simple past tense.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the explanation beginning “A story writing requires imagination” through the past-tense examples.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: story-writing explanation, sequence/climax and tense paragraphs.",
+          "explanation": "The source introduces narrative sequence, climax and past-tense use. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 supports generic narrative planning, but Week 6 still lacks a worked outline/model and a rubric for the assigned story. See ENGLISH-T3-W06-STORY-WRITING-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-ES02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write a story illustrating “It’s a man’s world”.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the title-specific evaluation prompt following “Narrate a story on the topic”.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the exact topic-specific writing prompt.",
+          "explanation": "The source provides the prompt, and the generic narrative supplement gives planning support, but no topic-specific worked response or marking criteria are supplied. The task is not treated as fully supported merely because a generic narrative lesson exists. See ENGLISH-T3-W06-STORY-WRITING-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-AS01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write two examples for each of the suffixes -less, the source’s “-ze”, -es and -en.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the Week 6 suffix evaluation immediately after “Write 2 examples for each”.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a",
+        "SUP-SS1-ENGLISH-AFFIXES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the four-suffix evaluation.",
+          "explanation": "The source sets an open-ended task but gives no model answers or marking criteria. The affixes supplement's practice addresses other forms and does not fully answer this four-suffix evaluation. See ENGLISH-T3-W06-AFFIXES-SCOPE."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-RA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Complete English Course, pages 420-423.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the Week 6 reading-assignment line after the suffix evaluation.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a :: the named textbook and pages.",
+          "explanation": "The assigned pages are not included in the supplied source archive or current package. No edition or extract is available; no contents or answers are inferred. See ENGLISH-T3-W06-EXTERNAL-MATERIALS."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-RA02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Syllables and stress, page 23, Standard Speech 10 Book, Diction in English Course.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: the Week 6 reading-assignment line after the stress evaluation.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 :: the named speech/diction book and page.",
+          "explanation": "The assigned page is not included in the supplied source archive or current package. The edition and page contents are unavailable; no exercise or answer is inferred. See ENGLISH-T3-W06-EXTERNAL-MATERIALS."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-RA03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown WASSCE/SSCE English Language by Evans, pages 5-7.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the Week 6 reading-assignment line after the story-writing evaluation.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the named Countdown title, author and pages.",
+          "explanation": "The assigned pages are not included in the supplied source archive or current package. No edition or extract is available; no contents or answers are inferred. See ENGLISH-T3-W06-EXTERNAL-MATERIALS."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W06-WA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: five vocabulary multiple-choice items, five nearest-in-meaning items and five article/determiner choice sentences.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the Weekend Assignment section through the final five article/determiner choices.",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:62b9669300d72fab0992f55828f37d0a0e9b88a3c58fe4d872ebf55c19c345a1 :: the Week 6 Weekend Assignment and its three question groups.",
+          "explanation": "The source contains the question stems/options but no key or marks. Several items are visibly garbled or ambiguous, so answers are not inferred from the source wording or option order. See ENGLISH-T3-W06-WEEKEND-KEY."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -19931,6 +20265,70 @@
         "ENGLISH-T3-W05-NM13",
         "ENGLISH-T3-W05-NM14",
         "ENGLISH-BODY-071"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W06-AFFIXES-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The Week 6 affixes replacement SUP-SS1-ENGLISH-AFFIXES-T3 is narrower than the source body: it teaches selected prefixes, one harmless example, and -ed/-ing patterns, but not the full source prefix inventory, the -less negation examples, or the source's -en/-ze tense-form examples. The source itself has apparent gloss/wording defects (including ante/anti, “unn”, “arch” and “-ze”), which are recorded, not silently repaired. Plural -ies/-es is separately covered by SUP-SS1-ENGLISH-NOUNS-T1. The body-level IMPLEMENTED_EQUIVALENT status of ENGLISH-BODY-072 therefore overstates the complete row's objective-level coverage.",
+      "required_action": "Owner/coordinator to decide whether ENGLISH-BODY-072 and COR-019 should retain row-level IMPLEMENTED_EQUIVALENT status. Complete the uncovered Week 6 affix objectives with accurate, source-aware original teaching and keyed, marked practice; confirm the intended treatment of the source's “-ze” rather than normalising it silently.",
+      "affected_ids": [
+        "ENGLISH-BODY-072",
+        "ENGLISH-T3-W06-PF01",
+        "ENGLISH-T3-W06-NG01",
+        "ENGLISH-T3-W06-TN01",
+        "ENGLISH-T3-W06-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W06-STRESS-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The source's two-syllable stress strand includes a first-syllable list, a prefix-related second-syllable exception with ten examples, four noun/verb pairs, and a seven-word evaluation. SUP-SS1-ENGLISH-STRESS-T3 explains word stress and gives a record/reCORD contrast, but does not preserve these source-specific lists, exception examples or evaluation. The body-level IMPLEMENTED_EQUIVALENT status of ENGLISH-BODY-073 therefore overstates the objective-level coverage.",
+      "required_action": "Owner/coordinator to decide whether ENGLISH-BODY-073 and COR-020 should retain row-level IMPLEMENTED_EQUIVALENT status. Expand the same-term stress teaching to cover the missing source objectives with checked examples and keyed, marked practice; keep oral/listening verification separate.",
+      "affected_ids": [
+        "ENGLISH-BODY-073",
+        "ENGLISH-T3-W06-SO02",
+        "ENGLISH-T3-W06-ST01",
+        "ENGLISH-T3-W06-ST02",
+        "ENGLISH-T3-W06-ST03",
+        "ENGLISH-T3-W06-ST04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W06-STORY-WRITING-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The Week 6 source explains narrative sequence, climax and past-tense use and gives the specific “It is a man’s world” prompt. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 provides generic narrative planning, but neither it nor the source row supplies a worked outline/model for this prompt or a specific marking rubric.",
+      "required_action": "Author an original same-term story-writing supplement with a worked plan or model, consistent narrative tense, a task on the source prompt and a transparent writing rubric. Label new teaching as original and do not invent a source model.",
+      "affected_ids": [
+        "ENGLISH-BODY-074",
+        "ENGLISH-T3-W06-SO03",
+        "ENGLISH-T3-W06-ES01",
+        "ENGLISH-T3-W06-ES02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W06-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 6 refers to external reading material not included in the source archive: Complete English Course, pages 420-423; Standard Speech 10 Book, Diction in English Course, page 23; and Countdown WASSCE/SSCE English Language by Evans, pages 5-7. The source gives no editions and none of these extracts is supplied.",
+      "required_action": "Owner to supply authorised extracts and editions for the three assignments, or accept clearly labelled original equivalent activities. Do not infer the missing textbook content.",
+      "affected_ids": [
+        "ENGLISH-T3-W06-RA01",
+        "ENGLISH-T3-W06-RA02",
+        "ENGLISH-T3-W06-RA03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W06-WEEKEND-KEY",
+      "kind": "CONTENT",
+      "detail": "The Week 6 weekend assignment contains five vocabulary multiple-choice items, five nearest-in-meaning items and five article/determiner choices, but no answer key or marks. Several stems/options are garbled or ambiguous; no answer can safely be inferred from option position.",
+      "required_action": "Owner/teacher to supply an authoritative key and marking allocation, or author a labelled original parallel revision set with defensible items, keyed answers and a complete marking breakdown. Do not invent a key for the defective source exercise.",
+      "affected_ids": [
+        "ENGLISH-T3-W06-WA01"
       ],
       "blocks_delivery": true
     }
