@@ -115,6 +115,54 @@
         "locator": "TD-SCH-W06: 2nd Term source extractRawText() line 21; parsed scheme-table row 5 (WEEK 6); exact 57-character row body; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4.",
         "explanation": "The exact row text is “WEEK 6:        Enlargement and reduction of plain figures” (eight spaces after the colon). Its 57-character UTF-8 body hashes to the recorded b3be…fa4 value. It is a scheme-table objective, not a teaching body; SCHEME_ONLY classification retains the source row and discards no text."
       }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R009",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 7:        Enlargement and reduction of plain figures",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-SCH-W07: extractRawText() line 23; parsed scheme-table row 6; exact 57-character row body; SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa.",
+        "explanation": "The exact scheme row is “WEEK 7:        Enlargement and reduction of plain figures” and its recorded row hash matches 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa. It contains the named scheme objective, not a teaching body, so it is classified SCHEME_ONLY. The original text is retained unchanged."
+      }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R010",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 8:        Equal area of figures",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-SCH-W08: extractRawText() line 25; parsed scheme-table row 7; exact 36-character row body; SHA-256 ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e.",
+        "explanation": "The exact scheme row is “WEEK 8:        Equal area of figures” and its recorded row hash matches ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e. It contains the named scheme objective, not a teaching body, so it is classified SCHEME_ONLY. The original text is retained unchanged."
+      }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R011",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 9:        Equal area of figures",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-SCH-W09: extractRawText() line 27; parsed scheme-table row 8; exact 36-character row body; SHA-256 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189.",
+        "explanation": "The exact scheme row is “WEEK 9:        Equal area of figures” and its recorded row hash matches 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189. It contains the named scheme objective, not a teaching body, so it is classified SCHEME_ONLY. The original text is retained unchanged."
+      }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R012",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 10:      Tangency",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-SCH-W10: extractRawText() line 29; parsed scheme-table row 9; exact 22-character row body; SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea.",
+        "explanation": "The exact scheme row is “WEEK 10:      Tangency” and its recorded row hash matches e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea. It contains the named scheme objective, not a teaching body, so it is classified SCHEME_ONLY. The original text is retained unchanged."
+      }
     }
   ],
   "lessons": [],
@@ -270,6 +318,78 @@
           "explanation": "The exact parsed body identity for the combined Week 6–7 teaching row is not recorded in the current repository evidence. It is therefore not safe to invent a lesson ID or claim a confirmed binding. The dependent TD-WK-W06-W07 task will establish that identity and map this objective; until then coverage remains PARTIAL."
         }
       ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W07",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 7 scheme objective, verbatim: “Enlargement and reduction of plain figures”.",
+      "objective_locator": "2nd Term scheme-table parsed row 6 (WEEK 7), extractRawText() line 23; row body SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Scheme row 6, line 23; exact anchor “WEEK 7:        Enlargement and reduction of plain figures”; 57 characters; SHA-256 36277a6acff9ac3310023dc5ca73962b2c45f929f3a2f79269241edf07fed3aa; classified by source rule SS1-SRC-af4868d2c026-R009.",
+          "explanation": "The scheme objective is recorded verbatim and the source row is classified SCHEME_ONLY because it carries no teaching body."
+        },
+        {
+          "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W06-W07 owns the combined/associated teaching-row review.",
+          "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W06-W07 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W08",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 8 scheme objective, verbatim: “Equal area of figures”.",
+      "objective_locator": "2nd Term scheme-table parsed row 7 (WEEK 8), extractRawText() line 25; row body SHA-256 ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Scheme row 7, line 25; exact anchor “WEEK 8:        Equal area of figures”; 36 characters; SHA-256 ee3f44a854cfdb9295157f1d9d83be57035ebff4b926a937a3b8e94790620e1e; classified by source rule SS1-SRC-af4868d2c026-R010.",
+          "explanation": "The scheme objective is recorded verbatim and the source row is classified SCHEME_ONLY because it carries no teaching body."
+        },
+        {
+          "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W08-W09 owns the combined/associated teaching-row review.",
+          "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W08-W09 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W09",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 9 scheme objective, verbatim: “Equal area of figures”.",
+      "objective_locator": "2nd Term scheme-table parsed row 8 (WEEK 9), extractRawText() line 27; row body SHA-256 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Scheme row 8, line 27; exact anchor “WEEK 9:        Equal area of figures”; 36 characters; SHA-256 52baab8bca5636a680c41e6cedb4e0a18d9aae258478c9faa645f0948bc74189; classified by source rule SS1-SRC-af4868d2c026-R011.",
+          "explanation": "The scheme objective is recorded verbatim and the source row is classified SCHEME_ONLY because it carries no teaching body."
+        },
+        {
+          "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W08-W09 owns the combined/associated teaching-row review.",
+          "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W08-W09 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W10",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 10 scheme objective, verbatim: “Tangency”.",
+      "objective_locator": "2nd Term scheme-table parsed row 9 (WEEK 10), extractRawText() line 29; row body SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Scheme row 9, line 29; exact anchor “WEEK 10:      Tangency”; 22 characters; SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea; classified by source rule SS1-SRC-af4868d2c026-R012.",
+          "explanation": "The scheme objective is recorded verbatim and the source row is classified SCHEME_ONLY because it carries no teaching body."
+        },
+        {
+          "locator": "TD-PRE-T2: teaching rows begin at line 59; queue task TD-WK-W10 owns the combined/associated teaching-row review.",
+          "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W10 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -318,12 +438,40 @@
     {
       "id": "TD-T2-W06-TEACHING-ROW-MAPPING",
       "kind": "CONTENT",
-      "detail": "Week 6 scheme objective “Enlargement and reduction of plain figures” is now hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity of the combined Week 6–7 teaching row is not present in the current TD evidence. The scheme objective has no confirmed lesson_id binding yet.",
-      "required_action": "In TD-WK-W06-W07, inspect the exact source teaching row, record its parsed body SHA-256 and stable source lesson ID, and bind COV-TD-T2-SCH-W06 to that ID only if the row actually teaches enlargement/reduction. If it does not, retain the objective as unresolved and add a precise lesson follow-up.",
+      "detail": "Week 6 and Week 7 scheme objectives (“Enlargement and reduction of plain figures”) are hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity of the combined Week 6–7 teaching row is not present in current TD evidence. Neither objective has a confirmed lesson_id binding yet.",
+      "required_action": "In TD-WK-W06-W07, inspect the exact source teaching row, record its parsed body SHA-256 and stable source lesson ID, and bind both Week 6 and Week 7 coverage entries only if the row actually teaches enlargement/reduction. If it does not, retain the objectives as unresolved and add a precise lesson follow-up.",
       "affected_ids": [
         "COV-TD-T2-SCH-W06",
+        "COV-TD-T2-SCH-W07",
         "SS1-SRC-af4868d2c026-R008",
+        "SS1-SRC-af4868d2c026-R009",
         "TD-WK-W06-W07"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W08-W09-TEACHING-ROW-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 8 and Week 9 both list “Equal area of figures”. Their exact scheme rows are hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the combined Week 8–9 teaching row are not recorded in current TD evidence. Neither objective has a confirmed lesson_id binding.",
+      "required_action": "In TD-WK-W08-W09, inspect the combined source teaching row, record its parsed body SHA-256 and stable lesson ID, and bind each week only if the actual teaching covers equal-area construction. If coverage is absent, retain the objective as unresolved and add a precise lesson follow-up.",
+      "affected_ids": [
+        "COV-TD-T2-SCH-W08",
+        "COV-TD-T2-SCH-W09",
+        "SS1-SRC-af4868d2c026-R010",
+        "SS1-SRC-af4868d2c026-R011",
+        "TD-WK-W08-W09"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W10-TEACHING-ROW-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 10 scheme objective “Tangency” is hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity and scope of the Week 10 teaching row are not recorded in current TD evidence. No lesson ID binding is confirmed.",
+      "required_action": "In TD-WK-W10, inspect the Week 10 source teaching row, record its parsed body SHA-256 and stable lesson ID, and bind COV-TD-T2-SCH-W10 only if the lesson actually teaches tangency. If not, retain the objective as unresolved and add a precise lesson follow-up.",
+      "affected_ids": [
+        "COV-TD-T2-SCH-W10",
+        "SS1-SRC-af4868d2c026-R012",
+        "TD-WK-W10"
       ],
       "blocks_delivery": true
     }
