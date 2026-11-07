@@ -868,6 +868,18 @@
       }
     },
     {
+      "id": "SS1-SRC-50fa9b1eb2fd-R024",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Comprehension: Fishing in Hausa Land, page 227, Effective English\nSummary Writing: A Sample Passage, page 152-153.\nVocabulary Development: Words associated with home and family life.\nWriting: Expository Essay: Explanation, Features and Outline of a topic\nStructure: Introduction to Clauses.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 3, lines 16-20 (before the first WEEK ONE heading on line 46)",
+        "explanation": "Unique scheme-row anchor: lines 16 to 20 joined with newlines (the tab at the end of line 20 is outside the anchor). It occurs once in the unmodified extracted text and in no parsed body, so the compiler records it as a SCHEME_ONLY disposition. Metadata only, not teaching; no source text removed."
+      }
+    },
+    {
       "id": "SS1-SRC-a00657d42196-R034",
       "op": "classify_marker",
       "source_id": "SS1-SRC-a00657d42196",
@@ -17079,6 +17091,479 @@
           "explanation": "Explains a noun clause (What she wrote pleased us), a relative clause modifying a noun (The girl who won smiled) and a reason clause (because it was late). It does not name adverbial or adjectival clauses, and the term adjectival clause is not used. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 3: Comprehension: Fishing in Hausa Land, page 227, Effective English; Summary Writing: A Sample Passage, page 152-153; Vocabulary Development: Words associated with home and family life; Writing: Expository Essay: Explanation, Features and Outline of a topic; Structure: Introduction to Clauses",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 16-20; UTF-8 joined-line SHA256 cb0561bd754b980fb568379ca8db4a68245b588251c6de095dfa55ad3bd832a9; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R024"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 16-20; UTF-8 joined-line SHA256 cb0561bd754b980fb568379ca8db4a68245b588251c6de095dfa55ad3bd832a9; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+          "explanation": "In the original (private LibreOffice docx rendering, not committed) row 3 of the one-column scheme table is one cell with five topic paragraphs; the text extraction flattens the table into unlabelled lines 7 to 43, before the first WEEK ONE heading, so no parsed body holds it. Rule SS1-SRC-50fa9b1eb2fd-R024 classifies the row SCHEME_ONLY. The five topics are the five Week 3 objectives, indexed in turn: comprehension CM01 to CM03, summary SM01 to SM03, family and home vocabulary FR01 to FR04, expository essay EX01 to EX05, clauses CL01 to CL08, with the weekend assignment WA01 and theory TH01. The Week 3 section's own TOPIC list (lines 221 to 224) names only the first three, so clauses and the expository essay are in the scheme row and in the body but not in the section's topic list. Rows 1, 2, 4 to 12 and the title lines are not classified by this entry."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CM01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comprehension: \"Fishing in Hausa Land\", Effective English page 227 - the heading, content labels and the one-paragraph description of the passage",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 226-230; UTF-8 joined-line SHA256 68ff75216bd8ff3a2700fd057fded5111f581f4fbbdc3e1db1fa8a79384b04d5; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 226-230; UTF-8 joined-line SHA256 68ff75216bd8ff3a2700fd057fded5111f581f4fbbdc3e1db1fa8a79384b04d5; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+          "explanation": "The heading, 'CONTENT' and the automatically numbered 'Reading' and 'Explanation.' are bold or numbered in the docx (numerals not in the extracted text). The explanation only says the passage is about how fishing is done in Hausa Land, covering the method and the equipment, and tells the learner to read the passage and answer the questions 'unit' (a slip). The passage is not in the source or repository: no text, author or edition, so the description cannot be checked and nothing is reproduced or inferred. The book is named 'Effective English' in the heading and 'Effective English For SS1' in line 236."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CM02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: answer the questions on the passage",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 232-233; UTF-8 joined-line SHA256 0a9265b9a041f0b6624576ab73707b7aeab99872ad75ebdc0c6f5a36fa170dff; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 232-233; UTF-8 joined-line SHA256 0a9265b9a041f0b6624576ab73707b7aeab99872ad75ebdc0c6f5a36fa170dff; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+          "explanation": "The label EVALUATION is bold in the docx. The questions, answers and marks are in the unsupplied book; no question is given in the source and none is inferred or invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CM03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: pages 227 to 228 of Effective English For SS1",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 235-236; UTF-8 joined-line SHA256 fdb7c4fdaed2a2ab50c707fdb06cf6b245f8ef9559a14cae6299899c5a6bdc35; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 235-236; UTF-8 joined-line SHA256 fdb7c4fdaed2a2ab50c707fdb06cf6b245f8ef9559a14cae6299899c5a6bdc35; SS1-SRC-50fa9b1eb2fd:BODY:0c42f6ad87c23ad642d24b04f41ba5f67783654dce47c6e3b0df5cb72431f531",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. Pages 227-228 overlap the passage page named in CM01 (page 227), so it is not clear whether the assignment repeats the lesson passage or adds page 228. The pages are not supplied; no question or key is given. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-SM01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Summary writing: \"Leisure Time\", Effective English Book 1 pages 152 to 153 - the heading, content label and description",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 238-240; UTF-8 joined-line SHA256 1c1885caf2ce9e059da3463a96bffc054f1de44d83c8533d71a157dfe2a3eef5; SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 238-240; UTF-8 joined-line SHA256 1c1885caf2ce9e059da3463a96bffc054f1de44d83c8533d71a157dfe2a3eef5; SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83",
+          "explanation": "'Content' is bold in the docx. The description says the passage is about leisure time and how it has been spent 'from time immemorial' and tells the learner to read it two or three times and then answer the summary questions. The passage is not supplied (no text, author or edition), so the summary task cannot be set, keyed or checked, and nothing is inferred. The scheme row calls it 'A Sample Passage' and the Week 3 TOPIC list says 'Summary: A sample Passage', while the body calls it 'Leisure Time'. The same pages 152-153 are assigned in Week 5 for skimming and scanning (see ENGLISH-T3-W05-RS05)."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: whole lesson",
+          "explanation": "Teaches summary of an original passage with a keyed question, but it is not this passage and no entry binds it here. A lead only; not bound."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-SM02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: answer the summary questions of this passage on page 154 and submit to your teacher",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 242-243; UTF-8 joined-line SHA256 b3c6350df4ba8d80d33da0760d4a3ece7e419204c01cd2ebc2fa01c915e5db2f; SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 242-243; UTF-8 joined-line SHA256 b3c6350df4ba8d80d33da0760d4a3ece7e419204c01cd2ebc2fa01c915e5db2f; SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83",
+          "explanation": "The label is spelled 'EVALAUTION' and is bold in the docx. The questions are on page 154 of the unsupplied book; no question, answer, key or mark is given and none is inferred. The task has no length, word limit or marking criteria."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-SM03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown English (Revised Edition), with no page given",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 245-246; UTF-8 joined-line SHA256 90d91ae9bb91912fa831308cdc1dc9a439e3e6fa31030633baac377b6e8bbc35; SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 245-246; UTF-8 joined-line SHA256 90d91ae9bb91912fa831308cdc1dc9a439e3e6fa31030633baac377b6e8bbc35; SS1-SRC-50fa9b1eb2fd:BODY:e29ecaba8ddc7d1979c0a33529b677674ca893fd6b9e6f6e30f6bc1839d1fa83",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The line names the book and gives no page, unit or topic, so the assignment cannot be located or checked even if the book were supplied. The edition is not identified. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Structure: introduction to clauses - the heading and the contents list (features of the clause, types of subordinate clauses, and a third line reading \"Features or Clauses\")",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 248-252; UTF-8 joined-line SHA256 da3dad3526927727d811e4478ba94eb48749babfd597e201a36aef0122652567; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 248-252; UTF-8 joined-line SHA256 da3dad3526927727d811e4478ba94eb48749babfd597e201a36aef0122652567; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The heading is an automatically numbered bold line and the three contents lines are an automatic list in the docx (numerals not in the extracted text). The third line repeats the first ('Features or Clauses' for 'Features of the Clause') and the same repeated phrase heads the later section, so the body does not name a second topic such as the independent and dependent types it goes on to teach. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Teaches the finite clause and the main and subordinate clause, so it supports the topic as a whole. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Features of the clause: a subject and a predicate (Idowu / bought a piece of land), and a finite verb that distinguishes a clause from a phrase",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 254-258; UTF-8 joined-line SHA256 1ed06e80eda9cb7eeec15bba46412aebb64edf178385fa50e3952f497eb26a66; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 254-258; UTF-8 joined-line SHA256 1ed06e80eda9cb7eeec15bba46412aebb64edf178385fa50e3952f497eb26a66; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The subject and predicate columns are tab-separated bold and plain paragraphs, not a table object. The claim that a clause 'must always have a finite verb' is too strong: English has non-finite clauses (for example an -ing or to-infinitive clause), so the sentence must not be taught as written. 'Idowu / bought a piece of land' is a sound sentence-level example. The final sentence says the finite verb distinguishes a clause from a phrase, which holds for the finite clauses taught at this level but not as an absolute rule."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "States that a finite clause contains a finite verb and usually a subject and that it is too strong to say every clause must have one, which is the correction needed here. It does not set out subject and predicate. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Independent (main or principal) and dependent (subordinate) clauses: definitions, two independent examples and two dependent fragments",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 260-268; UTF-8 joined-line SHA256 6594a5ba90a63489b076bb25a40059f584fb7bc88a8b1292886853bded106dd2; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 260-268; UTF-8 joined-line SHA256 6594a5ba90a63489b076bb25a40059f584fb7bc88a8b1292886853bded106dd2; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "'Dependent Clauses:' is underlined in the docx (the extraction loses it). The independent examples ('My English Master is a kind man.' and 'Tope is coming here tomorrow.') are sound; the two dependent examples are fragments written with a row of dots ('which he recommended', 'whose biro was stolen'). The definition says a dependent clause 'cannot stand on its own as a sentences' (plural slip) and the line ends without a full stop. The source does not distinguish a clause from the sentence it is part of."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Gives a main clause (The bell rang) and a subordinate clause (when the bell rang) and says a finite clause can be either. It does not say a subordinate clause cannot stand alone. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Noun clause: the three types of subordinate clause and the noun clause, with three examples (what he said, a further \"Truth is bitter\" line, and \"that he has arrived\")",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 270-278; UTF-8 joined-line SHA256 7716f8784eaa0c1711b0910feb9a8e489c1890e25601bd553a273f80dba10f15; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 270-278; UTF-8 joined-line SHA256 7716f8784eaa0c1711b0910feb9a8e489c1890e25601bd553a273f80dba10f15; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The definition and the three examples are an automatic list in the docx; the parts 'What he said', 'Truth' and 'that he has arrived' are underlined, and the stray letters N, B(i) and 'b' show where the extraction and the original mark the function. Defects, recorded and not repaired: 'Truth is bitter' is a simple sentence whose subject is a noun, not a noun clause, so it does not illustrate the definition; the example labels are 'SUBEJCT' and 'subject )b'; the third example ('B(i) The important thing is that he has arrived') has an unmatched bracket ('Noun Clause).') and a numbering label. Only the subject function is shown clearly; the object and complement functions are not."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Teaches a noun clause as subject (What she wrote pleased us) and as object (We know that she arrived), which supplies the object function the source omits. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Adjectival clause: definition (modifies a noun or pronoun), the connectives who, whom, whose, that, which, where, when, and three examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 279-283; UTF-8 joined-line SHA256 06a536a07821b5012f267029a39b7ecc9454169f1c9a15b9a9d7319135d3bf89; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 279-283; UTF-8 joined-line SHA256 06a536a07821b5012f267029a39b7ecc9454169f1c9a15b9a9d7319135d3bf89; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The three clauses (who came here; which has been renovated; whose car was stolen) are underlined in the docx. The source calls who, whom, whose, which and that 'subordinating conjunctions'; they are relative pronouns, and where and when are relative adverbs in this use, so the label must be corrected before delivery. In the second example the clause is set off by a comma before it and none after it. 'The Lady' has a capital L. The definition is otherwise sound."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Calls who won in The girl who won smiled a relative clause that modifies girl. It does not list the connectives or name the types. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Adverbial clause: definition, two examples (as if she were hungry; when she came to my office) and the list of nine kinds (manner, time, place, reason or cause, condition, purpose, result, comparison, concession)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 284-290; UTF-8 joined-line SHA256 e7a31cc120db42102df0d58050eb4ef6181fed71bfbb5b0ecce43ba09a6e7b2d; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 284-290; UTF-8 joined-line SHA256 e7a31cc120db42102df0d58050eb4ef6181fed71bfbb5b0ecce43ba09a6e7b2d; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The two clauses are underlined in the docx. The list is tab-separated and runs on one line with mixed labels (I, ii, iii, iv, v, vi, vii, viii and 'ix' with no stop). Only manner and time have examples; the other seven kinds have no definition, connective or example. The definition has a grammar slip ('the actions of the verb is performed') and the examples are not labelled by kind."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Gives one reason clause (We left because it was late) and says that it gives a reason. Bound additively as partial support for one of the nine kinds."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBIAL-CLAUSE-T1 (a 1st Term lesson bound to 1st Term rows; not bound here)",
+          "explanation": "Lead only: it teaches the adverbial clause and eight kinds, but it is not a 3rd Term lesson and the source here lists nine. No coverage is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: underline and identify the type of clause in five sentences (we heard what he said; the girl wanted what I could not give her; the principal who I told you about is a sadist; it happened on a day when I left the town; go and bring water while I fetch wood)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 292-298; UTF-8 joined-line SHA256 1cfa7b526613154c902d0e81b44c239b1e36985e8da5908d5de55087b1e7ae49; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 292-298; UTF-8 joined-line SHA256 1cfa7b526613154c902d0e81b44c239b1e36985e8da5908d5de55087b1e7ae49; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The five sentences are an automatic list in the docx (numerals not in the extracted text). There is no key and no marks; none is inferred. Item 3 uses 'who' as the object where the formal choice is 'whom', and the word 'sadist' needs teacher review for classroom use; item 4 relies on 'when' introducing an adjectival clause, which the body teaches only through the connective list. Noun and adverbial examples are in the body; the adjectival items depend on the corrected connective list from CL05."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3; practice Q2 and Q3",
+          "explanation": "Teaches noun, relative and reason clauses and marks two questions on a relative clause and on a complex sentence; neither uses these five sentences. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-CL08",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: \"Count down in English Language by Evans\", pages 220 to 224",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 300-301; UTF-8 joined-line SHA256 0ebf0cdd52aaee9da82e6debf4f2af080ec368bcced3d145a7ee86a57b42dfc6; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 300-301; UTF-8 joined-line SHA256 0ebf0cdd52aaee9da82e6debf4f2af080ec368bcced3d145a7ee86a57b42dfc6; SS1-SRC-50fa9b1eb2fd:BODY:9a6ac1baac590547cb63e7ac59ba30a8fe3c63564eca6d08a817a55be4d72a51",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The book is written 'Count down in English Language by Evans' here, 'Countdown English (Revised Edition)' elsewhere in the week and 'Countdown by Evans' in the 1st Term; the source does not say they are one book. The pages are not supplied; no question or key is given. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-EX01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Expository essay: the heading, contents (explanation, features, outline of a topic) and the definition (instruct, inform, explain, criticize or analyse)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 303-309; UTF-8 joined-line SHA256 0c439977e92b3a22cdaa674148c4a8d04ce1f9c28f700fb34e23928b7924019a; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 303-309; UTF-8 joined-line SHA256 0c439977e92b3a22cdaa674148c4a8d04ce1f9c28f700fb34e23928b7924019a; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+          "explanation": "The heading and the three content lines are an automatic list in the docx (numerals not in the extracted text). The definition lists 'criticize' as an aim; criticism and persuasion belong more to the argumentative essay, so the aim is stated more broadly than an expository essay needs. The final sentence ('burning issues') is general and gives no test for telling the type from others."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-EXPOSITORY-ESSAY-T1 and SUP-SS1-ENGLISH-ESSAY-TYPES-T2 (1st and 2nd Term lessons; not bound here)",
+          "explanation": "Lead only: they teach the expository essay (the 1st Term lesson with a worked plan and marked task), but they are bound to other terms' rows. No 3rd Term coverage is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-EX02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Features of an expository essay: capitalised topic, logical points, paragraphs developed with facts, examples, comparison and connectives, definition of vague ideas, present tense",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 311-316; UTF-8 joined-line SHA256 792a482db2a51b4073fff29649455d1e160d733bfa26dca17fd792a117f55a06; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 311-316; UTF-8 joined-line SHA256 792a482db2a51b4073fff29649455d1e160d733bfa26dca17fd792a117f55a06; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+          "explanation": "The five features are an automatic list in the docx (numerals not in the extracted text). 'Preferably' hedges the capital letters. The present-tense feature is general advice and does not cover an essay about the past. The sentence on paragraph development runs together four devices (facts, examples and illustrations, comparison and contrasts, connectives) without showing any."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-EX03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Outline for the topic \"The Problem With Nigeria\": six points (acknowledge the topic, three major problems and causes, effects on the nation, viable solutions, facts and data from daily news, conclusion)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 318-324; UTF-8 joined-line SHA256 94f555e732f8ec15e44c44c195ec1cc17f926da9830aa2eb03a0636419516566; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 318-324; UTF-8 joined-line SHA256 94f555e732f8ec15e44c44c195ec1cc17f926da9830aa2eb03a0636419516566; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+          "explanation": "The six points are an automatic list in the docx (numerals not in the extracted text). The topic invites comment on national problems and solutions, so a model must stay evidence-based and non-partisan and must not take a political position. 'Use facts and data from daily news' needs current, citable sources, none of which is supplied; no data or model essay is given."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-EX04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write an essay on the outlined topic above",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 326-327; UTF-8 joined-line SHA256 42085f574e32278db32b69d2148b9bb575d89c3e2de483f3efd3bdf479d53bee; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 326-327; UTF-8 joined-line SHA256 42085f574e32278db32b69d2148b9bb575d89c3e2de483f3efd3bdf479d53bee; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+          "explanation": "An open writing task with no length, time limit, marks, rubric or model; none is inferred. It cannot be marked consistently without a rubric."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-EX05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: pages 19 to 21 of Countdown English Language (Revised Edition)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 329-330; UTF-8 joined-line SHA256 2431108e2f44709c4d1d5e779386f5c6faeafe16d420d0ce68e71ed2dd7a6f0e; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 329-330; UTF-8 joined-line SHA256 2431108e2f44709c4d1d5e779386f5c6faeafe16d420d0ce68e71ed2dd7a6f0e; SS1-SRC-50fa9b1eb2fd:BODY:88a235535648964ab6431fdcf9534f1cb103adecbeb6ad3ccaed78eb2efa54a5",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. Pages 19-21 are not supplied; the 1st Term assigns the same page range of 'Countdown by Evans' for the expository essay (ENGLISH-T1-W05-ES05), and the source does not say the two titles are the same book. No question or key; nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-FR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Family relationship: the heading and twelve kinship glosses (half-brother and half-sister, grandchild, cousin, uncle, aunt, nephew, step-mother, relative, family, extended family, distant relative, nuclear family)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 332-344; UTF-8 joined-line SHA256 04b89734a74619b022fa4289ec774b97ccbd9179f4367313297b25be1575bc3f; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 332-344; UTF-8 joined-line SHA256 04b89734a74619b022fa4289ec774b97ccbd9179f4367313297b25be1575bc3f; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+          "explanation": "The glosses are plain paragraphs. Defects recorded, not repaired: the first line runs the list together with a stray ':C =' and 'of' for 'or'; cousin has 'of' for 'or'; nephew has an unclosed bracket; 'maries' and 'peo0ple' are misspelt; and 'distant relative' is glossed by a cousin's child, which is only one example. Niece, the word asked for in evaluation item 1, has no entry, although nephew is glossed. Glosses must be checked against a dictionary before delivery."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-FR02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Words for objects in the home: furniture, utensils, wardrobe, grinder, blender, fridge",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 345-350; UTF-8 joined-line SHA256 e504ab8c77a18123c072ffa0f2ae4a0e055b81343ea029cd24940faf603e2d43; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 345-350; UTF-8 joined-line SHA256 e504ab8c77a18123c072ffa0f2ae4a0e055b81343ea029cd24940faf603e2d43; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+          "explanation": "The label line runs into the first gloss ('Words for objects in the Home furniture = \"Large movable objects ...') with an unclosed opening quote; 'Utensils' has no dash; and grinder's gloss has an unclosed bracket and a stray quote. Glosses are informal and unchecked. No example sentence, word class or pronunciation is given, and no verb for cleaning a floor appears, although evaluation item 4 needs one."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-FR03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: five gap-fill items (the daughter of one's sister or brother; a person who has not paid the bride price; cooking items such as pots and saucepans; Saturday-morning floor cleaning; the person who is not in the nuclear family from five options)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 351-358; UTF-8 joined-line SHA256 b17701a28dd376cd2ac5c3b9f2d09660bc8c60ea3b03a6bb41df4efafd389ca9; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 351-358; UTF-8 joined-line SHA256 b17701a28dd376cd2ac5c3b9f2d09660bc8c60ea3b03a6bb41df4efafd389ca9; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+          "explanation": "The five items are an automatic list in the docx (numerals not in the extracted text); item 5 has five lettered options on a separate line ('( C)' is the third option's label). There is no key and no marks; none is inferred. Items 1, 2 and 4 depend on words the body does not teach (a word for a sibling's daughter, a word for the person engaged to marry, and a verb for cleaning a floor with stiff brushes); item 2 also depends on a custom (a bride price) that is not explained."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-FR04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: \"Register: pg 112 Exam Focus: English for JSCE\"",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 360-361; UTF-8 joined-line SHA256 4c5aec0006db58936b99ff28a2d85e89f4e853352d58c36aef1ced5ef85b0fc7; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 360-361; UTF-8 joined-line SHA256 4c5aec0006db58936b99ff28a2d85e89f4e853352d58c36aef1ced5ef85b0fc7; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The line names a topic (register) that is not in the Week 3 scheme row, and a book ('Exam Focus: English for JSCE', a junior-school exam title) with no author or edition; page 112 is not supplied. No question or key; nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-WA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: five items choosing the word that has the same sound as the underlined letters (sh in Splash, Ch in Choleric, Y in Yesterday, dd in Toddler, gh in Tough)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 363-369; UTF-8 joined-line SHA256 a994349546f4db0f9226c1d95fc68a0d71c11c92aad95cac02176db5ad9ea995; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 363-369; UTF-8 joined-line SHA256 a994349546f4db0f9226c1d95fc68a0d71c11c92aad95cac02176db5ad9ea995; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+          "explanation": "The underlined letters (sh, Ch, Y, dd, gh) are recorded from the docx; the extraction loses them. Items 1 to 4 have four options and item 5 has five. The items test the sound of a spelling, including irregular ones, and none is keyed; no key or marks is inferred. Sound recognition from a spelling is not a Week 3 scheme topic (the sound work is in Weeks 4 and 5)."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: paragraph 1 and paragraph 3",
+          "explanation": "Says a spelling may represent different sounds and lists voicing contrasts including /f v/, /ʃ ʒ/ and /j/, and warns against confusing letters with sounds. It does not treat these five words. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W03-TH01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Theory: write five examples of a noun clause performing different functions",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 371-372; UTF-8 joined-line SHA256 bb189af92013d63d2c93a581c1ca23de239bc37868a2a59e5130873571ede1c7; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 371-372; UTF-8 joined-line SHA256 bb189af92013d63d2c93a581c1ca23de239bc37868a2a59e5130873571ede1c7; SS1-SRC-50fa9b1eb2fd:BODY:2209d50367daacda7de1ef9b3fd0d8f0d5d4eebce740924401c0a909f8211d30",
+          "explanation": "A production task with no key, model or marks; none is inferred. The body (CL04) shows a noun clause chiefly as a subject, so the 'different functions' (for example subject, object and complement) are taught only in part there."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Shows noun clauses as a subject and as an object. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -18184,6 +18669,100 @@
         "ENGLISH-T3-W02-WA01",
         "ENGLISH-T3-W02-TH01",
         "ENGLISH-BODY-063"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W03-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 3 depends on published material the source does not contain: the Effective English passage and questions for 'Fishing in Hausa Land' (pp. 227-228) and for the 'Leisure Time' summary (pp. 152 to 154), and reading assignments in Countdown (pp. 220-224 and 19-21, and an assignment with no page) and in 'Exam Focus: English for JSCE' (p. 112). The Effective English and Countdown titles are written in several ways and no author or edition is given.",
+      "required_action": "Supply exact authorised extracts and editions, or have the owner accept labelled original equivalent activities (see ENGLISH-PRESCRIBED-PASSAGES). Until then none is taught as checked (queue item ENG-FACT-T3-W03-EXTERNAL-MATERIALS).",
+      "affected_ids": [
+        "ENGLISH-T3-W03-CM01",
+        "ENGLISH-T3-W03-CM02",
+        "ENGLISH-T3-W03-CM03",
+        "ENGLISH-T3-W03-SM01",
+        "ENGLISH-T3-W03-SM02",
+        "ENGLISH-T3-W03-SM03",
+        "ENGLISH-T3-W03-CL08",
+        "ENGLISH-T3-W03-EX05",
+        "ENGLISH-T3-W03-FR04",
+        "ENGLISH-BODY-064",
+        "ENGLISH-BODY-065",
+        "ENGLISH-BODY-066",
+        "ENGLISH-BODY-067",
+        "ENGLISH-BODY-068"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W03-READING-SUMMARY",
+      "kind": "CONTENT",
+      "detail": "The comprehension and summary lessons are only a description of each passage with unsupplied questions; no original reading or summary activity exists for the topics, and the original 3rd Term reading lesson teaches different skills on a different passage.",
+      "required_action": "After the owner decides between supplying the passages and accepting originals, author an original labelled passage-based comprehension and an original summary task with keyed, marked questions, bound additively to SUP-SS1-ENGLISH-READING-T3 (queue item ENG-LES-T3-W03-READING-SUMMARY). Do not infer either passage from its description.",
+      "affected_ids": [
+        "ENGLISH-T3-W03-CM01",
+        "ENGLISH-T3-W03-CM02",
+        "ENGLISH-T3-W03-SM01",
+        "ENGLISH-T3-W03-SM02",
+        "ENGLISH-BODY-064",
+        "ENGLISH-BODY-065"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W03-CLAUSES",
+      "kind": "CONTENT",
+      "detail": "The clauses body carries source defects (a finite verb required of every clause; a non-clause example under noun clauses; relative pronouns called subordinating conjunctions; the third contents line repeated; only two of nine adverbial kinds illustrated) and has no replacement. SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3 supports parts of it but is not bound to this row, and the five-sentence evaluation and the theory task have no key.",
+      "required_action": "Author original clause teaching (finite and non-finite clauses, subject and predicate, main and subordinate clauses, noun, adjectival and adverbial clauses with their connectives, the nine adverbial kinds) and original keyed, marked identification practice, labelled original and bound additively to the phrases-and-clauses supplement (queue item ENG-LES-T3-W03-CLAUSES). Do not teach the source finite-verb sentence, the 'Truth is bitter' example or the conjunction label as written.",
+      "affected_ids": [
+        "ENGLISH-T3-W03-CL01",
+        "ENGLISH-T3-W03-CL02",
+        "ENGLISH-T3-W03-CL03",
+        "ENGLISH-T3-W03-CL04",
+        "ENGLISH-T3-W03-CL05",
+        "ENGLISH-T3-W03-CL06",
+        "ENGLISH-T3-W03-CL07",
+        "ENGLISH-BODY-066"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W03-EXPOSITORY-ESSAY",
+      "kind": "CONTENT",
+      "detail": "The expository-essay body gives a broad definition, five features and a six-point outline on a political topic with no model and no rubric; the essay task has no length or marking criteria. The 1st and 2nd Term essay lessons are leads, not bindings.",
+      "required_action": "Author original expository-essay teaching (purpose, structure, evidence) with a worked non-partisan plan and original marked practice with a rubric, labelled original (queue item ENG-LES-T3-W03-EXPOSITORY). Any model on 'The Problem With Nigeria' must stay evidence-based and take no political position; do not invent data.",
+      "affected_ids": [
+        "ENGLISH-T3-W03-EX01",
+        "ENGLISH-T3-W03-EX02",
+        "ENGLISH-T3-W03-EX03",
+        "ENGLISH-T3-W03-EX04",
+        "ENGLISH-BODY-067"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W03-FAMILY-VOCAB",
+      "kind": "CONTENT",
+      "detail": "The home-and-family vocabulary glosses are informal and typo-ridden, niece has no entry, and the evaluation has no key; items 1, 2 and 4 need words the body does not teach (niece, a word for the person engaged to marry, a verb for cleaning a floor).",
+      "required_action": "Author original family and household vocabulary teaching with reviewed glosses (including niece) and original keyed, marked practice, with the bride-price item reworded or explained by the teacher, labelled original (queue item ENG-LES-T3-W03-FAMILY-VOCAB). Do not infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T3-W03-FR01",
+        "ENGLISH-T3-W03-FR02",
+        "ENGLISH-T3-W03-FR03",
+        "ENGLISH-BODY-068"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W03-ASSESSMENTS",
+      "kind": "CONTENT",
+      "detail": "The weekend assignment (five sound-from-spelling items) and the theory task (five noun clauses of different functions) have no keys; the sound items are outside the Week 3 scheme topics and the clause teaching is unreviewed.",
+      "required_action": "Author original keyed, marked items on the sound of a spelling and original noun-clause writing practice with model answers, labelled original and bound additively to the phonetics and phrases-and-clauses supplements (queue item ENG-LES-T3-W03-ASSESSMENTS). Do not infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T3-W03-WA01",
+        "ENGLISH-T3-W03-TH01",
+        "ENGLISH-BODY-068"
       ],
       "blocks_delivery": true
     }
