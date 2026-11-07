@@ -1022,6 +1022,18 @@
         "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
         "explanation": "Unique first-topic anchor for the tenth scheme data row. The original DOCX row contains four Week 10 strands: comprehension/speaking skills, the /ɪ/–/iː/ contrast, argumentative writing on indiscipline and pronoun reference to the three persons. It is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim every strand was taught. Source wording is retained."
       }
+    },
+    {
+      "id": "SS1-SRC-50fa9b1eb2fd-R032",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Comprehension: Summarizing in a specified number of words.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+        "explanation": "Unique first-topic anchor for the eleventh scheme data row. The original DOCX row contains three Week 11 strands: summary writing to a word limit, building vocabulary and nearest-meaning synonyms. It is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim every strand was taught. Source wording is retained."
+      }
     }
   ],
   "lessons": [
@@ -20362,6 +20374,317 @@
           "explanation": "The T1 supplement lists personal pronouns and distinguishes speaker, addressee and person/thing spoken about, but does not name the first/second/third person labels or provide a keyed exercise that classifies them."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 11: comprehension—summarising in a specified number of words; vocabulary development—words associated with building; structure—synonyms, words nearest in meaning.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R032"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The original DOCX scheme row contains these three strands. Rule R032 classifies the complete row as SCHEME_ONLY; this marker records the scheme, not teaching coverage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SO01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: comprehension, summarising in a specified number of words.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme specifies a summary constrained by a word count."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Week Eleven, Section A, “Summarizing in a specified number of words”, examples, evaluation and reading assignment",
+          "explanation": "The Week 11 body states that a summary must not exceed the specified word count and gives category examples. The T3 reading supplement teaches concise, accurate summary and says to follow the word or sentence limit, but its worked model is a two-sentence summary, not a specified-word-count model."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SO02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: vocabulary development, words associated with building.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names building vocabulary."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Week Eleven, Section B, “Vocabulary Development: Words Associated with Building”, glossary, evaluation and reading assignment",
+          "explanation": "The Week 11 body defines building parts and gives a glossary, but the supplementary word list is unexplained and the evaluation has no key or marks. No building-vocabulary supplement exists in the package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SO03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: synonyms, words nearest in meaning.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98",
+        "SUP-SS1-ENGLISH-MEANING-T3",
+        "SUP-SS1-ENGLISH-REVISION-W04-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 11 (zero-based row index 11), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names nearest-meaning synonyms."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: synonym substitution, context and register body; keyed practice Q1 and Q3",
+          "explanation": "The T3 supplement teaches contextual synonym choice and rejects false equivalence such as reject/emit."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-REVISION-W04-T1: nearest-meaning method, connotation/strength/register and keyed practice Q1–Q6",
+          "explanation": "The T1 revision supplement directly teaches nearest-in-meaning selection with contextual clues, grammar/collocation checks and fully keyed practice. Together the supplements provide an equivalent for the broad scheme objective; the specific Week 11 source lists remain separately indexed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-CR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Summarise a passage without exceeding a specified number of words; keep the result brief and preserve the passage's main meaning.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Week Eleven, Section A, “Summarizing in a specified number of words”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Section A opening explanation and three summary guidelines",
+          "explanation": "The source states the word-limit rule, brevity and paraphrasing, but gives no complete worked 100-word model or marking criteria."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: body section on summary and two-sentence model; keyed practice Q3",
+          "explanation": "The T3 supplement teaches concise summary, factual accuracy and following a word/sentence limit, but its model is not a specified-word-count response."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-CR02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Condense lists of related items into a suitable category term, as in food items→“soup ingredient” and cosmetics items→“cosmetics”.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Week Eleven, Section A, “Summarizing in a specified number of words”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Section A examples grouping pepper, tomatoes, onion, Maggi, salt, groundnut oil as “soup ingredient”, and toiletries/cosmetics as “cosmetics”",
+          "explanation": "The source illustrates grouping a list under a category term, but the examples are not expanded into a taught method or assessed practice; “magi” is preserved as printed pending editorial review."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-CR03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: summarise the Effective English page 125 passage in one hundred words.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Week Eleven, Section A, “Summarizing in a specified number of words”, examples, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Section A evaluation",
+          "explanation": "The page-125 passage is external and absent from the supplied archive/package. The source's 100-word task has no supplied passage, answer or marking allocation; none is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-CR04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Faster Reading, Effective English page 168.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Week Eleven, Section A, “Summarizing in a specified number of words”, examples, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f40f9429fc1be2825df87acdb7cb0bf03af0636fbfa99e14aa96733022d45c24 :: Section A “READING ASSIGNMENT”",
+          "explanation": "The assigned textbook page and edition are absent from the supplied archive/package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-VOC01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Explain the main parts of a building: substructure, superstructure and foundation.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Week Eleven, Section B, “Vocabulary Development: Words Associated with Building”, glossary, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Section B opening definition of building, substructure and superstructure",
+          "explanation": "The source identifies the underground substructure and above-ground superstructure and calls the substructure the foundation. No worked diagram or keyed practice is supplied."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-VOC02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Building glossary: concrete, glazier, gravel, scaffold, masonry, architect, renovate, furnish, cistern and plumber.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Week Eleven, Section B, “Vocabulary Development: Words Associated with Building”, glossary, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Section B “Relevant Words”, entries 1–10",
+          "explanation": "The source defines ten terms, but several definitions need technical/language review (for example scaffold, cistern and plumber); “Mansory” is a source misspelling of masonry. No replacement lesson or keyed practice checks the terms."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-VOC03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Further building-related terms: building plan, interior decoration, hinges, bricklayer, valuer, rubble(s), tiles, commercial/residential building, lintels and contractor.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Week Eleven, Section B, “Vocabulary Development: Words Associated with Building”, glossary, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Section B “Other related words” list",
+          "explanation": "The source lists further words without definitions or examples, repeats “lintels”, and uses “rubbles”, which requires editorial checking. Their meanings are not invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-VOC04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: use a dictionary to find the meanings of five listed building words and use them in sentences.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Week Eleven, Section B, “Vocabulary Development: Words Associated with Building”, glossary, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Section B evaluation after “Other related words”",
+          "explanation": "The source sets an open dictionary task but supplies no selected five words, model sentences, key or marks."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-VOC05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown in English by Evans, page 123.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Week Eleven, Section B, “Vocabulary Development: Words Associated with Building”, glossary, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:0be1a84038c0453838d752eaf6a4ef59c3473966920c604eca737721c5b98580 :: Section B “READING ASSIGNMENT”",
+          "explanation": "The cited textbook page and edition are absent from the supplied archive/package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SY01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Distinguish shades of meaning among odour, scent, smell, stench, aroma and fragrance.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Week Eleven, Section C, “Synonyms: Words Nearest in Meaning”, smell-word shades, typical synonym table, evaluation and assignments",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98",
+        "SUP-SS1-ENGLISH-MEANING-T3",
+        "SUP-SS1-ENGLISH-REVISION-W04-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Section C “Synonyms: odour, scent, smell, stench, aroma, fragrance” and their explanations",
+          "explanation": "The source attempts to distinguish strength and pleasantness, but some explanations are overgeneralised (for example aroma is not always pungent/spicy, and scent is not invariably weaker than odour). The T3 and T1 supplements teach contextual near-synonyms generally, not this full smell-word set."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SY02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Choose and use nearest-meaning synonyms from the source's typical table: confess, abandon, dangerous, surrender, expensive, disaster, aloof, dishonest, compensate, dull, reject, protagonist, obliterate, generous and famous.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Week Eleven, Section C, “Synonyms: Words Nearest in Meaning”, smell-word shades, typical synonym table, evaluation and assignments",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98",
+        "SUP-SS1-ENGLISH-MEANING-T3",
+        "SUP-SS1-ENGLISH-REVISION-W04-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Section C “Typical Synonyms” table, fifteen headwords",
+          "explanation": "The source gives fifteen synonym groups, but several pairings are context-dependent or inaccurate: aloof/shy, dishonest/unjust, dull/gloomy, reject/emit and compensate/atone are not generally interchangeable. The T3 supplement explicitly corrects reject/emit; the T1 revision teaches contextual selection and connotation but does not validate every source pair."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SY03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: give nearest-meaning synonyms for request, rule, acute, entire and enemy.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Week Eleven, Section C, “Synonyms: Words Nearest in Meaning”, smell-word shades, typical synonym table, evaluation and assignments",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98",
+        "SUP-SS1-ENGLISH-REVISION-W04-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Section C evaluation after the typical-synonyms table",
+          "explanation": "The source gives five isolated words without sentence context, so some may have multiple nearest meanings. No key or marks are supplied. The T1 revision teaches context-based nearest-meaning selection but does not key this exact list."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SY04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Synonyms, Countdown English Language by Evans, page 160.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Week Eleven, Section C, “Synonyms: Words Nearest in Meaning”, smell-word shades, typical synonym table, evaluation and assignments",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Section C “READING ASSIGNMENT”",
+          "explanation": "The cited textbook page and edition are absent from the supplied archive/package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W11-SY05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: Effective English, page 205, questions 2 and 3.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Week Eleven “WEEKEND ASSIGNMENT”: “Page 205 questions 2 and 3 of the Effective English”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 :: Week Eleven “WEEKEND ASSIGNMENT”: “Page 205 questions 2 and 3 of the Effective English”",
+          "explanation": "The source names two textbook questions but does not include the question text, edition, answer key or marks. No missing items or answers are inferred."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -22096,6 +22419,81 @@
       "required_action": "Obtain the exact authorised edition and both practice pages with an authoritative key/mark allocation, or author a labelled original parallel assignment with defensible questions, keyed answers and complete marking. Do not infer the missing items.",
       "affected_ids": [
         "ENGLISH-T3-W10-ES04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W11-SUMMARY-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 11 teaches a word-count summary in brief terms and gives list-to-category examples, but no complete worked 100-word model or marking criteria. The T3 reading supplement teaches accurate summary and word/sentence limits, but its model is a two-sentence summary rather than a specified-word-count response.",
+      "required_action": "Author original same-term teaching for word-count summarising, including a worked passage response at the stated word limit, a method for condensing lists into categories, and keyed, marked practice. Preserve the source examples and explicitly review the “magi” spelling.",
+      "affected_ids": [
+        "ENGLISH-T3-W11-SO01",
+        "ENGLISH-T3-W11-CR01",
+        "ENGLISH-T3-W11-CR02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W11-BUILDING-VOCAB-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 11 supplies a short building-parts explanation and ten glossary entries, but its further-word list has no definitions, repeats lintels and includes “rubbles”; the glossary has a “Mansory” misspelling and the dictionary/sentence evaluation has no key or marks.",
+      "required_action": "Author original same-term building vocabulary teaching with technically checked definitions, word classes, natural example sentences and a keyed, marked dictionary/sentence task. Verify “masonry”, “rubble”, the repeated “lintels” and all construction terms without silently editing source bytes.",
+      "affected_ids": [
+        "ENGLISH-T3-W11-SO02",
+        "ENGLISH-T3-W11-VOC01",
+        "ENGLISH-T3-W11-VOC02",
+        "ENGLISH-T3-W11-VOC03",
+        "ENGLISH-T3-W11-VOC04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W11-SYNONYM-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The Week 11 smell-word explanations and typical-synonym table contain overgeneralised or inaccurate pairings, and the five-word evaluation has no context, key or marks. SUP-SS1-ENGLISH-MEANING-T3 corrects reject/emit; SUP-SS1-ENGLISH-REVISION-W04-T1 teaches nearest-meaning selection, but neither validates every Week 11 pair.",
+      "required_action": "Complete original same-term synonym teaching that checks each smell-word distinction and all fifteen synonym groups for sense, grammar, collocation, strength and register; provide contextual keyed questions and marking. Keep the existing supplements additive and preserve source wording.",
+      "affected_ids": [
+        "ENGLISH-T3-W11-SY01",
+        "ENGLISH-T3-W11-SY02",
+        "ENGLISH-T3-W11-SY03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W11-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 11 references Effective English page 125 (100-word summary passage), Faster Reading page 168, Countdown in English by Evans page 123 (building vocabulary) and Countdown English Language by Evans page 160 (synonyms). These pages/editions are not supplied in the archive/package.",
+      "required_action": "Obtain the authorised editions/pages and any official questions/keys, or record owner acceptance of labelled original equivalents. Do not reproduce or claim to have inspected unprovided textbook pages.",
+      "affected_ids": [
+        "ENGLISH-T3-W11-CR03",
+        "ENGLISH-T3-W11-CR04",
+        "ENGLISH-T3-W11-VOC05",
+        "ENGLISH-T3-W11-SY04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W11-WEEKEND-ASSIGNMENT",
+      "kind": "CONTENT",
+      "detail": "The Week 11 weekend assignment refers to Effective English page 205, questions 2 and 3, but includes neither question text nor an answer key/marks and does not identify the edition.",
+      "required_action": "Obtain the exact authorised edition and questions 2 and 3 with an authoritative key/mark allocation, or author a labelled original parallel exercise with defensible questions, keyed answers and complete marking. Do not infer missing items.",
+      "affected_ids": [
+        "ENGLISH-T3-W11-SY05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W11-COR-024-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "ENGLISH-BODY-089 is marked IMPLEMENTED_EQUIVALENT by COR-024, whose stated reason is only that reject/emit are not interchangeable. SUP-SS1-ENGLISH-MEANING-T3 and SUP-SS1-ENGLISH-REVISION-W04-T1 provide broader nearest-meaning support, but the Week 11 smell-word distinctions and several of the fifteen source synonym groups are not validated or fully reproduced.",
+      "required_action": "Owner to review COR-024's row-level replacement scope/status and decide whether it should be narrowed or additional source-specific synonym teaching recorded. Preserve the original source body and correction; objective-level partial statuses remain authoritative for the uncovered lists/evaluation.",
+      "affected_ids": [
+        "ENGLISH-BODY-089",
+        "ENGLISH-T3-W11-SO03",
+        "ENGLISH-T3-W11-SY01",
+        "ENGLISH-T3-W11-SY02",
+        "ENGLISH-T3-W11-SY03"
       ],
       "blocks_delivery": true
     }
