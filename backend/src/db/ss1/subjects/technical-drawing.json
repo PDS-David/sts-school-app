@@ -163,6 +163,18 @@
         "locator": "TD-SCH-W10: extractRawText() line 29; parsed scheme-table row 9; exact 22-character row body; SHA-256 e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea.",
         "explanation": "The exact scheme row is “WEEK 10:      Tangency” and its recorded row hash matches e3f91d855eee7bf675d6dd70d966eb1f97fad91ac3d53306889b2b999af9d5ea. It contains the named scheme objective, not a teaching body, so it is classified SCHEME_ONLY. The original text is retained unchanged."
       }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R013",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 11.Revision and Examination.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-PRE-T2: source extractRawText() lines 31–58; parsed row 10 (WEEK 11); 655-character parsed body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337; line-block SHA-256 b36d91d4f02b8ff7e6a2879759cc394d2001db3f3f9f56b1194d5a634316784d.",
+        "explanation": "The row is headed “WEEK 11.Revision and Examination.” and contains the source's Reference materials list (lines 35–54; eight entries; block SHA-256 0a0da4d2f7cf7fbe8f0d78487b723de5cfaf637c9821feabf8580f42350fbc67). The inventory identifies it as the final scheme-table row, not a parsed teaching week or examination paper. SCHEME_ONLY retains the row and its reference list; no examination questions or revision lesson are invented."
+      }
     }
   ],
   "lessons": [],
@@ -390,6 +402,26 @@
           "explanation": "The exact parsed body identity and objective-to-teaching scope are not recorded in current repository evidence. No lesson ID is invented. TD-WK-W10 must inspect the source row and bind this objective only if the teaching actually covers it; coverage remains PARTIAL until then."
         }
       ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W11",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 11 scheme marker: “Revision and Examination”; source reference-material list is retained in the same parsed row and is not a teaching objective.",
+      "objective_locator": "Parsed row 10 (WEEK 11), extractRawText() lines 31–58; 655-character body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337.",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026-R013"
+      ],
+      "evidence": [
+        {
+          "locator": "TD-PRE-T2: lines 31–58; parsed row 10; body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337; rule SS1-SRC-af4868d2c026-R013.",
+          "explanation": "The row is the scheme's Week 11 Revision and Examination marker. Its 655-character body is retained and classified SCHEME_ONLY; it is not counted as a lesson or as an examination paper."
+        },
+        {
+          "locator": "TD-PRE-T2: lines 35–54, Reference materials list; 8 entries; block SHA-256 0a0da4d2f7cf7fbe8f0d78487b723de5cfaf637c9821feabf8580f42350fbc67.",
+          "explanation": "The reference list remains accounted for as source metadata. The existing open item TD-T2-REFERENCES-IN-ROW-10 preserves the follow-up to map the eight titles without copying unverified textbook material."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -407,8 +439,8 @@
     {
       "id": "TD-T2-REFERENCES-IN-ROW-10",
       "kind": "CONTENT",
-      "detail": "The 'Reference materials:' list (lines 35-54 of the extracted text, eight textbook entries) is not preamble to the parser: it sits inside parsed row 10 (scheme 'WEEK 11.Revision and Examination.', lines 31-58). It is source reference material, not teaching content, and no rule or coverage was added for it here so that row 10 is not pre-classified.",
-      "required_action": "TD-SCH-W11 decides how row 10 is classified (REVISION/EXAMINATION/SCHEME_ONLY) and how the reference list is mapped; do not discard the text.",
+      "detail": "The eight-entry “Reference materials:” list (lines 35–54; block SHA-256 0a0da4d2f7cf7fbe8f0d78487b723de5cfaf637c9821feabf8580f42350fbc67) lies inside parsed row 10, the 655-character Week 11 “Revision and Examination” scheme marker (body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337). The row is now classified SCHEME_ONLY by rule SS1-SRC-af4868d2c026-R013. The reference list is source metadata, not lesson text, and remains separately accounted for.",
+      "required_action": "Preserve the eight source titles as references/provenance in the later integration handoff; do not reproduce textbook content or claim any page was inspected. If the runtime needs a student-facing reference display, obtain the required edition/rights evidence first.",
       "affected_ids": [
         "SS1-SRC-af4868d2c026"
       ],
