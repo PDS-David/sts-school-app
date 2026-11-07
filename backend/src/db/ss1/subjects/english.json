@@ -1010,6 +1010,18 @@
         "locator": "Original DOCX scheme-of-work table, table 0, data row 9 (zero-based row index 9), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
         "explanation": "Unique first-topic anchor for the ninth scheme data row. The original DOCX row contains four Week 9 strands: identifying statutory topic/theme/key sentences, journalism/advertising vocabulary, antonyms (including nearly opposite meanings), and informal-letter writing. The row is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim all strands were taught. Source wording is retained."
       }
+    },
+    {
+      "id": "SS1-SRC-50fa9b1eb2fd-R031",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Comprehension/Speaking skill.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+        "explanation": "Unique first-topic anchor for the tenth scheme data row. The original DOCX row contains four Week 10 strands: comprehension/speaking skills, the /ɪ/–/iː/ contrast, argumentative writing on indiscipline and pronoun reference to the three persons. It is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim every strand was taught. Source wording is retained."
+      }
     }
   ],
   "lessons": [
@@ -20014,6 +20026,342 @@
           "explanation": "The source identifies two exercises and pages but includes neither question set, answer key nor marks; the edition is not specified. No questions or answers are inferred."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 10: comprehension/speaking skills; speech work—contrast /i/ and /i:/; argumentative essay on indiscipline and students’ examination performance; structure—pronoun references to the three persons in English.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R031"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The original DOCX scheme row contains these four strands. Rule R031 classifies the complete row as SCHEME_ONLY; this marker records the scheme, not teaching coverage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-SO01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: comprehension and speaking skills.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names comprehension and speaking skills."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Week Ten, Section A, “Comprehension: Speaking Skills, Communicable Sequence”",
+          "explanation": "The Week 10 body gives a short synopsis of a dialogue and an instruction to answer questions, but does not teach a speaking sequence or provide the actual dialogue. The T3 reading supplement supports general reading comprehension only, not the speaking-skill objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-SO02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: speech work, contrasting the short /ɪ/ vowel and long /iː/ vowel.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names the /i/ versus /i:/ speech contrast; the original body uses nonstandard IPA glyphs."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: vowel chart, “Compare ship/sheep” paragraph and keyed practice Q2–Q3",
+          "explanation": "The same-term phonetics supplement uses consistent IPA /ɪ/ and /iː/, explains that quality as well as duration matters, gives a direct contrast and supplies keyed practice. It provides an equivalent for the core scheme objective; the source's full spelling-variant and word-pair lists are indexed separately as partial."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-SO03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: argumentative essay writing on “Indiscipline is responsible for the poor performances of students in examinations”.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names a specific argumentative essay topic."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Week Ten, Section C, “Essay Writing: Argumentative”, outline, evaluation, reading assignment, weekend assignment and THEORY",
+          "explanation": "The Week 10 body gives a short outline but no worked plan, model paragraphs, supporting evidence, counterargument or marking rubric for the assigned topic. Existing T2/T1 essay supplements teach generic argument structure and keyed practice, but do not complete the specific Week 10 prompt."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-SO04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: pronoun references to the three persons in English (first, second and third person).",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names pronoun reference to the three persons, but there is no corresponding Week 10 teaching section."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1: opening “Pronoun types” paragraph and keyed practice Q1–Q2",
+          "explanation": "The T1 supplement identifies personal pronouns as referring to the speaker, the person spoken to, or the person/thing spoken about, and lists the personal-pronoun forms. It does not explicitly label first/second/third person or test the three-person distinction, so support is partial."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-CR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comprehension/speaking activity: understand the “Communicable Sequence” dialogue about Titi's parents, their proposed husband, and Titi's own choice.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Week Ten, Section A, “Comprehension: Speaking Skills, Communicable Sequence”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Week Ten, Section A, “Comprehension: Speaking Skills, Communicable Sequence”",
+          "explanation": "The source gives only a synopsis of a dialogue from Effective English pages 99–100. It describes the conflict and includes a short quoted bride-price phrase, but the dialogue itself and any speaking sequence are absent; the synopsis is not a substitute for the passage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-CR02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: answer the questions under the Titi dialogue passage.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Week Ten, Section A, “Comprehension: Speaking Skills, Communicable Sequence”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Section A evaluation “Answer the questions under the passage”",
+          "explanation": "The passage and its questions are not supplied in the teacher-note DOC or package. No questions, answers or marks are invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-CR03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Effective English, page 101.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Week Ten, Section A, “Comprehension: Speaking Skills, Communicable Sequence”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:bf4b7498ba4895c342a2735abd813ad56688a94729847acd857246e50ea90cc1 :: Section A “READING ASSIGNMENT”",
+          "explanation": "The assigned textbook page and edition are absent from the supplied archive and package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-PH01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Short vowel /ɪ/: source spelling variants and examples (a, e, u, ei, ie, y, o and i).",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Week Ten, Section B, “Speech Work: Contrasting /I/ and /i:/”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Section B, “/I/ is a short vowel” and its spelling-variant list",
+          "explanation": "The source lists adage/village/palace, Peter/between/English, busy/minutes, foreign, chief/thief, myth, women and sit/pin/bin. Some examples are misclassified or require accent/dictionary checking; chief and thief contain /iː/, not /ɪ/."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: pure-vowel chart and examples",
+          "explanation": "The T3 supplement supplies a consistent British teaching model and correct IPA notation, but does not validate or reproduce the full Week 10 spelling list."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-PH02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Long vowel /iː/: source spelling variants and examples (a, ae, e, ee, ea, ei, i, ie, oe, ui and eo).",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Week Ten, Section B, “Speech Work: Contrasting /I/ and /i:/”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Section B, “/i:/ is a long vowel” and its spelling-variant list",
+          "explanation": "The source gives quay, Caesar/aesthetic, eve/procedure, feed/weed/seed, neat/peak/real, receive/deceive, machine/prestige, relieve/believe, amoeba/oesophagus, suite and people. The supplement teaches the long-vowel symbol and a consistent sound chart, but not this complete source inventory."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-PH03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Contrast the source minimal pairs for /ɪ/ and /iː/: hit/heat, hill/heel, sit/seat, sin/seen, dim/deem, will/wheel, list/least, dip/deep, lip/leap, fill/feel and bitch/beach.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Week Ten, Section B, “Speech Work: Contrasting /I/ and /i:/”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Section B, “Contrast” table containing eleven pairs",
+          "explanation": "The source supplies eleven contrast pairs. The T3 phonetics supplement explicitly models ship/sheep and keyed practice for that contrast, but does not teach or test the complete Week 10 pair list."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-PH04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: find five words of the learner's own that contrast /ɪ/ and /iː/.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Week Ten, Section B, “Speech Work: Contrasting /I/ and /i:/”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Section B evaluation after the contrast-pair table",
+          "explanation": "The source gives an open-ended five-word task with no model set, answer key or marks. The supplement's keyed practice checks selected contrasts but does not assess this five-word task or certify oral pronunciation."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-PH05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Standard Speech 10 Book, Diction in English Course, page 11, vowel sounds.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Week Ten, Section B, “Speech Work: Contrasting /I/ and /i:/”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 :: Section B “Reading Assignment”",
+          "explanation": "The named book/page and edition are not in the supplied archive or package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-ES01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Argumentative essay outline: state the topic, define the subject/indiscipline, develop the body paragraphs and conclude; the source says not to use a greeting.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Week Ten, Section C, “Essay Writing: Argumentative”, outline, evaluation, reading assignment, weekend assignment and THEORY",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Section C, “Outline”, items i–vi",
+          "explanation": "The source gives a six-step outline, but item v is an incomplete fragment (“In the second to the fifth paragraph”) and no argument/reason/evidence sequence is explained. The generic essay supplements teach claims, reasons, examples, counterarguments and rebuttal, but do not complete this source outline or its exact topic."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-ES02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write an argumentative essay on “Indiscipline is responsible for poor performances of students in examination”.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Week Ten, Section C, “Essay Writing: Argumentative”, outline, evaluation, reading assignment, weekend assignment and THEORY",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Section C evaluation with the indiscipline topic",
+          "explanation": "The source supplies the title but no worked plan, model response, evidence requirements, marks or rubric. Existing supplements provide generic argumentative structure, not a marked response to this prompt."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-ES03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: writing argumentative essays, Effective English pages 28–30.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Week Ten, Section C, “Essay Writing: Argumentative”, outline, evaluation, reading assignment, weekend assignment and THEORY",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Section C “READING ASSIGNMENT”",
+          "explanation": "The assigned textbook pages and edition are absent from the supplied archive and package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-ES04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: Effective English page 166, Practice 2 and Practice 3.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Week Ten, Section C, “Essay Writing: Argumentative”, outline, evaluation, reading assignment, weekend assignment and THEORY",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Section C “WEEKEND ASSIGNMENT”",
+          "explanation": "The source gives only a page and practice numbers; the exercises, edition, answer key and marks are not supplied. No questions or answers are inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-ES05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Theory/debate task: write an argument for or against “Co-education should be encouraged in secondary schools”.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Week Ten, Section C, “Essay Writing: Argumentative”, outline, evaluation, reading assignment, weekend assignment and THEORY",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:63007d70e7ac68adb5a131cfd7d9136051aee76ee48d7808ca58b9842b5fad15 :: Section C “THEORY” prompt following the weekend assignment",
+          "explanation": "The source gives a second debate topic but no plan, model arguments, evidence, marking criteria or marks. Existing supplements provide generic argumentative support only."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W10-PR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-only structure objective: pronoun reference to first, second and third person in English.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 10 (zero-based row index 10), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The three-person pronoun objective appears in the Week 10 scheme row but has no corresponding Week 10 body section."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1: personal-pronoun definition and keyed practice Q1",
+          "explanation": "The T1 supplement lists personal pronouns and distinguishes speaker, addressee and person/thing spoken about, but does not name the first/second/third person labels or provide a keyed exercise that classifies them."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -21660,6 +22008,94 @@
       "required_action": "Obtain the exact authorised edition and both practice pages with an authoritative key/mark allocation, or author a labelled original parallel exercise with defensible questions, keyed answers and complete marking. Do not infer the missing items.",
       "affected_ids": [
         "ENGLISH-T3-W09-ANT05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-READING-SPEAKING-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 10 provides only a synopsis of the Titi dialogue and the instruction to answer questions; the actual Effective English dialogue on pages 99–100 is absent. “Communicable Sequence” is named but no speaking-sequence teaching, model exchange or oral task is supplied.",
+      "required_action": "Obtain the authorised dialogue and its page/edition details, or obtain owner acceptance of a clearly labelled original equivalent. Add a taught speaking-sequence activity and keyed comprehension questions with marks; do not invent the missing dialogue or its questions.",
+      "affected_ids": [
+        "ENGLISH-T3-W10-SO01",
+        "ENGLISH-T3-W10-CR01",
+        "ENGLISH-T3-W10-CR02",
+        "ENGLISH-T3-W10-CR03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-PHONETICS-SCOPE",
+      "kind": "CONTENT",
+      "detail": "SUP-SS1-ENGLISH-PHONETICS-T3 supports the core /ɪ/–/iː/ contrast and correct notation, but does not teach the complete Week 10 spelling-variant lists or eleven minimal pairs. The source misclassifies chief/thief under /ɪ/ and has further examples requiring dictionary/accent checking; its five-word evaluation has no key or marks.",
+      "required_action": "Complete the source-specific contrast list with dictionary-checked IPA and accent notes, correct the misclassified examples in a clearly labelled replacement (not in source bytes), and add keyed, marked practice. Keep oral verification separate from written symbol recognition.",
+      "affected_ids": [
+        "ENGLISH-T3-W10-PH01",
+        "ENGLISH-T3-W10-PH02",
+        "ENGLISH-T3-W10-PH03",
+        "ENGLISH-T3-W10-PH04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-ARGUMENTATIVE-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 10's argumentative outline is incomplete (item v is a fragment), and neither the indiscipline essay nor the co-education theory task has a worked plan/model, evidence guidance, marks or rubric. Existing T1/T2 supplements teach general argument structure only.",
+      "required_action": "Author original same-term argumentative teaching that completes the outline, distinguishes claim/reasons/evidence/counterargument/rebuttal, and supplies worked plans plus keyed/marked criteria for both the indiscipline and co-education prompts. Preserve source wording and do not invent textbook content.",
+      "affected_ids": [
+        "ENGLISH-T3-W10-SO03",
+        "ENGLISH-T3-W10-ES01",
+        "ENGLISH-T3-W10-ES02",
+        "ENGLISH-T3-W10-ES05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-PRONOUN-PERSON-GAP",
+      "kind": "CONTENT",
+      "detail": "The Week 10 scheme includes pronoun reference to the three persons, but the Week 10 teaching body has no pronoun section. The T1 pronoun supplement describes speaker/addressee/person spoken about and lists personal pronouns, but does not explicitly label first, second and third person or test the distinction.",
+      "required_action": "Add original same-term teaching that labels first-, second- and third-person pronouns, shows subject/object forms and reference in context, and supplies keyed, marked practice. Bind the T1 pronoun lesson additively only for its demonstrated support.",
+      "affected_ids": [
+        "ENGLISH-T3-W10-SO04",
+        "ENGLISH-T3-W10-PR01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 10 references the Effective English dialogue on pages 99–100, page 101 reading assignment, argumentative-writing pages 28–30, and Standard Speech 10 Book / Diction in English Course page 11. These materials and edition details are not supplied.",
+      "required_action": "Obtain the authorised books/pages with edition details and any official questions/keys, or record owner acceptance of labelled original equivalents. Do not reproduce or claim to have inspected missing textbook pages.",
+      "affected_ids": [
+        "ENGLISH-T3-W10-CR02",
+        "ENGLISH-T3-W10-CR03",
+        "ENGLISH-T3-W10-PH05",
+        "ENGLISH-T3-W10-ES03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-COR-023-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "ENGLISH-BODY-085 is marked IMPLEMENTED_EQUIVALENT by COR-023. SUP-SS1-ENGLISH-PHONETICS-T3 correctly teaches the core /ɪ/–/iː/ contrast, but does not reproduce the Week 10 spelling-variant inventory, all eleven contrast pairs or the open-ended five-word evaluation.",
+      "required_action": "Owner to review COR-023's row-level replacement scope/status and decide whether the correction should be narrowed or additional source-specific teaching recorded. Preserve the original body and correction; objective-level partial statuses remain authoritative for the uncovered lists and evaluation.",
+      "affected_ids": [
+        "ENGLISH-BODY-085",
+        "ENGLISH-T3-W10-SO02",
+        "ENGLISH-T3-W10-PH01",
+        "ENGLISH-T3-W10-PH02",
+        "ENGLISH-T3-W10-PH03",
+        "ENGLISH-T3-W10-PH04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W10-WEEKEND-ASSIGNMENT",
+      "kind": "CONTENT",
+      "detail": "The Week 10 weekend assignment points to Effective English page 166, Practice 2 and Practice 3, but includes neither exercise text nor answer key/marks and does not identify the edition.",
+      "required_action": "Obtain the exact authorised edition and both practice pages with an authoritative key/mark allocation, or author a labelled original parallel assignment with defensible questions, keyed answers and complete marking. Do not infer the missing items.",
+      "affected_ids": [
+        "ENGLISH-T3-W10-ES04"
       ],
       "blocks_delivery": true
     }
