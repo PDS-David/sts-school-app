@@ -1776,6 +1776,173 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W09-VISCOSITY",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Viscosity, fluid resistance and terminal velocity",
+      "objectives": [
+        "Define viscosity as internal resistance to flow and distinguish it from density.",
+        "Explain fluid friction/drag and the coefficient/unit of dynamic viscosity at an introductory level.",
+        "Describe how fluid type and temperature affect viscosity.",
+        "Explain terminal velocity using the balance of weight, upthrust and viscous drag.",
+        "Identify practical applications of viscosity and plan a fair comparison investigation."
+      ],
+      "body": "VISCOSITY\nViscosity is the internal resistance of a fluid to flow. It describes how strongly adjacent layers of a liquid or gas resist sliding past one another. A fluid with high viscosity flows slowly under the same conditions; a fluid with low viscosity flows more easily. For example, honey is more viscous than water at the same room temperature.\n\nVISCOSITY AND FLUID FRICTION\nWhen a fluid flows, neighbouring layers exert frictional forces on one another. A body moving through a fluid also experiences drag, which acts opposite to its motion relative to the fluid. Viscosity is one important cause of this resistance.\n\nThe coefficient of dynamic viscosity, η (eta), measures a fluid's resistance to shearing flow. For a Newtonian fluid:\nshear stress = η × velocity gradient.\nThe SI unit of dynamic viscosity is pascal-second (Pa·s), which is equivalent to N·s/m². At this level, use the coefficient as a measure of how readily a fluid flows; detailed calculations with the velocity gradient may be treated as an extension.\n\nFACTORS AFFECTING VISCOSITY\n- The nature of the fluid: different liquids and gases have different viscosities.\n- Temperature: for most liquids, viscosity decreases as temperature increases, so warm oil flows more easily than cold oil. For gases, viscosity generally increases as temperature rises.\n- Composition or concentration: dissolved or suspended materials can change a fluid's resistance to flow.\n\nVISCOSITY AND TERMINAL VELOCITY\nA body falling through a fluid experiences its weight downwards, upthrust upwards and viscous drag opposite to its motion. As the body speeds up, the drag usually increases. Eventually the upward drag and upthrust can balance the downward weight. The resultant force then becomes zero and the body continues at constant speed called terminal velocity.\n\nAt terminal velocity:\nweight = upthrust + viscous drag.\nThe body is still moving, but its acceleration is zero because the forces balance.\n\nAPPLICATIONS OF VISCOSITY\n- Engine oil is selected to lubricate moving parts while flowing through the engine.\n- Thick lubricants remain between surfaces and reduce wear.\n- Paint and printing ink are made to flow and spread at suitable rates.\n- Food products such as honey and syrup are handled according to their flow properties.\n- Shock absorbers use resistance to fluid flow to reduce unwanted bouncing.\n- Knowledge of blood viscosity is important in understanding how blood flows through vessels.\n\nSimple comparison investigation\nPour equal volumes of water and cooking oil through the same clean funnel, one at a time, at the same temperature. Measure the time each takes to flow into a measuring cylinder. Keep the funnel, volume and temperature the same. The fluid that takes longer to flow has the greater viscosity under those conditions. Repeat the test and average the times. Do not taste laboratory samples and wipe spills promptly.\n\nVISCOSITY IS NOT DENSITY\nDensity is mass per unit volume. Viscosity is resistance to flow. A fluid may be dense without being highly viscous, or viscous without being especially dense. They are different physical properties and have different units.",
+      "body_sha256": "e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e",
+      "practice": [
+        {
+          "id": "PHYS-T1-W09-Q01",
+          "question": "Define viscosity and state which is more viscous at room temperature: honey or water.",
+          "answer": "Viscosity is the internal resistance of a fluid to flow. Honey is more viscous than water at room temperature.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines viscosity as internal resistance to flow.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies honey as more viscous than water.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W09-Q02",
+          "question": "Distinguish between density and viscosity.",
+          "answer": "Density is mass per unit volume, measured in kg/m³. Viscosity is a fluid's resistance to flow, with dynamic viscosity measured in Pa·s.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines density as mass per unit volume.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines viscosity as resistance to flow.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W09-Q03",
+          "question": "State two factors that affect viscosity and explain the effect of increasing temperature on most liquids.",
+          "answer": "Factors include the nature/composition of the fluid and temperature. For most liquids, viscosity decreases as temperature increases.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States the nature/composition of the fluid as a factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "States temperature as a factor.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that most liquids become less viscous as temperature rises.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W09-Q04",
+          "question": "Explain terminal velocity for a body falling through a fluid and state the force balance at that point.",
+          "answer": "As the body speeds up, viscous drag increases. At terminal velocity, acceleration is zero and weight is balanced by upthrust plus viscous drag: weight = upthrust + drag.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Explains that drag increases as the body speeds up.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that acceleration is zero and speed is constant.",
+              "marks": 1
+            },
+            {
+              "criterion": "States weight = upthrust + viscous drag.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W09-Q05",
+          "question": "Give two practical applications where viscosity is important.",
+          "answer": "Examples include selecting engine lubricants, paint/ink flow, shock absorbers, food processing and blood flow.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Gives one valid application.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a second distinct valid application.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W09-Q06",
+          "question": "Describe a fair test for comparing the viscosity of water and cooking oil using a funnel and measuring cylinder.",
+          "answer": "Use equal volumes at the same temperature and the same clean funnel. Pour each fluid separately, measure the time taken to flow, repeat and average. The fluid taking longer to flow is more viscous under those conditions.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Controls volume and temperature.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the same funnel and measures flow time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains comparison/repeats and identifies longer time as higher viscosity.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W09-Q07",
+          "question": "State the SI unit of dynamic viscosity and write the relation between shear stress and velocity gradient for a Newtonian fluid.",
+          "answer": "The SI unit is pascal-second (Pa·s). Shear stress = η × velocity gradient.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States Pa·s.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives shear stress = η × velocity gradient.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Fluids at rest and in motion | SS1 Physics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 Physics; learning outcomes include viscosity and its applications.",
+          "url": "https://inspire.education.gov.ng/lessons/486/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. This is an independently authored lesson; the official page is cited to corroborate SS1 scope only. No media reuse is claimed.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Fluids at rest and in motion | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "SS1 Physics 1st Term Lesson Note (public PDF copy)",
+          "locator": "Public close-equivalent PDF; assignment lines 915–918 references viscosity and terminal velocity; the PDF is not verified byte-identical to the archive member.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-1st-Term-Lesson-Note-pdf.pdf",
+          "rights": "No wording, diagrams, examples or questions are copied. The lesson is independently authored; the PDF is cited as a close-equivalent topic reference only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Schoolgist, “SS1 Physics 1st Term Lesson Note” (public PDF copy), accessed 2026-11-08; not asserted identical to the archive member."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -3316,6 +3483,124 @@
           "explanation": "The public copy uses a different week label. It is not verified byte-identical to the archive member."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W09-VISCOSITY-DEFINITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Viscosity as internal resistance of a fluid to flow; distinction from density.",
+      "objective_locator": "1st Term scheme topic Viscosity; repository parsed row 8, label WEEK TEN, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W09-VISCOSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY, body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessments."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Fluids at rest and in motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes explicitly include viscosity and applications."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W09-DYNAMIC-VISCOSITY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Coefficient of dynamic viscosity and SI unit Pa·s.",
+      "objective_locator": "1st Term scheme topic Viscosity; repository parsed row 8, label WEEK TEN, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W09-VISCOSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY, body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessments."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Fluids at rest and in motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes explicitly include viscosity and applications."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W09-VISCOSITY-FACTORS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Effects of fluid type, composition and temperature on viscosity.",
+      "objective_locator": "1st Term scheme topic Viscosity; repository parsed row 8, label WEEK TEN, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W09-VISCOSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY, body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessments."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Fluids at rest and in motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes explicitly include viscosity and applications."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W09-FLUID-DRAG-TERMINAL-VELOCITY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Fluid drag and terminal velocity as a balance of weight, upthrust and viscous drag.",
+      "objective_locator": "1st Term scheme topic Viscosity; repository parsed row 8, label WEEK TEN, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W09-VISCOSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY, body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessments."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Fluids at rest and in motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes explicitly include viscosity and applications."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W09-VISCOSITY-APPLICATIONS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Practical applications and a fair comparison investigation.",
+      "objective_locator": "1st Term scheme topic Viscosity; repository parsed row 8, label WEEK TEN, 4,556 characters, body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W09-VISCOSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W09-VISCOSITY, body SHA-256 e7ed9d6aa7d1af1f5dde0b5d2bf4a5dc315d627b93881173037d4850b78d0e4e; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessments."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Fluids at rest and in motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes explicitly include viscosity and applications."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W09-SOURCE-ROW-RECONCILIATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Original source-row mapping for Viscosity.",
+      "objective_locator": "Repository parsed row 8, label WEEK TEN, title “VISCOSITY”; original body SHA-256 101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Repository queue PHYS-WK-T1-W09: parsed row 8, WEEK TEN, title VISCOSITY.",
+          "explanation": "The archive's registered row identity is retained."
+        },
+        {
+          "locator": "Official FME Inspire lesson and public close-equivalent PDF assignment lines 915–918.",
+          "explanation": "These references corroborate viscosity/terminal velocity scope, but do not verify the exact original row content."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3771,6 +4056,30 @@
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
         "PHYS-FACT-T1-W08-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W09-ORIGINAL-ROW-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The repository registers parsed row 8 as WEEK TEN, Viscosity. The original legacy .doc bytes/text are not accessible in this execution session, so the exact subtopics, equations, examples, figures and assignments cannot be reconciled against the supplement.",
+      "required_action": "Inspect original parsed row 8 when the member is accessible; record the exact viscosity definition, any coefficient formula, temperature effects, terminal-velocity treatment, figures, exercises and answer/marking keys. Reconcile with the independent supplement without claiming source verification.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
+        "PHYS-WK-T1-W09",
+        "PHYS-FACT-T1-W09-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W09-FIGURES-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "The original archive row's figure inventory and assessment/answer-key evidence are not available in this execution session. The new supplement has its own fair investigation and keyed practice, but this does not verify the original source's figures or assessment.",
+      "required_action": "Use PHYS-VIS-T1 and the original-row reconciliation task to inspect original diagrams/objects and exercises; add a bounded asset or answer-key correction only for confirmed gaps.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
+        "PHYS-VIS-T1",
+        "PHYS-FACT-T1-W09-SOURCE-RECONCILIATION"
       ],
       "blocks_delivery": false
     }
