@@ -34,21 +34,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 9,
+    "FACTUAL_DEPENDENCY": 10,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 9,
+    "LESSON": 10,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 22,
-    "BLOCKED": 12,
-    "PENDING": 47
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
+    "BLOCKED": 13,
+    "PENDING": 46
   },
-  "total": 81,
+  "total": 83,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -496,8 +496,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK SEVEN', title \"DENSITY & RELATIVE DENSITY\", 4116 characters, body sha256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six scheme-level objective entries for density, density determination, relative density, density-bottle methods for solids/liquids and hydrometer use, bound to original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY (body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799) with seven keyed questions and exact marking totals. The repo source row is parsed row 5 labelled WEEK SEVEN, while the public close-equivalent PDF labels the density section WEEK SIX at lines 612–620; the PDF is not verified identical to the archive. Original-row week label, formula/figure/assessment reconciliation remains open; no source-row change is made. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2775,6 +2775,71 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked 2026-11-08: the current execution session cannot access the original legacy .doc bytes/text. A public close-equivalent PDF shows a second section beginning at line 612, but it is not verified byte-identical and conflicts with the repository's parsed row 5 label/title. The scheme objectives are covered by an original supplement, but exact source boundary and source-row reconciliation cannot be claimed.",
       "completion_condition": "Inspect original DOC and record exact section boundaries, row mapping, formulas, units, figures, assignments and answer/marking coverage; reconcile source version differences without splitting/merging rows absent source evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W06-DENSITY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN parsed row 5: Density & Relative Density",
+      "objective": "Create an original SS1 lesson covering density, relative density, volume determination, density-bottle methods for solids/liquids and hydrometer use, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W06-DENSITY.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W06-DENSITY (body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799) with five objectives, three worked examples, seven keyed questions and 22 total marks; marking totals checked. Provenance includes a public close-equivalent SS1 Physics lesson note and the NERDC SSS1 curriculum portal; no external wording, diagrams or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has accurate density/RD formulae and units, safe measurement methods, worked examples, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W06-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK SEVEN parsed row 5, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
+      "objective": "Inspect the original archive member and reconcile the original density/relative-density row label, full content, figures, formulae, classwork, assignment and answer/marking evidence with the public close-equivalent copy and the combined Week Five/Six row.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W06-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the original legacy .doc bytes/text are not accessible in this execution session. The public close-equivalent PDF shows a Week Six density section, while the repository registers the row as Week Seven. The scheme topic is covered by an independent supplement, but original-row label/content reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original row and verify exact week label, subtopics, formulae/units, figures, exercises and answer/marking coverage; reconcile public-copy discrepancy without altering source data absent evidence."
     }
   ],
   "review": {
@@ -2798,10 +2863,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T1-W05-W06 objectives and original supplement added; public close-equivalent PDF shows a second section at line 612 but conflicts with repository row 5, so original row boundary remains blocked pending source DOC access. Testing deferred by owner."
+    "notes": "PHYS-WK-T1-W06 density and relative-density supplement added; public close-equivalent PDF labels the section Week Six while repo row 5 is Week Seven, so original row reconciliation remains blocked pending source DOC access. Testing deferred by owner."
   },
   "next_runnable": [
-    "PHYS-WK-T1-W06",
     "PHYS-WK-T1-W07",
     "PHYS-WK-T1-W08",
     "PHYS-WK-T1-W09",
@@ -2839,7 +2903,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W06",
     "PHYS-WK-T1-W07",
     "PHYS-WK-T1-W08",
     "PHYS-WK-T1-W09",
