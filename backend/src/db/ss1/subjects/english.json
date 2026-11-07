@@ -734,6 +734,18 @@
         "locator": "word-extractor 1.0.4 getBody(), scheme row 7",
         "explanation": "Unique scheme-row anchor; metadata only, not teaching; no source text removed."
       }
+    },
+    {
+      "id": "SS1-SRC-a00657d42196-R035",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-a00657d42196",
+      "source_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef",
+      "anchor": "Comprehension/ Reading Skills- Page 60. More on Consonant Sounds\nStructure: Adjectival Clause. Argumentative- \"Patriotism Enhances the Growth of a Nation\"",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), preamble scheme-of-work table, row 8 (two lines after the tab following '8')",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text and in no parsed WEEK body; the WEEK EIGHT heading and topic lines are in upper case). Metadata only, not teaching; no source text removed."
+      }
     }
   ],
   "lessons": [
@@ -13040,6 +13052,327 @@
           "explanation": "External questions/answers absent; no textbook exercise fabricated."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-SCHEME",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Week 8 scheme row (comprehension/reading skills; more on consonant sounds; structure: adjectival clause; argumentative essay)",
+      "objective_locator": "preamble scheme-of-work table, row 8 (anchor of rule SS1-SRC-a00657d42196-R035)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196-R035"
+      ],
+      "evidence": [
+        {
+          "locator": "preamble scheme-of-work table, row 8",
+          "explanation": "The scheme row names four objective groups: comprehension/reading skills (page 60), more on consonant sounds, structure: adjectival clause, and an argumentative essay on 'Patriotism Enhances the Growth of a Nation'. It lies outside every parsed row, so rule SS1-SRC-a00657d42196-R035 classifies it SCHEME_ONLY. The teaching bodies are ENGLISH-BODY-026 to 028. The two do not match: the WEEK EIGHT topic line and body teach the adjective and the adjectival PHRASE (not the clause) and contain no consonant-sound teaching at all, while the body adds a word-stress revision set, a synonym weekend assignment and a debate theory question that the scheme row does not name. Rows 9 to 11 of the table are not classified by this item."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-CO01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Comprehension/reading skills: explanation of a passage (page 60, Section C), 'The Jews' summary",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1180-1186; UTF-8 joined-line SHA256 e7cb7f3329738a18e5b39774f704fe462e73e72cb580cf7a7c65f356f7dec6b6; SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333 :: from 'A. COMPREHENSION: Reading Skills:' to before 'EVALUATION'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1180-1186; UTF-8 joined-line SHA256 e7cb7f3329738a18e5b39774f704fe462e73e72cb580cf7a7c65f356f7dec6b6; SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333",
+          "explanation": "The row cites page 60, Section C of an unnamed book and gives a five-sentence summary of a passage about the Jews (descent from Abraham, a covenant, slavery in Egypt, settlement and travel, belief in one God). The passage itself is not in the source and no title or edition is named for the book. The summary is not teaching of a reading skill and no skill is named, so no skimming, scanning or inference objective is inferred. The existing reading supplement SUP-SS1-ENGLISH-READING-T1 is not bound to this row by any correction. The summary states religious and historical claims; whether such a passage is suitable for the school is an owner decision and nothing in the summary is verified or endorsed here."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-CO02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Comprehension evaluation: answer the questions below the passage (page 61)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1188-1189; UTF-8 joined-line SHA256 24e41920468dc1be30f2d5130929c3b0a4a843619ac2104ab1c7939319c7f157; SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333 :: from 'EVALUATION' to before 'READING ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1188-1189; UTF-8 joined-line SHA256 24e41920468dc1be30f2d5130929c3b0a4a843619ac2104ab1c7939319c7f157; SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333",
+          "explanation": "The evaluation points to questions on page 61. The questions and any answers are not in the source, so the evaluation cannot be delivered or marked and nothing is inferred about it."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-CO03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: Unit 3, page 54 of Effective English",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1191-1192; UTF-8 joined-line SHA256 5e4bd3f87eb0c18e0b1d05aa2c8ba64123c5aebf78e15123873244c13e2b1660; SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333 :: from 'READING ASSIGNMENT' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1191-1192; UTF-8 joined-line SHA256 5e4bd3f87eb0c18e0b1d05aa2c8ba64123c5aebf78e15123873244c13e2b1660; SS1-SRC-a00657d42196:BODY:4a5054c9d1bc21d63caa19cb11dd852ccfbc849773f940a94591d33c523d9333",
+          "explanation": "The assignment names Unit 3, page 54 of Effective English. The page is not in the source and no edition is identified; the scheme REFERENCES list 'Effective English Book .1-Michael Montgomery et al.' without an edition or year."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Adjective: definition (qualifies or modifies a noun or pronoun) and suffix recognition (-able, -ful)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1196-1200; UTF-8 joined-line SHA256 c2d7499345f473a9ea47221d46f6cef602ba2f1e6f39cd61ce23462112a1ade3; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea :: from 'Definition of Adjective' to before 'Adjectival Phrase'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1196-1200; UTF-8 joined-line SHA256 c2d7499345f473a9ea47221d46f6cef602ba2f1e6f39cd61ce23462112a1ade3; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+          "explanation": "The source defines an adjective as a word that qualifies or modifies a noun or pronoun and gives two suffix examples (-able: drinkable; -ful: successful). The replacement SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1 (correction SS1-02-english-COR-004) does not define the adjective or name any adjective suffix. SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1 describes adjectives as describing or limiting a noun, teaches attributive and predicative position, and forms adjectives with -able/-ible among others, but is not bound to this row, does not mention -ful and does not say that an adjective can qualify a pronoun. Partly met elsewhere, not bound, so the objective stays PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Adjectival phrase: definition (a phrase doing the work of an adjective)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1202-1203; UTF-8 joined-line SHA256 003ba6e7432791f989fe15cbf28099fc0f3c0b45dcbbab103f196b0bfe875d40; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea :: from 'Adjectival Phrase' to before 'Examples'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1202-1203; UTF-8 joined-line SHA256 003ba6e7432791f989fe15cbf28099fc0f3c0b45dcbbab103f196b0bfe875d40; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+          "explanation": "The source defines the adjectival phrase as a phrase that qualifies or describes a noun or pronoun. The replacement supplement teaches the prepositional phrase and shows the book on the desk modifying book, but never defines an adjectival phrase and does not name the participial phrase. The replacement scope is narrower than the row."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Adjectival phrase: types and examples (prepositional, participial, single adjective) and their labels",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1204-1214; UTF-8 joined-line SHA256 e8ebd1a647c86a12fccec82a960eecf5a1601c4262d24e46aeb9a1fabdc31933; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea :: from 'Examples' to before 'Evaluation'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1204-1214; UTF-8 joined-line SHA256 e8ebd1a647c86a12fccec82a960eecf5a1601c4262d24e46aeb9a1fabdc31933; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+          "explanation": "Ten examples, of which eight are covered here and two (relative clauses) by AJ04. Prepositional phrases (with the red hair; of great wealth; of courage), participial phrases (bringing good news; standing over there; selling garri; made of cotton) and one single adjective (beautiful, labelled an adjective, not a phrase) are given with short labels. Source defects recorded and not repaired: 'goods news' for good news; the label names the head 'man' where the sentence has 'person'; the garri label is left unfinished; 'a person of courage' is labelled only 'adjectival phrase'. The replacement teaches only a prepositional phrase modifying a noun, so participial phrases as adjectival modifiers are untaught."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Relative clauses (who has strange appetites; that I gave her) labelled adjectival phrases: clause not phrase",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1212-1213; UTF-8 joined-line SHA256 304bc63de2534fc7f0c150215df2d76ac79506a6193332797ff9072099720c1b; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea :: from 'I know a girl who has strange appetites' to before 'The coat made of cotton'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1212-1213; UTF-8 joined-line SHA256 304bc63de2534fc7f0c150215df2d76ac79506a6193332797ff9072099720c1b; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+          "explanation": "Two source examples are relative clauses (own subject and finite verb) but are labelled adjectival phrases. This is the stated reason of correction SS1-02-english-COR-004."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1: body paragraph 3 (who won modifies girl) and practice Q2",
+          "explanation": "The replacement states that 'who won' is a relative clause modifying girl, not merely an adjective phrase, and Q2 (2 marks) asks for it. That covers this narrow clause-not-phrase point only; defining versus non-defining clauses, the relative pronouns and the 'that' relative are not taught."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Scheme-row objective: structure: adjectival clause",
+      "objective_locator": "Structure: Adjectival Clause (scheme row 8, inside the anchor of rule SS1-SRC-a00657d42196-R035)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "preamble scheme-of-work table, row 8, text 'Structure: Adjectival Clause'",
+          "explanation": "Named only in the scheme row. The WEEK EIGHT topic line and body teach the adjectival phrase; no body paragraph teaches or defines an adjectival clause (the clause appears only as two mislabelled examples, AJ04). SUP-SS1-ENGLISH-SENTENCE-KINDS-T1 and the replacement supplement mention relative clauses in passing but nothing teaches the adjectival clause as the Week 8 objective. Whether the objective is the clause, the phrase, or both is an owner decision."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ06",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Evaluation: underline the adjectival phrases in three sentences and state their functions",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1216-1220; UTF-8 joined-line SHA256 d733aede25969bd255e98804da4f61c8d13e04e8c2676dcec170b2e4e1082f6b; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea :: from 'Evaluation' to before 'READING ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1216-1220; UTF-8 joined-line SHA256 d733aede25969bd255e98804da4f61c8d13e04e8c2676dcec170b2e4e1082f6b; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+          "explanation": "Three items. Item 1 (the man in the sitting room) holds a prepositional phrase; items 2 and 3 (who reads his books; whose husband was arrested) hold relative clauses, so the task asks for phrases in two sentences that contain clauses. No key exists; no answer is inferred and the items are not repaired. The replacement supplement has no matching exercise."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-AJ07",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: Countdown in English, page 209",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1222-1223; UTF-8 joined-line SHA256 016f1298cfe9cf1633a320acb6821263314b19340e398f035b312e7a2eb3498d; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea :: from 'READING ASSIGNMENT' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1222-1223; UTF-8 joined-line SHA256 016f1298cfe9cf1633a320acb6821263314b19340e398f035b312e7a2eb3498d; SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea",
+          "explanation": "Names page 209 of 'Countdown in English'. The page is not in the source; the title and author are not reconciled with the scheme REFERENCES ('Countdown English - O. Ogunsanwo et al.'), and Weeks 6 and 7 cite 'Countdown by Evans'."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-ES01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Argumentative essay: definition (persuade the reader to agree with your view against another)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1227-1232; UTF-8 joined-line SHA256 ac4901f324286af104915016c4ee2cd34cec0a6203599d31a885c6198f6fb503; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'Explanation' to before 'Consider the following questions'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1227-1232; UTF-8 joined-line SHA256 ac4901f324286af104915016c4ee2cd34cec0a6203599d31a885c6198f6fb503; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "Defines the argumentative essay as one that presents a subject to persuade the reader to agree with the writer's point of view against another. SUP-SS1-ENGLISH-ESSAY-TYPES-T2 (Term 2, not bound to this row) teaches an argumentative essay as a defensible position with claim, reasons, a counterargument and a conclusion, with a model paragraph. It does not state the source's persuasion-against-another-view wording and belongs to Term 2."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-ES02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Argumentative essay: scope and method (define the subject clearly, then give points in support)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1231-1232; UTF-8 joined-line SHA256 abe8ff03025cfb1f559aeda281bf80e26306d5f3b3c0c6eef69121f48be62931; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'The scope and Methods' to before 'Consider the following questions'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1231-1232; UTF-8 joined-line SHA256 abe8ff03025cfb1f559aeda281bf80e26306d5f3b3c0c6eef69121f48be62931; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "The method says to define the subject of discussion so the reader is in no doubt, then give supporting points. The Term 2 essay-types supplement does not teach defining the subject as a first step. No Term 1 supplement teaches the method."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-ES03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Argumentative essay: three question forms (for or against; for and against; justify) and what each demands",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1233-1237; UTF-8 joined-line SHA256 7ba73cb84318da2dd0856402f416631efafc4c64786d4070ba797e6dc7c5d612; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'Consider the following questions' to before 'EVALUATION'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1233-1237; UTF-8 joined-line SHA256 7ba73cb84318da2dd0856402f416631efafc4c64786d4070ba797e6dc7c5d612; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "Three co-education essay questions are given: either for or against (a free choice), both for and against, and to justify a stated side. The closing sentence is inconsistent with them: it says one side is required in (i) and (ii) yet also says (ii) demands both sides, and 'there is no such in three'. The extracted text carries no list numbers, so which question each label points to is not shown and the original list structure was not rendered in this task. On the text, one-side essays are the first and third forms and the two-sided essay is the second. This is recorded as a source inconsistency and nothing is repaired. No supplement teaches the three forms."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-ES04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Essay evaluation: argumentative essay, 'Patriotism Enhances the Growth of a Nation' (justify form)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1239-1240; UTF-8 joined-line SHA256 9a6aa4fb8ad0e1f83950df9b97acdbc6b335e4d34c9349e55597d163d9422d2f; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'EVALUATION' to before 'READING ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1239-1240; UTF-8 joined-line SHA256 9a6aa4fb8ad0e1f83950df9b97acdbc6b335e4d34c9349e55597d163d9422d2f; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "The task asks for an essay setting out an argument to justify the topic, which is the one-side third form. No plan, model, marks or rubric exists in the source, and no supplement supplies them. The scheme row names the same topic."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-ES05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: Countdown, page 28",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1242-1243; UTF-8 joined-line SHA256 67e08a98a9867fe95bd9149973325af2ee0cb83ce478c2ff71ac4d51e9d433c3; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'READING ASSIGNMENT' to before 'GENERAL EVALUATION/ REVISION QUESTIONS:'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1242-1243; UTF-8 joined-line SHA256 67e08a98a9867fe95bd9149973325af2ee0cb83ce478c2ff71ac4d51e9d433c3; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "Names page 28 of 'Countdown' with no author or edition. The page is not in the source and the title is not reconciled with the scheme REFERENCES."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-RV01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "General evaluation/revision: five word-stress items (indoctrinate, refinery, phenomenal, consistency, acrobatic)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1245-1251; UTF-8 joined-line SHA256 a19aa9ce36c5a511940f8dec3b3e0ccc1c11800a2e2ce000b40bc0b83b86f0db; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'GENERAL EVALUATION/ REVISION QUESTIONS:' to before 'WEEKEND ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1245-1251; UTF-8 joined-line SHA256 a19aa9ce36c5a511940f8dec3b3e0ccc1c11800a2e2ce000b40bc0b83b86f0db; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "Five items ask for the correct stress pattern from four printed options. The set is not named in the Week 8 scheme row; the scheme names stress under Week 9 (speech work: stress). No key exists, and no answer is inferred. Option defects in the extracted text: item 4 option (c) 'Cons-sis-TEN-cy' (extra letter), option 4(d) has no bracket and unspaced capitals, and item 1 option (d) has stray spaces; the underlying document was not rendered to check them. SUP-SS1-ENGLISH-STRESS-T3 (Term 3) is not bound to this row."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-WA01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Weekend assignment: five nearest-in-meaning items (momentarily, stealthily, squarely, meticulous, satisfied)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1253-1259; UTF-8 joined-line SHA256 653a68d49de9196c617dd4d2569fc6d7404d77a79da2535d881eeb652be1b356; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'WEEKEND ASSIGNMENT' to before 'THEORY'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1253-1259; UTF-8 joined-line SHA256 653a68d49de9196c617dd4d2569fc6d7404d77a79da2535d881eeb652be1b356; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "Five items ask for the option nearest in meaning to the underlined words. The extraction drops the underlining, so the target word in each sentence is not shown by the text, and I have not rendered the document to confirm it. The vocabulary-in-context objective is not named in the Week 8 scheme row. No key exists; no answer is inferred. SUP-SS1-ENGLISH-MEANING-T1 teaches meaning but does not key these items."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-TH01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Theory: debate contribution for or against 'Participation of Women in Government Should be Encouraged'",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1261-1264; UTF-8 joined-line SHA256 080ea115dfdef18ee1f5419129fae22d732d948e5605fb0d1945e0cf0111f37d; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37 :: from 'THEORY' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1261-1264; UTF-8 joined-line SHA256 080ea115dfdef18ee1f5419129fae22d732d948e5605fb0d1945e0cf0111f37d; SS1-SRC-a00657d42196:BODY:7810e12aeb1510fe32377ff71d8d6b72fbe8d6cebd2220bf394e3d25985a2e37",
+          "explanation": "Asks for a debate contribution either for or against a motion. Debating is not named in the scheme row and no debate format, register, length, marking guide or model is given. SUP-SS1-ENGLISH-ESSAY-REPORT-T1 mentions debate once but does not teach a debate speech. The motion is a contested public question; any teaching content must let students argue either side and must not state a position."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W08-CS01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Scheme-row objective: more on consonant sounds",
+      "objective_locator": "preamble scheme-of-work table, row 8, text 'More on Consonant Sounds' (inside the anchor of rule SS1-SRC-a00657d42196-R035)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "preamble scheme-of-work table, row 8, text 'More on Consonant Sounds'",
+          "explanation": "Named only in the scheme row. No WEEK EIGHT paragraph teaches or practises a consonant sound, and the source does not say what 'more' adds to the Week 7 introduction. The consonant items printed just before WEEK EIGHT belong to the Week 7 revision. The Week 7 consonant work is indexed as ENGLISH-T1-W07-CS-* and is still a gap itself. What this objective should contain is an owner decision."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -13392,6 +13725,69 @@
       "required_action": "Visually inspect only Week 7 revision underlining in the original DOC, record the target sounds, then author clearly labelled original keyed consonant-matching items with explicit target letters. Do not guess source answers.",
       "affected_ids": [
         "ENGLISH-T1-W07-REVISION"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W08-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 8 refers to material that is not in the source document: the passage and questions on pages 60-61 of an unnamed book, Effective English Unit 3 page 54, Countdown in English page 209 and Countdown page 28. No edition is identified for any of them; the scheme REFERENCES give 'Effective English Book .1-Michael Montgomery et al.' and 'Countdown English - O. Ogunsanwo et al.'. Texts, questions and answers are not available.",
+      "required_action": "Owner to supply authorised extracts and answers with edition, or accept labelled equivalent activities (queue item ENG-FACT-W08-EXTERNAL-MATERIALS). Do not infer the missing content.",
+      "affected_ids": [
+        "ENGLISH-T1-W08-CO01",
+        "ENGLISH-T1-W08-CO02",
+        "ENGLISH-T1-W08-CO03",
+        "ENGLISH-T1-W08-AJ07",
+        "ENGLISH-T1-W08-ES05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W08-ADJECTIVE-GAP",
+      "kind": "CONTENT",
+      "detail": "The Week 8 adjective strand is only partly taught by the bound replacement (it teaches a prepositional phrase and a relative clause but no adjective definition, suffixes, adjectival-phrase definition or participial phrases). The adjectival clause named in the scheme row is untaught. The source labels two relative clauses as phrases, has typos in its examples, and its evaluation asks for phrases in sentences that include clauses; none of its items is keyed.",
+      "required_action": "Author original teaching of the adjective, the adjectival phrase (prepositional and participial) and the adjectival clause with correctly labelled examples and a keyed, marked exercise; keep the source rows unchanged and decide with the owner whether the objective is the phrase, the clause or both.",
+      "affected_ids": [
+        "ENGLISH-T1-W08-AJ01",
+        "ENGLISH-T1-W08-AJ02",
+        "ENGLISH-T1-W08-AJ03",
+        "ENGLISH-T1-W08-AJ05",
+        "ENGLISH-T1-W08-AJ06"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W08-ESSAY-GAP",
+      "kind": "CONTENT",
+      "detail": "Argumentative essay teaching is not available in Term 1: the definition and the define-then-argue method are only partly supported by the Term 2 supplement, the three question forms are untaught and the source's closing sentence about them is inconsistent, and the evaluation topic has no plan, model, marks or rubric.",
+      "required_action": "Author an original argumentative-essay lesson (definition, method, the three question forms, a worked plan and model paragraphs, a marked task with a scheme) for the topic without copying source text; record the source inconsistency.",
+      "affected_ids": [
+        "ENGLISH-T1-W08-ES01",
+        "ENGLISH-T1-W08-ES02",
+        "ENGLISH-T1-W08-ES03",
+        "ENGLISH-T1-W08-ES04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W08-CONSONANTS-GAP",
+      "kind": "CONTENT",
+      "detail": "The scheme row names more on consonant sounds but no Week 8 source paragraph teaches any consonant sound and the extent of 'more' is undefined; the Week 7 consonant introduction is itself an open gap.",
+      "required_action": "Owner to state what the Week 8 consonant objective adds, or accept that it extends the Week 7 consonant lesson (ENG-LES-T1-W07-CONSONANTS); then author the lesson with keyed practice.",
+      "affected_ids": [
+        "ENGLISH-T1-W08-CS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W08-REVISION-GAP",
+      "kind": "CONTENT",
+      "detail": "The revision set (five word-stress items), the weekend assignment (five nearest-in-meaning items) and the theory debate question have no keys and no teaching in the bound replacement; the underlining that marks the target words was lost in extraction and the option defects were not checked against a render; none is named in the scheme row.",
+      "required_action": "Author original keyed, marked revision items on word stress and meaning in context and a short debate-speech teaching task (either side allowed) without inferring answers for the source items; render the source privately first to read the underlining.",
+      "affected_ids": [
+        "ENGLISH-T1-W08-RV01",
+        "ENGLISH-T1-W08-WA01",
+        "ENGLISH-T1-W08-TH01"
       ],
       "blocks_delivery": true
     }
