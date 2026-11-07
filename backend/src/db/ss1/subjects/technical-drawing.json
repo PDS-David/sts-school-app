@@ -1297,6 +1297,26 @@
           "explanation": "The combined source row title aligns with the scheme topic, but the current repository evidence does not list the individual equal-area constructions, dimensions, labels, figures or exercise/answer details. Coverage remains PARTIAL until those are inspected."
         }
       ]
+    },
+    {
+      "id": "COV-TD-T2-W10-TANGENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Tangency involving circles, arcs and lines.",
+      "objective_locator": "WEEK TEN teaching row (parsed row 18), title “Tangency involving circles, arcs and lines.”; 8,427-character body SHA-256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863; original body SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863"
+      ],
+      "evidence": [
+        {
+          "locator": "Parsed row 18, source label WEEK TEN, title “Tangency involving circles, arcs and lines.”, body SHA-256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863.",
+          "explanation": "The teaching-row title directly matches the Week 10 scheme objective “Tangency” and identifies circles, arcs and lines as the relevant elements. The current repository evidence does not enumerate the individual constructions or their dimensions/labels, so detailed coverage remains PARTIAL."
+        },
+        {
+          "locator": "Scheme coverage COV-TD-T2-SCH-W10; parsed scheme row 9, line 29; rule SS1-SRC-af4868d2c026-R012 classifies the scheme row SCHEME_ONLY.",
+          "explanation": "The teaching row is the candidate source match for the Week 10 scheme objective. No source content is split or rewritten."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1601,6 +1621,39 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:865bb6bbb80331ca2182e97801040727e986ad3f9334b61018a33f239e4eb97a",
         "TD-KEY-W08-W09-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W10-CONSTRUCTION-DETAILS",
+      "kind": "CONTENT",
+      "detail": "The Week Ten row title confirms tangency involving circles, arcs and lines, but current repository evidence does not list the individual construction tasks, construction steps, dimensions, labels or exercises.",
+      "required_action": "Complete TD-FACT-W10-TANGENCY-CONSTRUCTIONS by inspecting the original teaching row and recording each tangency construction, geometry, dimensions, labels and exercise with exact source locators. Do not infer the tasks from the title.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
+        "TD-FACT-W10-TANGENCY-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W10-FIGURES",
+      "kind": "CONTENT",
+      "detail": "No figure-by-figure visual inventory or disposition is recorded for the Week Ten tangency lesson. The geometry of tangency constructions depends on accurate diagrams, radii, centres and contact points.",
+      "required_action": "Complete TD-VIS-W10 by inspecting every original figure, recording its purpose and exact dimensions/labels, and binding faithful assets with provenance or documenting precise exclusions.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
+        "TD-VIS-W10"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W10-ANSWER-KEYS",
+      "kind": "CONTENT",
+      "detail": "The current repository evidence does not establish whether all Week Ten tangency evaluation/assignment tasks have complete answer keys and marking criteria.",
+      "required_action": "Complete TD-KEY-W10-ANSWERS after construction and figure inspection; provide original keyed construction steps and positive integer marking criteria for every unkeyed task.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863",
+        "TD-KEY-W10-ANSWERS"
       ],
       "blocks_delivery": true
     }
