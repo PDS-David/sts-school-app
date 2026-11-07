@@ -518,6 +518,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R007",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 5:  COMPREHENSION- READING [SCANNING]",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 5, line 13 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-042 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -11979,14 +11991,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 5:  COMPREHENSION- READING [SCANNING]",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 5; exact body hash 98b142fcb79a9f3a6f2e42334452ce34953eaecfff10d1b34e5319bebf568ee4",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:98b142fcb79a9f3a6f2e42334452ce34953eaecfff10d1b34e5319bebf568ee4"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:98b142fcb79a9f3a6f2e42334452ce34953eaecfff10d1b34e5319bebf568ee4",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 13; UTF-8 joined-line SHA256 98b142fcb79a9f3a6f2e42334452ce34953eaecfff10d1b34e5319bebf568ee4; SS1-SRC-d8bd8f85fd73:BODY:98b142fcb79a9f3a6f2e42334452ce34953eaecfff10d1b34e5319bebf568ee4; rule SS1-SRC-d8bd8f85fd73-R007",
+          "explanation": "Scheme-of-work row 5 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Comprehension - reading [scanning]\". The teaching body ENGLISH-BODY-053 (lines 333-345) is a topic line, a skill label, a reference-book pointer and an assignment pointer, indexed at objective level as ENGLISH-T2-W05-TP01, RD01, RD02, QN01 and AS01. The scheme row names scanning, while the topic line names writing and listening, which the body does not treat. Rule SS1-SRC-d8bd8f85fd73-R007 classifies the row SCHEME_ONLY. Rows 6 to 10 are left for their own week tasks."
         }
       ]
     },
@@ -15642,6 +15654,103 @@
           "explanation": "The supplement teaches checking the intended sense in a sentence and using a dictionary, with one word (bright). It does not treat the five words. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W05-TP01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Topic line: \"(Writing and listening) The hinding parth of steel developnment\" (the named title and the writing and listening focus)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 335; UTF-8 joined-line SHA256 e744c858d320a69d05e459a5654b532105914fabace5372888c477d88942d1c6; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 335; UTF-8 joined-line SHA256 e744c858d320a69d05e459a5654b532105914fabace5372888c477d88942d1c6; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+          "explanation": "The topic line names writing and listening and a title in garbled spelling (\"HINDING PARTH OF STEEL DEVELOPNMENT\"). The scheme row (line 13) names comprehension and reading by scanning instead, and nothing under the heading sets a writing task, a listening task or a passage with that title. The intended title, whether it names a passage in the reference book, and what writing or listening work was meant cannot be determined from the source; no correction is inferred. The heading is recorded as spelled, not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W05-RD01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Reading for facts (scanning): the skill named by the CONTENT line",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 339; UTF-8 joined-line SHA256 211a5234676da334a3ec4db4e4be9523f1c1bd6f9446e6acfa72cb1e8a8b6150; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+        "SUP-SS1-ENGLISH-READING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 339; UTF-8 joined-line SHA256 211a5234676da334a3ec4db4e4be9523f1c1bd6f9446e6acfa72cb1e8a8b6150; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+          "explanation": "The line is a skill label, \"READING FOR FACTS (SCAMMING)\"; the scheme row (line 13) spells the skill \"SCANNING\", so \"SCAMMING\" is read as the source's own slip and recorded, not repaired. The source gives no definition, technique or task for the skill."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: second paragraph (beginning \"Skim by looking\"), sentences 1-3; practice Q1",
+          "explanation": "The supplement distinguishes skimming from scanning and models scanning for one fact (the Tuesday and Thursday sessions) with a keyed, marked question, which covers the skill label. Bound narrowly through correction SS1-02-english-COR-012; the supplement is an original activity on its own passage and stands for no passage in the reference book. COR-012 and ENGLISH-BODY-053 are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W05-RD02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Reference-book comprehension passage: Intensive English, pages 133-136 (the reading text itself)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 341; UTF-8 joined-line SHA256 4eab5f79a863eeca266f8f49c6e2f95e7d6bd883a888b547506752fabda92f63; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 341; UTF-8 joined-line SHA256 4eab5f79a863eeca266f8f49c6e2f95e7d6bd883a888b547506752fabda92f63; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+          "explanation": "The line gives only a pointer, \"REFERENCE BOOK INTENSIVE ENGLISH (PAGE 133 – 136) ANSWER THE QUESTIONS\" (bold in the docx), with no edition, author, unit or passage title, and the source carries no passage text. The title on line 335 cannot be tied to these pages. The pages and passage are not supplied anywhere in the package, so nothing is inferred or reproduced."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: passage \"The library timetable\"",
+          "explanation": "The supplement is a newly authored passage and is not the reference-book text. Per correction COR-012 it replaces the pointer as a labelled equivalent activity, but it is not bound here as covering this passage: whether it may stand for the pages is the owner decision recorded in open item ENGLISH-PRESCRIBED-PASSAGES, so the entry stays UNRESOLVED."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W05-QN01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "\"Answer the questions\" on the reference-book passage (pages 133-136)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 341; UTF-8 joined-line SHA256 4eab5f79a863eeca266f8f49c6e2f95e7d6bd883a888b547506752fabda92f63; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 341; UTF-8 joined-line SHA256 4eab5f79a863eeca266f8f49c6e2f95e7d6bd883a888b547506752fabda92f63; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+          "explanation": "The instruction at the end of line 341 points to questions in the book. No question, answer, key or marks is in the source, and the number of questions is not stated. None is invented."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: practice Q1 to Q3",
+          "explanation": "The supplement has its own three keyed questions on its own passage. They answer none of the book's questions, so they are not bound here."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W05-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: read the comprehension and answer the questions that follow on pages 136-137",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 345; UTF-8 joined-line SHA256 514c7387ebd3cfd61e75f235d9ac222488face5f582f5ed1ad1267a5c5eaa1fd; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 345; UTF-8 joined-line SHA256 514c7387ebd3cfd61e75f235d9ac222488face5f582f5ed1ad1267a5c5eaa1fd; SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9",
+          "explanation": "In the docx the label \"ASSIGNMNET:\" is bold and underlined; plain text loses this. The assignment points to pages 136-137 of an unnamed book (the reference book is Intensive English on line 341), which overlaps the content range 133-136 on page 136, and \"COMPR EHENSION\" and \"ASSIGNMNET\" are spelled as in the source. It is not stated whether the passage is the same as, or follows, the one on pages 133-136. No pages, questions, key or marks are supplied; none is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: practice Q1 to Q3",
+          "explanation": "The supplement's questions belong to its own passage and are not bound to this assignment."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -16441,6 +16550,28 @@
       "affected_ids": [
         "ENGLISH-T2-W04-EV01",
         "ENGLISH-T2-W04-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W05-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 5 refers to material that is not in the source document: the Intensive English comprehension on pages 133-136 (no edition given), its questions, and the assignment on pages 136-137 of an unnamed book. The two page ranges overlap on page 136 and the source does not say whether the passage continues. The title on the topic line cannot be linked to these pages. The passage, questions and any answers cannot be checked without them.",
+      "required_action": "Owner to supply authorised extracts with edition for pages 133-137, or accept the labelled equivalent activity in SUP-SS1-ENGLISH-READING-T2 (see open item ENGLISH-PRESCRIBED-PASSAGES; queue item ENG-FACT-T2-W05-EXTERNAL-MATERIALS). Do not infer the missing passage, questions or answers.",
+      "affected_ids": [
+        "ENGLISH-T2-W05-RD02",
+        "ENGLISH-T2-W05-QN01",
+        "ENGLISH-T2-W05-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W05-TOPIC-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "The topic line names writing and listening and a title in garbled spelling, while the scheme row and the content name reading by scanning. Nothing in the source sets a writing or listening task, so the scope of the week is ambiguous and the title cannot be repaired from the source.",
+      "required_action": "Owner to confirm the intended topic title and whether writing and listening are wanted this week; if they are, author original writing and listening teaching with keyed, marked tasks, labelled original (queue item ENG-LES-T2-W05-TOPIC-SCOPE). Do not guess the title.",
+      "affected_ids": [
+        "ENGLISH-T2-W05-TP01"
       ],
       "blocks_delivery": true
     }
