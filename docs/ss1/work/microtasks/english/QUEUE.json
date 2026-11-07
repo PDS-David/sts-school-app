@@ -74,7 +74,8 @@
     "ENG-WK-T3-W09 (2026-11-07): 3rd Term Week 9 indexed at objective level from the verified archive/member; DOCX scheme table data row 9 is classified by SS1-SRC-50fa9b1eb2fd-R030 as SCHEME_ONLY. Added 18 coverage entries (1 MARKER, 1 IMPLEMENTED_EQUIVALENT, 11 PARTIAL, 5 UNRESOLVED) and five blocking open items. The scheme informal-letter objective is supported additively by SUP-SS1-ENGLISH-LETTERS-T1; SUP-SS1-ENGLISH-READING-T3 and SUP-SS1-ENGLISH-MEANING-T3 provide only partial support for the reading and antonym strands. Journalism/advertising vocabulary and antonym teaching remain incomplete; the scheme's “nearly opposite” wording is not explained; the cited textbook passages/pages and weekend exercises are absent. Five PENDING follow-ups appended for reading, journalism vocabulary, antonyms, external materials and the weekend key. Existing lessons, corrections, source bodies and body-level coverage statuses unchanged. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred.",
     "ENG-WK-T3-W10 (2026-11-07): 3rd Term Week 10 indexed at objective level from the verified archive/member; DOCX scheme table data row 10 is classified by SS1-SRC-50fa9b1eb2fd-R031 as SCHEME_ONLY. Added 19 coverage entries (1 MARKER, 1 IMPLEMENTED_EQUIVALENT, 12 PARTIAL, 5 UNRESOLVED) and seven blocking open items. The core /ɪ/–/iː/ contrast is supported by SUP-SS1-ENGLISH-PHONETICS-T3; the source's full spelling-variant/minimal-pair lists remain partial. Generic argumentative support comes from SUP-SS1-ENGLISH-ESSAY-TYPES-T2 and SUP-SS1-ENGLISH-ESSAY-REPORT-T1; the specific essay/theory prompts remain partial. The pronoun-person scheme strand has no Week 10 body and is only partly supported by SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1. The dialogue and named textbook pages are absent. Six PENDING follow-ups appended for speaking/comprehension, phonetics detail, argumentative writing, pronoun person, external materials and the weekend key. COR-023's row-level IMPLEMENTED_EQUIVALENT scope mismatch is left for owner review. Existing lessons, corrections, source bodies and body-level coverage statuses unchanged. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred.",
     "ENG-WK-T3-W11 (2026-11-07): 3rd Term Week 11 indexed at objective level from the verified archive/member; DOCX scheme table data row 11 is classified by SS1-SRC-50fa9b1eb2fd-R032 as SCHEME_ONLY. Added 18 coverage entries (1 MARKER, 1 IMPLEMENTED_EQUIVALENT, 11 PARTIAL, 5 UNRESOLVED) and six blocking open items. The broad nearest-meaning scheme objective is supported additively by SUP-SS1-ENGLISH-MEANING-T3 and SUP-SS1-ENGLISH-REVISION-W04-T1; source-specific synonym lists remain partial. Summary support is partial; no building-vocabulary supplement exists. Named textbook pages and weekend questions are absent. Five PENDING follow-ups appended for summary, building vocabulary, synonyms, external materials and the weekend key. COR-024's row-level IMPLEMENTED_EQUIVALENT scope mismatch is left for owner review. Existing lessons, corrections, source bodies and body-level coverage statuses unchanged. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred.",
-    "- ENG-FACT-SCHEME-OBJECTIVE-REVIEW (2026-11-07): per-scheme-strand reconciliation confirmed complete from the 32 finished week-indexing items; open item ENGLISH-SCHEME-OBJECTIVE-REVIEW rewritten to name only the 25 umbrella body-level PARTIAL rows that still lack an open item of their own. status_counts and next_runnable recomputed from the items (next_runnable had omitted items already eligible). No coverage status changed. Approval stays PENDING and verification DEFERRED."
+    "- ENG-FACT-SCHEME-OBJECTIVE-REVIEW (2026-11-07): per-scheme-strand reconciliation confirmed complete from the 32 finished week-indexing items; open item ENGLISH-SCHEME-OBJECTIVE-REVIEW rewritten to name only the 25 umbrella body-level PARTIAL rows that still lack an open item of their own. status_counts and next_runnable recomputed from the items (next_runnable had omitted items already eligible). No coverage status changed. Approval stays PENDING and verification DEFERRED.",
+    "- ENG-FACT-REPLACEMENT-SCOPE (2026-11-07): the 24 corrected rows reconciled against the week-indexing results; ENGLISH-BODY-009 (COR-005) confirmed whole-row, BODY-002 already PARTIAL, and the other 22 body-level rows moved from IMPLEMENTED_EQUIVALENT to PARTIAL with per-row evidence naming the uncovered objective entries. New open item ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION; four COR-0xx-SCOPE owner items reworded. Corrections remain inactive; approval PENDING, verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -87,8 +88,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 74,
-    "PENDING": 163,
+    "IMPLEMENTED_TESTING_DEFERRED": 75,
+    "PENDING": 162,
     "BLOCKED": 5
   },
   "items": [
@@ -3556,8 +3557,8 @@
         "ENG-WK-T3-W10",
         "ENG-WK-T3-W11"
       ],
-      "status": "PENDING",
-      "implementation_reference": "docs/ss1/work/SS1-02/CHECKPOINT.md (English paragraph) vs backend/src/db/ss1/subjects/english.json coverage: 24 IMPLEMENTED_EQUIVALENT entries, one per correction ENG-COR-001..024.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/SS1-02/CHECKPOINT.md (English paragraph) vs backend/src/db/ss1/subjects/english.json coverage: 24 IMPLEMENTED_EQUIVALENT entries, one per correction ENG-COR-001..024. Update (2026-11-07): all 32 week-indexing dependencies are finished, so the 24 corrected rows were compared with their objective entries. Result per SS1-02 correction: COR-005 (ENGLISH-BODY-009): whole-row scope confirmed, both objective entries IMPLEMENTED_EQUIVALENT, status stands. COR-001 (BODY-002): already PARTIAL since ENG-WK-T1-W01. COR-002 (BODY-013) and COR-006 (BODY-021): the replacement leaves no taught content uncovered; the only gaps are external reading assignments (T1-W04-RA01; T1-W06-DP12 and WA01), but the row cannot be called whole-row equivalent while they are UNRESOLVED, so PARTIAL as for COR-001. COR-003, 004, 007, 008, 009, 010, 011, 012, 013, 014, 015, 016, 017, 018, 019, 020, 021, 022, 023, 024 (BODY-023, 027, 024, 037, 035, 048, 049, 053, 052, 055, 056, 057, 069, 071, 072, 073, 076, 079, 085, 089): the replacement is narrower than its source row; the missing objectives were already recorded as separate PARTIAL/UNRESOLVED entries by the week-indexing items and are cited by id in a new evidence entry on each row. english.json: those 22 body-level rows moved IMPLEMENTED_EQUIVALENT -> PARTIAL (only ENGLISH-BODY-009 stays IMPLEMENTED_EQUIVALENT); new blocking open item ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION lists them; the owner-action open items ENGLISH-T3-W07-COR-021-SCOPE, -W08-COR-022-SCOPE, -W10-COR-023-SCOPE and -W11-COR-024-SCOPE were reworded now that the row status is reconciled (the owner decision on narrowing each correction remains). No source body, correction, lesson or objective-level entry changed; corrections stay inactive; approval PENDING, verification DEFERRED. Method caveat: T2 and some T3 objective entries cite lines and joined-line hashes rather than the body hash, so each row was linked by body hash plus the week's entries (COR-010 via all ENGLISH-T2-W01 entries) and the existing COR scope open items.",
       "completion_condition": "For each of the 24 rows the missing objectives, if any, are recorded as separate PARTIAL/UNRESOLVED coverage entries (or the replacement scope is confirmed as whole-row), per the week-indexing results.",
       "required_attachments": []
     },
@@ -7717,8 +7718,8 @@
     "ENG-COR-022",
     "ENG-COR-023",
     "ENG-COR-024",
-    "ENG-FACT-REPLACEMENT-SCOPE",
     "ENG-FACT-READING-T1-T3-UNBOUND",
+    "ENG-FACT-CROSS-TERM-IDENTICAL-BODIES",
     "ENG-FACT-PROVENANCE-REVIEW",
     "ENG-FACT-VISUAL-DISPOSITION-T1",
     "ENG-FACT-VISUAL-DISPOSITION-T2",
