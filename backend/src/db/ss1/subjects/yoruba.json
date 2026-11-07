@@ -134,6 +134,18 @@
         "locator": "docs/ss1/work/microtasks/yoruba/YO-PRE-T2-1.md; mammoth 1.12.2 raw text lines 3-141 (front matter SHA-256 044ca198991b51d73a9afe62b4d402e5a855210bdd0cd60dc02a4d92c82a1cbc); line 3 (SHA-256 f79e08bd1b5aee7b204e71b0d86d8488df0ee4f980f6848177c64d3459939c2b); line 7 (SHA-256 a0b97e0f1529e5e76c45a2bbc346c526b4fdb1334ad63c0abf65d04660f10130)",
         "explanation": "The front matter is the title block (lines 3-5), the scheme heading \"ILANA ISE OSOOSE FUN SAA KEJI\" (line 7) and the 12-row scheme (lines 9-141); lines 142-148 are whitespace only and the first teaching label OSE KINNI is line 149. The block carries no teaching proposition: it names the term, subject and class and lists twelve scheme rows without defining, explaining or illustrating any of them. The anchor \"SECOND TERM E-NOTE\" occurs exactly once in the 2,433-line extraction and no parsed row exists for this source, so the rule records a SCHEME_ONLY disposition. No text is removed and no lesson is authored against the block; the page header and footers lie outside the extracted text and are recorded in the coverage entries."
       }
+    },
+    {
+      "id": "SS1-SRC-4cc6aae9ed7d-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "source_sha256": "a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3",
+      "anchor": "EDE:\tAtunyewo eko lori ise saa yii ninu ede, asa, ati litireso.\n\n  \tAtunyewo  idanwo lori ise odun yii ninu ede, asa ati litirso.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "3RD TERM S1 YORUBA.docx; Mammoth 1.12.2 extractRawText() lines 81–83 (line 82 blank); exact block SHA-256 a8579d59815b77e42e64ccf1a8134d8ba38ca3a2620e47a3df08c1224f3934c3",
+        "explanation": "The 129-character two-paragraph scheme block occurs once in the source. It consists of the EDE revision line and an unlabelled revision/test line. Both occurrences of “Atunyewo” in the document are these two lines. The pair is in the preamble before the first parsed teaching section, not inside a parsed lesson row, so the schema-supported SCHEME_ONLY disposition is required. It records the scheme marker without creating revision/examination teaching or removing any teaching body."
+      }
     }
   ],
   "lessons": [],
@@ -7487,6 +7499,26 @@
         {
           "locator": "lines 1873-1875: Salaye lekun-un rere bi a se n sin oku oba. / Pelu apeere salaye ohun ti ofo tabi ogede je.",
           "explanation": "The first question is entirely on the burial of a king, which Week 7 does not teach; only the second is on the week's LITIRESO strand and it names ogede, which the body never teaches. No answers, no marks, and 1875 ends with a tab."
+        }
+      ]
+    },
+    {
+      "id": "YO-T3-W11-SCHEME-REVISION-TEST",
+      "source_id": "SS1-SRC-4cc6aae9ed7d",
+      "objective": "Scheme-only revision/test pair: “Atunyewo eko lori ise saa yii ninu ede, asa, ati litireso.” followed by the unlabelled line “Atunyewo  idanwo lori ise odun yii ninu ede, asa ati litirso.”",
+      "objective_locator": "3rd Term scheme lines 81–83 (Mammoth 1.12.2 extractRawText(); line 82 blank); exact block SHA-256 a8579d59815b77e42e64ccf1a8134d8ba38ca3a2620e47a3df08c1224f3934c3",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-4cc6aae9ed7d-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme lines 81–83; member SHA-256 a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3",
+          "explanation": "The first line is explicitly an EDE revision of the term's EDE, ASA and LITIRESO work. The second line is unlabelled and refers to revision for the year's test. The pair has no week number, no ASA or LIT row, and no separately supplied test or examination paper."
+        },
+        {
+          "locator": "Original DOCX word/document.xml final teaching paragraphs 1197–1231; Mammoth extraction OSE KEWAA lines 2313–2463, section SHA-256 d84c4fe40486f5776e87c9f0644f7ef82bd428748f65523c35bb1061c991f224",
+          "explanation": "The document's final teaching section is OSE KEWAA (Week 10), ending with its own igbelewon, Ise Asetilewa and Apa keji. The document then ends; there is no Week 11 revision lesson, revision heading or examination body. The marker therefore cannot erase or replace the ten existing teaching sections or satisfy any still-open teaching objective."
         }
       ]
     }
