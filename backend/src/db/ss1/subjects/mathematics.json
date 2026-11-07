@@ -2931,6 +2931,19 @@
         "locator": "Mathematics 1st term; parsed row 9 (\"SIMPLE EQUATION AND VARIATION\")",
         "explanation": "Original row text is retained unchanged in provenance; the replacement is delivered instead (runtime wiring by SS1-08)."
       }
+    },
+    {
+      "id": "CORR-MATHEMATICS-T1-W02-NUMBER-BASES",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "source_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb",
+      "source_lesson_id": "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
+      "body_sha256": "67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
+      "replacement_id": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
+      "reason": "The delivered source row loses OMML exponents, base subscripts, fractions and digits; its 1011.01₂ example ends with the incorrect value 11 3/4 instead of 11 1/4; its definition of base is unusable and it does not define digit symbols for bases twelve and fifteen. The replacement teaches all three source objectives (base-to-ten place values, fractional-base conversion and base-to-base conversion via base ten), adds a repeated-multiplication method for bicimals, and keys all 20 items across the source's three assessment blocks with newly recomputed answers and marking.",
+      "evidence": {
+        "locator": "Mathematics 1st Term, parsed row 1 (Week 2); source row body SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; source member SSS 1/1st Term SS1_/MATHss1.docx, SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb.",
+        "explanation": "Scope review against COV-MATH-T1-W02-OBJ-1, OBJ-2 and OBJ-3 confirms the replacement preserves the source's three instructional objectives. Lesson sections 2–5 teach integer and fractional numerals in arbitrary bases to base ten, including the source's unknown-base example; section 6 teaches the base-ten-to-bicimal direction with repeated multiplication and recurring-block notation; sections 4–5 teach base-ten-to-other-base and base-to-base conversion via base ten. Practice M1W2-Q1, Q2 and Q3 key the three source assessment blocks (3 + 5 + 12 = 20 items) with recomputed answers and marking. The source's arithmetic error 1011.01₂ = 11 3/4 is corrected to 11 1/4. Existing teacher decisions about definition wording, base-12/base-15 digit symbols and recurring notation remain in their open items; no source bytes or source hashes were edited. The correction binding only redirects delivery to the same-subject, same-term replacement; content approval remains PENDING and verification DEFERRED."
+      }
     }
   ],
   "assets": [],
