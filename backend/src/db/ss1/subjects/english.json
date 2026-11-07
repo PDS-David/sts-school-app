@@ -16428,6 +16428,91 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-ENGLISH-ADVERB-CONVERSION-KEYS-T2-W07",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "English Language",
+      "title": "Adjective-to-adverb conversion: forms and exceptions",
+      "objectives": [
+        "Convert common adjectives to appropriate adverb forms.",
+        "Recognise irregular or unchanged forms including well, hard and truly.",
+        "Use converted forms accurately in context and distinguish hard from hardly."
+      ],
+      "body": "An adverb is often formed from an adjective, but the form is not always made by adding -ly. Use the meaning and grammar of the sentence to choose the correct form.\n\nFor the nine words in the source exercise, the appropriate forms are: quick → quickly; bright → brightly; careful → carefully; bad → badly; good → well; deep → deeply; clearer → more clearly; hard → hard; true → truly. “Clearer” is already a comparative adjective, so the natural comparative adverb is more clearly. Deep can also be used as an adverb in some contexts (“dig deep”), while deeply is common for figurative or emotional meanings (“deeply moved”). Hard means with effort; hardly means almost not. Good is an adjective; well is its usual adverb counterpart, although well can also be an adjective meaning healthy. True changes to truly, not truely.\n\nCheck each answer in a complete sentence. “The bright lamp shines brightly”; “She explained the rule clearly”; “He worked hard”; “I could hardly hear the announcement.” A correct word form can still be wrong if it does not fit the intended meaning. Read the whole sentence before deciding.",
+      "body_sha256": "6e723d50986770974f08d7de0a75905f362f44809c864abc08f6e591af528d97",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Give the adverb forms of all nine words: quick, bright, careful, bad, good, deep, clearer, hard and true.",
+          "answer": "quickly, brightly, carefully, badly, well, deeply (also deep in suitable contexts), more clearly, hard, truly.",
+          "marks": 9,
+          "marking": [
+            {
+              "criterion": "One mark for each appropriate adverb form; accept deep where a natural adverbial use is intended",
+              "marks": 9
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Choose the correct form: (a) The students listened (careful/carefully). (b) The athlete trained (hard/hardly). (c) The message was (clearer/more clearly) explained the second time. (d) The patient is recovering (good/well).",
+          "answer": "(a) carefully; (b) hard; (c) more clearly; (d) well.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "One mark for each correct choice",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Explain the difference between hard and hardly, and use each correctly in an original sentence.",
+          "answer": "Hard means with effort or intensity; hardly means almost not. Example: “They worked hard”; “I could hardly see the sign.”",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Accurate distinction in meaning",
+              "marks": 2
+            },
+            {
+              "criterion": "Two grammatical sentences using the forms correctly",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Correct the error in each sentence: (a) She sings good. (b) He truely answered. (c) The team played fastly.",
+          "answer": "(a) She sings well. (b) He truly answered. (c) The team played fast.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One mark for each correct correction",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Cambridge English Grammar Today: adverbs and adverb phrases",
+          "locator": "Grammar reference for adverb forms and use; all lesson prose, examples and questions are original.",
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/adverbs-and-adverb-phrases",
+          "rights": "Original explanations, examples and exercises authored for this project; no third-party passage or exercise reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Cambridge English Grammar Today: adverbs and adverb phrases"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -25498,10 +25583,11 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "Evaluation: make each word an adverb (quick, bright, careful, bad, good, deep, clearer, hard, true)",
       "objective_locator": "mammoth 1.13.0 extractRawText lines 483-489; UTF-8 joined-line SHA256 3ed30e8fb7d08a3ce0dae2e0b4f83ab1cd8193e9a767426c6f88c90b9ea1c7c6; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
-        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2",
+        "SUP-SS1-ENGLISH-ADVERB-CONVERSION-KEYS-T2-W07"
       ],
       "evidence": [
         {
@@ -25511,6 +25597,10 @@
         {
           "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: first paragraph, sentences 2-4; practice Q1",
           "explanation": "The supplement says that well corresponds to good, that fast and hard have no -ly form and that hardly is not a synonym of hard, and its Q1 marks \"hard not hardly\". It does not treat the other words or a full conversion exercise. Bound additively as partial support."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERB-CONVERSION-KEYS-T2-W07: body, paragraphs 1-3; practice Q1-Q4",
+          "explanation": "The original keyed exercise addresses all nine source prompts, distinguishes the irregular good/well and hard/hardly forms, treats clearer as a comparative and accepts deep only where context permits."
         }
       ]
     },
@@ -31293,16 +31383,6 @@
       "required_action": "Teacher decision required: confirm whether 'transcribe' means phonemic IPA transcription or another form of transcription, and which pronunciation model to use. Meanings are taught; transcription remains pending.",
       "affected_ids": [
         "ENGLISH-T2-W06-AS01"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "ENGLISH-T2-W07-EVALUATION-KEYS",
-      "kind": "CONTENT",
-      "detail": "The nine-word conversion exercise has no key or marks, a numbering defect, a comparative form among the words and several words whose adverb form is not a simple -ly addition.",
-      "required_action": "Author original keyed, marked practice converting adjectives to adverbs (including good/well and hard/hardly), labelled original; owner or teacher to supply a key if the source items themselves must be marked; do not infer the key.",
-      "affected_ids": [
-        "ENGLISH-T2-W07-EV01"
       ],
       "blocks_delivery": true
     },
