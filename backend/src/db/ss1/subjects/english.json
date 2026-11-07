@@ -884,11 +884,23 @@
       "op": "classify_marker",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
       "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
-      "anchor": "Essay Writing: More on formal letter.\nSpeech Work: Rhymes\nVocabulary Development: Words Associated with Government and Politics.\t",
+      "anchor": "Essay Writing: More on formal letter.\nSpeech Work: Rhymes\nVocabulary Development: Words Associated with Government and Politics.",
       "kind": "SCHEME_ONLY",
       "evidence": {
         "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 4, lines 21-23 (before the first WEEK ONE heading on line 46)",
         "explanation": "Unique scheme-row anchor: lines 21 to 23 joined with newlines (the tab at the end of line 23 is outside the anchor). It occurs once in the unmodified extracted text and in no parsed body, so the compiler records it as a SCHEME_ONLY disposition. Metadata only, not teaching; no source text removed."
+      }
+    },
+    {
+      "id": "SS1-SRC-50fa9b1eb2fd-R026",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Comprehension / Reading Skills: More on Skimming and Scanning.\nSpeech work: Diphthongs /ei/ and /ai/\nStructure: Conjuncts and Disjuncts. ",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 5, lines 24-26 (before the first WEEK ONE heading on line 46)",
+        "explanation": "Unique scheme-row anchor: lines 24 to 26 joined with newlines (the tab at the end of line 26 is outside the anchor). It occurs once in the unmodified extracted text and in no parsed body, so the compiler records it as a SCHEME_ONLY disposition. Metadata only, not teaching; no source text removed."
       }
     },
     {
@@ -17927,6 +17939,650 @@
           "explanation": "Teaches the organisation of an informal letter (address and date where required, greeting, opening, body, close). It is a letter of advice to a fictional relative, not this task, and has no political topic. Bound additively as partial support for the form only."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 5: Comprehension / Reading Skills: More on Skimming and Scanning; Speech work: Diphthongs /ei/ and /ai/; Structure: Conjuncts and Disjuncts",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 24-26; UTF-8 joined-line SHA256 5e33e3648293629c1b7241edeadcd632d6467ab2faade5956c7bf3083777b61e",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R026"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 24-26; UTF-8 joined-line SHA256 5e33e3648293629c1b7241edeadcd632d6467ab2faade5956c7bf3083777b61e",
+          "explanation": "In the original (private LibreOffice docx rendering, not committed) row 5 of the one-column scheme table is one cell with three topic paragraphs; the text extraction flattens the table into unlabelled lines 7 to 43, before the first WEEK ONE heading, so no parsed body holds it. Rule SS1-SRC-50fa9b1eb2fd-R026 classifies the row SCHEME_ONLY. Only the first of its three topics matches the Week 5 body: the body's second and third topics are the /f/-/v/, /s/-/z/ and /ʃ/-/ʒ/ contrasts and nominalization, and the row's diphthongs and conjuncts-and-disjuncts have no Week 5 body (see SO01 and SO02)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SO01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: speech work, diphthongs /ei/ and /ai/",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 25; UTF-8 joined-line SHA256 24d1f1360e9f3871ef7b3d955983a5f0b8dda928252bd3a135ea2521c6e47bdf",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 25; UTF-8 joined-line SHA256 24d1f1360e9f3871ef7b3d955983a5f0b8dda928252bd3a135ea2521c6e47bdf",
+          "explanation": "The scheme row names the diphthongs /ei/ and /ai/, but the Week 5 body contains no diphthong content: its speech work is the contrast of /f/ and /v/, /s/ and /z/ and /ʃ/ and /ʒ/ (SC01 to SC08). The notation /ei/ and /ai/ is the source's own (the replacement chart writes /eɪ/ and /aɪ/). The 1st Term diphthong supplement and the replacement chart SUP-SS1-ENGLISH-PHONETICS-T3 (which lists /eɪ/ day and /aɪ/ my) are leads only; whether either is the intended Week 5 delivery is the owner's decision. Nothing is bound or inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SO02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: structure, conjuncts and disjuncts",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 26; UTF-8 joined-line SHA256 f3e62755602c0e12eece92cac181fd99e4270ec6b746b02413e82757a1504852",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 26; UTF-8 joined-line SHA256 f3e62755602c0e12eece92cac181fd99e4270ec6b746b02413e82757a1504852",
+          "explanation": "The scheme row names conjuncts and disjuncts, but the Week 5 body contains no such content (its structure topic is nominalization), and the words conjunct and disjunct occur nowhere else in the 3rd Term source. The 1st Term adverb, conjunction and preposition lesson (coverage ENGLISH-T1-W02-AV03) teaches adjuncts, disjuncts and conjuncts and is a lead only. Nothing is bound or inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-TP01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Week 5 topic list: Comprehension / Reading Skills: More on scanning and skimming; Speech Work: Contrasting /s/ and /z/ and /ʒ/ /f/ and /v/; Structure to Nominalization",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 506-510; UTF-8 joined-line SHA256 58e5f3e2d5d320f9bfb47ba4b6271c7d629bb76cbe820ebc43e8abedfe88d5ff; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 506-510; UTF-8 joined-line SHA256 58e5f3e2d5d320f9bfb47ba4b6271c7d629bb76cbe820ebc43e8abedfe88d5ff; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+          "explanation": "The Week 5 heading and 'TOPIC' are bold and the three topic lines are an automatic list in the docx (numerals not in the extracted text). The speech topic omits /ʃ/ although the body contrasts /ʃ/ and /ʒ/, and 'Structure to Nominalization' is a slip for 'Structure: Nominalization'. The week is two parsed rows: ENGLISH-BODY-070 (lines 506-529, reading skills, unchanged and PARTIAL) and ENGLISH-BODY-071 (lines 530-647, titled only 'Speech Work: Contrasting ...', unchanged and still row-level IMPLEMENTED_EQUIVALENT through correction COR-018). Row 071 also holds the whole nominalization topic and the weekend assignment, which the replacement does not teach, so its status overstates its scope."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-RS01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comprehension / reading skills: the heading and the content labels (Skimming, Scanning)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 512-515; UTF-8 joined-line SHA256 762faca21daeb520b564af7d9dba456c78539017f8cb403c6144041a0375344c; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 512-515; UTF-8 joined-line SHA256 762faca21daeb520b564af7d9dba456c78539017f8cb403c6144041a0375344c; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+          "explanation": "The heading is bold and an automatic numbered item in the docx and 'Skimming' and 'Scanning' are an automatic list (numerals not in the extracted text); 'Content' is plain. The contents name two skills, each defined in RS02 and RS03."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-RS02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Skimming: definition, purpose and method (going through material very fast for the main ideas, looking at keywords and headings, jotting down the salient points)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 517-518; UTF-8 joined-line SHA256 9aa31beee51dff1a30ffe98128d04b7dac3ba721acda29896752dbc638f533bf; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 517-518; UTF-8 joined-line SHA256 9aa31beee51dff1a30ffe98128d04b7dac3ba721acda29896752dbc638f533bf; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+          "explanation": "The sub-heading 'Skimming' is bold in the docx. The definition is sound in intent (reading fast for gist, using headings and keywords), but the sentence 'keywords headings, sub-headings e.t.c.' lacks a comma and the paragraph has no worked example, no practice and no reading passage, so no skimming skill is shown on a text."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: paragraph after the passage, sentences 1-2",
+          "explanation": "Models skimming (look quickly for the overall topic and purpose) on an original library-timetable passage, but defines no method and has no keyed skimming question (its keyed questions test scanning and inference). Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-RS03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scanning: definition, purpose and method (rapid location of specific words, facts or details)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 520-521; UTF-8 joined-line SHA256 2d7a39ef170029e8a0424b9d2967459c26ee14b08e803babcf714bb208e1919e; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 520-521; UTF-8 joined-line SHA256 2d7a39ef170029e8a0424b9d2967459c26ee14b08e803babcf714bb208e1919e; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+          "explanation": "The sub-heading 'Scanning ' is bold in the docx. The first two sentences, on the rapid location of specific facts or details, are sound. The third sentence (look at the material 'attentively' to find its suitability or relevance) describes previewing a text, not scanning, and the last (read 'fast phrase by phrase' with 'a high degree of concentration' to draw out salient points) blurs scanning with reading for main points and its wording is garbled; neither may be taught as written. No example or practice follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: paragraph after the passage, sentences 2-3; practice Q1",
+          "explanation": "Models scanning for a particular fact (the sessions were Tuesday and Thursday) and has a keyed 2-mark question that tests it. It does not correct or replace the source's confused explanation. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-RS04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: skim and scan the comprehension passage on page 152 of Effective English and answer the questions under it",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 523-524; UTF-8 joined-line SHA256 aeeaaf833f9a4781f3e6ce7df9527c002d0023f935f796597e4663a22beaae03; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 523-524; UTF-8 joined-line SHA256 aeeaaf833f9a4781f3e6ce7df9527c002d0023f935f796597e4663a22beaae03; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+          "explanation": "'EVALUATION' is plain. The passage and its questions are on page 152 of the unsupplied book (no edition); no question, answer, key or mark is given and none is inferred. Pages 152 to 154 are also the Week 3 summary material (see ENGLISH-T3-W03-SM01), so it is not clear whether this is the same passage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-RS05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: pages 152 to 153 of the Effective English",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 526-527; UTF-8 joined-line SHA256 0314f3bac7438808bf10df5e9252d8bd1608087ae363b58904737cf9d5683bf2; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 526-527; UTF-8 joined-line SHA256 0314f3bac7438808bf10df5e9252d8bd1608087ae363b58904737cf9d5683bf2; SS1-SRC-50fa9b1eb2fd:BODY:32b559bc2b43bf1bbe62d9888cb6c78a942ffc7accb9115c8ecbd496eee830f7",
+          "explanation": "'READING ASSIGNMENT' is bold in the docx. The pages overlap the Week 3 summary passage ('Leisure Time', pages 152-153) and the passage of RS04, and the book is not identified by edition. The pages are not supplied. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Speech work: the heading and the description of /f/ and /v/ (voiceless and voiced labiodental fricatives)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 530-533; UTF-8 joined-line SHA256 de6d188f0e3b55875dc3ac94e794cc3d5d2643c4c635b686dfcb627f52f9b308; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 530-533; UTF-8 joined-line SHA256 de6d188f0e3b55875dc3ac94e794cc3d5d2643c4c635b686dfcb627f52f9b308; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The heading's first part is plain and the part from /ʒ/ onward is bold, and its numbering is automatic (numerals not in the extracted text); the heading omits /ʃ/. The description (/f/ is a voiceless labio-dental fricative while /v/ is a voiced labio-dental fricative) is correct apart from the hyphenation. The word 'contrast' that follows is a stray bold label."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: third paragraph, sentence 3",
+          "explanation": "Names /f v/ among the voicing contrasts and gives fine/vine as a worked pair. It does not give the place and manner terms (labiodental fricative). Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The twelve /v/ and /f/ word pairs (vine/fine to live/life)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 534-546; UTF-8 joined-line SHA256 68ddcfa99da36c0f80ce04b2e436ad685e936a003ad2072cfd4535c56abb0f77; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 534-546; UTF-8 joined-line SHA256 68ddcfa99da36c0f80ce04b2e436ad685e936a003ad2072cfd4535c56abb0f77; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The pairs are a two-column table in the docx ('/v/' and '/f/' bold; the tab-separated extracted lines carry no table markers). The list has defects: proof/prove is reversed (proof has /f/ and prove has /v/, but they sit under /v/ and /f/ respectively); 'life' is repeated (alive/life and live/life) and live/life also differs in the vowel; review/refuse and sieve/sift are not minimal pairs (the words differ in a later sound). These are my reading of the usual British pronunciation and are not dictionary-checked in this pass. Pairs such as vine/fine, vast/fast, halve/half, save/safe, divine/define, invest/infest and starve/staff do contrast /v/ and /f/."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: third paragraph, sentence 3; fourth paragraph, sentence 1; practice Q2",
+          "explanation": "Gives fine/vine and sip/zip as worked pairs with a keyed consonant-pair question. It does not supply the twelve-pair list, so the source table is not replaced. Bound additively as partial support; correction COR-018 covers the /ʃ/ and /ʒ/ column reversal, not this table."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The heading /s/ /z/ and the description of /s/ and /z/ (voiceless and voiced alveolar fricatives)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 548-550; UTF-8 joined-line SHA256 79bb0aae3349eeb8c6899129826ad3e249578e8d03c79c07f8cc325e19ca7ca1; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 548-550; UTF-8 joined-line SHA256 79bb0aae3349eeb8c6899129826ad3e249578e8d03c79c07f8cc325e19ca7ca1; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The heading and two description lines are plain in the docx. The descriptions are correct. The first topic line gives the contrast as /s/ and /z/; no rule is given for when the plural or third-person -s is /s/ and when it is /z/, which is why bins and beans both end in /z/ (see SC04)."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: third paragraph, sentence 3; fourth paragraph, sentence 1; practice Q2",
+          "explanation": "Names /s z/ among the voicing contrasts and gives sip/zip, with a keyed question on the pair. It does not give the place and manner description. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The eight /s/ and /z/ word pairs (sow/zoo to excess/example)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 551-558; UTF-8 joined-line SHA256 17bf94c5a6ef8c66d67d1c766d0204f426b7fcef16486c82aae4cd4d47f4fc47; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 551-558; UTF-8 joined-line SHA256 17bf94c5a6ef8c66d67d1c766d0204f426b7fcef16486c82aae4cd4d47f4fc47; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The pairs are a two-column table in the docx. Only sip/zip and rice/rise are minimal pairs. Sow is ambiguous (verb /səʊ/ or noun /saʊ/) and zoo differs in the vowel; bless/breeze, dice/dries and bus/business differ in more than the target sound; bins/beans does not contrast /s/ and /z/ at all, because bins ends in /z/ in the usual pronunciation; excess/example contrast /s/ and /z/ in a different position. These are my reading of the usual British pronunciation, not dictionary-checked in this pass, and the table is not taught as written."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: fourth paragraph, sentence 1; practice Q2",
+          "explanation": "Gives sip/zip as a worked /s/-/z/ pair with a keyed question. It does not replace the eight-pair list. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The heading /ʒ/ /ʃ/ and the description of /ʒ/ and /ʃ/ (voiced and voiceless post-alveolar fricatives)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 561-564; UTF-8 joined-line SHA256 74dbf3d824bfbeb364a89664e2ca5ccc430ce6e6d01661caaef954ed0c90419b; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 561-564; UTF-8 joined-line SHA256 74dbf3d824bfbeb364a89664e2ca5ccc430ce6e6d01661caaef954ed0c90419b; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The heading and descriptions are bold in part in the docx. The descriptions are correct (/ʒ/ voiced and /ʃ/ voiceless, both post-alveolar fricatives). The heading names /ʒ/ before /ʃ/ and so does the table below it, which is the order that leads to the column reversal in SC06. The stray label 'contrast' follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: third paragraph, sentences 3-4",
+          "explanation": "Names /ʃ ʒ/ as a voicing contrast and gives measure for /ʒ/ and judge for /dʒ/. Correction COR-018 binds this lesson to the whole body for the reversed columns. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The nine /ʒ/ and /ʃ/ word pairs (vicious/erasure to chauffeur/mirage)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 565-574; UTF-8 joined-line SHA256 e56283662710d44061846ce20409a8e2869ad4ba387b08e991b3ccb9fdcd39e5; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 565-574; UTF-8 joined-line SHA256 e56283662710d44061846ce20409a8e2869ad4ba387b08e991b3ccb9fdcd39e5; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The table's column headings are /ʒ/ then /ʃ/, but the words are reversed: the left column holds /ʃ/ words (vicious, gracious, nation, machine, precious, commotion, indication, shrub, chauffeur) and the right column holds /ʒ/ words (erasure, pleasure, treasure, exposure, measure, confusion, decision, beige, mirage). The rows are unrelated words, not minimal pairs; mirage may also be said with /dʒ/ in some accents. This reversal and the non-contrast pairs are the defects named by correction SS1-02-english-COR-018, whose replacement SUP-SS1-ENGLISH-PHONETICS-T3 has no word list for these sounds, so it covers the correction but not the table."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: third paragraph, sentences 3-4",
+          "explanation": "States the /ʃ/-/ʒ/ voicing pair with measure for /ʒ/ and so corrects the sound facts, but gives no list of word pairs and no practice on this contrast. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write 2 words each to show the contrast of the pairs /ʃ/ and /ʒ/, /s/ and /z/, /v/ and /f/",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 576-580; UTF-8 joined-line SHA256 d3becdf8826d63923531ffd43b4fbea2b552dded41bfbcbf9072d0279fb3a0d2; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 576-580; UTF-8 joined-line SHA256 d3becdf8826d63923531ffd43b4fbea2b552dded41bfbcbf9072d0279fb3a0d2; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "'EVALUATION' is plain and the three pairs are an automatic list in the docx (numerals not in the extracted text); the first pair is split across a bold /ʃ/ and /ʒ/,. The task is open (any two valid words per sound) and it is not clear whether 'each' means two words per sound or two pairs; it has no marks, key or marking criteria. Answers could be checked only against a stated dictionary or pronunciation model, and any written answer shows recognition of symbols, not pronunciation. No key or rubric exists and none is invented."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: fifth paragraph, last two sentences; practice Q3",
+          "explanation": "States that written answers show symbol recognition, not certified pronunciation, and gives a keyed question on checking pronunciation responsibly. It has no keyed word-contrast task. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-SC08",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: the Standard Speech 10 Book, Diction in English Course, pages 2 to 6",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 581-582; UTF-8 joined-line SHA256 a4648b082b5d777cbc3f9d504cad97a692e32c2f341abb8f8fb239a78c672310; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 581-582; UTF-8 joined-line SHA256 a4648b082b5d777cbc3f9d504cad97a692e32c2f341abb8f8fb239a78c672310; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "'READING ASSIGNMENT' is plain in the docx. The book is written 'Standard Speech 10 Book, Diction in English Course' (the Week 4 assignment says 'Standard Speech 10'); no author or edition is given and the pages are not supplied. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Introduction to nominalization: the heading and the content labels (Definition, Affixation, Compounding)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 584-588; UTF-8 joined-line SHA256 9938160ab8545afc120e2ef0a923922f67fd6b230447b78d511182f5d8278ed0; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 584-588; UTF-8 joined-line SHA256 9938160ab8545afc120e2ef0a923922f67fd6b230447b78d511182f5d8278ed0; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The heading is bold with automatic numbering and the three labels are an automatic list in the docx (numerals not in the extracted text); 'Content' is plain. The labels name two methods, but the definition below (NM02) names three: the third, the definite article plus an adjective, has no label and no later section."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Nominalization: definition (conversion from other word classes into nouns) and the three methods (affixation, the + adjective, compounding)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 589; UTF-8 joined-line SHA256 ba3aace04035ff86f5ce62a7ab179f7a0eb20cc9ac89d2410e1df0b36b1e9de3; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-AFFIXES-T3",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 589; UTF-8 joined-line SHA256 ba3aace04035ff86f5ce62a7ab179f7a0eb20cc9ac89d2410e1df0b36b1e9de3; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The definition (conversion from other word classes into nouns) is sound at sentence level but narrow: it omits conversion with no change in form (for example a run, a kick). Compounding is listed as a method of deriving nouns, yet the later section on it teaches only the plural of compound nouns, which is not conversion from other word classes."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T3: first paragraph; practice Q1",
+          "explanation": "Teaches bases, prefixes and suffixes and has a keyed question that forms nouns with -ness and -ment. It does not define nominalization. Bound additively as partial support."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: first paragraph (noun-forming endings)",
+          "explanation": "Lists the common noun-forming endings as clues, with arrive/arrival, move/movement and kind/kindness. It does not define nominalization or name the other methods. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Nominalization method: the definite article (the) + an adjective (named in the definition only)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 589; UTF-8 joined-line SHA256 ba3aace04035ff86f5ce62a7ab179f7a0eb20cc9ac89d2410e1df0b36b1e9de3; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 589; UTF-8 joined-line SHA256 ba3aace04035ff86f5ce62a7ab179f7a0eb20cc9ac89d2410e1df0b36b1e9de3; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The method is named once, in the definition, and is never explained or exemplified: there is no sentence such as 'the poor' or 'the rich', no rule about plural meaning and no exercise. A later 'Content' list does not include it. Nothing is inferred or invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Affixation: definition (affixes added to a word to give new meanings, modify meaning or change the word class; prefixes, suffixes and infixes)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 591; UTF-8 joined-line SHA256 dd43570a71b0639986fdb4cef289d4866381506e2a0c71fbd996feb98b5631d2; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-AFFIXES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 591; UTF-8 joined-line SHA256 dd43570a71b0639986fdb4cef289d4866381506e2a0c71fbd996feb98b5631d2; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The definition is sound at sentence level, with 'bound morphemes' correct, but it lists infixes among the affix kinds without example; English has no productive infixes and the sentence would mislead a learner if taught as written. No example or practice follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T3: first paragraph, sentences 1-4",
+          "explanation": "Defines a base, a prefix and a suffix and separates meaning change from word-class change. It does not mention infixes, which are therefore not taught. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Noun-forming suffixes: the list (ment, ness, ion, ship, hood, ation, ance, ence, ancy/ency, atis, cido, ism, ist, re/or, ee, ster, ess/tress, trix, ine, let/ette, ling, ve, ant, ing)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 593; UTF-8 joined-line SHA256 89e3766cbc65b9ec51c6d2648dbc0f88d2086c43a0c2ac18577734b689798d49; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 593; UTF-8 joined-line SHA256 89e3766cbc65b9ec51c6d2648dbc0f88d2086c43a0c2ac18577734b689798d49; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The list is one run-on line, with 'follwing' for 'following'. Several items are not English noun suffixes as written: 'atis' and 'cido' (probably the Latin-based -itis and -cide), 're/or' (for -er/-or), '-ve', and 'ine' without an example; -ette appears twice, and -ity, which the source teaches below, is missing from the list. No example is given for most items. The list is not taught as written."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: first paragraph (noun-forming endings)",
+          "explanation": "Lists -age, -ment, -ness, -hood, -ship, -ist, -ism, -ity, -cy, -tion, -ery, -er/-or, -ster, -tude and -ocracy with examples and warns that endings are clues, not proof. It covers part of the intended list and not the rest. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Suffix -ment: it usually goes with verbs (enslave/enslavement, encroach/encroachment, enlighten/enlightenment)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 595-598; UTF-8 joined-line SHA256 922237a30412773f25b344f2b59331cf8a25b7dde87b39b618bd31beefa1ea3d; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-AFFIXES-T3",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 595-598; UTF-8 joined-line SHA256 922237a30412773f25b344f2b59331cf8a25b7dde87b39b618bd31beefa1ea3d; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The rule and the three pairs are sound; the pairs are an automatic list in the docx (numerals not in the extracted text) and they are written once as noun-verb (enslavement - enslave) and twice as verb-noun. The replacement teaches -ment on verbs with other examples. Bound narrowly: the source pairs themselves are not in the replacement."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T3: third paragraph; practice Q1",
+          "explanation": "States that -ment follows verbs (enjoy/enjoyment) with a keyed 2-mark question that forms enjoyment from enjoy."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: first paragraph; practice Q8",
+          "explanation": "Gives move/movement and a keyed 4-mark noun-forming question that includes movement."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Suffix -ness: applied to adjectives, especially those ending in -ful, -less, -y, -ous, -ve (usefulness, heartlessness, callousness)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 600-603; UTF-8 joined-line SHA256 132749b6c338716f4641847c5f8a7fb6162ed93e7bc2e79fcaadf3ddccdce02b; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-AFFIXES-T3",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 600-603; UTF-8 joined-line SHA256 132749b6c338716f4641847c5f8a7fb6162ed93e7bc2e79fcaadf3ddccdce02b; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "'norpheme' is a slip for 'morpheme' and 'ous, -ve' lacks a hyphen on the first item. The rule and the three examples are sound. The replacement teaches -ness on adjectives (happiness) with the y-to-i change and a keyed question. Bound narrowly: the source's ending list and its three examples are not in the replacement."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T3: third paragraph; practice Q1",
+          "explanation": "Gives happy/happiness with the y-to-i spelling change and a keyed question forming happiness."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: first paragraph; practice Q8",
+          "explanation": "Gives kind/kindness and firm/firmness, with a keyed question that includes firmness and a spelling warning."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM08",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Suffix -ity: often connected to adjectives ending in -ic, -se, -re, -al, -cal, -ous, -ve, -ble, -able, -ce (ethnic/ethnicity, intense/intensity)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 605-608; UTF-8 joined-line SHA256 d557305fa892ee9dcd66da56d003cc671d13bc701d5e5476184eda66ad825049; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 605-608; UTF-8 joined-line SHA256 d557305fa892ee9dcd66da56d003cc671d13bc701d5e5476184eda66ad825049; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The two examples are sound; the list of adjective endings is long and unsupported (it gives no example for most endings). The replacement teaches -ity with active/activity and a keyed question. Bound narrowly: the ending list and the source's two examples are not in the replacement."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: first paragraph; practice Q8",
+          "explanation": "Lists -ity among the noun-forming endings with active/activity and a keyed question forming activity."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM09",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Suffix -hood: attached to nouns, adjectives or adverbs (manhood, priesthood)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 610-612; UTF-8 joined-line SHA256 182ebfd48c83979f8b66f8b36277bd10bd4d2cb5a69867deabbc92321a291e92; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 610-612; UTF-8 joined-line SHA256 182ebfd48c83979f8b66f8b36277bd10bd4d2cb5a69867deabbc92321a291e92; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The examples are sound, but the claim that -hood attaches to adverbs is not supported (it attaches mainly to nouns, with a few adjective bases such as falsehood); it must not be taught as written. The replacement lists -hood with child/childhood only."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: first paragraph",
+          "explanation": "Lists -hood with child/childhood as a noun-forming ending. It does not state the base classes, so the source claim is neither confirmed nor corrected. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM10",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Compounding: a compound noun is a noun of more than one word, and its plural is made by adding -s (or an equivalent plural marker) to the major word",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 614; UTF-8 joined-line SHA256 f5a3853fe4b276f1d7ee1987e579fcb4a1868f71b61ab419a6483bae361ac0f7; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 614; UTF-8 joined-line SHA256 f5a3853fe4b276f1d7ee1987e579fcb4a1868f71b61ab419a6483bae361ac0f7; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The rule that the main word takes the plural is sound; 'major word' is the source's term for the head, and 'an equivalent plural marker' is vague (it presumably covers the irregular plurals such as men). The replacement teaches the plural of compound nouns, but not compounding as a way of forming nouns. Bound narrowly to the plural rule."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: paragraph 'Plurals of compound nouns'; practice Q5",
+          "explanation": "States that the main noun takes the plural (mothers-in-law, heads of state), with a keyed 5-mark question on the plural of five nouns that includes mother-in-law, grown-up and woman doctor. Already bound to coverage ENGLISH-T1-W01-N09 in the 1st Term."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM11",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Compound nouns whose major word is the first part: secretary-general, court-martial, hanger-on, solicitor-general and their plurals",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 616-621; UTF-8 joined-line SHA256 054d3feaed37d40ef00acf1edea98f1660c483c76783f0583574c95c14e9c8ae; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 616-621; UTF-8 joined-line SHA256 054d3feaed37d40ef00acf1edea98f1660c483c76783f0583574c95c14e9c8ae; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The four pairs are a two-column table in the docx. All four plurals are correct (court-martial also occurs as courts martial). The replacement teaches the rule on other examples (mothers-in-law). Bound narrowly: the four source pairs are not in the replacement."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: paragraph 'Plurals of compound nouns'; practice Q5",
+          "explanation": "Gives the same rule (the main noun takes the plural) with different examples and a keyed question."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM12",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Compound nouns whose major word is the last part: headscarf, talisman, linguafranca, child soldier, man eater, by election, highway man and their plurals",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 623-631; UTF-8 joined-line SHA256 474d28b5139ff39264f8c0476b2022d287d878c958691a2feeb49d80745b4cf0; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 623-631; UTF-8 joined-line SHA256 474d28b5139ff39264f8c0476b2022d287d878c958691a2feeb49d80745b4cf0; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The seven pairs are an unlabelled table in the docx. Talisman is not a compound (its plural is talismans), and linguafranca is a Latin phrase written as one word (lingua franca) with its own plurals (lingua francas or linguae francae); neither shows the rule. Headscarfs is one accepted plural alongside headscarves; man eater and by election are usually written with a hyphen; highway man is written as one word and its plural is highwaymen. The sentence introducing the group is a line without a verb. Not taught as written; no dictionary check is made in this pass."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: paragraph 'Plurals of compound nouns'",
+          "explanation": "States the general rule for compounds and the case of grown-ups, where no noun carries the plural. It does not cover the seven source words. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM13",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Compound nouns that accept plurals in both parts: woman pilot / women pilots, man friend / men friends",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 633-636; UTF-8 joined-line SHA256 191a4b70d7622d427f7e36f944507bdd3796c474767779c8956729847e09c9c9; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-NOUNS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 633-636; UTF-8 joined-line SHA256 191a4b70d7622d427f7e36f944507bdd3796c474767779c8956729847e09c9c9; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "The heading line has no verb. Woman pilot/women pilots is a sound example of the pattern in which man or woman states a person's sex before an occupation noun. Man friend/men friends is not a standard form (male friends or boyfriends is usual) and is not taught as written. The replacement states the pattern for occupation nouns and says it is not a rule for every word beginning with man- or woman-."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-NOUNS-T1: paragraph 'Plurals of compound nouns'; practice Q5",
+          "explanation": "States that both words change when man or woman identifies a person's sex before an occupation noun (women doctors, men nurses) and keys woman doctor. It covers woman pilot by analogy but not man friend. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM14",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: use the affixes phaty, ancy, graphy, tis, archy, ology to form nouns",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 638-639; UTF-8 joined-line SHA256 eee661d5e4ab2f229bc868b4e7a48f1b4831f88536cbd1ef201294492a1b74d6; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+        "SUP-SS1-ENGLISH-AFFIXES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 638-639; UTF-8 joined-line SHA256 eee661d5e4ab2f229bc868b4e7a48f1b4831f88536cbd1ef201294492a1b74d6; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "'EVALUATION' is plain. 'phaty' is not an affix: presumably -pathy (a slip), and 'tis' is presumably -itis; -graphy, -archy and -ology are combining forms of Greek origin, and -ancy is a suffix. No base words are given, and the task is open, so any key would be an invention. The task has no marks or criteria. The replacement's keyed question forms nouns from two given bases and does not cover these combining forms."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T3: third paragraph; practice Q1",
+          "explanation": "Teaches noun suffixes with a keyed two-word question and warns that a dictionary should be used when unsure. It does not cover the Greek combining forms. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-NM15",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: nominalization, pages 67 to 95 of Towards Effective Use of English by Folu Agoi",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 641-642; UTF-8 joined-line SHA256 606076781fe8181e6095ae89943bcbe28b226e298d3107d055f06a344bd5b2e9; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 641-642; UTF-8 joined-line SHA256 606076781fe8181e6095ae89943bcbe28b226e298d3107d055f06a344bd5b2e9; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "'Reading Assignment' is plain in the docx. The title and author are named, with no edition or publisher; the pages (29 pages) are not supplied. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W05-WA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: questions 2 and 3 of Effective English, page 205",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 644-645; UTF-8 joined-line SHA256 7c81e3dd059d35ae669ba54e74615586d114c0c575db2c9bba258668ac935995; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 644-645; UTF-8 joined-line SHA256 7c81e3dd059d35ae669ba54e74615586d114c0c575db2c9bba258668ac935995; SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c",
+          "explanation": "'WEEKEND ASSIGNMENT' is bold in the docx. The questions are on page 205 of the unsupplied book (no edition) and their subject is not stated, so it cannot be seen which Week 5 topic they test. No question, key or mark is given and none is inferred."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -19197,6 +19853,84 @@
         "ENGLISH-T3-W04-WA01",
         "ENGLISH-T3-W04-TH01",
         "ENGLISH-BODY-069"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W05-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 5 depends on published material the source does not contain: the Effective English comprehension passage and questions on page 152 (pages 152-153), the Standard Speech 10 Book, Diction in English Course, pages 2 to 6, pages 67 to 95 of Towards Effective Use of English by Folu Agoi, and questions 2 and 3 on page 205 of Effective English. Editions are not given.",
+      "required_action": "Supply exact authorised extracts and editions, or have the owner accept labelled original equivalent activities (see ENGLISH-PRESCRIBED-PASSAGES). Until then none is taught as checked (queue item ENG-FACT-T3-W05-EXTERNAL-MATERIALS).",
+      "affected_ids": [
+        "ENGLISH-T3-W05-RS04",
+        "ENGLISH-T3-W05-RS05",
+        "ENGLISH-T3-W05-SC08",
+        "ENGLISH-T3-W05-NM15",
+        "ENGLISH-T3-W05-WA01",
+        "ENGLISH-BODY-070",
+        "ENGLISH-BODY-071"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W05-SCHEME-GAP",
+      "kind": "CONTENT",
+      "detail": "Scheme row 5 names diphthongs /ei/ and /ai/ and conjuncts and disjuncts, but the Week 5 body teaches neither (its topics are scanning and skimming, the /f/-/v/, /s/-/z/ and /ʃ/-/ʒ/ contrasts, and nominalization). The 1st Term diphthong and adverb, conjunction and preposition lessons exist but are not bound to Week 5, and the scheme row and body disagree.",
+      "required_action": "Owner to decide whether the 1st Term supplements are the intended Week 5 delivery or whether original Week 5 lessons are wanted; then author or bind accordingly with keyed, marked practice, labelled original (queue item ENG-LES-T3-W05-SCHEME-GAP). Do not infer content from the topic names.",
+      "affected_ids": [
+        "ENGLISH-T3-W05-SR01",
+        "ENGLISH-T3-W05-SO01",
+        "ENGLISH-T3-W05-SO02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W05-READING-SKILLS",
+      "kind": "CONTENT",
+      "detail": "The skimming and scanning content has no passage, worked example or practice. The scanning explanation conflates scanning with previewing and with reading for main points, and the replacement reading lesson models the skills on an original passage without defining the method or keying a skimming task.",
+      "required_action": "Author an original, labelled reading-skills lesson with a corrected definition of scanning, a short original passage and keyed, marked skimming and scanning questions, bound additively to SUP-SS1-ENGLISH-READING-T3 (queue item ENG-LES-T3-W05-READING-SKILLS). Do not infer the page 152 passage.",
+      "affected_ids": [
+        "ENGLISH-T3-W05-TP01",
+        "ENGLISH-T3-W05-RS01",
+        "ENGLISH-T3-W05-RS02",
+        "ENGLISH-T3-W05-RS03",
+        "ENGLISH-BODY-070"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W05-SOUND-CONTRASTS",
+      "kind": "CONTENT",
+      "detail": "The three sound-contrast tables have defects (proof/prove reversed, a repeated word and non-minimal pairs in /v/-/f/; one-in-four clean pairs and a pair with both words ending in /z/ in /s/-/z/; reversed /ʒ/ and /ʃ/ columns), and no practice is keyed. Correction COR-018 replaces the whole of ENGLISH-BODY-071 with SUP-SS1-ENGLISH-PHONETICS-T3, which names the voicing pairs and the column-reversal fact but has no word lists or contrast practice. The replacement does not teach the nominalization half of the row, so the row-level IMPLEMENTED_EQUIVALENT of ENGLISH-BODY-071 overstates its scope; that status is left unchanged here and the downgrade is left to the owner, as for ENGLISH-BODY-021.",
+      "required_action": "Author original, dictionary-checked minimal-pair lists with transcription for /f/-/v/, /s/-/z/ and /ʃ/-/ʒ/ and a keyed, marked contrast practice, labelled original, bound additively to SUP-SS1-ENGLISH-PHONETICS-T3 (queue item ENG-LES-T3-W05-SOUND-CONTRASTS). Oral production stays a teacher observation, not a written key.",
+      "affected_ids": [
+        "ENGLISH-T3-W05-SC01",
+        "ENGLISH-T3-W05-SC02",
+        "ENGLISH-T3-W05-SC03",
+        "ENGLISH-T3-W05-SC04",
+        "ENGLISH-T3-W05-SC05",
+        "ENGLISH-T3-W05-SC06",
+        "ENGLISH-T3-W05-SC07",
+        "ENGLISH-BODY-071"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W05-NOMINALIZATION",
+      "kind": "CONTENT",
+      "detail": "The nominalization content is partly covered by the 1st Term noun and 3rd Term affix supplements (-ment, -ness, -ity, and the plural of compound nouns) but not the definition, the definite article plus an adjective, the infix claim, the -hood claim about adverbs, the garbled suffix list, the second compound-noun table (talisman and linguafranca are not compounds, highway man) or man friend. The task of forming nouns from phaty, tis and the other affixes has no key.",
+      "required_action": "Author an original, labelled nominalization lesson (definition, affixation, the + adjective, conversion, and a corrected suffix list with examples) with a keyed, marked practice on forming nouns, bound additively to SUP-SS1-ENGLISH-AFFIXES-T3 and SUP-SS1-ENGLISH-NOUNS-T1 (queue item ENG-LES-T3-W05-NOMINALIZATION). Do not repair the source lists in place.",
+      "affected_ids": [
+        "ENGLISH-T3-W05-NM01",
+        "ENGLISH-T3-W05-NM02",
+        "ENGLISH-T3-W05-NM03",
+        "ENGLISH-T3-W05-NM04",
+        "ENGLISH-T3-W05-NM05",
+        "ENGLISH-T3-W05-NM09",
+        "ENGLISH-T3-W05-NM12",
+        "ENGLISH-T3-W05-NM13",
+        "ENGLISH-T3-W05-NM14",
+        "ENGLISH-BODY-071"
       ],
       "blocks_delivery": true
     }
