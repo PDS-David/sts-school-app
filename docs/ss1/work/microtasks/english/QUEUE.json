@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 150,
+    "PENDING": 149,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 87,
+    "IMPLEMENTED_TESTING_DEFERRED": 88,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 150,
+    "PENDING": 149,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 87,
+    "IMPLEMENTED_TESTING_DEFERRED": 88,
     "BLOCKED": 5
   },
   "items": [
@@ -4943,8 +4943,8 @@
       "depends_on": [
         "ENG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T1-W07 on 2026-11-07; not implemented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original same-term lesson SUP-SS1-ENGLISH-NOUN-CLAUSES-W07-T1 ('Noun clauses: the five functions and their correct analysis') in backend/src/db/ss1/subjects/english.json. It extends the existing Week 7 lesson without altering the already-supported ENGLISH-T1-W07-NC-DEFINITION, NC-SUBJECT or NC-OBJECT coverage entries. The new lesson teaches/analyses all five functions: subject, direct object, subject complement, complement of a preposition and object complement. Four missing objective entries (NC-SUBJECT-COMPLEMENT, NC-PREPOSITION, NC-OBJECT-COMPLEMENT, NC-PRACTICE) now IMPLEMENTED_EQUIVALENT with exact source locators and objective-level evidence. It explicitly corrects the source's swapped labels: 'The prize will go to whoever wins' is a prepositional complement; 'We call him what he likes' is an object complement. Includes a keyed five-sentence exercise (10 marks) plus a 2-mark correction item; all marking sums match. Removed ENGLISH-T1-W07-NOUN-GAP. Separate prescribed-book page objective ENGLISH-T1-W07-NC-READING remains UNRESOLVED under ENGLISH-T1-W07-BOOKS-GAP; no textbook content invented. Lesson approval PENDING and verification DEFERRED; runtime/compiler checks deferred.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": []
     },
@@ -7730,7 +7730,6 @@
     "ENG-FACT-W03-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-UNIFIED-TEST",
-    "ENG-LES-T1-W07-NOUN-CLAUSES",
     "ENG-LES-T1-W07-CONSONANTS",
     "ENG-LES-T1-W07-NARRATIVE",
     "ENG-LES-T1-W07-REVISION",
