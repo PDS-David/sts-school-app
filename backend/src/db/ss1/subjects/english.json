@@ -986,6 +986,18 @@
         "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
         "explanation": "Unique first-topic anchor for the seventh scheme data row. The original DOCX table row contains four Week 7 strands: reading for leisure, semi-formal letter, sentence structure and spelling. The row is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY classifies structure only and does not claim that every strand was taught. Source wording is retained."
       }
+    },
+    {
+      "id": "SS1-SRC-50fa9b1eb2fd-R029",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Comprehension; Summarizing in a specified number of sentences",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+        "explanation": "Unique first-topic anchor for the eighth scheme data row. The original DOCX table row contains four Week 8 strands: summary writing, homophones, functions of comparatives, and sports/entertainment vocabulary. It is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY records structure and does not claim all four strands were taught. Source wording is retained."
+      }
     }
   ],
   "lessons": [
@@ -19348,6 +19360,332 @@
           "explanation": "The source names two exercises and page numbers but does not identify the book/edition at this point or include the exercise text, answer key or marks. No questions or answers are inferred."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 8: Comprehension—summarising in a specified number of sentences; Speech Work—homophones; Structure—functions of comparatives; Vocabulary Development—sports and entertainment.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R029"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The original DOCX scheme row contains these four strands. Rule R029 classifies the complete row as SCHEME_ONLY; this marker records the scheme, not teaching coverage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SO01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: comprehension, summarising in a specified number of sentences.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme specifies summary writing with a sentence-count constraint."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Week Eight, Section A, “Guide to summarizing in a specified number of sentences”, evaluation and reading assignment",
+          "explanation": "The Week 8 body sets out ten summary guidelines. The existing T3 reading supplement models a two-sentence summary and teaches concise, accurate summary, but does not cover every Week 8 instruction (for example separate numbered answers and not combining points) or the named textbook passage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SO02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: Speech Work—homophones.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "Homophones appear in the Week 8 scheme row, but the Week 8 body teaches intonation instead. The existing T3 phonetics supplement teaches selected sound contrasts, not homophones; no equivalent lesson or keyed homophone practice is present."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SO03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: structure, functions of comparatives.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names the functions of comparatives."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+          "explanation": "The Week 8 body explains comparing two things and gives regular, more/less and irregular examples, but has conceptual/example defects and no keyed, marked practice. No existing comparative supplement completes this objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SO04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: vocabulary development, sports and entertainment.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-ENTERTAINMENT-VOCAB-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 8 (zero-based row index 8), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names sports and entertainment vocabulary."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ENTERTAINMENT-VOCAB-T1: athletics, football and theatre sections; objectives 1–6; keyed practice Q1–Q8",
+          "explanation": "This existing same-subject supplement teaches sport and theatre/entertainment vocabulary, reviews faulty glosses and supplies keyed, marked practice. It is bound additively; its original 1st Term identity is retained."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Ten guidelines for summarising in a specified number of sentences: identify the main idea; reorder only where helpful; use own words; preserve meaning and facts; be concise; use sentences rather than phrases; number separate answers; and keep one point per sentence.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Week Eight, Section A, “Guide to summarizing in a specified number of sentences”, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Section A, numbered guidelines 1–10",
+          "explanation": "The source lists ten rules, including own words, factual accuracy, brevity, sentence form, numbering and one point per sentence. Several instructions are compressed or contain typographical errors, which are preserved for review."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: body section on main ideas and summary; keyed practice Q3",
+          "explanation": "The T3 reading supplement models a concise two-sentence summary and warns against inventing facts, but does not teach or assess all ten Week 8 rules, especially the separate numbered-answer format."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CR02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: read the summary passage on Effective English pages 29–30 and answer its summary question.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Week Eight, Section A, “Guide to summarizing in a specified number of sentences”, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Section A evaluation immediately after the ten summary guidelines",
+          "explanation": "The source points to an external passage and question; neither is included in the teacher-note DOC or package. No source answer or mark allocation is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CR03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: summary writing, Countdown by Evans, pages 102–103.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Week Eight, Section A, “Guide to summarizing in a specified number of sentences”, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:462c1bef1f6a5fd34b7bd645687bf4e48d70c901684ee5f3ea9a87ce21d6b7db :: Week Eight, Section A, “Guide to summarizing in a specified number of sentences”, evaluation and reading assignment :: “READING ASSIGNMENT: Summary writing page 102–103 of Countdown by Evans”",
+          "explanation": "The assignment names a book and page range, but the edition and page content are absent from the supplied archive and package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SW01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Intonation for simple polite requests: recognise how pitch movement can signal politeness and pragmatic meaning in context.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Week Eight, Section B, “Intonation”, simple polite requests, greetings and evaluation",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Section B, “Simple Polite Requests” and the listed request examples",
+          "explanation": "The source gives several request-like examples and asserts that a request takes rising intonation. The list also includes bare imperatives such as “Get out of the room”, without a polite context."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-STRESS-T3: body paragraph beginning “Intonation is movement of pitch across an utterance”; keyed practice Q3",
+          "explanation": "The T3 supplement corrects the universal-rise claim and explains that a polite request may use a rise or fall-rise depending on context. It does not provide a full set of Week 8 request models or audio/oral practice."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SW02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Simple greetings that attract a quick response, including the source example “Good morning — Morning”.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Week Eight, Section B, “Intonation”, simple polite requests, greetings and evaluation",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Section B, “Simple Greetings That Attracts Quick Response”",
+          "explanation": "The source gives one greeting/response pair but no explanation of register, alternatives, conversational context or practice. The T3 intonation supplement does not teach this greeting objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SW03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Notation for word stress and intonation: stressed/unstressed syllables and falling/rising pitch marks.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Week Eight, Section B, “Intonation”, simple polite requests, greetings and evaluation",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: paragraph beginning “A stressed syllable is indicated…”",
+          "explanation": "The source describes a dash, dot, downward curve and upward curve, but the actual rising symbol is blank in the extracted source and the falling mark appears as a comma. The source gives no recording or reliable model for oral comparison."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-STRESS-T3: opening word-stress and intonation paragraphs",
+          "explanation": "The T3 supplement explains IPA stress marking and pitch movement, but does not identify or validate the missing/unclear symbols in the Week 8 source. Written identification is not oral verification."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-SW04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: study the conversation in Effective English Practice 2, page 25, and answer Practice 3.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Week Eight, Section B, “Intonation”, simple polite requests, greetings and evaluation",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 :: Section B evaluation after the greeting examples",
+          "explanation": "The conversation and question are in an external textbook page not included in the archive or package. There is no answer key or marking allocation; none is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Meaning and functions of comparatives: the comparative degree expresses a higher or lower degree and compares two things.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Section C, “Meaning” and “Functions”",
+          "explanation": "The source identifies the comparative as the second degree and says it compares two things, but its explanation of “more so” is imprecise and no replacement lesson or keyed practice is present."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Regular comparative forms with -er, including spelling changes such as fat/fatter and big/bigger.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Section C, “Regular Comparative: Adding ‘er’” and its six examples",
+          "explanation": "The source gives poor/poorer, tall/taller, fat/fatter, big/bigger, short/shorter and cold/colder. It does not explain the conditions for doubling or distinguish one-syllable and longer adjectives; no keyed practice is supplied."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comparatives formed with more and less, including more expensive, more important, more handsome, less worthy and less fortunate.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Section C, “Add ‘more’” and “Decreased degree of quality”",
+          "explanation": "The source gives examples with more and less, but the “less” table also lists strong/stronger, which does not illustrate decreased degree. It does not teach the choice between -er and more systematically or provide keyed practice."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Irregular comparative forms: good/better, bad/worse, little/less and far/farther.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Section C, “Irregular Comparative” table",
+          "explanation": "The source lists four forms, but gives no contextual sentences or keyed practice; “little/less” and “far/farther” require the intended adjective sense to be clear."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: give comparative forms for much, well, many, enviable and loyal.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Section C evaluation immediately after the irregular comparative table",
+          "explanation": "The five-word task has no key or marks. “Well” is not ordinarily an adjective in its common adverb use, while much and many may function as determiners/pronouns; the intended grammatical context is not supplied. No answer is guessed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown in English by Evans, pages 209–210.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight, Section C, “Functions of Comparatives”, examples, evaluation and reading assignment :: “READING ASSIGNMENT: Countdown in English by Evans pag 209–210”",
+          "explanation": "The assignment names a book and page range, but the edition and page content are absent from the supplied archive and package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W08-CM07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: page 102 of Effective English, Tests 1 and 4.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight “WEEKEND ASSIGNMENT”: “Pg 102 of the effective English test 1 & 4”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:febfc45287b97392c6dd0faf831a1eac5a43d080e727273babc6c56ab083e0e4 :: Week Eight “WEEKEND ASSIGNMENT”: “Pg 102 of the effective English test 1 & 4”",
+          "explanation": "The source identifies a page and two tests but supplies no exercise text, book edition, answer key or marks. No test content or answers are inferred."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -20848,6 +21186,91 @@
       "required_action": "Obtain the exact authorised book/edition and Practice 2 and 3 pages with an authoritative key/mark allocation, or author a labelled original parallel revision set with defensible questions, keyed answers and a complete marking breakdown. Do not infer the book or invent answers.",
       "affected_ids": [
         "ENGLISH-T3-W07-WA01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-SUMMARY-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 8 gives ten rules for summarising in a specified number of sentences. SUP-SS1-ENGLISH-READING-T3 teaches general summary skills and models a two-sentence summary, but does not cover all Week 8 requirements, particularly separate numbered answers and the one-point-per-sentence rule.",
+      "required_action": "Author original same-term summary teaching that explicitly covers all ten source rules, with a worked passage, a specified sentence limit and keyed, marked practice. Keep the existing reading supplement bound only as partial support; do not claim the missing textbook passage was used.",
+      "affected_ids": [
+        "ENGLISH-T3-W08-SO01",
+        "ENGLISH-T3-W08-CR01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-HOMOPHONES-SCHEME-GAP",
+      "kind": "CONTENT",
+      "detail": "The Week 8 scheme row includes Speech Work: Homophones, but the Week 8 teaching body covers intonation instead. The current T3 phonetics supplement teaches selected sound contrasts, not homophones; no homophone lesson or keyed practice is present.",
+      "required_action": "Author original same-term teaching that defines homophones, distinguishes them from homographs and other sound-alike forms, and provides clear context sentences with keyed, marked practice; alternatively obtain an explicit owner decision to relocate/remove the scheme strand.",
+      "affected_ids": [
+        "ENGLISH-T3-W08-SO02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 8 assigns Effective English pages 29–30 (summary passage/question) and Practice 2 page 25 with Practice 3 (speech-work conversation), plus Countdown by Evans pages 102–103 (summary writing) and 209–210 (comparatives). These pages/editions are not in the supplied archive or package.",
+      "required_action": "Obtain the authorised editions/pages with bibliographic details and any official keys/marks, or record owner acceptance of labelled original equivalents. Do not reproduce unprovided textbook pages or claim they were inspected.",
+      "affected_ids": [
+        "ENGLISH-T3-W08-CR02",
+        "ENGLISH-T3-W08-CR03",
+        "ENGLISH-T3-W08-SW04",
+        "ENGLISH-T3-W08-CM06"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-INTONATION-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The Week 8 body covers polite requests and one greeting response, but its blanket claim that requests take rising intonation is unsafe; the source list includes bare commands, and its rise/fall symbols are missing or unclear. SUP-SS1-ENGLISH-STRESS-T3 corrects the universal-tune claim but does not teach the greeting set or validate the source notation. No recording is supplied for oral practice.",
+      "required_action": "Complete the Week 8 intonation strand with context-appropriate request/greeting examples, accurate notation and a model recording or teacher-verified oral activity; include keyed written identification and a separately described oral check. Do not claim oral verification from the text alone.",
+      "affected_ids": [
+        "ENGLISH-T3-W08-SW01",
+        "ENGLISH-T3-W08-SW02",
+        "ENGLISH-T3-W08-SW03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-COMPARATIVES-SCOPE",
+      "kind": "CONTENT",
+      "detail": "The Week 8 comparative body gives -er, more, less and irregular examples, but does not explain the choice rules or provide keyed practice. It also places strong/stronger under decreased degree, and the evaluation mixes much, well and many without grammatical context.",
+      "required_action": "Author accurate same-term teaching for comparative meaning/functions, -er spelling changes, more/less constructions and irregular forms, with contextual examples and keyed, marked practice. Resolve or explicitly qualify defective source examples without altering the source body.",
+      "affected_ids": [
+        "ENGLISH-T3-W08-SO03",
+        "ENGLISH-T3-W08-CM01",
+        "ENGLISH-T3-W08-CM02",
+        "ENGLISH-T3-W08-CM03",
+        "ENGLISH-T3-W08-CM04",
+        "ENGLISH-T3-W08-CM05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-COR-022-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "ENGLISH-BODY-079 is marked IMPLEMENTED_EQUIVALENT by COR-022, but SUP-SS1-ENGLISH-STRESS-T3 only partly supports the Week 8 intonation body: it corrects the universal-rise claim and explains pragmatic pitch movement, but does not teach the greeting response, validate the source's missing notation symbols or supply oral verification.",
+      "required_action": "Owner to review COR-022's row-level replacement scope/status and decide whether the correction should be narrowed or further teaching/recording scope added. Preserve the source body, correction and existing row-level status until the decision is evidenced; objective-level partial statuses remain authoritative.",
+      "affected_ids": [
+        "ENGLISH-BODY-079",
+        "ENGLISH-T3-W08-SW01",
+        "ENGLISH-T3-W08-SW02",
+        "ENGLISH-T3-W08-SW03",
+        "ENGLISH-T3-W08-SW04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W08-WEEKEND-ASSIGNMENT",
+      "kind": "CONTENT",
+      "detail": "The Week 8 weekend assignment says only “page 102 of Effective English, Test 1 & 4”; it does not include the tests, edition, answer key or marks.",
+      "required_action": "Obtain the exact authorised edition and Test 1 and Test 4 pages with an authoritative key/mark allocation, or author a labelled original parallel exercise with defensible questions, keyed answers and a complete marking breakdown. Do not infer the questions or answers.",
+      "affected_ids": [
+        "ENGLISH-T3-W08-CM07"
       ],
       "blocks_delivery": true
     }
