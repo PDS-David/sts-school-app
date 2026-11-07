@@ -974,6 +974,18 @@
         "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 6, lines 27-29; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
         "explanation": "Unique first-topic anchor for scheme-of-work table row 6. The original DOCX has a 13-row, one-column scheme table; this row contains three Week 6 scheme topics in the preamble before WEEK ONE. It is not a parsed teaching body. The compiler records the row as SCHEME_ONLY; this is structural classification, not evidence that the topics were taught, and no source text is removed."
       }
+    },
+    {
+      "id": "SS1-SRC-50fa9b1eb2fd-R028",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Comprehension and Reading Skills: Reading for leisure",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+        "explanation": "Unique first-topic anchor for the seventh scheme data row. The original DOCX table row contains four Week 7 strands: reading for leisure, semi-formal letter, sentence structure and spelling. The row is preamble scheme metadata, not a parsed teaching body; SCHEME_ONLY classifies structure only and does not claim that every strand was taught. Source wording is retained."
+      }
     }
   ],
   "lessons": [
@@ -18917,6 +18929,425 @@
           "explanation": "The source contains the question stems/options but no key or marks. Several items are visibly garbled or ambiguous, so answers are not inferred from the source wording or option order. See ENGLISH-T3-W06-WEEKEND-KEY."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 7: Comprehension and Reading Skills: Reading for leisure; Writing: Semi Formal Letter: Explanation and Features; Sentence Structure and formation; Spelling: Dropping (e) and retaining (e).",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R028"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The original DOCX scheme row contains these four strands. Rule R028 classifies the complete row as SCHEME_ONLY; this marker records the scheme, not teaching coverage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SO01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: comprehension and reading skills, reading for leisure.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The Week 7 scheme names reading for leisure. The parsed Week 7 body labels the activity “Reading for Pleasure” and places it under Reading Skill Unit 9: Entertainment."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+          "explanation": "The body gives a short description of the assigned entertainment passage, but the actual passage is not present. The existing T3 reading supplement teaches general reading skills using a different original library passage; it is additive support, not a substitute for the named entertainment text."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SO02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: writing, semi-formal letter—explanation and features.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The semi-formal-letter strand appears in the Week 7 scheme row, but no corresponding teaching section or evaluation appears in the Week 7 body. No lesson or features are inferred from the separate informal-letter supplement."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SO03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: sentence structure and formation.",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3",
+        "SUP-SS1-ENGLISH-SENTENCE-KINDS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names sentence structure and formation."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”",
+          "explanation": "The Week 7 body teaches sentence types and sentence elements, but the existing T3 replacement covers phrases, clauses and only some sentence functions. The T1 sentence-kinds supplement covers the sentence-type taxonomy, while remaining Week 7 element/pattern objectives are still partial."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SO04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-row objective: spelling, dropping (e) and retaining (e).",
+      "objective_locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482",
+        "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1",
+        "SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "Original DOCX scheme-of-work table, table 0, data row 7 (zero-based row index 7), cell 0; member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+          "explanation": "The scheme names the final-e spelling topic."
+        },
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”",
+          "explanation": "The Week 7 body gives several drop/retain patterns and examples. Existing T1 supplements provide only selected related support (gentle→gently; lovable and duly), not the full final-e rules, Week 7 examples or keyed practice."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-CR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading for pleasure: Reading Skill Unit 9, “Entertainment”, including the source’s description of the profile passage about Onyeka Onwenu.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+          "explanation": "The source describes the passage and identifies its entertainment/reading-for-pleasure focus. The word “signer” and the other wording in the synopsis are retained as printed pending comparison with the authorised passage; they are not silently corrected."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: original “The library timetable” passage and keyed Q1–Q3",
+          "explanation": "The existing supplement provides practice in locating facts, inference, context vocabulary and summary, but its library passage is not the assigned Entertainment passage and does not complete this objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-CR02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comprehension evaluation: answer the questions under the Unit 9 Entertainment passage.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+          "explanation": "The source says to answer questions under the passage, but the passage and its questions are not reproduced in the supplied teacher-note DOC. There is no source answer key or marking allocation in the package; none is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-CR03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Effective English, pages 147–148, Entertainment vocabularies.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882 :: Week Seven, Section A, “Comprehension: Reading Skill Unit 9: Entertainment”, “Reading for Pleasure”, evaluation and reading assignment",
+          "explanation": "The assignment cites an external textbook and pages, but the edition and page content are absent from the supplied archive and current English package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Types of sentences according to structure: simple, compound, multiple, complex and the source’s final “Compound Sentence” example, which describes a compound-complex sentence.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-SENTENCE-KINDS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Section B, “Types of Sentences According to Structure”, items (a)–(e)",
+          "explanation": "The Week 7 source lists the five labels and gives a final example with more than one main clause plus subordinate clauses, but labels it “Compound Sentence”."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-SENTENCE-KINDS-T1: objectives 3–4; body sections on simple, compound, complex, compound-complex and the “multiple sentence” label; keyed practice Q2–Q6",
+          "explanation": "This existing T1 supplement teaches the same sentence-type distinctions, explains the multiple-sentence label, corrects the compound/compound-complex distinction and supplies keyed, marked classification and writing practice. It is bound additively; its original term identity is retained."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Sentence elements and the subject/predicate division: subject, verb, object, complement and adjunct/adverbial.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3",
+        "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Section B, “Elements of Sentence Structure”, subject/predicate explanation and the S/V/O/C/A element list",
+          "explanation": "The source lists five elements and explains subject and predicate. The source's examples do not provide a complete, reliable worked analysis of every element."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: body paragraphs 1–2",
+          "explanation": "The T3 supplement identifies subjects, objects and complements, but does not provide the complete subject/predicate account or an integrated analysis of all five elements."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1: body section “Adverbs and adverbial phrases do different jobs”",
+          "explanation": "The T1 supplement explains adjuncts and adverbial phrases, but is not a complete replacement for the Week 7 five-element framework."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Direct and indirect objects: distinguish the recipient from the thing acted on in double-object constructions.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”; Section B, “Direct Object” and “Indirect Objects”",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Section B, “Direct Object” and “Indirect Objects”",
+          "explanation": "The source gives examples such as “He buys me lovely shoes” and “Sarah gave her cat a bath”, but then mislabels the direct-object phrases as indirect objects."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: first body paragraph and keyed practice Q1",
+          "explanation": "The T3 supplement explicitly identifies an indirect object and a direct object in a double-object sentence and tests both for two marks. It provides a clear, keyed equivalent for this objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Subject complements and object complements: identify what describes or renames the subject or object.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”; Section B, “Complements”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Section B, “Complements”",
+          "explanation": "The source gives subject-complement and object-complement examples, but has naming/label slips and no keyed practice for the distinction."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: first body paragraph",
+          "explanation": "The T3 supplement explains a subject complement (“our neighbour”) and an object complement (“captain”), but its keyed questions do not test either complement function. Teaching support is present; objective-level marked practice is not."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Adjunct/adverbial as a sentence element: its function and the source-listed adverbial, prepositional and noun-phrase forms.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”; Section B, “Adjunct (Adverbial)”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Section B, “Adjunct (Adverbial)”",
+          "explanation": "The source defines an adjunct as an adverbial and lists adverbial, prepositional and noun-phrase forms, with two locative examples."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1: objective 2 and body section “Adverbs and adverbial phrases do different jobs”",
+          "explanation": "The T1 supplement teaches adjunct function and adverbial/prepositional-phrase examples, but does not cover the source's complete noun-phrase form or integrate adjuncts into all seven sentence patterns."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The seven basic simple-sentence patterns: SV, SVO, SVC, SVOO, SVOC, SVA and SVOA.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”; Section B, “The seven basic simple sentence pattern”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Section B, seven numbered sentence-pattern examples",
+          "explanation": "The source lists all seven patterns, but at least one example contains the apparent typo “a foo”, and the list is not followed by keyed classification practice."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: first body paragraph and practice Q1",
+          "explanation": "The T3 supplement supports SVC, SVOO and SVOC functions through examples and a keyed object question, but does not teach or test the complete seven-pattern set."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-ST07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write five sentences and analyse their sentence elements.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation”; Section B, evaluation immediately after the seven sentence patterns",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3",
+        "SUP-SS1-ENGLISH-SENTENCE-KINDS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c :: Week Seven, Section B, “Sentence Structure and Formation” :: “EVALUATION: Write five sentences and analyse the sentence elements in them.”",
+          "explanation": "The source gives the production task but no model analysis, answer key or marks."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-SENTENCE-KINDS-T1: keyed practice Q6; SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: keyed practice Q1–Q3",
+          "explanation": "The supplements provide related keyed sentence-writing and function practice, but neither marks an analysis of all five Week 7 sentence elements in five pupil-written sentences."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SP01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Form adverbs from adjectives ending in -le by changing the final spelling, including the source examples able/ably, agreeable/agreeably, ample/amply and humble/humbly.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482",
+        "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: spelling item 1 and its four adjective/adverb pairs",
+          "explanation": "The source states the -le to -ly pattern and gives four examples."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1: body paragraph on adverb spelling changes; keyed practice Q1",
+          "explanation": "The T1 supplement explains spelling changes in -ly adverb formation, includes gentle→gently and tests that form in keyed practice. This is an additive equivalent for the spelling pattern; the source's full example list remains preserved."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SP02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Drop a silent final e before a vowel-initial suffix and retain it before a consonant-initial suffix.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482",
+        "SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: spelling item 2, silent-final-e rule and examples",
+          "explanation": "The source states the vowel/consonant suffix distinction and gives examples including continue/continuous, live/living, shine/shining, write/wiring, continued, lived, movement and loved. The “write/wiring” pair is retained as printed pending review."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1: body section on suffix spelling (lovable; duly)",
+          "explanation": "The T1 spelling supplement teaches two isolated final-e deletion examples, but not the general vowel/consonant suffix rule or the Week 7 example set."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SP03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Other final-e deletion examples: abridged/abridgment, acknowledge/acknowledgement, argue/argument, judge/judgment and lodge/lodgment.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”; spelling item 3",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: spelling item 3, five listed final-e deletion pairs",
+          "explanation": "The source supplies the five pairs but no explanation of the spelling variants or keyed practice. Acknowledgement/acknowledgment and judgment/judgement are variant forms in different usage traditions; the source's chosen forms are retained without silently normalising them."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SP04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Retain final e in selected forms to preserve soft c/g, avoid confusion, retain e in words ending in oe, and form nice/nicely and vague/vaguely.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”; “Words where ‘e’ is retained”, items 1–4",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: “Words where ‘e’ is retained”, items 1–4",
+          "explanation": "The source gives notice/noticeable, service/serviceable, trace/traceable, change/changeable; age/ageing and syringe/syringing; canoe/canoeing and shoe/shoeing; nice/nicely and vague/vaguely. No replacement lesson or keyed practice covers the complete retention cases."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SP05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Review source spelling examples and statements that may be defective or convention-dependent, including write/wiring and the “fulfill and skilful” sentence.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: sentences immediately after the -le adverb examples and the “write/wiring” example",
+          "explanation": "The source says “Words like fulfill and skilful, have a single l in the middle but double the final” and gives “write → wiring”. These are preserved as printed; the wording is unclear and the spelling example appears defective. They require an authoritative editorial decision before being taught as rules."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-SP06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown in English by Evans, pages 234–235.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven, Section C, “Spelling Dropping ‘e’ and retaining ‘e’” :: “READING ASSIGNMENT: Countdown in English by Evans pag 234–235”",
+          "explanation": "The assignment names a book and page range, but the edition and page content are absent from the supplied archive and package."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W07-WA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: complete Practice 2 and Practice 3 on pages 148–149.",
+      "objective_locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven “WEEKEND ASSIGNMENT”: “Practice 2 & 3 pg 148–149”",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-50fa9b1eb2fd:BODY:f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482 :: Week Seven “WEEKEND ASSIGNMENT”: “Practice 2 & 3 pg 148–149”",
+          "explanation": "The source names two exercises and page numbers but does not identify the book/edition at this point or include the exercise text, answer key or marks. No questions or answers are inferred."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -20329,6 +20760,94 @@
       "required_action": "Owner/teacher to supply an authoritative key and marking allocation, or author a labelled original parallel revision set with defensible items, keyed answers and a complete marking breakdown. Do not invent a key for the defective source exercise.",
       "affected_ids": [
         "ENGLISH-T3-W06-WA01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-READING-PASSAGE",
+      "kind": "CONTENT",
+      "detail": "Week 7's Unit 9 Entertainment section contains only a synopsis of the passage about Onyeka Onwenu and the instruction to answer questions under it; the passage and its questions/answer key are not present in the supplied teacher-note DOC or package. The synopsis itself contains wording such as “signer”, which must be checked against the authorised text rather than silently corrected.",
+      "required_action": "Supply the authorised passage and its exact edition/page locator, or obtain owner acceptance of a clearly labelled original reading-for-pleasure passage. Add defensible comprehension questions, keyed answers and a complete marking breakdown; do not invent the missing source passage or its answers.",
+      "affected_ids": [
+        "ENGLISH-T3-W07-SO01",
+        "ENGLISH-T3-W07-CR01",
+        "ENGLISH-T3-W07-CR02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 7 assigns Effective English pages 147–148 for Entertainment vocabularies and Countdown in English by Evans pages 234–235. The supplied archive contains neither the cited pages nor edition details.",
+      "required_action": "Obtain the authorised editions/pages with bibliographic details, or record owner acceptance of labelled original equivalents. Do not reproduce unprovided textbook pages or claim that they were inspected.",
+      "affected_ids": [
+        "ENGLISH-T3-W07-CR03",
+        "ENGLISH-T3-W07-SP06"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-SEMIFORMAL-LETTER",
+      "kind": "CONTENT",
+      "detail": "The seventh scheme row includes “Writing: Semi Formal Letter: Explanation and Features”, but the Week 7 teaching body has no semi-formal-letter section, explanation, features, model or evaluation.",
+      "required_action": "Author a clearly labelled original 3rd Term semi-formal-letter lesson with purpose, audience/register, layout/features, a worked plan or model and keyed, marked writing practice; alternatively obtain an explicit owner decision to relocate/remove the scheme strand.",
+      "affected_ids": [
+        "ENGLISH-T3-W07-SO02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-SENTENCE-STRUCTURE-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 7's source covers sentence types, subject/predicate, five sentence elements, objects, complements, adjuncts, seven sentence patterns and a five-sentence analysis task. Existing supplements cover sentence types, direct/indirect objects and selected functions, but do not fully teach subject/predicate, all five elements, all seven patterns, or the Week 7 sentence-element evaluation.",
+      "required_action": "Add original same-term teaching for the uncovered sentence-element and pattern objectives, including accurate worked analysis of S/V/O/C/A and keyed, marked practice for all seven patterns and the five-sentence evaluation. Reuse existing supplements where they genuinely cover a strand; do not duplicate or overstate them.",
+      "affected_ids": [
+        "ENGLISH-T3-W07-SO03",
+        "ENGLISH-T3-W07-ST02",
+        "ENGLISH-T3-W07-ST04",
+        "ENGLISH-T3-W07-ST05",
+        "ENGLISH-T3-W07-ST06",
+        "ENGLISH-T3-W07-ST07"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-COR-021-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "The body-level row ENGLISH-BODY-076 is marked IMPLEMENTED_EQUIVALENT by COR-021, but SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3 covers only phrases/clauses and selected sentence functions. SUP-SS1-ENGLISH-SENTENCE-KINDS-T1 separately supports the sentence-type strand; the complete Week 7 source row still has uncovered sentence elements, adjuncts, seven patterns and evaluation.",
+      "required_action": "Owner to review COR-021's row-level replacement scope/status and decide whether the correction should be narrowed or additional replacement scope recorded. Preserve the original source body, correction and row-level status until that decision is evidenced; objective-level partial statuses remain authoritative for the uncovered strands.",
+      "affected_ids": [
+        "ENGLISH-BODY-076",
+        "ENGLISH-T3-W07-SO03",
+        "ENGLISH-T3-W07-ST02",
+        "ENGLISH-T3-W07-ST04",
+        "ENGLISH-T3-W07-ST05",
+        "ENGLISH-T3-W07-ST06",
+        "ENGLISH-T3-W07-ST07"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-SPELLING-E-SCOPE",
+      "kind": "CONTENT",
+      "detail": "Week 7 gives several final-e deletion/retention patterns, but no same-term replacement covers the full rules and examples. The source's “write → wiring” and “fulfill and skilful” statements are unclear/possibly defective; the source's regional spelling variants are not reconciled.",
+      "required_action": "Author original same-term teaching for final-e deletion before vowel suffixes, retention before consonant suffixes, the -le adverb pattern, -ment forms and the listed retention exceptions. Verify every example and distinguish accepted regional variants; preserve source wording and record unresolved source defects instead of silently editing them. Include keyed, marked practice.",
+      "affected_ids": [
+        "ENGLISH-T3-W07-SO04",
+        "ENGLISH-T3-W07-SP02",
+        "ENGLISH-T3-W07-SP03",
+        "ENGLISH-T3-W07-SP04",
+        "ENGLISH-T3-W07-SP05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W07-WEEKEND-ASSIGNMENT",
+      "kind": "CONTENT",
+      "detail": "The Week 7 weekend assignment says only “Practice 2 & 3 pg 148–149”; it does not identify the book/edition at that point and does not include the exercises, answer key or marks.",
+      "required_action": "Obtain the exact authorised book/edition and Practice 2 and 3 pages with an authoritative key/mark allocation, or author a labelled original parallel revision set with defensible questions, keyed answers and a complete marking breakdown. Do not infer the book or invent answers.",
+      "affected_ids": [
+        "ENGLISH-T3-W07-WA01"
       ],
       "blocks_delivery": true
     }

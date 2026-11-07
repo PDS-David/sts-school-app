@@ -68,21 +68,22 @@
     "ENG-WK-T3-W03 (2026-11-07): 3rd Term Week 3 indexed at objective level; 26 coverage entries and rule R024 added to english.json, 6 open items opened and 6 PENDING follow-ups appended (ENG-LES-T3-W03-READING-SUMMARY, ENG-LES-T3-W03-CLAUSES, ENG-LES-T3-W03-EXPOSITORY, ENG-LES-T3-W03-FAMILY-VOCAB, ENG-LES-T3-W03-ASSESSMENTS, ENG-FACT-T3-W03-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 16 PARTIAL, 9 UNRESOLVED, 1 MARKER. The week's passage-dependent topics are UNRESOLVED because no passage text is supplied, and the clauses and family-vocabulary bodies carry source defects recorded as open items. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed.",
     "ENG-WK-T3-W04 (2026-11-07): 3rd Term Week 4 indexed at objective level; 21 coverage entries and rule R025 added to english.json, 5 open items opened and 5 PENDING follow-ups appended (ENG-LES-T3-W04-RHYMES, -FORMAL-LETTER, -GOVERNMENT-VOCAB, -ASSESSMENTS, ENG-FACT-T3-W04-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 16 PARTIAL, 4 UNRESOLVED, 1 MARKER. The row-level IMPLEMENTED_EQUIVALENT of ENGLISH-BODY-069 overstates a replacement that covers only rhymes; left to the owner. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed.",
     "ENG-WK-T3-W05 (2026-11-07): 3rd Term Week 5 indexed at objective level; 33 coverage entries and rule R026 added to english.json, 5 open items opened and 5 PENDING follow-ups appended (ENG-LES-T3-W05-SCHEME-GAP, -READING-SKILLS, -SOUND-CONTRASTS, -NOMINALIZATION, ENG-FACT-T3-W05-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 5 IMPLEMENTED_EQUIVALENT, 19 PARTIAL, 8 UNRESOLVED, 1 MARKER. Scheme row 5 and the Week 5 body disagree (diphthongs and conjuncts and disjuncts have no body); the row-level IMPLEMENTED_EQUIVALENT of ENGLISH-BODY-071 overstates a replacement that covers only the sound contrasts; left to the owner. R025 anchor tidied. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed.",
-    "ENG-WK-T3-W06 (2026-11-07): Week 6 indexed at objective level from the verified archive/member; the DOCX scheme table row 6 is classified by SS1-SRC-50fa9b1eb2fd-R027 as SCHEME_ONLY. Added 19 coverage entries (1 MARKER, 2 IMPLEMENTED_EQUIVALENT, 12 PARTIAL, 4 UNRESOLVED) and five blocking open items. The scheme plural/compound-noun objective is supported additively by SUP-SS1-ENGLISH-NOUNS-T1; plural -ies/-es is supported by that lesson and the T3 affixes supplement. The T3 affixes and stress replacements remain partial for source-specific material, and the “It is a man’s world” writing task has only partial generic narrative support. Five PENDING follow-ups appended: affix scope, stress scope, story writing, external materials and weekend key. Existing source bodies, lessons, corrections and row-level coverage statuses unchanged; COR-019/020 scope mismatch is left for owner review. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred."
+    "ENG-WK-T3-W06 (2026-11-07): Week 6 indexed at objective level from the verified archive/member; the DOCX scheme table row 6 is classified by SS1-SRC-50fa9b1eb2fd-R027 as SCHEME_ONLY. Added 19 coverage entries (1 MARKER, 2 IMPLEMENTED_EQUIVALENT, 12 PARTIAL, 4 UNRESOLVED) and five blocking open items. The scheme plural/compound-noun objective is supported additively by SUP-SS1-ENGLISH-NOUNS-T1; plural -ies/-es is supported by that lesson and the T3 affixes supplement. The T3 affixes and stress replacements remain partial for source-specific material, and the “It is a man’s world” writing task has only partial generic narrative support. Five PENDING follow-ups appended: affix scope, stress scope, story writing, external materials and weekend key. Existing source bodies, lessons, corrections and row-level coverage statuses unchanged; COR-019/020 scope mismatch is left for owner review. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred.",
+    "ENG-WK-T3-W07 (2026-11-07): 3rd Term Week 7 indexed at objective level from the verified archive/member; DOCX scheme table data row 7 is classified by SS1-SRC-50fa9b1eb2fd-R028 as SCHEME_ONLY. Added 22 coverage entries (1 MARKER, 3 IMPLEMENTED_EQUIVALENT, 13 PARTIAL, 5 UNRESOLVED) and seven blocking open items. Sentence types are supported additively by SUP-SS1-ENGLISH-SENTENCE-KINDS-T1, direct/indirect objects by SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3, and the -le adverb pattern by SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1. The reading passage/questions and textbook pages are absent; the semi-formal-letter scheme strand has no Week 7 body; sentence elements/patterns and final-e spelling remain partial. Six PENDING follow-ups appended for reading comprehension, external materials, semi-formal letter, sentence structure, spelling and the weekend key. COR-021's row-level IMPLEMENTED_EQUIVALENT scope mismatch is left for owner review. Existing lessons, corrections, source bodies and body-level coverage statuses unchanged. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 115,
-    "FACTUAL_DEPENDENCY": 32,
+    "LESSON": 120,
+    "FACTUAL_DEPENDENCY": 33,
     "CORRECTION_BINDING": 24,
     "ASSET": 1,
     "TEST": 6,
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 68,
-    "PENDING": 141,
+    "IMPLEMENTED_TESTING_DEFERRED": 69,
+    "PENDING": 146,
     "BLOCKED": 5
   },
   "items": [
@@ -1983,9 +1984,9 @@
       "depends_on": [
         "ENG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-075, ENGLISH-BODY-076, ENGLISH-BODY-077 (3 body-level rows; statuses {'PARTIAL': 2, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-075='Comprehension and Reading Skills'; ENGLISH-BODY-076='B: Structure : Sentence Structure and Formation'; ENGLISH-BODY-077=\"C. Spelling Dropping  'e' and retaining 'e'\". Corrected rows: ENGLISH-BODY-076 <- SS1-02-english-COR-021 -> SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
-      "completion_condition": "Every objective of Week 7 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified uploaded archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e; it is byte-identical to docs/ss1/sources/SSS1-original.zip (35,828,550 bytes). Assigned member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f (303,616 bytes) matches SOURCE_ASSIGNMENTS.csv. Original DOCX structure inspected: the scheme is a 13-row, one-column table; data row 7 (table 0, row index 7) contains four Week 7 strands and is outside the parsed teaching bodies. Added SS1-SRC-50fa9b1eb2fd-R028 (SCHEME_ONLY). Week 7 teaching is three parsed source bodies: ENGLISH-BODY-075 (reading; 83f3a0b29084c85d16174925a251b58fdee1b8eea70b8396813d7c04c7a13882), ENGLISH-BODY-076 (sentence structure; 76dd95226fdfc5136d1098585131a5b3b79e0aedb05971df975fa869e727835c), and ENGLISH-BODY-077 (final-e spelling; f4e79b0e206b49e1777a38a3393366bb60abb9f6909b2d8832d558b03b108482). Added 22 objective-level coverage entries: 1 MARKER, 3 IMPLEMENTED_EQUIVALENT, 13 PARTIAL and 5 UNRESOLVED. Sentence types are supported additively by SUP-SS1-ENGLISH-SENTENCE-KINDS-T1; direct/indirect objects by SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3; the -le adverb pattern by SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1. Reading passage/questions, semi-formal letter, remaining sentence elements/patterns, full final-e rules, external textbook pages and weekend assignment remain open. Seven blocking open items were added; six PENDING follow-ups appended. COR-021's row-level IMPLEMENTED_EQUIVALENT scope mismatch is recorded for owner review. No lesson, correction, source body or existing body-level coverage status changed. Approval remains PENDING; verification and full tests/typechecks/importer/DB/device remain deferred.",
+      "completion_condition": "Every objective of Week 7 has its own coverage entry with exact locator and evidence; scheme-table row 7 is classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
           "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -6752,6 +6753,197 @@
           "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
         }
       ]
+    },
+    {
+      "id": "ENG-LES-T3-W07-READING-COMPREHENSION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7, coverage ENGLISH-T3-W07-SO01, CR01 and CR02",
+      "objective": "Resolve the Week 7 Reading Skill Unit 9 Entertainment / reading-for-pleasure objective with an authorised passage or a clearly labelled original equivalent, a supported reading lesson, defensible comprehension questions, keyed answers and a complete marking breakdown.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W07 on 2026-11-07; open item ENGLISH-T3-W07-READING-PASSAGE. No lesson/content was authored by the indexing task.",
+      "completion_condition": "The passage source or owner-approved original is identified; the reading activity teaches the stated objective and all questions have defensible keyed answers and marks. No missing textbook passage or answer is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-FACT-T3-W07-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T3-W07-EXTERNAL-MATERIALS",
+      "objective": "Obtain the authorised editions/material for Effective English pages 147–148 (Entertainment vocabularies) and Countdown in English by Evans pages 234–235, or obtain owner acceptance of labelled original equivalents.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W07 on 2026-11-07; open item ENGLISH-T3-W07-EXTERNAL-MATERIALS. No lesson/content was authored by the indexing task.",
+      "completion_condition": "Owner supplies the authorised editions/pages with bibliographic details, or records acceptance of original equivalent activities; no unprovided textbook text is reproduced.",
+      "required_attachments": []
+    },
+    {
+      "id": "ENG-LES-T3-W07-SEMIFORMAL-LETTER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7, coverage ENGLISH-T3-W07-SO02",
+      "objective": "Author original same-term teaching for the scheme-only semi-formal-letter strand, covering purpose, audience/register, layout and features, a worked plan or model, and keyed, marked writing practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W07 on 2026-11-07; open item ENGLISH-T3-W07-SEMIFORMAL-LETTER. No lesson/content was authored by the indexing task.",
+      "completion_condition": "The missing scheme strand has an original, clearly labelled 3rd Term lesson with accurate explanation, a worked plan/model and complete keyed marking; approval remains pending until owner review.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W07-SENTENCE-STRUCTURE-SCOPE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7, coverage ENGLISH-T3-W07-SO03 and ST02 to ST07",
+      "objective": "Complete the uncovered Week 7 sentence-structure objectives: subject/predicate, all five sentence elements (S/V/O/C/A), adjunct forms, the seven basic sentence patterns and the sentence-element evaluation, with accurate worked analysis and keyed, marked practice. Reuse SUP-SS1-ENGLISH-SENTENCE-KINDS-T1 and SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3 only for the strands they demonstrably cover.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W07 on 2026-11-07; open item ENGLISH-T3-W07-SENTENCE-STRUCTURE-SCOPE. No lesson/content was authored by the indexing task.",
+      "completion_condition": "Each remaining sentence-element and pattern objective has evidence-backed original teaching and keyed, marked practice; existing lessons/correction are preserved and the COR-021 scope decision is recorded separately.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W07-SPELLING-E-SCOPE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7, coverage ENGLISH-T3-W07-SO04 and SP02 to SP05",
+      "objective": "Author original same-term teaching for final-e deletion/retention, vowel- and consonant-initial suffixes, the -le adverb pattern, -ment forms and retention exceptions. Verify the source examples, distinguish regional spelling variants, and provide keyed, marked practice without changing the source body.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W07 on 2026-11-07; open item ENGLISH-T3-W07-SPELLING-E-SCOPE. No lesson/content was authored by the indexing task.",
+      "completion_condition": "Every affected spelling objective is taught accurately with checked examples and keyed, marked practice; ambiguous source forms are explicitly dispositioned and the source wording/hash remain unchanged.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W07-WEEKEND-KEY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7, coverage ENGLISH-T3-W07-WA01",
+      "objective": "Resolve the Week 7 weekend assignment reference “Practice 2 & 3 pg 148–149” by identifying the authorised book/edition and obtaining the exercises and key, or authoring a labelled original parallel revision set with defensible questions, keyed answers and a complete marking breakdown.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W07 on 2026-11-07; open item ENGLISH-T3-W07-WEEKEND-ASSIGNMENT. No lesson/content was authored by the indexing task.",
+      "completion_condition": "The exact source exercise and authoritative key/marks are supplied, or an original parallel set is clearly labelled and fully keyed/marked; the unidentified book and missing answers are not guessed.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
     }
   ],
   "review": {
@@ -6770,7 +6962,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T3-W07",
     "ENG-WK-T3-W08",
     "ENG-WK-T3-W09",
     "ENG-WK-T3-W10",
@@ -6894,6 +7085,12 @@
     "ENG-LES-T3-W06-STRESS-SCOPE",
     "ENG-LES-T3-W06-STORY-WRITING",
     "ENG-FACT-T3-W06-EXTERNAL-MATERIALS",
-    "ENG-LES-T3-W06-WEEKEND-KEY"
+    "ENG-LES-T3-W06-WEEKEND-KEY",
+    "ENG-LES-T3-W07-READING-COMPREHENSION",
+    "ENG-FACT-T3-W07-EXTERNAL-MATERIALS",
+    "ENG-LES-T3-W07-SEMIFORMAL-LETTER",
+    "ENG-LES-T3-W07-SENTENCE-STRUCTURE-SCOPE",
+    "ENG-LES-T3-W07-SPELLING-E-SCOPE",
+    "ENG-LES-T3-W07-WEEKEND-KEY"
   ]
 }
