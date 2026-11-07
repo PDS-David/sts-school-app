@@ -78,7 +78,8 @@
     "- ENG-FACT-REPLACEMENT-SCOPE (2026-11-07): the 24 corrected rows reconciled against the week-indexing results; ENGLISH-BODY-009 (COR-005) confirmed whole-row, BODY-002 already PARTIAL, and the other 22 body-level rows moved from IMPLEMENTED_EQUIVALENT to PARTIAL with per-row evidence naming the uncovered objective entries. New open item ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION; four COR-0xx-SCOPE owner items reworded. Corrections remain inactive; approval PENDING, verification DEFERRED.",
     "- ENG-FACT-READING-T1-T3-UNBOUND (2026-11-07): READING-T3 confirmed bound additively to 14 PARTIAL T3 entries by exact lesson_ids (the earlier 'unbound' statement was stale); READING-T1 remains unbound with no row it can be bound to without inventing a binding, except ENGLISH-T1-W04-SK01, which needs one owner policy decision (accept as labelled equivalent, or decline and author ENG-LES-W04-SKIM-SCAN). Item set BLOCKED on that decision; ENG-LES-W04-SKIM-SCAN keeps waiting on it. No data change in english.json.",
     "- ENG-FACT-CROSS-TERM-IDENTICAL-BODIES (2026-11-07): the five shared lesson bodies (PHRASES-CLAUSES T1/T3, PHONETICS T1/T3, AFFIXES T2/T3, MEANING T2/T3, READING T1/T2/T3) compared with each term's objective entries; the mapping is recorded on the item. Shared text is intended as a generic base per term and not a defect; every demonstrated uncovered objective already has a pending ENG-LES or ENG-FACT follow-up, so no new lesson item was added. No english.json change.",
-    "2026-11-07 owner decision: SUP-SS1-ENGLISH-READING-T1 accepted as a labelled equivalent for ENGLISH-T1-W04-SK01; bound additively. Approval PENDING; verification DEFERRED."
+    "2026-11-07 owner decision: SUP-SS1-ENGLISH-READING-T1 accepted as a labelled equivalent for ENGLISH-T1-W04-SK01; bound additively. Approval PENDING; verification DEFERRED.",
+    "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -91,8 +92,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 79,
-    "PENDING": 158,
+    "IMPLEMENTED_TESTING_DEFERRED": 80,
+    "PENDING": 157,
     "BLOCKED": 5
   },
   "items": [
@@ -4574,7 +4575,7 @@
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Owner decision recorded in english.json open_items[id=ENGLISH-T1-W05-VOCAB-OBJECTIVE-CONFLICT] and coverage ENGLISH-T1-W05-VF01 / SE03. Week 5 objective confirmed as stock exchange and insurance; fisheries/animal-husbandry line recorded as likely Week 4 carry-over. Source text unchanged.",
-      "completion_condition": "Owner decision preserved with evidence; original source unchanged. Lesson task ENG-LES-W05-STOCK-INSURANCE-VOCAB remains responsible for equivalent teaching and coverage completion.",
+      "completion_condition": "Owner decision preserved; VF01 is linked to the existing Week 4 agriculture vocabulary supplement as the likely carry-over, and SE03 is completed by ENG-LES-W05-STOCK-INSURANCE-VOCAB. Original source wording remains unchanged.",
       "required_attachments": []
     },
     {
@@ -4644,9 +4645,9 @@
         "ENG-WK-T1-W05",
         "ENG-FACT-W05-VOCAB-OBJECTIVE"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Open items ENGLISH-T1-W05-INSURANCE-VOCAB and SOURCE-WORDING-REVIEW in english.json. Source row: BODY c634d3455342808383d7a1f88dbdfd62df7b3442f5e231d7706feaab0623d733.",
-      "completion_condition": "SE01 to SE03 reach IMPLEMENTED_EQUIVALENT with a supplement target; no approval or verification is invented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-07 in backend/src/db/ss1/subjects/english.json as SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1. Covers ENGLISH-T1-W05-SE01 to SE03 with original stock-exchange and insurance teaching, contextual examples and four keyed/marked exercises (20 marks). The owner-confirmed fisheries/animal-husbandry carry-over VF01 is linked to the existing same-term SUP-SS1-ENGLISH-AGRICULTURE-VOCAB-T1. Resolved open items ENGLISH-T1-W05-INSURANCE-VOCAB and ENGLISH-T1-W05-SOURCE-WORDING-REVIEW; original source text unchanged.",
+      "completion_condition": "SE01 to SE03 are IMPLEMENTED_EQUIVALENT with the supplement target; VF01 is accounted for as the owner-confirmed likely Week 4 carry-over and linked to the existing Week 4 agriculture vocabulary supplement. No approval or verification is invented.",
       "required_attachments": [
         {
           "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -7736,7 +7737,6 @@
     "ENG-FACT-W04-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-UNIFIED-TEST",
     "ENG-FACT-W05-EXTERNAL-MATERIALS",
-    "ENG-FACT-W05-VOCAB-OBJECTIVE",
     "ENG-FACT-W06-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W07-TRANSPORT",
     "ENG-LES-T1-W07-NOUN-CLAUSES",
