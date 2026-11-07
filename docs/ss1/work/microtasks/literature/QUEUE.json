@@ -30,7 +30,7 @@
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
-    "FACTUAL_DEPENDENCY": 2,
+    "FACTUAL_DEPENDENCY": 3,
     "TEST": 1,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 3,
@@ -38,9 +38,9 @@
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 34,
-    "BLOCKED": 1
+    "IMPLEMENTED_TESTING_DEFERRED": 10,
+    "PENDING": 32,
+    "BLOCKED": 2
   },
   "items": [
     {
@@ -295,8 +295,8 @@
         "LIT-SRC-T2",
         "LIT-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The SS1-02 checkpoint describes T2/T3 Literature as near-identical extracts, \"not yet proved identical or fully read\", and says a cross-term source must not be excluded under the current contract. The documents are different files (SHA-256 a12244cb\u2026 vs 319a4898\u2026; 57389 vs 56647 bytes). The relationship has not been recorded.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: comparison note docs/ss1/work/microtasks/literature/LIT-FACT-T2-T3-RELATIONSHIP.md. Archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and both member hashes verified. Finding: the extracted text is identical except line 1 (2nd Term `SECOND TERM SCHEME OF WORK 2016/2017`, 3rd Term `THIRD TERM SCHEME OF WORK ` ); the scheme table and all nine week blocks have equal block SHA-256; 612 paragraphs, same styles, numbering, alignment and run formatting; no images. Residual file difference is save markup (2nd Term has 66 proofErr elements and 63 more runs). No exclusion rule added. Difference passed to LIT-PRE-T3. Owner question (intended repeat or wrong file) remains open. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "A per-section comparison is written to the FACT note with locators; no exclusion rule is added; any difference that affects objectives is passed to the week items."
     },
     {
@@ -426,8 +426,8 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No marker classification exists: literature.json contains the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: class work at 95, 173, 239 (`Class Work     `), 275, 353 (`CLASS \u2013 WORK `), 411 (`CLASS-WORK `), 463, 547, 589; assignment at 365 and 427 (`ASSIGNMENT:`), 559 (`Assignment`), 599 (`Assignment `). No evaluation, general-evaluation, reading-assignment, theory or weekend marker occurs anywhere. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented: disposition note docs/ss1/work/microtasks/literature/LIT-MARK-T1.md. Source SS1-SRC-470d43e54e5b member hash 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea verified from the full archive (024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). All 13 markers re-found at the recorded lines with exact wording and trailing spaces (9 class work, 4 assignment, 40 exercise lines). No classify_marker rule written: the schema vocabulary (REVISION, EXAMINATION, SCHEME_ONLY) does not fit; precise gap recorded as literature.json open item LITERATURE-T1-MARKER-VOCABULARY (blocks_delivery false) and queue dependency LIT-FACT-MARKER-VOCABULARY. No lesson written. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Every one of the 13 markers has a disposition that keeps its exact wording, spelling and line; class work and assignment stay distinct within a week; no lesson is written; no marker vocabulary the document does not contain is invented. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
     },
     {
@@ -1614,6 +1614,28 @@
       "status": "PENDING",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-FACT-MARKER-VOCABULARY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "classify_marker vocabulary in backend/src/db/ss1/subjectPackageSchema.ts",
+      "objective": "Owner/foundation decision: the shared schema's classify_marker kinds (REVISION, EXAMINATION, SCHEME_ONLY) cannot describe class-work or assignment markers. 1st Term has 13 (9 class work, 4 assignment; LIT-MARK-T1.md); 2nd and 3rd Term have 7 assignment markers each (LIT-INV-T2.md, LIT-INV-T3.md). Decide whether to request a versioned foundation change or leave the markers as unclassified body text. This item changes no schema and writes nothing in the package.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/literature.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/literature/QUEUE.json"
+      ],
+      "depends_on": [
+        "LIT-MARK-T1"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked on an owner or foundation-maintainer decision; see open item LITERATURE-T1-MARKER-VOCABULARY. Indexing of exercises is not blocked.",
+      "completion_condition": "A recorded decision (change requested with reference, or accepted as unclassified body text) is cited here; no schema file is edited by this package."
     }
   ],
   "review": {
@@ -1629,8 +1651,6 @@
     }
   },
   "next_runnable": [
-    "LIT-FACT-T2-T3-RELATIONSHIP",
-    "LIT-MARK-T1",
     "LIT-WK-T1-W02",
     "LIT-WK-T1-W03",
     "LIT-WK-T1-W04",

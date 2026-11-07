@@ -446,6 +446,16 @@
         "COV-LIT-T1-W01-CLASSWORK-Q2"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "LITERATURE-T1-MARKER-VOCABULARY",
+      "kind": "OWNER_ACTION",
+      "detail": "The 1st Term source has 13 exercise markers: 9 class work (lines 95, 173, 239, 275, 353, 411, 463, 547, 589) and 4 assignment (365, 427, 559, 599), by mammoth 1.12.2 extractRawText. The schema's classify_marker accepts only REVISION, EXAMINATION and SCHEME_ONLY, none of which describes a class-work or assignment marker inside a teaching body; SCHEME_ONLY would wrongly record a teaching row as scheme-only. So no classification rule was written. All 13 markers and their 40 exercise lines stay in their week bodies unchanged and are not dropped; class work and assignment remain distinct by their own wording. Exercise-level coverage is for the week items (LIT-WK-T1-W02..W10 and COV-LIT-T1-W01-CLASSWORK-Q1/Q2 for Week 1).",
+      "required_action": "Owner or foundation maintainer decides whether to request a versioned foundation change adding class-work and assignment marker kinds, or to accept that these markers stay unclassified body text. Do not edit the shared schema in this package.",
+      "affected_ids": [
+        "SS1-SRC-470d43e54e5b"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
