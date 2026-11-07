@@ -85,7 +85,8 @@
     "2026-11-07 final English test-draft checkpoint: drafted schema/terms, lesson hash/marking, correction identity, no-fabricated-state, rule-guard and regression assertions in tests/ss1/english.package.test.mts. No tests were run. All content approval remains PENDING and verification remains DEFERRED.",
     "2026-11-07 coordination repair: renamed only the Second-Term Week 2 external-materials item to ENG-FACT-T2-W02-EXTERNAL-MATERIALS. First-Term ID and prompt unchanged. Removed a literal trailing backslash-n that made the JSON invalid; recomputed kind counts and status_counts separately. All agent implementation statuses retained.",
     "2026-11-07: audited all 24 English delivery-correction identities. Every record binds an existing source and exact source/body hash to one existing replacement in the same term; all 24 source targets are unique. The 11 previously pending correction queue records (COR-001–008, COR-018–020) were recorded IMPLEMENTED_TESTING_DEFERRED. This is binding/identity completion only: their original body-level/objective-level coverage remains PARTIAL/UNRESOLVED where recorded, their corrections are not activated, and the linked open items remain delivery blockers. ENG-TEST-CORRECTION-IDENTITY assertion is drafted and read-only reconciled; test remains NOT RUN.",
-    "2026-11-07 owner decisions: revision scope approved as all 2nd Term topics taught before 3rd Term; bustop interpreted as bus stop; original equivalent reading materials approved for the missing Effective English Unit 8 page 133 and Unit 10 page 162 activities; original passage Beauty approved for Week 2 main-point comprehension. Implemented original spelling, contextual-reading and Beauty supplements. The additional dictionary sense of sex remains a precise teacher decision; no textbook content was reproduced. Testing, importer, database and deployment remain deferred."
+    "2026-11-07 owner decisions: revision scope approved as all 2nd Term topics taught before 3rd Term; bustop interpreted as bus stop; original equivalent reading materials approved for the missing Effective English Unit 8 page 133 and Unit 10 page 162 activities; original passage Beauty approved for Week 2 main-point comprehension. Implemented original spelling, contextual-reading and Beauty supplements. The additional dictionary sense of sex remains a precise teacher decision; no textbook content was reproduced. Testing, importer, database and deployment remain deferred.",
+    "2026-11-07: Added original Week 2 summary-writing lesson and two original reading activities with keyed marking. SW01-SW04 now IMPLEMENTED_EQUIVALENT; prescribed pages not reproduced."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -98,8 +99,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 122,
-    "PENDING": 114,
+    "IMPLEMENTED_TESTING_DEFERRED": 123,
+    "PENDING": 113,
     "BLOCKED": 6
   },
   "items": [
@@ -1170,8 +1171,8 @@
       "depends_on": [
         "ENG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-SUMMARY-WRITING.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-ENGLISH-SUMMARY-WRITING-T3-W02 with original teaching on question-and-answer summaries and precis, seven practical habits, a keyed 8-mark summary task on an original rainwater passage, and a separate keyed reading assignment. SW01-SW04 now have equivalent evidence. Source claims about penalties are not represented as verified exam-board policy; no Effective English or Countdown page is reproduced. Approval PENDING; verification/testing deferred.",
       "completion_condition": "SW01 to SW03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -7677,7 +7678,6 @@
   },
   "next_runnable": [
     "ENG-LES-T3-W01-REVISION",
-    "ENG-LES-T3-W02-SUMMARY",
     "ENG-LES-T3-W02-ADVERTISING",
     "ENG-LES-T3-W02-ADJUNCTS",
     "ENG-LES-T3-W02-NARRATIVE",
