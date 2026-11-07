@@ -44,9 +44,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "IMPLEMENTED_TESTING_DEFERRED": 15,
     "BLOCKED": 9,
-    "PENDING": 53
+    "PENDING": 51
   },
   "total": 75,
   "items": [
@@ -1858,8 +1858,8 @@
         "PHYS-PORT-D1-T2-L001",
         "PHYS-PORT-D1-T2-L002"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 10 PR #71 second-term objective entries with master. Only PHYS-2-001 (Week One heat/temperature) and PHYS-2-003 (Week Three expansion of solids) have ported equivalent lessons; added COV-PHYS-T2-W01-OBJ-1 and COV-PHYS-T2-W03-OBJ-1 with their master lesson IDs. The remaining eight SUPPORTED judgments were not copied because they have no ported lesson and the master source-week indexing tasks PHYS-WK-T2-W01/W03 and others remain pending. Existing title/reference markers remain unchanged.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -1886,8 +1886,8 @@
         "PHYS-PORT-D1-T3-L004",
         "PHYS-PORT-D1-T3-L005"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 11 PR #71 third-term objective entries with master. Only PHYS-3-004 (Week 4 fuse), PHYS-3-007 (Week 7 surface tension) and PHYS-3-008 (Week 8 capillarity) have ported equivalent lessons; added COV-PHYS-T3-W04-OBJ-1, COV-PHYS-T3-W07-OBJ-1 and COV-PHYS-T3-W08-OBJ-1 with their master lesson IDs. The remaining SUPPORTED judgments were not copied because they have no ported lesson and source-week indexing is still pending. PHYS-3-011 maps to existing COV-PHYS-T3-SCHEME-REVISION-EXAM marker; no lesson was invented for revision/examination weeks.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -2641,8 +2641,6 @@
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
     "PHYS-PORT-D1-COV-T1",
-    "PHYS-PORT-D1-COV-T2",
-    "PHYS-PORT-D1-COV-T3",
     "PHYS-CMP-D4-NOTES",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-MICROMETER-READING",
