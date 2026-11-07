@@ -82,16 +82,16 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 147,
+    "PENDING": 146,
     "IN_PROGRESS": 0,
     "IMPLEMENTED_TESTING_DEFERRED": 90,
-    "BLOCKED": 5
+    "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 147,
+    "PENDING": 146,
     "IN_PROGRESS": 0,
     "IMPLEMENTED_TESTING_DEFERRED": 90,
-    "BLOCKED": 5
+    "BLOCKED": 6
   },
   "items": [
     {
@@ -5043,8 +5043,8 @@
       "depends_on": [
         "ENG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T1-W07 on 2026-11-07; not implemented.",
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED BY REQUIRED VISUAL SOURCE INSPECTION. The exact Word DOC's Week 7 revision underlining determines the tested target letters/sounds; existing text extraction explicitly loses underlining and supplies no key. The registered source is SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc (expected SHA256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef) in docs/ss1/sources/SSS1-original.zip (registered archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e). Current GitHub file tools cannot retrieve/render the binary archive/DOC for visual inspection in this session; no target letters or sounds were guessed and no lesson was authored. Exact blocker/follow-up is recorded in backend/src/db/ss1/subjects/english.json open_items[ENGLISH-T1-W07-REVISION-UNDERLINE-INSPECTION]. A local-checkout agent must verify both hashes, inspect only source lines 1164-1170 in Word layout, record underlined targets, then add clearly labelled original keyed matching items. Do not infer answers from text/options. Source member and original row remain unchanged.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": [
         {
@@ -7730,7 +7730,6 @@
     "ENG-FACT-W03-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-UNIFIED-TEST",
-    "ENG-LES-T1-W07-REVISION",
     "ENG-FACT-W08-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W08-ADJECTIVE",
     "ENG-LES-T1-W08-ARGUMENTATIVE-ESSAY",
