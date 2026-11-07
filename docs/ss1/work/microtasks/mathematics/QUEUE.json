@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 45,
-    "PENDING": 45,
+    "IMPLEMENTED_TESTING_DEFERRED": 46,
+    "PENDING": 44,
     "BLOCKED": 9
   },
   "total": 99,
@@ -3185,8 +3185,8 @@
         "MATH-SRC-T1",
         "MATH-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not bound. No delivery_corrections entry exists for parsed row 1 on master; the only base-number supplement (SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS) is bound to parsed row 2 and covers none of the Week 2 exercises.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added CORR-MATHEMATICS-T1-W02-NUMBER-BASES binding parsed row 1 (source_id SS1-SRC-0c9004137f95; source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; body SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e) to SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES (body SHA-256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66). Reviewed COV-MATH-T1-W02-OBJ-1..3 and the three assessment blocks: all source objectives are preserved and all 20 source exercise items are keyed in the replacement. Existing OI-MATH-001 and T1-W02 fact/notation/assessment open items remain intact; no source bytes changed. Approval remains PENDING; verification/testing deferred.",
       "completion_condition": "The binding exists, resolves to one supplement of the same subject and term, and the W02 coverage entries and OI-MATH-001 affected_ids still resolve; no source byte is edited."
     }
   ],
@@ -3252,8 +3252,7 @@
     "MATH-VIS-T3-OLE",
     "MATH-FACT-ADVERT-T2",
     "MATH-FACT-ADVERT-T3",
-    "MATH-CMP-D4-NOTES",
-    "MATH-COR-T1-W02-NUMBER-BASES"
+    "MATH-CMP-D4-NOTES"
   ],
   "runnable_now": [
     "MATH-PRE-T3",
