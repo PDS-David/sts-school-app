@@ -34,21 +34,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 12,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 11,
+    "LESSON": 12,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 26,
-    "BLOCKED": 14,
-    "PENDING": 45
+    "IMPLEMENTED_TESTING_DEFERRED": 28,
+    "BLOCKED": 15,
+    "PENDING": 44
   },
-  "total": 85,
+  "total": 87,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -570,8 +570,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 7 (source label 'WEEK 9', title \"WORK, ENERGY AND POWER\", 5904 characters, body sha256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six scheme-level coverage entries for work done, energy forms/transformation, kinetic energy, gravitational potential energy, conservation of energy and power; bound to original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER (body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf) with eight keyed questions and exact marking totals. The repository registers parsed row 7 as WEEK 9, while the public close-equivalent PDF labels the topic WEEK EIGHT; original-row label reconciliation remains open. Original exercises/answers and figures are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2905,6 +2905,71 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
       "completion_condition": "Inspect original row and record exact week label, subtopics, formulae, units, figures, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W08-WORK-ENERGY-POWER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 parsed row 7: Work, Energy and Power",
+      "objective": "Create an original SS1 lesson on work done, energy forms, kinetic and gravitational potential energy, conservation of energy and power, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W08-WORK-ENERGY-POWER.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W08"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER (body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf) with five objectives, three worked examples, eight keyed questions and 21 total marks; marking totals checked. Provenance includes Federal Ministry of Education Nigeria Inspire SS1 Work, Energy and Power lesson and a public close-equivalent PDF; no source wording, figures or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has accurate work/energy/power formulae and units, worked examples, energy transformations, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W08-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 9 parsed row 7, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
+      "objective": "Inspect the original archive member and reconcile the repository's WEEK 9 label with the public close-equivalent PDF's WEEK EIGHT label; verify exact work/energy/power content, equations, examples, figures, exercises and answer/marking evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W08-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W08"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original row and record exact week label, subtopics, equations/units, figures, examples, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
     }
   ],
   "review": {
@@ -2928,10 +2993,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T1-W07 pressure/Archimedes/floatation supplement added; public close-equivalent PDF labels the topic Week Seven while repo row 6 is Week 8, so original row reconciliation remains blocked pending source DOC access. Testing deferred by owner."
+    "notes": "PHYS-WK-T1-W08 work/energy/power supplement added; public close-equivalent PDF labels the topic Week Eight while repo row 7 is Week 9, so original row reconciliation remains blocked pending source DOC access. Testing deferred by owner."
   },
   "next_runnable": [
-    "PHYS-WK-T1-W08",
     "PHYS-WK-T1-W09",
     "PHYS-WK-T2-W01",
     "PHYS-WK-T2-W02",
@@ -2967,7 +3031,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W08",
     "PHYS-WK-T1-W09",
     "PHYS-WK-T2-W01",
     "PHYS-WK-T2-W02",
