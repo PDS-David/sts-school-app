@@ -3,8 +3,8 @@
   "subject": "English Language",
   "slug": "english",
   "generated_from": {
-    "master_sha": "9d13bc1640257fd1ec9f3f46f250e6bd499f5590",
-    "package_blob_sha": "0214c74ffdbea578850881667dfd306630c888f1",
+    "master_sha": "6d298887d257c3b20fbcb1c7b01c832b44bffe49",
+    "package_blob_sha": "073d74d048cbe1f3f3e5d8d87259a707db4ab411",
     "package": "backend/src/db/ss1/subjects/english.json",
     "task": "SS1-02 English (PR #70 content, merged)"
   },
@@ -141,8 +141,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 219,
-    "PENDING": 16,
+    "IMPLEMENTED_TESTING_DEFERRED": 220,
+    "PENDING": 15,
     "BLOCKED": 7
   },
   "items": [
@@ -7216,8 +7216,8 @@
       "depends_on": [
         "ENG-WK-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T3-W09 on 2026-11-07; open item ENGLISH-T3-W09-READING-SCOPE. No lesson/content was authored by the indexing task.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-07 in package commit 6d298887d257c3b20fbcb1c7b01c832b44bffe49. Added original lesson SUP-SS1-ENGLISH-STATUTORY-TOPIC-T3-W09 with a complete original three-paragraph passage, a worked topic/theme/key-sentence analysis and five keyed questions (32 marks). The lesson explicitly notes that “statutory topic” is a nonstandard universal reading label and treats it cautiously as the curriculum's prescribed subject area; it does not conflate it with theme or key sentence. Bound the lesson to ENGLISH-T3-W09-SO01, CR01 and CR02 as IMPLEMENTED_EQUIVALENT and removed ENGLISH-T3-W09-READING-SCOPE after all three entries were covered. The missing Effective English page 125 passage is not reproduced or claimed inspected. Content approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "The reading objective has a complete, evidence-backed worked example and marked practice; any terminology/source defects are dispositioned without altering original source bytes.",
       "required_attachments": [
         {
@@ -7705,9 +7705,9 @@
   ],
   "review": {
     "date": "2026-11-07",
-    "reviewed_master_sha": "9d13bc1640257fd1ec9f3f46f250e6bd499f5590",
+    "reviewed_master_sha": "6d298887d257c3b20fbcb1c7b01c832b44bffe49",
     "reviewed_pr_head": null,
-    "scope": "English visual dispositions and original keyed Week 8 comparative and Week 9 antonym weekend equivalents; full curriculum tests, typechecks, importer, database and device checks remain deferred.",
+    "scope": "English source visual dispositions and original keyed equivalent lessons for Week 8 comparatives, Week 9 antonyms and Week 9 passage analysis; full curriculum tests, typechecks, importer, database and device checks remain deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -7716,7 +7716,7 @@
       "availability": "User attachment; not committed to Git. Attach this archive to source-reading workers."
     },
     "queue_metadata_review_master": "d01704cd15aa69241a8775c5e072fd2297b1d71b",
-    "queue_metadata_review_note": "Three visual disposition tasks and two original keyed weekend-equivalent lessons are implemented. Original source renders remain private; package approval and verification gates remain unchanged."
+    "queue_metadata_review_note": "Three visual-disposition tasks and three original keyed equivalent lessons are implemented in this workstream; parallel progress is preserved. Source renders remain private; package approval and verification gates remain unchanged."
   },
   "next_runnable": [
     "ENG-FACT-W04-UNIFIED-TEST",
@@ -7732,7 +7732,6 @@
     "ENG-LES-T2-W06-WORD-ASSIGNMENT",
     "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC",
     "ENG-LES-T2-W10-REVISION",
-    "ENG-LES-T3-W09-READING-SCOPE",
     "ENG-LES-T3-W09-ANTONYMS-SCOPE",
     "ENG-FACT-T3-W09-EXTERNAL-MATERIALS"
   ]
