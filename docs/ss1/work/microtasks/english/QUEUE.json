@@ -60,12 +60,13 @@
     "ENG-WK-T2-W05 (2026-11-07): 2nd Term Week 5 indexed at objective level; 5 coverage entries and rule R007 added to english.json, ENGLISH-BODY-042 (scheme row 5, a parsed one-line row) reclassified MARKER, two open items opened and two PENDING follow-ups appended (ENG-FACT-T2-W05-EXTERNAL-MATERIALS, ENG-LES-T2-W05-TOPIC-SCOPE). Indexing complete, content gaps not closed; only the scanning skill label (RD01) is narrowly equivalent, bound additively to the existing reading supplement. The body is only pointers to Intensive English pages 133-137 (no passage, questions or edition) and a topic line naming writing and listening that nothing teaches. New follow-up IDs carry T2 because ENG-FACT-W02-EXTERNAL-MATERIALS is already used twice in the queue (T1 and T2). Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W06 (2026-11-07): 2nd Term Week 6 indexed at objective level; 6 coverage entries and rule R008 added to english.json, ENGLISH-BODY-043 (scheme row 6, a parsed one-line row) reclassified MARKER, four open items opened and four PENDING follow-ups appended (ENG-LES-T2-W06-TOPIC-SCOPE, -RELIGION-VOCAB, -PHOTOGRAPHY-VOCAB, -WORD-ASSIGNMENT). Indexing complete, content gaps not closed; nothing is equivalent: no supplement or correction covers religion or photography vocabulary, and only the assignment (AS01) is partially supported, through the dictionary advice in the meaning supplement. The scheme names photography, the topic line adds sexuality and religion, and the body treats religion words and one photography exercise; no sexuality vocabulary is in the source. Both gap-fill exercises have no key. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W07 (2026-11-07): 2nd Term Week 7 indexed at objective level; 11 coverage entries and rule R009 added to english.json, ENGLISH-BODY-044 (scheme row 7, a parsed one-line row) reclassified MARKER, four open items opened and four PENDING follow-ups appended (ENG-LES-T2-W07-ADVERBS, -PRESENT-TENSE, -ADVERB-KEYS, ENG-FACT-T2-W07-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed; only the adverb definition (AD01) and the present-tense definition and uses (TN02, TN03, TN05) are narrowly equivalent, bound additively to the existing adverbs-and-tense supplement. The body treats the present tense only (the other tenses are in the Week 3 section by rule R002) and its simple-present line repeats Week 3; the scheme sub-topic promises adverbs in sentences, which the body does not set. The evaluation has nine words numbered 1 to 8 and no key. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
-    "ENG-WK-T2-W08 (2026-11-07): 2nd Term Week 8 indexed at objective level; 5 coverage entries and rule R010 added to english.json, ENGLISH-BODY-045 (scheme row 8, a parsed one-line row) reclassified MARKER, one open item opened and one PENDING follow-up appended (ENG-LES-T2-W08-ANTONYM-PRACTICE). Indexing complete, content gaps not closed; the definition, both types and the married/single example are narrowly equivalent, bound additively to the existing meaning supplement through COR-015, which corrects the source's identification of gradability with comparative forms. The assignment has no key, model or marks. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
+    "ENG-WK-T2-W08 (2026-11-07): 2nd Term Week 8 indexed at objective level; 5 coverage entries and rule R010 added to english.json, ENGLISH-BODY-045 (scheme row 8, a parsed one-line row) reclassified MARKER, one open item opened and one PENDING follow-up appended (ENG-LES-T2-W08-ANTONYM-PRACTICE). Indexing complete, content gaps not closed; the definition, both types and the married/single example are narrowly equivalent, bound additively to the existing meaning supplement through COR-015, which corrects the source's identification of gradability with comparative forms. The assignment has no key, model or marks. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
+    "ENG-WK-T2-W09 (2026-11-07): 2nd Term Week 9 indexed at objective level; 6 coverage entries and rule R011 added to english.json, ENGLISH-BODY-046 (scheme row 9, a parsed one-line row) reclassified MARKER, two open items opened and two PENDING follow-ups appended (ENG-LES-T2-W09-ESSAY-PRACTICE, -ASSIGNMENT-RUBRIC). Indexing complete, content gaps not closed; the topic set, the expository essay and the argumentative essay are narrowly equivalent, bound additively to the existing essay-types supplement through COR-016. The source body is four bare headings and two titles; the descriptive and narrative essays have a definition but no plan or practice in the supplement, and the two titles have no type, length or criteria. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 85,
+    "LESSON": 87,
     "CORRECTION_BINDING": 24,
     "FACTUAL_DEPENDENCY": 26,
     "ASSET": 1,
@@ -73,8 +74,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 60,
-    "PENDING": 113,
+    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "PENDING": 114,
     "BLOCKED": 5
   },
   "items": [
@@ -822,8 +823,8 @@
       "depends_on": [
         "ENG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-046, ENGLISH-BODY-057 (2 body-level rows; statuses {'PARTIAL': 1, 'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-046='WEEK 9:  COMPOSITION –MORE ON ESSAY TYPES'; ENGLISH-BODY-057='TOPIC :   COMPOSITION : MORE ON ESSAY TYPES'. Corrected rows: ENGLISH-BODY-057 <- SS1-02-english-COR-016 -> SUP-SS1-ENGLISH-ESSAY-TYPES-T2. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966 (extracted privately from docs/ss1/sources/SSS1-original.zip, not committed); mammoth 1.13.0 extractRawText text SHA256 2a334d9593d7b6d6560d6bbd75c6407e56b1b26c22c5ace5ea04917005fcc33f. Scheme row 9 is ENGLISH-BODY-046 (line 21), a parsed one-line row, now status MARKER and classified by new SCHEME_ONLY rule SS1-SRC-d8bd8f85fd73-R011. The teaching body is ENGLISH-BODY-057 (lines 511-527, hash 7c25a5cd… unchanged; corrected by COR-016 to SUP-SS1-ENGLISH-ESSAY-TYPES-T2, whose row-level IMPLEMENTED_EQUIVALENT was left as is although the objective entries show it is narrower). Added 6 coverage entries ENGLISH-T2-W09-* (TP01, ES01-ES04, AS01): 3 IMPLEMENTED_EQUIVALENT (TP01, ES02, ES03, narrowly, bound additively), 3 PARTIAL (ES01, ES04, AS01), 0 UNRESOLVED. docx structure inspected: no table object; the assignment titles are auto-numbered; no bold or underline in the body. The body is the topic line, four type headings and two titles only. Source defects recorded, not repaired: heading spacing, final full stop, missing type labels and rubric for the titles. Open items: ENGLISH-T2-W09-ESSAY-PRACTICE-GAP, ASSIGNMENT-RUBRIC; every PARTIAL entry is in one. No lessons or corrections changed; two PENDING follow-ups appended. Full verification remains deferred.",
       "completion_condition": "Every objective of Week 9 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -5598,6 +5599,72 @@
           "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
         }
       ]
+    },
+    {
+      "id": "ENG-LES-T2-W09-ESSAY-PRACTICE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9, coverage ENGLISH-T2-W09-ES01 and ES04",
+      "objective": "Author original descriptive and narrative essay teaching (worked plans, original examples) with keyed, marked tasks, bound additively to the essay-types supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W09 on 2026-11-07; not implemented. Open item ENGLISH-T2-W09-ESSAY-PRACTICE-GAP.",
+      "completion_condition": "ES01 and ES04 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 9, coverage ENGLISH-T2-W09-AS01",
+      "objective": "After the owner or teacher confirms the type and choice rule for the two titles, author original plans and marking criteria for them.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W09 on 2026-11-07; not implemented. Open item ENGLISH-T2-W09-ASSIGNMENT-RUBRIC.",
+      "completion_condition": "AS01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
     }
   ],
   "review": {
@@ -5616,7 +5683,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T2-W09",
     "ENG-WK-T2-W10",
     "ENG-WK-T3-W01",
     "ENG-WK-T3-W02",
@@ -5713,6 +5779,8 @@
     "ENG-LES-T2-W07-PRESENT-TENSE",
     "ENG-LES-T2-W07-ADVERB-KEYS",
     "ENG-FACT-T2-W07-EXTERNAL-MATERIALS",
-    "ENG-LES-T2-W08-ANTONYM-PRACTICE"
+    "ENG-LES-T2-W08-ANTONYM-PRACTICE",
+    "ENG-LES-T2-W09-ESSAY-PRACTICE",
+    "ENG-LES-T2-W09-ASSIGNMENT-RUBRIC"
   ]
 }

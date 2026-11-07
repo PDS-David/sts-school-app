@@ -566,6 +566,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R011",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 9:  COMPOSITION –MORE ON ESSAY TYPES",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 9, line 21 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-046 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -12091,14 +12103,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 9:  COMPOSITION –MORE ON ESSAY TYPES",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 9; exact body hash 745b045ad9f7a060d4b7deed8bb72ece29453a8d7671433c787984e041c9a5a4",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:745b045ad9f7a060d4b7deed8bb72ece29453a8d7671433c787984e041c9a5a4"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:745b045ad9f7a060d4b7deed8bb72ece29453a8d7671433c787984e041c9a5a4",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 21; UTF-8 joined-line SHA256 ea2f4bb51a211a50fe1e517915221a1501fe91436ec4379e0e9f1fefd1de5787; SS1-SRC-d8bd8f85fd73:BODY:745b045ad9f7a060d4b7deed8bb72ece29453a8d7671433c787984e041c9a5a4; rule SS1-SRC-d8bd8f85fd73-R011",
+          "explanation": "Scheme-of-work row 9 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Composition - more on essay types\". The teaching body ENGLISH-BODY-057 (lines 511-527) is a topic line, four essay-type headings and an assignment of two titles, indexed at objective level as ENGLISH-T2-W09-TP01, ES01 to ES04 and AS01. Rule SS1-SRC-d8bd8f85fd73-R011 classifies the row SCHEME_ONLY. Row 10 is left for its own week task."
         }
       ]
     },
@@ -16219,6 +16231,132 @@
           "explanation": "The supplement teaches both types with examples (hot/cold with warm; present/absent), so a teacher can model the answers, but it has no practice, key or marks for the assignment. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W09-TP01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Topic: composition, more on essay types (the four types listed below it)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 511-513; UTF-8 joined-line SHA256 41d766e7f804b2fdddb3457f434f66b579550408d6b1fa2879b3afc02ae86c50; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 511-513; UTF-8 joined-line SHA256 41d766e7f804b2fdddb3457f434f66b579550408d6b1fa2879b3afc02ae86c50; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+          "explanation": "The topic line matches scheme row 9 (line 21). \"More on\" implies earlier teaching of essay types, but the 2nd Term source has none; the earlier treatment is the argumentative-essay gap recorded for Term 1 (open item ENGLISH-T1-W08-ESSAY-GAP). The body is only the four type names and an assignment; nothing explains any of them. The heading is plain in the docx."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2: first paragraph, sentence 1",
+          "explanation": "The supplement opens with the principle that an essay's purpose determines its organisation and goes on to teach all four listed types, which covers the topic as a set. Bound additively, narrowly, through correction COR-016 (heading-only essay list requires actual teaching)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W09-ES01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "The descriptive essay (heading only)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 515; UTF-8 joined-line SHA256 8212642fa29ac6d04a5d3f7463cac51011b999d934b9852ee806db9e87fe4a93; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 515; UTF-8 joined-line SHA256 8212642fa29ac6d04a5d3f7463cac51011b999d934b9852ee806db9e87fe4a93; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+          "explanation": "The line is the heading \" THE  DESCRIPTIVE  ESSAY\" with a leading space and doubled spaces; no definition, feature, plan or example follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2: first paragraph, sentences 4-5",
+          "explanation": "The supplement defines a descriptive essay as creating a precise impression of a person, place or event, with relevant sensory details arranged spatially or by importance. It has no model plan, example or practice task for description. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W09-ES02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "The expository essay (heading only)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 517; UTF-8 joined-line SHA256 13b8d2e792653bcfac1fe660996bf3fb57b3e77812119a78b82a9a93da14475b; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 517; UTF-8 joined-line SHA256 13b8d2e792653bcfac1fe660996bf3fb57b3e77812119a78b82a9a93da14475b; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+          "explanation": "The line is the heading \"THE EXPOSITORY ESSAY\"; no definition, feature, plan or example follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2: second paragraph, sentences 1-3; practice Q1 and Q3",
+          "explanation": "The supplement defines an expository essay as explaining a subject or process, gives the method (define terms, organise into stages or reasons, illustrate) and a plan for \"How our class can reduce paper waste\"; Q3 is a keyed 4-mark paragraph task. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W09-ES03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "The argumentative essay (heading only)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 519; UTF-8 joined-line SHA256 67072d4719d97ad7f3162bda41e227e92a1bb751bb186d3782e67e9b3d96402c; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 519; UTF-8 joined-line SHA256 67072d4719d97ad7f3162bda41e227e92a1bb751bb186d3782e67e9b3d96402c; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+          "explanation": "The line is the heading \"THE ARGUMENTATIVE ESSAY\"; no definition, feature, plan or example follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2: second paragraph, sentences 4-7; third paragraph; practice Q2",
+          "explanation": "The supplement defines an argumentative essay, gives claim, reasons, counterargument and conclusion, warns against invented statistics, and supplies a model paragraph and a keyed 3-mark task (Q2). Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W09-ES04",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "The narrative essay (heading only)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 521; UTF-8 joined-line SHA256 323f19a7632d502927c9d405dd2ee84774f9db529c9f3724af9aeb106126c884; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 521; UTF-8 joined-line SHA256 323f19a7632d502927c9d405dd2ee84774f9db529c9f3724af9aeb106126c884; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+          "explanation": "The line is the heading \"THE NARRATIVE  ESSAY.\" with doubled spaces and a full stop; no definition, feature, plan or example follows."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2: first paragraph, sentences 2-3; practice Q1",
+          "explanation": "The supplement defines a narrative (linked events with a setting, participants, difficulty, turning point and outcome), a consistent viewpoint and time links. It has no model plan or writing task for narrative; Q1 only asks which type fits an incident. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W09-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: two essay titles, \"Teachers are more essential to a community than Doctors\" and \"Benefits of self discipline among today’s youths\"",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 523-527; UTF-8 joined-line SHA256 9d0e8d9b0f079fb6bacf6abfdc8de56cb39afe2e3f880c003c9064d1b5719987; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 523-527; UTF-8 joined-line SHA256 9d0e8d9b0f079fb6bacf6abfdc8de56cb39afe2e3f880c003c9064d1b5719987; SS1-SRC-d8bd8f85fd73:BODY:7c25a5cd2178b2373f1a870c293070560e531a1be217a8a856a4d8e659024a69",
+          "explanation": "The two titles form an automatic numbered list (numerals absent in plain text). The source does not say which essay type each title calls for, whether the student chooses one or writes both, or any length, time or marking criterion; no key, model plan or marks is given and none is inferred. The first title sets a comparison between two professions."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2: fourth paragraph",
+          "explanation": "The supplement says to write a plan before drafting, develop one point per paragraph, link paragraphs and revise for relevance, clarity, grammar and spelling, which supports the method for both titles. It has no plan, rubric or marks for these two titles. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -17136,6 +17274,27 @@
       "required_action": "Author original keyed, marked practice on gradable and complementary antonyms (explanation, original word-pair examples, and a check that an example really divides the domain or admits a middle value), labelled original, bound additively to SUP-SS1-ENGLISH-MEANING-T2; do not infer a key from the source definitions.",
       "affected_ids": [
         "ENGLISH-T2-W08-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W09-ESSAY-PRACTICE-GAP",
+      "kind": "CONTENT",
+      "detail": "Descriptive and narrative essays are only defined by the supplement: there is no model plan, example or writing task for either (Q1 only identifies a type), and the source gives nothing beyond the two headings.",
+      "required_action": "Author original teaching for the descriptive and narrative essay (a worked plan for each, with original examples) and original keyed, marked tasks with rubric criteria, labelled original, bound additively to SUP-SS1-ENGLISH-ESSAY-TYPES-T2; do not invent source material.",
+      "affected_ids": [
+        "ENGLISH-T2-W09-ES01",
+        "ENGLISH-T2-W09-ES04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W09-ASSIGNMENT-RUBRIC",
+      "kind": "CONTENT",
+      "detail": "The two assignment titles have no stated essay type, length, choice rule or marking criteria, and the supplement has no plan or rubric for them.",
+      "required_action": "Owner or teacher to confirm the intended type for each title and whether one or both are written; then author original plans and marking criteria for both titles, labelled original (not a model essay presented as the source key), bound additively to SUP-SS1-ENGLISH-ESSAY-TYPES-T2. No type, length or marks is inferred.",
+      "affected_ids": [
+        "ENGLISH-T2-W09-AS01"
       ],
       "blocks_delivery": true
     }
