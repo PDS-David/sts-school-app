@@ -625,8 +625,8 @@
         "TD-SRC-T2",
         "TD-SCH-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 11 (source label 'WEEK ONE', title \"Revision of last term work. Inscribed and circumscribed circles\", 4889 characters, body sha256 a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6); scheme week(s) WEEK 1 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added 10 objective-level coverage entries to technical-drawing.json, bound to original source body SS1-SRC-af4868d2c026:BODY:a4e3d54d3b4f61aaea4abaf5c2ed3b4d3644563bbe904d5db1c57c69cf4082b6. Five construction objectives (inscribed circle in triangle; three equal circles in equilateral triangle; sector; regular polygon/rhombus/deltoid; circumscribed circle on triangle) are SUPPORTED by source lines 75–239. Five general evaluation/revision constructions (three triangle constructions, similar triangle by perimeter, octagon in square) are PARTIAL because first-term revision scope cannot be confirmed without the missing T1 source. Defects/gaps recorded: missing visual figures (existing TD-VIS-W01), flattened degree signs at lines 193,237,251,257,331,335 (new TD-FACT-W01-DEGREE-NOTATION), and no verified answer keys/marking criteria (new TD-KEY-W01-ANSWERS). No dimensions or answers invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1407,6 +1407,74 @@
       "status": "BLOCKED",
       "implementation_reference": "Deferred by owner; implementation, approval and verification are separate stages.",
       "completion_condition": "Run only in the later authorised verification stage."
+    },
+    {
+      "id": "TD-FACT-W01-DEGREE-NOTATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE teaching row, flattened superscript degree values at lines 193, 237, 251, 257, 331 and 335",
+      "objective": "Recover the exact angle values from the original DOCX formatting/visual layout; the text extractor has flattened superscript degree symbols (e.g. 670, 1050, 550, 600).",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W01-DEGREE-NOTATION.md"
+      ],
+      "depends_on": [
+        "TD-WK-W01",
+        "TD-VIS-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W01 on 2026-11-08. Existing extraction records degree-sign loss at six locators. Exact values must be recovered from original DOCX runs/visual layout; no guesses permitted.",
+      "completion_condition": "Record exact intended angle values and reproducible source locators; preserve original bytes; add a correction or supplement only if needed. If source visual cannot resolve a value, keep it explicitly unresolved."
+    },
+    {
+      "id": "TD-KEY-W01-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK ONE evaluation questions and general evaluation/revisional questions",
+      "objective": "Create an original keyed supplement for the two inscribed-circle evaluation questions, two circumscribed-circle evaluation questions and five general revision constructions, with complete construction steps, answers and marking criteria after figures and degree notation are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W01-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W01",
+        "TD-VIS-W01",
+        "TD-FACT-W01-DEGREE-NOTATION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W01 on 2026-11-08. Source evidence records evaluation/revision questions but no verified complete answer key or marking criteria. Requires visual figures and degree values before keyed answers can be completed.",
+      "completion_condition": "Publish an original keyed lesson supplement with every source task addressed, construction steps, correct answers and positive integer marking criteria summing exactly to each question's marks. Do not invent dimensions or rely on uninspected figures."
     }
   ],
   "review": {
@@ -1422,7 +1490,7 @@
     }
   },
   "next_runnable": [
-    "TD-WK-W01"
+    "TD-WK-W02"
   ],
   "runnable_now": [
     "TD-SCH-W06",
