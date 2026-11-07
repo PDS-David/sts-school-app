@@ -51,21 +51,22 @@
     "ENG-LES-W06-REVISION-KEYS (2026-11-06): Week 6 vowel-sound revision supplement authored. New lesson SUP-SS1-ENGLISH-REVISION-W06-T1 (60 marks) bound additively to coverage ENGLISH-T1-W06-RV01, now IMPLEMENTED_EQUIVALENT; no correction added and ENGLISH-BODY-018 to 021 untouched. It teaches the five single vowel sounds the source stems test (/æ ɪ iː ʌ ɔː/) with spellings, traps, confusable pairs and a British accent model, with six keyed, marked exercises of original items. Open items ANSWER-KEYS and SOURCE-WORDING-REVIEW for Week 6 were removed because RV01 was their only affected entry. Approval stays PENDING and verification DEFERRED; British transcriptions need owner confirmation in a British dictionary and no audio or oral verification is claimed. next_runnable is unchanged.",
     "ENG-WK-T1-W08 (2026-11-07): Week 8 indexed at objective level; 20 coverage entries and rule R035 added to english.json, five open items opened and five PENDING follow-ups appended (ENG-FACT-W08-EXTERNAL-MATERIALS, ENG-LES-T1-W08-ADJECTIVE, -ARGUMENTATIVE-ESSAY, -CONSONANTS, -REVISION). Indexing complete, content gaps not closed; ENGLISH-BODY-027 keeps its row-level IMPLEMENTED_EQUIVALENT although the objective-level entries show the replacement is narrower. The scheme row names the adjectival clause and more consonant sounds, which the body does not teach. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T1-W09 (2026-11-07): Week 9 indexed at objective level; 19 coverage entries and rule R036 added to english.json, five open items opened and five PENDING follow-ups appended (ENG-FACT-W09-EXTERNAL-MATERIALS, ENG-LES-T1-W09-COMPREHENSION, -RELIGION-VOCAB, -EMPHATIC-STRESS, -REVISION). Indexing complete, content gaps not closed; no Week 9 row is covered by a correction or a bound supplement. The scheme row names stress and the topic line adds formal and informal conversation, which nothing teaches. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
-    "ENG-WK-T1-W10 (2026-11-07): Week 10 indexed at objective level; 22 coverage entries and rule R037 added to english.json, five open items opened and five PENDING follow-ups appended (ENG-FACT-W10-EXTERNAL-MATERIALS, ENG-LES-T1-W10-SUMMARY, -AFFIXES, -ADVERBIAL-PREPOSITIONAL, -REVISION). Indexing complete, content gaps not closed; only the prepositional-phrase definition (PP01) is narrowly equivalent, bound additively. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
+    "ENG-WK-T1-W10 (2026-11-07): Week 10 indexed at objective level; 22 coverage entries and rule R037 added to english.json, five open items opened and five PENDING follow-ups appended (ENG-FACT-W10-EXTERNAL-MATERIALS, ENG-LES-T1-W10-SUMMARY, -AFFIXES, -ADVERBIAL-PREPOSITIONAL, -REVISION). Indexing complete, content gaps not closed; only the prepositional-phrase definition (PP01) is narrowly equivalent, bound additively. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
+    "ENG-WK-T1-W11 (2026-11-07): Week 11 indexed at objective level; 36 coverage entries and rule R038 added to english.json, six open items opened and six PENDING follow-ups appended (ENG-FACT-W11-EXTERNAL-MATERIALS, ENG-LES-T1-W11-JUDICIARY-VOCAB, -LETTER, -ARTICLES, -CONSONANTS, -REVISION). Indexing complete, content gaps not closed; only the letter definition (LT01) and letter task (LT07) are narrowly equivalent, bound additively. The scheme row names registers of the judiciary, which nothing teaches, and the consonant CONTENT line lists /d/ and /k/ that the body never treats. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 58,
+    "LESSON": 63,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 22,
+    "FACTUAL_DEPENDENCY": 23,
     "ASSET": 1,
     "TEST": 6,
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 51,
-    "PENDING": 91,
+    "IMPLEMENTED_TESTING_DEFERRED": 52,
+    "PENDING": 96,
     "BLOCKED": 5
   },
   "items": [
@@ -516,8 +517,8 @@
       "depends_on": [
         "ENG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-035, ENGLISH-BODY-036, ENGLISH-BODY-037 (3 body-level rows; statuses {'IMPLEMENTED_EQUIVALENT': 2, 'PARTIAL': 1}). Row titles: ENGLISH-BODY-035='TOPICS: ESSAY WRITING: INFORMAL LETTER- \"A LETTER TO THE SISTER WHO PL'; ENGLISH-BODY-036='B. STRUCTURE: DEFINITE AND INDEFINITE ARTICLES'; ENGLISH-BODY-037='C. SPEECH WORK: MORE ON CONSONANTS'. Corrected rows: ENGLISH-BODY-035 <- SS1-02-english-COR-009 -> SUP-SS1-ENGLISH-LETTERS-T1, ENGLISH-BODY-037 <- SS1-02-english-COR-008 -> SUP-SS1-ENGLISH-PHONETICS-T1. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA256 4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef (extracted privately from docs/ss1/sources/SSS1-original.zip, not committed); word-extractor 1.0.4 getBody() text SHA256 8c3faa979ab73ef5de1cbc97976405c20332d505d49233cc147bfef691034a4e. Week 11 is source lines 1534-1697 of that text, the last week of the term: ENGLISH-BODY-035 (informal letter, lines 1534-1566, hash reproduced), 036 (articles, 1568-1623) and 037 (consonants, revision, weekend assignment, 1625-1697) kept unchanged; the 036 and 037 body hashes were taken from the existing rows and not reproduced from a line range. Added 36 coverage entries ENGLISH-T1-W11-* (SCHEME, VO01, LT01-LT08, AR01-AR12, CN01-CN10, RV01, WA01-WA03) and classify_marker/SCHEME_ONLY rule SS1-SRC-a00657d42196-R038, which classifies scheme row 11; rows 10 and 11 are now both classified. Outcome: 1 MARKER, 2 IMPLEMENTED_EQUIVALENT (LT01, the informal-letter definition, and LT07, the letter task, narrowly through SUP-SS1-ENGLISH-LETTERS-T1 and correction COR-009, bound additively), 26 PARTIAL, 7 UNRESOLVED. No correction changed. The scheme names registers of the judiciary, which no body paragraph teaches (VO01). The CONTENT line lists /d/ and /k/ that are never treated (CN08) and omits /p/, which is taught. The SUP-SS1-ENGLISH-PHONETICS-T1 replacement is narrower than the row-level IMPLEMENTED_EQUIVALENT on ENGLISH-BODY-037 implies; the row was left as is. Source defects recorded, not repaired: unbalanced quotes and the term 'Subscript' in the letter features, a full-name example against a first-name rule, wind and rainfall as unique referents, 'the Southern Nigeria', an unreconciled 'descriptive use' label, a flattened article table, 'getto' under gh, 'badge' under ge, a revision instruction saying A to D over five options, a noun among verbs in a synonym item and repeated numbering in the weekend set. Evaluation, revision and weekend items have no keys and none was inferred. The document was not rendered to PDF in this task, so table layout, the right-hand closing layout, underlining and option lettering are unchecked. Open items: ENGLISH-T1-W11-EXTERNAL-MATERIALS, JUDICIARY-GAP, LETTER-GAP, ARTICLE-GAP, CONSONANT-GAP, REVISION-GAP; every PARTIAL/UNRESOLVED entry is in one. No lessons or corrections changed; six PENDING follow-ups appended. Full verification remains deferred.",
       "completion_condition": "Every objective of Week 11 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -4600,6 +4601,191 @@
           "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
         }
       ]
+    },
+    {
+      "id": "ENG-FACT-W11-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T1-W11-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 11 refers to but the source does not contain (Countdown by Evans pages 70-72; Complete English Course for Senior Secondary School page 216; Standard Speech 10 Book Diction in English Course pages 2-4, with editions and the correct Countdown author), or have the owner accept labelled equivalent activities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W11-EXTERNAL-MATERIALS] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-T1-W11-LT08, AR12, CN10. Needs owner-supplied material or an owner decision.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of equivalent activities; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
+    },
+    {
+      "id": "ENG-LES-T1-W11-JUDICIARY-VOCAB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 11, coverage ENGLISH-T1-W11-VO01",
+      "objective": "Author original judiciary-register vocabulary teaching (court roles, processes and terms) with a keyed, marked exercise, labelled original; ask the owner to confirm the word scope because the source gives none.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T1-W11 on 2026-11-07; not implemented. Open item ENGLISH-T1-W11-JUDICIARY-GAP.",
+      "completion_condition": "VO01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T1-W11-LETTER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 11, coverage ENGLISH-T1-W11-LT02 to LT06",
+      "objective": "Author original informal-letter conventions (address, salutation including the 'My dear' rule, openings, task-compliant body, closing forms and layout) with an original model and a keyed, marked exercise; bind additively to the existing letters supplement; render the source privately to check the closing layout.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T1-W11 on 2026-11-07; not implemented. Open item ENGLISH-T1-W11-LETTER-GAP.",
+      "completion_condition": "LT02 to LT06 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T1-W11-ARTICLES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 11, coverage ENGLISH-T1-W11-AR01 to AR11",
+      "objective": "Author original article teaching (a, an, the, zero article; sound-based a/an with silent h; unique, known and generic reference; the with adjectives for groups) with correct examples and a keyed, marked exercise; do not answer the source evaluation by inference.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T1-W11 on 2026-11-07; not implemented. Open item ENGLISH-T1-W11-ARTICLE-GAP.",
+      "completion_condition": "AR01 to AR10 have evidence-backed coverage; AR11 resolved or its gate retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T1-W11-CONSONANTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 11, coverage ENGLISH-T1-W11-CN01 to CN09",
+      "objective": "Author original consonant spelling-variant teaching for /b p f g dʒ h/ and the missing /d/ and /k/, with a British model and keyed, marked practice; keep oral or listening claims separate and unverified; bind additively to the existing phonetics supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T1-W11 on 2026-11-07; not implemented. Open item ENGLISH-T1-W11-CONSONANT-GAP.",
+      "completion_condition": "CN01 to CN08 have evidence-backed coverage; CN09 resolved or its gate retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T1-W11-REVISION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-a00657d42196",
+      "term": "1st Term",
+      "week_or_locator": "Week 11, coverage ENGLISH-T1-W11-RV01, WA01 to WA03",
+      "objective": "Author original keyed, marked items for the skills in the unkeyed revision and weekend sets (word choice, relative pronouns, conjunctions, phrasal verbs, nearest meaning) without inferring answers for the source items; first render the source privately to read the option layout.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T1-W11"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T1-W11 on 2026-11-07; not implemented. Open item ENGLISH-T1-W11-REVISION-GAP.",
+      "completion_condition": "RV01 and WA01 to WA03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef"
+        }
+      ]
     }
   ],
   "review": {
@@ -4618,7 +4804,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T1-W11",
     "ENG-WK-T2-W01",
     "ENG-WK-T2-W02",
     "ENG-WK-T2-W03",
@@ -4693,6 +4878,12 @@
     "ENG-LES-T1-W10-SUMMARY",
     "ENG-LES-T1-W10-AFFIXES",
     "ENG-LES-T1-W10-ADVERBIAL-PREPOSITIONAL",
-    "ENG-LES-T1-W10-REVISION"
+    "ENG-LES-T1-W10-REVISION",
+    "ENG-FACT-W11-EXTERNAL-MATERIALS",
+    "ENG-LES-T1-W11-JUDICIARY-VOCAB",
+    "ENG-LES-T1-W11-LETTER",
+    "ENG-LES-T1-W11-ARTICLES",
+    "ENG-LES-T1-W11-CONSONANTS",
+    "ENG-LES-T1-W11-REVISION"
   ]
 }

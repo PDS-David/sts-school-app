@@ -770,6 +770,18 @@
         "locator": "word-extractor 1.0.4 getBody(), preamble scheme-of-work table, row 10 (three lines after the tab following '10')",
         "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text and in no parsed WEEK body; the WEEK TEN heading and topic lines are in upper case). The first line carries nine trailing spaces that the anchor keeps exactly. Metadata only, not teaching; no source text removed."
       }
+    },
+    {
+      "id": "SS1-SRC-a00657d42196-R038",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-a00657d42196",
+      "source_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef",
+      "anchor": "Vocabulary Development: Registers of Judiciary. Essay Writing: Informal letter- \"A letter to the sister who plans to divorce her husband advising her against the decision\"\nStructure: Definite and Indefinite Articles \nSpeech Work: More on Consonants. ",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), preamble scheme-of-work table, row 11 (three lines after the tab following '11')",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text and in no parsed WEEK body; the WEEK ELEVEN heading and topic lines are in upper case). The second and third lines each end in one space, which the anchor keeps exactly; the tab after the third line is not part of the anchor. Metadata only, not teaching; no source text removed."
+      }
     }
   ],
   "lessons": [
@@ -14056,6 +14068,592 @@
           "explanation": "Two open production tasks with no marks, model sentences or marking guide. They depend on the definitions and the unreviewed AP01 to PP03 teaching."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-SCHEME",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Week 11 scheme row (vocabulary development: registers of the judiciary; essay writing: informal letter on advising a sister against divorce; structure: definite and indefinite articles; speech work: more on consonants)",
+      "objective_locator": "preamble scheme-of-work table, row 11 (anchor of rule SS1-SRC-a00657d42196-R038)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196-R038"
+      ],
+      "evidence": [
+        {
+          "locator": "preamble scheme-of-work table, row 11",
+          "explanation": "The scheme row names four objective groups: vocabulary development (registers of the judiciary), the informal-letter essay, definite and indefinite articles and more on consonants. It lies outside every parsed row, so rule SS1-SRC-a00657d42196-R038 classifies it SCHEME_ONLY. The teaching bodies are ENGLISH-BODY-035 to 037. The WEEK ELEVEN topic lines (1535-1537) name the letter, the articles and the consonants but not the judiciary vocabulary, which no body paragraph teaches. The body also adds a CONTENT line for consonants that does not match what it teaches, a general revision set and a weekend assignment that the scheme row does not name. Row 11 is the last row of the table; the REFERENCES list follows it. Rows 10 and 11 are now both classified."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Informal letter: definition (private or personal letters written to people very familiar to the writer: parents, relatives, friends, classmates)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1539-1543; UTF-8 joined-line SHA256 697e9bcd950751fd1893c9e83ebd4551dafc962d4eb4f86348feea10f2b090bd; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'A. ESSAY WRITING: INFORMAL LETTER' to before 'FEATURES OF AN INFORMAL LETTER'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+        "SUP-SS1-ENGLISH-LETTERS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1539-1543; UTF-8 joined-line SHA256 697e9bcd950751fd1893c9e83ebd4551dafc962d4eb4f86348feea10f2b090bd; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Defines the informal letter by the closeness of the relationship and names four kinds of recipient. The heading block lists 'Content', 'Definition' and 'Features' as labels only."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-LETTERS-T1: body paragraph 1, first sentence",
+          "explanation": "The supplement defines an informal letter as one written to someone with whom the writer has a personal relationship, which covers the definition. The source's four kinds of recipient are not listed. Bound additively; correction SS1-02-english-COR-009 is unchanged and ENGLISH-BODY-035 stays unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Informal letter feature: the writer's address",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1546-1546; UTF-8 joined-line SHA256 2b7856f31257e9d9407c6eb5e9860812dc3f1d11f8c7b04865067bc819c7c333; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'Writer's address' to before 'Salutation'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1546-1546; UTF-8 joined-line SHA256 2b7856f31257e9d9407c6eb5e9860812dc3f1d11f8c7b04865067bc819c7c333; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Names the writer's address as the first feature and gives no rule on where it goes, how it is written or whether a date accompanies it; the source never mentions a date. The supplement says an address and date are included only where the task requires them, so it is not bound to the row."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Informal letter feature: the salutation (first name, 'Dear Father', or 'My' with a small 'd' as in 'My dear Mother')",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1547-1550; UTF-8 joined-line SHA256 410e8972754ea070bb71a9ee9263b0d9f58537206bc118c82fceaae0d626274b; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'Salutation e.g. first name as in' to before 'Introduction'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1547-1550; UTF-8 joined-line SHA256 410e8972754ea070bb71a9ee9263b0d9f58537206bc118c82fceaae0d626274b; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Gives five salutation examples and one rule: when 'My' is used, 'dear' takes a small 'd'. Source defects recorded, not repaired: the quotation marks around the examples are unbalanced ('Dear Peter',Dear Chike'), and the phrase 'or you include \"My\"' continues a list item without a stated punctuation rule. The supplement asks only for 'a suitable greeting' with a model 'Dear Sade', so the 'My dear' rule is not covered and the supplement is not bound."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Informal letter feature: the introduction (acknowledge receipt of the recipient's letter, or ask after the recipient's health, or another opening)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1551-1552; UTF-8 joined-line SHA256 6b3887b9240f3e105f105801bea5a29e8dfa10119e7d24c3433741807dfba4c7; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'Introduction' to before 'Body of the letter'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1551-1552; UTF-8 joined-line SHA256 6b3887b9240f3e105f105801bea5a29e8dfa10119e7d24c3433741807dfba4c7; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Offers two named ways to open, then 'any other way you like'. The supplement asks for an opening that establishes the purpose and models thanking the recipient for what they shared, but it does not teach acknowledging the receipt of a letter or asking after health, so it is not bound."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Informal letter feature: the body (do exactly what the question says in order to earn marks)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1553-1553; UTF-8 joined-line SHA256 854e9b4f0c3d228f47c5238f284eb364e5bc4a42d1967bab28576f2d2d2c7923; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'Body of the letter' to before 'Subscript'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1553-1553; UTF-8 joined-line SHA256 854e9b4f0c3d228f47c5238f284eb364e5bc4a42d1967bab28576f2d2d2c7923; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "A single instruction with a grammatical slip ('the questions says') and no guidance on paragraphing, length, tone or how marks are awarded. The supplement's 'developed body' and its advice to check that each paragraph serves the purpose overlap in part, but neither states the task-compliance rule, so it is not bound."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT06",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Informal letter feature: the close (called 'Subscript'): 'Yours sincerely' and accepted alternatives, placement at the bottom right, first name only, full stop, no signature, with four laid-out examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1554-1561; UTF-8 joined-line SHA256 8bfcb51c9321e456271d09c8436804f6c225a52ee4df00221a3b8161deb4e9e3; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'Subscript' to before 'EVALUATION'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1554-1561; UTF-8 joined-line SHA256 8bfcb51c9321e456271d09c8436804f6c225a52ee4df00221a3b8161deb4e9e3; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Says informal letters close with 'Yours sincerely' and accepts 'Yours affectionately', 'Your loving daughter' and 'With love from'; the closing quotation mark after 'Your loving daughter' is missing. Four examples (Audu, Lizzy, Andrew Scott) follow, aligned with spaces in the extraction; the right-hand layout was not rendered and is unchecked. Source defects recorded, not repaired: the rule says to write the first name only but the last example uses a full name, 'Subscript' is used for what is normally called the complimentary close, and the second and third examples omit the full stop the rule requires. The supplement closes with 'With best wishes' and a name, which is not one of the source's forms, so it is not bound."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT07",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Letter task: write a letter to a sister who plans to divorce her husband, advising her against the decision",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1562-1563; UTF-8 joined-line SHA256 fd68a5e91debc4f86a6ce0de1e97cee43ca8cede35ef5b06dfe4fff7a563deff; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'EVALUATION' to before 'READING ASSIGNMENT'",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+        "SUP-SS1-ENGLISH-LETTERS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1562-1563; UTF-8 joined-line SHA256 fd68a5e91debc4f86a6ce0de1e97cee43ca8cede35ef5b06dfe4fff7a563deff; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Sets one letter task with no marks, length, word limit or rubric. The task directs the writer to argue against a private marital decision."
+        },
+        {
+          "locator": "delivery_corrections SS1-02-english-COR-009 and SUP-SS1-ENGLISH-LETTERS-T1: body paragraph 2, Model opening, and practice Q2 and Q3",
+          "explanation": "COR-009 replaces this body with respectful advice-writing because the source pressures the recipient to remain in the marriage. The supplement teaches advice without pressure and models a considerate opening to a fictional relative, and practice Q3 asks for a short letter to a friend preparing for an examination. The replacement is narrower than the source task: it does not set the divorce letter, gives no marks or rubric for it, and does not ask the writer to argue against the decision. Bound additively; ENGLISH-BODY-035 and COR-009 are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-LT08",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: pages 70-72 of 'Countdown by Evans'",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1565-1566; UTF-8 joined-line SHA256 d23767d1fdba23ceb34522e662fdb4ff9756240a3af8628cdaa8d44445c2852c; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1 :: from 'READING ASSIGNMENT' to before 'B. STRUCTURE: DEFINITE AND INDEFINITE ARTICLES'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1565-1566; UTF-8 joined-line SHA256 d23767d1fdba23ceb34522e662fdb4ff9756240a3af8628cdaa8d44445c2852c; SS1-SRC-a00657d42196:BODY:d3d4805f5872df0b7be860a53e3abe0aaa883f22c5dd36e070b0e19029fd4fa1",
+          "explanation": "Names pages 70-72 of 'Countdown by Evans' with no edition. The scheme REFERENCES list 'Countdown English - O. Ogunsanwo et al.', a different author. The pages are not in the source."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-VO01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Vocabulary development: registers of the judiciary (named in the scheme row only)",
+      "objective_locator": "preamble scheme-of-work table, row 11, first line after the tab following '11' (anchor of rule SS1-SRC-a00657d42196-R038); no body locator exists",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196-R038"
+      ],
+      "evidence": [
+        {
+          "locator": "preamble scheme-of-work table, row 11; word-extractor 1.0.4 getBody() lines 1534-1697 searched",
+          "explanation": "The scheme row names 'Registers of Judiciary' as a vocabulary strand. The WEEK ELEVEN topic line and body (lines 1534-1697) contain no judiciary word list, definitions or exercise for it, and the Week 11 text has no heading for a vocabulary strand. A court word occurs only incidentally in one assessment item (revision item 3, a sentence served for an offence) and is not taught. Nothing is inferred and no word list is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Articles: the two types (definite and indefinite)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1568-1574; UTF-8 joined-line SHA256 5efa4ff200e941a4a7fce9550439e950f56a8039d538079fec8e53bb90162701; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'B. STRUCTURE: DEFINITE AND INDEFINITE ARTICLES' to before 'INDEFINITE ARTICLES'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1568-1574; UTF-8 joined-line SHA256 5efa4ff200e941a4a7fce9550439e950f56a8039d538079fec8e53bb90162701; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Lists 'Definite Articles' and 'Indefinite Articles' as content and states that articles can be definite or indefinite. It does not state how many articles English has or that 'a', 'an' and 'the' are the articles; the non-breaking-space line 1572 is an extraction artefact. The row has no replacement and no supplement."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Indefinite article 'a': used before a consonant sound, including words spelled with a vowel letter (Europe, university, Eucharist, eunuch, unit, union, uniform)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1576-1577; UTF-8 joined-line SHA256 f6796873b978d1be95e29317ca797a50b15d4ef1f0f9d46e17a49ccd6d4a2fef; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'INDEFINITE ARTICLES' to before '\"an\" is used before words that start with vowel sounds'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1576-1577; UTF-8 joined-line SHA256 f6796873b978d1be95e29317ca797a50b15d4ef1f0f9d46e17a49ccd6d4a2fef; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "States the sound-not-letter rule for 'a' and lists seven vowel-letter words with a consonant sound. Recorded, not repaired: 'hoe' and 'house' are listed here as consonant-sound words, and the same words reappear in the silent-h note."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Indefinite article 'an': used before a vowel sound (an egg, an apple, an orange)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1578-1579; UTF-8 joined-line SHA256 1b5c41f76c8cf1921724c774453ddb98ffc02fc31fb453044acf82573b36074c; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from '\"an\" is used before words that start with vowel sounds' to before 'NOTE that the following words have silent'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1578-1579; UTF-8 joined-line SHA256 1b5c41f76c8cf1921724c774453ddb98ffc02fc31fb453044acf82573b36074c; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "One rule and three examples, all with a vowel letter; no example separates sound from spelling for 'an'."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Indefinite articles with silent 'h': 'an hour', 'an honest', 'an honour'; 'a house', 'a hoe', 'a home'",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1580-1580; UTF-8 joined-line SHA256 dabad1fb86a0cfac714d18ee942666b71049185365c958d95c6363b1084e3ff5; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'NOTE that the following words have silent' to before 'DEFINITE ARTICLE \"the\"'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1580-1580; UTF-8 joined-line SHA256 dabad1fb86a0cfac714d18ee942666b71049185365c958d95c6363b1084e3ff5; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Names three silent-h words that take 'an' and three sounded-h words that take 'a'. 'Honest' and 'honour' are listed without a following noun, so the examples are not full phrases. 'Heir', which an evaluation item needs, is not in the list."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Definite article 'the': refers to a particular person or thing",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1581-1582; UTF-8 joined-line SHA256 1a3a901fe8bc3bddfaf88ef2b619fb44bd98f81c2650a9efe86110bde8e64ec1; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'DEFINITE ARTICLE \"the\"' to before 'How the definite and indefinite articles are used'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1581-1582; UTF-8 joined-line SHA256 1a3a901fe8bc3bddfaf88ef2b619fb44bd98f81c2650a9efe86110bde8e64ec1; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "A one-line definition with no example in this passage and no contrast with a specific versus a general reference."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR06",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Article use by noun type: singular count, plural count and non-count nouns with indefinite and definite reference",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1584-1592; UTF-8 joined-line SHA256 3e6d6f6896089bc1a519aaf6b13c7b3ca3e48fb83a6b214964499c62319165fd; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'How the definite and indefinite articles are used' to before 'Uses of the definite article'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1584-1592; UTF-8 joined-line SHA256 3e6d6f6896089bc1a519aaf6b13c7b3ca3e48fb83a6b214964499c62319165fd; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "A three-column table flattened by the extraction, so cell boundaries for the plural count and non-count rows run together; the document was not rendered and the layout is unchecked. Recorded, not repaired: 'some' is shown as the indefinite reference for plural and non-count nouns although it is not an article, an unmarked 'Water' appears among the cells and the zero article is never named, and the closing sentence has an unbalanced quotation mark."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR07",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Uses of 'the': a unique referent, a referent known to speaker and hearer (the bag under the bed, the letter in the envelope), and newspaper titles (The Punch, The Nation)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1594-1601; UTF-8 joined-line SHA256 ca8cf2572f0526e51aab8c183857c6822a25d18dbf232b7935b712b5ac06d7b9; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'Uses of the definite article \"the\"' to before 'Descriptive Use'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1594-1601; UTF-8 joined-line SHA256 ca8cf2572f0526e51aab8c183857c6822a25d18dbf232b7935b712b5ac06d7b9; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Gives three uses. Recorded, not repaired: 'the wind' and 'the rainfall' are offered as things of which there is only one, which they are not; the newspaper-title use is placed between the 'known referent' example and its explanatory note, so the note appears to belong to the newspaper use."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR08",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Descriptive use of 'the' (The accused was acquitted for want of evidence; She has the courage of Esther)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1603-1606; UTF-8 joined-line SHA256 59aeda18dd3648dd7e5f8c5d41c9db4a17daaba66173b6220234af444921fd0a; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'Descriptive Use' to before 'Generic Use'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1603-1606; UTF-8 joined-line SHA256 59aeda18dd3648dd7e5f8c5d41c9db4a17daaba66173b6220234af444921fd0a; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Says the definite article here 'describes a noun'. The first example uses 'the' with an adjective-like noun for a person, the second specifies 'courage' by an of-phrase, so the label does not match what the examples show. Recorded, not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR09",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Generic use of 'the' for what is typical of a class (The banana is found mainly in the Southern Nigeria; The tiger is a very ferocious animal)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1607-1610; UTF-8 joined-line SHA256 624d466f1978411202895278b319b93cc02888e6fbf93c9e7fd345db1702063d; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'Generic Use' to before 'It is used before the noun that indicates'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1607-1610; UTF-8 joined-line SHA256 624d466f1978411202895278b319b93cc02888e6fbf93c9e7fd345db1702063d; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "States the generic use with two examples. Recorded, not repaired: 'the Southern Nigeria' puts an article before a regional name that does not take one in this sentence, so the first example contains an article error."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR10",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "'The' before a noun that names one such thing or group (The Soviet Union, The Principal, The Minister of Education)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1611-1614; UTF-8 joined-line SHA256 ca212ac40f7efabc3d94b03dd3e6adad547277a5e816c8981fd8f12bcf600f1e; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'It is used before the noun that indicates' to before 'EVALUATION'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1611-1614; UTF-8 joined-line SHA256 ca212ac40f7efabc3d94b03dd3e6adad547277a5e816c8981fd8f12bcf600f1e; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Three examples of unique titles and institutions. Recorded, not repaired: the first example names a state that no longer exists, and the unique-referent use in AR07 overlaps this one."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR11",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Articles evaluation: fill in each gap with the correct article (four items)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1616-1621; UTF-8 joined-line SHA256 acc4871296b97c1b7ffc9836cc242bae81604e1b877f955477daa922cdb7f543; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'EVALUATION' to before 'Reading Assignment'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1616-1621; UTF-8 joined-line SHA256 acc4871296b97c1b7ffc9836cc242bae81604e1b877f955477daa922cdb7f543; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Four gap-fill items with no key. Item 2 ('rich') needs 'the' before an adjective used for a group, a use the body does not teach, and item 3 ('heir') needs a silent-h word the body does not list. Nothing is inferred and no answers are supplied."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-AR12",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: 'The articles (determiners)', Complete English Course for Senior Secondary School, page 216",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1622-1623; UTF-8 joined-line SHA256 c62533335aca37cd95689af50ea5eae14009cd736e789f660fbdac32e711c16b; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510 :: from 'Reading Assignment' to before 'C. SPEECH WORK: MORE ON CONSONANTS'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1622-1623; UTF-8 joined-line SHA256 c62533335aca37cd95689af50ea5eae14009cd736e789f660fbdac32e711c16b; SS1-SRC-a00657d42196:BODY:87d749779753f192720b4af32a608c92613448fbe3513dfffa61da5a2a433510",
+          "explanation": "Names a title with no author or edition; it is not among the scheme REFERENCES. The page is not in the source."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Consonants: the stated CONTENT list (/b/, /d/, /f/, /g/, /dz/, /h/, /k/)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1625-1626; UTF-8 joined-line SHA256 ad58a57edf64492fbd6a29fca4508432928653e963d14b42a9aac10ce7aed314; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from 'C. SPEECH WORK: MORE ON CONSONANTS' to before '/b/voiced bilabial plosive'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1625-1626; UTF-8 joined-line SHA256 ad58a57edf64492fbd6a29fca4508432928653e963d14b42a9aac10ce7aed314; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "The content line lists seven sounds, but the body treats /b/, /p/, /f/, /g/, /dz/ and /h/: /p/ is taught although not listed, and /d/ and /k/ are listed but never treated (see CN08). The symbol '/dz/' is read as /dʒ/ by correction COR-008; the same extracted line 1668 keeps θ and ð, so 'dz' is probably literal in the source, but the original was not rendered to confirm. SUP-SS1-ENGLISH-PHONETICS-T1 teaches the voiced and voiceless consonant pairs, /t/ and /k/ and the symbols /ʒ/ and /dʒ/ with words but has no practice on spelling variants, so ENGLISH-BODY-037 stays row-level IMPLEMENTED_EQUIVALENT while the objectives below record a narrower replacement. The supplement is not bound."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "/b/ (voiced bilabial plosive): spellings b and bb with word examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1627-1630; UTF-8 joined-line SHA256 80f0a42aea321e1abc9092ee61e8dfbe1e5cf19436504f6a9ca4df898665ab55; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '/b/voiced bilabial plosive' to before '/p/- voiceless bilabial plosive'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1627-1630; UTF-8 joined-line SHA256 80f0a42aea321e1abc9092ee61e8dfbe1e5cf19436504f6a9ca4df898665ab55; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Names the sound and gives two spellings with eleven examples. No transcription of the words and no listening or production exercise is given; the supplement does not teach /b/ spellings."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "/p/ (voiceless bilabial plosive): spellings p and gh with word examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1631-1634; UTF-8 joined-line SHA256 652ca4ff68e50044bf712273e1f4015446dfb699c3006c521d3d7f0f232bef39; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '/p/- voiceless bilabial plosive' to before '/f/ -voiceless labio dental fricative:'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1631-1634; UTF-8 joined-line SHA256 652ca4ff68e50044bf712273e1f4015446dfb699c3006c521d3d7f0f232bef39; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Gives p with five examples and 'gh' with 'hiccough'. /p/ is not in the CONTENT line. The supplement lists /p b/ as a voicing pair without spellings."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "/f/ (voiceless labio-dental fricative): spellings f, ff, gh, ph and v with word examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1635-1641; UTF-8 joined-line SHA256 47525e5bc0b980efd651091bb0cb588974da2cb14e335a06536affc8c620d2bf; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '/f/ -voiceless labio dental fricative:' to before '/g/- voiced velar plosive'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1635-1641; UTF-8 joined-line SHA256 47525e5bc0b980efd651091bb0cb588974da2cb14e335a06536affc8c620d2bf; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Gives five spellings with examples. 'v' is illustrated only by two foreign proper names (Gorbachev, Volkswagen). The supplement lists /f v/ as a voicing pair with fine/vine but teaches no spellings."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "/g/ (voiced velar plosive): spellings g, gg and gh with word examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1642-1646; UTF-8 joined-line SHA256 781747bd8f87012ae1765dc1e3618da37300520a515bb3a25c16491ce13183bf; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '/g/- voiced velar plosive' to before '/dz/'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1642-1646; UTF-8 joined-line SHA256 781747bd8f87012ae1765dc1e3618da37300520a515bb3a25c16491ce13183bf; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Gives three spellings. Recorded, not repaired: 'getto' is listed under 'gh' although the spelling that fits is 'ghetto'. The supplement lists /k g/ as a pair without spellings."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN06",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "/dz/ (read as /dʒ/ by COR-008): spellings j, ge, gi, gy and du with word examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1647-1653; UTF-8 joined-line SHA256 16c3af7faafc5a915b05eaeaf8b67d1c0edb0f9c9ee7d18e64c066599c6b2b32; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '/dz/' to before '/h/ _ voiceless glottal fricative'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1647-1653; UTF-8 joined-line SHA256 16c3af7faafc5a915b05eaeaf8b67d1c0edb0f9c9ee7d18e64c066599c6b2b32; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "The sound is given by symbol only, with no place or manner label unlike the other sounds. Five spellings with examples follow. Recorded, not repaired: 'badge' is listed under 'ge' although it ends in 'dge', and 'due' and 'educate' take /dʒ/ only in some accents. The supplement shows /dʒ/ in 'judge' and as the partner of /tʃ/ but has no spelling variants, so COR-008 corrects the symbol without covering this objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN07",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "/h/ (voiceless glottal fricative): spellings h and wh with word examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1655-1658; UTF-8 joined-line SHA256 f4ccd9f66507d84cc53bea2347973f85bbbb3f540aace0db3e1b88e2206399d3; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '/h/ _ voiceless glottal fricative' to before 'EVALUATION'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1655-1658; UTF-8 joined-line SHA256 f4ccd9f66507d84cc53bea2347973f85bbbb3f540aace0db3e1b88e2206399d3; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Gives h and wh with examples. The silent-h words of the articles section (hour, honest, honour) are not cross-referenced. The supplement lists /h/ among the remaining consonants only."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN08",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Consonants /d/ and /k/: listed in the CONTENT line but with no body treatment",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1626-1626; UTF-8 joined-line SHA256 e62d061278aa45c89878d8f6cd29992de41807027ee60940b50d46af49ed522e; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from 'CONTENT: CONSONANTS /b/, /d/, /f/, /g/, /dz/, /h/, /k/' to before '/b/voiced bilabial plosive'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1626-1626; UTF-8 joined-line SHA256 e62d061278aa45c89878d8f6cd29992de41807027ee60940b50d46af49ed522e; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "The content line names /d/ and /k/; no heading, spelling variants or examples follow for either, and the reading assignment names /d/ again. The source gives nothing to bind and nothing is inferred. The supplement shows /t d/ and /k g/ as pairs and /k/ in 'cat', which is not a treatment of the source objective."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN09",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Consonants evaluation: pick the odd item from each list of four words (five items)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1660-1666; UTF-8 joined-line SHA256 976c66d8e1f597324ec567063fab7a2f6a4fe7fcc7505d56423744a93a8197b6; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from 'EVALUATION' to before 'Reading Assignment'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1660-1666; UTF-8 joined-line SHA256 976c66d8e1f597324ec567063fab7a2f6a4fe7fcc7505d56423744a93a8197b6; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Five items with no key and no statement of the criterion for 'odd' (spelling, sound or sound class). Nothing is inferred and no answers are supplied."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-CN10",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: /v/, /θ/, /ð/, /n/, /t/, /d/ on pages 2-4 of 'Standard Speech 10 Book Diction in English Course'",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1667-1668; UTF-8 joined-line SHA256 180f293154b1408d45da38c01241d0bab946007092000f2a0f9b71d5d8902857; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from 'Reading Assignment' to before 'GENERAL EVALUATION/ REVISION QUESTIONS:'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1667-1668; UTF-8 joined-line SHA256 180f293154b1408d45da38c01241d0bab946007092000f2a0f9b71d5d8902857; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Names six sounds and a title with no author or edition; the title is not among the scheme REFERENCES, and the sounds differ from this week's content list. The pages are not in the source."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-RV01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "General revision: choose the word that best completes each of five sentences",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1670-1677; UTF-8 joined-line SHA256 608fea943869bf9b030e0d181ffa4fdd2ed4834dcdcb6f6a30f2039dd0ce843f; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from 'GENERAL EVALUATION/ REVISION QUESTIONS:' to before 'WEEKEND ASSIGNMENT'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1670-1677; UTF-8 joined-line SHA256 608fea943869bf9b030e0d181ffa4fdd2ed4834dcdcb6f6a30f2039dd0ce843f; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Five vocabulary items with no key. Structural defects recorded, not repaired: the instruction says words lettered A to D but the items offer (a)-(e); item 3 letters its last options 'd.' and 'e.'; item 5 breaks inside option (d) across lines 1676-1677. Item 3 turns on a court word and is the only judiciary-register item in the week. Not named in the scheme row. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-WA01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Weekend assignment (i): choose the right option for five sentences (whose/who's, unless, about, make it, if and when)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1679-1685; UTF-8 joined-line SHA256 0a1d0d4822cdf84a11dcfaa5b2004f7c9840506ccc73aaa31e3e0ee5ba703ea1; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from 'WEEKEND ASSIGNMENT' to before '(ii) Choose the alternative nearest in meaning'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1679-1685; UTF-8 joined-line SHA256 0a1d0d4822cdf84a11dcfaa5b2004f7c9840506ccc73aaa31e3e0ee5ba703ea1; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Five items with three options each and no key. Item 4 offers 'make best', which is not a complete phrase. The skills tested (relative pronouns, conjunctions, phrasal verbs) are not named in the scheme row. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-WA02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Weekend assignment (ii): choose the alternative nearest in meaning (three items)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1687-1690; UTF-8 joined-line SHA256 8b92242b9c022bfaf17abeafac0e0f8ac7d7c7d36eb640a47b712f2854f69f85; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '(ii) Choose the alternative nearest in meaning' to before '(iii) Choose one of the following'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1687-1690; UTF-8 joined-line SHA256 8b92242b9c022bfaf17abeafac0e0f8ac7d7c7d36eb640a47b712f2854f69f85; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Three items with no key. Item 1 offers 'approval', a noun, beside two past-tense verbs for 'endorsed', so the options do not match in form. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W11-WA03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Weekend assignment (iii): choose one of two words to fill each blank (five items)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1692-1697; UTF-8 joined-line SHA256 d0bcb707942649647e8a6abf13de5ca1b348374e9b517a53482fd495c96803b1; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c :: from '(iii) Choose one of the following' to end of body",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1692-1697; UTF-8 joined-line SHA256 d0bcb707942649647e8a6abf13de5ca1b348374e9b517a53482fd495c96803b1; SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c",
+          "explanation": "Five items with no key. Defects recorded, not repaired: the instruction is ungrammatical ('each expression'), the numbers run 1, 2, 3, 3, 4, and item 3 ('for a (meal, lunch)') has no blank. Nothing is inferred."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -14599,6 +15197,93 @@
       "affected_ids": [
         "ENGLISH-T1-W10-RV01",
         "ENGLISH-T1-W10-WA01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W11-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 11 refers to material that is not in the source document: Countdown by Evans pages 70-72, Complete English Course for Senior Secondary School page 216 and Standard Speech 10 Book Diction in English Course pages 2-4. No edition is identified, none of the three titles is among the scheme REFERENCES, and the Countdown author differs from the scheme's.",
+      "required_action": "Owner to supply authorised extracts with edition, or accept labelled equivalent activities (queue item ENG-FACT-W11-EXTERNAL-MATERIALS). Do not infer the missing content.",
+      "affected_ids": [
+        "ENGLISH-T1-W11-LT08",
+        "ENGLISH-T1-W11-AR12",
+        "ENGLISH-T1-W11-CN10"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W11-JUDICIARY-GAP",
+      "kind": "CONTENT",
+      "detail": "The scheme row names registers of the judiciary as a vocabulary objective, but the source body has no word list, definitions or exercise for it; court words appear only inside unkeyed assessment items.",
+      "required_action": "Author original judiciary-register vocabulary teaching with a keyed, marked exercise, labelled original; scope (which court words and roles) to be confirmed by the owner because the source gives none.",
+      "affected_ids": [
+        "ENGLISH-T1-W11-VO01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W11-LETTER-GAP",
+      "kind": "CONTENT",
+      "detail": "The informal-letter features are listed in a sentence or two each with source defects (unbalanced quotes, 'Subscript', a full name against a first-name rule) and no worked model; the supplement covers organisation and respectful advice but not the salutation rule, the acknowledgement opening, the task-compliance rule or the source's closing forms and layout.",
+      "required_action": "Author an original supplement or extend the existing one to cover address, salutation conventions, openings, body, closing forms and layout with a keyed, marked exercise; render the source privately to check the closing layout.",
+      "affected_ids": [
+        "ENGLISH-T1-W11-LT02",
+        "ENGLISH-T1-W11-LT03",
+        "ENGLISH-T1-W11-LT04",
+        "ENGLISH-T1-W11-LT05",
+        "ENGLISH-T1-W11-LT06"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W11-ARTICLE-GAP",
+      "kind": "CONTENT",
+      "detail": "Articles are taught from a short source with no supplement, no correction and no key: the table is flattened, several examples are wrong or mislabelled (wind and rainfall as unique, 'the Southern Nigeria', the descriptive-use label) and the evaluation tests uses the body does not teach.",
+      "required_action": "Author original article teaching (a, an, the, zero article, sound-based a/an, unique and generic use, the with adjectives for groups) with correct examples and a keyed, marked exercise; do not answer the source evaluation by inference.",
+      "affected_ids": [
+        "ENGLISH-T1-W11-AR01",
+        "ENGLISH-T1-W11-AR02",
+        "ENGLISH-T1-W11-AR03",
+        "ENGLISH-T1-W11-AR04",
+        "ENGLISH-T1-W11-AR05",
+        "ENGLISH-T1-W11-AR06",
+        "ENGLISH-T1-W11-AR07",
+        "ENGLISH-T1-W11-AR08",
+        "ENGLISH-T1-W11-AR09",
+        "ENGLISH-T1-W11-AR10",
+        "ENGLISH-T1-W11-AR11"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W11-CONSONANT-GAP",
+      "kind": "CONTENT",
+      "detail": "The CONTENT line promises /b d f g dz h k but the body teaches /b p f g dz h; /d/ and /k/ have no treatment, the spelling lists contain slips (getto, badge), there is no transcription or listening practice, and the evaluation has no key or stated criterion. The existing phonetics supplement covers consonant pairs and symbols but not these spelling variants.",
+      "required_action": "Author original consonant spelling-variant teaching including /d/ and /k/, using the existing symbol conventions and a British model, with keyed, marked practice; keep any oral or listening claim separate and unverified.",
+      "affected_ids": [
+        "ENGLISH-T1-W11-CN01",
+        "ENGLISH-T1-W11-CN02",
+        "ENGLISH-T1-W11-CN03",
+        "ENGLISH-T1-W11-CN04",
+        "ENGLISH-T1-W11-CN05",
+        "ENGLISH-T1-W11-CN06",
+        "ENGLISH-T1-W11-CN07",
+        "ENGLISH-T1-W11-CN08",
+        "ENGLISH-T1-W11-CN09"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W11-REVISION-GAP",
+      "kind": "CONTENT",
+      "detail": "The best-completes revision set and the three weekend assignments have no keys and several structural defects (A-to-D instruction with five options, a split option, a noun among verbs, repeated numbering, a blank missing); none is named in the scheme row.",
+      "required_action": "Author original keyed, marked items for these skills without inferring answers for the source items; render the source privately to read option layout.",
+      "affected_ids": [
+        "ENGLISH-T1-W11-RV01",
+        "ENGLISH-T1-W11-WA01",
+        "ENGLISH-T1-W11-WA02",
+        "ENGLISH-T1-W11-WA03"
       ],
       "blocks_delivery": true
     }
