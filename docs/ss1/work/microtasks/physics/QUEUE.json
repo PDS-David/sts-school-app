@@ -34,21 +34,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 8,
+    "FACTUAL_DEPENDENCY": 9,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 8,
+    "LESSON": 9,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "BLOCKED": 11,
-    "PENDING": 48
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "BLOCKED": 12,
+    "PENDING": 47
   },
-  "total": 79,
+  "total": 81,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -459,8 +459,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK FIVE AND SIX', title \"VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT -TIME GRA\", 15574 characters, body sha256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence). The importer reads this as ONE row although the scheme names two weeks; PR #71 split it (PHYS-R01) with an operation master does not have. See PHYS-PORT-D1-RULE-SPLIT.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added seven scheme-level objective entries for scalars/vectors, distance/displacement, speed/velocity, acceleration/retardation, distance/displacement-time graphs, speed/velocity-time graphs and uniformly accelerated motion equations; all are covered by original supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS (body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d) with seven keyed questions and exact marking totals. Original parsed row 4 remains one content-bound WEEK FIVE AND SIX row. A public close-equivalent PDF shows Week Five motion content at lines 434–611 and a second WEEK SIX Density & Relative Density section starting at line 612; however the repo separately registers row 5 as WEEK SEVEN Density & Relative Density, so original source boundary/version mismatch remains PARTIAL and is not split. Original figures and assessments are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2710,6 +2710,71 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked 2026-11-08: only the original member hash and parsed row identity/title are available; the legacy .doc bytes/text are not accessible in this session. The scheme topic is covered by an independent supplement, but original-row reconciliation cannot be claimed.",
       "completion_condition": "Inspect the original row and record exact subtopics, locators, formulae, units, figures, exercises and answer/marking evidence; reconcile the supplement without inventing source content."
+    },
+    {
+      "id": "PHYS-LES-T1-W05-W06-MOTION-GRAPHS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FIVE AND SIX combined parsed row 4; scalar/vector quantities, linear motion, graphs and uniformly accelerated motion",
+      "objective": "Create an original SS1 supplement for scalar/vector quantities, distance/displacement, speed/velocity, acceleration/retardation, distance/displacement-time graphs, speed/velocity-time graphs and the four equations of uniformly accelerated motion, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W05-W06-MOTION-GRAPHS.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W05-W06"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS (body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d) with six objectives, worked examples, seven keyed practice questions and 25 total marks; marking criteria totals checked. Provenance includes FME Inspire Scalars and Vectors, FME Inspire Speed and Velocity, eLearn acceleration outcomes and a public close-equivalent PDF. No source wording, figures or exercises copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has objective-aligned original content, correct units/formulae/graph interpretations, worked examples, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK FIVE AND SIX parsed row 4, 15,574 characters, body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+      "objective": "Inspect the original archive member and determine the exact boundary between the two teaching sections, reconcile the apparent Week Six density section with parsed row 5 Week Seven density, and map all original formulas, units, graphs, classwork, assignments and answer/marking evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W05-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the current execution session cannot access the original legacy .doc bytes/text. A public close-equivalent PDF shows a second section beginning at line 612, but it is not verified byte-identical and conflicts with the repository's parsed row 5 label/title. The scheme objectives are covered by an original supplement, but exact source boundary and source-row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original DOC and record exact section boundaries, row mapping, formulas, units, figures, assignments and answer/marking coverage; reconcile source version differences without splitting/merging rows absent source evidence."
     }
   ],
   "review": {
@@ -2733,10 +2798,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T1-W04 friction objective coverage and original supplement added; original .doc row reconciliation remains blocked by source-byte access. Testing deferred by owner."
+    "notes": "PHYS-WK-T1-W05-W06 objectives and original supplement added; public close-equivalent PDF shows a second section at line 612 but conflicts with repository row 5, so original row boundary remains blocked pending source DOC access. Testing deferred by owner."
   },
   "next_runnable": [
-    "PHYS-WK-T1-W05-W06",
     "PHYS-WK-T1-W06",
     "PHYS-WK-T1-W07",
     "PHYS-WK-T1-W08",
@@ -2775,7 +2839,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W05-W06",
     "PHYS-WK-T1-W06",
     "PHYS-WK-T1-W07",
     "PHYS-WK-T1-W08",
