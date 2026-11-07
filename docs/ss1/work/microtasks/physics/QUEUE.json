@@ -44,9 +44,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
     "BLOCKED": 9,
-    "PENDING": 51
+    "PENDING": 50
   },
   "total": 75,
   "items": [
@@ -2061,8 +2061,8 @@
         "docs/ss1/work/microtasks/physics/PHYS-CMP-D4-NOTES.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only: b5ced7ebb0efe22df2351baa140266fbf40cbf41:docs/ss1/work/SS1-03/CHECKPOINT.md blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c and HANDOFF.json blob f3ee7c4559931744ab679bc6f8975fd7091c0710 (shared with the Mathematics comparison). The #71 checkpoint reports Physics IMPLEMENTED - TESTING DEFERRED (NOT COMPLETE) with 5 lessons and PHYS-R01; master's says NOT STARTED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 checkpoint blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c line 9 and HANDOFF blob f3ee7c4559931744ab679bc6f8975fd7091c0710 lines 55-68 with master checkpoint blob 3fc668a75bab4ce097022e4b5e28a1f3440dbb71 line 36 and master handoff blob 1d9838eb33a3f0e26ec712f6aff08f71cc3597e5 line 8. Branch's 5-lesson claim is now ported on this work branch via PHYS-PORT-D1-T2-L001/L002 and T3-L003/L004/L005, with coverage PHYS-PORT-D1-COV-T2/T3; master checkpoint's NOT STARTED statement is stale but not overwritten. PHYS-R01 split is routed to PHYS-PORT-D1-RULE-SPLIT. OI-PHYS-001/004 map to PHYS-VIS-T1/T2/T3 and extraction-strategy/T1 notation open items; OI-PHYS-002 maps to four PHYS-PORT-D1-FACT tasks; OI-PHYS-003 maps to PHYS-OWNER-REVISION-PLAN and revision marker rules; OI-PHYS-005 maps to PHYS-APPROVAL-CONTENT and new PHYSICS-T2-T3-LESSON-REVIEW.",
       "completion_condition": "Branch-only facts listed with blob and line locators, each routed to a queue item or recorded as already covered."
     },
     {
@@ -2641,7 +2641,6 @@
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
     "PHYS-PORT-D1-COV-T1",
-    "PHYS-CMP-D4-NOTES",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-MICROMETER-READING",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
