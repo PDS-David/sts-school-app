@@ -134,6 +134,30 @@
       "observed_subject": "THIRD TERM E-LEARNING NOTE",
       "canonical_subject": "Physics",
       "approval_reference": "PENDING-OWNER: the source body has no subject heading (opening heading is 'THIRD TERM E-LEARNING NOTE'); subject indicated by the page header/footer and teaching content and by the manifest assignment; owner confirmation of this assignment and alias not yet recorded (PHYS-OWNER-ALIAS-T3); not teacher approval of lesson content"
+    },
+    {
+      "id": "SS1-SRC-bed91bb4ef0e-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "anchor": "THIRD TERM SCHEME OF WORK",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() line 2 ('THIRD TERM SCHEME OF WORK', 6 leading and 1 trailing space), offset 67, before the first parsed body label 'WEEK 1' (line 17, offset 534); the anchor occurs once in the extract",
+        "explanation": "Scheme-of-work heading of the title block. It precedes the first parsed body, so it belongs to no parsed row and carries no teaching objective. Source text is retained unchanged."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-bed91bb4ef0e-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "source_sha256": "bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688",
+      "anchor": "11.  Revision\n12.  Examination",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() lines 13-14 ('11.  Revision' and '12.  Examination'), offset 452, before the first parsed body label 'WEEK 1' (line 17, offset 534); the two-line anchor occurs once in the extract",
+        "explanation": "Scheme rows for weeks 11 (Revision) and 12 (Examination). Neither has a parsed row or a teaching body: the document has exactly ten WEEK markers (WEEK 1 to WEEK 10) and no text after the last body. The rows are accounted as scheme-only; no revision or examination lesson is invented."
+      },
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -793,6 +817,38 @@
         {
           "locator": "drawn-object anchors counted as in COV-PHYS-T1-W02-OBJ-6: lines 316, 321, 327 and 334 have 1 anchor each; theory items 2(a), 2(b), 3 and 4 follow those anchors",
           "explanation": "The four figures that theory items 2-4 depend on are drawn objects the extract cannot emit; the figure inventory stays with PHYS-VIS-T1."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-TITLE",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Document title and scheme-of-work heading; no teaching objective",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1-2",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-bed91bb4ef0e-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "line 1 ('THIRD TERM E-LEARNING NOTE', 32 leading and 2 trailing spaces) SHA-256 df2e2fb3dcf8d357918dab27232e12faed4a2fda3f65323e9d9a160ca69f74a0; line 2 ('THIRD TERM SCHEME OF WORK ', 6 leading and 1 trailing space) SHA-256 3e16283db28dabc0f502992ff1da36fa1b79e56bf47b6d0b5c10a7ebb0ea3ead; lines 1-2 SHA-256 316e63ba468875d30722f508a71ff6bd4a3438cf9378f3185eda45d7c94f603a; text before the first parsed body label 'WEEK 1' (line 17, offset 534) SHA-256 8e25e51ec2fd802c25deedcaa28bd2a169a1cf5ca989d02574594e13cda0c62d",
+          "explanation": "Title and scheme heading. This source has no SUBJECT or CLASS line and no reference-book list (the alias is tracked by PHYSICS-T3-ALIAS-APPROVAL). Scheme rows 1-10 (lines 3-12) map by order to the ten parsed bodies WEEK 1 to WEEK 10 and to PHYS-WK-T3-W01..W10; the scheme carries typed numbers ('1', '2', '3.' ... '10.'). The last hash is the value the compiler PREAMBLE_REQUIRES_COVERAGE detail will hold for text.slice(0, index of 'WEEK 1'), computed by slicing without running the importer."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T3-SCHEME-REVISION-EXAM",
+      "source_id": "SS1-SRC-bed91bb4ef0e",
+      "objective": "Scheme week 11 (Revision) and week 12 (Examination): no teaching body exists for either",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 13-14",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-bed91bb4ef0e-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "line 13 ('11.  Revision') SHA-256 d22d8ae00059f183066c148f0ce1be09ef5cacdc696dc7b316208967498606a3; line 14 ('12.  Examination') SHA-256 df80b41b61c18f7b7a8a6c573c5f3408ea7009fec6d5b5640c047034c138ffca; lines 13-14 joined with LF SHA-256 a092161e02e11a8718c9ab8ae14e36d0d574e23d48f7fd93cb63dc92803af02d",
+          "explanation": "Scheme-only rows. There is no parsed row for either week (10 WEEK markers, WEEK 1 to WEEK 10; no text follows the final body). Nothing is discarded and no lesson is invented. A revision or examination plan for SS1 Third Term is an owner decision tracked by PHYS-OWNER-REVISION-PLAN."
         }
       ]
     }
