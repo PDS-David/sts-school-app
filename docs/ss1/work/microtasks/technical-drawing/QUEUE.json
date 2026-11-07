@@ -31,13 +31,13 @@
     "MISSING_MATERIAL": 2,
     "SOURCE_PREAMBLE_INDEXING": 1,
     "SOURCE_WEEK_INDEXING": 19,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "VISUAL_DISPOSITION": 9,
     "ASSET": 2,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 8
+    "LESSON": 9
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 7,
@@ -901,8 +901,8 @@
         "TD-SRC-T2",
         "TD-SCH-W10"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 18 (source label 'WEEK TEN', title \"Tangency involving circles, arcs and lines.\", 8427 characters, body sha256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863); scheme week(s) WEEK 10 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added COV-TD-T2-W10-TANGENCY, mapping the Week 10 scheme objective to the combined source row 18 (WEEK TEN), title “Tangency involving circles, arcs and lines”, body SHA-256 e369f415d98376d3894019f69ed19f39bf84863e1580ffd41d43af39331c1863. Coverage is PARTIAL because current repository evidence does not enumerate individual constructions, dimensions, labels, figures or answer/marking details. Added TD-FACT-W10-TANGENCY-CONSTRUCTIONS and TD-KEY-W10-ANSWERS; existing TD-VIS-W10 owns visuals. No construction detail invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1850,6 +1850,74 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W08-W09 on 2026-11-08. Exact constructions, figures, answers and marking evidence are not present in current repository evidence.",
       "completion_condition": "Publish original keyed construction solutions and positive integer marking criteria summing exactly to each question's marks, with no invented dimensions or diagrams."
+    },
+    {
+      "id": "TD-FACT-W10-TANGENCY-CONSTRUCTIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN teaching row (parsed row 18), tangency involving circles, arcs and lines",
+      "objective": "Inspect the original Week Ten row and record every tangency construction, including the relevant circles/arcs/lines, centres, radii, contact points, dimensions, labels, exercises and exact locators.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W10-TANGENCY-CONSTRUCTIONS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W10",
+        "TD-VIS-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W10 on 2026-11-08. The source row identity/title is known; individual tangency constructions and geometry are not recorded in current repository evidence.",
+      "completion_condition": "Record every tangency construction with exact source locator, dimensions, labels, centres/radii/contact points and exercise references; no inferred constructions."
+    },
+    {
+      "id": "TD-KEY-W10-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN tangency construction and evaluation tasks",
+      "objective": "Create original keyed solutions and marking criteria for each Week Ten tangency construction and evaluation task after the source geometry and figures are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W10-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W10",
+        "TD-VIS-W10",
+        "TD-FACT-W10-TANGENCY-CONSTRUCTIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W10 on 2026-11-08. Complete source construction tasks and figure geometry are not recorded in current repository evidence.",
+      "completion_condition": "Provide correct original construction steps and answers with positive integer marking criteria summing exactly to each question's marks; do not invent figures or dimensions."
     }
   ],
   "review": {
@@ -1865,7 +1933,7 @@
     }
   },
   "next_runnable": [
-    "TD-WK-W10"
+    "TD-VIS-INVENTORY"
   ],
   "runnable_now": [
     "TD-SCH-W06",
