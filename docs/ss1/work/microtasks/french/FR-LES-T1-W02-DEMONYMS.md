@@ -43,3 +43,15 @@ All teaching prose and practice are original. No source passage, table image or 
 - Checked lesson-ID uniqueness, coverage reference, body hash, package JSON parse and each marking total before publishing.
 - Full package tests, typechecks, importer, database, device and delivery verification were not run, as required by the owner's testing deferral.
 - No teacher approval or verification is claimed.
+
+
+## Exact language-reference locators (review addendum)
+
+The 35 masculine/feminine forms in the lesson table were checked against the OQLF BDL country/gentilé table. Exact rows (country/gentilé) are:
+
+- Afrique du Sud 9–10; Algérie 15–16; Angola 24–25; Bénin 76–77; Botswana 89–91; Burkina Faso 102–103; Burundi 105–106; Cameroun 111–112; République du Congo 135–136; Côte d’Ivoire 149–150; Djibouti 161–162; Éthiopie 198–199; Gabon 210–211; Gambie 213–214; Guinée 231–232; Kenya 296–297; Libéria 326–327; Libye 329–330; Madagascar 344–345; Mali 357–358; Maroc 363–364; Mauritanie 369–370; Namibie 397–398; Niger 409–410; République centrafricaine 467–470; République démocratique du Congo 472–473; Rwanda 490–491; Sénégal 513–514; Sierra Leone 522–523; Somalie 534–535; Soudan 537–538; Tchad 565–566; Togo 576–577; Tunisie 586–587; Zambie 624–625.
+
+- Académie française, “Adjectif ou nom de nationalité”, lines 842–845: capitalization of nouns naming inhabitants vs lowercase nationality adjectives and agreement/usage.
+- Académie française, Dictionnaire, “gentilé”, lines 852–857: definition of a gentilé and its initial-capital rule.
+
+This addendum improves source traceability only; lesson text, body hash, practice and task status are unchanged.
