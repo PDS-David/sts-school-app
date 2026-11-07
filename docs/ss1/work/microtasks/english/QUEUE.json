@@ -83,13 +83,13 @@
   ],
   "counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 94,
-    "PENDING": 142,
-    "BLOCKED": 6
+    "PENDING": 141,
+    "BLOCKED": 7
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 94,
-    "PENDING": 142,
-    "BLOCKED": 6
+    "PENDING": 141,
+    "BLOCKED": 7
   },
   "items": [
     {
@@ -3375,8 +3375,8 @@
         "ENG-SRC-T3",
         "ENG-LES-STRESS-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-022] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 body_sha256=dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 replacement_id=SUP-SS1-ENGLISH-STRESS-T3; paired coverage entry ENGLISH-BODY-079 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "BLOCKED",
+      "implementation_reference": "Reviewed the exact existing binding SS1-02-english-COR-022: source row SS1-SRC-50fa9b1eb2fd:BODY:dc6354177c96542d17ee92ba7bcc56b229128cb6884a41bf43b675c8131d7867 (3rd Term; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f) remains bound to same-term replacement SUP-SS1-ENGLISH-STRESS-T3. Replacement teaches that requests/commands do not have one compulsory tune and gives context-sensitive rise/fall-rise examples; it does not preserve the complete displaced row. Objective-by-objective evidence: ENGLISH-T3-W08-SW01=PARTIAL (corrects universal-rise claim and explains pragmatic pitch, but lacks full request models/audio/oral practice); SW02=PARTIAL (the source's 'Good morning — Morning' response is not taught); SW03=PARTIAL (IPA stress and pitch movement are introduced, but the source's missing/unclear rise/fall symbols are not identified or validated); SW04=UNRESOLVED (Effective English Practice 2 p.25 conversation/Practice 3 is absent, with no authoritative key/marks). Existing precise blockers: ENGLISH-T3-W08-INTONATION-SCOPE, ENGLISH-T3-W08-EXTERNAL-MATERIALS and ENGLISH-T3-W08-COR-022-SCOPE. The existing correction and replacement are retained unchanged and must remain inactive; body-level ENGLISH-BODY-079 is PARTIAL. No owner acceptance or missing textbook/audio material is inferred. Task cannot be marked IMPLEMENTED_TESTING_DEFERRED until the remaining objectives are taught or the owner explicitly narrows the correction scope. Approval remains PENDING; verification/runtime/compiler tests remain DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7707,7 +7707,6 @@
     "ENG-COR-019",
     "ENG-COR-020",
     "ENG-COR-021",
-    "ENG-COR-022",
     "ENG-COR-023",
     "ENG-COR-024",
     "ENG-FACT-PROVENANCE-REVIEW",
