@@ -482,6 +482,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R004",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 2:  COMPREHENSION- NOSEC . HOME AND FAMILY LIFE.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 2, line 7 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-039 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -11895,14 +11907,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 2:  COMPREHENSION- NOSEC . HOME AND FAMILY LIFE.",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 2; exact body hash 956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 7; UTF-8 joined-line SHA256 956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281; SS1-SRC-d8bd8f85fd73:BODY:956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281; rule SS1-SRC-d8bd8f85fd73-R004",
+          "explanation": "Scheme-of-work row 2 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names comprehension, the abbreviation NOSEC (not expanded and with no edition) and the theme \"Home and family life\". The teaching body ENGLISH-BODY-049 (lines 99-153) instead has a passage titled \"The Quest for Health\" on pages 68-69 of an unnamed book, so scheme and body disagree on the passage. The objectives are indexed at objective level as ENGLISH-T2-W02-TH01 (theme), RD01-RD02 (passage and skill), AN01-AN02, VO01, SM01, LK01 and AS01. The body adds contextual vocabulary, summary writing with linking words and a summary assignment that the row does not name. Rule SS1-SRC-d8bd8f85fd73-R004 classifies the row SCHEME_ONLY. Rows 3 to 10 are left for their own week tasks."
         }
       ]
     },
@@ -14882,6 +14894,170 @@
           "explanation": "Eighteen items, no key. \"mat\" and \"ploy\" are not recognised prefixes (ploy occurs inside employ). Of the 18, only dis, in, mis, un, im and il occur anywhere else in the body (as Evaluation 1 options); post, pro, re, sub, super, tele, tri, trans, uni and non are in neither the prefix table nor the evaluation. The source heading spells the label \"ASSIGNEMT\". No answers or marks are inferred. The supplement teaches re-, post- and un- only."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-TH01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Scheme theme: home and family life (comprehension passage on this theme)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 7; UTF-8 joined-line SHA256 956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281; SS1-SRC-d8bd8f85fd73:BODY:956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 7; UTF-8 joined-line SHA256 956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281; SS1-SRC-d8bd8f85fd73:BODY:956a16de894dea284236f1b30f336b68ec3428ec884df171829952c6d6b5d281",
+          "explanation": "The scheme row names the theme \"Home and family life\". No Week 2 body text treats it: the body passage is \"The Quest for Health\", about health, disease and nursing. The scheme and the body therefore name different passages and the source does not reconcile them. Nothing in the package teaches a home-and-family reading, and the supplement SUP-SS1-ENGLISH-READING-T2 is on a school-library passage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-RD01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Comprehension passage \"The Quest for Health\", pages 68-69 (the reading text itself)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 101; UTF-8 joined-line SHA256 67c1d4462a7cf0b9f6525505c8c2ebc05be5d3f88ba16c0a2519549ac346c14f; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 101; UTF-8 joined-line SHA256 67c1d4462a7cf0b9f6525505c8c2ebc05be5d3f88ba16c0a2519549ac346c14f; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "The topic line cites pages 68-69 of an unnamed book. The passage is not in the source: only answer statements and word lists follow. The abbreviation NOSEC in the scheme row is not expanded and no edition is given. The replacement SUP-SS1-ENGLISH-READING-T2 is, in its own words, an original passage and not a reproduction of the missing one (correction COR-011 records \"missing passage\")."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-RD02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Reading skill: reading for details and inference",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 103; UTF-8 joined-line SHA256 909870ea27f3cda788d711ae9ebc924e8385750d83290ee804b02ced3682c129; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+        "SUP-SS1-ENGLISH-READING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 103; UTF-8 joined-line SHA256 909870ea27f3cda788d711ae9ebc924e8385750d83290ee804b02ced3682c129; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "A skill label only; no method is taught in the body."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: objectives 1-2; paragraph beginning \"Skim by looking quickly\"",
+          "explanation": "The supplement teaches locating facts and making supported inferences, with the distinction between a reasonable and an unsupported inference, on an original passage. This covers the skill label. It does not cover the source passage. Bound additively, narrowly; COR-011 and ENGLISH-BODY-049 are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-AN01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Answer statements 1-2 and the unnumbered statement: meaning of \"key\", definition of health, definition of disease",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 105-109; UTF-8 joined-line SHA256 f9d6eda9b48bd90d3a7a1d394aca2f043136634b8e0868dab05103e8e85cc48e; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 105-109; UTF-8 joined-line SHA256 f9d6eda9b48bd90d3a7a1d394aca2f043136634b8e0868dab05103e8e85cc48e; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "Three statements with no questions and no passage to check them against. In the docx the first two are items 1 and 2 of an automatic list; the third (line 109) is unnumbered and breaks the list. Wording is defective or circular: \"Disease is when there is no health\" defines by negation, and \"key\" in \"the first paragraph\" cannot be located without the passage. The health claims are passage-bound statements, not teaching, and are not carried into the package as facts. No questions are inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-AN02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Answer statements 3-6: five things a nurse must be taught, correcting injurious habits, what a physician does, the right method for avoiding disease",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 111-117; UTF-8 joined-line SHA256 4eb33585cab34e91d06ff5baa4042ab932ac5d8c0a7f05c58df58f9d0513a00a; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 111-117; UTF-8 joined-line SHA256 4eb33585cab34e91d06ff5baa4042ab932ac5d8c0a7f05c58df58f9d0513a00a; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "Four statements, items 3 to 6 of the same automatic list, again without questions or passage. Line 111 contains the stray \"(S)\" in \"five (S) things\", and line 113 reads \"bodily healthy\" for what is presumably \"bodily health\"; line 117 begins with a space. Recorded, not repaired. The health assertions are oversimplified (correction COR-011 gives this as a reason) and are not carried as facts."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-VO01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation: contextual meanings of seven words (endeavour, afflicted, ailment, concentrating, adhere, restoration, nutrition)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 119-133; UTF-8 joined-line SHA256 f3818d3efd496e95c9e3990364959c79ebe782633851864f6ff34953790492f5; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+        "SUP-SS1-ENGLISH-READING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 119-133; UTF-8 joined-line SHA256 f3818d3efd496e95c9e3990364959c79ebe782633851864f6ff34953790492f5; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "Instruction plus seven words, items 1 to 7 of an automatic list. The meaning \"as used in the passage\" depends on the missing passage and the source gives no key."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: paragraph beginning \"For context vocabulary\", sentence 1",
+          "explanation": "The supplement teaches the method (substitute a candidate meaning and reread) with one word, trial. It does not treat any of the seven words. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-SM01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Summarising (page 70): turn the questions that follow into a list of points for a summary",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 135; UTF-8 joined-line SHA256 1aa3caf9056a23c7cb08f377f0b11ad34415f30001a5971d0b62f097787fd917; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+        "SUP-SS1-ENGLISH-READING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 135; UTF-8 joined-line SHA256 1aa3caf9056a23c7cb08f377f0b11ad34415f30001a5971d0b62f097787fd917; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "Refers to page 70 and to questions that \"follow\", which are not in the source. The reference is to a prescribed book page that is not supplied."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: paragraph beginning \"For context vocabulary\", sentences 2-5",
+          "explanation": "The supplement teaches summarising by keeping the problem, response and result and omitting illustrative detail, and gives a two-sentence model on its original passage. It does not use the page 70 questions. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-LK01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Linking words (consequently, apparently, furthermore, finally) and reporting verbs (noted, observed, explained, maintained) for use in summaries",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 137-147; UTF-8 joined-line SHA256 acd81da0212cf8ca3d5b3dc679ac9c03196ff24ded36632e406762509edb0d18; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 137-147; UTF-8 joined-line SHA256 acd81da0212cf8ca3d5b3dc679ac9c03196ff24ded36632e406762509edb0d18; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "A two-column list. The docx has no table object; the columns are tab-separated paragraphs. The instruction says to use words \"like the ones in these lists\", so the lists are examples, not a closed set. \"Apparently\" is an adverb of appearance and does not link sentences as the other three do; recorded, not repaired. The list ends with a full stop after \"maintained\". Nothing in the supplement teaches linking words or reporting verbs."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W02-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: summarise the passage in six sentences",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 151; UTF-8 joined-line SHA256 5eb1a92573e7d79d03f9e9b6b2eb08cb9a6cd822a5a1bb7108d76749f59bab73; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+        "SUP-SS1-ENGLISH-READING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 151; UTF-8 joined-line SHA256 5eb1a92573e7d79d03f9e9b6b2eb08cb9a6cd822a5a1bb7108d76749f59bab73; SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e",
+          "explanation": "The task needs the missing passage and gives no key, model or marks."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T2: paragraph beginning \"For context vocabulary\", sentences 3-6",
+          "explanation": "The supplement teaches summarising and follows a stated sentence limit, with a two-sentence model on its own passage. It does not set a six-sentence task on the source passage. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -15557,6 +15733,62 @@
         "ENGLISH-T2-W01-EV01",
         "ENGLISH-T2-W01-EV02",
         "ENGLISH-T2-W01-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W02-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 2 refers to material that is not in the source document: the passage \"The Quest for Health\" on pages 68-69, the questions on page 70, and NOSEC, which is not expanded and has no edition. The scheme names a home-and-family passage while the body names a health passage. Answer statements AN01-AN02 and the vocabulary and summary tasks cannot be checked without them.",
+      "required_action": "Owner to supply authorised extracts with edition and the intended NOSEC passage, or accept labelled equivalent activities (queue item ENG-FACT-W02-EXTERNAL-MATERIALS). Do not infer the missing passage, questions or answers.",
+      "affected_ids": [
+        "ENGLISH-T2-W02-RD01",
+        "ENGLISH-T2-W02-AN01",
+        "ENGLISH-T2-W02-AN02",
+        "ENGLISH-T2-W02-VO01",
+        "ENGLISH-T2-W02-SM01",
+        "ENGLISH-T2-W02-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W02-THEME-GAP",
+      "kind": "CONTENT",
+      "detail": "The scheme theme \"Home and family life\" is taught by nothing in the source body or the package.",
+      "required_action": "Author an original home-and-family comprehension passage with keyed, marked detail and inference questions, labelled original; owner to confirm that this is wanted in place of the health passage.",
+      "affected_ids": [
+        "ENGLISH-T2-W02-TH01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W02-VOCABULARY-GAP",
+      "kind": "CONTENT",
+      "detail": "The seven source words (endeavour, afflicted, ailment, concentrating, adhere, restoration, nutrition) are not treated by the replacement, and their meanings in the source passage cannot be checked.",
+      "required_action": "Author original context-vocabulary teaching for the seven words in original sentences with a keyed, marked exercise, labelled original; state that the meanings are general, not the source passage's.",
+      "affected_ids": [
+        "ENGLISH-T2-W02-VO01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W02-SUMMARY-GAP",
+      "kind": "CONTENT",
+      "detail": "The summary tasks (page 70 questions and the six-sentence assignment) have no passage, key, model or marks, and the supplement summary model is for a different passage and a two-sentence limit.",
+      "required_action": "Author original summary teaching with a six-sentence task, a model and marking criteria on an original passage, labelled original; do not answer the source task by inference.",
+      "affected_ids": [
+        "ENGLISH-T2-W02-SM01",
+        "ENGLISH-T2-W02-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W02-LINKERS-GAP",
+      "kind": "CONTENT",
+      "detail": "The linking words and reporting verbs are not taught anywhere; \"apparently\" is not a sentence linker of the same kind as the others.",
+      "required_action": "Author original teaching of linking words and reporting verbs for summaries, with accurate classification and a keyed, marked exercise, labelled original; owner to confirm the list is only an example set.",
+      "affected_ids": [
+        "ENGLISH-T2-W02-LK01"
       ],
       "blocks_delivery": true
     }
