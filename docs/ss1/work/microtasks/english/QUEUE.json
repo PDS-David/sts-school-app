@@ -135,7 +135,8 @@
     "2026-11-07 quality reconciliation: recomputed all 135 lesson body_sha256 values with SHA-256 validated against the standard 'abc' test vector; corrected two practice rubric totals (Week 1 diagnostic language and Week 7 sentence-pattern analysis). All practice items with explicit marking arrays now sum to their declared marks. Full project tests remain deferred.",
     "2026-11-07 scope reconciliation: ENGLISH-BODY-005 restored to IMPLEMENTED_EQUIVALENT after confirmed whole-row correction scope and all five PV01–PV05 objectives verified IMPLEMENTED_EQUIVALENT. Remaining body rows stay under review.",
     "2026-11-07 scope tracker update: removed 5 restored body rows from ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION; 17 partial rows remain. No unresolved row was upgraded.",
-    "ENG-LES-T3-W09-ANTONYMS-SCOPE (2026-11-07): User's 'Go on. Complete this' after the specific recommendation is recorded as approval for contextual counterpart treatment of 'nearly opposite'. Added ten-pair matching and keyed explanation/application practice; ANT03/SO03/BODY-083 resolved. Queue counters reconciled."
+    "ENG-LES-T3-W09-ANTONYMS-SCOPE (2026-11-07): User's 'Go on. Complete this' after the specific recommendation is recorded as approval for contextual counterpart treatment of 'nearly opposite'. Added ten-pair matching and keyed explanation/application practice; ANT03/SO03/BODY-083 resolved. Queue counters reconciled.",
+    "ENG-FACT-W04-UNIFIED-TEST (2026-11-07): At the owner's instruction, authored SUP-SS1-ENGLISH-W04-UNIFIED-TEST as an original 50-mark classroom assessment with a recommended 75-minute duration, defined Week 4 scope, original drama extract, candidate paper, answer key, marking guide and teacher-administered dictation. Bound UT01 as IMPLEMENTED_EQUIVALENT and closed ENGLISH-T1-W04-UNIFIED-TEST. This is not represented as a recovered external or textbook examination. Content approval remains PENDING; verification/testing remains DEFERRED. Next runnable task advances to ENG-FACT-W08-EXTERNAL-MATERIALS."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -148,8 +149,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 224,
-    "PENDING": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 225,
+    "PENDING": 10,
     "BLOCKED": 7
   },
   "items": [
@@ -4591,9 +4592,9 @@
       "depends_on": [
         "ENG-WK-T1-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "english.json open_items[id=ENGLISH-T1-W04-UNIFIED-TEST] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-BODY-014, ENGLISH-T1-W04-UT01. Needs an owner-supplied instrument or an owner decision.",
-      "completion_condition": "Owner supplies the instrument or records its status; the open item and UT01 are updated accordingly.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "english.json lessons[id=SUP-SS1-ENGLISH-W04-UNIFIED-TEST] (50 marks; recommended 75 minutes; original assessment, answer key and marking scheme); coverage[id=ENGLISH-T1-W04-UT01] IMPLEMENTED_EQUIVALENT; open_items[id=ENGLISH-T1-W04-UNIFIED-TEST] closed. Content approval remains PENDING; verification/testing remains DEFERRED.",
+      "completion_condition": "Original Week 4 unified classroom test, scope, recommended timing, answer key and marking scheme implemented as a new equivalent. Approval and verification remain deferred.",
       "required_attachments": []
     },
     {
@@ -7726,7 +7727,6 @@
     "queue_metadata_review_note": "Three visual-disposition tasks and multiple original keyed equivalent lessons implemented; Week 11 external materials now has two of three reading assignments covered, with LT08 held for owner scope/material clarification. Source renders remain private; approval and verification gates unchanged."
   },
   "next_runnable": [
-    "ENG-FACT-W04-UNIFIED-TEST",
     "ENG-FACT-W08-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W08-CONSONANTS",
     "ENG-FACT-W09-EXTERNAL-MATERIALS",
