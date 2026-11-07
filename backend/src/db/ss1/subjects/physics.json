@@ -665,6 +665,193 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Motion, force and circular motion",
+      "objectives": [
+        "Define motion and classify common types of motion, including translational, rotational, oscillatory, random and relative motion.",
+        "Define force and distinguish contact forces from field forces.",
+        "Describe uniform circular motion and identify the direction of tangential velocity and centripetal acceleration.",
+        "Calculate centripetal acceleration and force using the mass, speed and radius of a moving body.",
+        "Explain centrifugal force as an apparent inertial effect in a rotating frame of reference."
+      ],
+      "body": "Motion is a change in the position of a body with time, described relative to a reference point. A body may be at rest relative to one observer and moving relative to another. For example, a learner seated in a moving bus is at rest relative to the bus but moves relative to the road.\n\nTYPES OF MOTION\n- Translational motion: a body moves from one place to another; all points of the body move through corresponding distances in the same direction at a given instant. A car moving along a straight road is an example.\n- Rotational motion: a body turns about an axis. A rotating fan is an example.\n- Oscillatory motion: repeated to-and-fro motion about an equilibrium position. A simple pendulum moving through small angles is an example.\n- Random motion: motion with no single fixed direction or regular path, such as dust particles moving irregularly in air.\n- Relative motion: motion described in relation to a chosen observer or reference frame.\n\nFORCE AND MOTION\nA force is a push or pull. Force is a vector quantity and is measured in newtons (N). A resultant force can change a body's speed, direction of motion or shape. Contact forces act when bodies touch; examples include friction, tension and the normal reaction. Field forces act without direct contact; examples include gravitational, magnetic and electric forces.\n\nCIRCULAR MOTION\nCircular motion occurs when a body follows a circular path about a centre at a constant radius. In uniform circular motion, the speed may remain constant, but velocity changes because its direction changes continuously. At any point, the instantaneous velocity is along the tangent to the circle.\n\nCENTRIPETAL ACCELERATION AND FORCE\nThe acceleration of a body moving in a circle is directed towards the centre. It is called centripetal acceleration:\nac = v²/r\nwhere v is tangential speed in metres per second (m/s), r is radius in metres (m), and ac is in metres per second squared (m/s²).\n\nThe resultant inward force that keeps the body on the circular path is called centripetal force:\nFc = m ac = mv²/r\nwhere m is mass in kilograms (kg) and Fc is in newtons (N). The centripetal force is not a separate new kind of force. It may be supplied by tension in a string, friction between tyres and a road, gravity, or a normal reaction, depending on the situation.\n\nWorked example 1\nA 0.5 kg object moves at 4 m/s in a circle of radius 2 m. Find its centripetal acceleration and centripetal force.\nac = v²/r = 4²/2 = 8 m/s².\nFc = m ac = 0.5 × 8 = 4 N.\nThe acceleration and resultant force point towards the centre.\n\nCENTRIFUGAL EFFECT\nA passenger in a turning bus may feel as if they are pushed outwards. In an inertial frame (for example, an observer standing by the road), the passenger tends to continue in a straight line unless an inward force changes the direction of motion. In the bus's rotating frame, an apparent outward inertial force is often called centrifugal force. It is useful to describe the sensation in that rotating frame, but it is not a real outward interaction acting on the passenger in the ground frame. Do not confuse this apparent outward effect with the real inward centripetal force that maintains circular motion.\n\nWorked example 2\nA 0.2 kg stone moves at 5 m/s in a circle of radius 0.5 m.\nac = v²/r = 5²/0.5 = 50 m/s².\nFc = m ac = 0.2 × 50 = 10 N.\n\nApplications\n- A string's tension can provide the centripetal force for a stone moving in a circle.\n- Friction between a tyre and the road can provide the centripetal force when a car turns.\n- Gravity provides the centripetal force that keeps a satellite in orbit.\n- A rotating washing machine or centrifuge uses rotation to separate materials.\n\nSafety for a simple demonstration\nIf a teacher demonstrates circular motion with a light, securely tied stopper, use a clear area, keep learners outside the path, check the knot and string before starting, and stop the demonstration if the string or attachment is damaged. Never swing a heavy object or point it towards another person.",
+      "body_sha256": "b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03",
+      "practice": [
+        {
+          "id": "PHYS-T1-W03-Q01",
+          "question": "Define motion and identify the type of motion shown by (a) a rotating fan, (b) a simple pendulum, (c) dust moving irregularly in air, and (d) a car travelling along a straight road.",
+          "answer": "Motion is a change in position with time relative to a reference point. (a) Rotational, (b) oscillatory, (c) random, (d) translational.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Defines motion in relation to position, time and a reference point.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the fan as rotational motion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the pendulum as oscillatory motion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies dust as random motion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the car as translational motion.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W03-Q02",
+          "question": "Define force and distinguish between contact force and field force, giving one example of each.",
+          "answer": "Force is a push or pull. A contact force acts when bodies touch, for example friction or tension. A field force acts without direct contact, for example gravity or magnetic force.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Defines force as a push or pull.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that a contact force requires touching.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a correct contact-force example.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains field force acts without direct contact and gives a correct example.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W03-Q03",
+          "question": "A 0.5 kg object moves at 4 m/s in a circular path of radius 2 m. Calculate (a) its centripetal acceleration and (b) the centripetal force.",
+          "answer": "ac = v²/r = 4²/2 = 8 m/s². Fc = mac = 0.5 × 8 = 4 N.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "States or selects ac = v²/r.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates ac = 8 m/s².",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses Fc = mac.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates Fc = 4 N with unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W03-Q04",
+          "question": "A 0.2 kg stone moves at 5 m/s in a circle of radius 0.5 m. Calculate its centripetal acceleration and centripetal force.",
+          "answer": "ac = v²/r = 25/0.5 = 50 m/s². Fc = mac = 0.2 × 50 = 10 N.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "States or selects ac = v²/r.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates ac = 50 m/s².",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses Fc = mac.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates Fc = 10 N with unit.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W03-Q05",
+          "question": "Explain the difference between centripetal force and centrifugal force as experienced by a passenger in a turning bus.",
+          "answer": "Centripetal force is the real resultant force directed towards the centre that changes the passenger's direction and keeps the passenger moving along the curved path. The apparent centrifugal force is an outward inertial effect described in the rotating frame of the bus; it is not a real outward interaction in the ground frame.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States centripetal force is a real inward resultant force.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies centrifugal force as an apparent outward inertial effect in the rotating frame.",
+              "marks": 1
+            },
+            {
+              "criterion": "Clarifies that no real outward interaction acts in the ground/inertial frame.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W03-Q06",
+          "question": "A stone is moving in a circle on a string. If the string suddenly breaks, in what direction does the stone initially move, and why?",
+          "answer": "It initially moves along the tangent to the circle at the point where the string breaks. The inward tension that supplied the centripetal force is removed, so inertia carries the stone along its instantaneous direction of velocity.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that the stone initially moves along the tangent.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that the inward tension/centripetal force is removed and inertia maintains the instantaneous direction.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Motion | SS1 Physics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 Physics, Interaction of Matter, Space and Time; overview and learning objectives list types of motion, force, reducing friction and circular motion.",
+          "url": "https://inspire.education.gov.ng/lessons/256/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. This is an independently authored lesson; the official portal is cited to corroborate SS1 scope only. No media reuse is claimed.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Motion | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "Causes of Motion | SS1 Physics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 Physics; learning outcomes include defining force, causes/effects of motion, contact forces and force fields.",
+          "url": "https://inspire.education.gov.ng/lessons/269/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. Independently authored explanation and practice; citation is for scope corroboration only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Causes of Motion | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "University Physics Volume 1, Section 6.3: Centripetal Force",
+          "locator": "OpenStax, Section 6.3, formulas for centripetal acceleration and force and discussion of centrifugal force in rotating reference frames.",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/6-3-centripetal-force",
+          "rights": "No OpenStax wording, diagrams, examples or exercises are reproduced. The lesson is independently authored; the source is cited for formula and reference-frame accuracy only. No OpenStax content or media is incorporated.",
+          "reuse_status": "PERMITTED",
+          "attribution": "OpenStax, University Physics Volume 1, Section 6.3, “Centripetal Force”, accessed 2026-11-08."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1457,6 +1644,102 @@
           "explanation": "The authored lesson supplies teaching for this objective. No other objective in the week is inferred from this single lesson; source-week indexing remains a separate pending task."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W03-OBJ-1",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Motion in nature: definition and types of motion (translational, rotational, oscillatory, random and relative).",
+      "objective_locator": "1st Term scheme row 3, PHYS-PRE-T1 line 26: “Motion in Nature, Force, Circular Motion, Centripetal and Centrifugal Forces”; parsed teaching row 2 title “MOTION IN NATURE”, body SHA-256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR"
+      ],
+      "evidence": [
+        {
+          "locator": "New original lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR, body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03; six keyed practice questions and marking guides.",
+          "explanation": "The scheme objective is covered by an independently authored SS1 supplement. This does not claim the inaccessible original teaching row contains the same detailed explanations or constructions."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Motion | SS1 Physics” and “Causes of Motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the motion types, causes/effects of motion, contact/field forces and simple circular-motion scope."
+        },
+        {
+          "locator": "OpenStax, University Physics Volume 1, Section 6.3, “Centripetal Force”.",
+          "explanation": "Formula and reference-frame treatment are independently checked against this technical reference; no source wording, figures or exercises are reused."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W03-OBJ-2",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Force: definition, effects and distinction between contact forces and field forces.",
+      "objective_locator": "1st Term scheme row 3, PHYS-PRE-T1 line 26: “Motion in Nature, Force, Circular Motion, Centripetal and Centrifugal Forces”; parsed teaching row 2 title “MOTION IN NATURE”, body SHA-256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR"
+      ],
+      "evidence": [
+        {
+          "locator": "New original lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR, body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03; six keyed practice questions and marking guides.",
+          "explanation": "The scheme objective is covered by an independently authored SS1 supplement. This does not claim the inaccessible original teaching row contains the same detailed explanations or constructions."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Motion | SS1 Physics” and “Causes of Motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the motion types, causes/effects of motion, contact/field forces and simple circular-motion scope."
+        },
+        {
+          "locator": "OpenStax, University Physics Volume 1, Section 6.3, “Centripetal Force”.",
+          "explanation": "Formula and reference-frame treatment are independently checked against this technical reference; no source wording, figures or exercises are reused."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W03-OBJ-3",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Circular motion and centripetal acceleration/force.",
+      "objective_locator": "1st Term scheme row 3, PHYS-PRE-T1 line 26: “Motion in Nature, Force, Circular Motion, Centripetal and Centrifugal Forces”; parsed teaching row 2 title “MOTION IN NATURE”, body SHA-256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR"
+      ],
+      "evidence": [
+        {
+          "locator": "New original lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR, body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03; six keyed practice questions and marking guides.",
+          "explanation": "The scheme objective is covered by an independently authored SS1 supplement. This does not claim the inaccessible original teaching row contains the same detailed explanations or constructions."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Motion | SS1 Physics” and “Causes of Motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the motion types, causes/effects of motion, contact/field forces and simple circular-motion scope."
+        },
+        {
+          "locator": "OpenStax, University Physics Volume 1, Section 6.3, “Centripetal Force”.",
+          "explanation": "Formula and reference-frame treatment are independently checked against this technical reference; no source wording, figures or exercises are reused."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W03-OBJ-4",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Centrifugal force as the apparent outward inertial effect in a rotating frame.",
+      "objective_locator": "1st Term scheme row 3, PHYS-PRE-T1 line 26: “Motion in Nature, Force, Circular Motion, Centripetal and Centrifugal Forces”; parsed teaching row 2 title “MOTION IN NATURE”, body SHA-256 7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR"
+      ],
+      "evidence": [
+        {
+          "locator": "New original lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR, body SHA-256 b0e2b2953896b5c0e4313dff5de256250dfecfb14aa6c21877725ce06af1eb03; six keyed practice questions and marking guides.",
+          "explanation": "The scheme objective is covered by an independently authored SS1 supplement. This does not claim the inaccessible original teaching row contains the same detailed explanations or constructions."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal, “Motion | SS1 Physics” and “Causes of Motion | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the motion types, causes/effects of motion, contact/field forces and simple circular-motion scope."
+        },
+        {
+          "locator": "OpenStax, University Physics Volume 1, Section 6.3, “Centripetal Force”.",
+          "explanation": "Formula and reference-frame treatment are independently checked against this technical reference; no source wording, figures or exercises are reused."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1767,6 +2050,31 @@
         "SUP-SS1-PHYSICS-T3-W04-FUSE",
         "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION",
         "SUP-SS1-PHYSICS-T3-W08-CAPILLARITY"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W03-ORIGINAL-ROW-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The registered Physics member hash and parsed row identity/title are present in repository evidence, but the full original .doc member text is not available in this execution session. The new lesson SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR independently covers the scheme objectives; it does not establish what the original row actually taught or which formula/figure/exercise defects it contains.",
+      "required_action": "When the original member bytes/text are accessible, inspect parsed row 2 line-by-line, map each original subtopic and assessment to the scheme and supplement, record exact formula/unit/notation defects and figure anchors, and reconcile duplication without changing the original source.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21",
+        "SUP-SS1-PHYSICS-T1-W03-MOTION-CIRCULAR",
+        "PHYS-WK-T1-W03",
+        "PHYS-FACT-T1-W03-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W03-FIGURE-DISPOSITION",
+      "kind": "CONTENT",
+      "detail": "The original Week Three row's figure inventory has not been inspected in this execution session. The source extraction record states equation recovery was not measured for Physics (eqExtra is null); no claim is made that the row has no equations or figures.",
+      "required_action": "Use existing PHYS-VIS-T1 and PHYS-OWNER-EXTRACTION-STRATEGY workflows to inspect the original member's figures/objects and decide how they can be rendered; retain this supplement's text-only explanations unless a faithful source-backed visual is available.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:7f54acc3468f0acb9971e038a65be77f6caf86500123c105baedd2434ac9de21",
+        "PHYS-VIS-T1",
+        "PHYS-OWNER-EXTRACTION-STRATEGY"
       ],
       "blocks_delivery": false
     }
