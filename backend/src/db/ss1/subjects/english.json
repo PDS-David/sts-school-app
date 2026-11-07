@@ -856,6 +856,18 @@
       }
     },
     {
+      "id": "SS1-SRC-50fa9b1eb2fd-R023",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Practical Approach to Summary Writing\nComprehension: Reading for the main point. \"Beauty\" \nVocabulary Development: Advertising\nStructure: Adjuncts: explanation and Examples \nWriting: Narrative Essay: Explanation, Features and Outline of a topic",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 2, lines 11-15 (before the first WEEK ONE heading on line 46)",
+        "explanation": "Unique scheme-row anchor: lines 11 to 15 joined with newlines, trailing spaces after \"Beauty\" and \"Examples\" kept exactly (the tab at the end of line 15 is outside the anchor). It occurs once in the unmodified extracted text and in no parsed body, so the compiler records it as a SCHEME_ONLY disposition. Metadata only, not teaching; no source text removed."
+      }
+    },
+    {
       "id": "SS1-SRC-a00657d42196-R034",
       "op": "classify_marker",
       "source_id": "SS1-SRC-a00657d42196",
@@ -16707,6 +16719,366 @@
           "explanation": "Gives the read, listen, mark-stress, use-in-a-sentence routine and three keyed questions on stress and intonation in general; none covers these ten words or the other four requirements. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 2: Practical Approach to Summary Writing; Comprehension: Reading for the main point, \"Beauty\"; Vocabulary Development: Advertising; Structure: Adjuncts: explanation and Examples; Writing: Narrative Essay: Explanation, Features and Outline of a topic",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 11-15; UTF-8 joined-line SHA256 8503995389df1a6dad7d6594f612f4bbbf7a96e9372798851d2066ecfd0e9ae8; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R023"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 11-15; UTF-8 joined-line SHA256 8503995389df1a6dad7d6594f612f4bbbf7a96e9372798851d2066ecfd0e9ae8; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+          "explanation": "In the original (private LibreOffice docx rendering, not committed) row 2 of the one-column scheme table is one cell with five topic paragraphs; the text extraction flattens the table into unlabelled lines 7 to 43, before the first WEEK ONE heading, so no parsed body holds it. Rule SS1-SRC-50fa9b1eb2fd-R023 classifies the row SCHEME_ONLY. The five topics are the five Week 2 objectives and are indexed one by one: main point CM01, summary SW01 to SW04, advertising AD01 to AD03, adjuncts AJ01 to AJ04, narrative essay NE01 to NE05, with the weekend assignment WA01 and theory TH01. The Week 2 section's own TOPIC list (lines 113 to 117) lists the same five in a different order and words 'Categories' into the adjunct topic. Rows 1, 3 to 12 and the title lines are not classified by this entry."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-CM01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Comprehension: reading for the main point, passage \"Beauty\"",
+      "objective_locator": "word-extractor 1.0.4 getBody() text line 115; UTF-8 joined-line SHA256 5f74e37cd814471f44d6c4fc623fed8f6e0d1fedfbcee812db6f4114a8b9dc32; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text line 115; UTF-8 joined-line SHA256 5f74e37cd814471f44d6c4fc623fed8f6e0d1fedfbcee812db6f4114a8b9dc32; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+          "explanation": "Line 115 is a topic-list line only ('Comprehension; Reading for main point \"Beauty\"', with a semicolon where the scheme has a colon). No Week 2 body gives a passage, a 'Beauty' text, an explanation of the main point, questions, a reading assignment or a key; the summary-writing evaluation on lines 131-132 is a different passage and a different skill. The passage title is the only information: nothing is inferred about its author, edition or content."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: whole lesson",
+          "explanation": "Teaches skimming for overall topic and purpose and summarising main ideas from an original library passage; it is not the 'Beauty' passage and no entry binds it to this topic. A lead only, not bound here (see open item ENGLISH-T3-W02-MAIN-POINT)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-SW01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Practical approach to summary writing: the two approaches (the precis and the question-and-answer type) and the choice of the second for WAEC",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 119-120; UTF-8 joined-line SHA256 5690c85390031ab915ca927849b52e38f0c98235d9129868c9589caf549a15f7; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 119-120; UTF-8 joined-line SHA256 5690c85390031ab915ca927849b52e38f0c98235d9129868c9589caf549a15f7; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+          "explanation": "Line 119 is the automatically numbered bold heading 'Practical to Approach Summary Writing.' (word order slip, recorded not repaired; the scheme and TOPIC list say 'Practical Approach'; the numeral is not in the extracted text). Line 120 names a precis and a question-answer type and says the class will study the rules of the second 'for the sake of WAEC'. The precis type is named and then dropped: it is never explained. The source does not say what the exam body requires beyond this sentence."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: paragraph 3, last sentences",
+          "explanation": "Shows a two-sentence model summary and says to follow the word or sentence limit in each question, and that its model is not an examination board's universal marking rule. It does not distinguish a precis from a question-answer summary. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-SW02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Rules of summary: seven rules (read two or three times; be short; own words; no extraneous material; numbered sentences; error-free; unambiguous)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 122-129; UTF-8 joined-line SHA256 7defb9453527f4d8159f3e3b9d2e3bb9f05e9e5f2d9e9bc81d9b0e1a6737d24a; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+        "SUP-SS1-ENGLISH-READING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 122-129; UTF-8 joined-line SHA256 7defb9453527f4d8159f3e3b9d2e3bb9f05e9e5f2d9e9bc81d9b0e1a6737d24a; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+          "explanation": "Seven rules form an automatic list in the docx (numerals not in the extracted text). They state marking consequences as fact ('lifting attracts zero', 'penalized', 'phrases will attract penalty') without a marking scheme, mark allocation or exam-board reference. Rule 5 requires full sentences, while the Week 3 summary evaluation gives no format. 'Extraneous materials' and the first rule are sound advice; the penalties are the source's claims and are not confirmed here."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: paragraph 3",
+          "explanation": "Supports leaving out illustrative detail, keeping the relationships between ideas, and following the stated limit; it does not state own-words, numbered-sentence, error-free or ambiguity rules, and it says its model is not a universal marking rule. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-SW03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: read the passage on pages 212 to 214 and answer the summary questions on page 215 of Effective English Book 1",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 131-132; UTF-8 joined-line SHA256 7d25cbc1837334969d2c5512ff95a5cdd6e36460d4d5e8687713cc9b9d80abdd; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 131-132; UTF-8 joined-line SHA256 7d25cbc1837334969d2c5512ff95a5cdd6e36460d4d5e8687713cc9b9d80abdd; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+          "explanation": "The label EVALUATION is bold in the docx. The book is named 'Effective English book 1' with no author or edition. The passage (pp. 212-214), the questions (p. 215), any answers and any marks are not in the source or the repository, so nothing can be taught, keyed or checked. Nothing is reproduced or inferred. The reference is outside the package (open item ENGLISH-PRESCRIBED-PASSAGES)."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-READING-T3: practice Q3",
+          "explanation": "An original keyed one-sentence summary question exists, but it is on a different passage and does not stand in for this reference. Not bound here; a lead only."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-SW04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: pages 111 to 112 of Countdown English (Revised Edition)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 134-135; UTF-8 joined-line SHA256 763a374d596111f2a7a622dcdeb4fa9db74382b0cfa139d4381378ff5a8b6059; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 134-135; UTF-8 joined-line SHA256 763a374d596111f2a7a622dcdeb4fa9db74382b0cfa139d4381378ff5a8b6059; SS1-SRC-50fa9b1eb2fd:BODY:16652221f545eac6c39d7a6ae744947913108e9d702b64d92637bcab1d092099",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The book is named 'Countdown English (Revised Edition)' with no author or edition identified; pages 111-112 are not in the source or repository, and no question or key is given. Nothing is inferred about their content or relation to summary writing."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AD01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Vocabulary development: advertising - the heading and six defined words (advertisement, target, advertising, publicity, market, branding)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 137-145; UTF-8 joined-line SHA256 9580ff0585bd3020d524c18de932a7d4c0836ecb8cb6ad05832a8cf5e81c22b0; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 137-145; UTF-8 joined-line SHA256 9580ff0585bd3020d524c18de932a7d4c0836ecb8cb6ad05832a8cf5e81c22b0; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "'Explanation' and 'Relevant words' are automatically numbered labels in the docx (numerals not in the extracted text). Six glosses are given. They are informal: 'Advertisement' and 'Advertising' are defined in a circular way (creating awareness), 'Market' glosses the buyers rather than the market, 'Publicity' does not separate paid advertising from other publicity, and 'Target' gives the audience of an advert (more precisely the target audience). The glosses must be checked against a dictionary before delivery. No example sentence, word class or pronunciation is given."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T1 (a 1st Term lesson; not bound here)",
+          "explanation": "Lead only on checking glosses in context; it does not treat advertising vocabulary and is not a 3rd Term lesson, so no coverage is inferred. A 3rd Term vocabulary lesson is needed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AD02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: five gap-fill items choosing from three options (billboard, newsletter, advertisement; advertiser, agent, end-user; commercials, announcements, news casting; consumer, advertising agency, public relation unit; gift, dash, discount)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 147-152; UTF-8 joined-line SHA256 7c8d1624503534b9cbffd9182ecf698f3f69596195888af860debe579c28669c; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 147-152; UTF-8 joined-line SHA256 7c8d1624503534b9cbffd9182ecf698f3f69596195888af860debe579c28669c; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "Five numbered items, each with three options, no key and no marks; none is inferred. Defects recorded, not repaired: item 4 is ungrammatical ('helps produces advertise their products') and uses the option 'consumer' where item 2 describes a consumer; item 3 says 'TV or Radio' with the option 'news casting'; the spacing before the options varies. Several option words (billboard, newsletter, end-user, agent, commercials, discount, public relation unit) are not glossed in the body, so the evaluation is only partly answerable from the teaching above it."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AD03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: pages 183 to 184 of Countdown English (Revised Edition)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 154-155; UTF-8 joined-line SHA256 2ea0707701d91480eb375e844551cfdb266b6ae4fd229258a4a63cd4426d7f6c; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 154-155; UTF-8 joined-line SHA256 2ea0707701d91480eb375e844551cfdb266b6ae4fd229258a4a63cd4426d7f6c; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The book is named as in SW04; pages 183-184 are not supplied and no question or key is given. The edition is not identified; nothing is inferred about the content."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AJ01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Adjuncts: the definition (an adverb that modifies the verb by altering its meaning, answering how, when, where, to what extent, how often) and five worked examples (taught us well, ended happily, commence now, see you later, sometimes forgets)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 157-163; UTF-8 joined-line SHA256 c0a4ccfe1aea64a5bb4a475263115e373f40914326725a783ec4080317417c72; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 157-163; UTF-8 joined-line SHA256 c0a4ccfe1aea64a5bb4a475263115e373f40914326725a783ec4080317417c72; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "In the docx the adjunct in each of the five examples is underlined (well, happily, now, later, sometimes); the extraction loses this. The heading reads 'Adjunct: Explanation, Categories, Examples.' The definition is slipshod: it calls an adjunct 'a type of adverb' and says it 'modifies the verb by altering its meaning', whereas an adjunct is an optional element of the clause that can also be a phrase or a clause, and many adverbs modify adjectives or other adverbs; the slip 'hoofter' presumably stands for 'how often' and 'ended happily' / 'commence now' are fine as examples. The example questions are in brackets, with 'how often' only on the last example. All of this is recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2 and SUP-SS1-ENGLISH-ADVERBIAL-CLAUSE-T1 (2nd and 1st Term lessons; not bound here)",
+          "explanation": "Lead only: they treat adverbs and the adverbial function but are bound to other terms' rows and do not use the word adjunct. No coverage is inferred; a 3rd Term lesson is needed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AJ02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Categories of adjunct: six categories (manner, time, place, degree, frequency, direction) with the question each answers and examples",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 164-173; UTF-8 joined-line SHA256 aef1cc29220119ec35d418d87ca0e8ea0ccc10ad7c945c6f89d8861765782162; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 164-173; UTF-8 joined-line SHA256 aef1cc29220119ec35d418d87ca0e8ea0ccc10ad7c945c6f89d8861765782162; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "In the docx these lines are tab-separated paragraphs, not a table object. The Direction row shows a blank line '____' where the other rows give a question (the question would be where to or in which direction); the 'Place' question starts with a lower-case 'where?'. Examples overlap: 'again' under Time also fits frequency, and 'scarcely' and 'hardly' under Degree are limiters that are also negative. The categories are sound as an introductory list; the blank and the overlaps are source defects recorded, not repaired. The source gives no rule for choosing a category from a sentence."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AJ03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write six sentences, each containing one category of adjunct given above, and underline the adjuncts",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 175-176; UTF-8 joined-line SHA256 9e2d71401a7ffe3404ea9128f25d46954369ec342b5cead222aa0fc4417f0df2; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 175-176; UTF-8 joined-line SHA256 9e2d71401a7ffe3404ea9128f25d46954369ec342b5cead222aa0fc4417f0df2; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "An open production task answerable from AJ02, with no model sentences, key, marks or marking criteria; none is inferred. 'Six sentences' matches the six categories, but the instruction does not say whether each sentence must use a different category."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-AJ04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: page 250 of Countdown English Language (Revised Edition)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 178-179; UTF-8 joined-line SHA256 103ba88e5d56669e9be22e805b8c9693e7b85ddb29478cd62f3d3d80c3a84237; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 178-179; UTF-8 joined-line SHA256 103ba88e5d56669e9be22e805b8c9693e7b85ddb29478cd62f3d3d80c3a84237; SS1-SRC-50fa9b1eb2fd:BODY:38fd4bdcf4f7fb106861948b58ad68df82e74494269b7181b7eba7d14c77725e",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. The title is written 'Countdown English Language (Revised Edition)', with no author or edition; page 250 is not supplied and no question or key is given. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-NE01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Narrative essay: the heading, the contents line (explanation, features, outline of a topic) and the definition (a written account of an imaginary or real event in the past)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 181-183; UTF-8 joined-line SHA256 bdbd95b4becc74d26e4c3a386a13233609ee6fd669cf2f54db266215ce1e13e3; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 181-183; UTF-8 joined-line SHA256 bdbd95b4becc74d26e4c3a386a13233609ee6fd669cf2f54db266215ce1e13e3; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "'Narrative Essay' is an automatically numbered bold heading and the contents line is bold in the docx (numeral not in the extracted text). The definition is acceptable. It adds 'orderly arrangement of the storyline or incidents' without saying what a narrative needs (setting, characters, a problem and its resolution), so the definition is shorter than a complete account of the genre."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ESSAY-TYPES-T2 and SUP-SS1-ENGLISH-ESSAY-REPORT-T1 (2nd and 1st Term lessons; not bound here)",
+          "explanation": "Lead only: the 2nd Term lesson says a narrative recounts linked events with a setting, participants, a difficulty, a turning point and an outcome. It is bound to 2nd Term rows, so no 3rd Term coverage is inferred; a 3rd Term narrative lesson is needed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-NE02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Basic features of a narrative essay: capitalised title, past tense, vivid description, chronological and linked events, developed paragraphs with figurative language and proverbs",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 185-190; UTF-8 joined-line SHA256 dc320af1dbe1deaddf24c36a80f04d5e4776fe118b3fa2500090add4d610891f; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 185-190; UTF-8 joined-line SHA256 dc320af1dbe1deaddf24c36a80f04d5e4776fe118b3fa2500090add4d610891f; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "The five features form an automatic list in the docx (numerals not in the extracted text). They are advice, not rules: 'preferably' is the source's own hedge on capitals; a past-tense narrative can use the present tense for speech or a story told in the present; and proverbs and figurative language are optional. The final feature is one long sentence."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-NE03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Outline for the topic \"My Most Interesting Journey\": six points (preparation, start, feelings and sights, interesting part with figures of speech, duration and arrival, conclusion with lessons learnt)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 192-198; UTF-8 joined-line SHA256 1b378965c22ee7759516c04d505b67fbda1491ce65e8c14142474a4872426a25; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 192-198; UTF-8 joined-line SHA256 1b378965c22ee7759516c04d505b67fbda1491ce65e8c14142474a4872426a25; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "The six points are an automatic list in the docx (numerals not in the extracted text). The outline is a plan only: there is no model essay, paragraph, opening or ending, and no guidance on how to turn a point into a paragraph. It asks for figures of speech, which are not taught in Week 2."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-NE04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: \"Mention the key features of a narrative you write the essay as an assignment\"",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 200-201; UTF-8 joined-line SHA256 c4ff6a293b62aad0a2260f29c893918dded8fde66c7929c536feb8dcd18c9743; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 200-201; UTF-8 joined-line SHA256 c4ff6a293b62aad0a2260f29c893918dded8fde66c7929c536feb8dcd18c9743; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "The sentence is garbled, with no punctuation between its parts: it may ask for the key features of a narrative and then an essay as an assignment, but the topic is not named (it may be the outline in NE03). No key, model, marks, word limit or marking criteria; none is inferred. The features task is answerable from NE02."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-NE05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: page 6 of Countdown English (Revised Edition)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 203-204; UTF-8 joined-line SHA256 08b00514cc05aa577579f34f86fb450a0dc32ee6411acdb001b5c221414ce993; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 203-204; UTF-8 joined-line SHA256 08b00514cc05aa577579f34f86fb450a0dc32ee6411acdb001b5c221414ce993; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "The label READING ASSIGNMENT is bold in the docx. Page 6 is not supplied and no question or key is given; the edition is not identified. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-WA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: five antonym items (choose the word most nearly opposite in meaning to daring, conform, indigent, reprimanded and convinced of his innocence, which must also fill the gap)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 206-213; UTF-8 joined-line SHA256 fc188f702228fafc3b91bef323169a4fdece2cb7a056ca125efe16bab38d8130; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+        "SUP-SS1-ENGLISH-MEANING-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 206-213; UTF-8 joined-line SHA256 fc188f702228fafc3b91bef323169a4fdece2cb7a056ca125efe16bab38d8130; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "Only the underlining of 'daring', 'conform' and 'indigent' (items 1 to 3) is found in the docx; the instruction says the words are italicised, and nothing marks 'reprimanded' (item 4) or the target of item 5. Item 5 gives only the stem ('Everyone was convinced of his innocence') and no options, so it cannot be answered. Item 1 has five options and no gap, item 4 has four options and no gap, and item 3 has a gap with the options broken over two lines. The instruction asks the answer to fit the gap as well as to be an opposite, but items 1, 4 and 5 have no gap. There is no key and no marks; none is inferred. Antonyms are a Week 9 scheme topic, not a Week 2 topic."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T3: paragraph 2 and last sentence",
+          "explanation": "Teaches that antonyms depend on the sense in context, gradable, complementary and converse opposites, and affix opposites (possible/impossible, legal/illegal), with a dictionary check of an unfamiliar sense. It does not treat daring, conform, indigent, reprimand or innocence. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W02-TH01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Theory: write five examples of a noun clause, and three examples each of adverbial and adjectival clauses",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 215-217; UTF-8 joined-line SHA256 9768d64466cd7565c3b946e5f3b38939ce99448cfbd1d721108c34e015eb5f95; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 215-217; UTF-8 joined-line SHA256 9768d64466cd7565c3b946e5f3b38939ce99448cfbd1d721108c34e015eb5f95; SS1-SRC-50fa9b1eb2fd:BODY:23b49e747d701d2cff46aeaa12aaf728831473a940114d991ece2980f7bafec1",
+          "explanation": "The two tasks are an automatic list in the docx (numerals not in the extracted text). Clauses are taught only in Week 3 (ENGLISH-BODY-066), so the task is set a week before its teaching. No key, model sentences or marks; none is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3: paragraph 3",
+          "explanation": "Explains a noun clause (What she wrote pleased us), a relative clause modifying a noun (The girl who won smiled) and a reason clause (because it was late). It does not name adverbial or adjectival clauses, and the term adjectival clause is not used. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -17720,6 +18092,98 @@
         "ENGLISH-T3-W01-DC03",
         "ENGLISH-T3-W01-DC04",
         "ENGLISH-BODY-060"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-MAIN-POINT",
+      "kind": "CONTENT",
+      "detail": "The Week 2 comprehension topic 'Reading for the main point: Beauty' is a topic-list line only. The source gives no passage, no explanation of the main point, no questions and no key, and the summary-writing evaluation is a different passage.",
+      "required_action": "Owner to supply an authorised 'Beauty' passage with its questions and answers, or accept an original labelled reading activity on the main point (the original 3rd Term reading lesson is a lead, not a binding); then author keyed, marked practice (queue item ENG-LES-T3-W02-MAIN-POINT). Do not infer the passage from its title.",
+      "affected_ids": [
+        "ENGLISH-T3-W02-CM01",
+        "ENGLISH-BODY-061"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-SUMMARY-WRITING",
+      "kind": "CONTENT",
+      "detail": "Summary writing is a list of seven rules with source claims about WAEC penalties and no precis explanation; the evaluation depends on Effective English pp. 212 to 215, which are not supplied. SUP-SS1-ENGLISH-READING-T3 supports leaving out detail and following a limit but is not bound to this row.",
+      "required_action": "Author original summary-writing teaching (question-and-answer summaries, own words, limit, sentence form, error-free writing) that states penalties as advice and not as an exam board's marking scheme, with original keyed, marked practice on an original passage, labelled original and bound additively to SUP-SS1-ENGLISH-READING-T3 (queue item ENG-LES-T3-W02-SUMMARY). Do not copy Effective English.",
+      "affected_ids": [
+        "ENGLISH-T3-W02-SW01",
+        "ENGLISH-T3-W02-SW02",
+        "ENGLISH-T3-W02-SW03",
+        "ENGLISH-BODY-061"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 2 refers to published material the source does not contain: Effective English Book 1 pages 212 to 215 and Countdown English (Revised Edition) pages 111-112, 183-184, 250 and 6. No author, edition, text, questions or answers is supplied, and the Countdown title is written three ways across the document.",
+      "required_action": "Supply exact authorised extracts and editions, or have the owner accept labelled original equivalent activities (see ENGLISH-PRESCRIBED-PASSAGES). Until then none of the references is taught as checked (queue item ENG-FACT-T3-W02-EXTERNAL-MATERIALS).",
+      "affected_ids": [
+        "ENGLISH-T3-W02-SW03",
+        "ENGLISH-T3-W02-SW04",
+        "ENGLISH-T3-W02-AD03",
+        "ENGLISH-T3-W02-AJ04",
+        "ENGLISH-T3-W02-NE05",
+        "ENGLISH-BODY-061",
+        "ENGLISH-BODY-062",
+        "ENGLISH-BODY-063"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-ADVERTISING-VOCAB",
+      "kind": "CONTENT",
+      "detail": "No 3rd Term lesson teaches the six advertising words; the glosses are informal and partly circular, and the five-item evaluation has no key, an ungrammatical item and options that the body does not gloss.",
+      "required_action": "Author original advertising-vocabulary teaching with reviewed glosses and original keyed, marked practice, labelled original (queue item ENG-LES-T3-W02-ADVERTISING). Do not infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T3-W02-AD01",
+        "ENGLISH-T3-W02-AD02",
+        "ENGLISH-BODY-062"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-ADJUNCTS",
+      "kind": "CONTENT",
+      "detail": "The adjunct definition reduces an adjunct to a type of adverb; the Direction category has a blank question; examples overlap categories; the six-sentence evaluation has no model or key. No 3rd Term lesson teaches adjuncts, and the 2nd and 1st Term adverb lessons are not bound to this row.",
+      "required_action": "Author original adjunct teaching (adjuncts as optional adverbials in the form of adverbs, phrases and clauses; the six categories with the Direction question supplied) with original keyed, marked practice, labelled original (queue item ENG-LES-T3-W02-ADJUNCTS). Do not infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T3-W02-AJ01",
+        "ENGLISH-T3-W02-AJ02",
+        "ENGLISH-T3-W02-AJ03",
+        "ENGLISH-BODY-062"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-NARRATIVE-ESSAY",
+      "kind": "CONTENT",
+      "detail": "The narrative-essay body gives a short definition, five features and a six-point outline with no model and no marking criteria; its evaluation is garbled and names no topic. No 3rd Term lesson teaches the narrative essay; the 2nd Term essay-types lesson is a lead, not a binding.",
+      "required_action": "Author original narrative-essay teaching (structure, viewpoint, tense choice, a worked plan for the outline topic) and original marked practice with a clear task and rubric, labelled original (queue item ENG-LES-T3-W02-NARRATIVE). Do not invent source model essays.",
+      "affected_ids": [
+        "ENGLISH-T3-W02-NE01",
+        "ENGLISH-T3-W02-NE02",
+        "ENGLISH-T3-W02-NE03",
+        "ENGLISH-T3-W02-NE04",
+        "ENGLISH-BODY-063"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W02-ASSESSMENTS",
+      "kind": "CONTENT",
+      "detail": "The weekend assignment is five antonym items with no key, an item without options (item 5) and instructions that do not fit most items; the theory task asks for clauses a week before they are taught. SUP-SS1-ENGLISH-MEANING-T3 and SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3 support only parts of these.",
+      "required_action": "Author original keyed, marked antonym-in-context items and original clause-writing practice with model answers, labelled original and bound additively to the two supplements; do not complete item 5 from the source or infer a key (queue item ENG-LES-T3-W02-ASSESSMENTS).",
+      "affected_ids": [
+        "ENGLISH-T3-W02-WA01",
+        "ENGLISH-T3-W02-TH01",
+        "ENGLISH-BODY-063"
       ],
       "blocks_delivery": true
     }

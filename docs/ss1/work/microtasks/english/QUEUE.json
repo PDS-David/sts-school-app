@@ -63,21 +63,22 @@
     "ENG-WK-T2-W08 (2026-11-07): 2nd Term Week 8 indexed at objective level; 5 coverage entries and rule R010 added to english.json, ENGLISH-BODY-045 (scheme row 8, a parsed one-line row) reclassified MARKER, one open item opened and one PENDING follow-up appended (ENG-LES-T2-W08-ANTONYM-PRACTICE). Indexing complete, content gaps not closed; the definition, both types and the married/single example are narrowly equivalent, bound additively to the existing meaning supplement through COR-015, which corrects the source's identification of gradability with comparative forms. The assignment has no key, model or marks. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W09 (2026-11-07): 2nd Term Week 9 indexed at objective level; 6 coverage entries and rule R011 added to english.json, ENGLISH-BODY-046 (scheme row 9, a parsed one-line row) reclassified MARKER, two open items opened and two PENDING follow-ups appended (ENG-LES-T2-W09-ESSAY-PRACTICE, -ASSIGNMENT-RUBRIC). Indexing complete, content gaps not closed; the topic set, the expository essay and the argumentative essay are narrowly equivalent, bound additively to the existing essay-types supplement through COR-016. The source body is four bare headings and two titles; the descriptive and narrative essays have a definition but no plan or practice in the supplement, and the two titles have no type, length or criteria. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W10 (2026-11-07): 2nd Term Week 10 indexed at objective level; 1 coverage entry and rule R012 added to english.json, ENGLISH-BODY-047 (scheme row 10, a parsed one-line row) reclassified MARKER, one open item opened and one PENDING follow-up appended (ENG-LES-T2-W10-REVISION). Indexing complete, content gap not closed; the source gives only the heading General Revision Class [GRC], with no revision list, question, assignment or key, so nothing is bound and the entry is UNRESOLVED. This completes 2nd Term Weeks 1 to 10 indexing (ENG-WK-T2-W01 to W10). No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
-    "ENG-WK-T3-W01 (2026-11-07): 3rd Term Week 1 indexed at objective level; 15 coverage entries and rule R022 added to english.json (the Week 1 scheme row is row 1 of a one-column table that the extraction flattens into the unparsed preamble, so it is classified by a SCHEME_ONLY rule and a MARKER entry, not by reclassifying a parsed body), five open items opened and five PENDING follow-ups appended (ENG-LES-T3-W01-REVISION, -WORD-MEANING, -MISSPELT, -DICTIONARY and ENG-FACT-T3-W01-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 10 entries PARTIAL, 4 UNRESOLVED (revision has no content; the unit 8 and unit 10 Effective English passages are not supplied). ENGLISH-BODY-059 and ENGLISH-BODY-060 stay row-level PARTIAL and are named in open items. The title lines 1 to 6 and scheme rows 2 to 12 remain in the unparsed PREAMBLE disposition for the other week tasks. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
+    "ENG-WK-T3-W01 (2026-11-07): 3rd Term Week 1 indexed at objective level; 15 coverage entries and rule R022 added to english.json (the Week 1 scheme row is row 1 of a one-column table that the extraction flattens into the unparsed preamble, so it is classified by a SCHEME_ONLY rule and a MARKER entry, not by reclassifying a parsed body), five open items opened and five PENDING follow-ups appended (ENG-LES-T3-W01-REVISION, -WORD-MEANING, -MISSPELT, -DICTIONARY and ENG-FACT-T3-W01-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 10 entries PARTIAL, 4 UNRESOLVED (revision has no content; the unit 8 and unit 10 Effective English passages are not supplied). ENGLISH-BODY-059 and ENGLISH-BODY-060 stay row-level PARTIAL and are named in open items. The title lines 1 to 6 and scheme rows 2 to 12 remain in the unparsed PREAMBLE disposition for the other week tasks. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
+    "ENG-WK-T3-W02 (2026-11-07): 3rd Term Week 2 indexed at objective level; 20 coverage entries and rule R023 added to english.json (scheme row 2 is flattened into the unparsed preamble, so it is classified by a SCHEME_ONLY rule and a MARKER entry), seven open items opened and seven PENDING follow-ups appended (ENG-LES-T3-W02-MAIN-POINT, -SUMMARY, -ADVERTISING, -ADJUNCTS, -NARRATIVE, -ASSESSMENTS and ENG-FACT-T3-W02-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: {'MARKER': 1, 'UNRESOLVED': 6, 'PARTIAL': 13}. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 92,
+    "LESSON": 98,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 27,
+    "FACTUAL_DEPENDENCY": 28,
     "ASSET": 1,
     "TEST": 6,
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 63,
-    "PENDING": 118,
+    "IMPLEMENTED_TESTING_DEFERRED": 64,
+    "PENDING": 124,
     "BLOCKED": 5
   },
   "items": [
@@ -1082,8 +1083,8 @@
       "depends_on": [
         "ENG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-061, ENGLISH-BODY-062, ENGLISH-BODY-063 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-061='Practical Approach to Summary Writing'; ENGLISH-BODY-062='Vocabulary Development: Advertising'; ENGLISH-BODY-063='Narrative Essay'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f (extracted privately from docs/ss1/sources/SSS1-original.zip, not committed); word-extractor 1.0.4 getBody() text SHA256 110664bb2bf069f41e3a7e7ec700be55b9bb2503931f3b2bc88bed39d8edfbfb (1262 lines). Week 2 is three parsed rows: ENGLISH-BODY-061 (lines 111-136: heading, topic list, summary writing), ENGLISH-BODY-062 (lines 137-180: advertising, adjuncts) and ENGLISH-BODY-063 (lines 181-219: narrative essay, weekend assignment, theory), all unchanged and row-level PARTIAL, now named in open items. Original structure inspected (private LibreOffice docx conversion): scheme row 2 is one cell with five topics, flattened by the extraction into the unparsed preamble (lines 11-15), so new SCHEME_ONLY rule SS1-SRC-50fa9b1eb2fd-R023 classifies it and coverage ENGLISH-T3-W02-SR01 is MARKER; the Week 2 section has no table object; underlining of the adjuncts and of daring, conform and indigent, and automatic numbering, are recorded where the text loses them. Added 20 coverage entries ENGLISH-T3-W02-SR01, CM01, SW01 to SW04, AD01 to AD03, AJ01 to AJ04, NE01 to NE05, WA01, TH01: {'MARKER': 1, 'UNRESOLVED': 6, 'PARTIAL': 13}. The scheme topic 'Reading for the main point: Beauty' has a topic line but no content (CM01 UNRESOLVED); Effective English pp. 212 to 215 and Countdown pp. 111-112, 183-184, 250 and 6 are not supplied. Supplements READING-T3, MEANING-T3 and PHRASES-CLAUSES-T3 are bound additively as partial support; 1st and 2nd Term lessons are named as leads only. Source defects recorded, not repaired (the 'Practical to Approach' heading, the blank Direction question, the optionless weekend item 5, the garbled narrative evaluation). Open items: ENGLISH-T3-W02-MAIN-POINT, -SUMMARY-WRITING, -EXTERNAL-MATERIALS, -ADVERTISING-VOCAB, -ADJUNCTS, -NARRATIVE-ESSAY, -ASSESSMENTS (all blocks_delivery); every Week 2 PARTIAL/UNRESOLVED entry and the three row-level entries are named in one. Checks run: repository zod schema parse PASS; rule anchor unique; coverage targets, hashes and open-item coverage verified by script. No lessons or corrections changed; seven follow-up items appended. Full tests, typechecks, importer and DB remain deferred.",
       "completion_condition": "Every objective of Week 2 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -1093,6 +1094,230 @@
           "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
         }
       ]
+    },
+    {
+      "id": "ENG-LES-T3-W02-MAIN-POINT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2, coverage ENGLISH-T3-W02-CM01",
+      "objective": "After the owner supplies the 'Beauty' passage or accepts an original equivalent, author keyed, marked main-point practice, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-MAIN-POINT.",
+      "completion_condition": "CM01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W02-SUMMARY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2, coverage ENGLISH-T3-W02-SW01 to SW03",
+      "objective": "Author original summary-writing teaching with original keyed, marked practice on an original passage, labelled original, bound additively to the reading supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-SUMMARY-WRITING.",
+      "completion_condition": "SW01 to SW03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W02-ADVERTISING",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2, coverage ENGLISH-T3-W02-AD01 and AD02",
+      "objective": "Author original advertising-vocabulary teaching with reviewed glosses and original keyed, marked practice, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-ADVERTISING-VOCAB.",
+      "completion_condition": "AD01 and AD02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W02-ADJUNCTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2, coverage ENGLISH-T3-W02-AJ01 to AJ03",
+      "objective": "Author original adjunct teaching (forms and six categories) with original keyed, marked practice, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-ADJUNCTS.",
+      "completion_condition": "AJ01 to AJ03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W02-NARRATIVE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2, coverage ENGLISH-T3-W02-NE01 to NE04",
+      "objective": "Author original narrative-essay teaching, a worked plan and original marked practice with a rubric, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-NARRATIVE-ESSAY.",
+      "completion_condition": "NE01 to NE04 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W02-ASSESSMENTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2, coverage ENGLISH-T3-W02-WA01 and TH01",
+      "objective": "Author original keyed, marked antonym-in-context items and clause-writing practice with model answers, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-ASSESSMENTS.",
+      "completion_condition": "WA01 and TH01 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-FACT-T3-W02-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T3-W02-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 2 refers to but the source does not contain (Effective English Book 1 pp. 212 to 215; Countdown English pp. 111-112, 183-184, 250 and 6), with editions, or have the owner accept labelled original equivalent activities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T3-W02-EXTERNAL-MATERIALS] kind=FACT blocks_delivery=true; affected coverage ENGLISH-T3-W02-SW03, SW04, AD03, AJ04, NE05. Needs owner-supplied material or an owner decision. Raised by ENG-WK-T3-W02 on 2026-11-07.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of equivalent activities; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
     },
     {
       "id": "ENG-WK-T3-W03",
@@ -5876,7 +6101,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T3-W02",
     "ENG-WK-T3-W03",
     "ENG-WK-T3-W04",
     "ENG-WK-T3-W05",
@@ -5978,6 +6202,13 @@
     "ENG-LES-T3-W01-WORD-MEANING",
     "ENG-LES-T3-W01-MISSPELT",
     "ENG-LES-T3-W01-DICTIONARY",
-    "ENG-FACT-T3-W01-EXTERNAL-MATERIALS"
+    "ENG-FACT-T3-W01-EXTERNAL-MATERIALS",
+    "ENG-LES-T3-W02-MAIN-POINT",
+    "ENG-LES-T3-W02-SUMMARY",
+    "ENG-LES-T3-W02-ADVERTISING",
+    "ENG-LES-T3-W02-ADJUNCTS",
+    "ENG-LES-T3-W02-NARRATIVE",
+    "ENG-LES-T3-W02-ASSESSMENTS",
+    "ENG-FACT-T3-W02-EXTERNAL-MATERIALS"
   ]
 }
