@@ -962,6 +962,46 @@
           "explanation": "This teaching point is mapped to the Week 4 scheme objective “Plain scales”."
         }
       ]
+    },
+    {
+      "id": "COV-TD-T2-W05-DIAGONAL-SCALE",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Explain and use diagonal scales as taught in the Week Five source row.",
+      "objective_locator": "WEEK FIVE teaching row (parsed row 15), title “Diagonal and chordal scale and their uses”; original body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
+      ],
+      "evidence": [
+        {
+          "locator": "Original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
+          "explanation": "The source row title explicitly names this scale type and its uses. The current repository evidence does not contain the detailed construction steps, dimensions, graduations or worked readings, so objective coverage remains PARTIAL pending exact source inspection."
+        },
+        {
+          "locator": "Scheme coverage COV-TD-T2-SCH-W05; parsed scheme row 4, line 19; exact source text “WEEK 5:        Diagonal and chordalScales”.",
+          "explanation": "This objective maps to the Week 5 scheme objective. Source spacing and spelling are retained in the scheme record; no normalization is made here."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-W05-CHORDAL-SCALE",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Explain and use chordal scales as taught in the Week Five source row.",
+      "objective_locator": "WEEK FIVE teaching row (parsed row 15), title “Diagonal and chordal scale and their uses”; original body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
+      ],
+      "evidence": [
+        {
+          "locator": "Original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
+          "explanation": "The source row title explicitly names this scale type and its uses. The current repository evidence does not contain the detailed construction steps, dimensions, graduations or worked readings, so objective coverage remains PARTIAL pending exact source inspection."
+        },
+        {
+          "locator": "Scheme coverage COV-TD-T2-SCH-W05; parsed scheme row 4, line 19; exact source text “WEEK 5:        Diagonal and chordalScales”.",
+          "explanation": "This objective maps to the Week 5 scheme objective. Source spacing and spelling are retained in the scheme record; no normalization is made here."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1154,6 +1194,39 @@
       "affected_ids": [
         "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd",
         "TD-KEY-W04-ANSWERS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-FIGURES",
+      "kind": "CONTENT",
+      "detail": "The current Week Five package evidence does not record the figure inventory or visual disposition for the diagonal/chordal scale constructions. Their exact geometry, dimensions, labels and graduations cannot be reconstructed safely from the title alone.",
+      "required_action": "Complete TD-VIS-W05 by inspecting every original figure and recording its purpose, dimensions, labels and graduations; bind a faithful derivative with provenance or document a precise exclusion.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "TD-VIS-W05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-CONSTRUCTION-DETAILS",
+      "kind": "CONTENT",
+      "detail": "The existing repository evidence confirms the row title but does not preserve the exact diagonal-scale and chordal-scale construction steps, ratios, ranges, dimensions or worked readings.",
+      "required_action": "Complete TD-FACT-W05-SCALE-CONSTRUCTIONS from the original DOCX; record each construction, ratio, range, dimension, label and reading with exact source locators. Do not infer these details from the title.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "TD-T2-W05-ANSWER-KEYS",
+      "kind": "CONTENT",
+      "detail": "The current Week Five evidence does not establish whether all evaluation and assignment tasks have complete keyed answers and marking criteria.",
+      "required_action": "Complete TD-KEY-W05-ANSWERS after the source constructions and figures are inspected; add original keyed solutions and marking criteria for any unkeyed task.",
+      "affected_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc",
+        "TD-KEY-W05-ANSWERS"
       ],
       "blocks_delivery": true
     }
