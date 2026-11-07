@@ -586,8 +586,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 10 (label 'WEEK 11', body sha256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337, 655 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. The prompt requires classification by body: a revision heading may contain substantive teaching.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added SCHEME_ONLY rule SS1-SRC-af4868d2c026-R013 for the Week 11 row heading “WEEK 11.Revision and Examination.” and coverage COV-TD-T2-SCH-W11 as a marker. Evidence is TD-PRE-T2 lines 31–58 (655-character parsed body SHA-256 9ed71c88b6dcfa0addf25ba9d70aff536071f56d2828839a9e2fa79f910e3337); the eight-entry Reference materials list at lines 35–54 remains recorded in open item TD-T2-REFERENCES-IN-ROW-10. The row is not represented as an examination paper or lesson. No source text was discarded. Tests, typechecks, importer and DB remain deferred; not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1422,7 +1422,7 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W11"
+    "TD-WK-W01"
   ],
   "runnable_now": [
     "TD-SCH-W06",
