@@ -54,12 +54,13 @@
     "ENG-WK-T1-W10 (2026-11-07): Week 10 indexed at objective level; 22 coverage entries and rule R037 added to english.json, five open items opened and five PENDING follow-ups appended (ENG-FACT-W10-EXTERNAL-MATERIALS, ENG-LES-T1-W10-SUMMARY, -AFFIXES, -ADVERBIAL-PREPOSITIONAL, -REVISION). Indexing complete, content gaps not closed; only the prepositional-phrase definition (PP01) is narrowly equivalent, bound additively. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T1-W11 (2026-11-07): Week 11 indexed at objective level; 36 coverage entries and rule R038 added to english.json, six open items opened and six PENDING follow-ups appended (ENG-FACT-W11-EXTERNAL-MATERIALS, ENG-LES-T1-W11-JUDICIARY-VOCAB, -LETTER, -ARTICLES, -CONSONANTS, -REVISION). Indexing complete, content gaps not closed; only the letter definition (LT01) and letter task (LT07) are narrowly equivalent, bound additively. The scheme row names registers of the judiciary, which nothing teaches, and the consonant CONTENT line lists /d/ and /k/ that the body never treats. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W01 (2026-11-07): 2nd Term Week 1 indexed at objective level; 11 coverage entries and rule R003 added to english.json, ENGLISH-BODY-038 (scheme row 1, a parsed one-line row) reclassified MARKER, four open items opened and four PENDING follow-ups appended (ENG-LES-T2-W01-DEFINITIONS, -PREFIXES, -SUFFIXES, -PRACTICE-KEYS). Indexing complete, content gaps not closed; only the prefix and suffix definitions (PF01, SF01) are narrowly equivalent, bound additively; ENGLISH-BODY-048 keeps its row-level IMPLEMENTED_EQUIVALENT although the replacement is narrower. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
-    "ENG-WK-T2-W02 (2026-11-07): 2nd Term Week 2 indexed at objective level; 9 coverage entries and rule R004 added to english.json, ENGLISH-BODY-039 (scheme row 2, a parsed one-line row) reclassified MARKER, five open items opened and five PENDING follow-ups appended (ENG-FACT-W02-EXTERNAL-MATERIALS, ENG-LES-T2-W02-FAMILY-READING, -CONTEXT-VOCAB, -SUMMARY, -LINKERS). Indexing complete, content gaps not closed; only the reading-skill label (RD02) is narrowly equivalent, bound additively. The scheme names a home-and-family passage while the body names a health passage that the source does not contain. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
+    "ENG-WK-T2-W02 (2026-11-07): 2nd Term Week 2 indexed at objective level; 9 coverage entries and rule R004 added to english.json, ENGLISH-BODY-039 (scheme row 2, a parsed one-line row) reclassified MARKER, five open items opened and five PENDING follow-ups appended (ENG-FACT-W02-EXTERNAL-MATERIALS, ENG-LES-T2-W02-FAMILY-READING, -CONTEXT-VOCAB, -SUMMARY, -LINKERS). Indexing complete, content gaps not closed; only the reading-skill label (RD02) is narrowly equivalent, bound additively. The scheme names a home-and-family passage while the body names a health passage that the source does not contain. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
+    "ENG-WK-T2-W03 (2026-11-07): 2nd Term Week 3 indexed at objective level; 21 coverage entries and rule R005 added to english.json, ENGLISH-BODY-040 (scheme row 3, a parsed one-line row) reclassified MARKER, three open items opened and three PENDING follow-ups appended (ENG-LES-T2-W03-FORMAL-LETTER, -TENSE, -STRUCTURE-KEYS). Indexing complete, content gaps not closed; only the simple present, simple past, present perfect, past perfect and present continuous definitions (TN03-TN07) are narrowly equivalent, bound additively to the existing adverbs-and-tense supplement. The formal-letter body has no replacement and no supplement; the tense body is in Week 3 only by rule R002 and the scheme row does not name it. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 71,
+    "LESSON": 74,
     "CORRECTION_BINDING": 24,
     "FACTUAL_DEPENDENCY": 24,
     "ASSET": 1,
@@ -67,8 +68,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 54,
-    "PENDING": 103,
+    "IMPLEMENTED_TESTING_DEFERRED": 55,
+    "PENDING": 105,
     "BLOCKED": 5
   },
   "items": [
@@ -618,8 +619,8 @@
       "depends_on": [
         "ENG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-040, ENGLISH-BODY-050, ENGLISH-BODY-051 (3 body-level rows; statuses {'PARTIAL': 3}). Row titles: ENGLISH-BODY-040='WEEK 3:  COMPOSITION/ LETTER WRITING- FORMAL LETTER'; ENGLISH-BODY-050='TOPIC: COMPOSITION/ WRITING: LETTER TO THE CHAIRMAN OF YOUR LOCAL GOVE'; ENGLISH-BODY-051='STRUCTURE : TENSE (simple, present, tense, simple past tense, present'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966 (extracted privately from docs/ss1/sources/SSS1-original.zip, not committed); mammoth 1.13.0 extractRawText text SHA256 2a334d9593d7b6d6560d6bbd75c6407e56b1b26c22c5ace5ea04917005fcc33f. Parsed rows reproduced by porting parseTopics and rule R002 (all 21 body hashes matched). Scheme row 3 is ENGLISH-BODY-040 (line 9), a parsed one-line row, now status MARKER and classified by new SCHEME_ONLY rule SS1-SRC-d8bd8f85fd73-R005. Week 3 has two teaching bodies, both unchanged and uncorrected: ENGLISH-BODY-050 (formal letter, lines 155-232) and ENGLISH-BODY-051 (tense, lines 233-279, attached to Week 3 only by rule R002 and not named by the scheme row). Added 21 coverage entries ENGLISH-T2-W03-* (FL01-FL09, EV01, AS01, TN01-TN08, EV02, AS02): 5 IMPLEMENTED_EQUIVALENT (TN03-TN07, narrowly through SUP-SS1-ENGLISH-ADVERBS-TENSE-T2, bound additively), 15 PARTIAL, 1 UNRESOLVED. docx structure inspected: no table object; the tense definitions, five evaluation items and three assignment items are auto-numbered; the model letter blocks use right/centre alignment and padded spaces, so layout is unchecked (not rendered). Source defects recorded, not repaired: ARAE and unexpanded CDA, two spellings of the writer's name, 30thJanuary, only-facility contradiction, property for properly, you party, number disagreement, garbled tense topic line and present-continuous sentence, bead, PERFCT. The evaluation and assignments have no keys; none inferred. Open items: ENGLISH-T2-W03-FORMAL-LETTER-GAP, TENSE-GAP, ANSWER-KEYS; every PARTIAL/UNRESOLVED entry is in one. No lessons or corrections changed; three PENDING follow-ups appended. Full verification remains deferred.",
       "completion_condition": "Every objective of Week 3 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -5078,6 +5079,105 @@
           "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
         }
       ]
+    },
+    {
+      "id": "ENG-LES-T2-W03-FORMAL-LETTER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3, coverage ENGLISH-T2-W03-FL01 to FL09, EV01, AS01",
+      "objective": "Author original formal-letter teaching (purpose, layout, matching salutation and close, subject heading, paragraph plan, tone) with an original model letter, a 450-word task marking guide and a formal-versus-informal contrast with keyed, marked practice; render the source privately first to check the address and closing layout.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W03 on 2026-11-07; not implemented. Open item ENGLISH-T2-W03-FORMAL-LETTER-GAP.",
+      "completion_condition": "FL01 to FL09, EV01 and AS01 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T2-W03-TENSE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3, coverage ENGLISH-T2-W03-TN01, TN02, TN08, AS02",
+      "objective": "Author original teaching of time versus tense and the present perfect continuous (began earlier, still continuing) with two examples each for the three assignment tenses and a keyed, marked exercise; bind additively to the adverbs-and-tense supplement; ask the owner whether tense belongs in Week 3.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W03 on 2026-11-07; not implemented. Open item ENGLISH-T2-W03-TENSE-GAP.",
+      "completion_condition": "TN01, TN02, TN08 and AS02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T2-W03-STRUCTURE-KEYS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3, coverage ENGLISH-T2-W03-EV02",
+      "objective": "Author original teaching and keyed, marked items for indirect questions, unreal conditionals, wish clauses and would-like-it-if clauses, without inferring answers for the five source items.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W03 on 2026-11-07; not implemented. Open item ENGLISH-T2-W03-ANSWER-KEYS.",
+      "completion_condition": "EV02 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
     }
   ],
   "review": {
@@ -5096,7 +5196,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T2-W03",
     "ENG-WK-T2-W04",
     "ENG-WK-T2-W05",
     "ENG-WK-T2-W06",
@@ -5183,6 +5282,9 @@
     "ENG-LES-T2-W02-FAMILY-READING",
     "ENG-LES-T2-W02-CONTEXT-VOCAB",
     "ENG-LES-T2-W02-SUMMARY",
-    "ENG-LES-T2-W02-LINKERS"
+    "ENG-LES-T2-W02-LINKERS",
+    "ENG-LES-T2-W03-FORMAL-LETTER",
+    "ENG-LES-T2-W03-TENSE",
+    "ENG-LES-T2-W03-STRUCTURE-KEYS"
   ]
 }

@@ -494,6 +494,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R005",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 3:  COMPOSITION/ LETTER WRITING- FORMAL LETTER",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 3, line 9 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-040 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -11923,14 +11935,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 3:  COMPOSITION/ LETTER WRITING- FORMAL LETTER",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 3; exact body hash 7b2c159dd0a00ed79ae7274dbab35a9922ae039acfe20373ac385ed8220d1537",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:7b2c159dd0a00ed79ae7274dbab35a9922ae039acfe20373ac385ed8220d1537"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:7b2c159dd0a00ed79ae7274dbab35a9922ae039acfe20373ac385ed8220d1537",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 9; UTF-8 joined-line SHA256 7b2c159dd0a00ed79ae7274dbab35a9922ae039acfe20373ac385ed8220d1537; SS1-SRC-d8bd8f85fd73:BODY:7b2c159dd0a00ed79ae7274dbab35a9922ae039acfe20373ac385ed8220d1537; rule SS1-SRC-d8bd8f85fd73-R005",
+          "explanation": "Scheme-of-work row 3 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Composition / letter writing - formal letter\". The teaching body ENGLISH-BODY-050 (lines 155-232) is a formal-letter lesson with a topic line, a definition, a task, a model letter, an evaluation and an assignment, indexed at objective level as ENGLISH-T2-W03-FL01 to FL09, EV01 and AS01. A second teaching body, ENGLISH-BODY-051 (lines 233-279, tense), is attached to Week 3 only by rule R002 and is not named by this row; it is indexed as TN01 to TN08, EV02 and AS02. No formal-letter objective beyond the definition and purposes is stated by the row. Rule SS1-SRC-d8bd8f85fd73-R005 classifies the row SCHEME_ONLY. Rows 4 to 10 are left for their own week tasks."
         }
       ]
     },
@@ -15058,6 +15070,387 @@
           "explanation": "The supplement teaches summarising and follows a stated sentence limit, with a two-sentence model on its own passage. It does not set a six-sentence task on the source passage. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Formal letter: definition and purposes (an official or business letter to people in authority, to lodge a complaint, make a request or recommendation, or express concern)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 161; UTF-8 joined-line SHA256 99a9860fa2e8df5b1963deeeddce7d261974a5399b6129cf6ec8b10a8eeff71c; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 161; UTF-8 joined-line SHA256 99a9860fa2e8df5b1963deeeddce7d261974a5399b6129cf6ec8b10a8eeff71c; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "States what a formal letter is and four purposes. It treats \"official\" and \"business\" letters as one kind and names no features beyond the audience. The body has no teaching of layout, tone or paragraph plan; the only layout evidence is the model letter below. No formal-letter supplement exists in the package: SUP-SS1-ENGLISH-LETTERS-T1 is first-term and covers informal letters only."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Topic and task: a letter to the chairman of the local government area requesting amenities needed in the community",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 157-163; UTF-8 joined-line SHA256 c53a51c8cf04ae746326ab84a36235dc1824b71c989cacfa6c4d25dfe13e6d7b; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 157-163; UTF-8 joined-line SHA256 c53a51c8cf04ae746326ab84a36235dc1824b71c989cacfa6c4d25dfe13e6d7b; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "The topic line (line 157) reads \"LOCAL GOVERNMENT ARAE\" (for area) and ends with the abbreviation \"(CDA)\", which the source does not expand. The task (line 163, \"Question: write a letter...\") starts in lower case. The task states the audience and purpose but no word limit, format or marking guide. Ten empty paragraphs follow it in the docx (space for an answer) and then \"Answer:\". Recorded, not repaired; \"CDA\" is not expanded by inference."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: sender address and date block (7 Olarenwaju Street, Oke-odo, Agege, Lagos State, 30thJanuary, 2018)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 187-195; UTF-8 joined-line SHA256 4c1c15c966fa827a63536cbbca0d3fcc0ec01aea4cc70e378d914cc87e9b960e; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 187-195; UTF-8 joined-line SHA256 4c1c15c966fa827a63536cbbca0d3fcc0ec01aea4cc70e378d914cc87e9b960e; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "The street name is spelled \"Olarenwaju\" here and \"Olanrewaju\" in the signature (line 225) of the same letter; \"30thJanuary\" lacks a space and the date is 2018. The docx lays the address and closing blocks out with right and centre alignment and padded spaces; the document was not rendered in this task, so the block layout is unchecked. The block shows sender address then date but the source states no rule for it."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL04",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: recipient block and salutation (The Chairman, AgbadoOkeodo Local government, Area, P.O. Box 4219; Dear Sir,)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 197-205; UTF-8 joined-line SHA256 9b5ea0793aa947ac4da3f7cefe3555fe6edf51388a3663fcb1519dfa3cac3025; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 197-205; UTF-8 joined-line SHA256 9b5ea0793aa947ac4da3f7cefe3555fe6edf51388a3663fcb1519dfa3cac3025; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "\"AgbadoOkeodo\" has no space, \"Area ,\" has a stray space and the box number follows the area line. The salutation \"Dear Sir,\" assumes the chairman is male and is not paired with its close in any stated rule (the close is \"Yours Faithfully,\"). The source states no rule for the recipient block or the salutation. Recorded, not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL05",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: subject heading (\"A REQUEST FOR SOME AMENITIES NEEDED IN MY COMMUNITY\")",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 207; UTF-8 joined-line SHA256 6ef3935c959aec9bb62b9f2b237d771dbcd6a4e1c11d0b036e0daba1c96a6ccd; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 207; UTF-8 joined-line SHA256 6ef3935c959aec9bb62b9f2b237d771dbcd6a4e1c11d0b036e0daba1c96a6ccd; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "Placed after the salutation, in capitals, centred, bold and underlined in the docx (formatting that plain text loses). The source states no rule for the heading or its position."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL06",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: opening and statement of purpose (praise for the chairman; request for street lights, a public toilet and a functional hospital)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 209-211; UTF-8 joined-line SHA256 7dc0992806f953f9248b4f518a7f776b0e5543b3a67d0212769ccb525b178b8b; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 209-211; UTF-8 joined-line SHA256 7dc0992806f953f9248b4f518a7f776b0e5543b3a67d0212769ccb525b178b8b; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "Two paragraphs. The first joins two clauses with a comma (\"... local government, keep up the good work sir\"). The second names the three requests. The model states the purpose early, but the source states no paragraph rule. Recorded, not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL07",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: developed paragraphs giving reasons for the three requests (street lights and security; public toilets and sanitation; a hospital)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 213-217; UTF-8 joined-line SHA256 0c7409e24f94cb19931e355c21153344b58c379280787a61cbeab07fbe5428c2; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 213-217; UTF-8 joined-line SHA256 0c7409e24f94cb19931e355c21153344b58c379280787a61cbeab07fbe5428c2; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "Defects recorded, not repaired: line 213 says \"the only facility that we need\" is a street light although the letter requests three; \"not being maintained property\" (properly); \"Some people do defecate all around the environment\" is informal; \"two or three functioning hospital\" disagrees in number; \"As you have promised us in your manifesto, that ...\" is incomplete; the claims about a manifesto and an outbreak of cholera are asserted, not evidenced. The model is a fictional letter and none of its claims is carried as fact."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL08",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: closing paragraph (request for consideration; \"dividend of democracy\")",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 219; UTF-8 joined-line SHA256 133898496f559da91b781a594ddceb49d5fd297c7b8d9cc6bf5d3ce17dce26b4; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 219; UTF-8 joined-line SHA256 133898496f559da91b781a594ddceb49d5fd297c7b8d9cc6bf5d3ce17dce26b4; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "\"that you party stands for\" should read your; the sentence is otherwise a polite close. The source states no rule for a closing paragraph. Recorded, not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-FL09",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Model letter: complimentary close and signature block (Yours Faithfully, Signature of Writer, Olanrewaju Abraham)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 221-225; UTF-8 joined-line SHA256 c4ba2ce2218fc2d5926bc45f2b7b9d828016bca157ea7df969e6c0ba8ec49b8d; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 221-225; UTF-8 joined-line SHA256 c4ba2ce2218fc2d5926bc45f2b7b9d828016bca157ea7df969e6c0ba8ec49b8d; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "\"Faithfully\" is capitalised; \"Signature of Writer,\" is a label and not a signature; the name is spelled \"Olanrewaju\" against \"Olarenwaju\" in the address. The docx indents the block to the right; The docx lays the address and closing blocks out with right and centre alignment and padded spaces; the document was not rendered in this task, so the block layout is unchecked."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-EV01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation: letter to the chairman suggesting ways to keep the surroundings clean (450 words)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 229; UTF-8 joined-line SHA256 ca12de25bc7e0ff48aef37640343212014d480fc7faffbc4dcb87971992238dc; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 229; UTF-8 joined-line SHA256 ca12de25bc7e0ff48aef37640343212014d480fc7faffbc4dcb87971992238dc; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "A writing task with a 450-word limit, no model, key or marking guide. The source model letter is far shorter than 450 words, so it is not a model for the task. The spelling \"cleanness\" is as in the source."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: compare and contrast a formal letter and an informal letter (writing)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 231; UTF-8 joined-line SHA256 cc262063f22c92d1b9d1877c3a2415c495320484eb5e4145b6715e169a45e85f; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 231; UTF-8 joined-line SHA256 cc262063f22c92d1b9d1877c3a2415c495320484eb5e4145b6715e169a45e85f; SS1-SRC-d8bd8f85fd73:BODY:d2ab311dacc483c6ed501d33dae31a5e46f0627da5ddc30b2757db0d6449e8ee",
+          "explanation": "A writing task with no key or marking guide. Informal-letter teaching exists in the package only in the first-term supplement SUP-SS1-ENGLISH-LETTERS-T1, which gives no formal-letter contrast, so the formal side of the comparison is untaught here."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Tense topic scope (the six tenses named in the topic line) and its place in Week 3",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 235; UTF-8 joined-line SHA256 6e886fefdc097ca72a0cf6363d6b8b7d348839f5759b96228ff529374b24304f; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 235; UTF-8 joined-line SHA256 6e886fefdc097ca72a0cf6363d6b8b7d348839f5759b96228ff529374b24304f; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "The topic line is garbled (\"simple, present, tense, simple past tense, ... present continuous present perfect continuous tense.\") and unclosed, but the six tenses it names are those treated below. The tense section was parsed as part of Week 3 only because rule SS1-SRC-d8bd8f85fd73-R002 inserts the label WEEK 3 before it; the scheme row for Week 3 names only the formal letter, and scheme row 7 names \"Grammar - adverbs and tense\"."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), whole paragraph",
+          "explanation": "The supplement covers the six tenses named here. It is bound to the Week 7 body (ENGLISH-BODY-055), not to this row. Bound additively as partial support; whether tense belongs in Week 3 needs an owner decision."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Time and tense: time as a concept (past, present, future) independent of language; tense as a verb form expressing a time relation; tenses vary across languages",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 239-241; UTF-8 joined-line SHA256 e16773fcbef9e7be2598145669fa5328208277cb01c09978cb9f05dfabf99194; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 239-241; UTF-8 joined-line SHA256 e16773fcbef9e7be2598145669fa5328208277cb01c09978cb9f05dfabf99194; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Defines the two terms and states that they differ. Wording defects: \"a verbs form\", \"Tense vary\"."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), third paragraph, sentence 1",
+          "explanation": "The supplement says to choose the form from the intended time relationship but does not distinguish time from tense or define either. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Simple present tense: use (an action that occurs always, or an occupation) with examples",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 243; UTF-8 joined-line SHA256 07fbd611a0d87a7da9bd74e646a5005c46c87859db49a7862864604569ca05a2; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 243; UTF-8 joined-line SHA256 07fbd611a0d87a7da9bd74e646a5005c46c87859db49a7862864604569ca05a2; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Item 1 of an automatic list. \"Occurs always\" is loose for habitual action; example (b) starts in lower case (\"she sells rice\")."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 1",
+          "explanation": "The supplement states that the simple present expresses habits or general situations, with an example. The occupation use is not named. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN04",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Simple past tense: use (an action that took place in the past) with examples",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 245; UTF-8 joined-line SHA256 e6d504d06a2d159c0032f8cb23d2fb5694c83fbf1493c16992ac99f9f93e1801; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 245; UTF-8 joined-line SHA256 e6d504d06a2d159c0032f8cb23d2fb5694c83fbf1493c16992ac99f9f93e1801; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Item 2. Example (b) reads \"She sold bead a year ago\"; \"bead\" is presumably a slip for bread (the other examples sell bread) but is recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 3",
+          "explanation": "The supplement places the simple past in a finished past period, with an example. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN05",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Present perfect tense: use (an action that has just finished), formation (has/have plus past participle) and the rule against a definite past time",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 247; UTF-8 joined-line SHA256 89e53caa6d7699996a8453807420afce2de024f5ec8af7affc6bed9025378d5f; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 247; UTF-8 joined-line SHA256 89e53caa6d7699996a8453807420afce2de024f5ec8af7affc6bed9025378d5f; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Item 3. Spacing defects in the extracted text (\"has  orhave  and\", \"orat 4 o’clock\"). \"Has just finished\" is narrower than the actual range of the tense."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentences 4-5; third paragraph, sentence 2",
+          "explanation": "The supplement gives the formation, relates a past event or continuing situation to the present, says it is not restricted to things that have just happened, and rejects \"has finished yesterday\", which covers the no-definite-time rule. It deliberately does not carry the source's narrower \"just finished\". Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN06",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Past perfect tense: use (an action before another in the past), formation (had plus past participle) and examples",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 249; UTF-8 joined-line SHA256 36f0f642796d6a5c591d5bf04891b0ee78e57bea595f605c7e36aa695e428f18; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 249; UTF-8 joined-line SHA256 36f0f642796d6a5c591d5bf04891b0ee78e57bea595f605c7e36aa695e428f18; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Item 4. The heading reads \"PERFCT\" and the definition \"indicate than\". Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 6",
+          "explanation": "The supplement uses had plus a past participle for an earlier past event, with an example. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN07",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Present continuous tense: use (an action going on now), formation (-ing) and examples",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 251; UTF-8 joined-line SHA256 5a7c268825850fea75f42103ded1c7742426b5c14b62337e1d53dde564c7a309; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 251; UTF-8 joined-line SHA256 5a7c268825850fea75f42103ded1c7742426b5c14b62337e1d53dde564c7a309; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Item 5. The middle sentence is unintelligible (\"Now that you should always show that the action is still going on as at the time of reporting in ïng”\") and has a stray accent and an unbalanced quotation mark. No meaning is inferred for it; only the clear definition and the two examples are indexed."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 2",
+          "explanation": "The supplement gives am/is/are plus -ing for an ongoing or temporary activity, with an example. Bound additively, narrowly; the garbled sentence is not covered."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-TN08",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Present perfect continuous tense: use (an action that began some time ago and is still going on) and examples",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 253; UTF-8 joined-line SHA256 f6fbd94fb1d6d582b24840a37a82a87619e7aaae16deff20894c8cb30c56401b; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 253; UTF-8 joined-line SHA256 f6fbd94fb1d6d582b24840a37a82a87619e7aaae16deff20894c8cb30c56401b; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Item 6 of the same automatic list; the examples show duration (\"for three years\")."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 7; third paragraph, sentence 3",
+          "explanation": "The supplement gives the form (has/have been plus -ing) with \"for an hour\", and notes that a duration phrase can fit different tenses. It does not state the began-earlier-and-continuing meaning. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-EV02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation: five multiple-choice items (indirect question, unreal conditional, \"wish\" clause, \"would like it if\" clause, past or perfect choice)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 257-267; UTF-8 joined-line SHA256 be1e9d0cd76f3aca51eb82ecb0146062bd106d3f1d793fa64932a98f7f61a0c3; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 257-267; UTF-8 joined-line SHA256 be1e9d0cd76f3aca51eb82ecb0146062bd106d3f1d793fa64932a98f7f61a0c3; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Items 1 to 5 of an automatic list, options typed (a)-(d), no key. Items 1 to 4 test structures the body never teaches (the body teaches only the six tenses), and item 5 (\"Who ----? Because now we can’t use it to hold water\") depends on a tense choice the options do not settle by themselves. Item 3 has no space before \"(a)\" and item 4 mixes \"(a)if\". No answers are inferred. The supplement practice (Q1-Q3) is not an equivalent."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W03-AS02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: explain with two examples each the present perfect continuous, present continuous and past perfect tenses",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 269-275; UTF-8 joined-line SHA256 8176649bb848f98cdc05bc27975eb8952a05875fc29caa21babcee8b0b984af4; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 269-275; UTF-8 joined-line SHA256 8176649bb848f98cdc05bc27975eb8952a05875fc29caa21babcee8b0b984af4; SS1-SRC-d8bd8f85fd73:BODY:f6501ce13963eefb49c06ed6f6b42fa432e4212857e566d424a6f841bba7afd3",
+          "explanation": "Items 1 to 3 of an automatic list; no key or marks. The source body gives two examples for each of the three tenses, so the task is answerable from it. The spelling \"yhe\" in line 269 is as in the source."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentences 2, 6 and 7",
+          "explanation": "The supplement explains the present continuous and the past perfect and gives the form of the present perfect continuous, with one example for each in the text and practice (Q2, Q3). The meaning of the present perfect continuous is missing (see TN08) and two examples each are not given. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -15789,6 +16182,49 @@
       "required_action": "Author original teaching of linking words and reporting verbs for summaries, with accurate classification and a keyed, marked exercise, labelled original; owner to confirm the list is only an example set.",
       "affected_ids": [
         "ENGLISH-T2-W02-LK01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W03-FORMAL-LETTER-GAP",
+      "kind": "CONTENT",
+      "detail": "No formal-letter teaching exists in the package: the only letters supplement is first-term and informal. The source gives a definition and a model letter, but no stated rules for layout, salutation and close, subject heading, paragraph plan or tone, and the model letter has many defects (two spellings of the writer's name, 2018 date, \"30thJanuary\", \"only facility\" against three requests, \"property\" for properly, \"you party\", number disagreement, unevidenced claims).",
+      "required_action": "Author original formal-letter teaching (purpose, layout, matching salutation and close, subject heading, paragraph plan, tone) with an original model letter and keyed marking criteria, labelled original; do not reproduce the defective source model; first render the source privately to read the address and closing layout.",
+      "affected_ids": [
+        "ENGLISH-T2-W03-FL01",
+        "ENGLISH-T2-W03-FL02",
+        "ENGLISH-T2-W03-FL03",
+        "ENGLISH-T2-W03-FL04",
+        "ENGLISH-T2-W03-FL05",
+        "ENGLISH-T2-W03-FL06",
+        "ENGLISH-T2-W03-FL07",
+        "ENGLISH-T2-W03-FL08",
+        "ENGLISH-T2-W03-FL09",
+        "ENGLISH-T2-W03-EV01",
+        "ENGLISH-T2-W03-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W03-TENSE-GAP",
+      "kind": "CONTENT",
+      "detail": "The time-versus-tense distinction is not taught by the supplement, the present perfect continuous meaning (began earlier and continuing) is missing, the assignment asks for two examples each, and the tense section is placed in Week 3 by a rule although the scheme row names only the formal letter.",
+      "required_action": "Author original teaching of time versus tense and of the present perfect continuous with two examples each and a keyed, marked exercise, labelled original, bound additively to SUP-SS1-ENGLISH-ADVERBS-TENSE-T2; owner to confirm whether tense belongs in Week 3.",
+      "affected_ids": [
+        "ENGLISH-T2-W03-TN01",
+        "ENGLISH-T2-W03-TN02",
+        "ENGLISH-T2-W03-TN08",
+        "ENGLISH-T2-W03-AS02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W03-ANSWER-KEYS",
+      "kind": "CONTENT",
+      "detail": "The five-item multiple-choice evaluation has no key, and four of its items test structures that the body does not teach (indirect question, unreal conditional, \"wish\" clause, \"would like it if\" clause).",
+      "required_action": "Author original keyed, marked items for these structures after teaching them, labelled original; owner or teacher to supply a key if the source items themselves must be marked; do not infer the key.",
+      "affected_ids": [
+        "ENGLISH-T2-W03-EV02"
       ],
       "blocks_delivery": true
     }
