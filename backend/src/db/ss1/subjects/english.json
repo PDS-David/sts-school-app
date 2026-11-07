@@ -9654,7 +9654,30 @@
       "reason": "Textbook pointer lacks the required reading text and questions.",
       "evidence": {
         "locator": "SS1-SRC-d8bd8f85fd73: TOPIC: (WRITING AND LISTENING) THE HINDING PARTH OF STEEL DEVELOPNMENT",
-        "explanation": "Replacement is independently authored; original body remains unchanged. Runtime activation belongs to SS1-08."
+        "explanation": "Replacement is independently authored; original body remains unchanged. Runtime activation belongs to SS1-08. Objective-by-objective scope audit (existing source inventory locators; source bytes and original row hash unchanged): ENGLISH-T2-W05-TP01=UNRESOLVED; ENGLISH-T2-W05-RD01=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W05-RD02=UNRESOLVED; ENGLISH-T2-W05-QN01=UNRESOLVED; ENGLISH-T2-W05-AS01=UNRESOLVED. The replacement lesson teaches scanning, skimming, supported inference and summary on its own original library-timetable passage; only ENGLISH-T2-W05-RD01 is IMPLEMENTED_EQUIVALENT. ENGLISH-T2-W05-TP01 remains unresolved pending owner confirmation of the garbled writing/listening topic; RD02, QN01 and AS01 remain unresolved because the cited Intensive English pages/passages/questions and edition are not supplied. Existing blockers: ENGLISH-T2-W05-TOPIC-SCOPE and ENGLISH-T2-W05-EXTERNAL-MATERIALS. The replacement does not stand in for those missing book materials. Retain correction inactive pending complete row coverage; no source or lesson text changed.",
+        "objective_scope_audit": {
+          "coverage_ids": [
+            "ENGLISH-BODY-053",
+            "ENGLISH-T2-W05-TP01",
+            "ENGLISH-T2-W05-RD01",
+            "ENGLISH-T2-W05-RD02",
+            "ENGLISH-T2-W05-QN01",
+            "ENGLISH-T2-W05-AS01"
+          ],
+          "statuses": {
+            "ENGLISH-BODY-053": "PARTIAL",
+            "ENGLISH-T2-W05-TP01": "UNRESOLVED",
+            "ENGLISH-T2-W05-RD01": "IMPLEMENTED_EQUIVALENT",
+            "ENGLISH-T2-W05-RD02": "UNRESOLVED",
+            "ENGLISH-T2-W05-QN01": "UNRESOLVED",
+            "ENGLISH-T2-W05-AS01": "UNRESOLVED"
+          },
+          "complete": false,
+          "blockers": [
+            "ENGLISH-T2-W05-TOPIC-SCOPE",
+            "ENGLISH-T2-W05-EXTERNAL-MATERIALS"
+          ]
+        }
       }
     },
     {

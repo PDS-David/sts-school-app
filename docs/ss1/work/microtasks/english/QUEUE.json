@@ -82,15 +82,13 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 146,
-    "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 91,
+    "PENDING": 145,
     "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 146,
-    "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 91,
+    "PENDING": 145,
     "BLOCKED": 6
   },
   "items": [
@@ -3047,8 +3045,8 @@
         "ENG-SRC-T2",
         "ENG-LES-READING-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-012] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9 body_sha256=3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9 replacement_id=SUP-SS1-ENGLISH-READING-T2; paired coverage entry ENGLISH-BODY-053 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed existing exact binding SS1-02-english-COR-012 without changing its source/lesson IDs or lesson content. Source identity: SS1-SRC-d8bd8f85fd73:BODY:3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9; member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966; original body SHA256 3423fb2eeaf84b46eb81b6e8c8737bfc75766147bd12e86debc7e5baf21c62e9; same-term replacement SUP-SS1-ENGLISH-READING-T2 (Reading details, inference, scanning and summary with an original passage). Existing objective-by-objective coverage audit: ENGLISH-T2-W05-TP01=UNRESOLVED; ENGLISH-T2-W05-RD01=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W05-RD02=UNRESOLVED; ENGLISH-T2-W05-QN01=UNRESOLVED; ENGLISH-T2-W05-AS01=UNRESOLVED. The replacement teaches scanning/reading skills on an independently authored passage; it does not reproduce the referenced Intensive English pp.133–136, their questions, or the unspecified assignment pp.136–137, and the garbled writing/listening topic remains unresolved. Precise existing blockers: ENGLISH-T2-W05-TOPIC-SCOPE and ENGLISH-T2-W05-EXTERNAL-MATERIALS. Correction remains inactive; row ENGLISH-BODY-053 remains PARTIAL. Package evidence records the objective map and blocker references. No source text, replacement lesson, or correction identity changed. Content approval remains PENDING; verification DEFERRED; runtime/compiler checks deferred.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7703,7 +7701,6 @@
     "ENG-COR-006",
     "ENG-COR-007",
     "ENG-COR-008",
-    "ENG-COR-012",
     "ENG-COR-013",
     "ENG-COR-014",
     "ENG-COR-015",
