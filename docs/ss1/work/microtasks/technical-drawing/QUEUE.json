@@ -781,8 +781,8 @@
         "TD-SRC-T2",
         "TD-SCH-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 15 (source label 'WEEK FIVE', title \"Diagonal and chordal scale and their uses.\", 5414 characters, body sha256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc); scheme week(s) WEEK 5 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added separate PARTIAL objective-level entries for diagonal scales and chordal scales, bound to original Week Five body SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc. The source row title supports the two topic identities, but current repository evidence lacks exact construction steps, ratios/ranges, dimensions, graduations, figures and full answer-key detail. Added TD-FACT-W05-SCALE-CONSTRUCTIONS and TD-KEY-W05-ANSWERS; existing TD-VIS-W05 owns visual disposition. No details were inferred from the title. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1645,6 +1645,74 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W04 on 2026-11-08. Source evidence confirms worked scale readings but does not establish complete answer keys/marking for all evaluation and assignment items.",
       "completion_condition": "Provide correct original keyed solutions and positive integer marking criteria summing exactly to each question's marks, using verified ratios and figure dimensions."
+    },
+    {
+      "id": "TD-FACT-W05-SCALE-CONSTRUCTIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE teaching row (parsed row 15), diagonal and chordal scales",
+      "objective": "Inspect the original Week Five source and record each diagonal-scale and chordal-scale construction, scale ratio, range, dimension, unit, label, graduation and worked reading with exact locators.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W05-SCALE-CONSTRUCTIONS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W05",
+        "TD-VIS-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W05 on 2026-11-08. The current package evidence contains only the source row identity/title and a scheme-level topic association; detailed construction evidence is not recorded.",
+      "completion_condition": "Record every construction, ratio, range, dimension, unit, label, graduation and worked reading with exact source locators; no values may be invented."
+    },
+    {
+      "id": "TD-KEY-W05-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FIVE diagonal-scale and chordal-scale evaluation/assignment tasks",
+      "objective": "Create original keyed solutions and marking criteria for all Week Five diagonal-scale and chordal-scale evaluation and assignment tasks after the source construction details and figures are verified.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W05-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W05",
+        "TD-VIS-W05",
+        "TD-FACT-W05-SCALE-CONSTRUCTIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W05 on 2026-11-08. Exact construction steps, dimensions, figures and answer/marking coverage are not present in the current repository evidence.",
+      "completion_condition": "Publish original keyed solutions with correct construction steps and positive integer marking criteria summing exactly to each question's marks; do not invent source dimensions or use uninspected figures."
     }
   ],
   "review": {
@@ -1660,7 +1728,7 @@
     }
   },
   "next_runnable": [
-    "TD-WK-W05"
+    "TD-WK-W06-W07"
   ],
   "runnable_now": [
     "TD-SCH-W06",
