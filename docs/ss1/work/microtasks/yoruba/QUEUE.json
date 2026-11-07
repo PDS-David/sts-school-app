@@ -74,8 +74,8 @@
     "ASSET": 1
   },
   "status_counts": {
-    "PENDING": 78,
-    "IMPLEMENTED_TESTING_DEFERRED": 40,
+    "PENDING": 77,
+    "IMPLEMENTED_TESTING_DEFERRED": 41,
     "BLOCKED": 34
   },
   "items": [
@@ -3089,11 +3089,11 @@
       "depends_on": [
         "YO-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "YO-WK-T3-W11",
       "week_or_locator": "Scheme week 11 revision/test pair, lines 81-83 (no week label; line 81 is an EDE revision line, line 83 an unlabelled revision-test line); NO teaching section exists",
       "objective": "Dispose of the revision/test scheme pair: confirm from the original that no revision or examination teaching body exists, decide under the existing schema whether the pair can be classified as a revision/test marker (the word \"Atunyewo\" occurs only on these two lines) or needs an open item, and record that a revision line cannot erase teaching. Do not author revision or examination content.",
-      "implementation_reference": "Not yet indexed. Found by YO-INV-T3 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5). Scheme pair lines 81-83, 129 characters, SHA-256 a8579d59815b77e42e64ccf1a8134d8ba38ca3a2620e47a3df08c1224f3934c3. The body ends with OSE KEWAA (2313-2463) and no revision or examination heading exists; \"Atunyewo\" occurs only at lines 81 and 83, and \"idanwo\" at line 83 plus an unrelated example at 721. The pair has no LIT line and no week number. yoruba.json has no revision/examination rule or coverage entry.",
+      "implementation_reference": "backend/src/db/ss1/subjects/yoruba.json: source rule SS1-SRC-4cc6aae9ed7d-R002 and coverage YO-T3-W11-SCHEME-REVISION-TEST; report docs/ss1/work/microtasks/yoruba/YO-WK-T3-W11.md. Exact source pair lines 81–83 (Mammoth 1.12.2 extractRawText), SHA-256 a8579d59815b77e42e64ccf1a8134d8ba38ca3a2620e47a3df08c1224f3934c3. Source member SHA-256 a057f7f70d7e99fc34acdb6e725f3d44a426d96f756039bf6f3e6216767416e3 re-verified from attached DOCX (68,373 bytes). The pair is classified SCHEME_ONLY by R002: it is preamble scheme metadata, not a parsed lesson row. Coverage is MARKER and points to R002. Original inventory locates ten teaching sections in lines 121–2463, ending with OSE KEWAA; no Week 11 teaching/revision/examination body follows. No revision/test content authored. JSON syntax, unique IDs, source/rule/coverage references and source hashes checked; full compiler/importer, schema CLI, type checks, database, CI, device and delivery verification remain deferred by owner. No approval or acceptance claimed.",
       "completion_condition": "The absence of a revision/examination body is verified with locators; the pair is either classified under the existing schema with a unique anchor or recorded as a precise open item; no revision or examination content is authored."
     },
     {
