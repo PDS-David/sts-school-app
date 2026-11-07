@@ -22676,14 +22676,20 @@
       "source_id": "SS1-SRC-a00657d42196",
       "objective": "B.  TOPIC: STRUCTURE: INTRODUCTION TO PHRASAL VERBS.",
       "objective_locator": "SS1-SRC-a00657d42196:BODY:3bf9e57695b44faa72ac28d81de2c17c964ead8b92356981b6d4fb3bb088f781 :: whole row (row-level index)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
-        "SS1-SRC-a00657d42196:BODY:3bf9e57695b44faa72ac28d81de2c17c964ead8b92356981b6d4fb3bb088f781"
+        "SS1-SRC-a00657d42196:BODY:3bf9e57695b44faa72ac28d81de2c17c964ead8b92356981b6d4fb3bb088f781",
+        "SUP-SS1-ENGLISH-PHRASAL-VERBS-T1",
+        "SS1-02-english-COR-005"
       ],
       "evidence": [
         {
           "locator": "SS1-SRC-a00657d42196:BODY:3bf9e57695b44faa72ac28d81de2c17c964ead8b92356981b6d4fb3bb088f781 :: whole row",
           "explanation": "Row-level entry for the phrasal-verb row. Objectives are indexed separately as ENGLISH-T1-W02-PV01 to PV05. Remains PARTIAL: one gloss needs reviewed wording (PV02) and the look-up assignment has no meanings or key (PV05). No SS1-02 correction displaces this row."
+        },
+        {
+          "locator": "SS1-02-english-COR-005; SUP-SS1-ENGLISH-PHRASAL-VERBS-T1; ENGLISH-T1-W02-PV01–PV05",
+          "explanation": "The confirmed whole-row correction scope covers all five objective entries; each is IMPLEMENTED_EQUIVALENT. The body-level row is therefore restored to IMPLEMENTED_EQUIVALENT rather than left PARTIAL."
         }
       ]
     },
@@ -37312,8 +37318,8 @@
     {
       "id": "ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION",
       "kind": "CONTENT",
-      "detail": "ENG-FACT-REPLACEMENT-SCOPE (2026-11-07) compared each of the 24 SS1-02 corrections with the objective entries from the 32 week-indexing items. ENGLISH-BODY-005's replacement scope is confirmed whole-row (SS1-02-english-COR-005). ENGLISH-BODY-002 was already PARTIAL (open item ENGLISH-T1-W01-WORD-CLASS-REPLACEMENT-SCOPE). The other 22 corrected body rows listed in affected_ids were IMPLEMENTED_EQUIVALENT at row level although objective entries under the same source body are still PARTIAL or UNRESOLVED; each is now PARTIAL, with an evidence entry naming the objective entries and separating taught-scope gaps from external material not supplied. No source body, correction or objective-level entry changed.",
-      "required_action": "Resolve each row through the open items already attached to its objective entries (ENG-LES-* follow-up lessons, ENG-FACT-*-EXTERNAL-MATERIALS and the owner actions). Restore a row to IMPLEMENTED_EQUIVALENT only when every objective entry under its source body is IMPLEMENTED_EQUIVALENT, SUPPORTED or MARKER with evidence. Keep the corresponding SS1-02-english-COR-0NN corrections inactive until then; do not activate a replacement for a narrower source row.",
+      "detail": "Whole-row scope has now been reconciled for ENGLISH-BODY-005: all five objective entries PV01–PV05 are IMPLEMENTED_EQUIVALENT, so the body row is restored. Remaining affected body rows still require objective-level review and row-status reconciliation.",
+      "required_action": "Continue row-by-row review of the remaining affected body rows. Restore a row only when its confirmed whole-row scope is supported by objective-level evidence and every objective is IMPLEMENTED_EQUIVALENT or SUPPORTED; keep genuinely unresolved rows PARTIAL.",
       "affected_ids": [
         "ENGLISH-BODY-013",
         "ENGLISH-BODY-023",
