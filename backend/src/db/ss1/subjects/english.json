@@ -506,6 +506,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R006",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 4:  VOCABULARY DEVELOPMENT- SYNONYMS",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 4, line 11 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-041 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -11951,14 +11963,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 4:  VOCABULARY DEVELOPMENT- SYNONYMS",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 4; exact body hash 7ff31f35d858c83e1c8669e3c7f9b09e043886514d0b36956016a3b93a7e60d8",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:7ff31f35d858c83e1c8669e3c7f9b09e043886514d0b36956016a3b93a7e60d8"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:7ff31f35d858c83e1c8669e3c7f9b09e043886514d0b36956016a3b93a7e60d8",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 11; UTF-8 joined-line SHA256 5ccc623973518109efd57217dbc9367d4877667a345cc664572cbfcafee658af; SS1-SRC-d8bd8f85fd73:BODY:7ff31f35d858c83e1c8669e3c7f9b09e043886514d0b36956016a3b93a7e60d8; rule SS1-SRC-d8bd8f85fd73-R006",
+          "explanation": "Scheme-of-work row 4 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Vocabulary development - synonyms\". The teaching body ENGLISH-BODY-052 (lines 279-331) treats synonyms through a picture-words set, an evaluation and an assignment, indexed at objective level as ENGLISH-T2-W04-SY01, SY02, PW01 to PW05, EV01 and AS01. The topic line adds \"words exactly the same in meaning\", which the body does not treat as a class. Rule SS1-SRC-d8bd8f85fd73-R006 classifies the row SCHEME_ONLY. Rows 5 to 10 are left for their own week tasks."
         }
       ]
     },
@@ -15451,6 +15463,185 @@
           "explanation": "The supplement explains the present continuous and the past perfect and gives the form of the present perfect continuous, with one example for each in the text and practice (Q2, Q3). The meaning of the present perfect continuous is missing (see TN08) and two examples each are not given. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-SY01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Synonyms: definition (words nearest in meaning, e.g. odour, smell, scent), the rarity of exact synonyms, and the loss of one of two exact synonyms",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 287-289; UTF-8 joined-line SHA256 9fae8d0dbc13bbdc8aa5e9c76d52e1975a9352a7b8b774f1b9aeecc62251777d; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 287-289; UTF-8 joined-line SHA256 9fae8d0dbc13bbdc8aa5e9c76d52e1975a9352a7b8b774f1b9aeecc62251777d; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "The topic line (line 283) promises \"words exactly the same in meaning and words that are nearly the same\", but the body defines synonyms as words nearest in meaning and says exact sameness is very rare; it never treats exact synonyms as a class. The claim that one of two exact synonyms drops out of use is stated as a rule without evidence. The definition ends \"odour, smell, scent,.\" with a stray comma and full stop. Heading spellings \"DEVELOPNMENT\", \"SYNONYMNS\", \"INMEANING\" recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentence 1",
+          "explanation": "The supplement says near-synonyms overlap but are not interchangeable everywhere, which carries the point that exact synonyms are not the norm. It never defines \"synonym\" and does not use odour/smell/scent or the exact-versus-near contrast. Bound additively as partial support; COR-013 and ENGLISH-BODY-052 are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-SY02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Picture words as a set: painting, drawing, portrait, print and sketch, all words for a scene, person or thing represented on paper",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 291-293; UTF-8 joined-line SHA256 60438378d7bef31f8be30de2de2828491366d326f5fed6e7e7ae2d7ca1cd31df; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 291-293; UTF-8 joined-line SHA256 60438378d7bef31f8be30de2de2828491366d326f5fed6e7e7ae2d7ca1cd31df; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "Lists five words and says they all name something represented on paper \"by drawing, painting e.t.c\". \"Painting\" is listed but never defined below, and \"picture\" is defined below but is not in the list. \"e.t.c\" is as in the source."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentences 2-3",
+          "explanation": "The supplement names portrait, sketch and print only and does not mention painting, drawing or the shared meaning. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-PW01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Picture: definition (a scene, person or thing represented on paper using pencil, pen or paint) with the sentence about children drawing pictures of their pets",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 295; UTF-8 joined-line SHA256 d6289fecdb3cd950783b9c7e7369e65d2da3f937de788f0cfdc2a40facf72531; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 295; UTF-8 joined-line SHA256 d6289fecdb3cd950783b9c7e7369e65d2da3f937de788f0cfdc2a40facf72531; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "In the docx the label, \"Sentence:\" and the key words are bold and underlined (plain text loses this). The definition is circular for drawing-related words. No supplement defines \"picture\"."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-PW02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Drawing: definition (a picture made with pencil or pen, not paint) with the pencil/charcoal drawing sentence",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 297; UTF-8 joined-line SHA256 2b4c8b8ee520080f21ec1caf6863db3aadf10dd60b1ac38fb1ddc14b1827b095; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 297; UTF-8 joined-line SHA256 2b4c8b8ee520080f21ec1caf6863db3aadf10dd60b1ac38fb1ddc14b1827b095; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "\"not pant\" is a slip for paint; recorded, not repaired. \"Charcoal drawing\" in the example is not covered by the definition (charcoal is neither pencil nor pen). No supplement defines \"drawing\"."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-PW03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Portrait: definition (a painting, drawing or photograph of a person, especially head and shoulders) with the Nelson Mandela sentence, and the note on self-portrait",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 299-301; UTF-8 joined-line SHA256 e4531bf302b0ea7c53443dbf1866b90f9082c7b472d0f1b550f556e79cdbbd6b; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 299-301; UTF-8 joined-line SHA256 e4531bf302b0ea7c53443dbf1866b90f9082c7b472d0f1b550f556e79cdbbd6b; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "The sentence \"The portrait of Nelson Mandela.\" names a real public figure and is a fragment, not a sentence. The self-portrait note is in parentheses and opens \"Note :\"."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentence 2",
+          "explanation": "The supplement says a portrait represents a person. It does not give the painting, drawing or photograph range, the head-and-shoulders point or the self-portrait note. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-PW04",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Entry headed \"Paint\": a picture copied from a painting using photography, with the sentence \"The printed copy is out.\"",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 303; UTF-8 joined-line SHA256 3f8b619efe6f899cc5357a4fdbd670e3e3773f203d0e8b0a3fb5260b9712c88f; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 303; UTF-8 joined-line SHA256 3f8b619efe6f899cc5357a4fdbd670e3e3773f203d0e8b0a3fb5260b9712c88f; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "The entry is headed \"Paint\" but defines and exemplifies a printed copy, so the heading is wrong for the content (the word list on line 291 has \"print\"). Correction COR-013 records \"print/paint confusion\" as its reason. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentences 2-3",
+          "explanation": "The supplement states that a print is a reproduced image and that paint is the colouring material or an action, not the name for a printed copy, which corrects the confusion. Bound additively, narrowly; it does not repeat the photographic-copy wording."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-PW05",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Sketch: definition (a simple picture drawn quickly, without many details) with the sentence about rough sketches before a painting",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 305; UTF-8 joined-line SHA256 46cc2153bf9a6881d71f2f5567e06a66f7ded895212798374d4d44021e2fe56c; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 305; UTF-8 joined-line SHA256 46cc2153bf9a6881d71f2f5567e06a66f7ded895212798374d4d44021e2fe56c; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "\"Istart\" lacks a space in the example. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentence 2",
+          "explanation": "The supplement says a sketch may be a quick outline, which covers the definition. The example sentence is not carried. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-EV01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation: choose among arrange, organise and plan in context",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 307-313; UTF-8 joined-line SHA256 e676ac3cfdcaad45eef2a7be9a9a62cd3ad00bd9978eab022dc9f1b47e698549; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 307-313; UTF-8 joined-line SHA256 e676ac3cfdcaad45eef2a7be9a9a62cd3ad00bd9978eab022dc9f1b47e698549; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "The instruction asks the student to \"keep them apart by choosing the appropriate one in each context\", but the paragraph is already filled in: in the docx \"organize\", \"plan\" and the second \"arrange\" (a meeting) are underlined, while the first \"arrange\" (books in alphabetical order) is not. Plain text loses the underlining. There are four contexts, no blanks, no key and no marks; the underlining is not treated as a key."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentences 4-5",
+          "explanation": "The supplement teaches choosing a synonym by substituting it into the sentence and checking sense, with bright/intelligent, but does not treat arrange, organise or plan. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W04-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: give the meaning of five words and use each in a sentence (hide, great, funny, floor, fabric)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 315-327; UTF-8 joined-line SHA256 6fb6ddce4325121c514a3a5f08977c8b82ba0bfff1af746b8b3ef98a9c7b333a; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 315-327; UTF-8 joined-line SHA256 6fb6ddce4325121c514a3a5f08977c8b82ba0bfff1af746b8b3ef98a9c7b333a; SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa",
+          "explanation": "Items 1 to 5 of an automatic list; \"fabric\" is in lower case. No key or marks. Each word has several senses (hide, great, funny and floor especially), and the source does not say which is wanted."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: first paragraph (beginning \"Near-synonyms\"), sentence 5; third paragraph, last sentence",
+          "explanation": "The supplement teaches checking the intended sense in a sentence and using a dictionary, with one word (bright). It does not treat the five words. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -16225,6 +16416,31 @@
       "required_action": "Author original keyed, marked items for these structures after teaching them, labelled original; owner or teacher to supply a key if the source items themselves must be marked; do not infer the key.",
       "affected_ids": [
         "ENGLISH-T2-W03-EV02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W04-SYNONYM-GAP",
+      "kind": "CONTENT",
+      "detail": "The replacement does not define \"synonym\", does not treat exact versus near synonyms, does not define picture, drawing or painting, and gives portrait only as representing a person; the source entries carry defects (Paint heading on a print entry, \"not pant\", a fragment as a sentence, charcoal under a pencil/pen definition).",
+      "required_action": "Author original synonym teaching (definition, exact versus near, the picture-word set with accurate distinctions and original example sentences), labelled original, bound additively to SUP-SS1-ENGLISH-MEANING-T2; do not copy the defective source entries.",
+      "affected_ids": [
+        "ENGLISH-T2-W04-SY01",
+        "ENGLISH-T2-W04-SY02",
+        "ENGLISH-T2-W04-PW01",
+        "ENGLISH-T2-W04-PW02",
+        "ENGLISH-T2-W04-PW03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W04-PRACTICE-KEYS",
+      "kind": "CONTENT",
+      "detail": "The arrange/organise/plan exercise is pre-filled with partial underlining and has no key, and the five-word assignment has several senses per word and no key or marks.",
+      "required_action": "Author original keyed, marked practice for synonym choice in context and for sense-specific meanings and sentences (hide, great, funny, floor, fabric), labelled original; do not treat the source underlining as a key.",
+      "affected_ids": [
+        "ENGLISH-T2-W04-EV01",
+        "ENGLISH-T2-W04-AS01"
       ],
       "blocks_delivery": true
     }
