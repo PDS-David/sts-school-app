@@ -38,9 +38,9 @@
     "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
+    "IMPLEMENTED_TESTING_DEFERRED": 15,
     "BLOCKED": 2,
-    "PENDING": 31
+    "PENDING": 27
   },
   "items": [
     {
@@ -796,8 +796,8 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added title, nine weekly scheme-row, revision and examination marker coverage for source SS1-SRC-1728961e97b5. Scheme row anchors and hashes follow the importer pattern proven by T1; exact source lines 7-53 and block hash 98ce4b4f1941cb55af76c05e1e74a3e41ed9a0763b9fe10d2a35d5612925c6a1. Rows 1-9 map to LIT-WK-T2-W01..W09; rows 10/11 are scheme-only markers with no body. Source member hash a12244cb5312680610ab03f8d76aaaf285a0eebdf4fb618491d01e30584dd757 was verified by LIT-INV-T2 against the supplied partial archive; composite archive hash not checked. No lesson created; approval and testing deferred.",
       "completion_condition": "Objective-level preamble coverage exists with exact anchors and the source hash; every scheme row is accounted for; no lesson claims approval or verification; nothing in the scheme is invented or harmonised."
     },
     {
@@ -833,8 +833,8 @@
         "LIT-INV-T2",
         "LIT-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No rule exists from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SCHEME_ONLY rules for the two unique scheme markers: REVISION at line 49 (R012) and EXAMINATION at line 53 (R013); no lesson body exists for either. Seven Assignment markers at lines 235, 499, 629, 751, 805, 1109 and 1221 remain unclassified because the shared schema supports only REVISION, EXAMINATION and SCHEME_ONLY. Recorded LIT-ASSIGNMENT-MARKER-SCHEMA-GAP; no schema change; no exercise line dropped.",
       "completion_condition": "Every marker is accounted for; each classification is written only where the existing schema supports it; the assignment-marker gap is recorded as an explicit blocker or dependency; nothing is silently skipped and the shared schema is untouched."
     },
     {
@@ -1241,8 +1241,8 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added title, nine weekly scheme-row, revision and examination marker coverage for source SS1-SRC-2422e423a240. Scheme table lines 7-53 block hash 98ce4b4f1941cb55af76c05e1e74a3e41ed9a0763b9fe10d2a35d5612925c6a1; rows 1-9 map to LIT-WK-T3-W01..W09; rows 10/11 are markers with no body. The extracted table is text-identical to T2, but source bytes and member hashes differ; no duplicate exclusion is applied. Source member hash 319a4898820bc98f19f48a592404baa0b54527b704fadddbd9484277fa91e9c3 and archive hash 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e were verified in LIT-INV-T3. No lesson created; approval and testing deferred.",
       "completion_condition": "Objective-level preamble coverage exists with exact anchors and the source hash; every scheme row is accounted for; no lesson claims approval or verification; nothing in the scheme is invented or harmonised."
     },
     {
@@ -1278,8 +1278,8 @@
         "LIT-INV-T3",
         "LIT-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No rule exists from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T3.md. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SCHEME_ONLY rules for REVISION at line 49 (R012) and EXAMINATION at line 53 (R013); no lesson body exists for either. Seven Assignment markers at lines 235, 499, 629, 751, 805, 1109 and 1221 remain unclassified because the shared schema supports only REVISION, EXAMINATION and SCHEME_ONLY. Recorded LIT-ASSIGNMENT-MARKER-SCHEMA-GAP; no schema change; no exercise line dropped.",
       "completion_condition": "Every marker is accounted for; each classification is written only where the existing schema supports it; the assignment-marker gap is recorded as an explicit blocker or dependency; nothing is silently skipped and the shared schema is untouched."
     },
     {
@@ -1659,8 +1659,6 @@
     "LIT-WK-T1-W08",
     "LIT-WK-T1-W09",
     "LIT-WK-T1-W10",
-    "LIT-PRE-T2",
-    "LIT-MARK-T2",
     "LIT-WK-T2-W01",
     "LIT-WK-T2-W02",
     "LIT-WK-T2-W03",
@@ -1671,8 +1669,6 @@
     "LIT-WK-T2-W08",
     "LIT-WK-T2-W09",
     "LIT-LES-T1-W01-CORRECTED-WEEK",
-    "LIT-PRE-T3",
-    "LIT-MARK-T3",
     "LIT-WK-T3-W01",
     "LIT-WK-T3-W02",
     "LIT-WK-T3-W03",
