@@ -16513,6 +16513,95 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-ENGLISH-ANTONYM-PRACTICE-T2-W08",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "English Language",
+      "title": "Gradable and complementary antonyms: original practice",
+      "objectives": [
+        "Explain the distinction between gradable and complementary antonyms.",
+        "Supply valid original word-pair examples for each type.",
+        "Classify antonyms using degrees, middle values and clearly defined contexts."
+      ],
+      "body": "Antonyms are words with contrasting meanings. Two useful groups are gradable antonyms and complementary antonyms. The spelling of the second term is complementary, not “complimentarity”.\n\nGradable antonyms are opposite ends or contrasting points on a scale. Examples include hot/cold, tall/short, wide/narrow and easy/difficult. There can be degrees between the two ends: water may be warm rather than hot or cold, and a person may be of medium height. We can use modifiers such as very, fairly, rather and slightly: very hot, slightly cold. In a question, “How hot is it?” allows a range of answers.\n\nComplementary antonyms describe alternatives that normally exclude each other within the same clearly defined context. Examples include present/absent, open/closed and true/false. If a learner is recorded as present or absent for one lesson, the register normally assigns one of those two statuses. There is no ordinary middle degree such as “slightly present”. Define the context carefully: a door may be partly open, so open/closed can admit a boundary case in everyday use; the pair is treated as complementary when the task requires a single fully open or fully closed status.\n\nTo test a pair, ask: can something be between the two terms, or can one term be true to a greater or lesser degree? If yes, the pair is usually gradable. Can the same item, at the same time and under the same definition, be neither one nor the other? If the categories exhaust the possibilities, the pair is complementary. Do not classify a pair from the words alone when the context changes its meaning.",
+      "body_sha256": "53737175675c4532ee6dc3e0957b73b257d8ebf0cb47411db743ca22a513f053",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Explain the difference between gradable and complementary antonyms. Give two original pairs for each group.",
+          "answer": "Gradable antonyms are contrasting points on a scale with possible degrees between them, e.g. hot/cold and wide/narrow. Complementary antonyms are mutually exclusive alternatives within a defined context, e.g. present/absent and true/false.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Accurate explanation of gradable antonyms",
+              "marks": 2
+            },
+            {
+              "criterion": "Two valid gradable pairs",
+              "marks": 2
+            },
+            {
+              "criterion": "Accurate explanation of complementary antonyms",
+              "marks": 2
+            },
+            {
+              "criterion": "Two valid complementary pairs",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Classify each pair as usually gradable or complementary, and give a reason: (a) rich/poor; (b) asleep/awake; (c) wide/narrow; (d) pass/fail on a test with a fixed pass mark.",
+          "answer": "(a) gradable: degrees of wealth exist; (b) complementary in the ordinary contrast: a person is asleep or awake at a given moment, though transitions can occur; (c) gradable: widths vary by degree; (d) complementary within the stated test rule: the result is either pass or fail.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Correct classification of each pair",
+              "marks": 4
+            },
+            {
+              "criterion": "A sound contextual reason for each classification",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "A learner says that warm proves hot/cold are not antonyms. Explain why this is incorrect. Then explain why context matters when classifying open/closed.",
+          "answer": "Warm is a middle degree on the same temperature scale, which is exactly why hot/cold are gradable antonyms. Open/closed may be treated as complementary when a rule requires fully open or fully closed, but a door can be partly open in ordinary use; the context and definition matter.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Explains the scale and middle degree for hot/cold",
+              "marks": 2
+            },
+            {
+              "criterion": "Explains the contextual boundary for open/closed",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Cambridge English Grammar Today: words, sentences and clauses",
+          "locator": "General grammar reference; all antonym explanations, examples and practice are original for this project.",
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/words-sentences-and-clauses",
+          "rights": "Original teaching prose, examples and exercises authored for this project; no third-party passage or exercise reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Cambridge English Grammar Today"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -25709,10 +25798,11 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "Assignment: explain gradable and complementary (written \"Complimentarity\") antonyms with adequate examples in words",
       "objective_locator": "mammoth 1.13.0 extractRawText lines 503-509; UTF-8 joined-line SHA256 2259b0ddcc3355760f1279715f5bf80427c96edc8bde6943a908eadaf09bc996; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
-        "SUP-SS1-ENGLISH-MEANING-T2"
+        "SUP-SS1-ENGLISH-MEANING-T2",
+        "SUP-SS1-ENGLISH-ANTONYM-PRACTICE-T2-W08"
       ],
       "evidence": [
         {
@@ -25722,6 +25812,10 @@
         {
           "locator": "SUP-SS1-ENGLISH-MEANING-T2: second paragraph (beginning \"Antonyms express\")",
           "explanation": "The supplement teaches both types with examples (hot/cold with warm; present/absent), so a teacher can model the answers, but it has no practice, key or marks for the assignment. Bound additively as partial support."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ANTONYM-PRACTICE-T2-W08: body, paragraphs 1-4; practice Q1-Q3",
+          "explanation": "The original supplement explains both antonym types, supplies original examples, tests middle degrees and contextual boundaries, and provides complete keyed marking."
         }
       ]
     },
@@ -31393,16 +31487,6 @@
       "required_action": "Owner decision confirmed 2026-11-07: use a clearly labelled original, curriculum-aligned equivalent activity for each unavailable textbook task. Do not reproduce, infer or claim to have inspected the missing textbook pages, passages, questions or answer keys. Keep this item open and delivery-blocking until the corresponding original equivalent is authored, keyed/marked where applicable, linked to the affected objective(s), and coverage is updated. Content approval remains PENDING and verification DEFERRED.",
       "affected_ids": [
         "ENGLISH-T2-W07-AS01"
-      ],
-      "blocks_delivery": true
-    },
-    {
-      "id": "ENGLISH-T2-W08-ASSIGNMENT-KEYS",
-      "kind": "CONTENT",
-      "detail": "The assignment (explain gradable and complementary antonyms with examples) has no key, model answer, marking criteria or marks, and the supplement has no practice for these two types. Its \"Complimentarity\" spelling and the source's definitions of both types are defective, so they cannot serve as a key.",
-      "required_action": "Author original keyed, marked practice on gradable and complementary antonyms (explanation, original word-pair examples, and a check that an example really divides the domain or admits a middle value), labelled original, bound additively to SUP-SS1-ENGLISH-MEANING-T2; do not infer a key from the source definitions.",
-      "affected_ids": [
-        "ENGLISH-T2-W08-AS01"
       ],
       "blocks_delivery": true
     },
