@@ -92,6 +92,17 @@
         "locator": "TD-SCH-W04: scheme-table parsed row 3 (WEEK 4), line 17 of the source text extraction; 27-character row body, SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab. The exact anchor occurs once in the supplied original DOCX text (word/document.xml paragraph containing the Week 4 scheme entry) and equals the parsed-row body hash.",
         "explanation": "This is the single Week 4 scheme-table entry, whose objective is stated verbatim as “Plain scales”. It names the week's topic but contains no teaching body. The full 27-character row is used as the anchor because it is the hash-accounted row text; classification is SCHEME_ONLY and does not discard or alter the source row."
       }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R007",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 5:        Diagonal and chordalScales",
+      "evidence": {
+        "locator": "TD-SCH-W05: scheme-table parsed row 4 (WEEK 5), mammoth 1.12.2 extractRawText() line 19; 41 characters, SHA-256 8c5c6c7a65e58f85552c3dbf582106d0d999c3459d4fb6aefe6fce7309a57be1 (matches docs/ss1/work/SS1-03/evidence/parsed_rows.json entry i=4). The full week-labelled row is used as the anchor; the parsed-row evidence identifies it as one scheme-table row.",
+        "explanation": "This is the Week 5 scheme-table entry, not a teaching body. The full 41-character row, including its week label and original spacing/capitalization, is retained as the anchor. It is classified SCHEME_ONLY; no source text is removed or rewritten. The scheme objective is preserved verbatim as “Diagonal and chordalScales”."
+      }
     }
   ],
   "lessons": [],
@@ -207,6 +218,26 @@
         {
           "locator": "Teaching row 14 (WEEK FOUR), title “Plain scales and their uses”; parsed_rows.json body ID SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd and body SHA-256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd; source document pages 19–22 (week four lesson and its evaluation/weekend assignments).",
           "explanation": "The teaching row directly covers the scheme objective. It defines a scale and representative fraction (drawn size divided by represented size), distinguishes common scale ratios, explains plain scales as using two units, and gives step-by-step constructions for several scale ratios and ranges. It includes evaluation questions, worked scale readings and assignment tasks. This is objective-level source teaching, so the existing original lesson identity is reused; no replacement lesson or supplement is created."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W05",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 5 scheme objective, verbatim: “Diagonal and chordalScales” (spacing/capitalization retained from source); the teaching-row title is “Diagonal and chordal scale and their uses”.",
+      "objective_locator": "Scheme-table parsed row 4 (WEEK 5), line 19 of mammoth 1.12.2 extractRawText() output; parsed_rows.json entry i=4, len=41, body SHA-256 8c5c6c7a65e58f85552c3dbf582106d0d999c3459d4fb6aefe6fce7309a57be1. Teaching row parsed row 15, WEEK FIVE, title “Diagonal and chordal scale and their uses”, body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme row 4: exact 41-character text “WEEK 5:        Diagonal and chordalScales”; parsed_rows.json confirms len=41 and body SHA-256 8c5c6c7a65e58f85552c3dbf582106d0d999c3459d4fb6aefe6fce7309a57be1. Rule SS1-SRC-af4868d2c026-R007 classifies this scheme-table row SCHEME_ONLY.",
+          "explanation": "The scheme row names the objective only and contains no teaching body. Its original spelling, spacing and capitalization are retained verbatim; the phrase “chordalScales” is not silently normalized."
+        },
+        {
+          "locator": "Teaching row parsed row 15 (WEEK FIVE), title “Diagonal and chordal scale and their uses”; body SHA-256 2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc; original lesson ID SS1-SRC-af4868d2c026:BODY:2b5d6f2948b4bc9b9684315e7ebcd5ecd033f68849bb19a5e65890ccd435d1cc.",
+          "explanation": "The existing Week Five teaching row is the direct topic-level match for the scheme objective: its title explicitly covers both diagonal and chordal scales and their uses. The original content-bound lesson identity is reused; no replacement lesson, supplement, or duplicate content is created. This mapping records objective-level source coverage only, not teacher approval or independent technical validation."
         }
       ]
     }
