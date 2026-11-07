@@ -391,8 +391,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (label 'WEEK 6', body sha256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4, 57 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master. Rows 5 and 6 have identical text apart from the WEEK number, so an anchor must include the week heading to be unique.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: package backend/src/db/ss1/subjects/technical-drawing.json adds SCHEME_ONLY rule SS1-SRC-af4868d2c026-R008 for exact 57-character source row “WEEK 6:        Enlargement and reduction of plain figures” (line 21; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4), and coverage COV-TD-T2-SCH-W06 with the verbatim objective. The combined Week 6–7 teaching-row identity is not present in current repository evidence, so coverage is PARTIAL and open item TD-T2-W06-TEACHING-ROW-MAPPING records the exact follow-up for TD-WK-W06-W07. No lesson ID was invented. Source/JSON identity and hash evidence recorded; no tests, typechecks, importer or DB work run (owner deferral). Not approved, not verified.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1422,7 +1422,7 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W06"
+    "TD-SCH-W07"
   ],
   "runnable_now": [
     "TD-SCH-W06",
