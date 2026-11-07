@@ -742,8 +742,8 @@
         "TD-SRC-T2",
         "TD-SCH-W04"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 14 (source label 'WEEK FOUR', title \"Plain scales and their uses\", 5707 characters, body sha256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd); scheme week(s) WEEK 4 per parsed_rows.json ordering. No coverage, lesson or correction exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six objective-level entries for the Week Four original body SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd: scale definition, representative fraction, common scale ratios, two-unit plain scales, plain-scale construction and reading. The source evidence supports the definitions and two-unit property; exact ratios/ranges/readings and diagrams are PARTIAL pending source/visual inspection. Added bounded follow-ups TD-FACT-W04-SCALE-DETAILS and TD-KEY-W04-ANSWERS; existing TD-VIS-W04 handles figures. No values, dimensions or labels invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1577,6 +1577,74 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W03 on 2026-11-08. Source contains evaluation, revision and weekend assignments; no complete answer key/marking evidence is recorded. Requires figure and notation review before authoring.",
       "completion_condition": "Publish an original keyed supplement with complete explanations, construction steps, answers and positive integer marking criteria summing to each question's marks; do not invent missing figures/dimensions."
+    },
+    {
+      "id": "TD-FACT-W04-SCALE-DETAILS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR plain scales lesson, source document pages 19–22",
+      "objective": "Inventory the exact scale ratios, ranges, dimensions, units, labels and numerical readings used in every Week Four plain-scale construction and worked example.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W04-SCALE-DETAILS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W04",
+        "TD-VIS-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W04 on 2026-11-08. Current package evidence confirms scale concepts and constructions but does not enumerate all ratios/ranges/dimensions/readings. Requires exact original source inspection.",
+      "completion_condition": "Record every ratio, range, unit, dimension, label and reading with exact source locator and verified arithmetic; do not invent any value."
+    },
+    {
+      "id": "TD-KEY-W04-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK FOUR plain-scale evaluation questions, worked readings and assignment tasks",
+      "objective": "Complete or supplement all Week Four plain-scale evaluation and assignment answers with correct construction steps, readings and marking criteria.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W04-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W04",
+        "TD-VIS-W04",
+        "TD-FACT-W04-SCALE-DETAILS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W04 on 2026-11-08. Source evidence confirms worked scale readings but does not establish complete answer keys/marking for all evaluation and assignment items.",
+      "completion_condition": "Provide correct original keyed solutions and positive integer marking criteria summing exactly to each question's marks, using verified ratios and figure dimensions."
     }
   ],
   "review": {
@@ -1592,7 +1660,7 @@
     }
   },
   "next_runnable": [
-    "TD-WK-W04"
+    "TD-WK-W05"
   ],
   "runnable_now": [
     "TD-SCH-W06",
