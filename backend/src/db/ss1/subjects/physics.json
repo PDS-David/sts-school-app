@@ -1227,6 +1227,193 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W06-DENSITY",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Density and relative density of solids and liquids",
+      "objectives": [
+        "Define density and calculate it from mass and volume using correct SI units.",
+        "Determine the volume of regular and irregular solids using dimensions or water displacement.",
+        "Define relative density as the ratio of a substance's density to the density of water and explain why it has no unit.",
+        "Determine relative density of granular solids and liquids using a density bottle.",
+        "Explain the use of a hydrometer to compare the relative density of liquids."
+      ],
+      "body": "DENSITY\nDensity is the mass per unit volume of a substance:\ndensity = mass / volume\nThe symbol commonly used for density is ρ (rho). The SI unit is kilogram per cubic metre (kg/m³). A common laboratory unit is gram per cubic centimetre (g/cm³). One g/cm³ is equal to 1,000 kg/m³.\n\nTo find density, measure the mass and the volume of the sample, then divide mass by volume. Record units consistently before calculating.\n\nDETERMINING VOLUME\n- For a regular solid, measure its dimensions and calculate its volume using the appropriate geometrical formula. For a rectangular block, V = length × width × height.\n- For an irregular solid that does not dissolve in water, use water displacement in a measuring cylinder or displacement can. Its volume is the final water reading minus the initial reading.\n- For a liquid, measure a known volume using suitable graduated glassware or a calibrated density bottle.\n\nWorked example 1: density of a block\nA rectangular glass block has length 10 cm, width 8 cm and thickness 2 cm. Its mass is 400 g.\nVolume = 10 × 8 × 2 = 160 cm³.\nDensity = 400/160 = 2.5 g/cm³ = 2,500 kg/m³.\n\nRELATIVE DENSITY\nRelative density (RD), also called specific gravity, is the ratio of the density of a substance to the density of water at the same temperature:\nRD = density of substance / density of water.\nFor ordinary school calculations with water near 4°C, use 1,000 kg/m³ or 1 g/cm³ as the reference density.\nRelative density is a ratio, so it has no unit. If RD is greater than 1, the substance is denser than water; if it is less than 1, it is less dense than water.\n\nDETERMINING DENSITY AND RELATIVE DENSITY OF SOLIDS\n1. For a regular solid, measure mass and dimensions, calculate volume, then calculate density. Divide by the density of water to obtain relative density.\n2. For an irregular solid, measure its mass. Find its volume by water displacement. Calculate density = mass/volume, then relative density = density of solid/density of water.\n3. For a dry granular solid such as sand, a density bottle can be used. Let:\n   m1 = mass of empty dry bottle;\n   m2 = mass of bottle plus dry sample;\n   m3 = mass of bottle plus sample plus water filled to the mark;\n   m4 = mass of bottle filled with water only.\n   Mass of sample = m2 − m1.\n   Mass of water occupying the same volume as the sample = (m4 − m1) − (m3 − m2).\n   RD of sample = (m2 − m1) / [(m4 − m1) − (m3 − m2)].\n   Use a dry bottle and remove trapped air bubbles; fill to the same mark each time.\n\nDETERMINING RELATIVE DENSITY OF A LIQUID USING A DENSITY BOTTLE\nLet:\nm1 = mass of the clean, dry empty bottle;\nm2 = mass of the bottle filled to the mark with water;\nm3 = mass of the same bottle filled to the mark with the test liquid.\nRD of liquid = (m3 − m1)/(m2 − m1).\nThe bottle must be filled to the same mark and measurements should be taken at approximately the same temperature.\n\nHYDROMETER\nA hydrometer is an instrument used to measure the relative density of liquids. It floats in the liquid. In a denser liquid it needs to displace less liquid to balance its weight, so it floats higher; in a less dense liquid it sinks further. Read the scale at the liquid surface as instructed for the particular instrument.\n\nWorked example 2: relative density of a liquid\nAn empty density bottle has a mass of 15.0 g. Filled with water it has a mass of 39.0 g. Filled with a test liquid it has a mass of 43.8 g.\nMass of water = 39.0 − 15.0 = 24.0 g.\nMass of test liquid = 43.8 − 15.0 = 28.8 g.\nRD = 28.8/24.0 = 1.20. The liquid is 1.20 times as dense as water at the reference temperature.\n\nWorked example 3: relative density of a granular solid\nFor a dry sample, m1 = 20 g, m2 = 50 g, m3 = 80 g and m4 = 70 g.\nMass of sample = 50 − 20 = 30 g.\nMass of equal volume of water = (70 − 20) − (80 − 50) = 50 − 30 = 20 g.\nRD = 30/20 = 1.5.\n\nPRACTICAL CARE\nUse a clean, dry balance pan and suitable measuring equipment. Read a measuring cylinder at eye level at the bottom of the meniscus for a clear liquid. Do not use hot liquids in ordinary glassware. Handle glass density bottles carefully, wipe spills promptly, and keep the outside of the bottle dry before weighing.",
+      "body_sha256": "7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799",
+      "practice": [
+        {
+          "id": "PHYS-T1-W06-Q01",
+          "question": "Define density, write its formula and state its SI unit.",
+          "answer": "Density is mass per unit volume: ρ = m/V. Its SI unit is kg/m³.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Defines density as mass per unit volume.",
+              "marks": 1
+            },
+            {
+              "criterion": "States ρ = m/V.",
+              "marks": 1
+            },
+            {
+              "criterion": "States kg/m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W06-Q02",
+          "question": "A rectangular block has dimensions 10 cm × 8 cm × 2 cm and mass 400 g. Calculate its volume and density in g/cm³ and kg/m³.",
+          "answer": "V = 10 × 8 × 2 = 160 cm³. Density = 400/160 = 2.5 g/cm³ = 2,500 kg/m³.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates volume as 160 cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses density = mass/volume.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 2.5 g/cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Converts to 2,500 kg/m³.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W06-Q03",
+          "question": "An irregular solid has mass 120 g. The water level in a measuring cylinder rises from 50 cm³ to 90 cm³ when the solid is fully immersed. Calculate its volume, density and relative density (take water density as 1 g/cm³).",
+          "answer": "Volume = 90 − 50 = 40 cm³. Density = 120/40 = 3 g/cm³. RD = 3/1 = 3.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Finds displaced volume as 40 cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses density = mass/volume.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates density as 3 g/cm³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates relative density as 3.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W06-Q04",
+          "question": "A clean, empty density bottle has mass 15.0 g. Filled with water it has mass 39.0 g. Filled with a test liquid it has mass 43.8 g. Calculate the relative density of the liquid.",
+          "answer": "Mass of water = 39.0 − 15.0 = 24.0 g. Mass of liquid = 43.8 − 15.0 = 28.8 g. RD = 28.8/24.0 = 1.20.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds mass of water as 24.0 g.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds mass of liquid as 28.8 g.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates RD = 1.20.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W06-Q05",
+          "question": "For a dry granular sample, m1 = 20 g, m2 = 50 g, m3 = 80 g and m4 = 70 g, using the density-bottle method. Calculate its relative density.",
+          "answer": "Mass of sample = m2 − m1 = 30 g. Mass of equal volume of water = (m4 − m1) − (m3 − m2) = 50 − 30 = 20 g. RD = 30/20 = 1.5.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates sample mass as 30 g.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses the correct equal-volume water expression.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates equal-volume water mass as 20 g.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates RD = 1.5.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W06-Q06",
+          "question": "What is a hydrometer used for? Explain how its position changes between a denser liquid and a less dense liquid.",
+          "answer": "A hydrometer measures the relative density of liquids. It floats higher in a denser liquid and sinks further in a less dense liquid.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that a hydrometer measures relative density of liquids.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it floats higher in denser liquid and sinks further in less dense liquid.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W06-Q07",
+          "question": "Convert 0.8 g/cm³ to kg/m³.",
+          "answer": "1 g/cm³ = 1,000 kg/m³. Therefore 0.8 g/cm³ = 800 kg/m³.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States the correct conversion factor 1 g/cm³ = 1,000 kg/m³.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 800 kg/m³.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 1st Term Lesson Note (public PDF copy)",
+          "locator": "Public close-equivalent PDF; Week Six, “Density & Relative Density”, lines 612–760: density, determination of density, relative density, density bottle methods for solids/liquids, hydrometer, examples, classwork and assignments. The PDF is not verified byte-identical to the archive member.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-1st-Term-Lesson-Note-pdf.pdf",
+          "rights": "No text, diagrams, worked examples or questions are copied. This lesson is independently authored; the PDF is cited as a close-equivalent topic reference only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Schoolgist, “SS1 Physics 1st Term Lesson Note” (public PDF copy), accessed 2026-11-08; not asserted identical to the archive member."
+        },
+        {
+          "title": "Nigerian Educational Research and Development Council — Senior Secondary Curriculum Portal",
+          "locator": "NERDC SSS1 Science subject offering includes Physics; used as national curriculum context, not as a source of copied density lesson text.",
+          "url": "https://lmis.nerdcportals.com.ng/s1_science",
+          "rights": "No curriculum text or media copied; portal cited only for official subject/curriculum context.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Nigerian Educational Research and Development Council (NERDC), SSS1 Science curriculum portal, accessed 2026-11-08."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -2353,6 +2540,144 @@
           "explanation": "The public PDF's Week Six density section and the repository's separate parsed Week Seven density row may reflect different source versions or duplicated content. The original archive member must be inspected before asserting the exact split or merging/splitting rows."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-DENSITY-DEFINITION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Density as mass per unit volume; formula, symbol and SI unit.",
+      "objective_locator": "1st Term scheme topic Density & Relative Density; repository parsed row 5 label WEEK SEVEN, title “DENSITY & RELATIVE DENSITY”, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W06-DENSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY, body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations, methods or assessments."
+        },
+        {
+          "locator": "Public close-equivalent PDF, Week Six, “Density & Relative Density”, lines 612–760.",
+          "explanation": "This public copy corroborates the topic sequence and the use of density bottles/hydrometer, but is not verified byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-DENSITY-DETERMINATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Determine density from measured mass and volume of regular or irregular solids.",
+      "objective_locator": "1st Term scheme topic Density & Relative Density; repository parsed row 5 label WEEK SEVEN, title “DENSITY & RELATIVE DENSITY”, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W06-DENSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY, body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations, methods or assessments."
+        },
+        {
+          "locator": "Public close-equivalent PDF, Week Six, “Density & Relative Density”, lines 612–760.",
+          "explanation": "This public copy corroborates the topic sequence and the use of density bottles/hydrometer, but is not verified byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-RELATIVE-DENSITY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Relative density as a dimensionless ratio to the density of water.",
+      "objective_locator": "1st Term scheme topic Density & Relative Density; repository parsed row 5 label WEEK SEVEN, title “DENSITY & RELATIVE DENSITY”, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W06-DENSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY, body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations, methods or assessments."
+        },
+        {
+          "locator": "Public close-equivalent PDF, Week Six, “Density & Relative Density”, lines 612–760.",
+          "explanation": "This public copy corroborates the topic sequence and the use of density bottles/hydrometer, but is not verified byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-RD-SOLIDS-BOTTLE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Determine relative density of a granular solid using the density-bottle method.",
+      "objective_locator": "1st Term scheme topic Density & Relative Density; repository parsed row 5 label WEEK SEVEN, title “DENSITY & RELATIVE DENSITY”, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W06-DENSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY, body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations, methods or assessments."
+        },
+        {
+          "locator": "Public close-equivalent PDF, Week Six, “Density & Relative Density”, lines 612–760.",
+          "explanation": "This public copy corroborates the topic sequence and the use of density bottles/hydrometer, but is not verified byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-RD-LIQUIDS-BOTTLE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Determine relative density of a liquid using a density bottle.",
+      "objective_locator": "1st Term scheme topic Density & Relative Density; repository parsed row 5 label WEEK SEVEN, title “DENSITY & RELATIVE DENSITY”, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W06-DENSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY, body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations, methods or assessments."
+        },
+        {
+          "locator": "Public close-equivalent PDF, Week Six, “Density & Relative Density”, lines 612–760.",
+          "explanation": "This public copy corroborates the topic sequence and the use of density bottles/hydrometer, but is not verified byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-HYDROMETER",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Use a hydrometer to measure/compare relative density of liquids.",
+      "objective_locator": "1st Term scheme topic Density & Relative Density; repository parsed row 5 label WEEK SEVEN, title “DENSITY & RELATIVE DENSITY”, 4,116 characters, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W06-DENSITY"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W06-DENSITY, body SHA-256 7dfffa79e04c62a6d0c1b8be46a7bbe43f78de5c348f4d1a96580973b141e799; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations, methods or assessments."
+        },
+        {
+          "locator": "Public close-equivalent PDF, Week Six, “Density & Relative Density”, lines 612–760.",
+          "explanation": "This public copy corroborates the topic sequence and the use of density bottles/hydrometer, but is not verified byte-identical to the archive member."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W06-SOURCE-ROW-RECONCILIATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Original source-row label/version reconciliation for Density & Relative Density.",
+      "objective_locator": "Repository parsed row 5, label WEEK SEVEN; public close-equivalent PDF labels the corresponding density section WEEK SIX at lines 612–620.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Repository queue PHYS-WK-T1-W06: parsed row 5, WEEK SEVEN, title DENSITY & RELATIVE DENSITY, body SHA-256 bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242.",
+          "explanation": "The project archive's registered row identity is retained as WEEK SEVEN."
+        },
+        {
+          "locator": "Public close-equivalent PDF lines 612–620: WEEK SIX, DENSITY & RELATIVE DENSITY.",
+          "explanation": "The public copy uses a different week label. This version discrepancy is not resolved by the supplement and requires original-member inspection."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2736,6 +3061,30 @@
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
         "PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W06-ORIGINAL-ROW-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The repository registers parsed row 5 as WEEK SEVEN, Density & Relative Density. A public close-equivalent PDF contains the same topic under WEEK SIX at lines 612–620. The PDF is not verified byte-identical to the archive member; the original label and exact row content must remain as registered until the DOC member is inspected.",
+      "required_action": "Inspect original parsed row 5 and the full source DOC; confirm exact week label, content, figures and its relationship to the combined WEEK FIVE AND SIX row. Do not change the source row label or merge/split content based on the public PDF alone.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
+        "PHYS-WK-T1-W06",
+        "PHYS-WK-T1-W05-W06",
+        "PHYS-FACT-T1-W06-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W06-ORIGINAL-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "The original archive row's exact classwork, assignment questions and any supplied answers/marking criteria are not accessible in this execution session. The new supplement contains its own keyed practice but does not verify the original assessment.",
+      "required_action": "During PHYS-FACT-T1-W06-SOURCE-RECONCILIATION, inspect original exercises and answer keys, record what the source provides/omits, and append a bounded answer-key supplement only for confirmed gaps.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
+        "PHYS-FACT-T1-W06-SOURCE-RECONCILIATION"
       ],
       "blocks_delivery": false
     }
