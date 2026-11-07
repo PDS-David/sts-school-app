@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 152,
+    "PENDING": 151,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 85,
+    "IMPLEMENTED_TESTING_DEFERRED": 86,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 152,
+    "PENDING": 151,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 85,
+    "IMPLEMENTED_TESTING_DEFERRED": 86,
     "BLOCKED": 5
   },
   "items": [
@@ -3014,8 +3014,8 @@
         "ENG-SRC-T2",
         "ENG-LES-READING-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-011] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e body_sha256=210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e replacement_id=SUP-SS1-ENGLISH-READING-T2; paired coverage entry ENGLISH-BODY-049 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Audited existing same-term binding SS1-02-english-COR-011: source SS1-SRC-d8bd8f85fd73 / ENGLISH-BODY-049 / BODY:210f21c15055524209d661687f45a2ff22feb6657afa6e3964b70ff3013fab6e (2nd Term member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966; locator COMPREHENSION (THE QUEST FOR HEALTH), page 68-69). Existing replacement SUP-SS1-ENGLISH-READING-T2 is same-term and explicitly an original equivalent passage, not a reproduction of the missing source passage or health assertions. It teaches fact retrieval, supported inference, skimming/scanning and summary without invented facts; three keyed exercises total 6 marks with matching 2+2+2 marking. Objective audit: ENGLISH-T2-W02-RD02 reading for details/inference = IMPLEMENTED_EQUIVALENT. TH01 home-and-family theme = UNRESOLVED; RD01 missing original passage = UNRESOLVED; AN01/AN02 source answer statements = UNRESOLVED (no passage/questions, and unsafe oversimplified assertions not carried forward); VO01 vocabulary list = PARTIAL; SM01 page-70 summary conversion = PARTIAL; LK01 linkers/reporting verbs = UNRESOLVED; AS01 six-sentence summary assignment = PARTIAL. Precise blocking open items already exist: ENGLISH-T2-W02-EXTERNAL-MATERIALS, THEME-GAP, VOCABULARY-GAP, SUMMARY-GAP and LINKERS-GAP; ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION keeps ENGLISH-BODY-049 PARTIAL and COR-011 inactive until all source objectives are resolved. Source and correction remain unchanged; no unsupported source content or health facts added. Implementation audit recorded; runtime/compiler tests deferred.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7703,7 +7703,6 @@
     "ENG-COR-006",
     "ENG-COR-007",
     "ENG-COR-008",
-    "ENG-COR-011",
     "ENG-COR-012",
     "ENG-COR-013",
     "ENG-COR-014",
