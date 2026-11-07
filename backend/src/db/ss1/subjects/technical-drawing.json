@@ -80,6 +80,18 @@
         "locator": "TD-SCH-W03: scheme row 2 (parsed row 2) in mammoth 1.12.2 extractRawText() line 15 (offset 217), 15 characters, SHA-256 889970c0e7531c64896709e01c2ea08cfd39b1061bb2d7d56a18fb9dee3723df (equals parsed_rows.json row 2). The anchor occurs exactly once in the unmodified extracted text and only inside parsed row 2. The shorter string 'Polygons' occurs 5 times (including the WEEK THREE teaching row), so the full 15-character row body is required for a unique anchor.",
         "explanation": "Scheme-table week 3 line (\"WEEK 3\" + colon, no space, + \"Polygons\"); scheme-only text that names the topic and carries no teaching body. The compiler classifies parsed row 2 as SCHEME_ONLY; its body stays in the plan and nothing is discarded. The topic is taught in parsed row 13, WEEK THREE (SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf). The week 3 scheme line has no space after the colon, unlike week 2's nine-space gap; recorded as found."
       }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R006",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 4:        Plain scales",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-SCH-W04: scheme-table parsed row 3 (WEEK 4), line 17 of the source text extraction; 27-character row body, SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab. The exact anchor occurs once in the supplied original DOCX text (word/document.xml paragraph containing the Week 4 scheme entry) and equals the parsed-row body hash.",
+        "explanation": "This is the single Week 4 scheme-table entry, whose objective is stated verbatim as “Plain scales”. It names the week's topic but contains no teaching body. The full 27-character row is used as the anchor because it is the hash-accounted row text; classification is SCHEME_ONLY and does not discard or alter the source row."
+      }
     }
   ],
   "lessons": [],
@@ -175,6 +187,26 @@
         {
           "locator": "construction of polygons lines 771-1113 (5d953fe6400d9faaceddf9798228e263ac13b93a260ec90670f2152a37c037ba); general methods of constructing polygons lines 1115-1249 (95c6aad99574812929f81bbea03181a3f4fa3cbe434b62fb61ce2c758b9fda36); second evaluation lines 1251-1293 (e092a11d7d7997a0d654ca51cd00a96dc1fe810c30d3876d6180ee561261ceed); general evaluation / revisional questions lines 1295-1307 (35c98c91f9d061e32659106444f452c23fb90397122e7b9dd99656d54310e197); reading assignment lines 1309-1313 (51e34aa56fec8f2190b29370260a36491fe8e7f8c938401ad4bda765377ca9e2); weekend assignment lines 1315-1472 (ca30eae16051c529bc4992d035669c0b3f1155fcdb0d4376a9b9341fecfbaa44)",
           "explanation": "The row teaches worked constructions of regular polygons (pentagon, hexagon, octagon and others by method), general methods and the two-triangle method on a given base, then evaluation, general revision, a reading assignment citing \"Technical drawing by JN Green. Pages 28-33,38,63.\" (line 1311) and a weekend assignment of objective questions (from line 1319) and two theory questions (from line 1431). Figures are load-bearing (38 w:drawing and 21 w:pict anchors inside the WEEK THREE paragraphs; no OLE object; 2 oMath) and the text refers to them as \"above\" and \"below\"; they are not in the text extract and are routed to TD-VIS-W03, not invented here. Source wording is retained: degree values are flattened (for example '3600' at line 807 and '450' at line 963), 27 superscript runs occur in the row, and line 959 reads 'Determine the size of the exterior angle thus: .' where an equation object was not extracted. Not corrected here. Construction methods are recorded as the row states them and were not checked against the cited textbook, which is not supplied."
+        }
+      ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W04",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 4 scheme objective, verbatim: “Plain scales” (teaching-row title “Plain scales and their uses”): meaning and use of plain scales, representative fraction, and construction/readings of plain scales.",
+      "objective_locator": "Scheme-table parsed row 3 (WEEK 4), line 17 of the source text extraction; parsed_rows.json entry i=3, len=27, body SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab. Teaching row parsed row 14, WEEK FOUR, title “Plain scales and their uses”, body SHA-256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd.",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme row 3: exact 27-character text “WEEK 4:        Plain scales”; parsed_rows.json confirms len=27 and body SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab. The exact anchor was checked against the supplied original DOCX and occurs once.",
+          "explanation": "The scheme entry names “Plain scales” only; it is a scheme-table row, not a teaching body. Rule SS1-SRC-af4868d2c026-R006 classifies this row SCHEME_ONLY while retaining it."
+        },
+        {
+          "locator": "Teaching row 14 (WEEK FOUR), title “Plain scales and their uses”; parsed_rows.json body ID SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd and body SHA-256 d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd; source document pages 19–22 (week four lesson and its evaluation/weekend assignments).",
+          "explanation": "The teaching row directly covers the scheme objective. It defines a scale and representative fraction (drawn size divided by represented size), distinguishes common scale ratios, explains plain scales as using two units, and gives step-by-step constructions for several scale ratios and ranges. It includes evaluation questions, worked scale readings and assignment tasks. This is objective-level source teaching, so the existing original lesson identity is reused; no replacement lesson or supplement is created."
         }
       ]
     }
