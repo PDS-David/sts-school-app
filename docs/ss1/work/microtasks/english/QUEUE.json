@@ -80,16 +80,17 @@
     "- ENG-FACT-CROSS-TERM-IDENTICAL-BODIES (2026-11-07): the five shared lesson bodies (PHRASES-CLAUSES T1/T3, PHONETICS T1/T3, AFFIXES T2/T3, MEANING T2/T3, READING T1/T2/T3) compared with each term's objective entries; the mapping is recorded on the item. Shared text is intended as a generic base per term and not a defect; every demonstrated uncovered objective already has a pending ENG-LES or ENG-FACT follow-up, so no new lesson item was added. No english.json change.",
     "2026-11-07 owner decision: SUP-SS1-ENGLISH-READING-T1 accepted as a labelled equivalent for ENGLISH-T1-W04-SK01; bound additively. Approval PENDING; verification DEFERRED.",
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run.",
-    "2026-11-07 ENG-COR-016/017/021: completed correction-scope audits from the exact existing source-row IDs, replacement lessons and objective-level coverage evidence. Recorded per-objective statuses and retained precise existing blockers; no source text, lesson body, correction identity or coverage status changed. ENGLISH-BODY-057, ENGLISH-BODY-069 and ENGLISH-BODY-076 remain PARTIAL; their corrections remain inactive under ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION. Queue tasks marked IMPLEMENTED_TESTING_DEFERRED; approval remains PENDING and verification/runtime/compiler tests remain DEFERRED."
+    "2026-11-07 ENG-COR-016/017/021: completed correction-scope audits from the exact existing source-row IDs, replacement lessons and objective-level coverage evidence. Recorded per-objective statuses and retained precise existing blockers; no source text, lesson body, correction identity or coverage status changed. ENGLISH-BODY-057, ENGLISH-BODY-069 and ENGLISH-BODY-076 remain PARTIAL; their corrections remain inactive under ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION. Queue tasks marked IMPLEMENTED_TESTING_DEFERRED; approval remains PENDING and verification/runtime/compiler tests remain DEFERRED.",
+    "2026-11-07 ENG-COR-023/024 and owner gates 074-078: verified COR-023 was already complete and retained its evidence. Completed COR-024 by making the reject/emit distinction explicit in the T3 meaning lesson, updating its UTF-8 body hash and keyed Q3, and recording the five objective statuses; ENGLISH-BODY-089 remains PARTIAL and the correction inactive because other synonym objectives and prescribed textbook assignments remain incomplete. Added precise owner/resource request evidence for prescribed passages, authorised audio model, per-lesson content approval and T1 W07 textbook assignments. The live package has 46 lessons (not 16 as stated in the older approval task); all remain PENDING with null approval references. No owner approvals, textbook extracts, rights statements or audio assets were invented; all five gate tasks remain BLOCKED."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 99,
-    "PENDING": 137,
+    "IMPLEMENTED_TESTING_DEFERRED": 100,
+    "PENDING": 136,
     "BLOCKED": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 96,
-    "PENDING": 140,
+    "IMPLEMENTED_TESTING_DEFERRED": 100,
+    "PENDING": 136,
     "BLOCKED": 6
   },
   "items": [
@@ -3442,8 +3443,8 @@
         "ENG-SRC-T3",
         "ENG-LES-MEANING-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-024] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 body_sha256=f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 replacement_id=SUP-SS1-ENGLISH-MEANING-T3; paired coverage entry ENGLISH-BODY-089 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed the exact COR-024 correction review. Source row ENGLISH-BODY-089 / SS1-SRC-50fa9b1eb2fd:BODY:f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98 is bound to same-term SUP-SS1-ENGLISH-MEANING-T3. Replacement now explicitly distinguishes reject (refuse/decline/dismiss) from emit (give off/send out); keyed Q3 tests the distinction. Objective map: SY01=PARTIAL; SY02=PARTIAL; SY03=PARTIAL; SY04=UNRESOLVED; SY05=UNRESOLVED. Exact blockers retained: ENGLISH-T3-W11-SYNONYM-SCOPE, ENGLISH-T3-W11-EXTERNAL-MATERIALS, ENGLISH-T3-W11-WEEKEND-ASSIGNMENT, ENGLISH-T3-W11-COR-024-SCOPE. ENGLISH-BODY-089 remains PARTIAL and COR-024 remains inactive; no original source body or IDs changed. Approval PENDING; verification/runtime/compiler tests DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -3640,7 +3641,7 @@
         "ENG-LES-READING-T3"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json open_items[id=ENGLISH-PRESCRIBED-PASSAGES] kind=CONTENT blocks_delivery=true; affected: SUP-SS1-ENGLISH-READING-T1/-T2/-T3. Blocked on owner-supplied material or an owner decision; neither is in the repository.",
+      "implementation_reference": "BLOCKED — owner/material decision outstanding. Request: for each T1/T2/T3 reading lesson, supply the exact authorised prescribed extract with title, author, edition/year, page range and permission basis, OR explicitly accept the labelled original activity as an equivalent for its stated objective. Package open item ENGLISH-PRESCRIBED-PASSAGES updated with this precise choice; no approval or extract supplied.",
       "completion_condition": "Owner supplies authorised extracts with edition, or records acceptance of the equivalent activity; the open item is updated accordingly.",
       "required_attachments": []
     },
@@ -3664,7 +3665,7 @@
         "ENG-LES-STRESS-T3"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "No authorised audio supplied in the reviewed package. Acquisition/permission is unresolved; oral observation stays deferred and does not block recording acquisition evidence.",
+      "implementation_reference": "BLOCKED — no authorised audio model or rights statement is registered. Request: provide an accessible audio/mpeg or audio/wav recording, creator/provider, licence or written permission, accent/model and a mapping to the phonetics/stress objectives. New permission blocker ENGLISH-AUTHORISED-AUDIO-MODEL records the request. Oral observation remains a separate DEFERRED verification under ENGLISH-ORAL-OBSERVATION.",
       "completion_condition": "A concrete audio file or accessible authorised recording and permission basis are documented for ENG-ASSET-AUDIO-MODEL. This task does not require asset installation or oral observation. Keep the package's oral-observation open item open until later verification.",
       "required_attachments": []
     },
@@ -3687,7 +3688,7 @@
         "ENG-FACT-REPLACEMENT-SCOPE"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json package_status=PENDING; every lesson state: content_approval=PENDING, approval_reference=null, verification=DEFERRED. Approval comes only from the owner; none is recorded.",
+      "implementation_reference": "BLOCKED — owner approval outstanding. Live package contains 46 lessons, not the 16 in the earlier task description; all 46 currently have content_approval=PENDING and approval_reference=null. Request: teacher/owner to review each lesson and provide an individual auditable approval reference, or a specific revision request. Open item ENGLISH-CONTENT-APPROVAL records the full lesson ID set. No agent-generated approval.",
       "completion_condition": "A real approval reference is supplied by the owner for each lesson; it must not be written by an agent.",
       "required_attachments": []
     },
@@ -3820,7 +3821,7 @@
         "ENG-FACT-ORAL-AUDIO"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "No English assets exist: backend/src/db/ss1/subjects/english.json assets=[]; backend/src/db/ss1/assets/english/ is absent on master. Nothing is available to register.",
+      "implementation_reference": "BLOCKED — no supplied audio file/rights evidence and no registered English asset directory on master. Depends on ENG-FACT-ORAL-AUDIO. Request: owner to supply the actual authorised audio/mpeg or audio/wav bytes plus creator, licence/permission, accent/model and supported lesson objectives; only then add the asset with exact SHA256, byte count, alt text, provenance and lesson_id binding. No placeholder asset created.",
       "completion_condition": "Owner supplies audio with a rights statement; the asset is added with exact sha256, bytes, alt text and a lesson_id binding, per the contract.",
       "required_attachments": []
     },
@@ -4968,7 +4969,7 @@
         "ENG-WK-T1-W07"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Raised by ENG-WK-T1-W07 on 2026-11-07; not implemented.",
+      "implementation_reference": "BLOCKED — four Week 7 textbook objectives remain UNRESOLVED. Request: (1) Countdown by Evans p.221; (2) Standard Speech Book 10 pp.1–10; (3) Countdown by Evans pp.5–6; (4) Countdown questions 41–50 pp.275–276. For each, owner must supply exact edition and authorised pages/permission, or explicitly accept a labelled original equivalent. Open item ENGLISH-T1-W07-BOOKS-GAP records the per-objective request; no pages or approval invented.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": []
     },
@@ -7705,7 +7706,6 @@
     "ENG-COR-018",
     "ENG-COR-019",
     "ENG-COR-020",
-    "ENG-COR-024",
     "ENG-FACT-PROVENANCE-REVIEW",
     "ENG-FACT-VISUAL-DISPOSITION-T1",
     "ENG-FACT-VISUAL-DISPOSITION-T2",
