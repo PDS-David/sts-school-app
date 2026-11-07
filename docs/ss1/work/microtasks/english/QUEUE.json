@@ -83,7 +83,8 @@
     "2026-11-07 ENG-COR-016/017/021: completed correction-scope audits from the exact existing source-row IDs, replacement lessons and objective-level coverage evidence. Recorded per-objective statuses and retained precise existing blockers; no source text, lesson body, correction identity or coverage status changed. ENGLISH-BODY-057, ENGLISH-BODY-069 and ENGLISH-BODY-076 remain PARTIAL; their corrections remain inactive under ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION. Queue tasks marked IMPLEMENTED_TESTING_DEFERRED; approval remains PENDING and verification/runtime/compiler tests remain DEFERRED.",
     "2026-11-07 ENG-COR-023/024 and owner gates 074-078: verified COR-023 was already complete and retained its evidence. Completed COR-024 by making the reject/emit distinction explicit in the T3 meaning lesson, updating its UTF-8 body hash and keyed Q3, and recording the five objective statuses; ENGLISH-BODY-089 remains PARTIAL and the correction inactive because other synonym objectives and prescribed textbook assignments remain incomplete. Added precise owner/resource request evidence for prescribed passages, authorised audio model, per-lesson content approval and T1 W07 textbook assignments. The live package has 46 lessons (not 16 as stated in the older approval task); all remain PENDING with null approval references. No owner approvals, textbook extracts, rights statements or audio assets were invented; all five gate tasks remain BLOCKED.",
     "2026-11-07 final English test-draft checkpoint: drafted schema/terms, lesson hash/marking, no-fabricated-state, rule-guard and regression assertions in tests/ss1/english.package.test.mts. No tests were run. ENG-TEST-CORRECTION-IDENTITY assertion is present but its queue item remains PENDING because ENG-COR-001–008 and ENG-COR-018–020 are still PENDING. All content approval remains PENDING and verification remains DEFERRED.",
-    "2026-11-07 coordination repair: renamed only the Second-Term Week 2 external-materials item to ENG-FACT-T2-W02-EXTERNAL-MATERIALS. First-Term ID and prompt unchanged. Removed a literal trailing backslash-n that made the JSON invalid; recomputed kind counts and status_counts separately. All agent implementation statuses retained."
+    "2026-11-07 coordination repair: renamed only the Second-Term Week 2 external-materials item to ENG-FACT-T2-W02-EXTERNAL-MATERIALS. First-Term ID and prompt unchanged. Removed a literal trailing backslash-n that made the JSON invalid; recomputed kind counts and status_counts separately. All agent implementation statuses retained.",
+    "2026-11-07: audited all 24 English delivery-correction identities. Every record binds an existing source and exact source/body hash to one existing replacement in the same term; all 24 source targets are unique. The 11 previously pending correction queue records (COR-001–008, COR-018–020) were recorded IMPLEMENTED_TESTING_DEFERRED. This is binding/identity completion only: their original body-level/objective-level coverage remains PARTIAL/UNRESOLVED where recorded, their corrections are not activated, and the linked open items remain delivery blockers. ENG-TEST-CORRECTION-IDENTITY assertion is drafted and read-only reconciled; test remains NOT RUN."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -93,12 +94,21 @@
     "CORRECTION_BINDING": 24,
     "ASSET": 1,
     "TEST": 6,
-    "OWNER_DECISION": 1
+    "OWNER_DECISION": 1,
+    "IMPLEMENTED_TESTING_DEFERRED": null,
+    "PENDING": null
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 105,
-    "PENDING": 131,
-    "BLOCKED": 6
+    "SOURCE_REGISTRATION": 3,
+    "SOURCE_WEEK_INDEXING": 32,
+    "LESSON": 138,
+    "FACTUAL_DEPENDENCY": 37,
+    "CORRECTION_BINDING": 24,
+    "ASSET": 1,
+    "TEST": 6,
+    "OWNER_DECISION": 1,
+    "IMPLEMENTED_TESTING_DEFERRED": null,
+    "PENDING": null
   },
   "items": [
     {
@@ -2691,8 +2701,8 @@
         "ENG-SRC-T1",
         "ENG-LES-WORD-CLASSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-001] source_lesson_id=SS1-SRC-a00657d42196:BODY:954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 body_sha256=954e005e24ae0c4122b20adb277669f1b2aab0dcb175eaaf211f4c6b63f4ab01 replacement_id=SUP-SS1-ENGLISH-WORD-CLASSES-T1; paired coverage entry ENGLISH-BODY-002 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2724,8 +2734,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHRASES-CLAUSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-002] source_lesson_id=SS1-SRC-a00657d42196:BODY:1c98310e1fd9b30d4be570da432c1a4203dfa79ddbf55acbd0f1a1fb7bcca830 body_sha256=1c98310e1fd9b30d4be570da432c1a4203dfa79ddbf55acbd0f1a1fb7bcca830 replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1; paired coverage entry ENGLISH-BODY-013 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2757,8 +2767,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHRASES-CLAUSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-003] source_lesson_id=SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383 body_sha256=a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383 replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1; paired coverage entry ENGLISH-BODY-023 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2790,8 +2800,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHRASES-CLAUSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-004] source_lesson_id=SS1-SRC-a00657d42196:BODY:802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea body_sha256=802d71b52af5021dfb5d8dc3b124a4d4bd4db94282cde6e6447ae156656857ea replacement_id=SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1; paired coverage entry ENGLISH-BODY-027 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2823,8 +2833,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHONETICS-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-005] source_lesson_id=SS1-SRC-a00657d42196:BODY:fa385ddd2653424798fad83c378ca8b79ce3b40486330f26cf3c657e23928dae body_sha256=fa385ddd2653424798fad83c378ca8b79ce3b40486330f26cf3c657e23928dae replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-009 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2856,8 +2866,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHONETICS-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-006] source_lesson_id=SS1-SRC-a00657d42196:BODY:00bd8299727d438d9c64eecc056d38d2ce81071eb86aade06647b1e8ca863128 body_sha256=00bd8299727d438d9c64eecc056d38d2ce81071eb86aade06647b1e8ca863128 replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-021 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2889,8 +2899,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHONETICS-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-007] source_lesson_id=SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b body_sha256=5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-024 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -2922,8 +2932,8 @@
         "ENG-SRC-T1",
         "ENG-LES-PHONETICS-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-008] source_lesson_id=SS1-SRC-a00657d42196:BODY:6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c body_sha256=6b27a4a63c633cb9c0e732bac2d234714b580bcfff310d997d3cbbe3c9d2532c replacement_id=SUP-SS1-ENGLISH-PHONETICS-T1; paired coverage entry ENGLISH-BODY-037 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -3252,8 +3262,8 @@
         "ENG-SRC-T3",
         "ENG-LES-PHONETICS-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-018] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c body_sha256=69f3f94122c7fa4d2dfadebb3d5649f35ee3ae20b923ebd23d573ab25d0c1a3c replacement_id=SUP-SS1-ENGLISH-PHONETICS-T3; paired coverage entry ENGLISH-BODY-071 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -3285,8 +3295,8 @@
         "ENG-SRC-T3",
         "ENG-LES-AFFIXES-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-019] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a body_sha256=5ffed2ff4b458740b0ce4b1d763a578bb82a290c42cb5071ce5523fcf1a58b3a replacement_id=SUP-SS1-ENGLISH-AFFIXES-T3; paired coverage entry ENGLISH-BODY-072 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -3318,8 +3328,8 @@
         "ENG-SRC-T3",
         "ENG-LES-STRESS-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-020] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 body_sha256=10079600e8e6b486af46e7e32b07f174d5900e2c502d0c4f28d061054e481df2 replacement_id=SUP-SS1-ENGLISH-STRESS-T3; paired coverage entry ENGLISH-BODY-073 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified against all 24 delivery_corrections in backend/src/db/ss1/subjects/english.json: exact source ID, source SHA256, original source_lesson_id/body_sha256 binding, existing same-term replacement, and unique correction target all match. The source body and lesson content were not changed. This confirms the correction binding only; objective coverage gaps remain PARTIAL/UNRESOLVED under their existing open items, and no correction is activated for delivery. Approval remains PENDING; verification/testing DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -3933,8 +3943,8 @@
         "ENG-COR-023",
         "ENG-COR-024"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The correction-identity assertion is drafted in tests/ss1/english.package.test.mts, but this queue task remains PENDING: dependencies ENG-COR-001–008 and ENG-COR-018–020 are still PENDING. Do not mark complete until those correction tasks are implemented and reconciled.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts and statically reconciled against the live package: 24 correction records, 24 unique source/body targets, source SHA matches, exact source_lesson_id/body_sha256 binding, and same-term replacement for every record. All 24 bindings pass this read-only audit. Test file was not executed; owner-authorised test execution remains deferred.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -7702,17 +7712,6 @@
     "ENG-LES-T3-W05-SOUND-CONTRASTS",
     "ENG-LES-T3-W05-NOMINALIZATION",
     "ENG-FACT-T3-W05-EXTERNAL-MATERIALS",
-    "ENG-COR-001",
-    "ENG-COR-002",
-    "ENG-COR-003",
-    "ENG-COR-004",
-    "ENG-COR-005",
-    "ENG-COR-006",
-    "ENG-COR-007",
-    "ENG-COR-008",
-    "ENG-COR-018",
-    "ENG-COR-019",
-    "ENG-COR-020",
     "ENG-FACT-PROVENANCE-REVIEW",
     "ENG-FACT-VISUAL-DISPOSITION-T1",
     "ENG-FACT-VISUAL-DISPOSITION-T2",
