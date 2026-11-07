@@ -23,15 +23,16 @@
     "Several items write the same package file. Workers must start from current master, change only their own entries and rebase; PENDING means unclaimed.",
     "No new lesson-writing task is created for an unproven gap. The only lesson tasks are the two BLOCKED T1 logarithm lessons, whose uncovered objectives and blocker (OI-MATH-003) are named in the package; indexing workers append others only for objectives they identify.",
     "MATH-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. mathematics.json now has 10 source_rules (added RULE-MATH-T1-TITLE and RULE-MATH-T1-REFERENCES; re-anchored RULE-MATH-T1-SCHEME-EXAM) and 36 coverage entries (added COV-MATH-T1-TITLE and COV-MATH-T1-REFERENCES; updated COV-MATH-T1-EXAM). Note 1 is the queue-generation snapshot. Per-block hashes and the auto-numbering finding are in docs/ss1/work/microtasks/mathematics/MATH-PRE-T1.md. Nothing was run; testing remains deferred.",
-    "MATH-LES-T1-W01-VOCABULARY (2026-11-06): Week 1 vocabulary closed. Body section 4 of SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS defines simplify and evaluate in the school’s own wording (lines 105 and 107) and section 1 now carries line 103 with its two mixed-number counter-examples restored from the OMML, so COV-MATH-T1-W01-OBJ-4 is IMPLEMENTED_EQUIVALENT and the lesson is bound to it. New body_sha256 2ce49d2c33afaae0c6b4d71d219c3f73e024e194bac51c4ee3926bbccf205dec (the earlier lesson item MATH-LES-T1-W01-DIVISIBILITY-INTEGERS still records 03206bf6b426ad0c316aa1e3ad653bcbd296e56750eeec7f7b81d0915a5d2ef2, the digest as of its own run - a point-in-time reference, not an error). OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed to the eight uncarried ASSESSMENT items and still blocks; MATH-LES-T1-W01-ASSESSMENT-PRACTICE is now dependency-satisfied, so it replaces this item in runnable_now. COV-MATH-T1-R00’s bounding entry was dated for the same reason. Nothing was approved, verified or run: approval PENDING, verification DEFERRED, Week 1 not complete. next_runnable is unchanged."
+    "MATH-LES-T1-W01-VOCABULARY (2026-11-06): Week 1 vocabulary closed. Body section 4 of SUP-SS1-MATHEMATICS-T1-W01-DIVISIBILITY-INTEGERS defines simplify and evaluate in the school’s own wording (lines 105 and 107) and section 1 now carries line 103 with its two mixed-number counter-examples restored from the OMML, so COV-MATH-T1-W01-OBJ-4 is IMPLEMENTED_EQUIVALENT and the lesson is bound to it. New body_sha256 2ce49d2c33afaae0c6b4d71d219c3f73e024e194bac51c4ee3926bbccf205dec (the earlier lesson item MATH-LES-T1-W01-DIVISIBILITY-INTEGERS still records 03206bf6b426ad0c316aa1e3ad653bcbd296e56750eeec7f7b81d0915a5d2ef2, the digest as of its own run - a point-in-time reference, not an error). OI-MATH-T1-W01-ASSESSMENT-GAPS is narrowed to the eight uncarried ASSESSMENT items and still blocks; MATH-LES-T1-W01-ASSESSMENT-PRACTICE is now dependency-satisfied, so it replaces this item in runnable_now. COV-MATH-T1-R00’s bounding entry was dated for the same reason. Nothing was approved, verified or run: approval PENDING, verification DEFERRED, Week 1 not complete. next_runnable is unchanged.",
+    "MATH-WK-T1-W02 (2026-11-07) indexed Week 2 at objective level: 7 coverage entries (6 PARTIAL, 1 UNRESOLVED, none SUPPORTED), a source answer defect (1011.01 base two printed as 11 3/4, correct 11 1/4), the row-level COV-MATH-T1-R01 note corrected, 3 open items, one lesson item and one correction-binding item appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, lesson, correction, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "FACTUAL_DEPENDENCY": 6,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 10,
-    "CORRECTION_BINDING": 6,
+    "LESSON": 11,
+    "CORRECTION_BINDING": 7,
     "OWNER_DECISION": 3,
     "VISUAL_DISPOSITION": 3,
     "ASSET": 1,
@@ -43,11 +44,11 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
-    "PENDING": 65,
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
+    "PENDING": 66,
     "BLOCKED": 9
   },
-  "total": 97,
+  "total": 99,
   "items": [
     {
       "id": "MATH-SRC-T1",
@@ -388,8 +389,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 1 (source label 'Week 2', title \"NUMBER BASES /BASE NUMBER.\", 3539 characters, body sha256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R01 status PARTIAL: row-level only, not objective-level proof. No replacement lesson or correction exists for this row on master. Equation-aware extraction recovered about 291 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-07 (master a1db006): mathematics.json gained 7 objective-level coverage entries for parsed row 1 (SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e, lines 191-347, SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e): COV-MATH-T1-W02-OBJ-1, -OBJ-2, -OBJ-3 (scheme items [a], [b], [c]) and -VOCAB (source-only vocabulary) PARTIAL, COV-MATH-T1-W02-EX-1 and -EX-3 PARTIAL, COV-MATH-T1-W02-EX-2 UNRESOLVED; none is SUPPORTED because the delivered text drops the last digit and base of every numeral. Row-level COV-MATH-T1-R01 corrected: its earlier note that 1011.01 base two = 11 3/4 was wrong (11 1/4; the source prints 11 3/4). Three open items appended (OI-MATH-T1-W02-FACT-DEFECTS, -NOTATION-LOSS, -ASSESSMENT-GAPS) and OI-MATH-002 narrowed. Existing replacement scope: none exists for row 1; the Week 3 supplement is bound to row 2 and covers no Week 2 exercise. Appended MATH-LES-T1-W02-NUMBER-BASES and MATH-COR-T1-W02-NUMBER-BASES. No lesson, correction, asset or rule was written. Evidence: MATH-WK-T1-W02.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -3124,6 +3125,68 @@
       "status": "BLOCKED",
       "implementation_reference": "Deferred by owner; verification, approval and implementation are separate stages.",
       "completion_condition": "Run only in the later authorised verification stage; nothing is run by this queue."
+    },
+    {
+      "id": "MATH-LES-T1-W02-NUMBER-BASES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "term": "1st Term",
+      "week_or_locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES (replaces parsed row 1, lines 191-347, SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e)",
+      "objective": "Author ONE visibly original supplement lesson, suggested id SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES, that can replace the Week 2 original at delivery. The contract resolves a correction to the whole original row, so it must teach all of: (1) conversion from another base to base ten, including an unknown base written as x; (2) bicimals, including 1011.01 in base two = 11 1/4 (not the source's 11 3/4) and a fractional example in a base other than two; (3) conversion from base ten to another base by repeated division and between two bases through base ten, with complete ladders and the symbols for digits above 9 in bases twelve and sixteen and fifteen; (4) base ten to bicimal conversion with its method and the recurring notation; (5) the vocabulary of the row with a usable definition of base and the digit-not-number hint. Practice must key all 20 source items (assessment 1: 3 numerals; assessment 2: 5 fractions; assessment 3: 4 numerals x 3 bases) with answers recomputed from first principles and marking whose criterion marks sum exactly to each question's marks. The lesson is original teaching with truthful provenance, labelled as a Week 2 supplement; no external text is reused.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/microtasks/mathematics/MATH-WK-T1-W02.md",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/MATHss1.docx",
+          "member_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/mathematics/MATH-LES-T1-W02-NUMBER-BASES.md"
+      ],
+      "depends_on": [
+        "MATH-SRC-T1",
+        "MATH-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Appended by MATH-WK-T1-W02 (2026-11-07, master a1db006). COV-MATH-T1-W02-OBJ-1, -OBJ-2, -OBJ-3, -VOCAB and -EX-1, -EX-3 are PARTIAL, COV-MATH-T1-W02-EX-2 is UNRESOLVED, and OI-MATH-T1-W02-FACT-DEFECTS and OI-MATH-T1-W02-ASSESSMENT-GAPS block delivery. MATH-WK-T1-W02 authors no lesson text, answer or correction.",
+      "completion_condition": "A lesson in mathematics.json teaches the five items listed in the objective, has practice with complete answers and marking that sums exactly for all 20 source items, body_sha256 over the UTF-8 body, provenance and PENDING content approval; every worked value is recomputed; the W02 coverage entries then cite it with evidence and any entry it does not fully cover stays PARTIAL or UNRESOLVED; the FACT item stays open until a teacher confirms the wording; no source byte, schema or shared file is edited."
+    },
+    {
+      "id": "MATH-COR-T1-W02-NUMBER-BASES",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "term": "1st Term",
+      "week_or_locator": "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
+      "objective": "After MATH-LES-T1-W02-NUMBER-BASES exists, add delivery_corrections entry CORR-MATHEMATICS-T1-W02-NUMBER-BASES binding the source row (parsed row 1) to SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES with source_id, source_sha256, source_lesson_id and body_sha256 as in this item's locator, and review whether the replacement preserves every instructional objective of the row it displaces.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/contracts/CONTRACT.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json"
+      ],
+      "depends_on": [
+        "MATH-LES-T1-W02-NUMBER-BASES",
+        "MATH-SRC-T1",
+        "MATH-WK-T1-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not bound. No delivery_corrections entry exists for parsed row 1 on master; the only base-number supplement (SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS) is bound to parsed row 2 and covers none of the Week 2 exercises.",
+      "completion_condition": "The binding exists, resolves to one supplement of the same subject and term, and the W02 coverage entries and OI-MATH-001 affected_ids still resolve; no source byte is edited."
     }
   ],
   "review": {
@@ -3153,7 +3216,6 @@
   ],
   "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W02",
     "MATH-WK-T1-W03",
     "MATH-WK-T1-W04",
     "MATH-WK-T1-W05",
@@ -3209,6 +3271,7 @@
     "MATH-PORT-D2-T3-L015",
     "MATH-PORT-D2-T3-L016",
     "MATH-PORT-D2-RULES",
-    "MATH-CMP-D4-NOTES"
+    "MATH-CMP-D4-NOTES",
+    "MATH-LES-T1-W02-NUMBER-BASES"
   ]
 }
