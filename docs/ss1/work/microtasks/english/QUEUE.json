@@ -82,13 +82,13 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 95,
-    "PENDING": 141,
+    "IMPLEMENTED_TESTING_DEFERRED": 96,
+    "PENDING": 140,
     "BLOCKED": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 95,
-    "PENDING": 141,
+    "IMPLEMENTED_TESTING_DEFERRED": 96,
+    "PENDING": 140,
     "BLOCKED": 6
   },
   "items": [
@@ -3408,8 +3408,8 @@
         "ENG-SRC-T3",
         "ENG-LES-PHONETICS-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-023] source_lesson_id=SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 body_sha256=f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 replacement_id=SUP-SS1-ENGLISH-PHONETICS-T3; paired coverage entry ENGLISH-BODY-085 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed exact binding SS1-02-english-COR-023: source row SS1-SRC-50fa9b1eb2fd:BODY:f3574692730b07a20f19375588a1c64df1603487eab167e6b825c7c62bcce206 (3rd Term; source member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f) maps to same-term replacement SUP-SS1-ENGLISH-PHONETICS-T3. Corrected the replacement body to explicitly classify chief /tʃiːf/ and thief /θiːf/ as /iː/, not /ɪ/, and expanded keyed practice Q2 to assess that classification (3 marks; marking criteria total 3). Updated lesson body SHA256 to 20f468e352001578ad9ee4f3030dc676dfd695e9126dc330b90d007f59eadd07. Objective-by-objective evidence: ENGLISH-T3-W10-PH01=PARTIAL (full /ɪ/ spelling inventory not validated/reproduced; chief/thief corrected); PH02=PARTIAL (full /iː/ inventory not covered); PH03=PARTIAL (ship/sheep taught but all eleven source pairs not covered); PH04=PARTIAL (five-word evaluation not fully keyed/marked or orally checked); PH05=UNRESOLVED (Standard Speech 10 Book / Diction in English Course p.11 not supplied). Existing precise blockers: ENGLISH-T3-W10-PHONETICS-SCOPE, ENGLISH-T3-W10-COR-023-SCOPE and ENGLISH-T3-W10-EXTERNAL-MATERIALS. ENGLISH-BODY-085 remains PARTIAL; correction remains inactive pending objective completion or explicit owner scope decision. Original source bytes, IDs and other subjects remain unchanged. Approval remains PENDING; verification/runtime/compiler tests remain DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7707,7 +7707,6 @@
     "ENG-COR-019",
     "ENG-COR-020",
     "ENG-COR-021",
-    "ENG-COR-023",
     "ENG-COR-024",
     "ENG-FACT-PROVENANCE-REVIEW",
     "ENG-FACT-VISUAL-DISPOSITION-T1",
