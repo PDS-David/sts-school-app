@@ -542,6 +542,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R009",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 7:  GRAMMAR –ADVERBS AND TENSE",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 7, line 17 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-044 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -12035,14 +12047,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 7:  GRAMMAR –ADVERBS AND TENSE",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 7; exact body hash ff1bb868083fe36fdefce5abca620640c2d3f27a83265aeb021f65f825344efc",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:ff1bb868083fe36fdefce5abca620640c2d3f27a83265aeb021f65f825344efc"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:ff1bb868083fe36fdefce5abca620640c2d3f27a83265aeb021f65f825344efc",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 17; UTF-8 joined-line SHA256 a945a3849543df5b36eec8092990b36690336422e7c967e22e3ea3d78b15ebe0; SS1-SRC-d8bd8f85fd73:BODY:ff1bb868083fe36fdefce5abca620640c2d3f27a83265aeb021f65f825344efc; rule SS1-SRC-d8bd8f85fd73-R009",
+          "explanation": "Scheme-of-work row 7 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Grammar - adverbs and tense\". The teaching body ENGLISH-BODY-055 (lines 417-491) treats adverbs (definition, one formation rule, a pair list) and the present tense (definition, uses, examples), with an evaluation and an assignment, indexed at objective level as ENGLISH-T2-W07-TP01, AD01 to AD03, TN01 to TN05, EV01 and AS01. The other tenses the scheme implies are in the Week 3 section (ENGLISH-BODY-051). Rule SS1-SRC-d8bd8f85fd73-R009 classifies the row SCHEME_ONLY. Rows 8 to 10 are left for their own week tasks."
         }
       ]
     },
@@ -15864,6 +15876,232 @@
           "explanation": "The supplement says to use a dictionary for an unfamiliar sense and to check a complete sentence, which supports the meanings half in general terms. It does not treat the four words or transcription. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-TP01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Topic and sub-topic: grammar, adverbs and tense (features and function, using adverbs in sentences, and present tense)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 419-423; UTF-8 joined-line SHA256 92aa0848af0e538e3cd87bc9647cf61c7eb14054c55d972ebd4997b4066e86ff; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 419-423; UTF-8 joined-line SHA256 92aa0848af0e538e3cd87bc9647cf61c7eb14054c55d972ebd4997b4066e86ff; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The topic line matches scheme row 7 (line 17). The sub-topic names features and function of adverbs, using adverbs in sentences, and the present tense, and its parenthesis is never closed. The body treats adverbs through a definition, three phrase examples and one formation rule (lines 427-457) and never sets adverbs in full sentences or names their functions or kinds, and it treats only the present tense (lines 461-481). The other tenses named by the scheme are in the Week 3 section (ENGLISH-T2-W03-TN01 and TN04 to TN08), which is placed in Week 3 only by rule SS1-SRC-d8bd8f85fd73-R002."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: first paragraph, sentences 1-5",
+          "explanation": "The supplement gives adverbs modifying verbs, adjectives and adverbs, with sentence adverbs and linking adverbs in sentences, so it supports the sentence-use half in part. It is bound to this body through COR-014. Bound additively as partial support; where the remaining tenses belong is the owner decision already in open item ENGLISH-T2-W03-TENSE-GAP."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-AD01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Adverb: definition (a word adding information about a verb, an adjective or another adverb) with the examples work rapidly, extremely beautiful and sleeping soundly",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 427-433; UTF-8 joined-line SHA256 a5ea253abe7c543cb8902b43f4d1cc36050e1b67a4a633e4b5a49ad0d028c019; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 427-433; UTF-8 joined-line SHA256 a5ea253abe7c543cb8902b43f4d1cc36050e1b67a4a633e4b5a49ad0d028c019; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The definition says an adverb \"adds to our intonation\" about a verb, adjective or adverb; \"intonation\" is a slip for information and \"An adverbs\", \"another adverbs\" are plural slips, recorded, not repaired. The first example is a verb with an adverb, the second an adverb with an adjective (the closing bracket after \"adjective\" is missing), the third a verb with an adverb. The label \"ADVERBS:\" is underlined in the docx."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: first paragraph, sentence 1",
+          "explanation": "The supplement states that an adverb can modify a verb, adjective or another adverb, with the examples runs quickly, very careful and quite slowly, which covers the definition and the three modified word classes and corrects the intonation slip. The source examples are not carried. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-AD02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Features of adverbs: adverbs of manner are frequently formed by adding -ly to an adjective",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 435-439; UTF-8 joined-line SHA256 eed61a3155e4decf306cdff25c235a0665d9db8c10ff2e402952d76a1aa80d94; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 435-439; UTF-8 joined-line SHA256 eed61a3155e4decf306cdff25c235a0665d9db8c10ff2e402952d76a1aa80d94; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The rule is stated in one sentence with \"lyto\" missing a space; \"ly\" is bold and \"adjective.\" bold and underlined in the docx, and two straight line shapes (one vertical, one horizontal) are drawn beside the pair list below (no teaching content). The rule gives no spelling changes (for example when the adjective ends in -y) and no exceptions."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: first paragraph, sentences 2-4",
+          "explanation": "The supplement says many manner adverbs end in -ly, that fast and hard do not, that hardly differs in meaning from hard, and that well corresponds to good. It does not say that the -ly form is made from an adjective or give any spelling change. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-AD03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Adjective and adverb pairs: anxious/anxiously, bad/badly, cautious/cautiously, elegant/elegantly, unwilling/unwillingly, vain/vainly, weak/weakly, quick/quickly",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 441-457; UTF-8 joined-line SHA256 4dbdc739eb7d4f056ee55d95f6113a26eb28625ee16f7524c6300341a2afd3fc; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 441-457; UTF-8 joined-line SHA256 4dbdc739eb7d4f056ee55d95f6113a26eb28625ee16f7524c6300341a2afd3fc; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "An eight-row, two-column list headed ADJECTIVE and ADVERBS, tab-separated in plain text; the pairs are bold in the docx. All eight pairs are formed regularly with -ly and are accurate as given. The list shows no pair with a spelling change and none with an unchanged form, so it does not show the exceptions the supplement names. No exercise accompanies it."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: first paragraph, sentences 2-3",
+          "explanation": "The supplement names quickly and states the -ly pattern with the fast and hard exceptions, but it carries none of the eight pairs as a list. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-TN01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Tense: definition (the form of a verb showing the time of the action) and the statement that the present tense is one of the tenses of English",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 461-463; UTF-8 joined-line SHA256 fc2f2742a40ed26235743433270cdeb7149443f57ea3c653ec5c8e6fcc9b87af; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 461-463; UTF-8 joined-line SHA256 fc2f2742a40ed26235743433270cdeb7149443f57ea3c653ec5c8e6fcc9b87af; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The definition reads \"the form of a verb that is used to show the time at which the action of a the verbs takes place\" (\"a the verbs\" is a slip, recorded, not repaired). It treats the form and the time as one thing, which the Week 3 tense section separates (ENGLISH-T2-W03-TN02). The heading \"TENSE (PRESENT TENSE)\" has no underlining in the docx."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: third paragraph, sentence 1",
+          "explanation": "The supplement says to choose the form from the intended time relationship but does not define tense or separate time from tense. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-TN02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Present tense: used for an action now going on or a state now existing",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 465; UTF-8 joined-line SHA256 39c679400edcc819b3d4489e2ace39aca24940f3334c442574a86d9b85859250; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 465; UTF-8 joined-line SHA256 39c679400edcc819b3d4489e2ace39aca24940f3334c442574a86d9b85859250; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The wording is misleading for the simple present, which does not usually describe an action in progress. The line is an unnumbered definition with no example."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentences 1-2",
+          "explanation": "The supplement separates the simple present (habits and general situations) from the present continuous (an ongoing or temporary activity) with an example for each, which covers the accurate content of the definition and supersedes the loose wording. Bound additively, narrowly; the source wording is not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-TN03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Habitual present (habitual or repeated actions, recurring events) and the \"staure present\" (something true at all times)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 467; UTF-8 joined-line SHA256 f4174bb6eff8dfc63056742c68c9f8e1d8df3b812ffb2a1346a819317d0f42db; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 467; UTF-8 joined-line SHA256 f4174bb6eff8dfc63056742c68c9f8e1d8df3b812ffb2a1346a819317d0f42db; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The second term is garbled (\"staure present\") and is recorded as spelled; its intended name is not inferred. \"Which works habitual or repeates actions\" contains slips (\"repeates\"), recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 1",
+          "explanation": "The supplement says the simple present expresses habits or general situations, with the example She reads after school, which covers both uses. The term for the second use is not carried. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-TN04",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Present tense examples: He works long hours; She walksto work; The world is round",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 469-475; UTF-8 joined-line SHA256 87b47193a802fb0ec87a0873040b682c5d12487a5901079f962268687f70c8b5; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 469-475; UTF-8 joined-line SHA256 87b47193a802fb0ec87a0873040b682c5d12487a5901079f962268687f70c8b5; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The three examples form an automatic numbered list (numerals absent in plain text) and the verb in each is bold and underlined in the docx. The source does not say which example shows the habitual present and which the true-at-all-times use, and \"walksto\" lacks a space."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 1",
+          "explanation": "The supplement has its own habit example and no example of something true at all times. The source examples are not carried. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-TN05",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Simple present tense: use (an action that occurs always, or an occupation) with I eat rice every day and She sells bread",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 477-481; UTF-8 joined-line SHA256 103924313a913eee8a709fabb4c5d2f06e7afd26747c7b8fab31b61dfc95b24c; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 477-481; UTF-8 joined-line SHA256 103924313a913eee8a709fabb4c5d2f06e7afd26747c7b8fab31b61dfc95b24c; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The first sentence is the same as the simple-present line in the Week 3 section (ENGLISH-T2-W03-TN03), which is bound in the same way; the two sections therefore repeat it. \"Occurs always\" is loose for habitual action. The verb in each example (eat, sells) is bold and underlined in the docx."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: second paragraph (beginning \"The simple present\"), sentence 1",
+          "explanation": "The supplement states that the simple present expresses habits or general situations, with an example. The occupation use is not named and the source examples are not carried. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-EV01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation: make each word an adverb (quick, bright, careful, bad, good, deep, clearer, hard, true)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 483-489; UTF-8 joined-line SHA256 3ed30e8fb7d08a3ce0dae2e0b4f83ab1cd8193e9a767426c6f88c90b9ea1c7c6; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 483-489; UTF-8 joined-line SHA256 3ed30e8fb7d08a3ce0dae2e0b4f83ab1cd8193e9a767426c6f88c90b9ea1c7c6; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The instruction reads \"Make each of these an adverbs\". The list has nine words but is numbered 1 to 8. In the docx the numerals on QUICK and GOOD are automatic and the others (2 to 4, 5 to 7 and 8) are typed; rendered with LibreOffice, GOOD shows as 4, the same as BAD, and the last item is 8. The list mixes regular -ly words with words whose adverb forms need care (good, hard, deep), and \"clearer\" is a comparative form. There is no key and no marks; none is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2: first paragraph, sentences 2-4; practice Q1",
+          "explanation": "The supplement says that well corresponds to good, that fast and hard have no -ly form and that hardly is not a synonym of hard, and its Q1 marks \"hard not hardly\". It does not treat the other words or a full conversion exercise. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W07-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: Progressive English page 69, Exercise 3A, questions 1 to 10",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 491; UTF-8 joined-line SHA256 aa8a4717be8dca05aa5c09e8ef63c3c4ce6128fbc385cdce29c3e1e912cfcac5; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 491; UTF-8 joined-line SHA256 aa8a4717be8dca05aa5c09e8ef63c3c4ce6128fbc385cdce29c3e1e912cfcac5; SS1-SRC-d8bd8f85fd73:BODY:48a9385271ef576f935f7761456f4faa180bfd98d9328a67d1df561446191fdc",
+          "explanation": "The label \"ASSIGNMENT:\" is bold and underlined in the docx and the title is spelled \"PROGRESIVE ENGLISH\". The book has no author or edition and its page and exercise are not supplied; the topic of Exercise 3A cannot be tied to this week (adverbs or present tense). No question, answer, key or marks is in the source; none is inferred or reproduced. The reference is outside the package, as other Progressive English references are in open item ENGLISH-PRESCRIBED-PASSAGES."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -16728,6 +16966,49 @@
       "required_action": "Owner or teacher to confirm what \"transcribe\" means here; then author original keyed, marked work giving accurate meanings (with sense labels) and transcriptions for apostasy, ablutions, immersion and confirmation, labelled original, bound additively to SUP-SS1-ENGLISH-MEANING-T2. No transcription is inferred.",
       "affected_ids": [
         "ENGLISH-T2-W06-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W07-ADVERB-GAP",
+      "kind": "CONTENT",
+      "detail": "The replacement does not say that manner adverbs are formed from adjectives, gives no spelling changes, carries none of the eight adjective and adverb pairs, and sets adverbs only in a few phrases; the scheme sub-topic promises features, function and use of adverbs in sentences, and no kinds or functions of adverbs are taught beyond the definition.",
+      "required_action": "Author original adverb teaching (definition, the -ly formation rule with spelling changes and exceptions, the pair list with original examples, kinds and functions, and adverbs in full original sentences) with a keyed, marked exercise, labelled original, bound additively to SUP-SS1-ENGLISH-ADVERBS-TENSE-T2; do not copy the source slips.",
+      "affected_ids": [
+        "ENGLISH-T2-W07-TP01",
+        "ENGLISH-T2-W07-AD02",
+        "ENGLISH-T2-W07-AD03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W07-PRESENT-TENSE-GAP",
+      "kind": "CONTENT",
+      "detail": "The replacement does not define tense or separate time from tense, and the source's present-tense examples are not matched to the habitual and true-at-all-times uses; the second use's name is garbled in the source and the examples repeat the Week 3 simple-present line.",
+      "required_action": "Author original present-tense teaching (tense versus time, habitual and general-truth uses with matched original examples) with a keyed, marked exercise, labelled original, bound additively to SUP-SS1-ENGLISH-ADVERBS-TENSE-T2 and coordinated with open item ENGLISH-T2-W03-TENSE-GAP; do not infer the garbled term.",
+      "affected_ids": [
+        "ENGLISH-T2-W07-TN01",
+        "ENGLISH-T2-W07-TN04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W07-EVALUATION-KEYS",
+      "kind": "CONTENT",
+      "detail": "The nine-word conversion exercise has no key or marks, a numbering defect, a comparative form among the words and several words whose adverb form is not a simple -ly addition.",
+      "required_action": "Author original keyed, marked practice converting adjectives to adverbs (including good/well and hard/hardly), labelled original; owner or teacher to supply a key if the source items themselves must be marked; do not infer the key.",
+      "affected_ids": [
+        "ENGLISH-T2-W07-EV01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W07-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "The assignment refers to Progressive English page 69, Exercise 3A, questions 1 to 10, which are not in the source document; the book has no edition and the exercise topic cannot be tied to this week.",
+      "required_action": "Owner to supply the authorised extract with edition, or accept labelled equivalent keyed practice on adverbs and the present tense (see open item ENGLISH-PRESCRIBED-PASSAGES; queue item ENG-FACT-T2-W07-EXTERNAL-MATERIALS). Do not infer the questions or answers.",
+      "affected_ids": [
+        "ENGLISH-T2-W07-AS01"
       ],
       "blocks_delivery": true
     }
