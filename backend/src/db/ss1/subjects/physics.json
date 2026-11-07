@@ -1414,6 +1414,177 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Pressure, Archimedes' principle, upthrust and floatation",
+      "objectives": [
+        "Define pressure and calculate it from normal force and area.",
+        "Explain hydrostatic pressure and calculate pressure at a depth in a liquid.",
+        "State Archimedes' principle and calculate upthrust from displaced fluid or apparent loss of weight.",
+        "Determine relative density using apparent-weight measurements.",
+        "Explain the laws of floatation and calculate the fraction of a floating body's volume that is submerged."
+      ],
+      "body": "PRESSURE\nPressure is the normal force acting per unit area:\nP = F/A\nwhere P is pressure in pascals (Pa), F is the perpendicular force in newtons (N), and A is area in square metres (m²). One pascal is one newton per square metre (1 Pa = 1 N/m²). For the same force, a smaller contact area produces greater pressure.\n\nPRESSURE IN LIQUIDS\nA liquid at rest exerts pressure on the walls and bottom of its container. At a depth h below the free surface:\nP = ρgh\nwhere ρ is the liquid density in kg/m³, g is gravitational field strength in m/s² and h is depth in metres. This is gauge pressure due to the liquid column; atmospheric pressure is additional if absolute pressure is required.\n\nFor a liquid at rest:\n- Pressure increases with depth.\n- At the same depth in the same connected liquid, pressure is equal.\n- Pressure at a point acts in all directions.\n- For a given depth, pressure increases with the density of the liquid.\n- The hydrostatic pressure depends on density, depth and g, not on the shape of the container.\n\nWorked example 1\nA force of 40 N acts normally on an area of 5 m².\nP = F/A = 40/5 = 8 Pa.\n\nWorked example 2\nFind the gauge pressure due to water at a depth of 0.5 m. Take ρ = 1,000 kg/m³ and g = 10 m/s².\nP = ρgh = 1,000 × 10 × 0.5 = 5,000 Pa.\n\nARCHIMEDES' PRINCIPLE AND UPTHRUST\nWhen a body is partly or completely immersed in a fluid, the fluid exerts an upward force on it called upthrust or buoyant force. Archimedes' principle states that the upthrust equals the weight of the fluid displaced by the body.\n\nUpthrust = weight in air − apparent weight in the fluid.\nFor a fully immersed body:\nUpthrust = ρfluid × g × Vdisplaced.\nThe displaced volume equals the volume of the immersed part of the body.\n\nA body seems to weigh less when immersed because the upthrust acts upwards against its weight. The actual gravitational weight of the body has not changed; its apparent weight is reduced.\n\nRELATIVE DENSITY USING ARCHIMEDES' PRINCIPLE\nFor a solid weighed in air and then fully immersed in water:\nRD of solid = weight in air / (weight in air − apparent weight in water).\nFor a solid weighed in air, water and a test liquid:\nRD of test liquid = (weight in air − apparent weight in test liquid) / (weight in air − apparent weight in water).\nUse the same solid and ensure it is fully immersed without touching the container.\n\nWorked example 3\nA solid weighs 15 N in air and 10 N when fully immersed in water.\nUpthrust = 15 − 10 = 5 N.\nRD of solid = 15/5 = 3.\n\nLAWS OF FLOATATION\nA body floats in equilibrium when the upthrust equals its weight. By Archimedes' principle, this means:\nweight of floating body = weight of fluid displaced.\nA body with average density less than the fluid density can float with part of its volume above the surface. A body denser than the fluid sinks unless another force supports it.\n\nFor a uniform floating body:\nfraction of volume submerged = density of body / density of fluid.\nThe fraction is dimensionless and must be between 0 and 1 for a body floating partly submerged.\n\nWorked example 4\nA wooden block has average density 600 kg/m³ and floats in water of density 1,000 kg/m³.\nFraction submerged = 600/1,000 = 0.6.\nTherefore 60% of its volume is below the water surface.\n\nApplications\n- Ships float because their average density, including the air spaces in the hull, is less than the density of the water displaced.\n- A hydrometer floats at different levels in liquids of different densities.\n- Submarines control their average density by taking in or expelling water from ballast tanks.\n- A life jacket increases a person's average volume without adding much mass, helping the person float.\n\nSimple safe investigation\nMeasure a small object's weight using a spring balance in air, then lower it gently until it is fully immersed in water without touching the bottom or sides. Record the apparent weight. The difference is the upthrust. Use a light object, keep electrical equipment away from water, and wipe spills immediately.",
+      "body_sha256": "7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6",
+      "practice": [
+        {
+          "id": "PHYS-T1-W07-Q01",
+          "question": "Define pressure, write its formula and state its SI unit.",
+          "answer": "Pressure is the normal force per unit area: P = F/A. Its SI unit is the pascal (Pa), equal to N/m².",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines pressure as normal force per unit area.",
+              "marks": 1
+            },
+            {
+              "criterion": "States P = F/A and Pa (N/m²).",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W07-Q02",
+          "question": "A normal force of 40 N acts on an area of 10 m². Calculate the pressure.",
+          "answer": "P = F/A = 40/10 = 4 Pa.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States P = F/A.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 40 N and 10 m² correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 4 Pa.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W07-Q03",
+          "question": "Calculate the gauge pressure due to water at a depth of 0.2 m. Take water density as 1,000 kg/m³ and g = 10 m/s².",
+          "answer": "P = ρgh = 1,000 × 10 × 0.2 = 2,000 Pa.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States P = ρgh.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes the values with correct units.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 2,000 Pa.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W07-Q04",
+          "question": "A solid weighs 15 N in air and has an apparent weight of 10 N when fully immersed in water. Find the upthrust and the relative density of the solid.",
+          "answer": "Upthrust = 15 − 10 = 5 N. RD = weight in air/upthrust = 15/5 = 3.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds upthrust as 5 N.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses RD = weight in air / loss of weight in water.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates RD = 3.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W07-Q05",
+          "question": "State Archimedes' principle and write an expression for upthrust on a fully immersed body.",
+          "answer": "A body partly or wholly immersed in a fluid experiences an upthrust equal to the weight of fluid displaced. Upthrust = ρfluid g Vdisplaced.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that upthrust equals the weight of fluid displaced.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives U = ρfluid g Vdisplaced.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W07-Q06",
+          "question": "State the law of floatation and explain why a body floats partly submerged.",
+          "answer": "A floating body displaces a weight of fluid equal to its own weight. It floats partly submerged when its average density is less than the fluid density, so the required upthrust is reached before it is fully immersed.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "States weight of floating body equals weight of fluid displaced.",
+              "marks": 1
+            },
+            {
+              "criterion": "Relates floating to upthrust balancing weight.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains partial immersion using lower average density.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W07-Q07",
+          "question": "A wooden block of average density 600 kg/m³ floats in water of density 1,000 kg/m³. What fraction of its volume is submerged?",
+          "answer": "Fraction submerged = density of block/density of water = 600/1,000 = 0.6 (60%).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses fraction submerged = ρbody/ρfluid.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 0.6 or 60%.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 1st Term Lesson Note (public PDF copy)",
+          "locator": "Public close-equivalent PDF; section labelled WEEK SEVEN, “Pressure, Archimedes’ Principles, Upthrust & Laws of Floatation”, lines 772–918; pressure, liquid pressure, Archimedes' principle, upthrust, relative density and floatation. The PDF is not verified byte-identical to the archive member.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-1st-Term-Lesson-Note-pdf.pdf",
+          "rights": "No wording, diagrams, worked examples or questions are copied. This lesson is independently authored; the PDF is cited as a close-equivalent topic reference only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Schoolgist, “SS1 Physics 1st Term Lesson Note” (public PDF copy), accessed 2026-11-08; not asserted identical to the archive member."
+        },
+        {
+          "title": "Senior Secondary Physics Book 2 — Pressure in Fluids",
+          "locator": "Ministry of Education, Jharkhand-hosted senior secondary textbook; Chapter 3, Pressure in Fluids and Pressure in Liquids; used as a technical reference for hydrostatic pressure, not as copied lesson content.",
+          "url": "https://www.mohest.jg.gov.ng/wp-content/uploads/2024/01/Physics-2tx.pdf",
+          "rights": "No wording, diagrams, examples or exercises are copied. Independently authored lesson and assessment; textbook cited as a technical reference only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Senior Secondary Physics Book 2, Learn Africa Plc (2014 edition), hosted by Ministry of Education, Government of Jharkhand; accessed 2026-11-08."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -2678,6 +2849,144 @@
           "explanation": "The public copy uses a different week label. This version discrepancy is not resolved by the supplement and requires original-member inspection."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-PRESSURE-FORCE-AREA",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Pressure as normal force per unit area; formula and SI unit.",
+      "objective_locator": "1st Term scheme topic Pressure, Archimedes' Principles, Upthrust and Laws of Floatation; repository parsed row 6, label WEEK 8, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION, body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Public close-equivalent PDF, pressure/Archimedes section lines 772–918; Ministry of Education-hosted Senior Secondary Physics Book 2, Chapter 3.",
+          "explanation": "The references corroborate pressure in fluids, upthrust and floatation principles. No external wording, diagrams or exercises are copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-LIQUID-PRESSURE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Hydrostatic pressure P = ρgh and properties of pressure in liquids.",
+      "objective_locator": "1st Term scheme topic Pressure, Archimedes' Principles, Upthrust and Laws of Floatation; repository parsed row 6, label WEEK 8, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION, body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Public close-equivalent PDF, pressure/Archimedes section lines 772–918; Ministry of Education-hosted Senior Secondary Physics Book 2, Chapter 3.",
+          "explanation": "The references corroborate pressure in fluids, upthrust and floatation principles. No external wording, diagrams or exercises are copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-ARCHIMEDES-PRINCIPLE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Archimedes' principle: upthrust equals the weight of fluid displaced.",
+      "objective_locator": "1st Term scheme topic Pressure, Archimedes' Principles, Upthrust and Laws of Floatation; repository parsed row 6, label WEEK 8, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION, body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Public close-equivalent PDF, pressure/Archimedes section lines 772–918; Ministry of Education-hosted Senior Secondary Physics Book 2, Chapter 3.",
+          "explanation": "The references corroborate pressure in fluids, upthrust and floatation principles. No external wording, diagrams or exercises are copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-UPTHRUST-APPARENT-WEIGHT",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Upthrust and apparent loss of weight in a fluid.",
+      "objective_locator": "1st Term scheme topic Pressure, Archimedes' Principles, Upthrust and Laws of Floatation; repository parsed row 6, label WEEK 8, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION, body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Public close-equivalent PDF, pressure/Archimedes section lines 772–918; Ministry of Education-hosted Senior Secondary Physics Book 2, Chapter 3.",
+          "explanation": "The references corroborate pressure in fluids, upthrust and floatation principles. No external wording, diagrams or exercises are copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-RD-ARCHIMEDES",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Determine relative density of solids/liquids using apparent-weight measurements.",
+      "objective_locator": "1st Term scheme topic Pressure, Archimedes' Principles, Upthrust and Laws of Floatation; repository parsed row 6, label WEEK 8, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION, body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Public close-equivalent PDF, pressure/Archimedes section lines 772–918; Ministry of Education-hosted Senior Secondary Physics Book 2, Chapter 3.",
+          "explanation": "The references corroborate pressure in fluids, upthrust and floatation principles. No external wording, diagrams or exercises are copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-LAWS-FLOATATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Law of floatation and fraction of a floating body's volume submerged.",
+      "objective_locator": "1st Term scheme topic Pressure, Archimedes' Principles, Upthrust and Laws of Floatation; repository parsed row 6, label WEEK 8, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION, body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6; seven keyed questions and marking guides.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Public close-equivalent PDF, pressure/Archimedes section lines 772–918; Ministry of Education-hosted Senior Secondary Physics Book 2, Chapter 3.",
+          "explanation": "The references corroborate pressure in fluids, upthrust and floatation principles. No external wording, diagrams or exercises are copied."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W07-SOURCE-ROW-RECONCILIATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Original source-row label/version reconciliation for pressure, Archimedes' principle, upthrust and floatation.",
+      "objective_locator": "Repository parsed row 6, label WEEK 8; public close-equivalent PDF labels the corresponding section WEEK SEVEN at lines 772–775.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Repository queue PHYS-WK-T1-W07: parsed row 6, label WEEK 8, title PRESSURE, ARCHIMEDES' PRINCIPLES, UPTHRUST & LAWS OF FLOATATION.",
+          "explanation": "The project archive's registered row identity is retained as WEEK 8."
+        },
+        {
+          "locator": "Public close-equivalent PDF lines 772–775: WEEK SEVEN, pressure/Archimedes/upthrust/floatation.",
+          "explanation": "The public copy uses a different week label. This discrepancy remains unresolved without the original archive member."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3085,6 +3394,31 @@
       "affected_ids": [
         "SS1-SRC-5c0149cda71d:BODY:bc53c0fb26e14586d1246f1dc8b7fff5fc0e8959eae63a37149f86653ca1f242",
         "PHYS-FACT-T1-W06-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W07-ORIGINAL-ROW-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The repository registers parsed row 6 as WEEK 8, pressure/Archimedes/upthrust/floatation. The public close-equivalent PDF labels the same topic WEEK SEVEN at lines 772–775. It is not verified byte-identical to the archive member.",
+      "required_action": "Inspect the original source member and confirm the exact week label, content, formulae, figures and its relationship to the preceding density row. Do not change the repository label based on the public PDF alone.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
+        "PHYS-WK-T1-W07",
+        "PHYS-WK-T1-W06",
+        "PHYS-FACT-T1-W07-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W07-FIGURES-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "The original archive row's figure inventory, classwork, assignment and answer/marking keys are not available in this execution session. The public close-equivalent PDF includes a pressure diagram and assessment tasks, but these are not verified as the exact archive member's content.",
+      "required_action": "Use PHYS-VIS-T1 to inspect original figures and the source reconciliation task to compare exercises/answers; create a bounded correction or keyed supplement only for confirmed gaps.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
+        "PHYS-VIS-T1",
+        "PHYS-FACT-T1-W07-SOURCE-RECONCILIATION"
       ],
       "blocks_delivery": false
     }
