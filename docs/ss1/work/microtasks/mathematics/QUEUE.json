@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 46,
-    "PENDING": 44,
+    "IMPLEMENTED_TESTING_DEFERRED": 47,
+    "PENDING": 43,
     "BLOCKED": 9
   },
   "total": 99,
@@ -3053,8 +3053,8 @@
       "depends_on": [
         "MATH-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only versions: b5ced7ebb0efe22df2351baa140266fbf40cbf41:docs/ss1/work/SS1-03/CHECKPOINT.md blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c; HANDOFF.json blob f3ee7c4559931744ab679bc6f8975fd7091c0710. Master has its own versions at the same paths. Not otherwise compared.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 checkpoint blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c and HANDOFF blob f3ee7c4559931744ab679bc6f8975fd7091c0710 against master SS1-03 notes. The branch-only Math claim (16 T2/T3 lessons and 2 marker rules) is now routed to and implemented by MATH-PORT-D2-T2-L001..L008, MATH-PORT-D2-T3-L009..L016, MATH-PORT-D2-COV-T2/T3 and MATH-PORT-D2-RULES on this work branch. Branch claim that T1 source is unresolved due manifest mismatch is stale: master has the registered T1 source and T1 replacement lessons, including Week 2; OI-MATH-001 remains for notation/extraction. Branch approval wording 'NOT_REQUESTED' is stale; master package states content_approval=PENDING. Testing-deferred claim is already in master. No master checkpoint or handoff files overwritten.",
       "completion_condition": "Branch-only facts listed with exact blob and line locators, each routed to a queue item or recorded as already covered."
     },
     {
@@ -3251,8 +3251,7 @@
     "MATH-VIS-T3",
     "MATH-VIS-T3-OLE",
     "MATH-FACT-ADVERT-T2",
-    "MATH-FACT-ADVERT-T3",
-    "MATH-CMP-D4-NOTES"
+    "MATH-FACT-ADVERT-T3"
   ],
   "runnable_now": [
     "MATH-PRE-T3",
