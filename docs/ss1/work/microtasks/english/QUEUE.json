@@ -57,12 +57,13 @@
     "ENG-WK-T2-W02 (2026-11-07): 2nd Term Week 2 indexed at objective level; 9 coverage entries and rule R004 added to english.json, ENGLISH-BODY-039 (scheme row 2, a parsed one-line row) reclassified MARKER, five open items opened and five PENDING follow-ups appended (ENG-FACT-W02-EXTERNAL-MATERIALS, ENG-LES-T2-W02-FAMILY-READING, -CONTEXT-VOCAB, -SUMMARY, -LINKERS). Indexing complete, content gaps not closed; only the reading-skill label (RD02) is narrowly equivalent, bound additively. The scheme names a home-and-family passage while the body names a health passage that the source does not contain. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W03 (2026-11-07): 2nd Term Week 3 indexed at objective level; 21 coverage entries and rule R005 added to english.json, ENGLISH-BODY-040 (scheme row 3, a parsed one-line row) reclassified MARKER, three open items opened and three PENDING follow-ups appended (ENG-LES-T2-W03-FORMAL-LETTER, -TENSE, -STRUCTURE-KEYS). Indexing complete, content gaps not closed; only the simple present, simple past, present perfect, past perfect and present continuous definitions (TN03-TN07) are narrowly equivalent, bound additively to the existing adverbs-and-tense supplement. The formal-letter body has no replacement and no supplement; the tense body is in Week 3 only by rule R002 and the scheme row does not name it. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T2-W04 (2026-11-07): 2nd Term Week 4 indexed at objective level; 10 coverage entries and rule R006 added to english.json, ENGLISH-BODY-041 (scheme row 4, a parsed one-line row) reclassified MARKER, two open items opened and two PENDING follow-ups appended (ENG-LES-T2-W04-SYNONYMS, -PRACTICE-KEYS). Indexing complete, content gaps not closed; only the print entry (PW04, mislabelled Paint in the source) and the sketch entry (PW05) are narrowly equivalent, bound additively to the existing meaning supplement. The topic line promises exact synonyms, which the body does not treat. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
-    "ENG-WK-T2-W05 (2026-11-07): 2nd Term Week 5 indexed at objective level; 5 coverage entries and rule R007 added to english.json, ENGLISH-BODY-042 (scheme row 5, a parsed one-line row) reclassified MARKER, two open items opened and two PENDING follow-ups appended (ENG-FACT-T2-W05-EXTERNAL-MATERIALS, ENG-LES-T2-W05-TOPIC-SCOPE). Indexing complete, content gaps not closed; only the scanning skill label (RD01) is narrowly equivalent, bound additively to the existing reading supplement. The body is only pointers to Intensive English pages 133-137 (no passage, questions or edition) and a topic line naming writing and listening that nothing teaches. New follow-up IDs carry T2 because ENG-FACT-W02-EXTERNAL-MATERIALS is already used twice in the queue (T1 and T2). Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
+    "ENG-WK-T2-W05 (2026-11-07): 2nd Term Week 5 indexed at objective level; 5 coverage entries and rule R007 added to english.json, ENGLISH-BODY-042 (scheme row 5, a parsed one-line row) reclassified MARKER, two open items opened and two PENDING follow-ups appended (ENG-FACT-T2-W05-EXTERNAL-MATERIALS, ENG-LES-T2-W05-TOPIC-SCOPE). Indexing complete, content gaps not closed; only the scanning skill label (RD01) is narrowly equivalent, bound additively to the existing reading supplement. The body is only pointers to Intensive English pages 133-137 (no passage, questions or edition) and a topic line naming writing and listening that nothing teaches. New follow-up IDs carry T2 because ENG-FACT-W02-EXTERNAL-MATERIALS is already used twice in the queue (T1 and T2). Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
+    "ENG-WK-T2-W06 (2026-11-07): 2nd Term Week 6 indexed at objective level; 6 coverage entries and rule R008 added to english.json, ENGLISH-BODY-043 (scheme row 6, a parsed one-line row) reclassified MARKER, four open items opened and four PENDING follow-ups appended (ENG-LES-T2-W06-TOPIC-SCOPE, -RELIGION-VOCAB, -PHOTOGRAPHY-VOCAB, -WORD-ASSIGNMENT). Indexing complete, content gaps not closed; nothing is equivalent: no supplement or correction covers religion or photography vocabulary, and only the assignment (AS01) is partially supported, through the dictionary advice in the meaning supplement. The scheme names photography, the topic line adds sexuality and religion, and the body treats religion words and one photography exercise; no sexuality vocabulary is in the source. Both gap-fill exercises have no key. No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 77,
+    "LESSON": 81,
     "CORRECTION_BINDING": 24,
     "FACTUAL_DEPENDENCY": 25,
     "ASSET": 1,
@@ -70,8 +71,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 57,
-    "PENDING": 107,
+    "IMPLEMENTED_TESTING_DEFERRED": 58,
+    "PENDING": 110,
     "BLOCKED": 5
   },
   "items": [
@@ -720,8 +721,8 @@
       "depends_on": [
         "ENG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-043, ENGLISH-BODY-054 (2 body-level rows; statuses {'PARTIAL': 2}). Row titles: ENGLISH-BODY-043='WEEK 6:  WORDS ASSOCIATED  WITH PHOTOGRAPHY'; ENGLISH-BODY-054='TOPIC: VOCABULARY DEVELOPNMENT (SEXUALITY AND RELIGION) WORDS ASSOCIAT'. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966 (extracted privately from docs/ss1/sources/SSS1-original.zip, not committed); mammoth 1.13.0 extractRawText text SHA256 2a334d9593d7b6d6560d6bbd75c6407e56b1b26c22c5ace5ea04917005fcc33f. Scheme row 6 is ENGLISH-BODY-043 (line 15), a parsed one-line row, now status MARKER and classified by new SCHEME_ONLY rule SS1-SRC-d8bd8f85fd73-R008. The teaching body is ENGLISH-BODY-054 (lines 353-415, hash 03ee1fef… unchanged, uncorrected, row-level PARTIAL kept and listed in an open item). Added 6 coverage entries ENGLISH-T2-W06-* (TP01, RL01, RL02, PH01, PH02, AS01): 0 IMPLEMENTED_EQUIVALENT, 1 PARTIAL (AS01, bound additively to the meaning supplement), 5 UNRESOLVED. docx structure inspected: no table object (option rows are tab-separated); topic and content labels as described in the entries; items 5-7 of the religion option table are bold in all columns, so formatting is not treated as a key. The scheme names photography; the body teaches religion words and one photography exercise, and names sexuality, which nothing treats. No definitions, keys or marks exist. Source defects recorded, not repaired: sexuality/photography scope mismatch, photogragh/botton/lentor/shutter hight, one good for God, In ant case, EVALAUTION, ASSIGNMNET, undefined transcribe. Open items: ENGLISH-T2-W06-TOPIC-SCOPE, RELIGION-VOCAB-GAP, PHOTOGRAPHY-VOCAB-GAP, ASSIGNMENT-GAP; every PARTIAL/UNRESOLVED entry is in one. No lessons or corrections changed; four PENDING follow-ups appended. Full verification remains deferred.",
       "completion_condition": "Every objective of Week 6 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -5305,6 +5306,138 @@
           "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
         }
       ]
+    },
+    {
+      "id": "ENG-LES-T2-W06-TOPIC-SCOPE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, coverage ENGLISH-T2-W06-TP01",
+      "objective": "After the owner confirms the intended scope, author the original vocabulary teaching it asks for (sexuality words only if confirmed wanted and age-appropriate) with keyed, marked tasks; do not guess the scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W06 on 2026-11-07; not implemented. Open item ENGLISH-T2-W06-TOPIC-SCOPE.",
+      "completion_condition": "TP01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T2-W06-RELIGION-VOCAB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, coverage ENGLISH-T2-W06-RL01 and RL02",
+      "objective": "Author original religion-vocabulary teaching and a keyed, marked gap-fill with one defensible answer per item; do not copy the defective source options.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W06 on 2026-11-07; not implemented. Open item ENGLISH-T2-W06-RELIGION-VOCAB-GAP.",
+      "completion_condition": "RL01 and RL02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T2-W06-PHOTOGRAPHY-VOCAB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, coverage ENGLISH-T2-W06-PH01 and PH02",
+      "objective": "Author original photography-vocabulary teaching (the scheme topic) and a keyed, marked gap-fill; do not copy the defective source options.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W06 on 2026-11-07; not implemented. Open item ENGLISH-T2-W06-PHOTOGRAPHY-VOCAB-GAP.",
+      "completion_condition": "PH01 and PH02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T2-W06-WORD-ASSIGNMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, coverage ENGLISH-T2-W06-AS01",
+      "objective": "Once the owner or teacher confirms what transcribe means, author original keyed, marked work on the meanings (with sense labels) and transcriptions of apostasy, ablutions, immersion and confirmation.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T2-W06 on 2026-11-07; not implemented. Open item ENGLISH-T2-W06-ASSIGNMENT-GAP.",
+      "completion_condition": "AS01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/ENGLISH.docx",
+          "member_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966"
+        }
+      ]
     }
   ],
   "review": {
@@ -5323,7 +5456,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T2-W06",
     "ENG-WK-T2-W07",
     "ENG-WK-T2-W08",
     "ENG-WK-T2-W09",
@@ -5414,6 +5546,10 @@
     "ENG-LES-T2-W04-SYNONYMS",
     "ENG-LES-T2-W04-PRACTICE-KEYS",
     "ENG-FACT-T2-W05-EXTERNAL-MATERIALS",
-    "ENG-LES-T2-W05-TOPIC-SCOPE"
+    "ENG-LES-T2-W05-TOPIC-SCOPE",
+    "ENG-LES-T2-W06-TOPIC-SCOPE",
+    "ENG-LES-T2-W06-RELIGION-VOCAB",
+    "ENG-LES-T2-W06-PHOTOGRAPHY-VOCAB",
+    "ENG-LES-T2-W06-WORD-ASSIGNMENT"
   ]
 }

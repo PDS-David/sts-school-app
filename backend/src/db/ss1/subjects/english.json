@@ -530,6 +530,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R008",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 6:  WORDS ASSOCIATED  WITH PHOTOGRAPHY",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 6, line 15 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-043 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -12007,14 +12019,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 6:  WORDS ASSOCIATED  WITH PHOTOGRAPHY",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 6; exact body hash 4f8e60efaf71655e6e7464c84836eb199311362e0370e580022594066e1043a4",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:4f8e60efaf71655e6e7464c84836eb199311362e0370e580022594066e1043a4"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:4f8e60efaf71655e6e7464c84836eb199311362e0370e580022594066e1043a4",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 15; UTF-8 joined-line SHA256 87e2a9e9a0f01abfc97c30c84cb8f96b371006a469f36652e3566a8c18853788; SS1-SRC-d8bd8f85fd73:BODY:4f8e60efaf71655e6e7464c84836eb199311362e0370e580022594066e1043a4; rule SS1-SRC-d8bd8f85fd73-R008",
+          "explanation": "Scheme-of-work row 6 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Words associated with photography\". The teaching body ENGLISH-BODY-054 (lines 353-415) adds sexuality and religion to the topic, teaches religion words through a gap-fill and photography words through a second gap-fill, and sets a word assignment, indexed at objective level as ENGLISH-T2-W06-TP01, RL01, RL02, PH01, PH02 and AS01. Rule SS1-SRC-d8bd8f85fd73-R008 classifies the row SCHEME_ONLY. Rows 7 to 10 are left for their own week tasks."
         }
       ]
     },
@@ -15751,6 +15763,107 @@
           "explanation": "The supplement's questions belong to its own passage and are not bound to this assignment."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W06-TP01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Topic scope: scheme and topic line name words associated with photography, while the topic line and CONTENT heading name sexuality and religion",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 355-359; UTF-8 joined-line SHA256 8c84c207e7d021f0b47eeb499c37a6a76681f432ddc86eaf3d37d77ae6e3865c; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 355-359; UTF-8 joined-line SHA256 8c84c207e7d021f0b47eeb499c37a6a76681f432ddc86eaf3d37d77ae6e3865c; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+          "explanation": "The scheme row (line 15) names only \"words associated with photography\". The topic line (line 355) names \"sexuality and religion\" in brackets and photography after it, and the bold, underlined CONTENT heading (line 359) names \"words associated with sexuality and religion\". The body treats religion words only (lines 361-381); no sexuality word, definition or task appears anywhere. Photography words appear only in the evaluation (lines 385-403). The intended scope of the week, and whether sexuality vocabulary is wanted at SS1, cannot be determined from the source; none is inferred or supplied. Heading spellings \"DEVELOPNMENT\" and \"PHOTOGRAGHY\" are recorded, not repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W06-RL01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Religion words in context: spirit, gods, monotheist, polytheist, atheist, agnostic, principle, dogma, doctrine, worship (the passage with seven blanks)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 361-363; UTF-8 joined-line SHA256 ac6882ca560c38207756c3c98b901e45a4b3164f15f18ceba52078d06872c957; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 361-363; UTF-8 joined-line SHA256 ac6882ca560c38207756c3c98b901e45a4b3164f15f18ceba52078d06872c957; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+          "explanation": "The two paragraphs are a gap-fill text with seven numbered blanks. The only gloss in the text is \"(a monotheist)\" beside blank 2, which also gives the answer to that blank. No word is defined and no meaning, contrast (monotheist/polytheist, atheist/agnostic) or example sentence is taught. Source slips recorded, not repaired: \"one good\" for one God, \"In ant case\", \"belief\" for believe, \"are however, not sure\", \"mode of 7\". The word \"spirit\" is bold and underlined in the docx (plain text loses this) and the blanks are underlined. No supplement or correction covers religion vocabulary for the 2nd Term."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W06-RL02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Options for blanks 1-7 of the religion passage (four options each) and their answers",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 367-381; UTF-8 joined-line SHA256 a64bfc39e5069765a3a621744649dd53af8962e44da47eba923a75ad3cbb4e87; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 367-381; UTF-8 joined-line SHA256 a64bfc39e5069765a3a621744649dd53af8962e44da47eba923a75ad3cbb4e87; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+          "explanation": "A seven-row table of options A to D, tab-separated in plain text. There is no key and no marks. In the docx, options and numbers for items 5 to 7 are bold in all four columns while items 1 to 4 are not, so the formatting does not mark an answer and is not treated as a key. Some options are evidently distractors (bilingual, polycap, polythene); \"goods\" in item 1 may be a slip for \"gods\" (compare \"one good\" on line 361), recorded, not repaired. Items 5 and 6 share three options (principle, rules, dogma). More than one option may fit items 6 and 7, and the sentence for item 2 already contains \"(a monotheist)\". No key is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W06-PH01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Photography words in context: camera, lens, shutter, shutter release, film, shutter speed (the passage with seven blanks)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 387; UTF-8 joined-line SHA256 2869d9d02cdee34918e6e79aaf80ffdb7fed83c4eac0910b9f3848c7962df18d; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 387; UTF-8 joined-line SHA256 2869d9d02cdee34918e6e79aaf80ffdb7fed83c4eac0910b9f3848c7962df18d; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+          "explanation": "The scheme topic is photography, but the body teaches it only through this one gap-fill paragraph. It carries two glosses: \"This button is pressed in order to take a photograph\" beside blank 2 and \"(amount of time during which you allow the light in)\" beside blank 7. No photography word is defined or taught. Source slips recorded, not repaired: \"photogragh\", \"botton\", \"----3---\", \"–4—\", \"a2\" with no space. Blank 3 reads \"press the botton or ---- 3--- the switch\"; its fit with the options is unclear in the source. The blanks 1 and 2 are underlined in the docx. No supplement or correction covers photography vocabulary."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W06-PH02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation: use the options to fill in seven blanks about taking a photograph",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 385-403; UTF-8 joined-line SHA256 d28c2d4f27d56b0e2f654243edd1083790cf1bbbf48ffba12908db148a9d9b6a; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 385-403; UTF-8 joined-line SHA256 d28c2d4f27d56b0e2f654243edd1083790cf1bbbf48ffba12908db148a9d9b6a; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+          "explanation": "The heading \"EVALAUTION:\" (underlined in the docx) and the instruction \"Use the options to fill in the blank spaces.\" precede the paragraph (line 387) and a seven-row table of options A to D (lines 391-403). There is no key and no marks, and no option is marked in the docx table. Option slips recorded, not repaired: \"lentor\", \"Shutter level\", \"shutter hight\", \"Shutter button\" against \"shutter release button\". Item 2 offers near-duplicate forms (shutter release, shutter release button, shutter button), so the intended answer cannot be inferred. The blank-number layouts differ across the paragraph. No key is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W06-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: transcribe the words apostasy, ablutions, immersion and confirmation and give their various meanings",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 405-415; UTF-8 joined-line SHA256 f1b2b0618925c7e1580e89610db6e167f84569a87f2104202feccc5930264f75; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 405-415; UTF-8 joined-line SHA256 f1b2b0618925c7e1580e89610db6e167f84569a87f2104202feccc5930264f75; SS1-SRC-d8bd8f85fd73:BODY:03ee1fef422cff00559b8c655ee4d5087e5468455091eb139b49e4f1c5243fb9",
+          "explanation": "The docx shows the four words as an automatic numbered list (no numerals in plain text). \"Transcribe\" is not defined: it is not stated whether phonemic transcription or copying is meant, and no phonemic system or key is given. \"Various meanings\" is not explained, and the source does not say whether the religious senses only are wanted (immersion and confirmation have non-religious senses). \"Immersion\" has a leading space and \"Confirmation.\" a full stop; the label is spelled \"ASSIGNMNET:\". No key or marks."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: third paragraph, last sentence",
+          "explanation": "The supplement says to use a dictionary for an unfamiliar sense and to check a complete sentence, which supports the meanings half in general terms. It does not treat the four words or transcription. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -16572,6 +16685,49 @@
       "required_action": "Owner to confirm the intended topic title and whether writing and listening are wanted this week; if they are, author original writing and listening teaching with keyed, marked tasks, labelled original (queue item ENG-LES-T2-W05-TOPIC-SCOPE). Do not guess the title.",
       "affected_ids": [
         "ENGLISH-T2-W05-TP01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W06-TOPIC-SCOPE",
+      "kind": "OWNER_ACTION",
+      "detail": "The scheme row names photography, the topic line adds sexuality and religion, and the body teaches only religion words and one photography exercise. No sexuality vocabulary appears in the source. The source body row ENGLISH-BODY-054 therefore cannot be read as covering the scheme topic.",
+      "required_action": "Owner to confirm the intended scope (photography only, photography and religion, or all three) and whether sexuality vocabulary is wanted at SS1; if it is, author original age-appropriate vocabulary teaching with keyed, marked tasks, labelled original (queue item ENG-LES-T2-W06-TOPIC-SCOPE). Do not supply that vocabulary by guesswork.",
+      "affected_ids": [
+        "ENGLISH-T2-W06-TP01",
+        "ENGLISH-BODY-054"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W06-RELIGION-VOCAB-GAP",
+      "kind": "CONTENT",
+      "detail": "The religion words (monotheist, polytheist, atheist, agnostic, doctrine, dogma, worship, rituals and the rest) are not defined or taught, and the seven-blank exercise has no key, marks, or reliable single answers (misspelt options, a blank that gives its own answer, items with more than one plausible option).",
+      "required_action": "Author original religion-vocabulary teaching (neutral definitions with original example sentences, the monotheist/polytheist and atheist/agnostic contrasts) and an original keyed, marked gap-fill with one defensible answer per item, labelled original; do not reproduce the defective source options or infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T2-W06-RL01",
+        "ENGLISH-T2-W06-RL02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W06-PHOTOGRAPHY-VOCAB-GAP",
+      "kind": "CONTENT",
+      "detail": "The scheme topic, photography words, is not taught: the words appear only inside one gap-fill with two glosses, and its seven-blank option table has no key or marks, several misspelt options and unclear fits.",
+      "required_action": "Author original photography-vocabulary teaching (camera, lens, shutter, shutter release, film, shutter speed, exposure with original definitions and sentences) and an original keyed, marked gap-fill, labelled original; do not reproduce the defective source options or infer the source key.",
+      "affected_ids": [
+        "ENGLISH-T2-W06-PH01",
+        "ENGLISH-T2-W06-PH02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W06-ASSIGNMENT-GAP",
+      "kind": "CONTENT",
+      "detail": "The assignment asks to transcribe four words and give their various meanings, but \"transcribe\" is undefined, no transcription system or key is given, and the supplement says only to use a dictionary.",
+      "required_action": "Owner or teacher to confirm what \"transcribe\" means here; then author original keyed, marked work giving accurate meanings (with sense labels) and transcriptions for apostasy, ablutions, immersion and confirmation, labelled original, bound additively to SUP-SS1-ENGLISH-MEANING-T2. No transcription is inferred.",
+      "affected_ids": [
+        "ENGLISH-T2-W06-AS01"
       ],
       "blocks_delivery": true
     }
