@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 44,
-    "PENDING": 46,
+    "IMPLEMENTED_TESTING_DEFERRED": 45,
+    "PENDING": 45,
     "BLOCKED": 9
   },
   "total": 99,
@@ -3030,8 +3030,8 @@
         "MATH-PORT-D2-T3-L015",
         "MATH-PORT-D2-T3-L016"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). OI-MATHS-005 says references were taken from search listings and not opened; lessons are worker-authored.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Carried all 32 distinct lesson-level citations from the 16 PR #71 Mathematics lessons into master provenance. 6 unique URLs were retained with page-not-opened, topic-alignment-unverified and page-level-rights-unverified wording; reuse_status=PENDING. Added OI-MATH-T2-T3-REFERENCE-URLS for the required integrator URL check and teacher content review. No third-party wording was copied; no citation is claimed as verified.",
       "completion_condition": "Provenance on each ported lesson carries the references with the unverified status stated."
     },
     {
@@ -3252,7 +3252,6 @@
     "MATH-VIS-T3-OLE",
     "MATH-FACT-ADVERT-T2",
     "MATH-FACT-ADVERT-T3",
-    "MATH-PORT-D2-FACT-REFERENCES",
     "MATH-CMP-D4-NOTES",
     "MATH-COR-T1-W02-NUMBER-BASES"
   ],
