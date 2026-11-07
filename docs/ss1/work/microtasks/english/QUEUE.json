@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 148,
+    "PENDING": 147,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 89,
+    "IMPLEMENTED_TESTING_DEFERRED": 90,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 148,
+    "PENDING": 147,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 89,
+    "IMPLEMENTED_TESTING_DEFERRED": 90,
     "BLOCKED": 5
   },
   "items": [
@@ -5018,8 +5018,8 @@
       "depends_on": [
         "ENG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T1-W07 on 2026-11-07; not implemented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original same-term lesson SUP-SS1-ENGLISH-NARRATIVE-W07-T1 ('Narrative writing: a worked plan, model ending and 20-mark rubric') in backend/src/db/ss1/subjects/english.json. It includes a worked plan (setting, characters, opening, complication, rising action, climax, resolution and moral), a complete independently authored model story in a school-radio setting, and the required exact final moral 'It pays to be hardworking.' The source scene is not reproduced. Coverage ENGLISH-T1-W07-NW-METHOD and NW-PRACTICE now IMPLEMENTED_EQUIVALENT with source locators and evidence. The transparent 20-mark rubric separately scores task relevance (2), plot (4), characters/setting (2), demonstrated effort (3), details/dialogue (2), ending/moral (2), organisation (2) and language accuracy (3); keyed practice includes a 5-mark sequencing task and a 20-mark original story. Removed ENGLISH-T1-W07-NARRATIVE-GAP. The separate textbook reading objective NW-READING remains UNRESOLVED under ENGLISH-T1-W07-BOOKS-GAP; no external book pages invented. Lesson approval PENDING and verification DEFERRED; compiler/runtime checks deferred.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": []
     },
@@ -7730,7 +7730,6 @@
     "ENG-FACT-W03-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-UNIFIED-TEST",
-    "ENG-LES-T1-W07-NARRATIVE",
     "ENG-LES-T1-W07-REVISION",
     "ENG-FACT-W08-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W08-ADJECTIVE",
