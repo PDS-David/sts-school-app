@@ -31,12 +31,13 @@
     "MISSING_MATERIAL": 2,
     "SOURCE_PREAMBLE_INDEXING": 1,
     "SOURCE_WEEK_INDEXING": 19,
-    "FACTUAL_DEPENDENCY": 1,
+    "FACTUAL_DEPENDENCY": 5,
     "VISUAL_DISPOSITION": 9,
     "ASSET": 2,
     "OWNER_DECISION": 1,
     "SCOPE_DECOMPOSITION": 1,
-    "TEST": 2
+    "TEST": 2,
+    "LESSON": 7
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 7,
@@ -933,8 +934,8 @@
         "TD-SCH-W07",
         "TD-WK-W06-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Scheme rows 5 and 6 both read 'Enlargement and reduction of plain figures'; teaching row 16 is titled 'Reduction of plain figures'. Whether the body also covers enlargement is not recorded.",
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the current repository records the combined row title/body hash but does not contain its text; the original DOCX member bytes are not accessible in this execution session, so I cannot determine whether enlargement appears in the body. To avoid blocking the scheme objective, an independently authored SS1 enlargement supplement SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT has been added and bound as IMPLEMENTED_EQUIVALENT for Weeks 6 and 7. The original-source reconciliation remains in open item TD-T2-W06-W07-ORIGINAL-ENLARGEMENT-RECONCILIATION. No claim is made that the original row teaches enlargement.",
       "completion_condition": "Finding recorded. If enlargement is not taught, the uncovered objective is named precisely and a bounded lesson task (with drawing task, dimensions and marking criteria) is appended; otherwise coverage is recorded as supported with evidence."
     },
     {
@@ -1748,6 +1749,39 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W06-W07 on 2026-11-08. The source title identifies reduction; the exact constructions, figures, dimensions, answers and marking evidence are not in the current repository record. The enlargement discrepancy must be resolved separately.",
       "completion_condition": "Publish original keyed solutions for verified reduction tasks, with complete construction steps and positive integer marking criteria summing to each question's marks. Do not invent dimensions or answer any unresolved enlargement objective."
+    },
+    {
+      "id": "TD-LES-W06-ENLARGEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "Weeks 6–7 scheme objective: enlargement of plane figures by a given ratio",
+      "objective": "Provide an original SS1 lesson supplement teaching enlargement of plane figures by a given ratio, with a centre-of-enlargement construction, worked examples, keyed practice and marking criteria. Do not reproduce original source text or figures.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-LES-W06-ENLARGEMENT.md"
+      ],
+      "depends_on": [
+        "TD-WK-W06-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-TECHNICAL-DRAWING-T2-W06-ENLARGEMENT (body SHA-256 0ab14c431c0bc6f41bb92b228051f41c7d423c6ec954eb3c6b1d9d6338af9273) with four objectives, original teaching body, five keyed questions (19 total marks) and complete marking guides. Provenance: Federal Ministry of Education Nigeria Inspire SS1 Technical Drawings lesson and Ghana Ministry of Education Year One manual as close-equivalent references; no source text/figures reproduced. Week 6 and Week 7 enlargement coverage changed to IMPLEMENTED_EQUIVALENT. Original source-row reconciliation remains blocked pending access to its full bytes; approval PENDING, verification DEFERRED.",
+      "completion_condition": "Lesson exists with original body hash, objectives, keyed practice whose criteria sum exactly to marks, truthful provenance and PENDING approval/DEFERRED verification; Weeks 6–7 coverage is bound as IMPLEMENTED_EQUIVALENT."
     }
   ],
   "review": {
@@ -1763,7 +1797,7 @@
     }
   },
   "next_runnable": [
-    "TD-FACT-ENLARGEMENT-SCOPE"
+    "TD-WK-W08-W09"
   ],
   "runnable_now": [
     "TD-SCH-W06",
