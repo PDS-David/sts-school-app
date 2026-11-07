@@ -34,21 +34,21 @@
     "SOURCE_WEEK_INDEXING": 29,
     "SOURCE_RULE": 2,
     "OWNER_DECISION": 2,
-    "FACTUAL_DEPENDENCY": 10,
+    "FACTUAL_DEPENDENCY": 11,
     "VISUAL_DISPOSITION": 3,
     "BRANCH_PORT": 13,
     "BRANCH_COMPARISON": 2,
     "SCOPE_DECOMPOSITION": 1,
     "TEST": 2,
-    "LESSON": 10,
+    "LESSON": 11,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 24,
-    "BLOCKED": 13,
-    "PENDING": 46
+    "IMPLEMENTED_TESTING_DEFERRED": 26,
+    "BLOCKED": 14,
+    "PENDING": 45
   },
-  "total": 83,
+  "total": 85,
   "items": [
     {
       "id": "PHYS-SRC-T1",
@@ -533,8 +533,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 6 (source label 'WEEK 8', title \"PRESSURE , ARCHIMEDES' PRINCIPLES, UPTHRUST & LAWS OF FLOATATION\", 7363 characters, body sha256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added six scheme-level coverage entries for pressure, hydrostatic pressure, Archimedes' principle, upthrust/apparent weight, relative density via Archimedes, and laws of floatation; bound to original supplement SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION (body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6) with seven keyed questions and exact marking totals. The repository registers parsed row 6 as WEEK 8; public close-equivalent PDF labels the topic WEEK SEVEN, so original-row label reconciliation remains open. Original figures and assessments are not claimed verified. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -2840,6 +2840,71 @@
       "status": "BLOCKED",
       "implementation_reference": "Blocked 2026-11-08: the original legacy .doc bytes/text are not accessible in this execution session. The public close-equivalent PDF shows a Week Six density section, while the repository registers the row as Week Seven. The scheme topic is covered by an independent supplement, but original-row label/content reconciliation cannot be claimed.",
       "completion_condition": "Inspect original row and verify exact week label, subtopics, formulae/units, figures, exercises and answer/marking coverage; reconcile public-copy discrepancy without altering source data absent evidence."
+    },
+    {
+      "id": "PHYS-LES-T1-W07-PRESSURE-FLOATATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 8 parsed row 6: Pressure, Archimedes' principle, upthrust and laws of floatation",
+      "objective": "Create an original SS1 lesson covering pressure, hydrostatic pressure, Archimedes' principle, upthrust, relative density by apparent weight and laws of floatation, with worked examples and keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-LES-T1-W07-PRESSURE-FLOATATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W07"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: authored SUP-SS1-PHYSICS-T1-W07-PRESSURE-FLOATATION (body SHA-256 7b4b16a79cf33c1cffd824c88a3c438503a4985c51eda4c674b9f521673b8ca6) with five objectives, four worked examples, seven keyed questions and 18 total marks; marking totals checked. Provenance includes a public close-equivalent SS1 Physics lesson note and a Ministry of Education-hosted senior-secondary Physics textbook; no source wording/figures copied. Approval PENDING; verification DEFERRED.",
+      "completion_condition": "Lesson has correct pressure/upthrust/floatation formulae and units, worked examples, keyed practice with exact marking totals, provenance and PENDING approval/DEFERRED verification."
+    },
+    {
+      "id": "PHYS-FACT-T1-W07-SOURCE-RECONCILIATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 8 parsed row 6, 7,363 characters, body SHA-256 e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
+      "objective": "Inspect the original archive member and reconcile the repository's WEEK 8 row label with the public close-equivalent PDF's WEEK SEVEN label; verify exact pressure/Archimedes content, figures, exercises and answers.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 PHYSICS.doc",
+          "member_sha256": "cb61f336ac93a3fbbb820d6c9b4adc0703e7363aff7659b7953a75bdb92f2206"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/physics.json",
+        "docs/ss1/work/microtasks/physics/QUEUE.json",
+        "docs/ss1/work/microtasks/physics/PHYS-FACT-T1-W07-SOURCE-RECONCILIATION.md"
+      ],
+      "depends_on": [
+        "PHYS-WK-T1-W07"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: original legacy .doc bytes/text are not accessible in this execution session. Public close-equivalent PDF has a different week label; supplement covers the scheme topic but original row reconciliation cannot be claimed.",
+      "completion_condition": "Inspect original row and record exact week label, subtopics, formulae, units, figures, exercises and answer/marking coverage; reconcile without changing source data absent evidence."
     }
   ],
   "review": {
@@ -2863,10 +2928,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T1-W06 density and relative-density supplement added; public close-equivalent PDF labels the section Week Six while repo row 5 is Week Seven, so original row reconciliation remains blocked pending source DOC access. Testing deferred by owner."
+    "notes": "PHYS-WK-T1-W07 pressure/Archimedes/floatation supplement added; public close-equivalent PDF labels the topic Week Seven while repo row 6 is Week 8, so original row reconciliation remains blocked pending source DOC access. Testing deferred by owner."
   },
   "next_runnable": [
-    "PHYS-WK-T1-W07",
     "PHYS-WK-T1-W08",
     "PHYS-WK-T1-W09",
     "PHYS-WK-T2-W01",
@@ -2903,7 +2967,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T1-W07",
     "PHYS-WK-T1-W08",
     "PHYS-WK-T1-W09",
     "PHYS-WK-T2-W01",
