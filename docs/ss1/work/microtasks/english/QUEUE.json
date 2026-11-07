@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 151,
+    "PENDING": 150,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 86,
+    "IMPLEMENTED_TESTING_DEFERRED": 87,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 151,
+    "PENDING": 150,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 86,
+    "IMPLEMENTED_TESTING_DEFERRED": 87,
     "BLOCKED": 5
   },
   "items": [
@@ -4918,8 +4918,8 @@
       "depends_on": [
         "ENG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T1-W07 on 2026-11-07; not implemented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original same-term lesson SUP-SS1-ENGLISH-TRANSPORT-T1 ('Transport vocabulary: aviation, maritime, rail and road') in backend/src/db/ss1/subjects/english.json. Five objective coverage entries (ENGLISH-T1-W07-TR-AIR, TR-SEA, TR-RAIL, TR-ROAD, TR-PRACTICE) now IMPLEMENTED_EQUIVALENT with exact source locators and evidence. Corrects source defects through clearly labelled original teaching: inclusive cabin-crew terms, precise distinctions among maritime facilities/parts and rowing terms, locomotive vs passenger coach, and road vocabulary absent from source span. Includes ten keyed aviation-sentence models and a parallel 10-mark exercise; two further keyed exercises. Marks: 10+5+4, each marking breakdown sums exactly. Cambridge Dictionary references recorded in lesson provenance. Blocking open item ENGLISH-T1-W07-TRANSPORT-GAP removed. Approval remains PENDING; verification DEFERRED. Compiler/runtime tests, importer, DB and deployment not run.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": []
     },
@@ -7730,7 +7730,6 @@
     "ENG-FACT-W03-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-UNIFIED-TEST",
-    "ENG-LES-T1-W07-TRANSPORT",
     "ENG-LES-T1-W07-NOUN-CLAUSES",
     "ENG-LES-T1-W07-CONSONANTS",
     "ENG-LES-T1-W07-NARRATIVE",
