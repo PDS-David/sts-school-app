@@ -1585,6 +1585,197 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Work, energy and power",
+      "objectives": [
+        "Define work done and calculate work for a force parallel or inclined to displacement.",
+        "Explain energy and distinguish kinetic and gravitational potential energy.",
+        "Apply KE = ½mv² and PE = mgh in calculations.",
+        "Explain conservation and transformation of energy.",
+        "Define power and calculate it from work or energy transferred per unit time."
+      ],
+      "body": "WORK DONE\nWork is done when a force causes a displacement. For a constant force acting in the direction of displacement:\nW = Fd\nwhere W is work in joules (J), F is force in newtons (N) and d is displacement in metres (m). If a force acts at an angle θ to the displacement:\nW = Fd cosθ.\nOnly the component of force along the displacement does work. If there is no displacement, the work done by that force is zero.\n\nENERGY\nEnergy is the capacity to do work. It is measured in joules (J). Energy can be transferred from one object or store to another and can change from one form to another. Common forms include mechanical, thermal, chemical, electrical, light, sound and nuclear energy.\n\nMECHANICAL ENERGY\nMechanical energy is the sum of kinetic and potential energy.\n- Kinetic energy is energy due to motion:\n  KE = ½mv²\n- Gravitational potential energy is energy due to position/height in a gravitational field:\n  PE = mgh\nwhere m is mass in kilograms (kg), v is speed in metres per second (m/s), g is gravitational field strength in m/s² and h is height in metres (m).\n\nLAW OF CONSERVATION OF ENERGY\nEnergy is not created or destroyed; it is transferred or transformed from one form to another. In an ideal system with no energy losses, total mechanical energy (KE + PE) remains constant. In real systems, some mechanical energy is often transferred to thermal energy and sound by friction or air resistance.\n\nWorked example 1: work against gravity\nA learner of mass 50 kg climbs stairs through a vertical height of 3 m. Take g = 10 m/s².\nWork done against gravity = mgh = 50 × 10 × 3 = 1,500 J.\n\nWorked example 2: kinetic energy\nAn object of mass 5 kg moves at 15 m/s.\nKE = ½mv² = ½ × 5 × 15² = 562.5 J.\n\nPOWER\nPower is the rate of doing work or transferring energy:\nP = W/t = E/t\nwhere P is power in watts (W), W is work in joules (J), E is energy transferred in joules (J), and t is time in seconds (s).\nFor a constant force acting in the direction of motion at speed v:\nP = Fv.\n\nWorked example 3: power while climbing\nA learner of mass 10 kg climbs a total vertical height of 2 m in 20 s. Take g = 10 m/s².\nWork done = mgh = 10 × 10 × 2 = 200 J.\nPower = work/time = 200/20 = 10 W.\n\nENERGY TRANSFORMATIONS\n- A falling object: gravitational potential energy decreases while kinetic energy increases.\n- A battery-powered lamp: chemical energy is transferred to electrical energy, then to light and thermal energy.\n- A moving vehicle braking: kinetic energy is transferred mainly to thermal energy in the brakes and surroundings.\n- A stretched spring released: elastic potential energy changes into kinetic energy.\n\nUNIT AND CALCULATION CHECKS\n- Work and energy: joule (J).\n- Power: watt (W), where 1 W = 1 J/s.\n- Force: newton (N); displacement: metre (m); time: second (s).\n- Use the component of force parallel to displacement when the force is inclined.\n- Keep mass in kilograms, speed in metres per second, height in metres and time in seconds when using SI formulae.",
+      "body_sha256": "b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf",
+      "practice": [
+        {
+          "id": "PHYS-T1-W08-Q01",
+          "question": "Define work done in physics and state when work done by a force is zero.",
+          "answer": "Work is done when a force causes displacement. Work done by a force is zero if there is no displacement or if the force has no component along the displacement.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Defines work as force causing displacement.",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions the force component in the direction of displacement.",
+              "marks": 1
+            },
+            {
+              "criterion": "States zero work when there is no displacement or no parallel force component.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q02",
+          "question": "A learner of mass 50 kg climbs through a vertical height of 3 m. Calculate the work done against gravity. Take g = 10 m/s².",
+          "answer": "W = mgh = 50 × 10 × 3 = 1,500 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Selects W = mgh.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 50 kg, 10 m/s² and 3 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 1,500 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q03",
+          "question": "Calculate the kinetic energy of a 5 kg object moving at 15 m/s.",
+          "answer": "KE = ½mv² = ½ × 5 × 15² = 562.5 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Selects KE = ½mv².",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes 5 kg and 15 m/s correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 562.5 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q04",
+          "question": "Find the gravitational potential energy gained by a 10 kg body raised vertically through 2 m. Take g = 10 m/s².",
+          "answer": "PE = mgh = 10 × 10 × 2 = 200 J.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses PE = mgh.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 200 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q05",
+          "question": "A 10 kg learner climbs a total vertical height of 2 m in 20 s. Calculate the average power developed against gravity. Take g = 10 m/s².",
+          "answer": "Work = mgh = 10 × 10 × 2 = 200 J. Power = W/t = 200/20 = 10 W.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates work done as 200 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses P = W/t.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 10 W.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q06",
+          "question": "A 30 N force acts at 60° to the direction of a 5 m displacement. Calculate the work done by the force.",
+          "answer": "W = Fd cosθ = 30 × 5 × cos60° = 150 × 0.5 = 75 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Uses W = Fd cosθ.",
+              "marks": 1
+            },
+            {
+              "criterion": "Substitutes the force, displacement and angle correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 75 J.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q07",
+          "question": "A machine transfers 600 J of energy in 30 s. Calculate its average power.",
+          "answer": "P = E/t = 600/30 = 20 W.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses P = E/t.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates 20 W.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W08-Q08",
+          "question": "Describe the main energy transformation as (a) a ball falls from a height and (b) a moving vehicle is brought to rest by its brakes.",
+          "answer": "(a) Gravitational potential energy decreases and kinetic energy increases. (b) Kinetic energy is transferred mainly to thermal energy in the brakes and surroundings, with some sound.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies potential-to-kinetic energy transfer for the falling ball.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies kinetic-to-thermal (and sound) energy transfer during braking.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Work, Energy and Power | SS1 Physics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 Physics; learning outcomes cover work, energy, power, work from force/displacement, gravitational potential energy, power in watts, energy forms and conservation of energy.",
+          "url": "https://inspire.education.gov.ng/lessons/238/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. This is an independently authored lesson; the official page is cited to corroborate SS1 scope only. No media reuse is claimed.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "SS1 Physics 1st Term Lesson Note (public PDF copy)",
+          "locator": "Public close-equivalent PDF; Work, Energy and Power section labelled WEEK EIGHT, lines 920–1023; definitions, formulas, worked examples, classwork and assignment. The PDF is not verified byte-identical to the archive member.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-1st-Term-Lesson-Note-pdf.pdf",
+          "rights": "No text, diagrams, worked examples or questions are copied. The lesson is independently authored; the PDF is cited as a close-equivalent topic reference only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Schoolgist, “SS1 Physics 1st Term Lesson Note” (public PDF copy), accessed 2026-11-08; not asserted identical to the archive member."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -2987,6 +3178,144 @@
           "explanation": "The public copy uses a different week label. This discrepancy remains unresolved without the original archive member."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-WORK-DONE",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Work done as force times displacement in the direction of the force; work at an angle.",
+      "objective_locator": "1st Term scheme topic Work, Energy and Power; repository parsed row 7, label WEEK 9, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER, body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf; eight keyed practice questions.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the listed concepts, formulae and conservation of energy."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-ENERGY-FORMS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Energy as capacity to do work and common forms/transformations.",
+      "objective_locator": "1st Term scheme topic Work, Energy and Power; repository parsed row 7, label WEEK 9, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER, body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf; eight keyed practice questions.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the listed concepts, formulae and conservation of energy."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-KINETIC-ENERGY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Kinetic energy KE = ½mv².",
+      "objective_locator": "1st Term scheme topic Work, Energy and Power; repository parsed row 7, label WEEK 9, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER, body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf; eight keyed practice questions.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the listed concepts, formulae and conservation of energy."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-POTENTIAL-ENERGY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Gravitational potential energy PE = mgh.",
+      "objective_locator": "1st Term scheme topic Work, Energy and Power; repository parsed row 7, label WEEK 9, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER, body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf; eight keyed practice questions.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the listed concepts, formulae and conservation of energy."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-CONSERVATION-ENERGY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Conservation and transformation of energy.",
+      "objective_locator": "1st Term scheme topic Work, Energy and Power; repository parsed row 7, label WEEK 9, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER, body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf; eight keyed practice questions.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the listed concepts, formulae and conservation of energy."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-POWER",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Power as rate of work/energy transfer; P = W/t and P = Fv.",
+      "objective_locator": "1st Term scheme topic Work, Energy and Power; repository parsed row 7, label WEEK 9, 5,904 characters, body SHA-256 d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER"
+      ],
+      "evidence": [
+        {
+          "locator": "Original supplement SUP-SS1-PHYSICS-T1-W08-WORK-ENERGY-POWER, body SHA-256 b38750633dffd1a48c0361321b21b8de6a44dcc9212dd767afe98f29f6548daf; eight keyed practice questions.",
+          "explanation": "The scheme topic is covered by an independently authored SS1 lesson. This does not claim the inaccessible original row contains the same detailed explanations or assessment."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire, “Work, Energy and Power | SS1 Physics”.",
+          "explanation": "Official SS1 learning outcomes corroborate the listed concepts, formulae and conservation of energy."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W08-SOURCE-ROW-RECONCILIATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Original source-row mapping for Work, Energy and Power.",
+      "objective_locator": "Repository parsed row 7, label WEEK 9, title “WORK, ENERGY AND POWER”; public close-equivalent PDF labels this section WEEK EIGHT at lines 920–924.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Repository queue PHYS-WK-T1-W08: parsed row 7, label WEEK 9, title WORK, ENERGY AND POWER.",
+          "explanation": "The archive's registered row identity is retained as WEEK 9."
+        },
+        {
+          "locator": "Public close-equivalent PDF lines 920–924: WEEK EIGHT, WORK, ENERGY AND POWER.",
+          "explanation": "The public copy uses a different week label. It is not verified byte-identical to the archive member."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -3419,6 +3748,29 @@
         "SS1-SRC-5c0149cda71d:BODY:e37e6cc1fe1a5a80189cad8ce314aaeb88aa0b3b2cff9a8cbaf7f624388a75c0",
         "PHYS-VIS-T1",
         "PHYS-FACT-T1-W07-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W08-ORIGINAL-ROW-RECONCILIATION",
+      "kind": "VERIFICATION",
+      "detail": "The repository registers parsed row 7 as WEEK 9, Work, Energy and Power. A public close-equivalent PDF labels the corresponding section WEEK EIGHT at lines 920–924. The PDF is not verified byte-identical to the archive member.",
+      "required_action": "Inspect the original source member and confirm the exact week label, content, equations, worked examples and its relationship to preceding/following rows. Do not change the repository label based on the public PDF alone.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
+        "PHYS-WK-T1-W08",
+        "PHYS-FACT-T1-W08-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W08-ORIGINAL-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "The original archive row's exact classwork, assignment questions and any supplied answers/marking criteria are not accessible in this execution session. The new supplement contains its own keyed practice but does not verify the original assessment.",
+      "required_action": "During PHYS-FACT-T1-W08-SOURCE-RECONCILIATION, inspect the original exercises and answer keys, record what the source provides/omits, and append a bounded answer-key supplement only for confirmed gaps.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:d82793066a786ab56fa399f91e274913a72c8e8bef287701de133822d30e413b",
+        "PHYS-FACT-T1-W08-SOURCE-RECONCILIATION"
       ],
       "blocks_delivery": false
     }
