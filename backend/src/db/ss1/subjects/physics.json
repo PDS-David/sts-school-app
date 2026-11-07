@@ -160,7 +160,513 @@
       "kind": "SCHEME_ONLY"
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "id": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Heat and temperature: meaning, units, differences and effects of heat",
+      "objectives": [
+        "Distinguish between heat and temperature.",
+        "Convert between the Celsius and Kelvin scales.",
+        "State the effects of heat on a body."
+      ],
+      "body": "HEAT is a form of energy that flows from a hotter body to a colder body because of a temperature difference. Its SI unit is the joule (J). TEMPERATURE tells how hot or cold a body is; it is related to the average kinetic energy of its molecules. Its SI unit is the kelvin (K); the Celsius scale (°C) is also used. Heat is measured with a calorimeter; temperature is measured with a thermometer.\n\nDIFFERENCES. (1) Heat is energy (joules); temperature is a degree of hotness (kelvin or °C). (2) Heat depends on the mass and the substance as well as the temperature; temperature does not depend on the amount of substance. (3) Heat flows because of a temperature difference; temperature is the property that decides the direction of the flow.\nExample: a bucket of warm water and a cup of warm water at 40 °C have the same temperature, but the bucket holds more heat energy because it has more mass.\n\nSCALES. T(K) = θ(°C) + 273. Example 1: 27 °C = 300 K. Example 2: 350 K = 77 °C. The temperature difference is the same on both scales: a rise of 10 °C is a rise of 10 K.\n\nEFFECTS OF HEAT. When heat is added to a body: (1) its temperature rises; (2) it expands; (3) it may change state (melting, boiling, evaporation); (4) a metal heated to a high temperature can emit electrons (thermionic emission); (5) chemical changes can occur (e.g. cooking, burning).\nExample 3 (heat gained). The heat needed to raise the temperature of a mass m of a substance by Δθ is Q = mcΔθ, where c is the specific heat capacity (water: about 4200 J/kg °C). For 2 kg of water heated from 20 °C to 30 °C: Q = 2 × 4200 × 10 = 84 000 J.",
+      "body_sha256": "24167948bee741f50af06bc436550767937b9066f80e4017da5480bfe0d2a3cb",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Convert 47 °C to kelvin and 250 K to °C.",
+          "answer": "47 + 273 = 320 K; 250 – 273 = –23 °C.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "State three differences between heat and temperature.",
+          "answer": "Heat is energy in joules, temperature is hotness in K or °C; heat depends on mass, temperature does not; heat flows because of temperature difference.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each, max 3.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Name four effects of heat on a body.",
+          "answer": "Rise in temperature, expansion, change of state, thermionic emission (or chemical change).",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "1 mark each, max 4.",
+              "marks": 4
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Find the heat needed to raise 0.5 kg of water from 25 °C to 85 °C (c = 4200 J/kg °C).",
+          "answer": "Q = 0.5 × 4200 × 60 = 126 000 J.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark substitution, 1 mark answer with unit.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Why does the bucket of warm water hold more heat than the cup at the same temperature?",
+          "answer": "It has more mass, hence more molecules each carrying energy.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "1 mark.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-2c924c964660; archive member SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; registered SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; 466432 bytes; source week locator(s): WEEK ONE. Prior source/member verification is reused; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation, examples and practice authored for this school curriculum; no third-party text reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3; branch lesson SUP-SS1-PHYS-001; mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/physics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS",
+      "class_name": "SS 1",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Thermal expansion of solids: effects, applications and a simple calculation",
+      "objectives": [
+        "Explain why solids expand on heating.",
+        "Describe applications and disadvantages of thermal expansion.",
+        "Calculate a change in length."
+      ],
+      "body": "WHY SOLIDS EXPAND. The molecules of a solid vibrate about fixed positions. When the solid is heated they vibrate with larger amplitude, so the average distance between them increases and the solid expands. When it cools it contracts. Different solids expand by different amounts.\n\nLINEAR EXPANSION. The increase in length ΔL of a rod of original length L₀ for a temperature rise Δθ is ΔL = αL₀Δθ, where α is the linear expansivity of the material (unit per kelvin, K⁻¹). New length L = L₀(1 + αΔθ).\nExample 1. A steel rail 20 m long, α = 1.2 × 10⁻⁵ K⁻¹, warms by 40 K: ΔL = 1.2 × 10⁻⁵ × 20 × 40 = 9.6 × 10⁻³ m = 9.6 mm. Gaps are left between rails for this reason.\nExample 2. An aluminium rod 5 m long, α = 2.3 × 10⁻⁵ K⁻¹, is heated by 60 K: ΔL = 2.3 × 10⁻⁵ × 5 × 60 = 6.9 × 10⁻³ m, so the new length is 5.0069 m.\n\nAPPLICATIONS (useful). Bimetallic strip: two metals (e.g. brass and iron) joined together bend when heated because one expands more than the other; used in thermostats, fire alarms and flashers. Tight-fitting rims on wheels and red-hot rivets in ship building: the metal is put on hot and contracts to hold tightly.\nDISADVANTAGES and design precautions. Bridges rest on rollers at one end and concrete roads have gaps so that expansion does not cause buckling; overhead cables sag in hot weather; glass cracks if hot liquid is poured into it suddenly because the inner wall expands before the outer; pipes can burst or leak when they expand and contract repeatedly.",
+      "body_sha256": "88cfeff88c02e4658e1acea61b637a094cdde380e2f3c8b628dc123ca74b581f",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Why are small gaps left between sections of a railway track?",
+          "answer": "So that the rails can expand in hot weather without buckling.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "1 mark.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "A copper rod 2 m long (α = 1.7 × 10⁻⁵ K⁻¹) is heated through 50 K. Find the increase in length.",
+          "answer": "1.7 × 10⁻⁵ × 2 × 50 = 1.7 × 10⁻³ m = 1.7 mm.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark substitution, 1 mark answer with unit.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Why does a thick glass tumbler crack if boiling water is poured in suddenly?",
+          "answer": "The inner surface expands first while the outer surface is still cool; the uneven expansion cracks the glass.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each part.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Explain how a bimetallic strip bends when heated.",
+          "answer": "The two metals expand by different amounts; the metal that expands more is on the outside of the curve.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A bar of length 3 m at 20 °C has α = 1.2 × 10⁻⁵ K⁻¹. Find its length at 120 °C.",
+          "answer": "ΔL = 1.2 × 10⁻⁵ × 3 × 100 = 3.6 × 10⁻³ m, so L = 3.0036 m.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark Δθ, 1 mark ΔL, 1 mark L.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 2nd Term scheme",
+          "locator": "Source ID SS1-SRC-2c924c964660; archive member SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; registered SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; 466432 bytes; source week locator(s): WEEK THREE. Prior source/member verification is reused; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation, examples and practice authored for this school curriculum; no third-party text reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3; branch lesson SUP-SS1-PHYS-002; mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/physics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W04-FUSE",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "The fuse: ratings, fusing factor and choosing a fuse",
+      "objectives": [
+        "Define a fuse, current rating, fusing current and fusing factor.",
+        "Choose a suitable fuse for an appliance.",
+        "List types of fuse and ways of detecting faults."
+      ],
+      "body": "A FUSE is a safety device placed in an electric circuit. It contains a thin wire (the fuse element) that heats up and melts when too much current flows, opening the circuit and protecting the appliance and wiring from damage or fire. A fuse is always fitted in the LIVE wire.\n\nTERMS. Current rating: the largest current the fuse can carry continuously without melting. Fusing current: the smallest current that will melt the element. Fusing factor = fusing current ÷ current rating (always more than 1).\nExample 1. A fuse has a rating of 10 A and a fusing current of 15 A: fusing factor = 15 ÷ 10 = 1.5.\n\nCHOOSING A FUSE. Find the normal working current I = P ÷ V and choose the fuse whose rating is just above it.\nExample 2. A 1.5 kW electric iron works from a 240 V supply. I = 1500 ÷ 240 = 6.25 A. Available ratings: 3 A, 5 A, 10 A, 13 A. The 3 A and 5 A fuses are too low and would blow; choose the 10 A fuse.\nExample 3. A 60 W lamp on 240 V draws 60 ÷ 240 = 0.25 A, so a 3 A fuse is suitable.\n\nTYPES. Rewirable fuse (element can be replaced), cartridge fuse (sealed glass or ceramic tube), high breaking-capacity fuse (for large fault currents).\nDETECTING FAULTS in a circuit. Continuity tester (is the circuit complete?), insulation-resistance tester (is there leakage through insulation?), polarity test with a test lamp or bell (is the switch in the live wire?), earth-loop impedance tester (is the earth connection good?).",
+      "body_sha256": "593c7108aafd96b01ad1cc64800174e5ff8649b0cd1c3f8aa9b9a6996e09c2c3",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define fusing factor and calculate it for a fuse rated 5 A that blows at 8 A.",
+          "answer": "Fusing current ÷ current rating = 8 ÷ 5 = 1.6.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark definition, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "A 2.4 kW heater works from 240 V. Calculate the working current and suggest a fuse from 5 A, 10 A, 13 A, 30 A.",
+          "answer": "I = 2400 ÷ 240 = 10 A; choose 13 A (a 10 A fuse has no margin).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark current, 1 mark choice with reason.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Why is a fuse placed in the live wire?",
+          "answer": "So that the appliance is disconnected from the live supply when the fuse blows.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "1 mark.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "List three types of fuse.",
+          "answer": "Rewirable, cartridge, high breaking-capacity.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Name two instruments used to test a fuse or check the continuity of its circuit.",
+          "answer": "A continuity tester and a Megger (insulation-resistance tester).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark for each suitable instrument.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-bed91bb4ef0e; archive member SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; 107008 bytes; source week locator(s): WEEK 4. Prior source/member verification is reused; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation, examples and practice authored for this school curriculum; no third-party text reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3; branch lesson SUP-SS1-PHYS-003; mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/physics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Surface tension: meaning, effects, applications and reduction",
+      "objectives": [
+        "Define surface tension and state its unit.",
+        "Explain surface tension using molecular forces.",
+        "Describe effects, applications and ways of reducing surface tension."
+      ],
+      "body": "MEANING. Inside a liquid each molecule is pulled equally in all directions by its neighbours. A molecule at the surface has neighbours only below and beside it, so there is a net pull inward. The surface therefore behaves like a stretched elastic skin that tries to have the smallest possible area. SURFACE TENSION γ is the force acting along the surface, at right angles to a line of unit length: γ = F/L. Its unit is newton per metre (N/m). For a soap film on a wire frame the film has two surfaces, so F = 2γL, i.e. γ = F/2L.\nExample 1. A soap film on a frame 5 cm (0.05 m) wide pulls with a force of 2.0 × 10⁻³ N. γ = F/2L = 2.0 × 10⁻³ ÷ (2 × 0.05) = 0.02 N/m.\nExample 2. Water has γ = 0.072 N/m. The pull on 8 cm (0.08 m) of its surface (one surface): F = γL = 0.072 × 0.08 = 5.8 × 10⁻³ N.\n\nEFFECTS. Soap bubbles and small droplets are spherical (a sphere has the smallest area for its volume); water striders walk on water; a clean needle or razor blade placed gently on water floats; mercury spilled on glass forms spherical beads.\nAPPLICATIONS. Waterproofing of cloth (the pores do not wet), blotting paper and wicks, the rise of molten wax up a candle wick.\nREDUCING SURFACE TENSION. Add soap, detergent, alcohol or similar impurities; heat the liquid (γ falls as temperature rises). This is why detergent helps to wash grease off cloth: the liquid spreads and wets better.",
+      "body_sha256": "dff2a30f8eaba1e1a787f7e4b9474f77e93fa5cc4e835bd85c115244af9237ee",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Define surface tension and give its SI unit.",
+          "answer": "The force per unit length acting along the surface of a liquid; N/m.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Why are small drops of liquid spherical?",
+          "answer": "Surface tension makes the surface contract to the smallest area; a sphere has the least surface for a given volume.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "A soap film on a frame 6 cm wide pulls with a force of 3.0 × 10⁻³ N. Find γ.",
+          "answer": "γ = 3.0 × 10⁻³ ÷ (2 × 0.06) = 0.025 N/m.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark formula, 1 mark substitution, 1 mark answer with unit.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "State three ways of reducing surface tension and two applications.",
+          "answer": "Add soap/detergent, add alcohol, heat; applications: waterproofing, blotting paper, wicks.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "1 mark each (max 5).",
+              "marks": 5
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "A needle floats on water but sinks when a drop of detergent is added. Explain.",
+          "answer": "Detergent reduces the surface tension, so the surface skin can no longer support the needle's weight.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-bed91bb4ef0e; archive member SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; 107008 bytes; source week locator(s): WEEK 7. Prior source/member verification is reused; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation, examples and practice authored for this school curriculum; no third-party text reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3; branch lesson SUP-SS1-PHYS-004; mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/physics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T3-W08-CAPILLARITY",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Capillarity: cohesion, adhesion and the rise or fall of liquids in narrow tubes",
+      "objectives": [
+        "Distinguish between cohesion and adhesion.",
+        "Explain capillary rise and fall using molecular forces.",
+        "Give applications of capillarity."
+      ],
+      "body": "DEFINITIONS. Cohesion is the force of attraction between molecules of the SAME substance (e.g. water–water). Adhesion is the force of attraction between molecules of DIFFERENT substances (e.g. water–glass). Capillarity is the rise or fall of a liquid in a narrow (capillary) tube.\n\nEXPLANATION (kinetic theory). In a glass tube dipped in water, the adhesion between water and glass molecules is stronger than the cohesion between water molecules. The water molecules at the wall are pulled up, the surface curves upward (concave meniscus), surface tension pulls the liquid up the tube, and it stops rising when the weight of the raised column balances the upward pull. In mercury the cohesion is stronger than the adhesion to glass, so the mercury surface curves downward (convex meniscus) and the level in the tube is DEPRESSED below the outside level. Water wets glass; mercury does not.\n\nNARROWER TUBES. The narrower the tube, the greater the rise. Worked example: if water rises 30 mm in a tube of radius 0.5 mm, then in a tube of radius 1 mm (twice as wide) it rises about 15 mm, because the rise is inversely proportional to the radius (an experimental result; the full formula is beyond this lesson).\n\nAPPLICATIONS. Oil rising up a lamp wick; a towel or blotting paper soaking up a spill; water rising from the soil through the fine tubes in plant roots and stems; ink flowing in a pen nib. Capillarity in building walls causes damp, which is why damp-proof courses are laid.",
+      "body_sha256": "6a5ec1d95882abba426c4bab25a1a191f88e10383e211c648547e5227c64c562",
+      "practice": [
+        {
+          "id": "Q01",
+          "question": "Differentiate between cohesion and adhesion.",
+          "answer": "Cohesion: attraction between like molecules; adhesion: attraction between unlike molecules.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q02",
+          "question": "Explain why water rises in a glass capillary tube.",
+          "answer": "Adhesion of water to glass is greater than cohesion in water, so the water is pulled up the wall and surface tension raises the column.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each of: adhesion > cohesion, surface curved, column rises.",
+              "marks": 3
+            }
+          ]
+        },
+        {
+          "id": "Q03",
+          "question": "Why is mercury depressed in a glass tube?",
+          "answer": "Cohesion between mercury molecules is greater than adhesion to glass.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q04",
+          "question": "Water rises 24 mm in a tube of radius 0.5 mm. How far will it rise in a tube of radius 1.5 mm?",
+          "answer": "Rise inversely proportional to radius: 24 ÷ 3 = 8 mm.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "1 mark method, 1 mark answer.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "Q05",
+          "question": "Give three applications of capillarity.",
+          "answer": "Oil in a wick, blotting paper, water rising in plants.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "1 mark each.",
+              "marks": 3
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "SS1 Physics 3rd Term scheme",
+          "locator": "Source ID SS1-SRC-bed91bb4ef0e; archive member SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; 107008 bytes; source week locator(s): WEEK 8. Prior source/member verification is reused; the binary archive was not rehashed during this port.",
+          "url": null,
+          "rights": "Original lesson explanation, examples and practice authored for this school curriculum; no third-party text reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Sow the Seed Schools SS1 Physics scheme; curriculum-aligned authored supplement."
+        },
+        {
+          "title": "Prior project-authored lesson draft in PR #71",
+          "locator": "Commit b5ced7ebb0efe22df2351baa140266fbf40cbf41; file blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3; branch lesson SUP-SS1-PHYS-005; mapped from the prior package fields into the current master schema.",
+          "url": "https://github.com/PDS-David/sts-school-app/blob/b5ced7ebb0efe22df2351baa140266fbf40cbf41/backend/src/db/ss1/subjects/physics.json",
+          "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
   "delivery_corrections": [],
   "assets": [],
   "coverage": [
@@ -1147,6 +1653,20 @@
         "COV-PHYS-T1-W02-OBJ-15",
         "COV-PHYS-T1-W02-OBJ-16",
         "PHYS-RULE-T1-REVISION-SCHEME"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYSICS-T2-T3-LESSON-REVIEW",
+      "kind": "OWNER_ACTION",
+      "detail": "The five ported 2nd/3rd Term Physics supplements have worked examples, answers and marking, but the prior branch cited no external reference and did not request teacher content approval. The source weeks may also contain evaluation, theory and weekend-assignment questions without answer keys; the lessons do not silently claim to key those source assessments.",
+      "required_action": "Teacher reviews all five supplements and records approval or defects; teacher also decides whether the source-week assessment blocks require separate answer keys. Keep each lesson content_approval=PENDING until approval is recorded.",
+      "affected_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE",
+        "SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS",
+        "SUP-SS1-PHYSICS-T3-W04-FUSE",
+        "SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION",
+        "SUP-SS1-PHYSICS-T3-W08-CAPILLARITY"
       ],
       "blocks_delivery": false
     }
