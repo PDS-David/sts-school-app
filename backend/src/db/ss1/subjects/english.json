@@ -746,6 +746,18 @@
         "locator": "word-extractor 1.0.4 getBody(), preamble scheme-of-work table, row 8 (two lines after the tab following '8')",
         "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text and in no parsed WEEK body; the WEEK EIGHT heading and topic lines are in upper case). Metadata only, not teaching; no source text removed."
       }
+    },
+    {
+      "id": "SS1-SRC-a00657d42196-R036",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-a00657d42196",
+      "source_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef",
+      "anchor": "Comprehension / Reading Skills: Introduction to Answering Comprehension Questions\nVocabulary Development: Words Associated with Religion.\nSpeech Work: Stress.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), preamble scheme-of-work table, row 9 (three lines after the tab following '9')",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text and in no parsed WEEK body; the WEEK NINE heading and topic lines are in upper case). Metadata only, not teaching; no source text removed."
+      }
     }
   ],
   "lessons": [
@@ -13373,6 +13385,308 @@
           "explanation": "Named only in the scheme row. No WEEK EIGHT paragraph teaches or practises a consonant sound, and the source does not say what 'more' adds to the Week 7 introduction. The consonant items printed just before WEEK EIGHT belong to the Week 7 revision. The Week 7 consonant work is indexed as ENGLISH-T1-W07-CS-* and is still a gap itself. What this objective should contain is an owner decision."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-SCHEME",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Week 9 scheme row (comprehension: introduction to answering comprehension questions; vocabulary: words associated with religion; speech work: stress)",
+      "objective_locator": "preamble scheme-of-work table, row 9 (anchor of rule SS1-SRC-a00657d42196-R036)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196-R036"
+      ],
+      "evidence": [
+        {
+          "locator": "preamble scheme-of-work table, row 9",
+          "explanation": "The scheme row names three objective groups: introduction to answering comprehension questions, vocabulary development (words associated with religion) and speech work: stress. It lies outside every parsed row, so rule SS1-SRC-a00657d42196-R036 classifies it SCHEME_ONLY. The teaching bodies are ENGLISH-BODY-029 to 031. The WEEK NINE topic line calls the speech objective 'formal and informal conversation (emphatic stress)', which is narrower than the scheme row's 'stress' and adds a formal/informal-conversation strand that no body paragraph teaches. The body adds an antonym revision set, a word-bank gap-fill weekend assignment and an informal-letter theory task that the scheme row does not name. Digit-only lines in the extracted text (for example lines 1271, 1297, 1311) are extraction artefacts, are not teaching and were left alone. Rows 10 and 11 of the table are not classified by this item."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-CO01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Answering comprehension: meaning of comprehension and the basic guide (check instructions, read quickly, read the questions, reread slowly, answer from the passage only)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1274-1284; UTF-8 joined-line SHA256 8361b80399bb7855817022581c03278f875397e077784516ca5eb24b7a73217d; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8 :: from 'CONTENT' to before 'Test on Synonyms or equivalent meaning'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1274-1284; UTF-8 joined-line SHA256 8361b80399bb7855817022581c03278f875397e077784516ca5eb24b7a73217d; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8",
+          "explanation": "The source defines comprehension as understanding and gives a five-step procedure ending with the rule to answer only from the passage and to avoid extraneous material. SUP-SS1-ENGLISH-READING-T1 teaches locating facts, supported inference, skimming versus scanning and summarising without inventing facts, but it is not bound to this row and does not teach the step-by-step answering procedure or the check-the-instructions step. Partly met elsewhere, not bound, so the objective stays PARTIAL."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-CO02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Comprehension test on synonyms: the substitute must fit the passage and keep the grammatical form (singular/plural, tense)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1285-1292; UTF-8 joined-line SHA256 f58bfe70567dbcd639b11705cfea86e9c59d1e00dd2a0228ac7849be556ec69a; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8 :: from 'Test on Synonyms or equivalent meaning' to before 'Evaluation'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1285-1292; UTF-8 joined-line SHA256 f58bfe70567dbcd639b11705cfea86e9c59d1e00dd2a0228ac7849be556ec69a; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8",
+          "explanation": "Gives a fit test and a same-grammatical-category rule with two examples (gets replaced by arrives, not arrived; digits replaced by figures, not figure). Source defect recorded and not repaired: the opening example lists 'expensive; extravagant, precious' as synonyms of costly, and extravagant does not mean costly; the wording about a plural 'substance' also means a plural form. The Term 1 supplements SUP-SS1-ENGLISH-MEANING-T1 and SUP-SS1-ENGLISH-REVISION-W04-T1 teach context clues and nearest-in-meaning choice but not this substitution test and are not bound to the row."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-CO03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Comprehension evaluation: passage on pages 68-71 of Effective English with its questions",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1293-1294; UTF-8 joined-line SHA256 14c693b78e21bb1997b4df8506603057b71b0dc042bacdcbba8377bcdba278c5; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8 :: from 'Evaluation' to before 'Reading Assignment'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1293-1294; UTF-8 joined-line SHA256 14c693b78e21bb1997b4df8506603057b71b0dc042bacdcbba8377bcdba278c5; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8",
+          "explanation": "Names pages 68-71 of Effective English. The passage and questions are not in the source, no edition is identified, and the scheme REFERENCES give 'Effective English Book .1-Michael Montgomery et al.' without an edition. Nothing is inferred about the passage."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-CO04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: more on comprehension, page 81 of Countdown in English Language by Evans",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1295-1296; UTF-8 joined-line SHA256 572657ca9b2309f29f3ac29018815a34625b3cf070fd99cf356875bb721b887d; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8 :: from 'Reading Assignment' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1295-1296; UTF-8 joined-line SHA256 572657ca9b2309f29f3ac29018815a34625b3cf070fd99cf356875bb721b887d; SS1-SRC-a00657d42196:BODY:c25ece57aeb4a9512e8a429d06da081e2c1f9f837f4056d6ee70d84eb36715d8",
+          "explanation": "Names page 81 of 'Countdown in English Language by Evans'. The page is not in the source and the title and author are not reconciled with the scheme REFERENCES ('Countdown English - O. Ogunsanwo et al.')."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-VR01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Religion vocabulary: definition of religion",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1300-1302; UTF-8 joined-line SHA256 733632170f91288c0c2d7f77635a76b9fb91c5304ef1d8c935e0fa961111b4fc; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab :: from 'Definition' to before 'Relevant words' list",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1300-1302; UTF-8 joined-line SHA256 733632170f91288c0c2d7f77635a76b9fb91c5304ef1d8c935e0fa961111b4fc; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab",
+          "explanation": "Defines religion as belief in the existence of a god or gods and the activities connected with worshipping them. No supplement teaches religion vocabulary. The definition is the source's own and is not verified or approved here."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-VR02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Religion vocabulary: seven glossed words (atheist, crucifix, doctrine, ethics, worship, supernatural, clergy)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1304-1310; UTF-8 joined-line SHA256 372623b20f8e02a6092e715b2fa32b3259a47cb0fe93dc1bdfa6b6dc6a29ee18; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab :: from 'Atheist' to end of the glossed list",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1304-1310; UTF-8 joined-line SHA256 372623b20f8e02a6092e715b2fa32b3259a47cb0fe93dc1bdfa6b6dc6a29ee18; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab",
+          "explanation": "Seven words have a short meaning each. Source defects recorded and not repaired: the doctrine gloss is garbled ('what is taught as the belief of, example, a religious, political or scientific body'); crucifix and clergy are defined for Christianity only ('ordained for Christian religious service') although the unit is headed with a general title and the weekend items use Muslims; there are no example sentences. No supplement teaches these words. Whether to keep a Christian-centred list or add multi-faith terms is an owner decision."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-VR03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Religion vocabulary: thirteen further words listed without meanings",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1312-1312; UTF-8 joined-line SHA256 0a10846a7b194648aebffe532fef39c7ef6d0db81cf7486227e6594f04a21ca3; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab :: from 'Others are:' to end of the list",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1312-1312; UTF-8 joined-line SHA256 0a10846a7b194648aebffe532fef39c7ef6d0db81cf7486227e6594f04a21ca3; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab",
+          "explanation": "The list names trinity, denomination, inter-denomination, creed, pew, benediction, monotheism, processional hymn, recessional hymn, warden, protestants, orthodox churches and Pentecostal churches with no meanings. These are not taught anywhere, and nothing is inferred about how the source intended them to be used. The weekend assignment words secular, pilgrimage, fanatics, Bible and monotheist are not glossed either (monotheism appears here, monotheist does not)."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-VR04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Religion vocabulary evaluation: choose religion words and use them in correct sentences",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1314-1315; UTF-8 joined-line SHA256 54209779661e6816b211c4f59f1be7797c8d0952a63acca6453ce6b53281b328; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab :: from 'EVALUATION' to before 'READING ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1314-1315; UTF-8 joined-line SHA256 54209779661e6816b211c4f59f1be7797c8d0952a63acca6453ce6b53281b328; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab",
+          "explanation": "Open-ended task with no word list, model sentences, marks or marking guide; no key exists. Nothing is inferred about the expected sentences."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-VR05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: more on religion, Unit 3 of Effective English, page 54",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1317-1318; UTF-8 joined-line SHA256 14bc3f520130593da61ee03046d69b3c7943e2b3a85a0a7ff3ba6f19b0a20a6a; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab :: from 'READING ASSIGNMENT' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1317-1318; UTF-8 joined-line SHA256 14bc3f520130593da61ee03046d69b3c7943e2b3a85a0a7ff3ba6f19b0a20a6a; SS1-SRC-a00657d42196:BODY:f5ad5aa6b525dff599cbba0eb31046274d73322df7fad805b9b22cd3ff1c5aab",
+          "explanation": "Names Unit 3, page 54 of Effective English. The same Unit 3 page 54 is the Week 8 comprehension reading assignment (ENGLISH-T1-W08-CO03), so one page is assigned in two weeks for different objectives; which is intended is an owner question. The page is not in the source and no edition is identified."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-FC01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Speech work: 'formal and informal conversation' (named in the WEEK NINE topic line and the row heading)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1270 and 1320; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: topic line and heading 'C. SPEECH WORK: FORMAL AND INFORMAL CONVERSATION: EMPHATIC STRESS'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1270 and 1320",
+          "explanation": "The topic line and the row heading name formal and informal conversation, but no paragraph teaches formal or informal conversation, register or its use with stress. The body content is emphatic stress only, and the scheme row says 'Stress' without the conversation strand. What the conversation objective should contain is an owner decision."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-ST01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Emphatic stress: definition (stressing one word more than the others in a sentence)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1322-1324; UTF-8 joined-line SHA256 602825f9d21301f4387abd9887fbd03ab7d23babd9ce74aea2fd53671581c511; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'The emphatic stress' to before 'EXAMPLES'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1322-1324; UTF-8 joined-line SHA256 602825f9d21301f4387abd9887fbd03ab7d23babd9ce74aea2fd53671581c511; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Defines emphatic stress as stressing a particular word more than the others. SUP-SS1-ENGLISH-STRESS-T3 (Term 3 word stress and intonation) is not bound to this row and does not teach emphatic stress under this name. Nothing in Term 1 teaches it."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-ST02",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Emphatic stress: three JAMES examples showing how the meaning shifts with the stressed word",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1326-1330; UTF-8 joined-line SHA256 91fcef88835dd9757bb9f0e8dac1d3bf0d4297918eebc4fc930fa945a6edd858; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'EXAMPLES' to before 'Test on emphatic stress'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1326-1330; UTF-8 joined-line SHA256 91fcef88835dd9757bb9f0e8dac1d3bf0d4297918eebc4fc930fa945a6edd858; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Three sentences (JAMES, BORROWED, NOVEL) each with a gloss of the contrast implied. Source defect recorded and not repaired: the second gloss reads 'steak' where 'steal' is meant. The extraction shows the stress by capital letters only; whether the document also shows bold was not checked."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-ST03",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Emphatic stress: test format (choose the question the sentence answers) with one worked example",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1331-1337; UTF-8 joined-line SHA256 fd113a2ae29e430b8c21754cbb8b76a74fc9311c6ed55c34292d5fe63b4b940a; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'Test on emphatic stress' to before 'Evaluation'",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1331-1337; UTF-8 joined-line SHA256 fd113a2ae29e430b8c21754cbb8b76a74fc9311c6ed55c34292d5fe63b4b940a; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Explains that the test asks which question the stressed sentence answers and works one example (My mother's FRIEND hates pets) with four options and the stated answer A. The extracted options carry no letters, so which option A is was not confirmed from the original layout; the first listed option (a boss instead of a friend) is the one the stress contrasts with. The worked key is the source's own and is not extended to other items."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-ST04",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Emphatic stress evaluation: two items (COFFEE; OPENLY) with two options each",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1339-1346; UTF-8 joined-line SHA256 34c49e2aa50d24ba67925938049088dd0155924cbe065485ff67b8bb814837a9; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'Evaluation' to before 'READING ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1339-1346; UTF-8 joined-line SHA256 34c49e2aa50d24ba67925938049088dd0155924cbe065485ff67b8bb814837a9; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Two items with two options each, unlike the four-option format the source describes. No key exists and no answer is inferred. No supplement has a matching exercise."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-ST05",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Reading assignment: more on emphatic stress, page 310 of Countdown by Evans",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1348-1349; UTF-8 joined-line SHA256 8745041dc078c0e26eb3507a006d3a158b8c90420cd2457ac14a80d7bb359cf8; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'READING ASSIGNMENT' to before 'GENERAL EVALUATION/ REVISION QUESTIONS:'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1348-1349; UTF-8 joined-line SHA256 8745041dc078c0e26eb3507a006d3a158b8c90420cd2457ac14a80d7bb359cf8; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Names page 310 of 'Countdown by Evans'. The page is not in the source and the title is not reconciled with the scheme REFERENCES."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-RV01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "General evaluation/revision: five antonym-and-fill-the-gap items (sportsmanship, cautious, natural flowers, giant, conservative)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1351-1357; UTF-8 joined-line SHA256 cae7d54c6fe575276436e8f31e779df3fe6c9a836db11b1be9cd3a18789ea3d9; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'GENERAL EVALUATION/ REVISION QUESTIONS:' to before 'WEEKEND ASSIGNMENT'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1351-1357; UTF-8 joined-line SHA256 cae7d54c6fe575276436e8f31e779df3fe6c9a836db11b1be9cd3a18789ea3d9; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Five items ask for the option most nearly opposite to the underlined word that also fills the gap. No key exists and no answer is inferred. Antonyms are not a Week 9 scheme objective. Item defects recorded and not repaired: the third item has no gap although the instruction says to fill one; the fourth and fifth items have five options and mixed option lettering; the fourth has a noun gap with two noun options that could both fit (dwarf, pigmy) and a spelling variant; the underlining was lost in extraction and the layout was not rendered to check it. The Term 1 supplement SUP-SS1-ENGLISH-MEANING-T1 teaches opposites only in passing and is not bound to this row."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-WA01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Weekend assignment: six gap-fill sentences from a nine-word bank (secular, ethics, denomination, doctrine, pilgrimage, fanatics, worship, Bible, monotheist)",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1359-1366; UTF-8 joined-line SHA256 fe9681f1c58375f015fdd0b5ee8f92f196470bff476967528bccf0a3de1dfa2f; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'WEEKEND ASSIGNMENT' to before 'Theory'",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1359-1366; UTF-8 joined-line SHA256 fe9681f1c58375f015fdd0b5ee8f92f196470bff476967528bccf0a3de1dfa2f; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "Six numbered sentences share a nine-word bank, so three words are unused. Four bank words (secular, pilgrimage, fanatics, monotheist) are not glossed in Week 9 and Bible is not a vocabulary item. No key exists and no answer is inferred; sentence 3 as printed reads 'cars and house' and is left as written."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W09-TH01",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Theory: write a letter to a friend abroad about the political changes in your country",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1368-1369; UTF-8 joined-line SHA256 5476d337b683293d3a96360bfaef549d6add59a63b4f7838d4dc69a5683faea9; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b :: from 'Theory' to end of body",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1368-1369; UTF-8 joined-line SHA256 5476d337b683293d3a96360bfaef549d6add59a63b4f7838d4dc69a5683faea9; SS1-SRC-a00657d42196:BODY:8ff56d08fa8dfcd14974f8cda0cca39c85f34fd11058531c58b7adc7b3fc283b",
+          "explanation": "An informal-letter task set in Week 9; the informal letter is a Week 11 objective in the scheme. SUP-SS1-ENGLISH-LETTERS-T1 teaches the organisation of an informal letter but is not bound to this row. No marks, length or rubric is given, and the topic is a political one: any model must not take a political position."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -13788,6 +14102,69 @@
         "ENGLISH-T1-W08-RV01",
         "ENGLISH-T1-W08-WA01",
         "ENGLISH-T1-W08-TH01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W09-EXTERNAL-MATERIALS",
+      "kind": "CONTENT",
+      "detail": "Week 9 refers to material that is not in the source document: the comprehension passage and questions on pages 68-71 of Effective English, Countdown in English Language by Evans page 81, Unit 3 page 54 of Effective English (also a Week 8 assignment) and Countdown by Evans page 310. No edition is identified for any of them and the scheme REFERENCES name a different Countdown author.",
+      "required_action": "Owner to supply authorised extracts and answers with edition, or accept labelled equivalent activities (queue item ENG-FACT-W09-EXTERNAL-MATERIALS). Do not infer the missing content.",
+      "affected_ids": [
+        "ENGLISH-T1-W09-CO03",
+        "ENGLISH-T1-W09-CO04",
+        "ENGLISH-T1-W09-VR05",
+        "ENGLISH-T1-W09-ST05"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W09-COMPREHENSION-GAP",
+      "kind": "CONTENT",
+      "detail": "The answering-comprehension procedure and the synonym-substitution test are not taught by any bound supplement. The source's first synonym example lists a word that does not mean costly.",
+      "required_action": "Author original teaching of the answering procedure and the substitution test with a keyed, marked exercise; correct the synonym example without editing the source row.",
+      "affected_ids": [
+        "ENGLISH-T1-W09-CO01",
+        "ENGLISH-T1-W09-CO02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W09-RELIGION-VOCAB-GAP",
+      "kind": "CONTENT",
+      "detail": "Religion vocabulary is not taught beyond the source's short list: seven glosses (one garbled, two Christian-only), thirteen words without meanings, an open-ended evaluation with no marking guide, and weekend words that are not glossed.",
+      "required_action": "Owner to decide the scope (Christian-centred or multi-faith, neutral wording); then author original glossed words with examples and a keyed, marked exercise.",
+      "affected_ids": [
+        "ENGLISH-T1-W09-VR01",
+        "ENGLISH-T1-W09-VR02",
+        "ENGLISH-T1-W09-VR03",
+        "ENGLISH-T1-W09-VR04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W09-STRESS-GAP",
+      "kind": "CONTENT",
+      "detail": "Emphatic stress is not taught in Term 1 beyond the source's own definition, three examples and one worked test item; the formal and informal conversation strand in the topic line has no teaching; the evaluation items have no key and use two options.",
+      "required_action": "Owner to state what formal and informal conversation should teach; author original emphatic-stress teaching with four-option keyed items and, if accepted, a short conversation-register task.",
+      "affected_ids": [
+        "ENGLISH-T1-W09-FC01",
+        "ENGLISH-T1-W09-ST01",
+        "ENGLISH-T1-W09-ST02",
+        "ENGLISH-T1-W09-ST03",
+        "ENGLISH-T1-W09-ST04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W09-REVISION-GAP",
+      "kind": "CONTENT",
+      "detail": "The antonym revision set, the word-bank weekend assignment and the political informal-letter theory task have no keys, marks or teaching, and the antonym items have structural defects.",
+      "required_action": "Author original keyed, marked antonym and word-bank items and a letter task; render the source privately first to read the underlining and option layout.",
+      "affected_ids": [
+        "ENGLISH-T1-W09-RV01",
+        "ENGLISH-T1-W09-WA01",
+        "ENGLISH-T1-W09-TH01"
       ],
       "blocks_delivery": true
     }
