@@ -3,8 +3,8 @@
   "subject": "English Language",
   "slug": "english",
   "generated_from": {
-    "master_sha": "5a6b262da5af914e6d7704e72a676a1161adcb50",
-    "package_blob_sha": "2f695b24ca12d2d8201adb3d48e398215076e151",
+    "master_sha": "9d13bc1640257fd1ec9f3f46f250e6bd499f5590",
+    "package_blob_sha": "0214c74ffdbea578850881667dfd306630c888f1",
     "package": "backend/src/db/ss1/subjects/english.json",
     "task": "SS1-02 English (PR #70 content, merged)"
   },
@@ -137,8 +137,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 213,
-    "PENDING": 22,
+    "IMPLEMENTED_TESTING_DEFERRED": 214,
+    "PENDING": 21,
     "BLOCKED": 7
   },
   "items": [
@@ -7337,8 +7337,8 @@
       "depends_on": [
         "ENG-WK-T3-W09"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T3-W09 on 2026-11-07; open item ENGLISH-T3-W09-WEEKEND-ASSIGNMENT. No lesson/content was authored by the indexing task.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Completed 2026-11-07 in package commit 9d13bc1640257fd1ec9f3f46f250e6bd499f5590. Added original supplement SUP-SS1-ENGLISH-WEEKEND-ANTONYMS-T3-W09 with five keyed questions (30 marks total); every marking-criterion total equals its question marks. The set is explicitly labelled as an original parallel Week 9 antonym practice, not a reproduction or claim about Effective English Practice 2 pages 86 or 88, which were not supplied or inspected. It tests clear antonyms, established prefix forms, -less adjectives and contextual relationships; it deliberately avoids the undefined “nearly opposite” phrase, which remains a separate teacher-review gate. Bound the supplement to ENGLISH-T3-W09-ANT05 as IMPLEMENTED_EQUIVALENT and removed the resolved ENGLISH-T3-W09-WEEKEND-ASSIGNMENT open item. Content approval remains PENDING and verification/testing DEFERRED.",
       "completion_condition": "The exact authorised exercises and answer key/marks are supplied, or an original parallel set is clearly labelled and fully keyed/marked; no missing exercise content is guessed.",
       "required_attachments": [
         {
@@ -7701,9 +7701,9 @@
   ],
   "review": {
     "date": "2026-11-07",
-    "reviewed_master_sha": "5a6b262da5af914e6d7704e72a676a1161adcb50",
+    "reviewed_master_sha": "9d13bc1640257fd1ec9f3f46f250e6bd499f5590",
     "reviewed_pr_head": null,
-    "scope": "English visual dispositions and one original keyed Week 8 weekend comparative equivalent; full curriculum tests, typechecks, importer, database and device checks remain deferred.",
+    "scope": "English visual dispositions and original keyed Week 8 comparative and Week 9 antonym weekend equivalents; full curriculum tests, typechecks, importer, database and device checks remain deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -7712,7 +7712,7 @@
       "availability": "User attachment; not committed to Git. Attach this archive to source-reading workers."
     },
     "queue_metadata_review_master": "d01704cd15aa69241a8775c5e072fd2297b1d71b",
-    "queue_metadata_review_note": "Three visual disposition tasks and the Week 8 weekend comparative equivalent are implemented. Original source renders remain private; package approval and verification gates remain unchanged."
+    "queue_metadata_review_note": "Three visual disposition tasks and two original keyed weekend-equivalent lessons are implemented. Original source renders remain private; package approval and verification gates remain unchanged."
   },
   "next_runnable": [
     "ENG-FACT-W04-UNIFIED-TEST",
@@ -7734,7 +7734,6 @@
     "ENG-LES-T3-W09-READING-SCOPE",
     "ENG-LES-T3-W09-ANTONYMS-SCOPE",
     "ENG-FACT-T3-W09-EXTERNAL-MATERIALS",
-    "ENG-LES-T3-W09-WEEKEND-KEY",
     "ENG-FACT-T3-W11-EXTERNAL-MATERIALS",
     "ENG-LES-T3-W11-WEEKEND-KEY"
   ]
