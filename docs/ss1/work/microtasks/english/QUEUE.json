@@ -81,16 +81,17 @@
     "2026-11-07 owner decision: SUP-SS1-ENGLISH-READING-T1 accepted as a labelled equivalent for ENGLISH-T1-W04-SK01; bound additively. Approval PENDING; verification DEFERRED.",
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run.",
     "2026-11-07 ENG-COR-016/017/021: completed correction-scope audits from the exact existing source-row IDs, replacement lessons and objective-level coverage evidence. Recorded per-objective statuses and retained precise existing blockers; no source text, lesson body, correction identity or coverage status changed. ENGLISH-BODY-057, ENGLISH-BODY-069 and ENGLISH-BODY-076 remain PARTIAL; their corrections remain inactive under ENGLISH-REPLACEMENT-SCOPE-RECONCILIATION. Queue tasks marked IMPLEMENTED_TESTING_DEFERRED; approval remains PENDING and verification/runtime/compiler tests remain DEFERRED.",
-    "2026-11-07 ENG-COR-023/024 and owner gates 074-078: verified COR-023 was already complete and retained its evidence. Completed COR-024 by making the reject/emit distinction explicit in the T3 meaning lesson, updating its UTF-8 body hash and keyed Q3, and recording the five objective statuses; ENGLISH-BODY-089 remains PARTIAL and the correction inactive because other synonym objectives and prescribed textbook assignments remain incomplete. Added precise owner/resource request evidence for prescribed passages, authorised audio model, per-lesson content approval and T1 W07 textbook assignments. The live package has 46 lessons (not 16 as stated in the older approval task); all remain PENDING with null approval references. No owner approvals, textbook extracts, rights statements or audio assets were invented; all five gate tasks remain BLOCKED."
+    "2026-11-07 ENG-COR-023/024 and owner gates 074-078: verified COR-023 was already complete and retained its evidence. Completed COR-024 by making the reject/emit distinction explicit in the T3 meaning lesson, updating its UTF-8 body hash and keyed Q3, and recording the five objective statuses; ENGLISH-BODY-089 remains PARTIAL and the correction inactive because other synonym objectives and prescribed textbook assignments remain incomplete. Added precise owner/resource request evidence for prescribed passages, authorised audio model, per-lesson content approval and T1 W07 textbook assignments. The live package has 46 lessons (not 16 as stated in the older approval task); all remain PENDING with null approval references. No owner approvals, textbook extracts, rights statements or audio assets were invented; all five gate tasks remain BLOCKED.",
+    "2026-11-07 final English test-draft checkpoint: drafted schema/terms, lesson hash/marking, no-fabricated-state, rule-guard and regression assertions in tests/ss1/english.package.test.mts. No tests were run. ENG-TEST-CORRECTION-IDENTITY assertion is present but its queue item remains PENDING because ENG-COR-001–008 and ENG-COR-018–020 are still PENDING. All content approval remains PENDING and verification remains DEFERRED."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 100,
-    "PENDING": 136,
+    "IMPLEMENTED_TESTING_DEFERRED": 105,
+    "PENDING": 131,
     "BLOCKED": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 100,
-    "PENDING": 136,
+    "IMPLEMENTED_TESTING_DEFERRED": 105,
+    "PENDING": 131,
     "BLOCKED": 6
   },
   "items": [
@@ -3847,8 +3848,8 @@
         "ENG-SRC-T2",
         "ENG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: frozen schema, canonical English Language identity, all three source terms and SS 1 assertions. Not run; owner-authorised verification deferred.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -3875,8 +3876,8 @@
         "ENG-SRC-T3",
         "ENG-LES-WORD-CLASSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: exact UTF-8 body hashes, unique lesson/practice IDs, required objectives/provenance/answers and exact marking totals. Not run; owner-authorised verification deferred.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -3927,7 +3928,7 @@
         "ENG-COR-024"
       ],
       "status": "PENDING",
-      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "implementation_reference": "The correction-identity assertion is drafted in tests/ss1/english.package.test.mts, but this queue task remains PENDING: dependencies ENG-COR-001–008 and ENG-COR-018–020 are still PENDING. Do not mark complete until those correction tasks are implemented and reconciled.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -3953,8 +3954,8 @@
         "ENG-SRC-T2",
         "ENG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: package remains PENDING; lesson/asset approvals are not fabricated and verification stays DEFERRED. Not run.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -3980,8 +3981,8 @@
         "ENG-SRC-T2",
         "ENG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: every rule is probed for wrong source hash, missing/repeated anchors and exact preservation apart from declared WEEK insertions. Synthetic guard tests only; not run and not a full-source parser comparison.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -4008,8 +4009,8 @@
         "ENG-SRC-T3",
         "ENG-LES-WORD-CLASSES-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "tests/ss1/english.package.test.mts does not exist on master. Pattern: tests/ss1/french.package.test.mts (French). Written test files stay NOT RUN (testing deferred by owner).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Drafted in tests/ss1/english.package.test.mts: /dʒ/ not /dz/, ride/site non-rhyme, /ʃ/ vs /ʒ/ voicing, chief/thief /iː/ and noun/verb stress exception. Not run.",
       "completion_condition": "Test written in the file (not run). Execution belongs to the later owner-authorised verification stage.",
       "required_attachments": []
     },
@@ -7710,11 +7711,6 @@
     "ENG-FACT-VISUAL-DISPOSITION-T1",
     "ENG-FACT-VISUAL-DISPOSITION-T2",
     "ENG-FACT-VISUAL-DISPOSITION-T3",
-    "ENG-TEST-SCHEMA-TERMS",
-    "ENG-TEST-LESSON-HASHES-MARKING",
-    "ENG-TEST-NO-FABRICATED-STATE",
-    "ENG-TEST-RULE-GUARDS",
-    "ENG-TEST-REGRESSION-EXAMPLES",
     "ENG-FACT-W01-EXTERNAL-MATERIALS",
     "ENG-FACT-W02-EXTERNAL-MATERIALS",
     "ENG-FACT-W03-EXTERNAL-MATERIALS",
@@ -7803,4 +7799,4 @@
     "ENG-FACT-T3-W11-EXTERNAL-MATERIALS",
     "ENG-LES-T3-W11-WEEKEND-KEY"
   ]
-}
+}\n
