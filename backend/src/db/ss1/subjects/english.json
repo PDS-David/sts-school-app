@@ -880,6 +880,18 @@
       }
     },
     {
+      "id": "SS1-SRC-50fa9b1eb2fd-R025",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "source_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f",
+      "anchor": "Essay Writing: More on formal letter.\nSpeech Work: Rhymes\nVocabulary Development: Words Associated with Government and Politics.\t",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() text, scheme-of-work table row 4, lines 21-23 (before the first WEEK ONE heading on line 46)",
+        "explanation": "Unique scheme-row anchor: lines 21 to 23 joined with newlines (the tab at the end of line 23 is outside the anchor). It occurs once in the unmodified extracted text and in no parsed body, so the compiler records it as a SCHEME_ONLY disposition. Metadata only, not teaching; no source text removed."
+      }
+    },
+    {
       "id": "SS1-SRC-a00657d42196-R034",
       "op": "classify_marker",
       "source_id": "SS1-SRC-a00657d42196",
@@ -17564,6 +17576,357 @@
           "explanation": "Shows noun clauses as a subject and as an object. Bound additively as partial support."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-SR01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Scheme-of-work table row 4: Essay Writing: More on formal letter; Speech Work: Rhymes; Vocabulary Development: Words Associated with Government and Politics",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 21-23; UTF-8 joined-line SHA256 c82a1b6defced81ee8f4f7dbf97a67cd331d5ae274a3c495676652da5c0c33ad; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd-R025"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 21-23; UTF-8 joined-line SHA256 c82a1b6defced81ee8f4f7dbf97a67cd331d5ae274a3c495676652da5c0c33ad; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "In the original (private LibreOffice docx rendering, not committed) row 4 of the one-column scheme table is one cell with three topic paragraphs; the text extraction flattens the table into unlabelled lines 7 to 43, before the first WEEK ONE heading, so no parsed body holds it. Rule SS1-SRC-50fa9b1eb2fd-R025 classifies the row SCHEME_ONLY. The three topics are the three Week 4 topics, but the scheme row lists formal letter first and rhymes second, while the Week 4 body lists rhymes first, then formal letter, then government vocabulary; the order difference changes nothing taught."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-TP01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Week 4 topic list: Speech Work: Rhymes; Essay Writing: More on formal Letter; Vocabulary Development: Words associated with Government and Politics",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 375-379; UTF-8 joined-line SHA256 fb9edc5a3218dda3ae46b42bbdda6aca184b6ef7bd87c08de6e611303d1c419b; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 375-379; UTF-8 joined-line SHA256 fb9edc5a3218dda3ae46b42bbdda6aca184b6ef7bd87c08de6e611303d1c419b; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The Week 4 heading and 'TOPIC' are bold and the three topic lines are an automatic list in the docx (numerals not in the extracted text). The list names the same three topics as scheme row 4 (SR01) in a different order. The whole week is one parsed body (ENGLISH-BODY-069, lines 375-503, titled only 'Speech Work: Rhymes'), so its row-level status says nothing about the letter or vocabulary topics. Each topic is indexed in its own entries below."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-RH01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Rhymes: the heading, the content labels (Definition, Rhyme pairs) and the definition",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 381-386; UTF-8 joined-line SHA256 8a316409c214df09e863a9006aff3326a345b22aa2a2ae880a412342724fea90; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 381-386; UTF-8 joined-line SHA256 8a316409c214df09e863a9006aff3326a345b22aa2a2ae880a412342724fea90; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'RHYMES' and the two content labels are an automatic list in the docx (numerals not in the extracted text); 'Content' is plain. The definition says a rhyme is 'two letters that have the same ending sound', which confuses letters with words or syllables: rhyme is a matter of the sounds of two words (or lines), not of letters, so the sentence must not be taught as written. The second sentence (rhyme in poetry, a pair of lines ending in the same sequence of sounds) is sound at sentence level."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: fifth paragraph, sentences 2-3",
+          "explanation": "Defines rhyme by sound (the final stressed vowel and the sounds after it agree, as in light/night) and says ride/site do not rhyme. This corrects the letter-based wording, but the replacement has no sentence on rhyme in poetry (matching line endings). Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-RH02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The fifteen rhyme pairs (should/would to dove/love)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 388-403; UTF-8 joined-line SHA256 151d32f7a781c4856d363bb6115e409bb18c248b8983848ffd05236ad22979b9; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+        "SUP-SS1-ENGLISH-PHONETICS-T3"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 388-403; UTF-8 joined-line SHA256 151d32f7a781c4856d363bb6115e409bb18c248b8983848ffd05236ad22979b9; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The pairs are numbered, tab- or space-aligned paragraphs, not a table object (numerals typed, not automatic, in the extracted text; two pairs, ball/call and dove/love, are in lower case). Pair 5, ride/site, is not a rhyme because the final consonants /d/ and /t/ differ; that is the defect named by correction SS1-02-english-COR-017. No other pair is shown to be wrong in this pass, but none was checked against a dictionary or a recording, and dove is ambiguous (the noun rhymes with love; an American past tense of dive does not). The pairs carry no transcription, so the list cannot be taught as a checked set."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-PHONETICS-T3: fifth paragraph, sentences 2-3 (light/night, and ride/site as a non-rhyme)",
+          "explanation": "Gives one correct pair and the ride/site counter-example but does not list or check the fifteen pairs. Replacement scope is therefore partial for this entry: only the definition and the one defect are covered. Bound additively as partial support; the original body stays unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-RH03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: choose from A-D the word with the same vowel sound as the underlined letters (five stem words: Lock, Best, Grew, Hill, Hunt)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 405-412; UTF-8 joined-line SHA256 066b890b974a3aa2cd55190eedc691898e87b78f4f3124d7bae6c9e4d6d0dda0; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 405-412; UTF-8 joined-line SHA256 066b890b974a3aa2cd55190eedc691898e87b78f4f3124d7bae6c9e4d6d0dda0; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'EVALUATION' is bold in the docx. The task depends on underlined letters in each stem word, but no underlining exists anywhere in the original (checked in the private docx rendering: no underline run in the table), so the vowel to match is not given and no key, answer or mark can be derived without guessing. The instruction also reads 'chosen' for 'choose' and asks for vowel sounds, not rhymes, so it does not test the rhyme topic. For the first row, none of Work, Port, Talk and Nurse shares the British-chart vowel of Lock (/ɒ/); whether a Nigerian-English reading would change that is not decided here. Nothing is inferred or keyed."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-RH04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: 'More on Rhyme', Standard Speech 10, page 32",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 414-415; UTF-8 joined-line SHA256 2c138cf570c9e215345efe89c74c5ce7167bc6ef8e9cbfc85333578c1ac34984; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 414-415; UTF-8 joined-line SHA256 2c138cf570c9e215345efe89c74c5ce7167bc6ef8e9cbfc85333578c1ac34984; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'READING ASSIGNMENT' is bold in the docx. The line names a book as 'Standard Speech 10' with a page, but gives no author, edition or publisher, and the page is not supplied, so the assignment cannot be located or checked. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Essay writing: more on the formal letter - the heading, content labels and the definition (a formal or official letter written to people in official positions)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 417-421; UTF-8 joined-line SHA256 961012af56d0a45c5d8e1970cb2497a7598660cc5ddc1d2386dda9cfdef8555b; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 417-421; UTF-8 joined-line SHA256 961012af56d0a45c5d8e1970cb2497a7598660cc5ddc1d2386dda9cfdef8555b; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The heading is bold with 'More on Formal Letter' plain, and 'Content', 'Definition' and 'Features' are an automatic list (numerals not in the extracted text). The definition (another name is official letters, written to people in official positions) is sound but thin; it gives no purposes or examples and does not separate a formal letter from a business letter. 'More on' implies earlier teaching, which is the 2nd Term formal-letter entry ENGLISH-T2-W03-FL01 (a lead only; not bound here). No supplement for this objective exists."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Formal letter feature 1: the writer's address (top right-hand corner; sample address and date)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 423-429; UTF-8 joined-line SHA256 884455404eeffc04043c5fbabfbfb100e6a32193a6a46100b2d7ea3c02bbe2fc; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 423-429; UTF-8 joined-line SHA256 884455404eeffc04043c5fbabfbfb100e6a32193a6a46100b2d7ea3c02bbe2fc; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The numbering of the features is typed in the extracted text, not automatic. The sample address (199, Airport Road, Kano, Nigeria. and the date 15th July, 2010.) is a sound layout example; the rule places the address top right and the date beneath it, but gives no instruction about commas or line breaks beyond the sample. Position and indentation are lost in the extraction and are not recorded here."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Formal letter feature 2: the receiver's address (on the line after the date, on the left; sample: The Director, Fola Associated Enterprises, P.M.B. 10016, Akure.)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 430-436; UTF-8 joined-line SHA256 c009c97302ff68ef07d71b620cf549396eaaa8dd02619584b11c2dd7f9a32b4a; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 430-436; UTF-8 joined-line SHA256 c009c97302ff68ef07d71b620cf549396eaaa8dd02619584b11c2dd7f9a32b4a; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The sample is a four-line address block. The rule says it follows the date 'on the line following the date on the left hand side' but does not say that the recipient's title or office comes first, that a gap separates it from the date, or what to do when the recipient's name is unknown. The sample address is fictional; no real business is implied."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Formal letter feature 3: the salutation (Dear Sir / Dear Madam, capital S and M, and a compulsory comma)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 438-445; UTF-8 joined-line SHA256 1df5542a07d5d9c5af948ff13a22cc382799ab808efeca44e262a96da88e2dcd; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 438-445; UTF-8 joined-line SHA256 1df5542a07d5d9c5af948ff13a22cc382799ab808efeca44e262a96da88e2dcd; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The sentence 'The S or M must be in capital' means the initial letter of Sir and Madam; it is correct at sentence level. The claim that the comma after the salutation is 'compulsory' states one punctuation convention (closed punctuation) as a rule: open punctuation, with no comma, is also accepted in practice, so it must not be taught as universal. The salutation is not paired with the closing, which the later feature does (Yours faithfully with Sir or Madam). The 'Dear Sir' and 'Dear Madam' lines are plain paragraphs."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL05",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Formal letter feature 4: the heading, topic or title (directly after the salutation, short, capitals throughout or underlined; examples: Invitation to a religious seminar / Complaints about the lack of facilities in my area.)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 447-451; UTF-8 joined-line SHA256 c17b5078c359479c4847a1ab9bb111499216acffd68b3580ac6f2a593e8a3a88; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 447-451; UTF-8 joined-line SHA256 c17b5078c359479c4847a1ab9bb111499216acffd68b3580ac6f2a593e8a3a88; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The two examples are an automatic list (numerals not in the extracted text). 'It is only official letter that has a heading' overstates: other letters (for example a semi-formal letter, Week 7) may carry a subject line, so it must not be taught as an absolute. The last sentence is garbled: 'when the first word of every lexical item is in capital letter' presumably means the first letter of each main word, which the source does not say. The second example ends with a full stop and the first does not, so the examples are inconsistent. Nothing is repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL06",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Formal letter feature 5: the body (no pleasantries, no slang or contractions, polite and formal words)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 453-454; UTF-8 joined-line SHA256 1653bc740043e0afba0a73ac79870ac26fd622cdd6816c3e9df24eac02e7631f; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 453-454; UTF-8 joined-line SHA256 1653bc740043e0afba0a73ac79870ac26fd622cdd6816c3e9df24eac02e7631f; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The line 'No room for exchange of pleasantries matters. Slang and contracted forms like won't, can't.' is two incomplete sentences (the verb 'avoid' is missing before 'Slang and contracted forms'), and the word 'matters' is stray. The guidance is sound in intent (formal register, no slang, no contractions) but there is no advice on paragraphing, an opening statement of purpose, or a closing request. Nothing is repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL07",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Formal letter feature 6: the subscript or complimentary close (Yours faithfully, signature, Kingsley Effiong,)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 456-462; UTF-8 joined-line SHA256 ad9ed2d81bdefd2699102e8e0347fd813875c0b4499f9392dbf1b1279147acdc; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 456-462; UTF-8 joined-line SHA256 ad9ed2d81bdefd2699102e8e0347fd813875c0b4499f9392dbf1b1279147acdc; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'Subscript (Complementary close)' is the source's label, with 'Complementary' for the usual 'Complimentary'. 'Formal letters end mostly with' Yours faithfully is the right close for Dear Sir or Dear Madam; the rule for a named recipient (Yours sincerely) is not given. The opening quotation mark before 'Yours faithfully,' is never closed, and the layout (signature line, then the printed name with a trailing comma) is lost in the extraction. No model closing is checked against a convention beyond the sample."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL08",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: write a letter to the Commissioner for Education in your state, informing him of your council's plan and how the council intends to implement its aid programme to schools",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 464-465; UTF-8 joined-line SHA256 a06fbc25ae2b7e2f6c63763e614941029920e8faa319ad964390dc4ca2c4c7c7; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 464-465; UTF-8 joined-line SHA256 a06fbc25ae2b7e2f6c63763e614941029920e8faa319ad964390dc4ca2c4c7c7; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'EVALUATION' is bold in the docx. The task is a real writing task but 'your council' is not defined (a student council, a local council or another body, so the content is not given), 'implements' is a slip for 'implement', and the task has no length, no marks and no marking criteria. No key, model letter or rubric exists and none is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-FL09",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown in English, pages 54 to 57",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 467-468; UTF-8 joined-line SHA256 98db7445f38fca3c16492ad4779e374824ceaf9a24d01d265de78817919e0b4d; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 467-468; UTF-8 joined-line SHA256 98db7445f38fca3c16492ad4779e374824ceaf9a24d01d265de78817919e0b4d; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'READING ASSIGNMENT' is bold in the docx. The line names the book as 'Countdown in English' with pages 54-57, without author or edition (the later assignment names Evans). The pages are not supplied, so the assignment cannot be located or checked. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-GV01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Vocabulary development: words associated with government and politics - the heading, content labels and the definitions of government and politics",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 470-477; UTF-8 joined-line SHA256 73c0b73534ee6f6dbe7be9f38b73a221855dee67096e43f01c00dba6a8c0f1c8; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 470-477; UTF-8 joined-line SHA256 73c0b73534ee6f6dbe7be9f38b73a221855dee67096e43f01c00dba6a8c0f1c8; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The heading and its three content labels are an automatic list (numerals not in the extracted text). The gloss of government ('a form of system of government or the act or process of governing') uses the word it defines and is hard to follow; the gloss of politics (ideas and activities concerned with gaining and using power in a country, city, etc.) is sound, with 'e.t.c.' for etc. Neither definition is checked against a dictionary in this pass, so they are not taught as written."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-GV02",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "The nine relevant words and meanings: ballot box, constituency, democracy, despot, electoral college, nomination, political party, voting age, election",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 479-488; UTF-8 joined-line SHA256 81e9f6a222e2eb5b8b120a7bd63ec7c6ab36157740f064c1317ac6511828c7f7; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 479-488; UTF-8 joined-line SHA256 81e9f6a222e2eb5b8b120a7bd63ec7c6ab36157740f064c1317ac6511828c7f7; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "The words are a numbered two-column table in the docx (a header row 'Relevant words | Meaning'; the numerals are typed in the extracted text). Several glosses cannot be taught as written: despot ends with 'directly or through representatives', copied from democracy and wrong for a ruler who oppresses people; electoral college says its members are 'already voted in as members of house' who then 'vote in the president', which describes no particular system and is not how Nigeria's president is chosen; political party is defined by 'practising politics', which is circular; the election gloss ends with a semicolon. Democracy, ballot box, constituency, nomination and voting age are sound at sentence level. No dictionary or constitutional check is made in this pass and nothing is repaired."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-GV03",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Evaluation: choose five government and politics words and use them in sentences",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 490-493; UTF-8 joined-line SHA256 23c1948dce36fd2e7afffc5592a7aebb9e008d42fdab48bba217d2bb041f32f3; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 490-493; UTF-8 joined-line SHA256 23c1948dce36fd2e7afffc5592a7aebb9e008d42fdab48bba217d2bb041f32f3; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'EVALUATION' is bold in the docx. The learner chooses the five words, so no fixed key is possible; a marking guide would need to say what makes a sentence correct (meaning, grammar, context). The stray line 'Use them in sentences' repeats the instruction. There are no marks or marking criteria and none is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-GV04",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Reading assignment: Countdown in English by Evans, pages 147 to 148",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 494-495; UTF-8 joined-line SHA256 c3db9f3b8bd941bd3b2787c119d0fc80257156ec7f470f91ee69b9869201fd30; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 494-495; UTF-8 joined-line SHA256 c3db9f3b8bd941bd3b2787c119d0fc80257156ec7f470f91ee69b9869201fd30; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'READING ASSIGNMENT' is bold in the docx. The author is given as Evans and no edition; the first assignment (FL09) names the same title without an author. The pages are not supplied, so the assignment cannot be located or checked. Nothing is inferred."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-WA01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Weekend assignment: fill the eight blanks of a passage on government with words from a bracketed list of fourteen (democracy, executive, despot, legislature, voting, ballet, electoral, booth, party, vote, constituency, candidate, nominate, election)",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 497-500; UTF-8 joined-line SHA256 1fa5879e9c71eca5b3854e36392e194d0279c40ade9104a85542798f077e0fa4; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 497-500; UTF-8 joined-line SHA256 1fa5879e9c71eca5b3854e36392e194d0279c40ade9104a85542798f077e0fa4; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'WEEKEND ASSIGNMENT' is bold in the docx. The passage has eight blanks and the list has fourteen words, so six are distractors, and 'ballet' is almost certainly a slip for 'ballot' (the source's own word list in the vocabulary table is 'ballot box'). The first blank ('In a ___ system of government') does not fit 'democracy' grammatically (it would need 'democratic'), 'refused to ___ him' admits both nominate and vote, and 'Each is usually nominated' has no noun for 'Each'. Because several fills are open, no key is fixed here and none is invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T3-W04-TH01",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "objective": "Theory: write a letter to your father, who is in another country, telling him about the political situation of your country",
+      "objective_locator": "word-extractor 1.0.4 getBody() text lines 502-503; UTF-8 joined-line SHA256 ab2a6112d027bd59aa65d353b3c1490eac50ac11498bb613c37ed9b2cc097fa2; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+        "SUP-SS1-ENGLISH-LETTERS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() text lines 502-503; UTF-8 joined-line SHA256 ab2a6112d027bd59aa65d353b3c1490eac50ac11498bb613c37ed9b2cc097fa2; SS1-SRC-50fa9b1eb2fd:BODY:b65d7e4b9e0df67377fe5929bc1a08bef2a90eb7117395561792e1e6e832447a",
+          "explanation": "'THEORY' is bold in the docx. The letter is to a close relative, so it follows the informal letter (the 1st Term informal-letter supplement), although the topic belongs to this week's vocabulary. The task has no length, no marks and no criteria, and no key or model letter. The topic is a matter on which different people hold different views, so any model should teach the form and the use of the vocabulary, not a political position; nothing is invented."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-LETTERS-T1: first paragraph",
+          "explanation": "Teaches the organisation of an informal letter (address and date where required, greeting, opening, body, close). It is a letter of advice to a fictional relative, not this task, and has no political topic. Bound additively as partial support for the form only."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -18763,6 +19126,77 @@
         "ENGLISH-T3-W03-WA01",
         "ENGLISH-T3-W03-TH01",
         "ENGLISH-BODY-068"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W04-EXTERNAL-MATERIALS",
+      "kind": "FACT",
+      "detail": "Week 4 depends on published material the source does not contain: 'More on Rhyme' in Standard Speech 10 page 32 (no author or edition), Countdown in English pages 54-57 and Countdown in English by Evans pages 147-148 (author and edition given for only one of them). The evaluation on vowel sounds also depends on underlined letters that the original does not contain.",
+      "required_action": "Supply the exact authorised extracts and editions, and the underlined letters of the vowel-sound items, or have the owner accept labelled original equivalent activities (see ENGLISH-PRESCRIBED-PASSAGES). Until then none is taught as checked (queue item ENG-FACT-T3-W04-EXTERNAL-MATERIALS).",
+      "affected_ids": [
+        "ENGLISH-T3-W04-RH03",
+        "ENGLISH-T3-W04-RH04",
+        "ENGLISH-T3-W04-FL09",
+        "ENGLISH-T3-W04-GV04",
+        "ENGLISH-BODY-069"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W04-RHYMES",
+      "kind": "CONTENT",
+      "detail": "The rhymes content defines rhyme by letters, lists fifteen unchecked pairs of which one (ride/site) is not a rhyme, and its evaluation asks for vowel sounds without the underlined letters or a key. Correction SS1-02-english-COR-017 replaces the whole body with SUP-SS1-ENGLISH-PHONETICS-T3, which defines rhyme by sound and names the ride/site defect but has no poetry-lines sentence, no checked rhyme list and no keyed rhyme practice. The replacement therefore covers only the rhyme topic of a body that also holds the letter and vocabulary topics, so the row-level IMPLEMENTED_EQUIVALENT status of ENGLISH-BODY-069 overstates its scope; that status is left unchanged here and the downgrade is left to the owner, as for ENGLISH-BODY-021.",
+      "required_action": "Author original rhyme teaching and an original keyed, marked practice set (rhyming pairs with transcriptions, odd-one-out, and vowel-sound matching with the target letters stated), labelled original, bound additively to SUP-SS1-ENGLISH-PHONETICS-T3 (queue item ENG-LES-T3-W04-RHYMES). Do not key the source's unmarked evaluation.",
+      "affected_ids": [
+        "ENGLISH-T3-W04-TP01",
+        "ENGLISH-T3-W04-RH01",
+        "ENGLISH-T3-W04-RH02",
+        "ENGLISH-T3-W04-RH03",
+        "ENGLISH-BODY-069"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W04-FORMAL-LETTER",
+      "kind": "CONTENT",
+      "detail": "The formal-letter content has no supplement. It states two conventions as absolutes (a compulsory comma after the salutation; that only a formal letter has a heading), has a garbled heading-capitalisation sentence, an incomplete body rule, an unclosed quotation mark and the label 'Complementary close', gives no rule for Yours sincerely, and has no model letter, paragraph guidance or marking criteria.",
+      "required_action": "Author an original formal-letter lesson (layout, register, salutation and close pairing, optional open punctuation, a labelled original model letter and a keyed, marked layout exercise), labelled original, bound additively to the source body (queue item ENG-LES-T3-W04-FORMAL-LETTER). The 2nd Term entry ENGLISH-T2-W03-FL01 and the report layout in SUP-SS1-ENGLISH-ESSAY-REPORT-T1 are leads only.",
+      "affected_ids": [
+        "ENGLISH-T3-W04-FL01",
+        "ENGLISH-T3-W04-FL02",
+        "ENGLISH-T3-W04-FL03",
+        "ENGLISH-T3-W04-FL04",
+        "ENGLISH-T3-W04-FL05",
+        "ENGLISH-T3-W04-FL06",
+        "ENGLISH-T3-W04-FL07",
+        "ENGLISH-BODY-069"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W04-GOVERNMENT-VOCAB",
+      "kind": "CONTENT",
+      "detail": "The government and politics glosses are not reliable as written (government is defined with itself, the despot gloss is copied from democracy, the electoral college gloss describes no particular system, political party is circular, the election gloss ends with a semicolon) and nothing is checked against a dictionary or a constitutional text.",
+      "required_action": "Author original, reviewed glosses for the nine words and a short keyed, marked vocabulary practice, labelled original, with every gloss checked against a named dictionary and any Nigerian-constitution statement checked against an authorised source (queue item ENG-LES-T3-W04-GOVERNMENT-VOCAB). Do not repair the source glosses in place.",
+      "affected_ids": [
+        "ENGLISH-T3-W04-GV01",
+        "ENGLISH-T3-W04-GV02",
+        "ENGLISH-BODY-069"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T3-W04-ASSESSMENTS",
+      "kind": "CONTENT",
+      "detail": "The four assessment tasks have no key or criteria: the letter to the Commissioner (undefined 'council'), the choose-five-words sentence task, the eight-blank government passage (ballet for ballot, an ungrammatical first blank, open fills, 'Each' without a noun) and the letter to a father about the political situation (no length or criteria).",
+      "required_action": "After the owner settles the council in the letter task, author original keyed or rubric-marked items for each task, labelled original, with a stated mark scheme and a neutral treatment of the political topic, bound additively to the formal-letter, informal-letter and vocabulary lessons (queue item ENG-LES-T3-W04-ASSESSMENTS).",
+      "affected_ids": [
+        "ENGLISH-T3-W04-FL08",
+        "ENGLISH-T3-W04-GV03",
+        "ENGLISH-T3-W04-WA01",
+        "ENGLISH-T3-W04-TH01",
+        "ENGLISH-BODY-069"
       ],
       "blocks_delivery": true
     }

@@ -65,21 +65,22 @@
     "ENG-WK-T2-W10 (2026-11-07): 2nd Term Week 10 indexed at objective level; 1 coverage entry and rule R012 added to english.json, ENGLISH-BODY-047 (scheme row 10, a parsed one-line row) reclassified MARKER, one open item opened and one PENDING follow-up appended (ENG-LES-T2-W10-REVISION). Indexing complete, content gap not closed; the source gives only the heading General Revision Class [GRC], with no revision list, question, assignment or key, so nothing is bound and the entry is UNRESOLVED. This completes 2nd Term Weeks 1 to 10 indexing (ENG-WK-T2-W01 to W10). No external materials are referenced, so no FACT item. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T3-W01 (2026-11-07): 3rd Term Week 1 indexed at objective level; 15 coverage entries and rule R022 added to english.json (the Week 1 scheme row is row 1 of a one-column table that the extraction flattens into the unparsed preamble, so it is classified by a SCHEME_ONLY rule and a MARKER entry, not by reclassifying a parsed body), five open items opened and five PENDING follow-ups appended (ENG-LES-T3-W01-REVISION, -WORD-MEANING, -MISSPELT, -DICTIONARY and ENG-FACT-T3-W01-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 10 entries PARTIAL, 4 UNRESOLVED (revision has no content; the unit 8 and unit 10 Effective English passages are not supplied). ENGLISH-BODY-059 and ENGLISH-BODY-060 stay row-level PARTIAL and are named in open items. The title lines 1 to 6 and scheme rows 2 to 12 remain in the unparsed PREAMBLE disposition for the other week tasks. Approval stays PENDING and verification DEFERRED. next_runnable updated; NEXT_TASK.md and QUEUE_BUILD.md were outside this item's write paths and are unchanged.",
     "ENG-WK-T3-W02 (2026-11-07): 3rd Term Week 2 indexed at objective level; 20 coverage entries and rule R023 added to english.json (scheme row 2 is flattened into the unparsed preamble, so it is classified by a SCHEME_ONLY rule and a MARKER entry), seven open items opened and seven PENDING follow-ups appended (ENG-LES-T3-W02-MAIN-POINT, -SUMMARY, -ADVERTISING, -ADJUNCTS, -NARRATIVE, -ASSESSMENTS and ENG-FACT-T3-W02-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: {'MARKER': 1, 'UNRESOLVED': 6, 'PARTIAL': 13}. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed.",
-    "ENG-WK-T3-W03 (2026-11-07): 3rd Term Week 3 indexed at objective level; 26 coverage entries and rule R024 added to english.json, 6 open items opened and 6 PENDING follow-ups appended (ENG-LES-T3-W03-READING-SUMMARY, ENG-LES-T3-W03-CLAUSES, ENG-LES-T3-W03-EXPOSITORY, ENG-LES-T3-W03-FAMILY-VOCAB, ENG-LES-T3-W03-ASSESSMENTS, ENG-FACT-T3-W03-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 16 PARTIAL, 9 UNRESOLVED, 1 MARKER. The week's passage-dependent topics are UNRESOLVED because no passage text is supplied, and the clauses and family-vocabulary bodies carry source defects recorded as open items. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed."
+    "ENG-WK-T3-W03 (2026-11-07): 3rd Term Week 3 indexed at objective level; 26 coverage entries and rule R024 added to english.json, 6 open items opened and 6 PENDING follow-ups appended (ENG-LES-T3-W03-READING-SUMMARY, ENG-LES-T3-W03-CLAUSES, ENG-LES-T3-W03-EXPOSITORY, ENG-LES-T3-W03-FAMILY-VOCAB, ENG-LES-T3-W03-ASSESSMENTS, ENG-FACT-T3-W03-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 16 PARTIAL, 9 UNRESOLVED, 1 MARKER. The week's passage-dependent topics are UNRESOLVED because no passage text is supplied, and the clauses and family-vocabulary bodies carry source defects recorded as open items. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed.",
+    "ENG-WK-T3-W04 (2026-11-07): 3rd Term Week 4 indexed at objective level; 21 coverage entries and rule R025 added to english.json, 5 open items opened and 5 PENDING follow-ups appended (ENG-LES-T3-W04-RHYMES, -FORMAL-LETTER, -GOVERNMENT-VOCAB, -ASSESSMENTS, ENG-FACT-T3-W04-EXTERNAL-MATERIALS). Indexing complete, content gaps not closed: 16 PARTIAL, 4 UNRESOLVED, 1 MARKER. The row-level IMPLEMENTED_EQUIVALENT of ENGLISH-BODY-069 overstates a replacement that covers only rhymes; left to the owner. Approval stays PENDING and verification DEFERRED. next_runnable updated; queue counts recomputed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 32,
-    "LESSON": 103,
+    "LESSON": 107,
     "CORRECTION_BINDING": 24,
-    "FACTUAL_DEPENDENCY": 29,
+    "FACTUAL_DEPENDENCY": 30,
     "ASSET": 1,
     "TEST": 6,
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 65,
-    "PENDING": 129,
+    "IMPLEMENTED_TESTING_DEFERRED": 66,
+    "PENDING": 133,
     "BLOCKED": 5
   },
   "items": [
@@ -1545,6 +1546,164 @@
       "required_attachments": []
     },
     {
+      "id": "ENG-LES-T3-W04-RHYMES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4, coverage ENGLISH-T3-W04-TP01, RH01, RH02 and RH03",
+      "objective": "Author original rhyme teaching and original keyed, marked rhyme and vowel-sound practice, labelled original, bound additively to the phonetics supplement.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W04 on 2026-11-07; not implemented. Open item ENGLISH-T3-W04-RHYMES.",
+      "completion_condition": "ENGLISH-T3-W04-TP01, RH01, RH02 and RH03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W04-FORMAL-LETTER",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4, coverage ENGLISH-T3-W04-FL01 to FL07",
+      "objective": "Author an original formal-letter lesson with a labelled original model letter and a keyed layout exercise, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W04 on 2026-11-07; not implemented. Open item ENGLISH-T3-W04-FORMAL-LETTER.",
+      "completion_condition": "ENGLISH-T3-W04-FL01 to FL07 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W04-GOVERNMENT-VOCAB",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4, coverage ENGLISH-T3-W04-GV01 and GV02",
+      "objective": "Author original, dictionary-checked government and politics glosses and keyed, marked vocabulary practice, labelled original.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W04 on 2026-11-07; not implemented. Open item ENGLISH-T3-W04-GOVERNMENT-VOCAB.",
+      "completion_condition": "ENGLISH-T3-W04-GV01 and GV02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-LES-T3-W04-ASSESSMENTS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-50fa9b1eb2fd",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4, coverage ENGLISH-T3-W04-FL08, GV03, WA01 and TH01",
+      "objective": "Author original keyed or rubric-marked versions of the four Week 4 assessment tasks, labelled original, with a stated mark scheme.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by ENG-WK-T3-W04 on 2026-11-07; not implemented. Open item ENGLISH-T3-W04-ASSESSMENTS.",
+      "completion_condition": "ENGLISH-T3-W04-FL08, GV03, WA01 and TH01 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 ENGLISH LANGUAGE.doc",
+          "member_sha256": "3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f"
+        }
+      ]
+    },
+    {
+      "id": "ENG-FACT-T3-W04-EXTERNAL-MATERIALS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": null,
+      "term": null,
+      "week_or_locator": "open_items ENGLISH-T3-W04-EXTERNAL-MATERIALS",
+      "objective": "Obtain the material Week 4 refers to but the source does not contain (Standard Speech 10 p. 32, Countdown in English pp. 54-57 and 147-148, with editions, and the underlined letters of the vowel-sound items), or have the owner accept labelled original equivalent activities.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/work/SS1-02/CHECKPOINT.md",
+        "docs/ss1/contracts/CONTRACT.md",
+        "docs/ss1/work/SS1-02/author_english.py"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/english.json",
+        "docs/ss1/work/microtasks/english/QUEUE.json"
+      ],
+      "depends_on": [
+        "ENG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "english.json open_items[id=ENGLISH-T3-W04-EXTERNAL-MATERIALS] kind=FACT blocks_delivery=true; affected coverage ENGLISH-T3-W04-RH03, RH04, FL09 and GV04. Needs owner-supplied material or an owner decision. Raised by ENG-WK-T3-W04 on 2026-11-07.",
+      "completion_condition": "Owner supplies authorised material with edition, or records acceptance of equivalent activities; the open item and coverage entries are updated accordingly.",
+      "required_attachments": []
+    },
+    {
       "id": "ENG-WK-T3-W04",
       "kind": "SOURCE_WEEK_INDEXING",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -1565,8 +1724,8 @@
       "depends_on": [
         "ENG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json coverage ENGLISH-BODY-069 (1 body-level rows; statuses {'IMPLEMENTED_EQUIVALENT': 1}). Row titles: ENGLISH-BODY-069='Speech Work: Rhymes'. Corrected rows: ENGLISH-BODY-069 <- SS1-02-english-COR-017 -> SUP-SS1-ENGLISH-PHONETICS-T3. Row-level only: coverage entries say a row-level association is not an exhaustive scheme-objective certification. Rows whose locator labels are spelled-out week numbers (ONE, TWO, …) appear to be scheme-table rows; no classify_marker/SCHEME_ONLY rule exists in the package yet.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-07: verified archive SHA256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA256 3a2174ad562794b593c42cbd61fc68843703846651fc0d2bbac3b38b0d9c0f5f (extracted privately from docs/ss1/sources/SSS1-original.zip, not committed); word-extractor 1.0.4 getBody() text SHA256 110664bb2bf069f41e3a7e7ec700be55b9bb2503931f3b2bc88bed39d8edfbfb (1262 lines). Week 4 is one parsed row, ENGLISH-BODY-069 (lines 375-503, titled only 'Speech Work: Rhymes'), unchanged and still row-level IMPLEMENTED_EQUIVALENT through correction COR-017; that status overstates its scope because the replacement SUP-SS1-ENGLISH-PHONETICS-T3 covers only the rhyme topic, not the formal letter or the government vocabulary, and the downgrade is left to the owner (open item ENGLISH-T3-W04-RHYMES). Added 21 coverage entries: 16 PARTIAL, 4 UNRESOLVED, 1 MARKER. Original structure inspected (private LibreOffice docx conversion): scheme row 4 is one cell with three topics, flattened by the extraction into the unparsed preamble (lines 21-23), so new SCHEME_ONLY rule SS1-SRC-50fa9b1eb2fd-R025 classifies it and coverage ENGLISH-T3-W04-SR01 is MARKER; the vowel-sound evaluation is a 6x5 table with no underlining anywhere, and the nine government words are a numbered table; automatic numbering and bold labels are recorded where the text loses them. Standard Speech 10 p. 32, Countdown in English pp. 54-57 and Countdown in English by Evans pp. 147-148 are not supplied. The phonetics and informal-letter supplements are bound additively as partial support; the 2nd Term formal-letter entry and the report layout are named as leads only. Source defects recorded, not repaired (rhyme defined by letters, ride/site, the vowel-sound task with no underlined letters, compulsory comma, only-formal-letters-have-headings, despot, electoral college, ballet). Open items: ENGLISH-T3-W04-EXTERNAL-MATERIALS, -RHYMES, -FORMAL-LETTER, -GOVERNMENT-VOCAB, -ASSESSMENTS (all blocks_delivery); every Week 4 PARTIAL/UNRESOLVED entry is named in at least one. No lessons or corrections changed; 5 follow-up items appended. Full tests, typechecks, importer and DB remain deferred.",
       "completion_condition": "Every objective of Week 4 has its own coverage entry with exact locator and evidence; scheme-table rows are classified; no PARTIAL/UNRESOLVED entry lacks an OPEN open item. No lesson is invented for unreviewed content: new lesson items are appended to the queue only after this indexing.",
       "required_attachments": [
         {
@@ -6293,7 +6452,6 @@
     "queue_metadata_review_note": "Attachment requirements made explicit; creation SHA preserved as provenance. No source-content review repeated."
   },
   "next_runnable": [
-    "ENG-WK-T3-W04",
     "ENG-WK-T3-W05",
     "ENG-WK-T3-W06",
     "ENG-WK-T3-W07",
@@ -6406,6 +6564,11 @@
     "ENG-LES-T3-W03-EXPOSITORY",
     "ENG-LES-T3-W03-FAMILY-VOCAB",
     "ENG-LES-T3-W03-ASSESSMENTS",
-    "ENG-FACT-T3-W03-EXTERNAL-MATERIALS"
+    "ENG-FACT-T3-W03-EXTERNAL-MATERIALS",
+    "ENG-LES-T3-W04-RHYMES",
+    "ENG-LES-T3-W04-FORMAL-LETTER",
+    "ENG-LES-T3-W04-GOVERNMENT-VOCAB",
+    "ENG-LES-T3-W04-ASSESSMENTS",
+    "ENG-FACT-T3-W04-EXTERNAL-MATERIALS"
   ]
 }
