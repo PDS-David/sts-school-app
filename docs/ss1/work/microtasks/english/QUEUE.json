@@ -82,13 +82,13 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 93,
-    "PENDING": 143,
+    "IMPLEMENTED_TESTING_DEFERRED": 94,
+    "PENDING": 142,
     "BLOCKED": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 93,
-    "PENDING": 143,
+    "IMPLEMENTED_TESTING_DEFERRED": 94,
+    "PENDING": 142,
     "BLOCKED": 6
   },
   "items": [
@@ -3144,8 +3144,8 @@
         "ENG-SRC-T2",
         "ENG-LES-MEANING-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-015] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09 body_sha256=e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09 replacement_id=SUP-SS1-ENGLISH-MEANING-T2; paired coverage entry ENGLISH-BODY-056 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed exact binding SS1-02-english-COR-015; original source row SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09 (member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966; body SHA256 e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09) maps to same-term replacement SUP-SS1-ENGLISH-MEANING-T2 (Synonyms, antonyms and contextual choice). Objective-by-objective evidence: ENGLISH-T2-W08-AN01=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W08-GR01=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W08-CP01=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W08-CP02=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W08-AS01=PARTIAL. The replacement correctly separates gradability from comparative forms and explains complementary opposites; four substantive teaching objectives are IMPLEMENTED_EQUIVALENT. The original assignment asking learners to explain the two types with adequate examples remains PARTIAL because the replacement does not supply a matching fully keyed/marked task. Existing precise follow-up: ENGLISH-T2-W08-ASSIGNMENT-KEYS. Row ENGLISH-BODY-056 remains PARTIAL; correction remains inactive pending the assignment gap. No source, lesson, correction identity or objective status changed. Approval PENDING; verification and runtime/compiler checks DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7701,7 +7701,6 @@
     "ENG-COR-006",
     "ENG-COR-007",
     "ENG-COR-008",
-    "ENG-COR-015",
     "ENG-COR-016",
     "ENG-COR-017",
     "ENG-COR-018",
