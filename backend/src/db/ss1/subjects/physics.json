@@ -1011,6 +1011,222 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Physics",
+      "title": "Scalars, vectors and linear motion graphs",
+      "objectives": [
+        "Distinguish scalar quantities from vector quantities.",
+        "Differentiate distance from displacement and speed from velocity.",
+        "Calculate average speed, average velocity and acceleration with correct SI units.",
+        "Apply the four equations of uniformly accelerated straight-line motion.",
+        "Interpret distance-time and displacement-time graphs using their gradients.",
+        "Interpret speed-time and velocity-time graphs using gradient and area."
+      ],
+      "body": "SCALAR AND VECTOR QUANTITIES\nA scalar quantity has magnitude only. It does not require a direction to describe it. Examples include distance, speed, time, mass, temperature and energy.\n\nA vector quantity has both magnitude and direction. Examples include displacement, velocity, acceleration and force. A vector should be stated with a direction, such as 5 m east or 12 m/s north.\n\nDISTANCE AND DISPLACEMENT\nDistance is the total length of the path travelled. It is a scalar and its SI unit is the metre (m).\nDisplacement is the straight-line change in position from the starting point to the finishing point, with direction. It is a vector and its SI unit is also the metre (m).\nDistance is never less than the magnitude of displacement. If a person returns to the starting point, the total distance may be positive while the displacement is zero.\n\nExample 1\nA learner walks 3 m east and then 4 m west along the same straight path.\nDistance = 3 + 4 = 7 m.\nTaking east as positive, displacement = +3 − 4 = −1 m, which is 1 m west.\n\nSPEED AND VELOCITY\nAverage speed is total distance divided by total time:\naverage speed = total distance / total time.\nSpeed is scalar and is measured in metres per second (m/s).\n\nAverage velocity is total displacement divided by total time:\naverage velocity = displacement / total time.\nVelocity is a vector and must include direction. Its SI unit is m/s.\n\nExample 2\nA vehicle travels 180 m in 30 s.\nAverage speed = 180/30 = 6 m/s.\n\nExample 3\nA body moves 100 m east in 20 s.\nAverage velocity = 100/20 = 5 m/s east.\n\nACCELERATION AND RETARDATION\nAcceleration is the rate of change of velocity:\na = (v − u)/t\nwhere u is initial velocity, v is final velocity and t is the time interval. The SI unit is m/s². Acceleration is a vector because velocity has direction.\nRetardation (deceleration) is acceleration opposite to the chosen direction of motion; in a one-dimensional calculation it is often represented by a negative acceleration.\n\nUNIFORMLY ACCELERATED MOTION\nFor motion in a straight line with constant acceleration:\n1. v = u + at\n2. s = ut + ½at²\n3. v² = u² + 2as\n4. s = ½(u + v)t\nHere s is displacement in the chosen direction. In a straight journey without a change of direction, its magnitude equals the distance travelled.\n\nWorked example 4\nA car starts from rest and accelerates uniformly at 3 m/s² for 8 s.\nu = 0, a = 3 m/s², t = 8 s.\nv = u + at = 0 + (3 × 8) = 24 m/s.\ns = ut + ½at² = 0 + ½ × 3 × 8² = 96 m.\n\nDISTANCE-TIME AND DISPLACEMENT-TIME GRAPHS\nTime is plotted on the horizontal axis. Distance or displacement is plotted on the vertical axis.\n- The gradient of a distance-time graph gives speed.\n- The gradient of a displacement-time graph gives velocity, including its sign/direction.\n- A horizontal line means the distance or displacement is not changing during that interval (the body is at rest relative to the reference point).\n- A straight sloping line has a constant gradient and therefore represents constant speed or velocity.\n- A curved line has a changing gradient and therefore represents changing speed or velocity.\n\nSPEED-TIME AND VELOCITY-TIME GRAPHS\nTime is plotted on the horizontal axis and speed or velocity on the vertical axis.\n- The gradient of a velocity-time graph gives acceleration.\n- The area under a velocity-time graph gives displacement. If velocity remains positive, this area is also the distance travelled.\n- The area under a speed-time graph gives distance travelled.\n- A horizontal velocity-time line represents constant velocity and zero acceleration.\n- A straight sloping velocity-time line represents uniform acceleration.\n\nWorked example 5\nA body increases its velocity uniformly from 0 to 20 m/s in 10 s.\nAcceleration = gradient = (20 − 0)/10 = 2 m/s².\nDisplacement = area under the velocity-time graph = ½ × 10 × 20 = 100 m.\n\nGRAPH AND UNIT CHECKS\n- Use seconds (s) for time, metres (m) for distance/displacement, metres per second (m/s) for speed/velocity, and metres per second squared (m/s²) for acceleration.\n- Label both graph axes and include units.\n- A gradient is rise divided by run, with the units implied by the axes.\n- Do not confuse the slope of a velocity-time graph (acceleration) with its area (displacement).\n- For motion that reverses direction, displacement and velocity may be negative while distance and speed remain non-negative.",
+      "body_sha256": "4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d",
+      "practice": [
+        {
+          "id": "PHYS-T1-W05W06-Q01",
+          "question": "Classify each quantity as scalar or vector: distance, speed, time, mass, displacement, velocity, acceleration and force. State the key difference between a scalar and a vector.",
+          "answer": "Scalars: distance, speed, time and mass. Vectors: displacement, velocity, acceleration and force. A scalar has magnitude only; a vector has magnitude and direction.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Defines scalar as magnitude only.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines vector as magnitude and direction.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly classifies the four scalar quantities.",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly classifies the four vector quantities.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W05W06-Q02",
+          "question": "A learner walks 3 m east and then 4 m west along the same straight path. Find the total distance and the displacement.",
+          "answer": "Distance = 3 + 4 = 7 m. Taking east as positive, displacement = 3 − 4 = −1 m = 1 m west.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates total distance as 7 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates displacement magnitude as 1 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the direction as west.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W05W06-Q03",
+          "question": "A vehicle travels 180 m in 30 s. Calculate its average speed. A second body moves 100 m east in 20 s; calculate its average velocity.",
+          "answer": "Average speed = 180/30 = 6 m/s. Average velocity = 100/20 = 5 m/s east.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Uses total distance ÷ total time for average speed.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 6 m/s.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses displacement ÷ time for average velocity.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 5 m/s east.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W05W06-Q04",
+          "question": "A car's velocity increases from 5 m/s to 25 m/s in 4 s. Calculate its average acceleration.",
+          "answer": "a = (v − u)/t = (25 − 5)/4 = 20/4 = 5 m/s².",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses a = (v − u)/t and substitutes correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 5 m/s².",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W05W06-Q05",
+          "question": "A car starts from rest and accelerates uniformly at 3 m/s² for 8 s. Find its final velocity and displacement.",
+          "answer": "u = 0, a = 3 m/s², t = 8 s. v = u + at = 24 m/s. s = ut + ½at² = 96 m.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Identifies u = 0, a = 3 m/s² and t = 8 s.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses v = u + at.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds v = 24 m/s.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds s = 96 m.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W05W06-Q06",
+          "question": "A body's velocity increases uniformly from 0 to 20 m/s in 10 s. Find (a) its acceleration and (b) its displacement during the 10 s.",
+          "answer": "Acceleration = gradient = (20 − 0)/10 = 2 m/s². Displacement = area under the velocity-time graph = ½ × 10 × 20 = 100 m.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Uses gradient/change in velocity ÷ time.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds acceleration = 2 m/s².",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses area of triangle under the velocity-time graph.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds displacement = 100 m.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "PHYS-T1-W05W06-Q07",
+          "question": "State what the gradient represents on (a) a distance-time graph, (b) a displacement-time graph and (c) a velocity-time graph. State what the area under a velocity-time graph represents.",
+          "answer": "(a) Speed, (b) velocity, (c) acceleration. The area under a velocity-time graph represents displacement.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Distance-time gradient = speed.",
+              "marks": 1
+            },
+            {
+              "criterion": "Displacement-time gradient = velocity.",
+              "marks": 1
+            },
+            {
+              "criterion": "Velocity-time gradient = acceleration.",
+              "marks": 1
+            },
+            {
+              "criterion": "Area under velocity-time graph = displacement.",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Scalars and vectors | SS1 Physics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 Physics; learning outcome: distinguish scalar and vector quantities.",
+          "url": "https://inspire.education.gov.ng/lessons/333/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. The lesson is independently authored; the official page is cited to corroborate SS1 scope only. No media reuse is claimed.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Scalars and vectors | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "Speed and Velocity | SS1 Physics",
+          "locator": "Federal Ministry of Education, Nigeria, Inspire portal; SS1 Physics; learning outcomes: distinguish speed and velocity, plot distance-time graph and deduce speed from gradient.",
+          "url": "https://inspire.education.gov.ng/lessons/9004/preview",
+          "rights": "No wording, video, diagrams or exercises are copied. Independently authored explanations and practice; citation is for scope corroboration only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Speed and Velocity | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "All Resources — eLearn",
+          "locator": "Federal Ministry of Education eLearn portal, page 65; curriculum outcomes for rectilinear acceleration, speed/velocity, distance-time graphs and acceleration from velocity-time graphs.",
+          "url": "https://elearn.education.gov.ng/resources/all-resources/page/65/",
+          "rights": "No wording, diagrams or exercises are copied. Original teaching text and exercises are independently authored; portal cited for scope corroboration only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, eLearn, “All Resources — Page 65”, accessed 2026-11-08."
+        },
+        {
+          "title": "SS1 Physics 1st Term Lesson Note (public PDF copy)",
+          "locator": "Publicly available close-equivalent PDF; Week Five section lines 434–611; a second section begins at line 612 with the heading WEEK SIX and the topic Density & Relative Density. The PDF is not verified as byte-identical to the archive member.",
+          "url": "https://schoolgist.ng/storage/postFiles/SS1-Physics-1st-Term-Lesson-Note-pdf.pdf",
+          "rights": "No text, diagrams, examples or questions are copied. The PDF is used only as a close-equivalent corroboration of topic sequence and the section boundary; all lesson wording and practice are independently authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Schoolgist, “SS1 Physics 1st Term Lesson Note” (public PDF copy), accessed 2026-11-08; not asserted to be identical to the archive member."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [],
@@ -1979,6 +2195,164 @@
           "explanation": "Official SS1 learning outcomes explicitly include friction between contacting surfaces, identifying its effect on motion and reducing friction."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-SCALARS-VECTORS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Scalar and vector quantities; magnitude and direction.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-DISTANCE-DISPLACEMENT",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Distance as total path length and displacement as directed change in position.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-SPEED-VELOCITY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Average speed and average velocity, including SI units and direction.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-ACCELERATION-RETARDATION",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Acceleration and retardation as rate of change of velocity; equations of uniformly accelerated motion.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-DISTANCE-TIME-GRAPHS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Distance-time and displacement-time graphs; gradient gives speed or velocity.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-VELOCITY-TIME-GRAPHS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Speed-time and velocity-time graphs; gradient gives acceleration and area gives distance/displacement.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-UNIFORM-ACCELERATION-EQUATIONS",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Four equations of uniformly accelerated straight-line motion and their use.",
+      "objective_locator": "Registered parsed row 4, source label WEEK FIVE AND SIX, title “VECTOR & SCALAR QUANTITY, DISTANCE/DISPLACEMENT, SPEED/VELOCITY, ACCELERATION, DISTANCE/DISPLACEMENT-TIME GRAPH, SPEED/VELOCITY-TIME GRAPH”; original body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS"
+      ],
+      "evidence": [
+        {
+          "locator": "Original authored supplement SUP-SS1-PHYSICS-T1-W05-W06-MOTION-GRAPHS, body SHA-256 4ec24ac8c5e80147fbfd7467c5f46f555d75af9cf1094f008351a9d84fa67f7d; seven objective-aligned practice questions.",
+          "explanation": "The Week Five motion objectives are covered by an independently authored SS1 supplement. This does not claim that the inaccessible original row's detailed text, figures or assessment were re-extracted."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire: “Scalars and vectors | SS1 Physics” and “Speed and Velocity | SS1 Physics”; eLearn resources page 65.",
+          "explanation": "Official SS1 outcomes corroborate scalar/vector distinction, speed/velocity and graph-based motion learning."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T1-W05-W06-SECTION-BOUNDARY",
+      "source_id": "SS1-SRC-5c0149cda71d",
+      "objective": "Second teaching-section boundary within the combined WEEK FIVE AND SIX parsed row; section identity and exact split remain subject to original-member reconciliation.",
+      "objective_locator": "Original parsed row 4, 15,574 characters, body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d; close-equivalent public PDF lines 612–620.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Public close-equivalent PDF: Week Five content lines 434–611; the next section begins at line 612 with “WEEK SIX” and lines 614–620 identify Density & Relative Density.",
+          "explanation": "This confirms a two-section structure in the public equivalent copy and locates the second section. The PDF is not verified byte-identical to the archive member."
+        },
+        {
+          "locator": "Repository task PHYS-WK-T1-W06 identifies parsed row 5 as WEEK SEVEN, title DENSITY & RELATIVE DENSITY; source queue row 4 is WEEK FIVE AND SIX.",
+          "explanation": "The public PDF's Week Six density section and the repository's separate parsed Week Seven density row may reflect different source versions or duplicated content. The original archive member must be inspected before asserting the exact split or merging/splitting rows."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2327,6 +2701,41 @@
         "SUP-SS1-PHYSICS-T1-W04-FRICTION",
         "PHYS-WK-T1-W04",
         "PHYS-FACT-T1-W04-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W05-W06-ROW-BOUNDARY",
+      "kind": "VERIFICATION",
+      "detail": "The repository registers one parsed row labelled WEEK FIVE AND SIX (row 4; 15,574 characters; body SHA-256 593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d). A public close-equivalent PDF has a Week Five motion section at lines 434–611 and begins a Week Six Density & Relative Density section at line 612. The repository separately registers parsed row 5 as WEEK SEVEN, also Density & Relative Density. This may be a source-version mismatch or duplicated week content; the PDF is not verified byte-identical to the archive member.",
+      "required_action": "Inspect the original archive DOCX and identify the exact start/end of both teaching sections in parsed row 4, then compare row 5. Record whether the combined row contains Week Five and Week Six and whether row 5 duplicates/repeats the density content. Preserve source row identities; do not split or merge content based only on the public PDF.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+        "PHYS-WK-T1-W05-W06",
+        "PHYS-WK-T1-W06",
+        "PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W05-W06-FIGURES",
+      "kind": "CONTENT",
+      "detail": "The public close-equivalent PDF contains distance/displacement-time and speed/velocity-time graphs, but the original archive member's figure inventory and visual disposition are not available in this execution session. No claim is made that the original source has no figures.",
+      "required_action": "Use existing PHYS-VIS-T1 to inspect original graph/figure anchors, record axis labels, units and plotted points, and bind faithful assets with provenance or document precise exclusions.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+        "PHYS-VIS-T1"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T1-W05-W06-ORIGINAL-ASSESSMENT",
+      "kind": "CONTENT",
+      "detail": "The original archive row's exact classwork, evaluation and assignment questions and any supplied answer/marking keys are not accessible in this execution session. The new supplement has its own six/seven? keyed practice, but that does not verify the original assessment.",
+      "required_action": "During PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION, inspect the original row's assessment and record which answers/marking criteria are supplied or omitted; append a bounded answer-key supplement only for confirmed gaps.",
+      "affected_ids": [
+        "SS1-SRC-5c0149cda71d:BODY:593683bb0b6b62e3db27e3d4609dcedcfd20ced66ac79fb065477d8f4929a29d",
+        "PHYS-FACT-T1-W05-W06-SOURCE-RECONCILIATION"
       ],
       "blocks_delivery": false
     }
