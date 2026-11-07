@@ -554,6 +554,18 @@
       }
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R010",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 8:  ANTONYMS",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 8, line 19 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-045 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its internal spacing and punctuation kept exactly; trailing whitespace is omitted because the parser trims the row body."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -12063,14 +12075,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 8:  ANTONYMS",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 8; exact body hash b24a6d7b4010b5b06ee4e17f89dd9e10418c4d5404b4e11ff30975f960f1d594",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:b24a6d7b4010b5b06ee4e17f89dd9e10418c4d5404b4e11ff30975f960f1d594"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:b24a6d7b4010b5b06ee4e17f89dd9e10418c4d5404b4e11ff30975f960f1d594",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 19; UTF-8 joined-line SHA256 08e77fda56c569fcb0fbc50279d23ebde7b0af3ba120b3d772cac14f21c7034f; SS1-SRC-d8bd8f85fd73:BODY:b24a6d7b4010b5b06ee4e17f89dd9e10418c4d5404b4e11ff30975f960f1d594; rule SS1-SRC-d8bd8f85fd73-R010",
+          "explanation": "Scheme-of-work row 8 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body. It names one topic, \"Antonyms\". The teaching body ENGLISH-BODY-056 (lines 493-509) gives a definition, two types with one example and an assignment, indexed at objective level as ENGLISH-T2-W08-AN01, GR01, CP01, CP02 and AS01. Rule SS1-SRC-d8bd8f85fd73-R010 classifies the row SCHEME_ONLY. Rows 9 and 10 are left for their own week tasks."
         }
       ]
     },
@@ -16102,6 +16114,111 @@
           "explanation": "The label \"ASSIGNMENT:\" is bold and underlined in the docx and the title is spelled \"PROGRESIVE ENGLISH\". The book has no author or edition and its page and exercise are not supplied; the topic of Exercise 3A cannot be tied to this week (adverbs or present tense). No question, answer, key or marks is in the source; none is inferred or reproduced. The reference is outside the package, as other Progressive English references are in open item ENGLISH-PRESCRIBED-PASSAGES."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W08-AN01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Antonyms: definition (oppositeness of meaning) and the statement that natural languages have different types of oppositeness",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 493-495; UTF-8 joined-line SHA256 03729dee2a49f242c418b88b4eccea73ee5d40e0ff47a922806cf60291b0acf0; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 493-495; UTF-8 joined-line SHA256 03729dee2a49f242c418b88b4eccea73ee5d40e0ff47a922806cf60291b0acf0; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+          "explanation": "The week heading adds \"words that are opposite in meaning\". The definition says \"Unlike Synonyms, there are true Antonyms\", a claim the body does not support (it gives no pair that is opposite in every sense), and the last sentence repeats itself (\"their various types of oppositeness and these various types are\"). \"Antonyms is a concept\" is a number slip. Recorded, not repaired. The heading is not underlined or bold in the docx."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: second paragraph (beginning \"Antonyms express\"), sentence 1",
+          "explanation": "The supplement says antonyms express an opposition in a particular sense, which covers the definition and corrects the overstated \"true antonyms\" claim; it does not say that natural languages have several types of oppositeness, though it teaches four (gradable, complementary, converse, affixal). Bound additively, narrowly, through correction COR-015."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W08-GR01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Gradable antonyms: defined as antonyms used in comparative constructions, usually comparative adjectives in -er or with more (older, younger, more brilliant)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 497; UTF-8 joined-line SHA256 fc7aa7a638e3c150c96f98ae8aa7fa77cb25d93daa7fe464b9dca137fcea5f17; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 497; UTF-8 joined-line SHA256 fc7aa7a638e3c150c96f98ae8aa7fa77cb25d93daa7fe464b9dca137fcea5f17; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+          "explanation": "The source identifies gradable antonyms with comparative forms. Its three examples are comparatives, not antonym pairs (older/younger is a pair; \"more brilliant\" has no partner given). The note \"e.t.c\" is as in the source. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: second paragraph (beginning \"Antonyms express\"), sentences 2-3",
+          "explanation": "The supplement defines gradable opposites as those that admit intermediate values (hot and cold with warm between) and says that comparative forms such as hotter express degree and are not the definition of gradable antonymy. Bound additively, narrowly, through COR-015, which was authored to clarify exactly this; the source definition is not carried because it is inaccurate."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W08-CP01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Complementarity: defined as a type of oppositeness showing incompatibility, the items being complementary to each other",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 499; UTF-8 joined-line SHA256 7f1e8d4b26e54f945ca749f0c861d424c3ffa2088e512f120ae2d9e321ae807e; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 499; UTF-8 joined-line SHA256 7f1e8d4b26e54f945ca749f0c861d424c3ffa2088e512f120ae2d9e321ae807e; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+          "explanation": "The term is spelled \"COMPLIMENTARITY\" here and \"Complimentarity\" in the assignment (compliment for complement); the definition is circular (\"complementary to each other\"). The sentence ends \"e.g\" and leads into the example on the next line. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: second paragraph (beginning \"Antonyms express\"), sentence 4",
+          "explanation": "The supplement says complementary opposites divide a stated domain into mutually exclusive alternatives, with present and absent on a simple attendance register as the example, which gives the definition that the source lacks. Bound additively, narrowly, through COR-015."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W08-CP02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Complementarity example: \"Mr Lanre is married - implies that Mr Lanre is not single\"",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 501; UTF-8 joined-line SHA256 5ffd4116fccc89c6c1812a07d2221f4e0b0964edf5cbb9e835101eacb1d87ece; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 501; UTF-8 joined-line SHA256 5ffd4116fccc89c6c1812a07d2221f4e0b0964edf5cbb9e835101eacb1d87ece; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+          "explanation": "The example names a person (Mr Lanre) and states one implication only; it does not show the reverse or that the pair divides every case. The docx has no formatting on the line."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: second paragraph (beginning \"Antonyms express\"), sentence 5",
+          "explanation": "The supplement warns that real-world categories may need qualification and that married and single should not be taken as an exhaustive description of everyone's status, which qualifies this example. The source sentence is not carried; the supplement's own example is present/absent. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W08-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: explain gradable and complementary (written \"Complimentarity\") antonyms with adequate examples in words",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 503-509; UTF-8 joined-line SHA256 2259b0ddcc3355760f1279715f5bf80427c96edc8bde6943a908eadaf09bc996; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+        "SUP-SS1-ENGLISH-MEANING-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 503-509; UTF-8 joined-line SHA256 2259b0ddcc3355760f1279715f5bf80427c96edc8bde6943a908eadaf09bc996; SS1-SRC-d8bd8f85fd73:BODY:e0aebd0d87cbde6c3f6b606a9eddcf6e407593fbf8dfc6906384859df1cc3a09",
+          "explanation": "The label \"ASSIGNMENT:\" and the instruction are plain; the two types form an automatic numbered list (numerals absent in plain text). \"Adequate examples in words\" is not explained (whether word pairs or sentences). There is no key, model answer, marking criterion or mark allocation; none is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-MEANING-T2: second paragraph (beginning \"Antonyms express\")",
+          "explanation": "The supplement teaches both types with examples (hot/cold with warm; present/absent), so a teacher can model the answers, but it has no practice, key or marks for the assignment. Bound additively as partial support."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -17009,6 +17126,16 @@
       "required_action": "Owner to supply the authorised extract with edition, or accept labelled equivalent keyed practice on adverbs and the present tense (see open item ENGLISH-PRESCRIBED-PASSAGES; queue item ENG-FACT-T2-W07-EXTERNAL-MATERIALS). Do not infer the questions or answers.",
       "affected_ids": [
         "ENGLISH-T2-W07-AS01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W08-ASSIGNMENT-KEYS",
+      "kind": "CONTENT",
+      "detail": "The assignment (explain gradable and complementary antonyms with examples) has no key, model answer, marking criteria or marks, and the supplement has no practice for these two types. Its \"Complimentarity\" spelling and the source's definitions of both types are defective, so they cannot serve as a key.",
+      "required_action": "Author original keyed, marked practice on gradable and complementary antonyms (explanation, original word-pair examples, and a check that an example really divides the domain or admits a middle value), labelled original, bound additively to SUP-SS1-ENGLISH-MEANING-T2; do not infer a key from the source definitions.",
+      "affected_ids": [
+        "ENGLISH-T2-W08-AS01"
       ],
       "blocks_delivery": true
     }
