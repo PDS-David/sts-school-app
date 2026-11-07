@@ -470,6 +470,18 @@
       "week_label": "3"
     },
     {
+      "id": "SS1-SRC-d8bd8f85fd73-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "source_sha256": "ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966",
+      "anchor": "WEEK 1:   WORD FORMATION PROCESS – AFFIXATION [PREFIX AND SUFFIX]",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "mammoth 1.13.0 extractRawText, scheme-of-work row 1, line 5 (before the first WEEK 1 SS1 heading)",
+        "explanation": "Unique scheme-row anchor (occurs once in the unmodified extracted text, in the one-line parsed row ENGLISH-BODY-038 only). Metadata only, not teaching; no source text removed. The anchor is the whole line with its three internal spaces and en dash kept exactly."
+      }
+    },
+    {
       "id": "SS1-SRC-50fa9b1eb2fd-R001",
       "op": "source_alias",
       "source_id": "SS1-SRC-50fa9b1eb2fd",
@@ -11867,14 +11879,14 @@
       "source_id": "SS1-SRC-d8bd8f85fd73",
       "objective": "WEEK 1:   WORD FORMATION PROCESS – AFFIXATION [PREFIX AND SUFFIX]",
       "objective_locator": "SS1-SRC-d8bd8f85fd73: 1; exact body hash 549b185d690624a8542f7fbec09f2d9ea5d6ea5c3bb8cf511aa21a77bff223e0",
-      "status": "PARTIAL",
+      "status": "MARKER",
       "lesson_ids": [
         "SS1-SRC-d8bd8f85fd73:BODY:549b185d690624a8542f7fbec09f2d9ea5d6ea5c3bb8cf511aa21a77bff223e0"
       ],
       "evidence": [
         {
-          "locator": "SS1-SRC-d8bd8f85fd73:BODY:549b185d690624a8542f7fbec09f2d9ea5d6ea5c3bb8cf511aa21a77bff223e0",
-          "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
+          "locator": "mammoth 1.13.0 extractRawText line 5; UTF-8 joined-line SHA256 549b185d690624a8542f7fbec09f2d9ea5d6ea5c3bb8cf511aa21a77bff223e0; SS1-SRC-d8bd8f85fd73:BODY:549b185d690624a8542f7fbec09f2d9ea5d6ea5c3bb8cf511aa21a77bff223e0; rule SS1-SRC-d8bd8f85fd73-R003",
+          "explanation": "Scheme-of-work row 1 of the 2nd Term list. The extraction parser reads each scheme line as its own one-line WEEK row (ENGLISH-BODY-038 to 047), so the row is a parsed body and not a gap before the first row. It names one topic, \"Word formation process - affixation [prefix and suffix]\", which gives three objectives: affixation as the formation process, prefixes and suffixes; they are indexed at objective level as ENGLISH-T2-W01-AF01, PF01-PF02, SF01-SF04 and RT01 against the teaching body ENGLISH-BODY-048 (lines 27-97). The row names no process other than affixation and no practice. The teaching body adds the root definition, two evaluations and an assignment that the row does not name. Rule SS1-SRC-d8bd8f85fd73-R003 classifies the row SCHEME_ONLY. Rows 2 to 10 (ENGLISH-BODY-039 to 047) are left for their own week tasks."
         }
       ]
     },
@@ -14654,6 +14666,222 @@
           "explanation": "Five items with no key. Defects recorded, not repaired: the instruction is ungrammatical ('each expression'), the numbers run 1, 2, 3, 3, 4, and item 3 ('for a (meal, lunch)') has no blank. Nothing is inferred."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-AF01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Affix: definition (an element added to a base or root word to form another word; affixes are prefixes or suffixes)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 31; UTF-8 joined-line SHA256 a2fb1eac7923c03d0abd2cd68a3fd34b5d804e8104371e60a0d6cd603cc4c7a0; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 31; UTF-8 joined-line SHA256 a2fb1eac7923c03d0abd2cd68a3fd34b5d804e8104371e60a0d6cd603cc4c7a0; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "States the definition of an affix and that affixes are prefixes or suffixes. The word \"affixation\" in the scheme row and topic line is not itself defined, and the umbrella term is used without a word-formation frame (no other formation process such as compounding is named anywhere in the Week 1 body)."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 1",
+          "explanation": "The supplement uses \"affix\" (\"A base is the form to which an affix is added\") and defines prefix and suffix, but never defines \"affix\" or \"affixation\". Bound additively as partial support; COR-010 and ENGLISH-BODY-048 are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-PF01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Prefix: definition (an affix added to the beginning of a word) with the example \"audio\" in \"audio-visual\"",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 33; UTF-8 joined-line SHA256 0ec062a0f4b92519b6c417358cd2635e1c7f6577632a927c60f122860275cf5b; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 33; UTF-8 joined-line SHA256 0ec062a0f4b92519b6c417358cd2635e1c7f6577632a927c60f122860275cf5b; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Defines a prefix by position and gives one example. The example is a defect: \"audio\" in \"audio-visual\" is a combining form and the source calls it both a prefix and an affix. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 1, sentence 2",
+          "explanation": "The supplement states that a prefix precedes the base and gives un + kind = unkind, which covers the definition by position. It does not carry the audio-visual example, deliberately. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-SF01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Suffix: definition (an affix added to the end of a word) with the example \"-aholic\" in \"workaholic\"",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 35; UTF-8 joined-line SHA256 03010f272401f5092689029f2713d752f1492b7b801c51e55f4f7026f077e51c; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 35; UTF-8 joined-line SHA256 03010f272401f5092689029f2713d752f1492b7b801c51e55f4f7026f077e51c; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Defines a suffix by position and gives \"workaholic\". The extracted paragraph is garbled: it opens with a stray quotation mark and the letter l (\"“lA SUFFIX\"), reads \"Thus, aholic” in ”workaholic “\" with mismatched quotation marks, and ends with the sentence \"Here are some common prefixes with their meaning.\" that belongs to the prefix table below. In the docx this is one paragraph (the stray letter is in the source, not an extraction artefact of this task). Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 1, sentence 3",
+          "explanation": "The supplement states that a suffix follows the base and gives kind + ness = kindness. It does not carry the workaholic example. Bound additively, narrowly."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-PF02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Common prefixes with meanings and examples (14 table rows: a-, ab-, ante-, anti-, con-, de-, di-, en-, bi-, ex- out/away, ex- former, fore-, hyper-, inter-)",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 39-67; UTF-8 joined-line SHA256 c3db7e26f74ccb791c2311daf39b9d19164db11c1bf9fca9ffc1a4863422dfe9; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 39-67; UTF-8 joined-line SHA256 c3db7e26f74ccb791c2311daf39b9d19164db11c1bf9fca9ffc1a4863422dfe9; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Flattened table: the docx has no table object; each row is a paragraph with tab-separated prefix, meaning and examples (docx paragraphs 18-32). Thirteen distinct prefix forms in 14 rows (ex- appears twice with different meanings). Source defects recorded, not repaired: anti- is exemplified by \"ante-aircraft\"; di- is exemplified by \"detractive\", which does not show di-; bi- is a duplicate of the di- meaning and carries a trailing comma (\"bi-,\"); fore- is exemplified by \"forever on\", where \"forever\" is not fore- plus ever and \"on\" is stray; \"defreeze\" is a non-standard word; \"inter-\" example list ends with a full stop. The lead-in sentence for the table sits at the end of line 35."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 2, sentences 1-2 and 5",
+          "explanation": "The supplement teaches re-, pre-, post-, anti-, inter-, bi- and the negative family il-/im-/ir-/in- with examples, and separates ante- (antenatal) from anti-. It does not teach a-, ab-, con-, de-, di-, en-, ex- (either sense) or fore-, hyper- (nine of the thirteen distinct source forms are untaught), and it does not use the source examples. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-SF02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Suffixes that form adjectives (listed: -any, -evy, -en, -ish, -less, -ly, -ous, -ic, like, -y, -ful; examples dangerous, useless)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 73; UTF-8 joined-line SHA256 cb7963aa81fe4fb5c84e5c780830c365762f1a6e34f7c334cbae52a12ac48777; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 73; UTF-8 joined-line SHA256 cb7963aa81fe4fb5c84e5c780830c365762f1a6e34f7c334cbae52a12ac48777; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Numbered item 1 of an automatically numbered list (the number is in the docx numbering, not in the text). The list includes forms that are not established suffixes in this sense (-any, -evy) and \"like\" without a hyphen; -en is also listed as a verb-forming suffix (lighten) in item 2; -ly mostly forms adverbs. Recorded, not repaired; no corrected list is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 3, sentence 1 and examples",
+          "explanation": "The supplement shows harm/harmless and beauty/beautiful, so -less and -ful are taught; -ish, -ous, -ic, -y, -like and -en as an adjective suffix are not. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-SF03",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Suffixes that form verbs (listed: -ing, -ed, -ude, -em, -ure, -ise, -ize, -yse; examples nationalize, lighten)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 75; UTF-8 joined-line SHA256 a241ce5d23e24eaf6fd28d1e0379a95b6a19403cbf53e9d1a33f572785b91856; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 75; UTF-8 joined-line SHA256 a241ce5d23e24eaf6fd28d1e0379a95b6a19403cbf53e9d1a33f572785b91856; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Numbered item 2 of the same automatic list. -ing and -ed are grammatical endings, -ude, -em and -ure are not recognised verb-forming suffixes, and the example \"lighten\" uses -en, which the source lists under adjectives, not here. Recorded, not repaired."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 1, sentences 6-7",
+          "explanation": "The supplement distinguishes grammatical endings (books, walked) from derivational ones (-en in widen), which addresses the -ing/-ed defect in effect. It does not teach -ise/-ize/-yse or give nationalize. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-SF04",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Suffixes that form nouns (listed: -er, -or, -ar, -er, -ship, -hood, -ness, -ance, -ism, -dom, -tion, -ity, -ure; examples punishment, friendship, childhood)",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 77; UTF-8 joined-line SHA256 0ce39023b6603b5ea6321a01e4c9adb8732b7f17b5e7202956dff7dbd204113f; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 77; UTF-8 joined-line SHA256 0ce39023b6603b5ea6321a01e4c9adb8732b7f17b5e7202956dff7dbd204113f; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Numbered item 3 of the same automatic list. The lead-in is missing a verb (\"Suffixes which two words into nouns include\"), -er is listed twice, -ure repeats the verb list, and the example \"punishment\" uses -ment, which is not in the list. Recorded, not repaired; no wording is inferred."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 3, sentence 1",
+          "explanation": "The supplement teaches -er (teacher), -ment (enjoyment) and -ness (happiness). Not taught: -or, -ar, -ship, -hood, -ance, -ism, -dom, -tion, -ity, -ure, and the examples friendship and childhood. Bound additively as partial support."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-RT01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Root: definition (the smallest or basic part of a word joined by a prefix or suffix) with examples happy-unhappy, solve-dissolve, come-welcome and the suffixed forms happiness, solvent, comes/comedy",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 81; UTF-8 joined-line SHA256 2c61ee114819cdc1741170d82a6714fd4b4e8e52cc172c838190313a2b50ae27; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 81; UTF-8 joined-line SHA256 2c61ee114819cdc1741170d82a6714fd4b4e8e52cc172c838190313a2b50ae27; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Defines \"root\" and gives six example pairs. Defects recorded, not repaired: welcome is well + come, not a prefix on come; comedy is not come plus a suffix; comes is an inflection, not a derivation. Correction SS1-02-english-COR-010 records \"false suffix classes and root examples\" as its reason."
+        },
+        {
+          "locator": "SUP-SS1-ENGLISH-AFFIXES-T2: body paragraph 1 and paragraph 2, sentence 6; paragraph 3",
+          "explanation": "The supplement uses \"base\" in place of \"root\", rejects comedy as come plus a suffix, and teaches happy/happiness and un + kind. It does not define \"root\" or use solve/dissolve/solvent. Bound additively as partial support; the terminology choice (root or base) needs an owner decision."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-EV01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation 1: supply prefixes from (dis, ex, il, im, in, ir, fore, de, mis, un) for twelve blanks: port, legal, take, quality, press, manage, safe, rail, sufficient, moral, direct, polite",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 85-87; UTF-8 joined-line SHA256 7371ec19fc4622c9423af652b5fd1ecbf3d869c4a1d1e942a8808eb94eb99a9f; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 85-87; UTF-8 joined-line SHA256 7371ec19fc4622c9423af652b5fd1ecbf3d869c4a1d1e942a8808eb94eb99a9f; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Twelve items (a)-(l); the item letter (a) is the docx auto-number and (b)-(l) are typed in the text. Ten options serve twelve items, so some options must be reused, and several blanks admit more than one option (port: export, import, deport). The source supplies no key and none is inferred. The supplement practice (Q1-Q3) tests different items and is not an equivalent."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-EV02",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Evaluation 2: supply suffixes from (ful, ness, able, less, ment, er, ant, al, or) for twelve bases: happy, accident, profession, harm, hope, engine, fair, attend, miser, enjoy, judge, farm",
+      "objective_locator": "mammoth 1.13.0 extractRawText lines 89-91; UTF-8 joined-line SHA256 6039ff001f4ff32884d005f26495e78ab7e740a835145dc564bd2fb7b3f5d443; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText lines 89-91; UTF-8 joined-line SHA256 6039ff001f4ff32884d005f26495e78ab7e740a835145dc564bd2fb7b3f5d443; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Twelve items (a)-(l); (a) is the docx auto-number. Nine options serve twelve items, and several bases admit more than one (harm: harmful/harmless; hope: hopeful/hopeless; enjoy: enjoyment/enjoyable). The source supplies no key and none is inferred; the spelling changes (happy to happiness, judge to judgement) are not taught in the source body. The supplement practice is not an equivalent."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T2-W01-AS01",
+      "source_id": "SS1-SRC-d8bd8f85fd73",
+      "objective": "Assignment: give 2 examples of words containing each prefix: mat, ploy, post, pro, re, sub, super, tele, tri, trans, uni, dis, in, mis, non, un, im, il",
+      "objective_locator": "mammoth 1.13.0 extractRawText line 95; UTF-8 joined-line SHA256 a770a00a122dc9a2021f4a6a3f84ff95e3afe122e8f2ae32f9c9760deb1cb878; SUP-SS1-ENGLISH-AFFIXES-T2",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SUP-SS1-ENGLISH-AFFIXES-T2"
+      ],
+      "evidence": [
+        {
+          "locator": "mammoth 1.13.0 extractRawText line 95; UTF-8 joined-line SHA256 a770a00a122dc9a2021f4a6a3f84ff95e3afe122e8f2ae32f9c9760deb1cb878; SUP-SS1-ENGLISH-AFFIXES-T2",
+          "explanation": "Eighteen items, no key. \"mat\" and \"ploy\" are not recognised prefixes (ploy occurs inside employ). Of the 18, only dis, in, mis, un, im and il occur anywhere else in the body (as Evaluation 1 options); post, pro, re, sub, super, tele, tri, trans, uni and non are in neither the prefix table nor the evaluation. The source heading spells the label \"ASSIGNEMT\". No answers or marks are inferred. The supplement teaches re-, post- and un- only."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -15284,6 +15512,51 @@
         "ENGLISH-T1-W11-WA01",
         "ENGLISH-T1-W11-WA02",
         "ENGLISH-T1-W11-WA03"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W01-DEFINITION-GAP",
+      "kind": "CONTENT",
+      "detail": "The affix definition and the root definition are only partly carried by the replacement SUP-SS1-ENGLISH-AFFIXES-T2, which uses \"base\" and never defines \"affix\", \"affixation\" or \"root\". The source root examples welcome and comedy are false segmentations.",
+      "required_action": "Author original teaching that defines affix, affixation, root and base and their relation, labelled original, with a keyed, marked exercise; owner to confirm whether the term \"root\" must be kept alongside \"base\".",
+      "affected_ids": [
+        "ENGLISH-T2-W01-AF01",
+        "ENGLISH-T2-W01-RT01"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W01-PREFIX-GAP",
+      "kind": "CONTENT",
+      "detail": "Nine of the thirteen distinct prefix forms in the source table (a-, ab-, con-, de-, di-, en-, ex-, fore-, hyper-) are not taught by the replacement, and the table has defective examples (ante-aircraft, detractive, forever on, defreeze).",
+      "required_action": "Author original prefix teaching with correct examples for all thirteen forms, labelled original, with a keyed, marked exercise; do not copy the defective source examples; the prefixes in the assignment that are in no table (pro, sub, super, tele, tri, trans, uni, non, dis, mis) need an owner decision on scope.",
+      "affected_ids": [
+        "ENGLISH-T2-W01-PF02"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W01-SUFFIX-GAP",
+      "kind": "CONTENT",
+      "detail": "The three suffix lists are partly unsupported: -any, -evy, -ude and -em are not established suffixes, -ing/-ed are grammatical endings, and most listed noun suffixes (-or, -ar, -ship, -hood, -ance, -ism, -dom, -tion, -ity, -ure), the verb suffixes -ise/-ize/-yse and the adjective suffixes -ish, -ous, -ic, -y, -like are not taught by the replacement.",
+      "required_action": "Author original suffix teaching by word class with accurate examples, labelled original, with a keyed, marked exercise; owner to confirm the intended list for the unrecognised forms; do not infer them.",
+      "affected_ids": [
+        "ENGLISH-T2-W01-SF02",
+        "ENGLISH-T2-W01-SF03",
+        "ENGLISH-T2-W01-SF04"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T2-W01-ANSWER-KEYS",
+      "kind": "CONTENT",
+      "detail": "Evaluation 1, Evaluation 2 and the assignment have no source key, use more blanks than options or contain unrecognised prefixes (mat, ploy), and several items accept more than one answer.",
+      "required_action": "Author original keyed, marked practice for the same skills (prefix and suffix supply, prefix examples) without inferring answers for the source items; owner or teacher to supply a key if the source items themselves must be marked.",
+      "affected_ids": [
+        "ENGLISH-T2-W01-EV01",
+        "ENGLISH-T2-W01-EV02",
+        "ENGLISH-T2-W01-AS01"
       ],
       "blocks_delivery": true
     }
