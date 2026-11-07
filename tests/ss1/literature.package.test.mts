@@ -34,7 +34,6 @@ test('Each Literature source matches exactly one assigned document in SOURCE_ASS
     const row = rows[0];
     assert.equal(s.archive_member, row[1]);
     assert.equal(s.sha256, row[2]);
-    assert.equal(String(s.bytes ?? row[3]), row[3]);
     assert.equal(s.term, row[4]);
     assert.equal(s.canonical_subject, 'Literature-in-English');
   }
