@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 43,
-    "PENDING": 47,
+    "IMPLEMENTED_TESTING_DEFERRED": 44,
+    "PENDING": 46,
     "BLOCKED": 9
   },
   "total": 99,
@@ -2935,8 +2935,8 @@
         "MATH-SRC-T2",
         "MATH-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). Both rules classify marker-only rows (64 and 16 characters). Master already has equivalent REVISION rules; this is a comparison, not a port of schema fields.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 marker rules MATHS-R01/R02 with master rules RULE-MATH-T2-W06-REVISION and RULE-MATH-T3-W07-REVISION. Both use classify_marker and the same revision-marker classification. PR #71 anchors are abbreviated ('Review of the first half'; 'REVISION'); master anchors are more specific ('Review of the first half term’s work and periodic test'; 'WEEK 7\\n\\nREVISION') and match the indexed source rows. No master rule change was warranted.",
       "completion_condition": "Difference or equivalence recorded; master rule changed only if a concrete defect is found."
     },
     {
@@ -3252,7 +3252,6 @@
     "MATH-VIS-T3-OLE",
     "MATH-FACT-ADVERT-T2",
     "MATH-FACT-ADVERT-T3",
-    "MATH-PORT-D2-RULES",
     "MATH-PORT-D2-FACT-REFERENCES",
     "MATH-CMP-D4-NOTES",
     "MATH-COR-T1-W02-NUMBER-BASES"
