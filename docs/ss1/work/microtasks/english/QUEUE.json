@@ -87,7 +87,8 @@
     "2026-11-07: audited all 24 English delivery-correction identities. Every record binds an existing source and exact source/body hash to one existing replacement in the same term; all 24 source targets are unique. The 11 previously pending correction queue records (COR-001–008, COR-018–020) were recorded IMPLEMENTED_TESTING_DEFERRED. This is binding/identity completion only: their original body-level/objective-level coverage remains PARTIAL/UNRESOLVED where recorded, their corrections are not activated, and the linked open items remain delivery blockers. ENG-TEST-CORRECTION-IDENTITY assertion is drafted and read-only reconciled; test remains NOT RUN.",
     "2026-11-07 owner decisions: revision scope approved as all 2nd Term topics taught before 3rd Term; bustop interpreted as bus stop; original equivalent reading materials approved for the missing Effective English Unit 8 page 133 and Unit 10 page 162 activities; original passage Beauty approved for Week 2 main-point comprehension. Implemented original spelling, contextual-reading and Beauty supplements. The additional dictionary sense of sex remains a precise teacher decision; no textbook content was reproduced. Testing, importer, database and deployment remain deferred.",
     "2026-11-07: Added original Week 2 summary-writing lesson and two original reading activities with keyed marking. SW01-SW04 now IMPLEMENTED_EQUIVALENT; prescribed pages not reproduced.",
-    "2026-11-07: Added original Week 2 advertising vocabulary lesson, six reviewed definitions, keyed gap-fill and an original Reading Week assignment. AD01-AD03 now IMPLEMENTED_EQUIVALENT."
+    "2026-11-07: Added original Week 2 advertising vocabulary lesson, six reviewed definitions, keyed gap-fill and an original Reading Week assignment. AD01-AD03 now IMPLEMENTED_EQUIVALENT.",
+    "2026-11-07: Added original Week 2 adjunct lesson with corrected definition, six classroom categories, keyed practice and original reading assignment. AJ01-AJ04 now IMPLEMENTED_EQUIVALENT."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -100,8 +101,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 124,
-    "PENDING": 112,
+    "IMPLEMENTED_TESTING_DEFERRED": 125,
+    "PENDING": 111,
     "BLOCKED": 6
   },
   "items": [
@@ -1238,8 +1239,8 @@
       "depends_on": [
         "ENG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-ADJUNCTS.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-ENGLISH-ADJUNCTS-T3-W02. Corrects the source's over-narrow definition: an adjunct is an optional clause element and may be realised by an adverb, phrase or clause. Teaches six classroom categories, supplies the Direction question, explains overlap and provides keyed marked practice plus an original reading assignment. AJ01-AJ04 now have equivalent evidence. Cambridge English Grammar Today checked for terminology. Approval PENDING; verification/testing deferred.",
       "completion_condition": "AJ01 to AJ03 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -7679,7 +7680,6 @@
   },
   "next_runnable": [
     "ENG-LES-T3-W01-REVISION",
-    "ENG-LES-T3-W02-ADJUNCTS",
     "ENG-LES-T3-W02-NARRATIVE",
     "ENG-LES-T3-W02-ASSESSMENTS",
     "ENG-FACT-T3-W02-EXTERNAL-MATERIALS",
