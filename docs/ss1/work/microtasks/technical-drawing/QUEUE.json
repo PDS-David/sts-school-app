@@ -23,7 +23,8 @@
     "Lesson-writing items are not created: no specific uncovered objective is established. The one suspected gap (enlargement in Weeks 6-7) is a verification item that appends a lesson task only if confirmed.",
     "Workers start from current master and change only their own entries; PENDING means unclaimed.",
     "TD-SCH-W02 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) indexed the 2nd Term scheme week 2 row. technical-drawing.json now has 4 source_rules (added SS1-SRC-af4868d2c026-R004, SCHEME_ONLY) and 3 coverage entries (added COV-TD-T2-SCH-W02, SUPPORTED). \"Escribed circle.\" (with the source full stop) is the only unique form of the scheme line; the teaching row 12 \"WEEK TWO\" covers it and the second objective (circles touching given points). Figures are routed to TD-VIS-W02. Note 1 is the queue-generation snapshot. Hashes and mapping are in docs/ss1/work/microtasks/technical-drawing/TD-SCH-W02.md. Nothing was run; testing remains deferred.",
-    "TD-SCH-W03 (2026-10-30, master e60b1fe) recorded the 2nd Term week 3 scheme row (parsed row 2, 'WEEK 3:Polygons'): technical-drawing.json now has 5 source_rules (added SS1-SRC-af4868d2c026-R005, SCHEME_ONLY) and 4 coverage entries (added COV-TD-T2-SCH-W03, SUPPORTED, bound to teaching row 13). Evidence: TD-SCH-W03.md."
+    "TD-SCH-W03 (2026-10-30, master e60b1fe) recorded the 2nd Term week 3 scheme row (parsed row 2, 'WEEK 3:Polygons'): technical-drawing.json now has 5 source_rules (added SS1-SRC-af4868d2c026-R005, SCHEME_ONLY) and 4 coverage entries (added COV-TD-T2-SCH-W03, SUPPORTED, bound to teaching row 13). Evidence: TD-SCH-W03.md.",
+    "TD-SCH-W04 (2026-11-07, master 54edac346b11fb480c172f27d4ce7fe0e9ea2c78) indexed the 2nd Term Week 4 scheme row, parsed row 3: “Plain scales” (27 characters; SHA-256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab). Added source rule SS1-SRC-af4868d2c026-R006 (SCHEME_ONLY, unique full-row anchor) and coverage COV-TD-T2-SCH-W04 (SUPPORTED), bound to the existing WEEK FOUR teaching row parsed row 14, body ID SS1-SRC-af4868d2c026:BODY:d9141b54433dff4d82e5eabd00defc9c226eb3f265396382624e1c1da2aac9cd. No supplement, new lesson or source alteration. See TD-SCH-W04.md. Approval and verification remain pending/deferred; testing not run."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 1,
@@ -38,9 +39,9 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 5,
+    "IMPLEMENTED_TESTING_DEFERRED": 6,
     "BLOCKED": 5,
-    "PENDING": 29
+    "PENDING": 28
   },
   "total": 39,
   "items": [
@@ -312,8 +313,8 @@
         "TD-SRC-T2",
         "TD-PRE-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 3 (label 'WEEK 4', body sha256 dc7684f7b356a56c10dbdeefe7f7676a5e72e61d4a8c69a06814ff2ec7e600ab, 27 characters) from parsed_rows.json; CHECKPOINT.md identifies rows 0-10 as scheme-table lines. No rule, coverage entry or package exists on master.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in commit 54edac346b11fb480c172f27d4ce7fe0e9ea2c78. Package rule SS1-SRC-af4868d2c026-R006 classifies the unique, hash-accounted WEEK 4 scheme row as SCHEME_ONLY; coverage COV-TD-T2-SCH-W04 records the verbatim objective “Plain scales” as SUPPORTED and reuses the exact existing parsed original lesson ID for WEEK FOUR. No supplement or source text was created or changed. Evidence and limits: docs/ss1/work/microtasks/technical-drawing/TD-SCH-W04.md.",
       "completion_condition": "Row hash-accounted, objective stated with locator, classification rule or open item recorded; nothing discarded."
     },
     {
@@ -1409,9 +1410,9 @@
     }
   ],
   "review": {
-    "date": "2026-10-30",
-    "reviewed_master_sha": "e60b1fe7ac28c2fd94841cd67a2f3622b42f09f9",
-    "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
+    "date": "2026-11-07",
+    "reviewed_master_sha": "54edac346b11fb480c172f27d4ce7fe0e9ea2c78",
+    "scope": "TD-SCH-W04 only: source row hash/anchor, original teaching-row mapping, JSON identities and queue state; full curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
@@ -1421,10 +1422,9 @@
     }
   },
   "next_runnable": [
-    "TD-SCH-W04"
+    "TD-SCH-W05"
   ],
   "runnable_now": [
-    "TD-SCH-W04",
     "TD-SCH-W05",
     "TD-SCH-W06",
     "TD-SCH-W07",
