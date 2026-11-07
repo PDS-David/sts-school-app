@@ -103,6 +103,18 @@
         "locator": "TD-SCH-W05: scheme-table parsed row 4 (WEEK 5), mammoth 1.12.2 extractRawText() line 19; 41 characters, SHA-256 8c5c6c7a65e58f85552c3dbf582106d0d999c3459d4fb6aefe6fce7309a57be1 (matches docs/ss1/work/SS1-03/evidence/parsed_rows.json entry i=4). The full week-labelled row is used as the anchor; the parsed-row evidence identifies it as one scheme-table row.",
         "explanation": "This is the Week 5 scheme-table entry, not a teaching body. The full 41-character row, including its week label and original spacing/capitalization, is retained as the anchor. It is classified SCHEME_ONLY; no source text is removed or rewritten. The scheme objective is preserved verbatim as “Diagonal and chordalScales”."
       }
+    },
+    {
+      "id": "SS1-SRC-af4868d2c026-R008",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "source_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d",
+      "anchor": "WEEK 6:        Enlargement and reduction of plain figures",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "TD-SCH-W06: 2nd Term source extractRawText() line 21; parsed scheme-table row 5 (WEEK 6); exact 57-character row body; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4.",
+        "explanation": "The exact row text is “WEEK 6:        Enlargement and reduction of plain figures” (eight spaces after the colon). Its 57-character UTF-8 body hashes to the recorded b3be…fa4 value. It is a scheme-table objective, not a teaching body; SCHEME_ONLY classification retains the source row and discards no text."
+      }
     }
   ],
   "lessons": [],
@@ -240,6 +252,24 @@
           "explanation": "The existing Week Five teaching row is the direct topic-level match for the scheme objective: its title explicitly covers both diagonal and chordal scales and their uses. The original content-bound lesson identity is reused; no replacement lesson, supplement, or duplicate content is created. This mapping records objective-level source coverage only, not teacher approval or independent technical validation."
         }
       ]
+    },
+    {
+      "id": "COV-TD-T2-SCH-W06",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "objective": "Week 6 scheme objective, verbatim: “Enlargement and reduction of plain figures”.",
+      "objective_locator": "2nd Term scheme-table parsed row 5 (WEEK 6), extractRawText() line 21; exact row body SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4.",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Scheme row 5, line 21; exact anchor “WEEK 6:        Enlargement and reduction of plain figures”; 57 characters; SHA-256 b3be11f9bf4df24c1ee913290b0308eb630ef42993a154646f6ce3fcda784fa4; classified by source rule SS1-SRC-af4868d2c026-R008.",
+          "explanation": "The scheme objective is recorded verbatim, including source spacing, and classified SCHEME_ONLY because the scheme row carries no teaching body."
+        },
+        {
+          "locator": "TD-PRE-T2: lines 11–31 are scheme rows 0–10; teaching rows begin at line 59. Queue item TD-WK-W06-W07 owns the combined Week 6–7 teaching-row review.",
+          "explanation": "The exact parsed body identity for the combined Week 6–7 teaching row is not recorded in the current repository evidence. It is therefore not safe to invent a lesson ID or claim a confirmed binding. The dependent TD-WK-W06-W07 task will establish that identity and map this objective; until then coverage remains PARTIAL."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -284,6 +314,18 @@
         "SS1-SRC-af4868d2c026-R003"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "TD-T2-W06-TEACHING-ROW-MAPPING",
+      "kind": "CONTENT",
+      "detail": "Week 6 scheme objective “Enlargement and reduction of plain figures” is now hash-accounted and classified SCHEME_ONLY, but the exact parsed-body identity of the combined Week 6–7 teaching row is not present in the current TD evidence. The scheme objective has no confirmed lesson_id binding yet.",
+      "required_action": "In TD-WK-W06-W07, inspect the exact source teaching row, record its parsed body SHA-256 and stable source lesson ID, and bind COV-TD-T2-SCH-W06 to that ID only if the row actually teaches enlargement/reduction. If it does not, retain the objective as unresolved and add a precise lesson follow-up.",
+      "affected_ids": [
+        "COV-TD-T2-SCH-W06",
+        "SS1-SRC-af4868d2c026-R008",
+        "TD-WK-W06-W07"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
