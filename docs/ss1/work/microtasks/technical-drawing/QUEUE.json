@@ -703,8 +703,8 @@
         "TD-SRC-T2",
         "TD-SCH-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 13 (source label 'WEEK THREE', title \"Polygons and irregular figures\", 11124 characters, body sha256 032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf); scheme week(s) WEEK 3 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. Equation-aware extraction recovered about 38 more characters than the plain extractor (SS1-03 author evidence), so delivered text loses notation.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added seven objective-level coverage entries for the Week Three original body SS1-SRC-af4868d2c026:BODY:032f7d5dee7e629db1c14d2cec1893d434e3e315aced4f243197b4f8d61223cf: polygon meaning and types (SUPPORTED); regular pentagon, hexagon and octagon constructions, general polygon methods, and the two-triangle method on a given base (PARTIAL pending visual inspection). Source has 38 w:drawing and 21 w:pict anchors; 27 superscript runs; flattened values 3600 (line 807), 450 (line 963); missing equation at line 959. Added bounded tasks TD-FACT-W03-NOTATION and TD-KEY-W03-ANSWERS; existing TD-VIS-W03 handles figures. No geometry, values, answers or diagrams invented. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1509,6 +1509,74 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W02 on 2026-11-08. The source contains evaluation and weekend assignment tasks; current evidence does not establish a complete answer key or marking criteria. Requires the original figures to be visually inspected before writing answers.",
       "completion_condition": "Publish an original keyed lesson supplement with all source tasks addressed, complete construction steps, correct answers and positive integer marking criteria summing exactly to each question's marks. Do not invent dimensions or rely on uninspected figures."
+    },
+    {
+      "id": "TD-FACT-W03-NOTATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE, 27 superscript runs; flattened degree values and missing equation object",
+      "objective": "Recover the exact degree values and missing equation/notation in Week Three from the original DOCX and Equation Native objects; record all source locators and correct any affected replacement without changing the source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/SS1-03/CHECKPOINT.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-FACT-W03-NOTATION.md"
+      ],
+      "depends_on": [
+        "TD-WK-W03",
+        "TD-VIS-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W03 on 2026-11-08. Extraction notes record 27 superscript runs, flattened 3600/450 degree values and a missing equation at line 959. Exact notation must be recovered from original source; no guesses permitted.",
+      "completion_condition": "Record exact source notation with reproducible locators and hash evidence; add only a source-faithful correction/supplement. If an object cannot be decoded, retain a precise unresolved item."
+    },
+    {
+      "id": "TD-KEY-W03-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK THREE evaluation, revision and weekend assignment",
+      "objective": "Create an original keyed supplement for polygon definitions/types, regular polygon constructions, evaluation sets and weekend assignment, with complete construction steps, answers and marking criteria.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W03-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W03",
+        "TD-VIS-W03",
+        "TD-FACT-W03-NOTATION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W03 on 2026-11-08. Source contains evaluation, revision and weekend assignments; no complete answer key/marking evidence is recorded. Requires figure and notation review before authoring.",
+      "completion_condition": "Publish an original keyed supplement with complete explanations, construction steps, answers and positive integer marking criteria summing to each question's marks; do not invent missing figures/dimensions."
     }
   ],
   "review": {
@@ -1524,7 +1592,7 @@
     }
   },
   "next_runnable": [
-    "TD-WK-W03"
+    "TD-WK-W04"
   ],
   "runnable_now": [
     "TD-SCH-W06",
