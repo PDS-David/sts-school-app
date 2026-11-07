@@ -84,7 +84,8 @@
     "2026-11-07 ENG-COR-023/024 and owner gates 074-078: verified COR-023 was already complete and retained its evidence. Completed COR-024 by making the reject/emit distinction explicit in the T3 meaning lesson, updating its UTF-8 body hash and keyed Q3, and recording the five objective statuses; ENGLISH-BODY-089 remains PARTIAL and the correction inactive because other synonym objectives and prescribed textbook assignments remain incomplete. Added precise owner/resource request evidence for prescribed passages, authorised audio model, per-lesson content approval and T1 W07 textbook assignments. The live package has 46 lessons (not 16 as stated in the older approval task); all remain PENDING with null approval references. No owner approvals, textbook extracts, rights statements or audio assets were invented; all five gate tasks remain BLOCKED.",
     "2026-11-07 final English test-draft checkpoint: drafted schema/terms, lesson hash/marking, correction identity, no-fabricated-state, rule-guard and regression assertions in tests/ss1/english.package.test.mts. No tests were run. All content approval remains PENDING and verification remains DEFERRED.",
     "2026-11-07 coordination repair: renamed only the Second-Term Week 2 external-materials item to ENG-FACT-T2-W02-EXTERNAL-MATERIALS. First-Term ID and prompt unchanged. Removed a literal trailing backslash-n that made the JSON invalid; recomputed kind counts and status_counts separately. All agent implementation statuses retained.",
-    "2026-11-07: audited all 24 English delivery-correction identities. Every record binds an existing source and exact source/body hash to one existing replacement in the same term; all 24 source targets are unique. The 11 previously pending correction queue records (COR-001–008, COR-018–020) were recorded IMPLEMENTED_TESTING_DEFERRED. This is binding/identity completion only: their original body-level/objective-level coverage remains PARTIAL/UNRESOLVED where recorded, their corrections are not activated, and the linked open items remain delivery blockers. ENG-TEST-CORRECTION-IDENTITY assertion is drafted and read-only reconciled; test remains NOT RUN."
+    "2026-11-07: audited all 24 English delivery-correction identities. Every record binds an existing source and exact source/body hash to one existing replacement in the same term; all 24 source targets are unique. The 11 previously pending correction queue records (COR-001–008, COR-018–020) were recorded IMPLEMENTED_TESTING_DEFERRED. This is binding/identity completion only: their original body-level/objective-level coverage remains PARTIAL/UNRESOLVED where recorded, their corrections are not activated, and the linked open items remain delivery blockers. ENG-TEST-CORRECTION-IDENTITY assertion is drafted and read-only reconciled; test remains NOT RUN.",
+    "2026-11-07 owner decisions: revision scope approved as all 2nd Term topics taught before 3rd Term; bustop interpreted as bus stop; original equivalent reading materials approved for the missing Effective English Unit 8 page 133 and Unit 10 page 162 activities; original passage Beauty approved for Week 2 main-point comprehension. Implemented original spelling, contextual-reading and Beauty supplements. The additional dictionary sense of sex remains a precise teacher decision; no textbook content was reproduced. Testing, importer, database and deployment remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -97,8 +98,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 118,
-    "PENDING": 118,
+    "IMPLEMENTED_TESTING_DEFERRED": 122,
+    "PENDING": 114,
     "BLOCKED": 6
   },
   "items": [
@@ -946,7 +947,7 @@
         "ENG-WK-T3-W01"
       ],
       "status": "PENDING",
-      "implementation_reference": "Partial implementation committed 2026-11-07: original 25-mark revision practice added as SUP-SS1-ENGLISH-REVISION-T3-W01, based only on five currently authored 2nd Term lessons. Coverage ENGLISH-T3-W01-RV01 remains PARTIAL and ENGLISH-T3-W01-REVISION-SCOPE remains open because the source gives no formal examination scope and other 2nd Term topics may still be added. Do not mark complete until remaining scope is reconciled.",
+      "implementation_reference": "Partial implementation committed 2026-11-07: original 25-mark revision practice added as SUP-SS1-ENGLISH-REVISION-T3-W01, based only on five currently authored 2nd Term lessons. Coverage ENGLISH-T3-W01-RV01 remains PARTIAL and ENGLISH-T3-W01-REVISION-SCOPE remains open because the source gives no formal examination scope and other 2nd Term topics may still be added. Do not mark complete until remaining scope is reconciled. Owner decision recorded 2026-11-07: revision scope is all 2nd Term English topics taught before 3rd Term. The existing 25-mark revision covers the five 2nd Term supplements currently in the package; keep the task/open item pending and extend it as the remaining 2nd Term lesson tasks are completed.",
       "completion_condition": "RV01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -1011,8 +1012,8 @@
       "depends_on": [
         "ENG-WK-T3-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T3-W01 on 2026-11-07; not implemented. Open item ENGLISH-T3-W01-MISSPELT-PRACTICE.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner approved the interpretation of bustop as bus stop and approved original equivalent teaching. Added SUP-SS1-ENGLISH-SPELLING-T3-W01: eleven original parallel spelling pairs with a reason/cue for each, plus keyed 10-mark correction practice for all ten source evaluation words. The parallel list is explicitly original, not a reconstruction of the source list. Coverage MS01/MS02 now IMPLEMENTED_EQUIVALENT. Content approval remains PENDING; verification/testing deferred.",
       "completion_condition": "MS01 and MS02 have evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -1077,8 +1078,8 @@
       "depends_on": [
         "ENG-WK-T3-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "english.json open_items[id=ENGLISH-T3-W01-READING-MATERIAL] kind=CONTENT blocks_delivery=true; affected coverage ENGLISH-T3-W01-CM01, CM05, CM07. Needs owner-supplied material or an owner decision. Raised by ENG-WK-T3-W01 on 2026-11-07.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner accepted labelled original equivalent reading activities. Added SUP-SS1-ENGLISH-CONTEXTUAL-READING-T3-W01 with a new contextual-reading passage, original questions and marking guide to replace the unavailable Effective English Unit 8 page 133 and Unit 10 page 162 activities. No textbook passage is reproduced. CM01 and CM07 are IMPLEMENTED_EQUIVALENT; CM05 remains PARTIAL pending a teacher decision about the additional dictionary sense of sex. Content approval remains PENDING; verification/testing deferred.",
       "completion_condition": "Owner supplies authorised material with edition, or records acceptance of equivalent activities; the open item and coverage entries are updated accordingly.",
       "required_attachments": []
     },
@@ -1136,8 +1137,8 @@
       "depends_on": [
         "ENG-WK-T3-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T3-W02 on 2026-11-07; not implemented. Open item ENGLISH-T3-W02-MAIN-POINT.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner accepted a labelled original equivalent. Added SUP-SS1-ENGLISH-BEAUTY-MAIN-POINT-T3-W02: an original passage titled Beauty, main-point teaching, keyed comprehension questions and a complete 10-mark marking guide. Coverage ENGLISH-T3-W02-CM01 now IMPLEMENTED_EQUIVALENT. Content approval remains PENDING; verification/testing deferred.",
       "completion_condition": "CM01 has evidence-backed coverage; remaining gates retained; no approval or verification is invented.",
       "required_attachments": [
         {
@@ -7676,9 +7677,6 @@
   },
   "next_runnable": [
     "ENG-LES-T3-W01-REVISION",
-    "ENG-LES-T3-W01-MISSPELT",
-    "ENG-FACT-T3-W01-EXTERNAL-MATERIALS",
-    "ENG-LES-T3-W02-MAIN-POINT",
     "ENG-LES-T3-W02-SUMMARY",
     "ENG-LES-T3-W02-ADVERTISING",
     "ENG-LES-T3-W02-ADJUNCTS",
