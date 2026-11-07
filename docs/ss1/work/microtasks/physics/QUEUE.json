@@ -24,7 +24,8 @@
     "PHYS-PRE-T1 (2026-10-29, master 4159336c7068d2235209221f5f14adc4986acec5) completed the 1st Term preamble inventory. physics.json now has 5 source_rules (added SS1-SRC-5c0149cda71d-R002 and SS1-SRC-5c0149cda71d-R003, both SCHEME_ONLY) and 2 coverage entries (COV-PHYS-T1-TITLE and COV-PHYS-T1-REFERENCES, both MARKER). Scheme week 11 (Revision) has no parsed row or teaching body; scheme weeks 5 and 6 share the parsed WEEK FIVE AND SIX row. Note 1 is the queue-generation snapshot. Per-block hashes and the scheme-row mapping are in docs/ss1/work/microtasks/physics/PHYS-PRE-T1.md. Nothing was run; testing remains deferred.",
     "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md.",
     "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
-    "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md."
+    "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md.",
+    "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -43,9 +44,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 7,
+    "IMPLEMENTED_TESTING_DEFERRED": 8,
     "BLOCKED": 9,
-    "PENDING": 59
+    "PENDING": 58
   },
   "total": 75,
   "items": [
@@ -246,7 +247,7 @@
       "kind": "SOURCE_PREAMBLE_INDEXING",
       "source_id": "SS1-SRC-bed91bb4ef0e",
       "term": "3rd Term",
-      "week_or_locator": "text outside the parsed week rows (opening text, scheme table, revision/examination lines)",
+      "week_or_locator": "word-extractor 1.0.4 getBody() lines 1-14 (title, scheme heading, twelve scheme rows); first body label WEEK 1 at line 17, offset 534",
       "objective": "Inventory all 3rd Term text outside the parsed week rows and record each block as a mapped scheme objective, a marker, or an explicit open item. Record which scheme weeks have no teaching body.",
       "required_files": [
         "backend/src/db/ss1/subjects/physics.json",
@@ -273,8 +274,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "The repository records no T3 scheme text. PR #71 (branch-only) says the document opens 'THIRD TERM E-LEARNING NOTE' and that scheme Weeks 11-12 including the examination have no body (OI-PHYS-003, coverage PHYS-3-011 UNRESOLVED). The SS1-03 checkpoint records that the scheme names 'Diffusion and Osmosis' while Week 5's body is matter/atomic structure/states.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented (2026-11-07, master 679ab8b). Evidence: docs/ss1/work/microtasks/physics/PHYS-PRE-T3.md. Member SHA-256 bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688 verified from docs/ss1/sources/SSS1-original.zip (archive SHA-256 024487129a86... verified). Added SS1-SRC-bed91bb4ef0e-R002 (scheme heading) and -R003 (scheme weeks 11 Revision and 12 Examination), both SCHEME_ONLY, plus COV-PHYS-T3-TITLE and COV-PHYS-T3-SCHEME-REVISION-EXAM (MARKER) in physics.json. Scheme has 12 rows with typed numbers; rows 1-10 map by order to the 10 parsed bodies and PHYS-WK-T3-W01..W10, all 10 re-sliced and equal to parsed_rows.json; scheme weeks 11-12 have no body. No reference list exists. Pre-body slice hash 8e25e51ec2fd802c25deedcaa28bd2a169a1cf5ca989d02574594e13cda0c62d. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Every non-week text block hash-accounted and mapped (MARKER with a SCHEME_ONLY rule id where the schema supports it) or recorded as an open item; the list of scheme weeks without a parsed row is stated explicitly. Per-week objectives belong to the PHYS-WK items."
     },
     {
@@ -2582,8 +2583,8 @@
     }
   ],
   "review": {
-    "date": "2026-10-29",
-    "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
+    "date": "2026-11-07",
+    "reviewed_master_sha": "679ab8b4edf311c2c376d978f220a75071792cdf",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
@@ -2610,7 +2611,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-PRE-T3",
     "PHYS-WK-T1-W03",
     "PHYS-WK-T1-W04",
     "PHYS-WK-T1-W05-W06",
