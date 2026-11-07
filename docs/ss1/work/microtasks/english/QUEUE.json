@@ -82,13 +82,13 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 91,
-    "PENDING": 145,
+    "IMPLEMENTED_TESTING_DEFERRED": 92,
+    "PENDING": 144,
     "BLOCKED": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 91,
-    "PENDING": 145,
+    "IMPLEMENTED_TESTING_DEFERRED": 92,
+    "PENDING": 144,
     "BLOCKED": 6
   },
   "items": [
@@ -3078,8 +3078,8 @@
         "ENG-SRC-T2",
         "ENG-LES-MEANING-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "backend/src/db/ss1/subjects/english.json delivery_corrections[id=SS1-02-english-COR-013] source_lesson_id=SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa body_sha256=d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa replacement_id=SUP-SS1-ENGLISH-MEANING-T2; paired coverage entry ENGLISH-BODY-052 (status IMPLEMENTED_EQUIVALENT).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Reviewed exact binding SS1-02-english-COR-013; original source row SS1-SRC-d8bd8f85fd73:BODY:d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa (member SHA256 ea9c7d70ffb8682fcf9dd9c4ebc2155fc6aa17aededc4743354add0cfeb72966; body SHA256 d88bae0e09daafb8533dc14fdcb35a0fb902590fd7ff8baba96d141005546baa) maps to same-term replacement SUP-SS1-ENGLISH-MEANING-T2 (Synonyms, antonyms and contextual choice). Objective-by-objective evidence: ENGLISH-T2-W04-SY01=PARTIAL; ENGLISH-T2-W04-SY02=PARTIAL; ENGLISH-T2-W04-PW01=PARTIAL; ENGLISH-T2-W04-PW02=PARTIAL; ENGLISH-T2-W04-PW03=PARTIAL; ENGLISH-T2-W04-PW04=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W04-PW05=IMPLEMENTED_EQUIVALENT; ENGLISH-T2-W04-EV01=PARTIAL; ENGLISH-T2-W04-AS01=PARTIAL. The replacement corrects print/paint and gives a quick-outline meaning for sketch; it does not teach the full synonym definition/exact-versus-near distinction, picture/drawing/portrait distinctions, or the original contextual evaluation and five-word assignment. Precise existing follow-ups: ENGLISH-T2-W04-SYNONYM-GAP; ENGLISH-T2-W04-PRACTICE-KEYS. Row ENGLISH-BODY-052 remains PARTIAL; correction remains inactive. No source text, lesson body, correction identity or objective status changed. Approval PENDING; verification and runtime/compiler checks DEFERRED.",
       "completion_condition": "Existing binding code is retained. Read its exact original row and replacement; record objective-by-objective evidence that the replacement preserves all substantive teaching displaced by the binding. Repair only this binding/replacement or add a precise open item if incomplete. Then mark IMPLEMENTED_TESTING_DEFERRED; runtime/compiler tests remain deferred.",
       "required_attachments": [
         {
@@ -7701,7 +7701,6 @@
     "ENG-COR-006",
     "ENG-COR-007",
     "ENG-COR-008",
-    "ENG-COR-013",
     "ENG-COR-014",
     "ENG-COR-015",
     "ENG-COR-016",
