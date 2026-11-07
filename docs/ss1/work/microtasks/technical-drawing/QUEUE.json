@@ -821,8 +821,8 @@
         "TD-SCH-W06",
         "TD-SCH-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 16 (source label 'WEEK SIX AND SEVEN', title \"Reduction of plain figures\", 7297 characters, body sha256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05); scheme week(s) WEEKS 6 and 7 per parsed_rows.json ordering. No coverage, lesson or correction exists on master. Scheme Weeks 6-7 read 'Enlargement and reduction of plain figures' but this teaching row is titled 'Reduction of plain figures'; see TD-FACT-ENLARGEMENT-SCOPE. The source label combines two weeks; master's split_before takes numeric labels only, and any split changes content-bound row identity, so record the facts rather than splitting here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added separate Week 6 and Week 7 coverage for reduction of plain figures (PARTIAL; candidate combined teaching row parsed row 16, body SHA-256 97461c6ebcdd67d8af003002e111d7a1ffe244724f382b3c35c79d88585dbc05) and separate UNRESOLVED coverage entries for the scheme's enlargement objective. The scheme requires enlargement and reduction, while the combined teaching-row title says only “Reduction of plain figures”; no split was made and no enlargement coverage was invented. Added open items for exact constructions, figures and answer keys. Existing TD-FACT-ENLARGEMENT-SCOPE is now the next required dependency. Tests/typechecks/importer/DB remain deferred; not approved, not verified.",
       "completion_condition": "Each objective listed with a locator and honest coverage status; defects, lost notation, figures and missing answers/marking noted; each gap becomes an appended bounded task (lesson for a named uncovered objective, correction or asset), not a note."
     },
     {
@@ -1713,6 +1713,41 @@
       "status": "PENDING",
       "implementation_reference": "Raised by TD-WK-W05 on 2026-11-08. Exact construction steps, dimensions, figures and answer/marking coverage are not present in the current repository evidence.",
       "completion_condition": "Publish original keyed solutions with correct construction steps and positive integer marking criteria summing exactly to each question's marks; do not invent source dimensions or use uninspected figures."
+    },
+    {
+      "id": "TD-KEY-W06-W07-ANSWERS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-af4868d2c026",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK SIX AND SEVEN combined teaching row (parsed row 16), reduction constructions and assignments",
+      "objective": "Create an original keyed supplement for the verified Week 6–7 reduction constructions and assignments, with complete steps, results and marking criteria; do not address enlargement until TD-FACT-ENLARGEMENT-SCOPE establishes its presence or gap.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 TECHNICAL DRAWING.docx",
+          "member_sha256": "69198ac66432c31717d084b8a736741065119b14b1622c2f494c8575294e095d"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/technical-drawing.json",
+        "docs/ss1/work/microtasks/technical-drawing/QUEUE.json",
+        "docs/ss1/work/microtasks/technical-drawing/TD-KEY-W06-W07-ANSWERS.md"
+      ],
+      "depends_on": [
+        "TD-WK-W06-W07",
+        "TD-VIS-W06-W07",
+        "TD-FACT-ENLARGEMENT-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by TD-WK-W06-W07 on 2026-11-08. The source title identifies reduction; the exact constructions, figures, dimensions, answers and marking evidence are not in the current repository record. The enlargement discrepancy must be resolved separately.",
+      "completion_condition": "Publish original keyed solutions for verified reduction tasks, with complete construction steps and positive integer marking criteria summing to each question's marks. Do not invent dimensions or answer any unresolved enlargement objective."
     }
   ],
   "review": {
@@ -1728,7 +1763,7 @@
     }
   },
   "next_runnable": [
-    "TD-WK-W06-W07"
+    "TD-FACT-ENLARGEMENT-SCOPE"
   ],
   "runnable_now": [
     "TD-SCH-W06",
