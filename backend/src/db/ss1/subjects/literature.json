@@ -251,6 +251,118 @@
           "explanation": "The nine scheme rows are parsed rows 0-8 and are classified SCHEME_ONLY; their bodies are retained. Row-to-week map: row 1 line 7 -> LIT-WK-T1-W01 (body lines 37-99); row 2 line 9 -> LIT-WK-T1-W02 (body lines 107-181); row 3 line 11 -> LIT-WK-T1-W03 (body lines 187-243); row 4 line 13 -> LIT-WK-T1-W04 (body lines 249-283); row 5 line 15 -> LIT-WK-T1-W05-W06 (body lines 289-369); row 6 line 17 -> LIT-WK-T1-W07 (body lines 377-429); row 7 line 19 -> LIT-WK-T1-W08 (body lines 437-465); row 8 line 21 -> LIT-WK-T1-W09 (body lines 471-569); row 9 line 23 -> LIT-WK-T1-W10 (body lines 575-603). Row 5 `WEEK 5&6: WHAT IS PROSE? TYPES OF PROSE` packs two weeks and points at LIT-WK-T1-W05-W06. There is no revision or examination row and no week 11. Divergences recorded as found, not harmonised: row 1 (line 7) has no space after the colon; row 2 (line 9) says `GENRES OF LITERATURE-DRAMA,PROSE AND POETRY` while the body heading (line 111) says `GENRE OF LITERATURE – PROSE, POETRY AND DRAMA`; row 4 (line 13) says `ELEMENT OF PROSE FICTION-PLOT,SETTING, NARRATIVE TECHNIQUE` while the body heading (line 253) says `ELEMENT OF PROSE`; row 6 (line 17) has `FEATURES OF   POETRY.` (three spaces) while the body says `Characteristics of poetry` (line 393); row 8 (line 21) says `FEATURES OF DRAMA.` while the body says `Features of Drama` (line 481); row 9 (line 23) says `ORAL FORMS OF LITERATURE.` while the body heading (line 579) says `ORAL TRADITION OF LITERATURE`."
         }
       ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-MEANING",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "Scheme row 1 'INTRODUCTION TO THE STUDY OF LITERATURE' (scheme line 7; body heading line 41 'Introduction to the study of Literature-In-English'): the general meaning of literature as written language, 'everything that is written', including texts produced in other disciplines.",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: label line 37 (tab-padded) SHA-256 2f4880b6d99a561cfaf5277cdf5be4e3341f49a37a20b3039b4433eb72d74e46; heading line 41 SHA-256 e97223dd993be979d489e4a4a39a13e48b9cc3376078a5fb2c8a32f6b51d18e5 anchor \"Introduction to the study of Literature-In-English\" (occurs once); paragraph line 43 SHA-256 bd857e7679a92a9d2aa77be41357f488ed005e848fcb3e5ec17245de80abb5eb anchor \"In general Literature means\" (occurs once); range 41-43 SHA-256 00a031caf2a55bdf15e082822557081bb89f56a96f386acf7f24035bbce3734a",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "line 43 SHA-256 bd857e7679a92a9d2aa77be41357f488ed005e848fcb3e5ec17245de80abb5eb",
+          "explanation": "The original lesson states the general meaning in one sentence and names the disciplines whose texts it counts (law, science, sports, religion, history, economics, technology). That is the whole objective as the source frames it, so the original lesson teaches it and no replacement is needed for this objective. Taught as printed: 'e.t.c.' and the very broad definition are retained and not endorsed; the narrower subject definition follows at line 49. Supported only by the original parsed row; no authored supplement exists, and not teacher-approved or verified."
+        }
+      ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-SUBJECT",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "Literature as a subject of study (heading line 47): a creative or imaginative work of art produced by a novelist, poet or playwright, and its relation to society (line 49: 'It minors the society.').",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: heading line 47 SHA-256 a3201dafb172f747ba316e7c3a55720ffdeba8a534cd73e1f2a80af477088569 anchor \"What is literature as a subject of study?\" (occurs once); paragraph line 49 SHA-256 f64735c78ba31948c5d9ae78f158cfae4bd4dab9e485b14d9a36a25879cf36d1 anchor \"It minors the society.\" (occurs once); range 47-49 SHA-256 3e484141762ec4bf5149e8b202d1c21c86f4e41bea79b104aabe22b4d7515018",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "line 49 SHA-256 f64735c78ba31948c5d9ae78f158cfae4bd4dab9e485b14d9a36a25879cf36d1",
+          "explanation": "The first sentence teaches the definition and the three producers (novelist, poet, playwright). The second sentence, which is where the source relates literature to society, reads 'minors', which is not a verb that fits the sentence and appears to be a typing slip; the source gives no other statement of the idea. The contract allows no character-level correction, so the original wording stays in the original row and the corrected teaching must be a delivery replacement. The intended word is NOT asserted here: a teacher must confirm it (see LITERATURE-T1-W01-MINORS-CORRECTION). Partly taught: the definition is present, the society relation is garbled."
+        }
+      ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-ENGLIT-VS-LITENG",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "English Literature versus Literature-In-English (heading line 53): English Literature seen as beginning with Beowulf, dated 'between the 8th to the 11th centuries', named as the most famous Old English work with national-epic status 'despite being Scandinavia'; Literature In English said to focus on works from 'other British colonies, including the U.S.'.",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: heading line 53 SHA-256 2578c05b7b44b9789af7b2b8a0c683026520e631f649f9c8d33f15177fc78362 anchor \"English Literature and Literature-In-English\" (occurs once); paragraph line 55 SHA-256 a31ab177d2f471312be95853701c65af41bb3904c9e4e9a271665e31bb31d236 anchors \"Beowulf\" (occurs once) and \"Literature In English focuses on literary works from other British colonies, including the U.S.\" (occurs once); range 53-55 SHA-256 75d509032af7ec389d5b6bed4c1600b8614253a4ac0aec4610d187e152614804",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "line 55 SHA-256 a31ab177d2f471312be95853701c65af41bb3904c9e4e9a271665e31bb31d236",
+          "explanation": "The paragraph states the distinction in two sentences and gives no example, no work or author for the second term, and no reason the two are separated. Two claims are checkable and unreferenced: (a) the Beowulf date range and 'national epic' status; (b) the scope claim for Literature In English. 'despite being Scandinavia' is garbled (the poem's setting is Scandinavia; the sentence does not say so). Checked on 2026-11-07 through web copies only, not a page-cited edition: an Oxford Old English course page dates the Beowulf manuscript to around the turn of the eleventh century, gives no single composition date and says the competing composition-date theories lack consensus; the WASSCE Literature-in-English syllabus (a web copy) divides its texts into African and non-African prose, drama and poetry and never frames the subject as works from British colonies. The distinction as taught is therefore not settled and is recorded as a FACT open item. Not retaught here."
+        }
+      ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-REASONS",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "Reasons for the study of Literature (heading line 59, label line 61 '(Aims and Objective)'): the eleven reasons listed at lines 63-83, which question 99 asks students to reproduce.",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: heading line 59 SHA-256 7d44552748c43756a2732446f0749158f7a3b85bfa79b3ef63880eff7576ec13 anchor \"Reasons for the study of Literature\" (occurs once); label line 61 SHA-256 7e5cf3f66aa4869ff169a81c6dd9f338d672d422f95b8151cd5c222b14150c0a anchor \"(Aims and Objective)\" (occurs once); list lines 63-83 (eleven items, one per odd line) range SHA-256 c8caef53b8b3a6033c2a129cc9d44529ff16de469d7a8baca7208d21ef21d2bf; first item line 63 anchor \"We can vicariously travel to other places, even outer space\" (occurs once); last item line 83 anchor \"We can learn more about a society and ourselves\" (occurs once); item line hashes (first 12 hex): 63 886085537e9e, 65 d0f224a24cd2, 67 0bdbf91cf65e, 69 f4ec08fb1a47, 71 6ea17cc398cb, 73 e5968bf98521, 75 d77538f2b790, 77 baf10777663a, 79 18dc0cf83249, 81 c1cbf6a72967, 83 dadd0d262a9e",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 63-83 range SHA-256 c8caef53b8b3a6033c2a129cc9d44529ff16de469d7a8baca7208d21ef21d2bf",
+          "explanation": "Eleven items at lines 63, 65, ... 83, which is the eleven that question 99 asks for. The original lesson teaches the list as a list: each reason is one sentence with no explanation or example, so the objective 'state the reasons' is taught but nothing deeper is, and no deeper claim is made. Retained as printed: items 7 and 8 differ only in 'emotional' and 'moral'; the label at line 61 treats reasons as 'Aims and Objective'; item 11 has a leading space."
+        }
+      ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-APPRECIATION",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "Literary Appreciation (heading line 87): analysis, criticism and understanding of literature, illustrated by discussing a poem or writing an essay on it.",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: heading line 87 SHA-256 ef258017b5433bbffbf57521e84ee32d40f35e94118a521ddd727adbcd266807 anchor \"What is Literary Appreciation?\" (occurs once); definition line 89 SHA-256 2d6cb892f0f7e7d906f5e7dd96a1a5e0b6009ef538d52046042528cc018bd22c anchor \"Literary Appreciation means the analysis, criticism and understanding of literature.\" (occurs once); illustration line 91 SHA-256 9617313d9ffefde6248e6ac03031d79d23fe243fd27c5c694c4ea66d35b6064e; range 87-91 SHA-256 78b9399263583a69ae9bc8e9b94d82c91db9814a4b6b3505a80e29038ec7c54f",
+      "status": "SUPPORTED",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "lines 89-91 range SHA-256 94845f9910a090c4afcc816ac46de7085335ea6652070a3b216a9bbd6dd14475",
+          "explanation": "The original lesson gives a one-sentence definition and a one-sentence illustration, which together teach the term at the level the source states. No poem or other set text is supplied or invented by the source. Retained as printed: 'a piece of poem' and 'analyses it'."
+        }
+      ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-CLASSWORK-Q1",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "Class Work question 1 (line 97): 'Explain the term Literary Appreciation'. The source gives no answer and no mark.",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: marker line 95 SHA-256 24f082de400cfdf445c2ed736a6f65499c50635d6a432c0e0147e7e2088de85e (the text 'Class Work' occurs 7 times in the document, so it is not an anchor and is left to LIT-MARK-T1); question line 97 SHA-256 4f74e0f952d92562274518b9c414a114d1b99d163e6e21d65ff263b53c6d613d anchor \"Explain the term Literary Appreciation\" (occurs once); range 95-99 SHA-256 19f63055c97e192603a1887cf9e6680b4ffc180ff78c55739ce45d90b9f212cf",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "line 97 SHA-256 4f74e0f952d92562274518b9c414a114d1b99d163e6e21d65ff263b53c6d613d",
+          "explanation": "Answerable from lines 89-91, which teach exactly this term, so the teaching is present in the span. The source has no answer, no marking and no marks, so nothing is keyed. No answer is written here; a keyed item with marking is part of the follow-up lesson (LIT-LES-T1-W01-CORRECTED-WEEK)."
+        }
+      ]
+    },
+    {
+      "id": "COV-LIT-T1-W01-CLASSWORK-Q2",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "objective": "Class Work question 2 (line 99): 'Mention 11 reasons for studying Literature'. The source gives no answer and no mark.",
+      "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea; Week 1 block lines 37-99 SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; parsed row (importer WEEK_MARKER, trimmed) SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2: question line 99 SHA-256 1b49a953fd01e44de61b10929eb7dc34c7c588c32a30f4d8c680c2adef75b5f8 anchor \"Mention 11 reasons for studying Literature\" (occurs once); range 95-99 SHA-256 19f63055c97e192603a1887cf9e6680b4ffc180ff78c55739ce45d90b9f212cf",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2"
+      ],
+      "evidence": [
+        {
+          "locator": "line 99 SHA-256 1b49a953fd01e44de61b10929eb7dc34c7c588c32a30f4d8c680c2adef75b5f8",
+          "explanation": "The span lists eleven reasons (lines 63-83), so the question can be answered from the taught list. The source has no key and no marks, and the span has no assignment marker, so this is the only exercise block in the week. A keyed item is part of the follow-up lesson; the question accepts any eleven drawn from the taught list only once the owner or teacher confirms that rule."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -284,6 +396,54 @@
       "affected_ids": [
         "SS1-SRC-2422e423a240-R001",
         "SS1-SRC-2422e423a240"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "LITERATURE-T1-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "1st Term Week 1 (mammoth lines 37-99, block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518) is indexed at objective level. COV-LIT-T1-W01-MEANING, -REASONS and -APPRECIATION are SUPPORTED against the reproduced generic parsed-row id SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2. COV-LIT-T1-W01-SUBJECT and -ENGLIT-VS-LITENG are PARTIAL (a garbled sentence at line 49 and two unreferenced claims at line 55). COV-LIT-T1-W01-CLASSWORK-Q1 and -Q2 are PARTIAL because the two exercises have no key. The week names no set text, has no assignment marker and no visual group. No authored lesson, correction or asset exists yet. The parsed-row id was reproduced outside the importer and awaits confirmation by the compiler.",
+      "required_action": "Author the one follow-up lesson LIT-LES-T1-W01-CORRECTED-WEEK, add its delivery_corrections entry, then re-point the PARTIAL entries and keep any entry it does not fully cover PARTIAL.",
+      "affected_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2",
+        "COV-LIT-T1-W01-SUBJECT",
+        "COV-LIT-T1-W01-ENGLIT-VS-LITENG",
+        "COV-LIT-T1-W01-CLASSWORK-Q1",
+        "COV-LIT-T1-W01-CLASSWORK-Q2"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "LITERATURE-T1-W01-MINORS-CORRECTION",
+      "kind": "FACT",
+      "detail": "Source line 49 ends 'It minors the society.' The word does not fit the sentence and looks like a typing slip, but the source does not say what was meant and no reference was consulted. The original wording stays in the original row; the contract has no character-level correction, so the corrected teaching must be a delivery replacement.",
+      "required_action": "A Literature teacher confirms the intended word and meaning of the sentence (do not assume it); the corrected wording then goes in the follow-up supplement with a delivery_corrections entry binding the original row id and body hash.",
+      "affected_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2",
+        "COV-LIT-T1-W01-SUBJECT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "LITERATURE-T1-W01-ENGLIT-CLAIMS",
+      "kind": "FACT",
+      "detail": "Source line 55 makes claims that need an authoritative reference before they are delivered as teaching: (1) 'Beowulf ... dates from between the 8th to the 11th centuries' and 'national epic status'; (2) 'despite being Scandinavia' (garbled; presumably the poem's setting); (3) 'Literature In English focuses on literary works from other British colonies, including the U.S.'. Checked on 2026-11-07 through web copies, not a page-cited edition: an Oxford Old English course page dates the manuscript to around the turn of the eleventh century and says composition-date theories lack consensus; a web copy of the WASSCE Literature-in-English syllabus structures the subject as African and non-African prose, drama and poetry and does not describe it as works from British colonies. Claim (3) is therefore unsupported by that syllabus and claim (1) is a contested range, but neither is adjudicated here.",
+      "required_action": "Attach an authoritative, dated reference for the Beowulf date and for the scope of Literature-in-English as taught at SS1 (the school's curriculum or the exam syllabus the school follows), and have a teacher decide the wording of the distinction; keep the source wording separate from the corrected form.",
+      "affected_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2",
+        "COV-LIT-T1-W01-ENGLIT-VS-LITENG"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "LITERATURE-T1-W01-CLASSWORK-KEYS",
+      "kind": "CONTENT",
+      "detail": "The source gives no answer or mark for Class Work question 1 (line 97) or question 2 (line 99), and the week has no assignment marker. Question 1 can be answered from lines 89-91 and question 2 from the eleven-item list at lines 63-83, but no key, marking or mark total exists and none is invented here. The marker text 'Class Work' occurs 7 times in the document and its classification belongs to LIT-MARK-T1.",
+      "required_action": "Author keyed practice with a marking breakdown whose criterion marks sum to the question marks in the follow-up lesson; an owner or teacher confirms the rule for question 2 (all of the eleven listed, or any eleven).",
+      "affected_ids": [
+        "SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2",
+        "COV-LIT-T1-W01-CLASSWORK-Q1",
+        "COV-LIT-T1-W01-CLASSWORK-Q2"
       ],
       "blocks_delivery": true
     }

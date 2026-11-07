@@ -24,19 +24,21 @@
     "Source-reading items need the shared archive (sha256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e); the member path and member hash are in each item's required_attachments. Do not commit source documents or private extracts.",
     "LIT-INV-T1 inventoried the 1st Term Literature document: nine teaching blocks (Week 5 and Week 6 share one span), 13 class-work/assignment markers, no revision row, no set text and no visual group. Eleven items were appended (LIT-PRE-T1, LIT-MARK-T1 and LIT-WK-T1-W01..W10, with LIT-WK-T1-W05-W06 for the combined block); each depends on LIT-INV-T1 + LIT-SRC-T1 and stays PENDING. No package, coverage, rule, lesson or asset was written; the alias approvals are untouched.",
     "Execute one queue item per worker. Missing material and deferred testing are never marked complete.",
-    "LIT-PRE-T1 (2026-10-30, master 4bdb581) indexed the 1st Term preamble: literature.json now has 13 source_rules (added SS1-SRC-470d43e54e5b-R002..R011, all SCHEME_ONLY) and 2 coverage entries (COV-LIT-T1-TITLE, COV-LIT-T1-SCHEME, both MARKER). Evidence: LIT-PRE-T1.md."
+    "LIT-PRE-T1 (2026-10-30, master 4bdb581) indexed the 1st Term preamble: literature.json now has 13 source_rules (added SS1-SRC-470d43e54e5b-R002..R011, all SCHEME_ONLY) and 2 coverage entries (COV-LIT-T1-TITLE, COV-LIT-T1-SCHEME, both MARKER). Evidence: LIT-PRE-T1.md.",
+    "LIT-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: three objectives SUPPORTED against the reproduced generic parsed-row id, four PARTIAL (the garbled line 49 sentence, the unreferenced Beowulf/Literature-In-English claims at line 55, and the two unkeyed Class Work questions), four blocking open items and one lesson item appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
+    "FACTUAL_DEPENDENCY": 2,
+    "TEST": 1,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 2,
     "SOURCE_WEEK_INDEXING": 18,
-    "TEST": 1,
-    "FACTUAL_DEPENDENCY": 2
+    "LESSON": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 6,
+    "IMPLEMENTED_TESTING_DEFERRED": 7,
     "PENDING": 24,
     "BLOCKED": 1
   },
@@ -461,8 +463,8 @@
         "LIT-INV-T1",
         "LIT-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this section: literature.json has the three sources and their three alias rules only, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: lines 37-99, block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518; label `\\tWEEK 1\\t` 37 (tab-padded; scheme row 7 says `INTRODUCTION TO THE STUDY OF LITERATURE` while the body heading 41 adds `-In-English`), heading `Introduction to the study of Literature-In-English` 41, sections `What is literature as a subject of study?` 47, `English Literature and Literature-In-English` 53, `Reasons for the study of Literature` 59, `(Aims and Objective)` 61, `What is Literary Appreciation?` 87; marker `Class Work` 95 with questions 97 and 99. Findings recorded by LIT-INV-T1 that this item must settle: 49 says `It minors the society.`; 55 makes two checkable claims (`Beowulf ... between the 8th to the 11th centuries` and `Literature In English focuses on literary works from other British colonies, including the U.S.`) that need an authoritative reference; the 11-item reasons list (63-83) is what question 99 asks students to reproduce; no assignment marker exists in this week. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-07 (master 532270f): literature.json gained 7 source-anchored coverage entries for lines 37-99 (block SHA-256 b4ad59792cac040a9cab42eedeed7f3b2794837bb257e375b297a9a129a78518): COV-LIT-T1-W01-MEANING, -REASONS and -APPRECIATION SUPPORTED against the reproduced generic parsed-row id SS1-SRC-470d43e54e5b:BODY:87271eccd4241024527cef8b191ee87bf73d10188fb894490bb5287a234481c2; -SUBJECT, -ENGLIT-VS-LITENG, -CLASSWORK-Q1 and -CLASSWORK-Q2 PARTIAL; and 4 blocking open items (LITERATURE-T1-W01-COVERAGE, -MINORS-CORRECTION, -ENGLIT-CLAIMS, -CLASSWORK-KEYS). No source rule was added (the Week 1 row parses without one; the 'Class Work' marker text occurs 7 times and is left to LIT-MARK-T1). No lesson, correction or asset was written, no set text is named and no assignment marker exists in the span. Follow-up LIT-LES-T1-W01-CORRECTED-WEEK appended. Evidence: LIT-WK-T1-W01.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit. Do not copy or invent any literary text: the source supplies none."
     },
     {
@@ -1167,6 +1169,44 @@
       "status": "PENDING",
       "implementation_reference": "No coverage, lesson or rule exists for this section from this task. Inventory evidence: docs/ss1/work/microtasks/literature/LIT-INV-T2.md. Not approved, not verified; testing deferred by owner.",
       "completion_condition": "Objective-level coverage for the stated span exists with exact anchors and the source hash; every exercise in the span is accounted for; missing content has an open item and a small lesson task; no lesson claims approval or verification; no set text is invented or presented as prescribed; quoted poems, dialogue passages and biographies are not copied without a recorded reuse and attribution decision. Follow the schema. A missing or unsupported schema field needs a precise separate dependency, not a silent edit."
+    },
+    {
+      "id": "LIT-LES-T1-W01-CORRECTED-WEEK",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-470d43e54e5b",
+      "term": "1st Term",
+      "week_or_locator": "1st Term Week 1, mammoth lines 37-99; objectives COV-LIT-T1-W01-SUBJECT (PARTIAL), COV-LIT-T1-W01-ENGLIT-VS-LITENG (PARTIAL), COV-LIT-T1-W01-CLASSWORK-Q1 and -Q2 (PARTIAL)",
+      "objective": "Author ONE visibly original supplement lesson, suggested id SUP-SS1-LITERATURE-T1-W01-CORRECTED, that can replace the Week 1 original at delivery. The contract resolves a correction to the whole original row, so the lesson must teach all Week 1 objectives, not only the corrected ones: (1) the meaning of literature, in the source's broad sense and as a subject of study, with the line 49 sentence corrected only after a teacher confirms the intended word (LITERATURE-T1-W01-MINORS-CORRECTION); (2) English Literature versus Literature-In-English, taught only with an authoritative dated reference for the Beowulf date and for the subject's scope (LITERATURE-T1-W01-ENGLIT-CLAIMS), keeping the source wording separate from the corrected form and presenting no set text as prescribed; (3) the eleven reasons for studying literature, each explained in original wording; (4) literary appreciation, with an original worked illustration that does not copy or invent any literary text; (5) keyed practice for Class Work questions 1 and 2 with complete answers and a marking breakdown whose criterion marks sum exactly to the question marks (LITERATURE-T1-W01-CLASSWORK-KEYS).",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/02_WORKER_A_LANGUAGES.md",
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-WK-T1-W01.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001 (1).zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/LIT. IN ENGLISH.docx",
+          "member_sha256": "732deed1d3e0c4e3c2218cde0d2e3fce1678f39c8730633b20af9fdc4d602dea"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/literature.json",
+        "docs/ss1/work/microtasks/literature/QUEUE.json",
+        "docs/ss1/work/microtasks/literature/LIT-LES-T1-W01-CORRECTED-WEEK.md"
+      ],
+      "depends_on": [
+        "LIT-SRC-T1",
+        "LIT-WK-T1-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Not authored. Required by LIT-WK-T1-W01 (2026-11-07): line 49 has a garbled sentence, line 55 has unreferenced claims, and the two Class Work questions have no key. COV-LIT-T1-W01-SUBJECT, -ENGLIT-VS-LITENG, -CLASSWORK-Q1 and -CLASSWORK-Q2 are PARTIAL and the open items LITERATURE-T1-W01-COVERAGE, -MINORS-CORRECTION, -ENGLIT-CLAIMS and -CLASSWORK-KEYS block delivery. LIT-WK-T1-W01 authors no lesson text, answer or correction.",
+      "completion_condition": "A lesson in literature.json teaches the Week 1 objectives, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance with dated references and PENDING content approval; a delivery_corrections entry binds the original lesson id and body hash to it; the PARTIAL coverage entries then cite it with evidence and any entry it does not fully cover stays PARTIAL; the two FACT items stay open until a teacher confirmation and an authoritative reference are recorded; no set text is invented or presented as prescribed; no source byte, schema or shared file is edited."
     }
   ],
   "review": {
@@ -1182,6 +1222,28 @@
     }
   },
   "next_runnable": [
-    "LIT-MARK-T1"
+    "LIT-INV-T3",
+    "LIT-FACT-T2-T3-RELATIONSHIP",
+    "LIT-MARK-T1",
+    "LIT-WK-T1-W02",
+    "LIT-WK-T1-W03",
+    "LIT-WK-T1-W04",
+    "LIT-WK-T1-W05-W06",
+    "LIT-WK-T1-W07",
+    "LIT-WK-T1-W08",
+    "LIT-WK-T1-W09",
+    "LIT-WK-T1-W10",
+    "LIT-PRE-T2",
+    "LIT-MARK-T2",
+    "LIT-WK-T2-W01",
+    "LIT-WK-T2-W02",
+    "LIT-WK-T2-W03",
+    "LIT-WK-T2-W04",
+    "LIT-WK-T2-W05",
+    "LIT-WK-T2-W06",
+    "LIT-WK-T2-W07",
+    "LIT-WK-T2-W08",
+    "LIT-WK-T2-W09",
+    "LIT-LES-T1-W01-CORRECTED-WEEK"
   ]
 }
