@@ -335,6 +335,216 @@
       }
     },
     {
+      "id": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Number bases: converting to and from base ten, and bicimals",
+      "objectives": [
+        "Convert a number from any base to base ten by place values, including a number with a point and a number written in an unknown base x",
+        "Name the bases two, eight, ten, twelve, fifteen and sixteen, state which digits each allows (using letters for digits of ten or more), and explain a base and the difference between a digit and a number",
+        "Convert a base ten number to another base by repeated division, reading the remainders from the last to the first, and convert between two bases through base ten",
+        "Convert a fraction to a bicimal by repeated multiplication by 2, and show a terminating or recurring bicimal correctly (1011.01 in base two is 11 1/4)"
+      ],
+      "body": "NUMBER BASES: CONVERTING TO AND FROM BASE TEN, AND BICIMALS\n\nWhat you will learn: what a base is and which digits it allows; how to change a number from any base to base ten, including a number with a point and a number whose base is unknown; how to change a base ten number into another base by repeated division; how to go from one base to another through base ten; and how to write a fraction as a bicimal. Powers are written with a caret, so 2^3 means two to the power three. Multiplication is always written ×, and the letter x is used only for an unknown number.\n\n1. WHAT A BASE IS\nThe base of a number system is the number of different digits the system uses. It is also the number by which the place values grow: moving one place to the left multiplies the place value by the base. So the place values are the powers of the base.\nIn base ten the place values are 1, 10, 100, ... and 450 = 4 × 10^2 + 5 × 10^1 + 0 × 10^0. (Any number to the power 0 is 1, so 10^0 = 1.)\nA digit is one symbol in a numeral; a number is the whole value the numeral stands for. In base b the only digits that may be used are 0, 1, 2, ..., b - 1. HINT: no digit may be equal to or greater than the base. In base two the digits are only 0 and 1, so 1100 is a base two numeral but 1102 is not. In base five the digits are 0 to 4, so 432 is allowed but 25 is not (the digit 5 is not allowed).\nThe base is written after the numeral: 432 (base 5) means the numeral 432 read in base five. A numeral with no base shown is in base ten.\nNames of bases:\n- base two: binary (digits 0 and 1)\n- base eight: octal (digits 0 to 7)\n- base ten: denary or decimal (digits 0 to 9)\n- base twelve: duodecimal (digits 0 to 9, then A for ten and B for eleven)\n- base fifteen: digits 0 to 9, then A for ten, B for eleven, C for twelve, D for thirteen and E for fourteen\n- base sixteen: hexadecimal (digits 0 to 9, then A for ten, B for eleven, C for twelve, D for thirteen, E for fourteen and F for fifteen)\n- bicimal: a number with a point, or a fraction, written in base two\nWhen a base has more than ten digits, a single letter stands for one digit that is ten or more. So 3A (base 12) has two digits: 3 and ten. This lesson uses the letters A, B, C, ... in that way.\n\n2. FROM ANY BASE TO BASE TEN\nMethod: write the place value of every digit as a power of the base, multiply each digit by its place value, and add.\nExample 1. Change 1011111 (base 2) to base ten. There are seven digits, so the highest power is 2^6.\n1011111 (base 2) = 1 × 2^6 + 0 × 2^5 + 1 × 2^4 + 1 × 2^3 + 1 × 2^2 + 1 × 2^1 + 1 × 2^0 = 64 + 0 + 16 + 8 + 4 + 2 + 1 = 95.\nExample 2. Change 432 (base 5) to base ten.\n432 (base 5) = 4 × 5^2 + 3 × 5^1 + 2 × 5^0 = 4 × 25 + 3 × 5 + 2 × 1 = 100 + 15 + 2 = 117.\nExample 3. A base that is not known. Write 431 (base x) in base ten. The place values are x^2, x^1 and x^0, so 431 (base x) = 4 × x^2 + 3 × x^1 + 1 × x^0 = 4x^2 + 3x + 1. This is an expression in x, not a single number, because x is not yet known.\nNow suppose 431 (base x) equals 281 in base ten. Then 4x^2 + 3x + 1 = 281, so 4x^2 + 3x - 280 = 0, which factorises as (x - 8)(4x + 35) = 0. So x = 8 or x = -35/4. A base is a whole number greater than 1 and larger than every digit used (here larger than 4), so -35/4 is rejected and x = 8. Check: 4 × 64 + 3 × 8 + 1 = 256 + 24 + 1 = 281.\n\n3. NUMBERS WITH A POINT: BICIMALS AND FRACTIONS IN OTHER BASES\nThe digits to the right of the point have place values 1/b, 1/b^2, 1/b^3, ..., which are b^(-1), b^(-2), b^(-3), ... In base two the first place after the point is the halves place, the next is the quarters place, then eighths.\nExample 4. Change 1011.01 (base 2) to base ten. The digits left of the point are 1, 0, 1, 1 and the digits right of the point are 0, 1.\n1011.01 (base 2) = 1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 1 × 2^0 + 0 × 2^(-1) + 1 × 2^(-2) = 8 + 0 + 2 + 1 + 0 × 1/2 + 1 × 1/4 = 11 + 1/4 = 11 1/4, that is 11.25.\nTake care over which place holds the 1. In 1011.01 the halves place holds 0 and the quarters place holds 1, so the fraction is 1/4. If the halves place also held a 1 the fraction would be 1/2 + 1/4 = 3/4: 1011.11 (base 2) is 11 3/4, not 1011.01.\nExample 5. Change 24.3 (base 5) to base ten. 24.3 (base 5) = 2 × 5 + 4 × 1 + 3 × 1/5 = 10 + 4 + 3/5 = 14 3/5, that is 14.6.\n\n4. FROM BASE TEN TO ANOTHER BASE: REPEATED DIVISION\nMethod: divide the number by the new base and write the quotient and the remainder. Divide the quotient by the new base again, and keep going until the quotient is 0. The remainders, read from the last one to the first one (bottom to top), are the digits of the answer. Every remainder is less than the new base; a remainder of ten or more is written with its letter.\nExample 6. Change 1007 to base 8.\n1007 ÷ 8 = 125 remainder 7\n125 ÷ 8 = 15 remainder 5\n15 ÷ 8 = 1 remainder 7\n1 ÷ 8 = 0 remainder 1\nReading the remainders from the last to the first: 1007 = 1757 (base 8). Check: 1 × 8^3 + 7 × 8^2 + 5 × 8 + 7 = 512 + 448 + 40 + 7 = 1007.\nExample 7. Change 1007 to base 2.\n1007 ÷ 2 = 503 remainder 1\n503 ÷ 2 = 251 remainder 1\n251 ÷ 2 = 125 remainder 1\n125 ÷ 2 = 62 remainder 1\n62 ÷ 2 = 31 remainder 0\n31 ÷ 2 = 15 remainder 1\n15 ÷ 2 = 7 remainder 1\n7 ÷ 2 = 3 remainder 1\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\nReading the remainders from the last to the first: 1007 = 1111101111 (base 2). Check: 512 + 256 + 128 + 64 + 32 + 0 + 8 + 4 + 2 + 1 = 1007.\nExample 8. Change 761 to base 12.\n761 ÷ 12 = 63 remainder 5\n63 ÷ 12 = 5 remainder 3\n5 ÷ 12 = 0 remainder 5\nReading upward: 761 = 535 (base 12). Check: 5 × 144 + 3 × 12 + 5 = 720 + 36 + 5 = 761.\nExample 9. Change 761 to base 16.\n761 ÷ 16 = 47 remainder 9\n47 ÷ 16 = 2 remainder 15 (digit F)\n2 ÷ 16 = 0 remainder 2\nThe remainder 15 is one digit, written F. Reading upward: 761 = 2F9 (base 16). Check: 2 × 256 + 15 × 16 + 9 = 512 + 240 + 9 = 761.\n\n5. FROM ONE BASE TO ANOTHER, THROUGH BASE TEN\nMethod: first change the number to base ten (section 2), then change the base ten number to the required base (section 4).\nExample 10. Express 313 (base 6) in base 8. To base ten: 3 × 6^2 + 1 × 6^1 + 3 × 6^0 = 108 + 6 + 3 = 117. Then:\n117 ÷ 8 = 14 remainder 5\n14 ÷ 8 = 1 remainder 6\n1 ÷ 8 = 0 remainder 1\nReading upward: 313 (base 6) = 165 (base 8). Check: 1 × 64 + 6 × 8 + 5 = 117.\nExample 11. Express 2F (base 16) in base 12. To base ten: 2 × 16 + 15 = 47. Then 47 ÷ 12 = 3 remainder 11 (digit B), and 3 ÷ 12 = 0 remainder 3. Reading upward: 2F (base 16) = 3B (base 12). Check: 3 × 12 + 11 = 47.\n\n6. FROM A FRACTION TO A BICIMAL\nMethod: to write a fraction as a bicimal, multiply the fraction by 2. The whole-number part of the product (0 or 1) is the next digit after the point. Keep only the fractional part and multiply it by 2 again. Stop when the fractional part is 0 (the bicimal ends) or when a fractional part appears that you have already had (the digits now repeat for ever).\nExample 12. Write 3/8 as a bicimal.\n3/8 × 2 = 3/4 → digit 0, keep 3/4\n3/4 × 2 = 3/2 → digit 1, keep 1/2\n1/2 × 2 = 1 → digit 1, keep 0\nThe fractional part is now 0, so the bicimal ends: 3/8 = 0.011 (base 2). Check: 0/2 + 1/4 + 1/8 = 3/8.\nExample 13. Write 2/3 as a bicimal.\n2/3 × 2 = 4/3 → digit 1, keep 1/3\n1/3 × 2 = 2/3 → digit 0, keep 2/3\nThe fractional part 2/3 has appeared before (it is where we started), so the digits 1, 0 repeat for ever: 2/3 = 0.101010... The repeating block is written in brackets, so 2/3 = 0.(10) (base 2). The same number can also be written as a fraction with its numerator and denominator in base two: 2 = 10 (base 2) and 3 = 11 (base 2), so 2/3 = 10/11 (base 2). Check: the repeating block gives (1/2 + 0/4) + (1/8 + 0/16) + ..., which is (1/2) ÷ (1 - 1/4) = 2/3.\nExample 14. A number with a whole part: 5 3/8. Change the whole part 5 by repeated division by 2: 5 ÷ 2 = 2 remainder 1, 2 ÷ 2 = 1 remainder 0, 1 ÷ 2 = 0 remainder 1, so 5 = 101 (base 2). The fraction 3/8 = 0.011 (base 2) from Example 12. So 5 3/8 = 101.011 (base 2). Check: 4 + 1 + 1/4 + 1/8 = 5 3/8.\n\n7. COMMON MISTAKES\n- Reading the remainders from the first to the last. Read them from the last to the first.\n- Using a digit that is not allowed in the base (a 7 in base seven, a 2 in base two).\n- Leaving out a digit 0 when a remainder is 0. For example 1000 = 1750 (base 8): 1000 ÷ 8 = 125 remainder 0, 125 ÷ 8 = 15 remainder 5, 15 ÷ 8 = 1 remainder 7, 1 ÷ 8 = 0 remainder 1, and the final 0 must be kept.\n- Putting the 1 in the wrong place after the point: the halves place comes first, then the quarters place.\n- Writing a recurring bicimal as if it ended; show the repeating block in brackets, or write at least two blocks followed by three dots.\n- Using the letter x both for the unknown and for multiplication. Write × for multiplication.",
+      "body_sha256": "70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+      "practice": [
+        {
+          "id": "M1W2-Q1",
+          "question": "Express each of these numbers in base ten: (a) 312.21 (base 4); (b) 1051.11 (base 8); (c) 23411 (base 6).",
+          "answer": "(a) 312.21 (base 4) = 3 × 4^2 + 1 × 4^1 + 2 × 4^0 + 2 × 4^(-1) + 1 × 4^(-2) = 48 + 4 + 2 + 2/4 + 1/16 = 54 + 8/16 + 1/16 = 54 9/16 (that is 54.5625). (b) 1051.11 (base 8) = 1 × 8^3 + 0 × 8^2 + 5 × 8^1 + 1 × 8^0 + 1 × 8^(-1) + 1 × 8^(-2) = 512 + 0 + 40 + 1 + 1/8 + 1/64 = 553 + 8/64 + 1/64 = 553 9/64 (that is 553.140625). (c) 23411 (base 6) = 2 × 6^4 + 3 × 6^3 + 4 × 6^2 + 1 × 6^1 + 1 × 6^0 = 2 × 1296 + 3 × 216 + 4 × 36 + 6 + 1 = 2592 + 648 + 144 + 6 + 1 = 3391.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "(a) place values 4^2, 4^1, 4^0, 4^(-1), 4^(-2) used correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) value 54 9/16",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) place values 8^3 down to 8^(-2) used correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) value 553 9/64",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) place values 6^4 down to 6^0 used correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) value 3391",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W2-Q2",
+          "question": "Convert each of these fractions to a bicimal (a fraction in base two). Show the repeated multiplication by 2 and show any repeating block in brackets: (a) 2/5; (b) 9/20; (c) 3/4; (d) 6/7; (e) 5/6.",
+          "answer": "(a) 2/5 × 2 = 4/5 → digit 0, keep 4/5; 4/5 × 2 = 8/5 → digit 1, keep 3/5; 3/5 × 2 = 6/5 → digit 1, keep 1/5; 1/5 × 2 = 2/5 → digit 0, keep 2/5; the fractional part 2/5 has appeared before, so the digits 0110 repeat: 2/5 = 0.(0110) = 0.01100110... (base 2). (b) 9/20 × 2 = 9/10 → digit 0, keep 9/10; 9/10 × 2 = 9/5 → digit 1, keep 4/5; 4/5 × 2 = 8/5 → digit 1, keep 3/5; 3/5 × 2 = 6/5 → digit 1, keep 1/5; 1/5 × 2 = 2/5 → digit 0, keep 2/5; 2/5 × 2 = 4/5 → digit 0, keep 4/5; the fractional part 4/5 has appeared before, so the digits 1100 repeat: 9/20 = 0.01(1100) = 0.0111001100... (base 2). (c) 3/4 × 2 = 3/2 → digit 1, keep 1/2; 1/2 × 2 = 1 → digit 1, keep 0; the fractional part reaches 0, so the bicimal ends: 3/4 = 0.11 (base 2). (d) 6/7 × 2 = 12/7 → digit 1, keep 5/7; 5/7 × 2 = 10/7 → digit 1, keep 3/7; 3/7 × 2 = 6/7 → digit 0, keep 6/7; the fractional part 6/7 has appeared before, so the digits 110 repeat: 6/7 = 0.(110) = 0.110110... (base 2). (e) 5/6 × 2 = 5/3 → digit 1, keep 2/3; 2/3 × 2 = 4/3 → digit 1, keep 1/3; 1/3 × 2 = 2/3 → digit 0, keep 2/3; the fractional part 2/3 has appeared before, so the digits 10 repeat: 5/6 = 0.1(10) = 0.11010... (base 2).",
+          "marks": 10,
+          "marking": [
+            {
+              "criterion": "(a) repeated multiplication by 2 shown with the whole-number parts taken as digits",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) correct bicimal, with the repeating block shown where the digits repeat",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) repeated multiplication by 2 shown with the whole-number parts taken as digits",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) correct bicimal, with the repeating block shown where the digits repeat",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) repeated multiplication by 2 shown with the whole-number parts taken as digits",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) correct bicimal, with the repeating block shown where the digits repeat",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) repeated multiplication by 2 shown with the whole-number parts taken as digits",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) correct bicimal, with the repeating block shown where the digits repeat",
+              "marks": 1
+            },
+            {
+              "criterion": "(e) repeated multiplication by 2 shown with the whole-number parts taken as digits",
+              "marks": 1
+            },
+            {
+              "criterion": "(e) correct bicimal, with the repeating block shown where the digits repeat",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W2-Q3",
+          "question": "Convert each of these numbers to (i) base 5, (ii) base 12 and (iii) base 15, using the letters A, B, C, ... for digits of ten or more: (a) 56 (base 8); (b) 124 (base 7); (c) 10001 (base 2); (d) 121103 (base 4).",
+          "answer": "(a) 56 (base 8) = 5 × 8 + 6 = 46 in base ten. base 5: 46 ÷ 5 = 9 r 1 → 9 ÷ 5 = 1 r 4 → 1 ÷ 5 = 0 r 1, so 141; base 12: 46 ÷ 12 = 3 r 10 → 3 ÷ 12 = 0 r 3, so 3A; base 15: 46 ÷ 15 = 3 r 1 → 3 ÷ 15 = 0 r 3, so 31. (b) 124 (base 7) = 1 × 7^2 + 2 × 7 + 4 = 49 + 14 + 4 = 67 in base ten. base 5: 67 ÷ 5 = 13 r 2 → 13 ÷ 5 = 2 r 3 → 2 ÷ 5 = 0 r 2, so 232; base 12: 67 ÷ 12 = 5 r 7 → 5 ÷ 12 = 0 r 5, so 57; base 15: 67 ÷ 15 = 4 r 7 → 4 ÷ 15 = 0 r 4, so 47. (c) 10001 (base 2) = 1 × 2^4 + 0 × 2^3 + 0 × 2^2 + 0 × 2^1 + 1 = 16 + 1 = 17 in base ten. base 5: 17 ÷ 5 = 3 r 2 → 3 ÷ 5 = 0 r 3, so 32; base 12: 17 ÷ 12 = 1 r 5 → 1 ÷ 12 = 0 r 1, so 15; base 15: 17 ÷ 15 = 1 r 2 → 1 ÷ 15 = 0 r 1, so 12. (d) 121103 (base 4) = 1 × 4^5 + 2 × 4^4 + 1 × 4^3 + 1 × 4^2 + 0 × 4^1 + 3 × 4^0 = 1024 + 512 + 64 + 16 + 0 + 3 = 1619 in base ten. base 5: 1619 ÷ 5 = 323 r 4 → 323 ÷ 5 = 64 r 3 → 64 ÷ 5 = 12 r 4 → 12 ÷ 5 = 2 r 2 → 2 ÷ 5 = 0 r 2, so 22434; base 12: 1619 ÷ 12 = 134 r 11 → 134 ÷ 12 = 11 r 2 → 11 ÷ 12 = 0 r 11, so B2B; base 15: 1619 ÷ 15 = 107 r 14 → 107 ÷ 15 = 7 r 2 → 7 ÷ 15 = 0 r 7, so 72E. Answers: (a) 141 (base 5), 3A (base 12), 31 (base 15); (b) 232 (base 5), 57 (base 12), 47 (base 15); (c) 32 (base 5), 15 (base 12), 12 (base 15); (d) 22434 (base 5), B2B (base 12), 72E (base 15).",
+          "marks": 16,
+          "marking": [
+            {
+              "criterion": "(a) base ten value 46",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) base 5 answer 141",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) base 12 answer 3A",
+              "marks": 1
+            },
+            {
+              "criterion": "(a) base 15 answer 31",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) base ten value 67",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) base 5 answer 232",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) base 12 answer 57",
+              "marks": 1
+            },
+            {
+              "criterion": "(b) base 15 answer 47",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) base ten value 17",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) base 5 answer 32",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) base 12 answer 15",
+              "marks": 1
+            },
+            {
+              "criterion": "(c) base 15 answer 12",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) base ten value 1619",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) base 5 answer 22434",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) base 12 answer B2B",
+              "marks": 1
+            },
+            {
+              "criterion": "(d) base 15 answer 72E",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "M1W2-Q4",
+          "question": "Find the base x if 213 (base x) = 81 in base ten. Give a reason for rejecting any value of x that is not allowed.",
+          "answer": "213 (base x) = 2 × x^2 + 1 × x + 3 = 2x^2 + x + 3. Setting this equal to 81: 2x^2 + x - 78 = 0, which factorises as (x - 6)(2x + 13) = 0. So x = 6 or x = -13/2. A base is a whole number greater than 3 (the largest digit used is 3), so -13/2 is rejected and x = 6. Check: 2 × 36 + 6 + 3 = 81.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "expression 2x^2 + x + 3 for 213 (base x)",
+              "marks": 1
+            },
+            {
+              "criterion": "equation 2x^2 + x - 78 = 0",
+              "marks": 1
+            },
+            {
+              "criterion": "factorised as (x - 6)(2x + 13) = 0",
+              "marks": 1
+            },
+            {
+              "criterion": "x = 6, with -13/2 rejected because a base is a whole number greater than 3",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "School source note SS1-SRC-0c9004137f95 (SSS 1/1st Term SS1_/MATHss1.docx)",
+          "locator": "Week 2 (NUMBER BASES /BASE NUMBER.) of the 1st-term scheme, scheme line 2 items [a] to [c]; parsed row 1, lines 191-347, row id SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e. The 20 printed exercise items (assessment 1, 2 and 3) were read from the equation-aware render at paragraphs p74, p76 and p78 because the delivered text drops the last digit and base of every numeral; the worked examples follow lines 197-325 and 331. The topic order, the five worked conversions and the 20 exercise items follow the school source; every value, ladder and answer in the lesson was recomputed from first principles. The source defects (1011.01 in base two printed as 11 3/4, the unusable definition of base, digits listed as bases, \"no number\" for \"no digit\", undefined base twelve and fifteen symbols, the base-eight ladder missing its last step) are corrected here and stay recorded in OI-MATH-T1-W02-FACT-DEFECTS.",
+          "url": null,
+          "rights": "Supplement text is newly authored for Sow the Seed Schools; no third-party passage is reproduced. The 20 exercise items are the school's own and are keyed here with newly computed answers and marking; no printed answer or mark exists in the source.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Authored for Sow the Seed Schools (SS1 delivery correction); owner content approval pending."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
       "id": "SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS",
       "class_name": "SS 1",
       "term": "1st Term",
@@ -1251,14 +1461,19 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Scheme row 2 item [a] 'Conversion from one base number to base ten': expand a numeral in place-value form (powers of the base) and add; including an unknown base written as an algebraic expression.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); 1st-term scheme line 2 = extractRawText() line 9 SHA-256 e7c3bc08190b25e1a30bb3d5045329bdf962a2fc6a82f8df354c84aca535d6ba; heading line 217 SHA-256 affde413d6d27f0f89226be3fb76a4507958f218e6d756ba346730068ce6f409 anchor \"CONVERTION OF NUMBERS TO BASE TEN\" (occurs once); expression line 215 SHA-256 04657c8e6c49d0c5a037b5936317b62cc189bc07def47f0881dae788ab0513fe (p12); worked examples lines 221-245 range SHA-256 75de7d77ac4d796de38fbe3e07adcf7c825d8ed8dfcb6b860a7165e02523c261 (p15-p27, equation-aware range SHA-256 98c71c82d2b2093c373e5ef4b08c2f21022b423d3dff289d7086f387f11b4e32)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
       ],
       "evidence": [
         {
           "locator": "p16 SHA-256 7a5fe9eda64fe972e3caa876ed301760b0d91f7572198cadf438da0015b07f63; p18-p21 range f7b5c7c8a6706a3cb0b3a4c8c8176d791fa326ceead07a1952938b1ef3ce3d26; p22-p25 range b6e7fa17bbe8af5fb67dfd2f28181745e975b18680eee6430f444bfdc14396b1; p26-p27 range 2f02fe4b1e82dd7dd0ddf392aa127ea0456f4fdcfdada4977735cd43f64e7c2b",
           "explanation": "The document teaches [a] by three worked parts: 1011111 in base two (1x2^6+...+1x2^0 = 95), 432 in base five (4x25+3x5+2x1 = 117) and 431 in base x (4x^2+3x+1). All three recompute correctly (95, 117, 4x^2+3x+1) and the method is the one the scheme asks for. The delivered (plain) row text drops every m:oMath object, and in this row the last digit of each numeral and its base subscript sit inside one such object, so the delivered numerals are also wrong, not only unlabelled: line 227 shows '101111 =1x  +0x ...' with every exponent absent, line 233 shows '=9' for 95, line 241 shows '=11' for 117, line 245 '= 4+3X+1' for 4x^2+3x+1, and part a of the example (line 223 shows only 'b.   c. .') has lost its numeral entirely. The row cannot teach this objective as delivered; the correct teaching exists only in the original document, so this stays PARTIAL until a replacement is authored (MATH-LES-T1-W02-NUMBER-BASES)."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: body section 2 (Examples 1 to 3) and practice M1W2-Q1(c), M1W2-Q4; lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Authored 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. The lesson teaches conversion to base ten by place values: Example 1 is 1011111 (base 2) = 64 + 0 + 16 + 8 + 4 + 2 + 1 = 95 and Example 2 is 432 (base 5) = 100 + 15 + 2 = 117, the source's own examples (a) and (b) with every exponent written explicitly so nothing depends on the lost equation objects; Example 3 takes the source's third example 431 (base x) = 4x^2 + 3x + 1 further, to an equation (431 in base x equal to 281 gives (x - 8)(4x + 35) = 0, so x = 8 with -35/4 rejected because a base is a whole number larger than every digit), and Q4 (original: 213 in base x equal to 81 gives (x - 6)(2x + 13) = 0, so x = 6) practises it. Every value was recomputed in code on 2026-11-07. Not certified: content approval PENDING, verification DEFERRED, and the row is not yet bound to this replacement (MATH-COR-T1-W02-NUMBER-BASES)."
         }
       ]
     },
@@ -1267,14 +1482,19 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Scheme row 2 item [b] 'Conversion of decimal fraction [bicimals] in one base to base ten': read a fractional base-two numeral by negative powers and the base-ten fraction equivalent.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); 1st-term scheme line 2 = extractRawText() line 9 SHA-256 e7c3bc08190b25e1a30bb3d5045329bdf962a2fc6a82f8df354c84aca535d6ba; heading line 313 SHA-256 2f8e92d8b02348b6a315169bc9ea55f9c9a6a5c714e8abd9bf067326f6cc52db anchor \"FRACTIONAL BASE NUMBER\" (occurs once); example line 315 SHA-256 88e2d6a37b7c9c32e542850c28415d42c716b26f8d40aab0db7d316c895db8a1 anchor \"Convert 1011.0 to denary base.\" (occurs once); working lines 319-325 range SHA-256 836f90717935a2d60916133e2a60c13eae76999873a3d72c812581354ca2a684 (p62-p67, equation-aware range SHA-256 f36fd71a8eb6d0cff1d5b1970b103ec7f3ab581af693ebcbb16e9be531c84f5b); bicimal term line 205 SHA-256 d942b92965be0d9940dee0beb2ade86c2012d7eb1dcbdb66e6e7e5ca36e61759 anchor \"BICIMAL: This is the fractional binary number or fraction in base two.\" (occurs once)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
       ],
       "evidence": [
         {
           "locator": "p62 SHA-256 cde0a8d018b6c4cc1ec47ef7c7a543e92d6c2722f1ed8394c49971938065f997; p64 SHA-256 1fe0331e4502516538e080a11016238d13578888a896988d9fa789f4fec17f60; p65 SHA-256 6efa18199d989d801da26f95e471ec36138ca12f27d5583ae98cc242a9465b2d; p66 SHA-256 f2e98d2d8dcaef73c213602adac3b8b4f214a4cdf90211a8685eead2b08d8fb9; p67 SHA-256 77219ac5c22bc91c2a07d29d9c90c89acb2ba044cf2d250b18e763d2d5d8065c",
           "explanation": "Source defect found by recomputation: the example converts 1011.01 in base two (p62). Line p64 expands it with coefficients 1,0,1,1,0,1 (8+0+2+1+0x(1/2)+1x(1/4)), which gives 11 1/4. Line p65 then writes the half-place coefficient as 1 ('+1X(1/2) +1X(1/4)'), line p66 adds 1/2+1/4 and p67 states '=11 3/4'. 11 3/4 is the value of 1011.11 in base two, not 1011.01, so the printed answer is wrong for the numeral given and the working contradicts its own first line. The earlier row-level entry COV-MATH-T1-R01 recorded '1011.01 base two = 11 3/4' as checked; that statement is an error and has been corrected there. The only fractional example is in base two, so negative powers of other bases are not shown, although assessment item 1 asks for base 4, 8 and 6 fractions. The delivered (plain) row text drops every m:oMath object, and in this row the last digit of each numeral and its base subscript sit inside one such object, so the delivered numerals are also wrong, not only unlabelled: line 319 shows '1011.0 = 1 X  + 0 X ...' and line 325 '=11 .'. Stays PARTIAL."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: body section 3 (Examples 4 and 5), the mistakes list and practice M1W2-Q1(a) and (b); lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Authored 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. The lesson states the place values 1/b, 1/b^2, ... after the point and works 1011.01 (base 2) = 8 + 0 + 2 + 1 + 0 x 1/2 + 1 x 1/4 = 11 1/4 (11.25), correcting the value 11 3/4 that the source prints (11 3/4 is 1011.11 in base two, which the lesson says in words), and works a fractional numeral in a base other than two, 24.3 (base 5) = 14 3/5. Q1 keys the two source fractional numerals 312.21 (base 4) = 54 9/16 and 1051.11 (base 8) = 553 9/64. Recomputed on 2026-11-07 with exact fractions. Not certified: approval PENDING, verification DEFERRED, row not yet bound."
         }
       ]
     },
@@ -1283,14 +1503,19 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Scheme row 2 item [c] 'Conversion of numbers from one base to another': base ten to another base by repeated division, and base to base through base ten.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); 1st-term scheme line 2 = extractRawText() line 9 SHA-256 e7c3bc08190b25e1a30bb3d5045329bdf962a2fc6a82f8df354c84aca535d6ba; heading line 247 SHA-256 ace5507192b3a10fc18772b3782a77e4b3499aad13a680ff127a69e7431027f5 anchor \"CONVERTION OF BASE NUMBERS FROM BASE TEN TO ANOTHER BASE.\" (occurs once); questions line 249 SHA-256 19e5b05a25a674cbe8425368a822f93bfc39ace07d898e931d802a114e6ae371 anchor \"Express the following base ten numbers to each base giving:\" (occurs once) and lines 251-253; ladders lines 255-287 range SHA-256 9c21d952751aac4c953f2f38bfb9b83dad8770dedf0f9198890075bd7f1577b3 (p32-p48, equation-aware range SHA-256 ff1e3102353cf18666d7748ebc186d0d5e846c3c58a64839b377e0408fac4632); heading line 289 SHA-256 b3f06977ed759b1b9e61343b2ee58dea1f7d1aa0f3640a994a8de0776e91325a anchor \"CONVERTION FROM ONE BASE TO ANOTHER\" (occurs once); hint line 291; example lines 293-311 range SHA-256 7201c54a1b130cc9a9b3309d803c3bf9c40b7476297b4d18c16dc07b92d4c5e0 (p51-p60, equation-aware range SHA-256 3f5866d00f5c9663798623ca6963fd3c9eddc511fb00d6cc853f51e0509673b4)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
       ],
       "evidence": [
         {
           "locator": "p33-p43 range SHA-256 0cb1c2eb1f0f9db70b1ae0e21e5e1f7e2d12c8f0f3839254f1f0781655852bcd; p44-p48 range SHA-256 6a210bd5c9262e98262acfc08f32482e7183746203dc880e47dacafa92010771; p52-p60 range SHA-256 c336e670513783a8c02e49197226dfa1bf28839320b55e5928b863df52d922c7",
           "explanation": "Taught by four ladder examples (1007 to base eight and base two, 761 to base twelve and base sixteen) and one base-to-base example (313 in base six to base ten 117, then to base eight). Recomputed: 1007 = 1757 in base eight and 1111101111 in base two; 761 = 535 in base twelve and 2F9 in base sixteen; 313 in base six = 117 = 165 in base eight. All printed results are correct. Defects: (1) the base-twelve answer is printed with the subscript '1twelve' (p48), a typing slip for 12; (2) the base-eight ladder for 117 (p57-p59) stops at '1 r 6' and omits the last division '0 r 1' that supplies the leading digit of 165; (3) a stray empty equation 'Type equation here.' remains at the end of p48; (4) the ladders are 27 line shapes (division brackets) whose geometry is not in any extraction (MATH-VIS-T1 owns the drawing disposition); the 27 embedded pictures are 1x1 placeholders of 70 bytes each and carry no content. The delivered (plain) row text drops every m:oMath object, and in this row the last digit of each numeral and its base subscript sit inside one such object, so the delivered numerals are also wrong, not only unlabelled: the step '8 | 1 r 7' of the first ladder (p35) is absent from line 261; line 257 shows '100 =8' for 1007 in base ten, line 277 '100= 175' for 1757 in base eight, line 279 '76=' for 761, line 287 '76 = 53' and '76= 2F' for 535 in base twelve and 2F9 in base sixteen, line 311 '31= 16' for 313 in base six = 165 in base eight, and the two columns of the first two ladders are interleaved on the same lines. The source never states the digit symbols for bases above ten other than the A-F list in the hexadecimal line (see COV-MATH-T1-W02-VOCAB), although base twelve and base fifteen outputs need them. Stays PARTIAL."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: body sections 4 and 5 (Examples 6 to 11) and practice M1W2-Q3; lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Authored 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. Repeated division is taught with complete ladders that end at quotient 0: 1007 = 1757 (base 8) including the final step 1 / 8 = 0 remainder 1, 1007 = 1111101111 (base 2), 761 = 535 (base 12), 761 = 2F9 (base 16) with the remainder 15 written as the single digit F, and 313 (base 6) = 117 = 165 (base 8) with the last ladder step the source omits; Example 11 passes through base ten with a letter digit (2F in base 16 = 3B in base 12). The digit letters for bases twelve, fifteen and sixteen are stated (A = ten, B = eleven, up to E for base fifteen and F for base sixteen), which the source never defines for base twelve and fifteen. Every ladder was recomputed and every answer converted back to base ten on 2026-11-07. The choice of letters A, B, ... rather than another symbol set is a teacher confirmation (OI-MATH-T1-W02-FACT-DEFECTS). Not certified: approval PENDING, verification DEFERRED, row not yet bound."
         }
       ]
     },
@@ -1299,14 +1524,19 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Source-only vocabulary (not a scheme item): types of base (octal, denary, binary, bicimal, duodecimal, hexadecimal), place-value expression of 450 in base ten, and the hint that no digit may equal or exceed the base.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); 1st-term scheme line 2 = extractRawText() line 9 SHA-256 e7c3bc08190b25e1a30bb3d5045329bdf962a2fc6a82f8df354c84aca535d6ba (the scheme names no vocabulary item); definition line 195 SHA-256 a50831da1b22a001d784301888499e5065e1e83bc4297e4c5d35af1aaf20b237 anchor \"Base number is the basis of which each place value column\" (occurs once); heading line 197 SHA-256 7eaab14389afc43a0c4099a85d7de6b88c3d133ac8f236b11e8c600605f4fefe anchor \"TYPES OF BASE NUMBERS.\" (occurs once); types lines 199-209 range SHA-256 1658d456484f5595da7c712fc948fc69441a6d2a1857370486341630f0cbf093 (p4-p9, equation-aware range SHA-256 d2540d7caf15a490084c5c91c1e1f9bc740b885750051b316086c22fef91b0ca); lines 207 and 209 anchors \"DUODECIMAL BASE: This is the number system that is express in base 12.\" and \"HEXADECIMAL: Is system of numbers\" (each occurs once); hint line 211 SHA-256 d07acef0a0a967816e6f66218acd5f9c24e85b8612521083b329340534d18f61 anchor \"HINT: No number must be equal or greater than the base number in operation.\" (occurs once); expression lines 213-215 range SHA-256 1e9753ebe8aaea73707c40d507637f26d3335ca0383b0503c46bf80434b21497 (p11-p12)",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
       ],
       "evidence": [
         {
           "locator": "p2 SHA-256 a50831da1b22a001d784301888499e5065e1e83bc4297e4c5d35af1aaf20b237; p4-p6 range SHA-256 e2852bf01d585d5bd086b6b4b59a287a392ec7735fd7095cd5892f1afbd84e67; p9 SHA-256 1739db4ef136166d3ec1174147a14421deb8332a3c2a0c46e62a1d90f56dc41f; p10 SHA-256 d07acef0a0a967816e6f66218acd5f9c24e85b8612521083b329340534d18f61",
           "explanation": "Taught as a list of six names with one example each for octal (257 in base eight), denary (189), binary (11001) and bicimal (2/3 = 10/11 in base two = 0.10101...). Defects: the definition of 'base number' (line 195) is not a usable definition; the hexadecimal line ends 'I.e base 2,3,4,5,6,7,8,9,A,B,C,D,E,F' which lists digits as if they were bases and omits 0 and 1; the hint says 'number' where it means digit; the duodecimal line has no example and neither it nor any other line gives the symbols for ten and eleven; no bicimal method accompanies the single answer-only example. The delivered (plain) row text drops every m:oMath object, and in this row the last digit of each numeral and its base subscript sit inside one such object, so the delivered numerals are also wrong, not only unlabelled: the three numeral examples at lines 199, 201 and 203 extract as '25', '18' and '1100' with no base and wrong last digit, so 'OCTAL BASE ... E.g. 25' is delivered with nothing marking it as base eight. Stays PARTIAL."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: body section 1 and the mistakes list; lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Authored 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. Section 1 replaces the unusable source definition of base number with a definition that can be used (the number of different digits, and the factor by which place values grow), states the digit-versus-number distinction, corrects the hint to 'no digit may be equal to or greater than the base' (the source says 'no number'), and lists octal, denary, binary, bicimal, duodecimal and hexadecimal with the digits each allows, so the source line that lists base 2, 3, 4 ... F as if they were bases is not reproduced. The school's own wording of the definition still needs teacher confirmation (OI-MATH-T1-W02-FACT-DEFECTS). Not certified: approval PENDING, verification DEFERRED, row not yet bound."
         }
       ]
     },
@@ -1315,14 +1545,19 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Assessment item 1: convert three numerals in bases four, eight and six (with fractional parts) to base ten. The source gives no answer or mark.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); marker line 335 SHA-256 b7f970a3ff7a02bbad0aa156286111ae2ec0f5c1c78422ad1c827d619aa0c723 anchor \"ASSESSMENT: Students should work\" (occurs once); instruction line 337 SHA-256 e32b612a63649146d64180421085c1a61c61f063c757592b63fa6c0604297e9a anchor \"Express the following base numbers to base ten.\" (occurs once); items line 339 SHA-256 e1204ec460b1d19bf1b24f4f8749fecf8377faae38c3c736f640c16f8b67ba7f (p74, equation-aware SHA-256 f8141b0be9987339b98de45961d60264770f8d3d82899265ee6a70cf26223eec); range 335-339 SHA-256 9bcb9a27243f69dc6bbe37c42992a8c0aa3ca15f55cee5a74cced8540205520c",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
       ],
       "evidence": [
         {
           "locator": "p74 SHA-256 f8141b0be9987339b98de45961d60264770f8d3d82899265ee6a70cf26223eec",
           "explanation": "Read from the equation-aware render, the three items are a numeral with a fractional part in base four, one in base eight and one in base six (their digits all lie below their base); line 339 delivers '312.2   b.   1051.1   c  .2341', i.e. the last digit and the base of each are missing. The method is taught (OBJ-1 and OBJ-2) but the only fractional example is in base two, and the source has no answer, working or mark. No answer is written here; keyed practice belongs to MATH-LES-T1-W02-NUMBER-BASES."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: practice M1W2-Q1 (6 marks); lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Keyed 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. The three assessment 1 numerals were read from the equation-aware render (paragraph p74), not from the delivered text that prints them without their last digit and base: 312.21 (base 4), 1051.11 (base 8) and 23411 (base 6). Answers recomputed from place values with exact fractions: 54 9/16, 553 9/64 and 3391. Marking is six one-mark criteria that sum to 6. The source gives no answer or mark, so none is copied. Not certified: approval PENDING, verification DEFERRED, row not yet bound."
         }
       ]
     },
@@ -1331,12 +1566,18 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Assessment item 2: convert five base-ten fractions (2/5, 9/20, 3/4, 6/7, 5/6) to bicimals. The source gives no answer or mark.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); line 341 SHA-256 50558f033d0ccd970ef36b2538832467fdb010fcd7f3b724a81c7c2dd6e518c9; instruction line 341 anchor \"Convert the following base ten numbers to bicimals:\" (occurs once); items line 343 SHA-256 653f43ed963d7c36af70701e48e028ca35cb35b523d7bada62319dc2ad6a002d (p76, equation-aware SHA-256 b705508552ae053d1aa4233ad1edf44ac1628574c59319a24d8657c90a760cfe); range 341-343 SHA-256 2b26964508f5fedc207c054a63b6c775474692bd4e12e1f69f3caf9b7be29a43",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES"
+      ],
       "evidence": [
         {
           "locator": "p76 SHA-256 b705508552ae053d1aa4233ad1edf44ac1628574c59319a24d8657c90a760cfe",
           "explanation": "Not taught: the only base-ten to bicimal teaching in the row is the answer-only example 2/3 = (10/11 in base two) = 0.10101010... (p69-p71) with no method stated, and no recurring-notation convention. Recomputed from the items: 3/4 terminates in base two while 2/5, 9/20, 6/7 and 5/6 do not (their reduced denominators are not powers of two), so four of the five answers are recurring bicimals that the row has not prepared students to write. Line 343 delivers '(a). (b). (c).(d). (e).': every fraction is lost. Unkeyed. Needs method teaching and a key (MATH-LES-T1-W02-NUMBER-BASES); no answer is written here."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: body section 6 (Examples 12 to 14) and practice M1W2-Q2 (10 marks); lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Taught and keyed 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. The row never teaches the base-ten-to-bicimal direction by a method (only one answer-only example, 2/3), so section 6 teaches repeated multiplication by 2, the stopping rules (fractional part 0, or a fractional part seen before) and the recurring-block notation, with 3/8 = 0.011, 2/3 = 0.(10) and 5 3/8 = 101.011. Q2 keys the five assessment 2 fractions, read from paragraph p76 (the delivered text shows only '(a). (b). (c).(d). (e).'): 2/5 = 0.(0110), 9/20 = 0.01(1100), 3/4 = 0.11, 6/7 = 0.(110), 5/6 = 0.1(10); each bicimal was checked by summing its terminating part and the geometric series of its repeating block back to the original fraction. Which recurring notation or how many places the school expects is a teacher confirmation (OI-MATH-T1-W02-ASSESSMENT-GAPS). Not certified: approval PENDING, verification DEFERRED, row not yet bound."
         }
       ]
     },
@@ -1345,14 +1586,19 @@
       "source_id": "SS1-SRC-0c9004137f95",
       "objective": "Assessment item 3: convert four numerals (bases eight, seven, two and four) to base five, base twelve and base fifteen each (twelve conversions). The source gives no answer or mark.",
       "objective_locator": "mammoth 1.12.2 extractRawText() (1-based lines; line hash = SHA-256 of the line text, UTF-8, no newline; range hash = lines joined with \\n); source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; parsed row 1 ('Week 2', importer WEEK_MARKER, trimmed) lines 191-347 SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e; equation-aware paragraph index p = w:p order in word/document.xml counted from the 'Week 2.' paragraph as p0, rendered privately (m:f as (num)/(den), m:sSup as base^{script}, m:sSub as base_{script}); line 345 SHA-256 2909bfd258585a83e7b8a12a1d70d2b1379b61295de0f3c0323c430d4090a5db anchor \"Convert the following to base;\" (occurs once); items line 347 SHA-256 56bf648e9c74a4aa0202dbd819dadcb07b10b3588d1a8237e86a320b34f73d44 (p78, equation-aware SHA-256 6e06a3fa57c659ffec3d9e038ec21755e52ce1a4abc3138b07ba072b6116edc3); range 345-347 SHA-256 450ca54297b1a0eea94eea616ed0fefee0cb24c56e7273ad91c2fb9f4a03d8c2",
-      "status": "PARTIAL",
+      "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
+        "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES",
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e"
       ],
       "evidence": [
         {
           "locator": "p77 SHA-256 2909bfd258585a83e7b8a12a1d70d2b1379b61295de0f3c0323c430d4090a5db; p78 SHA-256 6e06a3fa57c659ffec3d9e038ec21755e52ce1a4abc3138b07ba072b6116edc3",
           "explanation": "Read from the equation-aware render the four numerals are two digits in base eight, three in base seven, five in base two and six in base four; line 347 delivers 'a. 5    b.  12   c.    1000     d.  12110.', i.e. the last digit and base of each are missing, so the delivered item cannot be attempted. The method (via base ten) is taught at OBJ-3, but base twelve and base fifteen answers need digit symbols above 9 for some of these items (recomputed) that the row never defines for those bases. Unkeyed; twelve answers are not written here."
+        },
+        {
+          "locator": "SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES: practice M1W2-Q3 (16 marks); lesson body_sha256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66",
+          "explanation": "Keyed 2026-11-07 by MATH-LES-T1-W02-NUMBER-BASES. The four assessment 3 numerals were read from the equation-aware render (paragraph p78): 56 (base 8), 124 (base 7), 10001 (base 2) and 121103 (base 4), each to base 5, base 12 and base 15 (12 conversions). Through base ten: 46, 67, 17 and 1619. Answers: 141, 3A, 31; 232, 57, 47; 32, 15, 12; 22434, B2B, 72E (base 5, 12, 15). Each was converted back to base ten and equals its original value. Marking is sixteen one-mark criteria (four per numeral) that sum to 16. Not certified: approval PENDING, verification DEFERRED, row not yet bound."
         }
       ]
     },
@@ -2089,7 +2335,7 @@
       "id": "OI-MATH-T1-W02-FACT-DEFECTS",
       "kind": "FACT",
       "detail": "Factual and wording defects found in 1st Term Week 2 (parsed row 1, lines 191-347, SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e) by recomputation; the row text is left unchanged. (1) Lines 319-325 (p62-p67): 1011.01 in base two is worked with coefficient 0 for the half place, then with 1, and the answer is printed as 11 3/4; the correct value is 11 1/4 (11 3/4 is 1011.11 in base two). (2) Line 195 (p2): the definition of 'base number' is not usable. (3) Line 209 (p9): 'I.e base 2,3,...,F' lists digits as bases and omits 0 and 1. (4) Line 211 (p10): 'no number' should be 'no digit'. (5) Lines 207 and 209: the symbols for digits above 9 are given only as A-F in the hexadecimal line; base twelve and base fifteen symbols are never stated although assessment 3 asks for both. (6) p48: base-twelve answer carries the subscript '1twelve' (typing slip for 12) and an empty 'Type equation here.' placeholder; p57-p59: the 117 to base eight ladder omits its last step '0 r 1'. (7) Assessment 1 has no item numbers and assessment 2 gives no method for the base-ten to bicimal direction. Retained as printed and not corrected here: 'CONVERTION' (lines 217, 247, 289), 'express' for 'expressed' (lines 199-209), 'Students should work' (line 335). Verified correct: 1011111 in base two = 95; 432 in base five = 117; 431 in base x = 4x^2+3x+1; 1007 = 1757 (octal) = 1111101111 (binary); 761 = 535 (base twelve) = 2F9 (base sixteen); 313 in base six = 117 = 165 (octal); 2/3 = 0.101010... in base two; 450 = 4x10^2+5x10^1+0x10^0.",
-      "required_action": "The replacement lesson MATH-LES-T1-W02-NUMBER-BASES teaches the corrected value 11 1/4 and a usable definition and digit-symbol set, recomputed from first principles; a teacher confirms the school's wording for the definition and for base twelve and fifteen symbols before approval.",
+      "required_action": "The replacement lesson MATH-LES-T1-W02-NUMBER-BASES teaches the corrected value 11 1/4 and a usable definition and digit-symbol set, recomputed from first principles; a teacher confirms the school's wording for the definition and for base twelve and fifteen symbols before approval. Update 2026-11-07: MATH-LES-T1-W02-NUMBER-BASES has authored the replacement lesson SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES, which teaches 1011.01 in base two = 11 1/4, a usable definition of base, the corrected hint, the digit letters and complete ladders, all recomputed. Still open: teacher confirmation of the school's wording for the definition and for the base twelve and fifteen letters, and the delivery correction that binds the row (MATH-COR-T1-W02-NUMBER-BASES).",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
         "COV-MATH-T1-W02-OBJ-2",
@@ -2116,7 +2362,7 @@
       "id": "OI-MATH-T1-W02-ASSESSMENT-GAPS",
       "kind": "CONTENT",
       "detail": "1st Term Week 2 gives no answer, working or marks for any of its 20 exercise items: assessment 1 (lines 337-339, three numerals), assessment 2 (lines 341-343, five fractions) and assessment 3 (lines 345-347, four numerals each to three bases, twelve conversions). The row has no CLASS WORK, ASSIGNMENT or EVALUATION marker; the only marker is 'ASSESSMENT:' (line 335, anchor occurs once). Assessment 2 asks for a direction (base ten to bicimal) that the row teaches only by one answer-only example, and four of its five answers are recurring bicimals. Assessment 3 needs symbols for base twelve and fifteen digits above 9 that the row never defines. No existing supplement carries any of these items: SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS is bound to parsed row 2 (objectives: add, subtract and multiply in one base; find an unknown base; binary codes) and teaches no conversion. No answer was invented.",
-      "required_action": "MATH-LES-T1-W02-NUMBER-BASES authors keyed practice for all 20 items with marking that sums exactly (answers recomputed from first principles), covering base-ten to bicimal conversion and digit symbols; a teacher confirms how many binary places or what recurring notation is expected for assessment 2.",
+      "required_action": "MATH-LES-T1-W02-NUMBER-BASES authors keyed practice for all 20 items with marking that sums exactly (answers recomputed from first principles), covering base-ten to bicimal conversion and digit symbols; a teacher confirms how many binary places or what recurring notation is expected for assessment 2. Update 2026-11-07: MATH-LES-T1-W02-NUMBER-BASES has keyed all 20 items in SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES (Q1 to Q3, 32 marks, criterion marks sum), recomputed from first principles, and taught the base-ten-to-bicimal method. Still open: teacher confirmation of the recurring-bicimal notation or number of places expected, and the delivery correction that binds the row.",
       "affected_ids": [
         "SS1-SRC-0c9004137f95:BODY:67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e",
         "COV-MATH-T1-W02-EX-1",
