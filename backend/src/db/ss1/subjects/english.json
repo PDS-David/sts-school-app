@@ -2172,8 +2172,8 @@
         "Choose a synonym that preserves meaning in context.",
         "Distinguish gradable and complementary opposites."
       ],
-      "body": "Near-synonyms overlap in meaning but are not interchangeable everywhere. A portrait represents a person; a sketch may be a quick outline; a print is a reproduced image. Paint is the colouring material or an action, not the name for a printed copy. In “a bright pupil”, bright can mean intelligent; in “a bright lamp”, it concerns light. Substitute a candidate, check grammar and then check the intended sense. Reject and emit are not general synonyms.\nAntonyms express an opposition in a particular sense. Gradable opposites admit intermediate values: hot/cold with warm between them. Comparative forms such as hotter express degree; they are not the definition of gradable antonymy. Complementary opposites divide a stated domain into mutually exclusive alternatives, such as present/absent on a simple attendance register. Real-world categories may need qualifications, so do not treat married/single as an exhaustive description of everyone's status. Converse terms express a relationship from different viewpoints: buy/sell, parent/child.\nAffixes sometimes form opposites: possible/impossible, legal/illegal, kind/unkind. The choice is conventional; do not invent a prefix for every word. Use a dictionary for an unfamiliar sense and check a complete sentence.",
-      "body_sha256": "2ef041fcc51633f4f763d6817d284c985d4179d81099758fe1b56cdfb03b8319",
+      "body": "Near-synonyms overlap in meaning but are not interchangeable everywhere. A portrait represents a person; a sketch may be a quick outline; a print is a reproduced image. Paint is the colouring material or an action, not the name for a printed copy. In “a bright pupil”, bright can mean intelligent; in “a bright lamp”, it concerns light. Substitute a candidate, check grammar and then check the intended sense. Reject means refuse, decline or dismiss an offer or claim; emit means give off or send out something such as light, heat, sound, gas or a signal. They are not synonyms.\nAntonyms express an opposition in a particular sense. Gradable opposites admit intermediate values: hot/cold with warm between them. Comparative forms such as hotter express degree; they are not the definition of gradable antonymy. Complementary opposites divide a stated domain into mutually exclusive alternatives, such as present/absent on a simple attendance register. Real-world categories may need qualifications, so do not treat married/single as an exhaustive description of everyone's status. Converse terms express a relationship from different viewpoints: buy/sell, parent/child.\nAffixes sometimes form opposites: possible/impossible, legal/illegal, kind/unkind. The choice is conventional; do not invent a prefix for every word. Use a dictionary for an unfamiliar sense and check a complete sentence.",
+      "body_sha256": "fabdaa57df15c9055cd652447cfd6b5a12c7df0cd23631ef85810a82b291770f",
       "practice": [
         {
           "id": "Q1",
@@ -2210,7 +2210,7 @@
         {
           "id": "Q3",
           "question": "Correct “a paint is a copied picture” and “reject means emit”.",
-          "answer": "A print can be a reproduced picture; reject means refuse or dismiss in relevant contexts, not generally emit.",
+          "answer": "A print can be a reproduced picture; reject means refuse, decline or dismiss, whereas emit means give off or send out; they are not synonyms.",
           "marks": 2,
           "marking": [
             {
@@ -2218,7 +2218,7 @@
               "marks": 1
             },
             {
-              "criterion": "reject distinction",
+              "criterion": "distinguishes reject (refuse/dismiss) from emit (give off/send out)",
               "marks": 1
             }
           ]
@@ -9927,7 +9927,7 @@
       "reason": "Reject/emit are not interchangeable synonyms.",
       "evidence": {
         "locator": "SS1-SRC-50fa9b1eb2fd: C: Structure : Synonyms: Word  Nearest in meaning",
-        "explanation": "Replacement is independently authored; original body remains unchanged. Runtime activation belongs to SS1-08."
+        "explanation": "Reviewed the exact source row ENGLISH-BODY-089 (3rd Term, Week Eleven, Section C, “Structure: Synonyms: Words Nearest in Meaning”; source body SHA256 f07a4293dd912c10482b0a7b443aa9544561a375f56d043c78601a6c83043f98) and same-term replacement SUP-SS1-ENGLISH-MEANING-T3. The source row includes six smell-word shades, fifteen typical synonym groups, a five-word evaluation, the Countdown English Language by Evans page 160 reading assignment and the Effective English page 205 questions 2–3 weekend assignment. The replacement now explicitly teaches that reject means refuse/decline/dismiss while emit means give off/send out; keyed Q3 assesses this distinction (2 marks total, with one mark for the print distinction and one for the reject/emit distinction). Objective-by-objective result: ENGLISH-T3-W11-SY01=PARTIAL (the six smell-word distinctions are not all validated or taught); SY02=PARTIAL (the fifteen groups are not all reliable or contextualised; reject/emit is corrected, but other listed pairs need review); SY03=PARTIAL (the five-word evaluation is not keyed in context); SY04=UNRESOLVED (the named Countdown English Language by Evans page 160 and edition are not supplied); SY05=UNRESOLVED (Effective English page 205 questions 2–3, edition, key and marks are not supplied). Existing precise blockers: ENGLISH-T3-W11-SYNONYM-SCOPE, ENGLISH-T3-W11-EXTERNAL-MATERIALS, ENGLISH-T3-W11-WEEKEND-ASSIGNMENT and ENGLISH-T3-W11-COR-024-SCOPE. ENGLISH-BODY-089 remains PARTIAL; the correction remains inactive until all row objectives are resolved or the owner explicitly narrows its scope. Original source bytes and IDs are unchanged. Approval remains PENDING; verification/runtime/compiler tests remain DEFERRED."
       }
     }
   ],
@@ -22310,8 +22310,8 @@
     {
       "id": "ENGLISH-PRESCRIBED-PASSAGES",
       "kind": "CONTENT",
-      "detail": "Effective English, Countdown, NOSEC, Intensive English and Progressive English references lack supplied passages/exercises or a consistently identified edition. Original equivalent reading tasks do not reproduce those books.",
-      "required_action": "Supply exact authorised extracts/editions where the particular text is required; otherwise explicitly accept the labelled equivalent activity for the stated reading objective.",
+      "detail": "The T1, T2 and T3 reading supplements use labelled original passages/equivalent activities, but prescribed-book references include Effective English, Countdown, NOSEC, Intensive English and Progressive English without a complete authorised extract/edition set in the package. No third-party passage is reproduced by the original equivalents.",
+      "required_action": "Owner decision required for each of SUP-SS1-ENGLISH-READING-T1, -T2 and -T3: either supply the exact authorised passage/extract with book title, author, edition/year (and ISBN if available), page range and permission basis; or explicitly accept the existing labelled original activity as the equivalent for the stated reading objective. Do not treat an unverified book reference as supplied text or silently claim textbook coverage.",
       "affected_ids": [
         "SUP-SS1-ENGLISH-READING-T2",
         "SUP-SS1-ENGLISH-READING-T1",
@@ -22322,8 +22322,8 @@
     {
       "id": "ENGLISH-ORAL-OBSERVATION",
       "kind": "VERIFICATION",
-      "detail": "Written phonetic teaching cannot establish listening discrimination or spoken performance.",
-      "required_action": "Provide an authorised audio model and conduct later oral observation; retain DEFERRED verification.",
+      "detail": "Written phonetic lessons and keyed symbol exercises do not establish listening discrimination or spoken performance. No authorised audio recording/model with a documented permission basis is registered. The asset-acquisition request is tracked separately as ENGLISH-AUTHORISED-AUDIO-MODEL.",
+      "required_action": "Keep oral observation DEFERRED. After an authorised model is supplied and registered, a teacher must conduct and record later listening/speaking observation for the phonetics and stress objectives; written responses alone cannot mark pronunciation VERIFIED.",
       "affected_ids": [
         "SUP-SS1-ENGLISH-PHONETICS-T1",
         "SUP-SS1-ENGLISH-PHONETICS-T3",
@@ -22577,8 +22577,8 @@
     {
       "id": "ENGLISH-T1-W07-BOOKS-GAP",
       "kind": "OWNER_ACTION",
-      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-NC-READING, ENGLISH-T1-W07-CS-READING, ENGLISH-T1-W07-NW-READING, ENGLISH-T1-W07-WEEKEND",
-      "required_action": "Obtain authorised exact pages/editions or an explicit owner decision accepting original equivalents for the four Week 7 textbook assignments. Do not invent pages or silently drop the assignments.",
+      "detail": "Four Week 7 textbook assignments remain UNRESOLVED: ENGLISH-T1-W07-NC-READING cites Countdown by Evans p.221; ENGLISH-T1-W07-CS-READING cites Standard Speech Book 10 pp.1–10; ENGLISH-T1-W07-NW-READING cites Countdown by Evans pp.5–6; ENGLISH-T1-W07-WEEKEND cites Countdown questions 41–50, pp.275–276. The current source/package does not establish exact editions or authorised page contents.",
+      "required_action": "Owner decision required separately for all four objectives: provide the authorised title/author/edition/year (ISBN if available), exact page/question reference and permission basis; or explicitly accept a labelled original equivalent for that objective. Keep each coverage entry UNRESOLVED until evidence is supplied. Do not invent editions, page contents or keys.",
       "affected_ids": [
         "ENGLISH-T1-W07-NC-READING",
         "ENGLISH-T1-W07-CS-READING",
@@ -24092,6 +24092,73 @@
       "required_action": "A continuing agent with a local repository checkout must verify the archive and exact member SHA256, extract only this DOC privately, visually inspect only the Week 7 revision item (source locator lines 1164-1170), record the exact underlined target letters and corresponding sounds, then author clearly labelled original consonant-matching questions with explicit target letters, keyed answers and complete marks. Do not alter the source file or guess from extracted text/options.",
       "affected_ids": [
         "ENGLISH-T1-W07-REVISION"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-AUTHORISED-AUDIO-MODEL",
+      "kind": "PERMISSION",
+      "detail": "No concrete authorised audio file or accessible recording is registered for the English phonetics/stress lessons. Existing chart/app references do not themselves establish permission to use a recording as a lesson asset.",
+      "required_action": "Owner to supply an audio/mpeg or audio/wav file (or an accessible recording with a downloadable/registrable file), identify creator/provider and exact recording, state the licence or written permission and permitted educational uses, identify the accent/model, and map which phonetics/stress objectives it supports. Only then register the exact bytes, SHA256, byte count, alt text, provenance and lesson_id binding. Do not create a placeholder asset.",
+      "affected_ids": [
+        "SUP-SS1-ENGLISH-PHONETICS-T1",
+        "SUP-SS1-ENGLISH-PHONETICS-T3",
+        "SUP-SS1-ENGLISH-STRESS-T3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-CONTENT-APPROVAL",
+      "kind": "OWNER_ACTION",
+      "detail": "Package status remains PENDING. The live package contains 46 authored lessons (the task prompt's earlier count of 16 is stale); every lesson currently has content_approval=PENDING and approval_reference=null. An agent cannot supply teacher/owner approval.",
+      "required_action": "Teacher/owner to review every listed lesson individually and either approve it with a real, auditable approval reference or return a specific revision request. Supply a reference for each lesson; do not infer approval from implementation, commit, or this request. Only the owner may change content_approval to APPROVED and populate approval_reference.",
+      "affected_ids": [
+        "SUP-SS1-ENGLISH-WORD-CLASSES-T1",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1",
+        "SUP-SS1-ENGLISH-PHONETICS-T1",
+        "SUP-SS1-ENGLISH-LETTERS-T1",
+        "SUP-SS1-ENGLISH-AFFIXES-T2",
+        "SUP-SS1-ENGLISH-READING-T2",
+        "SUP-SS1-ENGLISH-MEANING-T2",
+        "SUP-SS1-ENGLISH-ADVERBS-TENSE-T2",
+        "SUP-SS1-ENGLISH-ESSAY-TYPES-T2",
+        "SUP-SS1-ENGLISH-PHONETICS-T3",
+        "SUP-SS1-ENGLISH-AFFIXES-T3",
+        "SUP-SS1-ENGLISH-STRESS-T3",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T3",
+        "SUP-SS1-ENGLISH-MEANING-T3",
+        "SUP-SS1-ENGLISH-READING-T1",
+        "SUP-SS1-ENGLISH-READING-T3",
+        "SUP-SS1-ENGLISH-NOUNS-T1",
+        "SUP-SS1-ENGLISH-PRONOUN-ADJ-VERB-T1",
+        "SUP-SS1-ENGLISH-MEANING-T1",
+        "SUP-SS1-ENGLISH-PHRASAL-VERBS-T1",
+        "SUP-SS1-ENGLISH-ADVERB-CONJ-PREP-T1",
+        "SUP-SS1-ENGLISH-ESSAY-REPORT-T1",
+        "SUP-SS1-ENGLISH-IDIOMS-T1",
+        "SUP-SS1-ENGLISH-ENTERTAINMENT-VOCAB-T1",
+        "SUP-SS1-ENGLISH-MONOPHTHONGS-T1",
+        "SUP-SS1-ENGLISH-REVISION-W03-T1",
+        "SUP-SS1-ENGLISH-NOUN-PHRASE-FUNCTIONS-T1",
+        "SUP-SS1-ENGLISH-AGRICULTURE-VOCAB-T1",
+        "SUP-SS1-ENGLISH-SPELLING-MISSPELT-T1",
+        "SUP-SS1-ENGLISH-REVISION-W04-T1",
+        "SUP-SS1-ENGLISH-SENTENCE-KINDS-T1",
+        "SUP-SS1-ENGLISH-EXPOSITORY-ESSAY-T1",
+        "SUP-SS1-ENGLISH-REVISION-W05-T1",
+        "SUP-SS1-ENGLISH-FIGURES-OF-SPEECH-T1",
+        "SUP-SS1-ENGLISH-DESCRIPTIVE-ESSAY-T1",
+        "SUP-SS1-ENGLISH-ADVERBIAL-CLAUSE-T1",
+        "SUP-SS1-ENGLISH-DIPHTHONGS-T1",
+        "SUP-SS1-ENGLISH-REVISION-W06-T1",
+        "SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1",
+        "SUP-SS1-ENGLISH-W05-PASSAGE-C-EQUIVALENT-T1",
+        "SUP-SS1-ENGLISH-ADVERTISING-COMPREHENSION-T1",
+        "SUP-SS1-ENGLISH-W06-ORIGINAL-REVISION-SET-T1",
+        "SUP-SS1-ENGLISH-TRANSPORT-T1",
+        "SUP-SS1-ENGLISH-NOUN-CLAUSES-W07-T1",
+        "SUP-SS1-ENGLISH-CONSONANTS-W07-T1",
+        "SUP-SS1-ENGLISH-NARRATIVE-W07-T1"
       ],
       "blocks_delivery": true
     }
