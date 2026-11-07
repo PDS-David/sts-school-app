@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 41,
-    "PENDING": 49,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
+    "PENDING": 47,
     "BLOCKED": 9
   },
   "total": 99,
@@ -2880,8 +2880,8 @@
         "MATH-PORT-D2-T2-L007",
         "MATH-PORT-D2-T2-L008"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). #71 coverage has 22 entries (objective ids MATHS-2-001..010, MATHS-3-001..012) mostly IMPLEMENTED_EQUIVALENT and uses an objective-level vocabulary master lacks (e.g. SUPPORTED for MATHS-2-004 Idea of Sets, which has no #71 lesson). Master has 34 entries: 22 PARTIAL, 6 IMPLEMENTED_EQUIVALENT, 5 MARKER, 1 UNRESOLVED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 10 #71 second-term objective records (MATHS-2-001..010) with master COV-MATH-T2 rows. Ported lessons justify IMPLEMENTED_EQUIVALENT for R00, R01, R02, R04, R06, R07, R08 and R09, with the corresponding master lesson IDs appended. MATHS-2-004 (Idea of Sets) is only SUPPORTED in #71 and has no supplement; master R03 therefore remains PARTIAL and receives no lesson ID. MATHS-2-006 maps to the existing revision marker R05, which remains MARKER. The separate reference-list marker COV-MATH-T2-REFERENCES remains MARKER. No status upgraded without a ported lesson.",
       "completion_condition": "Each master entry for the term compared with its #71 counterpart; differences applied or recorded; nothing upgraded without a ported lesson."
     },
     {
@@ -2911,8 +2911,8 @@
         "MATH-PORT-D2-T3-L015",
         "MATH-PORT-D2-T3-L016"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/mathematics.json, blob 1ebbdcf076b5a6e35f855e6b5593a523e27561c8 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B, commit 9d1de93). #71 coverage has 22 entries (objective ids MATHS-2-001..010, MATHS-3-001..012) mostly IMPLEMENTED_EQUIVALENT and uses an objective-level vocabulary master lacks (e.g. SUPPORTED for MATHS-2-004 Idea of Sets, which has no #71 lesson). Master has 34 entries: 22 PARTIAL, 6 IMPLEMENTED_EQUIVALENT, 5 MARKER, 1 UNRESOLVED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 12 #71 third-term objective records (MATHS-3-001..012) with master COV-MATH-T3 rows. Ported lessons justify IMPLEMENTED_EQUIVALENT for R00, R01, R04, R05, R07, R08, R09 and R10. Lesson SUP-SS1-MATHEMATICS-T3-W03-W04-GEOMETRICAL-CONSTRUCTIONS is linked to R02 and R03 as partial coverage only: it does not fully cover general triangle constructions and the source's 57½° item remains unresolved; both rows remain PARTIAL. MATHS-3-007 maps to the existing revision marker R06 (MARKER); MATHS-3-012 maps to COV-MATH-T3-EXAM (UNRESOLVED). No status upgraded without a ported lesson.",
       "completion_condition": "Each master entry for the term compared with its #71 counterpart; differences applied or recorded; nothing upgraded without a ported lesson."
     },
     {
@@ -3252,8 +3252,6 @@
     "MATH-VIS-T3-OLE",
     "MATH-FACT-ADVERT-T2",
     "MATH-FACT-ADVERT-T3",
-    "MATH-PORT-D2-COV-T2",
-    "MATH-PORT-D2-COV-T3",
     "MATH-PORT-D2-RULES",
     "MATH-PORT-D2-FACT-REFERENCES",
     "MATH-CMP-D4-NOTES",
