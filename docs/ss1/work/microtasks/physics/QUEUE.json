@@ -44,9 +44,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
     "BLOCKED": 9,
-    "PENDING": 58
+    "PENDING": 50
   },
   "total": 75,
   "items": [
@@ -1702,8 +1702,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-001, body 1608 characters, content_hash 2db3b0e1f7498ccc8032cf5f54513b93efc885f56ea9ef6e5b8e5f9f4f24e835, covers #71 objective(s) ['PHYS-2-001'] = source week label(s) ['WEEK ONE'] (PHYS-WK-T2-W01); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-001; new master lesson SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE; body_sha256=24167948bee741f50af06bc436550767937b9066f80e4017da5480bfe0d2a3cb; source_id=SS1-SRC-2c924c964660; source member=SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; registered source SHA-256=3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; source week(s)=WEEK ONE. Mapped term_label to term, prompt to question, marking string to explicit criterion with 13 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1728,8 +1728,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-002, body 1480 characters, content_hash bd3743eb0445118d1e05daac203794ecb7089b5cfdbb0de12efe65b79320519a, covers #71 objective(s) ['PHYS-2-003'] = source week label(s) ['WEEK THREE'] (PHYS-WK-T2-W03); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-002; new master lesson SUP-SS1-PHYSICS-T2-W03-THERMAL-EXPANSION-SOLIDS; body_sha256=88cfeff88c02e4658e1acea61b637a094cdde380e2f3c8b628dc123ca74b581f; source_id=SS1-SRC-2c924c964660; source member=SSS 1/2nd Term SS1_/2ND TERM S1 PHYSICS.doc; registered source SHA-256=3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; source week(s)=WEEK THREE. Mapped term_label to term, prompt to question, marking string to explicit criterion with 11 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1754,8 +1754,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-003, body 1431 characters, content_hash 1ba98b7a689a9e166a6d5ddcd0e4ce3609e7914a64b213aee32a7df467104e31, covers #71 objective(s) ['PHYS-3-004'] = source week label(s) ['WEEK 4'] (PHYS-WK-T3-W04); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-003; new master lesson SUP-SS1-PHYSICS-T3-W04-FUSE; body_sha256=593c7108aafd96b01ad1cc64800174e5ff8649b0cd1c3f8aa9b9a6996e09c2c3; source_id=SS1-SRC-bed91bb4ef0e; source member=SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered source SHA-256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; source week(s)=WEEK 4. Mapped term_label to term, prompt to question, marking string to explicit criterion with 10 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1780,8 +1780,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-004, body 1382 characters, content_hash 27bd5e5637c7f327d9826c22fd2fd026a7913b6741a30e623ae66c6b0c1360fc, covers #71 objective(s) ['PHYS-3-007'] = source week label(s) ['WEEK 7'] (PHYS-WK-T3-W07); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-004; new master lesson SUP-SS1-PHYSICS-T3-W07-SURFACE-TENSION; body_sha256=dff2a30f8eaba1e1a787f7e4b9474f77e93fa5cc4e835bd85c115244af9237ee; source_id=SS1-SRC-bed91bb4ef0e; source member=SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered source SHA-256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; source week(s)=WEEK 7. Mapped term_label to term, prompt to question, marking string to explicit criterion with 14 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1806,8 +1806,8 @@
       "depends_on": [
         "PHYS-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Lesson SUP-SS1-PHYS-005, body 1482 characters, content_hash 8e21fd930d96e4596434ef3495253ecbb59c3a19b49cf8e87bf80b7e057ee99c, covers #71 objective(s) ['PHYS-3-008'] = source week label(s) ['WEEK 8'] (PHYS-WK-T3-W08); 5 practice items. #71 fields (term_label, sequence, content_hash, marking:string, provenance object) must be mapped to master's schema. Master has no Physics lessons, so there is no overlap; it cites no external reference (OI-PHYS-005).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Ported from PR #71 commit b5ced7ebb0efe22df2351baa140266fbf40cbf41, package blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3, prior lesson SUP-SS1-PHYS-005; new master lesson SUP-SS1-PHYSICS-T3-W08-CAPILLARITY; body_sha256=6a5ec1d95882abba426c4bab25a1a191f88e10383e211c648547e5227c64c562; source_id=SS1-SRC-bed91bb4ef0e; source member=SSS 1/3rd Term SS1_/3RD TERM S1 PHYSICS.doc; registered source SHA-256=bcd7daab57432b5c2b74a29e4afc1f162276e5fe360fab50345426fc3503e688; source week(s)=WEEK 8. Mapped term_label to term, prompt to question, marking string to explicit criterion with 12 practice marks. Manually reviewed Physics definitions, formulas, units, worked calculations and answers; automated tests deferred. No external references were cited in #71; source/member verification reused, not rehashed.",
       "completion_condition": "Lesson present in master's package, schema-valid by static reading, state content_approval PENDING / verification DEFERRED, branch blob and lesson id cited in provenance. Coverage and correction bindings are not changed here. Not counted implemented until merged to master."
     },
     {
@@ -1858,8 +1858,8 @@
         "PHYS-PORT-D1-T2-L001",
         "PHYS-PORT-D1-T2-L002"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 10 PR #71 second-term objective entries with master. Only PHYS-2-001 (Week One heat/temperature) and PHYS-2-003 (Week Three expansion of solids) have ported equivalent lessons; added COV-PHYS-T2-W01-OBJ-1 and COV-PHYS-T2-W03-OBJ-1 with their master lesson IDs. The remaining eight SUPPORTED judgments were not copied because they have no ported lesson and the master source-week indexing tasks PHYS-WK-T2-W01/W03 and others remain pending. Existing title/reference markers remain unchanged.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -1886,8 +1886,8 @@
         "PHYS-PORT-D1-T3-L004",
         "PHYS-PORT-D1-T3-L005"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all 11 PR #71 third-term objective entries with master. Only PHYS-3-004 (Week 4 fuse), PHYS-3-007 (Week 7 surface tension) and PHYS-3-008 (Week 8 capillarity) have ported equivalent lessons; added COV-PHYS-T3-W04-OBJ-1, COV-PHYS-T3-W07-OBJ-1 and COV-PHYS-T3-W08-OBJ-1 with their master lesson IDs. The remaining SUPPORTED judgments were not copied because they have no ported lesson and source-week indexing is still pending. PHYS-3-011 maps to existing COV-PHYS-T3-SCHEME-REVISION-EXAM marker; no lesson was invented for revision/examination weeks.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -2061,8 +2061,8 @@
         "docs/ss1/work/microtasks/physics/PHYS-CMP-D4-NOTES.md"
       ],
       "depends_on": [],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only: b5ced7ebb0efe22df2351baa140266fbf40cbf41:docs/ss1/work/SS1-03/CHECKPOINT.md blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c and HANDOFF.json blob f3ee7c4559931744ab679bc6f8975fd7091c0710 (shared with the Mathematics comparison). The #71 checkpoint reports Physics IMPLEMENTED - TESTING DEFERRED (NOT COMPLETE) with 5 lessons and PHYS-R01; master's says NOT STARTED.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared PR #71 checkpoint blob f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c line 9 and HANDOFF blob f3ee7c4559931744ab679bc6f8975fd7091c0710 lines 55-68 with master checkpoint blob 3fc668a75bab4ce097022e4b5e28a1f3440dbb71 line 36 and master handoff blob 1d9838eb33a3f0e26ec712f6aff08f71cc3597e5 line 8. Branch's 5-lesson claim is now ported on this work branch via PHYS-PORT-D1-T2-L001/L002 and T3-L003/L004/L005, with coverage PHYS-PORT-D1-COV-T2/T3; master checkpoint's NOT STARTED statement is stale but not overwritten. PHYS-R01 split is routed to PHYS-PORT-D1-RULE-SPLIT. OI-PHYS-001/004 map to PHYS-VIS-T1/T2/T3 and extraction-strategy/T1 notation open items; OI-PHYS-002 maps to four PHYS-PORT-D1-FACT tasks; OI-PHYS-003 maps to PHYS-OWNER-REVISION-PLAN and revision marker rules; OI-PHYS-005 maps to PHYS-APPROVAL-CONTENT and new PHYSICS-T2-T3-LESSON-REVIEW.",
       "completion_condition": "Branch-only facts listed with blob and line locators, each routed to a queue item or recorded as already covered."
     },
     {
@@ -2605,7 +2605,42 @@
     }
   },
   "next_runnable": [
+    "PHYS-WK-T1-W03",
+    "PHYS-WK-T1-W04",
+    "PHYS-WK-T1-W05-W06",
+    "PHYS-WK-T1-W06",
+    "PHYS-WK-T1-W07",
+    "PHYS-WK-T1-W08",
+    "PHYS-WK-T1-W09",
+    "PHYS-WK-T2-W01",
+    "PHYS-WK-T2-W02",
+    "PHYS-WK-T2-W03",
+    "PHYS-WK-T2-W04",
+    "PHYS-WK-T2-W05",
+    "PHYS-WK-T2-W06",
+    "PHYS-WK-T2-W07",
+    "PHYS-WK-T2-W08",
+    "PHYS-WK-T2-W09",
+    "PHYS-WK-T2-W10",
+    "PHYS-WK-T3-W01",
+    "PHYS-WK-T3-W02",
+    "PHYS-WK-T3-W03",
+    "PHYS-WK-T3-W04",
+    "PHYS-WK-T3-W05",
+    "PHYS-WK-T3-W06",
+    "PHYS-WK-T3-W07",
+    "PHYS-WK-T3-W08",
+    "PHYS-WK-T3-W09",
+    "PHYS-WK-T3-W10",
     "PHYS-RULE-T1-REVISION-SCHEME",
+    "PHYS-RULE-T3-REVISION-EXAM",
+    "PHYS-FACT-T3-FUSE-RATING",
+    "PHYS-FACT-T3-W04-ASSIGNMENT",
+    "PHYS-FACT-T3-INTERNAL-RESISTANCE-FORMULA",
+    "PHYS-VIS-T1",
+    "PHYS-VIS-T2",
+    "PHYS-VIS-T3",
+    "PHYS-PORT-D1-COV-T1",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-MICROMETER-READING",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
