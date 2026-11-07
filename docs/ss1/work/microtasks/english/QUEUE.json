@@ -82,15 +82,15 @@
     "- ENG-LES-W05-STOCK-INSURANCE-VOCAB (2026-11-07): original stock-exchange and insurance vocabulary supplement SUP-SS1-ENGLISH-STOCK-INSURANCE-VOCAB-T1 added; SE01-SE03 now IMPLEMENTED_EQUIVALENT; owner-confirmed fisheries/animal-husbandry carry-over VF01 linked to the existing Week 4 agriculture supplement. Four original keyed exercises total 20 marks. Source rows unchanged; approval PENDING, verification DEFERRED; tests/importer/DB/deployment not run."
   ],
   "counts": {
-    "PENDING": 149,
+    "PENDING": 148,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 89,
     "BLOCKED": 5
   },
   "status_counts": {
-    "PENDING": 149,
+    "PENDING": 148,
     "IN_PROGRESS": 0,
-    "IMPLEMENTED_TESTING_DEFERRED": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 89,
     "BLOCKED": 5
   },
   "items": [
@@ -4993,8 +4993,8 @@
       "depends_on": [
         "ENG-WK-T1-W07"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by ENG-WK-T1-W07 on 2026-11-07; not implemented.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original same-term lesson SUP-SS1-ENGLISH-CONSONANTS-W07-T1 ('The 24 English consonant sounds: place, manner, voicing and examples') in backend/src/db/ss1/subjects/english.json. It lists all 24 consonant phonemes in a consistent British English teaching model, classifies each by place, manner and voicing, and supplies two checked examples for every sound. IPA evidence is grounded in the official International Phonetic Association chart; example-word pronunciations are checked against Oxford Learner's Dictionaries. It corrects source misclassifications including /k/ for /t/, voiceless /j/, and non-IPA lookalikes while preserving original source defects in evidence. Coverage ENGLISH-T1-W07-CS-ARTICULATION, CS-EXAMPLES and CS-PRACTICE now IMPLEMENTED_EQUIVALENT with exact source locators. Keyed practice includes ten consonants with two examples each (20 marks) and a four-sound place/manner/voicing exercise (12 marks); marking sums match. Removed ENGLISH-T1-W07-CONSONANTS-GAP. Spoken pronunciation performance/audio remains explicitly deferred; lesson assesses written classification/examples only. Lesson approval PENDING, verification DEFERRED; runtime/compiler checks deferred.",
       "completion_condition": "All named objectives have evidence-backed coverage; exact remaining gates explicitly retained. No invented approvals.",
       "required_attachments": []
     },
@@ -7730,12 +7730,12 @@
     "ENG-FACT-W03-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-EXTERNAL-MATERIALS",
     "ENG-FACT-W04-UNIFIED-TEST",
-    "ENG-LES-T1-W07-CONSONANTS",
     "ENG-LES-T1-W07-NARRATIVE",
     "ENG-LES-T1-W07-REVISION",
     "ENG-FACT-W08-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W08-ADJECTIVE",
     "ENG-LES-T1-W08-ARGUMENTATIVE-ESSAY",
+    "ENG-LES-T1-W08-CONSONANTS",
     "ENG-LES-T1-W08-REVISION",
     "ENG-FACT-W09-EXTERNAL-MATERIALS",
     "ENG-LES-T1-W09-COMPREHENSION",
