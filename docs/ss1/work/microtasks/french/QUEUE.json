@@ -24,21 +24,22 @@
     "FR-LES-T1-W03-SELF-ESSAY (2026-11-06): the Week 3 written self-presentation supplement is authored. New lesson SUP-SS1-FRENCH-SELF-ESSAY-T1 (34 marks, body_sha256 5eff5383f0b4…) is bound additively to coverage FRENCH-T1-W03-OBJ-2, now IMPLEMENTED_EQUIVALENT, beside the unchanged SUP-SS1-FRENCH-GREETINGS-T1. It covers all eight prompted fields including the state, language, domicile and favourite dish or colour, with a fictional model paragraph, a keyed form-choice exercise, a guided eight-sentence exercise and a 20-mark writing task whose rubric sums; no exercise asks for a private home address. The Week 3 greeting row, its PARTIAL status and its scope open item are untouched, so the week is not claimed complete. Open item ESSAY-SCOPE is closed; the two readings of Votre etat are now an explicit owner decision in FRENCH-T1-W03-ETAT-READING. Approval stays PENDING and verification DEFERRED."
   ],
   "counts": {
-    "ASSET": 2,
-    "CORRECTION_BINDING": 28,
-    "FACTUAL_DEPENDENCY": 7,
-    "LESSON": 36,
-    "SCOPE_DECOMPOSITION": 1,
-    "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INDEXING": 28,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "LESSON": 36,
+    "CORRECTION_BINDING": 28,
+    "FACTUAL_DEPENDENCY": 7,
+    "ASSET": 2,
+    "VISUAL_DISPOSITION": 5,
     "TEST": 2,
-    "VISUAL_DISPOSITION": 5
+    "SCOPE_DECOMPOSITION": 1,
+    "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 68,
-    "PENDING": 43,
-    "BLOCKED": 4
+    "IMPLEMENTED_TESTING_DEFERRED": 69,
+    "PENDING": 42,
+    "BLOCKED": 5
   },
   "items": [
     {
@@ -3308,8 +3309,8 @@
       "depends_on": [
         "FR-WK-T1-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by FR-WK-T1-W03; see open item FRENCH-T1-W03-GREETING-SCOPE. Not started.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/french/FR-LES-T1-W03-GREETING-SET.md; SUP-SS1-FRENCH-COURTESY-CELEBRATIONS-T1, 14 keyed situations/14 marks. Clear expressions implemented; FRENCH-T1-W03-OBJ-1 remains PARTIAL pending FR-OWNER-T1-W03-EXPRESSIONS. Approval PENDING, verification DEFERRED.",
       "completion_condition": "Supplement exists with provenance and marks that sum, and every expression either taught or recorded as an owner decision; or the objective is left PARTIAL with the owner decision recorded."
     },
     {
@@ -3411,6 +3412,31 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "backend/src/db/ss1/subjects/french.json lessons[id=SUP-SS1-FRENCH-AVOIR-DEVOIR-T1]: title='Faites des phrases avec avoir : il a, elle a, nous avons, j’ai'; body_sha256=c37eeac7890bd8af43e87c6070a4246df9cec387ec636ca0004fdcf60a929a3c; 3 objectives, 4 practice items (16 marks, every marking list sums to its item); state={content_approval PENDING, approval_reference null, implementation IMPLEMENTED, verification DEFERRED, verification_reference null}; provenance: project authoring record, no external source fetched. Coverage FRENCH-T1-W04-OBJ-5 raised to IMPLEMENTED_EQUIVALENT (lesson added after SUP-SS1-FRENCH-AUXILIARIES-T1; earlier evidence kept). Open item FRENCH-T1-W04-DEVOIR-SCOPE resolved; FRENCH-T1-W04-ETRE-SENTENCE-SCOPE and FRENCH-T1-W04-AVOIR-SENTENCE-SCOPE and every other open item unchanged. Details in docs/ss1/work/microtasks/french/FR-LES-T1-W04-DEVOIR.md.",
       "completion_condition": "Practice task exists with model answers and marks that sum, and coverage for FRENCH-T1-W04-OBJ-5 is raised to IMPLEMENTED_EQUIVALENT, or the objective is left PARTIAL with the owner decision recorded."
+    },
+    {
+      "id": "FR-OWNER-T1-W03-EXPRESSIONS",
+      "kind": "OWNER_DECISION",
+      "source_id": "SS1-SRC-945dfb24eaf6",
+      "term": "1st Term",
+      "week_or_locator": "Week 3 children 92,96,114,126,128",
+      "objective": "Owner: supply intended meanings or explicitly approve replacement/omission for each listed row. Then update exact coverage; do not infer Easter versus Passover or repair incomplete wording by guesswork.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/french.json",
+        "docs/ss1/work/microtasks/french/QUEUE.json"
+      ],
+      "depends_on": [
+        "FR-LES-T1-W03-GREETING-SET"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Raised by FR-LES-T1-W03-GREETING-SET on 2026-11-07; not implemented.",
+      "completion_condition": "Exact owner decision recorded for every ambiguous row; coverage re-evaluated without invented intention.",
+      "required_attachments": []
     }
   ],
   "review": {
@@ -3426,6 +3452,42 @@
     }
   },
   "next_runnable": [
-    "FR-WK-T1-W05"
+    "FR-WK-T1-W05",
+    "FR-WK-T1-W06",
+    "FR-WK-T1-W07",
+    "FR-WK-T1-W08",
+    "FR-WK-T1-W09",
+    "FR-WK-T2-W01",
+    "FR-WK-T2-W02",
+    "FR-WK-T2-W03",
+    "FR-WK-T2-W04",
+    "FR-WK-T2-W05",
+    "FR-WK-T2-W06",
+    "FR-WK-T2-W07",
+    "FR-WK-T2-W08",
+    "FR-WK-T2-W09",
+    "FR-WK-T3-W01",
+    "FR-WK-T3-W02",
+    "FR-WK-T3-W03",
+    "FR-WK-T3-W04",
+    "FR-WK-T3-W05",
+    "FR-WK-T3-W06",
+    "FR-WK-T3-W07",
+    "FR-WK-T3-W08",
+    "FR-WK-T3-W09",
+    "FR-WK-T3-W10",
+    "FR-PRE-T1",
+    "FR-PRE-T2",
+    "FR-PRE-T3",
+    "FR-FACT-OCCUPATIONS",
+    "FR-FACT-EXAM-AUDIO-REQUIREMENTS",
+    "FR-VIS-T1-COUNTRY-SEPARATORS",
+    "FR-VIS-T1-AUXILIARY-SEPARATORS",
+    "FR-VIS-T1-ACCENT-DRAWINGS",
+    "FR-VIS-T1-PUNCTUATION-ROUTINE",
+    "FR-VIS-T2-OMML",
+    "FR-FACT-T1-W01-POLICY",
+    "FR-LES-T1-W02-DEMONYMS",
+    "FR-FACT-T1-W02-HEADS-OF-STATE"
   ]
 }

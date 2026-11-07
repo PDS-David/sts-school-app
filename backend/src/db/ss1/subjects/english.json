@@ -722,6 +722,18 @@
         "explanation": "Structural boundary or source metadata only; original text is retained."
       },
       "week_label": "11"
+    },
+    {
+      "id": "SS1-SRC-a00657d42196-R034",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-a00657d42196",
+      "source_sha256": "4852226f4a00e0058b7f516837e21bfa38954a8fea904fa8811dd45f7ff4ddef",
+      "anchor": "Structures: Learning about Noun Clause; Vocabulary Development: Transportation- Aviation, Rail, Road and Maritime.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody(), scheme row 7",
+        "explanation": "Unique scheme-row anchor; metadata only, not teaching; no source text removed."
+      }
     }
   ],
   "lessons": [
@@ -12633,6 +12645,401 @@
           "explanation": "Exact body reference for teaching review. A row-level association is not exhaustive scheme-objective certification; uncorrected bodies remain PARTIAL pending the detailed objective mapping."
         }
       ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-SCHEME",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Week 7 scheme row (four instructional strands)",
+      "objective_locator": "preamble scheme row 7",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196-R034"
+      ],
+      "evidence": [
+        {
+          "locator": "preamble scheme row 7",
+          "explanation": "Scheme-only declaration. Road transport is named alongside aviation, rail and maritime; separate teaching coverage below."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-TR-AIR",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Aviation vocabulary and contextual use",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1014-1027; UTF-8 joined-line SHA256 aa5c1a1443e92ec1dcc36540d38dc31018e747c883b4d8f3625fffc1816b2403; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1014-1027; UTF-8 joined-line SHA256 aa5c1a1443e92ec1dcc36540d38dc31018e747c883b4d8f3625fffc1816b2403; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+          "explanation": "Aviation list exists, but age/gender restriction in air hostess and limited contextual use need reviewed original teaching. Existing supplement does not teach this transport strand."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-TR-SEA",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Maritime vocabulary and contextual use",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1029-1048; UTF-8 joined-line SHA256 54ce208f18bc7eecc939c7cdb491fd28d0b19760b577fcbc1cde0bfbf137c5f3; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1029-1048; UTF-8 joined-line SHA256 54ce208f18bc7eecc939c7cdb491fd28d0b19760b577fcbc1cde0bfbf137c5f3; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+          "explanation": "Maritime list exists; international waters, boatyard, dock and row-row ship wording needs checked correction. Do not silently treat these definitions as accurate."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-TR-RAIL",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Rail vocabulary and contextual use",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1050-1057; UTF-8 joined-line SHA256 09b59857ae8ac04bd458c05aa47b52ae8c62458f481bcab707ef15a1e86a3945; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1050-1057; UTF-8 joined-line SHA256 09b59857ae8ac04bd458c05aa47b52ae8c62458f481bcab707ef15a1e86a3945; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+          "explanation": "Rail terms present; coach definition conflates vehicle with train. No contextual practice or key."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-TR-ROAD",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Road transportation vocabulary required by scheme",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1008-1060; UTF-8 joined-line SHA256 252bf6d77373738f399154a59e2ecb1e82601e46b8346c4f4305be951a90ad1d; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1008-1060; UTF-8 joined-line SHA256 252bf6d77373738f399154a59e2ecb1e82601e46b8346c4f4305be951a90ad1d; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+          "explanation": "Scheme row 7 names road; the complete transport span has AIR TRANSPORTATION, SEA TRANSPORTATION and RAIL sections but no road section."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-TR-PRACTICE",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Write ten aviation sentences",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1059-1059; UTF-8 joined-line SHA256 114cdb96e8425f604ae7262c4b07fe8f57d089309892b656e8dd66d565b8bc56; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1059-1059; UTF-8 joined-line SHA256 114cdb96e8425f604ae7262c4b07fe8f57d089309892b656e8dd66d565b8bc56; SS1-SRC-a00657d42196:BODY:45afbb42da0de3ef6d547e21c3950d1e6471dd6355dfa1d7801e7a498c36ad1c",
+          "explanation": "Prompt present without model responses, acceptance criteria or marks; no fabricated source answers."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-DEFINITION",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Identify a subordinate noun clause and its noun-like function",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1061-1065; UTF-8 joined-line SHA256 a6322649fb5b7f6586df3cfc6313c9156fc676dd91e65d7e304c8109f9914246; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1061-1065; UTF-8 joined-line SHA256 a6322649fb5b7f6586df3cfc6313c9156fc676dd91e65d7e304c8109f9914246; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Existing phrases/clauses lesson explains finite/subordinate clauses and demonstrates noun-clause subjects and objects. This narrow definition objective is covered; wider five-function practice remains separate."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-SUBJECT",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Noun clause functioning as subject",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1066-1070; UTF-8 joined-line SHA256 08109448eae23bc6b589ce32a9f7d373e43330a7e51d67e44dce8136dff27346; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1066-1070; UTF-8 joined-line SHA256 08109448eae23bc6b589ce32a9f7d373e43330a7e51d67e44dce8136dff27346; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Existing supplement explicitly analyses What she wrote as subject in What she wrote pleased us. No claim to cover the five-function source exercise."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-OBJECT",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Noun clause functioning as object of a verb",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1071-1073; UTF-8 joined-line SHA256 886bc30c797069d41cc83868579991ef733ee75c19100053d85051ab671bb4f0; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1071-1073; UTF-8 joined-line SHA256 886bc30c797069d41cc83868579991ef733ee75c19100053d85051ab671bb4f0; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Existing supplement identifies that she arrived as object in We know that she arrived."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-SUBJECT-COMPLEMENT",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Noun clause functioning as subject complement",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1074-1076; UTF-8 joined-line SHA256 32727c3920157afe661f7c654325bdeb1258515527ef48a29d7683d0bbf87551; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1074-1076; UTF-8 joined-line SHA256 32727c3920157afe661f7c654325bdeb1258515527ef48a29d7683d0bbf87551; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Source gives examples; replacement teaches a noun phrase as subject complement, not this clause function. Source correction replaces the whole body, so the omitted clause objective needs teaching."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-PREPOSITION",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Noun clause as complement of a preposition",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1077-1080; UTF-8 joined-line SHA256 e80d7877f9e872bb49c156bbb66bdfcdb4fbf3034a82f5c4214042a306e10d39; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1077-1080; UTF-8 joined-line SHA256 e80d7877f9e872bb49c156bbb66bdfcdb4fbf3034a82f5c4214042a306e10d39; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Source labels are swapped: We call him what he likes is placed under preposition; The prize will go to whoever wins is placed under object complement. Replacement does not teach the prepositional-complement noun clause."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-OBJECT-COMPLEMENT",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Noun clause as object complement",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1077-1080; UTF-8 joined-line SHA256 e80d7877f9e872bb49c156bbb66bdfcdb4fbf3034a82f5c4214042a306e10d39; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1077-1080; UTF-8 joined-line SHA256 e80d7877f9e872bb49c156bbb66bdfcdb4fbf3034a82f5c4214042a306e10d39; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Source mislabels paired examples. Replacement uses a noun phrase (captain) as object complement; this does not teach a noun clause in that role."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-PRACTICE",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Write five noun-clause sentences and state functions",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1082-1083; UTF-8 joined-line SHA256 7f83e5aa44ab7f7d5aeff6fd85d55fd6c3ac28b47dc75d552e9ad7ed2a979b95; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+        "SUP-SS1-ENGLISH-PHRASES-CLAUSES-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1082-1083; UTF-8 joined-line SHA256 7f83e5aa44ab7f7d5aeff6fd85d55fd6c3ac28b47dc75d552e9ad7ed2a979b95; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Source evaluation unkeyed; existing replacement practice tests indirect/direct objects and a relative/reason clause, not the five requested noun-clause functions."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NC-READING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Countdown by Evans page 221",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1085-1086; UTF-8 joined-line SHA256 0d3fa5e2751ccdfb459eb31205044919db4be5fe5e94026cf950d77eca08672b; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1085-1086; UTF-8 joined-line SHA256 0d3fa5e2751ccdfb459eb31205044919db4be5fe5e94026cf950d77eca08672b; SS1-SRC-a00657d42196:BODY:a849365c1edd8df9a8eb92db873d5b4b75a0e39bd29772e9bc09e0876ed07383",
+          "explanation": "Named page not supplied; edition unclear. No reconstruction of its exercise."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-CS-INVENTORY",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Identify the 24 consonant symbols in the teaching model",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1088-1144; UTF-8 joined-line SHA256 5638edbce35199a49e8a4f720c9c8becdbaf6601c29b8113fbcd346f4c19768e; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+        "SUP-SS1-ENGLISH-PHONETICS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1088-1144; UTF-8 joined-line SHA256 5638edbce35199a49e8a4f720c9c8becdbaf6601c29b8113fbcd346f4c19768e; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+          "explanation": "Existing phonetics lesson lists eight voiced/voiceless pairs and eight remaining consonants using correct IPA. This covers the inventory, not all articulatory descriptions/examples."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-CS-ARTICULATION",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Describe consonants by voicing, place and manner",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1092-1144; UTF-8 joined-line SHA256 5513f629a74937cc1175d2fad44c96dc30df4425837432818e5e58b4ac6992be; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+        "SUP-SS1-ENGLISH-PHONETICS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1092-1144; UTF-8 joined-line SHA256 5513f629a74937cc1175d2fad44c96dc30df4425837432818e5e58b4ac6992be; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+          "explanation": "Source attempts a classification for all 24; contains /k/ for alveolar /t/, voiceless /j/, non-IPA lookalikes and doubtful examples. Replacement corrects selected errors but does not give all places/manners. No claim of practical pronunciation verification."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-CS-EXAMPLES",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Recognise example words for each consonant",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1095-1144; UTF-8 joined-line SHA256 7da8fc2a76fec9f79a409969703decb5313abf4997b908255a93d34f6c16bac4; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+        "SUP-SS1-ENGLISH-PHONETICS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1095-1144; UTF-8 joined-line SHA256 7da8fc2a76fec9f79a409969703decb5313abf4997b908255a93d34f6c16bac4; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+          "explanation": "Replacement has selected sound/word contrasts, not two checked examples for each consonant; source examples include doubtful classifications."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-CS-PRACTICE",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Give ten consonants and two examples each",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1146-1147; UTF-8 joined-line SHA256 6867cfeddf0288f79b721499a116b7dc6f186319958aba18c36e435cc3f80ee0; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+        "SUP-SS1-ENGLISH-PHONETICS-T1"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1146-1147; UTF-8 joined-line SHA256 6867cfeddf0288f79b721499a116b7dc6f186319958aba18c36e435cc3f80ee0; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+          "explanation": "Source prompt lacks key/marks; replacement exercises do not match this requirement."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-CS-READING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Standard Speech Book 10 pages 1–10",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1148-1149; UTF-8 joined-line SHA256 063f2c551806343bbad6363e3c98a973635dc1413852e304d9664f1fe900a556; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1148-1149; UTF-8 joined-line SHA256 063f2c551806343bbad6363e3c98a973635dc1413852e304d9664f1fe900a556; SS1-SRC-a00657d42196:BODY:5a147735b79bc8126a0e5ce58a87f69cefaf2976bf8a717cb377fe19d28cba2b",
+          "explanation": "External pages absent; edition not identified."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NW-METHOD",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Develop a narrative using event sequence and imaginative detail",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1151-1157; UTF-8 joined-line SHA256 ed15bc40eebf8446c5507cba9d6ca4a715e5cca7015497a4eca671ff59895b2c; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1151-1157; UTF-8 joined-line SHA256 ed15bc40eebf8446c5507cba9d6ca4a715e5cca7015497a4eca671ff59895b2c; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+          "explanation": "Definition and short scene present; neither a complete model narrative nor worked planning/revision process is supplied for the required ending. Existing supplements do not bind this body."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NW-PRACTICE",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Write a story ending It pays to be hardworking",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1158-1159; UTF-8 joined-line SHA256 e7e04ab383bc69c2354411d67488e0df7c51afc98a7310b0daa5174af590881e; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1158-1159; UTF-8 joined-line SHA256 e7e04ab383bc69c2354411d67488e0df7c51afc98a7310b0daa5174af590881e; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+          "explanation": "Essay instruction exists but no full model, rubric or marking criteria. No source essay invented."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-NW-READING",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Countdown by Evans pages 5–6",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1161-1162; UTF-8 joined-line SHA256 72ea0e29b04e3ee8c4c403d8c8f7caffa1031a1881a3d78609817cf1d8baea01; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1161-1162; UTF-8 joined-line SHA256 72ea0e29b04e3ee8c4c403d8c8f7caffa1031a1881a3d78609817cf1d8baea01; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+          "explanation": "External reading pages absent; title/edition not reconciled against scheme bibliography."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-REVISION",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Five same-consonant matching questions",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1164-1170; UTF-8 joined-line SHA256 8cc27a2851f8c03aecdc7e849c8f0f810adeb8f1d455fc36f1ceb5107eaa7501; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+      "status": "PARTIAL",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1164-1170; UTF-8 joined-line SHA256 8cc27a2851f8c03aecdc7e849c8f0f810adeb8f1d455fc36f1ceb5107eaa7501; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+          "explanation": "Extracted stems/options present but underlining is lost in text and no answer key exists. A visual source check is required before identifying tested sounds; do not infer answers from the options."
+        }
+      ]
+    },
+    {
+      "id": "ENGLISH-T1-W07-WEEKEND",
+      "source_id": "SS1-SRC-a00657d42196",
+      "objective": "Countdown questions 41–50 pages 275–276",
+      "objective_locator": "word-extractor 1.0.4 getBody() lines 1172-1173; UTF-8 joined-line SHA256 7735739e673704adba8e77c95d1b3cf9f2f40d9ddcde363b8583445fdf406634; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+      "status": "UNRESOLVED",
+      "lesson_ids": [
+        "SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58"
+      ],
+      "evidence": [
+        {
+          "locator": "word-extractor 1.0.4 getBody() lines 1172-1173; UTF-8 joined-line SHA256 7735739e673704adba8e77c95d1b3cf9f2f40d9ddcde363b8583445fdf406634; SS1-SRC-a00657d42196:BODY:283bbdbbaf294410a47da09f18ac629ee06caa399e6275f311f224f8ffeced58",
+          "explanation": "External questions/answers absent; no textbook exercise fabricated."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -12912,6 +13319,79 @@
         "ENGLISH-BODY-021",
         "SUP-SS1-ENGLISH-PHONETICS-T1",
         "SUP-SS1-ENGLISH-DIPHTHONGS-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W07-TRANSPORT-GAP",
+      "kind": "CONTENT",
+      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-TR-AIR, ENGLISH-T1-W07-TR-SEA, ENGLISH-T1-W07-TR-RAIL, ENGLISH-T1-W07-TR-ROAD, ENGLISH-T1-W07-TR-PRACTICE",
+      "required_action": "Author original contextual transport teaching for aviation, maritime, rail and missing road vocabulary, with checked terminology and ten keyed aviation-sentence models; preserve source defects in evidence.",
+      "affected_ids": [
+        "ENGLISH-T1-W07-TR-AIR",
+        "ENGLISH-T1-W07-TR-SEA",
+        "ENGLISH-T1-W07-TR-RAIL",
+        "ENGLISH-T1-W07-TR-ROAD",
+        "ENGLISH-T1-W07-TR-PRACTICE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W07-NOUN-GAP",
+      "kind": "CONTENT",
+      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-NC-SUBJECT-COMPLEMENT, ENGLISH-T1-W07-NC-PREPOSITION, ENGLISH-T1-W07-NC-OBJECT-COMPLEMENT, ENGLISH-T1-W07-NC-PRACTICE",
+      "required_action": "Teach all five noun-clause functions with correctly analysed examples and a keyed five-sentence exercise; correct source swapped complement labels. Preserve already-supported definition/subject/object mappings.",
+      "affected_ids": [
+        "ENGLISH-T1-W07-NC-SUBJECT-COMPLEMENT",
+        "ENGLISH-T1-W07-NC-PREPOSITION",
+        "ENGLISH-T1-W07-NC-OBJECT-COMPLEMENT",
+        "ENGLISH-T1-W07-NC-PRACTICE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W07-BOOKS-GAP",
+      "kind": "OWNER_ACTION",
+      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-NC-READING, ENGLISH-T1-W07-CS-READING, ENGLISH-T1-W07-NW-READING, ENGLISH-T1-W07-WEEKEND",
+      "required_action": "Obtain authorised exact pages/editions or an explicit owner decision accepting original equivalents for the four Week 7 textbook assignments. Do not invent pages or silently drop the assignments.",
+      "affected_ids": [
+        "ENGLISH-T1-W07-NC-READING",
+        "ENGLISH-T1-W07-CS-READING",
+        "ENGLISH-T1-W07-NW-READING",
+        "ENGLISH-T1-W07-WEEKEND"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W07-CONSONANTS-GAP",
+      "kind": "CONTENT",
+      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-CS-ARTICULATION, ENGLISH-T1-W07-CS-EXAMPLES, ENGLISH-T1-W07-CS-PRACTICE",
+      "required_action": "Complete the 24-consonant place/manner/voicing teaching with authoritative IPA evidence and checked examples; provide a keyed ten-consonant/two-example exercise. Keep pronunciation performance deferred.",
+      "affected_ids": [
+        "ENGLISH-T1-W07-CS-ARTICULATION",
+        "ENGLISH-T1-W07-CS-EXAMPLES",
+        "ENGLISH-T1-W07-CS-PRACTICE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W07-NARRATIVE-GAP",
+      "kind": "CONTENT",
+      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-NW-METHOD, ENGLISH-T1-W07-NW-PRACTICE",
+      "required_action": "Author an original worked narrative plan, complete model ending with the required moral and a transparent rubric for an original student story. Do not reproduce the source scene.",
+      "affected_ids": [
+        "ENGLISH-T1-W07-NW-METHOD",
+        "ENGLISH-T1-W07-NW-PRACTICE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "ENGLISH-T1-W07-REVISION-GAP",
+      "kind": "CONTENT",
+      "detail": "Unfinished objective mappings: ENGLISH-T1-W07-REVISION",
+      "required_action": "Visually inspect only Week 7 revision underlining in the original DOC, record the target sounds, then author clearly labelled original keyed consonant-matching items with explicit target letters. Do not guess source answers.",
+      "affected_ids": [
+        "ENGLISH-T1-W07-REVISION"
       ],
       "blocks_delivery": true
     }

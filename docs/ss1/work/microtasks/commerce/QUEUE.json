@@ -33,17 +33,17 @@
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 7,
+    "FACTUAL_DEPENDENCY": 8,
     "SOURCE_PREAMBLE_INDEXING": 2,
     "SOURCE_WEEK_INDEXING": 19,
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 3,
     "SOURCE_PRESERVATION": 2,
-    "LESSON": 3
+    "LESSON": 5
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 36,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "PENDING": 38,
     "BLOCKED": 2
   },
   "items": [
@@ -1198,8 +1198,8 @@
         "COM-INV-T2",
         "COM-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (COM-INV-T2): label block 112 text \"WEEK TWO\" (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); blocks 112-161; range sha256 8ef08a297c6408b13b5bc475302cdbdbfa0c2ed7a02b6e7620a8a89feb736dae. Topic: International Trade (scheme: Foreign Trade). Forms of foreign trade (116; bilateral 117, multilateral 118, invisible imports 119, export trade 121), barriers (126), difference between domestic and foreign trade (137; table block 138), similarities (140), reasons (147), advantages (153), disadvantages (157). Block 127 mentions exchange-rate differences as a barrier; the figures and institutions are curriculum concepts, not dated data. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-358; block 359 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/commerce/COM-WK-T2-W02.md; 13 objective mappings, exact block/hash evidence; three bounded follow-ups. Week not complete, no authored lessons or invented originalLessonIds; no evaluation/assignment/theory items present in 112–161. Table disposition/facts reused.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -1728,6 +1728,85 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by COM-WK-T1-W01 (2026-11-05): ancillary occurs only at lines 113 and 118, transport at 14 lines with no teaching heading, and the advertising advantages request at line 119 has no corresponding heading in the term, so COV-COM-T1-W01-THEORY and -GENERAL-EVALUATION are UNRESOLVED under COMMERCE-T1-W01-OUT-OF-WEEK-ITEMS.",
       "completion_condition": "A lesson in commerce.json teaches only the aids cleared by COM-FACT-T1-W01-SCOPE, labels itself a Week 1 supplement, carries dated and rights-cleared provenance for anything the source does not teach, has practice with complete answers and marking that sums exactly, and PENDING content approval; no aid, transport or advertising advantage is invented and no Week Ten teaching is relabelled as Week One."
+    },
+    {
+      "id": "COM-FACT-T2-W02-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 specified blocks",
+      "objective": "Check only blocks 118,124,127–131,154–159: Nigeria agreements/exports and qualified trade benefits/risks. Reuse completed table verdicts; retain source wording and date primary evidence.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "depends_on": [
+        "COM-WK-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by COM-WK-T2-W02 on 2026-11-07; not implemented.",
+      "completion_condition": "Each named claim has a dated primary-source verdict and bounded endorsed wording; unknowns explicit.",
+      "required_attachments": []
+    },
+    {
+      "id": "COM-LES-T2-W02-CORE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 blocks 113–159 excluding table",
+      "objective": "Author original teaching and keyed applications for meaning/forms/imports/exports, barriers, similarities, reasons, benefits and risks. Incorporate completed claim verdicts. Account for displaced import definitions and trailing fragment. Exclude paired-row comparison owned by COM-LES-T2-W02-DOMFOR.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "depends_on": [
+        "COM-WK-T2-W02",
+        "COM-FACT-T2-W02-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by COM-WK-T2-W02 on 2026-11-07; not implemented.",
+      "completion_condition": "Named core objectives have an original lesson, keyed marks and exact evidence; pending source-binding/approval gates retained.",
+      "required_attachments": []
+    },
+    {
+      "id": "COM-LES-T2-W02-DOMFOR",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-0ccdf9dd3768",
+      "term": "2nd Term",
+      "week_or_locator": "Week 2 table block 138",
+      "objective": "Implement exactly one original paired-row domestic/foreign comparison using completed visual disposition and factual verdicts. Explain currency-union/invoice exceptions and internationally shared measurement units; include keyed comparisons; no universal currency/measurement claims.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "docs/ss1/work/microtasks/commerce/COM-VIS-T2-TBL-DOMFOR.md",
+        "docs/ss1/work/microtasks/commerce/COM-FACT-T2-TBL-DOMFOR-CLAIMS.md"
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/commerce.json",
+        "docs/ss1/work/microtasks/commerce/QUEUE.json"
+      ],
+      "depends_on": [
+        "COM-WK-T2-W02",
+        "COM-FACT-T2-TBL-DOMFOR-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Raised by COM-WK-T2-W02 on 2026-11-07; not implemented.",
+      "completion_condition": "One comparison supplement exists and representation open item is closed only after actual teaching exists.",
+      "required_attachments": []
     }
   ],
   "review": {
@@ -1763,7 +1842,6 @@
     "COM-MARK-T2-W10",
     "COM-MARK-T2-REVEXAM",
     "COM-WK-T2-W01",
-    "COM-WK-T2-W02",
     "COM-WK-T2-W03",
     "COM-WK-T2-W04",
     "COM-WK-T2-W05",
@@ -1771,6 +1849,8 @@
     "COM-WK-T2-W07",
     "COM-WK-T2-W08",
     "COM-WK-T2-W09",
-    "COM-VIS-T2-EQ-TOT"
+    "COM-VIS-T2-EQ-TOT",
+    "COM-FACT-T2-W02-CLAIMS",
+    "COM-LES-T2-W02-DOMFOR"
   ]
 }
