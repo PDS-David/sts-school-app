@@ -22,7 +22,8 @@
     "Open items FRENCH-UNCLEAR-OCCUPATIONS (FACT), FRENCH-EXAM-AUDIO (OWNER_ACTION) and FRENCH-AUTHORING-FINISH (CONTENT) are preserved unchanged in french.json; they map to FR-FACT-OCCUPATIONS, FR-FACT-EXAM-AUDIO-REQUIREMENTS -> FR-ASSET-EXAM-AUDIO-ACQUISITION -> FR-ASSET-EXAM-AUDIO-INSTALL, and FR-SCOPE-AUTHORING-FINISH.",
     "Execute one queue item per worker. A source-reading item needs the attachment in required_attachments (archive SSS 1-20260507T072431Z-3-001.zip, member and member hash given). Registration of sources is complete; do not repeat it.",
     "FR-LES-T1-W03-SELF-ESSAY (2026-11-06): the Week 3 written self-presentation supplement is authored. New lesson SUP-SS1-FRENCH-SELF-ESSAY-T1 (34 marks, body_sha256 5eff5383f0b4…) is bound additively to coverage FRENCH-T1-W03-OBJ-2, now IMPLEMENTED_EQUIVALENT, beside the unchanged SUP-SS1-FRENCH-GREETINGS-T1. It covers all eight prompted fields including the state, language, domicile and favourite dish or colour, with a fictional model paragraph, a keyed form-choice exercise, a guided eight-sentence exercise and a 20-mark writing task whose rubric sums; no exercise asks for a private home address. The Week 3 greeting row, its PARTIAL status and its scope open item are untouched, so the week is not claimed complete. Open item ESSAY-SCOPE is closed; the two readings of Votre etat are now an explicit owner decision in FRENCH-T1-W03-ETAT-READING. Approval stays PENDING and verification DEFERRED.",
-    "2026-11-08: FR-LES-T1-W01-BENEFITS implemented as SUP-SS1-FRENCH-BENEFITS-T1. Original replacement covers the identifiable scientific, technological and political benefits objective; source truncation is preserved as provenance and no missing source wording is invented. Six answered exercises total 17 marks. Content approval PENDING; verification DEFERRED."
+    "2026-11-08: FR-LES-T1-W01-BENEFITS implemented as SUP-SS1-FRENCH-BENEFITS-T1. Original replacement covers the identifiable scientific, technological and political benefits objective; source truncation is preserved as provenance and no missing source wording is invented. Six answered exercises total 17 marks. Content approval PENDING; verification DEFERRED.",
+    "2026-11-08: FR-WK-T2-W08 expanded. Imparfait supplement now includes complete être forms, six person/number endings, additional uses, negative forms, passé composé contrast and keyed paragraph practice (21 marks). Added FRENCH-T2-W08-OBJ-1; source scheme Week 7/body Week 8 mapping preserved. Approval PENDING; verification DEFERRED."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -38,8 +39,8 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 72,
-    "PENDING": 39,
+    "IMPLEMENTED_TESTING_DEFERRED": 73,
+    "PENDING": 38,
     "BLOCKED": 5
   },
   "items": [
@@ -728,9 +729,9 @@
       "depends_on": [
         "FR-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Existing row-level coverage FRENCH-BODY-017 (status IMPLEMENTED_EQUIVALENT) -> SUP-SS1-FRENCH-IMPARFAIT-T2; correction SS1-02-french-COR-017 binds body d2b9e605d53f507253d68e74c899340b1f62d5f7a5bdf1e2c4fce69fb7debd1a to the same replacement. Row-level association only; the coverage entry itself states it is not exhaustive scheme-objective certification. No objective-level entry exists yet.",
-      "completion_condition": "Every objective of the week has its own coverage entry with exact locator and evidence; scheme rows are classified; any PARTIAL/UNRESOLVED entry has an OPEN open item and, where content is missing, a separate small PENDING queue item. No lesson is authored in this item. Original source must be read: attach the member listed in required_attachments."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented and expanded SUP-SS1-FRENCH-IMPARFAIT-T2 in backend/src/db/ss1/subjects/french.json. Now covers regular nous-stem formation, all six person/number endings, irregular être (ét-), common uses (habit, description, age/time, weather, background), negation, worked examples, dialogue, paragraph model and six keyed exercises (21 marks). Added objective-level coverage FRENCH-T2-W08-OBJ-1. The opening scheme's Week 7 imperfect remains explicitly mapped to body Week 8; source numbering is unchanged. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "Objective-level coverage and a usable complete lesson with worked formation, contexts, answers and transparent marking exist. Approval and runtime verification remain separate."
     },
     {
       "id": "FR-WK-T2-W09",
