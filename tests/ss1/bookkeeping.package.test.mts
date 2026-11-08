@@ -127,3 +127,72 @@ test('Coverage entries resolve to registered sources and declared lesson or mark
     }
   }
 });
+
+test('Third-term revision and examination markers remain scheme-only', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['COV-BK-T3-REVISION-1', 'RULE-BK-T3-REVISION-1'],
+    ['COV-BK-T3-REVISION-11', 'RULE-BK-T3-REVISION-11'],
+    ['COV-BK-T3-EXAM-12', 'RULE-BK-T3-EXAM-12'],
+  ]);
+  for (const [coverageId, ruleId] of expected) {
+    const c = p.coverage.find(x => x.id === coverageId);
+    const r = p.source_rules.find(x => x.id === ruleId);
+    assert(c && r);
+    assert.equal(c.status, 'MARKER');
+    assert.deepEqual(c.lesson_ids, [ruleId]);
+    if (r.op !== 'classify_marker') assert.fail('marker target must be a classify_marker rule');
+    assert.equal(r.kind, 'SCHEME_ONLY');
+  }
+});
+
+test('Third-term source boundaries use exact week labels and unique anchors', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['RULE-BK-T3-W02', ['2', '                                PETTY CASH BOOK']],
+    ['RULE-BK-T3-W03', ['3', 'TRIAL BALANCE AND CORRECTION OF ERRORS']],
+    ['RULE-BK-T3-W04', ['4', 'RULES OF TRIAL BALANCE ']],
+    ['RULE-BK-T3-W05', ['5', 'TRIAL BALANCE ERRORS OR UNDISCLOSED ERRORS']],
+    ['RULE-BK-T3-W06', ['6', 'ERRORS THAT WILL AFFECT THE AGREEMNENT OF THE TRIAL BALANCE']],
+    ['RULE-BK-T3-W07', ['7', '                            TRADING PROFIT AND LOSS ACCOUNT AND BALANCE SHEET(FINAL ACCOUNT)']],
+    ['RULE-BK-T3-W08', ['8', '                PREPARATION OF FINAL ACCOUNT OF A SOLE TRADER']],
+    ['RULE-BK-T3-W10', ['10', 'LAYOUT OF BALANCE SHEET']],
+  ]);
+  for (const [id, [week, anchor]] of expected) {
+    const rule = p.source_rules.find(x => x.id === id);
+    assert(rule && rule.op === 'split_before');
+    assert.equal(rule.source_id, 'SS1-SRC-97f226215927');
+    assert.equal(rule.source_sha256, '343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d');
+    assert.equal(rule.week_label, week);
+    assert.equal(rule.anchor, anchor);
+  }
+  assert(!p.source_rules.some(x => x.id === 'RULE-BK-T3-W09'),
+    'Week 9 has no distinct source heading; do not invent a split boundary');
+});
+
+test('Third-term equivalent lessons have complete marked practice and exact coverage links', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT', ['bc61f8ae5e06f2d19a34a33434c34e526db9c3ecd4e9a07266b02e399691e16e', 'COV-BK-T3-W05-NOT-AFFECT']],
+    ['SUP-SS1-BOOKKEEPING-T3-W07-TRADING', ['03c907cc07de181c42d175a50e8ff6dca00789b947a780e106708dd893888786', 'COV-BK-T3-W07-DEFINITION']],
+    ['SUP-SS1-BOOKKEEPING-T3-W08-PREP', ['df5b68dea2fb111be4d3543447185e484ed7ad7db0d9073cb2d7dd9df572732d', 'COV-BK-T3-W08-PREPARATION']],
+    ['SUP-SS1-BOOKKEEPING-T3-W09-PNL', ['289fc07daf4c232339d96f3b252244d5e9ade7d87804142969af526be5a0b45c', 'COV-BK-T3-W09-PURPOSE']],
+    ['SUP-SS1-BOOKKEEPING-T3-W10-USERS', ['63adfa99cf4b7629b85b9eec3c07e9ac48693f579d798543301db56fc7a94a3a', 'COV-BK-T3-W10-USERS']],
+    ['SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET', ['ba3101b1a53027a2ffa747c6827c3b61ab0c846e99a8ee6bc8eadb41e7b82118', 'COV-BK-T3-W10-PREPARATION']],
+  ]);
+  for (const [id, [hash, coverageId]] of expected) {
+    const lesson = p.lessons.find(x => x.id === id);
+    const coverage = p.coverage.find(x => x.id === coverageId);
+    assert(lesson && coverage);
+    assert.equal(lesson.body_sha256, hash);
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert(lesson.practice.length > 0);
+    for (const question of lesson.practice) {
+      assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
+    }
+    assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT');
+    assert(coverage.lesson_ids.includes(id));
+  }
+});
