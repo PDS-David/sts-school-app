@@ -40,23 +40,24 @@
     "BIO-WK-T1-W10 (2026-11-08) indexed Growth, Irritability and Movement across blocks 986-1092 and reviewed the assignment at 1094-1103. The assignment prompts are supported by source teaching but no answer key is supplied. Existing visual tasks own the mitosis figures, hormone table and movement table. The WEEK TEN label precedes the ASSIGNMENT heading in this source. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred.",
     "BIO-WK-T2-W01 (2026-11-08) indexed the 2nd Term reproduction week using a private conversion of the hash-verified legacy DOC. The Week 1 content list's sexual reproduction/meiosis entries map to the Week 2 scheme/body; they were not duplicated. Artificial propagation is only listed, asexual-reproduction advantages/disadvantages are absent, and three assessment prompts need authoritative fact review. Two bounded lesson tasks and one fact task were appended; no source extract or converted document was committed.",
     "BIO-WK-T2-W02 (2026-11-08) indexed sexual reproduction and meiosis, then confirmed the scheme's Excretion objective has only a content-list heading and no teaching body in Week 2. Gametogenesis is mentioned but spermatogenesis/oogenesis are not defined. Excretion questions and several revision prompts need supplemental teaching or approved-reference review. Two bounded lesson tasks and one fact task were appended; no key was invented.",
-    "BIO-WK-T2-W03 (2026-11-08) indexed reproduction in Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail, including every evaluation and assignment. Tapeworm reproduction appears in questions but is not taught in the week; the later tapeworm mention is parasitism. Advantages/disadvantages of sexual reproduction are also not taught. A factual scope check and two bounded lesson tasks were appended; no answer key was invented."
+    "BIO-WK-T2-W03 (2026-11-08) indexed reproduction in Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail, including every evaluation and assignment. Tapeworm reproduction appears in questions but is not taught in the week; the later tapeworm mention is parasitism. Advantages/disadvantages of sexual reproduction are also not taught. A factual scope check and two bounded lesson tasks were appended; no answer key was invented.",
+    "BIO-WK-T2-W04 (2026-11-08) indexed irritability, response types, movement, cyclosis and movement organelles. The Amoeba structure is not identified; a klinostat appears only in a question; geotropism questions have no supplied practical description/key. A factual check and bounded supplemental lesson were appended; no answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 11,
+    "FACTUAL_DEPENDENCY": 12,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 15
+    "LESSON": 16
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 23,
-    "PENDING": 75,
+    "IMPLEMENTED_TESTING_DEFERRED": 24,
+    "PENDING": 76,
     "BLOCKED": 5
   },
   "items": [
@@ -1610,8 +1611,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 262 text \"WEEK FOUR                                                                                    DATE……………………\" (sha256 51a39a7c2f829455c7b65f114ff747cb9660bf21e1579af6d295ae1c57d1cf32); blocks 262-325; range sha256 60f45646c3a041996260c764fe46dd96cb39e48fc54da27bd1f517cdc221fcb5. Topic: Irritability and Movement (body topic line: IRRITABILITY / CELL REACTIONS TO ITS ENVIRONMENT). Irritability and types of responses (268), movement (286), organelles for movement (298), General Evaluation (302), Reading Assignment (311), Weekend Assignment (314-325, theory from 321). Block 323 asks what would be observed when a green seedling is placed horizontally (a practical-style observation question). Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W04.md; verified the assigned legacy DOC member hash and private DOCX conversion; Week 4 label and range hashes match the inventory/queue. Indexed irritability and response types (268-284), movement/cyclosis (286-297), movement organelles (298-301), and all evaluation/weekend/theory items. The source describes flagella and cilia but does not identify the structure used by Amoeba; question 319 introduces a klinostat not taught in the body; questions 309 and 323 concern geotropism but no practical description/key is supplied. No answer key exists. No extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3909,6 +3910,79 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W03; exact source locators and scope findings are recorded in the Week 3 index."
+    },
+    {
+      "id": "BIO-FACT-T2-W04-KLINOSTAT",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4, converted DOCX blocks 262-325",
+      "objective": "Verify the intended use and correct description of a klinostat in weekend-assignment block 319 against an approved Biology reference. The Week 4 body does not explain the instrument; do not guess the answer.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W04-KLINOSTAT.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W04; exact source locators and gaps are recorded in the Week 4 index."
+    },
+    {
+      "id": "BIO-LES-T2-W04-IRRITABILITY-MOVEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 4, converted DOCX blocks 262-325",
+      "objective": "Author a clearly labelled supplemental lesson covering irritability, taxis/nastism/tropism, movement, cyclosis and movement organelles (including the missing Amoeba structure). Include a safe, teacher-approved conceptual explanation of geotropism for evaluation block 309 and theory block 323, and the verified klinostat explanation from BIO-FACT-T2-W04-KLINOSTAT. Preserve source wording separately, cite provenance and include keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W04-IRRITABILITY-MOVEMENT.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W04",
+        "BIO-FACT-T2-W04-KLINOSTAT"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W04; exact source locators and gaps are recorded in the Week 4 index."
     }
   ],
   "review": {
@@ -3942,7 +4016,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W04",
     "BIO-WK-T2-W05",
     "BIO-WK-T2-W06",
     "BIO-WK-T2-W07",
@@ -3991,6 +4064,7 @@
     "BIO-LES-T2-W02-EXCRETION",
     "BIO-FACT-T2-W02-REVISION-FACTS",
     "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
-    "BIO-LES-T2-W03-SEXUAL-ADVANTAGES"
+    "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
+    "BIO-FACT-T2-W04-KLINOSTAT"
   ]
 }
