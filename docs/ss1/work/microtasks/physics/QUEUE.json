@@ -26,7 +26,8 @@
     "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
     "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md.",
     "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item.",
-    "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner."
+    "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner.",
+    "PHYS-PORT-D1-COV-T1 (2026-11-08): compared all eleven PR #71 first-term coverage rows against master. None copied because master already has finer objective-level entries; W1/W2 contain PARTIAL/UNRESOLVED objectives, W3-W10 have more granular coverage and retain their own reconciliation/section-boundary gaps, and W11 remains unresolved. No status upgraded and no duplicate coverage added. Full disposition in PHYS-PORT-D1-COV-T1.md. Original binary member not rehashed/rendered in this run; existing master source evidence reused. Testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,9 +46,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 33,
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
     "BLOCKED": 16,
-    "PENDING": 40
+    "PENDING": 39
   },
   "total": 89,
   "items": [
@@ -1832,8 +1833,8 @@
       "depends_on": [
         "PHYS-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Branch-only (NOT on master): b5ced7ebb0efe22df2351baa140266fbf40cbf41 (PR #71 head, branch ss1/SS1-01-20261026-claude), path backend/src/db/ss1/subjects/physics.json, blob 5b4010a8db081ddcafafd5bf98bfcbd7b31c09f3 (identical blob at 2985d57, branch ss1/SS1-03-20261027-B). Entries use #71's vocabulary (objective_id, scheme_locator, open_item_ids). Branch statuses: SUPPORTED for most rows, IMPLEMENTED_EQUIVALENT only where a branch lesson exists, UNRESOLVED for revision weeks.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Compared all eleven PR #71 first-term coverage rows against the current master package on 2026-11-08. Report: docs/ss1/work/microtasks/physics/PHYS-PORT-D1-COV-T1.md. None copied: master already has granular week/objective entries; W1/W2 have partial/unresolved objectives, W3-W10 have finer linked objective entries with separate partial reconciliation/section-boundary issues, and W11 remains unresolved (OI-PHYS-003). No branch SUPPORTED status was adopted and no coverage was upgraded. Existing source/member evidence records were reused; the binary source was not rehashed or rendered again in this run. Testing deferred by owner.",
       "completion_condition": "Each entry compared; carried over, revised or dropped with a reason; nothing upgraded above what the master week item supports."
     },
     {
@@ -3088,7 +3089,6 @@
     "PHYS-VIS-T1",
     "PHYS-VIS-T2",
     "PHYS-VIS-T3",
-    "PHYS-PORT-D1-COV-T1",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
@@ -3123,7 +3123,6 @@
     "PHYS-PORT-D1-T3-L003",
     "PHYS-PORT-D1-T3-L004",
     "PHYS-PORT-D1-T3-L005",
-    "PHYS-PORT-D1-COV-T1",
     "PHYS-CMP-D4-NOTES",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
