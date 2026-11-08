@@ -66,8 +66,8 @@
     "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten teaching weeks. The owner cannot explain why the supplied first-term document has only four week bodies. The matching SS1 Book-Keeping first-term scheme reproduces the same ten-week topic sequence. W05-W10 project-authored extensions have been added to populate ten teaching weeks without claiming missing original source pages.",
     "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten weeks. Third-term scheme has a Week 1 revision marker followed by nine teaching-topic weeks (Weeks 2-10); the source contains no revision body. A project-authored Week 1 revision lesson has been added using first-term Bookkeeping foundations; the original source marker remains SCHEME_ONLY.",
     "2026-11-08 master reconciliation audit: refreshed the review pointer to current master commit 288965f793e217dbc076eb4f51246a85033034c8 and recorded the existing package path and blob SHA. Current inventory: 32 implemented lessons (11/10/11 across terms), 81 coverage rows (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 6 MARKER), 18 source rules, 3 sources and 27 package open items. All 32 lessons remain approval PENDING and verification DEFERRED; package remains PENDING. Historical generated_from.master_sha and original task description are retained as provenance; generated_from.package now points to the package that was subsequently created. This inventory refresh does not execute the deferred tests or importer and does not imply content approval.",
-    "2026-11-08 follow-up audit: classified second-term Week 1 and Week 11 revision markers and Week 12 examination marker as SCHEME_ONLY; added three corresponding MARKER coverage records. No revision lesson, exam paper, questions or marking scheme were fabricated. Updated the two second-term marker queue tasks with package references. Reclassified four old second-term week-indexing tasks as IMPLEMENTED_TESTING_DEFERRED with explicit supersession references because the owner-confirmed source disposition excludes duplicate second-term teaching from coverage and the separate reconstructed T2 W01-W10 lesson sequence now carries the intended programme. Original source remains registered and unchanged. Technical verification and formal content approval remain separate and outstanding.",
-    "2026-11-08 static consistency check after T2 marker additions: package JSON parsed; 32 lesson IDs, 21 source-rule IDs and 84 coverage IDs are unique; every coverage source and target resolves; every MARKER coverage row targets a classify_marker rule. This is a read-only structural check, not execution of the owner-deferred package test suite, full-source compiler, importer or delivery checks."
+    "2026-11-08 follow-up audit: reclassified six stale second-term tasks as IMPLEMENTED_TESTING_DEFERRED with explicit supersession references: the four week-indexing tasks and the two marker tasks (BK-MARK-T2-REVISION, BK-MARK-T2-EXAM). The owner-confirmed source disposition excludes duplicate second-term teaching from coverage, and the separate reconstructed T2 W01-W10 lesson sequence carries the intended programme. No second-term marker rules or MARKER coverage rows were added; an earlier attempt to classify the Week 1/11 revision and Week 12 examination markers was reverted because it contradicted that decision and the package test. Original source remains registered and unchanged. Technical verification and formal content approval remain separate and outstanding.",
+    "2026-11-08 static consistency check after the marker revert: package JSON parsed; 32 lesson IDs, 18 source-rule IDs and 81 coverage IDs; package blob matches master. This is a read-only structural check, not execution of the owner-deferred package test suite, full-source compiler, importer or delivery checks."
   ],
   "counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 99,
@@ -907,7 +907,7 @@
         "BK-SRC-T2"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Second-term scheme marker classified in backend/src/db/ss1/subjects/bookkeeping.json as RULE-BK-T2-REVISION-1 and RULE-BK-T2-REVISION-11 / corresponding MARKER coverage rows. No lesson or examination material invented. Source validation remains deferred.",
+      "implementation_reference": "Superseded as marker-classification work following the owner-confirmed disposition that the second-term document duplicates the first-term teaching body, and the recorded decision that old second-term week-indexing and marker tasks must not be executed against the duplicate. No second-term SCHEME_ONLY rule or MARKER coverage row is added for the Week 1 and Week 11 revision entries; the package regression test forbids COV-BK-T2-REVISION, COV-BK-T2-EXAM and COV-BK-T2-WEEK rows. Original source remains registered and unchanged. This supersession is not technical verification or formal content approval.",
       "completion_condition": "Both markers classified with their locators and an explicit statement that no instructional body, questions or marking scheme exists; nothing invented."
     },
     {
@@ -945,7 +945,7 @@
         "BK-SRC-T2"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Second-term scheme marker classified in backend/src/db/ss1/subjects/bookkeeping.json as RULE-BK-T2-EXAM-12 / COV-BK-T2-EXAM-12. No lesson or examination material invented. Source validation remains deferred.",
+      "implementation_reference": "Superseded as marker-classification work following the owner-confirmed disposition that the second-term document duplicates the first-term teaching body, and the recorded decision that old second-term week-indexing and marker tasks must not be executed against the duplicate. No second-term SCHEME_ONLY rule or MARKER coverage row is added for the Week 12 examination entry; the package regression test forbids COV-BK-T2-REVISION, COV-BK-T2-EXAM and COV-BK-T2-WEEK rows. Original source remains registered and unchanged. This supersession is not technical verification or formal content approval.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no examination material exists; nothing invented."
     },
     {
@@ -3559,10 +3559,10 @@
   ],
   "review": {
     "date": "2026-11-08",
-    "reviewed_commit": "388563baf87f218f01e5f19bcb0f0b719bfee253",
+    "reviewed_commit": "69d1d8a1c2d679b4b4f20f6ac635b21c0e25b4b3",
     "package_path": "backend/src/db/ss1/subjects/bookkeeping.json",
-    "package_blob_sha": "091c0919d3a070d9f693aee575825689bbd7cd07",
-    "scope": "Current package and queue audit: 32 implemented lessons (11 first term, 10 second term, 11 third term); 84 coverage rows (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 9 MARKER); 21 source rules; 3 registered sources; 27 package open items. The three second-term schedule markers (Weeks 1 and 11 revision, Week 12 examination) are now classified as SCHEME_ONLY with MARKER coverage. Four stale second-term source-indexing tasks are superseded by the owner-confirmed duplicate-source disposition; both marker disposition tasks now have explicit package records. All 32 lessons remain content_approval=PENDING and verification=DEFERRED; package_status=PENDING. Full-source compiler/importer/database/device checks and formal teacher/curriculum-owner approval remain outstanding."
+    "package_blob_sha": "4525523907073a39b4d63110d1202b75e9e940f5",
+    "scope": "Current package and queue audit: 32 implemented lessons (11 first term, 10 second term, 11 third term); 81 coverage rows (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 6 MARKER); 18 source rules; 3 registered sources; 27 package open items. Second-term schedule markers (Weeks 1 and 11 revision, Week 12 examination) are not indexed, per the owner-confirmed duplicate-source disposition. Six stale second-term source-indexing and marker tasks are superseded by that disposition. All 32 lessons remain content_approval=PENDING and verification=DEFERRED; package_status=PENDING. Full-source compiler/importer/database/device checks and formal teacher/curriculum-owner approval remain outstanding."
   },
   "next_runnable": []
 }
