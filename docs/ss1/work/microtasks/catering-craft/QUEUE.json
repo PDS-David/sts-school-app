@@ -32,7 +32,7 @@
     "SOURCE_REGISTRATION": 2,
     "SOURCE_WEEK_INVENTORY": 2,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 12,
+    "FACTUAL_DEPENDENCY": 13,
     "SOURCE_WEEK_INDEXING": 20,
     "SOURCE_SECTION_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 3,
@@ -40,7 +40,7 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 14,
+    "IMPLEMENTED_TESTING_DEFERRED": 15,
     "PENDING": 40,
     "BLOCKED": 1
   },
@@ -581,8 +581,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified source with word-extractor 1.0.4. Scheme row 17 hash b695738eeb6516f23c84acebbb79d819d03e55b2e13d8ba568408c7c7b8db0ca; week range 1301-1398 hash 1cc8cb6acd059ffa9ee5a12e610ce7303b146dd2a33bc85410c44f24b3149786. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W10.md. Added COV-CC-T2-W10-SCHEME-10 as PARTIAL with no lesson_ids; no lesson, answer, correction, rule, approval or verification invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 1cc8cb6acd059ffa9ee5a12e610ce7303b146dd2a33bc85410c44f24b3149786; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -1994,6 +1994,40 @@
       ],
       "status": "PENDING",
       "implementation_reference": "New dependency identified by the Week Six source index; not yet researched."
+    },
+    {
+      "id": "CC-FACT-T2-MEASURING-CONVERSION-FIGURES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "term": "2nd Term",
+      "week_or_locator": "WEEK TEN / getBody lines 1337-1375",
+      "objective": "Verify the local-to-standard metric conversions in the source table (lines 1337-1375), including the milk-tin/cup, beer-bottle, gallon/litre and derica/weight entries. Establish the relevant local measurement context and authoritative standards; do not assume all informal containers have a universal capacity. Record findings and source locators only; do not alter the original table or author replacement teaching in this item.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-INV-T2.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS1-original.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-FACT-T2-MEASURING-CONVERSION-FIGURES.md"
+      ],
+      "depends_on": [
+        "CC-INV-T2",
+        "CC-SRC-T2",
+        "CC-IDX-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "New dependency identified by the Week Ten source index; not yet researched."
     }
   ],
   "review": {
@@ -2009,7 +2043,6 @@
     }
   },
   "next_runnable": [
-    "CC-IDX-T2-W10",
     "CC-IDX-T2-OPEN",
     "CC-MARK-T2-W11",
     "CC-MARK-T2-W12",
@@ -2035,6 +2068,7 @@
     "CC-IDX-T3-W10",
     "CC-IDX-T3-OPEN",
     "CC-MARK-T3-REVEXAM",
-    "CC-VIS-T3-W08-IMG1"
+    "CC-VIS-T3-W08-IMG1",
+    "CC-FACT-T2-MEASURING-CONVERSION-FIGURES"
   ]
 }
