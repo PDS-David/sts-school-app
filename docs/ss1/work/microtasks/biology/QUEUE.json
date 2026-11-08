@@ -61,25 +61,26 @@
     "BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08) inspected the verified source and private rendered page: blocks 69-70 contain only a vertical divider and horizontal rule; the Plants/Animals labels and ten comparison pairs are text, not a Word table. Rendered layout is clear, but text extraction depends on whitespace and cannot guarantee paired columns. No asset/redraw is needed; a semantic two-column supplement is required and was appended as BIO-LES-T1-W02-PLANT-ANIMAL-TABLE, gated on the existing BIO-FACT-T1-W02-WORDING expert decision. No source content was changed; testing remains deferred.",
     "BIO-VIS-T1-MICROSCOPE (2026-11-08) inspected the hash-verified source image at full enlarged resolution and in a private rendered page. The diagram labels ten parts, including a 100x objective; the written list states x4/x10/x40 and calls x40 the highest, and uses different stage/illumination terms. The original 239x211 image is not copied because reuse permission is unrecorded. A teacher fact gate BIO-FACT-T1-W02-MICROSCOPE-LABELS and a dependent project-redraw task BIO-VIS-T1-W02-MICROSCOPE-REDRAW were appended. No label was silently corrected; testing remains deferred.",
     "BIO-VIS-T1-CLASS-HIERARCHY (2026-11-08) inspected all six native downward connector shapes and the seven text labels across rendered PDF pages 4-5. Text labels survive extraction; arrows do not, but block 136 states the sequence in prose. The source repeatedly prints 'Genius'/'genius' for Genus. No asset/redraw is needed; a semantic ordered sequence and corrected delivery spelling were assigned to BIO-LES-T1-W03-CLASSIFICATION. Original source remains unchanged; testing deferred.",
-    "BIO-VIS-T1-MONOCOT-DICOT (2026-11-08) inspected the original two-column comparison at blocks 235-244 and its private rendered page 8. The two line shapes are only table rules; labels and comparison rows are text but tab/space alignment is not robust under plain-text extraction. Seven paired differences and the examples row require a semantic two-column restatement in the existing BIO-LES-T1-W03-CLASSIFICATION task. No asset/redraw is needed; source header spelling is preserved and the adjacent block 234 spelling is used only in delivery. No source content was changed; testing remains deferred."
+    "BIO-VIS-T1-MONOCOT-DICOT (2026-11-08) inspected the original two-column comparison at blocks 235-244 and its private rendered page 8. The two line shapes are only table rules; labels and comparison rows are text but tab/space alignment is not robust under plain-text extraction. Seven paired differences and the examples row require a semantic two-column restatement in the existing BIO-LES-T1-W03-CLASSIFICATION task. No asset/redraw is needed; source header spelling is preserved and the adjacent block 234 spelling is used only in delivery. No source content was changed; testing remains deferred.",
+    "BIO-VIS-T1-PEST-LIFECYCLES (2026-11-08) inspected the 15 text boxes and nine DrawingML/VML drawings across blocks 582-593 and rendered PDF pages 21-22. The first nymph-bearing figure's labels conflict with the yam-beetle prose and its stage sequence cannot be safely assigned; a teacher identity gate and dependent redraw task were added. The second figure under the rhinoceros-beetle heading has Egg, Larvae, Pupa and Adults with a clear directed loop; a separate project-authored redraw task was appended. Source drawings are not copied, and no chemical-control instructions are reproduced. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 16,
+    "FACTUAL_DEPENDENCY": 17,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
-    "VISUAL_DISPOSITION": 37,
+    "VISUAL_DISPOSITION": 39,
     "SOURCE_MARKER_DISPOSITION": 1,
     "LESSON": 20,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 44,
+    "IMPLEMENTED_TESTING_DEFERRED": 45,
     "PENDING": 100,
-    "BLOCKED": 9
+    "BLOCKED": 11
   },
   "items": [
     {
@@ -1024,8 +1025,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): all 15 text boxes in the document sit here: block 582 (1), 585 (2), 586 (2), 590 (2), 593 (8). Extracted fragments include 'adults', 'Larvae', 'Nymphs egg in the ground', 'Egg AdultsPupaLarvae' and, in block 593, 'After ninety days therefore, the larvae changes into a pupa in a cacoon…'. Heading context: block 550 'THE PEST'.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Original blocks 582-593 range SHA-256 e483961c186650c77ee7465d0157b0a972b724be22a55eeadaac4211d9703218. First figure (blocks 582-590) has visible labels 'adults' (585), 'Larvae' (586), 'Nymphs' and 'egg in the ground' (590), plus one empty text box at 582 and four arrow connectors distributed across blocks 582/587. The text labels survive in extraction but positions/arrows do not. The figure spans rendered PDF pages 21-22; its heading context is 'Life cycle of yam Beetle' and the adjacent prose describes eggs, larvae, pupa and adults, not nymphs. The first figure therefore cannot be confidently attributed or sequenced; do not call it a grasshopper or yam-beetle cycle without teacher confirmation. Second figure (block 593) is a grouped cycle labelled Egg, Adults (split across text runs), Pupa and Larvae, with four directional connectors; it follows the 'Life Cycle of Rhinoceros beetle' heading and supporting prose blocks 591-593. The rendered PDF page 22 shows the cycle clearly; text extraction concatenates the labels and omits arrow geometry. Duplicate text strings in XML are DrawingML/VML alternate representations, not extra visible labels. Disposition: no original source drawing is committed. A project-authored redraw is appropriate for the clear rhinoceros-beetle cycle; the first nymph-bearing diagram needs a qualified teacher to identify its intended pest/stage sequence before redraw. Fact and redraw tasks were appended. No pesticide/control instructions reproduced; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5276,6 +5277,113 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the hierarchy disposition (2026-11-08): the source prose and diagram both use 'genius' for the rank Genus; the lesson must correct the delivery spelling without altering source text. No separate image asset is needed because an ordered text hierarchy preserves the rank sequence.",
       "completion_condition": "A clearly labelled supplemental lesson teaches the Week 3 classification objective, preserves the rank order as semantic text, uses 'Genus' correctly in delivery, cites actual provenance, includes complete keyed practice and binds to COV-BIO-T1-W03-SCHEME-3. Original source bytes remain unchanged."
+    },
+    {
+      "id": "BIO-FACT-T1-W03-NYMPH-CYCLE-IDENTITY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, life-cycle figure blocks 582-590 under heading block 580; supporting yam-beetle prose block 581",
+      "objective": "Obtain a qualified Biology teacher's identification of the first nymph-bearing lifecycle figure and its intended stage sequence. The figure labels adults, Larvae, Nymphs and egg in the ground, but it is positioned under 'Life cycle of yam Beetle' while the accompanying yam-beetle prose describes eggs, larvae, pupa and adults and does not mention nymphs. Confirm whether the figure belongs to yam beetle or another pest and provide the approved labels/order with a course reference. Do not infer the organism or silently replace Nymphs with Pupa.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PEST-LIFECYCLES.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W03.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W03-NYMPH-CYCLE-IDENTITY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W03",
+        "BIO-VIS-T1-PEST-LIFECYCLES"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED — qualified Biology teacher identification required. Exact source evidence and the question are recorded in BIOLOGY-T1-W03-YAM-BEETLE-CYCLE-LABELS. No species or stage sequence is guessed.",
+      "completion_condition": "A qualified Biology teacher identifies the intended pest and provides the correct stage sequence and authoritative course reference, resolving the mismatch between the Nymphs label and the yam-beetle prose."
+    },
+    {
+      "id": "BIO-VIS-T1-W03-NYMPH-CYCLE-REDRAW",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, blocks 582-590; first lifecycle figure spans rendered PDF pages 21-22",
+      "objective": "Create a new project-authored, legible lifecycle diagram for the first nymph-bearing source figure only after BIO-FACT-T1-W03-NYMPH-CYCLE-IDENTITY is resolved. Use only the teacher-approved pest identity, stage names and arrow order. Do not copy the source's original vector drawing or infer whether Nymphs should be Pupa.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W03-NYMPH-CYCLE-IDENTITY.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "backend/src/db/ss1/assets/biology/",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-W03-NYMPH-CYCLE-REDRAW.md"
+      ],
+      "depends_on": [
+        "BIO-FACT-T1-W03-NYMPH-CYCLE-IDENTITY"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED pending the qualified-teacher decision on the identity and stage sequence of the first source figure.",
+      "completion_condition": "A new original vector diagram uses the approved organism/stage sequence, clear arrow direction, schema-compliant asset metadata and project-created provenance; source artwork remains unchanged."
+    },
+    {
+      "id": "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 3, block 593 under 'Life Cycle of Rhinoceros beetle' at block 591",
+      "objective": "Create a new project-authored, legible lifecycle diagram for the rhinoceros beetle using the source-supported stages Egg → Larvae → Pupa → Adults and a clearly directed cycle. Do not copy the source's original vector drawing. Keep the original source figure unchanged and register the new asset with exact bytes/hash, alt text, source locator, project-created provenance and pending approval/deferred verification state.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PEST-LIFECYCLES.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "backend/src/db/ss1/assets/biology/",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W03",
+        "BIO-VIS-T1-PEST-LIFECYCLES"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the source figure disposition (2026-11-08). The original rhinoceros-beetle cycle has four clear labels and a four-arrow loop; a project-authored redraw will preserve the stages without copying the source vector artwork.",
+      "completion_condition": "A new original vector diagram shows Egg → Larvae → Pupa → Adults in a directed loop, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source figure untouched."
     }
   ],
   "review": {
@@ -5291,7 +5399,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-PEST-LIFECYCLES",
     "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME",
     "BIO-VIS-T1-EXPERIMENT-FIGURES",
     "BIO-VIS-T1-NUTRIENT-CYCLES",
@@ -5324,6 +5431,7 @@
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
     "BIO-VIS-T3-HDR-BRANDING",
     "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
+    "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
     "BIO-FACT-T1-W05-CONDITIONS",
     "BIO-FACT-T1-W05-EQUATIONS",
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
