@@ -76,7 +76,8 @@
     "AG-VIS-T3-W04-POULTRY-DIGESTION (2026-11-08): image9.jpeg at block 425 is a labelled poultry digestive-system diagram matching heading 424 and text 426-428. Labels are mostly readable though some crowded; no credit/licence is supplied, so delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-MALE-REPRODUCTION (2026-11-08): block 487 contains a photographed textbook page (image10) and a cleaner labelled male reproductive-system schematic (image11), plus hdphoto1.wdp as an effect layer. The photographed page is not suitable as a standalone asset; neither image has a visible reuse licence or source citation. Reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A (2026-11-08): image12.jpeg at block 493 is a small labelled female reproductive-tract schematic (fallopian tube, ovary, uterus, cervix, vagina); it does not label vulva/labia mentioned in block 490. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
-    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B (2026-11-08): image13.jpeg at block 494 is a photographed textbook page with a female reproductive-system diagram and text; hdphoto2.wdp is its alternate/effect layer, not a separate figure. No visible source citation/licence; reuse is blocked pending rights clearance or a rights-cleared replacement."
+    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B (2026-11-08): image13.jpeg at block 494 is a photographed textbook page with a female reproductive-system diagram and text; hdphoto2.wdp is its alternate/effect layer, not a separate figure. No visible source citation/licence; reuse is blocked pending rights clearance or a rights-cleared replacement.",
+    "AG-VIS-T3-W04-TBL-DIGESTION (2026-11-08): block 431 is a native 7×3 Word table with six paired monogastric/polygastric distinctions; source table structure is intact. The table hash recorded in the task/inventory does not match the documented concatenated-cell-text method; AG-CORR-T3-W04-TBL-DIGESTION-HASH was appended to verify/correct the inventory hash."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -88,10 +89,10 @@
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
     "LESSON": 29,
-    "CORRECTION_BINDING": 12
+    "CORRECTION_BINDING": 13
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 61,
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
     "PENDING": 88,
     "BLOCKED": 2
   },
@@ -2680,8 +2681,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Week Four heading at block 430; comparison table at block 431 is a native Word table with 7 rows × 3 columns, a header row (S/N | MONOGASTRIC | POLYGASTRIC) and six paired comparison rows. Grid widths are 591/4647/4338 twips; single-line borders surround all cells and internal rows/columns. The paired structure is preserved in the DOCX; plain-text extraction would flatten it. Source wording is preserved, including 'Possess four stomach compartment' and 'cannot synthesis their own protein'; no corrections. The recorded table text SHA-256 0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2 does not reproduce under the inventory's stated method (SHA-256 of concatenated cell text in document order, no separators); recomputed value is 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86. Appended AG-CORR-T3-W04-TBL-DIGESTION-HASH to correct the inventory hash after independent verification. No image/media rights issue or separate asset applies; table is source text, not an embedded third-party figure. Importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5667,6 +5668,47 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-VIS-T3-W02-ELECTRIC-WATER after XML inspection: WDP layers are not attached to block 211; hdphoto1.wdp is at block 487 with image10/image11, and hdphoto2.wdp is at block 494 with image13.",
       "completion_condition": "Re-verify archive/member hashes and XML relationships; correct only the WDP associations in AG-INV-T3.md with exact body-block locators and hashes. Do not alter source bytes or create independent visual records for WDP layers."
+    },
+    {
+      "id": "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Four table block 431; inventory currently records SHA-256 0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2",
+      "objective": "Verify and correct the table-text SHA-256 recorded for the monogastric/polygastric comparison table at body block 431. The documented inventory method says the table hash is SHA-256 of concatenated cell text in document order; recomputation from the verified source member yields 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86 with no separators, not the recorded 0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2. Confirm the exact canonical calculation and update AG-INV-T3.md with a reproducible method/value. Do not alter any source table wording or structure.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-TBL-DIGESTION.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T3-W04-TBL-DIGESTION-HASH.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3",
+        "AG-VIS-T3-W04-TBL-DIGESTION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-VIS-T3-W04-TBL-DIGESTION after direct XML extraction: recorded table hash does not match the documented concatenated-cell-text method; recomputed value is 0dcf9de2367de925c039cd05c16545e6b1bc036861c56d2220bbe8ad34d33b86.",
+      "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm table dimensions/content remain unchanged."
     }
   ],
   "review": {
@@ -5682,7 +5724,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W04-TBL-DIGESTION",
     "AG-VIS-T3-W05-RESPIRATORY",
     "AG-VIS-T3-W05-FISH-GILLS",
     "AG-VIS-T3-W05-RESPIRATION-EQUATIONS",
@@ -5739,6 +5780,7 @@
     "AG-CORR-T3-W02-WATER-POWER",
     "AG-CORR-T3-W02-POWER-TEXT",
     "AG-CORR-T3-W02-WDP-LOCATORS",
+    "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
