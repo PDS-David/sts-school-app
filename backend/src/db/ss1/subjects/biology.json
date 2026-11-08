@@ -651,6 +651,50 @@
           "explanation": "The source defines digestive enzymes at block 903 and lists more than five characteristics at blocks 904-913, so the two question prompts are covered by the source text. No answer key, model response or marking guide accompanies the assignment."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W08-SCHEME-8",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 8: Mode of Nutrition",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 9 (sha256 ad6d990b444dc21fd579eac3924771ea05fc8c1a0f780f549e1af8868a0e13fa); Week 8 label block 926 (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); body blocks 926-950 (range sha256 8e3ce87be34a1523b5aa2d9c478c9e817276070dad81a74fd1d46dfbe86b8d5a)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 928-930 (range sha256 5d39130283d774a8fc6b0297ffddf71a0cd641c24147639d0811e50a229bcc94)",
+          "explanation": "Defines autotrophic and heterotrophic nutrition and identifies photosynthesis and chemosynthesis as autotrophic processes."
+        },
+        {
+          "locator": "blocks 931-936 (range sha256 f18b07ccfd79a0f9d2861f84f70c14fb8e9ae7e849ed8e018822c3a5102f6fca; commensalism blocks 935-936 hash 7cba79d4d0734886667d6a42e2c95b66738f57ffd9e1d97e35bffb907b898788)",
+          "explanation": "Describes holozoic, parasitic, symbiotic/mutualistic and saprophytic nutrition, then defines commensalism and gives an example."
+        },
+        {
+          "locator": "blocks 938-940 (range sha256 88e70d23dc18f4bd8c9d2b05c8f5faba0e7b38521b2aa9dad2d9b46e8e2611b5)",
+          "explanation": "Describes carnivorous plants as photosynthetic plants that supplement nutrient needs by trapping and digesting small animals; examples are named in the source."
+        },
+        {
+          "locator": "blocks 941-944 (range sha256 200a39649d413e942b9291f27b804ffb79a2815a579ab93d2d2de5ab3a2f175a)",
+          "explanation": "Defines filter feeding and fluid feeding and gives examples of organisms that use each method."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches several modes of nutrition, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W08-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 8 assignment: explain commensalism, parasitism, symbiotic, holozoic, fluid and filter feeding",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 945 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK EIGHT block 946 (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); questions blocks 947-949 (range sha256 e364770868e864264c6d183defea13ca359250abddfc62de0d724f160900cfbaf)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 947-949; teaching blocks 931-936 and 941-944",
+          "explanation": "All six requested modes are described in the Week 8 source: commensalism, parasitism, symbiotic and holozoic nutrition at 931-936; fluid and filter feeding at 941-944. No answer key or marking guide accompanies the assignment."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -947,6 +991,26 @@
       "affected_ids": [
         "COV-BIO-T1-W07-SCHEME-7",
         "COV-BIO-T1-W07-ENZYMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W08-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 8 Mode of Nutrition is described in the source, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for autotrophic and heterotrophic nutrition and the specific modes described in the source. Keep original wording separate from any supplement.",
+      "affected_ids": [
+        "COV-BIO-T1-W08-SCHEME-8"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W08-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 8 assignment asks learners to explain six modes of nutrition. The source teaching describes all six, but no answer key or marking guide is supplied.",
+      "required_action": "A Biology teacher should approve a keyed response and marking guide before the assignment is delivered. Do not invent a source answer key.",
+      "affected_ids": [
+        "COV-BIO-T1-W08-ASSIGNMENT"
       ],
       "blocks_delivery": true
     }
