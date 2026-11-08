@@ -47,7 +47,8 @@
     "BIO-WK-T2-W07 (2026-11-08) indexed Nigerian local and world biomes and reviewed all questions. The source's 3000 m body threshold conflicts with the weekend option's 300 m; the question also places a tundra description under montane vegetation. Nigerian distribution and climate figures were recorded for authoritative review. A geography fact task and bounded biome lesson task were appended; no answer key was invented.",
     "BIO-WK-T2-W08 (2026-11-08) indexed population characteristics, population-study steps, population factors and ecological instruments. The hydrometer/light-intensity table pairing requires authoritative review; overpopulation effects are asked at block 739 but not taught. A fact task and bounded supplement task were appended. No worked sampling data, practical protocol or answer key was invented.",
     "BIO-WK-T2-W09 (2026-11-08) indexed feeding relationships, trophic levels, food chains/webs, ecological pyramids, energy loss and thermodynamics. Existing food-chain shapes, food-web image and pyramid drawing remain with visual tasks. The consumer-survival assertion and ATP option need approved-reference review; a general-evaluation prompt contains an unclear '3C' reference. A factual dependency and bounded lesson task were appended; no answer key was invented.",
-    "BIO-WK-T2-W10 (2026-11-08) indexed six biological association types and all evaluation/revision/weekend/theory prompts. The scheme/topic says Ecological Management but the body covers associations only; a scope-decomposition task was appended. Revision questions 944-946 refer to first-term growth hormones/mitosis. Weekend Q952 omits commensalism from the options and Q953 asks about ticks not taught in the body. No answer key was invented."
+    "BIO-WK-T2-W10 (2026-11-08) indexed six biological association types and all evaluation/revision/weekend/theory prompts. The scheme/topic says Ecological Management but the body covers associations only; a scope-decomposition task was appended. Revision questions 944-946 refer to first-term growth hormones/mitosis. Weekend Q952 omits commensalism from the options and Q953 asks about ticks not taught in the body. No answer key was invented.",
+    "BIO-WK-T3-W01 (2026-11-08) indexed microorganism groups, culture concepts, identification and carriers. The source mentions Petri-dish sterilisation but gives no parameters or safety SOP; practical culturing remains blocked pending qualified approval, and no operational instructions were inferred. Existing bacteria-figure and vector-table visual tasks own the two visuals; history/disease/vector claims have a factual-review task. No answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -63,9 +64,9 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 30,
-    "PENDING": 84,
-    "BLOCKED": 6
+    "IMPLEMENTED_TESTING_DEFERRED": 31,
+    "PENDING": 85,
+    "BLOCKED": 7
   },
   "items": [
     {
@@ -2542,8 +2543,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 25 text \"WEEK ONE                          DATE: ……………………………\" (sha256 95035b774fa79cba584a3293bfc6dcb0df22dc8e14bf9b934f8172bff079eb35); blocks 25-109; range sha256 68cdbeec7e7e1e84882216467bc5c4aaf8964defb7abb1940c18f8f2f00350a2. Topic MICRO-ORGANISMS AROUND US (27); content list 29-33; description and groups (35-55: bacteria 41-49, viruses 50-51, protists 52), shapes of bacteria figure (55-56), culturing (62-66: agar at 66), identification (71-77; petri-dish sterilising 73), carriers (82-85; vector table block 84), General Evaluation (91), Weekend Assignment (97-102, theory 103). Block 73 gives no temperature or time; no procedure with quantities exists. Heading 'DESCRIPTION AND GROUS OF MICROORGANISMS' (35) keeps its source spelling. History statement at 38 (Leeuwenhoek, 1632-1723) needs checking in correction work. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W01.md; verified the assigned native DOCX member hash against the archive and manifest; native word/document.xml yielded 803 direct body children, and the Week 1 label and blocks 25-109 hashes match the inventory/queue. Indexed microorganism groups, culturing concepts, identification and carriers, including all evaluation/general/weekend/theory items. Recorded the high-level sterilisation mention at block 73 without adding procedures or parameters. Bacteria-shape image and vector table remain with existing visual tasks BIO-VIS-T3-FIG-BACTERIA-SHAPES and BIO-VIS-T3-TBL-VECTORS. Historical/microbiological/vector claims require authoritative review; no answer key exists. No source extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4425,6 +4426,77 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W10; no registered Biology lesson covers these association types."
+    },
+    {
+      "id": "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 blocks 38-54, 73-76, 83-84; questions 95 and 99",
+      "objective": "Verify the Leeuwenhoek history statement, microorganism classification/characteristics, air-culture wording, normal-flora/antibiotic claim, disease examples and vector/disease table against authoritative primary sources. Resolve the 'Vibro cholera' spelling and housefly/cholera/typhoid mapping with evidence. Keep corrections separate from original source text.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W01-MICROBE-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W01; source contains historical, medical and disease/vector claims requiring primary-source verification."
+    },
+    {
+      "id": "BIO-FACT-T3-W01-LAB-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 culturing/identification blocks 62-77",
+      "objective": "Obtain and review a teacher/qualified-laboratory-approved safety SOP for any classroom demonstration involving microbial culture. The source mentions culturing and heating/sterilising Petri dishes but gives no approved procedure, parameters or safety controls. Do not infer or publish operational culturing/sterilisation instructions, reagent lists, temperatures, times or home-culturing steps.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W01-LAB-SAFETY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W01"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked pending teacher/qualified-lab-approved SOP and safety review; no practical instructions are inferred from the source."
+    },
+    {
+      "id": "BIO-LES-T3-W01-MICROORGANISMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1 blocks 35-89",
+      "objective": "Author a clearly labelled, source-grounded lesson on microorganism groups, culture concepts, identification and carriers. Use BIO-FACT-T3-W01-MICROBE-CLAIMS for verified factual wording and BIO-FACT-T3-W01-LAB-SAFETY for any teacher-approved safe demonstration context. Do not include operational pathogen culturing, sterilisation, reagent, temperature, timing or home-lab instructions. Include keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W01.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W01-MICROORGANISMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W01",
+        "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+        "BIO-FACT-T3-W01-LAB-SAFETY"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W01; no registered lesson exists, and practical scope remains blocked pending approved safety review."
     }
   ],
   "review": {
@@ -4467,7 +4539,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W01",
     "BIO-WK-T3-W02",
     "BIO-WK-T3-W03",
     "BIO-WK-T3-W04",
@@ -4510,6 +4581,7 @@
     "BIO-LES-T2-W08-OVERPOPULATION",
     "BIO-FACT-T2-W09-ENERGY-CLAIMS",
     "BIO-FACT-T2-W10-ASSOCIATIONS",
-    "BIO-SCOPE-T2-W10-MANAGEMENT"
+    "BIO-SCOPE-T2-W10-MANAGEMENT",
+    "BIO-FACT-T3-W01-MICROBE-CLAIMS"
   ]
 }
