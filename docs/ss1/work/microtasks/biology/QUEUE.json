@@ -75,7 +75,8 @@
     "BIO-VIS-T1-TBL-ENZYMES (2026-11-08) confirmed block 920 is a native 8×5 Word table spanning rendered PDF pages 37-38. Cell boundaries are preserved in DOCX/PDF but lost in flattened text; a semantic five-column table is required. The source's enzyme names, sources, locations, substrates and products were added to the existing authoritative Biology fact task. No asset/redraw or source correction is needed. Testing remains deferred.",
     "BIO-VIS-T2-TBL-VITAMINS (2026-11-08) verified the exact second-term source member and inspected the native 10×4 Word table at block 399, rendered on PDF page 14. Original cell boundaries are intact; flattened text loses row/column pairing. A semantic four-column table is required in the delivery lesson; no image asset/redraw is needed. The source's health/deficiency claims were added to the existing authoritative Biology fact task; no medical advice or source corrections were added. Testing remains deferred.",
     "BIO-VIS-T2-TBL-INSTRUMENTS (2026-11-08) confirmed the second-term source member and inspected the native 12×3 Word table at block 728. Cell boundaries are intact in DOCX but lost in flattened text. All eleven instrument/use pairs are recorded; row b's Hydrometer/light-intensity-in-water pairing remains under authoritative review, and source spelling 'Rainguage' is retained. A semantic three-column table is required; no asset/redraw is needed. A dedicated ecological-instruments lesson was appended because the existing Week 8 lesson task covers overpopulation, not this objective. Testing remains deferred.",
-    "BIO-VIS-T2-FIG-PARAMECIUM (2026-11-08) inspected the verified second-term image at block 185. The seven visible labels and circular arrow sequence match the written Paramecium conjugation section at blocks 175-184; the image is entirely absent from plain-text extraction. Original-image rights are not recorded, so a project-authored redraw task was appended and the Week 3 reproduction lesson now depends on it. Testing remains deferred."
+    "BIO-VIS-T2-FIG-PARAMECIUM (2026-11-08) inspected the verified second-term image at block 185. The seven visible labels and circular arrow sequence match the written Paramecium conjugation section at blocks 175-184; the image is entirely absent from plain-text extraction. Original-image rights are not recorded, so a project-authored redraw task was appended and the Week 3 reproduction lesson now depends on it. Testing remains deferred.",
+    "BIO-VIS-T2-FIG-SPIROGYRA (2026-11-08) inspected the verified second-term image at block 201. The seven visible labels and three-panel A/B/C progression match the written Spirogyra conjugation section at blocks 192-200; the image is entirely absent from plain-text extraction. The caption's Figure 5.7 is source-book numbering. Original-image rights are not recorded, so a project-authored redraw task was appended and the Week 3 reproduction lesson now depends on it. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -85,13 +86,13 @@
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
-    "VISUAL_DISPOSITION": 41,
+    "VISUAL_DISPOSITION": 42,
     "SOURCE_MARKER_DISPOSITION": 1,
     "LESSON": 22,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 58,
+    "IMPLEMENTED_TESTING_DEFERRED": 59,
     "PENDING": 92,
     "BLOCKED": 11
   },
@@ -2026,8 +2027,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2), viewed directly: block 201 holds a w:drawing (inline picture) of media/image2.jpeg (624x301, sha256 b9a2541e5c6b2af28938ca39f790ed383c297a4686446eb6f8ea6e9a877377d8): a captioned line drawing 'Figure 5.7 Stages in scalariform conjugation of Spirogyra' (panels A-C) labelled male gametangium, conjugation process, conjugation tube, zygote, empty male cell, female cell, zygospore. The block has no text, so plain-text extraction loses it entirely. The caption's figure number refers to its original book, not this document. Locator is in the LibreOffice-converted copy (sha256 f35d9f7678ca17c745ec1a253823d5558d9cce4cd15119c3fbf7409b95314277).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44. Block 201 contains image2.jpeg (624×301, SHA-256 b9a2541e5c6b2af28938ca39f790ed383c297a4686446eb6f8ea6e9a877377d8) and no text; the figure is absent from plain-text extraction. Visible labels: Male gametangium; Conjugation process; Conjugation tube; Zygote; Empty male cell; Female cell; Zygospore. It has panels A, B and C and the printed caption 'Figure 5.7 Stages in scalariform conjugation of Spirogyra.' The caption's figure number belongs to the original source image, not this document's sequence. The labels and stages match the written Spirogyra conjugation description at blocks 192-200. Original image reuse rights are not recorded, so no original pixels are registered or committed. A project-authored redraw task was appended and the Week 3 reproduction lesson now depends on it. No source wording or image bytes changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -3909,7 +3910,8 @@
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
         "docs/ss1/work/microtasks/biology/BIO-INV-T2.md",
-        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-W03-PARAMECIUM-REDRAW.md"
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-W03-PARAMECIUM-REDRAW.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-W03-SPIROGYRA-REDRAW.md"
       ],
       "required_attachments": [
         {
@@ -3927,7 +3929,8 @@
       "depends_on": [
         "BIO-WK-T2-W03",
         "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
-        "BIO-VIS-T2-W03-PARAMECIUM-REDRAW"
+        "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
+        "BIO-VIS-T2-W03-SPIROGYRA-REDRAW"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W03; exact source locators and scope findings are recorded in the Week 3 index."
@@ -5613,6 +5616,42 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the Paramecium figure disposition (2026-11-08). The source figure is absent from text extraction and its reuse rights are not recorded; a project-authored redraw will preserve the visible labels and arrows without copying pixels.",
       "completion_condition": "A legible original diagram preserves the source's visible labels and circular arrow sequence, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source image untouched."
+    },
+    {
+      "id": "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 3, Spirogyra conjugation figure block 201 (media/image2.jpeg, 624×301)",
+      "objective": "Create a new project-authored diagram of scalariform conjugation in Spirogyra for the Week 3 lesson. Use only the visible source labels: Male gametangium, Conjugation process, Conjugation tube, Zygote, Empty male cell, Female cell and Zygospore. Preserve the three-panel A/B/C progression and source-described sequence in blocks 192-200. The original caption calls it 'Figure 5.7'; treat that number as source provenance, not the app's figure numbering. Do not copy original image pixels or add unsupported labels. Register the new asset with exact bytes/hash, alt text, source locator and project-created provenance.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-FIG-SPIROGYRA.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "backend/src/db/ss1/assets/biology/",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T2-W03-SPIROGYRA-REDRAW.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W03",
+        "BIO-VIS-T2-FIG-SPIROGYRA"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the Spirogyra figure disposition (2026-11-08). The source figure is absent from text extraction and its reuse rights are not recorded; a project-authored redraw will preserve the visible labels and three-panel sequence without copying pixels.",
+      "completion_condition": "A legible original diagram preserves the source's visible labels and A/B/C progression, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source image untouched."
     }
   ],
   "review": {
@@ -5628,7 +5667,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T2-FIG-SPIROGYRA",
     "BIO-VIS-T2-FIG-COCKROACH",
     "BIO-VIS-T2-FIG-HOUSEFLY",
     "BIO-VIS-T2-FIG-FOODWEB",
@@ -5650,6 +5688,7 @@
     "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
     "BIO-VIS-T1-W10-MITOSIS-REDRAW",
     "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
+    "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
     "BIO-FACT-T1-W05-CONDITIONS",
     "BIO-FACT-T1-W05-EQUATIONS",
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
