@@ -62,7 +62,8 @@
     "BIO-VIS-T1-MICROSCOPE (2026-11-08) inspected the hash-verified source image at full enlarged resolution and in a private rendered page. The diagram labels ten parts, including a 100x objective; the written list states x4/x10/x40 and calls x40 the highest, and uses different stage/illumination terms. The original 239x211 image is not copied because reuse permission is unrecorded. A teacher fact gate BIO-FACT-T1-W02-MICROSCOPE-LABELS and a dependent project-redraw task BIO-VIS-T1-W02-MICROSCOPE-REDRAW were appended. No label was silently corrected; testing remains deferred.",
     "BIO-VIS-T1-CLASS-HIERARCHY (2026-11-08) inspected all six native downward connector shapes and the seven text labels across rendered PDF pages 4-5. Text labels survive extraction; arrows do not, but block 136 states the sequence in prose. The source repeatedly prints 'Genius'/'genius' for Genus. No asset/redraw is needed; a semantic ordered sequence and corrected delivery spelling were assigned to BIO-LES-T1-W03-CLASSIFICATION. Original source remains unchanged; testing deferred.",
     "BIO-VIS-T1-MONOCOT-DICOT (2026-11-08) inspected the original two-column comparison at blocks 235-244 and its private rendered page 8. The two line shapes are only table rules; labels and comparison rows are text but tab/space alignment is not robust under plain-text extraction. Seven paired differences and the examples row require a semantic two-column restatement in the existing BIO-LES-T1-W03-CLASSIFICATION task. No asset/redraw is needed; source header spelling is preserved and the adjacent block 234 spelling is used only in delivery. No source content was changed; testing remains deferred.",
-    "BIO-VIS-T1-PEST-LIFECYCLES (2026-11-08) inspected the 15 text boxes and nine DrawingML/VML drawings across blocks 582-593 and rendered PDF pages 21-22. The first nymph-bearing figure's labels conflict with the yam-beetle prose and its stage sequence cannot be safely assigned; a teacher identity gate and dependent redraw task were added. The second figure under the rhinoceros-beetle heading has Egg, Larvae, Pupa and Adults with a clear directed loop; a separate project-authored redraw task was appended. Source drawings are not copied, and no chemical-control instructions are reproduced. Testing remains deferred."
+    "BIO-VIS-T1-PEST-LIFECYCLES (2026-11-08) inspected the 15 text boxes and nine DrawingML/VML drawings across blocks 582-593 and rendered PDF pages 21-22. The first nymph-bearing figure's labels conflict with the yam-beetle prose and its stage sequence cannot be safely assigned; a teacher identity gate and dependent redraw task were added. The second figure under the rhinoceros-beetle heading has Egg, Larvae, Pupa and Adults with a clear directed loop; a separate project-authored redraw task was appended. Source drawings are not copied, and no chemical-control instructions are reproduced. Testing remains deferred.",
+    "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME (2026-11-08) inspected all 13 arrow connectors and their text at blocks 683-713 in rendered PDF pages 25-26. Formula text survives extraction but arrow flow does not. The source equations at blocks 683, 697, 700 and 713 contain unresolved differences/defects; no correction was made. The existing BIO-FACT-T1-W05-EQUATIONS task now covers the complete set. No separate asset is needed; a structured equation/arrow presentation is sufficient. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -78,8 +79,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 45,
-    "PENDING": 100,
+    "IMPLEMENTED_TESTING_DEFERRED": 46,
+    "PENDING": 99,
     "BLOCKED": 11
   },
   "items": [
@@ -1063,8 +1064,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 683 extracts as '6CO2+6H2O  Sunlight energy  C6H12O6+6CO2' (the product side repeats CO2 where oxygen is expected - verify against the rendered shape before any correction); block 713 extracts as '2H2S + O2  S + 2H2O + Chemical energy' (coefficient on S absent as extracted - verify). Other fragments: 'Sunlight' (687), 'Chlorophyll' (688), '2H20 20H- +2H+ ADP+ PI ATP' (689), '2H+2e-  2H' (693), '2H + NADP NADPH2' (695), '40H  2H20 + 02' (697). Nothing was rendered here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Blocks 683-713 range SHA-256 65bb7aef6366c230e1611ae9b329687be42c88f18581720a97889ede3c4a2aeb; 13 DrawingML arrows have 13 VML fallbacks, with no text boxes. Formula/label text survives extraction; connector direction and flow do not. Private rendered PDF pages 25-26 confirm the scheme: (683) 6CO2 + 6H2O → C6H12O6 + 6CO2, with sunlight energy and chlorophyll; (687-688) sunlight/chlorophyll downward arrows; (689) 2H2O → 2OH- + 2H+ and ADP + PI → ATP, with Water/hydroxyl/hydrogen labels; (693) 2H+ + 2e- → 2H; (695) 2H + NADP → NADPH2; (697) 4OH → 2H2O + O2 as printed, without a visible negative charge; (700) CO2 + 2H2O → (CH2O) + H2O + O2, with light/chlorophyll and sugar/water/oxygen labels; (713) 2H2S + O2 → S + 2H2O + Chemical energy. No equation was corrected. Defects recorded for later review: block 683 repeats CO2 on the product side despite prose at 682 naming oxygen as by-product; block 697 does not visibly show the hydroxyl charge; block 700 differs from block 683; block 713 has no coefficient before S. The existing BIO-FACT-T1-W05-EQUATIONS task and package open item now cover these equations. No separate asset/redraw is needed; the equations and flow can be reproduced as structured text/math with arrows. Source bytes unchanged; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -3324,7 +3325,7 @@
       "source_id": "SS1-SRC-422e0e6ddde9",
       "term": "1st Term",
       "week_or_locator": "equation blocks 683 and 700",
-      "objective": "Verify the photosynthesis equations printed at blocks 683 and 700 against an approved Biology reference. Record the exact source forms and evidence before any correction is bound; do not silently rewrite source text.",
+      "objective": "Verify the exact printed photosynthesis and chemosynthesis equations at blocks 683, 689, 693, 695, 697, 700 and 713 against an approved Biology reference. Record exact source forms and evidence before any correction is bound; specifically resolve the repeated CO2 product at 683, the missing visible hydroxyl charge at 697, the differing product expressions at 683/700, and the missing sulfur coefficient at 713. Do not silently rewrite source text.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -3349,7 +3350,8 @@
         "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-EQUATIONS.md"
       ],
       "depends_on": [
-        "BIO-WK-T1-W05"
+        "BIO-WK-T1-W05",
+        "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
@@ -5399,7 +5401,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME",
     "BIO-VIS-T1-EXPERIMENT-FIGURES",
     "BIO-VIS-T1-NUTRIENT-CYCLES",
     "BIO-VIS-T1-PROTEIN-BREAKDOWN",
