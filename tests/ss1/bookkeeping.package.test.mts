@@ -145,3 +145,27 @@ test('Third-term revision and examination markers remain scheme-only', () => {
     assert.equal(r.kind, 'SCHEME_ONLY');
   }
 });
+
+test('Third-term source boundaries use exact week labels and unique anchors', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['RULE-BK-T3-W02', ['2', '                                PETTY CASH BOOK']],
+    ['RULE-BK-T3-W03', ['3', 'TRIAL BALANCE AND CORRECTION OF ERRORS']],
+    ['RULE-BK-T3-W04', ['4', 'RULES OF TRIAL BALANCE ']],
+    ['RULE-BK-T3-W05', ['5', 'TRIAL BALANCE ERRORS OR UNDISCLOSED ERRORS']],
+    ['RULE-BK-T3-W06', ['6', 'ERRORS THAT WILL AFFECT THE AGREEMNENT OF THE TRIAL BALANCE']],
+    ['RULE-BK-T3-W07', ['7', '                            TRADING PROFIT AND LOSS ACCOUNT AND BALANCE SHEET(FINAL ACCOUNT)']],
+    ['RULE-BK-T3-W08', ['8', '                PREPARATION OF FINAL ACCOUNT OF A SOLE TRADER']],
+    ['RULE-BK-T3-W10', ['10', 'LAYOUT OF BALANCE SHEET']],
+  ]);
+  for (const [id, [week, anchor]] of expected) {
+    const rule = p.source_rules.find(x => x.id === id);
+    assert(rule && rule.op === 'split_before');
+    assert.equal(rule.source_id, 'SS1-SRC-97f226215927');
+    assert.equal(rule.source_sha256, '343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d');
+    assert.equal(rule.week_label, week);
+    assert.equal(rule.anchor, anchor);
+  }
+  assert(!p.source_rules.some(x => x.id === 'RULE-BK-T3-W09'),
+    'Week 9 has no distinct source heading; do not invent a split boundary');
+});
