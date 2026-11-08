@@ -63,7 +63,8 @@
     "AG-VIS-T1-BRANDING (2026-11-08): both embedded images are tutor branding/vision material, not agricultural teaching figures. Exclude from delivered lessons and do not republish contact details. No image files committed.",
     "AG-VIS-T2-TBL-CEREALS (2026-11-08): source table 286 is a 17x3 Maize/Rice comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure verbatim in a structured table/paired list; no duplicate supplement or source change.",
     "AG-VIS-T2-TBL-LEGUMES (2026-11-08): source table 298 is a 17x3 Cowpea/Groundnut comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure/spelling verbatim in a structured table/paired list; no duplicate supplement or source change.",
-    "AG-VIS-T2-TBL-ROOTS (2026-11-08): source table 309 is a 17x3 Yam/Cassava comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and printed figures verbatim; the Cassava seed-rate cell is blank and must remain not supplied. No duplicate supplement or source change."
+    "AG-VIS-T2-TBL-ROOTS (2026-11-08): source table 309 is a 17x3 Yam/Cassava comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and printed figures verbatim; the Cassava seed-rate cell is blank and must remain not supplied. No duplicate supplement or source change.",
+    "AG-VIS-T2-BRANDING (2026-11-08): header2 image1.jpeg is tutor-brand promotional material, not an agricultural teaching figure. Exclude from delivered lessons and do not republish contact details. No image file committed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -78,8 +79,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 48,
-    "PENDING": 100,
+    "IMPLEMENTED_TESTING_DEFERRED": 49,
+    "PENDING": 99,
     "BLOCKED": 2
   },
   "items": [
@@ -1481,8 +1482,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2), viewed directly: word/media/image1.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14) is referenced only by header2.xml and is a tutor brand banner with logo, tagline and contact details; it has no agricultural teaching content. The document body has no w:drawing, w:pict, equation (m:oMath) or OLE objects. Header1 and header3 have no text or objects; footer2 holds the subject/term/class line and a page field.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042. Inspected word/media/image1.jpeg (949x359; 106941 bytes; SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14), referenced only by header2.xml. It is a tutor-brand banner with logo/tagline/contact information, not agricultural teaching content. Excluded from package assets and learner lessons; contact details and promotional copy are not republished. The document body has no w:drawing, w:pict, m:oMath or OLE objects; header1/header3 have no objects. No source bytes or image file committed; importer and app rendering not run.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -5627,7 +5628,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T2-BRANDING",
     "AG-VIS-T3-W01-TBL-TOOLS",
     "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
     "AG-VIS-T3-W02-MECHANICAL-POWER",
