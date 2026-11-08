@@ -1,6 +1,6 @@
 # Bookkeeping — consolidated owner and subject-expert decisions
 
-Status: **Updated 8 November 2026. Second-term source disposition is resolved. First-term source replacement approval and final content approval remain open.**
+Status: **Updated 8 November 2026. Second-term source disposition and first-term Week 1–4 delivery replacement approval are resolved. Final content approval and technical verification remain open.**
 
 ## Decisions already given by the owner
 
@@ -20,13 +20,19 @@ Status: **Updated 8 November 2026. Second-term source disposition is resolved. F
 - All original source documents and defective figures remain preserved; no source document has been edited.
 - Static integrity checks recomputed the body hashes and practice mark totals for the 15 affected lessons and checked their coverage links. Automated tests, schema execution, typecheck, importer/compiler, database, device and delivery verification remain deferred and unrun.
 
-## One consolidated first-term delivery decision requested
+## First-term delivery replacement — owner approved 8 November 2026
 
-The original first-term Weeks 1–4 contain material defects and missing solutions. To avoid teaching defective examples, the package now has separately labelled, fully authored replacement teaching and practice. The original source remains unchanged and its defects remain documented.
+The owner approved the recommendation: **use the project-authored Week 1–4 supplements as the teaching versions in delivery**, while retaining the original source documents unchanged for audit/history and retaining every original defect note.
 
-**Recommended decision:** approve using the project-authored Week 1–4 supplements as the teaching versions in delivery, while retaining the original source documents for audit/history and retaining all defect notes. This does **not** mean the original figures have been corrected, does not approve any guessed replacement value, and does not mark the lessons technically verified.
+Four exact delivery-correction links are now registered in `bookkeeping.json`, each binding the parsed original lesson identity and body SHA-256 to its project-authored replacement:
+- Week 1 → `SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK`
+- Week 2 → `SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK`
+- Week 3 → `SUP-SS1-BOOKKEEPING-T1-W03-CONTRA`
+- Week 4 → `SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY` (with the separate authored posting exercise retained as supporting practice).
 
-This approval would allow the project to mark the corresponding source-defect items nonblocking for delivery and create explicit delivery-correction links from the original source lesson identities to the project-authored replacements. If not approved, keep those source items blocking and do not present the defective source bodies as corrected.
+All Week 1–4 source-defect and missing-content items are now nonblocking **for delivery only**, with the approval recorded against each item. The original source figures, wording and omissions have not been edited or silently corrected. In particular, no missing figure has been guessed and the source's N20 motor-van figure is not represented as resolved.
+
+This approval does **not** constitute teacher/subject-expert content approval, technical verification, or a claim that the original source is correct. Authored lessons remain `content_approval=PENDING` and `verification=DEFERRED`; package status remains `PENDING`. The separate term-scope item `BOOKKEEPING-T1-SCHEME-VS-BODY` and source-heading alias reviews are not covered by this decision.
 
 ### Specific boundaries preserved in the replacement lessons
 
@@ -39,14 +45,18 @@ This approval would allow the project to mark the corresponding source-defect it
 
 The Week 4 source cites an external textbook page that was not supplied. No passage has been copied. A complete original practice replacement is present in `BK-LES-T1-W04-POSTING.md`. This follows the owner's standing instruction to self-generate a suitable resource where an external resource is unavailable. No further textbook upload is required.
 
-## Subject-heading aliases
+## Subject-heading aliases — owner-confirmed 8 November 2026
 
-The three source documents use variant headings:
+The owner confirmed the canonical subject identity is **Bookkeeping**, distinct from Financial Accounting. The three observed source headings are accepted as metadata aliases for the registered Bookkeeping sources:
 - First term: “SUBJECT: BOOK-KEEPING” / “CLASS: SS 1”
 - Second term: “SUBJECT: BOOK-KEEPING” / “CLASS: SS 1”
 - Third term: “SS 1 OMEGA TERM BOOK- KEEPING”
 
-The package keeps the observed headings and canonical subject name separately. Formal alias approval remains a metadata/owner review item; it must not be confused with teacher approval of lesson content.
+The package records the owner confirmation on each `source_alias` rule and closes the corresponding alias open items. This is a subject-identity/metadata decision only; it is not teacher approval of lesson content or technical verification.
+
+## Standing handling rule for analogous source defects
+
+For similar cases elsewhere in this Bookkeeping implementation, preserve the original source and its defect evidence; author a clearly labelled project replacement or equivalent teaching resource; bind the exact original lesson identity to the replacement with a delivery-correction record; and mark the defect nonblocking only for delivery once the replacement actually covers it. Do not guess missing source figures, rewrite original documents, or claim the original was corrected. Keep teacher/content approval and technical verification as separate gates. If an issue cannot be genuinely resolved by the replacement, leave it blocking and ask for the required on-the-spot subject decision without holding up unrelated work.
 
 ## Content approval versus technical verification
 
@@ -54,8 +64,9 @@ All authored lessons remain `content_approval=PENDING` and `verification=DEFERRE
 
 ## Remaining source dispositions
 
-- The erroneous second-term source and its repeated week/marker tasks remain quarantined as forensic evidence; they are not outstanding requests for the owner to supply a file.
-- First-term source defects remain recorded and blocking until the consolidated replacement-delivery decision above is made.
+- The erroneous second-term source and its repeated week/marker tasks remain quarantined as forensic evidence; the old T2 week-indexing and marker tasks are superseded and must not be executed against the duplicate as valid curriculum.
+- First-term source defects remain recorded unchanged. The four first-term defect-decision tasks are superseded for delivery by the owner-approved independent W01-W04 replacement lessons; no original source figure or wording has been corrected or guessed.
+- The only unresolved first-term scope question is `BOOKKEEPING-T1-SCHEME-VS-BODY`: the source has four labelled week bodies and no Week 5-12 body despite twelve numbered scheme entries. The owner must confirm whether another assigned source contains Weeks 5-12 or whether the four-week body is the complete first-term source scope. Do not invent weeks or assume scope.
 - No source correction, missing figure, external textbook content or expert decision is invented.
 
 ## Queue references
@@ -64,3 +75,8 @@ All authored lessons remain `content_approval=PENDING` and `verification=DEFERRE
 - First-term source decisions: `BK-FACT-T1-W01-DEFECTS`, `BK-FACT-T1-W02-DEFECTS`, `BK-FACT-T1-W03-DEFECTS`, `BK-FACT-T1-W04-BRIEF`.
 - Package content approval: `BK-FACT-CONTENT-APPROVAL`.
 - Source-heading aliases: pending metadata owner review.
+
+
+## Queue reconciliation — 8 November 2026
+
+The four first-term factual-decision queue items (`BK-FACT-T1-W01-DEFECTS` through W04) are now `IMPLEMENTED_TESTING_DEFERRED`, because their original prerequisite decisions were superseded by the owner's approval to use the independently authored W01-W04 delivery replacements. This does not assert that every original-source defect was corrected. The queue now records 82 `IMPLEMENTED_TESTING_DEFERRED` items and 7 `BLOCKED` items. The remaining blocked items comprise the content-approval/verification gate and superseded second-term source-indexing/marker tasks retained as forensic history; there are no pending runnable items.
