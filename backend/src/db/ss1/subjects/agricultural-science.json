@@ -110,6 +110,66 @@
         "explanation": "The existing AG-INV-T1 source inspection identifies this as scheme item 12, a scheme-only examination marker. The document has ten teaching weeks only (WEEK 1–10); there is no WEEK 12 label/body, examination paper or marking scheme. This is a classification only; no examination content is invented. The compiler/importer uniqueness and parsing checks remain deferred."
       },
       "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "Revision.",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: word/document.xml direct w:body block 14 (0-based); exact text hash 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103",
+        "explanation": "Scheme block 14 is the exact scheme entry 'Revision.'; it is a revision marker, not instructional text. The source contains a separate Week 1 placeholder and no revision worksheet or marking scheme for this scheme marker."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "WEEK TENDATE: ……………\nREVISION",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: word/document.xml direct w:body blocks 675-676 (0-based); label hash 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92; range hash 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717",
+        "explanation": "The final source label is 'WEEK TENDATE: ……………' followed only by the word 'REVISION'; the next body child is section properties. This is a terminal revision marker with no instructional body, worksheet or marking scheme; classify it outside parsed teaching rows and do not invent content."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-956594d97094-R004",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-956594d97094",
+      "source_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042",
+      "anchor": "11-12.      Examination",
+      "evidence": {
+        "locator": "SS1-SRC-956594d97094: word/document.xml direct w:body block 15 (0-based); exact text SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a",
+        "explanation": "Scheme block 15 explicitly labels weeks 11-12 as Examination. This is a scheme-only examination marker, not an instructional lesson. The document has no Week Eleven or Week Twelve body, examination paper or marking scheme; the final source text block is the Week Ten revision marker at block 676."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-458a07f7ea5a-R002",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "anchor": "11Revision ",
+      "evidence": {
+        "locator": "SS1-SRC-458a07f7ea5a: word/document.xml direct w:body block 14 (0-based); exact text SHA-256 b2b9524e250fc89af5cb83bc7c361e11726e54e0feef9d280456b08b105ec0a1",
+        "explanation": "Third Term scheme block 14 contains the exact entry '11Revision '. The inventory identifies it as scheme item 11, a revision marker. The document has ten teaching-week bodies only and no Week 11 body, revision worksheet or revision marking scheme."
+      },
+      "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-458a07f7ea5a-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "source_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a",
+      "anchor": "12Examination",
+      "evidence": {
+        "locator": "SS1-SRC-458a07f7ea5a: word/document.xml direct w:body block 15 (0-based); exact text SHA-256 71922f45b5afa7b8dc4121bcf450a62b7961da3f379568aaaa0d1c2de8720e7a",
+        "explanation": "Third Term scheme block 15 contains the exact entry '12Examination'. The inventory identifies it as scheme item 12, an examination marker. There is no Week 12 teaching body, examination paper or marking scheme."
+      },
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -1565,6 +1625,206 @@
           "explanation": "The source mentions tsetse flies and rainfall, but does not explicitly connect equatorial rainforest ecology to cattle production."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W09-PIG-MANAGEMENT",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Livestock management (pigs): terms, breeds, characteristics, rearing systems, housing, feeding, hygiene, breeding-to-finishing management, parasites and diseases",
+      "objective_locator": "Third Term scheme block 13 (combined Weeks 9-10); Week Nine label 982; topic 983; content outline 984-991",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Pig definition and terms 992, 994-1000",
+          "explanation": "Pig classification and meat purpose are stated; terms include boar, sow, piglet, barrow, pork, in-sow, dry sow, 'fatheners' (source spelling), farrowing, lard and gilt."
+        },
+        {
+          "locator": "Breeds 1002-1004; characteristics 1008-1016",
+          "explanation": "The source lists Hampshire, Yorkshire/Largewhite, Poland China, Landrace, Berkshire, Large Black, West African Dwarf and Duroc; it describes gestation, litter size, dressing percentage, feed conversion, maturity, polyoestrus and salvage value."
+        },
+        {
+          "locator": "Rearing systems 1023-1032; housing 1038-1039",
+          "explanation": "Extensive, semi-intensive and intensive systems are described, along with pig-pen siting, floor, roof, drainage, ventilation and trough/bath provisions."
+        },
+        {
+          "locator": "Feeding 1041-1042; health/hygiene 1044-1049",
+          "explanation": "Balanced diets, flushing, laxative diet, creep feed, weaner/fattener mash and pen/trough cleaning, disinfection, deworming and vaccination are covered."
+        },
+        {
+          "locator": "Management 1055-1070",
+          "explanation": "Breeding-to-farrowing, birth-to-weaning and weaning-to-finishing stages are described, including age, mating, farrowing-house transfer, piglet care, source-stated injections, castration, identification, weaning and market weight."
+        },
+        {
+          "locator": "Parasites/diseases 1072-1093",
+          "explanation": "External/internal parasites, African swine fever, swine erysipelas and hypoglycaemia are described. Chemical and veterinary-treatment statements are preserved as source content and require safety/factual review."
+        },
+        {
+          "locator": "Week Nine range blocks 982-1123; SHA-256 5a6918c499185465ecb30f240112f9c39c3697e7ba6fed967255d8154efdc0e4",
+          "explanation": "All main scheme subtopics are present, but package lesson rows/importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W09-ASSESSMENT-GAPS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment gaps: pig-house term 'sty' and a second disadvantage of intensive pig rearing",
+      "objective_locator": "Weekend assignment 1115; evaluation 1096; theory 1121",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Housing 1038-1039; weekend assignment 1115",
+          "explanation": "The body says pigs are housed in pens but does not teach the term 'sty' requested by the MCQ."
+        },
+        {
+          "locator": "Intensive system 1031-1032; evaluation 1096; theory 1121",
+          "explanation": "The source explicitly states that the intensive system is capital intensive, but does not identify a second disadvantage although both assessment prompts request two."
+        },
+        {
+          "locator": "Extensive system 1024-1025; intensive system 1031-1032",
+          "explanation": "Extensive-system advantages/disadvantages and intensive-system protection from weather, provision of inputs and high growth are stated; the second intensive-system disadvantage is not taught."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Livestock management II (cattle): breeds, terms, characteristics, rearing systems, feeding, breeding-to-finishing management, parasites and diseases",
+      "objective_locator": "Third Term scheme block 13 (combined Weeks 9-10); Week Ten label 1124; topic 1125; content outline 1126-1135",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Cattle definition/use 1136; breeds 1138-1147; terms 1149-1153",
+          "explanation": "Cattle classification and uses are stated; beef, dairy and dual-purpose groups and examples are listed; bull, cow, calf, heifer, serving, calving, herd and beef are defined."
+        },
+        {
+          "locator": "Evaluation 1156-1158; characteristics 1160-1166",
+          "explanation": "Breed and importance questions are supported by the breed list and stated products/uses; body size, horns, humps, calving and gestation characteristics are described."
+        },
+        {
+          "locator": "Rearing systems 1168-1176; evaluation 1178-1180",
+          "explanation": "Extensive, semi-intensive and intensive systems are described, including extensive-system disadvantages."
+        },
+        {
+          "locator": "Feeding 1182-1190",
+          "explanation": "Roughages, grasses, legumes, concentrates, zero-grazing, 'rational grazing' (source wording), hay, silage and straw are named."
+        },
+        {
+          "locator": "Management 1192-1203",
+          "explanation": "Breeding-to-calving, birth-to-weaning and weaning-to-finishing are covered, including steaming up, colostrum, vaccination/deworming, castration, dehorning, branding, tattooing and ear notching."
+        },
+        {
+          "locator": "Parasites/diseases 1205-1226",
+          "explanation": "Mange, tuberculosis, worms and ectoparasites are described. Drug/chemical and dosage statements are recorded for later safety/factual review, not endorsed."
+        },
+        {
+          "locator": "Week Ten range blocks 1124-1254; SHA-256 9b3f1eb753bab7cfec4511faab33fb3eee2bacdad2b167fdd0a74e4222d4661c",
+          "explanation": "Main scheme subtopics are present, but package lesson rows/importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W10-ASSESSMENT-GAPS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment gaps and wording mismatches: tattooing definition, rotational/rational grazing terminology and cattle-house reference in mange section",
+      "objective_locator": "Theory 1252-1254; feeding 1188; mange treatment/prevention 1210",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Tattooing mention 1203; theory question 1253",
+          "explanation": "Tattooing is named as an identification method but is not defined, although the theory question asks for its definition."
+        },
+        {
+          "locator": "Feeding 1188; theory 1253",
+          "explanation": "The teaching text says 'Rational grazing' for moving cattle among paddocks, while the theory item asks for 'rotational grazing'; intended terminology requires verification."
+        },
+        {
+          "locator": "Mange section 1210",
+          "explanation": "The cattle mange paragraph says to maintain hygiene and sanitation in 'pig houses', a likely cross-topic copy error that requires source/teacher confirmation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-REVISION-SCHEME",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme-only revision marker",
+      "objective_locator": "Second Term scheme block 14, exact text 'Revision.'",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-956594d97094-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 14; text SHA-256 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103",
+          "explanation": "Classified as SCHEME_ONLY marker; no lesson, revision worksheet or marking scheme is present for this entry."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-REVISION-W10",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Terminal Week Ten revision marker, not a teaching-week body",
+      "objective_locator": "Week Ten label block 675 and 'REVISION' block 676",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-956594d97094-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "Blocks 675-676; range SHA-256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717",
+          "explanation": "The terminal label is followed only by 'REVISION'; no further instructional blocks, worksheet or marking scheme exist. Classified SCHEME_ONLY rather than a lesson."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T2-EXAMINATION-SCHEME",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme-only examination marker for weeks 11-12",
+      "objective_locator": "Second Term scheme block 15; exact text '11-12. Examination'",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-956594d97094-R004"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 15; text SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a",
+          "explanation": "Classified as SCHEME_ONLY examination marker. No Week 11/12 body, examination paper or marking scheme exists in this document."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-REVISION-SCHEME",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Scheme-only revision marker (Week 11)",
+      "objective_locator": "Third Term scheme block 14; exact text '11Revision '",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-458a07f7ea5a-R002"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 14; text SHA-256 b2b9524e250fc89af5cb83bc7c361e11726e54e0feef9d280456b08b105ec0a1",
+          "explanation": "Classified as SCHEME_ONLY. The source contains ten teaching-week bodies (Weeks One–Ten) and no Week 11 revision body, worksheet or marking scheme."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-EXAMINATION-SCHEME",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Scheme-only examination marker (Week 12)",
+      "objective_locator": "Third Term scheme block 15; exact text '12Examination'",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-458a07f7ea5a-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme block 15; text SHA-256 71922f45b5afa7b8dc4121bcf450a62b7961da3f379568aaaa0d1c2de8720e7a",
+          "explanation": "Classified as SCHEME_ONLY. The source has no Week 12 teaching body, examination paper or marking scheme."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2629,6 +2889,89 @@
       "affected_ids": [
         "AG-FACT-T3-W08-REGIONAL-CLIMATE",
         "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Nine teaches the pig-management content in blocks 992-1093, but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W09-PIG-MANAGEMENT is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W09-PIG-MANAGEMENT; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T3-W09-PIG-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Weekend assignment 1115 asks for the term 'sty', which is not taught (the body says pigs are housed in pens at 1039). Evaluation 1096 and theory 1121 ask for two intensive-system disadvantages, but the body states only that the system is capital intensive (1032).",
+      "required_action": "Verify the pig-house terminology and a second intensive-system limitation against an authoritative agricultural/livestock source or subject-expert decision. Then author a clearly labelled assessment supplement with complete keyed practice; do not infer an answer or add unsupported content.",
+      "affected_ids": [
+        "COV-AG-T3-W09-ASSESSMENT-GAPS",
+        "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+        "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W09-VETERINARY-CHEMICAL-SAFETY",
+      "kind": "FACT",
+      "detail": "Week Nine includes veterinary/chemical statements: iron 'dextian' injection at 2-3 days and again 2-3 weeks later (1064); pesticide spraying or insecticide dipping for external parasites (1080); 10% caustic soda disinfection and two-month vacancy after African swine fever (1087); penicillin for swine erysipelas (1090); glucose injection for hypoglycaemia (1093). No handling/PPE instructions are supplied; the source statements are not validated veterinary directions.",
+      "required_action": "Verify disease/transmission and treatment claims, product names, concentration and safety implications against authoritative veterinary/public-health references. Record only qualified educational disposition; do not invent doses, PPE, mixing, application, injection or disinfection procedures and do not endorse source instructions.",
+      "affected_ids": [
+        "AG-FACT-T3-W09-PIG-SAFETY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Ten teaches cattle management in blocks 1136-1226, but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W10-CATTLE-MANAGEMENT is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W10-CATTLE-MANAGEMENT; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Theory 1253 asks for a definition of tattooing, but the body only names tattooing as an identification method at 1203. The teaching text says 'Rational grazing' at 1188 while theory 1253 asks for 'rotational grazing'. The cattle mange section at 1210 refers to hygiene in 'pig houses'.",
+      "required_action": "Obtain a verified subject-expert/source decision on tattooing, rational-versus-rotational terminology and the 'pig houses' wording. Bind only a confirmed delivery correction; author a bounded tattooing supplement only from approved evidence.",
+      "affected_ids": [
+        "COV-AG-T3-W10-ASSESSMENT-GAPS",
+        "AG-FACT-T3-W10-CATTLE-TERMS",
+        "AG-CORR-T3-W10-CATTLE-TERMS",
+        "AG-LES-T3-W10-CATTLE-TATTOOING",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-VETERINARY-CHEMICAL-SAFETY",
+      "kind": "FACT",
+      "detail": "Week Ten includes source statements about dehorning with caustic soda (1203); mange treatment with insecticides and 'invermectin or ivomec' injection (1210); insecticide names diazuntol, malathione, benzyl benzoate and benzene hexachloride (1212); and tuberculosis treatment with 'isonicotinichydracide' at 10 mg/kg body weight for eight weeks (1221-1222). No chemical handling/PPE instructions or supporting veterinary references are supplied.",
+      "required_action": "Verify all source claims, product names, stated concentration/dose and safety implications against authoritative veterinary/public-health references. Record a safe educational disposition only; do not invent or add dosing, PPE, mixing, application, injection, dehorning or disinfection procedures and do not endorse the source regimen.",
+      "affected_ids": [
+        "AG-FACT-T3-W10-CATTLE-SAFETY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W02-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Week Two comparison table at block 160 is a 13-row, two-column Word table with twelve paired contrasts. The original DOCX preserves cell boundaries, but concatenated plain-text block extraction removes the cell separators (for example, the end of the subsistence statement runs directly into 'Products are principally for sale'). A plain-text rendering is therefore not a reliable paired comparison.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Week Two row, preserve all twelve comparisons as a two-column Markdown table or explicit paired list using the original cell text verbatim. Do not rely on concatenated plain text and do not create a duplicate supplemental lesson for content already taught. If the frozen importer/schema cannot preserve the structure, request a versioned foundation change; do not alter the source.",
+      "affected_ids": [
+        "COV-AG-T1-W02-TYPES",
+        "AG-VIS-T1-TBL-W02",
+        "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
     }

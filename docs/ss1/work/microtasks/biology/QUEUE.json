@@ -2843,8 +2843,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): block 84 is a w:tbl of 5 x 3 (columns: Vector or Carrier; Micro-organisms; Disease caused). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-TBL-VECTORS.md (2026-11-08): block 84 is a native 5-row × 3-column table. Plain-text concatenation does not preserve row/cell associations, so a semantic table supplement is required. The source pairings and 'Vibro cholera' spelling are recorded without correction; the disease/vector claims remain under BIOLOGY-T3-W01-MICROBE-FACTS for authoritative review.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -2881,8 +2881,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): block 151 is a w:tbl of 21 x 5 (columns: DISEASE; CAUSATIVE AGENT; SYMPTOMS; TRANSMISSION; CONTROL; 20 diseases from Chickenpox to Malaria. Eight cells carry external hyperlinks (one nhlbi.nih.gov cough page and seven health.nytimes.com symptom pages, not opened)). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-TBL-DISEASES.md (2026-11-08): block 151 is a native 21-row × 5-column table. Flattened text does not preserve row/cell associations, so delivery requires a semantic five-column table. The inventory records one NHLBI cough URL and seven legacy NYT symptom-guide links (not opened); the incomplete href details are not guessed. Disease/health claims remain blocked under BIOLOGY-T3-W02-HEALTH-CLAIMS.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -2919,8 +2919,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): block 183 is a w:tbl of 5 x 4 (columns: DISEASE; CAUSATIVE ORGANISM; SYMPTOMS; PREVENTION/CONTROL; rows gonorrhoea, syphilis, AIDS, genital warts). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-TBL-STI.md (2026-11-08): block 183 is a native 5-row × 4-column table with source entries gonorrhoea, syphilis, AIDS and genital warts. Flattened text does not preserve row/cell associations, so delivery requires a semantic four-column table. Symptoms, prevention/control statements and vaccine age range remain blocked for authoritative review under BIOLOGY-T3-W03-HEALTH-CLAIMS.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -2957,8 +2957,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): block 584 is a w:tbl of 9 x 3 (columns: PESTS; EFFECTS; CONTROL; eight pest rows from grasshopper to birds). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-TBL-CROP-PESTS.md (2026-11-08): block 584 is a native 9-row × 3-column table (pest, effects, control) with eight pest rows. Flattened text does not preserve row/cell associations, so delivery requires a semantic three-column table. The control column contains pesticide claims and a stated concentration; these remain source-only and require qualified agricultural/pesticide-safety review.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
