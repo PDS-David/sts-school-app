@@ -29,7 +29,7 @@
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
-    "FACTUAL_DEPENDENCY": 6,
+    "FACTUAL_DEPENDENCY": 7,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 32,
     "LESSON": 11,
@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 50,
-    "PENDING": 40,
+    "IMPLEMENTED_TESTING_DEFERRED": 51,
+    "PENDING": 39,
     "BLOCKED": 9
   },
   "total": 99,
@@ -542,8 +542,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 5 (source label 'WEEK 6', title \"INDICES\", 868 characters, body sha256 222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R05 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W06-INDICES and correction CORR-MATHEMATICS-T1-W06-INDICES (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 534 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: objective-level review completed for parsed row 5 (WEEK 6, INDICES; 868 characters; body SHA-256 222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c). Expanded replacement SUP-SS1-MATHEMATICS-T1-W06-INDICES to body SHA-256 9bb60355e6afa0fea23688a8901d174a987f899f7f71c2d0154d9f39a95ea1e0, three scheme objectives and 13 keyed practice questions. Added a dedicated equation-solving section and mapped clear source worked examples/assessments: 2^(r−3)=1/8; 5x=40x^(−1/2); 4^(c−1)=64; 9^(x−1)=27^(x+1); 2^(n−1)=16; y^(−2)=9; √(2s)=9; 2x³=54; fractional-index products. Public close-equivalent PDF lines 1424–1637 used for scope/exercise inventory, not asserted identical to archive. Ambiguous equations 5^(p−3)=8×5^(−2), 9^(2x+1)=81^(x−2) and one compound quotient are recorded in MATH-T1-W06-AMBIGUOUS-EQUATION-NOTATION; no guessing. OI-MATH-001 remains open; approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -1729,7 +1729,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W06-INDICES] body_sha256=536e4fb821bf48ea2ec5002ee9f29c8b492e87d3e13d65c7571c0f93c6b01874; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R05; bound by CORR-MATHEMATICS-T1-W06-INDICES. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W06.",
+      "implementation_reference": "Expanded SUP-SS1-MATHEMATICS-T1-W06-INDICES (body SHA-256 9bb60355e6afa0fea23688a8901d174a987f899f7f71c2d0154d9f39a95ea1e0) to three explicit scheme objectives, 16 worked examples (including source equation types), and 13 keyed practice items. Added equation-solving section for same-base, variable-base and fractional-power equations. Marking totals checked; approval PENDING, verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1884,7 +1884,7 @@
         "MATH-WK-T1-W06"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W06-INDICES] source_lesson_id=SS1-SRC-0c9004137f95:BODY:222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c body_sha256=222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c replacement_id=SUP-SS1-MATHEMATICS-T1-W06-INDICES. Stated defects: Delivered text contains no laws of indices at all (every equation is dropped by the plain extractor); the row cannot teach its objective. The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W06). Do not activate delivery until that review closes.",
+      "implementation_reference": "delivery_corrections[id=CORR-MATHEMATICS-T1-W06-INDICES] binds source SS1-SRC-0c9004137f95:BODY:222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c (body SHA-256 222c8e646d2cf0325c980bac9b4b8e76b9b22aea908263b3011377f446c9423c) to SUP-SS1-MATHEMATICS-T1-W06-INDICES (body SHA-256 9bb60355e6afa0fea23688a8901d174a987f899f7f71c2d0154d9f39a95ea1e0). Objective-level scope review is complete for laws, negative/fractional indices and solving equations; source exercise mapping and unresolved equation notation are recorded in MATH-WK-T1-W06.md.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -3188,6 +3188,38 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Added CORR-MATHEMATICS-T1-W02-NUMBER-BASES binding parsed row 1 (source_id SS1-SRC-0c9004137f95; source SHA-256 d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb; body SHA-256 67bf0c502841ad85f749844376673f8079384c66193c2f88191359e5d347437e) to SUP-SS1-MATHEMATICS-T1-W02-NUMBER-BASES (body SHA-256 70b38e8812081ad677d210c6c99ea6dc2452c2c7ab556ff85f4a79e4b9202b66). Reviewed COV-MATH-T1-W02-OBJ-1..3 and the three assessment blocks: all source objectives are preserved and all 20 source exercise items are keyed in the replacement. Existing OI-MATH-001 and T1-W02 fact/notation/assessment open items remain intact; no source bytes changed. Approval remains PENDING; verification/testing deferred.",
       "completion_condition": "The binding exists, resolves to one supplement of the same subject and term, and the W02 coverage entries and OI-MATH-001 affected_ids still resolve; no source byte is edited."
+    },
+    {
+      "id": "MATH-FACT-T1-W06-AMBIGUOUS-EQUATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-0c9004137f95",
+      "term": "1st Term",
+      "week_or_locator": "WEEK 6 parsed row 5, INDICES",
+      "objective": "Recover exact superscripts, fraction bars and grouping for the ambiguous Week Six source equations: 5^(p−3)=8×5^(−2), the equation printed as 9^(2x+1)=81^(x−2), and one compound quotient/simplification.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/SS1-03/evidence/parsed_rows.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/MATHss1.docx",
+          "member_sha256": "d8cd49545976d4d35687bb7a8efc93cf387489bf190e00b20f981c9592e671cb"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/mathematics.json",
+        "docs/ss1/work/microtasks/mathematics/QUEUE.json",
+        "docs/ss1/work/microtasks/mathematics/MATH-FACT-T1-W06-AMBIGUOUS-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "MATH-WK-T1-W06"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-08: the original DOCX equation objects are not accessible in this execution session and the public close-equivalent PDF text extraction loses superscripts/fraction bars. The replacement supplies clearly labelled equivalent practice; no original equation is guessed. OI-MATH-001 remains open.",
+      "completion_condition": "Inspect the original DOCX equation objects and record exact operands, exponents, fractions and grouping; resolve or formally retain each source question as unavailable without guessing."
     }
   ],
   "review": {
@@ -3211,11 +3243,10 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "MATH-WK-T1-W05 objective-level review completed; replacement expanded to include all conversion, operations, rounding, significant-figure, decimal-place and bounds objectives with source exercise mapping. Original equation extraction remains open; tests deferred."
+    "notes": "MATH-WK-T1-W06 objective-level scope review completed; replacement expanded to include equation solving and source-equivalent assessment. Ambiguous equation notation is recorded as a blocked factual dependency; OI-MATH-001 remains open; tests deferred."
   },
   "next_runnable": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
     "MATH-WK-T1-W08",
     "MATH-WK-T1-W09",
@@ -3253,7 +3284,6 @@
   ],
   "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
     "MATH-WK-T1-W08",
     "MATH-WK-T1-W09",
