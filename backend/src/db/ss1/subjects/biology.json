@@ -811,6 +811,88 @@
           "explanation": "Unlike earlier weeks, the WEEK TEN label at block 1094 appears immediately before the ASSIGNMENT heading at block 1095. Both are retained as distinct source markers."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W01-REPRODUCTION-TYPES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 1 scheme: Reproduction — meaning and types",
+      "objective_locator": "SS1-SRC-eb6e9665f42c scheme row block 7 (sha256 e9bf035735b23461cca014ea098bd51bec8bb2f004c91907322d42d58291ccdf); Week 1 label block 29 (sha256 c506e8a3b669da9ae7b0f2b13bdffcd32298dd63774feff3bed8091220f56804); body blocks 29-91 (range sha256 a6b8c46dc5d521f9bbfb918a648c44d81ef5d3c3e634f8c8359c38582a2b8447)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "converted DOCX blocks 38-50 (range sha256 dfd6f43d3c28d0918af78cf1e51155a6d5da4f5c5fa7474826fdf1d9163d9e87)",
+          "explanation": "Defines reproduction and distinguishes asexual and sexual reproduction. The Week 1 body gives a brief sexual-reproduction definition at block 44; detailed conjugation, gamete fusion and meiosis teaching appears in Week 2, consistent with the Week 2 scheme row."
+        },
+        {
+          "locator": "converted DOCX content-list blocks 31-35; scheme rows 7-8 in preamble blocks 7-8",
+          "explanation": "The Week 1 content list includes sexual reproduction and meiosis at blocks 34-35, while the Week 2 scheme row and body carry their detailed teaching. This is recorded as a cross-week list/body mapping; no duplicate Week 1 coverage is created."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for this objective. Source-only teaching is not deliverable; PARTIAL remains until an approved lesson or equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W01-ASEXUAL-FORMS",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 1: forms of asexual reproduction and vegetative propagation",
+      "objective_locator": "SS1-SRC-eb6e9665f42c converted DOCX blocks 51-65 (range sha256 983358ae20c07e745c7481e04878e1e338a322d0a2a2aa2d4d406374ea5bd886)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 51-56",
+          "explanation": "Describes binary fission, budding, spore formation, fragmentation and vegetative propagation."
+        },
+        {
+          "locator": "blocks 57-64",
+          "explanation": "Describes natural vegetative propagation and names bulbils, runners/stolons, rhizomes, corms, stem tubers, suckers and bulbs."
+        },
+        {
+          "locator": "block 65",
+          "explanation": "Defines artificial propagation and lists budding, grafting, layering, cutting and marcotting. The source names these methods but does not describe how they are performed; the related evaluation/theory questions ask for descriptions."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for these forms. PARTIAL remains until approved lesson content and keyed practice are authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W01-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 1 evaluation, revision questions, weekend assignment and theory",
+      "objective_locator": "converted DOCX blocks 46-49, 67-69, 71-76, 78-79, 81-87 and 89-91",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 46-49 and 67-69",
+          "explanation": "The definition/type questions and four forms of asexual reproduction are supported by blocks 39-65. The named-fungus spore-formation question is supported by the examples in block 54."
+        },
+        {
+          "locator": "general evaluation blocks 71-76",
+          "explanation": "The questions on asexual forms, natural vegetative parts and fragmentation in Spirogyra are supported by blocks 52-64. The request to describe five artificial propagation methods is not supported beyond the list at block 65. The question about 'sporulation in amoeba' is not taught in this Week 1 body; block 54 gives fungal examples, not an Amoeba account."
+        },
+        {
+          "locator": "reading assignment blocks 78-79",
+          "explanation": "The source assigns College Biology, chapter 16, pages 292-301. The cited book itself is not part of this source archive."
+        },
+        {
+          "locator": "weekend assignment blocks 81-87; Week 2 conjugation block 102",
+          "explanation": "The bacteria/binary-fission and Hydra/Yeast/budding items are supported by blocks 52-53. The Paramecium question refers to a zygote and eight nuclei but calls the process asexual; Week 2 places Paramecium conjugation under sexual reproduction and does not provide the asked nuclear count in Week 1. The vegetative-propagation rationale and perennating-organ multiple-choice item are not fully keyed by the Week 1 text."
+        },
+        {
+          "locator": "theory blocks 89-91",
+          "explanation": "The request to describe two artificial propagation methods is not supported by the list-only statement at block 65. The request for three advantages and two disadvantages of asexual reproduction has no corresponding teaching in the Week 1 body."
+        },
+        {
+          "locator": "source member blocks 46-91",
+          "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory questions."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1169,6 +1251,58 @@
       "required_action": "A Biology teacher should approve keyed responses and a marking guide before delivery. Do not invent a source answer key.",
       "affected_ids": [
         "COV-BIO-T1-W10-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 Reproduction and forms of asexual reproduction are present in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind approved lessons for reproduction types and asexual forms, keeping source text distinct from any supplemental explanation.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-REPRODUCTION-TYPES",
+        "COV-BIO-T2-W01-ASEXUAL-FORMS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-ARTIFICIAL-PROPAGATION",
+      "kind": "CONTENT",
+      "detail": "The source names five artificial vegetative propagation methods at block 65 but does not describe them, while evaluation block 74 and theory block 90 ask learners to describe them.",
+      "required_action": "Create a bounded, clearly labelled supplemental lesson explaining the five named methods from an approved Biology reference and include keyed practice. Do not invent method details as if they were in the source.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASEXUAL-FORMS",
+        "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-ASEXUAL-ADVANTAGES",
+      "kind": "CONTENT",
+      "detail": "Theory block 91 asks for three advantages and two disadvantages of asexual reproduction, but no such list or explanation appears in the Week 1 teaching body.",
+      "required_action": "Create a bounded supplemental lesson for advantages and disadvantages of asexual reproduction using an approved Biology reference and clearly label it as supplemental.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-REVISION-FACTS",
+      "kind": "FACT",
+      "detail": "Several assessment prompts need authoritative review: 'sporulation in amoeba' (block 76), the Paramecium zygote/eight-nuclei question labelled asexual (block 85), and the perennating-organ multiple-choice item (block 87). The source does not teach or key these points sufficiently.",
+      "required_action": "Verify each item against an approved Biology reference and record the intended terminology and answer evidence before authoring any key or correction. Do not guess answers.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 1 evaluation, revision, weekend assignment and theory questions have no supplied answer key or marking guide. Some prompts require supplemental teaching or factual review.",
+      "required_action": "A Biology teacher should approve a complete answer/marking guide after the artificial-propagation, asexual-advantages and factual-review dependencies are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
