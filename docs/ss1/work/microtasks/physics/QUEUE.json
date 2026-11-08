@@ -44,9 +44,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 30,
+    "IMPLEMENTED_TESTING_DEFERRED": 31,
     "BLOCKED": 16,
-    "PENDING": 43
+    "PENDING": 42
   },
   "total": 89,
   "items": [
@@ -644,8 +644,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 0 (source label 'WEEK ONE', title \"Heat Energy, Concept of Heat and Temperature and Effects of Heat\", 2685 characters, body sha256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed and completed 2026-11-08. The prior implementation_reference was stale: master already contained SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE and row-level COV-PHYS-T2-W01-OBJ-1 from PR #71. Exact source row is parsed row 0 WEEK ONE, source SS1-SRC-2c924c964660, body id SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c, body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c, 2,685 characters; archive member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Expanded the existing lesson to six objectives, corrected heat/internal-energy terminology, added uses of heat, separated thermionic from photoelectric emission, corrected the heat-extraction/freezing misconception, and keyed source evaluation/weekend items Q06–Q12. Added eight objective-level coverage entries and correction CORR-PHYSICS-T2-W01-HEAT-ENERGY. One source MCQ wording ambiguity about contraction is recorded as a non-blocking open item. Official FME Inspire and close-equivalent week-one references used; no third-party text copied. Approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3058,10 +3058,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T1-W09 viscosity supplement added; original legacy .doc row reconciliation and figure/assessment inspection remain blocked pending source access. Testing deferred by owner."
+    "notes": "PHYS-WK-T2-W01 stale task reconciled against existing master lesson from PR #71; expanded heat/temperature lesson, added uses, corrected scientific misconceptions and indexed eight objectives. Source MCQ contraction ambiguity recorded non-blocking. Tests deferred."
   },
   "next_runnable": [
-    "PHYS-WK-T2-W01",
     "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
@@ -3095,7 +3094,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W01",
     "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
