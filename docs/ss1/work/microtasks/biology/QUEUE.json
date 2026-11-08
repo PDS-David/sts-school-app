@@ -69,7 +69,8 @@
     "BIO-VIS-T1-PROTEIN-BREAKDOWN (2026-11-08) verified the three right-pointing connectors at block 859 and compared the sequence with the source enzyme table at block 920. The order is confirmed; only singular/plural wording differs ('Peptone' in the diagram, 'peptones' in the enzyme table). No asset/redraw is needed; the existing Week 7 nutrition lesson now includes the structured sequence. Testing remains deferred.",
     "BIO-VIS-T1-MITOSIS (2026-11-08) inspected all four original hand-drawn figures and matched them to the written stage descriptions: interphase/prophase, metaphase, anaphase and telophase/cytokinesis. Labels are raster-only and do not survive text extraction. No source image is registered as an app asset because rights are unrecorded; a project-authored four-panel redraw was appended and the Week 10 lesson now depends on it. Testing remains deferred.",
     "BIO-VIS-T1-HORMONE-TABLE (2026-11-08) inspected the four header line shapes and seven tab-aligned rows at blocks 1042-1049, including the private rendered PDF page 43. The three columns are clear in the original rendering but collapse in plain-text extraction; a semantic three-column table is required. The seven source associations were flagged for a separate authoritative Biology fact review. No image asset or redraw is needed; original text remains unchanged and no medication guidance is added. Testing remains deferred.",
-    "BIO-VIS-T1-MOVEMENT-TABLE (2026-11-08) inspected the three line shapes and seven tab-aligned rows at blocks 1083-1092 in private rendered PDF page 45. The three columns are clear in the original rendering but collapse in text extraction; the Hydra mechanism wraps across blocks 1088-1089. A semantic three-column table is required in the Week 10 lesson; no asset/redraw is needed. The source's 'hoping' spelling is preserved for separate correction handling. Testing remains deferred."
+    "BIO-VIS-T1-MOVEMENT-TABLE (2026-11-08) inspected the three line shapes and seven tab-aligned rows at blocks 1083-1092 in private rendered PDF page 45. The three columns are clear in the original rendering but collapse in text extraction; the Hydra mechanism wraps across blocks 1088-1089. A semantic three-column table is required in the Week 10 lesson; no asset/redraw is needed. The source's 'hoping' spelling is preserved for separate correction handling. Testing remains deferred.",
+    "BIO-VIS-T1-TBL-CROP-ROTATION (2026-11-08) confirmed block 514 is a native 6×6 Word table, rendered across PDF pages 18-19. Cell boundaries exist in DOCX but flattened text loses plot/year pairing; any text-based supplement must restate the semantic table. No image asset/redraw is needed. Farming-systems placement remains an owner decision; no Week 3 scheme scope was inferred. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -85,8 +86,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 52,
-    "PENDING": 96,
+    "IMPLEMENTED_TESTING_DEFERRED": 53,
+    "PENDING": 95,
     "BLOCKED": 11
   },
   "items": [
@@ -1336,8 +1337,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): w:tbl under heading block 513 'CROP ROTATION TABLE'; first cells extract as '1st plot2nd plot3rd plot4th plot5th plot1st YearMaizeCassavaFallowGroundnutYam2nd YearCassava…' (cell boundaries lost in flattened text).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct block 514 is a native w:tbl with six rows and six cells per row; table SHA-256 aca001d2dd2f691dc1db5f67f795517f7bf451c66. Original DOCX retains cell boundaries, and private rendered PDF pages 18-19 show the table, with the fifth-year row continuing on page 19. Flattened plain-text extraction concatenates cells and loses plot/year pairing. The six-by-six source cell values are recorded in package evidence. Disposition: a semantic six-column table is required in any text-based supplement; no image asset or redraw is needed because the original is already a native Word table. The farming-systems section remains unlisted in the Week 3 scheme, so the table is not moved into a Week 3 lesson until BIOLOGY-T1-W03-FARMING-SYSTEMS-PLACEMENT is resolved. No source wording or cell order was changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5530,7 +5531,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
     "BIO-VIS-T2-TBL-VITAMINS",
