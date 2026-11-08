@@ -2987,13 +2987,14 @@
     {
       "id": "BIOLOGY-T1-W03-COVERAGE",
       "kind": "CONTENT",
-      "detail": "The 1st Term Week 3 classification objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The hierarchy is stated in prose at block 136 and labelled in diagram blocks 137-155. The six downward connector arrows are visual-only and disappear from plain-text extraction; the rank labels survive. The source uses 'Genius'/'genius' for Genus. The plant comparison at blocks 235-244 is a two-column monocot/dicot table with seven differences and examples, but it is not a Word table: its column divider rules disappear from text extraction and pairings rely on whitespace. The delivery supplement must include a semantic two-column table. No separate image asset is required.",
-      "required_action": "Author BIO-LES-T1-W03-CLASSIFICATION as a clearly labelled supplement bound to COV-BIO-T1-W03-SCHEME-3. Preserve the hierarchy as an ordered sequence (Kingdom → Phylum/Division → Class → Order → Family → Genus → Species), using the correct delivery spelling 'Genus' while retaining the original 'Genius'/'genius' source text unchanged. Restate the seven monocot/dicot differences and examples in a semantic two-column table; use 'Dicotyledoneae' as shown at block 234 in the delivery supplement, while retaining the block 235 source header spelling in the source record. Include complete keyed practice and source provenance; do not invent an original parsed lesson ID or delivery-correction binding before the importer identifies it.",
+      "detail": "The 1st Term Week 3 classification objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The hierarchy is stated in prose at block 136 and labelled in diagram blocks 137-155. The six downward connector arrows are visual-only and disappear from plain-text extraction; the rank labels survive. The source uses 'Genius'/'genius' for Genus. The plant comparison at blocks 235-244 is a two-column monocot/dicot table with seven differences and examples, but it is not a Word table: its column divider rules disappear from text extraction and pairings rely on whitespace. The delivery supplement must include a semantic two-column table. No separate image asset is required. The rhinoceros-beetle lifecycle figure at block 593 is a separate unlisted pest-section asset; the original cycle is structurally clear, but no lesson is registered to bind its asset and the section's placement remains unresolved.",
+      "required_action": "Author BIO-LES-T1-W03-CLASSIFICATION as a clearly labelled supplement bound to COV-BIO-T1-W03-SCHEME-3. Preserve the hierarchy as an ordered sequence (Kingdom → Phylum/Division → Class → Order → Family → Genus → Species), using the correct delivery spelling 'Genus' while retaining the original 'Genius'/'genius' source text unchanged. Restate the seven monocot/dicot differences and examples in a semantic two-column table; use 'Dicotyledoneae' as shown at block 234 in the delivery supplement, while retaining the block 235 source header spelling in the source record. Include complete keyed practice and source provenance; do not invent an original parsed lesson ID or delivery-correction binding before the importer identifies it. The rhinoceros-beetle cycle redraw must wait for the Week 3 pest-section placement decision and an exact parsed lesson or approved supplement ID; the compiler requires every asset.lesson_id to resolve to an identified Biology lesson. Do not invent a lesson ID or register an unbound asset.",
       "affected_ids": [
         "COV-BIO-T1-W03-SCHEME-3",
         "BIO-VIS-T1-CLASS-HIERARCHY",
         "BIO-LES-T1-W03-CLASSIFICATION",
-        "BIO-VIS-T1-MONOCOT-DICOT"
+        "BIO-VIS-T1-MONOCOT-DICOT",
+        "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW"
       ],
       "blocks_delivery": true
     },
@@ -4041,7 +4042,8 @@
       "affected_ids": [
         "COV-BIO-T1-W03-PESTS",
         "COV-BIO-T1-W03-AGRICULTURAL-DISEASES",
-        "COV-BIO-T1-W03-PEST-DISEASE-CONTROL"
+        "COV-BIO-T1-W03-PEST-DISEASE-CONTROL",
+        "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW"
       ],
       "blocks_delivery": false
     },

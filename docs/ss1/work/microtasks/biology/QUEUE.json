@@ -86,7 +86,8 @@
     "BIO-VIS-T3-FIG-MEALYBUG (2026-11-09) verified the 3rd Term member and inspected blocks 543 and 545. Block 543 contains 'The Life Cycle of Cassava Mealy bug'; block 545 is an anchored image-only drawing (rId17 -> image3.jpeg) with no text runs. The raster labels and arrows are lost in text extraction. The low-resolution caption recorded as 'Instar symphs 1' remains uncertain and uncorrected. A blocking CONTENT item requires fact review and a project-authored accessible asset. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART (2026-11-09) inspected the native VML chart at blocks 350-355 and a fresh private render (PDF page 18/38). Confirmed Plants→A/B/C, C→D/E, E→F/G and G→H/I. Plain-text extraction loses the connector geometry, but the adjacent source prose at blocks 345-348 explicitly preserves the same hierarchy, so no separate asset is required solely for the relationships. Expanded the existing W05 botanical FACT gate to cover the chart's A-I labels and hierarchy. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T3-HDR-BRANDING (2026-11-09) verified the 3rd Term header/footer structure and header image hash. The header graphic and footer paragraph are separate page-furniture parts, not body teaching. Personal contact details and the name-like footer label were not transcribed or included; the package contains no header/footer asset reference or email address. No rights or identity decision was made. Testing and student-facing approval remain deferred.",
-    "BIO-VIS-T2-SHP-PYRAMID-ORDER (2026-11-09) resolved the original-.doc visual gate using the exact hash-verified second-term Biology member. A private LibreOffice render of page 28/33 confirms top-to-bottom Hawks—2, Lizards—5, Grasshoppers—12, Grasses—40; widths increase toward the base and the upward axis cue reads 'Decreasing number of organisms'. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete source-unavailable gate. Broader Week 9 lesson, food-web/food-chain and fact-review gates remain."
+    "BIO-VIS-T2-SHP-PYRAMID-ORDER (2026-11-09) resolved the original-.doc visual gate using the exact hash-verified second-term Biology member. A private LibreOffice render of page 28/33 confirms top-to-bottom Hawks—2, Lizards—5, Grasshoppers—12, Grasses—40; widths increase toward the base and the upward axis cue reads 'Decreasing number of organisms'. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete source-unavailable gate. Broader Week 9 lesson, food-web/food-chain and fact-review gates remain.",
+    "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW (2026-11-09) inspected the original hash-verified DOCX and a private render of page 22/46. Block 593's lower VML loop supports Egg→Larvae→Pupa→Adults→Egg; the separate nymph-bearing fragment above belongs to blocks 582-590. The redraw remains BLOCKED because the Week 3 pest-section placement owner action is unresolved and the package has no valid lesson_id for asset registration. No asset or invented ID was committed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -103,8 +104,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 78,
-    "BLOCKED": 11,
-    "PENDING": 77
+    "BLOCKED": 12,
+    "PENDING": 76
   },
   "items": [
     {
@@ -5445,8 +5446,8 @@
         "BIO-WK-T1-W03",
         "BIO-VIS-T1-PEST-LIFECYCLES"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended after the source figure disposition (2026-11-08). The original rhinoceros-beetle cycle has four clear labels and a four-arrow loop; a project-authored redraw will preserve the stages without copying the source vector artwork.",
+      "status": "BLOCKED",
+      "implementation_reference": "Blocked 2026-11-09 after inspecting the hash-verified original .docx member and a private LibreOffice render of page 22/46. Block 593's lower VML loop and adjacent prose support Egg → Larvae → Pupa → Adults → Egg; the separate nymph-bearing fragment above belongs to the preceding figure (blocks 582-590). No asset can be registered yet: Week 3 pest-section placement remains an explicit owner action (BIOLOGY-T1-W03-PESTS-PLACEMENT), the package has no lessons, and compiler.ts requires asset.lesson_id to resolve to an identified original row or supplement. Do not invent an ID or commit an unregistered orphan asset. After placement and lesson identity are resolved, create the original vector asset and register it with hash, alt text, locator and project-created provenance.",
       "completion_condition": "A new original vector diagram shows Egg → Larvae → Pupa → Adults in a directed loop, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source figure untouched."
     },
     {
@@ -5830,7 +5831,6 @@
   },
   "next_runnable": [
     "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
-    "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
     "BIO-VIS-T1-W10-MITOSIS-REDRAW",
     "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
     "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
