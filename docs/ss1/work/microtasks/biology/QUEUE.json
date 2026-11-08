@@ -36,7 +36,8 @@
     "BIO-WK-T1-W05 (2026-11-08) indexed Plant Nutrition, chemosynthetic nutrition, five practical-investigation aims and the Week 5 assignment. Detailed practical methods/chemical-handling instructions were not copied into the index. The source contains no separate safety/supervision section; practical delivery remains gated. Assignment question 1d asks for five conditions but the source explicitly names only four; the fifth is not guessed. Photosynthesis equations at blocks 683 and 700 are flagged for authoritative review. Follow-up fact and supplemental-lesson tasks were appended; testing remains deferred.",
     "BIO-WK-T1-W07 (2026-11-08) indexed Nutrition in Animals: food substances and balanced diet, digestive enzymes, and the two enzyme assignment prompts. Protein-breakdown and mineral/vitamin/enzyme tables remain with existing visual-disposition tasks. No experiments/practicals were found. Food-formula and enzyme claims were retained and appended for fact review before any correction; no lesson or answer key was written.",
     "BIO-WK-T1-W08 (2026-11-08) indexed Mode of Nutrition across blocks 928-944 and reviewed the two assignment questions. All six requested modes are described in the source; the assignment has no answer key. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred.",
-    "BIO-WK-T1-W09 (2026-11-08) indexed Basic ecological concept and reviewed all assignment prompts. Definitions are present; the final prompt's 'three components' is ambiguous against the source's two-part biotic/abiotic structure and three biotic groups. No key is present. No practical work was found. A bounded ecology lesson task was appended; testing remains deferred."
+    "BIO-WK-T1-W09 (2026-11-08) indexed Basic ecological concept and reviewed all assignment prompts. Definitions are present; the final prompt's 'three components' is ambiguous against the source's two-part biotic/abiotic structure and three biotic groups. No key is present. No practical work was found. A bounded ecology lesson task was appended; testing remains deferred.",
+    "BIO-WK-T1-W10 (2026-11-08) indexed Growth, Irritability and Movement across blocks 986-1092 and reviewed the assignment at 1094-1103. The assignment prompts are supported by source teaching but no answer key is supplied. Existing visual tasks own the mitosis figures, hormone table and movement table. The WEEK TEN label precedes the ASSIGNMENT heading in this source. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -48,10 +49,10 @@
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 8
+    "LESSON": 9
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
     "PENDING": 69,
     "BLOCKED": 5
   },
@@ -732,8 +733,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 985 \"WEEK TEN\" (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); blocks 985-1104; range sha256 9c91bae8cde7ad21425a3c40ab314c04aa4c62c7b2cde3f7da40798633501bea. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 11): 'Week 10 -Growth, Irritability and Movement'. Body 986-1092: growth and mitosis (four hand-drawn figures, blocks 997-1021), plant growth hormones and animal hormone table (1029-1056), irritability (1057-1073), movement and cyclosis (1074-1092). Unlike other weeks the label 'WEEK TEN' (block 1094) comes BEFORE the 'ASSIGNMENT' heading (block 1095); assignment questions 1096-1103.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W10.md; verified the assigned source member hash against the archive and manifest. Re-derived Week 10 label block 985 and body range blocks 985-1104; indexed growth/mitosis (986-1021), meristematic growth and hormones (1026-1054), irritability (1057-1073), movement/cyclosis (1074-1092), and assignment (1094-1103). Existing visual tasks own mitosis figures, hormone table and movement table. The assignment prompts are supported by source teaching but have no answer key. The WEEK TEN label at 1094 precedes the ASSIGNMENT heading at 1095. No experiments/practicals were found. No lesson or key invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3543,6 +3544,42 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W09; see the Week 9 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, blocks 986-1092",
+      "objective": "Author a clearly labelled supplemental lesson covering growth processes, mitosis, meristematic growth, plant and animal growth hormones, irritability and responses, movement and cyclosis. Distinguish source material from supplement, use existing visual tasks for the mitosis/hormone/movement figures and tables, cite provenance, and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators."
     }
   ],
   "review": {
@@ -3559,7 +3596,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-WK-T1-W10",
     "BIO-SEC-T1-AGRI-ECOLOGY",
     "BIO-SEC-T1-PESTS-DISEASES",
     "BIO-VIS-T1-PLANT-ANIMAL-HDR",
@@ -3620,6 +3656,7 @@
     "BIO-FACT-T1-W05-EQUATIONS",
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
     "BIO-LES-T1-W08-MODE-OF-NUTRITION",
-    "BIO-LES-T1-W09-ECOLOGY"
+    "BIO-LES-T1-W09-ECOLOGY",
+    "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
   ]
 }
