@@ -667,6 +667,10 @@
         {
           "locator": "Protein breakdown flow block 859 SHA-256 c9f67eb9e6d356a565d4a2440a5fee8a1c3bb853cfc4c4782abfc6c0a0f954a; enzyme table block 920 SHA-256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5",
           "explanation": "The flow at block 859 reads Protein → Peptone → Polypeptide → Amino acid and has three right-pointing straight-arrow connectors. The stage names are ordinary text and retain their order in text extraction; the arrowheads/direction do not. The source's own enzyme table at block 920 confirms the same progression: pepsin converts protein to peptones, trypsin converts proteins/peptones to polypeptide, and erepsin converts polypeptide to amino acid. The diagram uses singular 'Peptone' while the enzyme table uses plural 'peptones'; use 'Peptones' in a delivery supplement to match the explanatory table, retaining the source diagram unchanged. The arrows render clearly in private PDF page 33. No separate asset or redraw is needed; the sequence can be represented as structured text with arrows."
+        },
+        {
+          "locator": "Week 7 digestive-enzyme table block 920; native Word table 8×5; SHA-256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5; rendered source PDF pages 37-38",
+          "explanation": "Block 920 is a native w:tbl with eight rows and five columns; the original DOCX preserves cell boundaries and the PDF table continues across pages 37-38 (the Pancreatic Lipase row splits across the page break). Flattened text extraction loses the enzyme/source/location/substrate/effect pairing. Exact source rows: Ptyalin | Salivary gland | Mouth | Starch | Partial hydrolysis of starch to maltose; Renin | Gastric gland | Stomach | Proteins | It coagulate or curdle milk; Pepsin | Gastric gland | Stomach | Proteins | It convert solid protein to peptones; Pancreatic Lipase | Pancreas | Duodenum | Fat and oils | It converts fat and oils to fatty acid and glycerol; Amylase | Pancreas | Duodenum | Starch | It converts starch to maltose; Trypsin | Pancreas | Duodenum | Proteins or peptones | It converts proteins or peptones to polypeptide; Erepsin | Succus entricus | Small intestine | Poly peptide | It converts polypeptide to amino acid. A semantic five-column table is required in the delivery lesson. The enzyme names, sources, locations, substrates and effects are source claims for authoritative Biology review; source spellings and grammar are retained unchanged. No image asset or redraw is needed."
         }
       ]
     },
@@ -3062,14 +3066,15 @@
     {
       "id": "BIOLOGY-T1-W07-FOOD-CLAIMS",
       "kind": "FACT",
-      "detail": "The Week 7 food-substance and enzyme material contains unverified factual claims: monosaccharide formula at block 841, sucrose formation wording at 844, lipid formula at 871, amylase statements at 916-917, and the mineral/vitamin tables at blocks 881 and 888. The tables include source claims about functions and deficiency symptoms (including rickets, osteomalacia, anaemia, goitre, pellagra, scurvy, reproductive failure and haemorrhage). These are curriculum statements requiring authoritative Biology review, not medical advice. The original source remains unchanged.",
-      "required_action": "Verify the formula, biochemical and enzyme claims at blocks 841, 844, 871 and 916-917, and each mineral/vitamin table function and deficiency claim at blocks 881 and 888, against approved Biology references. Record precise citations and evidence-based corrections for the delivery supplement. Keep source wording separate and do not present the table as medical advice or treatment guidance.",
+      "detail": "The Week 7 food-substance and enzyme material contains unverified factual claims: monosaccharide formula at block 841, sucrose formation wording at 844, lipid formula at 871, amylase statements at 916-917, mineral/vitamin function and deficiency statements at tables 881 and 888, and digestive-enzyme names/sources/locations/substrates/products at table 920. These are school Biology claims requiring authoritative review, not medical advice. The original source remains unchanged.",
+      "required_action": "Verify the formula, biochemical and enzyme claims at blocks 841, 844, 871 and 916-917, the mineral/vitamin table claims at blocks 881 and 888, and all five columns of the digestive-enzyme table at block 920 against approved Biology references. Record precise citations and evidence-based corrections for the delivery supplement. Keep source wording separate and do not present health-related claims as medical advice or treatment guidance.",
       "affected_ids": [
         "COV-BIO-T1-W07-SCHEME-7",
         "COV-BIO-T1-W07-ENZYMES",
         "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
         "BIO-FACT-T1-W07-FOOD-CLAIMS",
-        "BIO-LES-T1-W07-ANIMAL-NUTRITION"
+        "BIO-LES-T1-W07-ANIMAL-NUTRITION",
+        "BIO-VIS-T1-TBL-ENZYMES"
       ],
       "blocks_delivery": true
     },
