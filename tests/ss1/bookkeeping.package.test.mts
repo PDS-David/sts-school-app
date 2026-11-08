@@ -127,3 +127,21 @@ test('Coverage entries resolve to registered sources and declared lesson or mark
     }
   }
 });
+
+test('Third-term revision and examination markers remain scheme-only', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['COV-BK-T3-REVISION-1', 'RULE-BK-T3-REVISION-1'],
+    ['COV-BK-T3-REVISION-11', 'RULE-BK-T3-REVISION-11'],
+    ['COV-BK-T3-EXAM-12', 'RULE-BK-T3-EXAM-12'],
+  ]);
+  for (const [coverageId, ruleId] of expected) {
+    const c = p.coverage.find(x => x.id === coverageId);
+    const r = p.source_rules.find(x => x.id === ruleId);
+    assert(c && r);
+    assert.equal(c.status, 'MARKER');
+    assert.deepEqual(c.lesson_ids, [ruleId]);
+    if (r.op !== 'classify_marker') assert.fail('marker target must be a classify_marker rule');
+    assert.equal(r.kind, 'SCHEME_ONLY');
+  }
+});
