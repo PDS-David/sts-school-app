@@ -3696,11 +3696,12 @@
     {
       "id": "BIOLOGY-T3-W02-HEALTH-CLAIMS",
       "kind": "FACT",
-      "detail": "The disease table at block 151 contains 21 rows of disease agents, symptoms, transmission and control claims, with eight external symptom-guide hyperlinks. These statements require authoritative disease-specific review; legacy symptom links are not accepted as the sole authority.",
-      "required_action": "Verify disease names, agents, symptom summaries, transmission and prevention/control against current authoritative public-health sources. Record citations and keep corrected supplemental text distinct from the original. Do not provide individualized medical advice.",
+      "detail": "The disease table at block 151 contains 21 rows of disease agents, symptoms, transmission and control claims, with eight external symptom-guide hyperlinks. These statements require authoritative disease-specific review; legacy symptom links are not accepted as the sole authority. The table at block 151 is a native 21-row × 5-column structure; flattened text loses row/cell associations. The inventory records one NHLBI cough URL and seven legacy NYT symptom-guide pages (depression, stress-and-anxiety, swollen-glands, abdominal-pain, agitation, bloody-or-tarry-stools and confusion). These links were not opened or verified, and the inventory does not retain every full href. The table must be restated as semantic rows after authoritative review.",
+      "required_action": "Verify disease names, agents, symptom summaries, transmission and prevention/control against current authoritative public-health sources. Record citations and keep corrected supplemental text distinct from the original. Do not provide individualized medical advice. Preserve the five-column row structure in delivery and record the full source hyperlinks from the verified DOCX relationships where available; treat the legacy symptom pages as source links only, not as authorities.",
       "affected_ids": [
         "COV-BIO-T3-W02-DISEASES",
-        "COV-BIO-T3-W02-ASSESSMENT"
+        "COV-BIO-T3-W02-ASSESSMENT",
+        "BIO-VIS-T3-TBL-DISEASES"
       ],
       "blocks_delivery": true
     },
