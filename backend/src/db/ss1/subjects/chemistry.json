@@ -234,6 +234,98 @@
           "explanation": "The CONTENT list promises an apparatus topic and the theory block asks for it, but Week One has no section on it. CHEM-INV-T1A records apparatus and uses in Week Two (lines 265-327), which is a different week and is indexed by CHEM-IDX-T1A-W02 and CHEM-FACT-T1A-SAFETY. This entry is UNRESOLVED for Week One only: it claims no coverage from Week Two and does not move the question between weeks."
         }
       ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-SCHEME-2",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Scheme week 2: LABORATORY FAMILIARIZATION",
+      "objective_locator": "opening scheme list line 49 (SHA-256 b19f8a782a3f5ad75ba5a0d2b64dc465abdc0b023b1f1ddc716276f9910e5dea); body WEEK TWO source lines 246-415 (SHA-256 3064d93fa4b6050c3522c4be0fa06690cb505b4666a7508d80bcf2cd862e5d05)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "mammoth 1.12.2 extractRawText line 49; WEEK TWO label line 247, TOPIC line 249 and CONTENT lines 251-257",
+          "explanation": "Scheme row 2 reads 'LABORATORY FAMILIARIZATION' and matches the week topic line 'TOPIC: LABORATORY FAMILIARIZATION' once the 'TOPIC: ' prefix is removed, so the mapping is by title as well as by position. Week Two is the second of ten body markers (CHEM-INV-T1A). The scheme row carries no sub-items, so the objectives below come from the week's own headings and CONTENT list."
+        },
+        {
+          "locator": "source lines 247-411; section index in docs/ss1/work/microtasks/chemistry/CHEM-IDX-T1A-W02.md",
+          "explanation": "The body has thirteen indexed sections (label, topic, CONTENT list, definition of laboratory, laboratory apparatus, apparatus and their uses, evaluation, identification exercise, safety rules, general evaluation, reading, weekend and theory blocks). The DOCX XML for the week holds one 606x600 JPEG (image43.jpg), nine 1x1 PNG spacer parts, nine floating text boxes (the A-I labels), 55 automatically numbered or bulleted paragraphs, no table, no equation and no hyperlink; every one of the 203 vertAlign runs is baseline. The drawing and labels are dispositioned by CHEM-VIS-T1A-W02-APPARATUS, not here. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-DEFINITION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Definition of laboratory and of laboratory apparatus",
+      "objective_locator": "body lines 259-267 (definition section 259-261 SHA-256 aa93c82bcdfe6549bb2b378b66e8248394273b371b6bd592fdc14624f58e7b34; apparatus section 265-269 SHA-256 e6b2706c99d5689dd71835091ed85381904de27cf71945ec4114066991f3e65d); questions 333 and 403; CONTENT lines 253 and 255",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 259-261 ('DEFINITION OF LABORATORY' and one sentence at 261) and lines 265-267 ('LABORATORY APPARATUS' and one sentence at 267)",
+          "explanation": "One sentence defines a laboratory (a room or building equipped for scientific experimentation or research, with equipment and apparatus) and one sentence defines laboratory apparatus (tools or equipment used by scientists in the laboratory). Evaluation question 333 asks for both definitions and theory question 403 asks for the first. The CONTENT list spells the heading 'DEFINTION OF LABORATORY' at line 253 and 'DEFINITION OF LABORATORY' at line 259; both are recorded as written. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-APPARATUS-USES",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Common laboratory apparatus, their descriptions and uses",
+      "objective_locator": "body lines 265-325 (apparatus section 265-269 SHA-256 e6b2706c99d5689dd71835091ed85381904de27cf71945ec4114066991f3e65d; apparatus and uses section 273-325 SHA-256 5757db26fa9fc22942856b11b5a157f4ab5e79c38a97136edd899073cdf01f76); questions 331, 379, 389-395, 409 and 411; CONTENT line 255",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 269 (list of apparatus names) and lines 273-325 (25 automatically numbered entries, each a name with a description and a use)",
+          "explanation": "Line 269 is one sentence of thirty comma-separated segments ending 'etc.'; two segments run two names together without a comma as written ('funnel (plastic or glass) thistle funnel' and 'Woulff’s bottle tripod stand'), so it names thirty-two apparatus. Lines 275-325 give 25 entries: 'EVAPORATING DISH:' at 275 with its text at 277, then 24 entries that each hold the name, a description and a use in one paragraph (279-325). Names at 269 with no entry of their own: brush, thistle funnel, tripod stand, Bunsen burner, beehive shelf, delivery tube, deflagrating spoon, u-tube, thermometer, wash bottle, chemical balance and reagent bottle; 'pipette' has only the dropping-pipette entry at 301, 'clamp' appears only inside 307 and 'reflux-condenser' only as 'refluxing' inside 319. Entries not named at 269: evaporating dish, crucible, standard volumetric flask, distillation flask, bell jar, measuring cylinder, Kipps apparatus and centrifuge. Spellings differ as written: 'desiccated' (269) and 'DESSICATOR' (309), 'wire gauze' (269) and 'WIRE GUAZE' (315). The week's questions point at this section: 331 (ten apparatus and their uses), 379 (five named apparatus), weekend 389, 391, 393 and 395, and theory 409 and 411. The uses and descriptions are unverified; verification belongs to CHEM-FACT-T1A-SAFETY (uses) and CHEM-FACT-T1A-W02-STATEMENTS (names and descriptions). Week One's COV-CHEM-T1A-W01-APPARATUS stays UNRESOLVED for Week One and is not changed. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        },
+        {
+          "locator": "lines 331, 379, 389-395 and 409-411 against lines 275-325",
+          "explanation": "Every apparatus named by questions 379, 389-395, 409 and 411 has its own entry in 275-325 (evaporating dish 275, retort stand 307, measuring cylinder 311, conical flask 287, fume cupboard 293, gas jar 299, Woulff’s bottle 285, separating funnel 325, condenser 319) except 379(b) pipette; weekend question 5 (line 397) is outside that range and also has no matching entry. Those two are recorded as COV-CHEM-T1A-W02-APPARATUS-GAPS. This locator list is not an answer key and no answer is written here."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-IDENTIFICATION",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Identification of laboratory apparatus and set-up labeled A-I",
+      "objective_locator": "body lines 337-341 (section 337-339 SHA-256 18dff616d338009fc710d798038e1e834109766b66efe247cf6b6c5ce827613f; line 341 is whitespace-only, 65 spaces); image43.jpg (JPEG SHA-256 bb2d3e6c33f4f32bc13ba7563d35c8fd01410a9b476b64b4ad65eeea9d3572b3)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 339 ('Identify the laboratory apparatuses and laboratory set-up labeled A-I below:') and the drawing anchor paragraph at line 341",
+          "explanation": "The exercise asks the learner to identify apparatus labeled A-I, but in the extracted text the drawing paragraph (line 341) is whitespace only and no label letter appears. In the DOCX XML the nine floating text boxes carry c, B, A, I, G, H, F, E, D in that document order (the first is a lowercase 'c'), and the labels are not part of the 606x600 JPEG. The source supplies no answer key, no marks and no statement of which drawing each letter marks. Nothing is read into the picture here; the disposition of the drawing and labels is the open item CHEM-VIS-T1A-W02-APPARATUS (PENDING)."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-SAFETY",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Laboratory safety rules",
+      "objective_locator": "body lines 345-371 (SHA-256 ed78a788a9770d9a3643d5598bf5fe5f848d61fae462efab816765127117a2f2); questions 377 and 405; CONTENT line 257",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "lines 345-371: heading at 345 and thirteen automatically numbered rules (347-371)",
+          "explanation": "The block lists thirteen rules without any explanation. Line 363 names the fire extinguisher, eye wash station, first aid kit and safety shower only as places to learn; the block contains no first-aid instruction, no chemical name or concentration and no emergency procedure. Line 361 uses curly quotation marks around 'horse play' and line 365 begins 'Reports all accidents'; both are recorded as written. General evaluation question 377 asks for ten measures (the block supplies thirteen) and theory question 405 asks for five. The statements are unverified; verification belongs to CHEM-FACT-T1A-SAFETY. PARTIAL, not SUPPORTED: the source teaches the topic, but no deliverable lesson exists, no lesson id is bound (no importer run), and the week's questions carry no answers or marking."
+        }
+      ]
+    },
+    {
+      "id": "COV-CHEM-T1A-W02-APPARATUS-GAPS",
+      "source_id": "SS1-SRC-58b4a44c3afa",
+      "objective": "Apparatus the week asks about but never describes: pipette and coloured reagent bottles",
+      "objective_locator": "general evaluation question 379(b) (line 379); weekend question 5 (line 397); no teaching text in lines 247-411",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "line 379 ('State the uses of: (a) Evaporating dish (b) Pipette (c) Retort stand (d) Measuring cylinder (e) Conical flask'), line 397 (weekend question 5) and lines 269 and 301",
+          "explanation": "No entry in 273-325 is headed 'Pipette'; 'pipette' appears at 269 and the nearest text is the 'DROPPING BOTTLE OR DROPPING PIPETTE' entry at 301. Weekend question 5 (line 397) asks about coloured reagent bottles; 'reagent bottle' appears only in the list at 269 and no sentence in the week describes coloured bottles or what they store. Both gaps are recorded as written and nothing is invented. The gap becomes the bounded lesson item CHEM-LES-T1A-W02-APPARATUS-GAPS."
+        }
+      ]
     }
   ],
   "open_items": [
