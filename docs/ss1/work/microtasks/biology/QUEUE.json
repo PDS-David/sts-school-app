@@ -49,7 +49,8 @@
     "BIO-WK-T2-W09 (2026-11-08) indexed feeding relationships, trophic levels, food chains/webs, ecological pyramids, energy loss and thermodynamics. Existing food-chain shapes, food-web image and pyramid drawing remain with visual tasks. The consumer-survival assertion and ATP option need approved-reference review; a general-evaluation prompt contains an unclear '3C' reference. A factual dependency and bounded lesson task were appended; no answer key was invented.",
     "BIO-WK-T2-W10 (2026-11-08) indexed six biological association types and all evaluation/revision/weekend/theory prompts. The scheme/topic says Ecological Management but the body covers associations only; a scope-decomposition task was appended. Revision questions 944-946 refer to first-term growth hormones/mitosis. Weekend Q952 omits commensalism from the options and Q953 asks about ticks not taught in the body. No answer key was invented.",
     "BIO-WK-T3-W01 (2026-11-08) indexed microorganism groups, culture concepts, identification and carriers. The source mentions Petri-dish sterilisation but gives no parameters or safety SOP; practical culturing remains blocked pending qualified approval, and no operational instructions were inferred. Existing bacteria-figure and vector-table visual tasks own the two visuals; history/disease/vector claims have a factual-review task. No answer key was invented.",
-    "BIO-WK-T3-W02 (2026-11-08) indexed microbial growth, beneficial/harmful effects and the disease table. Growth phases are named but not defined; general microbial control and nitrogen/carbon-cycle organisms are asked but not taught. The 21×5 disease table has eight external symptom-guide links that were not treated as primary sources; disease claims need authoritative review. Existing visual task owns the table. No medical advice, practical protocol or answer key was invented."
+    "BIO-WK-T3-W02 (2026-11-08) indexed microbial growth, beneficial/harmful effects and the disease table. Growth phases are named but not defined; general microbial control and nitrogen/carbon-cycle organisms are asked but not taught. The 21×5 disease table has eight external symptom-guide links that were not treated as primary sources; disease claims need authoritative review. Existing visual task owns the table. No medical advice, practical protocol or answer key was invented.",
+    "BIO-WK-T3-W03 (2026-11-08) indexed the STI definition/table and HIV/AIDS section, plus every evaluation/general/weekend/theory prompt. The body label says WEEK SEVEN although this is scheme row 3; another WEEK SEVEN label occurs at block 474. HIV is expanded inconsistently in table/body, and health claims require authoritative review. Existing visual task owns the STI table; a factual review, label-scope task and age-appropriate lesson task were appended. No answer key or medical advice was created."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -65,8 +66,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 32,
-    "PENDING": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 33,
+    "PENDING": 90,
     "BLOCKED": 7
   },
   "items": [
@@ -2620,8 +2621,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 175 text \"                                                       WEEK SEVEN                              DATE ……………………………….\" (sha256 e43a5742583e8a8ba386bade0de387b049a94a50485144d8443fbc82e136ed11); blocks 175-215; range sha256 3e25575a5318d1b1efb11d9e15e9a689b9e1a7de2209728bd1b6b9c4fb7138cd. Label says SEVEN but the topic SEXUALLY TRANSMITTED INFECTIONS (177) is scheme row 3, and the label SEVEN also appears in block 474. Content: definition, mode of transmission, symptoms, prevention and control; STI table (block 183; gonorrhoea, syphilis, AIDS, genital warts); HIV and AIDS (185-187, mode of transmission 188-194), Evaluation (196), GENERALEVALUATION/REVISIONAL QUESTIONS (199), Weekend Assignment (206-211, theory 212-214). HIV is named 'Acquired immune deficiency virus' at 186 and 'Human immune – deficiency virus (HIV)' in table 183. Health statements need authoritative checking in correction work; do not extend or soften them. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W03.md; verified the native DOCX member hash and Week 3-position label/range hashes. Indexed STI definition, four-row STI table, HIV/AIDS section and all evaluation/general/weekend/theory items. The label says WEEK SEVEN although the scheme row is 3; a second WEEK SEVEN label occurs at block 474. The table/body use inconsistent expansions of HIV, and the transmission/prevention claims require current authoritative review. Existing BIO-VIS-T3-TBL-STI owns the table. No answer key or medical advice was created; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4590,6 +4591,76 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W02; no nitrogen/carbon cycle microorganisms are identified in this week's teaching body."
+    },
+    {
+      "id": "BIO-FACT-T3-W03-STI-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 3-position blocks 182-194; STI table block 183",
+      "objective": "Verify STI/HIV disease names, causative agents, symptoms, transmission and prevention/control claims against current authoritative public-health sources. Resolve the inconsistent HIV expansion in table block 183 versus body block 186 and review the source's transmission claims. Record citations and keep corrected educational wording separate from the original; do not provide individualized medical advice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W03.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W03-STI-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W03; medical/health claims require current authoritative verification."
+    },
+    {
+      "id": "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 3; body block 175 (WEEK SEVEN); second WEEK SEVEN label at block 474",
+      "objective": "Resolve the mismatch between scheme row 3 (STIs) and the body label WEEK SEVEN at block 175; compare with the second WEEK SEVEN label at block 474 and the combined scheme rows 6/7. Obtain owner-approved section boundaries and numbering; preserve original labels until approval.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W03.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-SCOPE-T3-W03-LABEL-ALIGNMENT.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W03"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W03; label mismatch is explicitly recorded in the source inventory."
+    },
+    {
+      "id": "BIO-LES-T3-W03-STI",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 3-position STI/HIV blocks 182-194",
+      "objective": "Author a clearly labelled, age-appropriate, source-distinct educational lesson on STIs and HIV/AIDS after BIO-FACT-T3-W03-STI-CLAIMS has verified the health content. Use non-graphic, factual language, avoid individualized medical advice, and include complete keyed practice. Keep the source's original wording separate from current verified supplemental content.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W03.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W03-STI.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W03",
+        "BIO-FACT-T3-W03-STI-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W03; no STI/HIV lesson is registered in biology.json."
     }
   ],
   "review": {
@@ -4632,7 +4703,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W03",
     "BIO-WK-T3-W04",
     "BIO-WK-T3-W05",
     "BIO-WK-T3-W06-W07",
@@ -4678,6 +4748,8 @@
     "BIO-FACT-T3-W02-DISEASES",
     "BIO-LES-T3-W02-GROWTH-PHASES",
     "BIO-LES-T3-W02-MICROBIAL-CONTROL",
-    "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES"
+    "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
+    "BIO-FACT-T3-W03-STI-CLAIMS",
+    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT"
   ]
 }
