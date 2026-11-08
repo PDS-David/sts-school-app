@@ -78,7 +78,8 @@
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A (2026-11-08): image12.jpeg at block 493 is a small labelled female reproductive-tract schematic (fallopian tube, ovary, uterus, cervix, vagina); it does not label vulva/labia mentioned in block 490. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B (2026-11-08): image13.jpeg at block 494 is a photographed textbook page with a female reproductive-system diagram and text; hdphoto2.wdp is its alternate/effect layer, not a separate figure. No visible source citation/licence; reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-TBL-DIGESTION (2026-11-08): block 431 is a native 7×3 Word table with six paired monogastric/polygastric distinctions; source table structure is intact. The table hash recorded in the task/inventory does not match the documented concatenated-cell-text method; AG-CORR-T3-W04-TBL-DIGESTION-HASH was appended to verify/correct the inventory hash.",
-    "AG-VIS-T3-W05-RESPIRATORY (2026-11-08): image14.jpeg at block 547 is a slide-like lower-respiratory-tract graphic with readable text and labelled lung diagram. 'Syrinx (in birds)' and hyoid bone appear as image labels but are not explained in block 546. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement."
+    "AG-VIS-T3-W05-RESPIRATORY (2026-11-08): image14.jpeg at block 547 is a slide-like lower-respiratory-tract graphic with readable text and labelled lung diagram. 'Syrinx (in birds)' and hyoid bone appear as image labels but are not explained in block 546. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
+    "AG-VIS-T3-W05-FISH-GILLS (2026-11-08): block 554 contains two legible fish-gill diagrams: image15 labels arch/filaments/rakers; image16 is a multi-panel bony-fish gill figure with additional lamellae/capillary/blood-supply labels. No reuse licence or rights attribution is supplied; reuse is blocked pending clearance or rights-cleared replacements."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -93,8 +94,8 @@
     "CORRECTION_BINDING": 13
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 63,
-    "PENDING": 87,
+    "IMPLEMENTED_TESTING_DEFERRED": 64,
+    "PENDING": 86,
     "BLOCKED": 2
   },
   "items": [
@@ -2758,8 +2759,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, image15.jpeg SHA-256 7c7e5785459311423433703b151d254da42266472783728dc866406092f010ef (19,872 bytes; 340×200), and image16.jpeg SHA-256 a052889cda6e3baf6cf2723aeee4be3400c90d6db4b1aebd2e866ff77921947f (94,770 bytes; 628×436). Both are in document.xml body block 554: rId27 -> image15.jpeg; rId28 -> image16.jpeg. Image15 is a simple gill-arch diagram labelled gill rakers, gill filaments and gill arch; labels are clear. Image16 is a detailed multi-panel bony-fish gill illustration, with cut-away operculum/gill chamber, gill rakers, filaments, gill arch, lamellae, capillaries and afferent/efferent branchial arteries; its internal caption explains panels A-C. Labels and relationships are readable at native size. Block 552 prose covers gill rakers, arch, filaments and operculum; additional image labels are not explained in that passage. Block 555 caption is 'Diagram of fish gill'. No visible credit/licence; image15 XMP records Photoshop as creator tool only, not author or rights. Do not reuse without rights clearance. Added open item AGRICULTURAL-SCIENCE-T3-W05-FISH-GILLS-RIGHTS. No derivative created. Importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5725,7 +5726,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W05-FISH-GILLS",
     "AG-VIS-T3-W05-RESPIRATION-EQUATIONS",
     "AG-VIS-T3-W06-TBL-GESTATION",
     "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
