@@ -36,7 +36,8 @@
     "AG-WK-T1-W06 (2026-11-08) indexed First Term Week 6: definition, 14-row industry/raw-material table and ten agriculture-industry relationships are source-taught. Cereal questions cross-map to Week 10 block 893; agro-chemical list supported across Weeks 5-6. Storage-structure/produce pairings and incubator MCQ classification remain follow-ups; table visual disposition remains separate.",
     "AG-WK-T1-W07 (2026-11-08) indexed First Term Week 7: land definition, agricultural/non-agricultural uses and land-availability factors are source-taught. Four game reserves supplied for five-item questions; socio-economic factors, land-mobility wording, game-reserve use MCQ and labour-factor MCQ need bounded follow-up.",
     "AG-WK-T1-W08 (2026-11-08) indexed First Term Week 8: source teaches five land-tenure systems but not the agricultural laws/reforms named in the scheme heading. Land Use Act references in Weeks 3/7 require legal verification; questions on most common tenure system are not answered in source. Evaluation heading 643 is empty; reading assignment points back to Week4 government roles.",
-    "AG-WK-T1-W10 (2026-11-08) indexed First Term Week 10: crop classification by life cycle, morphology and uses is source-taught. Seven-difference monocot/dicot theory exceeds the three source contrasts; biennial definition at block 878 is defective and examples need fact-check. Five biotic-factor revision item cross-maps to Week 9 blocks 805-824."
+    "AG-WK-T1-W10 (2026-11-08) indexed First Term Week 10: crop classification by life cycle, morphology and uses is source-taught. Seven-difference monocot/dicot theory exceeds the three source contrasts; biennial definition at block 878 is defective and examples need fact-check. Five biotic-factor revision item cross-maps to Week 9 blocks 805-824.",
+    "AG-WK-T2-W01 (2026-11-08) indexed Second Term Week One: scheme item is Revision of Last Term Work, but source has only placeholder bullets for objective/theory answers and no questions or answers. Revision remains UNRESOLVED pending exact prior-term papers and approved answer key; no answers invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -51,8 +52,8 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 21,
-    "PENDING": 84,
+    "IMPLEMENTED_TESTING_DEFERRED": 22,
+    "PENDING": 83,
     "BLOCKED": 2
   },
   "items": [
@@ -1074,8 +1075,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 24 text \"WEEK ONEDATE: __________\" (sha256 e2d88213935cb2a74c6f5b63b48658fed021499c0e466015b262c70f79aa1174); blocks 24-30; range sha256 6b1186edc3dd9b108beb340f504a00dcc4e7935fb2ba1cc428c13b8f084e3e6d. Topic: Revision of Last Term Work (scheme item 1, inferred from order). Only a topic line (block 25), the heading CONTENT (26) and two bullets 'Answers to last term’s objective questions' (27) and 'Answers to last term’s theory questions' (28); no answers, questions or other teaching text are present. Any lesson would have to cite last term's papers, which this source does not contain; record as a gap, do not invent answers. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member 'SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx' SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042, and Week One range blocks 24-30 SHA-256 6b1186edc3dd9b108beb340f504a00dcc4e7935fb2ba1cc428c13b8f084e3e6d. Scheme block 7 names Revision of Last Term Work. Week One has only topic block 25, CONTENT heading 26 and placeholder bullets 27-28 for objective/theory answers; no actual questions, answers, key or marking guidance. Added UNRESOLVED coverage COV-AG-T2-W01-REVISION and open item AGRICULTURAL-SCIENCE-T2-W01-REVISION-SOURCE requiring exact prior-term revision papers and approved answer key before authoring a lesson. No answers invented; no source bytes changed. Full analysis: AG-WK-T2-W01.md. Importer/tests/typecheck/DB/device checks not run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4042,7 +4043,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T2-W01",
     "AG-WK-T2-W02-03",
     "AG-WK-T2-W04-05",
     "AG-WK-T2-W06",

@@ -769,6 +769,28 @@
         }
       ],
       "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T2-W01-REVISION",
+      "source_id": "SS1-SRC-956594d97094",
+      "objective": "Scheme item 1: Revision of Last Term Work",
+      "objective_locator": "Second Term scheme block 7; Week One label block 24; topic block 25",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Second Term word/document.xml direct w:body blocks 24-30; range SHA-256 6b1186edc3dd9b108beb340f504a00dcc4e7935fb2ba1cc428c13b8f084e3e6d",
+          "explanation": "Week One contains only label 24, topic line 25, CONTENT heading 26, and two bullets: answers to last term's objective questions (27) and theory questions (28); blocks 29-30 are blank."
+        },
+        {
+          "locator": "Blocks 27-28",
+          "explanation": "These are answer-category placeholders, not actual questions, worked answers, an answer key or marking guidance."
+        },
+        {
+          "locator": "Second Term scheme block 7",
+          "explanation": "The scheme names Revision of Last Term Work, but the material needed to deliver it is absent from the Week One source."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1243,6 +1265,17 @@
       "affected_ids": [
         "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
         "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W01-REVISION-SOURCE",
+      "kind": "CONTENT",
+      "detail": "Second Term Week One says it contains answers to last term's objective and theory questions (27-28), but supplies no questions, answers, answer key or marking guide. The First Term teaching document is not a substitute for the actual prior-term revision papers/approved key.",
+      "required_action": "Obtain the exact First Term objective and theory revision papers (or teacher-approved question set) and approved answer key/marking guide before authoring or validating the revision lesson. Until supplied, keep COV-AG-T2-W01-REVISION UNRESOLVED and do not invent answers.",
+      "affected_ids": [
+        "COV-AG-T2-W01-REVISION",
+        "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
     }
