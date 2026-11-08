@@ -153,7 +153,8 @@
     "ENG-LES-T3-W05-SCHEME-GAP (2026-11-08): Added SUP-SS1-ENGLISH-DIPHTHONGS-CONJUNCTS-DISJUNCTS-T3-W05 for scheme-only /eɪ/, /aɪ/ and conjunct/disjunct strands. Existing Week 5 body lessons remain intact; discrepancy is preserved and new coverage is additive.",
     "ENG-LES-T1-W07-REVISION (2026-11-08): Added SUP-SS1-ENGLISH-W07-CONSONANT-REVISION-EQUIVALENT-T1 with explicitly marked target graphemes, IPA answers and 20-mark keyed practice. It is an original equivalent; exact underlining in the source Word document is not inferred. The source-visual inspection item is retained as non-blocking.",
     "ENG-FACT-W08-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-JEWISH-COMMUNITIES-READING-T1-W08, an original, sourced reading passage and 20-mark keyed comprehension exercise. It is a clearly labelled equivalent, not a reproduction of the unavailable textbook passage or page-61 questions.",
-    "ENG-FACT-W09-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-READING-T1-W09, an original neutral religion-vocabulary passage and 16-mark keyed reading assignment. It is a labelled equivalent for the unavailable Effective English page; no textbook page or key is claimed as inspected."
+    "ENG-FACT-W09-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-READING-T1-W09, an original neutral religion-vocabulary passage and 16-mark keyed reading assignment. It is a labelled equivalent for the unavailable Effective English page; no textbook page or key is claimed as inspected.",
+    "ENG-FACT-ORAL-AUDIO and ENG-ASSET-AUDIO-MODEL (2026-11-08): Generated and committed a short original synthetic British English pronunciation model using eSpeak 1.48.15 en-gb. Registered the 6,272-byte MP3 with exact SHA-256, media type, alt text, provenance, licence basis and lesson binding. The clip supports selected vowel, consonant and stress contrasts. Teacher oral observation remains a separate deferred verification; playback does not certify learner speech."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -166,9 +167,9 @@
     "OWNER_DECISION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 239,
+    "IMPLEMENTED_TESTING_DEFERRED": 241,
     "PENDING": 0,
-    "BLOCKED": 3
+    "BLOCKED": 1
   },
   "items": [
     {
@@ -3741,8 +3742,8 @@
         "ENG-LES-PHONETICS-T3",
         "ENG-LES-STRESS-T3"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED — no authorised audio model or rights statement is registered. Request: provide an accessible audio/mpeg or audio/wav recording, creator/provider, licence or written permission, accent/model and a mapping to the phonetics/stress objectives. New permission blocker ENGLISH-AUTHORISED-AUDIO-MODEL records the request. Oral observation remains a separate DEFERRED verification under ENGLISH-ORAL-OBSERVATION.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Registered original synthetic British English model SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1 with audio asset ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB. Supports selected /ɪ/-/iː/, /θ/-/ð/, /eɪ/-/aɪ/ and noun/verb stress contrasts. Teacher oral observation remains separately DEFERRED; audio playback is not proof of learner speaking proficiency.",
       "completion_condition": "A concrete audio file or accessible authorised recording and permission basis are documented for ENG-ASSET-AUDIO-MODEL. This task does not require asset installation or oral observation. Keep the package's oral-observation open item open until later verification.",
       "required_attachments": []
     },
@@ -3897,8 +3898,8 @@
       "depends_on": [
         "ENG-FACT-ORAL-AUDIO"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "BLOCKED — no supplied audio file/rights evidence and no registered English asset directory on master. Depends on ENG-FACT-ORAL-AUDIO. Request: owner to supply the actual authorised audio/mpeg or audio/wav bytes plus creator, licence/permission, accent/model and supported lesson objectives; only then add the asset with exact SHA256, byte count, alt text, provenance and lesson_id binding. No placeholder asset created.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3. Asset ID ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB; media_type audio/mpeg; bytes 6272; SHA-256 1c31a9b0ed6204799e22f4f195d8ffbb515a99f98bf611ea27917bef78d9baa0; alt text and provenance recorded; lesson_id SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1. Generated from original script using eSpeak en-gb; output use permission basis recorded. Content approval PENDING; verification DEFERRED.",
       "completion_condition": "Owner supplies audio with a rights statement; the asset is added with exact sha256, bytes, alt text and a lesson_id binding, per the contract.",
       "required_attachments": []
     },
