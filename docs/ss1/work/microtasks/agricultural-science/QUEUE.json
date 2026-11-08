@@ -56,7 +56,8 @@
     "AG-WK-T3-W10 (2026-11-08) indexed cattle management. Breeds, terms, characteristics, rearing systems, feeding, management stages and parasites/diseases are source-taught. Theory 1253 asks for a tattooing definition not supplied; 'Rational grazing' vs 'rotational grazing' and 'pig houses' in cattle mange section are flagged. Veterinary/chemical statements including a printed 10 mg/kg/8-week TB drug regimen are preserved as source statements and routed for safety/factual review, not endorsed.",
     "AG-MARK-T2-REVISION (2026-11-08): scheme block 14 'Revision.' and terminal Week Ten label plus 'REVISION' blocks 675-676 are SCHEME_ONLY markers, not lessons. No Week Ten body, revision worksheet or marking scheme exists. The in-body 'GENERAL EVALUATION/REVISION QUESTIONS' at block 232 remains teaching-week assessment material.",
     "AG-MARK-T2-EXAM (2026-11-08): scheme block 15 '11-12. Examination' classified SCHEME_ONLY. The source has no Week 11/12 instructional body, examination paper or marking scheme; no content is invented.",
-    "AG-MARK-T3-REVISION (2026-11-08): scheme block 14 '11Revision ' is a SCHEME_ONLY revision marker. The source has ten teaching-week bodies only and no Week 11 revision lesson, worksheet or marking scheme."
+    "AG-MARK-T3-REVISION (2026-11-08): scheme block 14 '11Revision ' is a SCHEME_ONLY revision marker. The source has ten teaching-week bodies only and no Week 11 revision lesson, worksheet or marking scheme.",
+    "AG-MARK-T3-EXAM (2026-11-08): scheme block 15 '12Examination' is a SCHEME_ONLY examination marker. Rule R003 and MARKER coverage COV-AG-T3-EXAMINATION-SCHEME are already present. No Week 12 body, exam paper or marking scheme exists."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -71,8 +72,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 41,
-    "PENDING": 107,
+    "IMPLEMENTED_TESTING_DEFERRED": 42,
+    "PENDING": 106,
     "BLOCKED": 2
   },
   "items": [
@@ -1786,8 +1787,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Scheme block 15 exact text '12Examination' SHA-256 71922f45b5afa7b8dc4121bcf450a62b7961da3f379568aaaa0d1c2de8720e7a was classified SCHEME_ONLY by source rule SS1-SRC-458a07f7ea5a-R003; MARKER coverage COV-AG-T3-EXAMINATION-SCHEME references that rule. The source has ten teaching-week bodies only, no Week 12 body, examination paper or marking scheme. Rule and coverage were included alongside the Week 11 revision marker in the immediately preceding marker commit; this task records the matching queue disposition and dedicated evidence report.",
       "completion_condition": "Examination marker is recorded as SCHEME_ONLY with exact locator; no Week 12 lesson or examination paper is invented."
     },
     {
@@ -5620,7 +5621,6 @@
     }
   },
   "next_runnable": [
-    "AG-MARK-T3-EXAM",
     "AG-VIS-T1-TBL-W02",
     "AG-VIS-T1-TBL-W06",
     "AG-VIS-T1-BRANDING",
