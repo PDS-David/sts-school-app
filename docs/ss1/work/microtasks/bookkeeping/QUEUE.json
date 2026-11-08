@@ -42,16 +42,17 @@
     "On work/bookkeeping-followup: completed petty-cash, Mr Odili trial-balance and Fashola suspense arithmetic reviews. Added eight source-scoped split_before rules for body sections corresponding to Weeks 2–8 and 10; Week 9 has no distinct body heading and remains in combined final-accounts material. Static test drafted; parser/compiler execution remains deferred.",
     "On work/bookkeeping-followup: authored six third-term supplement lessons for Week 5 errors not affecting agreement, Week 7 trading concepts, Week 8 trading-account preparation, Week 9 profit and loss, and Week 10 balance-sheet users and worked preparation. Added 12 IMPLEMENTED_EQUIVALENT coverage links. All supplements are explicitly project-authored; approval pending, verification deferred. Source assignment's 1983/1883 date conflict remains unresolved.",
     "On work/bookkeeping-followup-final: completed BK-PRE-T2 and both T2 marker dispositions. Added source-specific SCHEME_ONLY rules and MARKER coverage for revision entries 1/11 and examination entry 12. The exact T1/T2 teaching-body match owner decision remains pending; no duplicate lesson coverage or week-index coverage is linked.",
-    "On work/bookkeeping-followup-final: completed second-term worked-material and currency preservation and all four visual dispositions. T2's teaching bodies match T1 exactly; no duplicate lesson coverage was linked. T2 Week 1–4 objective indexing remains held behind BOOKKEEPING-T2-TEXT-MATCHES-T1 owner decision."
+    "On work/bookkeeping-followup-final: completed second-term worked-material and currency preservation and all four visual dispositions. T2's teaching bodies match T1 exactly; no duplicate lesson coverage was linked. T2 Week 1–4 objective indexing remains held behind BOOKKEEPING-T2-TEXT-MATCHES-T1 owner decision.",
+    "On work/bookkeeping-followup-final: added four independent first-term project-authored equivalent lessons to move forward without changing source content or overriding the blocked source-correction tasks. Coverage for source illustrations that the supplements do not fully replace remains PARTIAL. External textbook Assignment 1 is replaced only by original project-authored practice; no copyrighted text copied."
   ],
   "counts": {
     "PENDING": 10,
-    "IMPLEMENTED_TESTING_DEFERRED": 58,
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
     "BLOCKED": 6
   },
   "status_counts": {
     "PENDING": 10,
-    "IMPLEMENTED_TESTING_DEFERRED": 58,
+    "IMPLEMENTED_TESTING_DEFERRED": 62,
     "BLOCKED": 6
   },
   "items": [
@@ -2863,6 +2864,130 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Eight split_before rules RULE-BK-T3-W02 through RULE-BK-T3-W08 and RULE-BK-T3-W10 added to bookkeeping.json. Week 9 remains in combined final-account definitions/steps; no fabricated split. Evidence in BK-RULE-T3-SEGMENTATION.md.",
       "completion_condition": "Exact unique source anchors and numeric week labels are recorded; no source text is deleted; Week 9 is not given an unsupported boundary. Importer/compiler verification remains deferred."
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W01",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 1 single-column cash book",
+      "objective": "Author a clean original single-column cash book lesson with a complete, balanced worked example. Preserve the source's inconsistent cash/bank examples without copying their errors into the new lesson.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W01-SCHEME-2, COV-BK-T1-W01-SCHEME-3, COV-BK-T1-W01-SCHEME-4, COV-BK-T1-W01-MEANING, COV-BK-T1-W01-ITEMS, COV-BK-T1-W01-FORMAT, COV-BK-T1-W01-CASH-ACCOUNT, COV-BK-T1-W01-BALANCING, COV-BK-T1-W01-ILLUS-1. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W01.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W02",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 2 double-column cash book",
+      "objective": "Author a new double-column cash book lesson with correct cash/bank column entries, the single-vs-double difference, contra treatment and a balanced worked example. Do not reuse the source's unsolved April figures as a worked solution.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W02-SCHEME-5, COV-BK-T1-W02-SCHEME-6, COV-BK-T1-W02-SCHEME-7, COV-BK-T1-W02-MEANING, COV-BK-T1-W02-ITEMS, COV-BK-T1-W02-ENTRIES, COV-BK-T1-W02-DIFF, COV-BK-T1-W02-EXAMPLE, COV-BK-T1-W02-BALANCE. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W02.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W03",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 3 contra entries",
+      "objective": "Author a correct, original contra-entry lesson explaining both transfer directions, debit/credit treatment, C folio and non-contra cases. Keep the source's incorrect wording and inconsistent examples in the preservation record only.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W03-SCHEME-8, COV-BK-T1-W03-EXPLAIN, COV-BK-T1-W03-IDENTIFY, COV-BK-T1-W03-FOLIO, COV-BK-T1-W03-RECORD-A, COV-BK-T1-W03-RECORD-B, COV-BK-T1-W03-RULE. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W03.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W04",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 4 double entry and ledger posting",
+      "objective": "Author a clean original lesson on double entry, account rules, identifying debit/credit accounts, cash-book-to-ledger posting, ledger format and balancing. Include original substitute practice rather than reproducing the external textbook assignment.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W04-SCHEME-9, COV-BK-T1-W04-SCHEME-10, COV-BK-T1-W04-MEANING, COV-BK-T1-W04-RULES, COV-BK-T1-W04-TWO-ACCOUNTS, COV-BK-T1-W04-IDENTIFY, COV-BK-T1-W04-POSTING-MEANING, COV-BK-T1-W04-POSTING-RULES, COV-BK-T1-W04-LEDGER-FORMAT, COV-BK-T1-W04-BALANCE-OFF, COV-BK-T1-W04-ASSIGN-1, COV-BK-T1-W04-ASSIGN-2. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W04.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
     }
   ],
   "review": {
