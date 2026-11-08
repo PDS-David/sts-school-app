@@ -37,16 +37,17 @@
     "On work/bookkeeping-ss1: added a static package test for coverage referential integrity (registered source IDs, declared lesson/classify_marker targets, evidence, and required targets for complete statuses). Not run (testing remains deferred). Queue next_runnable is empty pending the missing original 3rd Term DOCX for BK-INV-T3 and owner resolution of BOOKKEEPING-T2-TEXT-MATCHES-T1 plus the first-term factual-decision gates; T2 indexing/dispositions remain intentionally held and no duplicate coverage is linked.",
     "On work/bookkeeping-followup: BK-INV-T3 completed from user-supplied original DOCX. Member SHA-256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d exactly matches manifest/package source SS1-SRC-97f226215927. Inventory at BK-INV-T3.md: 499 content blocks, scheme weeks 1–12, no body WEEK labels, four continuous unlabelled topic sections, 67 VML objects, no native tables/media/OLE/equations. Added 19 PENDING tasks for preamble, markers, Weeks 2–10 indexing, worked/currency preservation and five visual dispositions. No lesson, coverage or source rule added; parser/tests remain deferred.",
     "On work/bookkeeping-followup: BK-PRE-T3, BK-MARK-T3-REVISION and BK-MARK-T3-EXAM completed. Preamble mapping is recorded; exact Week 1/11 revision and Week 12 exam markers are classified SCHEME_ONLY with MARKER coverage targeting their respective rule IDs. No revision/exam content invented; tests/importer remain deferred.",
-    "On work/bookkeeping-followup: completed objective-level indexing for scheme Weeks 2–10. Added 24 third-term PARTIAL/UNRESOLVED coverage entries with empty lesson targets (no false claims of authored teaching). Appended six bounded original-lesson tasks for missing scheme objectives and three worked-material arithmetic review tasks. Week body segmentation remains unverified because the DOCX contains no explicit WEEK markers."
+    "On work/bookkeeping-followup: completed objective-level indexing for scheme Weeks 2–10. Added 24 third-term PARTIAL/UNRESOLVED coverage entries with empty lesson targets (no false claims of authored teaching). Appended six bounded original-lesson tasks for missing scheme objectives and three worked-material arithmetic review tasks. Week body segmentation remains unverified because the DOCX contains no explicit WEEK markers.",
+    "On work/bookkeeping-followup: completed third-term worked-material and currency preservation plus five visual dispositions. Recorded the petty-cash layout, trial-balance list/diagram, cash and ledger accounts, journal/suspense account, and balance-sheet format. Arithmetic discrepancies and the 1983/1883 date conflict remain explicit; no original figures changed."
   ],
   "counts": {
-    "PENDING": 35,
-    "IMPLEMENTED_TESTING_DEFERRED": 32,
+    "PENDING": 28,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
     "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 35,
-    "IMPLEMENTED_TESTING_DEFERRED": 32,
+    "PENDING": 28,
+    "IMPLEMENTED_TESTING_DEFERRED": 39,
     "BLOCKED": 6
   },
   "items": [
@@ -2259,12 +2260,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-PRES-T3-WORKED",
       "kind": "SOURCE_PRESERVATION",
       "week_or_locator": "Petty cash example blocks 62–81; trial balance example blocks 180–259; error-correction journal blocks 269–303 and 332–388; balance-sheet assignment blocks 457–468",
       "objective": "Preserve all worked solutions, journal entries, ledger postings, trial-balance and suspense-account figures as separate source-faithful material. Check arithmetic by reading the original transaction lists and answer layouts; record mismatches without changing source values or inventing missing solutions.",
-      "implementation_reference": "BK-INV-T3: worked source locators and discrepancies documented at blocks 62–81, 180–259, 269–303, 332–388, 457–468.",
+      "implementation_reference": "BK-INV-T3: worked source locators and discrepancies documented at blocks 62–81, 180–259, 269–303, 332–388, 457–468.; evidence record created at BK-PRES-T3-WORKED.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T3-WORKED.md"
@@ -2296,12 +2297,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-PRES-T3-CURRENCY",
       "kind": "SOURCE_PRESERVATION",
       "week_or_locator": "Whole document; currency marker # and dated examples at blocks 180, 428, 457 and 468",
       "objective": "Record the source's exact currency notation and dated figures. The source uses # before amounts but does not name a currency or ISO code. Record June 1999, 31 Dec. 2000 and the assignment's 1983/1883 discrepancy; do not convert, update or infer currency.",
-      "implementation_reference": "BK-INV-T3 currency and date observations; source core metadata created/modified 2016-05-19T02:50:00Z.",
+      "implementation_reference": "BK-INV-T3 currency and date observations; source core metadata created/modified 2016-05-19T02:50:00Z.; evidence record created at BK-PRES-T3-CURRENCY.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T3-CURRENCY.md"
@@ -2333,12 +2334,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-VIS-T3-PETTY-CASH",
       "kind": "VISUAL_DISPOSITION",
       "week_or_locator": "Blocks 62–81; VML objects at 62 (4), 63 (8), 77 (6), 78 (1); tab-aligned receipt, date, details, voucher, total and analysis columns.",
       "objective": "Record the source visual disposition for Petty cash book layout. Determine which columns/rules are lost in plain-text extraction and specify a faithful explicit table reconstruction boundary. Preserve every original amount and row. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
-      "implementation_reference": "BK-INV-T3: Blocks 62–81; VML objects at 62 (4), 63 (8), 77 (6), 78 (1); tab-aligned receipt, date, details, voucher, total and analysis columns.",
+      "implementation_reference": "BK-INV-T3: Blocks 62–81; VML objects at 62 (4), 63 (8), 77 (6), 78 (1); tab-aligned receipt, date, details, voucher, total and analysis columns.; evidence record created at BK-VIS-T3-PETTY-CASH.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-PETTY-CASH.md"
@@ -2370,12 +2371,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-VIS-T3-TRIAL-BALANCE",
       "kind": "VISUAL_DISPOSITION",
       "week_or_locator": "Blocks 90–164; VML objects at 90–91, 103, 117, 130, 141, 156, 158–161; account-side markers and credit/debit classification diagram.",
       "objective": "Record the source visual disposition for Trial balance and classification diagram. Record the list's debit/credit alignment and the diagram's arrows/positions; do not infer side assignments from flattened spaces alone. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
-      "implementation_reference": "BK-INV-T3: Blocks 90–164; VML objects at 90–91, 103, 117, 130, 141, 156, 158–161; account-side markers and credit/debit classification diagram.",
+      "implementation_reference": "BK-INV-T3: Blocks 90–164; VML objects at 90–91, 103, 117, 130, 141, 156, 158–161; account-side markers and credit/debit classification diagram.; evidence record created at BK-VIS-T3-TRIAL-BALANCE.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-TRIAL-BALANCE.md"
@@ -2407,12 +2408,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-VIS-T3-LEDGERS",
       "kind": "VISUAL_DISPOSITION",
       "week_or_locator": "Blocks 189–243 and related illustration; VML objects at 190, 207, 214, 220, 225, 233, 243; connectors and double rules across cash, sales, purchases, wages, insurance and Olu accounts.",
       "objective": "Record the source visual disposition for Cash and individual ledger account formats. Determine whether the DR/CR headings, account sides, balance c/d and balance b/d associations survive; recommend explicit two-sided ledger tables. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
-      "implementation_reference": "BK-INV-T3: Blocks 189–243 and related illustration; VML objects at 190, 207, 214, 220, 225, 233, 243; connectors and double rules across cash, sales, purchases, wages, insurance and Olu accounts.",
+      "implementation_reference": "BK-INV-T3: Blocks 189–243 and related illustration; VML objects at 190, 207, 214, 220, 225, 233, 243; connectors and double rules across cash, sales, purchases, wages, insurance and Olu accounts.; evidence record created at BK-VIS-T3-LEDGERS.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-LEDGERS.md"
@@ -2444,12 +2445,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-VIS-T3-JOURNAL-SUSPENSE",
       "kind": "VISUAL_DISPOSITION",
       "week_or_locator": "Blocks 280–388; VML objects at 281, 345, 354–355, 367–368, 381; journal columns and suspense-account debit/credit sides.",
       "objective": "Record the source visual disposition for Journal and suspense account layouts. Record column and row association lost by tab flattening; preserve printed entries and totals, including the unresolved 950 vs 1,400 suspense debit/credit discrepancy. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
-      "implementation_reference": "BK-INV-T3: Blocks 280–388; VML objects at 281, 345, 354–355, 367–368, 381; journal columns and suspense-account debit/credit sides.",
+      "implementation_reference": "BK-INV-T3: Blocks 280–388; VML objects at 281, 345, 354–355, 367–368, 381; journal columns and suspense-account debit/credit sides.; evidence record created at BK-VIS-T3-JOURNAL-SUSPENSE.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-JOURNAL-SUSPENSE.md"
@@ -2481,12 +2482,12 @@
         "BK-INV-T3",
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-VIS-T3-BALANCE-SHEET",
       "kind": "VISUAL_DISPOSITION",
       "week_or_locator": "Blocks 428–452; VML objects at 429 and 442; tab-aligned capital/liabilities and assets/current-assets columns.",
       "objective": "Record the source visual disposition for Balance sheet format. Record the two-column balance-sheet grouping and identify where headings/amounts may be misassociated in plain text. No data values are to be supplied where the source uses x/xx placeholders. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
-      "implementation_reference": "BK-INV-T3: Blocks 428–452; VML objects at 429 and 442; tab-aligned capital/liabilities and assets/current-assets columns.",
+      "implementation_reference": "BK-INV-T3: Blocks 428–452; VML objects at 429 and 442; tab-aligned capital/liabilities and assets/current-assets columns.; evidence record created at BK-VIS-T3-BALANCE-SHEET.md. No original source text or figures changed; no app display or importer verification claimed.",
       "allowed_write_paths": [
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
         "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-BALANCE-SHEET.md"
@@ -2829,13 +2830,6 @@
     }
   },
   "next_runnable": [
-    "BK-PRES-T3-WORKED",
-    "BK-PRES-T3-CURRENCY",
-    "BK-VIS-T3-PETTY-CASH",
-    "BK-VIS-T3-TRIAL-BALANCE",
-    "BK-VIS-T3-LEDGERS",
-    "BK-VIS-T3-JOURNAL-SUSPENSE",
-    "BK-VIS-T3-BALANCE-SHEET",
     "BK-LES-T3-W05-NOT-AFFECT",
     "BK-LES-T3-W07-TRADING",
     "BK-LES-T3-W08-PREP",
