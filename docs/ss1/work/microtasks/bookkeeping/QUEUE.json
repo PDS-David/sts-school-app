@@ -34,23 +34,17 @@
     "On work/bookkeeping-ss1: BK-MARK-T1-REVISION and BK-MARK-T1-EXAM implemented as source-only marker dispositions; 3 preamble classify_marker rules and 3 MARKER coverage entries added. No lessons or exam/revision content invented. Parser/schema/tests deferred.",
     "On work/bookkeeping-ss1: completed first-term Week 1 T-account visual disposition, Week 3 and Week 4 table dispositions, and first-term worked-material and currency preservation records. All are source-reading dispositions; importer/rendering/package tests remain deferred.",
     "On work/bookkeeping-ss1: BK-TEST-PACKAGE test file drafted only, following the French package test pattern. It is intentionally not run; execution and typecheck remain deferred by owner.",
-    "On work/bookkeeping-ss1: added a static package test for coverage referential integrity (registered source IDs, declared lesson/classify_marker targets, evidence, and required targets for complete statuses). Not run (testing remains deferred). Queue next_runnable is empty pending the missing original 3rd Term DOCX for BK-INV-T3 and owner resolution of BOOKKEEPING-T2-TEXT-MATCHES-T1 plus the first-term factual-decision gates; T2 indexing/dispositions remain intentionally held and no duplicate coverage is linked."
+    "On work/bookkeeping-ss1: added a static package test for coverage referential integrity (registered source IDs, declared lesson/classify_marker targets, evidence, and required targets for complete statuses). Not run (testing remains deferred). Queue next_runnable is empty pending the missing original 3rd Term DOCX for BK-INV-T3 and owner resolution of BOOKKEEPING-T2-TEXT-MATCHES-T1 plus the first-term factual-decision gates; T2 indexing/dispositions remain intentionally held and no duplicate coverage is linked.",
+    "On work/bookkeeping-followup: BK-INV-T3 completed from user-supplied original DOCX. Member SHA-256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d exactly matches manifest/package source SS1-SRC-97f226215927. Inventory at BK-INV-T3.md: 499 content blocks, scheme weeks 1–12, no body WEEK labels, four continuous unlabelled topic sections, 67 VML objects, no native tables/media/OLE/equations. Added 19 PENDING tasks for preamble, markers, Weeks 2–10 indexing, worked/currency preservation and five visual dispositions. No lesson, coverage or source rule added; parser/tests remain deferred."
   ],
   "counts": {
-    "SOURCE_REGISTRATION": 3,
-    "SOURCE_WEEK_INVENTORY": 3,
-    "TEST": 1,
-    "FACTUAL_DEPENDENCY": 6,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_MARKER_DISPOSITION": 4,
-    "SOURCE_WEEK_INDEXING": 8,
-    "SOURCE_PRESERVATION": 4,
-    "VISUAL_DISPOSITION": 8,
-    "LESSON": 6
+    "PENDING": 38,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
+    "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 20,
-    "IMPLEMENTED_TESTING_DEFERRED": 19,
+    "PENDING": 38,
+    "IMPLEMENTED_TESTING_DEFERRED": 20,
     "BLOCKED": 6
   },
   "items": [
@@ -231,7 +225,7 @@
       "kind": "SOURCE_WEEK_INVENTORY",
       "source_id": "SS1-SRC-97f226215927",
       "term": "3rd Term",
-      "week_or_locator": "whole document",
+      "week_or_locator": "whole document; 499 body content blocks (0–498), whole-range SHA-256 fe4b5a86ca9c2fb0582ab0adf09b6223b9d2e35d44abde61c6f00829e223be5",
       "objective": "Discover the 3rd Term week inventory from the original document and append the resulting small items to this queue: one SOURCE_WEEK_INDEXING item per teaching week (with its exact label and a reproducible locator), plus items for any substantive opening/scheme/unlabelled section, revision or examination marker, and each table, ledger, account format, equation or embedded media group that needs a separate visual disposition. Also record which structural source rules (split_before, attach_stranded_label, classify_marker) the importer's parser needs, as findings only; do not add rules here. Note debit/credit columns, ledgers, trial balances, account formats, currency and calculation steps for separate preservation items, and any worked answers whose arithmetic or reasoning needs later checking by reading. Record any dated or stale economic/currency figures as findings; later correction work needs primary data. A revision heading may contain substantive teaching: classify by body. Do not merge Bookkeeping into Financial Accounting where they overlap.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
@@ -257,9 +251,9 @@
       "depends_on": [
         "BK-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence. Week count is unknown and must not be guessed.",
-      "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md. Uploaded member bytes SHA-256 343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d match package/manifest source SS1-SRC-97f226215927. Inventory covers scheme weeks 1–12, unlabelled body sections, VML structures, dates/currency, and source gaps. Appended 19 bounded PENDING tasks: preamble, revision/exam markers, Weeks 2–10 indexing, worked-material and currency preservation, and five visual dispositions. No lessons, coverage entries or source rules were written. Parser/compiler execution and testing remain deferred.",
+      "completion_condition": "Complete inventory record lists every scheme week/section and hash/anchor locator, plus all identified visual and preservation objects. Follow-on indexing/visual tasks are appended with unique IDs, exact source locators, real dependencies on this inventory and source registration, and PENDING status. No lesson, coverage entry or rule is written by this inventory."
     },
     {
       "id": "BK-TEST-PACKAGE",
@@ -1782,6 +1776,720 @@
       "status": "BLOCKED",
       "implementation_reference": "Raised by BK-WK-T1-W03 (2026-10-30): thirteen defects in blocks 109-157, including the identical side definition at 113, the payment-into-bank-only definition at 112, the underived N710 against a N300 balance at 119-120, the two tables with no total or balance at 122 and 135, and 22 empty blocks with no exercise. No correction is authored in BK-WK-T1-W03.",
       "completion_condition": "Each defect in BOOKKEEPING-T1-W03-SOURCE-DEFECTS, the definition in BOOKKEEPING-T1-W03-CONCEPT-ERROR and each figure in BOOKKEEPING-T1-W03-FIGURE-CHECKS is answered with the treatment to be used, recorded with a reference, together with the opening balances the lesson may assume and the sequencing decision; the answer is binding on BK-LES-T1-W03-CONTRA and on any later presentation of the two examples."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "week_or_locator": "Blocks 0–43; range SHA-256 bccc05419af499fe4b74c00fa80fb410ba127765bf6d3d6e0c487e9c899d8434",
+      "objective": "Inventory the complete third-term opening and scheme preamble: exact title, scheme heading, WEEK column label, all twelve manually numbered entries and their sub-items, plus blank/spacing blocks. Map each scheme objective to source body evidence or an explicit gap. Preserve the OMEGA TERM heading/3rd Term manifest distinction.",
+      "implementation_reference": "Inventory BK-INV-T3 blocks 0–43; scheme entries blocks 5–41. Whole preamble hash bccc05419af499fe4b74c00fa80fb410ba127765bf6d3d6e0c487e9c899d8434.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRE-T3.md"
+      ],
+      "completion_condition": "Every non-body preamble block is accounted for; each scheme row/sub-item is mapped to body evidence or a bounded gap. No lesson, coverage or source rule is invented."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-MARK-T3-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "week_or_locator": "Scheme entries Week 1 block 5 (SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204) and Week 11 block 40 (SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166)",
+      "objective": "Disposition both revision scheme markers. Confirm whether any revision body, worksheet, questions, answers or marking scheme exists; inventory shows none. Classify as preamble-only markers without creating revision lessons.",
+      "implementation_reference": "BK-INV-T3 scheme blocks 5 and 40; no revision section occurs in body blocks 44–468.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-MARK-T3-REVISION.md"
+      ],
+      "completion_condition": "Both revision markers are source-dispositioned with exact anchors and evidence. If implemented in package, each MARKER coverage entry targets its own classify_marker rule ID. No revision content is invented."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-MARK-T3-EXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "week_or_locator": "Scheme entry Week 12 block 41 (SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be)",
+      "objective": "Disposition the examination marker. Confirm that no examination paper, questions, answers, marks, duration or marking scheme is supplied; classify only the scheme marker.",
+      "implementation_reference": "BK-INV-T3 scheme block 41; no examination material occurs in body blocks 44–468.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-MARK-T3-EXAM.md"
+      ],
+      "completion_condition": "Examination marker is recorded with exact evidence and no invented paper or assessment. If implemented in package, MARKER coverage targets its classify_marker rule ID."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 2 \"petty cash book\" at blocks 6–9; body evidence: Blocks 44–81 (range SHA-256 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6)",
+      "objective": "Index third-term scheme Week 2 at objective level. Blocks 44–81 (range SHA-256 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6). Map meaning, classification of columns, posting of transactions, procedures and the printed layout/example. Preserve the # notation; check the float, reimbursements and column totals against the source. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 2 at blocks 6–9; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W02.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 3 \"trial balance and correction of errors\" at blocks 10–13; body evidence: Blocks 85–150 for meaning, trial-balance list, differences and functions; ledger extraction/balancing example continues at 166–259",
+      "objective": "Index third-term scheme Week 3 at objective level. Blocks 85–150 for meaning, trial-balance list, differences and functions; ledger extraction/balancing example continues at 166–259. Map meaning, functions and extraction of ledger balances; do not assert a week boundary the document does not print. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 3 at blocks 10–13; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W03.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 4 \"trial balance and correction of error\" at blocks 14–16; body evidence: Blocks 151–175 contain rules/classification; ledger balancing and worked preparation appear at 166–259 (range 63dc9291dd76d28f3f2aac03e36220265942069b6f4c835bba4118df80287706)",
+      "objective": "Index third-term scheme Week 4 at objective level. Blocks 151–175 contain rules/classification; ledger balancing and worked preparation appear at 166–259 (range 63dc9291dd76d28f3f2aac03e36220265942069b6f4c835bba4118df80287706). Map the overlap with Week 3 explicitly; check the printed trial-balance totals 10,000 vs 1,000. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 4 at blocks 14–16; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W04.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 5 \"trial balance and correction of errors\" at blocks 17–21; body evidence: Blocks 261–307 contain error definitions/types and a seven-item correction illustration with journal answers",
+      "objective": "Index third-term scheme Week 5 at objective level. Blocks 261–307 contain error definitions/types and a seven-item correction illustration with journal answers. Map errors affecting and not affecting agreement separately; record any scheme objective not explicitly taught. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 5 at blocks 17–21; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W05.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 6 \"trial balance and correction of errors\" at blocks 22–23; body evidence: Blocks 308–392 (range SHA-256 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c) contain errors affecting agreement, correction process, Fashola Ltd case, journal and suspense account",
+      "objective": "Index third-term scheme Week 6 at objective level. Blocks 308–392 (range SHA-256 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c) contain errors affecting agreement, correction process, Fashola Ltd case, journal and suspense account. Check every correction and the printed suspense-account imbalance. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 6 at blocks 22–23; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W06.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 7 \"trading account\" at blocks 24–27; body evidence: Blocks 394–417 (within final accounts range 394–468) define trading account, goods available for sale, cost of goods sold and gross profit",
+      "objective": "Index third-term scheme Week 7 at objective level. Blocks 394–417 (within final accounts range 394–468) define trading account, goods available for sale, cost of goods sold and gross profit. Identify the absence of a standalone trading account format/solved example. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 7 at blocks 24–27; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W07.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 8 \"trading account\" at blocks 28–29; body evidence: Blocks 418–423 discuss steps for preparing final accounts, but no separate simple trading-account layout or worked calculation is identified",
+      "objective": "Index third-term scheme Week 8 at objective level. Blocks 418–423 discuss steps for preparing final accounts, but no separate simple trading-account layout or worked calculation is identified. Record the scheme-to-body gap and create a bounded follow-on task if required. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 8 at blocks 28–29; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W08.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 9 \"profit and loss Account\" at blocks 30–33; body evidence: Blocks 401–423 define profit and loss account and mention expenses deducted from gross profit",
+      "objective": "Index third-term scheme Week 9 at objective level. Blocks 401–423 define profit and loss account and mention expenses deducted from gross profit. Check the scheme's purpose, net-sales/net-profit computation and preparation rules against actual body evidence; no distinct P&L layout/example is identified. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 9 at blocks 30–33; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W09.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "week_or_locator": "Scheme Week 10 \"balance sheet\" at blocks 34–38; body evidence: Blocks 404, 426–468 cover definition, content/layout, evaluation and assignment",
+      "objective": "Index third-term scheme Week 10 at objective level. Blocks 404, 426–468 cover definition, content/layout, evaluation and assignment. Map assets/liabilities, users and preparation separately; inventory finds no identifiable teaching on users and the assignment date conflicts (1983 vs 1883). The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
+      "implementation_reference": "BK-INV-T3: scheme Week 10 at blocks 34–38; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-WK-T3-W10.md"
+      ],
+      "completion_condition": "Each scheme objective is listed with exact source block evidence and a coverage judgment; unprovided teaching, missing worked answers, source inconsistencies and uncertain week boundaries become bounded follow-on tasks. No unsupported completeness claim."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-PRES-T3-WORKED",
+      "kind": "SOURCE_PRESERVATION",
+      "week_or_locator": "Petty cash example blocks 62–81; trial balance example blocks 180–259; error-correction journal blocks 269–303 and 332–388; balance-sheet assignment blocks 457–468",
+      "objective": "Preserve all worked solutions, journal entries, ledger postings, trial-balance and suspense-account figures as separate source-faithful material. Check arithmetic by reading the original transaction lists and answer layouts; record mismatches without changing source values or inventing missing solutions.",
+      "implementation_reference": "BK-INV-T3: worked source locators and discrepancies documented at blocks 62–81, 180–259, 269–303, 332–388, 457–468.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T3-WORKED.md"
+      ],
+      "completion_condition": "Every worked example/answer/assignment is listed with locator and arithmetic/reasoning finding; source values remain unchanged and absent answers remain absent."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-PRES-T3-CURRENCY",
+      "kind": "SOURCE_PRESERVATION",
+      "week_or_locator": "Whole document; currency marker # and dated examples at blocks 180, 428, 457 and 468",
+      "objective": "Record the source's exact currency notation and dated figures. The source uses # before amounts but does not name a currency or ISO code. Record June 1999, 31 Dec. 2000 and the assignment's 1983/1883 discrepancy; do not convert, update or infer currency.",
+      "implementation_reference": "BK-INV-T3 currency and date observations; source core metadata created/modified 2016-05-19T02:50:00Z.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T3-CURRENCY.md"
+      ],
+      "completion_condition": "Currency notation, source dates and metadata are documented exactly; no amount or date is silently changed."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-VIS-T3-PETTY-CASH",
+      "kind": "VISUAL_DISPOSITION",
+      "week_or_locator": "Blocks 62–81; VML objects at 62 (4), 63 (8), 77 (6), 78 (1); tab-aligned receipt, date, details, voucher, total and analysis columns.",
+      "objective": "Record the source visual disposition for Petty cash book layout. Determine which columns/rules are lost in plain-text extraction and specify a faithful explicit table reconstruction boundary. Preserve every original amount and row. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
+      "implementation_reference": "BK-INV-T3: Blocks 62–81; VML objects at 62 (4), 63 (8), 77 (6), 78 (1); tab-aligned receipt, date, details, voucher, total and analysis columns.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-PETTY-CASH.md"
+      ],
+      "completion_condition": "Disposition states what the visual adds, what structure survives extraction, what is lost and how a future lesson can preserve it; no app/display verification is claimed."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-VIS-T3-TRIAL-BALANCE",
+      "kind": "VISUAL_DISPOSITION",
+      "week_or_locator": "Blocks 90–164; VML objects at 90–91, 103, 117, 130, 141, 156, 158–161; account-side markers and credit/debit classification diagram.",
+      "objective": "Record the source visual disposition for Trial balance and classification diagram. Record the list's debit/credit alignment and the diagram's arrows/positions; do not infer side assignments from flattened spaces alone. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
+      "implementation_reference": "BK-INV-T3: Blocks 90–164; VML objects at 90–91, 103, 117, 130, 141, 156, 158–161; account-side markers and credit/debit classification diagram.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-TRIAL-BALANCE.md"
+      ],
+      "completion_condition": "Disposition states what the visual adds, what structure survives extraction, what is lost and how a future lesson can preserve it; no app/display verification is claimed."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-VIS-T3-LEDGERS",
+      "kind": "VISUAL_DISPOSITION",
+      "week_or_locator": "Blocks 189–243 and related illustration; VML objects at 190, 207, 214, 220, 225, 233, 243; connectors and double rules across cash, sales, purchases, wages, insurance and Olu accounts.",
+      "objective": "Record the source visual disposition for Cash and individual ledger account formats. Determine whether the DR/CR headings, account sides, balance c/d and balance b/d associations survive; recommend explicit two-sided ledger tables. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
+      "implementation_reference": "BK-INV-T3: Blocks 189–243 and related illustration; VML objects at 190, 207, 214, 220, 225, 233, 243; connectors and double rules across cash, sales, purchases, wages, insurance and Olu accounts.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-LEDGERS.md"
+      ],
+      "completion_condition": "Disposition states what the visual adds, what structure survives extraction, what is lost and how a future lesson can preserve it; no app/display verification is claimed."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-VIS-T3-JOURNAL-SUSPENSE",
+      "kind": "VISUAL_DISPOSITION",
+      "week_or_locator": "Blocks 280–388; VML objects at 281, 345, 354–355, 367–368, 381; journal columns and suspense-account debit/credit sides.",
+      "objective": "Record the source visual disposition for Journal and suspense account layouts. Record column and row association lost by tab flattening; preserve printed entries and totals, including the unresolved 950 vs 1,400 suspense debit/credit discrepancy. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
+      "implementation_reference": "BK-INV-T3: Blocks 280–388; VML objects at 281, 345, 354–355, 367–368, 381; journal columns and suspense-account debit/credit sides.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-JOURNAL-SUSPENSE.md"
+      ],
+      "completion_condition": "Disposition states what the visual adds, what structure survives extraction, what is lost and how a future lesson can preserve it; no app/display verification is claimed."
+    },
+    {
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/05_WORKER_D_BUSINESS.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/BOOK KEEPING_.docx",
+          "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
+        }
+      ],
+      "depends_on": [
+        "BK-INV-T3",
+        "BK-SRC-T3"
+      ],
+      "status": "PENDING",
+      "id": "BK-VIS-T3-BALANCE-SHEET",
+      "kind": "VISUAL_DISPOSITION",
+      "week_or_locator": "Blocks 428–452; VML objects at 429 and 442; tab-aligned capital/liabilities and assets/current-assets columns.",
+      "objective": "Record the source visual disposition for Balance sheet format. Record the two-column balance-sheet grouping and identify where headings/amounts may be misassociated in plain text. No data values are to be supplied where the source uses x/xx placeholders. There are 67 VML drawing objects and no native Word tables or image files in the DOCX; preserve the source content and distinguish observed geometry from plain-text extraction.",
+      "implementation_reference": "BK-INV-T3: Blocks 428–452; VML objects at 429 and 442; tab-aligned capital/liabilities and assets/current-assets columns.",
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-VIS-T3-BALANCE-SHEET.md"
+      ],
+      "completion_condition": "Disposition states what the visual adds, what structure survives extraction, what is lost and how a future lesson can preserve it; no app/display verification is claimed."
     }
   ],
   "review": {
@@ -1796,5 +2504,25 @@
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
     }
   },
-  "next_runnable": []
+  "next_runnable": [
+    "BK-PRE-T3",
+    "BK-MARK-T3-REVISION",
+    "BK-MARK-T3-EXAM",
+    "BK-WK-T3-W02",
+    "BK-WK-T3-W03",
+    "BK-WK-T3-W04",
+    "BK-WK-T3-W05",
+    "BK-WK-T3-W06",
+    "BK-WK-T3-W07",
+    "BK-WK-T3-W08",
+    "BK-WK-T3-W09",
+    "BK-WK-T3-W10",
+    "BK-PRES-T3-WORKED",
+    "BK-PRES-T3-CURRENCY",
+    "BK-VIS-T3-PETTY-CASH",
+    "BK-VIS-T3-TRIAL-BALANCE",
+    "BK-VIS-T3-LEDGERS",
+    "BK-VIS-T3-JOURNAL-SUSPENSE",
+    "BK-VIS-T3-BALANCE-SHEET"
+  ]
 }
