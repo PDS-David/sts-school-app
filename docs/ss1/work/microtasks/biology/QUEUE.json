@@ -58,25 +58,26 @@
     "BIO-SEC-T1-RELEVANCE (2026-11-08) indexed the unlisted heading/definition/four-needs section at blocks 265-267. It lies inside the Week 3 body but is not named by the Classification of Living Things scheme objective. The owner placement decision remains open; source text was not moved.",
     "BIO-SEC-T1-AGRI-ECOLOGY (2026-11-08) indexed the unlisted agricultural-activity section (448-501) and farming-systems section (502-547). Both are within the Week 3 body but are not named by scheme row 3. The crop-rotation table at block 514 is recorded as 6×6. Owner placement and agricultural fact review remain open; source text was not moved and no chemical-use directions were added.",
     "BIO-SEC-T1-PESTS-DISEASES (2026-11-08) indexed unlisted crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both lifecycle diagrams remain with the existing visual task. These sections are within Week 3 but not named by scheme row 3. Owner placement and veterinary fact review remain open; no chemical or treatment instructions were added.",
-    "BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08) inspected the verified source and private rendered page: blocks 69-70 contain only a vertical divider and horizontal rule; the Plants/Animals labels and ten comparison pairs are text, not a Word table. Rendered layout is clear, but text extraction depends on whitespace and cannot guarantee paired columns. No asset/redraw is needed; a semantic two-column supplement is required and was appended as BIO-LES-T1-W02-PLANT-ANIMAL-TABLE, gated on the existing BIO-FACT-T1-W02-WORDING expert decision. No source content was changed; testing remains deferred."
+    "BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08) inspected the verified source and private rendered page: blocks 69-70 contain only a vertical divider and horizontal rule; the Plants/Animals labels and ten comparison pairs are text, not a Word table. Rendered layout is clear, but text extraction depends on whitespace and cannot guarantee paired columns. No asset/redraw is needed; a semantic two-column supplement is required and was appended as BIO-LES-T1-W02-PLANT-ANIMAL-TABLE, gated on the existing BIO-FACT-T1-W02-WORDING expert decision. No source content was changed; testing remains deferred.",
+    "BIO-VIS-T1-MICROSCOPE (2026-11-08) inspected the hash-verified source image at full enlarged resolution and in a private rendered page. The diagram labels ten parts, including a 100x objective; the written list states x4/x10/x40 and calls x40 the highest, and uses different stage/illumination terms. The original 239x211 image is not copied because reuse permission is unrecorded. A teacher fact gate BIO-FACT-T1-W02-MICROSCOPE-LABELS and a dependent project-redraw task BIO-VIS-T1-W02-MICROSCOPE-REDRAW were appended. No label was silently corrected; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 15,
+    "FACTUAL_DEPENDENCY": 16,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
-    "VISUAL_DISPOSITION": 36,
+    "VISUAL_DISPOSITION": 37,
     "SOURCE_MARKER_DISPOSITION": 1,
     "LESSON": 19,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 42,
     "PENDING": 101,
-    "BLOCKED": 8
+    "BLOCKED": 9
   },
   "items": [
     {
@@ -907,8 +908,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1), viewed directly: a labelled photograph-style diagram with eyepiece, arm, stage controls, objective lenses, coarse focus, fine focus, mechanical stage, disc diaphragm and illuminator labels; resolution is low (239x211) and one objective-magnification label is hard to read at this size, so it must be read at full resolution in the asset task. sha256 0f9ab7f639c112ac4eaae536b9e477a1d0dc982094895f59c21a08e435df3600.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Extracted original word/media/image1.jpeg from block 109: 239×211 pixels, 6,519 bytes, SHA-256 0f9ab7f639c112ac4eaae536b9e477a1d0dc982094895f59c21a08e435df3600. Labels read from the image at full enlarged inspection: Eyepiece; Arm; Objective lenses; 100x objective; Stage controls; Coarse focus; Fine focus; Mechanical Stage; Disc diaphragm; Illuminator. Compared with written parts list blocks 92-106: ocular x10; body tube; revolving nosepiece; objectives x4, x10 and x40 (x40 explicitly called the highest); coarse/fine focus knobs; arm; stage, clips and hole; condenser; mirror; base. The 100x label conflicts internally with the written x40 maximum; mechanical stage/disc diaphragm/illuminator are not reconciled with the text's stage/clips/hole/condenser/mirror. Private LibreOffice rendering (PDF page 4) confirms the diagram is present in the original but small and separate from the text. The image is absent from parsed plain text. No original image was added to assets: it is low-resolution and no reuse permission is recorded. A qualified-teacher fact gate and a project-authored redraw task were appended; no magnification or component label was silently corrected. No app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5161,6 +5162,77 @@
       "status": "PENDING",
       "implementation_reference": "Appended after BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08): a structured table supplement is required because the source's paired text is not a Word table and extraction relies on whitespace. This task remains non-runnable until BIO-FACT-T1-W02-WORDING is IMPLEMENTED_TESTING_DEFERRED; do not bypass the expert decision on the source's 'interacting' wording.",
       "completion_condition": "A clearly labelled supplement presents all ten source comparisons as semantically paired columns, retains original wording unless an approved fact decision authorizes a delivery correction, includes source provenance and complete keyed practice, binds to the exact coverage entry, and leaves original source bytes unchanged."
+    },
+    {
+      "id": "BIO-FACT-T1-W02-MICROSCOPE-LABELS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, written parts blocks 92-106 and microscope diagram block 109 (media/image1.jpeg)",
+      "objective": "Obtain a qualified Biology teacher's decision on the internal microscope-diagram discrepancies: the figure labels a 100x objective while the written list calls 40x the highest objective; it also labels Mechanical Stage, Disc diaphragm and Illuminator while the written list describes stage/clips/hole, condenser and mirror. Record the intended microscope configuration and exact labels with an authoritative course reference. Do not assume the 100x label is wrong or change the written x40 statement without evidence.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-MICROSCOPE.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W02.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W02-MICROSCOPE-LABELS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W02",
+        "BIO-VIS-T1-MICROSCOPE"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED — qualified Biology teacher decision required. The exact discrepancy and required evidence are recorded in package open item BIOLOGY-T1-W02-MICROSCOPE-LABELS. Do not create a redraw with guessed magnifications or component names.",
+      "completion_condition": "A qualified Biology teacher records the intended objective set and correct component labels with a cited course/authoritative reference, resolves the 100x-versus-40x discrepancy, and decides whether the original text or figure needs a delivery replacement."
+    },
+    {
+      "id": "BIO-VIS-T1-W02-MICROSCOPE-REDRAW",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, block 109 (original media/image1.jpeg, 239×211)",
+      "objective": "Create a new, legible, project-authored microscope diagram after BIO-FACT-T1-W02-MICROSCOPE-LABELS is resolved. Use only the teacher-approved objective magnifications and component labels; show the verified stage and illumination arrangement; do not copy the original image pixels or imply that the original image has reuse permission. Register the new asset with exact bytes/hash, alt text, source locator, project-created provenance and pending approval/deferred verification state.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W02-MICROSCOPE-LABELS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "backend/src/db/ss1/assets/biology/",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-W02-MICROSCOPE-REDRAW.md"
+      ],
+      "depends_on": [
+        "BIO-FACT-T1-W02-MICROSCOPE-LABELS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the microscope disposition (2026-11-08). This task is not runnable until BIO-FACT-T1-W02-MICROSCOPE-LABELS is IMPLEMENTED_TESTING_DEFERRED; no redraw or asset is created with unverified labels.",
+      "completion_condition": "A legible original project-authored microscope diagram uses only teacher-approved labels, is stored under backend/src/db/ss1/assets/biology/, has complete schema-compliant asset metadata and provenance, and leaves the source image untouched."
     }
   ],
   "review": {
@@ -5176,7 +5248,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-MICROSCOPE",
     "BIO-VIS-T1-CLASS-HIERARCHY",
     "BIO-VIS-T1-MONOCOT-DICOT",
     "BIO-VIS-T1-PEST-LIFECYCLES",
