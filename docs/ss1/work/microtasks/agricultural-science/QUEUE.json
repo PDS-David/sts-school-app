@@ -68,7 +68,8 @@
     "AG-VIS-T3-W01-TBL-TOOLS (2026-11-08): block 36 is a 6x10 list of 30 numbered tool names, not 30 illustrations. Project 38 asks for drawings and notes for all 30; no tool drawings are embedded. Existing tool-reference supplement task now explicitly requires one rights-cleared, provenance-recorded illustration per tool.",
     "AG-VIS-T3-W02-DRAUGHT-ANIMALS (2026-11-08): image1.png is a relevant draught-horse/animal-traction photograph with photographer/agency credit; reuse rights are not supplied. Do not republish unless licensed; otherwise use a rights-cleared equivalent. Original media not committed.",
     "AG-VIS-T3-W02-MECHANICAL-POWER (2026-11-08): image2.png appears to depict a motor grader/earthmoving machine, not an unambiguous farm tractor. It is broadly mechanical power but needs accurate labelling; credit is visible and reuse rights are not supplied. Do not republish unless licensed.",
-    "AG-VIS-T3-W02-SOLAR (2026-11-08): image3.png is a legible rooftop photovoltaic-panel image matching the solar-power text/caption, but not farm-specific. Photographer/agency credit is visible; reuse rights are not supplied. Do not republish unless licensed."
+    "AG-VIS-T3-W02-SOLAR (2026-11-08): image3.png is a legible rooftop photovoltaic-panel image matching the solar-power text/caption, but not farm-specific. Photographer/agency credit is visible; reuse rights are not supplied. Do not republish unless licensed.",
+    "AG-VIS-T3-W02-WIND (2026-11-08): inspected image4.png at Week Two block 194. It is a recognizable water-pumping windmill photo, relevant to the caption at 192 and wind-power section; credit Guy R. Higbee/Photo Researchers, Inc. is visible but no reuse licence is supplied. Delivery reuse is blocked pending rights clearance or a separately sourced rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -83,8 +84,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 53,
-    "PENDING": 95,
+    "IMPLEMENTED_TESTING_DEFERRED": 54,
+    "PENDING": 94,
     "BLOCKED": 2
   },
   "items": [
@@ -2368,8 +2369,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4c2849cc77c769b6033be9176f4f6b35c27935999e12a, and word/media/image4.png SHA-256 034549f2d0f0afd88cfdc3fb417fed853b8fdabca6e9ce483564b48e3959011f (96,678 bytes; 260×340 PNG). The image is linked by rId10 at document.xml body block 194. It shows a traditional multi-blade windmill; the preceding caption at block 192 describes a water-pumping windmill in Spring, Arizona and explains blades/sails, horizontal shaft and fantail rudder. Image is recognizable and relevant to the wind-power definition at block 190; it has no teaching labels, and the small portrait resolution is suitable for contextual recognition, not fine construction detail. A visible credit reads 'Guy R. Higbee/Photo Researchers, Inc.'; no licence or permission is supplied. Do not reuse in delivery without rights clearance; if permission is unavailable, a separate rights-cleared windmill image is needed. Preserve image, caption, credit and paragraph order. No derivative, crop, redraw or asset was created. Added open item AGRICULTURAL-SCIENCE-T3-W02-WIND-RIGHTS; report AG-VIS-T3-W02-WIND.md. Importer, learner rendering and app/device checks not run; testing remains deferred.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5633,7 +5634,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W02-WIND",
     "AG-VIS-T3-W02-ELECTRIC-WATER",
     "AG-VIS-T3-W04-RUMINANT-DIGESTION",
     "AG-VIS-T3-W04-PIG-DIGESTION",
