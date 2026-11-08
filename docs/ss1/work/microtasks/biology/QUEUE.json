@@ -46,7 +46,8 @@
     "BIO-WK-T2-W06 (2026-11-08) indexed ecology, branches, ecological terms and ecosystem components, plus all evaluation and assignment items. Biomes is briefly defined in Week 6 although the scheme assigns it to Week 7; a cross-week scope task was appended. Earth-surface and atmospheric-composition figures were held for authoritative review. No answer key is present; testing remains deferred.",
     "BIO-WK-T2-W07 (2026-11-08) indexed Nigerian local and world biomes and reviewed all questions. The source's 3000 m body threshold conflicts with the weekend option's 300 m; the question also places a tundra description under montane vegetation. Nigerian distribution and climate figures were recorded for authoritative review. A geography fact task and bounded biome lesson task were appended; no answer key was invented.",
     "BIO-WK-T2-W08 (2026-11-08) indexed population characteristics, population-study steps, population factors and ecological instruments. The hydrometer/light-intensity table pairing requires authoritative review; overpopulation effects are asked at block 739 but not taught. A fact task and bounded supplement task were appended. No worked sampling data, practical protocol or answer key was invented.",
-    "BIO-WK-T2-W09 (2026-11-08) indexed feeding relationships, trophic levels, food chains/webs, ecological pyramids, energy loss and thermodynamics. Existing food-chain shapes, food-web image and pyramid drawing remain with visual tasks. The consumer-survival assertion and ATP option need approved-reference review; a general-evaluation prompt contains an unclear '3C' reference. A factual dependency and bounded lesson task were appended; no answer key was invented."
+    "BIO-WK-T2-W09 (2026-11-08) indexed feeding relationships, trophic levels, food chains/webs, ecological pyramids, energy loss and thermodynamics. Existing food-chain shapes, food-web image and pyramid drawing remain with visual tasks. The consumer-survival assertion and ATP option need approved-reference review; a general-evaluation prompt contains an unclear '3C' reference. A factual dependency and bounded lesson task were appended; no answer key was invented.",
+    "BIO-WK-T2-W10 (2026-11-08) indexed six biological association types and all evaluation/revision/weekend/theory prompts. The scheme/topic says Ecological Management but the body covers associations only; a scope-decomposition task was appended. Revision questions 944-946 refer to first-term growth hormones/mitosis. Weekend Q952 omits commensalism from the options and Q953 asks about ticks not taught in the body. No answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -62,8 +63,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 29,
-    "PENDING": 82,
+    "IMPLEMENTED_TESTING_DEFERRED": 30,
+    "PENDING": 84,
     "BLOCKED": 6
   },
   "items": [
@@ -1845,8 +1846,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 887 text \"WEEK TEN                                                                                               DATE: …………………\" (sha256 54eb325da2fb924623f047ae561f601ba62fc1061c2e2857d586cc8a4f9f2949); blocks 887-961; range sha256 ecd6d1b683de45e47f55530180e8605b5f8057ccff672cc87ce7ac74fd5fb830. Topic: Ecological Management (body: types of associations). Types of associations (892): symbiosis/mutualism 893, protocooperation 904, commensalism 910, amensalism 921, parasitism 927 (man and tapeworm, block 931), predation 934, REVISIONAL QUESTIONS (940), Reading Assignment (948), Weekend Assignment (951-961, theory from 959). The label and scheme row (block 16) say Ecological Management but the body covers biotic associations; no management content (conservation, pollution) was found. Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W10.md; verified the assigned legacy DOC member hash against the archive and manifest; private DOCX conversion reproduced the exact Week 10 label and range hashes. Indexed all association types (mutualism, protocooperation, commensalism, amensalism, parasitism, predation) and reviewed every evaluation/revision/weekend/theory prompt. Scheme says Ecological Management but body teaches associations only; no ecological-management teaching is present. Revision questions 944-946 concern growth hormones/mitosis from 1st Term Week 10. Weekend Q952 lacks commensalism among its options; tick feeding is not taught. No answer key exists. No extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4352,6 +4353,78 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W09; biology.json has no registered lesson for this scheme objective."
+    },
+    {
+      "id": "BIO-FACT-T2-W10-ASSOCIATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10 blocks 894, 900, 922, 935-938; weekend assignment 952-954",
+      "objective": "Verify association definitions/examples and claims (mutualism, protocooperation, commensalism, amensalism, parasitism, predation) against approved Biology references. Resolve weekend question 952, whose options omit the source's commensalism category, and question 953 about ticks, which are not taught in this week. Record citations and separate corrections from source text.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W10.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W10-ASSOCIATIONS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W10; approved-reference review is needed before correcting examples or preparing a key."
+    },
+    {
+      "id": "BIO-SCOPE-T2-W10-MANAGEMENT",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Scheme row 16; Week 10 blocks 887-961",
+      "objective": "Resolve the scheme/body mismatch: the scheme and week topic say Ecological Management, but the body teaches biological associations only. Obtain the intended teacher/owner-approved ecological-management objectives and source/material. Do not infer a conservation/pollution syllabus or overwrite the association content.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W10.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-SCOPE-T2-W10-MANAGEMENT.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W10; ecological-management content is absent from the assigned source body."
+    },
+    {
+      "id": "BIO-LES-T2-W10-ASSOCIATIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 10 blocks 892-938",
+      "objective": "Author a clearly labelled supplemental lesson for the source's biological association types, preserving source wording separately and using BIO-FACT-T2-W10-ASSOCIATIONS for verified examples/claims. Include complete keyed practice; do not silently replace the original scheme/body mismatch.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T2-W10.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W10-ASSOCIATIONS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W10",
+        "BIO-FACT-T2-W10-ASSOCIATIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W10; no registered Biology lesson covers these association types."
     }
   ],
   "review": {
@@ -4385,7 +4458,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W10",
     "BIO-VIS-T2-TBL-VITAMINS",
     "BIO-VIS-T2-TBL-INSTRUMENTS",
     "BIO-VIS-T2-FIG-PARAMECIUM",
@@ -4436,6 +4508,8 @@
     "BIO-FACT-T2-W07-GEOGRAPHY",
     "BIO-FACT-T2-W08-INSTRUMENTS",
     "BIO-LES-T2-W08-OVERPOPULATION",
-    "BIO-FACT-T2-W09-ENERGY-CLAIMS"
+    "BIO-FACT-T2-W09-ENERGY-CLAIMS",
+    "BIO-FACT-T2-W10-ASSOCIATIONS",
+    "BIO-SCOPE-T2-W10-MANAGEMENT"
   ]
 }
