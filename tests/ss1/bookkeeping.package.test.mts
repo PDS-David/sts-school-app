@@ -65,11 +65,15 @@ test('No lesson checkpoint fabricates content approval or completed verification
   }
 });
 
-test('Source aliases remain visibly pending owner confirmation', () => {
+test('Source aliases carry the recorded owner confirmation without implying lesson approval', () => {
   const p = packageSchema.parse(raw);
   for (const r of p.source_rules.filter(r => r.op === 'source_alias')) {
-    assert.match(r.approval_reference, /^PENDING-OWNER:/);
+    assert.match(r.approval_reference, /^OWNER CONFIRMED 2026-11-08:/);
+    assert.match(r.approval_reference, /metadata alias/);
     assert(p.sources.some(s => s.source_id === r.source_id && s.sha256 === r.source_sha256));
+  }
+  for (const id of ['BOOKKEEPING-ALIAS-APPROVAL', 'BOOKKEEPING-ALIAS-APPROVAL-T2', 'BOOKKEEPING-ALIAS-APPROVAL-T3']) {
+    assert.equal(p.open_items.find(x => x.id === id)?.blocks_delivery, false);
   }
 });
 
