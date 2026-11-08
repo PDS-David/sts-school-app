@@ -51,7 +51,8 @@
     "BIO-WK-T3-W01 (2026-11-08) indexed microorganism groups, culture concepts, identification and carriers. The source mentions Petri-dish sterilisation but gives no parameters or safety SOP; practical culturing remains blocked pending qualified approval, and no operational instructions were inferred. Existing bacteria-figure and vector-table visual tasks own the two visuals; history/disease/vector claims have a factual-review task. No answer key was invented.",
     "BIO-WK-T3-W02 (2026-11-08) indexed microbial growth, beneficial/harmful effects and the disease table. Growth phases are named but not defined; general microbial control and nitrogen/carbon-cycle organisms are asked but not taught. The 21×5 disease table has eight external symptom-guide links that were not treated as primary sources; disease claims need authoritative review. Existing visual task owns the table. No medical advice, practical protocol or answer key was invented.",
     "BIO-WK-T3-W03 (2026-11-08) indexed the STI definition/table and HIV/AIDS section, plus every evaluation/general/weekend/theory prompt. The body label says WEEK SEVEN although this is scheme row 3; another WEEK SEVEN label occurs at block 474. HIV is expanded inconsistently in table/body, and health claims require authoritative review. Existing visual task owns the STI table; a factual review, label-scope task and age-appropriate lesson task were appended. No answer key or medical advice was created.",
-    "BIO-WK-T3-W04 (2026-11-08) indexed microbial control, vector control, good-health maintenance and health organizations. WHO dates conflict and the antiseptic/disinfectant wording needs review. The malaria life cycle, quarantine, pasteurisation definition, fungistat/fungicide terms and black-fly/tsetse/rodent controls are not fully taught. No chemical concentrations or pesticide steps were inferred; a fact task and bounded lesson tasks were appended."
+    "BIO-WK-T3-W04 (2026-11-08) indexed microbial control, vector control, good-health maintenance and health organizations. WHO dates conflict and the antiseptic/disinfectant wording needs review. The malaria life cycle, quarantine, pasteurisation definition, fungistat/fungicide terms and black-fly/tsetse/rodent controls are not fully taught. No chemical concentrations or pesticide steps were inferred; a fact task and bounded lesson tasks were appended.",
+    "BIO-WK-T3-W05 (2026-11-08) indexed plant taxonomy, agricultural crop groups, life-cycle/size classes and ecological effects of farming practices. The A-I botanical chart remains with a new visual task. Crop rotation, bush clearing, shifting cultivation and monocropping are asked but not taught. Taxonomy/crop/soil/fertilizer/pesticide claims require authoritative review; no pesticide instructions or answer key were invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -67,8 +68,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 34,
-    "PENDING": 94,
+    "IMPLEMENTED_TESTING_DEFERRED": 35,
+    "PENDING": 97,
     "BLOCKED": 7
   },
   "items": [
@@ -2698,8 +2699,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 327 text \"                     WEEK FIVE         DATE …………………………………\" (sha256 90f6fe7477e2fc785f6ed6babdf240ad6cea2cf7d35e4e48fef447c755a3295d); blocks 327-473; range sha256 104006510a30c7891efa6cefce8563c2c5741bdc91c51e5f5f5dc737f1b6873f. Topic RELEVANCE OF BIOLOGY TO AGRICULTURE (328); classification of plants (337-358: botanical classification 343, shape-drawing chart blocks 350-355 with letters A-I defined at 345-348 and keyed at 358), agricultural classification (363-380: beverage and drug plants 379), classification by life cycle and size (385-397), effects of agricultural activities on the ecological system (398-445: fertilizer 432, pesticides and herbicides 440-445), General Evaluation (449), Weekend Assignment (456-461, theory 462-472). Pesticide and fertilizer statements need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W05.md; verified the native DOCX member hash and Week 5 label/range hashes. Indexed botanical classification and A-I VML chart, agricultural crop categories, life-cycle/size classification and ecological effects of bush burning, overgrazing, tillage, deforestation, fertilizer and pesticide/herbicide use. Crop rotation, bush clearing, shifting cultivation and monocropping are asked but not taught. Soil/agricultural claims require authoritative review; no pesticide concentrations or procedures were inferred. No answer key exists; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4781,6 +4782,100 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W04; the source teaches mosquito/housefly control but not the other groups asked in evaluation."
+    },
+    {
+      "id": "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Botanical classification VML chart blocks 350, 352-355; A-I labels explained at 345-348 and 358",
+      "objective": "Inspect and preserve the native VML botanical-classification chart, including the lettered A-I group labels and source layout. Verify that every letter remains associated with its original plant group; keep any approved taxonomy correction separate from the source diagram.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W05.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T3-W05-PLANT-CLASSIFICATION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W05; five native VML shape blocks carry the A-I classification chart."
+    },
+    {
+      "id": "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 blocks 344, 370-380, 387-389 and 401-445",
+      "objective": "Verify botanical rank/group terminology, crop categories and examples, life-cycle classifications, and the soil/agricultural impact claims for bush burning, overgrazing, tillage, deforestation, fertilizer and pesticide/herbicide use against approved botanical/agricultural sources. Record citations; keep corrections separate from source text and do not introduce pesticide concentrations or application steps.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W05.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W05-AGRICULTURE-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W05; agricultural and taxonomy claims need authoritative review."
+    },
+    {
+      "id": "BIO-LES-T3-W05-PLANTS-AGRICULTURE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 blocks 337-445",
+      "objective": "Author a clearly labelled, source-grounded lesson on botanical classification, agricultural classification, life-cycle/size classes and ecological effects of farming practices. Use BIO-FACT-T3-W05-AGRICULTURE-CLAIMS for verified facts; keep source wording distinct from corrected supplements. Do not include pesticide/fertilizer doses or operational chemical application instructions. Include keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W05.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W05-PLANTS-AGRICULTURE.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W05",
+        "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W05; no registered lesson exists for this scheme objective."
+    },
+    {
+      "id": "BIO-LES-T3-W05-SUSTAINABLE-PRACTICES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Weekend assignment block 461; theory blocks 463-466",
+      "objective": "Author a clearly labelled supplemental lesson for crop rotation, bush clearing, shifting cultivation and monocropping and their ecological effects. These are requested by Week 5 questions but are not taught in its body. Use approved agricultural references and complete keyed practice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W05.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W05-SUSTAINABLE-PRACTICES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W05",
+        "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W05; these farming practices are asked in assessment but absent from the teaching body."
     }
   ],
   "review": {
@@ -4823,7 +4918,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W05",
     "BIO-WK-T3-W06-W07",
     "BIO-WK-T3-W08",
     "BIO-VIS-T3-TBL-VECTORS",
@@ -4870,6 +4964,8 @@
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
     "BIO-FACT-T3-W03-STI-CLAIMS",
     "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
-    "BIO-FACT-T3-W04-HEALTH-CLAIMS"
+    "BIO-FACT-T3-W04-HEALTH-CLAIMS",
+    "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
+    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS"
   ]
 }
