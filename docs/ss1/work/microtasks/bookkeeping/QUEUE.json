@@ -39,16 +39,17 @@
     "On work/bookkeeping-followup: BK-PRE-T3, BK-MARK-T3-REVISION and BK-MARK-T3-EXAM completed. Preamble mapping is recorded; exact Week 1/11 revision and Week 12 exam markers are classified SCHEME_ONLY with MARKER coverage targeting their respective rule IDs. No revision/exam content invented; tests/importer remain deferred.",
     "On work/bookkeeping-followup: completed objective-level indexing for scheme Weeks 2–10. Added 24 third-term PARTIAL/UNRESOLVED coverage entries with empty lesson targets (no false claims of authored teaching). Appended six bounded original-lesson tasks for missing scheme objectives and three worked-material arithmetic review tasks. Week body segmentation remains unverified because the DOCX contains no explicit WEEK markers.",
     "On work/bookkeeping-followup: completed third-term worked-material and currency preservation plus five visual dispositions. Recorded the petty-cash layout, trial-balance list/diagram, cash and ledger accounts, journal/suspense account, and balance-sheet format. Arithmetic discrepancies and the 1983/1883 date conflict remain explicit; no original figures changed.",
-    "On work/bookkeeping-followup: completed petty-cash, Mr Odili trial-balance and Fashola suspense arithmetic reviews. Added eight source-scoped split_before rules for body sections corresponding to Weeks 2–8 and 10; Week 9 has no distinct body heading and remains in combined final-accounts material. Static test drafted; parser/compiler execution remains deferred."
+    "On work/bookkeeping-followup: completed petty-cash, Mr Odili trial-balance and Fashola suspense arithmetic reviews. Added eight source-scoped split_before rules for body sections corresponding to Weeks 2–8 and 10; Week 9 has no distinct body heading and remains in combined final-accounts material. Static test drafted; parser/compiler execution remains deferred.",
+    "On work/bookkeeping-followup: authored six third-term supplement lessons for Week 5 errors not affecting agreement, Week 7 trading concepts, Week 8 trading-account preparation, Week 9 profit and loss, and Week 10 balance-sheet users and worked preparation. Added 12 IMPLEMENTED_EQUIVALENT coverage links. All supplements are explicitly project-authored; approval pending, verification deferred. Source assignment's 1983/1883 date conflict remains unresolved."
   ],
   "counts": {
-    "PENDING": 25,
-    "IMPLEMENTED_TESTING_DEFERRED": 43,
+    "PENDING": 19,
+    "IMPLEMENTED_TESTING_DEFERRED": 49,
     "BLOCKED": 6
   },
   "status_counts": {
-    "PENDING": 25,
-    "IMPLEMENTED_TESTING_DEFERRED": 43,
+    "PENDING": 19,
+    "IMPLEMENTED_TESTING_DEFERRED": 49,
     "BLOCKED": 6
   },
   "items": [
@@ -2515,12 +2516,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-LES-T3-W05-NOT-AFFECT",
       "kind": "LESSON",
       "week_or_locator": "Scheme Week 5; scheme block 21; indexed by BK-WK-T3-W05",
       "objective": "Author an original SS1 lesson explaining errors that do not affect agreement of the trial balance, with accurate examples and a complete marked practice item. Clearly label it as a project-authored supplement; do not claim it was present in the source. Preserve the source's six error categories and distinguish source wording from the new explanation.",
-      "implementation_reference": "Coverage COV-BK-T3-W05-NOT-AFFECT is UNRESOLVED; source body has no separate treatment.",
+      "implementation_reference": "Coverage COV-BK-T3-W05-NOT-AFFECT is UNRESOLVED; source body has no separate treatment.; supplement lesson authored in bookkeeping.json and evidence summary BK-LES-T3-W05-NOT-AFFECT.md; content approval pending and verification deferred.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2551,12 +2552,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-LES-T3-W07-TRADING",
       "kind": "LESSON",
       "week_or_locator": "Scheme Week 7; scheme blocks 24–27; indexed by BK-WK-T3-W07",
       "objective": "Author an original lesson teaching trading account purpose, cost of goods available for sale, cost of goods sold and gross profit. Include a fully worked, internally consistent numerical example and marked practice. Mark it as a project-authored equivalent; do not represent it as source material.",
-      "implementation_reference": "Coverage COV-BK-T3-W07-DEFINITION/COGS/GROSS is PARTIAL; source supplies definitions but no worked trading account.",
+      "implementation_reference": "Coverage COV-BK-T3-W07-DEFINITION/COGS/GROSS is PARTIAL; source supplies definitions but no worked trading account.; supplement lesson authored in bookkeeping.json and evidence summary BK-LES-T3-W07-TRADING.md; content approval pending and verification deferred.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2587,12 +2588,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-LES-T3-W08-PREP",
       "kind": "LESSON",
       "week_or_locator": "Scheme Week 8; scheme blocks 28–29; indexed by BK-WK-T3-W08",
       "objective": "Author an original step-by-step lesson on preparation of a simple trading account, including a complete format, calculations, one fully worked example and marked practice. Explicitly label it as a project-authored equivalent because the source contains no such worked format.",
-      "implementation_reference": "Coverage COV-BK-T3-W08-PREPARATION is UNRESOLVED.",
+      "implementation_reference": "Coverage COV-BK-T3-W08-PREPARATION is UNRESOLVED.; supplement lesson authored in bookkeeping.json and evidence summary BK-LES-T3-W08-PREP.md; content approval pending and verification deferred.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2623,12 +2624,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-LES-T3-W09-PNL",
       "kind": "LESSON",
       "week_or_locator": "Scheme Week 9; scheme blocks 30–33; indexed by BK-WK-T3-W09",
       "objective": "Author an original lesson on the purpose and preparation rules of a profit and loss account, including net sales and net profit calculations, an explicit layout, a fully worked example and marked practice. Label all new material as a project-authored equivalent.",
-      "implementation_reference": "Coverage COV-BK-T3-W09-NET-SALES-NET-PROFIT is UNRESOLVED; source only defines net profit and does not calculate net sales.",
+      "implementation_reference": "Coverage COV-BK-T3-W09-NET-SALES-NET-PROFIT is UNRESOLVED; source only defines net profit and does not calculate net sales.; supplement lesson authored in bookkeeping.json and evidence summary BK-LES-T3-W09-PNL.md; content approval pending and verification deferred.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2659,12 +2660,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-LES-T3-W10-USERS",
       "kind": "LESSON",
       "week_or_locator": "Scheme Week 10; scheme block 37; indexed by BK-WK-T3-W10",
       "objective": "Author an original lesson identifying users of a balance sheet and explaining what information each user needs. Include accurate examples and marked practice. Clearly label this as project-authored content because no users section exists in the source.",
-      "implementation_reference": "Coverage COV-BK-T3-W10-USERS is UNRESOLVED.",
+      "implementation_reference": "Coverage COV-BK-T3-W10-USERS is UNRESOLVED.; supplement lesson authored in bookkeeping.json and evidence summary BK-LES-T3-W10-USERS.md; content approval pending and verification deferred.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2695,12 +2696,12 @@
           "member_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d"
         }
       ],
-      "status": "PENDING",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
       "id": "BK-LES-T3-W10-BALANCE-SHEET",
       "kind": "LESSON",
       "week_or_locator": "Scheme Week 10; scheme blocks 34–38; assignment blocks 457–468",
       "objective": "Author a source-faithful worked balance-sheet solution to the Bose Adetoro Enterprises assignment using only the figures printed in the source. Preserve the year ambiguity by writing 'as at 31 December [year to confirm]' until resolved; show capital + net profit − drawings and the asset/liability reconciliation. Add marked practice only if it is clearly identified as new.",
-      "implementation_reference": "Source layout blocks 426–452 and assignment data blocks 457–468; year conflict 1983 vs 1883 remains explicit.",
+      "implementation_reference": "Source layout blocks 426–452 and assignment data blocks 457–468; year conflict 1983 vs 1883 remains explicit.; supplement lesson authored in bookkeeping.json and evidence summary BK-LES-T3-W10-BALANCE-SHEET.md; content approval pending and verification deferred.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2874,12 +2875,5 @@
       "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
     }
   },
-  "next_runnable": [
-    "BK-LES-T3-W05-NOT-AFFECT",
-    "BK-LES-T3-W07-TRADING",
-    "BK-LES-T3-W08-PREP",
-    "BK-LES-T3-W09-PNL",
-    "BK-LES-T3-W10-USERS",
-    "BK-LES-T3-W10-BALANCE-SHEET"
-  ]
+  "next_runnable": []
 }
