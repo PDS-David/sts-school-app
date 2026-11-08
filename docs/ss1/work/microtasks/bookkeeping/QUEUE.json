@@ -63,14 +63,15 @@
     "OWNER APPROVAL (2026-11-08): project-authored first-term Week 1-4 supplements are approved as delivery teaching versions. bookkeeping.json now contains four exact delivery_corrections linking the original parsed source-body identities to W01 cash book, W02 double-column cash book, W03 contra and W04 double-entry replacements. All BOOKKEEPING-T1-W01-* through W04-* defect/missing-content open items are nonblocking for delivery only. Original source files and defect evidence remain unchanged; no missing figure is guessed. This is not teacher content approval or technical verification: lesson approval remains PENDING, verification DEFERRED, package status PENDING. Automated tests remain unrun under the existing owner deferral.",
     "OWNER CONFIRMATION 2026-11-08: canonical subject identity Bookkeeping is confirmed; all three observed source-heading variants are accepted as metadata aliases. The package records the approval reference; this is not lesson content approval or technical verification.",
     "OWNER APPROVAL 2026-11-08: the four first-term source-defect decision tasks are superseded for delivery by the approved independent W01-W04 teaching replacements. Their source evidence remains unchanged. They are recorded IMPLEMENTED_TESTING_DEFERRED, not verified; teacher content approval and technical checks remain separate.",
-    "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten teaching weeks. The owner cannot explain why the supplied first-term document has only four week bodies. The matching SS1 Book-Keeping first-term scheme reproduces the same ten-week topic sequence. W05-W10 project-authored extensions have been added to populate ten teaching weeks without claiming missing original source pages."
+    "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten teaching weeks. The owner cannot explain why the supplied first-term document has only four week bodies. The matching SS1 Book-Keeping first-term scheme reproduces the same ten-week topic sequence. W05-W10 project-authored extensions have been added to populate ten teaching weeks without claiming missing original source pages.",
+    "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten weeks. Third-term scheme has a Week 1 revision marker followed by nine teaching-topic weeks (Weeks 2-10); the source contains no revision body. A project-authored Week 1 revision lesson has been added using first-term Bookkeeping foundations; the original source marker remains SCHEME_ONLY."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 89,
     "BLOCKED": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 88,
+    "IMPLEMENTED_TESTING_DEFERRED": 89,
     "BLOCKED": 7
   },
   "items": [
@@ -3425,6 +3426,28 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER; project-authored extension, content approval pending, technical verification deferred.",
       "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
+    },
+    {
+      "id": "BK-T3-W01-REVISION-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "3rd Term",
+      "week_or_locator": "Week 1",
+      "objective": "Provide a project-authored revision lesson for the Week 1 scheme marker using first-term Bookkeeping foundations; no source revision body exists.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lesson SUP-SS1-BOOKKEEPING-T3-W01-REVISION; project-authored revision, content approval pending, verification deferred.",
+      "completion_condition": "Revision lesson and marked practice exist; provenance states no original revision body exists; marker rule remains SCHEME_ONLY."
     }
   ],
   "review": {
