@@ -3760,12 +3760,13 @@
     {
       "id": "BIOLOGY-T3-W03-HEALTH-CLAIMS",
       "kind": "FACT",
-      "detail": "The STI table at block 183 and HIV/AIDS statements at blocks 186-194 contain health claims requiring current authoritative review. HIV is expanded differently in the table and body; the source also includes a kissing-related transmission claim.",
-      "required_action": "Verify disease names, causative agents, symptoms, transmission and prevention/control against current authoritative public-health sources. Record exact citations, distinguish corrected supplement wording from the original and do not provide individualized medical advice.",
+      "detail": "The STI table at block 183 and HIV/AIDS statements at blocks 186-194 contain health claims requiring current authoritative review. HIV is expanded differently in the table and body; the source also includes a kissing-related transmission claim. The STI table at block 183 is a native 5-row × 4-column table (disease, causative organism, symptoms, prevention/control) with source row labels gonorrhoea, syphilis, AIDS and genital warts. Flattened text loses row/cell associations; delivery must restore semantic rows after authoritative review. The source's HIV/AIDS terminology differs between table and body, and the body contains an additional transmission claim.",
+      "required_action": "Verify disease names, causative agents, symptoms, transmission and prevention/control against current authoritative public-health sources. Record exact citations, distinguish corrected supplement wording from the original and do not provide individualized medical advice. Review the table row-by-row, including the source's vaccine age range and the differing HIV/AIDS terminology; preserve original wording and record any approved correction separately. Require a semantic four-column table for delivery.",
       "affected_ids": [
         "COV-BIO-T3-W03-STI",
         "COV-BIO-T3-W03-HIV-AIDS",
-        "COV-BIO-T3-W03-ASSESSMENT"
+        "COV-BIO-T3-W03-ASSESSMENT",
+        "BIO-VIS-T3-TBL-STI"
       ],
       "blocks_delivery": true
     },
