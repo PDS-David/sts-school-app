@@ -29,7 +29,8 @@
     "BIO-INV-T3 (2026-11-08) inventoried the 3rd Term original (native .docx) and appended the preamble, seven week-indexing, eleven visual and one header/footer disposition items. Section labels are out of order and two disagree with their scheme position (WEEK SEVEN at the STI topic, WEEK THREE at the last topic); rows 6 and 7 share one section; no scheme revision or examination row exists. No lesson, coverage entry, rule, correction or asset was written.",
     "BIO-PRE-T1 (2026-11-08) accounted for every block 0-12 of the 1st Term original (title and class line = registered header; scheme lines 2-11 mapped to the BIO-WK-T1 items; block 12 blank) and recorded the scheme spacing quirks. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-PRE-T2 (2026-11-08) accounted for every block 0-28 of the 2nd Term original (generic header, subject line, eleven auto-numbered scheme rows, eight references, blanks) and recorded that the scheme week numbers come from list numbering and agree with the ten TOPIC lines. No package, rule, coverage, lesson, correction or asset was written.",
-    "BIO-MARK-T2-REVEXAM (2026-11-08) classified the 2nd Term scheme row 'Revision and Examination' (block 17) as a preamble scheme-only marker with no instructional body (no week 11 or 12, no worksheet, paper or marking scheme), recorded the in-body evaluation headings that are not markers, and noted that block 940's revision questions are off-topic for Week 10. No package, rule, coverage, lesson, correction or asset was written."
+    "BIO-MARK-T2-REVEXAM (2026-11-08) classified the 2nd Term scheme row 'Revision and Examination' (block 17) as a preamble scheme-only marker with no instructional body (no week 11 or 12, no worksheet, paper or marking scheme), recorded the in-body evaluation headings that are not markers, and noted that block 940's revision questions are off-topic for Week 10. No package, rule, coverage, lesson, correction or asset was written.",
+    "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -44,8 +45,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 12,
-    "PENDING": 68,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "PENDING": 67,
     "BLOCKED": 4
   },
   "items": [
@@ -2485,8 +2486,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): blocks 0-24, range sha256 2a9906ba5a26582ec0545cd973ba0d2179e209b6abb61a4759099223a122b874. Scheme rows are unnumbered in the text (week numbers implicit, inferred): 5 Micro-Organisms Around Us and the Concept of Culturing; 6 Micro-Organisms in Action; 7 Sexually Transmitted Infections (STI); 8 Towards BetterHealth; 9 Relevance of Biology to Agriculture; 10 Pests and Diseases of Plants; 11 Pests and Diseases of Animals; 12 Food Storage and Production. Scheme blocks 10 and 11 (rows 6 and 7 of the scheme) share the single section labelled 'WEEK SIX& SEVEN'. References (blocks 15-22) are eight titles including 'Biology practical text' (22); they are citations, not reuse permission. The page header carries a third-party tutor letterhead and the footer text 'MR OSHO'; neither is teaching. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "2026-11-08 (A2, base efb270d): blocks 0-24 re-verified against the hash-checked native .docx (range sha256 2a9906ba5a26582ec0545cd973ba0d2179e209b6abb61a4759099223a122b874 reproduced; 803 blocks) and every block hashed and mapped: block 0 is the registered generic header_text (alias approval stays BIOLOGY-ALIAS-APPROVAL-T3), block 1 the subject/class line, block 2 the scheme heading, block 4 the column header, scheme rows 5-12 (one decimal list numbered 1-8; rows 1-5 and 8 pair with their section topic lines, rows 6 and 7 share the single topic line at block 475), references 14-22 (heading plus eight bullet citations), blocks 3, 13, 23, 24 blank. The list numbers disagree with two section labels (row 3 sits under 'WEEK SEVEN', row 8 under 'WEEK THREE'); recorded as written. No revision or examination row. Footer 'MR OSHO' and the header picture are page furniture. No package, rule, coverage, lesson or correction written. Record: docs/ss1/work/microtasks/biology/BIO-PRE-T3.md. Not approved, not verified.\n\nInventory (BIO-INV-T3): blocks 0-24, range sha256 2a9906ba5a26582ec0545cd973ba0d2179e209b6abb61a4759099223a122b874. Scheme rows are unnumbered in the text (week numbers implicit, inferred): 5 Micro-Organisms Around Us and the Concept of Culturing; 6 Micro-Organisms in Action; 7 Sexually Transmitted Infections (STI); 8 Towards BetterHealth; 9 Relevance of Biology to Agriculture; 10 Pests and Diseases of Plants; 11 Pests and Diseases of Animals; 12 Food Storage and Production. Scheme blocks 10 and 11 (rows 6 and 7 of the scheme) share the single section labelled 'WEEK SIX& SEVEN'. References (blocks 15-22) are eight titles including 'Biology practical text' (22); they are citations, not reuse permission. The page header carries a third-party tutor letterhead and the footer text 'MR OSHO'; neither is teaching. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
       "completion_condition": "Every block in the range mapped or classified with its locator; scheme week numbers not read from text are marked inferred; nothing invented."
     },
     {
@@ -3269,7 +3270,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-PRE-T3",
     "BIO-WK-T3-W01",
     "BIO-WK-T3-W02",
     "BIO-WK-T3-W03",
