@@ -88,13 +88,14 @@
     "BIO-VIS-T3-HDR-BRANDING (2026-11-09) verified the 3rd Term header/footer structure and header image hash. The header graphic and footer paragraph are separate page-furniture parts, not body teaching. Personal contact details and the name-like footer label were not transcribed or included; the package contains no header/footer asset reference or email address. No rights or identity decision was made. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T2-SHP-PYRAMID-ORDER (2026-11-09) resolved the original-.doc visual gate using the exact hash-verified second-term Biology member. A private LibreOffice render of page 28/33 confirms top-to-bottom Hawks—2, Lizards—5, Grasshoppers—12, Grasses—40; widths increase toward the base and the upward axis cue reads 'Decreasing number of organisms'. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete source-unavailable gate. Broader Week 9 lesson, food-web/food-chain and fact-review gates remain.",
     "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW (2026-11-09) inspected the original hash-verified DOCX and a private render of page 22/46. Block 593's lower VML loop supports Egg→Larvae→Pupa→Adults→Egg; the separate nymph-bearing fragment above belongs to blocks 582-590. The redraw remains BLOCKED because the Week 3 pest-section placement owner action is unresolved and the package has no valid lesson_id for asset registration. No asset or invented ID was committed.",
-    "BIO-FACT-T1-W05-CONDITIONS (2026-11-09) resolved the fifth-condition question for Week 5 assignment 1(d). Source blocks 682-708 name only light/sunlight, chlorophyll, water and carbon(IV) oxide; assignment block 778 asks for five. WJEC Blended Learning and NOUN Access Biology support suitable temperature for enzyme-controlled reactions as the fifth supplemental answer. OpenStax confirms the four source inputs/chlorophyll role; Monash confirms temperature as a rate factor. Updated BIOLOGY-T1-W05-ASSIGNMENT; original source unchanged and full marking guide/lesson remain open. Testing and student-facing approval remain deferred."
+    "BIO-FACT-T1-W05-CONDITIONS (2026-11-09) resolved the fifth-condition question for Week 5 assignment 1(d). Source blocks 682-708 name only light/sunlight, chlorophyll, water and carbon(IV) oxide; assignment block 778 asks for five. WJEC Blended Learning and NOUN Access Biology support suitable temperature for enzyme-controlled reactions as the fifth supplemental answer. OpenStax confirms the four source inputs/chlorophyll role; Monash confirms temperature as a rate factor. Updated BIOLOGY-T1-W05-ASSIGNMENT; original source unchanged and full marking guide/lesson remain open. Testing and student-facing approval remain deferred.",
+    "BIO-FACT-T1-W05-EQUATIONS (2026-11-09) reviewed the photosynthesis portion only: blocks 683, 689, 693, 695, 697 and 700 were compared with OpenStax Biology 2e sections 8.1 and 8.2. Block 683's product side should release oxygen; block 700 is a balanced generic carbohydrate-unit representation; the source's intermediate notation at 689/693/695/697 is distinguished from modern photosystem/electron-carrier notation. The separate block 713 chemosynthesis equation was not reviewed or corrected here because it involves a hazardous chemical reaction; a separate BLOCKED qualified-teacher review item was added. Original source unchanged; no practical guidance; tests/importer/display remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 32,
+    "FACTUAL_DEPENDENCY": 33,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
@@ -105,8 +106,8 @@
   },
   "status_counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 79,
-    "BLOCKED": 12,
-    "PENDING": 75
+    "BLOCKED": 14,
+    "PENDING": 74
   },
   "items": [
     {
@@ -3380,8 +3381,8 @@
         "BIO-WK-T1-W05",
         "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+      "status": "BLOCKED",
+      "implementation_reference": "Partial review 2026-11-09: verified source member SHA 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8 and inspected photosynthesis equations at blocks 683, 689, 693, 695, 697 and 700 against OpenStax Biology 2e sections 8.1 and 8.2. Confirmed block 683 product-side error (oxygen is the by-product), block 697 lacks visible hydroxide charge/electron detail, and block 700 is a generic carbohydrate-unit equation rather than a glucose-specific form. Source shorthand at blocks 689, 693 and 695 is distinguished from modern notation. The separate block 713 chemosynthesis equation is not reviewed or corrected here because it involves a hazardous chemical reaction; it remains gated for qualified Biology teacher review. Updated BIOLOGY-T1-W05-EQUATIONS to keep that gate explicit. Original source unchanged; task remains BLOCKED; tests/importer/display not run."
     },
     {
       "id": "BIO-FACT-T1-W05-PRACTICAL-SAFETY",
@@ -5816,6 +5817,44 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Disposition report BIO-VIS-T2-SHP-PYRAMID-ORDER.md (2026-11-09): the exact legacy .doc member was available in the hash-verified archive (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44). Rendered the original .doc privately with LibreOffice and inspected page 28 of 33 at 220 dpi. Confirmed top-to-bottom levels Hawks—2 (narrowest), Lizards—5, Grasshoppers—12, Grasses—40 (widest). The right-side upward arrow is labelled 'Decreasing number of organisms'; section heading is 'PYRAMID OF NUMBER'; no separate figure caption is present. The 40 label is adjacent to the base but the following explanatory paragraph overlaps part of the diagram. No level/number pairing is inferred from flattened extraction. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete 'original .doc unavailable' gate. Not fact-verified, not approved, importer/tests/display not run.",
       "completion_condition": "A visual inspection report records every pyramid level top-to-bottom, its organism label(s), exact number, relative width and caption; the resulting semantic order can then be restated without guessing."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-CHEMOSYNTHESIS-TEACHER-REVIEW",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 5, chemosynthesis equation block 713",
+      "objective": "A qualified Biology teacher must review the source chemosynthesis equation at block 713 against an approved Biology reference and decide whether a separate delivery correction is appropriate. Preserve the original source and do not add practical chemical-handling instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-CHEMOSYNTHESIS-TEACHER-REVIEW.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05",
+        "BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "BLOCKED 2026-11-09: this source equation is not reviewed or corrected here because it involves a hazardous chemical reaction. A qualified Biology teacher must review it against an approved reference. No practical handling/preparation/use guidance is to be added.",
+      "completion_condition": "A qualified Biology teacher records an approved reference and an evidence-based decision on whether a separate delivery correction is appropriate; source text remains unchanged and no practical chemical-handling instructions are added."
     }
   ],
   "review": {
@@ -5838,7 +5877,6 @@
     "BIO-VIS-T2-W03-COCKROACH-REDRAW",
     "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
     "BIO-VIS-T2-W09-FOODWEB-REDRAW",
-    "BIO-FACT-T1-W05-EQUATIONS",
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
     "BIO-FACT-T2-W01-REVISION-FACTS",
     "BIO-FACT-T2-W02-REVISION-FACTS",
