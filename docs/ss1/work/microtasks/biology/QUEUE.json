@@ -57,7 +57,8 @@
     "BIO-WK-T3-W08 (2026-11-08) indexed government roles, food-production factors, crop-improvement methods, food-shortage/population effects, preservation and food-storage effects. The label says WEEK THREE although this is scheme row 8. Food-science claims (including pasteurisation, irradiation and unspecified chemicals) need authoritative review; no parameters or chemical instructions are repeated. Silos/barns and the Africa-wide 'biggest factor' ranking are not supported by the teaching body. No answer key was invented.",
     "BIO-SEC-T1-RELEVANCE (2026-11-08) indexed the unlisted heading/definition/four-needs section at blocks 265-267. It lies inside the Week 3 body but is not named by the Classification of Living Things scheme objective. The owner placement decision remains open; source text was not moved.",
     "BIO-SEC-T1-AGRI-ECOLOGY (2026-11-08) indexed the unlisted agricultural-activity section (448-501) and farming-systems section (502-547). Both are within the Week 3 body but are not named by scheme row 3. The crop-rotation table at block 514 is recorded as 6×6. Owner placement and agricultural fact review remain open; source text was not moved and no chemical-use directions were added.",
-    "BIO-SEC-T1-PESTS-DISEASES (2026-11-08) indexed unlisted crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both lifecycle diagrams remain with the existing visual task. These sections are within Week 3 but not named by scheme row 3. Owner placement and veterinary fact review remain open; no chemical or treatment instructions were added."
+    "BIO-SEC-T1-PESTS-DISEASES (2026-11-08) indexed unlisted crop/animal pest groups and life histories (550-604), agricultural disease groups (605-610), effects (611-619) and controls (620-629). Both lifecycle diagrams remain with the existing visual task. These sections are within Week 3 but not named by scheme row 3. Owner placement and veterinary fact review remain open; no chemical or treatment instructions were added.",
+    "BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08) inspected the verified source and private rendered page: blocks 69-70 contain only a vertical divider and horizontal rule; the Plants/Animals labels and ten comparison pairs are text, not a Word table. Rendered layout is clear, but text extraction depends on whitespace and cannot guarantee paired columns. No asset/redraw is needed; a semantic two-column supplement is required and was appended as BIO-LES-T1-W02-PLANT-ANIMAL-TABLE, gated on the existing BIO-FACT-T1-W02-WORDING expert decision. No source content was changed; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -69,11 +70,11 @@
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 18,
+    "LESSON": 19,
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 40,
+    "IMPLEMENTED_TESTING_DEFERRED": 41,
     "PENDING": 101,
     "BLOCKED": 8
   },
@@ -868,8 +869,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): shape text 'PlantsAnimals' at block 69; block 70 shape has no text. Rows 1-10 are single paragraphs with tab/space alignment, not a w:tbl. Block hashes: 69 6276cd623ed0cd7b.. , 71 cd779cc06db8c66a..",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Original direct w:body blocks 68-87 have range SHA-256 86037b08f5147933c1cf5864e5cd7c8be4824a4b2e0187ab004051743d47e495. Blocks 69-70 contain two non-content line shapes: block 69's Straight Arrow Connector 577 is a vertical divider; block 70's Straight Arrow Connector 578 is a horizontal top rule. Both are unfilled straight connectors with no arrowheads; they carry no labels or data. 'Plants' and 'Animals' are text runs in block 69, and the ten comparison pairs are ordinary paragraphs at blocks 71-87, not a Word table. A private LibreOffice rendering (PDF page 3) shows the intended two-column layout and rules clearly. Text extraction retains the words but column association depends on tabs/spaces; wrapping can separate a continuation from its paired cell, so plain-text extraction does not robustly preserve the comparison structure. No asset or redraw is needed for the two purely decorative rules. Disposition: any text-based supplemental delivery must restate the ten pairs as a semantic two-column table; do not silently correct source wording. The first row's 'definite and interacting' wording remains under BIO-FACT-T1-W02-WORDING, so the supplement task is gated on that expert decision. No source bytes changed, no image committed, and no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -5119,6 +5120,47 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W08; silos and barns appear in the assessment but not the teaching body."
+    },
+    {
+      "id": "BIO-LES-T1-W02-PLANT-ANIMAL-TABLE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 2, blocks 68-87; comparison heading block 68, labels/rules blocks 69-70, ten comparison pairs blocks 71-87",
+      "objective": "Author a clearly labelled supplemental lesson that restates the source's ten plant-versus-animal comparisons as a semantic two-column table with one comparison per row. Preserve the original wording unless BIO-FACT-T1-W02-WORDING records an approved correction; distinguish source text from supplement, cite the source provenance, and include complete keyed practice with criterion-level marking. Do not rely on tabs, repeated spaces or decorative line shapes to encode the column relationship.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W02.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PLANT-ANIMAL-HDR.md",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W02-WORDING.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W02-PLANT-ANIMAL-TABLE.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W02",
+        "BIO-VIS-T1-PLANT-ANIMAL-HDR",
+        "BIO-FACT-T1-W02-WORDING"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after BIO-VIS-T1-PLANT-ANIMAL-HDR (2026-11-08): a structured table supplement is required because the source's paired text is not a Word table and extraction relies on whitespace. This task remains non-runnable until BIO-FACT-T1-W02-WORDING is IMPLEMENTED_TESTING_DEFERRED; do not bypass the expert decision on the source's 'interacting' wording.",
+      "completion_condition": "A clearly labelled supplement presents all ten source comparisons as semantically paired columns, retains original wording unless an approved fact decision authorizes a delivery correction, includes source provenance and complete keyed practice, binds to the exact coverage entry, and leaves original source bytes unchanged."
     }
   ],
   "review": {
@@ -5134,8 +5176,6 @@
     }
   },
   "next_runnable": [
-    "BIO-TEST-PACKAGE",
-    "BIO-VIS-T1-PLANT-ANIMAL-HDR",
     "BIO-VIS-T1-MICROSCOPE",
     "BIO-VIS-T1-CLASS-HIERARCHY",
     "BIO-VIS-T1-MONOCOT-DICOT",
@@ -5171,43 +5211,44 @@
     "BIO-VIS-T3-FIG-MEALYBUG",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
     "BIO-VIS-T3-HDR-BRANDING",
+    "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
     "BIO-FACT-T1-W05-CONDITIONS",
     "BIO-FACT-T1-W05-EQUATIONS",
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
+    "BIO-FACT-T2-W01-REVISION-FACTS",
+    "BIO-FACT-T2-W02-REVISION-FACTS",
+    "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
+    "BIO-FACT-T2-W04-KLINOSTAT",
+    "BIO-FACT-T2-W05-HEALTH-CLAIMS",
+    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
+    "BIO-FACT-T2-W07-GEOGRAPHY",
+    "BIO-FACT-T2-W08-INSTRUMENTS",
+    "BIO-FACT-T2-W09-ENERGY-CLAIMS",
+    "BIO-FACT-T2-W10-ASSOCIATIONS",
+    "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+    "BIO-FACT-T3-W02-DISEASES",
+    "BIO-FACT-T3-W03-STI-CLAIMS",
+    "BIO-FACT-T3-W04-HEALTH-CLAIMS",
+    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
+    "BIO-FACT-T3-W06-W07-PEST-DISEASES",
+    "BIO-FACT-T3-W08-FOOD-SCIENCE",
+    "BIO-FACT-T3-W08-POPULATION-FOOD",
+    "BIO-SCOPE-T2-W06-BIOMES",
+    "BIO-SCOPE-T2-W10-MANAGEMENT",
+    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
     "BIO-LES-T1-W08-MODE-OF-NUTRITION",
     "BIO-LES-T1-W09-ECOLOGY",
     "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
     "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
     "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES",
-    "BIO-FACT-T2-W01-REVISION-FACTS",
     "BIO-LES-T2-W02-SEXUAL-REPRODUCTION-MEIOSIS",
     "BIO-LES-T2-W02-EXCRETION",
-    "BIO-FACT-T2-W02-REVISION-FACTS",
-    "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
     "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
-    "BIO-FACT-T2-W04-KLINOSTAT",
-    "BIO-FACT-T2-W05-HEALTH-CLAIMS",
-    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
-    "BIO-SCOPE-T2-W06-BIOMES",
-    "BIO-FACT-T2-W07-GEOGRAPHY",
-    "BIO-FACT-T2-W08-INSTRUMENTS",
     "BIO-LES-T2-W08-OVERPOPULATION",
-    "BIO-FACT-T2-W09-ENERGY-CLAIMS",
-    "BIO-FACT-T2-W10-ASSOCIATIONS",
-    "BIO-SCOPE-T2-W10-MANAGEMENT",
-    "BIO-FACT-T3-W01-MICROBE-CLAIMS",
-    "BIO-FACT-T3-W02-DISEASES",
     "BIO-LES-T3-W02-GROWTH-PHASES",
     "BIO-LES-T3-W02-MICROBIAL-CONTROL",
     "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
-    "BIO-FACT-T3-W03-STI-CLAIMS",
-    "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
-    "BIO-FACT-T3-W04-HEALTH-CLAIMS",
-    "BIO-VIS-T3-W05-PLANT-CLASSIFICATION",
-    "BIO-FACT-T3-W05-AGRICULTURE-CLAIMS",
-    "BIO-FACT-T3-W06-W07-PEST-DISEASES",
-    "BIO-FACT-T3-W08-FOOD-SCIENCE",
-    "BIO-FACT-T3-W08-POPULATION-FOOD",
-    "BIO-LES-T3-W08-STORAGE-STRUCTURES"
+    "BIO-LES-T3-W08-STORAGE-STRUCTURES",
+    "BIO-TEST-PACKAGE"
   ]
 }
