@@ -37,23 +37,24 @@
     "BIO-WK-T1-W07 (2026-11-08) indexed Nutrition in Animals: food substances and balanced diet, digestive enzymes, and the two enzyme assignment prompts. Protein-breakdown and mineral/vitamin/enzyme tables remain with existing visual-disposition tasks. No experiments/practicals were found. Food-formula and enzyme claims were retained and appended for fact review before any correction; no lesson or answer key was written.",
     "BIO-WK-T1-W08 (2026-11-08) indexed Mode of Nutrition across blocks 928-944 and reviewed the two assignment questions. All six requested modes are described in the source; the assignment has no answer key. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred.",
     "BIO-WK-T1-W09 (2026-11-08) indexed Basic ecological concept and reviewed all assignment prompts. Definitions are present; the final prompt's 'three components' is ambiguous against the source's two-part biotic/abiotic structure and three biotic groups. No key is present. No practical work was found. A bounded ecology lesson task was appended; testing remains deferred.",
-    "BIO-WK-T1-W10 (2026-11-08) indexed Growth, Irritability and Movement across blocks 986-1092 and reviewed the assignment at 1094-1103. The assignment prompts are supported by source teaching but no answer key is supplied. Existing visual tasks own the mitosis figures, hormone table and movement table. The WEEK TEN label precedes the ASSIGNMENT heading in this source. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred."
+    "BIO-WK-T1-W10 (2026-11-08) indexed Growth, Irritability and Movement across blocks 986-1092 and reviewed the assignment at 1094-1103. The assignment prompts are supported by source teaching but no answer key is supplied. Existing visual tasks own the mitosis figures, hormone table and movement table. The WEEK TEN label precedes the ASSIGNMENT heading in this source. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred.",
+    "BIO-WK-T2-W01 (2026-11-08) indexed the 2nd Term reproduction week using a private conversion of the hash-verified legacy DOC. The Week 1 content list's sexual reproduction/meiosis entries map to the Week 2 scheme/body; they were not duplicated. Artificial propagation is only listed, asexual-reproduction advantages/disadvantages are absent, and three assessment prompts need authoritative fact review. Two bounded lesson tasks and one fact task were appended; no source extract or converted document was committed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 8,
+    "FACTUAL_DEPENDENCY": 9,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 9
+    "LESSON": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "PENDING": 69,
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 71,
     "BLOCKED": 5
   },
   "items": [
@@ -1493,8 +1494,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 29 text \"WEEK ONE                               DATE ……………………\" (sha256 c506e8a3b669da9ae7b0f2b13bdffcd32298dd63774feff3bed8091220f56804); blocks 29-91; range sha256 a6b8c46dc5d521f9bbfb918a648c44d81ef5d3c3e634f8c8359c38582a2b8447. Topic: Reproduction (Meaning, Types and Forms of Asexual Reproduction). Meaning and types of reproduction (blocks 38-50), forms of asexual reproduction (51-70), General Evaluation/Revisional Questions (71), Reading Assignment (78), Weekend Assignment (81-91, theory from 89). The CONTENT list (blocks 32-35) also names sexual reproduction (conjugation, fusion of gametes) and meiosis, whose bodies are in Week 2 (blocks 100-131): a cross-week scope mismatch to check. Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W01.md; verified the assigned 2nd Term .doc member hash against the archive and manifest. Converted the hash-verified legacy DOC to a private DOCX copy with LibreOffice 25.2.3.2; the 963-body-child structure, Week 1 label block 29 and range blocks 29-91 reproduce the inventory/queue hashes exactly. Indexed reproduction meaning/types, asexual forms and all evaluation, reading, weekend and theory items. The content list includes sexual reproduction and meiosis, whose detailed teaching is in Week 2 and matches the Week 2 scheme row; no duplicate Week 1 coverage added. Artificial propagation is named but not described; asexual advantages/disadvantages are absent; the amoeba sporulation and Paramecium zygote/nuclei prompts need fact review. No key exists. No source extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3580,6 +3581,115 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX blocks 29-91",
+      "objective": "Author a clearly labelled supplemental lesson describing the five artificial vegetative propagation methods named at block 65, sufficient to answer evaluation block 74 and theory block 90. Use an approved Biology reference, preserve the source's list separately, cite provenance and include keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
+    },
+    {
+      "id": "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX blocks 29-91",
+      "objective": "Author a clearly labelled supplemental lesson on advantages and disadvantages of asexual reproduction to answer theory block 91. The Week 1 source does not teach these points; use an approved Biology reference, distinguish supplement from source and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W01-ASEXUAL-ADVANTAGES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
+    },
+    {
+      "id": "BIO-FACT-T2-W01-REVISION-FACTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX blocks 29-91",
+      "objective": "Verify the assessment prompts at blocks 76, 85 and 87 against an approved Biology reference: the phrase 'sporulation in amoeba'; the Paramecium zygote/eight-nuclei question labelled asexual; and the perennating-organ item. Record precise evidence and intended terminology before any answer key is authored; do not guess.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W01-REVISION-FACTS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01",
+        "BIO-WK-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
     }
   ],
   "review": {
@@ -3613,7 +3723,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W01",
     "BIO-WK-T2-W02",
     "BIO-WK-T2-W03",
     "BIO-WK-T2-W04",
@@ -3657,6 +3766,8 @@
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
     "BIO-LES-T1-W08-MODE-OF-NUTRITION",
     "BIO-LES-T1-W09-ECOLOGY",
-    "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
+    "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
+    "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
+    "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES"
   ]
 }
