@@ -117,3 +117,12 @@ Passed workflow steps include:
 - staging-admin CLI.
 
 This successful workflow does not execute the separate Bookkeeping full-source parser/compiler comparison, Bookkeeping importer/database delivery path, or device acceptance. Those remain deferred and must not be described as verified. All authored lessons remain `content_approval=PENDING`; formal teacher/curriculum-owner approval is still outstanding.
+
+
+## Verification result correction — 8 November 2026
+
+The initial run 42526235246 failed on stale lesson-hash assertions and over-escaped week-ID regular expressions. Those defects were corrected in the package/test files. The corrected full GitHub Actions run 42526555833 (run 1319) passed on commit 43df21e71419b870ec05cfb3ebabe32e82680d17.
+
+Passed workflow steps include npm dependency installation; Python baseline tools; backend and mobile TypeScript checks; static and focused regressions including the Bookkeeping package test; live PostgreSQL and real asset-byte integration; authenticated retrieval; attribution route; sequencing apply/rollback tools; and staging-admin CLI.
+
+This successful workflow does not execute the separate Bookkeeping full-source parser/compiler comparison, Bookkeeping importer/database delivery path, or device acceptance. Those remain deferred and must not be described as verified. All authored lessons remain content_approval=PENDING; formal teacher/curriculum-owner approval is still outstanding.
