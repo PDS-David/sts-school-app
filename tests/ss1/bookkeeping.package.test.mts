@@ -284,3 +284,49 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
   }
 });
 
+
+
+test('First-term extension lessons populate Weeks 5-10 without claiming recovered source pages', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT', '92a8db103cc7fcc8ced28a9c822b2edcf3e0a88e31affc5ba5a4e9b596ddc52b'],
+    ['SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION', 'a3861e6190af106480cebfaadc57ba16b097ea4e620c5507c6599bfa98b35537'],
+    ['SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE', '0c6a283cb79ea1b6d57b4a809b265da22019dd6579b06867442236035bf1e613'],
+    ['SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION', 'c60d15c908b507cfd8d9db7cdfb47b77fbfc2622e5731fb8701e7f88a474c09c'],
+    ['SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION', '9e1e346c3dd71117667d43adb0d5a72ce552474010076917a62d06a3284496b0'],
+    ['SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER', '0050d6d44ee44d7439a95cb3e57e9ce38550aef84c45723dcfa373cb8a1c9ea9'],
+  ]);
+  for (const [id, bodyHash] of expected) {
+    const lesson = p.lessons.find(x => x.id === id);
+    assert(lesson, `missing first-term extension lesson: ${id}`);
+    assert.equal(lesson.term, '1st Term');
+    assert.equal(lesson.body_sha256, bodyHash);
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert(lesson.objectives.length > 0 && lesson.practice.length > 0);
+    for (const question of lesson.practice) {
+      assert.equal(question.marking.reduce((sum, part) => sum + part.marks, 0), question.marks);
+    }
+  }
+  const weeks = new Set(p.lessons
+    .filter(x => x.term === '1st Term')
+    .map(x => x.id.match(/T1-W(\\d{2})/)?.[1])
+    .filter(Boolean));
+  assert.deepEqual([...weeks].sort(), ['01','02','03','04','05','06','07','08','09','10']);
+  const scope = p.open_items.find(x => x.id === 'BOOKKEEPING-T1-SCHEME-VS-BODY');
+  assert.equal(scope?.blocks_delivery, false);
+  assert.match(scope?.required_action ?? '', /original-source completeness question open/);
+});
+
+test('Third-term Week 1 revision marker has a project-authored revision lesson, not invented source content', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T3-W01-REVISION');
+  assert(lesson);
+  assert.equal(lesson.term, '3rd Term');
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert(lesson.objectives.length >= 4 && lesson.practice.length >= 2);
+  assert.match(lesson.provenance[0].locator, /no revision body/);
+  assert.equal(p.source_rules.find(x => x.id === 'RULE-BK-T3-REVISION-1')?.kind, 'SCHEME_ONLY');
+});

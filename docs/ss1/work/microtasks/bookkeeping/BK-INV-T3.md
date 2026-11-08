@@ -68,3 +68,8 @@ The scheme is in preamble blocks 4–41. It has twelve manually typed entries, w
 - This inventory does not add lessons, coverage entries, correction rules or marker rules; those are separate bounded tasks.
 - The original DOCX is not copied into the repository. No original text or figures are changed.
 - No importer, compiler, database, typecheck, test or delivery verification was run. The queue records follow-on indexing, preservation, marker and visual tasks as PENDING.
+
+
+## Term-duration reconciliation — owner clarification (8 November 2026)
+
+The third-term scheme explicitly contains twelve scheduled weeks: Week 1 revision, Weeks 2–10 teaching topics, Week 11 revision and Week 12 examination. The Week 1 revision supplement is project-authored. Weeks 11 and 12 have no supplied instructional body or examination paper; their original markers remain recorded as SCHEME_ONLY. Keep both weeks in the term schedule and do not truncate the term at Week 10.
