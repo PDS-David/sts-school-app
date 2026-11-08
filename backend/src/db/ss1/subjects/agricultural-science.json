@@ -2539,11 +2539,12 @@
     {
       "id": "AGRICULTURAL-SCIENCE-T3-W01-TOOL-REFERENCE",
       "kind": "CONTENT",
-      "detail": "Project 38 asks learners to draw and describe all 30 tools, state uses and maintenance; blocks 40-45 describe only five selected tools. The remaining 25 descriptions/functions are not supplied.",
-      "required_action": "Author AG-LES-T3-W01-TOOL-REFERENCE with verified descriptions, uses and maintenance for all 30 tools, retaining the six source maintenance points and supporting the drawing-book project.",
+      "detail": "Project 38 asks learners to draw and describe all 30 tools, state uses and maintenance. Table 36 lists the 30 names in a 6-row × 10-cell grid (alternating number/name cells), but the source contains no corresponding 30 tool drawings. Blocks 40-45 describe only five selected tools; the remaining 25 descriptions/functions are not supplied.",
+      "required_action": "Author AG-LES-T3-W01-TOOL-REFERENCE as a clearly labelled supplement with verified descriptions, functions/uses and maintenance for all 30 tools, retaining the five source descriptions and six general maintenance points. Include one rights-cleared, provenance-recorded illustration per listed tool, each paired with its exact number/name; do not imply the original DOCX contains those drawings. Include the justified seven-tool post-planting mapping, complete keyed practice and a marking rubric. Preserve the 30-item list structure and do not alter source bytes.",
       "affected_ids": [
         "COV-AG-T3-W01-TOOL-REFERENCE",
         "AG-LES-T3-W01-TOOL-REFERENCE",
+        "AG-VIS-T3-W01-TBL-TOOLS",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
@@ -2972,6 +2973,208 @@
         "COV-AG-T1-W02-TYPES",
         "AG-VIS-T1-TBL-W02",
         "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W06-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Week Six agro-based industries table at block 486 is a 15-row, three-column Word table (header plus fourteen industry/raw-material pairs). The original DOCX preserves row and column boundaries, but concatenated plain-text extraction removes cell separators and makes the S/N, industry and raw-material values run together.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Week Six row, preserve the 14 data rows as a three-column table or explicit paired list with industry and raw material kept together and S/N retained. Do not rely on concatenated plain text or create a duplicate supplemental lesson for already-taught content. If the frozen importer/schema cannot preserve this structure, request a versioned foundation change; do not alter source wording.",
+      "affected_ids": [
+        "COV-AG-T1-W06-AGRO-INDUSTRIES",
+        "AG-VIS-T1-TBL-W06",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-CEREALS-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Second Term cereals table at block 286 is a 17-row, three-column Word table: a blank S/N header, Maize and Rice columns, and sixteen attribute rows. The Word structure preserves each crop/value pairing, but the concatenated plain-text block removes cell separators and makes attribute/value boundaries ambiguous.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Weeks Four–Five lesson, preserve the Maize and Rice columns and all sixteen attribute rows as a structured table or explicit paired list. Retain every numeric value, unit, range, date and spelling exactly as printed; do not normalize or correct figures in this visual task. Do not rely on concatenated plain text or create a duplicate supplement for already-taught content. If the frozen importer/schema cannot preserve the table, request a versioned foundation change.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-SELECTED-CROPS",
+        "AG-VIS-T2-TBL-CEREALS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-LEGUMES-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Second Term legumes table at block 298 is a 17-row, three-column Word table: blank S/N header, Cowpea and Groundnut columns, and sixteen attribute rows. The Word structure preserves each crop/attribute/value pairing, but concatenated plain-text extraction removes cell separators and makes the values ambiguous.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Weeks Four–Five lesson, preserve the Cowpea and Groundnut columns and all sixteen attribute rows as a structured table or explicit paired list. Retain every printed figure, unit, range, date, cultivar name and spelling exactly; do not normalize or correct in this visual task. Do not rely on concatenated plain text or create a duplicate supplement for already-taught content. If the frozen importer/schema cannot preserve the table, request a versioned foundation change.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-SELECTED-CROPS",
+        "AG-VIS-T2-TBL-LEGUMES",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-ROOTS-TABLE-STRUCTURE",
+      "kind": "CONTENT",
+      "detail": "The original Second Term roots/tubers table at block 309 is a 17-row, three-column Word table: blank S/N header, Yam and Cassava columns, and sixteen attribute rows. The Word structure preserves each crop/attribute/value pairing, but concatenated plain-text extraction removes cell separators. The Cassava Seed rate cell is blank in the source; this absence is itself source information and must not be filled by inference.",
+      "required_action": "When the owner-authorised importer/lesson mapping stage binds the original Weeks Four–Five lesson, preserve the Yam and Cassava columns and all sixteen attribute rows as a structured table or explicit paired list. Preserve the blank Cassava seed-rate cell as blank/not supplied; retain every other printed figure, unit, range, date, name and spelling exactly. Do not rely on concatenated plain text or create a duplicate supplement for already-taught content. If the frozen importer/schema cannot preserve the structure, request a versioned foundation change.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-SELECTED-CROPS",
+        "AG-VIS-T2-TBL-ROOTS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-DRAUGHT-ANIMALS-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Two image group at block 108 (word/media/image1.png) is an instructional photograph of two harnessed draught horses pulling a wheeled farm vehicle/implement. The image includes a photographer/agency credit line ('Wardene Weisser/Bruce Coleman, Inc.'); the DOCX provides no reuse licence or permission evidence.",
+      "required_action": "Do not copy/reuse the source image in delivered lessons unless the applicable licence or written permission is obtained and attribution requirements are satisfied. If rights cannot be cleared, use a separately sourced rights-cleared image/illustration showing draught animals used for farm traction, with its own provenance and credit. Preserve the source image bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-MECHANICAL-POWER-IMAGE",
+      "kind": "CONTENT",
+      "detail": "Week Two image at block 128 (word/media/image2.png) depicts a yellow six-wheel motor grader/earthmoving machine with a visible manufacturer marking, not an unambiguous agricultural tractor or farm implement. It is broadly an example of engine-powered machinery but may mislead if labelled as a farm tractor. The image carries a photographer/agency credit line ('Lee F. Snyder/Photo Researchers, Inc.'); the DOCX supplies no reuse licence or permission.",
+      "required_action": "Do not reuse the original image unless the applicable licence or written permission is obtained and attribution requirements are met. If used, label it accurately as a motor grader/earthmoving machine and explain why it is only a broad example of mechanical power; for farm-tractor instruction, source a clearly agricultural, rights-cleared tractor/implement image with provenance. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W02-MECHANICAL-POWER",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-SOLAR-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Two image at block 167 (word/media/image3.png) shows photovoltaic panels installed on a domestic roof. It illustrates solar panels converting sunlight to electricity, consistent with the caption at block 169, but does not show an agricultural installation or farm use. A photographer/agency credit line ('Chinh Gryniewicz/Corbis') is visible; the DOCX supplies no reuse licence or permission.",
+      "required_action": "Do not copy/reuse the source image in delivered lessons unless its licence or written permission is obtained and attribution requirements are met. If the learning objective requires a farm-specific example, use a separately sourced rights-cleared image of solar panels powering a farm operation (for example, a pump or farm installation) with provenance/credit. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W02-SOLAR",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-WIND-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Two image at block 194 (word/media/image4.png) is a 260×340 portrait photograph of a traditional multi-blade water-pumping windmill. It is relevant to the wind-power definition and the caption at block 192, which identifies it as a water-pumping windmill in Spring, Arizona and describes its blades/sails, horizontal shaft and fantail rudder. A visible photo credit reads 'Guy R. Higbee/Photo Researchers, Inc.'; the DOCX supplies no reuse licence or permission.",
+      "required_action": "Do not copy/reuse the source image in delivered lessons unless its licence or written permission is obtained and attribution requirements are met. If the teaching objective requires a visual and permission cannot be obtained, use a separately sourced rights-cleared image of a water-pumping windmill with provenance/credit. Preserve source bytes and the adjacent caption/credit unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W02-WIND",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W02-ELECTRIC-WATER-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Two image group at block 211 contains two third-party visuals: image5.png (216×193 generator-room photograph, visible credit 'Porterfield-Chickering/Photo Researchers, Inc.') and image6.png (530×318 hydroelectric-dam diagram, visible notice 'Encarta Encyclopedia, © Microsoft Corporation. All Rights Reserved.'). The source supplies no licence or permission for either image. The diagram has numbered callouts 1–6 but no accompanying key in the surrounding text.",
+      "required_action": "Do not copy/reuse either source image in delivered lessons unless licence or written permission is obtained and attribution requirements are met. If permission is unavailable, use separately sourced rights-cleared visuals for generator equipment and a hydroelectric dam; any numbered diagram must include a verified key or omit unexplained numbering. Preserve original bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W02-ELECTRIC-WATER",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W04-RUMINANT-DIGESTION-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Four diagram at block 395 (word/media/image7.png) is a labelled 449×326 cattle/ruminant digestive-tract illustration. It labels the oesophagus, rumen, reticulum, omasum, abomasum, small intestine and large intestine and aligns with the four-compartment explanation at blocks 391-396. No photographer/publisher credit or reuse licence is visible in the image or supplied in the DOCX; PNG metadata contains only technical fields.",
+      "required_action": "Do not copy/reuse the source diagram in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared ruminant digestive-system diagram with all four stomach compartments, oesophagus, intestines and verified flow/label relationships. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W04-RUMINANT-DIGESTION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W04-PIG-DIGESTION-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Four image at block 417 (word/media/image8.jpeg) is a 747×555 labelled schematic of a monogastric digestive tract. It labels the oesophagus, stomach, pyloric sphincter, liver, gall bladder, bile duct, pancreas, small intestine, colon, caecum, rectum and anus. The surrounding text describes non-ruminants and names pigs and poultry (blocks 402-403), but the image itself has no species silhouette or species label. No photographer/publisher credit or reuse licence is visible in the image or supplied in the DOCX.",
+      "required_action": "Do not copy/reuse the source diagram in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared monogastric digestive-system diagram with verified labels and leader-line relationships. Describe it as a general non-ruminant/monogastric tract unless a source establishes species-specific identity. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W04-PIG-DIGESTION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W04-POULTRY-DIGESTION-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Four image at block 425 (word/media/image9.jpeg) is a 521×297 poultry digestive-system diagram with labels for oesophagus, crop, proventriculus, gizzard, small intestine, large intestine, cloaca, caeca, duodenal loop, pancreas, liver and gall bladder. It appears below the 'DIGESTION IN POULTRY BIRDS' heading and is consistent with the domestic-fowl explanation at blocks 426-428. No photographer/publisher credit or reuse licence is visible in the image or supplied in the DOCX.",
+      "required_action": "Do not copy/reuse the source diagram in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared poultry digestive-system diagram with verified labels and organ relationships. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W04-POULTRY-DIGESTION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W04-MALE-REPRODUCTION-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Four male reproductive-system image group at block 487 contains image10.jpeg (856×1142 photographed textbook page with text and a male reproductive-system figure) and image11.jpeg (685×572 labelled schematic). Neither image has a visible author/publisher credit or reuse licence; the photographed page has no identifiable book/source citation. The group also contains hdphoto1.wdp as an image-effect/alternate layer, not an independent teaching figure.",
+      "required_action": "Do not copy/reuse either source image in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared male reproductive-system diagram with verified species scope and labels; do not reuse the photographed textbook page. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W04-MALE-REPRODUCTION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W04-FEMALE-REPRODUCTION-A-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Four image at block 493 (word/media/image12.jpeg) is a small 278×181 coloured schematic of the female reproductive tract. It labels fallopian tube, ovary, uterus, cervix and vagina, but not the vulva/labia described in block 490. No photographer/publisher credit or reuse licence is visible in the image or supplied in the DOCX.",
+      "required_action": "Do not copy/reuse the source diagram in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared female reproductive-system diagram with legible labels and appropriate scope, including external structures if required by the lesson. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W04-FEMALE-REPRODUCTION-B-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Four image at block 494 (word/media/image13.jpeg) is a 750×1000 photograph of a textbook page containing a female reproductive-system figure and surrounding prose. The page is cropped and includes part of an adjacent pink page; it has no visible author/publisher or source citation and the DOCX supplies no reuse licence. The block also contains hdphoto2.wdp as an alternate/effect layer, not a separate teaching figure.",
+      "required_action": "Do not copy/reuse the photographed page in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared female reproductive-system diagram with verified labels and appropriate scope; do not reuse the surrounding textbook-page text as an image asset. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W05-RESPIRATORY-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Five image at block 547 (word/media/image14.jpeg) is a 638×479 slide-like graphic headed 'Lower Respiratory Tract', with explanatory text and a labelled lung/airway diagram. It labels hyoid bone, larynx, trachea, right/left lung, bronchi, bronchiole, alveolar sac, alveolus and syrinx (in birds). No author/publisher credit or reuse licence is visible in the image or supplied in the DOCX.",
+      "required_action": "Do not copy/reuse the source graphic in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use a separately sourced rights-cleared lower respiratory-tract diagram with verified labels and readable text; do not treat image-only labels (e.g. syrinx) as taught prose without a separate content decision. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W05-RESPIRATORY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W05-FISH-GILLS-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Five image group at block 554 contains image15.jpeg (340×200 gill-arch schematic) and image16.jpeg (628×436 multi-panel bony-fish gill diagram). The first labels gill arch, gill filaments and gill rakers; the second adds operculum, gill chamber, gill filaments, rakers, lamellae, capillaries and afferent/efferent branchial arteries. No author/publisher credit or reuse licence is visible in either image or supplied in the DOCX; image15 XMP records Photoshop as the creator tool but no creator/rights owner.",
+      "required_action": "Do not copy/reuse either source diagram in delivered lessons unless a licence or written permission is obtained. If permission is unavailable, use separately sourced rights-cleared fish-gill diagrams with verified anatomical labels and a complete caption. Do not infer explanations for labels not taught in the prose. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W05-FISH-GILLS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W07-BIRD-EMBRYO-ORGANS-RIGHTS",
+      "kind": "CONTENT",
+      "detail": "Week Seven paragraph block 803 contains two positioned images: image17.jpeg (239×211 bird-embryo-in-egg graphic with visible iStock watermarks) and image18.jpeg (720×461 poultry internal-organs diagram). Image17 labels eggshell, albumen, yolk, amniotic liquid, air cell and embryo; it relates to egg/embryo context but the source's egg-formation text at 795 does not teach embryonic development. Image18 includes ovary and oviduct among many internal organs, but is not a focused reproductive or egg-formation diagram. Neither image has a reuse licence or sufficient rights evidence in the DOCX.",
+      "required_action": "Do not reuse either image in delivered lessons without a licence or written permission. Do not crop/remove the iStock watermarks from image17. If the curriculum requires an embryo or reproductive visual, use a separately sourced rights-cleared diagram with a defined teaching purpose; do not treat image18 as a dedicated reproductive-tract figure. Preserve source bytes unchanged.",
+      "affected_ids": [
+        "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
+        "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
     }
