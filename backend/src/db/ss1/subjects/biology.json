@@ -1591,6 +1591,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no visual asset registered",
           "explanation": "No lesson or asset is registered; table preservation and approved lesson binding remain outstanding."
+        },
+        {
+          "locator": "Verified source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); converted private DOCX block 728; native 12×3 table text SHA-256 ec059d6f06a56afd4c7eeb05d104f6bda7889ea68ab8217584998412f351866a; rendered PDF pages 24-25",
+          "explanation": "Block 728 is a native w:tbl with 12 rows and 3 columns (letter, instrument, use). Original DOCX cell boundaries are intact; flattened text extraction loses row pairings. Exact source pairs: a. Photometer | Light intensity; b. Hydrometer | Light intensity in water; c. Wind vane | Direction of wind; d. Anemometer | Speed of wind; e. Rainguage | Amount of rainfall; f. Hygrometer | Relative humidity; g. Barometer | Pressure; h. Glass thermometer | Temperature; i. Colorimeter or pH scale | Acidity / Alkalinity; j. Secchi disc | Turbidity; k. Sweep insect net | Catching insects. Row b's Hydrometer/Light intensity in water pairing remains flagged for authoritative review; no correction is inferred. The source spelling 'Rainguage' is preserved. A semantic three-column table is required in the delivery lesson; no image asset or redraw is needed. No source wording or cell order was changed."
         }
       ]
     },
@@ -3465,22 +3469,26 @@
     {
       "id": "BIOLOGY-T2-W08-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 8 population characteristics, population studies, population factors and ecological instruments are present in the source, but the Biology package has no registered lessons.",
-      "required_action": "Author and bind an approved population-studies lesson and preserve the source instruments table through its assigned visual task.",
+      "detail": "Week 8 population characteristics, population studies, population factors and ecological instruments are present in the source, but the Biology package has no registered lessons. The instruments table at block 728 is a native 12×3 Word table; flattened extraction loses its row pairings. The visual disposition records the full table, while the Hydrometer/light-intensity-in-water pairing remains under authoritative review.",
+      "required_action": "Author and bind an approved population-studies lesson, restating the ecological instruments table as a semantic three-column table after BIO-FACT-T2-W08-INSTRUMENTS resolves the Hydrometer pairing. Preserve the source spelling and any approved correction separately.",
       "affected_ids": [
         "COV-BIO-T2-W08-POPULATION-STUDIES",
-        "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS"
+        "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS",
+        "BIO-VIS-T2-TBL-INSTRUMENTS",
+        "BIOLOGY-T2-W08-INSTRUMENTS"
       ],
       "blocks_delivery": true
     },
     {
       "id": "BIOLOGY-T2-W08-INSTRUMENTS",
       "kind": "FACT",
-      "detail": "The ecological-instruments table at block 728 pairs a hydrometer with 'Light intensity in water'. This instrument/function pairing requires authoritative review.",
-      "required_action": "Verify each instrument/function pair against an approved scientific reference, record citations and keep any correction separate from the source table.",
+      "detail": "The Week 8 ecological-instruments table at block 728 is a native 12×3 Word table. Its row pairings are lost in flattened text extraction. It lists Photometer/light intensity; Hydrometer/light intensity in water; Wind vane/direction of wind; Anemometer/speed of wind; Rainguage/amount of rainfall; Hygrometer/relative humidity; Barometer/pressure; Glass thermometer/temperature; Colorimeter or pH scale/acidity or alkalinity; Secchi disc/turbidity; Sweep insect net/catching insects. The Hydrometer/light-intensity-in-water pairing requires authoritative review. The source spelling 'Rainguage' is retained unchanged.",
+      "required_action": "Verify each instrument/use pair against an approved scientific/Biology reference, especially row b (Hydrometer / Light intensity in water). Record precise citations and any evidence-based correction separately from the original source. Preserve the original table and do not silently alter the pairing.",
       "affected_ids": [
         "COV-BIO-T2-W08-ECOLOGICAL-INSTRUMENTS",
-        "COV-BIO-T2-W08-ASSESSMENT"
+        "COV-BIO-T2-W08-ASSESSMENT",
+        "BIO-VIS-T2-TBL-INSTRUMENTS",
+        "BIO-FACT-T2-W08-INSTRUMENTS"
       ],
       "blocks_delivery": true
     },
