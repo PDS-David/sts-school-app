@@ -2110,7 +2110,60 @@
       }
     }
   ],
-  "delivery_corrections": [],
+  "delivery_corrections": [
+    {
+      "id": "CORR-BK-T1-W01",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "source_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
+      "source_lesson_id": "SS1-SRC-62b02f2adcb3:BODY:e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd",
+      "body_sha256": "e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd",
+      "replacement_id": "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK",
+      "reason": "The project-authored Week 1 cash-book lesson replaces the defective source teaching for delivery; the original source and its arithmetic defects remain preserved.",
+      "evidence": {
+        "locator": "BK-INV-T1.md parsed-row identity table; exact source body SHA-256; owner approval recorded 2026-11-08 in BK-OWNER-DECISIONS.md",
+        "explanation": "Owner approved project-authored Week 1–4 supplements as the delivery teaching versions. This is a delivery substitution link only: original source files and defects remain unchanged, no missing source figure is guessed, and content approval/technical verification remain pending."
+      }
+    },
+    {
+      "id": "CORR-BK-T1-W02",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "source_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
+      "source_lesson_id": "SS1-SRC-62b02f2adcb3:BODY:bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b",
+      "body_sha256": "bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b",
+      "replacement_id": "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK",
+      "reason": "The project-authored Week 2 double-column cash-book lesson replaces the unsolved and defective source teaching for delivery; contra sequencing is preserved in the separate Week 3 lesson.",
+      "evidence": {
+        "locator": "BK-INV-T1.md parsed-row identity table; exact source body SHA-256; owner approval recorded 2026-11-08 in BK-OWNER-DECISIONS.md",
+        "explanation": "Owner approved project-authored Week 1–4 supplements as the delivery teaching versions. This is a delivery substitution link only: original source files and defects remain unchanged, no missing source figure is guessed, and content approval/technical verification remain pending."
+      }
+    },
+    {
+      "id": "CORR-BK-T1-W03",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "source_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
+      "source_lesson_id": "SS1-SRC-62b02f2adcb3:BODY:194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a",
+      "body_sha256": "194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a",
+      "replacement_id": "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA",
+      "reason": "The project-authored Week 3 contra-entry lesson replaces the conceptually defective and internally inconsistent source teaching for delivery.",
+      "evidence": {
+        "locator": "BK-INV-T1.md parsed-row identity table; exact source body SHA-256; owner approval recorded 2026-11-08 in BK-OWNER-DECISIONS.md",
+        "explanation": "Owner approved project-authored Week 1–4 supplements as the delivery teaching versions. This is a delivery substitution link only: original source files and defects remain unchanged, no missing source figure is guessed, and content approval/technical verification remain pending."
+      }
+    },
+    {
+      "id": "CORR-BK-T1-W04",
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "source_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0",
+      "source_lesson_id": "SS1-SRC-62b02f2adcb3:BODY:890fb8fac8f6b9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409",
+      "body_sha256": "890fb8fac8f6b9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409",
+      "replacement_id": "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY",
+      "reason": "The project-authored Week 4 double-entry and ledger lesson replaces the defective source teaching for delivery; its separate authored posting exercise supplies fully worked practice. The original N20 figure and source transactions are not claimed corrected.",
+      "evidence": {
+        "locator": "BK-INV-T1.md parsed-row identity table; exact source body SHA-256; owner approval recorded 2026-11-08 in BK-OWNER-DECISIONS.md",
+        "explanation": "Owner approved project-authored Week 1–4 supplements as the delivery teaching versions. This is a delivery substitution link only: original source files and defects remain unchanged, no missing source figure is guessed, and content approval/technical verification remain pending."
+      }
+    }
+  ],
   "assets": [],
   "coverage": [
     {
@@ -3819,58 +3872,58 @@
     {
       "id": "BOOKKEEPING-T1-W02-DIFFERENCE-MISSING",
       "kind": "CONTENT",
-      "detail": "Scheme entry 6's sub-item '-Difference between single column cash book.' (block 14, sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7) is not taught anywhere in the 1st Term document. The word 'difference' occurs once, in that scheme line. Week 1 (blocks 30-86) defines the single column cash book and its cash and bank accounts without comparing it with the double column book, and Weeks 2-4 never compare the two; Week 2's body does not mention the single column book at all.",
-      "required_action": "Author the comparison as BK-LES-T1-W02-DIFF, bounded to the differences that matter for the source's own material, and state explicitly what the source does not settle. Do not invent a comparison list or copy one from an unsupplied textbook.",
+      "detail": "Scheme entry 6's sub-item '-Difference between single column cash book.' (block 14, sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7) is not taught anywhere in the 1st Term document. The word 'difference' occurs once, in that scheme line. Week 1 (blocks 30-86) defines the single column cash book and its cash and bank accounts without comparing it with the double column book, and Weeks 2-4 never compare the two; Week 2's body does not mention the single column book at all. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W02-DIFF",
         "COV-BK-T1-W02-SCHEME-6",
         "BK-LES-T1-W02-DIFF"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT",
       "kind": "CONTENT",
-      "detail": "Block 94 instructs the learner to 'Balance the cash book and bring down the balances of cash in hand and cash at bank', but no week demonstrates balancing a double column cash book. Week 2's example has no solution (blocks 105-108 are empty), Week 3's two contra cash books (blocks 121-122 and 134-135) are not closed, and Week 4's posting illustration (blocks 183-205) is unsolved. The only balancing shown is Week 1's single column account (blocks 56-57 and 78), whose figures are themselves defective.",
-      "required_action": "Author the balancing procedure and the closing and brought-down lines for the Week 2 example inside BK-LES-T1-W02-PREP, labelled as authored, and state which balance figures are derived rather than printed by the source.",
+      "detail": "Block 94 instructs the learner to 'Balance the cash book and bring down the balances of cash in hand and cash at bank', but no week demonstrates balancing a double column cash book. Week 2's example has no solution (blocks 105-108 are empty), Week 3's two contra cash books (blocks 121-122 and 134-135) are not closed, and Week 4's posting illustration (blocks 183-205) is unsolved. The only balancing shown is Week 1's single column account (blocks 56-57 and 78), whose figures are themselves defective. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W02-BALANCE",
         "COV-BK-T1-W02-EXAMPLE",
         "BK-LES-T1-W02-PREP"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION",
       "kind": "CONTENT",
-      "detail": "The Week 2 example (blocks 93-104) sets nine April transactions for the placeholder year '19x9' and asks for a balanced two column cash book with the balances brought down, but the source supplies no solution: blocks 105-108 are empty and no table, totals, balances or folio marks follow. Week 2 also has no assessment section, no practice questions and no marking scheme, so this unsolved example is the week's only task.",
-      "required_action": "Author a complete worked solution, practice and marking in BK-LES-T1-W02-PREP, and label the whole solution as authored by the project, not as the source's; the source text stays unchanged (BK-PRES-T1-WORKED).",
+      "detail": "The Week 2 example (blocks 93-104) sets nine April transactions for the placeholder year '19x9' and asks for a balanced two column cash book with the balances brought down, but the source supplies no solution: blocks 105-108 are empty and no table, totals, balances or folio marks follow. Week 2 also has no assessment section, no practice questions and no marking scheme, so this unsolved example is the week's only task. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W02-EXAMPLE",
         "COV-BK-T1-W02-BALANCE",
         "BK-LES-T1-W02-PREP",
         "BK-PRES-T1-WORKED"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W02-CONTRA-SEQUENCING",
       "kind": "CONTENT",
-      "detail": "Two of the nine Week 2 example transactions move money between cash and bank: 'April 4: Paid N1,850 of the capital into bank' (block 97, sha256 fae83f79ab16560d9edbbc9dcf5a09fb6421ae6741d5678c485606c916e4d542) and 'April 29: Cash paid into bank N1,000' (block 103, sha256 7d34d6ef7381c46f9c155cc5b5a8607ef6412c9675f7d6039971b60013aaf977). Both are contra entries, and the scheme schedules contra entry as entry 8 (blocks 18-21), after this week. No Week 2 text mentions contra, the folio column or the 'C' folio, so a learner working the example before Week 3 has no taught treatment for these two items.",
-      "required_action": "Record one expert decision in BK-FACT-T1-W02-DEFECTS on whether the two transfers are treated as contra entries in the authored solution (with the 'C' folio) or carried unposted, and on whether the Week 2 lesson may introduce contra before its scheme entry. Do not decide it inside the lesson.",
+      "detail": "Two of the nine Week 2 example transactions move money between cash and bank: 'April 4: Paid N1,850 of the capital into bank' (block 97, sha256 fae83f79ab16560d9edbbc9dcf5a09fb6421ae6741d5678c485606c916e4d542) and 'April 29: Cash paid into bank N1,000' (block 103, sha256 7d34d6ef7381c46f9c155cc5b5a8607ef6412c9675f7d6039971b60013aaf977). Both are contra entries, and the scheme schedules contra entry as entry 8 (blocks 18-21), after this week. No Week 2 text mentions contra, the folio column or the 'C' folio, so a learner working the example before Week 3 has no taught treatment for these two items. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W02-EXAMPLE",
         "COV-BK-T1-W02-ENTRIES",
         "BK-FACT-T1-W02-DEFECTS",
         "BK-WK-T1-W03"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W02-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Week 2 source defects, all retained uncorrected: (1) block 89 reads 'The two column Cash book so-called because' with no verb, calls the book 'two column' where the scheme and heading say 'double column', and uses the singular 'transaction' for several transactions. (2) The heading 'Accounting Entries' (block 90) introduces two payment-side rules only; no receipt-side entry is stated. (3) Block 92 presents the bank-withdrawal case with wages as its illustration, which conflicts with block 104 'Wages paid by cheque N75' - a direct cheque payment, not a withdrawal. (4) Block 94 gives no business name and no opening balances, and does not state that each column is balanced separately. (5) Block 95 '19x9' is a placeholder year, with no term or opening date. (6) Blocks 96-104 use no folio column, and block 104 alone ends with a full stop. (7) Blocks 105-108 are four empty blocks with no solution and no assessment.",
-      "required_action": "Correct nothing in the source. In BK-FACT-T1-W02-DEFECTS record one expert decision per numbered defect (retain, correct or replace) so the authored lesson does not copy the wording; the source text stays unchanged.",
+      "detail": "Week 2 source defects, all retained uncorrected: (1) block 89 reads 'The two column Cash book so-called because' with no verb, calls the book 'two column' where the scheme and heading say 'double column', and uses the singular 'transaction' for several transactions. (2) The heading 'Accounting Entries' (block 90) introduces two payment-side rules only; no receipt-side entry is stated. (3) Block 92 presents the bank-withdrawal case with wages as its illustration, which conflicts with block 104 'Wages paid by cheque N75' - a direct cheque payment, not a withdrawal. (4) Block 94 gives no business name and no opening balances, and does not state that each column is balanced separately. (5) Block 95 '19x9' is a placeholder year, with no term or opening date. (6) Blocks 96-104 use no folio column, and block 104 alone ends with a full stop. (7) Blocks 105-108 are four empty blocks with no solution and no assessment. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W02-MEANING",
         "COV-BK-T1-W02-ENTRIES",
@@ -3878,13 +3931,13 @@
         "BK-FACT-T1-W02-DEFECTS",
         "BK-LES-T1-W02-PREP"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W04-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Eleven defects are retained uncorrected in Week 4 (blocks 158-219): (1) block 174 truncates the illustration instruction at 'Illustration: Complete the following table. Account to be.', so the column instruction is cut and the table at 175 already prints the answers it asks for; (2) blocks 171-172 run the account name into its value with no separator ('Dr. Receiving accountWith value it receives'); (3) block 179 defines posting circularly as 'using one book as a means for entering the items to other accounts' and never names the ledger account, date, particulars or folio; (4) blocks 181-182 require 'all items' on each cash book side to be posted to the opposite side of the ledgers, contradicting the contra 'C' rows at 188, 190, 191, 193, 194 and 201 that are not posted at all; (5) block 194 (June 12) withdraws cash from the bank for personal use, which is drawings (Dr Drawings, Cr Bank) but is set among cash book transactions where it would be written as a bank-to-cash transfer; (6) block 196 (June 16) 'Bought motor van by cheque N20' prices a motor van at N20 against the N3,200 opening capital at 186 and the N1,020 loan at 203 in the same list; (7) block 203 reads 'Yinka lend us N1,020 cash' (tense and agreement); (8) block 208 sends ASSIGNMENT 1 to an external book ('simplified and amplified book-keeping and accounting page 56 revision question 5x') that is not supplied; (9) blocks 210-217 set seven January transactions without stating the book or form of accounts required; (10) scheme entries 9 and 10 carry the identical title 'Principle of Double entry.' at blocks 22 and 25, so only the sub-items distinguish them; (11) the document nowhere shows a ledger account, which the week's posting objective requires.",
-      "required_action": "Obtain one recorded subject-expert decision on each numbered defect and on the corrected wording the lessons may use; no correction is invented in this task and the lessons must not copy the uncorrected text.",
+      "detail": "Eleven defects are retained uncorrected in Week 4 (blocks 158-219): (1) block 174 truncates the illustration instruction at 'Illustration: Complete the following table. Account to be.', so the column instruction is cut and the table at 175 already prints the answers it asks for; (2) blocks 171-172 run the account name into its value with no separator ('Dr. Receiving accountWith value it receives'); (3) block 179 defines posting circularly as 'using one book as a means for entering the items to other accounts' and never names the ledger account, date, particulars or folio; (4) blocks 181-182 require 'all items' on each cash book side to be posted to the opposite side of the ledgers, contradicting the contra 'C' rows at 188, 190, 191, 193, 194 and 201 that are not posted at all; (5) block 194 (June 12) withdraws cash from the bank for personal use, which is drawings (Dr Drawings, Cr Bank) but is set among cash book transactions where it would be written as a bank-to-cash transfer; (6) block 196 (June 16) 'Bought motor van by cheque N20' prices a motor van at N20 against the N3,200 opening capital at 186 and the N1,020 loan at 203 in the same list; (7) block 203 reads 'Yinka lend us N1,020 cash' (tense and agreement); (8) block 208 sends ASSIGNMENT 1 to an external book ('simplified and amplified book-keeping and accounting page 56 revision question 5x') that is not supplied; (9) blocks 210-217 set seven January transactions without stating the book or form of accounts required; (10) scheme entries 9 and 10 carry the identical title 'Principle of Double entry.' at blocks 22 and 25, so only the sub-items distinguish them; (11) the document nowhere shows a ledger account, which the week's posting objective requires. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W04-SCHEME-9",
         "COV-BK-T1-W04-SCHEME-10",
@@ -3894,49 +3947,49 @@
         "COV-BK-T1-W04-ILLUSTRATION",
         "COV-BK-T1-W04-ASSIGN-2"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W04-NO-SOLUTIONS",
       "kind": "CONTENT",
-      "detail": "Week 4 sets three exercises and supplies no solution to any of them: the identification table at 175 prints its own answers and its instruction is truncated; the twenty-transaction illustration at 186-205 has no cash book, balance or posted ledger; ASSIGNMENT 1 at 208 is external and ASSIGNMENT 2 at 211-217 has no answer. The only fully worked material in the week is the table at 175.",
-      "required_action": "Author complete answers with working and marks inside BK-LES-T1-W04-DOUBLE-ENTRY and BK-LES-T1-W04-POSTING after the defects and figures are settled; do not present the answered table as an exercise.",
+      "detail": "Week 4 sets three exercises and supplies no solution to any of them: the identification table at 175 prints its own answers and its instruction is truncated; the twenty-transaction illustration at 186-205 has no cash book, balance or posted ledger; ASSIGNMENT 1 at 208 is external and ASSIGNMENT 2 at 211-217 has no answer. The only fully worked material in the week is the table at 175. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W04-IDENTIFY",
         "COV-BK-T1-W04-ILLUSTRATION",
         "COV-BK-T1-W04-ASSIGN-2"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W04-LEDGER-FORMAT-MISSING",
       "kind": "CONTENT",
-      "detail": "The posting objective (scheme block 26) and the illustration (block 185) require entries to be posted to ledgers, but the whole document contains no ledger account: no heading, no ruling, no specimen, no folio column and no worked posting. The eight mentions of 'ledger' (blocks 26, 177, 178, 179, 181, 182, 185, 209) are all instructions to do it. The Week 3 'C' folio convention applies to the cash book, not to ledgers.",
-      "required_action": "Supply an author-created standard ledger account format, clearly labelled as author-supplied and not taken from the source, inside BK-LES-T1-W04-POSTING, and teach posting into it with folio references.",
+      "detail": "The posting objective (scheme block 26) and the illustration (block 185) require entries to be posted to ledgers, but the whole document contains no ledger account: no heading, no ruling, no specimen, no folio column and no worked posting. The eight mentions of 'ledger' (blocks 26, 177, 178, 179, 181, 182, 185, 209) are all instructions to do it. The Week 3 'C' folio convention applies to the cash book, not to ledgers. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W04-SCHEME-10",
         "COV-BK-T1-W04-POSTING-RULES",
         "COV-BK-T1-W04-ILLUSTRATION",
         "COV-BK-T1-W04-LEDGER-FORMAT"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W04-BALANCING-UNTAUGHT",
       "kind": "CONTENT",
-      "detail": "Block 185 requires the two column cash book to be balanced off at the end of the month, but Week 4 never explains balancing and contains no balanced cash book. Week 2 recorded the same absence for the double column cash book (BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT); this item carries that gap into the week that demands the skill.",
-      "required_action": "Teach the balancing of the cash book, the balance carried down and brought down and the treatment of both columns inside BK-LES-T1-W04-POSTING, and close this item together with BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT when the lessons exist.",
+      "detail": "Block 185 requires the two column cash book to be balanced off at the end of the month, but Week 4 never explains balancing and contains no balanced cash book. Week 2 recorded the same absence for the double column cash book (BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT); this item carries that gap into the week that demands the skill. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W04-ILLUSTRATION",
         "COV-BK-T1-W04-BALANCE-OFF"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W04-EXTERNAL-TEXT",
       "kind": "OWNER_ACTION",
-      "detail": "ASSIGNMENT 1 (block 208) directs the learner to 'simplified and amplified book-keeping and accounting page 56 revision question 5x', a textbook that is not part of the supplied source. Its content cannot be read, verified or reproduced, and the citation alone gives no reuse permission.",
-      "required_action": "Resolved under the owner's standing instruction to self-generate a suitable substitute when an external resource is unavailable. No external textbook text is reproduced. The project-authored replacement practice and complete worked exercise are in BK-LES-T1-W04-POSTING.md; retain the original citation as historical source evidence only.",
+      "detail": "ASSIGNMENT 1 (block 208) directs the learner to 'simplified and amplified book-keeping and accounting page 56 revision question 5x', a textbook that is not part of the supplied source. Its content cannot be read, verified or reproduced, and the citation alone gives no reuse permission. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W04-ASSIGN-1"
       ],
@@ -3945,19 +3998,19 @@
     {
       "id": "BOOKKEEPING-T1-W04-FIGURE-CHECKS",
       "kind": "VERIFICATION",
-      "detail": "Two figures and one classification in the June list need expert verification before a solution is authored: block 196 prices a motor van at N20, implausible against the N3,200 capital at 186 and the N1,020 loan at 203; block 194 records a personal withdrawal from the bank, which is drawings rather than a cash book transfer; and the list as a whole contains no arithmetic that can be checked because no cash book or balance is presented.",
-      "required_action": "A named subject expert confirms or corrects the N20 motor van figure, the drawings treatment at 194 and the classification of every transfer row as contra or posted, with the decision recorded against BOOKKEEPING-T1-W04-SOURCE-DEFECTS.",
+      "detail": "Two figures and one classification in the June list need expert verification before a solution is authored: block 196 prices a motor van at N20, implausible against the N3,200 capital at 186 and the N1,020 loan at 203; block 194 records a personal withdrawal from the bank, which is drawings rather than a cash book transfer; and the list as a whole contains no arithmetic that can be checked because no cash book or balance is presented. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W04-ILLUSTRATION",
         "BOOKKEEPING-T1-W04-SOURCE-DEFECTS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W01-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Fourteen defects found in Week 1 (blocks 30-86), retained uncorrected: (1) block 49: DRCASH ACCOUNTCR runs the Dr and Cr headings together with no separator, while block 70 uses DRBANK ACCOUNT   CR, so the two layouts are inconsistent. (2) blocks 51-56: no fixed spacing between particulars and amounts (bal. b/f1,500, Okola   250) and the debit and credit columns are separated by runs of three to five spaces. (3) block 52: Purchaser misspells purchases and prints 750 where the question at block 43 says 700. (4) block 53: prints 115 where the question at block 47 says 155. (5) block 56: Bal. c/d1,010 has no space, and 1,010 is 90 below the 1,100 the question gives. (6) block 57: the totals 2,1152,115 run together with no separator and pair with the wrong figures. (7) blocks 39 and 61: the column heading is only N, with no debit and credit column labels beyond the Dr/Cr account line. (8) block 62: a bank account is opened with Cash in hand2,500; an opening bank balance cannot be cash in hand, and the entry should open the account with a balance brought down. (9) block 66: June 7 Sent Cheque to Komolafe has no amount, so the credit side cannot be completed or balanced. (10) block 67: the June 9 cheque purchase of 300 is omitted from the solution. (11) blocks 73-76: the credit side repeats Illustration 1 July 3, 6, 7, 9 and 10 entries and amounts (Okocha 650, Purchaser 750, Stationery 50, Insurance 30, wages 25) instead of the June transactions; only the 650 belongs to this question. (12) block 78: Bal. b/d 1,910 and Bal. c/d1,010 are printed without explanation, and the c/d is copied from Illustration 1. (13) block 80: 3,1803,180 runs together, and the equality is false: the debit side is 3,180 but the credit items are 1,505 plus 1,010 = 2,515. (14) block 72: June 1 bal. b/f2,500 uses b/f for an opening balance, normally b/d or the opening entry.",
-      "required_action": "Decide the correction wording and the treatment of both illustrations in BK-FACT-T1-W01-DEFECTS before the cash book lesson is authored; no correction is authored here and no figure may be copied from the printed solutions unverified.",
+      "detail": "Fourteen defects found in Week 1 (blocks 30-86), retained uncorrected: (1) block 49: DRCASH ACCOUNTCR runs the Dr and Cr headings together with no separator, while block 70 uses DRBANK ACCOUNT   CR, so the two layouts are inconsistent. (2) blocks 51-56: no fixed spacing between particulars and amounts (bal. b/f1,500, Okola   250) and the debit and credit columns are separated by runs of three to five spaces. (3) block 52: Purchaser misspells purchases and prints 750 where the question at block 43 says 700. (4) block 53: prints 115 where the question at block 47 says 155. (5) block 56: Bal. c/d1,010 has no space, and 1,010 is 90 below the 1,100 the question gives. (6) block 57: the totals 2,1152,115 run together with no separator and pair with the wrong figures. (7) blocks 39 and 61: the column heading is only N, with no debit and credit column labels beyond the Dr/Cr account line. (8) block 62: a bank account is opened with Cash in hand2,500; an opening bank balance cannot be cash in hand, and the entry should open the account with a balance brought down. (9) block 66: June 7 Sent Cheque to Komolafe has no amount, so the credit side cannot be completed or balanced. (10) block 67: the June 9 cheque purchase of 300 is omitted from the solution. (11) blocks 73-76: the credit side repeats Illustration 1 July 3, 6, 7, 9 and 10 entries and amounts (Okocha 650, Purchaser 750, Stationery 50, Insurance 30, wages 25) instead of the June transactions; only the 650 belongs to this question. (12) block 78: Bal. b/d 1,910 and Bal. c/d1,010 are printed without explanation, and the c/d is copied from Illustration 1. (13) block 80: 3,1803,180 runs together, and the equality is false: the debit side is 3,180 but the credit items are 1,505 plus 1,010 = 2,515. (14) block 72: June 1 bal. b/f2,500 uses b/f for an opening balance, normally b/d or the opening entry. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W01-SCHEME-2",
         "COV-BK-T1-W01-SCHEME-3",
@@ -3971,37 +4024,37 @@
         "COV-BK-T1-W01-BANK-ACCOUNT",
         "COV-BK-T1-W01-ILLUS-2"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W01-FIGURE-CHECKS",
       "kind": "VERIFICATION",
-      "detail": "Arithmetic checks on both illustrations. Illustration 1 (blocks 37-57): the question gives receipts 1,500 + 500 + 155 = 2,155 and payments 250 + 700 + 50 + 30 + 25 = 1,055, so the closing balance is 1,100. The solution gives debits 1,500 + 500 + 115 = 2,115 and credits 250 + 750 + 50 + 30 + 25 + 1,010 = 2,115: it balances with itself but understates receipts by 40 (115 for 155), overstates payments by 50 (750 for 700) and understates the balance by 90 (1,010 for 1,100). Illustration 2 (blocks 59-80): the question gives receipts 2,500 + 450 + 230 = 3,180, known payments 650 + 300 = 950 and therefore a closing balance of 2,230, with June 7 unquantified. The solution gives debits 3,180 and credits 650 + 750 + 50 + 30 + 25 = 1,505 plus 1,010 = 2,515, so the printed 3,180 equality at block 80 is false, the 1,910 at block 78 has no derivation, and both printed balances are irreconcilable with the transaction list.",
-      "required_action": "Carry these checks into BK-FACT-T1-W01-DEFECTS and BK-LES-T1-W01-CASH-BOOK: every figure in the lesson must be derived and shown, and the printed solutions must not be reused as correct.",
+      "detail": "Arithmetic checks on both illustrations. Illustration 1 (blocks 37-57): the question gives receipts 1,500 + 500 + 155 = 2,155 and payments 250 + 700 + 50 + 30 + 25 = 1,055, so the closing balance is 1,100. The solution gives debits 1,500 + 500 + 115 = 2,115 and credits 250 + 750 + 50 + 30 + 25 + 1,010 = 2,115: it balances with itself but understates receipts by 40 (115 for 155), overstates payments by 50 (750 for 700) and understates the balance by 90 (1,010 for 1,100). Illustration 2 (blocks 59-80): the question gives receipts 2,500 + 450 + 230 = 3,180, known payments 650 + 300 = 950 and therefore a closing balance of 2,230, with June 7 unquantified. The solution gives debits 3,180 and credits 650 + 750 + 50 + 30 + 25 = 1,505 plus 1,010 = 2,515, so the printed 3,180 equality at block 80 is false, the 1,910 at block 78 has no derivation, and both printed balances are irreconcilable with the transaction list. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W01-ILLUS-1",
         "COV-BK-T1-W01-ILLUS-2",
         "COV-BK-T1-W01-BALANCING"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W01-ITEMS-MISSING",
       "kind": "CONTENT",
-      "detail": "The scheme sub-item Items of single column cash book (block 6) has no teaching. Nothing in blocks 30-86 lists the columns of the book (date, particulars, folio, amount) or the receipts and payments that belong in each column. Blocks 33-36 describe a cash book, a cash account and a bank account in prose, and the only headings are the bare N at blocks 39 and 61 and the Dr/Cr line at 49 and 70.",
-      "required_action": "Author the items list in BK-LES-T1-W01-CASH-BOOK, with the column names, the entries that belong in each, and a worked placement exercise.",
+      "detail": "The scheme sub-item Items of single column cash book (block 6) has no teaching. Nothing in blocks 30-86 lists the columns of the book (date, particulars, folio, amount) or the receipts and payments that belong in each column. Blocks 33-36 describe a cash book, a cash account and a bank account in prose, and the only headings are the bare N at blocks 39 and 61 and the Dr/Cr line at 49 and 70. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W01-SCHEME-2",
         "COV-BK-T1-W01-MEANING",
         "COV-BK-T1-W01-ITEMS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W01-FORMAT-MISSING",
       "kind": "CONTENT",
-      "detail": "The scheme asks for preparation of a single column cash book (blocks 7-9) but the body prepares T-accounts: blocks 49-57 and 70-80 carry a DR/CASH ACCOUNT/CR or DR/BANK ACCOUNT/CR line, an N/N heading and rules drawn as shapes at blocks 49, 56, 70 and 79. No cash book ruling, date column, particulars column, folio column, running balance or distinction between the cash book and the cash account is given, so a pupil cannot prepare the book the scheme names.",
-      "required_action": "Author the single column cash book format and a preparation procedure in BK-LES-T1-W01-CASH-BOOK, using the source transactions re-solved and labelled as authored where the printed solutions are wrong.",
+      "detail": "The scheme asks for preparation of a single column cash book (blocks 7-9) but the body prepares T-accounts: blocks 49-57 and 70-80 carry a DR/CASH ACCOUNT/CR or DR/BANK ACCOUNT/CR line, an N/N heading and rules drawn as shapes at blocks 49, 56, 70 and 79. No cash book ruling, date column, particulars column, folio column, running balance or distinction between the cash book and the cash account is given, so a pupil cannot prepare the book the scheme names. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W01-SCHEME-3",
         "COV-BK-T1-W01-SCHEME-4",
@@ -4009,38 +4062,38 @@
         "COV-BK-T1-W01-ILLUS-1",
         "COV-BK-T1-W01-ILLUS-2"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W01-BALANCING-UNTAUGHT",
       "kind": "CONTENT",
-      "detail": "Balancing is shown, not taught. Block 56 prints Bal. c/d1,010 and block 78 prints Bal. b/d 1,910 alongside Bal. c/d1,010, with no rule for when to balance, how to find the difference between the sides, what to do when payments exceed receipts, or why a brought-down balance differs from a carried-down one. The only printed balances are also arithmetically wrong (BOOKKEEPING-T1-W01-FIGURE-CHECKS), so the week contains no usable model of balancing.",
-      "required_action": "Teach balancing in BK-LES-T1-W01-CASH-BOOK: the closing and opening balances, the c/d and b/d steps, and practice whose answers are derived from the corrected figures.",
+      "detail": "Balancing is shown, not taught. Block 56 prints Bal. c/d1,010 and block 78 prints Bal. b/d 1,910 alongside Bal. c/d1,010, with no rule for when to balance, how to find the difference between the sides, what to do when payments exceed receipts, or why a brought-down balance differs from a carried-down one. The only printed balances are also arithmetically wrong (BOOKKEEPING-T1-W01-FIGURE-CHECKS), so the week contains no usable model of balancing. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W01-BALANCING",
         "COV-BK-T1-W01-ILLUS-1",
         "COV-BK-T1-W01-ILLUS-2"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W01-NO-EXERCISE",
       "kind": "CONTENT",
-      "detail": "Week 1 sets no exercise, assignment or question of any kind: both illustrations are printed with solutions (blocks 37-57 and 59-80) and no unsolved practice, answer key, mark allocation or completion criterion exists. The printed solutions are teaching material recorded under BK-PRES-T1-WORKED, not assessment, so no Week 1 assessment entry can be indexed and nothing in the week can test the pupil.",
-      "required_action": "Append the practice and marking to BK-LES-T1-W01-CASH-BOOK as authored questions with complete answers, not as source questions.",
+      "detail": "Week 1 sets no exercise, assignment or question of any kind: both illustrations are printed with solutions (blocks 37-57 and 59-80) and no unsolved practice, answer key, mark allocation or completion criterion exists. The printed solutions are teaching material recorded under BK-PRES-T1-WORKED, not assessment, so no Week 1 assessment entry can be indexed and nothing in the week can test the pupil. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W01-SCHEME-3",
         "COV-BK-T1-W01-SCHEME-4",
         "COV-BK-T1-W01-ILLUS-1",
         "COV-BK-T1-W01-ILLUS-2"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W03-SCHEME-MAPPING",
       "kind": "CONTENT",
-      "detail": "Scheme entry 8 (blocks 18-21, sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters) reads 8.Contra Entry. with the sub-items -Explain contra entry, -Identify contra entry and -Recording contra entry. It is carried by Week 3, blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997): label 109, heading 110, definition 111-113, direction (a) 114-124, direction (b) 126-135, then 22 empty blocks. The twelve scheme entries carry no week numbers, so the mapping rests on label order and topic, as for Weeks 1, 2 and 4; the term-wide mapping remains BK-PRE-T1 (PENDING). Two sequencing facts need a decision before the lesson is written: Week 3 records its examples in a cash book with Cash and Bank columns, the two-column form first taught in Week 2, and no block in Week 3 re-states that ruling; and the Week 2 example already contains two transfers between cash and bank (BOOKKEEPING-T1-W02-CONTRA-SEQUENCING, affected id BK-WK-T1-W03), which teaches the transaction before the scheme entry that explains it.",
-      "required_action": "Complete BK-PRE-T1's term-wide mapping, and record in BK-FACT-T1-W03-DEFECTS whether the Week 3 lesson may rely on the Week 2 two-column ruling and how it is to be ordered against the decision required by BOOKKEEPING-T1-W02-CONTRA-SEQUENCING.",
+      "detail": "Scheme entry 8 (blocks 18-21, sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters) reads 8.Contra Entry. with the sub-items -Explain contra entry, -Identify contra entry and -Recording contra entry. It is carried by Week 3, blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997): label 109, heading 110, definition 111-113, direction (a) 114-124, direction (b) 126-135, then 22 empty blocks. The twelve scheme entries carry no week numbers, so the mapping rests on label order and topic, as for Weeks 1, 2 and 4; the term-wide mapping remains BK-PRE-T1 (PENDING). Two sequencing facts need a decision before the lesson is written: Week 3 records its examples in a cash book with Cash and Bank columns, the two-column form first taught in Week 2, and no block in Week 3 re-states that ruling; and the Week 2 example already contains two transfers between cash and bank (BOOKKEEPING-T1-W02-CONTRA-SEQUENCING, affected id BK-WK-T1-W03), which teaches the transaction before the scheme entry that explains it. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W03-SCHEME-8",
         "COV-BK-T1-W03-EXPLAIN",
@@ -4051,13 +4104,13 @@
         "COV-BK-T1-W03-RULE",
         "BK-FACT-T1-W03-DEFECTS"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W03-SOURCE-DEFECTS",
       "kind": "CONTENT",
-      "detail": "Thirteen defects found in Week 3 (blocks 109-157), retained uncorrected: (1) block 111: the definition is one 154-character run-on sentence that calls contra a latin word and never says two accounts are affected. (2) block 112: limits contra to the payment of cash into the bank although 126-135 teaches the reverse direction, and wraps the C in curly double quotation marks. (3) block 113: the transfer of an account to the identical side of another account is wrong, since the week's own pairs post to opposite sides. (4) blocks 116 and 130: EffectAction Required runs the two column headings together, and blocks 117-118 and 131-132 run the effect, the debit or credit and the column together (decreasedCr. Cash column). (5) blocks 116-118 and 130-132 are a Word table flattened to paragraph text, so row grouping survives only as position (BK-VIS-T1-TBL-W03). (6) blocks 119-120: a cash balance of N300 is followed by N710 paid into the bank, and the N710 has no stated source. (7) block 120: the line begins with six literal spaces, not a tab. (8) block 121: DrCash BookCr runs Dr, the account title and Cr together, while block 134 prints only Dr Cr, so the two tables are headed differently. (9) blocks 122 and 135: neither table has a total, a balance carried down or a balance brought down, so the effect of the contra on the two balances is never shown. (10) blocks 122 and 135: each header row ends with four bare N cells and no column label, so Cash cannot be told from Bank except by counting cells. (11) block 124: the both-sides folio rule is stated once, in a note, with curly quotation marks. (12) block 127: the effect and action will be started below should read stated. (13) blocks 136-157 are 22 empty blocks, so the week closes with no exercise.",
-      "required_action": "Correct nothing in the source. Record one numbered decision per defect (retain, correct or replace) in BK-FACT-T1-W03-DEFECTS so the authored lesson does not copy the printed wording.",
+      "detail": "Thirteen defects found in Week 3 (blocks 109-157), retained uncorrected: (1) block 111: the definition is one 154-character run-on sentence that calls contra a latin word and never says two accounts are affected. (2) block 112: limits contra to the payment of cash into the bank although 126-135 teaches the reverse direction, and wraps the C in curly double quotation marks. (3) block 113: the transfer of an account to the identical side of another account is wrong, since the week's own pairs post to opposite sides. (4) blocks 116 and 130: EffectAction Required runs the two column headings together, and blocks 117-118 and 131-132 run the effect, the debit or credit and the column together (decreasedCr. Cash column). (5) blocks 116-118 and 130-132 are a Word table flattened to paragraph text, so row grouping survives only as position (BK-VIS-T1-TBL-W03). (6) blocks 119-120: a cash balance of N300 is followed by N710 paid into the bank, and the N710 has no stated source. (7) block 120: the line begins with six literal spaces, not a tab. (8) block 121: DrCash BookCr runs Dr, the account title and Cr together, while block 134 prints only Dr Cr, so the two tables are headed differently. (9) blocks 122 and 135: neither table has a total, a balance carried down or a balance brought down, so the effect of the contra on the two balances is never shown. (10) blocks 122 and 135: each header row ends with four bare N cells and no column label, so Cash cannot be told from Bank except by counting cells. (11) block 124: the both-sides folio rule is stated once, in a note, with curly quotation marks. (12) block 127: the effect and action will be started below should read stated. (13) blocks 136-157 are 22 empty blocks, so the week closes with no exercise. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W03-EXPLAIN",
         "COV-BK-T1-W03-IDENTIFY",
@@ -4067,39 +4120,39 @@
         "COV-BK-T1-W03-RULE",
         "BK-LES-T1-W03-CONTRA"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W03-FIGURE-CHECKS",
       "kind": "VERIFICATION",
-      "detail": "Example (a) cannot be reconciled as printed. Block 119 states Jan. 1 cash balanced N300 and block 120 states Jan. 2 cash paid into the bank amounted to N710. A cash balance of N300 cannot fund a transfer of N710, and the week supplies no opening bank balance, receipt, loan or earlier balance from which N710 could come; block 122 then enters 300 and 710 on both sides, so the table agrees with itself while the narrative does not. Example (b) withdraws N800 (block 133) from a bank balance that is never stated, and against the N300 cash balance the resulting cash would be N1,100, which the week never states because neither table carries a total or balance. Only Jan. 1, Jan. 2 and Jan. 4 are dated and no year is given, so the two examples cannot be read as one continuous cash book either. No figure can be reused without being re-derived.",
-      "required_action": "Re-derive both examples from a stated opening position, show every figure and label it, and record the resulting balances in BK-FACT-T1-W03-DEFECTS; the lesson must state the opening cash and bank balances it assumes.",
+      "detail": "Example (a) cannot be reconciled as printed. Block 119 states Jan. 1 cash balanced N300 and block 120 states Jan. 2 cash paid into the bank amounted to N710. A cash balance of N300 cannot fund a transfer of N710, and the week supplies no opening bank balance, receipt, loan or earlier balance from which N710 could come; block 122 then enters 300 and 710 on both sides, so the table agrees with itself while the narrative does not. Example (b) withdraws N800 (block 133) from a bank balance that is never stated, and against the N300 cash balance the resulting cash would be N1,100, which the week never states because neither table carries a total or balance. Only Jan. 1, Jan. 2 and Jan. 4 are dated and no year is given, so the two examples cannot be read as one continuous cash book either. No figure can be reused without being re-derived. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W03-RECORD-A",
         "COV-BK-T1-W03-RECORD-B",
         "COV-BK-T1-W03-RULE",
         "BK-LES-T1-W03-CONTRA"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W03-CONCEPT-ERROR",
       "kind": "FACT",
-      "detail": "Block 113 (sha256 13f67fc44e12b751cab49ef74f630d855fc25ad1de7b46ced1a29de10877a7c7, 96 characters) defines a contra entry as the transfer of an account to the identical side of another account. That is the reverse of the recognised rule and of the week's own worked examples: a contra entry moves money between cash and bank, so the same amount is debited to one account or column and credited to the other, as blocks 117-118 direct (Cr. Cash column, Dr. Bank column) and blocks 131-132 direct (Cr. Bank column, Dr. Cash column), and as the two tables record by cell (block 122 Dr Bank 300 and 710 against Cr Cash 300 and 710; block 135 Dr Cash 800 against Cr Bank 800). Block 112 adds a second error by defining contra only as payment of cash into the bank, which would exclude the withdrawal case the week itself teaches.",
-      "required_action": "Approve the corrected definition in BK-FACT-T1-W03-DEFECTS. This is a factual correction to a stated definition, not an editorial preference, and the lesson cannot teach block 113 as printed.",
+      "detail": "Block 113 (sha256 13f67fc44e12b751cab49ef74f630d855fc25ad1de7b46ced1a29de10877a7c7, 96 characters) defines a contra entry as the transfer of an account to the identical side of another account. That is the reverse of the recognised rule and of the week's own worked examples: a contra entry moves money between cash and bank, so the same amount is debited to one account or column and credited to the other, as blocks 117-118 direct (Cr. Cash column, Dr. Bank column) and blocks 131-132 direct (Cr. Bank column, Dr. Cash column), and as the two tables record by cell (block 122 Dr Bank 300 and 710 against Cr Cash 300 and 710; block 135 Dr Cash 800 against Cr Bank 800). Block 112 adds a second error by defining contra only as payment of cash into the bank, which would exclude the withdrawal case the week itself teaches. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W03-SCHEME-8",
         "COV-BK-T1-W03-EXPLAIN",
         "COV-BK-T1-W03-RULE",
         "BK-LES-T1-W03-CONTRA"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-W03-NO-EXERCISE",
       "kind": "CONTENT",
-      "detail": "Week 3 sets no exercise, assignment, question or revision item. Blocks 136-157 are empty and the week consists of one definitional passage and two worked examples. There is no answer key, mark allocation or completion criterion, and nothing asks a pupil to classify a given transaction as a contra entry, to choose the side to debit or credit, or to write up a cash book containing both directions.",
-      "required_action": "Author pupil practice with complete answers and marking in BK-LES-T1-W03-CONTRA; the source supplies none and the examples are not usable without correction.",
+      "detail": "Week 3 sets no exercise, assignment, question or revision item. Blocks 136-157 are empty and the week consists of one definitional passage and two worked examples. There is no answer key, mark allocation or completion criterion, and nothing asks a pupil to classify a given transaction as a contra entry, to choose the side to debit or credit, or to write up a cash book containing both directions. OWNER DELIVERY DECISION (2026-11-08): corresponding project-authored Week 1–4 teaching is approved as the delivery replacement; original evidence remains unchanged.",
+      "required_action": "Resolved for delivery under owner approval dated 2026-11-08: use the linked project-authored Week 1–4 replacement teaching; preserve this original-source defect/evidence unchanged. This does not correct the original source, approve content, or complete technical verification.",
       "affected_ids": [
         "COV-BK-T1-W03-SCHEME-8",
         "COV-BK-T1-W03-IDENTIFY",
@@ -4107,7 +4160,7 @@
         "COV-BK-T1-W03-RECORD-B",
         "BK-LES-T1-W03-CONTRA"
       ],
-      "blocks_delivery": true
+      "blocks_delivery": false
     },
     {
       "id": "BOOKKEEPING-T1-SCHEME-VS-BODY",
