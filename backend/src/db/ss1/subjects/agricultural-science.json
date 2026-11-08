@@ -721,6 +721,54 @@
         }
       ],
       "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W10-CROP-CLASSIFICATION",
+      "objective": "Scheme entry 10: Classification of Crops — based on life cycle, morphology and uses",
+      "objective_locator": "scheme block 21; Week 10 label 866; topic 867; content headings 869-871",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 10 blocks 873-879; life-cycle classes 875-879",
+          "explanation": "The source defines crops and classifies them as annual, biennial and perennial, with examples."
+        },
+        {
+          "locator": "Week 10 blocks 884-890; morphology 885-887",
+          "explanation": "The source defines monocotyledonous and dicotyledonous crops by cotyledon count, leaf venation and root system, with examples."
+        },
+        {
+          "locator": "Week 10 blocks 892-905; uses classifications",
+          "explanation": "The source teaches cereals, legumes, roots/tubers, vegetables, spices, beverage, fruit, oil, latex, fibre, drug, forage and ornamental crops."
+        },
+        {
+          "locator": "Evaluations 880-890, 906-908; general evaluation 910-916; weekend 920-927; theory 928-931",
+          "explanation": "Most classification and examples questions are supported. The tabular comparison asks for seven monocot/dicot differences but only three paired contrasts are taught; biennial definition at 878 is textually defective and requires fact verification."
+        },
+        {
+          "locator": "Week 10 range 866-931; SHA-256 63ef5e359e9b53ed3a47905e9ee92a78704a699a47f8f2e9b4349f888a325208",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W10-MONOCOT-DICOT-DIFFERENCES",
+      "objective": "Assessment scope: seven differences between monocotyledonous and dicotyledonous crops",
+      "objective_locator": "Week 10 morphology blocks 884-887; theory block 931",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 10 blocks 886-887",
+          "explanation": "The source teaches three paired differences: one vs two cotyledons, parallel vs net leaf venation, and fibrous vs tap-root system."
+        },
+        {
+          "locator": "Week 10 theory block 931",
+          "explanation": "The theory asks for seven differences in tabular form; only three contrasts are explicitly taught."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
     }
   ],
   "open_items": [
@@ -1160,6 +1208,40 @@
       "required_action": "Verify the Land Use Act 1978 and its effect on landholding/rights against the actual statute and authoritative Nigerian legal sources; recommend a precise correction to any inaccurate statement without silently changing source text.",
       "affected_ids": [
         "AG-FACT-T1-W08-LAND-USE-ACT",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W10-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 10 teaches crop classification by life cycle (875-879), morphology (884-887) and uses (892-905), but package lessons are empty and no importer-confirmed parsed-row ID exists. COV-AG-T1-W10-CROP-CLASSIFICATION is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T1-W10-CROP-CLASSIFICATION; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T1-W10-CROP-CLASSIFICATION",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W10-MONOCOT-DICOT-DIFFERENCES",
+      "kind": "CONTENT",
+      "detail": "Theory 2 at block 931 asks for seven differences between monocots and dicots, but blocks 886-887 teach only three paired contrasts: cotyledon count, leaf venation and root system.",
+      "required_action": "Author AG-LES-T1-W10-MONOCOT-DICOT-TABLE with seven scientifically accurate, age-appropriate paired differences, sourced references, a clear table, complete keyed practice and criterion-level marking.",
+      "affected_ids": [
+        "COV-AG-T1-W10-MONOCOT-DICOT-DIFFERENCES",
+        "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W10-BIENNIAL-DEFINITION",
+      "kind": "FACT",
+      "detail": "Week 10 block 878 defines biennial crops as completing their life cycle 'within as year' and lists cassava, pepper, onions, carrot and ginger. The definition is textually defective and the examples need classification verification.",
+      "required_action": "Verify the intended biennial definition and each listed example against authoritative crop-science sources; recommend a precise correction or unresolved disposition without changing original source text.",
+      "affected_ids": [
+        "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true

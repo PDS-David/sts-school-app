@@ -35,23 +35,24 @@
     "AG-WK-T1-W05 (2026-11-08) indexed First Term Week 5: scheme entry 5 maps to eleven science-and-technology roles (426-436). Assessment gaps for technology definition, five improved systems and five storage facilities, plus a genetics terminology MCQ fact-check, were appended. Agro-chemical names preserved without invented doses or handling instructions.",
     "AG-WK-T1-W06 (2026-11-08) indexed First Term Week 6: definition, 14-row industry/raw-material table and ten agriculture-industry relationships are source-taught. Cereal questions cross-map to Week 10 block 893; agro-chemical list supported across Weeks 5-6. Storage-structure/produce pairings and incubator MCQ classification remain follow-ups; table visual disposition remains separate.",
     "AG-WK-T1-W07 (2026-11-08) indexed First Term Week 7: land definition, agricultural/non-agricultural uses and land-availability factors are source-taught. Four game reserves supplied for five-item questions; socio-economic factors, land-mobility wording, game-reserve use MCQ and labour-factor MCQ need bounded follow-up.",
-    "AG-WK-T1-W08 (2026-11-08) indexed First Term Week 8: source teaches five land-tenure systems but not the agricultural laws/reforms named in the scheme heading. Land Use Act references in Weeks 3/7 require legal verification; questions on most common tenure system are not answered in source. Evaluation heading 643 is empty; reading assignment points back to Week4 government roles."
+    "AG-WK-T1-W08 (2026-11-08) indexed First Term Week 8: source teaches five land-tenure systems but not the agricultural laws/reforms named in the scheme heading. Land Use Act references in Weeks 3/7 require legal verification; questions on most common tenure system are not answered in source. Evaluation heading 643 is empty; reading assignment points back to Week4 government roles.",
+    "AG-WK-T1-W10 (2026-11-08) indexed First Term Week 10: crop classification by life cycle, morphology and uses is source-taught. Seven-difference monocot/dicot theory exceeds the three source contrasts; biennial definition at block 878 is defective and examples need fact-check. Five biotic-factor revision item cross-maps to Week 9 blocks 805-824."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 13,
+    "FACTUAL_DEPENDENCY": 14,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 17,
+    "LESSON": 18,
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 20,
-    "PENDING": 83,
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 84,
     "BLOCKED": 2
   },
   "items": [
@@ -807,8 +808,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): label block 866 text \"WEEK 10                                                                                               DATE ………………………………\" (sha256 40b4d4f8953b8b0330d7667294b3dcc1444b464bdcee30bd13c5e8e42d9b8b29); blocks 866-931; range sha256 63ef5e359e9b53ed3a47905e9ee92a78704a699a47f8f2e9b4349f888a325208. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme topic: Classification of Crops: Based on Life Cycle, Morphology and Uses. Life cycle (875-882), morphology (884-890), uses (892-908), General Evaluation (910-916), Reading (918-919), Weekend MCQ (920-927) and Theory (928-931). Block 878 defines biennial crops as completing the life cycle 'within as year' and lists cassava, pepper, onions, carrot, ginger; block 879 defines perennial as 'more than two years' - flag for factual verification in any lesson task. Theory 2 (block 931) asks for a tabular comparison of monocots and dicots; no table exists in the week. General Evaluation 6 (block 916) revisits biotic factors from Week 9.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526 and Week 10 range blocks 866-931 SHA-256 63ef5e359e9b53ed3a47905e9ee92a78704a699a47f8f2e9b4349f888a325208. Scheme entry 10 (block 21) maps to life-cycle classification 875-879, morphology 884-887 and uses 892-905. Crop definition and all three classification bases are taught. Annual examples at 877, biennial examples at 878 and perennial examples at 879; the biennial sentence reads 'within as year' and examples need factual verification. Morphology teaching supplies three paired differences (cotyledon count, leaf venation, root system) but theory 931 asks for seven. Evaluation 880-882 and 888-890 supported; evaluation 906-908 supported by uses 897-903; general evaluation 911-915 supported; general evaluation 916 cross-week supported by Week 9 biotic-factor section 805-824. Weekend 921-927 supported by definitions and examples at 877-887, 893 and 898; theory 929-930 supported. Added one PARTIAL and one UNRESOLVED coverage entry, three open items and two follow-ups AG-LES-T1-W10-MONOCOT-DICOT-TABLE and AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION. Reading reference 919 recorded but not checked. Full assessment analysis: AG-WK-T1-W10.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3955,6 +3956,77 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T1-W08: source's Land Use Act references are brief and may be legally oversimplified.",
       "completion_condition": "A statute-backed note verifies the legal claim and provides a precise correction/recommendation or records an unresolved issue."
+    },
+    {
+      "id": "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 10 morphology blocks 884-887; theory block 931",
+      "objective": "Teach seven scientifically accurate paired differences between monocotyledonous and dicotyledonous crops in a clear comparison table. Preserve the source's three contrasts and label additional distinctions as supplement content; include reliable references, complete keyed practice and criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T1-W10-MONOCOT-DICOT-TABLE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W10: theory block 931 asks for seven differences, while source blocks 886-887 teach three.",
+      "completion_condition": "A clearly labelled supplement presents seven accurate paired differences, sources, keyed practice and criterion-level marks, truthful provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "term": "1st Term",
+      "week_or_locator": "Week 10 block 878; weekend assignment block 922",
+      "objective": "Verify the correct definition of biennial crops and the classification of the examples cassava, pepper, onions, carrot and ginger. Assess whether weekend Q2's pepper exception is correct in the intended crop-science context; recommend source correction if needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T1-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/1ST TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T1",
+        "AG-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T1-W10: block 878 says 'within as year' and the examples require verification.",
+      "completion_condition": "A sourced note verifies the definition/examples and recommends a precise correction or records unresolved classifications."
     }
   ],
   "review": {
@@ -3970,7 +4042,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T1-W10",
     "AG-WK-T2-W01",
     "AG-WK-T2-W02-03",
     "AG-WK-T2-W04-05",
@@ -4034,6 +4105,7 @@
     "AG-FACT-T1-W07-LABOUR-FACTOR",
     "AG-FACT-T1-W08-PROMINENT-TENURE",
     "AG-FACT-T1-W08-LAND-USE-ACT",
+    "AG-FACT-T1-W10-BIENNIAL-CLASSIFICATION",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
@@ -4049,6 +4121,7 @@
     "AG-LES-T1-W07-GAME-RESERVES",
     "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
     "AG-LES-T1-W08-AGRICULTURAL-LAWS-REFORMS",
+    "AG-LES-T1-W10-MONOCOT-DICOT-TABLE",
     "AG-TEST-PACKAGE"
   ]
 }
