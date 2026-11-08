@@ -80,7 +80,8 @@
     "AG-VIS-T3-W04-TBL-DIGESTION (2026-11-08): block 431 is a native 7×3 Word table with six paired monogastric/polygastric distinctions; source table structure is intact. The table hash recorded in the task/inventory does not match the documented concatenated-cell-text method; AG-CORR-T3-W04-TBL-DIGESTION-HASH was appended to verify/correct the inventory hash.",
     "AG-VIS-T3-W05-RESPIRATORY (2026-11-08): image14.jpeg at block 547 is a slide-like lower-respiratory-tract graphic with readable text and labelled lung diagram. 'Syrinx (in birds)' and hyoid bone appear as image labels but are not explained in block 546. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W05-FISH-GILLS (2026-11-08): block 554 contains two legible fish-gill diagrams: image15 labels arch/filaments/rakers; image16 is a multi-panel bony-fish gill figure with additional lamellae/capillary/blood-supply labels. No reuse licence or rights attribution is supplied; reuse is blocked pending clearance or rights-cleared replacements.",
-    "AG-VIS-T3-W05-RESPIRATION-EQUATIONS (2026-11-08): equation paragraphs are 532, 537 and 540, not the task's original 530, 535 and 538; associated word labels are 533, 538 and 541. Chemical numerals use run-level subscripts, but no reaction arrows or Office Math objects are present; word-label runs are superscripted. Existing factual open item AGRICULTURAL-SCIENCE-T3-W05-RESPIRATION-ACCURACY remains the verification gate. Locator correction task AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS appended."
+    "AG-VIS-T3-W05-RESPIRATION-EQUATIONS (2026-11-08): equation paragraphs are 532, 537 and 540, not the task's original 530, 535 and 538; associated word labels are 533, 538 and 541. Chemical numerals use run-level subscripts, but no reaction arrows or Office Math objects are present; word-label runs are superscripted. Existing factual open item AGRICULTURAL-SCIENCE-T3-W05-RESPIRATION-ACCURACY remains the verification gate. Locator correction task AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS appended.",
+    "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -92,10 +93,10 @@
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
     "LESSON": 29,
-    "CORRECTION_BINDING": 14
+    "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 65,
+    "IMPLEMENTED_TESTING_DEFERRED": 66,
     "PENDING": 86,
     "BLOCKED": 2
   },
@@ -2836,8 +2837,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Table at direct-body block 724 is a native Word table with 6 rows × 3 columns and separate paragraphs within the paired horse/cattle and rabbit/chicken cells. Row 1: Horse/Cattle; Mare/Cow; 336 days/283 days. Row 5: Rabbit/Chicken; Doe/Hen; 31days/21 days. Other rows: Goat/Doe/150 days; Sheep/Ewe/150 days; Pig/Sow/114 days. Inside horizontal borders are nil; vertical separators are present. The recorded table text hash 2a4920ab1813f229acf23091705f2ae7378471933fbf2d7e93c5a86e062d1925 does not reproduce under concatenated cell text in document order; recomputed no-separator value is 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c. Appended AG-CORR-T3-W06-TBL-GESTATION-HASH to verify/correct inventory hash. No table content or source wording changed; preserve cell paragraphs and paired row alignment.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5753,6 +5754,47 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-VIS-T3-W05-RESPIRATION-EQUATIONS after XML inspection: actual equation blocks are 532, 537, 540; old locator 530, 535, 538 refers to heading/prose/label.",
       "completion_condition": "Re-verify source hashes and direct-body positions; correct AG-INV-T3.md equation/label locators and describe run-level formatting accurately without adding reaction arrows or changing source wording."
+    },
+    {
+      "id": "AG-CORR-T3-W06-TBL-GESTATION-HASH",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Six gestation table block 724 (6×3); inventory/task recorded hash 2a4920ab1813f229acf23091705f2ae7378471933fbf2d7e93c5a86e062d1925",
+      "objective": "Verify and correct the table-text SHA-256 recorded for the Week Six gestation-period table at body block 724. The documented method says SHA-256 of concatenated cell text in document order; direct recomputation yields 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c with no separators, not the recorded 2a4920ab1813f229acf23091705f2ae7378471933fbf2d7e93c5a86e062d1925. Confirm the canonical calculation and update AG-INV-T3.md with a reproducible method/value. Preserve the six-row, three-column table and separate paragraph pairings in Horse/Cattle and Rabbit/Chicken cells; do not alter stated species, female names or gestation periods.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W06-TBL-GESTATION.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T3-W06-TBL-GESTATION-HASH.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3",
+        "AG-VIS-T3-W06-TBL-GESTATION"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-VIS-T3-W06-TBL-GESTATION: recorded table hash does not match direct concatenated cell text; recomputed value is 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c.",
+      "completion_condition": "Independently reproduce the canonical table hash from the verified source DOCX, correct AG-INV-T3.md with exact method and hash, and confirm all six rows and paired-cell paragraph boundaries remain unchanged."
     }
   ],
   "review": {
@@ -5768,7 +5810,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W06-TBL-GESTATION",
     "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
     "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
     "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
@@ -5823,6 +5864,7 @@
     "AG-CORR-T3-W02-WDP-LOCATORS",
     "AG-CORR-T3-W04-TBL-DIGESTION-HASH",
     "AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS",
+    "AG-CORR-T3-W06-TBL-GESTATION-HASH",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
