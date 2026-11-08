@@ -419,6 +419,480 @@
           "explanation": "The label WEEK ONE AND TWO matches the importer's week marker, so the combined assignment is its own generic row. It is the same block range as COV-BIO-T1-W01-ASSESSMENT; the keyed supplement BIO-LES-T1-W01-ASSESSMENT already exists to disposition the block once, so no duplicate task is created here."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-SCHEME-3",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 3: Classification of Living things",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 4 (sha256 90846288953e56236069142972ddfd5b1db1e76a5d61e83007ecc1f7af34b813); Week 3 label block 133 (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); Week 3 body blocks 133-644 (range sha256 0103345f39d4a3f64705635245f85b0bbbc69edfea60ec9d843c00cf6d88e227)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 135-136 (range sha256 aff7c5f5ded5c02c6e33c568433d5e8fc862c1b7d8a067a4e9409912b522ad85); diagram blocks 137-155 (range sha256 e04ec56a91a301393fc767f2e14780206239d6d75237930d6a15675be39927e9)",
+          "explanation": "The source defines classification/taxonomy, names Carolus Linnaeus, sets out the hierarchy Kingdom → Phylum/Division → Class → Order → Family → Genus (printed 'Genius' in the diagram) → Species, and describes species as populations able to interbreed and produce fertile offspring. The diagram uses six native drawing/VML pairs for the ranks through Family and Genus; Species is plain text at block 155. The spelling and visual disposition are retained for the separate BIO-VIS-T1-CLASS-HIERARCHY task."
+        },
+        {
+          "locator": "blocks 156-187 (range sha256 4ae26237ab8b58d672c6972327a754d675c730bda928530e248cd9239167f314)",
+          "explanation": "The source names five kingdoms (Monera, Protoctista, Fungi, Plantae and Animalia) and gives characteristics/examples for Monera, Protoctista and Fungi, followed by the opening Plantae characteristics. The visible body continues the Plantae description in the next range."
+        },
+        {
+          "locator": "blocks 188-244 (range sha256 57754fb1ec68a46283f047acc1faf10b98f61c340039093b7fef012a551bd2a6)",
+          "explanation": "The source classifies Plantae into Thallophyta, Bryophyta, Pteridophyta and Spermatophyta; divides Spermatophyta into Gymnospermatophyta and Angiospermatophyta; and divides angiosperms into monocotyledons and dicotyledons. Blocks 235-244 present the monocot/dicot comparison with two header shapes and tab-aligned text; its preservation is separately assigned to BIO-VIS-T1-MONOCOT-DICOT."
+        },
+        {
+          "locator": "blocks 248-264 (plant agricultural classification range sha256 185d27a29ebf4ff3cd03f05cfc3d057dd43b331988ef6e2ecc11d69f68cc7329; life-cycle range sha256 c60226a5c1f630812011f9f380017a36c1d37e7fba0b19c0089ca1aac1cab3df)",
+          "explanation": "The source groups plants by agricultural product/use (including cereals, legumes, root crops, vegetables, fruits, cash crops, oil plants, fibre crops, beverages/drugs, quinine and spices) and by life cycle (annual, biennial and perennial). These are treated as plant-classification subtopics in the Week 3 body."
+        },
+        {
+          "locator": "blocks 268-447 (range sha256 4119a2d6174be6b4fb7246d3b940e57241a5479d956c821110a32fd295bdfafd)",
+          "explanation": "The source gives Animalia characteristics, distinguishes invertebrates and vertebrates, describes body symmetry/design/cavity, lists invertebrate phyla and their characteristics, then identifies five vertebrate classes (Pisces, Amphibia, Reptilia, Aves and Mammalia) and gives class-level characteristics. The body teaches the scheme's classification objective across plant and animal groups."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no parsed row or importer/compiler result was run",
+          "explanation": "The objective is taught in the original source, but no Biology lesson exists in the package. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W03-ASSESSMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 3 assignment: questions 1-7 on animal and plant classification",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment heading block 631 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK THREE label block 632 (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); questions blocks 634-642 (range sha256 fb122edb7c09f528334ee873e83b2ac6f8719f3c81019268f4c553e86d1de363)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 634-639; relevant teaching blocks 268-447",
+          "explanation": "Q1 asks for an odd one out among bat, shark, rat and whale. Shark is identified as a cartilaginous fish (block 391), but the source does not identify bat, rat or whale as examples of Mammalia; the question's intended grouping is not fully supported by this source alone. Q2 names angiosperms and gymnosperms and offers 'spermatophyte'; blocks 216-232 place both divisions under Spermatophyta, although the question calls them a 'class' while the source calls them divisions. Q3's mammal-hair option is supported by block 437. Q4 asks which feature insects and millipedes do not share; the source lists arthropod segmentation, exoskeleton and jointed appendages at 355-363 but does not discuss compound eyes, so it does not establish the requested exception."
+        },
+        {
+          "locator": "question block 640; fish characteristics blocks 388-400",
+          "explanation": "Q5 asks the learner to make a labelled lateral-view drawing of a fish. The source describes fish features (scales, fins, gills, swim bladder, lateral line and streamlined form) but contains no fish drawing or labelled reference figure in this assignment range. The question is an instruction to draw, not a supplied source diagram."
+        },
+        {
+          "locator": "question block 641; Pisces blocks 388-400; Mammalia blocks 433-446",
+          "explanation": "Q6 asks for five structural differences between Pisces and Mammalia. The source supplies separate class descriptions and characteristics for both groups, so the comparison is supported by the written source."
+        },
+        {
+          "locator": "question block 642; comparison blocks 235-244",
+          "explanation": "Q7 asks for five differences between 'monocotyledons and cotyledons plant'. The preceding source comparison is explicitly headed Monocotyledoneae/Dicotyledoneae and supplies multiple differences, but the assignment's second term is incomplete as printed. The table's visual/tabular pairing is separately assigned to BIO-VIS-T1-MONOCOT-DICOT."
+        },
+        {
+          "locator": "whole source member; no answer-key block in the Week 3 range",
+          "explanation": "No answer key or marking guide is supplied for questions 1-7. The assignment is therefore not keyed for delivery; no answers or marks are invented here."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W04-SCHEME-4",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 4: Organization of life",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 5 (sha256 588337efbfccb7f5e67be12cba53b91278499230039352f1cede4071495f58ce); Week 4 label block 645 (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); body blocks 645-678 (range sha256 25c2f1150d9175195b12b81080a2660f1dded05b377e67460248afc6d4cb14af)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 647-652 (range sha256 43a6e485c33da9b84e3648d78c83dd178b6222fc7e12de385ab317e0849af4b3)",
+          "explanation": "Defines organization of life and describes four levels: cell, tissue, organ and system. Examples include unicellular organisms, Hydra, blood/xylem/phloem and other tissues, roots/stems/leaves and body organs, and the digestive system. The source states Hydra is the only organism at tissue level; that wording is retained as printed."
+        },
+        {
+          "locator": "blocks 653-660 (range sha256 5f0c56b1cfe75d6e659cf230cc3667148f419a040d4bde33397ccd20fbba95b5)",
+          "explanation": "Describes increasing complexity from unicellular to multicellular organisms and lists five advantages: cell specialization, division for efficient exploitation of the environment, adaptation, increased size, and continuation of other activities during reproduction in complex organisms."
+        },
+        {
+          "locator": "blocks 661-664 (range sha256 9d64a3d718c75f0a78ac372ecfcac61bcd35455a10cd087fca6cc979c76032a2)",
+          "explanation": "Lists three disadvantages: cells depend on one another, area-to-volume diminishes, and ability to regenerate decreases in higher organisms."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches the scheme objective, but no Biology lesson exists in the package. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W04-PRACTICE",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 4 'Questions to practice' (questions 1a-1d and 2a-2b)",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 heading block 666 (sha256 9689251847fd27a4aee49b7174f92260568da624e03c94fd34fbb7d47d0150ac); practice questions blocks 667-677 (range sha256 18a886e69a3282f7510b9aa2ec7bc0ac23926b54dcb9923f767c4a40722099e9)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 667-674; Week 4 teaching blocks 649-664; Week 3 body blocks 282-290 and 302-312",
+          "explanation": "Q1a compares Hydra and mammals by level of organization, body symmetry and number of body layers. Level of organization is introduced in Week 4; symmetry and germ-layer teaching occurs in the preceding Week 3 source (body symmetry blocks 282-285; diploblastic/triploblastic blocks 289-290; Hydra body layers block 308). Q1b asks for four advantages of complexity, supported by Week 4 blocks 655-660. Q1c asks learners to relate higher-animal and Amoeba functions: Week 4 names unicellular Amoeba and structures such as pseudopodia, cilia, flagella and vacuole at 649 and specialized tissues/organs/systems at 654, but does not fully compare their functions. Q1d asks learners to group examples by level; the source defines the four levels and gives some examples at 649-652, but does not explicitly classify every listed object."
+        },
+        {
+          "locator": "blocks 675-677; Week 3 body blocks 235-244 and 302-446",
+          "explanation": "Q2a asks for monocotyledon/dicotyledon differences already taught at Week 3 blocks 235-244. Q2b asks for features of Coelenterata, Amphibia, fishes, reptiles, birds and mammals already described in Week 3 blocks 302-446. These are cross-week practice/revision items, not new Week 4 teaching."
+        },
+        {
+          "locator": "whole Week 4 practice range blocks 666-677",
+          "explanation": "No answer key or marking guide accompanies the practice questions. The heading is 'Questions to practice', not an ASSIGNMENT heading; the source contains no second WEEK FOUR label in this range."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W05-SCHEME-5",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 5: Plant Nutrition",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 6 (sha256 a7311d7898eea52bee2c7fd42c342dbcfcff6915e60599cf3cf37e3ef116ea53); Week 5 label block 679 (sha256 8ee47ba1948276278acd4756c10e25cf6739d5687371d857fd9be652bde6a506); body blocks 679-780 (range sha256 4686f3b47c869d4b3359ada8483a6d7324db6f10dbf211eed9346ed7dd28b8f4)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 680-708 (range sha256 d40f453a5c9ce31f5d5178e3fa4709cd287d60cb0b63dc4a5862b389d44ef1b7)",
+          "explanation": "The source defines photosynthetic/holophytic nutrition, gives a photosynthesis equation at block 683, describes light and dark reaction stages at 685-701, discusses the simple sugar product at 702 and lists importance at 704-708. The drawn light/dark reaction scheme and equations are separately assigned to BIO-VIS-T1-PHOTOSYNTHESIS-SCHEME. The two printed equations at blocks 683 and 700 differ in their displayed products and require factual review before any delivery correction; source wording is not changed here."
+        },
+        {
+          "locator": "blocks 710-713 (range sha256 cbd5cdda7738a833e35fdf510f4a96617edcec7aebe93444bba215bb0ef39020)",
+          "explanation": "Introduces chemosynthetic nutrition and gives a sulphur-bacteria example with an equation. The example is indexed as source content only; the equation is not corrected or expanded here."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches photosynthetic and chemosynthetic nutrition, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W05-PRACTICALS",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Experiments to test for photosynthesis (Experiments I-V)",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 heading block 714 (sha256 22f6a093fae4ce9bda53afea8d2b39a41bd74b3c69eae8cd77db2efffbfa1aba); experiment headings blocks 715, 727, 741, 748 and 760; combined range blocks 714-765 (sha256 0cfbbff13910a5c49a63bff22fb10b7b220fb9aacef0d2e0680e7e625dca43e8)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 714-765; experiment headings 715, 727, 741, 748, 760",
+          "explanation": "The source contains five practical investigations with aims relating to starch in a leaf, the need for sunlight, carbon dioxide and chlorophyll, and oxygen as a by-product. The detailed methods and chemical-handling instructions are not reproduced in this index. Experiment I has no figure; the figures associated with Experiments II-V are owned by BIO-VIS-T1-EXPERIMENT-FIGURES."
+        },
+        {
+          "locator": "blocks 714-765; text search for safety precautions and supervision terms",
+          "explanation": "No separate safety-precautions or teacher-supervision section was found in this range. The practicals cannot be treated as ready for student delivery on this indexing evidence; a teacher-approved safety review is required before practical delivery."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no practical delivery record",
+          "explanation": "No lesson or practical delivery asset is registered in the package. PARTIAL: practical content exists in the source but is not approved or verified for delivery."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W05-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 5 assignment: photosynthesis definition, light reaction, process in green plants and five conditions",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 773 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK FIVE label block 774 (sha256 700c30e110b71fbdb4d6aaa0ea0a922cb9d63b799643acd01e32055226c62598); questions blocks 775-778 (range sha256 6ab2fade68e864264d45056a7a32514ecb3fc62cb282d7b5ca8392aad859f0a2)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 775-777; teaching blocks 682-702",
+          "explanation": "The definition is introduced at block 682, the light reaction is described at 685-697, and the overall process is described through the dark reaction at 698-702. The assignment has no supplied answer key or marking guide."
+        },
+        {
+          "locator": "question block 778; blocks 682-708",
+          "explanation": "The assignment requests five conditions necessary for photosynthesis. The reviewed teaching text explicitly names light/sunlight, chlorophyll, water and carbon (IV) oxide; it does not identify a fifth condition or present a five-item list. The missing item is not guessed."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W07-SCHEME-7",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 7: Nutrition in Animals",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 8 (sha256 d0bd685e636204acea325dde295cd9b42df7e4b91ac23cfb319c33fc2b0c109d); Week 7 label block 835 (sha256 5d222602d23f6b6f007aa6721de2a971a44013ddf864d5b98d8b6d25dcaeace1); body blocks 835-925 (range sha256 d447b3593efc132f6eed1264640b15969a8a5712d3111a4e0470d6c8adb553a6)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 836-902 (range sha256 bc8819630019a8f76af63df674753745f6712a09ea487ef7e2433bd6be524fc1)",
+          "explanation": "Introduces food substances and describes carbohydrate, protein, fats/oils, mineral salts, vitamins, water and roughage, their stated roles and sources, and balanced diet. The mineral and vitamin tables at blocks 881 and 888 are separately assigned to BIO-VIS-T1-TBL-MINERALS-VITAMINS; their layout and individual health claims are not reworked in this index."
+        },
+        {
+          "locator": "blocks 903-918 (range sha256 dbb965901e04fc5f82b2b635b17ff1da929d6d690f5e9dc8af395404168a285e); enzyme table block 920 (sha256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5)",
+          "explanation": "Defines digestive enzymes, lists characteristics and describes proteases, amylase and lipases. The protein-breakdown flow at block 859 is assigned to BIO-VIS-T1-PROTEIN-BREAKDOWN; the enzyme table at block 920 is assigned to BIO-VIS-T1-TBL-ENZYMES."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches the scheme objective, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W07-ENZYMES",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Digestive enzymes: definition, characteristics, classes and stated functions",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 903-920 (range sha256 4165132912c236e1d99513b354b101ed76152674328de29c423c320169f7b588)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 903-913 (range sha256 dbb965901e04fc5f82b2b635b17ff1da929d6d690f5e9dc8af395404168a285e)",
+          "explanation": "Defines enzymes as organic catalysts and lists characteristics including specificity, small required quantity, temperature range, reversibility, production by glands and inhibition. Source wording is retained pending factual review."
+        },
+        {
+          "locator": "blocks 914-920; table block 920 (sha256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5)",
+          "explanation": "Names proteases, amylase and lipases and gives an enzyme/source/location/substrate/product table. Table pairing is owned by BIO-VIS-T1-TBL-ENZYMES; factual claims in the text and table require the appended fact-check task."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson or keyed practice is registered for this objective. PARTIAL: source teaching exists but is not yet deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W07-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 7 assignment: define enzyme and state five characteristics",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 921 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK SEVEN block 922 (sha256 4a723109953b31906cbe40ce93fd8a4f440295167adea8b71e78dda0d7f59808); questions blocks 923-924 (range sha256 bf5db9fa7dcd0cf4453dce77dd29c1e868ea6c90e8981dbd415420a181598d1b)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "questions blocks 923-924; teaching blocks 903-913",
+          "explanation": "The source defines digestive enzymes at block 903 and lists more than five characteristics at blocks 904-913, so the two question prompts are covered by the source text. No answer key, model response or marking guide accompanies the assignment."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W08-SCHEME-8",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 8: Mode of Nutrition",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 9 (sha256 ad6d990b444dc21fd579eac3924771ea05fc8c1a0f780f549e1af8868a0e13fa); Week 8 label block 926 (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); body blocks 926-950 (range sha256 8e3ce87be34a1523b5aa2d9c478c9e817276070dad81a74fd1d46dfbe86b8d5a)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 928-930 (range sha256 5d39130283d774a8fc6b0297ffddf71a0cd641c24147639d0811e50a229bcc94)",
+          "explanation": "Defines autotrophic and heterotrophic nutrition and identifies photosynthesis and chemosynthesis as autotrophic processes."
+        },
+        {
+          "locator": "blocks 931-936 (range sha256 f18b07ccfd79a0f9d2861f84f70c14fb8e9ae7e849ed8e018822c3a5102f6fca; commensalism blocks 935-936 hash 7cba79d4d0734886667d6a42e2c95b66738f57ffd9e1d97e35bffb907b898788)",
+          "explanation": "Describes holozoic, parasitic, symbiotic/mutualistic and saprophytic nutrition, then defines commensalism and gives an example."
+        },
+        {
+          "locator": "blocks 938-940 (range sha256 88e70d23dc18f4bd8c9d2b05c8f5faba0e7b38521b2aa9dad2d9b46e8e2611b5)",
+          "explanation": "Describes carnivorous plants as photosynthetic plants that supplement nutrient needs by trapping and digesting small animals; examples are named in the source."
+        },
+        {
+          "locator": "blocks 941-944 (range sha256 200a39649d413e942b9291f27b804ffb79a2815a579ab93d2d2de5ab3a2f175a)",
+          "explanation": "Defines filter feeding and fluid feeding and gives examples of organisms that use each method."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches several modes of nutrition, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W08-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 8 assignment: explain commensalism, parasitism, symbiotic, holozoic, fluid and filter feeding",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 945 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK EIGHT block 946 (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); questions blocks 947-949 (range sha256 e364770868e864264c6d183defea13ca359250abddfc62de0d724f160900cfbaf)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 947-949; teaching blocks 931-936 and 941-944",
+          "explanation": "All six requested modes are described in the Week 8 source: commensalism, parasitism, symbiotic and holozoic nutrition at 931-936; fluid and filter feeding at 941-944. No answer key or marking guide accompanies the assignment."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W09-SCHEME-9",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Scheme entry 9: Basic ecological concept",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 10 (sha256 d1280651e04f2949bdf20742f3d11e06ded8d319bde136b880fa79bbe9c33e72); Week 9 label block 951 (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); body blocks 951-984 (range sha256 e0fd7a606c08dec6adab6b72e24bb790bf4e05a77905ea2ec9230f504917f7dd)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 953-955 (range sha256 4e2248cd299fef9581d1d7534529697b33c89699a9643c2a6367e3e67d8c74fd)",
+          "explanation": "Defines ecology and its two branches, autecology and synecology, with examples."
+        },
+        {
+          "locator": "blocks 956-967 (within body range 953-967)",
+          "explanation": "Defines habitat, environment, ecosystem, community, biome, biosphere/ecosphere, lithosphere, hydrosphere, atmosphere, ecological niche and population."
+        },
+        {
+          "locator": "blocks 968-974 (range sha256 fd44a59ad93caf6690d7a057312bcffd9f521faf24feca364b4b174f00ff9f1a)",
+          "explanation": "Describes ecosystem components as biotic and abiotic; lists producers, consumers and decomposers within the biotic component, and gives examples of abiotic factors."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer/compiler not run",
+          "explanation": "The source teaches the ecological concepts, but the package has no lessons. Source-only teaching is not deliverable; PARTIAL remains until a lesson or approved equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W09-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 9 assignment: define ecosystem, niche, biosphere, population and habitat; list three ecosystem components",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 assignment block 975 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); WEEK NINE block 976 (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); questions blocks 977-983 (range sha256 22f97f48eafe27762037363be892498203d3137f15dbe3d81193ec59afea52f7)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "questions blocks 977-982; definitions blocks 957-962 and 966-967",
+          "explanation": "The source defines ecosystem, ecological niche, biosphere, population and habitat, so the definition prompts are covered by the source text."
+        },
+        {
+          "locator": "question block 983; component discussion blocks 968-974",
+          "explanation": "The prompt asks for 'three components of ecosystem'. Block 969 first says an ecosystem has biotic and abiotic components; blocks 970-973 then list producers, consumers and decomposers as groups within the biotic component. The intended three-item answer is ambiguous from the source's own organization. No answer key is supplied."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-GROWTH",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 scheme: Growth — cell division, cell enlargement, differentiation, mitosis, meristematic growth and growth regulation",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 scheme block 11 (sha256 a978ff61f7d1d5d23a8c74052effefeecb2ab9dd65c926c9c29d25af44a0f28f); Week 10 label block 985 (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); body blocks 985-1104 (range sha256 9c91bae8cde7ad21425a3c40ab314c04aa4c62c7b2cde3f7da40798633501bea)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 986-991; range blocks 986-1021 (sha256 eab008243f6bdd5b240e62c436c0748e261de30f5e5cb787b17f2b53675e3b05)",
+          "explanation": "Defines growth and gives three processes: cell division, cell enlargement and cell differentiation. Mitosis is defined and its five stages are named and described across blocks 992-1021. The four mitosis figures are assigned to BIO-VIS-T1-MITOSIS."
+        },
+        {
+          "locator": "blocks 1026-1054 (range sha256 9de7a1ad25dbe7e95a0515ded4b3d4f7611bb605806f53a65fa8fc007d9323f2)",
+          "explanation": "Describes meristematic tissues and apical/auxiliary growth, introduces growth regulation by hormones, lists plant hormones and their stated roles, and introduces animal hormones. The animal-hormone table at blocks 1042-1049 is assigned to BIO-VIS-T1-HORMONE-TABLE; its names are retained for the separate factual review."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-IRRITABILITY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 scheme: Irritability — stimuli and tactic, nastic and tropic responses",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 1057-1073 (range sha256 bf40ffd4845ee2497b7e95e925bfc2075c24f3ca893577314f9a5e5639674a48)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 1057-1073",
+          "explanation": "Defines irritability and stimulus, then describes tactic/taxis, nastic/nastism and tropic/tropism responses with examples including photo-, chemo-, nycti-, hapto-, hydro- and geotropism."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-MOVEMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 scheme: Movement and cyclosis",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 blocks 1074-1092 (range sha256 1be721a64362beb982ed9ba0ae9d2f05467c2aeb30914c6474868e8cfccf7334)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 1074-1082 (range sha256 3bf96bae737febe9b1d228f7092502423be6ec44dff1422ad38a94d7f8e7a6a3)",
+          "explanation": "Defines movement, lists reasons for movement and defines cyclosis/cytoplasmic streaming."
+        },
+        {
+          "locator": "movement table blocks 1084-1092 (range sha256 39608539dfb4bf05579769f63b79a4ff0901727a5266b6c687d7027bb6884aa5)",
+          "explanation": "Lists organisms, movement organelles and mechanisms for Amoeba, Paramecium, Euglena, Hydra, earthworm, fish and frogs/toads. Its row/column pairing is separately assigned to BIO-VIS-T1-MOVEMENT-TABLE."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T1-W10-ASSIGNMENT",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "objective": "Week 10 assignment: explain cell division, enlargement and differentiation; identify locomotory organelles",
+      "objective_locator": "SS1-SRC-422e0e6ddde9 WEEK TEN label block 1094 (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); ASSIGNMENT heading block 1095 (sha256 ab04ccc137d58ef30f41dbd29a7ca11eb5e87fb3def8b238329b3ab6efdd68d3); questions blocks 1096-1103 (range sha256 39830b4d86cdc30788eb80170210457d16be57f39de6fb2192f0d19f5d9c2c47)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "question blocks 1096-1098; teaching blocks 989-991",
+          "explanation": "The three requested growth processes are described in blocks 989-991, so the first question is supported by the source."
+        },
+        {
+          "locator": "question blocks 1099-1103; movement table blocks 1084-1092",
+          "explanation": "The requested organisms (Amoeba, Paramecium, toad and earthworm) appear in the movement table with their movement organelles. No answer key or marking guide accompanies the assignment."
+        },
+        {
+          "locator": "source heading order blocks 1094-1095",
+          "explanation": "Unlike earlier weeks, the WEEK TEN label at block 1094 appears immediately before the ASSIGNMENT heading at block 1095. Both are retained as distinct source markers."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W01-REPRODUCTION-TYPES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 1 scheme: Reproduction — meaning and types",
+      "objective_locator": "SS1-SRC-eb6e9665f42c scheme row block 7 (sha256 e9bf035735b23461cca014ea098bd51bec8bb2f004c91907322d42d58291ccdf); Week 1 label block 29 (sha256 c506e8a3b669da9ae7b0f2b13bdffcd32298dd63774feff3bed8091220f56804); body blocks 29-91 (range sha256 a6b8c46dc5d521f9bbfb918a648c44d81ef5d3c3e634f8c8359c38582a2b8447)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "converted DOCX blocks 38-50 (range sha256 dfd6f43d3c28d0918af78cf1e51155a6d5da4f5c5fa7474826fdf1d9163d9e87)",
+          "explanation": "Defines reproduction and distinguishes asexual and sexual reproduction. The Week 1 body gives a brief sexual-reproduction definition at block 44; detailed conjugation, gamete fusion and meiosis teaching appears in Week 2, consistent with the Week 2 scheme row."
+        },
+        {
+          "locator": "converted DOCX content-list blocks 31-35; scheme rows 7-8 in preamble blocks 7-8",
+          "explanation": "The Week 1 content list includes sexual reproduction and meiosis at blocks 34-35, while the Week 2 scheme row and body carry their detailed teaching. This is recorded as a cross-week list/body mapping; no duplicate Week 1 coverage is created."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for this objective. Source-only teaching is not deliverable; PARTIAL remains until an approved lesson or equivalent is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W01-ASEXUAL-FORMS",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 1: forms of asexual reproduction and vegetative propagation",
+      "objective_locator": "SS1-SRC-eb6e9665f42c converted DOCX blocks 51-65 (range sha256 983358ae20c07e745c7481e04878e1e338a322d0a2a2aa2d4d406374ea5bd886)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 51-56",
+          "explanation": "Describes binary fission, budding, spore formation, fragmentation and vegetative propagation."
+        },
+        {
+          "locator": "blocks 57-64",
+          "explanation": "Describes natural vegetative propagation and names bulbils, runners/stolons, rhizomes, corms, stem tubers, suckers and bulbs."
+        },
+        {
+          "locator": "block 65",
+          "explanation": "Defines artificial propagation and lists budding, grafting, layering, cutting and marcotting. The source names these methods but does not describe how they are performed; the related evaluation/theory questions ask for descriptions."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for these forms. PARTIAL remains until approved lesson content and keyed practice are authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W01-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 1 evaluation, revision questions, weekend assignment and theory",
+      "objective_locator": "converted DOCX blocks 46-49, 67-69, 71-76, 78-79, 81-87 and 89-91",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 46-49 and 67-69",
+          "explanation": "The definition/type questions and four forms of asexual reproduction are supported by blocks 39-65. The named-fungus spore-formation question is supported by the examples in block 54."
+        },
+        {
+          "locator": "general evaluation blocks 71-76",
+          "explanation": "The questions on asexual forms, natural vegetative parts and fragmentation in Spirogyra are supported by blocks 52-64. The request to describe five artificial propagation methods is not supported beyond the list at block 65. The question about 'sporulation in amoeba' is not taught in this Week 1 body; block 54 gives fungal examples, not an Amoeba account."
+        },
+        {
+          "locator": "reading assignment blocks 78-79",
+          "explanation": "The source assigns College Biology, chapter 16, pages 292-301. The cited book itself is not part of this source archive."
+        },
+        {
+          "locator": "weekend assignment blocks 81-87; Week 2 conjugation block 102",
+          "explanation": "The bacteria/binary-fission and Hydra/Yeast/budding items are supported by blocks 52-53. The Paramecium question refers to a zygote and eight nuclei but calls the process asexual; Week 2 places Paramecium conjugation under sexual reproduction and does not provide the asked nuclear count in Week 1. The vegetative-propagation rationale and perennating-organ multiple-choice item are not fully keyed by the Week 1 text."
+        },
+        {
+          "locator": "theory blocks 89-91",
+          "explanation": "The request to describe two artificial propagation methods is not supported by the list-only statement at block 65. The request for three advantages and two disadvantages of asexual reproduction has no corresponding teaching in the Week 1 body."
+        },
+        {
+          "locator": "source member blocks 46-91",
+          "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory questions."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -602,6 +1076,233 @@
         "COV-BIO-T1-W02-PLANT-ANIMAL",
         "COV-BIO-T1-W02-MICROSCOPE",
         "BIO-PRE-T1"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W03-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The 1st Term Week 3 scheme objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The source-only classification content is not deliverable.",
+      "required_action": "Author and bind a lesson or approved equivalent for the Week 3 classification objective, preserving source provenance and keeping any corrections distinct from original wording.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-SCHEME-3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W03-ASSESSMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 3 assignment at blocks 631-642 has no answer key. Q1's mammal examples and Q4's compound-eye exception are not established by the source; Q5 asks for a fish drawing but supplies no fish figure; Q2 calls the plant groups a class where the source describes them as divisions; Q7 prints 'cotyledons plant' without 'dicotyledons'.",
+      "required_action": "A Biology subject expert/teacher must confirm the intended wording and approved answer/marking guide for Q1-Q7, especially the unsupported Q1/Q4 items and drawing expectations in Q5. Do not invent a key from the source.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W04-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The Week 4 scheme objective is taught in source blocks 647-664, but the Biology package has no lessons and no source row has been imported. Source-only teaching is not deliverable.",
+      "required_action": "Author and bind a lesson or approved equivalent for organization of life, the four levels of organization, complexity, and its stated advantages/disadvantages; preserve source wording and provenance.",
+      "affected_ids": [
+        "COV-BIO-T1-W04-SCHEME-4"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W04-PRACTICE",
+      "kind": "OWNER_ACTION",
+      "detail": "The 'Questions to practice' at blocks 666-677 have no key. Q1c/Q1d are only partly supported by the Week 4 text; Q1a and Q2 deliberately draw on Week 3 content; no answer/marking guide is supplied.",
+      "required_action": "A Biology teacher should confirm the intended cross-week practice scope and supply an approved answer/marking guide, including expected treatment of the partially supported Amoeba comparison and object-grouping question. Do not invent answers.",
+      "affected_ids": [
+        "COV-BIO-T1-W04-PRACTICE"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 5 Plant Nutrition and the five practical investigations are present in the original source, but the Biology package has no lessons or registered practical delivery assets.",
+      "required_action": "Author and bind a lesson or approved equivalent for photosynthetic and chemosynthetic nutrition. Keep the original source separate from any corrected or supplemental teaching.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-SCHEME-5",
+        "COV-BIO-T1-W05-PRACTICALS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-PRACTICAL-SAFETY",
+      "kind": "OWNER_ACTION",
+      "detail": "The source includes five practical investigations and detailed chemical-handling methods, but the reviewed range contains no separate safety precautions or teacher-supervision section. The methods are deliberately not reproduced in this indexing record.",
+      "required_action": "A qualified Biology teacher/safety lead must provide an approved risk assessment, safe supervised delivery plan or approved alternative before any of these practicals are used with students. No practical method is cleared for student use by this index.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-PRACTICALS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-ASSIGNMENT",
+      "kind": "FACT",
+      "detail": "The Week 5 assignment asks for five conditions necessary for photosynthesis, while the source text explicitly names only light/sunlight, chlorophyll, water and carbon (IV) oxide. No answer key is supplied.",
+      "required_action": "Verify the expected fifth condition and complete marking guide against an approved Biology reference; record the reference and keep any supplement distinct from source text.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W05-EQUATIONS",
+      "kind": "FACT",
+      "detail": "The photosynthesis equation at block 683 and the simplified equation at block 700 display different product expressions. The source's wording and symbols have not been altered.",
+      "required_action": "Check both printed equations against an approved Biology reference and bind any delivery correction only after the source and corrected form are evidenced.",
+      "affected_ids": [
+        "COV-BIO-T1-W05-SCHEME-5"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W07-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 7 Nutrition in Animals and digestive enzymes are described in the source, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for the animal-nutrition and digestive-enzyme objectives, retaining source wording separately from any corrected supplement.",
+      "affected_ids": [
+        "COV-BIO-T1-W07-SCHEME-7",
+        "COV-BIO-T1-W07-ENZYMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W07-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 7 assignment asks learners to define an enzyme and state five characteristics. The source teaching supports both prompts, but no answer key or marking guide is supplied.",
+      "required_action": "A Biology teacher should approve the keyed response and marking guide before the assignment is delivered. Do not invent a source answer key.",
+      "affected_ids": [
+        "COV-BIO-T1-W07-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W07-FOOD-CLAIMS",
+      "kind": "FACT",
+      "detail": "Several printed food-substance and enzyme claims need authoritative review before a corrected lesson is authored, including the monosaccharide formula at block 841, the sucrose formation wording at 844, the lipid formula at 871, and the amylase statements at 916-917. The source is preserved unchanged.",
+      "required_action": "Verify each cited statement against an approved Biology reference, record the exact supporting reference, and bind only evidence-based delivery corrections. Keep original wording visible as source text.",
+      "affected_ids": [
+        "COV-BIO-T1-W07-SCHEME-7",
+        "COV-BIO-T1-W07-ENZYMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W08-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 8 Mode of Nutrition is described in the source, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for autotrophic and heterotrophic nutrition and the specific modes described in the source. Keep original wording separate from any supplement.",
+      "affected_ids": [
+        "COV-BIO-T1-W08-SCHEME-8"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W08-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 8 assignment asks learners to explain six modes of nutrition. The source teaching describes all six, but no answer key or marking guide is supplied.",
+      "required_action": "A Biology teacher should approve a keyed response and marking guide before the assignment is delivered. Do not invent a source answer key.",
+      "affected_ids": [
+        "COV-BIO-T1-W08-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W09-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 9 Basic ecological concept is described in the source, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for the ecological concepts and ecosystem components, keeping source wording separate from any supplement.",
+      "affected_ids": [
+        "COV-BIO-T1-W09-SCHEME-9"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W09-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 9 assignment definitions are supported, but the request to list 'three components of ecosystem' is ambiguous: the source names biotic and abiotic components, then lists producers, consumers and decomposers within the biotic component. No answer key is supplied.",
+      "required_action": "A Biology teacher should confirm the intended three components and approve a keyed response/marking guide before delivery. Do not guess which classification the question intends.",
+      "affected_ids": [
+        "COV-BIO-T1-W09-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W10-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows.",
+      "required_action": "Author and bind an approved equivalent lesson for the Week 10 objectives, keeping source wording distinct from any supplement and using the existing visual tasks for the diagrams and tables.",
+      "affected_ids": [
+        "COV-BIO-T1-W10-GROWTH",
+        "COV-BIO-T1-W10-IRRITABILITY",
+        "COV-BIO-T1-W10-MOVEMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W10-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 10 assignment prompts are supported by source teaching, but no answer key or marking guide is supplied.",
+      "required_action": "A Biology teacher should approve keyed responses and a marking guide before delivery. Do not invent a source answer key.",
+      "affected_ids": [
+        "COV-BIO-T1-W10-ASSIGNMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 1 Reproduction and forms of asexual reproduction are present in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind approved lessons for reproduction types and asexual forms, keeping source text distinct from any supplemental explanation.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-REPRODUCTION-TYPES",
+        "COV-BIO-T2-W01-ASEXUAL-FORMS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-ARTIFICIAL-PROPAGATION",
+      "kind": "CONTENT",
+      "detail": "The source names five artificial vegetative propagation methods at block 65 but does not describe them, while evaluation block 74 and theory block 90 ask learners to describe them.",
+      "required_action": "Create a bounded, clearly labelled supplemental lesson explaining the five named methods from an approved Biology reference and include keyed practice. Do not invent method details as if they were in the source.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASEXUAL-FORMS",
+        "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-ASEXUAL-ADVANTAGES",
+      "kind": "CONTENT",
+      "detail": "Theory block 91 asks for three advantages and two disadvantages of asexual reproduction, but no such list or explanation appears in the Week 1 teaching body.",
+      "required_action": "Create a bounded supplemental lesson for advantages and disadvantages of asexual reproduction using an approved Biology reference and clearly label it as supplemental.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-REVISION-FACTS",
+      "kind": "FACT",
+      "detail": "Several assessment prompts need authoritative review: 'sporulation in amoeba' (block 76), the Paramecium zygote/eight-nuclei question labelled asexual (block 85), and the perennating-organ multiple-choice item (block 87). The source does not teach or key these points sufficiently.",
+      "required_action": "Verify each item against an approved Biology reference and record the intended terminology and answer evidence before authoring any key or correction. Do not guess answers.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W01-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 1 evaluation, revision, weekend assignment and theory questions have no supplied answer key or marking guide. Some prompts require supplemental teaching or factual review.",
+      "required_action": "A Biology teacher should approve a complete answer/marking guide after the artificial-propagation, asexual-advantages and factual-review dependencies are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W01-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
