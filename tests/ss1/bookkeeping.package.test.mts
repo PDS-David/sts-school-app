@@ -6,6 +6,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { packageSchema } from '../../backend/src/db/ss1/subjectPackageSchema.ts';
 import { applyRules } from '../../backend/src/db/ss1/compiler.ts';
+import { isSchemeWorkWeekHeader } from '../../backend/src/db/ss1/topicParserRules.ts';
 
 const raw = JSON.parse(readFileSync(new URL('../../backend/src/db/ss1/subjects/bookkeeping.json', import.meta.url), 'utf8'));
 const manifest = [
@@ -366,4 +367,22 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
     assert(c.lesson_ids.includes(w5.id));
   }
   assert.equal(p.coverage.filter(x => x.id.startsWith('COV-BK-T3-') && x.status === 'PARTIAL').length, 0);
+});
+
+
+test('scheme-of-work WEEK column heading is not parsed as a Week 1 lesson marker', () => {
+  const schemePreamble = 'SCHEME OF WORK  \\nWEEK\\n1                 Revision\\n2. Petty cash book\\n11 revision\\n12 exam\\n';
+  const marker = [...schemePreamble.matchAll(/^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim)][0];
+  assert(marker);
+  assert.equal(isSchemeWorkWeekHeader(schemePreamble, marker.index!, marker[0]), true);
+
+  const sameLineWeek = 'SCHEME OF WORK\\nWEEK 1 Revision\\n';
+  const sameLineMatch = [...sameLineWeek.matchAll(/^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim)][0];
+  assert(sameLineMatch);
+  assert.equal(isSchemeWorkWeekHeader(sameLineWeek, sameLineMatch.index!, sameLineMatch[0]), false);
+
+  const nonSchemeWeek = 'INTRODUCTION\\nWEEK\\n1 Revision\\n';
+  const nonSchemeMatch = [...nonSchemeWeek.matchAll(/^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim)][0];
+  assert(nonSchemeMatch);
+  assert.equal(isSchemeWorkWeekHeader(nonSchemeWeek, nonSchemeMatch.index!, nonSchemeMatch[0]), false);
 });
