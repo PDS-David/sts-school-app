@@ -25,7 +25,8 @@
     "PHYS-PRE-T2 (2026-10-30, master e60b1fe) completed the 2nd Term preamble inventory. physics.json now has 7 source_rules (added SS1-SRC-2c924c964660-R002 and -R003, both SCHEME_ONLY) and 4 coverage entries (added COV-PHYS-T2-TITLE and COV-PHYS-T2-REFERENCES, both MARKER). The 2nd Term scheme has ten rows and ten parsed bodies; no revision or examination row exists. Evidence: PHYS-PRE-T2.md.",
     "PHYS-WK-T1-W01 (2026-11-05, base a665934) indexed 1st Term WEEK ONE at objective level against the PHYS-PRE-T1 line-digest method: the meaning of Physics and its branches, fundamental and derived quantities and units, the two comparison tables, dimensions, the force dimensional analysis and the reading assignment are taught at objective level but recorded PARTIAL (8 entries) because no lesson exists; laboratory familiarisation (the scheme's second clause at line 24), the dimensional analyses of density, velocity and acceleration (empty operands at lines 133-134, 137 and 141 with no equation object anywhere in the file, 76 embedded PNGs), both EVALUATION blocks, the WEEKEND ASSIGNMENT and the THEORY block are UNRESOLVED (6 entries). Three bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
     "PHYS-WK-T1-W02 (2026-11-07, base 882224048a1628d1d9fd03e6ee79ff6ead148622) indexed 1st Term WEEK TWO (parsed row 1, body lines 194-340) at objective level against the same line-digest method: the techniques paragraph, the metre rule and tape rule, callipers, the vernier callipers and micrometer screw gauge, the vernier reading rule, time, mass, weight with the mass-versus-weight table and W=mg, volume and the reading assignment are taught at objective level but recorded PARTIAL (10 entries) because no lesson exists; Example 3.1, Example 3.2 and the four assessment blocks are UNRESOLVED (6 entries) because their figures are absent from the extract, the micrometer reading rule is never stated, Example 3.2 prints 17.1mm for a 17.11 mm sum, and no answer key exists. The 98 'undefined' words of theory item 5 are an extractor artefact of U+001F characters, not source text. physics.json now has 34 coverage entries and 20 open items. Five bounded tasks were appended (three lessons, one correction binding, one blocked expert-decision item). Nothing was run; testing remains deferred. Evidence: PHYS-WK-T1-W02.md.",
-    "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item."
+    "PHYS-PRE-T3 (2026-11-07, base 679ab8b4edf311c2c376d978f220a75071792cdf) inventoried the 3rd Term text outside the parsed rows: lines 1-14 only (title, scheme heading, 12 scheme rows; no reference list). Scheme weeks 11 (Revision) and 12 (Examination) have no parsed row or body. Finding for PHYS-FACT-T3-W05-SCHEME-MISMATCH: the Week 5 TOPIC spans two lines, and the importer title keeps only the first ('MATTER, ATOMIC STRUCTURE, STATES OF MATTER,'); the second line reads 'DIFFUSION, OSMOSIS, BROWNIAN MOTION' and the body does contain a 'Diffusion and Osmosis' section with a 'Diffusion:' definition, a rate-of-diffusion list, Graham's law and an 'Osmosis:' definition, so the earlier 'body has no diffusion/osmosis' reading is a title-truncation artefact, to be confirmed by that item.",
+    "PHYS-LES-T1-W02-MICROMETER-READING (2026-11-08): authored SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. Adds pitch/least-count calculation, main and circular scale reading, signed zero-error correction and an independent example (12.84 mm = 1.284 cm). Four keyed items total 8 marks; every marking array sums to its item total. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT; OBJ-4 now references the lesson but stays PARTIAL for the wider vernier/micrometer objective. The open item PHYSICS-T1-W02-MICROMETER remains blocking until PHYS-COR-T1-W02-BINDING binds the original row and corrects its inconsistent printed example. Fig. 3.4 was not inspected or used. Source/member verification is reused from the existing PHYS-WK-T1-W02 record, not repeated in this run. Testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -44,9 +45,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 32,
+    "IMPLEMENTED_TESTING_DEFERRED": 33,
     "BLOCKED": 16,
-    "PENDING": 41
+    "PENDING": 40
   },
   "total": 89,
   "items": [
@@ -2414,8 +2415,8 @@
         "PHYS-SRC-T1",
         "PHYS-WK-T1-W02"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by PHYS-WK-T1-W02 (2026-11-07): COV-PHYS-T1-W02-OBJ-7 is UNRESOLVED and PHYSICS-T1-W02-MICROMETER blocks delivery. The rule and the consistent worked example are routine physics and need no expert decision; the figure and any extraction rendering stay with PHYS-VIS-T1 and PHYS-OWNER-EXTRACTION-STRATEGY.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 as SUP-SS1-PHYSICS-T1-W02-MICROMETER-READING. The supplement teaches the purpose and parts of a micrometer screw gauge; pitch and least count (LC = pitch / circular divisions); main-scale plus circular-scale reading; signed zero-error correction (correct = observed − zero error); and unit conversion. It includes an independent worked example (12.84 mm = 1.284 cm) and four keyed practice items, 8 marks total, with criteria summing to each declared mark. COV-PHYS-T1-W02-OBJ-7 is IMPLEMENTED_EQUIVALENT and bound to the supplement; OBJ-4 now references the supplement but remains PARTIAL for the wider vernier/micrometer objective. PHYSICS-T1-W02-MICROMETER remains open pending PHYS-COR-T1-W02-BINDING; source figure Fig. 3.4 was not inspected or used. Prior source/member verification from PHYS-WK-T1-W02.md is reused; binary bytes were not rehashed in this run. No tests run; testing deferred by owner.",
       "completion_condition": "A lesson in physics.json carries objectives, a body whose body_sha256 is the SHA-256 of its UTF-8 body, complete practice answers and marking that sums exactly, a provenance that says it is an authored supplement and not the source, state content_approval PENDING and verification DEFERRED; the coverage entry it targets is updated by stable ID only after a reviewer confirms objective-level teaching; no schema, compiler, rule, asset or shared file is edited."
     },
     {
@@ -3089,7 +3090,6 @@
     "PHYS-VIS-T3",
     "PHYS-PORT-D1-COV-T1",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
-    "PHYS-LES-T1-W02-MICROMETER-READING",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
@@ -3126,7 +3126,6 @@
     "PHYS-PORT-D1-COV-T1",
     "PHYS-CMP-D4-NOTES",
     "PHYS-LES-T1-W01-DIMENSIONAL-ANALYSIS",
-    "PHYS-LES-T1-W02-MICROMETER-READING",
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ]
 }
