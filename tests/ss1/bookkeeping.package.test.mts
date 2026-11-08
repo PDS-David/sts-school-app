@@ -266,9 +266,9 @@ test('First-term equivalent cash-book and double-entry supplements are complete'
     }
     assert(coverage.lesson_ids.includes(id));
   }
-  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-BANK-ACCOUNT').status, 'PARTIAL');
-  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2').status, 'PARTIAL');
-  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION').status, 'PARTIAL');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-BANK-ACCOUNT').status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2').status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION').status, 'IMPLEMENTED_EQUIVALENT');
 });
 
 test('Owner-approved first-term delivery corrections bind each exact original body to its authored replacement', () => {
@@ -335,6 +335,20 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
   const scope = p.open_items.find(x => x.id === 'BOOKKEEPING-T1-SCHEME-VS-BODY');
   assert.equal(scope?.blocks_delivery, false);
   assert.match(scope?.required_action ?? '', /original-source completeness question open/);
+});
+
+test('First-term bank-account and twenty-transaction delivery replacements are fully worked', () => {
+  const p = packageSchema.parse(raw);
+  const bank = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK');
+  const posting = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY');
+  assert(bank && posting);
+  assert.match(bank.body, /Separate bank-account worked example/);
+  assert.match(bank.body, /closing bank balance is 8,750 debit/);
+  assert.match(posting.body, /Full integrated illustration — twenty original June transactions/);
+  assert.match(posting.body, /Closing cash balance: 4,950 debit/);
+  assert.match(posting.body, /Closing bank balance: 11,550 debit/);
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W01-ILLUS-2')?.status, 'IMPLEMENTED_EQUIVALENT');
+  assert.equal(p.coverage.find(x => x.id === 'COV-BK-T1-W04-ILLUSTRATION')?.status, 'IMPLEMENTED_EQUIVALENT');
 });
 
 test('Third-term Week 1 revision marker has a project-authored revision lesson, not invented source content', () => {
