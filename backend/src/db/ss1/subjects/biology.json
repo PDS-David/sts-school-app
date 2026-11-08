@@ -1127,6 +1127,10 @@
         {
           "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 221 media/image3.png 249×202, SHA-256 3de65c95417cb4e08f088a61d83bdcccecc3bf43d7f9fa6363309eeffecfcdda",
           "explanation": "The labelled cockroach life-cycle figure at block 221 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels are Egg Case, Nymph (two distinct nymph stages) and Adult. Four arrows form a clockwise cycle: Egg Case → first Nymph → second Nymph → Adult → Egg Case. This matches the written cockroach reproduction/development description at blocks 216-220, which mentions the egg case, nymph stages, moulting and adult. The original image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must use only the visible labels and source-described stage sequence, without copying the original pixels."
+        },
+        {
+          "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 228 media/image4.jpeg 360×301, SHA-256 36800c3e4cc266c08cb750716c511265dab33609c20a466c9562a49a4ab008aa",
+          "explanation": "The labelled housefly life-cycle figure at block 228 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels are Egg, Embryo stage, Adult stage, Immature stage, Adult, Larva, Pupa and METAMORPHOSIS. The arrows form a clockwise loop: Egg → Larva → Pupa → Adult → Egg. The written description at blocks 222-227 describes the egg, larval/maggot stage, puparium and emerging adult, supporting the main stage sequence; the image also includes the additional group labels Embryo stage, Immature stage and Adult stage. The original image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must use only the visible labels and source-described sequence, without copying the original pixels."
         }
       ]
     },
@@ -1675,6 +1679,14 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
           "explanation": "No lesson is registered for the functioning-ecosystem objective; source-only content is not deliverable."
+        },
+        {
+          "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 818 media/image5.jpeg 444×318, SHA-256 50311108eb6f166b8be28eb7b6a4bbeac8bbf1c0c76acaafe2884e81988ee563",
+          "explanation": "The forest food-web figure at block 818 is a raster image with no text in its source block, so it is absent from plain-text extraction. Visible labels: Green Plant; Poducer (source spelling); Mouse; Rabbit; Goat; Owl; Wild Cat; Jackal; Snake; Lion; Kite; caption 'Food Web in a Forest'. Orange arrows connect the plant and animal nodes into a food web; arrows are drawn from the plant toward herbivore nodes and onward between animal nodes and predators. Several crossing links are difficult to assign confidently at the source image's resolution; any redraw must trace only clearly visible arrow endpoints and must not invent links. The label 'Poducer' is a source spelling error; any delivery restatement or project-authored redraw must show 'Producer' and include a correction note that the original image spells it 'Poducer'. The original source image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must preserve only the visible labels and verified arrow network without copying original pixels."
+        },
+        {
+          "locator": "Food-chain arrow shapes blocks 797, 800, 803, 806, 809, 813 and 816; rendered source PDF page 27; source block text hashes recorded in the task report",
+          "explanation": "The five examples are present as ordinary text in source order, but their arrows are separate DrawingML connector shapes and disappear from plain-text extraction. Private rendered PDF page 27 confirms all example arrows point right. Exact source sequences: Grass → zebra → lion (labels Producer → Primary consumer → Secondary consumer); Guinea grass → grasshopper → toad → snake → hawk (labels producer → primary consumer → secondary consumer → tertiary consumer, with no trophic label printed under hawk); Spirogyra → tadpoles → crabs → kingfish (producer → primary consumer → secondary consumer → tertiary consumer); Diatoms → mosquito larva → Tilapia fish → whale (producer → primary consumer → secondary consumer → tertiary consumer); Humus → earthworm → domestic fowl → man (no trophic labels printed). The sequence words survive extraction in order, but direction/arrowheads do not; the delivery lesson must restate each chain as an ordered sequence with arrows. The separate arrow in block 797 accompanies the linear-energy-transfer definition, and the arrow in block 816 sits at the left margin of the food-web definition; neither is an additional food-chain example. No separate image asset or redraw is needed; the chains can be represented as structured text with arrows. No source wording or sequence was changed."
         }
       ]
     },
@@ -3275,8 +3287,8 @@
     {
       "id": "BIOLOGY-T2-W03-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 3 reproduction in Amoeba, Paramecium, Spirogyra and invertebrates is present in the source, but the Biology package has no registered lessons. The Paramecium and Spirogyra conjugation diagrams at blocks 185 and 201 are labelled raster images absent from text extraction; project-authored redraws are queued. The cockroach life-cycle figure at block 221 is also a raster image absent from text extraction; it shows Egg Case, two Nymph stages and Adult in a clockwise cycle, matching the written description at blocks 216-220. A project-authored redraw is queued because original-image reuse rights are not recorded.",
-      "required_action": "Complete the project-authored redraw tasks BIO-VIS-T2-W03-PARAMECIUM-REDRAW, BIO-VIS-T2-W03-SPIROGYRA-REDRAW and BIO-VIS-T2-W03-COCKROACH-REDRAW, plus the remaining assigned visual tasks, then author and bind the approved Week 3 reproduction lesson. Preserve original source figures unchanged; use only labels visible in each source and do not copy their pixels.",
+      "detail": "Week 3 reproduction in Amoeba, Paramecium, Spirogyra and invertebrates is present in the source, but the Biology package has no registered lessons. The Paramecium and Spirogyra conjugation diagrams at blocks 185 and 201 and the cockroach life-cycle figure at block 221 are labelled raster images absent from text extraction; project-authored redraws are queued. The housefly life-cycle figure at block 228 is also absent from text extraction; it shows Egg, Embryo stage, Adult stage, Immature stage, Adult, Larva, Pupa and METAMORPHOSIS in a clockwise Egg → Larva → Pupa → Adult loop, matching the written description at blocks 222-227. A project-authored redraw is queued because original-image reuse rights are not recorded.",
+      "required_action": "Complete the project-authored redraw tasks BIO-VIS-T2-W03-PARAMECIUM-REDRAW, BIO-VIS-T2-W03-SPIROGYRA-REDRAW, BIO-VIS-T2-W03-COCKROACH-REDRAW and BIO-VIS-T2-W03-HOUSEFLY-REDRAW, plus the other assigned visual tasks, then author and bind the approved Week 3 reproduction lesson. Preserve original source figures unchanged; use only labels visible in each source and do not copy their pixels.",
       "affected_ids": [
         "COV-BIO-T2-W03-UNICELLULAR-REPRODUCTION",
         "COV-BIO-T2-W03-INVERTEBRATE-REPRODUCTION",
@@ -3285,7 +3297,9 @@
         "BIO-VIS-T2-FIG-SPIROGYRA",
         "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
         "BIO-VIS-T2-FIG-COCKROACH",
-        "BIO-VIS-T2-W03-COCKROACH-REDRAW"
+        "BIO-VIS-T2-W03-COCKROACH-REDRAW",
+        "BIO-VIS-T2-FIG-HOUSEFLY",
+        "BIO-VIS-T2-W03-HOUSEFLY-REDRAW"
       ],
       "blocks_delivery": true
     },
@@ -3533,11 +3547,16 @@
     {
       "id": "BIOLOGY-T2-W09-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons.",
-      "required_action": "Author and bind approved lessons for functioning ecosystems, energy flow and ecological pyramids, preserving source content and the assigned visual assets.",
+      "detail": "Week 9 feeding relationships, trophic levels, food chains/webs, energy flow and thermodynamics are present in the source, but the Biology package has no registered lessons. The food-chain examples at blocks 800, 803, 806, 809 and 813 retain organism order in plain-text extraction, but the right-pointing arrow connectors are separate shapes and disappear. The lesson must restate each chain as an ordered sequence with arrows. The food-web figure at block 818 is a labelled raster image absent from text extraction; its redraw and the 'Poducer'→'Producer' correction note are recorded separately.",
+      "required_action": "Complete the food-web redraw and the separate food-chain shape disposition, then author and bind the functioning-ecosystem lesson. Restate the five source food chains as ordered arrow sequences, preserving the printed organism order and trophic labels (including the missing hawk label and the unlabelled Humus chain). In the food-web redraw/restatement, use 'Producer' and note that the original image spells it 'Poducer'; preserve the original source image unchanged. Keep the consumer-survival and energy-flow claims under BIO-FACT-T2-W09-ENERGY-CLAIMS.",
       "affected_ids": [
         "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
-        "COV-BIO-T2-W09-ENERGY-FLOW"
+        "COV-BIO-T2-W09-ENERGY-FLOW",
+        "BIO-VIS-T2-FIG-FOODWEB",
+        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
+        "BIOLOGY-T2-W09-FOODWEB-SPELLING",
+        "BIO-VIS-T2-SHP-FOODCHAINS",
+        "BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM"
       ],
       "blocks_delivery": true
     },
@@ -4071,6 +4090,19 @@
         "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W09-FOODWEB-SPELLING",
+      "kind": "CONTENT",
+      "detail": "The food-web figure at block 818 labels the plant as 'Poducer'. This is a spelling error in the original image; the source image must remain unchanged.",
+      "required_action": "If the food web is described or redrawn for delivery, use 'Producer' and include a brief correction note stating that the original source figure spells the word 'Poducer'. Do not alter the original image or silently claim the source spelling is correct.",
+      "affected_ids": [
+        "COV-BIO-T2-W09-FUNCTIONING-ECOSYSTEM",
+        "BIO-VIS-T2-FIG-FOODWEB",
+        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
+        "BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM"
+      ],
+      "blocks_delivery": false
     }
   ]
 }
