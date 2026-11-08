@@ -309,6 +309,32 @@
           "explanation": "The original-document inventory records this as a standalone scheme-list item. There is no WEEK 12 body, examination paper or marking scheme in the document. The marker is classified SCHEME_ONLY so the compiler can retain the source text while not treating it as a lesson. No examination content or answer key is invented."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T1-W02-TYPES",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme entry 2: Types of Agriculture — Subsistence and Commercial Agriculture",
+      "objective_locator": "SS1-SRC-7aa642b0085b, word/document.xml direct w:body block 13 (0-based), exact scheme text; Week 2 label block 143 and topic block 144",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 2 blocks 143-152; topic block 144 (sha256 2478977f851861a1b7f1e4298d47eea053a9ff92fe23cb822eb484e389055623); definition blocks 149 (sha256 0c1457bda3f35f87e346cdecd8e532b1db19868ac7de6a918cd6d15fa619869c) and 152 (sha256 3a3c326e87181c39e9ab9156ef51cb4adf44e84204a0a5bc2569aa65973e600d)",
+          "explanation": "The source teaches subsistence agriculture as small-scale production for the farmer's family, also called peasant farming, and commercial agriculture as large-scale production for sale. The body directly covers both sides of the scheme topic."
+        },
+        {
+          "locator": "Week 2 block 160; 13-row, two-column table; block text sha256 9cc53b2bd0d0fccc6e1b1201a426be4d0157bc8bae17412a737ce50cfd485c5a",
+          "explanation": "The comparison table contains a header and twelve paired contrasts, including purpose, land area, labour, management, scale, cost, markets, environmental effects, employment, cropping, specialization and credit access. It supports the characteristics/differences evaluation and theory questions."
+        },
+        {
+          "locator": "Week 2 evaluation blocks 153-157 and 162-164; general evaluation blocks 165-170; weekend assignment blocks 174-179; theory blocks 180-183",
+          "explanation": "Definitions and differences questions are supported by the two definitions and comparison table. The separate ten-example tools/machines questions and five-industry/raw-material questions exceed the examples taught; the foreign-exchange exception question is not conclusively keyed by the source's earlier export list. These assessment gaps are recorded in the open items and bounded follow-up tasks."
+        },
+        {
+          "locator": "Week 2 range blocks 143-185; SHA-256 0675d4a5ba07886d9387b83c5394bbc786dc6eff52c20e43ce3420cc99895ceb",
+          "explanation": "The original source body is present and verified, but the package currently has no lesson records and the importer/parsed-row mapping has not been run. PARTIAL means source-supported but not yet mapped to a deliverable lesson row; no source lesson ID or supplement ID is guessed."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -394,6 +420,40 @@
         "COV-AG-T1-W01-MEANING",
         "COV-AG-T1-W01-IMPORTANCE",
         "COV-AG-T1-W01-CROP-SCIENCE-ASPECTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W02-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The Week 2 scheme objective is taught in the original source (definitions at blocks 149 and 152; comparison table at block 160), but no original parsed-row ID has been confirmed and the package currently has no lessons. COV-AG-T1-W02-TYPES is PARTIAL for delivery mapping only; the importer was not run.",
+      "required_action": "When the owner-authorised importer/plan verification stage occurs, confirm the exact parsed original row and bind COV-AG-T1-W02-TYPES to that row with reproducible evidence; do not invent a source lesson ID or author a duplicate supplement for already-taught core content.",
+      "affected_ids": [
+        "COV-AG-T1-W02-TYPES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W02-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Week 2 evaluation 3-4 (blocks 156-157) ask for ten simple farm tools and ten complex farm machines, while the teaching text names only cutlass, hoe and axe (block 149) and tractors, bulldozers, planters and harvesters (block 152). The Week 2 general evaluation/Weekend/Theory also ask for five agro-based industries and raw materials (blocks 168 and 181); Week 1 block 103 names textile, beverage and tyre/foam industries with example raw materials but does not provide five distinct industry examples. These are assessment-scope gaps, not additional Week 2 scheme objectives.",
+      "required_action": "Complete AG-LES-T1-W02-TOOLS-MACHINES and AG-LES-T1-W02-AGRO-INDUSTRIES as clearly labelled assessment supplements, with reliable provenance, complete practice answers and criterion-level marking; keep them separate from the Week 2 scheme objective and original source wording.",
+      "affected_ids": [
+        "AG-LES-T1-W02-TOOLS-MACHINES",
+        "AG-LES-T1-W02-AGRO-INDUSTRIES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W02-EXPORT-FACT",
+      "kind": "FACT",
+      "detail": "Weekend assignment Q4 at block 178 asks which item is not a source of foreign-exchange earnings in Nigeria (options include cotton, yam, cocoa and palm produce). Week 1 block 104 lists cocoa, coffee, groundnut, cotton, palm produce and timber as exports, but omission of yam from that list does not prove that yam is not exported or establish the intended answer.",
+      "required_action": "Research authoritative Nigerian agricultural-export evidence and determine whether the item has a defensible answer for the source's context; if not, record a source-backed correction or mark the question unresolved. Do not infer the answer from omission alone.",
+      "affected_ids": [
+        "AG-FACT-T1-W02-EXPORT-ITEM",
+        "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
     }
