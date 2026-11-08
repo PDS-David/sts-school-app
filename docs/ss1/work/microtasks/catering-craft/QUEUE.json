@@ -40,8 +40,8 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 11,
-    "PENDING": 43,
+    "IMPLEMENTED_TESTING_DEFERRED": 12,
+    "PENDING": 42,
     "BLOCKED": 1
   },
   "items": [
@@ -511,8 +511,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against the verified original source with word-extractor 1.0.4 getBody(). WEEK range 1056-1194, SHA-256 6be75e678b358c3684ba8982f989c814e6a543b2e930a67e0e3b464d63f47a93; scheme row 15, SHA-256 3ca0a68c528e340934a3bac709a9486e3c4744c6e98ba60bcf697e922f2533e2. Section/assessment locators and objective candidates recorded in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W08.md. Added COV-CC-T2-W08-SCHEME-8 as PARTIAL with no lesson_ids. No lesson, answer, rule, correction or approval invented; package remains PENDING. Testing/importer/database/device work deferred by owner.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 6be75e678b358c3684ba8982f989c814e6a543b2e930a67e0e3b464d63f47a93; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -2010,7 +2010,6 @@
   },
   "next_runnable": [
     "CC-IDX-T2-W03",
-    "CC-IDX-T2-W08",
     "CC-IDX-T2-W09",
     "CC-IDX-T2-W10",
     "CC-IDX-T2-OPEN",
