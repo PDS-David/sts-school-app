@@ -401,6 +401,90 @@
           "explanation": "The document lists herbicides in several places but does not explain the distinctions between the terms in the Week 3 question's options."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T1-W04-GOV-ROLES",
+      "objective": "Scheme entry 4: government roles in agricultural development",
+      "objective_locator": "scheme block 15; Week 4 blocks 327-420",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 335-381; overview 336; headings 338,349,355,358,361,364,367,370,373",
+          "explanation": "The source teaches policy/goals, programmes/planning, inputs, amenities, storage/processing, extension, education, quarantine and research."
+        },
+        {
+          "locator": "policy goals 340-345; programme list 351; research institutes 375-381; assessments 347,353,383-384,405,407",
+          "explanation": "The policy goals, programme list and seven research institutes support the corresponding questions."
+        },
+        {
+          "locator": "Week 4 blocks 327-420; range SHA-256 e7b9099d4ca963ad728a67b5fb866a6ad2f39d637861800077bc6ffce58fcf8f",
+          "explanation": "Source teaching exists, but package lessons are empty and no importer/parsed-row ID has been confirmed; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W04-NGO-ROLES",
+      "objective": "Scheme entry 4: NGO roles in agricultural development",
+      "objective_locator": "scheme block 15; Week 4 blocks 327-420",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 386-399; definition/examples 387-392; roles 394-399",
+          "explanation": "The source teaches six areas: research, finance, inputs, extension services, rural development, and irrigation/drainage."
+        },
+        {
+          "locator": "evaluations 400-402 and 406,408",
+          "explanation": "The six roles support five-role questions; the Nigeria-specific examples are separately unresolved."
+        },
+        {
+          "locator": "Week 4 blocks 327-420; range SHA-256 e7b9099d4ca963ad728a67b5fb866a6ad2f39d637861800077bc6ffce58fcf8f",
+          "explanation": "Source teaching exists, but package lessons are empty and parsed-row mapping is unverified."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W04-NGO-EXAMPLES",
+      "objective": "Assessment scope: five examples of NGOs contributing to agricultural development in Nigeria",
+      "objective_locator": "evaluation blocks 402 and 406",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 387-392",
+          "explanation": "The source lists IITA, West African Rice Development Agency, FAO, Hunger Project (Ghana) and Catholic Relief Service (Gambia); two are explicitly labelled Ghana and Gambia."
+        },
+        {
+          "locator": "blocks 402 and 406",
+          "explanation": "Questions ask for five NGOs in Nigeria or contributing to Nigerian agricultural development, but the source does not establish five Nigeria-relevant examples."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W04-PROGRAMME-OBJECTIVES",
+      "objective": "Assessment scope: objectives of five Nigerian agricultural programmes",
+      "objective_locator": "programme list block 351; theory block 420",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "block 351",
+          "explanation": "Fourteen programmes/policy mechanisms are named, but programme-specific objectives are not given."
+        },
+        {
+          "locator": "policy goals 340-345 and theory 419-420",
+          "explanation": "The source provides broad policy goals, not two objectives for each of five programmes."
+        },
+        {
+          "locator": "weekend assignment block 413",
+          "explanation": "The Farm Settlement Scheme is named in block 351, but its stated purpose of attracting young educated people to farming is not taught."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
     }
   ],
   "open_items": [
@@ -576,6 +660,64 @@
       "required_action": "Investigate whether the exact intended statement can be recovered from a verified duplicate/parallel source. If not, preserve the original wording and leave the proposed solution unresolved; do not silently repair or invent missing words.",
       "affected_ids": [
         "AG-CORR-T1-W03-STORAGE-SOLUTION",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W04-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 4 teaches government roles (335-381) and NGO roles (386-399), but the package has no lessons and no importer-confirmed parsed-row ID. Both core coverage entries remain PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the exact parsed original row(s) and bind COV-AG-T1-W04-GOV-ROLES and COV-AG-T1-W04-NGO-ROLES; do not guess IDs or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T1-W04-GOV-ROLES",
+        "COV-AG-T1-W04-NGO-ROLES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W04-NGO-EXAMPLES",
+      "kind": "CONTENT",
+      "detail": "The five examples at 387-392 include Hunger Project (Ghana) and Catholic Relief Service (Gambia); the source does not establish five Nigeria-specific examples for questions 402 and 406.",
+      "required_action": "Author AG-LES-T1-W04-NGO-EXAMPLES with five reliably sourced NGOs operating in or contributing to agricultural development in Nigeria, keeping the original list separately attributed.",
+      "affected_ids": [
+        "COV-AG-T1-W04-NGO-EXAMPLES",
+        "AG-LES-T1-W04-NGO-EXAMPLES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W04-PROGRAMME-OBJECTIVES",
+      "kind": "CONTENT",
+      "detail": "Theory 420 asks for two objectives of each of five programmes listed at 351, but the source gives names only and broad policy goals at 340-345. Weekend Q1 413 asks the Farm Settlement Scheme's purpose, which is not stated.",
+      "required_action": "Author AG-LES-T1-W04-PROGRAMME-OBJECTIVES from authoritative Nigerian programme records; include at least five programmes with two verified objectives each and resolve the Farm Settlement question.",
+      "affected_ids": [
+        "COV-AG-T1-W04-PROGRAMME-OBJECTIVES",
+        "AG-LES-T1-W04-PROGRAMME-OBJECTIVES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W04-PEST-CONTROL",
+      "kind": "FACT",
+      "detail": "Weekend Q2 414 asks which of quarantine, crop rotation, fumigation and mulching is not a pest-control method. The source teaches plant quarantine at 371; crop rotation appears at Week 6 block 436; fumigation and mulching are not taught as pest-control methods. The question has no clear source-derived key.",
+      "required_action": "Verify the pest-control status of all four options against authoritative references and recommend a precise correction or withdrawal if the options do not yield one defensible answer.",
+      "affected_ids": [
+        "AG-FACT-T1-W04-PEST-CONTROL-ITEM",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W04-NGO-STATUS",
+      "kind": "FACT",
+      "detail": "Weekend Q5 417 classifies Agricultural Development Authority as the NGO exception, but the source does not explain its status or classify the other organisations beyond its example list.",
+      "required_action": "Verify the Nigerian status of Agricultural Development Authority and the listed organisations against authoritative records; recommend a sourced correction if needed.",
+      "affected_ids": [
+        "AG-FACT-T1-W04-NGO-STATUS",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
