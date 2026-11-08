@@ -1625,6 +1625,66 @@
           "explanation": "Extensive-system advantages/disadvantages and intensive-system protection from weather, provision of inputs and high growth are stated; the second intensive-system disadvantage is not taught."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Livestock management II (cattle): breeds, terms, characteristics, rearing systems, feeding, breeding-to-finishing management, parasites and diseases",
+      "objective_locator": "Third Term scheme block 13 (combined Weeks 9-10); Week Ten label 1124; topic 1125; content outline 1126-1135",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Cattle definition/use 1136; breeds 1138-1147; terms 1149-1153",
+          "explanation": "Cattle classification and uses are stated; beef, dairy and dual-purpose groups and examples are listed; bull, cow, calf, heifer, serving, calving, herd and beef are defined."
+        },
+        {
+          "locator": "Evaluation 1156-1158; characteristics 1160-1166",
+          "explanation": "Breed and importance questions are supported by the breed list and stated products/uses; body size, horns, humps, calving and gestation characteristics are described."
+        },
+        {
+          "locator": "Rearing systems 1168-1176; evaluation 1178-1180",
+          "explanation": "Extensive, semi-intensive and intensive systems are described, including extensive-system disadvantages."
+        },
+        {
+          "locator": "Feeding 1182-1190",
+          "explanation": "Roughages, grasses, legumes, concentrates, zero-grazing, 'rational grazing' (source wording), hay, silage and straw are named."
+        },
+        {
+          "locator": "Management 1192-1203",
+          "explanation": "Breeding-to-calving, birth-to-weaning and weaning-to-finishing are covered, including steaming up, colostrum, vaccination/deworming, castration, dehorning, branding, tattooing and ear notching."
+        },
+        {
+          "locator": "Parasites/diseases 1205-1226",
+          "explanation": "Mange, tuberculosis, worms and ectoparasites are described. Drug/chemical and dosage statements are recorded for later safety/factual review, not endorsed."
+        },
+        {
+          "locator": "Week Ten range blocks 1124-1254; SHA-256 9b3f1eb753bab7cfec4511faab33fb3eee2bacdad2b167fdd0a74e4222d4661c",
+          "explanation": "Main scheme subtopics are present, but package lesson rows/importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W10-ASSESSMENT-GAPS",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment gaps and wording mismatches: tattooing definition, rotational/rational grazing terminology and cattle-house reference in mange section",
+      "objective_locator": "Theory 1252-1254; feeding 1188; mange treatment/prevention 1210",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Tattooing mention 1203; theory question 1253",
+          "explanation": "Tattooing is named as an identification method but is not defined, although the theory question asks for its definition."
+        },
+        {
+          "locator": "Feeding 1188; theory 1253",
+          "explanation": "The teaching text says 'Rational grazing' for moving cattle among paddocks, while the theory item asks for 'rotational grazing'; intended terminology requires verification."
+        },
+        {
+          "locator": "Mange section 1210",
+          "explanation": "The cattle mange paragraph says to maintain hygiene and sanitation in 'pig houses', a likely cross-topic copy error that requires source/teacher confirmation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2723,6 +2783,42 @@
       "required_action": "Verify disease/transmission and treatment claims, product names, concentration and safety implications against authoritative veterinary/public-health references. Record only qualified educational disposition; do not invent doses, PPE, mixing, application, injection or disinfection procedures and do not endorse source instructions.",
       "affected_ids": [
         "AG-FACT-T3-W09-PIG-SAFETY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Ten teaches cattle management in blocks 1136-1226, but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T3-W10-CATTLE-MANAGEMENT is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T3-W10-CATTLE-MANAGEMENT; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T3-W10-CATTLE-MANAGEMENT",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-ASSESSMENT-GAPS",
+      "kind": "CONTENT",
+      "detail": "Theory 1253 asks for a definition of tattooing, but the body only names tattooing as an identification method at 1203. The teaching text says 'Rational grazing' at 1188 while theory 1253 asks for 'rotational grazing'. The cattle mange section at 1210 refers to hygiene in 'pig houses'.",
+      "required_action": "Obtain a verified subject-expert/source decision on tattooing, rational-versus-rotational terminology and the 'pig houses' wording. Bind only a confirmed delivery correction; author a bounded tattooing supplement only from approved evidence.",
+      "affected_ids": [
+        "COV-AG-T3-W10-ASSESSMENT-GAPS",
+        "AG-FACT-T3-W10-CATTLE-TERMS",
+        "AG-CORR-T3-W10-CATTLE-TERMS",
+        "AG-LES-T3-W10-CATTLE-TATTOOING",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W10-VETERINARY-CHEMICAL-SAFETY",
+      "kind": "FACT",
+      "detail": "Week Ten includes source statements about dehorning with caustic soda (1203); mange treatment with insecticides and 'invermectin or ivomec' injection (1210); insecticide names diazuntol, malathione, benzyl benzoate and benzene hexachloride (1212); and tuberculosis treatment with 'isonicotinichydracide' at 10 mg/kg body weight for eight weeks (1221-1222). No chemical handling/PPE instructions or supporting veterinary references are supplied.",
+      "required_action": "Verify all source claims, product names, stated concentration/dose and safety implications against authoritative veterinary/public-health references. Record a safe educational disposition only; do not invent or add dosing, PPE, mixing, application, injection, dehorning or disinfection procedures and do not endorse the source regimen.",
+      "affected_ids": [
+        "AG-FACT-T3-W10-CATTLE-SAFETY",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true
