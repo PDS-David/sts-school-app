@@ -3009,14 +3009,16 @@
         "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md",
         "docs/ss1/work/microtasks/bookkeeping/BK-PRE-T2.md",
         "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
-        "backend/src/db/ss1/subjects/bookkeeping.json"
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/bookkeeping.package.test.mts"
       ],
       "depends_on": [
         "BK-INV-T2",
         "BK-PRE-T2"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Owner-confirmed 2026-11-08: second-term file should not have been identical to first-term and no other source is available. The original is preserved and quarantined as an erroneous duplicate. Project-authored provisional 10-week sequence documented in BK-T2-RECONSTRUCTION-PLAN.md, using external curriculum references as guidance and first-/third-term content as scope constraints. No claim that this was the original scheme; teacher review and technical verification remain pending.",
+      "implementation_reference": "Owner-confirmed 2026-11-08: second-term file should not have been identical to first-term and no other source is available. The original is preserved and quarantined as an erroneous duplicate. Project-authored provisional 10-week sequence documented in BK-T2-RECONSTRUCTION-PLAN.md, using external curriculum references as guidance and first-/third-term content as scope constraints. No claim that this was the original scheme; teacher review and technical verification remain pending. Compiler now supports cross-term duplicate exclusion by comparing parsed week labels, titles and full bodies while preserving each source's distinct hash/term metadata; tests updated to assert the owner-confirmed T2 exclusion. Test execution remains deferred.",
       "completion_condition": "Owner decision, source disposition and proposed reconstruction plan are documented; no original source text is overwritten; plan is labelled provisional and project-authored."
     },
     {
