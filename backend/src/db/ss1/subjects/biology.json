@@ -3155,8 +3155,8 @@
     {
       "id": "BIOLOGY-T1-W10-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns and the names/associations require fact review. The movement table at blocks 1083-1092 also uses line shapes and tab-aligned rows, with one mechanism wrapping across blocks 1088-1089; its three-column pairings do not survive text extraction.",
-      "required_action": "Complete BIO-VIS-T1-W10-MITOSIS-REDRAW; author and bind an approved equivalent Week 10 lesson using the redraw and written stage descriptions. Restate the animal-hormone list as a semantic three-column table only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations. Restate the movement list as a semantic three-column table, keeping source wording distinct from any delivery correction.",
+      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns and the names/associations require fact review. The movement table at blocks 1083-1092 also uses line shapes and tab-aligned rows, with one mechanism wrapping across blocks 1088-1089; its three-column pairings do not survive text extraction. The compiler also requires the redraw asset's lesson_id to resolve to an identified source lesson or supplement. No such lesson ID is recorded in the current package, and importer execution is deferred; the redraw cannot be registered until an exact lesson ID is available.",
+      "required_action": "Complete the factual review of the hormone and movement tables, then author and bind the Week 10 lesson. The mitosis redraw is source-structurally specified in BIO-VIS-T1-MITOSIS, but its asset registration must wait for a verified lesson_id under BIOLOGY-ASSET-LESSON-ID-BINDING. Do not invent a lesson ID or commit an unregistered asset. Restate the animal-hormone list only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations; restate the movement list as a semantic three-column table.",
       "affected_ids": [
         "COV-BIO-T1-W10-GROWTH",
         "COV-BIO-T1-W10-IRRITABILITY",
@@ -3167,7 +3167,8 @@
         "BIO-FACT-T1-W10-ANIMAL-HORMONES",
         "BIOLOGY-T1-W10-HORMONE-FACTS",
         "BIO-VIS-T1-MOVEMENT-TABLE",
-        "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
+        "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
+        "BIOLOGY-ASSET-LESSON-ID-BINDING"
       ],
       "blocks_delivery": true
     },
@@ -4192,6 +4193,23 @@
         "BIO-VIS-T3-FIG-MEALYBUG",
         "BIO-FACT-T3-W06-W07-PEST-DISEASES",
         "COV-BIO-T3-W06-PLANT-PESTS-DISEASES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-ASSET-LESSON-ID-BINDING",
+      "kind": "CONTENT",
+      "detail": "The Biology package currently has no registered lesson rows, and no exact parser-generated source lesson IDs are recorded for asset attachment. The SS1 compiler validates that every asset.lesson_id resolves to an identified original source lesson or an authored supplement. The owner has deferred importer/compiler execution, and project instructions prohibit inventing source lesson IDs. Consequently, project-authored visual assets cannot yet be registered safely; unregistered orphan files must not be committed.",
+      "required_action": "After the owner permits the parser/importer to identify exact original lesson IDs, or an approved supplement lesson is authored with a stable ID, bind each visual asset to that exact lesson_id and register its exact bytes/hash, alt text, source locator and project-created provenance. Do not guess IDs, register assets against coverage IDs, or commit unregistered asset files.",
+      "affected_ids": [
+        "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW",
+        "BIO-VIS-T1-W10-MITOSIS-REDRAW",
+        "BIO-VIS-T2-W03-PARAMECIUM-REDRAW",
+        "BIO-VIS-T2-W03-SPIROGYRA-REDRAW",
+        "BIO-VIS-T2-W03-COCKROACH-REDRAW",
+        "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
+        "BIO-VIS-T2-W09-FOODWEB-REDRAW",
+        "BIO-VIS-T1-W02-MICROSCOPE-REDRAW"
       ],
       "blocks_delivery": true
     }
