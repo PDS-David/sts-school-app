@@ -24,22 +24,26 @@
     "AG-INV-T1 (2026-10-28) inventoried the 1st Term original and appended the preamble, marker, week-indexing and visual items; the 2nd and 3rd Term inventories remain unread. No lesson, coverage entry, rule, correction or asset was written.",
     "AG-INV-T2 (2026-10-30) inventoried the 2nd Term original and appended the preamble, marker, week-indexing and visual items; the 3rd Term inventory remains unread. No lesson, coverage entry, rule, correction or asset was written.",
     "AG-WK-T1-W09 (2026-11-03) indexed Week 9 at objective level: scheme entry 9 taught in blocks 721-843; farmstead (785-786) and forestry (793-801, 855) untaught anywhere in the term; two bounded lessons and one expert-decision item appended. No lesson, source byte, correction, rule, asset or shared file was written.",
-    "AG-WK-T1-W01 (2026-11-06) indexed Week 1 at objective level: scheme entry 1 mapped to blocks 53-107 as three SUPPORTED rows against the reproduced generic parsed-row id; agronomy, crop pathology and entomology (block 77) are never defined and the source has no answer key, so two UNRESOLVED rows and two bounded lessons were appended. The agro-based/agro-allied items at blocks 95, 112, 118 and 135 depend on Week 6. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written."
+    "AG-WK-T1-W01 (2026-11-06) indexed Week 1 at objective level: scheme entry 1 mapped to blocks 53-107 as three SUPPORTED rows against the reproduced generic parsed-row id; agronomy, crop pathology and entomology (block 77) are never defined and the source has no answer key, so two UNRESOLVED rows and two bounded lessons were appended. The agro-based/agro-allied items at blocks 95, 112, 118 and 135 depend on Week 6. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
+    "AG-INV-T3 (2026-11-08) inventoried the attached 3rd Term Agricultural Science DOCX after verifying its exact member SHA-256 against SOURCE_ASSIGNMENTS.csv. Ten teaching-week bodies (WEEK ONE–WEEK TEN) were found; scheme items 11 Revision and 12 Examination have no instructional bodies. Preamble, practical project, four tables, 18 embedded body image groups, respiration equations, inline Office Math, parser-rule findings and pig/cattle chemical/dose content were recorded. No package lesson, coverage, source rule, correction or asset was written; 37 bounded indexing/marker/visual tasks were appended. Composite ZIP hash and importer/rendering remain unverified/deferred.",
+    "AG-PRE-T1 (2026-11-08) classified First Term preamble blocks 0-44: cover/branding, generic term heading, subject/class metadata, scheme structure/items 1-12, references and blank blocks. Reused existing alias and SCHEME_ONLY marker rules/coverage; scheme objectives 1-10 remain delegated to weekly indexing. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
+    "AG-PRE-T2 (2026-11-08) classified Second Term preamble blocks 0-23: generic term heading, subject/class metadata, scheme header and rows, revision/examination markers, references and blank blocks. Scheme objectives delegated to weekly indexing; marker decisions delegated to AG-MARK-T2. No package content, rules, coverage, corrections or assets changed. Testing deferred.",
+    "AG-PRE-T3 (2026-11-08) classified Third Term preamble blocks 0-25: generic heading, subject/class metadata, scheme header and rows 1-12, references and blank blocks. Scheme items 1-10 delegated to weekly indexing; revision/examination items 11-12 delegated to marker tasks. Existing source alias reused. No package content, rules, coverage, corrections or assets changed. Testing deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
     "FACTUAL_DEPENDENCY": 2,
-    "SOURCE_PREAMBLE_INDEXING": 2,
-    "SOURCE_MARKER_DISPOSITION": 4,
-    "SOURCE_WEEK_INDEXING": 17,
-    "VISUAL_DISPOSITION": 7,
+    "SOURCE_PREAMBLE_INDEXING": 3,
+    "SOURCE_MARKER_DISPOSITION": 6,
+    "SOURCE_WEEK_INDEXING": 27,
+    "VISUAL_DISPOSITION": 31,
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
-    "PENDING": 32,
+    "IMPLEMENTED_TESTING_DEFERRED": 13,
+    "PENDING": 65,
     "BLOCKED": 2
   },
   "items": [
@@ -246,8 +250,8 @@
       "depends_on": [
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No week inventory exists in the repository for this source: no package, checkpoint, source notes or parsed-row evidence (SS1-03's evidence/parsed_rows.json covers other subjects). Week count is unknown and must not be guessed.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md: verified 3rd Term source member (5,406,306 bytes; SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a) has ten teaching-week bodies, scheme-only Revision (item 11) and Examination (item 12), a 30-tool practical drawing project, four tables, 18 embedded body image groups (23 raster media files plus two alternate WDP layers), three text respiration equations and one inline Office Math object. Inventory records exact direct-w:body block ranges/hashes, parser-rule findings, practical work and livestock chemical/dose cautions. Source member hash matches manifest; composite ZIP hash not reverified. Importer/rendering/tests remain deferred.",
       "completion_condition": "A short inventory record lists every week/section with exact labels and a hash-or-anchor locator, and the new indexing/visual items are appended with unique IDs, real dependencies (this item plus its registration) and PENDING status. No lesson, coverage entry or rule is written."
     },
     {
@@ -339,8 +343,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): blocks 0-44, range sha256 6c16cc92e1f72d3f0deaa85356717c814d7044ca83597343d2b50b2a1f533e50; scheme heading block 11 'WEEK  TOPIC'; scheme items blocks 12-23 are one Word auto-numbered list (numId 1, level 0) so the week numbers 1-12 are implicit and absent from the extracted text; four reference books (blocks 26-29). Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T1.md; blocks 0-44 classified from AG-INV-T1; preamble range SHA-256 6c16cc92e1f72d3f0deaa85356717c814d7044ca83597343d2b50b2a1f533e50. Existing source_alias and two SCHEME_ONLY marker rules/coverage rows reused; scheme items 1-10 delegated to weekly indexing. No package content/rule/coverage/asset changes. Testing deferred by owner.",
       "completion_condition": "Every non-week block hash-accounted and mapped or recorded as an explicit open item; no coverage, rule or lesson invented by this item beyond what it names."
     },
     {
@@ -947,8 +951,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): blocks 0-23, range sha256 9967f8c0eb88e7a77adad2d6f9c1495888393fa2eab579a7e05ee5740b5f0791. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme item texts: 7 'Revision of Last Term Work', 8 'Cultural Practices: Pre-planting, Planting and Post-Planting Operations', 9 '4-5.Husbandry and Cultivation of Some Selected Crops', 10 '6. Agricultural Ecology', 11 '7.Rock Formation and Types', 12 'Rock Weathering and Process of Rock Weathering', 13 'Factors of Soil Formation', 14 'Revision.', 15 '11-12.      Examination'. Only blocks 9, 10, 11 and 15 show week numbers in the extracted text; the rest are unnumbered, so weeks 1, 2-3, 8, 9 and 10 are inferred from order and from the body labels. Page footer (footer2.xml) text 'GSS/AGRICULTURAL SCIENCE /SS1/2ND TERM Page N' is not teaching.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T2.md; blocks 0-23 classified from AG-INV-T2; preamble range SHA-256 9967f8c0eb88e7a77adad2d6f9c1495888393fa2eab579a7e05ee5740b5f0791. Scheme rows mapped to their week-indexing tasks; revision/exam markers delegated to AG-MARK-T2 tasks. No package content/rule/coverage/asset changes. Testing deferred by owner.",
       "completion_condition": "Every block 0-23 mapped or classified with its locator; scheme week numbers not read from text are marked inferred; nothing invented."
     },
     {
@@ -1642,6 +1646,1412 @@
       "status": "PENDING",
       "implementation_reference": "Not authored. Required by AG-WK-T1-W01 (2026-11-06): no answer key or marking guide exists anywhere in the 1st Term document; COV-AG-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and AGRICULTURAL-SCIENCE-T1-W01-COVERAGE is open. AG-WK-T1-W01 authors no answer.",
       "completion_condition": "A lesson in agricultural-science.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-AG-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
+    },
+    {
+      "id": "AG-PRE-T3",
+      "kind": "SOURCE_PREAMBLE_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "blocks 0-25 (range sha256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda)",
+      "objective": "Index all 3rd Term source text outside teaching-week bodies: generic opening heading, SUBJECT/CLASS line, scheme-of-work list (blocks 4-15), references (blocks 17-23) and intervening blank blocks. Map each block or classify it; scheme objectives belong to the week items, and Revision/Examination belong to the marker items. Do not silently drop preamble material or infer a lesson from references.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/agricultural-science/AG-PRE-T3.md; blocks 0-25 classified from AG-INV-T3; preamble range SHA-256 3f38a1bf54c05301d2a842b6fce4450dc0594cbdcf6394c34061879232353cda. Scheme items 1-10 delegated to weekly indexing; items 11-12 delegated to marker tasks. Existing source_alias reused. No package content/rule/coverage/asset changes. Testing deferred by owner.",
+      "completion_condition": "Every preamble block is mapped or classified with exact block locators; no scheme objective is omitted or invented."
+    },
+    {
+      "id": "AG-MARK-T3-REVISION",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "scheme block 14 ('11Revision ') and no Week 11 label/body",
+      "objective": "Disposition scheme item 11, 'Revision'. Classify it as a scheme-only revision marker, not a teaching week or lesson. The document contains ten teaching-week bodies (WEEK ONE through WEEK TEN) and no Week 11 body, revision worksheet or revision marking scheme. Do not invent revision content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T3-REVISION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Revision marker is recorded as SCHEME_ONLY with exact locator; no Week 11 lesson or assessment is invented."
+    },
+    {
+      "id": "AG-MARK-T3-EXAM",
+      "kind": "SOURCE_MARKER_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "scheme block 15 ('12Examination') and no Week 12 label/body",
+      "objective": "Disposition scheme item 12, 'Examination'. Classify it as a scheme-only examination marker, not a teaching week or lesson. The document has no Week 12 body, examination paper or marking scheme. Do not invent exam content.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-MARK-T3-EXAM.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Examination marker is recorded as SCHEME_ONLY with exact locator; no Week 12 lesson or examination paper is invented."
+    },
+    {
+      "id": "AG-WK-T3-W01",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK ONE blocks 26-75; label sha256 635789fb4e63974d59acfd3667c0b0fb9a4b935d51684c017ac9879e598deb6b; range sha256 fd12c22ae7e30ab3b7903457502daa6125da806655322eab6090e7f4e0e819d7",
+      "objective": "Scheme week 1: Simple farm tools. Index examples, descriptions/functions, maintenance, evaluation, reading, weekend assignment, theory and the practical/project requirement to draw 30 tools and describe/maintain/state uses. Topic heading: Simple farm tools. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W01.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W02",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK TWO blocks 76-279; label sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6; range sha256 a580fafc641cfb780fe608ca29b6bd943fe335d12df02e1d98147ee8d33fe4ba",
+      "objective": "Scheme week 2: Farm power. Index definition, all listed power sources, advantages/disadvantages, evaluations, reading, weekend assignment and theory. Topic heading: Farm power. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W02.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W03",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK THREE blocks 280-369; label sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51; range sha256 d27df15557ac65f36ae3eb3ab8e83d532800d46b3798a4efd262818061e55db2",
+      "objective": "Scheme week 3: Farm mechanization. Index definition, objectives, advantages, disadvantages, limitations/problems, prospects, evaluations, reading, weekend assignment and theory. Topic heading: Farm mechanization (tractorizaton). Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W03.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W04",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK FOUR blocks 370-523; label sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2; range sha256 53f4e7e4e5be6ec369a81e8b68b0098b12f85395e248ff0f13035f01c88d1499",
+      "objective": "Scheme week 4 (part of combined weeks 4-5 entry): Anatomy and physiology of farm animals. Index digestive system (ruminant, non-ruminant, poultry and comparison), circulatory system, and male/female reproductive system sections, including all assessments and tables/figures. Topic heading: Anatomy and physiology of farm animals. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W04.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W05",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK FIVE blocks 524-606; label sha256 700c30e110b71fbdb4d6aaa0ea0a922cb9d63b799643acd01e32055226c62598; range sha256 df93004697a28727f740591bb0256c07afbeab82aa6a032d14098df02ac63cde",
+      "objective": "Scheme week 5 (within combined weeks 4-5 entry): index respiratory system, aerobic/anaerobic respiration, respiratory organs and breathing, fish gills, importance, nervous system, evaluations, reading and assignments. Preserve the displayed respiration equations. Topic heading: Respiratory system. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W05.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W06",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK SIX blocks 607-787; label sha256 8c07e3bd938cea9a3897d0d69eb6c600bf1fbace15d21b346bf0372fa095c038; range sha256 984ba7e0f5936a9a5dfb7680e93fc00ab7c64faa8bc8cbab696cbeda6b6159c7",
+      "objective": "Scheme week 6 (part of combined weeks 6-7 entry): index oestrus cycle, ovulation, heat, mating systems, artificial insemination, fertilization, implantation, gestation, parturition, lactation and colostrum; preserve the gestation table and all evaluations/assignments. Topic heading: Reproduction in farm animals. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W06.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W07",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK SEVEN blocks 788-854; label sha256 4a723109953b31906cbe40ce93fd8a4f440295167adea8b71e78dda0d7f59808; range sha256 7e69c5c03f6c38dd97d0bd0e33c58f1772d980a4853bc595d28894e331b6abbc",
+      "objective": "Scheme week 7 (within combined weeks 6-7 entry): index egg formation in poultry, poultry reproductive system, male/female reproductive hormones, hormone table and all assessments/figures. Topic heading: Reproduction in farm animals II. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W07.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W08",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK EIGHT blocks 855-981; label sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e; range sha256 106414bcb63f69eb63b0840d79249be625382f1fa47fa83ef14e0203109a4ba7",
+      "objective": "Scheme week 8: index environmental physiology, climate factors (rainfall, wind, temperature, relative humidity, light), controls and effects on growth, milk and egg production; include evaluations and assignments. Topic heading: Environmental physiology. Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W08.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W09",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK NINE blocks 982-1123; label sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f; range sha256 5a6918c499185465ecb30f240112f9c39c3697e7ba6fed967255d8154efdc0e4",
+      "objective": "Scheme week 9 (part of combined weeks 9-10 entry): index pig terms, breeds, characteristics, rearing systems, housing, feeding, hygiene, breeding-to-finishing management, parasites/diseases and assessments. Record chemical handling/safety gaps; do not invent doses or PPE instructions. Topic heading: Livestock management (pigs). Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-WK-T3-W10",
+      "kind": "SOURCE_WEEK_INDEXING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "WEEK TEN blocks 1124-1254; label sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10; range sha256 9b3f1eb753bab7cfec4511faab33fb3eee2bacdad2b167fdd0a74e4222d4661c",
+      "objective": "Scheme week 10 (part of combined weeks 9-10 entry): index cattle breeds, terms, characteristics, rearing systems, feeding, breeding-to-finishing management, parasites/diseases and assessments. Record source-stated chemicals/drug doses exactly for later safety/factual review; do not endorse or supplement them. Topic heading: Livestock management II (cattle). Verify all content against the source blocks and all assessment questions; distinguish taught objectives from questions that are not taught.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W10.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
+    },
+    {
+      "id": "AG-VIS-T3-W01-TBL-TOOLS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Weeks 1 table, block 36 (6 rows x 10 columns; text sha256 0e24371a1169758b82a4429bdd59167fc63282d90887b024caae7757ed6b105e)",
+      "objective": "Disposition the 30-item farm-tools table. It lists 30 tools in a 6x10 grid; the Week 1 practical/project asks students to draw all 30 in a drawing book, describe them, state maintenance and uses. The document contains the list, not 30 embedded tool drawings. Record whether a faithful table/illustration supplement is required; do not infer that the drawings are present.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W01-TBL-TOOLS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 image group, block 108: word/media/image1.png",
+      "objective": "Disposition the embedded draught-animal photograph/illustration (media/image1.png, SHA-256 37f3b631ff73b2c1ef496492b599964de3ae43712ab7ee4cedb046d29be3982e). Determine whether it is instructional and whether it can be reused; do not commit original media.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W02-DRAUGHT-ANIMALS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W02-MECHANICAL-POWER",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 image group, block 128: word/media/image2.png",
+      "objective": "Disposition the embedded mechanical-power/tractor machinery image (media/image2.png, SHA-256 48e250b180b2492f2f6b2f947d36ca4e577940c8528053d3dff534a5166ee077). Determine teaching relevance and reuse rights; do not commit original media.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W02-MECHANICAL-POWER.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W02-SOLAR",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 image group, block 167: word/media/image3.png",
+      "objective": "Disposition the solar-panel image (media/image3.png, SHA-256 30d25a8f2cfe6d06216c99a0358c53fe2315cf1d189c42b8723df0485843ddb9). Determine teaching relevance and reuse rights; do not commit original media.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W02-SOLAR.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W02-WIND",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 image group, block 194: word/media/image4.png",
+      "objective": "Disposition the windmill image (media/image4.png, SHA-256 034549f2d0f0afd88cfdc3fb417fed853b8fdabca6e9ce483564b48e3959011f). Determine teaching relevance and reuse rights; do not commit original media.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W02-WIND.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W02-ELECTRIC-WATER",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 image group, block 211: word/media/image5.png + image6.png; alternate image layers hdphoto1.wdp + hdphoto2.wdp",
+      "objective": "Disposition the two-image group illustrating electrical generation and hydroelectric power (image5.png SHA-256 64c22c9d1d7bf0529a369609aa0e99038c03b6dbf05d22759fdcc83f9fcfee8e; image6.png SHA-256 c41581779456eaf4f6d966d31cf783925e8869459f4bb661497bb67a67becdcc). The WDP parts are image-effect/alternate layers referenced by the same drawing group, not additional independent teaching figures. Inspect whether the diagrams and captions remain legible.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W02-ELECTRIC-WATER.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-RUMINANT-DIGESTION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 image group, block 395: word/media/image7.png",
+      "objective": "Disposition the labelled cattle/ruminant digestive-tract diagram (image7.png, SHA-256 4f1fd7332caef496e1f26881710e9ae5d4174ba276a898b80f385d4cd28dd2f2). Preserve labels and anatomical relationships if a derivative is needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-RUMINANT-DIGESTION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-PIG-DIGESTION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 image group, block 417: word/media/image8.jpeg",
+      "objective": "Disposition the labelled pig/non-ruminant digestive-system diagram (image8.jpeg, SHA-256 51eb3f69cbe56f2bcd8bf5fc6ee2e28a667d2c9445a13f6279a06aa68bdecc2d). Preserve labels and anatomical relationships if a derivative is needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-PIG-DIGESTION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-POULTRY-DIGESTION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 image group, block 425: word/media/image9.jpeg",
+      "objective": "Disposition the poultry digestive-system diagram (image9.jpeg, SHA-256 8f51dfaba51cadd1d3a1674158a9e713f2a761806820c953ece765e116f21a1e). Preserve labels and anatomical relationships if a derivative is needed.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-POULTRY-DIGESTION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-MALE-REPRODUCTION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 image group, block 487: word/media/image10.jpeg + image11.jpeg",
+      "objective": "Disposition the male reproductive-system image pair (image10.jpeg SHA-256 7b3c3ece6a547d5d728db396cc963ab277b9baf18af03660d8aff10a4bf84c64; image11.jpeg SHA-256 b1b8bbfeea51e79facb271355588c9c9f2888fcdb6a951fa04f1eef438a6158c). One is a photographed page and one a labelled diagram; distinguish usable teaching labels from photographed page material.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-MALE-REPRODUCTION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 image group, block 493: word/media/image12.jpeg",
+      "objective": "Disposition the female reproductive-system diagram (image12.jpeg, SHA-256 a69e5ee55100230a8b3c7b52da1d9463da46ad60d97936d869961ebfc12a5897). Preserve labels and anatomical relationships.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-FEMALE-REPRODUCTION-A.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 image group, block 494: word/media/image13.jpeg",
+      "objective": "Disposition the second female reproductive-system image (image13.jpeg, SHA-256 c33604505a72870f329ca74dea5faeea1a421d4bb794d915d6cc89c3978eee96). It appears as a photographed source page; inspect legibility and rights separately from image12.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-FEMALE-REPRODUCTION-B.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W04-TBL-DIGESTION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 4 table, block 431 (7 rows x 3 columns; text sha256 0ca145261c566e4b6fdfaa02c15d7b741be36a751106f10076b43b37d4bf9fd2)",
+      "objective": "Disposition the monogastric/polygastric comparison table. Preserve the paired comparison rows and all six distinctions; plain-text extraction may flatten column structure.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W04-TBL-DIGESTION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W05-RESPIRATORY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 image group, block 547: word/media/image14.jpeg",
+      "objective": "Disposition the lower respiratory-tract/lung diagram (image14.jpeg, SHA-256 9d96753f568bbe76fe06754861a620a2a1fe7487d7ce308382e5a3a8bc7cdb42). Preserve labels and organ relationships.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W05-RESPIRATORY.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W05-FISH-GILLS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 image group, block 554: word/media/image15.jpeg + image16.jpeg",
+      "objective": "Disposition the two fish-gill diagrams (image15.jpeg SHA-256 7c7e5785459311423433703b151d254da42266472783728dc866406092f010ef; image16.jpeg SHA-256 a052889cda6e3baf6cf2723aeee4be3400c90d6db4b1aebd2e866ff77921947f). Preserve gill arch, filaments, rakers and labels.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W05-FISH-GILLS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W05-RESPIRATION-EQUATIONS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 5 paragraphs/blocks 530, 535 and 538: aerobic and anaerobic respiration equations",
+      "objective": "Disposition the three displayed respiration equations (the general respiration equation and the aerobic and anaerobic forms). They are text/formula content, not separate image files or Office Math objects; preserve chemical subscripts, coefficients, arrows and products in the delivered representation.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W05-RESPIRATION-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W06-TBL-GESTATION",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 6 table, block 724 (6 rows x 3 columns; text sha256 2a4920ab1813f229acf23091705f2ae7378471933fbf2d7e93c5a86e062d1925)",
+      "objective": "Disposition the species/female-name/gestation-period table. Preserve species alignment and each stated duration; plain-text extraction may flatten paired entries in the horse/cattle and rabbit/chicken rows.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W06-TBL-GESTATION.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 image group, block 803: word/media/image17.jpeg + image18.jpeg",
+      "objective": "Disposition the bird embryo and poultry internal-organs images (image17.jpeg SHA-256 1dd5ee224f47bc04274f2b308cdb873565507c0df609205101275c9bc53c421c; image18.jpeg SHA-256 593b1e6fdd4f072fd56acf655111fcf13e0d3bd1cf99f03175be644b020a8132). Check which is relevant to the egg-formation/reproductive teaching and retain only relevant content with rights evidence.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 image group, block 804: word/media/image19.jpeg + image20.jpeg",
+      "objective": "Disposition the photographed reproductive-system source page and female reproductive-tract diagram (image19.jpeg SHA-256 3608f505f1cfbc5fe16573174586c8173a491714e2cb52a37ee2e3ad5b237c72; image20.jpeg SHA-256 c229d0efd92b90136ad54f51a108179b8c95982fe880c08ce5c9979d728de951). Inspect the page image for unique teaching information, legibility and reuse rights.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W07-REPRODUCTIVE-TRACT.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 image group, block 819: word/media/image21.jpeg",
+      "objective": "Disposition the male/female reproductive-system diagram (image21.jpeg, SHA-256 1a40750113dcfd8ffe5e079ac35715a932bfe1a786de90b55c1a4d54598a7644). Preserve anatomical labels and distinguish it from Week 4 reproductive figures.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W07-TBL-HORMONES",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 7 table, block 828 (8 rows x 4 columns; text sha256 dc4ce1cf72d8b6490cf5260a040f348e35fad1b3ab6e6b80b884f0326fe1a3e)",
+      "objective": "Disposition the reproductive-hormone table (hormone, sex, secretion site, functions). Preserve each row/column relationship and all listed functions; plain-text extraction may concatenate cells.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W07-TBL-HORMONES.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W09-PIG-ANATOMY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 9 image group, block 1006: word/media/image22.jpeg",
+      "objective": "Disposition the pig external-anatomy/body-parts diagram (image22.jpeg, SHA-256 ce90a5c50968040e25a8bd9915a86bb72f56fedc9f96715c901a6787f515f649). Preserve all labels used in livestock-management teaching.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W09-PIG-ANATOMY.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W10-CATTLE-ANATOMY",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 10 image group, block 1155: word/media/image23.jpeg",
+      "objective": "Disposition the cattle external-anatomy/body-parts diagram (image23.jpeg, SHA-256 f5cb01d75a53b0103bff75364c5e11fc839fb532bd6d93e8126f4a5395ef735d). Preserve all labels used in cattle-management teaching.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W10-CATTLE-ANATOMY.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
+    },
+    {
+      "id": "AG-VIS-T3-W10-MATH-OBJECT",
+      "kind": "VISUAL_DISPOSITION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week 10 inline Office Math object, block 1165 (inside the cattle characteristics paragraph)",
+      "objective": "Disposition the single embedded Office Math object in the cattle characteristics text ('gestation period of about 275-283 days (9 months)'). Confirm whether it is a semantic formula or just formatted text and preserve the numeric statement without changing it.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-VIS-T3-W10-MATH-OBJECT.md"
+      ],
+      "depends_on": [
+        "AG-INV-T3",
+        "AG-SRC-T3"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     }
   ],
   "review": {
@@ -1657,9 +3067,6 @@
     }
   },
   "next_runnable": [
-    "AG-INV-T3",
-    "AG-PRE-T1",
-    "AG-PRE-T2",
     "AG-WK-T1-W02",
     "AG-WK-T1-W03",
     "AG-WK-T1-W04",
@@ -1675,8 +3082,20 @@
     "AG-WK-T2-W07",
     "AG-WK-T2-W08",
     "AG-WK-T2-W09",
+    "AG-WK-T3-W01",
+    "AG-WK-T3-W02",
+    "AG-WK-T3-W03",
+    "AG-WK-T3-W04",
+    "AG-WK-T3-W05",
+    "AG-WK-T3-W06",
+    "AG-WK-T3-W07",
+    "AG-WK-T3-W08",
+    "AG-WK-T3-W09",
+    "AG-WK-T3-W10",
     "AG-MARK-T2-REVISION",
     "AG-MARK-T2-EXAM",
+    "AG-MARK-T3-REVISION",
+    "AG-MARK-T3-EXAM",
     "AG-VIS-T1-TBL-W02",
     "AG-VIS-T1-TBL-W06",
     "AG-VIS-T1-BRANDING",
@@ -1684,6 +3103,30 @@
     "AG-VIS-T2-TBL-LEGUMES",
     "AG-VIS-T2-TBL-ROOTS",
     "AG-VIS-T2-BRANDING",
+    "AG-VIS-T3-W01-TBL-TOOLS",
+    "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
+    "AG-VIS-T3-W02-MECHANICAL-POWER",
+    "AG-VIS-T3-W02-SOLAR",
+    "AG-VIS-T3-W02-WIND",
+    "AG-VIS-T3-W02-ELECTRIC-WATER",
+    "AG-VIS-T3-W04-RUMINANT-DIGESTION",
+    "AG-VIS-T3-W04-PIG-DIGESTION",
+    "AG-VIS-T3-W04-POULTRY-DIGESTION",
+    "AG-VIS-T3-W04-MALE-REPRODUCTION",
+    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
+    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
+    "AG-VIS-T3-W04-TBL-DIGESTION",
+    "AG-VIS-T3-W05-RESPIRATORY",
+    "AG-VIS-T3-W05-FISH-GILLS",
+    "AG-VIS-T3-W05-RESPIRATION-EQUATIONS",
+    "AG-VIS-T3-W06-TBL-GESTATION",
+    "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
+    "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
+    "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
+    "AG-VIS-T3-W07-TBL-HORMONES",
+    "AG-VIS-T3-W09-PIG-ANATOMY",
+    "AG-VIS-T3-W10-CATTLE-ANATOMY",
+    "AG-VIS-T3-W10-MATH-OBJECT",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-TEST-PACKAGE"
   ]

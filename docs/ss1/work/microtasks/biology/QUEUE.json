@@ -30,24 +30,32 @@
     "BIO-PRE-T1 (2026-11-08) accounted for every block 0-12 of the 1st Term original (title and class line = registered header; scheme lines 2-11 mapped to the BIO-WK-T1 items; block 12 blank) and recorded the scheme spacing quirks. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-PRE-T2 (2026-11-08) accounted for every block 0-28 of the 2nd Term original (generic header, subject line, eleven auto-numbered scheme rows, eight references, blanks) and recorded that the scheme week numbers come from list numbering and agree with the ten TOPIC lines. No package, rule, coverage, lesson, correction or asset was written.",
     "BIO-MARK-T2-REVEXAM (2026-11-08) classified the 2nd Term scheme row 'Revision and Examination' (block 17) as a preamble scheme-only marker with no instructional body (no week 11 or 12, no worksheet, paper or marking scheme), recorded the in-body evaluation headings that are not markers, and noted that block 940's revision questions are off-topic for Week 10. No package, rule, coverage, lesson, correction or asset was written.",
-    "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written."
+    "BIO-PRE-T3 (2026-11-08) accounted for every block 0-24 of the 3rd Term original (generic header, subject line, eight auto-numbered scheme rows, eight references, blanks) and recorded that the list numbers disagree with two section labels while rows 6 and 7 share one topic line. No package, rule, coverage, lesson, correction or asset was written.",
+    "BIO-WK-T1-W03 (2026-11-08) indexed the Week 3 classification objective and assessed all seven assignment questions against the source. The source archive and assigned first-term member hashes were verified. The unlisted 'Relevance of Biology to Agriculture' section at blocks 265-267 was split into BIO-SEC-T1-RELEVANCE; blocks 448-549 and 550-629 remain with their existing section tasks. No lesson, answer key, correction, rule or asset was written; testing remains deferred.",
+    "BIO-WK-T1-W04 (2026-11-08) indexed the Organization of life scheme objective (blocks 647-664) and reviewed all 'Questions to practice' (blocks 666-677). The practice mixes Week 4 organization content with Week 3 symmetry/body-layer, monocot/dicot and animal-group material; no key is present. No practical work or safety instructions were found. No lesson or answer key was authored; testing remains deferred.",
+    "BIO-WK-T1-W05 (2026-11-08) indexed Plant Nutrition, chemosynthetic nutrition, five practical-investigation aims and the Week 5 assignment. Detailed practical methods/chemical-handling instructions were not copied into the index. The source contains no separate safety/supervision section; practical delivery remains gated. Assignment question 1d asks for five conditions but the source explicitly names only four; the fifth is not guessed. Photosynthesis equations at blocks 683 and 700 are flagged for authoritative review. Follow-up fact and supplemental-lesson tasks were appended; testing remains deferred.",
+    "BIO-WK-T1-W07 (2026-11-08) indexed Nutrition in Animals: food substances and balanced diet, digestive enzymes, and the two enzyme assignment prompts. Protein-breakdown and mineral/vitamin/enzyme tables remain with existing visual-disposition tasks. No experiments/practicals were found. Food-formula and enzyme claims were retained and appended for fact review before any correction; no lesson or answer key was written.",
+    "BIO-WK-T1-W08 (2026-11-08) indexed Mode of Nutrition across blocks 928-944 and reviewed the two assignment questions. All six requested modes are described in the source; the assignment has no answer key. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred.",
+    "BIO-WK-T1-W09 (2026-11-08) indexed Basic ecological concept and reviewed all assignment prompts. Definitions are present; the final prompt's 'three components' is ambiguous against the source's two-part biotic/abiotic structure and three biotic groups. No key is present. No practical work was found. A bounded ecology lesson task was appended; testing remains deferred.",
+    "BIO-WK-T1-W10 (2026-11-08) indexed Growth, Irritability and Movement across blocks 986-1092 and reviewed the assignment at 1094-1103. The assignment prompts are supported by source teaching but no answer key is supplied. Existing visual tasks own the mitosis figures, hormone table and movement table. The WEEK TEN label precedes the ASSIGNMENT heading in this source. No practical work was found. A bounded supplemental lesson task was appended; testing remains deferred.",
+    "BIO-WK-T2-W01 (2026-11-08) indexed the 2nd Term reproduction week using a private conversion of the hash-verified legacy DOC. The Week 1 content list's sexual reproduction/meiosis entries map to the Week 2 scheme/body; they were not duplicated. Artificial propagation is only listed, asexual-reproduction advantages/disadvantages are absent, and three assessment prompts need authoritative fact review. Two bounded lesson tasks and one fact task were appended; no source extract or converted document was committed."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 4,
+    "FACTUAL_DEPENDENCY": 9,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
-    "SOURCE_SECTION_INDEXING": 2,
+    "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 4
+    "LESSON": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
-    "PENDING": 67,
-    "BLOCKED": 4
+    "IMPLEMENTED_TESTING_DEFERRED": 21,
+    "PENDING": 71,
+    "BLOCKED": 5
   },
   "items": [
     {
@@ -460,8 +468,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 133 \"WEEK THREE\" (sha256 9a970d2a5cd0bee91213221e6275188baf1dd13c1f90530302e9dbc234cf3b51); blocks 133-644; range sha256 0103345f39d4a3f64705635245f85b0bbbc69edfea60ec9d843c00cf6d88e227. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 4): 'Week 3 -Classification of Living things'. Body runs 133-630 and contains much more than the scheme title: ranks and five-kingdom characteristics (135-187), plant divisions (188-247), agricultural classification of crops and life cycles (248-264), Relevance of Biology to Agriculture (265-267), animal kingdom and invertebrate/vertebrate phyla and classes (268-447), then two sections the scheme does not name (blocks 448-549 and 550-629; see BIO-SEC-T1-AGRI-ECOLOGY and BIO-SEC-T1-PESTS-DISEASES). Assignment: block 631 'ASSIGNMENT', block 632 'WEEK THREE', items 634-642 (labelled-drawing and tabular-difference questions, blocks 640-642). Blank blocks 643-644.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W03.md; verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and the assigned 1st Term member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Re-derived the 1,106 direct w:body block inventory; Week 3 label block 133 and range blocks 133-644 match the queue hashes. Indexed the scheme objective across blocks 133-447; separately recorded the unlisted Relevance of Biology to Agriculture heading at 265-267 as a new section-indexing item, and left the unlabelled sections 448-549 and 550-629 to their existing section tasks. Reviewed the Week 3 assignment blocks 631-642: Q1/Q4 are not fully supported by this source, Q5 has no supplied fish figure, Q2/Q7 wording issues are recorded, Q3/Q6 are supported by source text, and no answer key exists. No lesson, answer key, correction, source rule or asset was invented. Testing/importer/compiler/DB/device checks remain deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -498,8 +506,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 645 \"WEEK FOUR\" (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); blocks 645-678; range sha256 25c2f1150d9175195b12b81080a2660f1dded05b377e67460248afc6d4cb14af. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 5): 'Week 4 -        Organization of life'. Body blocks 646-664 (levels of organization, advantages and disadvantages of complexity). There is no ASSIGNMENT heading or second WEEK FOUR label; a 'Questions to practice' block (666-677) follows and mixes organization-of-life items with Week 3 items (monocot/dicot differences block 675, animal group features block 677).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W04.md; re-verified the source member SHA-256 against the composite archive and manifest. Re-derived Week 4 label block 645 and blocks 645-678 range hash; indexed the scheme objective against blocks 647-664. Reviewed all 'Questions to practice' blocks 666-677: Q1b is supported, Q1c/Q1d are only partly supported, Q1a and Q2 draw on Week 3 material, and no key is supplied. No experiment, practical, apparatus, procedure or safety instructions occur in the range. Added PARTIAL scheme coverage and UNRESOLVED practice coverage with two blocking open items. No lesson, key or correction invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -536,8 +544,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 679 \"WEEK FIVE \" (sha256 8ee47ba1948276278acd4756c10e25cf6739d5687371d857fd9be652bde6a506); blocks 679-780; range sha256 4686f3b47c869d4b3359ada8483a6d7324db6f10dbf211eed9346ed7dd28b8f4. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 6): 'Week 5 -Plant Nutrition'. Body: photosynthesis (block 680 onward), light and dark reaction scheme drawn as shapes (683-701), chemosynthesis (710-713), then Experiments I-V (714-765): Experiment I has no figure; II-V have hand-drawn figures (blocks 733, 746, 754, 765). Assignment: block 773 'ASSIGNMENT', block 774 'WEEK FIVE', questions 775-778. Practical content is present - see Practical and chemical content below.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W05.md; verified the archive and assigned 1st Term member digest. Re-derived Week 5 label block 679 and body range blocks 679-780; indexed the Plant Nutrition teaching, chemosynthesis subsection, five practical-investigation aims, and assignment blocks 773-778. Detailed practical methods and chemical-handling instructions were not copied into the index. The source does not include a separate safety/supervision section; a teacher-approved safety review is required before practical delivery. The assignment asks for five photosynthesis conditions but the source explicitly names only light/sunlight, chlorophyll, water and carbon (IV) oxide; no fifth condition or answer key was invented. The two printed photosynthesis equations need authoritative review. Added fact-check, supplemental-lesson and safety-gate tasks. Tests/importer/compiler/DB/device checks remain deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -612,8 +620,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 835 \"WEEK 7\" (sha256 5d222602d23f6b6f007aa6721de2a971a44013ddf864d5b98d8b6d25dcaeace1); blocks 835-925; range sha256 d447b3593efc132f6eed1264640b15969a8a5712d3111a4e0470d6c8adb553a6. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 8): 'Week 7 -Nutrition in Animals'. Heading label is the digit form 'WEEK 7' (block 835). Body: food substances, protein/fats/minerals/vitamins/water, balanced diet, enzymes (836-920) with three tables (881, 888, 920) and a protein breakdown shape (859). Assignment: block 921 'ASSIGNMENT', block 922 'WEEK SEVEN', questions 923-924 (enzymes only). Blank block 925.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W07.md; verified the assigned source member hash against the archive and manifest. Re-derived Week 7 label block 835 and body range blocks 835-925; indexed food substances/balanced diet (836-902), digestive enzymes (903-920), and the assignment (921-924). Recorded the protein-breakdown diagram and the mineral, vitamin and enzyme tables as belonging to their existing visual-disposition tasks. The assignment is supported by source teaching but has no answer key. Several printed food/enzyme claims were retained and appended for authoritative fact review before any correction. No experiment or practical work occurs in this range. No lesson or key invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -650,8 +658,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 926 \"WEEK EIGHT\" (sha256 af0f60bc43d333ec85dbc163a1cccce62b4089fe90a5f15dbbbc0dac060b870e); blocks 926-950; range sha256 8e3ce87be34a1523b5aa2d9c478c9e817276070dad81a74fd1d46dfbe86b8d5a. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 9): 'Week 8 -Mode of Nutrition'. Body 927-944: autotrophic/heterotrophic, holozoic, parasitic, symbiotic, saprophytic, commensalism, carnivorous plants, filter and fluid feeding. Assignment: block 945 'ASSIGNMENT', block 946 'WEEK EIGHT', questions 947-949.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W08.md; verified the assigned source member hash against the archive and manifest. Re-derived Week 8 label block 926 and body range blocks 926-950; indexed autotrophic/heterotrophic, holozoic, parasitic, symbiotic, saprophytic, commensalism, carnivorous-plant, filter-feeding and fluid-feeding content. Reviewed assignment blocks 947-949: all six requested modes are described in the source, but no answer key or marking guide exists. No experiment or practical work was found. No lesson or key invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -688,8 +696,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 951 \"WEEK NINE\" (sha256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f); blocks 951-984; range sha256 e0fd7a606c08dec6adab6b72e24bb790bf4e05a77905ea2ec9230f504917f7dd. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 10): 'Week 9 - Basic ecological concept'. Body 952-974: ecological concepts, habitat, spheres, ecosystem components (a short week). Assignment: block 975 'ASSIGNMENT', block 976 'WEEK NINE', questions 977-983.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W09.md; verified the assigned source member hash against the archive and manifest. Re-derived Week 9 label block 951 and body range blocks 951-984; indexed ecology/autecology/synecology, ecological concepts, ecosystem components and the assignment. The definitions requested are present, but question 2's 'three components' is ambiguous because the source first distinguishes biotic/abiotic and then lists producers/consumers/decomposers within biotic components. No answer key is supplied. No experiment or practical work was found. No lesson or key invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -726,8 +734,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): label block 985 \"WEEK TEN\" (sha256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10); blocks 985-1104; range sha256 9c91bae8cde7ad21425a3c40ab314c04aa4c62c7b2cde3f7da40798633501bea. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based; block text = concatenation of its w:t runs (UTF-8, no normalisation; text-box text is included in its block); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included). Scheme line (block 11): 'Week 10 -Growth, Irritability and Movement'. Body 986-1092: growth and mitosis (four hand-drawn figures, blocks 997-1021), plant growth hormones and animal hormone table (1029-1056), irritability (1057-1073), movement and cyclosis (1074-1092). Unlike other weeks the label 'WEEK TEN' (block 1094) comes BEFORE the 'ASSIGNMENT' heading (block 1095); assignment questions 1096-1103.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T1-W10.md; verified the assigned source member hash against the archive and manifest. Re-derived Week 10 label block 985 and body range blocks 985-1104; indexed growth/mitosis (986-1021), meristematic growth and hormones (1026-1054), irritability (1057-1073), movement/cyclosis (1074-1092), and assignment (1094-1103). Existing visual tasks own mitosis figures, hormone table and movement table. The assignment prompts are supported by source teaching but have no answer key. The WEEK TEN label at 1094 precedes the ASSIGNMENT heading at 1095. No experiments/practicals were found. No lesson or key invented; testing remains deferred.",
       "completion_condition": "Each objective listed with a block locator and status; defects and misplaced items recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -1486,8 +1494,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 29 text \"WEEK ONE                               DATE ……………………\" (sha256 c506e8a3b669da9ae7b0f2b13bdffcd32298dd63774feff3bed8091220f56804); blocks 29-91; range sha256 a6b8c46dc5d521f9bbfb918a648c44d81ef5d3c3e634f8c8359c38582a2b8447. Topic: Reproduction (Meaning, Types and Forms of Asexual Reproduction). Meaning and types of reproduction (blocks 38-50), forms of asexual reproduction (51-70), General Evaluation/Revisional Questions (71), Reading Assignment (78), Weekend Assignment (81-91, theory from 89). The CONTENT list (blocks 32-35) also names sexual reproduction (conjugation, fusion of gametes) and meiosis, whose bodies are in Week 2 (blocks 100-131): a cross-week scope mismatch to check. Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W01.md; verified the assigned 2nd Term .doc member hash against the archive and manifest. Converted the hash-verified legacy DOC to a private DOCX copy with LibreOffice 25.2.3.2; the 963-body-child structure, Week 1 label block 29 and range blocks 29-91 reproduce the inventory/queue hashes exactly. Indexed reproduction meaning/types, asexual forms and all evaluation, reading, weekend and theory items. The content list includes sexual reproduction and meiosis, whose detailed teaching is in Week 2 and matches the Week 2 scheme row; no duplicate Week 1 coverage added. Artificial propagation is named but not described; asexual advantages/disadvantages are absent; the amoeba sporulation and Paramecium zygote/nuclei prompts need fact review. No key exists. No source extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -3211,6 +3219,477 @@
       "status": "PENDING",
       "implementation_reference": "Inventory (BIO-INV-T3), viewed directly: header1.xml holds one picture, media/image4.jpeg (949x359, sha256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14), a tutor business letterhead (a name, a tutoring tag line, professional descriptions, a phone number, an email address and a slogan) and footer1.xml reads 'MR OSHO'. Neither appears in the body blocks and neither is teaching content. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
+    },
+    {
+      "id": "BIO-SEC-T1-RELEVANCE",
+      "kind": "SOURCE_SECTION_INDEXING",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "blocks 265-267 inside the Week 3 body (range sha256 d65058818f5615666c88631e669991c237a13e89aad11c12712f4a6ac145f766)",
+      "objective": "Index the unlisted teaching section 'Relevance of Biology to Agriculture' (definition of agriculture and the four needs listed at block 267): record that no scheme line names it, bind its exact source blocks, and determine whether it belongs with Week 3 or requires owner placement. Do not move or delete source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-SEC-T1-RELEVANCE.md"
+      ],
+      "depends_on": [
+        "BIO-INV-T1",
+        "BIO-SRC-T1"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Week 3 indexing found a standalone heading at block 265, 'Relevance of Biology to Agriculture', with definition at 266 and four needs at 267. It is within Week 3's body range but is not named by scheme entry 3 ('Classification of Living things'). This bounded item records its objective and exact scope before any placement or lesson decision."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-CONDITIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "assignment block 778; source teaching blocks 682-708",
+      "objective": "Verify the fifth condition required by Week 5 assignment question 1d against an approved Biology reference. The source explicitly names light/sunlight, chlorophyll, water and carbon (IV) oxide only; do not guess or attribute an unprinted fifth condition to the source.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-CONDITIONS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-EQUATIONS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "equation blocks 683 and 700",
+      "objective": "Verify the photosynthesis equations printed at blocks 683 and 700 against an approved Biology reference. Record the exact source forms and evidence before any correction is bound; do not silently rewrite source text.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-EQUATIONS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-FACT-T1-W05-PRACTICAL-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "practical section blocks 714-765",
+      "objective": "Obtain and review a teacher-approved safety assessment and supervised-delivery decision for the five practical investigations at blocks 714-765. The source index does not reproduce detailed methods or chemical-handling instructions; practical delivery must remain gated until the safety resource is supplied.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W05-PRACTICAL-SAFETY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W05"
+      ],
+      "status": "BLOCKED",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-LES-T1-W05-CONDITIONS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "assignment block 778",
+      "objective": "After BIO-FACT-T1-W05-CONDITIONS establishes the approved fifth condition, author a clearly labelled supplemental lesson that completes the five-condition objective in assignment question 1d. Distinguish supplemental material from the original source and include cited provenance and marked practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W05-CONDITIONS.md"
+      ],
+      "depends_on": [
+        "BIO-FACT-T1-W05-CONDITIONS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+    },
+    {
+      "id": "BIO-FACT-T1-W07-FOOD-CLAIMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, blocks 835-925",
+      "objective": "Verify the source's food-substance and enzyme claims against approved Biology references before authoring a corrected lesson: monosaccharide formula (block 841), sucrose formation wording (844), lipid formula (871), and amylase statements (916-917). Preserve the original wording and record exact supporting references.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W07-FOOD-CLAIMS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T1-W07-ANIMAL-NUTRITION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 7, blocks 835-925",
+      "objective": "Author a clearly labelled supplemental lesson for animal nutrition and digestive enzymes, covering the six food-substance groups, balanced diet, enzyme characteristics and classes. Use approved references for facts flagged by BIO-FACT-T1-W07-FOOD-CLAIMS, distinguish supplements from original source text, and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W07-ANIMAL-NUTRITION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W07",
+        "BIO-FACT-T1-W07-FOOD-CLAIMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T1-W08-MODE-OF-NUTRITION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 8, blocks 928-944",
+      "objective": "Author a clearly labelled supplemental lesson for Mode of Nutrition: autotrophic and heterotrophic nutrition, holozoic, parasitic, symbiotic/mutualistic, saprophytic, commensalism, carnivorous plants, filter feeding and fluid feeding. Preserve source content as source; identify supplemental wording, cite provenance and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W08-MODE-OF-NUTRITION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W08; see the Week 8 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T1-W09-ECOLOGY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 9, blocks 953-974",
+      "objective": "Author a clearly labelled supplemental lesson for Basic ecological concept: ecology, autecology, synecology, habitat, environment, ecosystem, community, biome, biosphere, lithosphere, hydrosphere, atmosphere, ecological niche, population, and biotic/abiotic components. Distinguish source wording from supplement, cite provenance, include complete keyed practice, and resolve the assignment's ambiguous 'three components' prompt only with teacher-approved wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W09-ECOLOGY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W09; see the Week 9 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, blocks 986-1092",
+      "objective": "Author a clearly labelled supplemental lesson covering growth processes, mitosis, meristematic growth, plant and animal growth hormones, irritability and responses, movement and cyclosis. Distinguish source material from supplement, use existing visual tasks for the mitosis/hormone/movement figures and tables, cite provenance, and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T1.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX blocks 29-91",
+      "objective": "Author a clearly labelled supplemental lesson describing the five artificial vegetative propagation methods named at block 65, sufficient to answer evaluation block 74 and theory block 90. Use an approved Biology reference, preserve the source's list separately, cite provenance and include keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
+    },
+    {
+      "id": "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX blocks 29-91",
+      "objective": "Author a clearly labelled supplemental lesson on advantages and disadvantages of asexual reproduction to answer theory block 91. The Week 1 source does not teach these points; use an approved Biology reference, distinguish supplement from source and include complete keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W01-ASEXUAL-ADVANTAGES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
+    },
+    {
+      "id": "BIO-FACT-T2-W01-REVISION-FACTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 1, converted DOCX blocks 29-91",
+      "objective": "Verify the assessment prompts at blocks 76, 85 and 87 against an approved Biology reference: the phrase 'sporulation in amoeba'; the Paramecium zygote/eight-nuclei question labelled asexual; and the perennating-organ item. Record precise evidence and intended terminology before any answer key is authored; do not guess.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W01-REVISION-FACTS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W01",
+        "BIO-WK-T2-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W01; exact locators and scope findings are recorded in the Week 1 index."
     }
   ],
   "review": {
@@ -3227,13 +3706,6 @@
   },
   "next_runnable": [
     "BIO-TEST-PACKAGE",
-    "BIO-WK-T1-W03",
-    "BIO-WK-T1-W04",
-    "BIO-WK-T1-W05",
-    "BIO-WK-T1-W07",
-    "BIO-WK-T1-W08",
-    "BIO-WK-T1-W09",
-    "BIO-WK-T1-W10",
     "BIO-SEC-T1-AGRI-ECOLOGY",
     "BIO-SEC-T1-PESTS-DISEASES",
     "BIO-VIS-T1-PLANT-ANIMAL-HDR",
@@ -3251,7 +3723,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W01",
     "BIO-WK-T2-W02",
     "BIO-WK-T2-W03",
     "BIO-WK-T2-W04",
@@ -3288,6 +3759,15 @@
     "BIO-VIS-T3-FIG-GRASSHOPPER",
     "BIO-VIS-T3-FIG-MEALYBUG",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
-    "BIO-VIS-T3-HDR-BRANDING"
+    "BIO-VIS-T3-HDR-BRANDING",
+    "BIO-SEC-T1-RELEVANCE",
+    "BIO-FACT-T1-W05-CONDITIONS",
+    "BIO-FACT-T1-W05-EQUATIONS",
+    "BIO-FACT-T1-W07-FOOD-CLAIMS",
+    "BIO-LES-T1-W08-MODE-OF-NUTRITION",
+    "BIO-LES-T1-W09-ECOLOGY",
+    "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT",
+    "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
+    "BIO-LES-T2-W01-ASEXUAL-ADVANTAGES"
   ]
 }

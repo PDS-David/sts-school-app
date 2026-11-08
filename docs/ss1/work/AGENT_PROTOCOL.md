@@ -50,7 +50,7 @@ Any output means someone else is working on `<slug>`; pick a different subject. 
 
 **If nothing is runnable** (every subject locked, blocked or done): report that, list the blocked items and their exact gates, and stop. Do not invent tasks or take a locked subject.
 
-## 3A. Working without claim.sh (modes A, M and R)
+## 3A. Working without claim.sh (modes A, M, B and R)
 
 `claim.sh` is only a convenience. The lock is a file in git, so every mode below respects the same rule: **one agent per subject at a time, one not-yet-executed item at a time.**
 
@@ -65,6 +65,14 @@ Any output means someone else is working on `<slug>`; pick a different subject. 
 2. Create the claim file with the fields `subject`, `item`, `agent`, `claimed_at` (UTC, `YYYY-MM-DDTHH:MM:SSZ`) and `base_sha`. Commit it as `claim(<slug>): <ITEM-ID> by <AGENT_ID>` and run `git push origin HEAD:master`.
 3. If the push is rejected, pull and look at the file. If another agent's claim is there you lost: run `git rebase --abort; git reset --hard origin/master` and pick a different subject. Do not hand-merge claim files.
 4. After your item is pushed, remove the file with `git rm` and push `release(<slug>) by <AGENT_ID>`.
+
+**Mode B: dedicated branch (for agents that cannot run `claim.sh`, or when the owner directs it).** The branch is the lock. One agent, one subject, one branch.
+1. Branch name: `agent/<SUBJECT>`. Before creating it run `git ls-remote --heads origin 'agent/*'`. If `agent/<SUBJECT>` already exists and belongs to someone else, pick another subject. Do not use `claim.sh` and do not push claim files; do not push item work to master.
+2. Work one not-yet-executed item at a time (Mode A, step 3 for eligibility). Commit one item per commit. Push the branch after every item. Before each push run `git fetch origin && git rebase origin/master`; if the rebase conflicts in a `QUEUE.json` or package JSON do not hand-merge: take master's copy (`git checkout origin/master -- <file>`), re-apply your change, re-validate, continue.
+3. Recompute the queue's `status_counts` and `next_runnable` from the items after rebasing, because they go stale while master moves.
+4. Open a pull request into `master` after each batch (or when asked). Before it is merged, the tester runs `docs/ss1/work/tester/branch-check.sh agent/<SUBJECT>` and posts the verdict. The gate is advisory unless the owner declares it mandatory; do not merge a branch whose verdict lists NEW defects or merge conflicts without the owner's say-so. Merge only a branch that has been rebased on current master.
+5. After merging, delete the branch or rebase it on master before the next batch.
+Do not mix modes in one subject: a branch agent and a claim-based agent must never work the same subject at once.
 
 **Mode R: relay (you cannot push at all).** A git-capable agent or the owner claims the subject for you under a relay id such as `N1` (Mode M, or `claim.sh assign`). You work from a fresh copy of the repository at the recorded `base_sha` and return the changed files. The relay applies them with the section 6 conflict rule (re-apply your change to current master, never merge JSON by hand), validates, commits, pushes and reports. Because this adds a hand-off, take whole-subject work units rather than single items.
 
@@ -103,7 +111,7 @@ Update the queue item: `status` (`IMPLEMENTED_TESTING_DEFERRED`, or `BLOCKED` wi
 
 ## 7. Roles other than WORKER
 
-**TESTER** (`claim.sh acquire role-tester <any-id> A1`; one at a time). Writes only `tests/ss1/*.test.mts` and `docs/ss1/work/TEST_REPORT_<YYYYMMDD>.md`; never edits subject packages, queues or source. Each run: fetch master and record the SHA; run `node --import tsx --test tests/ss1/*.test.mts` and `cd backend && npx tsc --noEmit`; keep one generic invariant test, `tests/ss1/_invariants.test.mts`, that loops over every `backend/src/db/ss1/subjects/*.json` and checks schema validity, unique IDs, hash and marks recomputation, resolvable references, every PARTIAL/UNRESOLVED referenced by an open item, no fabricated approval or verification, correction identity, provenance basis present, and queue counts and `next_runnable` equal a recount. Spot-check three coverage locators per subject against the source archive. Report defects with exact IDs; never fix content. Treat unfinished packages as INCOMPLETE, not failing. Release the role claim when done.
+**TESTER** (`claim.sh acquire role-tester <any-id> A1`; one at a time). Writes only `tests/ss1/*.test.mts` and `docs/ss1/work/TEST_REPORT_<YYYYMMDD>.md`; never edits subject packages, queues or source. Each run: fetch master and record the SHA; run `node --import tsx --test tests/ss1/*.test.mts` and `cd backend && npx tsc --noEmit`; keep one generic invariant test, `tests/ss1/_invariants.test.mts`, that loops over every `backend/src/db/ss1/subjects/*.json` and checks schema validity, unique IDs, hash and marks recomputation, resolvable references, every PARTIAL/UNRESOLVED referenced by an open item, no fabricated approval or verification, correction identity, provenance basis present, and queue counts and `next_runnable` equal a recount. Tools in `docs/ss1/work/tester/`: `schema-check.mts` (schema errors with exact IDs), `extract-text.mjs` and `verify-sections.py` (re-derive a worker's recorded section hashes from the archive; report UNPARSED rows as unverified, never as verified), and `branch-check.sh <branch>` (merge gate: conflicts, files outside the subject, and violations that are NEW compared with master, run in a throwaway worktree). Spot-check three coverage locators per subject against the source archive, and verify the hashes of the newest worker commits. Report defects with exact IDs; never fix content. Treat unfinished packages as INCOMPLETE, not failing. Release the role claim when done.
 
 **OWNER-BRIEF** (`claim.sh acquire role-owner-brief <any-id> A1`). Writes only `docs/ss1/work/OWNER_DECISIONS_<YYYYMMDD>.md`. Collect every BLOCKED item across all queues and the open items they cite, group by subject, and for each give: item ID, the exact question, the options and their consequences, what is blocked behind it, the evidence locator, and whether the owner or a teacher must answer. Put decisions that unblock the most pending items first. Decide nothing and edit nothing else.
 

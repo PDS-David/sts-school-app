@@ -40,17 +40,34 @@
     "On work/bookkeeping-followup: completed objective-level indexing for scheme Weeks 2–10. Added 24 third-term PARTIAL/UNRESOLVED coverage entries with empty lesson targets (no false claims of authored teaching). Appended six bounded original-lesson tasks for missing scheme objectives and three worked-material arithmetic review tasks. Week body segmentation remains unverified because the DOCX contains no explicit WEEK markers.",
     "On work/bookkeeping-followup: completed third-term worked-material and currency preservation plus five visual dispositions. Recorded the petty-cash layout, trial-balance list/diagram, cash and ledger accounts, journal/suspense account, and balance-sheet format. Arithmetic discrepancies and the 1983/1883 date conflict remain explicit; no original figures changed.",
     "On work/bookkeeping-followup: completed petty-cash, Mr Odili trial-balance and Fashola suspense arithmetic reviews. Added eight source-scoped split_before rules for body sections corresponding to Weeks 2–8 and 10; Week 9 has no distinct body heading and remains in combined final-accounts material. Static test drafted; parser/compiler execution remains deferred.",
-    "On work/bookkeeping-followup: authored six third-term supplement lessons for Week 5 errors not affecting agreement, Week 7 trading concepts, Week 8 trading-account preparation, Week 9 profit and loss, and Week 10 balance-sheet users and worked preparation. Added 12 IMPLEMENTED_EQUIVALENT coverage links. All supplements are explicitly project-authored; approval pending, verification deferred. Source assignment's 1983/1883 date conflict remains unresolved."
+    "On work/bookkeeping-followup: authored six third-term supplement lessons for Week 5 errors not affecting agreement, Week 7 trading concepts, Week 8 trading-account preparation, Week 9 profit and loss, and Week 10 balance-sheet users and worked preparation. Added 12 IMPLEMENTED_EQUIVALENT coverage links. All supplements are explicitly project-authored; approval pending, verification deferred. Source assignment's 1983/1883 date conflict remains unresolved.",
+    "On work/bookkeeping-followup-final: completed BK-PRE-T2 and both T2 marker dispositions. Added source-specific SCHEME_ONLY rules and MARKER coverage for revision entries 1/11 and examination entry 12. The exact T1/T2 teaching-body match owner decision remains pending; no duplicate lesson coverage or week-index coverage is linked.",
+    "On work/bookkeeping-followup-final: completed second-term worked-material and currency preservation and all four visual dispositions. T2's teaching bodies match T1 exactly; no duplicate lesson coverage was linked. T2 Week 1–4 objective indexing remains held behind BOOKKEEPING-T2-TEXT-MATCHES-T1 owner decision.",
+    "On work/bookkeeping-followup-final: added four independent first-term project-authored equivalent lessons to move forward without changing source content or overriding the blocked source-correction tasks. Coverage for source illustrations that the supplements do not fully replace remains PARTIAL. External textbook Assignment 1 is replaced only by original project-authored practice; no copyrighted text copied.",
+    "OWNER DECISION 2026-11-08: the 2nd Term file should not have been identical to the 1st Term file; no other 2nd Term source is available. The registered member is preserved and quarantined as an erroneous duplicate. Do not link its repeated four-week body as 2nd Term teaching. BK-T2-RECONSTRUCTION-PLAN.md defines a provisional project-authored 10-week curriculum, using comparative Nigerian SS1 references and avoiding duplication of the genuine T1/T3 content. Four old BK-WK-T2-W01..W04 source-indexing tasks are BLOCKED as superseded. Ten new independent project-authored lesson tasks BK-RECON-T2-W01..W10 are PENDING. The source alias approval remains a separate owner action.",
+    "The T2 revision/exam marker dispositions are now BLOCKED as teaching/indexing because the entire T2 source is excluded; their forensic observations remain preserved. T2 source alias approval is retained as metadata review but no longer blocks delivery because the source is excluded.",
+    "2026-11-08 subject-basis correction: Financial Accounting scheme references previously cited in BK-T2-RECONSTRUCTION-PLAN.md were withdrawn. The plan now relies only on sources explicitly labelled Bookkeeping/Book Keeping, with the centre's actual T1/T3 materials controlling overlap. BK-RECON-T2-W03 lesson draft has been authored; it remains PENDING until package integration.",
+    "On work/bookkeeping-owner-decisions: prepared BK-OWNER-DECISIONS.md to consolidate the remaining T2 source identity decision, three source-alias approvals, T1 Weeks 1–4 subject-expert decisions, external textbook disposition and package content approval. Corrected stale BK-FACT-CONTENT-APPROVAL implementation_reference: package and authored lessons now exist; approval remains PENDING and verification DEFERRED. No decisions were presumed; no tests or technical verification run.",
+    "2026-11-08: Reconstructed Bookkeeping lesson drafts W04-W07 authored. They remain PENDING until package lesson/coverage integration and static checks; no tests have been run.",
+    "2026-11-08: Reconstructed Bookkeeping lesson drafts W08-W10 authored. All ten proposed instructional weeks W01-W10 now have project-authored lesson drafts. All remain PENDING until package integration and static validation; technical tests remain deferred and unrun.",
+    "2026-11-08: All ten reconstructed Bookkeeping T2 lessons W01-W10 are now integrated into bookkeeping.json as SUP-SS1-BOOKKEEPING-T2-W01..W10 with separate COV-BK-T2-RECON-W01..W10 coverage. The excluded duplicate source remains preserved and contributes no lesson content; its source_id is used only as the manifest term-bucket key because the current package schema requires coverage to reference a registered source. Coverage locators/evidence explicitly point to the reconstruction plan and authored lesson files. Package tests were updated to assert this separation but have not been run. Tasks moved to IMPLEMENTED_TESTING_DEFERRED, not VERIFIED.",
+    "2026-11-08 queue recount after T2 package integration: IMPLEMENTED_TESTING_DEFERRED=71, BLOCKED=12, PENDING=6; total=89. No test execution is implied.",
+    "2026-11-08 static integrity check (not automated test execution): all 10 T2 lesson body_sha256 values recomputed and matched; all T2 practice mark totals matched their marking allocations; all 10 COV-BK-T2-RECON-* entries resolve to exactly one registered T2 supplement lesson. packageSchema, automated tests, typecheck, compiler/parser, importer, DB, device and delivery checks remain unrun/deferred.",
+    "2026-11-08: Strengthened the existing first-term Bookkeeping supplements W01-W04 with explicit tabular formats, balanced independent examples and marked practice. Queue tasks BK-LES-T1-W01-CASH-BOOK, BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP, BK-LES-T1-W03-CONTRA and BK-LES-T1-W04-DOUBLE-ENTRY moved to IMPLEMENTED_TESTING_DEFERRED. Source defects involving the original T1 figures remain preserved and are not treated as corrected; the separate W04 posting task still requires a complete independent integrated posting example.",
+    "2026-11-08: Completed the final pending first-term lesson task by adding a fully worked, independently authored twenty-transaction cash-book and ledger-posting exercise. The original source's unsolved transaction list and Assignment 2 are still preserved as source defects; no source correction or expert approval is implied. All 89 queue tasks now have non-PENDING statuses; 12 remain BLOCKED and require their recorded owner/expert actions.",
+    "2026-11-08 static integrity check after first-term expansions: all 15 selected package lessons (four existing T1 lessons expanded, one new T1 posting lesson, and ten T2 lessons) have body_sha256 values that recompute exactly; all practice mark totals match marking allocations. This is a manual/static integrity check only; packageSchema and automated test execution remain deferred.",
+    "2026-11-08 queue scheduler refresh: no PENDING tasks remain, so next_runnable is now an empty list. Remaining BLOCKED tasks are preserved because they represent source-exclusion dispositions or explicit owner/subject-expert approval/decision requirements; they are not silently cleared.",
+    "2026-11-08 sequencing refinement: Week 2 double-column cash-book supplement now excludes cash-to-bank transfers and defers contra entries to the formal Week 3 lesson, matching the source scheme order. Its worked totals, practice answers and marking criteria were recalculated; package test hash updated. No original source content changed.",
+    "2026-11-08: BK-FACT-T1-W04-TEXTBOOK resolved using the owner's standing instruction to self-generate a suitable substitute for unavailable external resources. The original textbook text was not copied. Corresponding package open item is now nonblocking; original source citation remains preserved.",
+    "2026-11-08 hash-integrity correction: an earlier ad hoc SHA-256 helper used the wrong round-constant derivation. All affected lesson body_sha256 values and matching test expectations have now been recomputed using the correct SHA-256 algorithm, validated against the standard 'abc' test vector. A fresh static pass across all 21 package lessons confirms every body hash, every practice marking total, unique lesson IDs and all coverage links match. This does not constitute test-suite execution."
   ],
   "counts": {
-    "PENDING": 19,
-    "IMPLEMENTED_TESTING_DEFERRED": 49,
-    "BLOCKED": 6
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "BLOCKED": 11
   },
   "status_counts": {
-    "PENDING": 19,
-    "IMPLEMENTED_TESTING_DEFERRED": 49,
-    "BLOCKED": 6
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "BLOCKED": 11
   },
   "items": [
     {
@@ -312,7 +329,7 @@
         "BK-TEST-PACKAGE"
       ],
       "status": "BLOCKED",
-      "implementation_reference": "Nothing to approve: no package or lessons exist. Contract: approval, implementation and verification are separate states; PENDING approval blocks executable delivery.",
+      "implementation_reference": "Package and authored lessons now exist in bookkeeping.json. All authored lessons remain content_approval=PENDING and verification=DEFERRED; package_status=PENDING. Owner must review the authored lessons and record an approval reference or request changes. Technical verification is a separate later task; no approval or verification is presumed. Consolidated decision sheet: BK-OWNER-DECISIONS.md.",
       "completion_condition": "Approval references and later verification evidence exist for the lessons that are authored; none is fabricated."
     },
     {
@@ -843,8 +860,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): blocks 0-30; range sha256 4adb4f4b5643b1c3ad04e7e0b8b82f9849d93ee0a0fd9ac0ab5350294af3e527. Block hashes: block 0 951a8bb4eb584e37ab0cd2c3dcaf38b1c2d646948bd918bc8844cc82c294248a, block 2 ada98ed5c567f1328310167a41477acc11a5d1451487f911cd57d5c113568b12, block 3 e3dcbd0e259a23e7b3513205012fdea07c8bfc4cb07cd7f283d55aca30af6409. Scheme entries: 1 Revision (4); 2 Cash book (5; subs 6-7); 3 Single column cash book (8; sub 9); 4 Preparation of single column cash-book (continues) (10); 5 Double column cash book (11; subs 12-13); 6 Double column cash book (14; subs 15-16); 7 Double column cash book. (17; sub 18); 8 Contra Entry. (19; subs 20-22); 9 Principle of Double entry. (23; subs 24-25); 10 Principle of Double entry. (26; subs 27-28); 11 Revision. (29); 12 Examination (30). The entries are manually numbered text, not a Word auto-numbered list (w:numPr absent from blocks 0-30). The preamble differs from the 1st Term preamble only in block 0 ('SIGMA TERM' vs 'FIRST TERM') and in the scheme header being split across blocks 2 and 3 ('SUBJECT: BOOK-KEEPINGCLASS: SS 1 ' and ' TOPIC'). All entries precede the first WEEK marker at block 31, so this material is preamble outside every parsed row and must be mapped by coverage rather than assumed noninstructional. The scheme header (block 2) is also the header_text registered for this source by BK-SRC-T2. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 0-30; range sha256 4adb4f4b5643b1c3ad04e7e0b8b82f9849d93ee0a0fd9ac0ab5350294af3e527. Block hashes: block 0 951a8bb4eb584e37ab0cd2c3dcaf38b1c2d646948bd918bc8844cc82c294248a, block 2 ada98ed5c567f1328310167a41477acc11a5d1451487f911cd57d5c113568b12, block 3 e3dcbd0e259a23e7b3513205012fdea07c8bfc4cb07cd7f283d55aca30af6409. Scheme entries: 1 Revision (4); 2 Cash book (5; subs 6-7); 3 Single column cash book (8; sub 9); 4 Preparation of single column cash-book (continues) (10); 5 Double column cash book (11; subs 12-13); 6 Double column cash book (14; subs 15-16); 7 Double column cash book. (17; sub 18); 8 Contra Entry. (19; subs 20-22); 9 Principle of Double entry. (23; subs 24-25); 10 Principle of Double entry. (26; subs 27-28); 11 Revision. (29); 12 Examination (30). The entries are manually numbered text, not a Word auto-numbered list (w:numPr absent from blocks 0-30). The preamble differs from the 1st Term preamble only in block 0 ('SIGMA TERM' vs 'FIRST TERM') and in the scheme header being split across blocks 2 and 3 ('SUBJECT: BOOK-KEEPINGCLASS: SS 1 ' and ' TOPIC'). All entries precede the first WEEK marker at block 31, so this material is preamble outside every parsed row and must be mapped by coverage rather than assumed noninstructional. The scheme header (block 2) is also the header_text registered for this source by BK-SRC-T2. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; implemented on work/bookkeeping-followup-final with evidence record BK-PRE-T2.md; no duplicate lesson coverage linked.",
       "completion_condition": "Every non-week block hash-accounted and mapped or recorded as an explicit open item; the scheme-to-body mapping recorded including sub-items with no body; no coverage, rule or lesson invented by this item beyond what it names."
     },
     {
@@ -881,8 +898,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): block 4 '1.Revision.' (sha256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c) is the first scheme entry, immediately before '2.Cash book'; block 29 '11.Revision.' (sha256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9) is the eleventh, immediately before '12.Examination'. Both sit in the preamble (before the first WEEK marker at block 31), so neither is inside a parsed row. The only ASSIGNMENT heading (block 208) is inside Week 4 and is not a revision marker. No EVALUATION or REVISION heading occurs inside any week body. classify_marker with kind SCHEME_ONLY is the contract op that covers preamble material outside parsed rows; no rule is written by this item. Parser behaviour not run (testing deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "BLOCKED",
+      "implementation_reference": "Inventory (BK-INV-T2): block 4 '1.Revision.' (sha256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c) is the first scheme entry, immediately before '2.Cash book'; block 29 '11.Revision.' (sha256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9) is the eleventh, immediately before '12.Examination'. Both sit in the preamble (before the first WEEK marker at block 31), so neither is inside a parsed row. The only ASSIGNMENT heading (block 208) is inside Week 4 and is not a revision marker. No EVALUATION or REVISION heading occurs inside any week body. classify_marker with kind SCHEME_ONLY is the contract op that covers preamble material outside parsed rows; no rule is written by this item. Parser behaviour not run (testing deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; implemented on work/bookkeeping-followup-final with evidence record BK-MARK-T2-REVISION.md; no duplicate lesson coverage linked. OWNER DISPOSITION (2026-11-08): source is an erroneous duplicate and excluded from second-term teaching; do not register its revision/exam markers as valid second-term curriculum. Retain this record only as forensic source evidence.",
       "completion_condition": "Both markers classified with their locators and an explicit statement that no instructional body, questions or marking scheme exists; nothing invented."
     },
     {
@@ -919,8 +936,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): block 30 '12.Examination' (sha256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9) is the twelfth and last scheme entry; block 31 begins the Week One body, so nothing follows the marker and the document ends with the Week 4 ASSIGNMENT (blocks 208-218) and blank blocks 219-220. classify_marker/SCHEME_ONLY applicable; no rule written by this item. Parser behaviour not run (testing deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "BLOCKED",
+      "implementation_reference": "Inventory (BK-INV-T2): block 30 '12.Examination' (sha256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9) is the twelfth and last scheme entry; block 31 begins the Week One body, so nothing follows the marker and the document ends with the Week 4 ASSIGNMENT (blocks 208-218) and blank blocks 219-220. classify_marker/SCHEME_ONLY applicable; no rule written by this item. Parser behaviour not run (testing deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; implemented on work/bookkeeping-followup-final with evidence record BK-MARK-T2-EXAM.md; no duplicate lesson coverage linked. OWNER DISPOSITION (2026-11-08): source is an erroneous duplicate and excluded from second-term teaching; do not register its revision/exam markers as valid second-term curriculum. Retain this record only as forensic source evidence.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no examination material exists; nothing invented."
     },
     {
@@ -957,9 +974,9 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): blocks 31-87; range sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3. Sections: label 31, topic line 32 '1.0.Topic: Single Column cash book', introduction and NOTE 34-35, CASH ACCOUNT definition 37, Illustration 1 statement 38-48, its T-account solution 49-58, bank-account definition 59, Illustration 2 statement 60-68, its solution 70-81, blank blocks 82-87. Parsed row (mammoth raw text, regex replication only, importer not run): title '1.0.\\tTopic: Single Column cash book', body 1,934 characters, body sha256 e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd. Observed source defects to check, not corrected here: Illustration 1's solution prints 115 (block 54) where its question says 155 (block 48) and 750 (block 53) where the question says 700 (block 44); Illustration 2 is a bank account opened with 'cash in hand' (block 63), its credit side repeats Illustration 1's dates and items (blocks 73-77), the June 9 cheque purchase of 300 (block 68) is omitted, June 7 has no amount (block 67), and its totals do not reconcile (see BK-PRES-T2-WORKED). Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
-      "completion_condition": "Each objective listed with a block locator and a status; observed defects and arithmetic gaps recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
+      "status": "BLOCKED",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 31-87; range sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3. Sections: label 31, topic line 32 '1.0.Topic: Single Column cash book', introduction and NOTE 34-35, CASH ACCOUNT definition 37, Illustration 1 statement 38-48, its T-account solution 49-58, bank-account definition 59, Illustration 2 statement 60-68, its solution 70-81, blank blocks 82-87. Parsed row (mammoth raw text, regex replication only, importer not run): title '1.0.\\tTopic: Single Column cash book', body 1,934 characters, body sha256 e4dbc7a1ff59d4a1fe5da4b9ff975ab60c94df281e8774f5bf2330ddc21d7ccd. Observed source defects to check, not corrected here: Illustration 1's solution prints 115 (block 54) where its question says 155 (block 48) and 750 (block 53) where the question says 700 (block 44); Illustration 2 is a bank account opened with 'cash in hand' (block 63), its credit side repeats Illustration 1's dates and items (blocks 73-77), the June 9 cheque purchase of 300 (block 68) is omitted, June 7 has no amount (block 67), and its totals do not reconcile (see BK-PRES-T2-WORKED). Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3). OWNER DISPOSITION (2026-11-08): the owner confirmed this second-term source should not have duplicated first-term content and no replacement source is available. Do not index or link this copied body as second-term teaching. Preserve the source evidence only; the term is being reconstructed independently under BK-T2-RECONSTRUCTION-PLAN.md.",
+      "completion_condition": "Each objective listed with a block locator and a status; observed defects and arithmetic gaps recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone. Superseded as source-indexing work by owner-confirmed duplicate disposition; do not complete from the copied source. Reconstructed lessons have separate tasks."
     },
     {
       "id": "BK-WK-T2-W02",
@@ -995,9 +1012,9 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): blocks 88-109; range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218. Sections: label 88, heading 89 'DOUBLE COLUMN CASH BOOK', meaning 90, accounting entries 91-93, example instruction 94-95, placeholder year '19x9' (block 96), nine dated transactions 97-105, blank blocks 106-109. Parsed row (mammoth raw text, regex replication only, importer not run): title 'DOUBLE COLUMN CASH BOOK', body 1,148 characters, body sha256 bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b. No solution follows the example; no 'difference between single and double column cash book' section exists in the body; there is no assessment section in this week. Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
-      "completion_condition": "Each objective listed with a block locator and a status; the missing worked solution and any objective without a body recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
+      "status": "BLOCKED",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 88-109; range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218. Sections: label 88, heading 89 'DOUBLE COLUMN CASH BOOK', meaning 90, accounting entries 91-93, example instruction 94-95, placeholder year '19x9' (block 96), nine dated transactions 97-105, blank blocks 106-109. Parsed row (mammoth raw text, regex replication only, importer not run): title 'DOUBLE COLUMN CASH BOOK', body 1,148 characters, body sha256 bb5f26395bbe6ce4bae80f128748821df86b6895d8a4a4e87ead79c6d31f2e4b. No solution follows the example; no 'difference between single and double column cash book' section exists in the body; there is no assessment section in this week. Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3). OWNER DISPOSITION (2026-11-08): the owner confirmed this second-term source should not have duplicated first-term content and no replacement source is available. Do not index or link this copied body as second-term teaching. Preserve the source evidence only; the term is being reconstructed independently under BK-T2-RECONSTRUCTION-PLAN.md.",
+      "completion_condition": "Each objective listed with a block locator and a status; the missing worked solution and any objective without a body recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone. Superseded as source-indexing work by owner-confirmed duplicate disposition; do not complete from the copied source. Reconstructed lessons have separate tasks."
     },
     {
       "id": "BK-WK-T2-W03",
@@ -1033,9 +1050,9 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): blocks 110-158; range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997. Sections: label 110, heading 111 'CONTRA ENTRY', definitions 112-114, (a) payment of cash to bank 115-116, flattened Effect/Action pairs 117-119, example 120-121, 'Dr Cash Book Cr' line 122, cash book table 123, 'C' note 125, (b) withdrawals from bank 127-128, second Effect/Action pair 131-133, example 134, 'Dr Cr' line 135, cash book table 136, blank blocks 137-158. Parsed row (mammoth raw text, regex replication only, importer not run): title 'CONTRA ENTRY', body 1,555 characters, body sha256 194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a. Reading checks for later authoring: blocks 117-119 and 131-133 are table rows flattened to paragraph text (see BK-VIS-T2-TBL-W03); the source writes the contra folio symbol as a capital C in curly quotes and states it must appear on both sides (block 125); the account tables are correct contras by cell position (Dr Bank/Cr Cash at block 123, Dr Cash/Cr Bank at block 136), but the prose 'Jan. 1 cash balanced N300' followed by 'Jan. 2 cash paid into the bank amounted to N710' (blocks 120-121) does not explain where the N710 came from, and the table at block 123 records contra entries of 300 on Jan. 1 and 710 on Jan. 2, so more is paid in than the stated cash balance; this needs an authoring check. Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
-      "completion_condition": "Each objective listed with a block locator and a status; the folio convention and both examples recorded with their arithmetic state; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
+      "status": "BLOCKED",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 110-158; range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997. Sections: label 110, heading 111 'CONTRA ENTRY', definitions 112-114, (a) payment of cash to bank 115-116, flattened Effect/Action pairs 117-119, example 120-121, 'Dr Cash Book Cr' line 122, cash book table 123, 'C' note 125, (b) withdrawals from bank 127-128, second Effect/Action pair 131-133, example 134, 'Dr Cr' line 135, cash book table 136, blank blocks 137-158. Parsed row (mammoth raw text, regex replication only, importer not run): title 'CONTRA ENTRY', body 1,555 characters, body sha256 194de4c5fde3e27a5596871b7a860b26a5456eaedf0d3c24ab31f89e2132eb8a. Reading checks for later authoring: blocks 117-119 and 131-133 are table rows flattened to paragraph text (see BK-VIS-T2-TBL-W03); the source writes the contra folio symbol as a capital C in curly quotes and states it must appear on both sides (block 125); the account tables are correct contras by cell position (Dr Bank/Cr Cash at block 123, Dr Cash/Cr Bank at block 136), but the prose 'Jan. 1 cash balanced N300' followed by 'Jan. 2 cash paid into the bank amounted to N710' (blocks 120-121) does not explain where the N710 came from, and the table at block 123 records contra entries of 300 on Jan. 1 and 710 on Jan. 2, so more is paid in than the stated cash balance; this needs an authoring check. Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3). OWNER DISPOSITION (2026-11-08): the owner confirmed this second-term source should not have duplicated first-term content and no replacement source is available. Do not index or link this copied body as second-term teaching. Preserve the source evidence only; the term is being reconstructed independently under BK-T2-RECONSTRUCTION-PLAN.md.",
+      "completion_condition": "Each objective listed with a block locator and a status; the folio convention and both examples recorded with their arithmetic state; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone. Superseded as source-indexing work by owner-confirmed duplicate disposition; do not complete from the copied source. Reconstructed lessons have separate tasks."
     },
     {
       "id": "BK-WK-T2-W04",
@@ -1071,9 +1088,9 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): blocks 159-220; range sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7. Sections: label 159, heading 160, definition 161, three rules 162-165, application 167-173, illustration 175-176 (an eleven-row table that already contains the debit and credit answers; its instruction is truncated at 'Account to be.'), posting definition 178-183, illustration statement 185-206 (twenty June transactions, no solution), ASSIGNMENT 208-218, blank blocks 219-220. Parsed row (mammoth raw text, regex replication only, importer not run): title 'PRINCIPLE OF DOUBLE ENTRY', body 3,833 characters, body sha256 890fb8fac8b6f9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409. Reading checks for later authoring: June 16 'Bought motor van by cheque N20' (block 197) is implausible for a motor van and needs verification; June 12 'Withdrew cash from bank for personal use N30' (block 195) is drawings, not a contra, and must not be taught as one; ASSIGNMENT 1 (block 209) cites 'simplified and amplified book-keeping and accounting page 56 revision question 5x', which is not supplied; ASSIGNMENT 2 (blocks 211-218) has no answers; block 204 reads 'Yinka lend us' (source wording retained). Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
-      "completion_condition": "Each objective listed with a block locator and a status; the unsolved illustration and unanswered assignment recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone."
+      "status": "BLOCKED",
+      "implementation_reference": "Inventory (BK-INV-T2): blocks 159-220; range sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7. Sections: label 159, heading 160, definition 161, three rules 162-165, application 167-173, illustration 175-176 (an eleven-row table that already contains the debit and credit answers; its instruction is truncated at 'Account to be.'), posting definition 178-183, illustration statement 185-206 (twenty June transactions, no solution), ASSIGNMENT 208-218, blank blocks 219-220. Parsed row (mammoth raw text, regex replication only, importer not run): title 'PRINCIPLE OF DOUBLE ENTRY', body 3,833 characters, body sha256 890fb8fac8b6f9b6cf32bfe5fc5a3e21bcd464e447b214ac1a9eb9d7128f8409. Reading checks for later authoring: June 16 'Bought motor van by cheque N20' (block 197) is implausible for a motor van and needs verification; June 12 'Withdrew cash from bank for personal use N30' (block 195) is drawings, not a contra, and must not be taught as one; ASSIGNMENT 1 (block 209) cites 'simplified and amplified book-keeping and accounting page 56 revision question 5x', which is not supplied; ASSIGNMENT 2 (blocks 211-218) has no answers; block 204 reads 'Yinka lend us' (source wording retained). Byte-identical to the 1st Term week: label hash, range hash and parsed body hash all equal those of the 1st Term source (SS1-SRC-62b02f2adcb3), so the 1st Term indexing item for the same week describes the same text; the owner question BOOKKEEPING-T2-TEXT-MATCHES-T1 decides whether this file is the intended 2nd Term document, and no duplicate coverage is linked here. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3). OWNER DISPOSITION (2026-11-08): the owner confirmed this second-term source should not have duplicated first-term content and no replacement source is available. Do not index or link this copied body as second-term teaching. Preserve the source evidence only; the term is being reconstructed independently under BK-T2-RECONSTRUCTION-PLAN.md.",
+      "completion_condition": "Each objective listed with a block locator and a status; the unsolved illustration and unanswered assignment recorded; uncovered objectives appended as bounded tasks. No claim of week completeness from this item alone. Superseded as source-indexing work by owner-confirmed duplicate disposition; do not complete from the copied source. Reconstructed lessons have separate tasks."
     },
     {
       "id": "BK-PRES-T2-WORKED",
@@ -1109,8 +1126,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2), arithmetic by reading only, same figures as the 1st Term file: Illustration 1 prints debit 1,500 + 500 + 115 = 2,115 and credit 250 + 750 + 50 + 30 + 25 + balance 1,010 = 2,115, so it reconciles internally but uses 115 and 750 where its question states 155 (block 48) and 700 (block 44); with the question's figures the debit is 2,155, the credit items 1,055 and the balance 1,100. Illustration 2 prints debit 2,500 + 450 + 230 = 3,180, credit items 650 + 750 + 50 + 30 + 25 = 1,505 against a printed credit total of 3,180 (gap 1,675), and printed balances of 1,910 and 1,010 that sum to 2,920; the June 9 cheque purchase of 300 is missing and June 7 has no amount. Block 123 and block 136 are correct contras by cell position (see BK-VIS-T2-TBL-W03), but block 123 contra entries total 1,010 against a stated cash balance of 300. Block 176's eleven answers are complete and consistent by reading; rows vi and x both read 'Goods were returned to <name>' and are answered as Returns Outwards, which needs an authoring check of the direction. Blocks 106-109, 207 and 219-220 are empty: the Week 2 example, the Week 4 posting illustration and both ASSIGNMENT questions have no solution. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2), arithmetic by reading only, same figures as the 1st Term file: Illustration 1 prints debit 1,500 + 500 + 115 = 2,115 and credit 250 + 750 + 50 + 30 + 25 + balance 1,010 = 2,115, so it reconciles internally but uses 115 and 750 where its question states 155 (block 48) and 700 (block 44); with the question's figures the debit is 2,155, the credit items 1,055 and the balance 1,100. Illustration 2 prints debit 2,500 + 450 + 230 = 3,180, credit items 650 + 750 + 50 + 30 + 25 = 1,505 against a printed credit total of 3,180 (gap 1,675), and printed balances of 1,910 and 1,010 that sum to 2,920; the June 9 cheque purchase of 300 is missing and June 7 has no amount. Block 123 and block 136 are correct contras by cell position (see BK-VIS-T2-TBL-W03), but block 123 contra entries total 1,010 against a stated cash balance of 300. Block 176's eleven answers are complete and consistent by reading; rows vi and x both read 'Goods were returned to <name>' and are answered as Returns Outwards, which needs an authoring check of the direction. Blocks 106-109, 207 and 219-220 are empty: the Week 2 example, the Week 4 posting illustration and both ASSIGNMENT questions have no solution. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; evidence disposition created in BK-PRES-T2-WORKED.md; source figures/text unchanged, verification deferred.",
       "completion_condition": "Each worked item listed with its locator, its preserved steps and an explicit consistency finding; no source figure altered and no solution invented by this item."
     },
     {
@@ -1147,8 +1164,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): the only currency marker in the text is a bare 'N' (column header block 40 '   N', block 51 '    N    N', table sub-header cells 'N' in blocks 123 and 136, and amounts such as 'N2,900', 'N1,850' and 'N75' in blocks 97-105). No naira sign and no 'NGN'/'kobo' text appears. Block 96 contains '19x9' as a deliberate placeholder year. docProps/core.xml of the verified member records dc:creator 'oladoyin faasoranti', cp:lastModifiedBy 'ADEDOLAPO', cp:revision 2, dcterms:created 2016-01-26T13:32:00Z and dcterms:modified 2020-05-30T12:08:00Z (the 1st Term file records both dates as 2020-05-30T10:24:00Z); docProps/app.xml records 10 pages, 1,372 words and 7,825 characters. No figure is changed by this item. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2): the only currency marker in the text is a bare 'N' (column header block 40 '   N', block 51 '    N    N', table sub-header cells 'N' in blocks 123 and 136, and amounts such as 'N2,900', 'N1,850' and 'N75' in blocks 97-105). No naira sign and no 'NGN'/'kobo' text appears. Block 96 contains '19x9' as a deliberate placeholder year. docProps/core.xml of the verified member records dc:creator 'oladoyin faasoranti', cp:lastModifiedBy 'ADEDOLAPO', cp:revision 2, dcterms:created 2016-01-26T13:32:00Z and dcterms:modified 2020-05-30T12:08:00Z (the 1st Term file records both dates as 2020-05-30T10:24:00Z); docProps/app.xml records 10 pages, 1,372 words and 7,825 characters. No figure is changed by this item. Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; evidence disposition created in BK-PRES-T2-CURRENCY.md; source figures/text unchanged, verification deferred.",
       "completion_condition": "Currency notation and the dated figures recorded with locators and the document's date; no figure changed; any need for updated data becomes an open item rather than an invented figure."
     },
     {
@@ -1185,8 +1202,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2), objects enumerated: the member has no image parts at all (no word/media directory) and no OLE objects or equations (m:oMath absent), but eight VML objects (w:pict) sit in five paragraphs. Block 50 holds 'Straight Arrow Connector 18' (vertical, height 242.8pt) and 'Straight Arrow Connector 17' (horizontal, width 405.25pt) - the ruled T. Block 57 holds 'Group 14' and 'Group 11' (each 55.25pt x 22.6pt) - the double rule under the debit total. Block 71 repeats the connector pair ('Straight Arrow Connector 10' vertical, height 224.3pt; 'Straight Arrow Connector 9' horizontal, width 405.25pt). Block 80 holds 'Group 2' (267.1pt x 22.6pt, nested groups and AutoShapes) - the double rule under the bank total. Extracted text keeps dates and amounts as tab-separated runs and the 'DR ... CR' header line, but the ruled box, the column rules and the visual separation of the two sides are geometry only. The same eight objects exist in the 1st Term file one block earlier. Importer/plan output not generated (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2), objects enumerated: the member has no image parts at all (no word/media directory) and no OLE objects or equations (m:oMath absent), but eight VML objects (w:pict) sit in five paragraphs. Block 50 holds 'Straight Arrow Connector 18' (vertical, height 242.8pt) and 'Straight Arrow Connector 17' (horizontal, width 405.25pt) - the ruled T. Block 57 holds 'Group 14' and 'Group 11' (each 55.25pt x 22.6pt) - the double rule under the debit total. Block 71 repeats the connector pair ('Straight Arrow Connector 10' vertical, height 224.3pt; 'Straight Arrow Connector 9' horizontal, width 405.25pt). Block 80 holds 'Group 2' (267.1pt x 22.6pt, nested groups and AutoShapes) - the double rule under the bank total. Extracted text keeps dates and amounts as tab-separated runs and the 'DR ... CR' header line, but the ruled box, the column rules and the visual separation of the two sides are geometry only. The same eight objects exist in the 1st Term file one block earlier. Importer/plan output not generated (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; evidence disposition created in BK-VIS-T2-TACC-W01.md; source figures/text unchanged, verification deferred.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -1223,8 +1240,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2), cells read directly from w:tbl: block 123 header ['Date','Particulars','Folio','Cash','Bank'] twice, row 1 ['','','','N','N',...], row 2 ['Jan. 1','Cash','C','','300','Jan. 1','Bank','C','300',''], row 3 the same with 710 - the amount sits in the Bank cell on the debit side and the Cash cell on the credit side, so this is Dr Bank / Cr Cash. Block 136 row 2 ['Jan. 4','Bank','C','800','','Jan. 4','Cash','C','','800'] - Dr Cash / Cr Bank. The 'Effect / Action Required' pairs are paragraphs, not a table: blocks 117 and 131 have identical block text ('EffectAction Required', sha256 1db4bc45a5efc035e858390ba776222e60cb197f34071115e157e232365c432c), so a block-text locator alone is ambiguous - cite the index - and each is followed by two row paragraphs such as 'Cash balance is decreasedCr. Cash column' (block 118). Mammoth emits table cells one per line, so row grouping survives only as blank-line positions. No importer or plan run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2), cells read directly from w:tbl: block 123 header ['Date','Particulars','Folio','Cash','Bank'] twice, row 1 ['','','','N','N',...], row 2 ['Jan. 1','Cash','C','','300','Jan. 1','Bank','C','300',''], row 3 the same with 710 - the amount sits in the Bank cell on the debit side and the Cash cell on the credit side, so this is Dr Bank / Cr Cash. Block 136 row 2 ['Jan. 4','Bank','C','800','','Jan. 4','Cash','C','','800'] - Dr Cash / Cr Bank. The 'Effect / Action Required' pairs are paragraphs, not a table: blocks 117 and 131 have identical block text ('EffectAction Required', sha256 1db4bc45a5efc035e858390ba776222e60cb197f34071115e157e232365c432c), so a block-text locator alone is ambiguous - cite the index - and each is followed by two row paragraphs such as 'Cash balance is decreasedCr. Cash column' (block 118). Mammoth emits table cells one per line, so row grouping survives only as blank-line positions. No importer or plan run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; evidence disposition created in BK-VIS-T2-TBL-W03.md; source figures/text unchanged, verification deferred.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -1261,8 +1278,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2), cells read directly from w:tbl: 12 rows; header ['','','Debited','Credited']; row i ['i.','Start business with N800 cash','Cash ','Capital']; ii ['ii.','Goods sold on credit to Mr. Ayo','Ayo','Sales']; iii ['iii.','We paid creditor Mr. Olu by cheque','Mr. Olu','Bank']; iv ['iv.','Goods bought by cheque','Purchases','Bank']; v ['v.','Sold goods for cash','Cash','Sales']; vi ['vi.','Goods were returned to Mr. Kufor','Kufor','Returns Outwards']; vii ['vii.','Biodun lent us N80 cash','Cash','Loan (Biodun)']; viii ['viii.','Took N20 of the cash and paid into the bank','Bank','Cash']; ix ['ix.','Bought a motor van by cheque','Motor van','Bank']; x ['x.','Goods were returned to Olotu','Olotu','Returns Outwards']; xi ['xi.','Paid further cash into the business as capital','Cash','Capital']. All eleven answers are present; no arithmetic is involved; rows vi and x need the direction check recorded in BK-PRES-T2-WORKED. Mammoth emits one cell per line, so the two account columns and the header lose their positions and a reader sees marker, transaction, debit account, credit account in sequence. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2), cells read directly from w:tbl: 12 rows; header ['','','Debited','Credited']; row i ['i.','Start business with N800 cash','Cash ','Capital']; ii ['ii.','Goods sold on credit to Mr. Ayo','Ayo','Sales']; iii ['iii.','We paid creditor Mr. Olu by cheque','Mr. Olu','Bank']; iv ['iv.','Goods bought by cheque','Purchases','Bank']; v ['v.','Sold goods for cash','Cash','Sales']; vi ['vi.','Goods were returned to Mr. Kufor','Kufor','Returns Outwards']; vii ['vii.','Biodun lent us N80 cash','Cash','Loan (Biodun)']; viii ['viii.','Took N20 of the cash and paid into the bank','Bank','Cash']; ix ['ix.','Bought a motor van by cheque','Motor van','Bank']; x ['x.','Goods were returned to Olotu','Olotu','Returns Outwards']; xi ['xi.','Paid further cash into the business as capital','Cash','Capital']. All eleven answers are present; no arithmetic is involved; rows vi and x need the direction check recorded in BK-PRES-T2-WORKED. Mammoth emits one cell per line, so the two account columns and the header lose their positions and a reader sees marker, transaction, debit account, credit account in sequence. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; evidence disposition created in BK-VIS-T2-TBL-W04.md; source figures/text unchanged, verification deferred.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -1299,8 +1316,8 @@
         "BK-INV-T2",
         "BK-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BK-INV-T2): block 171 has empty text and holds one VML shape 'Right Brace 1' (7.15pt wide, 42.7pt high) anchored beside blocks 172-173. It is the eighth and last VML object in the member; there are no image parts, no OLE objects and no equations. Extracted text contains nothing for it, so its removal loses no wording. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Inventory (BK-INV-T2): block 171 has empty text and holds one VML shape 'Right Brace 1' (7.15pt wide, 42.7pt high) anchored beside blocks 172-173. It is the eighth and last VML object in the member; there are no image parts, no OLE objects and no equations. Extracted text contains nothing for it, so its removal loses no wording. No importer run (deferred). Locator rule: blocks are direct children of w:body in word/document.xml of the verified member, 0-based (blocks 0-220; block 221 is w:sectPr; 222 children in total); block text = concatenation of its w:t runs (UTF-8, no normalisation, so w:tab elements are omitted unlike mammoth); range hash = SHA-256 of block texts first..last inclusive joined with \\n, empty blocks included. These blocks sit one position later than the same text in the 1st Term file from the scheme list onward, because the 2nd Term scheme header is split into two blocks (2 and 3).; evidence disposition created in BK-VIS-T2-BRACE-W04.md; source figures/text unchanged, verification deferred.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -1384,8 +1401,8 @@
         "BK-WK-T1-W02",
         "BK-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W02 (2026-10-30): the sub-item is untaught in the whole source, so COV-BK-T1-W02-DIFF is UNRESOLVED and BOOKKEEPING-T1-W02-DIFFERENCE-MISSING is open. It depends on BK-WK-T1-W01 because the single column book and its two accounts are taught there, and on BK-FACT-T1-W02-DEFECTS for the terminology decision ('two column' against 'double column'). No comparison is authored in BK-WK-T1-W02.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK explicitly compares single- and double-column cash books and their transaction coverage. The double-column cash-book layout and independently authored worked/practice examples are included. Technical tests and approval remain deferred. Sequencing correction: contra transfers are now deferred to the formal Week 3 lesson; Week 2 examples cover ordinary cash/bank receipts and payments only.",
       "completion_condition": "A lesson in bookkeeping.json teaches the comparison from the single column content indexed by BK-WK-T1-W01, carries the decisions of BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1430,8 +1447,8 @@
         "BK-PRES-T1-WORKED",
         "BK-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W02 (2026-10-30): the example has no solution (blocks 105-108 empty), no double column book is balanced anywhere in the document, and the source's only balancing model is the defective Week 1 text. COV-BK-T1-W02-SCHEME-6, -SCHEME-7 and -EXAMPLE are PARTIAL and -BALANCE is UNRESOLVED; BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION, -BALANCING-UNTAUGHT and -CONTRA-SEQUENCING are open.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK now includes a full two-sided cash/bank column table, separate balancing, contra folio marks, closing balances and an independent marked exercise. The source's nine April transactions remain unsolved because the source uses placeholder year 19x9 and supplies no answer; no answer is fabricated. Technical tests and approval remain deferred. Sequencing correction: contra transfers are now deferred to the formal Week 3 lesson; Week 2 examples cover ordinary cash/bank receipts and payments only.",
       "completion_condition": "A lesson in bookkeeping.json prepares a double column cash book from the nine source transactions, states every derived total and balance, labels the solution as authored rather than as the source's, resolves the two transfers as decided in BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
@@ -1475,8 +1492,8 @@
         "BK-WK-T1-W04",
         "BK-FACT-T1-W04-BRIEF"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Not started: depends on BK-FACT-T1-W04-BRIEF for the corrected wording of the definition (block 160) and the three-rule list (161-164).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY now includes the double-entry rules, debit/credit applications, ledger layout, posting examples and an explicit compound-entry worked example with marked practice. The source's unsolved/defective examples are not represented as corrected. Technical tests and approval remain deferred.",
       "completion_condition": "The lesson teaches the meaning, rules and identification with its own corrected text, worked examples and answered practice with marks that add up, records its source hashes, and does not copy the uncorrected wording; no Week 4 claim beyond the lesson itself."
     },
     {
@@ -1520,8 +1537,8 @@
         "BK-WK-T1-W04",
         "BK-FACT-T1-W04-BRIEF"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Blocked in content on BK-FACT-T1-W04-BRIEF (N20 motor van at 196, drawings at 194, blanket posting rule at 181-182).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored replacement lesson created at docs/ss1/work/microtasks/bookkeeping/BK-LES-T1-W04-POSTING.md and integrated as SUP-SS1-BOOKKEEPING-T1-W04-POSTING with COV-BK-T1-W04-POSTING-REPLACEMENT. It contains a fully specified independent twenty-transaction June exercise, balanced cash/bank columns, ledger postings and marked assessment. The original source's twenty transactions and Assignment 2 remain uncorrected/unanswered as source defects; the new lesson does not claim to reconstruct them. Testing/approval deferred.",
       "completion_condition": "A complete balanced cash book, a labelled author-supplied ledger ruling and every posting for the illustration are supplied with folio references, contra rows are excluded and explained, ASSIGNMENT 2 is answered with marks, and the lesson states what came from the source and what was authored."
     },
     {
@@ -1598,8 +1615,8 @@
         "BK-SRC-T1",
         "BK-WK-T1-W04"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Block 208 cites \"simplified and amplified book-keeping and accounting page 56 revision question 5x\", which is not supplied. No text is reproduced here.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Resolved under the owner's standing instruction to self-generate a suitable substitute when an external resource is unavailable. No textbook text was reproduced; original practice and a complete worked replacement are in BK-LES-T1-W04-POSTING.md and SUP-SS1-BOOKKEEPING-T1-W04-POSTING. The original source citation remains historical evidence. Technical verification deferred.",
       "completion_condition": "A named owner supplies the page and question, approves a substitute, or records that ASSIGNMENT 1 is replaced by original practice; the decision is recorded with its evidence and no external text is copied."
     },
     {
@@ -1644,8 +1661,8 @@
         "BK-PRES-T1-WORKED",
         "BK-FACT-T1-W01-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W01 (2026-10-30): nine coverage entries are PARTIAL and two are UNRESOLVED (items and format). The section prepares T-accounts, never a single column cash book, supplies no items list and no cash book ruling, and both printed solutions disagree with their transaction lists. Defects and figures are in BOOKKEEPING-T1-W01-SOURCE-DEFECTS and BOOKKEEPING-T1-W01-FIGURE-CHECKS and must be decided in BK-FACT-T1-W01-DEFECTS first.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK now includes the explicit single-column cash-book ruling, a balanced tabular worked example, balance c/d and b/d, and an additional fully marked independent exercise. The defective original source figures are not silently corrected or reused; their forensic open items remain separate. Technical tests and approval remain deferred.",
       "completion_condition": "A lesson in bookkeeping.json defines the single column cash book, lists its items and ruling, prepares and balances it from the source transactions with every derived figure shown and labelled authored, corrects the Illustration 1 and 2 figures under the decision recorded in BK-FACT-T1-W01-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
@@ -1734,8 +1751,8 @@
         "BK-FACT-T1-W03-DEFECTS",
         "BK-VIS-T1-TBL-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W03 (2026-10-30): all seven coverage entries are PARTIAL. The definition at block 113 states the opposite of the rule and block 112 limits contra to payments into the bank; the N710 paid in against a N300 cash balance has no source; neither table carries a total or balance and neither example states its opening bank balance; no exercise exists. Defects are in BOOKKEEPING-T1-W03-SOURCE-DEFECTS, the arithmetic in BOOKKEEPING-T1-W03-FIGURE-CHECKS and the definitional error in BOOKKEEPING-T1-W03-CONCEPT-ERROR, all to be decided in BK-FACT-T1-W03-DEFECTS first. The table layouts are disposed of by BK-VIS-T1-TBL-W03.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA now includes both directions of contra entry in a structured cash-book table, C marks on both sides, distinctions from ordinary cheque transactions and an additional fully marked exercise. The source's internally inconsistent January figures remain preserved for expert review. Technical tests and approval remain deferred.",
       "completion_condition": "A lesson in bookkeeping.json defines the contra entry correctly, states for both directions which account or column is debited and credited and why the amounts are equal, teaches the C folio on both sides, and records both directions in a two-column cash book from stated opening balances with every figure derived and shown; it corrects the definition under the decision in BK-FACT-T1-W03-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
@@ -2861,6 +2878,411 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Eight split_before rules RULE-BK-T3-W02 through RULE-BK-T3-W08 and RULE-BK-T3-W10 added to bookkeeping.json. Week 9 remains in combined final-account definitions/steps; no fabricated split. Evidence in BK-RULE-T3-SEGMENTATION.md.",
       "completion_condition": "Exact unique source anchors and numeric week labels are recorded; no source text is deleted; Week 9 is not given an unsupported boundary. Importer/compiler verification remains deferred."
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W01",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 1 single-column cash book",
+      "objective": "Author a clean original single-column cash book lesson with a complete, balanced worked example. Preserve the source's inconsistent cash/bank examples without copying their errors into the new lesson.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W01-SCHEME-2, COV-BK-T1-W01-SCHEME-3, COV-BK-T1-W01-SCHEME-4, COV-BK-T1-W01-MEANING, COV-BK-T1-W01-ITEMS, COV-BK-T1-W01-FORMAT, COV-BK-T1-W01-CASH-ACCOUNT, COV-BK-T1-W01-BALANCING, COV-BK-T1-W01-ILLUS-1. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W01.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W02",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 2 double-column cash book",
+      "objective": "Author a new double-column cash book lesson with correct cash/bank column entries, the single-vs-double difference, contra treatment and a balanced worked example. Do not reuse the source's unsolved April figures as a worked solution.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W02-SCHEME-5, COV-BK-T1-W02-SCHEME-6, COV-BK-T1-W02-SCHEME-7, COV-BK-T1-W02-MEANING, COV-BK-T1-W02-ITEMS, COV-BK-T1-W02-ENTRIES, COV-BK-T1-W02-DIFF, COV-BK-T1-W02-EXAMPLE, COV-BK-T1-W02-BALANCE. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W02.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W03",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 3 contra entries",
+      "objective": "Author a correct, original contra-entry lesson explaining both transfer directions, debit/credit treatment, C folio and non-contra cases. Keep the source's incorrect wording and inconsistent examples in the preservation record only.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W03-SCHEME-8, COV-BK-T1-W03-EXPLAIN, COV-BK-T1-W03-IDENTIFY, COV-BK-T1-W03-FOLIO, COV-BK-T1-W03-RECORD-A, COV-BK-T1-W03-RECORD-B, COV-BK-T1-W03-RULE. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W03.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "source_id": "SS1-SRC-62b02f2adcb3",
+      "term": "1st Term",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRES-T1-WORKED.md",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "member": "SSS 1/1st Term SS1_/book keeping.docx",
+          "member_sha256": "9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0"
+        }
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "id": "BK-SUP-T1-W04",
+      "kind": "LESSON_EQUIVALENT",
+      "week_or_locator": "Week 4 double entry and ledger posting",
+      "objective": "Author a clean original lesson on double entry, account rules, identifying debit/credit accounts, cash-book-to-ledger posting, ledger format and balancing. Include original substitute practice rather than reproducing the external textbook assignment.",
+      "implementation_reference": "Lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY is authored in bookkeeping.json; linked coverage records: COV-BK-T1-W04-SCHEME-9, COV-BK-T1-W04-SCHEME-10, COV-BK-T1-W04-MEANING, COV-BK-T1-W04-RULES, COV-BK-T1-W04-TWO-ACCOUNTS, COV-BK-T1-W04-IDENTIFY, COV-BK-T1-W04-POSTING-MEANING, COV-BK-T1-W04-POSTING-RULES, COV-BK-T1-W04-LEDGER-FORMAT, COV-BK-T1-W04-BALANCE-OFF, COV-BK-T1-W04-ASSIGN-1, COV-BK-T1-W04-ASSIGN-2. Source material remains preserved and original supplement is clearly labelled.",
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-SUP-T1-W04.md"
+      ],
+      "depends_on": [
+        "BK-SRC-T1",
+        "BK-INV-T1"
+      ]
+    },
+    {
+      "id": "BK-T2-RECON-SCHEME",
+      "kind": "CURRICULUM_RECONSTRUCTION",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "term": "2nd Term",
+      "week_or_locator": "BK-T2-RECONSTRUCTION-PLAN.md",
+      "objective": "Record the owner-confirmed erroneous duplicate disposition and define a project-authored SS1 Bookkeeping second-term sequence using comparative Nigerian curriculum references and the genuine first- and third-term content as boundaries. Do not present the reconstruction as recovered source content.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRE-T2.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T2.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-PRE-T2.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "backend/src/db/ss1/compiler.ts",
+        "tests/ss1/bookkeeping.package.test.mts"
+      ],
+      "depends_on": [
+        "BK-INV-T2",
+        "BK-PRE-T2"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Owner-confirmed 2026-11-08: second-term file should not have been identical to first-term and no other source is available. The original is preserved and quarantined as an erroneous duplicate. Project-authored provisional 10-week sequence documented in BK-T2-RECONSTRUCTION-PLAN.md, using external curriculum references as guidance and first-/third-term content as scope constraints. No claim that this was the original scheme; teacher review and technical verification remain pending. Compiler now supports cross-term duplicate exclusion by comparing parsed week labels, titles and full bodies while preserving each source's distinct hash/term metadata; tests updated to assert the owner-confirmed T2 exclusion. Test execution remains deferred.",
+      "completion_condition": "Owner decision, source disposition and proposed reconstruction plan are documented; no original source text is overwritten; plan is labelled provisional and project-authored."
+    },
+    {
+      "id": "BK-RECON-T2-W01",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 1: Books of original entry: purpose and overview",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Books of original entry: purpose and overview. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W01.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W01.md and integrated as SUP-SS1-BOOKKEEPING-T2-W01 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W01. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W02",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 2: The general journal",
+      "objective": "Author a complete SS1 Bookkeeping lesson for The general journal. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W02.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W02.md and integrated as SUP-SS1-BOOKKEEPING-T2-W02 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W02. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W03",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 3: Subsidiary books: sales and purchases day books",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Subsidiary books: sales and purchases day books. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W03.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W03.md and integrated as SUP-SS1-BOOKKEEPING-T2-W03 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W03. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W04",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 4: Returns books and general journal applications",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Returns books and general journal applications. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W04.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W04.md and integrated as SUP-SS1-BOOKKEEPING-T2-W04 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W04. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W05",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 5: Ledger classification and account relationships",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Ledger classification and account relationships. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W05.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W05.md and integrated as SUP-SS1-BOOKKEEPING-T2-W05 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W05. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W06",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 6: Posting from subsidiary books to ledger accounts",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Posting from subsidiary books to ledger accounts. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W06.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W06.md and integrated as SUP-SS1-BOOKKEEPING-T2-W06 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W06. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W07",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 7: Discounts: trade discount and cash discount",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Discounts: trade discount and cash discount. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W07.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W07.md and integrated as SUP-SS1-BOOKKEEPING-T2-W07 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W07. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W08",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 8: Three-column cash book: layout and entries",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Three-column cash book: layout and entries. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W08.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W08.md and integrated as SUP-SS1-BOOKKEEPING-T2-W08 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W08. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W09",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 9: Three-column cash book: balancing and integrated practice",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Three-column cash book: balancing and integrated practice. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W09.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W09.md and integrated as SUP-SS1-BOOKKEEPING-T2-W09 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W09. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-RECON-T2-W10",
+      "kind": "PROJECT_AUTHORED_LESSON",
+      "source_id": "PROJECT-AUTHORED-T2",
+      "term": "2nd Term",
+      "week_or_locator": "Reconstructed Week 10: Bank reconciliation statement",
+      "objective": "Author a complete SS1 Bookkeeping lesson for Bank reconciliation statement. Include outcomes, prerequisites, explanation, worked examples, guided and independent practice, answers and marking guide. Mark all content project-authored; use original examples; avoid duplicating T1 and T3 lessons; map coverage to reconstructed objectives, not the duplicate source.",
+      "required_files": [
+        "docs/ss1/work/microtasks/bookkeeping/BK-T2-RECONSTRUCTION-PLAN.md",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W10.md"
+      ],
+      "depends_on": [
+        "BK-T2-RECON-SCHEME"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W10.md and integrated as SUP-SS1-BOOKKEEPING-T2-W10 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W10. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
+      "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
     }
   ],
   "review": {
