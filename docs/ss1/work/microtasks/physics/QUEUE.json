@@ -44,9 +44,9 @@
     "CORRECTION_BINDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 31,
+    "IMPLEMENTED_TESTING_DEFERRED": 32,
     "BLOCKED": 16,
-    "PENDING": 42
+    "PENDING": 41
   },
   "total": 89,
   "items": [
@@ -681,8 +681,8 @@
       "depends_on": [
         "PHYS-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 1 (source label 'WEEK TWO', title \"Thermometer and Its Type. Evaporation and Boiling\", 4744 characters, body sha256 37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. No physics.json, coverage entry, lesson or correction exists on master for this row. Equation-recovery loss was NOT measured for Physics (eqExtra is null in the evidence).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: created SUP-SS1-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION, body SHA-256 9abfc4d9cc4eca3fda047aef831a682f316cbbdda540c3f95ec44728ab31ed02; seven objectives, 13 keyed practice questions (34 marks). Source SS1-SRC-2c924c964660, parsed row1 WEEK TWO, source body id SS1-SRC-2c924c964660:BODY:37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46, body SHA-256 37902c962443675e3f808e940475f47a69fe6f6823f3332964cb53d7aa3dfe46, member SHA-256 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7. Covers five thermometer types and thermometric properties, mercury/alcohol, water unsuitability, clinical thermometer, evaporation/boiling, fixed points, scale calculations and absolute zero. Corrected resistance thermometer spelling and mercury freezing point (−38.8°C). Added correction CORR-PHYSICS-T2-W02-THERMOMETERS-EVAPORATION and 11 objective-level coverage entries. Source boiling MCQ ambiguity recorded as non-blocking open item; Q13 supplies a clearer equivalent. Public close-equivalent PDF and NIST/NSTA/WAEC references used; no third-party wording copied. Approval PENDING; verification DEFERRED; tests not run.",
       "completion_condition": "Each scheme objective listed with a locator and an honest coverage status (SUPPORTED only with objective-level evidence); each defect or gap becomes an appended bounded task (correction, lesson for a named uncovered objective, or asset) rather than a note."
     },
     {
@@ -3058,10 +3058,9 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "PHYS-WK-T2-W01 stale task reconciled against existing master lesson from PR #71; expanded heat/temperature lesson, added uses, corrected scientific misconceptions and indexed eight objectives. Source MCQ contraction ambiguity recorded non-blocking. Tests deferred."
+    "notes": "PHYS-WK-T2-W02 lesson authored and objective-indexed; correction binding recorded. Mercury freezing point corrected using NIST; source boiling MCQ ambiguity retained as non-blocking. Tests deferred."
   },
   "next_runnable": [
-    "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
     "PHYS-WK-T2-W05",
@@ -3094,7 +3093,6 @@
     "PHYS-LES-T1-W02-VOLUME-MEASUREMENT"
   ],
   "runnable_now": [
-    "PHYS-WK-T2-W02",
     "PHYS-WK-T2-W03",
     "PHYS-WK-T2-W04",
     "PHYS-WK-T2-W05",
