@@ -122,6 +122,42 @@
         "locator": "BK-INV-T1.md: scheme preamble block 29; block SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9; exact anchor occurs once in the importer text view",
         "explanation": "The exact scheme entry is a examination marker in the preamble before the first week label (block 30). It has no instructional body; SCHEME_ONLY classifies preamble material outside parsed rows and does not discard a lesson body."
       }
+    },
+    {
+      "id": "RULE-BK-T3-REVISION-1",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "1                 Revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-REVISION-11",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "11       revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-EXAM-12",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "12    exam",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
     }
   ],
   "lessons": [],
@@ -865,6 +901,54 @@
         {
           "locator": "Scheme preamble block 29; first week marker is block 30",
           "explanation": "The scheme line is a marker only. The source contains no examination paper, questions, answers, marks or duration after this line; no instructional content is invented."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-REVISION-1",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 1                 Revision; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-REVISION-1"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-REVISION-11",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 11       revision; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-REVISION-11"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-EXAM-12",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 12    exam; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-EXAM-12"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
         }
       ]
     }
