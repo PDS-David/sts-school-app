@@ -2535,6 +2535,418 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Petty cash book: imprest system, columns and posting",
+      "objectives": [
+        "Explain the purpose of a petty cash book and the imprest system.",
+        "Identify the analysis columns and record small cash payments from vouchers.",
+        "Balance a petty cash book, calculate reimbursement and explain how analysis totals are posted."
+      ],
+      "body": "Project-authored equivalent lesson — petty cash book: imprest system, columns and posting\n\nA petty cash book records small, frequent payments that would be inconvenient to enter individually in the main cash book. Examples include local transport, postage, minor stationery and cleaning materials. The main cashier provides a fixed float to a petty cashier, who keeps the money and supporting vouchers safely.\n\nThe imprest system\nAn imprest is an agreed fixed amount of petty cash. If the float is 500 and the petty cashier spends 350 during the period, the remaining cash is 150. The main cashier reimburses 350, restoring the float to 500. Reimbursement equals the amount spent, provided the cash and vouchers account for the original float.\n\nColumns and their uses\n- Date: the date of the payment.\n- Details/particulars: the person paid and the reason.\n- Voucher number: the reference for the supporting petty-cash voucher.\n- Total payment: the full amount paid.\n- Analysis columns: separate totals for expense types such as transport, postage, stationery and cleaning.\nThe analysis columns are subdivisions of the total payment column. Each payment is entered once in the total column and once in the appropriate analysis column; do not add the analysis columns to the total a second time.\n\nWorked example — fictional practice figures\nThe petty cashier receives a float of 500. During the week the cashier pays:\n- Monday, local transport, voucher 01: 120.\n- Tuesday, postage, voucher 02: 80.\n- Wednesday, stationery, voucher 03: 90.\n- Friday, cleaning materials, voucher 04: 60.\n\nPetty cash analysis:\nDate | Details | Voucher | Total | Transport | Postage | Stationery | Cleaning\nMon | Local transport | 01 | 120 | 120 | — | — | —\nTue | Postage | 02 | 80 | — | 80 | — | —\nWed | Stationery | 03 | 90 | — | — | 90 | —\nFri | Cleaning materials | 04 | 60 | — | — | — | 60\nTotals | | | 350 | 120 | 80 | 90 | 60\n\nCheck: 120 + 80 + 90 + 60 = 350. Cash remaining = 500 − 350 = 150. Reimbursement = 350. Cash after reimbursement = 150 + 350 = 500, so the imprest is restored.\n\nRecording and posting\n1. When the float is first established, the main cash book records the transfer of 500 to the petty cashier.\n2. The petty cashier records each payment in the petty cash book and keeps its numbered voucher.\n3. At the end of the period, the analysis columns are totalled and checked against the total payments.\n4. The main cashier reimburses the amount spent. In the main records, the expense analysis is recognised and cash/bank is reduced by the reimbursement amount.\n5. The petty cash book starts the next period with the restored imprest.\n\nDo not confuse the petty cash book with the main cash book. The petty cash book is for small payments under the petty cashier's control. A voucher supports each payment. If cash plus valid vouchers does not equal the float, investigate the difference rather than changing a figure to force agreement.",
+      "body_sha256": "46a849b06cd31f8186cb9b1fa1062cf8a218b584bbda3dbb45daed1ae57430f1",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "A petty cashier receives a float of 800 and spends 175 on transport, 125 on postage and 200 on stationery. Calculate total expenditure, cash remaining and the reimbursement needed to restore the imprest.",
+          "answer": "Total expenditure = 175 + 125 + 200 = 500. Cash remaining = 800 − 500 = 300. Reimbursement = 500. After reimbursement, petty cash is 800.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Adds the three payments to obtain 500",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates remaining cash as 300",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies reimbursement as 500",
+              "marks": 1
+            },
+            {
+              "criterion": "Confirms restored float is 800",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State the purpose of the voucher number and explain why the analysis columns must agree with the total payment column.",
+          "answer": "The voucher number links a payment to its supporting evidence. The analysis columns classify each payment by expense type; their totals should add to the total payment column so that every payment is accounted for once.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Explains voucher reference/evidence",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains expense classification",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains reconciliation to total payments",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "A petty cashier has an imprest of 600. At week end, cash is 215 and valid vouchers total 385. Is the imprest accounted for? What reimbursement is required?",
+          "answer": "Yes. Cash plus vouchers = 215 + 385 = 600. Reimbursement of 385 restores cash to 600.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Adds cash and vouchers correctly to 600",
+              "marks": 1
+            },
+            {
+              "criterion": "States that the imprest is accounted for",
+              "marks": 1
+            },
+            {
+              "criterion": "States reimbursement of 385",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term to complete scheme coverage recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Trial balance: meaning, purpose and limitations",
+      "objectives": [
+        "Define a trial balance and explain why it is prepared.",
+        "Identify the ledger balances normally shown on the debit and credit sides.",
+        "Explain what agreement can and cannot prove about the accuracy of bookkeeping records."
+      ],
+      "body": "Project-authored equivalent lesson — trial balance: meaning, purpose and limitations\n\nA trial balance is a statement prepared from the balances of ledger accounts at a particular date. Debit balances are listed in one column and credit balances in another. The two columns are added to check whether total debits equal total credits.\n\nWhy a trial balance is prepared\n- It checks the arithmetical equality of debit and credit ledger balances.\n- It brings ledger balances together in one place for review.\n- It provides information used when preparing final accounts.\n- It may help locate certain posting, balancing or addition errors when the totals disagree.\n\nHow balances are classified\nAssets and expenses normally have debit balances. Drawings also normally have a debit balance. Capital, liabilities and income normally have credit balances. These are useful rules for ordinary sole-trader accounts; always consider the nature and actual balance of the account.\n\nWorked example — fictional ledger balances\nThe following balances have been extracted after the ledger accounts have been balanced:\nCash 12,000 Dr; Bank 20,000 Dr; Purchases 8,000 Dr; Rent 2,000 Dr; Furniture 5,000 Dr; Capital 25,000 Cr; Sales 18,000 Cr; Creditors 4,000 Cr.\n\nTrial Balance as at 31 March\nAccount | Debit | Credit\nCash | 12,000 | —\nBank | 20,000 | —\nPurchases | 8,000 | —\nRent | 2,000 | —\nFurniture | 5,000 | —\nCapital | — | 25,000\nSales | — | 18,000\nCreditors | — | 4,000\nTotals | 47,000 | 47,000\n\nDebit total = 12,000 + 20,000 + 8,000 + 2,000 + 5,000 = 47,000.\nCredit total = 25,000 + 18,000 + 4,000 = 47,000.\nThe trial balance agrees because both totals are 47,000.\n\nLimitations of an agreeing trial balance\nAgreement does not prove that every transaction has been recorded correctly. Some errors affect both sides equally or are omitted from both sides. Examples include complete omission, an incorrect amount entered on both sides, posting to the wrong personal account on the correct side, an error of principle and complete reversal. These may leave the totals equal. A trial balance is an arithmetical check, not proof that all accounts and classifications are correct.\n\nIf the columns do not agree, recheck additions, ledger balances, entries posted to the wrong side, one-sided omissions and transfers. Do not insert a suspense balance without first investigating the records and identifying the difference.",
+      "body_sha256": "6de1fcf0310c0906bc00abd74e009dd7385b9db1fba402d515e6c663403f8431",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Define a trial balance and state two reasons for preparing it.",
+          "answer": "A trial balance is a statement of debit and credit ledger balances prepared at a particular date. Reasons include checking arithmetical equality and bringing ledger balances together for review or preparation of final accounts.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Defines it as a statement/list of ledger balances at a date",
+              "marks": 1
+            },
+            {
+              "criterion": "States arithmetical check",
+              "marks": 1
+            },
+            {
+              "criterion": "States one further valid purpose",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Classify each normal balance as debit or credit: (a) rent expense, (b) capital, (c) bank asset, (d) sales income, (e) creditors.",
+          "answer": "(a) Debit. (b) Credit. (c) Debit. (d) Credit. (e) Credit.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Rent expense — debit",
+              "marks": 1
+            },
+            {
+              "criterion": "Capital — credit",
+              "marks": 1
+            },
+            {
+              "criterion": "Bank asset — debit",
+              "marks": 1
+            },
+            {
+              "criterion": "Sales income — credit",
+              "marks": 1
+            },
+            {
+              "criterion": "Creditors — credit",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "A trial balance agrees. Does this prove that all transactions are correctly recorded? Give two reasons for your answer.",
+          "answer": "No. Complete omission leaves both entries out, and an incorrect amount entered on both debit and credit sides can still leave the totals equal. Other errors may also leave the trial balance agreeing.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Clearly answers no",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives one valid error that does not affect agreement",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a second valid error or explains the limitation",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term to complete scheme coverage recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Rules for extracting ledger balances and preparing a trial balance",
+      "objectives": [
+        "Apply the normal debit and credit balance rules when extracting ledger balances.",
+        "Prepare a trial balance from a set of balanced ledger accounts.",
+        "Check the arithmetic totals and identify common causes of disagreement."
+      ],
+      "body": "Project-authored equivalent lesson — rules for extracting ledger balances and preparing a trial balance\n\nA trial balance is prepared only after the ledger accounts have been balanced. Each account is examined to find its closing balance. The balance is entered on the side on which it is needed to make the two sides of that ledger account equal; the balance is then carried down on the opposite side as the balancing figure. When preparing the trial balance, enter the account's balance in the column matching its normal balance.\n\nPractical classification rules\n- Assets such as cash, bank, furniture and equipment normally have debit balances.\n- Expenses such as rent, wages and carriage outwards normally have debit balances.\n- Drawings normally have a debit balance.\n- Capital, liabilities such as creditors and loans, and income such as sales normally have credit balances.\n- Purchases and returns are classified according to their account nature: purchases normally debit; returns inwards normally credit; returns outwards normally debit.\nThese are ordinary rules for a sole trader's books. Do not classify an account from its name alone if the ledger shows an unusual balance that requires investigation.\n\nSteps for preparing a trial balance\n1. Write the heading: business name, Trial Balance and the date.\n2. List each ledger account once.\n3. Copy each closing debit balance into the debit column and each closing credit balance into the credit column.\n4. Add the two columns independently.\n5. Compare the totals. If they agree, record that they agree; do not claim this proves that no error exists.\n6. If they disagree, check omitted balances, wrong-side entries, ledger balancing, arithmetic and transcription before considering a suspense account.\n\nWorked example — fictional ledger balances\nAccount balances: Cash 9,500 Dr; Bank 14,000 Dr; Equipment 6,500 Dr; Purchases 12,000 Dr; Wages 3,000 Dr; Drawings 2,000 Dr; Capital 20,000 Cr; Sales 18,000 Cr; Creditors 7,000 Cr; Loan 2,000 Cr.\n\nTrial Balance as at 30 June\nAccount | Debit | Credit\nCash | 9,500 | —\nBank | 14,000 | —\nEquipment | 6,500 | —\nPurchases | 12,000 | —\nWages | 3,000 | —\nDrawings | 2,000 | —\nCapital | — | 20,000\nSales | — | 18,000\nCreditors | — | 7,000\nLoan | — | 2,000\nTotals | 47,000 | 47,000\n\nDebit check: 9,500 + 14,000 + 6,500 + 12,000 + 3,000 + 2,000 = 47,000.\nCredit check: 20,000 + 18,000 + 7,000 + 2,000 = 47,000.\nThe two columns agree.\n\nCommon preparation mistakes\n- Putting a credit balance in the debit column because the account is an asset or expense by assumption, without checking the ledger.\n- Omitting a ledger account or listing the same balance twice.\n- Copying a balance incorrectly or adding a column inaccurately.\n- Treating the balancing figure on the wrong side of the ledger as the trial-balance balance. The balance is entered in the trial balance on the side where the account has its balance.\n\nAn agreeing trial balance is a useful check only. Errors such as complete omission, error of original entry and complete reversal can remain undetected by the equality test.",
+      "body_sha256": "03c7a99f7baec41ab9cf159043cbffe756040fe80e3cc3da2585104b56db8d80",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Prepare a trial balance from these balances: Cash 4,000 Dr; Bank 6,000 Dr; Purchases 5,000 Dr; Rent 1,000 Dr; Capital 8,000 Cr; Sales 6,000 Cr; Creditors 2,000 Cr.",
+          "answer": "Debit: Cash 4,000; Bank 6,000; Purchases 5,000; Rent 1,000. Debit total = 16,000. Credit: Capital 8,000; Sales 6,000; Creditors 2,000. Credit total = 16,000.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Places Cash and Bank correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Places Purchases and Rent correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Places Capital and Sales correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Places Creditors correctly",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates debit total of 16,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates credit total of 16,000 and states agreement",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State the normal trial-balance side for (a) drawings, (b) returns inwards, (c) returns outwards and (d) loan payable.",
+          "answer": "(a) Debit. (b) Credit. (c) Debit. (d) Credit.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Drawings — debit",
+              "marks": 1
+            },
+            {
+              "criterion": "Returns inwards — credit",
+              "marks": 1
+            },
+            {
+              "criterion": "Returns outwards — debit",
+              "marks": 1
+            },
+            {
+              "criterion": "Loan payable — credit",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Give three checks to make when a trial balance does not agree.",
+          "answer": "Check the addition of both columns; check that all ledger balances were extracted and copied correctly; check for one-sided omissions, wrong-side postings and errors in balancing ledger accounts.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Checks column addition",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks extraction/transcription or omitted balances",
+              "marks": 1
+            },
+            {
+              "criterion": "Checks wrong-side posting or ledger balancing",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term to complete scheme coverage recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Correction of errors affecting agreement using a suspense account",
+      "objectives": [
+        "Explain why a suspense account may be opened when a trial balance difference remains unexplained.",
+        "Distinguish errors that affect trial-balance agreement from errors that do not.",
+        "Prepare correcting journal entries and clear a suspense-account balance using fully stated examples."
+      ],
+      "body": "Project-authored equivalent lesson — correction of errors affecting agreement using a suspense account\n\nA suspense account is a temporary account used to hold an unexplained trial-balance difference while the cause is investigated. It is not a permanent income, expense, asset or liability account. It must be cleared when the errors responsible for the difference have been identified and corrected.\n\nWhen a suspense account is appropriate\nA one-sided omission, a wrong-side posting or an incorrect amount entered on only one side may cause the debit and credit totals to disagree. If the difference cannot immediately be located, a suspense account may temporarily make the trial balance columns equal. Errors that affect both sides equally, such as complete omission or complete reversal, do not create a trial-balance difference and are not corrected by using suspense merely because they are errors.\n\nFinding the suspense balance\nFirst compare the trial-balance totals. If debit balances total 42,000 and credit balances total 41,400, the credit side is short by 600. A temporary credit balance of 600 in the suspense account makes the columns equal. If the debit side is short, the temporary suspense balance is a debit. This is only a temporary balancing measure, not the correction of the underlying errors.\n\nWorked example — fictional practice figures\nA trial balance shows debit balances of 42,000 and credit balances of 41,400. A credit suspense balance of 600 is inserted temporarily. Investigation finds:\n1. The Sales Account was undercast by 400. Sales is a credit account, so its credit balance must increase by 400. Correcting entry: Debit Suspense 400; Credit Sales 400.\n2. The Rent Account was overcast by 200. Rent is a debit expense, so its debit balance must decrease by 200. Correcting entry: Debit Suspense 200; Credit Rent 200.\n\nSuspense Account\nDebit side: correction of Sales undercast 400; correction of Rent overcast 200; total debit 600.\nCredit side: balance brought down 600; total credit 600.\nThe suspense account is cleared because the debit corrections total 600 and cancel the temporary credit balance of 600.\n\nJournal entries\n- Suspense Account Dr 400; Sales Account Cr 400 — to correct the undercast Sales Account.\n- Suspense Account Dr 200; Rent Account Cr 200 — to correct the overcast Rent Account.\n\nA second illustration\nA purchases invoice of 350 was posted to the supplier's personal account but omitted from Purchases Account. The debit side is therefore short by 350. The correcting entry is: Purchases Account Dr 350; Suspense Account Cr 350. This reduces a temporary debit suspense balance by 350.\n\nMethod for every correction\n1. State what the original transaction or account should have shown.\n2. State what was actually recorded.\n3. Identify the missing or excess debit/credit entry.\n4. Write the correcting journal entry for the difference.\n5. Post the correction to the suspense account only if the original error caused a trial-balance difference.\n6. Recheck that the suspense account clears when all errors causing the difference have been corrected.\n\nDo not assume that every error needs suspense. An error that leaves debit and credit totals equal must still be corrected, but its correction is made directly between the affected accounts without using suspense.",
+      "body_sha256": "fcf96e7e2a4c14d870dc3ebd59b8be73ae248e574aa42532909572784233badd",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "A trial balance has debit totals of 31,200 and credit totals of 30,700. Which side is short, and what temporary suspense balance would make the columns agree?",
+          "answer": "The credit side is short by 500. A temporary credit balance of 500 in Suspense Account makes the totals equal at 31,200.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies credit side as short",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates difference as 500",
+              "marks": 1
+            },
+            {
+              "criterion": "States temporary credit suspense balance of 500",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "The Sales Account is undercast by 250 and the error caused a trial-balance disagreement. Give the correcting journal entry.",
+          "answer": "Suspense Account Dr 250; Sales Account Cr 250.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Debits Suspense Account 250",
+              "marks": 1
+            },
+            {
+              "criterion": "Credits Sales Account 250",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "A rent account has been overcast by 180, and the error caused the trial balance to disagree. State the correcting entry and explain its effect on suspense.",
+          "answer": "Suspense Account Dr 180; Rent Account Cr 180. The debit to suspense reduces the temporary credit suspense balance by 180, while the credit reduces the excessive debit balance in Rent.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Debits Suspense Account 180",
+              "marks": 1
+            },
+            {
+              "criterion": "Credits Rent Account 180",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains suspense is reduced/cleared and rent debit reduced",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Should a complete omission from both debit and credit entries be corrected through a suspense account? Explain.",
+          "answer": "No. Complete omission from both sides does not create a trial-balance difference. The missing double entry should be recorded in the correct accounts without using suspense.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Answers no",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that both sides were omitted and no trial-balance difference arises",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term to complete scheme coverage recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "delivery_corrections": [
@@ -3627,12 +4039,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Meaning of petty cash book",
       "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
           "explanation": "Blocks 45–47 define the imprest system and petty cash book as a book of original/prime entry for small disbursements. Preserve the source's wording and examples; the section does not provide a complete lesson package."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3641,12 +4059,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Classification of columns",
       "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
           "explanation": "Blocks 53–55 describe the receipt side and wider credit-side analysis columns; block 63 lists receipt, date, details, voucher number, total and expense analysis headings. Column semantics and the printed layout require visual disposition."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3655,12 +4079,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Posting of transaction",
       "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
           "explanation": "Blocks 56–61 describe crediting petty cash with payments, transferring analysis totals to nominal ledgers and reimbursement. No complete posting demonstration to nominal ledger is supplied."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3669,12 +4099,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Meaning of trial balance",
       "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
           "explanation": "Block 87 defines a trial balance as a statement of ledger balances in double-entry form used to test arithmetical accuracy. No explicit week label or complete lesson package."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3683,12 +4119,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Functions of trial balance",
       "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
           "explanation": "Blocks 147–150 list three purposes: comprehensive account list, arithmetical accuracy check and data for final accounts. Source wording is preserved."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3697,12 +4139,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Extraction of balance from ledger to trial balance",
       "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
           "explanation": "Blocks 166–175 describe ledger balancing; blocks 180–254 show Mr Odili's transactions, cash and ledger accounts and a trial balance. Printed trial balance totals are inconsistent (debit 10,000, credit 1,000); preserve for arithmetic review."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3711,12 +4159,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Rules for posting balances from ledger to trial balance",
       "objective_locator": "BK-INV-T3 scheme Week 4, scheme blocks 14–16; body blocks 151–175 and 180–254",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 14–16; body blocks 151–175 and 180–254",
           "explanation": "Blocks 151–164 contain a visual classification diagram naming credit liabilities, credit income/gain, debit expenses and debit assets. The diagram's spatial mapping requires separate visual disposition; the source does not give a full written set of transfer rules."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3725,12 +4179,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Preparation of trial balance",
       "objective_locator": "BK-INV-T3 scheme Week 4, scheme blocks 14–16; body blocks 151–175 and 180–254",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 14–16; body blocks 151–175 and 180–254",
           "explanation": "Blocks 166–175 give ledger balancing steps and blocks 180–254 contain a worked cash/ledger/trial balance illustration. The printed trial balance shows debit 10,000 and credit 1,000, so the worked answer does not reconcile as printed."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
@@ -3739,12 +4199,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Meaning of errors",
       "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
           "explanation": "Blocks 261–267 introduce errors through six named categories and brief definitions/examples; no separate general definition is provided."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT in package lessons[]",
+          "explanation": "Existing project-authored lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT includes the meaning of bookkeeping errors, six common error types and the distinction between errors that affect and do not affect trial-balance agreement. This linked lesson completes the corresponding scheme objectives; original source examples remain unchanged."
         }
       ]
     },
@@ -3753,12 +4219,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Types of errors",
       "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
           "explanation": "Blocks 262–267 list errors of original entry, omission, commission, principle, compensating errors and complete reversal, with short descriptions."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT in package lessons[]",
+          "explanation": "Existing project-authored lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT includes the meaning of bookkeeping errors, six common error types and the distinction between errors that affect and do not affect trial-balance agreement. This linked lesson completes the corresponding scheme objectives; original source examples remain unchanged."
         }
       ]
     },
@@ -3767,12 +4239,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Errors affecting trial balance",
       "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
           "explanation": "Blocks 308–314 list one-sided omission, misposting of figures, errors in transfer of subsidiary-book totals, two entries on the same side, and under/overcasting as errors affecting agreement. The source does not map every earlier error type to this classification."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT in package lessons[]",
+          "explanation": "Existing project-authored lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT includes the meaning of bookkeeping errors, six common error types and the distinction between errors that affect and do not affect trial-balance agreement. This linked lesson completes the corresponding scheme objectives; original source examples remain unchanged."
         }
       ]
     },
@@ -3801,12 +4279,18 @@
       "source_id": "SS1-SRC-97f226215927",
       "objective": "Correction of errors through the use of suspense account",
       "objective_locator": "BK-INV-T3 scheme Week 6, scheme blocks 22–23; body blocks 308–392; range hash 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE"
+      ],
       "evidence": [
         {
           "locator": "BK-INV-T3: scheme blocks 22–23; body blocks 308–392; range hash 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c",
           "explanation": "Blocks 308–388 cover errors affecting agreement, correction procedures, examples, journal entries and a suspense account. The printed suspense-account debit items total 950 while the credit items total 1,400, despite 1,400 being printed on both sides; detailed worked-material review is required."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text, figures and diagrams remain unchanged."
         }
       ]
     },
