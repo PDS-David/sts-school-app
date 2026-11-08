@@ -1385,6 +1385,118 @@
           "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory items."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W07-BIOMES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 7 scheme: Biomes — meaning, determining factors and classification",
+      "objective_locator": "Scheme row block 13; Week 7 label block 573 (sha256 9ef1976a2740902b4c16b8a4bea9380d82b9c37ec0f0131070e64422406b377a); body blocks 573-682 (range sha256 4155e2974b956ebf6188034c0aed85b6fdf780872f806fe3479c737903de4fc5)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 579-580 (range sha256 7038a6d86cd0f9cd79598ba98b94398f5c3702693a165c5e28a334ab67728666)",
+          "explanation": "Defines biomes as large natural terrestrial ecosystems identified by dominant vegetation and describes climatic factors (rainfall, relative humidity, temperature, wind and light) as determining vegetation."
+        },
+        {
+          "locator": "blocks 586-611 (range sha256 44fe02d5d59bd1b295516aabafd9db0b1c5e160d239229dbf28b5ceaf1d2d336)",
+          "explanation": "Describes Nigerian local biomes: mangrove swamps, tropical rain forest and savanna, with savanna subdivisions and source-stated locations/climate characteristics. Regional names, rainfall, temperature and latitude claims are preserved as source statements and require authoritative review before reuse."
+        },
+        {
+          "locator": "blocks 620-656 (range sha256 1f7bfd864edaa2597dc3f895a8f4fca7927d217ed4c0fb1465f37d1db51328af)",
+          "explanation": "Lists and describes temperate forests, coniferous forests, temperate shrubland, temperate grassland, savanna, desert, tundra and montane vegetation. Block 656 gives an Afro-alpine altitude threshold of 3000 m; weekend question block 676 prints 300 m, a source-internal discrepancy."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No Biology lesson is registered for biomes. Source-only teaching is not deliverable; PARTIAL remains until approved lesson content is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W07-LOCAL-BIOMES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 7: Nigerian local biomes — mangrove swamp, tropical rain forest and savanna",
+      "objective_locator": "Heading block 586; teaching blocks 586-611 (range sha256 44fe02d5d59bd1b295516aabafd9db0b1c5e160d239229dbf28b5ceaf1d2d336)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 591-592",
+          "explanation": "Describes mangrove swamps in coastal/river-mouth settings and gives source-stated Nigerian state locations and climate values."
+        },
+        {
+          "locator": "blocks 593-602",
+          "explanation": "Describes tropical rain forest climate, vegetation structure and source-stated Nigerian distribution."
+        },
+        {
+          "locator": "blocks 603-611",
+          "explanation": "Describes savanna climate, grasses and four subdivisions: southern Guinea, northern Guinea, Sudan and Sahel savanna, with source-stated locations and rainfall/temperature values."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No registered lesson; local-biome teaching remains source-only and not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W07-WORLD-BIOMES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 7: world biomes and their characteristics",
+      "objective_locator": "Heading block 620; teaching blocks 620-656 (range sha256 1f7bfd864edaa2597dc3f895a8f4fca7927d217ed4c0fb1465f37d1db51328af)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 621-656",
+          "explanation": "Lists and describes temperate forests, coniferous forests, temperate shrubland, temperate grassland, savanna, desert, tundra and montane vegetation. Some descriptions are brief; source facts and wording remain unchanged pending approved-reference review."
+        },
+        {
+          "locator": "blocks 656 and 676",
+          "explanation": "The Afro-alpine vegetation height is stated as above 3000 m in the body, while weekend assignment option A says above 300 m. This inconsistency is recorded, not silently reconciled."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No registered lesson; world-biome teaching remains source-only and not deliverable."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W07-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 7 evaluation, revision, weekend assignment and theory",
+      "objective_locator": "Evaluation blocks 582-584 and 613-618; general evaluation blocks 658-664; reading assignment 666-667; weekend assignment 669-676; theory 678-680",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 582-584 (range sha256 c4fa3f7096602bfc66df9aa96f1f6ae3398291aaff62451e115186b02652e3f2)",
+          "explanation": "The biome definition and climatic determining factors are taught in blocks 579-580."
+        },
+        {
+          "locator": "evaluation blocks 613-618 (range sha256 832df18966831e72062e5e24f97a284391ee641e70b08ecea90dee61f60c5a42)",
+          "explanation": "The local-biome table and savanna characteristics are supported by blocks 586-611; no answer key is supplied."
+        },
+        {
+          "locator": "general evaluation blocks 658-664 (range sha256 8addbd28b5fb885a8216fbf518a00a7689e6419a6667953fb377718cc1607798)",
+          "explanation": "Questions on biome definition, Nigerian local biomes, savanna subdivisions, world-biome factors, world-biome characteristics and savanna/desert comparison are related to blocks 579-656; no answer key is supplied."
+        },
+        {
+          "locator": "reading assignment blocks 666-667 (range sha256 4ae6656793976126ee983794b24c929805de096ae89f91523a33ca844bc69d01)",
+          "explanation": "Names College Biology, chapter 23, pages 499-504. The cited book is not in the archive and was not opened."
+        },
+        {
+          "locator": "weekend assignment blocks 669-676 (range sha256 baaaf3944dfe16f8706a470f6953fd2fb2f8dfe0cb4e404f4b0a687c0814dbe0)",
+          "explanation": "The savanna bush-fire adaptation question is not directly taught; the desert limiting-resource question is not explicitly keyed; tropical-rainforest and coniferous-forest items are supported by the source descriptions. The montane vegetation item conflicts with the body: block 656 says above 3000 m, while option A at 676 says above 300 m and 'treeless marshy vegetation' belongs to the tundra description at 651. No answer key is supplied."
+        },
+        {
+          "locator": "theory blocks 678-680 (range sha256 af74468638b6401d067842173e9e32063c7a29cf3a9dd49680d079b6116cf876)",
+          "explanation": "The source describes savanna as a world biome and provides characteristics for savanna, tropical rain forest and desert; no answer key or marking guide is supplied."
+        },
+        {
+          "locator": "blocks 592, 594, 601, 604-611, 656 and question 676",
+          "explanation": "Regional distributions, rainfall/temperature/latitude values and the conflicting 3000 m/300 m threshold require authoritative checking before a keyed lesson is delivered."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2027,6 +2139,40 @@
       "required_action": "A Biology teacher should approve keyed responses and a marking guide before delivery.",
       "affected_ids": [
         "COV-BIO-T2-W06-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W07-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "The Week 7 biome teaching is present in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind an approved lesson for biome definition, Nigerian local biomes and world biomes, preserving source wording and separating any corrected/supplemental facts.",
+      "affected_ids": [
+        "COV-BIO-T2-W07-BIOMES",
+        "COV-BIO-T2-W07-LOCAL-BIOMES",
+        "COV-BIO-T2-W07-WORLD-BIOMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W07-GEOGRAPHY-FACTS",
+      "kind": "FACT",
+      "detail": "The source gives Nigerian state distributions, latitude/rainfall/temperature figures and Afro-alpine altitude at blocks 592, 594, 601, 604-611 and 656. Weekend question 676 conflicts with block 656 (300 m vs 3000 m) and uses 'treeless marshy vegetation' for montane vegetation although that description appears under tundra at block 651.",
+      "required_action": "Verify regional biome distribution and climate/altitude claims against authoritative Nigerian and scientific sources; confirm the intended 300/3000 m value and the mismatched tundra description before creating a correction or answer key. Keep source text intact.",
+      "affected_ids": [
+        "COV-BIO-T2-W07-LOCAL-BIOMES",
+        "COV-BIO-T2-W07-WORLD-BIOMES",
+        "COV-BIO-T2-W07-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W07-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "Week 7 evaluation, revision, weekend assignment and theory have no answer key or marking guide. Some prompts require regional fact verification and a resolution of the montane/tundra mismatch.",
+      "required_action": "A Biology teacher should approve a complete answer/marking guide after the geographic/factual review is resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W07-ASSESSMENT"
       ],
       "blocks_delivery": true
     }
