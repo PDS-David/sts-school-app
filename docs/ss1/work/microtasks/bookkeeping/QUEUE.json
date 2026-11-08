@@ -62,14 +62,15 @@
     "2026-11-08 hash-integrity correction: an earlier ad hoc SHA-256 helper used the wrong round-constant derivation. All affected lesson body_sha256 values and matching test expectations have now been recomputed using the correct SHA-256 algorithm, validated against the standard 'abc' test vector. A fresh static pass across all 21 package lessons confirms every body hash, every practice marking total, unique lesson IDs and all coverage links match. This does not constitute test-suite execution.",
     "OWNER APPROVAL (2026-11-08): project-authored first-term Week 1-4 supplements are approved as delivery teaching versions. bookkeeping.json now contains four exact delivery_corrections linking the original parsed source-body identities to W01 cash book, W02 double-column cash book, W03 contra and W04 double-entry replacements. All BOOKKEEPING-T1-W01-* through W04-* defect/missing-content open items are nonblocking for delivery only. Original source files and defect evidence remain unchanged; no missing figure is guessed. This is not teacher content approval or technical verification: lesson approval remains PENDING, verification DEFERRED, package status PENDING. Automated tests remain unrun under the existing owner deferral.",
     "OWNER CONFIRMATION 2026-11-08: canonical subject identity Bookkeeping is confirmed; all three observed source-heading variants are accepted as metadata aliases. The package records the approval reference; this is not lesson content approval or technical verification.",
-    "OWNER APPROVAL 2026-11-08: the four first-term source-defect decision tasks are superseded for delivery by the approved independent W01-W04 teaching replacements. Their source evidence remains unchanged. They are recorded IMPLEMENTED_TESTING_DEFERRED, not verified; teacher content approval and technical checks remain separate."
+    "OWNER APPROVAL 2026-11-08: the four first-term source-defect decision tasks are superseded for delivery by the approved independent W01-W04 teaching replacements. Their source evidence remains unchanged. They are recorded IMPLEMENTED_TESTING_DEFERRED, not verified; teacher content approval and technical checks remain separate.",
+    "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten teaching weeks. The owner cannot explain why the supplied first-term document has only four week bodies. The matching SS1 Book-Keeping first-term scheme reproduces the same ten-week topic sequence. W05-W10 project-authored extensions have been added to populate ten teaching weeks without claiming missing original source pages."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 82,
+    "IMPLEMENTED_TESTING_DEFERRED": 88,
     "BLOCKED": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 82,
+    "IMPLEMENTED_TESTING_DEFERRED": 88,
     "BLOCKED": 7
   },
   "items": [
@@ -3286,6 +3287,144 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "Project-authored Bookkeeping lesson created at docs/ss1/work/microtasks/bookkeeping/BK-RECON-T2-W10.md and integrated as SUP-SS1-BOOKKEEPING-T2-W10 in backend/src/db/ss1/subjects/bookkeeping.json with COV-BK-T2-RECON-W10. Lesson is explicitly reconstructed, not recovered source. Static package/hash/marking validation and automated tests remain deferred; do not claim tested.",
       "completion_condition": "Lesson is complete, clearly labelled project-authored reconstruction, contains original worked examples and marked practice, has independently checked arithmetic, and is linked to a distinct reconstructed term objective. No original-source locator or provenance is invented."
+    },
+    {
+      "id": "BK-T1-W05-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "1st Term",
+      "week_or_locator": "Week 5",
+      "objective": "Double-column cash book: layout, cash and bank columns — extend the supplied scheme's teaching sequence to meet the owner's minimum ten-week term expectation; authored as a supplement, not recovered source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W05-DOUBLE-COLUMN-LAYOUT; project-authored extension, content approval pending, technical verification deferred.",
+      "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
+    },
+    {
+      "id": "BK-T1-W06-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "1st Term",
+      "week_or_locator": "Week 6",
+      "objective": "Preparing and balancing a double-column cash book — extend the supplied scheme's teaching sequence to meet the owner's minimum ten-week term expectation; authored as a supplement, not recovered source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W06-DOUBLE-COLUMN-PREPARATION; project-authored extension, content approval pending, technical verification deferred.",
+      "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
+    },
+    {
+      "id": "BK-T1-W07-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "1st Term",
+      "week_or_locator": "Week 7",
+      "objective": "Contra entries: identifying and recording transfers between cash and bank — extend the supplied scheme's teaching sequence to meet the owner's minimum ten-week term expectation; authored as a supplement, not recovered source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W07-CONTRA-PRACTICE; project-authored extension, content approval pending, technical verification deferred.",
+      "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
+    },
+    {
+      "id": "BK-T1-W08-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "1st Term",
+      "week_or_locator": "Week 8",
+      "objective": "Principle of double entry: meaning and dual effect — extend the supplied scheme's teaching sequence to meet the owner's minimum ten-week term expectation; authored as a supplement, not recovered source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W08-DOUBLE-ENTRY-FOUNDATION; project-authored extension, content approval pending, technical verification deferred.",
+      "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
+    },
+    {
+      "id": "BK-T1-W09-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "1st Term",
+      "week_or_locator": "Week 9",
+      "objective": "Identifying accounts to debit and credit in business transactions — extend the supplied scheme's teaching sequence to meet the owner's minimum ten-week term expectation; authored as a supplement, not recovered source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W09-DEBIT-CREDIT-IDENTIFICATION; project-authored extension, content approval pending, technical verification deferred.",
+      "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
+    },
+    {
+      "id": "BK-T1-W10-EXTENSION",
+      "kind": "LESSON_AUTHORING",
+      "term": "1st Term",
+      "week_or_locator": "Week 10",
+      "objective": "Posting from the cash book to ledger accounts: integrated practice — extend the supplied scheme's teaching sequence to meet the owner's minimum ten-week term expectation; authored as a supplement, not recovered source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T1.md",
+        "docs/ss1/work/microtasks/bookkeeping/BK-OWNER-DECISIONS.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-INV-T1"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lessons[] SUP-SS1-BOOKKEEPING-T1-W10-CASHBOOK-TO-LEDGER; project-authored extension, content approval pending, technical verification deferred.",
+      "completion_condition": "Lesson objectives, explanatory content, worked example/practice and answer key present; labelled project-authored; no original source material claimed."
     }
   ],
   "review": {

@@ -80,3 +80,10 @@ All authored lessons remain `content_approval=PENDING` and `verification=DEFERRE
 ## Queue reconciliation — 8 November 2026
 
 The four first-term factual-decision queue items (`BK-FACT-T1-W01-DEFECTS` through W04) are now `IMPLEMENTED_TESTING_DEFERRED`, because their original prerequisite decisions were superseded by the owner's approval to use the independently authored W01-W04 delivery replacements. This does not assert that every original-source defect was corrected. The queue now records 82 `IMPLEMENTED_TESTING_DEFERRED` items and 7 `BLOCKED` items. The remaining blocked items comprise the content-approval/verification gate and superseded second-term source-indexing/marker tasks retained as forensic history; there are no pending runnable items.
+
+
+## First-term duration clarification — 8 November 2026
+
+The owner clarified that every term was expected to contain at least ten teaching weeks, but cannot explain why the supplied first-term document contains only four week-labelled teaching bodies. The source's scheme preamble itself contains the ten-week topic sequence (entries 2–10) followed by revision and examination. A matching public SS1 **Book-Keeping** first-term scheme reproduces the same sequence; it is corroborative, not proof of the centre's missing pages. The original source is preserved unchanged and its provenance gap remains recorded.
+
+To meet the owner's minimum delivery expectation, six **project-authored extensions** have been added to the package as first-term Weeks 5–10: double-column cash-book layout; double-column cash-book preparation and balancing; contra-entry practice; double-entry foundation; debit/credit account identification; and cash-book-to-ledger posting practice. These extend the surviving scheme objectives and do not claim to recover missing original notes. The term now has ten teaching lessons in the package. Content approval remains pending and technical verification remains deferred.
