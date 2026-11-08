@@ -605,6 +605,64 @@
         }
       ],
       "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W07-LAND-USES",
+      "objective": "Scheme entry 7: Land and its Uses — Agricultural and Non-Agricultural Uses",
+      "objective_locator": "scheme block 18; Week 7 label 534; topic 536",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 7 blocks 544-576; definition 545; characteristics 547-549; agricultural uses 557-565; non-agricultural uses 571-576",
+          "explanation": "The source defines land, gives three characteristics, five agricultural uses (crop production, grazing, fishery, forestry, wildlife conservation) and six non-agricultural uses (housing, industrial buildings, transport, socio-economic facilities, religious centres, mining)."
+        },
+        {
+          "locator": "Factors 578-587; evaluations 550-552, 566-568, 588-590; general evaluation 592-598",
+          "explanation": "Eight factors affecting land availability are listed. Block 549 is contradictory; only four game reserves are supplied for five-item questions, and only one factor is explicitly labelled socio-economic."
+        },
+        {
+          "locator": "Week 7 range 534-617; SHA-256 dd96618ec8f4bed312155a23f941d506c6fa6ca0be4bccf91ebc31b703a9aa1",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W07-GAME-RESERVES",
+      "objective": "Assessment scope: five game reserves in Nigeria and their locations",
+      "objective_locator": "Week 7 blocks 561-565; evaluations 568 and 596",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 7 blocks 561-565",
+          "explanation": "Four reserves/locations are listed: Kanji National Park (Niger State), Borgu Game Reserve (Kwara State), Zurguma Game Reserve (Niger State), and Yankari Game Reserve (Bauchi State)."
+        },
+        {
+          "locator": "Evaluation 568 and general evaluation 596",
+          "explanation": "Both ask for five game reserves; only four are supplied and the names/locations are not independently verified."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
+    },
+    {
+      "id": "COV-AG-T1-W07-SOCIOECONOMIC-FACTORS",
+      "objective": "Assessment scope: five socio-economic factors affecting land use",
+      "objective_locator": "Week 7 general evaluation 598; factor heading 578 and block 587",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 7 block 587",
+          "explanation": "Only one factor is explicitly labelled socio-economic: land used for housing, markets, schools and roads reduces agricultural availability."
+        },
+        {
+          "locator": "Week 7 blocks 579-586",
+          "explanation": "Other factors are listed under general land availability but are not classified as socio-economic in the source; question 598 asks for five socio-economic factors specifically."
+        }
+      ],
+      "source_id": "SS1-SRC-7aa642b0085b"
     }
   ],
   "open_items": [
@@ -930,6 +988,74 @@
       "required_action": "Verify the classification of incubators and the question's category boundary against authoritative agricultural-engineering references; recommend a precise correction if needed.",
       "affected_ids": [
         "AG-FACT-T1-W06-INCUBATOR-ITEM",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W07-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 7 teaches the land definition, characteristics, agricultural/non-agricultural uses and availability factors (544-587), but the package has no lessons and no importer-confirmed parsed-row ID. COV-AG-T1-W07-LAND-USES is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T1-W07-LAND-USES; do not invent an ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T1-W07-LAND-USES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W07-GAME-RESERVES",
+      "kind": "CONTENT",
+      "detail": "Evaluations 568 and 596 ask for five Nigerian game reserves, but source blocks 561-565 provide only four examples and their locations. COV-AG-T1-W07-GAME-RESERVES is UNRESOLVED.",
+      "required_action": "Author AG-LES-T1-W07-GAME-RESERVES with at least five verified Nigerian game reserves and accurate locations; verify/correct the source's four names/locations through cited evidence, preserving original wording.",
+      "affected_ids": [
+        "COV-AG-T1-W07-GAME-RESERVES",
+        "AG-LES-T1-W07-GAME-RESERVES",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W07-SOCIOECONOMIC-FACTORS",
+      "kind": "CONTENT",
+      "detail": "General evaluation 598 asks for five socio-economic factors affecting land use, but only block 587 is explicitly labelled socio-economic; blocks 579-586 are general land-availability factors without that classification.",
+      "required_action": "Author AG-LES-T1-W07-SOCIOECONOMIC-FACTORS with five accurately sourced socio-economic factors; distinguish supplement content from the source's original list.",
+      "affected_ids": [
+        "COV-AG-T1-W07-SOCIOECONOMIC-FACTORS",
+        "AG-LES-T1-W07-SOCIOECONOMIC-FACTORS",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W07-LAND-MOBILITY",
+      "kind": "FACT",
+      "detail": "Week 7 block 549 says 'Land is mobile i.e. cannot be moved from a place of plenty to a place of scarcity.' The gloss contradicts the adjective.",
+      "required_action": "Verify the intended land characteristic against an authoritative reference and record a source-backed correction or unresolved disposition; do not silently edit the source.",
+      "affected_ids": [
+        "AG-FACT-T1-W07-LAND-MOBILITY",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W07-GAME-RESERVE-USE",
+      "kind": "FACT",
+      "detail": "Weekend Q4 608 says agricultural land should not be used for game reserves or pastures, while the source classifies wildlife conservation/game reserves and grazing/pasture as agricultural uses at 558 and 561.",
+      "required_action": "Verify the intended land-use classification and recommend a precise correction or withdrawal; do not mark an answer that contradicts the source's own categories.",
+      "affected_ids": [
+        "AG-FACT-T1-W07-GAME-RESERVE-USE",
+        "SS1-SRC-7aa642b0085b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T1-W07-LABOUR-FACTOR",
+      "kind": "FACT",
+      "detail": "Weekend Q5 609 includes labour as a possible factor influencing land use; the source discusses climate, topography and population but does not state whether labour is a factor.",
+      "required_action": "Verify the intended answer using authoritative land-use/agricultural-economics sources and recommend a correction if the source scope is incomplete.",
+      "affected_ids": [
+        "AG-FACT-T1-W07-LABOUR-FACTOR",
         "SS1-SRC-7aa642b0085b"
       ],
       "blocks_delivery": true
