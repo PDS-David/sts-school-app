@@ -267,6 +267,42 @@
         "locator": "BK-INV-T2.md: owner disposition and comparison of all four parsed week ranges/body hashes; the only differences are the term-heading metadata and a split scheme-header line",
         "explanation": "Owner confirmed the second-term document should not duplicate first-term content. The registered member is retained as evidence, but its four teaching bodies are byte-for-byte identical at parsed-week level to the first-term bodies. Exclude this duplicate source from generated teaching rows; build second-term content independently under BK-T2-RECONSTRUCTION-PLAN.md."
       }
+    },
+    {
+      "id": "RULE-BK-T2-REVISION-1",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "op": "classify_marker",
+      "anchor": "1.Revision.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Scheme of work, entry 1 (block 4)",
+        "explanation": "The source scheme lists this as a revision/examination schedule marker. No separate revision lesson, examination paper, questions, answers or marking scheme is supplied in the source; classify as a scheme-only marker and do not invent source content."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-REVISION-11",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "op": "classify_marker",
+      "anchor": "11.Revision.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Scheme of work, entry 11 (block 29)",
+        "explanation": "The source scheme lists this as a revision/examination schedule marker. No separate revision lesson, examination paper, questions, answers or marking scheme is supplied in the source; classify as a scheme-only marker and do not invent source content."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-EXAM-12",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "op": "classify_marker",
+      "anchor": "12.Examination",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "Scheme of work, entry 12 (block 30)",
+        "explanation": "The source scheme lists this as a revision/examination schedule marker. No separate revision lesson, examination paper, questions, answers or marking scheme is supplied in the source; classify as a scheme-only marker and do not invent source content."
+      }
     }
   ],
   "lessons": [
@@ -4731,6 +4767,54 @@
         {
           "locator": "BK-LES-T1-W04-POSTING.md",
           "explanation": "A separate, independently authored twenty-transaction exercise is fully solved, balanced and posted to the appropriate ledger accounts. It does not claim to repair or reproduce the missing original answer."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-REVISION-1",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Second-term Week 1 revision marker",
+      "objective_locator": "Scheme of work, entry 1 (block 4)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-REVISION-1"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme of work, entry 1 (block 4)",
+          "explanation": "Scheme-only schedule marker. It is preserved as a marker, not represented as an instructional lesson or supplied assessment."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-REVISION-11",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Second-term Week 11 revision marker",
+      "objective_locator": "Scheme of work, entry 11 (block 29)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-REVISION-11"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme of work, entry 11 (block 29)",
+          "explanation": "Scheme-only schedule marker. It is preserved as a marker, not represented as an instructional lesson or supplied assessment."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-EXAM-12",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Second-term Week 12 examination marker",
+      "objective_locator": "Scheme of work, entry 12 (block 30)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-EXAM-12"
+      ],
+      "evidence": [
+        {
+          "locator": "Scheme of work, entry 12 (block 30)",
+          "explanation": "Scheme-only schedule marker. It is preserved as a marker, not represented as an instructional lesson or supplied assessment."
         }
       ]
     }
