@@ -589,6 +589,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; no practical delivery record",
           "explanation": "No lesson or practical delivery asset is registered in the package. PARTIAL: practical content exists in the source but is not approved or verified for delivery."
+        },
+        {
+          "locator": "Original source figures at blocks 733, 746, 754, 765; media/image2-5.jpeg; exact dimensions and hashes below",
+          "explanation": "Experiment I (blocks 715-724) has no embedded figure. Experiment II's image2.jpeg at block 733 is 1043×445, SHA-256 069e41b3c8437b1dcb0bfc1e573338779776e6f6601da2e3429ae9e47a8e1827; its handwritten labels read 'black paper' and 'covered leaf'. Experiment III's image3.jpeg at block 746 is 1338×689, SHA-256 0247c4e6d6b28a8a9154bcb1a119c8c62b7db137ef5da5b9d461ad608bcea7b6; visible labels include 'split cork', 'conical flask', 'caustic soda', 'leaf outside' and a leaf/inside-flask label. The caustic-soda wording is recorded only as a source label; no handling method or practical instruction is reproduced. Experiment IV's image4.jpeg at block 754 is 993×479, SHA-256 7199a1d3791c8ad6816e88ed2f119881b1ef08b6c3f70393d0921688ce372b66; labels read 'white patch' and 'green colour'. Experiment V's image5.jpeg at block 765 is 677×423, SHA-256 273f28a32f0ea205afa828a9cd1310bb6f8f26ae3757ce67e6539f9322aac6cc; labels read 'test tube', 'oxygen collected', 'beaker', 'funnel' and 'Elodea plant'. All labels are handwritten within raster images and do not survive plain-text extraction. The source figures are not committed or registered as app assets because reuse rights are not recorded. No quantities were added. The practicals remain blocked pending the existing teacher/safety approval; no redraw or procedure is cleared by this disposition."
         }
       ]
     },
@@ -2971,10 +2975,11 @@
     {
       "id": "BIOLOGY-T1-W05-PRACTICAL-SAFETY",
       "kind": "OWNER_ACTION",
-      "detail": "The source includes five practical investigations and detailed chemical-handling methods, but the reviewed range contains no separate safety precautions or teacher-supervision section. The methods are deliberately not reproduced in this indexing record.",
-      "required_action": "A qualified Biology teacher/safety lead must provide an approved risk assessment, safe supervised delivery plan or approved alternative before any of these practicals are used with students. No practical method is cleared for student use by this index.",
+      "detail": "The source includes five practical investigations and four hand-drawn figures (Experiments II-V); the Experiment III figure contains a 'caustic soda' label. The reviewed range contains no separate safety precautions or teacher-supervision section. The source drawings are not registered as app assets because reuse rights are not recorded, and no practical method, quantity or chemical-handling instruction is approved by this visual disposition.",
+      "required_action": "A qualified Biology teacher/safety lead must provide an approved risk assessment, safe supervised delivery plan or approved alternative before any of these practicals or their setup figures are used with students. Any future replacement figure must be a project-authored, safety-reviewed educational illustration and must not add chemical-handling steps or quantities. Do not reproduce the original raster drawings without recorded rights.",
       "affected_ids": [
-        "COV-BIO-T1-W05-PRACTICALS"
+        "COV-BIO-T1-W05-PRACTICALS",
+        "BIO-VIS-T1-EXPERIMENT-FIGURES"
       ],
       "blocks_delivery": true
     },
