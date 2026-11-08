@@ -46,23 +46,24 @@
     "AG-WK-T2-W09 (2026-11-08) indexed Second Term Week Nine: the five soil-formation factors are explicitly listed and described; Week Eight's five-factor question cross-maps here. Two likely wording defects ('sloppy area', 'rock formation' within soil formation) are routed for correction verification.",
     "AG-WK-T3-W01 (2026-11-08) indexed Third Term Week One: 30 tools listed, only five described, six maintenance practices; drawing-book project preserved. Seven post-planting tools not mapped; Hand Towel/Hand trowel mismatch and emasculator wording require follow-up.",
     "AG-WK-T3-W02 (2026-11-08) indexed Third Term Week Two: eight farm-power sources and advantages/disadvantages are taught. Theory 275 needs clearer operations per source; grain-drying prevalence MCQ and water-power uses require verification/correction; no rates or procedures invented.",
-    "AG-WK-T3-W03 (2026-11-08) indexed Third Term Week Three: definition/objectives, advantages, disadvantages, limitations and prospects are taught. Definition's inclusion of farm inputs, claim that few crops can be mechanized and labour exception MCQ require factual review; tillage-order item cross-maps to Second Term Weeks 2-3."
+    "AG-WK-T3-W03 (2026-11-08) indexed Third Term Week Three: definition/objectives, advantages, disadvantages, limitations and prospects are taught. Definition's inclusion of farm inputs, claim that few crops can be mechanized and labour exception MCQ require factual review; tillage-order item cross-maps to Second Term Weeks 2-3.",
+    "AG-WK-T3-W04 (2026-11-08) indexed the digestive, circulatory and reproductive systems; table 431 and six embedded diagrams were inspected. Assessment gaps (liver enzymes, similarities, blood constituent and sphincters) and digestive/reproductive factual claims are routed for bounded follow-up."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 24,
+    "FACTUAL_DEPENDENCY": 26,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 22,
+    "LESSON": 23,
     "CORRECTION_BINDING": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 31,
-    "PENDING": 97,
+    "IMPLEMENTED_TESTING_DEFERRED": 32,
+    "PENDING": 99,
     "BLOCKED": 2
   },
   "items": [
@@ -1928,8 +1929,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and Week Four label block 370 SHA-256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2, range blocks 370-523 SHA-256 53f4e7e4e5be6ec369a81e8b68b0098b12f85395e248ff0f13035f01c88d1499. Scheme combined Week4-5 item maps to digestive system (384-435; ruminant 391-400; non-ruminant 402-422; poultry 424-435; comparison table 431), circulatory system (442-475) and reproduction (481-498). Inspected table 431 and all embedded images: ruminant tract block395, non-ruminant digestive system 417, poultry digestive system 425, male reproductive images 487 (two), female reproductive images 493-494 (two). Evaluations 398-400,420-422,433-435,473-475,496-498; general 500-503; weekend 509-516; theory 518-521 reviewed. Unresolved items: liver enzymes requested at 422 but not taught (bile is mentioned, not an enzyme); similarities in 502 not explicitly stated (table gives differences); water as a 'major' blood constituent in 516 not quantified; sphincters in 521 not taught. Digestive comparison table and enzyme actions need fact-check; male vas deferens/uterus masculinus and sperm storage, Cowper/Bartholin gland naming, species-specific vaginal length and 'sex-inhibited' wording need reproductive specialist verification. Reading 437-440,477-479,505-507 recorded but not checked. Added three PARTIAL coverage rows and one UNRESOLVED row, four open items and three bounded follow-ups AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS, AG-FACT-T3-W04-DIGESTIVE-ACCURACY and AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY. Full report AG-WK-T3-W04.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -4854,6 +4855,112 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W03: MCQ 360's labour option is not resolved by the source's labour-displacement statement.",
       "completion_condition": "A sourced note resolves the intended answer and recommends a precise item correction/clarification."
+    },
+    {
+      "id": "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Four evaluation 422; general evaluation 502; weekend 516; theory 521",
+      "objective": "Author a bounded Week Four assessment supplement for the four under-taught items: distinguish liver bile from digestive enzymes; state accurate similarities between monogastric and polygastric digestion; explain blood composition sufficiently to answer the major-constituent item; and define sphincters in the digestive tract. Use authoritative references, label supplement content distinctly, and include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W04: questions 422, 502, 516 and 521 include content not fully explained in the Week Four teaching blocks.",
+      "completion_condition": "A verified supplement addresses all four assessment gaps with complete practice/marking, provenance and PENDING approval; original source remains unchanged."
+    },
+    {
+      "id": "AG-FACT-T3-W04-DIGESTIVE-ACCURACY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Four enzyme section 404-416 and monogastric/polygastric comparison table 431",
+      "objective": "Verify enzyme names/actions (especially trypsinogen at 410), the role of bile, and the comparison-table claims about bacterial digestion and protein synthesis; recommend accurate species-qualified wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W04-DIGESTIVE-ACCURACY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W04: several digestive-enzyme and comparative physiology claims need independent verification.",
+      "completion_condition": "A sourced note verifies enzyme names/actions and qualifies the comparison-table claims."
+    },
+    {
+      "id": "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Four reproduction blocks 482-492",
+      "objective": "Verify male/female reproductive anatomy and terminology, including vas deferens/uterus masculinus and sperm storage (485), Cowper's versus Bartholin's glands (492), vaginal length species context and 'sex-inhibited characters' terminology (482). Recommend precise, species-qualified corrections.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W04.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W04"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W04: male/female reproductive anatomy and gland terminology at 482-492 need specialist verification.",
+      "completion_condition": "A sourced note verifies each named anatomical relationship and proposes species-appropriate wording."
     }
   ],
   "review": {
@@ -4869,7 +4976,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W04",
     "AG-WK-T3-W05",
     "AG-WK-T3-W06",
     "AG-WK-T3-W07",
@@ -4933,6 +5039,8 @@
     "AG-FACT-T3-W03-MECHANIZATION-DEFINITION",
     "AG-FACT-T3-W03-CROP-MECHANIZATION",
     "AG-FACT-T3-W03-LABOUR-MCQ",
+    "AG-FACT-T3-W04-DIGESTIVE-ACCURACY",
+    "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
@@ -4962,6 +5070,7 @@
     "AG-LES-T2-W06-ECOSYSTEM-INTERACTIONS",
     "AG-LES-T3-W01-TOOL-REFERENCE",
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
+    "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-TEST-PACKAGE"
   ]
 }
