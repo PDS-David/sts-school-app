@@ -41,7 +41,8 @@
     "AG-WK-T2-W02-03 (2026-11-08) indexed combined Second Term Weeks 2-3: pre-planting, planting and post-planting operations and the practical school-farm demonstration are source-taught. Green-manure timing differs between teaching and MCQ; fertilizer-production claim and minor wording defects recorded for evidence-based correction. No numerical seed rates or fertilizer/herbicide rates added.",
     "AG-WK-T2-W04-05 (2026-11-08) indexed combined Second Term Weeks 4-5: three detailed 17-row crop tables (maize/rice, cowpea/groundnut, yam/cassava); seed rates, spacing, climate and maturity figures retained exactly as written. Nutritional values cross-map to First Term Week 10. Staking/training explanations and mulching MCQ ambiguity remain follow-ups; no rates/doses/handling instructions added.",
     "AG-WK-T2-W06 (2026-11-08) indexed Second Term Week Six: agricultural ecology, biotic/abiotic components and interactions in mono-cropping, mixed cropping and mixed farming are taught. Fish-pond and forest/savannah interaction questions exceed teaching; polygastric MCQ and autotrophism/heterotrophism terminology require follow-up.",
-    "AG-WK-T2-W07 (2026-11-08) indexed Second Term Week Seven: rock definition, igneous/sedimentary/metamorphic formation, examples, parent-rock relationships and characteristics. Scientific generalisations about crystallinity/fossils, 'peak' at block 458 and mica MCQ option require verification."
+    "AG-WK-T2-W07 (2026-11-08) indexed Second Term Week Seven: rock definition, igneous/sedimentary/metamorphic formation, examples, parent-rock relationships and characteristics. Scientific generalisations about crystallinity/fossils, 'peak' at block 458 and mica MCQ option require verification.",
+    "AG-WK-T2-W08 (2026-11-08) indexed Second Term Week Eight: physical, chemical and biological rock-weathering processes are source-taught. General evaluation's five soil-formation factors cross-map to Week Nine block 609. Evaluation wording 'rock formation' in blocks 568/573 is inconsistent with the taught topic and is routed for correction verification."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -53,10 +54,10 @@
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
     "LESSON": 20,
-    "CORRECTION_BINDING": 5
+    "CORRECTION_BINDING": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 26,
+    "IMPLEMENTED_TESTING_DEFERRED": 27,
     "PENDING": 90,
     "BLOCKED": 2
   },
@@ -1269,8 +1270,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 517 text \"WEEK EIGHTDATE: …………………..\" (sha256 5dc4f1ae40deb267312224b47cdf5d01343a888091aeab6f42ad223a4d03aec7); blocks 517-598; range sha256 aa24be430015e9cf92fe0e3b82b9ddffd52a5c59998ae69cb3962bd75c9f9f7e. Topic: Rock Weathering and Process of Rock Weathering. Rock weathering (523), processes (527), physical (533), chemical (547), biological (559), General Evaluation (571), Book Review (578), Reading Assignment (581), Weekend Assignment (584-598, theory from 593). Scheme row names 'Rock Weathering and Process of Rock Weathering'; the label block is topic 'ROCK WEATHERING' only. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-676; block 677 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 and Week Eight range blocks 517-598 SHA-256 aa24be430015e9cf92fe0e3b82b9ddffd52a5c59998ae69cb3962bd75c9f9f7e. Scheme item 8 (block12) maps to rock-weathering definition 523-525; processes 527-530; physical agents 533-539; chemical processes 547-553; biological process 559-564. Evaluations 541-545,555-557,566-569; general evaluation 571-576; weekend 584-591; theory 593-596 reviewed. Q576 asks five soil-formation factors and is cross-week supported by Week Nine block 609, which explicitly lists climate, parent materials, topography, biotic factors and time. Evaluation 568 and general evaluation 573 say 'processes of rock formation' despite topic/body teaching rock weathering; correction-binding follow-up added. Questions 585-591 supported by hydration, oxidation, physical agents and biological-weathering content. Reading/book references 578-582 recorded but not checked. Added one PARTIAL coverage entry, two open items and bounded correction task AG-CORR-T2-W08-QUESTION-WORDING. Full report AG-WK-T2-W08.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4423,6 +4424,43 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T2-W07: mica appears in MCQ 505 but is not classified in the lesson.",
       "completion_condition": "A sourced note verifies mica's classification and recommends retention or correction."
+    },
+    {
+      "id": "AG-CORR-T2-W08-QUESTION-WORDING",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-956594d97094",
+      "term": "2nd Term",
+      "week_or_locator": "Week Eight evaluation block 568 and general evaluation block 573; topic blocks 518 and 523-564",
+      "objective": "Verify whether 'processes of rock formation' in blocks 568 and 573 is a source wording error for 'processes of rock weathering'. Bind delivery-only corrections only if the scheme/topic and teacher-approved source support the change; preserve original source bytes.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T2-W08.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 AGRICULTRAL SCIENCE.docx",
+          "member_sha256": "e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T2-W08-QUESTION-WORDING.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T2",
+        "AG-WK-T2-W08"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T2-W08: evaluation wording says rock formation although the taught topic is rock weathering.",
+      "completion_condition": "A correction-binding record verifies the intended wording and cites source evidence; original source remains unchanged."
     }
   ],
   "review": {
@@ -4438,7 +4476,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T2-W08",
     "AG-WK-T2-W09",
     "AG-WK-T3-W01",
     "AG-WK-T3-W02",
@@ -4507,6 +4544,7 @@
     "AG-CORR-T2-W04-05-TABLE-TEXT",
     "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
     "AG-CORR-T2-W07-PEAT-TYPO",
+    "AG-CORR-T2-W08-QUESTION-WORDING",
     "AG-LES-T1-W01-CROP-ASPECTS",
     "AG-LES-T1-W02-TOOLS-MACHINES",
     "AG-LES-T1-W02-AGRO-INDUSTRIES",
