@@ -593,6 +593,18 @@
         "CC-FACT-T2-COOKING-METHOD-CLASSIFICATION"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "CC-T2-LOCAL-MEASUREMENT-CONVERSIONS",
+      "kind": "FACT",
+      "detail": "Week Ten's conversion table (lines 1337-1375) mixes standard spoon measures with ambiguous local containers and unspecified ingredient weights. '4.5 litres = 1 gallon' approximates an Imperial gallon only; 'milk tin', 'beer bottle' and 'derica' are not sufficiently specified; dry-ingredient weights vary by ingredient; '50g large egg' does not say whether shell-on or edible portion.",
+      "required_action": "Before delivering the conversion table, define and measure the exact milk tin and beer bottle, specify the gallon system, identify the commodity for every dry-weight conversion, define the derica container/commodity locally, and state whether egg weight is shell-on or edible portion. Otherwise omit these unverified equivalences from authored teaching while retaining the original source for audit.",
+      "affected_ids": [
+        "CC-VIS-T2-W10-TBL6",
+        "CC-FACT-T2-MEASURING-CONVERSION-FIGURES",
+        "CC-IDX-T2-W10"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
