@@ -87,7 +87,8 @@
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART (2026-11-09) inspected the native VML chart at blocks 350-355 and a fresh private render (PDF page 18/38). Confirmed Plants→A/B/C, C→D/E, E→F/G and G→H/I. Plain-text extraction loses the connector geometry, but the adjacent source prose at blocks 345-348 explicitly preserves the same hierarchy, so no separate asset is required solely for the relationships. Expanded the existing W05 botanical FACT gate to cover the chart's A-I labels and hierarchy. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T3-HDR-BRANDING (2026-11-09) verified the 3rd Term header/footer structure and header image hash. The header graphic and footer paragraph are separate page-furniture parts, not body teaching. Personal contact details and the name-like footer label were not transcribed or included; the package contains no header/footer asset reference or email address. No rights or identity decision was made. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T2-SHP-PYRAMID-ORDER (2026-11-09) resolved the original-.doc visual gate using the exact hash-verified second-term Biology member. A private LibreOffice render of page 28/33 confirms top-to-bottom Hawks—2, Lizards—5, Grasshoppers—12, Grasses—40; widths increase toward the base and the upward axis cue reads 'Decreasing number of organisms'. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete source-unavailable gate. Broader Week 9 lesson, food-web/food-chain and fact-review gates remain.",
-    "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW (2026-11-09) inspected the original hash-verified DOCX and a private render of page 22/46. Block 593's lower VML loop supports Egg→Larvae→Pupa→Adults→Egg; the separate nymph-bearing fragment above belongs to blocks 582-590. The redraw remains BLOCKED because the Week 3 pest-section placement owner action is unresolved and the package has no valid lesson_id for asset registration. No asset or invented ID was committed."
+    "BIO-VIS-T1-W03-RHINO-BEETLE-CYCLE-REDRAW (2026-11-09) inspected the original hash-verified DOCX and a private render of page 22/46. Block 593's lower VML loop supports Egg→Larvae→Pupa→Adults→Egg; the separate nymph-bearing fragment above belongs to blocks 582-590. The redraw remains BLOCKED because the Week 3 pest-section placement owner action is unresolved and the package has no valid lesson_id for asset registration. No asset or invented ID was committed.",
+    "BIO-FACT-T1-W05-CONDITIONS (2026-11-09) resolved the fifth-condition question for Week 5 assignment 1(d). Source blocks 682-708 name only light/sunlight, chlorophyll, water and carbon(IV) oxide; assignment block 778 asks for five. WJEC Blended Learning and NOUN Access Biology support suitable temperature for enzyme-controlled reactions as the fifth supplemental answer. OpenStax confirms the four source inputs/chlorophyll role; Monash confirms temperature as a rate factor. Updated BIOLOGY-T1-W05-ASSIGNMENT; original source unchanged and full marking guide/lesson remain open. Testing and student-facing approval remain deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -103,9 +104,9 @@
     "SCOPE_DECOMPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "IMPLEMENTED_TESTING_DEFERRED": 79,
     "BLOCKED": 12,
-    "PENDING": 76
+    "PENDING": 75
   },
   "items": [
     {
@@ -3342,8 +3343,8 @@
       "depends_on": [
         "BIO-WK-T1-W05"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Appended by BIO-WK-T1-W05; task scope and exact source locators are recorded in the Week 5 index."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Report BIO-FACT-T1-W05-CONDITIONS.md (2026-11-09): verified source member SHA 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8; inspected teaching blocks 682-708 and assignment block 778. Source names four items only: light/sunlight, chlorophyll, water and carbon(IV) oxide. WJEC Blended Learning and National Open University of Nigeria Access Biology section 3.1 support suitable temperature as the fifth school-level condition; OpenStax confirms the four source inputs and chlorophyll's pigment role; Monash confirms temperature's effect on enzyme-controlled rate. Determination: suitable temperature is the fifth answer for the assignment, clearly labelled as external supplemental content and not attributed to source. Updated BIOLOGY-T1-W05-ASSIGNMENT; full marking guide/lesson remain open. Not approved, tests/importer/display not run."
     },
     {
       "id": "BIO-FACT-T1-W05-EQUATIONS",
@@ -5837,7 +5838,6 @@
     "BIO-VIS-T2-W03-COCKROACH-REDRAW",
     "BIO-VIS-T2-W03-HOUSEFLY-REDRAW",
     "BIO-VIS-T2-W09-FOODWEB-REDRAW",
-    "BIO-FACT-T1-W05-CONDITIONS",
     "BIO-FACT-T1-W05-EQUATIONS",
     "BIO-FACT-T1-W07-FOOD-CLAIMS",
     "BIO-FACT-T2-W01-REVISION-FACTS",
@@ -5862,6 +5862,7 @@
     "BIO-SCOPE-T2-W06-BIOMES",
     "BIO-SCOPE-T2-W10-MANAGEMENT",
     "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
+    "BIO-LES-T1-W05-CONDITIONS",
     "BIO-LES-T1-W08-MODE-OF-NUTRITION",
     "BIO-LES-T1-W09-ECOLOGY",
     "BIO-LES-T2-W01-ARTIFICIAL-PROPAGATION",
