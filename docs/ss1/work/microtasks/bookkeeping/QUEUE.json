@@ -56,7 +56,8 @@
     "2026-11-08: Strengthened the existing first-term Bookkeeping supplements W01-W04 with explicit tabular formats, balanced independent examples and marked practice. Queue tasks BK-LES-T1-W01-CASH-BOOK, BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP, BK-LES-T1-W03-CONTRA and BK-LES-T1-W04-DOUBLE-ENTRY moved to IMPLEMENTED_TESTING_DEFERRED. Source defects involving the original T1 figures remain preserved and are not treated as corrected; the separate W04 posting task still requires a complete independent integrated posting example.",
     "2026-11-08: Completed the final pending first-term lesson task by adding a fully worked, independently authored twenty-transaction cash-book and ledger-posting exercise. The original source's unsolved transaction list and Assignment 2 are still preserved as source defects; no source correction or expert approval is implied. All 89 queue tasks now have non-PENDING statuses; 12 remain BLOCKED and require their recorded owner/expert actions.",
     "2026-11-08 static integrity check after first-term expansions: all 15 selected package lessons (four existing T1 lessons expanded, one new T1 posting lesson, and ten T2 lessons) have body_sha256 values that recompute exactly; all practice mark totals match marking allocations. This is a manual/static integrity check only; packageSchema and automated test execution remain deferred.",
-    "2026-11-08 queue scheduler refresh: no PENDING tasks remain, so next_runnable is now an empty list. Remaining BLOCKED tasks are preserved because they represent source-exclusion dispositions or explicit owner/subject-expert approval/decision requirements; they are not silently cleared."
+    "2026-11-08 queue scheduler refresh: no PENDING tasks remain, so next_runnable is now an empty list. Remaining BLOCKED tasks are preserved because they represent source-exclusion dispositions or explicit owner/subject-expert approval/decision requirements; they are not silently cleared.",
+    "2026-11-08 sequencing refinement: Week 2 double-column cash-book supplement now excludes cash-to-bank transfers and defers contra entries to the formal Week 3 lesson, matching the source scheme order. Its worked totals, practice answers and marking criteria were recalculated; package test hash updated. No original source content changed."
   ],
   "counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 77,
@@ -1399,7 +1400,7 @@
         "BK-FACT-T1-W02-DEFECTS"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK explicitly compares single- and double-column cash books and their transaction coverage. The double-column cash-book layout and independently authored worked/practice examples are included. Technical tests and approval remain deferred.",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK explicitly compares single- and double-column cash books and their transaction coverage. The double-column cash-book layout and independently authored worked/practice examples are included. Technical tests and approval remain deferred. Sequencing correction: contra transfers are now deferred to the formal Week 3 lesson; Week 2 examples cover ordinary cash/bank receipts and payments only.",
       "completion_condition": "A lesson in bookkeeping.json teaches the comparison from the single column content indexed by BK-WK-T1-W01, carries the decisions of BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1445,7 +1446,7 @@
         "BK-FACT-T1-W02-DEFECTS"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK now includes a full two-sided cash/bank column table, separate balancing, contra folio marks, closing balances and an independent marked exercise. The source's nine April transactions remain unsolved because the source uses placeholder year 19x9 and supplies no answer; no answer is fabricated. Technical tests and approval remain deferred.",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK now includes a full two-sided cash/bank column table, separate balancing, contra folio marks, closing balances and an independent marked exercise. The source's nine April transactions remain unsolved because the source uses placeholder year 19x9 and supplies no answer; no answer is fabricated. Technical tests and approval remain deferred. Sequencing correction: contra transfers are now deferred to the formal Week 3 lesson; Week 2 examples cover ordinary cash/bank receipts and payments only.",
       "completion_condition": "A lesson in bookkeeping.json prepares a double column cash book from the nine source transactions, states every derived total and balance, labels the solution as authored rather than as the source's, resolves the two transfers as decided in BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
