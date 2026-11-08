@@ -371,18 +371,19 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
 
 
 test('scheme-of-work WEEK column heading is not parsed as a Week 1 lesson marker', () => {
-  const schemePreamble = 'SCHEME OF WORK  \\nWEEK\\n1                 Revision\\n2. Petty cash book\\n11 revision\\n12 exam\\n';
-  const marker = [...schemePreamble.matchAll(/^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim)][0];
+  const markerPattern = /^[ \t]*week\s*[:.\-]*\s*((?:\d+(?:\s*(?:&|and|,|-)\s*\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim;
+  const schemePreamble = 'SCHEME OF WORK  \nWEEK\n1                 Revision\n2. Petty cash book\n11 revision\n12 exam\n';
+  const marker = [...schemePreamble.matchAll(markerPattern)][0];
   assert(marker);
   assert.equal(isSchemeWorkWeekHeader(schemePreamble, marker.index!, marker[0]), true);
 
-  const sameLineWeek = 'SCHEME OF WORK\\nWEEK 1 Revision\\n';
-  const sameLineMatch = [...sameLineWeek.matchAll(/^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim)][0];
+  const sameLineWeek = 'SCHEME OF WORK\nWEEK 1 Revision\n';
+  const sameLineMatch = [...sameLineWeek.matchAll(markerPattern)][0];
   assert(sameLineMatch);
   assert.equal(isSchemeWorkWeekHeader(sameLineWeek, sameLineMatch.index!, sameLineMatch[0]), false);
 
-  const nonSchemeWeek = 'INTRODUCTION\\nWEEK\\n1 Revision\\n';
-  const nonSchemeMatch = [...nonSchemeWeek.matchAll(/^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen))/gim)][0];
+  const nonSchemeWeek = 'INTRODUCTION\nWEEK\n1 Revision\n';
+  const nonSchemeMatch = [...nonSchemeWeek.matchAll(markerPattern)][0];
   assert(nonSchemeMatch);
   assert.equal(isSchemeWorkWeekHeader(nonSchemeWeek, nonSchemeMatch.index!, nonSchemeMatch[0]), false);
 });
