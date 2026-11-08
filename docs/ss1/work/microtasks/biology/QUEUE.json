@@ -42,23 +42,25 @@
     "BIO-WK-T2-W02 (2026-11-08) indexed sexual reproduction and meiosis, then confirmed the scheme's Excretion objective has only a content-list heading and no teaching body in Week 2. Gametogenesis is mentioned but spermatogenesis/oogenesis are not defined. Excretion questions and several revision prompts need supplemental teaching or approved-reference review. Two bounded lesson tasks and one fact task were appended; no key was invented.",
     "BIO-WK-T2-W03 (2026-11-08) indexed reproduction in Amoeba, Paramecium, Spirogyra, earthworm, cockroach, housefly and snail, including every evaluation and assignment. Tapeworm reproduction appears in questions but is not taught in the week; the later tapeworm mention is parasitism. Advantages/disadvantages of sexual reproduction are also not taught. A factual scope check and two bounded lesson tasks were appended; no answer key was invented.",
     "BIO-WK-T2-W04 (2026-11-08) indexed irritability, response types, movement, cyclosis and movement organelles. The Amoeba structure is not identified; a klinostat appears only in a question; geotropism questions have no supplied practical description/key. A factual check and bounded supplemental lesson were appended; no answer key was invented.",
-    "BIO-WK-T2-W05 (2026-11-08) indexed animal nutrition, food-substance groups, balanced diet, digestive enzymes and all assessment items. Health/deficiency claims are held for authoritative review. Theory block 477 asks for food tests but the week provides no test teaching or approved practical source; no reagent names or procedures were added. A health-claim fact task and animal-nutrition lesson were appended; the food-test resource dependency is blocked pending qualified teacher approval."
+    "BIO-WK-T2-W05 (2026-11-08) indexed animal nutrition, food-substance groups, balanced diet, digestive enzymes and all assessment items. Health/deficiency claims are held for authoritative review. Theory block 477 asks for food tests but the week provides no test teaching or approved practical source; no reagent names or procedures were added. A health-claim fact task and animal-nutrition lesson were appended; the food-test resource dependency is blocked pending qualified teacher approval.",
+    "BIO-WK-T2-W06 (2026-11-08) indexed ecology, branches, ecological terms and ecosystem components, plus all evaluation and assignment items. Biomes is briefly defined in Week 6 although the scheme assigns it to Week 7; a cross-week scope task was appended. Earth-surface and atmospheric-composition figures were held for authoritative review. No answer key is present; testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 14,
+    "FACTUAL_DEPENDENCY": 15,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
     "VISUAL_DISPOSITION": 36,
     "SOURCE_MARKER_DISPOSITION": 1,
-    "LESSON": 17
+    "LESSON": 18,
+    "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 25,
-    "PENDING": 77,
+    "IMPLEMENTED_TESTING_DEFERRED": 26,
+    "PENDING": 79,
     "BLOCKED": 6
   },
   "items": [
@@ -1688,8 +1690,8 @@
         "BIO-INV-T2",
         "BIO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T2): label block 481 text \"WEEK SIX                                                                                                      DATE………………………\" (sha256 f0edcbda6aafa4c18d5105756f809a9eb17f927397ee0853793fd82c04d4acc0); blocks 481-572; range sha256 0bff8954b7b9936d96f11ffdab0bf739acba8ce6e074f4dfd9236fb2220b7d45. Topic: Basic Ecological Concepts. Definition of ecology (489), branches (495), ecological terms (504: environment 506, biosphere 508, habitat 514, niche 519, population 521, community 523, ecosystem 525, biomes 527), components of an ecosystem (534: abiotic 537, biotic 542), General Evaluation/Revisional Questions (549), Reading Assignment (558), Weekend Assignment (561-572, theory from 568). 'Biomes' is defined here (block 527) although the scheme gives biomes to Week 7. Locator rule: converted copy (LibreOffice 24.2.7.2, headless --convert-to docx of the hash-verified .doc): word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-961; block 962 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T2-W06.md; verified the assigned legacy DOC member hash and private DOCX conversion; Week 6 label and range hashes match the inventory/queue. Indexed ecology/branches, ecological terms, biosphere/ecosphere portions and abiotic/biotic ecosystem components, plus all evaluation, revision, weekend and theory questions. Biomes is briefly defined in Week 6 although the scheme assigns it to Week 7; a scope-comparison task was appended. Surface-coverage and atmospheric-composition figures need authoritative review. No answer key exists. No extract or converted file committed; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4093,6 +4095,116 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T2-W05; see the Week 5 index for exact source locators and delivery gates."
+    },
+    {
+      "id": "BIO-FACT-T2-W06-ENVIRONMENT-FACTS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, converted DOCX blocks 481-572",
+      "objective": "Verify the surface-coverage proportions and atmospheric gas percentages printed at blocks 511-513 against authoritative current environmental/science references. Record exact citations and keep any updated values distinct from the original source.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T2-W06-ENVIRONMENT-FACTS.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W06; see the Week 6 index for exact source locators."
+    },
+    {
+      "id": "BIO-SCOPE-T2-W06-BIOMES",
+      "kind": "SCOPE_DECOMPOSITION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, converted DOCX blocks 481-572",
+      "objective": "Compare the brief Biomes definition at Week 6 block 527 and content-list entry 486 with the Week 7 scheme/body. Determine whether Week 6 is an introductory mention or a scope misplacement; preserve source text and avoid duplicating full Week 7 biome teaching.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-SCOPE-T2-W06-BIOMES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W06",
+        "BIO-WK-T2-W07"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W06; see the Week 6 index for exact source locators."
+    },
+    {
+      "id": "BIO-LES-T2-W06-ECOLOGY",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "term": "2nd Term",
+      "week_or_locator": "Week 6, converted DOCX blocks 481-572",
+      "objective": "Author a clearly labelled supplemental lesson covering ecology, autecology/synecology, environment, biosphere/ecosphere, lithosphere, hydrosphere, atmosphere, habitat subdivisions, niche, population, community, ecosystem, and abiotic/biotic components. Use verified environmental figures from BIO-FACT-T2-W06-ENVIRONMENT-FACTS, distinguish supplements from source wording and include keyed practice.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-INV-T2.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc",
+          "member_sha256": "41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T2-W06-ECOLOGY.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T2-W06",
+        "BIO-FACT-T2-W06-ENVIRONMENT-FACTS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T2-W06; see the Week 6 index for exact source locators."
     }
   ],
   "review": {
@@ -4126,7 +4238,6 @@
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
     "BIO-VIS-T1-TBL-ENZYMES",
-    "BIO-WK-T2-W06",
     "BIO-WK-T2-W07",
     "BIO-WK-T2-W08",
     "BIO-WK-T2-W09",
@@ -4175,6 +4286,7 @@
     "BIO-FACT-T2-W03-TAPEWORM-SCOPE",
     "BIO-LES-T2-W03-SEXUAL-ADVANTAGES",
     "BIO-FACT-T2-W04-KLINOSTAT",
-    "BIO-FACT-T2-W05-HEALTH-CLAIMS"
+    "BIO-FACT-T2-W05-HEALTH-CLAIMS",
+    "BIO-FACT-T2-W06-ENVIRONMENT-FACTS"
   ]
 }
