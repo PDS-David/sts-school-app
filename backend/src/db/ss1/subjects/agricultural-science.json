@@ -821,6 +821,54 @@
           "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T2-W04-05-SELECTED-CROPS",
+      "objective": "Scheme items 4-5: Husbandry and Cultivation of Some Selected Crops — cereals, legumes, roots and tubers",
+      "objective_locator": "Second Term scheme block 9; combined Weeks Four and Five label block 279; topic 280",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week 4-5 maize/rice table block 286; 17 rows, 3 columns",
+          "explanation": "Maize and rice are described across varieties, land preparation, climate/soil, propagation, planting date/method, seed rate, spacing, cultural practices, maturity, harvesting, processing, uses and storage."
+        },
+        {
+          "locator": "Week 4-5 cowpea/groundnut table block 298; 17 rows, 3 columns",
+          "explanation": "Cowpea and groundnut receive the same cultivation treatment; cowpea protein and legume uses and groundnut oil content/uses are specified."
+        },
+        {
+          "locator": "Week 4-5 yam/cassava table block 309; 17 rows, 3 columns",
+          "explanation": "Yam and cassava receive the same cultivation treatment, including varieties, climate/soil, propagation, dates, planting, seed rate where supplied, spacing, practices, maturity, harvesting, processing, uses and storage."
+        },
+        {
+          "locator": "Evaluations 288-292, 300-303, 311-313; general evaluation 315-319; weekend 324-330; theory 332-334",
+          "explanation": "Cultivation and processing questions map to the tables; nutritional values cross-map to First Term Week 10 blocks 893-898. The source names staking/training but does not explain them; mulching MCQ options include benefits not taught."
+        },
+        {
+          "locator": "Week 4-5 range blocks 279-336; SHA-256 1dbb2d100cc1c775a4797cdeb018bfff05030346fe9d3bb7593448e4ac5e577a",
+          "explanation": "Source tables are present, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-956594d97094"
+    },
+    {
+      "id": "COV-AG-T2-W04-05-YAM-PRACTICES",
+      "objective": "Assessment scope: explain staking, mulching and training of vine in yam cultivation",
+      "objective_locator": "Yam table block 309; theory block 333",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Yam cultural-practices row, block 309",
+          "explanation": "The source lists mulching, weeding, fertilizer application, staking and training of vine, but provides no explanation of staking or training of vine."
+        },
+        {
+          "locator": "Theory block 333",
+          "explanation": "The question asks learners to discuss staking, mulching and training of vine. Mulching is described earlier in Second Term block 197-203, but staking/training are only named in the crop table."
+        }
+      ],
+      "source_id": "SS1-SRC-956594d97094"
     }
   ],
   "open_items": [
@@ -1338,6 +1386,51 @@
       "required_action": "Verify the fertilizer-production statement against authoritative fertilizer references and bind only evidence-supported delivery corrections for the wording at blocks 39, 180 and MCQ 254; preserve original source bytes and show corrections separately.",
       "affected_ids": [
         "AG-CORR-T2-W02-03-SOURCE-TERMS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 4-5 provides three detailed 17-row crop-cultivation tables (maize/rice at 286, cowpea/groundnut at 298, yam/cassava at 309), but the package has no lesson rows and no importer-confirmed parsed-row ID. COV-AG-T2-W04-05-SELECTED-CROPS is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T2-W04-05-SELECTED-CROPS; preserve every table figure and label verbatim.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-SELECTED-CROPS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-YAM-PRACTICES",
+      "kind": "CONTENT",
+      "detail": "Yam table block 309 lists staking and training of vine but does not explain either practice. Theory block 333 asks learners to discuss staking, mulching and training of vine. Mulching is explained in Second Term blocks 197-203; staking/training remain under-taught.",
+      "required_action": "Author AG-LES-T2-W04-05-YAM-PRACTICES with source-backed, age-appropriate explanations of staking and training of yam vines, plus keyed practice; distinguish the supplement from the original table.",
+      "affected_ids": [
+        "COV-AG-T2-W04-05-YAM-PRACTICES",
+        "AG-LES-T2-W04-05-YAM-PRACTICES",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-MULCHING-MCQ",
+      "kind": "FACT",
+      "detail": "Weekend Q3 block 328 asks which is not an importance of mulching in yam cultivation. Earlier Second Term blocks 197-203 teach moisture conservation, temperature regulation, weed suppression, erosion control and humus addition, but do not state pest prevention or prevention of yam rot; options C and D may both be unsupported.",
+      "required_action": "Verify the intended agronomic effects and determine whether the MCQ has one defensible exception; recommend a precise correction or withdrawal rather than guessing.",
+      "affected_ids": [
+        "AG-FACT-T2-W04-05-MULCHING-MCQ",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W04-05-TABLE-ANOMALIES",
+      "kind": "CONTENT",
+      "detail": "The crop tables contain text anomalies that must not be silently normalised: '260C-300C' (maize temperature), '200c' (rice temperature), '30cmwithin row', 'per boiling', '2/3 0f', joined botanical names and a malformed yam-variety cell ('Bitter yam ... Aerial yam ...'). All seed-rate, spacing, climate and maturity figures must remain verbatim pending verification.",
+      "required_action": "Create AG-CORR-T2-W04-05-TABLE-TEXT to verify each anomalous string against an authoritative parallel source or teacher-approved original. Bind only evidence-backed delivery corrections; retain exact original table values and provenance.",
+      "affected_ids": [
+        "AG-CORR-T2-W04-05-TABLE-TEXT",
         "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
