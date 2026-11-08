@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 49,
-    "PENDING": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 50,
+    "PENDING": 40,
     "BLOCKED": 9
   },
   "total": 99,
@@ -504,8 +504,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 4 (source label 'WEEK 5', title \"STANDARD FORM AND APPROXIMATION\", 3151 characters, body sha256 6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R04 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM and correction CORR-MATHEMATICS-T1-W05-STANDARD-FORM (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 235 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: reviewed parsed row 4 (STANDARD FORM AND APPROXIMATION; 3,151 characters; body SHA-256 6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf). Expanded replacement SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM to body SHA-256 94344dac24315eded0e5fa74d59e08377fc8489627e91bb61091a189b862c492, five objectives and 11 keyed practice items. Objective mapping now covers standard/ordinary conversions, negative powers, all four standard-form operations, place-value rounding, significant figures, decimal places and bounds of accuracy. Mapped Week Five source examples/evaluation/weekend/theory from public close-equivalent PDF pages 16–20 (lines 1216–1420) to lesson sections and Q1–Q11. Corrected source defects: 1≤a<10; subtraction 0.00004807; 4517 nearest thousand 5000; 0.0089 to3dp 0.009. Public copy not asserted byte-identical to archive. External NGM SSS1 pages6–7 reading assignment retained; exact textbook exercises not reproduced. OI-MATH-001 remains open for source equation extraction; approval PENDING, verification DEFERRED, tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -1704,7 +1704,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM] body_sha256=91ff1d9f686a94b883f4bde90649ca47b4ce3fad4401b680a6e519fee95052a6; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R04; bound by CORR-MATHEMATICS-T1-W05-STANDARD-FORM. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W05.",
+      "implementation_reference": "Expanded SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM (body SHA-256 94344dac24315eded0e5fa74d59e08377fc8489627e91bb61091a189b862c492) to five objectives and 11 keyed practice items. Added standard-to-ordinary conversions, decimal fractions, approximation examples, significant figures, decimal places, bounds and practical thickness calculation. All marking totals checked; approval PENDING, verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1858,7 +1858,7 @@
         "MATH-WK-T1-W05"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W05-STANDARD-FORM] source_lesson_id=SS1-SRC-0c9004137f95:BODY:6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf body_sha256=6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf replacement_id=SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM. Stated defects: Source defines the leading factor as between 1 and 9 (must be 1 ≤ a < 10), contains an inconsistent subtraction result (0.00004803 then 4.807×10⁻⁵) and its exercises lose all exponents in delivered text. The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W05). Do not activate delivery until that review closes.",
+      "implementation_reference": "delivery_corrections[id=CORR-MATHEMATICS-T1-W05-STANDARD-FORM] binds source SS1-SRC-0c9004137f95:BODY:6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf (body SHA-256 6e1b2a32216d22ca137412f198d8c9df38606143f3c1dc4c09b2bbe7bec24acf) to SUP-SS1-MATHEMATICS-T1-W05-STANDARD-FORM (body SHA-256 94344dac24315eded0e5fa74d59e08377fc8489627e91bb61091a189b862c492). Correction evidence now includes all Week Five objectives and exercise mapping, including standard/ordinary conversions, approximation, sig figs, decimal places and bounds; source defects are explicitly corrected.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -3211,11 +3211,10 @@
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
     },
-    "notes": "MATH-WK-T1-W04 modular arithmetic objective and exercise mapping completed; subtraction and operation tables added; source defects retained as corrections. Original DOCX notation/table verification remains open; tests deferred."
+    "notes": "MATH-WK-T1-W05 objective-level review completed; replacement expanded to include all conversion, operations, rounding, significant-figure, decimal-place and bounds objectives with source exercise mapping. Original equation extraction remains open; tests deferred."
   },
   "next_runnable": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W05",
     "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
     "MATH-WK-T1-W08",
@@ -3254,7 +3253,6 @@
   ],
   "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W05",
     "MATH-WK-T1-W06",
     "MATH-WK-T1-W07",
     "MATH-WK-T1-W08",
