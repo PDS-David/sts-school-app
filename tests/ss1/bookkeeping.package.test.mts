@@ -57,13 +57,30 @@ test('Delivery corrections bind the exact original identity to a same-term repla
   }
 });
 
-test('No lesson checkpoint fabricates content approval or completed verification', () => {
+test('Owner sign-off is recorded for every lesson without fabricating technical verification', () => {
   for (const l of packageSchema.parse(raw).lessons) {
-    assert.equal(l.state.content_approval, 'PENDING');
-    assert.equal(l.state.approval_reference, null);
+    assert.equal(l.state.content_approval, 'APPROVED');
+    assert.match(l.state.approval_reference ?? '', /^OWNER SIGN-OFF PROVIDED 2026-11-09:/);
+    assert.match(l.state.approval_reference ?? '', /all 32 SS1 Bookkeeping lessons/);
     assert.equal(l.state.verification, 'DEFERRED');
     assert.equal(l.state.verification_reference, null);
   }
+});
+
+test('Accounting corrections preserve the correct overdraft and returns balances', () => {
+  const p = packageSchema.parse(raw);
+  const overdraft = p.lessons.find(l => l.id === 'SUP-SS1-BOOKKEEPING-T2-W09');
+  assert(overdraft);
+  assert.match(overdraft.body, /balance c\/d on the debit side.*balance b\/d down on the credit side/s);
+  assert.doesNotMatch(overdraft.body, /brought down on the debit side/);
+  const trial = p.lessons.find(l => l.id === 'SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION');
+  assert(trial);
+  assert.match(trial.body, /returns inwards normally debit; returns outwards normally credit/);
+  const returns = trial.practice.find(q => q.id === 'Q2');
+  assert(returns);
+  assert.equal(returns.answer, '(a) Debit. (b) Debit. (c) Credit. (d) Credit.');
+  assert.equal(returns.marking[1].criterion, 'Returns inwards — debit');
+  assert.equal(returns.marking[2].criterion, 'Returns outwards — credit');
 });
 
 test('Source aliases carry the recorded owner confirmation without implying lesson approval', () => {
