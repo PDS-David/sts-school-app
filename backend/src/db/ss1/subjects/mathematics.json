@@ -721,8 +721,8 @@
         "Apply modular arithmetic to cyclic events such as clocks, market days and circular tracks.",
         "Solve simple linear congruences and recognise when more than one solution exists."
       ],
-      "body": "MODULAR ARITHMETIC\n\nWhat you will learn: how to reduce a number to its remainder in a given modulus, add, subtract and multiply in a modulus, and solve simple modular equations.\n\n1. Meaning\nModular arithmetic describes repeating (cyclic) situations such as hours on a clock, days of the week or months of the year. Working modulo n means we only care about the remainder after dividing by n. We write a = r (mod n) when a and r leave the same remainder on division by n, so a - r is a multiple of n. The possible results are 0, 1, ..., n-1. Any integer, positive or negative, can be reduced; the number being reduced does not have to be smaller than the modulus.\n\n2. Reducing\n- 15 (mod 4): 15 = 3 x 4 + 3, so 3.\n- 102 (mod 4): 102 = 25 x 4 + 2, so 2.\n- Clock: the short hand points to 5. After 30 hours it points to (5 + 30) mod 12 = 35 mod 12 = 11.\nNegative numbers: add multiples of n until the result is between 0 and n-1.\n- -5 (mod 6) = -5 + 6 = 1.   - -17 (mod 10) = -17 + 20 = 3.   - -75 (mod 7) = -75 + 77 = 2.\n\n3. Addition, subtraction, multiplication\nAdd, subtract or multiply as usual, then reduce.\n- (42 + 28) mod 8 = 70 mod 8 = 6.   - (54 + 25) mod 5 = 79 mod 5 = 4.\n- (16 x 7) mod 5 = 112 mod 5 = 2.   - (21 x 65) mod 4 = 1365 mod 4 = 1.\nNote: 16 x 7 = 112 (not 117); the answer 2 only happens to be correct because 117 mod 5 is also 2. Always check the product.\n\n7. Equations\nExample 1. Solve 3x = 5 (mod 7). Test x = 0 to 6, or add 7 to the right side until it divides by 3: 5, 12. 3x = 12 gives x = 4. Check: 3 x 4 = 12 = 5 (mod 7).\nExample 2. Solve 2x + 3 = 1 (mod 6). Subtract 3: 2x = -2 = 4 (mod 6). Test x = 0..5: x = 2 gives 4, x = 5 gives 10 = 4 (mod 6). Both work, so x = 2 or x = 5 (mod 6). Check: 2 x 5 + 3 = 13 = 1 (mod 6). When the coefficient of x and the modulus share a factor (here 2 and 6), there can be more than one solution.\n\n4. Subtraction and operation tables\nFor subtraction, subtract first and then reduce the result to one of 0, 1, ..., n-1. For example:\n- 2 − 3 = −1 = 3 (mod 4).\n- 17 − 23 = −6 = 0 (mod 6).\n\nAddition table modulo 4:\n⊕ | 0 | 1 | 2 | 3\n0 | 0 | 1 | 2 | 3\n1 | 1 | 2 | 3 | 0\n2 | 2 | 3 | 0 | 1\n3 | 3 | 0 | 1 | 2\n\nSubtraction table modulo 4:\n⊖ | 0 | 1 | 2 | 3\n0 | 0 | 3 | 2 | 1\n1 | 1 | 0 | 3 | 2\n2 | 2 | 1 | 0 | 3\n3 | 3 | 2 | 1 | 0\n\nMultiplication table modulo 4:\n× | 0 | 1 | 2 | 3\n0 | 0 | 0 | 0 | 0\n1 | 0 | 1 | 2 | 3\n2 | 0 | 2 | 0 | 2\n3 | 0 | 3 | 2 | 1\n\n5. Applications to cyclic events\n- Clock: the short hand points to 5. Thirty hours later it points to (5 + 30) mod 12 = 11.\n- Rotating market days: if a market repeats every 4 days, a date 10 days later is 10 mod 4 = 2 places forward in the cycle.\n- A toy car on a circular track returns to its starting point after each complete circuit; the position can be described by the distance travelled modulo the track circumference.\n\n6. Completing a multiplication table modulo 6\nFor rows and columns 2, 3, 4 and 5, multiply and reduce each product modulo 6:\n× | 2 | 3 | 4 | 5\n2 | 4 | 0 | 2 | 4\n3 | 0 | 3 | 0 | 3\n4 | 2 | 0 | 4 | 2\n5 | 4 | 3 | 2 | 1\n\n8. Source correction and calculation checks\nThe modulus does not have to be greater than the number being reduced; any integer can be reduced modulo n. Also check ordinary products before reducing: 16 × 7 = 112, not 117.",
-      "body_sha256": "f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875",
+      "body": "MODULAR ARITHMETIC\n\nWhat you will learn: how to reduce a number to its remainder in a given modulus, add, subtract and multiply in a modulus, and solve simple modular equations.\n\n1. Meaning\nModular arithmetic describes repeating (cyclic) situations such as hours on a clock, days of the week or months of the year. Working modulo n means we only care about the remainder after dividing by n. We write a = r (mod n) when a and r leave the same remainder on division by n, so a - r is a multiple of n. The possible results are 0, 1, ..., n-1. Any integer, positive or negative, can be reduced; the number being reduced does not have to be smaller than the modulus.\n\n2. Reducing\n- 15 (mod 4): 15 = 3 x 4 + 3, so 3.\n- 102 (mod 4): 102 = 25 x 4 + 2, so 2.\n- Clock: the short hand points to 5. After 30 hours it points to (5 + 30) mod 12 = 35 mod 12 = 11.\nNegative numbers: add multiples of n until the result is between 0 and n-1.\n- -5 (mod 6) = -5 + 6 = 1.   - -17 (mod 10) = -17 + 20 = 3.   - -75 (mod 7) = -75 + 77 = 2.\n\n3. Addition, subtraction, multiplication\nAdd, subtract or multiply as usual, then reduce.\n- (42 + 28) mod 8 = 70 mod 8 = 6.   - (54 + 25) mod 5 = 79 mod 5 = 4.\n- (16 x 7) mod 5 = 112 mod 5 = 2.   - (21 x 65) mod 4 = 1365 mod 4 = 1.\nNote: 16 x 7 = 112 (not 117); the answer 2 only happens to be correct because 117 mod 5 is also 2. Always check the product.\n\n4. Subtraction and operation tables\nFor subtraction, subtract first and then reduce the result to one of 0, 1, ..., n-1. For example:\n- 2 − 3 = −1 = 3 (mod 4).\n- 17 − 23 = −6 = 0 (mod 6).\n\nAddition table modulo 4:\n⊕ | 0 | 1 | 2 | 3\n0 | 0 | 1 | 2 | 3\n1 | 1 | 2 | 3 | 0\n2 | 2 | 3 | 0 | 1\n3 | 3 | 0 | 1 | 2\n\nSubtraction table modulo 4:\n⊖ | 0 | 1 | 2 | 3\n0 | 0 | 3 | 2 | 1\n1 | 1 | 0 | 3 | 2\n2 | 2 | 1 | 0 | 3\n3 | 3 | 2 | 1 | 0\n\nMultiplication table modulo 4:\n× | 0 | 1 | 2 | 3\n0 | 0 | 0 | 0 | 0\n1 | 0 | 1 | 2 | 3\n2 | 0 | 2 | 0 | 2\n3 | 0 | 3 | 2 | 1\n\n5. Applications to cyclic events\n- Clock: the short hand points to 5. Thirty hours later it points to (5 + 30) mod 12 = 11.\n- Rotating market days: if a market repeats every 4 days, a date 10 days later is 10 mod 4 = 2 places forward in the cycle.\n- A toy car on a circular track returns to its starting point after each complete circuit; the position can be described by the distance travelled modulo the track circumference.\n\n6. Completing a multiplication table modulo 6\nFor rows and columns 2, 3, 4 and 5, multiply and reduce each product modulo 6:\n× | 2 | 3 | 4 | 5\n2 | 4 | 0 | 2 | 4\n3 | 0 | 3 | 0 | 3\n4 | 2 | 0 | 4 | 2\n5 | 4 | 3 | 2 | 1\n\n7. Equations\nExample 1. Solve 3x = 5 (mod 7). Test x = 0 to 6, or add 7 to the right side until it divides by 3: 5, 12. 3x = 12 gives x = 4. Check: 3 x 4 = 12 = 5 (mod 7).\nExample 2. Solve 2x + 3 = 1 (mod 6). Subtract 3: 2x = -2 = 4 (mod 6). Test x = 0..5: x = 2 gives 4, x = 5 gives 10 = 4 (mod 6). Both work, so x = 2 or x = 5 (mod 6). Check: 2 x 5 + 3 = 13 = 1 (mod 6). When the coefficient of x and the modulus share a factor (here 2 and 6), there can be more than one solution.\n\n8. Source correction and calculation checks\nThe modulus does not have to be greater than the number being reduced; any integer can be reduced modulo n. Also check ordinary products before reducing: 16 × 7 = 112, not 117.",
+      "body_sha256": "f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49",
       "practice": [
         {
           "id": "M1W4-Q1",
@@ -4343,7 +4343,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
@@ -4364,7 +4364,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
@@ -4385,7 +4385,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
@@ -4406,7 +4406,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
@@ -4427,7 +4427,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
@@ -4448,7 +4448,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
@@ -4469,7 +4469,7 @@
       ],
       "evidence": [
         {
-          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f50283311ed4d78221534b5d80561e205762a443cc1fe8fc2109dfac0a837875; nine keyed practice items.",
+          "locator": "Replacement SUP-SS1-MATHEMATICS-T1-W04-MODULAR-ARITHMETIC, body SHA-256 f938a84696cb71b367c0eac0fc1a491ecc313ceb99cd0f00c3efbccacae1ff49; nine keyed practice items.",
           "explanation": "Original equivalent lesson covers and assesses this objective; approval pending and formal verification deferred."
         },
         {
