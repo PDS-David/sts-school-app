@@ -85,7 +85,8 @@
     "BIO-VIS-T3-FIG-GRASSHOPPER (2026-11-09) verified the 3rd Term member and image at block 515. The native paragraph text 'LIFE CYCLE OF A GRASSHOPPER' duplicates the raster title, but the arrows, illustrated stages and embedded labels Adult, Eggs and Molt are lost in text extraction. The visible Education.com copyright footer is recorded; no permission decision is made. A blocking PERMISSION open item records that the source raster must not be reused without permission. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T3-FIG-MEALYBUG (2026-11-09) verified the 3rd Term member and inspected blocks 543 and 545. Block 543 contains 'The Life Cycle of Cassava Mealy bug'; block 545 is an anchored image-only drawing (rId17 -> image3.jpeg) with no text runs. The raster labels and arrows are lost in text extraction. The low-resolution caption recorded as 'Instar symphs 1' remains uncertain and uncorrected. A blocking CONTENT item requires fact review and a project-authored accessible asset. Testing and student-facing approval remain deferred.",
     "BIO-VIS-T3-SHP-PLANT-CLASS-CHART (2026-11-09) inspected the native VML chart at blocks 350-355 and a fresh private render (PDF page 18/38). Confirmed Plants→A/B/C, C→D/E, E→F/G and G→H/I. Plain-text extraction loses the connector geometry, but the adjacent source prose at blocks 345-348 explicitly preserves the same hierarchy, so no separate asset is required solely for the relationships. Expanded the existing W05 botanical FACT gate to cover the chart's A-I labels and hierarchy. Testing and student-facing approval remain deferred.",
-    "BIO-VIS-T3-HDR-BRANDING (2026-11-09) verified the 3rd Term header/footer structure and header image hash. The header graphic and footer paragraph are separate page-furniture parts, not body teaching. Personal contact details and the name-like footer label were not transcribed or included; the package contains no header/footer asset reference or email address. No rights or identity decision was made. Testing and student-facing approval remain deferred."
+    "BIO-VIS-T3-HDR-BRANDING (2026-11-09) verified the 3rd Term header/footer structure and header image hash. The header graphic and footer paragraph are separate page-furniture parts, not body teaching. Personal contact details and the name-like footer label were not transcribed or included; the package contains no header/footer asset reference or email address. No rights or identity decision was made. Testing and student-facing approval remain deferred.",
+    "BIO-VIS-T2-SHP-PYRAMID-ORDER (2026-11-09) resolved the original-.doc visual gate using the exact hash-verified second-term Biology member. A private LibreOffice render of page 28/33 confirms top-to-bottom Hawks—2, Lizards—5, Grasshoppers—12, Grasses—40; widths increase toward the base and the upward axis cue reads 'Decreasing number of organisms'. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete source-unavailable gate. Broader Week 9 lesson, food-web/food-chain and fact-review gates remain."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -101,8 +102,8 @@
     "SCOPE_DECOMPOSITION": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 77,
-    "BLOCKED": 12,
+    "IMPLEMENTED_TESTING_DEFERRED": 78,
+    "BLOCKED": 11,
     "PENDING": 77
   },
   "items": [
@@ -5810,8 +5811,8 @@
         "BIO-VIS-T2-SHP-PYRAMID",
         "BIO-SRC-T2"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Blocked until the original .doc is available for full-resolution visual inspection. Current inventory confirms labels and numbers but does not preserve their spatial pairing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T2-SHP-PYRAMID-ORDER.md (2026-11-09): the exact legacy .doc member was available in the hash-verified archive (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44). Rendered the original .doc privately with LibreOffice and inspected page 28 of 33 at 220 dpi. Confirmed top-to-bottom levels Hawks—2 (narrowest), Lizards—5, Grasshoppers—12, Grasses—40 (widest). The right-side upward arrow is labelled 'Decreasing number of organisms'; section heading is 'PYRAMID OF NUMBER'; no separate figure caption is present. The 40 label is adjacent to the base but the following explanatory paragraph overlaps part of the diagram. No level/number pairing is inferred from flattened extraction. Updated BIOLOGY-T2-W09-COVERAGE to remove the obsolete 'original .doc unavailable' gate. Not fact-verified, not approved, importer/tests/display not run.",
       "completion_condition": "A visual inspection report records every pyramid level top-to-bottom, its organism label(s), exact number, relative width and caption; the resulting semantic order can then be restated without guessing."
     }
   ],
