@@ -4141,6 +4141,17 @@
         "BIO-VIS-T3-TBL-CROP-DISEASES"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T3-W07-LIVESTOCK-DISEASE-CLAIMS",
+      "kind": "FACT",
+      "detail": "The Week 6–7 livestock-diseases table at block 621 contains disease, causative-organism, symptom and control claims. Its flattened extraction loses cell associations. Symptoms and vaccination/immunisation statements are animal-health claims and are not endorsed by the visual disposition.",
+      "required_action": "A qualified veterinary/animal-health subject expert must verify disease names, causative agents, symptoms and vaccination/immunisation/control claims against current authoritative veterinary sources. Keep the original source unchanged and record any approved supplemental correction separately. Do not add treatment advice or vaccine schedules.",
+      "affected_ids": [
+        "COV-BIO-T3-W07-ANIMAL-PESTS-DISEASES",
+        "BIO-VIS-T3-TBL-LIVESTOCK-DISEASES"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
