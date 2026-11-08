@@ -823,6 +823,10 @@
         {
           "locator": "movement table blocks 1084-1092 (range sha256 39608539dfb4bf05579769f63b79a4ff0901727a5266b6c687d7027bb6884aa5)",
           "explanation": "Lists organisms, movement organelles and mechanisms for Amoeba, Paramecium, Euglena, Hydra, earthworm, fish and frogs/toads. Its row/column pairing is separately assigned to BIO-VIS-T1-MOVEMENT-TABLE."
+        },
+        {
+          "locator": "Week 10 movement table blocks 1083-1092; range SHA-256 4c3d3265041083334ff125615b9605b4e5018cf17fc93418c58b182d1f8ff991; private rendered source PDF page 45",
+          "explanation": "The source has three native line shapes (two vertical separators and one horizontal header rule) and no Word table. Block 1084 contains the three headers Organisms, Organelles for movement and Mechanism of movement; rows 1085-1092 are tab-aligned text. The rendered page shows the intended pairings: Amoeba | Pseudopodia | Cytoplasmic streaming (cyclosis); Paramecium | Cilia | Beating the cilia against water; Euglena | Flagellum | Lashing movement of flagellum; Hydra | Tentacles | Swimming, swaying, hoping and Somersaulting; Earthworm | Chaetae | Crawling; Fishes | Fins | Swimming; Toads and frog | Limbs | Hopping. The Hydra mechanism wraps from block 1088 to 1089. Text extraction collapses the three headers and the row fields; the line shapes disappear, so the column pairings do not survive reliably. A semantic three-column table is required in the Week 10 delivery lesson. The source's 'hoping' spelling is retained here as printed; no factual or spelling correction is made by this disposition. No image asset or redraw is needed."
         }
       ]
     },
@@ -3099,8 +3103,8 @@
     {
       "id": "BIOLOGY-T1-W10-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns. The seven hormone names and gland/site associations require authoritative Biology review before delivery.",
-      "required_action": "Complete BIO-VIS-T1-W10-MITOSIS-REDRAW; author and bind an approved equivalent Week 10 lesson using the redraw and the written stage descriptions. Restate the animal-hormone list as a semantic three-column table only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations. Keep source wording distinct from the supplement.",
+      "detail": "Week 10 covers growth, mitosis, growth regulation, irritability, movement and cyclosis, but the Biology package has no lessons or registered teaching rows. The four source mitosis figures (blocks 997, 1006, 1015 and 1021) match the written stages but their labels are raster-only; a project-authored redraw is queued. The animal-hormone table at blocks 1042-1049 is a three-column tab-aligned list, not a Word table; extraction collapses its columns and the names/associations require fact review. The movement table at blocks 1083-1092 also uses line shapes and tab-aligned rows, with one mechanism wrapping across blocks 1088-1089; its three-column pairings do not survive text extraction.",
+      "required_action": "Complete BIO-VIS-T1-W10-MITOSIS-REDRAW; author and bind an approved equivalent Week 10 lesson using the redraw and written stage descriptions. Restate the animal-hormone list as a semantic three-column table only after BIO-FACT-T1-W10-ANIMAL-HORMONES has verified its names and gland/site associations. Restate the movement list as a semantic three-column table, keeping source wording distinct from any delivery correction.",
       "affected_ids": [
         "COV-BIO-T1-W10-GROWTH",
         "COV-BIO-T1-W10-IRRITABILITY",
@@ -3109,7 +3113,9 @@
         "BIO-VIS-T1-W10-MITOSIS-REDRAW",
         "BIO-VIS-T1-HORMONE-TABLE",
         "BIO-FACT-T1-W10-ANIMAL-HORMONES",
-        "BIOLOGY-T1-W10-HORMONE-FACTS"
+        "BIOLOGY-T1-W10-HORMONE-FACTS",
+        "BIO-VIS-T1-MOVEMENT-TABLE",
+        "BIO-LES-T1-W10-GROWTH-IRRITABILITY-MOVEMENT"
       ],
       "blocks_delivery": true
     },
