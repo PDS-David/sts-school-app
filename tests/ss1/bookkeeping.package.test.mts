@@ -390,11 +390,19 @@ test('scheme-of-work WEEK column heading is not parsed as a Week 1 lesson marker
 
 
 test('Bookkeeping source rules compile the scheme preamble as markers, not a Week 1 lesson', () => {
-  const pkg = JSON.parse(JSON.stringify(raw));
-  pkg.delivery_corrections = [];
-  const source = pkg.sources.find((s: any) => s.term === '3rd Term');
+  const complete = JSON.parse(JSON.stringify(raw));
+  const source = complete.sources.find((s: any) => s.term === '3rd Term');
   assert(source);
-  const rules = pkg.source_rules.filter((r: any) => r.source_id === source.source_id);
+  const pkg = {
+    ...complete,
+    sources: [source],
+    source_rules: complete.source_rules.filter((r: any) => r.source_id === source.source_id),
+    lessons: complete.lessons.filter((l: any) => l.term === '3rd Term'),
+    coverage: complete.coverage.filter((c: any) => c.id.startsWith('COV-BK-T3-')),
+    delivery_corrections: [],
+    assets: [],
+  };
+  const rules = pkg.source_rules;
   const markerRules = rules.filter((r: any) => r.op === 'classify_marker');
   const splitRules = rules.filter((r: any) => r.op === 'split_before');
   const text = [
