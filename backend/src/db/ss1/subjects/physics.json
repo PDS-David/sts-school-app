@@ -168,12 +168,15 @@
       "subject": "Physics",
       "title": "Heat and temperature: meaning, units, differences and effects of heat",
       "objectives": [
-        "Distinguish between heat and temperature.",
-        "Convert between the Celsius and Kelvin scales.",
-        "State the effects of heat on a body."
+        "Define heat as energy transferred because of a temperature difference.",
+        "Define temperature and distinguish it from heat.",
+        "Use Celsius and Kelvin scales and convert between them.",
+        "Describe the main effects of heating on bodies.",
+        "Identify common practical uses of heat.",
+        "Distinguish thermionic emission from photoelectric emission."
       ],
-      "body": "HEAT is a form of energy that flows from a hotter body to a colder body because of a temperature difference. Its SI unit is the joule (J). TEMPERATURE tells how hot or cold a body is; it is related to the average kinetic energy of its molecules. Its SI unit is the kelvin (K); the Celsius scale (°C) is also used. Heat is measured with a calorimeter; temperature is measured with a thermometer.\n\nDIFFERENCES. (1) Heat is energy (joules); temperature is a degree of hotness (kelvin or °C). (2) Heat depends on the mass and the substance as well as the temperature; temperature does not depend on the amount of substance. (3) Heat flows because of a temperature difference; temperature is the property that decides the direction of the flow.\nExample: a bucket of warm water and a cup of warm water at 40 °C have the same temperature, but the bucket holds more heat energy because it has more mass.\n\nSCALES. T(K) = θ(°C) + 273. Example 1: 27 °C = 300 K. Example 2: 350 K = 77 °C. The temperature difference is the same on both scales: a rise of 10 °C is a rise of 10 K.\n\nEFFECTS OF HEAT. When heat is added to a body: (1) its temperature rises; (2) it expands; (3) it may change state (melting, boiling, evaporation); (4) a metal heated to a high temperature can emit electrons (thermionic emission); (5) chemical changes can occur (e.g. cooking, burning).\nExample 3 (heat gained). The heat needed to raise the temperature of a mass m of a substance by Δθ is Q = mcΔθ, where c is the specific heat capacity (water: about 4200 J/kg °C). For 2 kg of water heated from 20 °C to 30 °C: Q = 2 × 4200 × 10 = 84 000 J.",
-      "body_sha256": "24167948bee741f50af06bc436550767937b9066f80e4017da5480bfe0d2a3cb",
+      "body": "HEAT ENERGY, HEAT AND TEMPERATURE\n\n1. Concept of heat\nHeat is energy transferred from one body or system to another because of a temperature difference. Net heat transfer is from the hotter body to the colder body until thermal equilibrium is reached. Heat is measured in joules (J). A body has internal energy; heat is the energy being transferred, not a substance stored inside the body.\n\n2. Temperature\nTemperature tells how hot or cold a body is. It is related to the average random kinetic energy of its particles. Its SI unit is the kelvin (K); degrees Celsius (°C) and degrees Fahrenheit (°F) are also used. A thermometer measures temperature. A calorimeter is used to measure heat transferred in a process.\n\n3. Differences between heat and temperature\n- Heat is energy transferred because of a temperature difference; temperature is a property that indicates the thermal state of a body.\n- Heat is measured in joules; temperature is measured in kelvin or other temperature scales.\n- The amount of energy transferred can depend on mass, material and temperature change; temperature itself does not depend on the amount of material.\n- Heat flows spontaneously from higher to lower temperature.\nExample: a bucket and a cup of water may both be at 40 °C. They have the same temperature, but the bucket has more internal energy because it contains more water. Strictly, it is internal energy that the water has; heat is energy transferred.\n\n4. Temperature scales\nFor the SS1 calculations in this lesson use the school approximation:\nK ≈ θ(°C) + 273; θ(°C) ≈ T(K) − 273.\nThe more precise conversion uses 273.15.\nExample 1: 27 °C ≈ 27 + 273 = 300 K.\nExample 2: 350 K ≈ 350 − 273 = 77 °C.\nA temperature interval of 10 °C is equal in size to an interval of 10 K.\n\n5. Effects of heating\nWhen heat is supplied to a body, possible effects include:\n1. Temperature rise: the body becomes hotter if its state and conditions allow.\n2. Expansion: many substances increase in length, area or volume when heated.\n3. Change of state: a solid may melt; a liquid may boil or evaporate.\n4. Thermionic emission: a sufficiently heated metal may release electrons from its surface.\n5. Chemical change: heating can cause changes such as cooking or burning.\nThe effect depends on the material and conditions; not every body shows every effect in the same way.\n\n6. Uses of heat\n- Cooking and baking food.\n- Drying clothes, crops and other materials.\n- Warming rooms and heating water.\n- Sterilising suitable tools and materials.\n- Melting, shaping and joining materials in manufacturing, such as metalworking.\n- Producing steam to drive turbines in some power stations.\n\n7. Thermionic and photoelectric emission are not the same\nThermionic emission is the release of electrons from a material because it is heated sufficiently. Photoelectric emission is the release of electrons when suitable light falls on a material. Photoelectric emission is caused by light, not by heating, so it should not be listed as an effect of heat.\n\n8. Heat gained (extension)\nFor a mass m whose temperature changes by Δθ without a change of state:\nQ = mcΔθ,\nwhere Q is energy transferred in joules, m is mass in kilograms, c is specific heat capacity in J kg⁻¹ °C⁻¹, and Δθ is the temperature change in °C or K.\nFor water, c ≈ 4200 J kg⁻¹ °C⁻¹.\nExample: for 2 kg of water heated from 20 °C to 30 °C:\nQ = 2 × 4200 × (30 − 20) = 84 000 J.\n\n9. Correcting a common phase-change statement\nWhen heat is removed from liquid water sufficiently, it freezes and becomes a solid. When heat is supplied, water may evaporate or boil and become water vapour. Gas changing directly to solid is deposition. Do not say that extracting heat from liquid water turns it into a gas.",
+      "body_sha256": "96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470",
       "practice": [
         {
           "id": "Q01",
@@ -190,24 +193,48 @@
         {
           "id": "Q02",
           "question": "State three differences between heat and temperature.",
-          "answer": "Heat is energy in joules, temperature is hotness in K or °C; heat depends on mass, temperature does not; heat flows because of temperature difference.",
+          "answer": "Heat is energy transferred because of a temperature difference, measured in joules; temperature is a property indicating thermal state, measured in kelvin or °C. Heat transfer depends on mass, material and temperature change; temperature does not depend on the amount of material. Heat flows from higher to lower temperature.",
           "marks": 3,
           "marking": [
             {
-              "criterion": "1 mark each, max 3.",
-              "marks": 3
+              "criterion": "Correctly distinguishes heat transfer from temperature as a state property.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives correct units: joule for heat, kelvin/°C for temperature.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the role of temperature difference and/or mass/material.",
+              "marks": 1
             }
           ]
         },
         {
           "id": "Q03",
-          "question": "Name four effects of heat on a body.",
-          "answer": "Rise in temperature, expansion, change of state, thermionic emission (or chemical change).",
-          "marks": 4,
+          "question": "Mention five possible effects of supplying heat to a body.",
+          "answer": "Rise in temperature, expansion, change of state, thermionic emission, and chemical change (for example, cooking or burning).",
+          "marks": 5,
           "marking": [
             {
-              "criterion": "1 mark each, max 4.",
-              "marks": 4
+              "criterion": "One correct effect.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct effect.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct effect.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth correct effect.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fifth correct effect.",
+              "marks": 1
             }
           ]
         },
@@ -225,12 +252,120 @@
         },
         {
           "id": "Q05",
-          "question": "Why does the bucket of warm water hold more heat than the cup at the same temperature?",
-          "answer": "It has more mass, hence more molecules each carrying energy.",
+          "question": "A bucket and a cup of water are both at 40 °C. Why does the bucket have more internal energy?",
+          "answer": "The bucket contains more water (greater mass), so its total internal energy is greater at the same temperature. Heat itself is energy in transfer, not something stored in the water.",
           "marks": 1,
           "marking": [
             {
-              "criterion": "1 mark.",
+              "criterion": "States that the bucket contains more water/mass and therefore has greater internal energy.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q06",
+          "question": "State five practical uses of heat.",
+          "answer": "Cooking/baking; drying clothes or crops; warming rooms or heating water; sterilising suitable tools; melting/shaping/joining materials; or producing steam for power generation.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "One valid use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second valid use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third valid use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth valid use.",
+              "marks": 1
+            },
+            {
+              "criterion": "Fifth valid use.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q07",
+          "question": "Which is NOT a usual direct effect of supplying heat to a body? A. Expansion B. Rise in temperature C. Change of state D. Increase in weight.",
+          "answer": "D. Increase in weight.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects D.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q08",
+          "question": "Which is not a unit of temperature? A. Degree Celsius B. Kelvin C. Degree Fahrenheit D. Centigrade-metre.",
+          "answer": "D. Centigrade-metre.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects D.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q09",
+          "question": "Correct this statement: “When heat is extracted from water it changes from liquid to gas.”",
+          "answer": "When heat is removed sufficiently, liquid water freezes and becomes solid. When heat is supplied, liquid water can evaporate or boil and become gas.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that removing heat can cause freezing/solidification.",
+              "marks": 1
+            },
+            {
+              "criterion": "States that supplying heat can cause evaporation/boiling.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q10",
+          "question": "What is the process by which a gas changes directly into a solid?",
+          "answer": "Deposition (desublimation).",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Names deposition.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q11",
+          "question": "Fahrenheit is a unit of which physical quantity?",
+          "answer": "Temperature.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "States temperature.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q12",
+          "question": "Distinguish thermionic emission from photoelectric emission.",
+          "answer": "Thermionic emission releases electrons because a material is heated sufficiently. Photoelectric emission releases electrons when suitable light falls on a material.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies thermionic emission as heat-caused electron emission.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies photoelectric emission as light-caused electron emission.",
               "marks": 1
             }
           ]
@@ -252,6 +387,30 @@
           "rights": "Existing project-authored lesson content reused and adapted within the same repository; the branch cited no external reference for these five lessons.",
           "reuse_status": "PERMITTED",
           "attribution": "Previous SS1 Physics authoring work in PDS-David/sts-school-app, PR #71."
+        },
+        {
+          "title": "Federal Ministry of Education, Nigeria — Heat Energy | SS1 Physics",
+          "locator": "Official SS1 overview: concept of temperature, effects of heat on change of state, expansion and vaporization; heat transfer.",
+          "url": "https://inspire.education.gov.ng/lessons/9830/preview",
+          "rights": "Used to corroborate SS1 scope only; no lesson text copied.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Federal Ministry of Education, Nigeria, Inspire, “Heat Energy | SS1 Physics”, accessed 2026-11-08."
+        },
+        {
+          "title": "Second Term E-Learning Note — SS1 Physics",
+          "locator": "Week One and scheme of work; public close-equivalent PDF pages 1–2. The PDF contains source misconceptions and a truncated second page; it is used as a comparison record, not as an authority for scientific corrections.",
+          "url": "https://edupodia.com/wp-content/uploads/2020/12/SECOND-TERM-SS1-PHYSIC.pdf",
+          "rights": "No wording, tables or exercises copied; independent replacement authored.",
+          "reuse_status": "PERMITTED",
+          "attribution": "EduPodia, “Second Term E-Learning Note — Physics SS1”, Week One, accessed 2026-11-08."
+        },
+        {
+          "title": "Week 1 — SS1 Second Term Physics Notes",
+          "locator": "Close-equivalent week-one effects, uses and weekend assignment; source assessment contains the heat-extraction phase-change error corrected in the replacement.",
+          "url": "https://ecolebooks.com/nigeria/posts/week-1-ss1-second-term-physics-notes/",
+          "rights": "No wording or exercises copied; used for objective and assessment corroboration only.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Ecolebooks Nigeria, “Week 1 – SS1 Second Term Physics Notes”, accessed 2026-11-08."
         }
       ],
       "state": {
@@ -1945,7 +2104,21 @@
       }
     }
   ],
-  "delivery_corrections": [],
+  "delivery_corrections": [
+    {
+      "id": "CORR-PHYSICS-T2-W01-HEAT-ENERGY",
+      "source_id": "SS1-SRC-2c924c964660",
+      "source_sha256": "3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7",
+      "source_lesson_id": "SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c",
+      "body_sha256": "d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c",
+      "replacement_id": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE",
+      "reason": "The source describes heat as relative motion of fluid, equates heat with total internal energy, gives an unclear account of temperature, omits uses from the Week One scheme title, misclassifies photoelectric emission as an effect of heat, and includes a weekend item that says extracting heat turns liquid water into gas. The replacement corrects the science, adds uses of heat, distinguishes thermionic from photoelectric emission and corrects the phase-change statement.",
+      "evidence": {
+        "locator": "Source SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; archive member 3941deccd3f4c68065a496ede3752784d2535e3c03608450a12b2a7c4a0b9fa7; parsed row 0, WEEK ONE, 2,685 characters.",
+        "explanation": "The replacement SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE (body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470) now covers heat as energy transfer, temperature, differences, Celsius/Kelvin conversion, five effects, practical uses, thermionic versus photoelectric emission and the corrected phase-change sequence. The bucket/cup example now refers to internal energy, not stored heat. Source weekend questions on units, deposition and Fahrenheit are keyed in Q08–Q11; the erroneous heat-extraction item is corrected in Q09. The source's photoelectric item is explicitly distinguished from thermionic emission. Official FME Inspire and close-equivalent week-one notes corroborate scope; no third-party text is copied. Content approval PENDING; verification DEFERRED."
+      }
+    }
+  ],
   "assets": [],
   "coverage": [
     {
@@ -2639,8 +2812,8 @@
     {
       "id": "COV-PHYS-T2-W01-OBJ-1",
       "source_id": "SS1-SRC-2c924c964660",
-      "objective": "Heat energy; concept of heat and temperature; effects of heat",
-      "objective_locator": "PR #71 objective-level locator WEEK ONE; master source-week indexing task remains pending and will add the exact parsed-row locator.",
+      "objective": "Heat energy; concept of heat and temperature; effects and uses of heat.",
+      "objective_locator": "Parsed row 0 WEEK ONE; source body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
       "status": "IMPLEMENTED_EQUIVALENT",
       "lesson_ids": [
         "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
@@ -2653,6 +2826,10 @@
         {
           "locator": "Master lesson SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE.",
           "explanation": "The authored lesson supplies teaching for this objective. No other objective in the week is inferred from this single lesson; source-week indexing remains a separate pending task."
+        },
+        {
+          "locator": "Replacement SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470.",
+          "explanation": "Expanded to cover uses of heat and correct the source's thermodynamic and phase-change misconceptions; detailed objective entries follow."
         }
       ]
     },
@@ -3601,6 +3778,166 @@
           "explanation": "These references corroborate viscosity/terminal velocity scope, but do not verify the exact original row content."
         }
       ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-HEAT-DEFINITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Define heat as energy transferred because of a temperature difference.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-TEMPERATURE-DEFINITION",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Define temperature as a measure of thermal state related to average particle kinetic energy.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-HEAT-TEMPERATURE-DIFFERENCES",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Differentiate heat transfer from temperature, including their units and dependence on mass/material.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-TEMPERATURE-SCALES",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Convert between Celsius and Kelvin using the SS1 approximation and understand the 273.15 exact offset.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-EFFECTS-OF-HEAT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Describe heating effects: temperature rise, expansion, change of state, thermionic emission and chemical change.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-USES-OF-HEAT",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Identify common practical uses of heat in domestic, laboratory and industrial settings.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-THERMIONIC-PHOTOELECTRIC",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Distinguish heat-caused thermionic emission from light-caused photoelectric emission.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
+    },
+    {
+      "id": "COV-PHYS-T2-W01-ASSESSMENT-AND-PHASE-CHANGE",
+      "source_id": "SS1-SRC-2c924c964660",
+      "objective": "Answer the source evaluation/weekend questions and correct the liquid-water phase-change misconception.",
+      "objective_locator": "Parsed row 0 WEEK ONE; body SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c; source body SHA-256 d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c.",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE"
+      ],
+      "evidence": [
+        {
+          "locator": "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE, body SHA-256 96fa8eb0163d609c1a62b6a885702a9fd5843c55984f07022c1fa1c215ffe470; practice Q01–Q12.",
+          "explanation": "Replacement lesson includes explicit teaching and keyed practice for this objective; formal verification remains deferred."
+        },
+        {
+          "locator": "Federal Ministry of Education, Nigeria, Inspire Heat Energy SS1 page and close-equivalent Second Term Week One lesson notes.",
+          "explanation": "Used to corroborate SS1 scope and assessment inventory. Source misconceptions are corrected rather than repeated."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -4080,6 +4417,18 @@
         "SS1-SRC-5c0149cda71d:BODY:101cab19611133e22a4717f2a65ae284763a0bd45f43b99dd046c9837c6a790e",
         "PHYS-VIS-T1",
         "PHYS-FACT-T1-W09-SOURCE-RECONCILIATION"
+      ],
+      "blocks_delivery": false
+    },
+    {
+      "id": "PHYS-T2-W01-SOURCE-MCQ-AMBIGUITY",
+      "kind": "CONTENT",
+      "detail": "The source multiple-choice question asks for an effect that is not caused by heat and lists contraction as a distractor. Contraction is the usual result of cooling, but material-specific exceptions (for example, water over part of 0–4 °C) make the unqualified wording broader than intended.",
+      "required_action": "Use the replacement's bounded wording “usual direct effect of supplying heat” and retain the original source wording in the source record; do not generalise that contraction can never occur during heating.",
+      "affected_ids": [
+        "SS1-SRC-2c924c964660:BODY:d7ca9ce778fcf4db276b9157c50e7f76d9603963d74af1cbc69fde22fa582f3c",
+        "SUP-SS1-PHYSICS-T2-W01-HEAT-TEMPERATURE",
+        "COV-PHYS-T2-W01-ASSESSMENT-AND-PHASE-CHANGE"
       ],
       "blocks_delivery": false
     }
