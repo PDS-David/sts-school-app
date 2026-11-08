@@ -13,3 +13,8 @@ A claim file with `"static": true` and `"item": "*"` gives a subject to one agen
 never stale and cannot be taken over, and its owner needs no per-item claiming (so agents that
 cannot run `claim.sh` can work). Create with `claim.sh assign <slug> <agent-id> "<note>"`, end with
 `claim.sh unassign <slug> <agent-id>`. See section 3A of `docs/ss1/work/AGENT_PROTOCOL.md`.
+
+## Branch agents
+
+Agents working on a dedicated `agent/<subject>` branch (protocol Mode B) do not use claim files; the
+branch is the lock. Tester tools live in `docs/ss1/work/tester/`.
