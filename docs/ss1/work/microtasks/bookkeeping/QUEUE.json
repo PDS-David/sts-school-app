@@ -309,8 +309,8 @@
         "BK-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "The package regression suite has been executed successfully in GitHub Actions run 42526555833 (run 1319) on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. Passed: frozen schema/source manifest, all 32 lesson-body hashes, keyed practice marking totals, approval/verification state boundaries, correction bindings, source-rule guards, coverage links and all third-term equivalent lesson checks. The full workflow also passed backend/mobile TypeScript, Python baseline checks, PostgreSQL/asset integration, authenticated retrieval, sequencing and staging-admin CLI. Bookkeeping-specific importer/compiler, device and delivery verification remain separate and deferred.",
-      "completion_condition": "Package regression test code is committed and has a successful recorded GitHub Actions execution. Remaining importer/compiler, device and delivery checks are tracked separately; no formal lesson content approval is inferred."
+      "implementation_reference": "Package regression suite passed in GitHub Actions run 42526555833 (run 1319) on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. Passed: schema/source manifest, all 32 lesson hashes, keyed marking totals, approval/verification boundaries, correction bindings, source-rule guards, coverage links and third-term lesson checks. Full workflow also passed backend/mobile TypeScript, Python baseline, PostgreSQL/asset integration, authenticated retrieval, sequencing and staging-admin CLI. Bookkeeping-specific full-source importer/compiler, device and delivery checks remain deferred.",
+      "completion_condition": "Package regression test is committed and has a successful recorded GitHub Actions execution. Remaining importer/compiler, device and delivery checks are tracked separately; no formal lesson content approval is inferred."
     },
     {
       "id": "BK-FACT-CONTENT-APPROVAL",
@@ -3557,7 +3557,7 @@
   "review": {
     "date": "2026-11-08",
     "reviewed_master_sha": "a87bf96ffcd50655ab1b265f5114cea00f2bffad",
-    "scope": "Package regression and full existing workflow checks executed successfully on follow-up commit 43df21e71419b870ec05cfb3ebabe32e82680d17. Bookkeeping importer/compiler and device/delivery verification remain deferred.",
+    "scope": "Package regression and full configured workflow passed on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. Bookkeeping-specific importer/compiler and device/delivery verification remain deferred.",
     "source_archive": {
       "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
       "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
