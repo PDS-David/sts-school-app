@@ -115,6 +115,10 @@
         {
           "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0; importer not run",
           "explanation": "No lesson and no parsed row exist for this week, so the two taught cycles are not deliverable. PARTIAL: taught in the source, no deliverable lesson. Delivery is blocked by BIOLOGY-T1-W06-COVERAGE."
+        },
+        {
+          "locator": "Week 6 diagram images at blocks 795 and 821; image6.jpeg 556×513 SHA-256 87e5a6ee5d40cdd770056a899b8c2131ad8fe8c76481bf950e047714e0de7f1e; image7.jpeg 651×408 SHA-256 d9713621b42933a7d3d63f23703e3e0236c28bd87303f39dec0f30f7ae83497c",
+          "explanation": "The carbon-cycle sketch (block 795) labels CO2 in atmosphere, photosynthesis, animals, plants, fossil fuels (oil, gas, coal), combustion in industries, sea as reservoir of CO2 and respiration/decay. Its drawn paths include atmosphere→photosynthesis→plants; atmosphere→sea reservoir; plants→fossil fuels; fossil fuels→combustion in industries→atmosphere; respiration/decay return paths toward atmosphere; a central Animals→Plants arrow and a sea-reservoir path toward Plants. The central Animals→Plants direction conflicts with written block 785, which says plants are eaten by animals (Plants→Animals); the sea-to-plants path is not explained by the prose, which describes exchange between sea and atmosphere. These must be represented from the written explanation in any delivery replacement, not copied as-is. The water-cycle sketch (block 821) labels water in the atmosphere, evaporation, precipitation as rainfall, run-off from ponds/lakes/river/sea, plants, animals, transpiration and respiration. Its outer flow is atmosphere→rainfall→run-off→evaporation→atmosphere; internal arrows show Plants→Animals, Plants→atmosphere (transpiration) and Animals→atmosphere (respiration). The sketch does not show the soil-percolation/underground-water route described in block 804. The diagram labels use 'transpiration', while the prose at blocks 804 and 806 prints 'transportation'. Labels are handwritten within raster images and do not survive plain-text extraction; handwriting is partly faint. No nitrogen cycle diagram or teaching text occurs in Week 6; the scheme line and Week 6 body do not name nitrogen. The source images are not committed or registered as app assets because reuse rights are not recorded. A structured flow sequence in the supplemental lesson is sufficient; no separate image asset or redraw is required. The sulphur cycle is named in block 783 but not taught, and remains under BIO-FACT-T1-W06-SCOPE."
         }
       ]
     },
@@ -2768,13 +2772,15 @@
     {
       "id": "BIOLOGY-T1-W06-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 6's scheme entry 6 is taught in the source but is not deliverable: the package has no lesson and no parsed row for the week and the importer has not been run, so COV-BIO-T1-W06-SCHEME-6 is PARTIAL. The week's own definition (block 783) names carbon, sulphur and water, but only carbon (784-795) and water (804-819) are taught; COV-BIO-T1-W06-SULPHUR is UNRESOLVED. Nitrogen is not named by the scheme line or by any Week 6 block and is therefore not asserted as an objective here; BIO-FACT-T1-W06-SCOPE asks whether the curriculum requires it. The bounded supplement BIO-LES-T1-W06-SULPHUR is appended and waits on that decision.",
-      "required_action": "Owner/expert settles BIO-FACT-T1-W06-SCOPE, then the sulphur supplement is authored and approved; the two taught cycles still need the normal import/parse step before delivery. Do not invent a sulphur or nitrogen cycle and present it as source teaching.",
+      "detail": "Week 6's scheme entry 6 is taught in the source but is not deliverable: the package has no lesson and no parsed row for the week and the importer has not been run, so COV-BIO-T1-W06-SCHEME-6 is PARTIAL. The carbon and water cycle sketches at blocks 795 and 821 contain handwritten labels that do not survive text extraction. The carbon diagram has a central Animals→Plants arrow that conflicts with block 785's Plants→Animals explanation and an unclear sea-to-plants path, while the prose describes sea-atmosphere exchange. The water diagram labels 'transpiration' but the prose at blocks 804/806 prints 'transportation'; its underground-water route is not drawn. No nitrogen cycle diagram or text exists in Week 6. The week's definition (block 783) names carbon, sulphur and water, but only carbon (784-795) and water (804-819) are taught; COV-BIO-T1-W06-SULPHUR remains UNRESOLVED.",
+      "required_action": "Author BIO-LES-T1-W06-CARBON-WATER as a clearly labelled supplement for the two source-taught cycles, using structured flow sequences based on the written explanations (not the conflicting carbon arrow), using 'transpiration' in the delivery replacement while retaining the source's 'transportation' wording unchanged, and including the underground-water route described in the prose. Do not add a nitrogen or sulphur cycle unless BIO-FACT-T1-W06-SCOPE clears it. Then author the keyed assessment supplement after the scope decision; keep the sulphur supplement gated on the same decision. Do not invent a parsed lesson ID or delivery-correction binding before importer identification.",
       "affected_ids": [
         "COV-BIO-T1-W06-SCHEME-6",
         "COV-BIO-T1-W06-SULPHUR",
         "BIO-LES-T1-W06-SULPHUR",
-        "BIO-FACT-T1-W06-SCOPE"
+        "BIO-FACT-T1-W06-SCOPE",
+        "BIO-VIS-T1-NUTRIENT-CYCLES",
+        "BIO-LES-T1-W06-CARBON-WATER"
       ],
       "blocks_delivery": true
     },
