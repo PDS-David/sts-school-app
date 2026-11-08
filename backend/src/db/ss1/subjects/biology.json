@@ -1069,6 +1069,10 @@
         {
           "locator": "blocks 192-200 (range sha256 2d6cac87514f1bd002a182e384d86bf0dbe68704e79fa1dea1dc763ae98a2fcc)",
           "explanation": "Spirogyra is taught as reproducing by fragmentation and conjugation; the source describes conjugation tubes, gamete fusion, zygote wall and zygospore."
+        },
+        {
+          "locator": "Verified second-term source member SSS 1/2nd Term SS1_/2ND TERM S1 BIOLOGY.doc (SHA-256 41cfcb1848a8e67fe486674bf4dc94dcb13acd3e4d6477428e659f97a08f4b44); block 185 media/image1.jpeg 500×300, SHA-256 646cfeaa36e260c56fa011f8818508c1c97aa70a7e0ea7b866641191d7d4e423",
+          "explanation": "The labelled Paramecium conjugation figure at block 185 is a raster image with no text in its source block, so it is entirely absent from plain-text extraction. Visible labels are Macronucleus, Diploid micronucleus, MEIOSIS, Haploid micronuclei, SYNGAMY, New macronuclei and Micronuclei. Arrows form a circular sequence through meiosis, haploid micronuclei, syngamy and the formation of new macronuclei/micronuclei. The labels and process match the written Paramecium conjugation description at blocks 175-184. The original image is not registered or committed as an app asset because reuse rights are not recorded. A project-authored redraw is appropriate; it must use only these visible labels and the source-described sequence, without copying the original pixels."
         }
       ]
     },
@@ -3263,11 +3267,13 @@
     {
       "id": "BIOLOGY-T2-W03-COVERAGE",
       "kind": "CONTENT",
-      "detail": "Week 3 reproduction in unicellular organisms and invertebrates is present in the source, but the Biology package has no registered lessons.",
-      "required_action": "Author and bind approved lessons for the named unicellular organisms and invertebrates, using the existing visual tasks for the four source figures.",
+      "detail": "Week 3 reproduction in Amoeba, Paramecium and Spirogyra and invertebrates is present in the source, but the Biology package has no registered lessons. The Paramecium conjugation diagram at block 185 is a labelled raster image entirely absent from plain-text extraction; its labels are Macronucleus, Diploid micronucleus, MEIOSIS, Haploid micronuclei, SYNGAMY, New macronuclei and Micronuclei. It matches the written description at blocks 175-184. A project-authored redraw is queued because original-image reuse rights are not recorded. The Spirogyra figure is assigned separately.",
+      "required_action": "Complete the project-authored Paramecium redraw task BIO-VIS-T2-W03-PARAMECIUM-REDRAW and the other assigned visual tasks, then author and bind the approved Week 3 reproduction lesson. Preserve the original source figure unchanged; use only labels visible in the source and do not copy its pixels.",
       "affected_ids": [
         "COV-BIO-T2-W03-UNICELLULAR-REPRODUCTION",
-        "COV-BIO-T2-W03-INVERTEBRATE-REPRODUCTION"
+        "COV-BIO-T2-W03-INVERTEBRATE-REPRODUCTION",
+        "BIO-VIS-T2-FIG-PARAMECIUM",
+        "BIO-VIS-T2-W03-PARAMECIUM-REDRAW"
       ],
       "blocks_delivery": true
     },
