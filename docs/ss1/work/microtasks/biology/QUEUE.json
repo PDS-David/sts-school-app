@@ -71,7 +71,8 @@
     "BIO-VIS-T1-HORMONE-TABLE (2026-11-08) inspected the four header line shapes and seven tab-aligned rows at blocks 1042-1049, including the private rendered PDF page 43. The three columns are clear in the original rendering but collapse in plain-text extraction; a semantic three-column table is required. The seven source associations were flagged for a separate authoritative Biology fact review. No image asset or redraw is needed; original text remains unchanged and no medication guidance is added. Testing remains deferred.",
     "BIO-VIS-T1-MOVEMENT-TABLE (2026-11-08) inspected the three line shapes and seven tab-aligned rows at blocks 1083-1092 in private rendered PDF page 45. The three columns are clear in the original rendering but collapse in text extraction; the Hydra mechanism wraps across blocks 1088-1089. A semantic three-column table is required in the Week 10 lesson; no asset/redraw is needed. The source's 'hoping' spelling is preserved for separate correction handling. Testing remains deferred.",
     "BIO-VIS-T1-TBL-CROP-ROTATION (2026-11-08) confirmed block 514 is a native 6×6 Word table, rendered across PDF pages 18-19. Cell boundaries exist in DOCX but flattened text loses plot/year pairing; any text-based supplement must restate the semantic table. No image asset/redraw is needed. Farming-systems placement remains an owner decision; no Week 3 scheme scope was inferred. Testing remains deferred.",
-    "BIO-VIS-T1-TBL-MINERALS-VITAMINS (2026-11-08) confirmed the mineral and vitamin lists are native Word tables (11×4 and 10×4). Their cell structure survives in DOCX/PDF but not flattened text. A semantic four-column table is required in the lesson; no asset/redraw is needed. Source function/deficiency statements were recorded for the existing authoritative Biology fact task; no health advice or source corrections were added. Testing remains deferred."
+    "BIO-VIS-T1-TBL-MINERALS-VITAMINS (2026-11-08) confirmed the mineral and vitamin lists are native Word tables (11×4 and 10×4). Their cell structure survives in DOCX/PDF but not flattened text. A semantic four-column table is required in the lesson; no asset/redraw is needed. Source function/deficiency statements were recorded for the existing authoritative Biology fact task; no health advice or source corrections were added. Testing remains deferred.",
+    "BIO-VIS-T1-TBL-ENZYMES (2026-11-08) confirmed block 920 is a native 8×5 Word table spanning rendered PDF pages 37-38. Cell boundaries are preserved in DOCX/PDF but lost in flattened text; a semantic five-column table is required. The source's enzyme names, sources, locations, substrates and products were added to the existing authoritative Biology fact task. No asset/redraw or source correction is needed. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -87,8 +88,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 54,
-    "PENDING": 94,
+    "IMPLEMENTED_TESTING_DEFERRED": 55,
+    "PENDING": 93,
     "BLOCKED": 11
   },
   "items": [
@@ -1414,8 +1415,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): w:tbl under heading block 919 'Digestive enzymes and functions'; first row extracts as 'EnzymesSourcesLocationSubstrate acted uponEffect/productPtyalin…'.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct block 920 is a native 8×5 w:tbl with SHA-256 6f1f3aa0be2c83dbe5ab075287d7994531bb425eefddaeb4153965510841bed5. The original DOCX retains all five columns; rendered PDF pages 37-38 show the table, with the Pancreatic Lipase row continuing across the page break. Flattened text extraction loses the enzyme/source/location/substrate/effect pairings. Exact cell values and all seven source rows are recorded in package evidence. A semantic five-column table is required in the delivery lesson; no asset/redraw is needed. The existing BIO-FACT-T1-W07-FOOD-CLAIMS task and package open item now include the enzyme table's names, sources, locations, substrates and product claims for authoritative Biology review. No source wording or table cells were changed; no medical advice or treatment guidance is added. No app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -3444,7 +3445,7 @@
       "source_id": "SS1-SRC-422e0e6ddde9",
       "term": "1st Term",
       "week_or_locator": "Week 7, blocks 835-925",
-      "objective": "Verify the source's food-substance and enzyme claims against approved Biology references before authoring a corrected lesson: monosaccharide formula (block 841), sucrose formation wording (844), lipid formula (871), amylase statements (916-917), and the functions/deficiency statements in the mineral-salt table (block 881) and vitamin table (block 888). Record exact supporting references and evidence-based corrections for the delivery supplement. Preserve all original wording and keep health-related claims within school Biology context, not medical advice.",
+      "objective": "Verify the source's food-substance and enzyme claims against approved Biology references before authoring a corrected lesson: monosaccharide formula (block 841), sucrose formation wording (844), lipid formula (871), amylase statements (916-917), mineral/vitamin table function and deficiency claims (blocks 881 and 888), and the digestive-enzyme table's names, sources, locations, substrates and effects/products (block 920). Record exact supporting references and evidence-based corrections for the delivery supplement. Preserve all original wording and keep health-related claims within school Biology context, not medical advice.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -3454,7 +3455,8 @@
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
         "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
-        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-MINERALS-VITAMINS.md"
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-MINERALS-VITAMINS.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-ENZYMES.md"
       ],
       "required_attachments": [
         {
@@ -3471,7 +3473,8 @@
       ],
       "depends_on": [
         "BIO-WK-T1-W07",
-        "BIO-VIS-T1-TBL-MINERALS-VITAMINS"
+        "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
+        "BIO-VIS-T1-TBL-ENZYMES"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
@@ -3492,7 +3495,8 @@
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
         "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
-        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PROTEIN-BREAKDOWN.md"
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-PROTEIN-BREAKDOWN.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-TBL-ENZYMES.md"
       ],
       "required_attachments": [
         {
@@ -3511,7 +3515,8 @@
         "BIO-WK-T1-W07",
         "BIO-FACT-T1-W07-FOOD-CLAIMS",
         "BIO-VIS-T1-PROTEIN-BREAKDOWN",
-        "BIO-VIS-T1-TBL-MINERALS-VITAMINS"
+        "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
+        "BIO-VIS-T1-TBL-ENZYMES"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W07; see the Week 7 objective index for exact source locators."
@@ -5535,7 +5540,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-TBL-ENZYMES",
     "BIO-VIS-T2-TBL-VITAMINS",
     "BIO-VIS-T2-TBL-INSTRUMENTS",
     "BIO-VIS-T2-FIG-PARAMECIUM",
