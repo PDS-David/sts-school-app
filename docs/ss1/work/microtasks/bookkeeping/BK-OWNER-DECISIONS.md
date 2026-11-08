@@ -80,3 +80,20 @@ All authored lessons remain `content_approval=PENDING` and `verification=DEFERRE
 ## Queue reconciliation — 8 November 2026
 
 The four first-term factual-decision queue items (`BK-FACT-T1-W01-DEFECTS` through W04) are now `IMPLEMENTED_TESTING_DEFERRED`, because their original prerequisite decisions were superseded by the owner's approval to use the independently authored W01-W04 delivery replacements. This does not assert that every original-source defect was corrected. The queue now records 82 `IMPLEMENTED_TESTING_DEFERRED` items and 7 `BLOCKED` items. The remaining blocked items comprise the content-approval/verification gate and superseded second-term source-indexing/marker tasks retained as forensic history; there are no pending runnable items.
+
+
+## First-term duration clarification — 8 November 2026
+
+The owner clarified that every term was expected to contain at least ten teaching weeks, but cannot explain why the supplied first-term document contains only four week-labelled teaching bodies. The source's scheme preamble itself contains the ten-week topic sequence (entries 2–10) followed by revision and examination. A matching public SS1 **Book-Keeping** first-term scheme reproduces the same sequence; it is corroborative, not proof of the centre's missing pages. The original source is preserved unchanged and its provenance gap remains recorded.
+
+To meet the owner's minimum delivery expectation, six **project-authored extensions** have been added to the package as first-term Weeks 5–10: double-column cash-book layout; double-column cash-book preparation and balancing; contra-entry practice; double-entry foundation; debit/credit account identification; and cash-book-to-ledger posting practice. These extend the surviving scheme objectives and do not claim to recover missing original notes. The term now has ten teaching lessons in the package. Content approval remains pending and technical verification remains deferred.
+
+
+## Third-term minimum-week check — 8 November 2026
+
+The third-term scheme contains Week 1 revision, nine teaching-topic slots in Weeks 2–10, Week 11 revision and Week 12 examination. The supplied source has no Week 1 revision body. A project-authored Week 1 revision lesson has therefore been added using first-term Bookkeeping foundations. The original Week 1 source marker remains `SCHEME_ONLY`; the supplement is not represented as recovered original content. The third-term twelve-week schedule is represented (Week 1 revision, Weeks 2–10 topic sequence, Week 11 revision and Week 12 examination); content approval remains pending and verification deferred.
+
+
+## Term-duration correction — 8 November 2026
+
+The owner's clarification is a **minimum**, not a fixed ten-week cap: every term must contain at least ten weeks, and schedules longer than ten weeks must be retained. The supplied first- and third-term schemes each enumerate twelve scheduled weeks (Week 1 revision; Weeks 2–10 topic teaching; Week 11 revision; Week 12 examination). The second-term reconstruction plan also explicitly assigns Weeks 1–10 to teaching, Week 11 to revision and Week 12 to examination. Therefore the intended Bookkeeping term schedule is twelve weeks in all three terms. Do not truncate any term at Week 10. Revision and examination are scheduled weeks and remain visible in the term sequence; they are not to be relabelled as ordinary topic lessons. The existing first-term W01–W10 lesson IDs are implementation identifiers, not permission to overwrite or omit the source's twelve-week scheme numbering. The first-term source/body alignment must remain explicitly documented as a provenance/mapping issue.
