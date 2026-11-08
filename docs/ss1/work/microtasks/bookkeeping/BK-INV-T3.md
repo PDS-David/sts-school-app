@@ -73,3 +73,29 @@ The scheme is in preamble blocks 4–41. It has twelve manually typed entries, w
 ## Term-duration reconciliation — owner clarification (8 November 2026)
 
 The third-term scheme explicitly contains twelve scheduled weeks: Week 1 revision, Weeks 2–10 teaching topics, Week 11 revision and Week 12 examination. The Week 1 revision supplement is project-authored. Weeks 11 and 12 have no supplied instructional body or examination paper; their original markers remain recorded as SCHEME_ONLY. Keep both weeks in the term schedule and do not truncate the term at Week 10.
+
+
+## Project-authored delivery coverage update — 8 November 2026
+
+The following project-authored supplements have now been added to `backend/src/db/ss1/subjects/bookkeeping.json`; they are not recovered original source pages:
+
+- Scheme Week 2: `SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH` — petty cash purpose, imprest, analysis columns, vouchers, balancing, reimbursement and posting.
+- Scheme Week 3: `SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE` — meaning, purposes, normal balance classification, a balanced example and limitations.
+- Scheme Week 4: `SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION` — extraction rules, a fully reconciled trial balance and common preparation errors.
+- Scheme Week 5: existing `SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT` is also linked to the scheme's meaning, types and errors-affecting-agreement objectives.
+- Scheme Week 6: `SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE` — temporary suspense balance, correction journals, clearing the account and the boundary between errors that do/do not affect agreement.
+
+All previously PARTIAL third-term coverage entries are now linked to an authored equivalent in the package. Third-term coverage has 24 `IMPLEMENTED_EQUIVALENT` objectives plus the three original scheme-only markers for Week 1 revision, Week 11 revision and Week 12 examination. The scheme schedule remains twelve weeks; no exam paper or revision worksheet has been invented.
+
+Every new lesson has measurable objectives, a worked explanation, independently checked example arithmetic, practice questions, keyed marking and explicit project-authored provenance. All lesson states remain `content_approval=PENDING` and `verification=DEFERRED`.
+
+### Source defects remain preserved
+
+This delivery completion does not repair or overwrite the original DOCX. In particular:
+- The source petty-cash analysis and payment rows reconcile to 245, but the flattened VML/tab layout still requires visual disposition before asserting the original table layout is faithfully reconstructed.
+- The Mr Odili trial-balance source example has an identified wrong-side Olu balance and a printed credit total missing a zero; the separate correction note remains the arithmetic disposition.
+- The Fashola Ltd suspense source has a 950 debit-side listing against 1,400 credit-side listing and several journal/narrative direction conflicts. The original source is unchanged; the new Week 6 lesson uses independent, internally consistent examples rather than presenting the source's defective worked answer as correct.
+
+### Verification status
+
+A Bookkeeping-specific package regression test has been added to the GitHub Actions workflow and extended for the new lessons and coverage links. Pull request #390 triggers workflow run 42526235246. Until that run completes successfully, package schema, hash, marking and integration checks remain pending. Full parser/compiler/importer and device/delivery verification are also not yet claimed.

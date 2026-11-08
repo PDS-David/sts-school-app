@@ -97,3 +97,12 @@ The third-term scheme contains Week 1 revision, nine teaching-topic slots in Wee
 ## Term-duration correction — 8 November 2026
 
 The owner's clarification is a **minimum**, not a fixed ten-week cap: every term must contain at least ten weeks, and schedules longer than ten weeks must be retained. The supplied first- and third-term schemes each enumerate twelve scheduled weeks (Week 1 revision; Weeks 2–10 topic teaching; Week 11 revision; Week 12 examination). The second-term reconstruction plan also explicitly assigns Weeks 1–10 to teaching, Week 11 to revision and Week 12 to examination. Therefore the intended Bookkeeping term schedule is twelve weeks in all three terms. Do not truncate any term at Week 10. Revision and examination are scheduled weeks and remain visible in the term sequence; they are not to be relabelled as ordinary topic lessons. The existing first-term W01–W10 lesson IDs are implementation identifiers, not permission to overwrite or omit the source's twelve-week scheme numbering. The first-term source/body alignment must remain explicitly documented as a provenance/mapping issue.
+
+
+## Third-term lesson coverage completion — 8 November 2026
+
+Four project-authored third-term lessons were added to complete the previously partial Week 2, 3, 4 and 6 scheme objectives: petty cash/imprest; trial-balance meaning and purpose; trial-balance extraction and preparation; and suspense-account correction. The existing Week 5 errors lesson was linked to its meaning/types/affect objectives. All third-term teaching objectives now have project-authored lesson coverage; the three revision/examination markers remain scheme-only.
+
+These are independently authored delivery supplements, not recovered missing source pages. The original third-term DOCX, figures and defective worked answers remain unchanged. The petty-cash, Mr Odili trial-balance and Fashola suspense source arithmetic findings remain separately recorded in their correction notes.
+
+The Bookkeeping regression test has been extended and wired into GitHub Actions in PR #390. Technical verification is pending the actual workflow result. All lessons remain content approval pending. The assistant's editorial review is not a substitute for the curriculum owner's or teacher's formal approval; no approval reference has been fabricated.

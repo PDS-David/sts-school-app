@@ -67,11 +67,11 @@
     "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten weeks. Third-term scheme has a Week 1 revision marker followed by nine teaching-topic weeks (Weeks 2-10); the source contains no revision body. A project-authored Week 1 revision lesson has been added using first-term Bookkeeping foundations; the original source marker remains SCHEME_ONLY."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 89,
+    "IMPLEMENTED_TESTING_DEFERRED": 93,
     "BLOCKED": 7
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 89,
+    "IMPLEMENTED_TESTING_DEFERRED": 93,
     "BLOCKED": 7
   },
   "items": [
@@ -309,7 +309,7 @@
         "BK-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "tests/ss1/bookkeeping.package.test.mts written only, following the French package test pattern: frozen-schema parse; exact three manifest source identities; lesson hashes and marking totals; correction identity/same-term binding; pending approval/deferred verification; pending source aliases; exact SCHEME_ONLY marker rule targets; and wrong-hash/missing/ambiguous-anchor guards. Test execution, typecheck and importer remain deferred by owner.",
+      "implementation_reference": "Test file written and extended for all 32 authored lessons, coverage mappings, body hashes, keyed marking, source markers and source-rule guards. Added to .github/workflows/jss3-assets.yml; GitHub Actions PR run 42526235246 is executing. Do not claim passed until the run concludes successfully.",
       "completion_condition": "Test code written and committed, NOT RUN. Rule, lesson, correction and asset guards are extended by later items as that content appears. Execution stays deferred by the owner."
     },
     {
@@ -1947,7 +1947,7 @@
       "kind": "SOURCE_WEEK_INDEXING",
       "week_or_locator": "Scheme Week 2 \"petty cash book\" at blocks 6–9; body evidence: Blocks 44–81 (range SHA-256 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6)",
       "objective": "Index third-term scheme Week 2 at objective level. Blocks 44–81 (range SHA-256 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6). Map meaning, classification of columns, posting of transactions, procedures and the printed layout/example. Preserve the # notation; check the float, reimbursements and column totals against the source. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
-      "implementation_reference": "BK-INV-T3: scheme Week 2 at blocks 6–9; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.; objective mapping and PARTIAL/UNRESOLVED coverage recorded in BK-WK-T3-W02.md; no lesson text authored and no parser row asserted.",
+      "implementation_reference": "Objective coverage now linked to project-authored lesson SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH; COV-BK-T3-W02-MEANING/COLUMNS/POSTING are IMPLEMENTED_EQUIVALENT. Source body boundaries remain unverified; no parser result is claimed.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -1985,7 +1985,7 @@
       "kind": "SOURCE_WEEK_INDEXING",
       "week_or_locator": "Scheme Week 3 \"trial balance and correction of errors\" at blocks 10–13; body evidence: Blocks 85–150 for meaning, trial-balance list, differences and functions; ledger extraction/balancing example continues at 166–259",
       "objective": "Index third-term scheme Week 3 at objective level. Blocks 85–150 for meaning, trial-balance list, differences and functions; ledger extraction/balancing example continues at 166–259. Map meaning, functions and extraction of ledger balances; do not assert a week boundary the document does not print. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
-      "implementation_reference": "BK-INV-T3: scheme Week 3 at blocks 10–13; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.; objective mapping and PARTIAL/UNRESOLVED coverage recorded in BK-WK-T3-W03.md; no lesson text authored and no parser row asserted.",
+      "implementation_reference": "Objective coverage now linked to project-authored lesson SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE; COV-BK-T3-W03-MEANING/FUNCTIONS/EXTRACTION are IMPLEMENTED_EQUIVALENT. Source arithmetic defect is separately documented in BK-CHECK-T3-W03-TB.md; source remains unchanged.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2023,7 +2023,7 @@
       "kind": "SOURCE_WEEK_INDEXING",
       "week_or_locator": "Scheme Week 4 \"trial balance and correction of error\" at blocks 14–16; body evidence: Blocks 151–175 contain rules/classification; ledger balancing and worked preparation appear at 166–259 (range 63dc9291dd76d28f3f2aac03e36220265942069b6f4c835bba4118df80287706)",
       "objective": "Index third-term scheme Week 4 at objective level. Blocks 151–175 contain rules/classification; ledger balancing and worked preparation appear at 166–259 (range 63dc9291dd76d28f3f2aac03e36220265942069b6f4c835bba4118df80287706). Map the overlap with Week 3 explicitly; check the printed trial-balance totals 10,000 vs 1,000. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
-      "implementation_reference": "BK-INV-T3: scheme Week 4 at blocks 14–16; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.; objective mapping and PARTIAL/UNRESOLVED coverage recorded in BK-WK-T3-W04.md; no lesson text authored and no parser row asserted.",
+      "implementation_reference": "Objective coverage now linked to project-authored lesson SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION; COV-BK-T3-W04-RULES/PREPARATION are IMPLEMENTED_EQUIVALENT. Source week/body boundaries remain a scheme mapping, not parser-verified.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2061,7 +2061,7 @@
       "kind": "SOURCE_WEEK_INDEXING",
       "week_or_locator": "Scheme Week 5 \"trial balance and correction of errors\" at blocks 17–21; body evidence: Blocks 261–307 contain error definitions/types and a seven-item correction illustration with journal answers",
       "objective": "Index third-term scheme Week 5 at objective level. Blocks 261–307 contain error definitions/types and a seven-item correction illustration with journal answers. Map errors affecting and not affecting agreement separately; record any scheme objective not explicitly taught. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
-      "implementation_reference": "BK-INV-T3: scheme Week 5 at blocks 17–21; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.; objective mapping and PARTIAL/UNRESOLVED coverage recorded in BK-WK-T3-W05.md; no lesson text authored and no parser row asserted.",
+      "implementation_reference": "Existing lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT now linked to COV-BK-T3-W05-MEANING/TYPES/AFFECT/NOT-AFFECT; all four objectives are IMPLEMENTED_EQUIVALENT. Source worked examples remain preserved as supplied.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -2099,7 +2099,7 @@
       "kind": "SOURCE_WEEK_INDEXING",
       "week_or_locator": "Scheme Week 6 \"trial balance and correction of errors\" at blocks 22–23; body evidence: Blocks 308–392 (range SHA-256 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c) contain errors affecting agreement, correction process, Fashola Ltd case, journal and suspense account",
       "objective": "Index third-term scheme Week 6 at objective level. Blocks 308–392 (range SHA-256 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c) contain errors affecting agreement, correction process, Fashola Ltd case, journal and suspense account. Check every correction and the printed suspense-account imbalance. The source has no explicit WEEK labels in the teaching body, so distinguish scheme-week assignments from observed body section boundaries and do not invent parser-verified rows.",
-      "implementation_reference": "BK-INV-T3: scheme Week 6 at blocks 22–23; see exact body locators and range hashes in BK-INV-T3. No explicit WEEK label is present in the body.; objective mapping and PARTIAL/UNRESOLVED coverage recorded in BK-WK-T3-W06.md; no lesson text authored and no parser row asserted.",
+      "implementation_reference": "Objective coverage now linked to project-authored lesson SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE; COV-BK-T3-W06-SUSPENSE is IMPLEMENTED_EQUIVALENT. Original Fashola Ltd suspense figures and direction conflicts remain documented unchanged in BK-CHECK-T3-W06-SUSPENSE.md.",
       "allowed_write_paths": [
         "backend/src/db/ss1/subjects/bookkeeping.json",
         "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
@@ -3448,6 +3448,110 @@
       "status": "IMPLEMENTED_TESTING_DEFERRED",
       "implementation_reference": "backend/src/db/ss1/subjects/bookkeeping.json lesson SUP-SS1-BOOKKEEPING-T3-W01-REVISION; project-authored revision, content approval pending, verification deferred.",
       "completion_condition": "Revision lesson and marked practice exist; provenance states no original revision body exists; marker rule remains SCHEME_ONLY."
+    },
+    {
+      "id": "BK-LES-T3-W02-PETTY-CASH",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH",
+      "objective": "Author complete petty cash book teaching for imprest, columns, voucher-supported payments, balancing, reimbursement and posting.",
+      "required_files": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-WK-T3-W02",
+        "BK-INV-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored lesson SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH added to bookkeeping.json with exact SHA-256, original examples, three/four marked practice questions and source provenance. Linked coverage records are IMPLEMENTED_EQUIVALENT. content_approval=PENDING and verification=DEFERRED.",
+      "completion_condition": "Lesson body, objectives, marked practice, provenance and coverage links are recorded; technical tests and curriculum content approval remain separate gates."
+    },
+    {
+      "id": "BK-LES-T3-W03-TRIAL-BALANCE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE",
+      "objective": "Author trial balance meaning, purposes, normal balances, worked extraction and limitations.",
+      "required_files": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-WK-T3-W03",
+        "BK-INV-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored lesson SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE added to bookkeeping.json with exact SHA-256, original examples, three/four marked practice questions and source provenance. Linked coverage records are IMPLEMENTED_EQUIVALENT. content_approval=PENDING and verification=DEFERRED.",
+      "completion_condition": "Lesson body, objectives, marked practice, provenance and coverage links are recorded; technical tests and curriculum content approval remain separate gates."
+    },
+    {
+      "id": "BK-LES-T3-W04-TRIAL-BALANCE-PREPARATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION",
+      "objective": "Author practical rules and a fully reconciled trial-balance preparation lesson.",
+      "required_files": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-WK-T3-W04",
+        "BK-INV-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored lesson SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION added to bookkeeping.json with exact SHA-256, original examples, three/four marked practice questions and source provenance. Linked coverage records are IMPLEMENTED_EQUIVALENT. content_approval=PENDING and verification=DEFERRED.",
+      "completion_condition": "Lesson body, objectives, marked practice, provenance and coverage links are recorded; technical tests and curriculum content approval remain separate gates."
+    },
+    {
+      "id": "BK-LES-T3-W06-SUSPENSE",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-97f226215927",
+      "term": "3rd Term",
+      "week_or_locator": "SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE",
+      "objective": "Author suspense-account purpose, temporary balancing, correcting journals and clearing worked examples.",
+      "required_files": [
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json",
+        "docs/ss1/work/microtasks/bookkeeping/BK-INV-T3.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/bookkeeping.json",
+        "docs/ss1/work/microtasks/bookkeeping/QUEUE.json"
+      ],
+      "depends_on": [
+        "BK-WK-T3-W06",
+        "BK-INV-T3"
+      ],
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Project-authored lesson SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE added to bookkeeping.json with exact SHA-256, original examples, three/four marked practice questions and source provenance. Linked coverage records are IMPLEMENTED_EQUIVALENT. content_approval=PENDING and verification=DEFERRED.",
+      "completion_condition": "Lesson body, objectives, marked practice, provenance and coverage links are recorded; technical tests and curriculum content approval remain separate gates."
     }
   ],
   "review": {

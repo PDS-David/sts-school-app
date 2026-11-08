@@ -330,3 +330,40 @@ test('Third-term Week 1 revision marker has a project-authored revision lesson, 
   assert.match(lesson.provenance[0].locator, /no revision body/);
   assert.equal(p.source_rules.find(x => x.id === 'RULE-BK-T3-REVISION-1')?.kind, 'SCHEME_ONLY');
 });
+
+
+test('Third-term petty cash, trial balance and suspense gaps have authored lessons and exact coverage', () => {
+  const p = packageSchema.parse(raw);
+  const expected = new Map([
+    ['SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH', ['46a849b06cd31f8186cb9b1fa1062cf8a218b584bbda3dbb45daed1ae57430f1', ['COV-BK-T3-W02-MEANING', 'COV-BK-T3-W02-COLUMNS', 'COV-BK-T3-W02-POSTING']]],
+    ['SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE', ['6de1fcf0310c0906bc00abd74e009dd7385b9db1fba402d515e6c663403f8431', ['COV-BK-T3-W03-MEANING', 'COV-BK-T3-W03-FUNCTIONS', 'COV-BK-T3-W03-EXTRACTION']]],
+    ['SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION', ['03c7a99f7baec41ab9cf159043cbffe756040fe80e3cc3da2585104b56db8d80', ['COV-BK-T3-W04-RULES', 'COV-BK-T3-W04-PREPARATION']]],
+    ['SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE', ['fcf96e7e2a4c14d870dc3ebd59b8be73ae248e574aa42532909572784233badd', ['COV-BK-T3-W06-SUSPENSE']]],
+  ]);
+  for (const [id, [expectedHash, coverageIds]] of expected) {
+    const lesson = p.lessons.find(x => x.id === id);
+    assert(lesson, `missing lesson ${id}`);
+    assert.equal(lesson.body_sha256, expectedHash);
+    assert.equal(lesson.state.implementation, 'IMPLEMENTED');
+    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.verification, 'DEFERRED');
+    assert(lesson.practice.length >= 3);
+    for (const q of lesson.practice) {
+      assert.equal(q.marks, q.marking.reduce((sum, part) => sum + part.marks, 0));
+    }
+    for (const coverageId of coverageIds) {
+      const coverage = p.coverage.find(x => x.id === coverageId);
+      assert(coverage);
+      assert.equal(coverage.status, 'IMPLEMENTED_EQUIVALENT');
+      assert(coverage.lesson_ids.includes(id));
+    }
+  }
+  const w5 = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT');
+  assert(w5);
+  for (const id of ['COV-BK-T3-W05-MEANING', 'COV-BK-T3-W05-TYPES', 'COV-BK-T3-W05-AFFECT']) {
+    const c = p.coverage.find(x => x.id === id);
+    assert(c && c.status === 'IMPLEMENTED_EQUIVALENT');
+    assert(c.lesson_ids.includes(w5.id));
+  }
+  assert.equal(p.coverage.filter(x => x.id.startsWith('COV-BK-T3-') && x.status === 'PARTIAL').length, 0);
+});
