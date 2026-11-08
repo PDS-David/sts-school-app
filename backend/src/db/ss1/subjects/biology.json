@@ -459,6 +459,10 @@
         {
           "locator": "Direct w:body blocks 136-155; block 136 SHA-256 a018fe50087dde8c17c5bd502f6ebae306ad9ecd3ee1f828ab9026d123662087; diagram range 137-155 SHA-256 e04ec56a91a301393fc767f2e14780206239d6d75237930d6a15675be39927e9",
           "explanation": "The source prose at block 136 gives the hierarchy in order: Kingdom → Phylum/Division → Class → Order → Family → Genera → Species, and the labels in blocks 137, 140, 143, 146, 149, 152 and 155 are ordinary text runs, so the rank names survive plain-text extraction. Six embedded straight-connector shapes (blocks 137, 140, 143, 146, 149, 152) each have a triangle at the tail end and render as downward arrows; they are not text and disappear from plain-text extraction. The rendered sequence continues across PDF pages 4-5. The source spells the rank 'Genius' at block 152 and repeats 'genius' for 'genus' in block 136; retain these source spellings unchanged. No separate image asset or redraw is needed: the order is already stated in prose and can be preserved in a semantic ordered chain in the supplemental lesson, with 'Genus' correctly spelled in that delivery replacement only. No parsed lesson ID or delivery_correction binding is inferred."
+        },
+        {
+          "locator": "Week 3 blocks 233-244; comparison block 235 and continuation rows 236-244; range SHA-256 ec528b4e285814fe8df1ec2640e4700ab4a18e3392bd979a3d69af0705c73b79",
+          "explanation": "The original presents seven paired differences plus an examples row in a two-column comparison. Block 235 contains the two text headings and first pair; blocks 236-244 continue the pairs, with the one-cotyledon description wrapping from block 237 to 238 and the vascular-bundle description wrapping from block 242 to 243. The two embedded shapes at block 235 are only a horizontal top rule and a vertical column divider; there is no Word table. The rendered PDF page 8 shows the intended columns, but text extraction collapses the headings/first row into one paragraph and relies on tabs/spaces for all pairings; the lines are not extracted. A semantic two-column table is required in the supplemental lesson. No image asset or redraw is needed. Source header spells the second heading 'Dicotyledonea', while the adjacent category line at block 234 spells 'Dicotyledoneae'; preserve the original discrepancy in evidence and use the adjacent full spelling only in the delivery supplement, without editing the source."
         }
       ]
     },
@@ -2905,12 +2909,13 @@
     {
       "id": "BIOLOGY-T1-W03-COVERAGE",
       "kind": "CONTENT",
-      "detail": "The 1st Term Week 3 classification objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The hierarchy is stated in prose at block 136 and labelled in diagram blocks 137-155. The six downward connector arrows are visual-only and disappear from plain-text extraction; the rank labels survive. The diagram and prose both print 'Genius'/'genius' for the taxonomic rank Genus. The original wording remains untouched. A semantic ordered hierarchy and the corrected spelling 'Genus' belong in the delivery supplement; no separate diagram asset is required.",
-      "required_action": "Author BIO-LES-T1-W03-CLASSIFICATION as a clearly labelled supplement bound to COV-BIO-T1-W03-SCHEME-3. Preserve the hierarchy as an ordered sequence (Kingdom → Phylum/Division → Class → Order → Family → Genus → Species), using the correct delivery spelling 'Genus' while retaining the original 'Genius'/'genius' source text unchanged. Include complete keyed practice and source provenance; do not invent an original parsed lesson ID or delivery-correction binding before the importer identifies it.",
+      "detail": "The 1st Term Week 3 classification objective is taught across source blocks 133-447, but the Biology package has no lessons and no source row has been imported. The hierarchy is stated in prose at block 136 and labelled in diagram blocks 137-155. The six downward connector arrows are visual-only and disappear from plain-text extraction; the rank labels survive. The source uses 'Genius'/'genius' for Genus. The plant comparison at blocks 235-244 is a two-column monocot/dicot table with seven differences and examples, but it is not a Word table: its column divider rules disappear from text extraction and pairings rely on whitespace. The delivery supplement must include a semantic two-column table. No separate image asset is required.",
+      "required_action": "Author BIO-LES-T1-W03-CLASSIFICATION as a clearly labelled supplement bound to COV-BIO-T1-W03-SCHEME-3. Preserve the hierarchy as an ordered sequence (Kingdom → Phylum/Division → Class → Order → Family → Genus → Species), using the correct delivery spelling 'Genus' while retaining the original 'Genius'/'genius' source text unchanged. Restate the seven monocot/dicot differences and examples in a semantic two-column table; use 'Dicotyledoneae' as shown at block 234 in the delivery supplement, while retaining the block 235 source header spelling in the source record. Include complete keyed practice and source provenance; do not invent an original parsed lesson ID or delivery-correction binding before the importer identifies it.",
       "affected_ids": [
         "COV-BIO-T1-W03-SCHEME-3",
         "BIO-VIS-T1-CLASS-HIERARCHY",
-        "BIO-LES-T1-W03-CLASSIFICATION"
+        "BIO-LES-T1-W03-CLASSIFICATION",
+        "BIO-VIS-T1-MONOCOT-DICOT"
       ],
       "blocks_delivery": true
     },
