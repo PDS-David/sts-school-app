@@ -40,8 +40,8 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 17,
-    "PENDING": 38,
+    "IMPLEMENTED_TESTING_DEFERRED": 18,
+    "PENDING": 37,
     "BLOCKED": 1
   },
   "items": [
@@ -686,8 +686,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Classified the exact WEEK TWELVE marker using SS1-SRC-f433169ca25c-R003 (classify_marker/EXAMINATION), bound to source SHA fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59 and unique anchor 'WEEK TWELVE'. Body lines 1405-1406 SHA-256 5d936f03520df3e053a872e5628c15873dcccf0404d69cc8bfa231c88c491e31; scheme row 19 SHA-256 2fd2203f37ce38e963ad1cd69c8c4b1abe58e235c9aa02cdfe37b02acf9ea9c2. Added MARKER coverage COV-CC-T2-W12-MARKER targeting the rule. No lesson, practical task, rubric, exam paper or marking scheme invented.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no instructional body, practical rubric or examination content exists in the source; nothing invented."
     },
     {
@@ -2043,7 +2043,6 @@
     }
   },
   "next_runnable": [
-    "CC-MARK-T2-W12",
     "CC-VIS-T2-W01-TBL1",
     "CC-VIS-T2-W04-TBL2",
     "CC-VIS-T2-W04-TBL3",

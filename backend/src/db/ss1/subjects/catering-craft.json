@@ -71,6 +71,18 @@
         "locator": "word-extractor 1.0.4 getBody() lines 1401-1402; unique marker anchor 'WEEK ELEVEN'",
         "explanation": "The exact WEEK ELEVEN marker is followed only by 'PRACTICAL & REVISION' in the source. No instructional body, practical task, rubric, exam paper or marking scheme is present in this source block. This rule classifies the marker without discarding or inventing a lesson."
       }
+    },
+    {
+      "id": "SS1-SRC-f433169ca25c-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "source_sha256": "fd8115ff99dd3c370b86b4b5a326fe647e49328bc83f2d041c73f29b1b84ad59",
+      "anchor": "WEEK TWELVE",
+      "kind": "EXAMINATION",
+      "evidence": {
+        "locator": "word-extractor 1.0.4 getBody() lines 1405-1406; unique marker anchor 'WEEK TWELVE'",
+        "explanation": "The exact WEEK TWELVE marker is followed only by 'EXAMINATION' in the source. No instructional body, practical task, rubric, exam paper or marking scheme is present in this source block. This rule classifies the marker without discarding or inventing a lesson."
+      }
     }
   ],
   "lessons": [],
@@ -282,6 +294,22 @@
         {
           "locator": "source lines 1401-1402; source rule SS1-SRC-f433169ca25c-R002",
           "explanation": "WEEK ELEVEN is a two-line revision marker only. There is no instructional lesson, practical task, rubric, examination paper or marking scheme in this source. The marker is explicitly classified by SS1-SRC-f433169ca25c-R002; no lesson ID is fabricated."
+        }
+      ]
+    },
+    {
+      "id": "COV-CC-T2-W12-MARKER",
+      "source_id": "SS1-SRC-f433169ca25c",
+      "objective": "Scheme row 19: Examination",
+      "objective_locator": "opening scheme list line 19 (SHA-256 2fd2203f37ce38e963ad1cd69c8c4b1abe58e235c9aa02cdfe37b02acf9ea9c2); body WEEK TWELVE lines 1405-1406 (SHA-256 5d936f03520df3e053a872e5628c15873dcccf0404d69cc8bfa231c88c491e31)",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-f433169ca25c-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "source lines 1405-1406; source rule SS1-SRC-f433169ca25c-R003",
+          "explanation": "WEEK TWELVE is a two-line examination marker only. There is no instructional lesson, practical task, rubric, examination paper or marking scheme in this source. The marker is explicitly classified by SS1-SRC-f433169ca25c-R003; no lesson ID is fabricated."
         }
       ]
     }
