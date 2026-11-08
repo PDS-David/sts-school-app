@@ -4,7 +4,7 @@
   "slug": "bookkeeping",
   "generated_from": {
     "master_sha": "b13a8c065c8ad0455563af5a0af7abc019eb68f7",
-    "package": null,
+    "package": "backend/src/db/ss1/subjects/bookkeeping.json",
     "task": "SS1 subject queue: Bookkeeping (package does not exist; queue built from SOURCE_ASSIGNMENTS.csv and the Worker D prompt)"
   },
   "status_vocabulary": [
@@ -64,7 +64,8 @@
     "OWNER CONFIRMATION 2026-11-08: canonical subject identity Bookkeeping is confirmed; all three observed source-heading variants are accepted as metadata aliases. The package records the approval reference; this is not lesson content approval or technical verification.",
     "OWNER APPROVAL 2026-11-08: the four first-term source-defect decision tasks are superseded for delivery by the approved independent W01-W04 teaching replacements. Their source evidence remains unchanged. They are recorded IMPLEMENTED_TESTING_DEFERRED, not verified; teacher content approval and technical checks remain separate.",
     "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten teaching weeks. The owner cannot explain why the supplied first-term document has only four week bodies. The matching SS1 Book-Keeping first-term scheme reproduces the same ten-week topic sequence. W05-W10 project-authored extensions have been added to populate ten teaching weeks without claiming missing original source pages.",
-    "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten weeks. Third-term scheme has a Week 1 revision marker followed by nine teaching-topic weeks (Weeks 2-10); the source contains no revision body. A project-authored Week 1 revision lesson has been added using first-term Bookkeeping foundations; the original source marker remains SCHEME_ONLY."
+    "OWNER CLARIFICATION 2026-11-08: each term was expected to contain at least ten weeks. Third-term scheme has a Week 1 revision marker followed by nine teaching-topic weeks (Weeks 2-10); the source contains no revision body. A project-authored Week 1 revision lesson has been added using first-term Bookkeeping foundations; the original source marker remains SCHEME_ONLY.",
+    "2026-11-08 master reconciliation audit: refreshed the review pointer to current master commit 288965f793e217dbc076eb4f51246a85033034c8 and recorded the existing package path and blob SHA. Current inventory: 32 implemented lessons (11/10/11 across terms), 81 coverage rows (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 6 MARKER), 18 source rules, 3 sources and 27 package open items. All 32 lessons remain approval PENDING and verification DEFERRED; package remains PENDING. Historical generated_from.master_sha and original task description are retained as provenance; generated_from.package now points to the package that was subsequently created. This inventory refresh does not execute the deferred tests or importer and does not imply content approval."
   ],
   "counts": {
     "IMPLEMENTED_TESTING_DEFERRED": 93,
@@ -3556,8 +3557,10 @@
   ],
   "review": {
     "date": "2026-11-08",
-    "reviewed_commit": "05f62a958bc58c68cc2dc9670a211224db93d2c3",
-    "scope": "Full configured workflow passed. The exact original third-term DOCX hash was independently verified and source-rule anchors were checked; full-source Mammoth/buildFromFiles/compiler and device/delivery checks remain deferred."
+    "reviewed_commit": "288965f793e217dbc076eb4f51246a85033034c8",
+    "package_path": "backend/src/db/ss1/subjects/bookkeeping.json",
+    "package_blob_sha": "4525523907073a39b4d63110d1202b75e9e940f5",
+    "scope": "Current master inventory refreshed. Package contains 32 implemented lessons (11 first term, 10 second term, 11 third term), 81 coverage records (72 IMPLEMENTED_EQUIVALENT, 3 PARTIAL, 6 MARKER), 18 source rules, 3 registered sources and 27 open items. All 32 lessons remain content_approval=PENDING and verification=DEFERRED; package_status=PENDING. The configured workflow passed on the prior master snapshot, but that is not full-source Mammoth/buildFromFiles/compiler verification, importer/database delivery or device acceptance. Full-source and delivery checks remain deferred; formal teacher/curriculum-owner content approval remains outstanding."
   },
   "next_runnable": []
 }
