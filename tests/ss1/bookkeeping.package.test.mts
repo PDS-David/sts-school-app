@@ -311,7 +311,7 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
   }
   const weeks = new Set(p.lessons
     .filter(x => x.term === '1st Term')
-    .map(x => x.id.match(/T1-W(\\d{2})/)?.[1])
+    .map(x => x.id.match(/T1-W(\d{2})/)?.[1])
     .filter(Boolean));
   assert.deepEqual([...weeks].sort(), ['01','02','03','04','05','06','07','08','09','10']);
   const scope = p.open_items.find(x => x.id === 'BOOKKEEPING-T1-SCHEME-VS-BODY');
