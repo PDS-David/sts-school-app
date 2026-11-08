@@ -45,8 +45,8 @@
     "TEST": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 47,
-    "PENDING": 43,
+    "IMPLEMENTED_TESTING_DEFERRED": 48,
+    "PENDING": 42,
     "BLOCKED": 9
   },
   "total": 99,
@@ -428,8 +428,8 @@
         "MATH-SRC-T1",
         "MATH-FACT-HEADER-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Parsed row 2 (source label 'WEEK 3', title \"RULES OF BASE NUMBER\", 2682 characters, body sha256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7) from docs/ss1/work/SS1-03/evidence/parsed_rows.json. Existing coverage COV-MATH-T1-R02 status IMPLEMENTED_EQUIVALENT: row-level only, not objective-level proof. Existing replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS and correction CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS (implemented, approval PENDING, verification DEFERRED); its reason cites specific source defects but whole-row objective scope has NOT been reviewed. Equation-aware extraction recovered about 86 more characters than the plain extractor (SS1-03 author evidence), so the delivered original text loses notation (OI-MATH-001).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: completed objective-level review of parsed row 2 (WEEK 3, RULES OF BASE NUMBER; 2,682 characters; body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7). Replacement SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS updated to body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3, five objectives and six keyed practice items. Confirmed coverage of valid digits, addition, subtraction, multiplication, division, unknown base, binary letter/yes-no coding. Mapped source examples: 174₈+233₈, 2311₄−213₄ (corrected to 2032₄), 214₅×23₅, 104_x=68 (reject negative base); source assessment maps to Q1–Q6, including 4103₆=2112₆+x, 614₈−506₈, 123_y=83, 1101₂×10₂ and I LOVE MATHEMATICS. Division was added because source rule lists it but initial replacement omitted it. Public close-equivalent source page lines 127–163 used for corroboration, not claimed identical to archive. External MAN textbook assignment pointer retained; original equivalent practice supplied, exact textbook items not reproduced. OI-MATH-001 remains open for equation-aware extraction; content approval PENDING, verification DEFERRED; tests not run.",
       "completion_condition": "Each scheme objective listed with a reproducible locator and a status; defects, lost notation and figures noted; any uncovered objective becomes an appended bounded task (lesson, correction or asset) rather than a note."
     },
     {
@@ -1654,7 +1654,7 @@
         "MATH-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json lessons[id=SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS] body_sha256=9782d282a763a2d9507ed5356b035e026d889982c5f505fd2cff49415c5301b2; 3 objectives, 3 practice items with marking; state={\"content_approval\": \"PENDING\", \"approval_reference\": null, \"implementation\": \"IMPLEMENTED\", \"verification\": \"DEFERRED\", \"verification_reference\": null}. Referenced by coverage COV-MATH-T1-R02; bound by CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS. Implemented code, not verified; whole-row scope review pending in MATH-WK-T1-W03.",
+      "implementation_reference": "Implemented 2026-11-08: package lesson SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3; five objectives, six practice items and full marking. Scope review completed against Week 3 source page and archive row identity. Added same-base division method/example, binary yes/no bit, and keyed exercises for 1101₂×10₂ and 1320₄÷2₄. Approval PENDING; verification DEFERRED.",
       "completion_condition": "Implemented in the package. Delivery stays blocked: content approval PENDING with no approval_reference and verification DEFERRED; neither is to be invented."
     },
     {
@@ -1806,7 +1806,7 @@
         "MATH-WK-T1-W03"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS] source_lesson_id=SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7 body_sha256=afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7 replacement_id=SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS. Stated defects: Source solves 104 in base x = 68 as x = ±8 (a base cannot be negative) and gives 2311₄−213₄ as 2033₄ (correct 2032₄). The binding exists as code; its objective-scope review is NOT done (see MATH-WK-T1-W03). Do not activate delivery until that review closes.",
+      "implementation_reference": "mathematics.json delivery_corrections[id=CORR-MATHEMATICS-T1-W03-BASE-OPERATIONS] binds source row SS1-SRC-0c9004137f95:BODY:afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7 (body SHA-256 afaa3393da2e57113812e989319e9184af8a0104680cea01cee7ebcaa83573e7) to SUP-SS1-MATHEMATICS-T1-W03-BASE-OPERATIONS (body SHA-256 6f81f256bda8030d04111f3a70ba16f85083c4ce71d3929b03a3cd573a5fe4f3). Objective review found and filled missing division coverage; source arithmetic defects remain corrected (unknown base negative root rejected; 2311₄−213₄ = 2032₄). Assessment mapping recorded in MATH-WK-T1-W03.md.",
       "completion_condition": "Binding implemented (done). This item reopens only if the week review finds a defect that needs the binding changed, in which case record it here."
     },
     {
@@ -3191,7 +3191,7 @@
     }
   ],
   "review": {
-    "date": "2026-10-29",
+    "date": "2026-11-08",
     "reviewed_master_sha": "4159336c7068d2235209221f5f14adc4986acec5",
     "scope": "Documentation and source identity only; curriculum tests, typechecks, importer, database and device checks deferred.",
     "source_archive": {
@@ -3210,11 +3210,11 @@
       "tests_blob": "b22b9a654595f704cad77bd011bcb57886de6425",
       "checkpoint_blob": "f2c37bd28e06d0fa3f1424b27fcdfbc1675ef96c",
       "handoff_blob": "f3ee7c4559931744ab679bc6f8975fd7091c0710"
-    }
+    },
+    "notes": "MATH-WK-T1-W03 objective-level scope review completed; division added to the replacement and every source assessment mapped. OI-MATH-001 remains open for equation-aware extraction; tests deferred."
   },
   "next_runnable": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W03",
     "MATH-WK-T1-W04",
     "MATH-WK-T1-W05",
     "MATH-WK-T1-W06",
@@ -3255,7 +3255,6 @@
   ],
   "runnable_now": [
     "MATH-PRE-T3",
-    "MATH-WK-T1-W03",
     "MATH-WK-T1-W04",
     "MATH-WK-T1-W05",
     "MATH-WK-T1-W06",
