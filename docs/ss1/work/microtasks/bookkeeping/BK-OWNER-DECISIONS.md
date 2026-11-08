@@ -106,3 +106,10 @@ Four project-authored third-term lessons were added to complete the previously p
 These are independently authored delivery supplements, not recovered missing source pages. The original third-term DOCX, figures and defective worked answers remain unchanged. The petty-cash, Mr Odili trial-balance and Fashola suspense source arithmetic findings remain separately recorded in their correction notes.
 
 The Bookkeeping regression test has been extended and wired into GitHub Actions in PR #390. Technical verification is pending the actual workflow result. All lessons remain content approval pending. The assistant's editorial review is not a substitute for the curriculum owner's or teacher's formal approval; no approval reference has been fabricated.
+
+
+## Technical validation result — 8 November 2026
+
+The corrected Bookkeeping package regression suite and the full configured GitHub Actions workflow passed in run 42526555833 (run 1319), on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. This includes schema/source registration, all authored lesson hashes, keyed marking totals, state boundaries, coverage links and marker/rule guards, plus backend/mobile TypeScript and the configured database, authenticated retrieval, sequencing and staging-admin integration checks.
+
+The earlier failed run was due to stale stored hashes and over-escaped test regular expressions; those were corrected and the rerun passed. This is technical validation of the configured checks, not formal content approval. The remaining full-source Bookkeeping parser/compiler/importer/device/delivery checks are still deferred. All authored lessons remain content_approval=PENDING. The queue records 93 IMPLEMENTED_TESTING_DEFERRED items and 7 BLOCKED items; the blocked content-approval gate remains open.
