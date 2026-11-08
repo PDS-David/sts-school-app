@@ -73,7 +73,8 @@
     "AG-VIS-T3-W02-ELECTRIC-WATER (2026-11-08): block 211 has two visuals only—generator-room photo image5 and hydroelectric-dam diagram image6. Both carry third-party credits and no source reuse licence. Image6 has unkeyed numeric callouts 1-6. Correction follow-up AG-CORR-T3-W02-WDP-LOCATORS records that WDP layers are actually in Week Four groups at blocks 487 and 494, not block 211.",
     "AG-VIS-T3-W04-RUMINANT-DIGESTION (2026-11-08): image7.png at block 395 is a readable labelled cattle digestive-tract diagram supporting the four-compartment text at 391-396. No credit/licence is supplied; reuse is blocked pending permission or a separately sourced rights-cleared diagram.",
     "AG-VIS-T3-W04-PIG-DIGESTION (2026-11-08): image8.jpeg at block 417 is a legible labelled generic monogastric digestive tract, not demonstrably pig-specific. No credit/licence is supplied; delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
-    "AG-VIS-T3-W04-POULTRY-DIGESTION (2026-11-08): image9.jpeg at block 425 is a labelled poultry digestive-system diagram matching heading 424 and text 426-428. Labels are mostly readable though some crowded; no credit/licence is supplied, so delivery reuse is blocked pending rights clearance or a rights-cleared replacement."
+    "AG-VIS-T3-W04-POULTRY-DIGESTION (2026-11-08): image9.jpeg at block 425 is a labelled poultry digestive-system diagram matching heading 424 and text 426-428. Labels are mostly readable though some crowded; no credit/licence is supplied, so delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
+    "AG-VIS-T3-W04-MALE-REPRODUCTION (2026-11-08): block 487 contains a photographed textbook page (image10) and a cleaner labelled male reproductive-system schematic (image11), plus hdphoto1.wdp as an effect layer. The photographed page is not suitable as a standalone asset; neither image has a visible reuse licence or source citation. Reuse is blocked pending rights clearance or a rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -88,8 +89,8 @@
     "CORRECTION_BINDING": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 58,
-    "PENDING": 91,
+    "IMPLEMENTED_TESTING_DEFERRED": 59,
+    "PENDING": 90,
     "BLOCKED": 2
   },
   "items": [
@@ -2563,8 +2564,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, image10.jpeg SHA-256 7b3c3ece6a547d5d728db396cc963ab277b9baf18af03660d8aff10a4bf84c64 (114,299 bytes; 856×1,142), image11.jpeg SHA-256 b1b8bbfeea51e79facb271355588c9c9f2888fcdb6a951fa04f1eef438a6158c (47,848 bytes; 685×572), and hdphoto1.wdp SHA-256 eb9d245d8a2733802fb09c6b20e0c86624589039e4ce60c2981d617c13cd11bc (143,121 bytes). At body block 487, rId16 -> image10.jpeg, rId22 -> image11.jpeg and rId21 is an a14:imgLayer -> hdphoto1.wdp; WDP is an alternate/effect layer, not a third independent figure. Image10 is a photographed textbook page with surrounding prose and a male reproductive-system figure; it is skewed/cropped and its surrounding text is not fully legible as an asset, though the figure and some labels are visible. Image11 is a clean labelled male reproductive tract schematic with readable labels (anus, prostate gland, urethra, sperm duct/vas deferens, epididymis, scrotal sac, testis, penis, glans penis, penis bone, bladder). Caption at block 488 is 'Male reproductive system of farm animals'; source text at 485-486 gives context. No visible credit/licence or identifiable textbook citation for either image; no reuse without rights clearance. Prefer a separate rights-cleared diagram, not the photographed page. Added open item AGRICULTURAL-SCIENCE-T3-W04-MALE-REPRODUCTION-RIGHTS. No derivative created; importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5679,7 +5680,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W04-MALE-REPRODUCTION",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
     "AG-VIS-T3-W04-TBL-DIGESTION",
