@@ -155,7 +155,8 @@
     "ENG-FACT-W08-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-JEWISH-COMMUNITIES-READING-T1-W08, an original, sourced reading passage and 20-mark keyed comprehension exercise. It is a clearly labelled equivalent, not a reproduction of the unavailable textbook passage or page-61 questions.",
     "ENG-FACT-W09-EXTERNAL-MATERIALS (2026-11-08): Added SUP-SS1-ENGLISH-RELIGION-READING-T1-W09, an original neutral religion-vocabulary passage and 16-mark keyed reading assignment. It is a labelled equivalent for the unavailable Effective English page; no textbook page or key is claimed as inspected.",
     "ENG-FACT-ORAL-AUDIO and ENG-ASSET-AUDIO-MODEL (2026-11-08): Generated and committed a short original synthetic British English pronunciation model using eSpeak 1.48.15 en-gb. Registered the 6,272-byte MP3 with exact SHA-256, media type, alt text, provenance, licence basis and lesson binding. The clip supports selected vowel, consonant and stress contrasts. Teacher oral observation remains a separate deferred verification; playback does not certify learner speech.",
-    "PR #358 reconciliation 2026-11-08: task descriptions and completion conditions now reflect the owner's no-hindrance directive and distinguish labelled original equivalents from unavailable prescribed extracts. Audio asset references reconciled to the committed 6,272-byte MP3 and SHA-256. Queue status counts remain 241 IMPLEMENTED_TESTING_DEFERRED, 0 PENDING and 1 BLOCKED; teacher content approval, formal verification and learner oral assessment remain separate gates."
+    "PR #358 reconciliation 2026-11-08: task descriptions and completion conditions reflect the owner's no-hindrance directive and distinguish labelled original equivalents from unavailable prescribed extracts. Audio metadata is aligned to the final compact 1,988-byte MP3 (1.764 seconds), SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa. Queue status counts remain 241 IMPLEMENTED_TESTING_DEFERRED, 0 PENDING and 1 BLOCKED; teacher content approval, formal verification and learner oral assessment remain separate gates.",
+    "FINAL AUDIO RECONCILIATION 2026-11-08: The later compact recording commit replaced the earlier 3,968-byte audio. The repository blob and english.json asset record both confirm 1,988 bytes, SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa, duration 1.764 seconds. Earlier queue references to 3,968/6,272 bytes and earlier hashes are superseded."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -3744,7 +3745,7 @@
         "ENG-LES-STRESS-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Registered original synthetic British English model SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1 with asset ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB. The committed MP3 is 6,272 bytes with SHA-256 1c31a9b0ed6204799e22f4f195d8ffbb515a99f98bf611ea27917bef78d9baa0; it supports selected /ɪ/-/iː/, /θ/-/ð/, /eɪ/-/aɪ/ and noun/verb stress contrasts. Teacher oral observation remains separately DEFERRED; playback does not certify learner speaking proficiency.",
+      "implementation_reference": "Registered original synthetic British English model SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1 with asset ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB. The final compact MP3 is 1,988 bytes with SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa and duration 1.764 seconds. It models /ɪ/-/iː/, /θ/-/ð/ and /eɪ/-/aɪ/ contrasts. Teacher oral observation remains separately DEFERRED; playback does not certify learner speaking proficiency.",
       "completion_condition": "A concrete audio file or accessible authorised recording and permission basis are documented for ENG-ASSET-AUDIO-MODEL. This task does not require asset installation or oral observation. Keep the package's oral-observation open item open until later verification.",
       "required_attachments": []
     },
@@ -3885,7 +3886,7 @@
       "source_id": null,
       "term": null,
       "week_or_locator": "backend/src/db/ss1/assets/english/",
-      "objective": "Register the original synthetic British English pronunciation model with exact bytes, hash, alt text, provenance, permission basis and lesson binding.",
+      "objective": "Register the final compact synthetic British English pronunciation model with its exact bytes, hash, duration, alt text, provenance, permission basis and lesson binding.",
       "required_files": [
         "backend/src/db/ss1/subjectPackageSchema.ts",
         "backend/src/db/ss1/compiler.ts",
@@ -3900,8 +3901,8 @@
         "ENG-FACT-ORAL-AUDIO"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Added backend/src/db/ss1/assets/english/ss1-english-pronunciation-model-en-gb.mp3. Asset ID ASSET-SS1-ENGLISH-PRONUNCIATION-MODEL-ENGB; media_type audio/mpeg; bytes 1988; SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa; alt text and provenance recorded; lesson_id SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1. Generated from original script using eSpeak en-gb; output use permission basis recorded. Content approval PENDING; verification DEFERRED.",
-      "completion_condition": "The committed MP3 asset has its exact 6,272-byte size, SHA-256 1c31a9b0ed6204799e22f4f195d8ffbb515a99f98bf611ea27917bef78d9baa0, alt text, provenance, permission basis and lesson binding. Content approval remains PENDING; learner oral assessment remains DEFERRED.",
+      "implementation_reference": "The final committed MP3 is 1,988 bytes; SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa; duration 1.764 seconds; media_type audio/mpeg. Asset record confirms alt text, eSpeak provenance, permission basis and binding to SUP-SS1-ENGLISH-AUDIO-PRONUNCIATION-MODEL-T1. It models /ɪ/-/iː/, /θ/-/ð/ and /eɪ/-/aɪ/ contrasts. Content approval PENDING; verification DEFERRED.",
+      "completion_condition": "The final compact MP3 is registered with exact 1,988-byte size, SHA-256 d3f0b49f42b1bac3355228683e46b621bad904bb7287024aee33427836069aaa, 1.764-second duration, alt text, provenance, permission basis and lesson binding. Content approval remains PENDING; learner oral assessment remains DEFERRED.",
       "required_attachments": []
     },
     {
