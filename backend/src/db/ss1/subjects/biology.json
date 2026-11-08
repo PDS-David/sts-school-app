@@ -3856,14 +3856,15 @@
     {
       "id": "BIOLOGY-T3-W05-AGRICULTURE-FACTS",
       "kind": "FACT",
-      "detail": "Botanical rank terminology at block 344, the native botanical-classification chart and its A-I labels/relationships at blocks 345-358, crop examples/nutritional statements at 370-380, life-cycle examples at 387-389 and soil/fertilizer/pesticide claims at 401-445 need authoritative review.",
-      "required_action": "Verify botanical rank terminology and the source chart's A-I plant-group labels and hierarchy against approved botanical references; also verify crop examples, life-cycle classifications and soil/agricultural impact claims against authoritative botanical/agricultural sources. Keep corrections distinct from source text; do not add pesticide concentrations or application instructions.",
+      "detail": "Botanical rank terminology at block 344, the native botanical-classification chart and its A-I labels/relationships at blocks 345-358, crop examples/nutritional statements at 370-380, life-cycle examples at 387-389 and soil/fertilizer/pesticide claims at 401-445 need authoritative review. The duplicate follow-up task BIO-VIS-T3-W05-PLANT-CLASSIFICATION refers to the same source member and the same blocks 350-355 chart already inspected in BIO-VIS-T3-SHP-PLANT-CLASS-CHART.md. The existing report records every A-I label and visible connector; no taxonomy correction has been applied to the source.",
+      "required_action": "Use the verified A-I labels and connector relationships in BIO-VIS-T3-SHP-PLANT-CLASS-CHART.md as the structural evidence for both visual-disposition records. Keep any taxonomy correction in a separately authored supplement; do not alter the source chart. Continue authoritative review of rank terminology, crop examples, life-cycle claims and agricultural-impact statements.",
       "affected_ids": [
         "COV-BIO-T3-W05-BOTANICAL-CLASSIFICATION",
         "COV-BIO-T3-W05-AGRICULTURAL-CLASSIFICATION",
         "COV-BIO-T3-W05-LIFE-CYCLE-SIZE",
         "COV-BIO-T3-W05-AGRICULTURAL-EFFECTS",
-        "BIO-VIS-T3-SHP-PLANT-CLASS-CHART"
+        "BIO-VIS-T3-SHP-PLANT-CLASS-CHART",
+        "BIO-VIS-T3-W05-PLANT-CLASSIFICATION"
       ],
       "blocks_delivery": true
     },
