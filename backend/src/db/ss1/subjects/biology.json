@@ -2675,6 +2675,10 @@
         {
           "locator": "scheme row 3 and Week 3 body",
           "explanation": "The pest section is inside the Week 3 body but is not named by the scheme objective Classification of Living things; placement is unresolved."
+        },
+        {
+          "locator": "Original direct w:body blocks 582-593; range SHA-256 e483961c186650c77ee7465d0157b0a972b724be22a55eeadaac4211d9703218; first diagram blocks 582-590; second diagram block 593",
+          "explanation": "The first diagram spans the page break between private rendered PDF pages 21-22. Its visible text-box labels are 'adults' (block 585), 'Larvae' (586), 'Nymphs' and 'egg in the ground' (590); block 582 also contains one empty text box. Four straight-connector arrows are distributed across blocks 582 and 587. The labels survive as text-box text but their positions/arrow relationships are not reliably retained in the parsed text or a single continuous rendering. This diagram sits under the 'Life cycle of yam Beetle' heading, but the adjacent yam-beetle prose at blocks 580-581 describes eggs, larvae, pupa and adults and never mentions nymphs; the figure therefore cannot be confidently assigned to the yam beetle or another pest from this source alone. The second diagram is a grouped four-stage cycle at block 593 with labels Egg, Adults (split as 'A'/'dults' in runs), Pupa and Larvae and four directional connectors. It follows the 'Life Cycle of Rhinoceros beetle' heading and prose at blocks 591-593, which describe egg, larva, pupa and adult stages. Its labels render clearly on PDF page 22; text extraction concatenates the stage names and loses the arrows. Duplicate text-box strings in the XML are DrawingML/VML alternate representations, not extra visible labels. No original vector drawing is committed; a new project-authored redraw is appropriate for the clear rhinoceros-beetle cycle, while the first diagram needs teacher identification before redraw."
         }
       ]
     },
@@ -3945,6 +3949,20 @@
         "BIO-VIS-T1-MICROSCOPE",
         "BIO-VIS-T1-W02-MICROSCOPE-REDRAW",
         "SS1-SRC-422e0e6ddde9"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T1-W03-YAM-BEETLE-CYCLE-LABELS",
+      "kind": "FACT",
+      "detail": "The first life-cycle figure at blocks 582-590 is positioned under 'Life cycle of yam Beetle' (block 580) but its visible labels are 'adults', 'Larvae', 'Nymphs' and 'egg in the ground'. The accompanying yam-beetle prose at blocks 580-581 describes eggs, larvae, pupa and adult and does not mention nymphs. The figure's arrows and labels are split across rendered pages 21-22, and the source does not identify a different pest for the nymph label. Its intended organism/stage sequence cannot be established from the source alone.",
+      "required_action": "A qualified Biology teacher must identify the pest/life cycle intended by the first figure and state whether it belongs with the yam-beetle paragraph or another insect. Resolve the Nymphs-versus-pupa discrepancy and provide the approved stage order with a course reference. Do not label it as a grasshopper or yam beetle by guess; only then may a project-authored redraw be created.",
+      "affected_ids": [
+        "COV-BIO-T1-W03-PESTS",
+        "SS1-SRC-422e0e6ddde9",
+        "BIO-VIS-T1-PEST-LIFECYCLES",
+        "BIO-FACT-T1-W03-YAM-BEETLE-CYCLE-LABELS",
+        "BIO-VIS-T1-W03-YAM-BEETLE-CYCLE-REDRAW"
       ],
       "blocks_delivery": true
     }
