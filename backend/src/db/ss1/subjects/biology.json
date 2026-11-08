@@ -3661,12 +3661,13 @@
     {
       "id": "BIOLOGY-T3-W01-MICROBE-FACTS",
       "kind": "FACT",
-      "detail": "The Leeuwenhoek history statement (38), microbial classification/claims (40-54), air-culture wording (73-74), normal flora/antibiotic statement (76), disease examples (43-49) and vector/disease table (84) need authoritative review. The table prints 'Vibro cholera' and links it to housefly/cholera and typhoid.",
-      "required_action": "Verify historical, microbiological and disease/vector claims against authoritative primary sources; record exact citations and keep corrected supplemental text distinct from the original source. Do not turn this indexing task into a practical culturing protocol.",
+      "detail": "The Leeuwenhoek history statement (38), microbial classification/claims (40-54), air-culture wording (73-74), normal flora/antibiotic statement (76), disease examples (43-49) and vector/disease table (84) need authoritative review. The table prints 'Vibro cholera' and links it to housefly/cholera and typhoid. The vector/carrier table at block 84 is a native 5-row × 3-column table; flattened extraction does not preserve row/cell associations. It prints the source spelling 'Vibro cholera' and links housefly to cholera and typhoid. These pairings are preserved as source claims, not endorsed; any delivery table must restore semantic rows after authoritative review.",
+      "required_action": "Verify historical, microbiological and disease/vector claims against authoritative primary sources; record exact citations and keep corrected supplemental text distinct from the original source. Do not turn this indexing task into a practical culturing protocol. Include disease/vector table row-by-row in the authoritative review; retain the source spelling and mapping as source evidence, record any corrections separately, and require a semantic three-column table for delivery.",
       "affected_ids": [
         "COV-BIO-T3-W01-MICROORGANISMS",
         "COV-BIO-T3-W01-IDENTIFICATION-CARRIERS",
-        "COV-BIO-T3-W01-ASSESSMENT"
+        "COV-BIO-T3-W01-ASSESSMENT",
+        "BIO-VIS-T3-TBL-VECTORS"
       ],
       "blocks_delivery": true
     },
@@ -3695,11 +3696,12 @@
     {
       "id": "BIOLOGY-T3-W02-HEALTH-CLAIMS",
       "kind": "FACT",
-      "detail": "The disease table at block 151 contains 21 rows of disease agents, symptoms, transmission and control claims, with eight external symptom-guide hyperlinks. These statements require authoritative disease-specific review; legacy symptom links are not accepted as the sole authority.",
-      "required_action": "Verify disease names, agents, symptom summaries, transmission and prevention/control against current authoritative public-health sources. Record citations and keep corrected supplemental text distinct from the original. Do not provide individualized medical advice.",
+      "detail": "The disease table at block 151 contains 21 rows of disease agents, symptoms, transmission and control claims, with eight external symptom-guide hyperlinks. These statements require authoritative disease-specific review; legacy symptom links are not accepted as the sole authority. The table at block 151 is a native 21-row × 5-column structure; flattened text loses row/cell associations. The inventory records one NHLBI cough URL and seven legacy NYT symptom-guide pages (depression, stress-and-anxiety, swollen-glands, abdominal-pain, agitation, bloody-or-tarry-stools and confusion). These links were not opened or verified, and the inventory does not retain every full href. The table must be restated as semantic rows after authoritative review.",
+      "required_action": "Verify disease names, agents, symptom summaries, transmission and prevention/control against current authoritative public-health sources. Record citations and keep corrected supplemental text distinct from the original. Do not provide individualized medical advice. Preserve the five-column row structure in delivery and record the full source hyperlinks from the verified DOCX relationships where available; treat the legacy symptom pages as source links only, not as authorities.",
       "affected_ids": [
         "COV-BIO-T3-W02-DISEASES",
-        "COV-BIO-T3-W02-ASSESSMENT"
+        "COV-BIO-T3-W02-ASSESSMENT",
+        "BIO-VIS-T3-TBL-DISEASES"
       ],
       "blocks_delivery": true
     },
@@ -3758,12 +3760,13 @@
     {
       "id": "BIOLOGY-T3-W03-HEALTH-CLAIMS",
       "kind": "FACT",
-      "detail": "The STI table at block 183 and HIV/AIDS statements at blocks 186-194 contain health claims requiring current authoritative review. HIV is expanded differently in the table and body; the source also includes a kissing-related transmission claim.",
-      "required_action": "Verify disease names, causative agents, symptoms, transmission and prevention/control against current authoritative public-health sources. Record exact citations, distinguish corrected supplement wording from the original and do not provide individualized medical advice.",
+      "detail": "The STI table at block 183 and HIV/AIDS statements at blocks 186-194 contain health claims requiring current authoritative review. HIV is expanded differently in the table and body; the source also includes a kissing-related transmission claim. The STI table at block 183 is a native 5-row × 4-column table (disease, causative organism, symptoms, prevention/control) with source row labels gonorrhoea, syphilis, AIDS and genital warts. Flattened text loses row/cell associations; delivery must restore semantic rows after authoritative review. The source's HIV/AIDS terminology differs between table and body, and the body contains an additional transmission claim.",
+      "required_action": "Verify disease names, causative agents, symptoms, transmission and prevention/control against current authoritative public-health sources. Record exact citations, distinguish corrected supplement wording from the original and do not provide individualized medical advice. Review the table row-by-row, including the source's vaccine age range and the differing HIV/AIDS terminology; preserve original wording and record any approved correction separately. Require a semantic four-column table for delivery.",
       "affected_ids": [
         "COV-BIO-T3-W03-STI",
         "COV-BIO-T3-W03-HIV-AIDS",
-        "COV-BIO-T3-W03-ASSESSMENT"
+        "COV-BIO-T3-W03-ASSESSMENT",
+        "BIO-VIS-T3-TBL-STI"
       ],
       "blocks_delivery": true
     },
@@ -4105,6 +4108,17 @@
         "BIO-LES-T2-W09-FUNCTIONING-ECOSYSTEM"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "BIOLOGY-T3-W06-CROP-PEST-CONTROLS",
+      "kind": "FACT",
+      "detail": "The Week 6–7 crop-pests table at block 584 contains pesticide product names and a stated concentration in its control column. These are source claims only; the flattened table also loses the pest/effects/control cell associations. No pesticide use or application guidance is approved by the visual disposition.",
+      "required_action": "A qualified agricultural subject expert and pesticide-safety reviewer must verify the control claims against current authoritative agricultural/regulatory sources and decide what, if anything, is suitable for a student-facing supplement. Keep the original source unchanged; do not reproduce product/dose/application instructions without explicit review and approval.",
+      "affected_ids": [
+        "COV-BIO-T3-W06-PLANT-PESTS-DISEASES",
+        "BIO-VIS-T3-TBL-CROP-PESTS"
+      ],
+      "blocks_delivery": true
     },
     {
       "id": "BIOLOGY-T3-W07-LIVESTOCK-PARASITE-CONTROLS",

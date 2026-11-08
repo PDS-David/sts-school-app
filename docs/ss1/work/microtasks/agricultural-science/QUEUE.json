@@ -51,22 +51,29 @@
     "AG-WK-T3-W05 (2026-11-08) indexed the respiratory and nervous systems. The three text-based respiration equations were preserved verbatim; respiratory mechanics, reflex action, neuron detail and named-animal breathing are under-taught. Equations/fermentation and airway/gill claims are routed for verification.",
     "AG-WK-T3-W06 (2026-11-08) indexed reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum. Gestation table contains concatenated paired entries; embryo development and lamb positioning questions exceed teaching and require veterinary-reviewed non-procedural supplement; species timings and lactation/colostrum claims require fact-check.",
     "AG-WK-T3-W07 (2026-11-08) indexed poultry egg formation and reproductive hormones. The poultry reproductive-system heading has figures but no explanatory prose; hormone assignments and egg-formation timings are routed for verification.",
-    "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking."
+    "AG-WK-T3-W08 (2026-11-08) indexed environmental physiology across rainfall, wind, temperature, relative humidity and light, plus effects on growth, milk and egg production. Humidity measurement, a second airborne-disease example and immunity are under-taught; regional claims and milk spoilage threshold require fact-checking.",
+    "AG-WK-T3-W09 (2026-11-08) indexed pig management. Terms, breeds, characteristics, systems, housing, feeding, hygiene, breeding-to-finishing, parasites and diseases are source-taught. Weekend MCQ 'sty' and the requested second intensive-system disadvantage are not taught; source chemical/veterinary statements are routed for safety/factual review. Pig diagram at block 1006 remains for its separate visual task.",
+    "AG-WK-T3-W10 (2026-11-08) indexed cattle management. Breeds, terms, characteristics, rearing systems, feeding, management stages and parasites/diseases are source-taught. Theory 1253 asks for a tattooing definition not supplied; 'Rational grazing' vs 'rotational grazing' and 'pig houses' in cattle mange section are flagged. Veterinary/chemical statements including a printed 10 mg/kg/8-week TB drug regimen are preserved as source statements and routed for safety/factual review, not endorsed.",
+    "AG-MARK-T2-REVISION (2026-11-08): scheme block 14 'Revision.' and terminal Week Ten label plus 'REVISION' blocks 675-676 are SCHEME_ONLY markers, not lessons. No Week Ten body, revision worksheet or marking scheme exists. The in-body 'GENERAL EVALUATION/REVISION QUESTIONS' at block 232 remains teaching-week assessment material.",
+    "AG-MARK-T2-EXAM (2026-11-08): scheme block 15 '11-12. Examination' classified SCHEME_ONLY. The source has no Week 11/12 instructional body, examination paper or marking scheme; no content is invented.",
+    "AG-MARK-T3-REVISION (2026-11-08): scheme block 14 '11Revision ' is a SCHEME_ONLY revision marker. The source has ten teaching-week bodies only and no Week 11 revision lesson, worksheet or marking scheme.",
+    "AG-MARK-T3-EXAM (2026-11-08): scheme block 15 '12Examination' is a SCHEME_ONLY examination marker. Rule R003 and MARKER coverage COV-AG-T3-EXAMINATION-SCHEME are already present. No Week 12 body, exam paper or marking scheme exists.",
+    "AG-VIS-T1-TBL-W02 (2026-11-08): source Word table 160 has 12 paired contrasts in two columns. Plain-text block extraction concatenates cells and loses pairing; future lesson binding must preserve a structured table/paired list. No duplicate supplement or source edit."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 32,
+    "FACTUAL_DEPENDENCY": 36,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 27,
-    "CORRECTION_BINDING": 10
+    "LESSON": 29,
+    "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 36,
+    "IMPLEMENTED_TESTING_DEFERRED": 43,
     "PENDING": 105,
     "BLOCKED": 2
   },
@@ -861,8 +868,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): block 160 is a w:tbl, header cells 'SUBSISTENCE AGRICULTURE' | 'COMMERCIAL AGRICULTURE', twelve numbered contrast rows. Extractor output for this table was not generated (importer deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying the composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact First Term member SHA-256 df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526. Original Word table block 160 is 13 rows x 2 columns (one header row and twelve contrast rows); block text SHA-256 9cc53b2bd0d0fccc6e1b1201a426be4d0157bc8bae17412a737ce50cfd485c5a. Cell boundaries are present in the DOCX but disappear in concatenated plain-text extraction, which joins the two columns without separators. Recorded a blocking open item requiring the eventual bound lesson to retain all twelve exact cell pairs as a two-column table or paired list; no duplicate supplement is authorized because the comparison is already source-taught. Importer and app rendering were not run; testing remains deferred.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
@@ -1013,8 +1020,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): label block 675 text \"WEEK TENDATE: ……………\" (sha256 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92); block 676 text 'REVISION' (sha256 b7d6d78d896c296b9c65f6edafe294742fb55a648a75adc39ae2248918a4dba8) is the last text block, followed only by w:sectPr (677). Block 14 text 'Revision.'. Per-week 'GENERAL EVALUATION/REVISION QUESTIONS' (block 232) sits inside Weeks 2-3 and is not a marker. Importer behaviour not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Exact source member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 verified. Scheme block 14 'Revision.' SHA-256 067123e0afb74e0255aa210d2d56577c04613c68ae2b1d2cd4c3bf2845cf6103 and terminal Week Ten label+REVISION blocks 675-676 (label SHA-256 31939d9c0dafc228d9c0b276ea88670bd77d9b9b536acd3a1b7c3ff5df797a92; range SHA-256 6d1209926076460d476c866e9e81b211418f8a1df5bd3238b5f7d132fc598717) classified as SCHEME_ONLY markers, not lessons. The document has no Week Ten teaching body, revision worksheet or marking scheme; the last text block is REVISION followed by section properties. Per-week GENERAL EVALUATION/REVISION QUESTIONS at block 232 remains within Weeks 2-3 and is not a marker. Added rules R002/R003 and MARKER coverage entries COV-AG-T2-REVISION-SCHEME and COV-AG-T2-REVISION-W10. No source bytes, lesson bodies, other marker classifications, corrections or assets changed. Importer/compiler/tests not run; testing remains deferred.",
       "completion_condition": "Markers classified with locators and an explicit statement that no instructional body exists; nothing invented."
     },
     {
@@ -1051,8 +1058,8 @@
         "AG-INV-T2",
         "AG-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T2): block 15 text \"11-12.      Examination\"; no WEEK ELEVEN/TWELVE label exists (last label is block 675, WEEK TEN). Importer behaviour not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Exact Second Term member SHA-256 e9706d69cbb41e7149e2fe62a202ec21143e827fb78c46cb92efe142f9d7e042 verified. Scheme block 15 exact text '11-12. Examination' SHA-256 bac0b093473a05db7f10edf4b01389a4286ccdc654f300f89ea7ec1501d2631a classified as SCHEME_ONLY examination marker, not a lesson. No Week 11/12 body, examination paper or marking scheme exists; the final teaching label is Week Ten (675) followed only by REVISION (676). Added rule R004 and MARKER coverage COV-AG-T2-EXAMINATION-SCHEME. No source bytes, lesson bodies, other marker classifications, corrections or assets changed. Importer/compiler/tests not run; testing remains deferred.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
     },
     {
@@ -1743,8 +1750,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a verified. Scheme block 14 exact text '11Revision ' SHA-256 b2b9524e250fc89af5cb83bc7c361e11726e54e0feef9d280456b08b105ec0a1 classified SCHEME_ONLY; no Week 11 body, revision worksheet or marking scheme. Added rule R002 and MARKER coverage COV-AG-T3-REVISION-SCHEME. No source bytes, lesson bodies, other marker classifications, corrections or assets changed. Importer/compiler/tests not run; testing remains deferred.",
       "completion_condition": "Revision marker is recorded as SCHEME_ONLY with exact locator; no Week 11 lesson or assessment is invented."
     },
     {
@@ -1781,8 +1788,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08. Scheme block 15 exact text '12Examination' SHA-256 71922f45b5afa7b8dc4121bcf450a62b7961da3f379568aaaa0d1c2de8720e7a was classified SCHEME_ONLY by source rule SS1-SRC-458a07f7ea5a-R003; MARKER coverage COV-AG-T3-EXAMINATION-SCHEME references that rule. The source has ten teaching-week bodies only, no Week 12 body, examination paper or marking scheme. Rule and coverage were included alongside the Week 11 revision marker in the immediately preceding marker commit; this task records the matching queue disposition and dedicated evidence report.",
       "completion_condition": "Examination marker is recorded as SCHEME_ONLY with exact locator; no Week 12 lesson or examination paper is invented."
     },
     {
@@ -2123,8 +2130,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Scheme item 9-10 is combined at block 13; Week Nine label 982 SHA-256 e38b03944a5cbe25a9e8b633065edd7490e9360c352bcb33ba8e6926594b756f; range blocks 982-1123 SHA-256 5a6918c499185465ecb30f240112f9c39c3697e7ba6fed967255d8154efdc0e4. Terms 994-1000; breeds 1002-1004; characteristics 1008-1016; systems 1023-1032; housing 1038-1039; feeding 1041-1042; hygiene 1044-1049; breeding-to-farrowing 1058-1060; birth-to-weaning 1062-1065; weaning-to-finishing 1067-1070; parasites/diseases 1072-1093. Assessments 1018-1021, 1034-1036, 1051-1053, 1095-1097, general 1099-1106, reading 1108-1110, weekend 1112-1119, theory 1120-1121 reviewed. Source supports most content; however MCQ 1115's 'sty' is not taught (body says pens) and questions 1096/1121 request two intensive-system disadvantages although only capital intensity is stated. Extensive system advantages/disadvantages are covered. Pig anatomy image at 1006 noted; visual disposition is separate. Veterinary/chemical statements at 1064,1080-1093 require safety/factual review; no handling/PPE instructions are supplied. Added PARTIAL pig-management coverage, UNRESOLVED assessment-gap coverage, three open items and two fact tasks plus one dependent lesson task. Full report AG-WK-T3-W09.md. No source bytes, lesson bodies, rules, corrections or assets changed. Importer/tests/typecheck/DB/device checks not run; testing remains deferred.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -2161,8 +2168,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Scheme item 9-10 is combined at block 13; Week Ten label 1124 SHA-256 3ee3bfdc68d8630b1fb02fe862672c802a6d5e762236767928f0d739d3291e10; range blocks 1124-1254 SHA-256 9b3f1eb753bab7cfec4511faab33fb3eee2bacdad2b167fdd0a74e4222d4661c. Cattle/use 1136; breeds 1138-1147; terms 1149-1153; characteristics 1160-1166; systems 1168-1176; feeding 1182-1190; breeding-to-calving 1195-1197; birth-to-weaning 1199-1200; weaning-to-finishing 1202-1203; parasites/diseases 1205-1226. Assessments 1156-1158, 1178-1180, general 1228-1237, reading 1240-1242, weekend 1244-1250, theory 1252-1254 reviewed. Most items are supported. Theory 1253 asks for tattooing, named but not defined at 1203. Teaching says 'Rational grazing' at 1188 while theory asks 'rotational grazing'; mange section says 'pig houses' at 1210. These are routed for verification/correction. Source chemical/veterinary claims preserved: caustic soda for dehorning 1203; insecticides and 'invermectin or ivomec' 1210; diazuntol, malathione, benzyl benzoate, benzene hexachloride 1212; 'isonicotinichydracide' 10 mg/kg body weight for eight weeks 1221-1222. No PPE/handling instructions or supporting veterinary references are supplied; not endorsed. Added PARTIAL cattle-management coverage, UNRESOLVED assessment-gap coverage, three open items, two fact tasks, one correction-binding task and one dependent lesson task. Full report AG-WK-T3-W10.md. No source bytes, lesson bodies, rules, corrections or assets changed. Importer/tests/typecheck/DB/device checks not run; testing remains deferred.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -5321,6 +5328,285 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W08: several climate and regional-production claims need authoritative verification.",
       "completion_condition": "A sourced note verifies each claim and identifies defensible answers or wording changes."
+    },
+    {
+      "id": "AG-FACT-T3-W09-PIG-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Nine blocks 1064, 1080, 1082, 1085-1093",
+      "objective": "Verify the source's pig parasite/disease and treatment statements: iron 'dextian' injection (1064); pesticide/insecticide for external parasites and listed internal parasites (1080-1082); African swine fever transmission and 10% caustic-soda/empty-pen claim (1085-1087); penicillin for swine erysipelas (1089-1090); glucose injection for hypoglycaemia (1092-1093). Assess factual accuracy and chemical/veterinary safety before any learner-facing use. Do not invent doses or handling instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W09-PIG-SAFETY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W09: source chemical/veterinary statements and safety gaps are identified at blocks 1064, 1080-1093; no dose or PPE instructions are supplied.",
+      "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing doses or handling procedures."
+    },
+    {
+      "id": "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Nine housing 1038-1039, intensive system 1031-1032, evaluation 1096, weekend 1115 and theory 1121",
+      "objective": "Verify the correct educational term for a pig house (the source body says pigs are housed in pens but the weekend MCQ asks for 'sty') and identify whether a second disadvantage of intensive pig rearing is supported by authoritative livestock references or a subject-expert decision. Also check the source spelling 'Fatheners' (998) against 'fatteners' (1042, 1068) before any delivery correction. Do not infer answers or change source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W09"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W09: MCQ term 'sty' absent from the body; only one intensive-system disadvantage is stated; 'Fatheners' differs from later 'fatteners'.",
+      "completion_condition": "A decision-backed scope review identifies verified terminology and the supported intensive-system limitation(s), then states whether an assessment supplement or delivery-only correction is justified. No answer is invented."
+    },
+    {
+      "id": "AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Nine assessment gaps at evaluation 1096, weekend assignment 1115 and theory 1121",
+      "objective": "If and only if AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE supplies a verified decision, author a bounded Week Nine assessment supplement that teaches pig-house terminology and the intensive-rearing limitations needed by the source questions. Distinguish supplement content from the original lesson, include complete keyed practice and criterion-level marking, and use no unsupported disadvantages or inferred answer.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W09.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W09-PIG-ASSESSMENT-SUPPLEMENT.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W09",
+        "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W09: COV-AG-T3-W09-ASSESSMENT-GAPS is UNRESOLVED; lesson must await the factual scope decision.",
+      "completion_condition": "A PENDING-approval lesson is authored only from the recorded fact decision, has complete keyed practice and criterion-level marking, a verified body_sha256 and provenance, and is bound to the unresolved coverage row. No source bytes, compiler or shared schema is changed."
+    },
+    {
+      "id": "AG-FACT-T3-W10-CATTLE-SAFETY",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Ten blocks 1203, 1205-1222",
+      "objective": "Verify the cattle mange/tuberculosis and dehorning statements: caustic soda for horn-bud dehorning (1203); insecticides and 'invermectin or ivomec' injection for mange (1210); diazuntol, malathione, benzyl benzoate and benzene hexachloride (1212); and 'isonicotinichydracide' at 10 mg/kg body weight for eight weeks for tuberculosis (1221-1222). Check disease claims, drug/product identity, dose and safety against authoritative veterinary/public-health references. Do not endorse, supplement or invent treatment procedures, doses or PPE.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W10-CATTLE-SAFETY.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W10: caustic soda, insecticides, ivermectin/ivomec and an isonicotinic-hydrazide-like drug/dose are stated at blocks 1203, 1210-1212 and 1221-1222.",
+      "completion_condition": "A factual/safety review cites authoritative veterinary/public-health evidence and gives a safe learner-facing disposition while preserving source bytes and without inventing procedures."
+    },
+    {
+      "id": "AG-FACT-T3-W10-CATTLE-TERMS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Ten blocks 1188, 1203, 1210 and theory 1253",
+      "objective": "Verify the definition and educational use of cattle tattooing (named but not defined at 1203; assessed at 1253), whether 'Rational grazing' at 1188 is intended to read 'rotational grazing', and whether 'pig houses' at 1210 is a cross-topic copy error for cattle housing. Cite a verified source or subject-expert decision for each point; do not alter the original source wording.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W10-CATTLE-TERMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W10: tattooing is assessed but not defined; 'Rational grazing'/'rotational grazing' and 'pig houses' in the cattle mange section require verification.",
+      "completion_condition": "A sourced decision is recorded for each issue, distinguishing factual correction from supplement content; original bytes remain unchanged."
+    },
+    {
+      "id": "AG-CORR-T3-W10-CATTLE-TERMS",
+      "kind": "CORRECTION_BINDING",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Ten feeding block 1188; mange block 1210; theory block 1253",
+      "objective": "After AG-FACT-T3-W10-CATTLE-TERMS, bind delivery-only corrections for 'Rational grazing' at 1188 and/or 'pig houses' at 1210 only if a verified source/teacher decision confirms the intended wording. Preserve the original source bytes and retain an audit trail for each replacement.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W10.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W10-CATTLE-TERMS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-CORR-T3-W10-CATTLE-TERMS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W10",
+        "AG-FACT-T3-W10-CATTLE-TERMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W10: two likely source wording issues require verified decision before any delivery replacement.",
+      "completion_condition": "Only corrections supported by a recorded fact decision are bound, with exact source locators, replacement text and provenance; source bytes remain unchanged."
+    },
+    {
+      "id": "AG-LES-T3-W10-CATTLE-TATTOOING",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Ten theory block 1253; mention at block 1203",
+      "objective": "If AG-FACT-T3-W10-CATTLE-TERMS confirms the intended educational scope, author a bounded Week Ten supplement defining cattle tattooing as an identification method and explaining only the verified concept. Include complete keyed practice and criterion-level marking; do not give procedural animal-handling instructions or alter the original source.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "docs/ss1/IMPLEMENTATION_20261026/04_WORKER_C_SCIENCE_AGRICULTURE_GEOGRAPHY.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W10.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W10-CATTLE-TERMS.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W10-CATTLE-TATTOOING.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W10",
+        "AG-FACT-T3-W10-CATTLE-TERMS"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W10: tattooing is assessed in theory 1253 but is only named, not defined, at 1203.",
+      "completion_condition": "A PENDING-approval lesson is authored only from recorded factual decision, with complete keyed practice, criterion-level marking, body_sha256 and provenance; COV-AG-T3-W10-ASSESSMENT-GAPS is updated to reference it."
     }
   ],
   "review": {
@@ -5336,13 +5622,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W09",
-    "AG-WK-T3-W10",
-    "AG-MARK-T2-REVISION",
-    "AG-MARK-T2-EXAM",
-    "AG-MARK-T3-REVISION",
-    "AG-MARK-T3-EXAM",
-    "AG-VIS-T1-TBL-W02",
     "AG-VIS-T1-TBL-W06",
     "AG-VIS-T1-BRANDING",
     "AG-VIS-T2-TBL-CEREALS",
@@ -5403,6 +5682,10 @@
     "AG-FACT-T3-W07-HORMONES",
     "AG-FACT-T3-W07-EGG-FORMATION",
     "AG-FACT-T3-W08-REGIONAL-CLIMATE",
+    "AG-FACT-T3-W09-PIG-SAFETY",
+    "AG-FACT-T3-W09-PIG-ASSESSMENT-SCOPE",
+    "AG-FACT-T3-W10-CATTLE-SAFETY",
+    "AG-FACT-T3-W10-CATTLE-TERMS",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
