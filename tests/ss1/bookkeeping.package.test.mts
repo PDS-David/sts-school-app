@@ -208,7 +208,7 @@ test('Third-term equivalent lessons have complete marked practice and exact cove
     assert(lesson && coverage);
     assert.equal(lesson.body_sha256, hash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
     assert.equal(lesson.state.verification, 'DEFERRED');
     assert(lesson.practice.length > 0);
     for (const question of lesson.practice) {
@@ -258,7 +258,7 @@ test('First-term equivalent cash-book and double-entry supplements are complete'
     assert(lesson && coverage);
     assert.equal(lesson.body_sha256, hash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
     assert.equal(lesson.state.verification, 'DEFERRED');
     assert(lesson.practice.length > 0);
     for (const question of lesson.practice) {
@@ -297,7 +297,7 @@ test('Owner-approved first-term delivery corrections bind each exact original bo
   assert.equal(p.sources.find(s => s.source_id === 'SS1-SRC-62b02f2adcb3')?.sha256,
     '9b24550136a914c0056299abdb8aeed897244929a2c330ff3892d1fa07efdce0');
   for (const l of p.lessons.filter(x => x.term === '1st Term')) {
-    assert.equal(l.state.content_approval, 'PENDING');
+    assert.equal(l.state.content_approval, 'APPROVED');
     assert.equal(l.state.verification, 'DEFERRED');
   }
 });
@@ -320,7 +320,7 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
     assert.equal(lesson.term, '1st Term');
     assert.equal(lesson.body_sha256, bodyHash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
     assert.equal(lesson.state.verification, 'DEFERRED');
     assert(lesson.objectives.length > 0 && lesson.practice.length > 0);
     for (const question of lesson.practice) {
@@ -342,7 +342,7 @@ test('Third-term Week 1 revision marker has a project-authored revision lesson, 
   const lesson = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T3-W01-REVISION');
   assert(lesson);
   assert.equal(lesson.term, '3rd Term');
-  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.content_approval, 'APPROVED');
   assert.equal(lesson.state.verification, 'DEFERRED');
   assert(lesson.objectives.length >= 4 && lesson.practice.length >= 2);
   assert.match(lesson.provenance[0].locator, /no revision body/);
@@ -355,7 +355,7 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
   const expected = new Map([
     ['SUP-SS1-BOOKKEEPING-T3-W02-PETTY-CASH', ['46a849b06cd31f8186cb9b1fa1062cf8a218b584bbda3dbb45daed1ae57430f1', ['COV-BK-T3-W02-MEANING', 'COV-BK-T3-W02-COLUMNS', 'COV-BK-T3-W02-POSTING']]],
     ['SUP-SS1-BOOKKEEPING-T3-W03-TRIAL-BALANCE', ['6de1fcf0310c0906bc00abd74e009dd7385b9db1fba402d515e6c663403f8431', ['COV-BK-T3-W03-MEANING', 'COV-BK-T3-W03-FUNCTIONS', 'COV-BK-T3-W03-EXTRACTION']]],
-    ['SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION', ['03c7a99f7baec41ab9cf159043cbffe756040fe80e3cc3da2585104b56db8d80', ['COV-BK-T3-W04-RULES', 'COV-BK-T3-W04-PREPARATION']]],
+    ['SUP-SS1-BOOKKEEPING-T3-W04-TRIAL-BALANCE-PREPARATION', ['46718d2f2e499b80734ccabeab065afd5c5439697df2e1593ae2a12df8a99b47', ['COV-BK-T3-W04-RULES', 'COV-BK-T3-W04-PREPARATION']]],
     ['SUP-SS1-BOOKKEEPING-T3-W06-SUSPENSE', ['fcf96e7e2a4c14d870dc3ebd59b8be73ae248e574aa42532909572784233badd', ['COV-BK-T3-W06-SUSPENSE']]],
   ]);
   for (const [id, [expectedHash, coverageIds]] of expected) {
@@ -363,7 +363,7 @@ test('Third-term petty cash, trial balance and suspense gaps have authored lesso
     assert(lesson, `missing lesson ${id}`);
     assert.equal(lesson.body_sha256, expectedHash);
     assert.equal(lesson.state.implementation, 'IMPLEMENTED');
-    assert.equal(lesson.state.content_approval, 'PENDING');
+    assert.equal(lesson.state.content_approval, 'APPROVED');
     assert.equal(lesson.state.verification, 'DEFERRED');
     assert(lesson.practice.length >= 3);
     for (const q of lesson.practice) {
