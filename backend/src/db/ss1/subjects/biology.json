@@ -1219,6 +1219,94 @@
           "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory questions."
         }
       ]
+    },
+    {
+      "id": "COV-BIO-T2-W05-ANIMAL-NUTRITION",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 5: Nutrition in Animals — animal nutrition, classes of food, balanced diet and importance",
+      "objective_locator": "SS1-SRC-eb6e9665f42c Week 5 label block 326 (sha256 ef40f02a7290eb069023a5ba59fb18ef5456d93d8bbf52dcaf42c6ce07a7b358); teaching blocks 333-437 (range sha256 61154ac8602d04728768f55f205d47de42386c0be9ee1bcea8585556066e90d7)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 333-418 (food-substance range 339-415 hash sha256 bc1353392366ea02651dd59936023731c6881ee7eaf0ca999beffffcb2501f57)",
+          "explanation": "Introduces animal nutrition and feeding groups; describes seven food-substance categories, their roles and sources, including carbohydrate, protein, fats/oils, mineral salts, vitamins, water and roughage. A vitamin source/function/deficiency table appears at block 399. Health and deficiency statements are not reproduced or endorsed in this index."
+        },
+        {
+          "locator": "blocks 419-437 (range sha256 bacdad5a813d400a9fb0a5cfe19506c147d2d599173bd8dae1a72d8d06821f73)",
+          "explanation": "Defines balanced diet and lists functions. Block 426 contains a protein-deficiency/kwashiorkor health statement; it is flagged for authoritative review and is not repeated as medical advice."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for animal nutrition. Source-only teaching is not deliverable; PARTIAL remains until approved lesson content is authored and bound."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W05-DIGESTIVE-ENZYMES",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 5: digestive enzymes — characteristics, classes and stated functions",
+      "objective_locator": "SS1-SRC-eb6e9665f42c blocks 438-456 (range sha256 6b467e2ecd04e2cdfa2337dd3b56c699c1af6b30bc76458c81309b190e8d7989)",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "blocks 438-456",
+          "explanation": "Introduces digestive enzymes, lists their stated characteristics, classifies digestive enzymes by the food substances they act on, and includes an evaluation asking for the definition and five characteristics. The source's factual claims remain unchanged pending approved-reference review."
+        },
+        {
+          "locator": "backend/src/db/ss1/subjects/biology.json lessons[] length 0",
+          "explanation": "No lesson is registered for digestive enzymes. PARTIAL remains until approved lesson content and keyed practice are authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W05-FOOD-TESTS",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 5 theory: table of food tests with observation and inference",
+      "objective_locator": "SS1-SRC-eb6e9665f42c theory block 477 (sha256 6b9e9b4a2b783227f529dffd79987220981c4de1dcc61e2928c5e204e41608ab)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "theory block 477; Week 5 body blocks 326-480",
+          "explanation": "The theory asks learners to produce a food-test table with food, test, observation and inference. No food-test teaching section, test procedure or keyed table appears in the Week 5 body. No reagent names, materials or procedures are supplied or inferred in this index."
+        }
+      ]
+    },
+    {
+      "id": "COV-BIO-T2-W05-ASSESSMENT",
+      "source_id": "SS1-SRC-eb6e9665f42c",
+      "objective": "2nd Term Week 5 evaluations, revision questions, weekend assignment and theory",
+      "objective_locator": "converted DOCX blocks 415-417, 434-436, 458-463, 465-466, 468-475 and 476-478",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "evaluation blocks 415-417 and 434-436",
+          "explanation": "Food-substance importance prompts are addressed in the relevant sections. The vitamin-deficiency question depends on the table at block 399; its health statements require authoritative review."
+        },
+        {
+          "locator": "general evaluation blocks 458-463",
+          "explanation": "Food sources and functions are broadly covered. Questions about mineral functions/deficiency and water-soluble vitamin functions/deficiency depend on health statements in the source; these are flagged for authoritative review, not reproduced as medical advice."
+        },
+        {
+          "locator": "reading assignment blocks 465-466",
+          "explanation": "College Biology, chapter 6, pages 95-103. The cited book itself is not part of this source archive."
+        },
+        {
+          "locator": "weekend assignment blocks 468-475",
+          "explanation": "Questions on vitamin categories, roughage and relative energy sources are related to the source teaching. Block 474 is a deficiency-health claim and needs authoritative checking."
+        },
+        {
+          "locator": "theory blocks 476-478",
+          "explanation": "Block 477 asks for a food-test table not taught in the body. Block 478 asks for mineral functions/deficiency symptoms; no answer key is supplied and health statements need authoritative checking."
+        },
+        {
+          "locator": "whole evaluation and assignment range",
+          "explanation": "No answer key or marking guide accompanies the evaluation, weekend assignment or theory items."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -1776,6 +1864,49 @@
       "required_action": "A Biology teacher should approve the keyed responses and marking guide after the movement-organelle and klinostat gaps are resolved.",
       "affected_ids": [
         "COV-BIO-T2-W04-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W05-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week 5 animal nutrition, food substances, balanced diet and digestive enzymes are present in the source, but the Biology package has no registered lessons.",
+      "required_action": "Author and bind approved lessons for animal nutrition and digestive enzymes. Keep all source health statements distinct from current, evidence-checked supplemental content.",
+      "affected_ids": [
+        "COV-BIO-T2-W05-ANIMAL-NUTRITION",
+        "COV-BIO-T2-W05-DIGESTIVE-ENZYMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W05-HEALTH-CLAIMS",
+      "kind": "FACT",
+      "detail": "The vitamin deficiency table (block 399), protein-deficiency statement (block 426), mineral deficiency/function questions (blocks 461-462) and deficiency question at block 474 contain health claims requiring authoritative review before use in a lesson.",
+      "required_action": "Verify each claim against authoritative health/Biology references, record precise citations and distinguish corrected supplemental wording from the original source. Do not present these source statements as medical advice.",
+      "affected_ids": [
+        "COV-BIO-T2-W05-ANIMAL-NUTRITION",
+        "COV-BIO-T2-W05-ASSESSMENT"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W05-FOOD-TESTS",
+      "kind": "OWNER_ACTION",
+      "detail": "Theory block 477 requests a table of food tests, observations and inferences, but the Week 5 body contains no food-test teaching or approved practical reference.",
+      "required_action": "Provide a teacher-approved, safety-reviewed classroom resource for the conceptual food-test table. No reagent names, materials, handling steps or procedures are to be inferred or added by this index.",
+      "affected_ids": [
+        "COV-BIO-T2-W05-FOOD-TESTS"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "BIOLOGY-T2-W05-ASSIGNMENT",
+      "kind": "OWNER_ACTION",
+      "detail": "The Week 5 evaluation, revision, weekend assignment and theory prompts have no answer key or marking guide; the food-test theory prompt is not taught in the body.",
+      "required_action": "A Biology teacher should approve keyed responses and a marking guide after the food-test and health-claim dependencies are resolved.",
+      "affected_ids": [
+        "COV-BIO-T2-W05-ASSESSMENT",
+        "COV-BIO-T2-W05-FOOD-TESTS"
       ],
       "blocks_delivery": true
     }
