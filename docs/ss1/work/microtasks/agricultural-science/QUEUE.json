@@ -38,8 +38,8 @@
     "LESSON": 4
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 8,
-    "PENDING": 33,
+    "IMPLEMENTED_TESTING_DEFERRED": 9,
+    "PENDING": 32,
     "BLOCKED": 2
   },
   "items": [
@@ -415,8 +415,8 @@
         "AG-INV-T1",
         "AG-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (AG-INV-T1): block 23 text \"Examination. \"; no WEEK 12 label or examination section exists in the document. Importer behaviour for this scheme line was not run (testing deferred).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08: added source rule SS1-SRC-7aa642b0085b-R003 (classify_marker, SCHEME_ONLY) anchored to scheme item 12 at block 23, and coverage COV-AG-T1-EXAM-MARKER with status MARKER. Evidence is the existing AG-INV-T1.md record of original DOCX XML inspection: ten teaching weeks only (WEEK 1–10), no WEEK 12 body, examination paper or marking scheme. No examination content was invented. The source inventory's standalone member hash matches SOURCE_ASSIGNMENTS.csv; the composite archive hash was not verified in that inventory. Compiler/importer and tests were not run; testing remains deferred.",
       "completion_condition": "Marker classified with its locator and an explicit statement that no examination content exists; nothing invented."
     },
     {
@@ -1675,7 +1675,6 @@
     "AG-WK-T2-W07",
     "AG-WK-T2-W08",
     "AG-WK-T2-W09",
-    "AG-MARK-T1-EXAM",
     "AG-MARK-T2-REVISION",
     "AG-MARK-T2-EXAM",
     "AG-VIS-T1-TBL-W02",

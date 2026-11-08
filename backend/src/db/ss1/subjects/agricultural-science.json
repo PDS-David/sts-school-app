@@ -98,6 +98,18 @@
         "explanation": "The existing AG-INV-T1 source inspection identifies this as scheme item 11, a revision marker outside the ten teaching-week bodies. The last teaching label is WEEK 10 at block 866 and the document ends at block 931; no WEEK 11 body, revision worksheet or marking scheme is present. Per-week GENERAL EVALUATION/REVISION QUESTIONS occur inside teaching-week bodies and are not this scheme-only marker. This is a classification only; no revision lesson or questions are invented. The compiler/importer uniqueness and parsing checks remain deferred."
       },
       "kind": "SCHEME_ONLY"
+    },
+    {
+      "id": "SS1-SRC-7aa642b0085b-R003",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "source_sha256": "df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526",
+      "anchor": "Examination.",
+      "evidence": {
+        "locator": "SS1-SRC-7aa642b0085b: word/document.xml, direct w:body block 23 (0-based); exact scheme item 12; block sha256 c60e32db919b2fb4abce1f8e727f3c741a7e9052ee1ade94b9322df2bc92c8af",
+        "explanation": "The existing AG-INV-T1 source inspection identifies this as scheme item 12, a scheme-only examination marker. The document has ten teaching weeks only (WEEK 1–10); there is no WEEK 12 label/body, examination paper or marking scheme. This is a classification only; no examination content is invented. The compiler/importer uniqueness and parsing checks remain deferred."
+      },
+      "kind": "SCHEME_ONLY"
     }
   ],
   "lessons": [],
@@ -279,6 +291,22 @@
         {
           "locator": "SS1-SRC-7aa642b0085b: word/document.xml, direct w:body block 22 (0-based); exact scheme item 11; block sha256 85ccf500892b65cad9414f8eea121c37aec0733924aec52bfa823444e1214f9b",
           "explanation": "The original-document inventory records the revision line as a standalone scheme-list item. There is no WEEK 11 heading or body, and no revision worksheet or marking scheme in the document. The marker is classified SCHEME_ONLY so the compiler can retain the source text while not treating it as a lesson. No instructional content is inferred or authored."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T1-EXAM-MARKER",
+      "source_id": "SS1-SRC-7aa642b0085b",
+      "objective": "Scheme item 12: Examination — a scheme-only examination marker, not an instructional week or examination lesson",
+      "objective_locator": "SS1-SRC-7aa642b0085b: word/document.xml, direct w:body block 23 (0-based); exact scheme item 12; block sha256 c60e32db919b2fb4abce1f8e727f3c741a7e9052ee1ade94b9322df2bc92c8af",
+      "status": "MARKER",
+      "lesson_ids": [
+        "SS1-SRC-7aa642b0085b-R003"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1-SRC-7aa642b0085b: word/document.xml, direct w:body block 23 (0-based); exact scheme item 12; block sha256 c60e32db919b2fb4abce1f8e727f3c741a7e9052ee1ade94b9322df2bc92c8af",
+          "explanation": "The original-document inventory records this as a standalone scheme-list item. There is no WEEK 12 body, examination paper or marking scheme in the document. The marker is classified SCHEME_ONLY so the compiler can retain the source text while not treating it as a lesson. No examination content or answer key is invented."
         }
       ]
     }
