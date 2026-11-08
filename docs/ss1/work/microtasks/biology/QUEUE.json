@@ -3033,8 +3033,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): block 614 is a w:tbl of 8 x 4 (columns: NAME OF DISEASE; CAUSATIVE ORGANISMS; SYMPTOMS; CONTROL; seven crop diseases from maize rust to cocoa swollen shoot). Extractor output was not generated (importer deferred). Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Disposition report BIO-VIS-T3-TBL-CROP-DISEASES.md (2026-11-08): block 614 is a native 8-row × 4-column table (disease, causative organism, symptoms, control) with seven entries. Flattened text does not preserve row/cell associations, so delivery requires a semantic four-column table. The source spelling 'Phytophytorapalmivora' is preserved; disease/control claims remain subject to authoritative plant-pathology review.",
       "completion_condition": "Disposition recorded (what it adds, whether delivered text keeps its structure, residual gap) without claiming app or display verification; gaps become open items or appended tasks."
     },
     {
