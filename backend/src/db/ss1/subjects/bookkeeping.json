@@ -122,9 +122,1041 @@
         "locator": "BK-INV-T1.md: scheme preamble block 29; block SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9; exact anchor occurs once in the importer text view",
         "explanation": "The exact scheme entry is a examination marker in the preamble before the first week label (block 30). It has no instructional body; SCHEME_ONLY classifies preamble material outside parsed rows and does not discard a lesson body."
       }
+    },
+    {
+      "id": "RULE-BK-T3-REVISION-1",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "1                 Revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-REVISION-11",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "11       revision",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-EXAM-12",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "12    exam",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+        "explanation": "The exact scheme entry is in the preamble before the first teaching content at block 44. It has no corresponding revision or examination body. SCHEME_ONLY records the preamble marker without deleting or inventing instructional content."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W02",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "                                PETTY CASH BOOK",
+      "week_label": "2",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 44; block SHA-256 4054da3ba8c1d7045a068566dd77b319115f937e3135bef41a298607a91c012c",
+        "explanation": "The exact source heading begins a distinct body section: Petty cash book section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W03",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "TRIAL BALANCE AND CORRECTION OF ERRORS",
+      "week_label": "3",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 85; block SHA-256 8c19e1d9dd6141bbe93558d21ffe9635b434611712f1ebd7d6c06f3a376f2f98",
+        "explanation": "The exact source heading begins a distinct body section: Trial balance section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W04",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "RULES OF TRIAL BALANCE ",
+      "week_label": "4",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 151; block SHA-256 43b8ea00301edfc2f3848ff0137216ce3c241aa988d6d3362d3dd0ec2a560872",
+        "explanation": "The exact source heading begins a distinct body section: Trial balance rules section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W05",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "TRIAL BALANCE ERRORS OR UNDISCLOSED ERRORS",
+      "week_label": "5",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 261; block SHA-256 60721c55664d642425b78d1455b09ec59af43074c25b4b8a7aca92552b61b8cc",
+        "explanation": "The exact source heading begins a distinct body section: Error types section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W06",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "ERRORS THAT WILL AFFECT THE AGREEMNENT OF THE TRIAL BALANCE",
+      "week_label": "6",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 308; block SHA-256 b43da5fee87442c76288f78c5ecd3e869d03b38fc6b7ef7e51b389dd1bf5f1c8",
+        "explanation": "The exact source heading begins a distinct body section: Suspense-account section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W07",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "                            TRADING PROFIT AND LOSS ACCOUNT AND BALANCE SHEET(FINAL ACCOUNT)",
+      "week_label": "7",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 394; block SHA-256 9f3317d425f3d368c5231025ad1db3516181ca9466776c9d31025a12dfb1efe6",
+        "explanation": "The exact source heading begins a distinct body section: Combined final-accounts definitions section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W08",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "                PREPARATION OF FINAL ACCOUNT OF A SOLE TRADER",
+      "week_label": "8",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 418; block SHA-256 801013faff2e7f3cc7d2dce3d60ea091dad989851e0ce302be51ee787eb9482c",
+        "explanation": "The exact source heading begins a distinct body section: Final-account preparation steps section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T3-W10",
+      "op": "split_before",
+      "source_id": "SS1-SRC-97f226215927",
+      "source_sha256": "343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d",
+      "anchor": "LAYOUT OF BALANCE SHEET",
+      "week_label": "10",
+      "evidence": {
+        "locator": "BK-INV-T3 body block 426; block SHA-256 5874fd1a407d5b622f216e680c7495938aae82fe183c7e9cb755ab7cd83b298d",
+        "explanation": "The exact source heading begins a distinct body section: Balance-sheet layout section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-REVISION-1",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "1.\tRevision.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
+        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-REVISION-11",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "11.\tRevision.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
+        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-EXAM-12",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "12.\tExamination",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
+        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+      }
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Errors that do not affect the agreement of a trial balance",
+      "objectives": [
+        "Explain why some accounting errors do not cause a trial balance disagreement.",
+        "Identify complete omission, error of original entry, error of commission, error of principle, compensating errors and complete reversal as errors that may leave trial-balance totals equal.",
+        "Distinguish errors that do not affect agreement from one-sided or wrong-side errors that may cause disagreement."
+      ],
+      "body": "Project-authored equivalent lesson — errors that do not affect the agreement of a trial balance\n\nA trial balance agrees when the total debit balances equal the total credit balances. Agreement is a useful arithmetic check, but it does not prove that every transaction has been recorded in the correct account or that every account is correct.\n\nErrors that do not affect agreement\n1. Error of complete omission: a transaction is left out of both the debit and credit entries. Neither side receives the amount, so the two totals remain equal.\n2. Error of original entry: the wrong amount is entered on both sides. For example, a purchase of 450 is entered as 405 in both Purchases and the supplier account. The entries still agree, although both are wrong.\n3. Error of commission: the correct amount is posted to the wrong personal account on the correct side. For example, a credit sale to Ada is posted to Bisi's account instead. Equal debit and credit entries remain.\n4. Error of principle: an item is posted to the wrong class of account, while equal debit and credit amounts are still recorded. For example, equipment bought for business use is debited to Purchases instead of Equipment.\n5. Compensating errors: two or more independent errors offset one another by equal amounts on opposite sides of the trial balance. The totals may agree even though the accounts are wrong.\n6. Complete reversal: the correct amount is entered, but the debit and credit accounts are reversed. Both totals still contain the same amount.\n\nErrors that can make the trial balance disagree include a one-sided omission, posting an amount to the wrong side, entering different amounts on the debit and credit sides, or incorrectly adding a ledger balance or trial-balance column.\n\nA suspense account may be opened temporarily for the difference while errors causing disagreement are investigated. It is not a permanent account and it is not the correction for every error. Errors that do not affect agreement still need correction even though the trial balance totals match.\n\nWorked classification\n- A transaction of 600 is omitted from both accounts: complete omission; trial balance still agrees.\n- A sale of 780 is entered as 870 on both sides: error of original entry; trial balance still agrees.\n- Rent of 250 is posted only to Rent Expense and not to Cash: one-sided omission; trial balance may disagree.\n- A 900 debit is posted as a 90 credit: wrong amount and wrong side; trial balance disagrees.\n\nAlways identify the original transaction, determine which account and side should contain it, compare that with what was actually posted, and then prepare a correction. Do not decide whether an error affects agreement from its name alone; inspect the actual entries.",
+      "body_sha256": "bc61f8ae5e06f2d19a34a33434c34e526db9c3ecd4e9a07266b02e399691e16e",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Classify each case as an error that normally does not affect trial-balance agreement or one that may cause disagreement: (a) a transaction omitted from both accounts; (b) the wrong amount entered on both sides; (c) rent entered in the cash account but omitted from the rent account; (d) a debit entry posted to the credit side.",
+          "answer": "(a) Does not affect agreement — complete omission. (b) Does not affect agreement — error of original entry. (c) May cause disagreement — one-sided omission. (d) May cause disagreement — wrong-side posting.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct classification of (a)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification of (b)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification of (c)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification of (d)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Why does an agreeing trial balance not prove that all accounting records are correct?",
+          "answer": "Some errors affect both debit and credit entries equally or leave both entries omitted, so the totals can agree even though transactions or accounts are wrong.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that equal debit/credit errors or complete omissions can remain",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that accounts may still be wrong despite agreement",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W07-TRADING",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Trading account, cost of goods sold and gross profit",
+      "objectives": [
+        "Explain the purpose of a trading account.",
+        "Calculate net sales, net purchases, cost of goods available for sale and cost of goods sold.",
+        "Determine gross profit or gross loss from net sales and cost of goods sold."
+      ],
+      "body": "Project-authored equivalent lesson — trading account, cost of goods sold and gross profit\n\nA trading account is prepared to determine the gross profit or gross loss from buying and selling goods during an accounting period. It compares net sales with the cost of the goods sold.\n\nKey terms and calculations\n- Net sales = Sales − Returns inwards.\n- Net purchases = Purchases − Returns outwards.\n- Cost of goods available for sale = Opening stock + Net purchases + Carriage inwards.\n- Cost of goods sold = Cost of goods available for sale − Closing stock.\n- Gross profit = Net sales − Cost of goods sold. If cost of goods sold is greater than net sales, the result is a gross loss.\n\nOpening stock is the goods held at the beginning of the period. Closing stock is the goods remaining unsold at the end. Returns inwards are goods customers return to the business; returns outwards are goods the business returns to suppliers. Carriage inwards is the cost of bringing purchased goods into the business and is included in the cost of goods. Carriage outwards is delivery to customers and is treated as an expense in the profit and loss account, not as carriage inwards.\n\nWorked example — all figures are fictional practice amounts\nSales 100,000; returns inwards 4,000; opening stock 20,000; purchases 80,000; returns outwards 5,000; carriage inwards 3,000; closing stock 18,000.\n1. Net sales = 100,000 − 4,000 = 96,000.\n2. Net purchases = 80,000 − 5,000 = 75,000.\n3. Cost of goods available = 20,000 + 75,000 + 3,000 = 98,000.\n4. Cost of goods sold = 98,000 − 18,000 = 80,000.\n5. Gross profit = 96,000 − 80,000 = 16,000.\n\nThe gross profit is calculated before deducting operating expenses such as salaries, rent, telephone and carriage outwards. Those expenses are considered in the profit and loss account.\n\nCheck your work by keeping each item in the correct category: returns inwards reduce sales; returns outwards reduce purchases; carriage inwards increases the cost of goods; closing stock is deducted to find cost of goods sold.",
+      "body_sha256": "03c907cc07de181c42d175a50e8ff6dca00789b947a780e106708dd893888786",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Using the worked example, calculate (a) net sales, (b) net purchases, (c) cost of goods available for sale, (d) cost of goods sold and (e) gross profit.",
+          "answer": "(a) 96,000. (b) 75,000. (c) 98,000. (d) 80,000. (e) 16,000.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Net sales = 100,000 − 4,000 = 96,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Net purchases = 80,000 − 5,000 = 75,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Goods available = 20,000 + 75,000 + 3,000 = 98,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Cost of goods sold = 98,000 − 18,000 = 80,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Gross profit = 96,000 − 80,000 = 16,000",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State one difference between carriage inwards and carriage outwards.",
+          "answer": "Carriage inwards is the cost of bringing purchased goods into the business and is included in the cost of goods; carriage outwards is the cost of delivering goods to customers and is treated as an expense.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct meaning/treatment of carriage inwards",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct meaning/treatment of carriage outwards",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W08-PREP",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Preparing a simple trading account",
+      "objectives": [
+        "Prepare a simple trading account in a debit-and-credit format.",
+        "Calculate net sales, net purchases, cost of goods sold and gross profit within the account.",
+        "Distinguish carriage inwards from carriage outwards."
+      ],
+      "body": "Project-authored equivalent lesson — preparing a simple trading account\n\nA trading account brings together the sales and the cost of goods sold for one accounting period. It is prepared after the relevant ledger balances have been extracted. The purpose is to calculate gross profit or gross loss.\n\nSteps\n1. Enter sales on the credit side and deduct returns inwards to obtain net sales.\n2. Enter opening stock, purchases and carriage inwards on the debit side.\n3. Deduct returns outwards from purchases to obtain net purchases.\n4. Add opening stock, net purchases and carriage inwards to obtain the cost of goods available for sale.\n5. Enter closing stock on the credit side and deduct it from the cost of goods available to obtain cost of goods sold.\n6. Compare net sales with cost of goods sold. The difference is gross profit or gross loss.\n\nWorked trading account — fictional practice amounts\nFor the period:\n- Sales 100,000; returns inwards 4,000.\n- Opening stock 20,000; purchases 80,000; returns outwards 5,000.\n- Carriage inwards 3,000; closing stock 18,000.\n\nTrading Account for the period\n\nDebit side:\n- Opening stock: 20,000\n- Purchases: 80,000\n- Less returns outwards: (5,000)\n- Net purchases: 75,000\n- Carriage inwards: 3,000\n- Cost of goods available for sale: 98,000\n- Less closing stock: (18,000)\n- Cost of goods sold: 80,000\n- Gross profit: 16,000\n- Debit total: 114,000\n\nCredit side:\n- Sales: 100,000\n- Less returns inwards: (4,000)\n- Net sales: 96,000\n- Closing stock: 18,000\n- Credit total: 114,000\n\nThe two sides agree at 114,000. Gross profit is the balancing figure on the debit side because net sales exceed cost of goods sold by 16,000. In a gross-loss case, the balancing figure would be placed on the credit side.\n\nDo not deduct carriage outwards in the trading account. It is a selling/distribution expense and belongs in the profit and loss account. Figures in this worked example are newly authored practice amounts, not amounts from the original third-term source.",
+      "body_sha256": "df5b68dea2fb111be4d3543447185e484ed7ad7db0d9073cb2d7dd9df572732d",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Prepare the trading-account calculations from: sales 100,000; returns inwards 4,000; opening stock 20,000; purchases 80,000; returns outwards 5,000; carriage inwards 3,000; closing stock 18,000. Show net sales, net purchases, cost of goods sold and gross profit.",
+          "answer": "Net sales 96,000; net purchases 75,000; cost of goods available 98,000; cost of goods sold 80,000; gross profit 16,000. Trading-account debit and credit totals are both 114,000.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Net sales correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Net purchases correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Cost of goods available correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Cost of goods sold correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Gross profit correctly calculated",
+              "marks": 1
+            },
+            {
+              "criterion": "Shows equal trading-account totals of 114,000",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Should carriage outwards be included with carriage inwards in the trading account? Give a reason.",
+          "answer": "No. Carriage outwards is the cost of delivering goods to customers and is treated as a selling/distribution expense in the profit and loss account. Carriage inwards is included in the cost of goods purchased.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States no and classifies carriage outwards as an expense",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguishes it from carriage inwards",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W09-PNL",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Preparing a profit and loss account",
+      "objectives": [
+        "Explain the purpose of a profit and loss account.",
+        "Calculate net sales and net profit from given figures.",
+        "Prepare a simple profit and loss account using gross profit, other income and expenses."
+      ],
+      "body": "Project-authored equivalent lesson — profit and loss account, net sales and net profit\n\nThe profit and loss account is prepared after the trading account. It uses gross profit (or gross loss), adds other income and deducts the expenses of running the business to determine net profit or net loss for the period.\n\nNet sales\nNet sales = Sales − Returns inwards. Returns inwards are deducted because they reduce the value of goods retained by customers. Do not deduct returns outwards from sales; returns outwards reduce purchases in the trading account.\n\nNet profit\nNet profit = Gross profit + Other income − Expenses. If expenses and other charges are greater than gross profit plus other income, the result is a net loss.\n\nTypical other income may include commission received, rent received or discount received. Expenses may include salaries, rent, telephone, insurance, discount allowed and carriage outwards. Classify each item according to its nature and the accounting period.\n\nWorked example — fictional practice amounts\nTrading account gross profit: 16,000.\nOther income: commission received 2,000.\nExpenses: salaries 6,000; rent 2,500; carriage outwards 1,000; telephone 500; discount allowed 500.\nTotal expenses = 6,000 + 2,500 + 1,000 + 500 + 500 = 10,500.\nTotal income available = 16,000 + 2,000 = 18,000.\nNet profit = 18,000 − 10,500 = 7,500.\n\nProfit and Loss Account for the period\nCredit side: Gross profit b/d 16,000; commission received 2,000; total 18,000.\nDebit side: Salaries 6,000; rent 2,500; carriage outwards 1,000; telephone 500; discount allowed 500; net profit 7,500; total 18,000.\n\nThe account balances because net profit is the balancing figure added to the debit side. Net profit is then added to the owner's capital in the balance sheet; drawings are deducted from capital.\n\nPreparation rules\n1. Start with gross profit brought down from the trading account.\n2. Add other income earned during the period.\n3. List and total the expenses relating to the period.\n4. Deduct total expenses from gross profit plus other income.\n5. Show net profit as the balancing figure, or net loss if expenses are greater.\n6. Transfer net profit or net loss to the capital section of the balance sheet.\n\nThe example is original practice material and is not reproduced from the source document.",
+      "body_sha256": "289fc07daf4c232339d96f3b252244d5e9ade7d87804142969af526be5a0b45c",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Sales are 100,000 and returns inwards are 4,000. Gross profit is 16,000, other income is 2,000 and expenses total 10,500. Calculate net sales and net profit.",
+          "answer": "Net sales = 100,000 − 4,000 = 96,000. Net profit = 16,000 + 2,000 − 10,500 = 7,500.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Net sales formula",
+              "marks": 1
+            },
+            {
+              "criterion": "Net sales result 96,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds gross profit and other income",
+              "marks": 1
+            },
+            {
+              "criterion": "Subtracts expenses",
+              "marks": 1
+            },
+            {
+              "criterion": "Net profit result 7,500",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State three main steps in preparing a profit and loss account.",
+          "answer": "Bring down gross profit; add other income; deduct the period's expenses to determine net profit or net loss.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Brings down gross profit",
+              "marks": 1
+            },
+            {
+              "criterion": "Adds other income",
+              "marks": 1
+            },
+            {
+              "criterion": "Deducts expenses and determines net result",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W10-USERS",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Users of a balance sheet",
+      "objectives": [
+        "Identify internal and external users of a balance sheet.",
+        "Explain the type of financial-position information different users may seek.",
+        "Distinguish a balance sheet from an income statement."
+      ],
+      "body": "Project-authored equivalent lesson — users of a balance sheet\n\nA balance sheet shows the financial position of a business at a particular date. It summarises assets, liabilities and the owner's capital. Different people use this information to make decisions.\n\nInternal users\n- Owner: reviews the resources invested in the business, amounts owed and the owner's remaining interest.\n- Managers: assess liquidity, working capital, asset use and whether the business can meet its obligations.\n\nExternal users\n- Banks and other lenders: consider assets, liabilities and liquidity when deciding whether to lend and what terms may be appropriate.\n- Suppliers who give credit: assess whether the business is likely to pay amounts due.\n- Investors or potential investors: consider the resources and obligations of the business alongside other financial information before deciding whether to invest.\n- Employees and their representatives: may consider the stability and resources of the organisation when discussing employment and future prospects.\n- Tax and regulatory authorities: use financial records as part of their statutory oversight and compliance work; the balance sheet alone is not a complete tax computation.\n\nA balance sheet is prepared at a date, not for a whole period. It is not the same as a profit and loss account, which reports income and expenses over a period. Users should not rely on one statement alone: they may also need the income statement, cash-flow information, accounting policies and explanatory notes.\n\nExample: a supplier considering whether to allow a business 30 days' credit may examine current assets and current liabilities to understand short-term liquidity. A lender considering a long-term loan may examine the asset base and existing liabilities. These are examples of how users may apply the information, not guarantees of a decision.",
+      "body_sha256": "63adfa99cf4b7629b85b9eec3c07e9ac48693f579d798543301db56fc7a94a3a",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Name four users of a balance sheet and state one reason each may use it.",
+          "answer": "Owner: assess the owner's interest; manager: assess liquidity and resources; lender: assess ability to repay; supplier: assess ability to pay trade debts. Other valid users include investors, employees and regulators.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Names a valid user",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a relevant reason for that user",
+              "marks": 1
+            },
+            {
+              "criterion": "Names a second valid user",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives a relevant reason for the second user",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State one difference between a balance sheet and a profit and loss account.",
+          "answer": "A balance sheet shows assets, liabilities and capital at a particular date; a profit and loss account reports income and expenses over an accounting period.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Balance sheet is at a particular date",
+              "marks": 1
+            },
+            {
+              "criterion": "Profit and loss account covers a period",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET",
+      "class_name": "SS 1",
+      "term": "3rd Term",
+      "subject": "Bookkeeping",
+      "title": "Preparing a simple balance sheet: Bose Adetoro Enterprises",
+      "objectives": [
+        "Prepare a simple sole-trader balance sheet by grouping fixed assets, current assets, liabilities and capital.",
+        "Calculate closing capital from opening capital, net profit and drawings.",
+        "Check that total assets equal total capital and liabilities."
+      ],
+      "body": "Project-authored worked equivalent — preparing a simple balance sheet\n\nA balance sheet lists the assets and liabilities of a business at a particular date and shows the owner's capital. A simple sole-trader balance sheet can be prepared by grouping fixed assets, current assets, liabilities and capital.\n\nCapital calculation\nClosing capital = Opening capital + Net profit − Drawings. A net loss is deducted instead of added. Drawings are amounts or goods taken by the owner for private use; they are not a business expense.\n\nWorked solution to the source assignment — source figures preserved\nThe third-term source gives these figures for Bose Adetoro Enterprises:\n- Capital 335,955\n- Drawings 110,420\n- Cash at bank 129,000\n- Debtors 112,300\n- Creditors 301,065\n- Land and building 150,000\n- Furniture 140,000\n- Machinery 160,000\n- Closing stock 121,560\n- Net profit for the year 286,260\n\nThe source heading states 31 December 1983, but the final instruction says 31 December 1883. The year is therefore shown as “[year to confirm]” and is not silently corrected.\n\nBose Adetoro Enterprises\nBalance Sheet as at 31 December [year to confirm]\n\nCapital and liabilities\n- Opening capital: 335,955\n- Add net profit: 286,260\n- Subtotal: 622,215\n- Less drawings: 110,420\n- Closing capital: 511,795\n- Creditors: 301,065\n- Total capital and liabilities: 812,860\n\nAssets\nFixed assets:\n- Land and building: 150,000\n- Furniture: 140,000\n- Machinery: 160,000\n- Total fixed assets: 450,000\n\nCurrent assets:\n- Closing stock: 121,560\n- Debtors: 112,300\n- Cash at bank: 129,000\n- Total current assets: 362,860\n\nTotal assets: 450,000 + 362,860 = 812,860.\n\nCheck: total assets 812,860 = closing capital 511,795 + creditors 301,065 = total capital and liabilities 812,860. The balance sheet agrees.\n\nThis worked answer uses only the figures printed in the source assignment. The calculation and layout are newly authored; the conflicting source year remains explicitly unresolved.",
+      "body_sha256": "ba3101b1a53027a2ffa747c6827c3b61ab0c846e99a8ee6bc8eadb41e7b82118",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Using the Bose Adetoro Enterprises figures, calculate closing capital and total assets.",
+          "answer": "Closing capital = 335,955 + 286,260 − 110,420 = 511,795. Total assets = land/building 150,000 + furniture 140,000 + machinery 160,000 + closing stock 121,560 + debtors 112,300 + bank 129,000 = 812,860.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Adds opening capital and net profit",
+              "marks": 1
+            },
+            {
+              "criterion": "Deducts drawings and obtains closing capital 511,795",
+              "marks": 1
+            },
+            {
+              "criterion": "Totals fixed assets 450,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Totals current assets 362,860",
+              "marks": 1
+            },
+            {
+              "criterion": "Total assets 812,860",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Show the balance-sheet check using creditors of 301,065.",
+          "answer": "Closing capital 511,795 + creditors 301,065 = total capital and liabilities 812,860, equal to total assets 812,860.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Correct capital plus creditors total",
+              "marks": 1
+            },
+            {
+              "criterion": "States that it equals total assets",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Authored for SS1 Bookkeeping 3rd Term from scheme objectives and gaps recorded in BK-INV-T3.md; no third-party passage or image reproduced.",
+          "url": null,
+          "rights": "Original explanatory prose, worked examples and practice questions created for this project. No external text is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Bookkeeping",
+      "title": "Single-column cash book: receipts, payments and balancing",
+      "objectives": [
+        "Explain the meaning and purpose of a cash book.",
+        "Identify the date, particulars, folio and amount columns of a single-column cash book.",
+        "Record cash receipts on the debit side and cash payments on the credit side.",
+        "Balance the cash book and bring the balance down.",
+        "Distinguish cash in hand from money held at bank."
+      ],
+      "body": "Project-authored equivalent lesson — the single-column cash book\n\nA cash book is a book of original entry used to record money received and money paid. A single-column cash book has one amount column for cash on the debit side and one amount column for cash on the credit side. It records cash transactions only; it does not record credit sales or credit purchases.\n\nMain ruling\n- Date: when the transaction occurred.\n- Particulars: the source or reason for the receipt/payment.\n- Folio: reference to the ledger account, when used.\n- Amount: cash received on the debit side or cash paid on the credit side.\n\nReceipts are entered on the debit side because cash increases. Payments are entered on the credit side because cash decreases. The cash balance is normally a debit balance because cash in hand cannot be a negative amount in an ordinary cash account. A separate bank account records deposits and withdrawals held with the bank: deposits increase the bank asset and are debited; withdrawals reduce it and are credited. A bank overdraft is a liability and may have a credit balance. A single-column cash book has no bank amount column, so bank transactions are recorded separately or in a double-column cash book.\n\nWorked example — original practice figures\nTransactions:\n1 January: owner introduces cash 5,000.\n2 January: cash sales 1,200.\n3 January: rent paid in cash 400.\n5 January: stationery bought for cash 150.\n7 January: 600 received in cash from debtor Amina.\n10 January: wages paid in cash 500.\n\nSingle-column cash book (cash amount column)\nDebit/receipts:\n- Jan 1, Capital, 5,000\n- Jan 2, Sales, 1,200\n- Jan 7, Amina, 600\n- Total receipts: 6,800\n\nCredit/payments:\n- Jan 3, Rent, 400\n- Jan 5, Stationery, 150\n- Jan 10, Wages, 500\n- Total payments before balance: 1,050\n- Balance c/d: 5,750\n- Total credit side: 6,800\n\nCheck: 6,800 receipts − 1,050 payments = 5,750 cash balance c/d. At the start of the next period, bring the balance down on the debit side as balance b/d 5,750.\n\nDo not enter a credit sale in the cash book merely because it is a sale. Only enter it when cash is actually received. A cheque received and banked is recorded in the bank column of a double-column cash book, not as physical cash in a single-column cash book.\n\nThe example is newly authored practice material and is not copied from the source document.",
+      "body_sha256": "eae5a86d4a609bfe49c6490aff0a3582ed3d190f8aaf9dcae90bce2fb8791bf9",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Prepare a single-column cash book from the six transactions in the worked example and calculate the closing cash balance.",
+          "answer": "Receipts: capital 5,000 + cash sales 1,200 + Amina 600 = 6,800. Payments: rent 400 + stationery 150 + wages 500 = 1,050. Balance c/d = 6,800 − 1,050 = 5,750; bring down 5,750 on the debit side next period.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Correctly records capital and sales receipts",
+              "marks": 2
+            },
+            {
+              "criterion": "Correctly records Amina receipt",
+              "marks": 1
+            },
+            {
+              "criterion": "Correctly records all three payments",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates closing balance 5,750",
+              "marks": 1
+            },
+            {
+              "criterion": "Shows balance b/d on debit side next period",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Name the four main columns in a single-column cash book and state which side records receipts.",
+          "answer": "Date, particulars, folio and amount. Receipts are recorded on the debit side.",
+          "marks": 5,
+          "marking": [
+            {
+              "criterion": "Date",
+              "marks": 1
+            },
+            {
+              "criterion": "Particulars",
+              "marks": 1
+            },
+            {
+              "criterion": "Folio",
+              "marks": 1
+            },
+            {
+              "criterion": "Amount",
+              "marks": 1
+            },
+            {
+              "criterion": "Receipts on debit side",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Created as an original equivalent supplement for SS1 Bookkeeping First Term objectives; source gaps and defects are documented in BK-INV-T1.md and BK-PRES-T1-WORKED.md.",
+          "url": null,
+          "rights": "Original explanatory prose, examples and questions created for this project. No external textbook text or third-party material is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Bookkeeping",
+      "title": "Double-column cash book: cash, bank and balancing",
+      "objectives": [
+        "Explain the meaning and items of a double-column cash book.",
+        "Distinguish a single-column cash book from a double-column cash book.",
+        "Record cash and bank receipts and payments in the correct columns.",
+        "Prepare and balance cash and bank columns, including contra entries."
+      ],
+      "body": "Project-authored equivalent lesson — the double-column cash book\n\nA double-column cash book records both cash and bank transactions. It has two amount columns on each side: a cash column and a bank column. The debit side records cash received and money paid into the bank; the credit side records cash paid and cheques issued or other bank payments.\n\nDifference from a single-column cash book\n- A single-column cash book has one cash amount column on each side and records cash receipts and payments.\n- A double-column cash book has both cash and bank amount columns on each side. It records cash transactions and transactions through the bank.\n- Both are books of original entry and both have debit (receipts) and credit (payments) sides.\n\nRecording rules\n- Cash received: debit the cash column.\n- Cash paid: credit the cash column.\n- Cheque received and banked: debit the bank column.\n- Payment by cheque: credit the bank column.\n- Cash paid into the business bank account: debit bank and credit cash; mark C in both folio columns. This is a contra entry.\n- Cash withdrawn from bank for office use: debit cash and credit bank; mark C in both folio columns.\n\nWorked example — original practice figures\nOpening balances on 1 May: cash 4,000; bank 6,000.\nMay 2 cash sales 1,500.\nMay 4 rent paid in cash 500.\nMay 6 cheque received from a customer and banked immediately 2,000.\nMay 8 supplier paid by cheque 1,200.\nMay 10 cash withdrawn from bank for office use 800.\nMay 12 cash paid into bank 1,000.\n\nCash column:\nDebit: opening balance 4,000; cash sales 1,500; cash withdrawn from bank (contra) 800. Debit total 6,300.\nCredit: rent 500; cash paid into bank (contra) 1,000; balance c/d 4,800. Credit total 6,300.\nCash balance b/d next period: 4,800.\n\nBank column:\nDebit: opening balance 6,000; cheque received and banked 2,000; cash paid into bank (contra) 1,000. Debit total 9,000.\nCredit: supplier paid by cheque 1,200; cash withdrawn for office use (contra) 800; balance c/d 7,000. Credit total 9,000.\nBank balance b/d next period: 7,000.\n\nThe contra entries are recorded on both sides of the same cash book and marked C. A cheque received from a customer and banked is not a contra entry because it affects the bank and the customer's account, not both cash and bank columns. The example is original practice material.",
+      "body_sha256": "083e63ed7a625b60aecc4edaa31bc2d1d32c10a203ea254f1f1d4f2359131c4d",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "Using the worked example, calculate the closing cash balance and closing bank balance.",
+          "answer": "Cash: 4,000 + 1,500 + 800 − 500 − 1,000 = 4,800. Bank: 6,000 + 2,000 + 1,000 − 1,200 − 800 = 7,000.",
+          "marks": 6,
+          "marking": [
+            {
+              "criterion": "Cash receipts total 6,300",
+              "marks": 1
+            },
+            {
+              "criterion": "Cash payments before balance total 1,500",
+              "marks": 1
+            },
+            {
+              "criterion": "Cash balance 4,800",
+              "marks": 1
+            },
+            {
+              "criterion": "Bank receipts total 9,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Bank payments before balance total 2,000",
+              "marks": 1
+            },
+            {
+              "criterion": "Bank balance 7,000",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "State two differences between a single-column and a double-column cash book.",
+          "answer": "A single-column cash book has only a cash amount column on each side; a double-column cash book has cash and bank amount columns on each side. The double-column book records bank/cheque transactions as well as cash transactions.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies the difference in columns",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the difference in transaction coverage",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Created as an original equivalent supplement for SS1 Bookkeeping First Term objectives; source gaps and defects are documented in BK-INV-T1.md and BK-PRES-T1-WORKED.md.",
+          "url": null,
+          "rights": "Original explanatory prose, examples and questions created for this project. No external textbook text or third-party material is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Bookkeeping",
+      "title": "Contra entries in the double-column cash book",
+      "objectives": [
+        "Define a contra entry and identify when it occurs.",
+        "Record cash paid into bank and cash withdrawn for office use.",
+        "Use the C folio mark on both sides of a contra entry.",
+        "Distinguish contra entries from cheque receipts and cheque payments involving other accounts."
+      ],
+      "body": "Project-authored equivalent lesson — contra entries\n\nA contra entry is a transfer between the cash account and the bank account of the same business. It affects both the cash and bank columns of a double-column cash book. One column is debited and the other is credited for the same amount.\n\nTwo directions\n1. Cash paid into the bank: the bank balance increases and cash in hand decreases. Debit the bank column and credit the cash column.\n2. Cash withdrawn from the bank for office use: cash in hand increases and the bank balance decreases. Debit the cash column and credit the bank column.\n\nFolio mark\nWrite the letter C in the folio column on both sides of the cash book for a contra entry. The C shows that the corresponding entry is on the opposite side of the same cash book; do not post it again to a separate cash or bank ledger account.\n\nWorked examples — original practice figures\nExample A: The business takes 1,200 cash from the till and pays it into its bank account.\n- Debit Bank column 1,200.\n- Credit Cash column 1,200.\n- Write C in both folio positions.\nCash decreases by 1,200; bank increases by 1,200.\n\nExample B: The business withdraws 500 from the bank for office cash.\n- Debit Cash column 500.\n- Credit Bank column 500.\n- Write C in both folio positions.\nCash increases by 500; bank decreases by 500.\n\nTransactions that are not contra entries\n- A customer pays a cheque that is banked: debit Bank, credit the customer's account. It is not a transfer between the business's cash and bank columns.\n- The business pays a supplier by cheque: debit the supplier, credit Bank. It is not a transfer between the business's cash and bank columns.\n\nAlways ask whether the transaction transfers money between the business's own cash and bank balances. If it does, it is a contra entry; if it involves a customer, supplier, expense or income account, it is not. All examples here are project-authored, not copied from the source.",
+      "body_sha256": "e000b25f034fe99b15eace1e4f370614d99c7b6becdbe9086357b4fafe06171d",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "For each transaction, state whether it is a contra entry and give the debit and credit columns/accounts: (a) cash 1,200 paid into bank; (b) 500 withdrawn from bank for office use; (c) customer cheque 800 banked; (d) supplier paid by cheque 300.",
+          "answer": "(a) Contra: Dr Bank column 1,200, Cr Cash column 1,200. (b) Contra: Dr Cash column 500, Cr Bank column 500. (c) Not contra: Dr Bank 800, Cr Customer 800. (d) Not contra: Dr Supplier 300, Cr Bank 300.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct classification and entries for (a)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification and entries for (b)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification and entries for (c)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct classification and entries for (d)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What does the letter C in the folio column show for a contra entry?",
+          "answer": "It shows that the corresponding entry is on the opposite side of the same cash book; the transfer is not posted again to separate cash and bank ledger accounts.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies the corresponding entry on the opposite side",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains no duplicate posting to separate cash/bank ledgers",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Created as an original equivalent supplement for SS1 Bookkeeping First Term objectives; source gaps and defects are documented in BK-INV-T1.md and BK-PRES-T1-WORKED.md.",
+          "url": null,
+          "rights": "Original explanatory prose, examples and questions created for this project. No external textbook text or third-party material is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY",
+      "class_name": "SS 1",
+      "term": "1st Term",
+      "subject": "Bookkeeping",
+      "title": "Double entry and posting from the cash book to the ledger",
+      "objectives": [
+        "Explain the two-fold effect of every transaction under double entry.",
+        "Apply the personal, real and nominal account rules to identify debits and credits.",
+        "Post receipts and payments from the cash book to corresponding ledger accounts.",
+        "Use the ledger account format and balance off an account."
+      ],
+      "body": "Project-authored equivalent lesson — double entry and posting from the cash book to the ledger\n\nThe double-entry system records the two-fold effect of every business transaction. For each transaction, one account is debited and another account is credited by the same amount. Total debits must equal total credits for each correctly recorded transaction.\n\nThree useful account rules\n1. Personal accounts: debit the receiver and credit the giver.\n2. Real accounts: debit what comes into the business and credit what goes out.\n3. Nominal accounts: debit expenses and losses; credit incomes and gains.\n\nThese rules help identify the two accounts and the correct sides. They do not replace checking the actual nature of the transaction.\n\nWorked analysis\n- Owner introduces cash 10,000: debit Cash (asset received); credit Capital (owner's contribution).\n- Furniture bought for cash 2,000: debit Furniture (asset received); credit Cash (asset given out).\n- Goods sold for cash 1,500: debit Cash (money received); credit Sales (income).\n- Rent paid in cash 500: debit Rent (expense); credit Cash (money paid).\n\nPosting from a cash book\nThe cash book is both a book of original entry and the cash/bank ledger account. When posting its entries to other ledger accounts:\n- A receipt on the debit side of the cash book is posted to the credit side of the corresponding account. Example: cash sales are credited to Sales.\n- A payment on the credit side of the cash book is posted to the debit side of the corresponding account. Example: rent paid is debited to Rent.\n- Enter the date, the other account's name in Particulars, the folio reference and the amount. The cash book's own entry remains in the cash book.\n- A contra entry is marked C on both sides and is not posted again to separate cash and bank ledger accounts.\n\nLedger account format\nA ledger account has a debit (Dr) side and a credit (Cr) side. Each side records date, particulars, folio and amount. At period end, total each side and calculate the difference. Put the balance c/d on the smaller side to make totals equal, then bring the balance b/d down on the opposite side in the next period.\n\nWorked posting example\nOn 3 June, rent of 500 is paid in cash.\n- Cash book: credit Cash 500, particulars “Rent”.\n- Rent ledger: debit Rent 500, particulars “Cash”.\nThe entries are equal and opposite. The rent account is an expense account; cash decreases.\n\nOn 5 June, cash sales of 1,500 are received.\n- Cash book: debit Cash 1,500, particulars “Sales”.\n- Sales ledger: credit Sales 1,500, particulars “Cash”.\nAgain, the entries are equal and opposite.\n\nA posting reference (folio) points to the corresponding account/page in the ledger. Use the same reference in both locations according to the school's ledger convention; never invent a folio number when none has been assigned. Examples and practice amounts are newly authored and are not source transactions.\n\nIntegrated cash-book and ledger practice — original figures\nOpening balances on 1 June: cash 5,000; bank 10,000.\n2 June: cash sales 1,200.\n3 June: rent paid in cash 400.\n4 June: cheque 600 received from a debtor and banked immediately.\n5 June: supplier paid by cheque 300.\n6 June: cash 200 withdrawn from bank for office use.\n\nCash column:\nDebit: balance b/d 5,000; Sales 1,200; Bank (contra) 200; total 6,400.\nCredit: Rent 400; balance c/d 6,000; total 6,400.\n\nBank column:\nDebit: balance b/d 10,000; Debtor 600; total 10,600.\nCredit: Supplier 300; Cash (contra) 200; balance c/d 10,100; total 10,600.\n\nPost the corresponding entries to the other ledger accounts:\n- Sales account: credit 1,200, particulars Cash.\n- Rent account: debit 400, particulars Cash.\n- Debtor account: credit 600, particulars Bank.\n- Supplier account: debit 300, particulars Bank.\n- The 200 cash/bank transfer is marked C in both cash-book columns and is not posted again to separate cash or bank ledger accounts.\n\nThe cash and bank closing balances are 6,000 and 10,100 respectively. This example is original project-authored practice, not a reconstruction of the source's unresolved June illustration.",
+      "body_sha256": "1bdc49589f3a82bee5b18febfe95f27ea2f7129ae523ab16767b4c47d3f3c1dd",
+      "practice": [
+        {
+          "id": "Q1",
+          "question": "State the debit and credit accounts for: (a) owner introduces cash 10,000; (b) furniture bought for cash 2,000; (c) cash sales 1,500; (d) rent paid in cash 500.",
+          "answer": "(a) Dr Cash 10,000; Cr Capital 10,000. (b) Dr Furniture 2,000; Cr Cash 2,000. (c) Dr Cash 1,500; Cr Sales 1,500. (d) Dr Rent 500; Cr Cash 500.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Correct entries for (a)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct entries for (b)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct entries for (c)",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct entries for (d)",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Explain how a cash-book receipt is posted to the corresponding ledger account.",
+          "answer": "A receipt appears on the debit side of the cash book. The corresponding account is credited by the same amount, with the date, particulars and folio reference.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Identifies the cash-book debit side",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies the corresponding ledger credit side",
+              "marks": 1
+            },
+            {
+              "criterion": "Mentions equal amount and reference/particulars",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Identify the double entries for these seven transactions: (1) capital introduced in cash 10,000; (2) furniture bought for cash 2,000; (3) cash sales 1,500; (4) rent paid in cash 500; (5) customer cheque 600 banked; (6) supplier paid by cheque 400; (7) wages paid in cash 300.",
+          "answer": "(1) Dr Cash / Cr Capital 10,000. (2) Dr Furniture / Cr Cash 2,000. (3) Dr Cash / Cr Sales 1,500. (4) Dr Rent / Cr Cash 500. (5) Dr Bank / Cr Customer 600. (6) Dr Supplier / Cr Bank 400. (7) Dr Wages / Cr Cash 300.",
+          "marks": 7,
+          "marking": [
+            {
+              "criterion": "Correct double entry for transaction 1",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct double entry for transaction 2",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct double entry for transaction 3",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct double entry for transaction 4",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct double entry for transaction 5",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct double entry for transaction 6",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct double entry for transaction 7",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Prepare the cash and bank columns and post the other ledger entries for the six transactions in the integrated example.",
+          "answer": "Cash: debit 5,000 + 1,200 + 200 = 6,400; credit 400 + balance c/d 6,000 = 6,400. Bank: debit 10,000 + 600 = 10,600; credit 300 + 200 + balance c/d 10,100 = 10,600. Post Sales Cr 1,200, Rent Dr 400, Debtor Cr 600 and Supplier Dr 300. The 200 contra is marked C on both sides and not posted again.",
+          "marks": 8,
+          "marking": [
+            {
+              "criterion": "Correct cash debit entries and total",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct cash credit entries and balance",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct bank debit entries and total",
+              "marks": 1
+            },
+            {
+              "criterion": "Correct bank credit entries and balance",
+              "marks": 1
+            },
+            {
+              "criterion": "Sales account credited 1,200",
+              "marks": 1
+            },
+            {
+              "criterion": "Rent account debited 400",
+              "marks": 1
+            },
+            {
+              "criterion": "Debtor credited 600 and Supplier debited 300",
+              "marks": 1
+            },
+            {
+              "criterion": "Contra entry marked C and not reposted",
+              "marks": 1
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "title": "Original project-authored teaching material",
+          "locator": "Created as an original equivalent supplement for SS1 Bookkeeping First Term objectives; source gaps and defects are documented in BK-INV-T1.md and BK-PRES-T1-WORKED.md.",
+          "url": null,
+          "rights": "Original explanatory prose, examples and questions created for this project. No external textbook text or third-party material is reproduced.",
+          "reuse_status": "PERMITTED",
+          "attribution": "Project-authored SS1 Bookkeeping supplement."
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
   "delivery_corrections": [],
   "assets": [],
   "coverage": [
@@ -133,8 +1165,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 5: the double column cash book - its meaning and the items recorded in it",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 10-12 (range sha256 af820d7350176e7c73a31ad9aebe92a2b98e387837bc44e8ae252234db0a0189); WEEK TWO label block 87 (sha256 88b3326818ebf3577b66bea2ea4fa2f670e9335dbeaf07bbe3729906fa939df6); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "scheme list blocks 0-29 (range sha256 581587fcf71c6d77b82abac943b40f79becbda4807c855bd3431cf63bc6d302b); block 10 '5.Double column cash book' (sha256 ffb61cbdc6dd8137827c7598adf0610780d1996cc6a195fc2717c968db022b26); block 11 '-Meaning of double column cash book.' (sha256 f801883455de37839f2031c29f5b1cc4db4a4d09f41d22d07ac349c2dbfbe6ab); block 12 '-Items in double column cash book' (sha256 95b18fa37e2062a023ff694afd07cb2321ab1d5c47d849755060daec7a3727b5)",
@@ -143,6 +1177,10 @@
         {
           "locator": "body block 89 (sha256 3a8acf3d47622167f3591dffda4f919431925d2c8e92779832662b3131e5b16c); entry rules blocks 90-92 (range sha256 3f86c2bd635d757b6a3e7c7da0daf81d388fa063903990fd17a69eea3d4516e0)",
           "explanation": "The meaning half of entry 5 is taught at block 89 and both columns are named, one cash and one bank. The items half is not developed: the body never lists what is recorded in or excluded from the book, and blocks 91-92 give two payment-side rules only. PARTIAL: taught in part, no deliverable lesson, and no parsed-row identity is declared for this source (no source rule; importer not run)."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -151,8 +1189,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 6: the double column cash book - its difference from the single column cash book and its preparation",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 13-15 (range sha256 5e226de310583020debfaae32f84b55afc519cd97b20632b8569044b0972a1ff); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 13 '6.Double column cash book' (sha256 cd132870619b16dcee484abbc2feb4005251670cbf44c62f7ff41aa97080c595); block 14 '-Difference between single column cash book.' (sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7); block 15 '-Preparation of double column cash book.' (sha256 e5818ceb257356431c8226e7de4a8d1e8af538fdc177294d1c2bb5d64c0ccc17)",
@@ -161,6 +1201,10 @@
         {
           "locator": "example statement blocks 93-94 (range sha256 f0c6b7c7b2b0da3fe47601e0b27c9b161dc3ce04f4d90fb58f1baf438535d90c); transactions blocks 96-104 (range sha256 2ba067dca64e73480a72396b6182127fd34d2f691f0914392f1b7421d2e061ae); blank blocks 105-108 (range sha256 6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167)",
           "explanation": "The week's only preparation material is the instruction at block 94 and nine transactions at 96-104. No worked cash book, totals, balances or folio marks follow; blocks 105-108 are empty. A scheme sub-item set without a preparation is PARTIAL, not SUPPORTED."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -169,12 +1213,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 7: preparation of the double column cash book",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 16-17 (range sha256 5002456ae48f4ababa65f4c2fe7f86c2c7ab41319d9dfa31edf3406731754074); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 16 '7.Double column cash book.' (sha256 7570480347ecf6e428976a66d0f114e1f15ebbf949344ddf69f181333b14041e); block 17 '-Preparation of double column cash book.' (sha256 e5818ceb257356431c8226e7de4a8d1e8af538fdc177294d1c2bb5d64c0ccc17)",
           "explanation": "Block 17 is byte-identical to block 15 (same SHA-256), so entry 7 restates entry 6's preparation sub-item and adds no content of its own. The repeated scheme line does not create a second objective body, and the same single unsolved example (blocks 93-104) is the only preparation material. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -183,12 +1233,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The meaning of the double column cash book: cash and bank columns on each side, used for mixed cash and bank transactions",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body block 89 (sha256 3a8acf3d47622167f3591dffda4f919431925d2c8e92779832662b3131e5b16c); heading block 88 (sha256 6cc6e346f1e66d4d8dfb36bc6da9dc9a3a77fd402a833dbeb8536966262df867)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 89 text: 'Meaning: The two column Cash book so-called because for both debit and credit entries, it has two columns, one for recording cash transactions and the other for bank transactions. It is therefore used for recording mixed cash and bank transaction.' (247 characters)",
           "explanation": "The definition names both sides and both columns and states the mixed cash-and-bank use, so the meaning is taught. It is one ungrammatical sentence ('The two column Cash book so-called because' lacks a verb), it gives no illustration, and it calls the book 'two column' where the scheme (blocks 10, 13, 16) and the heading (block 88) say 'double column'. The wording is recorded in BOOKKEEPING-T1-W02-SOURCE-DEFECTS and is not corrected here. PARTIAL: taught, but no deliverable lesson exists."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -197,12 +1253,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The items of the double column cash book: the cash and bank columns and the receipts and payments entered in them",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 89-92 (range sha256 1adb5fdfb4e9ce4f3b60d87ebd236572eb99ea1c77b75528c5fbbd83ec184ea8)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 89; heading block 90 'Accounting Entries' (sha256 a85a00d02e8dca75f11b2d3e228dbd4c4a77e8e346183ee14c8023032648a94e); rules blocks 91-92",
           "explanation": "The only item-level teaching is the statement that one column records cash transactions and the other bank transactions (block 89) plus the heading 'Accounting Entries' (block 90) and two rules (91-92). The body never lists the items, prints no column headings, has no opening or closing balance lines, does not state that credit transactions are excluded (compare Week 1 block 34), and does not treat discount columns. The items objective is therefore only partly met. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -211,8 +1273,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Accounting entries for the double column cash book: cash payments credited to the cash column, cheque payments credited to the bank column, and the bank withdrawal entry",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 90-92 (range sha256 3f86c2bd635d757b6a3e7c7da0daf81d388fa063903990fd17a69eea3d4516e0)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 91 (sha256 44940ca59a36f722cf96e5401529ef0163310143e2575f2107e39b5f1572a03e): 'All payments in cash are recorded by crediting the cash column of the cash book. If the payment is by cheque the bank column is credited.'",
@@ -221,6 +1285,10 @@
         {
           "locator": "block 92 (sha256 924ac9f21c8ee34a078880ce11867f6c46933e9d8c3e49ac950008e9e89ad5bc): 'When cash is withdrawn from the bank (e.g for paying wages and sundry expenses), the cash column is debited and the bank column is credited with the amount involved.'",
           "explanation": "The withdrawal entry is stated for the withdrawal case only, with wages as its illustration. Applied to block 104 'Wages paid by cheque N75' - a direct cheque payment, not a withdrawal - the wording would debit cash instead of wages. The conflict is recorded in BOOKKEEPING-T1-W02-SOURCE-DEFECTS and is one of the decisions booked in BK-FACT-T1-W02-DEFECTS. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -229,8 +1297,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The difference between the single column cash book and the double column cash book",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme block 14 (sha256 f9305c9a2629fd1f74df19e3953b492d4a0c7b4baf4284b0bec13858748894f7); Week 2 body blocks 87-108 (range sha256 ed00cfec8ef42cc9b1b02f35df0d866d77d2b5560db48a295b3e35dff3496218)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 14 '-Difference between single column cash book.'; the whole body blocks 0-219 (range sha256 ca09a3081a2be0f916c72103932c2099b7fe83a52da0c2b3b5cda8df3aaf842f)",
@@ -239,6 +1309,10 @@
         {
           "locator": "Week 1 body blocks 30-86 (range sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3); Week 3 blocks 109-157 (range sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997)",
           "explanation": "Week 1 defines the single column book and its cash and bank accounts without comparing it with the double column book ('single column' appears only in the preamble, blocks 5, 6, 7, 8, 9 and 14). Week 2 never mentions the single column book. Weeks 3 and 4 teach contra entry and double entry and do not compare the two books either. The objective is untaught in the whole source, not merely absent from this body. UNRESOLVED; the bounded lesson task BK-LES-T1-W02-DIFF is appended."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -247,8 +1321,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The worked example: record nine April transactions in a two column cash book, balance it and bring down the balances of cash in hand and cash at bank",
       "objective_locator": "SS1-SRC-62b02f2adcb3 example blocks 93-104 (range sha256 3c2e4b49833b728e0e3f972ece51482c01f2904e97a4be7a767349a998afef3c); placeholder year block 95 (sha256 9a0adea5a3daa4b083fcd92f2645b188884efb89f8fd30a82bfe913f947d55d3)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 93 'Example:' (sha256 872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad); block 94 (sha256 aa33184e3aaa9800611e3f1d3e30ff6b2e91e79483cdabaf6ca506bbd5856908)",
@@ -261,6 +1337,10 @@
         {
           "locator": "blank blocks 105-108 (range sha256 6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167; each block sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)",
           "explanation": "No solution follows: the four blocks after the transactions are empty and the week contains no table, totals, balances, folio marks or assessment section. Week 2's only task is therefore this unsolved example, with no practice questions and no marking scheme. Any solution authored later must be labelled as authored, not as the source's (BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION). PARTIAL, not UNRESOLVED: the exercise is set; only its answer is missing."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -269,8 +1349,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Balancing the double column cash book at the end of a period and bringing down the balances of cash in hand and cash at bank",
       "objective_locator": "SS1-SRC-62b02f2adcb3 instruction block 94 (sha256 aa33184e3aaa9800611e3f1d3e30ff6b2e91e79483cdabaf6ca506bbd5856908); the only balancing shown in the document, Week 1 blocks 56-57 and 78",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 94; Week 2 example blocks 93-104 (range sha256 3c2e4b49833b728e0e3f972ece51482c01f2904e97a4be7a767349a998afef3c); Week 3 cash books blocks 121-122 (50f7bcab93db04a2fa33854ba34f46d6e95918e4455540913256e0bd02990bb8 at block 122) and 134-135 (bc543e99e8376f0fe5228f6c3310772051ac2dcd1c71bb8bb96202015256fcc7 at block 135); Week 4 posting illustration blocks 183-205 (range sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878)",
@@ -279,6 +1361,10 @@
         {
           "locator": "block 56 'Bal. c/d1,010' (sha256 88698540eb62883e2db610f83f684bdd70c5aa2ed3f903d434e724347b8ba2a0); block 57 '2,1152,115' (sha256 bcc30f30a2899e257df0a87ab32fe5ee06022fcaa444ca169b865f4b6213918f); block 78 'Bal. b/d 1,910Bal. c/d1,010' (sha256 4699386dcdafd23bf812b74b1c3ab5cd7beb819ae079264dd314393a643e9047)",
           "explanation": "The only balancing shown in the document is inside Week 1's single column cash and bank accounts, and those figures are themselves defective (BK-WK-T1-W01, BK-PRES-T1-WORKED), so they cannot serve as the model for a two column balance without correction. UNRESOLVED; folded into the bounded lesson task BK-LES-T1-W02-PREP."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -287,8 +1373,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 9: the principle of double entry - its meaning and identifying the account to be debited and credited",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 22-24 (sha256 1aed243f2989ac1e5bfc3e0d678ff629046bde1e1735729ed06797859d0bf4c2): block 22 '9.Principle of Double entry.' (sha256 daae5ba714732fab0d5e2b741b97356a0eb4d50bcf2b4f00e45e96f42363493c), block 23 '-Meaning of Double entry' (sha256 02eff34492fb25ae7e167e6169dbaa292f917eb1ef885bddc83456575dafd862), block 24 '-Identify the account to be credited and debited.' (sha256 671a9fe63d8c23d995219b4e10721fd83440b8f9dfa5ad1db0c6e36d186fb454); body blocks 158-219 (sha256 02636ad0bc25b5fc42757c9dba5ea99c2f6b483301d7b5c5f72b478c8b5d86e7)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 158 'WEEK FOUR' label (sha256 3c43507c7d6178122a308f5e7ede8deda1dd2dfab7a0beebb4601d6d26ea10c2); body title block 159 'PRINCIPLE OF DOUBLE ENTRY'",
@@ -297,6 +1385,10 @@
         {
           "locator": "block 160 definition (sha256 ed8bf2b13857b1bea39adf8a04626c7aa0ac662d1ce79e6469bbb5f293bda451)",
           "explanation": "The meaning sub-item is one sentence: double entry takes advantage of the two-fold aspect of every transaction, debiting the receiving account and crediting the giving account. It is the only definition in the week."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -305,8 +1397,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 10: posting of transactions from the cash book to the ledger and the rule of double entry",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 25-27 (sha256 a72a51e2a1824cc25595785aa53e43a9f61255a0b957ccb0cf20ffa74412f9f7): block 25 '10.Principle of Double entry.' (sha256 9e6539a5c7608b558940faf1886b35bfd5cd2126871a38941e5eb03b3d47bc83), block 26 '-Posting of transaction from cash book to ledger.' (sha256 fe7beb7ab9998e062690862c86c6b46385a30f14c763b9727f5db7d1c0feff6b), block 27 '-Rule of double entry.' (sha256 5c307887771076f6d7655f18f155210577e78db77fe0ea17c5bf7d34cc4e4ccf); body blocks 177-182 (sha256 180b0e8476564e21f1201906c2b7aeeb1955d11d933fbce9c5cc1d3f0e99ce2b) and blocks 183-205 (sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "blocks 177-182: two headings (177, 178), a definition of posting (179) and two rules (181-182)",
@@ -315,6 +1409,10 @@
         {
           "locator": "block 185 instruction (sha256 f085fb0bdd0394a71f4a4a7cef1e5410fa12bccc5342728c7402341ea67c803f): 'Enter the following in a two column cash book. Balance off at the end of the month and post to all necessary ledgers.'; blocks 186-205 (sha256 5696ac3563a15cb54e9075d7c98ba9cdcf6b50aecfb8d21c671f0907f3905f75)",
           "explanation": "The illustration is a bare statement of twenty June transactions with no cash book, no ledger and no answer, so the rule of double entry is never applied where a learner could see it applied."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -323,12 +1421,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The meaning of double entry book keeping: the two-fold aspect of every transaction, debiting the receiver and crediting the giver",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body block 160 (sha256 ed8bf2b13857b1bea39adf8a04626c7aa0ac662d1ce79e6469bbb5f293bda451); heading block 159 within blocks 159-164 (sha256 a3d34292a08749fd57984e48817c940b6b12a936c36d2f8645cdf36df0811c75)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 160: 'Definition: Double entry book keeping is the system of keeping account, which take advantages of the two-fold aspect of every transaction, whereby one account that receives is debited and another account, which gives, is credited.' (253 characters)",
           "explanation": "The definition carries the core idea and names both sides. It is ungrammatical ('which take advantages'), says 'keeping account' rather than 'keeping accounts', and gives no example inside the definition. The wording is retained in BOOKKEEPING-T1-W04-SOURCE-DEFECTS and is not corrected here."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -337,12 +1441,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The three stated rules of double entry",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 161-164 (sha256 06c65a5bb561f891c21d2882840ab396091c2507390092a8d47a9318ebd36e67); intro block 161, rules a-c at 162-164",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 161: 'The following simple rules of double entry should be fully understood and memorized.'; block 162 a, block 163 b, block 164 c",
           "explanation": "Rules a and b are one rule read from opposite ends (a credit entry needs a matching debit elsewhere and a debit entry needs a matching credit elsewhere); rule c restates both as 'all transactions must be recorded in two accounts'. The week therefore teaches two rules and repeats one, and nothing shows when the rule does not apply (contra transfers inside one cash book, or a compound entry)."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -351,8 +1461,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Every transaction involves two accounts: the receiving account debited with the value received and the giving account credited with the value given",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 166-172 (sha256 faf1477c139e9072d715986c1f5e8494fa58d84cb4605a26560b60576c75a304); application heading 166, points 167-169, Dr/Cr statements 171-172",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "blocks 166-169: 'APPLICATION OF THE PRINCIPLES OF DOUBLE ENTRY', '1.Any transaction involves two accounts.', 'a.Receiving account or receiver.', 'b.Giving account or giver.'",
@@ -365,6 +1477,10 @@
         {
           "locator": "block 170 (empty text; sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855, 0 characters): VML/DrawingML shape 'Right Brace 1' (preset rightBrace, wp:docPr id 1; 90805 x 542290 EMU, 7.15pt x 42.7pt), anchored with wrapNone at 158.05pt from the column edge and 19.7pt below the top of block 170, so it sits beside blocks 171-172",
           "explanation": "Visual disposition for BK-VIS-T1-BRACE-W04. The brace is a single decorative connector and the last of the eight VML objects in the member. It holds no text box and no w:t run, so no wording is lost by omitting it, and it has no data, angle, scale or measurement. From its coordinates it stands between each account name and its 'With value it receives' / 'With value it gives out.' phrase on blocks 171-172 and visually ties the two lines together; that reading comes from the stored geometry and was not checked against a rendered page. It is therefore excluded from delivered lessons and no asset is created; nothing is committed from the drawing. The wording it brackets is preserved as text in blocks 171-172, which keep their a. / b. labels, the Dr. / Cr. abbreviations and the receiving / giving pairing. What the text does not keep is the tab separator between the account name and its value phrase (block 172 has two tabs), already recorded as defect 2 of BOOKKEEPING-T1-W04-SOURCE-DEFECTS and in the previous evidence entry of this row; a lesson must restate that pairing as its own text. This adds no coverage: status stays PARTIAL, no lesson exists, and no display or app rendering was verified."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -373,12 +1489,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Identifying the account to be debited and the account to be credited, applied to eleven transactions",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 174-175 (sha256 e796b64fdf747a4082f5c1409fbcfe661e859509b3c04b5887fae6b707f3b9db): instruction block 174 (sha256 ef7ba1dae1b8c67aa7deb11ad2fd2411128c2e061558bc0758da5438e8dff36d) and the eleven-row table block 175 (sha256 35d1163dd177a22a8987a9ff139ad68ad22462b43b152e07172182d5a834597a, 528 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 175 rows i-xi: start business with N800 cash (Cash/Capital); goods sold on credit to Mr. Ayo (Ayo/Sales); paid creditor Mr. Olu by cheque (Mr. Olu/Bank); goods bought by cheque (Purchases/Bank); sold goods for cash (Cash/Sales); goods returned to Mr. Kufor (Kufor/Returns Outwards); Biodun lent us N80 cash (Cash/Loan (Biodun)); took N20 of the cash and paid into the bank (Bank/Cash); bought a motor van by cheque (Motor van/Bank); goods returned to Olotu (Olotu/Returns Outwards); paid further cash into the business as capital (Cash/Capital)",
           "explanation": "This is the only fully answered exercise in the week and its eleven answers are correct as double entries, so the identification skill is demonstrated. But the instruction at 174 is truncated ('Illustration: Complete the following table. Account to be.') and the answers are already printed, so the table cannot serve as practice; it is evidence, not an exercise. The contra row (viii) also depends on Week 3 entry 8."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -387,12 +1509,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The meaning of posting and the order of work: write up the cash book first and then transfer to the ledgers",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 177-182 (sha256 180b0e8476564e21f1201906c2b7aeeb1955d11d933fbce9c5cc1d3f0e99ce2b); definition block 179 (sha256 54afe5a0d19dc003a27841784c03f25bc5109bf4f6591d2c2d1b9ef613265018)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 179: 'Posting is the act of using one book as a means for entering the items to other accounts so as to complete double entry. When applying the principle of double entry, students are advised to write up the cash book first and then transfer to the ledgers.'",
           "explanation": "The sequencing advice (cash book first, then ledgers) is the clearest teaching in the week. The definition never names the ledger, the account or the folio, so a learner is told what posting achieves but not what a posted entry looks like."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -401,12 +1529,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The two rules for posting from the cash book to the ledger",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 180-182 (sha256 5f7d2a885735af5207ee564c4fe587726223ce17ea99b71ab339917baa9cdbaa): heading block 180, rule 1 block 181, rule 2 block 182",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 181: 'All items on the debit side of the cash book must be transferred to the credit side of individual ledgers.'; block 182: 'All items on the credit side of the cash book must be posted to the debit side of individual ledgers'",
           "explanation": "The mirror rule is correct for the entries that are posted and is the whole of the posting instruction. It says 'all items', which would include the contra 'C' rows at 188, 190, 191, 193, 194 and 201 that are not posted at all because they stay inside the cash book; the exception is never mentioned. No ledger account is shown, so 'individual ledgers' is never illustrated."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -416,11 +1550,17 @@
       "objective": "The illustration: enter twenty June transactions in a two column cash book, balance it off and post to all necessary ledgers",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 183-205 (sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878): heading 184, instruction 185 (sha256 f085fb0bdd0394a71f4a4a7cef1e5410fa12bccc5342728c7402341ea67c803f), blocks 186-205 (sha256 5696ac3563a15cb54e9075d7c98ba9cdcf6b50aecfb8d21c671f0907f3905f75)",
       "status": "PARTIAL",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "blocks 186-205: twenty dated June transactions from 'Started business with cash N3,200' to 'The proprietor put further cash N1,320 into the business as capital.'",
           "explanation": "The transactions are stated cleanly and in date order and would support a full worked solution. None is supplied: no cash book, no balance, no ledger, no answer. Two entries need expert reading before any solution is authored - June 12 (block 194, a withdrawal for personal use, which is drawings) and June 16 (block 196, a motor van at N20). Both are recorded in BOOKKEEPING-T1-W04-SOURCE-DEFECTS and the figure check is BOOKKEEPING-T1-W04-FIGURE-CHECKS."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -429,12 +1569,19 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "ASSIGNMENT 1: write up the two column cash book from an external textbook and post it to the ledgers",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 207-217 (sha256 73781b75f66ee0a9b1ed2b4fdfe9d7ab5b4c395b5354de05921e4785b924df52); question block 208 (sha256 e55f8bbf829cebee0b50a2432f6b5783134f2acac94827be827b41a750602827)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK",
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 208: '1.Write up the two column cash book in simplified and amplified book-keeping and accounting page 56 revision question 5x.'; block 209: 'Note: Post the entries from the prepared two column cash to all relevant ledger account'",
           "explanation": "The exercise is set in a book that is not supplied and cannot be reproduced. Its page and question number cannot be verified from this document, so the objective cannot be taught or answered from the source. Raised as BOOKKEEPING-T1-W04-EXTERNAL-TEXT for the owner."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -443,12 +1590,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "ASSIGNMENT 2: write up the accounts for seven January transactions",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body blocks 210-217 (sha256 619f7deddd146921d3e221645641f01ab471a0d011f37b6ac169b519eac25a26); instruction block 210, transactions 211-217",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "blocks 211-217: Jan. 1 started business with N12,000 in the bank; Jan. 2 stationery on credit from Okete N200; Jan. 3 goods on credit from Ogundele N3,000; Jan. 6 rent in cash N30; Jan. 8 sold goods on credit to Ajala N500; Jan. 12 returned goods to Ogundele N150; Jan. 19 wages in cash N30.",
           "explanation": "Seven transactions are set with no answer and no statement of the book or accounts required beyond 'write up the accounts'. The set is usable as practice once an expert settles the required form and the answers are authored; recorded in BOOKKEEPING-T1-W04-NO-SOLUTIONS."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -457,12 +1610,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The form of a ledger account needed in order to post: ruling, date, particulars, folio, debit and credit columns, and the balancing of an account",
       "objective_locator": "SS1-SRC-62b02f2adcb3 whole document: the heading block 178 'POSTING TO THE LEDGERS.' (sha256 ebe4f8b8e3cbcecf7b6a6750d2efab64a96d5fe04485c494de9d792cdb8b7d17) and blocks 177-182 (sha256 180b0e8476564e21f1201906c2b7aeeb1955d11d933fbce9c5cc1d3f0e99ce2b) are the only instructions to post; 'ledger' occurs only in blocks 26, 177, 178, 179, 181, 182, 185 and 209 and no ledger account appears anywhere in the document",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "blocks 177-182, 185 and 209 are the only mentions of ledgers; the document has no ledger heading, no specimen account and no ledger folio convention",
           "explanation": "Posting is required by scheme block 26 and by the illustration at 185, but the account into which items must be posted is never shown. The 'C' folio convention taught in Week 3 (blocks 121-135) applies to the cash book only. A learner cannot post an item from this document alone. This is the largest content gap in the week and is raised as BOOKKEEPING-T1-W04-LEDGER-FORMAT-MISSING."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -471,12 +1630,18 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Balancing off the cash book at the end of the month and bringing the balance down",
       "objective_locator": "SS1-SRC-62b02f2adcb3 body block 185 (sha256 f085fb0bdd0394a71f4a4a7cef1e5410fa12bccc5342728c7402341ea67c803f) within blocks 183-205 (sha256 e6e28b2c30861cc6732fcccd3b60a81cfea886fb736b297fe6c5f3ef090b5878)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY"
+      ],
       "evidence": [
         {
           "locator": "block 185 requires 'Balance off at the end of the month' but no block in Week 4 explains balancing and the week contains no balanced cash book",
           "explanation": "Week 2 recorded the same absence (BOOKKEEPING-T1-W02-BALANCING-UNTAUGHT): no week of the 1st Term document shows a cash book being balanced or a balance brought down. Week 4 asks for the skill without teaching it, so the requirement is UNRESOLVED here too and is raised as BOOKKEEPING-T1-W04-BALANCING-UNTAUGHT."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -485,8 +1650,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 2: the cash book, its meaning (\"measuring\" in the scheme) and the items of a single column cash book",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 4-6 (sha256 2fb2e055f03ddf888eb4c12a792b1dc354e0dad5cc6277b837a357b68106ea0e, 84 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "scheme blocks 4-6: 2.Cash book / -Measuring of single column cash book. / -Items of single column cash book",
@@ -495,6 +1662,10 @@
         {
           "locator": "body blocks 33-34 (sha256 e0e73db149a8e950a9762ca9e8930f1023aa7f194118615b3c0f8fdd40eac9db, 160 characters)",
           "explanation": "The introduction defines the book and forbids credit entries, which answers the meaning sub-item in general terms. It never names the single column type or its items. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -503,8 +1674,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 3: the single column cash book and the preparation of a single column cash book",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 7-8 (sha256 324140ef4425dab006678c59bd2d0648b998385fe02dbc6d2127b1c5f4bbe409, 66 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "scheme blocks 7-8: 3.Single column cash book / -Preparation of single column cash book.",
@@ -513,6 +1686,10 @@
         {
           "locator": "body blocks 37-57 (sha256 3b807c5b6396b525b897e40dc65d31fffd9f9846b5faf362c70d0533dcdcc222, 531 characters)",
           "explanation": "Illustration 1 asks for the Olaide transactions to be entered in the cash account and prints a T-account solution. No cash book ruling, no folio column and no single amount column appears. PARTIAL; the figure check is BOOKKEEPING-T1-W01-FIGURE-CHECKS."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -521,8 +1698,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 4: preparation of the single column cash book (continues)",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme block 9 (sha256 1da5ea888ede0fa3c16ee689678ca42c29863f266d1fca3346bd19b18bdb8a8a, 52 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "scheme block 9: 4.Preparation of single column cash-book (continues)",
@@ -531,6 +1710,10 @@
         {
           "locator": "body blocks 59-80 (sha256 5007752ec00927ef08b8ecf7e1233652b7b1ec008cda94c6a7a6d8f6ad41724a, 555 characters)",
           "explanation": "Illustration 2 enters June transactions in a bank account, not a cash book, and its solution copies Illustration 1 credit entries. The continuation is therefore carried by a different account. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -539,8 +1722,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The meaning of the cash book: the book for recording receipts and payments of money in cash or cheque, with no credit transaction recorded",
       "objective_locator": "body blocks 33-34 (sha256 e0e73db149a8e950a9762ca9e8930f1023aa7f194118615b3c0f8fdd40eac9db, 160 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 33: INTRODUCTION: This is the book for recording receipts and payments of money in cash or cheque.",
@@ -549,6 +1734,10 @@
         {
           "locator": "block 34: NOTE: No credit transaction should be recorded in the cash book.",
           "explanation": "The no-credit rule is stated plainly and is the only rule attached to the definition. The definition is usable but general; the scheme type is not defined. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -557,8 +1746,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Items of the single column cash book: the columns and the receipts and payments that are recorded in them",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme block 6 (sha256 b327c1b07f17e954d9c92ccc746ecf9618e8fcb824ae5cc1cca116ceba506ef1, 33 characters); body blocks 30-86 (sha256 0aa3088772e53f5e135529b39c31129af5dee4b4019ac1cdfb0758aaa96cf6d3)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "scheme block 6: -Items of single column cash book",
@@ -567,6 +1758,10 @@
         {
           "locator": "body blocks 33-36, 39 and 49-50",
           "explanation": "The only headings are the bare N at blocks 39 and 61 and the Dr/Cr account line at 49 and 70. A column heading is not an items lesson. UNRESOLVED; the gap is BOOKKEEPING-T1-W01-ITEMS-MISSING."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -575,8 +1770,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The form and ruling of a single column cash book needed to prepare one: date, particulars, folio and amount columns",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 7-9 (sha256 50330b5b475e5f15d0f836f02e8e9c17b8e248a8a0ebb16f9724b99c3c623ae5); body blocks 49-57 (sha256 c6cc1788f5cf6a2b3cf0f985d9fa3e172bd20c82610ec0d8066a725343519ccc) and 70-80 (sha256 4217801cae93fd2979dd22162e95b5db4a0b709168796ddde63e32020d61491c)",
-      "status": "UNRESOLVED",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "body blocks 49-57: the Illustration 1 solution",
@@ -585,6 +1782,10 @@
         {
           "locator": "body blocks 70-80 and the drawings at blocks 49, 56, 70 and 79",
           "explanation": "The Illustration 2 solution repeats the T-account form for a bank account. The account rules are drawing objects, not a Word table, and no cash book format exists anywhere in the week. UNRESOLVED; the gap is BOOKKEEPING-T1-W01-FORMAT-MISSING."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -593,8 +1794,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The cash account: the account for money received and paid in cash, the balance called cash in hand, receipts debited and payments credited",
       "objective_locator": "body block 36 (sha256 5da149f2ada3277cd07127cecf11dceddcdc84d4c4a0acb32d402ac0a6db8f6b, 228 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 36: CASH ACCOUNT: This is the account which is used for recording money received and paid with cash. The balance is referred to as CASH IN HAND. All cash received must be debited while cash paid will be credited to the cash account.",
@@ -603,6 +1806,10 @@
         {
           "locator": "blocks 33 and 36 read together",
           "explanation": "The section never connects the cash account to the cash book of block 33, so a pupil cannot tell whether the two are the same thing or how one relates to the other. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -611,8 +1818,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Balancing the cash and bank accounts: the balance carried down and brought down at the end of the period",
       "objective_locator": "body blocks 56-57 (sha256 0d8692ae3cd6a3c23e5b1dd6fcd108c1aac32b42b2ba3f6a74fe9bedafd6d28a) and block 78 (sha256 4699386dcdafd23bf812b74b1c3ab5cd7beb819ae079264dd314393a643e9047, 27 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 56: Bal. c/d1,010 and block 57: 2,1152,115",
@@ -621,6 +1830,10 @@
         {
           "locator": "block 78: Bal. b/d 1,910Bal. c/d1,010",
           "explanation": "The bank solution prints a brought-down and a carried-down balance side by side with no explanation of either, and both disagree with the transaction list. The only balancing model in the week is unusable. PARTIAL; the gap is BOOKKEEPING-T1-W01-BALANCING-UNTAUGHT."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -629,8 +1842,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Illustration 1: enter eight July transactions for Olaide in a cash account and balance it",
       "objective_locator": "body blocks 37-48 (sha256 82ab7015b5e6a78452764d28f3f6a77419ed676234a73ae8ee43c236eef78054, question) and 49-57 (sha256 c6cc1788f5cf6a2b3cf0f985d9fa3e172bd20c82610ec0d8066a725343519ccc, solution)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "blocks 40-47: July 1 cash in hand 1,500; July 3 Okola 250; July 5 sales 500; July 6 purchases 700; July 7 stationery 50; July 9 insurance 30; July 10 wages 25; July 12 sales 155",
@@ -639,6 +1854,10 @@
         {
           "locator": "blocks 49-57: the printed solution",
           "explanation": "Debits 1,500 + 500 + 115 = 2,115; credits 250 + 750 + 50 + 30 + 25 + 1,010 = 2,115. The solution balances with itself but not with the question: block 53 prints 115 for 155 and block 52 prints 750 for 700, and the balance 1,010 is 90 below the correct 1,100. PARTIAL; the arithmetic is BOOKKEEPING-T1-W01-FIGURE-CHECKS."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -648,7 +1867,9 @@
       "objective": "The bank account: the record of money deposited and withdrawn, cheques received debited and cheques issued credited",
       "objective_locator": "body block 58 (sha256 d786b6745b91b0f1b1d0440d640294494a4d4d50555ecf75814996a19feb2bf9, 190 characters)",
       "status": "PARTIAL",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "block 58: BANK ACCOUNT: The bank account is a record of money deposited into the bank and money withdrawn from the bank. All cheques received must be debited while cheques issued out must be credited.",
@@ -657,6 +1878,10 @@
         {
           "locator": "block 58 against the Week 2 scheme",
           "explanation": "The section teaches the bank as a separate account. It does not mention the bank column of a cash book, which Week 2 introduces, so the treatment is correct but out of sequence with the scheme. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -666,7 +1891,9 @@
       "objective": "Illustration 2: enter six June transactions for Ogundele in a bank account and balance it",
       "objective_locator": "body blocks 59-69 (sha256 39c4f48ca9399b168348d14c007e7fc75d150e87f77ff6dac8971c45a1aed492, question) and 70-80 (sha256 4217801cae93fd2979dd22162e95b5db4a0b709168796ddde63e32020d61491c, solution)",
       "status": "PARTIAL",
-      "lesson_ids": [],
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK"
+      ],
       "evidence": [
         {
           "locator": "blocks 62-67: June 1 Cash in hand2,500; June 3 Paid to Okocha by cheque 650; June 5 sold goods, received cheque 450; June 6 cheque from Agali 230; June 7 sent cheque to Komolafe (no amount); June 9 bought goods with cheque 300",
@@ -675,6 +1902,10 @@
         {
           "locator": "blocks 72-80: the printed solution",
           "explanation": "Debits 2,500 + 450 + 230 = 3,180. Credits are 650 + 750 + 50 + 30 + 25 = 1,505 plus a carried-down 1,010 = 2,515, not the 3,180 printed at block 80. Blocks 73-76 repeat Illustration 1 July entries and June 9 is omitted; block 78 prints an unexplained Bal. b/d 1,910. PARTIAL; see BOOKKEEPING-T1-W01-FIGURE-CHECKS."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -683,8 +1914,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Scheme entry 8: the contra entry - explain it, identify it and record it",
       "objective_locator": "SS1-SRC-62b02f2adcb3 scheme blocks 18-21 (sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters); body blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1362 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "scheme blocks 18-21 (sha256 b4c3675b322d919a77f8b9dc26366c102255418656c15111b5b3c2b712d3e8a9, 84 characters): 8.Contra Entry. / -Explain contra entry / -Identify contra entry / -Recording contra entry",
@@ -693,6 +1926,10 @@
         {
           "locator": "body blocks 109-157 (sha256 f82efa6d2cfe027ab42113ec3d4781f3852d5b91a9527aff9863f286a0b58997, 1362 characters)",
           "explanation": "The section is 1,362 characters over 49 blocks, of which 23 carry text and 26 are empty; blocks 136-157 are empty. It sets no exercise, prints no totals and no balance, and never states a general posting rule for contra."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -701,8 +1938,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The meaning of a contra entry: what it is, which two accounts it affects and when it arises",
       "objective_locator": "body blocks 111-113 (sha256 ea3f1b450e4001fcda10161cfa809cf821936497a530a3f8ead7bf54ec5b9d72, 353 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "block 111 (sha256 7cf4798488d8862d3049c68c4deaff32799d35136baf5f4d036a5a27893e80ff, 154 characters): Contra is a latin word which shows that cash has been withdrawn from the office and deposited in the bank or withdrawals of cash from bank for office use.",
@@ -715,6 +1954,10 @@
         {
           "locator": "block 113 (sha256 13f67fc44e12b751cab49ef74f630d855fc25ad1de7b46ced1a29de10877a7c7, 96 characters): It may simply be defined as the transfer of an account to the identical side of another account.",
           "explanation": "Wrong as a definition: the week's own effect and action pairs (117-118, 131-132) post the same transaction to the opposite side of the other account. Recorded as BOOKKEEPING-T1-W03-CONCEPT-ERROR."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -723,8 +1966,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Identifying a contra entry: for each direction, which balance falls, which rises and which column is credited or debited",
       "objective_locator": "body blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a, 103 characters) and blocks 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a, 107 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a, 103 characters): EffectAction Required / Cash balance is decreasedCr. Cash column / Bank balance is increasedDr. Bank column",
@@ -737,6 +1982,10 @@
         {
           "locator": "body blocks 109-135 (sha256 b987157e53da2cad32fe0518951cf18d298d6ea1bf3435f624a624085f030149, 1340 characters): the two pairs are the only identification material in the week",
           "explanation": "No non-contra transaction is placed beside them, so nothing shows how a learner tells a contra entry from an ordinary receipt or payment, and no question asks for the identification. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -745,8 +1994,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The folio column mark for a contra entry: the capital C, written on both sides of the cash book",
       "objective_locator": "body block 112 (sha256 719ff225f6361ae3ea42dcfff41978fccbf8ee0659f963479b76a461313aa9dd, 101 characters) and block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "block 112 (sha256 719ff225f6361ae3ea42dcfff41978fccbf8ee0659f963479b76a461313aa9dd, 101 characters): ...is denoted by C in the folio column.",
@@ -755,6 +2006,10 @@
         {
           "locator": "block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters): Note: C must be put on both sides to represent contra entry.",
           "explanation": "States the both-sides requirement in one sentence, and both tables carry C in the folio cell of each side (block 122 row 2 and row 3, block 135 row 2). The convention is therefore shown as well as stated, but its general setting is not."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -763,8 +2018,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Recording the payment of cash into the bank as a contra entry: the example at 119-120 and its cash book at 121-122",
       "objective_locator": "body blocks 119-124 (sha256 6baddec62249c0b72b24c6f3ec79c371d1a93c2f562435c6f554b425285b4212, 279 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "blocks 119-120 (sha256 2ebd7521de05ff26bb2a1bd74a7858de613d06b9a58115c4a8a6c45c62b63f0d, 84 characters): E.g: Jan. 1 cash balanced N300 / Jan. 2 cash paid into the bank amounted to N710",
@@ -777,6 +2034,10 @@
         {
           "locator": "block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters): Note: C must be put on both sides to represent contra entry.",
           "explanation": "Follows the table as its only explanation. It states the folio rule but not the posting rule the table applies, and the table's four bare N header cells never label the Cash and Bank columns."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -785,8 +2046,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "Recording the withdrawal of cash from the bank as a contra entry: the example at 127-133 and its cash book at 134-135",
       "objective_locator": "body blocks 126-127 (sha256 1e8586577c6046518f209b00512050f11b7efca2049f02db6985ce681761731d, 200 characters) and blocks 133-135 (sha256 d8712897f37d3fac9bf31732cdee21c39d30aff853b900a0f054b447202badbd, 151 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "blocks 126-127 (sha256 1e8586577c6046518f209b00512050f11b7efca2049f02db6985ce681761731d, 200 characters): b.Withdrawals from bank for office use. / When there is no sufficient cash in the office to meet payments, cash can be withdrawn from bank. When this occurs, the effect and action will be started below.",
@@ -799,6 +2062,10 @@
         {
           "locator": "blocks 133-135 (sha256 d8712897f37d3fac9bf31732cdee21c39d30aff853b900a0f054b447202badbd, 151 characters): the second example closes the teaching",
           "explanation": "Blocks 136-157 are empty, so the week ends on this table with no totals, no resulting balances and no exercise."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -807,8 +2074,10 @@
       "source_id": "SS1-SRC-62b02f2adcb3",
       "objective": "The posting rule that makes an entry a contra: debit the account or column that receives, credit the one that gives, and mark both C",
       "objective_locator": "body blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a, 103 characters), blocks 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a, 107 characters) and block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters)",
-      "status": "PARTIAL",
-      "lesson_ids": [],
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T1-W03-CONTRA"
+      ],
       "evidence": [
         {
           "locator": "blocks 116-118 (sha256 e15629e27c6aa6b9b23726e4ccb36f49cdab08e51057d1083c9dfceb26c8012a) and 130-132 (sha256 f10a8f06ecaae33e871693696d30a2b6756671ecd59eae459a64bcf21bdf589a): Cr. Cash column / Dr. Bank column and Cr. Bank column / Dr. Cash column",
@@ -817,6 +2086,10 @@
         {
           "locator": "block 124 (sha256 c7b640d72b698fec5e0eacb18415e915dad110e1a82fcaee2c047c505efa160a, 62 characters)",
           "explanation": "The only rule-like sentence in the week, and it covers the folio mark alone. A pupil who reads the week can copy both examples but is not given the rule that would let them classify or record a new contra. PARTIAL."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA in package lessons[]",
+          "explanation": "The original source is preserved. This separately authored lesson supplies a complete, internally consistent teaching treatment and marked practice without relying on the source's unresolved figures or reproducing the cited external textbook."
         }
       ]
     },
@@ -865,6 +2138,510 @@
         {
           "locator": "Scheme preamble block 29; first week marker is block 30",
           "explanation": "The scheme line is a marker only. The source contains no examination paper, questions, answers, marks or duration after this line; no instructional content is invented."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-REVISION-1",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 1                 Revision; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-REVISION-1"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 5; block SHA-256 001512a6ddbf840fdbd3388e661b790495094a020e23a723cbd9cf14eeaa0204",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-REVISION-11",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 11       revision; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-REVISION-11"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 40; block SHA-256 b6d1ba5101b51df16c679e834778c5122b62ba0722f8b3685cd0d92892466166",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-EXAM-12",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Scheme marker: 12    exam; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T3-EXAM-12"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3 scheme preamble block 41; block SHA-256 96bdf60333eb1cb78ace49a418eb4ba0f4fffec531a07fece7da63eecacba7be",
+          "explanation": "The marker is a manually typed scheme entry in the preamble; no revision worksheet or examination material is supplied in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W02-MEANING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Meaning of petty cash book",
+      "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+          "explanation": "Blocks 45–47 define the imprest system and petty cash book as a book of original/prime entry for small disbursements. Preserve the source's wording and examples; the section does not provide a complete lesson package."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W02-COLUMNS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Classification of columns",
+      "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+          "explanation": "Blocks 53–55 describe the receipt side and wider credit-side analysis columns; block 63 lists receipt, date, details, voucher number, total and expense analysis headings. Column semantics and the printed layout require visual disposition."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W02-POSTING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Posting of transaction",
+      "objective_locator": "BK-INV-T3 scheme Week 2, scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 6–9; body blocks 44–81; section hash 19b0480e70d710ff1707389b5ca1997a3e61ef78018a677e4c0f68466580aee6",
+          "explanation": "Blocks 56–61 describe crediting petty cash with payments, transferring analysis totals to nominal ledgers and reimbursement. No complete posting demonstration to nominal ledger is supplied."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W03-MEANING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Meaning of trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
+          "explanation": "Block 87 defines a trial balance as a statement of ledger balances in double-entry form used to test arithmetical accuracy. No explicit week label or complete lesson package."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W03-FUNCTIONS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Functions of trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
+          "explanation": "Blocks 147–150 list three purposes: comprehensive account list, arithmetical accuracy check and data for final accounts. Source wording is preserved."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W03-EXTRACTION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Extraction of balance from ledger to trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 3, scheme blocks 10–13; body blocks 85–150 and 166–259",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 10–13; body blocks 85–150 and 166–259",
+          "explanation": "Blocks 166–175 describe ledger balancing; blocks 180–254 show Mr Odili's transactions, cash and ledger accounts and a trial balance. Printed trial balance totals are inconsistent (debit 10,000, credit 1,000); preserve for arithmetic review."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W04-RULES",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Rules for posting balances from ledger to trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 4, scheme blocks 14–16; body blocks 151–175 and 180–254",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 14–16; body blocks 151–175 and 180–254",
+          "explanation": "Blocks 151–164 contain a visual classification diagram naming credit liabilities, credit income/gain, debit expenses and debit assets. The diagram's spatial mapping requires separate visual disposition; the source does not give a full written set of transfer rules."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W04-PREPARATION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Preparation of trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 4, scheme blocks 14–16; body blocks 151–175 and 180–254",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 14–16; body blocks 151–175 and 180–254",
+          "explanation": "Blocks 166–175 give ledger balancing steps and blocks 180–254 contain a worked cash/ledger/trial balance illustration. The printed trial balance shows debit 10,000 and credit 1,000, so the worked answer does not reconcile as printed."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-MEANING",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Meaning of errors",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "Blocks 261–267 introduce errors through six named categories and brief definitions/examples; no separate general definition is provided."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-TYPES",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Types of errors",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "Blocks 262–267 list errors of original entry, omission, commission, principle, compensating errors and complete reversal, with short descriptions."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-AFFECT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Errors affecting trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "Blocks 308–314 list one-sided omission, misposting of figures, errors in transfer of subsidiary-book totals, two entries on the same side, and under/overcasting as errors affecting agreement. The source does not map every earlier error type to this classification."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W05-NOT-AFFECT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Errors that do not affect trial balance",
+      "objective_locator": "BK-INV-T3 scheme Week 5, scheme blocks 17–21; body blocks 261–307 and 308–314",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 17–21; body blocks 261–307 and 308–314",
+          "explanation": "The scheme explicitly requires this category (block 21), but the source body does not provide a distinct list or explanation of errors that do not affect agreement. The earlier six error types are not explicitly classified by effect."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W05-NOT-AFFECT in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W06-SUSPENSE",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Correction of errors through the use of suspense account",
+      "objective_locator": "BK-INV-T3 scheme Week 6, scheme blocks 22–23; body blocks 308–392; range hash 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 22–23; body blocks 308–392; range hash 3ff8ce00524df2d8e0822ee1c5867eb859ec9c1447c0835915a3bd363a9c4b5c",
+          "explanation": "Blocks 308–388 cover errors affecting agreement, correction procedures, examples, journal entries and a suspense account. The printed suspense-account debit items total 950 while the credit items total 1,400, despite 1,400 being printed on both sides; detailed worked-material review is required."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W07-DEFINITION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Definition of trading account",
+      "objective_locator": "BK-INV-T3 scheme Week 7, scheme blocks 24–27; body blocks 394–417",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W07-TRADING"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 24–27; body blocks 394–417",
+          "explanation": "Block 402 defines trading account and gross profit. No standalone trading account layout or solved example is present."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W07-TRADING in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W07-COGS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Description of cost of goods sold",
+      "objective_locator": "BK-INV-T3 scheme Week 7, scheme blocks 24–27; body blocks 394–417",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W07-TRADING"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 24–27; body blocks 394–417",
+          "explanation": "Blocks 410–413 define cost of goods available for sale and cost of goods sold, including the subtraction of closing stock. No complete numerical illustration is supplied."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W07-TRADING in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W07-GROSS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Determining gross profit",
+      "objective_locator": "BK-INV-T3 scheme Week 7, scheme blocks 24–27; body blocks 394–417",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W07-TRADING"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 24–27; body blocks 394–417",
+          "explanation": "Block 416 defines gross profit as profit on sales before expenses. The source does not provide a complete trading-account calculation demonstrating the amount."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W07-TRADING in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W08-PREPARATION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Preparation of a simple trading account",
+      "objective_locator": "BK-INV-T3 scheme Week 8, scheme blocks 28–29; body blocks 418–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W08-PREP"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 28–29; body blocks 418–423",
+          "explanation": "The scheme requires preparation of a simple trading account (block 29). Blocks 418–423 give general steps for final accounts but the source supplies no trading-account layout, figures or worked preparation."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W08-PREP in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W09-PURPOSE",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Purpose of profit and loss account",
+      "objective_locator": "BK-INV-T3 scheme Week 9, scheme blocks 30–33; body blocks 401–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W09-PNL"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 30–33; body blocks 401–423",
+          "explanation": "Block 403 says the account discloses net profit or net loss and expenses are deducted from gross profit; it does not separately enumerate the purpose."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W09-PNL in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W09-NET-SALES-NET-PROFIT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Determining net sales and net profit",
+      "objective_locator": "BK-INV-T3 scheme Week 9, scheme blocks 30–33; body blocks 401–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W09-PNL"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 30–33; body blocks 401–423",
+          "explanation": "The source defines net profit at block 417 but gives no net-sales computation or worked net-profit calculation."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W09-PNL in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W09-RULES",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Rules for preparing profit and loss account",
+      "objective_locator": "BK-INV-T3 scheme Week 9, scheme blocks 30–33; body blocks 401–423",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W09-PNL"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 30–33; body blocks 401–423",
+          "explanation": "Block 422 says expenses in the trial balance are deducted from gross profit to arrive at net profit/loss. No distinct P&L format or complete rule sequence is supplied."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W09-PNL in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-EXPLAIN",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Explain balance sheet",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "Block 404 defines a balance sheet as a list of assets and liabilities at a particular date. No lesson package is yet authored."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-CONTENT",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Balance sheet content",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "Blocks 426–452 show a balance sheet layout with capital, long-term/current liabilities, fixed assets, investment and current assets. VML/tab geometry requires visual disposition."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-USERS",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Users of balance sheet",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-USERS"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "The scheme explicitly includes 'Users of balance sheet' at block 37, but no identifiable explanation of user groups or their uses appears in the body."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-USERS in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T3-W10-PREPARATION",
+      "source_id": "SS1-SRC-97f226215927",
+      "objective": "Preparation of simple balance sheet",
+      "objective_locator": "BK-INV-T3 scheme Week 10, scheme blocks 34–38; body blocks 404, 426–468",
+      "status": "IMPLEMENTED_EQUIVALENT",
+      "lesson_ids": [
+        "SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T3: scheme blocks 34–38; body blocks 404, 426–468",
+          "explanation": "Blocks 426–452 show a blank/template balance-sheet layout; blocks 457–468 provide an assignment but no worked answer. The assignment date conflicts: 31 Dec. 1983 in block 457 and 31 Dec. 1883 in block 468."
+        },
+        {
+          "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
+          "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-REVISION-1",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Scheme marker 1.\tRevision.; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-REVISION-1"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
+          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-REVISION-11",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Scheme marker 11.\tRevision.; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-REVISION-11"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
+          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-EXAM-12",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Scheme marker 12.\tExamination; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-EXAM-12"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
+          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
         }
       ]
     }
