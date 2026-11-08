@@ -1339,6 +1339,102 @@
           "explanation": "The question asks for a simple reflex action and four examples; neither reflex arc nor examples are taught in the Week Five body."
         }
       ]
+    },
+    {
+      "id": "COV-AG-T3-W06-REPRODUCTIVE-CYCLES",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Reproduction in farm animals: sexual maturity, oestrus cycle, ovulation, heat period and signs of heat",
+      "objective_locator": "Third Term scheme block 11 (combined weeks 6–7); Week Six label 607; topic 608",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Reproduction and sexual maturity 609",
+          "explanation": "Defines reproduction and lists sexual-maturity ages for cattle, goats/sheep and poultry."
+        },
+        {
+          "locator": "Oestrus cycle and species intervals 611–617",
+          "explanation": "Defines the cycle and lists cow, ewe, sow, doe (goat) intervals and rabbit as spontaneous."
+        },
+        {
+          "locator": "Ovulation and species timings 619–627; heat period and timings 628–635",
+          "explanation": "Defines ovulation and heat and lists species-specific times. The meaning/measurement basis of the hour values requires verification."
+        },
+        {
+          "locator": "Signs of heat 636–647; evaluation 649–651",
+          "explanation": "Lists behavioural/physical signs and asks cycle/heat differences and ovulation timings."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W06-MATING-AND-AI",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Natural mating systems and artificial insemination, including advantages/disadvantages and semen collection/storage as stated",
+      "objective_locator": "Week Six mating section 653",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Mating and natural mating 653–659; flock mating advantages/disadvantages 660–668",
+          "explanation": "Defines mating/coitus and flock mating; lists advantages and disadvantages."
+        },
+        {
+          "locator": "Pen mating 669–678; stud mating 680–689",
+          "explanation": "Describes pen and stud mating and their stated advantages/disadvantages."
+        },
+        {
+          "locator": "Artificial mating/insemination 691–700; evaluation 702–708",
+          "explanation": "Describes semen collection methods, liquid-nitrogen storage at -196°C, and stated advantages/disadvantages. These are source statements, not operational or veterinary guidance."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W06-GESTATION-LACTATION",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Fertilization, implantation, gestation, parturition, lactation and colostrum",
+      "objective_locator": "Week Six sections 709–760",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Fertilization 709–710; implantation 712–713; gestation 715–723",
+          "explanation": "Defines fertilization and implantation, describes gestation and lists three stated signs."
+        },
+        {
+          "locator": "Gestation table 724; table SHA-256 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c",
+          "explanation": "Table contains horse/cattle, goat, sheep, pig, rabbit/chicken rows and female names/durations. Some paired entries are concatenated within the same cells (HorseCattle; MareCow; 336 days283 days and RabbitChicken; DoeHen; 31days21 days), so the raw formatting is ambiguous."
+        },
+        {
+          "locator": "Parturition and species names 726–743; evaluation 744–748",
+          "explanation": "Defines parturition, lists calving, farrowing, lambing, kidding, kindling and hatching, and gives signs of approaching parturition."
+        },
+        {
+          "locator": "Lactation 749–752; colostrum 753–760",
+          "explanation": "Describes lactation, oxytocin, milk collection/pasteurization and colostrum characteristics/claimed benefits. Claims require veterinary/dairy fact review."
+        },
+        {
+          "locator": "General evaluation 766–770; weekend 772–781",
+          "explanation": "Questions map to reproduction, implantation, parturition signs, colostrum, oestrus, hormone claims, mating, stud animals and pig gestation."
+        }
+      ]
+    },
+    {
+      "id": "COV-AG-T3-W06-UNTAUGHT-EMBRYO-AND-LAMB",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "objective": "Assessment scope: embryo development and lamb positioning prior to expulsion",
+      "objective_locator": "Week Six theory blocks 783–785",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Implantation 712–713; gestation 715–718",
+          "explanation": "The source says the zygote attaches to the uterine wall and develops into a foetus, but does not describe stages of embryo development."
+        },
+        {
+          "locator": "Theory block 785; parturition section 726–743",
+          "explanation": "The theory asks for the right positioning of a lamb before expulsion, but the teaching section does not describe fetal presentation or position. Any supplement must remain educational and non-procedural, with veterinary review."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -2274,6 +2370,53 @@
       "required_action": "Verify equations and their formatting, distinguish animal anaerobic respiration from alcoholic fermentation, and check airway/gill anatomy and MCQ 597 against authoritative biology references. Preserve the original displayed equations and record any delivery-only correction separately.",
       "affected_ids": [
         "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W06-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Six teaches reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum (609-760), but package lesson rows and importer-confirmed parsed-row identity are absent. The three topic coverage entries are PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind the three Week Six coverage entries; preserve the gestation table and all source timings as printed.",
+      "affected_ids": [
+        "COV-AG-T3-W06-REPRODUCTIVE-CYCLES",
+        "COV-AG-T3-W06-MATING-AND-AI",
+        "COV-AG-T3-W06-GESTATION-LACTATION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W06-EMBRYO-LAMB",
+      "kind": "CONTENT",
+      "detail": "Theory 784 asks for embryo development, but the body only says the zygote develops into a foetus (712-713). Theory 785 asks for the right positioning of a lamb before expulsion; the body does not teach fetal presentation/position.",
+      "required_action": "Author AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION with vetted embryonic-development stages and a non-procedural description of normal fetal presentation for educational identification only. Obtain veterinary review; do not provide repositioning, extraction or delivery instructions.",
+      "affected_ids": [
+        "COV-AG-T3-W06-UNTAUGHT-EMBRYO-AND-LAMB",
+        "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W06-REPRO-TIMINGS",
+      "kind": "FACT",
+      "detail": "Species sexual-maturity ages (609), oestrus-cycle intervals (613-617), ovulation times (622-626), heat durations (630-634) and gestation values (table 724) are presented as general species figures. The measurement basis and species/breed variation are not stated; the gestation table also concatenates paired species/values in cells.",
+      "required_action": "Verify each species-specific timing against authoritative veterinary reproduction references, clarify whether ovulation times are duration or timing relative to heat, and resolve the table's merged cell layout without changing the original source.",
+      "affected_ids": [
+        "AG-FACT-T3-W06-REPRO-TIMINGS",
+        "SS1-SRC-458a07f7ea5a"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T3-W06-LACTATION-COLOSTRUM",
+      "kind": "FACT",
+      "detail": "The source says lactation is controlled by oxytocin and can be increased by injecting it (750), says goat milk is the best/richest (751), calls colostrum's protective components 'antibiotic' (755), and describes poultry parturition as 'hatching' (733). These claims/terms need veterinary and dairy-science verification; no dosage or administration method is supplied or added.",
+      "required_action": "Verify lactation physiology, colostrum immunoglobulins/terminology, milk-composition comparisons and the distinction between laying and hatching. Recommend safe educational wording; do not provide oxytocin doses or injection instructions.",
+      "affected_ids": [
+        "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
         "SS1-SRC-458a07f7ea5a"
       ],
       "blocks_delivery": true

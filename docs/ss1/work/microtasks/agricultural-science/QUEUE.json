@@ -48,23 +48,24 @@
     "AG-WK-T3-W02 (2026-11-08) indexed Third Term Week Two: eight farm-power sources and advantages/disadvantages are taught. Theory 275 needs clearer operations per source; grain-drying prevalence MCQ and water-power uses require verification/correction; no rates or procedures invented.",
     "AG-WK-T3-W03 (2026-11-08) indexed Third Term Week Three: definition/objectives, advantages, disadvantages, limitations and prospects are taught. Definition's inclusion of farm inputs, claim that few crops can be mechanized and labour exception MCQ require factual review; tillage-order item cross-maps to Second Term Weeks 2-3.",
     "AG-WK-T3-W04 (2026-11-08) indexed the digestive, circulatory and reproductive systems; table 431 and six embedded diagrams were inspected. Assessment gaps (liver enzymes, similarities, blood constituent and sphincters) and digestive/reproductive factual claims are routed for bounded follow-up.",
-    "AG-WK-T3-W05 (2026-11-08) indexed the respiratory and nervous systems. The three text-based respiration equations were preserved verbatim; respiratory mechanics, reflex action, neuron detail and named-animal breathing are under-taught. Equations/fermentation and airway/gill claims are routed for verification."
+    "AG-WK-T3-W05 (2026-11-08) indexed the respiratory and nervous systems. The three text-based respiration equations were preserved verbatim; respiratory mechanics, reflex action, neuron detail and named-animal breathing are under-taught. Equations/fermentation and airway/gill claims are routed for verification.",
+    "AG-WK-T3-W06 (2026-11-08) indexed reproductive cycles, mating/AI, fertilization, implantation, gestation, parturition, lactation and colostrum. Gestation table contains concatenated paired entries; embryo development and lamb positioning questions exceed teaching and require veterinary-reviewed non-procedural supplement; species timings and lactation/colostrum claims require fact-check."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 27,
+    "FACTUAL_DEPENDENCY": 29,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_MARKER_DISPOSITION": 6,
     "SOURCE_WEEK_INDEXING": 27,
     "VISUAL_DISPOSITION": 31,
-    "LESSON": 24,
+    "LESSON": 25,
     "CORRECTION_BINDING": 10
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 33,
-    "PENDING": 100,
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
+    "PENDING": 102,
     "BLOCKED": 2
   },
   "items": [
@@ -2006,8 +2007,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a and Week Six label block 607 SHA-256 8c07e3bd938cea9a3897d0d69eb6c600bf1fbace15d21b346bf0372fa095c038, range blocks 607-787 SHA-256 984ba7e0f5936a9a5dfb7680e93fc00ab7c64faa8bc8cbab696cbeda6b6159c7. Scheme combined item 6-7 maps to reproduction in farm animals. Oestrus cycle 611-617, ovulation 619-627, heat/signs 628-647; mating systems and AI 653-708; fertilization 709-710; implantation 712-713; gestation 715-723; gestation table 724 (cell-text SHA-256 7b1f4bfc31fe563d88fe519302d11e61eb59129a4ad39d3f8dcde1c48207ac0c); parturition 726-743; lactation 749-752; colostrum 753-760. Evaluations 649-651,702-708,744-748; general 766-770; weekend 772-781; theory 783-785 reviewed. Table rows contain concatenated pairs: HorseCattle/MareCow/336 days283 days and RabbitChicken/DoeHen/31days21 days; no spaces/line separators in the cell text, so retain the raw table and flag layout ambiguity. Theory asks embryo development and lamb positioning (784-785); only brief zygote-to-foetus statement at 712-713 and no fetal presentation teaching; appended a veterinary-reviewed non-procedural supplement task. Species timings/gestation figures and claims about oxytocin, goat milk, colostrum 'antibiotic', and poultry 'hatching' require fact review. Artificial insemination section mentions collection methods and liquid nitrogen storage at -196°C; no operating instructions or doses were added. Reading 761-764 recorded but not checked. No embedded figures in 607-787. Added three PARTIAL and one UNRESOLVED coverage entries, four open items and three follow-ups AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION, AG-FACT-T3-W06-REPRO-TIMINGS and AG-FACT-T3-W06-LACTATION-COLOSTRUM. Full report AG-WK-T3-W06.md. No source bytes, lesson bodies, rules, corrections or assets changed. No importer/tests/typecheck/DB/device checks run; testing deferred by owner.",
       "completion_condition": "Every scheme objective and within-week assessment is mapped to exact blocks and a coverage status; unresolved/mis-scoped items become bounded follow-ups. No lesson is authored in this indexing task."
     },
     {
@@ -5034,6 +5035,112 @@
       "status": "PENDING",
       "implementation_reference": "Appended by AG-WK-T3-W05: equation formatting/fermentation context and airway/gill descriptions need independent verification.",
       "completion_condition": "A sourced note verifies each equation and anatomy claim and recommends accurate delivery wording."
+    },
+    {
+      "id": "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Six theory blocks 783-785; implantation 712-713; parturition 726-743",
+      "objective": "Author a bounded supplement on embryo development from fertilization/implantation through foetal development and a non-procedural explanation of normal fetal presentation in a lamb for educational identification. Use authoritative veterinary/animal-science references and veterinary review; do not give repositioning, extraction, assisted-delivery or treatment instructions. Include complete keyed practice with criterion-level marking.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/compiler.ts",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W06: theory 784-785 asks for embryo development and lamb positioning that are not taught in the week body.",
+      "completion_condition": "A veterinary-reviewed supplement covers embryo development and normal fetal presentation in non-procedural terms, with keyed practice, provenance and PENDING approval."
+    },
+    {
+      "id": "AG-FACT-T3-W06-REPRO-TIMINGS",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Six maturity/oestrus/ovulation/heat blocks 609-647 and gestation table 724",
+      "objective": "Verify the sexual-maturity ages, oestrus-cycle intervals, ovulation timings, heat durations and gestation periods by species; clarify the time basis of ovulation figures and resolve concatenated table entries using authoritative veterinary references.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W06-REPRO-TIMINGS.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W06: species timing/gestation values require veterinary validation and table-layout clarification.",
+      "completion_condition": "A sourced table verifies each value, its measurement basis and species variation; original source remains unchanged."
+    },
+    {
+      "id": "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-458a07f7ea5a",
+      "term": "3rd Term",
+      "week_or_locator": "Week Six parturition/lactation/colostrum blocks 726-760",
+      "objective": "Verify oxytocin's role in lactation (750), the goat-milk 'best/richest' claim (751), colostrum protective components and the source's 'antibiotic' wording (754-759), and the distinction between parturition and poultry hatching (733). Do not add veterinary drug doses or injection instructions.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/agricultural-science.json",
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-WK-T3-W06.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 AGRICULTURAL SCIENCE.docx",
+          "member_sha256": "9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a"
+        }
+      ],
+      "allowed_write_paths": [
+        "docs/ss1/work/microtasks/agricultural-science/QUEUE.json",
+        "docs/ss1/work/microtasks/agricultural-science/AG-FACT-T3-W06-LACTATION-COLOSTRUM.md"
+      ],
+      "depends_on": [
+        "AG-SRC-T3",
+        "AG-WK-T3-W06"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by AG-WK-T3-W06: oxytocin, milk-composition, colostrum and poultry terminology require independent verification.",
+      "completion_condition": "A sourced note verifies each claim and recommends safe educational wording without treatment instructions."
     }
   ],
   "review": {
@@ -5049,7 +5156,6 @@
     }
   },
   "next_runnable": [
-    "AG-WK-T3-W06",
     "AG-WK-T3-W07",
     "AG-WK-T3-W08",
     "AG-WK-T3-W09",
@@ -5114,6 +5220,8 @@
     "AG-FACT-T3-W04-DIGESTIVE-ACCURACY",
     "AG-FACT-T3-W04-REPRODUCTIVE-ACCURACY",
     "AG-FACT-T3-W05-RESPIRATION-ACCURACY",
+    "AG-FACT-T3-W06-REPRO-TIMINGS",
+    "AG-FACT-T3-W06-LACTATION-COLOSTRUM",
     "AG-CORR-T1-W03-STORAGE-SOLUTION",
     "AG-CORR-T2-W02-03-SOURCE-TERMS",
     "AG-CORR-T2-W04-05-TABLE-TEXT",
@@ -5145,6 +5253,7 @@
     "AG-LES-T3-W02-FARM-POWER-OPERATIONS",
     "AG-LES-T3-W04-UNTAUGHT-ASSESSMENT-ITEMS",
     "AG-LES-T3-W05-RESPIRATION-NERVOUS-GAPS",
+    "AG-LES-T3-W06-EMBRYO-LAMB-PRESENTATION",
     "AG-TEST-PACKAGE"
   ]
 }
