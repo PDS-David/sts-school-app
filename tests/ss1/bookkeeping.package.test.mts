@@ -318,3 +318,15 @@ test('First-term extension lessons populate Weeks 5-10 without claiming recovere
   assert.equal(scope?.blocks_delivery, false);
   assert.match(scope?.required_action ?? '', /original-source completeness question open/);
 });
+
+test('Third-term Week 1 revision marker has a project-authored revision lesson, not invented source content', () => {
+  const p = packageSchema.parse(raw);
+  const lesson = p.lessons.find(x => x.id === 'SUP-SS1-BOOKKEEPING-T3-W01-REVISION');
+  assert(lesson);
+  assert.equal(lesson.term, '3rd Term');
+  assert.equal(lesson.state.content_approval, 'PENDING');
+  assert.equal(lesson.state.verification, 'DEFERRED');
+  assert(lesson.objectives.length >= 4 && lesson.practice.length >= 2);
+  assert.match(lesson.provenance[0].locator, /no revision body/);
+  assert.equal(p.source_rules.find(x => x.id === 'RULE-BK-T3-REVISION-1')?.kind, 'SCHEME_ONLY');
+});
