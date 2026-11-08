@@ -917,6 +917,54 @@
         }
       ],
       "source_id": "SS1-SRC-956594d97094"
+    },
+    {
+      "id": "COV-AG-T2-W07-ROCK-FORMATION",
+      "objective": "Scheme item 7: Rock Formation and Types",
+      "objective_locator": "Second Term scheme block 11; Week Seven label 421; topic 422",
+      "status": "PARTIAL",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Week Seven blocks 427-433; definition 428; types 429-433",
+          "explanation": "The source defines rock and classifies rocks into igneous, sedimentary and metamorphic."
+        },
+        {
+          "locator": "Igneous formation and types 435-440; characteristics 442-448",
+          "explanation": "Igneous formation by cooling/solidification of magma, intrusive/plutonic and extrusive/volcanic types, examples and six characteristics are taught."
+        },
+        {
+          "locator": "Sedimentary formation/types/characteristics 454-465; metamorphic formation/examples/characteristics 471-485",
+          "explanation": "Sedimentary formation, three formation classes and examples, metamorphic formation from heat/pressure, parent-rock examples and characteristics are taught."
+        },
+        {
+          "locator": "Evaluations 450-452,467-469,487-489; general evaluation 491-496; weekend 504-510; theory 512-514",
+          "explanation": "Most questions map to the content. Some general characteristics are broad or scientifically questionable; 'peak' appears in place of a likely geological term at 458; MCQ 505 introduces mica not taught in the body."
+        },
+        {
+          "locator": "Week Seven range blocks 421-516; SHA-256 b8ed03701eace10e135d2dbb227245677d6c160dd0876e4540e450e980657d1b",
+          "explanation": "Source teaching exists, but package lesson rows and importer-confirmed parsed-row identity are absent; PARTIAL is a delivery-mapping limitation."
+        }
+      ],
+      "source_id": "SS1-SRC-956594d97094"
+    },
+    {
+      "id": "COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY",
+      "objective": "Assessment scope: scientific accuracy of the listed characteristics of igneous, sedimentary and metamorphic rocks",
+      "objective_locator": "Week Seven characteristics blocks 442-448, 460-465 and 480-485",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "Blocks 443-448, 461-465 and 481-485",
+          "explanation": "The source makes broad categorical claims about crystals, fossils, layering, hardness and erosion resistance. In particular, it states metamorphic rocks are not crystalline and may contain fossils; these claims require verification before being presented as universal characteristics."
+        },
+        {
+          "locator": "General evaluation 495-496 and theory 513-514",
+          "explanation": "Learners are assessed on characteristics of the three rock types, so any inaccurate generalisation may affect answers."
+        }
+      ],
+      "source_id": "SS1-SRC-956594d97094"
     }
   ],
   "open_items": [
@@ -1524,6 +1572,51 @@
       "required_action": "Verify the precise terms against authoritative ecology sources and bind any delivery correction for the headings/definitions, preserving the original source text.",
       "affected_ids": [
         "AG-CORR-T2-W06-ECOLOGY-TERMINOLOGY",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W07-COVERAGE",
+      "kind": "CONTENT",
+      "detail": "Week Seven teaches rock definition, three rock groups, formation, examples, parent-rock relationships and characteristics (427-485), but package lesson rows and importer-confirmed parsed-row identity are absent. COV-AG-T2-W07-ROCK-FORMATION is PARTIAL for delivery mapping.",
+      "required_action": "At the authorised importer/plan stage, confirm the parsed original row and bind COV-AG-T2-W07-ROCK-FORMATION; do not invent a lesson ID or duplicate source teaching.",
+      "affected_ids": [
+        "COV-AG-T2-W07-ROCK-FORMATION",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W07-ROCK-FACTUAL-ACCURACY",
+      "kind": "FACT",
+      "detail": "The source's categorical rock characteristics at 443-448, 461-465 and 481-485 include claims about crystallinity, fossils, layering and erosion resistance that may be overgeneralised or inaccurate (for example, all metamorphic rocks 'are not in form of crystals').",
+      "required_action": "Verify each listed characteristic against authoritative geology sources, distinguish common tendencies from universal rules, and recommend precise delivery corrections without altering original source bytes.",
+      "affected_ids": [
+        "COV-AG-T2-W07-ROCK-FACTUAL-ACCURACY",
+        "AG-FACT-T2-W07-ROCK-CHARACTERISTICS",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W07-PEAT-TYPO",
+      "kind": "CONTENT",
+      "detail": "Sedimentary organic rock block 458 says carbonaceous rocks include 'coal, peak, and lignite'. 'Peak' appears to be a text error, but intended wording must be verified before correction.",
+      "required_action": "Verify the intended geological term against a reliable parallel source or teacher-approved copy and bind a delivery-only correction if confirmed; do not silently substitute a term.",
+      "affected_ids": [
+        "AG-CORR-T2-W07-PEAT-TYPO",
+        "SS1-SRC-956594d97094"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "AGRICULTURAL-SCIENCE-T2-W07-MICA-MCQ",
+      "kind": "FACT",
+      "detail": "Weekend MCQ 505 asks which option is not a sedimentary rock and offers mica, sandstone, limestone and dolomite. The source teaches the other three as sedimentary examples but does not classify mica.",
+      "required_action": "Verify mica's geological classification and whether the question has one defensible answer; recommend adding a brief supporting note or correcting the item.",
+      "affected_ids": [
+        "AG-FACT-T2-W07-MICA-MCQ",
         "SS1-SRC-956594d97094"
       ],
       "blocks_delivery": true
