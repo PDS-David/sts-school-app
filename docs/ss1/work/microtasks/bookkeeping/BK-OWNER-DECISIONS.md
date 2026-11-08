@@ -113,3 +113,12 @@ The Bookkeeping regression test has been extended and wired into GitHub Actions 
 The corrected Bookkeeping package regression suite and the full configured GitHub Actions workflow passed in run 42526555833 (run 1319), on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. This includes schema/source registration, all authored lesson hashes, keyed marking totals, state boundaries, coverage links and marker/rule guards, plus backend/mobile TypeScript and the configured database, authenticated retrieval, sequencing and staging-admin integration checks.
 
 The earlier failed run was due to stale stored hashes and over-escaped test regular expressions; those were corrected and the rerun passed. This is technical validation of the configured checks, not formal content approval. The remaining full-source Bookkeeping parser/compiler/importer/device/delivery checks are still deferred. All authored lessons remain content_approval=PENDING. The queue records 93 IMPLEMENTED_TESTING_DEFERRED items and 7 BLOCKED items; the blocked content-approval gate remains open.
+
+
+## Final configured CI and source-parser audit — 8 November 2026
+
+The full configured GitHub Actions workflow passed in run 42527347154 (run 1332) on commit 05f62a958bc58c68cc2dc9670a211224db93d2c3. This includes the Bookkeeping package tests and scheme-of-work header regression, Python baseline checks, backend/mobile TypeScript, PostgreSQL and asset integration, authenticated retrieval, sequencing and staging-admin CLI.
+
+The original third-term DOCX was recovered and its SHA256 independently matched the registry. A structural audit confirmed the scheme-of-work's standalone WEEK heading and the exact source split/marker anchors. A parser guard was added so the table header is not mistaken for a Week 1 lesson; full-source Mammoth/buildFromFiles compiler execution is still deferred.
+
+This is technical validation of the configured checks, not formal content approval. All authored lessons remain content_approval=PENDING. Full-source parser/compiler/importer, device and delivery verification remain deferred. The queue records 93 IMPLEMENTED_TESTING_DEFERRED items and 7 BLOCKED items; the owner/teacher content-approval gate remains open.

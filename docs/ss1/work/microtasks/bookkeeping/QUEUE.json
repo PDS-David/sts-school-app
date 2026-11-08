@@ -309,8 +309,8 @@
         "BK-SRC-T3"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "Package regression suite passed in GitHub Actions run 42526555833 (run 1319) on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. Passed: schema/source manifest, all 32 lesson hashes, keyed marking totals, approval/verification boundaries, correction bindings, source-rule guards, coverage links and third-term lesson checks. Full workflow also passed backend/mobile TypeScript, Python baseline, PostgreSQL/asset integration, authenticated retrieval, sequencing and staging-admin CLI. Bookkeeping-specific full-source importer/compiler, device and delivery checks remain deferred.",
-      "completion_condition": "Package regression test is committed and has a successful recorded GitHub Actions execution. Remaining importer/compiler, device and delivery checks are tracked separately; no formal lesson content approval is inferred."
+      "implementation_reference": "Bookkeeping package regression suite and full configured GitHub Actions workflow passed in run 42527347154 (run 1332) on commit 05f62a958bc58c68cc2dc9670a211224db93d2c3. Passed: package schema/source manifest, all 32 lesson-body hashes, keyed marking totals, approval/verification state boundaries, correction bindings, source-rule guards, coverage links, third-term lesson tests, and the scheme-of-work WEEK header regression. Full workflow also passed backend/mobile TypeScript, Python baseline, PostgreSQL/asset integration, authenticated retrieval, sequencing and staging-admin CLI. Original third-term DOCX SHA256 independently matches the registry; source anchors are unique and line-boundary-valid in the extracted paragraph stream. Full-source Mammoth/buildFromFiles compiler execution, importer/database delivery and device checks remain deferred.",
+      "completion_condition": "Package regression test is committed and has a successful recorded GitHub Actions execution. Parser header regression is covered; full-source extraction/buildFromFiles/compiler, importer, device and delivery checks remain separately tracked. No formal lesson content approval is inferred."
     },
     {
       "id": "BK-FACT-CONTENT-APPROVAL",
@@ -3556,15 +3556,8 @@
   ],
   "review": {
     "date": "2026-11-08",
-    "reviewed_master_sha": "a87bf96ffcd50655ab1b265f5114cea00f2bffad",
-    "scope": "Package regression and full configured workflow passed on commit 43df21e71419b870ec05cfb3ebabe32e82680d17. Bookkeeping-specific importer/compiler and device/delivery verification remain deferred.",
-    "source_archive": {
-      "filename": "SSS 1-20260507T072431Z-3-001 (1).zip",
-      "sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
-      "manifest_matches": 3,
-      "mismatches": 0,
-      "availability": "User attachment; not committed to Git. Attach this archive (any filename with this hash) to source-reading workers."
-    }
+    "reviewed_commit": "05f62a958bc58c68cc2dc9670a211224db93d2c3",
+    "scope": "Full configured workflow passed. The exact original third-term DOCX hash was independently verified and source-rule anchors were checked; full-source Mammoth/buildFromFiles/compiler and device/delivery checks remain deferred."
   },
   "next_runnable": []
 }

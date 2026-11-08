@@ -126,3 +126,16 @@ The initial run 42526235246 failed on stale lesson-hash assertions and over-esca
 Passed workflow steps include npm dependency installation; Python baseline tools; backend and mobile TypeScript checks; static and focused regressions including the Bookkeeping package test; live PostgreSQL and real asset-byte integration; authenticated retrieval; attribution route; sequencing apply/rollback tools; and staging-admin CLI.
 
 This successful workflow does not execute the separate Bookkeeping full-source parser/compiler comparison, Bookkeeping importer/database delivery path, or device acceptance. Those remain deferred and must not be described as verified. All authored lessons remain content_approval=PENDING; formal teacher/curriculum-owner approval is still outstanding.
+
+
+## Source-parser boundary audit and final configured CI result — 8 November 2026
+
+The original third-term source file was recovered from the project file library. Its byte hash is `343c428b86364be8e1784c814fdd7ca3d02836f508e7eff289af0e139447fd7d`, matching the registered source exactly.
+
+The source's scheme preamble has a standalone `WEEK` column heading followed by `1 Revision`, with Week 11 revision and Week 12 exam markers in the same preamble. The generic parser's week regex would span the newline and misread `WEEK\n1` as a Week 1 topic. A targeted parser guard now ignores only a standalone `WEEK` line immediately following `SCHEME OF WORK` or `SCHEME OF WORKS`; ordinary same-line `WEEK 1` markers remain parseable. The regression test covers the scheme-table case, a valid same-line week marker and a non-scheme standalone marker.
+
+I checked the actual source anchors in the recovered DOCX paragraph stream: the Week 2–8 and Week 10 split anchors each occur exactly once and at a line boundary; the revision/exam marker anchors also occur exactly once. After applying the registered splits, the source body headings resolve to weeks 2, 3, 4, 5, 6, 7, 8 and 10. There is no separate Week 9 body heading; the project-authored Week 9 profit-and-loss lesson supplies that scheme objective. This is a structural/source-anchor audit, not a claim that the production Mammoth/buildFromFiles importer was executed on the recovered DOCX.
+
+The corrected full GitHub Actions run **42527347154 (run 1332)** passed on commit `05f62a958bc58c68cc2dc9670a211224db93d2c3`: dependency install, Python baseline, backend/mobile TypeScript, static/focused regressions including the parser-header test, PostgreSQL/asset integration, authenticated retrieval, attribution, sequencing and staging-admin CLI.
+
+Still deferred: full-source Mammoth extraction and `buildFromFiles` execution against all three original term documents, Bookkeeping importer/database delivery, device acceptance, and formal curriculum-owner/teacher content approval. No lesson approval state has been changed.
