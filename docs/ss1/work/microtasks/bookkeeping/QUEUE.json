@@ -52,17 +52,18 @@
     "2026-11-08: Reconstructed Bookkeeping lesson drafts W08-W10 authored. All ten proposed instructional weeks W01-W10 now have project-authored lesson drafts. All remain PENDING until package integration and static validation; technical tests remain deferred and unrun.",
     "2026-11-08: All ten reconstructed Bookkeeping T2 lessons W01-W10 are now integrated into bookkeeping.json as SUP-SS1-BOOKKEEPING-T2-W01..W10 with separate COV-BK-T2-RECON-W01..W10 coverage. The excluded duplicate source remains preserved and contributes no lesson content; its source_id is used only as the manifest term-bucket key because the current package schema requires coverage to reference a registered source. Coverage locators/evidence explicitly point to the reconstruction plan and authored lesson files. Package tests were updated to assert this separation but have not been run. Tasks moved to IMPLEMENTED_TESTING_DEFERRED, not VERIFIED.",
     "2026-11-08 queue recount after T2 package integration: IMPLEMENTED_TESTING_DEFERRED=71, BLOCKED=12, PENDING=6; total=89. No test execution is implied.",
-    "2026-11-08 static integrity check (not automated test execution): all 10 T2 lesson body_sha256 values recomputed and matched; all T2 practice mark totals matched their marking allocations; all 10 COV-BK-T2-RECON-* entries resolve to exactly one registered T2 supplement lesson. packageSchema, automated tests, typecheck, compiler/parser, importer, DB, device and delivery checks remain unrun/deferred."
+    "2026-11-08 static integrity check (not automated test execution): all 10 T2 lesson body_sha256 values recomputed and matched; all T2 practice mark totals matched their marking allocations; all 10 COV-BK-T2-RECON-* entries resolve to exactly one registered T2 supplement lesson. packageSchema, automated tests, typecheck, compiler/parser, importer, DB, device and delivery checks remain unrun/deferred.",
+    "2026-11-08: Strengthened the existing first-term Bookkeeping supplements W01-W04 with explicit tabular formats, balanced independent examples and marked practice. Queue tasks BK-LES-T1-W01-CASH-BOOK, BK-LES-T1-W02-DIFF, BK-LES-T1-W02-PREP, BK-LES-T1-W03-CONTRA and BK-LES-T1-W04-DOUBLE-ENTRY moved to IMPLEMENTED_TESTING_DEFERRED. Source defects involving the original T1 figures remain preserved and are not treated as corrected; the separate W04 posting task still requires a complete independent integrated posting example."
   ],
   "counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 71,
+    "IMPLEMENTED_TESTING_DEFERRED": 76,
     "BLOCKED": 12,
-    "PENDING": 6
+    "PENDING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 71,
+    "IMPLEMENTED_TESTING_DEFERRED": 76,
     "BLOCKED": 12,
-    "PENDING": 6
+    "PENDING": 1
   },
   "items": [
     {
@@ -1396,8 +1397,8 @@
         "BK-WK-T1-W02",
         "BK-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W02 (2026-10-30): the sub-item is untaught in the whole source, so COV-BK-T1-W02-DIFF is UNRESOLVED and BOOKKEEPING-T1-W02-DIFFERENCE-MISSING is open. It depends on BK-WK-T1-W01 because the single column book and its two accounts are taught there, and on BK-FACT-T1-W02-DEFECTS for the terminology decision ('two column' against 'double column'). No comparison is authored in BK-WK-T1-W02.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK explicitly compares single- and double-column cash books and their transaction coverage. The double-column cash-book layout and independently authored worked/practice examples are included. Technical tests and approval remain deferred.",
       "completion_condition": "A lesson in bookkeeping.json teaches the comparison from the single column content indexed by BK-WK-T1-W01, carries the decisions of BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no fact is invented and no schema or compiler edit is made."
     },
     {
@@ -1442,8 +1443,8 @@
         "BK-PRES-T1-WORKED",
         "BK-FACT-T1-W02-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W02 (2026-10-30): the example has no solution (blocks 105-108 empty), no double column book is balanced anywhere in the document, and the source's only balancing model is the defective Week 1 text. COV-BK-T1-W02-SCHEME-6, -SCHEME-7 and -EXAMPLE are PARTIAL and -BALANCE is UNRESOLVED; BOOKKEEPING-T1-W02-EXAMPLE-NO-SOLUTION, -BALANCING-UNTAUGHT and -CONTRA-SEQUENCING are open.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W02-DOUBLE-CASH-BOOK now includes a full two-sided cash/bank column table, separate balancing, contra folio marks, closing balances and an independent marked exercise. The source's nine April transactions remain unsolved because the source uses placeholder year 19x9 and supplies no answer; no answer is fabricated. Technical tests and approval remain deferred.",
       "completion_condition": "A lesson in bookkeeping.json prepares a double column cash book from the nine source transactions, states every derived total and balance, labels the solution as authored rather than as the source's, resolves the two transfers as decided in BK-FACT-T1-W02-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
@@ -1487,8 +1488,8 @@
         "BK-WK-T1-W04",
         "BK-FACT-T1-W04-BRIEF"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Raised by BK-WK-T1-W04 (2026-10-30). Not started: depends on BK-FACT-T1-W04-BRIEF for the corrected wording of the definition (block 160) and the three-rule list (161-164).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W04-DOUBLE-ENTRY now includes the double-entry rules, debit/credit applications, ledger layout, posting examples and an explicit compound-entry worked example with marked practice. The source's unsolved/defective examples are not represented as corrected. Technical tests and approval remain deferred.",
       "completion_condition": "The lesson teaches the meaning, rules and identification with its own corrected text, worked examples and answered practice with marks that add up, records its source hashes, and does not copy the uncorrected wording; no Week 4 claim beyond the lesson itself."
     },
     {
@@ -1656,8 +1657,8 @@
         "BK-PRES-T1-WORKED",
         "BK-FACT-T1-W01-DEFECTS"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W01 (2026-10-30): nine coverage entries are PARTIAL and two are UNRESOLVED (items and format). The section prepares T-accounts, never a single column cash book, supplies no items list and no cash book ruling, and both printed solutions disagree with their transaction lists. Defects and figures are in BOOKKEEPING-T1-W01-SOURCE-DEFECTS and BOOKKEEPING-T1-W01-FIGURE-CHECKS and must be decided in BK-FACT-T1-W01-DEFECTS first.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W01-CASH-BOOK now includes the explicit single-column cash-book ruling, a balanced tabular worked example, balance c/d and b/d, and an additional fully marked independent exercise. The defective original source figures are not silently corrected or reused; their forensic open items remain separate. Technical tests and approval remain deferred.",
       "completion_condition": "A lesson in bookkeeping.json defines the single column cash book, lists its items and ruling, prepares and balances it from the source transactions with every derived figure shown and labelled authored, corrects the Illustration 1 and 2 figures under the decision recorded in BK-FACT-T1-W01-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
@@ -1746,8 +1747,8 @@
         "BK-FACT-T1-W03-DEFECTS",
         "BK-VIS-T1-TBL-W03"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by BK-WK-T1-W03 (2026-10-30): all seven coverage entries are PARTIAL. The definition at block 113 states the opposite of the rule and block 112 limits contra to payments into the bank; the N710 paid in against a N300 cash balance has no source; neither table carries a total or balance and neither example states its opening bank balance; no exercise exists. Defects are in BOOKKEEPING-T1-W03-SOURCE-DEFECTS, the arithmetic in BOOKKEEPING-T1-W03-FIGURE-CHECKS and the definitional error in BOOKKEEPING-T1-W03-CONCEPT-ERROR, all to be decided in BK-FACT-T1-W03-DEFECTS first. The table layouts are disposed of by BK-VIS-T1-TBL-W03.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The existing package lesson SUP-SS1-BOOKKEEPING-T1-W03-CONTRA now includes both directions of contra entry in a structured cash-book table, C marks on both sides, distinctions from ordinary cheque transactions and an additional fully marked exercise. The source's internally inconsistent January figures remain preserved for expert review. Technical tests and approval remain deferred.",
       "completion_condition": "A lesson in bookkeeping.json defines the contra entry correctly, states for both directions which account or column is debited and credited and why the amounts are equal, teaches the C folio on both sides, and records both directions in a two-column cash book from stated opening balances with every figure derived and shown; it corrects the definition under the decision in BK-FACT-T1-W03-DEFECTS, has practice with complete answers and marking that sum exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; no figure is invented without being derived and shown, and no schema or compiler edit is made."
     },
     {
