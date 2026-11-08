@@ -81,7 +81,8 @@
     "AG-VIS-T3-W05-RESPIRATORY (2026-11-08): image14.jpeg at block 547 is a slide-like lower-respiratory-tract graphic with readable text and labelled lung diagram. 'Syrinx (in birds)' and hyoid bone appear as image labels but are not explained in block 546. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W05-FISH-GILLS (2026-11-08): block 554 contains two legible fish-gill diagrams: image15 labels arch/filaments/rakers; image16 is a multi-panel bony-fish gill figure with additional lamellae/capillary/blood-supply labels. No reuse licence or rights attribution is supplied; reuse is blocked pending clearance or rights-cleared replacements.",
     "AG-VIS-T3-W05-RESPIRATION-EQUATIONS (2026-11-08): equation paragraphs are 532, 537 and 540, not the task's original 530, 535 and 538; associated word labels are 533, 538 and 541. Chemical numerals use run-level subscripts, but no reaction arrows or Office Math objects are present; word-label runs are superscripted. Existing factual open item AGRICULTURAL-SCIENCE-T3-W05-RESPIRATION-ACCURACY remains the verification gate. Locator correction task AG-CORR-T3-W05-RESPIRATION-EQUATION-LOCATORS appended.",
-    "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended."
+    "AG-VIS-T3-W06-TBL-GESTATION (2026-11-08): block 724 is a native 6×3 Word table. Horse/Cattle, Mare/Cow, 336 days/283 days and Rabbit/Chicken, Doe/Hen, 31days/21 days are separate paragraphs in corresponding cells. Preserve pair alignment. Recorded table hash does not match concatenated cell-text hash; AG-CORR-T3-W06-TBL-GESTATION-HASH appended.",
+    "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS (2026-11-08): block 803 holds image17 bird embryo (visible iStock watermark) and image18 poultry internal organs. The embryo image is contextual but not used by the source egg-formation prose; the internal-organs figure includes ovary/oviduct but is not a focused reproductive diagram. Neither has reuse rights evidence; delivery reuse is blocked pending clearance or a rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -96,8 +97,8 @@
     "CORRECTION_BINDING": 15
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 66,
-    "PENDING": 86,
+    "IMPLEMENTED_TESTING_DEFERRED": 67,
+    "PENDING": 85,
     "BLOCKED": 2
   },
   "items": [
@@ -2875,8 +2876,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, image17.jpeg SHA-256 1dd5ee224f47bc04274f2b308cdb873565507c0df609205101275c9bc53c421c (9,674 bytes; 239×211), and image18.jpeg SHA-256 593b1e6fdd4f072fd56acf655111fcf13e0d3bd1cf99f03175be644b020a8132 (109,149 bytes; 720×461). Both are positioned in direct-body block 803: VML rId29 -> image17.jpeg (bird embryo; visible iStock watermarks) and DrawingML rId30 -> image18.jpeg (poultry internal organs). Image17 labels eggshell, albumen, yolk, amniotic liquid, air cell and embryo; it is related to embryo/egg context but not to the egg-formation sequence explicitly taught at block 795. Image18 labels ovary and oviduct but is a broad internal-organs diagram with digestive, respiratory, urinary and other structures; it is not a focused reproductive/egg-formation figure. Both lack source reuse licence/rights evidence. Neither is retained for Week Seven reproductive delivery pending rights clearance; do not remove watermark or infer new lesson content. Added open item AGRICULTURAL-SCIENCE-T3-W07-BIRD-EMBRYO-ORGANS-RIGHTS. No derivative created.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5810,7 +5811,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W07-BIRD-EMBRYO-ORGANS",
     "AG-VIS-T3-W07-REPRODUCTIVE-TRACT",
     "AG-VIS-T3-W07-MALE-FEMALE-SYSTEMS",
     "AG-VIS-T3-W07-TBL-HORMONES",
