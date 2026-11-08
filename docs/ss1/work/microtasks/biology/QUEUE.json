@@ -67,13 +67,14 @@
     "BIO-VIS-T1-EXPERIMENT-FIGURES (2026-11-08) verified that Experiment I has no figure and inspected the four source drawings for Experiments II-V. Handwritten labels were transcribed into package evidence; they do not survive plain-text extraction. No original raster assets were committed because reuse rights are unrecorded. The existing practical safety gate remains blocking; no practical instructions or quantities were added. Testing remains deferred.",
     "BIO-VIS-T1-NUTRIENT-CYCLES (2026-11-08) inspected the two hand-drawn diagrams at blocks 795 and 821. Labels and paths were transcribed; the carbon diagram's Animals→Plants arrow conflicts with written block 785, and the water diagram omits the underground-water route and uses 'transpiration' where the prose prints 'transportation'. No nitrogen cycle diagram or teaching text exists in Week 6; sulphur is named but not taught. No source images are registered as assets because rights are unrecorded. A structured carbon/water lesson was appended; no separate asset/redraw is required. The existing assessment task now depends on this lesson. Testing remains deferred.",
     "BIO-VIS-T1-PROTEIN-BREAKDOWN (2026-11-08) verified the three right-pointing connectors at block 859 and compared the sequence with the source enzyme table at block 920. The order is confirmed; only singular/plural wording differs ('Peptone' in the diagram, 'peptones' in the enzyme table). No asset/redraw is needed; the existing Week 7 nutrition lesson now includes the structured sequence. Testing remains deferred.",
-    "BIO-VIS-T1-MITOSIS (2026-11-08) inspected all four original hand-drawn figures and matched them to the written stage descriptions: interphase/prophase, metaphase, anaphase and telophase/cytokinesis. Labels are raster-only and do not survive text extraction. No source image is registered as an app asset because rights are unrecorded; a project-authored four-panel redraw was appended and the Week 10 lesson now depends on it. Testing remains deferred."
+    "BIO-VIS-T1-MITOSIS (2026-11-08) inspected all four original hand-drawn figures and matched them to the written stage descriptions: interphase/prophase, metaphase, anaphase and telophase/cytokinesis. Labels are raster-only and do not survive text extraction. No source image is registered as an app asset because rights are unrecorded; a project-authored four-panel redraw was appended and the Week 10 lesson now depends on it. Testing remains deferred.",
+    "BIO-VIS-T1-HORMONE-TABLE (2026-11-08) inspected the four header line shapes and seven tab-aligned rows at blocks 1042-1049, including the private rendered PDF page 43. The three columns are clear in the original rendering but collapse in plain-text extraction; a semantic three-column table is required. The seven source associations were flagged for a separate authoritative Biology fact review. No image asset or redraw is needed; original text remains unchanged and no medication guidance is added. Testing remains deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
     "SOURCE_WEEK_INVENTORY": 3,
     "TEST": 1,
-    "FACTUAL_DEPENDENCY": 17,
+    "FACTUAL_DEPENDENCY": 18,
     "SOURCE_PREAMBLE_INDEXING": 3,
     "SOURCE_WEEK_INDEXING": 27,
     "SOURCE_SECTION_INDEXING": 3,
@@ -83,7 +84,7 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 50,
+    "IMPLEMENTED_TESTING_DEFERRED": 51,
     "PENDING": 97,
     "BLOCKED": 11
   },
@@ -1258,8 +1259,8 @@
         "BIO-INV-T1",
         "BIO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T1): block 1042 extracts as 'GLANDSSITEHORMONE'; rows list pituitary (Pituitrin), thyroid (Thyroxine), parathyroid (Parathormone), pancreas (Insulin), adrenal (Adrenaline), testes (Testosterone), ovaries (Progesterone). Not a w:tbl.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "IMPLEMENTED — TESTING DEFERRED BY OWNER (2026-11-08). Verified archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and assigned DOCX member SHA-256 936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8. Direct source blocks 1042-1049 have range SHA-256 65bdc53c31c3e6e7123a436a9521db533b980db705d9cf9ba4d6abbaefe1e080. Block 1042 contains four native line shapes (three vertical separators and one horizontal header rule); the headings GLANDS, SITE and HORMONE are ordinary text, and blocks 1043-1049 are seven tab-aligned rows, not a Word table. Private rendered PDF page 43 shows the three columns clearly, but text extraction collapses the header and row fields, so the column pairings do not survive reliably. The seven source rows are recorded in package evidence; the names and gland/site associations remain unverified claims. Disposition: a semantic three-column table is required in the delivery lesson; no separate image asset or redraw is needed. A factual review task was appended; keep it within Biology terminology and do not turn it into medication or treatment guidance. No source bytes changed; no app/display verification claimed.",
       "completion_condition": "Disposition recorded (what it adds, whether labels survive plain-text extraction, whether it needs a separate preserved asset or redraw, residual gap) without claiming app or display verification; gaps become open items or appended asset tasks. Original images are never committed unless owner permission and rights are recorded."
     },
     {
@@ -3597,7 +3598,9 @@
         "backend/src/db/ss1/subjects/biology.json",
         "docs/ss1/work/microtasks/biology/QUEUE.json",
         "docs/ss1/work/microtasks/biology/BIO-INV-T1.md",
-        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-W10-MITOSIS-REDRAW.md"
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-W10-MITOSIS-REDRAW.md",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-HORMONE-TABLE.md",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W10-ANIMAL-HORMONES.md"
       ],
       "required_attachments": [
         {
@@ -3614,7 +3617,9 @@
       ],
       "depends_on": [
         "BIO-WK-T1-W10",
-        "BIO-VIS-T1-W10-MITOSIS-REDRAW"
+        "BIO-VIS-T1-W10-MITOSIS-REDRAW",
+        "BIO-VIS-T1-HORMONE-TABLE",
+        "BIO-FACT-T1-W10-ANIMAL-HORMONES"
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T1-W10; see the Week 10 objective index for exact source locators."
@@ -5471,6 +5476,42 @@
       "status": "PENDING",
       "implementation_reference": "Appended after the four-stage visual disposition (2026-11-08). Original images are not reused because rights are unrecorded; the new illustration must be project-authored from the written stage descriptions.",
       "completion_condition": "A legible original four-panel diagram accurately represents the four mitosis stage groups, is registered under backend/src/db/ss1/assets/biology/ with schema-compliant metadata and provenance, and leaves the source figures unchanged."
+    },
+    {
+      "id": "BIO-FACT-T1-W10-ANIMAL-HORMONES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-422e0e6ddde9",
+      "term": "1st Term",
+      "week_or_locator": "Week 10, animal-hormone table blocks 1042-1049",
+      "objective": "Verify the seven gland/site/hormone associations in the Week 10 table against an approved Biology textbook or curriculum reference. Check the exact terminology and the stated gland/site pairings, especially the printed term 'Pituitrin'. Record precise citations and any evidence-based corrections for the delivery supplement. Keep this task within school Biology terminology; do not provide medication instructions, doses or treatment advice. Preserve the original source table unchanged.",
+      "required_files": [
+        "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-VIS-T1-HORMONE-TABLE.md",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T1-W10.md"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS 1-20260507T072431Z-3-001.zip (display name may be \"SSS 1-20260507T072431Z-3-001 (1).zip\"; the hash decides)",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/1st Term SS1_/BIOLOGY 1 alfa term - Copy.docx",
+          "member_sha256": "936fb6374ca206d17275d6e9be6ff0947219af221b144aafc162bb1f78087ce8"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T1-W10-ANIMAL-HORMONES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T1-W10",
+        "BIO-VIS-T1-HORMONE-TABLE"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended after the table disposition (2026-11-08). The source table's seven gland/site/hormone pairings require authoritative Biology verification before delivery.",
+      "completion_condition": "Each of the seven associations is checked against an approved Biology source with exact citations; any delivery correction is separately recorded and the original source table remains unchanged."
     }
   ],
   "review": {
@@ -5486,7 +5527,6 @@
     }
   },
   "next_runnable": [
-    "BIO-VIS-T1-HORMONE-TABLE",
     "BIO-VIS-T1-MOVEMENT-TABLE",
     "BIO-VIS-T1-TBL-CROP-ROTATION",
     "BIO-VIS-T1-TBL-MINERALS-VITAMINS",
@@ -5536,6 +5576,7 @@
     "BIO-FACT-T3-W06-W07-PEST-DISEASES",
     "BIO-FACT-T3-W08-FOOD-SCIENCE",
     "BIO-FACT-T3-W08-POPULATION-FOOD",
+    "BIO-FACT-T1-W10-ANIMAL-HORMONES",
     "BIO-SCOPE-T2-W06-BIOMES",
     "BIO-SCOPE-T2-W10-MANAGEMENT",
     "BIO-SCOPE-T3-W03-LABEL-ALIGNMENT",
