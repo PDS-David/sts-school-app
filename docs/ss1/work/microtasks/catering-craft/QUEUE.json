@@ -40,8 +40,8 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
-    "PENDING": 40,
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
+    "PENDING": 39,
     "BLOCKED": 1
   },
   "items": [
@@ -616,8 +616,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the original opening block from the verified getBody() text. Title line 1; exact subject/class header line 3; 12-row scheme lines 7-19; references lines 21-23. Week/body label discrepancies for weeks 4, 5, 6 and 9 recorded in CC-IDX-T2-OPEN.md. No scheme item or body text discarded; no parser/importer run.",
       "completion_condition": "Item outcome recorded honestly with source locators; nothing marked approved or verified; no unrelated entries changed."
     },
     {
@@ -2043,7 +2043,6 @@
     }
   },
   "next_runnable": [
-    "CC-IDX-T2-OPEN",
     "CC-MARK-T2-W11",
     "CC-MARK-T2-W12",
     "CC-VIS-T2-W01-TBL1",
