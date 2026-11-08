@@ -254,6 +254,42 @@
         "locator": "BK-INV-T3 body block 426; block SHA-256 5874fd1a407d5b622f216e680c7495938aae82fe183c7e9cb755ab7cd83b298d",
         "explanation": "The exact source heading begins a distinct body section: Balance-sheet layout section. The body has no printed WEEK marker; this structural insertion labels the section without deleting or rewriting source text. Week 9 has no separate body section and remains mapped to the combined final-accounts definitions/steps rather than receiving an invented boundary."
       }
+    },
+    {
+      "id": "RULE-BK-T2-REVISION-1",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "1.\tRevision.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
+        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-REVISION-11",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "11.\tRevision.",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
+        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+      }
+    },
+    {
+      "id": "RULE-BK-T2-EXAM-12",
+      "op": "classify_marker",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "source_sha256": "c8c75f55e327d7d3e6ece6b3caca2ea841d3d3a45d324ceb221843c265157af3",
+      "anchor": "12.\tExamination",
+      "kind": "SCHEME_ONLY",
+      "evidence": {
+        "locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
+        "explanation": "This exact revision/examination heading is in the scheme preamble before the first teaching-week body. No corresponding revision worksheet or examination material is supplied. SCHEME_ONLY preserves the marker without deleting a lesson body."
+      }
     }
   ],
   "lessons": [
@@ -1916,6 +1952,54 @@
         {
           "locator": "Project-authored equivalent lesson SUP-SS1-BOOKKEEPING-T3-W10-BALANCE-SHEET in package lessons[]",
           "explanation": "The source gap or partial treatment is supplemented by a separately labelled project-authored SS1 lesson with worked explanation and marked practice. Original source text and figures remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-REVISION-1",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Scheme marker 1.\tRevision.; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-REVISION-1"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T2 scheme block 4; SHA-256 7a903777d5427675bcd33f525cb7d451e982d9676d19f0ecfc983fc71f97813c",
+          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-REVISION-11",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Scheme marker 11.\tRevision.; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-REVISION-11"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T2 scheme block 29; SHA-256 2a63828deabed8b07ba2aee44c8aec95f42a1c3e56a3d147aaf004f5ca697fc9",
+          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
+        }
+      ]
+    },
+    {
+      "id": "COV-BK-T2-EXAM-12",
+      "source_id": "SS1-SRC-97c1db5b1eb0",
+      "objective": "Scheme marker 12.\tExamination; no corresponding instructional or assessment body is supplied.",
+      "objective_locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
+      "status": "MARKER",
+      "lesson_ids": [
+        "RULE-BK-T2-EXAM-12"
+      ],
+      "evidence": [
+        {
+          "locator": "BK-INV-T2 scheme block 30; SHA-256 2f860849f7d2e4301055eaaeb35d7e7d81ec252651bdd6496a56f6a41e8517e9",
+          "explanation": "Preamble marker only; no revision or examination material is present in the source body."
         }
       ]
     }
