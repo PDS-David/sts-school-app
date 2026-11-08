@@ -64,7 +64,8 @@
     "AG-VIS-T2-TBL-CEREALS (2026-11-08): source table 286 is a 17x3 Maize/Rice comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure verbatim in a structured table/paired list; no duplicate supplement or source change.",
     "AG-VIS-T2-TBL-LEGUMES (2026-11-08): source table 298 is a 17x3 Cowpea/Groundnut comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and every printed figure/spelling verbatim in a structured table/paired list; no duplicate supplement or source change.",
     "AG-VIS-T2-TBL-ROOTS (2026-11-08): source table 309 is a 17x3 Yam/Cassava comparison. Plain-text extraction concatenates cells and loses pairings. Preserve all sixteen attributes and printed figures verbatim; the Cassava seed-rate cell is blank and must remain not supplied. No duplicate supplement or source change.",
-    "AG-VIS-T2-BRANDING (2026-11-08): header2 image1.jpeg is tutor-brand promotional material, not an agricultural teaching figure. Exclude from delivered lessons and do not republish contact details. No image file committed."
+    "AG-VIS-T2-BRANDING (2026-11-08): header2 image1.jpeg is tutor-brand promotional material, not an agricultural teaching figure. Exclude from delivered lessons and do not republish contact details. No image file committed.",
+    "AG-VIS-T3-W01-TBL-TOOLS (2026-11-08): block 36 is a 6x10 list of 30 numbered tool names, not 30 illustrations. Project 38 asks for drawings and notes for all 30; no tool drawings are embedded. Existing tool-reference supplement task now explicitly requires one rights-cleared, provenance-recorded illustration per tool."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -79,8 +80,8 @@
     "CORRECTION_BINDING": 11
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 49,
-    "PENDING": 99,
+    "IMPLEMENTED_TESTING_DEFERRED": 50,
+    "PENDING": 98,
     "BLOCKED": 2
   },
   "items": [
@@ -2212,8 +2213,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and exact Third Term member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. Inspected Week One table block 36: six rows by ten cells, alternating 30 number/name pairs; cell-text joined with spaces hash 0e24371a1169758b82a4429bdd59167fc63282d90887b024caae7757ed6b105e (matches inventory); raw concatenated w:t block text hash 28bfedef98dd4d82e8b4f6500a7edc48557034eae883aac5b663e5e0c054736f. The table is a list, not a set of illustrations. Project block 38 asks students to draw all 30 tools and provide notes on description, maintenance and uses; no corresponding tool drawings are embedded in the DOCX. A faithful table/list structure must be retained and one rights-cleared, provenance-recorded illustration per tool is required in the separate supplement. Existing AG-LES-T3-W01-TOOL-REFERENCE and open item were refined; no duplicate task created. No source media or drawings committed. Importer and app rendering not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -4527,7 +4528,7 @@
       "source_id": "SS1-SRC-458a07f7ea5a",
       "term": "3rd Term",
       "week_or_locator": "Week One blocks 35-54; project 38; evaluation 57",
-      "objective": "Prepare a verified reference for all 30 farm tools listed at block 36: descriptions, functions/uses, maintenance, and a justified mapping of at least seven tools to post-planting activities. Support the project requiring drawings of all 30 tools and short notes. Preserve the five source descriptions and six general maintenance points; clearly label supplement content and provide keyed practice/rubric.",
+      "objective": "Prepare a verified reference for all 30 farm tools listed at block 36: descriptions, functions/uses, maintenance, a justified mapping of at least seven tools to post-planting activities, and one rights-cleared, provenance-recorded illustration per tool. Support the project requiring drawings of all 30 tools and short notes. Preserve the five source descriptions and six general maintenance points; clearly label supplement content and provide keyed practice/rubric.",
       "required_files": [
         "docs/ss1/IMPLEMENTATION_20261026/SOURCE_ASSIGNMENTS.csv",
         "docs/ss1/contracts/CONTRACT.md",
@@ -4552,10 +4553,11 @@
       ],
       "depends_on": [
         "AG-SRC-T3",
-        "AG-WK-T3-W01"
+        "AG-WK-T3-W01",
+        "AG-VIS-T3-W01-TBL-TOOLS"
       ],
       "status": "PENDING",
-      "implementation_reference": "Appended by AG-WK-T3-W01: 30 tools listed but only five described; post-planting tool list absent.",
+      "implementation_reference": "Appended by AG-WK-T3-W01 and refined by AG-VIS-T3-W01-TBL-TOOLS: original table lists 30 names but contains no drawings; the follow-up must include one rights-cleared, provenance-recorded illustration per named tool.",
       "completion_condition": "A clearly labelled supplement covers all 30 tools, functions/uses, maintenance, seven post-planting tools and drawing-book project; includes provenance, keyed practice/rubric and PENDING approval."
     },
     {
@@ -5628,7 +5630,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W01-TBL-TOOLS",
     "AG-VIS-T3-W02-DRAUGHT-ANIMALS",
     "AG-VIS-T3-W02-MECHANICAL-POWER",
     "AG-VIS-T3-W02-SOLAR",
