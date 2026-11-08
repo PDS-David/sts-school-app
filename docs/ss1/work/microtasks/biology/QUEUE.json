@@ -48,7 +48,8 @@
     "BIO-WK-T2-W08 (2026-11-08) indexed population characteristics, population-study steps, population factors and ecological instruments. The hydrometer/light-intensity table pairing requires authoritative review; overpopulation effects are asked at block 739 but not taught. A fact task and bounded supplement task were appended. No worked sampling data, practical protocol or answer key was invented.",
     "BIO-WK-T2-W09 (2026-11-08) indexed feeding relationships, trophic levels, food chains/webs, ecological pyramids, energy loss and thermodynamics. Existing food-chain shapes, food-web image and pyramid drawing remain with visual tasks. The consumer-survival assertion and ATP option need approved-reference review; a general-evaluation prompt contains an unclear '3C' reference. A factual dependency and bounded lesson task were appended; no answer key was invented.",
     "BIO-WK-T2-W10 (2026-11-08) indexed six biological association types and all evaluation/revision/weekend/theory prompts. The scheme/topic says Ecological Management but the body covers associations only; a scope-decomposition task was appended. Revision questions 944-946 refer to first-term growth hormones/mitosis. Weekend Q952 omits commensalism from the options and Q953 asks about ticks not taught in the body. No answer key was invented.",
-    "BIO-WK-T3-W01 (2026-11-08) indexed microorganism groups, culture concepts, identification and carriers. The source mentions Petri-dish sterilisation but gives no parameters or safety SOP; practical culturing remains blocked pending qualified approval, and no operational instructions were inferred. Existing bacteria-figure and vector-table visual tasks own the two visuals; history/disease/vector claims have a factual-review task. No answer key was invented."
+    "BIO-WK-T3-W01 (2026-11-08) indexed microorganism groups, culture concepts, identification and carriers. The source mentions Petri-dish sterilisation but gives no parameters or safety SOP; practical culturing remains blocked pending qualified approval, and no operational instructions were inferred. Existing bacteria-figure and vector-table visual tasks own the two visuals; history/disease/vector claims have a factual-review task. No answer key was invented.",
+    "BIO-WK-T3-W02 (2026-11-08) indexed microbial growth, beneficial/harmful effects and the disease table. Growth phases are named but not defined; general microbial control and nitrogen/carbon-cycle organisms are asked but not taught. The 21×5 disease table has eight external symptom-guide links that were not treated as primary sources; disease claims need authoritative review. Existing visual task owns the table. No medical advice, practical protocol or answer key was invented."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -64,8 +65,8 @@
     "SCOPE_DECOMPOSITION": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 31,
-    "PENDING": 85,
+    "IMPLEMENTED_TESTING_DEFERRED": 32,
+    "PENDING": 88,
     "BLOCKED": 7
   },
   "items": [
@@ -2581,8 +2582,8 @@
         "BIO-INV-T3",
         "BIO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (BIO-INV-T3): label block 110 text \"                                                          WEEK TWO                                  DATE: ……………………………\" (sha256 76f11e6f549d493bb970870a93138143bdb2c49cbec52c22a1c2563aec98d58d); blocks 110-174; range sha256 7c5e4bfd7c750a8ebd47065d4c3fd2720d0ee4f4a8163aba15791e71f7ef761e. Topic MICRO-ORGANISMS IN ACTION (112); growth of micro-organisms (119-124: generation time and growth phases at 120), beneficial (129-139) and harmful (140-143) effects, diseases caused by micro-organisms (149-152; disease table block 151 with eight external hyperlinks), General Evaluation (156), Weekend Assignment (165-170, theory 171). Health statements in the disease table need authoritative checking. Locator rule: native .docx member (no conversion): word/document.xml of the hash-verified member; block = direct child of w:body, 0-based (blocks 0-801; block 802 is w:sectPr; block 28 is a w:permEnd); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "BIO-WK-T3-W02.md; verified the assigned native DOCX member hash and Week 2 label/range hashes. Indexed bacterial generation time/growth phases and measurement methods, beneficial/harmful effects, the 21×5 disease table, and every evaluation/general/weekend/theory prompt. Existing BIO-VIS-T3-TBL-DISEASES owns the disease table. The source names but does not define growth phases; general microbial control and N/C-cycle organisms are asked but not taught. Disease table health claims require authoritative review; its eight external symptom links were not treated as primary evidence. No answer key or practical protocol was invented; tests remain deferred.",
       "completion_condition": "Each objective listed with a block locator and a status; observed defects and cross-week misplacements recorded; any uncovered objective appended as a bounded task. No claim of week completeness from this item alone."
     },
     {
@@ -4497,6 +4498,98 @@
       ],
       "status": "PENDING",
       "implementation_reference": "Appended by BIO-WK-T3-W01; no registered lesson exists, and practical scope remains blocked pending approved safety review."
+    },
+    {
+      "id": "BIO-FACT-T3-W02-DISEASES",
+      "kind": "FACTUAL_DEPENDENCY",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 disease table block 151; evaluation blocks 152-154",
+      "objective": "Verify disease names, causative agents, symptom summaries, transmission and prevention/control statements in the 21-row table against current authoritative public-health sources. Record precise citations and keep corrected supplemental educational wording distinct from the original table. Do not provide individualized medical advice.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-FACT-T3-W02-DISEASES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W02; 21-row disease table contains medical claims that require authoritative review."
+    },
+    {
+      "id": "BIO-LES-T3-W02-GROWTH-PHASES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 block 120; questions 157 and 172",
+      "objective": "Author a clearly labelled supplemental lesson defining lag, exponential/logarithmic, stationary and decline/death phases of microbial growth. The source names but does not define the phases. Use an approved Biology reference and include complete keyed practice; keep any practical culture procedures out of scope.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W02-GROWTH-PHASES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W02; phases are named but not defined in the source."
+    },
+    {
+      "id": "BIO-LES-T3-W02-MICROBIAL-CONTROL",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 general evaluation block 159",
+      "objective": "Author a clearly labelled supplemental lesson on general ways of controlling microorganisms, which are requested by block 159 but not taught as a distinct framework in the body. Use approved curriculum sources and keyed practice. Do not add operational chemical, sterilisation or pathogen-handling procedures.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W02-MICROBIAL-CONTROL.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W02; only scattered disease-specific control statements appear in the source."
+    },
+    {
+      "id": "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES",
+      "kind": "LESSON",
+      "source_id": "SS1-SRC-78059230037f",
+      "term": "3rd Term",
+      "week_or_locator": "Week 2 general evaluation block 160",
+      "objective": "Author a clearly labelled supplemental lesson identifying microbial roles in nitrogen and carbon cycles, requested at block 160 but not taught in the Week 2 body. Use approved Biology references and include keyed practice; distinguish supplemental content from the source.",
+      "required_files": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/QUEUE.json",
+        "docs/ss1/work/microtasks/biology/BIO-WK-T3-W02.md"
+      ],
+      "required_attachments": [],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/biology.json",
+        "docs/ss1/work/microtasks/biology/BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES.md"
+      ],
+      "depends_on": [
+        "BIO-WK-T3-W02"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Appended by BIO-WK-T3-W02; no nitrogen/carbon cycle microorganisms are identified in this week's teaching body."
     }
   ],
   "review": {
@@ -4539,7 +4632,6 @@
     "BIO-VIS-T2-FIG-FOODWEB",
     "BIO-VIS-T2-SHP-FOODCHAINS",
     "BIO-VIS-T2-SHP-PYRAMID",
-    "BIO-WK-T3-W02",
     "BIO-WK-T3-W03",
     "BIO-WK-T3-W04",
     "BIO-WK-T3-W05",
@@ -4582,6 +4674,10 @@
     "BIO-FACT-T2-W09-ENERGY-CLAIMS",
     "BIO-FACT-T2-W10-ASSOCIATIONS",
     "BIO-SCOPE-T2-W10-MANAGEMENT",
-    "BIO-FACT-T3-W01-MICROBE-CLAIMS"
+    "BIO-FACT-T3-W01-MICROBE-CLAIMS",
+    "BIO-FACT-T3-W02-DISEASES",
+    "BIO-LES-T3-W02-GROWTH-PHASES",
+    "BIO-LES-T3-W02-MICROBIAL-CONTROL",
+    "BIO-LES-T3-W02-NITROGEN-CARBON-CYCLES"
   ]
 }
