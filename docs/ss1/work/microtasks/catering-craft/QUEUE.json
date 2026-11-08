@@ -40,8 +40,8 @@
     "SOURCE_PRESERVATION": 6
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 13,
-    "PENDING": 41,
+    "IMPLEMENTED_TESTING_DEFERRED": 14,
+    "PENDING": 40,
     "BLOCKED": 1
   },
   "items": [
@@ -546,8 +546,8 @@
         "CC-INV-T2",
         "CC-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T2 (see CC-INV-T2.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed against verified source with word-extractor 1.0.4. Scheme row 16 hash a402606eaa51ad7f86869f2026f5e9c5649cca1776042ead16d44bfa1e47ebaf; week range 1197-1298 hash 975255ca14ee602af9ee500d0acd4fdc3530f918f93eea233bb8c99622a02ccb. Section, assessment and objective index in docs/ss1/work/microtasks/catering-craft/CC-IDX-T2-W09.md. Added COV-CC-T2-W09-SCHEME-9 as PARTIAL with no lesson_ids; no lesson, answer, correction, rule, approval or verification invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 975255ca14ee602af9ee500d0acd4fdc3530f918f93eea233bb8c99622a02ccb; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -2009,7 +2009,6 @@
     }
   },
   "next_runnable": [
-    "CC-IDX-T2-W09",
     "CC-IDX-T2-W10",
     "CC-IDX-T2-OPEN",
     "CC-MARK-T2-W11",
