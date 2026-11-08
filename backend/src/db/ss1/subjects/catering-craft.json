@@ -474,6 +474,24 @@
           "explanation": "Sections and all assessment blocks are indexed. PARTIAL: no deliverable lesson exists, no answers/marking are supplied, and no parsed lesson identity is asserted because the importer was not run."
         }
       ]
+    },
+    {
+      "id": "COV-CC-T3-W10-SCHEME-10",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "objective": "Scheme week 10: Demonstration of table laying and setting",
+      "objective_locator": "opening scheme list line 17 (SHA-256 bdb5bc35166a6478770018774591d098945c3702161d1234e2b502f896833705); WEEK TEN lines 934-935 (SHA-256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344)",
+      "status": "UNRESOLVED",
+      "lesson_ids": [],
+      "evidence": [
+        {
+          "locator": "source lines 934-937; docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W10.md",
+          "explanation": "The source contains only the WEEK TEN label and the TOPIC line 'PRACTICAL DEMONSTRATION OF TABLE LAYING AND SETTING'; the next two lines are blank and the next marker begins at line 938. There is no demonstration body, equipment list, assessment rubric or practical record."
+        },
+        {
+          "locator": "source week eight lines 743-852; docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W08.md",
+          "explanation": "Week Eight teaches table laying and setting steps and is recorded as possible supporting material only. It is not Week Ten's missing demonstration body and is not used as a substitute for a practical demonstration."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -511,6 +529,18 @@
       "affected_ids": [
         "CC-VIS-T2-W04-TBL2",
         "CC-FACT-T2-MULTILINGUAL-PLANT-NAMES"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "CC-T3-W10-DEMONSTRATION-MISSING",
+      "kind": "CONTENT",
+      "detail": "The 3rd Term scheme includes 'Demonstration of table laying and setting' (scheme row 10), but the source's Week Ten has only a WEEK TEN label and TOPIC line; there is no teaching body, equipment list, demonstration sequence, practical task or rubric.",
+      "required_action": "Complete the separate owner-authorized source-backed equivalent lesson task CC-LES-T3-W10-DEMONSTRATION with a complete demonstration plan, equipment list, safe practical procedure and marking rubric; do not claim an observed classroom practical.",
+      "affected_ids": [
+        "CC-IDX-T3-W10",
+        "CC-LES-T3-W10-DEMONSTRATION",
+        "COV-CC-T3-W10-SCHEME-10"
       ],
       "blocks_delivery": true
     }

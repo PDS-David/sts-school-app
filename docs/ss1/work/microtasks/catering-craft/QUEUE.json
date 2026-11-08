@@ -37,10 +37,11 @@
     "SOURCE_SECTION_INDEXING": 2,
     "SOURCE_MARKER_DISPOSITION": 3,
     "VISUAL_DISPOSITION": 7,
-    "SOURCE_PRESERVATION": 6
+    "SOURCE_PRESERVATION": 6,
+    "LESSON_AUTHORING": 1
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 33,
+    "IMPLEMENTED_TESTING_DEFERRED": 34,
     "PENDING": 23,
     "BLOCKED": 1
   },
@@ -1659,8 +1660,8 @@
         "CC-INV-T3",
         "CC-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not started. Locator established by CC-INV-T3 (see CC-INV-T3.md).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed the exact third-term WEEK TEN marker and topic line only: lines 934-935, SHA-256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344. Lines 936-937 are blank; the next marker is WEEK ELEVEN AND TWELVE at line 938. No demonstration text, equipment list, rubric or practical observation exists in this source. Added COV-CC-T3-W10-SCHEME-10 as UNRESOLVED and a named content open item; queued a separate source-backed lesson-authoring task. No lesson or practical observation invented.",
       "completion_condition": "The week's sections and assignment blocks are listed with line locators matching sha256 c39c2a8effc69d7649351d6531ae8b6ff58fef4825516b7b0b99b35f3dc2c344; no lesson body is discarded; no coverage is claimed beyond what is indexed; package stays PENDING."
     },
     {
@@ -2063,6 +2064,41 @@
       ],
       "status": "PENDING",
       "implementation_reference": "New factual dependency identified during visual inspection of the original multilingual table; not yet verified."
+    },
+    {
+      "id": "CC-LES-T3-W10-DEMONSTRATION",
+      "kind": "LESSON_AUTHORING",
+      "source_id": "SS1-SRC-d068ede78d16",
+      "term": "3rd Term",
+      "week_or_locator": "Scheme row 10 / WEEK TEN lines 934-937",
+      "objective": "Author a clearly labelled project-authored equivalent lesson for the missing practical demonstration of table laying and setting. Include objectives, equipment/materials, a safe step-by-step demonstration procedure, worked example/teacher demonstration cues, learner practice, complete assessment answers and a practical marking rubric. Use Week Eight's table-laying/setting instruction only as supporting context, not as a substitute for the absent Week Ten source body. Research current authoritative hospitality-training sources, cite publication/date and explain reuse rights. Do not claim a classroom practical was performed or observed.",
+      "required_files": [
+        "docs/ss1/contracts/CONTRACT.md",
+        "backend/src/db/ss1/subjectPackageSchema.ts",
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W08.md",
+        "docs/ss1/work/microtasks/catering-craft/CC-IDX-T3-W10.md",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json"
+      ],
+      "required_attachments": [
+        {
+          "archive": "SSS1-original.zip",
+          "archive_sha256": "024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e",
+          "member": "SSS 1/3rd Term SS1_/3RD TERM S1 CATERING CRAFT PRACTICES.doc",
+          "member_sha256": "a2de209dab8d7b6a88c4e44ad3746c349db5b953d805c47457fa9185ab6e7d3e"
+        }
+      ],
+      "allowed_write_paths": [
+        "backend/src/db/ss1/subjects/catering-craft.json",
+        "docs/ss1/work/microtasks/catering-craft/QUEUE.json",
+        "docs/ss1/work/microtasks/catering-craft/CC-LES-T3-W10-DEMONSTRATION.md"
+      ],
+      "depends_on": [
+        "CC-IDX-T3-W08",
+        "CC-IDX-T3-W10"
+      ],
+      "status": "PENDING",
+      "implementation_reference": "Created as the separately tracked follow-up required by the source-index task; not yet authored."
     }
   ],
   "review": {
@@ -2083,10 +2119,10 @@
     "CC-FACT-T2-MEAT-POULTRY-FISH-EGG-HYGIENE",
     "CC-FACT-T2-GAME-CLASSIFICATION-STORAGE",
     "CC-FACT-T2-FISH-EGG-CLASSIFICATION-FIGURES",
-    "CC-IDX-T3-W10",
     "CC-IDX-T3-OPEN",
     "CC-MARK-T3-REVEXAM",
     "CC-VIS-T3-W08-IMG1",
-    "CC-FACT-T2-MEASURING-CONVERSION-FIGURES"
+    "CC-FACT-T2-MEASURING-CONVERSION-FIGURES",
+    "CC-LES-T3-W10-DEMONSTRATION"
   ]
 }
