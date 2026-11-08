@@ -74,7 +74,8 @@
     "AG-VIS-T3-W04-RUMINANT-DIGESTION (2026-11-08): image7.png at block 395 is a readable labelled cattle digestive-tract diagram supporting the four-compartment text at 391-396. No credit/licence is supplied; reuse is blocked pending permission or a separately sourced rights-cleared diagram.",
     "AG-VIS-T3-W04-PIG-DIGESTION (2026-11-08): image8.jpeg at block 417 is a legible labelled generic monogastric digestive tract, not demonstrably pig-specific. No credit/licence is supplied; delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
     "AG-VIS-T3-W04-POULTRY-DIGESTION (2026-11-08): image9.jpeg at block 425 is a labelled poultry digestive-system diagram matching heading 424 and text 426-428. Labels are mostly readable though some crowded; no credit/licence is supplied, so delivery reuse is blocked pending rights clearance or a rights-cleared replacement.",
-    "AG-VIS-T3-W04-MALE-REPRODUCTION (2026-11-08): block 487 contains a photographed textbook page (image10) and a cleaner labelled male reproductive-system schematic (image11), plus hdphoto1.wdp as an effect layer. The photographed page is not suitable as a standalone asset; neither image has a visible reuse licence or source citation. Reuse is blocked pending rights clearance or a rights-cleared replacement."
+    "AG-VIS-T3-W04-MALE-REPRODUCTION (2026-11-08): block 487 contains a photographed textbook page (image10) and a cleaner labelled male reproductive-system schematic (image11), plus hdphoto1.wdp as an effect layer. The photographed page is not suitable as a standalone asset; neither image has a visible reuse licence or source citation. Reuse is blocked pending rights clearance or a rights-cleared replacement.",
+    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A (2026-11-08): image12.jpeg at block 493 is a small labelled female reproductive-tract schematic (fallopian tube, ovary, uterus, cervix, vagina); it does not label vulva/labia mentioned in block 490. No credit/licence is supplied; reuse is blocked pending rights clearance or a rights-cleared replacement."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -89,8 +90,8 @@
     "CORRECTION_BINDING": 12
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 59,
-    "PENDING": 90,
+    "IMPLEMENTED_TESTING_DEFERRED": 60,
+    "PENDING": 89,
     "BLOCKED": 2
   },
   "items": [
@@ -2602,8 +2603,8 @@
         "AG-INV-T3",
         "AG-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory evidence: docs/ss1/work/microtasks/agricultural-science/AG-INV-T3.md. Source member SHA-256 verified against SOURCE_ASSIGNMENTS.csv; importer and delivery rendering remain deferred.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented 2026-11-08 after verifying archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e, exact Third Term DOCX member SHA-256 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a, and image12.jpeg SHA-256 a69e5ee55100230a8b3c7b52da1d9463da46ad60d97936d869961ebfc12a5897 (5,522 bytes; 278×181 JPEG). Relationship target media/image12.jpeg is anchored at document.xml body block 493. The coloured schematic labels fallopian tube, ovary, uterus, cervix and vagina. Labels are readable but small at this low resolution; diagram omits the vulva/labia described in block 490. It follows the female reproductive-system heading at 489 and explanatory paragraphs 490/492; image13 follows at 494 and caption at 495. No visible credit/licence is supplied; JPEG metadata contains only JFIF technical fields. Do not reuse without rights clearance; if unavailable, use a rights-cleared diagram with suitable scope and legible labels. Added open item AGRICULTURAL-SCIENCE-T3-W04-FEMALE-REPRODUCTION-A-RIGHTS. No derivative created. Importer/rendering/device checks not run.",
       "completion_condition": "Record a source-based disposition for this individual visual group: content and legibility, preservation of structure/labels, rights/reuse status, and whether a faithful derivative or separate asset is needed. Do not commit original media or claim app/device display verification."
     },
     {
@@ -5680,7 +5681,6 @@
     }
   },
   "next_runnable": [
-    "AG-VIS-T3-W04-FEMALE-REPRODUCTION-A",
     "AG-VIS-T3-W04-FEMALE-REPRODUCTION-B",
     "AG-VIS-T3-W04-TBL-DIGESTION",
     "AG-VIS-T3-W05-RESPIRATORY",
